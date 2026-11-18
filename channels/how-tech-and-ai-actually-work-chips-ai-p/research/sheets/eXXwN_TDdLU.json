@@ -1,0 +1,52 @@
+{
+  "_source": "ColdFusion long video, watched in the built-in browser 2026-11-18: frame mosaics (0-15 s dense, 16-80 s every 4-6 s, then every ~2 min), 1 s bursts at 16-21 s and 46-51 s, word timings from YouTube's transcript panel (about 175 words a minute). Our own descriptions; shots after 90 s are spot samples. 1.6M views.",
+  "durationSec": 1635,
+  "artStyle": "mixed",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "normal" },
+  "captions": { "style": "none", "position": "none" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 6,
+  "hook": {
+    "firstFrame": "black frame; the channel's white logo bars streak in (a 4 s sting)",
+    "firstLine": "A greeting, then a single dollar figure spoken alone.",
+    "question": false,
+    "subjectNamedAtSec": 8,
+    "figureShownAtSec": 5,
+    "figureSpokenAtSec": 3
+  },
+  "shots": [
+    { "start": 0, "end": 4.5, "picture": "logo sting: white slanted bars streak in with a light flare, wordmark forms over grey 3D shapes", "kind": "text card", "characters": 0, "camera": "static", "transition": "none", "onScreenText": "channel logo", "figureOnScreen": false, "motion": 2 },
+    { "start": 4.5, "end": 16, "picture": "a tilted wall of banknote bundles, slow drift; huge white italic '$650 Billion' slides diagonally across", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "$650 Billion", "figureOnScreen": true, "motion": 2 },
+    { "start": 16, "end": 23, "picture": "on white, a 3D stack of cash bundles rises; camera tilts up until a space station passes, red '710 km' label lands at an angle", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "710 km", "figureOnScreen": true, "motion": 3 },
+    { "start": 23, "end": 33, "picture": "a newspaper analysis page with headline about a $9tn bust, slow scroll", "kind": "text card", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "$9tn headline", "figureOnScreen": true, "motion": 1 },
+    { "start": 33, "end": 39, "picture": "black frame, four aerial photos of named data-centre projects in a row with titles", "kind": "photo", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "4 project names", "figureOnScreen": false, "motion": 1 },
+    { "start": 39, "end": 45, "picture": "a business-news headline in white on black, the outlet's name in orange", "kind": "text card", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "headline", "figureOnScreen": false, "motion": 1 },
+    { "start": 45, "end": 53, "picture": "on white: '140 Data Centers' orange rack icon = '12 GW', camera trucks right as a line draws to a cluster of house icons", "kind": "chart", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "140 Data Centers = 12 GW", "figureOnScreen": true, "motion": 2 },
+    { "start": 53, "end": 65, "picture": "aerial footage of half-built data-centre sites and steel frames", "kind": "footage", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 65, "end": 78, "picture": "satellite image of a construction site in a small window", "kind": "photo", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 78, "end": 92, "picture": "TV interview of a commentator with a lower-third", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "news lower third", "figureOnScreen": false, "motion": 1 },
+    { "start": 92, "end": 240, "picture": "conference panels, news clips, phone footage of residents (spot-sampled)", "kind": "footage", "characters": 2, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 240, "end": 470, "picture": "sponsor segment: staged ad footage, product logo card with QR", "kind": "footage", "characters": 2, "camera": "static", "transition": "cut", "onScreenText": "sponsor", "figureOnScreen": false, "motion": 1 },
+    { "start": 470, "end": 580, "picture": "simple white line chart comparing megaprojects' cost over years, lines labelled at their ends", "kind": "chart", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "project names + $", "figureOnScreen": true, "motion": 1 },
+    { "start": 580, "end": 1600, "picture": "factory, phone and news footage; a utility bill and text message as evidence; magazine headline; press footage (spot-sampled)", "kind": "footage", "characters": 2, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 1600, "end": 1635, "picture": "dark outro with light leaks and the closing question", "kind": "footage", "characters": 0, "camera": "static", "transition": "fade", "onScreenText": "", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 8, "words": 22, "job": "hook", "gist": "greeting, then the yearly data-centre spending figure of four tech giants" },
+    { "start": 8, "end": 23, "words": 38, "job": "hook", "gist": "makes the figure physical: a stack of notes taller than the space station's orbit" },
+    { "start": 23, "end": 31, "words": 22, "job": "stakes", "gist": "the plan grows to trillions by the end of the decade" },
+    { "start": 31, "end": 40, "words": 26, "job": "turn", "gist": "yet nearly half of this year's planned sites are delayed or cancelled" },
+    { "start": 40, "end": 54, "words": 38, "job": "context", "gist": "how many projects, how much power, how many homes that equals, a third being built" },
+    { "start": 54, "end": 73, "words": 50, "job": "context", "gist": "reports and satellite images contradict the companies' claims of progress" },
+    { "start": 73, "end": 87, "words": 30, "job": "other", "gist": "a critic says an announced site is far from finished" },
+    { "start": 87, "end": 116, "words": 75, "job": "promise", "gist": "the public dislikes data centres too; the question the episode answers is set" }
+  ],
+  "ending": { "loops": false, "cta": "asks viewers' views in the comments", "lastFrame": "dark frame with light leaks" },
+  "whyItWorks": [
+    "The headline figure is turned into a physical scale picture (a cash stack reaching orbit) within 16 s.",
+    "Chains of equivalence: icon = number, then a line draws to a familiar thing (homes), camera trucking along the chain.",
+    "Contrast turn at 31 s: huge money in, yet half the projects stalled; the question is set before any background.",
+    "Graphics are minimal: white or black ground, one orange accent, condensed italic numerals."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_source": "ColdFusion Short, watched in the built-in browser 2026-11-18: frames at 0/0.5/1/2/3/5 s then every 3-5 s to the end, word timings from YouTube's transcript panel (about 175 words a minute). Our own descriptions. 95K views.",
+  "durationSec": 72,
+  "artStyle": "mixed",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "normal" },
+  "captions": { "style": "word-by-word", "position": "middle" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 6,
+  "hook": {
+    "firstFrame": "a white title box at the top asking if the country's banks are a joke, news footage of a bank branch in a band below, bold caption words",
+    "firstLine": "Calls the country's banking system a farce.",
+    "question": true,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": 14,
+    "figureSpokenAtSec": 12
+  },
+  "shots": [
+    { "start": 0, "end": 3, "picture": "fixed white title box top; TV news footage of a bank branch in a middle band over a blurred copy of itself", "kind": "footage", "characters": 2, "camera": "static", "transition": "none", "onScreenText": "title box + caption words", "figureOnScreen": false, "motion": 1 },
+    { "start": 3, "end": 8, "picture": "shoppers walking in a mall (stock footage), a news ticker band", "kind": "footage", "characters": 2, "camera": "static", "transition": "cut", "onScreenText": "caption words", "figureOnScreen": false, "motion": 1 },
+    { "start": 8, "end": 11, "picture": "white outline map of the country, the south-east fills orange, a dollar sign, four bank logos below", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "bank logos", "figureOnScreen": false, "motion": 2 },
+    { "start": 11, "end": 19, "picture": "a report's stacked bar chart of bank market share, page drifting", "kind": "chart", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "72 percent (caption)", "figureOnScreen": true, "motion": 1 },
+    { "start": 19, "end": 26, "picture": "3D glowing bank towers in red and purple light, logos lit on top, rising", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "caption words", "figureOnScreen": false, "motion": 2 },
+    { "start": 26, "end": 34, "picture": "3D houses on a street with red 'Price drop' signs and arrows, camera sliding past", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "Price drop", "figureOnScreen": false, "motion": 2 },
+    { "start": 34, "end": 45, "picture": "stock footage of office workers and a top-down handshake", "kind": "footage", "characters": 3, "camera": "static", "transition": "cut", "onScreenText": "caption words", "figureOnScreen": false, "motion": 1 },
+    { "start": 45, "end": 53, "picture": "huge white '70%' on black with a red starburst and a yellow diamond popping beside it", "kind": "text card", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "70%", "figureOnScreen": true, "motion": 2 },
+    { "start": 53, "end": 63, "picture": "aerial footage of rows of suburban houses", "kind": "footage", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "caption words", "figureOnScreen": false, "motion": 1 },
+    { "start": 63, "end": 72, "picture": "the host talking to camera, a ranking table slides over the lower half then away", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "ranking table", "figureOnScreen": true, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 7, "words": 23, "job": "hook", "gist": "the banking system is a farce; four banks pull money away from real business" },
+    { "start": 7, "end": 19, "words": 30, "job": "stakes", "gist": "those four hold about three quarters of the market, by two estimates" },
+    { "start": 19, "end": 26, "words": 15, "job": "context", "gist": "that concentration has led to silly results" },
+    { "start": 26, "end": 41, "words": 38, "job": "turn", "gist": "with no competition they all do one thing: home loans, unlike banks abroad" },
+    { "start": 41, "end": 57, "words": 35, "job": "stakes", "gist": "most of their lending is housing, which bends the whole economy" },
+    { "start": 57, "end": 72, "words": 45, "job": "payoff", "gist": "the country ranks below much poorer nations on an economic-complexity index; host's aside" }
+  ],
+  "ending": { "loops": false, "cta": null, "lastFrame": "the host mid-sentence on camera" },
+  "whyItWorks": [
+    "A fixed title box at the top states the question for the whole Short; the footage band changes under it.",
+    "Captions are big word-by-word capitals with one key word coloured, so it plays on mute.",
+    "The payoff is a surprising comparison (ranked below poorer countries), not the first figure.",
+    "Clipped from a long video: landscape footage in a centre band, a blurred copy filling the rest."
+  ]
+}

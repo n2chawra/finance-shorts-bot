@@ -1,0 +1,438 @@
+{
+ "note": "Topic families from Claude's labels, ranked by the scan's numbers (workers/niche-research.ts). Tiers: core ≥1.5× or ≥20% hits, avoid <0.7×, unknown under 5 scored videos. gap: core and posted by ≤3 channels in 30 days.",
+ "rankedAt": "2026-11-18T10:57:51.892Z",
+ "labelled": 3924,
+ "of": 3924,
+ "families": [
+  {
+   "family": "internet-and-networks",
+   "kind": "long",
+   "n": 15,
+   "medianOutlier": 1.61,
+   "hitRate": 0.32,
+   "medianViews": 991,
+   "tier": "core",
+   "examples": [
+    "wDh10b0L6GA",
+    "VpoxrRMcKN4",
+    "J4S3UHs9Agw"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": true
+  },
+  {
+   "family": "tech-history",
+   "kind": "short",
+   "n": 185,
+   "medianOutlier": 1.58,
+   "hitRate": 0.21,
+   "medianViews": 10161,
+   "tier": "core",
+   "examples": [
+    "osbyDsxQOwo",
+    "AIsozFTqIUI",
+    "UrBA3twKzGc"
+   ],
+   "recent30": 71,
+   "crowding30": 11,
+   "direction": 1.8,
+   "gap": false
+  },
+  {
+   "family": "ai-how-it-works",
+   "kind": "long",
+   "n": 22,
+   "medianOutlier": 1.27,
+   "hitRate": 0.34,
+   "medianViews": 1336,
+   "tier": "core",
+   "examples": [
+    "vIM9qCyfVmg",
+    "mwtNbEo4FbQ",
+    "4qjoa2TDAhk"
+   ],
+   "recent30": 10,
+   "crowding30": 3,
+   "direction": 11.36,
+   "gap": true
+  },
+  {
+   "family": "chips-and-hardware",
+   "kind": "long",
+   "n": 36,
+   "medianOutlier": 1.09,
+   "hitRate": 0.2,
+   "medianViews": 131628,
+   "tier": "core",
+   "examples": [
+    "lvcAvPjZwxo",
+    "oBKrR3i6jWM",
+    "_oLEDfOTXjQ"
+   ],
+   "recent30": 14,
+   "crowding30": 4,
+   "direction": 2.39,
+   "gap": false
+  },
+  {
+   "family": "machines-vehicles",
+   "kind": "short",
+   "n": 630,
+   "medianOutlier": 1.05,
+   "hitRate": 0.21,
+   "medianViews": 8621,
+   "tier": "core",
+   "examples": [
+    "rHk5j8d8yog",
+    "QiTdwT9mjpg",
+    "Rjw8KtGpOZ0"
+   ],
+   "recent30": 258,
+   "crowding30": 24,
+   "direction": 39.55,
+   "gap": false
+  },
+  {
+   "family": "news-and-events",
+   "kind": "short",
+   "n": 16,
+   "medianOutlier": 1.36,
+   "hitRate": 0.1,
+   "medianViews": 6004,
+   "tier": "low",
+   "examples": [
+    "L73NEgH36JU",
+    "WImj7TCdf0w",
+    "GlEp6PW7eh0"
+   ],
+   "recent30": 14,
+   "crowding30": 5,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "gadget-inside",
+   "kind": "long",
+   "n": 18,
+   "medianOutlier": 1.05,
+   "hitRate": 0.07,
+   "medianViews": 216,
+   "tier": "low",
+   "examples": [
+    "v8-LWsNV_EM",
+    "5DmLxVhCYBI",
+    "8yGIBGWDMXY"
+   ],
+   "recent30": 4,
+   "crowding30": 2,
+   "direction": 1.36,
+   "gap": false
+  },
+  {
+   "family": "chips-and-hardware",
+   "kind": "short",
+   "n": 75,
+   "medianOutlier": 1.03,
+   "hitRate": 0.19,
+   "medianViews": 3811,
+   "tier": "low",
+   "examples": [
+    "joqgAAEM0y4",
+    "nLhK6gZiIxE",
+    "YVHJR7UWm5w"
+   ],
+   "recent30": 20,
+   "crowding30": 9,
+   "direction": 0.18,
+   "gap": false
+  },
+  {
+   "family": "tech-business-story",
+   "kind": "long",
+   "n": 46,
+   "medianOutlier": 1.03,
+   "hitRate": 0.04,
+   "medianViews": 292160,
+   "tier": "low",
+   "examples": [
+    "sn2FFRMgejo",
+    "3I-xv56cBUY",
+    "W4E5JAD5U7A"
+   ],
+   "recent30": 13,
+   "crowding30": 5,
+   "direction": 6.6,
+   "gap": false
+  },
+  {
+   "family": "ai-tech-skit",
+   "kind": "short",
+   "n": 81,
+   "medianOutlier": 1.01,
+   "hitRate": 0.18,
+   "medianViews": 1137384,
+   "tier": "low",
+   "examples": [
+    "0iorYBKKF_A",
+    "AdfiIO3YgJ8",
+    "-8XlWwznPHE"
+   ],
+   "recent30": 15,
+   "crowding30": 1,
+   "direction": 28.4,
+   "gap": false
+  },
+  {
+   "family": "ai-how-it-works",
+   "kind": "short",
+   "n": 35,
+   "medianOutlier": 1,
+   "hitRate": 0.1,
+   "medianViews": 1480,
+   "tier": "low",
+   "examples": [
+    "tDjrFOKRAVw",
+    "fH0MbuV0sUk",
+    "_y-cyH8X-8M"
+   ],
+   "recent30": 14,
+   "crowding30": 6,
+   "direction": 1.81,
+   "gap": false
+  },
+  {
+   "family": "science-body-nature",
+   "kind": "short",
+   "n": 1159,
+   "medianOutlier": 1,
+   "hitRate": 0.17,
+   "medianViews": 6418,
+   "tier": "low",
+   "examples": [
+    "BffIITO6VRM",
+    "Xi37bVu4PtM",
+    "bE5miTIRBxw"
+   ],
+   "recent30": 209,
+   "crowding30": 19,
+   "direction": 5.99,
+   "gap": false
+  },
+  {
+   "family": "machines-vehicles",
+   "kind": "long",
+   "n": 58,
+   "medianOutlier": 1,
+   "hitRate": 0.08,
+   "medianViews": 1351,
+   "tier": "low",
+   "examples": [
+    "8ahiNI4VYns",
+    "1IDc_Gv2pXk",
+    "OH-z1idinHc"
+   ],
+   "recent30": 21,
+   "crowding30": 11,
+   "direction": 0.26,
+   "gap": false
+  },
+  {
+   "family": "news-and-events",
+   "kind": "long",
+   "n": 35,
+   "medianOutlier": 0.98,
+   "hitRate": 0.06,
+   "medianViews": 165125,
+   "tier": "low",
+   "examples": [
+    "-7vFxtKhDgw",
+    "cbGJLgYwigc",
+    "M49njZdMN0g"
+   ],
+   "recent30": 8,
+   "crowding30": 5,
+   "direction": 9.71,
+   "gap": false
+  },
+  {
+   "family": "other",
+   "kind": "short",
+   "n": 1102,
+   "medianOutlier": 0.96,
+   "hitRate": 0.14,
+   "medianViews": 37952,
+   "tier": "low",
+   "examples": [
+    "8kkcfzi9a9w",
+    "c7vN3kWwJZE",
+    "xe37x2YLpAw"
+   ],
+   "recent30": 404,
+   "crowding30": 22,
+   "direction": 31.76,
+   "gap": false
+  },
+  {
+   "family": "software-and-code",
+   "kind": "short",
+   "n": 86,
+   "medianOutlier": 0.95,
+   "hitRate": 0.06,
+   "medianViews": 1606,
+   "tier": "low",
+   "examples": [
+    "s-D0jm9j7H0",
+    "VoDhTFT0RRA",
+    "u_Sj3SIzIv0"
+   ],
+   "recent30": 24,
+   "crowding30": 4,
+   "direction": 5.06,
+   "gap": false
+  },
+  {
+   "family": "science-body-nature",
+   "kind": "long",
+   "n": 33,
+   "medianOutlier": 0.87,
+   "hitRate": 0.05,
+   "medianViews": 1626,
+   "tier": "low",
+   "examples": [
+    "ZsYq1RxuKYA",
+    "ASEchqxT_5I",
+    "qQAM7FvLVio"
+   ],
+   "recent30": 2,
+   "crowding30": 2,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "tech-history",
+   "kind": "long",
+   "n": 12,
+   "medianOutlier": 0.83,
+   "hitRate": 0.08,
+   "medianViews": 312,
+   "tier": "low",
+   "examples": [
+    "3DiE4urLmao",
+    "nx_iRrsswKY",
+    "DNKfD1PC68E"
+   ],
+   "recent30": 5,
+   "crowding30": 5,
+   "direction": 0.02,
+   "gap": false
+  },
+  {
+   "family": "tech-business-story",
+   "kind": "short",
+   "n": 54,
+   "medianOutlier": 0.79,
+   "hitRate": 0.1,
+   "medianViews": 10714,
+   "tier": "low",
+   "examples": [
+    "38JWkN2cXB4",
+    "z6LGbQyJxZU",
+    "I_IUAFGYooQ"
+   ],
+   "recent30": 27,
+   "crowding30": 5,
+   "direction": 2.68,
+   "gap": false
+  },
+  {
+   "family": "other",
+   "kind": "long",
+   "n": 41,
+   "medianOutlier": 0.79,
+   "hitRate": 0.03,
+   "medianViews": 240655,
+   "tier": "low",
+   "examples": [
+    "CCupS2wAoJs",
+    "kBP-bVci-IM",
+    "UD7ZPxgIxbU"
+   ],
+   "recent30": 13,
+   "crowding30": 4,
+   "direction": 55.95,
+   "gap": false
+  },
+  {
+   "family": "internet-and-networks",
+   "kind": "short",
+   "n": 49,
+   "medianOutlier": 0.76,
+   "hitRate": 0.11,
+   "medianViews": 1305,
+   "tier": "low",
+   "examples": [
+    "BrN2IhgB3kQ",
+    "WIF1fFTU4LI",
+    "uICn2x2f3Lk"
+   ],
+   "recent30": 20,
+   "crowding30": 10,
+   "direction": 12.87,
+   "gap": false
+  },
+  {
+   "family": "gadget-inside",
+   "kind": "short",
+   "n": 123,
+   "medianOutlier": 0.72,
+   "hitRate": 0.11,
+   "medianViews": 1655,
+   "tier": "low",
+   "examples": [
+    "yG94_SxKiUw",
+    "H0eDq1qiaFg",
+    "XYJuEeCinow"
+   ],
+   "recent30": 34,
+   "crowding30": 11,
+   "direction": 16.63,
+   "gap": false
+  },
+  {
+   "family": "ai-tech-skit",
+   "kind": "long",
+   "n": 1,
+   "medianOutlier": null,
+   "hitRate": null,
+   "medianViews": 644478,
+   "tier": "unknown",
+   "examples": [
+    "d3NJyNn6vTQ"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "software-and-code",
+   "kind": "long",
+   "n": 12,
+   "medianOutlier": 0.46,
+   "hitRate": 0,
+   "medianViews": 476,
+   "tier": "avoid",
+   "examples": [
+    "0W2IOQkTR9M",
+    "zFsWmdD3uLs",
+    "rgnGvN9uyUU"
+   ],
+   "recent30": 7,
+   "crowding30": 2,
+   "direction": null,
+   "gap": false
+  }
+ ]
+}

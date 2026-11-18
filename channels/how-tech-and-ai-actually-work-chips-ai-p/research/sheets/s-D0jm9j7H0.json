@@ -1,0 +1,39 @@
+{
+  "_source": "Watched in the built-in browser 2026-11-18 (Algorithmswithpeter, 5K subs, 401K views, 2 months old). Frames every 0.5 s for 2 s, then every 15-20 s; no sound probe. Shots approximate (pages change every ~5-10 s). Our own descriptions.",
+  "durationSec": 166.5,
+  "artStyle": "mixed",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "fast" },
+  "captions": { "style": "phrase", "position": "bottom" },
+  "music": { "present": false, "energy": "low" },
+  "sfxPerMinute": 0,
+  "hook": {
+    "firstFrame": "an off-white paper page, nearly empty; by 0.5 s a cut-out cartoon man in a suit appears bottom-left beside a two-column comparison card",
+    "firstLine": "Let's compare two backend languages",
+    "question": true,
+    "subjectNamedAtSec": 1,
+    "figureShownAtSec": 7,
+    "figureSpokenAtSec": null
+  },
+  "shots": [
+    { "start": 0, "end": 4, "picture": "paper page with serif headings: two language names in boxes, cartoon cut-out host bottom-left", "kind": "mixed", "characters": 1, "camera": "static", "transition": "none", "onScreenText": "Go / Rust", "figureOnScreen": false, "motion": 1 },
+    { "start": 4, "end": 7, "picture": "page heading 'Memory management' with a small table and a notes card", "kind": "text card", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "Memory management", "figureOnScreen": false, "motion": 1 },
+    { "start": 7, "end": 30, "picture": "a grid of black and beige squares like a memory map, then a chart and code panels", "kind": "chart", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": true, "motion": 1 },
+    { "start": 30, "end": 70, "picture": "pages of curves, code blocks and seesaw-style comparisons, host fixed bottom-left", "kind": "chart", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "Raw performance", "figureOnScreen": true, "motion": 1 },
+    { "start": 70, "end": 140, "picture": "more editorial pages: small tables of numbers, labelled boxes, host fixed", "kind": "text card", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": true, "motion": 1 },
+    { "start": 140, "end": 166.5, "picture": "page turns dark: verdict cards for each language, host grows bigger at the end", "kind": "text card", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "Go", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 4, "words": 10, "job": "hook", "gist": "which backend language wins this year" },
+    { "start": 4, "end": 30, "words": 80, "job": "context", "gist": "how each handles memory" },
+    { "start": 30, "end": 90, "words": 180, "job": "reveal", "gist": "speed, safety and how hard each is to learn" },
+    { "start": 90, "end": 140, "words": 150, "job": "turn", "gist": "where each one is actually used" },
+    { "start": 140, "end": 166.5, "words": 75, "job": "payoff", "gist": "pick one for shipping fast, the other for raw performance" }
+  ],
+  "ending": { "loops": false, "cta": null, "lastFrame": "dark verdict page with the cartoon host large in the middle" },
+  "whyItWorks": [
+    "a versus question developers argue about, settled in one Short",
+    "a calm editorial paper look (serif, beige, black) that reads like a premium magazine",
+    "a familiar cartoon host as the voice (a borrowed character: never something we copy)"
+  ]
+}

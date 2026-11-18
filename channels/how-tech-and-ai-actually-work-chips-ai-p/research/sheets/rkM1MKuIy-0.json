@@ -1,0 +1,53 @@
+{
+  "_source": "Watched in the built-in browser 2026-11-18 (Inside Decoded, 49K views, 1 month old; AI/altered-content label). Frames every 0.5 s for the first 4 s, then every 4-5 s, and a burst over the last 3 s; no sound probe (same channel as pBBBNOUxDh4). Shots approximate. Our own descriptions.",
+  "durationSec": 56.3,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "normal" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "low" },
+  "sfxPerMinute": 30,
+  "hook": {
+    "firstFrame": "a tall white board of pipes and red water tanks standing in a sunlit brick room; small caption mid-frame",
+    "firstLine": "This computer had no chips at all",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": 37,
+    "figureSpokenAtSec": 37
+  },
+  "shots": [
+    { "start": 0, "end": 0.5, "picture": "the water-pipe machine in a brick room, wide", "kind": "object", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 0.5, "end": 1.4, "picture": "big white bold words slam in over the machine as the camera pushes in", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "NO CHIPS", "figureOnScreen": false, "motion": 2 },
+    { "start": 1.4, "end": 2.4, "picture": "macro: a column of red water running down a clear tube", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "NO CHIPS", "figureOnScreen": false, "motion": 2 },
+    { "start": 2.4, "end": 5, "picture": "the red stream pours into a brass cup, blue pill label at the top", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "MATH WITH FLOWING WATER", "figureOnScreen": false, "motion": 2 },
+    { "start": 5, "end": 12, "picture": "a black-and-white archive-style photo card of an inventor beside his machine, name and year pill", "kind": "photo", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "BILL PHILLIPS · 1949", "figureOnScreen": false, "motion": 1 },
+    { "start": 12, "end": 17, "picture": "close on red tanks and brass valves on the board, question pill", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "HOW DOES WATER DO MATH?", "figureOnScreen": false, "motion": 1 },
+    { "start": 17, "end": 22, "picture": "a glass tank on a stand filling with red water", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "TANK = RUNNING TOTAL", "figureOnScreen": false, "motion": 2 },
+    { "start": 22, "end": 27, "picture": "water pumped to the top of the board", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "WATER = MONEY", "figureOnScreen": false, "motion": 2 },
+    { "start": 27, "end": 32, "picture": "streams branching out of the main tank through side pipes", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "OUT: TAXES, SAVINGS, IMPORTS", "figureOnScreen": false, "motion": 2 },
+    { "start": 32, "end": 37, "picture": "a cut-out curve card in a slot moves a valve, yellow pointer", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "CUT-OUT CURVES = RULES", "figureOnScreen": false, "motion": 1 },
+    { "start": 37, "end": 42, "picture": "the whole machine in the room again, a big headline at the top", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "9 EQUATIONS SOLVED AT ONCE", "figureOnScreen": true, "motion": 1 },
+    { "start": 42, "end": 45, "picture": "red water spills across the floor from the base of the machine", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 45, "end": 51, "picture": "a paper document card on a dark wood background, then a title appears under it", "kind": "text card", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "THE PHILLIPS CURVE", "figureOnScreen": false, "motion": 1 },
+    { "start": 51, "end": 53.5, "picture": "close on the board's pipes and tanks", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 53.5, "end": 56.3, "picture": "the machine in the brick room as in frame one, under a subscribe card", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "Subscribe to Inside Decoded", "figureOnScreen": false, "motion": 0 }
+  ],
+  "lines": [
+    { "start": 0, "end": 2.4, "words": 6, "job": "hook", "gist": "a computer with no chips" },
+    { "start": 2.4, "end": 5, "words": 6, "job": "promise", "gist": "it did maths with flowing water" },
+    { "start": 5, "end": 12, "words": 18, "job": "context", "gist": "an economics student built it in 1949, partly from bomber parts" },
+    { "start": 12, "end": 17, "words": 10, "job": "promise", "gist": "how can water do maths?" },
+    { "start": 17, "end": 32, "words": 38, "job": "reveal", "gist": "water stands for money: pumped in as income, drained out as taxes and savings" },
+    { "start": 32, "end": 37, "words": 12, "job": "reveal", "gist": "swappable cut-out curves set the rules" },
+    { "start": 37, "end": 45, "words": 18, "job": "turn", "gist": "it solved nine equations at once, and sometimes flooded the room" },
+    { "start": 45, "end": 53, "words": 20, "job": "payoff", "gist": "its inventor later drew one of economics' most famous curves" },
+    { "start": 53, "end": 56.3, "words": 6, "job": "loop", "gist": "a machine like this" }
+  ],
+  "ending": { "loops": true, "cta": "Subscribe card", "lastFrame": "the same water machine in the brick room as the first frame, subscribe card on top" },
+  "whyItWorks": [
+    "a contradiction in the first two words on screen (computer, no chips) slammed in huge at 0.5 s",
+    "a dive into the moving part (red water) by 1.5 s: motion and colour before any explanation",
+    "each idea is an equation written as a pill label: tank = running total, water = money",
+    "a comic beat (it flooded the room) before the payoff keeps the middle alive; it ends on frame one"
+  ]
+}

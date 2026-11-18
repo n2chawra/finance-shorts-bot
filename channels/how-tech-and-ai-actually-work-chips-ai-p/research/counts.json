@@ -1,0 +1,16 @@
+{
+ "note": "Recommended video counts (lib/research.ts recommendCounts). The owner accepts or changes them on the Launch review.",
+ "at": "2026-11-18T10:57:51.892Z",
+ "shortsPerDay": 1,
+ "longPerWeek": 1,
+ "reasons": [
+  "Channels with a Shorts hit post about 0.8 a day (median).",
+  "At 1 a day each loop cycle takes about 16 days instead of 7.",
+  "Long videos: 4 small channels had a long hit (hit rate 10%), so 1 a week."
+ ],
+ "unitsPerDay": 1886,
+ "quota": {
+  "free": 3600,
+  "why": "no database: assumed one other channel at 3 Shorts a day (3600 units free)"
+ }
+}

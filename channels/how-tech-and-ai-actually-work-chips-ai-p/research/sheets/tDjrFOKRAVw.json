@@ -1,0 +1,35 @@
+{
+  "_source": "Watched in the built-in browser 2026-11-18 (Business Insider, 1.7M views, 2 months old; a sponsored Short, the views likely paid). Frames every 0.5 s for the first 2 s then every 4-5 s; no sound probe. Our own descriptions.",
+  "durationSec": 46.1,
+  "artStyle": "talking head",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "normal" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "low" },
+  "sfxPerMinute": 0,
+  "hook": {
+    "firstFrame": "a man in a blazer standing in a studio with a plant wall and a lit company logo, talking to camera",
+    "firstLine": "What makes a generic AI agent?",
+    "question": true,
+    "subjectNamedAtSec": 0.5,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": null
+  },
+  "shots": [
+    { "start": 0, "end": 41.5, "picture": "one man talking to camera, mid shot, hands moving; blue box captions of 2-4 words mid-frame", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "none", "onScreenText": "generic agent?", "figureOnScreen": false, "motion": 1 },
+    { "start": 41.5, "end": 46.1, "picture": "sponsor end card on a blue gradient", "kind": "text card", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "AI Factory", "figureOnScreen": false, "motion": 0 }
+  ],
+  "lines": [
+    { "start": 0, "end": 3, "words": 6, "job": "hook", "gist": "asks what a generic agent is" },
+    { "start": 3, "end": 12, "words": 26, "job": "context", "gist": "a general model that knows a lot but nothing about your business" },
+    { "start": 12, "end": 24, "words": 34, "job": "reveal", "gist": "a great agent is trained on your own data" },
+    { "start": 24, "end": 41.5, "words": 50, "job": "payoff", "gist": "training used to take months, now it can take an afternoon" },
+    { "start": 41.5, "end": 46.1, "words": 6, "job": "cta", "gist": "sponsor message" }
+  ],
+  "ending": { "loops": false, "cta": "sponsor end card", "lastFrame": "blue sponsor card" },
+  "whyItWorks": [
+    "a question in the viewer's words as the first line",
+    "blue-box word captions readable on mute",
+    "reach probably bought: not a model for an organic channel"
+  ]
+}

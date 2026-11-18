@@ -1,0 +1,47 @@
+{
+  "_source": "Branch Education Short 'Zooming Into a CPU (It's Incredible)', watched in the built-in browser 2026-11-18: frames every ~4 s. No transcript panel, so line timings and word counts are estimated from the burned-in captions at ~150 words a minute. Our own descriptions.",
+  "durationSec": 55.8,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "normal" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 8,
+  "hook": {
+    "firstFrame": "a smartphone lying on a pale grey tiled floor, soft daylight, slight tilt",
+    "firstLine": "Every phone has a processor made of billions of transistors",
+    "question": false,
+    "subjectNamedAtSec": 1.5,
+    "figureShownAtSec": 14,
+    "figureSpokenAtSec": 3
+  },
+  "shots": [
+    { "start": 0, "end": 1.2, "picture": "a phone lying on a pale grey tiled floor", "kind": "object", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 1.2, "end": 3, "picture": "the phone lifts and its layers slide apart into an exploded stack", "kind": "object", "characters": 0, "camera": "pan", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 3, "end": 6, "picture": "the logic board out of the stack; a leader line labels the main chip and the bare die floats off", "kind": "object", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "A16 SoC", "figureOnScreen": false, "motion": 2 },
+    { "start": 6, "end": 12, "picture": "a fast dive down onto the die until its surface becomes a red-brown field of tiny blocks", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 12, "end": 16, "picture": "one transistor rises out of the field as coloured blocks with a dimension bracket over it", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "36 nm", "figureOnScreen": true, "motion": 2 },
+    { "start": 16, "end": 24, "picture": "the field turns grey; a few cells lift out in a column, labelled gate by gate, under a glowing title", "kind": "object", "characters": 0, "camera": "pull out", "transition": "morph", "onScreenText": "Standard Cells", "figureOnScreen": false, "motion": 2 },
+    { "start": 24, "end": 29, "picture": "rows of cells like a city from above, the camera gliding across", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 29, "end": 37, "picture": "copper wire layers rise over the cells like a maze of beams", "kind": "object", "characters": 0, "camera": "follow", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 37, "end": 47, "picture": "the wiring as a cut-away stack, a bracket counts its layers; top layers widen", "kind": "object", "characters": 0, "camera": "pull out", "transition": "none", "onScreenText": "18 Layers", "figureOnScreen": true, "motion": 2 },
+    { "start": 47, "end": 53, "picture": "the whole copper wiring block sitting on the die from a high angle", "kind": "object", "characters": 0, "camera": "pull out", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 53, "end": 55.8, "picture": "an end card: a framed thumbnail of the long video and a channel badge with arrows", "kind": "mixed", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "CPU Logic", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 6, "words": 15, "job": "hook", "gist": "every phone holds a processor of billions of transistors" },
+    { "start": 6, "end": 12, "words": 15, "job": "promise", "gist": "zooming in reveals an endless field of them" },
+    { "start": 12, "end": 16, "words": 10, "job": "context", "gist": "each one only a few nanometres across" },
+    { "start": 16, "end": 24, "words": 20, "job": "context", "gist": "they are grouped into logic gates called standard cells" },
+    { "start": 24, "end": 37, "words": 30, "job": "turn", "gist": "to connect the gates a huge maze of wires is needed" },
+    { "start": 37, "end": 50, "words": 32, "job": "reveal", "gist": "the wiring is stacked in many layers, finer at the bottom" },
+    { "start": 50, "end": 55.8, "words": 12, "job": "cta", "gist": "the layers connect the whole chip; points to the long video" }
+  ],
+  "ending": { "loops": false, "cta": "watch the long video on CPU logic", "lastFrame": "end card with a framed thumbnail and channel badge over a dimmed shot" },
+  "whyItWorks": [
+    "one unbroken zoom from a phone on the floor to a single transistor, each scale labelled as it passes",
+    "an exploded view in the first 3 seconds: the phone's layers slide apart so the chip is found, not cut to",
+    "measurements drawn as brackets on the 3D part itself (nanometres, layer counts) rather than on cards",
+    "parts lift out of a field with a shadow below and a label on a leader line, then sink back"
+  ]
+}

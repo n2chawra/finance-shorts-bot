@@ -1,0 +1,52 @@
+{
+  "_source": "Watched in the built-in browser 2026-11-18 (Professor Of AI, 8.3M views, 2 months old; Hindi, auto-dub available). Frames every 3-6 s plus a 0.4 s burst at 30 s; no sound probe on this one. Shots approximate. Our own descriptions.",
+  "durationSec": 79,
+  "artStyle": "mixed",
+  "language": "hi",
+  "narrator": { "kind": "human voice", "pace": "fast" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "low" },
+  "sfxPerMinute": 10,
+  "hook": {
+    "firstFrame": "split screen: top half real phone footage of a young driver with hands off the wheel; bottom half the presenter pointing at camera; a red label box between them and a small photo inset of a public figure",
+    "firstLine": "A country's viral 'self-driving car' turns out to be a kid steering with his knees",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": null
+  },
+  "shots": [
+    { "start": 0, "end": 4.5, "picture": "split screen: viral clip of a driver with hands off the wheel above, presenter talking below, red label and emoji at the seam", "kind": "mixed", "characters": 2, "camera": "static", "transition": "none", "onScreenText": "Self Driving Car", "figureOnScreen": false, "motion": 2 },
+    { "start": 4.5, "end": 16, "picture": "full-screen viral phone clip: a young man in the driver's seat steering without hands", "kind": "footage", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 16, "end": 20, "picture": "presenter at his desk mic asks whether you've ever wondered how real ones work", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 20, "end": 25.5, "picture": "3D white sedan seen from above, the roof sensor pod highlighted, interior visible", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 25.5, "end": 29.5, "picture": "the car camera's view of a building front and fence, what the camera reads", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 29.5, "end": 30.8, "picture": "realistic 3D pedestrian walking toward camera on a night street, gesturing", "kind": "character", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 30.8, "end": 34, "picture": "close on the sedan's bumper: yellow radar rings pulse out, a red arrow points at the sensor", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 34, "end": 40, "picture": "top-down: the sedan on a road with yellow pulse rings at each corner sensor, a red car behind", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 40, "end": 46, "picture": "top-down close on the roof: the spinning laser unit, beams implied", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 46, "end": 55, "picture": "the sedan drives a night street, small red markers on its sensors merge", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 55, "end": 62, "picture": "from inside the cockpit: a man in yellow on the road flagged by a red arrow, dashboard text and a mini-map", "kind": "mixed", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "LOOKING FOR PATH", "figureOnScreen": false, "motion": 2 },
+    { "start": 62, "end": 68, "picture": "a lab wall of monitors showing a simulated city with a car driving, a heartbeat-style graph beside it", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 68, "end": 72, "picture": "the sensor car parked in a lit studio garage with a checker floor", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 72, "end": 79, "picture": "back to the lab monitors, a big red arrow bounces over the screen with the real road feed", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 }
+  ],
+  "lines": [
+    { "start": 0, "end": 4.5, "words": 13, "job": "hook", "gist": "mocks a country's claim of launching a self-driving car" },
+    { "start": 4.5, "end": 16, "words": 34, "job": "context", "gist": "jokes about the driver honking and turning with his feet, talent galore" },
+    { "start": 16, "end": 20.5, "words": 12, "job": "promise", "gist": "asks if you ever wondered how a real one works" },
+    { "start": 20.5, "end": 29.5, "words": 26, "job": "context", "gist": "it carries a full set of sensors; cameras read lights, signs and text" },
+    { "start": 29.5, "end": 40, "words": 30, "job": "reveal", "gist": "radar throws out radio waves and works in rain and fog" },
+    { "start": 40, "end": 52, "words": 34, "job": "reveal", "gist": "lidar fires laser beams to build a 3D map; all sensors are fused" },
+    { "start": 52, "end": 62, "words": 28, "job": "turn", "gist": "software predicts where each person and car will be next second" },
+    { "start": 62, "end": 72, "words": 28, "job": "turn", "gist": "it was trained first in a fake city inside a computer" },
+    { "start": 72, "end": 79, "words": 20, "job": "payoff", "gist": "only then is it allowed on a real road: a real self-driving car" }
+  ],
+  "ending": { "loops": false, "cta": null, "lastFrame": "lab monitor showing the real road feed under a bouncing red arrow" },
+  "whyItWorks": [
+    "opens on a viral, mockable clip people already shared, so the first second is recognition plus a joke",
+    "the mockery turns into a real how-it-works: each sensor gets its own 3D shot and one visual (rings, beams, text read)",
+    "a red bouncing arrow tells the eye exactly where to look in every busy 3D frame",
+    "cockpit point-of-view with a flagged pedestrian makes the machine's decision feel personal"
+  ]
+}

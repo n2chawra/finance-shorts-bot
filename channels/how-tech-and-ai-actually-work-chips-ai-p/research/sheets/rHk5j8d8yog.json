@@ -1,0 +1,41 @@
+{
+  "_source": "Watched in the built-in browser 2026-11-18 (AI Tech 3.7, 11K subs, 8.6M views). Frames every 0.5 s for 3 s then every 3-5 s. The sound probe was cut short (the tab was taken over by another session after ~18 s), so sound is not measured; the probe's partial numbers hinted at a voice but are not trusted. Our own descriptions.",
+  "durationSec": 40.3,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "normal" },
+  "captions": { "style": "none", "position": "none" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 20,
+  "hook": {
+    "firstFrame": "a photoreal cutaway of a concrete dam with the reservoir in section, glowing blue arrows showing water flowing into the intake",
+    "firstLine": "How a dam turns falling water into electricity",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": null
+  },
+  "shots": [
+    { "start": 0, "end": 4.4, "picture": "cross-section of the dam, reservoir water cut away, blue arrows stream toward the intake; slow push in", "kind": "object", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 4.4, "end": 10, "picture": "intake gate opens, water rushes into a big pipe", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 10, "end": 13.7, "picture": "close on the pipe, foaming water with a yellow flow arrow", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 13.7, "end": 17.1, "picture": "water slams into the turbine wheel", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 17.1, "end": 20, "picture": "cutaway of the shaft rising into the generator ring", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 20, "end": 25.5, "picture": "rapid cuts inside the generator: copper coils, spinning rotor", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 25.5, "end": 30, "picture": "blue electric arcs leap from the coils", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 30, "end": 36, "picture": "the spillway from above, white arrows riding the water", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 36, "end": 40.3, "picture": "glowing gold generator core, then the dam with power lines to a city", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 }
+  ],
+  "lines": [
+    { "start": 0, "end": 10, "words": 25, "job": "hook", "gist": "water held behind the dam is let into the intake" },
+    { "start": 10, "end": 20, "words": 25, "job": "context", "gist": "it falls through a pipe and spins a turbine" },
+    { "start": 20, "end": 30, "words": 25, "job": "reveal", "gist": "the turbine turns magnets inside coils, making electricity" },
+    { "start": 30, "end": 40.3, "words": 25, "job": "payoff", "gist": "the power goes out on lines to the city" }
+  ],
+  "ending": { "loops": false, "cta": null, "lastFrame": "dam with power lines running to a distant city" },
+  "whyItWorks": [
+    "a cutaway of a huge familiar thing in frame one: you see inside it immediately",
+    "follows one thing (the water) through the machine, a new close-up every 3-4 s",
+    "the moment of transformation (arcs of electricity) is the most spectacular shot"
+  ]
+}

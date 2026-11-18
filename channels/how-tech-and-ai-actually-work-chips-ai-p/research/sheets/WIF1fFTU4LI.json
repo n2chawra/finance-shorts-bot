@@ -1,0 +1,55 @@
+{
+  "_source": "Watched in the built-in browser 2026-11-18 (Inside Decoded, 160K views, 1 month old; AI/altered-content label). Frames every 0.5 s for the first 4 s then every 5-6 s; no sound probe (same channel as pBBBNOUxDh4). Shots approximate. Our own descriptions.",
+  "durationSec": 85.2,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "normal" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "low" },
+  "sfxPerMinute": 30,
+  "hook": {
+    "firstFrame": "close over Earth's surface from low orbit, the horizon curving, stars above; a short caption mid-frame",
+    "firstLine": "A satellite network can put internet almost anywhere on Earth",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": 4,
+    "figureSpokenAtSec": 4
+  },
+  "shots": [
+    { "start": 0, "end": 2.5, "picture": "one continuous pull-back from Earth's surface out to the whole globe wrapped in a cloud of satellites", "kind": "map", "characters": 0, "camera": "pull out", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 2.5, "end": 4, "picture": "the globe turning inside its shell of tiny satellites", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 4, "end": 9, "picture": "a framed flat world map card on black, countries coloured by status with a legend", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "~60 COUNTRIES: NO STARLINK YET", "figureOnScreen": true, "motion": 1 },
+    { "start": 9, "end": 14, "picture": "a phone on a wooden table at home, a hand taps it, a lamp behind", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 14, "end": 19, "picture": "the dish on a tiled roof, a thin beam rising from it", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "STARLINK DISH", "figureOnScreen": false, "motion": 1 },
+    { "start": 19, "end": 25, "picture": "satellites in low orbit above Earth's edge", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "~11,000 SATELLITES · ~500 KM UP", "figureOnScreen": true, "motion": 1 },
+    { "start": 25, "end": 31, "picture": "a ground station diorama: white radomes beside a server building, a beam coming in", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "GROUND STATION → SERVERS", "figureOnScreen": false, "motion": 1 },
+    { "start": 31, "end": 37, "picture": "diagram in 3D: house and ground station on floating tiles, beams up to two satellites", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "NOT TO SCALE", "figureOnScreen": false, "motion": 1 },
+    { "start": 37, "end": 43, "picture": "push in past a railing to the dish switching satellites", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 43, "end": 49, "picture": "two satellites over cloud tops linked by a laser line", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 49, "end": 55, "picture": "a countryside terrain tile with fields and villages, a cable path to the coast", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 55, "end": 61, "picture": "a satellite drops a green beam straight into the terrain tile", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 61, "end": 67, "picture": "the terrain tile with a ground station inside, a green beam to it", "kind": "map", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "STATION INSIDE THE BORDER", "figureOnScreen": false, "motion": 1 },
+    { "start": 67, "end": 73, "picture": "a switch cabinet next to a dish at the tile's edge", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "ONE COMPANY HOLDS THE SWITCH", "figureOnScreen": false, "motion": 1 },
+    { "start": 73, "end": 81, "picture": "a framed map card of one country, then another, each with a callout tag", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "THAILAND", "figureOnScreen": false, "motion": 1 },
+    { "start": 81, "end": 85.2, "picture": "the globe again, countries coloured, under a subscribe card", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "Subscribe to Inside Decoded", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 4, "words": 10, "job": "hook", "gist": "the network can reach almost anywhere on Earth" },
+    { "start": 4, "end": 9, "words": 12, "job": "promise", "gist": "yet dozens of countries still do not have it" },
+    { "start": 9, "end": 19, "words": 26, "job": "context", "gist": "a user taps, the signal goes from the phone to the dish" },
+    { "start": 19, "end": 31, "words": 30, "job": "context", "gist": "up to thousands of satellites, then down to a ground station" },
+    { "start": 31, "end": 43, "words": 30, "job": "context", "gist": "a round trip takes milliseconds; the dish keeps switching satellites" },
+    { "start": 43, "end": 49, "words": 14, "job": "turn", "gist": "satellites can also pass data between themselves" },
+    { "start": 49, "end": 61, "words": 30, "job": "stakes", "gist": "that worries governments: the data can skip their cables" },
+    { "start": 61, "end": 73, "words": 30, "job": "reveal", "gist": "countries want a station inside the border; one company holds the switch" },
+    { "start": 73, "end": 81, "words": 20, "job": "payoff", "gist": "so it is not the tech holding it back, it is the rules" },
+    { "start": 81, "end": 85.2, "words": 6, "job": "cta", "gist": "asks to subscribe" }
+  ],
+  "ending": { "loops": true, "cta": "Subscribe card over the final globe", "lastFrame": "the coloured globe from the opening under a subscribe card" },
+  "whyItWorks": [
+    "the first 2.5 s is one continuous camera move from the ground to the whole planet: motion, scale and subject at once",
+    "the paradox (reaches everywhere, yet banned) is set in the first two lines",
+    "each step of the signal's path is its own small diorama, so the route is followed shot by shot",
+    "it ends on the globe it opened on, so the replay starts on the same picture"
+  ]
+}

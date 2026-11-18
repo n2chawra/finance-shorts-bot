@@ -1,0 +1,45 @@
+{
+  "_source": "Branch Education Short 'The Most Expensive Machine Ever Made', watched in the built-in browser 2026-11-18: frames every ~3-5 s, sentence timings and word counts from the transcript panel (not kept; its timestamps are coarse, so line times are approximate). The factory-cost figure shot near 44-48 s was not caught on a frame. Our own descriptions.",
+  "durationSec": 59.9,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "fast" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 10,
+  "hook": {
+    "firstFrame": "a blurred close-up of machinery with a rainbow lens glow, before the first object comes into focus",
+    "firstLine": "Asks which machine in the world costs the most",
+    "question": true,
+    "subjectNamedAtSec": 14,
+    "figureShownAtSec": 4,
+    "figureSpokenAtSec": 4
+  },
+  "shots": [
+    { "start": 0, "end": 1.5, "picture": "out-of-focus machinery with a rainbow glow, racking into focus", "kind": "object", "characters": 0, "camera": "pull out", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 1.5, "end": 6.5, "picture": "a giant excavator on a blue gradient; a stack of banknotes grows below it with a green price counting up", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "$25 Million", "figureOnScreen": true, "motion": 2 },
+    { "start": 6.5, "end": 12, "picture": "a rocket lands in the same spot; the cash stack grows and the price counts on", "kind": "object", "characters": 0, "camera": "static", "transition": "morph", "onScreenText": "$67 Million", "figureOnScreen": true, "motion": 2 },
+    { "start": 12, "end": 16, "picture": "a fighter jet replaces the rocket; the stack grows again", "kind": "object", "characters": 0, "camera": "static", "transition": "morph", "onScreenText": "$100 Million", "figureOnScreen": true, "motion": 2 },
+    { "start": 16, "end": 23, "picture": "the chip-printing machine on a plinth with a crown above it and the biggest stack below", "kind": "object", "characters": 0, "camera": "push in", "transition": "morph", "onScreenText": "EUV Photolithography System $200 Million", "figureOnScreen": true, "motion": 2 },
+    { "start": 23, "end": 29, "picture": "a single-car garage slides next to the machine to compare their sizes", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 29, "end": 34, "picture": "a light beam paints a rainbow chip pattern across a wafer above the machine", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 34, "end": 43, "picture": "the machine cut open with round inset bubbles showing its main modules, each labelled", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "Wafer Stage, Projection Optics, Source", "figureOnScreen": false, "motion": 2 },
+    { "start": 43, "end": 50, "picture": "a whole factory floor from above, rows of machines filling it", "kind": "object", "characters": 0, "camera": "pull out", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 50, "end": 59.9, "picture": "the factory with a framed thumbnail of the long video and a subscribe button over it", "kind": "mixed", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "PRINTING MICROCHIPS", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 3, "words": 9, "job": "hook", "gist": "asks what the costliest machine in the world is" },
+    { "start": 3, "end": 14, "words": 26, "job": "context", "gist": "climbs a price ladder of famous big machines" },
+    { "start": 14, "end": 20, "words": 24, "job": "reveal", "gist": "names the chip-printing machine as the priciest of all" },
+    { "start": 20, "end": 30, "words": 29, "job": "context", "gist": "it is garage-sized and prints a chip's pattern across a wafer" },
+    { "start": 30, "end": 50, "words": 45, "job": "payoff", "gist": "a chip factory holds dozens of them, so the whole plant costs far more" },
+    { "start": 50, "end": 59.9, "words": 18, "job": "cta", "gist": "points to the long video and asks for a subscribe" }
+  ],
+  "ending": { "loops": false, "cta": "watch the full video and subscribe", "lastFrame": "factory floor with a framed long-video thumbnail and a subscribe button" },
+  "whyItWorks": [
+    "a price ladder: each famous machine swaps into the same spot while a cash pile grows beneath it, so the last price lands hardest",
+    "one shared stage (blue gradient, grid floor) keeps every swap readable as a comparison",
+    "size made concrete by sliding an everyday object (a garage) next to the machine",
+    "inset bubbles around a cut-open machine name its parts at once without leaving the shot"
+  ]
+}

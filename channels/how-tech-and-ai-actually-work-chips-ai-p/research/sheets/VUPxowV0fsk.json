@@ -1,0 +1,48 @@
+{
+  "_source": "Branch Education Short 'The Flattest Surface in the World', watched in the built-in browser 2026-11-18: frames every ~3-4 s. No transcript panel on this Short, so line timings and word counts are estimated from the burned-in captions at ~150 words a minute. Our own descriptions.",
+  "durationSec": 56.7,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "normal" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 8,
+  "hook": {
+    "firstFrame": "a small chrome-rimmed round mirror floating at an angle in a black-to-blue gradient",
+    "firstLine": "Asks whether something can be made truly flat",
+    "question": true,
+    "subjectNamedAtSec": 1,
+    "figureShownAtSec": 38,
+    "figureSpokenAtSec": 37
+  },
+  "shots": [
+    { "start": 0, "end": 2.5, "picture": "a round mirror with a polished metal rim turning slowly in a dark gradient", "kind": "object", "characters": 0, "camera": "static", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 2.5, "end": 8, "picture": "extreme close-up sliding along the mirror's polished edge", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 8, "end": 11, "picture": "a large chip-printing machine in a grey hall with a floating title plate", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "EUV Lithography System", "figureOnScreen": false, "motion": 1 },
+    { "start": 11, "end": 18, "picture": "inside the machine: a violet beam lands on a wafer on a moving stage", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 18, "end": 24, "picture": "split view: the machine below, a macro of chip wiring and a beam cone above", "kind": "mixed", "characters": 0, "camera": "static", "transition": "wipe", "onScreenText": "Microchips", "figureOnScreen": false, "motion": 2 },
+    { "start": 24, "end": 37, "picture": "machine cut open; the violet light path zigzags off a chain of mirrors toward the wafer", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 37, "end": 42, "picture": "one curved mirror in close-up with a glowing tolerance number writing beside it", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "0.02 nm", "figureOnScreen": true, "motion": 2 },
+    { "start": 42, "end": 45, "picture": "pull back to the whole machine with the mirror still glowing inside", "kind": "object", "characters": 0, "camera": "pull out", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 45, "end": 50, "picture": "the Earth beside the mirror on a starfield, same size, for a scale comparison", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 50, "end": 54, "picture": "on a pale ground, tiny bumps compared with a person and a stack of objects for height", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 54, "end": 56.7, "picture": "back to the floating round mirror in the dark gradient, as at the start", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 3, "words": 8, "job": "hook", "gist": "asks whether a perfectly flat surface can exist" },
+    { "start": 3, "end": 8, "words": 12, "job": "promise", "gist": "says one does, and teases where it is used" },
+    { "start": 8, "end": 18, "words": 25, "job": "context", "gist": "names the chip-printing machine and what it copies onto wafers" },
+    { "start": 18, "end": 24, "words": 15, "job": "context", "gist": "the patterns are nanometre-scale wiring for microchips" },
+    { "start": 24, "end": 37, "words": 32, "job": "stakes", "gist": "light bounces off a chain of mirrors and any bump would blur the print" },
+    { "start": 37, "end": 45, "words": 20, "job": "reveal", "gist": "gives how tiny the mirrors' allowed bumps are" },
+    { "start": 45, "end": 54, "words": 22, "job": "payoff", "gist": "scales the mirror up to Earth's size to show how small its bumps would be" },
+    { "start": 54, "end": 56.7, "words": 6, "job": "loop", "gist": "returns to calling it the flattest surface made" }
+  ],
+  "ending": { "loops": true, "cta": null, "lastFrame": "the round mirror floating in the dark gradient, the same picture as the first frame" },
+  "whyItWorks": [
+    "opens on one mysterious object and a yes-or-no question, then reveals the machine it lives in",
+    "the light path is drawn as a glowing violet ribbon bouncing between parts of a cut-open machine",
+    "an impossible tolerance is made felt by scaling the part up to the size of the Earth",
+    "ends on the same floating object it opened with, so the Short loops"
+  ]
+}

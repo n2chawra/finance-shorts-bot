@@ -1,0 +1,40 @@
+{
+  "_source": "ColdFusion Short, watched in the built-in browser 2026-11-18: frames at 0/0.5/1/2/3/5 s then every 3-4 s to the end, word timings from YouTube's transcript panel (about 190 words a minute). Our own descriptions. 89K views. Mostly a third party's own phone clip, re-posted with the channel's narration before it.",
+  "durationSec": 75,
+  "artStyle": "mixed",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "normal" },
+  "captions": { "style": "word-by-word", "position": "bottom" },
+  "music": { "present": true, "energy": "low" },
+  "sfxPerMinute": 2,
+  "hook": {
+    "firstFrame": "plain black frame; a white news-headline card fades in at 1 s",
+    "firstLine": "AI that can copy any sound lets scammers claim others' songs.",
+    "question": false,
+    "subjectNamedAtSec": 18,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": null
+  },
+  "shots": [
+    { "start": 0, "end": 1, "picture": "black frame", "kind": "text card", "characters": 0, "camera": "static", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 0 },
+    { "start": 1, "end": 4, "picture": "a white news-headline card fades in near the top on black", "kind": "text card", "characters": 0, "camera": "static", "transition": "fade", "onScreenText": "headline about AI taking music", "figureOnScreen": false, "motion": 1 },
+    { "start": 4, "end": 16, "picture": "the same headline card, lower on the black frame, still; voice only", "kind": "text card", "characters": 0, "camera": "static", "transition": "none", "onScreenText": "headline", "figureOnScreen": false, "motion": 0 },
+    { "start": 16, "end": 25, "picture": "a musician's own selfie clip in a forest playing a banjo; a white title box over her chest; word captions below", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "fade", "onScreenText": "title box: AI took her music, then blocked her", "figureOnScreen": false, "motion": 1 },
+    { "start": 25, "end": 32, "picture": "cross-fade into a second clip of the musician indoors", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "fade", "onScreenText": "caption words", "figureOnScreen": false, "motion": 1 },
+    { "start": 32, "end": 75, "picture": "the musician's close-up selfie telling her story, captions word by word with one green or yellow word", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "caption words", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 8, "words": 28, "job": "hook", "gist": "AI voice copying lets fraudsters pass off others' songs as theirs" },
+    { "start": 8, "end": 16, "words": 25, "job": "promise", "gist": "here is one case where the artist was powerless; tell me your view" },
+    { "start": 16, "end": 32, "words": 40, "job": "context", "gist": "a folk singer's songs were copied by AI, then her originals got claimed" },
+    { "start": 32, "end": 46, "words": 40, "job": "stakes", "gist": "in her words: a firm uploaded AI copies trained on her videos" },
+    { "start": 46, "end": 63, "words": 50, "job": "turn", "gist": "the distributor then claimed her own videos, so her income stopped" },
+    { "start": 63, "end": 75, "words": 45, "job": "payoff", "gist": "she earns nothing from playing her own family's folk songs" }
+  ],
+  "ending": { "loops": false, "cta": "asks viewers what they think (said at 12 s)", "lastFrame": "the musician mid-sentence" },
+  "whyItWorks": [
+    "A victim telling it in her own words carries the emotion; the channel only frames it.",
+    "The absurd turn (the copier claims the original) is the payoff.",
+    "Weak opening: 16 s of a still headline on black before any real picture."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "_source": "Branch Education Short 'Printing 92 GPU Chips in Just 18 Seconds!', watched in the built-in browser 2026-11-18: frames every ~5 s, sentence timings and word counts from the transcript panel (not kept). Our own descriptions.",
+  "durationSec": 59,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "fast" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 10,
+  "hook": {
+    "firstFrame": "a big chip-printing machine in a dark violet showroom on a glossy reflective floor",
+    "firstLine": "This machine copies one GPU pattern dozens of times across a wafer",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": 4
+  },
+  "shots": [
+    { "start": 0, "end": 1.5, "picture": "the machine in a dark violet showroom, glass-walled, on a reflective floor", "kind": "object", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 1.5, "end": 4, "picture": "dive through the machine's wall: violet light zigzags between mirrors inside", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 4, "end": 12, "picture": "a violet beam on a wafer; a grid of chip squares lights up orange one by one", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 12, "end": 22, "picture": "the wafer stage sliding fast across a perforated table under the light", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 22, "end": 31, "picture": "table cut open: a checkerboard of red and blue magnets under the stage; motor coils lift out", "kind": "object", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 31, "end": 38, "picture": "a round magnifier bubble over the stage with a scale bar inside", "kind": "object", "characters": 0, "camera": "static", "transition": "none", "onScreenText": "1 µm", "figureOnScreen": true, "motion": 2 },
+    { "start": 38, "end": 44, "picture": "magnifier shows the pattern shifting into place as the stage adjusts", "kind": "object", "characters": 0, "camera": "static", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 44, "end": 50, "picture": "robot arms swap wafers between the stage and a side chamber", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 50, "end": 56, "picture": "pull back out to the machine in its showroom at dusk, chips floating up", "kind": "object", "characters": 0, "camera": "pull out", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 56, "end": 59, "picture": "the machine with a 24-hour icon above and a subscribe pill, as in the first frame", "kind": "object", "characters": 0, "camera": "static", "transition": "none", "onScreenText": "24 HOURS", "figureOnScreen": true, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 18, "words": 37, "job": "hook", "gist": "the machine prints one chip pattern dozens of times per wafer in seconds, on a gliding stage" },
+    { "start": 18, "end": 32, "words": 24, "job": "context", "gist": "motors under the stage float and move it fast with micrometre precision" },
+    { "start": 32, "end": 38, "words": 18, "job": "turn", "gist": "smaller motors inside make nanometre corrections" },
+    { "start": 38, "end": 46, "words": 27, "job": "context", "gist": "robot arms swap the wafers in and out through an airlock" },
+    { "start": 46, "end": 59, "words": 19, "job": "loop", "gist": "the handoffs keep it printing all day, and as a result..." }
+  ],
+  "ending": { "loops": true, "cta": "subscribe pill", "lastFrame": "the machine in its showroom with a 24-hour icon; the last line runs into the first" },
+  "whyItWorks": [
+    "the machine's walls disappear as the camera flies in, so its insides are shown working, not described",
+    "a magnifier bubble over the moving part shows the micro scale without leaving the wide shot",
+    "the last sentence is cut mid-thought and the last frame is the first frame, so the Short loops",
+    "hidden mechanisms are coloured by job (red and blue magnets, violet light) against neutral grey metal"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "_source": "Asianometry long video, watched in the built-in browser 2026-11-18: frame mosaics (0-15 s dense, 20-90 s every 5-10 s, then every ~2-4 min; some mid-video samples came back black and are left out), 0.5 s burst at 38-49 s, word timings and chapter headings from YouTube's transcript panel (about 135 words a minute, 18 chapters). Our own descriptions; not sound-probed. Shots after 90 s are spot samples.",
+  "durationSec": 2242,
+  "artStyle": "mixed",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "slow" },
+  "captions": { "style": "none", "position": "none" },
+  "music": { "present": true, "energy": "low" },
+  "sfxPerMinute": 0,
+  "hook": {
+    "firstFrame": "the channel's title card: an old painted city map, a green lower banner with the channel name and tagline",
+    "firstLine": "A state TV award names the company chairman a top economic figure.",
+    "question": false,
+    "subjectNamedAtSec": 2,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": 15
+  },
+  "shots": [
+    { "start": 0, "end": 4.5, "picture": "channel card: old illustrated map of a river city, green banner with name and tagline, avatar", "kind": "map", "characters": 0, "camera": "static", "transition": "none", "onScreenText": "channel name + tagline", "figureOnScreen": false, "motion": 0 },
+    { "start": 4.5, "end": 20, "picture": "archive photo of the chairman with a trophy centred on black, caption line above, source credit bottom-left", "kind": "photo", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "caption + source", "figureOnScreen": false, "motion": 0 },
+    { "start": 20, "end": 28, "picture": "a state-media web article centred on black with source line", "kind": "text card", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "source", "figureOnScreen": false, "motion": 0 },
+    { "start": 28, "end": 37, "picture": "close footage of an old lathe's dials and nameplate", "kind": "footage", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 37, "end": 42, "picture": "factory footage, the video title in stacked green highlight boxes bottom-left, channel badge top-right", "kind": "footage", "characters": 2, "camera": "static", "transition": "cut", "onScreenText": "video title", "figureOnScreen": false, "motion": 1 },
+    { "start": 42, "end": 45, "picture": "membership plug page (pale), cross-fading out", "kind": "text card", "characters": 0, "camera": "static", "transition": "fade", "onScreenText": "membership", "figureOnScreen": false, "motion": 0 },
+    { "start": 45, "end": 52, "picture": "chapter card: one white word on a dimmed aerial view", "kind": "text card", "characters": 0, "camera": "static", "transition": "fade", "onScreenText": "Beginnings", "figureOnScreen": false, "motion": 0 },
+    { "start": 52, "end": 63, "picture": "satellite view of the city with a small label top-left and source line", "kind": "map", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "place label", "figureOnScreen": false, "motion": 0 },
+    { "start": 63, "end": 70, "picture": "1930s street photo centred on black with a title above and source below", "kind": "photo", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "photo title", "figureOnScreen": false, "motion": 0 },
+    { "start": 70, "end": 88, "picture": "full-frame photo of an old palace gate, blue label top-left", "kind": "photo", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "place label", "figureOnScreen": false, "motion": 0 },
+    { "start": 88, "end": 150, "picture": "1940s factory photo centred on black, then workshop footage", "kind": "photo", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "photo title", "figureOnScreen": false, "motion": 0 },
+    { "start": 150, "end": 1200, "picture": "archive photos, footage of machines, company logos, a mid-roll sponsor (spot-sampled)", "kind": "mixed", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "captions + sources", "figureOnScreen": false, "motion": 0 },
+    { "start": 1200, "end": 1950, "picture": "city skyline photo, old factory photos, a factory in a valley, each labelled top-right", "kind": "photo", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "place label", "figureOnScreen": false, "motion": 0 },
+    { "start": 1950, "end": 2230, "picture": "a bond prospectus page centred on black with source line", "kind": "text card", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "source", "figureOnScreen": false, "motion": 0 },
+    { "start": 2230, "end": 2242, "picture": "end card: 'for digging deeper' reading list beside a small photo", "kind": "text card", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "reading list", "figureOnScreen": false, "motion": 0 }
+  ],
+  "lines": [
+    { "start": 2, "end": 15, "words": 30, "job": "hook", "gist": "the chairman is honoured on state TV as a top economic figure" },
+    { "start": 15, "end": 25, "words": 22, "job": "context", "gist": "praised for turning a failing firm into a multi-billion giant" },
+    { "start": 25, "end": 34, "words": 22, "job": "turn", "gist": "only seemingly: the firm was already sliding toward insolvency" },
+    { "start": 34, "end": 40, "words": 14, "job": "promise", "gist": "this video traces how debt brought the giant down" },
+    { "start": 40, "end": 88, "words": 100, "job": "context", "gist": "chapter one: the city, its resources and warlord-era arms factories" }
+  ],
+  "ending": { "loops": false, "cta": "reading list, membership", "lastFrame": "reading list card" },
+  "whyItWorks": [
+    "Opens on a moment of praise, then undercuts it in one line, and states the promise by 34 s.",
+    "Named chapters every 2 minutes make a 37-minute essay easy to follow.",
+    "Every picture is evidence with a caption and source line, which builds trust at a slow, calm pace."
+  ]
+}

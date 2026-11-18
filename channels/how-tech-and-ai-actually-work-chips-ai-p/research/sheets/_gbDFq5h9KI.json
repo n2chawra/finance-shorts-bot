@@ -1,0 +1,49 @@
+{
+  "_source": "Branch Education Short 'How GPUs Are Printed With Light', watched in the built-in browser 2026-11-18: frames every ~3 s plus a 0.3 s burst at 31.7-32.7 s, sentence timings from the transcript panel (word counts only), sound measured with the yt-style probe over the whole Short. Our own descriptions.",
+  "durationSec": 58.6,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "normal" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 12,
+  "hook": {
+    "firstFrame": "a graphics card floating and turning slowly on a grey-blue gradient, studio-lit",
+    "firstLine": "Inside this graphics card sits a chip built from billions of transistors",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": 8.5,
+    "figureSpokenAtSec": 5
+  },
+  "shots": [
+    { "start": 0, "end": 2.8, "picture": "graphics card floating and rotating on a soft grey-blue gradient, rim-lit", "kind": "object", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 2.8, "end": 8, "picture": "the bare GPU package lifted out of the card, close up, blurred bright board behind", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 8, "end": 11, "picture": "chip surface glowing rainbow; a giant transistor model hovers above it on a cone of light; neon count above", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "28 300 000 000 Transistors", "figureOnScreen": true, "motion": 2 },
+    { "start": 11, "end": 16.2, "picture": "macro of gold wire layers stacked like a city grid, red particles drifting", "kind": "object", "characters": 0, "camera": "pan", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 16.2, "end": 26.8, "picture": "a silicon wafer tilted on a dark grid floor; a glowing arc measures its width", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "300 mm", "figureOnScreen": true, "motion": 1 },
+    { "start": 26.8, "end": 31.6, "picture": "a huge machine in a dark showroom; a neon handwritten price draws on above it", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "$200 000 000", "figureOnScreen": true, "motion": 2 },
+    { "start": 31.6, "end": 34.4, "picture": "the camera dives through the machine's open side into its insides", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 3 },
+    { "start": 34.4, "end": 41.3, "picture": "violet light beam falling onto a wafer on a moving stage inside the machine", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 41.3, "end": 44, "picture": "the wafer stage with a ring timer counting up beside it", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "0.18", "figureOnScreen": true, "motion": 2 },
+    { "start": 44, "end": 46.2, "picture": "pull back out of the machine; a neon number starts drawing", "kind": "object", "characters": 0, "camera": "pull out", "transition": "zoom", "onScreenText": "4,800", "figureOnScreen": true, "motion": 3 },
+    { "start": 46.2, "end": 52.6, "picture": "a tall stack of wafers on a starfield, chips spilling off the top", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 52.6, "end": 55.4, "picture": "the wafer stack again with a small subscribe badge popping in above", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 55.4, "end": 58.6, "picture": "a phone frame playing the channel's long video, subscribe badge above", "kind": "mixed", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "EUV", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 8, "words": 17, "job": "hook", "gist": "points inside a graphics card at its chip and its transistor count" },
+    { "start": 8, "end": 15, "words": 18, "job": "context", "gist": "zooms to show the transistors with wiring stacked on top" },
+    { "start": 15, "end": 21, "words": 19, "job": "context", "gist": "the chip was made on a big wafer alongside dozens of others" },
+    { "start": 21, "end": 28, "words": 22, "job": "stakes", "gist": "names the very expensive light-printing machine that patterns it" },
+    { "start": 28, "end": 41, "words": 27, "job": "turn", "gist": "the machine prints one layer of every chip on the wafer in seconds" },
+    { "start": 41, "end": 49, "words": 20, "job": "payoff", "gist": "so one machine turns out about half a million chips a day" },
+    { "start": 49, "end": 58.6, "words": 8, "job": "cta", "gist": "points to the long video on the topic and asks for a subscribe" }
+  ],
+  "ending": { "loops": false, "cta": "watch the long video on EUV and subscribe", "lastFrame": "a phone frame playing the long video with a subscribe badge" },
+  "whyItWorks": [
+    "starts on a thing everyone recognises (a graphics card) and dives inward one scale at a time: card, chip, transistors, wafer, machine",
+    "every big figure is drawn as a glowing neon handwritten number in the 3D scene, not a flat caption card",
+    "the camera flies through the side of a machine into its working insides in under a second",
+    "studio-lit products on soft gradients and dark reflective floors keep every object readable on a phone"
+  ]
+}

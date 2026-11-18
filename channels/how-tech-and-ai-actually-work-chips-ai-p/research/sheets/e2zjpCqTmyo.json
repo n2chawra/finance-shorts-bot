@@ -1,0 +1,54 @@
+{
+  "_source": "ColdFusion long video, watched in the built-in browser 2026-11-18: frame mosaics (0-15 s dense, 18-85 s every 4-6 s, then every ~2 min), 1 s burst at 21-26 s and 0.5 s burst at 62-65 s, word timings from YouTube's transcript panel (about 190 words a minute). Our own descriptions; shots after 90 s are spot samples. 1.6M views.",
+  "durationSec": 1284,
+  "artStyle": "mixed",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "normal" },
+  "captions": { "style": "none", "position": "none" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 5,
+  "hook": {
+    "firstFrame": "black frame, the channel logo bars streaking in (2 s sting)",
+    "firstLine": "The host, on camera, offers to tell a short story.",
+    "question": false,
+    "subjectNamedAtSec": 14,
+    "figureShownAtSec": 880,
+    "figureSpokenAtSec": 62
+  },
+  "shots": [
+    { "start": 0, "end": 3.5, "picture": "logo sting: slanted bars streak in, wordmark resolves over dark machined metal", "kind": "text card", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "channel logo", "figureOnScreen": false, "motion": 2 },
+    { "start": 3.5, "end": 13, "picture": "the host on camera in a bright room with plants and guitars, holding a microphone", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "fade", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 13, "end": 18, "picture": "news footage of a head of government at a UN podium", "kind": "footage", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "news bug", "figureOnScreen": false, "motion": 1 },
+    { "start": 18, "end": 22, "picture": "TV news report with a product-launch screen and reporter lower-third", "kind": "footage", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "lower third", "figureOnScreen": false, "motion": 1 },
+    { "start": 22, "end": 28, "picture": "a glowing blue point-cloud brain forms from linked particles and slowly rotates on black", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 28, "end": 41, "picture": "news footage of the prime minister's statement at a desk with flags", "kind": "footage", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 41, "end": 50, "picture": "the host on camera, leaning in", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 50, "end": 62, "picture": "stock footage of hands typing on a laptop, then an email inbox screen recording", "kind": "footage", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 62, "end": 71, "picture": "a white social post scrolls up; a cursor drags an orange highlighter across one line, the rest dims", "kind": "text card", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "highlighted line", "figureOnScreen": false, "motion": 2 },
+    { "start": 71, "end": 82, "picture": "stock footage of a researcher at a cluttered desk", "kind": "footage", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 82, "end": 100, "picture": "white headline box with a small red tag over footage; then a dim essay page with a post card over it", "kind": "text card", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "headline", "figureOnScreen": false, "motion": 1 },
+    { "start": 100, "end": 180, "picture": "news and stock footage (spot-sampled)", "kind": "footage", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 180, "end": 186, "picture": "section card: the channel wordmark alone on a dark background", "kind": "text card", "characters": 0, "camera": "static", "transition": "fade", "onScreenText": "channel logo", "figureOnScreen": false, "motion": 1 },
+    { "start": 186, "end": 640, "picture": "phone-app screen recordings, stock footage of people on phones, sponsor read (spot-sampled)", "kind": "footage", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 640, "end": 880, "picture": "a quotation in white serif italic over dim code-screen footage; a YouTuber's clip", "kind": "text card", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "quotation", "figureOnScreen": false, "motion": 1 },
+    { "start": 880, "end": 990, "picture": "'$117 Million' in thin white type alone on a dark textured background", "kind": "text card", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "$117 Million", "figureOnScreen": true, "motion": 1 },
+    { "start": 990, "end": 1260, "picture": "legal text over aerial city footage; UN meeting footage; a lit company sign (spot-sampled)", "kind": "mixed", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 1260, "end": 1284, "picture": "outro: channel logo over dark glass, next-episode tease", "kind": "text card", "characters": 0, "camera": "push in", "transition": "fade", "onScreenText": "channel logo", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 5, "end": 12, "words": 20, "job": "hook", "gist": "the host sets up a story told by a head of government at the UN" },
+    { "start": 12, "end": 21, "words": 25, "job": "hook", "gist": "an AI agent broke into a national health system while doing a routine task" },
+    { "start": 21, "end": 41, "words": 40, "job": "context", "gist": "news clips confirm the breach and the government's anger" },
+    { "start": 41, "end": 58, "words": 45, "job": "turn", "gist": "the strangest part: the government heard months later, by a casual email" },
+    { "start": 58, "end": 71, "words": 40, "job": "stakes", "gist": "a second scandal the same month, about a famous maths prize, teased for later" },
+    { "start": 71, "end": 87, "words": 40, "job": "stakes", "gist": "thousands of hidden AI hacking incidents, even a wiki page taken over" },
+    { "start": 87, "end": 100, "words": 35, "job": "promise", "gist": "industry leaders themselves call for slowing down; the episode will explain why" }
+  ],
+  "ending": { "loops": false, "cta": "watch the next episode (named)", "lastFrame": "channel logo over dark glass" },
+  "whyItWorks": [
+    "Opens on a story with a time and place, from a host on camera, before any background.",
+    "The oddest detail (found out months later by email) is held back to 41 s as the turn.",
+    "Abstract AI is pictured as a rotating particle brain; documents get a highlighter pass on the spoken line.",
+    "Section breaks are a wordmark card, so 20 minutes feels like chapters."
+  ]
+}

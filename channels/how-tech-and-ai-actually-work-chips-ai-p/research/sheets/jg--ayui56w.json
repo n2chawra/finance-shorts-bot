@@ -1,0 +1,48 @@
+{
+  "_source": "Watched in the built-in browser 2026-11-18 (Inside Decoded, 48K views, 2 weeks old; AI/altered-content label). Frames every 0.5 s for the first 4 s then every 5-8 s; no sound probe. Shots approximate. Our own descriptions.",
+  "durationSec": 98.5,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": { "kind": "AI voice", "pace": "normal" },
+  "captions": { "style": "phrase", "position": "middle" },
+  "music": { "present": true, "energy": "low" },
+  "sfxPerMinute": 30,
+  "hook": {
+    "firstFrame": "a glossy black folding phone lying open on a dark studio floor with a faint grid, a bright light streak across its screen",
+    "firstLine": "Foldable phones have been around for years",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": 42,
+    "figureSpokenAtSec": 42
+  },
+  "shots": [
+    { "start": 0, "end": 8, "picture": "glossy folding phone on a dark grid floor, slow push-in until it fills the frame; a tiny image-credit pill top-right", "kind": "object", "characters": 0, "camera": "push in", "transition": "none", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 8, "end": 13, "picture": "a bluer new phone head-on, a thin leader line to a name tag", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "iPhone Duo", "figureOnScreen": false, "motion": 1 },
+    { "start": 13, "end": 18, "picture": "close on the bright screen surface", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 18, "end": 24, "picture": "cross-section slab of screen layers seen edge-on", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 24, "end": 30, "picture": "the layered panel bent into a tight U, an 'illustrative' pill", "kind": "object", "characters": 0, "camera": "static", "transition": "morph", "onScreenText": "ILLUSTRATIVE", "figureOnScreen": false, "motion": 2 },
+    { "start": 30, "end": 42, "picture": "close on a hinge mechanism, the panel curling around it", "kind": "object", "characters": 0, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 42, "end": 50, "picture": "exploded view: dozens of hinge parts floating in rows", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "", "figureOnScreen": true, "motion": 2 },
+    { "start": 50, "end": 58, "picture": "close on the hinge's curved channel", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 58, "end": 66, "picture": "stacked layers of the panel separating upward from the phone", "kind": "object", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 66, "end": 74, "picture": "macro texture of tiny bumps on the screen surface", "kind": "object", "characters": 0, "camera": "push in", "transition": "zoom", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 74, "end": 90, "picture": "the phone open on the grid, a light sweeping over the fold line", "kind": "object", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 90, "end": 98.5, "picture": "hinge with a support-bar label, then the closed phone on the grid", "kind": "object", "characters": 0, "camera": "pull out", "transition": "cut", "onScreenText": "Support bar", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 8, "words": 16, "job": "hook", "gist": "folding phones have existed for years and you can still see the crease" },
+    { "start": 8, "end": 18, "words": 24, "job": "promise", "gist": "the new one hides it; within hours people looked for it" },
+    { "start": 18, "end": 30, "words": 28, "job": "context", "gist": "why screens crease: layers stretch when folded tight" },
+    { "start": 30, "end": 50, "words": 48, "job": "reveal", "gist": "the hinge curls the screen into a teardrop and has over a hundred parts" },
+    { "start": 50, "end": 66, "words": 40, "job": "reveal", "gist": "a wider curve and support under the panel mean less stretch" },
+    { "start": 66, "end": 82, "words": 38, "job": "turn", "gist": "tiny bumps still form; with time it may get worse" },
+    { "start": 82, "end": 98.5, "words": 36, "job": "payoff", "gist": "so the crease is still there, just hard to see" }
+  ],
+  "ending": { "loops": true, "cta": null, "lastFrame": "the phone on the dark grid floor, as at the start" },
+  "whyItWorks": [
+    "a premium product-render look: glossy object, dark grid floor, one moving light streak",
+    "the hidden part is shown by cutaways and exploded views, never by a diagram on a card",
+    "the title states a surprising truth the viewer can check on their own phone",
+    "small credit pills (image source, illustrative) keep it trustworthy without clutter"
+  ]
+}
