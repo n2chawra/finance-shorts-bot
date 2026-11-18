@@ -31,6 +31,7 @@ from renderer.engine.audio import (SR, Mixer, integrated_lufs, sfx_beep, sfx_boo
                                    sfx_thud, sfx_tick, sfx_whoosh)
 from renderer.engine.music import gain_curve, make_bed
 from renderer.engine.formatting import LEGACY_CURRENCY, Money, fact_value, money_for, month_year
+from renderer.engine import sfx_sets
 from renderer.engine.style import resolve_style
 from renderer.models import maths
 
@@ -676,7 +677,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                                  f"({', '.join(own_sound.get('sfx', []))}; channel.json sound.sfx)")
             on_voice = speech[min(len(speech) - 1, max(0, int(at*SR)))] > 0
             gain = s.get("gain", 0.6)*SFX_BUS*(SFX_UNDER_VOICE if on_voice else 1.0)
-            sfx_m.place_out(SFX[s["kind"]](mixer.rng), at, gain, s.get("pan", 0.0))
+            sound = SFX[s["kind"]](mixer.rng) if own_sound else \
+                sfx_sets.render(s["kind"], mixer.rng, style.sfx, style.key, lambda k, r: SFX[k](r))
+            sfx_m.place_out(sound, at, gain, s.get("pan", 0.0))
     for start, line, _ in lines:
         if line.voice != "estimate":
             x = line.samples
@@ -705,8 +708,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                     "cast": [hexc(c) for c in p.cast]},
         "figures": figures, "beats": timeline_beats,
         "voices": {"narrator": narrator, **CAST_VOICES}, "speed": speed, "tempo": tempo,
-        "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm},
+        "music": {"genre": style.genre, "key": style.key, "bpm": style.bpm, **({} if own_sound else {"sfx": style.sfx})},
         "style": {"palette": p.name, "genre": style.genre, "key": style.key, "bpm": style.bpm,
+                  **({} if own_sound else {"sfx": style.sfx}),
                   **({"look": (script.get("style") or {})["look"]} if (script.get("style") or {}).get("look") else {})},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems, "lufs": lufs,
                   **({"music_under_voice_db": under} if under is not None else {})},
