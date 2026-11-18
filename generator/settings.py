@@ -38,6 +38,22 @@ CHANNEL_KEYS = ("uploadTimes", "trendUploadTimes", "shortEveryDays", "dailyVideo
                 "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused")
 
 
+def pack_lengths(root: Path = ROOT) -> dict:
+    """The current channel's own video lengths from its pack (channels/<channel>/channel.json `length`:
+    {"short": [min, max], "long": [min, max]} in seconds). A channel never inherits another's lengths
+    (owner, 2026-11-18): config/settings.json's are Paisa Panchayat's, which has no pack. The channel's
+    own dashboard setting (config/channels.json) still overrides these."""
+    from .channels import channel_root   # late: channels reads the layout file
+    f = channel_root(root=root) / "channel.json"
+    length = (json.loads(f.read_text(encoding="utf-8")).get("length") if f.is_file() else None) or {}
+    out = {}
+    for fmt, (lo, hi) in (("short", ("lengthMinSec", "lengthMaxSec")), ("long", ("longLengthMinSec", "longLengthMaxSec"))):
+        r = length.get(fmt)
+        if isinstance(r, list) and len(r) == 2:
+            out[lo], out[hi] = int(r[0]), int(r[1])
+    return out
+
+
 def load(root: Path = ROOT) -> dict:
     """Defaults overlaid with config/settings.json (one level deep for nested objects), then with the
     current channel's entry in config/channels.json: its own settings and backlog. A channel that
@@ -46,6 +62,7 @@ def load(root: Path = ROOT) -> dict:
     stored = json.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
     out = {**DEFAULTS, **stored}
     out["templateWork"] = {**DEFAULTS["templateWork"], **stored.get("templateWork", {})}
+    out.update(pack_lengths(root))   # the channel's own lengths; its dashboard setting (below) still wins
     ch_file = root / "config" / "channels.json"
     if ch_file.is_file():
         from .channels import current   # late: channels reads the layout file

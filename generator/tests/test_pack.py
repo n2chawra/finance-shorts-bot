@@ -38,7 +38,7 @@ def test_a_complete_pack_passes(tmp_path, monkeypatch):
     pack.scaffold("space-facts", "Space Facts", root=tmp_path)
     d = tmp_path / "channels" / "space-facts"
     j = json.loads((d / "channel.json").read_text(encoding="utf-8"))
-    (d / "channel.json").write_text(json.dumps({**j, "disclaimer": "Facts from NASA. Images: NASA, public domain."}), encoding="utf-8")
+    (d / "channel.json").write_text(json.dumps({**j, "disclaimer": "Facts from NASA. Images: NASA, public domain.", "length": {"short": [45, 60]}}), encoding="utf-8")
     (d / "profile.md").write_text("# Space Facts\n\n" + "word " * 160, encoding="utf-8")
     fmt = lambda i, tier: {"id": i, "format": "short", "name": i, "hook": "h", "beats": "b", "tier": tier,
                            "examples": [{"title": "a hit", "views": 2_000_000, "url": "https://youtube.com/watch?v=x"}]}
@@ -90,3 +90,20 @@ def test_a_channels_own_sound_block_is_checked():
                        ({"preRevealDrop": {"db": 6, "sec": 2}}, "preRevealDrop"), ({"preRevealDrop": {"db": -20}}, "preRevealDrop"),
                        ({"genres": ["dubstep"]}, "sound.genres")):
         assert any(words in p for p in pack.pack_problems({**pack.DEFAULTS, "sound": {**good, **bad}})), bad
+
+
+def test_a_channel_has_its_own_length_never_another_channels(tmp_path, monkeypatch):
+    """owner, 2026-11-18: a channel's lengths come from its own pack, never from config/settings.json
+    (Paisa Panchayat's); its own dashboard setting still wins"""
+    from generator import settings
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "settings.json").write_text(json.dumps({"lengthMinSec": 20, "lengthMaxSec": 35}), encoding="utf-8")
+    d = tmp_path / "channels" / "tech"
+    d.mkdir(parents=True)
+    (d / "channel.json").write_text(json.dumps({"length": {"short": [45, 60], "long": [720, 900]}}), encoding="utf-8")
+    monkeypatch.setenv("CHANNEL", "tech")
+    s = settings.load(tmp_path)
+    assert (s["lengthMinSec"], s["lengthMaxSec"], s["longLengthMinSec"], s["longLengthMaxSec"]) == (45, 60, 720, 900)
+    (tmp_path / "config" / "channels.json").write_text(json.dumps({"channels": {"tech": {"status": "active", "settings": {"lengthMaxSec": 55}}}}), encoding="utf-8")
+    assert settings.load(tmp_path)["lengthMaxSec"] == 55
+    assert pack.pack_problems({**pack.DEFAULTS, "length": {"short": [60, 45]}})

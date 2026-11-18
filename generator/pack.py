@@ -99,6 +99,11 @@ def pack_problems(p: dict) -> list[str]:
                                  or any(not isinstance(drop.get(k, 1), (int, float)) or drop.get(k, 1) <= 0 for k in ("sec", "shortSec"))
                                  or "sec" not in drop):
             out.append("sound.preRevealDrop is {db (< 0), sec, shortSec (seconds, > 0)}")
+    length = p.get("length")   # {"short": [min, max], "long": [min, max]} seconds: the channel's own, never another's
+    if length is not None and (not isinstance(length, dict) or any(
+            k not in ("short", "long") or not isinstance(v, list) or len(v) != 2
+            or not all(isinstance(x, (int, float)) for x in v) or not 0 < v[0] < v[1] for k, v in length.items() if not k.startswith("_"))):
+        out.append('length is {"short": [min, max], "long": [min, max]} in seconds, min < max')
     if not str(p.get("uploadCategory") or "").isdigit():
         out.append("uploadCategory must be a YouTube category id (22 People & Blogs, 27 Education, 28 Science & Technology…)")
     return out
@@ -119,6 +124,8 @@ def check(slug: str, root: Path = ROOT) -> list[str]:
     out = [f"channel.json: {x}" for x in pack_problems(load(slug, root))]
     if not (d / "channel.json").is_file():
         out.append("channel.json is missing")
+    if not ((_json(d / "channel.json", {}) or {}).get("length") or {}).get("short"):
+        out.append('channel.json: length {"short": [min, max]} (and "long" when it makes long videos): the channel’s own, from its research')
     profile = (d / "profile.md").read_text(encoding="utf-8") if (d / "profile.md").is_file() else ""
     if len(profile.split()) < 150 or "TODO" in profile:
         out.append("profile.md: who the channel is for, what it covers, where facts come from (150+ words, no TODO)")

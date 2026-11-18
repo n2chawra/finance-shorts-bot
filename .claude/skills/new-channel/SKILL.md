@@ -165,7 +165,11 @@ Scaffold makes the folders and starting files (never overwrites). Then fill, fro
   money maths, `simple` for counts and dates, `none` when the niche's hits show no computed figures);
   the **disclaimer** the niche needs (a fiction channel says the story is made up; health, legal and
   money niches say it is not advice); `stories` (`true` or `fiction`, from what the niche's hits are);
-  `look.cast` (`none` when `style.json` says no cast, else the shared studio cast); `uploadCategory`.
+  `look.cast` (`none` when `style.json` says no cast, else the shared studio cast); `uploadCategory`;
+  **`length`** `{"short": [min, max], "long": [min, max]}` in seconds from `style.json` and the scan's
+  length bands. A channel never inherits another's length (owner, 2026-11-18): `config/settings.json`'s
+  are Paisa Panchayat's; `generator/settings.py` reads the pack's, and the channel's own dashboard
+  setting still overrides them.
 - **`profile.md`**: who it is for, what it covers and never covers, where facts come from, the rules of
   its field, the risks from the verdict turned into rules. 150+ words.
 - **`research/formats.json`**: the niche's formats from `families.json` (each: id, format short|long,
