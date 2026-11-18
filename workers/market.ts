@@ -22,7 +22,7 @@ import { existsSync } from "node:fs";
 import { ChannelList, CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket, subscribersOf } from "./lib/market.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
 import { accessToken } from "./lib/youtube.ts";
-import { cpath } from "./lib/channels.ts";
+import { cpath, layout } from "./lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const DAY_MS = 86_400_000;
@@ -88,7 +88,8 @@ async function comments(token: string, now: Date) {
   const prisma = new PrismaClient();
   try {
     const uploads = await prisma.upload.findMany({
-      where: { youtubeId: { not: null }, video: { deletedAt: null }, publishAt: { gte: new Date(now.getTime() - 14 * DAY_MS), lte: now } },   // 14 days: each video costs a unit
+      // channel #1's videos only: the market scan and its config are channel #1's (another channel's comments would mix in)
+      where: { youtubeId: { not: null }, video: { deletedAt: null, channelId: layout().default }, publishAt: { gte: new Date(now.getTime() - 14 * DAY_MS), lte: now } },   // 14 days: each video costs a unit
       include: { video: { select: { id: true, title: true, format: true } } },
     });
     const out = [];

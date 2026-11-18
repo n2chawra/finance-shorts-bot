@@ -6,14 +6,17 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, type Channel } from "@prisma/client";
 
 import { TOKEN_FIX, type Notice, type WorkflowRun, notify, resolve, resolveOthers, workflowNotices } from "./lib/notify.ts";
 import { istHour, istWeekday } from "./lib/ist-clock.ts";
 import { istDay, missedSlots, istTime } from "./lib/publishing.ts";
 import { type ObservedRun, clusterRuns, isScheduled, scheduleOverlap, videoRunId, videoSteps } from "./lib/schedule.ts";
-import { loadSettings } from "./lib/settings.ts";
-import { youtubeConfigured } from "./lib/uploads.ts";
+import { loadSettings, type Settings } from "./lib/settings.ts";
+import { youtubeClientConfigured } from "./lib/uploads.ts";
+import { layout } from "./lib/channels.ts";
+import { activeChannels, channelSettings, tokenOf } from "./lib/channel-auth.ts";
+import { scopedPrisma } from "./lib/scoped.ts";
 import { TokenError, accessToken } from "./lib/youtube.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -25,8 +28,17 @@ type Check = { key: string; raise: Notice | null };
 
 const notice = (key: string, severity: Notice["severity"], title: string, detail: string, fix: string): Notice => ({ key, source: "watchdog", severity, title, detail, fix });
 
-async function pipelineChecks(prisma: PrismaClient, now: Date): Promise<Check[]> {
-  const s = await loadSettings(prisma);
+/**
+ * One channel's video pipeline (its own videos, queue, slots and settings). `prisma` is narrowed to the
+ * channel (lib/scoped.ts); `key` and `label` keep channel #1's notification keys and titles as before and
+ * give another channel "<key>:<slug>" and its name, the convention stats and publish use.
+ */
+const PIPELINE_KEYS = ["no-videos", "made-today-zero", "queue-empty", "backlog-low", "slot-missed", "uploads-paused"] as const;
+type ChannelRun = { key: (k: string) => string; label: string; channelId?: string };
+
+async function pipelineChecks(prisma: PrismaClient, now: Date, s: Settings, run: ChannelRun): Promise<Check[]> {
+  const notice = (key: string, severity: Notice["severity"], title: string, detail: string, fix: string): Notice =>
+    ({ key: run.key(key), source: "watchdog", severity, title: `${run.label}${title}`, detail, fix, ...(run.channelId ? { channelId: run.channelId } : {}) });
   const latest = await prisma.video.findFirst({ orderBy: { createdAt: "desc" }, select: { createdAt: true } });
   const hours = latest ? (now.getTime() - latest.createdAt.getTime()) / HOUR : Infinity;
   const today = istDay(now);
@@ -41,24 +53,28 @@ async function pipelineChecks(prisma: PrismaClient, now: Date): Promise<Check[]>
              publishAt: { gte: new Date(`${today}T00:00:00+05:30`) } }, select: { publishAt: true } })).map((u) => u.publishAt);
   const empty = s.uploadsPaused ? [] : missedSlots(now, s.uploadTimes, shortUploads, -20, 24).map((d) => istTime(d));
   return [
-    { key: "no-videos", raise: !s.generationPaused && hours > 26 ? notice("no-videos", "critical", `No new videos for ${Number.isFinite(hours) ? Math.floor(hours) : "many"} hours`,
+    { key: run.key("no-videos"), raise: !s.generationPaused && hours > 26 ? notice("no-videos", "critical", `No new videos for ${Number.isFinite(hours) ? Math.floor(hours) : "many"} hours`,
       "The nightly video run hasn't produced anything. The queue will run dry.",
       `1. Open ${ROUTINES} → Finance Shorts generation and read the latest run.\n2. If it hit the Pro usage limit, nothing to do: the next run continues.\n3. If it errored, paste its report into a Claude Code session in this project.`) : null },
-    { key: "made-today-zero", raise: !s.generationPaused && istHour(now) >= 11 && madeToday === 0 && hours <= 26 ? notice("made-today-zero", "warning", "No videos made today yet",
+    { key: run.key("made-today-zero"), raise: !s.generationPaused && istHour(now) >= 11 && madeToday === 0 && hours <= 26 ? notice("made-today-zero", "warning", "No videos made today yet",
       "The 04:07 IST run made nothing and the 09:07 spare run didn't catch up.", `Check ${ROUTINES} for today's two runs and their reports.`) : null },
-    { key: "queue-empty", raise: backlog === 0 && !s.uploadsPaused ? notice("queue-empty", "critical", "The upload queue is empty",
+    { key: run.key("queue-empty"), raise: backlog === 0 && !s.uploadsPaused ? notice("queue-empty", "critical", "The upload queue is empty",
       "The next upload slot has nothing to publish.", "Videos usually arrive overnight. If this lasts past 10:00 IST, check the video runs (see 'No new videos')."): null },
-    { key: "backlog-low", raise: s.alerts.lowBacklog && backlog > 0 && backlog < s.alerts.lowBacklogThreshold ? notice("backlog-low", "warning", `Only ${backlog} videos ready`,
+    { key: run.key("backlog-low"), raise: s.alerts.lowBacklog && backlog > 0 && backlog < s.alerts.lowBacklogThreshold ? notice("backlog-low", "warning", `Only ${backlog} videos ready`,
       `Fewer than ${s.alerts.lowBacklogThreshold} videos are queued; at two uploads a day that's under ${Math.ceil(backlog / 2)} days.`, "Nothing to do if runs are healthy; it refills by about one a day.") : null },
-    { key: "slot-missed", raise: empty.length ? notice("slot-missed", "critical", `Today's ${empty.join(", ")} Short slot${empty.length === 1 ? " was" : "s were"} missed`,
+    { key: run.key("slot-missed"), raise: empty.length ? notice("slot-missed", "critical", `Today's ${empty.join(", ")} Short slot${empty.length === 1 ? " was" : "s were"} missed`,
       backlog === 0 ? "Nothing was uploaded for it, and no Short is queued: the video runs made fewer Shorts than there are slots."
         : "Nothing was uploaded for it although Shorts are queued: the Publish workflow didn't run in time.",
       "1. GitHub → Actions → Publish → Run workflow (upload_now 1 posts the next Short now).\n2. If Publish keeps missing runs, check that GITHUB_ACTIONS_TOKEN is set in Netlify (the publish heartbeat needs it).\n3. If no Short is queued, start the video routine by hand.") : null },
-    { key: "uploads-paused", raise: s.uploadsPaused ? notice("uploads-paused", "info", "Uploads are paused (you post by hand)",
+    { key: run.key("uploads-paused"), raise: s.uploadsPaused ? notice("uploads-paused", "info", "Uploads are paused (you post by hand)",
       "The bot uploads nothing while this is on.", "When Google approves the YouTube API audit: Settings → Uploads → turn off 'Pause all uploads'.") : null },
-    { key: "agents-paused", raise: s.agents.paused ? notice("agents-paused", "info", "Self-improving agents are paused",
-      "Research, improver and dashboard agents do nothing while this is on.", "Settings → Self-improving agents → turn the master switch back on.") : null },
   ];
+}
+
+/** Platform-wide: the agents' master switch. */
+function agentsPausedCheck(s: Settings): Check {
+  return { key: "agents-paused", raise: s.agents.paused ? notice("agents-paused", "info", "Self-improving agents are paused",
+    "Research, improver and dashboard agents do nothing while this is on.", "Settings → Self-improving agents → turn the master switch back on.") : null };
 }
 
 async function siteCheck(): Promise<Check> {
@@ -73,15 +89,22 @@ async function siteCheck(): Promise<Check> {
   }
 }
 
-async function tokenCheck(): Promise<Check | null> {
-  if (!youtubeConfigured()) return null;
+/** The channel's own YouTube sign-in (no API quota: only the OAuth token endpoint). A channel not connected yet is skipped. */
+async function tokenCheck(ch: Channel, run: ChannelRun): Promise<Check | null> {
+  if (!youtubeClientConfigured()) return null;
+  const t = tokenOf(ch);
+  if (!t) {
+    console.log(`::notice::${ch.id} is not connected to YouTube yet: no sign-in check.`);
+    return null;
+  }
+  const key = run.key("youtube-token");
   try {
-    await accessToken();
-    return { key: "youtube-token", raise: null };
+    await accessToken(t.refreshToken, t.client);
+    return { key, raise: null };
   } catch (e) {
     if (!(e instanceof TokenError)) return null;   // network hiccup: don't raise or resolve
-    return { key: "youtube-token", raise: { key: "youtube-token", source: "watchdog", severity: "critical", title: "YouTube sign-in stopped working",
-      detail: `Google rejected the stored token: ${e.message}. Uploads and stats are stopped.`, fix: TOKEN_FIX } };
+    return { key, raise: { key, source: "watchdog", severity: "critical", title: `${run.label}YouTube sign-in stopped working`,
+      detail: `Google rejected the stored token: ${e.message}. Uploads and stats are stopped.`, fix: TOKEN_FIX, ...(run.channelId ? { channelId: run.channelId } : {}) } };
   }
 }
 
@@ -150,10 +173,24 @@ async function main(): Promise<void> {
   const now = new Date();
   try {
     const s = await loadSettings(prisma);
-    const token = await tokenCheck();
-    const checks: Check[] = [...(await pipelineChecks(prisma, now)), await siteCheck(), ...(token ? [token] : []),
+    const checks: Check[] = [];
+    // each active channel's pipeline and sign-in, with its own settings (a paused channel makes and uploads nothing)
+    for (const ch of await activeChannels(prisma, true)) {
+      const first = ch.id === layout().default;
+      const run: ChannelRun = first ? { key: (k) => k, label: "" } : { key: (k) => `${k}:${ch.id}`, label: `${ch.name}: `, channelId: ch.id };
+      // a paused channel's pipeline notices close: nothing is expected of it
+      if (ch.status !== "active") { checks.push(...PIPELINE_KEYS.map((k) => ({ key: run.key(k), raise: null }))); continue; }
+      try {
+        checks.push(...(await pipelineChecks(scopedPrisma(prisma, ch.id), now, channelSettings(s, ch.settings), run)));
+        const token = await tokenCheck(ch, run);
+        if (token) checks.push(token);
+      } catch (e) {
+        console.error(`::warning::${ch.id}: ${e instanceof Error ? e.message : e}`);   // the other channels' checks still run
+      }
+    }
+    checks.push(agentsPausedCheck(s), await siteCheck(),
       ...agentChecks(now, { research: s.agents.research, improver: s.agents.improver, dashboard: s.agents.dashboard,
-                            auditor: s.agents.auditor, scout: s.agents.scout, studio: s.agents.studio }, s.agents.paused)];
+                            auditor: s.agents.auditor, scout: s.agents.scout, studio: s.agents.studio }, s.agents.paused));
     const sched = await scheduleCheck(prisma, now);
     if (sched) checks.push(sched);
     const wf = await workflowChecks();

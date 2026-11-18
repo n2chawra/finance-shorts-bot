@@ -1,6 +1,6 @@
 # Daily data audit, 13:53 IST, well before the 23:00 auditor agent: GitHub starts this cron job about
 # 5 h late (the old 18:37 IST slot landed around 23:26 IST, after the auditor, on 20-22 Oct): compares what the dashboard
-# shows with YouTube and the database (workers/data-audit.ts), commits metrics/data-audit.json for
+# shows with YouTube and the database (workers/data-audit.ts), commits each channel's metrics/data-audit.json for
 # the agent, and raises owner notifications for what only the owner can fix.
 name: Data audit
 
@@ -25,6 +25,10 @@ jobs:
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      # every active or paused channel is audited: their sealed tokens and the web client that refreshes them
+      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+      YT_WEB_CLIENT_ID: ${{ secrets.YT_WEB_CLIENT_ID }}
+      YT_WEB_CLIENT_SECRET: ${{ secrets.YT_WEB_CLIENT_SECRET }}
       NEXT_TELEMETRY_DISABLED: "1"
     steps:
       - uses: actions/checkout@v4
