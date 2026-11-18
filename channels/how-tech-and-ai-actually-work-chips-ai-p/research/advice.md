@@ -9,7 +9,7 @@ From the full research of 18 Nov 2026: 3,924 scanned videos, every one labelled 
 | 1 | **Inside the chip / hardware**: what happens inside X when you Y | long | median 132K views, 20% hits, only 4 channels posted in 30 days, rising (2.4×) | 2 of 4 long |
 | 2 | **How AI actually works** | long | 34% hits (the best rate), 3 channels in 30 days (a gap), rising fastest (11.4×) | 1 of 4 long |
 | 3 | **Internet and networks** (cables, satellites, wifi, data centres) | long | 32% hits, 1 channel in 30 days (a gap); thin data (15 videos, median 991) | 1 of 4 long |
-| 4 | **Tech history Shorts**: the surprising origin of a thing you use | Short | 1.58× outlier, 21% hits, median 10.2K | ~40% of Shorts |
+| 4 | **Invention Shorts**: how a thing you use was invented | Short | tech-history 1.58×, 21% hits; its modern inventions (142 Shorts) median 22K, 25% hits | ~40% of Shorts |
 | 5 | **The zoom Short**: one scale dive or one exploded part, cut from that week's long video | Short | Branch Education's Shorts of this kind: 140K–1.0M (`_gbDFq5h9KI`, `VUPxowV0fsk`, `Bez-2cvYja0`) | ~40% of Shorts |
 | 6 | **Machines that are tech** (EVs, rockets, drones, power) | Short | core: 21% hits, median 8.6K, but crowded (24 channels) | ~20% of Shorts |
 
@@ -17,7 +17,7 @@ Our example titles (our own words):
 1. "What Happens Inside Your Phone When You Unlock It With Your Face" · "How a Chip Factory Prints 100 Billion Switches on One Chip" · "What Happens Inside a Graphics Card in One Frame". Rests on `oBKrR3i6jWM` (1.02M, 12.7K-sub channel), `r9qDcQ_b50k` (447K), `9kM3mnxrMMM` (1.56M).
 2. "How an AI Turns Your Question Into an Answer, Every Step" · "Why AI Makes Things Up" · "What One AI Question Really Costs in Power and Water". Rests on `vIM9qCyfVmg` (622K, 2.3K-sub channel), `oBKrR3i6jWM`. The comments ask for exactly the step from transistors to an answer, which `oBKrR3i6jWM` skipped.
 3. "How Your Message Crosses the Ocean in a Tenth of a Second" · "How Starlink's Flat Dish Aims Without Moving". Rests on `cKnwkxItL2M` (5.5M), `DW-aL_MiUz4` (4.6M).
-4. "The First Computer Mouse Was Made of Wood" · "Why Your Keyboard Isn't in ABC Order". Rests on `osbyDsxQOwo`, `AIsozFTqIUI`, `UrBA3twKzGc`.
+4. "The First Computer Mouse Was Made of Wood" · "Why Your Keyboard Isn't in ABC Order". Rests on `XFY7-td3LA8` (35.6M), `ZDhDxu5eNig` (6.6M), `qylpF98bjZI` (4.0M). The family's ancient-craft videos (water wheels, wood repair) are left out.
 
 **To test, not make yet: AI skit Shorts.** A 3D character acts out a gag about AI (`-8XlWwznPHE`, 18M). Their median is 1.14M views, but all 81 come from a single channel (Professor Of AI). Its tier is low (1.01×), and the demand may be that channel's own audience rather than the format. It goes into the first look tests (`cycle/backlog.json`) once the 3D character exists.
 
@@ -58,7 +58,7 @@ Our example titles (our own words):
 
 ## 7. What the verdict got wrong
 
-- **Shorts aren't uniformly thin.** Tech history Shorts have a median of 10.2K and zoom Shorts reach 140K–1M; the 4.0K median was all tech-titled Shorts together.
+- **Shorts aren't uniformly thin.** Invention Shorts have a median of 22K and zoom Shorts reach 140K–1M; the 4.0K median was all tech-titled Shorts together.
 - **The AI-skit demand rests on one channel** (81 of 81 skits), so it is a test, not a core format.
 - **The audience is US, UK and Australia, not India**: no Indian or Brazilian cluster in the comments, and many engineers and students. USD, an American narrator, and claims an engineer would sign off.
 - **Internet and networks long** ranks core on thin data (15 videos); judge it by our own first one.

@@ -1,0 +1,226 @@
+{
+ "note": "The tech channel's formats, tiers from research/families.json and the labels (18 Nov 2026). examples: the niche hits each rests on.",
+ "seen": [],
+ "formats": [
+  {
+   "id": "invention_story",
+   "format": "short",
+   "markets": [
+    "global"
+   ],
+   "name": "How a thing you use was invented",
+   "tier": "core",
+   "emotion": "the delight of a familiar thing's odd origin",
+   "hook": "The thing on screen, already moving, and the question in the first line: 'Your keyboard isn't in ABC order. Why?'",
+   "beats": "the everyday thing and the question -> the first version, built in 3D in front of you -> the problem it had -> the fix that shaped what you hold today -> the payoff: the surprising reason -> loop to the thing in your hand",
+   "examples": [
+    {
+     "title": "How Mr. Potato Head Was Invented 🤔",
+     "views": 35566426,
+     "url": "https://youtube.com/watch?v=XFY7-td3LA8"
+    },
+    {
+     "title": "How You Accidentally Invented the Mechanical Typewriter⌨️",
+     "views": 6599644,
+     "url": "https://youtube.com/watch?v=ZDhDxu5eNig"
+    },
+    {
+     "title": "Most Important Invention In History, Part 2: The Radio",
+     "views": 3964739,
+     "url": "https://youtube.com/watch?v=qylpF98bjZI"
+    }
+   ],
+   "_why": "tech-history Shorts: modern inventions 142 videos, median 22K, 25% hits (families.json, labels)"
+  },
+  {
+   "id": "zoom_inside",
+   "format": "short",
+   "markets": [
+    "global"
+   ],
+   "name": "Zoom inside: one dive through scales or one part taken apart",
+   "tier": "core",
+   "emotion": "awe at how small and precise it is",
+   "hook": "Frame 0 is the familiar object already moving; by 1.5 s the camera dives into it. First line names it and the scale: 'Inside this chip are 92 billion switches.'",
+   "beats": "the object -> the dive (each scale a beat, a scale badge and a familiar comparison) -> the smallest part doing its job -> the payoff figure felt at body scale -> pull back out to the first frame (loop)",
+   "examples": [
+    {
+     "title": "How GPUs Are Printed With Light",
+     "views": 1002871,
+     "url": "https://youtube.com/watch?v=_gbDFq5h9KI"
+    },
+    {
+     "title": "The Flattest Surface in the World",
+     "views": 764783,
+     "url": "https://youtube.com/watch?v=VUPxowV0fsk"
+    },
+    {
+     "title": "Zooming Into a CPU (It's Incredible)",
+     "views": 504377,
+     "url": "https://youtube.com/watch?v=Bez-2cvYja0"
+    }
+   ],
+   "_why": "the reference channel's top Shorts (outlier up to 3.1); chips Shorts 19% hits, one point under core; cut from the week's long video"
+  },
+  {
+   "id": "machine_works",
+   "format": "short",
+   "markets": [
+    "global"
+   ],
+   "name": "How a machine works (power, vehicles, rockets, drones)",
+   "tier": "core",
+   "emotion": "finally seeing the inside of something huge",
+   "hook": "A cutaway of the machine running at frame 0, the question in the first line: 'How does a dam turn falling water into your lights?'",
+   "beats": "the machine running -> cutaway: the flow through it on glowing paths -> the key part, exploded -> the number that makes it work, felt -> payoff -> loop",
+   "examples": [
+    {
+     "title": "How a Dam Generates Electricity💡| Hydroelectric Power Explained",
+     "views": 8695933,
+     "url": "https://youtube.com/watch?v=rHk5j8d8yog"
+    },
+    {
+     "title": "How Dams Generate Electricity (3D Animation)",
+     "views": 5132000,
+     "url": "https://youtube.com/watch?v=Rjw8KtGpOZ0"
+    },
+    {
+     "title": "How Did Tesla's New Roadster Flip in Mid-Air? (3D Animation)",
+     "views": 2092594,
+     "url": "https://youtube.com/watch?v=pBBBNOUxDh4"
+    }
+   ],
+   "_why": "machines-vehicles Shorts: 630 videos, 21% hits, but crowded (24 channels in 30 days); kept to tech machines"
+  },
+  {
+   "id": "gadget_inside",
+   "format": "short",
+   "markets": [
+    "global"
+   ],
+   "name": "How an everyday gadget works",
+   "tier": "low",
+   "emotion": "the thing on my desk is cleverer than I thought",
+   "hook": "The gadget doing its job at frame 0, the question in the first line",
+   "beats": "the gadget in use -> cutaway -> the one trick inside -> payoff -> loop",
+   "examples": [
+    {
+     "title": "How Electrical Outlets Work 🤔",
+     "views": 77292444,
+     "url": "https://youtube.com/watch?v=0BZ1C83I2R4"
+    },
+    {
+     "title": "How an ATM Machine WORKS😱 The Hidden Engineering💪🏻",
+     "views": 1877758,
+     "url": "https://youtube.com/watch?v=yG94_SxKiUw"
+    }
+   ],
+   "_why": "gadget-inside Shorts 0.72x, median 1.7K: works long, weak short; kept for the right topic only"
+  },
+  {
+   "id": "ai_skit",
+   "format": "short",
+   "markets": [
+    "global"
+   ],
+   "name": "AI skit: a 3D character acts out how an AI or gadget behaves",
+   "tier": "low",
+   "emotion": "laughing at the machine, then understanding it",
+   "hook": "The character mid-problem at frame 0, a 2-3 word label on top",
+   "beats": "the gag set up in one wide shot -> the AI made physical (a scan dome, a glowing answer) -> the twist -> the real explanation in one line -> loop",
+   "examples": [
+    {
+     "title": "ChatGPT found Chappals (3D) by Professor of Ai",
+     "views": 17990503,
+     "url": "https://youtube.com/watch?v=-8XlWwznPHE"
+    },
+    {
+     "title": "How Self Driving Car Works? (3D) by Professor of AI",
+     "views": 8395984,
+     "url": "https://youtube.com/watch?v=n8MwM1H5q5o"
+    }
+   ],
+   "_why": "median 1.14M but all 81 skits from one channel: a weekly-loop test (backlog), not a core format"
+  },
+  {
+   "id": "inside_when_you",
+   "format": "long",
+   "markets": [
+    "global"
+   ],
+   "name": "What happens inside X when you Y",
+   "tier": "core",
+   "emotion": "following one everyday action all the way down",
+   "hook": "The viewer's own action (tap, ask, unlock) plus one huge comparison within 10 s; a map of the video by 60 s",
+   "beats": "the action -> the route map -> 7-10 chapters, each one scale deeper or one new part -> a surprise at ~70% -> climb back out to the action -> loop to the first line",
+   "examples": [
+    {
+     "title": "What Happens Inside an AI Chip When You Ask a Question",
+     "views": 1024094,
+     "url": "https://youtube.com/watch?v=oBKrR3i6jWM"
+    },
+    {
+     "title": "What Happens Inside a CPU in One Second?",
+     "views": 446892,
+     "url": "https://youtube.com/watch?v=r9qDcQ_b50k"
+    },
+    {
+     "title": "How do microSD Cards Store 2 TB in such a TINY space?",
+     "views": 1560892,
+     "url": "https://youtube.com/watch?v=9kM3mnxrMMM"
+    }
+   ],
+   "_why": "chips-and-hardware long: median 132K, 20% hits, 4 channels in 30 days; a 12.7K-sub channel reached 1.02M"
+  },
+  {
+   "id": "how_ai_works",
+   "format": "long",
+   "markets": [
+    "global"
+   ],
+   "name": "How AI actually works, every step",
+   "tier": "core",
+   "emotion": "the magic made mechanical, no step skipped",
+   "hook": "A question typed into a chatbot at frame 0; the promise: every step from your words to its answer",
+   "beats": "the question -> route map -> words to numbers -> the model's layers -> the chip doing the maths -> the answer coming back -> what it cost -> loop",
+   "examples": [
+    {
+     "title": "How AI works, Explained with Mushrooms ! (Easiest Explanation )",
+     "views": 622117,
+     "url": "https://youtube.com/watch?v=vIM9qCyfVmg"
+    },
+    {
+     "title": "What Happens Inside an AI Chip When You Ask a Question",
+     "views": 1024094,
+     "url": "https://youtube.com/watch?v=oBKrR3i6jWM"
+    }
+   ],
+   "_why": "ai-how-it-works long: 34% hits, 3 channels in 30 days (a gap), rising 11.4x; viewers ask for the hardware-to-answer step"
+  },
+  {
+   "id": "how_network_works",
+   "format": "long",
+   "markets": [
+    "global"
+   ],
+   "name": "How the internet's hidden machinery works",
+   "tier": "core",
+   "emotion": "the invisible made physical",
+   "hook": "Your message leaving your phone at frame 0; where it goes next is the promise",
+   "beats": "the message -> the route map (tower, cable, sea, satellite) -> each hop a chapter -> the surprise -> back to your screen -> loop",
+   "examples": [
+    {
+     "title": "Inside America's Only Internet Sea Cable Maker",
+     "views": 5542424,
+     "url": "https://youtube.com/watch?v=cKnwkxItL2M"
+    },
+    {
+     "title": "How Starlink Actually Works",
+     "views": 4632145,
+     "url": "https://youtube.com/watch?v=DW-aL_MiUz4"
+    }
+   ],
+   "_why": "internet-and-networks long: 32% hits, 1 channel in 30 days (a gap); thin data (15 videos)"
+  }
+ ]
+}

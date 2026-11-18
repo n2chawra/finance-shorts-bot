@@ -1,0 +1,30 @@
+{
+  "name": "How Tech Works",
+  "language": "en-us",
+  "voices": {
+    "shortsNarrator": "am_michael",
+    "longNarrators": [
+      "am_michael",
+      "af_heart"
+    ]
+  },
+  "currency": "USD",
+  "currencies": [
+    "USD"
+  ],
+  "numbers": "simple",
+  "disclaimer": "Animations are simplified illustrations, not exact to scale.",
+  "stories": "true",
+  "look": {
+    "cast": "none",
+    "palettes": null,
+    "style": "3D studio explainer: lit objects on a dark stage, cutaways, exploded parts, dives through scales, labels on the parts, one accent colour",
+    "engine": "three"
+  },
+  "uploadCategory": "28",
+  "note": "Written by the /new-channel build phase from research/advice.md and style-study/2026-11-18-references.md. generator/pack.py reads it.",
+  "motion": {
+    "_why": "the references' camera never stops; viewers leave on still frames",
+    "maxGapSec": 1.8
+  }
+}
