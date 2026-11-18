@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 0,
   "notes": [
     {
       "id": "cmwk4neu10001jy09ifqrxyku",
       "kind": "wrong",
       "area": null,
       "text": "Our background music and effects sound is same in every video. This is wrong. Just like director making scene different for different video this should also be different for different video.",
-      "status": "open",
-      "response": "auditor handed → improver: Not a data bug: the music genre does rotate (pop, cinematic, synthwave, lofi, acoustic in the last 15 Shorts) but sits about 9/10 under the voice, and every Paisa Panchayat Short draws on one fixed set of effects (pop, whoosh, kaching, boom, tick) with no per-video sound set; giving each video its own sound set and a more audible bed is how the videos sound, the improver's lane. · waiting for improver",
+      "status": "addressed",
+      "response": "auditor handed → improver: Not a data bug: the music genre does rotate (pop, cinematic, synthwave, lofi, acoustic in the last 15 Shorts) but sits about 9/10 under the voice, and every Paisa Panchayat Short draws on one fixed set of effects (pop, whoosh, kaching, boom, tick) with no per-video sound set; giving each video its own sound set and a more audible bed is how the videos sound, the improver's lane. · improver fixed: Effects: every new video now gets its own sound set (glass, arcade, deep, wood, felt or the old one), chosen to suit its music, with bells and dings tuned to its own music key, so no two Shorts in a row click, whoosh and ding the same; checked on four recent scripts, which got deep, arcade, wood and felt at the same loudness. Music: genre, key and tempo already change every video but the bed sits about 20 dB under the voice with no tune of its own, so a per-video melody ('own-motif-bed') is now first in line for the weekly loop's next sound test. (8569914)",
       "at": "2026-11-17T03:22:59.162Z",
       "video": {
         "id": "v-20261117-01",
