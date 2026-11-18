@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import { Button, Card, ErrorNote, Loading, PageHeader, Toggle, fieldClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { usePatchSettings, useSettings } from "@/lib/queries";
+import { useChannels, usePatchSettings, useSettings } from "@/lib/queries";
 import type { Settings } from "@/lib/schemas";
 
 function Row({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
@@ -31,6 +31,8 @@ const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function SettingsPage() {
   const { data, error, isLoading } = useSettings();
+  const channels = useChannels();
+  const channelName = channels.data?.channels.find((c) => c.id === channels.data!.current)?.name;
   const patch = usePatchSettings();
   const toast = useToast();
   const [form, setForm] = useState<Settings | null>(null);
@@ -54,7 +56,8 @@ export default function SettingsPage() {
 
   return (
     <form onSubmit={(e) => { e.preventDefault(); save(); }}>
-      <PageHeader title="Settings" sub="Workers read these on every run; routines get them within a minute of the next commit (or within 6 hours)" />
+      <PageHeader title={channelName ? `Settings · ${channelName}` : "Settings"}
+        sub={`For ${channelName ?? "this channel"} only: Shorts a day, upload times, lengths and long videos are this channel's own (switch channel at the top left to change another's); alerts and agents apply to all channels. Routines get them within a minute of the next commit.`} />
       {patch.error && <div className="mb-4"><ErrorNote error={patch.error} /></div>}
 
       <div className="grid gap-8 lg:grid-cols-[220px_minmax(0,820px)]">
