@@ -1,0 +1,328 @@
+{
+  "id": "v-20261119-12",
+  "createdAt": "2026-11-18T22:10:34.865779+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Squid Game cost Netflix $21.4 million to make. What was it worth to Netflix, by its own papers?",
+    "category": "streaming",
+    "reach": "global",
+    "feed_id": "2026-11-16-squid-game-cost-21-million-worth-891"
+  },
+  "title": "Squid Game cost Netflix $21.4M. What was it really worth? 🦑",
+  "description": "Squid Game cost Netflix $21.4M to make. So what was the show really worth to Netflix?\nSources: Bloomberg, Al Jazeera (Oct 2021). The characters are not advisers.\nIllustrative only. Not financial advice.",
+  "hashtags": [
+    "#Shorts",
+    "#SquidGame",
+    "#Netflix",
+    "#Money",
+    "#Business"
+  ],
+  "hookStyle": "question",
+  "cta": "The show or the subscribers: which was Netflix buying? Comment",
+  "seed": 52907,
+  "style": {
+    "palette": "night",
+    "genre": "synthwave",
+    "key": "A",
+    "bpm": 108,
+    "sfx": "glass",
+    "look": {
+      "stage": "studio",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "stamp"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "28-35",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Squid Game cost Netflix $21.4M. What was it worth?",
+        "start": 0.3,
+        "seconds": 3.59,
+        "window": 4.1,
+        "fill": 0.876
+      },
+      {
+        "scene": "promise",
+        "text": "In under a month, 132M people pressed play on it.",
+        "start": 4.4,
+        "seconds": 3.0,
+        "window": 3.43,
+        "fill": 0.875
+      },
+      {
+        "scene": "episode",
+        "text": "Each episode cost Netflix about $2.4M.",
+        "start": 7.83,
+        "seconds": 2.8,
+        "window": 3.3,
+        "fill": 0.848
+      },
+      {
+        "scene": "tickets",
+        "text": "Netflix sold no tickets for it. So how does a show pay Netflix back?",
+        "start": 11.13,
+        "seconds": 3.13,
+        "window": 3.57,
+        "fill": 0.877
+      },
+      {
+        "scene": "score",
+        "text": "Inside Netflix, every show gets a score in dollars: its impact value.",
+        "start": 14.7,
+        "seconds": 3.64,
+        "window": 4.07,
+        "fill": 0.894
+      },
+      {
+        "scene": "turn",
+        "text": "Double what it cost? Far more than that.",
+        "start": 18.77,
+        "seconds": 1.97,
+        "window": 2.43,
+        "fill": 0.811
+      },
+      {
+        "scene": "payoff",
+        "text": "Netflix's own papers valued Squid Game at $891.1M. That's about 41.6× what it cost.",
+        "start": 21.2,
+        "seconds": 7.03,
+        "window": 7.63,
+        "fill": 0.921
+      },
+      {
+        "scene": "loop",
+        "text": "The show, or the members it pulled in: which was Netflix paying for? So",
+        "start": 28.83,
+        "seconds": 3.16,
+        "window": 3.7,
+        "fill": 0.854
+      }
+    ]
+  },
+  "durationSec": 33,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.7,
+    "lufs": -15.2,
+    "music_under_voice_db": 22.7
+  },
+  "experiments": {
+    "real-subject-first-frame": "on"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "17 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "All 4 facts confirmed on the Al Jazeera/Bloomberg page (WebFetch): 'generated $891.1 million in impact value, a metric the company uses to assess the performance from individual shows'; 'cost just $21.4 million to produce - about $2.4 million an episode'; 'About 132 million people have watched at least two minutes ... in the show's first 23 days'. Verify list met: $891.1M is said as 'valued', never made/earned; 'Netflix's own papers' fits a confidential Netflix document Netflix's attorney objected to disclosing without disputing; figures are season one and the script never extends them to later seasons, with 'Data: Bloomberg · Oct 2021' on screen. No advice, no adviser persona, tone fine, description ends with the disclaimer. Notes: 'every show gets a score' slightly generalises 'a metric used for individual shows'; saying 'season one' or 'in 2021' once would head off viewers thinking of seasons 2-3; 'pressed play' understates the 2-minute bar (safe)."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: promise beat now has Rohan on his couch in a lit window lifting his phone and tapping play while the billboard counts to 132M as 'people' is said; thumbnail at 1.8 s is a clean frame (camera, NETFLIX and $21.4M tag sharp; tag slightly dimmed by the title band's lower edge but readable at feed size); 7 directed places, figures on things, loop back to the first frame, pick-one ending, disclaimer, layout/craft empty, audio -1/-16.7 dB, 33 s."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-18T21:50:32.079797+00:00",
+      "finishedAt": "2026-11-18T21:50:32.079797+00:00",
+      "notes": [
+        "story 'how_they_make_money' was told in the last 1 videos",
+        "hook style 'question' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-18T21:54:57.923691+00:00",
+      "finishedAt": "2026-11-18T21:54:57.923691+00:00",
+      "notes": [
+        "17 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-18T21:58:14.783829+00:00",
+      "finishedAt": "2026-11-18T21:58:14.783829+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-18T21:58:15.759014+00:00",
+      "finishedAt": "2026-11-18T21:58:15.759014+00:00",
+      "notes": [
+        "17 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-18T21:59:03.735405+00:00",
+      "finishedAt": "2026-11-18T21:59:03.735405+00:00",
+      "notes": [
+        "17 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-18T21:59:32.446473+00:00",
+      "finishedAt": "2026-11-18T21:59:32.446473+00:00",
+      "notes": [
+        "17 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-18T22:00:39.790130+00:00",
+      "finishedAt": "2026-11-18T22:00:39.790130+00:00",
+      "notes": [
+        "All 4 facts confirmed on the Al Jazeera/Bloomberg page (WebFetch): 'generated $891.1 million in impact value, a metric the company uses to assess the performance from individual shows'; 'cost just $21.4 million to produce - about $2.4 million an episode'; 'About 132 million people have watched at least two minutes ... in the show's first 23 days'. Verify list met: $891.1M is said as 'valued', never made/earned; 'Netflix's own papers' fits a confidential Netflix document Netflix's attorney objected to disclosing without disputing; figures are season one and the script never extends them to later seasons, with 'Data: Bloomberg · Oct 2021' on screen. No advice, no adviser persona, tone fine, description ends with the disclaimer. Notes: 'every show gets a score' slightly generalises 'a metric used for individual shows'; saying 'season one' or 'in 2021' once would head off viewers thinking of seasons 2-3; 'pressed play' understates the 2-minute bar (safe)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-18T21:59:58.610619+00:00",
+      "finishedAt": "2026-11-18T22:00:46.032668+00:00",
+      "notes": [
+        "3.0 s with nothing new on screen in beat 'payoff' (at most 2.5 s): add an action on the phrase being said there",
+        "2 of 8 stills are mostly empty background (at 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-18T22:01:28.090091+00:00",
+      "finishedAt": "2026-11-18T22:02:05.640832+00:00",
+      "notes": [
+        "3.0 s with nothing new on screen in beat 'payoff' (at most 2.5 s): add an action on the phrase being said there"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-18T22:03:28.499958+00:00",
+      "finishedAt": "2026-11-18T22:04:04.116475+00:00",
+      "notes": [
+        "33 s, night/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-18T22:04:13.162735+00:00",
+      "finishedAt": "2026-11-18T22:04:48.623474+00:00",
+      "notes": [
+        "33 s, night/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-18T22:06:14.210789+00:00",
+      "finishedAt": "2026-11-18T22:06:14.210789+00:00",
+      "notes": [
+        "[script] Thumbnail (thumbnail.sec 2.5, hook): the frame is mid-transition, the whole picture blurred and washed out by the green-light flip, and the $21.4M tag on the Netflix camera is faded grey on red and hard to read; the last four Shorts' covers are crisp. Move thumbnail.sec to about 1.8 s (tag up, before the 'What' whoosh) so the tag and camera are sharp.",
+        "[script] Promise beat (4.4-7.8 s, City; stills 4.5/6.0/7.5): nobody does anything for the whole beat, only windows and a billboard counter in an empty city (the reference's city beat dives into Rohan's window). Add a person acting, e.g. the camera dives into one window where Rohan presses play as the counter lands on 132M. Also at 6.0 s the caption already says 132M while the billboard still reads 0M: land the count on 'people'."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-18T22:06:40.120774+00:00",
+      "finishedAt": "2026-11-18T22:06:40.120774+00:00",
+      "notes": [
+        "17 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-18T22:07:01.614223+00:00",
+      "finishedAt": "2026-11-18T22:07:38.459932+00:00",
+      "notes": [
+        "33 s, night/synthwave (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-18T22:08:36.160760+00:00",
+      "finishedAt": "2026-11-18T22:08:36.160760+00:00",
+      "notes": [
+        "Re-review after fixes: promise beat now has Rohan on his couch in a lit window lifting his phone and tapping play while the billboard counts to 132M as 'people' is said; thumbnail at 1.8 s is a clean frame (camera, NETFLIX and $21.4M tag sharp; tag slightly dimmed by the title band's lower edge but readable at feed size); 7 directed places, figures on things, loop back to the first frame, pick-one ending, disclaimer, layout/craft empty, audio -1/-16.7 dB, 33 s."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-18T22:08:47.134098+00:00",
+      "finishedAt": "2026-11-18T22:10:29.448724+00:00",
+      "notes": [
+        "33 s, night/synthwave, peak -1.0 dB, mean -16.7 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-18T22:10:34.865898+00:00",
+      "finishedAt": "2026-11-18T22:10:34.865898+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261119-12",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261119-12"
+  }
+}
