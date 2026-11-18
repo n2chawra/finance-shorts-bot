@@ -1,5 +1,19 @@
 {
   "note": "Every video attempted in the last 60 days. Written by the ingest workflow.",
-  "days": [],
-  "videos": []
+  "days": [
+    {
+      "day": "2026-11-19",
+      "shipped": 1,
+      "failed": 0
+    }
+  ],
+  "videos": [
+    {
+      "id": "v-20261119-01",
+      "day": "2026-11-19",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    }
+  ]
 }
