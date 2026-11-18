@@ -1,0 +1,22 @@
+{
+  "agent": "research",
+  "day": "2026-11-19",
+  "startedAt": "2026-11-18T18:43:20Z",
+  "finishedAt": "2026-11-18T18:49:55Z",
+  "summary": "Geography channel, Thursday titles and first-frame pass: unblocked 8 of 13 feed topics by re-checking stale facts, added 7 sourced topics (Greenland, Tristan da Cunha, Mekong, Bir Tawil, Malacca what-if, Greenland melt what-if, Diomede) and one first-second challenger (camera moving from frame 0).",
+  "decision": "acted",
+  "why": "Only 5 of 13 open topics could be planned (the rest had facts over a year old). The niche scan (3,047 Shorts) shows question and what-if titles beat statements (median outlier 1.06 and 1.52 vs 0.98), so the title rule stays; all 5 reference shot sheets open on a push-in at frame 0, ours on a held shot.",
+  "findings": [
+    {"title": "The CIA World Factbook is retired", "detail": "Its live country pages now show a sunset notice; the channel profile lists it as a source. Routed adopt (factbook-retired).", "link": "https://www.cia.gov/the-world-factbook/countries/greenland/"},
+    {"title": "Question titles win in this niche", "detail": "What if: 1.52 median outlier, 23% hits; questions 1.06, 19%; statements 0.98, 16% (2,891 Shorts). Emoji and hashtags make no difference."},
+    {"title": "References move from the first frame", "detail": "5 of 5 shot sheets open on a push-in with no text; our Suez Short's first move is ~4 s in. Challenger geo-moving-first-frame added."},
+    {"title": "market-data has no scan for this channel", "detail": "Only Paisa Panchayat's finance scan is on market-data; the niche-data branch was used instead."},
+    {"title": "Activity files of two channels share one dashboard row", "detail": "workers/lib/agents-sync.ts keys AgentActivity by day-agent, so this file and Paisa Panchayat's 2026-11-19-research.json overwrite each other on the Agents page (auditor's lane)."}
+  ],
+  "changes": [
+    {"title": "7 topics added, 8 topics unblocked", "detail": "channels/channels/geography-maps-geopolitical-mysteries/research/topics.json", "branch": "agent/research/2026-11-19/geography-maps-geopolitical-mysteries"},
+    {"title": "Challenger geo-moving-first-frame", "detail": "channels/channels/geography-maps-geopolitical-mysteries/cycle/backlog.json", "branch": "agent/research/2026-11-19/geography-maps-geopolitical-mysteries"}
+  ],
+  "nextCheck": "2026-11-20",
+  "links": [{"label": "Report", "url": "channels/channels/geography-maps-geopolitical-mysteries/research/2026-11-19.md"}]
+}

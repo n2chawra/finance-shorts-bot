@@ -1,0 +1,8 @@
+{
+  "proposals": [
+    {"id": "factbook-retired", "date": "2026-11-19", "area": "pipeline", "title": "The CIA World Factbook is retired: stop citing its live pages",
+     "change": "In channels/geography-maps-geopolitical-mysteries/profile.md 'Where facts come from' and the fact reviewer's source list for this channel, replace 'the CIA World Factbook' with 'the CIA World Factbook archives (2022-2025 editions) or the national statistics office / Britannica'; flag any topic fact whose url is under cia.gov/the-world-factbook/countries/ (live pages now show the retirement notice).",
+     "evidence": ["https://www.cia.gov/the-world-factbook/countries/greenland/"], "expectedEffect": "No fact review fails on an unreachable source", "confidence": "high", "effort": "S",
+     "risk": "none", "metric": "qa_failures", "status": "new", "route": "adopt", "priority": "normal"}
+  ]
+}
