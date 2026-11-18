@@ -21,7 +21,7 @@
         ]
       },
       "health": {
-        "at": "2026-11-18T14:00:56.919Z",
+        "at": "2026-11-18T14:07:32.993Z",
         "color": "red",
         "reason": "The upload queue is empty; Paisa Panchayat: under a day of Shorts ready; 0 Shorts ready: under a day",
         "stayed": 0.376862268166616,
@@ -63,7 +63,7 @@
         }
       },
       "health": {
-        "at": "2026-11-18T14:00:56.919Z",
+        "at": "2026-11-18T14:07:32.993Z",
         "color": "red",
         "reason": "Geography, maps & geopolitical mysteries: under a day of Shorts ready; 0 Shorts ready: under a day",
         "stayed": null,
@@ -83,12 +83,14 @@
       "status": "setup",
       "settings": {
         "disclaimer": "Animations are simplified illustrations, not exact to scale.",
+        "longPerWeek": 2,
         "uploadTimes": [
           "06:07"
         ],
         "lengthMaxSec": 60,
         "lengthMinSec": 45,
         "longUploadDays": [
+          3,
           6
         ],
         "longUploadTimes": [
@@ -97,7 +99,7 @@
         "dailyVideoTarget": 1
       },
       "setup": {
-        "stage": "samples",
+        "stage": "review",
         "decision": {
           "at": "2026-11-18T10:20:03.985Z",
           "choice": "continue"
