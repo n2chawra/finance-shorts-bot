@@ -1,25 +1,33 @@
 {
   "call": "go-with-conditions",
-  "reason": "Long explainers are where this niche pays and where small channels break in (a 12.7K-subscriber channel's 'inside an AI chip' video passed 1M); Shorts are thinner than geography and the biggest Shorts are 3D skits we can't make.",
+  "reason": "Long explainers are where this niche pays and where small channels break in (a 12.7K-subscriber channel's 'inside an AI chip' video passed 1M); we build the 3D the hits use.",
   "conditions": [
-    "Long-first: 1 long video a week, 12-16 minutes ('what happens inside X when you Y'), with Shorts as trailers for it",
-    "Build an 'inside view' kit before sample 1: exploded layers, zoom through scales (phone -> chip -> transistor), signals flowing along paths, on the flat kit; true 3D only if the stills fail",
+    "Long-first: 1 long video a week, 12-16 minutes ('what happens inside X when you Y'), with 2 Shorts a day as trailers and standalone hits",
+    "Build a real 3D engine (Remotion + three.js / react-three-fiber) before sample 1: cutaways, exploded parts, zooms through scales (phone -> chip -> transistor), glowing signal paths, and a stylised 3D character for skit Shorts; about 1-2 weeks",
     "Every claim sourced (manufacturer docs, papers, reputable press); no rumours, no AI hype stated as fact, no product reviews",
     "The full research measures only on-niche videos: the scan pulled in 3D 'what's inside' cutaways, anatomy and Hindi engineering channels (about 30 of 45 channels)"
   ],
   "for": [
     "Small channels win long: 4 of 8 tech channels under 100K subscribers had a long video at 5x their median; Silicon Up Close (12.7K subs) has 1.02M, 447K and 270K views on 15-20 minute 'what happens inside' videos",
     "Tech long videos: median 23.5K views in 90 days (73 videos), 21% of them hits; the 600-900 s band hits 19% of the time",
-    "Rising and evergreen: AI, chips and Starlink explainers from 2-5 months ago still lead (Starlink 4.6M, sea cable maker 5.5M)"
+    "The biggest Shorts are 3D: Professor Of AI's 3D AI skits get 10-18M each on 400K subs; Branch Education's 3D cutaways 545K median per Short; we can build this look"
   ],
   "against": [
-    "Tech Shorts: median only 4.0K views in 90 days (267 Shorts), against 20K for the geography niche; small channels' Short hits top out around 50-160K",
-    "The biggest Shorts (Professor Of AI, 10-18M each) are 3D character skits; neither that nor Branch Education's 3D cutaways is what our flat kit draws today",
-    "Crowded at the top: ColdFusion, Branch Education, Asianometry and Business Insider each pull 230K-1.2M median on long"
+    "Tech Shorts in general are thinner: median 4.0K views in 90 days (267 Shorts) against 20K for geography; small channels' Short hits reach 50-160K",
+    "Crowded at the top: ColdFusion, Branch Education, Asianometry and Business Insider each pull 230K-1.2M median on long",
+    "Build cost: the 3D engine is new work (1-2 weeks) before the first sample, and 3D renders are slower"
   ],
   "earnings": {
-    "m6": { "low": 0, "likely": 40, "high": 1500 },
-    "m12": { "low": 20, "likely": 400, "high": 5000 },
+    "m6": {
+      "low": 0,
+      "likely": 40,
+      "high": 1500
+    },
+    "m12": {
+      "low": 20,
+      "likely": 400,
+      "high": 5000
+    },
     "assumptions": "Estimates, not sourced figures: 1 long video a week + 2 Shorts a day; tech/education long-video RPM roughly $4-10 per 1,000 views (commonly reported creator ranges; an estimate) and Shorts about $0.05; the partner programme by 1,000 subs + 4,000 watch hours around month 4-7 if a few long videos reach 5-20K views; 'high' needs one long video near the 1M a small channel has reached"
   },
   "demand": {
@@ -30,9 +38,9 @@
     "note": "Medians over tech-titled videos only; scan.json's whole-scan medians (Shorts 11.6K, long 5.9K) include off-niche 3D, anatomy and Hindi channels"
   },
   "doable": {
-    "look": "partly: animated diagrams on the flat kit fit (flows, layers, zooms); the hits' look is 3D cutaways and 3D character skits, so an 'inside view' kit must be built and judged on sample 1's stills",
+    "look": "yes, with a 3D engine we build (Remotion + three.js): the hits are 3D cutaways and 3D character skits, no footage or faces",
     "voice": "yes: English, a Kokoro US narrator",
     "policy": "fine: advertiser-friendly; rules against rumours and AI-hype claims; no AI label needed for drawn animation"
   },
-  "writtenAt": "2026-11-18T16:05:00+05:30"
+  "writtenAt": "2026-11-18T16:20:00+05:30"
 }
