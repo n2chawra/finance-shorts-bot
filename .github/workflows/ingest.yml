@@ -12,6 +12,7 @@ on:
       - "history/**"
       - "channels/*/videos/**"
       - "channels/*/history/**"
+      - "channels/*/setup.json"
       - "renderer/templates/**"
       - "workers/ingest.ts"
       - "apps/dashboard/prisma/**"
