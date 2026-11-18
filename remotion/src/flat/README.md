@@ -63,3 +63,21 @@ body), `sit`, `back`, `tilt`, `phone`, `holdR`/`holdL` (draw something in the ha
 A directed beat's file default-exports `React.FC<SceneProps>`, imports only the kit (see
 `generator/prompts/director.md`), types no figure (it reads `p.beat.params.fig`), and is a pure function
 of `p.frame` and the beat (`renderer/remotion.py` `custom_problems` checks it).
+
+## `tech/` (tech channel, dark look, 2026-11-18)
+
+Dark interface pieces for `how-tech-and-ai-actually-work-chips-ai-p`: near-black base, one amber accent,
+condensed numerals (`Num`; Poppins squeezed until an OFL condensed face is added, `theme.tsx`). Inside a
+`Stage`, every piece takes `m` (`motion(p)`), its words and figures as props (figures from `params.fig`) and
+its moments as frames (`m.at("word")`); sizes follow the frame (`useUnit`), so they work in 1080×1920 and 1920×1080.
+
+| Piece | What it draws |
+|---|---|
+| `CardDeck` | interface cards built one per spoken item (`on`), the named one (`hi`, `hiAt`) in the accent, the rest dim |
+| `ChapterCard` | a long video's chapter: outlined number, accent rule, title word by word |
+| `LineChart` | a line from `series` (Python's numbers) that draws `from` → `to`, the `endLabel` figure landing on the end point |
+| `EquivChain` | icon = figure → a line draws to a familiar thing (`links`, `on`), the camera trucking along |
+| `LitDoc` | a page where only sentence `lit` is lit at `litAt`, an optional highlighter pass, a `SourceChip` |
+| `Icon` | line icons: chip, gpu, server, bolt, home, car, phone, bulb, cloud, doc, water, plane, city, brain |
+
+Test reel: `TechFlatDemo` / `TechFlatDemoLong` (`tech/Demo.tsx`).
