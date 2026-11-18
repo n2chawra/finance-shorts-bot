@@ -46,6 +46,9 @@ async function main(): Promise<void> {
   // them ("angle" on a GPU machine, "swangle" without one), so every other video renders exactly as before
   const gl = (opts.gl ?? process.env.REMOTION_GL) as "angle" | "swangle" | "egl" | "swiftshader" | "vulkan" | "angle-egl" | undefined;
   const chromiumOptions = gl ? { gl } : {};
+  // a 3D frame can take 30+ s in the cloud (software WebGL, shaders compiling on the first one); every
+  // render call gets 2 minutes then, not the default 30 s (the cloud check of 18 Nov timed out on stills)
+  const timeouts = gl ? { timeoutInMilliseconds: 120_000 } : {};
 
   if (mode === "bundle") {
     if (!opts.out) throw new Error("bundle needs --out");
@@ -60,12 +63,12 @@ async function main(): Promise<void> {
   const inputProps = { timeline, probe: mode === "stills" && opts.probe === "1" };
   const url = await serveUrl(opts.bundle);
   if (mode === "thumbnail") {
-    const thumb = await selectComposition({ serveUrl: url, id: "Thumbnail", inputProps, browserExecutable, chromiumOptions });
-    await renderStill({ composition: thumb, serveUrl: url, inputProps, frame: 0, output: path.resolve(opts.out), imageFormat: "png", browserExecutable, chromiumOptions });
+    const thumb = await selectComposition({ serveUrl: url, id: "Thumbnail", inputProps, browserExecutable, chromiumOptions, ...timeouts });
+    await renderStill({ composition: thumb, serveUrl: url, inputProps, frame: 0, output: path.resolve(opts.out), imageFormat: "png", browserExecutable, chromiumOptions, ...timeouts });
     console.log(`done ${path.resolve(opts.out)}`);
     return;
   }
-  const composition = await selectComposition({ serveUrl: url, id: COMPOSITION, inputProps, browserExecutable, chromiumOptions });
+  const composition = await selectComposition({ serveUrl: url, id: COMPOSITION, inputProps, browserExecutable, chromiumOptions, ...timeouts });
 
   if (mode === "video") {
     const last = composition.durationInFrames - 1;
@@ -79,7 +82,7 @@ async function main(): Promise<void> {
       x264Preset: "veryfast",
       frameRange: [from, to], concurrency, browserExecutable, chromiumOptions,
       // a 3D frame can take seconds while shaders compile; the default 30 s per frame is too tight
-      ...(gl ? { timeoutInMilliseconds: 120_000 } : {}),
+      ...timeouts,
       onProgress: ({ progress }) => {
         const p = Math.floor(progress * 50) / 50;                     // every 2%
         if (p > shown) { shown = p; console.log(`progress ${p.toFixed(2)}`); }
@@ -110,7 +113,7 @@ async function main(): Promise<void> {
         const frame = frames[next++]!;
         const file = path.join(out, `f${String(frame).padStart(5, "0")}.jpg`);
         await renderStill({
-          composition, serveUrl: url, inputProps, frame, output: file, imageFormat: "jpeg", jpegQuality: 85, puppeteerInstance: browser,
+          composition, serveUrl: url, inputProps, frame, output: file, imageFormat: "jpeg", jpegQuality: 85, puppeteerInstance: browser, ...timeouts,
           onBrowserLog: (log) => { if (log.text.startsWith("PROBE ")) console.log("probe " + log.text.slice(6)); },
         });
         console.log(`progress ${(++done / frames.length).toFixed(2)}`);
