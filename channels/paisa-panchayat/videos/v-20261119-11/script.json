@@ -1,0 +1,832 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38417,
+ "story": "money_scale",
+ "shape": "what-if",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "cinematic",
+  "key": "D",
+  "bpm": 92,
+  "look": {
+   "stage": "space",
+   "header": "chalk",
+   "holder": "box",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "shock_number",
+ "cta": "Your share once, or the billionaires keep it? Comment",
+ "feed_id": "2026-11-17-every-billionaire-shared-with-everyone",
+ "facts": [
+  {
+   "label": "Combined net worth of the billionaires on Forbes' 2026 list",
+   "value": 20.1,
+   "unit": "money_trillion",
+   "currency": "USD",
+   "as_of": "2026-03-01",
+   "source": "Forbes World's Billionaires",
+   "url": "https://www.forbes.com/sites/chasewithorn/2026/03/10/2026-worlds-billionaires-list-facts-and-figures/"
+  },
+  {
+   "label": "Billionaires on Forbes' 2026 list",
+   "value": 3428,
+   "unit": "count",
+   "currency": "USD",
+   "as_of": "2026-03-01",
+   "source": "Forbes World's Billionaires",
+   "url": "https://www.forbes.com/sites/chasewithorn/2026/03/10/2026-worlds-billionaires-list-facts-and-figures/"
+  },
+  {
+   "label": "Elon Musk's net worth on Forbes' 2026 list",
+   "value": 839,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-03-01",
+   "source": "Forbes World's Billionaires",
+   "url": "https://www.forbes.com/sites/chasewithorn/2026/03/10/2026-worlds-billionaires-list-facts-and-figures/"
+  },
+  {
+   "label": "World population the US Census Bureau projects for July 2026",
+   "value": 8.2,
+   "unit": "count_billion",
+   "currency": "USD",
+   "as_of": "2026-07-01",
+   "source": "US Census Bureau",
+   "url": "https://www.census.gov/newsroom/stories/world-population-day.html"
+  }
+ ],
+ "maths": [
+  {
+   "name": "all",
+   "kind": "share",
+   "total": 20100000000000,
+   "parts": 8200000000,
+   "facts": {
+    "total": 1,
+    "parts": 4
+   }
+  },
+  {
+   "name": "musk",
+   "kind": "share",
+   "total": 839000000000,
+   "parts": 8200000000,
+   "facts": {
+    "total": 3,
+    "parts": 4
+   }
+  },
+  {
+   "name": "muskpct",
+   "kind": "rate",
+   "part": 839000000000,
+   "whole": 20100000000000,
+   "facts": {
+    "part": 3,
+    "whole": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "earth",
+  "sec": 3.0,
+  "words": "How much is *yours*?",
+  "figure": "{fact1}",
+  "tag": "All billionaires",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Split Elon Musk's money, and every billionaire's, with everyone. Your cut?",
+   "events": {
+    "split": {
+     "word": "Split"
+    },
+    "musks": {
+     "word": "Musk's"
+    },
+    "every": {
+     "word": "every"
+    },
+    "everyone": {
+     "word": "everyone"
+    },
+    "cut": {
+     "word": "cut"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "musks"
+    },
+    {
+     "kind": "whoosh",
+     "at": "everyone"
+    },
+    {
+     "kind": "boom",
+     "at": "cut"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "a rocket launch pad at dusk",
+     "a crowded square seen from above"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "every",
+      "size": "wide"
+     },
+     {
+      "at": "everyone",
+      "size": "wide"
+     },
+     {
+      "at": "cut",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "split",
+      "what": "a rocket marked ELON MUSK stands on its pad beside a mountain of gold coins, coins tumbling"
+     },
+     {
+      "at": "musks",
+      "what": "the coin mountain swells and a MUSK flag pops on top"
+     },
+     {
+      "at": "every",
+      "what": "more gold mountains rise along the horizon"
+     },
+     {
+      "at": "everyone",
+      "what": "cut to a square packed with people seen from above, hands going up"
+     },
+     {
+      "at": "cut",
+      "what": "Rohan up front holds out an empty cup and a YOUR CUT? tag swings down"
+     }
+    ],
+    "things": [
+     "rocket",
+     "launch tower",
+     "gold coin mountain",
+     "crowd",
+     "empty cup"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Together they own {fact1}, and Forbes counts only {fact2} of them.",
+   "events": {
+    "together": {
+     "word": "Together"
+    },
+    "own": {
+     "word": "own"
+    },
+    "forbes": {
+     "word": "Forbes"
+    },
+    "only": {
+     "word": "only"
+    },
+    "and": {
+     "word": "and"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "together"
+    },
+    {
+     "kind": "kaching",
+     "at": "own"
+    },
+    {
+     "kind": "tick",
+     "at": "only"
+    }
+   ],
+   "params": {
+    "component": "Gala",
+    "place": [
+     "a gold ballroom on the night of the Forbes list"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "own",
+      "size": "close"
+     },
+     {
+      "at": "forbes",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "together",
+      "what": "the guests in top hats raise their glasses under the giant scoreboard"
+     },
+     {
+      "at": "own",
+      "what": "the total slams onto the scoreboard and confetti drops"
+     },
+     {
+      "at": "and",
+      "what": "the guests cheer and clink their glasses"
+     },
+     {
+      "at": "forbes",
+      "what": "the FORBES LIST row of the scoreboard flips on"
+     },
+     {
+      "at": "only",
+      "what": "the billionaire count rolls up, small next to the total"
+     }
+    ],
+    "things": [
+     "scoreboard",
+     "chandelier",
+     "top hats",
+     "champagne glasses",
+     "confetti"
+    ],
+    "fig": {
+     "count": "{fact2}",
+     "total": "{fact1}"
+    }
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "musk",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Musk alone owns {fact3}. That's {muskpct_pct} of the whole pile.",
+   "events": {
+    "musk": {
+     "word": "Musk"
+    },
+    "alone": {
+     "word": "alone"
+    },
+    "owns": {
+     "word": "owns"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "pile": {
+     "word": "pile"
+    },
+    "of": {
+     "word": "of"
+    },
+    "thats": {
+     "word": "That's"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "alone"
+    },
+    {
+     "kind": "kaching",
+     "at": "owns"
+    },
+    {
+     "kind": "pop",
+     "at": "pile"
+    }
+   ],
+   "params": {
+    "component": "Quarry",
+    "place": "a gold quarry at noon, terraced rock walls",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "owns",
+      "size": "close"
+     },
+     {
+      "at": "whole",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "musk",
+      "what": "the crane driver in a hard hat swings the hook over the gold mountain"
+     },
+     {
+      "at": "alone",
+      "what": "the hook grabs one slab of the mountain"
+     },
+     {
+      "at": "owns",
+      "what": "the slab lifts away, its tag stamps Musk's figure"
+     },
+     {
+      "at": "thats",
+      "what": "the tag swings and flashes as the camera starts to pull back"
+     },
+     {
+      "at": "of",
+      "what": "the slab swings on the hook and coins spill off it"
+     },
+     {
+      "at": "whole",
+      "what": "the camera pulls back to the whole mountain with the gap"
+     },
+     {
+      "at": "pile",
+      "what": "a sign at the gap stamps the share"
+     }
+    ],
+    "things": [
+     "terraced quarry walls",
+     "crane with cab",
+     "crane driver",
+     "gold mountain",
+     "gold slab",
+     "share sign"
+    ],
+    "fig": {
+     "musk": "{fact3}",
+     "pct": "{muskpct_pct}"
+    }
+   }
+  },
+  {
+   "id": "earth",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Now split it over {fact4} people. What does each one get?",
+   "events": {
+    "now": {
+     "word": "Now"
+    },
+    "split": {
+     "word": "split"
+    },
+    "people": {
+     "word": "people"
+    },
+    "what": {
+     "word": "What"
+    },
+    "get": {
+     "word": "get"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "now"
+    },
+    {
+     "kind": "pop",
+     "at": "split"
+    },
+    {
+     "kind": "ding",
+     "at": "get"
+    }
+   ],
+   "params": {
+    "component": "Earth",
+    "place": [
+     "Earth seen from orbit"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "split",
+      "size": "medium"
+     },
+     {
+      "at": "get",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "now",
+      "what": "the globe turns, a satellite counter floats beside it"
+     },
+     {
+      "at": "split",
+      "what": "gold coins rain down onto the globe"
+     },
+     {
+      "at": "people",
+      "what": "the counter on the satellite rolls up to the population"
+     },
+     {
+      "at": "what",
+      "what": "city lights spark on across the globe"
+     },
+     {
+      "at": "get",
+      "what": "the globe glows gold all over"
+     }
+    ],
+    "things": [
+     "globe",
+     "satellite counter",
+     "gold coins",
+     "city lights"
+    ],
+    "fig": {
+     "people": "{fact4}"
+    }
+   },
+   "transition": "zoom-through"
+  },
+  {
+   "id": "muskpart",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Musk's part alone gives each person about {musk_per_part}.",
+   "events": {
+    "musks": {
+     "word": "Musk's"
+    },
+    "gives": {
+     "word": "gives"
+    },
+    "each": {
+     "word": "each"
+    },
+    "person": {
+     "word": "person"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "musks"
+    },
+    {
+     "kind": "kaching",
+     "at": "gives"
+    }
+   ],
+   "params": {
+    "component": "Market",
+    "place": [
+     "a busy street market in the morning"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "gives",
+      "size": "medium"
+     },
+     {
+      "at": "person",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "musks",
+      "what": "a delivery drone marked MUSK drops an envelope at the fruit stall"
+     },
+     {
+      "at": "gives",
+      "what": "Rohan tears it open, bills fan out"
+     },
+     {
+      "at": "each",
+      "what": "a price tag on the envelope stamps the amount"
+     },
+     {
+      "at": "person",
+      "what": "Rohan holds the bills up next to a bag of fruit and grins"
+     }
+    ],
+    "things": [
+     "fruit stall",
+     "delivery drone",
+     "envelope",
+     "bills"
+    ],
+    "fig": {
+     "each": "{musk_per_part}"
+    }
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "So everyone gets rich? Not even close.",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "everyone": {
+     "word": "everyone"
+    },
+    "rich": {
+     "word": "rich"
+    },
+    "not": {
+     "word": "Not"
+    },
+    "close": {
+     "word": "close"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "so"
+    },
+    {
+     "kind": "pop",
+     "at": "rich"
+    },
+    {
+     "kind": "fail",
+     "at": "not"
+    }
+   ],
+   "params": {
+    "component": "Dream",
+    "place": [
+     "Rohan's tiny apartment at night"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "rich",
+      "size": "wide"
+     },
+     {
+      "at": "not",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "Rohan sits on his bed counting the bills"
+     },
+     {
+      "at": "everyone",
+      "what": "a dream bubble opens over his head"
+     },
+     {
+      "at": "rich",
+      "what": "a sports car and a mansion appear in the bubble"
+     },
+     {
+      "at": "not",
+      "what": "the bubble pops, the light drops cold"
+     },
+     {
+      "at": "close",
+      "what": "Rohan's face falls"
+     }
+    ],
+    "things": [
+     "bed",
+     "dream bubble",
+     "sports car",
+     "mansion"
+    ],
+    "fig": {}
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Each of us gets about {all_per_part}, once. Then the pile is gone.",
+   "events": {
+    "each": {
+     "word": "Each"
+    },
+    "gets": {
+     "word": "gets"
+    },
+    "once": {
+     "word": "once"
+    },
+    "then": {
+     "word": "Then"
+    },
+    "gone": {
+     "word": "gone"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "each"
+    },
+    {
+     "kind": "kaching",
+     "at": "gets"
+    },
+    {
+     "kind": "boom",
+     "at": "once"
+    },
+    {
+     "kind": "whoosh",
+     "at": "gone"
+    }
+   ],
+   "params": {
+    "component": "Mailbox",
+    "place": [
+     "Rohan's front door in the morning"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "gets",
+      "size": "close"
+     },
+     {
+      "at": "gone",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "each",
+      "what": "Rohan opens the mailbox by his door"
+     },
+     {
+      "at": "gets",
+      "what": "a cheque slides out, the amount stamps on it"
+     },
+     {
+      "at": "once",
+      "what": "a red ONE TIME stamp slams across it"
+     },
+     {
+      "at": "then",
+      "what": "the street behind empties of gold"
+     },
+     {
+      "at": "gone",
+      "what": "the camera pulls back to an empty mailbox street"
+     }
+    ],
+    "things": [
+     "mailbox",
+     "cheque",
+     "red stamp",
+     "front door"
+    ],
+    "fig": {
+     "each": "{all_per_part}"
+    }
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "One cheque each, or their whole pile: which would you pick? So",
+   "events": {
+    "cheque": {
+     "word": "cheque"
+    },
+    "pile": {
+     "word": "pile"
+    },
+    "pick": {
+     "word": "pick"
+    },
+    "so": {
+     "word": "So"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "cheque"
+    },
+    {
+     "kind": "pop",
+     "at": "pile"
+    },
+    {
+     "kind": "whoosh",
+     "at": "so"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": [
+     "back at the rocket launch pad at dusk"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pile",
+      "size": "wide"
+     },
+     {
+      "at": "so",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "cheque",
+      "what": "Rohan holds his cheque out in front of him, the amount readable"
+     },
+     {
+      "at": "pile",
+      "what": "the gold mountain beside the rocket glows behind him"
+     },
+     {
+      "at": "pick",
+      "what": "he looks from one to the other"
+     },
+     {
+      "at": "so",
+      "what": "the camera settles on the rocket and the coin mountain, the hook's first frame"
+     }
+    ],
+    "things": [
+     "cheque",
+     "rocket",
+     "gold coin mountain"
+    ],
+    "fig": {
+     "each": "{all_per_part}"
+    }
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}
