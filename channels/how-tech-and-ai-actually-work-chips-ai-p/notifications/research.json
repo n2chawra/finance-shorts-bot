@@ -1,0 +1,11 @@
+{
+ "notifications": [
+  {
+   "key": "tech-market-scan-missing",
+   "severity": "info",
+   "title": "The weekly market scan doesn't run for How Tech Works",
+   "detail": "The market-data branch holds only Paisa Panchayat's finance scan, so research for this channel has no list of this week's fastest-growing tech Shorts. Tonight it used the setup scan on the niche-data branch (18 Nov) instead, which will go stale.",
+   "fix": "1. Make market.yml (or its caller) run workers/market.ts once per active channel with CHANNEL=<slug>, writing each channel's results to its own file on market-data. 2. Give channels/how-tech-and-ai-actually-work-chips-ai-p/market.json the full MarketConfig fields (days, regionCode, regions) next to its queries. 3. Mind the quota: each search costs 100 units."
+  }
+ ]
+}
