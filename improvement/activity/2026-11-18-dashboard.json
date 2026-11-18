@@ -1,0 +1,19 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-18",
+  "startedAt": "2026-11-18T17:35:16Z",
+  "finishedAt": "2026-11-18T17:46:25Z",
+  "summary": "Bug hunt: build, lint and all smoke tests pass, live site up. Fixed a broken-image bug on the Channels page's Launch review and added the Channels and Scorecard pages to the smoke tests.",
+  "decision": "acted",
+  "why": "Channels and Scorecard were not covered by the smoke tests; covering them showed the sample contact sheet had no fallback when it can't load.",
+  "findings": [
+    {"title": "Channels: sample contact sheet showed a broken image", "detail": "When a sample's preview can't be fetched (not committed yet, or GitHub refused) the Launch review showed a broken-image icon; now a plain note."},
+    {"title": "Channels and Scorecard missing from smoke tests", "detail": "Both added; every page also checked with each live channel selected in the switcher."},
+    {"title": "Live site up", "detail": "/api/health answered; database round trip 1.4 s."}
+  ],
+  "changes": [
+    {"title": "Channels: contact-sheet fallback; smoke tests cover Channels and Scorecard", "detail": "src/app/channels/page.tsx, e2e/smoke.spec.ts", "branch": "agent/dashboard/2026-11-18"}
+  ],
+  "nextCheck": "2026-11-22",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-18.md"}]
+}
