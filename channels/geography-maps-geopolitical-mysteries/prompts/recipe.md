@@ -54,3 +54,18 @@ sourced `facts` entry; one narrator; captions of every word.
 - Plain words; a place name the first time it's used comes with where it is ("Gambia, a thin strip in
   West Africa").
 - No "Did you know" as a first line, no "Watch this"; the question is the hook.
+
+## Every video its own story device and animation (owner, 2026-11-18)
+
+"Don't ever make every topic animation / story style the same." Each video picks one **main device**
+the story is told through, different from the last three videos, and names it in the plan (`device`):
+- **paint and wrap**: a country made on screen, its neighbour drawn round it (the Gambia sample)
+- **route and race**: ships, planes or trucks on routes, a detour drawn as it costs time (a canal, a strait)
+- **countdown**: DAY 1, 2, 3… or a month counter, one consequence a step, the map changing each step
+- **lift and compare**: a shape lifted and laid over a place the viewer knows, at true scale
+- **timeline**: a year slider, borders redrawn and countries recoloured year by year
+- **zoom from space**: the globe, then a dive to the place, then back out for the payoff
+- **erase and redraw**: borders rubbed out and drawn again a new way (a what-if)
+- **flood or grow**: water, desert or people spreading across the map as the figure climbs
+The look stays the channel's (the vintage map, its sound); the device, the camera's path, the colours
+in play and the places change. Two videos in a row never open on the same picture.

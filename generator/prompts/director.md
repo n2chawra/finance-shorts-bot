@@ -17,6 +17,9 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 - **Another channel's look wins** (multi-channel, 2026-11-17): a channel with its own `prompts/recipe.md`
   directs by that recipe's "look". On a map channel the map is the stage of every beat and "a place for
   every line" means a new spot on the map (the river mouth, a border crossing, the capital), not a new room.
+- **No two videos the same** (owner, 2026-11-18): a channel's recipe may list story devices (route and
+  race, countdown, lift and compare, timeline…); direct the device the plan names, and never the same
+  opening picture, camera path or device as the last videos.
 
 ## Why the reference works (do all of these)
 

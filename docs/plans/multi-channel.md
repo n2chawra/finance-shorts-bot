@@ -547,7 +547,7 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   (`generator.run state/check-plan/render --channel paisa-panchayat`) matches today's output.
 - Two test channels in sample mode: the dashboard switches and filters, and pause stops the
   publisher and the routines (a routine exits on a paused channel).
-- A full setup run on a sample niche: the pack passes `check-plan`, and three sample Shorts render and
+- A full setup run on a sample niche: the pack passes `check-plan`, and two sample Shorts render and
   pass the gates.
 - **Verdict backtest:** run the quick verdict on Paisa Panchayat's niche (a Go is expected) and on a
   niche whose hits depend on real footage or faces on camera (a "not doable" is expected). Also run

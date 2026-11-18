@@ -100,6 +100,23 @@ hook (first frame, first line ≤15 words, when the subject is named and the fir
 spoken); captions, music, SFX; the ending. Measure the sound as `yt-style` does (tempo, key, levels,
 ducking) into `research/sound.md`.
 
+**One pass, complete (owner, 2026-11-18: "make sure for any channel you don't need to research twice").**
+The geography channel's references were watched once for the sheets (a frame every few seconds) and had
+to be watched again after the owner rejected the first sample, because the sheets never recorded *how*
+the picture is made or how it sounds. So this step also writes, in the same viewing, the channel's
+**build spec** to `channels/<slug>/style-study/<date>-references.md`, which the pack and the director
+use and nobody re-researches:
+- **How the picture is made**, from 0.2–0.5 s frame bursts at 2–3 moments per reference: what is on
+  screen before a line and what appears on its words (outlines drawing on, colours painting in, labels
+  writing on, things dropping, erasing, morphing, lifting); the base look and its textures (flat,
+  parchment, relief, satellite, grain, shadows, glows, tilt); colour use (every country coloured or one
+  highlighted, border weight); the label font style; character size and where they stand.
+- **How it sounds**, with the `yt-style` audio probe on at least two references: music under the voice
+  (dB), music character (tempo, brightness, bass share), effects a minute and their kinds, ducking and
+  drops. This becomes `channel.json` `sound` (genres, bedLevel, duck, sfx, transitionSfx) in the build;
+  a channel never borrows channel #1's beds or effects.
+- **Kit gaps**: what our kit can't draw yet, built during step 4, not after the first sample.
+
 **c. The numbers.**
 
 ```bash
@@ -168,7 +185,7 @@ When `pack check` passes: `setup.json` → `{"stage": "samples"}`, commit and pu
 
 Made last, by the channel's real pipeline, so they are exactly what the channel will publish. In this
 stage `python -m generator.run state --channel <slug>` answers `"sample": true` and asks for sample N of
-3 Shorts (and 1 long video when `research/counts.json` advises long videos); in any other setup stage it
+2 Shorts (owner, 2026-11-18: two are enough; and 1 long video when `research/counts.json` advises long videos); in any other setup stage it
 answers `paused`. Run the normal generation routine (`generator/prompts/routine.md`) with `--channel <slug>`
 on every command: plan → script → number check → fact review → director → render → QA → ship. Ship marks
 the manifest `sample: true`; ingest queues it, and the publisher never uploads for a channel that isn't
@@ -177,8 +194,8 @@ active, so nothing goes out before Launch.
 **Sample 1 is a gate** (owner, 2026-11-17, after the geography channel's first sample came out as cartoon
 scenes instead of animated maps): show the owner sample 1's **stills** (the contact sheet) and wait for
 their OK before rendering the video; then show the **full video** and wait for their OK before starting
-sample 2. Never make samples 2 and 3 on an unapproved first one: a wrong start costs all three. Before
-directing sample 1, compare its planned look with the references' `style.json` (`pictureLanguage.shotKinds`:
+sample 2. Never make sample 2 on an unapproved first one: a wrong start costs both. Before
+directing sample 1, read the build spec (step 3b) and compare its planned look with the references' `style.json` (`pictureLanguage.shotKinds`:
 the kind of picture the niche is made of) and say how the beats match it.
 
 Each sample follows one reference video (name it in the plan's `demand`). After it renders:

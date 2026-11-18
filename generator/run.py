@@ -92,7 +92,7 @@ def length_range(settings: dict, fmt: str) -> tuple[int, int]:
 
 # ---------------- state ----------------
 
-SAMPLES = {"short": 3, "long": 1}
+SAMPLES = {"short": 2, "long": 1}   # two Shorts are enough to judge a new channel (owner, 2026-11-18; was 3)
 
 
 def sample_long(root: Path = ROOT) -> bool:
@@ -131,7 +131,7 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     per_week, long_cap = settings["longPerWeek"], settings["longBacklogCap"]
     sample = settings.get("channelStatus") == "setup"
     if sample:
-        # a new channel's samples (multi-channel plan, step 3d): made only in its samples stage, three
+        # a new channel's samples (multi-channel plan, step 3d): made only in its samples stage, two
         # Shorts and one long video (long only when its research advises long videos), never uploaded
         # before the owner's Launch
         want = SAMPLES.get(fmt, 0) if fmt == "short" or sample_long(root) else 0

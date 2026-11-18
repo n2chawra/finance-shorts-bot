@@ -381,7 +381,8 @@ export const SourceLine: React.FC<{ p: SceneProps; y?: number }> = ({ p, y }) =>
   const size = v ? 44 : 30;
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: y ?? (v ? 190 : 70), display: "flex", justifyContent: "center", pointerEvents: "none" }}>
-      <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: size, color: "#fff", background: "rgba(10,12,24,0.62)", padding: "6px 22px", borderRadius: 999, whiteSpace: "nowrap" }}>{line}</div>
+      {/* wraps onto a second line when several publishers make it wider than the frame (2026-11-18) */}
+      <div style={{ fontFamily: FONT, fontWeight: 700, fontSize: size, lineHeight: 1.2, color: "#fff", background: "rgba(10,12,24,0.62)", padding: "6px 22px", borderRadius: 28, textAlign: "center", maxWidth: w - (v ? 220 : 160) }}>{line}</div>
     </div>
   );
 };

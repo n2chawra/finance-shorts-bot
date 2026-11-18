@@ -84,6 +84,11 @@ export const WorldMap: React.FC<{
   /** "world" (Natural Earth projection) or "flat" (Mercator, for a region) */
   kind?: "world" | "flat";
   look?: "flat" | "vintage";
+  /** a political map (the references, 2026-11-18: "include border lines, country colour wherever
+   * required"): every country its own muted tone at this strength (0 plain land .. 1 full), dark ink
+   * borders, and its name written at its middle when `names` is on */
+  political?: number;
+  names?: boolean | string[];
   land?: string; sea?: string; border?: string;
   colors?: Record<string, Fill>;
   /** names to leave out (a disputed region in a video that can't show it) */
@@ -92,7 +97,7 @@ export const WorldMap: React.FC<{
   only?: string[];
   detail?: "110m" | "50m";
   children?: React.ReactNode;
-}> = ({ w, h, fit, pad = 80, center, scale, kind = "world", look = "flat", land: land0, sea: sea0, border, colors = {}, hide = [], only, detail, children }) => {
+}> = ({ w, h, fit, pad = 80, center, scale, kind = "world", look = "flat", political = 0, names = false, land: land0, sea: sea0, border, colors = {}, hide = [], only, detail, children }) => {
   const vintage = look === "vintage";
   const land = land0 ?? (vintage ? "#e8d4a2" : "#e9dcc1");
   const sea = sea0 ?? (vintage ? "#5f9fae" : "#8ec5e0");
@@ -110,7 +115,15 @@ export const WorldMap: React.FC<{
   }, [kind, fit?.join("|"), pad, center?.join(","), scale, w, h, det]);   // eslint-disable-line react-hooks/exhaustive-deps
   const path = useMemo(() => geoPath(proj), [proj]);
   const hidden = new Set(hide.map((n) => n.toLowerCase()));
-  const ink = border ?? (vintage ? "#6b4b2a" : INK);
+  const ink = border ?? (vintage ? "#4a3218" : INK);
+  // a political map: each country its own tone (a stable pick by name), neighbours told apart by colour
+  const TONES = ["#e3b56f", "#c9c27a", "#a8c48a", "#e29c78", "#c3a7cf", "#8fbfb0", "#e8cf86", "#d49aa6", "#b9b08c"];
+  const toneOf = (name: string) => {
+    let hsh = 0;
+    for (const ch of name) hsh = (hsh * 31 + ch.charCodeAt(0)) >>> 0;
+    return TONES[hsh % TONES.length]!;
+  };
+  const baseOf = (name: string) => (political > 0 ? mix(land, toneOf(name), Math.min(1, political)) : land);
   const shown = all.filter((c) => !hidden.has(c.properties.name.toLowerCase()));
   const d = (c: Country) => path(c) ?? undefined;
   const fillOf = (c: Fill) => {
@@ -134,9 +147,12 @@ export const WorldMap: React.FC<{
           </filter>
           <filter id={`relief${uid}`} x="0" y="0" width="100%" height="100%">
             <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves={6} seed={3} result="n" />
-            <feDiffuseLighting in="n" surfaceScale={11} diffuseConstant={1.15} lightingColor="#fff4dc">
+            <feDiffuseLighting in="n" surfaceScale={11} diffuseConstant={1.15} lightingColor="#ffffff" result="lit">
               <feDistantLight azimuth={225} elevation={42} />
             </feDiffuseLighting>
+            {/* shadows only, as a see-through brown layer: the headless renderer ignores blend modes, so an
+                opaque lit layer would grey out every colour under it (2026-11-18) */}
+            <feColorMatrix in="lit" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.16  0 0 0 0 0.06  -0.42 -0.42 -0.42 0 1.12" />
           </filter>
           <clipPath id={`land${uid}`}>{shown.map((c) => <path key={`c${c.id ?? c.properties.name}`} d={d(c)} />)}</clipPath>
         </defs>
@@ -155,7 +171,7 @@ export const WorldMap: React.FC<{
         {shown.map((c) => <path key={`s${c.id ?? c.properties.name}`} d={d(c)} fill={shade(sea, -0.45)} />)}
       </g>
       {/* plain land first; a country with its own colour is drawn over it, made on screen */}
-      {shown.map((c) => <path key={c.id ?? c.properties.name} d={d(c)} fill={land} stroke={ink} strokeWidth={STROKE * (vintage ? 0.35 : 0.45)} strokeLinejoin="round" />)}
+      {shown.map((c) => <path key={c.id ?? c.properties.name} d={d(c)} fill={baseOf(c.properties.name)} stroke={ink} strokeWidth={STROKE * (political > 0 ? 0.7 : vintage ? 0.35 : 0.45)} strokeLinejoin="round" />)}
       {special.map((c) => {
         const f = fxOf(c)!;
         const name = c.properties.name;
@@ -186,16 +202,23 @@ export const WorldMap: React.FC<{
       {/* the relief over the land and over every painted country, so the colours sit on the old map */}
       {vintage ? (
         <g clipPath={`url(#land${uid})`}>
-          <g transform={`translate(${anchor[0]} ${anchor[1]}) scale(${ks})`} style={{ mixBlendMode: "multiply" }} opacity={0.85}>
+          <g transform={`translate(${anchor[0]} ${anchor[1]}) scale(${ks})`} opacity={0.9}>
             <rect x={local.x} y={local.y} width={local.w} height={local.h} filter={`url(#relief${uid})`} />
           </g>
         </g>
       ) : null}
       {vintage ? (
-        <g transform={`translate(${anchor[0]} ${anchor[1]}) scale(${ks})`} style={{ mixBlendMode: "multiply" }} opacity={0.5}>
+        <g transform={`translate(${anchor[0]} ${anchor[1]}) scale(${ks})`} opacity={0.45}>
           <rect x={local.x} y={local.y} width={local.w} height={local.h} filter={`url(#grain${uid})`} />
         </g>
       ) : null}
+      {names ? shown.filter((c) => !fxOf(c) && (names === true || names.includes(c.properties.name))).map((c) => {
+        const [x, y] = path.centroid(c);
+        const [[x0, y0], [x1, y1]] = path.bounds(c);
+        if (!isFinite(x) || x < 60 || x > w - 160 || y < 200 || y > h - 600 || x1 - x0 < 160 || y1 - y0 < 60) return null;
+        return <text key={`n${c.id ?? c.properties.name}`} x={x} y={y} fontFamily="Poppins" fontWeight={700} fontSize={36} letterSpacing={4} textAnchor="middle"
+          dominantBaseline="middle" fill={shade(ink, 0.15)} opacity={0.7} data-probe="skip">{c.properties.name.toUpperCase()}</text>;
+      }) : null}
       {children}
     </MapCtx.Provider>
   );
