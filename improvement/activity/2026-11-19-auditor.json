@@ -1,0 +1,18 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-19",
+  "startedAt": "2026-11-18T16:33:21Z",
+  "finishedAt": "2026-11-18T16:37:05Z",
+  "summary": "All checks green and no code bugs found. The data audit's one error (v-20261117-04 behind YouTube) came from YouTube's own counter jumping between two reads, not from a bug. Wrote verdicts for the three 16 Nov Shorts and handed the owner's sound note to the improver.",
+  "decision": "nothing",
+  "why": "pytest 564, workers 195 tests, tsc and lint all pass. The audit error: the dashboard had 306 views from a live refresh 10 minutes before YouTube showed 342, on a Short gaining about 14 views an hour. Both numbers came from YouTube's public counter, which updates in batches.",
+  "findings": [
+    {"title": "paisa-panchayat: behind_youtube on v-20261117-04 isn't a bug", "detail": "Live refresh 14:22:52 UTC read 306; audit at 14:33 read 342. Same source, and applyLiveCounts never lowers a count without confirmation."},
+    {"title": "paisa-panchayat: no per-video sound-effect set exists", "detail": "Every Short uses the same synthesized pop, whoosh, kaching, boom and tick; the music genre rotates but sits ~89% ducked under the voice. Handed to the improver (owner note cmwk4neu)."},
+    {"title": "paisa-panchayat analysis: GTA V hit, Ellison okay, Amazon cloud miss", "detail": "588, 185 and 44 views against a 95-view median at 48 h; the Amazon title carries both figures."},
+    {"title": "geography and tech channels: nothing to audit", "detail": "No published videos yet, so no metrics, no audit issues and no analysis."}
+  ],
+  "changes": [],
+  "nextCheck": "2026-11-20",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-19.md"}]
+}
