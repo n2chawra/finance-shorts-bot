@@ -42,6 +42,10 @@ async function main(): Promise<void> {
   const { mode, opts } = args(process.argv.slice(2));
   const browserExecutable = findBrowser();
   const concurrency = Number(opts.concurrency ?? Math.max(1, os.cpus().length));
+  // a WebGL backend for videos drawn with the 3D kit (src/three): set by renderer/remotion.py only for
+  // them ("angle" on a GPU machine, "swangle" without one), so every other video renders exactly as before
+  const gl = (opts.gl ?? process.env.REMOTION_GL) as "angle" | "swangle" | "egl" | "swiftshader" | "vulkan" | "angle-egl" | undefined;
+  const chromiumOptions = gl ? { gl } : {};
 
   if (mode === "bundle") {
     if (!opts.out) throw new Error("bundle needs --out");
@@ -56,12 +60,12 @@ async function main(): Promise<void> {
   const inputProps = { timeline, probe: mode === "stills" && opts.probe === "1" };
   const url = await serveUrl(opts.bundle);
   if (mode === "thumbnail") {
-    const thumb = await selectComposition({ serveUrl: url, id: "Thumbnail", inputProps, browserExecutable });
-    await renderStill({ composition: thumb, serveUrl: url, inputProps, frame: 0, output: path.resolve(opts.out), imageFormat: "png", browserExecutable });
+    const thumb = await selectComposition({ serveUrl: url, id: "Thumbnail", inputProps, browserExecutable, chromiumOptions });
+    await renderStill({ composition: thumb, serveUrl: url, inputProps, frame: 0, output: path.resolve(opts.out), imageFormat: "png", browserExecutable, chromiumOptions });
     console.log(`done ${path.resolve(opts.out)}`);
     return;
   }
-  const composition = await selectComposition({ serveUrl: url, id: COMPOSITION, inputProps, browserExecutable });
+  const composition = await selectComposition({ serveUrl: url, id: COMPOSITION, inputProps, browserExecutable, chromiumOptions });
 
   if (mode === "video") {
     const last = composition.durationInFrames - 1;
@@ -73,7 +77,7 @@ async function main(): Promise<void> {
       // veryfast: 15% quicker than the default medium at the same crf (measured 2026-10-21), and
       // YouTube re-encodes every upload anyway
       x264Preset: "veryfast",
-      frameRange: [from, to], concurrency, browserExecutable,
+      frameRange: [from, to], concurrency, browserExecutable, chromiumOptions,
       onProgress: ({ progress }) => {
         const p = Math.floor(progress * 50) / 50;                     // every 2%
         if (p > shown) { shown = p; console.log(`progress ${p.toFixed(2)}`); }
@@ -95,7 +99,7 @@ async function main(): Promise<void> {
     for (let f = 0; f < n; f += step) frames.push(f);
     frames.push(n - 1);
   }
-  const browser = await openBrowser("chrome", { browserExecutable });
+  const browser = await openBrowser("chrome", { browserExecutable, chromiumOptions });
   try {
     // several tabs at once, one per core: a long video has 100+ stills and probes
     let next = 0, done = 0;

@@ -38,7 +38,7 @@ CORES = max(1, os.cpu_count() or 1)   # Remotion renders at most one frame per c
 
 HOOK_IMPORTS = ("react", "remotion", "@remotion/paths", "@remotion/shapes", "@remotion/noise",
                 "../../studio/", "../../cast/", "../../scenes/kit", "../../fx/", "../../design/", "../../fmt/", "../../contract/",
-                "../../flat/")
+                "../../flat/", "../../three/")
 # a figure typed into a video's code ("$11B", '>325M<', "45.2 billion"): every figure on screen comes from
 # the script (params filled by Python), never from the component (CLAUDE.md: numbers are computed by code)
 TYPED_FIGURE = re.compile(r"""["'`>][^"'`<>\n]*?(?:[$£€₹]\s?\d|\b\d[\d,]*(?:\.\d+)?(?:K|M|B|bn|Cr|L)\b|\b\d[\d,]*(?:\.\d+)?\s(?:million|billion|trillion|lakh|crore)\b)""")
@@ -269,6 +269,19 @@ def fresh(folder: Path) -> Path:
     return folder
 
 
+def uses_three(video_id: str) -> bool:
+    """Whether a video's own code draws with the 3D kit (remotion/src/three), which needs WebGL."""
+    folder = REMOTION/"src"/"videos"/video_id
+    return folder.is_dir() and any("../../three/" in f.read_text(encoding="utf-8") for f in folder.glob("*.tsx"))
+
+
+def _use_gl(video_id: str) -> None:
+    """Give Chrome a WebGL backend for a 3D video only (REMOTION_GL, read by scripts/render.ts): the GPU
+    ("angle") on a desktop, software ("swangle") on Linux without a display; an explicit REMOTION_GL wins."""
+    if video_id and uses_three(video_id) and not os.environ.get("REMOTION_GL"):
+        os.environ["REMOTION_GL"] = "swangle" if sys.platform.startswith("linux") else "angle"
+
+
 def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = False, every: float = 5.0,
                     chunk: int = 1200, concurrency: int = CORES,
                     stop_if: Callable[[dict], list[str]] | None = None) -> dict:
@@ -278,6 +291,7 @@ def render_timeline(timeline: Path, out: Path, work: Path, *, preview: bool = Fa
     timeline, out, work = timeline.resolve(), out.resolve(), work.resolve()   # render.ts runs in remotion/
     out.mkdir(parents=True, exist_ok=True)
     tl = json.loads(timeline.read_text(encoding="utf-8"))
+    _use_gl(str(tl.get("id", "")))
     b = bundle()
     shots = stills(timeline, fresh(work/"stills"), every=every, bundle_dir=b)
     # layout gate: each beat once its entrances have settled (70% through), measured by the probe
