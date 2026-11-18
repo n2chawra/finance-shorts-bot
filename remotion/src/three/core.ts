@@ -92,6 +92,19 @@ export function useFontReady(weight = 700): boolean {
   return ready;
 }
 
+/** How far (output pixels) a box centred at (cx, cy), w×h, must move to sit inside the frame's
+ * safe area (a Short keeps clear of the right-hand buttons and the bottom caption zone). */
+export function clampShift(cx: number, cy: number, w: number, h: number, W: number, H: number): [number, number] {
+  const tall = H > W;
+  const [mL, mR, mT, mB] = tall ? [48, 170, 160, 430] : [60, 60, 60, 200];
+  let dx = 0, dy = 0;
+  if (cx - w / 2 < mL) dx = mL - (cx - w / 2);
+  else if (cx + w / 2 > W - mR) dx = W - mR - (cx + w / 2);
+  if (cy - h / 2 < mT) dy = mT - (cy - h / 2);
+  else if (cy + h / 2 > H - mB) dy = H - mB - (cy + h / 2);
+  return [dx, dy];
+}
+
 /** The kit's colours: deep studio blues, cyan/violet signal light, warm accents for the cast. */
 export const TECH = {
   bgTop: "#141a33",

@@ -6,12 +6,14 @@ import type { ThreeElements } from "@react-three/fiber";
 import React, { useMemo } from "react";
 import * as THREE from "three";
 import { rnd, TECH, type V3 } from "./core";
+import { dieTexture, pcbTexture } from "./textures";
 
 type Group = ThreeElements["group"];
 
 /** Material presets. Shared instances: Cutaway and fades clone per mesh before changing them. */
 type Preset = "pcb" | "pcbDark" | "copper" | "gold" | "silicon" | "siliconLit" | "aluminium" | "blackPlastic"
-  | "ceramic" | "glass" | "screen" | "battery" | "gate" | "fin" | "oxide" | "rubber" | "white";
+  | "ceramic" | "glass" | "screen" | "battery" | "gate" | "fin" | "oxide" | "rubber" | "white"
+  | "clay" | "glossy" | "brushed" | "solder";
 
 const SPECS: Record<Preset, THREE.MeshPhysicalMaterialParameters> = {
   pcb: { color: "#1f6b4a", roughness: 0.55, metalness: 0.05, clearcoat: 0.4, clearcoatRoughness: 0.3 },
@@ -31,6 +33,13 @@ const SPECS: Record<Preset, THREE.MeshPhysicalMaterialParameters> = {
   oxide: { color: "#ffd36b", roughness: 0.3, metalness: 0.1, transparent: true, opacity: 0.75 },
   rubber: { color: "#2b2b30", roughness: 0.9, metalness: 0 },
   white: { color: "#eef1f8", roughness: 0.4, metalness: 0 },
+  /** matte modelling clay, for "how it works" models */
+  clay: { color: "#d9d6d0", roughness: 0.92, metalness: 0, sheen: 0.3, sheenColor: "#ffffff" },
+  /** glossy black plastic / black glass with a clear lacquer */
+  glossy: { color: "#0d0f14", roughness: 0.12, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.04 },
+  /** brushed aluminium: streaked highlights */
+  brushed: { color: "#b9bfca", roughness: 0.38, metalness: 1, anisotropy: 0.8 },
+  solder: { color: "#d4d8de", roughness: 0.25, metalness: 1 },
 };
 
 const cache = new Map<string, THREE.Material>();
@@ -50,7 +59,71 @@ export function glow(color: string, opacity = 1): THREE.Material {
   return mat("white", color, { emissive: color, emissiveIntensity: 2.2, roughness: 1, metalness: 0, transparent: opacity < 1, opacity });
 }
 
+let xrayCount = 0;
+const xrays = new Map<string, THREE.Material>();
+/** An x-ray shell: see-through, glowing at the silhouette (fresnel), additive. Use it on an outer
+ * case (or a slightly larger copy of a model) so the inside shows. */
+export function xray(color: string = TECH.cyan, strength = 1): THREE.Material {
+  const key = `${color}|${strength}`;
+  const hit = xrays.get(key);
+  if (hit) return hit;
+  const m = new THREE.MeshStandardMaterial({ color, transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending });
+  const c = new THREE.Color(color);
+  const id = xrayCount++;
+  m.onBeforeCompile = (sh) => {
+    sh.fragmentShader = sh.fragmentShader.replace(
+      "#include <dithering_fragment>",
+      `#include <dithering_fragment>
+      float fr = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 2.2);
+      gl_FragColor = vec4(vec3(${c.r.toFixed(4)}, ${c.g.toFixed(4)}, ${c.b.toFixed(4)}) * (0.12 + ${(1.8 * strength).toFixed(3)} * fr), (0.06 + 0.9 * fr) * opacity);`,
+    );
+  };
+  m.customProgramCacheKey = () => `xray-${id}`;
+  xrays.set(key, m);
+  return m;
+}
+
 const shadowProps = { castShadow: true, receiveShadow: true } as const;
+
+/** Small surface-mount parts scattered over a rectangle, instanced (resistors, capacitors, small
+ * ICs); `avoid` = [x, z, w, d] rectangles left empty. */
+export const Scatter: React.FC<Group & { area: [number, number]; count?: number; seed?: string; part?: V3; preset?: Preset; color?: string; avoid?: [number, number, number, number][] }> = ({
+  area, count = 80, seed = "smd", part = [0.05, 0.025, 0.03], preset = "ceramic", color, avoid = [], ...g
+}) => {
+  const avoidKey = JSON.stringify(avoid);
+  const mesh = useMemo(() => {
+    const im = new THREE.InstancedMesh(new THREE.BoxGeometry(...part), mat(preset, color ?? "#ffffff"), count);
+    const m = new THREE.Matrix4(), q = new THREE.Quaternion(), up = new THREE.Vector3(0, 1, 0);
+    const col = new THREE.Color();
+    let k = 0;
+    for (let i = 0; k < count && i < count * 6; i++) {
+      const x = (rnd(seed, i * 3) - 0.5) * area[0], z = (rnd(seed, i * 3 + 1) - 0.5) * area[1];
+      if (avoid.some(([ax, az, aw, ad]) => Math.abs(x - ax) < aw / 2 && Math.abs(z - az) < ad / 2)) continue;
+      q.setFromAxisAngle(up, rnd(seed, i * 3 + 2) > 0.5 ? Math.PI / 2 : 0);
+      const sc = 0.7 + rnd(seed, i * 5 + 7) * 0.9;
+      m.compose(new THREE.Vector3(x, part[1] / 2, z), q, new THREE.Vector3(sc, 1, sc));
+      im.setMatrixAt(k, m);
+      const shade = rnd(seed, i * 5 + 9);
+      im.setColorAt(k, col.set(color ? color : shade < 0.5 ? "#2a2d36" : shade < 0.8 ? "#8a6a4a" : "#c9ccd2"));
+      k++;
+    }
+    im.count = k;
+    im.castShadow = true;
+    im.receiveShadow = true;
+    return im;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [area[0], area[1], count, seed, part[0], part[1], part[2], preset, color, avoidKey]);
+  return <group {...g}><primitive object={mesh} /></group>;
+};
+
+/** A textured top layer (decal) for a slab: a flat plane just above y = 0. */
+export const Top: React.FC<{ w: number; d: number; y: number; map: THREE.Texture; rough?: THREE.Texture; emissive?: string; emissiveIntensity?: number; metal?: number }> = ({ w, d, y, map, rough, emissive, emissiveIntensity = 0, metal = 0.2 }) => (
+  <mesh rotation-x={-Math.PI / 2} position={[0, y, 0]} receiveShadow>
+    <planeGeometry args={[w, d]} />
+    <meshPhysicalMaterial map={map} roughnessMap={rough} roughness={rough ? 1 : 0.4} metalness={metal} clearcoat={0.5} clearcoatRoughness={0.25}
+      emissive={emissive ?? "#000000"} emissiveMap={emissive ? map : null} emissiveIntensity={emissiveIntensity} />
+  </mesh>
+);
 
 export type BlockProps = Group & { size: V3; radius?: number; material?: THREE.Material; preset?: Preset; color?: string };
 /** A rounded box: the basic block of every model. */
@@ -61,33 +134,19 @@ export const Block: React.FC<BlockProps> = ({ size, radius = 0.04, material, pre
   </group>
 );
 
-/** A circuit board: a slab, copper traces and pads laid out from a seed (same seed, same board). */
-export const Board: React.FC<Group & { size?: [number, number]; thick?: number; seed?: string; traces?: number; dark?: boolean }> = ({
-  size = [3, 2], thick = 0.08, seed = "board", traces = 26, dark = false, ...g
+/** A circuit board: a slab with a routed top (traces with 45° bends, vias, pads, silkscreen) and
+ * scattered surface-mount parts, all from a seed (same seed, same board). `parts` = SMD count;
+ * `avoid` keeps parts off the spots where chips sit. */
+export const Board: React.FC<Group & { size?: [number, number]; thick?: number; seed?: string; traces?: number; parts?: number; dark?: boolean; mask?: string; avoid?: [number, number, number, number][] }> = ({
+  size = [3, 2], thick = 0.08, seed = "board", parts = 90, dark = false, mask, avoid = [], traces: _traces, ...g
 }) => {
   const [w, d] = size;
-  const items = useMemo(() => Array.from({ length: traces }, (_, i) => {
-    const horiz = rnd(seed, i * 5) > 0.5;
-    const len = 0.25 + rnd(seed, i * 5 + 1) * (horiz ? w : d) * 0.45;
-    const x = (rnd(seed, i * 5 + 2) - 0.5) * (w - len * (horiz ? 1 : 0) - 0.2);
-    const z = (rnd(seed, i * 5 + 3) - 0.5) * (d - len * (horiz ? 0 : 1) - 0.2);
-    return { horiz, len, x, z, pad: rnd(seed, i * 5 + 4) > 0.55 };
-  }), [seed, traces, w, d]);
+  const m = mask ?? (dark ? "#101c2a" : "#123c2c");
   return (
     <group {...g}>
-      <Block size={[w, thick, d]} radius={0.02} preset={dark ? "pcbDark" : "pcb"} />
-      {items.map((t, i) => (
-        <group key={i} position={[t.x, thick / 2 + 0.004, t.z]}>
-          <mesh material={mat("copper")} receiveShadow>
-            <boxGeometry args={t.horiz ? [t.len, 0.008, 0.025] : [0.025, 0.008, t.len]} />
-          </mesh>
-          {t.pad && (
-            <mesh material={mat("gold")} position={t.horiz ? [t.len / 2, 0.002, 0] : [0, 0.002, t.len / 2]}>
-              <cylinderGeometry args={[0.035, 0.035, 0.01, 12]} />
-            </mesh>
-          )}
-        </group>
-      ))}
+      <Block size={[w, thick, d]} radius={0.015} preset={dark ? "pcbDark" : "pcb"} color={m} />
+      <Top w={w * 0.995} d={d * 0.995} y={thick / 2 + 0.0015} map={pcbTexture(seed, "map", m)} rough={pcbTexture(seed, "rough", m)} />
+      {parts > 0 && <Scatter area={[w * 0.92, d * 0.9]} count={parts} seed={seed} position={[0, thick / 2, 0]} part={[w * 0.018, 0.022, w * 0.011]} avoid={avoid} />}
     </group>
   );
 };
@@ -120,40 +179,34 @@ export const Pins: React.FC<Group & { n?: number; half?: number; pin?: V3; ring?
   return <group {...g}><primitive object={mesh} /></group>;
 };
 
-/** A silicon die: a dark iridescent slab with a grid of cores (some lit) and a cache band. */
+/** A silicon die: an iridescent slab with a seeded floorplan on top (cores, cache arrays, wiring,
+ * IO ring). `lit` (0..1) makes the floorplan glow, enough to bloom near 1. */
 export const Die: React.FC<Group & { size?: number; cores?: [number, number]; lit?: number; seed?: string; thick?: number }> = ({
   size = 1, cores = [2, 4], lit = 0.6, seed = "die", thick = 0.06, ...g
-}) => {
-  const [cx, cz] = cores;
-  const cell = (size * 0.8) / Math.max(cx, cz * 0.75);
-  return (
-    <group {...g}>
-      <Block size={[size, thick, size]} radius={0.01} preset="silicon" />
-      {Array.from({ length: cx * cz }, (_, i) => {
-        const ix = i % cx, iz = Math.floor(i / cx);
-        const x = (ix - (cx - 1) / 2) * cell * 1.05;
-        const z = (iz - (cz - 1) / 2) * cell * 0.62 - size * 0.08;
-        const on = rnd(seed, i) < lit;
-        return (
-          <mesh key={i} position={[x, thick / 2 + 0.006, z]} material={on ? mat("siliconLit") : mat("silicon", "#3a3e66")} castShadow>
-            <boxGeometry args={[cell * 0.92, 0.012, cell * 0.55]} />
-          </mesh>
-        );
-      })}
-      <mesh position={[0, thick / 2 + 0.006, size * 0.33]} material={mat("gold", "#c9a64a", { roughness: 0.45 })}>
-        <boxGeometry args={[size * 0.82, 0.01, size * 0.16]} />
-      </mesh>
-    </group>
-  );
-};
-
-/** A chip package: substrate, pins, the silicon die, and an optional metal lid (heat spreader). */
-export const ChipPackage: React.FC<Group & { size?: number; lid?: boolean; seed?: string }> = ({ size = 1, lid = true, seed = "chip", ...g }) => (
+}) => (
   <group {...g}>
-    <Block size={[size, 0.06, size]} radius={0.015} preset="pcbDark" position={[0, 0.03, 0]} />
+    <Block size={[size, thick, size]} radius={Math.min(0.012, thick / 3)} preset="silicon" />
+    <Top w={size * 0.97} d={size * 0.97} y={thick / 2 + 0.001} map={dieTexture(seed, cores)} emissive="#ffffff"
+      emissiveIntensity={(Math.round(lit * 20) / 20) * 0.9} metal={0.55} />
+  </group>
+);
+
+/** A chip package: a textured substrate with bevelled edges, pins, capacitors around the die, the
+ * silicon die, and an optional brushed lid (heat spreader) with a raised centre. */
+export const ChipPackage: React.FC<Group & { size?: number; lid?: boolean; seed?: string; lit?: number }> = ({ size = 1, lid = true, seed = "chip", lit = 0.6, ...g }) => (
+  <group {...g}>
+    <Block size={[size, 0.06, size]} radius={0.02} preset="pcbDark" position={[0, 0.03, 0]} />
+    <Top w={size * 0.97} d={size * 0.97} y={0.0615} map={pcbTexture(`${seed}-sub`, "map", "#1a2030", 512)} />
     <Pins n={12} half={size / 2 - 0.03} pin={[size * 0.025, 0.02, size * 0.08]} position={[0, 0.02, 0]} />
-    <Die size={size * 0.55} seed={seed} position={[0, 0.09, 0]} thick={0.04} />
-    {lid && <Block size={[size * 0.82, 0.07, size * 0.82]} radius={0.02} preset="aluminium" position={[0, 0.15, 0]} />}
+    <Scatter area={[size * 0.86, size * 0.86]} count={36} seed={`${seed}-caps`} part={[size * 0.035, 0.018, size * 0.02]} preset="solder"
+      color="#c9ccd2" position={[0, 0.06, 0]} avoid={[[0, 0, size * 0.62, size * 0.62]]} />
+    <Die size={size * 0.55} seed={seed} position={[0, 0.08, 0]} thick={0.035} lit={lit} />
+    {lid && (
+      <group position={[0, 0.15, 0]}>
+        <Block size={[size * 0.82, 0.06, size * 0.82]} radius={0.03} preset="brushed" />
+        <Block size={[size * 0.7, 0.012, size * 0.7]} radius={0.004} preset="brushed" color="#d0d5de" position={[0, 0.032, 0]} />
+      </group>
+    )}
   </group>
 );
 

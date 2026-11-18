@@ -32,3 +32,28 @@ describe("zoomProgress", () => {
     expect(zoomProgress(at, 200)).toBe(2);
   });
 });
+
+import { direct } from "../src/three/Director";
+
+describe("direct (word-timed camera)", () => {
+  const ev = { chip: 30, dive: 60, a: 100, b: 110, c: 120 };
+  const keys = direct(ev, [
+    { at: 0, move: "hold", pos: [0, 2, 9], look: [0, 0, 0] },
+    { at: "chip", move: "push", look: [0, 0, 0], dir: [0, 0, 1], to: 4, dur: 20 },
+    { at: "dive", move: "dive", look: [0, 0, 0], dir: [0, 0, 1], to: 0.5, dur: 27 },
+    { at: ["a", "b", "c"], move: "cuts", poses: [{ pos: [1, 1, 1], look: [0, 0, 0] }, { pos: [2, 2, 2], look: [0, 0, 0] }, { pos: [3, 3, 3], look: [0, 0, 0] }] },
+  ]);
+  it("holds until the word, then moves", () => {
+    expect(cameraPose(keys, 29).pos).toEqual([0, 2, 9]);
+    expect(cameraPose(keys, 50).pos[2]).toBeCloseTo(4);
+    expect(cameraPose(keys, 87).pos[2]).toBeCloseTo(0.5);
+  });
+  it("cuts exactly on each listed word", () => {
+    expect(cameraPose(keys, 109).pos).toEqual([1, 1, 1]);
+    expect(cameraPose(keys, 110).pos).toEqual([2, 2, 2]);
+    expect(cameraPose(keys, 120).pos).toEqual([3, 3, 3]);
+  });
+  it("names a missing word", () => {
+    expect(() => direct(ev, [{ at: "nope", move: "cut", pos: [0, 0, 0], look: [0, 0, 1] }])).toThrow(/nope/);
+  });
+});

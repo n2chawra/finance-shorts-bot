@@ -7,6 +7,7 @@ import React, { useLayoutEffect, useMemo, useRef } from "react";
 import { Easing, useCurrentFrame } from "remotion";
 import type * as THREE from "three";
 import { clamp01, fadeTree, type V3 } from "./core";
+import { useMotionBlur } from "./post";
 
 export type ZoomLevel = {
   key: string;
@@ -67,6 +68,11 @@ export const ScaleZoom: React.FC<ScaleZoomProps> = ({ levels, ratio = 8, at, fad
   // (its offset on screen shrinks as 1 - smooth(u), not overshooting while the world grows)
   const w = 1 - (1 - u) / grow;
   const c: V3 = [a.o[0] + (b.o[0] - a.o[0]) * w, a.o[1] + (b.o[1] - a.o[1]) * w, a.o[2] + (b.o[2] - a.o[2]) * w];
+
+  // a dive streaks: radial blur from how fast the world is growing (log scale per frame)
+  const tPrev = zoomProgress(at, frame - 1);
+  const perStep = Math.log(levels[Math.min(levels.length - 1, i0)]?.ratio ?? ratio);
+  useMotionBlur("scalezoom", Math.abs(t - tPrev) * perStep * 0.9);
 
   const refs = useRef<(THREE.Group | null)[]>([]);
   const opacity = levels.map((_, j) => {

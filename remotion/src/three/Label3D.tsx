@@ -7,7 +7,7 @@ import React, { useLayoutEffect, useMemo, useRef } from "react";
 import { useCurrentFrame } from "remotion";
 import * as THREE from "three";
 import { FONT } from "../design/fonts";
-import { add3, cue, glowTexture, lerp3, TECH, useFontReady, type V3 } from "./core";
+import { add3, clampShift, cue, glowTexture, lerp3, TECH, useFontReady, type V3 } from "./core";
 
 export type Label3DProps = {
   /** the point on the model */
@@ -35,15 +35,16 @@ function measure(text: string, sub: string | undefined, fontPx: number) {
   const w1 = c.measureText(text).width;
   c.font = `500 ${fontPx * 0.62}px ${FONT}`;
   const w2 = sub ? c.measureText(sub).width : 0;
-  const w = Math.ceil(Math.max(w1, w2) + PAD * 2 + 14);
+  const w = Math.ceil(Math.max(w1, w2) + PAD * 2 + 14 + fontPx * 0.12); // + overhang of the last letter
   const h = Math.ceil(fontPx * 1.25 + (sub ? fontPx * 0.8 : 0) + PAD * 1.5);
   return { w, h };
 }
 
 export const Label3D: React.FC<Label3DProps> = ({ at, offset = [0.6, 0.6, 0], text, sub, start = 0, end, color = TECH.cyan, px = 46, align = "left" }) => {
   const frame = useCurrentFrame();
-  const ready = useFontReady(700);
-  useFontReady(500);
+  const r700 = useFontReady(700), r500 = useFontReady(500);
+  // measure only once both weights are in, or the plate is sized for a fallback font and clips
+  const ready = r700 && r500;
   const fontPx = 64 * S;
   const size = useMemo(() => (ready ? measure(text, sub, fontPx) : { w: 10, h: 10 }), [ready, text, sub, fontPx]);
   const canvas = useMemo(() => {
@@ -58,8 +59,9 @@ export const Label3D: React.FC<Label3DProps> = ({ at, offset = [0.6, 0.6, 0], te
     return t;
   }, [canvas]);
 
-  const pLine = cue(frame, start, 10);
-  const pText = cue(frame, start + 6, Math.max(6, (text.length + (sub?.length ?? 0) * 0.5) * 0.7), (t) => t);
+  // line in 8 frames, then the words write on fast (about 2.5 letters a frame, 4–10 frames)
+  const pLine = cue(frame, start, 8);
+  const pText = cue(frame, start + 5, Math.min(10, Math.max(4, (text.length + (sub?.length ?? 0)) * 0.4)), (t) => t);
   const out = end === undefined ? 0 : cue(frame, end - 8, 8);
   const alpha = (pLine > 0 ? 1 : 0) * (1 - out);
   const shown = Math.round(pText * (text.length + (sub?.length ?? 0)));
@@ -68,7 +70,7 @@ export const Label3D: React.FC<Label3DProps> = ({ at, offset = [0.6, 0.6, 0], te
     if (!ready) return;
     const g = canvas.getContext("2d")!;
     g.clearRect(0, 0, canvas.width, canvas.height);
-    const boxW = pText > 0 ? canvas.width * (0.25 + 0.75 * Math.min(1, pText * 1.6)) : 0;
+    const boxW = pText > 0 ? canvas.width * (0.3 + 0.7 * Math.min(1, pText * 2.5)) : 0;
     if (boxW > 0) {
       g.fillStyle = "rgba(8,11,22,0.86)";
       g.beginPath();
@@ -111,16 +113,11 @@ export const Label3D: React.FC<Label3DProps> = ({ at, offset = [0.6, 0.6, 0], te
     // bottom caption zone): measure it on screen and slide it back in
     const m = plate.current;
     if (!m) return;
-    const W = size3.width, H = size3.height, tall = H > W;
+    const W = size3.width, H = size3.height;
     const hp = (px * size.h) / fontPx, wp = (size.w / size.h) * hp;
     const ndc = tmp.clone().project(cam);
     const cx = (ndc.x * 0.5 + 0.5) * W + anchorX * hp, cy = (-ndc.y * 0.5 + 0.5) * H;
-    const [mL, mR, mT, mB] = tall ? [48, 170, 160, 430] : [60, 60, 60, 200];
-    let dx = 0, dy = 0;
-    if (cx - wp / 2 < mL) dx = mL - (cx - wp / 2);
-    else if (cx + wp / 2 > W - mR) dx = W - mR - (cx + wp / 2);
-    if (cy - hp / 2 < mT) dy = mT - (cy - hp / 2);
-    else if (cy + hp / 2 > H - mB) dy = H - mB - (cy + hp / 2);
+    const [dx, dy] = clampShift(cx, cy, wp, hp, W, H);
     m.position.set(anchorX + dx / hp, -dy / hp, 0);
   });
 
