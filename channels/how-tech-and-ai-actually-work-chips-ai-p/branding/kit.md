@@ -43,3 +43,11 @@ science and technology, engineering explained
   inside YouTube's safe area. No channel name on either, so they fit any name.
 - Source: `remotion/src/sheets/TechBrand.tsx` (stills `TechAvatar`, `TechBanner`):
   `npx remotion still src/index.ts TechAvatar|TechBanner <out.png>`.
+
+## Launched (18 Nov 2026)
+
+The spare channel on The Why Atlas's Google account (Brand Account "The Why Atlas", channel id
+UCopoOHsCvyr5QX2Kc0JcIHQ) was renamed **A Billion Switches**, handle **@ABillionSwitches**, with this
+avatar, banner, description and keywords, and connected on the dashboard. Routines: Tech · Research
+(00:37 daily), Tech · Video generation (05:27 daily), Tech · Studio (08:50 Mon+Wed), Tech · Scout
+(10:07 Mon+Thu), Tech · Reviewer (22:07 Tue+Fri), all IST.
