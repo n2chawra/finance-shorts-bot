@@ -30,6 +30,22 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 - `git log --since=3.days --stat origin/main`: what the other agents changed recently. Don't refactor
   code another agent changed in the last 3 days (fixing a real bug in it is fine).
 
+## 0a. Channels (every run; `agents/policy.md`, "Many channels")
+You serve every live channel, not only Paisa Panchayat. List them:
+```
+CHANNELS=$(python -c "import json;c=json.load(open('config/channels.json'))['channels'];print(' '.join(k for k,v in c.items() if v['status'] in ('active','paused')))"); echo "CHANNELS=$CHANNELS"
+```
+Read each one's `health` in `config/channels.json` (red first; a reason like "diagnosis tonight" is
+that channel's first job). Then do the **per-channel** parts once per channel, one at a time, with
+`export CHANNEL=<slug>` (every `generator`/`improvement` module reads it; add `--channel <slug>` to
+`python -m generator.run`), reading and writing that channel's `channels/<slug>/…` files wherever this
+page says `channels/<channel>/`: the data audit (duty 1, its `metrics/data-audit.json`), the analytics
+analysis (3b: `analysis/videos.json`, `channel.json`, `pictures.json`, the look challenger in its
+`cycle/backlog.json`), its notifications and its feedback acks (0b). A channel with no
+`metrics/videos.json` or `analytics.json` yet (newly launched) is skipped with a one-line note.
+**Shared, done once:** code and data bug fixes in the code (duties 1–2), the refactors (duty 3),
+`improvement/auditor/` and the activity file, whose findings and changes name the channel of each item.
+
 ## 0b. The owner's feedback (every run)
 Run `python3 -m generator.feedback --agent auditor` and follow `agents/policy.md`, "The owner's feedback":
 fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
@@ -141,12 +157,12 @@ the policy, the variety rules, the evaluator, the data audit, and deleting tests
 ## 5. Finish (always)
 Write `improvement/auditor/<DAY>.md` (audit summary, bugs found and fixed, quality findings, what you
 deferred and why), `improvement/activity/<DAY>-auditor.json` (policy.md format; `decision` is `acted`
-if you shipped a fix, `nothing` if everything was clean) and rewrite
-`channels/<channel>/notifications/auditor.json`. Commit them on branch 1 (or on a reports-only branch
+if you shipped a fix, `nothing` if everything was clean) and rewrite each channel's
+`channels/<slug>/notifications/auditor.json`. Commit them on branch 1 (or on a reports-only branch
 `agent/auditor/$DAY` if you changed no code):
 ```
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add -A improvement/auditor improvement/analysis improvement/activity/$DAY-auditor.json channels/<channel>/notifications/auditor.json <your code files> $(ls channels/<channel>/feedback-acks/auditor.json 2>/dev/null)
+git add -A improvement/auditor improvement/activity/$DAY-auditor.json <your code files> $(for S in $CHANNELS; do ls -d channels/$S/analysis channels/$S/cycle/backlog.json channels/$S/notifications/auditor.json channels/$S/feedback-acks/auditor.json 2>/dev/null; done)
 git commit -q -m "Auditor $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/auditor/$DAY
 ```

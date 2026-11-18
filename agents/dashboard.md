@@ -17,6 +17,16 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
 tonight's first job), `improvement/dashboard/backlog.json` and your last 3 reports in
 `improvement/dashboard/`.
 
+**Channels** (`agents/policy.md`, "Many channels"): the app is shared and serves every live channel.
+```
+CHANNELS=$(python3 -c "import json;c=json.load(open('../../config/channels.json'))['channels'];print(' '.join(k for k,v in c.items() if v['status'] in ('active','paused')))"); echo "CHANNELS=$CHANNELS"
+```
+Code changes, the backlog, reports and the activity file are shared and done once (name the channel
+of any channel-specific bug). **Per channel:** smoke-test the pages with each channel selected in the
+sidebar's switcher (the `channel` cookie, `lib/channel-scope.ts`), since every page's data is scoped
+by it; answer feedback (0b) and rewrite notifications with `export CHANNEL=<slug>`, in that channel's
+`channels/<slug>/` files.
+
 ## 0b. The owner's feedback (every run)
 Run `python3 -m generator.feedback --agent dashboard` and follow `agents/policy.md`, "The owner's feedback":
 fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
@@ -65,7 +75,7 @@ missing). Then from the repo root:
 ```
 git checkout -B agent/dashboard/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add apps/dashboard/src apps/dashboard/e2e apps/dashboard/package.json apps/dashboard/package-lock.json improvement/dashboard improvement/activity channels/<channel>/notifications/dashboard.json $(ls channels/<channel>/feedback-acks/dashboard.json 2>/dev/null)
+git add apps/dashboard/src apps/dashboard/e2e apps/dashboard/package.json apps/dashboard/package-lock.json improvement/dashboard improvement/activity $(for S in $CHANNELS; do ls channels/$S/notifications/dashboard.json channels/$S/feedback-acks/dashboard.json 2>/dev/null; done)
 git commit -q -m "Dashboard $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/dashboard/$DAY
 ```

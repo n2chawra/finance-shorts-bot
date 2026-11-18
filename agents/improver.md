@@ -24,14 +24,31 @@ Use `$PY` wherever this page says `python`.
 Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused` or
 `agents.improver` false.
 
+**Channels** (`agents/policy.md`, "Many channels"): you serve every live channel, not only Paisa Panchayat.
+```
+CHANNELS=$(python -c "import json;c=json.load(open('config/channels.json'))['channels'];print(' '.join(k for k,v in c.items() if v['status'] in ('active','paused')))"); echo "CHANNELS=$CHANNELS"
+```
+Do the **per-channel** parts once per channel, one at a time, with `export CHANNEL=<slug>` (every
+`generator`/`improvement` module reads it; add `--channel <slug>` to `python -m generator.run`),
+reading and writing that channel's `channels/<slug>/…` wherever this page says `channels/<channel>/`:
+the reads below and `CHANNEL=<slug> python -m improvement.evaluate`, feedback acks (0b), closing its
+experiments (1), its recurring failures (2), the weekly loop (4: at most one Shorts challenger **per
+channel**, its own `cycle/`, `experiments.json`, `changes.json`), its journal, weekly summary,
+`generator.impact` and notifications. **Shared, done once:** code, template and prompt changes in
+`generator/`, `renderer/`, `remotion/src` and the activity file (name the channel of each finding and
+change). A shared change must keep every channel's look: Paisa Panchayat's flat kit
+(`remotion/src/flat/`), the geography channel's maps, a 3D channel's `remotion/src/three/`; check
+stills for each channel it can reach. Budget: if all channels won't fit in one lean run, take them by
+`health` in `config/channels.json` (red, then amber, then green) and note the ones left for tomorrow.
+
 Read: `improvement/merge-log.json` (your last 5 entries; if the last was blocked, fixing that reason
 is tonight's first job), `channels/<channel>/monthly/focus.json` if it exists (the monthly review's items
 `"for": "improver"` rank above other proposals of the same priority), `channels/<channel>/journal.md` (last 20 lines), `channels/<channel>/experiment-log.json`,
 `channels/<channel>/experiments.json`, new proposals in `channels/<channel>/research/proposals.json`, open items in
 `channels/<channel>/longform/backlog.json`, the latest research and Scout reports, `channels/<channel>/metrics/runs.json`
-(last 7 days). Then run:
+(last 7 days). Then run, per channel:
 ```
-python -m improvement.evaluate
+CHANNEL=<slug> python -m improvement.evaluate
 ```
 
 ## 0b. The owner's feedback comes first (owner, 2026-10-30)
@@ -237,7 +254,7 @@ numbers; changes = what you changed with the experiment id) and rewrite
 ```
 git checkout -B agent/improver/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add -A generator renderer examples remotion/src remotion/test channels/<channel>/experiments.json improvement
+git add -A generator renderer examples remotion/src remotion/test improvement/activity/$DAY-improver.json $(for S in $CHANNELS; do ls -d channels/$S/experiments.json channels/$S/experiment-log.json channels/$S/changes.json channels/$S/cycle channels/$S/journal.md channels/$S/weekly channels/$S/template-decisions.json channels/$S/research/proposals.json channels/$S/research/shapes.json channels/$S/longform/backlog.json channels/$S/notifications/improver.json channels/$S/feedback-acks/improver.json 2>/dev/null; done)
 git commit -q -m "Improver $DAY: <one-line summary>"
 git push origin HEAD:refs/heads/agent/improver/$DAY
 ```

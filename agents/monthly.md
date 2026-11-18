@@ -16,6 +16,18 @@ DAY=$(TZ=Asia/Kolkata date +%F); MONTH=$(TZ=Asia/Kolkata date -d "$DAY -1 day" +
 ```
 Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused` or `agents.monthly` false.
 
+**Channels** (`agents/policy.md`, "Many channels"): one review per live channel.
+```
+CHANNELS=$(python -c "import json;c=json.load(open('config/channels.json'))['channels'];print(' '.join(k for k,v in c.items() if v['status'] in ('active','paused')))"); echo "CHANNELS=$CHANNELS"
+```
+Do everything below once per channel, one at a time, with `export CHANNEL=<slug>` (every
+`generator`/`improvement` module reads it; add `--channel <slug>` to `python -m generator.run`), reading
+and writing that channel's `channels/<slug>/…` wherever this page says `channels/<channel>/`: its
+review and `focus.json`, up to three proposals in its own `notifications/monthly.json` (the `current`
+value from its `settings` in `config/channels.json`, else `config/settings.json`), and its feedback acks.
+A channel launched this month with too few videos gets a short review saying so. **Shared, done once:**
+the activity file, whose findings name each channel's headline numbers.
+
 Read, for the month under review:
 - `channels/<channel>/metrics/videos.json` (every published video with its numbers), `channels/<channel>/metrics/runs.json`,
   `channels/<channel>/metrics/decisions.json` (what the owner approved or declined before), `config/settings.json`,
@@ -91,7 +103,7 @@ headline numbers; decision `acted`). Then:
 ```
 git checkout -B agent/monthly/$DAY
 date -u +%FT%TZ   # finishedAt: take it now, right before the commit; write it and START into the activity file (startedAt / finishedAt), then commit
-git add improvement/monthly improvement/activity channels/<channel>/notifications/monthly.json $(ls channels/<channel>/feedback-acks/monthly.json 2>/dev/null)
+git add improvement/activity $(for S in $CHANNELS; do ls -d channels/$S/monthly channels/$S/notifications/monthly.json channels/$S/feedback-acks/monthly.json 2>/dev/null; done)
 git commit -q -m "Monthly review $MONTH: <one-line verdict>"
 git push origin HEAD:refs/heads/agent/monthly/$DAY
 ```
