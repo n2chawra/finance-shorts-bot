@@ -1,0 +1,52 @@
+{
+ "agent": "research",
+ "day": "2026-11-19",
+ "channel": "how-tech-and-ai-actually-work-chips-ai-p",
+ "startedAt": "2026-11-18T19:08:13Z",
+ "finishedAt": "2026-11-18T19:15:05Z",
+ "summary": "First research night for How Tech Works. Added 5 sourced Shorts topics (4 inventions, 1 machine), fixed 7 seed topics whose reference videos didn't beat their channel's audience, and put 2 title challengers on the list.",
+ "decision": "acted",
+ "why": "No videos yet, so the niche scan was the evidence: across 3,594 tech Shorts, titles saying 'you/your' get 0.81x their channel's median (20% hits) against 1.02x (31%), and invention titles get 2.29x. 7 of 18 seed topics cited references below their channel's subscribers, which check-plan rejects.",
+ "findings": [
+  {
+   "title": "'You/your' titles do worse in tech Shorts",
+   "detail": "0.81x vs 1.02x the channel median, 20% vs 31% hits (n=426); lower inside 19 of 29 channels. Three of our open titles say 'Your'.",
+   "link": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-19.md"
+  },
+  {
+   "title": "Invention Shorts are the niche's breakouts",
+   "detail": "Badream's typewriter 6.6M on 19.8K subscribers; Logibu's 'Most Important Invention, Part N' 5.35M and 3.96M on 36K.",
+   "link": "https://youtube.com/shorts/ZDhDxu5eNig"
+  },
+  {
+   "title": "Zoom Shorts have no breakout reference",
+   "detail": "Their only Short references are Branch Education's, 0.2-0.4x of its 2.78M subscribers; re-referenced to Silicon Up Close (80.6x).",
+   "link": "https://youtube.com/watch?v=oBKrR3i6jWM"
+  },
+  {
+   "title": "The market scan doesn't cover this channel",
+   "detail": "market-data holds only Paisa Panchayat's finance scan; this channel's market.json has queries but no scan runs for it."
+  }
+ ],
+ "changes": [
+  {
+   "title": "5 topics added",
+   "detail": "microwave, first transistor, first mobile phone, first digital camera, Hoover Dam; 3 high priority"
+  },
+  {
+   "title": "Seed topics fixed",
+   "detail": "16 references given channel and subscribers, 5 re-referenced, zoom-sea-cable-slice rejected"
+  },
+  {
+   "title": "2 challengers",
+   "detail": "tech-title-no-you, tech-title-series in cycle/backlog.json"
+  }
+ ],
+ "nextCheck": "2026-11-20",
+ "links": [
+  {
+   "label": "Report",
+   "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-19.md"
+  }
+ ]
+}
