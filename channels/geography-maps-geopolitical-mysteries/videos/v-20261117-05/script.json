@@ -1,0 +1,983 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 31477,
+ "story": "why_shaped",
+ "shape": "reveal",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "explorer",
+  "key": "D",
+  "bpm": 76,
+  "look": {
+   "stage": "field",
+   "header": "strip",
+   "holder": "sign",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Which border should we explain next? Comment",
+ "feed_id": "2026-11-17-gambia-inside-senegal",
+ "facts": [
+  {
+   "label": "How far The Gambia reaches inland (almost)",
+   "value": 480,
+   "unit": "km",
+   "as_of": "2026-11-17",
+   "source": "Britannica",
+   "url": "https://www.britannica.com/place/The-Gambia",
+   "fixed": true
+  },
+  {
+   "label": "The Gambia's width either side of the river, at most",
+   "value": 50,
+   "unit": "km",
+   "as_of": "2026-11-17",
+   "source": "Britannica",
+   "url": "https://www.britannica.com/place/The-Gambia",
+   "fixed": true
+  },
+  {
+   "label": "Length of The Gambia's border with Senegal, its only neighbour",
+   "value": 749,
+   "unit": "km",
+   "as_of": "2026-11-17",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/The_Gambia%E2%80%93Senegal_border",
+   "fixed": true
+  },
+  {
+   "label": "Year Britain and France signed the treaty fixing the Gambia-Senegal border",
+   "value": 1889,
+   "unit": "year",
+   "as_of": "1889-08-10",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/The_Gambia%E2%80%93Senegal_border"
+  },
+  {
+   "label": "The border runs about this far from the river's north bank",
+   "value": 10,
+   "unit": "km",
+   "as_of": "1889-08-10",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/The_Gambia%E2%80%93Senegal_border",
+   "fixed": true
+  },
+  {
+   "label": "Year The Gambia became independent",
+   "value": 1965,
+   "unit": "year",
+   "as_of": "1965-02-18",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/The_Gambia%E2%80%93Senegal_border"
+  },
+  {
+   "label": "Year the Senegambia Confederation began",
+   "value": 1982,
+   "unit": "year",
+   "as_of": "1982-02-01",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/The_Gambia%E2%80%93Senegal_border"
+  },
+  {
+   "label": "Year the Senegambia Confederation ended",
+   "value": 1989,
+   "unit": "year",
+   "as_of": "1989-09-30",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/The_Gambia%E2%80%93Senegal_border"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.5,
+  "words": "Gambia *inside* Senegal?",
+  "tag": "A country in a country",
+  "angle": "question"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Why does Gambia sit inside Senegal, like a worm inside an apple?",
+   "events": {
+    "gambia": {
+     "word": "Gambia"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "senegal": {
+     "word": "Senegal"
+    },
+    "worm": {
+     "word": "worm"
+    },
+    "apple": {
+     "word": "apple"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "gambia",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "on the map: West Africa, Gambia inside Senegal",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "worm",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "gambia",
+      "what": "the thin river country fills red, a little boat already sailing up it"
+     },
+     {
+      "at": "senegal",
+      "what": "Senegal fills green all around it"
+     },
+     {
+      "at": "worm",
+      "what": "the red strip wriggles like a worm"
+     },
+     {
+      "at": "apple",
+      "what": "the camera settles on the river mouth where the sea bites in"
+     }
+    ],
+    "things": [
+     "map of west africa",
+     "gambia in red",
+     "the river",
+     "sailing boat",
+     "country labels"
+    ]
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Gambia is a real country, with its own flag and its own money, and Senegal wraps around it on every side but the sea.",
+   "events": {
+    "real": {
+     "word": "real"
+    },
+    "flag": {
+     "word": "flag"
+    },
+    "money": {
+     "word": "money"
+    },
+    "wraps": {
+     "word": "wraps"
+    },
+    "sea": {
+     "word": "sea"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "flag"
+    }
+   ],
+   "params": {
+    "component": "Planted",
+    "place": "on the map: Banjul at the river mouth, then all of Senegal",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "wraps",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "real",
+      "what": "the camera pushes in on Banjul, a girl reaches up"
+     },
+     {
+      "at": "flag",
+      "what": "she plants the Gambian flag on the map"
+     },
+     {
+      "at": "money",
+      "what": "a seller on the riverbank fans out banknotes"
+     },
+     {
+      "at": "wraps",
+      "what": "the camera pulls back, Senegal fills green and arrows curl round the strip"
+     },
+     {
+      "at": "sea",
+      "what": "the coast lights up, the one open side"
+     }
+    ],
+    "things": [
+     "map",
+     "gambian flag planted at banjul",
+     "girl",
+     "market seller with banknotes",
+     "wrapping arrows",
+     "sea label"
+    ]
+   }
+  },
+  {
+   "id": "long",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "From the coast, it runs almost {fact1} inland, yet at its widest it is only about {fact2} across.",
+   "events": {
+    "runs": {
+     "word": "runs"
+    },
+    "inland": {
+     "word": "inland"
+    },
+    "widest": {
+     "word": "widest"
+    },
+    "across": {
+     "word": "across"
+    }
+   },
+   "sfx": [],
+   "params": {
+    "component": "Tape",
+    "place": "on the map: the whole strip from the coast",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "widest",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "runs",
+      "what": "a surveyor walks a long measuring tape up the river"
+     },
+     {
+      "at": "inland",
+      "what": "the tape reaches the far end, its tag shows the length"
+     },
+     {
+      "at": "widest",
+      "what": "the camera drops close to a short crosswise tape"
+     },
+     {
+      "at": "across",
+      "what": "the short tape snaps tight, its tag shows the width"
+     }
+    ],
+    "things": [
+     "map",
+     "measuring tape along the river",
+     "surveyor",
+     "tape tags"
+    ],
+    "fig": {
+     "long": "{fact1}",
+     "wide": "{fact2}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "border",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Senegal is its only neighbour, and their border winds on for {fact3}, through villages, farms and forest.",
+   "events": {
+    "senegal": {
+     "word": "Senegal"
+    },
+    "neighbour": {
+     "word": "neighbour"
+    },
+    "border": {
+     "word": "border"
+    },
+    "winds": {
+     "word": "winds"
+    },
+    "villages": {
+     "word": "villages"
+    },
+    "forest": {
+     "word": "forest"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "border",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "component": "BorderLine",
+    "place": "on the map: a crossing on the border",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "winds",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "senegal",
+      "what": "the guard lifts the barrier"
+     },
+     {
+      "at": "neighbour",
+      "what": "a minibus crosses"
+     },
+     {
+      "at": "border",
+      "what": "the border starts drawing itself"
+     },
+     {
+      "at": "winds",
+      "what": "the camera pulls back as the line runs round the strip, the length lands on a tag"
+     },
+     {
+      "at": "villages",
+      "what": "huts pop up along the border"
+     },
+     {
+      "at": "forest",
+      "what": "baobabs pop up"
+     }
+    ],
+    "things": [
+     "map",
+     "border post and barrier",
+     "guard",
+     "minibus",
+     "border tracing itself",
+     "huts",
+     "baobabs"
+    ],
+    "fig": {
+     "len": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "river",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So how did that happen? The answer is the river. In the age of sailing ships, it was a highway deep into Africa, and Britain held its mouth.",
+   "events": {
+    "happen": {
+     "word": "happen"
+    },
+    "answer": {
+     "word": "answer"
+    },
+    "river": {
+     "word": "river"
+    },
+    "ships": {
+     "word": "ships"
+    },
+    "highway": {
+     "word": "highway"
+    },
+    "britain": {
+     "word": "Britain"
+    },
+    "mouth": {
+     "word": "mouth"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "RiverMouth",
+    "place": "on the map: the river mouth at Banjul",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "highway",
+      "size": "medium"
+     },
+     {
+      "at": "britain",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "happen",
+      "what": "a gull crosses the map"
+     },
+     {
+      "at": "river",
+      "what": "the river lights up"
+     },
+     {
+      "at": "ships",
+      "what": "a tall ship sails in from the ocean"
+     },
+     {
+      "at": "highway",
+      "what": "peanut boats travel upriver, the camera follows them inland"
+     },
+     {
+      "at": "britain",
+      "what": "the camera swings back, a fort and the British flag land at the mouth"
+     },
+     {
+      "at": "mouth",
+      "what": "a soldier points out to sea"
+     }
+    ],
+    "things": [
+     "map",
+     "river",
+     "tall ship",
+     "peanut boats",
+     "fort",
+     "british flag",
+     "soldier"
+    ]
+   }
+  },
+  {
+   "id": "france",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "France held the land all around it, the colony that became Senegal.",
+   "events": {
+    "france": {
+     "word": "France"
+    },
+    "land": {
+     "word": "land"
+    },
+    "around": {
+     "word": "around"
+    },
+    "colony": {
+     "word": "colony"
+    },
+    "senegal": {
+     "word": "Senegal"
+    }
+   },
+   "sfx": [],
+   "params": {
+    "component": "FrenchLand",
+    "place": "on the map: the land north and south of the river",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "around",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "france",
+      "what": "a French officer plants the tricolour north of the river"
+     },
+     {
+      "at": "land",
+      "what": "flags pop up all over the land"
+     },
+     {
+      "at": "around",
+      "what": "the camera pulls back: flags ring the river"
+     },
+     {
+      "at": "colony",
+      "what": "the land fills green"
+     },
+     {
+      "at": "senegal",
+      "what": "the name stamps across it"
+     }
+    ],
+    "things": [
+     "map",
+     "french officer",
+     "french flags planted all round",
+     "british flag at the mouth",
+     "senegal tag"
+    ]
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "deal",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "So in {fact4}, the two empires made a deal. Britain kept the river, and land about {fact5} back from its banks.",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "empires": {
+     "word": "empires"
+    },
+    "deal": {
+     "word": "deal"
+    },
+    "britain": {
+     "word": "Britain"
+    },
+    "river": {
+     "word": "river"
+    },
+    "land": {
+     "word": "land"
+    },
+    "banks": {
+     "word": "banks"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "deal"
+    }
+   ],
+   "params": {
+    "component": "Ruler",
+    "place": "on the old treaty map: the river's middle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "britain",
+      "size": "close"
+     },
+     {
+      "at": "banks",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "the map turns old, the year lands at its head"
+     },
+     {
+      "at": "empires",
+      "what": "a British and a French diplomat walk towards each other on the map"
+     },
+     {
+      "at": "deal",
+      "what": "they shake hands"
+     },
+     {
+      "at": "britain",
+      "what": "a pen traces the river in red"
+     },
+     {
+      "at": "land",
+      "what": "ruled lines are drawn either side"
+     },
+     {
+      "at": "banks",
+      "what": "the gap is measured, the camera closes in"
+     }
+    ],
+    "things": [
+     "sepia treaty map",
+     "year tag",
+     "two diplomats on the map",
+     "pen tracing the river",
+     "ruled lines",
+     "measured gap"
+    ],
+    "fig": {
+     "year": "{fact4}",
+     "gap": "{fact5}"
+    }
+   }
+  },
+  {
+   "id": "freedom",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "France took everything else. In {fact6}, Gambia became independent, inside exactly the same line.",
+   "events": {
+    "france": {
+     "word": "France"
+    },
+    "everything": {
+     "word": "everything"
+    },
+    "gambia": {
+     "word": "Gambia"
+    },
+    "independent": {
+     "word": "independent"
+    },
+    "same": {
+     "word": "same"
+    },
+    "line": {
+     "word": "line"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Independence",
+    "place": "on the map: Banjul and the whole strip",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "independent",
+      "size": "medium"
+     },
+     {
+      "at": "line",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "france",
+      "what": "French flags drop onto the land around the strip"
+     },
+     {
+      "at": "everything",
+      "what": "the land fills green"
+     },
+     {
+      "at": "gambia",
+      "what": "the camera dives to Banjul, a crowd raises the Gambian flag"
+     },
+     {
+      "at": "independent",
+      "what": "the year lands on a banner over the city"
+     },
+     {
+      "at": "same",
+      "what": "the camera pulls back, the border lights up"
+     },
+     {
+      "at": "line",
+      "what": "it pulses, unchanged"
+     }
+    ],
+    "things": [
+     "map",
+     "french flags on the land",
+     "crowd at banjul",
+     "gambian flag",
+     "year banner",
+     "glowing border"
+    ],
+    "fig": {
+     "year": "{fact6}"
+    }
+   }
+  },
+  {
+   "id": "union",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So did anyone ever fix it? In {fact7}, the two countries even joined as one, Senegambia. By {fact8}, they had split again.",
+   "events": {
+    "fix": {
+     "word": "fix"
+    },
+    "two": {
+     "word": "two"
+    },
+    "countries": {
+     "word": "countries"
+    },
+    "joined": {
+     "word": "joined"
+    },
+    "senegambia": {
+     "word": "Senegambia"
+    },
+    "split": {
+     "word": "split"
+    },
+    "again": {
+     "word": "again"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "split"
+    }
+   ],
+   "params": {
+    "component": "Senegambia",
+    "place": "on the map: both countries from above",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "senegambia",
+      "size": "close"
+     },
+     {
+      "at": "split",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fix",
+      "what": "the camera pushes in"
+     },
+     {
+      "at": "two",
+      "what": "both flags are planted"
+     },
+     {
+      "at": "joined",
+      "what": "the two countries flood one colour, the first year lands"
+     },
+     {
+      "at": "senegambia",
+      "what": "the joined name lands across them"
+     },
+     {
+      "at": "split",
+      "what": "the border cracks white, the map shakes, the colours snap back"
+     },
+     {
+      "at": "again",
+      "what": "the tag flips to the second year"
+     }
+    ],
+    "things": [
+     "map",
+     "both flags planted",
+     "one colour flood",
+     "senegambia label",
+     "year tag",
+     "cracking border"
+    ],
+    "fig": {
+     "from": "{fact7}",
+     "to": "{fact8}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "So a line drawn for river boats, about {fact5} from the water, is still where a whole country begins and ends.",
+   "events": {
+    "line": {
+     "word": "line"
+    },
+    "drawn": {
+     "word": "drawn"
+    },
+    "boats": {
+     "word": "boats"
+    },
+    "still": {
+     "word": "still"
+    },
+    "country": {
+     "word": "country"
+    },
+    "ends": {
+     "word": "ends"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "country",
+     "gain": 0.45
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "on the map at dusk: the river close, then the country from above",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "still",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "line",
+      "what": "a fisherman's boat glides past a white border stone"
+     },
+     {
+      "at": "boats",
+      "what": "more boats drift by in the evening light"
+     },
+     {
+      "at": "still",
+      "what": "the camera lifts high above the river"
+     },
+     {
+      "at": "country",
+      "what": "Gambia lights up red, a thin strip along the water"
+     },
+     {
+      "at": "ends",
+      "what": "the border traces itself all the way round"
+     }
+    ],
+    "things": [
+     "dusk map",
+     "fishing boats",
+     "border stone",
+     "measured gap",
+     "country lighting up",
+     "border tracing"
+    ],
+    "fig": {
+     "gap": "{fact5}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Gambia or Lesotho: which border is stranger? And if a friend ever asks you,",
+   "events": {
+    "gambia": {
+     "word": "Gambia"
+    },
+    "lesotho": {
+     "word": "Lesotho"
+    },
+    "stranger": {
+     "word": "stranger"
+    },
+    "friend": {
+     "word": "friend"
+    },
+    "asks": {
+     "word": "asks"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Loop",
+    "place": "Africa from space, then back down to West Africa",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "friend",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "gambia",
+      "what": "Gambia glows red in the west"
+     },
+     {
+      "at": "lesotho",
+      "what": "Lesotho glows red inside South Africa"
+     },
+     {
+      "at": "stranger",
+      "what": "a question mark bounces between the two"
+     },
+     {
+      "at": "friend",
+      "what": "the camera swoops back towards West Africa"
+     },
+     {
+      "at": "asks",
+      "what": "it settles on the first frame: Gambia inside Senegal"
+     }
+    ],
+    "things": [
+     "map of africa",
+     "lesotho",
+     "question mark",
+     "gambia"
+    ]
+   },
+   "sfx": []
+  }
+ ],
+ "narrator": "bm_george"
+}

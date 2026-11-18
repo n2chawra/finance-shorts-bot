@@ -1,0 +1,141 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 31477,
+  "duration_sec": 62,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "explorer",
+    "key": "D",
+    "bpm": 76,
+    "look": {
+      "stage": "field",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why does Gambia sit inside Senegal, like a worm inside an apple?",
+        "start": 0.3,
+        "seconds": 3.12,
+        "window": 3.8,
+        "fill": 0.821
+      },
+      {
+        "scene": "promise",
+        "text": "Gambia is a real country, with its own flag and its own money, and Senegal wraps around it on every side but the sea.",
+        "start": 4.1,
+        "seconds": 5.25,
+        "window": 5.93,
+        "fill": 0.885
+      },
+      {
+        "scene": "long",
+        "text": "From the coast, it runs almost 480 km inland, yet at its widest it is only about 50 km across.",
+        "start": 10.03,
+        "seconds": 5.69,
+        "window": 6.37,
+        "fill": 0.893
+      },
+      {
+        "scene": "border",
+        "text": "Senegal is its only neighbour, and their border winds on for 749 km, through villages, farms and forest.",
+        "start": 16.4,
+        "seconds": 5.7,
+        "window": 6.3,
+        "fill": 0.905
+      },
+      {
+        "scene": "river",
+        "text": "So how did that happen? The answer is the river. In the age of sailing ships, it was a highway deep into Africa, and Britain held its mouth.",
+        "start": 22.7,
+        "seconds": 6.05,
+        "window": 6.7,
+        "fill": 0.903
+      },
+      {
+        "scene": "france",
+        "text": "France held the land all around it, the colony that became Senegal.",
+        "start": 29.4,
+        "seconds": 2.96,
+        "window": 3.6,
+        "fill": 0.822
+      },
+      {
+        "scene": "deal",
+        "text": "So in 1889, the two empires made a deal. Britain kept the river, and land about 10 km back from its banks.",
+        "start": 33.0,
+        "seconds": 5.49,
+        "window": 6.17,
+        "fill": 0.89
+      },
+      {
+        "scene": "freedom",
+        "text": "France took everything else. In 1965, Gambia became independent, inside exactly the same line.",
+        "start": 39.17,
+        "seconds": 5.04,
+        "window": 5.7,
+        "fill": 0.884
+      },
+      {
+        "scene": "union",
+        "text": "So did anyone ever fix it? In 1982, the two countries even joined as one, Senegambia. By 1989, they had split again.",
+        "start": 44.87,
+        "seconds": 6.34,
+        "window": 7.0,
+        "fill": 0.906
+      },
+      {
+        "scene": "payoff",
+        "text": "So a line drawn for river boats, about 10 km from the water, is still where a whole country begins and ends.",
+        "start": 51.87,
+        "seconds": 5.28,
+        "window": 5.93,
+        "fill": 0.89
+      },
+      {
+        "scene": "loop",
+        "text": "Gambia or Lesotho: which border is stranger? And if a friend ever asks you,",
+        "start": 57.8,
+        "seconds": 3.55,
+        "window": 4.2,
+        "fill": 0.845
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -14.7,
+    "music_under_voice_db": 32.4
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 5.518,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
