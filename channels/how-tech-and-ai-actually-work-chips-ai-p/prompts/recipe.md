@@ -34,7 +34,7 @@ sourced `facts` entry; one narrator; captions of every word. Sources: `research/
 - **Shorts: 45–60 s**, about 150 words a minute (110–150 words), a new picture every 3–5 s (the references
   median 5.6 s; we run faster), the payoff at about half to two thirds, the last line looping into the
   first frame.
-- **Long: 12–15 minutes**, about 155 words a minute. A big comparison within 10 s; a route map of the
+- **Long: 7–8 minutes** (owner, 2026-11-18), about 155 words a minute. A big comparison within 10 s; a route map of the
   video by 60 s; 7–10 chapters of 40–145 s, each one scale deeper or one new part; a surprise at about 70%;
   climb back out to the opening action and loop to the first line. Chapter cards between chapters.
 
