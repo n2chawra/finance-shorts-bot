@@ -672,6 +672,19 @@
       "lastTouched": {
         "study/page.tsx": "2026-11-15"
       }
+    },
+    {
+      "id": "channels-sample-preview-broken",
+      "kind": "bug",
+      "title": "Channels: a sample's contact sheet showed as a broken image when it couldn't load",
+      "detail": "The Launch review drew /api/media/<id>/preview with no fallback, so a sample whose preview isn't committed yet (or a rejected GitHub token) showed a broken-image icon. It now shows 'Contact sheet not available yet'. The Channels and Scorecard pages were also missing from the smoke test's page list; both are in it now, with a test for the fallback.",
+      "page": "channels",
+      "found": "2026-11-18",
+      "status": "done",
+      "done": "2026-11-18",
+      "lastTouched": {
+        "channels/page.tsx": "2026-11-18"
+      }
     }
   ]
 }

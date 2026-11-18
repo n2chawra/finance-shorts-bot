@@ -6,7 +6,7 @@ import { SMOKE_PASSWORD } from "../playwright.config";
 const PAGES: [string, RegExp][] = [
   ["/", /Overview/], ["/queue", /Queue/], ["/calendar", /Calendar/], ["/videos", /Videos/], ["/videos/v030", /.+/],
   ["/analytics", /Analytics/], ["/study", /Study/], ["/growth", /Growth loop/], ["/agents", /Agents/], ["/notifications", /Notifications/],
-  ["/feedback", /Feedback/], ["/settings", /Settings/],
+  ["/feedback", /Feedback/], ["/settings", /Settings/], ["/channels", /Channels/], ["/scorecard", /Scorecard/],
 ];
 
 const IGNORED = [/Download the React DevTools/, /ToggleGroup is changing from uncontrolled/];
@@ -39,6 +39,8 @@ for (const [path, heading] of PAGES) {
   test(`page ${path} loads cleanly`, async ({ page }, info) => {
     const errors = watchConsole(page);
     await signIn(page);
+    // sample data has no rendered files behind /api/media (the Channels page's samples); serve a sample picture
+    await page.route("**/api/media/**", (route) => route.fulfill({ path: "public/sample/myth_vs_fact/preview.png" }));
     await page.goto(path);
     await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(heading, { timeout: 30_000 });
     await page.waitForTimeout(1200);   // let entrance animations finish before the screenshot
@@ -630,4 +632,13 @@ test("calendar shows likes on each published video and a weekly likes total unde
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Calendar", { timeout: 30_000 });
   await expect(page.getByTestId("week-likes").first()).toBeVisible();
   await expect(page.getByTestId("week-views").first()).toBeVisible();
+});
+
+test("a channel sample whose contact sheet can't load says so instead of a broken image", async ({ page }) => {
+  await signIn(page);
+  await page.route("**/api/media/**", (route) => route.fulfill({ status: 404, json: { error: "Not found" } }));
+  await page.goto("/channels");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Channels", { timeout: 30_000 });
+  await expect(page.getByText("Contact sheet not available yet").first()).toBeVisible();
+  await expect(page.locator("main img[src*='/api/media/']")).toHaveCount(0);
 });

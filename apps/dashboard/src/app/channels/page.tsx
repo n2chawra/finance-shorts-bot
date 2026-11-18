@@ -14,6 +14,14 @@ import { useAddChannel, useChannelFit, useChannelSamples, useChannels, useDecide
  * dial down each one; add a new one from a niche; connect its YouTube account in one click.
  */
 
+/** A sample's contact sheet; until it can be fetched (not committed yet, or GitHub refused) a plain note, not a broken image. */
+function ContactSheet({ id, title }: { id: string; title: string }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return <div className="flex aspect-[9/16] w-full items-center justify-center rounded-md border border-dashed border-ring bg-surface-3 p-3 text-center text-[12px] text-muted">Contact sheet not available yet</div>;
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={`/api/media/${id}/preview`} alt={`Contact sheet of ${title}`} onError={() => setFailed(true)} className="w-full rounded-md border border-ring bg-surface-3" loading="lazy" />;
+}
+
 const STATUS: Record<ChannelStatus, { label: string; tone: Tone; why: string }> = {
   setup: { label: "Setting up", tone: "info", why: "Research and the channel pack are being built; nothing is made or uploaded yet." },
   review: { label: "Launch review", tone: "violet", why: "Three sample Shorts are ready for your review." },
@@ -152,8 +160,7 @@ function ReviewPanel({ c }: { c: Channel }) {
           const l = review?.likeness[v.id];
           return (
             <div key={v.id} className="grid gap-3 rounded-lg bg-surface-2 p-3 md:grid-cols-[180px_1fr]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/api/media/${v.id}/preview`} alt={`Contact sheet of ${v.title}`} className="w-full rounded-md border border-ring bg-surface-3" loading="lazy" />
+              <ContactSheet id={v.id} title={v.title} />
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2 text-[13px] font-medium">{v.title}<Badge tone="neutral">{v.format === "long" ? "Long" : "Short"} · {Math.round(v.durationSec)} s</Badge></div>
                 <a href={`/api/media/${v.id}/video`} target="_blank" rel="noreferrer" className="mt-1 inline-block text-[12.5px] text-brand-text underline-offset-2 hover:underline">Watch the sample</a>
