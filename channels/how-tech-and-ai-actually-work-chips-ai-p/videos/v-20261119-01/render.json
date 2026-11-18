@@ -1,0 +1,125 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61947,
+  "duration_sec": 60,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "datahall",
+    "key": "A",
+    "bpm": 64,
+    "look": {
+      "stage": "kitchen",
+      "header": "neon",
+      "holder": "box",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 0.92,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "How did melted chocolate give Raytheon the microwave?",
+        "start": 0.3,
+        "seconds": 3.79,
+        "window": 4.17,
+        "fill": 0.909
+      },
+      {
+        "scene": "lab",
+        "text": "In 1945, radar engineer Percy Spencer felt the chocolate in his pocket go soft.",
+        "start": 4.47,
+        "seconds": 6.77,
+        "window": 7.37,
+        "fill": 0.919
+      },
+      {
+        "scene": "tube",
+        "text": "Nothing near him was hot, so what melted it? A magnetron: the tube that makes microwaves.",
+        "start": 11.83,
+        "seconds": 6.6,
+        "window": 7.13,
+        "fill": 0.926
+      },
+      {
+        "scene": "inside",
+        "text": "Inside, a magnet bends electrons into a spinning wheel past little copper cavities.",
+        "start": 18.97,
+        "seconds": 6.2,
+        "window": 6.7,
+        "fill": 0.925
+      },
+      {
+        "scene": "ring",
+        "text": "Each cavity rings like a whistle, and invisible waves pour out.",
+        "start": 25.67,
+        "seconds": 4.58,
+        "window": 5.0,
+        "fill": 0.916
+      },
+      {
+        "scene": "water",
+        "text": "They shake the water in food, and that shaking is heat. He tried popcorn: it popped.",
+        "start": 30.67,
+        "seconds": 5.89,
+        "window": 6.33,
+        "fill": 0.93
+      },
+      {
+        "scene": "box",
+        "text": "But to cook dinner, the waves had to stay inside. So Raytheon shut the tube in a metal box: the Radarange.",
+        "start": 37.0,
+        "seconds": 7.76,
+        "window": 8.23,
+        "fill": 0.943
+      },
+      {
+        "scene": "payoff",
+        "text": "The first one stood almost as tall as a man, weighed 750 pounds and cost about $5,000.",
+        "start": 45.23,
+        "seconds": 8.14,
+        "window": 8.77,
+        "fill": 0.928
+      },
+      {
+        "scene": "loop",
+        "text": "Today that same tube hums in your kitchen, all thanks to one melted candy bar.",
+        "start": 54.0,
+        "seconds": 5.43,
+        "window": 6.07,
+        "fill": 0.895
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.6,
+    "lufs": -14.8,
+    "music_under_voice_db": 26.4
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 22.704,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

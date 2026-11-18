@@ -1,0 +1,335 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:10:15.600063+00:00",
+    "finishedAt": "2026-11-18T20:10:15.600063+00:00",
+    "notes": [
+      "style.bpm must be 60–66 for datahall"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:10:18.830731+00:00",
+    "finishedAt": "2026-11-18T20:10:18.830731+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:11:21.924178+00:00",
+    "finishedAt": "2026-11-18T20:11:21.924178+00:00",
+    "notes": [
+      "beat 'lab'.params.place contains a typed number; use a placeholder: 'a radar lab in 1945, a test bench under a lamp'",
+      "the hook's first sentence names no famous person or company and no figure (got 'How did a melted candy bar give us the microwave oven?'): the subject, or the price the viewer pays, is said first, as in \"Costco sells you a hot dog for {price}. So how does it make any money?\"",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 57 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:11:32.620132+00:00",
+    "finishedAt": "2026-11-18T20:11:32.620132+00:00",
+    "notes": [
+      "beat 'payoff'.params.place contains a typed number; use a placeholder: 'a 1947 showroom floor under spotlights'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:11:35.767909+00:00",
+    "finishedAt": "2026-11-18T20:11:35.767909+00:00",
+    "notes": [
+      "beat 'payoff'.say contains a typed number; use a placeholder: 'The first one, in 1947, stood almost as tall as a man, weighed {fact2} pounds and cost {fact3}.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:11:39.344890+00:00",
+    "finishedAt": "2026-11-18T20:11:39.344890+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:12:15.270505+00:00",
+    "finishedAt": "2026-11-18T20:12:15.270505+00:00",
+    "notes": [
+      "All 3 facts confirmed on the source page history.com/news/microwave-oven-invention (WebFetch): 1945 ('In 1945, Spencer noticed that a candy bar in his pocket had mysteriously melted while testing an active magnetron'); 1947 Radarange 'nearly six feet tall and weighing 750 pounds'; 'cost around $5,000'. Verify items both confirmed (popcorn test also on the page). Magnetron mechanics (magnet curls electrons into a spinning spoke wheel past resonant copper cavities; waves shake water molecules into heat; metal box keeps waves in) are a correct simplification; magnetrons are still in today's ovens. No advice, tone fine, the channel disclaimer ends the description. Notes: the source says 'around $5,000' (the payoff says 'cost $5,000', acceptable); the hook's Raytheon badge on a modern microwave is loose (Raytheon's Amana made later Radaranges), so keep it subtle; the lab beat hangs the coat on a stand while the line says the bar was in his pocket, a small mismatch."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:14:46.406848+00:00",
+    "finishedAt": "2026-11-18T20:14:46.406848+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:17:12.633652+00:00",
+    "finishedAt": "2026-11-18T20:17:12.633652+00:00",
+    "notes": [
+      "beat 'hook': moment at 'oven' is not one of this beat's events (name the word in `events` first)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:17:20.167607+00:00",
+    "finishedAt": "2026-11-18T20:17:20.167607+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:17:54.459201+00:00",
+    "finishedAt": "2026-11-18T20:17:54.459201+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:18:22.680887+00:00",
+    "finishedAt": "2026-11-18T20:18:22.680887+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:18:57.303272+00:00",
+    "finishedAt": "2026-11-18T20:18:57.303272+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:19:26.157503+00:00",
+    "finishedAt": "2026-11-18T20:19:26.157503+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:19:54.571826+00:00",
+    "finishedAt": "2026-11-18T20:19:54.571826+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:20:22.355980+00:00",
+    "finishedAt": "2026-11-18T20:20:22.355980+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:20:49.191519+00:00",
+    "finishedAt": "2026-11-18T20:20:49.191519+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:21:16.828329+00:00",
+    "finishedAt": "2026-11-18T20:21:16.828329+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:21:38.651321+00:00",
+    "finishedAt": "2026-11-18T20:24:36.865516+00:00",
+    "notes": [
+      "2.3 s with nothing new on screen in beat 'lab' (at most 1.8 s): add an action on the phrase being said there",
+      "length 62 s is outside 45–60 s: cut about 6 spoken words",
+      "the Short runs 62.5 s but its assigned length (arms.length) is 45-60 s: cut or add a beat",
+      "the hook runs 4.7 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:24:54.791526+00:00",
+    "finishedAt": "2026-11-18T20:24:54.791526+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:25:18.641495+00:00",
+    "finishedAt": "2026-11-18T20:25:18.641495+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:25:37.910178+00:00",
+    "finishedAt": "2026-11-18T20:28:01.901001+00:00",
+    "notes": [
+      "2.0 s with nothing new on screen in beat 'lab' (at most 1.8 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:28:11.976083+00:00",
+    "finishedAt": "2026-11-18T20:28:11.976083+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:28:12.865954+00:00",
+    "finishedAt": "2026-11-18T20:30:25.100971+00:00",
+    "notes": [
+      "1.8 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:30:34.645857+00:00",
+    "finishedAt": "2026-11-18T20:30:34.645857+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:30:35.563308+00:00",
+    "finishedAt": "2026-11-18T20:32:51.124654+00:00",
+    "notes": [
+      "1.8 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:33:06.263117+00:00",
+    "finishedAt": "2026-11-18T20:33:06.263117+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:33:07.143739+00:00",
+    "finishedAt": "2026-11-18T20:35:15.272326+00:00",
+    "notes": [
+      "60 s, ember/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:35:30.681043+00:00",
+    "finishedAt": "2026-11-18T20:37:45.342003+00:00",
+    "notes": [
+      "60 s, ember/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:41:34.508672+00:00",
+    "finishedAt": "2026-11-18T20:41:34.508672+00:00",
+    "notes": [
+      "[scene] lab beat, 5.0-10.0 s (clearest at 7.5 s): the source chip 'Data: History.com · Jan 1947' sits right on top of the yellow 1945 year chip, so the year can't be read (text over text). The chip also says Jan 1947 over a 1945 fact. Move the source line clear of params.fig.year and date it by the fact shown (1945)",
+      "[script] box/payoff seam, 45.0 s, on the word 'the Radarange.': the Radarange cabinet is half off the right edge, under the right-hand buttons, and the rest of the frame is empty spotlights. The 'Radarange' nameplate from the box beat's moments doesn't show in any still. Frame the cabinet whole and centred and land the nameplate on the spoken word",
+      "[scene] tube beat, 17.5 s: the antenna's wave beam runs straight through the 'magnetron / the tube that makes microwaves' label and hides part of 'microwaves'. Keep the label clear of the beam"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:41:54.967266+00:00",
+    "finishedAt": "2026-11-18T20:44:14.545962+00:00",
+    "notes": [
+      "60 s, ember/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-18T20:47:27.406607+00:00",
+    "finishedAt": "2026-11-18T20:47:27.406607+00:00",
+    "notes": [
+      "[scene] tube beat, 17.5 s: the 'magnetron / the tube that makes microwaves' label moved to the lower left, but the antenna's wave beam still runs straight through 'microwaves' on its second line. The label now also sits right on the 'microwaves.' caption with almost no gap. Put the label in clear space (upper right of the beam, beside the copper body) away from both the beam and the caption band"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:47:41.704094+00:00",
+    "finishedAt": "2026-11-18T20:49:53.951465+00:00",
+    "notes": [
+      "60 s, ember/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:55:46.676104+00:00",
+    "finishedAt": "2026-11-18T20:55:46.676104+00:00",
+    "notes": [
+      "Seven directed 3D places with a moving camera. Microwave and candy bar from the first frame, and the loop returns to it. 1945 on the wall, and 750 lb and $5,000 on a scale and a price tag. Label, Radarange framing and year-chip fixes all hold. Minor: at 17 s the antenna's glow washes out half the magnetron label's subtitle for about 1 s, while the caption says the same words."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T20:55:57.910072+00:00",
+    "finishedAt": "2026-11-18T21:46:06.402039+00:00",
+    "notes": [
+      "60 s, ember/datahall, peak -1.0 dB, mean -16.6 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-18T21:46:26.976672+00:00",
+    "finishedAt": "2026-11-18T21:46:26.976672+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

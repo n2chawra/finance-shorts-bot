@@ -1,0 +1,935 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 61947,
+  "story": "invention_story",
+  "shape": "reveal",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "datahall",
+    "key": "A",
+    "bpm": 64,
+    "look": {
+      "stage": "kitchen",
+      "header": "neon",
+      "holder": "box",
+      "entrance": "pop"
+    }
+  },
+  "arms": {
+    "length": "45-60",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "28"
+  },
+  "hook_style": "question",
+  "cta": "Which invention should we take apart next? Comment",
+  "feed_id": "2026-11-19-microwave-candy-bar",
+  "facts": [
+    {
+      "label": "Year Spencer noticed the melted candy bar while testing a magnetron",
+      "value": 1945,
+      "unit": "year",
+      "as_of": "1945-01-01",
+      "source": "History.com",
+      "url": "https://www.history.com/news/microwave-oven-invention"
+    },
+    {
+      "label": "Weight of the 1947 Radarange, in pounds",
+      "value": 750,
+      "unit": "count",
+      "as_of": "1947-01-01",
+      "source": "History.com",
+      "url": "https://www.history.com/news/microwave-oven-invention",
+      "fixed": true
+    },
+    {
+      "label": "Price of the 1947 Radarange, in dollars of the time",
+      "value": 5000,
+      "unit": "money",
+      "as_of": "1947-01-01",
+      "source": "History.com",
+      "url": "https://www.history.com/news/microwave-oven-invention",
+      "currency": "USD",
+      "fixed": true
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 1.5,
+    "words": "Candy bar → *microwave?*",
+    "tag": "How it started",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "How did melted chocolate give Raytheon the microwave?",
+      "events": {
+        "melted": {
+          "word": "melted"
+        },
+        "chocolate": {
+          "word": "chocolate"
+        },
+        "raytheon": {
+          "word": "Raytheon"
+        },
+        "microwave": {
+          "word": "microwave"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "microwave"
+        }
+      ],
+      "params": {
+        "component": "Hook",
+        "place": [
+          "a dark kitchen at night",
+          "the microwave's glowing window"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "chocolate",
+            "size": "close"
+          },
+          {
+            "at": "microwave",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "melted",
+            "what": "a chocolate bar on the counter sags and drips as the camera pushes in"
+          },
+          {
+            "at": "chocolate",
+            "what": "the camera pushes close on the bar, its wrapper label lit"
+          },
+          {
+            "at": "raytheon",
+            "what": "a small Raytheon badge glows on the microwave's door"
+          },
+          {
+            "at": "microwave",
+            "what": "the camera pulls back: the microwave beside it hums, its window glowing, plate turning"
+          }
+        ],
+        "things": [
+          "kitchen counter",
+          "melting candy bar",
+          "microwave oven",
+          "turning plate"
+        ]
+      }
+    },
+    {
+      "id": "lab",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "In {fact1}, radar engineer Percy Spencer felt the chocolate in his pocket go soft.",
+      "events": {
+        "in": {
+          "word": "In"
+        },
+        "radar": {
+          "word": "radar"
+        },
+        "engineer": {
+          "word": "engineer"
+        },
+        "percy": {
+          "word": "Percy"
+        },
+        "chocolate": {
+          "word": "chocolate"
+        },
+        "pocket": {
+          "word": "pocket"
+        },
+        "soft": {
+          "word": "soft"
+        },
+        "date": {
+          "sec": 1.3
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Lab",
+        "place": "a wartime radar lab, a test bench under a lamp",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "chocolate",
+            "size": "medium"
+          },
+          {
+            "at": "soft",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "in",
+            "what": "the year flips onto the wall calendar"
+          },
+          {
+            "at": "date",
+            "what": "the radar dish swings round and the calendar year pulses"
+          },
+          {
+            "at": "engineer",
+            "what": "the scope's blips flare green"
+          },
+          {
+            "at": "radar",
+            "what": "a radar dish on the bench turns, a sweep glowing on its round screen"
+          },
+          {
+            "at": "percy",
+            "what": "a lab coat hangs on a stand by the bench, a name tag writes on"
+          },
+          {
+            "at": "chocolate",
+            "what": "the camera pushes toward the coat's pocket, a candy bar peeking out"
+          },
+          {
+            "at": "pocket",
+            "what": "the pocket glows warm from inside"
+          },
+          {
+            "at": "soft",
+            "what": "the bar droops over the pocket's edge and drips"
+          }
+        ],
+        "things": [
+          "radar dish",
+          "round radar screen",
+          "lab coat",
+          "candy bar in a pocket",
+          "year on a wall calendar"
+        ],
+        "fig": {
+          "year": "{fact1}"
+        }
+      }
+    },
+    {
+      "id": "tube",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Nothing near him was hot, so what melted it? A magnetron: the tube that makes microwaves.",
+      "events": {
+        "nothing": {
+          "word": "Nothing"
+        },
+        "hot": {
+          "word": "hot"
+        },
+        "melted": {
+          "word": "melted"
+        },
+        "magnetron": {
+          "word": "magnetron"
+        },
+        "tube": {
+          "word": "tube"
+        },
+        "makes": {
+          "word": "makes"
+        },
+        "microwaves": {
+          "word": "microwaves"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "magnetron"
+        }
+      ],
+      "params": {
+        "component": "Tube",
+        "place": "the test bench, the magnetron on its stand",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "magnetron",
+            "size": "close"
+          },
+          {
+            "at": "microwaves",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "nothing",
+            "what": "the bench's lamp, wires and dials sit cold and blue"
+          },
+          {
+            "at": "hot",
+            "what": "a thermometer on the bench stays low, its bulb blue"
+          },
+          {
+            "at": "melted",
+            "what": "the thermometer flashes blue again and a cold spotlight lands on the empty middle of the bench"
+          },
+          {
+            "at": "magnetron",
+            "what": "the copper magnetron rises on its stand and glows, a label writes on"
+          },
+          {
+            "at": "tube",
+            "what": "the camera circles the finned copper tube"
+          },
+          {
+            "at": "makes",
+            "what": "its antenna tip flares bright"
+          },
+          {
+            "at": "microwaves",
+            "what": "rings of waves pulse out of its antenna toward the coat"
+          }
+        ],
+        "things": [
+          "lamp",
+          "thermometer",
+          "copper magnetron",
+          "cooling fins",
+          "antenna",
+          "wave rings"
+        ]
+      }
+    },
+    {
+      "id": "inside",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Inside, a magnet bends electrons into a spinning wheel past little copper cavities.",
+      "events": {
+        "inside": {
+          "word": "Inside"
+        },
+        "magnet": {
+          "word": "magnet"
+        },
+        "bends": {
+          "word": "bends"
+        },
+        "electrons": {
+          "word": "electrons"
+        },
+        "spinning": {
+          "word": "spinning"
+        },
+        "wheel": {
+          "word": "wheel"
+        },
+        "copper": {
+          "word": "copper"
+        },
+        "cavities": {
+          "word": "cavities"
+        }
+      },
+      "transition": "zoom-through",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "inside"
+        }
+      ],
+      "params": {
+        "component": "Inside",
+        "place": "inside the magnetron, cut open",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "electrons",
+            "size": "close"
+          },
+          {
+            "at": "cavities",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "inside",
+            "what": "the tube slices open: a copper ring of holes around a thin wire"
+          },
+          {
+            "at": "magnet",
+            "what": "two magnets slide on above and below, glowing field lines between them"
+          },
+          {
+            "at": "bends",
+            "what": "the field lines between the magnets brighten"
+          },
+          {
+            "at": "electrons",
+            "what": "a cloud of blue electrons leaves the centre wire"
+          },
+          {
+            "at": "spinning",
+            "what": "the electrons curl into a spinning wheel with spokes"
+          },
+          {
+            "at": "wheel",
+            "what": "the wheel of spokes speeds up"
+          },
+          {
+            "at": "copper",
+            "what": "the copper ring catches a warm light"
+          },
+          {
+            "at": "cavities",
+            "what": "the spokes sweep past the ring's little cavities, each lighting as they pass"
+          }
+        ],
+        "things": [
+          "copper anode ring",
+          "cavities",
+          "centre wire",
+          "two magnets",
+          "electron wheel"
+        ]
+      }
+    },
+    {
+      "id": "ring",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Each cavity rings like a whistle, and invisible waves pour out.",
+      "events": {
+        "cavity": {
+          "word": "cavity"
+        },
+        "rings": {
+          "word": "rings"
+        },
+        "whistle": {
+          "word": "whistle"
+        },
+        "waves": {
+          "word": "waves"
+        },
+        "pour": {
+          "word": "pour"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "rings"
+        }
+      ],
+      "params": {
+        "component": "Ring",
+        "place": "one cavity, close up inside the ring",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme"
+          },
+          {
+            "at": "waves",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "cavity",
+            "what": "the camera holds on one keyhole cavity as a spoke sweeps past"
+          },
+          {
+            "at": "rings",
+            "what": "the cavity pulses amber in rhythm"
+          },
+          {
+            "at": "whistle",
+            "what": "glowing ripples shiver out of its mouth"
+          },
+          {
+            "at": "waves",
+            "what": "the camera pulls back: every cavity sends ripples into the antenna"
+          },
+          {
+            "at": "pour",
+            "what": "a stream of waves pours out of the tube's antenna"
+          }
+        ],
+        "things": [
+          "keyhole cavity",
+          "electron spoke",
+          "ripples",
+          "antenna"
+        ]
+      }
+    },
+    {
+      "id": "water",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "They shake the water in food, and that shaking is heat. He tried popcorn: it popped.",
+      "events": {
+        "shake": {
+          "word": "shake"
+        },
+        "water": {
+          "word": "water"
+        },
+        "food": {
+          "word": "food"
+        },
+        "heat": {
+          "word": "heat"
+        },
+        "tried": {
+          "word": "tried"
+        },
+        "popcorn": {
+          "word": "popcorn"
+        },
+        "popped": {
+          "word": "popped"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "popped"
+        }
+      ],
+      "params": {
+        "component": "Water",
+        "place": "inside a popcorn kernel, among water molecules",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "heat",
+            "size": "medium"
+          },
+          {
+            "at": "popcorn",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "shake",
+            "what": "waves sweep through; water molecules flip back and forth with them"
+          },
+          {
+            "at": "water",
+            "what": "a label names one molecule: water"
+          },
+          {
+            "at": "food",
+            "what": "the molecules flip faster, a wave crest passing through them"
+          },
+          {
+            "at": "heat",
+            "what": "the molecules glow from blue to orange as they shake faster"
+          },
+          {
+            "at": "tried",
+            "what": "the molecules start shrinking away as the camera pulls back"
+          },
+          {
+            "at": "popcorn",
+            "what": "the camera pulls back: they sit inside a kernel on the bench by the tube"
+          },
+          {
+            "at": "popped",
+            "what": "the kernel bursts into white popcorn and others pop around it"
+          }
+        ],
+        "things": [
+          "water molecules",
+          "waves",
+          "popcorn kernel",
+          "popped popcorn"
+        ]
+      }
+    },
+    {
+      "id": "box",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "But to cook dinner, the waves had to stay inside. So Raytheon shut the tube in a metal box: the Radarange.",
+      "events": {
+        "cook": {
+          "word": "cook"
+        },
+        "dinner": {
+          "word": "dinner"
+        },
+        "waves": {
+          "word": "waves"
+        },
+        "stay": {
+          "word": "stay"
+        },
+        "inside": {
+          "word": "inside"
+        },
+        "raytheon": {
+          "word": "Raytheon"
+        },
+        "shut": {
+          "word": "shut"
+        },
+        "tube": {
+          "word": "tube"
+        },
+        "metal": {
+          "word": "metal"
+        },
+        "box": {
+          "word": "box"
+        },
+        "radarange": {
+          "word": "Radarange"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "box"
+        }
+      ],
+      "params": {
+        "component": "Box",
+        "place": "a Raytheon workshop, the oven built part by part",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "metal",
+            "size": "wide"
+          },
+          {
+            "at": "radarange",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "cook",
+            "what": "the magnetron sits alone on a workbench, waves leaking off in every direction"
+          },
+          {
+            "at": "dinner",
+            "what": "a dinner plate slides onto the bench beside the tube"
+          },
+          {
+            "at": "waves",
+            "what": "the leaking rings flare brighter for a moment"
+          },
+          {
+            "at": "stay",
+            "what": "the leaking waves start to shrink back"
+          },
+          {
+            "at": "inside",
+            "what": "the last leaking waves fade into the dark"
+          },
+          {
+            "at": "raytheon",
+            "what": "a sign reading Raytheon lights over the workbench"
+          },
+          {
+            "at": "shut",
+            "what": "the back wall of a box slams down behind the tube"
+          },
+          {
+            "at": "tube",
+            "what": "the magnetron's copper glows hot"
+          },
+          {
+            "at": "metal",
+            "what": "the other steel walls fly in one by one around the tube"
+          },
+          {
+            "at": "box",
+            "what": "the box closes; waves bounce inside it, seen through the walls"
+          },
+          {
+            "at": "radarange",
+            "what": "a nameplate lands on the door: Radarange"
+          }
+        ],
+        "things": [
+          "workbench",
+          "magnetron",
+          "dinner plate",
+          "steel walls",
+          "bouncing waves",
+          "Raytheon sign",
+          "Radarange nameplate"
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "The first one stood almost as tall as a man, weighed {fact2} pounds and cost about {fact3}.",
+      "events": {
+        "first": {
+          "word": "first"
+        },
+        "stood": {
+          "word": "stood"
+        },
+        "almost": {
+          "word": "almost"
+        },
+        "tall": {
+          "word": "tall"
+        },
+        "man": {
+          "word": "man"
+        },
+        "weighed": {
+          "word": "weighed"
+        },
+        "pounds": {
+          "word": "pounds"
+        },
+        "cost": {
+          "word": "cost"
+        },
+        "about": {
+          "word": "about"
+        },
+        "lands": {
+          "end": 0.7
+        },
+        "tick": {
+          "sec": 8.75
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "weighed"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "place": "an old showroom floor under spotlights",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "weighed",
+            "size": "close"
+          },
+          {
+            "at": "cost",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "first",
+            "what": "the tall Radarange cabinet rolls into the spotlight"
+          },
+          {
+            "at": "stood",
+            "what": "the cabinet stops in the light, its window glowing on"
+          },
+          {
+            "at": "almost",
+            "what": "the cabinet's top edge lights up cyan"
+          },
+          {
+            "at": "tall",
+            "what": "a person's outline rises beside it, the cabinet almost as tall"
+          },
+          {
+            "at": "man",
+            "what": "a height bracket draws between the floor and the cabinet's top"
+          },
+          {
+            "at": "weighed",
+            "what": "a freight scale under it swings, its weight counting up on the dial"
+          },
+          {
+            "at": "pounds",
+            "what": "the scale's platform sinks with a bounce under the weight"
+          },
+          {
+            "at": "cost",
+            "what": "a price tag swings down from the cabinet's handle"
+          },
+          {
+            "at": "about",
+            "what": "the price counts up on the tag"
+          },
+          {
+            "at": "tick",
+            "what": "the tag swings once more on its string as the price climbs"
+          },
+          {
+            "at": "lands",
+            "what": "the price flashes bigger as it lands and the spotlights brighten"
+          }
+        ],
+        "things": [
+          "Radarange cabinet",
+          "person outline",
+          "freight scale",
+          "price tag",
+          "spotlights"
+        ],
+        "fig": {
+          "weight": "{fact2}",
+          "price": "{fact3}"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "Today that same tube hums in your kitchen, all thanks to one melted candy bar.",
+      "events": {
+        "today": {
+          "word": "Today"
+        },
+        "tube": {
+          "word": "tube"
+        },
+        "hums": {
+          "word": "hums"
+        },
+        "kitchen": {
+          "word": "kitchen"
+        },
+        "thanks": {
+          "word": "thanks"
+        },
+        "melted": {
+          "word": "melted"
+        },
+        "candy": {
+          "word": "candy"
+        },
+        "bar": {
+          "word": "bar"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Loop",
+        "place": "back in the dark kitchen at night",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "tube",
+            "size": "close"
+          },
+          {
+            "at": "bar",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "today",
+            "what": "the tall Radarange shrinks into today's microwave on the counter"
+          },
+          {
+            "at": "tube",
+            "what": "the microwave turns see-through: the small magnetron glows inside"
+          },
+          {
+            "at": "hums",
+            "what": "the little magnetron pulses with rings of waves"
+          },
+          {
+            "at": "kitchen",
+            "what": "the kitchen lights up around it, the plate turning"
+          },
+          {
+            "at": "thanks",
+            "what": "the oven's window glows brighter"
+          },
+          {
+            "at": "melted",
+            "what": "a candy bar slides onto the counter beside it and starts to sag"
+          },
+          {
+            "at": "candy",
+            "what": "the bar's red wrapper catches the light"
+          },
+          {
+            "at": "bar",
+            "what": "the camera pushes toward the bar as it drips, as in the first frame"
+          }
+        ],
+        "things": [
+          "microwave oven",
+          "small magnetron",
+          "kitchen counter",
+          "candy bar"
+        ]
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}
