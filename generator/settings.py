@@ -35,7 +35,7 @@ DEFAULTS: dict = {
 
 # what a channel may set for itself (workers/lib/channel-auth.ts CHANNEL_KEYS); the rest is platform-wide
 CHANNEL_KEYS = ("uploadTimes", "trendUploadTimes", "shortEveryDays", "dailyVideoTarget", "longUploadTimes", "longUploadDays",
-                "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused")
+                "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "longLengthMinSec", "longLengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused")
 
 
 def pack_lengths(root: Path = ROOT) -> dict:

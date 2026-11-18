@@ -13,7 +13,7 @@ export const SLUG = /^[a-z0-9][a-z0-9-]{1,40}$/;
  * as workers/lib/channel-auth.ts, which the uploader and the routines' config read. */
 export const CHANNEL_KEYS = [
   "uploadTimes", "trendUploadTimes", "shortEveryDays", "dailyVideoTarget", "longUploadTimes", "longUploadDays",
-  "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused",
+  "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "longLengthMinSec", "longLengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused",
 ] as const;
 
 const time = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "Use HH:MM (IST)");

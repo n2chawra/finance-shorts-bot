@@ -64,7 +64,7 @@ export function refreshTokenOf(ch: Pick<Channel, "id" | "refreshTokenEnc">, env:
 /** Settings a channel may set for itself (Channel.settings); everything else is platform-wide. */
 export const CHANNEL_KEYS = [
   "uploadTimes", "trendUploadTimes", "shortEveryDays", "dailyVideoTarget", "longUploadTimes", "longUploadDays",
-  "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused",
+  "longPerWeek", "longBacklogCap", "backlogCap", "lengthMinSec", "lengthMaxSec", "longLengthMinSec", "longLengthMaxSec", "disclaimer", "uploadsPaused", "generationPaused",
 ] as const satisfies readonly (keyof Settings)[];
 
 /** The platform settings with the channel's own values over them. Invalid channel values are ignored. */
