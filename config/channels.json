@@ -21,12 +21,12 @@
         ]
       },
       "health": {
-        "at": "2026-11-18T08:14:33.719Z",
+        "at": "2026-11-18T10:18:27.783Z",
         "color": "red",
-        "reason": "The upload queue is empty; 0 Shorts ready: under a day",
+        "reason": "The upload queue is empty; Paisa Panchayat: under a day of Shorts ready; 0 Shorts ready: under a day",
         "stayed": 0.376862268166616,
         "bufferDays": 0,
-        "usageShare": 0.65,
+        "usageShare": 0.61,
         "stayedBefore": 0.4441265567149108,
         "weeksUnderFloor": 2
       },
@@ -53,10 +53,7 @@
         ],
         "dailyVideoTarget": 2,
         "generationPaused": false,
-        "trendUploadTimes": [
-          "16:07",
-          "22:07"
-        ]
+        "trendUploadTimes": []
       },
       "setup": {
         "stage": "launched",
@@ -66,18 +63,34 @@
         }
       },
       "health": {
-        "at": "2026-11-18T08:14:33.719Z",
+        "at": "2026-11-18T10:18:27.783Z",
         "color": "red",
-        "reason": "1 Short ready: under a day",
+        "reason": "Geography, maps & geopolitical mysteries: under a day of Shorts ready; 1 Short ready: under a day",
         "stayed": null,
         "bufferDays": 0.5,
-        "usageShare": 0.35,
+        "usageShare": 0.39,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
       "backlog": 1,
       "backlogByFormat": {
         "short": 1,
+        "long": 0
+      }
+    },
+    "how-tech-and-ai-actually-work-chips-ai-p": {
+      "name": "How tech and AI actually work: chips, AI, phones, the internet and gadgets explained",
+      "status": "setup",
+      "settings": {
+        "dailyVideoTarget": 1
+      },
+      "setup": {
+        "stage": "verdict",
+        "decision": null
+      },
+      "backlog": 0,
+      "backlogByFormat": {
+        "short": 0,
         "long": 0
       }
     }
