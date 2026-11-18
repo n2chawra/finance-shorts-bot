@@ -27,7 +27,8 @@ import numpy as np
 
 from renderer.engine import voice as tts
 from renderer.engine.audio import (SR, Mixer, integrated_lufs, sfx_beep, sfx_boom, sfx_clink, sfx_ding, sfx_fail, sfx_kaching,
-                                   sfx_pop, sfx_riser, sfx_tick, sfx_whoosh)
+                                   sfx_chime, sfx_paper, sfx_pin, sfx_pop, sfx_riser, sfx_scribble, sfx_thud, sfx_tick,
+                                   sfx_whoosh)
 from renderer.engine.music import gain_curve, make_bed
 from renderer.engine.formatting import LEGACY_CURRENCY, Money, fact_value, money_for, month_year
 from renderer.engine.style import resolve_style
@@ -335,6 +336,9 @@ SFX = {
     "clink": lambda r: sfx_clink(1.0), "ding": lambda r: sfx_ding(), "boom": lambda r: sfx_boom(r), "fail": lambda r: sfx_fail(),
     "tick": lambda r: sfx_tick(r), "beep": lambda r: sfx_beep(880), "riser": lambda r: sfx_riser(r, 1.6),
     "kaching": lambda r: sfx_kaching(),
+    # map sounds (a channel's own effects: channel.json sound.sfx lists the kinds it may use)
+    "scribble": lambda r: sfx_scribble(r), "paper": lambda r: sfx_paper(r), "pin": lambda r: sfx_pin(1.0),
+    "pin-high": lambda r: sfx_pin(1.3), "thud": lambda r: sfx_thud(r), "chime": lambda r: sfx_chime(),
 }
 
 
@@ -541,6 +545,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     narrator = script.get("narrator") or random.Random(f"narrator:{seed}").choice(NARRATOR_VOICES)
     # the channel's language and disclaimer (generator/pack.py; channel #1's values when it has no pack)
     pack = channel_pack.load()
+    own_sound = pack.get("sound") or {}     # a channel's own sound (multi-channel, 2026-11-18): bed, mix and effects
     lang, disclaimer = pack["language"], (pack["disclaimer"] or DISCLAIMER)
     tempo = float(script.get("tempo", TEMPOS[fmt]))
     speed = voice_speed(script, fmt, tempo)        # the voice, at the video's pace
@@ -585,8 +590,10 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         })
         b_sfx = [(cursor + events.get(s["at"], 0)/FPS, s) for s in b.sfx]
         # a transition that travels somewhere carries its own sound (motion direction, 2026-10-21)
-        if b.transition in WHOOSH_TRANSITIONS and not any(s.get("at", "start") == "start" and s.get("kind") == "whoosh" for s in b.sfx):
-            b_sfx.append((max(0.0, cursor - 0.05), {"kind": "whoosh", "at": "start", "gain": 0.55}))
+        # (a channel with its own sound uses its own transition sound, or none)
+        travel = own_sound.get("transitionSfx", "whoosh") if own_sound else "whoosh"
+        if travel and b.transition in WHOOSH_TRANSITIONS and not any(s.get("at", "start") == "start" and s.get("kind") == travel for s in b.sfx):
+            b_sfx.append((max(0.0, cursor - 0.05), {"kind": travel, "at": "start", "gain": 0.55}))
         if fmt == "short" and b.scene in ("build", "board"):
             auto, beat_drops = _cues(params, events, cursor)
             mine = [x for x, _ in b_sfx]
@@ -603,7 +610,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     total_frames = round(length*FPS)
     mixer = Mixer(length, seed + 4)
     bed = make_bed(mixer.rng, length, style.genre, style.key, style.bpm,
-                   pulse=script.get("format", "short") == "short")   # adopted for every Short (owner, 2026-11-02)
+                   pulse=script.get("format", "short") == "short" and not own_sound)   # adopted for every Short (owner, 2026-11-02)
     speech = np.zeros(mixer.n)
     for start, line, _ in lines:
         i = int(start*SR)
@@ -613,6 +620,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     # 4 dB lower overall and nearly gone under speech, so it only fills the pauses
     quiet = (script.get("experiments") or {}).get(QUIET_BED) == "on"
     level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, SHORT_DUCK if fmt == "short" else VOICE_DUCK)
+    if own_sound:   # the channel's own mix, measured on its references (channel.json sound)
+        level, duck_by = float(own_sound.get("bedLevel", level)), float(own_sound.get("duck", duck_by))
     mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*_drop_envelope(mixer.n, drops))
     # three stems, measured apart (timeline audio.stems), then summed into the mix
     voice_m, sfx_m = Mixer(length, seed + 5), Mixer(length, seed + 6)
@@ -620,6 +629,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         for at, s in tb.pop("_sfx"):
             if s["kind"] not in SFX:
                 raise ValueError(f"beat {tb['id']!r}: sfx kind must be one of {', '.join(SFX)}")
+            if own_sound and s["kind"] not in own_sound.get("sfx", []):
+                raise ValueError(f"beat {tb['id']!r}: sfx {s['kind']!r} is not one of this channel's own sounds "
+                                 f"({', '.join(own_sound.get('sfx', []))}; channel.json sound.sfx)")
             on_voice = speech[min(len(speech) - 1, max(0, int(at*SR)))] > 0
             gain = s.get("gain", 0.6)*SFX_BUS*(SFX_UNDER_VOICE if on_voice else 1.0)
             sfx_m.place_out(SFX[s["kind"]](mixer.rng), at, gain, s.get("pan", 0.0))

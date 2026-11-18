@@ -156,6 +156,46 @@ def sfx_kaching() -> np.ndarray:
 
 # ---------------- loudness (ITU-R BS.1770-4) ----------------
 
+# ---------------- map sounds (the geography channel's own effects, 2026-11-18) ----------------
+
+def sfx_scribble(rng: np.random.Generator, dur: float = 0.7) -> np.ndarray:
+    """A pencil drawing a line: band-passed grain with quick stroke-by-stroke swells."""
+    t = tarr(dur)
+    grain = hp(lp(rng.standard_normal(len(t)), 6500), 1800)
+    strokes = 0.55 + 0.45*np.abs(np.sin(2*np.pi*7.5*t + rng.uniform(0, 3)))
+    return grain*strokes*np.sin(np.pi*t/dur)**0.6*0.35
+
+
+def sfx_paper(rng: np.random.Generator, dur: float = 0.5) -> np.ndarray:
+    """A map sliding or turning: a soft, dry paper swish."""
+    t = tarr(dur)
+    n = lp(hp(rng.standard_normal(len(t)), 900), 5000)
+    return n*np.sin(np.pi*t/dur)**2*(0.6 + 0.4*np.sin(2*np.pi*13*t))*0.32
+
+
+def sfx_pin(pitch: float = 1.0) -> np.ndarray:
+    """A pin or flag landing on the map: a short wooden tock with a little ring."""
+    t = tarr(0.25)
+    return (np.sin(2*np.pi*620*pitch*t)*np.exp(-t*38) + 0.3*np.sin(2*np.pi*1860*pitch*t)*np.exp(-t*60))*0.5
+
+
+def sfx_thud(rng: np.random.Generator) -> np.ndarray:
+    """A soft low thud for the turn: a felted drum, no boom tail."""
+    t = tarr(0.5)
+    body = np.sin(2*np.pi*np.cumsum(70 + 40*np.exp(-t*25))/SR)*np.exp(-t*11)
+    return (body + 0.15*lp(rng.standard_normal(len(t)), 800)*np.exp(-t*30))*0.7
+
+
+def sfx_chime(f0: float = 1046.5) -> np.ndarray:
+    """A small reveal chime: two mallet notes a fifth apart."""
+    t = tarr(1.0)
+    a = np.sin(2*np.pi*f0*t)*np.exp(-t*5) + 0.25*np.sin(2*np.pi*f0*3.99*t)*np.exp(-t*20)
+    b = np.zeros_like(t)
+    k = int(0.09*SR)
+    b[k:] = (np.sin(2*np.pi*f0*1.5*t)*np.exp(-t*5))[:len(t) - k]
+    return (a + 0.8*b)*0.3
+
+
 def _k_weight(x: np.ndarray, sr: int) -> np.ndarray:
     """The K-weighting pre-filter (a high shelf, then a high pass) for any sample rate, by the
     analogue-prototype formulas libebur128 uses, so 44.1 kHz needs no resampling."""

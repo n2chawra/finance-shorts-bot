@@ -6,7 +6,7 @@ seed, so two seeds give two different-looking and different-sounding videos.
 import random
 from dataclasses import dataclass
 
-from .music_constants import BPM_RANGE, GENRES, KEYS
+from .music_constants import ALL_BPM, BPM_RANGE, GENRES, KEYS
 
 RGB = tuple[int, int, int]
 
@@ -79,12 +79,12 @@ def resolve_style(spec: dict, seed: int) -> Style:
     key = spec.get("key", key)
     if palette not in PALETTES:
         raise ValueError(f"style.palette must be one of {', '.join(sorted(PALETTES))}")
-    if genre not in GENRES:
-        raise ValueError(f"style.genre must be one of {', '.join(GENRES)}")
+    if genre not in ALL_BPM:   # a channel's own beds too (music_constants.CHANNEL_GENRES); variety checks who may use them
+        raise ValueError(f"style.genre must be one of {', '.join(ALL_BPM)}")
     if key not in KEYS:
         raise ValueError(f"style.key must be one of {', '.join(KEYS)}")
-    lo, hi = BPM_RANGE[genre]
+    lo, hi = ALL_BPM[genre]
     bpm = spec.get("bpm", round(lo + (hi - lo)*bpm_roll))
-    if not 80 <= bpm <= 120:
-        raise ValueError("style.bpm must be between 80 and 120")
+    if not min(lo, 80) <= bpm <= max(hi, 120):
+        raise ValueError(f"style.bpm must be between {min(lo, 80)} and {max(hi, 120)}")
     return Style(PALETTES[palette], genre, key, bpm)

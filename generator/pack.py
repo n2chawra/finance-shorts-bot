@@ -83,6 +83,13 @@ def pack_problems(p: dict) -> list[str]:
         out.append(f"the Shorts narrator {narrator!r} speaks {KOKORO_LANG[narrator[0]]}, the channel is {lang!r}")
     if p.get("currency") not in (p.get("currencies") or []):
         out.append("currency must be one of currencies")
+    snd = p.get("sound")
+    if snd is not None:   # a channel's own sound: its beds and effects, never channel #1's money sounds
+        from renderer.engine.music_constants import ALL_BPM
+        if not snd.get("genres") or any(g not in ALL_BPM for g in snd["genres"]):
+            out.append(f"sound.genres must be beds the music engine makes ({', '.join(ALL_BPM)})")
+        if not snd.get("sfx"):
+            out.append("sound.sfx lists the effects the channel may use")
     if not str(p.get("uploadCategory") or "").isdigit():
         out.append("uploadCategory must be a YouTube category id (22 People & Blogs, 27 Education, 28 Science & Technology…)")
     return out

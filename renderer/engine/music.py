@@ -23,6 +23,9 @@ PROGRESSIONS: dict[str, list[list[tuple[int, tuple[int, int, int]]]]] = {
     "cinematic": [[(0, MIN), (8, MAJ), (3, MAJ), (10, MAJ)], [(0, MIN), (5, MIN), (8, MAJ), (7, MAJ)]],
     "synthwave": [[(0, MIN), (8, MAJ), (3, MAJ), (10, MAJ)], [(0, MIN), (10, MAJ), (8, MAJ), (10, MAJ)]],
     "acoustic": [[(0, MAJ), (5, MAJ), (9, MIN), (7, MAJ)], [(0, MAJ), (9, MIN), (5, MAJ), (7, MAJ)]],
+    # the geography channel's own beds (CHANNEL_GENRES): curious, light, a little wonder
+    "explorer": [[(0, MAJ), (4, MIN), (5, MAJ), (7, MAJ)], [(0, MAJ), (9, MIN), (5, MAJ), (7, MAJ)], [(5, MAJ), (7, MAJ), (4, MIN), (9, MIN)]],
+    "atlas": [[(9, MIN), (5, MAJ), (0, MAJ), (7, MAJ)], [(0, MAJ), (7, MAJ), (9, MIN), (4, MIN)]],
 }
 ARPS: list[tuple[int, ...]] = [(0, 1, 2, 1, 0, 2, 1, 2), (0, 2, 1, 2, 0, 2, 1, 2), (2, 1, 0, 1, 2, 1, 0, 1)]
 CUTOFF: dict[str, dict[str, float]] = {
@@ -30,6 +33,8 @@ CUTOFF: dict[str, dict[str, float]] = {
     "cinematic": {"pad": 1800, "bass": 500, "lead": 4000, "drums": 2500},
     "synthwave": {"pad": 2200, "bass": 700, "lead": 3500, "drums": 9000},
     "acoustic": {"pad": 3000, "bass": 1200, "lead": 7000, "drums": 9000},
+    "explorer": {"pad": 2600, "bass": 220, "lead": 7500, "drums": 11000},
+    "atlas": {"pad": 2200, "bass": 260, "lead": 6000, "drums": 10000},
 }
 
 
@@ -267,8 +272,48 @@ def _acoustic(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
             bed.add("drums", shaker, st + e*beat/2, 0.09 if e % 2 else 0.05)
 
 
+@lru_cache(maxsize=1024)
+def _mallet(freq: float, dur: float) -> np.ndarray:
+    """A soft marimba-like mallet: the note, its bright fourth harmonic dying fast, a woody click. Do not mutate."""
+    t = tarr(dur)
+    s = np.sin(2*np.pi*freq*t)*np.exp(-t*6.5) + 0.35*np.sin(2*np.pi*freq*3.99*t)*np.exp(-t*28)
+    return s*np.minimum(1, t/0.002)*np.clip((dur - t)/0.02, 0, 1)
+
+
+def _explorer(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The geography channel's bed: a mallet ostinato in eighths (half-time feel), a soft shaker, a
+    glockenspiel sparkle every other bar, a warm pad and only a whisper of bass. No kick, no snare."""
+    beat, shaker = bed.beat, _shaker(rng)
+    arp = ARPS[int(rng.integers(len(ARPS)))]
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[b % len(chords)]
+        for m in ch:
+            bed.add("pad", _voice("tri", note(m + 12), bed.bar, 0.4, 0.6), st, 0.022)
+        for e in range(8):
+            at = st + e*beat/2
+            bed.add("lead", _mallet(note(ch[arp[e]] + 24), beat*0.9), at, 0.12 if e % 2 == 0 else 0.08)
+            bed.add("drums", shaker, at, 0.05 if e % 2 else 0.028)
+        bed.add("bass", _voice("sine", note(ch[0] - 12 + 24), bed.bar*0.9, 0.05, 0.3), st, 0.05)
+        if b % 2 == 1:
+            bed.add("lead", _mallet(note(ch[2] + 36), beat*2), st + 3.5*beat, 0.06)
+
+
+def _atlas(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """A slower, warmer variant: plucked pizzicato quarter notes over a pad, a mallet answer each bar."""
+    beat = bed.beat
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[b % len(chords)]
+        for m in ch:
+            bed.add("pad", _voice("tri", note(m + 12), bed.bar, 0.5, 0.7), st, 0.026)
+        for q in range(4):
+            bed.add("lead", _pluck(note(ch[q % 3] + 24), beat*0.8), st + q*beat, 0.09)
+        bed.add("lead", _mallet(note(ch[1] + 36), beat*1.5), st + 2.5*beat, 0.05)
+        bed.add("bass", _voice("sine", note(ch[0] + 12), bed.bar*0.9, 0.05, 0.3), st, 0.045)
+
+
 _BUILDERS: dict[str, Callable[[_Bed, np.random.Generator, Chords], None]] = {
-    "pop": _pop, "cinematic": _cinematic, "synthwave": _synthwave, "acoustic": _acoustic}
+    "pop": _pop, "cinematic": _cinematic, "synthwave": _synthwave, "acoustic": _acoustic,
+    "explorer": _explorer, "atlas": _atlas}
 
 
 def make_bed(rng: np.random.Generator, dur: float, genre: str, key: str, bpm: float, pulse: bool = False) -> np.ndarray:

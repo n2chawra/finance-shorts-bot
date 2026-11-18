@@ -13,7 +13,7 @@
  *
  * Everything is a pure function of its props: pass times from `motion(p)` (the kit), never Date or random.
  */
-import React, { createContext, useContext, useMemo } from "react";
+import React, { createContext, useContext, useId, useMemo } from "react";
 import { geoAzimuthalEqualArea, geoCentroid, geoInterpolate, geoMercator, geoNaturalEarth1, geoPath, type GeoProjection } from "d3-geo";
 import { feature } from "topojson-client";
 import type { Feature, FeatureCollection, Geometry } from "geojson";
@@ -57,12 +57,23 @@ export const useAt = () => {
   return (lonlat: [number, number]) => proj(lonlat) as [number, number] | null;
 };
 
-export type Fill = { fill: string; k?: number; outline?: string };
+export type Fill = {
+  fill: string; k?: number; outline?: string;
+  /** made on screen (2026-11-18, owner: "maps are already there, not made on the spot"): the outline draws
+   * itself 0 -> 1, the fill following over the last part */
+  draw?: number;
+  /** the colour paints in from `from` ([lon, lat], else the country's middle) as a growing brush, 0 -> 1 */
+  paint?: number; from?: [number, number];
+  /** the country rises off the map with a shadow under it, 0 -> 1 */
+  lift?: number;
+};
 
 /**
  * The map, drawn inside the kit's <Stage>/<View>. `fit` frames those countries (or `center` + `scale`
- * frames a point); `colors` paints countries (k 0 → 1 fades the colour in from the land colour, so a
- * recolour lands on a word); everything else is plain land.
+ * frames a point); `colors` paints countries (k 0 -> 1 fades the colour in from the land colour, so a
+ * recolour lands on a word; `draw`, `paint` and `lift` make it on screen); everything else is plain land.
+ * `look="vintage"` (the geography channel, from its references): parchment land with relief and paper
+ * grain anchored to the map (they move and scale with it), coast rings in the sea, brown ink borders.
  */
 export const WorldMap: React.FC<{
   w: number; h: number;
@@ -72,6 +83,7 @@ export const WorldMap: React.FC<{
   center?: [number, number]; scale?: number;
   /** "world" (Natural Earth projection) or "flat" (Mercator, for a region) */
   kind?: "world" | "flat";
+  look?: "flat" | "vintage";
   land?: string; sea?: string; border?: string;
   colors?: Record<string, Fill>;
   /** names to leave out (a disputed region in a video that can't show it) */
@@ -80,7 +92,11 @@ export const WorldMap: React.FC<{
   only?: string[];
   detail?: "110m" | "50m";
   children?: React.ReactNode;
-}> = ({ w, h, fit, pad = 80, center, scale, kind = "world", land = "#e9dcc1", sea = "#8ec5e0", border, colors = {}, hide = [], only, detail, children }) => {
+}> = ({ w, h, fit, pad = 80, center, scale, kind = "world", look = "flat", land: land0, sea: sea0, border, colors = {}, hide = [], only, detail, children }) => {
+  const vintage = look === "vintage";
+  const land = land0 ?? (vintage ? "#e8d4a2" : "#e9dcc1");
+  const sea = sea0 ?? (vintage ? "#5f9fae" : "#8ec5e0");
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
   const det = detail ?? (fit && fit.length <= 6 ? "50m" : "110m");
   const keep = only ? new Set(only.map((n) => n.toLowerCase())) : null;
   const all = keep ? countries(det).filter((c) => keep.has(c.properties.name.toLowerCase())) : countries(det);
@@ -94,37 +110,109 @@ export const WorldMap: React.FC<{
   }, [kind, fit?.join("|"), pad, center?.join(","), scale, w, h, det]);   // eslint-disable-line react-hooks/exhaustive-deps
   const path = useMemo(() => geoPath(proj), [proj]);
   const hidden = new Set(hide.map((n) => n.toLowerCase()));
-  const ink = border ?? INK;
-  const col = (name: string): { fill: string; outline: string; lifted: boolean } => {
-    const c = colors[name] ?? colors[name.toLowerCase()];
-    if (!c) return { fill: land, outline: ink, lifted: false };
+  const ink = border ?? (vintage ? "#6b4b2a" : INK);
+  const shown = all.filter((c) => !hidden.has(c.properties.name.toLowerCase()));
+  const d = (c: Country) => path(c) ?? undefined;
+  const fillOf = (c: Fill) => {
     const k = Math.max(0, Math.min(1, c.k ?? 1));
-    return { fill: k >= 1 ? c.fill : mix(land, c.fill, k), outline: c.outline ?? ink, lifted: k > 0 };
+    return k >= 1 ? c.fill : mix(land, c.fill, k);
   };
   const sphere = path({ type: "Sphere" }) ?? undefined;
+  // the textures are drawn in the map's own coordinates: anchored at [0, 0] and scaled with the map
+  const anchor = proj([0, 0]) ?? [w / 2, h / 2];
+  const ks = proj.scale() / 9000;
+  const local = { x: -anchor[0] / ks, y: -anchor[1] / ks, w: w / ks, h: h / ks };
+  const fxOf = (c: Country) => colors[c.properties.name] ?? colors[c.properties.name.toLowerCase()];
+  const special = shown.filter((c) => fxOf(c));
   return (
     <MapCtx.Provider value={{ proj, path }}>
+      {vintage ? (
+        <defs>
+          <filter id={`grain${uid}`} x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves={2} seed={7} />
+            <feColorMatrix type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.16  0 0 0 0.55 0" />
+          </filter>
+          <filter id={`relief${uid}`} x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves={6} seed={3} result="n" />
+            <feDiffuseLighting in="n" surfaceScale={11} diffuseConstant={1.15} lightingColor="#fff4dc">
+              <feDistantLight azimuth={225} elevation={42} />
+            </feDiffuseLighting>
+          </filter>
+          <clipPath id={`land${uid}`}>{shown.map((c) => <path key={`c${c.id ?? c.properties.name}`} d={d(c)} />)}</clipPath>
+        </defs>
+      ) : null}
       {kind === "world" ? <path d={sphere} fill={sea} stroke={INK} strokeWidth={STROKE} /> : <rect x={-w} y={-h} width={w * 3} height={h * 3} fill={sea} />}
+      {vintage ? (
+        <g>
+          {/* rings of shallow water along every coast, like an old chart */}
+          {[34, 18].map((sw, i) => (
+            <g key={sw} opacity={i ? 0.3 : 0.18}>{shown.map((c) => <path key={`r${sw}${c.id ?? c.properties.name}`} d={d(c)} fill="none" stroke="#d8efe9" strokeWidth={sw * Math.min(2, Math.max(0.6, ks))} strokeLinejoin="round" />)}</g>
+          ))}
+        </g>
+      ) : null}
       {/* the painted shadow under all land: one darker tone, offset down-right */}
-      <g transform="translate(6,8)" opacity={0.35}>
-        {all.filter((c) => !hidden.has(c.properties.name.toLowerCase())).map((c) => <path key={`s${c.id ?? c.properties.name}`} d={path(c) ?? undefined} fill={shade(sea, -0.45)} />)}
+      <g transform="translate(6,8)" opacity={vintage ? 0.22 : 0.35}>
+        {shown.map((c) => <path key={`s${c.id ?? c.properties.name}`} d={d(c)} fill={shade(sea, -0.45)} />)}
       </g>
-      {all.filter((c) => !hidden.has(c.properties.name.toLowerCase())).map((c) => {
-        const { fill, outline, lifted } = col(c.properties.name);
-        return <path key={c.id ?? c.properties.name} d={path(c) ?? undefined} fill={fill} stroke={outline} strokeWidth={lifted ? STROKE * 0.8 : STROKE * 0.45} strokeLinejoin="round" />;
+      {/* plain land first; a country with its own colour is drawn over it, made on screen */}
+      {shown.map((c) => <path key={c.id ?? c.properties.name} d={d(c)} fill={land} stroke={ink} strokeWidth={STROKE * (vintage ? 0.35 : 0.45)} strokeLinejoin="round" />)}
+      {special.map((c) => {
+        const f = fxOf(c)!;
+        const name = c.properties.name;
+        const draw = f.draw === undefined ? 1 : Math.max(0, Math.min(1, f.draw));
+        const paint = f.paint === undefined ? 1 : Math.max(0, Math.min(1, f.paint));
+        const lift = Math.max(0, Math.min(1, f.lift ?? 0));
+        if (draw <= 0 || paint <= 0) return null;
+        const outline = f.outline ?? ink;
+        const fillK = f.draw === undefined ? 1 : Math.max(0, (draw - 0.55) / 0.45);
+        const [[x0, y0], [x1, y1]] = path.bounds(c);
+        const from = f.from ? proj(f.from) : null;
+        const [px, py] = from ?? [(x0 + x1) / 2, (y0 + y1) / 2];
+        const R = Math.max(Math.hypot(px - x0, py - y0), Math.hypot(px - x1, py - y1), Math.hypot(px - x0, py - y1), Math.hypot(px - x1, py - y0));
+        const cid = `p${uid}${String(c.id ?? name).replace(/[^a-zA-Z0-9]/g, "")}`;
+        const up = lift * 18;
+        return (
+          <g key={`f${c.id ?? name}`}>
+            {paint < 1 ? <defs><clipPath id={cid}><circle cx={px} cy={py} r={R * paint} /></clipPath></defs> : null}
+            {lift > 0 ? <path d={d(c)} fill="#1d1a2b" opacity={0.3 * lift} transform={`translate(${8 * lift} ${10 + up * 0.4})`} /> : null}
+            <g transform={`translate(0 ${-up})`}>
+              <path d={d(c)} fill={fillOf(f)} opacity={fillK} clipPath={paint < 1 ? `url(#${cid})` : undefined} />
+              <path d={d(c)} fill="none" stroke={outline} strokeWidth={STROKE * 0.8} strokeLinejoin="round"
+                pathLength={1} strokeDasharray={draw < 1 ? `${draw} 1` : undefined} />
+            </g>
+          </g>
+        );
       })}
+      {/* the relief over the land and over every painted country, so the colours sit on the old map */}
+      {vintage ? (
+        <g clipPath={`url(#land${uid})`}>
+          <g transform={`translate(${anchor[0]} ${anchor[1]}) scale(${ks})`} style={{ mixBlendMode: "multiply" }} opacity={0.85}>
+            <rect x={local.x} y={local.y} width={local.w} height={local.h} filter={`url(#relief${uid})`} />
+          </g>
+        </g>
+      ) : null}
+      {vintage ? (
+        <g transform={`translate(${anchor[0]} ${anchor[1]}) scale(${ks})`} style={{ mixBlendMode: "multiply" }} opacity={0.5}>
+          <rect x={local.x} y={local.y} width={local.w} height={local.h} filter={`url(#grain${uid})`} />
+        </g>
+      ) : null}
       {children}
     </MapCtx.Provider>
   );
 };
 
 /** A place name at [lon, lat], Poppins with an ink halo so it reads over any land. */
-export const MapLabel: React.FC<{ at: [number, number]; text: string; size?: number; fill?: string; k?: number; dy?: number }> = ({ at, text, size = 42, fill = "#ffffff", k = 1, dy = 0 }) => {
+export const MapLabel: React.FC<{ at: [number, number]; text: string; size?: number; fill?: string; k?: number; dy?: number; type?: number }> = ({ at, text, size = 42, fill = "#ffffff", k = 1, dy = 0, type }) => {
   const xy = useAt()(at);
   if (!xy || k <= 0) return null;
+  // `type` writes the name on letter by letter (0 -> 1); the rest of the word holds its place, unseen
+  const n = type === undefined ? text.length : Math.round(text.length * Math.max(0, Math.min(1, type)));
+  if (n <= 0) return null;
   return (
-    <text x={xy[0]} y={xy[1] + dy} fontFamily="Poppins" fontWeight={800} fontSize={size * Math.min(1, k * 1.2)} textAnchor="middle" dominantBaseline="middle"
-      fill={fill} stroke={INK} strokeWidth={size * 0.16} paintOrder="stroke" opacity={Math.min(1, k * 2)}>{text}</text>
+    <text x={xy[0]} y={xy[1] + dy} fontFamily="Poppins" fontWeight={800} fontSize={size * (type === undefined ? Math.min(1, k * 1.2) : 1)} textAnchor="middle" dominantBaseline="middle"
+      fill={fill} stroke={INK} strokeWidth={size * 0.16} paintOrder="stroke" opacity={Math.min(1, k * 2)}>
+      {text.slice(0, n)}<tspan opacity={0}>{text.slice(n)}</tspan>
+    </text>
   );
 };
 

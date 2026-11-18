@@ -117,6 +117,17 @@ def story_of(e: dict) -> str | None:
     return told[0] if len(told) == 1 else None
 
 
+def own_genres() -> tuple[tuple[str, ...], dict[str, tuple[int, int]]]:
+    """The music beds this channel may use: a channel with its own sound (channel.json sound.genres) only
+    its own; channel #1 the rotation's GENRES (multi-channel, 2026-11-18)."""
+    from renderer.engine.music_constants import ALL_BPM
+    from . import pack
+    snd = pack.load().get("sound") or {}
+    if snd.get("genres"):
+        return tuple(snd["genres"]), {g: ALL_BPM[g] for g in snd["genres"] if g in ALL_BPM}
+    return GENRES, BPM_RANGE
+
+
 def known_stories() -> tuple[str, ...]:
     """STORIES plus the current channel's own format ids (research/formats.json): a new channel's
     formats are its stories (multi-channel, 2026-11-17: a geography channel tells no money stories)."""
@@ -215,10 +226,11 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
     style = plan["style"]
     if style.get("palette") not in PALETTES:
         out.append(f"style.palette must be one of {', '.join(sorted(PALETTES))}")
-    if style.get("genre") not in GENRES:
-        out.append(f"style.genre must be one of {', '.join(GENRES)}")
-    elif not BPM_RANGE[style["genre"]][0] <= style.get("bpm", 0) <= BPM_RANGE[style["genre"]][1]:
-        lo, hi = BPM_RANGE[style["genre"]]
+    genres, ranges = own_genres()
+    if style.get("genre") not in genres:
+        out.append(f"style.genre must be one of {', '.join(genres)}")
+    elif not ranges[style["genre"]][0] <= style.get("bpm", 0) <= ranges[style["genre"]][1]:
+        lo, hi = ranges[style["genre"]]
         out.append(f"style.bpm must be {lo}–{hi} for {style['genre']}")
     if style.get("key") not in KEYS:
         out.append(f"style.key must be one of {', '.join(KEYS)}")
@@ -254,6 +266,7 @@ def suggest_style(history: list[dict], seed: int) -> dict:
     last = history[-1]["style"] if history else {}
     recent_palettes = [e["style"]["palette"] for e in history[-2:]]
     palette = r.choice([p for p in sorted(PALETTES) if p not in recent_palettes])
-    genre = r.choice([g for g in GENRES if g != last.get("genre")])
-    lo, hi = BPM_RANGE[genre]
+    genres, ranges = own_genres()
+    genre = r.choice([g for g in genres if g != last.get("genre")] or list(genres))
+    lo, hi = ranges[genre]
     return {"palette": palette, "genre": genre, "key": r.choice([k for k in KEYS if k != last.get("key")]), "bpm": r.randint(lo, hi)}
