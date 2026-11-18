@@ -1,0 +1,241 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:20:15.875776+00:00",
+    "finishedAt": "2026-11-18T23:20:15.875776+00:00",
+    "notes": [
+      "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky",
+      "style.bpm must be 72–80 for explorer"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:20:18.828664+00:00",
+    "finishedAt": "2026-11-18T23:20:18.828664+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:21:10.500916+00:00",
+    "finishedAt": "2026-11-18T23:21:10.500916+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:21:46.564497+00:00",
+    "finishedAt": "2026-11-18T23:21:46.564497+00:00",
+    "notes": [
+      "beat 'kiel'.say contains a typed number; use a placeholder: \"Here's the twist. After losing a war in 1814, that kingdom had to hand Norway to Sweden, but the treaty left Greenland, Iceland and the Faroe Islands with Denmark.\""
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:21:51.348483+00:00",
+    "finishedAt": "2026-11-18T23:21:51.348483+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:22:01.507543+00:00",
+    "finishedAt": "2026-11-18T23:22:01.507543+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:30:05.625989+00:00",
+    "finishedAt": "2026-11-18T23:31:13.152566+00:00",
+    "notes": [
+      "text 'EUROPE' at 2.9 s runs outside the frame",
+      "text 'ON EARTH' at 8.7 s is 38.6 px, below the 44 px minimum",
+      "text 'ERIK THE RED' at 21.5 s is 7.8 px, below the 44 px minimum",
+      "text 'GREENLAND' at 36.3 s is 6.5 px, below the 44 px minimum",
+      "12 of 14 stills are mostly empty background (at 0 s, 5 s, 10 s, 15 s, 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:31:18.034120+00:00",
+    "finishedAt": "2026-11-18T23:31:18.034120+00:00",
+    "notes": [
+      "fact4 / vote beat ('its 56,831 people'): the figure is out of date. Statistics Greenland gives 56,831 for 1 July 2025 (stat.gl/publ/en/BE/202504, Midyear Population), not 1 Jan 2025 as the fact's as_of says (1 Jan 2025 was 56,542). It has since been superseded by 56,945 on 1 July 2026 (stat.gl/publ/en/BE/202604, 'Record High Mid-Year Population'). Fix: use value 56945, as_of 2026-07-01, source Statistics Greenland, url https://stat.gl/publ/en/BE/202604/contents/Midyear%20Population.htm, and update the description's source line.",
+      "Confirmed (no change needed): area 2,166,086 km2, ice sheet 1,755,637 km2 and 81%, home rule 1 May 1979, self-rule 21 June 2009, Erik the Red from Iceland naming it 'supposedly' to attract settlers, Egede's 1721 Dano-Norwegian mission, Norse settlements dying out (all on en.wikipedia.org/wiki/Greenland); Treaty of Kiel leaving Greenland, Iceland and the Faroes with Denmark (Britannica, Treaty of Kiel). Denmark (~43,000 km2, about 2% of Greenland) as 'one sliver' is fair. Tone neutral, no side taken on today's politics; the description ends with the channel disclaimer. Style note: 'the right to choose independence by its own vote' is fair (Self-Government Act ch. 8: a referendum in Greenland), but the Act also needs Inatsisartut's and the Danish parliament's consent, so keep it from going any stronger."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:32:36.027183+00:00",
+    "finishedAt": "2026-11-18T23:32:36.027183+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:33:13.565777+00:00",
+    "finishedAt": "2026-11-18T23:33:13.565777+00:00",
+    "notes": [
+      "Re-review: fact4 now 56,945 (1 July 2026), confirmed on stat.gl BE/202604 Midyear Population, the latest Statistics Greenland release found (no Oct 2026 figure published); all other facts unchanged and confirmed earlier (Wikipedia Greenland: 2,166,086 km2, 1,755,637 km2 ice, 81%, 1979 home rule, 2009 self-rule, Erik the Red, Egede; Britannica Treaty of Kiel); verify items met, neutral tone, description ends with the channel disclaimer and now cites Statistics Greenland. Note: keep the independence line no stronger (the Act also needs Inatsisartut's and the Danish parliament's consent)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:32:59.508162+00:00",
+    "finishedAt": "2026-11-18T23:33:43.783870+00:00",
+    "notes": [
+      "text 'CANADA' at 2.9 s runs outside the frame",
+      "text 'SWEDEN' at 36.3 s runs outside the frame",
+      "text 'G' at 36.3 s runs outside the frame",
+      "6 of 14 stills are mostly empty background (at 20 s, 25 s, 40 s, 45 s, 50 s, 60 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:35:05.909938+00:00",
+    "finishedAt": "2026-11-18T23:35:47.497017+00:00",
+    "notes": [
+      "62 s, sky/explorer (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:36:54.345161+00:00",
+    "finishedAt": "2026-11-18T23:36:54.345161+00:00",
+    "notes": [
+      "[script] 0.0s (first frame, hook beat): Greenland, Canada and Denmark carry no labels; on mute a stranger sees an unnamed tan landmass and an unexplained red dot. Label GREENLAND (and CANADA, with Denmark marked) from frame 0, as the thumbnail does (check 6).",
+      "[script] 20.0s (erik beat): the ICELAND label runs off the right edge ('ICELAN'); frame the camera further left or put the label on the left of its pin.",
+      "[scene] 60.0s (loop beat, Loop.tsx comment bubble): the typed text sits flush against the bubble's left border with no padding, so the first letter touches/clips the outline ('ICE'); pad the bubble text.",
+      "[scene] audio mean -15.9 dB vs target about -18 dB (peak -1.0 ok); about 2 dB hot."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:37:36.196031+00:00",
+    "finishedAt": "2026-11-18T23:38:15.933927+00:00",
+    "notes": [
+      "text 'ICELAND' at 21.5 s runs outside the frame",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:38:21.139062+00:00",
+    "finishedAt": "2026-11-18T23:39:00.630146+00:00",
+    "notes": [
+      "62 s, sky/explorer (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:39:18.232476+00:00",
+    "finishedAt": "2026-11-18T23:39:18.232476+00:00",
+    "notes": [
+      "[script] 0.0s (hook beat, first frame): the new labels are still writing on at frame 0 and read 'GREEN' and 'CAN', not GREENLAND and CANADA; the 62.4s loop frame shows the same half-words. Have both labels fully drawn at frame 0 (no write-on in the hook's first frame) so the first still names the subject (check 6).",
+      "[script] 20.0s (erik beat): the ICELAND label, moved left of its pin, now sits right across the Viking longship and its sailor (the text runs through the sailor's head and the sail), so both are hard to read (check 1). Put the label to the right or below Iceland, inside the frame, or hold the ship west of the label until it fades.",
+      "[scene] audio mean -15.9 dB vs target about -18 dB (peak -1.0 ok), about 2 dB hot; renderer mix, not fixable in the video run (coordinator is reporting it to the owner)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:41:44.707461+00:00",
+    "finishedAt": "2026-11-18T23:42:21.948209+00:00",
+    "notes": [
+      "62 s, sky/explorer (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:42:30.699512+00:00",
+    "finishedAt": "2026-11-18T23:43:08.815327+00:00",
+    "notes": [
+      "62 s, sky/explorer (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:43:16.791547+00:00",
+    "finishedAt": "2026-11-18T23:43:55.796077+00:00",
+    "notes": [
+      "62 s, sky/explorer (preview only)",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:44:05.480130+00:00",
+    "finishedAt": "2026-11-18T23:44:05.480130+00:00",
+    "notes": [
+      "Round 3: every beat on the map with moving camera; frame 0 and loop frame label GREENLAND and CANADA in full; ICELAND label clear above the longship at 20s; loop bubble padded; figures on boards (1979, 2009, 56,945); pick-one ending loops; channel disclaimer on last frame; layout_problems empty. Audio mean -15.9 dB (about 2 dB hot, renderer mix, render's own level check passed) reported to owner by coordinator."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:43:59.624051+00:00",
+    "finishedAt": "2026-11-18T23:50:14.272225+00:00",
+    "notes": [
+      "62 s, sky/explorer, peak -1.0 dB, mean -15.9 dB",
+      "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 10.7 s; one by 9 s",
+      "note: the turn starts at 49% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:50:21.299358+00:00",
+    "finishedAt": "2026-11-18T23:50:21.299358+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

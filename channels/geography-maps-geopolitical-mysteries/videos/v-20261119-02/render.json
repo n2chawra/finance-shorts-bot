@@ -1,0 +1,127 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 60719,
+  "duration_sec": 62,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "explorer",
+    "key": "E",
+    "bpm": 78,
+    "look": {
+      "stage": "space",
+      "header": "neon",
+      "holder": "receipt",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Greenland sits next to Canada, not Europe, yet it belongs to Denmark. Why?",
+        "start": 0.3,
+        "seconds": 3.53,
+        "window": 4.2,
+        "fill": 0.84
+      },
+      {
+        "scene": "size",
+        "text": "And it's no small corner: Greenland is the biggest island on Earth. Lay Denmark on top of it, and Denmark covers just one sliver.",
+        "start": 4.5,
+        "seconds": 5.79,
+        "window": 6.47,
+        "fill": 0.895
+      },
+      {
+        "scene": "ice",
+        "text": "Stranger still, most of it isn't green at all: 81% of the island lies under one giant sheet of ice.",
+        "start": 10.97,
+        "seconds": 5.21,
+        "window": 5.9,
+        "fill": 0.883
+      },
+      {
+        "scene": "erik",
+        "text": "So who named it Greenland? Over a thousand years ago, Erik the Red, a Viking sailing from Iceland, picked the name, supposedly to tempt settlers.",
+        "start": 16.87,
+        "seconds": 6.36,
+        "window": 7.03,
+        "fill": 0.905
+      },
+      {
+        "scene": "egede",
+        "text": "His farms died out. So how did Denmark get it? A missionary, Hans Egede, sailed from Denmark-Norway, then one kingdom, and started a colony.",
+        "start": 23.9,
+        "seconds": 6.35,
+        "window": 7.0,
+        "fill": 0.907
+      },
+      {
+        "scene": "kiel",
+        "text": "Here's the twist. After backing Napoleon and losing, that kingdom had to hand Norway to Sweden, but the treaty left Greenland, Iceland and the Faroe Islands with Denmark.",
+        "start": 30.9,
+        "seconds": 7.57,
+        "window": 8.17,
+        "fill": 0.927
+      },
+      {
+        "scene": "rule",
+        "text": "Iceland broke away long ago. Greenland stayed, and in 1979 it won home rule, with its own parliament in Nuuk, its capital.",
+        "start": 39.07,
+        "seconds": 6.19,
+        "window": 6.83,
+        "fill": 0.906
+      },
+      {
+        "scene": "vote",
+        "text": "Then in 2009 came self-rule, and with it the right to choose independence by its own vote. So the biggest island on Earth stays with Denmark until its 56,945 people decide otherwise.",
+        "start": 45.9,
+        "seconds": 10.21,
+        "window": 10.87,
+        "fill": 0.939
+      },
+      {
+        "scene": "loop",
+        "text": "Iceland or the Faroes: which island should we explain next? Tell me in the comments. And look again at that map:",
+        "start": 56.77,
+        "seconds": 4.8,
+        "window": 5.4,
+        "fill": 0.889
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9,
+    "lufs": -14.6,
+    "music_under_voice_db": 32.3
+  },
+  "craft_problems": [
+    "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 5.631,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

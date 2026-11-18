@@ -1,0 +1,980 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 60719,
+ "story": "why_shaped",
+ "shape": "timeline",
+ "currency": "USD",
+ "style": {
+  "palette": "sky",
+  "genre": "explorer",
+  "key": "E",
+  "bpm": 78,
+  "look": {
+   "stage": "space",
+   "header": "neon",
+   "holder": "receipt",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Iceland or the Faroes: which island should we explain next? Comment",
+ "feed_id": "2026-11-19-denmark-owns-greenland",
+ "facts": [
+  {
+   "label": "Greenland, total area including offshore islands",
+   "value": 2166086,
+   "unit": "km2",
+   "as_of": "2026-11-19",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Greenland",
+   "fixed": true
+  },
+  {
+   "label": "Area covered by the Greenland ice sheet",
+   "value": 1755637,
+   "unit": "km2",
+   "as_of": "2026-11-19",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Greenland",
+   "fixed": true
+  },
+  {
+   "label": "Greenland's share covered by ice",
+   "value": 81,
+   "unit": "percent",
+   "as_of": "2026-11-19",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Greenland",
+   "fixed": true
+  },
+  {
+   "label": "Greenland's population (1 July 2026)",
+   "value": 56945,
+   "unit": "count",
+   "as_of": "2026-07-01",
+   "source": "Statistics Greenland",
+   "url": "https://stat.gl/publ/en/BE/202604/contents/Midyear%20Population.htm",
+   "latest": true,
+   "checked": "2026-11-19"
+  },
+  {
+   "label": "Year Greenland's home rule law came into effect",
+   "value": 1979,
+   "unit": "year",
+   "as_of": "1979-05-01",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Greenland",
+   "fixed": true
+  },
+  {
+   "label": "Year Greenland gained self-rule",
+   "value": 2009,
+   "unit": "year",
+   "as_of": "2009-06-21",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Greenland",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "Why is it *Danish*?",
+  "tag": "Greenland",
+  "angle": "question"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Greenland sits next to Canada, not Europe, yet it belongs to Denmark. Why?",
+   "events": {
+    "greenland": {
+     "word": "Greenland"
+    },
+    "canada": {
+     "word": "Canada"
+    },
+    "europe": {
+     "word": "Europe"
+    },
+    "belongs": {
+     "word": "belongs"
+    },
+    "denmark": {
+     "word": "Denmark"
+    },
+    "why": {
+     "word": "Why"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "greenland",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the North Atlantic, Greenland beside Canada",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "denmark",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "greenland",
+      "what": "Greenland's outline draws itself and its name writes on"
+     },
+     {
+      "at": "canada",
+      "what": "Canada's coast lights up beside it, a short gap of sea between"
+     },
+     {
+      "at": "europe",
+      "what": "Europe lights up far off to the east"
+     },
+     {
+      "at": "belongs",
+      "what": "a long red line shoots from Greenland across the ocean"
+     },
+     {
+      "at": "denmark",
+      "what": "the camera pulls back as the line lands on Denmark, a pin drops on Copenhagen"
+     },
+     {
+      "at": "why",
+      "what": "a big question mark stamps over Greenland"
+     }
+    ],
+    "things": [
+     "north atlantic map",
+     "greenland outline",
+     "canada coast",
+     "red line",
+     "copenhagen pin",
+     "question mark"
+    ]
+   }
+  },
+  {
+   "id": "size",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "And it's no small corner: Greenland is the biggest island on Earth. Lay Denmark on top of it, and Denmark covers just one sliver.",
+   "events": {
+    "corner": {
+     "word": "corner"
+    },
+    "biggest": {
+     "word": "biggest"
+    },
+    "island": {
+     "word": "island"
+    },
+    "earth": {
+     "word": "Earth"
+    },
+    "lay": {
+     "word": "Lay"
+    },
+    "top": {
+     "word": "top"
+    },
+    "sliver": {
+     "word": "sliver"
+    },
+    "covers": {
+     "word": "covers"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "lay"
+    }
+   ],
+   "params": {
+    "component": "Size",
+    "place": "on the map: Greenland, Denmark lifted onto it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "lay",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "corner",
+      "what": "Greenland paints in white from the south"
+     },
+     {
+      "at": "biggest",
+      "what": "the island rises off the map with a shadow"
+     },
+     {
+      "at": "island",
+      "what": "a ruler draws along its length"
+     },
+     {
+      "at": "earth",
+      "what": "a sign BIGGEST ISLAND stamps onto the ice"
+     },
+     {
+      "at": "lay",
+      "what": "Denmark's shape lifts off Europe"
+     },
+     {
+      "at": "top",
+      "what": "it slides across the ocean onto Greenland at true scale"
+     },
+     {
+      "at": "covers",
+      "what": "Denmark's shape settles onto the ice with a bump, its name writing on"
+     },
+     {
+      "at": "sliver",
+      "what": "Denmark sits tiny in one corner, a pulse round it"
+     }
+    ],
+    "things": [
+     "greenland",
+     "ruler",
+     "biggest island sign",
+     "denmark shape lifted"
+    ]
+   }
+  },
+  {
+   "id": "ice",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Stranger still, most of it isn't green at all: {fact3} of the island lies under one giant sheet of ice.",
+   "events": {
+    "stranger": {
+     "word": "Stranger"
+    },
+    "green": {
+     "word": "green"
+    },
+    "island": {
+     "word": "island"
+    },
+    "lies": {
+     "word": "lies"
+    },
+    "giant": {
+     "word": "giant"
+    },
+    "ice": {
+     "word": "ice"
+    },
+    "most": {
+     "word": "most"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Ice",
+    "place": "on the map: Greenland, the ice sheet",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "giant",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stranger",
+      "what": "green grass sprouts along the coast"
+     },
+     {
+      "at": "most",
+      "what": "the camera dips toward the green coast"
+     },
+     {
+      "at": "green",
+      "what": "the grass flickers and fades"
+     },
+     {
+      "at": "all",
+      "what": "the grass withers to brown"
+     },
+     {
+      "at": "island",
+      "what": "the camera glides over the inland"
+     },
+     {
+      "at": "lies",
+      "what": "white ice spreads from the middle outwards"
+     },
+     {
+      "at": "giant",
+      "what": "the ice covers almost all of it, a thermometer sign with the share"
+     },
+     {
+      "at": "ice",
+      "what": "snow drifts across the map"
+     }
+    ],
+    "things": [
+     "greenland",
+     "grass strip",
+     "ice sheet spreading",
+     "share sign",
+     "snow"
+    ],
+    "fig": {
+     "share": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "erik",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So who named it Greenland? Over a thousand years ago, Erik the Red, a Viking sailing from Iceland, picked the name, supposedly to tempt settlers.",
+   "events": {
+    "named": {
+     "word": "named"
+    },
+    "thousand": {
+     "word": "thousand"
+    },
+    "erik": {
+     "word": "Erik"
+    },
+    "viking": {
+     "word": "Viking"
+    },
+    "iceland": {
+     "word": "Iceland"
+    },
+    "picked": {
+     "word": "picked"
+    },
+    "settlers": {
+     "word": "settlers"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Erik",
+    "place": "on the map: Iceland to Greenland's south-west coast",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "picked",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "named",
+      "what": "the map goes old and sepia, the name GREENLAND rubs out"
+     },
+     {
+      "at": "thousand",
+      "what": "a year dial spins back"
+     },
+     {
+      "at": "erik",
+      "what": "a Viking longship appears off Iceland, a red-bearded sailor at the bow"
+     },
+     {
+      "at": "viking",
+      "what": "its striped sail fills"
+     },
+     {
+      "at": "iceland",
+      "what": "it sails west from Iceland"
+     },
+     {
+      "at": "picked",
+      "what": "it lands on the south-west coast and the name GREENLAND paints back on"
+     },
+     {
+      "at": "settlers",
+      "what": "small farm huts pop up along the fjords"
+     }
+    ],
+    "things": [
+     "sepia map",
+     "longship",
+     "viking sailor",
+     "name painting on",
+     "farm huts"
+    ]
+   }
+  },
+  {
+   "id": "egede",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "His farms died out. So how did Denmark get it? A missionary, Hans Egede, sailed from Denmark-Norway, then one kingdom, and started a colony.",
+   "events": {
+    "farms": {
+     "word": "farms"
+    },
+    "died": {
+     "word": "died"
+    },
+    "denmark": {
+     "word": "Denmark"
+    },
+    "missionary": {
+     "word": "missionary"
+    },
+    "hans": {
+     "word": "Hans"
+    },
+    "sailed": {
+     "word": "sailed"
+    },
+    "kingdom": {
+     "word": "kingdom"
+    },
+    "colony": {
+     "word": "colony"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "colony"
+    }
+   ],
+   "params": {
+    "component": "Egede",
+    "place": "on the map: Denmark-Norway to Greenland's west coast",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "sailed",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "farms",
+      "what": "the farm huts stand on the coast"
+     },
+     {
+      "at": "died",
+      "what": "they fade one by one, snow covers them"
+     },
+     {
+      "at": "denmark",
+      "what": "Denmark glows across the sea"
+     },
+     {
+      "at": "missionary",
+      "what": "a ship with a cross on its sail leaves Bergen"
+     },
+     {
+      "at": "hans",
+      "what": "a man in a black coat stands on its deck"
+     },
+     {
+      "at": "sailed",
+      "what": "the camera pulls back as it crosses the ocean"
+     },
+     {
+      "at": "kingdom",
+      "what": "Denmark and Norway fill one shared red"
+     },
+     {
+      "at": "colony",
+      "what": "a red-and-white flag plants on the west coast"
+     }
+    ],
+    "things": [
+     "farm huts",
+     "snow",
+     "mission ship",
+     "missionary",
+     "denmark-norway in one colour",
+     "flag"
+    ]
+   }
+  },
+  {
+   "id": "kiel",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Here's the twist. After backing Napoleon and losing, that kingdom had to hand Norway to Sweden, but the treaty left Greenland, Iceland and the Faroe Islands with Denmark.",
+   "events": {
+    "twist": {
+     "word": "twist"
+    },
+    "losing": {
+     "word": "losing"
+    },
+    "norway": {
+     "word": "Norway"
+    },
+    "sweden": {
+     "word": "Sweden"
+    },
+    "treaty": {
+     "word": "treaty"
+    },
+    "greenland": {
+     "word": "Greenland"
+    },
+    "iceland": {
+     "word": "Iceland"
+    },
+    "faroe": {
+     "word": "Faroe"
+    },
+    "denmark": {
+     "word": "Denmark"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "norway"
+    },
+    {
+     "kind": "paper",
+     "at": "treaty"
+    }
+   ],
+   "params": {
+    "component": "Kiel",
+    "place": "on the map: Scandinavia and the North Atlantic islands",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "treaty",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "twist",
+      "what": "the camera swings to Scandinavia"
+     },
+     {
+      "at": "losing",
+      "what": "a cannon smoke puff and a cracked shield over Denmark"
+     },
+     {
+      "at": "norway",
+      "what": "Norway's red cracks off Denmark"
+     },
+     {
+      "at": "sweden",
+      "what": "Norway slides into Sweden's blue"
+     },
+     {
+      "at": "treaty",
+      "what": "a treaty scroll unrolls over the sea, the camera pulls back"
+     },
+     {
+      "at": "greenland",
+      "what": "a ribbon ties Greenland to Denmark"
+     },
+     {
+      "at": "iceland",
+      "what": "a ribbon ties Iceland"
+     },
+     {
+      "at": "faroe",
+      "what": "a ribbon ties the Faroe Islands"
+     },
+     {
+      "at": "denmark",
+      "what": "all three glow red with Denmark"
+     }
+    ],
+    "things": [
+     "scandinavia map",
+     "cannon smoke",
+     "norway recolouring",
+     "treaty scroll",
+     "ribbons to islands"
+    ]
+   }
+  },
+  {
+   "id": "rule",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Iceland broke away long ago. Greenland stayed, and in {fact5} it won home rule, with its own parliament in Nuuk, its capital.",
+   "events": {
+    "iceland": {
+     "word": "Iceland"
+    },
+    "broke": {
+     "word": "broke"
+    },
+    "greenland": {
+     "word": "Greenland"
+    },
+    "stayed": {
+     "word": "stayed"
+    },
+    "home": {
+     "word": "home"
+    },
+    "parliament": {
+     "word": "parliament"
+    },
+    "nuuk": {
+     "word": "Nuuk"
+    },
+    "long": {
+     "word": "long"
+    },
+    "own": {
+     "word": "own"
+    },
+    "capital": {
+     "word": "capital"
+    },
+    "and": {
+     "word": "and"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Rule",
+    "place": "on the map: Iceland, then Nuuk on Greenland's west coast",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "nuuk",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "iceland",
+      "what": "Iceland glows"
+     },
+     {
+      "at": "broke",
+      "what": "its ribbon snaps and it turns its own blue"
+     },
+     {
+      "at": "long",
+      "what": "Iceland lifts off the map, free"
+     },
+     {
+      "at": "greenland",
+      "what": "the camera glides to Greenland"
+     },
+     {
+      "at": "stayed",
+      "what": "its ribbon holds"
+     },
+     {
+      "at": "and",
+      "what": "the year board starts to rise on the coast"
+     },
+     {
+      "at": "home",
+      "what": "the year lands on the board with a stamp"
+     },
+     {
+      "at": "own",
+      "what": "the camera starts to close on Nuuk"
+     },
+     {
+      "at": "parliament",
+      "what": "a small parliament house rises at Nuuk"
+     },
+     {
+      "at": "nuuk",
+      "what": "Nuuk's name writes on, a red-and-white flag waves"
+     },
+     {
+      "at": "capital",
+      "what": "a gold star lands on Nuuk"
+     }
+    ],
+    "things": [
+     "iceland",
+     "snapped ribbon",
+     "year board",
+     "parliament house",
+     "nuuk label",
+     "greenland flag"
+    ],
+    "fig": {
+     "year": "{fact5}"
+    }
+   }
+  },
+  {
+   "id": "vote",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Then in {fact6} came self-rule, and with it the right to choose independence by its own vote. So the biggest island on Earth stays with Denmark until its {fact4} people decide otherwise.",
+   "events": {
+    "self-rule": {
+     "word": "self-rule"
+    },
+    "right": {
+     "word": "right"
+    },
+    "independence": {
+     "word": "independence"
+    },
+    "vote": {
+     "word": "vote"
+    },
+    "biggest": {
+     "word": "biggest"
+    },
+    "stays": {
+     "word": "stays"
+    },
+    "people": {
+     "word": "people"
+    },
+    "decide": {
+     "word": "decide"
+    },
+    "denmark": {
+     "word": "Denmark"
+    },
+    "until": {
+     "word": "until"
+    },
+    "count": {
+     "word": -7
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "people",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Vote",
+    "place": "on the map: Greenland whole, a ballot box at Nuuk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "people",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "self-rule",
+      "what": "a second year board stamps beside the first"
+     },
+     {
+      "at": "right",
+      "what": "a ballot box appears at Nuuk"
+     },
+     {
+      "at": "independence",
+      "what": "a key hangs over the box"
+     },
+     {
+      "at": "vote",
+      "what": "ballots drop into the box"
+     },
+     {
+      "at": "biggest",
+      "what": "the camera pulls back over the whole island"
+     },
+     {
+      "at": "stays",
+      "what": "the ribbon to Denmark stretches thin"
+     },
+     {
+      "at": "denmark",
+      "what": "Denmark flashes red at the far end of the ribbon"
+     },
+     {
+      "at": "until",
+      "what": "the ribbon starts to fray and shake"
+     },
+     {
+      "at": "count",
+      "what": "the population sign rises and its figure counts up"
+     },
+     {
+      "at": "people",
+      "what": "the figure lands, tiny figures dot the coast"
+     },
+     {
+      "at": "decide",
+      "what": "a pair of scissors hovers over the ribbon"
+     }
+    ],
+    "things": [
+     "year board",
+     "ballot box",
+     "key",
+     "ballots",
+     "ribbon",
+     "population sign",
+     "scissors"
+    ],
+    "fig": {
+     "year": "{fact6}",
+     "people": "{fact4}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Iceland or the Faroes: which island should we explain next? Tell me in the comments. And look again at that map:",
+   "events": {
+    "iceland": {
+     "word": "Iceland"
+    },
+    "faroes": {
+     "word": "Faroes"
+    },
+    "island": {
+     "word": "island"
+    },
+    "comments": {
+     "word": "comments"
+    },
+    "look": {
+     "word": "look"
+    },
+    "map": {
+     "word": "map"
+    },
+    "explain": {
+     "word": "explain"
+    },
+    "tell": {
+     "word": "Tell"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the two islands, then the hook's North Atlantic",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "look",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "iceland",
+      "what": "a pin glows on Iceland"
+     },
+     {
+      "at": "faroes",
+      "what": "a pin glows on the Faroes"
+     },
+     {
+      "at": "island",
+      "what": "a question mark hops between them"
+     },
+     {
+      "at": "explain",
+      "what": "both islands rise off the map"
+     },
+     {
+      "at": "tell",
+      "what": "a comment bubble pops up"
+     },
+     {
+      "at": "comments",
+      "what": "its words write on: ICELAND OR FAROES?"
+     },
+     {
+      "at": "look",
+      "what": "the camera pulls back to the North Atlantic"
+     },
+     {
+      "at": "map",
+      "what": "Greenland's outline fades to the first frame"
+     }
+    ],
+    "things": [
+     "pins",
+     "question mark",
+     "comment bubble",
+     "north atlantic map"
+    ]
+   }
+  }
+ ]
+}
