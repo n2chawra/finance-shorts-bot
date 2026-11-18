@@ -1,12 +1,12 @@
 # What's working in the niche this week (top Shorts and long videos for config/market.json's searches)
 # and what viewers say under our videos, for the research (23:47) and Scout (09:37) agents. Published
-# on the `market-data` branch as one commit with no history, replaced daily: YouTube API data is
+# on the `market-data` branch as one commit with no history, replaced twice a week: YouTube API data is
 # never kept past its refresh. Agents read it with `git show origin/market-data:market.json`.
 name: Market
 
 on:
   schedule:
-    - cron: "47 16 * * *" # 22:17 IST, before the research agent
+    - cron: "47 16 * * 1,4" # 22:17 IST Mon and Thu (was daily; searches cost 100 units each, quota 2026-11-18)
   workflow_dispatch:
 
 permissions:

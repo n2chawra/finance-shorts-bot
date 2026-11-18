@@ -216,7 +216,8 @@ function ReviewPanel({ c }: { c: Channel }) {
   );
 }
 
-const UNITS_PER_UPLOAD = 1_650, READ_UNITS = 1_450, DAILY_UNITS = 10_000;
+// reads (2026-11-18 cuts): market scan twice a week ~290/day, live counters <=300, comments <=30, stats ~70
+const UNITS_PER_UPLOAD = 1_650, READ_UNITS = 700, DAILY_UNITS = 10_000;
 
 /** YouTube quota a day across the live channels: every upload costs about 1,650 units of the shared 10,000. */
 function QuotaLine({ channels, platform }: { channels: Channel[]; platform?: { dailyVideoTarget: number; longPerWeek: number } }) {

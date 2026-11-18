@@ -60,6 +60,12 @@ export class QuotaKeeper {
     return true;
   }
 
+  /** Adds units already spent (a job that can't stop half-way, like the market scan) without asking. */
+  record(kind: Kind, units: number): void {
+    this.usage.units += units;
+    this.usage.byKind[kind] = (this.usage.byKind[kind] ?? 0) + units;
+  }
+
   /** True once, the first time a day's usage passes 80%: the caller raises a notification. */
   shouldWarn(): boolean {
     if (this.usage.warned || this.usage.units < this.limit * 0.8) return false;

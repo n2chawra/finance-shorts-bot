@@ -18,6 +18,7 @@ import { youtubeClientConfigured } from "./lib/uploads.ts";
 import { layout } from "./lib/channels.ts";
 import { activeChannels, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { accessToken, comments, report } from "./lib/youtube.ts";
+import { QuotaKeeper } from "./lib/quota.ts";
 
 const DAY_MS = 86_400_000;
 const CHANNEL_RANGES: [number, Format[]][] = [[7, ["all"]], [28, ["all", "short", "long"]], [90, ["all", "short", "long"]], [365, ["all"]]];
@@ -154,8 +155,16 @@ async function deepChannel(prisma: PrismaClient, channelId: string, channelName:
 
     let commentCount = 0;
     const key = process.env.YT_API_KEY;
-    if (key) {
-      for (const u of uploads) {
+    // quota (2026-11-18): comments cost 1 unit a video and were read for every video every 3 h (~560
+    // units a day and growing); now the videos of the last 14 days, once a day per channel
+    const commentsKey = `commentsDay:${channelId}`;
+    const today = new Date(Date.now() + 5.5 * 3_600_000).toISOString().slice(0, 10);
+    const lastDay = (await prisma.setting.findUnique({ where: { key: commentsKey } }))?.value;
+    const fresh = uploads.filter((u) => Date.now() - u.publishAt.getTime() < 14 * DAY_MS);
+    const keeper = key && lastDay !== today && fresh.length ? await QuotaKeeper.load(prisma) : null;
+    if (key && keeper) {
+      for (const u of fresh) {
+        if (!keeper.take("stats", 1)) break;
         try {
           const list = await comments(key, u.youtubeId!);
           await prisma.$transaction([
@@ -167,6 +176,8 @@ async function deepChannel(prisma: PrismaClient, channelId: string, channelName:
           errors.push(`comments ${u.videoId}: ${e instanceof Error ? e.message : e}`);
         }
       }
+      await keeper.save();
+      await prisma.setting.upsert({ where: { key: commentsKey }, update: { value: today }, create: { key: commentsKey, value: today } });
     }
     const doneKey = first ? "statsDeepAt" : `statsDeepAt:${channelId}`;
     await prisma.setting.upsert({ where: { key: doneKey }, update: { value: new Date().toISOString() }, create: { key: doneKey, value: new Date().toISOString() } });

@@ -248,9 +248,9 @@ rules to let an agent change through.
 
 **The growth loop** (owner, 2026-10-17: the owner uploads and reviews monthly; the agents grow the
 channel in between). The channel itself is described in `channels/<channel>/profile.md`, which every agent
-reads first. The daily `market.yml` (22:17 IST) puts this week's fastest-growing niche videos and
-our comments on the `market-data` branch (one commit, replaced daily: YouTube API data is never
-kept past its refresh). Research and Scout start from it; the improver applies, A/B-tests and keeps
+reads first. `market.yml` (22:17 IST, Mon and Thu since 2026-11-18 to save quota: its searches cost
+100 units each) puts this week's fastest-growing niche videos and our comments on the `market-data`
+branch (one commit, replaced each run: YouTube API data is never kept past its refresh). Research and Scout start from it; the improver applies, A/B-tests and keeps
 or reverts by `improvement/evaluate.py` (per format; look and sound changes on % viewed). The
 **monthly review** (`agents/monthly.md`, 12:07 IST on the 1st) writes `channels/<channel>/monthly/<YYYY-MM>.md`,
 next month's `focus.json` for the agents, and up to three setting proposals the owner approves or

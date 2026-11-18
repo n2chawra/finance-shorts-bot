@@ -20,7 +20,7 @@ import { z } from "zod";
 import { notifyOwner } from "./autopilot.db";
 import { prisma } from "./prisma";
 
-const FRESH_MS = 60_000;   // every other 30 s poll: keeps a dashboard left open all day under ~1,500 units
+const FRESH_MS = 300_000;   // every 5 min (was 1 min; quota 2026-11-18): a dashboard left open all day costs ~300 units, not ~1,500
 // Longest a page waits for YouTube before showing the stored numbers. A refresh is one YouTube call
 // and one UPDATE, well under a second; the old 2.5 s cut-off (with one UPDATE per video) often fired
 // first, and on Netlify the unfinished refresh then froze with the function and only landed on the

@@ -16,6 +16,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { PrismaClient } from "@prisma/client";
+import { COST, QuotaKeeper } from "./lib/quota.ts";
 
 import { existsSync } from "node:fs";
 import { ChannelList, CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket, subscribersOf } from "./lib/market.ts";
@@ -27,7 +28,11 @@ const ROOT = path.resolve(import.meta.dirname, "..");
 const DAY_MS = 86_400_000;
 const API = "https://www.googleapis.com/youtube/v3";
 
+/** Units this run spent (a search 100, a list 1), added to the day's quota usage at the end. */
+let spent = 0;
+
 async function get<T>(token: string, url: string, schema: { parse: (x: unknown) => T }): Promise<T> {
+  spent += url.includes("/search?") ? COST.search : COST.list;
   const res = await fetch(url, { headers: { authorization: `Bearer ${token}` } });
   if (!res.ok) throw new Error(`${res.status} ${url.split("?")[0]}: ${(await res.text()).slice(0, 200)}`);
   return schema.parse(await res.json());
@@ -83,7 +88,7 @@ async function comments(token: string, now: Date) {
   const prisma = new PrismaClient();
   try {
     const uploads = await prisma.upload.findMany({
-      where: { youtubeId: { not: null }, video: { deletedAt: null }, publishAt: { gte: new Date(now.getTime() - 30 * DAY_MS), lte: now } },
+      where: { youtubeId: { not: null }, video: { deletedAt: null }, publishAt: { gte: new Date(now.getTime() - 14 * DAY_MS), lte: now } },   // 14 days: each video costs a unit
       include: { video: { select: { id: true, title: true, format: true } } },
     });
     const out = [];
@@ -116,6 +121,18 @@ async function main(): Promise<void> {
   writeFileSync(path.join(outDir, "comments.json"), JSON.stringify({ note, generatedAt: now.toISOString(), videos: c }, null, 2) + "\n");
   if (refs) writeFileSync(path.join(outDir, "thumb-refs.json"), JSON.stringify({ note, generatedAt: now.toISOString(), topics: refs }, null, 2) + "\n");
   console.log(JSON.stringify({ shorts: m.shorts.length, long: m.long.length, breakoutShorts: m.breakout.shorts.length, videosWithComments: c.length, thumbRefTopics: refs ? Object.keys(refs).length : 0 }));
+  // the run's units go into the day's usage, so the Channels page and the uploader see them
+  if (process.env.DATABASE_URL) {
+    const prisma = new PrismaClient();
+    try {
+      const keeper = await QuotaKeeper.load(prisma);
+      keeper.record("stats", spent);
+      await keeper.save();
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
+  console.log(`quota: ${spent} units this run`);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === import.meta.filename) {
