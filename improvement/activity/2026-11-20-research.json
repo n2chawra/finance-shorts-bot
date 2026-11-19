@@ -1,0 +1,45 @@
+{
+  "agent": "research",
+  "day": "2026-11-20",
+  "startedAt": "2026-11-19T16:48:24Z",
+  "finishedAt": "2026-11-19T16:54:42Z",
+  "summary": "Friday demand scan: added 3 sourced topics (GTA VI launch priced in copies, Cyber Monday per minute, Starbucks barista vs CEO per hour), handed the owner's Squid Game logo note to the improver, no new proposals.",
+  "decision": "acted",
+  "why": "GTA VI launched 19 Nov and Black Friday/Cyber Monday are 27-30 Nov: money moments people are talking about, each told as a per-unit question with figures read on Take-Two's, Adobe's and Starbucks' own releases. No new challenger: this week's queued first-second tests already cover what the numbers show and 17-19 Nov analytics hasn't landed.",
+  "findings": [
+    {
+      "title": "GTA VI is out; Take-Two expects $3.35B-$3.5B in the December quarter",
+      "detail": "At $79.99 that is the price of about 41.9M copies. Added as a trending topic (expires 23 Nov), now top of the feed (score 10.65).",
+      "link": "https://finviz.com/news/419503/take-two-interactive-software-inc-reports-results-for-fiscal-second-quarter-2027"
+    },
+    {
+      "title": "Cyber Monday 2025: $14.25B online, $16M a minute at the peak, $1.03B on buy now, pay later",
+      "detail": "Adobe expects $15.1B on 30 Nov 2026. Seasonal topic for 24-30 Nov.",
+      "link": "https://news.adobe.com/news/2025/12/adobe-cyber-monday-hits-record"
+    },
+    {
+      "title": "Starbucks' CEO earns a barista's year ($17,279) in about 4.9 hours",
+      "detail": "From the 2026 proxy: Niccol $30,992,773 in fiscal 2025 (down from $95.8M), ratio 1,794:1.",
+      "link": "https://www.sec.gov/Archives/edgar/data/829224/000121390026007780/ea0270973-01.htm"
+    },
+    {
+      "title": "Claude Code 2.1.328: scheduled-task save fix, gateway and rate-limit message fixes",
+      "detail": "Nothing changes for our cloud routines.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 topics added to the feed",
+      "detail": "2026-11-20-gta-6-79-99-how-many-copies, 2026-11-20-cyber-monday-16-million-a-minute, 2026-11-20-starbucks-barista-year-in-5-ceo-hours",
+      "branch": "agent/research/2026-11-20"
+    }
+  ],
+  "nextCheck": "2026-11-21",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/paisa-panchayat/research/2026-11-20.md"
+    }
+  ]
+}
