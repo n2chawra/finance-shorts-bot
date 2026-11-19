@@ -276,3 +276,62 @@ export function DataTable({ head, rows }: { head: [string, string]; rows: [strin
     </details>
   );
 }
+
+/**
+ * Several series over the same days, one line each in its own colour, with a shared crosshair tooltip
+ * listing every series. A null is a day with no data yet: the line breaks there.
+ */
+export function MultiLineChart({ labels, series, height = 240, fmt, fmtFull = fmt }: {
+  labels: string[]; series: { key: string; label: string; color: string; values: (number | null)[] }[];
+  height?: number; fmt: (n: number) => string; fmtFull?: (n: number) => string;
+}) {
+  const [ref, w] = useWidth();
+  const [hover, setHover] = useState<number | null>(null);
+  const ticks = niceTicks(Math.max(0, ...series.flatMap((s) => s.values.filter((v): v is number => v !== null))));
+  const top = ticks[ticks.length - 1];
+  const innerW = Math.max(w - PAD.left - PAD.right, 1);
+  const x = (i: number) => PAD.left + (labels.length > 1 ? (innerW * i) / (labels.length - 1) : innerW / 2);
+  const y = (v: number) => PAD.top + (height - PAD.top - PAD.bottom) * (1 - v / top);
+  const every = Math.max(1, Math.ceil(labels.length / Math.max(2, Math.floor(innerW / 64))));
+  const path = (vals: (number | null)[]) => vals.map((v, i) => (v === null ? "" : `${i && vals[i - 1] !== null ? "L" : "M"}${x(i)},${y(v)}`)).join(" ");
+  const onMove = (e: React.PointerEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const i = Math.round(((e.clientX - rect.left - PAD.left) / innerW) * (labels.length - 1));
+    setHover(Math.min(labels.length - 1, Math.max(0, i)));
+  };
+  return (
+    <div ref={ref} className="relative w-full touch-pan-y select-none" style={{ height }}>
+      {w > 0 && labels.length > 0 && (
+        <svg width={w} height={height} role="img" aria-label={`Daily views: ${series.map((s) => s.label).join(", ")}`} onPointerMove={onMove} onPointerDown={onMove} onPointerLeave={() => setHover(null)}>
+          <Axes w={w} h={height} ticks={ticks} y={y} fmt={fmt} />
+          {labels.map((l, i) => (i % every === 0 || i === labels.length - 1) && (i === labels.length - 1 || labels.length - 1 - i >= every * 0.6) && (
+            <text key={l + i} x={x(i)} y={height - 6} textAnchor={i === labels.length - 1 ? "end" : i === 0 ? "start" : "middle"} fontSize={11} fill="var(--muted)">{l}</text>
+          ))}
+          {series.map((s) => (
+            <motion.path key={s.key + labels.length} d={path(s.values)} fill="none" stroke={s.color} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round"
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }} />
+          ))}
+          {hover !== null && (
+            <>
+              <line x1={x(hover)} x2={x(hover)} y1={PAD.top} y2={height - PAD.bottom} stroke="var(--ring-strong)" strokeWidth={1} />
+              {series.map((s) => s.values[hover] !== null && <circle key={s.key} cx={x(hover)} cy={y(s.values[hover]!)} r={4} fill={s.color} stroke="var(--surface)" strokeWidth={2} />)}
+            </>
+          )}
+        </svg>
+      )}
+      {hover !== null && w > 0 && (
+        <div className="pointer-events-none absolute top-1 z-10 -translate-x-1/2 whitespace-nowrap rounded-lg border border-ring bg-surface px-3 py-2 text-xs shadow-pop"
+          style={{ left: Math.min(Math.max(x(hover), 96), w - 96) }}>
+          <div className="text-muted">{labels[hover]}</div>
+          {series.map((s) => (
+            <div key={s.key} className="mt-1 flex items-center gap-2">
+              <span aria-hidden className="size-2 rounded-full" style={{ background: s.color }} />
+              <span className="flex-1 text-ink2">{s.label}</span>
+              <span className="ml-3 font-semibold tabular-nums text-ink">{s.values[hover] === null ? "no data" : fmtFull(s.values[hover]!)}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

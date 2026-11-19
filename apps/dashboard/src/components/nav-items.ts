@@ -1,9 +1,14 @@
-import { BarChart3, Gauge, Bell, Bot, CalendarDays, Film, GraduationCap, LayoutDashboard, ListOrdered, type LucideIcon, MessageSquarePlus, Repeat, Settings, Tv } from "lucide-react";
+import { BarChart3, LayoutGrid, Gauge, Bell, Bot, CalendarDays, Film, GraduationCap, LayoutDashboard, ListOrdered, type LucideIcon, MessageSquarePlus, Repeat, Settings, Tv } from "lucide-react";
 
 export type NavItem = { href: string; label: string; icon: LucideIcon; key: string };
 
 /** Sidebar groups. `key` is the second key of the "g then key" shortcut. */
 export const NAV: { group: string; items: NavItem[] }[] = [
+  {
+    // not scoped to the switcher's channel: every channel side by side (the page after sign-in)
+    group: "Every channel",
+    items: [{ href: "/portfolio", label: "All channels", icon: LayoutGrid, key: "p" }],
+  },
   {
     group: "Pipeline",
     items: [
