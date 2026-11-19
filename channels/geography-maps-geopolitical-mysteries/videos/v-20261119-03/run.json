@@ -1,0 +1,163 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:50:56.834470+00:00",
+    "finishedAt": "2026-11-18T23:50:56.834470+00:00",
+    "notes": [
+      "shape 'what-if' was used in the last 3 videos: pick another, or invent one the topic needs"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:51:02.260073+00:00",
+    "finishedAt": "2026-11-18T23:51:02.260073+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:51:59.555510+00:00",
+    "finishedAt": "2026-11-18T23:51:59.555510+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:52:00.264248+00:00",
+    "finishedAt": "2026-11-18T23:52:00.264248+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: 3 hedging words (can, could, maybe); at most 2: tell one concrete story with certainty (\"The dealer takes two thousand off.\", not \"some dealers can…\"); the disclaimer covers it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:52:54.703044+00:00",
+    "finishedAt": "2026-11-18T23:52:54.703044+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:55:40.901425+00:00",
+    "finishedAt": "2026-11-18T23:55:40.901425+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:56:08.319528+00:00",
+    "finishedAt": "2026-11-18T23:56:08.319528+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:56:52.378039+00:00",
+    "finishedAt": "2026-11-18T23:57:44.020272+00:00",
+    "notes": [
+      "text 'YEARS' at 52.7 s is 33.4 px, below the 44 px minimum",
+      "1.9 s with nothing new on screen in beat 'wobble' (at most 1.8 s): add an action on the phrase being said there",
+      "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:58:09.814960+00:00",
+    "finishedAt": "2026-11-18T23:58:09.814960+00:00",
+    "notes": [
+      "payoff: 'this what-if is not a maybe ... one day ... the green comes back on its own' states a future climate outcome as certain. The script's own source (University of Helsinki, Armstrong et al. 2023; its author's Conversation piece, Dec 2023) says the green periods did not happen during ice ages (high-latitude ice sheets suppressed them), so the 21,000-year wobble does not guarantee a green Sahara every cycle, and today's human-driven warming is a further unknown. Reword as what scientists expect, e.g. 'the wobble comes round about every 21,000 years, so scientists expect the rains to return one day, thousands of years from now', and drop 'not a maybe' and 'on its own'.",
+      "(minor, no change needed if kept) fact1 (more than 230 greenings in 8 million years) is not on the cited Helsinki news page; it is confirmed by Larrasoana, Roberts and Rohling, PLoS ONE 2013 (PMC3797788: 'over 230 GSPs within the last 8 million years') and by the Helsinki researcher Edward Armstrong in The Conversation (15 Dec 2023). Consider pointing fact1's url at the PLoS ONE paper or the Conversation article."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-18T23:58:36.098585+00:00",
+    "finishedAt": "2026-11-18T23:59:12.991445+00:00",
+    "notes": [
+      "1.9 s with nothing new on screen in beat 'wobble' (at most 1.8 s): add an action on the phrase being said there",
+      "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:59:32.962169+00:00",
+    "finishedAt": "2026-11-18T23:59:32.962169+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T00:00:05.278181+00:00",
+    "finishedAt": "2026-11-19T00:00:05.278181+00:00",
+    "notes": [
+      "Re-review after the payoff fix: payoff now hedged ('scientists expect the rains to return'), no certainty claim. fact2 (about every 21,000 years) on the cited Helsinki page (19 Sep 2023); fact1 (over 230 greenings in 8 million years) confirmed by Larrasoana et al., PLoS ONE 2013 (PMC3797788) and Helsinki's E. Armstrong in The Conversation (15 Dec 2023), not on the cited page. Wobble and monsoon mechanism, last green period's lakes and wildlife, Tassili cattle rock art, Sahara dust fertilising the Amazon all accurate; channel disclaimer in description. Note: fact1's url could point at the PLoS ONE paper."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-18T23:59:55.506123+00:00",
+    "finishedAt": "2026-11-19T00:00:36.730266+00:00",
+    "notes": [
+      "62 s, forest/atlas (preview only)",
+      "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T00:01:12.075654+00:00",
+    "finishedAt": "2026-11-19T00:01:50.515193+00:00",
+    "notes": [
+      "62 s, forest/atlas (preview only)",
+      "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T00:02:51.466196+00:00",
+    "finishedAt": "2026-11-19T00:02:51.466196+00:00",
+    "notes": [
+      "62.2 s (60-80 band), every beat on the map with its own place (Sahara, Mediterranean globe, Lake Chad, Tassili rock, Atlantic plume, Amazon, dial, Antarctica); first frame names SAHARA with a hippo on sand, title holds the 21,000-year payoff back; 230 on a sign board and 21,000 on a dial, no placeholders; pick-one close and loop line back to frame 1; channel disclaimer on last frame; audio peak -1.0/mean -15.7 in range. Minor: 60 s caption sits on pale Antarctica (readable via shadow), 0/5/20 s share a similar medium Sahara framing."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T00:03:02.352178+00:00",
+    "finishedAt": "2026-11-19T00:08:28.124743+00:00",
+    "notes": [
+      "62 s, forest/atlas, peak -1.0 dB, mean -15.7 dB",
+      "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-19T00:08:32.389649+00:00",
+    "finishedAt": "2026-11-19T00:08:32.389649+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

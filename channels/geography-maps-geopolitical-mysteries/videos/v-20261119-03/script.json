@@ -1,0 +1,903 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38417,
+ "story": "what_if_world",
+ "shape": "the-cycle",
+ "currency": "USD",
+ "style": {
+  "palette": "forest",
+  "genre": "atlas",
+  "key": "C",
+  "bpm": 92,
+  "look": {
+   "stage": "field",
+   "header": "sticky",
+   "holder": "blackboard",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "myth",
+ "cta": "Green Sahara or melted Antarctica: which what-if should we map next? Comment",
+ "feed_id": "2026-11-17-what-if-sahara-green",
+ "facts": [
+  {
+   "label": "Times the Sahara greened in the last eight million years (more than)",
+   "value": 230,
+   "unit": "count",
+   "as_of": "2023-09-13",
+   "source": "University of Helsinki",
+   "url": "https://www.helsinki.fi/en/news/climate-change/new-research-reveals-why-and-when-sahara-desert-was-green",
+   "latest": true,
+   "checked": "2026-11-19"
+  },
+  {
+   "label": "Years between the Sahara's green periods (about)",
+   "value": 21000,
+   "unit": "count",
+   "as_of": "2023-09-13",
+   "source": "University of Helsinki",
+   "url": "https://www.helsinki.fi/en/news/climate-change/new-research-reveals-why-and-when-sahara-desert-was-green",
+   "latest": true,
+   "checked": "2026-11-19"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.5,
+  "words": "Sahara was *green*?",
+  "tag": "What if",
+  "angle": "question"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "The Sahara used to be green grassland. So could it really turn green again?",
+   "events": {
+    "sahara": {
+     "word": "Sahara"
+    },
+    "green": {
+     "word": "green"
+    },
+    "grassland": {
+     "word": "grassland"
+    },
+    "could": {
+     "word": "could"
+    },
+    "again": {
+     "word": "again"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "sahara",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "on the map: North Africa, the Sahara",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "could",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sahara",
+      "what": "the Sahara's countries glow sand-gold, SAHARA writes across them"
+     },
+     {
+      "at": "green",
+      "what": "the sand flickers green"
+     },
+     {
+      "at": "grassland",
+      "what": "grass covers it for a moment, a hippo standing in the middle"
+     },
+     {
+      "at": "could",
+      "what": "the green fades back to sand, the camera closes in"
+     },
+     {
+      "at": "again",
+      "what": "a green sprout pushes up from the sand"
+     }
+    ],
+    "things": [
+     "north africa map",
+     "sahara countries",
+     "dunes",
+     "hippo",
+     "sprout"
+    ]
+   }
+  },
+  {
+   "id": "already",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "The biggest hot desert on Earth already has, more than {fact1} times in the last eight million years, flipping from desert to green and back again.",
+   "events": {
+    "already": {
+     "word": "already"
+    },
+    "times": {
+     "word": "times"
+    },
+    "million": {
+     "word": "million"
+    },
+    "desert": {
+     "word": "desert"
+    },
+    "green": {
+     "word": "green"
+    },
+    "back": {
+     "word": "back"
+    },
+    "biggest": {
+     "word": "biggest"
+    },
+    "flipping": {
+     "word": "flipping"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Already",
+    "place": "on the map: the Sahara under a flipping counter",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "million",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "biggest",
+      "what": "dunes ripple across the whole Sahara"
+     },
+     {
+      "at": "already",
+      "what": "a counter board stands up on the Libyan sand"
+     },
+     {
+      "at": "times",
+      "what": "the counter flips up to the figure"
+     },
+     {
+      "at": "million",
+      "what": "the camera pulls back over all of Africa"
+     },
+     {
+      "at": "desert",
+      "what": "the land goes sand-gold"
+     },
+     {
+      "at": "flipping",
+      "what": "the counter board rattles"
+     },
+     {
+      "at": "green",
+      "what": "it washes green"
+     },
+     {
+      "at": "back",
+      "what": "and back to sand again"
+     }
+    ],
+    "things": [
+     "counter board",
+     "africa map",
+     "green wash"
+    ],
+    "fig": {
+     "times": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "wobble",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So what flips it? Earth wobbles slowly on its axis, and when the wobble tilts more summer sun onto North Africa, the monsoon rains push north, deep into the sand.",
+   "events": {
+    "flips": {
+     "word": "flips"
+    },
+    "wobbles": {
+     "word": "wobbles"
+    },
+    "axis": {
+     "word": "axis"
+    },
+    "summer": {
+     "word": "summer"
+    },
+    "africa": {
+     "word": "Africa"
+    },
+    "monsoon": {
+     "word": "monsoon"
+    },
+    "north": {
+     "word": "north"
+    },
+    "sand": {
+     "word": "sand"
+    },
+    "tilts": {
+     "word": "tilts"
+    },
+    "slowly": {
+     "word": "slowly"
+    },
+    "deep": {
+     "word": "deep"
+    },
+    "rains": {
+     "word": "rains"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Wobble",
+    "place": "on the map: a globe over the Mediterranean, rain bands over the Sahel",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "monsoon",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "flips",
+      "what": "a small globe rises over the Mediterranean"
+     },
+     {
+      "at": "wobbles",
+      "what": "its axis traces a slow circle"
+     },
+     {
+      "at": "slowly",
+      "what": "the axis line starts its circle"
+     },
+     {
+      "at": "axis",
+      "what": "the axis line glows"
+     },
+     {
+      "at": "tilts",
+      "what": "the globe leans over toward the sun"
+     },
+     {
+      "at": "summer",
+      "what": "a sun swings round and its rays hit the globe"
+     },
+     {
+      "at": "africa",
+      "what": "the rays land on North Africa on the map"
+     },
+     {
+      "at": "monsoon",
+      "what": "rain clouds gather over the Gulf of Guinea"
+     },
+     {
+      "at": "rains",
+      "what": "rain starts to fall from the clouds"
+     },
+     {
+      "at": "north",
+      "what": "the rain band slides north"
+     },
+     {
+      "at": "deep",
+      "what": "the clouds reach the middle of the desert"
+     },
+     {
+      "at": "sand",
+      "what": "rain falls on the dunes, dark patches spread"
+     }
+    ],
+    "things": [
+     "globe",
+     "axis",
+     "sun",
+     "rays",
+     "rain clouds",
+     "rain band"
+    ]
+   }
+  },
+  {
+   "id": "last",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Last time, grass covered the dunes and lakes filled the basins. Hippos, crocodiles and giraffes lived right where camels walk across the sand today.",
+   "events": {
+    "last": {
+     "word": "Last"
+    },
+    "grass": {
+     "word": "grass"
+    },
+    "dunes": {
+     "word": "dunes"
+    },
+    "lakes": {
+     "word": "lakes"
+    },
+    "hippos": {
+     "word": "Hippos"
+    },
+    "crocodiles": {
+     "word": "crocodiles"
+    },
+    "giraffes": {
+     "word": "giraffes"
+    },
+    "camels": {
+     "word": "camels"
+    },
+    "sand": {
+     "word": "sand"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "hippos"
+    }
+   ],
+   "params": {
+    "component": "Last",
+    "place": "on the map: the green Sahara, a great lake at Chad",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "hippos",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "last",
+      "what": "the camera glides south over the desert"
+     },
+     {
+      "at": "grass",
+      "what": "green paints across from the south"
+     },
+     {
+      "at": "dunes",
+      "what": "dune marks fade under it"
+     },
+     {
+      "at": "lakes",
+      "what": "a huge lake fills at Chad"
+     },
+     {
+      "at": "hippos",
+      "what": "a hippo pops up in the lake"
+     },
+     {
+      "at": "crocodiles",
+      "what": "a crocodile slides along the shore"
+     },
+     {
+      "at": "giraffes",
+      "what": "a giraffe stands up on the grass"
+     },
+     {
+      "at": "camels",
+      "what": "a camel ghosts in, the animals fade to it"
+     },
+     {
+      "at": "sand",
+      "what": "the camel plods on, dunes return"
+     }
+    ],
+    "things": [
+     "green sahara",
+     "lake chad basin",
+     "hippo",
+     "crocodile",
+     "giraffe",
+     "camel"
+    ]
+   }
+  },
+  {
+   "id": "rock",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "People herded cattle across it, and painted them on rocks still standing in the Algerian desert today.",
+   "events": {
+    "people": {
+     "word": "People"
+    },
+    "cattle": {
+     "word": "cattle"
+    },
+    "painted": {
+     "word": "painted"
+    },
+    "rocks": {
+     "word": "rocks"
+    },
+    "still": {
+     "word": "still"
+    },
+    "algerian": {
+     "word": "Algerian"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Rock",
+    "place": "on the map: Tassili in Algeria, a painted rock face",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "rocks",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "people",
+      "what": "small herders walk across the green"
+     },
+     {
+      "at": "cattle",
+      "what": "a herd of cattle follows them"
+     },
+     {
+      "at": "painted",
+      "what": "a hand-painted cow outline appears"
+     },
+     {
+      "at": "rocks",
+      "what": "the camera pushes in on a red rock face standing in southern Algeria"
+     },
+     {
+      "at": "still",
+      "what": "more painted cattle appear on the rock"
+     },
+     {
+      "at": "algerian",
+      "what": "Algeria outlines itself and its name writes on"
+     }
+    ],
+    "things": [
+     "herders",
+     "cattle",
+     "rock face",
+     "painted cattle",
+     "algeria label"
+    ]
+   }
+  },
+  {
+   "id": "catch",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "But here's the catch. Every year the wind carries Sahara dust across the Atlantic Ocean, thousands of kilometres, all the way to the Amazon rainforest, and that dust feeds its soil.",
+   "events": {
+    "catch": {
+     "word": "catch"
+    },
+    "wind": {
+     "word": "wind"
+    },
+    "dust": {
+     "word": "dust"
+    },
+    "atlantic": {
+     "word": "Atlantic"
+    },
+    "amazon": {
+     "word": "Amazon"
+    },
+    "feeds": {
+     "word": "feeds"
+    },
+    "soil": {
+     "word": "soil"
+    },
+    "kilometres": {
+     "word": "kilometres"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "wind"
+    }
+   ],
+   "params": {
+    "component": "Catch",
+    "place": "on the map: the Sahara, the Atlantic, the Amazon",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "atlantic",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "catch",
+      "what": "the map snaps back to sand"
+     },
+     {
+      "at": "wind",
+      "what": "wind lines sweep west off the coast"
+     },
+     {
+      "at": "dust",
+      "what": "an orange dust plume lifts off the desert"
+     },
+     {
+      "at": "atlantic",
+      "what": "the camera pulls back as the plume crosses the ocean"
+     },
+     {
+      "at": "kilometres",
+      "what": "the plume stretches on over open water"
+     },
+     {
+      "at": "amazon",
+      "what": "Brazil's rainforest lights up green where the plume lands"
+     },
+     {
+      "at": "feeds",
+      "what": "dust specks sink into the trees"
+     },
+     {
+      "at": "soil",
+      "what": "small trees sprout taller"
+     }
+    ],
+    "things": [
+     "wind lines",
+     "dust plume",
+     "atlantic",
+     "amazon rainforest",
+     "trees"
+    ]
+   }
+  },
+  {
+   "id": "less",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Turn the Sahara green, and much of that dust stays put on the ground. The world's biggest rainforest, half a world away, would lose one of its fertilisers.",
+   "events": {
+    "turn": {
+     "word": "Turn"
+    },
+    "green": {
+     "word": "green"
+    },
+    "stays": {
+     "word": "stays"
+    },
+    "worlds": {
+     "word": "world's"
+    },
+    "rainforest": {
+     "word": "rainforest"
+    },
+    "lose": {
+     "word": "lose"
+    },
+    "fertilisers": {
+     "word": "fertilisers"
+    },
+    "half": {
+     "word": "half"
+    },
+    "ground": {
+     "word": "ground"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Less",
+    "place": "on the map: the plume thinning over the Atlantic",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "rainforest",
+      "size": "medium"
+     },
+     {
+      "at": "lose",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "turn",
+      "what": "green sweeps over the Sahara"
+     },
+     {
+      "at": "green",
+      "what": "the plume's source dims"
+     },
+     {
+      "at": "stays",
+      "what": "the dust plume thins and breaks"
+     },
+     {
+      "at": "ground",
+      "what": "dust settles back onto the green Sahara"
+     },
+     {
+      "at": "worlds",
+      "what": "the camera glides west to the Amazon"
+     },
+     {
+      "at": "rainforest",
+      "what": "the trees there sway"
+     },
+     {
+      "at": "half",
+      "what": "a dashed line measures the ocean between them"
+     },
+     {
+      "at": "lose",
+      "what": "a fertiliser sack on the forest edge empties"
+     },
+     {
+      "at": "fertilisers",
+      "what": "the sack tips over, a red arrow drops"
+     }
+    ],
+    "things": [
+     "green sahara",
+     "thin plume",
+     "amazon",
+     "fertiliser sack",
+     "arrow"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "And here's the twist: the wobble comes round about every {fact2} years, so scientists expect the rains to return one day, thousands of years from now.",
+   "events": {
+    "twist": {
+     "word": "twist"
+    },
+    "wobble": {
+     "word": "wobble"
+    },
+    "round": {
+     "word": "round"
+    },
+    "years": {
+     "word": "years"
+    },
+    "expect": {
+     "word": "expect"
+    },
+    "rains": {
+     "word": "rains"
+    },
+    "day": {
+     "word": "day"
+    },
+    "thousands": {
+     "word": "thousands"
+    },
+    "now": {
+     "word": "now"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "years",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: Africa under a turning wheel of years",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "expect",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "twist",
+      "what": "a big dial board rises over the Mediterranean"
+     },
+     {
+      "at": "wobble",
+      "what": "the globe's axis circles on the dial"
+     },
+     {
+      "at": "round",
+      "what": "the dial's hand sweeps round"
+     },
+     {
+      "at": "years",
+      "what": "the figure stamps on the dial"
+     },
+     {
+      "at": "expect",
+      "what": "the camera starts to pull back over Africa"
+     },
+     {
+      "at": "rains",
+      "what": "rain clouds drift north again"
+     },
+     {
+      "at": "day",
+      "what": "green pulses up from the south"
+     },
+     {
+      "at": "thousands",
+      "what": "the dial hand keeps turning"
+     },
+     {
+      "at": "now",
+      "what": "the Sahara washes green"
+     }
+    ],
+    "things": [
+     "dial board",
+     "globe",
+     "africa",
+     "green wave"
+    ],
+    "fig": {
+     "years": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Green Sahara or melted Antarctica: which what-if should we map next? Tell me in the comments below. And now picture it one more time:",
+   "events": {
+    "sahara": {
+     "word": "Sahara"
+    },
+    "antarctica": {
+     "word": "Antarctica"
+    },
+    "map": {
+     "word": "map"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "comments": {
+     "word": "comments"
+    },
+    "picture": {
+     "word": "picture"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Loop",
+    "place": "on the map: Africa and Antarctica, then the Sahara again",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "picture",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sahara",
+      "what": "a pin glows on the Sahara"
+     },
+     {
+      "at": "antarctica",
+      "what": "a pin glows on Antarctica"
+     },
+     {
+      "at": "map",
+      "what": "a question mark hops between them"
+     },
+     {
+      "at": "tell",
+      "what": "a comment bubble pops up"
+     },
+     {
+      "at": "comments",
+      "what": "its words write on"
+     },
+     {
+      "at": "picture",
+      "what": "the camera dives back to the Sahara: the first frame"
+     }
+    ],
+    "things": [
+     "pins",
+     "question mark",
+     "comment bubble",
+     "africa map"
+    ]
+   }
+  }
+ ]
+}

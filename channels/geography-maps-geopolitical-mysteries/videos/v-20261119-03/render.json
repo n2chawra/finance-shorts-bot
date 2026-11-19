@@ -1,0 +1,127 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38417,
+  "duration_sec": 62,
+  "tempo": 1.2,
+  "style": {
+    "palette": "forest",
+    "genre": "atlas",
+    "key": "C",
+    "bpm": 92,
+    "look": {
+      "stage": "field",
+      "header": "sticky",
+      "holder": "blackboard",
+      "entrance": "stamp"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The Sahara used to be green grassland. So could it really turn green again?",
+        "start": 0.3,
+        "seconds": 3.41,
+        "window": 4.07,
+        "fill": 0.838
+      },
+      {
+        "scene": "already",
+        "text": "The biggest hot desert on Earth already has, more than 230 times in the last eight million years, flipping from desert to green and back again.",
+        "start": 4.37,
+        "seconds": 6.81,
+        "window": 7.47,
+        "fill": 0.912
+      },
+      {
+        "scene": "wobble",
+        "text": "So what flips it? Earth wobbles slowly on its axis, and when the wobble tilts more summer sun onto North Africa, the monsoon rains push north, deep into the sand.",
+        "start": 11.83,
+        "seconds": 7.2,
+        "window": 7.83,
+        "fill": 0.92
+      },
+      {
+        "scene": "last",
+        "text": "Last time, grass covered the dunes and lakes filled the basins. Hippos, crocodiles and giraffes lived right where camels walk across the sand today.",
+        "start": 19.67,
+        "seconds": 6.55,
+        "window": 7.23,
+        "fill": 0.906
+      },
+      {
+        "scene": "rock",
+        "text": "People herded cattle across it, and painted them on rocks still standing in the Algerian desert today.",
+        "start": 26.9,
+        "seconds": 4.19,
+        "window": 4.87,
+        "fill": 0.86
+      },
+      {
+        "scene": "catch",
+        "text": "But here's the catch. Every year the wind carries Sahara dust across the Atlantic Ocean, thousands of kilometres, all the way to the Amazon rainforest, and that dust feeds its soil.",
+        "start": 31.77,
+        "seconds": 8.05,
+        "window": 8.7,
+        "fill": 0.925
+      },
+      {
+        "scene": "less",
+        "text": "Turn the Sahara green, and much of that dust stays put on the ground. The world's biggest rainforest, half a world away, would lose one of its fertilisers.",
+        "start": 40.47,
+        "seconds": 6.56,
+        "window": 7.23,
+        "fill": 0.907
+      },
+      {
+        "scene": "payoff",
+        "text": "And here's the twist: the wobble comes round about every 21,000 years, so scientists expect the rains to return one day, thousands of years from now.",
+        "start": 47.7,
+        "seconds": 7.08,
+        "window": 7.73,
+        "fill": 0.916
+      },
+      {
+        "scene": "loop",
+        "text": "Green Sahara or melted Antarctica: which what-if should we map next? Tell me in the comments below. And now picture it one more time:",
+        "start": 55.43,
+        "seconds": 5.83,
+        "window": 6.5,
+        "fill": 0.897
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.7,
+    "lufs": -14.3,
+    "music_under_voice_db": 31.5
+  },
+  "craft_problems": [
+    "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 9.696,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
