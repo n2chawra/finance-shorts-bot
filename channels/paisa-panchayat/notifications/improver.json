@@ -1,1 +1,11 @@
-{"notifications": []}
+{
+  "notifications": [
+    {
+      "key": "cycle-1-mixed-arms",
+      "severity": "info",
+      "title": "Cycle 1's two groups were partly mixed up",
+      "detail": "In the 'real photo in the first frame' test, 3 of 10 Shorts in the test group had no real photo in the hook (v-20261114-03, v-20261116-02, v-20261119-12, the Squid Game Short) and 1 of 8 in the comparison group had one (v-20261117-02), because the director step never read the test. From tonight lint fails a Short that doesn't follow its group. The verdict (due 20 Nov, likely extended to 27 Nov: 2 of 8 Shorts a side have data) will understate any real difference.",
+      "fix": "Nothing to do. If the verdict lands close to zero, read it as 'not proven' rather than 'no effect'."
+    }
+  ]
+}

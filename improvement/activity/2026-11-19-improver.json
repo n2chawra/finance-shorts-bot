@@ -1,0 +1,57 @@
+{
+  "agent": "improver",
+  "day": "2026-11-19",
+  "startedAt": "2026-11-19T17:03:56Z",
+  "finishedAt": "2026-11-19T17:14:37Z",
+  "summary": "Answered all four of the owner's 19 Nov notes on three channels: the geography maps now trace the country being talked about with a glowing border line, and a flag-vs-colour test started there; the tech channel's faster-voice test started; and lint now checks that each Short does what its test group asks.",
+  "decision": "acted",
+  "why": "Owner notes come first (policy). No experiment matured: Paisa Panchayat's cycle 1 has 2 of 8 Shorts a side with data (day 6 of 7); long tests 1 and 2 of 4. Checking the Squid Game note showed cycle 1's groups were partly mixed (3 of 10 on-side Shorts without the real photo, 1 of 8 off-side with one).",
+  "findings": [
+    {
+      "title": "Paisa Panchayat cycle 1 (real-subject-first-frame) waits",
+      "detail": "2 of 8 Shorts a side have 48 h data; day 6 of 7 (on 9, off 2). Verdict due 2026-11-20, extended to 14 days if short."
+    },
+    {
+      "title": "Cycle 1's groups were partly mixed",
+      "detail": "On side without a real photo in the hook: v-20261114-03, v-20261116-02, v-20261119-12 (Squid Game). Off side with one: v-20261117-02. The director step never read the test's instruction."
+    },
+    {
+      "title": "Long tests wait",
+      "detail": "quiet-bed 1 of 4 long videos per arm, chart-gap-fill 2 of 4."
+    },
+    {
+      "title": "Impact, week of 2026-11-09 (Paisa Panchayat)",
+      "detail": "17 Shorts: median 48 h views 207, 71.6% viewed, stayed to watch 0.339, 20.6 s average view (week of 2026-11-02: 43 views, 50.6%, 0.381)."
+    },
+    {
+      "title": "New channels",
+      "detail": "Geography, tech and business have no Shorts with 48 h data yet. Geography now makes 2 Shorts a day, enough for a cycle; tech makes 1 (owner informed)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Border trace on the maps (geography)",
+      "detail": "remotion/src/flat/map.tsx Fill.trace: a bright line with a glowing head runs round the country's border and closes, then stays lit; director.md: every country a line is about is traced on its word, and named people stand on the map as photo heads. Checked on MapSheet stills.",
+      "branch": "agent/improver/2026-11-19"
+    },
+    {
+      "title": "Flag fill test (geography, cycle 1)",
+      "detail": "remotion/src/flat/flags.tsx draws ~60 national flags; `flag` on a map fill shows it in geo-flag-fill on-side videos (contract/flags.ts useFlag via StoryVideo's context). Judged on held after the hook.",
+      "branch": "agent/improver/2026-11-19",
+      "experiment": "geo-flag-fill"
+    },
+    {
+      "title": "Faster voice test (tech, cycle 1)",
+      "detail": "renderer/timeline/build.py: the channel's own Shorts speed x 1.09 on the on side (0.92 -> 1.0).",
+      "branch": "agent/improver/2026-11-19",
+      "experiment": "faster-voice"
+    },
+    {
+      "title": "Lint checks each Short follows its test group (all channels)",
+      "detail": "generator/experiments.py adherence_problems for tests with a `check` (hook-photo, code pattern), run by lint; director.md prints the video's side first. real-subject-first-frame now carries the hook-photo check.",
+      "branch": "agent/improver/2026-11-19",
+      "experiment": "real-subject-first-frame"
+    }
+  ],
+  "nextCheck": "2026-11-20"
+}

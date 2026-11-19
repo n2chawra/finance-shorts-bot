@@ -923,6 +923,18 @@
       "description": "A Short with sourced facts says 'Sources: <publishers> (<month year>)' before the disclaimer instead of 'An animated story with illustrative numbers' (planner.md); the hard-rule disclaimer is unchanged",
       "evidence": "Research 2026-11-14 (adopt): the boilerplate contradicts the 12 Nov 'every Short is true' rule and repeats on every upload; YouTube's Oct 2026 originality ranking rewards educational value.",
       "commits": []
+    },
+    {
+      "id": "2026-11-19-test-adherence-lint",
+      "area": "pipeline",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-19",
+      "templates": [
+        "short_story"
+      ],
+      "description": "Lint fails a Short that doesn't do its side of a running test that carries a `check` (generator/experiments.py adherence_problems); director.md tells the director to print and follow its side",
+      "evidence": "Cycle 1 (real-subject-first-frame): 3 of 10 on-side Shorts (v-20261114-03, v-20261116-02, v-20261119-12) had no real photo in the hook and 1 of 8 off-side (v-20261117-02) had one; the director step never read the test"
     }
   ]
 }

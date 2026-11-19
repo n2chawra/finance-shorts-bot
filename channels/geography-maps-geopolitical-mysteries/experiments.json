@@ -1,3 +1,28 @@
 {
-  "experiments": []
+  "experiments": [
+    {
+      "id": "geo-flag-fill",
+      "area": "colour",
+      "metric": "heldAfterHook",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-19",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "cycle": 1,
+      "check": {
+        "kind": "code",
+        "pattern": "flag:\\s*\"",
+        "what": "a country covered by its flag (`flag: \"<country>\"` on its map fill)"
+      },
+      "prompt": {
+        "on": "Countries for this Short (weekly loop, cycle 1, geo-flag-fill, on): every country a line is about is covered by its own flag instead of a flat colour: give its map fill `flag: \"<Natural Earth name>\"` beside `fill` (remotion/src/flat/flags.tsx; `hasFlag` lists the table; a country it lacks keeps its colour), painted or drawn in on the word that names it, and traced as always.",
+        "off": "Countries for this Short (weekly loop, cycle 1, geo-flag-fill, off): every country a line is about is filled with a flat colour (the champion), painted or drawn in on its word and traced as always; no flag fills (a small planted flag on a pole is fine)."
+      },
+      "proposal": "owner note cmwn0jklx0001ib092if21wgj (2026-11-19)",
+      "description": "Geography Shorts: the country a line is about covered by its flag, against a flat colour (owner: 'test both'; judged on held after the hook)"
+    }
+  ]
 }
