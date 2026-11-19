@@ -3410,6 +3410,26 @@
       ],
       "commit": "903c616e5d57d81ea9218107b7993c71305504b6",
       "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44577313901"
+    },
+    {
+      "at": "2026-11-19T17:43:57+00:00",
+      "dayIst": "2026-11-19",
+      "agent": "dashboard",
+      "branch": "agent/dashboard/2026-11-19",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "apps/dashboard/e2e/smoke.spec.ts",
+        "apps/dashboard/src/app/portfolio/page.tsx",
+        "channels/business-documentaries-rise-and-fall-of/notifications/dashboard.json",
+        "improvement/activity/2026-11-19-dashboard.json",
+        "improvement/dashboard/2026-11-19.md",
+        "improvement/dashboard/backlog.json"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44580108723"
     }
   ]
 }
