@@ -23,6 +23,8 @@ export const ChannelSettingsSchema = z.object({
   dailyVideoTarget: z.number().int().min(0).max(5),
   uploadTimes: z.array(time).min(1).max(4),
   longPerWeek: z.number().int().min(0).max(7),
+  longUploadTimes: z.array(time).min(1).max(2),
+  longUploadDays: z.array(z.number().int().min(0).max(6)).min(1).max(7),   // 0 = Sunday
   uploadsPaused: z.boolean(),
   generationPaused: z.boolean(),
 }).partial();

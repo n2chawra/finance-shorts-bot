@@ -332,6 +332,8 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
           </div>
           <span className="text-[11.5px] text-muted">Keep different channels at least 20 minutes apart.</span>
         </form>
+
+        {perWeek > 0 && <LongSlots c={c} run={run} pending={patch.isPending} platformTimes={platform?.longUploadTimes} />}
       </div>
 
       {c.request && (
@@ -418,5 +420,39 @@ export default function ChannelsPage() {
       )}
       {data && !data.channels.length && <Card icon={Clapperboard}><p className="text-[13px] text-ink2">No channels yet.</p></Card>}
     </>
+  );
+}
+
+const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+/** A channel's long-video slots: the time(s) and the weekdays (IST) the publisher fills from its long queue. */
+function LongSlots({ c, run, pending, platformTimes }: {
+  c: Channel; pending: boolean; platformTimes?: string[];
+  run: (body: { id: string; settings: { longUploadTimes?: string[]; longUploadDays?: number[] } }, ok: string) => void;
+}) {
+  const [times, setTimes] = useState((c.settings.longUploadTimes ?? platformTimes ?? ["20:07"]).join(", "));
+  const days = c.settings.longUploadDays ?? [3, 5];
+  const toggle = (d: number) => {
+    const next = days.includes(d) ? days.filter((x) => x !== d) : [...days, d].sort();
+    if (next.length) run({ id: c.id, settings: { longUploadDays: next } }, `${c.name}: long videos on ${next.map((x) => WEEKDAYS[x]).join(", ")}`);
+  };
+  return (
+    <form className="flex flex-col gap-2 md:col-span-2" onSubmit={(e) => {
+      e.preventDefault();
+      run({ id: c.id, settings: { longUploadTimes: times.split(/[,\s]+/).filter(Boolean) } }, `${c.name}: long video time saved`);
+    }}>
+      <label htmlFor={`long-times-${c.id}`} className="text-[12.5px] font-medium text-ink2">Long video time and days (IST)</label>
+      <div className="flex flex-wrap items-center gap-2">
+        <input id={`long-times-${c.id}`} value={times} onChange={(e) => setTimes(e.target.value)} placeholder="20:07" className={`${fieldClass} max-w-[140px]`} />
+        <Button size="sm" type="submit" disabled={pending}>Save</Button>
+        <div role="group" aria-label={`Long video days for ${c.name}`} className="flex flex-wrap gap-1">
+          {WEEKDAYS.map((d, i) => (
+            <button key={d} type="button" aria-pressed={days.includes(i)} disabled={pending} onClick={() => toggle(i)}
+              className={`rounded-md border px-2 py-1 text-[12px] ${days.includes(i) ? "border-brand bg-brand text-white" : "border-line text-ink2"}`}>{d}</button>
+          ))}
+        </div>
+      </div>
+      <span className="text-[11.5px] text-muted">One long video per chosen day, at this time. Pick as many days as long videos a week.</span>
+    </form>
   );
 }
