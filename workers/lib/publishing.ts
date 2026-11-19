@@ -133,3 +133,14 @@ export function youtubeMeta(v: { title: string; description: string; tags: strin
   }
   return { title, description, tags };
 }
+
+/**
+ * Upload.error of a video whose slot passed (or will) because the day's YouTube API quota ran out
+ * (owner, 2026-11-19: "which video I need to upload by hand"). The Upload stays `pending` with the
+ * slot it was meant for as publishAt; the dashboard's "Upload by hand" list reads it
+ * (apps/dashboard/src/lib/hand-uploads.ts QUOTA_ERROR, the same prefix).
+ */
+export const QUOTA_ERROR = "quota:";
+export const quotaError = (used: number): string =>
+  `${QUOTA_ERROR} the day's YouTube API quota ran out (${used.toLocaleString("en-US")} units used); it resets at midnight Pacific`;
+export const isQuotaMiss = (error: string | null | undefined): boolean => !!error?.startsWith(QUOTA_ERROR);

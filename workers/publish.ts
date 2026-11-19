@@ -21,11 +21,11 @@ import { existsSync, mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, type Prisma } from "@prisma/client";
 
 import { downloadReleaseAsset, repoSlug } from "./lib/github.ts";
 import {
-  MIN_LEAD_MINUTES, UPLOAD_LOOKAHEAD_HOURS, dueSoon, isUrgent, istDay, istSlot, istTime, missedSlots, nextSlot, slotKey, soonSlot, youtubeMeta,
+  MIN_LEAD_MINUTES, UPLOAD_LOOKAHEAD_HOURS, dueSoon, isQuotaMiss, isUrgent, istDay, istSlot, istTime, missedSlots, nextSlot, quotaError, slotKey, soonSlot, youtubeMeta,
 } from "./lib/publishing.ts";
 import { loadSettings, type Settings } from "./lib/settings.ts";
 import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
@@ -129,9 +129,10 @@ async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: Chan
     const taken = new Set(existing.map((u) => slotKey(u.publishAt)));
     const uploadsOf = (f: Format) => existing.filter((u) => (u.video.format === "long" ? "long" : "short") === f).map((u) => u.publishAt);
     let soon = 0;   // videos sent to go public in a few minutes this run, spaced 5 minutes apart
-    const sendSoon = async (format: Format, pendingOnly = false): Promise<boolean> => {
+    // `forSlot`: the missed slot a catch-up fills (recorded on a quota miss as the slot the video was meant for)
+    const sendSoon = async (format: Format, pendingOnly = false, forSlot?: Date): Promise<boolean> => {
       const at = soonSlot(now, soon);
-      if (!(await uploadOne(prisma, run, token, settings.disclaimer, at, format, pendingOnly ? "pending-now" : "queue"))) return false;
+      if (!(await uploadOne(prisma, run, token, settings.disclaimer, at, format, pendingOnly ? "pending-now" : "queue", forSlot))) return false;
       soon++;
       taken.add(slotKey(at));
       existing.push({ publishAt: at, video: { format } });
@@ -148,7 +149,7 @@ async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: Chan
       if (days?.length && !days.includes(new Date(`${istDay(now)}T00:00:00Z`).getUTCDay())) continue;
       for (const slot of missedSlots(now, times, uploadsOf(format))) {
         console.log(`${format}: the ${slot.toISOString()} slot was missed; catching up.`);
-        if (!(await sendSoon(format))) break;
+        if (!(await sendSoon(format, false, slot))) break;
       }
     }
     // one slot count per format: a long video on Tuesday must not use up a Short's slot that day
@@ -208,7 +209,7 @@ async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: Chan
  * False when there is nothing to upload; throws on failure. */
 type Pick = "queue" | "urgent" | "pending-now";
 
-async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaimer: string, slot: Date, format: Format, pick: Pick = "queue"): Promise<boolean> {
+async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaimer: string, slot: Date, format: Format, pick: Pick = "queue", forSlot?: Date): Promise<boolean> {
   // the owner's pick first (owner, 2026-10-30: "the best video goes, not whatever is next"), then the
   // queue order: the editor's ranking, or the owner's own order where they dragged it
   const order = [{ pickedAt: { sort: "asc" as const, nulls: "last" as const } }, { queuePosition: "asc" as const }, { createdAt: "asc" as const }];
@@ -232,9 +233,10 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
 
   const attempts = (pending?.attempts ?? 0) + 1;
   if (!run.quota.take("upload", COST.upload)) {
+    const missed = await recordQuotaMiss(prisma, run, video.id, pending, forSlot ?? slot, format, pick, order);
     await notify(prisma, { key: `quota-out:${run.quota.snapshot().day}`, channelId: null, source: "publish", severity: "critical", title: "YouTube API quota ran out today",
-      detail: `${run.label}${video.id} could not be uploaded for ${slot.toISOString()}: ${run.quota.used} units already used today. It stays queued and goes up after the quota resets (midnight Pacific).`,
-      fix: "Apply for a quota increase (YouTube API Services audit form), or lower a channel's videos a day on the Channels page." });
+      detail: `${run.label}${missed ?? video.id} could not be uploaded for ${(forSlot ?? slot).toISOString()}: ${run.quota.used} units already used today. Every video that misses its slot this way is listed under Queue → Upload by hand (all channels), with its file, title, description and tags: upload it yourself and press Mark as uploaded. One you leave goes up after the quota resets (midnight Pacific, 13:30 IST).`,
+      fix: "Upload the listed videos by hand from Queue → Upload by hand. For good: apply for a quota increase (YouTube API Services audit form), or lower a channel's videos a day on the Channels page." });
     console.log(`::warning::No quota left for ${video.id} today.`);
     return false;
   }
@@ -275,6 +277,32 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
+}
+
+/**
+ * A slot the quota couldn't fill: its video's Upload stays `pending` with the quota error and the slot
+ * it was meant for, so the dashboard lists it under "Upload by hand" (owner, 2026-11-19). The video
+ * stays queued; the attempt doesn't count against MAX_ATTEMPTS. When the picked video already holds an
+ * earlier missed slot, this slot goes to the next queued video with no upload yet, so every missed
+ * slot has its own video. Returns the video recorded (null when none was).
+ */
+async function recordQuotaMiss(prisma: PrismaClient, run: Run, videoId: string, pending: { publishAt: Date; attempts: number; error: string | null } | null,
+                               intended: Date, format: Format, pick: Pick, order: Prisma.VideoOrderByWithRelationInput[]): Promise<string | null> {
+  const error = quotaError(run.quota.used);
+  const record = (id: string, at: Date, attempts: number) => prisma.upload.upsert({
+    where: { videoId: id }, update: { state: "pending", publishAt: at, error }, create: { videoId: id, publishAt: at, state: "pending", attempts, error },
+  });
+  // an "Upload now" click or a retry keeps its own time; a video already waiting for this slot is recorded again
+  if (!pending || pick === "pending-now" || slotKey(pending.publishAt) === slotKey(intended) || !isQuotaMiss(pending.error)) {
+    await record(videoId, pending && (pick === "pending-now" || isQuotaMiss(pending.error)) ? pending.publishAt : intended, pending?.attempts ?? 0);
+    return videoId;
+  }
+  const holder = await prisma.upload.findFirst({ where: { state: "pending", publishAt: intended, video: { channelId: run.channelId, format } }, select: { videoId: true } });
+  if (holder) return holder.videoId;
+  const next = await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, channelId: run.channelId, format, upload: { is: null } }, orderBy: order, select: { id: true } });
+  if (!next) return null;
+  await record(next.id, intended, 0);
+  return next.id;
 }
 
 async function renumberQueue(prisma: PrismaClient, channelId: string): Promise<void> {

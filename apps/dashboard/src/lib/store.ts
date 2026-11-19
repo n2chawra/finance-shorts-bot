@@ -4,6 +4,7 @@
  * dashboard can be run and reviewed with no database at all.
  */
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
+import type { HandUpload } from "./hand-uploads";
 import * as autoDb from "./autopilot.db";
 import * as autoSample from "./autopilot.sample";
 import type { Growth } from "./growth";
@@ -42,6 +43,7 @@ export const getStudio = async (range: Range, format: Fmt): Promise<Studio> => (
 export const getVideoStudio = async (id: string): Promise<VideoStudio | null> => (useDb ? studioDb.getVideoStudio(id) : studioSample.getVideoStudio(id));
 export const reorderQueue = async (ids: string[]): Promise<Video[] | null> => (useDb ? db.reorderQueue(ids) : sample.reorderQueue(ids));
 export const markUploaded = async (id: string, m: ManualUpload): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.markUploaded(id, m) : sample.markUploaded(id, m));
+export const listHandUploads = async (): Promise<HandUpload[]> => (useDb ? db.listHandUploads() : sample.listHandUploads());
 export const updateVideo = async (id: string, e: VideoEdit): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.updateVideo(id, e) : sample.updateVideo(id, e));
 export const setThumbWinner = async (id: string, winner: string | null): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.setThumbWinner(id, winner) : sample.setThumbWinner(id, winner));
 export const videoAction = async (id: string, action: VideoAction, reason?: string): Promise<{ ok: true } | { ok: false; error: string }> => (useDb ? db.videoAction(id, action, reason) : sample.videoAction(id, action, reason));

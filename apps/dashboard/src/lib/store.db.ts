@@ -17,6 +17,7 @@ import { runEndMs } from "./run-span";
 import { feedIndex, originOf, snapshotOf } from "./origin";
 import { fillFromLive, meanViewPct, totals, windowStart, type DayRow } from "./totals";
 import { manualState, relinked } from "./youtube-link";
+import { missReason, type HandUpload } from "./hand-uploads";
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 
 const DAY_MS = 86_400_000;
@@ -264,10 +265,11 @@ export async function videoAction(id: string, action: VideoAction, reason?: stri
  * repeated to add or correct the link; a corrected link drops the old link's numbers, as in updateVideo.
  */
 export async function markUploaded(id: string, m: ManualUpload): Promise<{ ok: true } | { ok: false; error: string }> {
-  const v = await prisma.video.findFirst({ where: { id, ...live }, include: { upload: true } });
+  // any channel's video, not only the switched one: "Upload by hand" lists every channel's
+  const v = await prismaAll.video.findFirst({ where: { id, ...live }, include: { upload: true } });
   if (!v) return { ok: false, error: "Video not found" };
   if (m.youtubeId) {
-    const taken = await prisma.upload.findFirst({ where: { youtubeId: m.youtubeId, videoId: { not: id } }, select: { videoId: true } });
+    const taken = await prismaAll.upload.findFirst({ where: { youtubeId: m.youtubeId, videoId: { not: id } }, select: { videoId: true } });
     if (taken) return { ok: false, error: `That YouTube video is already linked to ${taken.videoId}` };
   }
   const at = new Date(m.publishedAt);
@@ -275,21 +277,39 @@ export async function markUploaded(id: string, m: ManualUpload): Promise<{ ok: t
   const upload = v.upload;
   const newLink = !!upload && relinked(upload.youtubeId, youtubeId);
   const state = manualState(youtubeId, at);
-  await prisma.$transaction([
-    prisma.video.update({ where: { id }, data: { status: state, queuePosition: null, failReason: null } }),
-    prisma.upload.upsert({
+  await prismaAll.$transaction([
+    prismaAll.video.update({ where: { id }, data: { status: state, queuePosition: null, failReason: null } }),
+    prismaAll.upload.upsert({
       where: { videoId: id },
       update: { youtubeId, publishAt: at, state, error: null, ...(newLink ? noLiveCounters : {}) },
       create: { videoId: id, youtubeId, publishAt: at, state },
     }),
-    ...(upload && newLink ? [prisma.videoStat.deleteMany({ where: { uploadId: upload.id } })] : []),
-    prisma.agentRun.create({
+    ...(upload && newLink ? [prismaAll.videoStat.deleteMany({ where: { uploadId: upload.id } })] : []),
+    prismaAll.agentRun.create({
       data: { videoId: id, agent: "manual_upload", status: "ok", startedAt: new Date(), finishedAt: new Date(),
         log: [youtubeId ? `Uploaded by hand as YouTube video ${youtubeId}` : "Uploaded by hand (no YouTube link yet)", `Was ${v.status}`] },
     }),
   ]);
-  await renumber();
+  await renumber(v.channelId);
   return { ok: true };
+}
+
+/**
+ * Every channel's ready videos whose slot the publisher couldn't fill (the day's quota ran out, or a
+ * retry still waiting), oldest slot first, for the Queue page's "Upload by hand" list.
+ */
+export async function listHandUploads(): Promise<HandUpload[]> {
+  const rows = await prismaAll.upload.findMany({
+    where: { state: "pending", video: { ...live, status: { in: ["queued", "scheduled"] } } },
+    include: { video: { include: withRelations } }, orderBy: { publishAt: "asc" },
+  });
+  const now = new Date();
+  const names = new Map((await prismaAll.channel.findMany({ select: { id: true, name: true } })).map((c) => [c.id, c.name]));
+  return rows.flatMap((u) => {
+    const reason = missReason(u, now);
+    return reason ? [{ channelId: u.video.channelId, channelName: names.get(u.video.channelId) ?? u.video.channelId, slotAt: u.publishAt.toISOString(),
+      reason, error: u.error, video: toVideo(u.video) }] : [];
+  });
 }
 
 /**
@@ -339,9 +359,13 @@ export async function setThumbWinner(id: string, winner: string | null): Promise
   return { ok: true };
 }
 
-async function renumber(): Promise<void> {
-  const ids = (await queued()).map((v) => v.id);
-  await prisma.$transaction(ids.map((id, i) => prisma.video.update({ where: { id }, data: { queuePosition: i + 1 } })));
+/** Renumber the queue: the switched channel's, or `channelId`'s (a video marked uploaded from another channel's list). */
+async function renumber(channelId?: string): Promise<void> {
+  const ids = channelId
+    ? (await prismaAll.video.findMany({ where: { ...live, status: "queued", channelId }, select: { id: true },
+      orderBy: [{ pickedAt: { sort: "asc", nulls: "last" } }, { queuePosition: "asc" }, { createdAt: "asc" }] })).map((v) => v.id)
+    : (await queued()).map((v) => v.id);
+  await prismaAll.$transaction(ids.map((id, i) => prismaAll.video.update({ where: { id }, data: { queuePosition: i + 1 } })));
 }
 
 // ---------------- the owner's feedback ----------------

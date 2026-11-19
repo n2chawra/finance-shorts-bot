@@ -14,6 +14,7 @@ import { isPublicPage } from "@/lib/public-pages";
 import { signOut as endSession } from "@/lib/sign-out";
 
 import { LogoMark, Wordmark } from "./brand";
+import { useHandUploadCount } from "./hand-uploads";
 import { useCommandMenu } from "./command";
 import { NAV, NAV_ITEMS, isActive, pageTitle } from "./nav-items";
 import { Kbd, Tip } from "./ui";
@@ -77,6 +78,7 @@ function Count({ n, critical, className = "" }: { n: number; critical: boolean; 
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
   const path = usePathname();
   const alerts = useAlerts();
+  const byHand = useHandUploadCount();
   return (
     <nav aria-label="Main" className="flex flex-col gap-5">
       {NAV.map((g) => (
@@ -93,7 +95,8 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
                     <Icon aria-hidden className={`relative size-4 shrink-0 ${on ? "text-brand" : "text-muted group-hover:text-ink2"}`} />
                     <span className="relative flex-1">{label}</span>
                     {href === "/notifications" && alerts.unread > 0 && <Count n={alerts.unread} critical={alerts.critical} className="relative" />}
-                    {!onNavigate && !(href === "/notifications" && alerts.unread > 0) && <span className="relative hidden text-[10.5px] text-muted opacity-0 transition-opacity group-hover:opacity-100 xl:inline">G {key.toUpperCase()}</span>}
+                    {href === "/queue" && byHand.n > 0 && <Count n={byHand.n} critical={byHand.quota} className="relative" />}
+                    {!onNavigate && !(href === "/notifications" && alerts.unread > 0) && !(href === "/queue" && byHand.n > 0) && <span className="relative hidden text-[10.5px] text-muted opacity-0 transition-opacity group-hover:opacity-100 xl:inline">G {key.toUpperCase()}</span>}
                   </Link>
                 </li>
               );

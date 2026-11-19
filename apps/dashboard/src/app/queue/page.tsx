@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import { CopyButton, MarkUploaded, uploadText } from "@/app/videos/[id]/publish-tools";
 import { EditorBadge, ReasonDialog } from "@/components/feedback";
+import { HandUploads } from "@/components/hand-uploads";
 import { ActionMenu, Badge, Button, Card, ConfirmButton, Empty, ErrorNote, IconTile, Loading, PageHeader, Stagger, Thumb, Toggle, VideoLink, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
 import { fmtDateTime, fmtDayKey, fmtRelative, titleCase, fileSlug } from "@/lib/format";
@@ -247,6 +248,8 @@ export default function QueuePage() {
           <Button size="sm" disabled={editorOrder.isPending} onClick={() => editorOrder.mutate(undefined, { onSuccess: () => toast("The editor's ranking orders the queue again"), onError: fail })}>Use the editor&apos;s order</Button>
         </p>
       )}
+
+      <HandUploads />
 
       {paused && next && <PostNext slot={next} />}
 

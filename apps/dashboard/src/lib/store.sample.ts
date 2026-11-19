@@ -5,6 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { missReason, type HandUpload } from "./hand-uploads";
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
 import { mostLoved } from "./schemas";
 import { feedIndex, originOf } from "./origin";
@@ -492,6 +493,16 @@ export function markUploaded(id: string, m: ManualUpload): { ok: true } | { ok: 
   v.upload = { youtubeId, publishAt: m.publishedAt, state, error: null, attempts: v.upload?.attempts ?? 0 };
   renumber(s, queue(s));
   return { ok: true };
+}
+
+/** The sample's "Upload by hand" list: queued videos whose pending upload missed its slot (workers/publish.ts). */
+export function listHandUploads(): HandUpload[] {
+  const now = new Date();
+  return db().videos.flatMap((v) => {
+    if (!v.upload || (v.status !== "queued" && v.status !== "scheduled")) return [];
+    const reason = missReason({ state: v.upload.state, error: v.upload.error, publishAt: new Date(v.upload.publishAt) }, now);
+    return reason ? [{ channelId: "paisa-panchayat", channelName: "Paisa Panchayat", slotAt: v.upload.publishAt, reason, error: v.upload.error, video: v }] : [];
+  }).sort((a, b) => Date.parse(a.slotAt) - Date.parse(b.slotAt));
 }
 
 export function updateVideo(id: string, e: VideoEdit): { ok: true } | { ok: false; error: string } {

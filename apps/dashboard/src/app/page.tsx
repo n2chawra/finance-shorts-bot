@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { AlertOctagon, ArrowRight, ArrowUpRight, Bot, CircleX, Clapperboard, Eye, Heart, Layers, Pause, Play, FlaskConical, Rocket, Sparkles, Upload, UserPlus } from "lucide-react";
+import { AlertOctagon, ArrowRight, Hand, ArrowUpRight, Bot, CircleX, Clapperboard, Eye, Heart, Layers, Pause, Play, FlaskConical, Rocket, Sparkles, Upload, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { CategoryBar, Sparkline, Tracker, type TrackerTone } from "@/components/charts";
 import { type Accent, Badge, Button, Card, Delta, Empty, ErrorNote, IconTile, Loading, Meter, Num, PageHeader, Stagger, Stat, Thumb, type Tone, VideoLink } from "@/components/ui";
+import { useHandUploadCount } from "@/components/hand-uploads";
 import { ScorecardStrip } from "@/components/scorecard";
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
@@ -117,6 +118,7 @@ export default function OverviewPage() {
   const notifications = useNotifications();
   const agents = useAgents();
   const scorecard = useScorecard();
+  const byHand = useHandUploadCount();
   const patch = usePatchSettings();
   const toast = useToast();
   if (isLoading) return <Loading />;
@@ -146,6 +148,17 @@ export default function OverviewPage() {
         <Badge tone={data.uploadsPaused ? "warning" : "good"} dot>{data.uploadsPaused ? "Uploads paused" : "Uploads on"}</Badge>
         <Badge tone={MODES[g.mode].tone} dot>{MODES[g.mode].label}</Badge>
       </PageHeader>
+
+      {byHand.n > 0 && (
+        <Link href="/queue#by-hand" className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-warning/30 bg-warning-soft px-4 py-3 transition-colors hover:border-warning/50">
+          <span className="flex items-center gap-3">
+            <IconTile icon={Hand} accent="sun" />
+            <span className="text-[13.5px]"><span className="font-semibold">{byHand.n} video{byHand.n === 1 ? "" : "s"} to upload by hand</span>
+              <span className="block text-ink2">{byHand.quota ? "The day's YouTube quota ran out before their slots (all channels)." : "Their slots passed without an upload (all channels)."}</span></span>
+          </span>
+          <span className="flex shrink-0 items-center gap-1 rounded-lg border border-ring bg-surface px-3 py-1.5 text-[12.5px] font-medium shadow-xs">Open the list <ArrowRight aria-hidden className="size-3.5" /></span>
+        </Link>
+      )}
 
       {critical.length > 0 && (
         <Link href="/notifications" className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-critical/25 bg-critical-soft px-4 py-3 transition-colors hover:border-critical/45">

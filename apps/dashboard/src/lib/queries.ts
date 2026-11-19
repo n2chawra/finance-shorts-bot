@@ -10,12 +10,15 @@ import { getJson, send } from "./api";
 import { StudySchema } from "./study";
 import { CHANNEL_COOKIE, ChannelSchema, DEFAULT_CHANNEL, type ChannelCreate, type ChannelPatch } from "./channels";
 import { AgentsSchema, AnalyticsSchema, FeedbackSchema, NotificationsSchema, OverviewSchema, RunSchema, SettingsSchema, TemplateSchema, VideoDetailSchema, VideoSchema } from "./schemas";
+import { HandUploadSchema } from "./hand-uploads";
 import { ImpactSchema } from "./impact";
 import { StudioSchema, VideoStudioSchema, type Fmt, type Range } from "./studio-schema";
 import type { FeedbackCreate, ManualUpload, NotificationAction, Settings, VideoAction, VideoEdit } from "./schemas";
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
 export const useQueue = () => useQuery({ queryKey: ["queue"], queryFn: () => getJson("/api/queue", z.array(VideoSchema)) });
+/** Every channel's videos to upload by hand (their slot was missed, mostly for quota); refetched every minute. */
+export const useHandUploads = () => useQuery({ queryKey: ["hand-uploads"], queryFn: () => getJson("/api/hand-uploads", z.array(HandUploadSchema)), refetchInterval: 60_000 });
 export const useTemplates = () => useQuery({ queryKey: ["templates"], queryFn: () => getJson("/api/templates", z.array(TemplateSchema)) });
 export const useImpact = () => useQuery({ queryKey: ["impact"], queryFn: () => getJson("/api/impact", ImpactSchema) });
 export const useRuns = () => useQuery({ queryKey: ["runs"], queryFn: () => getJson("/api/runs", z.array(RunSchema)) });
