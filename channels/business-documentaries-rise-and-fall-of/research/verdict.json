@@ -1,0 +1,46 @@
+{
+  "call": "go-with-conditions",
+  "reason": "Long business documentaries pull a 121K median on niche channels and small channels hit 100K+, at the highest RPM band we have; it needs a footage fetcher and a documentary editor built first.",
+  "conditions": [
+    "Build a licensed media fetcher before samples: Pexels, Pixabay, Commons (video too) and SEC EDGAR, with a per-channel licence log; the render fails on an asset missing from the log.",
+    "Build a documentary editor in Remotion: footage, slow-pan photos, our motion graphics and document/headline props on one timeline.",
+    "Settled stories only (court filings, regulator findings, company filings, reputable outlets); every accusation attributed on screen to its source; no identifiable stock person on a fraud or scandal beat (Pexels licence).",
+    "Original script, our own graphics and real variation per video, against the inauthentic-content rule (applied to the whole channel since 15 Jul 2025).",
+    "Long videos 15-25 min (the best-performing band), 2 a week; Shorts are reach only.",
+    "Never voice a real person's quote with TTS: show it as text or a document."
+  ],
+  "for": [
+    "Long videos on 19 on-niche channels: 121,440 median views (90 days, 339 videos); 15-25 min band 158,096 median.",
+    "Small channels win: 8 of 12 on-niche channels under 50K subs had a 100K+ long video in 90 days (Fortune & Fall, 6.5K subs: 2.28M on one video).",
+    "Highest money of our niches: business/finance doc RPM estimated $5-12 (OutlierKit, Stan; estimates) and sponsors common (NetSuite, Surfshark, ShipStation)."
+  ],
+  "against": [
+    "New kit needed: no footage fetcher or documentary editor exists yet (build items).",
+    "YouTube's bar doubles to 8,000 watch hours on 1 Feb 2027 (official); we will very likely join under the new bar.",
+    "Shorts are weak for money: on-niche Shorts median 18,210, small channels 7,246, and Shorts RPM $0.05-0.20 (estimates); scandal stories carry legal risk and need strict sourcing."
+  ],
+  "earnings": {
+    "m6": {"low": 0, "likely": 150, "high": 3000},
+    "m12": {"low": 100, "likely": 1200, "high": 10000},
+    "assumptions": "Estimates, not facts. 2 long (15-25 min) a week + 1 Short a day. Partner programme at 8,000 watch hours (rule from 1 Feb 2027): about 60K long views at ~8 min watched each, reached in month 4-6 in 'likely', never in 'low'. Long RPM $6 likely ($5-12 band, OutlierKit/Stan estimates); Shorts ignored. m6 likely: ~25K long views/month after joining; m12 likely: ~200K long views/month (small-channel median 20,806 per video x 8-9 videos + some hits). High: one hit like Fortune & Fall's 2.28M views. Sponsors not counted."
+  },
+  "demand": {
+    "shortsMedianViews90d": 18210,
+    "smallChannelsWithHit": "8/12",
+    "direction": 12.39,
+    "longMedianViews90d": 121440,
+    "note": "On-niche channels only (19 long, 16 Shorts). The raw scan's 54,124 long / 30,696 Shorts medians include news and entertainment channels the searches caught (CNN, NBC, WatchMojo, MX Player); 'direction' is the raw scan's long figure."
+  },
+  "doable": {
+    "look": "Hybrid doc: licensed stock footage (Pexels, Pixabay, Prelinger), Commons/archival photos, EDGAR and court documents as props, our flat-kit charts, timelines and maps. Needs the fetcher and documentary editor (conditions 1-2). Renders in the cloud (no 3D).",
+    "voice": "Kokoro American narrator; the references are narrated documentaries, so a TTS narrator fits; a generic narrator needs no label (YouTube's synthetic-content rules cover realistic people and events).",
+    "policy": "Inauthentic content (whole channel) -> original scripts and variety. Advertiser-friendly: journalistic coverage of misconduct earns full ads; graphic deaths limited. Defamation: truth is the defence -> settled, attributed stories only. Licences: Pexels bans showing identifiable people in a bad light; Pixabay bans trademark-centred clips commercially; press kits are editorial-only (avoid); logos from Commons, identification only."
+  },
+  "references": {
+    "ColdFusion": "12 long in 90 days, 1,227,951 median",
+    "Company Man": "the @companyman link resolved to a different 51-sub channel; the real Company Man (1.8M subs) came in through the searches: 13 long, 243,026 median",
+    "Modern MBA": "3 long in 90 days, 362,782 median",
+    "MagnatesMedia": "no uploads in the last 90 days"
+  },
+  "writtenAt": "2026-11-19T07:30:00Z"
+}
