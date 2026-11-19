@@ -103,18 +103,22 @@ export function firstSecond(sheets: Sheet[]): FirstSecond {
 export type CountAdvice = {
   shortsPerDay: number; longPerWeek: number;
   reasons: string[];
-  /** quota units a day this channel's uploads would use */
+  /** videos.insert calls a day this channel's uploads would use (of the project's 100 a day) */
+  uploadsPerDay: number;
+  /** quota units a day their covers would use (thumbnails.set, of the shared 10,000) */
   unitsPerDay: number;
 };
 
-export const UPLOAD_UNITS = 1_650;   // videos.insert + thumbnails.set
+/** Each upload is 1 call from YouTube's own "Video Uploads per day" bucket plus a 50-unit cover. */
+export const UPLOAD_CALLS = 1;
+export const COVER_UNITS = 50;
 
 /**
  * How many to post: what the niche's channels with hits post, what the weekly loop needs (about 2.3
- * Shorts a day for a one-week cycle), and the quota left across channels. Long videos only where the
- * niche's long hits show demand.
+ * Shorts a day for a one-week cycle), and the upload calls left across channels. Long videos only
+ * where the niche's long hits show demand.
  */
-export function recommendCounts(shorts: KindSummary, long: KindSummary, freeUnitsPerDay: number): CountAdvice {
+export function recommendCounts(shorts: KindSummary, long: KindSummary, freeUploadsPerDay: number): CountAdvice {
   const reasons: string[] = [];
   const niche = shorts.hitChannelsPostsPerWeek / 7;
   let perDay = Math.max(1, Math.min(3, Math.round(niche)));
@@ -126,13 +130,15 @@ export function recommendCounts(shorts: KindSummary, long: KindSummary, freeUnit
   reasons.push(longDemand
     ? `Long videos: ${long.smallChannelsWithHit} small channels had a long hit (hit rate ${Math.round((long.hitRate ?? 0) * 100)}%), so ${perWeek} a week.`
     : `No long videos at first: ${long.smallChannelsWithHit} small channels had a long hit${long.hitRate != null ? `, hit rate ${Math.round(long.hitRate * 100)}%` : ""}; Shorts only until one of ours wins.`);
-  const units = () => Math.round((perDay + perWeek / 7) * UPLOAD_UNITS);
-  while (units() > freeUnitsPerDay && (perDay > 1 || perWeek > 0)) {
+  // a long-video day uploads one more: fit the peak day
+  const uploads = () => (perDay + (perWeek > 0 ? 1 : 0)) * UPLOAD_CALLS;
+  const wanted = uploads();
+  while (uploads() > freeUploadsPerDay && (perDay > 1 || perWeek > 0)) {
     if (perWeek > 0) perWeek--; else perDay--;
   }
-  if (units() > freeUnitsPerDay) reasons.push(`Even 1 a day (${UPLOAD_UNITS} units) is over the ${freeUnitsPerDay} quota units free a day: apply for the quota increase before launch.`);
-  else if (units() < Math.round((Math.max(1, Math.min(3, Math.round(niche))) + (longDemand ? 1 : 0) / 7) * UPLOAD_UNITS)) reasons.push(`Lowered to fit the ${freeUnitsPerDay} quota units free a day across channels.`);
-  return { shortsPerDay: perDay, longPerWeek: perWeek, reasons, unitsPerDay: units() };
+  if (uploads() > freeUploadsPerDay) reasons.push(`Even 1 a day is over the ${freeUploadsPerDay} uploads a day left across channels: apply for the quota increase before launch.`);
+  else if (uploads() < wanted) reasons.push(`Lowered to fit the ${freeUploadsPerDay} uploads a day left across channels.`);
+  return { shortsPerDay: perDay, longPerWeek: perWeek, reasons, uploadsPerDay: uploads(), unitsPerDay: Math.round((perDay + perWeek / 7) * COVER_UNITS) };
 }
 
 /** Comments under the hits, for the topic list in the audience's own words: the most-liked first. */

@@ -6,7 +6,7 @@ import { test } from "node:test";
 
 import { channelSettings, decryptToken, encryptToken, refreshTokenOf } from "../lib/channel-auth.ts";
 import { cpath, crel, mapped } from "../lib/channels.ts";
-import { COST, QuotaKeeper, allowed, quotaDay } from "../lib/quota.ts";
+import { COST, QuotaKeeper, allowed, migrate, quotaDay } from "../lib/quota.ts";
 import { DEFAULT_SETTINGS } from "../lib/settings.ts";
 
 const SECRET = "a-test-secret-of-enough-length";
@@ -47,27 +47,52 @@ test("a channel overrides only its own settings, and bad values are ignored", ()
   assert.deepEqual(channelSettings(DEFAULT_SETTINGS, null), DEFAULT_SETTINGS);
 });
 
-test("quota: uploads first, covers next, stats only from what's left", () => {
-  // two uploads still due today reserve 3,300 units
-  assert.ok(allowed("upload", COST.upload, 8_000, 2));
-  assert.ok(!allowed("upload", COST.upload, 8_500, 2));
-  assert.ok(allowed("thumbnail", COST.thumbnail, 6_600, 2));
-  assert.ok(!allowed("thumbnail", COST.thumbnail, 6_700, 2));
-  assert.ok(allowed("stats", 100, 6_000, 2));
-  assert.ok(!allowed("stats", 100, 6_300, 2));   // 5% margin
+test("quota: uploads and searches have their own buckets, each with a margin", () => {
+  // uploads stop at 95 of 100 calls, whatever the units pool says
+  assert.ok(allowed("upload", COST.upload, 94, 0));
+  assert.ok(!allowed("upload", COST.upload, 95, 0));
+  assert.ok(allowed("search", COST.search, 94, 0));
+  assert.ok(!allowed("search", COST.search, 95, 0));
+  assert.ok(allowed("upload", COST.upload, 0, 0, { uploads: 200 }) && allowed("upload", 1, 190, 0, { uploads: 200 }));
+  // the units pool: covers reserved for the uploads still due, then a 5% margin for stats and counters
+  assert.ok(allowed("thumbnail", COST.thumbnail, 9_850, 2));
+  assert.ok(!allowed("thumbnail", COST.thumbnail, 9_860, 2));   // 140 free − 100 reserved < 50
+  assert.ok(allowed("stats", 100, 9_300, 2));
+  assert.ok(!allowed("stats", 100, 9_350, 2));   // 650 free − 100 reserved − 500 margin = 50
   assert.ok(!allowed("counters", 1, 9_500, 0));
 });
 
-test("the keeper counts what it allows and warns once past 80%", () => {
-  const k = new QuotaKeeper(null, { day: quotaDay(), units: 7_000, byKind: {}, warned: false }, 1);
-  assert.ok(!k.take("stats", 900));   // 3,000 free − 1,650 reserved − 500 margin = 850
-  assert.equal(k.used, 7_000);
+test("the keeper counts each bucket apart and warns once past 80%", () => {
+  const k = new QuotaKeeper(null, { day: quotaDay(), units: 9_800, uploads: 4, searches: 14, byKind: {}, warned: false }, 1);
+  // a full units pool never holds back an upload
+  assert.ok(!k.take("stats", 100));
   assert.ok(k.take("upload", COST.upload));
+  assert.equal(k.uploadsUsed, 5);
+  assert.equal(k.used, 9_800);
   assert.equal(k.uploadsLeftToday, 0);
-  assert.equal(k.used, 8_600);
+  assert.ok(k.take("thumbnail", COST.thumbnail));
+  assert.equal(k.used, 9_850);
+  assert.ok(k.take("search", COST.search));
+  assert.equal(k.searchesUsed, 15);
+  assert.equal(k.searchesLeft, 80);
+  assert.equal(k.uploadsLeft, 90);
   assert.ok(k.shouldWarn());
   assert.ok(!k.shouldWarn());
-  assert.equal(k.snapshot().byKind.upload, COST.upload);
+  assert.equal(k.snapshot().byKind.upload, 1);
+  assert.match(k.summary(), /uploads 5 of 100, searches 15 of 100, other calls 9,850 of 10,000 units/);
+  // 95 uploads: the next one waits for midnight Pacific
+  const full = new QuotaKeeper(null, { day: quotaDay(), units: 0, uploads: 95, searches: 0, byKind: {}, warned: false });
+  assert.ok(!full.take("upload", COST.upload));
+  assert.equal(full.uploadsUsed, 95);
+  assert.ok(full.shouldWarn());   // uploads past 80%
+});
+
+test("quota day resets at midnight Pacific, and an old single-pool row moves to the buckets", () => {
+  assert.equal(quotaDay(new Date("2026-11-19T07:59:00Z")), "2026-11-18");   // 23:59 PST
+  assert.equal(quotaDay(new Date("2026-11-19T08:00:00Z")), "2026-11-19");   // 00:00 PST
+  const m = migrate({ day: "2026-11-19", units: 4 * 1_600 + 4 * 50 + 300, byKind: { upload: 6_400, thumbnail: 200, stats: 300 }, warned: false });
+  assert.deepEqual([m.uploads, m.searches, m.units, m.byKind.upload], [4, 0, 500, 4]);
+  assert.equal(migrate({ day: "d", units: 10, uploads: 2, searches: 3, byKind: {}, warned: false }).uploads, 2);
 });
 
 test("a manifest belongs to the channel folder it sits in", async () => {

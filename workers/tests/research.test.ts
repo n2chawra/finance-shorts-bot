@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import { kindOf, score, summarise, DAY_MS, type ScanChannel, type ScanVideo } from "../lib/niche.ts";
-import { familyTrends, firstSecond, recommendCounts, styleTargets, topComments, UPLOAD_UNITS } from "../lib/research.ts";
+import { familyTrends, firstSecond, recommendCounts, styleTargets, topComments } from "../lib/research.ts";
 import { cleanSheet } from "../lib/sheets.ts";
 
 const NOW = new Date("2026-11-17T00:00:00Z");
@@ -57,12 +57,14 @@ test("video counts follow the niche, the loop and the quota", () => {
   const vids = [...Array.from({ length: 60 }, (_, i) => v(`s${i}`, "a", 1_000, i * 0.5 + 1)), v("hit", "a", 90_000, 3)];
   const scored = score(vids, ch, NOW);
   const shorts = summarise(scored, "short", NOW), long = summarise(scored, "long", NOW);
-  const free = recommendCounts(shorts, long, 10_000);
+  const free = recommendCounts(shorts, long, 95);
   assert.equal(free.longPerWeek, 0);
   assert.ok(free.shortsPerDay >= 2, JSON.stringify(free));
   assert.ok(free.reasons.some((r) => r.includes("No long videos")));
-  const tight = recommendCounts(shorts, long, UPLOAD_UNITS + 10);
+  assert.equal(free.uploadsPerDay, free.shortsPerDay);
+  const tight = recommendCounts(shorts, long, 1);
   assert.equal(tight.shortsPerDay, 1);
+  assert.equal(tight.uploadsPerDay, 1);
   assert.ok(tight.reasons.some((r) => r.includes("Lowered")));
 });
 

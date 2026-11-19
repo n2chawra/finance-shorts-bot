@@ -92,7 +92,7 @@ async function main(): Promise<void> {
     if (quota.shouldWarn()) {
       await quota.save();
       await notify(prisma, { key: `quota-high:${quota.snapshot().day}`, channelId: null, source: "publish", severity: "warning", title: "YouTube API quota is over 80% today",
-        detail: `${quota.used} of ${quota.used + quota.left} units used today (${JSON.stringify(quota.snapshot().byKind)}). Uploads still go first; stats and live counters wait for tomorrow's quota.`,
+        detail: `Used today: ${quota.summary()} (${JSON.stringify(quota.snapshot().byKind)}). Uploads still go first; stats and live counters wait for tomorrow's quota.`,
         fix: "Nothing to do today. If this happens often, apply for a quota increase (YouTube API Services audit form) or lower a channel's videos a day." });
     }
   } finally {
@@ -235,7 +235,7 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
   if (!run.quota.take("upload", COST.upload)) {
     const missed = await recordQuotaMiss(prisma, run, video.id, pending, forSlot ?? slot, format, pick, order);
     await notify(prisma, { key: `quota-out:${run.quota.snapshot().day}`, channelId: null, source: "publish", severity: "critical", title: "YouTube API quota ran out today",
-      detail: `${run.label}${missed ?? video.id} could not be uploaded for ${(forSlot ?? slot).toISOString()}: ${run.quota.used} units already used today. Every video that misses its slot this way is listed under Queue → Upload by hand (all channels), with its file, title, description and tags: upload it yourself and press Mark as uploaded. One you leave goes up after the quota resets (midnight Pacific, 13:30 IST).`,
+      detail: `${run.label}${missed ?? video.id} could not be uploaded for ${(forSlot ?? slot).toISOString()}: already used today: ${run.quota.summary()}. Every video that misses its slot this way is listed under Queue → Upload by hand (all channels), with its file, title, description and tags: upload it yourself and press Mark as uploaded. One you leave goes up after the quota resets (midnight Pacific, 13:30 IST).`,
       fix: "Upload the listed videos by hand from Queue → Upload by hand. For good: apply for a quota increase (YouTube API Services audit form), or lower a channel's videos a day on the Channels page." });
     console.log(`::warning::No quota left for ${video.id} today.`);
     return false;
@@ -288,7 +288,7 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
  */
 async function recordQuotaMiss(prisma: PrismaClient, run: Run, videoId: string, pending: { publishAt: Date; attempts: number; error: string | null } | null,
                                intended: Date, format: Format, pick: Pick, order: Prisma.VideoOrderByWithRelationInput[]): Promise<string | null> {
-  const error = quotaError(run.quota.used);
+  const error = quotaError(run.quota.summary());
   const record = (id: string, at: Date, attempts: number) => prisma.upload.upsert({
     where: { videoId: id }, update: { state: "pending", publishAt: at, error }, create: { videoId: id, publishAt: at, state: "pending", attempts, error },
   });

@@ -9,8 +9,8 @@
  *
  *   thumb-refs.json  each open long topic's most viewed videos and their thumbnails, searched once a week
  *
- * Quota: one search (100 units) per query and region plus a few cheap lookups, about 1,600 units a day,
- * and up to four topic searches (400) on days a topic is due.
+ * Quota: one search.list call (the separate 100-a-day search bucket) per query and region, up to four
+ * topic searches on days a topic is due, plus a few 1-unit lookups from the 10,000-unit pool.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -28,11 +28,11 @@ const ROOT = path.resolve(import.meta.dirname, "..");
 const DAY_MS = 86_400_000;
 const API = "https://www.googleapis.com/youtube/v3";
 
-/** Units this run spent (a search 100, a list 1), added to the day's quota usage at the end. */
-let spent = 0;
+/** What this run spent: search.list calls (their own bucket) and 1-unit reads, added to the day's quota usage at the end. */
+let spent = 0, searches = 0;
 
 async function get<T>(token: string, url: string, schema: { parse: (x: unknown) => T }): Promise<T> {
-  spent += url.includes("/search?") ? COST.search : COST.list;
+  if (url.includes("/search?")) searches += COST.search; else spent += COST.list;
   const res = await fetch(url, { headers: { authorization: `Bearer ${token}` } });
   if (!res.ok) throw new Error(`${res.status} ${url.split("?")[0]}: ${(await res.text()).slice(0, 200)}`);
   return schema.parse(await res.json());
@@ -128,12 +128,13 @@ async function main(): Promise<void> {
     try {
       const keeper = await QuotaKeeper.load(prisma);
       keeper.record("stats", spent);
+      keeper.record("search", searches);
       await keeper.save();
     } finally {
       await prisma.$disconnect();
     }
   }
-  console.log(`quota: ${spent} units this run`);
+  console.log(`quota: ${searches} searches and ${spent} units this run`);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === import.meta.filename) {

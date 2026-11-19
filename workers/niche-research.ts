@@ -21,36 +21,35 @@ import path from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 import { FamilyLabels, type KindSummary, type ScoredVideo } from "./lib/niche.ts";
-import { DAILY_UNITS } from "./lib/quota.ts";
-import { UPLOAD_UNITS, familyTrends, firstSecond, recommendCounts, styleTargets, topComments } from "./lib/research.ts";
+import { DAILY_UPLOADS, MARGIN } from "./lib/quota.ts";
+import { UPLOAD_CALLS, familyTrends, firstSecond, recommendCounts, styleTargets, topComments } from "./lib/research.ts";
 import { type Sheet, cleanSheet } from "./lib/sheets.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-/** the dashboard's live counters and the stats reads, a day, across all channels */
-const READ_UNITS = 1_450;
-
 const readJson = <T,>(f: string): T => JSON.parse(readFileSync(f, "utf8")) as T;
 
-/** Quota units a day left for a new channel's uploads, after every active channel's own. */
-async function freeUnits(slug: string): Promise<{ free: number; why: string }> {
+/** Upload calls a day left for a new channel (YouTube's own 100-a-day "Video Uploads" bucket, less the
+ * keeper's margin), after every active channel's own peak day (its Shorts plus a long video). */
+async function freeUploads(slug: string): Promise<{ free: number; why: string }> {
+  const limit = DAILY_UPLOADS - MARGIN.uploads;
   if (!process.env.DATABASE_URL) {
-    const free = DAILY_UNITS - READ_UNITS - 3 * UPLOAD_UNITS;
-    return { free, why: `no database: assumed one other channel at 3 Shorts a day (${free} units free)` };
+    const free = limit - 3 * UPLOAD_CALLS;
+    return { free, why: `no database: assumed one other channel at 3 Shorts a day (${free} of ${limit} uploads a day free)` };
   }
   const prisma = new PrismaClient();
   try {
     const [rows, settings] = await Promise.all([prisma.channel.findMany({ where: { status: "active", NOT: { id: slug } } }), prisma.setting.findMany({ where: { key: { in: ["dailyVideoTarget", "longPerWeek"] } } })]);
     const platform = Object.fromEntries(settings.map((s) => [s.key, Number(s.value)]));
-    let used = READ_UNITS;
+    let used = 0;
     const parts: string[] = [];
     for (const c of rows) {
       const own = (c.settings ?? {}) as { dailyVideoTarget?: number; longPerWeek?: number };
       const perDay = own.dailyVideoTarget ?? platform.dailyVideoTarget ?? 3, perWeek = own.longPerWeek ?? platform.longPerWeek ?? 0;
-      const u = Math.round((perDay + perWeek / 7) * UPLOAD_UNITS);
+      const u = (perDay + (perWeek > 0 ? 1 : 0)) * UPLOAD_CALLS;
       used += u;
-      parts.push(`${c.name} ${perDay}/day + ${perWeek}/week = ${u}`);
+      parts.push(`${c.name} ${perDay}/day + ${perWeek}/week = ${u} on a peak day`);
     }
-    return { free: DAILY_UNITS - used, why: `${DAILY_UNITS} a day − ${READ_UNITS} reads − ${parts.join(", ") || "no other channel"}` };
+    return { free: limit - used, why: `${limit} uploads a day − ${parts.join(", ") || "no other channel"}` };
   } finally {
     await prisma.$disconnect();
   }
@@ -92,7 +91,7 @@ async function main(): Promise<void> {
     out.style = `${shorts.length} Short and ${long.length} long sheets measured`;
   } else out.style = `no shot sheets yet (${sheetsDir})`;
 
-  const quota = await freeUnits(slug);
+  const quota = await freeUploads(slug);
   const counts = recommendCounts(scan.shorts, scan.long, quota.free);
   writeFileSync(path.join(dir, "counts.json"), JSON.stringify({ note: "Recommended video counts (lib/research.ts recommendCounts). The owner accepts or changes them on the Launch review.",
     at: now, ...counts, quota }, null, 1) + "\n");

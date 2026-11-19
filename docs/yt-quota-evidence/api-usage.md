@@ -14,9 +14,10 @@ Google's quota cost table (developers.google.com/youtube/v3/determine_quota_cost
 says that **`videos.insert` and `search.list` each have their own bucket**, with a default of 100
 calls a day at 1 unit per call. All other methods share the 10,000-unit daily pool.
 
-Our code still uses the older figures (`workers/lib/quota.ts`: upload 1,600, thumbnail 50, list 1,
-search 100, all in the one 10,000 pool). Both are shown below, so the request reads correctly under
-either model.
+Our quota keeper (`workers/lib/quota.ts`) follows this model since 2026-11-19: uploads and searches
+are counted as calls in their own buckets (uploads stop at 95), everything else in units. The older
+single-pool figures (upload 1,600, search 100) are shown below too, so the request reads correctly
+under either model.
 
 ## Methods called
 

@@ -13,8 +13,8 @@
  *         <rawDir>/<slug>.json                 titles and per-video numbers (YouTube API data: the
  *                                               workflow keeps it only on the replaced `niche-data` branch)
  *
- * Quota: ~2 searches per query (100 units each; queries capped at 6) plus 1-unit reads: about 1,000–1,500
- * units a scan, booked with the quota keeper as "stats" so it never eats into the day's uploads.
+ * Quota: ~2 search.list calls per query (queries capped at 6) from the separate 100-a-day search bucket,
+ * plus 1-unit reads booked with the quota keeper as "stats" so they never eat into the uploads' covers.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -23,7 +23,7 @@ import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
 import { DAY_MS, FamilyLabels, type ScanChannel, type ScanVideo, isoSeconds, kindOf, parseChannelRef, rankFamilies, score, summarise } from "./lib/niche.ts";
-import { QuotaKeeper } from "./lib/quota.ts";
+import { COST, QuotaKeeper } from "./lib/quota.ts";
 import { layout } from "./lib/channels.ts";
 import { tokenOf } from "./lib/channel-auth.ts";
 import { accessToken } from "./lib/youtube.ts";
@@ -54,10 +54,12 @@ export type Auth = { key: string } | { bearer: string };
 
 class Api {
   units = 0;
+  searches = 0;
   constructor(private auth: Auth, private quota: QuotaKeeper | null) {}
   async get<T>(endpoint: string, params: Record<string, string>, schema: z.ZodType<T>, cost = 1): Promise<T> {
-    if (this.quota && !this.quota.take("stats", cost)) throw new Error(`quota keeper refused ${endpoint} (${this.quota.used} units used today); try again after midnight Pacific`);
-    this.units += cost;
+    const kind = endpoint === "search" ? "search" : "stats";
+    if (this.quota && !this.quota.take(kind, cost)) throw new Error(`quota keeper refused ${endpoint} (${this.quota.summary()} used today); try again after midnight Pacific`);
+    if (kind === "stats") this.units += cost; else this.searches += cost;
     const q = new URLSearchParams({ ...params, ...("key" in this.auth ? { key: this.auth.key } : {}) });
     const res = await fetch(`${API}/${endpoint}?${q}`, "bearer" in this.auth ? { headers: { authorization: `Bearer ${this.auth.bearer}` } } : undefined);
     if (!res.ok) throw new Error(`${endpoint} ${res.status}: ${(await res.text()).slice(0, 200)}`);
@@ -111,7 +113,7 @@ export async function scan(slug: string, req: ScanRequest, auth: Auth, quota: Qu
   for (const q of queries) {
     for (const videoDuration of ["short", "medium"]) {
       const r = await api.get("search", { part: "snippet", type: "video", q, order: "viewCount", maxResults: "50", videoDuration,
-        publishedAfter: new Date(now.getTime() - 90 * DAY_MS).toISOString(), ...(req.region ? { regionCode: req.region } : {}) }, SearchItems, 100);
+        publishedAfter: new Date(now.getTime() - 90 * DAY_MS).toISOString(), ...(req.region ? { regionCode: req.region } : {}) }, SearchItems, COST.search);
       for (const it of r.items) found.set(it.snippet.channelId, (found.get(it.snippet.channelId) ?? new Set()).add(q));
     }
   }
@@ -168,7 +170,7 @@ export async function scan(slug: string, req: ScanRequest, auth: Auth, quota: Qu
 
   const kept = {
     note: "Aggregates and ids from the niche scan (workers/niche-scan.ts). Titles and per-video API numbers live only on the niche-data branch.",
-    slug, scannedAt: now.toISOString(), units: api.units, request: req, queries,
+    slug, scannedAt: now.toISOString(), units: api.units, searches: api.searches, request: req, queries,
     channels: channels.map((c) => ({ id: c.id, subs: c.subs, reference: c.reference, foundBy: c.foundBy, videos: scored.filter((v) => v.channelId === c.id).length })),
     shorts: shortsSum,
     long: longSum,

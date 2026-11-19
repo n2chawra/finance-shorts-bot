@@ -436,9 +436,11 @@ refresh tokens expire after 7 days.
 
 ## YouTube API facts
 
-- Default quota 10,000 units/day; `videos.insert` costs 1,600. Three Shorts and a long video (6,400)
-  fit easily next to the dashboard's live counters (~1,450 at most); a long-video day with two trend
-  Shorts (9,600) may need a quota increase once uploads are automatic.
+- Three separate daily buckets per project (Google, checked 2026-11-19), all reset at midnight Pacific:
+  **Video Uploads** 100 calls (`videos.insert`, 1 a call), **Search Queries** 100 calls (`search.list`,
+  1 a call), and **Queries** 10,000 units for everything else (`thumbnails.set` 50, lists 1). The
+  quota keeper (`workers/lib/quota.ts`) counts each apart and stops uploads at 95 (limits:
+  `YT_QUOTA_UPLOADS`, `YT_QUOTA_SEARCHES`, `YT_QUOTA_UNITS`).
 - Unverified API projects upload as private only. Apply for the audit early.
 - Schedule by uploading with `privacyStatus: private` + `publishAt` (ISO 8601).
 - Shorts: vertical/square, up to 3 min. Keep ours ≤ 60 s.

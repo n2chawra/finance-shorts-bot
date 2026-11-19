@@ -53,7 +53,7 @@ Routines get **none** of these.
 | GitHub Actions | Free (private repo: 2,000 min/month) | release + ingest per video, publish ×3, stats ×8, ingest ×4 a day: roughly 25–35 min/day | comfortable |
 | Netlify | Free | builds only when `apps/dashboard` changes; serverless functions for the API | comfortable |
 | Supabase | Free (500 MB) | a few thousand rows | years of headroom |
-| YouTube Data API | 10,000 units/day | 1,600 per upload + ≤ ~1,500 for live counts | comfortable |
+| YouTube Data API | 100 uploads + 100 searches + 10,000 units/day | 1 upload call + 50-unit cover per video; ≤ ~1,500 units for live counts | comfortable |
 | GitHub Releases | Free | one ~5–15 MB MP4 per video | fine |
 
 ## Running things by hand

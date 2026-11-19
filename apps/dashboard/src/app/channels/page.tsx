@@ -223,17 +223,21 @@ function ReviewPanel({ c }: { c: Channel }) {
   );
 }
 
-// reads (2026-11-18 cuts): market scan twice a week ~290/day, live counters <=300, comments <=30, stats ~70
-const UNITS_PER_UPLOAD = 1_650, READ_UNITS = 700, DAILY_UNITS = 10_000;
+// YouTube's separate daily buckets (2026-11-19): 100 upload calls, 100 search calls, and 10,000 units
+// for everything else. Units: reads (2026-11-18 cuts: live counters <=300, comments <=30, stats ~70,
+// market lookups) about 700 a day, plus a 50-unit cover per upload.
+const DAILY_UPLOADS = 100, UPLOAD_STOP = 95, READ_UNITS = 700, COVER_UNITS = 50, DAILY_UNITS = 10_000;
 
-/** YouTube quota a day across the live channels: every upload costs about 1,650 units of the shared 10,000. */
+/** YouTube quota a day across the live channels: upload calls on a peak day (Shorts + a long video) and the units pool. */
 function QuotaLine({ channels, platform }: { channels: Channel[]; platform?: { dailyVideoTarget: number; longPerWeek: number } }) {
   const live = channels.filter((c) => c.status === "active");
-  const units = READ_UNITS + live.reduce((a, c) => a + ((c.settings.dailyVideoTarget ?? platform?.dailyVideoTarget ?? 3) + (c.settings.longPerWeek ?? platform?.longPerWeek ?? 0) / 7) * UNITS_PER_UPLOAD, 0);
-  const over = units > DAILY_UNITS;
+  const perChannel = live.map((c) => ({ perDay: c.settings.dailyVideoTarget ?? platform?.dailyVideoTarget ?? 3, perWeek: c.settings.longPerWeek ?? platform?.longPerWeek ?? 0 }));
+  const uploads = perChannel.reduce((a, c) => a + c.perDay + (c.perWeek > 0 ? 1 : 0), 0);
+  const units = READ_UNITS + perChannel.reduce((a, c) => a + (c.perDay + c.perWeek / 7) * COVER_UNITS, 0);
+  const over = uploads > UPLOAD_STOP || units > DAILY_UNITS;
   return (
     <p className={`mb-5 text-[12.5px] ${over ? "text-critical-text" : "text-muted"}`}>
-      YouTube quota: about {Math.round(units).toLocaleString("en")} of {DAILY_UNITS.toLocaleString("en")} units a day across {live.length} live channel{live.length === 1 ? "" : "s"}.
+      Uploads: {uploads} of {DAILY_UPLOADS} a day across {live.length} live channel{live.length === 1 ? "" : "s"}; other calls about {Math.round(units).toLocaleString("en")} of {DAILY_UNITS.toLocaleString("en")} units.
       {over && " Over the limit: lower a channel's videos, or apply for YouTube's quota increase."}
     </p>
   );
@@ -306,7 +310,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
           <span className="text-[12.5px] font-medium text-ink2">Long videos a week</span>
           <Segmented label={`Long videos a week for ${c.name}`} value={String(perWeek)} onChange={(v) => run({ id: c.id, settings: { longPerWeek: Number(v) } }, `${c.name}: ${v} long video${v === "1" ? "" : "s"} a week`)}
             options={["0", "1", "2"].map((v) => ({ value: v, label: v }))} />
-          <span className="text-[11.5px] text-muted">Each upload uses about 1,650 of the 10,000 YouTube quota units a day shared by all channels.</span>
+          <span className="text-[11.5px] text-muted">Each upload uses 1 of YouTube's 100 uploads a day (shared by all channels) and 50 of its 10,000 other units.</span>
         </div>
 
         <form className="flex flex-col gap-2" onSubmit={(e) => {

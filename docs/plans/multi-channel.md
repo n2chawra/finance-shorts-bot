@@ -34,8 +34,9 @@ Today the system is one channel spread across the repo (`channel/profile.md`, `c
 ## Decisions (owner, 2026-11-05)
 - **One platform, many channels**: one repo, dashboard, database, auditor and dashboard agents.
 - **One Google project for all channels.** This works: each YouTube channel signs in once to the same
-  OAuth app and gets its own refresh token. The limit is the project's shared **quota (10,000
-  units a day)**.
+  OAuth app and gets its own refresh token. The limit is the project's shared **quota**. Since
+  2026-11-19 (Google's cost table) it is three buckets: 100 uploads a day, 100 searches a day and
+  10,000 units for other calls, so uploads are no longer the binding cost. The older estimate:
   - One upload costs about 1,600 units, so 3 Shorts a day use about 4,800 per channel.
   - Two channels at 3 Shorts a day use 9,600 units. On top of that come the dashboard's live counters
     (up to ~1,450 a day) and, on a long-video day, 1,600 per long video. That is **over the limit from

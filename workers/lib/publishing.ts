@@ -141,6 +141,7 @@ export function youtubeMeta(v: { title: string; description: string; tags: strin
  * (apps/dashboard/src/lib/hand-uploads.ts QUOTA_ERROR, the same prefix).
  */
 export const QUOTA_ERROR = "quota:";
-export const quotaError = (used: number): string =>
-  `${QUOTA_ERROR} the day's YouTube API quota ran out (${used.toLocaleString("en-US")} units used); it resets at midnight Pacific`;
+/** `used`: the keeper's summary (uploads, searches and units), or a units count. */
+export const quotaError = (used: number | string): string =>
+  `${QUOTA_ERROR} the day's YouTube API quota ran out (${typeof used === "string" ? used : `${used.toLocaleString("en-US")} units`} used); it resets at midnight Pacific`;
 export const isQuotaMiss = (error: string | null | undefined): boolean => !!error?.startsWith(QUOTA_ERROR);

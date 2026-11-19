@@ -51,7 +51,7 @@ sequenceDiagram
 
 | Fact | Consequence |
 |---|---|
-| 10,000 quota units a day; an upload costs 1,600 | Two uploads a day use 32%; live view counts use ≤ ~1,500 |
+| Separate daily buckets: 100 uploads, 100 searches, 10,000 units for other calls (cover 50, lists 1) | Uploads are counted apart and stop at 95 a day; live view counts use ≤ ~1,500 units |
 | Unverified API projects can only upload **private** videos | The audit is pending; until approved, uploads are by hand (below) |
 | OAuth consent screen must be in **Production** | Otherwise refresh tokens expire after 7 days |
 | Stored analytics must be refreshed at least every 30 days | The stats job rewrites each video's full history daily; if access is lost for 30 days, stored stats are deleted |
