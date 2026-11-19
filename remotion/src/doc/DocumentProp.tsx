@@ -12,7 +12,7 @@
  */
 import React from "react";
 import { AbsoluteFill, Img, staticFile } from "remotion";
-import { SourceTag } from "./Overlays";
+import { SourceTag, sourceTagPlace } from "./Overlays";
 import { clamp01, DOC, DocVignette, FilmGrain, fs, outCubic, SANS, SERIF, smooth, SurfaceBg, unit, type Surface } from "./theme";
 
 export type DocHeader = { company?: string; title?: string; form?: string };
@@ -141,9 +141,14 @@ export const DocumentProp: React.FC<DocumentPropProps> = ({
       </AbsoluteFill>
       <FilmGrain t={t} o={0.3} moving={false} />
       <DocVignette o={0.6} />
+      {/* the callout and the source tag share one bottom-anchored column, so they stack and never overlap */}
+      <div style={{
+        position: "absolute", left: v ? sourceTagPlace(w, h).left : w * 0.18, right: v ? w * 0.06 : w * 0.18, bottom: sourceTagPlace(w, h).bottom,
+        display: "flex", flexDirection: "column", gap: 18 * u,
+      }}>
       {quote && qk > 0 ? (
         <div style={{
-          position: "absolute", left: v ? w * 0.06 : w * 0.18, right: v ? w * 0.06 : w * 0.18, bottom: v ? h * 0.34 : h * 0.11,
+          position: "relative",
           opacity: qk, transform: `translateY(${(1 - outCubic(qk)) * 30 * u}px)`,
           background: "rgba(10,13,20,0.86)", borderLeft: `${8 * u}px solid ${DOC.gold}`, borderRadius: 6 * u,
           padding: `${26 * u}px ${36 * u}px`, boxShadow: `0 ${20 * u}px ${60 * u}px rgba(0,0,0,0.5)`,
@@ -157,7 +162,8 @@ export const DocumentProp: React.FC<DocumentPropProps> = ({
           </div>
         </div>
       ) : null}
-      {source ? <SourceTag text={source} w={w} h={h} k={clamp01((t - 6) / 10)} /> : null}
+      {source ? <SourceTag text={source} w={w} h={h} k={clamp01((t - 6) / 10)} inline /> : null}
+      </div>
     </AbsoluteFill>
   );
 };

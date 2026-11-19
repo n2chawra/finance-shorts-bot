@@ -12,6 +12,7 @@
 import React from "react";
 import type { Timeline } from "../contract/timeline";
 import { FONT } from "../design/fonts";
+import { ChunkCaptions, chunkTokens, type ChunkToken } from "./chunkCaptions";
 
 interface Token { t: string; s: number; e: number; who?: string; board?: boolean }   // real seconds from the start of the video
 
@@ -66,15 +67,23 @@ export const SHORT_UI_BOTTOM = 340;
 export const captionBand = (w: number, h: number, scene?: string): number => (h > w ? (scene === "board" ? 225 : 175) : 84);
 void HIGH;
 
+// doc-scene Shorts re-chunk the same tokens into 1-3 words (fx/chunkCaptions.tsx), once per video
+const docChunks = new WeakMap<Token[][], ChunkToken[][]>();
+
 export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]; scene: string }> = ({ tl, frame, groups, scene }) => {
   const t = frame / tl.fps;
   // the group on screen: from its first word until the next group starts (or shortly after its last word)
   let i = groups.findIndex((g, k) => t >= g[0]!.s && t < Math.min(groups[k + 1]?.[0]!.s ?? Infinity, g[g.length - 1]!.e + 0.45));
   // the hook's first words are on screen from frame 0: that frame is what the feed shows
   if (i < 0 && groups.length && t < groups[0]![0]!.s && groups[0]![0]!.s < 1) i = 0;
+  const v = tl.height > tl.width;
+  if (scene === "doc" && v) {
+    let chunks = docChunks.get(groups);
+    if (!chunks) { chunks = chunkTokens(groups.flat()); docChunks.set(groups, chunks); }
+    return <ChunkCaptions chunks={chunks} t={t} width={tl.width} height={tl.height} figures={new Set(Object.values(tl.figures ?? {}))} />;
+  }
   if (i < 0) return null;
   const g = groups[i]!;
-  const v = tl.height > tl.width;
   const size = v ? 60 : 40;
   const figures = new Set(Object.values(tl.figures ?? {}));
   const since = t < g[0]!.s ? 1 : t - g[0]!.s;          // already shown in full before it is spoken

@@ -116,7 +116,7 @@ ID_KEYS = frozenset({"at", "id", "target", "on", "component", "size", "prop", "i
                      "bg", "color", "tint", "traveller", "pose", "expression", "spot", "where", "from", "to", "tone", "world", "open_at"})
 _IDENT = re.compile(r"^[A-Za-z_][\w-]*$")
 # a doc beat (remotion/src/doc, 2026-11-19): its moments are event names, never shown
-ID_KEYS = ID_KEYS | {"out", "pushAt", "markAt", "underAt", "quoteAt", "drawAt", "countAt", "leftAt", "rightAt", "winAt", "landAt", "titleAt"}
+ID_KEYS = ID_KEYS | {"out", "pushAt", "markAt", "underAt", "quoteAt", "drawAt", "countAt", "fillAt", "flipAt", "tagAt", "tapeAt", "sinkAt", "leftAt", "rightAt", "winAt", "landAt", "titleAt"}
 # ...and three kinds of string that hold digits but are not figures: a file the media fetcher staged under
 # remotion/public (its name is the stock site's id), a date (shown as "Apr 2, 2001"; the fact review checks
 # it) and an SEC form's name ("Form 10-K")
@@ -536,10 +536,10 @@ def directed_problems(b: "Beat", where: str) -> list[str]:
     return out
 
 
-DOC_LAYERS = ("footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter")
+DOC_LAYERS = ("footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "count", "listing", "ticker", "sink", "donut", "poster")
 DOC_OVERLAYS = ("lowerThird", "source", "chapter", "label")
 # the keys in a doc layer that name a moment (a spoken word in the beat's events)
-DOC_MOMENT_KEYS = ("at", "out", "pushAt", "markAt", "underAt", "quoteAt", "drawAt", "countAt", "leftAt", "rightAt", "winAt", "landAt", "titleAt", "on")
+DOC_MOMENT_KEYS = ("at", "out", "pushAt", "markAt", "underAt", "quoteAt", "drawAt", "countAt", "fillAt", "flipAt", "tagAt", "tapeAt", "sinkAt", "leftAt", "rightAt", "winAt", "landAt", "titleAt", "on")
 
 
 def _doc_moments(node, out: list[tuple[str, str]], path: str) -> None:

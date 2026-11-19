@@ -16,15 +16,18 @@ import { DocChart, type ChartMark } from "./DocChart";
 import { DocMap, type Pin } from "./DocMap";
 import { DocumentProp, type DocHeader } from "./DocumentProp";
 import { Footage } from "./Footage";
+import { FIGURE_KINDS, FigureLayer, isFigureKind } from "./FigureLayer";
 import { Headline, type HeadlineItem } from "./Headline";
 import { isMove } from "./move";
 import { ChapterCard, LabelBox, LowerThird, SourceTag, type ChapterStyle } from "./Overlays";
 import { PhotoPan, type PhotoFrame, type Treatment } from "./PhotoPan";
+import { PolaroidRow } from "./PolaroidRow";
+import { ProductStage } from "./ProductStage";
 import { Split, type Side } from "./Split";
 import { DOC, fmtDate, isGrade, outCubic, type Surface } from "./theme";
 import { Timeline, type YearMark } from "./Timeline";
 
-export const LAYER_KINDS = ["footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter"] as const;
+export const LAYER_KINDS = ["footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", ...FIGURE_KINDS] as const;
 export const OVERLAY_KINDS = ["lowerThird", "source", "chapter", "label"] as const;
 
 type Any = Record<string, unknown>;
@@ -111,8 +114,15 @@ const Layer: React.FC<{ c: Ctx; l: Any }> = ({ c, l }) => {
     case "chapter":
       return <ChapterCard n={typeof l.n === "number" ? l.n : undefined} title={s(l.title)} kicker={typeof l.kicker === "string" ? l.kicker : undefined}
         t={t} end={end} w={w} h={h} on={ev(l.titleAt, 4)} plate={n(l.plate, 1)} style={chapterStyle(l.style)} />;
+    case "polaroids":
+      return <PolaroidRow items={list(l.items).map((it, i) => ({ src: s(it.src), aspect: typeof it.aspect === "number" ? it.aspect : undefined, caption: typeof it.caption === "string" ? it.caption : undefined,
+        at: ev(it.at, 6 + i * 24), bw: it.bw === true }))} surface={s(l.surface, "desk") as Surface} bw={l.bw === true} dim={n(l.dim, 0.55)} t={t} end={end} w={w} h={h} />;
+    case "products":
+      return <ProductStage mode={l.mode === "pallet" || l.mode === "wall" ? l.mode : "stage"} items={list(l.items).map((it, i) => ({ src: s(it.src), aspect: typeof it.aspect === "number" ? it.aspect : undefined,
+        label: typeof it.label === "string" ? it.label : undefined, at: ev(it.at, 4 + i * 16) }))} count={figOf(fig, l.count)} countLabel={typeof l.countLabel === "string" ? l.countLabel : undefined}
+        fillAt={ev(l.fillAt, 6)} fillLen={n(l.fillLen, 36)} backdrop={l.backdrop === "paper" ? "paper" : "charcoal"} t={t} end={end} w={w} h={h} />;
     default:
-      return null;
+      return isFigureKind(l.kind) ? <FigureLayer l={l} fig={fig} t={t} end={end} w={w} h={h} ev={ev} /> : null;
   }
 };
 

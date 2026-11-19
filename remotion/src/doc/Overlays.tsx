@@ -6,19 +6,26 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import { LONG, SHORT } from "../design/frame";
-import { clamp01, DOC, fs, MONO, outBack, outCubic, roman, SANS, SERIF, smooth, unit } from "./theme";
+import { clamp01, DISPLAY, DOC, fs, MONO, outBack, outCubic, roman, SANS, SERIF, smooth, unit } from "./theme";
 
 /** The small source line. `k` 0..1 fades and slides it in. */
-export const SourceTag: React.FC<{ text: string; w: number; h: number; k?: number; pos?: "bottom-left" | "top-right" }> = ({ text, w, h, k = 1, pos = "bottom-left" }) => {
+/** Where the bottom-left source tag sits; a callout stacked with it uses the same corner. */
+export const sourceTagPlace = (w: number, h: number) => {
+  const v = h > w;
+  return { left: v ? 60 : 64, bottom: v ? 400 : (v ? SHORT : LONG).bottomSafe + 30 };
+};
+
+/** `inline`: no position of its own, for stacking in a parent's column (e.g. under a quote callout). */
+export const SourceTag: React.FC<{ text: string; w: number; h: number; k?: number; pos?: "bottom-left" | "top-right"; inline?: boolean }> = ({ text, w, h, k = 1, pos = "bottom-left", inline = false }) => {
   if (k <= 0 || !text) return null;
   const v = h > w;
   const f = v ? SHORT : LONG;
   const size = f.minText;
-  const place: React.CSSProperties = pos === "top-right"
-    ? { right: v ? 150 : 60, top: v ? 200 : 44 }
-    : { left: v ? 60 : 64, bottom: v ? 400 : f.bottomSafe + 30 };
+  const place: React.CSSProperties = inline ? { position: "relative", alignSelf: "flex-start" } : pos === "top-right"
+    ? { position: "absolute", right: v ? 150 : 60, top: v ? 200 : 44 }
+    : { position: "absolute", ...sourceTagPlace(w, h) };
   return (
-    <div style={{ position: "absolute", ...place, maxWidth: w * (v ? 0.8 : 0.6), opacity: k, transform: `translateY(${(1 - outCubic(k)) * 12}px)`,
+    <div style={{ ...place, maxWidth: w * (v ? 0.8 : 0.6), opacity: k, transform: `translateY(${(1 - outCubic(k)) * 12}px)`,
       display: "flex", alignItems: "center", gap: size * 0.45, fontFamily: SANS, fontSize: size, lineHeight: 1.2, color: "rgba(243,239,230,0.92)",
       textShadow: "0 2px 8px rgba(0,0,0,0.8)", background: "rgba(8,10,16,0.62)", padding: `${size * 0.2}px ${size * 0.5}px`, borderRadius: size * 0.25 }}>
       <span style={{ fontWeight: 800, fontSize: size * 0.8, letterSpacing: size * 0.12, color: DOC.gold, flex: "none" }}>SOURCE</span>
@@ -37,7 +44,7 @@ export const LowerThird: React.FC<{ name: string; role?: string; t: number; w: n
   const k = kin * (1 - kout);
   if (k <= 0.001) return null;
   const big = fs(w, h, v ? 64 : 56), small = fs(w, h, v ? 40 : 32);
-  const x = v ? 60 : w * 0.055, top = v ? h * 0.6 : h * 0.66;
+  const x = v ? 60 : w * 0.055, top = v ? h * 0.42 : h * 0.66;   // a Short: above the caption band (1110-1350 px)
   const u = unit(w, h);
   return (
     <div style={{ position: "absolute", left: x, top, display: "flex", alignItems: "stretch", gap: 22 * u, opacity: clamp01(k * 1.4) }}>
@@ -55,6 +62,7 @@ export const LowerThird: React.FC<{ name: string; role?: string; t: number; w: n
  * drawing under it. Full frame over a dark plate (`plate`: 0 lets the picture under it show). */
 export type ChapterStyle = "serif" | "caps" | "tape";
 
+/* In a Short every piece here keeps out of the caption band (about 1110-1350 px of 1920: fx/chunkCaptions). */
 export const ChapterCard: React.FC<{ n?: number; title: string; kicker?: string; t: number; end: number; w: number; h: number; on?: number; plate?: number; style?: ChapterStyle }> = ({
   n, title, kicker, t, end, w, h, on = 4, plate = 0.78, style = "serif",
 }) => {
@@ -69,7 +77,7 @@ export const ChapterCard: React.FC<{ n?: number; title: string; kicker?: string;
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ background: `radial-gradient(ellipse 80% 70% at 50% 50%, rgba(20,27,40,${plate}) 0%, rgba(5,7,12,${Math.min(1, plate + 0.15)}) 100%)` }} />
-      <AbsoluteFill style={{ display: "flex", flexDirection: "column", alignItems: v ? "flex-start" : "center", justifyContent: "center", padding: v ? "0 70px" : 0, transform: `scale(${drift})` }}>
+      <AbsoluteFill style={{ display: "flex", flexDirection: "column", alignItems: v ? "flex-start" : "center", justifyContent: v ? "flex-start" : "center", padding: v ? `${h * 0.28}px 70px 0` : 0, transform: `scale(${drift})` }}>
         <div style={{ fontFamily: SANS, fontWeight: 700, fontSize: fs(w, h, 34), letterSpacing: 12 * u, color: DOC.gold, opacity: smooth((t - on) / 10),
           transform: `translateY(${(1 - smooth((t - on) / 10)) * 14 * u}px)` }}>
           {kicker ?? "CHAPTER"}{n !== undefined ? ` ${roman(n)}` : ""}
@@ -94,8 +102,7 @@ export const ChapterCard: React.FC<{ n?: number; title: string; kicker?: string;
 type ChapterProps = { n?: number; title: string; kicker?: string; t: number; end: number; w: number; h: number; on: number; plate?: number };
 
 /** "CHAPTER 2:" small in red heavy slanted caps over the title in big white heavy slanted caps, low on
- * the frame, over the picture under it (the Bagholder Association card, style-study w1.md). Slanted,
- * not italic: only upright Poppins is bundled. */
+ * the frame, over the picture under it (the Bagholder Association card, style-study w1.md). Anton, slanted. */
 const CapsChapter: React.FC<ChapterProps> = ({ n, title, kicker, t, end, w, h, on, plate = 0.35 }) => {
   const v = h > w;
   const u = unit(w, h);
@@ -104,10 +111,10 @@ const CapsChapter: React.FC<ChapterProps> = ({ n, title, kicker, t, end, w, h, o
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ background: `linear-gradient(180deg, rgba(0,0,0,${plate * 0.4}) 30%, rgba(0,0,0,${Math.min(1, plate + 0.35)}) 100%)` }} />
-      <div style={{ position: "absolute", left: v ? 70 : w * 0.07, right: v ? 150 : w * 0.07, bottom: v ? h * 0.3 : h * 0.14, transform: `scale(${drift})`, transformOrigin: "0% 100%" }}>
-        <div style={{ fontFamily: SANS, fontWeight: 900, fontSize: fs(w, h, 44), color: DOC.red, transform: `skewX(-9deg) translateX(${(1 - k1) * -30 * u}px)`, opacity: k1,
+      <div style={{ position: "absolute", left: v ? 70 : w * 0.07, right: v ? 150 : w * 0.07, bottom: v ? h * 0.46 : h * 0.14, transform: `scale(${drift})`, transformOrigin: "0% 100%" }}>
+        <div style={{ fontFamily: DISPLAY, fontWeight: 400, fontSize: fs(w, h, 48), color: DOC.red, transform: `skewX(-9deg) translateX(${(1 - k1) * -30 * u}px)`, opacity: k1,
           letterSpacing: 1, textShadow: "0 3px 10px rgba(0,0,0,0.5)" }}>{(kicker ?? "CHAPTER").toUpperCase()}{n !== undefined ? ` ${n}:` : ":"}</div>
-        <div style={{ fontFamily: SANS, fontWeight: 900, fontSize: fs(w, h, v ? 104 : 120), lineHeight: 0.98, color: "#ffffff", textTransform: "uppercase", letterSpacing: -1,
+        <div style={{ fontFamily: DISPLAY, fontWeight: 400, fontSize: fs(w, h, v ? 124 : 140), lineHeight: 1.0, color: "#ffffff", textTransform: "uppercase", letterSpacing: 1,
           transform: `skewX(-9deg) translateY(${(1 - k2) * 30 * u}px)`, opacity: k2, textShadow: "0 8px 28px rgba(0,0,0,0.65)" }}>{title}</div>
       </div>
     </AbsoluteFill>
@@ -123,7 +130,7 @@ const TapeChapter: React.FC<ChapterProps> = ({ n, title, kicker, t, end, w, h, o
   const drift = 1 + 0.03 * (t / Math.max(1, end));
   const size = fs(w, h, 64);
   return (
-    <AbsoluteFill style={{ background: "radial-gradient(ellipse 80% 80% at 45% 40%, #efe8d8 0%, #d8cfba 70%, #b8ad94 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <AbsoluteFill style={{ background: "radial-gradient(ellipse 80% 80% at 45% 40%, #efe8d8 0%, #d8cfba 70%, #b8ad94 100%)", display: "flex", alignItems: "center", justifyContent: "center", paddingBottom: h > w ? h * 0.2 : 0 }}>
       <AbsoluteFill style={{ backgroundImage: "radial-gradient(rgba(80,60,30,0.07) 1px, transparent 1.5px)", backgroundSize: `${6 * u}px ${6 * u}px` }} />
       <div style={{ transform: `scale(${drift}) rotate(-2deg)`, background: "linear-gradient(180deg, #2a2a2e, #141416 60%, #232327)", padding: `${16 * u}px ${34 * u}px`,
         borderRadius: 6 * u, boxShadow: `0 ${10 * u}px ${24 * u}px rgba(0,0,0,0.35), inset 0 ${2 * u}px 0 rgba(255,255,255,0.08)`, maxWidth: w * 0.86,
@@ -147,7 +154,7 @@ export const LabelBox: React.FC<{ text: string; sub?: string; t: number; w: numb
   if (k <= 0.01) return null;
   const bg = tone === "red" ? DOC.red : "#ffffff", fg = tone === "red" ? "#ffffff" : "#0d0f14";
   return (
-    <div style={{ position: "absolute", left: v ? 60 : w * 0.06, top: v ? h * 0.56 : h * 0.68, transform: `scale(${k})`, transformOrigin: "0% 100%",
+    <div style={{ position: "absolute", left: v ? 60 : w * 0.06, top: v ? h * 0.44 : h * 0.68, transform: `scale(${k})`, transformOrigin: "0% 100%",
       background: bg, color: fg, padding: `${10 * u}px ${24 * u}px ${12 * u}px`, boxShadow: `0 ${12 * u}px ${30 * u}px rgba(0,0,0,0.45)` }}>
       <div style={{ fontFamily: SANS, fontWeight: 900, fontSize: fs(w, h, 62), lineHeight: 1.05, letterSpacing: -0.5 }}>{text}</div>
       {sub ? <div style={{ fontFamily: SANS, fontWeight: 600, fontSize: fs(w, h, 30), lineHeight: 1.2, opacity: 0.75 }}>{sub}</div> : null}

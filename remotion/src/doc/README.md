@@ -34,10 +34,10 @@ and checks the params with `renderer/timeline/build.py` `doc_problems`. `DocBeat
 - `place`, `camera` (shot sizes) and `moments` follow the directed-beat rules, and the craft gates read them.
 - Every moment key holds an **event name**, which is a spoken word in `events`: `at` and `out` (when a layer or
   overlay is on screen; a layer's own clock starts at its `at`), `pushAt`, `markAt`, `underAt`, `quoteAt`,
-  `drawAt`, `countAt`, `leftAt`, `rightAt`, `winAt`, `landAt`, `titleAt`, a headline's `on: [...]`, a chart
+  `drawAt`, `countAt`, `fillAt`, `leftAt`, `rightAt`, `winAt`, `landAt`, `titleAt`, a headline's `on: [...]`, a chart
   mark's `at` and a pin's `on`.
 - Each figure is a key of `params.fig`, or a `{placeholder}` written directly: a chart's `figure`, its bars'
-  `figs`, a split side's `figure` and a label's `text`. A chart's shape comes from `values`
+  `figs`, a split side's `figure`, a product wall's `count` and a label's `text`. A chart's shape comes from `values`
   (`"@maths.series"` or the facts' numbers). The chart prints no axis numbers.
 - Digits are allowed only in these fields:
   - `src` and `icons` paths under `media/`, `real/` or `doc-demo/`
@@ -61,6 +61,8 @@ and checks the params with `renderer/timeline/build.py` `doc_problems`. `DocBeat
 | `split` | `Split` | `left`/`right` {name, src, fit cover/contain, figure, sub, color}, `leftAt`, `rightAt`, `countAt`, `win`, `winAt` |
 | `map` | `DocMap` | `fit` [countries] or `center` [lon,lat] + `scale`, `hi` [countries], `pins` [{lonlat, label, on}] |
 | `chapter` | `ChapterCard` | `n`, `title`, `kicker`, `style` serif/caps/tape, `plate`, `titleAt` |
+| `polaroids` | `PolaroidRow` | `items` [{src, aspect, caption, at, bw}] (each print unblurs and lifts on its `at`, the others dim), `surface`, `bw`, `dim`. Two rows in a Short. |
+| `products` | `ProductStage` | `mode` stage/pallet/wall, `items` [{src (transparent PNG), aspect, label, at}], `backdrop` charcoal/paper; pallet/wall: `count` (a `params.fig` key; at most 240 units drawn, the full figure lands after), `countLabel`, `fillAt`, `fillLen` |
 
 Overlays: `lowerThird` {name, role}, `source` {form?, text, date?, pos}, `label` {text, sub, tone white/red} and
 `chapter` (the same card over the picture under it).
@@ -68,9 +70,28 @@ Overlays: `lowerThird` {name, role}, `source` {form?, text, date?, pos}, `label`
 Grades (`theme.tsx` `GRADES`): `doc`, `cold`, `warm`, `night`, `bleach`, `archive`, `bw`, `none`. Each grade is a tone
 curve for each channel (an SVG table, which works like a 1D LUT) followed by CSS adjustments.
 
+## Figure objects
+
+A spoken figure becomes an object that moves twice, never just big type (style study §2, §6). Layer kinds,
+drawn by `FigureLayer.tsx` (`Figures.tsx`, `Poster.tsx`). Every figure field (`figure`, `was`, `now`, `tag`,
+`from`, `to`, `figs`, an other bar's `figure`) is a key of `params.fig`; a text field may name one as `{key}`
+("{drop} from peak"). `values` are numbers (bar heights, shares), never shown. `plate: false` drops the
+charcoal backdrop so the object sits over the layer under it.
+
+| kind | what it does | params |
+|---|---|---|
+| `count` | Over the layer under it, which dims and blurs: the figure counts up (~1.8 s), kicks on landing, an italic serif unit line settles under it. | `figure`, `unit`, `eyebrow`, `countAt`, `countLen` (frames), `tone` gold/white/red/mint, `dim`, `blur`, `pos` center/low, `plate: true` for the backdrop instead |
+| `listing` | A phone-style resale listing slides up; its price flips to the new price (the old one struck through), then a red loss tag slams in at an angle. | `src` (transparent PNG), `aspect`, `title`, `platform`, `date`, `seller`, `was`, `now`, `tag`, `flipAt`, `tagAt` |
+| `ticker` | A split-flap board; each digit rolls down through every digit to the new price, then label-maker tape types on under it. | `label` ("EXMP · NYSE"), `from`, `to`, `flipAt`, `tape`, `tapeAt` |
+| `sink` | A bar grows to its old height, then sinks (red) and leaves a dashed ghost of where it was, the old figure faded on the ghost; a red tag lands in the gap. Grey rival bars optional. | `name`, `values` [old, new], `figs` [old, new], `tag`, `title`, `sub`, `others` [{name, value, figure}], `drawAt`, `sinkAt` |
+| `donut` | A ring fills to the first share (gold), the rest follow in greys; the figure counts in the middle. | `values` (shares), `figure`, `label`, `title`, `sub`, `legend`, `fillAt`, `tone` |
+| `poster` | Shorts: the one big result as a movie-poster card for ~7 s (make the beat that long). Cuts in, no count-up: date, title, a giant gold figure with a sheen, a subline in caps, over a darkened photo that keeps pushing. Every other figure in the Short lives only in the captions. | `src`, `focus`, `date`, `title`, `figure`, `sub` ("worldwide · on a {budget} budget"), `face` serif/display, `on` |
+
 ## Test reel
 
 `Demo.tsx` defines `DocDemo` (1920×1080), `DocDemoShort` and `DocDemoClip`. `DocDemoClip` generates the placeholder night-city clip
 in `public/doc-demo/`. The reel plays doc beats through the real `StoryVideo`:
+
+Captions: a `doc`-scene Short gets 1-3-word Anton capitals, one yellow key word, no box, centred at 64% height (`fx/chunkCaptions.tsx`; preview `DocDemoShortCaptions`); keep labels out of roughly 1110-1350 px. A long doc video keeps the directed captions.
 
     npx remotion still src/index.ts DocDemo out.png --frame=470

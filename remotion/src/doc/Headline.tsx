@@ -5,7 +5,7 @@
  */
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import { clamp01, DOC, fmtDate, fs, outBack, outCubic, SANS, SERIF, smooth, unit } from "./theme";
+import { clamp01, DOC, fmtDate, fs, MONO, outBack, outCubic, SANS, SERIF, smooth, unit } from "./theme";
 
 export type HeadlineItem = { outlet: string; date?: string; title: string; deck?: string; style?: "paper" | "web"; hi?: string };
 
@@ -30,7 +30,7 @@ const PaperCard: React.FC<{ it: HeadlineItem; cw: number; w: number; h: number; 
     <div style={{ width: cw, background: "linear-gradient(175deg, #f3ecd9, #e6dcc2)", padding: `${34 * u}px ${46 * u}px ${40 * u}px`, color: DOC.paperInk, position: "relative" }}>
       <div style={{ textAlign: "center", fontFamily: SERIF, fontWeight: 800, fontSize: fs(w, h, v ? 50 : 44), letterSpacing: 1 }}>{it.outlet}</div>
       <div style={{ borderTop: `${3 * u}px solid ${DOC.paperInk}`, borderBottom: `${1.5 * u}px solid ${DOC.paperInk}`, height: 5 * u, margin: `${12 * u}px 0 ${8 * u}px` }} />
-      <div style={{ textAlign: "center", fontFamily: SANS, fontWeight: 600, fontSize: fs(w, h, 26), letterSpacing: 3, color: "#5a5143" }}>{fmtDate(it.date).toUpperCase()}</div>
+      <div style={{ textAlign: "center", fontFamily: MONO, fontWeight: 700, fontSize: fs(w, h, 26), letterSpacing: 3, color: "#5a5143" }}>{fmtDate(it.date).toUpperCase()}</div>
       <div style={{ fontFamily: SERIF, fontWeight: 800, fontSize: fs(w, h, v ? 84 : 72), lineHeight: 1.06, marginTop: 22 * u, letterSpacing: -0.5 }}>
         <Mark text={it.title} hi={it.hi} k={hk} />
       </div>

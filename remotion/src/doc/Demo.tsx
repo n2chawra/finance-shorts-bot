@@ -54,6 +54,54 @@ const CLIP = "doc-demo/city-night.mp4";
 const CLIP_LEN = 6;
 
 type B = { id: string; frames: number; params: Record<string, unknown>; events?: Record<string, number>; transition?: string; say?: string };
+/** Figure objects and the poster card (Figures.tsx, Poster.tsx): placeholder figures, not facts. */
+const FIGURE_PLAN: B[] = [
+  {
+    id: "fig-count", frames: 105, transition: "cut", params: {
+      place: "the auction hall at night", camera: [{ sec: 0, size: "wide" }, { at: "count", size: "medium" }], moments: [{ at: "count", what: "the footage dims and the price counts up" }],
+      fig: { sold: "1,080,000" },
+      layers: [{ kind: "footage", src: CLIP, len: CLIP_LEN, grade: "night", move: "push" }, { kind: "count", figure: "sold", eyebrow: "Hammer price", unit: "yuan, for one toy", countAt: "count" }],
+    }, events: { count: 10 },
+  },
+  {
+    id: "fig-listing", frames: 120, transition: "cut", params: {
+      place: "a resale app", camera: [{ sec: 0, size: "medium" }], moments: [{ at: "flip", what: "the price flips to the new price" }, { at: "tag", what: "the red loss tag slams in" }],
+      fig: { was: "$450", now: "$54", loss: "−88%" },
+      layers: [{ kind: "listing", src: "doc-demo/tumbler.png", aspect: 0.51, title: "Tumbler, limited colour, unused", platform: "Resale", date: "2025-06", seller: "Placeholder listing for the demo",
+        was: "was", now: "now", tag: "loss", flipAt: "flip", tagAt: "tag" }],
+    }, events: { flip: 36, tag: 60 },
+  },
+  {
+    id: "fig-ticker", frames: 120, transition: "cut", params: {
+      place: "the stock board", camera: [{ sec: 0, size: "medium" }], moments: [{ at: "flip", what: "the digits roll down" }, { at: "tape", what: "the tape types on" }],
+      fig: { high: "$41.20", low: "$16.48", drop: "−60%" },
+      layers: [{ kind: "ticker", label: "EXMP · NYSE", from: "high", to: "low", flipAt: "flip", tape: "{drop} from peak", tapeAt: "tape" }],
+    }, events: { flip: 18, tape: 66 },
+  },
+  {
+    id: "fig-sink", frames: 120, transition: "cut", params: {
+      place: "the market share chart", camera: [{ sec: 0, size: "wide" }], moments: [{ at: "draw", what: "the bars rise" }, { at: "sink", what: "the bar sinks and leaves its ghost" }],
+      fig: { a: "38%", b: "14%", c: "27%", pts: "−24 pts" },
+      layers: [{ kind: "sink", title: "Share of the market", sub: "placeholder figures", name: "Example Co", values: [38, 14], figs: ["a", "b"], tag: "pts",
+        others: [{ name: "Rival", value: 27, figure: "c" }], drawAt: "draw", sinkAt: "sink" }],
+    }, events: { draw: 4, sink: 48 },
+  },
+  {
+    id: "fig-donut", frames: 105, transition: "cut", params: {
+      place: "the share of sales", camera: [{ sec: 0, size: "medium" }], moments: [{ at: "fill", what: "the ring fills to the share" }],
+      fig: { share: "62%" },
+      layers: [{ kind: "donut", title: "Who sells the most", sub: "placeholder figures", values: [62, 38], figure: "share", label: "of all sales", legend: ["Example Co", "Everyone else"], fillAt: "fill" }],
+    }, events: { fill: 8 },
+  },
+  {
+    id: "fig-poster", frames: 210, transition: "cut", params: {
+      place: "the premiere", camera: [{ sec: 0, size: "wide" }], moments: [{ at: "start", what: "the poster card cuts in and pushes" }],
+      fig: { gross: "$585 MILLION", budget: "$140 million" },
+      layers: [{ kind: "poster", src: "real/swift.jpg", focus: [0.5, 0.3], date: "2019-04-26", title: "Example Pictures", figure: "gross", sub: "worldwide · on a {budget} budget" }],
+    },
+  },
+];
+
 const PLAN: B[] = [
   {
     id: "chapter", frames: 75, transition: "cut", params: {
@@ -178,6 +226,7 @@ const PLAN: B[] = [
       layers: [{ kind: "map", center: [-100, 40], scale: 1250, hi: ["United States of America"], pins: [{ lonlat: [-95.37, 29.76], label: "Houston", on: "p0" }, { lonlat: [-122.33, 47.6], label: "Seattle", on: "p1" }] }],
     }, events: { p0: 8, p1: 30 },
   },
+  ...FIGURE_PLAN,
 ];
 
 const BEATS: Beat[] = (() => {

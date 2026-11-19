@@ -5,13 +5,14 @@
  * for figures, one red for losses and the marker pen. Words in Poppins (our sans), headlines and pages in
  * a serif, filings in a typewriter face.
  *
- * Fonts: only Poppins is bundled (OFL, public/fonts). The serif and mono stacks below fall back to the
- * render machine's faces until an OFL serif (Source Serif 4 / Playfair) and mono are added to
- * public/fonts and loaded in design/fonts.ts; renders stay deterministic per machine, not across machines.
+ * Fonts (all OFL, bundled in public/fonts and loaded by ./fonts.ts, so renders never depend on the
+ * machine's faces): Poppins for words, Anton (heavy condensed) for display figures and caps titles,
+ * Playfair Display for headlines, pages and italic units, Courier Prime for filings, tape and tickers.
  */
 import React from "react";
 import { AbsoluteFill, staticFile } from "remotion";
 import { FONT } from "../design/fonts";
+import "./fonts";
 import { minText } from "../design/fit";
 
 export const DOC = {
@@ -31,8 +32,10 @@ export const DOC = {
 } as const;
 
 export const SANS = FONT;
-export const SERIF = "'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', 'DejaVu Serif', serif";
-export const MONO = "'Courier Prime', 'Courier New', 'DejaVu Sans Mono', monospace";
+export const SERIF = "'Playfair Display', Georgia, serif";
+export const MONO = "'Courier Prime', 'Courier New', monospace";
+/** Heavy condensed display face for big figures, poster cards and caps titles. */
+export const DISPLAY = "Anton, 'Poppins', sans-serif";
 
 export const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 /** Smooth in and out (documentary camera moves are slow and even). */
