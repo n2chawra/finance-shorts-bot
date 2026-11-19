@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-19T17:36:37.912754+00:00",
+  "generatedAt": "2026-11-19T17:44:58.255030+00:00",
   "cycle": 1,
-  "running": "geo-flag-fill",
+  "running": null,
   "thresholds": {
     "keepPoints": 5,
     "revertPoints": -5,
@@ -11,35 +11,5 @@
   "cycleVideos": {
     "geo-flag-fill": []
   },
-  "experiment": {
-    "id": "geo-flag-fill",
-    "kind": "look",
-    "area": "colour",
-    "description": "Geography Shorts: the country a line is about covered by its flag, against a flat colour (owner: 'test both'; judged on held after the hook)",
-    "on": "Countries for this Short (weekly loop, cycle 1, geo-flag-fill, on): every country a line is about is covered by its own flag instead of a flat colour: give its map fill `flag: \"<Natural Earth name>\"` beside `fill` (remotion/src/flat/flags.tsx; `hasFlag` lists the table; a country it lacks keeps its colour), painted or drawn in on the word that names it, and traced as always.",
-    "off": "Countries for this Short (weekly loop, cycle 1, geo-flag-fill, off): every country a line is about is filled with a flat colour (the champion), painted or drawn in on its word and traced as always; no flag fills (a small planted flag on a pole is fine).",
-    "startedAt": "2026-11-19",
-    "metric": "heldAfterHook",
-    "minPerArm": 8,
-    "maxDays": 7,
-    "extended": false,
-    "published": {
-      "on": 0,
-      "off": 0
-    },
-    "counted": {
-      "on": 0,
-      "off": 0
-    },
-    "value": {
-      "on": null,
-      "off": null
-    },
-    "points": null,
-    "pOnBetter": 0.5,
-    "days": 0,
-    "verdict": "wait",
-    "why": "0 of 8 Shorts a side have two days of data; day 0 of 7",
-    "videos": []
-  }
+  "experiment": null
 }
