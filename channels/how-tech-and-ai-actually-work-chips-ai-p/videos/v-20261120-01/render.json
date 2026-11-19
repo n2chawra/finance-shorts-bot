@@ -1,0 +1,135 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52074,
+  "duration_sec": 60,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 70,
+    "look": {
+      "stage": "night",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Hoover Dam makes less power when Lake Mead drops.",
+        "start": 0.3,
+        "seconds": 3.07,
+        "window": 3.5,
+        "fill": 0.877
+      },
+      {
+        "scene": "why",
+        "text": "Why does the height of a lake matter?",
+        "start": 3.8,
+        "seconds": 2.19,
+        "window": 2.57,
+        "fill": 0.852
+      },
+      {
+        "scene": "peak",
+        "text": "Historically, it made up to 2,074 megawatts. So how does water make power?",
+        "start": 6.37,
+        "seconds": 6.46,
+        "window": 6.87,
+        "fill": 0.94
+      },
+      {
+        "scene": "towers",
+        "text": "Water rushes into towers and drops down steel pipes through the rock.",
+        "start": 13.23,
+        "seconds": 4.34,
+        "window": 4.97,
+        "fill": 0.873
+      },
+      {
+        "scene": "turbine",
+        "text": "Below, it slams into a turbine's curved blades and spins it.",
+        "start": 18.2,
+        "seconds": 3.65,
+        "window": 4.27,
+        "fill": 0.855
+      },
+      {
+        "scene": "generator",
+        "text": "The spin sweeps magnets past copper coils, sending electricity to about 1.3M people.",
+        "start": 22.47,
+        "seconds": 6.98,
+        "window": 7.6,
+        "fill": 0.918
+      },
+      {
+        "scene": "push",
+        "text": "Deeper water pushes harder. When the lake drops, the push weakens.",
+        "start": 30.07,
+        "seconds": 4.26,
+        "window": 4.8,
+        "fill": 0.887
+      },
+      {
+        "scene": "estimate",
+        "text": "Engineers once estimated that at one low level, it could still make 1,302 megawatts.",
+        "start": 34.87,
+        "seconds": 6.89,
+        "window": 7.5,
+        "fill": 0.919
+      },
+      {
+        "scene": "payoff",
+        "text": "Its newer estimate for that same low lake? Just 382.",
+        "start": 42.37,
+        "seconds": 4.86,
+        "window": 5.2,
+        "fill": 0.935
+      },
+      {
+        "scene": "loop",
+        "text": "Old turbines would be damaged that low, so new ones should win back at least 160 megawatts. Until then, as Lake Mead falls, so does Hoover Dam's power.",
+        "start": 47.57,
+        "seconds": 11.57,
+        "window": 12.17,
+        "fill": 0.951
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.5,
+    "lufs": -14.8,
+    "music_under_voice_db": 26.1
+  },
+  "craft_problems": [
+    "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 13.837,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

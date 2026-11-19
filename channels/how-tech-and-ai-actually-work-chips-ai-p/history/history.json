@@ -35,5 +35,42 @@
     "format": "short",
     "story": "invention_story",
     "shape": "reveal"
+  },
+  {
+    "id": "v-20261120-01",
+    "created_at": "2026-11-19T21:37:12.064546+00:00",
+    "template": "short_story",
+    "topic": {
+      "title": "How Hoover Dam turns the push of Lake Mead into electricity, and why a lower lake cuts it",
+      "category": "power",
+      "reach": "global",
+      "feed_id": "2026-11-19-hoover-dam-power"
+    },
+    "title": "Why Does Hoover Dam Need Lake Mead to Be Full?",
+    "description": "Why does Hoover Dam need Lake Mead to be full?\nWe cut the dam open in 3D: the intake towers, the pipes, the turbine and the spinning magnets, and why the height of Lake Mead decides how much power it makes.\nSources: US Bureau of Reclamation (May 2026).\nAnimations are simplified illustrations, not exact to scale.",
+    "hook_style": "secret",
+    "cta": "What machine should we cut open next? Comment",
+    "style": {
+      "palette": "ocean",
+      "genre": "circuit",
+      "key": "D",
+      "bpm": 70,
+      "look": {
+        "stage": "night",
+        "header": "strip",
+        "holder": "sign",
+        "entrance": "draw"
+      },
+      "voice": "am_michael",
+      "arms": {
+        "length": "45-60",
+        "title": "figure_or_name",
+        "style": "shot",
+        "category": "28"
+      }
+    },
+    "format": "short",
+    "story": "machine_works",
+    "shape": "follow-the-flow"
   }
 ]
