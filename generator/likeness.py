@@ -83,7 +83,14 @@ def likeness(vid: str, root: Path = ROOT) -> dict:
     style = json.loads(style_file.read_text(encoding="utf-8")) if style_file.is_file() else {}
     block = style.get("shorts" if fmt == "short" else "long") or {}
     our = ours(timeline)
-    rows = compare(our, block.get("targets") or {})
+    targets = dict(block.get("targets") or {})
+    # the owner's own pace wins over the references' (channel.json likeness: {"wordsPerMin": {"short": 210}};
+    # business docs, 2026-11-19: "the pace is slow, I saw it at 1.5x and it was great")
+    from . import pack
+    for key, per in ((pack.load(root=root) or {}).get("likeness") or {}).items():
+        if isinstance(per, dict) and isinstance(per.get(fmt), (int, float)):
+            targets[key] = {**(targets.get(key) or {}), "median": per[fmt]}
+    rows = compare(our, targets)
     judged = [r for r in rows if r["within"] is not None]
     out = {"video": vid, "format": fmt, "references": block.get("n", 0), "ours": our, "rows": rows,
            "within": sum(1 for r in judged if r["within"]), "of": len(judged),

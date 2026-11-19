@@ -88,8 +88,18 @@
     "long": 1
   },
   "voiceSpeed": {
-    "_why": "build spec §5 and style.json: references speak 146 words a minute in long videos (137-165) and 146.5 in Shorts; Kokoro speaks ~164 words a minute per unit of speed, so 146/164 = 0.89 long and 0.9 Shorts",
-    "short": 0.9,
-    "long": 0.89
+    "_why": "owner 2026-11-19 after watching the samples: \"the pace is slow, I saw it at 1.5x and it was great\": 1.5x the references' pace (was 0.9 Shorts, 0.89 long, 146 words a minute) = about 210-220 words a minute",
+    "short": 1.35,
+    "long": 1.33
+  },
+  "likeness": {
+    "_why": "the owner's pace (voiceSpeed) replaces the references' 146 words a minute in the likeness check; Shorts' seconds per shot 2.5: the recipe cuts every 3-4 s and the likeness count includes camera moves (sample 1 measured 2.1 for ~3.1 s real cuts), while the references' 7.14 came from 2-minute AI-still Shorts",
+    "wordsPerMin": {
+      "short": 210,
+      "long": 210
+    },
+    "secPerShot": {
+      "short": 2.5
+    }
   }
 }

@@ -42,7 +42,7 @@ figures from code or a sourced `facts` entry; one narrator; no real person's wor
   title on a slowly pushing still, the music dropping under it, a low thud.
 - The payoff (the one cause, proven) at about 38% of the runtime, then what it cost, the global beat,
   and what happened next.
-- ~146 words a minute (voice speed 0.89), pauses before reveals.
+- ~210 words a minute (voice speed 1.33; owner 2026-11-19: 1.5x the references felt right), short pauses before reveals.
 
 ### The ending
 
@@ -93,7 +93,7 @@ Red only for losses; one accent colour otherwise.
   every other figure only in the captions.
 - **Captions**: 1–3 words at a time, bold white capitals, the key word yellow, no box, ending at least
   340 px above the bottom edge.
-- ~146 words a minute (voice speed 0.9): 75–130 words.
+- ~210 words a minute (voice speed 1.35; owner 2026-11-19: 1.5x): 105–190 words.
 - **The ending ties to the viewer's own life** ("look at the zip on your jacket"), over the product in
   everyday use. It need not loop.
 

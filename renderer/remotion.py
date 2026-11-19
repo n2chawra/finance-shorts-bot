@@ -31,7 +31,18 @@ from renderer.gates import check_liveliness, layout_problems
 REMOTION = Path(__file__).resolve().parent.parent/"remotion"
 # survives a render's work folder: the bundle (per source version) and silent videos (per picture),
 # so a re-render after a script, sound or gate fix redoes only what changed
-CACHE = Path(os.environ.get("REMOTION_CACHE", Path(tempfile.gettempdir())/"remotion-cache"))
+def _work_root() -> Path:
+    """Where renders keep their work and cache: RENDER_WORK, else E:\\render-work on the owner's PC (C: had
+    6.8 GB free on 2026-11-19 and a 4K clip failed to load), else the system temp folder (the cloud)."""
+    if os.environ.get("RENDER_WORK"):
+        return Path(os.environ["RENDER_WORK"])
+    if os.name == "nt" and Path("E:/").is_dir():
+        return Path("E:/render-work")
+    return Path(tempfile.gettempdir())
+
+
+WORK_ROOT = _work_root()
+CACHE = Path(os.environ.get("REMOTION_CACHE", WORK_ROOT/"remotion-cache"))
 KEEP_SILENT = 12          # silent videos kept in the cache, newest first
 CORES = max(1, os.cpu_count() or 1)   # Remotion renders at most one frame per core at a time
 GL_TABS = 4   # a 3D video's tabs at once (src/three/README.md: the demos render cleanly at 4)
@@ -368,7 +379,7 @@ def render_story(script: dict, out: Path, *, preview: bool = False, voice: str =
         raise RuntimeError("the video's own code: " + "; ".join(problems))
     build(script, out, voice=voice)
     # a fixed work folder, so a render cut off part way resumes from its finished chunks
-    work = Path(tempfile.gettempdir())/f"remotion-{out.name}"
+    work = WORK_ROOT/f"remotion-{out.name}"
     report = render_timeline(out/"timeline.json", out, work, preview=preview, stop_if=stop_if)
     if not preview:
         shutil.rmtree(work, ignore_errors=True)

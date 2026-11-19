@@ -352,7 +352,14 @@ def device_problems(tl: dict) -> list[str]:
     if fmt != "long" or len(beats) < 6:
         return []
     out = []
-    kinds = [b["scene"] for b in beats]
+    # a doc beat's device is its main layer (footage, document, chart...): a documentary is all `doc` beats
+    # by design (look.engine "doc"), so its variety is judged on what each beat shows
+    def kind(b: dict) -> str:
+        if b["scene"] != "doc":
+            return b["scene"]
+        layers = (b.get("params") or {}).get("layers") or [{}]
+        return f"doc:{(layers[0] or {}).get('kind', 'doc')}"
+    kinds = [kind(b) for b in beats]
     if len(set(kinds)) < DEVICES_MIN[fmt]:
         out.append(note(f"only {len(set(kinds))} kinds of scene ({', '.join(sorted(set(kinds)))}); a long video mixes {DEVICES_MIN[fmt]}+ "
                    f"(build, framework, type, journey, stats, case, custom...) so it never settles into one look"))
