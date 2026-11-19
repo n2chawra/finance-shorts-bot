@@ -310,7 +310,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
           <span className="text-[12.5px] font-medium text-ink2">Long videos a week</span>
           <Segmented label={`Long videos a week for ${c.name}`} value={String(perWeek)} onChange={(v) => run({ id: c.id, settings: { longPerWeek: Number(v) } }, `${c.name}: ${v} long video${v === "1" ? "" : "s"} a week`)}
             options={["0", "1", "2"].map((v) => ({ value: v, label: v }))} />
-          <span className="text-[11.5px] text-muted">Each upload uses 1 of YouTube's 100 uploads a day (shared by all channels) and 50 of its 10,000 other units.</span>
+          <span className="text-[11.5px] text-muted">Each upload uses 1 of YouTube&apos;s 100 uploads a day (shared by all channels) and 50 of its 10,000 other units.</span>
         </div>
 
         <form className="flex flex-col gap-2" onSubmit={(e) => {
