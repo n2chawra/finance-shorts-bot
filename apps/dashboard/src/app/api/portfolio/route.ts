@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import type { Portfolio } from "@/lib/portfolio";
 import { getPortfolio } from "@/lib/portfolio.db";
+import { samplePortfolio } from "@/lib/portfolio.sample";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,7 @@ const g = globalThis as unknown as { __portfolio?: { at: number; data: Promise<P
 
 export async function GET(req: Request) {
   if (!process.env.DATABASE_URL) {
-    return NextResponse.json({ source: "sample", generatedAt: new Date().toISOString(), days: [], daily: {}, channels: [] } satisfies Portfolio);
+    return NextResponse.json(samplePortfolio() satisfies Portfolio);
   }
   const fresh = new URL(req.url).searchParams.has("fresh");
   if (fresh || !g.__portfolio || Date.now() - g.__portfolio.at > TTL) {

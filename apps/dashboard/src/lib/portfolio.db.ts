@@ -4,7 +4,7 @@
  * last 90 days with their summed stats, the per-channel counts, and the agents' weekly-loop docs.
  */
 import { docKey } from "./channel-scopes";
-import { median, type Portfolio, type PortfolioChannel, type PortfolioVideo, verdictOf } from "./portfolio";
+import { istToday, median, type Portfolio, type PortfolioChannel, type PortfolioVideo, type Today, todaySlots, verdictOf } from "./portfolio";
 import { prismaAll as db } from "./prisma";
 import { upcomingSlots } from "./slots";
 
@@ -20,7 +20,10 @@ export async function getPortfolio(): Promise<Portfolio> {
   const now = Date.now();
   const since365 = new Date(now - 366 * DAY);
   const since90 = new Date(now - 90 * DAY);
-  const [channels, days, vids, counts, firsts, upcoming, platform, docs] = await Promise.all([
+  // today in IST, padded an hour each side so an upload just off a slot still matches it
+  const dayStart = Date.parse(`${istToday(now).day}T00:00:00+05:30`);
+  const todayFrom = new Date(dayStart - 3_600_000), todayTo = new Date(dayStart + DAY + 3_600_000);
+  const [channels, days, vids, counts, firsts, upcoming, platform, docs, todays, last24] = await Promise.all([
     db.channel.findMany({ orderBy: { createdAt: "asc" }, select: { id: true, name: true, status: true, settings: true } }),
     db.channelDay.findMany({ where: { day: { gte: since365 } }, orderBy: { day: "asc" },
       select: { channelId: true, day: true, format: true, views: true, engagedViews: true, avgViewPct: true, watchMinutes: true, subsGained: true, subsLost: true } }) as Promise<Day[]>,
@@ -38,8 +41,20 @@ export async function getPortfolio(): Promise<Portfolio> {
       SELECT DISTINCT ON (v."channelId") v."channelId", u."publishAt", v.title, v.format FROM "Video" v JOIN "Upload" u ON u."videoId" = v.id
       WHERE v."deletedAt" IS NULL AND u.state IN ('pending', 'uploaded', 'scheduled') AND u."publishAt" > now()
       ORDER BY v."channelId", u."publishAt"`,
-    db.setting.findMany({ where: { key: { in: ["uploadTimes", "longUploadTimes", "uploadsPaused"] } } }),
+    db.setting.findMany({ where: { key: { in: ["uploadTimes", "longUploadTimes", "longUploadDays", "uploadsPaused"] } } }),
     db.repoDoc.findMany({ where: { key: { contains: "cycle" } }, select: { key: true, value: true } }),
+    db.$queryRaw<{ channelId: string; publishAt: Date; state: string; youtubeId: string | null; title: string; format: string; views: number | null }[]>`
+      SELECT v."channelId", u."publishAt", u.state::text AS state, u."youtubeId", v.title, v.format, u."liveViews" AS views
+      FROM "Video" v JOIN "Upload" u ON u."videoId" = v.id
+      WHERE v."deletedAt" IS NULL AND u."publishAt" >= ${todayFrom} AND u."publishAt" < ${todayTo}`,
+    // views in the last 24 h: each video's latest hourly snapshot minus its last one 24 h or more ago (a
+    // video published since then counts in full; one with no snapshot that old counts nothing)
+    db.$queryRaw<{ channelId: string; views: number }[]>`
+      SELECT v."channelId", SUM(GREATEST(cur.views - COALESCE(prev.views, CASE WHEN u."publishAt" >= now() - interval '24 hours' THEN 0 ELSE cur.views END), 0))::float8 AS views
+      FROM "Video" v JOIN "Upload" u ON u."videoId" = v.id
+      JOIN LATERAL (SELECT views FROM "LiveSnapshot" WHERE "uploadId" = u.id AND hour >= now() - interval '24 hours' ORDER BY hour DESC LIMIT 1) cur ON true
+      LEFT JOIN LATERAL (SELECT views FROM "LiveSnapshot" WHERE "uploadId" = u.id AND hour <= now() - interval '24 hours' ORDER BY hour DESC LIMIT 1) prev ON true
+      WHERE v."deletedAt" IS NULL GROUP BY 1`,
   ]);
   const plat = Object.fromEntries(platform.map((s) => [s.key, s.value])) as Record<string, unknown>;
   const doc = new Map(docs.map((d) => [d.key, d.value as Record<string, unknown> | null]));
@@ -50,6 +65,7 @@ export async function getPortfolio(): Promise<Portfolio> {
   const chartDays = lastDay ? Array.from({ length: 28 }, (_, i) => addDays(lastDay, i - 27)) : [];
   const daily: Record<string, (number | null)[]> = {};
 
+  const today: Today[] = [];
   const out: PortfolioChannel[] = channels.map((ch) => {
     const own = (ch.settings ?? {}) as Record<string, unknown>;
     const setup = own.setup as { stage?: string } | undefined;
@@ -109,6 +125,13 @@ export async function getPortfolio(): Promise<Portfolio> {
       lastVerdict: lastDone ? { id: lastDone.id!, verdict: lastDone.verdict!, test: lastDone.test ?? null } : null,
     } : null;
 
+    if (live) {
+      const ups = todays.filter((u) => u.channelId === ch.id).map((u) => ({ publishAt: u.publishAt.getTime(), state: u.state, youtubeId: u.youtubeId, title: u.title, format: u.format, views: u.views }));
+      const slots = todaySlots(now, { uploadTimes: pick<string[]>("uploadTimes", []), longUploadTimes: pick<string[]>("longUploadTimes", []), longUploadDays: pick<number[]>("longUploadDays", []), uploadsPaused, live }, ups);
+      const v24 = last24.find((r) => r.channelId === ch.id);
+      today.push({ channelId: ch.id, views24h: v24 ? Number(v24.views) : null, slots });
+    }
+
     const c = {
       views7: span(all, 0, 6, views), viewsPrev7: span(all, 7, 13, views), subs7: span(all, 0, 6, net), subsPrev7: span(all, 7, 13, net),
       medianShort14: median(recent.map((v) => v.views)), medianShortBase: median(base.map((v) => v.views)),
@@ -133,5 +156,5 @@ export async function getPortfolio(): Promise<Portfolio> {
       verdict: live ? verdictOf({ ...c, publishedTotal, daysLive }) : { call: "Setting up", why: `In setup: ${setup?.stage ?? ch.status}` },
     };
   });
-  return { source: "database", generatedAt: new Date(now).toISOString(), days: chartDays, daily, channels: out };
+  return { source: "database", generatedAt: new Date(now).toISOString(), days: chartDays, daily, channels: out, today };
 }

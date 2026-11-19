@@ -4,7 +4,7 @@
 import { ArrowRight, BookOpenCheck, Check, ChevronDown, CircleSlash, Clock, Clapperboard, Eye, FlaskConical, Gauge, History, ListOrdered, Medal, Repeat, ScanEye, ShieldAlert, TrendingDown, Trophy, X } from "lucide-react";
 import Link from "next/link";
 
-import { Badge, Card, Empty, ErrorNote, Loading, Meter, PageHeader, Stagger, type Tone } from "@/components/ui";
+import { Badge, Card, Empty, ErrorNote, Loading, Meter, PageHeader, Stagger, Why, type Tone } from "@/components/ui";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtRelative } from "@/lib/format";
 import { ESCALATE_AFTER, ESCALATE_BELOW, type Growth, KIND_LABEL, type LoopVideo, KIND_METRIC, OWNER_AFTER, cyclesUnder, nextKind, shownConfidence, testDayLabel, verdictDueDay } from "@/lib/growth";
 import { useGrowth } from "@/lib/queries";
@@ -191,7 +191,7 @@ export default function GrowthPage() {
         </Card>
 
         <Card title="If it keeps not working" icon={ShieldAlert} accent="sun" className="lg:col-span-4"
-          description={`Stayed to watch under ${pct(ESCALATE_BELOW)} for ${ESCALATE_AFTER} cycles in a row makes the next test a format change; ${OWNER_AFTER} asks you to change the niche or stop.`}>
+          description={`Cycles in a row under ${pct(ESCALATE_BELOW)} stayed to watch.`}>
           <div className="flex items-end justify-between">
             <span className="text-[30px] font-semibold leading-none tracking-[-0.03em] tabular-nums">{under}<span className="ml-1 text-lg font-medium text-muted">/ {ESCALATE_AFTER}</span></span>
             <span className="text-[12.5px] text-muted">cycles under {pct(ESCALATE_BELOW)}</span>
@@ -205,13 +205,16 @@ export default function GrowthPage() {
             <span className="text-muted">Next cycle: </span><span className="font-semibold">{KIND_LABEL[upcoming]}</span>
             {s?.channelStayed14d != null && <div className="mt-1 text-[12.5px] text-muted">Channel stayed to watch, last 14 days: <span className="font-medium text-ink">{pct(s.channelStayed14d, 1)}</span></div>}
           </div>
+          <Why className="mt-3" label="What happens next?">
+            <p>Stayed to watch under {pct(ESCALATE_BELOW)} for {ESCALATE_AFTER} cycles in a row makes the next test a format change; {OWNER_AFTER} asks you to change the niche or stop.</p>
+          </Why>
         </Card>
       </div>
 
       {/* live scoreboard */}
       {e && (
         <Card title="Live scoreboard" icon={Gauge} accent="sky" className="mt-5"
-          description={`Refreshed every 6 hours from YouTube Analytics${s ? ` · ${fmtRelative(s.generatedAt)}` : ""}. A Short counts once it has two days of numbers.`}
+          description={`From YouTube Analytics${s ? ` · ${fmtRelative(s.generatedAt)}` : ""}`}
           action={r ? <Badge tone={r.tone} dot>{r.text}</Badge> : undefined}>
           <div className="grid gap-5 lg:grid-cols-[1fr_1fr_1.3fr]">
             <Side label="Champion" sub={`${KIND_METRIC[kind] ?? "stayed to watch"} · current recipe`} value={e.value.off} counted={e.counted.off} published={e.published.off} need={e.minPerArm} />
@@ -234,18 +237,22 @@ export default function GrowthPage() {
               </div>
             </div>
           </div>
-          {e.why && <p className="mt-4 text-[12.5px] text-muted">Evaluator: {e.why}</p>}
+          <Why className="mt-4" label={e.why ? "Why this reading?" : "How it's counted"}>
+            {e.why && <p>Evaluator: {e.why}</p>}
+            <p className="text-muted">Refreshed every 6 hours from YouTube Analytics. A Short counts once it has two days of numbers.</p>
+          </Why>
         </Card>
       )}
 
       {/* which Shorts are compared with which */}
       {e && (
         <Card title="The Shorts being compared" icon={ListOrdered} accent="grape" className="mt-5"
-          description={`Every Short published since ${e.startedAt ? fmtDayKey(e.startedAt) : "the start"}, on its side. Each side's number is pooled from its counted Shorts, not averaged.`}>
+          description={`Every Short since ${e.startedAt ? fmtDayKey(e.startedAt) : "the start"}, on its side`}>
           <div className="grid gap-4 md:grid-cols-2">
             <SideList side="off" rows={e.videos} metric={KIND_METRIC[kind] ?? "stayed to watch"} />
             <SideList side="on" rows={e.videos} metric={KIND_METRIC[kind] ?? "stayed to watch"} />
           </div>
+          <Why className="mt-3"><p>Each side&apos;s number is pooled from its counted Shorts, not averaged.</p></Why>
         </Card>
       )}
 
@@ -276,7 +283,7 @@ export default function GrowthPage() {
                     {c.from && <span className="text-[11.5px] text-muted">from {c.from}</span>}
                   </div>
                   <p className="mt-1.5 text-[13.5px] font-medium leading-snug">{c.test ?? c.id}</p>
-                  {c.why && <p className="mt-1 text-[12.5px] leading-relaxed text-muted">Why: {c.why}</p>}
+                  {c.why && <Why className="mt-1"><p className="text-muted">{c.why}</p></Why>}
                 </li>
               ))}
             </ol>
@@ -350,8 +357,8 @@ export default function GrowthPage() {
                     {l.date && isRecent(l.date) && <Badge tone="brand">New</Badge>}
                     <span className="ml-auto text-[11.5px] text-muted">{l.date ? fmtDayKey(l.date) : ""}{l.source ? ` · ${l.source}` : ""}</span>
                   </div>
-                  {l.seen && <p className="mt-2 text-[12.5px] leading-relaxed text-muted"><span className="font-medium text-ink2">Seen: </span>{l.seen}</p>}
-                  {l.fix && <p className="mt-1.5 text-[13px] leading-relaxed"><span className="font-semibold text-good-text">Fix: </span>{l.fix}</p>}
+                  {l.fix && <p className="mt-2 text-[13px] leading-relaxed"><span className="font-semibold text-good-text">Fix: </span>{l.fix}</p>}
+                  {l.seen && <Why className="mt-1.5" label="What the reviewer saw"><p className="text-muted">{l.seen}</p></Why>}
                 </li>
               ))}
             </ol>

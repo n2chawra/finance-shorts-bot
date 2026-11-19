@@ -62,6 +62,8 @@ export const PortfolioSchema = z.object({
   /** per channel id, that channel's views on each of `days` (null: no data for that day yet) */
   daily: z.record(z.string(), z.array(n)),
   channels: z.array(PortfolioChannelSchema),
+  /** "Today across all channels", one entry per live channel (TodaySchema, below) */
+  today: z.array(z.lazy(() => TodaySchema)).default([]),
 });
 export type Portfolio = z.infer<typeof PortfolioSchema>;
 
@@ -107,4 +109,62 @@ export function verdictOf(c: {
   }
   const call: VerdictCall = score >= 2 || (score === 1 && views === 1) ? "Growing" : score <= -2 || (score === -1 && views === -1) ? "Falling" : "Flat";
   return { call, why: why.length ? why.join(" · ") : "not enough recent data to compare" };
+}
+
+/** "Today across all channels": one channel's upload slots for today (IST) and its views in the last 24 h. */
+export const TodaySlotSchema = z.object({
+  /** the slot (or the upload's own publishAt when it sits on no slot) */
+  at: z.string(),
+  format: z.string(),
+  state: z.enum(["posted", "next", "later", "missed", "paused"]),
+  title: z.string().nullable(), youtubeId: z.string().nullable(),
+  /** lifetime views so far (live counter), posted uploads only */
+  views: n,
+});
+export type TodaySlot = z.infer<typeof TodaySlotSchema>;
+export const TodaySchema = z.object({
+  channelId: z.string(),
+  /** views across all of the channel's videos in the last 24 h, from the hourly public-counter snapshots */
+  views24h: n,
+  slots: z.array(TodaySlotSchema),
+});
+export type Today = z.infer<typeof TodaySchema>;
+
+export type TodayUpload = { publishAt: number; state: string; youtubeId: string | null; title: string; format: string; views: number | null };
+
+const IST = 330 * 60_000;
+/** today's IST date ("2026-11-19") and weekday (0 = Sunday) */
+export const istToday = (now: number) => { const d = new Date(now + IST); return { day: d.toISOString().slice(0, 10), weekday: d.getUTCDay() }; };
+
+/**
+ * Today's slots for one channel: every Shorts slot of the day (and the long slots on a long day), each
+ * matched to the upload published within 30 minutes of it, plus any of today's uploads on no slot.
+ * Posted: live on YouTube. Missed: the slot passed with nothing live (or its upload failed). The first
+ * future slot is "next", the rest "later"; paused uploads turn future slots "paused".
+ */
+export function todaySlots(now: number, s: { uploadTimes: string[]; longUploadTimes: string[]; longUploadDays: number[]; uploadsPaused: boolean; live: boolean }, uploads: TodayUpload[]): TodaySlot[] {
+  if (!s.live) return [];
+  const { day, weekday } = istToday(now);
+  const at = (t: string) => Date.parse(`${day}T${t}:00+05:30`);
+  const planned: { at: number; format: string }[] = [
+    ...[...new Set(s.uploadTimes)].map((t) => ({ at: at(t), format: "short" })),
+    ...(s.longUploadDays.includes(weekday) ? [...new Set(s.longUploadTimes)].map((t) => ({ at: at(t), format: "long" })) : []),
+  ].filter((p) => Number.isFinite(p.at));
+  const left = [...uploads];
+  const rows = planned.map((p) => {
+    const i = left.findIndex((u) => u.format === p.format && Math.abs(u.publishAt - p.at) <= 30 * 60_000);
+    return { ...p, u: i >= 0 ? left.splice(i, 1)[0] : undefined };
+  });
+  for (const u of left) if (istToday(u.publishAt).day === day) rows.push({ at: u.publishAt, format: u.format, u });
+  rows.sort((a, b) => a.at - b.at);
+  let nextGiven = false;
+  return rows.map(({ at: t, format, u }) => {
+    const posted = !!u && !!u.youtubeId && u.publishAt <= now && u.state !== "failed";
+    let state: TodaySlot["state"];
+    if (posted) state = "posted";
+    else if (t <= now || u?.state === "failed") state = "missed";
+    else if (s.uploadsPaused && !u) state = "paused";
+    else { state = nextGiven ? "later" : "next"; nextGiven = true; }
+    return { at: new Date(t).toISOString(), format, state, title: u?.title ?? null, youtubeId: u?.youtubeId ?? null, views: posted ? u!.views : null };
+  });
 }

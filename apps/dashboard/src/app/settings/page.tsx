@@ -2,6 +2,7 @@
 
 import { Bell, Bot, Clapperboard, Film, Plus, Sparkles, Upload, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button, Card, ErrorNote, Loading, PageHeader, Toggle, fieldClass } from "@/components/ui";
@@ -27,12 +28,16 @@ const SECTIONS = [
   { id: "alerts", label: "Alerts", icon: Bell },
 ];
 
-const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+/** A per-channel setting lives on its channel card; Settings only points there. */
+function PerChannel({ href }: { href: string }) {
+  return <Link href={href} className="text-[13px] font-medium text-brand-text underline-offset-2 hover:underline">Set per channel on Channels →</Link>;
+}
 
 export default function SettingsPage() {
   const { data, error, isLoading } = useSettings();
   const channels = useChannels();
   const channelName = channels.data?.channels.find((c) => c.id === channels.data!.current)?.name;
+  const channelHref = channels.data?.current ? `/channels#${channels.data.current}` : "/channels";
   const patch = usePatchSettings();
   const toast = useToast();
   const [form, setForm] = useState<Settings | null>(null);
@@ -57,7 +62,7 @@ export default function SettingsPage() {
   return (
     <form onSubmit={(e) => { e.preventDefault(); save(); }}>
       <PageHeader title={channelName ? `Settings · ${channelName}` : "Settings"}
-        sub={`For ${channelName ?? "this channel"} only: Shorts a day, upload times, lengths and long videos are this channel's own (switch channel at the top left to change another's); alerts and agents apply to all channels. Routines get them within a minute of the next commit.`} />
+        sub={`For ${channelName ?? "this channel"} only: lengths and backlog caps are this channel's own (switch channel at the top left to change another's); Shorts a day, upload times and long videos are set on each channel's card on the Channels page; alerts and agents apply to all channels. Routines get them within a minute of the next commit.`} />
       {patch.error && <div className="mb-4"><ErrorNote error={patch.error} /></div>}
 
       <div className="grid gap-8 lg:grid-cols-[220px_minmax(0,820px)]">
@@ -75,9 +80,7 @@ export default function SettingsPage() {
               <Row label="Pause generation" hint="Routines still start on schedule but do nothing: no videos, no template work.">
                 <Toggle label="Pause generation" checked={form.generationPaused} onChange={(generationPaused) => set({ generationPaused })} />
               </Row>
-              <Row label="Shorts made a day" hint="How many Shorts the video routine makes each day (2 since 30 Oct). The editor ranks them; the best goes out.">
-                <input type="number" min={0} max={5} required className={fieldClass} value={form.dailyVideoTarget} onChange={(e) => set({ dailyVideoTarget: int(e.target.value) })} />
-              </Row>
+              <Row label="Shorts made a day" hint="How many Shorts the video routine makes each day for this channel."><PerChannel href={channelHref} /></Row>
               <Row label="Post a Short every … days" hint="1 = every day at the upload times. 2 = one Short every 48 hours (the November test). Days after a post rest, hand-posted ones too.">
                 <input type="number" min={1} max={7} required className={fieldClass} value={form.shortEveryDays} onChange={(e) => set({ shortEveryDays: int(e.target.value) })} />
               </Row>
@@ -98,21 +101,7 @@ export default function SettingsPage() {
               <Row label="Pause all uploads" hint="Nothing is published while this is on. Generation carries on. Use it while you upload by hand.">
                 <Toggle label="Pause all uploads" checked={form.uploadsPaused} onChange={(uploadsPaused) => set({ uploadsPaused })} />
               </Row>
-              <Row label="Upload times" hint="IST. One video goes public at each time, so this is the number of regular uploads a day.">
-                <span className="flex w-full flex-col gap-2">
-                  {form.uploadTimes.map((t, i) => (
-                    <span key={i} className="flex items-center gap-2">
-                      <input type="time" required aria-label={`Upload time ${i + 1}`} className={fieldClass} value={t}
-                        onChange={(e) => set({ uploadTimes: form.uploadTimes.map((x, j) => (j === i ? e.target.value : x)) })} />
-                      <Button size="sm" tone="ghost" iconOnly icon={X} title="Remove this time" disabled={form.uploadTimes.length === 1}
-                        onClick={() => set({ uploadTimes: form.uploadTimes.filter((_, j) => j !== i) })}>Remove</Button>
-                    </span>
-                  ))}
-                  {form.uploadTimes.length < 4 && (
-                    <Button size="sm" tone="ghost" icon={Plus} onClick={() => set({ uploadTimes: [...form.uploadTimes, "21:07"] })}>Add a time</Button>
-                  )}
-                </span>
-              </Row>
+              <Row label="Upload times" hint="IST. One video goes public at each time."><PerChannel href={channelHref} /></Row>
               <Row label="Trend slots" hint="IST. Extra Short slots that open only on a day with a breaking or trending video, one per such video. Quiet days leave them empty.">
                 <span className="flex w-full flex-col gap-2">
                   {form.trendUploadTimes.map((t, i) => (
@@ -133,27 +122,7 @@ export default function SettingsPage() {
 
           <section id="longform" className="scroll-mt-20">
             <Card accent="tang" icon={Clapperboard} title="Long videos" description="The 8-11 minute explainers the Studio agent makes">
-              <Row label="Long videos a week" hint="How many Studio makes per IST week. 0 switches long-form off entirely.">
-                <input type="number" min={0} max={7} required aria-label="Long videos a week" className={fieldClass}
-                  value={form.longPerWeek} onChange={(e) => set({ longPerWeek: int(e.target.value) })} />
-              </Row>
-              <Row label="Upload days" hint="Which days a finished long video goes out.">
-                <span className="flex flex-wrap gap-1.5">
-                  {DAY_NAMES.map((name, day) => {
-                    const on = form.longUploadDays.includes(day);
-                    return (
-                      <Button key={day} size="sm" tone={on ? "primary" : "default"}
-                        onClick={() => set({ longUploadDays: on ? form.longUploadDays.filter((d) => d !== day) : [...form.longUploadDays, day].sort() })}>
-                        {name}
-                      </Button>
-                    );
-                  })}
-                </span>
-              </Row>
-              <Row label="Upload time" hint="IST, on each of those days. Separate from the Shorts slots.">
-                <input type="time" required aria-label="Long upload time" className={fieldClass}
-                  value={form.longUploadTimes[0] ?? "20:07"} onChange={(e) => set({ longUploadTimes: [e.target.value] })} />
-              </Row>
+              <Row label="Long videos a week, days and time" hint="How many Studio makes per IST week, and the weekdays and time they go out."><PerChannel href={channelHref} /></Row>
               <Row label="Length range" hint="Seconds. A long video outside this range fails QA.">
                 <span className="flex w-full items-center gap-2">
                   <input type="number" min={60} max={3600} required aria-label="Minimum long length in seconds" className={fieldClass}

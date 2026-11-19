@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { BandPill, MetricTile } from "@/components/scorecard";
-import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Segmented, Stagger, type Tone } from "@/components/ui";
+import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Segmented, Stagger, Why, type Tone } from "@/components/ui";
 import { fmtCompact, fmtDayKey, fmtRelative } from "@/lib/format";
 import { useIsFirstChannel, useScorecard } from "@/lib/queries";
 import { CEILING, METRIC, METRICS, type ScoreShort, type Side, bandOf, isQuestionTitle, summarize } from "@/lib/scorecard";
@@ -259,17 +259,19 @@ export default function ScorecardPage() {
               <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-lg bg-surface text-ink2 shadow-xs"><Gauge aria-hidden className="size-3.5" /></span>
               <div className="min-w-0 text-[13px]">
                 <div className="font-semibold">{m.label} <span className="font-normal text-muted">· target {m.target}</span></div>
-                <p className="mt-0.5 text-ink2">{m.what}.</p>
-                <p className="mt-1 text-muted"><span className="font-medium text-ink2">When it&apos;s red:</span> {m.fix.charAt(0).toLowerCase() + m.fix.slice(1)}.</p>
+                <Why className="mt-1" label="What it means and how to fix it">
+                  <p className="text-ink2">{m.what}.</p>
+                  <p className="text-muted"><span className="font-medium text-ink2">When it&apos;s red:</span> {m.fix.charAt(0).toLowerCase() + m.fix.slice(1)}.</p>
+                </Why>
               </div>
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-[12px] text-muted">
-          Stayed to watch is the API&apos;s engaged views ÷ views, the closest it gives to YouTube Studio&apos;s &ldquo;stayed to watch&rdquo;.
-          The others come from each Short&apos;s retention curve, which YouTube fills in about two days after upload.
-          {data.source === "sample" && " Showing sample data: no database is connected."}
-        </p>
+        {data.source === "sample" && <p className="mt-4 text-[12px] text-muted">Showing sample data: no database is connected.</p>}
+        <Why className="mt-3" label="Where these numbers come from">
+          <p className="text-muted">Stayed to watch is the API&apos;s engaged views ÷ views, the closest it gives to YouTube Studio&apos;s &ldquo;stayed to watch&rdquo;.
+            The others come from each Short&apos;s retention curve, which YouTube fills in about two days after upload.</p>
+        </Why>
       </Card>
     </Stagger>
   );

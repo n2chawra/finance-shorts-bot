@@ -9,12 +9,15 @@ import { CategoryBar, Sparkline, Tracker, type TrackerTone } from "@/components/
 import { type Accent, Badge, Button, Card, Delta, Empty, ErrorNote, IconTile, Loading, Meter, Num, PageHeader, Stagger, Stat, Thumb, type Tone, VideoLink } from "@/components/ui";
 import { useHandUploadCount } from "@/components/hand-uploads";
 import { ScorecardStrip } from "@/components/scorecard";
+import { Celebrate, useWinBadges, WinBadge } from "@/components/celebrate";
+import { LiveViews } from "@/components/live-views";
 import { useToast } from "@/components/toast";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative, istDay } from "@/lib/format";
 import { useAgents, useAnalytics, useGrowth, useNotifications, useOverview, usePatchSettings, useRuns, useScorecard, useSettings } from "@/lib/queries";
 import { KIND_LABEL, KIND_METRIC, shownConfidence } from "@/lib/growth";
 import { lastNight } from "@/lib/last-night";
-import { AGENTS, perThousand, type Run } from "@/lib/schemas";
+import { milestoneLabel, milestoneOf } from "@/lib/records";
+import { AGENTS, type Notification, perThousand, type Run } from "@/lib/schemas";
 import { STATS_AGE_CLASS, statsAge } from "@/lib/stats-age";
 import { weekOverWeek } from "@/lib/totals";
 
@@ -109,6 +112,65 @@ function ThisWeeksTest() {
   );
 }
 
+/** One problem, however many agents or runs raised it: same source and title once digits and dates are gone. */
+const problemKey = (n: Pick<Notification, "title" | "source">) => n.title.toLowerCase().replace(/[\d:/.,-]+/g, "").replace(/\s+/g, " ").trim();
+const sameProblem = (a: Notification, b: Notification) => problemKey(a) === problemKey(b);
+function dedupe(list: Notification[]) {
+  const seen = new Set<string>();
+  return list.filter((n) => { const k = problemKey(n); if (seen.has(k)) return false; seen.add(k); return true; });
+}
+
+/**
+ * Calm alarms (owner, 2026-11-19): the most severe problem is the one banner; everything else
+ * collapses into a quiet line under it, so the same problem never shows twice and red never stacks.
+ */
+function Alarms({ critical, warnings, byHand, paused, resuming, onResume }: {
+  critical: Notification[]; warnings: Notification[]; byHand: { n: number; quota: boolean }; paused: boolean; resuming: boolean; onResume: () => void;
+}) {
+  type Item = { key: string; tone: "critical" | "warning"; title: string; detail: string; href?: string; cta?: string };
+  const items: Item[] = [
+    ...critical.map((n): Item => ({ key: n.id, tone: "critical", title: n.title, detail: "The automation can't fix this by itself.", href: "/notifications", cta: "How to fix" })),
+    ...(byHand.n > 0 ? [{ key: "by-hand", tone: "warning" as const, title: `${byHand.n} video${byHand.n === 1 ? "" : "s"} to upload by hand`,
+      detail: byHand.quota ? "The day's YouTube quota ran out before their slots (all channels)." : "Their slots passed without an upload (all channels).", href: "/queue#by-hand", cta: "Open the list" }] : []),
+    ...(paused ? [{ key: "paused", tone: "warning" as const, title: "Uploads are paused", detail: "The bot publishes nothing until you resume. Mark manual uploads from each video's page." }] : []),
+    ...warnings.map((n): Item => ({ key: n.id, tone: "warning", title: n.title, detail: n.detail, href: "/notifications", cta: "Details" })),
+  ];
+  if (!items.length) return null;
+  const [main, ...rest] = items;
+  const crit = main.tone === "critical";
+  const body = (
+    <>
+      <span className="flex items-center gap-3">
+        <IconTile icon={crit ? AlertOctagon : main.key === "paused" ? Pause : main.key === "by-hand" ? Hand : AlertOctagon} accent={crit ? "red" : "sun"} />
+        <span className="text-[13.5px]"><span className="font-semibold">{main.title}</span>
+          <span className="block line-clamp-2 text-ink2">{main.detail}</span></span>
+      </span>
+      {main.key === "paused"
+        ? <Button tone="primary" icon={Play} disabled={resuming} onClick={onResume}>Resume uploads</Button>
+        : <span className="flex shrink-0 items-center gap-1 rounded-lg border border-ring bg-surface px-3 py-1.5 text-[12.5px] font-medium shadow-xs">{main.cta} <ArrowRight aria-hidden className="size-3.5" /></span>}
+    </>
+  );
+  const cls = `flex flex-wrap items-center justify-between gap-3 px-4 py-3 ${crit ? "bg-critical-soft" : "bg-warning-soft"}`;
+  return (
+    <div data-testid="overview-alarms" role={crit ? "alert" : "status"} className={`mb-5 overflow-hidden rounded-xl border ${crit ? "border-critical/25" : "border-warning/30"}`}>
+      {main.href ? <Link href={main.href} className={`${cls} transition-colors hover:brightness-[0.98]`}>{body}</Link> : <div className={cls}>{body}</div>}
+      {rest.length > 0 && (
+        <ul className="flex flex-wrap gap-x-4 gap-y-1.5 border-t border-ring bg-surface px-4 py-2.5 text-[12.5px] text-ink2">
+          <li className="text-muted">Also:</li>
+          {rest.map((r) => (
+            <li key={r.key} className="flex items-center gap-1.5">
+              <span aria-hidden className={`size-1.5 rounded-full ${r.tone === "critical" ? "bg-critical/60" : "bg-warning/60"}`} />
+              {r.key === "paused"
+                ? <button type="button" disabled={resuming} onClick={onResume} className="underline-offset-2 hover:text-ink hover:underline">{r.title} · resume</button>
+                : <Link href={r.href ?? "/notifications"} className="underline-offset-2 hover:text-ink hover:underline">{r.title}</Link>}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export default function OverviewPage() {
   const { data, error, isLoading } = useOverview();
   const analytics = useAnalytics();
@@ -121,6 +183,7 @@ export default function OverviewPage() {
   const byHand = useHandUploadCount();
   const patch = usePatchSettings();
   const toast = useToast();
+  const wins = useWinBadges();
   if (isLoading) return <Loading />;
   if (error || !data) return <ErrorNote error={error} />;
   const g = data.generation;
@@ -137,7 +200,8 @@ export default function OverviewPage() {
   const metDays = days.filter((d) => d.shipped >= DAILY_TARGET).length;
   const c = data.counts;
   const inProgress = ["planned", "scripted", "verified", "rendered", "qa_passed"].reduce((a, s) => a + (c[s] ?? 0), 0);
-  const critical = notifications.data?.open.filter((n) => n.severity === "critical") ?? [];
+  const critical = dedupe(notifications.data?.open.filter((n) => n.severity === "critical") ?? []);
+  const warnings = dedupe(notifications.data?.open.filter((n) => n.severity === "warning") ?? []).filter((w) => !critical.some((c) => sameProblem(c, w)));
   const { day: lastDay, byAgent } = lastNight(agents.data?.activity ?? []);
   const decided = { acted: "Made a change", waited: "Waited", blocked: "Blocked", nothing: "Nothing to do" } as const;
   const decidedTone = { acted: "good", waited: "info", blocked: "critical", nothing: "neutral" } as const;
@@ -149,35 +213,9 @@ export default function OverviewPage() {
         <Badge tone={MODES[g.mode].tone} dot>{MODES[g.mode].label}</Badge>
       </PageHeader>
 
-      {byHand.n > 0 && (
-        <Link href="/queue#by-hand" className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-warning/30 bg-warning-soft px-4 py-3 transition-colors hover:border-warning/50">
-          <span className="flex items-center gap-3">
-            <IconTile icon={Hand} accent="sun" />
-            <span className="text-[13.5px]"><span className="font-semibold">{byHand.n} video{byHand.n === 1 ? "" : "s"} to upload by hand</span>
-              <span className="block text-ink2">{byHand.quota ? "The day's YouTube quota ran out before their slots (all channels)." : "Their slots passed without an upload (all channels)."}</span></span>
-          </span>
-          <span className="flex shrink-0 items-center gap-1 rounded-lg border border-ring bg-surface px-3 py-1.5 text-[12.5px] font-medium shadow-xs">Open the list <ArrowRight aria-hidden className="size-3.5" /></span>
-        </Link>
-      )}
-
-      {critical.length > 0 && (
-        <Link href="/notifications" className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-critical/25 bg-critical-soft px-4 py-3 transition-colors hover:border-critical/45">
-          <span className="flex items-center gap-3">
-            <IconTile icon={AlertOctagon} accent="red" />
-            <span className="text-[13.5px]"><span className="font-semibold">{critical.length === 1 ? critical[0].title : `${critical.length} problems need you`}</span>
-              <span className="block text-ink2">The automation can&apos;t fix this by itself.</span></span>
-          </span>
-          <span className="flex shrink-0 items-center gap-1 rounded-lg border border-ring bg-surface px-3 py-1.5 text-[12.5px] font-medium shadow-xs">How to fix <ArrowRight aria-hidden className="size-3.5" /></span>
-        </Link>
-      )}
-
-      {data.uploadsPaused && (
-        <div role="status" className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-warning/30 bg-warning-soft px-4 py-3">
-          <p className="flex items-center gap-3 text-[13.5px]"><IconTile icon={Pause} accent="sun" />
-            <span><span className="font-semibold">Uploads are paused.</span> <span className="text-ink2">The bot publishes nothing until you resume. Mark manual uploads from each video&apos;s page.</span></span></p>
-          <Button tone="primary" icon={Play} disabled={patch.isPending} onClick={() => set({ uploadsPaused: false }, "Uploads resumed")}>Resume uploads</Button>
-        </div>
-      )}
+      <Alarms critical={critical} warnings={warnings} byHand={byHand} paused={data.uploadsPaused} resuming={patch.isPending} onResume={() => set({ uploadsPaused: false }, "Uploads resumed")} />
+      <LiveViews />
+      <Celebrate />
 
       {/* the numbers */}
       <div data-testid="overview-stats" className="grid grid-cols-2 gap-4 lg:grid-cols-5 [&>*:last-child:nth-child(odd)]:col-span-2 lg:[&>*:last-child:nth-child(odd)]:col-span-1">
@@ -292,6 +330,11 @@ export default function OverviewPage() {
                 <li key={v.id} className="group relative flex flex-col overflow-hidden rounded-xl border border-ring bg-surface-2 transition-shadow hover:shadow-lift">
                   <div className="relative">
                     <img src={v.thumbnailUrl} alt="" loading="lazy" className="aspect-[4/5] w-full object-cover object-top" />
+                    {(() => {
+                      const rec = wins.get(v.id)?.record ? wins.get(v.id) : undefined;
+                      const m = milestoneOf(v.totals?.views ?? 0);
+                      return rec ? <WinBadge {...rec} /> : m ? <WinBadge label={milestoneLabel(m)} record={false} /> : null;
+                    })()}
                     <span className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-[#0a0d13]/75 px-2 py-0.5 text-[11.5px] font-medium text-white backdrop-blur">
                       <Eye aria-hidden className="size-3" />{fmtCompact(v.totals?.views ?? 0)}
                     </span>
@@ -307,12 +350,12 @@ export default function OverviewPage() {
           )}
         </Card>
 
-        <Card title="Recent failures" icon={CircleX} accent="red" flush className="xl:col-span-4" action={<More href="/videos?status=failed">All failed</More>}>
+        <Card title="Recent failures" icon={CircleX} accent="surface" flush className="xl:col-span-4" action={<More href="/videos?status=failed">All failed</More>}>
           {data.recentFailures.length === 0 ? <Empty icon={CircleX} title="No failures">Every recent run shipped its video.</Empty> : (
             <ul>
               {data.recentFailures.map((f, i) => (
                 <li key={f.videoId + i} className="flex gap-3 border-b border-line px-5 py-3.5 last:border-0">
-                  <span aria-hidden className="mt-1.5 size-2 shrink-0 rounded-full bg-critical" />
+                  <span aria-hidden className="mt-1.5 size-2 shrink-0 rounded-full bg-critical/55" />
                   <div className="min-w-0 text-[13px]">
                     <VideoLink id={f.videoId} className="font-medium">{f.title}</VideoLink>
                     <p className="mt-0.5 line-clamp-2 leading-relaxed text-ink2">{f.reason}</p>

@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ArrowDownRight, ArrowUpRight, Check, ChevronDown, CircleAlert, Inbox, MoreHorizontal, type LucideIcon } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Check, ChevronDown, CircleAlert, Inbox, Info, MoreHorizontal, type LucideIcon } from "lucide-react";
 import { animate, motion, type Variants } from "motion/react";
 import Link from "next/link";
 import { AlertDialog, DropdownMenu, Progress, Select, Slider as RSlider, Switch, ToggleGroup, Tooltip } from "radix-ui";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import { titleCase } from "@/lib/format";
 import type { VideoStatus } from "@/lib/schemas";
@@ -52,16 +52,45 @@ export function IconTile({ icon: Icon, accent = "surface", size = "md" }: { icon
 export function PageHeader({ title, sub, children }: { title: string; sub?: React.ReactNode; children?: React.ReactNode }) {
   return (
     <div className="mb-7 flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
-      <div className="min-w-0 max-w-3xl">
+      <div className="min-w-0 max-w-3xl flex-1 basis-[260px]">
         <h1 className="text-[26px] font-semibold leading-tight tracking-[-0.025em] md:text-[28px]">{title}</h1>
-        {sub && <p className="mt-1.5 text-[14px] leading-relaxed text-ink2">{sub}</p>}
+        {sub && <HeaderSub>{sub}</HeaderSub>}
       </div>
       {children && <div className="flex flex-wrap items-center gap-2">{children}</div>}
     </div>
   );
 }
 
-const rise: Variants = { hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0, transition: { duration: 0.32, ease: [0.2, 0.8, 0.2, 1] as const } } };
+/** A page's description on one line; when it runs longer, an ⓘ button opens the full text in place. */
+function HeaderSub({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const [open, setOpen] = useState(false);
+  const [long, setLong] = useState(false);
+  const id = useId();
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || open) return;
+    const check = () => setLong(el.scrollWidth > el.clientWidth + 1);
+    check();
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [open, children]);
+  return (
+    <div className="mt-1.5 flex items-start gap-1.5">
+      <p id={id} ref={ref} className={`min-w-0 flex-1 text-[14px] leading-relaxed text-ink2 ${open ? "" : "truncate"}`}>{children}</p>
+      {(long || open) && (
+        <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}
+          aria-label={open ? "Show less" : "Show the full description"} title={open ? "Show less" : "More about this page"}
+          className="mt-[3px] grid size-[18px] shrink-0 place-items-center rounded-full text-muted transition-colors hover:bg-surface-3 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
+          {open ? <ChevronDown aria-hidden className="size-3.5 rotate-180" /> : <Info aria-hidden className="size-3.5" />}
+        </button>
+      )}
+    </div>
+  );
+}
+
+const rise: Variants ={ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0, transition: { duration: 0.32, ease: [0.2, 0.8, 0.2, 1] as const } } };
 
 /** Staggers its direct `Card`/`Stat` children in on mount. */
 export function Stagger({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -150,10 +179,11 @@ export function Stat({ label, value, sub, delta, chart, icon: Icon, href, accent
 }) {
   const body = (
     <>
-      <div className="flex items-center justify-between gap-2">
-        <span className="flex min-w-0 items-center gap-2 text-[13px] font-medium text-ink2">
+      {/* the badge wraps under the label on narrow cards, so the label keeps its whole word */}
+      <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5">
+        <span className="flex min-w-0 max-w-full items-center gap-2 text-[13px] font-medium text-ink2">
           {Icon && <IconTile icon={Icon} accent={accent} size="sm" />}
-          <span className="truncate">{label}</span>
+          <span className="min-w-0 break-words leading-tight">{label}</span>
         </span>
         {delta}
       </div>
@@ -441,3 +471,15 @@ export function VideoLink({ id, children, className = "" }: { id: string; childr
 /** Tab row: options on a grey track, the active one a raised white chip. Pair with `tabClass`. */
 export const tabListClass = "no-scrollbar scroll-fade-x mb-5 flex w-fit max-w-full gap-1 overflow-x-auto rounded-xl bg-surface-3 p-1";
 export const tabClass = "flex h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[13px] font-medium text-ink2 transition-colors hover:text-ink data-[state=active]:bg-surface data-[state=active]:text-ink data-[state=active]:shadow-xs";
+
+/** A "Why?" disclosure: the explanation stays one click away so the numbers lead. Native <details>, so it is keyboard-friendly. */
+export function Why({ children, label = "Why?", className = "" }: { children: React.ReactNode; label?: React.ReactNode; className?: string }) {
+  return (
+    <details className={`group text-[12.5px] leading-relaxed text-ink2 ${className}`}>
+      <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded font-medium text-muted hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand [&::-webkit-details-marker]:hidden">
+        <ChevronDown aria-hidden className="size-3.5 -rotate-90 transition-transform group-open:rotate-0" />{label}
+      </summary>
+      <div className="mt-1.5 space-y-1.5">{children}</div>
+    </details>
+  );
+}

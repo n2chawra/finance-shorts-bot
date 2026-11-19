@@ -1,16 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { Eye, Film, Search } from "lucide-react";
-import { motion } from "motion/react";
-import Link from "next/link";
+import { Film, Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
-import { Card, Empty, ErrorNote, Loading, PageHeader, SelectField, StatusBadge, fieldClass } from "@/components/ui";
-import { originLine } from "@/components/origin";
-import { fmtCompact, fmtDateTime, titleCase } from "@/lib/format";
+import { Card, Empty, ErrorNote, Loading, PageHeader, SelectField, fieldClass } from "@/components/ui";
+import { titleCase } from "@/lib/format";
 import { useOverview, useTemplates, useVideos } from "@/lib/queries";
+
+import { VideoCard } from "./video-card";
 
 const TABS = [
   { value: "", label: "All" },
@@ -44,6 +42,10 @@ function Videos() {
     if (value) next.set(key, value); else next.delete(key);
     router.replace(`/videos${next.size ? `?${next}` : ""}`);
   };
+  // the channel's most-viewed video gets the trophy, whatever the filter shows
+  const bestId = (everything.data ?? []).reduce<{ id: string; views: number } | null>((b, v) => (v.totals && v.totals.views > 0 && (!b || v.totals.views > b.views) ? { id: v.id, views: v.totals.views } : b), null)?.id;
+  // one preview plays at a time
+  const [playing, setPlaying] = useState<string | null>(null);
   const total = counts ? Object.values(counts).reduce((a, b) => a + b, 0) : undefined;
 
   return (
@@ -77,27 +79,7 @@ function Videos() {
       {isLoading ? <Loading /> : error || !data ? <ErrorNote error={error} /> : data.length === 0 ? <Card><Empty icon={Film} title="No videos match">Try another status, template or search.</Empty></Card> : (
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           {data.map((v, i) => (
-            <motion.li key={v.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: Math.min(i, 18) * 0.02 }}
-              className="panel hover-raise group relative flex flex-col overflow-hidden bg-surface">
-              <div className={`relative ${v.format === "long" ? "bg-[#0a0d13]" : "bg-surface-3"}`}>
-                <img src={v.thumbnailUrl} alt="" loading="lazy" className={`aspect-[4/5] w-full ${v.format === "long" ? "object-contain" : "object-cover object-top"}`} />
-                <span className="absolute left-2 top-2"><StatusBadge status={v.status} /></span>
-                {v.format === "long" && <span className="absolute right-2 top-2 rounded-full bg-[#0a0d13]/75 px-2 py-0.5 text-[11.5px] font-medium text-white backdrop-blur">Long</span>}
-                {v.totals && (
-                  <span className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-[#0a0d13]/75 px-2 py-0.5 text-[11.5px] font-medium text-white backdrop-blur">
-                    <Eye aria-hidden className="size-3" />{fmtCompact(v.totals.views)}
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col p-3.5">
-                {/* the whole card opens the video; the title is the link */}
-                <Link href={`/videos/${v.id}`} className="line-clamp-2 text-[13.5px] font-medium leading-snug after:absolute after:inset-0">{v.title}</Link>
-                {originLine(v.origin) && <span className="mt-1 line-clamp-2 text-[12px] text-ink2" title={v.origin?.why ?? undefined}>{originLine(v.origin)}</span>}
-                <span className="mt-auto flex flex-wrap items-center gap-x-1.5 gap-y-0.5 pt-3 text-[11.5px] text-muted">
-                  <span className="font-mono">{v.id}</span><span aria-hidden>·</span><span>{titleCase(v.topic.category)}</span><span aria-hidden>·</span><span>{fmtDateTime(v.upload?.publishAt ?? v.createdAt)}</span>
-                </span>
-              </div>
-            </motion.li>
+            <VideoCard key={v.id} v={v} index={i} best={v.id === bestId} playing={playing === v.id} onPlay={setPlaying} />
           ))}
         </ul>
       )}

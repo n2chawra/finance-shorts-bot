@@ -20,6 +20,7 @@ const DONE: Record<VideoAction, string> = { skip: "Moved to the end of the queue
   pick: "Picked: it goes out in the next slot", unpick: "Pick removed: the queue order decides again", stale: "Marked stale: it will never be posted", unstale: "Back in the queue" };
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const iso = (ms: number) => new Date(ms).toISOString();
+const slotTime = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata" });
 /** Save a file the dashboard serves (a menu item can't be a link). */
 const download = (href: string, name: string) => {
   const a = document.createElement("a");
@@ -118,12 +119,19 @@ function Section({ format, items, plan, settings, paused, busy, live = true, sin
         {r.days !== null && <Badge tone={r.n ? "good" : "critical"} dot>{r.n ? `Enough for about ${r.days} day${r.days === 1 ? "" : "s"}` : "Nothing ready"}</Badge>}
       </div>
 
-      {missed.map((s) => (
-        <p key={s.at} className="mb-2.5 flex items-center gap-2.5 rounded-xl border border-critical/25 bg-critical-soft px-3.5 py-2.5 text-[13px]">
+      {/* one strong banner only when uploads are stopped (nothing ready for the next slot); missed slots are one quiet line */}
+      {live && !none && items.length === 0 && (
+        <p role="alert" className="mb-2.5 flex items-center gap-2.5 rounded-xl border border-critical/25 bg-critical-soft px-3.5 py-2.5 text-[13px]">
           <AlertTriangle aria-hidden className="size-4 shrink-0 text-critical" />
-          <span><span className="font-semibold">Missed {fmtDateTime(iso(s.at))}:</span> <span className="text-ink2">nothing was posted in this slot today.</span></span>
+          <span><span className="font-semibold">Uploads stopped:</span> <span className="text-ink2">no {format === "short" ? "Short" : "long video"} is ready, so the next slot will be missed{missed.length ? ` (${missed.length} already missed)` : ""}.</span></span>
         </p>
-      ))}
+      )}
+      {missed.length > 0 && items.length > 0 && (
+        <p className="mb-2.5 flex items-center gap-2 text-[12.5px] text-warning-text" title={missed.map((s) => fmtDateTime(iso(s.at))).join(", ")}>
+          <Clock aria-hidden className="size-3.5 shrink-0" />
+          <span><span className="font-medium">{missed.length} slot{missed.length === 1 ? "" : "s"} missed today:</span> <span className="tabular-nums text-ink2">{missed.map((s) => slotTime.format(new Date(s.at))).join(", ")}</span></span>
+        </p>
+      )}
       {items.length === 0 ? <Card><Empty icon={ListOrdered} title={`No ${format === "short" ? "Shorts" : "long videos"} waiting`}>New videos land here about a minute after a run ships them.</Empty></Card> : (
         <div className="panel overflow-hidden bg-surface">
           <div className="hidden grid-cols-[32px_20px_48px_1fr_200px_124px] items-center gap-4 border-b border-line bg-surface-2 px-4 py-2.5 text-[12px] font-medium text-muted md:grid">

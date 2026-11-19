@@ -1,15 +1,14 @@
 "use client";
 
-import { ArrowRight, Award, BadgeDollarSign, ExternalLink, FlaskConical, LayoutGrid, Scale, Trophy } from "lucide-react";
+import { ArrowRight, Award, BadgeDollarSign, CalendarClock, ExternalLink, FlaskConical, LayoutGrid, Scale, Trophy } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { MultiLineChart, Sparkline } from "@/components/charts";
-import { CAT } from "@/components/studio-charts";
 import { Badge, Card, Delta, Empty, ErrorNote, Loading, Meter, PageHeader, Stagger, type Tone } from "@/components/ui";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative } from "@/lib/format";
-import { CHANNEL_BRAND, brandName } from "@/lib/channel-brand";
-import type { PortfolioChannel, PortfolioVideo, VerdictCall } from "@/lib/portfolio";
+import { brandName, channelBrand } from "@/lib/channel-brand";
+import type { PortfolioChannel, PortfolioVideo, Today, TodaySlot, VerdictCall } from "@/lib/portfolio";
 import { usePortfolio, useSwitchChannel } from "@/lib/queries";
 
 const VERDICT_TONE: Record<VerdictCall, Tone> = { Growing: "good", Flat: "neutral", Falling: "critical", "Too early": "info", "Setting up": "neutral" };
@@ -23,11 +22,11 @@ const change = (a: number | null, b: number | null) => (a === null || b === null
 const signed = (n: number) => `${n > 0 ? "+" : ""}${fmtNum(n)}`;
 const ytUrl = (v: PortfolioVideo) => (v.youtubeId ? (v.format === "short" ? `https://www.youtube.com/shorts/${v.youtubeId}` : `https://youtu.be/${v.youtubeId}`) : null);
 
-function Avatar({ id, name, color, dim }: { id: string; name: string; color: string; dim?: boolean }) {
-  const logo = CHANNEL_BRAND[id]?.logo;
-  if (logo) return <Image src={logo} alt="" width={40} height={40} className={`size-10 shrink-0 rounded-xl object-cover shadow-xs ${dim ? "opacity-50" : ""}`} />;
-  const initials = name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]!.toUpperCase()).join("");
-  return <span aria-hidden className={`grid size-10 shrink-0 place-items-center rounded-xl text-[14px] font-semibold text-white shadow-xs ${dim ? "opacity-50" : ""}`} style={{ background: color }}>{initials}</span>;
+function Avatar({ id, name, dim, size = 40 }: { id: string; name: string; dim?: boolean; size?: number }) {
+  const b = channelBrand(id, name);
+  const cls = `shrink-0 rounded-xl shadow-xs ${dim ? "opacity-50" : ""}`;
+  if (b.logo) return <Image src={b.logo} alt="" width={size} height={size} className={`${cls} object-cover`} style={{ width: size, height: size }} />;
+  return <span aria-hidden className={`${cls} grid place-items-center text-[14px] font-semibold text-white`} style={{ background: b.accent, width: size, height: size }}>{b.initials}</span>;
 }
 
 function VideoRow({ v }: { v: PortfolioVideo }) {
@@ -65,7 +64,7 @@ function ChannelCard({ c, color }: { c: PortfolioChannel; color: string }) {
   return (
     <Card className={setup ? "opacity-70" : ""}>
       <div data-testid={`portfolio-${c.id}`} className="flex items-start gap-3">
-        <Avatar id={c.id} name={brandName(c)} color={color} dim={setup} />
+        <Avatar id={c.id} name={c.name} dim={setup} />
         <div className="min-w-0 flex-1">
           <h2 title={c.name} className="line-clamp-2 text-[15px] font-semibold leading-tight tracking-[-0.01em]">{brandName(c)}</h2>
           <div className="mt-1.5 flex flex-wrap gap-1.5">
@@ -233,11 +232,69 @@ function Monetisation({ live, colors }: { live: PortfolioChannel[]; colors: Map<
   );
 }
 
+const istTime = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata" });
+const SLOT: Record<TodaySlot["state"], { mark: string; cls: string; label: string }> = {
+  posted: { mark: "✓", cls: "bg-good-soft text-good-text", label: "posted" },
+  next: { mark: "⏳", cls: "bg-info-soft text-info-text", label: "next" },
+  later: { mark: "·", cls: "bg-surface-3 text-ink2", label: "later today" },
+  missed: { mark: "✗", cls: "bg-critical-soft text-critical-text", label: "missed" },
+  paused: { mark: "‖", cls: "bg-warning-soft text-warning-text", label: "paused" },
+};
+
+function SlotChip({ s }: { s: TodaySlot }) {
+  const st = SLOT[s.state];
+  const time = istTime.format(new Date(s.at));
+  const text = s.state === "posted" ? `${time} · ${s.views === null ? "views soon" : `${fmtCompact(s.views)} views`}` : s.state === "next" ? `next ${time} IST` : time;
+  const tip = `${time} IST ${s.format === "long" ? "long video" : "Short"}, ${st.label}${s.title ? `: ${s.title}` : ""}`;
+  const url = s.state === "posted" && s.youtubeId ? (s.format === "short" ? `https://www.youtube.com/shorts/${s.youtubeId}` : `https://youtu.be/${s.youtubeId}`) : null;
+  const body = <><span aria-hidden>{st.mark}</span>{text}{s.format === "long" && <span className="opacity-70">· long</span>}</>;
+  const cls = `inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-0.5 text-[12px] font-medium tabular-nums ${st.cls}`;
+  return url ? <a href={url} target="_blank" rel="noreferrer" title={tip} aria-label={tip} className={`${cls} hover:underline`}>{body}</a>
+    : <span title={tip} aria-label={tip} className={cls}>{body}</span>;
+}
+
+function TodayStrip({ today, channels }: { today: Today[]; channels: PortfolioChannel[] }) {
+  const router = useRouter();
+  const switchTo = useSwitchChannel();
+  const rows = today.map((t) => ({ t, c: channels.find((c) => c.id === t.channelId) })).filter((r): r is { t: Today; c: PortfolioChannel } => !!r.c);
+  if (!rows.length) return null;
+  const posted = rows.reduce((a, r) => a + r.t.slots.filter((s) => s.state === "posted").length, 0);
+  const planned = rows.reduce((a, r) => a + r.t.slots.length, 0);
+  const missed = rows.reduce((a, r) => a + r.t.slots.filter((s) => s.state === "missed").length, 0);
+  const v24 = rows.reduce<number | null>((a, r) => (r.t.views24h === null ? a : (a ?? 0) + r.t.views24h), null);
+  return (
+    <Card title="Today across all channels" icon={CalendarClock} accent="sky" className="mb-5"
+      description={<>{posted} of {planned} uploads posted{missed ? `, ${missed} missed` : ""}{v24 !== null ? ` · ${fmtCompact(v24)} views in the last 24 h` : ""} · times in IST</>}>
+      <ul className="-mx-5 divide-y divide-line border-t border-line">
+        {rows.map(({ t, c }) => {
+          const b = channelBrand(c.id, c.name);
+          return (
+            <li key={t.channelId} data-testid={`today-${t.channelId}`} className="flex flex-wrap items-center gap-x-4 gap-y-2 px-5 py-3">
+              <div className="flex min-w-0 items-center gap-2.5 sm:w-48">
+                <Avatar id={c.id} name={c.name} size={28} />
+                <span className="truncate text-[13.5px] font-semibold" style={{ borderBottom: `2px solid ${b.accent}` }}>{b.name}</span>
+              </div>
+              <div className="flex min-w-0 flex-1 flex-wrap gap-1.5">
+                {t.slots.length ? t.slots.map((s) => <SlotChip key={`${s.at}-${s.format}`} s={s} />) : <span className="text-[12.5px] text-muted">no uploads planned today</span>}
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-right text-[12px] leading-tight text-muted"><span className="block text-[14px] font-semibold tabular-nums text-ink">{t.views24h === null ? "—" : fmtCompact(t.views24h)}</span>views 24 h</span>
+                <button type="button" onClick={() => { switchTo(c.id); router.push("/"); }} aria-label={`Switch to ${b.name}`}
+                  className="flex items-center gap-1 rounded-md px-1.5 py-1 text-[12.5px] font-medium text-ink2 transition-colors hover:bg-surface-3 hover:text-ink">Open<ArrowRight aria-hidden className="size-3.5" /></button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </Card>
+  );
+}
+
 export default function PortfolioPage() {
   const { data, error, isLoading } = usePortfolio();
   if (isLoading) return <Loading />;
   if (error || !data) return <ErrorNote error={error} />;
-  const colors = new Map(data.channels.map((c, i) => [c.id, CAT[i % CAT.length]]));
+  const colors = new Map(data.channels.map((c) => [c.id, channelBrand(c.id, c.name).accent]));
   const live = data.channels.filter((c) => c.verdict.call !== "Setting up");
   const through = live.map((c) => c.statsThrough).filter(Boolean).sort().at(-1);
   return (
@@ -247,6 +304,7 @@ export default function PortfolioPage() {
       </PageHeader>
       {data.channels.length === 0 ? <Empty title="No channels yet">{data.source === "sample" ? "Sample mode: connect a database to see channels." : "Add a channel on the Channels page."}</Empty> : (
         <>
+          <TodayStrip today={data.today} channels={data.channels} />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {data.channels.map((c) => <ChannelCard key={c.id} c={c} color={colors.get(c.id)!} />)}
           </div>

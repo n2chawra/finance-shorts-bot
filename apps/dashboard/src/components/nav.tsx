@@ -3,17 +3,20 @@
 import { useIsFetching } from "@tanstack/react-query";
 import { Bell, Check, ChevronsUpDown, LogOut, Menu, Monitor, Moon, Search, Sun, Tv, X } from "lucide-react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Dialog, DropdownMenu, ToggleGroup } from "radix-ui";
-import { useEffect, useState } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
+
+import { type ChannelBrand, channelBrand } from "@/lib/channel-brand";
 
 import { useChannels, useNotifications, useOverview, useSwitchChannel } from "@/lib/queries";
 import { isPublicPage } from "@/lib/public-pages";
 import { signOut as endSession } from "@/lib/sign-out";
 
-import { LogoMark, Wordmark } from "./brand";
+import { Wordmark } from "./brand";
 import { useHandUploadCount } from "./hand-uploads";
 import { useCommandMenu } from "./command";
 import { NAV, NAV_ITEMS, isActive, pageTitle } from "./nav-items";
@@ -75,23 +78,28 @@ function Count({ n, critical, className = "" }: { n: number; critical: boolean; 
   return <span className={`grid h-[18px] min-w-[18px] place-items-center rounded-full px-1 text-[10.5px] font-semibold tabular-nums text-white ${critical ? "bg-critical" : "bg-brand"} ${className}`}>{n}</span>;
 }
 
-function NavList({ onNavigate }: { onNavigate?: () => void }) {
+function NavList({ onNavigate, accent }: { onNavigate?: () => void; accent: string }) {
   const path = usePathname();
   const alerts = useAlerts();
   const byHand = useHandUploadCount();
   return (
-    <nav aria-label="Main" className="flex flex-col gap-5">
+    <nav aria-label="Main" className="flex flex-col gap-5 [@media(max-height:960px)]:gap-3">
       {NAV.map((g) => (
         <div key={g.group}>
-          <div className="mb-1.5 px-2.5 text-[11px] font-medium text-muted">{g.group}</div>
+          <div className="mb-1.5 px-2.5 text-[11px] font-medium text-muted [@media(max-height:960px)]:mb-1">{g.group}</div>
           <ul className="flex flex-col gap-0.5">
             {g.items.map(({ href, label, icon: Icon, key }) => {
               const on = isActive(path, href);
               return (
                 <li key={href}>
                   <Link href={href} onClick={onNavigate} aria-current={on ? "page" : undefined}
-                    className={`group relative flex h-9 items-center gap-2.5 rounded-lg px-2.5 text-[13.5px] transition-colors ${on ? "font-medium text-ink" : "text-ink2 hover:bg-surface-3 hover:text-ink"}`}>
-                    {on && <motion.span layoutId={onNavigate ? "nav-on-m" : "nav-on"} className="absolute inset-0 rounded-lg bg-brand-soft" transition={{ type: "spring", stiffness: 500, damping: 40 }} />}
+                    className={`group relative flex h-9 shrink-0 items-center [@media(max-height:960px)]:h-8 gap-2.5 rounded-lg px-2.5 text-[13.5px] transition-colors ${on ? "font-medium text-ink" : "text-ink2 hover:bg-surface-3 hover:text-ink"}`}>
+                    {on && (
+                      <motion.span layoutId={onNavigate ? "nav-on-m" : "nav-on"} className="absolute inset-0 rounded-lg bg-brand-soft" transition={{ type: "spring", stiffness: 500, damping: 40 }}>
+                        {/* the channel's accent marks where you are */}
+                        <span aria-hidden className="absolute inset-y-2 left-0 w-[3px] rounded-full" style={{ background: accent }} />
+                      </motion.span>
+                    )}
                     <Icon aria-hidden className={`relative size-4 shrink-0 ${on ? "text-brand" : "text-muted group-hover:text-ink2"}`} />
                     <span className="relative flex-1">{label}</span>
                     {href === "/notifications" && alerts.unread > 0 && <Count n={alerts.unread} critical={alerts.critical} className="relative" />}
@@ -113,8 +121,18 @@ function SystemCard() {
   const { data } = useOverview();
   if (!data) return null;
   const mode = { video: ["Making videos", "bg-good"], template_work: ["Template work", "bg-series"], idle: ["Idle", "bg-muted"], paused: ["Paused", "bg-warning"] }[data.generation.mode];
+  const compact = (
+    <Link href="/settings" aria-label={`System: uploads ${data.uploadsPaused ? "paused" : "on"}, ${mode[0].toLowerCase()}, backlog ${data.backlog} of ${data.backlogCap}`}
+      className="hidden shrink-0 items-center gap-3 rounded-lg border border-ring bg-surface-2 px-2.5 py-1.5 text-[12px] transition-colors hover:border-ring-strong [@media(max-height:960px)]:flex">
+      <span className="flex items-center gap-1.5 text-ink2"><span className={`size-1.5 rounded-full ${data.uploadsPaused ? "bg-warning" : "bg-good"}`} />Uploads</span>
+      <span className="flex min-w-0 items-center gap-1.5 text-ink2"><span className={`size-1.5 shrink-0 rounded-full ${mode[1]}`} /><span className="truncate">{mode[0]}</span></span>
+      <span className="ml-auto font-medium tabular-nums">{data.backlog}/{data.backlogCap}</span>
+    </Link>
+  );
   return (
-    <Link href="/settings" className="block rounded-xl border border-ring bg-surface-2 p-3 text-[12.5px] transition-colors hover:border-ring-strong">
+    <>
+    {compact}
+    <Link href="/settings" className="block shrink-0 rounded-xl border border-ring bg-surface-2 p-3 text-[12.5px] transition-colors hover:border-ring-strong [@media(max-height:960px)]:hidden">
       <div className="text-[11px] font-medium text-muted">System</div>
       <div className="mt-2 flex items-center justify-between">
         <span className="text-ink2">Uploads</span>
@@ -129,35 +147,66 @@ function SystemCard() {
         <span className="font-medium tabular-nums">{data.backlog} / {data.backlogCap}</span>
       </div>
     </Link>
+    </>
   );
 }
 
-/** The channel the dashboard shows, and a menu to switch to another or manage them all. */
-function ChannelSwitcher({ onNavigate }: { onNavigate?: () => void }) {
+/** A channel's logo tile (its initials on its accent when it has no logo). */
+export function ChannelLogo({ brand, className = "size-8" }: { brand: ChannelBrand; className?: string }) {
+  if (brand.logo) return <Image src={brand.logo} alt="" aria-hidden width={64} height={64} className={`shrink-0 rounded-lg object-cover ${className}`} />;
+  return (
+    <span aria-hidden className={`grid shrink-0 place-items-center rounded-lg text-[11px] font-semibold text-white ${className}`} style={{ background: brand.accent }}>
+      {brand.initials}
+    </span>
+  );
+}
+
+/** The channel on screen, as its brand (name, short name, accent, logo). */
+function useCurrentChannel() {
   const { data } = useChannels();
+  const current = data?.channels.find((c) => c.id === data.current);
+  return { data, current, brand: channelBrand(data?.current, current?.name) };
+}
+
+/** The channel the dashboard shows, and a menu to switch to another or manage them all. `compact` is the
+ *  phone header's chip: logo and short name. */
+function ChannelSwitcher({ onNavigate, compact = false }: { onNavigate?: () => void; compact?: boolean }) {
+  const { data, current, brand } = useCurrentChannel();
   const switchTo = useSwitchChannel();
   const router = useRouter();
-  const current = data?.channels.find((c) => c.id === data.current);
   // the browser tab names the channel on screen (it said "Paisa Panchayat" on every channel)
-  useEffect(() => { if (current) document.title = `${current.name} · Studio`; }, [current]);
+  useEffect(() => { if (current && !compact) document.title = `${brand.name} · Studio`; }, [current, brand.name, compact]);
   return (
     <DropdownMenu.Root modal={false}>
-      <DropdownMenu.Trigger aria-label="Switch channel" className="flex w-full items-center gap-2.5 rounded-xl px-1.5 py-1.5 text-left outline-none transition-colors hover:bg-surface-3 focus-visible:ring-4 focus-visible:ring-brand-soft">
-        <LogoMark className="size-8" />
-        <Wordmark name={current?.name ?? "…"} sub={current && current.status !== "active" ? `Channel studio · ${current.status}` : "Channel studio"} />
-        <ChevronsUpDown aria-hidden className="ml-auto size-4 shrink-0 text-muted" />
-      </DropdownMenu.Trigger>
+      {compact ? (
+        <DropdownMenu.Trigger aria-label={`Channel: ${brand.name}. Switch channel`}
+          className="flex h-9 min-w-0 shrink items-center gap-1.5 rounded-lg py-1 pl-1 pr-1.5 outline-none transition-colors hover:bg-surface-3 focus-visible:ring-4 focus-visible:ring-brand-soft">
+          {data ? <ChannelLogo brand={brand} className="size-7" /> : <span className="size-7 shrink-0 rounded-lg bg-surface-3" />}
+          <span className="max-w-[96px] truncate text-[13px] font-semibold">{data ? brand.short : "…"}</span>
+          <ChevronsUpDown aria-hidden className="size-3.5 shrink-0 text-muted" />
+        </DropdownMenu.Trigger>
+      ) : (
+        <DropdownMenu.Trigger aria-label="Switch channel" className="flex w-full shrink-0 items-center gap-2.5 rounded-xl px-1.5 py-1.5 text-left outline-none transition-colors hover:bg-surface-3 focus-visible:ring-4 focus-visible:ring-brand-soft">
+          {data ? <ChannelLogo brand={brand} className="size-8" /> : <span className="size-8 shrink-0 rounded-lg bg-surface-3" />}
+          <Wordmark name={current ? brand.name : "…"} sub={current && current.status !== "active" ? `Channel studio · ${current.status}` : "Channel studio"} />
+          <ChevronsUpDown aria-hidden className="ml-auto size-4 shrink-0 text-muted" />
+        </DropdownMenu.Trigger>
+      )}
       <DropdownMenu.Portal>
-        <DropdownMenu.Content align="start" sideOffset={6} className="z-50 w-[232px] animate-pop rounded-xl border border-ring bg-surface p-1 shadow-pop">
+        <DropdownMenu.Content align="start" sideOffset={6} collisionPadding={8} className="z-50 w-[248px] animate-pop rounded-xl border border-ring bg-surface p-1 shadow-pop">
           <DropdownMenu.Label className="px-2 py-1.5 text-[11px] font-medium text-muted">Channels</DropdownMenu.Label>
-          {(data?.channels ?? []).map((c) => (
-            <DropdownMenu.Item key={c.id} onSelect={() => { if (c.id !== data?.current) switchTo(c.id); onNavigate?.(); }}
-              className="flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-[13px] outline-none data-[highlighted]:bg-surface-3">
-              <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${c.health ? { green: "bg-good", amber: "bg-warning", red: "bg-critical" }[c.health.color] : c.status === "active" ? "bg-good" : c.status === "paused" ? "bg-warning" : "bg-info"}`} />
-              <span className="flex-1 truncate">{c.name}</span>
-              {c.id === data?.current && <Check aria-hidden className="size-3.5 text-brand" />}
-            </DropdownMenu.Item>
-          ))}
+          {(data?.channels ?? []).map((c) => {
+            const b = channelBrand(c.id, c.name);
+            return (
+              <DropdownMenu.Item key={c.id} onSelect={() => { if (c.id !== data?.current) switchTo(c.id); onNavigate?.(); }}
+                className="flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-[13px] outline-none data-[highlighted]:bg-surface-3">
+                <ChannelLogo brand={b} className="size-5 rounded-md" />
+                <span className="flex-1 truncate" title={c.name}>{b.name}</span>
+                <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${c.health ? { green: "bg-good", amber: "bg-warning", red: "bg-critical" }[c.health.color] : c.status === "active" ? "bg-good" : c.status === "paused" ? "bg-warning" : "bg-info"}`} />
+                {c.id === data?.current ? <Check aria-hidden className="size-3.5 text-brand" /> : <span aria-hidden className="size-3.5" />}
+              </DropdownMenu.Item>
+            );
+          })}
           <DropdownMenu.Separator className="my-1 h-px bg-line" />
           <DropdownMenu.Item onSelect={() => { router.push("/channels"); onNavigate?.(); }}
             className="flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5 text-[13px] outline-none data-[highlighted]:bg-surface-3">
@@ -169,20 +218,28 @@ function ChannelSwitcher({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
+/*
+ * Sidebar layout: the switcher and search on top and the System card and account row at the foot never
+ * shrink; only the page list between them scrolls (thin visible scrollbar, faded edges), so the card can't
+ * cover the last group (it hid "Configure" at 1440x900). Below 960 px tall the card is a single row.
+ */
 function SidebarBody({ onNavigate, signOut }: { onNavigate?: () => void; signOut: () => void }) {
   const openPalette = useCommandMenu();
+  const { brand } = useCurrentChannel();
   return (
     <>
       <ChannelSwitcher onNavigate={onNavigate} />
       <button type="button" onClick={() => { onNavigate?.(); openPalette(); }} aria-label="Search and commands"
-        className="mt-4 flex h-9 w-full items-center gap-2 rounded-lg border border-ring bg-surface px-2.5 text-[13px] text-muted shadow-xs transition-colors hover:border-ring-strong hover:text-ink2">
+        className="mt-4 flex h-9 w-full shrink-0 items-center gap-2 rounded-lg border border-ring bg-surface px-2.5 text-[13px] text-muted shadow-xs transition-colors hover:border-ring-strong hover:text-ink2 [@media(max-height:960px)]:mt-3">
         <Search aria-hidden className="size-4" />
         <span className="flex-1 text-left">Search…</span>
         <span className="flex items-center gap-0.5"><Kbd>Ctrl</Kbd><Kbd>K</Kbd></span>
       </button>
-      <div className="no-scrollbar mt-5 flex-1 overflow-y-auto pb-4"><NavList onNavigate={onNavigate} /></div>
+      <div className="mt-4 min-h-0 flex-1 overflow-y-auto overscroll-contain pb-3 pt-1 [mask-image:linear-gradient(to_bottom,transparent,#000_6px,#000_calc(100%-14px),transparent)] [scrollbar-width:thin] [@media(max-height:960px)]:mt-3">
+        <NavList onNavigate={onNavigate} accent={brand.accent} />
+      </div>
       <SystemCard />
-      <div className="mt-3 flex items-center justify-between border-t border-line pt-3">
+      <div className="mt-3 flex shrink-0 items-center justify-between border-t border-line pt-3 [@media(max-height:960px)]:mt-2 [@media(max-height:960px)]:pt-2">
         <ThemeSwitch />
         <Tip label="Sign out">
           <button type="button" onClick={signOut} aria-label="Sign out"
@@ -239,16 +296,18 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const openPalette = useCommandMenu();
   const [drawer, setDrawer] = useState(false);
+  const { brand } = useCurrentChannel();
   if (path === "/login") return <main>{children}</main>;
   if (isPublicPage(path)) return <>{children}</>;
 
   const signOut = () => endSession(() => fetch("/api/login", { method: "DELETE" }), () => { router.replace("/login"); router.refresh(); });
   const { section, title } = pageTitle(path);
+  const accentTop: CSSProperties = { borderTopColor: brand.accent };
 
   return (
     <div className="flex min-h-dvh">
-      <aside className="hidden w-[256px] shrink-0 border-r border-ring bg-surface lg:block">
-        <div className="sticky top-0 flex h-dvh flex-col px-3 py-4">
+      <aside className="hidden w-[256px] shrink-0 border-r border-t-[3px] border-ring bg-surface lg:block" style={accentTop}>
+        <div className="sticky top-0 flex h-[calc(100dvh-3px)] flex-col px-3 py-4 [@media(max-height:960px)]:py-3">
           <SidebarBody signOut={signOut} />
         </div>
       </aside>
@@ -256,7 +315,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <Dialog.Root open={drawer} onOpenChange={setDrawer}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-40 animate-fade bg-[#0a0d13]/40 lg:hidden" />
-          <Dialog.Content aria-describedby={undefined} className="fixed inset-y-0 left-0 z-50 flex w-[288px] max-w-[85vw] animate-slide-in flex-col border-r border-ring bg-surface px-3 py-4 shadow-pop lg:hidden">
+          <Dialog.Content aria-describedby={undefined} className="fixed inset-y-0 left-0 z-50 flex w-[288px] max-w-[85vw] animate-slide-in flex-col border-r border-t-[3px] border-ring bg-surface px-3 py-4 shadow-pop lg:hidden" style={accentTop}>
             <Dialog.Title className="sr-only">Menu</Dialog.Title>
             <Dialog.Close aria-label="Close menu" className="absolute right-3 top-5 grid size-8 place-items-center rounded-lg text-muted hover:bg-surface-3 hover:text-ink"><X aria-hidden className="size-4" /></Dialog.Close>
             <SidebarBody onNavigate={() => setDrawer(false)} signOut={signOut} />
@@ -265,9 +324,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </Dialog.Root>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-ring bg-plane/80 px-4 backdrop-blur-xl md:px-8">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-2 border-b border-t-[3px] border-ring bg-plane/80 px-4 backdrop-blur-xl sm:gap-3 md:px-8 lg:border-t-0" style={accentTop}>
           <button type="button" onClick={() => setDrawer(true)} aria-label="Open menu" className="-ml-1.5 grid size-9 place-items-center rounded-lg text-ink2 hover:bg-surface-3 lg:hidden"><Menu aria-hidden className="size-5" /></button>
-          <Link href="/" aria-label="Overview" className="lg:hidden"><LogoMark className="size-7" /></Link>
+          {/* phones and tablets: which channel is on screen, and the switcher */}
+          <span className="flex min-w-0 shrink items-center gap-1 lg:hidden"><ChannelSwitcher compact /><span aria-hidden className="text-ring-strong">/</span></span>
           <nav aria-label="Breadcrumb" className="flex min-w-0 items-center gap-2 text-[13px]">
             {section && <span className="hidden text-muted sm:inline">{section}</span>}
             {section && <span aria-hidden className="hidden text-ring-strong sm:inline">/</span>}

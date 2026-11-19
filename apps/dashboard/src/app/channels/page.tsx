@@ -262,6 +262,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
   const live = c.status === "active" || c.status === "paused";
 
   return (
+    <div id={c.id} className="scroll-mt-20">
     <Card icon={Tv} accent={current ? "lime" : "surface"} title={<span className="flex flex-wrap items-center gap-2">{c.name}<Badge tone={s.tone} dot>{s.label}</Badge>{current && <Badge tone="brand">Showing</Badge>}</span>}
       description={c.health && c.status !== "setup" ? <span className="flex items-center gap-1.5"><HealthDot color={c.health.color} />{c.health.reason}{c.health.usageShare != null ? ` · ${Math.round(c.health.usageShare * 100)}% of the week's routine time` : ""}</span> : s.why}
       action={!current && <Button size="sm" onClick={() => switchTo(c.id)}>Show this channel</Button>}>
@@ -316,7 +317,8 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
         <div className="flex flex-col gap-2">
           <span className="text-[12.5px] font-medium text-ink2">Long videos a week</span>
           <Segmented label={`Long videos a week for ${c.name}`} value={String(perWeek)} onChange={(v) => run({ id: c.id, settings: { longPerWeek: Number(v) } }, `${c.name}: ${v} long video${v === "1" ? "" : "s"} a week`)}
-            options={["0", "1", "2"].map((v) => ({ value: v, label: v }))} />
+            options={["0", "1", "2", "3", "4", "5", "6", "7"].map((v) => ({ value: v, label: v }))} />
+          <span className="text-[11.5px] text-muted">Each long video needs one Studio run a week — tell Claude when you change this so the routine days match.</span>
           <span className="text-[11.5px] text-muted">Each upload uses 1 of YouTube&apos;s 100 uploads a day (shared by all channels) and 50 of its 10,000 other units.</span>
         </div>
 
@@ -333,7 +335,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
           <span className="text-[11.5px] text-muted">Keep different channels at least 20 minutes apart.</span>
         </form>
 
-        {perWeek > 0 && <LongSlots c={c} run={run} pending={patch.isPending} platformTimes={platform?.longUploadTimes} />}
+        {perWeek > 0 && <LongSlots c={c} run={run} pending={patch.isPending} platformTimes={platform?.longUploadTimes} platformDays={platform?.longUploadDays} perWeek={perWeek} />}
       </div>
 
       {c.request && (
@@ -346,6 +348,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
         </div>
       )}
     </Card>
+    </div>
   );
 }
 
@@ -426,12 +429,12 @@ export default function ChannelsPage() {
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 /** A channel's long-video slots: the time(s) and the weekdays (IST) the publisher fills from its long queue. */
-function LongSlots({ c, run, pending, platformTimes }: {
-  c: Channel; pending: boolean; platformTimes?: string[];
+function LongSlots({ c, run, pending, platformTimes, platformDays, perWeek }: {
+  c: Channel; pending: boolean; platformTimes?: string[]; platformDays?: number[]; perWeek: number;
   run: (body: { id: string; settings: { longUploadTimes?: string[]; longUploadDays?: number[] } }, ok: string) => void;
 }) {
   const [times, setTimes] = useState((c.settings.longUploadTimes ?? platformTimes ?? ["20:07"]).join(", "));
-  const days = c.settings.longUploadDays ?? [3, 5];
+  const days = c.settings.longUploadDays ?? platformDays ?? [3, 5];
   const toggle = (d: number) => {
     const next = days.includes(d) ? days.filter((x) => x !== d) : [...days, d].sort();
     if (next.length) run({ id: c.id, settings: { longUploadDays: next } }, `${c.name}: long videos on ${next.map((x) => WEEKDAYS[x]).join(", ")}`);
@@ -453,6 +456,11 @@ function LongSlots({ c, run, pending, platformTimes }: {
         </div>
       </div>
       <span className="text-[11.5px] text-muted">One long video per chosen day, at this time. Pick as many days as long videos a week.</span>
+      {days.length !== perWeek && (
+        <span role="status" className="text-[11.5px] font-medium text-warning-text">
+          {days.length} day{days.length === 1 ? "" : "s"} chosen for {perWeek} long video{perWeek === 1 ? "" : "s"} a week: pick {perWeek} day{perWeek === 1 ? "" : "s"} so they match.
+        </span>
+      )}
     </form>
   );
 }
