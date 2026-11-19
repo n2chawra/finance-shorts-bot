@@ -21,7 +21,7 @@
         ]
       },
       "health": {
-        "at": "2026-11-19T04:49:06.928Z",
+        "at": "2026-11-19T07:04:12.083Z",
         "color": "red",
         "reason": "1 Short ready: under a day",
         "stayed": 0.3790569503980404,
@@ -63,7 +63,7 @@
         }
       },
       "health": {
-        "at": "2026-11-19T04:49:06.928Z",
+        "at": "2026-11-19T07:04:12.083Z",
         "color": "red",
         "reason": "1 Short ready: under a day",
         "stayed": null,
@@ -111,7 +111,7 @@
         }
       },
       "health": {
-        "at": "2026-11-19T04:49:06.928Z",
+        "at": "2026-11-19T07:04:12.083Z",
         "color": "red",
         "reason": "0 Shorts ready: under a day",
         "stayed": null,
@@ -119,6 +119,22 @@
         "usageShare": 0.15,
         "stayedBefore": null,
         "weeksUnderFloor": 0
+      },
+      "backlog": 0,
+      "backlogByFormat": {
+        "short": 0,
+        "long": 0
+      }
+    },
+    "business-documentaries-rise-and-fall-of": {
+      "name": "Business documentaries: rise and fall of companies and corporate scandals",
+      "status": "setup",
+      "settings": {
+        "dailyVideoTarget": 1
+      },
+      "setup": {
+        "stage": "verdict",
+        "decision": null
       },
       "backlog": 0,
       "backlogByFormat": {
