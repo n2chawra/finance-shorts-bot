@@ -2,14 +2,14 @@
   "agent": "improver",
   "day": "2026-11-19",
   "startedAt": "2026-11-19T17:03:56Z",
-  "finishedAt": "2026-11-19T17:14:37Z",
-  "summary": "Answered all four of the owner's 19 Nov notes on three channels: the geography maps now trace the country being talked about with a glowing border line, and a flag-vs-colour test started there; the tech channel's faster-voice test started; and lint now checks that each Short does what its test group asks.",
+  "finishedAt": "2026-11-19T17:22:52Z",
+  "summary": "Answered all four of the owner's 19 Nov notes on three channels and, at the owner's word, applied them straight away instead of testing: every Paisa Panchayat Short shows the real face or logo in its hook, geography maps trace the country in a glowing line and cover it with its flag, and the tech channel speaks faster. Lint now also checks each Short follows its test group.",
   "decision": "acted",
-  "why": "Owner notes come first (policy). No experiment matured: Paisa Panchayat's cycle 1 has 2 of 8 Shorts a side with data (day 6 of 7); long tests 1 and 2 of 4. Checking the Squid Game note showed cycle 1's groups were partly mixed (3 of 10 on-side Shorts without the real photo, 1 of 8 off-side with one).",
+  "why": "Owner notes come first (policy), and the owner said live on 19 Nov: 'The feedback I have goes straight away, don't add it as a test.' No experiment matured: Paisa Panchayat's cycle 1 had 2 of 8 Shorts a side with data when it was closed; long tests 1 and 2 of 4.",
   "findings": [
     {
-      "title": "Paisa Panchayat cycle 1 (real-subject-first-frame) waits",
-      "detail": "2 of 8 Shorts a side have 48 h data; day 6 of 7 (on 9, off 2). Verdict due 2026-11-20, extended to 14 days if short."
+      "title": "Paisa Panchayat cycle 1 closed before its verdict",
+      "detail": "real-subject-first-frame had 2 of 8 Shorts a side with 48 h data (on 9, off 2) when the owner asked for feedback to apply straight away; adopted without a measured result."
     },
     {
       "title": "Cycle 1's groups were partly mixed",
@@ -30,27 +30,25 @@
   ],
   "changes": [
     {
-      "title": "Border trace on the maps (geography)",
-      "detail": "remotion/src/flat/map.tsx Fill.trace: a bright line with a glowing head runs round the country's border and closes, then stays lit; director.md: every country a line is about is traced on its word, and named people stand on the map as photo heads. Checked on MapSheet stills.",
+      "title": "Real photo or logo in every Short's hook (Paisa Panchayat)",
+      "detail": "Cycle 1 real-subject-first-frame closed early and adopted: writer.md 'The first frame', director.md, cycle/recipe.json. Copyrighted posters and show logos stay off.",
+      "branch": "agent/improver/2026-11-19",
+      "experiment": "real-subject-first-frame"
+    },
+    {
+      "title": "Border trace and flag fill on the maps (geography)",
+      "detail": "remotion/src/flat/map.tsx Fill.trace (a glowing line runs round the border and closes) and Fill.flag (the country covered by its flag, mainland bounds, 3:2 cover, thin countries stretched along their length); remotion/src/flat/flags.tsx draws about 60 flags (FlagSheet in Root); director.md. Checked on stills.",
       "branch": "agent/improver/2026-11-19"
     },
     {
-      "title": "Flag fill test (geography, cycle 1)",
-      "detail": "remotion/src/flat/flags.tsx draws ~60 national flags; `flag` on a map fill shows it in geo-flag-fill on-side videos (contract/flags.ts useFlag via StoryVideo's context). Judged on held after the hook.",
-      "branch": "agent/improver/2026-11-19",
-      "experiment": "geo-flag-fill"
-    },
-    {
-      "title": "Faster voice test (tech, cycle 1)",
-      "detail": "renderer/timeline/build.py: the channel's own Shorts speed x 1.09 on the on side (0.92 -> 1.0).",
-      "branch": "agent/improver/2026-11-19",
-      "experiment": "faster-voice"
+      "title": "Faster voice (tech)",
+      "detail": "generator/pack.py OWNER_PACE: the tech channel's Shorts speak at 1.0 instead of channel.json's 0.92; checklist counts words at ~164 a minute.",
+      "branch": "agent/improver/2026-11-19"
     },
     {
       "title": "Lint checks each Short follows its test group (all channels)",
-      "detail": "generator/experiments.py adherence_problems for tests with a `check` (hook-photo, code pattern), run by lint; director.md prints the video's side first. real-subject-first-frame now carries the hook-photo check.",
-      "branch": "agent/improver/2026-11-19",
-      "experiment": "real-subject-first-frame"
+      "detail": "generator/experiments.py adherence_problems for tests with a `check`; director.md prints the video's side first. 4 Shorts in cycle 1 had broken their group.",
+      "branch": "agent/improver/2026-11-19"
     }
   ],
   "nextCheck": "2026-11-20"
