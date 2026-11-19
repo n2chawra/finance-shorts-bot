@@ -21,7 +21,7 @@
         ]
       },
       "health": {
-        "at": "2026-11-19T10:18:25.870Z",
+        "at": "2026-11-19T10:33:52.232Z",
         "color": "red",
         "reason": "0 Shorts ready: under a day",
         "stayed": 0.3790569503980404,
@@ -63,7 +63,7 @@
         }
       },
       "health": {
-        "at": "2026-11-19T10:18:25.870Z",
+        "at": "2026-11-19T10:33:52.232Z",
         "color": "red",
         "reason": "1 Short ready: under a day",
         "stayed": null,
@@ -111,7 +111,7 @@
         }
       },
       "health": {
-        "at": "2026-11-19T10:18:25.870Z",
+        "at": "2026-11-19T10:33:52.232Z",
         "color": "red",
         "reason": "0 Shorts ready: under a day",
         "stayed": null,
@@ -127,14 +127,15 @@
       }
     },
     "business-documentaries-rise-and-fall-of": {
-      "name": "Business documentaries: rise and fall of companies and corporate scandals",
-      "status": "setup",
+      "name": "Craze & Crash",
+      "status": "active",
       "settings": {
         "longPerWeek": 2,
         "uploadTimes": [
           "17:47",
           "22:17"
         ],
+        "uploadsPaused": false,
         "longUploadDays": [
           2,
           5
@@ -142,18 +143,30 @@
         "longUploadTimes": [
           "21:17"
         ],
-        "dailyVideoTarget": 2
+        "dailyVideoTarget": 2,
+        "generationPaused": false,
+        "trendUploadTimes": []
       },
       "setup": {
-        "stage": "review",
+        "stage": "launched",
         "decision": {
           "at": "2026-11-19T07:05:01.133Z",
           "choice": "continue"
         }
       },
-      "backlog": 1,
+      "health": {
+        "at": "2026-11-19T10:33:52.232Z",
+        "color": "red",
+        "reason": "0 Shorts ready: under a day",
+        "stayed": null,
+        "bufferDays": 0,
+        "usageShare": 0.08,
+        "stayedBefore": null,
+        "weeksUnderFloor": 0
+      },
+      "backlog": 0,
       "backlogByFormat": {
-        "short": 1,
+        "short": 0,
         "long": 0
       }
     }

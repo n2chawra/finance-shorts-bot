@@ -1,5 +1,25 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
-  "notes": []
+  "open": 1,
+  "notes": [
+    {
+      "id": "cmwneubv20001ld09t9aq4ya6",
+      "kind": "stale",
+      "area": null,
+      "text": "Sample made at the old, slower narration pace; the owner wants 1.5x (voice speed 1.35 from 20 Nov)",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-19T10:31:36.370Z",
+      "video": {
+        "id": "v-20261119-04",
+        "title": "The Vacuum That Took 5,127 Tries Became Dyson",
+        "format": "short",
+        "status": "rejected",
+        "story": "founder_bet",
+        "shape": "the-long-shot",
+        "hookStyle": "shock_number",
+        "hook": "Dyson took {fact1} tries."
+      }
+    }
+  ]
 }
