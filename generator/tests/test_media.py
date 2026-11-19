@@ -347,3 +347,15 @@ def test_commons_category_filter(monkeypatch):
     got = commons.Commons().search("assembly line", "video", 5, category="Factories|Videos of industry")
     assert asked == ['assembly line filetype:video deepcat:"Factories"', 'assembly line filetype:video deepcat:"Videos of industry"']
     assert [g["ref"][14:] for g in got] == ["File:A.webm", "File:B.webm", "File:C.webm"]       # interleaved, no repeats
+
+
+def test_a_staged_src_path_counts_as_the_asset_and_must_be_this_channels(repo, monkeypatch):
+    _offline(monkeypatch)
+    library.fetch(DOC, "pexels:video:42", root=repo)
+    ok = {"beats": [{"params": {"layers": [{"kind": "footage", "src": f"media/{DOC}/pexels-video-42.mp4"}]}}]}
+    assert library.script_assets(ok) == {"pexels-video-42"}
+    assert library.check(DOC, ok, root=repo) == []
+    assert library.credit_lines(DOC, ok, root=repo)
+    other = {"beats": [{"params": {"layers": [{"kind": "footage", "src": "media/paisa-panchayat/pexels-video-42.mp4"}]}}]}
+    assert any("staged for the channel paisa-panchayat" in p for p in library.check(DOC, other, root=repo))
+    assert library.script_assets({"beats": [{"params": {"src": "real/enron.png"}}]}) == set()   # Commons photos: images.py

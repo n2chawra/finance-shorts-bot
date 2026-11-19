@@ -9,6 +9,10 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 
 ## Read first
 
+**A channel's own director prompt** (`channels/<channel>/prompts/director.md`) is appended to this one by
+`python -m generator.run prompt director --channel <channel>`; where they differ, the channel's wins. A
+`look.engine: "doc"` channel draws `"scene": "doc"` beats from params, with no flat kit and no code per beat.
+
 - **The reference**: `channels/paisa-panchayat/videos/v-directed-netflix/script.json` and its code in
   `remotion/src/videos/v-directed-netflix/` (Hook, Vault, City, Charges, Coins, Ship, Payoff). It is the
   video the owner approved. Copy how it works, never its places or pictures: every story gets its own.

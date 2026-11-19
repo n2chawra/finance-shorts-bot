@@ -94,3 +94,29 @@ def all_channels(root: Path = ROOT) -> list[str]:
     base = root / "channels"
     found = sorted(p.name for p in base.iterdir() if p.is_dir() and SLUG.match(p.name)) if base.is_dir() else []
     return found or [default()]
+
+
+PROMPT_NAME = re.compile(r"^[a-z][a-z0-9_-]*$")
+
+
+def prompt_files(name: str, slug: str | None = None, root: Path = ROOT) -> list[Path]:
+    """The files of an agent prompt: the shared generator/prompts/<name>.md, then the channel's own
+    channels/<slug>/prompts/<name>.md when it has one (its additions; where they differ, the channel's wins)."""
+    if not PROMPT_NAME.match(name):
+        raise ValueError(f"bad prompt name {name!r}")
+    files = [f for f in (root / "generator" / "prompts" / f"{name}.md", channel_root(slug, root) / "prompts" / f"{name}.md") if f.is_file()]
+    if not files:
+        raise ValueError(f"no prompt called {name!r} (generator/prompts/{name}.md)")
+    return files
+
+
+def prompt(name: str, slug: str | None = None, root: Path = ROOT) -> str:
+    """The prompt an agent follows: the shared one with the channel's own appended."""
+    parts = []
+    for f in prompt_files(name, slug, root):
+        text = f.read_text(encoding="utf-8").rstrip()
+        if parts:
+            text = (f"\n\n---\n\n<!-- {f.relative_to(root).as_posix()}: this channel's own additions; "
+                    f"where they differ from the shared prompt above, these win -->\n\n" + text)
+        parts.append(text)
+    return "".join(parts) + "\n"

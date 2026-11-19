@@ -80,7 +80,8 @@ python -m generator.run check-plan <id>
 `python -m generator.run failures --format long`. Write so that none of it happens again.
 
 **Directed 2D shots, like the Shorts** (owner, 2026-11-13: "also fix in long video same thing"): every
-beat except the `end` card is `"scene": "directed"`. Follow `generator/prompts/director.md` (Step 1: a
+beat except the `end` card is `"scene": "directed"`. (A channel whose `channel.json` `look.engine` is `doc`: every beat except the `end` card is
+`"scene": "doc"` instead; follow `python -m generator.run prompt director --channel <channel>`.) Follow `generator/prompts/director.md` (Step 1: a
 place, someone doing something, the figure on a thing, the camera and the moments on words; Step 2: one
 file per beat in `remotion/src/videos/<id>/` on the flat kit, `remotion/src/flat/`). A long video is
 1920×1080: compose for landscape (the reference `v-directed-netflix` is a Short; the same kit, places

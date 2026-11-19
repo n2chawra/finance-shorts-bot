@@ -208,6 +208,25 @@ def used(node) -> set[str]:
     return out
 
 
+# a staged file a doc beat names directly: media/<slug>/<asset id>.<ext> (what `stage` writes)
+SRC = re.compile(r"^media/([a-z0-9][a-z0-9-]*)/([a-z0-9][a-z0-9-]*)\.(?:mp4|webm|mov|jpe?g|png|webp)$")
+
+
+def src_paths(node) -> set[tuple[str, str]]:
+    """Every (channel slug, asset id) a script names as a staged path under media/ (a doc layer's `src`)."""
+    out: set[tuple[str, str]] = set()
+    if isinstance(node, str):
+        if m := SRC.match(node):
+            out.add((m.group(1), m.group(2)))
+    elif isinstance(node, dict):
+        for v in node.values():
+            out |= src_paths(v)
+    elif isinstance(node, list):
+        for v in node:
+            out |= src_paths(v)
+    return out
+
+
 def own_code_media(vid: str, root: Path = ROOT) -> set[str]:
     d = root / "remotion" / "src" / "videos" / vid
     names: set[str] = set()
@@ -217,14 +236,15 @@ def own_code_media(vid: str, root: Path = ROOT) -> set[str]:
 
 
 def script_assets(script: dict, vid: str | None = None, root: Path = ROOT) -> set[str]:
-    return used(script) | (own_code_media(vid, root) if vid else set())
+    return used(script) | {aid for _, aid in src_paths(script)} | (own_code_media(vid, root) if vid else set())
 
 
 def check(slug: str, script: dict, vid: str | None = None, root: Path = ROOT, files: bool = True) -> list[str]:
     """Problems that stop a render: an asset not in the licence log, a licence the channel can't use,
     an unreviewed asset, or a file missing from the cache."""
     log = load_log(slug, root)
-    out = []
+    out = [f"media/{other}/{aid}: staged for the channel {other}, not {slug} (use media/{slug}/<asset id>.<ext>)"
+           for other, aid in sorted(src_paths(script)) if other != slug]
     for aid in sorted(script_assets(script, vid, root)):
         r = log.get(aid)
         if not r:

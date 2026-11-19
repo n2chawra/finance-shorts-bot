@@ -13,6 +13,7 @@ records every step in videos/<id>/run.json.
     python -m generator.run release <id> [--commit] [--push]   upload a video shipped without --release
     python -m generator.run fail <id> --reason "..."
     python -m generator.run template-work <template> <action> [--enabled]
+    python -m generator.run prompt <name>                 generator/prompts/<name>.md + the channel's prompts/<name>.md
 
 Exit code 0 means the step passed; 1 means it failed and the reasons are printed.
 """
@@ -62,6 +63,50 @@ def _read(path: Path) -> dict:
 def _write(path: Path, data: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+
+
+def media_problems(script: dict, vid: str, root: Path = ROOT, stage: bool = True) -> list[str]:
+    """The licence gate (business documentaries, 2026-11-19): a script that names licensed media
+    (`media:`/`clip:`/`doc:` ids, or `src` paths under media/) passes the media `check` for its channel
+    (every asset in the licence log, a licence the channel may use, the file in the cache) and, with
+    `stage`, has its files copied into remotion/public/media/<slug>/ for the render. A script with no
+    media returns [] without touching anything, so channels without media are untouched."""
+    from .media import library
+    from .media.store import MediaError
+    if not library.script_assets(script, vid, root):
+        return []
+    slug = channels.current()
+    try:
+        if bad := library.check(slug, script, vid, root):
+            return [f"licence: {p}" for p in bad]
+        if stage:
+            library.stage(slug, script, vid, root)
+    except (MediaError, OSError) as e:
+        return [f"licence: {p}" for p in str(e).splitlines() if p.strip()]
+    return []
+
+
+def media_credits(description: str, script: dict, vid: str, root: Path = ROOT) -> str:
+    """The description with the credit lines of the licensed media the video uses (none: unchanged)."""
+    from .media import library
+    if not library.script_assets(script, vid, root):
+        return description
+    return library.with_credits(channels.current(), description, script, vid, root)
+
+
+DOC_SCENES = ("doc", "end")   # a doc channel's beats: documentary beats, and a long video's end card
+
+
+def engine_problems(script: dict, root: Path = ROOT) -> list[str]:
+    """Which beats the channel's engine draws (channel.json `look.engine`). A `doc` channel (the
+    business documentaries, remotion/src/doc) tells every beat as `"scene": "doc"` (a long video ends
+    on its `end` card); every other channel is unchanged (directed beats, generator/prompts/director.md)."""
+    if (pack.load(root=root).get("look") or {}).get("engine") != "doc":
+        return []
+    bad = [str(b.get("id")) for b in script.get("beats") or [] if b.get("scene") not in DOC_SCENES]
+    return [f"this channel's engine is doc (channel.json look.engine): every beat is \"scene\": \"doc\" "
+            f"(a long video's last beat the end card); not {', '.join(bad)} "
+            f"(python -m generator.run prompt director --channel {channels.current()})"] if bad else []
 
 
 def log_step(vid: str, agent: str, passed: bool, notes: list[str], root: Path = ROOT, started: str | None = None) -> None:
@@ -426,6 +471,7 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
     if not lo * 0.95 <= sec_ <= hi * 1.05:
         problems.append(f"length about {sec_:.0f} s on the estimated voice; it must land in {lo}–{hi} s")
     problems += remotion.custom_problems(vid)
+    problems += engine_problems(script, root) + media_problems(script, vid, root, stage=False)
     problems, advice_ = advice.split(problems)
     for n in advice_:
         print(n.upper()[:5] + n[5:])
@@ -459,6 +505,11 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
             _write(d / "script.json", script)
         # the video's A/B variants travel in the timeline, so scenes can read them and ship records them
         script["experiments"] = experiments.for_video(vid, script.get("template"), root)
+        # the channel's engine and the licence gate, before anything is drawn: every asset logged and
+        # allowed, then staged into remotion/public/media/<slug>/ (no media: nothing happens)
+        if bad := engine_problems(script, root) + media_problems(script, vid, root):
+            log_step(vid, "render", False, bad, root, started)
+            return bad
         # length, narration and sound are known before the video is drawn: a render that would fail
         # on them stops after the stills instead of after the whole video
         gate = lambda r: gate_problems(r, settings, plan_format(script))
@@ -524,6 +575,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     plan, script, report = _read(d / "plan.json"), _read(d / "script.json"), _read(d / "render.json")
     plan = numbers.fill_plan(plan, script)     # {placeholders} in the title and description become Python's figures
     plan["description"] = images.with_credits(plan["description"], script, vid, root)   # real photos are credited (CC BY/BY-SA)
+    plan["description"] = media_credits(plan["description"], script, vid, root)   # licensed footage, photos and filings too
     steps = json.loads((d / "run.json").read_text(encoding="utf-8"))
     checks = _latest_checks(steps)
     blockers = [f"{c} has not passed" for c in CHECKERS if checks.get(c, {}).get("status") != "ok"]
@@ -600,6 +652,9 @@ def commit_video(vid: str, message: str, push: bool = False, root: Path = ROOT) 
         paths.append(f"remotion/src/videos/{vid}")
     if images.REAL.is_dir():   # real photos it fetched, with their credits
         paths.append(images.REAL.relative_to(ROOT).as_posix())
+    licences = channels.channel_root(None, root) / "media" / "licences.json"
+    if licences.is_file():   # the licence log of the media it used (the files stay in the cache)
+        paths.append(licences.relative_to(root).as_posix())
     subprocess.run(["git", "add", *paths], cwd=root, check=True)
     subprocess.run(["git", "commit", "-q", "-m", message], cwd=root, check=True)
     if push:
@@ -738,6 +793,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--format", choices=("short", "long"), default=None)
     # research and Scout run this before writing new topics: stale, expired and weak unused topics go
     sub.add_parser("prune-feed").add_argument("--format", choices=("short", "long"), default="short")
+    sub.add_parser("prompt").add_argument("name")   # a shared prompt with the channel's own addition appended
     p = sub.add_parser("template-work")
     p.add_argument("template")
     p.add_argument("action")
@@ -784,6 +840,9 @@ def main(argv: list[str] | None = None) -> int:
         if a.cmd == "prune-feed":
             gone = topics.prune_file(history.of_format(history.load(), a.format), history.ist_day(history.now().isoformat()), fmt=a.format)
             print("\n".join(f"dropped {g}" for g in gone) or "nothing to drop")
+            return 0
+        if a.cmd == "prompt":
+            print(channels.prompt(a.name))
             return 0
         if a.cmd == "template-work":
             print(json.dumps(history.append_template_work(a.template, a.action, a.enabled)))

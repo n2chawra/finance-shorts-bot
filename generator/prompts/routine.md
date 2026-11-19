@@ -96,6 +96,13 @@ camera, moments, things and figures in the script, then code it in `remotion/src
 file per beat on the flat kit (`remotion/src/flat/`). A new place for every line, someone doing
 something, the figure on a thing in that place, a camera that moves, every change on a spoken word.
 
+**A channel with its own director prompt** (`channels/<channel>/prompts/director.md`): run
+`python -m generator.run prompt director --channel <channel>` and follow what it prints (the shared prompt
+with the channel's additions appended; where they differ, the channel's win). A channel whose `channel.json`
+`look.engine` is `doc` (the business documentaries) tells every beat as `"scene": "doc"` from params alone,
+with no code per beat and its media through `python -m generator.media`; lint and render fail any other scene,
+and the render fails any media not in the channel's licence log.
+
 When the script and the code are written, run `python -m generator.run lint <id>` (about twenty
 seconds, no voice or frames) and fix until it prints `ok`. Run it again after every later fix, before
 the stills.

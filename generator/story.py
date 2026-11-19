@@ -594,7 +594,7 @@ def list_problems(beats: list[dict]) -> list[str]:
     says "phones, clothes, cars and oil" needs an event and a moment for each."""
     out = []
     for b in beats:
-        if b.get("scene") != "directed":
+        if b.get("scene") not in ("directed", "doc"):   # a doc beat (the documentary channel) declares its moments too
             continue
         moments = {str(m.get("at", "")).lower() for m in ((b.get("params") or {}).get("moments") or []) if isinstance(m, dict)}
         words = {k.lower(): str((v or {}).get("word", k)).lower().strip(",.?!:;") for k, v in (b.get("events") or {}).items() if isinstance(v, dict)}

@@ -494,3 +494,85 @@ def test_a_long_video_over_the_maximum_fails_the_gate_with_words_to_cut() -> Non
     assert any("length 421 s is outside 300–400 s" in p and "cut about 63 spoken words" in p for p in problems)
     assert not any("length" in p for p in run.gate_problems({"duration_sec": 380}, settings, "long"))
     assert any("add about" in p for p in run.gate_problems({"duration_sec": 18}, settings, "short"))
+
+
+# ---------------- the licence gate (business documentaries, 2026-11-19) ----------------
+
+def _with_media(plan: dict) -> dict:
+    s = script_for(plan)
+    s["beats"][0]["params"]["src"] = f"media/{run.channels.current()}/pexels-video-42.mp4"   # a staged file a doc layer names
+    return s
+
+
+def test_render_fails_on_an_unlogged_asset_before_drawing(root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    from generator.media import library
+    seen: dict = {}
+    monkeypatch.setattr(library, "check", lambda slug, script, vid=None, root=None, files=True:
+                        seen.setdefault("check", (slug, vid)) and ["media:pexels-video-42 is not in channels/x/media/licences.json"])
+    monkeypatch.setattr(library, "stage", lambda *a, **k: pytest.fail("never staged when the check fails"))
+    monkeypatch.setattr(run.remotion, "render_story", lambda *a, **k: pytest.fail("never drawn when the check fails"))
+    plan = make_plan()
+    put(root, "plan.json", plan)
+    put(root, "script.json", _with_media(plan))
+    problems = run.render(VID, preview=True, root=root)
+    assert problems == ["licence: media:pexels-video-42 is not in channels/x/media/licences.json"]
+    assert seen["check"] == (run.channels.current(), VID)
+    steps = json.loads((root / "videos" / VID / "run.json").read_text(encoding="utf-8"))
+    assert steps[-1]["agent"] == "render" and steps[-1]["status"] != "ok"
+
+
+def test_render_stages_logged_media_and_ship_credits_it(root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    from generator.media import library
+    staged: list = []
+    monkeypatch.setattr(library, "check", lambda *a, **k: [])
+    monkeypatch.setattr(library, "stage", lambda slug, script, vid=None, root=None: staged.append((slug, vid)) or [])
+    monkeypatch.setattr(library, "credit_lines", lambda *a, **k: ["Trading floor by Jane Doe (Pexels License)"])
+    plan = make_plan()
+    put(root, "plan.json", plan)
+    put(root, "script.json", _with_media(plan))
+    run.run_number_check(VID, root)
+    run.record(VID, "fact_review", True, ["OK."], root)
+    assert not any(p.startswith("licence") for p in run.render(VID, preview=True, root=root))
+    assert staged == [(run.channels.current(), VID)]
+    run.record(VID, "qa_review", True, ["OK."], root)
+    (root / "videos" / VID / "video.mp4").write_bytes(b"x")
+    m = run.ship(VID, root=root)
+    assert m["description"].endswith("Trading floor by Jane Doe (Pexels License)")
+
+
+def test_a_script_without_media_never_touches_the_licence_log(root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    from generator.media import library
+    monkeypatch.setattr(library, "check", lambda *a, **k: pytest.fail("no media, no check"))
+    monkeypatch.setattr(library, "stage", lambda *a, **k: pytest.fail("no media, nothing staged"))
+    plan = make_plan()
+    script = script_for(plan)
+    assert run.media_problems(script, VID, root) == [] and run.media_credits("Story.", script, VID, root) == "Story."
+
+
+def test_a_doc_channel_tells_every_beat_as_a_doc_beat(root: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    script = {"beats": [{"id": "a", "scene": "doc"}, {"id": "b", "scene": "directed"}, {"id": "end", "scene": "end"}]}
+    assert run.engine_problems(script, root) == []                      # every other channel: unchanged
+    monkeypatch.setattr(run.pack, "load", lambda *a, **k: {"look": {"engine": "doc"}})
+    bad = run.engine_problems(script, root)
+    assert len(bad) == 1 and "not b " in bad[0] + " "
+    assert run.engine_problems({"beats": [{"id": "a", "scene": "doc"}, {"id": "end", "scene": "end"}]}, root) == []
+
+
+def test_a_channel_prompt_is_appended_to_the_shared_one(tmp_path: Path) -> None:
+    from generator import channels
+    (tmp_path / "generator" / "prompts").mkdir(parents=True)
+    (tmp_path / "generator" / "prompts" / "director.md").write_text("# Director\nshared\n", encoding="utf-8")
+    (tmp_path / "channels" / "docs" / "prompts").mkdir(parents=True)
+    (tmp_path / "channels" / "docs" / "prompts" / "director.md").write_text("# Doc director\nown\n", encoding="utf-8")
+    (tmp_path / "channels" / "other").mkdir(parents=True)
+    both = channels.prompt("director", "docs", tmp_path)
+    assert both.index("shared") < both.index("own") and "channels/docs/prompts/director.md" in both
+    assert channels.prompt("director", "other", tmp_path) == "# Director\nshared\n"
+    with pytest.raises(ValueError):
+        channels.prompt("../secrets", "docs", tmp_path)
+
+
+def test_the_documentary_channel_has_its_director_prompt() -> None:
+    from generator import channels
+    text = channels.prompt("director", "business-documentaries-rise-and-fall-of")
+    assert "# Director" in text and '"scene": "doc"' in text and "generator.media search" in text

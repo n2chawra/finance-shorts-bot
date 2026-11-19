@@ -209,6 +209,9 @@ def check(slug: str, root: Path = ROOT) -> list[str]:
         out.append("prompts/recipe.md: the champion recipe (length, topic kinds, opening rules, look) for the writer")
     if not (d / "prompts" / "lessons.md").is_file():
         out.append("prompts/lessons.md: start from the general lessons")
+    if pack["look"].get("engine") == "doc" and not (d / "prompts" / "director.md").is_file():
+        out.append("prompts/director.md: how the director turns each beat into a doc beat (look.engine doc; appended to "
+                   "generator/prompts/director.md by python -m generator.run prompt director)")
     backlog = _json(d / "cycle" / "backlog.json", {}) or {}
     if not backlog.get("candidates"):
         out.append("cycle/backlog.json: the weekly loop's first challengers from the research")
