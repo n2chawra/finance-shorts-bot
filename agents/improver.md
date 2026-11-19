@@ -13,7 +13,7 @@ the data isn't in yet; say so and stop early.
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
 START=$(date -u +%FT%TZ); echo "START=$START"   # run-time tracking: note this value (shell variables may not survive); it goes into the activity file as startedAt
 DAY=$(TZ=Asia/Kolkata date +%F); DOW=$(TZ=Asia/Kolkata date +%a)
-for p in python python3 /usr/bin/python3; do $p -c "import PIL, numpy, scipy, jsonschema" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
+for p in python python3 /usr/bin/python3; do $p -c "from PIL import Image; import numpy, scipy, jsonschema" 2>/dev/null && PY=$p && break; done; echo "PY=$PY"
 ```
 If no interpreter has the packages: `python3 -m pip install -q pillow numpy scipy jsonschema`
 (add `--break-system-packages` if pip refuses). Only when tonight's change touches Remotion, run
