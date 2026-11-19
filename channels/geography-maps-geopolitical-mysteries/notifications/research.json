@@ -1,4 +1,7 @@
 {"notifications": [
+  {"key": "research-daily-merge-limit-shared", "severity": "warning", "title": "Paisa Panchayat's research is being blocked by the other channels' research runs",
+   "detail": "scripts/guard.py allows the research agent 2 merges per IST day (MAX_MERGES_PER_DAY), counted across all channels. The geography and tech research runs merge just after midnight IST, so Paisa Panchayat's research at about 22:25 IST hits the limit. Its branch agent/research/2026-11-20 was blocked on 19 Nov ('the research agent already merged 2 changes today'), and it will happen again every night while three channels run research. Agents may not loosen the guard, so only you can change this.",
+   "fix": "1. In scripts/guard.py, count merges_today per agent AND channel for the per-channel agents (research, reviewer, scout, studio), e.g. match the branch suffix /<slug>, or raise MAX_MERGES_PER_DAY for them to 2 per channel. 2. Re-run the Agent merge workflow on agent/research/2026-11-20 so Paisa Panchayat's 20 Nov report and topics land."},
   {"key": "skill-permission-scheduled", "severity": "info", "title": "Claude Code 2.1.325: scheduled runs now ask before skills with allowed-tools or hooks",
    "detail": "If a routine that uses a skill (motion-direction, remotion-best-practices) ever stops waiting for approval, this change is why. Nothing has stalled so far.",
    "fix": "1. Only if a routine stalls on a skill: add Skill(<name>) to permissions.allow in .claude/settings.json. 2. Re-run the routine."}

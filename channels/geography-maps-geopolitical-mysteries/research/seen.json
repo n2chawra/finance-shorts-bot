@@ -1,5 +1,33 @@
 {
-  "claudeCode": {"latest": "2.1.327", "checked": "2026-11-19", "notes": ["2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow"]},
-  "sources": {"cia-world-factbook": "retired (live pages show a sunset notice), seen 2026-11-19"},
-  "references": ["oTTBp0g4eXw", "4UXbd7uvICo", "JPP3swF5s7k", "055wKnWeerQ", "LYTroyEiJfw", "9Lljm9uzah4", "mGOZcCaRDTc"]
+  "claudeCode": {
+    "latest": "2.1.328",
+    "checked": "2026-11-20",
+    "notes": [
+      "2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow",
+      "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline."
+    ]
+  },
+  "sources": {
+    "cia-world-factbook": "retired (live pages show a sunset notice), seen 2026-11-19",
+    "worldbank-api": "api.worldbank.org/v2 JSON works from routines (data.worldbank.org pages return 403 to fetch), seen 2026-11-20",
+    "britannica": "403 to fetch from routines; use Wikipedia or official pages, seen 2026-11-20"
+  },
+  "references": [
+    "oTTBp0g4eXw",
+    "4UXbd7uvICo",
+    "JPP3swF5s7k",
+    "055wKnWeerQ",
+    "LYTroyEiJfw",
+    "9Lljm9uzah4",
+    "mGOZcCaRDTc",
+    "IAEfIM909wA",
+    "R1zt38xJ_V0",
+    "ceoy7KOLqIw",
+    "c8xJS1xuu9U",
+    "_CLw3XwiaNA",
+    "7CzFh2qcnzU",
+    "v2SCcxmWckI",
+    "7b8ggcaofoQ",
+    "W96FDhzXpkA"
+  ]
 }
