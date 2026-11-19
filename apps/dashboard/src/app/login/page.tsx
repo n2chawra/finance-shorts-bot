@@ -1,25 +1,35 @@
 "use client";
 
-import { ArrowRight, Eye, EyeOff, Loader2, Lock, ShieldCheck } from "lucide-react";
+import { ArrowRight, Eye, EyeOff, LayoutGrid, Loader2, Lock, ShieldCheck } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import billionSwitches from "@/assets/channels/a-billion-switches.png";
+import crazeAndCrash from "@/assets/channels/craze-and-crash.png";
 import paisaPanchayat from "@/assets/channels/paisa-panchayat.png";
 import whyAtlas from "@/assets/channels/the-why-atlas.png";
 import { LogoMark } from "@/components/brand";
+import { CHANNEL_COOKIE } from "@/lib/channels";
 
 /**
  * The front door of the multi-channel studio. Static names and logos only (bundled with the page,
  * served from /_next/static): nothing about a channel is fetched before sign-in.
  */
-const CHANNELS: { name: string; niche: string; logo: StaticImageData }[] = [
-  { name: "Paisa Panchayat", niche: "Money", logo: paisaPanchayat },
-  { name: "The Why Atlas", niche: "Maps", logo: whyAtlas },
-  { name: "A Billion Switches", niche: "Tech", logo: billionSwitches },
+const CHANNELS: { id: string; name: string; niche: string; logo: StaticImageData }[] = [
+  { id: "paisa-panchayat", name: "Paisa Panchayat", niche: "Money", logo: paisaPanchayat },
+  { id: "geography-maps-geopolitical-mysteries", name: "The Why Atlas", niche: "Maps", logo: whyAtlas },
+  { id: "how-tech-and-ai-actually-work-chips-ai-p", name: "A Billion Switches", niche: "Tech", logo: billionSwitches },
+  { id: "business-documentaries-rise-and-fall-of", name: "Craze & Crash", niche: "Business", logo: crazeAndCrash },
 ];
+
+/** What sign-in opens first: "all" (every channel side by side) or one channel's own pages. Remembered on
+ * this device (owner, 2026-11-19: "from login I set which channel I see first, so I don't switch after"). */
+const OPEN_FIRST = "open-first";
+const YEAR = 60 * 60 * 24 * 365;
+const readCookie = (name: string) => document.cookie.split("; ").find((c) => c.startsWith(`${name}=`))?.slice(name.length + 1);
+const ALL_CHANNELS = "/portfolio";
 
 function Login() {
   const router = useRouter();
@@ -28,6 +38,11 @@ function Login() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [show, setShow] = useState(false);
+  const [first, setFirst] = useState("all");
+  useEffect(() => {
+    const saved = decodeURIComponent(readCookie(OPEN_FIRST) ?? "all");
+    if (saved === "all" || CHANNELS.some((c) => c.id === saved)) setFirst(saved);
+  }, []);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,8 +52,11 @@ function Login() {
     try {
       const res = await fetch("/api/login", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ password }) });
       if (res.ok) {
-        // only same-site paths, never an absolute URL from the query string
-        router.replace(next && next.startsWith("/") && !next.startsWith("//") ? next : "/");
+        document.cookie = `${OPEN_FIRST}=${encodeURIComponent(first)}; path=/; max-age=${YEAR}; samesite=lax`;
+        if (first !== "all") document.cookie = `${CHANNEL_COOKIE}=${encodeURIComponent(first)}; path=/; max-age=${YEAR}; samesite=lax`;
+        // only same-site paths, never an absolute URL from the query string; the default landing follows the pick
+        const asked = next && next.startsWith("/") && !next.startsWith("//") ? next : ALL_CHANNELS;
+        router.replace(asked === ALL_CHANNELS && first !== "all" ? "/" : asked);
         router.refresh();
         return;
       }
@@ -62,27 +80,35 @@ function Login() {
       </header>
 
       <main className="relative flex flex-1 items-center justify-center px-4 py-10 sm:px-8">
-        <div className="w-full max-w-[420px] animate-slide-up">
+        <div className="w-full max-w-[560px] animate-slide-up">
           <div className="text-center">
             <h1 className="text-[30px] font-semibold leading-tight tracking-[-0.03em] sm:text-[34px]">Every channel, one studio</h1>
             <p className="mt-2 text-[14.5px] leading-relaxed text-ink2">Videos, uploads, numbers and agents for all your channels, in one place.</p>
           </div>
 
-          {/* the live channels */}
-          <ul aria-label="Channels in this studio" className="mt-7 grid grid-cols-3 gap-2">
-            {CHANNELS.map(({ name, niche, logo }) => (
-              <li key={name} className="flex flex-col items-center gap-2 rounded-xl border border-ring bg-surface/70 px-2 py-3 text-center shadow-xs backdrop-blur-sm">
-                <Image src={logo} alt="" width={44} height={44} className="size-11 rounded-full ring-2 ring-surface" />
-                <span className="min-w-0">
-                  <span className="block text-[12.5px] font-medium leading-tight">{name}</span>
-                  <span className="mt-0.5 block text-[11.5px] text-muted">{niche}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
+          {/* the live channels: pick the one sign-in opens first */}
+          <p id="open-first" className="mt-7 text-center text-[12.5px] font-medium text-ink2">Open first</p>
+          <div role="radiogroup" aria-labelledby="open-first" className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-5">
+            {[{ id: "all", name: "All channels", niche: "Side by side", logo: null as StaticImageData | null }, ...CHANNELS].map(({ id, name, niche, logo }) => {
+              const on = first === id;
+              return (
+                <button key={id} type="button" role="radio" aria-checked={on} onClick={() => setFirst(id)}
+                  className={`flex flex-col items-center gap-2 rounded-xl border px-2 py-3 text-center shadow-xs backdrop-blur-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+                    on ? "border-brand bg-brand-soft" : "border-ring bg-surface/70 hover:border-ring-strong"}`}>
+                  {logo
+                    ? <Image src={logo} alt="" width={44} height={44} className="size-11 rounded-full ring-2 ring-surface" />
+                    : <span className="grid size-11 place-items-center rounded-full bg-surface-3 ring-2 ring-surface"><LayoutGrid aria-hidden className="size-5 text-ink2" /></span>}
+                  <span className="min-w-0">
+                    <span className="block text-[12.5px] font-medium leading-tight">{name}</span>
+                    <span className="mt-0.5 block text-[11.5px] text-muted">{niche}</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
 
           {/* the password card */}
-          <form onSubmit={submit} noValidate className="mt-5 rounded-2xl border border-ring bg-surface p-6 shadow-sm sm:p-7">
+          <form onSubmit={submit} noValidate className="mx-auto mt-5 max-w-[420px] rounded-2xl border border-ring bg-surface p-6 shadow-sm sm:p-7">
             <div className="flex items-center gap-3">
               <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-brand-soft text-brand-text"><Lock aria-hidden className="size-4" /></span>
               <div>
