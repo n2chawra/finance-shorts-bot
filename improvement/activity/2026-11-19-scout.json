@@ -1,0 +1,20 @@
+{
+  "agent": "scout",
+  "day": "2026-11-19",
+  "startedAt": "2026-11-19T04:08:10Z",
+  "finishedAt": "2026-11-19T04:12:48Z",
+  "summary": "Added two long topics from top-third Shorts: the $2 billion jackpot that paid half, and why billionaires take tiny salaries. I studied script structure and found that the long-video README still asks for 6-9 chapters in what is now a 3-4 minute video.",
+  "decision": "acted",
+  "why": "The code feed had 5 usable topics. The lottery Short (#12 of 36 by stayed to watch) and the Bezos salary Short (#8) had no long topic yet. The never-sell topic's Short fell to #23. L-20261111-01 ran 380 s with 6 chapters because the README and settings still describe the old length.",
+  "findings": [
+    {"title": "README chapter count is out of date", "detail": "6-9 chapters and a recap every 2-3 minutes, in a 180-240 s video. L-20261111-01 came out at 6 chapters and 380 s."},
+    {"title": "Six identical chapters and no loop across the video", "detail": "Every chapter in L-20261111-01 had the same 8-beat rhythm, and its hook answered the title."},
+    {"title": "Long settings still say 1 a week, up to 900 s", "detail": "The owner's rules are 2 a week at 180-240 s. Only the owner can change settings, so this is in the notifications."}
+  ],
+  "changes": [
+    {"title": "2 topics added, 3 rejected, 1 marked used", "detail": "Added: why-jackpot-not-two-billion and why-billionaires-tiny-salary. Rejected: never-sell, house-costs-twice and signs-secretly-rich. 7 topics are usable in code.", "branch": "agent/scout/2026-11-19"},
+    {"title": "4 backlog items", "detail": "2 adopt, 1 experiment and 1 owner item, all on long-video structure.", "branch": "agent/scout/2026-11-19"}
+  ],
+  "nextCheck": "2026-11-23",
+  "links": [{"label": "Report", "url": "channels/paisa-panchayat/longform/2026-11-19.md"}]
+}

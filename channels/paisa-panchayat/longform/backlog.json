@@ -2,6 +2,50 @@
   "note": "Long-form craft findings and bugs, ranked. Written by Scout; the improver applies recipe, scene and design items, Studio follows script items.",
   "items": [
     {
+      "id": "2026-11-19-readme-three-four-chapters",
+      "kind": "craft",
+      "title": "long_story README still asks for 6-9 chapters and 4+ levels in a 3-4 minute video",
+      "detail": "renderer/templates/long_story/README.md 'Pace and length' says 'one chapter per item (6-9)' and 'a recap-and-tease every 2-3 minutes'; 'The story spine' step 2 says structure.levels '4 or more'. Since 12 Nov the length is 180-240 s and scout.md asks for 3-4 items. The last long video, L-20261111-01 ('What does $1 billion actually look like?'), followed the README: 6 chapters, 63 beats, 380 s, 140 s over the owner's 240 s. Change: 3-4 chapters (structure.levels 3-4), about 45-55 s each, the strongest last and longest; exactly one recap-and-tease, at 1:30-1:50; 36-50 beats. Then make generator/story.py's long checks agree (levels 3-4) with a test. We'll know it worked when the next long video's render.json is 180-240 s with 3-4 chapters.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-19-chapters-are-the-shorts-questions",
+      "kind": "craft",
+      "title": "Each chapter answers one question the Short left open, and its card asks it",
+      "detail": "Every long video now expands one of our Shorts, and the viewer who clicks arrives with the Short's open questions. Most long topics' angle already lists 3-4 of them (Costco, casino, lottery, salary). The writer should make each chapter one of those questions, asked in the viewer's voice on the chapter card ('So why is his pay so small?') and answered with one figure before the tease asks the next. L-20261111-01 instead used labels ('Way one. Spend it.') and an identical 8-beat rhythm in all six chapters (question, figure, comparison, aside, tease). Test: half of the long videos use question cards (script.chapter titles phrased as the topic's questions); judged on average view % and the hold at each chapter start (2026-10-20-chapter-hold-metric) once impressions data exists.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-19-one-loop-video-long",
+      "kind": "craft",
+      "title": "Keep one question open from the hook to the payoff, not only chapter to chapter",
+      "detail": "In L-20261111-01 each tease opens a loop that the next chapter closes inside 60 s, so nothing carries across the whole video; the title's question ('what does a billion look like?') is answered in the hook. Rule for the writer: the hook raises the title's question, the promise teases the last chapter's mystery ('and the last one is how a man with a $1 salary pays for everything'), and that answer comes only in the last chapter (already the rule in 2026-10-20-resolve-late and 2026-11-02-hook-keeps-the-answer; this item makes the promise line carry it). Studio follows it when writing; the QA reviewer checks that the promise names the last chapter's mystery and the hook does not answer it.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-19-long-settings-out-of-date",
+      "kind": "bug",
+      "title": "Settings still say 1 long video a week, up to 900 s",
+      "detail": "config/settings.json (synced from the dashboard) has longPerWeek 1 and longLengthMaxSec 900, but the owner set two long videos a week (Wed and Fri, 16 Nov) at 180-240 s (12 Nov). state --format long therefore targets 1 a week, and a 380 s video passes the length check. Only the owner changes settings: see notifications/scout.json.",
+      "where": "script",
+      "route": "owner",
+      "priority": "high",
+      "found": "2026-11-19",
+      "status": "open"
+    },
+    {
       "id": "2026-10-18-maths-loan-tenure",
       "kind": "craft",
       "title": "Add a loan_prepay maths kind (reduce EMI vs reduce tenure, and tenure after a rate rise)",
