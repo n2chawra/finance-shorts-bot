@@ -1,12 +1,14 @@
 "use client";
 
 import { ArrowRight, Award, BadgeDollarSign, ExternalLink, FlaskConical, LayoutGrid, Scale, Trophy } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { MultiLineChart, Sparkline } from "@/components/charts";
 import { CAT } from "@/components/studio-charts";
 import { Badge, Card, Delta, Empty, ErrorNote, Loading, Meter, PageHeader, Stagger, type Tone } from "@/components/ui";
 import { fmtCompact, fmtDateTime, fmtDayKey, fmtNum, fmtRelative } from "@/lib/format";
+import { CHANNEL_BRAND, brandName } from "@/lib/channel-brand";
 import type { PortfolioChannel, PortfolioVideo, VerdictCall } from "@/lib/portfolio";
 import { usePortfolio, useSwitchChannel } from "@/lib/queries";
 
@@ -21,7 +23,9 @@ const change = (a: number | null, b: number | null) => (a === null || b === null
 const signed = (n: number) => `${n > 0 ? "+" : ""}${fmtNum(n)}`;
 const ytUrl = (v: PortfolioVideo) => (v.youtubeId ? (v.format === "short" ? `https://www.youtube.com/shorts/${v.youtubeId}` : `https://youtu.be/${v.youtubeId}`) : null);
 
-function Avatar({ name, color, dim }: { name: string; color: string; dim?: boolean }) {
+function Avatar({ id, name, color, dim }: { id: string; name: string; color: string; dim?: boolean }) {
+  const logo = CHANNEL_BRAND[id]?.logo;
+  if (logo) return <Image src={logo} alt="" width={40} height={40} className={`size-10 shrink-0 rounded-xl object-cover shadow-xs ${dim ? "opacity-50" : ""}`} />;
   const initials = name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]!.toUpperCase()).join("");
   return <span aria-hidden className={`grid size-10 shrink-0 place-items-center rounded-xl text-[14px] font-semibold text-white shadow-xs ${dim ? "opacity-50" : ""}`} style={{ background: color }}>{initials}</span>;
 }
@@ -61,16 +65,16 @@ function ChannelCard({ c, color }: { c: PortfolioChannel; color: string }) {
   return (
     <Card className={setup ? "opacity-70" : ""}>
       <div data-testid={`portfolio-${c.id}`} className="flex items-start gap-3">
-        <Avatar name={c.name} color={color} dim={setup} />
+        <Avatar id={c.id} name={brandName(c)} color={color} dim={setup} />
         <div className="min-w-0 flex-1">
-          <h2 className="truncate text-[15px] font-semibold leading-tight tracking-[-0.01em]">{c.name}</h2>
+          <h2 title={c.name} className="line-clamp-2 text-[15px] font-semibold leading-tight tracking-[-0.01em]">{brandName(c)}</h2>
           <div className="mt-1.5 flex flex-wrap gap-1.5">
             <Badge tone={VERDICT_TONE[c.verdict.call]} dot>{c.verdict.call}</Badge>
             {setup ? <Badge tone="info">Stage: {c.stage}</Badge> : health ? <Badge tone={health.tone} dot>{health.label}</Badge> : <Badge>No health check yet</Badge>}
             {c.status === "paused" && <Badge tone="warning">Paused</Badge>}
           </div>
         </div>
-        <button type="button" onClick={open} aria-label={`Open ${c.name}`}
+        <button type="button" onClick={open} aria-label={`Open ${brandName(c)}`}
           className="flex shrink-0 items-center gap-1 rounded-md px-1.5 py-1 text-[12.5px] font-medium text-ink2 transition-colors hover:bg-surface-3 hover:text-ink">Open<ArrowRight aria-hidden className="size-3.5" /></button>
       </div>
       <p className="mt-3 text-[12.5px] leading-snug text-ink2">{c.verdict.why}</p>
@@ -124,7 +128,7 @@ const COLS: Col[] = [
 ];
 
 function Comparison({ live, colors, days, daily }: { live: PortfolioChannel[]; colors: Map<string, string>; days: string[]; daily: Record<string, (number | null)[]> }) {
-  const series = live.map((c) => ({ key: c.id, label: c.name, color: colors.get(c.id)!, values: daily[c.id] ?? days.map(() => null) }));
+  const series = live.map((c) => ({ key: c.id, label: brandName(c), color: colors.get(c.id)!, values: daily[c.id] ?? days.map(() => null) }));
   const leaders = new Map(COLS.map((col) => {
     const vals = live.map((c) => col.get(c)).filter((v): v is number => v !== null);
     return [col.key, vals.length > 1 ? Math.max(...vals) : null];
@@ -150,7 +154,7 @@ function Comparison({ live, colors, days, daily }: { live: PortfolioChannel[]; c
           <tbody>
             {live.map((c) => (
               <tr key={c.id} className="border-b border-line last:border-0">
-                <td className="px-5 py-2.5"><span className="flex items-center gap-2 font-medium"><span aria-hidden className="size-2 rounded-full" style={{ background: colors.get(c.id) }} />{c.name}</span></td>
+                <td className="px-5 py-2.5"><span className="flex items-center gap-2 font-medium"><span aria-hidden className="size-2 rounded-full" style={{ background: colors.get(c.id) }} />{brandName(c)}</span></td>
                 {COLS.map((col) => {
                   const v = col.get(c);
                   const lead = v !== null && leaders.get(col.key) === v;
@@ -176,7 +180,7 @@ function Working({ live, colors }: { live: PortfolioChannel[]; colors: Map<strin
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {live.map((c) => (
           <div key={c.id} className="rounded-xl border border-ring bg-surface-2 p-3">
-            <div className="mb-2 flex items-center gap-2 px-2 text-[13.5px] font-semibold"><span aria-hidden className="size-2 rounded-full" style={{ background: colors.get(c.id) }} />{c.name}</div>
+            <div className="mb-2 flex items-center gap-2 px-2 text-[13.5px] font-semibold"><span aria-hidden className="size-2 rounded-full" style={{ background: colors.get(c.id) }} />{brandName(c)}</div>
             {c.top14.length ? <div className="space-y-0.5">{c.top14.map((v) => <VideoRow key={v.id} v={v} />)}</div> : <p className="px-2 py-3 text-[12.5px] text-muted">Nothing published in the last 14 days.</p>}
             <div className="mt-2 border-t border-line px-2 pt-2.5 text-[12px] leading-snug">
               <span className="flex items-center gap-1.5 font-medium text-ink2"><FlaskConical aria-hidden className="size-3.5" />Weekly loop{c.loop?.cycle != null ? ` · cycle ${c.loop.cycle}` : ""}</span>
@@ -216,7 +220,7 @@ function Monetisation({ live, colors }: { live: PortfolioChannel[]; colors: Map<
           const pace = c.subs28 && c.subs28 > 0 && c.subs !== null && c.subs < 1000 ? Math.ceil((1000 - c.subs) / c.subs28) : null;
           return (
             <div key={c.id} className="space-y-3.5 rounded-xl border border-ring bg-surface-2 p-4">
-              <div className="flex items-center gap-2 text-[13.5px] font-semibold"><span aria-hidden className="size-2 rounded-full" style={{ background: colors.get(c.id) }} />{c.name}</div>
+              <div className="flex items-center gap-2 text-[13.5px] font-semibold"><span aria-hidden className="size-2 rounded-full" style={{ background: colors.get(c.id) }} />{brandName(c)}</div>
               <Goal label="Subscribers" value={c.ypp.subs} max={1000} fmt={fmtNum}
                 note={pace !== null ? `about ${pace} month${pace === 1 ? "" : "s"} at the last 28 days' pace (estimate)` : "estimate: net gained in 12 months"} />
               <Goal label="Watch hours, long (12 mo)" value={c.ypp.watchHoursLong365} max={4000} fmt={(n) => fmtNum(n)} note="estimate" />
