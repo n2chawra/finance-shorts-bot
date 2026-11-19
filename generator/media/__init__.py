@@ -2,7 +2,8 @@
 
 For `business-documentaries-rise-and-fall-of` only, the owner lifted the "Commons only, no downloads"
 rule (2026-11-19): it may use licensed stock (Pexels, Pixabay), Wikimedia Commons photos and video,
-and SEC EDGAR filings as document props. Every other channel keeps Commons only
+public-domain film from the Internet Archive (Prelinger), Library of Congress photos and film, NASA
+media, and SEC EDGAR filings as document props. Commons, archive, loc, nasa and edgar need no key. Every other channel keeps Commons only
 (`generator/images.py`); `STOCK_CHANNELS` below is the switch.
 
 Files live in a cache outside git (MEDIA_CACHE, default E:\\media-cache\\<slug>\\) and are copied into
@@ -13,7 +14,11 @@ what it may not be used for, and the file's sha256. A script names an asset as `
 record or a licence the channel can't use.
 
     python -m generator.media search --channel <slug> --kind video "trading floor"
+    python -m generator.media search --channel <slug> --source commons --category "Factories" "assembly line"
+    python -m generator.media search --channel <slug> --source archive "supermarket"     (Prelinger by default)
+    python -m generator.media search --channel <slug> --source loc --kind photo "general store"
     python -m generator.media fetch  --channel <slug> pexels:video:856172
+    python -m generator.media fetch  --channel <slug> archive:video:<identifier>    (also loc:photo:<id>, nasa:photo:<nasa_id>)
     python -m generator.media edgar  --channel <slug> --cik LEH --form 10-K --year 2008 --find "going concern"
     python -m generator.media credits --channel <slug> <video id>
     python -m generator.media check   --channel <slug> <script.json>

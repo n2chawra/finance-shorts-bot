@@ -1,4 +1,42 @@
 {
+  "archive-video-shopping1957": {
+    "id": "archive-video-shopping1957",
+    "ref": "archive:video:Shopping1957",
+    "source": "archive",
+    "sourceId": "Shopping1957",
+    "kind": "video",
+    "title": "Shopping Can Be Fun: A New Concept in Merchandising (1957)",
+    "sourceUrl": "https://archive.org/details/Shopping1957",
+    "downloadUrl": "https://archive.org/download/Shopping1957/Shopping1957.mp4",
+    "author": "Kelley (George H.)",
+    "authorUrl": "",
+    "licence": {
+      "name": "Public domain (CC Public Domain Dedication)",
+      "id": "pd",
+      "url": "http://creativecommons.org/licenses/publicdomain/",
+      "asOf": "2026-11-19",
+      "snapshotSha256": "d47040209c4dc8791c6e15cd743714f91cc6f9ae48d170cf8fa038265e935857",
+      "verdict": "ok",
+      "reason": "Public domain (CC Public Domain Dedication): public domain / CC0 / CC BY on the item (archive.org gives no warranty)"
+    },
+    "attribution": {
+      "required": false,
+      "text": "Film: Shopping Can Be Fun: A New Concept in Merchandising (1957), Kelley (George H.), Public domain (CC Public Domain Dedication), via the Internet Archive (https://archive.org/details/Shopping1957)"
+    },
+    "restrictions": [
+      "mute: soundtrack may be copyrighted (music and narration in a public-domain film can still be owned)",
+      "archive.org gives no warranty on rights: keep the item page and licence as logged",
+      "the item's description and metadata are not ours to copy; use the picture only"
+    ],
+    "sourceFlags": [],
+    "sha256": "67b78e325226f3a7a576abf9250c8e313775f4356d9d845c1572e5428f9518cd",
+    "path": "archive/archive-video-shopping1957.mp4",
+    "fetchedAt": "2026-11-19T07:44:56+00:00",
+    "bytes": 107061854,
+    "width": 640,
+    "height": 480,
+    "durationSec": 1032.56
+  },
   "commons-photo-enron-complex-278aba6c": {
     "id": "commons-photo-enron-complex-278aba6c",
     "ref": "commons:photo:File:Enron Complex.jpg",
@@ -155,5 +193,42 @@
     "pages": 159,
     "find": "Selected Financial Data",
     "of": "edgar-806085-0001104659-08-005476"
+  },
+  "nasa-photo-maf-19671005-hassembly": {
+    "id": "nasa-photo-maf-19671005-hassembly",
+    "ref": "nasa:photo:MAF_19671005-HAssembly",
+    "source": "nasa",
+    "sourceId": "MAF_19671005-HAssembly",
+    "kind": "photo",
+    "title": "Saturn V Boosters in Production at Michoud Assembly Facility (1967-10-05)",
+    "sourceUrl": "https://images.nasa.gov/details/MAF_19671005-HAssembly",
+    "downloadUrl": "https://images-assets.nasa.gov/image/MAF_19671005-HAssembly/MAF_19671005-HAssembly~large.jpg",
+    "author": "NASA",
+    "authorUrl": "",
+    "licence": {
+      "name": "NASA media (public domain, US government work)",
+      "id": "pd-usgov",
+      "url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "asOf": "2026-11-19",
+      "snapshotSha256": "b12897e03f31d39c2c528d689a63800344d6d7d10cd850e11719739d95605e81",
+      "verdict": "ok",
+      "reason": "NASA media: US government work, not copyrighted"
+    },
+    "attribution": {
+      "required": false,
+      "text": "Photo: Saturn V Boosters in Production at Michoud Assembly Facility (1967-10-05), NASA (https://images.nasa.gov/details/MAF_19671005-HAssembly)"
+    },
+    "restrictions": [
+      "the NASA insignia, worm and seal are not licensed: never shown as our branding",
+      "never imply NASA endorses the channel, a product or a company",
+      "identifiable people (astronauts, staff): no commercial endorsement use"
+    ],
+    "sourceFlags": [],
+    "sha256": "e99679f8dc33dc09cc0dcfce4771160b67ea64e7c613e413ae1817a2f7ebc927",
+    "path": "nasa/nasa-photo-maf-19671005-hassembly.jpg",
+    "fetchedAt": "2026-11-19T07:45:41+00:00",
+    "bytes": 438218,
+    "width": 1920,
+    "height": 1527
   }
 }

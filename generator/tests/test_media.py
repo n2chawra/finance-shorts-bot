@@ -168,3 +168,182 @@ def test_filing_pages_split_and_found():
     assert library.parse_ref("commons:photo:File:A b.jpg") == ("commons", "photo", "File:A b.jpg")
     assert library.parse_ref("pexels:42") == ("pexels", "video", "42")
     assert library.asset_id("edgar", "document", "806085/0001104659-08-005476") == "edgar-806085-0001104659-08-005476"
+
+
+# ---- keyless sources: Internet Archive, Library of Congress, NASA; Commons categories ---------------------
+
+class _Resp:
+    def __init__(self, body): self.body = json.dumps(body).encode()
+    def read(self, *a): return self.body
+    def __enter__(self): return self
+    def __exit__(self, *a): return False
+
+
+def _serve(monkeypatch, routes: dict, calls: list | None = None):
+    """Answer store.open_url from {url substring: json body}; record each URL asked for."""
+    def fake_open(url, headers, bucket, interval, timeout=60):
+        if calls is not None:
+            calls.append(url)
+        for k, v in routes.items():
+            if k in url:
+                return _Resp(v)
+        raise AssertionError(f"unexpected URL {url}")
+    monkeypatch.setattr(store, "open_url", fake_open)
+
+
+def _fake_download(log: list | None = None):
+    def fake(url, dest, headers, bucket, interval, max_bytes=None):
+        if log is not None:
+            log.append((url, max_bytes))
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(b"bytes")
+        return dest
+    return fake
+
+
+ARCHIVE_META = {
+    "metadata": {"identifier": "SuperMkt1955", "title": "Supermarket Story", "creator": "Jam Handy", "year": "1955",
+                 "mediatype": "movies", "collection": ["prelinger", "movies"], "sound": "sound",
+                 "licenseurl": "http://creativecommons.org/publicdomain/mark/1.0/"},
+    "files": [{"name": "SuperMkt1955.mpeg", "format": "MPEG2", "size": "900000000", "width": "640", "height": "480"},
+              {"name": "SuperMkt1955.mp4", "format": "MPEG4", "size": "700000000", "width": "640", "height": "480", "length": "612.4"},
+              {"name": "SuperMkt1955_512kb.mp4", "format": "512Kb MPEG4", "size": "60000000", "width": "320", "height": "240", "length": "612.4"},
+              {"name": "SuperMkt1955.h264.mp4", "format": "h.264", "size": "150000000", "width": "640", "height": "480", "length": "612.4"}]}
+
+
+def test_archive_licences_and_mp4_choice():
+    from generator.media.providers import archive
+    assert archive.licence_name("http://creativecommons.org/publicdomain/mark/1.0/", None) == "Public Domain Mark 1.0"
+    assert archive.licence_name("https://creativecommons.org/licenses/by/4.0/", None) == "CC BY 4.0"
+    assert archive.licence_name("http://creativecommons.org/licenses/by-nc/3.0/", None) == "CC BY-NC 3.0"
+    assert archive.licence_name("http://creativecommons.org/licenses/publicdomain/", None).startswith("Public domain")
+    assert archive.licence_name(None, None) == ""
+    for name, want in (("Public Domain Mark 1.0", licence.OK), ("CC0 1.0", licence.OK), ("CC BY 4.0", licence.OK),
+                       ("CC BY-SA 4.0", licence.REVIEW), ("", licence.REVIEW), ("CC BY-NC 3.0", licence.NO),
+                       ("CC BY-ND 4.0", licence.NO), ("All rights reserved", licence.NO)):
+        assert licence.classify("archive", name)[0] == want, name
+    assert any(r.startswith("mute") for r in licence.restrictions("archive"))
+    # the largest frame under the cap, h.264 before the MPEG4 original at the same size; else the smallest MP4
+    assert archive.best_mp4(ARCHIVE_META["files"], 400 << 20)["name"] == "SuperMkt1955.h264.mp4"
+    assert archive.best_mp4(ARCHIVE_META["files"], 100 << 20)["name"] == "SuperMkt1955_512kb.mp4"
+    assert archive.best_mp4(ARCHIVE_META["files"], 10 << 20)["name"] == "SuperMkt1955_512kb.mp4"
+    assert archive.best_mp4([{"name": "x.mpeg", "format": "MPEG2"}], 1 << 30) is None
+
+
+def test_archive_search_and_fetch_log_a_muted_public_domain_clip(repo, monkeypatch):
+    calls: list[str] = []
+    _serve(monkeypatch, {"advancedsearch.php": {"response": {"docs": [
+        {"identifier": "SuperMkt1955", "title": "Supermarket Story", "year": 1955, "creator": "Jam Handy",
+         "licenseurl": "http://creativecommons.org/publicdomain/mark/1.0/", "collection": ["prelinger"]},
+        {"identifier": "Unmarked1950", "title": "Office Film", "collection": "prelinger"}]}},
+        "/metadata/SuperMkt1955": ARCHIVE_META}, calls)
+    monkeypatch.setattr(library, "licence_snapshot", lambda url, headers: "a" * 64)
+    downloads: list = []
+    monkeypatch.setattr(library, "download", _fake_download(downloads))
+    found = library.search(DOC, "archive", "supermarket", "video", 5)
+    assert [c["verdict"] for c in found] == ["ok", "review"] and found[0]["ref"] == "archive:video:SuperMkt1955"
+    assert "collection%3A%28prelinger%29" in calls[0] and "mediatype%3Amovies" in calls[0]
+    assert library.search(DOC, "archive", "supermarket", "photo") == []
+    library.search(DOC, "archive", "bank", "video", 5, category="prelinger|fedflix")
+    assert "prelinger+OR+fedflix" in calls[-1]
+    rec = library.fetch(DOC, "archive:video:SuperMkt1955", max_mb=400, root=repo)
+    assert rec["id"] == "archive-video-supermkt1955" and rec["licence"]["verdict"] == "ok"
+    assert rec["licence"]["name"] == "Public Domain Mark 1.0" and rec["licence"]["id"] == "pd"
+    assert rec["restrictions"][0].startswith("mute: soundtrack may be copyrighted")
+    assert downloads == [("https://archive.org/download/SuperMkt1955/SuperMkt1955.h264.mp4", 400 << 20)]
+    assert rec["sourceUrl"] == "https://archive.org/details/SuperMkt1955" and rec["durationSec"] == 612.4
+    assert rec["attribution"]["required"] is False and "Internet Archive" in rec["attribution"]["text"]
+    assert library.check(DOC, {"beats": [{"bg": "clip:archive-video-supermkt1955"}]}, root=repo) == []
+    with pytest.raises(store.MediaError, match="Commons only"):
+        library.fetch("paisa-panchayat", "archive:video:SuperMkt1955", root=repo)
+
+
+LOC_ITEM = {"item": {"title": "Interior of general store", "date": "1939", "contributor_names": ["Lee, Russell"],
+                     "rights_advisory": ["No known restrictions on publication."],
+                     "partof": ["farm security administration/office of war information black-and-white negatives"]},
+            "resources": [{"files": [[{"mimetype": "image/jpeg", "url": "https://tile.loc.gov/x/a_150px.jpg", "width": 150, "height": 100},
+                                      {"mimetype": "image/jpeg", "url": "https://tile.loc.gov/x/a_v.jpg", "width": 1024, "height": 800},
+                                      {"mimetype": "image/tiff", "url": "https://tile.loc.gov/x/a_u.tif", "width": 5000, "height": 4000}]]}]}
+
+
+def test_loc_rights_and_fetch(repo, monkeypatch):
+    from generator.media.providers import loc
+    assert licence.classify("loc", "No known restrictions on publication.")[0] == licence.OK
+    assert licence.classify("loc", "No known restrictions on publication. Publicity and privacy rights may apply.")[0] == licence.REVIEW
+    assert licence.classify("loc", "Rights status not evaluated.")[0] == licence.REVIEW
+    assert licence.classify("loc", "")[0] == licence.REVIEW
+    assert licence.normalise("loc", "No known restrictions on publication.") == "no-known-restrictions"
+    assert loc._item_id("http://www.loc.gov/item/2017762891/") == "2017762891"
+    assert loc.best_file(LOC_ITEM["resources"], "photo")["url"].endswith("a_v.jpg")
+    calls: list[str] = []
+    _serve(monkeypatch, {"/photos/?": {"results": [{"id": "http://www.loc.gov/item/2017762891/", "title": "Interior of general store",
+                                                    "rights_advisory": "No known restrictions on publication.", "image_url": ["https://t/1.jpg"]},
+                                                   {"id": "http://www.loc.gov/item/99/", "title": "Locked", "access_restricted": True}]},
+                         "/item/2017762891/?fo=json": LOC_ITEM}, calls)
+    monkeypatch.setattr(library, "licence_snapshot", lambda url, headers: None)
+    monkeypatch.setattr(library, "download", _fake_download())
+    found = library.search(DOC, "loc", "general store", "photo", 5)
+    assert [c["ref"] for c in found] == ["loc:photo:2017762891"] and found[0]["verdict"] == "ok"
+    assert "fo=json" in calls[0] and loc.Loc.interval >= 3.0                     # 20 requests a minute
+    rec = library.fetch(DOC, "loc:photo:2017762891", root=repo)
+    assert rec["id"] == "loc-photo-2017762891" and rec["downloadUrl"] == "https://tile.loc.gov/x/a_v.jpg"
+    assert rec["author"] == "Lee, Russell" and rec["licence"]["verdict"] == "ok"
+    assert "Library of Congress" in rec["attribution"]["text"] and rec["attribution"]["required"] is False
+
+
+def test_loc_bot_challenge_and_rate_limit_are_clear_errors(tmp_path, monkeypatch):
+    import urllib.error
+    from email.message import Message
+    from generator.media.providers import loc
+    monkeypatch.setenv("MEDIA_CACHE", str(tmp_path))
+
+    def blocked(code):
+        def fake_open(url, headers, bucket, interval, timeout=60):
+            h = Message()
+            h["cf-mitigated"] = "challenge"
+            raise urllib.error.HTTPError(url, code, "x", h, None)
+        return fake_open
+    monkeypatch.setattr(store, "open_url", blocked(403))
+    with pytest.raises(store.MediaError, match="never solve the challenge"):
+        loc.Loc().search("store")
+    monkeypatch.setattr(store, "open_url", blocked(429))
+    with pytest.raises(store.MediaError, match="429"):
+        loc.Loc().search("store")
+
+
+def test_nasa_public_domain_unless_someone_else_made_it(tmp_path, monkeypatch):
+    from generator.media.providers import nasa
+    monkeypatch.setenv("MEDIA_CACHE", str(tmp_path))
+    item = {"nasa_id": "MAF_1967", "title": "Saturn V boosters", "date_created": "1967-10-05T00:00:00Z", "center": "MAF",
+            "photographer": "NASA", "media_type": "image", "description": "Boosters in production."}
+    _serve(monkeypatch, {"/search?": {"collection": {"items": [{"data": [item]}]}},
+                         "/asset/MAF_1967": {"collection": {"items": [{"href": "http://images-assets.nasa.gov/image/MAF_1967/MAF_1967~orig.jpg"},
+                                                                      {"href": "http://images-assets.nasa.gov/image/MAF_1967/MAF_1967~large.jpg"}]}}})
+    c = nasa.Nasa().resolve("photo", "MAF_1967")
+    assert c["url"] == "https://images-assets.nasa.gov/image/MAF_1967/MAF_1967~large.jpg" and c["flags"] == []
+    assert licence.classify("nasa", c["licence"], c["flags"])[0] == licence.OK
+    assert nasa.third_party({"photographer": "Bill Ingalls / AP Photo"})
+    assert licence.classify("nasa", c["licence"], nasa.third_party({"description": "(c) Getty Images, copyright"}))[0] == licence.REVIEW
+    assert nasa.third_party({"photographer": "NASA/JPL-Caltech"}) == []
+
+
+def test_commons_category_filter(monkeypatch):
+    from generator.media.providers import commons
+    assert commons.category_filter(None) == ""
+    assert commons.category_filter("Factories") == ' deepcat:"Factories"'
+    assert commons.category_filter("Category:=Supermarkets") == ' incategory:"Supermarkets"'
+    asked = []
+
+    def page(title, i):
+        return {"title": title, "index": i, "imageinfo": [{}]}
+    pages = {"Factories": [page("File:A.webm", 1), page("File:B.webm", 2)], "Videos of industry": [page("File:B.webm", 1), page("File:C.webm", 2)]}
+
+    def fake_get(params):
+        asked.append(params["gsrsearch"])
+        cat = params["gsrsearch"].split('deepcat:"')[1].rstrip('"')
+        return {"query": {"pages": {str(i): p for i, p in enumerate(pages[cat])}}}
+    monkeypatch.setattr(commons.images, "_get", fake_get)
+    monkeypatch.setattr(commons.Commons, "_cand", lambda self, p: {"ref": "commons:video:" + p["title"]})
+    got = commons.Commons().search("assembly line", "video", 5, category="Factories|Videos of industry")
+    assert asked == ['assembly line filetype:video deepcat:"Factories"', 'assembly line filetype:video deepcat:"Videos of industry"']
+    assert [g["ref"][14:] for g in got] == ["File:A.webm", "File:B.webm", "File:C.webm"]       # interleaved, no repeats

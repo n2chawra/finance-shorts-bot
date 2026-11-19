@@ -48,12 +48,15 @@ def parse_ref(ref: str) -> tuple[str, str, str]:
     return source, kind, ident
 
 
-def search(slug: str, source: str, query: str, kind: str, n: int = 10, orientation: str | None = None) -> list[dict]:
+def search(slug: str, source: str, query: str, kind: str, n: int = 10, orientation: str | None = None,
+           category: str | None = None) -> list[dict]:
+    """`category` narrows a source that has them: a Commons category tree, an archive.org collection, a loc.gov
+    collection slug, a NASA centre."""
     allowed(slug, source)
     p = provider(source)
     p.slug = slug
     out = []
-    for c in p.search(query, kind, n, orientation):
+    for c in p.search(query, kind, n, orientation, **({"category": category} if category else {})):
         verdict, reason = licence.classify(c["source"], c["licence"], c.get("flags"))
         out.append({**c, "verdict": verdict, "reason": reason})
     return out
@@ -63,7 +66,7 @@ def _build(slug: str, c: dict, path: Path, extra: dict | None = None) -> dict:
     verdict, reason = licence.classify(c["source"], c["licence"], c.get("flags"))
     required, credit = licence.attribution(c["source"], c["licence"], c["author"], c["title"], c["page"], c["kind"])
     restrictions = licence.restrictions(c["source"], " | ".join(c.get("flags") or []))
-    hdr = provider(c["source"]).headers() if c["source"] in ("edgar", "commons") else {"User-Agent": "Mozilla/5.0 (licence snapshot)"}
+    hdr = provider(c["source"]).headers() if c["source"] in ("edgar", "commons", "archive", "loc", "nasa") else {"User-Agent": "Mozilla/5.0 (licence snapshot)"}
     lic_url = c.get("licenceUrl") or licence.LICENCE_URLS.get(c["source"], "")
     rec = {
         "id": asset_id(c["source"], c["kind"], c["id"]), "ref": c["ref"], "source": c["source"], "sourceId": c["id"],
@@ -90,6 +93,7 @@ def fetch(slug: str, ref: str, max_mb: int = MAX_MB, root: Path = ROOT) -> dict:
         return fetch_filing(slug, ident, root=root)
     p = provider(source)
     p.slug = slug
+    p.max_mb = max_mb
     c = p.resolve(kind, ident)
     verdict, reason = licence.classify(c["source"], c["licence"], c.get("flags"))
     if verdict == licence.NO:
@@ -99,7 +103,7 @@ def fetch(slug: str, ref: str, max_mb: int = MAX_MB, root: Path = ROOT) -> dict:
     aid = asset_id(source, c["kind"], c["id"])
     dest = cache_root(slug) / source / f"{aid}.{c['ext']}"
     headers = p.headers() if source != "pexels" else {"User-Agent": p.headers()["User-Agent"]}   # never send the key to the CDN
-    download(c["url"], dest, headers, source + "-files", p.interval, max_mb << 20)
+    download(c["url"], dest, headers, source + "-files", getattr(p, "file_interval", p.interval), max_mb << 20)
     return record(slug, _build(slug, c, dest), root)
 
 

@@ -30,6 +30,21 @@ EDGAR_RULES = [
     "cite the filing on screen: Source: SEC EDGAR, Form <type>, <date>",
     "exhibits may hold third-party material (photos, press releases): don't show those",
 ]
+ARCHIVE_RULES = [
+    "mute: soundtrack may be copyrighted (music and narration in a public-domain film can still be owned)",
+    "archive.org gives no warranty on rights: keep the item page and licence as logged",
+    "the item's description and metadata are not ours to copy; use the picture only",
+]
+LOC_RULES = [
+    "rights as the Library's advisory read on the fetch date; no warranty from the Library",
+    "identifiable people: publicity and privacy rights may still apply; never in a defamatory light",
+    "never imply the Library of Congress endorses the channel",
+]
+NASA_RULES = [
+    "the NASA insignia, worm and seal are not licensed: never shown as our branding",
+    "never imply NASA endorses the channel, a product or a company",
+    "identifiable people (astronauts, staff): no commercial endorsement use",
+]
 COMMONS_FLAGS = {
     "trademarked": "trademark: show only to identify the company, never altered or implying endorsement",
     "personality": "identifiable person: personality rights; never in a negative or endorsing light without care",
@@ -40,7 +55,13 @@ LICENCE_URLS = {
     "pexels": "https://www.pexels.com/license/",
     "pixabay": "https://pixabay.com/service/license-summary/",
     "edgar": "https://www.sec.gov/search-filings/edgar-search-assistance/accessing-edgar-data",
+    "archive": "https://help.archive.org/help/prelinger-archive/",
+    "loc": "https://www.loc.gov/legal/",
+    "nasa": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
 }
+NO_KNOWN = re.compile(r"\bno known (copyright )?restrictions\b", re.I)
+RISKY_LOC = re.compile(r"\b(publicity|privacy|not been evaluated|not evaluated|undetermined|permission|copyright(ed)? (by|holder)|"
+                       r"rights (status )?(may|could) apply|may be (protected|restricted))\b", re.I)
 
 NEVER = re.compile(r"\b(editorial|non-?commercial|\bnc\b|\bnd\b|no ?deriv|restricted licen[cs]e|fair use|all rights reserved|press kit)\b", re.I)
 
@@ -52,6 +73,10 @@ def normalise(source: str, licence: str) -> str:
         return source
     if source == "edgar":
         return "filing"
+    if source == "nasa":
+        return "pd-usgov"
+    if source == "loc" and NO_KNOWN.search(s):
+        return "no-known-restrictions"
     if not s:
         return "unknown"
     if s.startswith(("public domain", "pd")) or "pdm" in s:
@@ -82,6 +107,22 @@ def classify(source: str, licence: str, flags: list[str] | None = None) -> tuple
             else (NO, f"{lic or 'unknown licence'}: Commons files must be PD, CC0, CC BY or CC BY-SA")
     if source == "edgar":
         return OK, "public SEC filing, shown as commentary with an on-screen citation"
+    if source == "archive":
+        n = normalise(source, lic)
+        if n in ("pd", "cc0") or (n.startswith("cc-by") and not n.startswith("cc-by-sa")):
+            return OK, f"{lic}: public domain / CC0 / CC BY on the item (archive.org gives no warranty)"
+        if not lic:
+            return REVIEW, "no licence on the archive.org item: most Prelinger films are public domain, but unmarked ones need the owner's OK"
+        return REVIEW, f"{lic}: not public domain, CC0 or CC BY; the owner decides"
+    if source == "loc":
+        if NO_KNOWN.search(lic) and not RISKY_LOC.search(lic):
+            return OK, f"Library of Congress: {lic.rstrip('.')}"
+        return REVIEW, f"Library of Congress rights: {lic or 'not stated'}; the owner decides"
+    if source == "nasa":
+        third = [f for f in flags or [] if f.startswith("third-party")]
+        if third:
+            return REVIEW, f"NASA item made by someone else ({third[0]}); the owner decides"
+        return OK, "NASA media: US government work, not copyrighted"
     return REVIEW, f"{source}: no automatic rule for this source; the owner decides"
 
 
@@ -98,6 +139,12 @@ def attribution(source: str, licence: str, author: str, title: str, url: str, ki
     if source == "commons":
         required = n.startswith("cc-by")
         return required, f"{what}: {author}, {licence}, via Wikimedia Commons ({url})"
+    if source == "archive":
+        return n.startswith("cc-by"), f"Film: {title}, {author}, {licence or 'public domain'}, via the Internet Archive ({url})"
+    if source == "loc":
+        return False, f"{what}: {title}, {author}, Library of Congress ({url})"
+    if source == "nasa":
+        return False, f"{what}: {title}, NASA ({url})"
     return True, f"{what}: {author}, {licence} ({url})"
 
 
@@ -108,5 +155,11 @@ def restrictions(source: str, commons_flags: str = "") -> list[str]:
         return list(PIXABAY_RULES)
     if source == "edgar":
         return list(EDGAR_RULES)
+    if source == "archive":
+        return list(ARCHIVE_RULES)
+    if source == "loc":
+        return list(LOC_RULES)
+    if source == "nasa":
+        return list(NASA_RULES) + [f for f in re.split(r"\s*\|\s*", commons_flags or "") if f]
     flags = [f.strip().lower() for f in re.split(r"[|,;]", commons_flags or "") if f.strip()]
     return [COMMONS_FLAGS.get(f, f) for f in flags]

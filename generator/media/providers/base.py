@@ -19,6 +19,7 @@ class Provider:
     interval = 1.0              # seconds between requests (the source's rate limit, with margin)
     key_env: str | None = None  # the environment variable holding the API key, if one is needed
     signup = ""                 # where the owner gets that key
+    max_mb = 400                # the fetch's size cap (a source with several renditions picks one under it)
 
     def key(self) -> str:
         if not self.key_env:
@@ -26,14 +27,14 @@ class Provider:
         k = os.environ.get(self.key_env, "").strip()
         if not k:
             raise MediaError(f"{self.name}: set {self.key_env} (a free key from {self.signup}); "
-                             f"Commons and EDGAR work without keys")
+                             "Commons, the Internet Archive, the Library of Congress, NASA and EDGAR work without keys")
         return k
 
     def headers(self) -> dict:
         from ...images import user_agent
         return {"User-Agent": user_agent()}
 
-    def search(self, query: str, kind: str = "video", n: int = 10, orientation: str | None = None) -> list[dict]:
+    def search(self, query: str, kind: str = "video", n: int = 10, orientation: str | None = None, **opts) -> list[dict]:
         raise NotImplementedError
 
     def resolve(self, kind: str, ident: str) -> dict:

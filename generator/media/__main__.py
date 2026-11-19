@@ -11,6 +11,9 @@ from ..channels import use as channel
 from .store import MediaError, cache_root, load_log, log_path
 
 
+SEARCHABLE = ("pexels", "pixabay", "commons", "archive", "loc", "nasa")
+
+
 def _print_cands(cands: list[dict]) -> None:
     for c in cands:
         size = f"{c.get('width') or '?'}x{c.get('height') or '?'}" + (f" {c['durationSec']}s" if c.get("durationSec") else "")
@@ -32,8 +35,11 @@ def main(argv: list[str] | None = None) -> int:
     s = cmd("search", help="candidates with their licence verdicts")
     s.add_argument("query")
     s.add_argument("--kind", choices=("video", "photo"), default="video")
-    s.add_argument("--source", action="append", choices=("pexels", "pixabay", "commons"),
-                   help="repeatable; default: every source with a key, plus Commons")
+    s.add_argument("--source", action="append", choices=SEARCHABLE,
+                   help="repeatable; default: every keyless source, plus Pexels/Pixabay when their keys are set")
+    s.add_argument("--category", help="Commons category tree (e.g. 'Videos of industry', Factories; 'A|B' searches each; '=Name' "
+                                      "without subcategories), archive.org collection (default prelinger), loc.gov "
+                                      "collection slug, or NASA centre")
     s.add_argument("--limit", type=int, default=8)
     s.add_argument("--orientation", choices=("landscape", "portrait", "square"))
     f = cmd("fetch", help="download one asset into the cache and log its licence")
@@ -61,14 +67,16 @@ def main(argv: list[str] | None = None) -> int:
         if a.cmd == "search":
             from .providers import PROVIDERS
             import os
-            sources = a.source or [n for n in ("pexels", "pixabay", "commons")
+            sources = a.source or [n for n in SEARCHABLE
                                    if not PROVIDERS[n].key_env or os.environ.get(PROVIDERS[n].key_env)]
             for src in sources:
                 try:
-                    _print_cands(library.search(slug, src, a.query, a.kind, a.limit, a.orientation))
+                    _print_cands(library.search(slug, src, a.query, a.kind, a.limit, a.orientation, a.category))
                 except MediaError as err:
                     print(err, file=sys.stderr)
-            if not a.source and len(sources) < 3:
+                except urllib.error.URLError as err:
+                    print(f"{src}: {getattr(err, 'code', '') or err.reason}", file=sys.stderr)
+            if not a.source and not {"pexels", "pixabay"} <= set(sources):
                 print("(Pexels/Pixabay skipped: set PEXELS_API_KEY / PIXABAY_API_KEY)", file=sys.stderr)
         elif a.cmd == "fetch":
             r = library.fetch(slug, a.ref, a.max_mb)
