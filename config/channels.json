@@ -21,7 +21,7 @@
         ]
       },
       "health": {
-        "at": "2026-11-19T07:04:12.083Z",
+        "at": "2026-11-19T07:13:55.749Z",
         "color": "red",
         "reason": "1 Short ready: under a day",
         "stayed": 0.3790569503980404,
@@ -63,7 +63,7 @@
         }
       },
       "health": {
-        "at": "2026-11-19T07:04:12.083Z",
+        "at": "2026-11-19T07:13:55.749Z",
         "color": "red",
         "reason": "1 Short ready: under a day",
         "stayed": null,
@@ -111,7 +111,7 @@
         }
       },
       "health": {
-        "at": "2026-11-19T07:04:12.083Z",
+        "at": "2026-11-19T07:13:55.749Z",
         "color": "red",
         "reason": "0 Shorts ready: under a day",
         "stayed": null,
@@ -133,8 +133,11 @@
         "dailyVideoTarget": 1
       },
       "setup": {
-        "stage": "verdict",
-        "decision": null
+        "stage": "research",
+        "decision": {
+          "at": "2026-11-19T07:05:01.133Z",
+          "choice": "continue"
+        }
       },
       "backlog": 0,
       "backlogByFormat": {
