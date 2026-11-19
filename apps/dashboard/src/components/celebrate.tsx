@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
-import { useToast } from "@/components/toast";
 import { fmtNum } from "@/lib/format";
 import { useScorecard } from "@/lib/queries";
 import { recordHolder, milestoneLabel, milestoneOf, winsOf, type Win } from "@/lib/records";
@@ -68,7 +68,13 @@ const winText = (w: Win) =>
  */
 export function Celebrate() {
   const { data } = useScorecard();
-  const toast = useToast();
+  const [win, setWin] = useState<string | null>(null);
+  const toast = (text: string) => setWin(text);
+  useEffect(() => {
+    if (!win) return;
+    const id = setTimeout(() => setWin(null), 7000);
+    return () => clearTimeout(id);
+  }, [win]);
   useEffect(() => {
     if (!data) return;
     const wins = winsOf(data.shorts);
@@ -81,8 +87,18 @@ export function Celebrate() {
     writeSeen(seen);
     const id = setTimeout(() => { toast(winText(top)); confetti(); }, 600);
     return () => clearTimeout(id);
-  }, [data, toast]);
-  return null;
+  }, [data]);
+  // the win alert sits top-right, apart from the ordinary toasts (owner, 2026-11-19)
+  if (!win) return null;
+  return (
+    <div role="status" aria-live="polite"
+      className="fixed right-4 top-16 z-[61] flex w-[min(380px,calc(100vw-2rem))] animate-pop items-start gap-3 rounded-xl border border-[#f5b301]/60 bg-surface px-4 py-3 text-[13.5px] shadow-pop">
+      <span className="flex-1">{win}</span>
+      <button type="button" onClick={() => setWin(null)} aria-label="Dismiss" className="rounded-md p-1 text-muted hover:bg-surface-3 hover:text-ink">
+        <X aria-hidden className="size-4" />
+      </button>
+    </div>
+  );
 }
 
 /** Per video id, the badge its card shows: "New record" for the record holder, else its milestone. */
