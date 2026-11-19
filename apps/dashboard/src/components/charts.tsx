@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
 import { Tip } from "./ui";
@@ -59,15 +60,24 @@ function Axes({ w, h, ticks, y, fmt }: { w: number; h: number; ticks: number[]; 
   );
 }
 
-/** Single-series area over time with a crosshair tooltip. */
-export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var(--series)", detail }: {
+/** A labelled dashed horizontal line (a target, the median, 100%). */
+export type RefLine = { value: number; label: string; color?: string };
+
+/** Single-series area over time with a crosshair tooltip. With `href`, every point is a link:
+ * click it, or focus the chart and use ←/→ then Enter. */
+export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var(--series)", detail, refLines = [], href, ariaLabel }: {
   data: Point[]; height?: number; fmt: (n: number) => string; fmtFull?: (n: number) => string; color?: string;
   /** more for the tooltip of point i (e.g. the videos published that day) */
   detail?: (i: number) => React.ReactNode;
+  refLines?: RefLine[];
+  /** where point i opens (e.g. its video) */
+  href?: (i: number) => string;
+  ariaLabel?: string;
 }) {
   const [ref, w] = useWidth();
+  const router = useRouter();
   const [hover, setHover] = useState<number | null>(null);
-  const ticks = niceTicks(Math.max(...data.map((d) => d.value), 0));
+  const ticks = niceTicks(Math.max(...data.map((d) => d.value), ...refLines.map((r) => r.value), 0));
   const top = ticks[ticks.length - 1];
   const innerW = Math.max(w - PAD.left - PAD.right, 1);
   const x = (i: number) => PAD.left + (data.length > 1 ? (innerW * i) / (data.length - 1) : innerW / 2);
@@ -81,11 +91,36 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
     const i = Math.round(((e.clientX - rect.left - PAD.left) / innerW) * (data.length - 1));
     setHover(Math.min(data.length - 1, Math.max(0, i)));
   };
+  const open = (i: number | null) => { if (href && i !== null && data[i]) router.push(href(i)); };
+  const onKey = (e: React.KeyboardEvent) => {
+    if (!href || !data.length) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const d = e.key === "ArrowRight" ? 1 : -1;
+      setHover((h) => Math.min(data.length - 1, Math.max(0, h === null ? (d > 0 ? 0 : data.length - 1) : h + d)));
+    } else if (e.key === "Home" || e.key === "End") {
+      e.preventDefault(); setHover(e.key === "Home" ? 0 : data.length - 1);
+    } else if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault(); open(hover);
+    }
+  };
   return (
     <div ref={ref} className="relative w-full touch-pan-y select-none" style={{ height }}>
       {w > 0 && data.length > 0 && (
-        <svg width={w} height={height} role="img" onPointerMove={onMove} onPointerDown={onMove} onPointerLeave={() => setHover(null)}>
+        <svg width={w} height={height} role={href ? "listbox" : "img"} aria-label={ariaLabel}
+          aria-activedescendant={href && hover !== null ? `${gradId}-p${hover}` : undefined}
+          tabIndex={href ? 0 : undefined} onKeyDown={href ? onKey : undefined} onBlur={href ? () => setHover(null) : undefined}
+          className={href ? "cursor-pointer rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring-strong" : undefined}
+          onClick={href ? () => open(hover) : undefined}
+          onPointerMove={onMove} onPointerDown={onMove} onPointerLeave={() => setHover(null)}>
           <Axes w={w} h={height} ticks={ticks} y={y} fmt={fmt} />
+          {refLines.map((r) => (
+            <g key={r.label} pointerEvents="none">
+              <line x1={PAD.left} x2={w - PAD.right} y1={y(r.value)} y2={y(r.value)} stroke={r.color ?? "var(--ink2)"} strokeWidth={1.25} strokeDasharray="6 4" opacity={0.75} />
+              <text x={w - PAD.right - 2} y={y(r.value) - 4} textAnchor="end" fontSize={10.5} fontWeight={600} fill={r.color ?? "var(--ink2)"}
+                stroke="var(--surface)" strokeWidth={3} paintOrder="stroke">{r.label}</text>
+            </g>
+          ))}
           {data.map((d, i) => (i % every === 0 || i === data.length - 1) && (i === data.length - 1 || data.length - 1 - i >= every * 0.6) && (
             <text key={d.label + i} x={x(i)} y={height - 6} textAnchor={i === data.length - 1 ? "end" : i === 0 ? "start" : "middle"} fontSize={11} fill="var(--muted)">{d.label}</text>
           ))}
@@ -106,6 +141,11 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
             <path d={data.slice(Math.max(0, est - 1)).map((d, j) => `${j ? "L" : "M"}${x(Math.max(0, est - 1) + j)},${y(d.value)}`).join(" ")}
               fill="none" stroke="var(--surface)" strokeWidth={2.5} strokeDasharray="4 4" />
           </>}
+          {href && data.map((d, i) => (
+            <circle key={`p${i}`} id={`${gradId}-p${i}`} role="option" aria-selected={hover === i}
+              aria-label={`${d.label}: ${fmtFull(d.value)}`} cx={x(i)} cy={y(d.value)} r={data.length > 40 ? 2 : 3}
+              fill={color} stroke="var(--surface)" strokeWidth={1.5} />
+          ))}
           {hover !== null && (
             <>
               <line x1={x(hover)} x2={x(hover)} y1={PAD.top} y2={height - PAD.bottom} stroke="var(--ring-strong)" strokeWidth={1} />
@@ -114,7 +154,8 @@ export function LineChart({ data, height = 220, fmt, fmtFull = fmt, color = "var
           )}
         </svg>
       )}
-      {hover !== null && w > 0 && <ChartTooltip x={x(hover)} y={y(data[hover].value)} width={w} label={data[hover].estimated ? `${data[hover].label} (est.)` : data[hover].label} value={fmtFull(data[hover].value)} detail={detail?.(hover)} />}
+      {hover !== null && w > 0 && <ChartTooltip x={x(hover)} y={y(data[hover].value)} width={w} label={data[hover].estimated ? `${data[hover].label} (est.)` : data[hover].label} value={fmtFull(data[hover].value)}
+        detail={<>{detail?.(hover)}{href && <div className="mt-1 text-[11px] text-muted">Click or Enter to open</div>}</>} />}
     </div>
   );
 }

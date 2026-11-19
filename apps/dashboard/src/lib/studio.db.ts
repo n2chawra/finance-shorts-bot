@@ -120,14 +120,36 @@ function attrsOf(v: Loaded): Record<string, string | null> {
   };
 }
 
+/** Longest the page waits for fresh YouTube counters before answering with the stored ones (they land next minute). */
+const COUNTERS_WAIT_MS = 1_500;
+
 export async function getStudio(range: Range, format: Fmt): Promise<Studio> {
-  await liveCounters().catch(() => undefined);
+  // Speed (owner, 2026-11-19: 15 s of skeletons): every read below runs at once, in parallel with the
+  // live-counter refresh, which no longer blocks for up to 6 s first. Only the cheap liveViews re-read waits for it.
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const counters = Promise.race([liveCounters().catch(() => undefined), new Promise<void>((ok) => { timer = setTimeout(ok, COUNTERS_WAIT_MS); })])
+    .finally(() => clearTimeout(timer));
   const n = Number(range);
-  const [videos, ai, dailyAt, deepAt] = await Promise.all([loadVideos(format), safe(aiDocs(), { channel: null, videos: [] }), setting("statsRefreshedAt"), setting("statsDeepAt")]);
+  const now = new Date();
+  const end = new Date(Math.floor(now.getTime() / 3_600_000) * 3_600_000 + 3_600_000);
+  // breakdowns: the stored range for this format, else the all-format one (one query for all four)
+  const scopes = [`channel:${format}:${range}`, `channel:all:${range}`, `channel:${format}:28`, "channel:all:28"];
+  const [videos, ai, dailyAt, deepAt, channelDays, bAll, snaps] = await Promise.all([
+    loadVideos(format), safe(aiDocs(), { channel: null, videos: [] }), setting("statsRefreshedAt"), setting("statsDeepAt"),
+    safe(prisma.channelDay.findMany({ where: { format }, orderBy: { day: "asc" } }), []),
+    safe(prisma.breakdown.findMany({ where: { scope: { in: scopes } } }), []),
+    safe(prisma.liveSnapshot.findMany({ where: { hour: { gte: new Date(end.getTime() - 50 * 3_600_000) }, upload: { video: published(format) } }, orderBy: { hour: "asc" } }), []),
+  ]);
+  await counters;
+  const fresh = await safe(prisma.upload.findMany({ where: { id: { in: videos.map((v) => v.upload!.id) } }, select: { id: true, liveViews: true, liveLikes: true, liveComments: true, liveAt: true } }), []);
+  const freshById = new Map(fresh.map((u) => [u.id, u]));
+  for (const v of videos) {
+    const f = freshById.get(v.upload!.id);
+    if (f) Object.assign(v.upload!, { liveViews: f.liveViews, liveLikes: f.liveLikes, liveComments: f.liveComments, liveAt: f.liveAt });
+  }
   const aiMap = new Map(ai.videos.map((a) => [a.videoId, a]));
 
   // ---- day totals: the channel's own (ChannelDay) when stats has written them, else summed from videos
-  const channelDays = await safe(prisma.channelDay.findMany({ where: { format }, orderBy: { day: "asc" } }), []);
   const videoDays = sumByDay(videos.flatMap((v) => v.upload!.stats.map(toDay)));
   const source = channelDays.length ? channelDays.map(toDay) : videoDays;
   const lastDay = source.at(-1)?.day ?? null;   // null: no YouTube Analytics yet, which the page shows in red, not as "through yesterday"
@@ -140,19 +162,10 @@ export async function getStudio(range: Range, format: Fmt): Promise<Studio> {
   const totals = totalsOf(daily, reachOf(statRows.filter((s) => inRange(s, from, through))));
   const previous = prevDays.length >= n * 0.8 ? totalsOf(prevDays, reachOf(statRows.filter((s) => inRange(s, addDays(from, -n), addDays(from, -1))))) : null;
 
-  // ---- breakdowns: the stored range for this format, else the all-format one
-  const scopes = [`channel:${format}:${range}`, `channel:all:${range}`, `channel:${format}:28`, "channel:all:28"];
-  let breakdownScope: string | null = null;
-  let bRows: Awaited<ReturnType<typeof prisma.breakdown.findMany>> = [];
-  for (const scope of scopes) {
-    bRows = await safe(prisma.breakdown.findMany({ where: { scope } }), []);
-    if (bRows.length) { breakdownScope = scope; break; }
-  }
+  const breakdownScope = scopes.find((sc) => bAll.some((r) => r.scope === sc)) ?? null;
+  const bRows = breakdownScope ? bAll.filter((r) => r.scope === breakdownScope) : [];
 
   // ---- realtime from hourly snapshots
-  const now = new Date();
-  const end = new Date(Math.floor(now.getTime() / 3_600_000) * 3_600_000 + 3_600_000);
-  const snaps = await safe(prisma.liveSnapshot.findMany({ where: { hour: { gte: new Date(end.getTime() - 50 * 3_600_000) }, upload: { video: published(format) } }, orderBy: { hour: "asc" } }), []);
   const byUpload = new Map<string, { hour: Date; views: number }[]>();
   for (const s of snaps) byUpload.set(s.uploadId, [...(byUpload.get(s.uploadId) ?? []), s]);
   const perVideo = videos.map((v) => ({ v, hours: hourlyGains(byUpload.get(v.upload!.id) ?? [], end) }));
@@ -173,7 +186,7 @@ export async function getStudio(range: Range, format: Fmt): Promise<Studio> {
     realtime: {
       hours: hours.map((views, i) => ({ hour: new Date(end.getTime() - (48 - i) * 3_600_000).toISOString(), views })),
       last48: hours.reduce((a, b) => a + b, 0), last1: hours.at(-1) ?? 0,
-      totalNow: videos.reduce((a, v) => a + (v.upload!.liveViews ?? 0), 0),
+      totalNow: videos.reduce((a, v) => a + Math.max(v.upload!.liveViews ?? 0, v.upload!.stats.reduce((b, st) => b + st.views, 0)), 0),   // as the Overview's all-time views
       top: perVideo.map((p) => ({ videoId: p.v.id, title: p.v.title, thumbnailUrl: media(p.v.id, "thumbnail"), views48: p.hours.reduce((a, b) => a + b, 0), hours: p.hours }))
         .filter((p) => p.views48 > 0).sort((a, b) => b.views48 - a.views48).slice(0, 6),
       snapshotAt: snaps.at(-1)?.hour.toISOString() ?? null,

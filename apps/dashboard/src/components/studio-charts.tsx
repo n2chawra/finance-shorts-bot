@@ -9,6 +9,7 @@ import type { Topology } from "topojson-specification";
 import world from "world-atlas/countries-110m.json";
 
 import { fmtCompact, fmtNum } from "@/lib/format";
+import { viewedPct } from "@/lib/labels";
 import type { Drop, Slice } from "@/lib/studio-schema";
 
 export const CAT = ["var(--c1)", "var(--c2)", "var(--c3)", "var(--c4)", "var(--c5)", "var(--c6)", "var(--c7)", "var(--c8)"];
@@ -93,29 +94,38 @@ export function Donut({ slices, size = 168, unit = "views", fmt = fmtCompact }: 
 // ---------------- funnel ----------------
 
 /** Tapering steps: each bar's width is its value against the first; the step-to-step rate sits between. */
-export function Funnel({ steps }: { steps: { label: string; value: number | null; note?: string }[] }) {
+/** A funnel step with `value: null` shows `empty` (why it is missing) in place of a bar; `approx` rounds its rate to a whole "≈ N%". */
+export function Funnel({ steps }: { steps: { label: string; value: number | null; note?: string; empty?: string; approx?: boolean }[] }) {
   const first = steps.find((s) => s.value)?.value ?? 1;
   return (
     <ol className="space-y-1">
       {steps.map((s, i) => {
         const prev = steps[i - 1]?.value;
         const rate = s.value !== null && prev ? s.value / prev : null;
+        const shown = rate === null ? null : s.approx ? `≈ ${Math.round(rate * 100) || "<1"}%` : `${(rate * 100).toFixed(rate < 0.1 ? 1 : 0)}%`;
         return (
           <li key={s.label}>
-            {i > 0 && (
+            {i > 0 && (s.note || shown) && (
               <div className="flex items-center gap-2 py-0.5 pl-3 text-[11px] text-muted">
                 <svg aria-hidden width="10" height="12" viewBox="0 0 10 12"><path d="M5 0v9M1.5 6L5 9.5 8.5 6" fill="none" stroke="currentColor" strokeWidth="1.4" /></svg>
-                {rate !== null ? <span className="tabular-nums"><b className="font-semibold text-ink2">{(rate * 100).toFixed(rate < 0.1 ? 1 : 0)}%</b> {s.note ?? ""}</span> : <span>{s.note ?? "not available yet"}</span>}
+                {shown !== null ? <span className="tabular-nums"><b className="font-semibold text-ink2">{shown}</b> {s.note ?? ""}</span> : <span>{s.note}</span>}
               </div>
             )}
-            <div className="relative h-11 overflow-hidden bg-wash">
-              <motion.div className="absolute inset-y-0 left-0" style={{ background: `linear-gradient(90deg, ${CAT[i % CAT.length]}, color-mix(in oklab, ${CAT[i % CAT.length]} 70%, transparent))` }}
-                initial={{ width: 0 }} animate={{ width: s.value === null ? "0%" : `${Math.max((s.value / first) * 100, 1.5)}%` }} transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }} />
-              <div className="relative flex h-full items-center justify-between px-3 text-[13px]">
-                <span className="font-semibold text-ink mix-blend-normal">{s.label}</span>
-                <span className="font-semibold tabular-nums">{s.value === null ? "—" : fmtNum(s.value)}</span>
+            {s.value === null && s.empty ? (
+              <div className="flex min-h-11 items-center justify-between gap-3 border border-dashed border-line px-3 py-2 text-[13px]">
+                <span className="font-semibold text-ink2">{s.label}</span>
+                <span className="text-right text-[12px] text-muted">{s.empty}</span>
               </div>
-            </div>
+            ) : (
+              <div className="relative h-11 overflow-hidden bg-wash">
+                <motion.div className="absolute inset-y-0 left-0" style={{ background: `linear-gradient(90deg, ${CAT[i % CAT.length]}, color-mix(in oklab, ${CAT[i % CAT.length]} 70%, transparent))` }}
+                  initial={{ width: 0 }} animate={{ width: s.value === null ? "0%" : `${Math.max((s.value / first) * 100, 1.5)}%` }} transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }} />
+                <div className="relative flex h-full items-center justify-between px-3 text-[13px]">
+                  <span className="font-semibold text-ink mix-blend-normal">{s.label}</span>
+                  <span className="font-semibold tabular-nums">{s.value === null ? "—" : fmtNum(s.value)}</span>
+                </div>
+              </div>
+            )}
           </li>
         );
       })}
@@ -125,7 +135,8 @@ export function Funnel({ steps }: { steps: { label: string; value: number | null
 
 // ---------------- hourly bars (realtime) ----------------
 
-export function HourlyBars({ values, hours, height = 150, compare, bare }: { values: number[]; hours: string[]; height?: number; compare?: number[]; bare?: boolean }) {
+/** `live` false (a stale snapshot): the newest bar stops pulsing and is labelled `lastLabel` instead of "now". */
+export function HourlyBars({ values, hours, height = 150, compare, bare, live = true, lastLabel }: { values: number[]; hours: string[]; height?: number; compare?: number[]; bare?: boolean; live?: boolean; lastLabel?: string }) {
   const [ref, w] = useWidth();
   const [hover, setHover] = useState<number | null>(null);
   const max = Math.max(...values, ...(compare ?? []), 1);
@@ -152,8 +163,8 @@ export function HourlyBars({ values, hours, height = 150, compare, bare }: { val
             return (
               <g key={i} onPointerEnter={() => setHover(i)} onPointerDown={() => setHover(i)}>
                 <rect x={i * band} y={0} width={band} height={base} fill={hover === i ? "var(--wash)" : "transparent"} />
-                {last && h > 0 && <rect x={i * band + 1} y={base - h} width={bw} height={h} fill="var(--brand)" filter={`url(#${gid}g)`} opacity={0.8} className="animate-pulse-dot" />}
-                <motion.rect x={i * band + 1} y={base - h} width={bw} height={h} fill={last ? "var(--brand)" : `url(#${gid})`} stroke="var(--edge)" strokeWidth={1.5}
+                {last && live && h > 0 && <rect x={i * band + 1} y={base - h} width={bw} height={h} fill="var(--brand)" filter={`url(#${gid}g)`} opacity={0.8} className="animate-pulse-dot" />}
+                <motion.rect x={i * band + 1} y={base - h} width={bw} height={h} fill={last && live ? "var(--brand)" : `url(#${gid})`} stroke="var(--edge)" strokeWidth={1.5}
                   style={{ transformBox: "fill-box", transformOrigin: "bottom" }}
                   initial={{ scaleY: 0 }} animate={{ scaleY: 1, opacity: hover === null || hover === i ? 1 : 0.55 }}
                   transition={{ duration: 0.5, delay: i * 0.008, ease: EASE }} />
@@ -165,14 +176,14 @@ export function HourlyBars({ values, hours, height = 150, compare, bare }: { val
           )}
           {!bare && [0, Math.floor(n / 2), n - 1].map((i) => hours[i] && (
             <text key={i} x={i * band + band / 2} y={height - 3} fontSize={10.5} fill="var(--muted)" textAnchor={i === 0 ? "start" : i === n - 1 ? "end" : "middle"}>
-              {i === n - 1 ? "now" : hours[i]}
+              {i === n - 1 ? (lastLabel ?? (live ? "now" : hours[i])) : hours[i]}
             </text>
           ))}
         </svg>
       )}
       {hover !== null && w > 0 && (
         <Tooltip x={hover * band + band / 2} y={y(values[hover] ?? 0)} width={w}>
-          <div className="text-muted">{hover === n - 1 ? "This hour" : hours[hover]}</div>
+          <div className="text-muted">{hover === n - 1 && live ? "This hour" : hours[hover]}</div>
           <div className="mt-0.5 font-semibold tabular-nums text-ink">{fmtNum(values[hover] ?? 0)} views</div>
           {compare?.[hover] !== undefined && <div className="tabular-nums text-muted">typical {fmtNum(compare[hover]!)}</div>}
         </Tooltip>
@@ -267,6 +278,12 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
             {typical.length > 0 && <path d={line(typical)} fill="none" stroke="var(--ink)" strokeWidth={2} strokeDasharray="5 4" />}
             <motion.path d={line(curve)} fill="none" stroke="var(--c1)" strokeWidth={2.25} strokeLinejoin="round"
               initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.1, ease: EASE }} />
+            {/* 100% = everyone who started; a Short's curve runs above it when people replay */}
+            <g pointerEvents="none">
+              <line x1={pad.l} x2={w - pad.r} y1={y(1)} y2={y(1)} stroke="var(--ink2)" strokeWidth={1.25} strokeDasharray="6 4" opacity={0.75} />
+              <text x={w - pad.r - 2} y={y(1) - 4} textAnchor="end" fontSize={10.5} fontWeight={600} fill="var(--ink2)"
+                stroke="var(--surface)" strokeWidth={3} paintOrder="stroke">100% · everyone who started</text>
+            </g>
             {drops.map((d, i) => {
               const s = d.at / duration;
               return (
@@ -291,9 +308,11 @@ export function RetentionChart({ curve, typical, drops, duration, previewUrl, fo
           <Tooltip x={x(hover)} y={y(near(hover)[1])} width={w}>
             <div className="text-muted">{mmss(hover * duration)}</div>
             <div className="mt-0.5 font-semibold tabular-nums text-ink">{Math.round(near(hover)[1] * 100)}% still watching</div>
+            {near(hover)[1] > 1 && <div className="mt-0.5 text-[11px] text-muted">more than started: replays</div>}
           </Tooltip>
         )}
       </div>
+      {ymax > 1 && <p className="mt-1 text-xs text-muted">🔁 Above 100% = replays: Shorts loop, so a second (or third) watch counts again.</p>}
       {sheet && previewUrl && w > 0 && (
         <div className="mt-1 flex gap-[3px]" style={{ paddingLeft: pad.l, paddingRight: pad.r }}>
           {strip.map((f) => <Frame key={f.t} src={previewUrl} sheet={sheet} index={f.index} width={frameW} />)}
@@ -356,7 +375,7 @@ export function WorldMap({ slices }: { slices: Slice[] }) {
         <Tooltip x={hover.x} y={hover.y} width={w}>
           <div className="flex items-center gap-1.5 font-semibold text-ink"><CountryChip code={s.key} />{s.label}</div>
           <div className="mt-0.5 tabular-nums text-ink2">{fmtNum(s.views)} views · {(s.share * 100).toFixed(1)}%</div>
-          {s.avgViewPct !== null && <div className="tabular-nums text-muted">{s.avgViewPct.toFixed(0)}% viewed</div>}
+          {s.avgViewPct !== null && <div className="tabular-nums text-muted">{viewedPct(s.avgViewPct).text} viewed{s.avgViewPct > 100 ? ` (${s.avgViewPct.toFixed(0)}%, replays)` : ""}</div>}
         </Tooltip>
       )}
     </div>
@@ -412,7 +431,7 @@ export function RankList({ slices, kind, max = 10, fmt = fmtNum, unit }: { slice
             initial={{ width: 0 }} animate={{ width: `${Math.max((s.views / hi) * 100, 1.5)}%` }} transition={{ duration: 0.7, delay: i * 0.03, ease: EASE }} />
           {kind === "country" && <CountryChip code={s.key} />}
           <span className="relative min-w-0 flex-1 truncate">{s.label}</span>
-          {s.avgViewPct !== null && <span className="relative text-xs tabular-nums text-muted">{s.avgViewPct.toFixed(0)}% viewed</span>}
+          {s.avgViewPct !== null && <span className="relative text-xs tabular-nums text-muted" title={viewedPct(s.avgViewPct).title}>{viewedPct(s.avgViewPct).text} viewed</span>}
           <span className="relative w-16 text-right text-xs font-medium tabular-nums">{fmt(s.views)}{unit ? ` ${unit}` : ""}</span>
         </li>
       ))}

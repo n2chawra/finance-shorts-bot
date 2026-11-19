@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ArrowDown, ArrowUp, ChevronsUpDown, Search, Sparkles, ThumbsDown, ThumbsUp, Minus, type LucideIcon } from "lucide-react";
+import { AlertTriangle, RefreshCw, Sparkles, ThumbsDown, ThumbsUp, Minus, type LucideIcon } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { Sparkline } from "@/components/charts";
 import { type Accent, Delta, IconTile, Num, tabClass } from "@/components/ui";
-import { fmtCompact, fmtDate, fmtNum, fmtRelative } from "@/lib/format";
-import type { AiChannel, AiVideo, ContentRow } from "@/lib/studio-schema";
+import { fmtCompact, fmtDate, fmtRelative } from "@/lib/format";
+import type { AiChannel, AiVideo } from "@/lib/studio-schema";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -35,8 +35,42 @@ export function Tabs<T extends string>({ value, onChange, tabs }: { value: T; on
 /** The old chart-colour accents map onto the flat fills. */
 const FILL: Record<string, Accent> = { "var(--c1)": "sky", "var(--c3)": "mint", "var(--c7)": "grape", "var(--c6)": "lime", "var(--c2)": "tang", "var(--c4)": "sun", "var(--c5)": "pink" };
 
-export function HeroStat({ label, value, fmt, delta, upIsGood = true, spark, sub, live, icon: Icon, accent = "var(--c1)" }: {
-  label: string; value: number | null; fmt: (n: number) => string; delta?: number | null; upIsGood?: boolean; spark?: number[]; sub?: React.ReactNode; live?: boolean; icon?: LucideIcon; accent?: string;
+/** Past this, a percentage stops meaning anything (the previous period was near zero): show the absolute change. */
+const MAX_PCT = 500;
+const PILL = { good: "bg-good-soft text-good-text", critical: "bg-critical-soft text-critical-text", neutral: "bg-surface-3 text-ink2", brand: "bg-brand-soft text-brand-text" } as const;
+
+/**
+ * The change badge for a KPI. With `now` and `prev` it decides itself: "New" when the previous
+ * period had nothing, the absolute change ("+17.8K") when the percentage would be silly (> +500%
+ * or a previous value too small to compare), else the percentage. With only `delta` it caps big
+ * rises as "×N".
+ */
+function KpiDelta({ delta, now, prev, fmt, upIsGood = true }: { delta?: number | null; now?: number | null; prev?: number | null; fmt?: (n: number) => string; upIsGood?: boolean }) {
+  const pill = (tone: keyof typeof PILL, text: string, title?: string) => (
+    <span title={title} className={`inline-flex shrink-0 items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[11.5px] font-medium tabular-nums ${PILL[tone]}`}>{text}</span>
+  );
+  if (now !== undefined && now !== null && prev !== undefined) {
+    const diff = now - (prev ?? 0);
+    const tone = (d: number): keyof typeof PILL => (d === 0 ? "neutral" : d > 0 === upIsGood ? "good" : "critical");
+    const abs = (d: number) => `${d > 0 ? "+" : d < 0 ? "−" : ""}${(fmt ?? fmtCompact)(Math.abs(d))}`;
+    if (prev === null || prev <= 0) {
+      if (now > 0 && (prev === null || prev === 0)) return pill("brand", "New", "Nothing in the previous period");
+      return diff === 0 ? null : pill(tone(diff), abs(diff), `${abs(diff)} against the previous period`);
+    }
+    const p = (diff / prev) * 100;
+    if (p > MAX_PCT || prev < 5) return pill(tone(diff), abs(diff), `${abs(diff)} against the previous period (${fmtCompact(prev)} before)`);
+    return <Delta value={p} upIsGood={upIsGood} />;
+  }
+  if (delta === undefined || delta === null) return null;
+  if (delta > MAX_PCT) return pill(upIsGood ? "good" : "critical", `${(1 + delta / 100).toFixed(0)}×`, `+${delta.toFixed(0)}% against the previous period`);
+  return <Delta value={delta} upIsGood={upIsGood} />;
+}
+
+export function HeroStat({ label, value, fmt, delta, prev, upIsGood = true, spark, sub, live, icon: Icon, accent = "var(--c1)" }: {
+  label: string; value: number | null; fmt: (n: number) => string; delta?: number | null;
+  /** the previous period's value: lets the badge show "New" or "+17.8K" instead of a silly percentage */
+  prev?: number | null;
+  upIsGood?: boolean; spark?: number[]; sub?: React.ReactNode; live?: boolean; icon?: LucideIcon; accent?: string;
 }) {
   return (
     <motion.div variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }} transition={{ duration: 0.32, ease: EASE }}
@@ -51,7 +85,7 @@ export function HeroStat({ label, value, fmt, delta, upIsGood = true, spark, sub
               : Icon && <IconTile icon={Icon} accent={FILL[accent] ?? "sky"} size="sm" />}
             {label}
           </span>
-          {delta !== undefined && <Delta value={delta} upIsGood={upIsGood} />}
+          {prev !== undefined ? <KpiDelta now={value} prev={prev} fmt={fmt} upIsGood={upIsGood} /> : delta !== undefined && <KpiDelta delta={delta} upIsGood={upIsGood} />}
         </div>
         <div className="mt-3.5 text-[30px] font-semibold leading-none tracking-[-0.03em] md:text-[32px]">
           {value === null ? <span className="text-muted">—</span> : <Num value={value} fmt={fmt} />}
@@ -64,13 +98,18 @@ export function HeroStat({ label, value, fmt, delta, upIsGood = true, spark, sub
 }
 
 /** A small number row under the hero: label, value, change. */
-export function MiniStat({ label, value, delta, upIsGood = true, hint }: { label: string; value: React.ReactNode; delta?: number | null; upIsGood?: boolean; hint?: string }) {
+export function MiniStat({ label, value, delta, now, prev, fmt, upIsGood = true, hint }: {
+  label: string; value: React.ReactNode; delta?: number | null;
+  /** the raw value now and in the previous period: the badge then shows "New" or the absolute change when a percentage would be silly */
+  now?: number | null; prev?: number | null; fmt?: (n: number) => string;
+  upIsGood?: boolean; hint?: string;
+}) {
   return (
     <div className="panel min-w-0 bg-surface px-4 py-3.5" title={hint}>
       <div className="truncate text-[12px] text-muted">{label}</div>
       <div className="mt-1.5 flex items-baseline justify-between gap-2">
         <span className="truncate text-[18px] font-semibold tabular-nums tracking-tight">{value}</span>
-        {delta !== undefined && <Delta value={delta ?? null} upIsGood={upIsGood} />}
+        {prev !== undefined ? <KpiDelta now={now} prev={prev} fmt={fmt} upIsGood={upIsGood} /> : delta !== undefined && <KpiDelta delta={delta} upIsGood={upIsGood} />}
       </div>
     </div>
   );
@@ -119,20 +158,76 @@ function EvidenceList({ items, onJump, tone }: { items: Ev[]; onJump?: (tab: str
   );
 }
 
-/** The auditor's channel analysis: headline, what works, what doesn't, audience, three moves. */
-export function AiChannelCard({ ai, onJump, compact }: { ai: AiChannel | null; onJump?: (tab: string) => void; compact?: boolean }) {
+/** AI text older than this is flagged stale: the auditor writes nightly, so two days means it missed runs. */
+const STALE_MS = 2 * 86_400_000;
+const isStale = (at?: string) => !!at && Date.now() - Date.parse(at) > STALE_MS;
+
+function StaleBadge({ at }: { at?: string }) {
+  if (!isStale(at)) return null;
+  const days = Math.floor((Date.now() - Date.parse(at!)) / 86_400_000);
+  return (
+    <span title={`Written ${days} days ago; the nightly auditor normally rewrites it every night`} className="inline-flex items-center gap-1 rounded-full bg-warning-soft px-2 py-0.5 text-[11px] font-semibold text-warning-text">
+      <AlertTriangle aria-hidden className="size-3" />Stale · {days} d
+    </span>
+  );
+}
+
+/**
+ * The analysis is written by the auditor, a nightly Claude Code routine (agents/auditor.md), not a
+ * GitHub workflow, so the dashboard cannot start it on demand. The button says so instead of pretending.
+ */
+export function AiRefresh({ at }: { at?: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span className="relative inline-flex flex-col items-end">
+      <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open}
+        className="inline-flex items-center gap-1 rounded-full border border-ring bg-surface px-2 py-0.5 text-[11px] font-semibold text-ink hover:bg-tint-brand">
+        <RefreshCw aria-hidden className="size-3" />Refresh
+      </button>
+      {open && (
+        <span role="status" className="mt-1.5 max-w-64 rounded-lg border border-ring bg-surface p-2 text-right text-[11.5px] font-medium leading-snug text-ink2 shadow-sm">
+          Refreshes tonight at 23:00 IST with the auditor{at ? ` (last written ${fmtRelative(at)})` : ""}. It runs as a nightly routine, so it can&apos;t be started from here.
+        </span>
+      )}
+    </span>
+  );
+}
+
+/** The auditor's three moves, on their own (the overview lays them out full width under the analysis). */
+export function AiDoNext({ ai }: { ai: AiChannel | null }) {
+  if (!ai?.recommendations.length) return null;
+  return (
+    <section className="panel bg-surface p-5">
+      <div className="mb-3 flex flex-wrap items-center gap-2"><h4 className="eyebrow text-ink">Do next</h4><AiTag at={ai.writtenAt} /><StaleBadge at={ai.writtenAt} /></div>
+      <ol className="grid gap-3 md:grid-cols-3">
+        {ai.recommendations.map((r, i) => (
+          <li key={i} className="panel-sm bg-tint-brand p-3">
+            <div className="flex gap-2"><span className="grid size-5 shrink-0 place-items-center rounded-full bg-primary text-[11px] font-semibold text-white">{i + 1}</span><span className="text-[13.5px] font-semibold leading-snug">{r.do}</span></div>
+            <p className="mt-1.5 pl-8 text-xs font-medium text-muted">{r.because}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+/** The auditor's channel analysis: headline, what works, what doesn't, audience, three moves (`recs={false}` leaves the moves to AiDoNext). */
+export function AiChannelCard({ ai, onJump, compact, recs = true, className = "" }: { ai: AiChannel | null; onJump?: (tab: string) => void; compact?: boolean; recs?: boolean; className?: string }) {
   if (!ai) {
     return (
-      <div className="pattern-empty border border-dashed border-ring p-5 text-sm font-medium text-ink2">
+      <div className={`pattern-empty border border-dashed border-ring p-5 text-sm font-medium text-ink2 ${className}`}>
         <AiTag /> <p className="mt-2">The first AI analysis is written by the nightly auditor once the deep stats have run. It reads every number on this page and the comments, then says what to change.</p>
       </div>
     );
   }
   return (
     <motion.section initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE }}
-      className="panel relative overflow-hidden bg-surface">
+      className={`panel relative overflow-hidden bg-surface ${className}`}>
       <div className="hero-glow border-b border-line px-5 py-4">
-        <AiTag at={ai.writtenAt} />
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <span className="flex flex-wrap items-center gap-2"><AiTag at={ai.writtenAt} /><StaleBadge at={ai.writtenAt} /></span>
+          <AiRefresh at={ai.writtenAt} />
+        </div>
         <h3 className="mt-2.5 text-[17px] font-semibold leading-snug tracking-[-0.01em]">{ai.headline}</h3>
       </div>
       <div className="relative p-5">
@@ -141,7 +236,7 @@ export function AiChannelCard({ ai, onJump, compact }: { ai: AiChannel | null; o
           <div><h4 className="eyebrow mb-3 inline-block bg-tint-red px-1.5 text-ink rounded-md">Not working</h4><EvidenceList items={ai.notWorking} onJump={onJump} tone="critical" /></div>
           {!compact && <div><h4 className="eyebrow mb-3 inline-block bg-tint-blue px-1.5 text-ink rounded-md">Audience</h4><EvidenceList items={ai.audience} onJump={onJump} tone="info" /></div>}
         </div>
-        {ai.recommendations.length > 0 && (
+        {recs && ai.recommendations.length > 0 && (
           <div className="mt-6 border-t border-ring pt-5">
             <h4 className="eyebrow mb-3 text-ink">Do next</h4>
             <ol className="grid gap-3 md:grid-cols-3">
@@ -166,7 +261,7 @@ export function AiVideoCard({ ai, title, thumbnailUrl, href }: { ai: AiVideo; ti
       <div className="flex items-start gap-3">
         {thumbnailUrl && <img src={thumbnailUrl} alt="" className="h-16 w-9 shrink-0 border border-ring object-cover rounded-lg" loading="lazy" />}
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2"><VerdictBadge verdict={ai.verdict} /><AiTag at={ai.writtenAt} /></div>
+          <div className="flex flex-wrap items-center gap-2"><VerdictBadge verdict={ai.verdict} /><AiTag at={ai.writtenAt} /><StaleBadge at={ai.writtenAt} /></div>
           {title && <div className="mt-1 truncate text-xs text-muted">{title}</div>}
           <p className="mt-1.5 text-[14.5px] font-semibold leading-snug">{ai.headline}</p>
         </div>
@@ -180,95 +275,6 @@ export function AiVideoCard({ ai, title, thumbnailUrl, href }: { ai: AiVideo; ti
   );
   const cls = "panel block bg-surface p-4";
   return href ? <Link href={href} className={`${cls} hover-raise`}>{body}</Link> : <div className={cls}>{body}</div>;
-}
-
-// ---------------- content table ----------------
-
-/** Heat-tinted cell: green above the median of the column, red below. */
-function Heat({ v, lo, mid, hi, children }: { v: number | null; lo: number; mid: number; hi: number; children: React.ReactNode }) {
-  if (v === null) return <span className="text-muted">—</span>;
-  const k = v >= mid ? Math.min(1, (v - mid) / Math.max(hi - mid, 1e-9)) : -Math.min(1, (mid - v) / Math.max(mid - lo, 1e-9));
-  const bg = k >= 0 ? `color-mix(in oklab, var(--good) ${Math.round(k * 90)}%, transparent)` : `color-mix(in oklab, var(--critical) ${Math.round(-k * 70)}%, transparent)`;
-  return <span className="inline-block min-w-12 border border-transparent px-1.5 py-0.5 text-right text-xs font-medium tabular-nums" style={{ background: bg, borderColor: Math.abs(k) > 0.6 ? "var(--edge)" : undefined }}>{children}</span>;
-}
-
-type Col = { key: string; label: string; get: (r: ContentRow) => number | null; render: (r: ContentRow, s: Stats) => React.ReactNode; hint?: string };
-type Stats = Record<string, { lo: number; mid: number; hi: number }>;
-
-const pct = (x: number | null, d = 0) => (x === null ? "—" : `${(x * 100).toFixed(d)}%`);
-const vs = (x: number | null) => {
-  if (x === null) return null;
-  const up = x >= 1;
-  return <span className={`ml-1 inline-flex items-center text-[11px] font-semibold ${Math.abs(x - 1) < 0.1 ? "text-muted" : up ? "text-good-text" : "text-critical-text"}`}>{up ? <ArrowUp className="size-3" /> : <ArrowDown className="size-3" />}{x.toFixed(1)}×</span>;
-};
-
-const COLS: Col[] = [
-  { key: "views", label: "Views", get: (r) => r.views, render: (r) => <span className="font-semibold tabular-nums">{fmtNum(r.views)}</span> },
-  { key: "views48", label: "48 h", hint: "Views in the first two days, against the median of its format", get: (r) => r.views48, render: (r) => <span className="tabular-nums">{r.views48 === null ? "—" : fmtCompact(r.views48)}{vs(r.vs48)}</span> },
-  { key: "pct", label: "% viewed", get: (r) => r.avgViewPct, render: (r, s) => <Heat v={r.avgViewPct} {...s.pct!}>{r.avgViewPct === null ? "—" : `${r.avgViewPct.toFixed(0)}%`}</Heat> },
-  { key: "hook", label: "Hook hold", hint: "Share still watching at 3 s (Shorts) or 30 s (long)", get: (r) => r.hookHold, render: (r, s) => <Heat v={r.hookHold} {...s.hook!}>{pct(r.hookHold)}</Heat> },
-  { key: "engaged", label: "Engaged", hint: "Engaged views ÷ views: the closest the API gets to Studio's stayed-to-watch", get: (r) => r.engagedRatio, render: (r, s) => <Heat v={r.engagedRatio} {...s.engaged!}>{pct(r.engagedRatio)}</Heat> },
-  { key: "ctr", label: "CTR", get: (r) => r.ctr, render: (r, s) => <Heat v={r.ctr} {...s.ctr!}>{pct(r.ctr, 1)}</Heat> },
-  { key: "likes", label: "Likes", get: (r) => r.likes, render: (r) => <span className="tabular-nums">{fmtNum(r.likes)}</span> },
-  { key: "shares", label: "Shares", get: (r) => r.shares, render: (r) => <span className="tabular-nums">{fmtNum(r.shares)}</span> },
-  { key: "subs", label: "Subs", get: (r) => r.subsNet, render: (r) => <span className={`tabular-nums ${r.subsNet > 0 ? "text-good-text" : r.subsNet < 0 ? "text-critical-text" : ""}`}>{r.subsNet > 0 ? "+" : ""}{fmtNum(r.subsNet)}</span> },
-];
-
-export function ContentTable({ rows }: { rows: ContentRow[] }) {
-  const [q, setQ] = useState("");
-  const [sort, setSort] = useState<{ key: string; dir: 1 | -1 }>({ key: "published", dir: -1 });
-  const stats: Stats = useMemo(() => {
-    const out: Stats = {};
-    for (const c of COLS) {
-      const xs = rows.map(c.get).filter((x): x is number => x !== null).sort((a, b) => a - b);
-      out[c.key] = { lo: xs[0] ?? 0, mid: xs[Math.floor(xs.length / 2)] ?? 0, hi: xs.at(-1) ?? 1 };
-    }
-    return out;
-  }, [rows]);
-  const shown = useMemo(() => {
-    const f = rows.filter((r) => !q || r.title.toLowerCase().includes(q.toLowerCase()) || r.videoId.includes(q));
-    const col = COLS.find((c) => c.key === sort.key);
-    return [...f].sort((a, b) => sort.dir * (col ? (col.get(a) ?? -Infinity) - (col.get(b) ?? -Infinity) : a.publishAt.localeCompare(b.publishAt)));
-  }, [rows, q, sort]);
-  const head = (key: string, label: string, hint?: string) => (
-    <th key={key} className="whitespace-nowrap px-2 py-2.5 text-right font-semibold first:text-left" title={hint}>
-      <button type="button" onClick={() => setSort((s) => ({ key, dir: s.key === key ? (-s.dir as 1 | -1) : -1 }))} className={`inline-flex items-center gap-1 font-semibold hover:text-brand ${sort.key === key ? "text-brand" : ""}`}>
-        {label}{sort.key === key ? (sort.dir < 0 ? <ArrowDown className="size-3" /> : <ArrowUp className="size-3" />) : <ChevronsUpDown className="size-3 opacity-40" />}
-      </button>
-    </th>
-  );
-  return (
-    <div>
-      <div className="flex items-center gap-2 border-b border-ring bg-surface-2 px-4 py-2.5">
-        <Search aria-hidden className="size-4" />
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={`Search ${rows.length} videos`} className="h-8 flex-1 bg-transparent text-[14px] font-semibold outline-none placeholder:text-muted" />
-      </div>
-      <div className="max-h-[640px] overflow-auto">
-        <table className="w-full min-w-[920px] text-[13px]">
-          <thead className="sticky top-0 z-10 border-b border-line bg-surface-2 text-[12px] text-muted">
-            <tr>{head("published", "Video")}{COLS.map((c) => head(c.key, c.label, c.hint))}<th className="px-2 py-2.5 text-right font-semibold">First 7 days</th></tr>
-          </thead>
-          <tbody>
-            {shown.map((r, i) => (
-              <motion.tr key={r.videoId} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: Math.min(i * 0.015, 0.4) }} className="border-b border-line last:border-0 hover:bg-tint-brand">
-                <td className="px-2 py-2 pl-4">
-                  <Link href={`/videos/${r.videoId}`} className="flex min-w-[240px] items-center gap-2.5">
-                    <img src={r.thumbnailUrl} alt="" loading="lazy" className={`shrink-0 border border-ring object-cover ${r.format === "long" ? "h-9 w-16" : "h-12 w-7"} rounded-lg`} />
-                    <span className="min-w-0">
-                      <span className="line-clamp-1 font-semibold text-ink hover:underline">{r.title}</span>
-                      <span className="flex items-center gap-1.5 text-xs text-muted">{fmtDate(r.publishAt)} · {r.format === "long" ? "Long" : "Short"}{r.verdict && <VerdictBadge verdict={r.verdict} />}</span>
-                    </span>
-                  </Link>
-                </td>
-                {COLS.map((c) => <td key={c.key} className="px-2 py-2 text-right">{c.render(r, stats)}</td>)}
-                <td className="w-28 px-2 py-2 pr-4"><Sparkline values={r.first7} height={26} /></td>
-              </motion.tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
 }
 
 /** Placeholder while a part of the data hasn't arrived: says when it will. */

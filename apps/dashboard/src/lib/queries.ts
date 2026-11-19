@@ -4,7 +4,7 @@
 import { GrowthSchema } from "./growth";
 import { ScorecardSchema } from "./scorecard";
 import { PortfolioSchema } from "./portfolio";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 
 import { getJson, send } from "./api";
@@ -26,7 +26,7 @@ export const useRuns = () => useQuery({ queryKey: ["runs"], queryFn: () => getJs
 export const useAnalytics = () => useQuery({ queryKey: ["analytics"], queryFn: () => getJson("/api/analytics", AnalyticsSchema) });
 /** Studio-grade analytics; refetched every minute so the realtime card ticks. */
 export const useStudio = (range: Range, format: Fmt) => useQuery({ queryKey: ["studio", range, format], queryFn: () => getJson(`/api/analytics/studio?range=${range}&format=${format}`, StudioSchema),
-  refetchInterval: 60_000, placeholderData: (prev) => prev });
+  staleTime: 60_000, refetchInterval: 60_000, placeholderData: keepPreviousData });
 export const useVideoStudio = (id: string) => useQuery({ queryKey: ["video-studio", id], queryFn: () => getJson(`/api/videos/${id}/studio`, VideoStudioSchema) });
 export const useSettings = () => useQuery({ queryKey: ["settings"], queryFn: () => getJson("/api/settings", SettingsSchema) });
 export const useVideo = (id: string) => useQuery({ queryKey: ["video", id], queryFn: () => getJson(`/api/videos/${id}`, VideoDetailSchema) });

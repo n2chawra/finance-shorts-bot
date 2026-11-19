@@ -483,7 +483,7 @@ test("overview and analytics say how old the YouTube numbers are", async ({ page
   for (const path of ["/", "/analytics"]) {
     await page.goto(path);
     const age = page.getByTestId("stats-age");
-    await expect(age).toHaveText(`YouTube Analytics through ${label}`, { timeout: 30_000 });
+    await expect(age).toContainText(new RegExp(`(YouTube Analytics|Studio numbers) through ${label}`), { timeout: 30_000 });
     await expect(age).toHaveAttribute("data-tone", /^(fine|warning|critical)$/);
   }
 });

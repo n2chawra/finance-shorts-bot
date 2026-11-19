@@ -89,11 +89,15 @@ function Trail({ m, trail }: { m: MetricDef; trail: { id: string; v: number | nu
 }
 
 /** One of the four numbers: its median, its band, the gauge, its target and how it moved. */
-export function MetricTile({ m, value, before, trail, n }: { m: MetricDef; value: number | null; before: number | null; trail: { id: string; v: number | null }[]; n: number }) {
+export function MetricTile({ m, value, before, trail, n, deltaLabel = "vs before" }: {
+  m: MetricDef; value: number | null; before: number | null; trail: { id: string; v: number | null }[]; n: number;
+  /** what `before` is: the Shorts before the reset by default */
+  deltaLabel?: string;
+}) {
   const band = bandOf(m, value);
   return (
     <motion.div variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
-      className={`panel relative flex min-w-0 flex-col overflow-hidden bg-surface p-5 ${band === "off" ? "ring-1 ring-inset ring-critical/25" : ""}`}>
+      className="panel relative flex min-w-0 flex-col overflow-hidden bg-surface p-5">
       <span aria-hidden className={`absolute inset-x-0 top-0 h-1 ${band ? BAND_DOT[band] : "bg-surface-3"}`} />
       <div className="flex items-start justify-between gap-2">
         <span className="flex min-w-0 items-center gap-1 text-[13px] font-medium leading-tight text-ink2">
@@ -116,7 +120,7 @@ export function MetricTile({ m, value, before, trail, n }: { m: MetricDef; value
         {m.stretch && <span>{m.stretch.label}</span>}
       </div>
       <div className="mt-4 flex items-end justify-between gap-3 border-t border-line pt-3.5">
-        <PointsDelta m={m} now={value} before={before} label="vs before" />
+        <PointsDelta m={m} now={value} before={before} label={deltaLabel} />
         <Trail m={m} trail={trail} />
       </div>
     </motion.div>

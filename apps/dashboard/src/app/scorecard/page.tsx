@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ArrowRight, CircleHelp, Gauge, ListChecks, Mountain, Scale, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUp, CircleHelp, Gauge, ListChecks, Mountain, Scale, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 
 import { BandPill, MetricTile } from "@/components/scorecard";
-import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Segmented, Stagger, Why, type Tone } from "@/components/ui";
+import { Badge, Card, Empty, ErrorNote, Loading, PageHeader, Segmented, Stagger, Why } from "@/components/ui";
 import { fmtCompact, fmtDayKey, fmtRelative } from "@/lib/format";
 import { useIsFirstChannel, useScorecard } from "@/lib/queries";
-import { CEILING, METRIC, METRICS, type ScoreShort, type Side, bandOf, isQuestionTitle, summarize } from "@/lib/scorecard";
+import { CEILING, METRIC, METRICS, type MetricDef, type MetricKey, type ScoreShort, type Side, bandOf, isQuestionTitle, median, summarize } from "@/lib/scorecard";
 
 /*
  * Is it working? (owner, 2026-11-16: "analytics I can watch every day to see if the videos are working").
@@ -27,18 +27,58 @@ const VERDICT_RING: Record<string, string> = { good: "var(--good)", warning: "va
 function Ring({ on, of, color }: { on: number; of: number; color: string }) {
   const r = 34, c = 2 * Math.PI * r, share = of ? on / of : 0;
   return (
-    <div className="relative grid size-[104px] shrink-0 place-items-center" role="img" aria-label={`${on} of ${of || 4} numbers on target`}>
+    <div className="relative grid size-[64px] shrink-0 place-items-center" role="img" aria-label={`${on} of ${of || 4} numbers on target`}>
       <svg viewBox="0 0 84 84" className="absolute inset-0 -rotate-90" aria-hidden>
         <circle cx="42" cy="42" r={r} fill="none" stroke="var(--surface-3)" strokeWidth="7" />
         <motion.circle cx="42" cy="42" r={r} fill="none" stroke={color} strokeWidth="7" strokeLinecap="round" strokeDasharray={c}
           initial={{ strokeDashoffset: c }} animate={{ strokeDashoffset: c * (1 - share) }} transition={{ duration: 1, ease }} />
       </svg>
       <div className="text-center leading-none">
-        <span className="text-[28px] font-semibold tracking-[-0.03em] tabular-nums">{on}</span>
-        <span className="text-[14px] font-medium text-muted">/{of || 4}</span>
-        <div className="mt-1 text-[9.5px] font-semibold uppercase tracking-wider text-muted">on target</div>
+        <span className="text-[18px] font-semibold tracking-[-0.03em] tabular-nums">{on}</span>
+        <span className="text-[11px] font-medium text-muted">/{of || 4}</span>
       </div>
     </div>
+  );
+}
+
+/** Which way a number moved, judged by which way is better: one colour rule for the whole page. */
+type Move = "better" | "worse" | "same";
+const MOVE_TEXT: Record<Move, string> = { better: "text-good-text", worse: "text-critical-text", same: "text-muted" };
+function moveOf(up: boolean, now: number | null, prev: number | null, fmt: (v: number) => string): Move | null {
+  if (now == null || prev == null) return null;
+  if (fmt(now) === fmt(prev)) return "same";
+  return (now > prev) === up ? "better" : "worse";
+}
+function MoveArrow({ now, prev, move }: { now: number; prev: number; move: Move }) {
+  if (move === "same") return <span aria-hidden>&rarr;</span>;
+  const Icon = now > prev ? ArrowUp : ArrowDown;
+  return <Icon aria-hidden className="size-3.5" />;
+}
+
+/** This week's medians against last week's, each with its arrow: progress first. */
+function WeekLine({ now, prev }: { now: Record<MetricKey, number | null>; prev: Record<MetricKey, number | null> }) {
+  return (
+    <ul className="grid grid-cols-2 gap-x-5 gap-y-3 lg:grid-cols-4">
+      {METRICS.map((m: MetricDef) => {
+        const a = now[m.key], b = prev[m.key];
+        const move = moveOf(m.higherIsBetter, a, b, m.format);
+        return (
+          <li key={m.key} className="min-w-0">
+            <div className="truncate text-[12px] font-medium text-muted">{m.label}</div>
+            <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+              <span className={`text-[26px] font-semibold leading-none tracking-[-0.02em] tabular-nums ${move ? MOVE_TEXT[move] : ""}`}>
+                {a == null ? <span className="text-muted">&mdash;</span> : m.format(a)}
+              </span>
+              {a != null && b != null && move
+                ? <span className={`inline-flex items-center gap-0.5 whitespace-nowrap text-[12.5px] font-medium ${MOVE_TEXT[move]}`}>
+                    <MoveArrow now={a} prev={b} move={move} />{move === "same" ? "same as" : "from"}&nbsp;<span className="tabular-nums">{m.format(b)}</span>
+                  </span>
+                : <span className="text-[12px] text-muted">{a == null ? "waiting for numbers" : "no Shorts last week"}</span>}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
@@ -49,18 +89,20 @@ function CeilingChart({ shorts, resetDay }: { shorts: ScoreShort[]; resetDay: st
   const lo = Math.log10(30), hi = Math.log10(top);
   const y = (v: number) => `${Math.max(0, Math.min(100, ((Math.log10(Math.max(v, 30)) - lo) / (hi - lo)) * 100))}%`;
   const resetAt = Date.parse(`${resetDay}T00:00:00+05:30`);
+  const med = median(rows.map((s) => s.views48));
   const lines = [
-    { at: CEILING, label: "1.2K ceiling", cls: "border-warning", text: "text-warning-text" },
-    { at: 5_000, label: "5K", cls: "border-ring-strong", text: "text-muted" },
-    { at: 10_000, label: "10K", cls: "border-ring-strong", text: "text-muted" },
+    { at: CEILING, label: "1.2K ceiling", cls: "border-warning", text: "text-warning-text", pos: "-top-4" },
+    { at: 5_000, label: "5K", cls: "border-ring-strong", text: "text-muted", pos: "-top-2" },
+    { at: 10_000, label: "10K", cls: "border-ring-strong", text: "text-muted", pos: "-top-2" },
+    ...(med != null ? [{ at: med, label: `median ${fmtCompact(med)}`, cls: "border-ink2/60", text: "text-ink2", pos: "top-1" }] : []),
   ];
   if (!rows.length) return <Empty icon={Mountain} title="No Shorts in this range">Pick a longer range.</Empty>;
   return (
-    <div>
-      <div className="relative h-[220px] pl-1 pr-12">
+    <div className="flex flex-1 flex-col">
+      <div className="relative min-h-[220px] flex-1"><div className="absolute inset-0 pl-1 pr-[72px]">
         {lines.map((l) => (
-          <div key={l.at} aria-hidden className={`absolute inset-x-0 border-t border-dashed ${l.cls}`} style={{ bottom: y(l.at) }}>
-            <span className={`absolute -top-2.5 right-0 bg-surface pl-1.5 text-[10.5px] font-semibold ${l.text}`}>{l.label}</span>
+          <div key={l.label} aria-hidden className={`absolute left-0 right-0 border-t border-dashed ${l.cls}`} style={{ bottom: y(l.at) }}>
+            <span className={`absolute right-0 ${l.pos} whitespace-nowrap bg-surface pl-1.5 text-[10.5px] font-semibold leading-none ${l.text}`}>{l.label}</span>
           </div>
         ))}
         <div className="relative flex h-full items-end gap-[3px]">
@@ -70,24 +112,25 @@ function CeilingChart({ shorts, resetDay }: { shorts: ScoreShort[]; resetDay: st
             const early = s.views48 == null;
             const broke = v > CEILING;
             return (
-              <Link key={s.id} href={`/videos/${s.id}`} className="group relative flex h-full min-w-0 flex-1 items-end"
+              <Link key={s.id} href={`/videos/${s.id}`} className="group relative flex h-full min-w-0 flex-1 items-end rounded-t-[4px] outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 aria-label={`${s.title}: ${fmtCompact(v)} views${early ? " so far" : " in 48 hours"}`}>
                 <motion.span initial={{ height: 0 }} animate={{ height: y(v) }} transition={{ duration: 0.8, delay: i * 0.015, ease }}
                   className={`w-full rounded-t-[4px] transition-opacity group-hover:opacity-80 ${broke ? "bg-good" : after ? "bg-brand" : "bg-ring-strong"} ${early ? "opacity-45 [background-image:repeating-linear-gradient(135deg,transparent_0_3px,rgba(255,255,255,.35)_3px_6px)]" : ""}`} />
-                <span className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1 hidden w-max max-w-[220px] -translate-x-1/2 rounded-lg bg-ink px-2.5 py-1.5 text-[11.5px] leading-snug text-surface shadow-lift group-hover:block">
+                <span className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1 hidden w-max max-w-[220px] -translate-x-1/2 rounded-lg bg-ink px-2.5 py-1.5 text-[11.5px] leading-snug text-surface shadow-lift group-hover:block group-focus-visible:block">
                   <b className="tabular-nums">{fmtCompact(v)}</b> {early ? "views so far" : "views in 48 h"}<br /><span className="opacity-80">{s.title}</span>
                 </span>
               </Link>
             );
           })}
         </div>
-      </div>
+      </div></div>
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11.5px] text-ink2">
         <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-[3px] bg-ring-strong" />Before the reset</span>
         <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-[3px] bg-brand" />New recipe</span>
         <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-[3px] bg-good" />Past the ceiling</span>
         <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-[3px] bg-ring-strong opacity-45" />Under 2 days old (views so far)</span>
-        <span className="ml-auto text-muted">oldest → newest · log scale</span>
+        {med != null && <span className="flex items-center gap-1.5"><span className="w-3 border-t border-dashed border-ink2/60" />Median 48 h views</span>}
+        <span className="ml-auto text-muted">oldest → newest · log scale · click a bar to open it</span>
       </div>
     </div>
   );
@@ -110,15 +153,14 @@ function BeforeAfter({ before, after, resetDay }: { before: Side; after: Side; r
       </div>
       <ul className="divide-y divide-line">
         {rows.map((r) => {
-          const better = r.a != null && r.b != null && r.a !== r.b ? (r.a > r.b) === r.up : null;
-          const band = r.key ? bandOf(METRIC[r.key], r.a) : null;
+          const move = moveOf(r.up, r.a, r.b, r.fmt);
           return (
             <li key={r.label} className="grid grid-cols-[1fr_auto_auto] items-center gap-x-4 py-2.5 text-[13px]">
               <span className="text-ink2">{r.label}</span>
               <span className="w-16 text-right tabular-nums text-muted">{r.b == null ? "—" : r.fmt(r.b)}</span>
-              <span className={`w-20 text-right font-semibold tabular-nums ${better === null ? "" : better ? "text-good-text" : "text-critical-text"}`}>
+              <span className={`inline-flex w-20 items-center justify-end gap-1 font-semibold tabular-nums ${move ? MOVE_TEXT[move] : ""}`}>
                 {r.a == null ? <span className="font-normal text-muted">waiting</span> : r.fmt(r.a)}
-                {band && <span aria-hidden className={`ml-1.5 inline-block size-1.5 -translate-y-px rounded-full ${band === "good" ? "bg-good" : band === "close" ? "bg-warning" : "bg-critical"}`} />}
+                {r.a != null && r.b != null && move && <MoveArrow now={r.a} prev={r.b} move={move} />}
               </span>
             </li>
           );
@@ -192,7 +234,11 @@ export default function ScorecardPage() {
   if (error || !data) return <ErrorNote error={error} />;
   const s = summarize(data.shorts, data.resetDay, Number(range));
   const v = s.verdict;
-  const tone: Tone = v.tone;
+  // this week (last 7 days) against the 7 days before, whatever the range
+  const s7 = Number(range) === 7 ? s : summarize(data.shorts, data.resetDay, 7);
+  const weekAgo = Date.now() - 7 * 86_400_000, twoWeeksAgo = weekAgo - 7 * 86_400_000;
+  const prevShorts = data.shorts.filter((x) => { const t = Date.parse(x.publishAt); return t >= twoWeeksAgo && t < weekAgo; });
+  const lastWeek = Object.fromEntries(METRICS.map((m) => [m.key, median(prevShorts.map((x) => x[m.key]))])) as Record<MetricKey, number | null>;
 
   return (
     <Stagger>
@@ -200,26 +246,31 @@ export default function ScorecardPage() {
         <Segmented label="Range" value={range} onChange={setRange} options={[{ value: "7", label: "7 days" }, { value: "14", label: "14 days" }, { value: "28", label: "28 days" }]} />
       </PageHeader>
 
-      {/* the verdict */}
+      {/* progress first: this week vs last week, then the targets */}
       <motion.section variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }} className="panel hero-glow relative overflow-hidden bg-surface p-5 md:p-6">
-        <div className="flex flex-col gap-5 md:flex-row md:items-center">
+        <div className="mb-3.5 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <h2 className="text-[15px] font-semibold tracking-[-0.01em]">This week vs last week</h2>
+          <span className="text-[12px] text-muted">medians of the Shorts of the last 7 days against the 7 before · green moved the right way, red the wrong way</span>
+        </div>
+        <WeekLine now={s7.now.medians} prev={lastWeek} />
+        <div className="mt-5 flex flex-col gap-3 border-t border-line pt-4 sm:flex-row sm:items-center">
           <Ring on={v.onTarget} of={v.measured || 4} color={VERDICT_RING[v.tone]} />
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge tone={tone} dot>{v.measured ? (v.onTarget === v.measured ? "Working" : v.onTarget ? "Partly working" : "Not working yet") : "Waiting for numbers"}</Badge>
-              <span className="text-[12.5px] text-muted">{s.recent.length} Shorts in the last {range} days · {s.measured} with YouTube&apos;s numbers</span>
+              <span className="text-[12.5px] font-medium text-ink2">{v.measured ? `${v.onTarget} of ${v.measured} on target` : "Waiting for numbers"}</span>
+              <span className="text-[12px] text-muted">· {s.recent.length} Shorts in the last {range} days, {s.measured} with YouTube&apos;s numbers</span>
             </div>
-            <p className="mt-2.5 text-[17px] font-semibold leading-snug tracking-[-0.01em]">{v.line}</p>
-            <div className="mt-3.5 flex flex-wrap gap-2">
-              {s.ladder.map((l) => (
-                <span key={l.at} className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[12px] font-medium ${l.n ? "border-good/30 bg-good-soft text-good-text" : "border-ring bg-surface-2 text-ink2"}`}>
-                  <Mountain aria-hidden className="size-3.5" /><b className="tabular-nums">{l.n}</b> past {l.at / 1000}K
-                </span>
-              ))}
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-ring bg-surface-2 px-2.5 py-1 text-[12px] font-medium text-ink2">
-                <Sparkles aria-hidden className="size-3.5" />Best ever {fmtCompact(s.best)}
+            <p className="mt-1 text-[13.5px] leading-snug text-ink2">{v.line}</p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {s.ladder.map((l) => (
+              <span key={l.at} className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[12px] font-medium ${l.n ? "border-good/30 bg-good-soft text-good-text" : "border-ring bg-surface-2 text-ink2"}`}>
+                <Mountain aria-hidden className="size-3.5" /><b className="tabular-nums">{l.n}</b> past {l.at / 1000}K
               </span>
-            </div>
+            ))}
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-ring bg-surface-2 px-2.5 py-1 text-[12px] font-medium text-ink2">
+              <Sparkles aria-hidden className="size-3.5" />Best ever {fmtCompact(s.best)}
+            </span>
           </div>
         </div>
       </motion.section>
@@ -234,12 +285,12 @@ export default function ScorecardPage() {
 
       {/* the ceiling, and before vs after (Paisa Panchayat's own history) */}
       {first && <div className="mt-5 grid gap-5 lg:grid-cols-12">
-        <Card title="Breaking the ceiling" icon={Mountain} accent="mint" className="lg:col-span-8"
-          description={`Views in the first 48 hours of our latest Shorts. Every Short so far stopped under ${fmtCompact(CEILING)}; a bar past the line means YouTube took it to a bigger audience.`}>
+        <Card title="Breaking the ceiling" icon={Mountain} accent="mint" className="flex flex-col lg:col-span-8 [&>div:last-child]:flex [&>div:last-child]:flex-1 [&>div:last-child]:flex-col"
+          description={`Views in the first 48 hours of our latest Shorts, with their median. Every Short so far stopped under ${fmtCompact(CEILING)}; a bar past that line means YouTube took it to a bigger audience.`}>
           <CeilingChart shorts={data.shorts.slice(0, Math.min(28, Math.max(21, s.recent.length)))} resetDay={data.resetDay} />
         </Card>
         <Card title="Before vs after the reset" icon={Scale} accent="grape" className="lg:col-span-4"
-          description="Medians of the 14 days before the content reset against every Short since. Green moved the right way.">
+          description="Medians of the 14 days before the content reset against every Short since. Green moved the right way, red the wrong way, grey didn't move.">
           <BeforeAfter before={s.before} after={s.after} resetDay={data.resetDay} />
         </Card>
       </div>}
