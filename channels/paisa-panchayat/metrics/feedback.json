@@ -1,7 +1,26 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 1,
   "notes": [
+    {
+      "id": "cmwn030r50001l909xcce0rtj",
+      "kind": "improve",
+      "area": null,
+      "text": "Should have added squid game real logo or real poster or anything that close to image of squid games .",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-19T03:38:27.857Z",
+      "video": {
+        "id": "v-20261119-12",
+        "title": "Squid Game cost Netflix $21.4M. What was it really worth? 🦑",
+        "format": "short",
+        "status": "queued",
+        "story": "how_they_make_money",
+        "shape": "before-after",
+        "hookStyle": "question",
+        "hook": "Squid Game cost Netflix {fact2}. What was it worth?"
+      }
+    },
     {
       "id": "cmwk4neu10001jy09ifqrxyku",
       "kind": "wrong",

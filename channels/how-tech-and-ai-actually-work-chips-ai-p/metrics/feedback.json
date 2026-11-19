@@ -1,5 +1,44 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
-  "notes": []
+  "open": 2,
+  "notes": [
+    {
+      "id": "cmwn0yhck0001jj0928f6obym",
+      "kind": "general",
+      "area": "topic",
+      "text": "Make sure you choose topics which are gaining traction. Because what's in demand will be watched other does not matter how good will be not seen by people.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-19T04:02:55.701Z",
+      "video": {
+        "id": "v-20261119-01",
+        "title": "How Did a Melted Candy Bar Invent the Microwave?",
+        "format": "short",
+        "status": "published",
+        "story": "invention_story",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "How did melted chocolate give Raytheon the microwave?"
+      }
+    },
+    {
+      "id": "cmwn0wo5y0001ju09tfzrmzi1",
+      "kind": "improve",
+      "area": "pace",
+      "text": "Just increase the pace a little bit. Everything else is superb",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-19T04:01:31.223Z",
+      "video": {
+        "id": "v-20261119-01",
+        "title": "How Did a Melted Candy Bar Invent the Microwave?",
+        "format": "short",
+        "status": "published",
+        "story": "invention_story",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "How did melted chocolate give Raytheon the microwave?"
+      }
+    }
+  ]
 }

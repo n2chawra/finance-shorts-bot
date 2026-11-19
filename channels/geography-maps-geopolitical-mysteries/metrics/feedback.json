@@ -1,7 +1,45 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 3,
   "notes": [
+    {
+      "id": "cmwn0p9tz0001jv09zeeqqwpd",
+      "kind": "improve",
+      "area": null,
+      "text": "The area we are talking about the are of country borders should be highlighted in animated way like lines rounding and completing over the corners so that it looks good and engaging.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-19T03:55:46.056Z",
+      "video": {
+        "id": "v-20261119-03",
+        "title": "The Sahara used to be green. Why?",
+        "format": "short",
+        "status": "queued",
+        "story": "what_if_world",
+        "shape": "the-cycle",
+        "hookStyle": "myth",
+        "hook": "The Sahara used to be green grassland. So could it really turn green again?"
+      }
+    },
+    {
+      "id": "cmwn0jklx0001ib092if21wgj",
+      "kind": "improve",
+      "area": null,
+      "text": "Loved the video. Some improvements like in the reference video try to add picture of famous  people that are spoken like here nepolian and when talking about a country we can cover the map of country with flag rather than color. \n\nThe flag thing is not absolutely test both if one video works better do then and drop other.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-19T03:51:20.085Z",
+      "video": {
+        "id": "v-20261119-02",
+        "title": "Greenland belongs to Denmark. Why?",
+        "format": "short",
+        "status": "published",
+        "story": "why_shaped",
+        "shape": "timeline",
+        "hookStyle": "question",
+        "hook": "Greenland sits next to Canada, not Europe, yet it belongs to Denmark. Why?"
+      }
+    },
     {
       "id": "cmwlu7uww0001kz09ua9f25hp",
       "kind": "stale",
