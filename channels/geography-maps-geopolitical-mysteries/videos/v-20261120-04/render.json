@@ -1,0 +1,141 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38417,
+  "duration_sec": 61,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "explorer",
+    "key": "E",
+    "bpm": 76,
+    "look": {
+      "stage": "night",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "drop"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why did Britain hide a whole power station inside a mountain in Wales?",
+        "start": 0.3,
+        "seconds": 3.02,
+        "window": 3.67,
+        "fill": 0.823
+      },
+      {
+        "scene": "cave",
+        "text": "Under the grass of Elidir Fawr, in Snowdonia, there is a cave 51 m high, with giant machines spinning in the dark.",
+        "start": 3.97,
+        "seconds": 5.35,
+        "window": 5.9,
+        "fill": 0.907
+      },
+      {
+        "scene": "lakes",
+        "text": "On top sits one lake, Marchlyn Mawr. At its foot sits another, Llyn Peris. And tunnels run through the rock between them.",
+        "start": 9.87,
+        "seconds": 5.31,
+        "window": 5.97,
+        "fill": 0.889
+      },
+      {
+        "scene": "night",
+        "text": "At night, while Britain sleeps and power is cheap, the machines pump water uphill, from the low lake into the high one.",
+        "start": 15.83,
+        "seconds": 4.88,
+        "window": 5.53,
+        "fill": 0.882
+      },
+      {
+        "scene": "battery",
+        "text": "So why pump a lake uphill? Because now the whole mountain is a battery, full of water, waiting.",
+        "start": 21.37,
+        "seconds": 4.17,
+        "window": 4.83,
+        "fill": 0.863
+      },
+      {
+        "scene": "kettles",
+        "text": "And what it waits for is a kettle. When a big final ends on TV, millions of people get up and switch one on, all at once.",
+        "start": 26.2,
+        "seconds": 5.47,
+        "window": 6.13,
+        "fill": 0.892
+      },
+      {
+        "scene": "drop",
+        "text": "And then? The gates open. The water falls through the mountain, the machines spin, and out come 1,800 megawatts.",
+        "start": 32.33,
+        "seconds": 5.5,
+        "window": 6.17,
+        "fill": 0.891
+      },
+      {
+        "scene": "hours",
+        "text": "It keeps that going for 6 hours, until the top lake is nearly empty.",
+        "start": 38.5,
+        "seconds": 2.89,
+        "window": 3.53,
+        "fill": 0.819
+      },
+      {
+        "scene": "hidden",
+        "text": "It opened in 1984, built inside the rock, so the national park above still looks wild.",
+        "start": 42.03,
+        "seconds": 4.51,
+        "window": 5.17,
+        "fill": 0.872
+      },
+      {
+        "scene": "payoff",
+        "text": "But its real secret is speed: with its machines already spinning, it reaches full power in about 16 seconds, long before a single kettle boils.",
+        "start": 47.2,
+        "seconds": 6.62,
+        "window": 7.3,
+        "fill": 0.907
+      },
+      {
+        "scene": "loop",
+        "text": "Kettle or mountain: which one surprised you more? Tell me in the comments. And next time you boil one, think of that mountain in Wales.",
+        "start": 54.5,
+        "seconds": 5.76,
+        "window": 6.43,
+        "fill": 0.896
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.5,
+    "lufs": -14.0,
+    "music_under_voice_db": 30.4
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 4.897,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
