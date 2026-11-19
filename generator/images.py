@@ -19,6 +19,7 @@ import argparse
 import html
 import io
 import json
+import os
 import re
 import sys
 import urllib.parse
@@ -30,7 +31,15 @@ ROOT = Path(__file__).resolve().parents[1]
 REAL = ROOT / "remotion" / "public" / "real"
 CREDITS = REAL / "credits.json"
 API = "https://commons.wikimedia.org/w/api.php"
-AGENT = "commons-image-fetch/1.0"
+AGENT = "finance-shorts-bot-media/1.1"
+
+
+def user_agent() -> str:
+    """Wikimedia's User-Agent policy wants a way to reach the operator: a generic contact (a project URL or a
+    role mailbox) from MEDIA_CONTACT, else the GitHub repository; never a personal address in the code."""
+    contact = os.environ.get("MEDIA_CONTACT") or (f"https://github.com/{os.environ['GITHUB_REPOSITORY']}"
+                                                  if os.environ.get("GITHUB_REPOSITORY") else "https://github.com/n2chawra/finance-shorts-bot")
+    return f"{AGENT} ({contact}) python-urllib"
 PREFIX = "photo:"
 WIDTH = 1080                      # px: big enough for a full-height Short, small enough for the repo
 NAME = re.compile(r"^[a-z0-9][a-z0-9-]{1,40}$")
@@ -44,7 +53,7 @@ def _open(url: str, timeout: int = 30):
     import urllib.error
     for attempt in range(6):
         try:
-            return urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": AGENT}), timeout=timeout)
+            return urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": user_agent()}), timeout=timeout)
         except urllib.error.HTTPError as e:
             if e.code not in (429, 503) or attempt == 5:
                 raise
