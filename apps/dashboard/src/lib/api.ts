@@ -13,7 +13,7 @@ export async function getJson<T>(url: string, schema: z.ZodType<T>): Promise<T> 
 }
 
 /** POST/PATCH; throws with the API's error message on failure. */
-export async function send(method: "POST" | "PATCH", url: string, body?: unknown): Promise<void> {
+export async function send(method: "POST" | "PATCH" | "DELETE", url: string, body?: unknown): Promise<void> {
   const res = await fetch(url, {
     method,
     headers: body === undefined ? undefined : { "content-type": "application/json" },

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { ChannelPatchSchema, SLUG } from "@/lib/channels";
-import { patchChannel } from "@/lib/store";
+import { patchChannel, removeChannel } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
@@ -16,4 +16,12 @@ export async function PATCH(req: Request, ctx: { params: Promise<{ id: string }>
   }
   const row = await patchChannel(id, parsed.data);
   return "error" in row ? NextResponse.json(row, { status: 400 }) : NextResponse.json(row);
+}
+
+/** Remove a channel added by mistake (still in setup, not connected, no videos). */
+export async function DELETE(_req: Request, ctx: { params: Promise<{ id: string }> }) {
+  const { id } = await ctx.params;
+  if (!SLUG.test(id)) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  const r = await removeChannel(id);
+  return "error" in r ? NextResponse.json(r, { status: 400 }) : NextResponse.json(r);
 }

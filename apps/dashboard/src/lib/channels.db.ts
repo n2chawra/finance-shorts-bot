@@ -70,6 +70,16 @@ export async function addChannel(c: ChannelCreate): Promise<Channel | { error: s
   return (await getChannel(id))!;
 }
 
+/** Remove a channel added by mistake: only while it is in setup, never connected and without videos. */
+export async function removeChannel(id: string): Promise<{ ok: true } | { error: string }> {
+  const row = await db.channel.findUnique({ where: { id } });
+  if (!row) return { error: "No such channel" };
+  if (row.status !== "setup" || row.youtubeChannelId || row.refreshTokenEnc) return { error: "Only a channel still in setup and not connected to YouTube can be removed" };
+  if (await db.video.count({ where: { channelId: id } })) return { error: "This channel already has videos" };
+  await db.channel.delete({ where: { id } });
+  return { ok: true };
+}
+
 /** Store a "Connect YouTube" result; refuses a YouTube channel that another of ours already holds. */
 export async function connectChannel(id: string, youtubeChannelId: string, sealed: string): Promise<{ ok: true } | { error: string }> {
   const other = await db.channel.findFirst({ where: { youtubeChannelId, NOT: { id } } });

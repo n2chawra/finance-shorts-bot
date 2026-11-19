@@ -7,7 +7,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useToast } from "@/components/toast";
 import { Badge, Button, Card, ErrorNote, Loading, PageHeader, Segmented, Stagger, type Tone, buttonClass, fieldClass } from "@/components/ui";
 import type { Channel, ChannelStatus, SetupStage, Verdict } from "@/lib/channels";
-import { useAddChannel, useChannelFit, useChannelSamples, useChannels, useDecideChannel, useLaunchChannel, usePatchChannel, useReviewChannel, useSettings, useSwitchChannel } from "@/lib/queries";
+import { useAddChannel, useChannelFit, useChannelSamples, useChannels, useDecideChannel, useLaunchChannel, usePatchChannel, useRemoveChannel, useReviewChannel, useSettings, useSwitchChannel } from "@/lib/queries";
 
 /*
  * Channels (multi-channel plan, step 2): every YouTube channel the platform runs. Start, pause and
@@ -250,6 +250,7 @@ function HealthDot({ color }: { color: keyof typeof HEALTH }) {
 
 function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
   const patch = usePatchChannel();
+  const remove = useRemoveChannel();
   const toast = useToast();
   const switchTo = useSwitchChannel();
   const { data: platform } = useSettings();
@@ -296,6 +297,12 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
             {c.status === "active" && <Button size="sm" icon={CirclePause} disabled={patch.isPending} onClick={() => run({ id: c.id, status: "paused" }, `${c.name} paused`)}>Pause</Button>}
             {c.status === "paused" && <Button size="sm" tone="primary" icon={CirclePlay} disabled={patch.isPending} onClick={() => run({ id: c.id, status: "active" }, `${c.name} resumed`)}>Resume</Button>}
             {!live && <span className="text-[12.5px] text-muted">Starts with Launch, after its samples are reviewed.</span>}
+            {c.status === "setup" && !c.connected && (
+              <Button size="sm" disabled={remove.isPending}
+                onClick={() => { if (window.confirm(`Remove "${c.name}" (${c.id})? This can't be undone.`)) remove.mutate(c.id, { onSuccess: () => toast(`${c.name} removed`), onError: (e) => toast(e.message, "error") }); }}>
+                Remove
+              </Button>
+            )}
           </div>
         </div>
 

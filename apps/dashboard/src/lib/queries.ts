@@ -73,6 +73,7 @@ export const useNotificationAction = () => useWrite((body: { ids: string[]; acti
 const ChannelsResponse = z.object({ channels: z.array(ChannelSchema), current: z.string() });
 export const useChannels = () => useQuery({ queryKey: ["channels"], queryFn: () => getJson("/api/channels", ChannelsResponse), staleTime: 60_000 });
 export const usePatchChannel = () => useWrite(({ id, ...body }: ChannelPatch & { id: string }) => send("PATCH", `/api/channels/${id}`, body));
+export const useRemoveChannel = () => useWrite((id: string) => send("DELETE", `/api/channels/${id}`));
 export const useAddChannel = () => useWrite((c: ChannelCreate) => send("POST", "/api/channels", c));
 
 /** Switch the dashboard to another channel: the cookie the server scopes every query by, then a full refresh. */

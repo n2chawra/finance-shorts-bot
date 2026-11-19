@@ -73,6 +73,7 @@ export const addStudy = async (s: StudyCreate): Promise<Study | { error: string 
 export const listChannels = async (): Promise<Channel[]> => (useDb ? channelsDb.listChannels() : channelsSample.listChannels());
 export const patchChannel = async (id: string, p: ChannelPatch): Promise<Channel | { error: string }> => (useDb ? channelsDb.patchChannel(id, p) : channelsSample.patchChannel(id, p));
 export const addChannel = async (c: ChannelCreate): Promise<Channel | { error: string }> => (useDb ? channelsDb.addChannel(c) : channelsSample.addChannel(c));
+export const removeChannel = async (id: string): Promise<{ ok: true } | { error: string }> => (useDb ? channelsDb.removeChannel(id) : channelsSample.removeChannel(id));
 export const connectChannel = async (id: string, youtubeChannelId: string, sealed: string): Promise<{ ok: true } | { error: string }> =>
   (useDb ? channelsDb.connectChannel(id, youtubeChannelId, sealed) : channelsSample.connectChannel());
 export const decideChannel = async (id: string, choice: "continue" | "stop", note?: string): Promise<Channel | { error: string }> =>

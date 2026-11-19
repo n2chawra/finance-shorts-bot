@@ -60,6 +60,14 @@ export async function addChannel(n: ChannelCreate): Promise<Channel | { error: s
   return { ...c };
 }
 
+export async function removeChannel(id: string): Promise<{ ok: true } | { error: string }> {
+  const i = channels.findIndex((x) => x.id === id);
+  if (i < 0) return { error: "No such channel" };
+  if (channels[i].status !== "setup" || channels[i].connected) return { error: "Only a channel still in setup and not connected to YouTube can be removed" };
+  channels.splice(i, 1);
+  return { ok: true };
+}
+
 export async function connectChannel(): Promise<{ error: string }> {
   return { error: "Connect YouTube needs the real database (sample mode)" };
 }
