@@ -1,0 +1,101 @@
+{
+  "name": "Business documentaries",
+  "language": "en-us",
+  "voices": {
+    "_why": "build spec §5: one calm documentary narrator, no presenter; comments.md: one viewer suspected an AI narrator, so one steady, deeper voice. am_fenrir is the deepest American male in renderer/engine/voice.py VOICES (am_michael, warmer and lighter, is the fallback). One voice on both formats: a documentary channel is recognised by its narrator (report.md risk 4: never a real person's words in it)",
+    "shortsNarrator": "am_fenrir",
+    "longNarrators": [
+      "am_fenrir"
+    ]
+  },
+  "currency": "USD",
+  "currencies": [
+    "USD",
+    "GBP",
+    "EUR",
+    "INR"
+  ],
+  "_currencyWhy": "comments.md: a global English audience led by the US with Europe and South/Southeast Asia; viewers quote prices in PLN, EUR, INR and complain about US-only framing (advice.md 'the global beat'). USD default; GBP, EUR, INR for a story told in that country",
+  "numbers": "finance",
+  "disclaimer": "Based on public records and reporting. Not financial or legal advice.",
+  "stories": "true",
+  "look": {
+    "_why": "style.json long: cast false, footage the largest shot kind (77), then mixed (35), text cards (24), charts (17); build spec §1-3: no person on camera, documents with a highlighter as the signature; verdict.md: no AI scenes",
+    "cast": "none",
+    "palettes": null,
+    "style": "hybrid documentary: licensed stock footage and archival photos under one grade, real documents with a yellow highlighter on the word, figures as moving objects, one accent colour with red for losses, no cast, no presenter, no AI scenes",
+    "engine": "doc"
+  },
+  "uploadCategory": "27",
+  "_uploadCategoryWhy": "27 Education: the channel explains how real businesses rose and fell from filings and reporting (journalistic, report.md risk 6: advertisers pay full rates for journalistic coverage); 22 People & Blogs is Paisa Panchayat's and describes a personal channel. The research did not measure category, so this is a judgement, not a finding",
+  "note": "Written by the /new-channel build phase from research/advice.md, report.md, verdict.md, style.json, counts.json, families.json and style-study/2026-11-19-references.md. generator/pack.py reads it.",
+  "motion": {
+    "_why": "build spec §2: every shot moves (footage pushes 0.5-1.5%/s, stills Ken Burns), a cut every ~2.2 s in the hook and 3-5 s after, with overlays (date slam, source chip, highlighter wipe, figure flip) landing between cuts; 3 s keeps something new on screen without forcing the hook's pace on every chapter",
+    "maxGapSec": 3.0
+  },
+  "sound": {
+    "_why": "build spec §7 (measured on KFC, Labubu, the Marvel Short; Company Man): dark, slow (70-85 BPM), low-mid bed, music 22-36.5 dB under the voice in long videos -> target ~32 dB; ~5-6 effects a minute in long videos, soft and placed on things arriving (figure flip, tag, highlighter swipe, document landing), a low thud on chapter cards, nothing on plain cuts; Shorts ~15-20 a minute, low booms on most cuts, 0.6 s drops of 12-19 dB after the hook and before the reveal. Levels: the tech channel's 0.22 + 0.8 measured 23.6 (Short) and 25.5 (long) dB under the voice; 0.18 takes ~1.7 dB off and duck 0.9 adds ~5.5 dB (the duck's smoothing takes ~2 dB off its nominal 20 dB), so ~32.7 dB long and ~30.8 dB Short. Not yet checked on a Kokoro build: confirm with music_under_voice_db on sample 1. The spec wants Shorts louder (~18 dB under), but build.py takes one bedLevel and duck for both formats, so long-first wins; a per-format level is a code item",
+    "genres": [
+      "circuit",
+      "datahall"
+    ],
+    "_genresWhy": "interim: the only dark, minor, low-mid beds the music engine makes today (circuit 70-75 BPM, datahall 60-66). The channel's own beds are plannedGenres; add them to renderer/engine/music_constants.CHANNEL_GENRES and music.py, then swap them in here (never Paisa Panchayat's cinematic)",
+    "plannedGenres": {
+      "ledger": {
+        "bpm": [74, 80],
+        "for": "long",
+        "character": "dark, slow, low-mid (600-720 Hz brightness, no highs, ~8% bass), a soft pulse; up in the cold open and under chapter cards (KFC 76 BPM, Labubu 723 Hz)"
+      },
+      "dossier": {
+        "bpm": [76, 84],
+        "for": "short",
+        "character": "dark, bass-heavy, minor (the Marvel Short: ~78 BPM, G minor), room for low booms on the cuts"
+      }
+    },
+    "bedLevel": 0.18,
+    "duck": 0.9,
+    "sfx": [
+      "thud",
+      "boom",
+      "paper",
+      "scribble",
+      "tick",
+      "pop",
+      "swell"
+    ],
+    "_sfxWhy": "thud: chapter cards and documents landing; boom: Shorts cuts (20 of 33 cuts hit in the Marvel Short); paper: a page arriving; scribble: the highlighter wipe; tick: the split-flap ticker and count-ups; pop: soft clicks on objects (Labubu); swell: under a reveal",
+    "transitionSfx": null,
+    "_transitionSfxWhy": "long references put nothing on plain cuts (Labubu: none on cuts; KFC: on things arriving); Shorts put their booms in the script's own sfx",
+    "sfxPerMinute": {
+      "short": 16,
+      "long": 5
+    },
+    "preRevealDrop": {
+      "db": -16,
+      "sec": 2.0,
+      "shortSec": 0.6
+    },
+    "_preRevealDropWhy": "the Marvel Short: 5 drops of 12-19 dB, ~0.6 s, after the hook and before reveals; KFC: 4 drops in 77 s, one under a chapter card; -16 dB is the middle, 2 s long before a chapter card or the payoff"
+  },
+  "length": {
+    "_why": "advice.md and verdict.md: long 15-25 min is the scan's best band (158,096 median, 169 videos; references 989-2,313 s, median 1,071 s); Shorts under 35 s do best (54,049 median, 81) vs 23,214 at 35-70 s, so 30-55 s with longer as a loop test (build spec §6)",
+    "short": [
+      30,
+      55
+    ],
+    "long": [
+      900,
+      1500
+    ]
+  },
+  "samples": {
+    "_why": "the owner's research-once rule: one sample per format; long-first channel, so the long sample matters most",
+    "short": 1,
+    "long": 1
+  },
+  "voiceSpeed": {
+    "_why": "build spec §5 and style.json: references speak 146 words a minute in long videos (137-165) and 146.5 in Shorts; Kokoro speaks ~164 words a minute per unit of speed, so 146/164 = 0.89 long and 0.9 Shorts",
+    "short": 0.9,
+    "long": 0.89
+  }
+}

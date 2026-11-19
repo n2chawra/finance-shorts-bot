@@ -1,0 +1,189 @@
+{
+  "note": "The niche's formats, tiers from research/families.json (19 Nov 2026 scan: 1,485 on-niche titles labelled). `demand` lists the hit video ids each format rests on (families.json examples and advice.md); `examples` carries the ones whose views the research measured (references table in style-study/2026-11-19-references.md), since the planner only offers a format with a 100K+ example. Tiers: core = families' core (>=1.5x median or >=20% hits); low = in the niche, weaker or crowded; avoid = the planner should not pick it (the numbers say it loses, advice.md 'Kinds to avoid').",
+  "seen": [],
+  "formats": [
+    {
+      "id": "founder_bet",
+      "format": "short",
+      "markets": ["global"],
+      "name": "Founder story: the one strange bet that built (or nearly sank) a famous company",
+      "tier": "core",
+      "emotion": "disbelief that one odd decision made a giant",
+      "hook": "Frame 0 is the product in everyday use; the title and the first line state the same paradox as a claim, never a question: 'He gave his product away for free. It built a $23 billion company.' The founder and company named by 1 s, the end figure on screen by 5 s.",
+      "beats": "the paradox (product + end figure) -> who, where, when: the founder and the small start, a dated photo -> the bet everyone called stupid -> misery stacked: the money running out, a document or headline per blow -> the turn: the one thing that worked -> the one big result on a gold poster card (~7 s) -> the lesson tied to the thing in the viewer's hand",
+      "demand": ["2e7oAauw1os", "vBw4jNaJQ28", "kbT_upHAakE", "JPcpMDaR_Ao", "41TmMY3YtTg", "XEPqluBiECU"],
+      "examples": [
+        {"title": "Rise Fall Repeat: bet everything on a hero nobody wanted (Marvel)", "views": 2280000, "url": "https://youtube.com/shorts/vBw4jNaJQ28"},
+        {"title": "Rise Fall Repeat: gave it away free, then $23B", "views": 487000, "url": "https://youtube.com/shorts/2e7oAauw1os"},
+        {"title": "Rise Fall Repeat: YKK, the company on your zipper", "views": 313000, "url": "https://youtube.com/shorts/kbT_upHAakE"}
+      ],
+      "_why": "founder story Shorts: 166 videos, 21% hits, 31,430 median (families.json, core); the Rise Fall Repeat Shorts that broke out are this format"
+    },
+    {
+      "id": "product_craze_short",
+      "format": "short",
+      "markets": ["global"],
+      "name": "Product boom and bust in one minute: the thing everyone bought, then didn't",
+      "tier": "low",
+      "emotion": "'I had one of those' and surprise at how big and fast it went",
+      "hook": "The object on screen in frame 0, the craze's figure with it: 'In 1999 people paid $5,000 for this bean bag.' A claim; the crash is promised, not shown.",
+      "beats": "the object and its peak figure -> why everyone wanted it (one cause, one picture) -> the peak: queues, resale prices, a headline card -> the crack -> the crash, the figure falling as an object (price flip, ghost bar) -> where it is today -> the lesson over the object in someone's hand",
+      "demand": ["sglSftkhmGA", "ZkL3tQh1nms", "NmZb3TBoqlA"],
+      "examples": [
+        {"title": "Signal 404: the bent iPhone", "views": 11800000, "url": "https://youtube.com/shorts/sglSftkhmGA"}
+      ],
+      "_why": "product boom and bust Shorts 1.41x, 17% hits, 9,258 median (36 videos): good multiple, small audience; best as a cut of a long boom-and-bust's best minute"
+    },
+    {
+      "id": "rise_fall_short",
+      "format": "short",
+      "markets": ["global"],
+      "name": "Company rise and fall in one minute: the king of its market that vanished",
+      "tier": "low",
+      "emotion": "nostalgia, then 'how did that happen?'",
+      "hook": "The company's peak on screen at frame 0 with one figure and the fall in the same line: 'Nokia sold half the world's phones. Six years later it sold its phone business.'",
+      "beats": "the peak, one figure -> how it got there, two dated steps -> the one decision that started the fall, the document on screen -> the fall in figures -> where it is now -> the lesson tied to the viewer",
+      "demand": ["vBw4jNaJQ28", "OlQyvIXXQmk", "aKVhFwLjIb0", "-W42eyz4Z9A"],
+      "examples": [
+        {"title": "Signal 404: Nokia rise and fall", "views": 2700000, "url": "https://youtube.com/shorts/-W42eyz4Z9A"}
+      ],
+      "_why": "company rise and fall Shorts 1.09x, 19% hits, 8,786 median, 219 videos and 12 channels in 30 days (crowded)"
+    },
+    {
+      "id": "business_war_short",
+      "format": "short",
+      "markets": ["global"],
+      "name": "Business war in one minute: the famous brand and the underdog",
+      "tier": "low",
+      "emotion": "rooting for the underdog",
+      "hook": "Both products side by side in frame 0 and the result as a claim: 'Mercedes laughed at Toyota's luxury car. Then it outsold them.'",
+      "beats": "the two sides and the result -> the giant's advantage, a figure -> the underdog's move -> the giant's mistake -> the swing, one figure as an object -> the lesson",
+      "demand": ["3fdqEjBEkrY", "Xj6Ua-We71M", "Ryriex6lPcw"],
+      "examples": [
+        {"title": "Rise Fall Repeat: Toyota vs Mercedes", "views": 511000, "url": "https://youtube.com/shorts/3fdqEjBEkrY"}
+      ],
+      "_why": "business war Shorts 1.08x but 12% hits, 1,955 median (59 videos): a test, not a staple"
+    },
+    {
+      "id": "deal_breakdown_short",
+      "format": "short",
+      "markets": ["global"],
+      "name": "Finance deals and private equity Shorts (buyouts, LBOs, deal maths)",
+      "tier": "avoid",
+      "hook": "Not made: 0.59x the channel median and 0 hits in 51 Shorts.",
+      "beats": "Not made. A buyout belongs inside a company's rise and fall (the debt that sank Toys R Us), not as the topic.",
+      "demand": ["c2m2n1bChdw", "ttLkZP7Laz8", "sBLNpAs4P6M"],
+      "_why": "families.json: finance deals and private equity, short, tier avoid (0.59x, 0% hits, 3,629 median)"
+    },
+    {
+      "id": "scandal_short",
+      "format": "short",
+      "markets": ["global"],
+      "name": "Corporate scandal or fraud as the Short's topic",
+      "tier": "avoid",
+      "hook": "Not made: scandal Shorts have a 2,170 median (0.76x) and the highest legal risk.",
+      "beats": "Not made. Tell the scandal inside a founder story or a rise and fall, attributed to filings or court records.",
+      "demand": ["sKfmvNIwa-E", "gQCxeKBk67E", "qc30wWe7bpI"],
+      "_why": "families.json: corporate scandal and fraud, short, 0.76x, 2,170 median; advice.md 'Kinds to avoid'"
+    },
+    {
+      "id": "product_boom_bust",
+      "format": "long",
+      "markets": ["global"],
+      "name": "Product boom and bust: a thing people bought, the craze, the crash",
+      "tier": "core",
+      "emotion": "'I had one of those', then the satisfaction of finally knowing why it died",
+      "hook": "Frame 1 is the object (auction footage, a hand placing it, the price tag); named by 1 s; a figure before 10 s (a count-up); the whole rise and fall told in the first 60 s; then 'no rival killed it, one decision did'; then the title or chapter 1 card.",
+      "beats": "cold open: the whole arc in 60 s -> chapter: where it came from (the maker, the year, the first price) -> chapter: the craze (who bought, resale prices, the document with the figure highlighted, a global montage in local money) -> chapter: the peak and the crack -> chapter: the crash (the figure falling as an object; how it went outside the US) -> the mechanism in plain words ('scarcity was the product') -> lessons -> three questions for the comments",
+      "demand": ["V6-3wqQoxT0", "IbRizya_h1w", "ktZkBA3VNKI"],
+      "examples": [
+        {"title": "WTF Happened to Labubu?", "views": 2280000, "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0"},
+        {"title": "Why Everyone Bought a Stanley, and Why They Stopped", "views": 84000, "url": "https://www.youtube.com/watch?v=IbRizya_h1w"}
+      ],
+      "_why": "families.json: long, 33 videos, 1.69x, 21% hits, 87,221 median (core); advice.md: 3 of 8 long videos in month 1; comments ask for Beanie Babies, Funko, Squishmallows, Pokemon cards"
+    },
+    {
+      "id": "brand_backlash",
+      "format": "long",
+      "markets": ["global"],
+      "name": "Brand backlash: the brand that changed the recipe, the size or the price and lost its fans",
+      "tier": "core",
+      "emotion": "vindication: 'I knew it tasted different'",
+      "hook": "Frame 1 is the product the viewer knows, before and after side by side (the can, the bag, the price tag); the brand named by 1 s; the change as a figure before 10 s ('20% less in the bag, same price'); the backlash and the fall in sales inside 60 s; then the promise: who decided, and why.",
+      "beats": "cold open: the change, the backlash, the cost, in 60 s -> chapter: the brand at its best (why people loved it, a figure) -> chapter: the decision (the filing, the memo or the earnings call quote on screen, highlighted) -> chapter: the backlash (sourced posts rebuilt as our cards, sales figures falling) -> chapter: how the same product differs in other countries -> chapter: did they reverse it -> the mechanism in plain words -> lessons -> three questions for the comments",
+      "demand": ["3Hp03-lSQRw", "3v5rU97gyoc", "uhlWTcTUiQg"],
+      "examples": [
+        {"title": "Pepsi Is (Finally) Getting What They Deserve…", "views": 1390000, "url": "https://www.youtube.com/watch?v=3Hp03-lSQRw"}
+      ],
+      "_why": "families.json: long, 17 videos, 1.08x, 29% hits, 63,061 median (core) and a gap (1 channel in 30 days); comments: Pepsi's sweetener switch ~20 mentions, shrinkflation ~7"
+    },
+    {
+      "id": "company_rise_fall",
+      "format": "long",
+      "markets": ["global"],
+      "name": "Company rise and fall: the chain or brand everyone loved that lost its home market",
+      "tier": "low",
+      "emotion": "nostalgia, then the answer to 'what happened to them?'",
+      "hook": "Frame 1 is the document with the figure already highlighted (a ranking table, a store-count chart); named by 1 s; global scale, then 'but at home…' by 20 s; the paradox by 45 s; the promise of one cause by ~65 s; chapter 1 card.",
+      "beats": "cold open: the peak and the paradox -> chapter: the founding (the founder's photo, the date, the first store) -> chapter: the rise (store counts as objects, the map filling) -> chapter: the decision that started the fall (the filing highlighted) -> chapter: the decline, dated, with any scandal or buyout inside it, attributed -> chapter: where it stands today, and how it went in other countries -> the mechanism in plain words -> lessons -> three questions for the comments",
+      "demand": ["hJTqDdf4jQc", "mrG4vD37Rqo", "6vTs9_bOobQ", "7QEfkkXV3p0", "cSNKyBuLa4s", "PU1zr8ka-0s"],
+      "examples": [
+        {"title": "Why Buffets Suddenly Disappeared", "views": 839000, "url": "https://www.youtube.com/watch?v=PU1zr8ka-0s"},
+        {"title": "KFC Won the World. So Why Is It Losing America?", "views": 591000, "url": "https://www.youtube.com/watch?v=hJTqDdf4jQc"},
+        {"title": "Who Kill*d Q Mobile? The Story of Pakistan's Lost Mobile King", "views": 520000, "url": "https://www.youtube.com/watch?v=6vTs9_bOobQ"},
+        {"title": "The Decline of Fazoli's", "views": 376000, "url": "https://www.youtube.com/watch?v=mrG4vD37Rqo"}
+      ],
+      "_why": "families.json: long, 149 videos, 1.37x, 17% hits, 107,641 median (low: crowded, 14 channels in 30 days); advice.md: 2 of 8 long videos in month 1; the owner's favourite reference (KFC)"
+    },
+    {
+      "id": "business_war",
+      "format": "long",
+      "markets": ["global"],
+      "name": "Business war: X vs Y, the fight for one market and the move that ended it",
+      "tier": "low",
+      "emotion": "picking a side, then the twist of who really won",
+      "hook": "Frame 1 is both products side by side; both named by 1 s; the market share figure before 10 s; the turning move teased inside 60 s ('one price cut ended it'); chapter 1 card.",
+      "beats": "cold open: the two sides, the stakes and the tease -> chapter: the incumbent's empire -> chapter: the challenger arrives (its trick, a figure) -> chapter: the war, move by move, market share as bars that swing -> chapter: the decisive move (the document on screen) -> chapter: who won where (other countries can differ) -> the mechanism in plain words -> lessons -> three questions for the comments",
+      "demand": ["P2V-vFct8FY", "fHVbFtTbEgo", "o4mnaKBdIC0", "EQKfhNW1wEU", "BJ3PhlQ609w"],
+      "examples": [
+        {"title": "How Microsoft Wasted $113 Billion on Xbox", "views": 651000, "url": "https://www.youtube.com/watch?v=BJ3PhlQ609w"},
+        {"title": "Gatorade vs. Powerade", "views": 627000, "url": "https://www.youtube.com/watch?v=P2V-vFct8FY"}
+      ],
+      "_why": "families.json: long, 15 videos, 1.35x, 18% hits, 205,163 median, only 4 channels in 30 days; advice.md: 1 of 8 long videos in month 1"
+    },
+    {
+      "id": "scandal_inside_story",
+      "format": "long",
+      "markets": ["global"],
+      "name": "Scandal inside a story: a rise and fall where the fraud or cover-up is the turn",
+      "tier": "low",
+      "emotion": "betrayal: the company everyone trusted was lying",
+      "hook": "Frame 1 is the product or the company at its peak, not the courtroom; named by 1 s; the peak figure before 10 s; the regulator's or court's finding shown as a highlighted document inside 60 s; chapter 1 card.",
+      "beats": "cold open: the trusted company and the finding -> chapter: the rise -> chapter: the pressure that made them cut the corner -> chapter: what they did, only as settled in filings, regulator findings or court records, every claim attributed on screen -> chapter: how it came out -> chapter: the fall and the fines, dated -> the mechanism in plain words -> lessons -> three questions for the comments",
+      "demand": ["aL2kOEoWI1c", "htoKS_YsH28", "LU9drOQAatU"],
+      "_why": "families.json: corporate scandal and fraud, long, 0.86x, 9% hits, 23,012 median: weak as the topic (advice.md), so only inside a rise and fall; settled stories only (defamation rule in report.md). No measured 100K+ example yet, so the planner skips it until research adds one"
+    },
+    {
+      "id": "scandal_as_topic",
+      "format": "long",
+      "markets": ["global"],
+      "name": "Corporate scandal or fraud as the topic (fraud explainers, courtroom documentaries)",
+      "tier": "avoid",
+      "hook": "Not made: 23,012 median as a topic, and the highest legal risk.",
+      "beats": "Not made. Use scandal_inside_story: the scandal as the turn of a company's rise and fall.",
+      "demand": ["aL2kOEoWI1c", "htoKS_YsH28", "LU9drOQAatU"],
+      "_why": "advice.md 'Kinds to avoid': the verdict led with scandals, the numbers say scandal-as-topic is weak"
+    },
+    {
+      "id": "how_it_makes_money",
+      "format": "long",
+      "markets": ["global"],
+      "name": "How a business makes money (business-model explainers)",
+      "tier": "avoid",
+      "hook": "Not made as its own topic: 0.87x long and 0.81x Shorts, with 12-13 channels posting it every month.",
+      "beats": "Not made. The money mechanism is the closing 'mechanism in plain words' section of a boom-and-bust, backlash or rise-and-fall video.",
+      "demand": ["b-QilfQ0HX4", "F7Lta7G2_Pk", "NdoymvcC8LY"],
+      "_why": "families.json: how a business makes money, long 0.87x / 8% hits, Shorts 0.81x; advice.md 'Kinds to avoid' (crowded)"
+    }
+  ]
+}

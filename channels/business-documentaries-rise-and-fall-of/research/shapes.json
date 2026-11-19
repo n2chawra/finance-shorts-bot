@@ -1,0 +1,135 @@
+{
+  "note": "Story shapes: how a video's beats are arranged (owner, 2026-10-30: every Short had '4 levels', which felt repetitive; the shapes must keep growing so no cycle forms). A plan names one in `shape` (generator/shapes.py), or invents a new one ({id, name, beats, why}), which ship adds here as `trial`. Every shape keeps the shared spine (generator/story.py): a curiosity hook, the promise early, rising stakes, a turn, a payoff that answers the hook. Only a shape with `levels: true` shows the level chips and a climbing counter. Research adds shapes it sees in top videos (with the reference); the improver promotes trial shapes that beat the median stayed-to-watch / % viewed, and retires ones that keep underperforming. Status: active | trial | retired. This channel (19 Nov 2026) keeps the shared shapes its hits use (reveal, versus, before-after, timeline, true-history) and adds the long-video chapter shapes and the underdog Short from the style study; level chips, countdowns, what-ifs, ladders and the two-voice question chain are dropped (no cast, one narrator, no ladders in this niche).",
+  "shapes": [
+    {
+      "id": "reveal",
+      "name": "The reveal (open loop and clues)",
+      "status": "active",
+      "levels": false,
+      "when": "one hidden cause behind a famous product's or company's fate: why it got so cheap or so expensive, why fans left, what really killed it",
+      "beats": "hook: the surprising fact and the question, no answer -> promise ('here's how') -> clue one, clue two, clue three, each a bigger piece -> the turn (the piece nobody expects) -> the payoff answers the hook in one line",
+      "reference": {
+        "title": "Pepsi Is (Finally) Getting What They Deserve…",
+        "views": 1390000,
+        "url": "https://www.youtube.com/watch?v=3Hp03-lSQRw"
+      }
+    },
+    {
+      "id": "true-history",
+      "name": "The true rise (and the hits)",
+      "status": "active",
+      "levels": false,
+      "when": "a founder or company story: the small dated start, the growth you can count, the setbacks, the comeback (or the fall)",
+      "beats": "hook: the question written huge over today's picture ('why is X so rich?') -> rewind to the start with its date and sum -> growth you can count (stores, customers, ships) -> 'but then' the dated setbacks -> the comeback -> the lesson and a question to the viewer",
+      "rules": {
+        "dates_min": 2
+      },
+      "reference": {
+        "title": "Rise Fall Repeat: bet everything on a hero nobody wanted (Marvel)",
+        "views": 2280000,
+        "url": "https://youtube.com/shorts/vBw4jNaJQ28"
+      },
+      "added": "2026-11-02",
+      "origin": "style study (The Curious Plot)"
+    },
+    {
+      "id": "versus",
+      "name": "Versus",
+      "status": "active",
+      "levels": false,
+      "when": "a business war: two brands in one market, one move decides it (Gatorade vs Powerade, Toyota vs Mercedes)",
+      "beats": "hook: the same moment, two outcomes -> promise ('one choice decides it') -> side by side: what each does, step by step, the gap widening -> the turn (the real reason) -> the payoff",
+      "reference": {
+        "title": "Gatorade vs. Powerade",
+        "views": 627000,
+        "url": "https://www.youtube.com/watch?v=P2V-vFct8FY"
+      }
+    },
+    {
+      "id": "before-after",
+      "name": "Before and after",
+      "status": "active",
+      "levels": false,
+      "when": "a brand backlash or one decision and what it did: the recipe, the size or the price changed, then the fans left",
+      "beats": "hook: the after, shocking, with the question how -> the before, in enough detail to matter -> the change -> what happened step by step -> the turn -> the payoff (the after, explained)",
+      "reference": {
+        "title": "Pepsi Is (Finally) Getting What They Deserve…",
+        "views": 1390000,
+        "url": "https://www.youtube.com/watch?v=3Hp03-lSQRw"
+      }
+    },
+    {
+      "id": "timeline",
+      "name": "Then and now",
+      "status": "active",
+      "levels": false,
+      "when": "a product craze across years: its price or sales then and now (a collectible's resale price, a chain's store count)",
+      "beats": "hook: today's figure next to the old one, and why -> the start -> two or three moments that changed it, in order -> the turn -> today, explained",
+      "reference": {
+        "title": "WTF Happened to Labubu?",
+        "views": 2280000,
+        "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0"
+      }
+    },
+    {
+      "id": "cold-open-chapters",
+      "name": "Cold open, then chapters (long rise and fall)",
+      "status": "active",
+      "levels": false,
+      "when": "a long product boom and bust or company rise and fall (15-25 min): the viewer gets the whole arc up front and stays for the why",
+      "beats": "cold open: the object in frame 1, named by 1 s, a figure before 10 s, the whole rise and fall in 60 s -> the promise: 'it wasn't X, it was one decision' -> title or chapter 1 card (music drop) -> 4-6 chapters in order (the start, the rise, the peak, the crack, the fall), each opening on a dated chapter card and ending on a tease into the next -> the mechanism in plain words ('scarcity was the product') -> a short lessons section -> three questions for the comments",
+      "rules": {
+        "format": "long",
+        "cold_open_max_s": 65,
+        "chapters_min": 4,
+        "chapters_max": 6
+      },
+      "reference": {
+        "title": "WTF Happened to Labubu?",
+        "views": 2280000,
+        "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0"
+      },
+      "added": "2026-11-19",
+      "origin": "style study 2026-11-19 (Labubu, Stanley, KFC hooks; build spec §4-5)"
+    },
+    {
+      "id": "paradox-chapters",
+      "name": "The paradox, then chapters (long: won the world, losing home)",
+      "status": "active",
+      "levels": false,
+      "when": "a long video whose subject is a contradiction: global giant but failing at home, beloved brand that fans now hate, the best product that lost",
+      "beats": "cold open: the document with the figure already highlighted -> the global scale (fast montage in local money) -> 'but at home…' by 20 s -> the ranking or sales chart and a highlighted source by 35 s -> the paradox stated by 45 s -> the question and the promise of one cause by ~65 s -> chapter card -> chapters that each test one suspected cause and rule it in or out -> the real cause, sourced -> how it went in other countries -> lessons -> three questions for the comments",
+      "rules": {
+        "format": "long",
+        "cold_open_max_s": 65,
+        "chapters_min": 4,
+        "chapters_max": 6
+      },
+      "reference": {
+        "title": "KFC Won the World. So Why Is It Losing America?",
+        "views": 591000,
+        "url": "https://www.youtube.com/watch?v=hJTqDdf4jQc"
+      },
+      "added": "2026-11-19",
+      "origin": "style study 2026-11-19 (KFC, build spec §4)"
+    },
+    {
+      "id": "underdog-reversal",
+      "name": "The underdog reversal (Short)",
+      "status": "active",
+      "levels": false,
+      "when": "a founder or company Short: a famous brand and an underdog, misery stacked, then the one move that flipped it",
+      "beats": "hook: the paradox as a claim, the end figure by 5 s -> who and when, a dated photo -> misery stacked for most of the Short (each blow a document or headline) -> the reversal on one decision -> the one big result on a gold poster card -> the lesson tied to the thing in the viewer's hand",
+      "rules": {
+        "format": "short"
+      },
+      "reference": {
+        "title": "Rise Fall Repeat: bet everything on a hero nobody wanted (Marvel)",
+        "views": 2280000,
+        "url": "https://youtube.com/shorts/vBw4jNaJQ28"
+      },
+      "added": "2026-11-19",
+      "origin": "style study 2026-11-19 (Rise Fall Repeat Shorts, build spec §6)"
+    }
+  ]
+}
