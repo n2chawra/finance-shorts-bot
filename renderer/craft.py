@@ -40,7 +40,7 @@ CLOSE_EVERY = 15.0
 SET_RUN = 2
 SET_SHARE = {"short": 0.45, "long": 0.25}
 SIZES_NEEDED = {"short": 3, "long": 4}
-SHOT_SCENES = ("shot", "hook", "build", "custom", "framework", "type", "journey", "stats", "case", "board", "directed")
+SHOT_SCENES = ("shot", "hook", "build", "custom", "framework", "type", "journey", "stats", "case", "board", "directed", "doc")
 # the board (studio/board.tsx, 2026-11-02) holds a still camera on one stage by design: it counts as a
 # composed picture and as a close look (its header and panels fill the frame), never against shot sizes
 DOCU = ("framework", "type", "journey", "stats", "case")   # full-frame documentary devices
@@ -127,7 +127,7 @@ def shot_problems(tl: dict) -> list[str]:
         out.append(note(f"{gap:.0f} s without a close or extreme shot (at most {CLOSE_EVERY:.0f} s): emotion lives in close-ups"))
     # a build world stays and fills up phrase by phrase (The Curious Plot's way): only shots rotate sets;
     # a directed beat's set is the place its line happens in (one per place when it cuts between them)
-    sets = [x for b in shots for x in (places(b) if b["scene"] == "directed" else [b["params"].get("set", "flat")] if b["scene"] == "shot" else [])]
+    sets = [x for b in shots for x in (places(b) if b["scene"] in ("directed", "doc") else [b["params"].get("set", "flat")] if b["scene"] == "shot" else [])]
     run = 1
     for a, b in zip(sets, sets[1:]):
         run = run + 1 if a == b else 1
@@ -187,7 +187,7 @@ PLACE_OVERLAP_MAX = 0.5
 SHARED_PROPS = {"note", "coin", "cash", "box"}
 FREE_VERBS = {"focus", "glow", "shake", "header", "equation", "term", "bars", "ring", "grid", "calendar", "buttons",
               "click", "person", "bubble", "step", "stamp", "cross", "tick", "strike"}   # emphasis and the board's own words
-COMPOSED = ("shot", "hook", "build", "custom", "directed")
+COMPOSED = ("shot", "hook", "build", "custom", "directed", "doc")
 
 
 def _all_ats(node, ev: dict, fps: int, out: list[float]) -> None:
@@ -242,7 +242,7 @@ def picture_problems(tl: dict) -> list[str]:
     fps, out = tl["fps"], []
     worst = (0.0, "")
     for b in tl["beats"]:
-        if b["scene"] not in ("shot", "build", "board", "directed", *DOCU):
+        if b["scene"] not in ("shot", "build", "board", "directed", "doc", *DOCU):
             continue          # custom beats are animated by hand; old fixed scenes keep their own rules
             # (a directed beat is too, but it declares its moments, so the gap is measured on them)
         times = [*_visual_times(b, fps, set((tl.get("figures") or {}).values())), b["frames"] / fps]
@@ -297,7 +297,7 @@ def build_props(tl: dict) -> set[str]:
             out |= {i["prop"] for i in p.get("items") or [] if isinstance(i, dict) and i.get("prop")}
             out |= {x for x in (p.get("traveller"), p.get("prop")) if isinstance(x, str)}
             continue
-        if b.get("scene") == "directed":   # the things a directed shot draws (params.things)
+        if b.get("scene") in ("directed", "doc"):   # the things a directed or doc shot shows (params.things)
             out |= {str(x).strip().lower() for x in p.get("things") or [] if isinstance(x, str) and x.strip()}
             continue
         if b.get("scene") not in ("build", "board"):
@@ -314,7 +314,7 @@ def build_props(tl: dict) -> set[str]:
 def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
     """A video's own things: enough of them, and not the last videos' things again (`earlier`: (id, timeline))."""
     mine = build_props(tl)
-    if not any(b["scene"] in ("build", "board", "directed", *DOCU) for b in tl["beats"]):
+    if not any(b["scene"] in ("build", "board", "directed", "doc", *DOCU) for b in tl["beats"]):
         return []
     out = []
     # a directed video's places: not the same rooms as a recent video (the old kit stood every video in

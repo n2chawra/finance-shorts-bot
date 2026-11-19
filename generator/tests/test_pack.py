@@ -135,3 +135,13 @@ def test_a_channel_can_need_fewer_samples(tmp_path, monkeypatch):
     s = run.state(tmp_path, "short")
     assert s["mode"] == "video" and "of 1" in s["reason"]
     assert run.state(tmp_path, "long")["mode"] == "idle"
+
+
+def test_a_sound_level_may_be_set_per_format():
+    """bedLevel and duck: a number, or {"short": x, "long": y} (the business-documentary channel, 2026-11-19)."""
+    good = {"genres": ["ledger", "dossier"], "bedLevel": {"short": 0.26, "long": 0.18}, "duck": {"short": 0.6, "long": 0.9},
+            "sfx": ["thud", "boom"]}
+    assert pack.pack_problems({**pack.DEFAULTS, "sound": good}) == []
+    for bad, words in (({"bedLevel": {"reel": 0.2}}, "bedLevel"), ({"duck": {"short": 1.4}}, "duck"),
+                       ({"duck": {}}, "duck"), ({"bedLevel": "loud"}, "bedLevel"), ({"duck": -0.1}, "duck")):
+        assert any(words in p for p in pack.pack_problems({**pack.DEFAULTS, "sound": {**good, **bad}})), bad

@@ -118,6 +118,18 @@ def test_the_tech_beds_are_dark_and_keep_their_tempo(genre: str, felt: int) -> N
     assert _beat(make_bed(np.random.default_rng(3), 30, genre, "C#", bpm)) == pytest.approx(bpm*felt, rel=0.02)
 
 
+@pytest.mark.parametrize("genre, centroid, bass", [("ledger", (560, 720), (0.04, 0.11)), ("dossier", (300, 430), (0.2, 0.4))])
+def test_the_doc_beds_are_dark_slow_and_keep_their_tempo(genre: str, centroid: tuple, bass: tuple) -> None:
+    """The business-documentary channel's beds (style-study/2026-11-19-references.md §7): ledger low-mid
+    (KFC ~600 Hz, Labubu 723 Hz with 8% bass), dossier bass-heavy for the Shorts; both pulse on the beat."""
+    lo, hi = CHANNEL_GENRES[genre]
+    rows = [_timbre(make_bed(np.random.default_rng(i), 24, genre, key, (lo + hi)//2)) for i, key in enumerate(("C", "D#", "G", "A#"))]
+    c, b = np.median(np.array(rows), axis=0)
+    assert centroid[0] <= c <= centroid[1] and bass[0] <= b <= bass[1]
+    bpm = (lo + hi)//2
+    assert _beat(make_bed(np.random.default_rng(3), 30, genre, "C#", bpm)) == pytest.approx(bpm, rel=0.02)
+
+
 def test_the_machine_sounds_are_clean() -> None:
     swell, glass = sfx_swell(np.random.default_rng(1)), sfx_glass()
     for x in (swell, glass):

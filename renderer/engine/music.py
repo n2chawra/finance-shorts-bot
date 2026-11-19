@@ -29,6 +29,9 @@ PROGRESSIONS: dict[str, list[list[tuple[int, tuple[int, int, int]]]]] = {
     # the tech channel's own beds (CHANNEL_GENRES): dark, minor, a machine humming behind the story
     "circuit": [[(0, MIN), (0, MIN), (8, MAJ), (10, MAJ)], [(0, MIN), (8, MAJ), (3, MAJ), (10, MAJ)], [(0, MIN), (5, MIN), (8, MAJ), (7, MIN)]],
     "datahall": [[(0, MIN), (8, MAJ)], [(0, MIN), (3, MAJ), (8, MAJ), (10, MAJ)]],
+    # the business-documentary channel's own beds (CHANNEL_GENRES): dark, minor, a file being read at night
+    "ledger": [[(0, MIN), (8, MAJ), (5, MIN), (7, MIN)], [(0, MIN), (10, MAJ), (8, MAJ), (7, MIN)], [(0, MIN), (5, MIN), (3, MAJ), (8, MAJ)]],
+    "dossier": [[(0, MIN), (8, MAJ), (10, MAJ), (7, MIN)], [(0, MIN), (0, MIN), (8, MAJ), (5, MIN)]],
 }
 ARPS: list[tuple[int, ...]] = [(0, 1, 2, 1, 0, 2, 1, 2), (0, 2, 1, 2, 0, 2, 1, 2), (2, 1, 0, 1, 2, 1, 0, 1)]
 CUTOFF: dict[str, dict[str, float]] = {
@@ -40,6 +43,8 @@ CUTOFF: dict[str, dict[str, float]] = {
     "atlas": {"pad": 2200, "bass": 260, "lead": 6000, "drums": 10000},
     "circuit": {"pad": 900, "bass": 240, "lead": 1600, "drums": 6000},
     "datahall": {"pad": 1100, "bass": 200, "lead": 1400, "shimmer": 9000},
+    "ledger": {"pad": 2400, "bass": 160, "lead": 1500},
+    "dossier": {"pad": 1400, "bass": 180, "lead": 1300},
 }
 
 
@@ -358,9 +363,48 @@ def _datahall(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
             bed.add("shimmer", _voice("sine", note(m), bed.bar, 1.2, 1.2), st + k*0.37, 0.009)
 
 
+def _ledger(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The business-documentary channel's long-video bed (2026-11-19, its references: dark, 74-80 BPM,
+    600-720 Hz, ~8% bass, a slow pulse; KFC and Labubu): a low-mid triangle pad held two bars a chord, a
+    soft sub pulse on every beat (the first stronger), and a lone low sine note every other
+    bar. No kick, no hats, nothing above the pad: it sits ~32 dB under the voice."""
+    beat = bed.beat
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[(b//2) % len(chords)]
+        low = ch[0] - 12 if ch[0] >= 48 else ch[0]     # the pulse under 150 Hz in every key
+        if b % 2 == 0:
+            for m in ch:
+                for det in (1.0, 1.004):
+                    bed.add("pad", _voice("saw", note(m + 12)*det, 2*bed.bar, 1.2, 0.9), st, 0.03)
+                bed.add("pad", _voice("saw", note(m + 24), 2*bed.bar, 1.6, 0.9), st, 0.022)
+        for q in range(4):
+            bed.add("bass", _voice("sine", note(low), beat*0.85, 0.01, 0.35, 4.0), st + q*beat, 0.12 if q == 0 else 0.08)
+        if b % 2 == 1:
+            bed.add("lead", _voice("sine", note(ch[(b//2) % 3] + 24), beat*2.5, 0.02, 0.8, 1.4), st + 2*beat, 0.07)
+
+
+def _dossier(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The business-documentary channel's Shorts bed (2026-11-19, the Marvel Short: dark, bass-heavy,
+    ~78 BPM, minor): the ledger's pad a chord a bar, a weighted low pulse on every beat (a felt sub and
+    its octave), a muted low ostinato in quarters. No kick or hats: the script's booms land on the cuts."""
+    beat = bed.beat
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[b % len(chords)]
+        low = ch[0] - 12 if ch[0] >= 48 else ch[0]
+        for m in ch:
+            for det in (1.0, 1.005):
+                bed.add("pad", _voice("saw", note(m + 12)*det, bed.bar, 0.6, 0.5), st, 0.03)
+        for q in range(4):
+            g = 1.0 if q == 0 else 0.7
+            bed.add("bass", _voice("sine", note(low), beat*0.9, 0.006, 0.3, 3.0), st + q*beat, 0.13*g)
+            bed.add("bass", _voice("sine", note(low + 12), beat*0.6, 0.006, 0.2, 5.0), st + q*beat, 0.07*g)
+            bed.add("lead", _voice("tri", note(ch[(q + b) % 3] + 12), beat*0.7, 0.01, 0.2, 5.0), st + q*beat, 0.05)
+
+
 _BUILDERS: dict[str, Callable[[_Bed, np.random.Generator, Chords], None]] = {
     "pop": _pop, "cinematic": _cinematic, "synthwave": _synthwave, "acoustic": _acoustic,
-    "explorer": _explorer, "atlas": _atlas, "circuit": _circuit, "datahall": _datahall}
+    "explorer": _explorer, "atlas": _atlas, "circuit": _circuit, "datahall": _datahall,
+    "ledger": _ledger, "dossier": _dossier}
 
 
 def make_bed(rng: np.random.Generator, dur: float, genre: str, key: str, bpm: float, pulse: bool = False) -> np.ndarray:

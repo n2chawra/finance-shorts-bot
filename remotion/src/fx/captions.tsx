@@ -86,7 +86,7 @@ export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]
   const left = v ? 60 : tl.width * 0.12, width = v ? tl.width - 60 - 150 : tl.width * 0.76;   // Shorts: clear of the right-hand buttons
   const who = g[0]!.who && g[0]!.board ? g[0]!.who : undefined;
   const tagColor: Record<string, string> = { rohan: "#2f7df6", priya: "#e0518f", sharma: "#f08c3a", sikka: "#d4a017", narrator: "#6b7385" };
-  if (scene === "directed") {
+  if (scene === "directed" || scene === "doc") {
     // directed shots (owner, 2026-11-13, the Netflix remake): big white words with an ink edge, no box,
     // figures in yellow, the words still to come dimmed; the picture behind stays visible around them
     const big = v ? 76 : 52;

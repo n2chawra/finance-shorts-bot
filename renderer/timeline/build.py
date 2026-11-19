@@ -115,6 +115,25 @@ def _fill(text: str, figures: dict[str, str], where: str) -> str:
 ID_KEYS = frozenset({"at", "id", "target", "on", "component", "size", "prop", "into", "strike", "lineAt", "who", "kind", "set", "layout",
                      "bg", "color", "tint", "traveller", "pose", "expression", "spot", "where", "from", "to", "tone", "world", "open_at"})
 _IDENT = re.compile(r"^[A-Za-z_][\w-]*$")
+# a doc beat (remotion/src/doc, 2026-11-19): its moments are event names, never shown
+ID_KEYS = ID_KEYS | {"out", "pushAt", "markAt", "underAt", "quoteAt", "drawAt", "countAt", "leftAt", "rightAt", "winAt", "landAt", "titleAt"}
+# ...and three kinds of string that hold digits but are not figures: a file the media fetcher staged under
+# remotion/public (its name is the stock site's id), a date (shown as "Apr 2, 2001"; the fact review checks
+# it) and an SEC form's name ("Form 10-K")
+MEDIA_KEYS = frozenset({"src", "icons"})
+MEDIA_PATH = re.compile(r"^(?:media|real|doc-demo)/(?!.*\.\.)[\w./-]+\.(?:mp4|webm|mov|jpe?g|png|webp)$")
+DATE_KEYS = frozenset({"date"})
+ISO_DATE = re.compile(r"^\d{4}(?:-\d{2}(?:-\d{2})?)?$")
+FORM_KEYS = frozenset({"form"})
+FORM_NAME = re.compile(r"^(?:Form )?(?:10-K|10-Q|8-K|S-1|S-4|20-F|40-F|6-K|DEF 14A|13F|SC 13D|SC 13G|Form 4|424B\d)(?:/A)?$")
+
+
+def _verbatim(k: str, v) -> bool:
+    """A param value passed through untouched: an id, a media path, a date or a form name."""
+    if not isinstance(v, str):
+        return False
+    return (k in ID_KEYS and bool(_IDENT.match(v))) or (k in MEDIA_KEYS and bool(MEDIA_PATH.match(v))) \
+        or (k in DATE_KEYS and bool(ISO_DATE.match(v))) or (k in FORM_KEYS and bool(FORM_NAME.match(v)))
 
 
 def _resolve(value, figures: dict[str, str], results: dict, where: str):
@@ -136,7 +155,8 @@ def _resolve(value, figures: dict[str, str], results: dict, where: str):
     if isinstance(value, list):
         return [_resolve(v, figures, results, f"{where}[{i}]") for i, v in enumerate(value)]
     if isinstance(value, dict):
-        return {k: v if k in ID_KEYS and isinstance(v, str) and _IDENT.match(v) else _resolve(v, figures, results, f"{where}.{k}")
+        return {k: v if _verbatim(k, v) else [x if _verbatim(k, x) else _resolve(x, figures, results, f"{where}.{k}[{i}]") for i, x in enumerate(v)]
+                if k in MEDIA_KEYS and isinstance(v, list) else _resolve(v, figures, results, f"{where}.{k}")
                 for k, v in value.items()}
     return value
 
@@ -408,6 +428,16 @@ def _drop_envelope(n: int, drops: list[float], before: float = DROP_BEFORE, leve
 DROP_ROLES = {"short": ("payoff",), "long": ("turn", "payoff")}
 
 
+def own_level(snd: dict, key: str, fmt: str, default: float) -> float:
+    """channel.json sound.bedLevel / sound.duck: one number for both formats, or {"short": x, "long": y}
+    (the business-documentary channel, 2026-11-19: Shorts ~18 dB under the voice, long ~32); a format
+    the dict leaves out keeps `default`."""
+    v = (snd or {}).get(key)
+    if isinstance(v, dict):
+        v = v.get(fmt)
+    return default if v is None else float(v)
+
+
 def own_drop(snd: dict, fmt: str) -> tuple[float, float] | None:
     """(seconds before the reveal, bed level during it) from channel.json sound.preRevealDrop, or None."""
     d = (snd or {}).get("preRevealDrop")
@@ -506,6 +536,63 @@ def directed_problems(b: "Beat", where: str) -> list[str]:
     return out
 
 
+DOC_LAYERS = ("footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter")
+DOC_OVERLAYS = ("lowerThird", "source", "chapter", "label")
+# the keys in a doc layer that name a moment (a spoken word in the beat's events)
+DOC_MOMENT_KEYS = ("at", "out", "pushAt", "markAt", "underAt", "quoteAt", "drawAt", "countAt", "leftAt", "rightAt", "winAt", "landAt", "titleAt", "on")
+
+
+def _doc_moments(node, out: list[tuple[str, str]], path: str) -> None:
+    """Every moment a doc layer names (layer.at, a headline's on[i], a chart mark's at, a pin's on...)."""
+    if isinstance(node, dict):
+        for k, v in node.items():
+            if k in DOC_MOMENT_KEYS and isinstance(v, str):
+                out.append((f"{path}.{k}", v))
+            elif k in DOC_MOMENT_KEYS and k == "on" and isinstance(v, list):
+                out += [(f"{path}.on[{i}]", x) for i, x in enumerate(v) if isinstance(x, str)]
+            elif isinstance(v, (dict, list)):
+                _doc_moments(v, out, f"{path}.{k}")
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            _doc_moments(v, out, f"{path}[{i}]")
+
+
+def doc_problems(b: "Beat", where: str) -> list[str]:
+    """A documentary beat (remotion/src/doc, 2026-11-19: the business documentaries channel) is drawn
+    from its params, with no code of its own: the layers it shows (footage, a photo, a document,
+    headlines, a chart, a timeline, a split, a map, a chapter card), the overlays on them, where it
+    happens, its shot sizes and its moments, each on a spoken word. Media come from the fetcher
+    (remotion/public/media/<slug>/) or the Commons photos (remotion/public/real/)."""
+    p, out = b.params, []
+    shell = Beat(id=b.id, scene="directed", params={**p, "component": "Doc"}, events=b.events)
+    out += [x for x in directed_problems(shell, where) if "component" not in x]
+    layers = p.get("layers")
+    if not isinstance(layers, list) or not layers:
+        out.append(f"{where}: params.layers lists what the beat shows, bottom first: [{{\"kind\": \"footage\", \"src\": \"media/<slug>/<clip>.mp4\"}}]")
+        layers = []
+    for i, l in enumerate(layers):
+        if not isinstance(l, dict) or l.get("kind") not in DOC_LAYERS:
+            out.append(f"{where}: params.layers[{i}].kind is one of {', '.join(DOC_LAYERS)}")
+            continue
+        if l["kind"] in ("footage", "photo") and not (isinstance(l.get("src"), str) and MEDIA_PATH.match(l["src"])):
+            out.append(f"{where}: params.layers[{i}].src is a staged file under remotion/public (media/<slug>/<file> or real/<file>)")
+        if l["kind"] == "document" and not (l.get("src") or l.get("lines")):
+            out.append(f"{where}: params.layers[{i}] (a document) needs the page: src (an image) or lines (its text)")
+        if l["kind"] == "chart" and not (isinstance(l.get("values"), list) and l["values"]):
+            out.append(f"{where}: params.layers[{i}] (a chart) needs values (\"@maths.series\" or the facts' numbers)")
+    for i, o in enumerate(p.get("overlays") or []):
+        if not isinstance(o, dict) or o.get("kind") not in DOC_OVERLAYS:
+            out.append(f"{where}: params.overlays[{i}].kind is one of {', '.join(DOC_OVERLAYS)}")
+    named: list[tuple[str, str]] = []
+    _doc_moments(layers, named, "params.layers")
+    _doc_moments(p.get("overlays") or [], named, "params.overlays")
+    for path, ev in named:
+        if ev not in b.events and ev not in ("start", "end"):
+            out.append(f"{where}: {path} {ev!r} is not one of this beat's events (name the word in `events` first)")
+            break
+    return out
+
+
 def check_script(script: dict) -> dict:
     """Everything a build would reject, without speaking or mixing anything: maths inputs, typed
     numbers, placeholders, @references, scene names, sound kinds, ids and event words. Returns
@@ -526,7 +613,7 @@ def check_script(script: dict) -> dict:
         _thumbnail_variants(script, figures, results)
     # where the facts come from is on screen: a headline beat, or a board beat's source footer
     # (sourced facts in every Short since 2026-11-02, not only news)
-    if sources and not any(b.scene in ("headline", "board", "directed") for b in beats):
+    if sources and not any(b.scene in ("headline", "board", "directed", "doc") for b in beats):
         raise ValueError("a script with sourced facts needs a headline, board or directed beat, which shows where they come from")
     if len({b.id for b in beats}) != len(beats):
         raise ValueError("beat ids must be unique")
@@ -538,6 +625,8 @@ def check_script(script: dict) -> dict:
         if b.scene not in scenes:
             raise ValueError(f"{where}: no scene called {b.scene!r}; scenes are {', '.join(sorted(scenes))}")
         if b.scene == "directed" and (bad := directed_problems(b, where)):
+            raise ValueError("; ".join(bad))
+        if b.scene == "doc" and (bad := doc_problems(b, where)):
             raise ValueError("; ".join(bad))
         _one_string(b.params, _resolve(b.params, figures, results, f"{where}.params"), f"{where}.params", fm)
         text = _fill(b.say, figures, f"{where}.say") if b.say else ""
@@ -661,7 +750,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     quiet = (script.get("experiments") or {}).get(QUIET_BED) == "on"
     level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, SHORT_DUCK if fmt == "short" else VOICE_DUCK)
     if own_sound:   # the channel's own mix, measured on its references (channel.json sound)
-        level, duck_by = float(own_sound.get("bedLevel", level)), float(own_sound.get("duck", duck_by))
+        level, duck_by = own_level(own_sound, "bedLevel", fmt, level), own_level(own_sound, "duck", fmt, duck_by)
     mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*_drop_envelope(mixer.n, drops, *(drop_shape or ())))
     per_minute = ((own_sound.get("sfxPerMinute") or {}) if own_sound else {}).get(fmt)
     if per_minute is not None:

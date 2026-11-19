@@ -335,3 +335,22 @@ def test_channel_one_ignores_the_new_sound_settings(tmp_path: Path, monkeypatch)
     beats = [{"id": f"b{i}", "scene": "directed", "say": "It costs {card_amount}.", "transition": "whip", "role": "payoff",
               "sfx": [{"kind": "kaching", "at": "speech"}, {"kind": "pop", "at": "start"}, {"kind": "ding", "at": "end"}]} for i in range(3)]
     tb.build(script(beats), tmp_path, voice="estimate")
+
+
+DOC_SOUND = {"genres": ["ledger", "dossier"], "bedLevel": {"short": 0.26, "long": 0.18}, "duck": {"short": 0.6, "long": 0.9},
+             "sfx": ["thud", "boom", "paper", "scribble", "tick", "pop", "swell"], "transitionSfx": None}
+
+
+def test_a_channels_bed_level_and_duck_per_format(tmp_path: Path, monkeypatch) -> None:
+    """The business-documentary channel (2026-11-19): {"short": x, "long": y} levels, Shorts ~18 dB under the
+    voice and long ~32; a plain number still sets both formats, a missing format keeps the default."""
+    assert tb.own_level(DOC_SOUND, "bedLevel", "short", 0.5) == 0.26 and tb.own_level(DOC_SOUND, "duck", "long", 0.7) == 0.9
+    assert tb.own_level(TECH_SOUND, "bedLevel", "short", 0.5) == tb.own_level(TECH_SOUND, "bedLevel", "long", 0.5) == 0.22
+    assert tb.own_level({"duck": {"short": 0.6}}, "duck", "long", 0.72) == 0.72 and tb.own_level({}, "duck", "long", 0.72) == 0.72
+    beats = [{"id": "a", "scene": "directed", "say": "It costs {card_amount} today, every single month."}]
+    music = {}
+    for name, snd in (("split", DOC_SOUND), ("long-everywhere", {**DOC_SOUND, "bedLevel": 0.18, "duck": 0.9})):
+        _with_sound(monkeypatch, snd)
+        t = tb.build(script(beats, format="short", style={"genre": "dossier", "bpm": 80}), tmp_path / name, voice="estimate")
+        music[name] = t["audio"]["stems"]["music"]
+    assert music["split"] > music["long-everywhere"] + 3   # the Short's own, louder level is the one used

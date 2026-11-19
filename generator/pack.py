@@ -123,6 +123,13 @@ def pack_problems(p: dict) -> list[str]:
             out.append(f"sound.genres must be beds the music engine makes ({', '.join(ALL_BPM)})")
         if not snd.get("sfx"):
             out.append("sound.sfx lists the effects the channel may use")
+        for key, hi in (("bedLevel", 2.0), ("duck", 1.0)):   # a number, or {"short": x, "long": y} per format
+            v = snd.get(key)
+            vals = v.items() if isinstance(v, dict) else [] if v is None else [("", v)]
+            if isinstance(v, dict) and not v or any(
+                    (k and k not in ("short", "long")) or isinstance(x, bool) or not isinstance(x, (int, float)) or not 0 <= x <= hi
+                    for k, x in vals if not str(k).startswith("_")):
+                out.append(f'sound.{key} is a number from 0 to {hi:g}, or {{"short": x, "long": y}}')
         per = snd.get("sfxPerMinute")   # {"short": n, "long": n}: enforced by the timeline builder
         if per is not None and (not isinstance(per, dict) or not per or any(
                 k not in ("short", "long") or not isinstance(v, (int, float)) or v <= 0 for k, v in per.items())):

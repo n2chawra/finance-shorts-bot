@@ -31,6 +31,7 @@ import { CaseScene, FrameworkScene, JourneyScene, StatsScene, TypeScene } from "
 import { StoryHud } from "../studio/hud";
 import { Grain } from "../design/texture";
 import { Sikka } from "../cast/Sikka";
+import { DocScene } from "../doc/DocBeat";
 
 /** A video's own hook (videos/<id>/Hook.tsx), or a plain shot with the same params if there is none. */
 const HookScene: React.FC<SceneProps> = (p) => {
@@ -64,7 +65,7 @@ export const SCENES: Record<SceneName, React.FC<SceneProps>> = {
   prop: PropScene, screen: ScreenScene, equation: EquationScene, kinetic: KineticScene, source: SourceScene, bill: BillScene, road: RoadScene, fork: ForkScene, shot: ShotScene, hook: HookScene,
   build: BuildScene, custom: CustomScene,
   framework: FrameworkScene, type: TypeScene, journey: JourneyScene, stats: StatsScene, case: CaseScene,
-  board: BoardScene, directed: DirectedScene,
+  board: BoardScene, directed: DirectedScene, doc: DocScene,
 };
 
 /** The channel's mark in the top-left corner of every frame, small, never text: Sikka for channel #1, a
@@ -119,7 +120,7 @@ const BeatView: React.FC<{ beat: Beat; tl: Timeline; frame: number; fps: number 
   const kind = punchEvent ? "drift" : story.camera;
   const punch = punchEvent && punchEvent in story.events ? story.events[punchEvent]! / fps : null;
   // a directed shot moves its own camera (flat/kit View); the others get the beat's drift or punch
-  const transform = beat.scene === "directed" ? undefined : cameraTransform(kind, Math.min(1, local / story.frames), local / fps, story.id, punch);
+  const transform = beat.scene === "directed" || beat.scene === "doc" ? undefined : cameraTransform(kind, Math.min(1, local / story.frames), local / fps, story.id, punch);
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <AbsoluteFill style={{ transform }}>

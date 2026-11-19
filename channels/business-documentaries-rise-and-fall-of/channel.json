@@ -34,26 +34,20 @@
     "maxGapSec": 3.0
   },
   "sound": {
-    "_why": "build spec §7 (measured on KFC, Labubu, the Marvel Short; Company Man): dark, slow (70-85 BPM), low-mid bed, music 22-36.5 dB under the voice in long videos -> target ~32 dB; ~5-6 effects a minute in long videos, soft and placed on things arriving (figure flip, tag, highlighter swipe, document landing), a low thud on chapter cards, nothing on plain cuts; Shorts ~15-20 a minute, low booms on most cuts, 0.6 s drops of 12-19 dB after the hook and before the reveal. Levels: the tech channel's 0.22 + 0.8 measured 23.6 (Short) and 25.5 (long) dB under the voice; 0.18 takes ~1.7 dB off and duck 0.9 adds ~5.5 dB (the duck's smoothing takes ~2 dB off its nominal 20 dB), so ~32.7 dB long and ~30.8 dB Short. Not yet checked on a Kokoro build: confirm with music_under_voice_db on sample 1. The spec wants Shorts louder (~18 dB under), but build.py takes one bedLevel and duck for both formats, so long-first wins; a per-format level is a code item",
+    "_why": "build spec §7 (measured on KFC, Labubu, the Marvel Short; Company Man): dark, slow (70-85 BPM), low-mid bed, music 22-36.5 dB under the voice in long videos -> target ~32 dB; Shorts louder, ~18 dB under (the Marvel Short: voice 16 dB over the music's bass, ~7.4 dB ducking); ~5-6 effects a minute in long videos, soft and placed on things arriving (figure flip, tag, highlighter swipe, document landing), a low thud on chapter cards, nothing on plain cuts; Shorts ~15-20 a minute, low booms on most cuts, 0.6 s drops of 12-19 dB after the hook and before the reveal. Levels per format, checked on a Kokoro build (am_fenrir, 28 s test timeline, 2026-11-19, music_under_voice_db): long bedLevel 0.18 + duck 0.9 = 32.3 dB under the voice on ledger (31.4 on dossier); Shorts bedLevel 0.26 + duck 0.6 = 18.1 dB on dossier (18.1 on ledger)",
     "genres": [
-      "circuit",
-      "datahall"
+      "ledger",
+      "dossier"
     ],
-    "_genresWhy": "interim: the only dark, minor, low-mid beds the music engine makes today (circuit 70-75 BPM, datahall 60-66). The channel's own beds are plannedGenres; add them to renderer/engine/music_constants.CHANNEL_GENRES and music.py, then swap them in here (never Paisa Panchayat's cinematic)",
-    "plannedGenres": {
-      "ledger": {
-        "bpm": [74, 80],
-        "for": "long",
-        "character": "dark, slow, low-mid (600-720 Hz brightness, no highs, ~8% bass), a soft pulse; up in the cold open and under chapter cards (KFC 76 BPM, Labubu 723 Hz)"
-      },
-      "dossier": {
-        "bpm": [76, 84],
-        "for": "short",
-        "character": "dark, bass-heavy, minor (the Marvel Short: ~78 BPM, G minor), room for low booms on the cuts"
-      }
+    "_genresWhy": "the channel's own beds (renderer/engine/music.py, CHANNEL_GENRES, no other channel's list names them): ledger 74-80 BPM, a low-mid pad and a soft pulse on every beat, no kick or highs (measured across 6 keys: brightness 619 Hz, 6.8% bass, the pulse read at 77 BPM), made for long videos; dossier 76-84 BPM, a weighted low pulse (356 Hz, 29% bass) with room for the booms on the cuts, made for Shorts. One list for both formats, because the rotation never repeats the previous video's genre; either bed measured in range on either format",
+    "bedLevel": {
+      "short": 0.26,
+      "long": 0.18
     },
-    "bedLevel": 0.18,
-    "duck": 0.9,
+    "duck": {
+      "short": 0.6,
+      "long": 0.9
+    },
     "sfx": [
       "thud",
       "boom",

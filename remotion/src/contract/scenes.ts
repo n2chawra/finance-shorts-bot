@@ -12,6 +12,8 @@ export const SCENE_NAMES = [
   "board",
   // a directed 2D shot coded for this video's line (videos/<id>/<params.component>.tsx on the flat kit; 2026-11-13)
   "directed",
+  // a documentary beat: footage, photos, documents, headlines and charts from params (src/doc; 2026-11-19)
+  "doc",
 ] as const;
 
 export type SceneName = (typeof SCENE_NAMES)[number];
