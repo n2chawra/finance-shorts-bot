@@ -1,0 +1,8 @@
+{"agent":"scout","day":"2026-11-19","channel":"how-tech-and-ai-actually-work-chips-ai-p","startedAt":"2026-11-19T04:38:28Z","finishedAt":"2026-11-19T04:42:43Z",
+ "summary":"Started the long-video feed for How Tech Works: moved 8 long topics out of the Shorts feed, added 2 fast-growing ones (rocket engines, NVIDIA's AI chip), and studied long titles.",
+ "decision":"acted",
+ "why":"The long feed was missing, and the 8 long topics sat where Studio doesn't read. All 10 are blocked by the from_short rule because the channel has no Short with 100+ views, so the owner was notified.",
+ "findings":[{"title":"Every long topic blocked by from_short","detail":"The channel's only Short has 25 views; the rule needs 100+. Studio can't make this week's 2 long videos."},{"title":"Question titles hit 23% vs 10%","detail":"Niche scan, 216 long videos; digits in titles 10% vs 15%."}],
+ "changes":[{"title":"10 long topics in longform/topics.json","detail":"8 moved, 2 new, outlines and search phrases added","branch":"agent/scout/2026-11-19/how-tech-and-ai-actually-work-chips-ai-p"}],
+ "nextCheck":"2026-11-23",
+ "links":[{"label":"Report","url":"channels/how-tech-and-ai-actually-work-chips-ai-p/longform/2026-11-19.md"}]}

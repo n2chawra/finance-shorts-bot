@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "id": "tech-long-from-short-gate",
+      "kind": "bug",
+      "title": "The 'from_short' rule blocks every long topic on this long-first channel",
+      "detail": "generator/topics.py winning_short() requires a long topic to name one of our Shorts with 100+ views in the top third by stayed to watch (a Paisa Panchayat rule, owner 2026-11-12). This channel's profile is long-first (a long video a week, Shorts cut from it; longPerWeek 2) and has one Short with 25 views, so all 10 topics in longform/topics.json are blocked and Studio cannot make this week's 2 long videos. Fix: let a channel opt out (e.g. channel.json \"longFrom\": \"feed\" or skip the rule when profile is long-first) until it has 3+ Shorts with 100+ views; add a test. Worked when `state --format long` shows usable_now true for the feed's topics.",
+      "where": "script",
+      "route": "owner",
+      "priority": "high",
+      "found": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-title-question",
+      "kind": "craft",
+      "title": "Long titles: a question or 'inside / what happens', no figure",
+      "detail": "Niche scan 18 Nov, long videos 7-25 min (n=216): titles with a question mark hit 3x their channel's median 23% of the time vs 10% without; 'inside / what happens' titles 24% (median 1.41x, n=17); a digit in the title 10% vs 15%. Studio: phrase the title as the question people search, keep the figure for the thumbnail or the hook. Judge on the long test once 4 long videos are out.",
+      "where": "thumbnail",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-length-band",
+      "kind": "idea",
+      "title": "Our 7-8 minute band sits in the niche's weakest length",
+      "detail": "Niche scan: 360-600 s long videos hit 4% of the time (median 1,352 views) vs 19% at 600-900 s. The owner capped long videos at 8 minutes for render time (channel.json, 2026-11-18). Owner's call; revisit when render time allows 10-12 minutes.",
+      "where": "template",
+      "route": "owner",
+      "priority": "normal",
+      "found": "2026-11-19",
+      "status": "open"
+    }
+  ]
+}

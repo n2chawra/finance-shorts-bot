@@ -1,0 +1,1047 @@
+{
+  "topics": [
+    {
+      "id": "2026-11-18-gpu-one-frame",
+      "format": "long",
+      "title": "What Happens Inside a Graphics Card to Draw One Frame",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What Happens Inside a CPU in One Second?",
+        "views": 446892,
+        "url": "https://youtube.com/watch?v=r9qDcQ_b50k",
+        "channel": "Silicon Up Close",
+        "channelSubs": 12700,
+        "outlier": 35.2
+      },
+      "hook": "Every frame of your game is drawn from scratch in a few thousandths of a second. Here is everything that happens.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Follow one frame through an RTX 4090: triangles in, corners moved into place, pixels shaded by 16,384 small maths units at billions of ticks a second, written to memory and sent to the screen. Labelled 3D cut-through: the card, the die, one core.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long, core). Viewers asked for advanced graphics (comment notes #9).",
+      "facts": [
+        {
+          "label": "NVIDIA GeForce RTX 4090: CUDA cores (its small maths units)",
+          "value": 16384,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "NVIDIA (RTX 4090 specs)",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+          "fixed": true
+        },
+        {
+          "label": "RTX 4090 boost clock, in gigahertz (billions of ticks a second)",
+          "value": 2.52,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "NVIDIA (RTX 4090 specs)",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+          "fixed": true
+        },
+        {
+          "label": "RTX 4090 graphics memory, in gigabytes (GDDR6X)",
+          "value": 24,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "NVIDIA (RTX 4090 specs)",
+          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+          "fixed": true
+        },
+        {
+          "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
+          "value": 76,
+          "unit": "count_billion",
+          "as_of": "2022-09-20",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+          "fixed": true
+        },
+        {
+          "label": "Transistors in the generation before (Ampere), for comparison",
+          "value": 28,
+          "unit": "count_billion",
+          "as_of": "2022-09-20",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+          "fixed": true
+        }
+      ],
+      "search": "what happens inside a gpu",
+      "outline": [
+        "hook: a game frame drawn from nothing in thousandths of a second; the card on a dark stage",
+        "route map: game -> CPU -> card -> die -> one core -> screen",
+        "ch1 the order: the CPU sends a list of triangles across the slot",
+        "ch2 corners moved into place: the scene's points turned to the camera's view",
+        "ch3 triangles cut into pixels (rasterising), drawn at the die scale",
+        "ch4 the big one: 16,384 small maths units shading pixels at once, the clock ticking 2.52 billion times a second",
+        "recap and tease at ~3:30: and every one of those pixels must be stored somewhere fast",
+        "ch5 the 24 GB of memory beside the die, the frame written in",
+        "ch6 76 billion switches vs 28 billion one generation before (computed ratio)",
+        "climb back out: the frame leaves for the screen, and the next one starts"
+      ],
+      "maths": "ratio of the two transistor counts; ticks in one frame time from the clock and a frame rate",
+      "verify": [
+        "RTX 4090 CUDA cores, boost clock and memory from NVIDIA's spec page",
+        "Ada and Ampere transistor counts from NVIDIA's 2022 announcement"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new",
+      "sources": [
+        "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+        "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/"
+      ],
+      "note": "Moved from the Shorts feed (research/topics.json), where Studio never reads it; outline, search and maths added by Scout 2026-11-19."
+    },
+    {
+      "id": "2026-11-18-face-unlock",
+      "format": "long",
+      "title": "What Happens Inside Your Phone When You Unlock It With Your Face",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What Happens Inside an AI Chip When You Ask a Question",
+        "views": 1024094,
+        "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
+        "channel": "Silicon Up Close",
+        "channelSubs": 12700,
+        "outlier": 80.6
+      },
+      "hook": "Your phone just fired thousands of invisible dots at your face. Here's what it did with them.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Face ID step by step: the dot projector, the infrared camera, the depth map, the neural engine comparing it with the stored maths of your face, the secure check, all before the screen lights. Apple's own figures only; no security how-tos.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long, example title 1).",
+      "facts": [
+        {
+          "label": "Invisible infrared dots Face ID projects onto your face, more than",
+          "value": 30000,
+          "unit": "count",
+          "as_of": "2017-09-12",
+          "source": "Apple Newsroom",
+          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+          "fixed": true
+        },
+        {
+          "label": "Neural engine operations per second on the iPhone X chip, up to",
+          "value": 600,
+          "unit": "count_billion",
+          "as_of": "2017-09-12",
+          "source": "Apple Newsroom",
+          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+          "fixed": true
+        },
+        {
+          "label": "Chance a random person unlocks it with one enrolled appearance: less than 1 in",
+          "value": 1000000,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "Apple Support (About Face ID advanced technology)",
+          "url": "https://support.apple.com/en-us/102381",
+          "fixed": true
+        },
+        {
+          "label": "Year Face ID launched, on iPhone X",
+          "value": 2017,
+          "unit": "year",
+          "as_of": "2017-09-12",
+          "source": "Apple Newsroom",
+          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/"
+        }
+      ],
+      "search": "how does face id work",
+      "outline": [
+        "hook: your phone fires 30,000+ invisible dots at your face",
+        "route map: dots -> camera -> depth map -> neural engine -> secure check -> screen",
+        "ch1 the flood light and the dot projector, drawn as a cutaway of the notch",
+        "ch2 the infrared camera reads the bent pattern",
+        "ch3 the dots become a depth map (a 3D mesh of the face)",
+        "ch4 the neural engine compares it with the stored maths of your face, 600 billion operations a second",
+        "recap and tease: and the stored face never leaves the chip",
+        "ch5 the secure check and the 1 in 1,000,000 odds",
+        "climb back out: the screen lights; loop to the dots"
+      ],
+      "maths": "operations in a fraction of a second from the neural engine's rate",
+      "verify": [
+        "Apple's 30,000-dot and 600 billion ops figures (2017 newsroom)",
+        "Apple Support's 1 in 1,000,000 figure",
+        "no bypass or security how-tos"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new",
+      "sources": [
+        "https://support.apple.com/en-us/102381",
+        "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/"
+      ],
+      "note": "Moved from the Shorts feed (research/topics.json), where Studio never reads it; outline, search and maths added by Scout 2026-11-19."
+    },
+    {
+      "id": "2026-11-18-euv-prints-a-chip",
+      "format": "long",
+      "title": "How a Chip Factory Prints Billions of Switches With Light",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Semiconductor Chip कैसे बनती है? रेत से 2nm Chip तक की पूरी कहानी",
+        "views": 2201309,
+        "url": "https://youtube.com/watch?v=lvcAvPjZwxo",
+        "channel": "PROCESS BHARAT",
+        "channelSubs": 234000,
+        "outlier": 9.4
+      },
+      "hook": "To print a modern chip, a machine blasts drops of molten tin fifty thousand times a second.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Inside ASML's EUV machine: tin droplets hit twice by a laser, plasma giving off 13.5 nm light, mirrors carrying it onto a mask and down onto the wafer, layer by layer. ASML's figures; no export-control politics.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long). Viewers asked for the machines that make chips (comment notes #5).",
+      "facts": [
+        {
+          "label": "Wavelength of EUV light, in nanometres",
+          "value": 13.5,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Times every second a tin droplet is hit and turned into light-making plasma",
+          "value": 50000,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Diameter of each molten tin droplet, in microns (about)",
+          "value": 25,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Speed the droplets leave the generator, in metres per second",
+          "value": 70,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML",
+          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+          "fixed": true
+        },
+        {
+          "label": "Smallest feature a standard (0.33 NA) EUV machine prints, in nanometres",
+          "value": 13,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML (EUV lithography systems)",
+          "url": "https://www.asml.com/en/products/euv-lithography-systems",
+          "fixed": true
+        },
+        {
+          "label": "Smallest feature a High-NA (0.55 NA) EUV machine prints, in nanometres",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "ASML (EUV lithography systems)",
+          "url": "https://www.asml.com/en/products/euv-lithography-systems",
+          "fixed": true
+        }
+      ],
+      "search": "how are chips made euv lithography",
+      "outline": [
+        "hook: a machine blasts molten tin 50,000 times a second to print a chip",
+        "route map: tin -> light -> mirrors -> mask -> wafer -> layers",
+        "ch1 the droplet generator: 25-micron drops at 70 m/s",
+        "ch2 two laser hits make plasma that glows at 13.5 nm",
+        "ch3 mirrors, because glass would swallow this light",
+        "ch4 the mask and the wafer: one pattern printed again and again",
+        "recap and tease: and the newest machine prints even smaller",
+        "ch5 13 nm features vs 8 nm with High-NA (computed ratio)",
+        "ch6 layer after layer: the switch builds up",
+        "climb back out: the finished chip in a phone"
+      ],
+      "maths": "droplets in a minute and an hour from 50,000 a second; feature ratio 13/8",
+      "verify": [
+        "ASML figures for droplet rate, size, speed, wavelength and feature sizes",
+        "no export-control politics"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new",
+      "sources": [
+        "https://www.asml.com/en/products/euv-lithography-systems",
+        "https://www.asml.com/en/technology/lithography-principles/light-and-lasers"
+      ],
+      "note": "Moved from the Shorts feed (research/topics.json), where Studio never reads it; outline, search and maths added by Scout 2026-11-19."
+    },
+    {
+      "id": "2026-11-18-ssd-stores-a-bit",
+      "format": "long",
+      "title": "How an SSD Stores a Bit With No Moving Parts",
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How do microSD Cards Store 2 TB in such a TINY space?",
+        "views": 1560892,
+        "url": "https://youtube.com/watch?v=9kM3mnxrMMM"
+      },
+      "hook": "Your files are electrons trapped in a cage far too small to see. Here's how one gets in and out.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "One NAND cell: trapped charge sets a 0 or 1, the read checks it, then 3D stacking piles hundreds of layers (332 in KIOXIA's 2025 generation, from 48 in 2015) into a skyscraper. Keep layers and stacked dies apart (viewers caught that slip before).",
+      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long). Viewers asked about 3D NAND layers, electron trapping and wear (comment notes #11).",
+      "facts": [
+        {
+          "label": "Year Toshiba (now KIOXIA) invented NAND flash memory",
+          "value": 1987,
+          "unit": "year",
+          "as_of": "1987-01-01",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+        },
+        {
+          "label": "Capacity of the first commercial NAND flash chip, in megabits",
+          "value": 4,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+          "fixed": true
+        },
+        {
+          "label": "Year the first commercial NAND chip was commercialized",
+          "value": 1991,
+          "unit": "year",
+          "as_of": "1991-01-01",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+        },
+        {
+          "label": "Year KIOXIA announced the first 3D (stacked) flash technology",
+          "value": 2007,
+          "unit": "year",
+          "as_of": "2007-01-01",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+        },
+        {
+          "label": "Layers of memory cells in KIOXIA's BiCS FLASH generation 10 (2025)",
+          "value": 332,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+          "fixed": true
+        },
+        {
+          "label": "Layers in its 2015 generation, for comparison",
+          "value": 48,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "KIOXIA technology history",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+          "fixed": true
+        }
+      ],
+      "search": "how does an ssd store data",
+      "outline": [
+        "hook: your files are electrons trapped in a cage too small to see",
+        "route map: file -> controller -> one cell -> the stack -> back",
+        "ch1 one NAND cell: charge in, a 0 or a 1",
+        "ch2 reading it without letting the charge out",
+        "ch3 history: Toshiba's 1987 invention, the 4-megabit chip of 1991",
+        "ch4 going up: 3D stacking announced 2007",
+        "recap and tease: how high does the skyscraper go now?",
+        "ch5 48 layers in 2015 to 332 in 2025 (computed growth)",
+        "ch6 layers vs stacked dies: keep them apart",
+        "climb back out: the file opens"
+      ],
+      "maths": "growth ratio 332/48; years between dated steps",
+      "verify": [
+        "KIOXIA history dates and layer counts",
+        "layers and stacked dies kept distinct"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new",
+      "sources": [
+        "https://www.kioxia.com/en-jp/rd/technology/history.html"
+      ],
+      "note": "Moved from the Shorts feed (research/topics.json), where Studio never reads it; outline, search and maths added by Scout 2026-11-19."
+    },
+    {
+      "id": "2026-11-18-ai-question-to-answer",
+      "format": "long",
+      "title": "How an AI Turns Your Question Into an Answer, Every Step",
+      "category": "ai",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_ai_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How AI works, Explained with Mushrooms ! (Easiest Explanation )",
+        "views": 622117,
+        "url": "https://youtube.com/watch?v=vIM9qCyfVmg",
+        "channel": "Xplained with MUSHROOMS",
+        "channelSubs": 2320,
+        "outlier": 268.2
+      },
+      "hook": "You type a question. Seconds later, words appear. Here is every step in between, down to the chip.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Text cut into tokens, tokens turned into numbers, the numbers multiplied through billions of parameters on the GPU's maths units, one next token picked, repeated. Never skip the hardware-to-answer step. No hype: it predicts text; it doesn't think.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: how-AI-works long, the best hit rate). The top ask in the comments: the missing step from transistors to an answer (comment notes #1).",
+      "facts": [
+        {
+          "label": "Parameters (adjustable numbers) in GPT-3",
+          "value": 175,
+          "unit": "count_billion",
+          "as_of": "2020-05-28",
+          "source": "Brown et al., Language Models are Few-Shot Learners (arXiv)",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "fixed": true
+        },
+        {
+          "label": "Characters of English text in one token, roughly",
+          "value": 4,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "OpenAI Help Center (What are tokens)",
+          "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+          "fixed": true
+        },
+        {
+          "label": "Words in 100 tokens, roughly",
+          "value": 75,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "OpenAI Help Center (What are tokens)",
+          "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+          "fixed": true
+        },
+        {
+          "label": "Layers in GPT-3 (175B)",
+          "value": 96,
+          "unit": "count",
+          "as_of": "2020-05-28",
+          "source": "Brown et al., Language Models are Few-Shot Learners (arXiv), Table 2.1",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "fixed": true
+        },
+        {
+          "label": "Tokens GPT-3 could read at once (its context window)",
+          "value": 2048,
+          "unit": "count",
+          "as_of": "2020-05-28",
+          "source": "Brown et al., Language Models are Few-Shot Learners (arXiv)",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "fixed": true
+        }
+      ],
+      "search": "how does chatgpt work step by step",
+      "outline": [
+        "hook: you type a question; words appear; every step between, down to the chip",
+        "route map: words -> tokens -> numbers -> 96 layers -> the chip -> one word -> repeat",
+        "ch1 cutting text into tokens (about 4 characters each; 100 tokens about 75 words)",
+        "ch2 tokens become lists of numbers",
+        "ch3 through the layers: 96 in GPT-3, each adjusting the numbers",
+        "ch4 the chip: 175 billion adjustable numbers multiplied on the GPU's maths units",
+        "recap and tease: and all that picks just one word",
+        "ch5 picking the next token, then doing it again for every word",
+        "ch6 the 2,048-token window: what it can see at once",
+        "climb back out: the answer on your screen; it predicts text, it doesn't think"
+      ],
+      "maths": "tokens in an answer from a word count (100 tokens to 75 words); multiplications per token from the parameter count",
+      "verify": [
+        "GPT-3 parameters, layers and context from the paper",
+        "OpenAI's token rules of thumb",
+        "no hype claims"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new",
+      "sources": [
+        "https://arxiv.org/abs/2005.14165",
+        "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them"
+      ],
+      "note": "Moved from the Shorts feed (research/topics.json), where Studio never reads it; outline, search and maths added by Scout 2026-11-19."
+    },
+    {
+      "id": "2026-11-18-ai-query-energy-water",
+      "format": "long",
+      "title": "What One AI Question Really Costs in Power and Water",
+      "category": "ai",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "how_ai_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What Happens Inside an AI Chip When You Ask a Question",
+        "views": 1024094,
+        "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
+        "channel": "Silicon Up Close",
+        "channelSubs": 12700,
+        "outlier": 80.6
+      },
+      "hook": "One AI question uses about five drops of water. So why are data centres running short of power?",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Follow one prompt into a data centre: the chip's power, the cooling, the water. Google's measured figure per prompt, OpenAI's CEO's stated figure (named as his), then the IEA's total for all data centres. Sources named on screen; no scare framing.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: how-AI-works long, example title 3). Viewers asked what one AI question costs in compute, power and water (comment notes #3).",
+      "facts": [
+        {
+          "label": "Energy used by the median Gemini Apps text prompt, in watt-hours",
+          "value": 0.24,
+          "unit": "count",
+          "as_of": "2025-08-22",
+          "source": "Google Cloud blog",
+          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "Water used by the median Gemini Apps text prompt, in millilitres",
+          "value": 0.26,
+          "unit": "count",
+          "as_of": "2025-08-22",
+          "source": "Google Cloud blog",
+          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "That water as drops, about",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2025-08-22",
+          "source": "Google Cloud blog",
+          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-19"
+        },
+        {
+          "label": "Energy an average ChatGPT query uses, in watt-hours (OpenAI CEO's figure)",
+          "value": 0.34,
+          "unit": "count",
+          "as_of": "2025-06-10",
+          "source": "Sam Altman, The Gentle Singularity",
+          "url": "https://blog.samaltman.com/the-gentle-singularity",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-19"
+        }
+      ],
+      "verify": [
+        "Google 2025 measured figures (checked 2026-11-19: none newer)",
+        "Altman's figure stated as his",
+        "no scare framing"
+      ],
+      "sources": [
+        "https://blog.samaltman.com/the-gentle-singularity",
+        "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference"
+      ],
+      "search": "how much energy does one ai question use",
+      "outline": [
+        "hook: one AI question uses about five drops of water; so why are data centres short of power?",
+        "route map: your prompt -> data centre -> chip -> cooling -> water",
+        "ch1 the prompt arriving at a data hall",
+        "ch2 the chip's power: 0.24 Wh for Google's median prompt",
+        "ch3 OpenAI's CEO's figure, 0.34 Wh, named as his",
+        "ch4 cooling and the 0.26 mL of water",
+        "recap and tease: tiny per question, so where does it add up?",
+        "ch5 multiply by a day of questions (computed)",
+        "climb back out: the answer on your screen; sources on screen"
+      ],
+      "maths": "per-prompt energy times a count of prompts; watt-hours compared with a household item",
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new",
+      "note": "Moved from the Shorts feed (research/topics.json), where Studio never reads it; outline, search and maths added by Scout 2026-11-19."
+    },
+    {
+      "id": "2026-11-18-message-crosses-ocean",
+      "format": "long",
+      "title": "How Your Message Crosses the Ocean in a Tenth of a Second",
+      "category": "internet",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_network_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Inside America's Only Internet Sea Cable Maker",
+        "views": 5542424,
+        "url": "https://youtube.com/watch?v=cKnwkxItL2M"
+      },
+      "hook": "Your message to London didn't go to space. It went along the bottom of the Atlantic, in a cable as wide as a garden hose.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "From your phone to a landing station, into a fibre pair, light pulses along MAREA's 6,605 km of Atlantic floor, boosted by repeaters, out at Bilbao. Light moves at the speed of light in glass, not in a vacuum (viewers correct this). Any travel time is computed from the length and a sourced speed.",
+      "why_now": "First topics for the channel, from the setup research (advice.md: internet long, a gap). Viewers asked how light carries data in sea cables and how they're laid (comment notes #13).",
+      "facts": [
+        {
+          "label": "Kilometres of submarine cable in service worldwide, over",
+          "value": 1.5,
+          "unit": "count_million",
+          "as_of": "2026-01-01",
+          "source": "TeleGeography Submarine Cable FAQs",
+          "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
+        },
+        {
+          "label": "Active and planned submarine cables TeleGeography tracks, more than",
+          "value": 600,
+          "unit": "count",
+          "as_of": "2026-01-01",
+          "source": "TeleGeography Submarine Cable FAQs",
+          "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
+        },
+        {
+          "label": "Length of the MAREA cable, Virginia Beach to Bilbao",
+          "value": 6605,
+          "unit": "km",
+          "as_of": "2018-02-01",
+          "source": "Wikipedia (MAREA)",
+          "url": "https://en.wikipedia.org/wiki/MAREA",
+          "fixed": true
+        },
+        {
+          "label": "MAREA's fibre pairs",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2018-02-01",
+          "source": "Wikipedia (MAREA)",
+          "url": "https://en.wikipedia.org/wiki/MAREA",
+          "fixed": true
+        },
+        {
+          "label": "MAREA's capacity at completion, in terabits per second, up to",
+          "value": 160,
+          "unit": "count",
+          "as_of": "2017-09-23",
+          "source": "Microsoft News",
+          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+          "fixed": true
+        },
+        {
+          "label": "How many times faster than the average home connection MAREA is, more than",
+          "value": 16,
+          "unit": "count_million",
+          "as_of": "2017-09-23",
+          "source": "Microsoft News",
+          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+          "fixed": true
+        }
+      ],
+      "search": "how does the internet cross the ocean",
+      "outline": [
+        "hook: your message to London went along the bottom of the Atlantic, not to space",
+        "route map: phone -> tower -> landing station -> cable -> Bilbao -> screen",
+        "ch1 the landing station on the beach",
+        "ch2 slice the cable: the fibre pairs inside (MAREA has 8)",
+        "ch3 light along 6,605 km of sea floor, at the speed of light in glass",
+        "ch4 repeaters boosting it on the way",
+        "recap and tease: one cable, how much can it carry?",
+        "ch5 160 Tbps: 16 million home connections (computed check)",
+        "ch6 1.5 million km of cable worldwide, 600+ systems",
+        "climb back out: the message lands"
+      ],
+      "maths": "travel time from MAREA's length and the speed of light in glass (sourced); capacity comparison",
+      "verify": [
+        "TeleGeography totals",
+        "MAREA length, pairs and capacity",
+        "speed of light in fibre, not in vacuum"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new",
+      "sources": [
+        "https://en.wikipedia.org/wiki/MAREA",
+        "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+        "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
+      ],
+      "note": "Moved from the Shorts feed (research/topics.json), where Studio never reads it; outline, search and maths added by Scout 2026-11-19."
+    },
+    {
+      "id": "2026-11-18-starlink-flat-dish",
+      "format": "long",
+      "title": "How Starlink's Flat Dish Aims at Satellites Without Moving",
+      "category": "internet",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_network_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Starlink Actually Works",
+        "views": 4632145,
+        "url": "https://youtube.com/watch?v=DW-aL_MiUz4",
+        "channel": "The Space Race",
+        "channelSubs": 944000,
+        "outlier": 4.9
+      },
+      "hook": "This dish follows satellites racing across the sky, and it never moves. Here's how.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "A phased array: many tiny antennas fire a fraction of a second apart so the beam bends where it's needed, handing off between satellites about 550 km up instead of one 35,786 km up. Draw the cables right (viewers caught a power cable drawn as data).",
+      "why_now": "First topics for the channel, from the setup research (advice.md: internet long, example title 2). Viewers asked about LEO vs GEO and the phased-array dish (comment notes #14).",
+      "facts": [
+        {
+          "label": "Altitude of the Starlink constellation, about",
+          "value": 550,
+          "unit": "km",
+          "as_of": "2026-11-18",
+          "source": "Starlink (Technology)",
+          "url": "https://www.starlink.com/technology",
+          "fixed": true
+        },
+        {
+          "label": "Altitude of a geostationary satellite above the equator",
+          "value": 35786,
+          "unit": "km",
+          "as_of": "2026-11-18",
+          "source": "Wikipedia (Geostationary orbit)",
+          "url": "https://en.wikipedia.org/wiki/Geostationary_orbit",
+          "fixed": true
+        },
+        {
+          "label": "Ku-band phased-array antennas on each Starlink satellite",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2026-11-18",
+          "source": "Starlink (Technology)",
+          "url": "https://www.starlink.com/technology"
+        },
+        {
+          "label": "Operational satellites in the first Starlink launch",
+          "value": 60,
+          "unit": "count",
+          "as_of": "2019-05-24",
+          "source": "Wikipedia (Starlink)",
+          "url": "https://en.wikipedia.org/wiki/Starlink",
+          "fixed": true
+        },
+        {
+          "label": "Year of that first operational launch",
+          "value": 2019,
+          "unit": "year",
+          "as_of": "2019-05-24",
+          "source": "Wikipedia (Starlink)",
+          "url": "https://en.wikipedia.org/wiki/Starlink"
+        }
+      ],
+      "search": "how does starlink work",
+      "outline": [
+        "hook: the dish follows satellites racing across the sky and never moves",
+        "route map: dish -> beam -> satellite at 550 km -> ground station -> internet",
+        "ch1 the old way: a dish aimed at one satellite 35,786 km up",
+        "ch2 why low is faster (computed round-trip comparison)",
+        "ch3 inside the flat dish: many tiny antennas",
+        "ch4 firing a fraction apart bends the beam (phased array, drawn wave by wave)",
+        "recap and tease: but the satellite is gone in minutes",
+        "ch5 the handoff to the next satellite",
+        "ch6 from 60 satellites in 2019 to the network now",
+        "climb back out: the video loads; cables drawn right"
+      ],
+      "maths": "signal round trip at 550 km vs 35,786 km at light speed",
+      "verify": [
+        "Starlink altitude and antennas",
+        "geostationary altitude",
+        "power cable vs data cable drawn right"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Geostationary_orbit",
+        "https://en.wikipedia.org/wiki/Starlink",
+        "https://www.starlink.com/technology"
+      ],
+      "note": "Moved from the Shorts feed (research/topics.json), where Studio never reads it; outline, search and maths added by Scout 2026-11-19."
+    },
+    {
+      "id": "2026-11-19-rocket-33-engines",
+      "format": "long",
+      "title": "Why Does SpaceX's Biggest Rocket Need 33 Engines?",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The Real Reason Starship Has 33 Engines",
+        "views": 2085725,
+        "url": "https://youtube.com/watch?v=FX6GYpj-PnA",
+        "channel": "The Space Race",
+        "channelSubs": 944000,
+        "outlier": 2.4
+      },
+      "category": "machines",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "search": "why does starship have 33 engines",
+      "hook": "Thirty-three engines light at once under one booster. Here is what happens inside each one, and why one big engine wouldn't do.",
+      "angle": "Inside one Raptor in the first second: methane and oxygen pumped in, burned in a full-flow staged cycle, thrust out; then why 33 of them, with 13 in the middle steering, beat one giant engine.",
+      "why_now": "Traction: 'The Real Reason Starship Has 33 Engines' is at 2.09M in 32 days (66K a day) and 'How Starlink Actually Works' 4.6M; rockets are a core machine family in our profile, and the owner asked for topics gaining traction (note 2026-11-19).",
+      "outline": [
+        "hook: 33 engines light under one booster; why not one big one?",
+        "route map: tanks -> pumps -> chamber -> nozzle -> the ring of 33",
+        "ch1 the booster on the pad: 71 m tall, 9 m wide, 3,650 t of propellant",
+        "ch2 the two tanks: 2,860 t of liquid oxygen, 790 t of methane (3.6 to 1 by mass)",
+        "ch3 inside one Raptor: both propellants partly burned to drive the pumps (full-flow staged combustion)",
+        "ch4 the chamber and nozzle: 230 tf from one Raptor 2",
+        "recap and tease: one engine is strong; why 33?",
+        "ch5 the rings: 13 in the middle steer, the outer 20 shut down early in the burn",
+        "ch6 adding it up: 33 times one engine vs the booster's 73.5 MN (computed)",
+        "ch7 coming home: the catch in 2024, 18 months after the first flight in 2023",
+        "climb back out: liftoff again; loop"
+      ],
+      "maths": "33 engines times one engine's thrust (tf to kN) against the booster total; oxygen-to-methane ratio from the two tank masses",
+      "verify": [
+        "33 Raptor engines, 13 inner steering engines",
+        "booster total 73.5 MN (Block 1) and 80.8 MN expected (Block 3)",
+        "tank masses 2,860 t LOX and 790 t methane",
+        "Raptor 2 230 tf sea level",
+        "first flight 20 Apr 2023; B12 catch 13 Oct 2024"
+      ],
+      "facts": [
+        {
+          "label": "Raptor engines under one Super Heavy booster",
+          "value": 33,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia (SpaceX Super Heavy)",
+          "url": "https://en.wikipedia.org/wiki/SpaceX_Super_Heavy",
+          "fixed": true
+        },
+        {
+          "label": "Engines in the middle and centre rings that steer (electric actuators)",
+          "value": 13,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia (SpaceX Super Heavy)",
+          "url": "https://en.wikipedia.org/wiki/SpaceX_Super_Heavy",
+          "fixed": true
+        },
+        {
+          "label": "Booster's total thrust with Raptor 2 (Block 1), in meganewtons",
+          "value": 73.5,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia (SpaceX Super Heavy)",
+          "url": "https://en.wikipedia.org/wiki/SpaceX_Super_Heavy",
+          "fixed": true
+        },
+        {
+          "label": "Liquid oxygen in the booster's tanks, in tonnes",
+          "value": 2860,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia (SpaceX Super Heavy)",
+          "url": "https://en.wikipedia.org/wiki/SpaceX_Super_Heavy",
+          "fixed": true
+        },
+        {
+          "label": "Liquid methane in the booster's tanks, in tonnes",
+          "value": 790,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia (SpaceX Super Heavy)",
+          "url": "https://en.wikipedia.org/wiki/SpaceX_Super_Heavy",
+          "fixed": true
+        },
+        {
+          "label": "Raptor 2 sea-level thrust, in tonnes-force",
+          "value": 230,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "Wikipedia (SpaceX Raptor)",
+          "url": "https://en.wikipedia.org/wiki/SpaceX_Raptor",
+          "fixed": true
+        },
+        {
+          "label": "Year of Super Heavy's first flight",
+          "value": 2023,
+          "unit": "year",
+          "as_of": "2023-04-20",
+          "source": "Wikipedia (SpaceX Super Heavy)",
+          "url": "https://en.wikipedia.org/wiki/SpaceX_Super_Heavy"
+        },
+        {
+          "label": "Year a booster (B12) was first caught at the launch site",
+          "value": 2024,
+          "unit": "year",
+          "as_of": "2024-10-13",
+          "source": "Wikipedia (SpaceX Super Heavy)",
+          "url": "https://en.wikipedia.org/wiki/SpaceX_Super_Heavy"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/SpaceX_Super_Heavy",
+        "https://en.wikipedia.org/wiki/SpaceX_Raptor"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-19-inside-nvidia-ai-chip",
+      "format": "long",
+      "title": "What's Actually Inside NVIDIA's AI Chip?",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What Happens Inside an AI Chip When You Ask a Question",
+        "views": 1024094,
+        "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
+        "channel": "Silicon Up Close",
+        "channelSubs": 12700,
+        "outlier": 42.8
+      },
+      "category": "chips",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "search": "what is inside an nvidia ai chip",
+      "hook": "208 billion switches, two chips pretending to be one. Here is what's inside the chip running the AI boom.",
+      "angle": "Zoom into an NVIDIA Blackwell GPU: two reticle-sized dies, the 10 TB/s link that makes them act as one, 208 billion transistors on TSMC's 4NP process, then out to 72 GPUs wired as one machine. NVIDIA's figures only; no stock or politics.",
+      "why_now": "Traction: Silicon Up Close (12.7K subs) got 1.02M on its AI-chip video (42.8x its median) and its new 'Why Is Nvidia's AI Chip So Hard to Copy?' took 24K views in its first day; the owner asked for topics gaining traction (note 2026-11-19).",
+      "outline": [
+        "hook: 208 billion switches, two chips acting as one",
+        "route map: the server rack -> one board -> the package -> two dies -> one switch",
+        "ch1 why one die can't get bigger: the reticle limit, drawn as the printing window",
+        "ch2 two dies side by side on one package",
+        "ch3 the 10 TB/s link between them (computed: a film's worth of data in a blink)",
+        "ch4 208 billion transistors on TSMC 4NP, at the switch scale",
+        "recap and tease: one chip is huge; the AI runs on 72 of them",
+        "ch5 NVLink: 1.8 TB/s per GPU, 130 TB/s across 72 (computed check: 72 x 1.8)",
+        "ch6 up to 576 GPUs in one NVLink domain",
+        "climb back out: your question answered by the rack; loop to the switch"
+      ],
+      "maths": "72 times 1.8 TB/s against the 130 TB/s total; data moved by the 10 TB/s link in a fraction of a second",
+      "verify": [
+        "208 billion transistors, TSMC 4NP, two reticle-limited dies, 10 TB/s link",
+        "NVLink 1.8 TB/s, 130 TB/s in NVL72, up to 576 GPUs",
+        "no claims on why rivals can't copy it beyond sourced facts"
+      ],
+      "facts": [
+        {
+          "label": "Transistors in an NVIDIA Blackwell GPU, in billions",
+          "value": 208,
+          "unit": "count_billion",
+          "as_of": "2026-11-19",
+          "source": "NVIDIA (Blackwell architecture)",
+          "url": "https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/",
+          "fixed": true
+        },
+        {
+          "label": "Dies in every Blackwell product (reticle-limited)",
+          "value": 2,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "NVIDIA (Blackwell architecture)",
+          "url": "https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/",
+          "fixed": true
+        },
+        {
+          "label": "Chip-to-chip link between the two dies, in terabytes per second",
+          "value": 10,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "NVIDIA (Blackwell architecture)",
+          "url": "https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/",
+          "fixed": true
+        },
+        {
+          "label": "NVLink bandwidth per GPU, in terabytes per second",
+          "value": 1.8,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "NVIDIA (Blackwell architecture)",
+          "url": "https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/",
+          "fixed": true
+        },
+        {
+          "label": "GPU bandwidth across one 72-GPU NVLink domain (NVL72), in terabytes per second",
+          "value": 130,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "NVIDIA (Blackwell architecture)",
+          "url": "https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/",
+          "fixed": true
+        },
+        {
+          "label": "GPUs fifth-generation NVLink can connect, up to",
+          "value": 576,
+          "unit": "count",
+          "as_of": "2026-11-19",
+          "source": "NVIDIA (Blackwell architecture)",
+          "url": "https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/",
+          "fixed": true
+        }
+      ],
+      "sources": [
+        "https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-11-19",
+      "status": "new"
+    }
+  ]
+}
