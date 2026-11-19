@@ -1,1 +1,2 @@
 2026-11-18 waited: no first weekly-loop challenger started because the channel has 1 Short rendered, not shipped yet; at about one Short a day a cycle cannot reach 8 a side within 14 days (owner info raised). Re-check 2026-11-19.
+2026-11-19 acted: cycle 1 started: faster-voice (voice 0.92 -> 1.0 on half the Shorts, renderer/timeline/build.py), because the owner asked for a little more pace; owner info: at 1 Short a day it may hit the 14-day limit, or set voiceSpeed 1.0 directly. Topic-traction note handed to research. Re-check 2026-11-27.

@@ -3,9 +3,9 @@
     {
       "key": "loop-needs-volume",
       "severity": "info",
-      "title": "The weekly loop can't judge this channel at one Short a day",
-      "detail": "This channel has 1 Short rendered, not shipped yet. The weekly loop needs 8 Shorts a side (16 in all) within 7 days, extended once to 14, so at about one Short a day no test can ever reach a verdict. The improver has not started this channel's first challenger yet so its first Shorts all follow the champion recipe.",
-      "fix": "1. Either raise this channel's Shorts a day to 2-3 on the Channels page, or 2. accept that its first challenger will end 'abandon' at 14 days, or 3. tell the improver (a dashboard note) to start the first challenger anyway. Nothing breaks if you do nothing: the channel keeps making champion Shorts."
+      "title": "Pace test started, but one Short a day is slow to judge",
+      "detail": "Your 19 Nov note ('increase the pace a little bit') started this channel's weekly cycle 1 (faster-voice): half the Shorts speak about 9% faster (~164 words a minute instead of ~151). The loop needs 8 Shorts a side; at 1 Short a day that is about 16 days, past the 14-day limit, so the test may end without a verdict.",
+      "fix": "1. To make every Short faster now, set voiceSpeed.short to 1.0 in channels/how-tech-and-ai-actually-work-chips-ai-p/channel.json (owner-only file), and tell the improver in a note to close the test; or 2. raise this channel to 2 Shorts a day on the Channels page so the test can finish; or 3. do nothing and the test runs to its limit."
     }
   ]
 }

@@ -1,11 +1,62 @@
 {
   "note": "The weekly loop's first challengers, from the research (17 Nov 2026): what the research was unsure of, ranked, alternating first-second and look tests.",
   "candidates": [
-    {"id": "geo-length-45", "kind": "first-second", "test": "45-55 s Shorts against the 60-80 s champion", "why": "the niche's median is 65 s, but channel #1 learned shorter Shorts hold better; untested here", "from": "research 2026-11-17"},
-    {"id": "geo-satellite-look", "kind": "look", "test": "satellite terrain maps (Natural Earth relief) instead of flat political maps", "why": "the biggest small-channel hit (Chile, 10.6M) and Map & Myth use it; the owner chose flat maps first", "from": "research 2026-11-17"},
-    {"id": "geo-claim-hook", "kind": "first-second", "test": "a claim whose answer waits for the end, instead of the question as the first line", "why": "'Only one country here rolls like a real wheel' (2.7M) opened on a claim", "from": "research 2026-11-17"},
-    {"id": "geo-moving-first-frame", "kind": "first-second", "area": "hook", "metric": "stayed", "from": "research 2026-11-19", "test": "the camera moves from frame 0: the first beat opens on a push-in (globe or region down to the named place, the place's name writing on large) that starts on the first frame, instead of opening on a held medium shot with the first push-in on the line's last words", "why": "All 5 reference Shorts we have shot sheets for (Chile 10.6M, Roll Down a Hill 2.8M, One Country 2.95M, Louisiana, Caspian 2.1M) open with motion 2 and a push-in or tipping move in the first 3-5 s with no text on screen; our Suez Short (18 Nov) holds a medium shot of Egypt with a small 'SUEZ CANAL' label until the word 'closed' (~4 s). No stayed-to-watch data of ours yet (first Short published 18 Nov), so it waits behind the higher-ranked first-second tests."},
-    {"id": "geo-countdown", "kind": "look", "test": "a DAY 1...7 counter on screen for what-if stories", "why": "WorldShift's 2.95M hit is built on it", "from": "research 2026-11-17"},
-    {"id": "geo-resources", "kind": "first-second", "test": "a place-and-resources story ('why is a desert country rich?')", "why": "part of the owner's concept; families.json ranks it 0.33x on 43 Shorts, so it is tested before it is relied on", "from": "research 2026-11-17"}
-  ]
+    {
+      "id": "geo-length-45",
+      "kind": "first-second",
+      "test": "45-55 s Shorts against the 60-80 s champion",
+      "why": "the niche's median is 65 s, but channel #1 learned shorter Shorts hold better; untested here",
+      "from": "research 2026-11-17"
+    },
+    {
+      "id": "geo-satellite-look",
+      "kind": "look",
+      "test": "satellite terrain maps (Natural Earth relief) instead of flat political maps",
+      "why": "the biggest small-channel hit (Chile, 10.6M) and Map & Myth use it; the owner chose flat maps first",
+      "from": "research 2026-11-17"
+    },
+    {
+      "id": "geo-claim-hook",
+      "kind": "first-second",
+      "test": "a claim whose answer waits for the end, instead of the question as the first line",
+      "why": "'Only one country here rolls like a real wheel' (2.7M) opened on a claim",
+      "from": "research 2026-11-17"
+    },
+    {
+      "id": "geo-moving-first-frame",
+      "kind": "first-second",
+      "area": "hook",
+      "metric": "stayed",
+      "from": "research 2026-11-19",
+      "test": "the camera moves from frame 0: the first beat opens on a push-in (globe or region down to the named place, the place's name writing on large) that starts on the first frame, instead of opening on a held medium shot with the first push-in on the line's last words",
+      "why": "All 5 reference Shorts we have shot sheets for (Chile 10.6M, Roll Down a Hill 2.8M, One Country 2.95M, Louisiana, Caspian 2.1M) open with motion 2 and a push-in or tipping move in the first 3-5 s with no text on screen; our Suez Short (18 Nov) holds a medium shot of Egypt with a small 'SUEZ CANAL' label until the word 'closed' (~4 s). No stayed-to-watch data of ours yet (first Short published 18 Nov), so it waits behind the higher-ranked first-second tests."
+    },
+    {
+      "id": "geo-countdown",
+      "kind": "look",
+      "test": "a DAY 1...7 counter on screen for what-if stories",
+      "why": "WorldShift's 2.95M hit is built on it",
+      "from": "research 2026-11-17"
+    },
+    {
+      "id": "geo-resources",
+      "kind": "first-second",
+      "test": "a place-and-resources story ('why is a desert country rich?')",
+      "why": "part of the owner's concept; families.json ranks it 0.33x on 43 Shorts, so it is tested before it is relied on",
+      "from": "research 2026-11-17"
+    }
+  ],
+  "running": "geo-flag-fill",
+  "cycle": 1,
+  "history": [
+    {
+      "cycle": 1,
+      "id": "geo-flag-fill",
+      "kind": "look",
+      "started": "2026-11-19",
+      "verdict": null,
+      "from": "owner note 19 Nov on v-20261119-02: 'test both' (flag vs colour)"
+    }
+  ],
+  "stayedByCycle": []
 }

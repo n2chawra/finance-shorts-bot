@@ -1,0 +1,16 @@
+{
+  "acks": [
+    {
+      "id": "cmwn0p9tz0001jv09zeeqqwpd",
+      "action": "fixed",
+      "note": "The map kit can now trace a country: a bright line with a glowing head runs round its border and closes on the word that names it, then stays lit (flat/map.tsx `trace`); the director now does this for every country a line is about.",
+      "commit": "907610b"
+    },
+    {
+      "id": "cmwn0jklx0001ib092if21wgj",
+      "action": "testing",
+      "note": "Flags: the kit draws about 60 national flags as a country's fill; from tonight half the Shorts cover the country with its flag and half keep the colour (geo-flag-fill, this channel's weekly cycle 1, judged on viewers held after the hook); the winner stays. Famous people: the director now stands every named person (Napoleon) on the map as their photo head when a freely licensed photo exists.",
+      "commit": "907610b"
+    }
+  ]
+}
