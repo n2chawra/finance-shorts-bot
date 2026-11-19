@@ -10,6 +10,7 @@ import { Dialog, DropdownMenu, ToggleGroup } from "radix-ui";
 import { useEffect, useState } from "react";
 
 import { useChannels, useNotifications, useOverview, useSwitchChannel } from "@/lib/queries";
+import { isPublicPage } from "@/lib/public-pages";
 import { signOut as endSession } from "@/lib/sign-out";
 
 import { LogoMark, Wordmark } from "./brand";
@@ -236,6 +237,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const openPalette = useCommandMenu();
   const [drawer, setDrawer] = useState(false);
   if (path === "/login") return <main>{children}</main>;
+  if (isPublicPage(path)) return <>{children}</>;
 
   const signOut = () => endSession(() => fetch("/api/login", { method: "DELETE" }), () => { router.replace("/login"); router.refresh(); });
   const { section, title } = pageTitle(path);

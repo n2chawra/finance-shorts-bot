@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { COOKIE, authConfigured, authDisabled, verifySession } from "@/lib/auth";
+import { isPublicPage } from "@/lib/public-pages";
 
-/** Every page and API route needs a valid session, except the sign-in page and its endpoint. */
+/** Every page and API route needs a valid session, except the sign-in page, its endpoint and the public pages (/about, /privacy, /terms). */
 export async function middleware(req: NextRequest) {
   if (authDisabled()) return NextResponse.next();
   const { pathname } = req.nextUrl;
-  if (pathname === "/login" || pathname === "/api/login" || pathname === "/api/health") return NextResponse.next();
+  if (pathname === "/login" || pathname === "/api/login" || pathname === "/api/health" || isPublicPage(pathname)) return NextResponse.next();
 
   if (await verifySession(req.cookies.get(COOKIE)?.value)) return NextResponse.next();
 
