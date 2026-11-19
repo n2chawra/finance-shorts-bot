@@ -13,9 +13,10 @@
  *
  * A country a line is about is highlighted with `colors[name].trace` (owner, 2026-11-19: "the borders
  * should be highlighted in an animated way, like lines rounding and completing over the corners"): a
- * bright line with a glowing head runs round its border and closes. `colors[name].flag` covers it with its
- * flag instead of its colour (owner, same day: "cover the map of country with flag rather than color"; made
- * the default at once, no test).
+ * bright line with a glowing head runs round its border and closes. `colors[name].flag` sets the whole flag,
+ * true to its 3:2 shape, inside the country as big as fits, over its colour (owner, same day: first "cover
+ * the map of country with flag", then, on the stills: "better to color and fit the flag inside so that the
+ * flag appears correct").
  *
  * Everything is a pure function of its props: pass times from `motion(p)` (the kit), never Date or random.
  */
@@ -28,7 +29,7 @@ import world110 from "world-atlas/countries-110m.json";
 import world50 from "world-atlas/countries-50m.json";
 
 import { INK, STROKE, shade } from "./kit";
-import { FlagArt, hasFlag } from "./flags";
+import { FlagArt, RATIO, hasFlag } from "./flags";
 
 
 type Country = Feature<Geometry, { name: string }>;
@@ -77,8 +78,9 @@ export type Fill = {
   /** a bright line runs round the border and closes as `trace` goes 0 -> 1, a glowing head on
    * its tip; at 1 the border stays lit. `traceColor` (default warm yellow) sets its colour */
   trace?: number; traceColor?: string;
-  /** the country's flag (a name the flag table has, usually its own) instead of `fill`, at its own 3:2
-   * shape covering the country; a flag the table lacks falls back to `fill` */
+  /** the country's flag (a name the flag table has, usually its own): the whole flag at 3:2, fitted inside the
+   * country as big as it goes (at least 90 px wide), over `fill`; grows in with the country. A flag the table
+   * lacks: just `fill` */
   flag?: string;
 };
 
@@ -199,8 +201,6 @@ export const WorldMap: React.FC<{
         const fillK = f.draw === undefined ? 1 : Math.max(0, (draw - 0.55) / 0.45);
         const [[x0, y0], [x1, y1]] = path.bounds(c);
         const from = f.from ? proj(f.from) : null;
-        // a flag covers the country's main land (the USA's lower 48, not a box that takes in Alaska and Hawaii)
-        const [[mx0, my0], [mx1, my1]] = path.bounds(mainland(c));
         const [px, py] = from ?? [(x0 + x1) / 2, (y0 + y1) / 2];
         const R = Math.max(Math.hypot(px - x0, py - y0), Math.hypot(px - x1, py - y1), Math.hypot(px - x0, py - y1), Math.hypot(px - x1, py - y0));
         const cid = `p${uid}${String(c.id ?? name).replace(/[^a-zA-Z0-9]/g, "")}`;
@@ -212,14 +212,9 @@ export const WorldMap: React.FC<{
         return (
           <g key={`f${c.id ?? name}`}>
             {paint < 1 ? <defs><clipPath id={cid}><circle cx={px} cy={py} r={R * paint} /></clipPath></defs> : null}
-            {flagName ? <defs><clipPath id={`${cid}f`}><path d={d(c)} /></clipPath></defs> : null}
             {lift > 0 ? <path d={d(c)} fill="#1d1a2b" opacity={0.3 * lift} transform={`translate(${8 * lift} ${10 + up * 0.4})`} /> : null}
             <g transform={`translate(0 ${-up})`}>
-              {unseen ? null : flagName ? (
-                <g opacity={fillK * Math.max(0, Math.min(1, f.k ?? 1))} clipPath={paint < 1 ? `url(#${cid})` : undefined}>
-                  <g clipPath={`url(#${cid}f)`}><FlagArt name={flagName} x={mx0} y={my0} w={mx1 - mx0} h={my1 - my0} cover /></g>
-                </g>
-              ) : <path d={d(c)} fill={fillOf(f)} opacity={fillK} clipPath={paint < 1 ? `url(#${cid})` : undefined} />}
+              {unseen ? null : <path d={d(c)} fill={fillOf(f)} opacity={fillK} clipPath={paint < 1 ? `url(#${cid})` : undefined} />}
               {unseen ? null : <path d={d(c)} fill="none" stroke={outline} strokeWidth={STROKE * 0.8} strokeLinejoin="round"
                 pathLength={1} strokeDasharray={draw < 1 ? `${draw} 1` : undefined} />}
               {trace > 0 ? (
@@ -252,6 +247,31 @@ export const WorldMap: React.FC<{
           <rect x={local.x} y={local.y} width={local.w} height={local.h} filter={`url(#grain${uid})`} />
         </g>
       ) : null}
+      {/* flags: the whole flag, true to its shape, as big as fits inside the country, over the colour and the map's
+          texture so it stays crisp (owner, 2026-11-19: "color and fit the flag inside so that flag appears correct") */}
+      {special.map((c) => {
+        const f = fxOf(c)!;
+        if (!f.flag || !hasFlag(f.flag)) return null;
+        const draw = f.draw === undefined ? 1 : Math.max(0, Math.min(1, f.draw));
+        const paint = f.paint === undefined ? 1 : Math.max(0, Math.min(1, f.paint));
+        const k = Math.min(Math.max(0, Math.min(1, f.k ?? 1)), f.draw === undefined ? 1 : Math.max(0, (draw - 0.55) / 0.45), f.paint === undefined ? 1 : paint);
+        if (k <= 0) return null;
+        const box = flagBox(c, proj);
+        if (!box) return null;
+        const s = 0.6 + 0.4 * Math.min(1, k * 1.4);   // grows in as the country is made
+        const fw = box.w * s, fh = fw / RATIO, up = Math.max(0, Math.min(1, f.lift ?? 0)) * 18;
+        // kept whole inside the frame when the camera is close in on a big country (Greenland at a push-in)
+        const clampX = (v: number) => Math.min(Math.max(v, 24), w - fw - 24), clampY = (v: number) => Math.min(Math.max(v, 24), h - fh - 24);
+        const onScreen = box.x >= 0 && box.x <= w && box.y >= 0 && box.y <= h;   // a country off the frame keeps its flag off it too
+        const x = onScreen && fw < w - 48 ? clampX(box.x - fw / 2) : box.x - fw / 2, y = onScreen && fh < h - 48 ? clampY(box.y - fh / 2 - up) : box.y - fh / 2 - up;
+        return (
+          <g key={`flag${c.id ?? c.properties.name}`} opacity={Math.min(1, k * 1.6)}>
+            <rect x={x + fw * 0.04} y={y + fh * 0.06} width={fw} height={fh} fill="#1d1a2b" opacity={0.3} />
+            <FlagArt name={f.flag} x={x} y={y} w={fw} h={fh} />
+            <rect x={x} y={y} width={fw} height={fh} fill="none" stroke={INK} strokeWidth={Math.max(3, Math.min(STROKE * 0.7, fw * 0.025))} />
+          </g>
+        );
+      })}
       {names ? shown.filter((c) => !fxOf(c) && (names === true || names.includes(c.properties.name))).map((c) => {
         const [x, y] = path.centroid(c);
         const [[x0, y0], [x1, y1]] = path.bounds(c);
@@ -344,6 +364,71 @@ export const Lift: React.FC<{ name: string; to: [number, number]; k?: number; fi
     </g>
   );
 };
+
+/**
+ * Where a flag sits inside a country: the biggest 3:2 rectangle found inside its main land, in degrees (found once
+ * per country, then projected each frame). A grid of candidate centres inside the outline, each grown by halving
+ * until the rectangle's edges leave the land or a coastline vertex falls inside it.
+ */
+type GeoRect = { lon: number; lat: number; hw: number; hh: number };
+const fitCache = new Map<string, GeoRect | null>();
+function fitFlag(c: Country): GeoRect | null {
+  const key = `${c.properties.name}|${c.geometry.type}|${JSON.stringify(c.geometry).length}`;
+  if (fitCache.has(key)) return fitCache.get(key)!;
+  const g = mainland(c).geometry;
+  if (g.type !== "Polygon") { fitCache.set(key, null); return null; }
+  const ring = g.coordinates[0]! as [number, number][];
+  const lat0 = ring.reduce((a, p) => a + p[1], 0) / ring.length;
+  const kx = Math.cos((lat0 * Math.PI) / 180);
+  const pts = ring.map(([lo, la]) => [lo * kx, la] as [number, number]);   // roughly equal-area flat coordinates
+  const step = Math.max(1, Math.floor(pts.length / 500));
+  const verts = pts.filter((_, i) => i % step === 0);
+  const inside = (x: number, y: number) => {
+    let hit = false;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+      const [xi, yi] = pts[i]!, [xj, yj] = pts[j]!;
+      if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) hit = !hit;
+    }
+    return hit;
+  };
+  let [x0, y0, x1, y1] = [Infinity, Infinity, -Infinity, -Infinity];
+  for (const [x, y] of pts) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); }
+  const fits = (cx: number, cy: number, s: number) => {
+    const hw = 1.5 * s, hh = s;
+    for (let t = 0; t <= 4; t++) {
+      const u = -1 + t / 2;
+      if (!inside(cx + u * hw, cy - hh) || !inside(cx + u * hw, cy + hh) || !inside(cx - hw, cy + u * hh) || !inside(cx + hw, cy + u * hh)) return false;
+    }
+    for (const [vx, vy] of verts) if (Math.abs(vx - cx) < hw && Math.abs(vy - cy) < hh) return false;
+    return true;
+  };
+  let best: { x: number; y: number; s: number } | null = null;
+  const N = 14, maxS = Math.min((x1 - x0) / 3, (y1 - y0) / 2);
+  for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) {
+    const cx = x0 + ((i + 0.5) / N) * (x1 - x0), cy = y0 + ((j + 0.5) / N) * (y1 - y0);
+    if (!inside(cx, cy)) continue;
+    let lo = 0, hi = maxS;
+    if (best && !fits(cx, cy, best.s)) continue;   // can't beat the best so far
+    for (let it = 0; it < 10; it++) { const mid = (lo + hi) / 2; if (fits(cx, cy, mid)) lo = mid; else hi = mid; }
+    if (!best || lo > best.s) best = { x: cx, y: cy, s: lo };
+  }
+  const out = best && best.s > 0 ? { lon: best.x / kx, lat: best.y, hw: (1.5 * best.s) / kx, hh: best.s } : null;
+  fitCache.set(key, out);
+  return out;
+}
+
+/** The flag's centre and width on screen: its fitted rectangle projected, kept 3:2, never under a readable size. */
+function flagBox(c: Country, proj: GeoProjection): { x: number; y: number; w: number } | null {
+  const r = fitFlag(c);
+  const at = r ? proj([r.lon, r.lat]) : proj(geoCentroid(mainland(c)));
+  if (!at) return null;
+  let w = 90;
+  if (r) {
+    const L = proj([r.lon - r.hw, r.lat]), R = proj([r.lon + r.hw, r.lat]), T = proj([r.lon, r.lat + r.hh]), B = proj([r.lon, r.lat - r.hh]);
+    if (L && R && T && B) w = Math.min(Math.abs(R[0] - L[0]), Math.abs(B[1] - T[1]) * RATIO) * 0.92;
+  }
+  return { x: at[0], y: at[1], w: Math.min(Math.max(w, 90), 640) };   // a thin country still gets a flag you can read
+}
 
 /** A country's largest piece of land (by area on the globe): the USA's lower 48, mainland France, Chile without its islands. */
 function mainland(c: Country): Country {

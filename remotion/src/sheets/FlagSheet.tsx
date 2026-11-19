@@ -1,6 +1,6 @@
 /**
  * A test sheet for the flag table (src/flat/flags.tsx), 1080×1920: frame 0 shows every flag in a grid with its
- * name; frame 30 shows countries covered by their flags on the map (Chile, India; the UK, Denmark, France and
+ * name; frame 30 shows countries in a colour with their whole flag fitted inside (Chile, India; the UK, Denmark, France and
  * Germany; the USA, Canada and Mexico). For checking the flags in stills; not part of any video.
  */
 import React from "react";
@@ -14,7 +14,9 @@ const COLS = 6, CW = 160, CH = 107;
 
 export const FlagSheet: React.FC = () => {
   const f = useCurrentFrame();
-  const fill = (n: string) => ({ fill: "#cccccc", flag: n });
+  const TONES: Record<string, string> = { Chile: "#e8a44a", India: "#f2c14e", "United Kingdom": "#7aa6d8", Denmark: "#e8857a", France: "#9fb7e0",
+    Germany: "#f2c14e", "United States of America": "#8fb3e0", Canada: "#e8857a", Mexico: "#8cc7a1" };
+  const fill = (n: string) => ({ fill: TONES[n] ?? "#e8a44a", flag: n });
   return (
     <AbsoluteFill style={{ background: "#2b2b3a" }}>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
