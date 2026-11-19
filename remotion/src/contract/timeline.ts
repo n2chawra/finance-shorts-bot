@@ -104,6 +104,9 @@ export const Timeline = z.object({
   // the channel's corner logo (generator/pack.py logo): "sikka" (channel #1's mascot; also when absent, for
   // timelines built before 2026-11-18), a path under remotion/public (the channel's own avatar), or null (none)
   logo: z.string().nullable().default("sikka"),
+  // the channel's cast (channel.json look.cast): "none" for a channel told without characters (the business
+  // documentaries, 2026-11-19): its end card has no cast; absent for channel #1 and the others
+  cast: z.literal("none").optional(),
   captions: z.boolean().default(false),   // big word-by-word captions over the picture
   voiceMode: z.enum(["kokoro", "estimate"]),
   // news: "Data: AMFI · Jun 2026", shown by every headline scene (sourced facts, hard rule)

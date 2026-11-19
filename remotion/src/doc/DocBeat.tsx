@@ -94,7 +94,7 @@ const Layer: React.FC<{ c: Ctx; l: Any }> = ({ c, l }) => {
         tone={l.tone === "fall" ? "fall" : l.tone === "neutral" ? "neutral" : "rise"} zero={l.zero === true}
         marks={list(l.marks).map((mk) => ({ i: n(mk.i, 0), label: s(mk.label), at: mk.at !== undefined ? ev(mk.at, 0) : undefined } as ChartMark))}
         barFigs={Array.isArray(l.figs) ? l.figs.map((x) => figOf(fig, x)) : []} icons={Array.isArray(l.icons) ? l.icons.map((x) => (typeof x === "string" && x ? x : undefined)) : []}
-        drawAt={ev(l.drawAt, 6)} drawLen={n(l.drawLen, 40)} figAt={l.figure ? ev(l.countAt, 46) : undefined} t={t} end={end} w={w} h={h} />;
+        drawAt={ev(l.drawAt, 6)} drawLen={n(l.drawLen, 40)} figAt={l.figure ? ev(l.countAt, 46) : undefined} plate={l.plate !== false} t={t} end={end} w={w} h={h} />;
     case "timeline":
       return <Timeline marks={list(l.marks).map((mk, i) => ({ year: typeof mk.year === "number" ? mk.year : s(mk.year), label: s(mk.label), at: ev(mk.at, 6 + i * 30),
         src: typeof mk.src === "string" ? mk.src : undefined } as YearMark))} t={t} end={end} w={w} h={h} />;
@@ -189,7 +189,8 @@ export const DocScene: React.FC<SceneProps> = (p) => {
       <AbsoluteFill style={{ transform: pk > 0 ? `scale(${1 + 0.05 * pk})` : undefined }}>
         {layers.map((l, i) => {
           const [a, z] = span(c, l);
-          if (m.t < a || m.t >= z) return null;
+          // a layer with no `out` holds past the beat's end (the video's tail after the last beat)
+          if (m.t < a || (typeof l.out === "string" && m.t >= z)) return null;
           return <Enter key={i} kind={l.enter} t={m.t - a}><Layer c={c} l={l} /></Enter>;
         })}
       </AbsoluteFill>

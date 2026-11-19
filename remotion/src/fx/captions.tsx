@@ -80,7 +80,11 @@ export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]
   if (scene === "doc" && v) {
     let chunks = docChunks.get(groups);
     if (!chunks) { chunks = chunkTokens(groups.flat()); docChunks.set(groups, chunks); }
-    return <ChunkCaptions chunks={chunks} t={t} width={tl.width} height={tl.height} figures={new Set(Object.values(tl.figures ?? {}))} />;
+    // a gold poster card (doc/Poster.tsx) carries its figure huge: the captions skip that figure while it is up
+    const beat = tl.beats.find((x) => frame >= x.from && frame < x.from + x.frames);
+    const P = (beat?.params ?? {}) as { fig?: Record<string, string>; layers?: { kind?: string; figure?: string }[] };
+    const shown = new Set((P.layers ?? []).filter((l) => l.kind === "poster" && typeof l.figure === "string").map((l) => P.fig?.[l.figure!] ?? l.figure!));
+    return <ChunkCaptions chunks={chunks} t={t} width={tl.width} height={tl.height} figures={new Set(Object.values(tl.figures ?? {}))} skip={shown} />;
   }
   if (i < 0) return null;
   const g = groups[i]!;
@@ -103,7 +107,9 @@ export const Captions: React.FC<{ tl: Timeline; frame: number; groups: Token[][]
       <div style={{ position: "absolute", left, ...(v ? { bottom: SHORT_UI_BOTTOM } : { top }), width, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
         <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: big, lineHeight: 1.15, textAlign: "center", maxWidth: width, letterSpacing: -0.5,
           transform: `scale(${0.8 + 0.2 * (1 - (1 - k) ** 3)})`, transformOrigin: "50% 100%", color: "#fff",
-          WebkitTextStroke: `${v ? 3 : 2}px #1d1a2b`, paintOrder: "stroke fill", textShadow: "0 6px 0 rgba(29,26,43,0.85), 0 10px 24px rgba(0,0,0,0.35)" }}>
+          WebkitTextStroke: `${v ? 3 : 2}px #1d1a2b`, paintOrder: "stroke fill", textShadow: "0 6px 0 rgba(29,26,43,0.85), 0 10px 24px rgba(0,0,0,0.35)",
+          // a doc beat often puts a bright page (a filing) under the words: a dark band keeps them readable (QA, 2026-11-19)
+          ...(scene === "doc" ? { background: "rgba(10,10,12,0.72)", padding: "4px 22px 8px", borderRadius: 12 } : {}) }}>
           {g.map((w, j) => {
             const fig = figures.has(w.t.replace(/[.,!?;:]+$/, ""));
             const said = t >= w.s - 0.05;

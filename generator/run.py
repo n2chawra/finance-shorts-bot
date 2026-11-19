@@ -129,6 +129,17 @@ def plan_format(plan_or_script: dict) -> str:
     return TEMPLATES.get(name, "short")
 
 
+def sample_settings(settings: dict, script: dict) -> dict:
+    """A new channel's sample may set its own length (`sample_length`: [min, max] s; owner, 2026-11-19: "the long
+    sample only needs to be about 1 minute ... the making is the same at any length"). Honoured only while the
+    channel is in setup, so a channel's real videos always keep its length settings."""
+    want = script.get("sample_length")
+    if settings.get("channelStatus") != "setup" or not (isinstance(want, list) and len(want) == 2):
+        return settings
+    keys = ("longLengthMinSec", "longLengthMaxSec") if plan_format(script) == "long" else ("lengthMinSec", "lengthMaxSec")
+    return {**settings, keys[0]: int(want[0]), keys[1]: int(want[1])}
+
+
 def length_range(settings: dict, fmt: str) -> tuple[int, int]:
     if fmt == "long":
         return settings["longLengthMinSec"], settings["longLengthMaxSec"]
@@ -466,7 +477,7 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
             problems += [f"thumbnail {k.upper()}: {p}" for p in thumbs.spec_problems(th, plan_.get("title", script.get("title", "")), script.get("story") or plan_.get("story"))]
             problems += thumbs.code_problems(vid, th, root)
         problems += [f"thumbnails: {p}" for p in thumbs.pick_problems(script)]
-    lo, hi = length_range(load_settings(root), plan_format(script))
+    lo, hi = length_range(sample_settings(load_settings(root), script), plan_format(script))
     sec_ = tl["durationInFrames"] / tl["fps"]
     if not lo * 0.95 <= sec_ <= hi * 1.05:
         problems.append(f"length about {sec_:.0f} s on the estimated voice; it must land in {lo}–{hi} s")
@@ -487,6 +498,7 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         script = _read(d / "script.json")
         if script.get("template") not in TEMPLATES:
             raise ValueError(f"template must be one of {', '.join(TEMPLATES)}")
+        settings = sample_settings(settings, script)   # a setup channel's sample may set its own length
         # voices rotate per video (CLAUDE.md): a missing narrator, or the previous video's, gives way to the
         # one used longest ago; it is saved in the script so a re-render keeps the same voice. The narrator
         # never shares a voice with a cast member who speaks in the same video (Sharma, Sikka)

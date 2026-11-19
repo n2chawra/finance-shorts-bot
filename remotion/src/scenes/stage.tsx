@@ -124,7 +124,35 @@ export const ChecklistScene: React.FC<SceneProps> = (p) => {
   );
 };
 
+/** A channel told without characters (timeline `cast: "none"`, the business documentaries, 2026-11-19): the end card
+ * is a dark charcoal page with the question, the follow line, the sources and the disclaimer, and no cast. */
+const PlainEnd: React.FC<SceneProps> = (p) => {
+  const { width: w, height: h } = p.tl;
+  const t = sec(p);
+  const v = h > w;
+  const left = v ? 80 : 150, width = v ? w - 160 : w * 0.72;
+  const fade = (from: number) => ({ opacity: clamp((t - from) / 0.5), transform: `translateY(${(1 - easeOut((t - from) / 0.5)) * 24}px)` });
+  return (
+    <AbsoluteFill style={{ background: "radial-gradient(circle at 30% 35%, #2b2a28 0%, #1a1918 60%, #121111 100%)" }}>
+      <div style={{ position: "absolute", left, top: v ? 300 : 190, width: 90, height: 8, background: "#e8261c", ...fade(0.1) }} />
+      <div style={{ position: "absolute", left, top: v ? 340 : 230, width, fontFamily: FONT, fontWeight: 800, fontSize: v ? 110 : 96, lineHeight: 1.05, color: "#f4efe6", ...fade(0.2) }}>
+        {str(p.beat.params.cta)}
+      </div>
+      <div style={{ position: "absolute", left, top: v ? 640 : 470, width, fontFamily: FONT, fontWeight: 600, fontSize: v ? 56 : 46, color: "#f2c94c", ...fade(0.8) }}>
+        {str(p.beat.params.follow)}
+      </div>
+      <div style={{ position: "absolute", left, top: v ? 820 : 640, width, fontFamily: FONT, fontWeight: 500, fontSize: v ? 44 : 32, lineHeight: 1.35, color: "#b9b2a6", ...fade(1.3) }}>
+        {str(p.beat.params.assumption)}
+      </div>
+      <div style={{ position: "absolute", left, top: v ? 1060 : 800, width, fontFamily: FONT, fontWeight: 600, fontSize: v ? 46 : 34, color: "#f4efe6", ...fade(1.6) }}>
+        {p.tl.disclaimer}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 export const EndScene: React.FC<SceneProps> = (p) => {
+  if (p.tl.cast === "none") return <PlainEnd {...p} />;
   const { width: w, height: h, palette: pal } = p.tl;
   const t = sec(p);
   const v = h > w;                  // a Short: text stacked on top, at Shorts sizes (44 px and up)

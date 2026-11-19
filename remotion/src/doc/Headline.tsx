@@ -77,7 +77,8 @@ export const Headline: React.FC<{ items: HeadlineItem[]; on: number[]; hiAt?: nu
   const top = shown.lastIndexOf(true);
   const push = 1 + 0.05 * smooth(t / Math.max(1, end));
   return (
-    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${push})` }}>
+    <AbsoluteFill style={{ display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${push})`,
+      paddingBottom: v ? h * 0.22 : 0 /* a Short's captions sit at ~64% of the height: the card sits above them */ }}>
       {items.map((it, i) => {
         const at = on[i] ?? 0;
         if (t < at) return null;

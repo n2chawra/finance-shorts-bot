@@ -28,7 +28,7 @@ export const SourceTag: React.FC<{ text: string; w: number; h: number; k?: numbe
     <div style={{ ...place, maxWidth: w * (v ? 0.8 : 0.6), opacity: k, transform: `translateY(${(1 - outCubic(k)) * 12}px)`,
       display: "flex", alignItems: "center", gap: size * 0.45, fontFamily: SANS, fontSize: size, lineHeight: 1.2, color: "rgba(243,239,230,0.92)",
       textShadow: "0 2px 8px rgba(0,0,0,0.8)", background: "rgba(8,10,16,0.62)", padding: `${size * 0.2}px ${size * 0.5}px`, borderRadius: size * 0.25 }}>
-      <span style={{ fontWeight: 800, fontSize: size * 0.8, letterSpacing: size * 0.12, color: DOC.gold, flex: "none" }}>SOURCE</span>
+      <span style={{ fontWeight: 800, fontSize: size, letterSpacing: size * 0.12, color: DOC.gold, flex: "none" }}>SOURCE</span>
       <span style={{ fontWeight: 500 }}>{text}</span>
     </div>
   );

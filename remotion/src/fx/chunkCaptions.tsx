@@ -51,12 +51,14 @@ export function keyWord(chunk: ChunkToken[], figures: Set<string>): number {
   return best;
 }
 
-export const ChunkCaptions: React.FC<{ chunks: ChunkToken[][]; t: number; width: number; height: number; figures: Set<string> }> = ({ chunks, t, width, height, figures }) => {
+export const ChunkCaptions: React.FC<{ chunks: ChunkToken[][]; t: number; width: number; height: number; figures: Set<string>; skip?: Set<string> }> = ({ chunks, t, width, height, figures, skip }) => {
   let i = chunks.findIndex((g, k) => t >= g[0]!.s && t < Math.min(chunks[k + 1]?.[0]!.s ?? Infinity, g[g.length - 1]!.e + 0.3));
   // the first words are on screen from frame 0: that frame is what the feed shows
   if (i < 0 && chunks.length && t < chunks[0]![0]!.s && chunks[0]![0]!.s < 1) i = 0;
   if (i < 0) return null;
   const g = chunks[i]!;
+  // a figure already drawn big on screen (the poster card's) is not repeated as a caption
+  if (skip?.size && g.some((w) => skip.has(w.t.replace(/[.,!?;:]+$/, "")))) return null;
   const u = width / 1080;
   const size = SIZE * u;
   const since = t < g[0]!.s ? 1 : t - g[0]!.s;

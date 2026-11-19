@@ -1,0 +1,1228 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "id": "L-20261119-01",
+  "seed": 41187,
+  "title": "Why Everyone Stopped Buying Crocs (and Then Didn't)",
+  "story": "product_boom_bust",
+  "narrator": "am_fenrir",
+  "currency": "USD",
+  "sample_length": [
+    60,
+    80
+  ],
+  "style": {
+    "palette": "paper",
+    "genre": "ledger",
+    "key": "D",
+    "bpm": 76
+  },
+  "feed_id": "2026-11-19-crocs-comeback-long",
+  "facts": [
+    {
+      "label": "Crocs' revenues in 2007",
+      "value": 847.4,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2007-12-31",
+      "source": "Crocs Form 10-K (SEC EDGAR)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm"
+    },
+    {
+      "label": "Crocs' revenues in 2008",
+      "value": 721.6,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2008-12-31",
+      "source": "Crocs Form 10-K (SEC EDGAR)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm"
+    },
+    {
+      "label": "Crocs' loss in 2008",
+      "value": 185.1,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2008-12-31",
+      "source": "Crocs Form 10-K (SEC EDGAR)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm"
+    },
+    {
+      "label": "Employees at the end of 2007",
+      "value": 5300,
+      "unit": "count",
+      "as_of": "2007-12-31",
+      "source": "Crocs Form 10-K (SEC EDGAR)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm"
+    },
+    {
+      "label": "Employees at the end of 2008, approximately",
+      "value": 3700,
+      "unit": "count",
+      "as_of": "2008-12-31",
+      "source": "Crocs Form 10-K (SEC EDGAR)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm"
+    },
+    {
+      "label": "Crocs, Inc. revenues in 2025",
+      "value": 4.04,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2025-12-31",
+      "source": "Crocs Form 10-K (SEC EDGAR)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm"
+    },
+    {
+      "label": "Year Crocs first introduced its footwear",
+      "value": 2002,
+      "unit": "year",
+      "as_of": "2006-12-31",
+      "source": "Crocs Form 10-K (SEC EDGAR)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm"
+    },
+    {
+      "label": "Colours the first model came in",
+      "value": 6,
+      "unit": "count",
+      "as_of": "2006-12-31",
+      "source": "Crocs Form 10-K (SEC EDGAR)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm"
+    }
+  ],
+  "maths": [],
+  "beats": [
+    {
+      "id": "object",
+      "scene": "doc",
+      "role": "hook",
+      "say": "Crocs. The foam clog people loved to call ugly.",
+      "events": {
+        "crocs": {
+          "word": "Crocs"
+        },
+        "foam": {
+          "word": "foam"
+        },
+        "ugly": {
+          "word": "ugly"
+        }
+      },
+      "params": {
+        "place": "a wooden floor with a pair of black clogs",
+        "things": [
+          "black clogs",
+          "wooden floor",
+          "one clog close up"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "ugly",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "crocs",
+            "what": "the name label wipes in under the clogs"
+          },
+          {
+            "at": "ugly",
+            "what": "a hard cut to one clog, close"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-synthetic-clogs-712e2467.jpg",
+            "move": "push",
+            "amount": 0.06,
+            "focus": [
+              0.5,
+              0.55
+            ],
+            "out": "ugly"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-single-croc-ef3df225.jpg",
+            "at": "ugly",
+            "move": "push",
+            "amount": 0.08,
+            "focus": [
+              0.45,
+              0.55
+            ]
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "Crocs",
+            "sub": "the Classic Clog",
+            "at": "crocs",
+            "out": "ugly"
+          }
+        ]
+      }
+    },
+    {
+      "id": "boom",
+      "scene": "doc",
+      "role": "promise",
+      "say": "At the height of the craze, the company was selling {fact1} a year.",
+      "events": {
+        "company": {
+          "word": "company"
+        },
+        "selling": {
+          "word": "selling"
+        },
+        "forty": {
+          "word": "forty"
+        },
+        "height": {
+          "word": "height"
+        },
+        "year": {
+          "word": "year"
+        }
+      },
+      "params": {
+        "place": "a Crocs store on a city street, then a mall store front",
+        "things": [
+          "Crocs street store",
+          "Crocs mall store",
+          "sales count-up"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "selling",
+            "size": "medium"
+          },
+          {
+            "at": "forty",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "height",
+            "what": "the camera pushes toward the store sign"
+          },
+          {
+            "at": "company",
+            "what": "a cut to the Crocs store front"
+          },
+          {
+            "at": "selling",
+            "what": "the store dims and the year's sales count up"
+          },
+          {
+            "at": "forty",
+            "what": "the camera closes in on the counting figure"
+          },
+          {
+            "at": "year",
+            "what": "the filing's source chip lands under the figure"
+          }
+        ],
+        "fig": {
+          "sales": "{fact1}"
+        },
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-in-toronto-8fabf48d.jpg",
+            "move": "push",
+            "amount": 0.06,
+            "focus": [
+              0.5,
+              0.3
+            ],
+            "out": "company"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-dadeland-mall-miami-fl-1-december-20-950ae630.jpg",
+            "at": "company",
+            "move": "drift-right",
+            "amount": 0.06,
+            "focus": [
+              0.55,
+              0.45
+            ]
+          },
+          {
+            "kind": "count",
+            "figure": "sales",
+            "eyebrow": "Crocs, Inc. sales",
+            "unit": "in a single year",
+            "countAt": "selling",
+            "tone": "gold",
+            "at": "selling"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "source",
+            "form": "Form 10-K",
+            "text": "Crocs, Inc.",
+            "date": "2009-03-17",
+            "at": "year"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "selling",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "crash",
+      "scene": "doc",
+      "role": "turn",
+      "say": "A year later, sales fell to {fact2}. It lost {fact3} along the way.",
+      "events": {
+        "later": {
+          "word": "later"
+        },
+        "fell": {
+          "word": "fell"
+        },
+        "sink": {
+          "word": "twenty"
+        },
+        "lost": {
+          "word": "lost"
+        },
+        "loss": {
+          "word": "eighty"
+        },
+        "way": {
+          "word": "way"
+        }
+      },
+      "params": {
+        "place": "the sales chart over an empty Crocs store",
+        "things": [
+          "two sales bars, one a year",
+          "red loss label"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "fell",
+            "size": "medium"
+          },
+          {
+            "at": "lost",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "later",
+            "what": "the two years' bars grow, each with its figure"
+          },
+          {
+            "at": "fell",
+            "what": "the camera pushes in on the second bar"
+          },
+          {
+            "at": "sink",
+            "what": "the crash mark lands on the second bar"
+          },
+          {
+            "at": "lost",
+            "what": "the camera closes on the gap"
+          },
+          {
+            "at": "loss",
+            "what": "the red loss label slams in"
+          },
+          {
+            "at": "way",
+            "what": "the filing's source chip lands"
+          }
+        ],
+        "fig": {
+          "was": "{fact1}",
+          "now": "{fact2}"
+        },
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-dadeland-mall-miami-fl-1-december-20-950ae630.jpg",
+            "move": "pull",
+            "amount": 0.05,
+            "focus": [
+              0.5,
+              0.45
+            ],
+            "grade": "cold"
+          },
+          {
+            "kind": "chart",
+            "type": "bar",
+            "tone": "fall",
+            "title": "Crocs, Inc. sales",
+            "sub": "From the company's annual report",
+            "values": [
+              847.4,
+              721.6
+            ],
+            "labels": [
+              2007,
+              2008
+            ],
+            "figs": [
+              "was",
+              "now"
+            ],
+            "hiBar": 1,
+            "drawAt": "later",
+            "drawLen": 30,
+            "marks": [
+              {
+                "i": 1,
+                "label": "The crash",
+                "at": "sink"
+              }
+            ],
+            "plate": false
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "{fact3}",
+            "sub": "lost in a single year",
+            "tone": "red",
+            "at": "loss"
+          },
+          {
+            "kind": "source",
+            "form": "Form 10-K",
+            "text": "Crocs, Inc.",
+            "date": "2009-03-17",
+            "at": "way"
+          }
+        ]
+      }
+    },
+    {
+      "id": "doubt",
+      "scene": "doc",
+      "role": "turn",
+      "say": "Its annual report warned that its auditors doubted it could continue as a going concern.",
+      "events": {
+        "report": {
+          "word": "report"
+        },
+        "auditors": {
+          "word": "auditors"
+        },
+        "doubt": {
+          "word": "doubted"
+        },
+        "concern": {
+          "word": "concern"
+        }
+      },
+      "params": {
+        "place": "the annual report's risk factors",
+        "things": [
+          "annual report page",
+          "yellow highlighter",
+          "quote callout"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "auditors",
+            "size": "close"
+          },
+          {
+            "at": "doubt",
+            "size": "extreme"
+          },
+          {
+            "at": "concern",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "report",
+            "what": "the filing page settles"
+          },
+          {
+            "at": "auditors",
+            "what": "the camera pushes to the risk factor"
+          },
+          {
+            "at": "doubt",
+            "what": "the highlighter swipes the sentence"
+          },
+          {
+            "at": "concern",
+            "what": "the sentence types into the callout"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "document",
+            "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p015.png",
+            "box": [
+              0.038,
+              0.374,
+              0.5,
+              0.034
+            ],
+            "pushAt": "auditors",
+            "markAt": "doubt",
+            "quote": "Our auditors have expressed substantial doubt about our ability to continue as a going concern.",
+            "quoteAt": "concern",
+            "source": {
+              "form": "Form 10-K",
+              "text": "Crocs, Inc., risk factors",
+              "date": "2009-03-17"
+            },
+            "aspect": 1.251
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "paper",
+          "at": "start",
+          "gain": 0.5
+        },
+        {
+          "kind": "scribble",
+          "at": "doubt",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "staff",
+      "scene": "doc",
+      "role": "turn",
+      "say": "It went from {fact4} employees to about {fact5}.",
+      "events": {
+        "went": {
+          "word": "went"
+        },
+        "employees": {
+          "word": "employees"
+        },
+        "about": {
+          "word": "about"
+        }
+      },
+      "params": {
+        "place": "the head-count board over a blurred shopping mall",
+        "things": [
+          "split-flap board",
+          "label tape",
+          "blurred mall"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "about",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "employees",
+            "what": "the board shows the old head count"
+          },
+          {
+            "at": "about",
+            "what": "the digits roll down to the new count and the tape types on"
+          }
+        ],
+        "fig": {
+          "was": "{fact4}",
+          "now": "{fact5}"
+        },
+        "layers": [
+          {
+            "kind": "footage",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-video-interior-of-yevropeisky-shopping-mall-26-bc4ca56b.webm",
+            "len": 20.6,
+            "trim": 8,
+            "move": "drift-left",
+            "grade": "cold",
+            "blur": 14,
+            "dim": 0.5
+          },
+          {
+            "kind": "ticker",
+            "label": "CROCS · EMPLOYEES",
+            "from": "was",
+            "to": "now",
+            "flipAt": "about",
+            "tape": "one year of cuts",
+            "tapeAt": "about",
+            "plate": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "comeback",
+      "scene": "doc",
+      "role": "payoff",
+      "say": "Then the same shoe came back. Last year, the company's sales were about {fact6}.",
+      "events": {
+        "shoe": {
+          "word": "shoe"
+        },
+        "back": {
+          "word": "back"
+        },
+        "reported": {
+          "word": "Last"
+        },
+        "sales": {
+          "word": "sales"
+        },
+        "mark": {
+          "word": "billion"
+        }
+      },
+      "params": {
+        "place": "a busy Crocs store today, then the latest annual report",
+        "things": [
+          "Crocs store with shoppers",
+          "annual report page",
+          "yellow highlighter"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "reported",
+            "size": "medium"
+          },
+          {
+            "at": "mark",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "back",
+            "what": "a cut to a busy Crocs store"
+          },
+          {
+            "at": "reported",
+            "what": "the latest filing page lands"
+          },
+          {
+            "at": "sales",
+            "what": "the camera pushes to the revenue line"
+          },
+          {
+            "at": "mark",
+            "what": "the highlighter swipes the revenue line"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-sandals-2303aee6.jpg",
+            "move": "push",
+            "amount": 0.05,
+            "focus": [
+              0.5,
+              0.45
+            ],
+            "out": "back"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-at-suzhou-center-20220709-c38bd5d0.jpg",
+            "at": "back",
+            "out": "reported",
+            "move": "push",
+            "amount": 0.06,
+            "focus": [
+              0.4,
+              0.45
+            ],
+            "grade": "warm"
+          },
+          {
+            "kind": "document",
+            "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p039.png",
+            "at": "reported",
+            "box": [
+              0.038,
+              0.699,
+              0.92,
+              0.017
+            ],
+            "pushAt": "sales",
+            "markAt": "mark",
+            "source": {
+              "form": "Form 10-K",
+              "text": "Crocs, Inc.",
+              "date": "2026-02-12"
+            },
+            "aspect": 0.896
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "scribble",
+          "at": "mark",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "scene": "doc",
+      "role": "promise",
+      "say": "So what brought Crocs back? Not a new shoe. What the company did with the old one.",
+      "events": {
+        "brought": {
+          "word": "brought"
+        },
+        "new": {
+          "word": "new"
+        },
+        "old": {
+          "word": "old"
+        },
+        "company": {
+          "word": "company"
+        }
+      },
+      "params": {
+        "place": "a Crocs outlet sign, then a row of clogs covered in charms",
+        "things": [
+          "Crocs sign",
+          "clogs with charms",
+          "green Crocs store sign"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "company",
+            "size": "close"
+          },
+          {
+            "at": "old",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "brought",
+            "what": "the outlet sign drifts across the frame"
+          },
+          {
+            "at": "new",
+            "what": "a cut to a Crocs store sign, rising"
+          },
+          {
+            "at": "company",
+            "what": "the camera closes on the store sign"
+          },
+          {
+            "at": "old",
+            "what": "a cut to old clogs covered in charms"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-outlet-store-14771327729-f31696c5.jpg",
+            "move": "drift-left",
+            "amount": 0.06,
+            "focus": [
+              0.45,
+              0.5
+            ],
+            "out": "new"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-32598341414-a1cd1af0.jpg",
+            "aspect": 0.75,
+            "at": "new",
+            "out": "old",
+            "move": "rise",
+            "amount": 0.06,
+            "focus": [
+              0.65,
+              0.25
+            ]
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-jibbitz-6e96e4cb.jpg",
+            "at": "old",
+            "move": "push",
+            "amount": 0.07,
+            "focus": [
+              0.45,
+              0.45
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "chapter1",
+      "scene": "doc",
+      "role": "build",
+      "chapter": "One shoe",
+      "say": "Chapter one. So where did this shoe come from?",
+      "min_sec": 5.5,
+      "events": {
+        "chapter": {
+          "word": "Chapter"
+        },
+        "shoe": {
+          "word": "shoe"
+        }
+      },
+      "params": {
+        "place": "a pair of clogs on beach sand",
+        "things": [
+          "clogs on sand",
+          "chapter card"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "chapter",
+            "what": "the chapter card rises over the beach"
+          },
+          {
+            "at": "shoe",
+            "what": "the title lands"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-shoes-on-sandy-point-beach-9717478835-5a1c4991.jpg",
+            "move": "push",
+            "amount": 0.05,
+            "focus": [
+              0.6,
+              0.5
+            ],
+            "treatment": "bw"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "chapter",
+            "n": 1,
+            "title": "One Shoe",
+            "kicker": "Chapter",
+            "style": "caps",
+            "titleAt": "shoe",
+            "plate": 0.45
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "chapter",
+          "gain": 0.7
+        }
+      ]
+    },
+    {
+      "id": "origin",
+      "scene": "doc",
+      "role": "build",
+      "say": "Crocs first went on sale in {fact7}, as a single model in {fact8} colours.",
+      "events": {
+        "sale": {
+          "word": "sale"
+        },
+        "single": {
+          "word": "single"
+        },
+        "colours": {
+          "word": "colours"
+        }
+      },
+      "params": {
+        "place": "the company's early annual report",
+        "things": [
+          "annual report page",
+          "yellow highlighter"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "single",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "sale",
+            "what": "the camera pushes to the product overview"
+          },
+          {
+            "at": "single",
+            "what": "the highlighter swipes the line"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "document",
+            "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001104659-07-025001-p004.png",
+            "box": [
+              0.038,
+              0.553,
+              0.93,
+              0.025
+            ],
+            "pushAt": "sale",
+            "markAt": "single",
+            "source": {
+              "form": "Form 10-K",
+              "text": "Crocs, Inc., product overview",
+              "date": "2007-04-02"
+            },
+            "aspect": 1.306
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "scribble",
+          "at": "single",
+          "gain": 0.45
+        }
+      ]
+    },
+    {
+      "id": "beach",
+      "scene": "doc",
+      "role": "build",
+      "say": "It was sold first to water sports fans: a light foam shoe called the Beach.",
+      "events": {
+        "water": {
+          "word": "water"
+        },
+        "light": {
+          "word": "light"
+        },
+        "beach": {
+          "word": "Beach"
+        }
+      },
+      "params": {
+        "place": "the shoreline, then clogs in the sand",
+        "things": [
+          "waves on a beach",
+          "clogs in the sand",
+          "model label"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "light",
+            "size": "medium"
+          },
+          {
+            "at": "beach",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "water",
+            "what": "waves roll in"
+          },
+          {
+            "at": "light",
+            "what": "a cut to clogs in the sand"
+          },
+          {
+            "at": "beach",
+            "what": "the model's name label wipes in"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "footage",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-video-water-waves-in-herzliya-beach-87fb847e.webm",
+            "len": 12.5,
+            "move": "drift-right",
+            "grade": "doc",
+            "out": "light"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-shoes-on-sandy-point-beach-9717478835-5a1c4991.jpg",
+            "at": "light",
+            "move": "push",
+            "amount": 0.08,
+            "focus": [
+              0.62,
+              0.5
+            ]
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "The Beach",
+            "sub": "the first Crocs model",
+            "at": "beach"
+          }
+        ]
+      }
+    },
+    {
+      "id": "croslite",
+      "scene": "doc",
+      "role": "tease",
+      "say": "The foam was called Croslite, and its formula was a trade secret.",
+      "events": {
+        "croslite": {
+          "word": "Croslite"
+        },
+        "guarded": {
+          "word": "formula"
+        },
+        "secret": {
+          "word": "secret"
+        }
+      },
+      "params": {
+        "place": "one clog, then the filing's trade-secret paragraph",
+        "things": [
+          "one clog",
+          "annual report page",
+          "yellow highlighter"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "guarded",
+            "size": "wide"
+          },
+          {
+            "at": "secret",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "croslite",
+            "what": "the material's name label lands"
+          },
+          {
+            "at": "guarded",
+            "what": "a cut to the filing page"
+          },
+          {
+            "at": "secret",
+            "what": "the highlighter swipes the trade-secret line"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-example-of-wear-and-tear-on-crocs-f020a372.jpg",
+            "move": "push",
+            "amount": 0.08,
+            "focus": [
+              0.5,
+              0.5
+            ],
+            "out": "guarded"
+          },
+          {
+            "kind": "document",
+            "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p012.png",
+            "at": "guarded",
+            "box": [
+              0.063,
+              0.493,
+              0.87,
+              0.026
+            ],
+            "pushAt": "guarded",
+            "markAt": "secret",
+            "source": {
+              "form": "Form 10-K",
+              "text": "Crocs, Inc., intellectual property",
+              "date": "2009-03-17"
+            },
+            "aspect": 1.368
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "Croslite",
+            "sub": "the closed-cell foam",
+            "at": "croslite",
+            "out": "guarded"
+          }
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "transition": "fade",
+      "say": "Did you own a pair? Tell us below.",
+      "params": {
+        "cta": "Did you own a pair?",
+        "follow": "Subscribe for the rest of the story",
+        "assumption": "From Crocs, Inc. annual reports filed with the SEC (EDGAR). Recent company revenues include the HEYDUDE brand."
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "custom",
+    "component": "Thumb",
+    "words": "Nearly *bust*",
+    "things": [
+      "black clogs",
+      "red arrow",
+      "loss tag"
+    ],
+    "pattern": "one clog huge on a saturated green brand plate, two heavy words and a red arrow falling, as the Crocs hits draw it",
+    "references": [
+      {
+        "id": "JJO7hDTOMuA",
+        "views": 1089852,
+        "what": "the product on a saturated green plate, heavy white words"
+      },
+      {
+        "id": "e31CEPxSJaU",
+        "views": 140513,
+        "what": "a clog huge, two heavy words on a red block, a red arrow"
+      },
+      {
+        "id": "V6-3wqQoxT0",
+        "views": 2280000,
+        "what": "product big on one side, a falling red chart arrow, two huge words"
+      }
+    ],
+    "score": 7,
+    "why": "Reads at phone size: one clog filling half the frame on the green the Crocs hits use, two words and a red falling arrow, and the loss figure the video proves. Closest to Company Man's 1.1M thumbnail without copying it."
+  },
+  "thumbnails": [
+    {
+      "layout": "custom",
+      "component": "ThumbB",
+      "words": "Auditors *worried*",
+      "things": [
+        "annual report page",
+        "red ring",
+        "one clog"
+      ],
+      "pattern": "the document itself fills the frame with the one line that matters marked and circled, heavy words on top",
+      "references": [
+        {
+          "id": "9Hf_ZnZF3EQ",
+          "views": 131571,
+          "what": "the paper fills the frame, the key line marked by hand, heavy words"
+        },
+        {
+          "id": "JJO7hDTOMuA",
+          "views": 1089852,
+          "what": "the product on a saturated green plate, heavy white words"
+        },
+        {
+          "id": "e31CEPxSJaU",
+          "views": 140513,
+          "what": "a clog huge, two heavy words on a red block, a red arrow"
+        }
+      ],
+      "score": 5,
+      "why": "The real filing with the line circled is our signature and stands out among the hits, but at 168 px the page reads as grey texture; only the two words carry it."
+    },
+    {
+      "layout": "custom",
+      "component": "ThumbC",
+      "words": "*Dead*. Then huge",
+      "things": [
+        "clogs in sand",
+        "red sales line"
+      ],
+      "pattern": "the product big on one side and a red chart line falling behind it, two huge words with one in red",
+      "references": [
+        {
+          "id": "V6-3wqQoxT0",
+          "views": 2280000,
+          "what": "product big on one side, a falling red chart arrow, two huge words"
+        },
+        {
+          "id": "JJO7hDTOMuA",
+          "views": 1089852,
+          "what": "the product on a saturated green plate, heavy white words"
+        },
+        {
+          "id": "e31CEPxSJaU",
+          "views": 140513,
+          "what": "a clog huge, two heavy words on a red block, a red arrow"
+        }
+      ],
+      "score": 6,
+      "why": "The crash-and-climb line tells the whole arc in one shape and the words promise the comeback, but the sand photo is busy and the clog is smaller than in A."
+    }
+  ],
+  "thumbnail_pick": "a"
+}

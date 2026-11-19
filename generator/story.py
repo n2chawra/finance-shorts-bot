@@ -130,7 +130,12 @@ def _spine(script: dict) -> dict:
 
 
 def _levels(script: dict) -> bool:
-    """Level chips and a climbing counter: long videos (chapters), Shorts before shapes, the levels shape."""
+    """Level chips and a climbing counter: long videos (chapters), Shorts before shapes, the levels shape.
+    A documentary (every beat `"scene": "doc"`, the business documentaries channel, 2026-11-19) has no HUD:
+    its chapter cards carry the structure, so it shows no chips or counter."""
+    told = [b for b in (script.get("beats") or []) if b.get("scene") != "end"]
+    if told and all(b.get("scene") == "doc" for b in told):
+        return False
     if script.get("format") == "long" or script.get("shape") is None:
         return True
     from . import shapes

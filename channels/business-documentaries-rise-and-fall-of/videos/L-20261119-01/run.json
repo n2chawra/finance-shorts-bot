@@ -1,0 +1,253 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:43:52.561496+00:00",
+    "finishedAt": "2026-11-19T08:43:52.561496+00:00",
+    "notes": [
+      "hook_style must be one of question, shock_number, myth, challenge, conflict, secret",
+      "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky",
+      "style.bpm must be 74–80 for ledger",
+      "style.key must be one of C, C#, D, D#, E, F, F#, G, G#, A, A#, B",
+      "topic.feed_id '2026-11-19-crocs-comeback' is not in channels/business-documentaries-rise-and-fall-of/longform/topics.json"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:47:50.535983+00:00",
+    "finishedAt": "2026-11-19T08:47:50.535983+00:00",
+    "notes": [
+      "feed topic '2026-11-19-crocs-comeback' can't be used: names no `from_short` (a long video expands one of our recent Shorts in the top third by stayed to watch)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:48:08.312733+00:00",
+    "finishedAt": "2026-11-19T08:48:08.312733+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:51:13.793155+00:00",
+    "finishedAt": "2026-11-19T08:51:13.793155+00:00",
+    "notes": [
+      "beat 'crash'.params.overlays[0].text has a bad placeholder ('loss'); allowed: fact1, fact2, fact3, fact4, fact5, fact6, fact7, fact8",
+      "`structure.levels` needs 4 or more steps the viewer waits for (\"Sell\", \"Borrow\", \"Never sell\"): the promise of a structure is what keeps people past the hook",
+      "beat roles must be one of hook, promise, level, build, tease, turn, payoff, loop, end (got chapter, context)",
+      "the climbing number (params.hud.counter) changes 0 times; at least 3: a number that climbs level by level is a reason to keep watching",
+      "note: 0 questions in about 68 s of speech; at least 2 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:51:52.919060+00:00",
+    "finishedAt": "2026-11-19T08:51:52.919060+00:00",
+    "notes": [
+      "beat 'outro'.params.assumption contains a typed number; use a placeholder: 'From Crocs, Inc. Form 10-K filings on SEC EDGAR. Recent company revenues include the HEYDUDE brand.'",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:52:07.265337+00:00",
+    "finishedAt": "2026-11-19T08:52:07.265337+00:00",
+    "notes": [
+      "description mentions '847 million', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '185 million', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "facts[0] (847.4 money_million, 2007-12-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[1] (721.6 money_million, 2008-12-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[2] (185.1 money_million, 2008-12-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[3] (5300 count, 2007-12-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[4] (3700 count, 2008-12-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[5] (4.04 money_billion, 2025-12-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[6] (2002 year, 2006-12-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[7] (6 count, 2006-12-31) is not one of the feed topic's facts; copy them exactly",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:52:24.062516+00:00",
+    "finishedAt": "2026-11-19T08:52:24.062516+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:52:27.592192+00:00",
+    "finishedAt": "2026-11-19T08:52:27.592192+00:00",
+    "notes": [
+      "description mentions '847 million', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '185 million', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:52:35.424105+00:00",
+    "finishedAt": "2026-11-19T08:52:35.424105+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:53:21.486512+00:00",
+    "finishedAt": "2026-11-19T08:53:21.486512+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:59:08.999806+00:00",
+    "finishedAt": "2026-11-19T08:59:08.999806+00:00",
+    "notes": [
+      "beat comeback, line 'Then the same shoe came back. Last year, sales were about {fact6}.': the 2025 10-K's $4,040.6M is total company revenue, of which $714.8M is the HEYDUDE brand (Crocs Brand $3,325.8M). Tied to 'the same shoe', the line credits HEYDUDE's sales to the clog; the topic's verify list requires 'the company'. Fix: 'Last year, the company's sales were about {fact6}' (or use the Crocs Brand figure).",
+      "beat boom, line 'At its peak, the company was selling {fact1} of shoes a year.': 2007 ($847.4M) was not the company's peak; revenue passed $1.0B in 2011 (Crocs FY2011 results release / Jan 2012 8-K), before the comeback. Fix: 'At the height of the craze, in 2007, ...'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:59:22.258491+00:00",
+    "finishedAt": "2026-11-19T09:00:56.421735+00:00",
+    "notes": [
+      "7 sound effects in 70 s: this channel allows 5 a minute (6 here; channel.json sound.sfxPerMinute)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:01:12.514486+00:00",
+    "finishedAt": "2026-11-19T09:01:12.514486+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:02:07.203255+00:00",
+    "finishedAt": "2026-11-19T09:02:07.203255+00:00",
+    "notes": [
+      "Re-review: all 8 facts and 4 verify items confirmed in Crocs' 2006, 2008 and 2025 10-Ks (local EDGAR copies); boom now 'At the height of the craze' (2007 was the craze's high, 2011 later passed $1.0B), comeback now 'the company's sales' ($4,040.6M incl. $714.8M HEYDUDE); description fixed and ends with the disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:01:35.263574+00:00",
+    "finishedAt": "2026-11-19T09:03:19.641823+00:00",
+    "notes": [
+      "render.ts stills failed:\nprogress 0.06\nprogress 0.13\nprogress 0.19\nprogress 0.25\nprogress 0.31\nprogress 0.38\nprogress 0.44\nprogress 0.50\nprogress 0.56\nprogress 0.63\n\n💡 Get help for this issue at https://remotion.dev/docs/troubleshooting/delay-render-proxy\n💡 Get help for this issue at https://remotion.dev/docs/timeout\nprogress 0.69\n\u001b[31mCould not extract frame from compositor\u001b[39m \u001b[31mError: Request closed\u001b[39m\n\u001b[31mCould not extract frame from compositor\u001b[39m \u001b[31mError: Request closed\u001b[39m\n\n💡 Get help for this issue at https://remotion.dev/docs/target-closed\nError: A delayRender() \"Fetching http://localhost:3006/proxy?src=http%3A%2F%2Flocalhost%3A3006%2Fpublic%2Fmedia%2Fbusiness-documentaries-rise-and-fall-of%2Fcommons-video-interior-of-yevropeisky-shopping-mall-26-bc4ca56b.webm&time=3.1666666666666665&transparent=false&toneMapped=true from server\" was called but not cleared after 28000ms. See https://remotion.dev/docs/timeout for help. The delayRender was called:\n    at delayRenderInternal (http://localhost:3006/bundle.js:169730:18)\n    at http://localhost:3006/bundle.js:169843:12\n    at http://localhost:3006/bundle.js:183804:23\n    at Qj (http://localhost:3006/bundle.js:165977:332)\n    at kk (http://localhost:3006/bundle.js:165994:147)\n    at ik (http://localhost:3006/bundle.js:165993:446)\n    at ik (http://localhost:3006/bundle.js:165993:343)\n    at hk (http://localhost:3006/bundle.js:165992:431)\n    at Wk (http://localhost:3006/bundle.js:166016:96)\n    at Pk (http://localhost:3006/bundle.js:166014:398)\n    at delayRenderInternal (http://localhost:3006/bundle.js:169730:18)\n    at http://localhost:3006/bundle.js:169843:12\n    at http://localhost:3006/bundle.js:183804:23\n    at Qj (http://localhost:3006/bundle.js:165977:332)\n    at kk (http://localhost:3006/bundle.js:165994:147)\n    at ik (http://localhost:3006/bundle.js:165993:446)\n    at ik (http://localhost:3006/bundle.js:165993:343)\n    at hk (http://localhost:3006/bundle.js:165992:431)\n    at Wk (http://localhost:3006/bundle.js:166016:96)\n    at Pk (http://localhost:3006/bundle.js:166014:398)\n    at http://localhost:3006/bundle.js:169750:39"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:07:34.921614+00:00",
+    "finishedAt": "2026-11-19T09:09:19.924979+00:00",
+    "notes": [
+      "thumbnail is 1920x1080; a long video's must be 1280x720"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:16:14.111964+00:00",
+    "finishedAt": "2026-11-19T09:17:27.169787+00:00",
+    "notes": [
+      "render.ts stills failed:\n\u001b[33mBrowser failed to load http://localhost:3003/index.html (Document): net::ERR_SOCKET_NOT_CONNECTED\u001b[39m\n\n💡 Get help for this issue at https://remotion.dev/docs/target-closed\nError: net::ERR_SOCKET_NOT_CONNECTED at http://localhost:3003/index.html\n    at navigate (file:///E:/finance-shorts-bot/remotion/node_modules/@remotion/renderer/dist/esm/index.mjs:3036:37)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async FrameManager.navigateFrame (file:///E:/finance-shorts-bot/remotion/node_modules/@remotion/renderer/dist/esm/index.mjs:3013:17)\n    at async gotoPageOrThrow (file:///E:/finance-shorts-bot/remotion/node_modules/@remotion/renderer/dist/esm/index.mjs:18537:21)\n    at async innerSetPropsAndEnv (file:///E:/finance-shorts-bot/remotion/node_modules/@remotion/renderer/dist/esm/index.mjs:18669:28)\n    at async setPropsAndEnv (file:///E:/finance-shorts-bot/remotion/node_modules/@remotion/renderer/dist/esm/index.mjs:18771:20)\n    at async innerRenderStill (file:///E:/finance-shorts-bot/remotion/node_modules/@remotion/renderer/dist/esm/index.mjs:26156:3)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:17:36.998195+00:00",
+    "finishedAt": "2026-11-19T09:20:00.480922+00:00",
+    "notes": [
+      "text 'SOURCE' at 26.1 s is 23.8 px, below the 30 px minimum",
+      "4 of 15 stills are mostly empty background (at 15 s, 20 s, 30 s, 71 s): fill the frame (a set, the cast big, money as a thing)",
+      "thumbnail: remotion/src/videos/L-20261119-01/Thumb.tsx is missing (the video's own thumbnail, remotion/src/videos/README.md)",
+      "thumbnail: remotion/src/videos/L-20261119-01/ThumbB.tsx is missing (the video's own thumbnail, remotion/src/videos/README.md)",
+      "thumbnail: remotion/src/videos/L-20261119-01/ThumbC.tsx is missing (the video's own thumbnail, remotion/src/videos/README.md)",
+      "thumbnails: thumbnail A: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: thumbnail B: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: thumbnail C: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: `thumbnail_pick`: \"a\", \"b\" or \"c\", the one you rate best; it goes up unless the owner picks another",
+      "note: only 1 kinds of scene (doc); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: doc is 11 of 11 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc 4 times in a row: change the device",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")",
+      "note: the turn starts at 15% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:27:15.734176+00:00",
+    "finishedAt": "2026-11-19T09:31:25.513758+00:00",
+    "notes": [
+      "thumbnails: thumbnail A: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: thumbnail B: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: thumbnail C: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: `thumbnail_pick`: \"a\", \"b\" or \"c\", the one you rate best; it goes up unless the owner picks another",
+      "note: only 1 kinds of scene (doc); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: doc is 11 of 11 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc 4 times in a row: change the device",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")",
+      "note: the turn starts at 15% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:32:23.950610+00:00",
+    "finishedAt": "2026-11-19T09:37:14.075310+00:00",
+    "notes": [
+      "71 s, paper/ledger (preview only)",
+      "note: only 1 kinds of scene (doc); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: doc is 11 of 11 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc 4 times in a row: change the device",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")",
+      "note: the turn starts at 15% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:39:11.830917+00:00",
+    "finishedAt": "2026-11-19T09:39:11.830917+00:00",
+    "notes": [
+      "[scene] 25.0s beat doubt (doc document layer + chunk captions): the caption 'doubted it could' sits on the white 10-K page over body text; the white/greyed caption words ('it could') vanish into the page and the line under it is unreadable. Captions over a bright document need a dark band or plate (same placement over the page at 40.0s comeback and 55.0s origin, readable there only because the active words have a shadow).",
+      "[script] 50.0s beat chapter1: chapter card reads 'WHERE IT CAME FROM 1:' over 'ONE SHOE' while the voice says 'Chapter one'; the kicker is joined to the number as if it were 'Chapter'. Set kicker to 'Chapter' (or drop the number) so the card reads 'CHAPTER 1: ONE SHOE'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:37:38.348161+00:00",
+    "finishedAt": "2026-11-19T09:39:57.315423+00:00",
+    "notes": [
+      "render.ts stills failed:\nprogress 0.06\nprogress 0.13\nprogress 0.19\nprogress 0.25\n\u001b[33mBrowser failed to load http://localhost:3002/public/fonts/Anton-Regular.ttf (Fetch): net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[40m http://localhost:3002/public/fonts/Anton-Regular.ttf \u001b[49m \u001b[31mFailed to load resource: net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[33mBrowser failed to load http://localhost:3002/public/fonts/PlayfairDisplay-Variable.ttf (Fetch): net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[40m http://localhost:3002/public/fonts/PlayfairDisplay-Variable.ttf \u001b[49m \u001b[31mFailed to load resource: net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[33mBrowser failed to load http://localhost:3002/public/fonts/PlayfairDisplay-Italic-Variable.ttf (Fetch): net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[40m http://localhost:3002/public/fonts/PlayfairDisplay-Italic-Variable.ttf \u001b[49m \u001b[31mFailed to load resource: net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[33mBrowser failed to load http://localhost:3002/public/fonts/CourierPrime-Regular.ttf (Fetch): net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[40m http://localhost:3002/public/fonts/CourierPrime-Regular.ttf \u001b[49m \u001b[31mFailed to load resource: net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[33mBrowser failed to load http://localhost:3002/public/fonts/CourierPrime-Bold.ttf (Fetch): net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[40m http://localhost:3002/public/fonts/CourierPrime-Bold.ttf \u001b[49m \u001b[31mFailed to load resource: net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[33mBrowser failed to load http://localhost:3002/public/fonts/CourierPrime-Italic.ttf (Fetch): net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[40m http://localhost:3002/public/fonts/CourierPrime-Italic.ttf \u001b[49m \u001b[31mFailed to load resource: net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[33mBrowser failed to load http://localhost:3002/public/fonts/CourierPrime-BoldItalic.ttf (Fetch): net::ERR_NETWORK_CHANGED\u001b[39m\n\u001b[40m http://localhost:3002/public/fonts/CourierPrime-BoldItalic.ttf \u001b[49m \u001b[31mFailed to load resource: net::ERR_NETWORK_CHANGED\u001b[39m\n💡 On Lambda, one reason this could happen is that Chrome is rejecting an asset to be loaded when it is running low on disk space.\nTry increasing the disk size of your Lambda function.\n\u001b[31mCould not extract frame from compositor\u001b[39m \u001b[31mError: cancelled\u001b[39m\nprogress 0.31\nprogress 0.38\n\n💡 Get help for this issue at https://remotion.dev/docs/target-closed\n\n💡 Get help for this issue at https://remotion.dev/docs/target-closed\nTypeError: Failed to fetch\n    at Object.fetchFontData (http://localhost:3002/bundle.js:187359:19)\n    at loadFont (http://localhost:3002/bundle.js:167228:102)\n    at f (http://localhost:3002/bundle.js:928:121)\n    at 87254 (http://localhost:3002/bundle.js:929:1)\n    at __webpack_require__ (http://localhost:3002/bundle.js:198471:42)\n    at 97594 (http://localhost:3002/bundle.js:5946:68)\n    at __webpack_require__ (http://localhost:3002/bundle.js:198471:42)\n    at 68903 (http://localhost:3002/bundle.js:5790:72)\n    at __webpack_require__ (http://localhost:3002/bundle.js:198471:42)\n    at 26949 (http://localhost:3002/bundle.js:6355:16)"
+    ]
+  }
+]

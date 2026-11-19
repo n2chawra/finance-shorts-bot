@@ -101,7 +101,9 @@ hook_problems = custom_problems   # the name routines and tests used before cust
 def _not_end_cards(shots: list[Path], tl: dict) -> list[Path]:
     """The stills to judge for empty frames: an end card is a card by design (text, the cast, the
     disclaimer), so its frames don't count."""
-    ends = [(b["from"], b["from"] + b["frames"]) for b in tl["beats"] if b["scene"] in ("end", "chapter")]
+    # the last beat's card also covers the video's short tail after it (the end card holds there)
+    last = tl["beats"][-1]["id"] if tl.get("beats") else None
+    ends = [(b["from"], b["from"] + b["frames"] if b["id"] != last else 10**9) for b in tl["beats"] if b["scene"] in ("end", "chapter")]
     def frame(p: Path) -> int:
         return int(p.stem[1:]) if p.stem[1:].isdigit() else -1
     return [p for p in shots if not any(a <= frame(p) < z for a, z in ends)]

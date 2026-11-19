@@ -1,0 +1,45 @@
+{
+  "note": "Long-video topics for the business documentaries channel. First entry written for the long sample (19 Nov 2026) from research/topics.json 2026-11-19-crocs-comeback, with every figure re-sourced to Crocs' own Form 10-K filings on SEC EDGAR (rendered pages in the media licence log).",
+  "topics": [
+    {
+      "id": "2026-11-19-crocs-comeback-long",
+      "format": "long",
+      "title": "Why Everyone Stopped Buying Crocs (and Then Didn't)",
+      "category": "footwear",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": ["product_boom_bust"],
+      "currency": "USD",
+      "reach": "global",
+      "templates": ["long_story"],
+      "demand": {"title": "WTF Happened to Labubu?", "views": 2280000, "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0", "channel": "Fortune & Fall"},
+      "search": "what happened to crocs",
+      "angle": "Open on a pair of Crocs. The craze to 2007 ($847.4M sales), the crash in 2008 (sales $721.6M, a $185.1M loss, staff cut from about 5,300 to 3,700, a going-concern warning in its own 10-K), and the comeback to about $4.04B in 2025. What changed: the same 'ugly' shoe sold as a canvas (charms, collaborations) instead of a fad. Chapter 1: one model, the Beach, in six colours, launched in 2002 for water sports; the Croslite formula kept as a trade secret.",
+      "why_now": "Long sample for the channel's Launch review (product boom and bust, core: advice.md).",
+      "facts": [
+        {"label": "Crocs' revenues in 2007", "value": 847.4, "unit": "money_million", "currency": "USD", "as_of": "2007-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
+        {"label": "Crocs' revenues in 2008", "value": 721.6, "unit": "money_million", "currency": "USD", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
+        {"label": "Crocs' loss in 2008", "value": 185.1, "unit": "money_million", "currency": "USD", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
+        {"label": "Crocs employees at the end of 2007", "value": 5300, "unit": "count", "as_of": "2007-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
+        {"label": "Crocs employees at the end of 2008, approximately", "value": 3700, "unit": "count", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
+        {"label": "Crocs, Inc. revenues in 2025 ($4,040.6 million in the filing; Crocs and HEYDUDE brands)", "value": 4.04, "unit": "money_billion", "currency": "USD", "as_of": "2025-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm", "fixed": true},
+        {"label": "Year Crocs first introduced its footwear (a single model)", "value": 2002, "unit": "year", "as_of": "2006-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm", "fixed": true},
+        {"label": "Colours the first model came in", "value": 6, "unit": "count", "as_of": "2006-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm", "fixed": true}
+      ],
+      "verify": [
+        "2008 10-K risk factor: 'Our auditors have expressed substantial doubt about our ability to continue as a going concern.'",
+        "2006 10-K: 'first introduced in 2002 with a single model in six colors'; 'Initially, we targeted our products to water sports enthusiasts'; launch of the 'Beach model in 2002'",
+        "2008 10-K: 'We consider the formulation of Croslite ... to be a valuable trade secret.'",
+        "2025 revenues include the HEYDUDE brand: say 'the company'"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new"
+    }
+  ]
+}

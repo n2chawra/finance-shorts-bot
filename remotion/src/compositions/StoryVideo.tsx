@@ -159,7 +159,7 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe, atFrame }) =
       {!cover && <StoryHud tl={timeline} index={i} beat={cur} frame={frame} fps={fps} />}
       <Vignette />
       <Grain />
-      {!cover && cur.scene !== "end" && <LogoBug w={timeline.width} h={timeline.height} logo={timeline.logo} />}
+      {!cover && cur.scene !== "end" && cur.scene !== "doc" && <LogoBug w={timeline.width} h={timeline.height} logo={timeline.logo} />}
       {!cover && timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} scene={cur.scene} />}
       {!cover && !hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} low={cur.scene === "board"} />}
       {probe && <LayoutProbe frame={frame} />}

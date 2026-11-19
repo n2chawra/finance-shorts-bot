@@ -271,11 +271,16 @@ def winning_short(topic: dict, root: Path = ROOT, today: str | None = None) -> s
     published in the last WIN_DAYS days with WIN_MIN_VIEWS+ views, ranked by stayed to watch then views,
     one in the top third (agents/scout.md 1a)."""
     sid = topic.get("from_short")
-    if not sid:
-        return "names no `from_short` (a long video expands one of our recent Shorts in the top third by stayed to watch)"
     try:
         videos = json.loads((cpath(root, "metrics/videos.json")).read_text(encoding="utf-8")).get("videos", [])
     except (OSError, ValueError):
+        videos = None    # no metrics here (tests, a fresh clone): trust the topic
+    if not sid:
+        # a new channel's samples (setup, 2026-11-19): it has published no Short yet, so there is none to expand
+        if videos is not None and not any(x.get("format", "short") == "short" for x in videos):
+            return None
+        return "names no `from_short` (a long video expands one of our recent Shorts in the top third by stayed to watch)"
+    if videos is None:
         return None      # no metrics here (tests, a fresh clone): trust the topic
     v = next((x for x in videos if x.get("id") == sid), None)
     if v is None:

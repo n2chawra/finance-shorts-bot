@@ -805,6 +805,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                   **({"music_under_voice_db": under} if under is not None else {})},
         # the channel's own corner logo (generator/pack.py logo): "sikka", a remotion/public path, or None
         "logo": channel_pack.logo(),
+        # the channel's cast (channel.json look.cast): "none" for a channel told without characters (the business
+        # documentaries, 2026-11-19), whose end card and corner draw no cast; absent for channel #1
+        **({"cast": "none"} if (pack.get("look") or {}).get("cast") == "none" else {}),
         "disclaimer": disclaimer, "captions": True, "voiceMode": voice, "sources": sources, "currency": fm.currency,
         # A/B variants for this video ({id: "on" | "off"}, generator/experiments.py): scenes read them
         # with flag() in remotion/src/contract/flags.ts, and the render report hands them to the manifest

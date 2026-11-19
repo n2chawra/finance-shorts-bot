@@ -26,12 +26,13 @@ export type DocChartProps = {
   barFigs?: (string | undefined)[];   // bars: each bar's figure, written on its end as it lands (Python's strings)
   icons?: (string | undefined)[];     // bars: a cut-out logo or product under each bar instead of a word (public paths)
   drawAt?: number; drawLen?: number; figAt?: number;
+  plate?: boolean;             // false: no charcoal backdrop, a dark veil over the layer under it (a photo, footage)
   t: number; end: number; w: number; h: number;
 };
 
 export const DocChart: React.FC<DocChartProps> = ({
   kind = "line", values, labels = [], title, sub, figure, figLabel, hiBar, tone = "rise", zero = false, marks = [], barFigs = [], icons = [],
-  drawAt = 6, drawLen = 40, figAt, t, end, w, h,
+  drawAt = 6, drawLen = 40, figAt, plate = true, t, end, w, h,
 }) => {
   const id = `docchart-${useId().replace(/:/g, "")}`;
   const v = h > w;
@@ -59,7 +60,7 @@ export const DocChart: React.FC<DocChartProps> = ({
   const labelSize = fs(w, h, 30);
   const every = Math.max(1, Math.ceil(n / (v ? 5 : 8)));
   return (
-    <AbsoluteFill style={{ background: `radial-gradient(ellipse 90% 80% at 55% 45%, ${DOC.bg2}, ${DOC.bg})` }}>
+    <AbsoluteFill style={{ background: plate ? `radial-gradient(ellipse 90% 80% at 55% 45%, ${DOC.bg2}, ${DOC.bg})` : "rgba(10,10,12,0.62)" }}>
       <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: `${(endPt[0] / w) * 100}% ${(endPt[1] / h) * 100}%` }}>
         <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} style={{ position: "absolute", inset: 0 }}>
           <defs>

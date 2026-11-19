@@ -166,7 +166,8 @@ def problems(script: dict, out: Path) -> list[str]:
     """Everything wrong with a long video's thumbnails (specs, code, the pick and the rendered files)."""
     if script.get("format") != "long" or not script.get("thumbnail"):
         return []
-    root = out.parents[1] if len(out.parents) > 1 else ROOT
+    # the repo root above the video folder (channels/<slug>/videos/<id> since the multi-channel layout, 2026-11-17)
+    root = next((q for q in out.parents if (q / "remotion").is_dir()), ROOT)
     res: list[str] = []
     for k, th in specs(script):
         tag = "thumbnail" if k == "a" else f"thumbnail {k.upper()}"

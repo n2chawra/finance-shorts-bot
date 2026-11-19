@@ -56,7 +56,7 @@ and checks the params with `renderer/timeline/build.py` `doc_problems`. `DocBeat
 | `photo` | `PhotoPan` | `src`, `aspect`, `focus` [x,y], `move`, `amount`, `frame` full/polaroid/clipping/torn, `treatment` none/sepia/bw/archive, `caption`, `surface` desk/felt/dark/paper, `landAt`, `tilt`, `pos` |
 | `document` | `DocumentProp` | `src` + `box` [x,y,w,h], or `lines` + `header` {form, company, title} + `hi` + `phrase`; `pushAt`, `markAt`, `underAt`, `quote`, `quoteAt`, `source` {form, text, date}, `stamp`, `tilt`, `push`, `surface` |
 | `headline` | `Headline` | `items` [{outlet, date, title, deck?, style paper/web, hi?}], `on` [events], `markAt`, `plate` (false over footage) |
-| `chart` | `DocChart` | `type` line/bar, `values`, `labels`, `title`, `sub`, `figure`, `figLabel`, `figs`, `icons`, `hiBar`, `tone` rise/fall/neutral, `zero`, `marks` [{i, label, at?}], `drawAt`, `drawLen`, `countAt` |
+| `chart` | `DocChart` | `type` line/bar, `values`, `labels`, `title`, `sub`, `figure`, `figLabel`, `figs`, `icons`, `hiBar`, `tone` rise/fall/neutral, `zero`, `marks` [{i, label, at?}], `drawAt`, `drawLen`, `countAt`, `plate` (false: a dark veil over the layer under it instead of the charcoal backdrop) |
 | `timeline` | `Timeline` | `marks` [{year, label, at, src?}] |
 | `split` | `Split` | `left`/`right` {name, src, fit cover/contain, figure, sub, color}, `leftAt`, `rightAt`, `countAt`, `win`, `winAt` |
 | `map` | `DocMap` | `fit` [countries] or `center` [lon,lat] + `scale`, `hi` [countries], `pins` [{lonlat, label, on}] |
