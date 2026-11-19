@@ -24,9 +24,16 @@ every video look the same: one skyline, floating cards, a header of text. Never 
   **The country or region a line is about is traced** (owner, 2026-11-19: "the borders should be
   highlighted in an animated way, like lines rounding and completing over the corners"): its map fill gets
   `trace` going 0 → 1 over about a second from the word that names it (a bright line with a glowing head
-  runs round the border and closes, `flat/map.tsx`), then stays lit while the line is about it. A real
+  runs round the border and closes, `flat/map.tsx`), then stays lit while the line is about it, and the
+  country is **covered by its own flag** (`flag: "<Natural Earth name>"` beside `fill`; `flat/flags.tsx`
+  draws about 60, `FlagSheet` in Root shows them; a country the table lacks keeps its colour). A very thin
+  country (Chile, Gambia, Norway's coast) can't show its flag well: give it a planted `FlagArt` on a pole
+  beside it as well. A real
   person the line names (Napoleon, a king, an explorer) stands on the map as their photo head when
   `python -m generator.images` has or can fetch a freely licensed one (owner, same day).
+- **The hook shows the real subject** (owner, 2026-11-19, every channel with true stories): the person's
+  freely licensed photo head or the company's logo, big and named, from frame 0 (writer.md, "The first
+  frame"). Never a show's or film's poster, logo or frames: they are copyrighted.
 - **Every listed word is a picture, and something always moves** (owner, 2026-11-18: "small words spoken
   can be animation or shown, like the oil, cloth… keep animating things on screen as much as you can so
   users don't leave"). When a line names things in a row ("phones, clothes, cars and oil"), each one

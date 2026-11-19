@@ -2,14 +2,13 @@
  * A test reel for the map component (src/flat/map.tsx), 1080×1920, 6 s: the world map with Chile
  * recoloured, a route from Shanghai to Rotterdam drawing through Suez, Chile lifted onto India for
  * scale, Gambia framed inside Senegal, and (from 6 s) Greenland traced round its border with Greenland and
- * Denmark under their flags (the geo-flag-fill test's on side). For checking the look in stills; not part of any video.
+ * Denmark under their flags. For checking the look in stills; not part of any video.
  */
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 
 import { INK } from "../flat/kit";
-import { FLAG_FILL, Lift, MapLabel, MapPin, MapRoute, WorldMap } from "../flat/map";
-import { ExperimentsContext } from "../contract/flags";
+import { Lift, MapLabel, MapPin, MapRoute, WorldMap } from "../flat/map";
 
 const W = 1080, H = 1920;
 const k = (f: number, a: number, b: number) => interpolate(f, [a, b], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -31,12 +30,10 @@ export const MapSheet: React.FC = () => {
             <Lift name="Chile" to={[78, 22]} k={k(f, 60, 100)} rot={0} label={f > 100 ? "Chile" : undefined} />
           </WorldMap>
         ) : f >= 180 ? (
-          <ExperimentsContext.Provider value={{ [FLAG_FILL]: "on" }}>
             <WorldMap w={W} h={H} center={[-25, 66]} scale={1100} kind="flat" look="vintage" political={0.55}
               colors={{ Greenland: { fill: "#d9483b", flag: "Greenland", paint: k(f, 215, 245), trace: k(f, 185, 215) }, Denmark: { fill: "#d9483b", flag: "Denmark", k: k(f, 200, 215) } }}>
               <MapLabel at={[-41, 72.5]} text="Greenland" k={k(f, 190, 200)} />
             </WorldMap>
-          </ExperimentsContext.Provider>
         ) : (
           <WorldMap w={W} h={H} fit={["Gambia", "Senegal"]} pad={140} kind="flat" colors={{ Gambia: { fill: "#e8453c", k: k(f, 125, 140) }, Senegal: { fill: "#5fae6a" } }}>
             <MapLabel at={[-15.4, 13.45]} text="Gambia" k={k(f, 135, 145)} dy={-90} />

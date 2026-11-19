@@ -169,3 +169,4 @@ fix any beat near a limit as well.
   read "EMBERS" on the Costco Short). Keep signs at least 60 px inside the window the push-in ends on (the
   frame divided by the zoom, around the camera's centre), draw them at 48 px or more so a slight pull-back
   doesn't dip under 44, and keep real small print under 44 px.
+- **A channel's own voice pace sets the word count.** The tech channel's Shorts speak at about 164 words a minute since 2026-11-19 (owner: "increase the pace a little"), so 125–165 words fill 45–60 s; count at the channel's pace, never at the 150 of its recipe.

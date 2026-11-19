@@ -71,10 +71,6 @@ TEMPOS = {"long": 1.25, "short": 1.2}
 # (203-240 words a minute), while the picture keeps the 1.2 tempo; the writer adds words to fill the time.
 OCTOBER_PACE = "october-voice-pace"
 OCTOBER_VOICE = 1.4
-# a channel's own Shorts pace, a little faster (owner on the tech channel, 2026-11-19: "just increase the pace a
-# little bit"): the weekly loop's test of the channel's voiceSpeed x 1.09 (0.92 -> 1.0, ~151 -> ~164 words a minute)
-FASTER_VOICE = "faster-voice"
-FASTER_VOICE_SCALE = 1.09
 
 
 def voice_speed(script: dict, fmt: str, tempo: float) -> float:
@@ -82,8 +78,6 @@ def voice_speed(script: dict, fmt: str, tempo: float) -> float:
     2026-11-12 (the experiment was adopted into the weekly loop's first champion recipe)."""
     own = channel_pack.voice_speed(fmt) if "speed" not in script else None
     if own:   # the channel's own pace (channel.json voiceSpeed), never Paisa Panchayat's
-        if fmt == "short" and (script.get("experiments") or {}).get(FASTER_VOICE) == "on":
-            return round(own*FASTER_VOICE_SCALE, 3)
         return own
     if "speed" not in script and fmt == "short":
         return OCTOBER_VOICE

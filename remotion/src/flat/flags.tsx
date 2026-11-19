@@ -8,6 +8,7 @@
  *   <FlagArt name="Denmark" x y w h />   a flag filling a box (a planted flag, a sign, a country's fill)
  *   hasFlag("Denmark")                   whether the table has it
  *
+ * `cover` fills a box (a country) with the flag at its own 3:2 shape, centred, never stretched.
  * Names are Natural Earth's (the map's own: "United States of America", "Faeroe Is.").
  */
 import React from "react";
@@ -72,6 +73,32 @@ const star = (cx: number, cy: number, r: number, fill: string, key?: string | nu
 };
 const both = (...ds: Draw[]): Draw => (b) => ds.map((d, i) => <g key={i}>{d(b)}</g>);
 
+/** The Union Jack in a box (the UK, and Australia's canton). */
+const union: Draw = ({ x, y, w, h: hh }) => {
+  const t = hh * 0.2, s = hh * 0.12, id = `u${Math.round(x)}${Math.round(y)}${Math.round(w)}`;
+  return (
+    <g>
+      <defs><clipPath id={id}><rect x={x} y={y} width={w} height={hh} /></clipPath></defs>
+      <g clipPath={`url(#${id})`}>
+        <rect x={x} y={y} width={w} height={hh} fill="#012169" />
+        <path d={`M${x},${y} L${x + w},${y + hh} M${x + w},${y} L${x},${y + hh}`} stroke={W} strokeWidth={s * 1.6} />
+        <path d={`M${x},${y} L${x + w},${y + hh} M${x + w},${y} L${x},${y + hh}`} stroke="#c8102e" strokeWidth={s * 0.55} />
+        <rect x={x} y={y + hh / 2 - t * 0.85} width={w} height={t * 1.7} fill={W} />
+        <rect x={x + w / 2 - t * 0.85} y={y} width={t * 1.7} height={hh} fill={W} />
+        <rect x={x} y={y + hh / 2 - t / 2} width={w} height={t} fill="#c8102e" />
+        <rect x={x + w / 2 - t / 2} y={y} width={t} height={hh} fill="#c8102e" />
+      </g>
+    </g>
+  );
+};
+
+/** Canada's maple leaf, simplified, centred at (cx, cy), `size` tall. */
+const LEAF: [number, number][] = [[0, -50], [8, -35], [17, -38], [13, -14], [27, -28], [30, -20], [45, -24], [40, -8], [47, -4], [25, 14], [28, 24], [4, 20], [3, 45],
+  [-3, 45], [-4, 20], [-28, 24], [-25, 14], [-47, -4], [-40, -8], [-45, -24], [-30, -20], [-27, -28], [-13, -14], [-17, -38], [-8, -35]];
+const leaf = (cx: number, cy: number, size: number, fill: string) => (
+  <polygon points={LEAF.map(([a, b]) => `${(cx + (a * size) / 95).toFixed(1)},${(cy + (b * size) / 95).toFixed(1)}`).join(" ")} fill={fill} />
+);
+
 const FLAGS: Record<string, Draw> = {
   Denmark: nordic(R, W),
   Norway: nordic("#ba0c2f", W, "#00205b"),
@@ -106,7 +133,12 @@ const FLAGS: Record<string, Draw> = {
   Lithuania: h(["#fdb913", "#006a44", "#c1272d"]),
   Latvia: h(["#9e3039", W, "#9e3039"], [2, 1, 2]),
   Spain: h(["#aa151b", "#f1bf00", "#aa151b"], [1, 2, 1]),
-  Portugal: v(["#006600", "#ff0000"], [2, 3]),
+  Portugal: both(v(["#006600", "#ff0000"], [2, 3]), ({ x, y, w, h: hh }) => (
+    <g>
+      <circle cx={x + w * 0.4} cy={y + hh / 2} r={hh * 0.2} fill="none" stroke="#ffe900" strokeWidth={hh * 0.04} />
+      <rect x={x + w * 0.4 - hh * 0.09} y={y + hh / 2 - hh * 0.11} width={hh * 0.18} height={hh * 0.2} rx={hh * 0.05} fill={W} stroke="#ff0000" strokeWidth={hh * 0.03} />
+    </g>
+  )),
   Switzerland: ({ x, y, w, h: hh }) => {
     const s = Math.min(w, hh), a = s * 0.2, l = s * 0.62, cx = x + w / 2, cy = y + hh / 2;
     return (
@@ -117,41 +149,44 @@ const FLAGS: Record<string, Draw> = {
       </g>
     );
   },
-  "United Kingdom": ({ x, y, w, h: hh }) => {
-    const t = hh * 0.2, s = hh * 0.12;
-    return (
-      <g>
-        <rect x={x} y={y} width={w} height={hh} fill="#012169" />
-        <path d={`M${x},${y} L${x + w},${y + hh} M${x + w},${y} L${x},${y + hh}`} stroke={W} strokeWidth={s * 1.6} />
-        <path d={`M${x},${y} L${x + w},${y + hh} M${x + w},${y} L${x},${y + hh}`} stroke="#c8102e" strokeWidth={s * 0.55} />
-        <rect x={x} y={y + hh / 2 - t * 0.85} width={w} height={t * 1.7} fill={W} />
-        <rect x={x + w / 2 - t * 0.85} y={y} width={t * 1.7} height={hh} fill={W} />
-        <rect x={x} y={y + hh / 2 - t / 2} width={w} height={t} fill="#c8102e" />
-        <rect x={x + w / 2 - t / 2} y={y} width={t} height={hh} fill="#c8102e" />
-      </g>
-    );
-  },
+  "United Kingdom": union,
   "United States of America": ({ x, y, w, h: hh }) => {
     const sh = hh / 13, cw = w * 0.4, ch = sh * 7;
     return (
       <g>
         {Array.from({ length: 13 }, (_, i) => <rect key={i} x={x} y={y + i * sh} width={w} height={sh + 0.5} fill={i % 2 ? W : "#b22234"} />)}
         <rect x={x} y={y} width={cw} height={ch} fill="#3c3b6e" />
-        {Array.from({ length: 12 }, (_, i) => star(x + cw * (0.14 + (i % 4) * 0.24), y + ch * (0.2 + Math.floor(i / 4) * 0.3), ch * 0.1, W, `s${i}`))}
+        {Array.from({ length: 9 }, (_, r) => Array.from({ length: r % 2 ? 5 : 6 }, (_, c) =>
+          star(x + (cw * (2 * c + (r % 2 ? 2 : 1))) / 12, y + (ch * (r + 1)) / 10, ch * 0.045, W, `s${r}-${c}`)))}
       </g>
     );
   },
-  Canada: both(v(["#d80621", W, "#d80621"], [1, 2, 1]), ({ x, y, w, h: hh }) => star(x + w / 2, y + hh / 2, hh * 0.3, "#d80621")),
+  Canada: both(v(["#d80621", W, "#d80621"], [1, 2, 1]), ({ x, y, w, h: hh }) => leaf(x + w / 2, y + hh / 2, hh * 0.62, "#d80621")),
   Japan: disc(W, "#bc002d"),
   Bangladesh: disc("#006a4e", "#f42a41", 0.05),
-  India: both(h(["#ff9933", W, "#138808"]), ({ x, y, w, h: hh }) => (
-    <circle cx={x + w / 2} cy={y + hh / 2} r={hh * 0.12} fill="none" stroke="#000080" strokeWidth={Math.max(2, hh * 0.025)} />
+  India: both(h(["#ff9933", W, "#138808"]), ({ x, y, w, h: hh }) => {
+    const cx = x + w / 2, cy = y + hh / 2, r = hh * 0.13, sw = Math.max(1.5, hh * 0.018);
+    return (
+      <g stroke="#000080" strokeWidth={sw}>
+        <circle cx={cx} cy={cy} r={r} fill="none" />
+        {Array.from({ length: 24 }, (_, i) => <line key={i} x1={cx} y1={cy} x2={cx + r * Math.cos((i * Math.PI) / 12)} y2={cy + r * Math.sin((i * Math.PI) / 12)} strokeWidth={sw * 0.5} />)}
+        <circle cx={cx} cy={cy} r={r * 0.18} fill="#000080" />
+      </g>
+    );
+  }),
+  China: both(h(["#ee1c25"]), ({ x, y, w, h: hh }) => (
+    <g>
+      {star(x + w * (5 / 30), y + hh * (5 / 20), hh * 0.15, "#ffde00")}
+      {([[10, 2], [12, 4], [12, 7], [10, 9]] as const).map(([a, b], i) => star(x + w * (a / 30), y + hh * (b / 20), hh * 0.05, "#ffde00", i))}
+    </g>
   )),
-  China: both(h(["#ee1c25"]), ({ x, y, h: hh }) => star(x + hh * 0.3, y + hh * 0.3, hh * 0.18, "#ffff00")),
   Vietnam: both(h(["#da251d"]), ({ x, y, w, h: hh }) => star(x + w / 2, y + hh / 2, hh * 0.32, "#ffff00")),
-  Egypt: h(["#ce1126", W, K]),
+  Egypt: both(h(["#ce1126", W, K]), ({ x, y, w, h: hh }) => {
+    const cx = x + w / 2, cy = y + hh / 2, s = hh * 0.12;   // the eagle of Saladin, as a gold shield and wings
+    return <path d={`M${cx - s * 1.4},${cy - s * 0.5} L${cx - s * 0.5},${cy - s * 0.2} L${cx},${cy - s} L${cx + s * 0.5},${cy - s * 0.2} L${cx + s * 1.4},${cy - s * 0.5} L${cx + s * 0.5},${cy + s * 0.9} L${cx - s * 0.5},${cy + s * 0.9} Z`} fill="#c09300" />;
+  }),
   Yemen: h(["#ce1126", W, K]),
-  Sudan: h(["#d21034", W, K]),
+  Sudan: both(h(["#d21034", W, K]), ({ x, y, w, h: hh }) => <polygon points={`${x},${y} ${x + w * 0.33},${y + hh / 2} ${x},${y + hh}`} fill="#007229" />),
   Chad: v(["#002664", "#fecb00", "#c60c30"]),
   Mali: v(["#14b53a", "#fcd116", "#ce1126"]),
   Niger: both(h([O, W, G]), ({ x, y, w, h: hh }) => <circle cx={x + w / 2} cy={y + hh / 2} r={hh * 0.12} fill={O} />),
@@ -199,12 +234,21 @@ const FLAGS: Record<string, Draw> = {
       <g>
         <path d={`M${cx - r},${cy} A${r},${r} 0 0 1 ${cx + r},${cy} Z`} fill="#cd2e3a" />
         <path d={`M${cx - r},${cy} A${r},${r} 0 0 0 ${cx + r},${cy} Z`} fill="#0047a0" />
+        {/* the four trigrams, three bars each, on the diagonals */}
+        {[[-1, -1], [1, -1], [-1, 1], [1, 1]].map(([sx, sy], i) => {
+          const d = hh * 0.36, bx = cx + sx! * d * 1.2, by = cy + sy! * d * 0.8, ang = (Math.atan2(sy!, sx! * 1.5) * 180) / Math.PI + 90;
+          return (
+            <g key={i} transform={`translate(${bx} ${by}) rotate(${ang})`}>
+              {[-1, 0, 1].map((k) => <rect key={k} x={-hh * 0.12} y={k * hh * 0.045 - hh * 0.015} width={hh * 0.24} height={hh * 0.03} fill={K} />)}
+            </g>
+          );
+        })}
       </g>
     );
   }),
-  Australia: both(h(["#012169"]), ({ x, y, w, h: hh }) => (
+  Australia: both(h(["#012169"]), ({ x, y, w, h: hh }) => union({ x, y, w: w / 2, h: hh / 2 }), ({ x, y, w, h: hh }) => (
     <g>
-      {star(x + w * 0.25, y + hh * 0.72, hh * 0.13, W)}
+      {star(x + w * 0.25, y + hh * 0.75, hh * 0.13, W)}
       {star(x + w * 0.75, y + hh * 0.25, hh * 0.06, W)}
       {star(x + w * 0.65, y + hh * 0.5, hh * 0.06, W)}
       {star(x + w * 0.85, y + hh * 0.45, hh * 0.06, W)}
@@ -227,8 +271,28 @@ const FLAGS: Record<string, Draw> = {
 export const hasFlag = (name: string): boolean => !!FLAGS[name];
 
 /** A country's flag filling a box (stretched to it). Nothing for a country the table doesn't have. */
-export const FlagArt: React.FC<{ name: string; x?: number; y?: number; w: number; h: number; opacity?: number }> = ({ name, x = 0, y = 0, w, h: hh, opacity = 1 }) => {
+export const FlagArt: React.FC<{ name: string; x?: number; y?: number; w: number; h: number; opacity?: number; cover?: boolean }> = ({ name, x = 0, y = 0, w, h: hh, opacity = 1, cover = false }) => {
   const d = FLAGS[name];
   if (!d) return null;
-  return <g opacity={opacity}>{d({ x, y, w, h: hh })}</g>;
+  if (!cover) return <g opacity={opacity}>{d({ x, y, w, h: hh })}</g>;
+  // cover a box (a country's outline) at the flag's own 3:2 shape, centred, never stretched. A tall, thin
+  // country (Chile) gets the flag turned a quarter so its long side runs along the country, as map videos
+  // do; otherwise only one stripe would show
+  const tall = w / hh < 0.6;
+  const [bw, bh] = tall ? [hh, w] : [w, hh];
+  // a very long country (Chile, Gambia) takes the flag stretched along it, so every stripe shows; others keep 3:2
+  const long = bw / bh > 3;
+  const fw = long ? bw : bw / bh > RATIO ? bw : bh * RATIO, fh = long ? bh : fw / RATIO;
+  const cx = x + w / 2, cy = y + hh / 2;
+  return (
+    <g opacity={opacity} transform={tall ? `rotate(-90 ${cx} ${cy})` : undefined}>
+      {d({ x: cx - fw / 2, y: cy - fh / 2, w: fw, h: fh })}
+    </g>
+  );
 };
+
+/** Flags are drawn 3:2 (most national flags are 3:2 or near it). */
+export const RATIO = 1.5;
+
+/** Every country the table can draw. */
+export const FLAG_NAMES: string[] = Object.keys(FLAGS);

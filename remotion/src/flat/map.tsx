@@ -14,12 +14,13 @@
  * A country a line is about is highlighted with `colors[name].trace` (owner, 2026-11-19: "the borders
  * should be highlighted in an animated way, like lines rounding and completing over the corners"): a
  * bright line with a glowing head runs round its border and closes. `colors[name].flag` covers it with its
- * flag instead of its colour, in videos on the `geo-flag-fill` test (the owner: "test both").
+ * flag instead of its colour (owner, same day: "cover the map of country with flag rather than color"; made
+ * the default at once, no test).
  *
  * Everything is a pure function of its props: pass times from `motion(p)` (the kit), never Date or random.
  */
 import React, { createContext, useContext, useId, useMemo } from "react";
-import { geoAzimuthalEqualArea, geoCentroid, geoInterpolate, geoMercator, geoNaturalEarth1, geoPath, type GeoProjection } from "d3-geo";
+import { geoArea, geoAzimuthalEqualArea, geoCentroid, geoInterpolate, geoMercator, geoNaturalEarth1, geoPath, type GeoProjection } from "d3-geo";
 import { feature } from "topojson-client";
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import type { GeometryCollection, Topology } from "topojson-specification";
@@ -28,10 +29,7 @@ import world50 from "world-atlas/countries-50m.json";
 
 import { INK, STROKE, shade } from "./kit";
 import { FlagArt, hasFlag } from "./flags";
-import { useFlag } from "../contract/flags";
 
-/** The weekly loop's look test on the geography channel (cycle 1, 2026-11-19): a country's flag as its fill. */
-export const FLAG_FILL = "geo-flag-fill";
 
 type Country = Feature<Geometry, { name: string }>;
 
@@ -79,8 +77,8 @@ export type Fill = {
   /** a bright line runs round the border and closes as `trace` goes 0 -> 1, a glowing head on
    * its tip; at 1 the border stays lit. `traceColor` (default warm yellow) sets its colour */
   trace?: number; traceColor?: string;
-  /** the country's flag (a name the flag table has, usually its own) instead of `fill`, in `geo-flag-fill`
-   * videos; elsewhere, or for a flag the table lacks, `fill` as always */
+  /** the country's flag (a name the flag table has, usually its own) instead of `fill`, at its own 3:2
+   * shape covering the country; a flag the table lacks falls back to `fill` */
   flag?: string;
 };
 
@@ -153,7 +151,6 @@ export const WorldMap: React.FC<{
   const local = { x: -anchor[0] / ks, y: -anchor[1] / ks, w: w / ks, h: h / ks };
   const fxOf = (c: Country) => colors[c.properties.name] ?? colors[c.properties.name.toLowerCase()];
   const special = shown.filter((c) => fxOf(c));
-  const flagsOn = useFlag(FLAG_FILL);
   return (
     <MapCtx.Provider value={{ proj, path }}>
       {vintage ? (
@@ -202,11 +199,13 @@ export const WorldMap: React.FC<{
         const fillK = f.draw === undefined ? 1 : Math.max(0, (draw - 0.55) / 0.45);
         const [[x0, y0], [x1, y1]] = path.bounds(c);
         const from = f.from ? proj(f.from) : null;
+        // a flag covers the country's main land (the USA's lower 48, not a box that takes in Alaska and Hawaii)
+        const [[mx0, my0], [mx1, my1]] = path.bounds(mainland(c));
         const [px, py] = from ?? [(x0 + x1) / 2, (y0 + y1) / 2];
         const R = Math.max(Math.hypot(px - x0, py - y0), Math.hypot(px - x1, py - y1), Math.hypot(px - x0, py - y1), Math.hypot(px - x1, py - y0));
         const cid = `p${uid}${String(c.id ?? name).replace(/[^a-zA-Z0-9]/g, "")}`;
         const up = lift * 18;
-        const flagName = flagsOn && f.flag && hasFlag(f.flag) ? f.flag : null;
+        const flagName = f.flag && hasFlag(f.flag) ? f.flag : null;
         const trace = traceK;
         const tc = f.traceColor ?? "#ffd84a";
         const tw = STROKE * 2.2;
@@ -218,7 +217,7 @@ export const WorldMap: React.FC<{
             <g transform={`translate(0 ${-up})`}>
               {unseen ? null : flagName ? (
                 <g opacity={fillK * Math.max(0, Math.min(1, f.k ?? 1))} clipPath={paint < 1 ? `url(#${cid})` : undefined}>
-                  <g clipPath={`url(#${cid}f)`}><FlagArt name={flagName} x={x0} y={y0} w={x1 - x0} h={y1 - y0} /></g>
+                  <g clipPath={`url(#${cid}f)`}><FlagArt name={flagName} x={mx0} y={my0} w={mx1 - mx0} h={my1 - my0} cover /></g>
                 </g>
               ) : <path d={d(c)} fill={fillOf(f)} opacity={fillK} clipPath={paint < 1 ? `url(#${cid})` : undefined} />}
               {unseen ? null : <path d={d(c)} fill="none" stroke={outline} strokeWidth={STROKE * 0.8} strokeLinejoin="round"
@@ -345,6 +344,18 @@ export const Lift: React.FC<{ name: string; to: [number, number]; k?: number; fi
     </g>
   );
 };
+
+/** A country's largest piece of land (by area on the globe): the USA's lower 48, mainland France, Chile without its islands. */
+function mainland(c: Country): Country {
+  const g = c.geometry;
+  if (g.type !== "MultiPolygon") return c;
+  let best = g.coordinates[0]!, area = -1;
+  for (const poly of g.coordinates) {
+    const a = geoArea({ type: "Polygon", coordinates: poly });
+    if (a > area) { area = a; best = poly; }
+  }
+  return { ...c, geometry: { type: "Polygon", coordinates: best } };
+}
 
 /** A blend of two hex colours (a recolour landing on a word). */
 function mix(a: string, b: string, k: number): string {
