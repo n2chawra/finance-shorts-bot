@@ -1,0 +1,60 @@
+{
+  "_source": "ColdFusion long video, watched in the built-in browser 2026-11-18: frame mosaics (0-15 s dense, 18-90 s every 3-6 s, then 180/300/450/640/900/1250/1570 s), 0.2 s burst at 2-3 s and 0.5 s burst at 72-75 s, word timings from YouTube's transcript panel (about 200 words a minute), sound probe 73-163 s. Our own descriptions; shots after 95 s are spot samples, not a full list. 2.7M views in 3 days.",
+  "durationSec": 1583,
+  "artStyle": "stock footage",
+  "language": "en",
+  "narrator": { "kind": "human voice", "pace": "fast" },
+  "captions": { "style": "none", "position": "none" },
+  "music": { "present": true, "energy": "medium" },
+  "sfxPerMinute": 8,
+  "hook": {
+    "firstFrame": "a dark stock chart, thin orange price line with the company logo top-left, faint grid",
+    "firstLine": "Opens on the size of the company's market-value loss in four trading days.",
+    "question": false,
+    "subjectNamedAtSec": 2,
+    "figureShownAtSec": 2,
+    "figureSpokenAtSec": 0
+  },
+  "shots": [
+    { "start": 0, "end": 2, "picture": "dark stock chart, orange line drawing on left to right, logo and price top-left", "kind": "chart", "characters": 0, "camera": "pan", "transition": "none", "onScreenText": "logo + share price", "figureOnScreen": true, "motion": 2 },
+    { "start": 2, "end": 7, "picture": "the line dives at its end, orange '-$500 Billion' label beside the drop, a dated dot lands", "kind": "chart", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "-$500 Billion", "figureOnScreen": true, "motion": 2 },
+    { "start": 7, "end": 12, "picture": "press photo of the CEO on stage in a leather jacket, slow push", "kind": "photo", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 12, "end": 15, "picture": "a news headline page announcing the CEO's exit, dimmed photo behind", "kind": "text card", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "headline", "figureOnScreen": false, "motion": 1 },
+    { "start": 15, "end": 20, "picture": "news photo of the CEO with a head of state", "kind": "photo", "characters": 2, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 20, "end": 29, "picture": "black frame: orange pie chart of chip market share, client logos stack in below it one per name, CEO footage cut out on the right", "kind": "mixed", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "market share + 5 logos", "figureOnScreen": true, "motion": 2 },
+    { "start": 29, "end": 33, "picture": "drone-style footage of the company headquarters atrium", "kind": "footage", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 33, "end": 37, "picture": "big orange '5-6%' with a small grey line under it on a dark blurred background", "kind": "text card", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "5-6% of the S&P 500", "figureOnScreen": true, "motion": 1 },
+    { "start": 37, "end": 41, "picture": "a financial news article scrolling, headline about AI spending driving growth", "kind": "text card", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "article headline", "figureOnScreen": false, "motion": 1 },
+    { "start": 41, "end": 46, "picture": "TV morning-show clip with a lower-third about the CEO", "kind": "footage", "characters": 5, "camera": "static", "transition": "cut", "onScreenText": "news lower third", "figureOnScreen": false, "motion": 1 },
+    { "start": 46, "end": 54, "picture": "the company's logo sign on a stone wall, slow drift", "kind": "footage", "characters": 0, "camera": "pan", "transition": "cut", "onScreenText": "logo", "figureOnScreen": false, "motion": 1 },
+    { "start": 54, "end": 63, "picture": "archive photos of the young founder in the 1990s office", "kind": "photo", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 63, "end": 70, "picture": "street footage of the CEO gesturing to reporters", "kind": "footage", "characters": 1, "camera": "follow", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 2 },
+    { "start": 70, "end": 80, "picture": "light graph-paper board: photo cards slide in one by one with long soft shadows, then a dark '?' card for the unknown person", "kind": "photo", "characters": 3, "camera": "pan", "transition": "cut", "onScreenText": "?", "figureOnScreen": false, "motion": 2 },
+    { "start": 80, "end": 95, "picture": "cable-news investigation clips about chips reaching China, then a talking-head interview", "kind": "footage", "characters": 2, "camera": "static", "transition": "cut", "onScreenText": "news lower third", "figureOnScreen": false, "motion": 1 },
+    { "start": 95, "end": 180, "picture": "agency seals over a dark photo, news clips, interview clips (spot-sampled)", "kind": "mixed", "characters": 1, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 180, "end": 300, "picture": "a report page in grey text with one sentence lit black and the rest dimmed", "kind": "text card", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "highlighted sentence", "figureOnScreen": false, "motion": 1 },
+    { "start": 300, "end": 450, "picture": "a public statement as grey text on near-black, the current sentence lit white", "kind": "text card", "characters": 0, "camera": "static", "transition": "cut", "onScreenText": "lit statement line", "figureOnScreen": false, "motion": 1 },
+    { "start": 450, "end": 640, "picture": "server-rack footage with a huge white '1000x' over it", "kind": "mixed", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "1000x", "figureOnScreen": true, "motion": 1 },
+    { "start": 640, "end": 900, "picture": "3D render of an AI accelerator board, top-down, dark", "kind": "object", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 900, "end": 1250, "picture": "a white stock-chart screenshot of the share price falling", "kind": "chart", "characters": 0, "camera": "push in", "transition": "cut", "onScreenText": "share price", "figureOnScreen": true, "motion": 1 },
+    { "start": 1250, "end": 1570, "picture": "interview clips of an investor on a dark stage, news footage", "kind": "person on camera", "characters": 1, "camera": "static", "transition": "cut", "onScreenText": "", "figureOnScreen": false, "motion": 1 },
+    { "start": 1570, "end": 1583, "picture": "moody dark office at night, a man at a desk, city lights outside (outro)", "kind": "footage", "characters": 1, "camera": "push in", "transition": "fade", "onScreenText": "", "figureOnScreen": false, "motion": 1 }
+  ],
+  "lines": [
+    { "start": 0, "end": 6, "words": 20, "job": "hook", "gist": "the staggering value the company lost in days as its famous CEO leaves" },
+    { "start": 6, "end": 15, "words": 22, "job": "promise", "gist": "this personal scandal matters more than gossip, and here is why" },
+    { "start": 15, "end": 32, "words": 40, "job": "stakes", "gist": "the company makes nearly all advanced AI chips and powers every big AI lab" },
+    { "start": 32, "end": 43, "words": 30, "job": "stakes", "gist": "it is a big slice of the stock index and of national growth" },
+    { "start": 43, "end": 52, "words": 25, "job": "stakes", "gist": "if you own a pension or index fund, you own a piece of it" },
+    { "start": 52, "end": 68, "words": 42, "job": "context", "gist": "the founder ran it for three decades with a flat structure and no deputy" },
+    { "start": 68, "end": 82, "words": 40, "job": "turn", "gist": "three affairs, one with a suspected foreign intelligence asset" },
+    { "start": 82, "end": 95, "words": 38, "job": "stakes", "gist": "frontier chips are strategic weapons, so this is a security problem; a pundit agrees" }
+  ],
+  "ending": { "loops": false, "cta": "subscribe / see other episodes (spoken), closing proverb", "lastFrame": "dark office at night, a lone figure at a desk" },
+  "whyItWorks": [
+    "The biggest number lands in the first second as a chart line diving, with one orange label; the story question comes after.",
+    "Stakes are widened in steps (company, market, economy, your pension) before the backstory starts at 52 s.",
+    "Documents are shown as dimmed text with only the spoken sentence lit, so reading and listening line up.",
+    "Every 4-5 s a new picture, mostly real footage and photos; the few made graphics are orange-on-black and minimal."
+  ]
+}
