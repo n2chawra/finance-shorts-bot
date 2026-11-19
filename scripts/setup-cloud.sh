@@ -27,4 +27,13 @@ fi
 if ! command -v ffmpeg >/dev/null; then
   apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends ffmpeg
 fi
-echo "setup-cloud: ready (voice, remotion packages, chrome, ffmpeg)"
+# documentary channels (look.engine "doc", generator/media): media goes to a temp cache, never the repo;
+# SEC filing pages need SEC_USER_AGENT ("Name contact@address"), set as an environment variable on the
+# routine environment (claude.ai), never in this public repo. Without it the fetcher skips EDGAR only.
+export MEDIA_CACHE="${MEDIA_CACHE:-${TMPDIR:-/tmp}/media-cache}"
+mkdir -p "$MEDIA_CACHE"
+if [ -z "${SEC_USER_AGENT:-}" ]; then
+  echo "setup-cloud: note: SEC_USER_AGENT is not set; doc channels can't fetch SEC filing pages" >&2
+fi
+"$PY" -c "import PIL" 2>/dev/null || "$PY" -m pip install -q pillow || "$PY" -m pip install -q --break-system-packages pillow
+echo "setup-cloud: ready (voice, remotion packages, chrome, ffmpeg, media cache)"

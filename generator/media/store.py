@@ -16,7 +16,16 @@ from pathlib import Path
 from ..channels import channel_root
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_CACHE = Path("E:/media-cache")
+def _default_cache() -> Path:
+    """E:\\media-cache on the owner's PC; the system temp folder anywhere else (the cloud has no E: drive,
+    and a relative "E:/media-cache" there would land inside the repo)."""
+    import tempfile
+    if os.name == "nt" and Path("E:/").is_dir():
+        return Path("E:/media-cache")
+    return Path(tempfile.gettempdir()) / "media-cache"
+
+
+DEFAULT_CACHE = _default_cache()
 
 
 class MediaError(Exception):

@@ -110,10 +110,15 @@ def fetch(slug: str, ref: str, max_mb: int = MAX_MB, root: Path = ROOT) -> dict:
 # ---- EDGAR ---------------------------------------------------------------------------------------------
 
 def browser() -> str | None:
+    import glob
     import os
-    for cand in (os.environ.get("BROWSER_PATH"), r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+    # the cloud routine image has no Chrome on PATH, only Playwright's headless shell (the one Remotion renders with)
+    shells = sorted(glob.glob("/opt/pw-browsers/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell")
+                    + glob.glob("/opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell"))
+    for cand in (os.environ.get("BROWSER_PATH"), os.environ.get("REMOTION_BROWSER_EXECUTABLE"),
+                 r"C:\Program Files\Google\Chrome\Application\chrome.exe",
                  r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe", r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
-                 shutil.which("chromium"), shutil.which("google-chrome"), shutil.which("chrome"), shutil.which("msedge")):
+                 shutil.which("chromium"), shutil.which("google-chrome"), shutil.which("chrome"), shutil.which("msedge"), *shells):
         if cand and Path(cand).is_file():
             return cand
     return None
@@ -136,7 +141,9 @@ def render_page(fragment: str, out: Path, base_url: str, plain: bool = False) ->
         f.write_text(f"<!doctype html><html><head><meta charset='utf-8'><base href='{base_url}/'>{PAGE_CSS}</head>"
                      f"<body>{body}</body></html>", encoding="utf-8")
         shot = Path(tmp) / "shot.png"
-        subprocess.run([exe, "--headless=new", "--disable-gpu", "--hide-scrollbars", f"--user-data-dir={Path(tmp) / 'profile'}",
+        # a headless shell is headless already and runs as root in the cloud (needs --no-sandbox)
+        flags = ["--no-sandbox"] if "headless" in Path(exe).name else ["--headless=new"]
+        subprocess.run([exe, *flags, "--disable-gpu", "--hide-scrollbars", f"--user-data-dir={Path(tmp) / 'profile'}",
                         "--window-size=1100,2400", "--force-device-scale-factor=2", "--virtual-time-budget=4000", f"--screenshot={shot}", f.as_uri()],
                        capture_output=True, timeout=120)
         if not shot.is_file():
