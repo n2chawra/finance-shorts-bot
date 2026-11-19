@@ -1,0 +1,139 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:04:17.008408+00:00",
+    "finishedAt": "2026-11-19T22:04:17.008408+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T22:04:53.751216+00:00",
+    "finishedAt": "2026-11-19T22:04:53.751216+00:00",
+    "notes": [
+      "15 figures computed from inputs; 15 cross-checked against closed-form formulas.",
+      "0 dated steps; a true-history dates at least 2 moments (facts with unit \"year\")"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:05:09.339301+00:00",
+    "finishedAt": "2026-11-19T22:05:09.339301+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:05:10.249043+00:00",
+    "finishedAt": "2026-11-19T22:05:10.249043+00:00",
+    "notes": [
+      "15 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:06:02.163242+00:00",
+    "finishedAt": "2026-11-19T22:06:02.163242+00:00",
+    "notes": [
+      "Facts confirmed on source pages: fact1 $275M (NBA.com/AP: 'the team he bought in 2010 for about $275 million', majority ownership); fact2 ~$3B (CBS Sports 3 Aug 2023: 'sold at a valuation of approximately $3 billion', Jordan keeps minority stake). 'Not one playoff round won' matches both (no playoff series won in 13 seasons). Equal national-TV share is general NBA mechanics (ESPN, SBJ); 2016 deal $24B/9y far bigger than prior. Payoff says 'the team was valued at', true to the majority-stake sale. Description ends with the disclaimer; no advice or imperative. Note: hook could say 'for the team he controlled' per the verify list, but its wording matches AP and CBS."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:07:38.631713+00:00",
+    "finishedAt": "2026-11-19T22:07:38.631713+00:00",
+    "notes": [
+      "15 figures computed from inputs; 15 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T22:08:01.209153+00:00",
+    "finishedAt": "2026-11-19T22:08:44.694270+00:00",
+    "notes": [
+      "text 'L' at 9.0 s runs outside the frame",
+      "2.5 s with nothing new on screen in beat 'hook' (at most 2.5 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:09:19.217109+00:00",
+    "finishedAt": "2026-11-19T22:09:55.228180+00:00",
+    "notes": [
+      "31 s, ocean/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:10:39.327642+00:00",
+    "finishedAt": "2026-11-19T22:11:15.471292+00:00",
+    "notes": [
+      "31 s, ocean/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-19T22:12:19.105893+00:00",
+    "finishedAt": "2026-11-19T22:12:19.105893+00:00",
+    "notes": [
+      "[scene] hook beat, ~2.0-3.9 s (the thumbnail frame at 2.4 s): in the close shot after 'paid' the gold $275M price tag (remotion/src/videos/v-20261120-03/Hook.tsx line 42, Tag at x=330 y=500 w=420 h=140) lands on Jordan's photo head and hides his forehead, eyebrows and the top of his eyes; the thumbnail therefore has the figure covering the face and his photo looks cut through. Move the tag up/aside (e.g. hang it from the scoreboard above the head, or beside him at the ball side) so the whole face stays clear at the close size, then re-render the thumbnail."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:12:59.414289+00:00",
+    "finishedAt": "2026-11-19T22:13:32.917612+00:00",
+    "notes": [
+      "31 s, ocean/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:13:38.923502+00:00",
+    "finishedAt": "2026-11-19T22:14:13.468463+00:00",
+    "notes": [
+      "31 s, ocean/cinematic (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:15:17.432580+00:00",
+    "finishedAt": "2026-11-19T22:15:17.432580+00:00",
+    "notes": [
+      "Re-review after the Hook.tsx fix: stills every 0.5 s through 1.5-4.0 s show the $275M tag left of Jordan's photo head with the whole face clear and the tag in frame; thumbnail face clear (tag just touches the left edge, figure fully readable); 7 places with figures on boards/tags, loop back to the first frame, pick-one ending, disclaimer at the end, layout/craft empty, 31 s, audio -1.0/-16.9 dB."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:15:27.937585+00:00",
+    "finishedAt": "2026-11-19T22:16:52.389574+00:00",
+    "notes": [
+      "31 s, ocean/cinematic, peak -1.0 dB, mean -16.9 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-19T22:16:55.959557+00:00",
+    "finishedAt": "2026-11-19T22:16:55.959557+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
