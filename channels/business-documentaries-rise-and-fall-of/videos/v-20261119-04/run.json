@@ -1,0 +1,298 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:42:49.149941+00:00",
+    "finishedAt": "2026-11-19T08:42:49.149941+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:48:57.478634+00:00",
+    "finishedAt": "2026-11-19T08:48:57.478634+00:00",
+    "notes": [
+      "beat 'hook'.params.things[0] contains a typed number; use a placeholder: 'Dyson DC01 vacuum'",
+      "the picture shows figures the voice never says (turn {year}): say each one where it appears, with what it means (\"he gets {x} now, and {y} waits ten years\"), or take it off the picture; viewers can't follow numbers nobody explains",
+      "1 dated steps; a true-history dates at least 2 moments (facts with unit \"year\")",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 0 questions in about 42 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the title 'Dyson Built {fact1} Vacuums Before One Worked' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:49:18.158764+00:00",
+    "finishedAt": "2026-11-19T08:49:18.158764+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:49:21.265531+00:00",
+    "finishedAt": "2026-11-19T08:49:21.265531+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "warning: beat 'payoff' runs 7.7 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 0 questions in about 43 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the title 'The Vacuum That Took {fact1} Tries Became Dyson' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:49:31.955169+00:00",
+    "finishedAt": "2026-11-19T08:49:31.955169+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "warning: beat 'payoff' runs 7.7 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 0 questions in about 43 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the title 'The Vacuum That Took {fact1} Tries Became Dyson' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:49:47.770521+00:00",
+    "finishedAt": "2026-11-19T08:49:47.770521+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "warning: beat 'payoff' runs 7.7 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 0 questions in about 42 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the title 'The Vacuum That Took {fact1} Tries Became Dyson' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:50:29.075723+00:00",
+    "finishedAt": "2026-11-19T08:50:29.075723+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "warning: beat 'payoff' runs 7.7 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 41 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the title 'The Vacuum That Took {fact1} Tries Became Dyson' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:52:10.167540+00:00",
+    "finishedAt": "2026-11-19T08:52:10.167540+00:00",
+    "notes": [
+      "Facts: 5,127 prototypes, DC01 success 1993 and both wife quotes (counting pennies, art lessons for extra cash) confirmed on the Gizmodo page (10 Apr 2011); 2025 revenue GBP 6.13bn confirmed by search (dyson.co.uk 2025 results release of 26 Mar 2026 in results, plus channelnews.com.au and others: down from GBP 6.57bn). Verify item met: no prototype years stated. 'Last year' = 2025, current. Description ends with disclaimer; no advice, tone fine. Notes: hook 'Your Dyson took 5,127 tries' is loose (it was the first Dyson, not the viewer's model); 1993 is the DC01 launch per Gizmodo, while other accounts date the 5,127th prototype earlier (licensed in Japan in the 1980s) - acceptable as sourced."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:52:21.579690+00:00",
+    "finishedAt": "2026-11-19T08:55:40.098814+00:00",
+    "notes": [
+      "text 'SOURCE' at 36.2 s is 35.4 px, below the 44 px minimum",
+      "2 of 11 stills are mostly empty background (at 15 s, 47 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 41 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:56:54.143480+00:00",
+    "finishedAt": "2026-11-19T08:56:54.143480+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the title 'The Vacuum That Took {fact1} Tries Became Dyson' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T08:57:33.060546+00:00",
+    "finishedAt": "2026-11-19T08:57:33.060546+00:00",
+    "notes": [
+      "Re-review of revised hook ('Dyson took 5,127 tries') and turn ('Then, in 1993, the first Dyson finally went on sale under his own name', label 'the first Dyson on sale'): 5,127 confirmed on Gizmodo (10 Apr 2011); 1993 DC01 launch as the first Dyson-branded vacuum confirmed by Gizmodo (DC01, 1993) and by search (Dyson's own materials and Wikipedia: launched 1993; the earlier G-Force was sold in Japan under licence, not under his name). Both earlier notes are resolved. Other beats unchanged: wife quotes on Gizmodo, GBP 6.13bn 2025 revenue confirmed by search (Dyson results release 26 Mar 2026 plus outlets), verify item met, disclaimer present."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T08:57:06.896568+00:00",
+    "finishedAt": "2026-11-19T08:59:25.024284+00:00",
+    "notes": [
+      "3.1 s with nothing new on screen in beat 'turn' (at most 3.0 s): add an action on the phrase being said there",
+      "3 of 11 stills are mostly empty background (at 15 s, 40 s, 46 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "warning: beat 'turn' runs 6.3 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:00:51.159785+00:00",
+    "finishedAt": "2026-11-19T09:00:51.159785+00:00",
+    "notes": [
+      "beat 'turn': params.overlays[1].out 'sale' is not one of this beat's events (name the word in `events` first)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the title 'The Vacuum That Took {fact1} Tries Became Dyson' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:01:03.217083+00:00",
+    "finishedAt": "2026-11-19T09:01:03.217083+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the title 'The Vacuum That Took {fact1} Tries Became Dyson' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:01:15.932940+00:00",
+    "finishedAt": "2026-11-19T09:04:11.872610+00:00",
+    "notes": [
+      "46 s, ember/dossier (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:04:54.759803+00:00",
+    "finishedAt": "2026-11-19T09:07:56.264757+00:00",
+    "notes": [
+      "46 s, ember/dossier (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:10:03.005002+00:00",
+    "finishedAt": "2026-11-19T09:10:03.005002+00:00",
+    "notes": [
+      "PASS: 46 s (channel 30-55), 7 beats each in a real photographed place (DC01 hallway, bin close-up, clogged bag, cyclone, B/W bench + Gizmodo quote card, Dyson store, Suzhou gold poster, robot vacuum, back to DC01); figures on things (5,127 count over the DC01, 1993 tag, GBP 6.13B poster with source chip); first frame + line name Dyson without the payoff; ending loops into the hook; channel disclaimer on last frames; no overlaps, cut-offs or placeholders; audio -1.0/-17.5 dB; layout and craft problems empty. Minor: GBP 6.13B shows twice at 35 s (poster + caption), harmless."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:10:23.046231+00:00",
+    "finishedAt": "2026-11-19T09:13:31.886332+00:00",
+    "notes": [
+      "render.ts video failed:\nprogress 0.00\nprogress 0.02\nprogress 0.04\nprogress 0.06\nprogress 0.08\nprogress 0.10\nprogress 0.12\nprogress 0.14\nprogress 0.16\nprogress 0.18"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:15:10.450429+00:00",
+    "finishedAt": "2026-11-19T09:16:26.929396+00:00",
+    "notes": [
+      "render.ts stills failed:\nTimeoutError: Timed out after 25000 ms while trying to connect to the browser! Chrome logged the following:\n    at Timeout.onTimeout (file:///E:/finance-shorts-bot/remotion/node_modules/@remotion/renderer/dist/esm/index.mjs:4176:14)\n    at listOnTimeout (node:internal/timers:605:17)\n    at process.processTimers (node:internal/timers:541:7)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:16:44.158993+00:00",
+    "finishedAt": "2026-11-19T09:18:33.288408+00:00",
+    "notes": [
+      "46 s, ember/dossier (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:19:16.429749+00:00",
+    "finishedAt": "2026-11-19T09:28:47.873104+00:00",
+    "notes": [
+      "render.ts video failed:\nprogress 0.00\nprogress 0.02\nprogress 0.04\nprogress 0.06\nprogress 0.08\nprogress 0.10\nprogress 0.12\n\u001b[33mBrowser failed to load http://localhost:3000/proxy?src=http%3A%2F%2Flocalhost%3A3000%2Fpublic%2Fmedia%2Fbusiness-documentaries-rise-and-fall-of%2Fcommons-video-robot-vacuum-cleaner-japan-2024-june-24-22dfbebd.webm&time=5.9&transparent=false&toneMapped=true (Fetch): net::ERR_FAILED\u001b[39m\n\u001b[33mThis could be caused by Chrome rejecting the request because the disk space is low.\u001b[39m\n\u001b[33mThis could be caused by Chrome rejecting the request because the disk space is low.\u001b[39m\n\u001b[33mConsider increasing the disk size of your Lambda function.\u001b[39m\n\u001b[40m http://localhost:3000/proxy?src=http%3A%2F%2Flocalhost%3A3000%2Fpublic%2Fmedia%2Fbusiness-documentaries-rise-and-fall-of%2Fcommons-video-robot-vacuum-cleaner-japan-2024-june-24-22dfbebd.webm&time=5.9&transparent=false&toneMapped=true \u001b[49m \u001b[31mFailed to load resource: net::ERR_FAILED\u001b[39m\n💡 On Lambda, one reason this could happen is that Chrome is rejecting an asset to be loaded when it is running low on disk space.\nTry increasing the disk size of your Lambda function.\nError: Failed to fetch http://localhost:3000/proxy?src=http%3A%2F%2Flocalhost%3A3000%2Fpublic%2Fmedia%2Fbusiness-documentaries-rise-and-fall-of%2Fcommons-video-robot-vacuum-cleaner-japan-2024-june-24-22dfbebd.webm&time=5.9&transparent=false&toneMapped=true. This could be caused by Chrome rejecting the request because the disk space is low. Consider increasing the disk size of your environment.\n    at execute (http://localhost:3000/bundle.js:184003:17)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:32:08.878615+00:00",
+    "finishedAt": "2026-11-19T09:32:08.878615+00:00",
+    "notes": [
+      "[script] 40.0 s (ending beat, 'So next time your vacuum clogs'): the new footage shows no vacuum. The frame is a dark carpet, a black bookcase and a blurred brown shape (looks like an animal's snout) top-left, under the caption YOUR VACUUM. On mute the beat says nothing and the picture doesn't match the line. Re-trim or refocus the footage (trim/focus) so the red vacuum is big in frame from 'next' through 'clogs', or choose a clip where it is. The rest passes: the corner icon is gone, GBP 6.13B shows once at 35 s, 46 s, audio -1.0/-17.5 dB, layout and craft problems empty."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T09:35:24.345330+00:00",
+    "finishedAt": "2026-11-19T09:36:53.750140+00:00",
+    "notes": [
+      "2 of 11 stills are mostly empty background (at 35 s, 40 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:40:05.271225+00:00",
+    "finishedAt": "2026-11-19T09:40:05.271225+00:00",
+    "notes": [
+      "PASS on re-review: 40 s now fills the frame with a modern Dyson's cyclone ring under YOUR VACUUM, then cuts back to the DC01 (45 s) for the loop. Corner icon gone, GBP 6.13B shown once on the poster at 35 s. 46 s, audio -1.0/-17.5 dB, layout_problems empty. craft_problems flags 35 s and 40 s as 'mostly empty background'. On the stills this is a false positive: 40 s is a full-frame close-up and 35 s is the gold poster with a big figure over the store."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:37:29.700839+00:00",
+    "finishedAt": "2026-11-19T09:47:42.285090+00:00",
+    "notes": [
+      "46 s, ember/dossier, peak -1.0 dB, mean -17.5 dB",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 40 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-19T09:49:34.691303+00:00",
+    "finishedAt": "2026-11-19T09:49:34.691303+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,103 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 51273,
+  "duration_sec": 46,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "dossier",
+    "key": "G",
+    "bpm": 80
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 0.9,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Dyson took 5,127 tries.",
+        "start": 0.3,
+        "seconds": 3.33,
+        "window": 4.0,
+        "fill": 0.833
+      },
+      {
+        "scene": "who",
+        "text": "Why so many? Its inventor, James Dyson, wanted one thing gone: the bag.",
+        "start": 4.3,
+        "seconds": 5.13,
+        "window": 5.77,
+        "fill": 0.889
+      },
+      {
+        "scene": "idea",
+        "text": "Bags clog, and the suction dies. His machine would spin the dust out instead, like a storm.",
+        "start": 10.07,
+        "seconds": 6.15,
+        "window": 6.73,
+        "fill": 0.914
+      },
+      {
+        "scene": "misery",
+        "text": "Prototype after prototype failed. Money got so tight that his wife gave art lessons for extra cash.",
+        "start": 16.8,
+        "seconds": 7.15,
+        "window": 7.8,
+        "fill": 0.917
+      },
+      {
+        "scene": "turn",
+        "text": "Then, in 1993, the first Dyson finally went on sale under his own name.",
+        "start": 24.6,
+        "seconds": 5.64,
+        "window": 6.27,
+        "fill": 0.9
+      },
+      {
+        "scene": "payoff",
+        "text": "Last year, Dyson took in £6.13B, selling machines like it all over the world.",
+        "start": 30.87,
+        "seconds": 6.95,
+        "window": 7.6,
+        "fill": 0.914
+      },
+      {
+        "scene": "ending",
+        "text": "So next time your vacuum clogs, remember: Dyson's fix took 5,127 tries.",
+        "start": 38.47,
+        "seconds": 6.87,
+        "window": 7.53,
+        "fill": 0.912
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.5,
+    "lufs": -15.5,
+    "music_under_voice_db": 18.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 6.223,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

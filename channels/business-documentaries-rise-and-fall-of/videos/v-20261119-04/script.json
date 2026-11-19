@@ -1,0 +1,904 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 51273,
+  "story": "founder_bet",
+  "shape": "the-long-shot",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "dossier",
+    "key": "G",
+    "bpm": 80
+  },
+  "arms": {
+    "length": "30-55",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "shock_number",
+  "cta": "Quit at fifty, or keep going to five thousand? Comment",
+  "feed_id": "2026-11-19-dyson-prototypes",
+  "facts": [
+    {
+      "label": "Prototypes James Dyson built before the bagless vacuum worked",
+      "value": 5127,
+      "unit": "count",
+      "as_of": "2011-04-10",
+      "source": "Gizmodo",
+      "url": "https://gizmodo.com/praising-failure-james-dyson-talks-vacuums-5-127-proto-5790556",
+      "fixed": true
+    },
+    {
+      "label": "Year the DC01 succeeded",
+      "value": 1993,
+      "unit": "year",
+      "as_of": "1993-01-01",
+      "source": "Gizmodo",
+      "url": "https://gizmodo.com/praising-failure-james-dyson-talks-vacuums-5-127-proto-5790556",
+      "fixed": true
+    },
+    {
+      "label": "Dyson's revenue in 2025",
+      "value": 6.13,
+      "unit": "money_billion",
+      "currency": "GBP",
+      "as_of": "2025-12-31",
+      "source": "Dyson",
+      "url": "https://www.dyson.co.uk/discover/news/press-releases/dyson-financial-results-2025"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.6,
+    "words": "Before *one* worked",
+    "figure": "{fact1}",
+    "tag": "Prototypes",
+    "angle": "number"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "doc",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Dyson took {fact1} tries.",
+      "events": {
+        "dyson": {
+          "word": "Dyson"
+        },
+        "took": {
+          "word": "took"
+        },
+        "tries": {
+          "word": "tries"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "took"
+        },
+        {
+          "kind": "boom",
+          "at": "tries"
+        }
+      ],
+      "params": {
+        "place": [
+          "a hallway with the first Dyson standing in it",
+          "close on the machine's cyclone"
+        ],
+        "things": [
+          "first Dyson vacuum",
+          "prototype count"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "took",
+            "size": "medium"
+          },
+          {
+            "at": "tries",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "dyson",
+            "what": "the first Dyson stands in the hallway, the camera pushing in, its name label wiping in"
+          },
+          {
+            "at": "took",
+            "what": "the picture dims and the prototype count starts climbing"
+          },
+          {
+            "at": "tries",
+            "what": "the count lands and kicks, the source chip with it"
+          }
+        ],
+        "fig": {
+          "tries": "{fact1}"
+        },
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-dc01-01-ec7cd1bd.jpg",
+            "focus": [
+              0.5,
+              0.55
+            ],
+            "move": "push",
+            "amount": 0.08,
+            "grade": "doc"
+          },
+          {
+            "kind": "count",
+            "figure": "tries",
+            "eyebrow": "Prototypes built",
+            "unit": "tries to get it right",
+            "countAt": "took",
+            "countLen": 40,
+            "tone": "gold",
+            "at": "took"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "Dyson",
+            "sub": "the first one",
+            "at": "dyson",
+            "out": "took"
+          },
+          {
+            "kind": "source",
+            "form": "REPORT",
+            "text": "Gizmodo",
+            "date": "2011-04-10",
+            "at": "tries"
+          }
+        ]
+      }
+    },
+    {
+      "id": "who",
+      "scene": "doc",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "Why so many? Its inventor, James Dyson, wanted one thing gone: the bag.",
+      "events": {
+        "why": {
+          "word": "Why"
+        },
+        "inventor": {
+          "word": "inventor"
+        },
+        "james": {
+          "word": "James"
+        },
+        "gone": {
+          "word": "gone"
+        },
+        "bag": {
+          "word": "bag"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "james"
+        },
+        {
+          "kind": "boom",
+          "at": "bag"
+        }
+      ],
+      "params": {
+        "place": [
+          "the inventor's desk",
+          "a dust bag, close"
+        ],
+        "things": [
+          "polaroid of James Dyson",
+          "vacuum dust bag"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "james",
+            "size": "close"
+          },
+          {
+            "at": "bag",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "why",
+            "what": "hard cut close on the first Dyson's clear bin and cyclone"
+          },
+          {
+            "at": "james",
+            "what": "his black-and-white polaroid drops on the desk and unblurs, his name wipes in"
+          },
+          {
+            "at": "bag",
+            "what": "hard cut to a dust-filled vacuum bag, a red label slams on it"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-dc01-03-cc36c021.jpg",
+            "focus": [
+              0.5,
+              0.45
+            ],
+            "move": "push",
+            "amount": 0.1,
+            "out": "inventor"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-james-dyson-1-bf19e29b.jpg",
+            "frame": "polaroid",
+            "treatment": "bw",
+            "surface": "dark",
+            "focus": [
+              0.5,
+              0.35
+            ],
+            "at": "inventor",
+            "landAt": "james",
+            "tilt": -4,
+            "out": "bag"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-vacuum-cleaner-bag-6020f126.jpg",
+            "focus": [
+              0.5,
+              0.45
+            ],
+            "move": "push",
+            "amount": 0.12,
+            "at": "bag"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "lowerThird",
+            "name": "James Dyson",
+            "role": "Inventor",
+            "at": "james",
+            "out": "bag"
+          },
+          {
+            "kind": "label",
+            "text": "The bag",
+            "tone": "red",
+            "at": "bag"
+          }
+        ]
+      }
+    },
+    {
+      "id": "idea",
+      "scene": "doc",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Bags clog, and the suction dies. His machine would spin the dust out instead, like a storm.",
+      "events": {
+        "clog": {
+          "word": "clog"
+        },
+        "suction": {
+          "word": "suction"
+        },
+        "spin": {
+          "word": "spin"
+        },
+        "storm": {
+          "word": "storm"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "spin"
+        },
+        {
+          "kind": "swell",
+          "at": "storm"
+        }
+      ],
+      "params": {
+        "place": [
+          "inside an old bagged vacuum",
+          "the cyclones of a Dyson",
+          "a storm seen from space"
+        ],
+        "things": [
+          "clogged bag in its vacuum",
+          "Dyson cyclones",
+          "spinning storm"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "suction",
+            "size": "extreme"
+          },
+          {
+            "at": "spin",
+            "size": "close"
+          },
+          {
+            "at": "storm",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "clog",
+            "what": "the bag packed into its vacuum, pushing in"
+          },
+          {
+            "at": "suction",
+            "what": "a red label: suction dies"
+          },
+          {
+            "at": "spin",
+            "what": "hard cut close on a Dyson's cyclones, a label: spin the dust out"
+          },
+          {
+            "at": "storm",
+            "what": "hard cut to a storm spinning from space"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-vacuum-cleaner-bag-in-vacuum-cleaner-ceeff960.jpg",
+            "focus": [
+              0.5,
+              0.5
+            ],
+            "move": "push",
+            "amount": 0.12,
+            "grade": "cold",
+            "out": "spin"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-a-dyson-vacuum-cleaner-12a0c1cf.jpg",
+            "focus": [
+              0.45,
+              0.75
+            ],
+            "move": "push",
+            "amount": 0.12,
+            "grade": "doc",
+            "at": "spin",
+            "out": "storm"
+          },
+          {
+            "kind": "footage",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-video-cyclone-errol-rapidly-intensifies-into-powerful-ca6f8d21.webm",
+            "len": 8.3,
+            "move": "push",
+            "amount": 0.12,
+            "focus": [
+              0.5,
+              0.5
+            ],
+            "grade": "cold",
+            "at": "storm"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "Suction dies",
+            "tone": "red",
+            "at": "suction",
+            "out": "spin"
+          },
+          {
+            "kind": "label",
+            "text": "Spin the dust out",
+            "sub": "no bag at all",
+            "at": "spin",
+            "out": "storm"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misery",
+      "scene": "doc",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Prototype after prototype failed. Money got so tight that his wife gave art lessons for extra cash.",
+      "events": {
+        "prototype": {
+          "word": "Prototype"
+        },
+        "failed": {
+          "word": "failed"
+        },
+        "money": {
+          "word": "Money"
+        },
+        "tight": {
+          "word": "tight"
+        },
+        "wife": {
+          "word": "wife"
+        },
+        "lessons": {
+          "word": "lessons"
+        },
+        "cash": {
+          "word": "cash"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "failed"
+        },
+        {
+          "kind": "paper",
+          "at": "money"
+        },
+        {
+          "kind": "scribble",
+          "at": "cash"
+        }
+      ],
+      "params": {
+        "place": [
+          "the workshop bench, in black and white",
+          "the interview, as a typeset card"
+        ],
+        "things": [
+          "vacuum parts",
+          "red FAILED tag",
+          "the interview quotes"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "money",
+            "size": "medium"
+          },
+          {
+            "at": "wife",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "prototype",
+            "what": "machine parts in black and white, pushing in"
+          },
+          {
+            "at": "failed",
+            "what": "a red FAILED label slams on"
+          },
+          {
+            "at": "money",
+            "what": "cut to the interview card: counting our pennies"
+          },
+          {
+            "at": "wife",
+            "what": "the second quote lands: art lessons"
+          },
+          {
+            "at": "cash",
+            "what": "the highlighter swipes the line"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-dc01-03-cc36c021.jpg",
+            "focus": [
+              0.45,
+              0.65
+            ],
+            "move": "drift-left",
+            "amount": 0.08,
+            "treatment": "bw",
+            "grade": "bw"
+          },
+          {
+            "kind": "headline",
+            "plate": false,
+            "at": "money",
+            "on": [
+              "money",
+              "wife"
+            ],
+            "markAt": "cash",
+            "items": [
+              {
+                "outlet": "Gizmodo",
+                "date": "2011-04-10",
+                "title": "“My wife and I were really counting our pennies.”",
+                "deck": "James Dyson, on the prototype years",
+                "style": "web"
+              },
+              {
+                "outlet": "Gizmodo",
+                "date": "2011-04-10",
+                "title": "“My wife was giving art lessons for some extra cash.”",
+                "deck": "James Dyson, on the prototype years",
+                "style": "paper",
+                "hi": "art lessons for some extra cash"
+              }
+            ]
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "Failed",
+            "tone": "red",
+            "at": "failed",
+            "out": "money"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "doc",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "Then, in {fact2}, the first Dyson finally went on sale under his own name.",
+      "events": {
+        "then": {
+          "word": "Then"
+        },
+        "worked": {
+          "word": "finally"
+        },
+        "sold": {
+          "word": "sale"
+        },
+        "name": {
+          "word": "name"
+        },
+        "first": {
+          "word": "first"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "worked"
+        }
+      ],
+      "params": {
+        "place": [
+          "the finished first Dyson in a living room",
+          "a Dyson shop front in London"
+        ],
+        "things": [
+          "first Dyson",
+          "the Dyson shop sign"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "worked",
+            "size": "wide"
+          },
+          {
+            "at": "name",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "then",
+            "what": "the date slams in over the finished machine"
+          },
+          {
+            "at": "first",
+            "what": "a lower third names it: the first Dyson"
+          },
+          {
+            "at": "worked",
+            "what": "the machine keeps pushing in"
+          },
+          {
+            "at": "sold",
+            "what": "hard cut to a Dyson shop at night"
+          },
+          {
+            "at": "name",
+            "what": "the camera pushes to the Dyson name over the door"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-dc01-02-8c5337b5.jpg",
+            "focus": [
+              0.5,
+              0.5
+            ],
+            "move": "push",
+            "amount": 0.1,
+            "grade": "warm",
+            "out": "sold"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-demo-store-london-f407e6df.jpg",
+            "focus": [
+              0.55,
+              0.3
+            ],
+            "move": "push",
+            "amount": 0.14,
+            "grade": "doc",
+            "at": "sold"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "{fact2}",
+            "sub": "on sale",
+            "at": "then",
+            "out": "first"
+          },
+          {
+            "kind": "lowerThird",
+            "name": "The first Dyson",
+            "role": "sold under his own name",
+            "at": "first",
+            "out": "sold"
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "doc",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "Last year, Dyson took in {fact3}, selling machines like it all over the world.",
+      "events": {
+        "last": {
+          "word": "Last"
+        },
+        "dyson": {
+          "word": "Dyson"
+        },
+        "in": {
+          "word": "in"
+        },
+        "selling": {
+          "word": "selling"
+        },
+        "world": {
+          "word": "world"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "last"
+        },
+        {
+          "kind": "swell",
+          "at": "selling"
+        }
+      ],
+      "params": {
+        "place": [
+          "a Dyson store in a Suzhou mall, as a gold poster",
+          "a wall of Dyson machines in a shop"
+        ],
+        "things": [
+          "Dyson store",
+          "gold poster figure"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "selling",
+            "size": "close"
+          },
+          {
+            "at": "world",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "last",
+            "what": "the gold poster card cuts in over the store, the figure huge"
+          },
+          {
+            "at": "in",
+            "what": "the source chip lands under the figure"
+          },
+          {
+            "at": "selling",
+            "what": "the camera closes on the figure as the store keeps pushing"
+          },
+          {
+            "at": "world",
+            "what": "hard cut to a wall of Dyson machines in a shop, a label: all over the world"
+          }
+        ],
+        "fig": {
+          "sales": "{fact3}"
+        },
+        "layers": [
+          {
+            "kind": "poster",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-store-at-suzhou-center-20220709-9ea58567.jpg",
+            "focus": [
+              0.45,
+              0.4
+            ],
+            "date": "2025-12-31",
+            "title": "Dyson",
+            "figure": "sales",
+            "sub": "in sales in one year",
+            "on": "last",
+            "out": "world"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-vacuum-cleaners-aa880444.jpg",
+            "focus": [
+              0.5,
+              0.35
+            ],
+            "move": "push",
+            "amount": 0.1,
+            "grade": "doc",
+            "at": "world"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "source",
+            "form": "REPORT",
+            "text": "Dyson results",
+            "date": "2026-03-26",
+            "at": "in",
+            "out": "world"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ending",
+      "scene": "doc",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "So next time your vacuum clogs, remember: Dyson's fix took {fact1} tries.",
+      "events": {
+        "next": {
+          "word": "next"
+        },
+        "vacuum": {
+          "word": "vacuum"
+        },
+        "clogs": {
+          "word": "clogs"
+        },
+        "fix": {
+          "word": "fix"
+        },
+        "tries": {
+          "word": "tries"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "tries"
+        }
+      ],
+      "params": {
+        "place": [
+          "a Dyson at home, close on its cyclones",
+          "back to the first Dyson"
+        ],
+        "things": [
+          "a modern Dyson handheld",
+          "the first Dyson"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "clogs",
+            "size": "close"
+          },
+          {
+            "at": "fix",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "next",
+            "what": "a modern Dyson at home, pushing in on its ring of cyclones"
+          },
+          {
+            "at": "fix",
+            "what": "hard cut back to the first Dyson in the hallway, the hook's first frame"
+          },
+          {
+            "at": "tries",
+            "what": "the camera pushes in on it"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-vacuum-cleaner-ece979b6.jpg",
+            "focus": [
+              0.66,
+              0.45
+            ],
+            "move": "push",
+            "amount": 0.14,
+            "grade": "doc",
+            "out": "fix"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dyson-dc01-01-ec7cd1bd.jpg",
+            "focus": [
+              0.5,
+              0.55
+            ],
+            "move": "push",
+            "amount": 0.08,
+            "grade": "doc",
+            "at": "fix"
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "am_fenrir"
+}
