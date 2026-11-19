@@ -20,6 +20,13 @@
       "title": "The hourly watchdog runs only every 4-11 hours",
       "detail": "watchdog.yml is scheduled every hour, but GitHub ran it 11 times between 7 Nov 09:58 and 10 Nov 09:42 UTC (gaps of 4-11 hours). The hourly view snapshots behind the dashboard's 'realtime' chart and the 48-hour views therefore have gaps, and owner alerts can arrive hours late.",
       "fix": "Optional. 1. Accept it, or 2. start watchdog.yml from the Netlify publish heartbeat the way Publish is started (workflows are owner-only files)."
+    },
+    {
+      "key": "data-audit-late",
+      "severity": "info",
+      "title": "The data audit lands after the auditor has run",
+      "detail": "The auditor starts around 22:00-23:00 IST, but GitHub starts the 13:53 UTC data-audit cron 3.5 to 5 hours late (17:41 UTC on 17 Nov, 17:21 UTC on 18 Nov, i.e. after 22:50 IST), so tonight's auditor read last night's audit (23 h old) and skipped the data check. The workflow itself succeeds.",
+      "fix": "Choose one: 1. move the data-audit cron in .github/workflows/data-audit.yml earlier (e.g. 08:23 UTC) so even a 5-hour delay lands before 22:00 IST; or 2. move the auditor routine to about 01:07 IST (still inside window A)."
     }
   ]
 }
