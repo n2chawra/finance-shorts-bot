@@ -354,3 +354,13 @@ def test_a_channels_bed_level_and_duck_per_format(tmp_path: Path, monkeypatch) -
         t = tb.build(script(beats, format="short", style={"genre": "dossier", "bpm": 80}), tmp_path / name, voice="estimate")
         music[name] = t["audio"]["stems"]["music"]
     assert music["split"] > music["long-everywhere"] + 3   # the Short's own, louder level is the one used
+
+
+def test_faster_voice_scales_a_channels_own_short_pace(monkeypatch):
+    """The tech channel's pace test (owner, 2026-11-19): its own Shorts speed x 1.09 on the on side only."""
+    from renderer.timeline import build as b
+    monkeypatch.setattr(b.channel_pack, "voice_speed", lambda fmt, *a, **k: 0.92 if fmt == "short" else 0.97)
+    assert b.voice_speed({"experiments": {b.FASTER_VOICE: "on"}}, "short", 1.2) == round(0.92*1.09, 3)
+    assert b.voice_speed({"experiments": {b.FASTER_VOICE: "off"}}, "short", 1.2) == 0.92
+    assert b.voice_speed({}, "short", 1.2) == 0.92
+    assert b.voice_speed({"experiments": {b.FASTER_VOICE: "on"}}, "long", 1.25) == 0.97   # Shorts only

@@ -11,6 +11,11 @@
  *   <MapRoute>   a dashed route drawn along great circles as `k` goes 0 → 1 (a ship, a plane, a trade)
  *   <Lift>       one country's own shape laid over another place at the same scale (Chile over India)
  *
+ * A country a line is about is highlighted with `colors[name].trace` (owner, 2026-11-19: "the borders
+ * should be highlighted in an animated way, like lines rounding and completing over the corners"): a
+ * bright line with a glowing head runs round its border and closes. `colors[name].flag` covers it with its
+ * flag instead of its colour, in videos on the `geo-flag-fill` test (the owner: "test both").
+ *
  * Everything is a pure function of its props: pass times from `motion(p)` (the kit), never Date or random.
  */
 import React, { createContext, useContext, useId, useMemo } from "react";
@@ -22,6 +27,11 @@ import world110 from "world-atlas/countries-110m.json";
 import world50 from "world-atlas/countries-50m.json";
 
 import { INK, STROKE, shade } from "./kit";
+import { FlagArt, hasFlag } from "./flags";
+import { useFlag } from "../contract/flags";
+
+/** The weekly loop's look test on the geography channel (cycle 1, 2026-11-19): a country's flag as its fill. */
+export const FLAG_FILL = "geo-flag-fill";
 
 type Country = Feature<Geometry, { name: string }>;
 
@@ -66,6 +76,12 @@ export type Fill = {
   paint?: number; from?: [number, number];
   /** the country rises off the map with a shadow under it, 0 -> 1 */
   lift?: number;
+  /** a bright line runs round the border and closes as `trace` goes 0 -> 1, a glowing head on
+   * its tip; at 1 the border stays lit. `traceColor` (default warm yellow) sets its colour */
+  trace?: number; traceColor?: string;
+  /** the country's flag (a name the flag table has, usually its own) instead of `fill`, in `geo-flag-fill`
+   * videos; elsewhere, or for a flag the table lacks, `fill` as always */
+  flag?: string;
 };
 
 /**
@@ -137,6 +153,7 @@ export const WorldMap: React.FC<{
   const local = { x: -anchor[0] / ks, y: -anchor[1] / ks, w: w / ks, h: h / ks };
   const fxOf = (c: Country) => colors[c.properties.name] ?? colors[c.properties.name.toLowerCase()];
   const special = shown.filter((c) => fxOf(c));
+  const flagsOn = useFlag(FLAG_FILL);
   return (
     <MapCtx.Provider value={{ proj, path }}>
       {vintage ? (
@@ -178,7 +195,9 @@ export const WorldMap: React.FC<{
         const draw = f.draw === undefined ? 1 : Math.max(0, Math.min(1, f.draw));
         const paint = f.paint === undefined ? 1 : Math.max(0, Math.min(1, f.paint));
         const lift = Math.max(0, Math.min(1, f.lift ?? 0));
-        if (draw <= 0 || paint <= 0) return null;
+        const traceK = f.trace === undefined ? 0 : Math.max(0, Math.min(1, f.trace));
+        const unseen = draw <= 0 || paint <= 0;   // the fill isn't made yet; a trace may already run round it
+        if (unseen && traceK <= 0) return null;
         const outline = f.outline ?? ink;
         const fillK = f.draw === undefined ? 1 : Math.max(0, (draw - 0.55) / 0.45);
         const [[x0, y0], [x1, y1]] = path.bounds(c);
@@ -187,14 +206,36 @@ export const WorldMap: React.FC<{
         const R = Math.max(Math.hypot(px - x0, py - y0), Math.hypot(px - x1, py - y1), Math.hypot(px - x0, py - y1), Math.hypot(px - x1, py - y0));
         const cid = `p${uid}${String(c.id ?? name).replace(/[^a-zA-Z0-9]/g, "")}`;
         const up = lift * 18;
+        const flagName = flagsOn && f.flag && hasFlag(f.flag) ? f.flag : null;
+        const trace = traceK;
+        const tc = f.traceColor ?? "#ffd84a";
+        const tw = STROKE * 2.2;
         return (
           <g key={`f${c.id ?? name}`}>
             {paint < 1 ? <defs><clipPath id={cid}><circle cx={px} cy={py} r={R * paint} /></clipPath></defs> : null}
+            {flagName ? <defs><clipPath id={`${cid}f`}><path d={d(c)} /></clipPath></defs> : null}
             {lift > 0 ? <path d={d(c)} fill="#1d1a2b" opacity={0.3 * lift} transform={`translate(${8 * lift} ${10 + up * 0.4})`} /> : null}
             <g transform={`translate(0 ${-up})`}>
-              <path d={d(c)} fill={fillOf(f)} opacity={fillK} clipPath={paint < 1 ? `url(#${cid})` : undefined} />
-              <path d={d(c)} fill="none" stroke={outline} strokeWidth={STROKE * 0.8} strokeLinejoin="round"
-                pathLength={1} strokeDasharray={draw < 1 ? `${draw} 1` : undefined} />
+              {unseen ? null : flagName ? (
+                <g opacity={fillK * Math.max(0, Math.min(1, f.k ?? 1))} clipPath={paint < 1 ? `url(#${cid})` : undefined}>
+                  <g clipPath={`url(#${cid}f)`}><FlagArt name={flagName} x={x0} y={y0} w={x1 - x0} h={y1 - y0} /></g>
+                </g>
+              ) : <path d={d(c)} fill={fillOf(f)} opacity={fillK} clipPath={paint < 1 ? `url(#${cid})` : undefined} />}
+              {unseen ? null : <path d={d(c)} fill="none" stroke={outline} strokeWidth={STROKE * 0.8} strokeLinejoin="round"
+                pathLength={1} strokeDasharray={draw < 1 ? `${draw} 1` : undefined} />}
+              {trace > 0 ? (
+                <g data-probe="skip">
+                  {/* the glow under the line, then the line, then its brighter head just behind the tip */}
+                  <path d={d(c)} fill="none" stroke={tc} strokeOpacity={0.35} strokeWidth={tw * 2.6} strokeLinejoin="round" strokeLinecap="round"
+                    pathLength={1} strokeDasharray={trace < 1 ? `${trace} 1` : undefined} />
+                  <path d={d(c)} fill="none" stroke={tc} strokeWidth={tw} strokeLinejoin="round" strokeLinecap="round"
+                    pathLength={1} strokeDasharray={trace < 1 ? `${trace} 1` : undefined} />
+                  {trace < 1 ? (
+                    <path d={d(c)} fill="none" stroke="#fffbe6" strokeWidth={tw * 1.7} strokeLinecap="round"
+                      pathLength={1} strokeDasharray={`0.012 1`} strokeDashoffset={-Math.max(0, trace - 0.012)} />
+                  ) : null}
+                </g>
+              ) : null}
             </g>
           </g>
         );

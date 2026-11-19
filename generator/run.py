@@ -472,6 +472,7 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
     problems += craft.prop_problems(tl, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
     problems += story.timeline_problems(script, tl, [_read_script(e["id"], root) for e in earlier[-10:]])
     problems += images.script_problems(script, vid, root)
+    problems += experiments.adherence_problems(vid, script, root)   # the video follows its arm of each test
     if plan_format(script) == "long" and script.get("thumbnail"):
         for k, th in thumbs.specs(script):   # A, B and C (owner, 2026-11-11: three to pick from)
             problems += [f"thumbnail {k.upper()}: {p}" for p in thumbs.spec_problems(th, plan_.get("title", script.get("title", "")), script.get("story") or plan_.get("story"))]

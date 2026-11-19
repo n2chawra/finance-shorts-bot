@@ -33,7 +33,7 @@ export const Root: React.FC = () => (
     {/* approval sheets */}
     <Still id="CharacterSheet" component={CharacterSheet} width={1920} height={1080} />
     <Composition id="ActingTest" component={ActingTest} durationInFrames={300} fps={30} width={1920} height={1080} />
-    <Composition id="MapSheet" component={MapSheet} durationInFrames={180} fps={30} width={1080} height={1920} />
+    <Composition id="MapSheet" component={MapSheet} durationInFrames={270} fps={30} width={1080} height={1920} />
     <Still id="GeoAvatar" component={GeoAvatar} width={800} height={800} />
     <Still id="GeoBanner" component={GeoBanner} width={2560} height={1440} />
     <TechFlatDemos />

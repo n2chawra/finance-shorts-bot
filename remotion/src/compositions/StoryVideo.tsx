@@ -13,6 +13,7 @@ import { useMemo } from "react";
 import { isScene, SCENE_NAMES, type SceneName } from "../contract/scenes";
 import { onStoryClock } from "../contract/clock";
 import { Timeline, type Beat } from "../contract/timeline";
+import { ExperimentsContext } from "../contract/flags";
 import { LayoutProbe } from "../fx/probe";
 import { captionGroups, captionTokens, Captions } from "../fx/captions";
 import { FONT } from "../design/fonts";
@@ -124,7 +125,9 @@ const BeatView: React.FC<{ beat: Beat; tl: Timeline; frame: number; fps: number 
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       <AbsoluteFill style={{ transform }}>
-        <Scene beat={story} tl={tl} frame={local} fps={fps} />
+        <ExperimentsContext.Provider value={tl.experiments}>
+          <Scene beat={story} tl={tl} frame={local} fps={fps} />
+        </ExperimentsContext.Provider>
       </AbsoluteFill>
     </AbsoluteFill>
   );
