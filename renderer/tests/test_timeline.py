@@ -356,11 +356,14 @@ def test_a_channels_bed_level_and_duck_per_format(tmp_path: Path, monkeypatch) -
     assert music["split"] > music["long-everywhere"] + 3   # the Short's own, louder level is the one used
 
 
-def test_faster_voice_scales_a_channels_own_short_pace(monkeypatch):
-    """The tech channel's pace test (owner, 2026-11-19): its own Shorts speed x 1.09 on the on side only."""
-    from renderer.timeline import build as b
-    monkeypatch.setattr(b.channel_pack, "voice_speed", lambda fmt, *a, **k: 0.92 if fmt == "short" else 0.97)
-    assert b.voice_speed({"experiments": {b.FASTER_VOICE: "on"}}, "short", 1.2) == round(0.92*1.09, 3)
-    assert b.voice_speed({"experiments": {b.FASTER_VOICE: "off"}}, "short", 1.2) == 0.92
-    assert b.voice_speed({}, "short", 1.2) == 0.92
-    assert b.voice_speed({"experiments": {b.FASTER_VOICE: "on"}}, "long", 1.25) == 0.97   # Shorts only
+
+def test_owner_pace_note_speeds_up_a_channels_own_short_voice(monkeypatch):
+    """The tech channel's pace note (owner, 2026-11-19), applied at once: its Shorts speak at 1.0, not 0.92."""
+    from generator import pack
+    monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 0.92, "long": 0.97}})
+    tech = "how-tech-and-ai-actually-work-chips-ai-p"
+    assert pack.voice_speed("short", tech) == 1.0
+    assert pack.voice_speed("long", tech) == 0.97          # Shorts only
+    assert pack.voice_speed("short", "geography-maps-geopolitical-mysteries") == 0.92
+    monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 1.1}})
+    assert pack.voice_speed("short", tech) == 1.1          # the owner's own faster setting wins

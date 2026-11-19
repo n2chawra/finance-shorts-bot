@@ -101,7 +101,13 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   - **The first frame shows the real subject, recognisable at a glance** with the sound off: the
     thing itself drawn big (the gym, the burger, the jersey with the name), its name as a label, the
     figure beside it. Never an empty room, never a placeholder head, never a cast member standing in
-    for a real person.
+    for a real person. **The real face or logo is in the hook from frame 0** (owner, 2026-11-19, on the
+    Squid Game Short: "should have added the real logo"): the person's freely licensed photo head
+    (`"who": "photo:<name>"`) or the company's logo as a die-cut sticker (`"prop": "photo:<name>"`), big and
+    named, fetched with `python -m generator.images fetch`. A show, film or game's own poster, logo or
+    frames are its studio's copyright and never allowed: show the company behind it (Netflix's logo, the
+    creator's photo) and draw the rest. Only when no freely licensed file exists, draw the subject and
+    say so in your report.
   - **Nothing made up** (owner, 2026-11-12; `number-check` fails it): the story is what really happened
     to a real, named person or business, told from the plan's sourced `facts`. Never "an illustrative
     billionaire", "say only 300 members", "imagine", "suppose". When the true story has no number for
