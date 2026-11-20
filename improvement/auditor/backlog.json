@@ -954,6 +954,31 @@
       "severity": "low",
       "found": "2026-11-16",
       "status": "open"
+    },
+    {
+      "id": "wrk-012",
+      "kind": "bug",
+      "title": "Quota keeper saves overwrite each other's usage",
+      "detail": "QuotaKeeper.save() wrote the whole tally a run loaded at its start, so when two workers overlapped (publish every 20 min, the data audit, stats-deep, the market scan) the later save erased the earlier one's uploads, covers and searches: the day's usage could go backwards and the 95-upload stop and 80% warning would see too little. save() now re-reads the row and adds only what this run spent since it loaded (mergeUsage); a run from an earlier quota day never overwrites today's row. Test: workers/tests/quota.test.ts.",
+      "files": [
+        "workers/lib/quota.ts",
+        "workers/tests/quota.test.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-20",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-013",
+      "kind": "bug",
+      "title": "Quota migration left old searches in the units pool",
+      "detail": "migrate() moved pre-split uploads (1,600 units each) to the uploads bucket but left searches (100 units each) in units with searches = 0. Only affected rows saved before the 19 Nov split, on that one Pacific day; nothing to fix now, noted in case another bucket change is made.",
+      "files": [
+        "workers/lib/quota.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-20",
+      "status": "wontfix"
     }
   ]
 }

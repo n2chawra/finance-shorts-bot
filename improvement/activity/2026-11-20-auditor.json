@@ -1,0 +1,37 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-20",
+  "startedAt": "2026-11-19T16:32:35Z",
+  "finishedAt": "2026-11-19T16:37:31Z",
+  "summary": "Fixed a quota-keeper bug where overlapping workers erased each other's YouTube API usage, wrote verdicts for three Paisa Panchayat Shorts, and handed three owner notes to the improver.",
+  "decision": "acted",
+  "why": "Two overlapping worker saves lost one run's uploads and covers (new test fails 2 of 2 on the old code). Tonight's data audit hadn't run yet (GitHub starts it 3.5-5 h late), so the data check was skipped; last night's audit was clean.",
+  "findings": [
+    {
+      "title": "Quota usage could go backwards",
+      "detail": "QuotaKeeper.save() overwrote the whole row with what the run loaded at its start plus its own spending; publish, the data audit, stats-deep and the market scan overlap."
+    },
+    {
+      "title": "Data audit lands after the auditor",
+      "detail": "Scheduled data-audit runs started at 17:41 UTC (17 Nov) and 17:21 UTC (18 Nov), after this routine. Info notification raised with two fixes."
+    },
+    {
+      "title": "Three 17 Nov Shorts are hits",
+      "detail": "Disneyland ticket 973 views, Edwin Castro 447 at 48 h (but 8% held after the hook: a 35-point fall on the loop line), gas stations 425; Shorts median 95."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Quota keeper adds only its own spending on save",
+      "detail": "workers/lib/quota.ts mergeUsage + save() re-reads the row; workers/tests/quota.test.ts.",
+      "branch": "agent/auditor/2026-11-20"
+    }
+  ],
+  "nextCheck": "2026-11-21",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-20.md"
+    }
+  ]
+}

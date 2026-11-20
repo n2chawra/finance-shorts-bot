@@ -53,6 +53,35 @@ export function migrate(u: z.infer<typeof Usage>): Usage {
   return { day: u.day, units: Math.max(0, u.units - oldUpload), uploads, searches: 0, byKind, warned: u.warned };
 }
 
+/**
+ * Several workers keep a QuotaKeeper at once (publish every 20 min, the data audit, stats-deep, the
+ * market scan), each loaded at its start. Saving a run's whole tally would undo what the others saved
+ * meanwhile, so save() adds only what this run spent since it loaded (`current` minus `base`) to the
+ * row as it is now (`stored`). A stored row of an older quota day is replaced; null means "don't write"
+ * (the stored row is already a newer day than this run's).
+ */
+export function mergeUsage(stored: Usage | null, base: Usage, current: Usage): Usage | null {
+  if (!stored || stored.day < current.day) return snapshotOf(current);
+  if (stored.day > current.day) return null;
+  const sameDay = base.day === current.day;
+  const delta = (cur: number, was: number) => Math.max(0, cur - (sameDay ? was : 0));
+  const byKind = { ...stored.byKind };
+  for (const [k, v] of Object.entries(current.byKind)) {
+    const d = delta(v, base.byKind[k] ?? 0);
+    if (d) byKind[k] = (byKind[k] ?? 0) + d;
+  }
+  return {
+    day: current.day,
+    units: stored.units + delta(current.units, base.units),
+    uploads: stored.uploads + delta(current.uploads, base.uploads),
+    searches: stored.searches + delta(current.searches, base.searches),
+    byKind,
+    warned: stored.warned || current.warned,
+  };
+}
+
+const snapshotOf = (u: Usage): Usage => ({ ...u, byKind: { ...u.byKind } });
+
 /** The quota day: YouTube resets it at midnight in America/Los_Angeles. */
 export function quotaDay(now = new Date()): string {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit" }).format(now);
@@ -74,17 +103,26 @@ export function allowed(kind: Kind, amount: number, used: number, uploadsLeftTod
 
 export class QuotaKeeper {
   private usage: Usage;
+  /** The usage as last read from or written to the row: save() adds only what was spent since. */
+  private base: Usage;
   private limits: Limits;
   constructor(private prisma: PrismaClient | null, usage: Omit<Usage, "uploads" | "searches"> & Partial<Usage>, public uploadsLeftToday = 0, limits: Partial<Limits> = {}) {
-    this.usage = { ...usage, uploads: usage.uploads ?? 0, searches: usage.searches ?? 0 };
+    this.usage = { ...usage, uploads: usage.uploads ?? 0, searches: usage.searches ?? 0, byKind: { ...usage.byKind } };
+    this.base = snapshotOf(this.usage);
     this.limits = { ...LIMITS, ...limits };
   }
 
-  static async load(prisma: PrismaClient, uploadsLeftToday = 0, now = new Date()): Promise<QuotaKeeper> {
+  /** The stored usage row, moved to the buckets; null when it is missing or unreadable. */
+  private static async read(prisma: PrismaClient): Promise<Usage | null> {
     const row = await prisma.setting.findUnique({ where: { key: "quotaUsage" } });
     const parsed = Usage.safeParse(row?.value);
+    return parsed.success ? migrate(parsed.data) : null;
+  }
+
+  static async load(prisma: PrismaClient, uploadsLeftToday = 0, now = new Date()): Promise<QuotaKeeper> {
+    const stored = await QuotaKeeper.read(prisma);
     const day = quotaDay(now);
-    const usage = parsed.success && parsed.data.day === day ? migrate(parsed.data) : { day, units: 0, uploads: 0, searches: 0, byKind: {}, warned: false };
+    const usage = stored && stored.day === day ? stored : { day, units: 0, uploads: 0, searches: 0, byKind: {}, warned: false };
     return new QuotaKeeper(prisma, usage, uploadsLeftToday);
   }
 
@@ -130,9 +168,13 @@ export class QuotaKeeper {
 
   snapshot(): Usage { return { ...this.usage, byKind: { ...this.usage.byKind } }; }
 
+  /** Adds this run's spending to the row as it is now (other workers may have saved since we loaded). */
   async save(): Promise<void> {
     if (!this.prisma) return;
-    const value = this.snapshot();
-    await this.prisma.setting.upsert({ where: { key: "quotaUsage" }, update: { value }, create: { key: "quotaUsage", value } });
+    const merged = mergeUsage(await QuotaKeeper.read(this.prisma), this.base, this.usage);
+    if (!merged) return;
+    await this.prisma.setting.upsert({ where: { key: "quotaUsage" }, update: { value: merged }, create: { key: "quotaUsage", value: merged } });
+    this.usage = merged;
+    this.base = snapshotOf(merged);
   }
 }
