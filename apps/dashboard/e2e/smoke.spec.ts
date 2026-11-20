@@ -127,6 +127,19 @@ test("notification fixes written on one line show as numbered steps", async ({ p
   await expect(page.getByText("Pick one:", { exact: true })).toBeVisible();
 });
 
+test("notifications fold info items under the ones that need you", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/notifications");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
+  const fold = page.getByTestId("fyi-fold");
+  await expect(fold.locator("summary")).toHaveText(/for your information \(\d+\)/);
+  // folded: the critical card shows, the info ones wait behind the fold; a proposal stays out of it
+  await expect(fold).not.toHaveAttribute("open", "");
+  await expect(page.getByRole("button", { name: "Approve" })).toBeVisible();
+  await fold.locator("summary").click();
+  await expect(fold.getByRole("button", { name: "Mark resolved" }).first()).toBeVisible();
+});
+
 test("unread notifications are announced to screen readers", async ({ page }) => {
   await signIn(page);
   // other tests open this page and mark the shared sample items seen, so serve one unread item here,
