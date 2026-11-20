@@ -1,0 +1,18 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-19",
+  "startedAt": "2026-11-19T17:31:42Z",
+  "finishedAt": "2026-11-19T17:42:33Z",
+  "summary": "Bug hunt: build, lint and all smoke tests pass, live site up. Fixed cut-off stat labels on the new All channels page and added that page to the smoke tests.",
+  "decision": "acted",
+  "why": "The All channels page (new on 11-18) wasn't covered by the smoke tests; its screenshot at desktop width showed 'Views 7d' cut to 'Vi…' and 'Stayed to watch' cut short.",
+  "findings": [
+    {"title": "All channels: stat tile labels cut off", "detail": "The change badge shared the label's row in the three-column cards, cutting 'Views 7d' to 'Vi…'."},
+    {"title": "tsc needs a build first on a fresh clone", "detail": "The channel logo PNG types come from the gitignored next-env.d.ts; logged in the backlog, harmless when the build runs first."}
+  ],
+  "changes": [
+    {"title": "All channels stat tiles show their whole label", "detail": "Label gets the full width and may wrap, the change badge sits beside the number, subtitles may take two lines; /portfolio added to the smoke tests with a check that no label is cut off.", "branch": "agent/dashboard/2026-11-19"}
+  ],
+  "nextCheck": "2026-11-22",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-19.md"}]
+}

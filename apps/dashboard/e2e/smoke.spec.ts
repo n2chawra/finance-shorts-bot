@@ -7,6 +7,7 @@ const PAGES: [string, RegExp][] = [
   ["/", /Overview/], ["/queue", /Queue/], ["/calendar", /Calendar/], ["/videos", /Videos/], ["/videos/v030", /.+/],
   ["/analytics", /Analytics/], ["/study", /Study/], ["/growth", /Growth loop/], ["/agents", /Agents/], ["/notifications", /Notifications/],
   ["/feedback", /Feedback/], ["/settings", /Settings/], ["/channels", /Channels/], ["/scorecard", /Scorecard/],
+  ["/portfolio", /All channels/],
 ];
 
 const IGNORED = [/Download the React DevTools/, /ToggleGroup is changing from uncontrolled/];
@@ -641,4 +642,15 @@ test("a channel sample whose contact sheet can't load says so instead of a broke
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Channels", { timeout: 30_000 });
   await expect(page.getByText("Contact sheet not available yet").first()).toBeVisible();
   await expect(page.locator("main img[src*='/api/media/']")).toHaveCount(0);
+});
+
+test("all channels: every stat tile shows its whole label", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/portfolio");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("All channels", { timeout: 30_000 });
+  const tiles = page.getByTestId("portfolio-metric");
+  await expect(tiles.first()).toBeVisible();
+  const cut = await tiles.locator("dt").evaluateAll((els) => els.filter((e) => e.scrollWidth > e.clientWidth + 1).map((e) => e.textContent));
+  expect(cut, "stat tile labels cut off").toEqual([]);
+  await expect(tiles.locator("dt", { hasText: "Views 7d" }).first()).toBeVisible();
 });

@@ -47,10 +47,14 @@ function VideoRow({ v }: { v: PortfolioVideo }) {
 
 function Metric({ label, value, sub, delta }: { label: string; value: React.ReactNode; sub?: React.ReactNode; delta?: React.ReactNode }) {
   return (
-    <div className="min-w-0 bg-surface p-3">
-      <div className="flex items-center justify-between gap-1 text-[11.5px] text-muted"><span className="truncate">{label}</span>{delta}</div>
-      <div className="mt-1 text-[17px] font-semibold tabular-nums leading-tight">{value}</div>
-      {sub && <div className="mt-0.5 truncate text-[11.5px] text-muted">{sub}</div>}
+    // The label keeps the full width and may wrap; the change badge sits beside the number (2026-11-19:
+    // in a three-column card at 1440 px the badge cut "Views 7d" to "Vi…").
+    <div data-testid="portfolio-metric" className="min-w-0 bg-surface p-3">
+      <dt className="text-[11.5px] leading-tight text-muted">{label}</dt>
+      <dd className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
+        <span className="text-[17px] font-semibold tabular-nums leading-tight">{value}</span>{delta}
+      </dd>
+      {sub && <dd className="mt-0.5 line-clamp-2 text-[11.5px] leading-snug text-muted" title={typeof sub === "string" ? sub : undefined}>{sub}</dd>}
     </div>
   );
 }
