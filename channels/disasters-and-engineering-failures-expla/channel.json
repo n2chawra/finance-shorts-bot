@@ -35,10 +35,10 @@
     "maxGapSec": 4.0
   },
   "sound": {
-    "_why": "research/sound.md (20 Nov 2026): Fault Lines, the only reference with a bed, sits a beatless bass-heavy drone (334 Hz, 49% bass) ~33 dB under the voice with ~16 dB ducking and a 44 dB drop before a chapter card; the other references are voice-only with hard silences between lines; long videos <=3 effects a minute, none on cuts; the Short 28 cuts a minute, ~6 effects. We keep the restraint and add what none of them has: a breathing drone, mechanical foley on things moving, silence then one sub-boom at the failure, a clock tick. bedLevel/duck are starting values, to be measured on a Kokoro build (music_under_voice_db) to hit ~32 dB long / ~22 dB Shorts",
+    "_why": "research/sound.md (20 Nov 2026): Fault Lines, the only reference with a bed, sits a beatless bass-heavy drone (334 Hz, 49% bass) ~33 dB under the voice with ~16 dB ducking and a 44 dB drop before a chapter card; the other references are voice-only with hard silences between lines; long videos <=3 effects a minute, none on cuts; the Short 28 cuts a minute, ~6 effects. We keep the restraint and add what none of them has: a breathing drone, mechanical foley on things moving, silence then one sub-boom at the failure, a clock tick. levels measured on a Kokoro build (bm_lewis, 42-44 s test timeline, 2026-11-20, music_under_voice_db): long bedLevel 0.11 + duck 0.85 = 32.4 dB (undertow) / 32.3 (brace) under the voice; Shorts bedLevel 0.15 + duck 0.6 = 22.0 / 22.2",
     "genres": ["undertow", "brace"],
     "_genresWhy": "the channel's own beds (renderer/engine/music.py CHANNEL_GENRES): undertow beatless/<=60 BPM low pad + sub swell, 300-400 Hz brightness, for long videos; brace 66-76 BPM muted low pulse + rising pad, for reconstruction stretches and Shorts. Never another channel's beds",
-    "bedLevel": {"short": 0.22, "long": 0.16},
+    "bedLevel": {"short": 0.15, "long": 0.11},
     "duck": {"short": 0.6, "long": 0.85},
     "sfx": ["groan", "creak", "rivet", "squelch", "chime", "clatter", "rush", "tick", "subboom"],
     "_sfxWhy": "sound.md 'Where we beat them': structure groans and creaks under load, rivet pops, radio squelch, cockpit chime, rail clatter, water rush, a clock tick on each step of the reconstruction clock, one sub-boom on the frame the part gives way; nothing on plain cuts",
