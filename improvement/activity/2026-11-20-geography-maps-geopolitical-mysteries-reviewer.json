@@ -1,0 +1,19 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-20",
+  "startedAt": "2026-11-20T16:10:57Z",
+  "finishedAt": "2026-11-20T16:12:18Z",
+  "summary": "Geography channel, first review: watched all 5 Shorts' contact sheets and scripts. Added one lesson at the top: the map must answer the question (from the owner's wrong mark on the Welsh power-station Short).",
+  "decision": "acted",
+  "why": "No retention data yet (all five Shorts at 0 Analytics views, no drop points; likely the 2-3 day lag). The lesson rests on the owner's 'wrong' mark and public views: 43 on day 1 for the power station against 1,207 (Greenland) and 685 (Sahara), whose answers are on the map.",
+  "findings": [
+    {"title": "Greenland (1,207 views) is the bar", "detail": "The named island fills frame 0, Denmark is laid on it for size, and every turn of the story is a route or label on the map."},
+    {"title": "Power-station Short left the map to explain a machine", "detail": "Rock cut-away 10-20 s, battery cartoon 25 s, turbine hall 35 s, stopwatch 50 s; the owner marked the topic wrong."},
+    {"title": "No per-video Analytics for this channel yet", "detail": "stayed, heldAfterHook and drops are empty for all 5 Shorts; if still empty on 24 Nov, it's a data bug for the auditor."}
+  ],
+  "changes": [
+    {"title": "Lesson: the map must answer the question", "detail": "Top of channels/geography-maps-geopolitical-mysteries/prompts/lessons.md", "branch": "agent/reviewer/2026-11-20/geography-maps-geopolitical-mysteries"}
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [{"label": "Report", "url": "channels/geography-maps-geopolitical-mysteries/review/2026-11-20.md"}]
+}
