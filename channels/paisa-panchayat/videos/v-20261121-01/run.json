@@ -1,0 +1,148 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:39:10.991272+00:00",
+    "finishedAt": "2026-11-20T21:39:10.991272+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:40:40.162474+00:00",
+    "finishedAt": "2026-11-20T21:40:40.162474+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-20T21:42:37.194273+00:00",
+    "finishedAt": "2026-11-20T21:42:37.194273+00:00",
+    "notes": [
+      "beat 'hook': params.camera key at 'so' is not one of this beat's events; beat 'hook': moment at 'splits' is not one of this beat's events (name the word in `events` first)",
+      "beat 'turn' lists servers, staff, ads: show each on its word (an event and a moment for servers, staff, ads): a listed word is a picture, not just a caption",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:42:43.768214+00:00",
+    "finishedAt": "2026-11-20T21:42:43.768214+00:00",
+    "notes": [
+      "18 figures computed from inputs; 18 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:42:55.397162+00:00",
+    "finishedAt": "2026-11-20T21:42:55.397162+00:00",
+    "notes": [
+      "18 figures computed from inputs; 18 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:47:21.844368+00:00",
+    "finishedAt": "2026-11-20T21:47:21.844368+00:00",
+    "notes": [
+      "All 4 facts confirmed on the SEC 8-K Q3 2026 release (4 Nov 2026, latest): gross bookings $59,819M ($59.8B), trips 4,061M (4.1B), revenue $14,766M ($14.8B), GAAP income from operations $1,447M ($1.4B). Verify list met: 'rides and deliveries' said, per-trip figures framed as the average trip, no revenue comparison with earlier years. Lines about Uber's costs (insurance, servers, staff, ads) are accurate. Description ends with the disclaimer, no advice or expert framing. Notes: 2.3% is operating profit (net income was $512M, ~0.9%), so 'left at the end' means after running costs; gross bookings include $1.77B of Freight, so the $15 'average trip' is a whole-company average (~$14.3 without Freight, still 'about')."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:46:38.943395+00:00",
+    "finishedAt": "2026-11-20T21:47:52.146453+00:00",
+    "notes": [
+      "29 s, night/pop (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-20T21:48:44.745367+00:00",
+    "finishedAt": "2026-11-20T21:49:30.336454+00:00",
+    "notes": [
+      "text 'LEFT FOR UBER' at 24.8 s runs outside the frame",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:49:35.197211+00:00",
+    "finishedAt": "2026-11-20T21:50:25.139857+00:00",
+    "notes": [
+      "29 s, night/pop (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:50:35.303901+00:00",
+    "finishedAt": "2026-11-20T21:51:15.077599+00:00",
+    "notes": [
+      "29 s, night/pop (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-20T21:52:12.705379+00:00",
+    "finishedAt": "2026-11-20T21:52:12.705379+00:00",
+    "notes": [
+      "[script] thumbnail.png (hook, sec 1.2) is mid-transition: the two receipt halves are still flying apart with their black Uber headers smeared into blurred blobs, 'YOUR FARE' ghosted behind them, and the lower third of the frame is empty road. Move thumbnail.sec to after the tear settles (or a later beat, e.g. the payoff receipt with the jar).",
+      "[script] 20.0s (turn beat, Costs): the 'Uber office' reads as a plain maroon wall over a desk strip with a jar and a small 'INSURANCE' shield icon; no office, no logo, no window, nobody in it. Check D: a plain-colour place. Give the office real things (logo wall, windows over the city, the server rack/staff desks on screen from the start) or a person acting in it."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:52:33.918716+00:00",
+    "finishedAt": "2026-11-20T21:53:15.108166+00:00",
+    "notes": [
+      "29 s, night/pop (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:53:32.824310+00:00",
+    "finishedAt": "2026-11-20T21:53:32.824310+00:00",
+    "notes": [
+      "Re-review after fixes: thumbnail (sec 0.4) shows the whole torn YOUR FARE receipt on the Uber car under 'What does Uber keep?'; 20s office now has city windows and the Uber logo plate; 15s car whole with DRIVER over it; 5+ places, figures on things (billboard, phone, receipt tag), hook names Uber and holds the 2.3% back, loop and pick-one ending, no layout/craft problems, audio -1/-16.2 dB, 29 s."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:53:40.020825+00:00",
+    "finishedAt": "2026-11-20T21:55:10.082609+00:00",
+    "notes": [
+      "29 s, night/pop, peak -1.0 dB, mean -16.2 dB",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-20T21:55:13.002462+00:00",
+    "finishedAt": "2026-11-20T21:55:13.002462+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

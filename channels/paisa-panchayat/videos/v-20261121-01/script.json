@@ -1,0 +1,794 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61423,
+ "story": "how_they_make_money",
+ "shape": "the-zoom-in",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "pop",
+  "key": "C",
+  "bpm": 110,
+  "look": {
+   "stage": "street",
+   "header": "sticky",
+   "holder": "receipt",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "shock_number",
+ "cta": "Driver or the app: who earns more from your ride? Comment",
+ "feed_id": "2026-11-19-uber-keeps-cents-of-your-ride",
+ "facts": [
+  {
+   "label": "Uber gross bookings, three months to 30 Sep 2026",
+   "value": 59.8,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "Uber",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001543151/000154315126000039/uberq326earningspressrelea.htm"
+  },
+  {
+   "label": "Uber trips, three months to 30 Sep 2026",
+   "value": 4.1,
+   "unit": "count_billion",
+   "as_of": "2026-09-30",
+   "source": "Uber",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001543151/000154315126000039/uberq326earningspressrelea.htm"
+  },
+  {
+   "label": "Uber revenue, three months to 30 Sep 2026",
+   "value": 14.8,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "Uber",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001543151/000154315126000039/uberq326earningspressrelea.htm"
+  },
+  {
+   "label": "Uber GAAP income from operations, three months to 30 Sep 2026",
+   "value": 1.4,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-09-30",
+   "source": "Uber",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001543151/000154315126000039/uberq326earningspressrelea.htm"
+  }
+ ],
+ "maths": [
+  {
+   "name": "trip",
+   "kind": "share",
+   "total": 59800000000,
+   "parts": 4100000000,
+   "facts": {
+    "total": 1,
+    "parts": 2
+   }
+  },
+  {
+   "name": "cut",
+   "kind": "share",
+   "total": 14800000000,
+   "parts": 4100000000,
+   "facts": {
+    "total": 3,
+    "parts": 2
+   }
+  },
+  {
+   "name": "keep",
+   "kind": "rate",
+   "part": 14800000000,
+   "whole": 59800000000,
+   "facts": {
+    "part": 3,
+    "whole": 1
+   }
+  },
+  {
+   "name": "prof",
+   "kind": "rate",
+   "part": 1400000000,
+   "whole": 59800000000,
+   "facts": {
+    "part": 4,
+    "whole": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.4,
+  "words": "What does *Uber* keep?",
+  "figure": "{trip_per_part}",
+  "tag": "Your fare",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Your Uber fare splits in two when you pay. How much stays with Uber?",
+   "events": {
+    "uber": {
+     "word": "Uber"
+    },
+    "splits": {
+     "word": "splits"
+    },
+    "pay": {
+     "word": "pay"
+    },
+    "how": {
+     "word": "How"
+    },
+    "stays": {
+     "word": "stays"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "uber"
+    },
+    {
+     "kind": "whoosh",
+     "at": "splits"
+    },
+    {
+     "kind": "ding",
+     "at": "pay"
+    },
+    {
+     "kind": "boom",
+     "at": "stays"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "a city street at night, an Uber car at the kerb",
+     "the back seat of the car"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "how",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "uber",
+      "what": "the big Uber logo on the car door lights up under the fare receipt"
+     },
+     {
+      "at": "splits",
+      "what": "the fare receipt over the car tears in two, the halves fly apart"
+     },
+     {
+      "at": "pay",
+      "what": "Rohan's phone flashes PAID"
+     },
+     {
+      "at": "how",
+      "what": "flash cut into the back seat: Rohan stares at his phone"
+     },
+     {
+      "at": "stays",
+      "what": "a big question mark stamps on the phone's Uber slice"
+     }
+    ],
+    "things": [
+     "fare receipt",
+     "uber car",
+     "uber logo",
+     "rohan's phone",
+     "street lamps"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "count",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "And Uber does that {fact2} times in three months, rides and deliveries.",
+   "events": {
+    "and": {
+     "word": "And"
+    },
+    "does": {
+     "word": "does"
+    },
+    "times": {
+     "word": "times"
+    },
+    "rides": {
+     "word": "rides"
+    },
+    "deliveries": {
+     "word": "deliveries"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "and"
+    },
+    {
+     "kind": "pop",
+     "at": "does"
+    },
+    {
+     "kind": "kaching",
+     "at": "times"
+    },
+    {
+     "kind": "whoosh",
+     "at": "rides"
+    }
+   ],
+   "params": {
+    "component": "City",
+    "place": "the city at night from above, car lights everywhere",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "rides",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "and",
+      "what": "the camera pulls back over the city, car lights streaming"
+     },
+     {
+      "at": "does",
+      "what": "a rooftop billboard with the Uber logo pops up"
+     },
+     {
+      "at": "times",
+      "what": "the billboard counter lands on the trip count"
+     },
+     {
+      "at": "rides",
+      "what": "a car with a passenger icon zooms past in front"
+     },
+     {
+      "at": "deliveries",
+      "what": "a delivery bike with a food box zooms past the other way"
+     }
+    ],
+    "things": [
+     "city blocks",
+     "rooftop billboard",
+     "trip counter",
+     "cars",
+     "delivery bike"
+    ],
+    "fig": {
+     "trips": "{fact2}"
+    }
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "meter",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Rohan's ride home is the average trip: about {trip_per_part}.",
+   "events": {
+    "rohan": {
+     "word": "Rohan's"
+    },
+    "ride": {
+     "word": "ride"
+    },
+    "average": {
+     "word": "average"
+    },
+    "trip": {
+     "word": "trip"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "rohan"
+    },
+    {
+     "kind": "pop",
+     "at": "average"
+    },
+    {
+     "kind": "kaching",
+     "at": "trip"
+    }
+   ],
+   "params": {
+    "component": "Meter",
+    "place": "inside the car, the fare on the dashboard phone",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "average",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rohan",
+      "what": "Rohan in the back seat taps his phone"
+     },
+     {
+      "at": "ride",
+      "what": "the city lights stream past the windows"
+     },
+     {
+      "at": "average",
+      "what": "the dashboard phone's fare starts counting up"
+     },
+     {
+      "at": "trip",
+      "what": "the fare lands and a receipt prints out of the phone"
+     }
+    ],
+    "things": [
+     "back seat",
+     "dashboard phone",
+     "fare counter",
+     "driver's hands",
+     "receipt"
+    ],
+    "fig": {
+     "fare": "{trip_per_part}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "split",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Most of it goes on to the driver, or to the restaurant and the courier.",
+   "events": {
+    "most": {
+     "word": "Most"
+    },
+    "driver": {
+     "word": "driver"
+    },
+    "restaurant": {
+     "word": "restaurant"
+    },
+    "courier": {
+     "word": "courier"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "most"
+    },
+    {
+     "kind": "kaching",
+     "at": "driver"
+    },
+    {
+     "kind": "pop",
+     "at": "restaurant"
+    },
+    {
+     "kind": "ding",
+     "at": "courier"
+    }
+   ],
+   "params": {
+    "component": "Split",
+    "place": "the kerb outside a busy restaurant",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "restaurant",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "most",
+      "what": "coins pour out of the big fare receipt"
+     },
+     {
+      "at": "driver",
+      "what": "most of the coins fly in through the car window to the driver, who grins"
+     },
+     {
+      "at": "restaurant",
+      "what": "a stream of coins flies into the restaurant door, its sign lights"
+     },
+     {
+      "at": "courier",
+      "what": "the courier on the bike catches coins in his food box"
+     }
+    ],
+    "things": [
+     "fare receipt",
+     "coins",
+     "driver in car",
+     "restaurant",
+     "courier bike"
+    ],
+    "fig": {
+     "fare": "{trip_per_part}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "keep",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Uber keeps about {keep_pct} of it. So is that its profit?",
+   "events": {
+    "uber": {
+     "word": "Uber"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "about": {
+     "word": "about"
+    },
+    "profit": {
+     "word": "profit"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "uber"
+    },
+    {
+     "kind": "kaching",
+     "at": "keeps"
+    },
+    {
+     "kind": "ding",
+     "at": "about"
+    },
+    {
+     "kind": "pop",
+     "at": "profit"
+    }
+   ],
+   "params": {
+    "component": "Jar",
+    "place": "Uber's office at night, a glass jar on the desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "about",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "uber",
+      "what": "the office lights flick on behind the logo on the wall"
+     },
+     {
+      "at": "keeps",
+      "what": "a few coins drop into the glass jar"
+     },
+     {
+      "at": "about",
+      "what": "the jar's tag stamps the share, a pie slice on the screen fills to it"
+     },
+     {
+      "at": "profit",
+      "what": "a question mark pops over the jar"
+     }
+    ],
+    "things": [
+     "office wall logo",
+     "glass jar",
+     "coins",
+     "pie on a screen"
+    ],
+    "fig": {
+     "pct": "{keep_pct}"
+    }
+   },
+   "transition": "zoom-through"
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "No. It pays for insurance, servers, staff and ads.",
+   "events": {
+    "insurance": {
+     "word": "insurance"
+    },
+    "servers": {
+     "word": "servers"
+    },
+    "staff": {
+     "word": "staff"
+    },
+    "ads": {
+     "word": "ads"
+    },
+    "no": {
+     "word": "No"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "no"
+    },
+    {
+     "kind": "whoosh",
+     "at": "insurance"
+    },
+    {
+     "kind": "whoosh",
+     "at": "servers"
+    },
+    {
+     "kind": "pop",
+     "at": "staff"
+    },
+    {
+     "kind": "pop",
+     "at": "ads"
+    }
+   ],
+   "params": {
+    "component": "Costs",
+    "place": "the same office, the jar on the desk with bills pinned around it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "staff",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "no",
+      "what": "the light turns red, the jar shakes"
+     },
+     {
+      "at": "insurance",
+      "what": "an insurance shield pulls coins out of the jar"
+     },
+     {
+      "at": "servers",
+      "what": "a server rack lights up and sucks coins out"
+     },
+     {
+      "at": "staff",
+      "what": "a row of desks with staff appears, coins fly to them"
+     },
+     {
+      "at": "ads",
+      "what": "a billboard ad drops down and takes the last coins"
+     }
+    ],
+    "things": [
+     "glass jar",
+     "insurance shield",
+     "server rack",
+     "staff desks",
+     "ad billboard"
+    ],
+    "fig": {}
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "What Uber has left at the end is just {prof_pct} of Rohan's fare.",
+   "events": {
+    "what": {
+     "word": "What"
+    },
+    "left": {
+     "word": "left"
+    },
+    "end": {
+     "word": "end"
+    },
+    "just": {
+     "word": "just"
+    },
+    "fare": {
+     "word": "fare"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "what"
+    },
+    {
+     "kind": "tick",
+     "at": "left"
+    },
+    {
+     "kind": "boom",
+     "at": "just"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "the empty desk under one lamp, the jar almost empty",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "just",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "what",
+      "what": "the camera pushes down on the jar under the lamp"
+     },
+     {
+      "at": "left",
+      "what": "one coin rattles at the bottom of the jar"
+     },
+     {
+      "at": "just",
+      "what": "the share stamps onto the long receipt beside the jar"
+     },
+     {
+      "at": "fare",
+      "what": "the long fare receipt unrolls across the desk, a tiny sliver of it glowing"
+     }
+    ],
+    "things": [
+     "desk lamp",
+     "glass jar",
+     "one coin",
+     "long fare receipt"
+    ],
+    "fig": {
+     "pct": "{prof_pct}",
+     "fare": "{trip_per_part}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Driver or app: who earns more? Check your fare.",
+   "events": {
+    "driver": {
+     "word": "Driver"
+    },
+    "app": {
+     "word": "app"
+    },
+    "earns": {
+     "word": "earns"
+    },
+    "check": {
+     "word": "Check"
+    },
+    "fare": {
+     "word": "fare"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "driver"
+    },
+    {
+     "kind": "pop",
+     "at": "app"
+    },
+    {
+     "kind": "ding",
+     "at": "fare"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "back on the night street by the Uber car",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "check",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "driver",
+      "what": "the driver leans out of the car window, grinning"
+     },
+     {
+      "at": "app",
+      "what": "Rohan holds up the phone with the Uber app"
+     },
+     {
+      "at": "earns",
+      "what": "a question mark pops between them"
+     },
+     {
+      "at": "check",
+      "what": "Rohan looks at the fare receipt floating over the car"
+     },
+     {
+      "at": "fare",
+      "what": "the receipt glows, ready to tear again"
+     }
+    ],
+    "things": [
+     "uber car",
+     "driver",
+     "rohan's phone",
+     "fare receipt"
+    ],
+    "fig": {}
+   },
+   "transition": "cut"
+  }
+ ],
+ "narrator": "am_michael"
+}
