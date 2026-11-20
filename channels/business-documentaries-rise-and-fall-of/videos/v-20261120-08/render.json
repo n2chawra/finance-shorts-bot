@@ -1,0 +1,103 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 35711,
+  "duration_sec": 36,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "dossier",
+    "key": "A",
+    "bpm": 82
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "A design student drew Nike's Swoosh, and got $35 for it.",
+        "start": 0.3,
+        "seconds": 2.63,
+        "window": 3.23,
+        "fill": 0.814
+      },
+      {
+        "scene": "student",
+        "text": "She was paid by the hour. And the man who paid her didn't even love it.",
+        "start": 3.53,
+        "seconds": 2.86,
+        "window": 3.5,
+        "fill": 0.817
+      },
+      {
+        "scene": "who",
+        "text": "Phil Knight, an accounting teacher at Portland State, sold running shoes on the side. In 1971 he needed a logo, fast, and asked a design student, Carolyn Davidson.",
+        "start": 7.03,
+        "seconds": 8.09,
+        "window": 8.53,
+        "fill": 0.948
+      },
+      {
+        "scene": "wing",
+        "text": "So why did Nike keep a logo its boss didn't love? There was no time left, and the shoes had to ship.",
+        "start": 15.57,
+        "seconds": 4.35,
+        "window": 5.0,
+        "fill": 0.87
+      },
+      {
+        "scene": "turn",
+        "text": "Did she ever get more? Twelve years later, Knight thanked her: a gold Swoosh ring, and 500 Nike shares.",
+        "start": 20.57,
+        "seconds": 4.32,
+        "window": 5.0,
+        "fill": 0.864
+      },
+      {
+        "scene": "payoff",
+        "text": "Last year, Nike sold $46.4B of shoes and clothes, most of it under the Nike name.",
+        "start": 25.57,
+        "seconds": 4.56,
+        "window": 5.2,
+        "fill": 0.877
+      },
+      {
+        "scene": "ending",
+        "text": "Ring, or the shares: which thank-you would you take? Look down. That Swoosh cost $35.",
+        "start": 30.77,
+        "seconds": 4.31,
+        "window": 4.97,
+        "fill": 0.867
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.8,
+    "lufs": -15.8,
+    "music_under_voice_db": 17.9
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.76,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,205 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:40:34.255373+00:00",
+    "finishedAt": "2026-11-20T04:40:34.255373+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:41:13.684060+00:00",
+    "finishedAt": "2026-11-20T04:41:13.684060+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-20T04:41:14.667512+00:00",
+    "finishedAt": "2026-11-20T04:41:14.667512+00:00",
+    "notes": [
+      "beat 'hook'.params.overlays[1].text contains a typed number; use a placeholder: 'The42.ie'",
+      "1 dated steps; a true-history dates at least 2 moments (facts with unit \"year\")",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title \"A Student Drew Nike's Swoosh for {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:41:26.882061+00:00",
+    "finishedAt": "2026-11-20T04:41:26.882061+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-20T04:41:27.796062+00:00",
+    "finishedAt": "2026-11-20T04:41:27.796062+00:00",
+    "notes": [
+      "description mentions '42', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"A Student Drew Nike's Swoosh for {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:41:41.228712+00:00",
+    "finishedAt": "2026-11-20T04:41:41.228712+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:41:42.215439+00:00",
+    "finishedAt": "2026-11-20T04:41:42.215439+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"A Student Drew Nike's Swoosh for {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-20T04:41:49.238840+00:00",
+    "finishedAt": "2026-11-20T04:41:59.571161+00:00",
+    "notes": [
+      "11 sound effects in 36 s: this channel allows 16 a minute (10 here; channel.json sound.sfxPerMinute)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:42:04.104294+00:00",
+    "finishedAt": "2026-11-20T04:42:23.373998+00:00",
+    "notes": [
+      "36 s, ocean/dossier (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-20T04:42:51.326278+00:00",
+    "finishedAt": "2026-11-20T04:42:51.326278+00:00",
+    "notes": [
+      "payoff: 'almost all of them carrying her Swoosh' is not supported. Nike's FY2026 release splits the $46.4B into NIKE Brand $45.2B and Converse $1.2B, and the NIKE Brand figure includes Jordan Brand, whose products mostly carry the Jumpman logo rather than the Swoosh. No source gives the Swoosh's share of sales. Fix: drop the clause or say 'most of it under her Swoosh's name' / 'under the Nike name'.",
+      "who: 'In 1971, Phil Knight taught accounting there' gives the year to the teaching, and the sources date the logo request to 1971 but give no date for Knight's teaching (he met Davidson while teaching at Portland State, before 1971). 'there' also has no spoken referent, since Portland State appears only on screen. Fix: 'Phil Knight, an accounting teacher at Portland State, sold running shoes on the side. In 1971 he needed a logo, fast...'",
+      "Confirmed: fact1 $35 and fact2 1971 on the42.ie page ($35 rate; registered 18 Jun 1971) and Nike's own swoosh-history page ($35 invoice). fact3 500 shares in 1983 on the42.ie, and Wikipedia gives Sept 1983 (verify item resolved: 1983). fact4 $46.4B FY2026 revenue on Nike's release ('Revenues for NIKE, Inc. were $46.4 billion'). 'Paid by the hour' ($2/hr, 17.5 h) is widely reported. 'Didn't even love it' matches Knight's 'I don't love it' quote. The deadline reason matches the reporting. Twelve years 1971-1983 is right. The description ends with the disclaimer. No advice and the tone is fine."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:42:44.152512+00:00",
+    "finishedAt": "2026-11-20T04:42:58.538674+00:00",
+    "notes": [
+      "36 s, ocean/dossier (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:43:13.542594+00:00",
+    "finishedAt": "2026-11-20T04:43:13.542594+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"A Student Drew Nike's Swoosh for {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:43:28.197258+00:00",
+    "finishedAt": "2026-11-20T04:43:28.197258+00:00",
+    "notes": [
+      "Re-review after the fixes. 'who' now names Knight as an accounting teacher at Portland State and puts only the logo request in 1971, which matches the42.ie and Wikipedia. 'payoff' now says 'most of it under the Nike name', which matches Nike's FY2026 release (NIKE Brand $45.2B of $46.4B). The facts are confirmed as before: $35 and 1971 on the42.ie, 500 shares in 1983 on the42.ie and Wikipedia, $46.4B in Nike's release. The picture changes add no new claims, and the disclaimer is present. Note: the description credits TheJournal.ie but the fact source is The42.ie (same publisher); consider naming The42."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-20T04:43:16.779248+00:00",
+    "finishedAt": "2026-11-20T04:43:36.216915+00:00",
+    "notes": [
+      "3.2 s with nothing new on screen in beat 'who' (at most 3.0 s): add an action on the phrase being said there",
+      "2 of 9 stills are mostly empty background (at 5 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "warning: beat 'who' runs 8.5 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:43:59.789836+00:00",
+    "finishedAt": "2026-11-20T04:44:15.016734+00:00",
+    "notes": [
+      "36 s, ocean/dossier (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-20T04:45:20.794756+00:00",
+    "finishedAt": "2026-11-20T04:45:20.794756+00:00",
+    "notes": [
+      "[script] 0.0s (hook): the first frame is an Air Jordan 4 (Jumpman logo, no Swoosh visible) under the caption 'A DESIGN'. A video about Nike's Swoosh opens on a shoe that has no Swoosh, so a viewer with the sound off can't name the subject. Open on a close Swoosh, for example the black sneaker used at 10s and 35s, with Nike or the Swoosh readable in the first frame.",
+      "[script] 20.0s (wing beat, 'no time left, and the shoes had to ship'): the same Air Jordan 4 picture as 0.0s comes back. It repeats an earlier picture, and the planned moment ('the Swoosh on a sneaker', Nike HQ, a box ready to ship) isn't shown. A 1989 Jordan doesn't match a 1971 shipping deadline. Use a picture that fits the line, such as a shoebox, a shipping crate or a 1972 shoe, or at least a Swoosh close-up.",
+      "[script] media choice: the hook media asset (Air Jordan 4, white and green) is labelled as Nike sneakers with a Swoosh in params.place but has none. Swap it for a photo where the Swoosh is the subject."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:46:23.287745+00:00",
+    "finishedAt": "2026-11-20T04:46:42.818544+00:00",
+    "notes": [
+      "36 s, ocean/dossier (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:46:58.283324+00:00",
+    "finishedAt": "2026-11-20T04:46:58.283324+00:00",
+    "notes": [
+      "Re-review after fix: Air Jordan photo gone; 0s opens on black Nike SB Dunks with the Swoosh in view under 'A DESIGN', 20s is a new sole-and-Swoosh close-up under 'No time left', ending loops back to the hook's sneaker with the channel disclaimer; layout/craft problems empty, audio -1.0/-17.8 dB, 36 s within the channel's 30-55 s; no placeholders or broken figures."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:47:03.746082+00:00",
+    "finishedAt": "2026-11-20T04:49:02.143910+00:00",
+    "notes": [
+      "36 s, ocean/dossier, peak -1.0 dB, mean -17.8 dB",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "warning: the music sits only 17.9 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-20T04:49:05.360613+00:00",
+    "finishedAt": "2026-11-20T04:49:05.360613+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

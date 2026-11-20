@@ -1,0 +1,897 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 35711,
+  "story": "founder_bet",
+  "shape": "reveal",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "dossier",
+    "key": "A",
+    "bpm": 82
+  },
+  "arms": {
+    "length": "30-55",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "shock_number",
+  "cta": "Ring, or the shares: which thank-you would you take? Comment",
+  "feed_id": "2026-11-19-nike-swoosh-35",
+  "facts": [
+    {
+      "label": "What Nike paid for the Swoosh design",
+      "value": 35,
+      "unit": "money",
+      "currency": "USD",
+      "as_of": "1971-06-18",
+      "source": "The42.ie",
+      "url": "https://www.the42.ie/nike-logo-deal-1591911-Jul2014/",
+      "fixed": true
+    },
+    {
+      "label": "Year of the design",
+      "value": 1971,
+      "unit": "year",
+      "as_of": "1971-06-18",
+      "source": "The42.ie",
+      "url": "https://www.the42.ie/nike-logo-deal-1591911-Jul2014/",
+      "fixed": true
+    },
+    {
+      "label": "Nike shares given to the designer in 1983",
+      "value": 500,
+      "unit": "count",
+      "as_of": "1983-01-01",
+      "source": "The42.ie",
+      "url": "https://www.the42.ie/nike-logo-deal-1591911-Jul2014/",
+      "fixed": true
+    },
+    {
+      "label": "Nike's revenue in fiscal 2026",
+      "value": 46.4,
+      "unit": "money_billion",
+      "currency": "USD",
+      "as_of": "2026-05-31",
+      "source": "NIKE, Inc.",
+      "url": "https://about.nike.com/newsroom/releases/nike-inc-reports-fiscal-2026-fourth-quarter-and-full-year-results"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.0,
+    "words": "A student drew *this*",
+    "figure": "{fact1}",
+    "tag": "Nike paid",
+    "angle": "number"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "doc",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "A design student drew Nike's Swoosh, and got {fact1} for it.",
+      "events": {
+        "student": {
+          "word": "student"
+        },
+        "swoosh": {
+          "word": "Swoosh"
+        },
+        "got": {
+          "word": "got"
+        },
+        "it": {
+          "word": "it"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "swoosh"
+        },
+        {
+          "kind": "boom",
+          "at": "got"
+        }
+      ],
+      "params": {
+        "place": [
+          "a pair of black Nike sneakers on a white floor, their Swooshes in view",
+          "a black Nike sneaker, close on its Swoosh"
+        ],
+        "things": [
+          "Nike sneakers",
+          "the Swoosh",
+          "price count"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "swoosh",
+            "size": "close"
+          },
+          {
+            "at": "got",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "student",
+            "what": "a pair of Nike sneakers pushing in, a label: a design student"
+          },
+          {
+            "at": "swoosh",
+            "what": "hard cut to the Swoosh on a black sneaker"
+          },
+          {
+            "at": "got",
+            "what": "the picture dims and the price counts up"
+          },
+          {
+            "at": "it",
+            "what": "the price lands and kicks"
+          }
+        ],
+        "fig": {
+          "price": "{fact1}"
+        },
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2023-nike-sb-dunk-low-pro-2-7b299bc1.jpg",
+            "focus": [
+              0.6,
+              0.62
+            ],
+            "move": "push",
+            "amount": 0.1,
+            "grade": "doc",
+            "out": "swoosh"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2023-nike-sb-dunk-low-pro-1-1b03ccd6.jpg",
+            "focus": [
+              0.72,
+              0.5
+            ],
+            "move": "push",
+            "amount": 0.1,
+            "grade": "doc",
+            "at": "swoosh"
+          },
+          {
+            "kind": "count",
+            "figure": "price",
+            "eyebrow": "She was paid",
+            "unit": "for the Swoosh",
+            "countAt": "got",
+            "countLen": 20,
+            "tone": "gold",
+            "at": "got"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "A design student",
+            "sub": "Portland State, Oregon",
+            "at": "student",
+            "out": "swoosh"
+          }
+        ]
+      }
+    },
+    {
+      "id": "student",
+      "scene": "doc",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "She was paid by the hour. And the man who paid her didn't even love it.",
+      "events": {
+        "paid": {
+          "word": "paid"
+        },
+        "hour": {
+          "word": "hour"
+        },
+        "man": {
+          "word": "man"
+        },
+        "love": {
+          "word": "love"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "love"
+        }
+      ],
+      "params": {
+        "place": [
+          "the first Swoosh drawing"
+        ],
+        "things": [
+          "the original Swoosh drawing"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "man",
+            "size": "medium"
+          },
+          {
+            "at": "love",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "paid",
+            "what": "hard cut to the first Swoosh drawing, drifting"
+          },
+          {
+            "at": "hour",
+            "what": "a label: paid by the hour"
+          },
+          {
+            "at": "man",
+            "what": "the camera pushes into the drawing"
+          },
+          {
+            "at": "love",
+            "what": "a red label slams on: not loved"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nike-swoosh-logo71-f74fb74a.png",
+            "frame": "clipping",
+            "surface": "paper",
+            "focus": [
+              0.5,
+              0.5
+            ],
+            "move": "push",
+            "amount": 0.12,
+            "tilt": -3,
+            "landAt": "paid"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "Paid by the hour",
+            "at": "hour",
+            "out": "love"
+          },
+          {
+            "kind": "label",
+            "text": "Not loved",
+            "tone": "red",
+            "at": "love"
+          }
+        ]
+      }
+    },
+    {
+      "id": "who",
+      "scene": "doc",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Phil Knight, an accounting teacher at Portland State, sold running shoes on the side. In {fact2} he needed a logo, fast, and asked a design student, Carolyn Davidson.",
+      "events": {
+        "phil": {
+          "word": "Phil"
+        },
+        "accounting": {
+          "word": "accounting"
+        },
+        "running": {
+          "word": "running"
+        },
+        "side": {
+          "word": "side"
+        },
+        "logo": {
+          "word": "logo"
+        },
+        "fast": {
+          "word": "fast"
+        },
+        "asked": {
+          "word": "asked"
+        },
+        "carolyn": {
+          "word": "Carolyn"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "carolyn"
+        }
+      ],
+      "params": {
+        "place": [
+          "a college locker room in black and white",
+          "a sneaker on a white floor",
+          "the Portland State campus"
+        ],
+        "things": [
+          "polaroid of the young Phil Knight",
+          "running shoes",
+          "Portland State sign"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "running",
+            "size": "close"
+          },
+          {
+            "at": "asked",
+            "size": "wide"
+          },
+          {
+            "at": "carolyn",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "phil",
+            "what": "a black-and-white photo of the young Phil Knight with his coach drops in and unblurs"
+          },
+          {
+            "at": "accounting",
+            "what": "a lower third names him"
+          },
+          {
+            "at": "running",
+            "what": "hard cut to a running shoe"
+          },
+          {
+            "at": "side",
+            "what": "the shoe drifts, a label: on the side"
+          },
+          {
+            "at": "logo",
+            "what": "a label: a logo, fast"
+          },
+          {
+            "at": "asked",
+            "what": "hard cut to the Portland State campus, pulling back"
+          },
+          {
+            "at": "carolyn",
+            "what": "a lower third names Carolyn Davidson"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-knight-and-bowerman-bd59503b.jpg",
+            "frame": "polaroid",
+            "treatment": "bw",
+            "surface": "dark",
+            "focus": [
+              0.6,
+              0.4
+            ],
+            "landAt": "phil",
+            "tilt": -3,
+            "out": "running"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2023-nike-sb-dunk-low-pro-1-1b03ccd6.jpg",
+            "focus": [
+              0.3,
+              0.4
+            ],
+            "move": "drift-right",
+            "amount": 0.1,
+            "treatment": "bw",
+            "grade": "bw",
+            "at": "running",
+            "out": "asked"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sign-at-entry-to-portland-state-university-2004-e3aafa58.jpg",
+            "frame": "polaroid",
+            "surface": "desk",
+            "focus": [
+              0.75,
+              0.6
+            ],
+            "tilt": 3,
+            "landAt": "asked",
+            "at": "asked"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "lowerThird",
+            "name": "Phil Knight",
+            "role": "teacher, shoe seller",
+            "at": "accounting",
+            "out": "running"
+          },
+          {
+            "kind": "label",
+            "text": "On the side",
+            "sub": "selling running shoes",
+            "at": "side",
+            "out": "logo"
+          },
+          {
+            "kind": "label",
+            "text": "A logo",
+            "sub": "needed fast",
+            "tone": "red",
+            "at": "logo",
+            "out": "asked"
+          },
+          {
+            "kind": "lowerThird",
+            "name": "Carolyn Davidson",
+            "role": "design student",
+            "at": "carolyn"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wing",
+      "scene": "doc",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "So why did Nike keep a logo its boss didn't love? There was no time left, and the shoes had to ship.",
+      "events": {
+        "why": {
+          "word": "why"
+        },
+        "keep": {
+          "word": "keep"
+        },
+        "boss": {
+          "word": "boss"
+        },
+        "time": {
+          "word": "time"
+        },
+        "ship": {
+          "word": "ship"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "time"
+        }
+      ],
+      "params": {
+        "place": [
+          "Nike's lakeside headquarters",
+          "a sneaker box ready to ship"
+        ],
+        "things": [
+          "Nike headquarters",
+          "the Swoosh on a shoe"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "time",
+            "size": "medium"
+          },
+          {
+            "at": "ship",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "why",
+            "what": "the Nike campus across the lake, pushing in"
+          },
+          {
+            "at": "boss",
+            "what": "a label: kept anyway"
+          },
+          {
+            "at": "time",
+            "what": "hard cut to the Swoosh on a sneaker, a red label: no time left"
+          },
+          {
+            "at": "ship",
+            "what": "the camera pushes in on the Swoosh"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nikeworldheadquarters-06a41a90.jpg",
+            "focus": [
+              0.5,
+              0.5
+            ],
+            "move": "push",
+            "amount": 0.1,
+            "grade": "cold",
+            "out": "time"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2023-nike-sb-dunk-low-pro-3-e2b07fc1.jpg",
+            "focus": [
+              0.72,
+              0.3
+            ],
+            "move": "push",
+            "amount": 0.14,
+            "grade": "cold",
+            "at": "time"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "label",
+            "text": "Kept anyway",
+            "sub": "a logo its boss doubted",
+            "at": "boss",
+            "out": "time"
+          },
+          {
+            "kind": "label",
+            "text": "No time left",
+            "tone": "red",
+            "at": "time"
+          }
+        ]
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "doc",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "Did she ever get more? Twelve years later, Knight thanked her: a gold Swoosh ring, and {fact3} Nike shares.",
+      "events": {
+        "more": {
+          "word": "more"
+        },
+        "twelve": {
+          "word": "Twelve"
+        },
+        "thanked": {
+          "word": "thanked"
+        },
+        "gold": {
+          "word": "gold"
+        },
+        "ring": {
+          "word": "ring"
+        },
+        "shares": {
+          "word": "shares"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "gold"
+        },
+        {
+          "kind": "boom",
+          "at": "shares"
+        }
+      ],
+      "params": {
+        "place": [
+          "Phil Knight in the stands, years later",
+          "a gold poster card for the shares"
+        ],
+        "things": [
+          "Phil Knight",
+          "the share count"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "gold",
+            "size": "close"
+          },
+          {
+            "at": "shares",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "more",
+            "what": "Phil Knight years later, pushing in"
+          },
+          {
+            "at": "twelve",
+            "what": "a lower third names him"
+          },
+          {
+            "at": "gold",
+            "what": "a label: a gold Swoosh ring"
+          },
+          {
+            "at": "shares",
+            "what": "the picture dims and the share count counts up"
+          }
+        ],
+        "fig": {
+          "shares": "{fact3}"
+        },
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-philknightfootball-51ccce8d.jpg",
+            "focus": [
+              0.4,
+              0.45
+            ],
+            "move": "push",
+            "amount": 0.1,
+            "grade": "doc"
+          },
+          {
+            "kind": "count",
+            "figure": "shares",
+            "eyebrow": "A thank-you",
+            "unit": "Nike shares",
+            "countAt": "shares",
+            "countLen": 24,
+            "tone": "gold",
+            "at": "shares",
+            "dim": 0.35,
+            "blur": 2
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "lowerThird",
+            "name": "Phil Knight",
+            "role": "Nike co-founder",
+            "at": "twelve",
+            "out": "gold"
+          },
+          {
+            "kind": "label",
+            "text": "A gold Swoosh ring",
+            "at": "gold",
+            "out": "shares"
+          }
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "doc",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "Last year, Nike sold {fact4} of shoes and clothes, most of it under the Nike name.",
+      "events": {
+        "last": {
+          "word": "Last"
+        },
+        "nike": {
+          "word": "Nike"
+        },
+        "shoes": {
+          "word": "shoes"
+        },
+        "almost": {
+          "word": "most"
+        },
+        "swoosh": {
+          "word": "name"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "last"
+        },
+        {
+          "kind": "swell",
+          "at": "almost"
+        }
+      ],
+      "params": {
+        "place": [
+          "a Nike store in a mall, as a gold poster"
+        ],
+        "things": [
+          "Nike store",
+          "gold poster figure"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "shoes",
+            "size": "close"
+          },
+          {
+            "at": "swoosh",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "last",
+            "what": "the gold poster cuts in over the Nike store"
+          },
+          {
+            "at": "shoes",
+            "what": "the source chip lands under the figure"
+          },
+          {
+            "at": "almost",
+            "what": "the store keeps pushing behind the figure"
+          },
+          {
+            "at": "swoosh",
+            "what": "the figure catches its sheen"
+          }
+        ],
+        "fig": {
+          "sales": "{fact4}"
+        },
+        "layers": [
+          {
+            "kind": "poster",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nike-unite-kadoma-at-mitsui-outlet-park-osaka-ka-66477027.jpg",
+            "focus": [
+              0.5,
+              0.4
+            ],
+            "date": "2026-05-31",
+            "title": "Nike",
+            "figure": "sales",
+            "sub": "in sales in one year",
+            "on": "last"
+          }
+        ],
+        "overlays": [
+          {
+            "kind": "source",
+            "form": "REPORT",
+            "text": "Nike results",
+            "date": "2026-06-25",
+            "at": "shoes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ending",
+      "scene": "doc",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "Ring, or the shares: which thank-you would you take? Look down. That Swoosh cost {fact1}.",
+      "events": {
+        "ring": {
+          "word": "Ring"
+        },
+        "shares": {
+          "word": "shares"
+        },
+        "look": {
+          "word": "Look"
+        },
+        "down": {
+          "word": "down"
+        },
+        "cost": {
+          "word": "cost"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "cost"
+        }
+      ],
+      "params": {
+        "place": [
+          "a white sneaker on a white floor",
+          "back to the black sneaker's Swoosh"
+        ],
+        "things": [
+          "white sneaker",
+          "the Swoosh"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "look",
+            "size": "medium"
+          },
+          {
+            "at": "cost",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "ring",
+            "what": "a sneaker's gum sole and Swoosh, pulling back"
+          },
+          {
+            "at": "look",
+            "what": "hard cut back to the hook's first frame: the pair of black sneakers"
+          },
+          {
+            "at": "cost",
+            "what": "the camera pushes in on the Swoosh"
+          }
+        ],
+        "layers": [
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2023-nike-sb-dunk-low-pro-3-e2b07fc1.jpg",
+            "focus": [
+              0.45,
+              0.6
+            ],
+            "move": "pull",
+            "amount": 0.12,
+            "grade": "doc",
+            "out": "look"
+          },
+          {
+            "kind": "photo",
+            "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2023-nike-sb-dunk-low-pro-2-7b299bc1.jpg",
+            "focus": [
+              0.6,
+              0.62
+            ],
+            "move": "push",
+            "amount": 0.1,
+            "grade": "doc",
+            "at": "look"
+          }
+        ]
+      }
+    }
+  ],
+  "narrator": "am_fenrir"
+}
