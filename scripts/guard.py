@@ -182,13 +182,25 @@ def invariants(head: str) -> list[str]:
     return out
 
 
-def merges_today(agent: str, now: datetime) -> int:
+def _branch_channel(branch: str) -> str:
+    """The channel a per-channel agent's branch names (agent/<name>/<date>/<slug>); older branches are Paisa Panchayat's."""
+    parts = (branch or "").split("/")
+    return parts[3] if len(parts) > 3 and parts[3] else DEFAULT_CHANNEL
+
+
+def merges_today(agent: str, now: datetime, channel: str | None = None) -> int:
+    """Today's merges for this agent; a per-channel agent's are counted per channel (owner, 2026-11-20: the
+    research agent runs for four channels, and a shared count blocked the third channel's research)."""
     path = ROOT / "improvement" / "merge-log.json"
     if not path.is_file():
         return 0
     day = (now + timedelta(hours=5, minutes=30)).date().isoformat()   # IST day
     log = json.loads(path.read_text(encoding="utf-8"))
-    return sum(1 for e in log.get("merges", []) if e.get("agent") == agent and e.get("result") == "merged" and e.get("dayIst") == day)
+    mine = [e for e in log.get("merges", []) if e.get("agent") == agent and e.get("result") == "merged" and e.get("dayIst") == day]
+    if agent in PER_CHANNEL_AGENTS:
+        want = channel or DEFAULT_CHANNEL
+        mine = [e for e in mine if _branch_channel(e.get("branch", "")) == want]
+    return len(mine)
 
 
 # agents that work for one channel at a time (the routine names it; branch agent/<name>/<date>/<slug>):
@@ -263,8 +275,9 @@ def check(agent: str, base: str, head: str, now: datetime | None = None, channel
                 reasons.append(f"{current}: the renderer may not use the network or download anything")
     reasons += invariants(head)
     reasons += changes_added(base, head, files)
-    if merges_today(agent, now) >= MAX_MERGES_PER_DAY:
-        reasons.append(f"the {agent} agent already merged {MAX_MERGES_PER_DAY} changes today")
+    if merges_today(agent, now, channel) >= MAX_MERGES_PER_DAY:
+        where = f" for channels/{channel or DEFAULT_CHANNEL}/" if agent in PER_CHANNEL_AGENTS else ""
+        reasons.append(f"the {agent} agent already merged {MAX_MERGES_PER_DAY} changes today{where}")
     needs_tests = any(not p.startswith(DATA_PREFIXES) for _, p in files)
     return {"ok": not reasons, "reasons": sorted(set(reasons)), "files": [p for _, p in files], "codeLines": code_lines,
             "needsTests": needs_tests, "areas": areas([p for _, p in files])}

@@ -1,0 +1,52 @@
+{
+  "id": "v-20261120-06",
+  "createdAt": "2026-11-20T00:44:01.866065+00:00",
+  "status": "failed",
+  "failReason": "check-plan: no format can pass: product_craze_short, rise_fall_short and business_war_short are tier low and blocked as personal-budget formats by generator/formats.py mix_problems (fixed run), and founder_bet, the channel's only core format, was the previous story (STORY_WINDOW 1)",
+  "template": "short_story",
+  "topic": {
+    "title": "Stanley Sold $73 Million a Year. Then One Cup Went Viral",
+    "category": "drinkware",
+    "reach": "global",
+    "feed_id": "2026-11-19-stanley-cup"
+  },
+  "title": "Stanley Sold {fact1} a Year. Then One Cup Went Viral",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-20T00:43:15.015870+00:00",
+      "finishedAt": "2026-11-20T00:43:15.015870+00:00",
+      "notes": [
+        "'product_craze_short' is a personal-budget format: off during the fixed run (owner, 2026-11-11). Tell a big-money story (founder_bet), or a trap or which-one-are-you for one Short in three"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-20T00:43:31.580351+00:00",
+      "finishedAt": "2026-11-20T00:43:31.580351+00:00",
+      "notes": [
+        "story 'founder_bet' was told in the last 1 videos"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-20T00:43:47.019967+00:00",
+      "finishedAt": "2026-11-20T00:43:47.019967+00:00",
+      "notes": [
+        "'rise_fall_short' is a personal-budget format: off during the fixed run (owner, 2026-11-11). Tell a big-money story (founder_bet), or a trap or which-one-are-you for one Short in three"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-20T00:43:47.955190+00:00",
+      "finishedAt": "2026-11-20T00:43:47.955190+00:00",
+      "notes": [
+        "'business_war_short' is a personal-budget format: off during the fixed run (owner, 2026-11-11). Tell a big-money story (founder_bet), or a trap or which-one-are-you for one Short in three"
+      ]
+    }
+  ]
+}

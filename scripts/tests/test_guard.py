@@ -129,6 +129,20 @@ def test_daily_merge_limit(repo: Path) -> None:
     assert any("already merged" in x for x in guard.check("improver", "main", "HEAD", now)["reasons"])
 
 
+def test_daily_merge_limit_is_per_channel_for_per_channel_agents(repo: Path) -> None:
+    change(repo, "channels/b-chan/research/2026-10-16.md", "# report\n")
+    now = datetime(2026, 10, 16, 3, 0, tzinfo=timezone.utc)
+    log = {"merges": [{"agent": "research", "result": "merged", "dayIst": "2026-10-16", "branch": f"agent/research/2026-10-16/{c}"}
+                      for c in ("a-chan", "c-chan")]
+                     + [{"agent": "research", "result": "merged", "dayIst": "2026-10-16", "branch": "agent/research/2026-10-16/b-chan"}]}
+    (repo / "improvement").mkdir(exist_ok=True)
+    (repo / "improvement/merge-log.json").write_text(json.dumps(log), encoding="utf-8")
+    assert not any("already merged" in x for x in guard.check("research", "main", "HEAD", now, channel="b-chan")["reasons"])
+    log["merges"].append(log["merges"][-1])
+    (repo / "improvement/merge-log.json").write_text(json.dumps(log), encoding="utf-8")
+    assert any("already merged" in x for x in guard.check("research", "main", "HEAD", now, channel="b-chan")["reasons"])
+
+
 def test_reports_only_branches_skip_the_test_suite(repo: Path) -> None:
     change(repo, "improvement/research/2026-10-16.md", "# report\n")
     assert guard.check("research", "main", "HEAD")["needsTests"] is False
