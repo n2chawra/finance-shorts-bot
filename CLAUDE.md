@@ -65,7 +65,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   - The variant system stays off (`config/arms.json` → `frozen`). Style checks are notes
     (`renderer/advice.py`). Captions end 340 px above a Short's bottom edge; one upload category; no
     country tag on global videos.
-  - **Settings (2026-11-12)**: 3 Shorts a day at 07:07, 12:37 and 19:07 IST; two long videos a week (Wed and Fri 20:07 IST, owner 2026-11-16),
+  - **Settings (owner, confirmed 2026-11-20)**: 2 Shorts a day at 07:07 and 19:07 IST; one long video a week (Saturday 20:07 IST),
     3–4 minutes (180–240 s), the full story of a recent Short that held viewers best; research,
     auditor and improver nightly, the dashboard agent Sundays, scout and studio on, monthly off.
   Where a bullet below says otherwise, this one wins.
@@ -94,8 +94,8 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   video is voiced, with captions of every word drawn from the voice timings (owner, 2026-10-21;
   small sentence captions with the speaker's name since 2026-11-02; `remotion/src/fx/captions.tsx`).
 - **Best video first** (owner, 2026-10-30; cadence 2026-11-02 after the 48-hour test didn't help): the
-  routine makes **3 Shorts a day** (`dailyVideoTarget`) and **all 3 go out**, uploaded automatically
-  by the API at 07:07, 12:37 and 19:07 IST (about 6 h apart, like the 1K-view week of 22–28 Oct) (`uploadTimes`, `shortEveryDays: 1`, `uploadsPaused: false`;
+  routine makes **2 Shorts a day** (`dailyVideoTarget`) and **both go out**, uploaded automatically
+  by the API at 07:07 and 19:07 IST (owner, confirmed 2026-11-20; 3 a day at 07:07, 12:37, 19:07 until 17 Nov) (`uploadTimes`, `shortEveryDays: 1`, `uploadsPaused: false`;
   owner 2026-11-04: more videos, faster learning). Never a gap: the 30 Oct–1 Nov pause cost the channel its momentum. The **editor** step of every video run
   (`generator/prompts/editor.md`, `python -m generator.run rank`, `generator/editor.py`) rates every
   ready Short and writes `channels/<channel>/editor/ranking.json`; ingest turns it into the queue order. The
@@ -105,11 +105,11 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   (right after the hard rules), and every agent whose lane can fix a note answers it (handing on what
   belongs to another agent; `agents/policy.md`, `python -m generator.feedback --agent <name>`) in
   `channels/<channel>/feedback-acks/<agent>.json`, which ingest shows on the dashboard.
-- **Shorts slots** at 07:07, 12:37 and 19:07 IST (setting `uploadTimes`); **trend slots** (`trendUploadTimes`)
+- **Shorts slots** at 07:07 and 19:07 IST (setting `uploadTimes`); **trend slots** (`trendUploadTimes`)
   are off since 2026-11-02 (when set, each breaking or trending video of the day opens
   one, so a trend never pushes a normal video back; quiet days leave them empty). Upload time barely
   changes who sees a Short, so slots suit the evening peaks we saw, not time zones (owner,
-  2026-10-19). **Two long videos per week**, 20:07 IST on Wednesday and Friday (owner, 2026-11-16; `longUploadTimes`,
+  2026-10-19). **One long video per week**, Saturday 20:07 IST (owner, confirmed 2026-11-20; `longUploadTimes`,
   `longUploadDays`, `longPerWeek`). One video per
   slot; each format is filled from its own queue, so a missing long video never costs a Short its slot.
 - **Generation keeps going** on a schedule to build a backlog, capped at **30 ready videos**.
@@ -203,7 +203,7 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
 ## Architecture
 
 ```
-Claude Code routine (cloud: 04:07 IST makes all 3 of the day's videos in one session;
+Claude Code routine (cloud: 04:07 IST makes the day's 2 Shorts in one session;
                      09:07 IST spare run makes up any shortfall, else idles;
                      11:30 IST trend run: one extra Short only for a strong trend)
   └─ planner → writer → number check → fact review → director → render → QA review
@@ -287,7 +287,7 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 
 | | Shorts | Long-form |
 |---|---|---|
-| Made by | the video routine (04:07 IST, 3 a day) | the **Studio** agent (`agents/studio.md`, Mondays and Wednesdays 08:05 IST, 2 a week) |
+| Made by | the video routine (04:07 IST, 2 a day) | the **Studio** agent (`agents/studio.md`, Thursdays 08:05 IST, 1 a week) |
 | Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, Mon and Thu 09:37 IST): since 2026-11-04 always the full story of one of our Shorts with 1K+ views, titled as people search it |
 | Template | `short_story` (1080×1920, a skit per format in its README) | `long_story` (1920×1080, a list of chapters, the scene catalog in its README) |
 | Length / pace | 20–35 s (settings), tempo 1.2 (~175 spoken words a minute) | 300–400 s (settings), tempo 1.25 (~180 words a minute; 1.5 until 2026-11-04) |
