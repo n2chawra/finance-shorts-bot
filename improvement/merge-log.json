@@ -3660,6 +3660,19 @@
       ],
       "commit": "f89d661261d5f333c8535d2c8c06c3b6468de9c5",
       "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44777945118"
+    },
+    {
+      "at": "2026-11-20T17:18:18+00:00",
+      "dayIst": "2026-11-20",
+      "agent": "improver",
+      "branch": "agent/improver/2026-11-20",
+      "result": "blocked",
+      "reasons": [
+        "conflicts with main in: generator/tests/test_media.py (rebase the branch on origin/main and push again)"
+      ],
+      "files": [],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44781945596"
     }
   ]
 }
