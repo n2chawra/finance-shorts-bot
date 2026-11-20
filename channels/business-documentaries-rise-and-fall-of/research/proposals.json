@@ -1,0 +1,20 @@
+{
+  "proposals": [
+    {
+      "id": "long-topics-feed-gap",
+      "date": "2026-11-20",
+      "area": "pipeline",
+      "title": "Long topics in the research feed never reach the long video state",
+      "change": "For this channel, research/topics.json holds 13 topics with \"format\": \"long\" (11 from the setup, 2 tonight), but `python -m generator.run state --format long` reads longform/topics.json, which has only the Crocs sample. Either Scout copies the research feed's long topics into longform/topics.json on its next run, or the long state also offers research topics whose format is long.",
+      "evidence": ["channels/business-documentaries-rise-and-fall-of/research/topics.json", "channels/business-documentaries-rise-and-fall-of/longform/topics.json"],
+      "expectedEffect": "Studio sees 13 sourced long topics instead of 1",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "none: the topics already passed the setup's fact checks",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
+    }
+  ]
+}

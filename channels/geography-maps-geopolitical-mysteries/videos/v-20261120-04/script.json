@@ -1,0 +1,1056 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 38417,
+  "story": "why_shaped",
+  "shape": "reveal",
+  "currency": "USD",
+  "style": {
+    "palette": "sky",
+    "genre": "explorer",
+    "key": "E",
+    "bpm": 76,
+    "look": {
+      "stage": "night",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "drop"
+    }
+  },
+  "arms": {
+    "length": "60-80",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "question",
+  "cta": "Kettle or mountain: which surprised you more? Comment",
+  "feed_id": "2026-11-20-dinorwig-electric-mountain",
+  "facts": [
+    {
+      "label": "Dinorwig's installed generating capacity in megawatts, six 300 MW units",
+      "value": 1800,
+      "unit": "count",
+      "as_of": "2026-11-20",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dinorwig_Power_Station",
+      "fixed": true
+    },
+    {
+      "label": "Seconds from zero to full output with the units spinning",
+      "value": 16,
+      "unit": "count",
+      "as_of": "2026-11-20",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dinorwig_Power_Station",
+      "fixed": true
+    },
+    {
+      "label": "Hours it can run at full power before the upper lake is empty",
+      "value": 6,
+      "unit": "count",
+      "as_of": "2026-11-20",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dinorwig_Power_Station",
+      "fixed": true
+    },
+    {
+      "label": "Height of the main cavern inside the mountain",
+      "value": 51,
+      "unit": "m",
+      "as_of": "2026-11-20",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dinorwig_Power_Station",
+      "fixed": true
+    },
+    {
+      "label": "Year the station was commissioned",
+      "value": 1984,
+      "unit": "year",
+      "as_of": "2026-11-20",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dinorwig_Power_Station",
+      "fixed": true
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "cave",
+    "sec": 9,
+    "words": "Power plant *inside* mountain?",
+    "tag": "Why",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Why did Britain hide a whole power station inside a mountain in Wales?",
+      "events": {
+        "britain": {
+          "word": "Britain"
+        },
+        "power": {
+          "word": "power"
+        },
+        "mountain": {
+          "word": "mountain"
+        },
+        "wales": {
+          "word": "Wales"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "pin",
+          "at": "power"
+        }
+      ],
+      "params": {
+        "component": "Hook",
+        "place": "on the map: the Earth from space, then north Wales",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "mountain",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "britain",
+            "what": "the globe turns, Britain lights up and is traced"
+          },
+          {
+            "at": "power",
+            "what": "a lightning pin drops on north Wales"
+          },
+          {
+            "at": "mountain",
+            "what": "the camera dives onto a dark mountain, a glow leaking from its side"
+          },
+          {
+            "at": "wales",
+            "what": "the camera is close on the mountain, WALES writes on"
+          }
+        ],
+        "things": [
+          "night globe",
+          "britain traced",
+          "lightning pin",
+          "glowing mountain",
+          "wales label"
+        ]
+      }
+    },
+    {
+      "id": "cave",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "Under the grass of Elidir Fawr, in Snowdonia, there is a cave {fact4} high, with giant machines spinning in the dark.",
+      "events": {
+        "grass": {
+          "word": "grass"
+        },
+        "elidir": {
+          "word": "Elidir"
+        },
+        "snowdonia": {
+          "word": "Snowdonia"
+        },
+        "cave": {
+          "word": "cave"
+        },
+        "giant": {
+          "word": "giant"
+        },
+        "machines": {
+          "word": "machines"
+        },
+        "dark": {
+          "word": "dark"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Cave",
+        "place": "on the map: Elidir Fawr, the mountain from above",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "cave",
+            "size": "close"
+          },
+          {
+            "at": "dark",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "grass",
+            "what": "sheep graze on the green mountain top"
+          },
+          {
+            "at": "elidir",
+            "what": "the mountain's name writes on beside its peak"
+          },
+          {
+            "at": "snowdonia",
+            "what": "the park's name stamps on the map"
+          },
+          {
+            "at": "cave",
+            "what": "the mountain's side tears open in rock on a lit hall, its height on a sign"
+          },
+          {
+            "at": "giant",
+            "what": "a giant turbine rises in the cavern"
+          },
+          {
+            "at": "machines",
+            "what": "more turbines appear in a row"
+          },
+          {
+            "at": "dark",
+            "what": "the turbines spin, the cavern lights flicker"
+          }
+        ],
+        "things": [
+          "mountain from above",
+          "sheep",
+          "peeled-open cavern",
+          "turbines",
+          "height sign"
+        ],
+        "fig": {
+          "height": "{fact4}"
+        }
+      }
+    },
+    {
+      "id": "lakes",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "On top sits one lake, Marchlyn Mawr. At its foot sits another, Llyn Peris. And tunnels run through the rock between them.",
+      "events": {
+        "top": {
+          "word": "top"
+        },
+        "marchlyn": {
+          "word": "Marchlyn"
+        },
+        "foot": {
+          "word": "foot"
+        },
+        "llyn": {
+          "word": "Llyn"
+        },
+        "tunnels": {
+          "word": "tunnels"
+        },
+        "rock": {
+          "word": "rock"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Lakes",
+        "place": "a cut through Elidir Fawr: the two lakes and the tunnel",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "foot",
+            "size": "medium"
+          },
+          {
+            "at": "tunnels",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "top",
+            "what": "the high lake fills in, blue, on the mountain top"
+          },
+          {
+            "at": "marchlyn",
+            "what": "its name writes on"
+          },
+          {
+            "at": "foot",
+            "what": "the low lake fills in at the mountain's foot"
+          },
+          {
+            "at": "llyn",
+            "what": "its name writes on"
+          },
+          {
+            "at": "tunnels",
+            "what": "a glowing tunnel draws itself under the mountain"
+          },
+          {
+            "at": "rock",
+            "what": "rock cracks along the tunnel's path"
+          }
+        ],
+        "things": [
+          "mountain cross-section",
+          "rock strata",
+          "high lake",
+          "low lake",
+          "tunnel",
+          "lake labels"
+        ]
+      }
+    },
+    {
+      "id": "night",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "At night, while Britain sleeps and power is cheap, the machines pump water uphill, from the low lake into the high one.",
+      "events": {
+        "night": {
+          "word": "night"
+        },
+        "sleeps": {
+          "word": "sleeps"
+        },
+        "cheap": {
+          "word": "cheap"
+        },
+        "pump": {
+          "word": "pump"
+        },
+        "uphill": {
+          "word": "uphill"
+        },
+        "high": {
+          "word": "high"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Night",
+        "place": "on the map: Britain at night, then the two lakes",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "pump",
+            "size": "medium"
+          },
+          {
+            "at": "high",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "night",
+            "what": "the map goes dark blue, a moon rises"
+          },
+          {
+            "at": "sleeps",
+            "what": "house lights across Britain switch off"
+          },
+          {
+            "at": "cheap",
+            "what": "a price sign over Wales drops to low"
+          },
+          {
+            "at": "pump",
+            "what": "the camera dives back to the lakes, water flows up the tunnel"
+          },
+          {
+            "at": "uphill",
+            "what": "arrows climb the mountain"
+          },
+          {
+            "at": "high",
+            "what": "the high lake's level rises on its gauge"
+          }
+        ],
+        "things": [
+          "night britain",
+          "house lights",
+          "price sign",
+          "uphill arrows",
+          "lake gauge"
+        ]
+      }
+    },
+    {
+      "id": "battery",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "So why pump a lake uphill? Because now the whole mountain is a battery, full of water, waiting.",
+      "events": {
+        "why": {
+          "word": "why"
+        },
+        "lake": {
+          "word": "lake"
+        },
+        "battery": {
+          "word": "battery"
+        },
+        "full": {
+          "word": "full"
+        },
+        "waiting": {
+          "word": "waiting"
+        },
+        "uphill": {
+          "word": "uphill"
+        },
+        "mountain": {
+          "word": "mountain"
+        },
+        "water": {
+          "word": "water"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Battery",
+        "place": "on the map: Elidir Fawr with a battery drawn round it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "battery",
+            "size": "wide"
+          },
+          {
+            "at": "waiting",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "why",
+            "what": "a question mark bounces over the high lake"
+          },
+          {
+            "at": "lake",
+            "what": "the lake ripples"
+          },
+          {
+            "at": "battery",
+            "what": "a battery outline draws round the mountain"
+          },
+          {
+            "at": "full",
+            "what": "the battery's bars fill one by one"
+          },
+          {
+            "at": "waiting",
+            "what": "a sleeping worker in a hard hat nods by the gate"
+          },
+          {
+            "at": "uphill",
+            "what": "an arrow climbs from the low lake to the high one"
+          },
+          {
+            "at": "mountain",
+            "what": "the mountain glows"
+          },
+          {
+            "at": "water",
+            "what": "the high lake shimmers bright"
+          }
+        ],
+        "things": [
+          "question mark",
+          "battery outline",
+          "charge bars",
+          "worker by the gate"
+        ]
+      }
+    },
+    {
+      "id": "kettles",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "And what it waits for is a kettle. When a big final ends on TV, millions of people get up and switch one on, all at once.",
+      "events": {
+        "kettle": {
+          "word": "kettle"
+        },
+        "final": {
+          "word": "final"
+        },
+        "tv": {
+          "word": "TV"
+        },
+        "millions": {
+          "word": "millions"
+        },
+        "switch": {
+          "word": "switch"
+        },
+        "once": {
+          "word": "once"
+        },
+        "waits": {
+          "word": "waits"
+        },
+        "ends": {
+          "word": "ends"
+        },
+        "people": {
+          "word": "people"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "chime",
+          "at": "switch",
+          "gain": 0.4
+        }
+      ],
+      "params": {
+        "component": "Kettles",
+        "place": "on the map: Britain's cities at night",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "final",
+            "size": "wide"
+          },
+          {
+            "at": "switch",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "kettle",
+            "what": "a big kettle drops onto London"
+          },
+          {
+            "at": "final",
+            "what": "a TV glows over the cities, a whistle blows"
+          },
+          {
+            "at": "tv",
+            "what": "the TV screen flashes"
+          },
+          {
+            "at": "millions",
+            "what": "little people stand up across the map"
+          },
+          {
+            "at": "switch",
+            "what": "kettles pop on city after city"
+          },
+          {
+            "at": "once",
+            "what": "the demand needle on a sign swings to red"
+          },
+          {
+            "at": "waits",
+            "what": "the big kettle wobbles on London"
+          },
+          {
+            "at": "ends",
+            "what": "the TV flips to FULL TIME"
+          },
+          {
+            "at": "people",
+            "what": "the little people wave their arms"
+          }
+        ],
+        "things": [
+          "kettle",
+          "tv",
+          "cities",
+          "people",
+          "demand needle"
+        ]
+      }
+    },
+    {
+      "id": "drop",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "And then? The gates open. The water falls through the mountain, the machines spin, and out come {fact1} megawatts.",
+      "events": {
+        "gates": {
+          "word": "gates"
+        },
+        "water": {
+          "word": "water"
+        },
+        "falls": {
+          "word": "falls"
+        },
+        "machines": {
+          "word": "machines"
+        },
+        "spin": {
+          "word": "spin"
+        },
+        "megawatts": {
+          "word": "megawatts"
+        },
+        "then": {
+          "word": "then"
+        },
+        "out": {
+          "word": "out"
+        },
+        "mountain": {
+          "word": "mountain"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "gates"
+        }
+      ],
+      "params": {
+        "component": "Drop",
+        "place": "on the map: the tunnel from the high lake to the low",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "falls",
+            "size": "close"
+          },
+          {
+            "at": "megawatts",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "gates",
+            "what": "gates at the high lake swing open"
+          },
+          {
+            "at": "water",
+            "what": "water pours into the tunnel"
+          },
+          {
+            "at": "falls",
+            "what": "the water rushes down the tunnel to the cavern"
+          },
+          {
+            "at": "machines",
+            "what": "the turbines glow"
+          },
+          {
+            "at": "spin",
+            "what": "they spin fast, sparks fly"
+          },
+          {
+            "at": "megawatts",
+            "what": "power lines race out across Wales, the figure on a pylon sign"
+          },
+          {
+            "at": "then",
+            "what": "the gates rattle"
+          },
+          {
+            "at": "mountain",
+            "what": "the mountain shudders as the water rushes through"
+          },
+          {
+            "at": "out",
+            "what": "a burst of light from the hall"
+          }
+        ],
+        "things": [
+          "gates",
+          "rushing water",
+          "turbines",
+          "power lines",
+          "pylon sign"
+        ],
+        "fig": {
+          "mw": "{fact1}"
+        }
+      }
+    },
+    {
+      "id": "hours",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "It keeps that going for {fact3} hours, until the top lake is nearly empty.",
+      "events": {
+        "keeps": {
+          "word": "keeps"
+        },
+        "going": {
+          "word": "going"
+        },
+        "hours": {
+          "word": "hours"
+        },
+        "top": {
+          "word": "top"
+        },
+        "empty": {
+          "word": "empty"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Hours",
+        "place": "on the map: Marchlyn Mawr draining",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "hours",
+            "size": "medium"
+          },
+          {
+            "at": "empty",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "keeps",
+            "what": "the high lake's shoreline shrinks"
+          },
+          {
+            "at": "going",
+            "what": "a clock sign on the dam starts turning"
+          },
+          {
+            "at": "hours",
+            "what": "the hours count up on the clock"
+          },
+          {
+            "at": "top",
+            "what": "the camera rises over the top lake"
+          },
+          {
+            "at": "empty",
+            "what": "mud shows at the bottom, a boat sits on it"
+          }
+        ],
+        "things": [
+          "draining lake",
+          "clock sign",
+          "boat on mud",
+          "dam"
+        ],
+        "fig": {
+          "hours": "{fact3}"
+        }
+      }
+    },
+    {
+      "id": "hidden",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "It opened in {fact5}, built inside the rock, so the national park above still looks wild.",
+      "events": {
+        "opened": {
+          "word": "opened"
+        },
+        "rock": {
+          "word": "rock"
+        },
+        "national": {
+          "word": "national"
+        },
+        "park": {
+          "word": "park"
+        },
+        "wild": {
+          "word": "wild"
+        },
+        "built": {
+          "word": "built"
+        },
+        "above": {
+          "word": "above"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Hidden",
+        "place": "on the map: Snowdonia National Park",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "rock",
+            "size": "close"
+          },
+          {
+            "at": "wild",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "opened",
+            "what": "a ribbon is cut by the hall, the year on a plaque that stays"
+          },
+          {
+            "at": "rock",
+            "what": "grass closes over the hall, which stays below as a dashed outline"
+          },
+          {
+            "at": "national",
+            "what": "the park boundary draws round Snowdonia"
+          },
+          {
+            "at": "park",
+            "what": "its name stamps on"
+          },
+          {
+            "at": "wild",
+            "what": "a hiker walks over the mountain, trees and goats pop up"
+          },
+          {
+            "at": "built",
+            "what": "the hall's machines glow once more"
+          },
+          {
+            "at": "above",
+            "what": "the mountain's peak shines in the sun"
+          }
+        ],
+        "things": [
+          "ribbon",
+          "year plaque",
+          "grass over the hall",
+          "dashed hidden hall",
+          "park boundary",
+          "hiker",
+          "goats"
+        ],
+        "fig": {
+          "year": "{fact5}"
+        }
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "But its real secret is speed: with its machines already spinning, it reaches full power in about {fact2} seconds, long before a single kettle boils.",
+      "events": {
+        "secret": {
+          "word": "secret"
+        },
+        "speed": {
+          "word": "speed"
+        },
+        "spinning": {
+          "word": "spinning"
+        },
+        "full": {
+          "word": "full"
+        },
+        "seconds": {
+          "word": "seconds"
+        },
+        "kettle": {
+          "word": "kettle"
+        },
+        "boils": {
+          "word": "boils"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "pin-high",
+          "at": "seconds"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "place": "on the map: Britain from above, lights racing on",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "full",
+            "size": "wide"
+          },
+          {
+            "at": "kettle",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "secret",
+            "what": "a stopwatch drops on Wales"
+          },
+          {
+            "at": "speed",
+            "what": "its hand starts to sweep"
+          },
+          {
+            "at": "spinning",
+            "what": "the turbines glow under the mountain"
+          },
+          {
+            "at": "full",
+            "what": "power races out along lines to every city"
+          },
+          {
+            "at": "seconds",
+            "what": "the stopwatch stops on the figure"
+          },
+          {
+            "at": "kettle",
+            "what": "a kettle on London sits cold"
+          },
+          {
+            "at": "boils",
+            "what": "its steam only now begins to rise"
+          }
+        ],
+        "things": [
+          "stopwatch",
+          "power lines",
+          "cities lighting",
+          "cold kettle"
+        ],
+        "fig": {
+          "secs": "{fact2}"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "Kettle or mountain: which one surprised you more? Tell me in the comments. And next time you boil one, think of that mountain in Wales.",
+      "events": {
+        "kettle": {
+          "word": "Kettle"
+        },
+        "mountain": {
+          "word": "mountain"
+        },
+        "surprised": {
+          "word": "surprised"
+        },
+        "comments": {
+          "word": "comments"
+        },
+        "boil": {
+          "word": "boil"
+        },
+        "wales": {
+          "word": "Wales"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Loop",
+        "place": "on the map: Britain, then back to space",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "comments",
+            "size": "wide"
+          },
+          {
+            "at": "wales",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "kettle",
+            "what": "a kettle pin glows on London"
+          },
+          {
+            "at": "mountain",
+            "what": "a mountain pin glows on Wales"
+          },
+          {
+            "at": "surprised",
+            "what": "a question mark bounces between them"
+          },
+          {
+            "at": "comments",
+            "what": "a comment bubble pops up"
+          },
+          {
+            "at": "boil",
+            "what": "the kettle steams"
+          },
+          {
+            "at": "wales",
+            "what": "the camera pulls back to the globe: the first frame"
+          }
+        ],
+        "things": [
+          "kettle pin",
+          "mountain pin",
+          "question mark",
+          "comment bubble",
+          "globe"
+        ]
+      }
+    }
+  ],
+  "narrator": "bm_george"
+}

@@ -1,0 +1,713 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 27519,
+ "story": "secret_of_rich",
+ "shape": "rising-tide",
+ "currency": "USD",
+ "style": {
+  "palette": "ocean",
+  "genre": "cinematic",
+  "key": "E",
+  "bpm": 92,
+  "look": {
+   "stage": "night",
+   "header": "chalk",
+   "holder": "phone",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "question",
+ "cta": "Winning games or owning the team: which made Jordan richer? Comment",
+ "feed_id": "2026-11-15-jordan-bought-team-275m-sold-3b",
+ "facts": [
+  {
+   "label": "Price Michael Jordan paid for the Charlotte team in 2010 (about)",
+   "value": 275,
+   "unit": "money_million",
+   "as_of": "2010-03-17",
+   "source": "AP",
+   "url": "https://www.nba.com/news/michael-jordan-selling-ownership-stake-hornets",
+   "currency": "USD"
+  },
+  {
+   "label": "Valuation the Hornets sold at in 2023 (approximately)",
+   "value": 3,
+   "unit": "money_billion",
+   "as_of": "2023-08-03",
+   "source": "CBS Sports",
+   "url": "https://www.cbssports.com/nba/news/hornets-sale-approved-michael-jordans-13-year-run-as-nba-team-owner-ends-per-report",
+   "currency": "USD"
+  }
+ ],
+ "maths": [
+  {
+   "name": "buy",
+   "kind": "share",
+   "total": 275000000,
+   "parts": 1,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "sale",
+   "kind": "share",
+   "total": 3000000000,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  },
+  {
+   "name": "gap",
+   "kind": "compare",
+   "a": "sale.total",
+   "b": "buy.total"
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.4,
+  "words": "Then *what*?",
+  "figure": "{fact1}",
+  "tag": "Jordan paid",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Michael Jordan paid about {fact1} for a losing team.",
+   "events": {
+    "michael": {
+     "word": "Michael"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "losing": {
+     "word": "losing"
+    },
+    "team": {
+     "word": "team"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "paid"
+    },
+    {
+     "kind": "fail",
+     "at": "losing"
+    },
+    {
+     "kind": "whoosh",
+     "at": "team"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "an empty basketball arena at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "paid",
+      "size": "close"
+     },
+     {
+      "sec": 2.0,
+      "size": "close"
+     },
+     {
+      "at": "losing",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "michael",
+      "what": "a spotlight snaps on Jordan at centre court, spinning a ball"
+     },
+     {
+      "at": "paid",
+      "what": "a price tag with what he paid swings down from the scoreboard"
+     },
+     {
+      "at": "losing",
+      "what": "the scoreboard flips to a big L, the ball drops"
+     },
+     {
+      "at": "team",
+      "what": "the arena lights flicker on over empty seats"
+     }
+    ],
+    "things": [
+     "scoreboard",
+     "price tag",
+     "basketball",
+     "empty seats",
+     "spotlight"
+    ],
+    "fig": {
+     "paid": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "So what was it worth when he finally sold?",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "worth": {
+     "word": "worth"
+    },
+    "finally": {
+     "word": "finally"
+    },
+    "sold": {
+     "word": "sold"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "so"
+    },
+    {
+     "kind": "tick",
+     "at": "worth"
+    },
+    {
+     "kind": "boom",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "component": "Auction",
+    "place": "an auction hall with a podium and a big price board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "sold",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "the hall lights come up on a podium with a team jersey on a stand"
+     },
+     {
+      "at": "worth",
+      "what": "the price board spins its digits, hiding the answer"
+     },
+     {
+      "at": "finally",
+      "what": "the auctioneer raises the gavel"
+     },
+     {
+      "at": "sold",
+      "what": "the gavel slams, the board stamps a question mark"
+     }
+    ],
+    "things": [
+     "auction podium",
+     "gavel",
+     "price board",
+     "team jersey",
+     "auctioneer"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "court",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "On the court, it kept losing. Not one playoff round won while he ran it.",
+   "events": {
+    "court": {
+     "word": "court"
+    },
+    "losing": {
+     "word": "losing"
+    },
+    "playoff": {
+     "word": "playoff"
+    },
+    "ran": {
+     "word": "ran"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "court"
+    },
+    {
+     "kind": "fail",
+     "at": "losing"
+    },
+    {
+     "kind": "boom",
+     "at": "playoff"
+    }
+   ],
+   "params": {
+    "component": "Locker",
+    "place": "the locker room after another loss",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "playoff",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "court",
+      "what": "the door bangs open, the players slump onto the bench"
+     },
+     {
+      "at": "losing",
+      "what": "L stickers slap one after another onto the whiteboard"
+     },
+     {
+      "at": "playoff",
+      "what": "an empty playoff bracket on the wall gets a red cross"
+     },
+     {
+      "at": "ran",
+      "what": "Jordan in his suit shakes his head in the doorway"
+     }
+    ],
+    "things": [
+     "locker room bench",
+     "whiteboard of losses",
+     "playoff bracket",
+     "towels",
+     "lockers"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "tv",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "zoom-through",
+   "say": "But every NBA team gets an equal share of the league's TV money, win or lose.",
+   "events": {
+    "every": {
+     "word": "every"
+    },
+    "equal": {
+     "word": "equal"
+    },
+    "money": {
+     "word": "money"
+    },
+    "lose": {
+     "word": "lose"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "every"
+    },
+    {
+     "kind": "pop",
+     "at": "equal"
+    },
+    {
+     "kind": "kaching",
+     "at": "money"
+    }
+   ],
+   "params": {
+    "component": "Truck",
+    "place": "outside the arena by the TV broadcast truck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "money",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "every",
+      "what": "the satellite dish on the TV truck swings up"
+     },
+     {
+      "at": "equal",
+      "what": "a row of team mailboxes pops up, each the same size"
+     },
+     {
+      "at": "money",
+      "what": "cash bundles shoot out of the truck, one into every mailbox"
+     },
+     {
+      "at": "lose",
+      "what": "the losing team's mailbox gets its bundle too, its flag flips up"
+     }
+    ],
+    "things": [
+     "broadcast truck",
+     "satellite dish",
+     "team mailboxes",
+     "cash bundles"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "deals",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "And while he owned it, those TV deals got far bigger.",
+   "events": {
+    "owned": {
+     "word": "owned"
+    },
+    "deals": {
+     "word": "deals"
+    },
+    "far": {
+     "word": "far"
+    },
+    "bigger": {
+     "word": "bigger"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "owned"
+    },
+    {
+     "kind": "riser",
+     "at": "deals"
+    },
+    {
+     "kind": "boom",
+     "at": "bigger"
+    }
+   ],
+   "params": {
+    "component": "Square",
+    "place": "a city square at night with a giant TV screen",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "bigger",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "owned",
+      "what": "a basketball game plays on a small screen over the square"
+     },
+     {
+      "at": "deals",
+      "what": "the screen starts to grow, the crowd looks up"
+     },
+     {
+      "at": "far",
+      "what": "the screen stretches past the buildings"
+     },
+     {
+      "at": "bigger",
+      "what": "it fills the skyline, lighting the whole square"
+     }
+    ],
+    "things": [
+     "giant tv screen",
+     "city buildings",
+     "crowd",
+     "basketball game"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "whip",
+   "say": "So the team's price climbed with the league, not with the scoreboard.",
+   "events": {
+    "price": {
+     "word": "price"
+    },
+    "climbed": {
+     "word": "climbed"
+    },
+    "league": {
+     "word": "league"
+    },
+    "scoreboard": {
+     "word": "scoreboard"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "price"
+    },
+    {
+     "kind": "riser",
+     "at": "climbed"
+    },
+    {
+     "kind": "fail",
+     "at": "scoreboard"
+    }
+   ],
+   "params": {
+    "component": "Lift",
+    "place": "a construction site where the arena rises on a giant jack",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "league",
+      "size": "medium"
+     },
+     {
+      "at": "scoreboard",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "price",
+      "what": "a price arrow sign lights on the arena roof"
+     },
+     {
+      "at": "climbed",
+      "what": "the giant jack pumps, the arena rises into the sky"
+     },
+     {
+      "at": "league",
+      "what": "a big NBA-style banner unrolls under it, rising too"
+     },
+     {
+      "at": "scoreboard",
+      "what": "the small scoreboard left on the ground still shows L"
+     }
+    ],
+    "things": [
+     "arena",
+     "hydraulic jack",
+     "league banner",
+     "scoreboard",
+     "crane"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "When he sold, the team was valued at about {fact2}. That's {gap_ratio} what he paid.",
+   "events": {
+    "sold": {
+     "word": "sold"
+    },
+    "valued": {
+     "word": "valued"
+    },
+    "that": {
+     "word": "That's"
+    },
+    "paid": {
+     "word": "paid"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "sold"
+    },
+    {
+     "kind": "kaching",
+     "at": "valued"
+    },
+    {
+     "kind": "boom",
+     "at": "paid"
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "back at the auction hall",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "valued",
+      "size": "close"
+     },
+     {
+      "at": "that",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sold",
+      "what": "the gavel falls again"
+     },
+     {
+      "at": "valued",
+      "what": "the price board stops and counts up to the sale value"
+     },
+     {
+      "at": "that",
+      "what": "the old price tag hangs beside it, tiny"
+     },
+     {
+      "at": "paid",
+      "what": "a times tag stamps between them, Jordan grins"
+     }
+    ],
+    "things": [
+     "price board",
+     "old price tag",
+     "gavel",
+     "times tag"
+    ],
+    "fig": {
+     "sale": "{fact2}",
+     "paid": "{fact1}",
+     "times": "{gap_ratio}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "Winning games or owning the team: which made Michael Jordan richer?",
+   "events": {
+    "winning": {
+     "word": "Winning"
+    },
+    "owning": {
+     "word": "owning"
+    },
+    "made": {
+     "word": "made"
+    },
+    "richer": {
+     "word": "richer"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "winning"
+    },
+    {
+     "kind": "pop",
+     "at": "owning"
+    },
+    {
+     "kind": "whoosh",
+     "at": "richer"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "back in the empty arena at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "richer",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "winning",
+      "what": "a trophy lights up on the left of the court"
+     },
+     {
+      "at": "owning",
+      "what": "a team deed lights up on the right"
+     },
+     {
+      "at": "made",
+      "what": "Jordan looks from one to the other"
+     },
+     {
+      "at": "richer",
+      "what": "the spotlight snaps back onto Jordan at centre court, the first frame"
+     }
+    ],
+    "things": [
+     "trophy",
+     "team deed",
+     "spotlight",
+     "scoreboard"
+    ],
+    "fig": {}
+   }
+  }
+ ],
+ "narrator": "am_michael"
+}

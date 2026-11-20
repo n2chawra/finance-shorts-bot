@@ -1,0 +1,982 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 62903,
+  "story": "what_if_world",
+  "shape": "what-if",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "atlas",
+    "key": "G",
+    "bpm": 88,
+    "look": {
+      "stage": "studio",
+      "header": "chalk",
+      "holder": "phone",
+      "entrance": "stamp"
+    }
+  },
+  "arms": {
+    "length": "60-80",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "challenge",
+  "cta": "One passport or every flag: which world would you pick? Comment",
+  "feed_id": "2026-11-20-what-if-one-country",
+  "facts": [
+    {
+      "label": "Member states of the United Nations",
+      "value": 193,
+      "unit": "count",
+      "as_of": "2026-11-20",
+      "source": "United Nations",
+      "url": "https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations",
+      "latest": true,
+      "checked": "2026-11-20"
+    },
+    {
+      "label": "Currencies recognised as legal tender in UN member states",
+      "value": 180,
+      "unit": "count",
+      "as_of": "2026-11-20",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/List_of_circulating_currencies",
+      "latest": true,
+      "checked": "2026-11-20"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 3.2,
+    "words": "One *passport* world?",
+    "tag": "What if",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "What if one passport worked everywhere, because Earth was one country?",
+      "events": {
+        "passport": {
+          "word": "passport"
+        },
+        "everywhere": {
+          "word": "everywhere"
+        },
+        "earth": {
+          "word": "Earth"
+        },
+        "one": {
+          "word": "one"
+        },
+        "country": {
+          "word": "country"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Hook",
+        "place": "on the map: the political world map",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "earth",
+            "size": "wide"
+          },
+          {
+            "at": "one",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "passport",
+            "what": "a passport lands on the world map"
+          },
+          {
+            "at": "everywhere",
+            "what": "pins pop up on every continent"
+          },
+          {
+            "at": "earth",
+            "what": "the camera pulls back to the whole world, the flags fold down"
+          },
+          {
+            "at": "one",
+            "what": "an eraser sweeps the borders away, the colours melt into one"
+          },
+          {
+            "at": "country",
+            "what": "one colour covers every continent"
+          }
+        ],
+        "things": [
+          "political world map",
+          "passport",
+          "flags folding",
+          "eraser",
+          "one-colour world"
+        ]
+      }
+    },
+    {
+      "id": "flag",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "Overnight, all {fact1} members of the United Nations become one, and every flag comes down for a single new one, flying over the whole planet.",
+      "events": {
+        "overnight": {
+          "word": "Overnight"
+        },
+        "members": {
+          "word": "members"
+        },
+        "united": {
+          "word": "United"
+        },
+        "one": {
+          "word": "one"
+        },
+        "flag": {
+          "word": "flag"
+        },
+        "single": {
+          "word": "single"
+        },
+        "flying": {
+          "word": "flying"
+        },
+        "planet": {
+          "word": "planet"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "OneFlag",
+        "place": "on the map: flags planted on every continent",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "one",
+            "size": "close"
+          },
+          {
+            "at": "single",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "overnight",
+            "what": "a moon crosses the sky over the map"
+          },
+          {
+            "at": "members",
+            "what": "flags pop up on country after country, a counter on a board"
+          },
+          {
+            "at": "united",
+            "what": "the UN board stamps on"
+          },
+          {
+            "at": "one",
+            "what": "the flags lean toward each other"
+          },
+          {
+            "at": "flag",
+            "what": "every flag slides down its pole"
+          },
+          {
+            "at": "single",
+            "what": "one white flag rises in the middle of the map"
+          },
+          {
+            "at": "flying",
+            "what": "the new flag waves"
+          },
+          {
+            "at": "planet",
+            "what": "the camera pulls back over the whole planet"
+          }
+        ],
+        "things": [
+          "flags on every country",
+          "members board",
+          "one new flag"
+        ],
+        "fig": {
+          "members": "{fact1}"
+        }
+      }
+    },
+    {
+      "id": "passport",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Every person on the planet now carries that same passport: the same colour, the same name on the cover, and nobody needs a visa again.",
+      "events": {
+        "person": {
+          "word": "person"
+        },
+        "planet": {
+          "word": "planet"
+        },
+        "passport": {
+          "word": "passport"
+        },
+        "colour": {
+          "word": "colour"
+        },
+        "name": {
+          "word": "name"
+        },
+        "cover": {
+          "word": "cover"
+        },
+        "visa": {
+          "word": "visa"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Passport",
+        "place": "on the map: crowds on every continent",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "passport",
+            "size": "medium"
+          },
+          {
+            "at": "cover",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "person",
+            "what": "little people appear on every continent"
+          },
+          {
+            "at": "planet",
+            "what": "the camera drifts over the whole world"
+          },
+          {
+            "at": "passport",
+            "what": "each holds up a passport"
+          },
+          {
+            "at": "colour",
+            "what": "all the passports turn one colour"
+          },
+          {
+            "at": "name",
+            "what": "a name writes onto a big passport"
+          },
+          {
+            "at": "cover",
+            "what": "the big passport's cover stamps shut"
+          },
+          {
+            "at": "visa",
+            "what": "a VISA tag is torn off"
+          }
+        ],
+        "things": [
+          "crowds",
+          "passports",
+          "big passport"
+        ]
+      }
+    },
+    {
+      "id": "drive",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Border queues vanish overnight. A truck leaves Lisbon and drives all the way to Singapore, across two continents, without a single stamp.",
+      "events": {
+        "queues": {
+          "word": "queues"
+        },
+        "vanish": {
+          "word": "vanish"
+        },
+        "truck": {
+          "word": "truck"
+        },
+        "lisbon": {
+          "word": "Lisbon"
+        },
+        "singapore": {
+          "word": "Singapore"
+        },
+        "continents": {
+          "word": "continents"
+        },
+        "stamp": {
+          "word": "stamp"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Drive",
+        "place": "on the map: the road from Lisbon to Singapore",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "truck",
+            "size": "wide"
+          },
+          {
+            "at": "singapore",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "queues",
+            "what": "lines of trucks wait at a border gate"
+          },
+          {
+            "at": "vanish",
+            "what": "the gate and the queue vanish in a puff"
+          },
+          {
+            "at": "truck",
+            "what": "a truck sets off"
+          },
+          {
+            "at": "lisbon",
+            "what": "a pin drops on Lisbon"
+          },
+          {
+            "at": "singapore",
+            "what": "the route draws across Asia to a pin on Singapore"
+          },
+          {
+            "at": "continents",
+            "what": "Europe and Asia flash as the route crosses them"
+          },
+          {
+            "at": "stamp",
+            "what": "a stamp falls, crossed out"
+          }
+        ],
+        "things": [
+          "border gate",
+          "truck queue",
+          "truck",
+          "route",
+          "pins",
+          "crossed-out stamp"
+        ]
+      }
+    },
+    {
+      "id": "money",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Then the money: rupees, dollars, euros, yen. About {fact2} currencies melt into one coin.",
+      "events": {
+        "money": {
+          "word": "money"
+        },
+        "rupees": {
+          "word": "rupees"
+        },
+        "dollars": {
+          "word": "dollars"
+        },
+        "euros": {
+          "word": "euros"
+        },
+        "yen": {
+          "word": "yen"
+        },
+        "currencies": {
+          "word": "currencies"
+        },
+        "melt": {
+          "word": "melt"
+        },
+        "coin": {
+          "word": "coin"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Money",
+        "place": "on the map: a bank vault drawn over the oceans",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "dollars",
+            "size": "medium"
+          },
+          {
+            "at": "melt",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "money",
+            "what": "a pile of notes lands on the map"
+          },
+          {
+            "at": "rupees",
+            "what": "a rupee note lands on India"
+          },
+          {
+            "at": "dollars",
+            "what": "a dollar note lands on America"
+          },
+          {
+            "at": "euros",
+            "what": "a euro note lands on Europe"
+          },
+          {
+            "at": "yen",
+            "what": "a yen note lands on Japan"
+          },
+          {
+            "at": "currencies",
+            "what": "the currencies count up on a board"
+          },
+          {
+            "at": "melt",
+            "what": "the notes melt and swirl together"
+          },
+          {
+            "at": "coin",
+            "what": "one gold coin spins up in the middle"
+          }
+        ],
+        "things": [
+          "notes on the map",
+          "currency board",
+          "melting swirl",
+          "one coin"
+        ],
+        "fig": {
+          "currencies": "{fact2}"
+        }
+      }
+    },
+    {
+      "id": "capital",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "So which city becomes the capital? Every capital on the map wants the job, from Washington to Delhi to Beijing, and every one of them says it should win.",
+      "events": {
+        "city": {
+          "word": "city"
+        },
+        "capital": {
+          "word": "capital"
+        },
+        "every": {
+          "word": "Every"
+        },
+        "wants": {
+          "word": "wants"
+        },
+        "job": {
+          "word": "job"
+        },
+        "washington": {
+          "word": "Washington"
+        },
+        "delhi": {
+          "word": "Delhi"
+        },
+        "beijing": {
+          "word": "Beijing"
+        },
+        "says": {
+          "word": "says"
+        },
+        "win": {
+          "word": "win"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Capital",
+        "place": "on the map: the world's capitals",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "capital",
+            "size": "medium"
+          },
+          {
+            "at": "job",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "city",
+            "what": "pins glow on capital cities"
+          },
+          {
+            "at": "capital",
+            "what": "a crown hovers over the map"
+          },
+          {
+            "at": "every",
+            "what": "more capitals light up"
+          },
+          {
+            "at": "wants",
+            "what": "the pins jump and wave"
+          },
+          {
+            "at": "job",
+            "what": "the crown spins, undecided"
+          },
+          {
+            "at": "washington",
+            "what": "Washington's pin jumps"
+          },
+          {
+            "at": "delhi",
+            "what": "Delhi's pin jumps"
+          },
+          {
+            "at": "beijing",
+            "what": "Beijing's pin jumps"
+          },
+          {
+            "at": "says",
+            "what": "speech bubbles pop over the three pins"
+          },
+          {
+            "at": "win",
+            "what": "the crown swings between them"
+          }
+        ],
+        "things": [
+          "capital pins",
+          "crown"
+        ]
+      }
+    },
+    {
+      "id": "road",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "Here's the catch: one country means one set of road rules. Britain, India and Japan drive on the left, so millions of drivers switch sides overnight.",
+      "events": {
+        "catch": {
+          "word": "catch"
+        },
+        "country": {
+          "word": "country"
+        },
+        "rules": {
+          "word": "rules"
+        },
+        "britain": {
+          "word": "Britain"
+        },
+        "india": {
+          "word": "India"
+        },
+        "japan": {
+          "word": "Japan"
+        },
+        "left": {
+          "word": "left"
+        },
+        "millions": {
+          "word": "millions"
+        },
+        "switch": {
+          "word": "switch"
+        },
+        "sides": {
+          "word": "sides"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Road",
+        "place": "on the map: the countries that drive on the left",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "britain",
+            "size": "close"
+          },
+          {
+            "at": "millions",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "catch",
+            "what": "the map flips to evening light"
+          },
+          {
+            "at": "rules",
+            "what": "a big road sign drops on the map"
+          },
+          {
+            "at": "country",
+            "what": "the map glows one colour"
+          },
+          {
+            "at": "sides",
+            "what": "the cars settle on the right"
+          },
+          {
+            "at": "britain",
+            "what": "Britain lights up, a car on the left"
+          },
+          {
+            "at": "india",
+            "what": "India lights up"
+          },
+          {
+            "at": "japan",
+            "what": "Japan lights up"
+          },
+          {
+            "at": "left",
+            "what": "an arrow points left on each"
+          },
+          {
+            "at": "millions",
+            "what": "cars fill the roads"
+          },
+          {
+            "at": "switch",
+            "what": "the cars swerve across to the right"
+          }
+        ],
+        "things": [
+          "road sign",
+          "left-driving countries",
+          "cars",
+          "arrows"
+        ]
+      }
+    },
+    {
+      "id": "clocks",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "And one country still can't share one clock: the sun sets over Tokyo just as London wakes up, so the time zones all stay.",
+      "events": {
+        "share": {
+          "word": "share"
+        },
+        "clock": {
+          "word": "clock"
+        },
+        "sun": {
+          "word": "sun"
+        },
+        "sets": {
+          "word": "sets"
+        },
+        "tokyo": {
+          "word": "Tokyo"
+        },
+        "london": {
+          "word": "London"
+        },
+        "wakes": {
+          "word": "wakes"
+        },
+        "zones": {
+          "word": "zones"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Clocks",
+        "place": "on the map: day and night across the world",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "tokyo",
+            "size": "medium"
+          },
+          {
+            "at": "wakes",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "clock",
+            "what": "a big clock stands on the map"
+          },
+          {
+            "at": "sun",
+            "what": "the day line sweeps across the map"
+          },
+          {
+            "at": "sets",
+            "what": "the sun sinks toward the horizon"
+          },
+          {
+            "at": "tokyo",
+            "what": "the sun sets over Tokyo"
+          },
+          {
+            "at": "london",
+            "what": "London sits in the dark"
+          },
+          {
+            "at": "wakes",
+            "what": "a little man in London sits up in bed and stretches"
+          },
+          {
+            "at": "share",
+            "what": "the clock wobbles"
+          },
+          {
+            "at": "zones",
+            "what": "time zone stripes draw down the map"
+          }
+        ],
+        "things": [
+          "clock",
+          "day-night line",
+          "sun",
+          "tokyo",
+          "sleeping man"
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "But the strangest part: with every border gone, there is no foreign country left. Every trip abroad, from Paris to Peru, becomes a trip at home.",
+      "events": {
+        "strangest": {
+          "word": "strangest"
+        },
+        "border": {
+          "word": "border"
+        },
+        "foreign": {
+          "word": "foreign"
+        },
+        "left": {
+          "word": "left"
+        },
+        "trip": {
+          "word": "trip"
+        },
+        "paris": {
+          "word": "Paris"
+        },
+        "peru": {
+          "word": "Peru"
+        },
+        "home": {
+          "word": "home"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Payoff",
+        "place": "on the map: the one-country world",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "foreign",
+            "size": "close"
+          },
+          {
+            "at": "home",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "strangest",
+            "what": "the camera pushes in on a traveller with a suitcase"
+          },
+          {
+            "at": "border",
+            "what": "the last dotted line rubs out"
+          },
+          {
+            "at": "foreign",
+            "what": "a FOREIGN label is crossed out"
+          },
+          {
+            "at": "left",
+            "what": "the airport sign flips"
+          },
+          {
+            "at": "trip",
+            "what": "a plane takes off"
+          },
+          {
+            "at": "paris",
+            "what": "a pin drops on Paris"
+          },
+          {
+            "at": "peru",
+            "what": "a pin drops on Peru"
+          },
+          {
+            "at": "home",
+            "what": "it lands on a HOME sign"
+          }
+        ],
+        "things": [
+          "traveller",
+          "suitcase",
+          "crossed-out label",
+          "plane",
+          "home sign"
+        ]
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "One passport, or {fact1} flags: which world would you pick? Tell me in the comments. And picture it again:",
+      "events": {
+        "passport": {
+          "word": "passport"
+        },
+        "flags": {
+          "word": "flags"
+        },
+        "world": {
+          "word": "world"
+        },
+        "pick": {
+          "word": "pick"
+        },
+        "comments": {
+          "word": "comments"
+        },
+        "picture": {
+          "word": "picture"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "Loop",
+        "place": "on the map: the world, borders drawn back",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "flags",
+            "size": "wide"
+          },
+          {
+            "at": "picture",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "passport",
+            "what": "a passport pops up on the left"
+          },
+          {
+            "at": "flags",
+            "what": "a fan of flags pops up on the right"
+          },
+          {
+            "at": "world",
+            "what": "the world map sits between them"
+          },
+          {
+            "at": "pick",
+            "what": "a question mark bounces"
+          },
+          {
+            "at": "comments",
+            "what": "a comment bubble pops up"
+          },
+          {
+            "at": "picture",
+            "what": "the borders draw back on: the first frame"
+          }
+        ],
+        "things": [
+          "passport",
+          "flags",
+          "world map",
+          "comment bubble"
+        ],
+        "fig": {
+          "members": "{fact1}"
+        }
+      }
+    }
+  ],
+  "narrator": "bm_george"
+}

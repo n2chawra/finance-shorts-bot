@@ -1,0 +1,149 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:19:43.747653+00:00",
+    "finishedAt": "2026-11-19T23:19:43.747653+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:20:58.828170+00:00",
+    "finishedAt": "2026-11-19T23:20:58.828170+00:00",
+    "notes": [
+      "beat 'hook': moment at 'wales' is not one of this beat's events (name the word in `events` first)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:21:04.321366+00:00",
+    "finishedAt": "2026-11-19T23:21:04.321366+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance",
+      "note: beat 'drop' opens like a line in one of the last scripts ('so what happens'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:21:07.845114+00:00",
+    "finishedAt": "2026-11-19T23:21:07.845114+00:00",
+    "notes": [
+      "the source line 'Data: Wikipedia, Dinorwig Power Station · Nov 2026' is too wide for the frame (1241 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'Wikipedia'), one name per publisher"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:21:11.403316+00:00",
+    "finishedAt": "2026-11-19T23:21:11.403316+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:21:49.454842+00:00",
+    "finishedAt": "2026-11-19T23:21:49.454842+00:00",
+    "notes": [
+      "All 5 facts confirmed on en.wikipedia.org/wiki/Dinorwig_Power_Station: six 300 MW units = 1,800 MW installed; zero to 1,800 MW in ~16 s with all six units synchronised and spinning (script says 'about' and 'machines already spinning'); up to six hours at full flow; cavern 51 m tall; opened/commissioned 1984 (infobox). Verify list ok: TV pickup up to 2,800 MW from millions of kettles; Marchlyn Mawr 636 m upper, Llyn Peris ~100 m lower; no specific match named. Also confirmed: inside Elidir Fawr to preserve Snowdonia National Park, off-peak/night pumping of cheap energy. Description ends with the channel disclaimer. Notes: 'keeps that going for 6 hours' is the article's 'up to six hours'; max sustained supply is 1,728 MW vs 1,800 MW installed (the 16 s figure is stated as 1,800 MW, so acceptable)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:28:45.261486+00:00",
+    "finishedAt": "2026-11-19T23:29:57.583382+00:00",
+    "notes": [
+      "4 of 14 stills are mostly empty background (at 5 s, 10 s, 20 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: the turn starts at 42% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:30:51.510219+00:00",
+    "finishedAt": "2026-11-19T23:31:35.577053+00:00",
+    "notes": [
+      "61 s, sky/explorer (preview only)",
+      "note: the turn starts at 42% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:32:32.152224+00:00",
+    "finishedAt": "2026-11-19T23:32:32.152224+00:00",
+    "notes": [
+      "[script] 15.0s (lakes): the LLYN PERIS lake label sits on the caption line and runs into the caption word 'them.'; move the low lake/label up (or the camera) in Lakes.tsx so the label clears the caption band.",
+      "[script] 5.0s (cave) and 10.0s (lakes): two beats in a row are the same picture, the same top-down mountain with the same contour rings, triangle, lakes and trees at the same size. 45.0s (hidden) repeats it again. Give lakes a different shot (a side cut-through of the mountain showing both lakes and the tunnel, or a low angle) so each beat reads as a new picture.",
+      "[script] 45.0s (hidden, 'built inside the rock, so the national park above still looks wild'): the still is a pile of grey boulders with two red lines over the mountain; it doesn't show the park staying wild above a hidden plant, and no 1984 is on a thing in the place. Show the cutaway: the wild park on the surface (sheep, trees, park sign) with the plant hidden below, and the year on a plaque/sign.",
+      "[script] 35.0s (drop) and the thumbnail: the cavern is a floating dark rounded card laid over the map with a row of fan icons, not a place; open the mountain's side (a cutaway into the rock) so the turbines sit inside the mountain.",
+      "[script] Thumbnail (thumbnail.sec 4.5, cave): mid-build. The CAVE HEIGHT 51 m sign stands over an empty black box (the turbines haven't appeared yet), so the main object is a void. Move thumbnail.sec to after 'dark' (~8.5 s) when the cavern is lit and the turbines spin."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:34:07.484628+00:00",
+    "finishedAt": "2026-11-19T23:34:50.744806+00:00",
+    "notes": [
+      "text 'MARCHLYN MAWR' at 13.7 s runs outside the frame",
+      "note: the turn starts at 42% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:34:56.173815+00:00",
+    "finishedAt": "2026-11-19T23:35:38.277630+00:00",
+    "notes": [
+      "61 s, sky/explorer (preview only)",
+      "note: the turn starts at 42% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:35:52.103736+00:00",
+    "finishedAt": "2026-11-19T23:36:34.985795+00:00",
+    "notes": [
+      "61 s, sky/explorer (preview only)",
+      "note: the turn starts at 42% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:36:59.072391+00:00",
+    "finishedAt": "2026-11-19T23:36:59.072391+00:00",
+    "notes": [
+      "Re-review after fixes: lakes is now a side cut-through of Elidir Fawr (new picture, LLYN PERIS clear of captions at 15s), hidden beat shows OPENED 1984 plaque and the grassed-over hall outline, cavern is a torn rock opening with housed turbines, thumbnail at 9s shows the lit hall; all on the map but one beat, disclaimer on the last frames, loop and pick-one ending fine."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:37:09.174274+00:00",
+    "finishedAt": "2026-11-19T23:40:56.553610+00:00",
+    "notes": [
+      "61 s, sky/explorer, peak -1.0 dB, mean -15.5 dB",
+      "note: the turn starts at 42% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:41:03.211980+00:00",
+    "finishedAt": "2026-11-19T23:41:03.211980+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

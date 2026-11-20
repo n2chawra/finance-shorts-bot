@@ -3,10 +3,10 @@
   "changes": [
     {
       "at": "2026-11-19T17:20:00Z",
-      "what": "maps: the country a line is about is traced round its border",
+      "what": "maps: the country a line is about is traced round its border, coloured, with its whole flag inside",
       "from": "countries drawn, painted or recoloured on their word, the border in plain ink",
-      "to": "a bright line with a glowing head runs round the border and closes on the word that names it, then stays lit (flat/map.tsx Fill.trace; director.md)",
-      "why": "owner note 2026-11-19 (improve) on v-20261119-03: 'highlighted in animated way like lines rounding and completing over the corners'",
+      "to": "a bright line with a glowing head runs round the border and closes on the word that names it, then stays lit; the country takes a colour and its uncut 3:2 flag sits inside it as big as fits (flat/map.tsx trace and flag; flat/flags.tsx, about 60 flags; director.md)",
+      "why": "owner notes 2026-11-19 on v-20261119-03 (animated border) and v-20261119-02 (flag rather than colour); owner: feedback goes straight away, not as a test; on the stills the owner asked for the flag fitted inside a coloured country rather than covering it",
       "by": "improver"
     }
   ]

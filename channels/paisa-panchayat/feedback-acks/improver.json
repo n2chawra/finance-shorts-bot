@@ -241,8 +241,8 @@
     {
       "id": "cmwn030r50001l909xcce0rtj",
       "action": "fixed",
-      "note": "The Squid Game poster and show logo are Netflix's copyright, so the hard rule (only freely licensed Wikimedia files) rules them out; the Netflix logo is allowed and this Short was meant to show it, since it was in the 'real photo first' test group. The director had skipped the test's instruction on 3 of 10 such Shorts; lint now fails a Short that doesn't follow its test group, and the director prints its instruction first.",
-      "commit": "907610b"
+      "note": "Every Short now shows the real person's photo or the company's logo big in its first frame (the test was closed and made the default, your 19 Nov word). A show's own poster or logo is the studio's copyright and stays off, so a Squid Game Short opens on Netflix's logo; lint also now checks each Short follows any test group it is in.",
+      "commit": "8cae8f7"
     }
   ]
 }

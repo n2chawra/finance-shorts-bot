@@ -38,8 +38,8 @@ Natural Earth country outlines (public domain, `world-atlas`) drawn in the house
 
 | Piece | What it draws |
 |---|---|
-| `WorldMap` | the map: `fit` (country names to frame) or `center` + `scale`; `kind` "world" (Natural Earth projection) or "flat" (Mercator, a region); `colors` ({ Chile: { fill, k } }, `k` fades a recolour in on a word; `draw` outlines it, `paint` brushes the colour in, `lift` raises it; `trace` (0 → 1) runs a bright line with a glowing head round its border until it closes, `traceColor` sets it; `flag: "<name>"` covers it with that flag in `geo-flag-fill` test videos, else `fill`); `hide` (a disputed region a video can't show) |
-| `FlagArt` (`flags.tsx`) | a country's flag in a box (`name`, `x`, `y`, `w`, `h`): stripes, crosses, discs, stars, simplified; `hasFlag(name)` says if the table has it (a planted flag, a sign) |
+| `WorldMap` | the map: `fit` (country names to frame) or `center` + `scale`; `kind` "world" (Natural Earth projection) or "flat" (Mercator, a region); `colors` ({ Chile: { fill, k } }, `k` fades a recolour in on a word; `draw` outlines it, `paint` brushes the colour in, `lift` raises it; `trace` (0 → 1) runs a bright line with a glowing head round its border until it closes, `traceColor` sets it; `flag: "<name>"` puts the whole flag, true to its 3:2 shape, inside the country as big as fits, over its colour, kept in frame; a flag the table lacks: just `fill`); `hide` (a disputed region a video can't show) |
+| `FlagArt` (`flags.tsx`) | a country's flag in a box (`name`, `x`, `y`, `w`, `h`): stripes, crosses, discs, stars, simplified; `cover` fills a country's box at 3:2; `hasFlag(name)`, `FLAG_NAMES` (a planted flag, a sign; `FlagSheet` in Root shows them all) |
 | `MapLabel` | a place name at [lon, lat] with an ink halo |
 | `MapPin` | a pin that drops onto [lon, lat] |
 | `MapRoute` | a great-circle route through stops, drawn as `k` goes 0 → 1; `mover` rides its tip (a ship, a plane) |
