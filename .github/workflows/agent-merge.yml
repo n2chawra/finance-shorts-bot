@@ -108,7 +108,10 @@ jobs:
       - name: Worker typecheck and tests
         if: steps.guard.outputs.ok == 'true' && steps.guard.outputs.tests == 'true' && contains(steps.guard.outputs.areas, 'workers')
         working-directory: workers
+        # workers import dashboard code (routine-plan, data-audit), so its packages (zod…) must be there too
+        # (2026-11-19: the auditor's merge failed with "Cannot find module 'zod'")
         run: |
+          (cd ../apps/dashboard && npm ci)
           npm ci
           npm run generate
           npm run typecheck
