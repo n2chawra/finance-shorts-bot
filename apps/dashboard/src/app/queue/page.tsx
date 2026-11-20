@@ -67,7 +67,7 @@ function PostNext({ slot }: { slot: PlanSlot & { video: Video } }) {
           <div className="mt-1.5"><Origin v={v} /></div>
           {slot.stale && <p className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-critical-soft px-2 py-1 text-xs font-medium text-critical-text"><AlertTriangle aria-hidden className="size-3.5" />Its news is stale by this slot. Post it as soon as you can.</p>}
           <div className="mt-4 flex flex-wrap gap-2.5">
-            <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>
+            <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default", false, "tap")}><Download aria-hidden className="size-4" />Download video</a>
             {(v.style.thumbs?.length ?? 0) > 1
               ? v.style.thumbs!.map((t, i) => {
                 const kind = t.file === "thumbnail-b.png" ? "thumbnail-b" : t.file === "thumbnail-c.png" ? "thumbnail-c" : "thumbnail";

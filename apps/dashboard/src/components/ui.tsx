@@ -262,9 +262,10 @@ type ButtonProps = {
   type?: "button" | "submit"; icon?: LucideIcon; iconOnly?: boolean; size?: "sm" | "md";
 };
 
-export const buttonClass = (tone: ButtonTone = "default", iconOnly = false, size: "sm" | "md" = "md") =>
+/** `tap`: a md button that grows to a 44 px, full-width target on a phone (downloads the owner taps on mobile). */
+export const buttonClass = (tone: ButtonTone = "default", iconOnly = false, size: "sm" | "md" | "tap" = "md") =>
   `inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg text-[13px] font-medium transition-[background-color,border-color,opacity,box-shadow] disabled:pointer-events-none disabled:opacity-45 ${
-    size === "sm" ? (iconOnly ? "size-8" : "h-8 px-2.5") : iconOnly ? "size-9" : "h-9 px-3.5"} ${BUTTON_TONES[tone]}`;
+    size === "sm" ? (iconOnly ? "size-8" : "h-8 px-2.5") : iconOnly ? "size-9" : "h-9 px-3.5"}${size === "tap" ? " max-sm:h-11 max-sm:w-full max-sm:text-[15px]" : ""} ${BUTTON_TONES[tone]}`;
 
 export function Button({ children, onClick, tone = "default", disabled, title, type = "button", icon: Icon, iconOnly, size = "md" }: ButtonProps) {
   const button = (

@@ -11,6 +11,7 @@ import path from "node:path";
 import { Readable } from "node:stream";
 
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
 import { notifyOwner } from "@/lib/autopilot.db";
 import { prismaAll } from "@/lib/prisma";
@@ -31,6 +32,7 @@ const FILES = {
   "thumbnail-b": ["thumbnail-b.png", "image/png"], "thumbnail-c": ["thumbnail-c.png", "image/png"],
 } as const;
 const GH = "https://api.github.com";
+const Release = z.object({ assets: z.array(z.object({ name: z.string(), url: z.string().url(), state: z.string() })) });
 
 function local(file: string, type: string, range: string | null): Response {
   const size = statSync(file).size;
@@ -76,13 +78,23 @@ export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string;
     if (!res || !res.ok) { if (res) await tokenRejected(res.status); return NextResponse.json({ error: "Not found" }, { status: 404 }); }
     return new Response(res.body, { headers: { "content-type": type, "cache-control": "private, max-age=3600" } });
   }
+  // ids are unique across channels (generator/history.py next_id), so the tag is video-<id> for every channel
   const release = await fetch(`${GH}/repos/${repo}/releases/tags/video-${id}`, { headers: { ...auth, accept: "application/vnd.github+json" } });
-  if (!release.ok) await tokenRejected(release.status);
-  // the video is named after its title since 2026-10-31 (release-video.yml): any .mp4 is it
-  const asset = release.ok ? ((await release.json()) as { assets?: { name: string; url: string }[] }).assets?.find((a) => a.name === name || a.name.toLowerCase().endsWith(".mp4")) : undefined;
-  if (!asset) return NextResponse.json({ error: "Not found" }, { status: 404 });
-  // GitHub answers with a redirect to a signed URL that needs no token; hand that to the browser
+  if (!release.ok) {
+    await tokenRejected(release.status);
+    const error = release.status === 404 ? `No GitHub Release video-${id} yet: the video may still be uploading.` : `GitHub answered ${release.status} for Release video-${id}.`;
+    return NextResponse.json({ error }, { status: release.status === 404 ? 404 : 502 });
+  }
+  const parsed = Release.safeParse(await release.json());
+  if (!parsed.success) return NextResponse.json({ error: `Release video-${id} came back in an unexpected shape.` }, { status: 502 });
+  // the video is named after its title since 2026-10-31 (release-video.yml): any uploaded .mp4 is it
+  const asset = parsed.data.assets.find((a) => a.state === "uploaded" && (a.name === name || a.name.toLowerCase().endsWith(".mp4")));
+  if (!asset) return NextResponse.json({ error: `Release video-${id} has no uploaded mp4.` }, { status: 404 });
+  // GitHub answers with a redirect to a signed URL that needs no token; hand that to the browser. The URL
+  // carries Content-Disposition: attachment with the asset's own name, so a phone saves it as <title>.mp4
   const signed = await fetch(asset.url, { headers: { ...auth, accept: "application/octet-stream" }, redirect: "manual" });
   const location = signed.headers.get("location");
-  return location ? NextResponse.redirect(location, 302) : NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (location) return NextResponse.redirect(location, 302);
+  await tokenRejected(signed.status);
+  return NextResponse.json({ error: `GitHub gave no download link for ${asset.name} (HTTP ${signed.status}).` }, { status: 502 });
 }

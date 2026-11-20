@@ -33,7 +33,7 @@ function Item({ h }: { h: HandUpload }) {
             {v.tags.length > 0 && <p className="mt-2 text-xs text-ink2">Tags: {v.tags.join(", ")}</p>}
           </details>
           <div className="mt-3 flex flex-wrap gap-2">
-            <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>
+            <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default", false, "tap")}><Download aria-hidden className="size-4" />Download video</a>
             <a href={v.thumbnailUrl} download={`${fileSlug(v)}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Thumbnail</a>
             <CopyButton text={v.title} label="Copy title" />
             <CopyButton text={description} label="Copy description" />

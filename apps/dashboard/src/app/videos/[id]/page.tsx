@@ -157,7 +157,7 @@ export default function VideoPage() {
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          {v.status !== "failed" && v.fileUrl && <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default")}><Download aria-hidden className="size-4" />Download video</a>}
+          {v.status !== "failed" && v.fileUrl && <a href={v.fileUrl} download={`${fileSlug(v)}.mp4`} className={buttonClass("default", false, "tap")}><Download aria-hidden className="size-4" />Download video</a>}
           {v.status !== "failed" && <a href={v.thumbnailUrl} download={`${fileSlug(v)}-thumbnail.png`} className={buttonClass("default")}><ImageDown aria-hidden className="size-4" />Download thumbnail</a>}
           {v.status !== "published" && <MarkUploaded v={v} />}
           <EditDetails v={v} />
