@@ -61,6 +61,19 @@ export const Thumbnail = z.object({
   // topic's most viewed thumbnails (`references`, `pattern`: notes, never drawn; renderer/thumbs.py)
   component: z.string().optional(),
   pattern: z.string().optional(),
+  // "3d" (2026-11-20, the tech channel's thumbnail playbook): a custom thumbnail drawn with the 3D kit,
+  // compositions/LongThumb3D.tsx: the video's own Thumb3D.tsx (or `component`) inside one Stage3D with the
+  // thumb look, and the overlay below on top (positions are shares of the frame, 0..1)
+  engine: z.enum(["2d", "3d"]).optional(),
+  // "stack": the words in studio/thumbType.tsx's StackWords (Anton, 2-3 stacked lines on the left, one
+  // *starred* word yellow, a soft shadow); the default for engine "3d", and for a 2D "scene" cover on request
+  type: z.enum(["stack", "bold"]).optional(),
+  arrow: z.object({ from: z.tuple([z.number(), z.number()]), to: z.tuple([z.number(), z.number()]), bend: z.number().optional(), color: z.string().optional() }).optional(),
+  ring: z.object({ at: z.tuple([z.number(), z.number()]), r: z.number(), color: z.string().optional() }).optional(),
+  badge: z.object({ text: z.string(), at: z.tuple([z.number(), z.number()]), color: z.string().optional() }).optional(),
+  // a magnifier inset (P3): another of the video's components (a 3D scene) shown in a ringed circle at `at`
+  // (radius `r`, shares of the height), with a leader to `from`
+  loupe: z.object({ component: z.string(), at: z.tuple([z.number(), z.number()]), r: z.number(), from: z.tuple([z.number(), z.number()]).optional() }).optional(),
   references: z.array(z.object({ id: z.string(), views: z.number().optional(), what: z.string().optional() }).passthrough()).optional(),
   // long-video types (compositions/LongThumbs.tsx; 2026-10-26): the things in a grid, the levels of a
   // ladder, the two ends of an extremes thumbnail; each a prop of the video or a cast member

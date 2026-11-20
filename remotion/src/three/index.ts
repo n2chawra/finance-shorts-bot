@@ -18,3 +18,4 @@ export * from "./Figures";
 export * from "./Field";
 export * from "./Overlays";
 export * from "./LookMorph";
+export * from "./Thumb3D";

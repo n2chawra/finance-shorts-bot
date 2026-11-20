@@ -44,7 +44,29 @@ export type Stage3DProps = {
   fog?: { color?: string; near: number; far: number };
   /** DOM drawn over the 3D (tags, lower thirds, top pills: see overlays in Figures.tsx) */
   overlay?: React.ReactNode;
+  /** bloom threshold: parts brighter than this glow (default 0.85) */
+  threshold?: number;
+  /** "thumb": the thumbnail look (THUMB_LOOK, gap #2 of the tech thumbnail playbook): a warm key, a strong
+   * cool rim plus a warm kicker from behind (the warm/cool split), no fill so the shadow side falls off to
+   * black, a dim environment, the void backdrop, a hotter bloom, a shallow depth of field and a heavy
+   * vignette. Explicit props still win. Pair it with <ThumbCamera> (a close 3/4 view that sets the focus). */
+  look?: "default" | "thumb";
+  /** the thumb look's warm colour (key and kicker; the rim is `rim`) */
+  warm?: string;
 };
+
+/** The thumbnail look's settings (Stage3D look="thumb"); explicit props on the stage override them. */
+export const THUMB_LOOK = {
+  backdrop: { top: "#0a0d16", bottom: "#020306", glow: "rgba(255,170,90,0.07)" },
+  rim: "#5fd4ff",
+  warm: "#ffb35c",
+  bloom: 1.35,
+  threshold: 0.62,
+  dof: 5,
+  blur: 0,
+  vignette: 0.72,
+  floor: true,
+} as const;
 
 const BACKDROPS: Record<"dark" | "light" | "void", { top: string; bottom: string; glow: string }> = {
   dark: { top: TECH.bgTop, bottom: TECH.bgBottom, glow: "rgba(56,225,255,0.10)" },
@@ -61,10 +83,14 @@ const SceneSetup: React.FC<{ bg: THREE.Texture; fog?: Stage3DProps["fog"]; bgCol
   return null;
 };
 
-export const Stage3D: React.FC<Stage3DProps> = ({
-  children, width, height, backdrop = "dark", camera, light = 1, keyFrom = [4, 7, 5], rim = TECH.cyan,
-  floor = true, shadowBox = 6, post = true, bloom = 0.8, dof = 0, blur = 1, vignette = 0.45, fog, overlay,
-}) => {
+export const Stage3D: React.FC<Stage3DProps> = (props) => {
+  const thumb = props.look === "thumb";
+  const T = thumb ? THUMB_LOOK : null;
+  const {
+    children, width, height, backdrop = T ? T.backdrop : "dark", camera, light = 1, keyFrom = T ? [-3.2, 4.2, 4.2] : [4, 7, 5],
+    rim = T ? T.rim : TECH.cyan, floor = T ? T.floor : true, shadowBox = 6, post = true, bloom = T ? T.bloom : 0.8, dof = T ? T.dof : 0,
+    blur = T ? T.blur : 1, vignette = T ? T.vignette : 0.45, fog, overlay, threshold = T ? T.threshold : 0.85, warm = THUMB_LOOK.warm,
+  } = props;
   const cfg = useVideoConfig();
   const stageFrame = useCurrentFrame();
   const w = width ?? cfg.width;
@@ -89,22 +115,33 @@ export const Stage3D: React.FC<Stage3DProps> = ({
       >
         <StageStoreProvider store={store} frame={stageFrame}>
           <SceneSetup bg={bg} fog={fog} bgColor={bd.bottom} />
-          <hemisphereLight args={["#cfe0ff", "#1a1f33", 0.55 * light]} />
-          <directionalLight position={keyFrom} intensity={2.4 * light} castShadow
+          <hemisphereLight args={["#cfe0ff", "#1a1f33", (thumb ? 0.12 : 0.55) * light]} />
+          <directionalLight position={keyFrom} intensity={(thumb ? 2.1 : 2.4) * light} color={thumb ? "#ffe2bf" : "#ffffff"} castShadow
             shadow-mapSize={[2048, 2048]} shadow-bias={-0.0004} shadow-normalBias={0.02}
             shadow-camera-left={-shadowBox} shadow-camera-right={shadowBox}
             shadow-camera-top={shadowBox} shadow-camera-bottom={-shadowBox}
             shadow-camera-near={0.5} shadow-camera-far={60} />
-          <directionalLight position={[-6, 3, 4]} intensity={0.7 * light} color="#bcd0ff" />
-          <directionalLight position={[0, 4, -8]} intensity={1.8 * light} color={rim} />
-          <directionalLight position={[6, 2.5, -4]} intensity={1.1 * light} color="#ffffff" />
+          {thumb ? (
+            <>
+              {/* the warm/cool split: a strong cool rim from behind right, a warm kicker from behind left, no fill */}
+              <directionalLight position={[4.5, 3, -4.5]} intensity={4.2 * light} color={rim} />
+              <directionalLight position={[-5, 1.6, -3.5]} intensity={2.6 * light} color={warm} />
+              <spotLight position={[0, 5, 1.5]} angle={0.5} penumbra={1} intensity={18 * light} distance={14} color="#fff1dc" />
+            </>
+          ) : (
+            <>
+              <directionalLight position={[-6, 3, 4]} intensity={0.7 * light} color="#bcd0ff" />
+              <directionalLight position={[0, 4, -8]} intensity={1.8 * light} color={rim} />
+              <directionalLight position={[6, 2.5, -4]} intensity={1.1 * light} color="#ffffff" />
+            </>
+          )}
           <Environment resolution={128} frames={1}>
-            <Lightformer form="rect" intensity={2.2} position={[0, 6, 2]} rotation-x={Math.PI / 2} scale={[10, 4, 1]} />
+            <Lightformer form="rect" intensity={thumb ? 0.9 : 2.2} position={[0, 6, 2]} rotation-x={Math.PI / 2} scale={[10, 4, 1]} />
             {/* side panels near-white with a hint of the rim colours, so metals keep their own colour */}
-            <Lightformer form="rect" intensity={1.4} color="#e6f6ff" position={[-6, 1, 0]} rotation-y={Math.PI / 2} scale={[8, 2, 1]} />
-            <Lightformer form="rect" intensity={1.1} color="#f1ebff" position={[6, 1, 0]} rotation-y={-Math.PI / 2} scale={[8, 2, 1]} />
-            <Lightformer form="rect" intensity={0.6} color="#fff4e0" position={[0, -3, 3]} rotation-x={-Math.PI / 2} scale={[10, 3, 1]} />
-            <Lightformer form="ring" intensity={1.5} position={[0, 2, 7]} scale={3} />
+            <Lightformer form="rect" intensity={thumb ? 1.6 : 1.4} color={thumb ? warm : "#e6f6ff"} position={[-6, 1, 0]} rotation-y={Math.PI / 2} scale={[8, 2, 1]} />
+            <Lightformer form="rect" intensity={thumb ? 1.6 : 1.1} color={thumb ? rim : "#f1ebff"} position={[6, 1, 0]} rotation-y={-Math.PI / 2} scale={[8, 2, 1]} />
+            <Lightformer form="rect" intensity={thumb ? 0.1 : 0.6} color="#fff4e0" position={[0, -3, 3]} rotation-x={-Math.PI / 2} scale={[10, 3, 1]} />
+            <Lightformer form="ring" intensity={thumb ? 0.5 : 1.5} position={[0, 2, 7]} scale={3} />
           </Environment>
           {fl && !fl.reflect && (
             <mesh rotation-x={-Math.PI / 2} position={[0, fl.y, 0]} receiveShadow userData={{ noClip: true, noFade: true }}>
@@ -125,7 +162,7 @@ export const Stage3D: React.FC<Stage3DProps> = ({
               userData={{ noClip: true, noFade: true }} />
           )}
           {children}
-          {post && <Post store={store} bloom={bloom} dof={dof} blur={blur} vignette={vignette} />}
+          {post && <Post store={store} bloom={bloom} threshold={threshold} dof={dof} blur={blur} vignette={vignette} />}
         </StageStoreProvider>
       </ThreeCanvas>
       {!post && vignette > 0 && (

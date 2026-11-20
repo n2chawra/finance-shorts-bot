@@ -320,6 +320,12 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_i
     if t.get("layout") not in (None, "card", "story", "versus", "secret", "scene", "grid", "ladder", "extremes", "face", "custom"):
         raise ValueError("thumbnail.layout must be scene (a frame of the video: the default), card, story, versus (rich vs poor) "
                          "or secret (what the rich know); long videos: custom (the video's own Thumb.tsx, renderer/thumbs.py)")
+    if t.get("engine") not in (None, "2d", "3d"):
+        raise ValueError("thumbnail.engine is \"3d\" (the video's own Thumb3D.tsx drawn with the 3D kit, compositions/LongThumb3D.tsx) or absent")
+    if t.get("engine") == "3d" and t.get("layout") != "custom":
+        raise ValueError("a 3D thumbnail (engine \"3d\") is layout \"custom\": the video's own Thumb3D.tsx")
+    if t.get("type") not in (None, "stack", "bold"):
+        raise ValueError("thumbnail.type is \"stack\" (Anton, stacked left, one *starred* yellow word) or \"bold\"")
     if t.get("layout") == "custom" and not re.fullmatch(r"[A-Z][A-Za-z]*", str(t.get("component") or "Thumb")):
         raise ValueError("thumbnail.component names the video's own file, like \"Thumb\" (remotion/src/videos/<id>/Thumb.tsx)")
     if t.get("layout") == "scene" and beat_ids is not None and t.get("at") is not None and t["at"] not in beat_ids:

@@ -44,7 +44,16 @@ async function main(): Promise<void> {
   const concurrency = Number(opts.concurrency ?? Math.max(1, os.cpus().length));
   // a WebGL backend for videos drawn with the 3D kit (src/three): set by renderer/remotion.py only for
   // them ("angle" on a GPU machine, "swangle" without one), so every other video renders exactly as before
-  const gl = (opts.gl ?? process.env.REMOTION_GL) as "angle" | "swangle" | "egl" | "swiftshader" | "vulkan" | "angle-egl" | undefined;
+  type Gl = "angle" | "swangle" | "egl" | "swiftshader" | "vulkan" | "angle-egl";
+  let gl = (opts.gl ?? process.env.REMOTION_GL) as Gl | undefined;
+  // a 3D thumbnail (thumbnail.engine "3d", compositions/LongThumb3D.tsx) always needs WebGL, even when
+  // the caller didn't set one: the GPU on a desktop, software on a Linux box without one
+  let thumb3d = false;
+  if (mode === "thumbnail" && opts.timeline) {
+    const th = (JSON.parse(readFileSync(opts.timeline, "utf8")) as { thumbnail?: { engine?: string } | null }).thumbnail;
+    thumb3d = th?.engine === "3d";
+    if (thumb3d && !gl) gl = process.platform === "linux" ? "swangle" : "angle";
+  }
   const chromiumOptions = gl ? { gl } : {};
   // a 3D frame can take 30+ s in the cloud (software WebGL, shaders compiling on the first one); every
   // render call gets 2 minutes then, not the default 30 s (the cloud check of 18 Nov timed out on stills)
@@ -63,7 +72,7 @@ async function main(): Promise<void> {
   const inputProps = { timeline, probe: mode === "stills" && opts.probe === "1" };
   const url = await serveUrl(opts.bundle);
   if (mode === "thumbnail") {
-    const thumb = await selectComposition({ serveUrl: url, id: "Thumbnail", inputProps, browserExecutable, chromiumOptions, ...timeouts });
+    const thumb = await selectComposition({ serveUrl: url, id: thumb3d ? "LongThumb3D" : "Thumbnail", inputProps, browserExecutable, chromiumOptions, ...timeouts });
     await renderStill({ composition: thumb, serveUrl: url, inputProps, frame: 0, output: path.resolve(opts.out), imageFormat: "png", browserExecutable, chromiumOptions, ...timeouts });
     console.log(`done ${path.resolve(opts.out)}`);
     return;

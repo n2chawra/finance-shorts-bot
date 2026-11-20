@@ -43,6 +43,18 @@ def test_the_thumb_file_must_exist(tmp_path):
     assert thumbs.code_problems("L-x", GOOD, tmp_path) == []
 
 
+def test_a_3d_thumbnail_needs_its_thumb3d_and_loupe_files(tmp_path):
+    th = {**GOOD, "engine": "3d", "loupe": {"component": "Thumb3DLoupe", "at": [0.8, 0.3], "r": 0.2}}
+    th.pop("component", None)
+    assert thumbs.component(th) == "Thumb3D"
+    f = tmp_path / "remotion" / "src" / "videos" / "L-x"
+    f.mkdir(parents=True)
+    (f / "Thumb3D.tsx").write_text("export default () => null;", encoding="utf-8")
+    assert [p for p in thumbs.code_problems("L-x", th, tmp_path) if "Thumb3DLoupe" in p]
+    (f / "Thumb3DLoupe.tsx").write_text("export default () => null;", encoding="utf-8")
+    assert thumbs.code_problems("L-x", th, tmp_path) == []
+
+
 def test_topic_refs_come_from_the_market_search_and_the_demand_video(tmp_path):
     d = tmp_path / "videos" / "L-x"
     d.mkdir(parents=True)

@@ -23,6 +23,13 @@ size (168x94) it keeps its contrast and doesn't turn to noise or to nothing (PHO
 
     python -m renderer.thumbs refs <video id>    the topic's reference thumbnails on one sheet
     python -m renderer.thumbs feed <video id>    ours among them in a mock YouTube grid
+    python -m renderer.thumbs render <video id> [a|b|c]   re-render the thumbnails alone (after editing Thumb*.tsx
+                                                 or the script's thumbnail specs), with the phone checks
+
+A 3D thumbnail (2026-11-20, the tech channel, `"engine": "3d"`): the spec stays `custom`, and the video's own
+`Thumb3D.tsx` (or `component`) is a 3D scene that compositions/LongThumb3D.tsx mounts in one Stage3D with the
+thumb look; the words (StackWords: Anton, stacked left, one *starred* yellow word), `arrow`, `ring`, `badge` and
+`loupe` are drawn over it from the spec. It renders through the same `thumbnail` step with a WebGL backend.
 """
 from __future__ import annotations
 
@@ -123,13 +130,23 @@ def channel_problems(spec_list: list[tuple[str, dict]], rules: dict | None, pick
     return out
 
 
+def component(th: dict) -> str:
+    """The thumbnail's own file: `component`, else Thumb3D for a 3D thumbnail, else Thumb."""
+    return str(th.get("component") or ("Thumb3D" if th.get("engine") == "3d" else "Thumb"))
+
+
 def code_problems(vid: str, th: dict, root: Path = ROOT) -> list[str]:
-    """A custom thumbnail needs its component file."""
+    """A custom thumbnail needs its component file (and a 3D one its loupe's scene, when it has one)."""
     if th.get("layout") != "custom":
         return []
-    f = root / "remotion" / "src" / "videos" / vid / f"{th.get('component') or 'Thumb'}.tsx"
-    return [] if f.is_file() else [f"thumbnail: {f.relative_to(root).as_posix()} is missing (the video's own thumbnail, "
-                                   f"remotion/src/videos/README.md)"]
+    names = [component(th)] + ([str(th["loupe"]["component"])] if isinstance(th.get("loupe"), dict) and th["loupe"].get("component") else [])
+    out = []
+    for name in names:
+        f = root / "remotion" / "src" / "videos" / vid / f"{name}.tsx"
+        if not f.is_file():
+            out.append(f"thumbnail: {f.relative_to(root).as_posix()} is missing (the video's own thumbnail, "
+                       f"remotion/src/videos/README.md{'; a 3D one: compositions/LongThumb3D.tsx' if th.get('engine') == '3d' else ''})")
+    return out
 
 
 def phone_metrics(img: Image.Image) -> dict[str, float]:
@@ -207,6 +224,40 @@ def problems(script: dict, out: Path) -> list[str]:
         res += code_problems(out.name, th, root)
         res += image_problems(out / PICKS[k])
     return res + [f"thumbnails: {p}" for p in pick_problems(script)]
+
+
+def render(vid: str, letters: str = "abc", root: Path = ROOT) -> list[str]:
+    """Re-render a long video's thumbnails alone from its timeline.json (the specs re-read from script.json, so an
+    edited spec needs no rebuild), through the same `thumbnail` step as the full render (a 3D one through
+    LongThumb3D with WebGL), then the phone checks. Returns the problems."""
+    import json
+    from renderer import remotion as rr
+    from renderer.timeline.build import _thumbnail
+    d = cpath(root, "videos") / vid
+    tl = json.loads((d / "timeline.json").read_text(encoding="utf-8"))
+    script_f = d / "script.json"
+    if script_f.is_file():
+        script = json.loads(script_f.read_text(encoding="utf-8"))
+        blocks = [_thumbnail(t, tl["figures"], {}) for t in [script.get("thumbnail")] + list(script.get("thumbnails") or [])]
+    else:
+        blocks = [tl.get("thumbnail")] + list(tl.get("thumbnailVariants") or [])
+    rr._use_gl(vid)
+    b = rr.bundle()
+    work = rr.WORK_ROOT / "thumbs" / vid
+    work.mkdir(parents=True, exist_ok=True)
+    out: list[str] = []
+    for k, th in zip("abc", blocks):
+        if not th or k not in letters:
+            continue
+        alt = work / f"timeline-thumb-{k}.json"
+        alt.write_text(json.dumps({**tl, "thumbnail": th}, ensure_ascii=False), encoding="utf-8")
+        f = d / PICKS[k]
+        rr._node(["thumbnail", "--timeline", str(alt), "--out", str(f), "--bundle", str(b)])
+        rr.check_thumbnail(f, tl["format"])
+        rr.cover_jpeg(f)
+        out += code_problems(vid, th, root) + image_problems(f)
+        print(f"{f}  {phone_metrics(Image.open(f))}")
+    return out
 
 
 # ---------------- the topic's references ----------------
@@ -448,5 +499,10 @@ if __name__ == "__main__":
         for r in topic_refs(sys.argv[2])[:9]:
             print(f"{r['id']}  {int(r.get('views') or 0):>11,}  {r.get('channel', '')[:24]:24}  {r.get('title', '')[:70]}")
         print(refs_sheet(sys.argv[2], Path(sys.argv[3]) if len(sys.argv) > 3 else None))
+    elif len(sys.argv) >= 3 and sys.argv[1] == "render":
+        probs = render(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else "abc")
+        for p in probs or ["thumbnails ok"]:
+            print(p)
+        sys.exit(1 if probs else 0)
     else:
         print(__doc__)

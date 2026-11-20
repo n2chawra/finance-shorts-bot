@@ -18,6 +18,8 @@ import { TechFlatDemos } from "./flat/tech/Demo";
 import { TechAvatar, TechBanner } from "./sheets/TechBrand";
 import { TECH3D_DEMO, Tech3DDemo } from "./three/demo/Tech3DDemo";
 import { TECH3D_DEMO2, Tech3DDemo2 } from "./three/demo/Tech3DDemo2";
+import { calculateLongThumb3DMetadata, LONG_THUMB3D, LongThumb3D } from "./compositions/LongThumb3D";
+import { Thumb3DDemos } from "./three/demo/Thumb3DDemos";
 import { DocDemos } from "./doc/Demo";
 import { StageDemos } from "./doc/demos/StageDemo";
 import { TransitionsDemo } from "./doc/demos/TransitionsDemo";
@@ -35,6 +37,9 @@ export const Root: React.FC = () => (
       durationInFrames={300} fps={30} width={1920} height={1080} />
     <Still id="Thumbnail" component={Thumbnail} calculateMetadata={calculateThumbnailMetadata}
       defaultProps={{ timeline: sample as unknown as Timeline } satisfies StoryProps} width={THUMB.width} height={THUMB.height} />
+    {/* a long video's 3D thumbnail (thumbnail.engine "3d"): its own Thumb3D.tsx in the thumb look, words on top */}
+    <Still id="LongThumb3D" component={LongThumb3D} calculateMetadata={calculateLongThumb3DMetadata}
+      defaultProps={{ timeline: sample as unknown as Timeline } satisfies StoryProps} {...LONG_THUMB3D} />
     {/* approval sheets */}
     <Still id="CharacterSheet" component={CharacterSheet} width={1920} height={1080} />
     <Composition id="ActingTest" component={ActingTest} durationInFrames={300} fps={30} width={1920} height={1080} />
@@ -58,6 +63,7 @@ export const Root: React.FC = () => (
     {/* the 3D kit (src/three, tech channel): one demo Short using every piece */}
     <Composition id="Tech3DDemo" component={Tech3DDemo} {...TECH3D_DEMO} />
     <Composition id="Tech3DDemo2" component={Tech3DDemo2} {...TECH3D_DEMO2} />
+    <Thumb3DDemos />
     {/* channel art (assets/channel/): `npx remotion still src/index.ts ChannelAvatar|ChannelBanner <out.png>` */}
     <Still id="ChannelAvatar" component={ChannelAvatar} width={AVATAR.width} height={AVATAR.height} />
     <Still id="ChannelBanner" component={ChannelBanner} width={BANNER.width} height={BANNER.height} />

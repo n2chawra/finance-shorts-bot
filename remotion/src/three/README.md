@@ -33,10 +33,31 @@ Measured on the owner's PC (GPU, `--gl=angle`, 1080×1920):
 | `Tech3DDemo` (look pass on) | 360 frames in 2 m 17 s (before the look pass) | ~0.4 s | 2–4 s |
 | `Tech3DDemo2` | 450 frames in 3 m 52 s | ~0.45 s (≈1.8 s per tab) | 2–5 s (12 s for the first, compiling shaders) |
 
-**Pipeline wiring, not done here** (outside `src/three`): `scripts/render.ts` needs
-`chromiumOptions: { gl }`, and `renderer/remotion.py` `HOOK_IMPORTS` needs `"../../three/"` before a
-video's own beat files may import this kit. Its `HOOK_BANNED` list bans `useFrame` in beat files;
-that is fine (beats never need it, the kit does it inside).
+**Pipeline wiring** (done): `scripts/render.ts` passes `chromiumOptions: { gl }` from `--gl` or
+`REMOTION_GL` (set by `renderer/remotion.py` for a video whose own code imports this kit), and
+`HOOK_IMPORTS` allows `"../../three/"`. Its `HOOK_BANNED` list bans `useFrame` in beat files; that is
+fine (beats never need it, the kit does it inside).
+
+## Thumbnails (`Thumb3D.tsx`, `../compositions/LongThumb3D.tsx`; 2026-11-20)
+
+A long video's thumbnail can be a 3D scene: the spec says `"layout": "custom", "engine": "3d"` and the
+video's own `Thumb3D.tsx` default-exports the scene (no camera moves, frame 0). LongThumb3D (1280×720)
+mounts it in one `<Stage3D look="thumb">` and lays the 2D parts over it from the spec (`words` in
+`studio/thumbType.tsx` `StackWords`: Anton, stacked left, one `*starred*` word yellow, a soft shadow, caps
+≥ 11% of the height; `arrow`, `ring`, `badge`, `loupe`). `scripts/render.ts thumbnail` picks LongThumb3D
+for `engine: "3d"` and turns WebGL on by itself (`angle`, `swangle` on Linux).
+
+- `look="thumb"` (`THUMB_LOOK`): warm key, a strong cool rim and a warm kicker from behind (the
+  warm/cool split), no fill (the shadow side falls to black), a dim environment, the void backdrop,
+  bloom 1.35 from luminance 0.62, depth of field 5, vignette 0.72, no motion blur. Explicit props win.
+- `<ThumbCamera target dist yaw pitch fov shift range/>`: a close 3/4 view that puts the focus on the
+  target; `shift` 0.3–0.4 pushes the subject centre-right so the words sit left.
+- `<Loupe x y r from>`: a magnifier, a second small stage in a ringed circle with a leader (a second
+  WebGL context; one per thumbnail).
+
+Demos (one still each, `--gl=angle`, 30–90 s on the PC with a cold bundle): `Thumb3DDemoInside` (P1),
+`Thumb3DDemoHero` (P2), `Thumb3DDemoScale` (P3 with a loupe). Stills in
+`channels/how-tech-and-ai-actually-work-chips-ai-p/samples/thumb3d/`.
 
 ## How a director codes a beat
 
@@ -105,7 +126,6 @@ scale tools, overlays, look morph). Still open:
 - **Camera**: motion blur is a screen-space streak (radial for dives, directional for pans), not
   per-object; very fast orbits show it as a smear.
 - **Places**: four sets; no wiring tunnel, campus at dusk, fin hall or volumetric shafts.
-- **Pipeline**: the two `renderer/remotion.py` / `scripts/render.ts` changes above.
 - **Fonts**: Poppins; the research proposes Barlow Condensed + Inter (owner's OK needed).
 - **Later list** (not sample 1): skit cast (walk, crouch, sit, hold phone, extras crowd),
   `Inset3D` magnifier, analogy machines, diagram space, globe props.

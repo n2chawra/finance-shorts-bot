@@ -16,6 +16,8 @@ import { PROPS } from "../scenes/kit";
 import { StoryVideo, type StoryProps } from "./StoryVideo";
 import { BigWords, SecretThumb, VersusThumb } from "./ThumbFormats";
 import { LONG_LAYOUTS, LongThumb } from "./LongThumbs";
+import { LongThumb3D } from "./LongThumb3D";
+import { StackWords } from "../studio/thumbType";
 import { VIDEOS } from "../videos/hooks";
 import type { ThumbProps } from "../studio/thumb";
 
@@ -138,8 +140,9 @@ const SceneThumb: React.FC<StoryProps> = ({ timeline }) => {
         ? "linear-gradient(180deg, rgba(5,6,14,0.7) 0%, rgba(5,6,14,0.35) 26%, rgba(5,6,14,0) 40%)"
         : "linear-gradient(90deg, rgba(5,6,14,0.7) 0%, rgba(5,6,14,0.3) 45%, rgba(5,6,14,0) 62%)" }} />
       <div style={{ position: "absolute", left: v ? 44 : 40, right: v ? 44 : w * 0.42, top: v ? 70 : 34, textAlign: v ? "center" : "left" }}>
-        <BigWords text={th.words} size={v ? 136 : 92} />
+        {th.type === "stack" ? null : <BigWords text={th.words} size={v ? 136 : 92} />}
       </div>
+      {th.type === "stack" && <StackWords text={th.words} w={w} h={h} maxW={v ? w * 0.86 : w * 0.52} />}
     </AbsoluteFill>
   );
 };
@@ -150,6 +153,7 @@ export const Thumbnail: React.FC<StoryProps> = (props) => {
   if (th?.layout === "versus") return <VersusThumb th={th} w={w} h={h} />;
   if (th?.layout === "secret") return <SecretThumb th={th} w={w} h={h} />;
   if (th?.layout === "scene") return <SceneThumb {...props} />;
+  if (th?.layout === "custom" && th.engine === "3d") return <LongThumb3D {...props} />;
   if (th?.layout === "custom") {
     // the video's own thumbnail (videos/<id>/Thumb.tsx); a missing file falls back to a frame of the video
     const Own = VIDEOS[props.timeline.id]?.components[th.component ?? "Thumb"] as unknown as React.FC<ThumbProps> | undefined;
