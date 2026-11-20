@@ -537,7 +537,8 @@ def directed_problems(b: "Beat", where: str) -> list[str]:
 
 
 DOC_LAYERS = ("footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "count", "listing", "ticker", "sink", "donut", "poster", "montage", "depth")
-DOC_OVERLAYS = ("lowerThird", "source", "chapter", "label", "circle", "arrow", "stamp", "date")
+# no "circle": the hand-drawn red ring was dropped (owner, 2026-11-20: "not looking good")
+DOC_OVERLAYS = ("lowerThird", "source", "chapter", "label", "arrow", "stamp", "date")
 DOC_ENTERS = ("cut", "fade", "flash", "whip-left", "whip-right", "zoom", "focus", "shutter", "glitch", "drop", "iris", "slide-up")
 # the devices that make a doc video more than photos with a voice (owner, 2026-11-20: "same images are being
 # used many times, effects are very less"): count, poster and plain photos/footage don't count
@@ -629,7 +630,8 @@ def doc_video_problems(script: dict) -> list[str]:
     shows a picture at most twice and never in neighbouring beats. Scripts made before the rule carry
     "docCraft": 1."""
     beats = [b for b in script.get("beats") or [] if isinstance(b, dict) and b.get("scene") == "doc"]
-    if not beats or int(script.get("docCraft", 2)) < 2:
+    # a whole video only (a Short has 6-8 beats): a one- or two-beat test or demo script has no variety to judge
+    if len(beats) < 4 or int(script.get("docCraft", 2)) < 2:
         return []
     short, out = script.get("format") == "short", []
     seen: dict[str, list[int]] = {}
@@ -658,7 +660,7 @@ def doc_video_problems(script: dict) -> list[str]:
         out.append("no document or headline: the channel's signature is the page that holds the figure, highlighted on the word")
     if len(overlays) < need_ov or len({o.get("kind") for o in overlays}) < 2:
         out.append(f"{len(overlays)} overlays of {len({o.get('kind') for o in overlays})} kinds; use at least {need_ov} of two or more kinds "
-                   "(circle, arrow, stamp, date, label, lowerThird, source)")
+                   "(arrow, stamp, date, label, lowerThird, source)")
     plain = sum(1 for l in layers if l.get("enter") == "cut")
     if layers and plain > len(layers)//2:
         out.append(f"{plain} of {len(layers)} layers enter on a plain cut; leave `enter` out (the kit picks a whip, zoom, focus, drop…) or name one")

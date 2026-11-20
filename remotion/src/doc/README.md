@@ -68,9 +68,9 @@ and checks the params with `renderer/timeline/build.py` `doc_problems`. `DocBeat
 | `depth` | `Depth` | 2.5D: `src` (the photo, greyed and blurred behind), `cut` (its cut-out PNG from `python -m generator.media cutout`, in front), `title` + `sub` between the layers on `titleAt`, `side`, `tone`, `bgTreatment` bw/archive/none, `particles` |
 
 Overlays: `lowerThird` {name, role}, `source` {form?, text, date?, pos}, `label` {text, sub, tone white/red},
-`chapter` (the same card over the picture under it), and the marks (`Annotate.tsx`, 2026-11-20): `circle` {pos [x,y],
-r, label, tone} (a hand-drawn ring on the thing), `arrow` {from, to, label}, `stamp` {text, pos, tone, tilt} (slams
-and shakes the picture; no digits), `date` {date (ISO), sub, pos top/center}.
+`chapter` (the same card over the picture under it), and the marks (`Annotate.tsx`, 2026-11-20): `arrow` {from, to, label}, `stamp` {text, pos, tone, tilt} (slams
+and shakes the picture; no digits), `date` {date (ISO), sub, pos top/center}. The red ring (`CircleMark`) is
+not a doc overlay: the owner dropped it on 20 Nov.
 
 Entrances (`Transitions.tsx`): a layer's `enter` is cut, fade, flash, whip-left, whip-right, zoom, focus, shutter,
 glitch, drop, iris or slide-up. Left out, the kit picks one by the layer's kind (full-frame pictures whip, zoom, focus,

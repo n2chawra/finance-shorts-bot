@@ -24,5 +24,5 @@ sneaker photos 5 times); both had no overlay, no document and only plain hard cu
 being used many times… effects are very less".
 Fix: a Short shows each picture once (only the loop's last picture may repeat the first); at least 3 devices
 beyond photos (document or headline always, then depth, montage, polaroids, listing, sink, split, timeline,
-map, products…); an overlay on every other beat (circle, arrow, stamp, date, label, lowerThird); leave `enter`
+map, products…); an overlay on every other beat (arrow, stamp, date, label, lowerThird; never a red ring, owner 20 Nov); leave `enter`
 out so every layer arrives with a whip, zoom, focus, drop or glitch. Code: `doc_video_problems`.

@@ -39,7 +39,8 @@ export const DocChart: React.FC<DocChartProps> = ({
   const u = unit(w, h);
   const accent = tone === "fall" ? DOC.red : tone === "rise" ? DOC.gold : "#7fb2ff";
   const x0 = v ? w * 0.1 : w * 0.1, x1 = v ? w * 0.9 : w * 0.86;
-  const y0 = v ? h * 0.36 : h * 0.3, y1 = v ? h * 0.66 : h * 0.8;
+  // Shorts: the bars end above the caption band (~1110–1350 px of 1920; owner 20 Nov: the captions sat on the bars)
+  const y0 = v ? h * 0.27 : h * 0.3, y1 = v ? h * 0.56 : h * 0.8;
   const n = Math.max(1, values.length);
   const max = Math.max(...values, 0), min = Math.min(...values);
   const lo = kind === "bar" || zero ? 0 : min - (max - min) * 0.12;
@@ -161,7 +162,7 @@ export const DocChart: React.FC<DocChartProps> = ({
         ) : null}
       </AbsoluteFill>
       {title ? (
-        <div style={{ position: "absolute", left: x0, top: v ? h * 0.2 : h * 0.09, right: w * 0.1 }}>
+        <div style={{ position: "absolute", left: x0, top: v ? h * 0.14 : h * 0.09, right: w * 0.1 }}>
           <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: fs(w, h, v ? 64 : 54), color: DOC.text, letterSpacing: -0.5, lineHeight: 1.1 }}>{title}</div>
           {sub ? <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: fs(w, h, 30), color: DOC.muted, marginTop: 6 * u }}>{sub}</div> : null}
         </div>

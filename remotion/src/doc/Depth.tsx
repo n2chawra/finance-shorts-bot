@@ -11,7 +11,7 @@
 import React, { useId } from "react";
 import { AbsoluteFill, Img, staticFile } from "remotion";
 import { rng } from "../flat/kit";
-import { clamp01, DISPLAY, DOC, DocVignette, FilmGrain, outBack, outCubic, SANS, smooth, unit, useGrade, type GradeName } from "./theme";
+import { clamp01, DISPLAY, DOC, DocVignette, FilmGrain, fs, outBack, outCubic, SANS, smooth, unit, useGrade, type GradeName } from "./theme";
 
 export type DepthTone = "gold" | "white" | "red";
 
@@ -92,7 +92,7 @@ export const Depth: React.FC<DepthProps> = ({
             {words.map((x, i) => <div key={i}>{x}</div>)}
           </div>
           {sub ? (
-            <div style={{ marginTop: 18 * u, fontFamily: SANS, fontWeight: 700, fontSize: 40 * u, letterSpacing: "0.14em", color: DOC.text,
+            <div style={{ marginTop: 18 * u, fontFamily: SANS, fontWeight: 700, fontSize: fs(w, h, 46), letterSpacing: "0.14em", color: DOC.text,
               textTransform: "uppercase", textShadow: "0 2px 10px rgba(0,0,0,0.8)", minHeight: 48 * u }}>
               {sub.slice(0, subChars)}
             </div>

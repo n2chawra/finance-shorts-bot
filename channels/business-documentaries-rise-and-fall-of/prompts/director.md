@@ -83,8 +83,8 @@ showed nothing but photos, count-ups and the poster; the owner called it repetit
   `titleAt`, `side`, `bgTreatment`, `particles`). Use it when a name or a place is spoken.
 - **`montage`** for a fast run of pictures on one line ("in shops, on TikTok, in cup holders"): `items`
   [{src, focus}], `mode` punch (hook, 0.3–0.5 s each), stack (prints thrown on a desk) or grid (an evidence wall).
-- **Overlays on at least every other beat, two or more kinds**: `circle` {pos, r, label} rings the thing on
-  the photo on its word; `arrow` {from, to, label}; `stamp` {text, tone} slams SOLD OUT, LIMIT, RECALLED
+- **Overlays on at least every other beat, two or more kinds**: `arrow` {from, to, label} points at the thing
+  on its word (no red ring: the owner dropped it, 20 Nov); `stamp` {text, tone} slams SOLD OUT, LIMIT, RECALLED
   (no digits); `date` {date (ISO), sub} slams the year and place; plus `label`, `lowerThird`, `source`.
 - **Entrances**: leave a layer's `enter` out and the kit picks a whip, zoom, focus, glitch, drop, iris or
   shutter by what the layer is; name one (`whip-left`, `zoom`, `drop`…) to choose; `cut` on at most half.

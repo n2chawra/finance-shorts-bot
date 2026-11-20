@@ -27,12 +27,12 @@ import { Split, type Side } from "./Split";
 import { DOC, fmtDate, isGrade, outCubic, type Surface } from "./theme";
 import { Timeline, type YearMark } from "./Timeline";
 import { autoEnter, EnterFx, isEnter, LightLeak } from "./Transitions";
-import { ArrowMark, CircleMark, DateSlam, slamShake, StampMark } from "./Annotate";
+import { ArrowMark, DateSlam, slamShake, StampMark } from "./Annotate";
 import { isMontageMode, Montage } from "./Montage";
 import { Depth } from "./Depth";
 
 export const LAYER_KINDS = ["footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "montage", "depth", ...FIGURE_KINDS] as const;
-export const OVERLAY_KINDS = ["lowerThird", "source", "chapter", "label", "circle", "arrow", "stamp", "date"] as const;
+export const OVERLAY_KINDS = ["lowerThird", "source", "chapter", "label", "arrow", "stamp", "date"] as const;
 
 type Any = Record<string, unknown>;
 const s = (v: unknown, d = ""): string => (typeof v === "string" ? v : typeof v === "number" ? String(v) : d);
@@ -165,9 +165,6 @@ const Overlay: React.FC<{ c: Ctx; o: Any }> = ({ c, o }) => {
     case "chapter":
       return <ChapterCard n={typeof o.n === "number" ? o.n : undefined} title={s(o.title)} kicker={typeof o.kicker === "string" ? o.kicker : undefined}
         t={m.t - a} end={z - a} w={w} h={h} on={4} plate={n(o.plate, 0.7)} style={chapterStyle(o.style)} />;
-    case "circle":
-      return <CircleMark t={m.t} inAt={a} outAt={typeof o.out === "string" ? z : undefined} w={w} h={h} pos={pair(o.pos, [0.5, 0.45])} r={n(o.r, 0.16)}
-        tone={o.tone === "gold" || o.tone === "white" ? o.tone : "red"} label={typeof o.label === "string" ? o.label : undefined} />;
     case "arrow":
       return <ArrowMark t={m.t} inAt={a} outAt={typeof o.out === "string" ? z : undefined} w={w} h={h} from={pair(o.from, [0.3, 0.3])} to={pair(o.to, [0.5, 0.5])}
         label={typeof o.label === "string" ? o.label : undefined} tone={o.tone === "gold" || o.tone === "white" ? o.tone : "red"} />;

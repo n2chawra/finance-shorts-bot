@@ -77,3 +77,50 @@ def test_a_doc_beat_without_layers_fails() -> None:
 def test_a_doc_beat_keeps_the_directed_rules() -> None:
     _fails(lambda p: p.update(place=""), "params.place")
     _fails(lambda p: p.update(camera=[{"sec": 0, "size": "huge"}]), "has a size")
+
+
+# --- variety across a whole doc video (owner, 2026-11-20) -------------------------------------------
+
+def _doc_video(layers_per_beat, overlays_per_beat=None, fmt="short"):
+    from renderer.timeline.build import doc_video_problems
+    beats = []
+    for i, layers in enumerate(layers_per_beat):
+        ov = (overlays_per_beat or [[]] * len(layers_per_beat))[i]
+        beats.append({"id": f"b{i}", "scene": "doc", "params": {"layers": layers, "overlays": ov}})
+    return doc_video_problems({"format": fmt, "beats": beats})
+
+
+def _ph(name):
+    return {"kind": "photo", "src": f"media/x/{name}.jpg"}
+
+
+def test_a_short_that_repeats_a_picture_fails():
+    beats = [[_ph("a")], [_ph("b")], [_ph("a")], [_ph("c")]]
+    assert any("a.jpg is shown" in p for p in _doc_video(beats))
+
+
+def test_the_last_beat_may_repeat_the_opening_picture():
+    beats = [[_ph("a")], [_ph("b")], [_ph("c")], [_ph("a")]]
+    assert not any("a.jpg is shown" in p for p in _doc_video(beats))
+
+
+def test_a_varied_short_passes():
+    beats = [
+        [_ph("a"), {"kind": "montage", "items": [{"src": "media/x/b.jpg"}, {"src": "media/x/c.jpg"}, {"src": "media/x/d.jpg"}]}],
+        [{"kind": "depth", "src": "media/x/e.jpg", "cut": "media/x/e-cut.png"}],
+        [{"kind": "headline", "items": []}, _ph("f")],
+        [{"kind": "chart", "values": [1, 2]}, _ph("g")],
+        [_ph("a")],
+    ]
+    ov = [[{"kind": "stamp"}], [], [{"kind": "label"}], [{"kind": "source"}], []]
+    assert _doc_video(beats, ov) == []
+
+
+def test_photos_alone_read_as_a_slideshow():
+    probs = _doc_video([[_ph(c)] for c in "abcdefgh"])
+    assert any("device kinds" in p for p in probs) and any("no document or headline" in p for p in probs)
+
+
+def test_a_red_ring_is_no_longer_an_overlay():
+    from renderer.timeline.build import DOC_OVERLAYS
+    assert "circle" not in DOC_OVERLAYS
