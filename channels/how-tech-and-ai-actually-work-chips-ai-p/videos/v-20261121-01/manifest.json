@@ -1,0 +1,398 @@
+{
+  "id": "v-20261121-01",
+  "createdAt": "2026-11-20T22:23:15.156661+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "How the first transistor, two gold contacts on a plastic wedge at Bell Labs, became the switch inside every chip",
+    "category": "chips",
+    "reach": "global",
+    "feed_id": "2026-11-19-first-transistor"
+  },
+  "title": "What Did the First Transistor Actually Look Like?",
+  "description": "What did the first transistor actually look like?\nAt Bell Labs in December 1947, John Bardeen and Walter Brattain pressed two gold contacts onto a piece of germanium. We build it in 3D, show how it amplifies, then dive into a modern graphics chip built from the same switch.\nSources: Computer History Museum, NVIDIA GeForce News (Sep 2022).\nAnimations are simplified illustrations, not exact to scale.",
+  "hashtags": [
+    "#Shorts",
+    "#Transistor",
+    "#BellLabs",
+    "#Invention",
+    "#HowItWorks"
+  ],
+  "hookStyle": "question",
+  "cta": "Which invention should we rebuild next? Comment",
+  "seed": 19447,
+  "style": {
+    "palette": "night",
+    "genre": "datahall",
+    "key": "E",
+    "bpm": 62,
+    "look": {
+      "stage": "studio",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "draw"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "45-60",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "28"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Every chip you own is built from a Bell Labs invention.",
+        "start": 0.3,
+        "seconds": 3.57,
+        "window": 3.87,
+        "fill": 0.922
+      },
+      {
+        "scene": "ask",
+        "text": "The transistor. What did the very first one look like?",
+        "start": 4.17,
+        "seconds": 3.44,
+        "window": 3.87,
+        "fill": 0.889
+      },
+      {
+        "scene": "lab",
+        "text": "In 1947, John Bardeen and Walter Brattain built it by hand.",
+        "start": 8.03,
+        "seconds": 5.07,
+        "window": 5.6,
+        "fill": 0.905
+      },
+      {
+        "scene": "wedge",
+        "text": "Brattain wrapped gold foil around a plastic wedge and slit it at the tip with a razor.",
+        "start": 13.63,
+        "seconds": 5.34,
+        "window": 5.77,
+        "fill": 0.925
+      },
+      {
+        "scene": "press",
+        "text": "Two gold contacts, almost touching, pressed by a spring onto germanium. So how does that do anything?",
+        "start": 19.4,
+        "seconds": 7.09,
+        "window": 7.53,
+        "fill": 0.942
+      },
+      {
+        "scene": "flow",
+        "text": "A small voltage on one contact controls the current through the other.",
+        "start": 26.93,
+        "seconds": 4.65,
+        "window": 5.13,
+        "fill": 0.906
+      },
+      {
+        "scene": "proof",
+        "text": "On December sixteenth, a weak signal came out up to 100 times stronger.",
+        "start": 32.07,
+        "seconds": 5.18,
+        "window": 5.57,
+        "fill": 0.93
+      },
+      {
+        "scene": "switch",
+        "text": "Why does it matter? The same trick is a switch: a small signal turns a big current on or off.",
+        "start": 37.63,
+        "seconds": 6.35,
+        "window": 6.83,
+        "fill": 0.93
+      },
+      {
+        "scene": "dive",
+        "text": "Shrink it, copy it, and one NVIDIA Ada Lovelace graphics chip holds up to 76B of them.",
+        "start": 44.47,
+        "seconds": 7.16,
+        "window": 7.63,
+        "fill": 0.938
+      },
+      {
+        "scene": "loop",
+        "text": "All from gold foil on a plastic wedge: the switch now inside every chip in your phone.",
+        "start": 52.1,
+        "seconds": 5.73,
+        "window": 6.27,
+        "fill": 0.914
+      }
+    ]
+  },
+  "durationSec": 59,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -14.2,
+    "music_under_voice_db": 26.5
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: flow now matches CHM ('voltage on one contact modulated the current through the other'), visuals redrawn to match; dive now names Ada Lovelace, matching NVIDIA's 'up to 76 billion' (Sep 2022); loop reworded. 1947 / 16 Dec and up to 100x confirmed on the CHM page, 76B on nvidia.com, razor and spring by search; disclaimer present. Notes: hook's 'built from one invention' is lineage (today's chips use MOSFETs); plan arms length 45-60 vs the 20-35 s rule."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review: thumbnail now the gold-foil wedge big and centred under the title (press beat); 55s loop shows the wedge mid-frame over the phone board and chip; 10+ directed places, figures on things (1947 plate, 100 on scope, 76B on die), opener names chips and Bell Labs, loops to the phone, 59 s in the channel's 45-60 range, layout/craft clean, audio -1.0/-16.1 dB, disclaimer in description."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-20T20:09:46.685919+00:00",
+      "finishedAt": "2026-11-20T20:09:46.685919+00:00",
+      "notes": [
+        "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky",
+        "style.bpm must be 60–66 for datahall"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:09:50.809779+00:00",
+      "finishedAt": "2026-11-20T20:09:50.809779+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T20:12:17.492503+00:00",
+      "finishedAt": "2026-11-20T20:12:17.492503+00:00",
+      "notes": [
+        "beat 'proof'.params.moments[0].what contains a typed number; use a placeholder: \"the scope's screen warms up on the shelf, a date card flips to December 16\"",
+        "the hook's first sentence names no famous person or company and no figure (got 'Every chip in your phone is built from one kind of switch.'): the subject, or the price the viewer pays, is said first, as in \"Costco sells you a hot dog for {price}. So how does it make any money?\"",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: 1 questions in about 57 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:12:38.432896+00:00",
+      "finishedAt": "2026-11-20T20:12:38.432896+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T20:12:39.429444+00:00",
+      "finishedAt": "2026-11-20T20:12:39.429444+00:00",
+      "notes": [
+        "beat 'dive'.params.fig.count has a bad placeholder ('fact4'); allowed: fact1, fact2, fact3",
+        "the hook's first sentence names no famous person or company and no figure (got 'Every chip in your phone is built from transistors, tiny switches.'): the subject, or the price the viewer pays, is said first, as in \"Costco sells you a hot dog for {price}. So how does it make any money?\""
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:12:57.307512+00:00",
+      "finishedAt": "2026-11-20T20:12:57.307512+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+        "warning: beat 'hook' runs 8.0 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'dive' runs 6.4 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:13:08.165121+00:00",
+      "finishedAt": "2026-11-20T20:13:08.165121+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-20T20:14:06.109548+00:00",
+      "finishedAt": "2026-11-20T20:14:06.109548+00:00",
+      "notes": [
+        "dive: 'one NVIDIA graphics chip holds up to 76B of them' is out of date. The 76B ceiling is NVIDIA's Sep 2022 figure for Ada Lovelace (confirmed on nvidia.com), but newer NVIDIA chips are bigger: the RTX 5090's GB202 has about 92.2B (PC Gamer, hwcooling) and data-centre Blackwell dies have more. Stated today, 'up to 76B' is wrong. Fix: tie it to its chip and year, e.g. 'one NVIDIA graphics chip from 2022 holds up to 76B of them', or re-source a current count.",
+        "flow: 'A tiny current into one contact lets a far bigger one through the other' misstates how the point-contact transistor worked. The source (CHM) says 'the voltage on one contact modulated the current flowing through the other'. Its current gain was small (about 1 to 3); the 100x gain was in signal strength, not one current against the other. Expert viewers will catch it (profile: accuracy over spectacle). Fix: e.g. 'A small voltage on one contact controls the current through the other.' Redraw the flow visuals (thin cyan trickle vs thick amber stream) to match."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:15:11.728386+00:00",
+      "finishedAt": "2026-11-20T20:15:11.728386+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:15:28.910986+00:00",
+      "finishedAt": "2026-11-20T20:15:28.910986+00:00",
+      "notes": [
+        "Re-review after fixes: flow now matches CHM ('voltage on one contact modulated the current through the other'), visuals redrawn to match; dive now names Ada Lovelace, matching NVIDIA's 'up to 76 billion' (Sep 2022); loop reworded. 1947 / 16 Dec and up to 100x confirmed on the CHM page, 76B on nvidia.com, razor and spring by search; disclaimer present. Notes: hook's 'built from one invention' is lineage (today's chips use MOSFETs); plan arms length 45-60 vs the 20-35 s rule."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:18:37.376875+00:00",
+      "finishedAt": "2026-11-20T20:18:37.376875+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-20T20:23:14.377276+00:00",
+      "finishedAt": "2026-11-20T20:27:32.695324+00:00",
+      "notes": [
+        "text 'ILLUSTRATION' at 6.6 s is 26 px, below the 44 px minimum",
+        "text '3D RECREATION' at 12.6 s is 26 px, below the 44 px minimum",
+        "text 'NOT TO SCALE' at 26.4 s is 26 px, below the 44 px minimum",
+        "2.1 s with nothing new on screen in beat 'lab' (at most 1.8 s): add an action on the phrase being said there",
+        "length 61 s is outside 45–60 s: cut about 3 spoken words",
+        "the Short runs 60.7 s but its assigned length (arms.length) is 45-60 s: cut or add a beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-20T20:28:18.281652+00:00",
+      "finishedAt": "2026-11-20T20:31:54.798426+00:00",
+      "notes": [
+        "2.0 s with nothing new on screen in beat 'loop' (at most 1.8 s): add an action on the phrase being said there",
+        "3 of 13 stills are mostly empty background (at 25 s, 40 s, 45 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:32:54.665618+00:00",
+      "finishedAt": "2026-11-20T20:36:37.326030+00:00",
+      "notes": [
+        "59 s, night/datahall (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:36:45.717761+00:00",
+      "finishedAt": "2026-11-20T20:40:22.081682+00:00",
+      "notes": [
+        "59 s, night/datahall (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-20T20:41:08.910054+00:00",
+      "finishedAt": "2026-11-20T20:41:08.910054+00:00",
+      "notes": [
+        "[scene] Thumbnail (thumbnail.png/.jpg, thumbnail.at='dive', sec 4.0): the frame is empty, only the dark studio floor grid under 'THE FIRST TRANSISTOR'. The Dive component draws nothing when the thumbnail renders that moment, yet the 50.0s still of the same beat shows the die full of switches. Fix Dive (remotion/src/videos/v-20261121-01/Dive.tsx) for the thumbnail render, or as a workaround point thumbnail.at at a beat that draws, e.g. 'press' (the wedge on the germanium, 25s) or 'wedge'.",
+        "[script] 55.0s (loop beat, 'on a plastic wedge'): the top half of the frame is black and the chip and board sit low, right under the caption. No gold wedge is visible although the line names it. Frame the wedge sinking into the chip mid-frame at a closer size so the payoff-to-loop shot isn't half empty."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:41:59.430101+00:00",
+      "finishedAt": "2026-11-20T20:46:00.076783+00:00",
+      "notes": [
+        "59 s, night/datahall (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:46:12.934990+00:00",
+      "finishedAt": "2026-11-20T20:50:20.049793+00:00",
+      "notes": [
+        "59 s, night/datahall (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:50:28.546346+00:00",
+      "finishedAt": "2026-11-20T20:54:42.532279+00:00",
+      "notes": [
+        "59 s, night/datahall (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:54:56.594988+00:00",
+      "finishedAt": "2026-11-20T20:54:56.594988+00:00",
+      "notes": [
+        "Re-review: thumbnail now the gold-foil wedge big and centred under the title (press beat); 55s loop shows the wedge mid-frame over the phone board and chip; 10+ directed places, figures on things (1947 plate, 100 on scope, 76B on die), opener names chips and Bell Labs, loops to the phone, 59 s in the channel's 45-60 range, layout/craft clean, audio -1.0/-16.1 dB, disclaimer in description."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T20:55:06.229363+00:00",
+      "finishedAt": "2026-11-20T22:23:10.048638+00:00",
+      "notes": [
+        "59 s, night/datahall, peak -1.0 dB, mean -16.1 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-20T22:23:15.156799+00:00",
+      "finishedAt": "2026-11-20T22:23:15.156799+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261121-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261121-01"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 19447,
+  "duration_sec": 59,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "datahall",
+    "key": "E",
+    "bpm": 62,
+    "look": {
+      "stage": "studio",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Every chip you own is built from a Bell Labs invention.",
+        "start": 0.3,
+        "seconds": 3.57,
+        "window": 3.87,
+        "fill": 0.922
+      },
+      {
+        "scene": "ask",
+        "text": "The transistor. What did the very first one look like?",
+        "start": 4.17,
+        "seconds": 3.44,
+        "window": 3.87,
+        "fill": 0.889
+      },
+      {
+        "scene": "lab",
+        "text": "In 1947, John Bardeen and Walter Brattain built it by hand.",
+        "start": 8.03,
+        "seconds": 5.07,
+        "window": 5.6,
+        "fill": 0.905
+      },
+      {
+        "scene": "wedge",
+        "text": "Brattain wrapped gold foil around a plastic wedge and slit it at the tip with a razor.",
+        "start": 13.63,
+        "seconds": 5.34,
+        "window": 5.77,
+        "fill": 0.925
+      },
+      {
+        "scene": "press",
+        "text": "Two gold contacts, almost touching, pressed by a spring onto germanium. So how does that do anything?",
+        "start": 19.4,
+        "seconds": 7.09,
+        "window": 7.53,
+        "fill": 0.942
+      },
+      {
+        "scene": "flow",
+        "text": "A small voltage on one contact controls the current through the other.",
+        "start": 26.93,
+        "seconds": 4.65,
+        "window": 5.13,
+        "fill": 0.906
+      },
+      {
+        "scene": "proof",
+        "text": "On December sixteenth, a weak signal came out up to 100 times stronger.",
+        "start": 32.07,
+        "seconds": 5.18,
+        "window": 5.57,
+        "fill": 0.93
+      },
+      {
+        "scene": "switch",
+        "text": "Why does it matter? The same trick is a switch: a small signal turns a big current on or off.",
+        "start": 37.63,
+        "seconds": 6.35,
+        "window": 6.83,
+        "fill": 0.93
+      },
+      {
+        "scene": "dive",
+        "text": "Shrink it, copy it, and one NVIDIA Ada Lovelace graphics chip holds up to 76B of them.",
+        "start": 44.47,
+        "seconds": 7.16,
+        "window": 7.63,
+        "fill": 0.938
+      },
+      {
+        "scene": "loop",
+        "text": "All from gold foil on a plastic wedge: the switch now inside every chip in your phone.",
+        "start": 52.1,
+        "seconds": 5.73,
+        "window": 6.27,
+        "fill": 0.914
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -14.2,
+    "music_under_voice_db": 26.5
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 15.99,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,1033 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 19447,
+  "story": "invention_story",
+  "shape": "build-and-dive",
+  "currency": "USD",
+  "style": {
+    "palette": "night",
+    "genre": "datahall",
+    "key": "E",
+    "bpm": 62,
+    "look": {
+      "stage": "studio",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "draw"
+    }
+  },
+  "arms": {
+    "length": "45-60",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "28"
+  },
+  "hook_style": "question",
+  "cta": "Which invention should we rebuild next? Comment",
+  "feed_id": "2026-11-19-first-transistor",
+  "facts": [
+    {
+      "label": "Year of the first successful semiconductor amplifier (16 December)",
+      "value": 1947,
+      "unit": "year",
+      "as_of": "1947-12-16",
+      "source": "Computer History Museum",
+      "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/"
+    },
+    {
+      "label": "How many times it amplified the input signal, up to",
+      "value": 100,
+      "unit": "count",
+      "as_of": "1947-12-16",
+      "source": "Computer History Museum",
+      "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/",
+      "fixed": true
+    },
+    {
+      "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
+      "value": 76,
+      "unit": "count_billion",
+      "as_of": "2022-09-20",
+      "source": "NVIDIA GeForce News",
+      "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+      "fixed": true
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "press",
+    "sec": 1.0,
+    "words": "The *first* transistor",
+    "tag": "How it started",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Every chip you own is built from a Bell Labs invention.",
+      "events": {
+        "every": {
+          "word": "Every"
+        },
+        "chip": {
+          "word": "chip"
+        },
+        "built": {
+          "word": "built"
+        },
+        "bell": {
+          "word": "Bell"
+        },
+        "invention": {
+          "word": "invention"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "chip"
+        }
+      ],
+      "params": {
+        "component": "TxHook",
+        "place": "a phone on a dark desk, its screen sliding off to show the chip",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "chip",
+            "size": "close"
+          },
+          {
+            "at": "invention",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "every",
+            "what": "the phone's screen slides away, its board and main chip glowing"
+          },
+          {
+            "at": "chip",
+            "what": "the camera pushes down onto the chip, its lid lifting off"
+          },
+          {
+            "at": "built",
+            "what": "the die underneath lights up"
+          },
+          {
+            "at": "bell",
+            "what": "a wave of light ripples across the die"
+          },
+          {
+            "at": "invention",
+            "what": "the die flares, the camera close over it"
+          }
+        ],
+        "things": [
+          "phone",
+          "chip lid",
+          "glowing die",
+          "phone board"
+        ]
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "The transistor. What did the very first one look like?",
+      "events": {
+        "transistor": {
+          "word": "transistor"
+        },
+        "what": {
+          "word": "What"
+        },
+        "first": {
+          "word": "first"
+        },
+        "look": {
+          "word": "look"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "transistor"
+        }
+      ],
+      "params": {
+        "component": "Ask",
+        "place": "deep in the chip: a city of tiny glowing switches",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme"
+          },
+          {
+            "at": "first",
+            "size": "close"
+          },
+          {
+            "at": "look",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "transistor",
+            "what": "a field of tiny switches, one glowing amber, a label writes on"
+          },
+          {
+            "at": "what",
+            "what": "the field dims around the one amber switch"
+          },
+          {
+            "at": "first",
+            "what": "a question mark of light rises over it"
+          },
+          {
+            "at": "look",
+            "what": "the camera pulls back, the question mark pulsing"
+          }
+        ],
+        "things": [
+          "grid of switches",
+          "one amber switch",
+          "question mark of light"
+        ]
+      }
+    },
+    {
+      "id": "lab",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "In {fact1}, John Bardeen and Walter Brattain built it by hand.",
+      "events": {
+        "in": {
+          "word": "In"
+        },
+        "john": {
+          "word": "John"
+        },
+        "walter": {
+          "word": "Walter"
+        },
+        "bardeen": {
+          "word": "Bardeen"
+        },
+        "brattain": {
+          "word": "Brattain"
+        },
+        "built": {
+          "word": "built"
+        },
+        "hand": {
+          "word": "hand"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "john"
+        }
+      ],
+      "params": {
+        "component": "Lab",
+        "place": "Bell Labs, a winter lab bench under a desk lamp",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "bardeen",
+            "size": "medium"
+          },
+          {
+            "at": "hand",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "in",
+            "what": "the lab bench lights up under the lamp, the year on the wall calendar"
+          },
+          {
+            "at": "john",
+            "what": "a Bell Labs sign lights on the wall"
+          },
+          {
+            "at": "walter",
+            "what": "the lamp brightens over the bench"
+          },
+          {
+            "at": "bardeen",
+            "what": "a name plate for John Bardeen slides out on the bench"
+          },
+          {
+            "at": "brattain",
+            "what": "a second plate for Walter Brattain slides out beside it"
+          },
+          {
+            "at": "built",
+            "what": "tweezers, a razor and a gold foil roll roll onto the bench"
+          },
+          {
+            "at": "hand",
+            "what": "close on the tweezers lifting a strip of gold foil"
+          }
+        ],
+        "things": [
+          "lab bench",
+          "desk lamp",
+          "Bell Labs sign",
+          "wall calendar",
+          "two name plates",
+          "tweezers",
+          "gold foil roll"
+        ],
+        "fig": {
+          "year": "{fact1}"
+        }
+      }
+    },
+    {
+      "id": "wedge",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Brattain wrapped gold foil around a plastic wedge and slit it at the tip with a razor.",
+      "events": {
+        "wrapped": {
+          "word": "wrapped"
+        },
+        "gold": {
+          "word": "gold"
+        },
+        "plastic": {
+          "word": "plastic"
+        },
+        "slit": {
+          "word": "slit"
+        },
+        "tip": {
+          "word": "tip"
+        },
+        "around": {
+          "word": "around"
+        },
+        "razor": {
+          "word": "razor"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "glass",
+          "at": "razor"
+        }
+      ],
+      "params": {
+        "component": "Wedge",
+        "place": "close on the bench: a clear plastic triangle on a stand",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "plastic",
+            "size": "close"
+          },
+          {
+            "at": "razor",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "wrapped",
+            "what": "the gold foil strip lifts and curls toward the plastic triangle"
+          },
+          {
+            "at": "gold",
+            "what": "the foil wraps over the triangle's point and down both faces"
+          },
+          {
+            "at": "plastic",
+            "what": "the clear plastic wedge catches the lamp light, a label writes on"
+          },
+          {
+            "at": "slit",
+            "what": "a razor blade swings in over the tip"
+          },
+          {
+            "at": "tip",
+            "what": "the camera dives to the tip of the wedge"
+          },
+          {
+            "at": "around",
+            "what": "the foil folds over the point of the wedge"
+          },
+          {
+            "at": "razor",
+            "what": "the blade cuts a hairline slit; the gold splits into two strips"
+          }
+        ],
+        "things": [
+          "plastic wedge",
+          "gold foil",
+          "razor blade",
+          "stand"
+        ]
+      }
+    },
+    {
+      "id": "press",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Two gold contacts, almost touching, pressed by a spring onto germanium. So how does that do anything?",
+      "events": {
+        "two": {
+          "word": "Two"
+        },
+        "almost": {
+          "word": "almost"
+        },
+        "touching": {
+          "word": "touching"
+        },
+        "spring": {
+          "word": "spring"
+        },
+        "pressed": {
+          "word": "pressed"
+        },
+        "germanium": {
+          "word": "germanium"
+        },
+        "onto": {
+          "word": "onto"
+        },
+        "how": {
+          "word": "how"
+        },
+        "anything": {
+          "word": "anything"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "pressed"
+        }
+      ],
+      "params": {
+        "component": "Press",
+        "place": "the test stand: a spring arm over a grey germanium crystal on a metal base",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "spring",
+            "size": "medium"
+          },
+          {
+            "at": "germanium",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "two",
+            "what": "the two gold strips at the tip glow, a label writes on for each"
+          },
+          {
+            "at": "almost",
+            "what": "a tiny gap between them flashes"
+          },
+          {
+            "at": "touching",
+            "what": "a bracket marks the gap"
+          },
+          {
+            "at": "spring",
+            "what": "a bent wire spring flexes and pushes the wedge down"
+          },
+          {
+            "at": "pressed",
+            "what": "the wedge lowers onto the crystal"
+          },
+          {
+            "at": "germanium",
+            "what": "the grey germanium slab lights where the gold meets it, its label writes on"
+          },
+          {
+            "at": "onto",
+            "what": "a spark flashes where the gold touches the crystal"
+          },
+          {
+            "at": "how",
+            "what": "a question mark of light pulses between the two contacts"
+          },
+          {
+            "at": "anything",
+            "what": "the question mark swells"
+          }
+        ],
+        "things": [
+          "two gold contacts",
+          "gap bracket",
+          "wire spring",
+          "wedge",
+          "germanium slab",
+          "metal base"
+        ]
+      }
+    },
+    {
+      "id": "flow",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "A small voltage on one contact controls the current through the other.",
+      "events": {
+        "small": {
+          "word": "small"
+        },
+        "voltage": {
+          "word": "voltage"
+        },
+        "one": {
+          "word": "one"
+        },
+        "controls": {
+          "word": "controls"
+        },
+        "current": {
+          "word": "current"
+        },
+        "through": {
+          "word": "through"
+        },
+        "other": {
+          "word": "other"
+        }
+      },
+      "transition": "zoom-through",
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "controls"
+        }
+      ],
+      "params": {
+        "component": "Flow",
+        "place": "inside the germanium, cut open under the two contacts",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "small",
+            "size": "close"
+          },
+          {
+            "at": "current",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "small",
+            "what": "the crystal slices open; a small cyan wave pulses on the left wire"
+          },
+          {
+            "at": "voltage",
+            "what": "a voltage meter's needle on the left wire swings"
+          },
+          {
+            "at": "one",
+            "what": "the left contact glows in time with the wave"
+          },
+          {
+            "at": "controls",
+            "what": "the amber current under the right contact swells and shrinks with it"
+          },
+          {
+            "at": "current",
+            "what": "the amber stream through the crystal pulses, the camera pulls back"
+          },
+          {
+            "at": "through",
+            "what": "the stream runs down into the metal base"
+          },
+          {
+            "at": "other",
+            "what": "the right contact flares on each swell"
+          }
+        ],
+        "things": [
+          "cut crystal",
+          "left contact",
+          "right contact",
+          "voltage meter",
+          "pulsing current",
+          "base wire"
+        ]
+      }
+    },
+    {
+      "id": "proof",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "On December sixteenth, a weak signal came out up to {fact2} times stronger.",
+      "events": {
+        "december": {
+          "word": "December"
+        },
+        "weak": {
+          "word": "weak"
+        },
+        "signal": {
+          "word": "signal"
+        },
+        "came": {
+          "word": "came"
+        },
+        "out": {
+          "word": "out"
+        },
+        "up": {
+          "word": "up"
+        },
+        "sixteenth": {
+          "word": "sixteenth"
+        },
+        "stronger": {
+          "word": "stronger"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "came"
+        }
+      ],
+      "params": {
+        "component": "Proof",
+        "place": "an oscilloscope on the lab shelf, its round screen glowing green",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "weak",
+            "size": "close"
+          },
+          {
+            "at": "stronger",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "december",
+            "what": "the scope's screen warms up on the shelf, a calendar page on the shelf flips"
+          },
+          {
+            "at": "weak",
+            "what": "a small wiggle crawls across the screen"
+          },
+          {
+            "at": "signal",
+            "what": "the wiggle travels down a wire into the wedge"
+          },
+          {
+            "at": "came",
+            "what": "a tall wave bursts out on the second trace"
+          },
+          {
+            "at": "out",
+            "what": "the tall wave doubles in height and the wedge flashes"
+          },
+          {
+            "at": "up",
+            "what": "the gain plate on the scope lights and starts counting"
+          },
+          {
+            "at": "sixteenth",
+            "what": "the scope's screen brightens green"
+          },
+          {
+            "at": "stronger",
+            "what": "the gain figure counts up on the scope's dial plate"
+          }
+        ],
+        "things": [
+          "oscilloscope",
+          "small wave",
+          "tall wave",
+          "wire to the wedge",
+          "gain plate"
+        ],
+        "fig": {
+          "gain": "{fact2}"
+        }
+      }
+    },
+    {
+      "id": "switch",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "Why does it matter? The same trick is a switch: a small signal turns a big current on or off.",
+      "events": {
+        "why": {
+          "word": "Why"
+        },
+        "matter": {
+          "word": "matter"
+        },
+        "same": {
+          "word": "same"
+        },
+        "trick": {
+          "word": "trick"
+        },
+        "switch": {
+          "word": "switch"
+        },
+        "small": {
+          "word": "small"
+        },
+        "big": {
+          "word": "big"
+        },
+        "on": {
+          "word": "on"
+        },
+        "off": {
+          "word": "off"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "on"
+        },
+        {
+          "kind": "tick",
+          "at": "off"
+        }
+      ],
+      "params": {
+        "component": "Switch",
+        "place": "a dark bench, the transistor wired to a lamp",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "switch",
+            "size": "close"
+          },
+          {
+            "at": "off",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "why",
+            "what": "the camera swings to the transistor wired to a dark bulb"
+          },
+          {
+            "at": "matter",
+            "what": "the bulb's filament glints"
+          },
+          {
+            "at": "same",
+            "what": "the transistor's contacts glow"
+          },
+          {
+            "at": "trick",
+            "what": "the bulb flickers"
+          },
+          {
+            "at": "switch",
+            "what": "a toggle in the signal wire clicks"
+          },
+          {
+            "at": "small",
+            "what": "a small pulse runs into the contact"
+          },
+          {
+            "at": "big",
+            "what": "the big current lights the bulb"
+          },
+          {
+            "at": "on",
+            "what": "the bulb blazes"
+          },
+          {
+            "at": "off",
+            "what": "the pulse stops and the bulb goes dark"
+          }
+        ],
+        "things": [
+          "transistor",
+          "signal wire",
+          "toggle",
+          "bulb",
+          "glowing current"
+        ]
+      }
+    },
+    {
+      "id": "dive",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "Shrink it, copy it, and one NVIDIA Ada Lovelace graphics chip holds up to {fact3} of them.",
+      "events": {
+        "shrink": {
+          "word": "Shrink"
+        },
+        "copy": {
+          "word": "copy"
+        },
+        "nvidia": {
+          "word": "NVIDIA"
+        },
+        "lovelace": {
+          "word": "Lovelace"
+        },
+        "one": {
+          "word": "one"
+        },
+        "graphics": {
+          "word": "graphics"
+        },
+        "chip": {
+          "word": "chip"
+        },
+        "holds": {
+          "word": "holds"
+        },
+        "up": {
+          "word": "up"
+        },
+        "mid": {
+          "word": 15
+        },
+        "them": {
+          "word": "them"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "nvidia"
+        },
+        {
+          "kind": "swell",
+          "at": "holds"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "a graphics card on a dark stage, dived into its chip",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "extreme"
+          },
+          {
+            "at": "copy",
+            "size": "medium"
+          },
+          {
+            "at": "chip",
+            "size": "wide"
+          },
+          {
+            "at": "holds",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "shrink",
+            "what": "the transistor shrinks to a glowing dot"
+          },
+          {
+            "at": "copy",
+            "what": "the dot copies into rows, then a field of thousands"
+          },
+          {
+            "at": "nvidia",
+            "what": "the field pulls back into a die; a graphics card fades up around it"
+          },
+          {
+            "at": "lovelace",
+            "what": "the chip's generation name writes on under the card's name"
+          },
+          {
+            "at": "one",
+            "what": "the field's edges snap into a square"
+          },
+          {
+            "at": "graphics",
+            "what": "the card's fans spin"
+          },
+          {
+            "at": "chip",
+            "what": "the chip's die glows on the open card"
+          },
+          {
+            "at": "holds",
+            "what": "the camera dives back into the die, a wave of light sweeping the switches, the count climbing on it"
+          },
+          {
+            "at": "up",
+            "what": "the count starts climbing on the die"
+          },
+          {
+            "at": "mid",
+            "what": "a second wave of light sweeps the switches"
+          },
+          {
+            "at": "them",
+            "what": "the count lands and the whole die flares"
+          }
+        ],
+        "things": [
+          "one transistor",
+          "field of switches",
+          "graphics card",
+          "fans",
+          "die",
+          "count"
+        ],
+        "fig": {
+          "count": "{fact3}"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "All from gold foil on a plastic wedge: the switch now inside every chip in your phone.",
+      "events": {
+        "gold": {
+          "word": "gold"
+        },
+        "plastic": {
+          "word": "plastic"
+        },
+        "switch": {
+          "word": "switch"
+        },
+        "now": {
+          "word": "now"
+        },
+        "every": {
+          "word": "every"
+        },
+        "inside": {
+          "word": "inside"
+        },
+        "phone": {
+          "word": "phone"
+        }
+      },
+      "transition": "cut",
+      "sfx": [],
+      "params": {
+        "component": "TxLoop",
+        "place": "the phone on the dark desk again",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "now",
+            "size": "medium"
+          },
+          {
+            "at": "phone",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "gold",
+            "what": "the gold wedge stands small and glowing"
+          },
+          {
+            "at": "plastic",
+            "what": "the wedge turns, its gold catching the light"
+          },
+          {
+            "at": "switch",
+            "what": "the wedge flashes and sinks into the chip"
+          },
+          {
+            "at": "now",
+            "what": "the chip settles onto a phone's board"
+          },
+          {
+            "at": "every",
+            "what": "the phone's back slides closed"
+          },
+          {
+            "at": "inside",
+            "what": "the chip's die glows under the wedge"
+          },
+          {
+            "at": "phone",
+            "what": "the camera settles on the opening shot of the phone"
+          }
+        ],
+        "things": [
+          "gold wedge",
+          "chip",
+          "phone board",
+          "phone"
+        ]
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}
