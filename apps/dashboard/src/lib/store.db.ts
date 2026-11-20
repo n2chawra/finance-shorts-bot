@@ -38,7 +38,7 @@ const addDays = (day: string, n: number) => new Date(Date.parse(`${day}T00:00:00
 const dayKey = (d: Date) => d.toISOString().slice(0, 10); // VideoStat.day is a DATE (UTC midnight)
 
 const withRelations = { topic: true, upload: { include: { stats: true } } } satisfies Prisma.VideoInclude;
-type VideoRow = Prisma.VideoGetPayload<{ include: typeof withRelations }>;
+type VideoRow = Omit<Prisma.VideoGetPayload<{ include: typeof withRelations }>, "script"> & { script?: Prisma.JsonValue }; // script only on the video page (lib/prisma.ts)
 
 /** The Shorts and long-video research feeds, by topic id (for each video's origin). */
 async function loadFeeds(): Promise<Map<string, Record<string, unknown>>> {
@@ -48,7 +48,8 @@ async function loadFeeds(): Promise<Map<string, Record<string, unknown>>> {
 
 function toVideo(v: VideoRow, feeds?: Map<string, Record<string, unknown>>): Video {
   const style = (v.style ?? {}) as Partial<Video["style"]>;
-  const script = (v.script && typeof v.script === "object" ? v.script : {}) as { feed_id?: unknown };
+  const raw = v.script; // only the video page loads it (lib/prisma.ts)
+  const script = (raw && typeof raw === "object" ? raw : {}) as { feed_id?: unknown };
   const feedId = style.source?.feedId ?? (typeof script.feed_id === "string" ? script.feed_id : null);
   return {
     id: v.id, templateId: v.templateId, topic: { title: v.topic.title, category: v.topic.category }, status: v.status,
@@ -143,6 +144,7 @@ export async function getVideo(id: string): Promise<VideoDetail | null> {
   await liveCounters(); // fresh YouTube counters first, so this response is current
   const v = await prisma.video.findFirst({
     where: { id, ...live },
+    omit: { script: false },
     include: { ...withRelations, qaChecks: true, agentRuns: { orderBy: [{ startedAt: "asc" }, { id: "asc" }] } },
   });
   if (!v) return null;

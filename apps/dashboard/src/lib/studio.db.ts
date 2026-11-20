@@ -68,7 +68,14 @@ const published = (format: Fmt) => ({ deletedAt: null, status: "published" as co
 type Loaded = Awaited<ReturnType<typeof loadVideos>>[number];
 const publishedAt = (v: Loaded) => v.upload!.publishAt;
 async function loadVideos(format: Fmt) {
-  return prisma.video.findMany({ where: published(format), include: { topic: true, upload: { include: { stats: { orderBy: { day: "asc" } } } } } });
+  const vs = await prisma.video.findMany({ where: published(format), include: { topic: true, upload: { include: { stats: { orderBy: { day: "asc" } } } } } });
+  // only the two script fields the attributes read, not the whole 13-17 KB script (Supabase egress, lib/prisma.ts)
+  const ids = vs.map((v) => v.id);
+  const bits = ids.length
+    ? await prisma.$queryRaw<{ id: string; story: string | null; look: unknown }[]>`SELECT id, script->>'story' AS story, script->'style'->'look' AS look FROM "Video" WHERE id = ANY(${ids})`
+    : [];
+  const by = new Map(bits.map((b) => [b.id, b]));
+  return vs.map((v) => ({ ...v, script: { story: by.get(v.id)?.story ?? undefined, style: { look: by.get(v.id)?.look as string | { name?: string } | undefined } } }));
 }
 
 /** One video's row in the content table, from its daily stats and live counters. */

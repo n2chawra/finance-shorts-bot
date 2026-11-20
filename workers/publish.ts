@@ -214,20 +214,21 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
   // queue order: the editor's ranking, or the owner's own order where they dragged it
   const order = [{ pickedAt: { sort: "asc" as const, nulls: "last" as const } }, { queuePosition: "asc" as const }, { createdAt: "asc" as const }];
   const channelId = run.channelId;
+  // no `script` (13-17 KB a video, never read here): this runs every 20 min per channel and format (Supabase egress, 2026-11-20)
   let pending = null, video = null;
   if (pick === "pending-now") {
     // only "Upload now" clicks and retries whose time has come; a retry for a slot still ahead waits for it
-    pending = await prisma.upload.findFirst({ where: { state: "pending", publishAt: { lte: new Date(Date.now() + MIN_LEAD_MINUTES * 60_000) }, video: { deletedAt: null, channelId, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
+    pending = await prisma.upload.findFirst({ where: { state: "pending", publishAt: { lte: new Date(Date.now() + MIN_LEAD_MINUTES * 60_000) }, video: { deletedAt: null, channelId, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: { omit: { script: true } } } });
     if (!pending) return false;
     video = pending.video;
   } else if (pick === "urgent") {
-    const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, channelId, format }, orderBy: order });
+    const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, channelId, format }, orderBy: order, omit: { script: true } });
     video = queued.find((v) => isUrgent(v.style, istDay(slot))) ?? null;
     if (!video) { console.log(`No breaking or trending ${format} is waiting: the trend slot ${slot.toISOString()} stays empty.`); return false; }
   } else {
     // a video sent with "Upload now", or a retry of a failed attempt, goes first; then the queue
-    pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, channelId, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: true } });
-    video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, channelId, format }, orderBy: order });
+    pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, channelId, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: { omit: { script: true } } } });
+    video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, channelId, format }, orderBy: order, omit: { script: true } });
     if (!video) { console.log(`::warning::No ${format} video is queued. Nothing to upload for ${slot.toISOString()}.`); return false; }
   }
 

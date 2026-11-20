@@ -170,7 +170,7 @@ export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<
   const lessonsFile = cpath(root, "generator", "prompts", "lessons.md");
   if (existsSync(lessonsFile)) {
     const value = { lessons: parseLessons(readFileSync(lessonsFile, "utf8")) } as Prisma.InputJsonValue;
-    await prisma.repoDoc.upsert({ where: { key: "lessons" }, update: { value }, create: { key: "lessons", value } });
+    await prisma.repoDoc.upsert({ where: { key: "lessons" }, update: { value }, create: { key: "lessons", value }, select: { key: true } });
   }
   for (const [key, rel] of Object.entries(DOCS)) {
     const file = cpath(root, rel);
@@ -178,7 +178,7 @@ export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<
     try {
       const raw = readJson(file);
       const value = (key === "topicFeed" ? withUsage(raw, root) : raw) as Prisma.InputJsonValue;
-      await prisma.repoDoc.upsert({ where: { key }, update: { value }, create: { key, value } });
+      await prisma.repoDoc.upsert({ where: { key }, update: { value }, create: { key, value }, select: { key: true } });
     } catch (e) {
       console.error(`::warning::${rel}: ${e instanceof Error ? e.message : e}`);
     }
@@ -205,7 +205,7 @@ export async function applyTemplateDecisions(prisma: PrismaClient, root: string)
   }
   if (done.length) {
     const value = [...applied] as Prisma.InputJsonValue;
-    await prisma.repoDoc.upsert({ where: { key: "appliedTemplateDecisions" }, update: { value }, create: { key: "appliedTemplateDecisions", value } });
+    await prisma.repoDoc.upsert({ where: { key: "appliedTemplateDecisions" }, update: { value }, create: { key: "appliedTemplateDecisions", value }, select: { key: true } });
   }
   return done;
 }
@@ -218,6 +218,7 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
   const published = await prisma.video.findMany({
     where: { status: "published", deletedAt: null, upload: { isNot: null } },
     include: { topic: true, upload: { include: { stats: true } } },
+    omit: { script: true }, // every ingest run; the script is never read here (Supabase egress)
     orderBy: { createdAt: "asc" },
   });
   // views 48 hours after publishing from the hourly public-counter snapshots: no Analytics lag, so the

@@ -9,12 +9,16 @@ import { CREATE_SCOPED, SCOPED_OPS, SCOPES, currentChannel, docWhere, plainKey }
  * the pooler, the pg driver one. TLS as before (the pooler's certificate is Supabase-signed).
  */
 const create = () => new PrismaClient({
+  // a video's script is 13-17 KB of JSON that only the video page and Studio's attributes read: leaving it out
+  // of every list and poll took Supabase egress from ~1 GB a day back under the free 5 GB a month (2026-11-20).
+  // Ask for it with `omit: { script: false }`.
+  omit: { video: { script: true } },
   // keep connections between the dashboard's 30 s polls: a new one costs ~4 round trips (TCP, TLS, auth)
   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL, max: 12, idleTimeoutMillis: 300_000, ssl: { rejectUnauthorized: false } }),
 });
 
 // one client per server process; Next's dev reloads would otherwise open a new pool each time
-const g = globalThis as unknown as { __prisma?: PrismaClient };
+const g = globalThis as unknown as { __prisma?: ReturnType<typeof create> };
 
 /** The raw client: every channel's rows (the Channels page and OAuth use it). */
 export const prismaAll = g.__prisma ?? create();
