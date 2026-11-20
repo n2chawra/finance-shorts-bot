@@ -20,6 +20,7 @@ import { TECH3D_DEMO, Tech3DDemo } from "./three/demo/Tech3DDemo";
 import { TECH3D_DEMO2, Tech3DDemo2 } from "./three/demo/Tech3DDemo2";
 import { DocDemos } from "./doc/Demo";
 import { StageDemos } from "./doc/demos/StageDemo";
+import { MontageDemos } from "./doc/demos/MontageDemo";
 import { DocCaptionDemo } from "./fx/chunkCaptions.demo";
 import { DocAvatar, DocBanner } from "./sheets/DocBrand";
 
@@ -42,6 +43,7 @@ export const Root: React.FC = () => (
     {/* the documentary editor (src/doc, business documentaries channel): a test reel in both formats */}
     <DocDemos />
     <StageDemos />
+    <MontageDemos />
     <DocCaptionDemo />
     <Still id="DocAvatar" component={DocAvatar} width={800} height={800} />
     <Still id="DocBanner" component={DocBanner} width={2560} height={1440} />
