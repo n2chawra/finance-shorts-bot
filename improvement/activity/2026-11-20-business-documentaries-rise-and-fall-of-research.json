@@ -1,0 +1,22 @@
+{
+  "agent": "research",
+  "channel": "business-documentaries-rise-and-fall-of",
+  "day": "2026-11-20",
+  "startedAt": "2026-11-19T19:32:34Z",
+  "finishedAt": "2026-11-19T19:37:32Z",
+  "summary": "First research night for Craze & Crash (demand). Added 4 sourced topics from this month's breakouts: Pizza Hut vs Domino's (a long film and a Short), Gillette's $8B writedown, and Novo Nordisk's Ozempic rise and fall as a Short.",
+  "decision": "acted",
+  "why": "Nothing is published yet, so demand comes from the niche scan: 653K views on a 10.8K channel for Gillette (60x), 257K on 10.8K for Pizza Hut (24x), 469K on 36.1K for the Novo Short (13x). Business war had 1 topic in the feed and no Short; brand backlash is the recipe's gap. Tata Nano was skipped (India-only brand under the 1M a local topic needs), Prime too (open lawsuits).",
+  "findings": [
+    {"title": "Gillette: 653K views on a 10.8K channel", "detail": "P&G wrote $8.0B off Gillette in 2019 and blamed currency, Dollar Shave Club and Harry's, and men shaving less, not the ad. Topic added.", "link": "https://www.youtube.com/watch?v=Stz7bzbHRV4"},
+    {"title": "Pizza Hut sold for $2.7B after Domino's took the crown", "detail": "US share 16.9% to 12.1% (2015-2025) while Domino's went 14.2% to 23.4%. A long topic and a Short.", "link": "https://restaurantdive.com/news/yum-brands-sells-pizza-hut-27-billion/807829/"},
+    {"title": "Novo Nordisk shed about $475B from a $650B+ peak", "detail": "The Ozempic maker's fall, as a Short (reference: 469K on a 36.1K channel).", "link": "https://finance.yahoo.com/news/novo-nordisks-475-billion-rise-165509914.html"},
+    {"title": "Long Shorts raise the ceiling, not the median", "detail": "9 of 19 on-niche breakout Shorts run 100-180 s, but that band's median is 2,964 views vs 15,920 at 35-60 s. Added to the waiting length challenger."}
+  ],
+  "changes": [
+    {"title": "4 topics in the feed", "detail": "research/topics.json: 2 Shorts (scores 6.97 and 6.71), 2 long topics for Scout.", "branch": "agent/research/2026-11-20/business-documentaries-rise-and-fall-of"},
+    {"title": "Proposal: long topics never reach the long state", "detail": "13 long topics sit in research/topics.json while the long state reads longform/topics.json (1 topic).", "branch": "agent/research/2026-11-20/business-documentaries-rise-and-fall-of"}
+  ],
+  "nextCheck": "2026-11-21",
+  "links": [{"label": "Report", "url": "channels/business-documentaries-rise-and-fall-of/research/2026-11-20.md"}]
+}

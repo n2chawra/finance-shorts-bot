@@ -1,6 +1,6 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 2,
+  "open": 1,
   "notes": [
     {
       "id": "cmwn0yhck0001jj0928f6obym",
@@ -8,7 +8,7 @@
       "area": "topic",
       "text": "Make sure you choose topics which are gaining traction. Because what's in demand will be watched other does not matter how good will be not seen by people.",
       "status": "open",
-      "response": "scout partly → research: Long topics now ranked by traction: I added the rocket-engine and NVIDIA-chip topics from the niche's fastest-growing long videos (66K and 24K views a day) and set high priority on the four whose references are growing fastest; Shorts topics are research's part. · waiting for research",
+      "response": "improver handed → research: Which Shorts topics we pick (and whether they're gaining traction) is the research agent's lane; Scout already did the long-video part. · research partly → improver: Tonight's 4 new Shorts topics all come from references rising right now (maglev 234K views a day, bicycle 130K, generator 109K, phone mic 338K), with views a day recorded on each; the improver's part is to rank the feed by that traction (proposal tech-topic-traction-score). · scout partly → research: Long topics now ranked by traction: I added the rocket-engine and NVIDIA-chip topics from the niche's fastest-growing long videos (66K and 24K views a day) and set high priority on the four whose references are growing fastest; Shorts topics are research's part. · waiting for research, improver",
       "at": "2026-11-19T04:02:55.701Z",
       "video": {
         "id": "v-20261119-01",
@@ -26,8 +26,8 @@
       "kind": "improve",
       "area": "pace",
       "text": "Just increase the pace a little bit. Everything else is superb",
-      "status": "open",
-      "response": "scout handed → improver: Shorts pace (voice speed and beat length) is a recipe setting in the improver's lane. · waiting for improver",
+      "status": "addressed",
+      "response": "improver fixed: Done for every Short, no test: the narrator now speaks at 1.0 instead of 0.92 (about 164 words a minute, up from 151), and writers count words at that pace. (8cae8f7) · scout handed → improver: Shorts pace (voice speed and beat length) is a recipe setting in the improver's lane.",
       "at": "2026-11-19T04:01:31.223Z",
       "video": {
         "id": "v-20261119-01",

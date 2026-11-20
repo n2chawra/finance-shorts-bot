@@ -1,0 +1,340 @@
+{
+  "id": "v-20261120-04",
+  "createdAt": "2026-11-19T23:41:03.211872+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why did Britain hide a power station inside a mountain?",
+    "category": "energy",
+    "reach": "global",
+    "feed_id": "2026-11-20-dinorwig-electric-mountain"
+  },
+  "title": "Why did Britain hide a power station inside a mountain?",
+  "description": "Why is there a power station hidden deep inside a mountain in Wales?\nDinorwig, inside Elidir Fawr in Snowdonia, waits in the dark for one moment every night.\nSources: Wikipedia, Dinorwig Power Station (Nov 2026).\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#Dinorwig",
+    "#Wales",
+    "#Geography",
+    "#Maps"
+  ],
+  "hookStyle": "question",
+  "cta": "Kettle or mountain: which surprised you more? Comment",
+  "seed": 38417,
+  "style": {
+    "palette": "sky",
+    "genre": "explorer",
+    "key": "E",
+    "bpm": 76,
+    "look": {
+      "stage": "night",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "drop"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why did Britain hide a whole power station inside a mountain in Wales?",
+        "start": 0.3,
+        "seconds": 3.02,
+        "window": 3.67,
+        "fill": 0.823
+      },
+      {
+        "scene": "cave",
+        "text": "Under the grass of Elidir Fawr, in Snowdonia, there is a cave 51 m high, with giant machines spinning in the dark.",
+        "start": 3.97,
+        "seconds": 5.35,
+        "window": 5.9,
+        "fill": 0.907
+      },
+      {
+        "scene": "lakes",
+        "text": "On top sits one lake, Marchlyn Mawr. At its foot sits another, Llyn Peris. And tunnels run through the rock between them.",
+        "start": 9.87,
+        "seconds": 5.31,
+        "window": 5.97,
+        "fill": 0.889
+      },
+      {
+        "scene": "night",
+        "text": "At night, while Britain sleeps and power is cheap, the machines pump water uphill, from the low lake into the high one.",
+        "start": 15.83,
+        "seconds": 4.88,
+        "window": 5.53,
+        "fill": 0.882
+      },
+      {
+        "scene": "battery",
+        "text": "So why pump a lake uphill? Because now the whole mountain is a battery, full of water, waiting.",
+        "start": 21.37,
+        "seconds": 4.17,
+        "window": 4.83,
+        "fill": 0.863
+      },
+      {
+        "scene": "kettles",
+        "text": "And what it waits for is a kettle. When a big final ends on TV, millions of people get up and switch one on, all at once.",
+        "start": 26.2,
+        "seconds": 5.47,
+        "window": 6.13,
+        "fill": 0.892
+      },
+      {
+        "scene": "drop",
+        "text": "And then? The gates open. The water falls through the mountain, the machines spin, and out come 1,800 megawatts.",
+        "start": 32.33,
+        "seconds": 5.5,
+        "window": 6.17,
+        "fill": 0.891
+      },
+      {
+        "scene": "hours",
+        "text": "It keeps that going for 6 hours, until the top lake is nearly empty.",
+        "start": 38.5,
+        "seconds": 2.89,
+        "window": 3.53,
+        "fill": 0.819
+      },
+      {
+        "scene": "hidden",
+        "text": "It opened in 1984, built inside the rock, so the national park above still looks wild.",
+        "start": 42.03,
+        "seconds": 4.51,
+        "window": 5.17,
+        "fill": 0.872
+      },
+      {
+        "scene": "payoff",
+        "text": "But its real secret is speed: with its machines already spinning, it reaches full power in about 16 seconds, long before a single kettle boils.",
+        "start": 47.2,
+        "seconds": 6.62,
+        "window": 7.3,
+        "fill": 0.907
+      },
+      {
+        "scene": "loop",
+        "text": "Kettle or mountain: which one surprised you more? Tell me in the comments. And next time you boil one, think of that mountain in Wales.",
+        "start": 54.5,
+        "seconds": 5.76,
+        "window": 6.43,
+        "fill": 0.896
+      }
+    ]
+  },
+  "durationSec": 61,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.5,
+    "lufs": -14.0,
+    "music_under_voice_db": 30.4
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "All 5 facts confirmed on en.wikipedia.org/wiki/Dinorwig_Power_Station: six 300 MW units = 1,800 MW installed; zero to 1,800 MW in ~16 s with all six units synchronised and spinning (script says 'about' and 'machines already spinning'); up to six hours at full flow; cavern 51 m tall; opened/commissioned 1984 (infobox). Verify list ok: TV pickup up to 2,800 MW from millions of kettles; Marchlyn Mawr 636 m upper, Llyn Peris ~100 m lower; no specific match named. Also confirmed: inside Elidir Fawr to preserve Snowdonia National Park, off-peak/night pumping of cheap energy. Description ends with the channel disclaimer. Notes: 'keeps that going for 6 hours' is the article's 'up to six hours'; max sustained supply is 1,728 MW vs 1,800 MW installed (the 16 s figure is stated as 1,800 MW, so acceptable)."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: lakes is now a side cut-through of Elidir Fawr (new picture, LLYN PERIS clear of captions at 15s), hidden beat shows OPENED 1984 plaque and the grassed-over hall outline, cavern is a torn rock opening with housed turbines, thumbnail at 9s shows the lit hall; all on the map but one beat, disclaimer on the last frames, loop and pick-one ending fine."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:19:43.747653+00:00",
+      "finishedAt": "2026-11-19T23:19:43.747653+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-19T23:20:58.828170+00:00",
+      "finishedAt": "2026-11-19T23:20:58.828170+00:00",
+      "notes": [
+        "beat 'hook': moment at 'wales' is not one of this beat's events (name the word in `events` first)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-19T23:21:04.321366+00:00",
+      "finishedAt": "2026-11-19T23:21:04.321366+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance",
+        "note: beat 'drop' opens like a line in one of the last scripts ('so what happens'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-19T23:21:07.845114+00:00",
+      "finishedAt": "2026-11-19T23:21:07.845114+00:00",
+      "notes": [
+        "the source line 'Data: Wikipedia, Dinorwig Power Station · Nov 2026' is too wide for the frame (1241 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'Wikipedia'), one name per publisher"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:21:11.403316+00:00",
+      "finishedAt": "2026-11-19T23:21:11.403316+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:21:49.454842+00:00",
+      "finishedAt": "2026-11-19T23:21:49.454842+00:00",
+      "notes": [
+        "All 5 facts confirmed on en.wikipedia.org/wiki/Dinorwig_Power_Station: six 300 MW units = 1,800 MW installed; zero to 1,800 MW in ~16 s with all six units synchronised and spinning (script says 'about' and 'machines already spinning'); up to six hours at full flow; cavern 51 m tall; opened/commissioned 1984 (infobox). Verify list ok: TV pickup up to 2,800 MW from millions of kettles; Marchlyn Mawr 636 m upper, Llyn Peris ~100 m lower; no specific match named. Also confirmed: inside Elidir Fawr to preserve Snowdonia National Park, off-peak/night pumping of cheap energy. Description ends with the channel disclaimer. Notes: 'keeps that going for 6 hours' is the article's 'up to six hours'; max sustained supply is 1,728 MW vs 1,800 MW installed (the 16 s figure is stated as 1,800 MW, so acceptable)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-19T23:28:45.261486+00:00",
+      "finishedAt": "2026-11-19T23:29:57.583382+00:00",
+      "notes": [
+        "4 of 14 stills are mostly empty background (at 5 s, 10 s, 20 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: the turn starts at 42% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:30:51.510219+00:00",
+      "finishedAt": "2026-11-19T23:31:35.577053+00:00",
+      "notes": [
+        "61 s, sky/explorer (preview only)",
+        "note: the turn starts at 42% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-19T23:32:32.152224+00:00",
+      "finishedAt": "2026-11-19T23:32:32.152224+00:00",
+      "notes": [
+        "[script] 15.0s (lakes): the LLYN PERIS lake label sits on the caption line and runs into the caption word 'them.'; move the low lake/label up (or the camera) in Lakes.tsx so the label clears the caption band.",
+        "[script] 5.0s (cave) and 10.0s (lakes): two beats in a row are the same picture, the same top-down mountain with the same contour rings, triangle, lakes and trees at the same size. 45.0s (hidden) repeats it again. Give lakes a different shot (a side cut-through of the mountain showing both lakes and the tunnel, or a low angle) so each beat reads as a new picture.",
+        "[script] 45.0s (hidden, 'built inside the rock, so the national park above still looks wild'): the still is a pile of grey boulders with two red lines over the mountain; it doesn't show the park staying wild above a hidden plant, and no 1984 is on a thing in the place. Show the cutaway: the wild park on the surface (sheep, trees, park sign) with the plant hidden below, and the year on a plaque/sign.",
+        "[script] 35.0s (drop) and the thumbnail: the cavern is a floating dark rounded card laid over the map with a row of fan icons, not a place; open the mountain's side (a cutaway into the rock) so the turbines sit inside the mountain.",
+        "[script] Thumbnail (thumbnail.sec 4.5, cave): mid-build. The CAVE HEIGHT 51 m sign stands over an empty black box (the turbines haven't appeared yet), so the main object is a void. Move thumbnail.sec to after 'dark' (~8.5 s) when the cavern is lit and the turbines spin."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-19T23:34:07.484628+00:00",
+      "finishedAt": "2026-11-19T23:34:50.744806+00:00",
+      "notes": [
+        "text 'MARCHLYN MAWR' at 13.7 s runs outside the frame",
+        "note: the turn starts at 42% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:34:56.173815+00:00",
+      "finishedAt": "2026-11-19T23:35:38.277630+00:00",
+      "notes": [
+        "61 s, sky/explorer (preview only)",
+        "note: the turn starts at 42% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:35:52.103736+00:00",
+      "finishedAt": "2026-11-19T23:36:34.985795+00:00",
+      "notes": [
+        "61 s, sky/explorer (preview only)",
+        "note: the turn starts at 42% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:36:59.072391+00:00",
+      "finishedAt": "2026-11-19T23:36:59.072391+00:00",
+      "notes": [
+        "Re-review after fixes: lakes is now a side cut-through of Elidir Fawr (new picture, LLYN PERIS clear of captions at 15s), hidden beat shows OPENED 1984 plaque and the grassed-over hall outline, cavern is a torn rock opening with housed turbines, thumbnail at 9s shows the lit hall; all on the map but one beat, disclaimer on the last frames, loop and pick-one ending fine."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:37:09.174274+00:00",
+      "finishedAt": "2026-11-19T23:40:56.553610+00:00",
+      "notes": [
+        "61 s, sky/explorer, peak -1.0 dB, mean -15.5 dB",
+        "note: the turn starts at 42% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-19T23:41:03.211980+00:00",
+      "finishedAt": "2026-11-19T23:41:03.211980+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261120-04",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261120-04"
+  }
+}

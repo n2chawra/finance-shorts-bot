@@ -3271,6 +3271,285 @@
       ],
       "commit": "cd618fcf7b8576fbc8b0ff1d972fb036eeae84c8",
       "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44460214255"
+    },
+    {
+      "at": "2026-11-19T16:38:14+00:00",
+      "dayIst": "2026-11-19",
+      "agent": "auditor",
+      "branch": "agent/auditor/2026-11-20",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/notifications/auditor.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/auditor.json",
+        "channels/paisa-panchayat/analysis/videos.json",
+        "channels/paisa-panchayat/feedback-acks/auditor.json",
+        "channels/paisa-panchayat/notifications/auditor.json",
+        "improvement/activity/2026-11-20-auditor.json",
+        "improvement/auditor/2026-11-20.md",
+        "improvement/auditor/backlog.json",
+        "improvement/auditor/state.json",
+        "workers/lib/quota.ts",
+        "workers/tests/quota.test.ts"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44568219362"
+    },
+    {
+      "at": "2026-11-19T16:55:07+00:00",
+      "dayIst": "2026-11-19",
+      "agent": "research",
+      "branch": "agent/research/2026-11-20",
+      "result": "blocked",
+      "reasons": [
+        "the research agent already merged 2 changes today"
+      ],
+      "files": [
+        "channels/paisa-panchayat/feedback-acks/research.json",
+        "channels/paisa-panchayat/notifications/research.json",
+        "channels/paisa-panchayat/research/2026-11-20.md",
+        "channels/paisa-panchayat/research/seen.json",
+        "channels/paisa-panchayat/research/topics.json",
+        "improvement/activity/2026-11-20-research.json"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44571389433"
+    },
+    {
+      "at": "2026-11-19T17:27:53+00:00",
+      "dayIst": "2026-11-19",
+      "agent": "improver",
+      "branch": "agent/improver/2026-11-19",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/journal.md",
+        "channels/business-documentaries-rise-and-fall-of/notifications/improver.json",
+        "channels/geography-maps-geopolitical-mysteries/changes.json",
+        "channels/geography-maps-geopolitical-mysteries/cycle/backlog.json",
+        "channels/geography-maps-geopolitical-mysteries/experiment-log.json",
+        "channels/geography-maps-geopolitical-mysteries/experiments.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/improver.json",
+        "channels/geography-maps-geopolitical-mysteries/journal.md",
+        "channels/geography-maps-geopolitical-mysteries/notifications/improver.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/cycle/backlog.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/experiment-log.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/experiments.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/feedback-acks/improver.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/journal.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/notifications/improver.json",
+        "channels/paisa-panchayat/experiment-log.json",
+        "channels/paisa-panchayat/experiments.json",
+        "channels/paisa-panchayat/feedback-acks/improver.json",
+        "channels/paisa-panchayat/journal.md",
+        "channels/paisa-panchayat/notifications/improver.json",
+        "channels/paisa-panchayat/weekly/impact.json",
+        "generator/experiments.py",
+        "generator/prompts/director.md",
+        "generator/run.py",
+        "generator/tests/test_experiment_adherence.py",
+        "improvement/activity/2026-11-19-improver.json",
+        "remotion/src/Root.tsx",
+        "remotion/src/compositions/StoryVideo.tsx",
+        "remotion/src/contract/flags.ts",
+        "remotion/src/flat/README.md",
+        "remotion/src/flat/flags.tsx",
+        "remotion/src/flat/map.tsx",
+        "remotion/src/sheets/MapSheet.tsx",
+        "remotion/test/flags.test.ts",
+        "renderer/tests/test_timeline.py",
+        "renderer/timeline/build.py"
+      ],
+      "commit": "4916da4959a2af998685bcee3a23e5f098253fbd",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44575066048"
+    },
+    {
+      "at": "2026-11-19T17:35:38+00:00",
+      "dayIst": "2026-11-19",
+      "agent": "improver",
+      "branch": "agent/improver/2026-11-19",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/geography-maps-geopolitical-mysteries/changes.json",
+        "channels/geography-maps-geopolitical-mysteries/cycle/backlog.json",
+        "channels/geography-maps-geopolitical-mysteries/experiment-log.json",
+        "channels/geography-maps-geopolitical-mysteries/experiments.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/improver.json",
+        "channels/geography-maps-geopolitical-mysteries/journal.md",
+        "channels/geography-maps-geopolitical-mysteries/notifications/improver.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/changes.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/cycle/backlog.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/experiment-log.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/experiments.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/feedback-acks/improver.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/journal.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/notifications/improver.json",
+        "channels/paisa-panchayat/changes.json",
+        "channels/paisa-panchayat/cycle/backlog.json",
+        "channels/paisa-panchayat/cycle/recipe.json",
+        "channels/paisa-panchayat/experiments.json",
+        "channels/paisa-panchayat/feedback-acks/improver.json",
+        "channels/paisa-panchayat/journal.md",
+        "channels/paisa-panchayat/notifications/improver.json",
+        "generator/pack.py",
+        "generator/prompts/checklist.md",
+        "generator/prompts/director.md",
+        "generator/prompts/writer.md",
+        "improvement/activity/2026-11-19-improver.json",
+        "remotion/src/Root.tsx",
+        "remotion/src/flat/README.md",
+        "remotion/src/flat/flags.tsx",
+        "remotion/src/flat/map.tsx",
+        "remotion/src/sheets/FlagSheet.tsx",
+        "remotion/src/sheets/MapSheet.tsx",
+        "renderer/tests/test_timeline.py",
+        "renderer/timeline/build.py"
+      ],
+      "commit": "903c616e5d57d81ea9218107b7993c71305504b6",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44577313901"
+    },
+    {
+      "at": "2026-11-19T17:43:57+00:00",
+      "dayIst": "2026-11-19",
+      "agent": "dashboard",
+      "branch": "agent/dashboard/2026-11-19",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "apps/dashboard/e2e/smoke.spec.ts",
+        "apps/dashboard/src/app/portfolio/page.tsx",
+        "channels/business-documentaries-rise-and-fall-of/notifications/dashboard.json",
+        "improvement/activity/2026-11-19-dashboard.json",
+        "improvement/dashboard/2026-11-19.md",
+        "improvement/dashboard/backlog.json"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44580108723"
+    },
+    {
+      "at": "2026-11-19T18:50:26+00:00",
+      "dayIst": "2026-11-20",
+      "agent": "research",
+      "branch": "agent/research/2026-11-20/geography-maps-geopolitical-mysteries",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/geography-maps-geopolitical-mysteries/notifications/research.json",
+        "channels/geography-maps-geopolitical-mysteries/research/2026-11-20.md",
+        "channels/geography-maps-geopolitical-mysteries/research/seen.json",
+        "channels/geography-maps-geopolitical-mysteries/research/topics.json",
+        "improvement/activity/2026-11-20-geography-maps-geopolitical-mysteries-research.json"
+      ],
+      "commit": "95d24470d3a45d9a6262dd16286f189cb66067ee",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44591962958"
+    },
+    {
+      "at": "2026-11-19T19:13:29+00:00",
+      "dayIst": "2026-11-20",
+      "agent": "research",
+      "branch": "agent/research/2026-11-20/how-tech-and-ai-actually-work-chips-ai-p",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/feedback-acks/research.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-20.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/proposals.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/seen.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/topics.json",
+        "improvement/activity/2026-11-20-how-tech-and-ai-actually-work-chips-ai-p-research.json"
+      ],
+      "commit": "0b663e652467d0a4972f0494e4eeab311b14d600",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44596034317"
+    },
+    {
+      "at": "2026-11-19T19:38:24+00:00",
+      "dayIst": "2026-11-20",
+      "agent": "research",
+      "branch": "agent/research/2026-11-20/business-documentaries-rise-and-fall-of",
+      "result": "blocked",
+      "reasons": [
+        "the research agent already merged 2 changes today"
+      ],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/cycle/backlog.json",
+        "channels/business-documentaries-rise-and-fall-of/feedback-acks/research.json",
+        "channels/business-documentaries-rise-and-fall-of/notifications/research.json",
+        "channels/business-documentaries-rise-and-fall-of/research/2026-11-20.md",
+        "channels/business-documentaries-rise-and-fall-of/research/proposals.json",
+        "channels/business-documentaries-rise-and-fall-of/research/seen.json",
+        "channels/business-documentaries-rise-and-fall-of/research/topics.json",
+        "improvement/activity/2026-11-20-business-documentaries-rise-and-fall-of-research.json"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44600362877"
+    },
+    {
+      "at": "2026-11-20T04:03:46+00:00",
+      "dayIst": "2026-11-20",
+      "agent": "research",
+      "branch": "agent/research/2026-11-20/business-documentaries-rise-and-fall-of",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/cycle/backlog.json",
+        "channels/business-documentaries-rise-and-fall-of/feedback-acks/research.json",
+        "channels/business-documentaries-rise-and-fall-of/notifications/research.json",
+        "channels/business-documentaries-rise-and-fall-of/research/2026-11-20.md",
+        "channels/business-documentaries-rise-and-fall-of/research/proposals.json",
+        "channels/business-documentaries-rise-and-fall-of/research/seen.json",
+        "channels/business-documentaries-rise-and-fall-of/research/topics.json",
+        "improvement/activity/2026-11-20-business-documentaries-rise-and-fall-of-research.json"
+      ],
+      "commit": "81392355d97ff00c40688c1d5ecbb8c7a65e1640",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44671824931"
+    },
+    {
+      "at": "2026-11-20T04:07:05+00:00",
+      "dayIst": "2026-11-20",
+      "agent": "auditor",
+      "branch": "agent/auditor/2026-11-20",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/notifications/auditor.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/auditor.json",
+        "channels/paisa-panchayat/analysis/videos.json",
+        "channels/paisa-panchayat/feedback-acks/auditor.json",
+        "channels/paisa-panchayat/notifications/auditor.json",
+        "improvement/activity/2026-11-20-auditor.json",
+        "improvement/auditor/2026-11-20.md",
+        "improvement/auditor/backlog.json",
+        "improvement/auditor/state.json",
+        "workers/lib/quota.ts",
+        "workers/tests/quota.test.ts"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44672178462"
+    },
+    {
+      "at": "2026-11-20T04:07:32+00:00",
+      "dayIst": "2026-11-20",
+      "agent": "research",
+      "branch": "agent/research/2026-11-20",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/paisa-panchayat/feedback-acks/research.json",
+        "channels/paisa-panchayat/notifications/research.json",
+        "channels/paisa-panchayat/research/2026-11-20.md",
+        "channels/paisa-panchayat/research/seen.json",
+        "channels/paisa-panchayat/research/topics.json",
+        "improvement/activity/2026-11-20-research.json"
+      ],
+      "commit": "f3f9ace071eb5bdea7939b0b88b9c348ecd9004a",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/44672234558"
     }
   ]
 }

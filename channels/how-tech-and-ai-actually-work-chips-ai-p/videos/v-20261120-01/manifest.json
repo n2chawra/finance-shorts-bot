@@ -1,0 +1,577 @@
+{
+  "id": "v-20261120-01",
+  "createdAt": "2026-11-19T21:37:12.064546+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "How Hoover Dam turns the push of Lake Mead into electricity, and why a lower lake cuts it",
+    "category": "power",
+    "reach": "global",
+    "feed_id": "2026-11-19-hoover-dam-power"
+  },
+  "title": "Why Does Hoover Dam Need Lake Mead to Be Full?",
+  "description": "Why does Hoover Dam need Lake Mead to be full?\nWe cut the dam open in 3D: the intake towers, the pipes, the turbine and the spinning magnets, and why the height of Lake Mead decides how much power it makes.\nSources: US Bureau of Reclamation (May 2026).\nAnimations are simplified illustrations, not exact to scale.",
+  "hashtags": [
+    "#Shorts",
+    "#HooverDam",
+    "#HowItWorks",
+    "#Hydropower",
+    "#Engineering"
+  ],
+  "hookStyle": "secret",
+  "cta": "What machine should we cut open next? Comment",
+  "seed": 52074,
+  "style": {
+    "palette": "ocean",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 70,
+    "look": {
+      "stage": "night",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "draw"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "45-60",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "28"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Hoover Dam makes less power when Lake Mead drops.",
+        "start": 0.3,
+        "seconds": 3.07,
+        "window": 3.5,
+        "fill": 0.877
+      },
+      {
+        "scene": "why",
+        "text": "Why does the height of a lake matter?",
+        "start": 3.8,
+        "seconds": 2.19,
+        "window": 2.57,
+        "fill": 0.852
+      },
+      {
+        "scene": "peak",
+        "text": "Historically, it made up to 2,074 megawatts. So how does water make power?",
+        "start": 6.37,
+        "seconds": 6.46,
+        "window": 6.87,
+        "fill": 0.94
+      },
+      {
+        "scene": "towers",
+        "text": "Water rushes into towers and drops down steel pipes through the rock.",
+        "start": 13.23,
+        "seconds": 4.34,
+        "window": 4.97,
+        "fill": 0.873
+      },
+      {
+        "scene": "turbine",
+        "text": "Below, it slams into a turbine's curved blades and spins it.",
+        "start": 18.2,
+        "seconds": 3.65,
+        "window": 4.27,
+        "fill": 0.855
+      },
+      {
+        "scene": "generator",
+        "text": "The spin sweeps magnets past copper coils, sending electricity to about 1.3M people.",
+        "start": 22.47,
+        "seconds": 6.98,
+        "window": 7.6,
+        "fill": 0.918
+      },
+      {
+        "scene": "push",
+        "text": "Deeper water pushes harder. When the lake drops, the push weakens.",
+        "start": 30.07,
+        "seconds": 4.26,
+        "window": 4.8,
+        "fill": 0.887
+      },
+      {
+        "scene": "estimate",
+        "text": "Engineers once estimated that at one low level, it could still make 1,302 megawatts.",
+        "start": 34.87,
+        "seconds": 6.89,
+        "window": 7.5,
+        "fill": 0.919
+      },
+      {
+        "scene": "payoff",
+        "text": "Its newer estimate for that same low lake? Just 382.",
+        "start": 42.37,
+        "seconds": 4.86,
+        "window": 5.2,
+        "fill": 0.935
+      },
+      {
+        "scene": "loop",
+        "text": "Old turbines would be damaged that low, so new ones should win back at least 160 megawatts. Until then, as Lake Mead falls, so does Hoover Dam's power.",
+        "start": 47.57,
+        "seconds": 11.57,
+        "window": 12.17,
+        "fill": 0.951
+      }
+    ]
+  },
+  "durationSec": 60,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.5,
+    "lufs": -14.8,
+    "music_under_voice_db": 26.1
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of trimmed peak/towers/turbine/generator/push/estimate/loop lines: figures unchanged (2,074; 1.3M; 1,302; 160), all still match usbr.gov release 5340 (21 May 2026); 'Historically… up to' kept per verify item; 'Engineers once estimated' is attributed on screen by the 'Bureau of Reclamation' label in Estimate.tsx (shown from 'once' to 'low'); loop now says 'would be damaged', matching the source's cavitation expectation; mechanism lines correct as simplifications."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: payoff now its own place (dam at the low lake, struck-through 1,302 over the roof sign, 382 slams on in red per Payoff.tsx), 1,302 on a solid LED panel clear of the needle at 40s, 0s/5s captions on dark water; 9+ places, figures on things, source line, loop to hook frame, channel disclaimer on the last frame, layout_problems empty, 60 s in the 45-60 band, audio -1/-16.5 dB."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-19T20:08:28.323860+00:00",
+      "finishedAt": "2026-11-19T20:08:28.323860+00:00",
+      "notes": [
+        "hook style 'question' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:08:32.391219+00:00",
+      "finishedAt": "2026-11-19T20:08:32.391219+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:09:00.322838+00:00",
+      "finishedAt": "2026-11-19T20:09:00.322838+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:10:32.983975+00:00",
+      "finishedAt": "2026-11-19T20:10:32.983975+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "warning: beat 'peak' runs 6.7 s with 3.7 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'loop' runs 8.7 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "note: \"level\" is said 2 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-19T20:10:42.422620+00:00",
+      "finishedAt": "2026-11-19T20:10:42.422620+00:00",
+      "notes": [
+        "beat 'peak': moment at 'megawatts.' is not one of this beat's events (name the word in `events` first)",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:10:48.401717+00:00",
+      "finishedAt": "2026-11-19T20:10:48.401717+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:10:55.897761+00:00",
+      "finishedAt": "2026-11-19T20:10:55.897761+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:11:40.408045+00:00",
+      "finishedAt": "2026-11-19T20:11:40.408045+00:00",
+      "notes": [
+        "All 5 facts confirmed word for word on usbr.gov news release 5340 (21 May 2026): up to 2,074 MW historically, roughly 1.3M people, 1,302 -> 382 MW at 1,035 ft, at least 160 MW from wide-head turbines; still current (FOX5 17 Nov 2026 cites same); verify item met ('Historically... up to'); mechanism lines (intakes, penstocks, turbine, magnets past coils, head pressure) correct as simplifications; disclaimer ends description. Note: the 1,302->382 revision is chiefly old turbines' cavitation limit at 1,035 ft, not only weaker push - the video never states the cause, so no false claim, but the loop's new-turbine line is the only hint."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:12:06.221719+00:00",
+      "finishedAt": "2026-11-19T20:12:06.221719+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: 2 questions in about 61 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-19T20:12:18.899363+00:00",
+      "finishedAt": "2026-11-19T20:12:18.899363+00:00",
+      "notes": [
+        "beat 'push': params.camera key at 'weaker' is not one of this beat's events",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:12:25.402191+00:00",
+      "finishedAt": "2026-11-19T20:12:25.402191+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:12:34.576712+00:00",
+      "finishedAt": "2026-11-19T20:12:34.576712+00:00",
+      "notes": [
+        "Re-review of edited towers/push/payoff/loop lines: unchanged facts 382 and 160 still match usbr.gov release 5340 (21 May 2026); new loop cause line matches the release (older turbines expected to sustain severe cavitation damage below 1,035 ft; wide-head turbines restore at least 160 MW), 'should' keeps it an expectation; towers/push/payoff are correct simplifications. Note: 'get damaged' is slightly firmer than the source's 'expected to sustain damage' - 'would be damaged' is exact; not a fail."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:14:16.934062+00:00",
+      "finishedAt": "2026-11-19T20:14:16.934062+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:17:33.520918+00:00",
+      "finishedAt": "2026-11-19T20:17:33.520918+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:18:43.977284+00:00",
+      "finishedAt": "2026-11-19T20:18:43.977284+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:19:48.181110+00:00",
+      "finishedAt": "2026-11-19T20:19:48.181110+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:20:19.143256+00:00",
+      "finishedAt": "2026-11-19T20:20:19.143256+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:20:52.494066+00:00",
+      "finishedAt": "2026-11-19T20:20:52.494066+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-19T20:21:16.132308+00:00",
+      "finishedAt": "2026-11-19T20:23:51.010409+00:00",
+      "notes": [
+        "2.0 s with nothing new on screen in beat 'generator' (at most 1.8 s): add an action on the phrase being said there",
+        "4 of 14 stills are mostly empty background (at 5 s, 15 s, 25 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+        "length 65 s is outside 45–60 s: cut about 15 spoken words",
+        "the Short runs 65.0 s but its assigned length (arms.length) is 45-60 s: cut or add a beat",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:24:36.085841+00:00",
+      "finishedAt": "2026-11-19T20:24:36.085841+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:25:44.101037+00:00",
+      "finishedAt": "2026-11-19T20:25:44.101037+00:00",
+      "notes": [
+        "Re-review of trimmed peak/towers/turbine/generator/push/estimate/loop lines: figures unchanged (2,074; 1.3M; 1,302; 160), all still match usbr.gov release 5340 (21 May 2026); 'Historically… up to' kept per verify item; 'Engineers once estimated' is attributed on screen by the 'Bureau of Reclamation' label in Estimate.tsx (shown from 'once' to 'low'); loop now says 'would be damaged', matching the source's cavitation expectation; mechanism lines correct as simplifications."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-19T20:25:32.613185+00:00",
+      "finishedAt": "2026-11-19T20:27:56.417547+00:00",
+      "notes": [
+        "1.9 s with nothing new on screen in beat 'generator' (at most 1.8 s): add an action on the phrase being said there",
+        "3 of 13 stills are mostly empty background (at 0 s, 30 s, 60 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:28:17.025855+00:00",
+      "finishedAt": "2026-11-19T20:28:17.025855+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-19T20:28:38.021418+00:00",
+      "finishedAt": "2026-11-19T20:30:47.584015+00:00",
+      "notes": [
+        "1.9 s with nothing new on screen in beat 'generator' (at most 1.8 s): add an action on the phrase being said there",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:31:00.379362+00:00",
+      "finishedAt": "2026-11-19T20:31:00.379362+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:31:01.090150+00:00",
+      "finishedAt": "2026-11-19T20:33:11.693390+00:00",
+      "notes": [
+        "60 s, ocean/circuit (preview only)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:33:19.615863+00:00",
+      "finishedAt": "2026-11-19T20:35:30.435837+00:00",
+      "notes": [
+        "60 s, ocean/circuit (preview only)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-19T20:36:34.871264+00:00",
+      "finishedAt": "2026-11-19T20:36:34.871264+00:00",
+      "notes": [
+        "[script] 35s/40s/45s: beats 'estimate' and 'payoff' are the same picture (the control-room output dial; payoff params.place is 'the same output dial, close'), so the payoff - the story's most surprising figure - lands on a repeat of the previous beat. Give the payoff its own place and thing (e.g. the lake's white band at the 1,035 ft mark with the 382 on the intake tower gauge, or the dark generator hall) and keep the room-goes-red moment visible.",
+        "[scene] 40s and 45s: the 1,302 figure on the dial is hard to read - at 40s the red needle runs across the digits and the tag is translucent grey on a grey face; at 45s '1,302 old estimate' is faded grey on the white dial under the tick marks and red arc. The dial's figure tag (Estimate/Payoff components) needs a solid backing and must sit clear of the needle's sweep.",
+        "[scene] 0s and 5s: the captions are white words over pale surfaces - at 0s 'Hoover Dam makes less' sits on the lit powerhouse windows and the pale dam face, at 5s 'of a lake matter?' on light-blue water - and wash out (the first sentence is barely readable on the first frame). Frame the hook so the captions sit over dark water/sky, or give directed captions a stronger dark stroke/shadow on light backgrounds."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:37:32.004812+00:00",
+      "finishedAt": "2026-11-19T20:37:32.004812+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:37:52.449590+00:00",
+      "finishedAt": "2026-11-19T20:40:04.436735+00:00",
+      "notes": [
+        "60 s, ocean/circuit (preview only)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-19T20:40:42.265002+00:00",
+      "finishedAt": "2026-11-19T20:42:52.708617+00:00",
+      "notes": [
+        "2 of 13 stills are mostly empty background (at 5 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:43:33.123625+00:00",
+      "finishedAt": "2026-11-19T20:45:42.933175+00:00",
+      "notes": [
+        "60 s, ocean/circuit (preview only)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:46:13.341864+00:00",
+      "finishedAt": "2026-11-19T20:48:19.296662+00:00",
+      "notes": [
+        "60 s, ocean/circuit (preview only)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:48:42.011184+00:00",
+      "finishedAt": "2026-11-19T20:50:44.840004+00:00",
+      "notes": [
+        "60 s, ocean/circuit (preview only)",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:51:21.030504+00:00",
+      "finishedAt": "2026-11-19T20:51:21.030504+00:00",
+      "notes": [
+        "Re-review after fixes: payoff now its own place (dam at the low lake, struck-through 1,302 over the roof sign, 382 slams on in red per Payoff.tsx), 1,302 on a solid LED panel clear of the needle at 40s, 0s/5s captions on dark water; 9+ places, figures on things, source line, loop to hook frame, channel disclaimer on the last frame, layout_problems empty, 60 s in the 45-60 band, audio -1/-16.5 dB."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-19T20:50:56.498349+00:00",
+      "finishedAt": "2026-11-19T21:37:03.959775+00:00",
+      "notes": [
+        "60 s, ocean/circuit, peak -1.0 dB, mean -16.5 dB",
+        "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: \"level\" is said 1 times in a 'follow-the-flow' video: the word is for the levels shape",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-19T21:37:12.064713+00:00",
+      "finishedAt": "2026-11-19T21:37:12.064713+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261120-01",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261120-01"
+  }
+}

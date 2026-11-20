@@ -354,3 +354,16 @@ def test_a_channels_bed_level_and_duck_per_format(tmp_path: Path, monkeypatch) -
         t = tb.build(script(beats, format="short", style={"genre": "dossier", "bpm": 80}), tmp_path / name, voice="estimate")
         music[name] = t["audio"]["stems"]["music"]
     assert music["split"] > music["long-everywhere"] + 3   # the Short's own, louder level is the one used
+
+
+
+def test_owner_pace_note_speeds_up_a_channels_own_short_voice(monkeypatch):
+    """The tech channel's pace note (owner, 2026-11-19), applied at once: its Shorts speak at 1.0, not 0.92."""
+    from generator import pack
+    monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 0.92, "long": 0.97}})
+    tech = "how-tech-and-ai-actually-work-chips-ai-p"
+    assert pack.voice_speed("short", tech) == 1.0
+    assert pack.voice_speed("long", tech) == 0.97          # Shorts only
+    assert pack.voice_speed("short", "geography-maps-geopolitical-mysteries") == 0.92
+    monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 1.1}})
+    assert pack.voice_speed("short", tech) == 1.1          # the owner's own faster setting wins

@@ -1,0 +1,1093 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52074,
+  "story": "machine_works",
+  "shape": "follow-the-flow",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 70,
+    "look": {
+      "stage": "night",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "draw"
+    }
+  },
+  "arms": {
+    "length": "45-60",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "28"
+  },
+  "hook_style": "secret",
+  "cta": "What machine should we cut open next? Comment",
+  "feed_id": "2026-11-19-hoover-dam-power",
+  "facts": [
+    {
+      "label": "Hoover Dam's historical hydropower capacity, in megawatts, up to",
+      "value": 2074,
+      "unit": "count",
+      "as_of": "2026-05-21",
+      "source": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    },
+    {
+      "label": "People across the Southwest it supplies, roughly",
+      "value": 1.3,
+      "unit": "count_million",
+      "as_of": "2026-05-21",
+      "source": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    },
+    {
+      "label": "Earlier estimate of capacity at a lake elevation of 1,035 feet, in megawatts",
+      "value": 1302,
+      "unit": "count",
+      "as_of": "2026-05-21",
+      "source": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    },
+    {
+      "label": "Newer estimate of capacity at that elevation, in megawatts",
+      "value": 382,
+      "unit": "count",
+      "as_of": "2026-05-21",
+      "source": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    },
+    {
+      "label": "Megawatts the new turbines are expected to restore, at least",
+      "value": 160,
+      "unit": "count",
+      "as_of": "2026-05-21",
+      "source": "US Bureau of Reclamation",
+      "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.5,
+    "words": "Why *Lake Mead* matters",
+    "tag": "How it works",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "role": "hook",
+      "transition": "cut",
+      "say": "Hoover Dam makes less power when Lake Mead drops.",
+      "events": {
+        "hoover": {
+          "word": "Hoover"
+        },
+        "less": {
+          "word": "less"
+        },
+        "power": {
+          "word": "power"
+        },
+        "lake": {
+          "word": "Lake"
+        },
+        "drops": {
+          "word": "drops"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "drops"
+        }
+      ],
+      "params": {
+        "component": "Hook",
+        "place": "Black Canyon at night, the dam's curved face with the lake behind it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "lake",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "hoover",
+            "what": "the dam's pale curved face glows under floodlights, lit powerhouse windows at its foot"
+          },
+          {
+            "at": "less",
+            "what": "one row of powerhouse windows dims"
+          },
+          {
+            "at": "power",
+            "what": "the outlet water thins"
+          },
+          {
+            "at": "lake",
+            "what": "the camera drifts up to the lake water pressing on the dam"
+          },
+          {
+            "at": "drops",
+            "what": "the waterline slides down the canyon, leaving a white band"
+          }
+        ],
+        "things": [
+          "curved concrete dam",
+          "Lake Mead water",
+          "white mineral band",
+          "powerhouse windows",
+          "outlet water"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "why",
+      "role": "promise",
+      "transition": "cut",
+      "say": "Why does the height of a lake matter?",
+      "events": {
+        "why": {
+          "word": "Why"
+        },
+        "height": {
+          "word": "height"
+        },
+        "lake": {
+          "word": "lake"
+        },
+        "matter": {
+          "word": "matter"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "height"
+        }
+      ],
+      "params": {
+        "component": "Why",
+        "place": "beside an intake tower in the lake, its depth scale",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "height",
+            "size": "close"
+          },
+          {
+            "at": "matter",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "why",
+            "what": "the camera glides toward an intake tower standing in the lake"
+          },
+          {
+            "at": "height",
+            "what": "close on the depth scale painted on the tower, its marks lighting up"
+          },
+          {
+            "at": "lake",
+            "what": "the water slides down past the marks"
+          },
+          {
+            "at": "matter",
+            "what": "the tower's windows dim as the camera pulls back"
+          }
+        ],
+        "things": [
+          "intake tower",
+          "depth scale marks",
+          "lake surface",
+          "tower windows"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "peak",
+      "role": "build",
+      "transition": "cut",
+      "say": "Historically, it made up to {fact1} megawatts. So how does water make power?",
+      "events": {
+        "historically": {
+          "word": "Historically"
+        },
+        "made": {
+          "word": "made"
+        },
+        "up": {
+          "word": "up"
+        },
+        "megawatts": {
+          "word": "megawatts"
+        },
+        "so": {
+          "word": "So"
+        },
+        "water": {
+          "word": "water"
+        },
+        "power": {
+          "word": "power"
+        },
+        "mid": {
+          "word": 7
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "reached"
+        }
+      ],
+      "params": {
+        "component": "Peak",
+        "place": "the powerhouse roof at the foot of the dam, power lines climbing the canyon",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "up",
+            "size": "close"
+          },
+          {
+            "at": "so",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "historically",
+            "what": "the camera glides over the powerhouse roof between the canyon walls"
+          },
+          {
+            "at": "made",
+            "what": "the row of generator domes under the roof lights up one by one"
+          },
+          {
+            "at": "up",
+            "what": "the sign counts up to the figure"
+          },
+          {
+            "at": "mid",
+            "what": "the transformer hums, its sparks crackling"
+          },
+          {
+            "at": "megawatts",
+            "what": "the sign flashes as all the domes glow"
+          },
+          {
+            "at": "so",
+            "what": "the camera rises up the dam's face"
+          },
+          {
+            "at": "water",
+            "what": "white water bursts from the outlet pipes into the river"
+          },
+          {
+            "at": "power",
+            "what": "sparks race up the power lines over the canyon rim"
+          }
+        ],
+        "things": [
+          "powerhouse roof",
+          "generator domes",
+          "transformer deck sign",
+          "outlet water jets",
+          "power line towers"
+        ],
+        "fig": {
+          "peak": "{fact1}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "towers",
+      "role": "build",
+      "transition": "zoom-through",
+      "say": "Water rushes into towers and drops down steel pipes through the rock.",
+      "events": {
+        "rushes": {
+          "word": "rushes"
+        },
+        "towers": {
+          "word": "towers"
+        },
+        "and": {
+          "word": "and"
+        },
+        "drops": {
+          "word": "drops"
+        },
+        "steel": {
+          "word": "steel"
+        },
+        "pipes": {
+          "word": "pipes"
+        },
+        "rock": {
+          "word": "rock"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "drops"
+        }
+      ],
+      "params": {
+        "component": "Towers",
+        "place": "the lake and the canyon wall, sliced open",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "towers",
+            "size": "medium"
+          },
+          {
+            "at": "drops",
+            "size": "close"
+          },
+          {
+            "at": "rock",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "rushes",
+            "what": "glowing streams of water swirl toward the intake towers"
+          },
+          {
+            "at": "towers",
+            "what": "the intake tower rises out of the water, a label writes on"
+          },
+          {
+            "at": "and",
+            "what": "the cut lake shows the tower standing on the bottom"
+          },
+          {
+            "at": "drops",
+            "what": "the camera dives down with the water into the tower"
+          },
+          {
+            "at": "steel",
+            "what": "a huge steel pipe lights up in the cutaway rock"
+          },
+          {
+            "at": "pipes",
+            "what": "water streaks rush down the pipe"
+          },
+          {
+            "at": "rock",
+            "what": "pull back: the pipe runs through the canyon rock to the powerhouse"
+          }
+        ],
+        "things": [
+          "intake tower",
+          "cutaway lake",
+          "steel penstock pipe",
+          "canyon rock",
+          "water streaks"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "turbine",
+      "role": "build",
+      "transition": "cut",
+      "say": "Below, it slams into a turbine's curved blades and spins it.",
+      "events": {
+        "below": {
+          "word": "Below"
+        },
+        "slams": {
+          "word": "slams"
+        },
+        "turbine's": {
+          "word": "turbine's"
+        },
+        "curved": {
+          "word": "curved"
+        },
+        "blades": {
+          "word": "blades"
+        },
+        "spins": {
+          "word": "spins"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "slams"
+        }
+      ],
+      "params": {
+        "component": "Turbine",
+        "place": "the turbine pit deep under the powerhouse",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "blades",
+            "size": "close"
+          },
+          {
+            "at": "spins",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "below",
+            "what": "the pipe's mouth opens into the spiral case around the runner"
+          },
+          {
+            "at": "slams",
+            "what": "water streams hit the runner and it jolts"
+          },
+          {
+            "at": "turbine's",
+            "what": "a label writes on: turbine"
+          },
+          {
+            "at": "curved",
+            "what": "the curved blades light up one after another"
+          },
+          {
+            "at": "blades",
+            "what": "close on the blades as water curls off them"
+          },
+          {
+            "at": "spins",
+            "what": "the runner whirls faster, the camera orbits it"
+          }
+        ],
+        "things": [
+          "spiral case",
+          "turbine runner",
+          "curved blades",
+          "water streams",
+          "shaft"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "generator",
+      "role": "build",
+      "transition": "cut",
+      "say": "The spin sweeps magnets past copper coils, sending electricity to about {fact2} people.",
+      "events": {
+        "spin": {
+          "word": "spin"
+        },
+        "sweeps": {
+          "word": "sweeps"
+        },
+        "magnets": {
+          "word": "magnets"
+        },
+        "past": {
+          "word": "past"
+        },
+        "copper": {
+          "word": "copper"
+        },
+        "coils": {
+          "word": "coils"
+        },
+        "sending": {
+          "word": "sending"
+        },
+        "electricity": {
+          "word": "electricity"
+        },
+        "to": {
+          "word": "to"
+        },
+        "about": {
+          "word": "about"
+        },
+        "people": {
+          "word": "people"
+        },
+        "mid": {
+          "word": -3
+        }
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "electricity"
+        }
+      ],
+      "params": {
+        "component": "Generator",
+        "place": [
+          "inside the generator, magnets and coils",
+          "the desert cities at night"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "magnets",
+            "size": "close"
+          },
+          {
+            "at": "to",
+            "size": "wide"
+          },
+          {
+            "at": "people",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "spin",
+            "what": "the shaft rises from below and turns the rotor"
+          },
+          {
+            "at": "sweeps",
+            "what": "the rotor's ring of magnets rolls past"
+          },
+          {
+            "at": "magnets",
+            "what": "its red and blue magnets glow as they pass"
+          },
+          {
+            "at": "past",
+            "what": "the magnets streak past, the camera whipping with them"
+          },
+          {
+            "at": "copper",
+            "what": "the copper coils around it shine"
+          },
+          {
+            "at": "coils",
+            "what": "each coil flashes as a magnet sweeps by"
+          },
+          {
+            "at": "sending",
+            "what": "a bright current runs out of the coils into a cable"
+          },
+          {
+            "at": "electricity",
+            "what": "the cable glows brighter"
+          },
+          {
+            "at": "to",
+            "what": "cut to the desert: the current races along power lines"
+          },
+          {
+            "at": "about",
+            "what": "the power lines glow all the way to the city"
+          },
+          {
+            "at": "mid",
+            "what": "the first city's windows start switching on"
+          },
+          {
+            "at": "people",
+            "what": "city lights switch on across the plain, a sign counts up the figure"
+          }
+        ],
+        "things": [
+          "rotor with magnets",
+          "copper coils",
+          "cable",
+          "power lines",
+          "desert city lights"
+        ],
+        "fig": {
+          "people": "{fact2}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "push",
+      "role": "turn",
+      "transition": "cut",
+      "say": "Deeper water pushes harder. When the lake drops, the push weakens.",
+      "events": {
+        "deeper": {
+          "word": "Deeper"
+        },
+        "water": {
+          "word": "water"
+        },
+        "pushes": {
+          "word": "pushes"
+        },
+        "harder": {
+          "word": "harder"
+        },
+        "lake": {
+          "word": "lake"
+        },
+        "drops": {
+          "word": "drops"
+        },
+        "weakens": {
+          "word": "weakens"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "drops"
+        }
+      ],
+      "params": {
+        "component": "Push",
+        "place": "the lake in cross-section against the dam",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "deeper",
+            "size": "wide"
+          },
+          {
+            "at": "drops",
+            "size": "medium"
+          },
+          {
+            "at": "weakens",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "water",
+            "what": "the lake slices open beside the dam"
+          },
+          {
+            "at": "deeper",
+            "what": "the camera sinks down the water column, darker blue with depth"
+          },
+          {
+            "at": "pushes",
+            "what": "pressure arrows press on the dam, bigger near the bottom"
+          },
+          {
+            "at": "harder",
+            "what": "the bottom arrow at the intake pulses"
+          },
+          {
+            "at": "lake",
+            "what": "the waterline glows"
+          },
+          {
+            "at": "drops",
+            "what": "the water level slides down, the white band left behind"
+          },
+          {
+            "at": "weakens",
+            "what": "the arrows shrink and the water entering the pipe slows"
+          }
+        ],
+        "things": [
+          "lake cross-section",
+          "dam wall",
+          "pressure arrows",
+          "intake opening",
+          "waterline"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "estimate",
+      "role": "build",
+      "transition": "cut",
+      "say": "Engineers once estimated that at one low level, it could still make {fact3} megawatts.",
+      "events": {
+        "engineers": {
+          "word": "Engineers"
+        },
+        "once": {
+          "word": "once"
+        },
+        "estimated": {
+          "word": "estimated"
+        },
+        "that": {
+          "word": "that"
+        },
+        "one": {
+          "word": "one"
+        },
+        "low": {
+          "word": "low"
+        },
+        "level": {
+          "word": "level"
+        },
+        "could": {
+          "word": "could"
+        },
+        "still": {
+          "word": "still"
+        },
+        "megawatts": {
+          "word": "megawatts"
+        },
+        "mid": {
+          "word": -4
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "still"
+        }
+      ],
+      "params": {
+        "component": "Estimate",
+        "place": "the powerhouse control room, a giant output dial on the wall",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "low",
+            "size": "medium"
+          },
+          {
+            "at": "still",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "engineers",
+            "what": "a report folder drops onto the desk"
+          },
+          {
+            "at": "once",
+            "what": "the report's title writes on above it"
+          },
+          {
+            "at": "that",
+            "what": "the folder opens"
+          },
+          {
+            "at": "estimated",
+            "what": "the big output dial on the wall lights up"
+          },
+          {
+            "at": "one",
+            "what": "a small wall screen flickers on"
+          },
+          {
+            "at": "low",
+            "what": "the screen shows the lake at a low level"
+          },
+          {
+            "at": "level",
+            "what": "the screen's waterline drops to the mark"
+          },
+          {
+            "at": "could",
+            "what": "the needle swings up the scale"
+          },
+          {
+            "at": "still",
+            "what": "the needle settles and the figure counts up on the dial"
+          },
+          {
+            "at": "mid",
+            "what": "the dial's needle settles with a bounce"
+          },
+          {
+            "at": "megawatts",
+            "what": "the dial's ring glows amber"
+          }
+        ],
+        "things": [
+          "control room desk",
+          "report folder",
+          "big output dial",
+          "lake level screen"
+        ],
+        "fig": {
+          "old": "{fact3}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "payoff",
+      "role": "payoff",
+      "transition": "cut",
+      "say": "Its newer estimate for that same low lake? Just {fact4}.",
+      "events": {
+        "newer": {
+          "word": "newer"
+        },
+        "estimate": {
+          "word": "estimate"
+        },
+        "same": {
+          "word": "same"
+        },
+        "low": {
+          "word": "low"
+        },
+        "just": {
+          "word": "Just"
+        },
+        "tail": {
+          "word": -2
+        }
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "just"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "place": "the dam at the low lake, the white band towering over the water, the powerhouse going dark",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "same",
+            "size": "medium"
+          },
+          {
+            "at": "just",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "newer",
+            "what": "the camera glides over the low lake, the white band towering above it"
+          },
+          {
+            "at": "estimate",
+            "what": "the old figure on the powerhouse sign greys and a red line strikes it"
+          },
+          {
+            "at": "same",
+            "what": "the waterline glows against the white band as the camera dives to the powerhouse"
+          },
+          {
+            "at": "low",
+            "what": "the outlet water thins to a trickle"
+          },
+          {
+            "at": "just",
+            "what": "the new figure slams onto the sign in red and windows go dark"
+          },
+          {
+            "at": "tail",
+            "what": "the last windows flicker out"
+          }
+        ],
+        "things": [
+          "low lake",
+          "white mineral band",
+          "powerhouse roof sign",
+          "dark windows",
+          "thin outlet water"
+        ],
+        "fig": {
+          "old": "{fact3}",
+          "new": "{fact4}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    },
+    {
+      "id": "loop",
+      "role": "loop",
+      "transition": "cut",
+      "say": "Old turbines would be damaged that low, so new ones should win back at least {fact5} megawatts. Until then, as Lake Mead falls, so does Hoover Dam's power.",
+      "events": {
+        "old": {
+          "word": "Old"
+        },
+        "damaged": {
+          "word": "damaged"
+        },
+        "new": {
+          "word": "new"
+        },
+        "should": {
+          "word": "should"
+        },
+        "least": {
+          "word": "least"
+        },
+        "megawatts": {
+          "word": "megawatts"
+        },
+        "until": {
+          "word": "Until"
+        },
+        "then": {
+          "word": "then"
+        },
+        "lake": {
+          "word": "Lake"
+        },
+        "falls": {
+          "word": "falls"
+        },
+        "hoover": {
+          "word": "Hoover"
+        },
+        "power": {
+          "word": "power"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "falls"
+        }
+      ],
+      "params": {
+        "component": "Loop",
+        "place": [
+          "the powerhouse floor, an old runner and a crane lowering a new one",
+          "Black Canyon at night, the dam's curved face"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "until",
+            "size": "medium"
+          },
+          {
+            "at": "lake",
+            "size": "wide"
+          },
+          {
+            "at": "power",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "old",
+            "what": "the old runner sits in its pit, worn and pitted"
+          },
+          {
+            "at": "damaged",
+            "what": "sparks and pits flash across its blades"
+          },
+          {
+            "at": "new",
+            "what": "a crane lowers a gleaming new runner beside it"
+          },
+          {
+            "at": "should",
+            "what": "a tag swings on the crane hook"
+          },
+          {
+            "at": "least",
+            "what": "the tag counts up the figure"
+          },
+          {
+            "at": "megawatts",
+            "what": "the runner starts to turn"
+          },
+          {
+            "at": "then",
+            "what": "the roof opens above"
+          },
+          {
+            "at": "until",
+            "what": "the camera pulls up and out through the roof"
+          },
+          {
+            "at": "lake",
+            "what": "the dam's face at night, the lake against it"
+          },
+          {
+            "at": "falls",
+            "what": "the waterline slides down the concrete"
+          },
+          {
+            "at": "hoover",
+            "what": "the floodlit dam fills the frame"
+          },
+          {
+            "at": "power",
+            "what": "the powerhouse windows dim, back to the first frame"
+          }
+        ],
+        "things": [
+          "overhead crane",
+          "worn old runner",
+          "new turbine runner",
+          "tag on the hook",
+          "dam face",
+          "waterline"
+        ],
+        "fig": {
+          "back": "{fact5}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator"
+    }
+  ],
+  "narrator": "am_michael",
+  "device": "cutaway run"
+}

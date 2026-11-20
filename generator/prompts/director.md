@@ -21,6 +21,19 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 - **Another channel's look wins** (multi-channel, 2026-11-17): a channel with its own `prompts/recipe.md`
   directs by that recipe's "look". On a map channel the map is the stage of every beat and "a place for
   every line" means a new spot on the map (the river mouth, a border crossing, the capital), not a new room.
+  **The country or region a line is about is traced** (owner, 2026-11-19: "the borders should be
+  highlighted in an animated way, like lines rounding and completing over the corners"): its map fill gets
+  `trace` going 0 → 1 over about a second from the word that names it (a bright line with a glowing head
+  runs round the border and closes, `flat/map.tsx`), then stays lit while the line is about it, and the
+  country is **coloured with its whole flag inside it** (owner, same day: "color and fit the flag inside so
+  that the flag appears correct"): `fill` a colour from the flag, plus `flag: "<Natural Earth name>"`, and the
+  kit fits the uncut 3:2 flag inside the country as big as it goes (`flat/flags.tsx` draws about 60,
+  `FlagSheet` in Root shows them; a country the table lacks keeps only its colour). A real
+  person the line names (Napoleon, a king, an explorer) stands on the map as their photo head when
+  `python -m generator.images` has or can fetch a freely licensed one (owner, same day).
+- **The hook shows the real subject** (owner, 2026-11-19, every channel with true stories): the person's
+  freely licensed photo head or the company's logo, big and named, from frame 0 (writer.md, "The first
+  frame"). Never a show's or film's poster, logo or frames: they are copyrighted.
 - **Every listed word is a picture, and something always moves** (owner, 2026-11-18: "small words spoken
   can be animation or shown, like the oil, cloth… keep animating things on screen as much as you can so
   users don't leave"). When a line names things in a row ("phones, clothes, cars and oil"), each one
@@ -29,6 +42,12 @@ every video look the same: one skyline, floating cards, a header of text. Never 
   the big moments keep small life going: a ship sailing, a label writing on, a pin pulsing, the camera
   drifting. A channel can hold the picture still for less time than 2.5 s (`channel.json` `motion.maxGapSec`;
   the geography channel 1.8 s).
+- **This video's side of the weekly test** (2026-11-19: 3 of 10 Shorts on the on side of cycle 1 had no
+  real photo in the hook, because the director never read the test). Before you direct, print it:
+  `python -c "from generator.experiments import prompt_notes; print(prompt_notes('<id>'))"` (with
+  `CHANNEL=<channel>`), and direct exactly what your side's `instruction` says (the off side says what the
+  champion does). Lint fails a video that doesn't (`generator/experiments.py` `adherence_problems`); if
+  it truly can't (no freely licensed file exists), write why in `script.experimentWaivers` ({id: "why"}).
 - **No two videos the same** (owner, 2026-11-18): a channel's recipe may list story devices (route and
   race, countdown, lift and compare, timeline…); direct the device the plan names, and never the same
   opening picture, camera path or device as the last videos.

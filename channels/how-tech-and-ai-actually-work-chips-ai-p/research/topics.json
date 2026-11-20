@@ -988,81 +988,6 @@
       ]
     },
     {
-      "id": "2026-11-18-zoom-sea-cable-slice",
-      "format": "short",
-      "title": "Slice Open the Cable That Carries the Internet Under the Atlantic",
-      "category": "internet",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "zoom_inside"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Zooming Into a CPU (It's Incredible)",
-        "views": 504377,
-        "url": "https://youtube.com/watch?v=Bez-2cvYja0",
-        "channel": "Branch Education",
-        "channelSubs": 2780000,
-        "outlier": 0.2
-      },
-      "hook": "The internet between America and Europe runs through a cable as wide as a garden hose.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Exploded cross-section of MAREA: armour, copper, eight hair-thin fibre pairs, then pull back to its 6,605 km on the Atlantic floor. Cut from the sea-cable long video.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
-      "facts": [
-        {
-          "label": "Length of the MAREA cable, Virginia Beach to Bilbao",
-          "value": 6605,
-          "unit": "km",
-          "as_of": "2018-02-01",
-          "source": "Wikipedia (MAREA)",
-          "url": "https://en.wikipedia.org/wiki/MAREA",
-          "fixed": true
-        },
-        {
-          "label": "MAREA's fibre pairs",
-          "value": 8,
-          "unit": "count",
-          "as_of": "2018-02-01",
-          "source": "Wikipedia (MAREA)",
-          "url": "https://en.wikipedia.org/wiki/MAREA",
-          "fixed": true
-        },
-        {
-          "label": "MAREA's capacity at completion, in terabits per second, up to",
-          "value": 160,
-          "unit": "count",
-          "as_of": "2017-09-23",
-          "source": "Microsoft News",
-          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
-          "fixed": true
-        },
-        {
-          "label": "How many times faster than the average home connection MAREA is, more than",
-          "value": 16,
-          "unit": "count_million",
-          "as_of": "2017-09-23",
-          "source": "Microsoft News",
-          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
-          "fixed": true
-        },
-        {
-          "label": "Kilometres of submarine cable in service worldwide, over",
-          "value": 1.5,
-          "unit": "count_million",
-          "as_of": "2026-01-01",
-          "source": "TeleGeography Submarine Cable FAQs",
-          "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
-        }
-      ],
-      "status": "rejected",
-      "reason": "research 2026-11-19: internet Shorts are a weak family in our scan (0.76x channel median, advice.md) and the only reference (Branch Education, 504K views) sits below its channel's 2.78M subscribers; the cable story stays in the long topic message-crosses-ocean"
-    },
-    {
       "id": "2026-11-18-ev-battery-cell",
       "format": "short",
       "title": "Why Tesla Made Its Battery Cells Bigger",
@@ -1599,6 +1524,323 @@
       ],
       "found": "2026-11-19",
       "expires": "2027-02-17",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-20-maglev-floats",
+      "format": "short",
+      "title": "How Does Japan's Maglev Train Float Above Its Track?",
+      "category": "transport",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "machine_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Most Important Invention, Part 8! The Maglev Train",
+        "views": 1452626,
+        "url": "https://youtube.com/shorts/UNMHRb5cHOA",
+        "channel": "Logibu",
+        "channelSubs": 36100,
+        "outlier": 40.2,
+        "ageDays": 6.2,
+        "viewsPerDay": 234409
+      },
+      "hook": "This train has no wheels touching anything at full speed. Here is what holds it up.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Cutaway run of JR Central's SCMaglev L0: superconducting magnets on the train, coils in the guideway walls, the train rolling on rubber tyres until it is fast enough to lift, then floating and pulled forward by a moving magnetic field. Payoff: the 21 April 2015 run, 603 km/h, held above 600 for 10.8 seconds over 1.8 km.",
+      "why_now": "Owner note 19 Nov: topics gaining traction. Trains are the niche's fastest-rising Shorts subject this fortnight (15 Shorts, median 2.4x their channel's median; 'Why Did Trains Stop Using Rubber Tyres' 4.8M in 9 days); Logibu's maglev Short is adding 234K views a day.",
+      "facts": [
+        {
+          "label": "Record speed of the Series L0 maglev, in kilometres an hour",
+          "value": 603,
+          "unit": "count",
+          "as_of": "2015-04-21",
+          "source": "Guinness World Records",
+          "url": "https://www.guinnessworldrecords.com/world-records/fastest-maglev-train/",
+          "fixed": true
+        },
+        {
+          "label": "Seconds the run stayed above 600 kilometres an hour",
+          "value": 10.8,
+          "unit": "count",
+          "as_of": "2015-04-21",
+          "source": "Railway Gazette",
+          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+          "fixed": true
+        },
+        {
+          "label": "Kilometres covered above 600 kilometres an hour",
+          "value": 1.8,
+          "unit": "count",
+          "as_of": "2015-04-21",
+          "source": "Railway Gazette",
+          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+          "fixed": true
+        },
+        {
+          "label": "Previous record, set by the MLX01 in December 2003, in kilometres an hour",
+          "value": 581,
+          "unit": "count",
+          "as_of": "2003-12-02",
+          "source": "Railway Gazette",
+          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+          "fixed": true
+        },
+        {
+          "label": "Planned top speed in passenger service, in kilometres an hour",
+          "value": 500,
+          "unit": "count",
+          "as_of": "2015-04-21",
+          "source": "Railway Gazette",
+          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+          "latest": true,
+          "checked": "2026-11-20"
+        },
+        {
+          "label": "Planned Tokyo to Nagoya journey, in minutes",
+          "value": 40,
+          "unit": "count",
+          "as_of": "2015-04-21",
+          "source": "Railway Gazette",
+          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+          "latest": true,
+          "checked": "2026-11-20"
+        }
+      ],
+      "verify": [
+        "603 km/h on 21 April 2015, Series L0 (A07), Yamanashi Maglev Line (Guinness)",
+        "10.8 s and 1.8 km above 600 km/h; 581 km/h MLX01 Dec 2003; 500 km/h planned; Tokyo-Nagoya 40 min (Railway Gazette)",
+        "Do not state an opening date for the Chuo Shinkansen; it has slipped"
+      ],
+      "sources": [
+        "https://www.guinnessworldrecords.com/world-records/fastest-maglev-train/",
+        "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-02-18",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-20-faraday-first-generator",
+      "format": "short",
+      "title": "How Did a Spinning Copper Disc Become Every Power Station?",
+      "category": "power",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "invention_story"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Most important Invention in History, Part 10: The Generator (finally)",
+        "views": 160304,
+        "url": "https://youtube.com/shorts/1TmDAcPMaDw",
+        "channel": "Logibu",
+        "channelSubs": 36100,
+        "outlier": 4.4,
+        "ageDays": 1.5,
+        "viewsPerDay": 108750
+      },
+      "hook": "In 1831 a man spun a copper plate next to a magnet, and a current came out. Every power station still does that.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Build it up: Faraday's induction ring (a current in one coil makes a current in another: the first transformer), then the copper disc turned between a horseshoe magnet's poles with sliding contacts, giving a steady current: the first generator. Climb out to a modern turbine-generator (ties to the Hoover Dam topic). Never skip the step: a conductor moving through a magnetic field pushes the electrons along.",
+      "why_now": "Owner note 19 Nov: traction. Logibu's generator Short gained 160K in 36 hours, its nuclear-plant Short 672K in 4 days (18.6x its channel); invention titles run 2.5x their channel's median in the last 14 days.",
+      "facts": [
+        {
+          "label": "Year Faraday began the experiments that found electromagnetic induction",
+          "value": 1831,
+          "unit": "year",
+          "as_of": "1831-09-01",
+          "source": "US Energy Information Administration",
+          "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
+          "fixed": true
+        },
+        {
+          "label": "Year Faraday was born",
+          "value": 1791,
+          "unit": "year",
+          "as_of": "1791-09-22",
+          "source": "US Energy Information Administration",
+          "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
+          "fixed": true
+        },
+        {
+          "label": "Faraday's age when he became a bookbinder's errand boy",
+          "value": 13,
+          "unit": "count",
+          "as_of": "1804-01-01",
+          "source": "US Energy Information Administration",
+          "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
+          "fixed": true
+        },
+        {
+          "label": "Year he proved magnet, battery and static electricity are the same thing",
+          "value": 1832,
+          "unit": "year",
+          "as_of": "1832-01-01",
+          "source": "US Energy Information Administration",
+          "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "EIA: 1831 induction ring = first transformer; September series, copper disc with sliding contacts between a horseshoe magnet's poles = first generator; born 1791; errand boy at 13; 1832 unity of electricities",
+        "Faraday's age in 1831 is computed by code (1831 - 1791), not typed"
+      ],
+      "sources": [
+        "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-02-18",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-20-first-bicycle-drais",
+      "format": "short",
+      "title": "Why Did the First Bicycle Have No Pedals?",
+      "category": "transport",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "invention_story"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How the Bicycle Was Actually Invented! (3D Animation)",
+        "views": 1027331,
+        "url": "https://youtube.com/shorts/PdszpOPce-Y",
+        "channel": "Engineer Explain",
+        "channelSubs": 503000,
+        "outlier": 2.0,
+        "ageDays": 7.9,
+        "viewsPerDay": 130470
+      },
+      "hook": "The first bicycle had no pedals, no chain and no brakes. So how did it go anywhere?",
+      "templates": [
+        "any"
+      ],
+      "angle": "Build it up: Karl Drais's running machine, two wheels in a line under a wooden frame, pushed along by the rider's feet; the step that matters is steering keeps two wheels in line upright. Then add what came later part by part (pedals, chain) as a short climb out. Mannheim, 12 June 1817, almost 14 km on the first trip; Drais was 32.",
+      "why_now": "Owner note 19 Nov: traction. Engineer Explain's bicycle Short has 1.03M in 8 days at 130K a day (2x its 503K channel); invention Shorts are the niche's rising family this fortnight.",
+      "facts": [
+        {
+          "label": "Year of the running machine's first trip (12 June, from Mannheim)",
+          "value": 1817,
+          "unit": "year",
+          "as_of": "1817-06-12",
+          "source": "deutschland.de",
+          "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
+          "fixed": true
+        },
+        {
+          "label": "Length of that first trip in kilometres, almost",
+          "value": 14,
+          "unit": "count",
+          "as_of": "1817-06-12",
+          "source": "deutschland.de",
+          "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
+          "fixed": true
+        },
+        {
+          "label": "Karl Drais's age at the time",
+          "value": 32,
+          "unit": "count",
+          "as_of": "1817-06-12",
+          "source": "deutschland.de",
+          "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "12 June 1817 from Mannheim, almost 14 km, Drais 32 (deutschland.de); sources differ on the distance (DPMA: about 15 km there and back), so say 'almost 14 kilometres'",
+        "No pedals, chain or brakes on the 1817 machine: confirm on a museum page before use"
+      ],
+      "sources": [
+        "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-02-18",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-20-phone-listening-study",
+      "format": "short",
+      "title": "Do Phone Apps Secretly Listen? Researchers Watched 17,000 of Them",
+      "category": "phones",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "gadget_inside"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Does Your Phone Listens to You? (3D)",
+        "views": 2447194,
+        "url": "https://youtube.com/shorts/8dF_BFHRdbs",
+        "channel": "Professor Of AI",
+        "channelSubs": 400000,
+        "outlier": 6.1,
+        "ageDays": 7.2,
+        "viewsPerDay": 337881
+      },
+      "hook": "Northeastern University's researchers made phones run thousands of apps and watched every byte they sent. Here's what came out.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Follow the signal: what the microphone permission actually opens, how the researchers drove 17,260 Android apps automatically and recorded every network packet, and the surprise: no app switched on the microphone, but some sent screenshots and screen recordings of what you did. Show the test rig, not hacking; no how-to.",
+      "why_now": "Owner note 19 Nov: traction. Professor Of AI's phone-listening Short has 2.45M in 7 days (338K a day, 6.1x its channel); phone Shorts run 1.8x their channel's median this fortnight.",
+      "facts": [
+        {
+          "label": "Android apps the study covered",
+          "value": 17260,
+          "unit": "count",
+          "as_of": "2018-06-16",
+          "source": "Pan et al., Proceedings on Privacy Enhancing Technologies 2018",
+          "url": "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf",
+          "latest": true,
+          "checked": "2026-11-20"
+        },
+        {
+          "label": "Apps run and watched in the dynamic test",
+          "value": 9100,
+          "unit": "count",
+          "as_of": "2018-06-16",
+          "source": "Pan et al., Proceedings on Privacy Enhancing Technologies 2018",
+          "url": "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf",
+          "latest": true,
+          "checked": "2026-11-20"
+        },
+        {
+          "label": "Apps that could take screenshots, in thousands",
+          "value": 9,
+          "unit": "count_thousand",
+          "as_of": "2018-07-06",
+          "source": "Northeastern University News",
+          "url": "https://news.northeastern.edu/?p=84687",
+          "latest": true,
+          "checked": "2026-11-20"
+        }
+      ],
+      "verify": [
+        "17,260 apps from Google Play, AppChina, Mi.com, Anzhi; 9,100 in the dynamic analysis (paper)",
+        "'not a single app activated the microphone'; 'no audio leaks at all'; 9,000 could take screenshots (Northeastern, 6 July 2018)",
+        "Android only, 2018, automated interaction: say so; never claim phones can't listen"
+      ],
+      "sources": [
+        "https://news.northeastern.edu/?p=84687",
+        "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-02-18",
       "status": "new"
     }
   ]
