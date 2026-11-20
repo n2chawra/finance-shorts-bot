@@ -1,16 +1,18 @@
 {
   "claudeCode": {
-    "latest": "2.1.328",
-    "checked": "2026-11-20",
+    "latest": "2.1.329",
+    "checked": "2026-11-21",
     "notes": [
       "2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow",
-      "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline."
+      "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline.",
+      "2.1.329: /tasks lists scheduled tasks and wakeups; MCP octet-stream files saved properly; fixes only. Nothing for the pipeline."
     ]
   },
   "sources": {
     "cia-world-factbook": "retired (live pages show a sunset notice), seen 2026-11-19",
     "worldbank-api": "api.worldbank.org/v2 JSON works from routines (data.worldbank.org pages return 403 to fetch), seen 2026-11-20",
-    "britannica": "403 to fetch from routines; use Wikipedia or official pages, seen 2026-11-20"
+    "britannica": "403 to fetch from routines; use Wikipedia or official pages, seen 2026-11-20",
+    "youtube-pages": "youtube.com/shorts pages return only navigation to fetch; identify a reference from the niche scan title, seen 2026-11-21"
   },
   "references": [
     "oTTBp0g4eXw",
@@ -28,6 +30,8 @@
     "7CzFh2qcnzU",
     "v2SCcxmWckI",
     "7b8ggcaofoQ",
-    "W96FDhzXpkA"
+    "W96FDhzXpkA",
+    "CbOsnWF5JDw",
+    "RQ2aN69cRYc"
   ]
 }

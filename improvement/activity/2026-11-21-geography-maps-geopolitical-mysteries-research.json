@@ -1,0 +1,22 @@
+{
+  "agent": "research",
+  "day": "2026-11-21",
+  "channel": "geography-maps-geopolitical-mysteries",
+  "startedAt": "2026-11-20T18:42:52Z",
+  "finishedAt": "2026-11-20T18:46:54Z",
+  "summary": "Acted on the owner's note about the power-station Short: rejected 3 topics whose answer isn't on the map, added 2 map-answer topics, and proposed a check that fails a plan with no map answer. Shorts policy check (AI labels, inauthentic content, engaged views): nothing to change.",
+  "decision": "acted",
+  "why": "The owner marked v-20261120-04 wrong because its answer wasn't on the map (43 views against Greenland's 1,207). Indonesia's island count was about to lead the feed with the same problem.",
+  "findings": [
+    {"title": "Owner's map test applied to the feed", "detail": "Rejected Indonesia's island count (top of the feed at 8.4), the Red Sea's name and North Korea at night; every new topic carries map_answer."},
+    {"title": "New top topic: why old cities' east sides are poorer", "detail": "Westerly winds blew factory smoke east; 5,000 chimneys, up to 20% of 2011 segregation (JPE 2021). Reference 526K, 16x its channel.", "link": "https://econpapers.repec.org/RePEc:ucp:jpolec:doi:10.1086/713101"},
+    {"title": "Doubly landlocked: Uzbekistan and Liechtenstein", "detail": "Reference 2.45M views on a 293K channel; waits until borders leaves the last-3 category window.", "link": "https://en.wikipedia.org/wiki/Landlocked_country"},
+    {"title": "AI labels and inauthentic content: nothing to change", "detail": "Labels target photorealistic AI and don't affect reach; the inauthentic-content rule targets repetitive templated videos, which the variety rules and map test guard against.", "link": "https://blog.youtube/news-and-events/improving-ai-labels-for-viewers-and-creators/"}
+  ],
+  "changes": [
+    {"title": "Topic feed: 2 added, 3 rejected", "detail": "east-side-poorer, doubly-landlocked; rejected indonesia-islands-count, red-sea-name, north-korea-dark-at-night", "branch": "agent/research/2026-11-21/geography-maps-geopolitical-mysteries"},
+    {"title": "Proposal map-answer-gate (adopt, for the improver)", "detail": "check-plan fails a plan whose topic has no one-line map answer", "branch": "agent/research/2026-11-21/geography-maps-geopolitical-mysteries"}
+  ],
+  "nextCheck": "2026-11-22",
+  "links": [{"label": "Report", "url": "channels/geography-maps-geopolitical-mysteries/research/2026-11-21.md"}]
+}
