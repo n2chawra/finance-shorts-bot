@@ -4,7 +4,7 @@
   "conditions": [
     "Craft before volume (owner, 20 Nov): no sample ships unless it beats the references' first minute; the new low-effort channels in this scan get 9-285 median long views.",
     "No repeated look (owner): a look-rotation and novelty gate in QA that fails a video whose kit mix, palette, camera language or place set repeats a recent video's; every video mixes kits (flat 2D, 3D, doc kit with real photos and report documents).",
-    "Long videos 10-15 min, not 5-6: the 10-15 min band has the best median on niche channels (775 on-niche, 69,187 raw; 16% hit rate) and every small-channel breakout is 10-15 min; 3-6 min is the weakest band (81).",
+    "Long videos 8-10 min (owner's choice, 20 Nov, over the data's 10-15 min best band: on-niche 10-15 min median 775 vs 6-10 min 285), one every 48 h + 1 promo Short each; 8+ min keeps mid-rolls.",
     "3D only for the key 60-120 s per video (the moment of failure): cloud 3D renders about 3.75 s a frame, so a full 3D long video would take 15+ hours; the rest in 2D and the doc kit.",
     "Settled, sourced stories: official investigation reports (NTSB, AAIB, BEA, ATSB, TSB, CSB) and reputable outlets; recent events told from preliminary reports only, with no blame beyond the report.",
     "Respectful and advertiser-friendly: no gore, no bodies, no victim close-ups, no sensational 'horror' thumbnails; deaths stated plainly, ending on what changed."
@@ -20,8 +20,16 @@
     "YouTube's bar doubles to 8,000 watch hours on 1 Feb 2027; reaching 4,000 before then needs about 50K long views in 10 weeks, so a hit, not the plan; tragedy topics can get limited ads if told graphically."
   ],
   "earnings": {
-    "m6": {"low": 0, "likely": 300, "high": 4000},
-    "m12": {"low": 100, "likely": 1500, "high": 12000},
+    "m6": {
+      "low": 0,
+      "likely": 300,
+      "high": 4000
+    },
+    "m12": {
+      "low": 100,
+      "likely": 1500,
+      "high": 12000
+    },
     "assumptions": "Estimates, not facts. One long video every 48 h (about 15 a month, 10-15 min) + 1 promo Short each. Partner programme at 8,000 watch hours (bar from 1 Feb 2027): about 90K long views at ~5.5 min watched, reached in month 3-5 in 'likely' (sooner with one breakout), never in 'low'. Long RPM $5 likely (AIR transport median $5.69, education $10.22; estimates); Shorts ignored. m6 likely: ~60K long views a month after joining. m12 likely: ~300K a month (15 videos x ~20K, small-channel hits 150K-1.9M as upside). High: one Fault Lines-sized hit a month. Sponsors not counted."
   },
   "demand": {
@@ -41,5 +49,10 @@
     "Plainly Difficult": "13 long, 401,670 median, ~10 min",
     "Practical Engineering": "7 long, 1,144,945 median, ~18 min; 'Stopping the Unstoppable' 5,620,536"
   },
-  "writtenAt": "2026-11-20T14:20:00Z"
+  "writtenAt": "2026-11-20T14:20:00Z",
+  "ownerDecisions": {
+    "longLength": "8-10 min (480-600 s)",
+    "cadence": "one long video every 48 h + 1 promo Short per long",
+    "decidedAt": "2026-11-20"
+  }
 }
