@@ -22,7 +22,7 @@
         ]
       },
       "health": {
-        "at": "2026-11-20T04:46:12.129Z",
+        "at": "2026-11-20T04:55:00.857Z",
         "color": "red",
         "reason": "1 Short ready: under a day",
         "stayed": 0.3790569503980404,
@@ -64,12 +64,12 @@
         }
       },
       "health": {
-        "at": "2026-11-20T04:46:12.129Z",
+        "at": "2026-11-20T04:55:00.857Z",
         "color": "red",
         "reason": "1 Short ready: under a day",
         "stayed": null,
         "bufferDays": 0.5,
-        "usageShare": 0.3,
+        "usageShare": 0.29,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
@@ -112,7 +112,7 @@
         }
       },
       "health": {
-        "at": "2026-11-20T04:46:12.129Z",
+        "at": "2026-11-20T04:55:00.857Z",
         "color": "red",
         "reason": "0 Shorts ready: under a day",
         "stayed": null,
@@ -156,18 +156,18 @@
         }
       },
       "health": {
-        "at": "2026-11-20T04:46:12.129Z",
+        "at": "2026-11-20T04:55:00.857Z",
         "color": "red",
-        "reason": "Craze & Crash: under a day of Shorts ready; Craze & Crash: The upload queue is empty; 0 Shorts ready: under a day",
+        "reason": "Craze & Crash: under a day of Shorts ready; Craze & Crash: The upload queue is empty; 1 Short ready: under a day",
         "stayed": null,
-        "bufferDays": 0,
+        "bufferDays": 0.5,
         "usageShare": 0.07,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
-      "backlog": 0,
+      "backlog": 1,
       "backlogByFormat": {
-        "short": 0,
+        "short": 1,
         "long": 0
       }
     }

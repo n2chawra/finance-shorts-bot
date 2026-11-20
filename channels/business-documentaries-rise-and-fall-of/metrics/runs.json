@@ -8,7 +8,7 @@
     },
     {
       "day": "2026-11-20",
-      "shipped": 0,
+      "shipped": 1,
       "failed": 1
     }
   ],
@@ -26,6 +26,13 @@
       "template": "short_story",
       "status": "failed",
       "reason": "check-plan: no format can pass: product_craze_short, rise_fall_short and business_war_short are tier low and blocked as personal-budget formats by generator/formats.py mix_problems (fixed run), and founder_bet, the channel's only core format, was the previous story (STORY_WINDOW 1)"
+    },
+    {
+      "id": "v-20261120-07",
+      "day": "2026-11-20",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
     }
   ]
 }
