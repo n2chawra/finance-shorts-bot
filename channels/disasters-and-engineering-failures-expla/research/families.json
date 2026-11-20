@@ -1,0 +1,584 @@
+{
+ "note": "Topic families from Claude's labels, ranked by the scan's numbers (workers/niche-research.ts). Tiers: core ≥1.5× or ≥20% hits, avoid <0.7×, unknown under 5 scored videos. gap: core and posted by ≤3 channels in 30 days.",
+ "rankedAt": "2026-11-20T14:29:52.162Z",
+ "labelled": 1230,
+ "of": 4149,
+ "families": [
+  {
+   "family": "stunt, ride or amateur gone wrong",
+   "kind": "long",
+   "n": 13,
+   "medianOutlier": 1.93,
+   "hitRate": 0,
+   "medianViews": 409809,
+   "tier": "core",
+   "examples": [
+    "Szjrjma49JM",
+    "NiIZ8SU_bis",
+    "6d4yzrEIvaI"
+   ],
+   "recent30": 2,
+   "crowding30": 2,
+   "direction": null,
+   "gap": true
+  },
+  {
+   "family": "air crash explained",
+   "kind": "short",
+   "n": 30,
+   "medianOutlier": 1.59,
+   "hitRate": 0.09,
+   "medianViews": 1816,
+   "tier": "core",
+   "examples": [
+    "WImj7TCdf0w",
+    "vESikPQLUck",
+    "t6b9DNWgMhg"
+   ],
+   "recent30": 6,
+   "crowding30": 3,
+   "direction": 0.15,
+   "gap": true
+  },
+  {
+   "family": "space mission failure",
+   "kind": "long",
+   "n": 11,
+   "medianOutlier": 1.59,
+   "hitRate": 0.09,
+   "medianViews": 214,
+   "tier": "core",
+   "examples": [
+    "qfCTDPMFLfQ",
+    "deFuJZOMzAw",
+    "hzIsPsugtWU"
+   ],
+   "recent30": 3,
+   "crowding30": 3,
+   "direction": 8.43,
+   "gap": true
+  },
+  {
+   "family": "flight sim what-if",
+   "kind": "short",
+   "n": 26,
+   "medianOutlier": 1.58,
+   "hitRate": 0.15,
+   "medianViews": 870502,
+   "tier": "core",
+   "examples": [
+    "77RYfJSuy1U",
+    "kEqf-x6cXF8",
+    "t4B4t8AmiMU"
+   ],
+   "recent30": 6,
+   "crowding30": 1,
+   "direction": 3.04,
+   "gap": true
+  },
+  {
+   "family": "how engineering works (no disaster)",
+   "kind": "short",
+   "n": 88,
+   "medianOutlier": 1.52,
+   "hitRate": 0.24,
+   "medianViews": 2278,
+   "tier": "core",
+   "examples": [
+    "iMcKJFuI2rQ",
+    "d3ok9s4khPM",
+    "lSwXiIuh_0M"
+   ],
+   "recent30": 36,
+   "crowding30": 6,
+   "direction": 56.18,
+   "gap": false
+  },
+  {
+   "family": "breaking news disaster (days old)",
+   "kind": "long",
+   "n": 44,
+   "medianOutlier": 1.37,
+   "hitRate": 0.3,
+   "medianViews": 593,
+   "tier": "core",
+   "examples": [
+    "Ayk__UBphmU",
+    "kzBssQclhJA",
+    "dcfldWqanJc"
+   ],
+   "recent30": 38,
+   "crowding30": 7,
+   "direction": 0.39,
+   "gap": false
+  },
+  {
+   "family": "dam, flood or infrastructure failure",
+   "kind": "short",
+   "n": 26,
+   "medianOutlier": 1.32,
+   "hitRate": 0.16,
+   "medianViews": 717,
+   "tier": "low",
+   "examples": [
+    "26TvA-03NbQ",
+    "pxH1MyEsxVM",
+    "hKbNCkX54NI"
+   ],
+   "recent30": 10,
+   "crowding30": 5,
+   "direction": 15.75,
+   "gap": false
+  },
+  {
+   "family": "survival story or safety tip",
+   "kind": "short",
+   "n": 41,
+   "medianOutlier": 1.23,
+   "hitRate": 0.11,
+   "medianViews": 2748515,
+   "tier": "low",
+   "examples": [
+    "V0CGuxCbeIk",
+    "ZH-77Zdv-o8",
+    "GxxEfo3KaqM"
+   ],
+   "recent30": 11,
+   "crowding30": 4,
+   "direction": 11.55,
+   "gap": false
+  },
+  {
+   "family": "space mission failure",
+   "kind": "short",
+   "n": 14,
+   "medianOutlier": 1.23,
+   "hitRate": 0.15,
+   "medianViews": 1212,
+   "tier": "low",
+   "examples": [
+    "Yxz9GnCoIuE",
+    "-JicLgHHbeM",
+    "X28TJkAlRGc"
+   ],
+   "recent30": 4,
+   "crowding30": 4,
+   "direction": 3.54,
+   "gap": false
+  },
+  {
+   "family": "breaking news disaster (days old)",
+   "kind": "short",
+   "n": 85,
+   "medianOutlier": 1.11,
+   "hitRate": 0.14,
+   "medianViews": 1667,
+   "tier": "low",
+   "examples": [
+    "JUevp0TSZME",
+    "wOizOTA9e-A",
+    "L73NEgH36JU"
+   ],
+   "recent30": 74,
+   "crowding30": 9,
+   "direction": 0.01,
+   "gap": false
+  },
+  {
+   "family": "rail crash",
+   "kind": "short",
+   "n": 13,
+   "medianOutlier": 1.07,
+   "hitRate": 0,
+   "medianViews": 829,
+   "tier": "low",
+   "examples": [
+    "z1Zijz8bHso",
+    "CjnXZTDFOZA",
+    "gvmdZC7EJUQ"
+   ],
+   "recent30": 2,
+   "crowding30": 2,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "air crash explained",
+   "kind": "long",
+   "n": 27,
+   "medianOutlier": 1.05,
+   "hitRate": 0.06,
+   "medianViews": 250,
+   "tier": "low",
+   "examples": [
+    "hM9ucqyTITs",
+    "_r9D__boaVA",
+    "sH8hV0bzYY0"
+   ],
+   "recent30": 11,
+   "crowding30": 5,
+   "direction": 3.32,
+   "gap": false
+  },
+  {
+   "family": "rail crash",
+   "kind": "long",
+   "n": 10,
+   "medianOutlier": 1.04,
+   "hitRate": 0.15,
+   "medianViews": 154694,
+   "tier": "low",
+   "examples": [
+    "Y5NuJDMYKlU",
+    "2l3_547XTdY",
+    "myoM_IcDb04"
+   ],
+   "recent30": 3,
+   "crowding30": 3,
+   "direction": 0.03,
+   "gap": false
+  },
+  {
+   "family": "stunt, ride or amateur gone wrong",
+   "kind": "short",
+   "n": 15,
+   "medianOutlier": 1,
+   "hitRate": 0,
+   "medianViews": 1504309,
+   "tier": "low",
+   "examples": [
+    "Fd85Kyu1-m0",
+    "n9Dl_cf5kug",
+    "neTlq_OcoOY"
+   ],
+   "recent30": 7,
+   "crowding30": 3,
+   "direction": 4618.16,
+   "gap": false
+  },
+  {
+   "family": "how engineering works (no disaster)",
+   "kind": "long",
+   "n": 84,
+   "medianOutlier": 1,
+   "hitRate": 0.13,
+   "medianViews": 5498,
+   "tier": "low",
+   "examples": [
+    "Ec30EwJk88w",
+    "KE_-tg3Y1fY",
+    "niwNxgP-4n4"
+   ],
+   "recent30": 23,
+   "crowding30": 8,
+   "direction": 1.76,
+   "gap": false
+  },
+  {
+   "family": "dam, flood or infrastructure failure",
+   "kind": "long",
+   "n": 36,
+   "medianOutlier": 1,
+   "hitRate": 0.13,
+   "medianViews": 174,
+   "tier": "low",
+   "examples": [
+    "mYu-3XJr1CA",
+    "SzjHFGpfxnE",
+    "qtCAIR-ACus"
+   ],
+   "recent30": 13,
+   "crowding30": 5,
+   "direction": 0.55,
+   "gap": false
+  },
+  {
+   "family": "industrial, chemical or nuclear disaster",
+   "kind": "short",
+   "n": 23,
+   "medianOutlier": 0.99,
+   "hitRate": 0.02,
+   "medianViews": 806,
+   "tier": "low",
+   "examples": [
+    "cIFSnU3lqiY",
+    "xqq0qd1euHM",
+    "DCty-LwqR0c"
+   ],
+   "recent30": 2,
+   "crowding30": 2,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "bridge collapse",
+   "kind": "short",
+   "n": 33,
+   "medianOutlier": 0.99,
+   "hitRate": 0.09,
+   "medianViews": 425,
+   "tier": "low",
+   "examples": [
+    "G1o4XMgD_i8",
+    "PqJyPFTMkXU",
+    "x4aJUnMczQo"
+   ],
+   "recent30": 20,
+   "crowding30": 4,
+   "direction": 7.78,
+   "gap": false
+  },
+  {
+   "family": "ship sinking or maritime",
+   "kind": "long",
+   "n": 9,
+   "medianOutlier": 0.99,
+   "hitRate": 0.13,
+   "medianViews": 226,
+   "tier": "low",
+   "examples": [
+    "QCzC7H1HttY",
+    "LLJp23OQacI",
+    "2H5OmAWGmXs"
+   ],
+   "recent30": 4,
+   "crowding30": 2,
+   "direction": 0.01,
+   "gap": false
+  },
+  {
+   "family": "ship sinking or maritime",
+   "kind": "short",
+   "n": 21,
+   "medianOutlier": 0.98,
+   "hitRate": 0.05,
+   "medianViews": 857,
+   "tier": "low",
+   "examples": [
+    "9rDhI1FC2Nk",
+    "jShgjo3u9wE",
+    "Mi6wWuCtNVc"
+   ],
+   "recent30": 4,
+   "crowding30": 2,
+   "direction": 7.7,
+   "gap": false
+  },
+  {
+   "family": "building collapse or fire",
+   "kind": "long",
+   "n": 19,
+   "medianOutlier": 0.96,
+   "hitRate": 0.13,
+   "medianViews": 150,
+   "tier": "low",
+   "examples": [
+    "GJHVg8coZFg",
+    "tgVNHnjzuDI",
+    "FzqzYGaBpG4"
+   ],
+   "recent30": 8,
+   "crowding30": 7,
+   "direction": 0.01,
+   "gap": false
+  },
+  {
+   "family": "off-niche (not disasters)",
+   "kind": "short",
+   "n": 329,
+   "medianOutlier": 0.94,
+   "hitRate": 0.1,
+   "medianViews": 1130,
+   "tier": "low",
+   "examples": [
+    "2Tb4EpcX4p0",
+    "pBBBNOUxDh4",
+    "UYKVv-vEQhY"
+   ],
+   "recent30": 138,
+   "crowding30": 11,
+   "direction": 11.65,
+   "gap": false
+  },
+  {
+   "family": "industrial, chemical or nuclear disaster",
+   "kind": "long",
+   "n": 33,
+   "medianOutlier": 0.93,
+   "hitRate": 0.11,
+   "medianViews": 110,
+   "tier": "low",
+   "examples": [
+    "4fLIIcokZbU",
+    "kKADHLO5rHw",
+    "mkge6QxoqYY"
+   ],
+   "recent30": 6,
+   "crowding30": 5,
+   "direction": 3.7,
+   "gap": false
+  },
+  {
+   "family": "mystery or vanished",
+   "kind": "short",
+   "n": 32,
+   "medianOutlier": 0.85,
+   "hitRate": 0.13,
+   "medianViews": 1482,
+   "tier": "low",
+   "examples": [
+    "B7JTpjSl5Vs",
+    "9HA21V1SGqg",
+    "ji0d3YNYRok"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "bridge collapse",
+   "kind": "long",
+   "n": 15,
+   "medianOutlier": 0.84,
+   "hitRate": 0.14,
+   "medianViews": 120,
+   "tier": "low",
+   "examples": [
+    "O__XCwbBu-I",
+    "_l7ZBSoU6qo",
+    "foZj6XFlEKc"
+   ],
+   "recent30": 7,
+   "crowding30": 5,
+   "direction": 4.29,
+   "gap": false
+  },
+  {
+   "family": "survival story or safety tip",
+   "kind": "long",
+   "n": 3,
+   "medianOutlier": 0.62,
+   "hitRate": 0,
+   "medianViews": 80,
+   "tier": "unknown",
+   "examples": [
+    "vk0UPt4e1Uk",
+    "LQhMzKFIpbw",
+    "CenUX3WjjTw"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "mystery or vanished",
+   "kind": "long",
+   "n": 3,
+   "medianOutlier": 0.53,
+   "hitRate": 0,
+   "medianViews": 155626,
+   "tier": "unknown",
+   "examples": [
+    "xR2jwvKZ3XU",
+    "feXKGetbwjw",
+    "bvKZ1SmePvE"
+   ],
+   "recent30": 2,
+   "crowding30": 2,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "natural disaster explained",
+   "kind": "long",
+   "n": 5,
+   "medianOutlier": 0.66,
+   "hitRate": 0,
+   "medianViews": 153,
+   "tier": "avoid",
+   "examples": [
+    "sAgIevJsP0Q",
+    "TLiiSgqGSvc",
+    "KZ45L_20jN4"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "building collapse or fire",
+   "kind": "short",
+   "n": 29,
+   "medianOutlier": 0.62,
+   "hitRate": 0.07,
+   "medianViews": 359,
+   "tier": "avoid",
+   "examples": [
+    "zfo4Kdtkn-g",
+    "CkhWfjLMu7M",
+    "G2djvAeHhAI"
+   ],
+   "recent30": 10,
+   "crowding30": 4,
+   "direction": 14.11,
+   "gap": false
+  },
+  {
+   "family": "natural disaster explained",
+   "kind": "short",
+   "n": 35,
+   "medianOutlier": 0.61,
+   "hitRate": 0.03,
+   "medianViews": 364,
+   "tier": "avoid",
+   "examples": [
+    "5O8TN5Nnohc",
+    "BEBQFHJkDxg",
+    "oAqIEljDFoU"
+   ],
+   "recent30": 3,
+   "crowding30": 2,
+   "direction": 72.58,
+   "gap": false
+  },
+  {
+   "family": "miniature disaster fx (fictional)",
+   "kind": "short",
+   "n": 45,
+   "medianOutlier": 0.61,
+   "hitRate": 0,
+   "medianViews": 359,
+   "tier": "avoid",
+   "examples": [
+    "T2mQ4eTWZjE",
+    "6fDKgnQkvIY",
+    "Sh5uU-GbmQM"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "off-niche (not disasters)",
+   "kind": "long",
+   "n": 33,
+   "medianOutlier": 0.58,
+   "hitRate": 0.07,
+   "medianViews": 69,
+   "tier": "avoid",
+   "examples": [
+    "-7vFxtKhDgw",
+    "cbGJLgYwigc",
+    "_55JPoZYSAs"
+   ],
+   "recent30": 24,
+   "crowding30": 7,
+   "direction": 0.01,
+   "gap": false
+  }
+ ]
+}

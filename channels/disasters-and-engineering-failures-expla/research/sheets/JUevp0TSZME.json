@@ -1,0 +1,113 @@
+{
+  "_source": "World explained Short, Florida Learjet crash, 2.5M views, 1:54. Built-in browser 2026-11-20: frames at 0, 5, 22, 50, 85 s. SAMPLED. Our own descriptions.",
+  "durationSec": 114,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": {
+    "kind": "AI voice",
+    "pace": "normal"
+  },
+  "captions": {
+    "style": "phrase",
+    "position": "bottom"
+  },
+  "music": {
+    "present": true,
+    "energy": "medium"
+  },
+  "sfxPerMinute": 8,
+  "hook": {
+    "firstFrame": "top-down: a white jet diving over a city grid with an orange trail; a vertical-speed meter panel at the top; a tag 'reconstructed, not original audio'; boxed caption starting with the distress call",
+    "firstLine": "A reconstructed distress call opens the Short.",
+    "question": true,
+    "subjectNamedAtSec": 5,
+    "figureShownAtSec": 5,
+    "figureSpokenAtSec": 8
+  },
+  "shots": [
+    {
+      "start": 0,
+      "end": 4,
+      "picture": "top-down dive over a city grid, orange trail, vertical-speed meter, reconstructed-audio tag",
+      "kind": "object",
+      "characters": 0,
+      "camera": "follow",
+      "transition": "none",
+      "onScreenText": "MAYDAY",
+      "figureOnScreen": false,
+      "motion": 3
+    },
+    {
+      "start": 4,
+      "end": 15,
+      "picture": "flat stylised map: cyan route turning orange where the descent starts, a white ring at the impact point; meter reads minus ten thousand",
+      "kind": "map",
+      "characters": 0,
+      "camera": "push in",
+      "transition": "cut",
+      "onScreenText": "-10,000 ft/min",
+      "figureOnScreen": true,
+      "motion": 2
+    },
+    {
+      "start": 15,
+      "end": 40,
+      "picture": "side view: flat-shaded jet with a cyan trail in level flight between painted clouds on navy; meter reads LEVEL",
+      "kind": "object",
+      "characters": 0,
+      "camera": "pan",
+      "transition": "cut",
+      "onScreenText": "LEVEL",
+      "figureOnScreen": false,
+      "motion": 1
+    },
+    {
+      "start": 40,
+      "end": 70,
+      "picture": "three-quarter view of the jet diving, orange trail, dark storm sky; the reconstructed-audio tag returns",
+      "kind": "object",
+      "characters": 0,
+      "camera": "follow",
+      "transition": "cut",
+      "onScreenText": "-10,000 ft/min",
+      "figureOnScreen": true,
+      "motion": 2
+    },
+    {
+      "start": 70,
+      "end": 100,
+      "picture": "close-up of a wing's leading edge with jagged ice, a cyan callout line 'ice reported'",
+      "kind": "object",
+      "characters": 0,
+      "camera": "push in",
+      "transition": "cut",
+      "onScreenText": "ICE REPORTED",
+      "figureOnScreen": false,
+      "motion": 1
+    },
+    {
+      "start": 100,
+      "end": 114,
+      "picture": "(not sampled)",
+      "kind": "mixed",
+      "characters": 0,
+      "camera": "static",
+      "transition": "cut",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 1
+    }
+  ],
+  "lines": [],
+  "ending": {
+    "loops": false,
+    "cta": null,
+    "lastFrame": "(not sampled)"
+  },
+  "whyItWorks": [
+    "A persistent instrument (the vertical-speed meter) sits in every shot; its reading carries the tension.",
+    "Opens on a reconstructed radio call, labelled as reconstructed: sound first, picture explains.",
+    "Captions boxed, the spoken word bolded and underlined.",
+    "A colour rule: cyan path while normal, orange once the descent starts."
+  ]
+}

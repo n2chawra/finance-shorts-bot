@@ -1,0 +1,134 @@
+{
+  "_source": "Fascinating Horror (1.47M subs), Eastern Airlines 212, 2.4M views, 11:35. Built-in browser 2026-11-20: frames over 0-140 s while the audio probe ran, then stopped on the owner's order. SAMPLED, PHOTO-DRIVEN, STRUCTURE ONLY (archival photos with credits; not a picture reference for us). Our own descriptions.",
+  "durationSec": 695,
+  "artStyle": "cut-out photos",
+  "language": "en",
+  "narrator": {
+    "kind": "human voice",
+    "pace": "normal"
+  },
+  "captions": {
+    "style": "none",
+    "position": "none"
+  },
+  "music": {
+    "present": true,
+    "energy": "low"
+  },
+  "sfxPerMinute": 2,
+  "hook": {
+    "firstFrame": "a serif date title in white small caps on a dark vignetted grey card, a small crow mark bottom-right",
+    "firstLine": "On a set date in 1974, passengers on a named flight looked out at landing.",
+    "question": false,
+    "subjectNamedAtSec": 4,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": null
+  },
+  "shots": [
+    {
+      "start": 0,
+      "end": 10,
+      "picture": "silent date title card, serif small caps, dark vignette",
+      "kind": "text card",
+      "characters": 0,
+      "camera": "static",
+      "transition": "fade",
+      "onScreenText": "11th September 1974",
+      "figureOnScreen": false,
+      "motion": 0
+    },
+    {
+      "start": 10,
+      "end": 18,
+      "picture": "cold-open narration over dark frames, a dip to black",
+      "kind": "text card",
+      "characters": 0,
+      "camera": "static",
+      "transition": "fade",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 0
+    },
+    {
+      "start": 18,
+      "end": 30,
+      "picture": "rapid montage of archival airline photos, a new picture every 0.5-1 s",
+      "kind": "photo",
+      "characters": 0,
+      "camera": "push in",
+      "transition": "cut",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 2
+    },
+    {
+      "start": 30,
+      "end": 73,
+      "picture": "archival fleet photos cross-dissolving, slow pan",
+      "kind": "photo",
+      "characters": 0,
+      "camera": "pan",
+      "transition": "fade",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 1
+    },
+    {
+      "start": 73,
+      "end": 148,
+      "picture": "credited photos of the aircraft type and the airports, one every ~5 s, Ken Burns",
+      "kind": "photo",
+      "characters": 0,
+      "camera": "push in",
+      "transition": "cut",
+      "onScreenText": "photo credit lower-left",
+      "figureOnScreen": false,
+      "motion": 1
+    },
+    {
+      "start": 148,
+      "end": 695,
+      "picture": "(not watched: stopped on the owner's order)",
+      "kind": "photo",
+      "characters": 0,
+      "camera": "static",
+      "transition": "cut",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 1
+    }
+  ],
+  "lines": [
+    {
+      "start": 4,
+      "end": 18,
+      "words": 40,
+      "job": "hook",
+      "gist": "on a set date passengers sensed something wrong; the pilots did not"
+    },
+    {
+      "start": 18,
+      "end": 73,
+      "words": 140,
+      "job": "context",
+      "gist": "the airline's history and size over a fast then slow photo run"
+    },
+    {
+      "start": 73,
+      "end": 148,
+      "words": 190,
+      "job": "context",
+      "gist": "the aircraft, the route and the stopover airports"
+    }
+  ],
+  "ending": {
+    "loops": false,
+    "cta": null,
+    "lastFrame": "(not watched)"
+  },
+  "whyItWorks": [
+    "Opens on a silent date card for ~6 s, then a dramatic-irony line: the passengers sensed danger, the pilots did not.",
+    "A 12 s burst of fast photo cuts (13 cuts) right after the hook, then slow 5 s holds: pace front-loaded.",
+    "Every photo carries its licence credit lower-left: sourcing is visible."
+  ]
+}

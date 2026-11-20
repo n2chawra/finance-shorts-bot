@@ -1,0 +1,124 @@
+{
+  "_source": "Inside Decoded Short, Palm Beach Learjet crash, 1.9M views, 80 s. Built-in browser 2026-11-20: frames at 0, 3, 14, 34, 56, 70, 78.5 s. SAMPLED. Our own descriptions.",
+  "durationSec": 80,
+  "artStyle": "3D animation",
+  "language": "en",
+  "narrator": {
+    "kind": "AI voice",
+    "pace": "normal"
+  },
+  "captions": {
+    "style": "phrase",
+    "position": "middle"
+  },
+  "music": {
+    "present": true,
+    "energy": "medium"
+  },
+  "sfxPerMinute": 6,
+  "hook": {
+    "firstFrame": "a white 3D jet banked steeply over a storm-cloud deck; title block top-left with the crash name and registration/route/date in small mono; '3D RECONSTRUCTION' top-right",
+    "firstLine": "In about a minute, a jet fell more than 26,000 feet.",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": 3,
+    "figureSpokenAtSec": 1
+  },
+  "shots": [
+    {
+      "start": 0,
+      "end": 3,
+      "picture": "steeply banked 3D jet over storm cloud, title block and reconstruction tag",
+      "kind": "object",
+      "characters": 0,
+      "camera": "follow",
+      "transition": "none",
+      "onScreenText": "FLORIDA LEARJET CRASH",
+      "figureOnScreen": false,
+      "motion": 2
+    },
+    {
+      "start": 3,
+      "end": 10,
+      "picture": "same dive, the figure slams in at the top",
+      "kind": "object",
+      "characters": 0,
+      "camera": "follow",
+      "transition": "cut",
+      "onScreenText": "↓ 26,000+ FT IN ~1 MIN",
+      "figureOnScreen": true,
+      "motion": 2
+    },
+    {
+      "start": 10,
+      "end": 30,
+      "picture": "level flight above cloud, telemetry panel top-left: clock, altitude, rate, data source",
+      "kind": "object",
+      "characters": 0,
+      "camera": "pan",
+      "transition": "cut",
+      "onScreenText": "12:47:55 PM · 35,000 FT",
+      "figureOnScreen": true,
+      "motion": 1
+    },
+    {
+      "start": 30,
+      "end": 50,
+      "picture": "the jet starting to roll; the panel flags the clock as paused while a cause is explained; red falling rate; 'an illustration' tag",
+      "kind": "object",
+      "characters": 0,
+      "camera": "follow",
+      "transition": "cut",
+      "onScreenText": "TIME PAUSED · FALLING 18,240 FT/MIN",
+      "figureOnScreen": true,
+      "motion": 2
+    },
+    {
+      "start": 50,
+      "end": 65,
+      "picture": "nose-down jet in cloud; the panel flags 'speed up 2x'",
+      "kind": "object",
+      "characters": 0,
+      "camera": "follow",
+      "transition": "cut",
+      "onScreenText": "SPEED UP 2x · 31,744 FT/MIN",
+      "figureOnScreen": true,
+      "motion": 3
+    },
+    {
+      "start": 65,
+      "end": 75,
+      "picture": "grey blurred ground rushing up; the toll in white caps",
+      "kind": "text card",
+      "characters": 0,
+      "camera": "static",
+      "transition": "cut",
+      "onScreenText": "9 ABOARD · NO SURVIVORS",
+      "figureOnScreen": false,
+      "motion": 2
+    },
+    {
+      "start": 75,
+      "end": 80,
+      "picture": "the whole path as a colour-graded curtain (blue to orange to red) over satellite terrain",
+      "kind": "map",
+      "characters": 0,
+      "camera": "pan",
+      "transition": "cut",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 1
+    }
+  ],
+  "lines": [],
+  "ending": {
+    "loops": false,
+    "cta": "points to the clearest view of the path (the full reconstruction)",
+    "lastFrame": "3D path curtain over satellite terrain"
+  },
+  "whyItWorks": [
+    "A telemetry panel (clock, altitude, falling rate, source) turns the Short into a live readout.",
+    "Honest time controls on screen: 'time paused' while explaining, 'speed up 2x' through the dive.",
+    "The end figure (26,000 ft in a minute) is in the first 3 s; the toll waits for the ground."
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "_source": "Athena_Explains (27.8K subs) Short, a pilot who saved 167 passengers, 7.4M views, 49 s, auto-dubbed. Built-in browser 2026-11-20: played 0-47 s with the audio probe, frames every ~6 s; the last ~2 s not captured (autoplay moved on). SAMPLED. Our own descriptions.",
+  "durationSec": 49,
+  "artStyle": "3D animation",
+  "language": "en (auto-dubbed)",
+  "narrator": {
+    "kind": "human voice",
+    "pace": "fast"
+  },
+  "captions": {
+    "style": "none",
+    "position": "none"
+  },
+  "music": {
+    "present": false,
+    "energy": "low"
+  },
+  "sfxPerMinute": 6,
+  "hook": {
+    "firstFrame": "a grey 3D cockpit with two pilots (one a stiff faceless figure), a round real photo of the captain inset at the top",
+    "firstLine": "(auto-dubbed; names the pilot and the 167 passengers he saved)",
+    "question": false,
+    "subjectNamedAtSec": 0,
+    "figureShownAtSec": null,
+    "figureSpokenAtSec": 1
+  },
+  "shots": [
+    {
+      "start": 0,
+      "end": 1.6,
+      "picture": "3D cockpit, pilots at the controls, circular real portrait of the captain at the top",
+      "kind": "character",
+      "characters": 2,
+      "camera": "static",
+      "transition": "cut",
+      "onScreenText": "captain portrait",
+      "figureOnScreen": false,
+      "motion": 1
+    },
+    {
+      "start": 1.6,
+      "end": 9.3,
+      "picture": "fast cuts (about one a second) between cabin, cockpit and map angles",
+      "kind": "mixed",
+      "characters": 2,
+      "camera": "push in",
+      "transition": "cut",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 3
+    },
+    {
+      "start": 9.3,
+      "end": 16,
+      "picture": "tilted 3D map: white land extruded from black, origin and destination red with yellow tag labels",
+      "kind": "map",
+      "characters": 0,
+      "camera": "pan",
+      "transition": "cut",
+      "onScreenText": "ISRAEL · UAE",
+      "figureOnScreen": false,
+      "motion": 2
+    },
+    {
+      "start": 16,
+      "end": 23.6,
+      "picture": "a small white jet in a black void over a white grid floor, yellow boxed altitude label",
+      "kind": "object",
+      "characters": 0,
+      "camera": "push in",
+      "transition": "cut",
+      "onScreenText": "34000 FT",
+      "figureOnScreen": false,
+      "motion": 1
+    },
+    {
+      "start": 23.6,
+      "end": 28.7,
+      "picture": "white faceless mannequins in a grey cabin, blue seats the only colour",
+      "kind": "character",
+      "characters": 3,
+      "camera": "static",
+      "transition": "cut",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 2
+    },
+    {
+      "start": 28.7,
+      "end": 36.2,
+      "picture": "fuselage cutaway on the grid floor: rows of seats, passengers coloured red or green",
+      "kind": "object",
+      "characters": 20,
+      "camera": "pan",
+      "transition": "cut",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 2
+    },
+    {
+      "start": 36.2,
+      "end": 49,
+      "picture": "(sampled sparsely) more cabin and cockpit angles",
+      "kind": "mixed",
+      "characters": 2,
+      "camera": "static",
+      "transition": "cut",
+      "onScreenText": null,
+      "figureOnScreen": false,
+      "motion": 2
+    }
+  ],
+  "lines": [],
+  "ending": {
+    "loops": false,
+    "cta": null,
+    "lastFrame": "(not captured)"
+  },
+  "whyItWorks": [
+    "A real face (round photo inset) over a 3D set in frame one: the hero is a person, not a plane.",
+    "Ten cuts in the first ten seconds, then 5-7 s 3D shots: fast hook, slower explanation.",
+    "Untextured clay 3D (white mannequins, one accent colour) reads instantly at phone size.",
+    "Colour coding on a cutaway (red vs green passengers) carries the stakes without words."
+  ]
+}
