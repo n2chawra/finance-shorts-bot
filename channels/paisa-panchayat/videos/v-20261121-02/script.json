@@ -1,0 +1,804 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38517,
+ "story": "secret_of_rich",
+ "shape": "small-paycheck",
+ "currency": "USD",
+ "style": {
+  "palette": "forest",
+  "genre": "cinematic",
+  "key": "A",
+  "bpm": 94,
+  "look": {
+   "stage": "studio",
+   "header": "ribbon",
+   "holder": "sign",
+   "entrance": "drop"
+  }
+ },
+ "arms": {
+  "length": "28-35",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "22"
+ },
+ "hook_style": "secret",
+ "cta": "A paycheck now or a cut later: which would you take? Comment",
+ "feed_id": "2026-11-21-arnold-0-salary-twins-biggest-paycheck",
+ "facts": [
+  {
+   "label": "Upfront salary Schwarzenegger took to star in Twins",
+   "value": 0,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "1988-12-09",
+   "source": "Arnold Schwarzenegger",
+   "url": "https://www.avclub.com/arnold-schwarzenegger-twins-biggest-paycheck"
+  },
+  {
+   "label": "What Twins paid Schwarzenegger in total, in his words 'over'",
+   "value": 40,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2025-06-23",
+   "source": "Arnold Schwarzenegger",
+   "url": "https://www.avclub.com/arnold-schwarzenegger-twins-biggest-paycheck"
+  },
+  {
+   "label": "What Twins could be made for with no star salaries",
+   "value": 16.5,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "1988-12-09",
+   "source": "Arnold Schwarzenegger",
+   "url": "https://www.avclub.com/arnold-schwarzenegger-twins-biggest-paycheck"
+  },
+  {
+   "label": "Share of the film's backend the stars and director took instead",
+   "value": 40,
+   "unit": "percent",
+   "as_of": "1988-12-09",
+   "source": "Arnold Schwarzenegger",
+   "url": "https://www.avclub.com/arnold-schwarzenegger-twins-biggest-paycheck"
+  },
+  {
+   "label": "What Twins made at the box office",
+   "value": 216,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "1989-12-31",
+   "source": "A.V. Club",
+   "url": "https://www.avclub.com/arnold-schwarzenegger-twins-biggest-paycheck"
+  }
+ ],
+ "maths": [
+  {
+   "name": "pay",
+   "kind": "share",
+   "total": 40000000,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  },
+  {
+   "name": "bud",
+   "kind": "share",
+   "total": 16500000,
+   "parts": 1,
+   "facts": {
+    "total": 3
+   }
+  },
+  {
+   "name": "deal",
+   "kind": "compare",
+   "a": "pay.total",
+   "b": "bud.total"
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "chairs",
+  "sec": 2.8,
+  "words": "Twins for *free*?",
+  "figure": "{fact1}",
+  "tag": "His salary",
+  "angle": "number",
+  "who": "rohan"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Arnold Schwarzenegger said no to a salary for Twins. Why work for free?",
+   "events": {
+    "arnold": {
+     "word": "Arnold"
+    },
+    "no": {
+     "word": "no"
+    },
+    "salary": {
+     "word": "salary"
+    },
+    "why": {
+     "word": "Why"
+    },
+    "free": {
+     "word": "free"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "arnold"
+    },
+    {
+     "kind": "whoosh",
+     "at": "salary"
+    },
+    {
+     "kind": "whoosh",
+     "at": "why"
+    },
+    {
+     "kind": "boom",
+     "at": "free"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "an old Hollywood studio office",
+     "the Twins film set"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "salary",
+      "size": "close"
+     },
+     {
+      "at": "why",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "arnold",
+      "what": "Arnold behind the studio desk, the salary cheque held out to him"
+     },
+     {
+      "at": "no",
+      "what": "he shakes his head and pushes the cheque back"
+     },
+     {
+      "at": "salary",
+      "what": "he tears the cheque in two, the pieces flutter"
+     },
+     {
+      "at": "why",
+      "what": "flash cut to the film set, a TWINS clapboard rises"
+     },
+     {
+      "at": "free",
+      "what": "his empty pay envelope drops on his chair"
+     }
+    ],
+    "things": [
+     "studio desk",
+     "salary cheque",
+     "clapboard",
+     "director's chair",
+     "pay envelope"
+    ],
+    "fig": {
+     "pay": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "chairs",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "And Danny DeVito and the director took no salary too.",
+   "events": {
+    "and": {
+     "word": "And"
+    },
+    "devito": {
+     "word": "DeVito"
+    },
+    "director": {
+     "word": "director"
+    },
+    "salary": {
+     "word": "salary"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "and"
+    },
+    {
+     "kind": "pop",
+     "at": "devito"
+    },
+    {
+     "kind": "pop",
+     "at": "director"
+    },
+    {
+     "kind": "tick",
+     "at": "salary"
+    }
+   ],
+   "params": {
+    "component": "Chairs",
+    "place": "the film set, three director's chairs in a row",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "salary",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "and",
+      "what": "the camera slides along the set to three director's chairs"
+     },
+     {
+      "at": "devito",
+      "what": "the middle chair's name back flips to DEVITO"
+     },
+     {
+      "at": "director",
+      "what": "the third chair flips to REITMAN, a megaphone on it"
+     },
+     {
+      "at": "salary",
+      "what": "a crew member tosses three empty pay envelopes onto the seats"
+     }
+    ],
+    "things": [
+     "director's chairs",
+     "name backs",
+     "megaphone",
+     "empty pay envelopes",
+     "studio lights",
+     "crew member"
+    ],
+    "fig": {}
+   },
+   "transition": "whip"
+  },
+  {
+   "id": "budget",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So the studio made the whole film for just {fact3}.",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "studio": {
+     "word": "studio"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "film": {
+     "word": "film"
+    },
+    "just": {
+     "word": "just"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "so"
+    },
+    {
+     "kind": "pop",
+     "at": "studio"
+    },
+    {
+     "kind": "kaching",
+     "at": "film"
+    }
+   ],
+   "params": {
+    "component": "Budget",
+    "place": "the studio's money room, a budget board on the wall",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "film",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "the studio boss pulls a cord, the budget board flips over"
+     },
+     {
+      "at": "studio",
+      "what": "cash bundles slide onto the table"
+     },
+     {
+      "at": "whole",
+      "what": "the board counts up to the budget"
+     },
+     {
+      "at": "film",
+      "what": "a film reel stamps onto the board, the boss grins"
+     },
+     {
+      "at": "just",
+      "what": "the boss slaps the table, the bundles jump"
+     }
+    ],
+    "things": [
+     "budget board",
+     "cash bundles",
+     "film reel",
+     "studio boss"
+    ],
+    "fig": {
+     "budget": "{fact3}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "backend",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Instead, the three took {fact4} of the film's earnings.",
+   "events": {
+    "instead": {
+     "word": "Instead"
+    },
+    "three": {
+     "word": "three"
+    },
+    "film": {
+     "word": "film's"
+    },
+    "earnings": {
+     "word": "earnings"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "instead"
+    },
+    {
+     "kind": "pop",
+     "at": "three"
+    },
+    {
+     "kind": "ding",
+     "at": "film"
+    },
+    {
+     "kind": "kaching",
+     "at": "earnings"
+    }
+   ],
+   "params": {
+    "component": "Pie",
+    "place": "the studio's screening room, a film reel on the table",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "film",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "instead",
+      "what": "the film reel on the table turns into a pie"
+     },
+     {
+      "at": "three",
+      "what": "the studio boss pushes a big wedge of the pie away to three chairs"
+     },
+     {
+      "at": "film",
+      "what": "the wedge's tag stamps the share"
+     },
+     {
+      "at": "earnings",
+      "what": "the wedge glows gold over the chairs"
+     }
+    ],
+    "things": [
+     "film reel pie",
+     "pie wedge",
+     "share tag",
+     "director's chairs",
+     "studio boss"
+    ],
+    "fig": {
+     "share": "{fact4}"
+    }
+   },
+   "transition": "zoom-through"
+  },
+  {
+   "id": "boxoffice",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then Twins made {fact5} at the box office.",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "twins": {
+     "word": "Twins"
+    },
+    "box": {
+     "word": "box"
+    },
+    "office": {
+     "word": "office"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "then"
+    },
+    {
+     "kind": "ding",
+     "at": "twins"
+    },
+    {
+     "kind": "kaching",
+     "at": "office"
+    }
+   ],
+   "params": {
+    "component": "Cinema",
+    "place": "a cinema at night, a queue round the block",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "box",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "then",
+      "what": "the cinema marquee lights up"
+     },
+     {
+      "at": "twins",
+      "what": "TWINS writes onto the marquee letter by letter, the queue cheers"
+     },
+     {
+      "at": "box",
+      "what": "the box office counter over the door counts up"
+     },
+     {
+      "at": "office",
+      "what": "tickets stream out of the booth"
+     }
+    ],
+    "things": [
+     "cinema marquee",
+     "queue",
+     "box office counter",
+     "tickets"
+    ],
+    "fig": {
+     "made": "{fact5}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "tapes",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "And the money kept coming, from video tapes too.",
+   "events": {
+    "and": {
+     "word": "And"
+    },
+    "money": {
+     "word": "money"
+    },
+    "coming": {
+     "word": "coming"
+    },
+    "video": {
+     "word": "video"
+    },
+    "tapes": {
+     "word": "tapes"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "and"
+    },
+    {
+     "kind": "kaching",
+     "at": "money"
+    },
+    {
+     "kind": "whoosh",
+     "at": "video"
+    },
+    {
+     "kind": "pop",
+     "at": "tapes"
+    }
+   ],
+   "params": {
+    "component": "Tapes",
+    "place": "a video rental shop",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "video",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "and",
+      "what": "the shop's neon sign buzzes on"
+     },
+     {
+      "at": "money",
+      "what": "coins drop from the till into a slot"
+     },
+     {
+      "at": "coming",
+      "what": "a conveyor of coins runs out of the shop door"
+     },
+     {
+      "at": "video",
+      "what": "TWINS tapes fly off the shelves one by one"
+     },
+     {
+      "at": "tapes",
+      "what": "Rohan at the counter grabs the last tape"
+     }
+    ],
+    "things": [
+     "video shop shelves",
+     "neon sign",
+     "video tapes",
+     "till",
+     "coins"
+    ],
+    "fig": {}
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Arnold says it paid him over {fact2}, more than {deal_ratio} what the whole film cost.",
+   "events": {
+    "arnold": {
+     "word": "Arnold"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "over": {
+     "word": "over"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "cost": {
+     "word": "cost"
+    },
+    "more": {
+     "word": "more"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "riser",
+     "at": "arnold"
+    },
+    {
+     "kind": "pop",
+     "at": "paid"
+    },
+    {
+     "kind": "boom",
+     "at": "over"
+    },
+    {
+     "kind": "ding",
+     "at": "cost"
+    }
+   ],
+   "params": {
+    "component": "Cheque",
+    "place": "Arnold's study at night, a giant cheque on the desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "over",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "arnold",
+      "what": "Arnold leans back in his chair, grinning, cigar-free"
+     },
+     {
+      "at": "paid",
+      "what": "a giant cheque slides up on the desk"
+     },
+     {
+      "at": "over",
+      "what": "the cheque's amount stamps on"
+     },
+     {
+      "at": "more",
+      "what": "Arnold raises the cheque corner, the lamp flares"
+     },
+     {
+      "at": "whole",
+      "what": "a small budget card drops beside the cheque"
+     },
+     {
+      "at": "cost",
+      "what": "the times tag stamps between them"
+     }
+    ],
+    "things": [
+     "giant cheque",
+     "budget card",
+     "times tag",
+     "desk lamp",
+     "arnold"
+    ],
+    "fig": {
+     "pay": "{fact2}",
+     "budget": "{fact3}",
+     "times": "{deal_ratio}"
+    }
+   },
+   "transition": "cut"
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "A salary or a cut: which would you take? Arnold said no to the salary.",
+   "events": {
+    "salary": {
+     "word": "salary"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "take": {
+     "word": "take"
+    },
+    "arnold": {
+     "word": "Arnold"
+    },
+    "no": {
+     "word": "no"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "salary"
+    },
+    {
+     "kind": "pop",
+     "at": "cut"
+    },
+    {
+     "kind": "ding",
+     "at": "take"
+    },
+    {
+     "kind": "whoosh",
+     "at": "no"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "back in the old Hollywood studio office",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "arnold",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "salary",
+      "what": "a salary cheque slides onto the desk"
+     },
+     {
+      "at": "cut",
+      "what": "a pie wedge slides in beside it"
+     },
+     {
+      "at": "take",
+      "what": "a question mark pops between them"
+     },
+     {
+      "at": "arnold",
+      "what": "Arnold steps in behind the desk"
+     },
+     {
+      "at": "no",
+      "what": "he pushes the cheque back, ready to tear it"
+     }
+    ],
+    "things": [
+     "studio desk",
+     "salary cheque",
+     "pie wedge",
+     "arnold"
+    ],
+    "fig": {}
+   },
+   "transition": "cut"
+  }
+ ],
+ "narrator": "am_michael"
+}
