@@ -178,7 +178,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     the present tense ("Rohan walks into the showroom. The dealer takes two thousand off."), not a
     general explanation ("some dealers can add points"). The example *is* the explanation.
   - **Say it with certainty.** No "might", "may", "could", "can", "some", "often", "quietly": tell
-    what happens in this story. The on-screen disclaimer covers it (`number-check` allows 2 hedges).
+    what happens in this story. The disclaimer in the description covers it (`number-check` allows 2 hedges).
   - **Always an open question.** Every 2–3 beats a line opens the next one before the last is
     closed: "But that's not where he makes his money." · "So why would he give it away?" · "Here's
     the clever part." The hook's answer comes only in the payoff, in the last quarter.
@@ -231,8 +231,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   words. One question, one surprising answer, one punchline.
 - **Loop it:** the last line hands back to the first, so a viewer who keeps watching sees the hook
   again and it plays on ("…and that's why the rich one never needed the raise." → "Poor person
-  gets a raise."). **No `end` beat in a Short:** the disclaimer shows as a small line over the last
-  moments and sits in the description. Put the plan's `cta` in a character's last line only if it
+  gets a raise."). **No `end` beat in a Short:** the disclaimer sits in the description only (never on
+  screen since 2026-11-20). Put the plan's `cta` in a character's last line only if it
   doesn't break the loop.
 - **The story spine and its shape** (README "The story spine"): copy the plan's shape into
   `script.shape` (its id) and arrange the beats as that shape says: hook → promise by 6 s → a figure

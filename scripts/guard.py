@@ -142,13 +142,8 @@ def invariants(head: str) -> list[str]:
     timeline = show(head, "renderer/timeline/build.py") or ""
     if 'DISCLAIMER = "Illustrative only. Not financial advice."' not in timeline or "must be the end card" not in timeline:
         out.append("renderer/timeline/build.py must keep the disclaimer and require long videos to end on the end card")
-    stage = show(head, "remotion/src/scenes/stage.tsx") or ""
-    if "tl.disclaimer" not in stage:
-        out.append("remotion/src/scenes/stage.tsx: the end card must still draw the disclaimer")
-    # a Short has no end card since 2026-10-21: the disclaimer is a line over its last moments
-    story = show(head, "remotion/src/compositions/StoryVideo.tsx") or ""
-    if "<DisclaimerLine" not in story or "{tl.disclaimer}" not in story:
-        out.append("remotion/src/compositions/StoryVideo.tsx must still draw the disclaimer line on a video without an end card")
+    # the disclaimer is not drawn in the video since 2026-11-20 (owner: "remove disclaimer from video, keep in
+    # description"); the invariant that stays is the description check below
     run_py = show(head, "generator/run.py") or ""
     if 'description must include the disclaimer' not in run_py:
         out.append("generator/run.py check-plan must still require the disclaimer in every description")

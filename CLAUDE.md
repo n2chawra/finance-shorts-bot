@@ -193,9 +193,10 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
   shapes `question-chain`, `ladder`, `true-history`. Captions are whole sentences in a small box low on
   the frame with the speaker's name (owner-approved); the music sits lower under speech and drops
   before each reveal.
-- Every video carries the disclaimer "Illustrative only. Not financial advice.": long videos on the
-  end card; Shorts (no end card, they loop) as a small line over the last moments; and every
-  description (check-plan).
+- Every video's **description** carries its channel's disclaimer (Paisa Panchayat: "Illustrative only. Not
+  financial advice."; others in `channels/<channel>/channel.json`), checked by check-plan. It is **not drawn
+  in the video** (owner, 2026-11-20: it looked bad; YouTube and India's rules judge what a video says, not an
+  on-screen label, so the description is enough). Long videos keep the end card without it.
 - Generation runs as **Claude Code routines on a Claude Pro plan** (subscription usage, no API key).
   Keep runs lean. Never enable paid usage credits.
 

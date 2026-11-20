@@ -125,7 +125,7 @@ export const ChecklistScene: React.FC<SceneProps> = (p) => {
 };
 
 /** A channel told without characters (timeline `cast: "none"`, the business documentaries, 2026-11-19): the end card
- * is a dark charcoal page with the question, the follow line, the sources and the disclaimer, and no cast. */
+ * is a dark charcoal page with the question, the follow line and the sources, and no cast (the disclaimer lives in the description since 2026-11-20). */
 const PlainEnd: React.FC<SceneProps> = (p) => {
   const { width: w, height: h } = p.tl;
   const t = sec(p);
@@ -143,9 +143,6 @@ const PlainEnd: React.FC<SceneProps> = (p) => {
       </div>
       <div style={{ position: "absolute", left, top: v ? 820 : 640, width, fontFamily: FONT, fontWeight: 500, fontSize: v ? 44 : 32, lineHeight: 1.35, color: "#b9b2a6", ...fade(1.3) }}>
         {str(p.beat.params.assumption)}
-      </div>
-      <div style={{ position: "absolute", left, top: v ? 1060 : 800, width, fontFamily: FONT, fontWeight: 600, fontSize: v ? 46 : 34, color: "#f4efe6", ...fade(1.6) }}>
-        {p.tl.disclaimer}
       </div>
     </AbsoluteFill>
   );
@@ -172,9 +169,6 @@ export const EndScene: React.FC<SceneProps> = (p) => {
       <Kinetic text={str(p.beat.params.follow)} p={p} start={0.9} size={v ? 56 : 46} color={pal.accent} weight={700} x={left} y={y.follow} width={width} align="left" />
       <div style={{ position: "absolute", left, top: y.note, width: v ? width : w * 0.46, fontFamily: FONT, fontWeight: 500, fontSize: v ? 44 : 32, color: pal.muted, opacity: clamp((t - 1.4) / 0.4), lineHeight: 1.3 }}>
         {str(p.beat.params.assumption)}
-      </div>
-      <div style={{ position: "absolute", left, top: y.disc, width, fontFamily: FONT, fontWeight: 600, fontSize: v ? 46 : 34, color: pal.text, opacity: clamp((t - 1.6) / 0.4) }}>
-        {p.tl.disclaimer}
       </div>
       <svg width={w} height={h} style={{ position: "absolute" }}>
         {cast.map((a, i) => <Actor key={a.who} p={p} spec={a} ground={ground - 40} index={i} />)}

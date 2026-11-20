@@ -16,8 +16,6 @@ import { Timeline, type Beat } from "../contract/timeline";
 import { ExperimentsContext } from "../contract/flags";
 import { LayoutProbe } from "../fx/probe";
 import { captionGroups, captionTokens, Captions } from "../fx/captions";
-import { FONT } from "../design/fonts";
-import { LONG, SHORT } from "../design/frame";
 import { cameraTransform, exitStyle, transitionFrames, transitionStyle, Vignette } from "../fx/camera";
 import type { SceneProps } from "../scenes/kit";
 import { ChapterScene, ChecklistScene, EndScene, StageScene } from "../scenes/stage";
@@ -86,22 +84,8 @@ const LogoBug: React.FC<{ w: number; h: number; logo: string | null }> = ({ w, h
   );
 };
 
-/** A Short without an end card (it loops back to its hook) still says this, small, in its last moments. */
-const DisclaimerLine: React.FC<{ tl: Timeline; low?: boolean }> = ({ tl }) => {
-  const v = tl.height > tl.width;
-  // small, at the bottom of the frame, under the captions and just clear of the Shorts UI zone (owner,
-  // 2026-11-04: "put the disclaimer at the below end of the screen, small"; it sat over the cast's legs).
-  // The smallest text a frame allows, a slim pill; its bottom edge stays above the frame's bottom zone.
-  const f = v ? SHORT : LONG, size = f.minText, pill = Math.round(size * 1.15) + 8;
-  return (
-    // anchored by its bottom edge, so a channel's longer disclaimer wraps onto a second line upwards instead
-    // of running off the frame (the geography channel's, 2026-11-17); channel #1's still fits on one line
-    <div style={{ position: "absolute", left: 40, right: v ? 150 : 40, bottom: f.bottomSafe + 12, display: "flex", justifyContent: "center" }}>
-      <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: size, lineHeight: 1.15, color: "#fff", background: "rgba(0,0,0,0.5)",
-        padding: "4px 22px", borderRadius: pill / 2, textAlign: "center", maxWidth: "100%" }}>{tl.disclaimer}</div>
-    </div>
-  );
-};
+/* The disclaimer is no longer drawn in the video (owner, 2026-11-20: "remove disclaimer from video, keep in
+ * description"); every description carries it (generator/run.py check-plan). */
 
 // probe: log text boxes (fx/probe.tsx); atFrame: draw this one frame (a cover), without captions,
 // logo or disclaimer, on the timeline's own clock (a Still has no fps of its own)
@@ -146,7 +130,6 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe, atFrame }) =
   const local = (frame - cur.from) * timeline.tempo;      // transitions run on the story clock too
   const overlap = i > 0 && cur.transition !== "cut" && local < transitionFrames(cur.transition);
   const groups = useMemo(() => captionGroups(captionTokens(timeline)), [timeline]);
-  const hasEnd = beats.some((b) => b.scene === "end");
   return (
     <AbsoluteFill style={{ background: timeline.palette.bg }}>
       {/* decoration (a ghost prop, a thing half off the frame) never shows lettering: it can't be read */}
@@ -164,7 +147,6 @@ export const StoryVideo: React.FC<StoryProps> = ({ timeline, probe, atFrame }) =
       <Grain />
       {!cover && cur.scene !== "end" && cur.scene !== "doc" && <LogoBug w={timeline.width} h={timeline.height} logo={timeline.logo} />}
       {!cover && timeline.captions && <Captions tl={timeline} frame={frame} groups={groups} scene={cur.scene} />}
-      {!cover && !hasEnd && frame >= timeline.durationInFrames - Math.round(fps * 1.4) && <DisclaimerLine tl={timeline} low={cur.scene === "board"} />}
       {probe && <LayoutProbe frame={frame} />}
     </AbsoluteFill>
   );

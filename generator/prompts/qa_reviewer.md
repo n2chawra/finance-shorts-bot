@@ -69,8 +69,8 @@ D. **Not directed like the reference** (owner, 2026-11-13: every new video is di
    `channels/<channel>/analysis/pictures.json` → `reference` (our own Shorts that held viewers best). Reject
    `[scene]` a video whose frames are clearly emptier, smaller or harder to read than theirs, naming
    the stills.
-7. **No disclaimer:** the last frame does not show "Illustrative only. Not financial advice." (a
-   Short shows it as a small line over its last moments; a long video on its end card).
+7. **Disclaimer in the description, never on screen** (owner, 2026-11-20): reject `[script]` a
+   description without the channel's disclaimer. Do not ask for it in the frames: videos no longer show it.
 7b. **Announced structure** (Shorts), from the script: reject `[script]` level chips, "three
    clues…", "level one, two…" or any line that announces what is coming. The hook names the subject
    and asks, holding the answer back (check 6); the cast may trade short lines, that is the skit.
