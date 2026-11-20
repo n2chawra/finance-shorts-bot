@@ -9,7 +9,7 @@ import tempfile
 import urllib.error
 from pathlib import Path
 
-from . import STOCK_CHANNELS, licence
+from . import STOCK_CHANNELS, licence, may_use
 from .providers import get as provider
 from .providers.edgar import Edgar, page_with, split_pages
 from .store import (ROOT, MediaError, cache_root, download, licence_snapshot, load_log, now, probe, record, sha256,
@@ -33,9 +33,9 @@ def asset_id(source: str, kind: str, ident: str) -> str:
 
 
 def allowed(slug: str, source: str) -> None:
-    if source != "commons" and slug not in STOCK_CHANNELS:
-        raise MediaError(f"{source}: only {', '.join(sorted(STOCK_CHANNELS))} may use sources beyond Wikimedia Commons "
-                         f"(the owner's rule for every other channel: Commons only)")
+    if not may_use(slug, source):
+        raise MediaError(f"{source}: not allowed on {slug} (generator/media/__init__.py STOCK_CHANNELS / CHANNEL_SOURCES; "
+                         f"the owner's rule for every other channel: Commons only)")
 
 
 def parse_ref(ref: str) -> tuple[str, str, str]:
@@ -289,8 +289,8 @@ def check(slug: str, script: dict, vid: str | None = None, root: Path = ROOT, fi
             out.append(f"media:{aid}: {reason}")
         elif verdict == licence.REVIEW and not r.get("ownerOk"):
             out.append(f"media:{aid}: needs the owner's OK ({reason}); record it as \"ownerOk\" on the asset")
-        elif r.get("source") != "commons" and slug not in STOCK_CHANNELS:
-            out.append(f"media:{aid}: {r.get('source')} is not allowed on this channel (Commons only)")
+        elif not may_use(slug, r.get("source", "")):
+            out.append(f"media:{aid}: {r.get('source')} is not allowed on this channel")
         elif files and not (cache_root(slug) / r.get("path", "")).is_file():
             out.append(f"media:{aid}: {cache_root(slug) / r.get('path', '')} is missing; fetch it again ({r.get('ref')})")
     return out

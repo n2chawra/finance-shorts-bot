@@ -54,6 +54,12 @@ def main(argv: list[str] | None = None) -> int:
     e.add_argument("--match", type=int, default=1, help="with --find: the Nth matching page (the contents page is skipped)")
     e.add_argument("--page", type=int, help="render this page (1-based)")
     e.add_argument("--list", action="store_true", help="only list the filings")
+    r = cmd("report", help="fetch an official investigation report and render a page to PNG (generator/media/reports.py)")
+    r.add_argument("url", help="the report PDF's URL on the agency's site")
+    r.add_argument("--find", help="render the page containing this text")
+    r.add_argument("--match", type=int, default=1, help="with --find: the Nth matching page")
+    r.add_argument("--page", type=int, help="render this page (1-based)")
+    r.add_argument("--title", help="the report's title for the credit (default: the file name)")
     c = cmd("credits", help="description credit lines for a video's assets")
     c.add_argument("target", help="video id or script.json")
     k = cmd("check", help="fail if a script uses an unlogged or disallowed asset")
@@ -97,6 +103,11 @@ def main(argv: list[str] | None = None) -> int:
             if not pick:
                 raise MediaError(f"{a.accession}: not among the listed filings (try --list)")
             r = library.fetch_filing(slug, pick["id"], a.find, a.page, nth=a.match)
+            print(json.dumps(r, indent=2, ensure_ascii=False))
+            print(f"cached: {cache_root(slug) / r['path']}\nlogged: {log_path(slug)}", file=sys.stderr)
+        elif a.cmd == "report":
+            from .reports import fetch_report
+            r = fetch_report(slug, a.url, a.find, a.page, a.match, a.title)
             print(json.dumps(r, indent=2, ensure_ascii=False))
             print(f"cached: {cache_root(slug) / r['path']}\nlogged: {log_path(slug)}", file=sys.stderr)
         elif a.cmd == "credits":

@@ -36,4 +36,6 @@ if [ -z "${SEC_USER_AGENT:-}" ]; then
   echo "setup-cloud: note: SEC_USER_AGENT is not set; doc channels can't fetch SEC filing pages" >&2
 fi
 "$PY" -c "import PIL" 2>/dev/null || "$PY" -m pip install -q pillow || "$PY" -m pip install -q --break-system-packages pillow
+# investigation-report pages (the disasters channel, generator/media/reports.py): a PDF page rendered to PNG
+"$PY" -c "import pypdfium2" 2>/dev/null || "$PY" -m pip install -q pypdfium2 || "$PY" -m pip install -q --break-system-packages pypdfium2
 echo "setup-cloud: ready (voice, remotion packages, chrome, ffmpeg, media cache)"

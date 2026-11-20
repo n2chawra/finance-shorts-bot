@@ -28,3 +28,14 @@ record or a licence the channel can't use.
 
 # Channels allowed to fetch beyond Wikimedia Commons (owner, 2026-11-19). Commons works for every channel.
 STOCK_CHANNELS = frozenset({"business-documentaries-rise-and-fall-of"})
+# Channels allowed some sources beyond Commons, but not all of them. Disaster Desk (owner, 2026-11-20:
+# "Yes, reports + photos"): official investigation report pages (generator/media/reports.py) and public-domain
+# photos and film from NASA, the Library of Congress and the Internet Archive; no stock footage, no filings.
+CHANNEL_SOURCES: dict[str, frozenset[str]] = {
+    "disasters-and-engineering-failures-expla": frozenset({"commons", "report", "nasa", "loc", "archive"}),
+}
+
+
+def may_use(slug: str, source: str) -> bool:
+    """Whether `slug` may fetch from `source`."""
+    return source == "commons" or slug in STOCK_CHANNELS or source in CHANNEL_SOURCES.get(slug, frozenset())

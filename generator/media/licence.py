@@ -75,6 +75,8 @@ def normalise(source: str, licence: str) -> str:
         return "filing"
     if source == "nasa":
         return "pd-usgov"
+    if source == "report":
+        return "pd-usgov" if s.startswith("public domain") else "ogl-3.0" if "open government licence v3" in s else             "ogl-canada" if "canada" in s else "licence-ouverte-2.0" if "ouverte" in s else re.sub(r"[^a-z0-9.]+", "-", s).strip("-")
     if source == "loc" and NO_KNOWN.search(s):
         return "no-known-restrictions"
     if not s:
@@ -123,6 +125,11 @@ def classify(source: str, licence: str, flags: list[str] | None = None) -> tuple
         if third:
             return REVIEW, f"NASA item made by someone else ({third[0]}); the owner decides"
         return OK, "NASA media: US government work, not copyrighted"
+    if source == "report":
+        n = lic.lower()
+        if n.startswith("public domain") or "open government licence" in n or n.startswith("cc by") or "licence ouverte" in n:
+            return OK, f"{lic}: an official investigation report (generator/media/reports.py AGENCIES), shown with its citation"
+        return REVIEW, f"report under {lic or 'no stated licence'}; the owner decides"
     return REVIEW, f"{source}: no automatic rule for this source; the owner decides"
 
 
@@ -145,6 +152,8 @@ def attribution(source: str, licence: str, author: str, title: str, url: str, ki
         return False, f"{what}: {title}, {author}, Library of Congress ({url})"
     if source == "nasa":
         return False, f"{what}: {title}, NASA ({url})"
+    if source == "report":
+        return True, f"Report: {author}, {title}, {licence} ({url})"
     return True, f"{what}: {author}, {licence} ({url})"
 
 
@@ -159,6 +168,9 @@ def restrictions(source: str, commons_flags: str = "") -> list[str]:
         return list(ARCHIVE_RULES)
     if source == "loc":
         return list(LOC_RULES)
+    if source == "report":
+        from .reports import REPORT_RULES
+        return list(REPORT_RULES)
     if source == "nasa":
         return list(NASA_RULES) + [f for f in re.split(r"\s*\|\s*", commons_flags or "") if f]
     flags = [f.strip().lower() for f in re.split(r"[|,;]", commons_flags or "") if f.strip()]
