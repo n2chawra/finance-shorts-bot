@@ -4,8 +4,15 @@
    "key": "tech-market-scan-missing",
    "severity": "info",
    "title": "The weekly market scan doesn't run for How Tech Works",
-   "detail": "The market-data branch holds only Paisa Panchayat's finance scan, so research for this channel has no list of this week's fastest-growing tech Shorts. Tonight it used the setup scan on the niche-data branch (18 Nov) instead, which will go stale.",
+   "detail": "The market-data branch holds only Paisa Panchayat's finance scan, so research for this channel has no list of this week's fastest-growing tech Shorts. It uses the setup scan on the niche-data branch (18 Nov) instead, which will go stale.",
    "fix": "1. Make market.yml (or its caller) run workers/market.ts once per active channel with CHANNEL=<slug>, writing each channel's results to its own file on market-data. 2. Give channels/how-tech-and-ai-actually-work-chips-ai-p/market.json the full MarketConfig fields (days, regionCode, regions) next to its queries. 3. Mind the quota: each search costs 100 units."
+  },
+  {
+   "key": "tech-ypp-2027",
+   "severity": "info",
+   "title": "YouTube raises the monetisation bar on 1 Feb 2027: the long videos become this channel's realistic route",
+   "detail": "Per YouTube's Partner Program overhaul (announced 10 Aug 2026, reported by Metricool, Cartoon Brew and AIR Media-Tech), channels applying after 31 Jan 2027 need 1,000 subscribers plus 8,000 watch hours in 365 days (now 4,000) or 20M Shorts views in 90 days (now 10M); Shorts revenue also needs 10M qualified Shorts views every 90 days. This channel (2 Shorts published, 161 views) can't reach the old bar by 31 Jan, so the weekly 12-15 min long video is its path: 8,000 hours is about 40,000 full views of a 12-minute video. Nothing in the AI-label rules affects us (they cover photorealistic AI; ours is clearly animated).",
+   "fix": "1. No action needed now. 2. When you review strategy, weigh long-video cadence over Shorts volume for this channel. 3. Check YouTube's own YPP page in January for the final wording."
   }
  ]
 }

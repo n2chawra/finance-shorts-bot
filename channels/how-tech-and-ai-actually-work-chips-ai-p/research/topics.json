@@ -1842,6 +1842,275 @@
       "found": "2026-11-20",
       "expires": "2027-02-18",
       "status": "new"
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "priority": "normal",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-21",
+      "expires": "2027-02-19",
+      "status": "new",
+      "id": "2026-11-21-gpu-invents-frames",
+      "title": "How Does Your Graphics Card Show Frames It Never Drew?",
+      "category": "chips",
+      "stories": [
+        "how_ai_works"
+      ],
+      "demand": {
+        "title": "Amazing DLSS-5 Tech",
+        "views": 2232234,
+        "url": "https://youtube.com/shorts/6UE-ZK_btTs",
+        "channel": "Professor Of AI",
+        "channelSubs": 400000,
+        "outlier": 5.58,
+        "ageDays": 19.8,
+        "viewsPerDay": 112925
+      },
+      "hook": "In some games, most of the frames on your screen were never drawn by the game at all.",
+      "angle": "Inside one frame on an RTX 50 card: the game renders a small, low-resolution frame; tensor cores upscale it, then run AI models that read motion vectors between two real frames and paint the frames in between. Never skip the causal step: what a motion vector is and why the in-between frame can be guessed. Payoff: NVIDIA says DLSS 4 generates 15 of every 16 pixels; DLSS 4.5 can add five frames for every one the game draws. Say plainly what goes wrong (a corner never seen before).",
+      "why_now": "The niche's chip/GPU subject runs 1.68x its channels' median this fortnight; Professor Of AI's DLSS Short has 2.2M views in 20 days (113K a day, 5.6x the channel's subscribers). Our first how_ai_works Short, in a core format.",
+      "facts": [
+        {
+          "label": "Pixels out of every 16 that DLSS 4 generates with AI",
+          "value": 15,
+          "unit": "count",
+          "as_of": "2025-01-06",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
+          "fixed": true
+        },
+        {
+          "label": "AI models the GPU runs for every rendered frame with DLSS 4",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2025-01-06",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
+          "fixed": true
+        },
+        {
+          "label": "Frame-rate multiple over brute-force rendering, up to",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2025-01-06",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
+          "fixed": true
+        },
+        {
+          "label": "Frames DLSS 4.5 generates for every natively rendered frame, up to",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2026-01-06",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
+          "latest": true,
+          "checked": "2026-11-21"
+        },
+        {
+          "label": "Games and apps with DLSS 4.5 Super Resolution, over",
+          "value": 400,
+          "unit": "count",
+          "as_of": "2026-01-06",
+          "source": "NVIDIA GeForce News",
+          "url": "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
+          "latest": true,
+          "checked": "2026-11-21"
+        }
+      ],
+      "verify": [
+        "DLSS 4: 15 of every 16 pixels generated, 5 AI models per rendered frame, up to 8x over brute force (NVIDIA, 6 Jan 2025)",
+        "DLSS 4.5: up to five generated frames per rendered frame (6X), RTX 50 only; Super Resolution in 400+ games (NVIDIA, 6 Jan 2026)",
+        "DLSS 5 (GTC, March 2026) is a different feature (neural lighting), not frame generation: do not mix it in"
+      ],
+      "sources": [
+        "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
+        "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
+        "https://techpowerup.com/review/nvidia-geforce-rtx-50-technical-deep-dive/4.html"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "priority": "normal",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-21",
+      "expires": "2027-02-19",
+      "status": "new",
+      "id": "2026-11-21-paris-metro-tyres",
+      "title": "Why Does the Paris Metro Run on Rubber Tyres?",
+      "category": "transport",
+      "stories": [
+        "machine_works"
+      ],
+      "demand": {
+        "title": "Why Did Trains Stop Using Rubber Tyres (3D Animation)",
+        "views": 4825914,
+        "url": "https://youtube.com/shorts/BDzjNVrfBN8",
+        "channel": "Engineer Explain in hindi",
+        "channelSubs": 503000,
+        "outlier": 9.59,
+        "ageDays": 8.9,
+        "viewsPerDay": 542329
+      },
+      "hook": "Some trains in Paris run on the same kind of tyres as a truck. So what keeps them on the track?",
+      "angle": "Cutaway of a rubber-tyred bogie: the tyres roll on flat running tracks, horizontal guide wheels press on side bars, and steel safety wheels ride on ordinary rails, ready if a tyre goes flat. Why: grip for faster acceleration and braking between close stations, steeper slopes, less noise and vibration. The story: Michelin's 1931 Micheline railcar, the 1951 first tyred metro, Line 11 in 1956, then Montreal built a whole network on it.",
+      "why_now": "Trains are the niche's fastest-rising Shorts subject this fortnight (median 2.4x); the reference Short added 542K views a day. Re-sourced from Michelin's own history page after RATP's refused (a breakout is re-sourced, never dropped).",
+      "facts": [
+        {
+          "label": "Year Michelin and RATP ran the world's first metro on tyres",
+          "value": 1951,
+          "unit": "year",
+          "as_of": "1951-01-01",
+          "source": "Michelin Metro",
+          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+          "fixed": true
+        },
+        {
+          "label": "Year the Micheline rubber-tyred railcar broke the Paris-Deauville record (January)",
+          "value": 1931,
+          "unit": "year",
+          "as_of": "1931-01-01",
+          "source": "Michelin Metro",
+          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+          "fixed": true
+        },
+        {
+          "label": "Year Montreal's tyred metro opened",
+          "value": 1966,
+          "unit": "year",
+          "as_of": "1966-01-01",
+          "source": "Michelin Metro",
+          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+          "fixed": true
+        },
+        {
+          "label": "Trips on the Montreal metro so far, over",
+          "value": 10,
+          "unit": "count_billion",
+          "as_of": "2026-11-21",
+          "source": "Michelin Metro",
+          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+          "latest": true,
+          "checked": "2026-11-21"
+        },
+        {
+          "label": "Passengers each Montreal train carries at rush hour, roughly",
+          "value": 1000,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Michelin Metro",
+          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+          "latest": true,
+          "checked": "2026-11-21"
+        }
+      ],
+      "verify": [
+        "1951 first tyred metro on Line 11 test (Michelin); public service on Line 11 from November 1956 (RATP)",
+        "Micheline Paris-Deauville record, January 1931",
+        "Montreal opened 1966, 10 billion+ trips, ~1,000 passengers a train at rush hour",
+        "The guide wheels and steel safety wheels: confirm the drawing against a technical source before the director draws it"
+      ],
+      "sources": [
+        "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+        "https://www.ratp.fr/decouvrir/coulisses/modernisation-du-reseau/materiel-roulant-metro-ligne-11"
+      ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "priority": "normal",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-21",
+      "expires": "2027-02-19",
+      "status": "new",
+      "id": "2026-11-21-tbm-under-london",
+      "title": "How Did a 150-Metre Machine Dig a Railway Under London?",
+      "category": "machines",
+      "stories": [
+        "machine_works"
+      ],
+      "demand": {
+        "title": "Most Important Invention, Part 4: The Boring Machine",
+        "views": 4264963,
+        "url": "https://youtube.com/shorts/mNnXJe3Bf4Y",
+        "channel": "Logibu",
+        "channelSubs": 36100,
+        "outlier": 118.1,
+        "ageDays": 17.4,
+        "viewsPerDay": 245193
+      },
+      "hook": "Under London, a machine longer than a football pitch dug a railway right next to a working Tube line.",
+      "angle": "Follow one Crossrail tunnel boring machine from the cutting face back: the spinning cutterhead, the pressurised chamber that holds the ground up, the conveyor that carries spoil away, the arm that bolts concrete segments into a ring behind it, so the tunnel is lined as it is dug. Payoff: at Tottenham Court Road the new tunnel passed 700 millimetres from the Northern line.",
+      "why_now": "Logibu's boring-machine Short has 4.26M views on a 36K channel (118x) and is still adding 245K a day; invention and machine Shorts lead the niche this fortnight.",
+      "facts": [
+        {
+          "label": "Length of each Crossrail tunnel boring machine, in metres",
+          "value": 150,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Kilometres of new tunnels under central London",
+          "value": 42,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Diameter of the railway tunnels, in metres",
+          "value": 7.1,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Millimetres between the Elizabeth line and Northern line tunnels at Tottenham Court Road",
+          "value": 700,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Buildings, railways and utilities assessed for ground movement, over",
+          "value": 17000,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "150 m TBMs, 42 km of tunnels, 7.1 m diameter, 700 mm from the Northern line, 17,000+ assets assessed (Arup)",
+        "Eight TBMs, about 1,000 tonnes each (Bechtel/press; confirm before using a weight)"
+      ],
+      "sources": [
+        "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+        "https://learninglegacy.crossrail.co.uk/wp-content/uploads/2017/04/Machine-driven-tunnels-on-the-Elizabeth-line-London.pdf"
+      ]
     }
   ]
 }
