@@ -1,0 +1,21 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-21",
+  "startedAt": "2026-11-20T16:32:48Z",
+  "finishedAt": "2026-11-20T16:37:42Z",
+  "summary": "Main's Python tests were red (5 media tests broke when a download retry option was added this morning); fixed the tests and added two for the new Commons thumbnail fallback. Wrote verdicts for the AMC popcorn Short (okay) and geography's Suez Canal Short (miss).",
+  "decision": "acted",
+  "why": "pytest on main: 5 failed, 629 passed (TypeError: fake download got an unexpected keyword 'attempts'); after the fix 636 passed. The data audit had not run yet tonight (latest 19 Nov 17:28 UTC, 23 h old; no errors or warnings), so the data check was skipped.",
+  "findings": [
+    {"title": "Main's media tests failing (gen-006, fixed)", "detail": "Commit 41830b2 passes attempts= to store.download; the test fakes did not accept it. All channels."},
+    {"title": "Commons TIFF thumbnails cached under .tif (gen-007, low)", "detail": "The file is a PNG with a .tif name; fix when it causes a problem. Shared media code."},
+    {"title": "Data audit still lands after the auditor (third night)", "detail": "Latest audit 19 Nov 17:28 UTC; no errors or warnings on any channel. Owner notification updated (paisa-panchayat)."},
+    {"title": "Geography: the Suez Canal Short missed", "detail": "14 views at 2.1 days, while Greenland has 1,207 and the Sahara 685 within about a day (geography-maps-geopolitical-mysteries)."}
+  ],
+  "changes": [
+    {"title": "Media test fakes take the attempts argument; Commons fallback tests", "detail": "generator/tests/test_media.py: 5 failing tests pass again, 2 new tests.", "branch": "agent/auditor/2026-11-21"},
+    {"title": "AI analysis for 2 videos", "detail": "paisa-panchayat v-20261117-02 (okay), geography v-20261118-01 (miss).", "branch": "agent/auditor/2026-11-21"}
+  ],
+  "nextCheck": "2026-11-22",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-21.md"}]
+}
