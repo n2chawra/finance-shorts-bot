@@ -58,7 +58,7 @@ def _offline(monkeypatch, provider=FakePexels):
     monkeypatch.setattr(library, "provider", lambda name: provider())
     monkeypatch.setattr(library, "licence_snapshot", lambda url, headers: "f" * 64)
 
-    def fake_download(url, dest, headers, bucket, interval, max_bytes=None):
+    def fake_download(url, dest, headers, bucket, interval, max_bytes=None, attempts=6):
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(b"clip bytes " + url.encode())
         return dest
@@ -144,7 +144,7 @@ def test_pixabay_responses_are_cached_a_day_without_the_key(tmp_path, monkeypatc
         def __enter__(self): return self
         def __exit__(self, *a): return False
 
-    def fake_open(url, headers, bucket, interval, timeout=60):
+    def fake_open(url, headers, bucket, interval, timeout=60, attempts=6):
         calls.append(url)
         return Resp(json.dumps({"hits": [{"id": 7, "pageURL": "https://pixabay.com/videos/x-7/", "tags": "office", "user": "bob",
                                           "user_id": 1, "duration": 12, "videos": {"large": {"url": "https://cdn/7.mp4", "width": 1920, "height": 1080}}}]}).encode())
@@ -181,7 +181,7 @@ class _Resp:
 
 def _serve(monkeypatch, routes: dict, calls: list | None = None):
     """Answer store.open_url from {url substring: json body}; record each URL asked for."""
-    def fake_open(url, headers, bucket, interval, timeout=60):
+    def fake_open(url, headers, bucket, interval, timeout=60, attempts=6):
         if calls is not None:
             calls.append(url)
         for k, v in routes.items():
@@ -192,7 +192,7 @@ def _serve(monkeypatch, routes: dict, calls: list | None = None):
 
 
 def _fake_download(log: list | None = None):
-    def fake(url, dest, headers, bucket, interval, max_bytes=None):
+    def fake(url, dest, headers, bucket, interval, max_bytes=None, attempts=6):
         if log is not None:
             log.append((url, max_bytes))
         dest.parent.mkdir(parents=True, exist_ok=True)
@@ -298,7 +298,7 @@ def test_loc_bot_challenge_and_rate_limit_are_clear_errors(tmp_path, monkeypatch
     monkeypatch.setenv("MEDIA_CACHE", str(tmp_path))
 
     def blocked(code):
-        def fake_open(url, headers, bucket, interval, timeout=60):
+        def fake_open(url, headers, bucket, interval, timeout=60, attempts=6):
             h = Message()
             h["cf-mitigated"] = "challenge"
             raise urllib.error.HTTPError(url, code, "x", h, None)
@@ -359,3 +359,39 @@ def test_a_staged_src_path_counts_as_the_asset_and_must_be_this_channels(repo, m
     other = {"beats": [{"params": {"layers": [{"kind": "footage", "src": "media/paisa-panchayat/pexels-video-42.mp4"}]}}]}
     assert any("staged for the channel paisa-panchayat" in p for p in library.check(DOC, other, root=repo))
     assert library.script_assets({"beats": [{"params": {"src": "real/enron.png"}}]}) == set()   # Commons photos: images.py
+
+
+ORIGINAL = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Store_front.tif"
+
+
+class FakeCommons(FakePexels):
+    name = "commons"
+
+    def resolve(self, kind, ident):
+        return _cand(ref=f"commons:photo:{ident}", source="commons", kind="photo", id=ident, url=ORIGINAL, ext="tif",
+                     licence="CC BY 2.0", page="https://commons.wikimedia.org/wiki/File:Store_front.tif", width=1100)
+
+
+def test_commons_thumbs_ask_the_thumbnail_host_for_the_smallest_standard_width_first():
+    urls = library._commons_thumbs({"url": ORIGINAL, "width": 1100})
+    base_ = "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Store_front.tif/"
+    assert urls == [base_ + f"{w}px-Store_front.tif.png" for w in (1280, 1920, 960)]
+    assert library._commons_thumbs({"url": "https://example.org/x.jpg"}) == []
+
+
+def test_a_throttled_commons_thumbnail_falls_through_to_the_next_width(repo, monkeypatch):
+    import urllib.error
+    monkeypatch.setattr(library, "provider", lambda name: FakeCommons())
+    monkeypatch.setattr(library, "licence_snapshot", lambda url, headers: "f" * 64)
+    tried = []
+
+    def fake(url, dest, headers, bucket, interval, max_bytes=None, attempts=6):
+        tried.append((url.rsplit("/", 1)[-1], attempts))
+        if len(tried) == 1:
+            raise urllib.error.HTTPError(url, 429, "Too Many Requests", {}, None)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(b"bytes")
+        return dest
+    monkeypatch.setattr(library, "download", fake)
+    library.fetch(DOC, "commons:photo:File:Store_front.tif", root=repo)
+    assert tried == [("1280px-Store_front.tif.png", 2), ("1920px-Store_front.tif.png", 2)]   # the original is never asked for
