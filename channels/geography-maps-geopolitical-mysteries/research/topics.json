@@ -291,7 +291,9 @@
       ],
       "sources": [
         "https://seasia.co/2026/11/04/known-as-an-archipelagic-nation-indonesia-still-cannot-agree-on-how-many-islands-it-has"
-      ]
+      ],
+      "status": "rejected",
+      "reason": "Owner marked v-20261120-04 (Dinorwig) wrong on 20 Nov: a topic whose answer is not on the map is never taken. The answer here is how people count and define an island, not a border, route, shape or position."
     },
     {
       "id": "2026-11-17-kazakhstan-biggest-landlocked",
@@ -1521,7 +1523,7 @@
       ],
       "found": "2026-11-20",
       "expires": "2027-02-18",
-      "status": "new",
+      "status": "rejected",
       "id": "2026-11-20-red-sea-name",
       "title": "Why is the Red Sea called red when it's blue?",
       "category": "seas",
@@ -1587,7 +1589,8 @@
       ],
       "sources": [
         "https://en.wikipedia.org/wiki/Red_Sea"
-      ]
+      ],
+      "reason": "Owner marked v-20261120-04 (Dinorwig) wrong on 20 Nov: a topic whose answer is not on the map is never taken. The answer is algae or an old colour-for-direction naming habit, not something on the map."
     },
     {
       "format": "short",
@@ -1597,7 +1600,7 @@
       ],
       "found": "2026-11-20",
       "expires": "2027-02-18",
-      "status": "new",
+      "status": "rejected",
       "id": "2026-11-20-north-korea-dark-at-night",
       "title": "Why is North Korea dark at night?",
       "category": "energy",
@@ -1658,7 +1661,167 @@
       "sources": [
         "https://api.worldbank.org/v2/country/PRK/indicator/EG.ELC.ACCS.ZS?format=json&mrnev=2",
         "https://api.worldbank.org/v2/country/KOR/indicator/EG.ELC.ACCS.ZS?format=json&mrnev=2"
-      ]
+      ],
+      "reason": "Owner marked v-20261120-04 (Dinorwig) wrong on 20 Nov: a topic whose answer is not on the map is never taken. The night map only shows the effect; the answer (61% have electricity) is a power-supply fact, not a where."
+    },
+    {
+      "id": "2026-11-21-doubly-landlocked",
+      "title": "Why do Uzbekistan and Liechtenstein have to cross two countries to reach the sea?",
+      "category": "borders",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "why_shaped"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The Only TRIPLE Landlocked State in the World!",
+        "views": 2450502,
+        "url": "https://youtube.com/shorts/CbOsnWF5JDw",
+        "channel": "Globe Addict David",
+        "channelSubs": 293000,
+        "outlier": 8.4
+      },
+      "hook": "Only two countries on Earth are locked in by countries that are locked in too. Which two?",
+      "angle": "Of the world's 44 landlocked countries, only Liechtenstein (between Austria and Switzerland) and Uzbekistan (ringed by five landlocked countries) need two borders to reach an ocean; Liechtenstein became doubly landlocked when Austria-Hungary broke up in 1918 and Austria lost its coast.",
+      "why_now": "Map answer by design (owner, 20 Nov): the answer is two rings of borders you watch close on the map. The reference, about the same idea in the US, has 2.45M views, 8.4x its 293K-subscriber channel; no Short on doubly landlocked countries in the niche scan's last 60 days.",
+      "map_answer": "two rings of borders: the camera pulls out from each country to the nearest coast, crossing two frontiers",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "facts": [
+        {
+          "label": "Landlocked countries in the world",
+          "value": 44,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Wikipedia, Landlocked country",
+          "url": "https://en.wikipedia.org/wiki/Landlocked_country",
+          "latest": true,
+          "checked": "2026-11-21"
+        },
+        {
+          "label": "Countries that are doubly landlocked",
+          "value": 2,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Wikipedia, Landlocked country",
+          "url": "https://en.wikipedia.org/wiki/Landlocked_country",
+          "latest": true,
+          "checked": "2026-11-21"
+        },
+        {
+          "label": "Year Austria-Hungary dissolved, leaving Austria without a coast",
+          "value": 1918,
+          "unit": "year",
+          "as_of": "2026-11-21",
+          "source": "Wikipedia, Landlocked country",
+          "url": "https://en.wikipedia.org/wiki/Landlocked_country",
+          "fixed": true
+        },
+        {
+          "label": "Year Uzbekistan became independent and the second doubly landlocked country",
+          "value": 1991,
+          "unit": "year",
+          "as_of": "2026-11-21",
+          "source": "Wikipedia, Landlocked country",
+          "url": "https://en.wikipedia.org/wiki/Landlocked_country",
+          "fixed": true
+        },
+        {
+          "label": "Uzbekistan's landlocked neighbours (Afghanistan, Kazakhstan, Kyrgyzstan, Tajikistan, Turkmenistan)",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2026-11-21",
+          "source": "Wikipedia, Landlocked country",
+          "url": "https://en.wikipedia.org/wiki/Landlocked_country",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Uzbekistan counts as doubly landlocked only if the Caspian is a lake: say so in one line",
+        "Liechtenstein was the only doubly landlocked country 1918-1938 and again after Austria's independence after WWII",
+        "Do not claim Nebraska or any US state facts; the reference is only demand"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Landlocked_country"
+      ],
+      "found": "2026-11-21",
+      "expires": "2027-02-19",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-21-east-side-poorer",
+      "title": "Why is the east side of so many old cities the poorer side?",
+      "category": "cities",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "why_shaped"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why is the east side of the city poorer?",
+        "views": 525728,
+        "url": "https://youtube.com/shorts/RQ2aN69cRYc",
+        "channel": "MossBox",
+        "channelSubs": 32100,
+        "outlier": 16.4
+      },
+      "hook": "Why is the east side of so many English cities the poor side? Look which way the wind blows.",
+      "angle": "Prevailing winds in Britain blow from the west, so factory smoke drifted east across the city; the rich moved upwind. A 2021 study mapped 5,000 industrial chimneys and found past pollution still explains up to 20% of neighbourhood segregation in 2011.",
+      "why_now": "Map answer by design (owner, 20 Nov): wind arrows across a city map, smoke drifting east, then where people live. 526K views, 16x its channel; the reference video is the only one on it in the scan.",
+      "map_answer": "wind arrows from the west over a city map, smoke plumes drifting east from chimney dots, then the poorer east side shaded",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "facts": [
+        {
+          "label": "Industrial chimneys whose locations the study mapped",
+          "value": 5000,
+          "unit": "count",
+          "as_of": "2021-05-01",
+          "source": "Heblich, Trew and Zylberberg, Journal of Political Economy (2021)",
+          "url": "https://econpapers.repec.org/RePEc:ucp:jpolec:doi:10.1086/713101",
+          "latest": true,
+          "checked": "2026-11-21"
+        },
+        {
+          "label": "Share of neighbourhood segregation in 2011 that past pollution explains, at most",
+          "value": 20,
+          "unit": "percent",
+          "as_of": "2021-05-01",
+          "source": "Heblich, Trew and Zylberberg, Journal of Political Economy (2021)",
+          "url": "https://econpapers.repec.org/RePEc:ucp:jpolec:doi:10.1086/713101",
+          "latest": true,
+          "checked": "2026-11-21"
+        },
+        {
+          "label": "Census year the study measured segregation in",
+          "value": 2011,
+          "unit": "year",
+          "as_of": "2021-05-01",
+          "source": "Heblich, Trew and Zylberberg, Journal of Political Economy (2021)",
+          "url": "https://econpapers.repec.org/RePEc:ucp:jpolec:doi:10.1086/713101",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "The study covers English cities; say 'in England' for the figures and do not name Paris as evidence",
+        "Say 'up to 20%', never 'causes'",
+        "Prevailing westerly winds over Britain: the fact reviewer confirms on the Met Office or Britannica"
+      ],
+      "sources": [
+        "https://econpapers.repec.org/RePEc:ucp:jpolec:doi:10.1086/713101",
+        "https://cep.lse.ac.uk/_NEW/PUBLICATIONS/abstract.asp?index=9471"
+      ],
+      "found": "2026-11-21",
+      "expires": "2027-02-19",
+      "status": "new"
     }
   ]
 }

@@ -1,8 +1,41 @@
 {
   "proposals": [
-    {"id": "factbook-retired", "date": "2026-11-19", "area": "pipeline", "title": "The CIA World Factbook is retired: stop citing its live pages",
-     "change": "In channels/geography-maps-geopolitical-mysteries/profile.md 'Where facts come from' and the fact reviewer's source list for this channel, replace 'the CIA World Factbook' with 'the CIA World Factbook archives (2022-2025 editions) or the national statistics office / Britannica'; flag any topic fact whose url is under cia.gov/the-world-factbook/countries/ (live pages now show the retirement notice).",
-     "evidence": ["https://www.cia.gov/the-world-factbook/countries/greenland/"], "expectedEffect": "No fact review fails on an unreachable source", "confidence": "high", "effort": "S",
-     "risk": "none", "metric": "qa_failures", "status": "new", "route": "adopt", "priority": "normal"}
+    {
+      "id": "factbook-retired",
+      "date": "2026-11-19",
+      "area": "pipeline",
+      "title": "The CIA World Factbook is retired: stop citing its live pages",
+      "change": "In channels/geography-maps-geopolitical-mysteries/profile.md 'Where facts come from' and the fact reviewer's source list for this channel, replace 'the CIA World Factbook' with 'the CIA World Factbook archives (2022-2025 editions) or the national statistics office / Britannica'; flag any topic fact whose url is under cia.gov/the-world-factbook/countries/ (live pages now show the retirement notice).",
+      "evidence": [
+        "https://www.cia.gov/the-world-factbook/countries/greenland/"
+      ],
+      "expectedEffect": "No fact review fails on an unreachable source",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "none",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
+    },
+    {
+      "id": "map-answer-gate",
+      "date": "2026-11-21",
+      "area": "pipeline",
+      "title": "A topic's answer must be on the map: check it before the script is written",
+      "change": "For this channel, check-plan (or the planner prompt) requires plan.topic.map_answer: one line naming the border, route, shape, distance or position the answer is drawn as. Fail the plan when it is missing or names a machine, a law, a habit or a cut-away (lessons.md #1). Research now writes map_answer on every new topic (2026-11-21 onward); for older feed topics the planner writes it or skips the topic.",
+      "evidence": [
+        "owner note cmwoiqjki0001l409a2gj48qx (20 Nov): 'Anything topics that are explained not in the map are wrong… Make sure this does not happen again.'",
+        "v-20261120-04 Dinorwig: 43 views on day one vs Greenland 1,207 and Sahara 685, whose answers are a border and a position"
+      ],
+      "expectedEffect": "No more off-map topics reaching a render; the owner's note closed at its source in the pipeline, not only in research's choices.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "A planner could write a vague map_answer; QA still enforces lesson #1.",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    }
   ]
 }
