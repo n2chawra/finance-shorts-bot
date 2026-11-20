@@ -1,0 +1,21 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-20",
+  "startedAt": "2026-11-20T15:38:50Z",
+  "finishedAt": "2026-11-20T15:41:46Z",
+  "summary": "Watched 6 Shorts (Costco, Bezos, Netflix, Las Vegas, MrBeast creators, AMC) next to their drop points; added one lesson and raised two.",
+  "decision": "acted",
+  "why": "The two biggest drops came on the line after the hook: MrBeast lost 38 points at 5.3 s on a whole list's total, Las Vegas 26 at 6.5 s on its figure times 60. Costco, the best holder (48% stayed to watch), followed its hook with a bigger twist about the same business.",
+  "findings": [
+    {"title": "A wider total or a rescaled figure after the hook cost 26-38 points", "detail": "v-20261113-01 -38 at 5.3 s ('Forbes' top creators made $1.02B in all', text card); v-20261114-03 -26 at 6.5 s ('How big does that get? Every hour, about $1M'). Code check since 16 Nov."},
+    {"title": "Second lines that pass the check still lose 19-33 points", "detail": "16-17 Nov Shorts: gas stations -33, Disneyland -21, GTA V -21, Powerball -19 at 5.3-5.4 s. For the next review."},
+    {"title": "Labelled frame in the best holder", "detail": "v-20261114-02 -18 at 7.1 s over a cart under a 'ROHAN' sign."}
+  ],
+  "changes": [
+    {"title": "Lesson 1 added: the second line widens or rescales the hook", "detail": "channels/paisa-panchayat/prompts/lessons.md", "branch": "agent/reviewer/2026-11-20"},
+    {"title": "Lessons raised: real story at 5 s (#2), labelled-object frames (#6)", "detail": "with new videos in 'Seen in'", "branch": "agent/reviewer/2026-11-20"},
+    {"title": "Challenger no-cast-unless-in-story: new evidence", "detail": "channels/paisa-panchayat/cycle/backlog.json", "branch": "agent/reviewer/2026-11-20"}
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [{"label": "Report", "url": "channels/paisa-panchayat/review/2026-11-20.md"}]
+}
