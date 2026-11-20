@@ -979,6 +979,30 @@
       "severity": "low",
       "found": "2026-11-20",
       "status": "wontfix"
+    },
+    {
+      "id": "gen-006",
+      "kind": "bug",
+      "title": "Media tests broke when download() gained an attempts argument",
+      "detail": "41830b2 (20 Nov) passed attempts= to generator.media.store.download from library.fetch; the test fakes in generator/tests/test_media.py did not accept it, so 5 media tests failed on main. Fakes now take attempts, and a new test covers the Commons thumbnail fallback (a 429 on one width moves to the next, 2 attempts each).",
+      "files": [
+        "generator/tests/test_media.py"
+      ],
+      "severity": "medium",
+      "found": "2026-11-21",
+      "status": "fixed"
+    },
+    {
+      "id": "gen-007",
+      "kind": "bug",
+      "title": "A Commons TIFF is cached under .tif though its thumbnail is a PNG",
+      "detail": "library.fetch names the cached file after the candidate's ext ('tif'), while _commons_thumbs asks for '<w>px-<name>.tif.png'. The file is a PNG with a .tif name; anything that picks a decoder or content type by extension (Remotion's static server sends image/tiff) may refuse it. Fix when one shows up: set dest's suffix to .png when a thumbnail of a .tif/.tiff was downloaded.",
+      "files": [
+        "generator/media/library.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-21",
+      "status": "open"
     }
   ]
 }
