@@ -248,6 +248,16 @@ def test_a_long_scene_thumbnail_needs_no_figure() -> None:
     check_script(s)
 
 
+def test_a_doc_thumbnail_jump_takes_two_placeholders() -> None:
+    # doc/thumb PriceJump (P4, 2026-11-20): both figures are the script's own, filled by Python
+    figs = {"then": "$847.4M", "now": "$4.04B"}
+    t = tb._thumbnail({"layout": "custom", "component": "ThumbPrice", "words": "*How?*",
+                       "jump": {"from": "{then}", "to": "{now}", "labels": ["Then", "Now"]}}, figs, {})
+    assert t["jump"]["from"] == "$847.4M" and t["jump"]["to"] == "$4.04B"
+    with pytest.raises(ValueError):
+        tb._thumbnail({"layout": "custom", "words": "How", "jump": {"from": "{then}", "to": "nothing"}}, figs, {})
+
+
 def test_audio_reports_loudness(tmp_path: Path) -> None:
     """Integrated loudness goes into the timeline (research loudness-in-render-json, 2026-11-03); the
     music-under-voice gap only when a real voice spoke (estimate mode places none)."""

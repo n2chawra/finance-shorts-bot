@@ -50,7 +50,7 @@ GL_TABS = 4   # a 3D video's tabs at once (src/three/README.md: the demos render
 
 HOOK_IMPORTS = ("react", "remotion", "@remotion/paths", "@remotion/shapes", "@remotion/noise",
                 "../../studio/", "../../cast/", "../../scenes/kit", "../../fx/", "../../design/", "../../fmt/", "../../contract/",
-                "../../flat/", "../../three/")
+                "../../flat/", "../../three/", "../../doc/thumb")
 # a figure typed into a video's code ("$11B", '>325M<', "45.2 billion"): every figure on screen comes from
 # the script (params filled by Python), never from the component (CLAUDE.md: numbers are computed by code)
 TYPED_FIGURE = re.compile(r"""["'`>][^"'`<>\n]*?(?:[$£€₹]\s?\d|\b\d[\d,]*(?:\.\d+)?(?:K|M|B|bn|Cr|L)\b|\b\d[\d,]*(?:\.\d+)?\s(?:million|billion|trillion|lakh|crore)\b)""")

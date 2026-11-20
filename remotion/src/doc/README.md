@@ -109,3 +109,32 @@ in `public/doc-demo/`. The reel plays doc beats through the real `StoryVideo`:
 Captions: a `doc`-scene Short gets 1-3-word Anton capitals, one yellow key word, no box, centred at 64% height (`fx/chunkCaptions.tsx`; preview `DocDemoShortCaptions`); keep labels out of roughly 1110-1350 px. A long doc video keeps the directed captions.
 
     npx remotion still src/index.ts DocDemo out.png --frame=470
+
+## Thumbnails (`doc/thumb/`)
+
+A long video's three thumbnails follow the channel's playbook
+(`channels/business-documentaries-rise-and-fall-of/style-study/2026-11-20-thumbnails.md`). Each is the video's own
+`remotion/src/videos/<id>/<Component>.tsx` (spec `"layout": "custom"`, `"component"`), rendered 1280×720 by the
+`thumbnail` step (`python -m renderer.thumbs render <id>`), composed from these parts (import `../../doc/thumb`):
+
+| Part | What it draws | Pattern |
+|---|---|---|
+| `DocThumb` | the frame; `guide` shows `CORNER` (bottom-right 22%×16%, the duration stamp: keep it clear) | all |
+| `Plate` | `grid` off-white grid paper, `brand` a radial in the brand colour (`color`), `dark` charcoal with a vignette | all |
+| `ProductHero` | a cut-out PNG as a sticker: white edge, rim light, contact shadow, tilt; `damage: {crack, dust, grey}` | P1 P2 P4 P5 |
+| `CrashLine` | a thick stylised line, `crash`, `v` or `spike`: green rises, red falls (losses only), white edge, arrowhead; `crashKey()` gives the turning point to put the product on | P1 |
+| `VerdictTag` | `stamp` (Annotate's rubber stamp, landed) or `block` (tilted red/white label lines, "/" breaks) | P1 P2 |
+| `PriceJump` | "$45 → $400": the old figure struck through, an arrow, the new one bigger; green up, red down | P4 |
+| `VersusSplit` | two brand plates, a tilted seam, a VS badge; the two cut-outs go in as children | P5 |
+| `PersonCutout` | a real person's licensed cut-out, dark grade (`bleach` by default), rim light, big on one side, optional red slash | P3 |
+
+- **Words** always go through `StackWords` (Anton, capitals ≥ 11% of the height; `shadow="light"` for dark words on
+  the grid plate). `VerdictTag` and `PriceJump` size their Anton by the same floor (`capSize`).
+- **Cut-outs**: `python -m generator.media cutout --channel <slug> <asset id>` makes `<id>-cut.png` (logged as a
+  derived asset, credited) and prints the `aspect` and the subject `box` the hero parts take. `stage` copies it into
+  `public/media/<slug>/`.
+- **Figures** only from the spec: `"figure": "{loss}"` (a tag) or `"jump": {"from": "{then}", "to": "{now}",
+  "labels": ["Then", "Now"], "dir": "up"}`, filled by Python (both must be the script's figures), shortened on screen
+  by `shortFig` ("$185.1M" → "$185M"). A verdict that isn't the `words` goes in `"verdict"`.
+- Demos: `remotion/src/videos/L-20261119-01/ThumbDead.tsx` (P1), `ThumbBrand.tsx` (P2), `ThumbPrice.tsx` (P4);
+  stills in `channels/business-documentaries-rise-and-fall-of/samples/thumbs/`.

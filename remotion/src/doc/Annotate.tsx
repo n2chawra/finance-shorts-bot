@@ -111,8 +111,8 @@ export const ArrowMark: React.FC<Base & { from: [number, number]; to: [number, n
 };
 
 /** A rubber stamp: slams from 2.4× to 1× in 5 frames, shakes the frame, its ink spreading a touch after. */
-export const StampMark: React.FC<Base & { text: string; pos?: [number, number]; tone?: Tone; tilt?: number }> = ({
-  t, inAt, outAt, w, h, text, pos = [0.5, 0.42], tone = "red", tilt = -12,
+export const StampMark: React.FC<Base & { text: string; pos?: [number, number]; tone?: Tone; tilt?: number; size?: number }> = ({
+  t, inAt, outAt, w, h, text, pos = [0.5, 0.42], tone = "red", tilt = -12, size: sizePx,
 }) => {
   const d = t - inAt;
   if (d < 0) return null;
@@ -123,7 +123,7 @@ export const StampMark: React.FC<Base & { text: string; pos?: [number, number]; 
   const s = 2.4 - 1.4 * (land * land);
   const spread = d > 5 ? Math.min(1, (d - 5) / 20) : 0;
   const sh = slamShake(t, inAt + 5, 16 * u);
-  const size = fs(w, h, 120);
+  const size = sizePx ?? fs(w, h, 120);   // a thumbnail's VerdictTag sets its own (doc/thumb)
   const c = INK[tone];
   const id = `stamp-${Math.round(inAt)}`;
   const seed = Math.round(rnd(inAt + text.length) * 90) + 3;

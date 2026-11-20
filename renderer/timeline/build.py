@@ -313,6 +313,9 @@ def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_i
         raise ValueError(f"thumbnail.figure must be one placeholder, like {{card_total_paid}}; got {spec.get('figure')!r}")
     if len(str(t.get("words", "")).split()) > 4:
         raise ValueError("thumbnail.words: four words at most, it is read at a glance")
+    jump = t.get("jump")
+    if jump is not None and not (isinstance(jump, dict) and jump.get("from") in figures.values() and jump.get("to") in figures.values()):
+        raise ValueError("thumbnail.jump: {\"from\": \"{placeholder}\", \"to\": \"{placeholder}\"}, each one figure of the script (doc/thumb PriceJump)")
     if t.get("small") is not None and t["small"] not in figures.values():
         raise ValueError(f"thumbnail.small must be one placeholder, like {{card_min_due}}; got {spec.get('small')!r}")
     if t.get("layout") == "story" and t.get("hero") not in (None, "card", "phone", "house", "car", "cash", "piggy"):

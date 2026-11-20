@@ -81,6 +81,11 @@ export const Thumbnail = z.object({
   levels: z.array(z.object({ prop: z.string().optional(), label: z.string().optional(), who: z.string().optional(), pose: z.string().optional(), expression: z.string().optional() })).max(7).optional(),
   ends: z.array(z.object({ word: z.string().optional(), prop: z.string().optional(), who: z.string().optional(), pose: z.string().optional(), expression: z.string().optional() })).max(2).optional(),
   color: z.string().optional(),
+  // doc thumbnails (doc/thumb, 2026-11-20, Craze & Crash): P4's two figures, each one placeholder filled by Python
+  // ("{fact1}" → "$847.4M"; drawn short by PriceJump), with optional words over them ("THEN", "NOW"); and the
+  // verdict a VerdictTag stamps ("ALMOST DEAD?"), when it isn't the `words`
+  jump: z.object({ from: z.string(), to: z.string(), labels: z.tuple([z.string(), z.string()]).optional(), dir: z.enum(["up", "down"]).optional() }).optional(),
+  verdict: z.string().optional(),
   at: z.string().optional(),          // scene: the beat whose frame is the picture (default: the first hook beat)
   sec: z.number().min(0).optional(),  // scene: seconds into that beat on the story clock (default: near its end)
   who2: z.string().optional(),        // versus: the rich side's cast member (sharma by default)

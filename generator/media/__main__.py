@@ -112,6 +112,11 @@ def main(argv: list[str] | None = None) -> int:
         elif a.cmd == "cutout":
             r = library.cutout(slug, a.asset, a.model)
             print(f"media/{slug}/{r['id']}.png  ({r['width']}x{r['height']})  from {r['of']}")
+            # what a thumbnail's ProductHero / PersonCutout needs (remotion/src/doc/thumb): the aspect and the subject's box
+            from PIL import Image
+            bb = Image.open(cache_root(slug) / r["path"]).getchannel("A").getbbox() or (0, 0, r["width"], r["height"])
+            box = [round(bb[0] / r["width"], 3), round(bb[1] / r["height"], 3), round(bb[2] / r["width"], 3), round(bb[3] / r["height"], 3)]
+            print(f"thumb: aspect={{{r['width']} / {r['height']}}} box={{{box}}}")
             print(f"cached: {cache_root(slug) / r['path']}\nlogged: {log_path(slug)}", file=sys.stderr)
         elif a.cmd == "stage":
             script, vid = library.read_script(slug, a.target)

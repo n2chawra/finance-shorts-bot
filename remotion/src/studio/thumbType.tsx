@@ -74,16 +74,20 @@ export type StackWordsProps = {
   cap?: number;
   color?: string;
   hi?: string;
+  /** "soft" (default): the dark shadow white words need; "light": a pale halo for dark words on a light plate (doc/thumb grid) */
+  shadow?: "soft" | "light";
 };
 
 /** Stacked heavy condensed words with one yellow word and a soft shadow. */
-export const StackWords: React.FC<StackWordsProps> = ({ text, w, h, x, y, maxW, valign = "top", align = "left", cap, color = "#ffffff", hi = THUMB_YELLOW }) => {
+export const StackWords: React.FC<StackWordsProps> = ({ text, w, h, x, y, maxW, valign = "top", align = "left", cap, color = "#ffffff", hi = THUMB_YELLOW, shadow: shade = "soft" }) => {
   const lines = stackLines(text);
   const lh = 0.98;
   const fs = stackSize(lines, h, maxW ?? w * 0.52, cap, lh);
   const pad = Math.round(Math.min(w, h) * 0.045);
   const top = y ?? (valign === "center" ? Math.max(pad, (h - lines.length * fs * lh) / 2) : pad);
-  const shadow = `0 ${Math.round(fs * 0.04)}px ${Math.round(fs * 0.1)}px rgba(0,0,0,0.85), 0 0 ${Math.round(fs * 0.35)}px rgba(0,0,0,0.55)`;
+  const shadow = shade === "light"
+    ? `0 0 ${Math.round(fs * 0.12)}px rgba(255,255,255,0.95), 0 0 ${Math.round(fs * 0.3)}px rgba(255,255,255,0.7)`
+    : `0 ${Math.round(fs * 0.04)}px ${Math.round(fs * 0.1)}px rgba(0,0,0,0.85), 0 0 ${Math.round(fs * 0.35)}px rgba(0,0,0,0.55)`;
   return (
     <div style={{ position: "absolute", top, ...(align === "left" ? { left: x ?? pad } : { right: x ?? pad }), textAlign: align,
       fontFamily: DISPLAY_FAMILY, fontWeight: 400, fontSize: fs, lineHeight: lh, color, textTransform: "uppercase", letterSpacing: fs * 0.005,

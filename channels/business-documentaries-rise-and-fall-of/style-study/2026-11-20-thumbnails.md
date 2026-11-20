@@ -207,6 +207,12 @@ Today `remotion/src/studio/thumb.tsx` has Glow, Face (the cast: off-brand for th
 
 **Order:** 1, 2, 3 and 5 first (all S). Together they draw P1 and P4, the two strongest patterns we can always make.
 
+**Built (20 Nov):** `remotion/src/doc/thumb/` (README "Thumbnails" in `remotion/src/doc/README.md`): #1 `ProductHero`,
+#2 `CrashLine`, #3 `Plate`, #4 `ProductHero` `damage` (crack, dust, grey; no spill or clearance sticker yet), #5
+`PriceJump`, #6 `VerdictTag` (stamp and blocks), #7 `VersusSplit`, #8 `PersonCutout` (no calm-face check yet). Still
+open: #9 a logo split half grey, #10 a storefront "CLOSED?" sign, #11 the phone-size gate, #12. Demos for Crocs (P1,
+P2, P4): `samples/thumbs/`.
+
 ---
 
 ## 5. Scoring checklist (10 points) and the A/B plan
