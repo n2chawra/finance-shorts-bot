@@ -234,6 +234,27 @@ a `tease` closing each chapter, a turn and a payoff (the long_story README "The 
 picture is directed (`generator/prompts/director.md`). The render fails a video that breaks the spine,
 leaves 2.5 s with nothing new, or shows things nobody is saying.
 
+## A channel's own thumbnail playbook (owner, 2026-11-20: "long videos are the money machine, the thumbnail has to be the best, every time")
+
+When the channel's `channel.json` has a `thumbs` block (Craze & Crash, A Billion Switches), its playbook
+(`thumbs.playbook`, the channel's `style-study/2026-11-20-thumbnails.md`) **replaces the cast-based thumbnail
+advice above**:
+- Read the playbook first: the ranked patterns (P1…P8), which story types each suits, the hard rules (words,
+  size at 168 px wide, one focal subject filling 40–70%, colour logic, the bottom-right corner clear for the
+  duration stamp, never the answer or the twist on the thumbnail), and the "never" list.
+- Give each of A, B and C a `pattern_id` from `thumbs.patterns`, all three different, chosen by the playbook's
+  story-type table (for example a crash: A = P1, B = P2, C = P4). Still take 3+ `references` from this topic's
+  own sheet; when the sheet lacks a pattern, cite the playbook's example for it and say so in `why`.
+- No cast face (`expression`) on these channels: the subject carries the emotion (a ruined product, a crash
+  line, a lit interior, a real person's licensed photo). Craze & Crash draws on the doc kit (`remotion/src/doc/`:
+  cut-outs from `python -m generator.media cutout`, plates, crash lines, stamps); A Billion Switches on the 3D
+  thumbnail path (`LongThumb3D`, `remotion/src/three/`, `thumbLook`).
+- **Score each with the playbook's 10-point checklist** (section 5), writing the points in `why`
+  ("1,2,3,5,6,7,8,10 = 8; missed 4: five words"), set `score`, and pick the highest. **Ship only at 8+**: below
+  that, fix the weakest point and re-score once (lint fails a pick under the bar).
+- After publishing, the owner can run YouTube's Test & Compare with A, B and C in Studio (there is no API for
+  it); say so in the run's report with the three file names.
+
 ## The title and the thumbnail are one pair (owner, 2026-10-26)
 
 Our long videos got almost no clicks: the thumbnails sold one small detail (a receipt and a

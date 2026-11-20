@@ -91,6 +91,38 @@ def spec_problems(th: dict, title: str, story: str | None = None) -> list[str]:
     return out
 
 
+def channel_problems(spec_list: list[tuple[str, dict]], rules: dict | None, pick: str | None = None) -> list[str]:
+    """A channel's own thumbnail rules (`channel.json` `thumbs`, from its style-study thumbnail playbook,
+    2026-11-20: Craze & Crash and A Billion Switches). Each of A, B and C names one of the channel's proven
+    patterns (`pattern_id`), the three use different patterns, words stay within the channel's maximum, a
+    channel with no cast puts no face `expression` in a spec, and a rated set ships only at the score bar."""
+    if not rules:
+        return []
+    out: list[str] = []
+    allowed = {str(p) for p in rules.get("patterns") or {}}
+    seen: dict[str, str] = {}
+    for k, th in spec_list:
+        pid = str(th.get("pattern_id", ""))
+        if allowed and pid not in allowed:
+            out.append(f"{k.upper()}: `pattern_id` is one of this channel's proven patterns ({', '.join(sorted(allowed))}; "
+                       f"{rules.get('playbook', 'the style-study thumbnail playbook')}), got {pid or 'none'!r}")
+        elif pid in seen:
+            out.append(f"{k.upper()} uses pattern {pid} like {seen[pid].upper()}: A, B and C each use a different pattern")
+        else:
+            seen[pid] = k
+        cap = int(rules.get("maxWords", 4))
+        if len(_words(th.get("words", ""))) > cap:
+            out.append(f"{k.upper()}: {len(_words(th.get('words', '')))} words; this channel's thumbnails carry {cap} at most")
+        if rules.get("noFace") and th.get("expression"):
+            out.append(f"{k.upper()}: no cast face on this channel's thumbnails (drop `expression`); the subject or a real "
+                       f"person's photo carries the emotion")
+        score = th.get("score")
+        if isinstance(score, (int, float)) and score < int(rules.get("minScore", 8)) and k == pick:
+            out.append(f"{k.upper()} is picked at {score}/10; ship only at {rules.get('minScore', 8)}+ "
+                       f"(fix the weakest point and re-score once)")
+    return out
+
+
 def code_problems(vid: str, th: dict, root: Path = ROOT) -> list[str]:
     """A custom thumbnail needs its component file."""
     if th.get("layout") != "custom":

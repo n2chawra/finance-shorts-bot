@@ -478,6 +478,8 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
             problems += [f"thumbnail {k.upper()}: {p}" for p in thumbs.spec_problems(th, plan_.get("title", script.get("title", "")), script.get("story") or plan_.get("story"))]
             problems += thumbs.code_problems(vid, th, root)
         problems += [f"thumbnails: {p}" for p in thumbs.pick_problems(script)]
+        # the channel's own thumbnail rules (channel.json `thumbs`, from its thumbnail playbook, 2026-11-20)
+        problems += [f"thumbnails: {p}" for p in thumbs.channel_problems(thumbs.specs(script), pack.load(root=root).get("thumbs"), script.get("thumbnail_pick"))]
     lo, hi = length_range(sample_settings(load_settings(root), script), plan_format(script))
     sec_ = tl["durationInFrames"] / tl["fps"]
     if not lo * 0.95 <= sec_ <= hi * 1.05:

@@ -125,3 +125,30 @@ def test_three_thumbnails_rated_and_one_picked():
     assert any("rate it" in p for p in thumbs.pick_problems({**s, "thumbnail": {**a, "score": None}}))
     assert any("share a `pattern`" in p for p in thumbs.pick_problems({**s, "thumbnails": [b, {**c, "pattern": b["pattern"]}]}))
 
+
+
+# --- a channel's own thumbnail rules (channel.json `thumbs`, 2026-11-20) ----------------------------
+
+RULES = {"maxWords": 3, "noFace": True, "minScore": 8, "patterns": {"P1": "crash", "P2": "brand", "P3": "face"}}
+
+
+def test_no_rules_no_problems():
+    assert thumbs.channel_problems([("a", {"words": "one two three four five"})], None) == []
+
+
+def test_each_option_names_a_different_proven_pattern():
+    probs = thumbs.channel_problems([("a", {"pattern_id": "P1"}), ("b", {"pattern_id": "P1"}), ("c", {"pattern_id": "P9"})], RULES)
+    assert any("B uses pattern P1 like A" in p for p in probs)
+    assert any("C: `pattern_id`" in p for p in probs)
+
+
+def test_channel_word_cap_face_and_score_bar():
+    th = {"pattern_id": "P2", "words": "almost dead again now", "expression": "shock", "score": 6}
+    probs = " | ".join(thumbs.channel_problems([("a", th)], RULES, pick="a"))
+    assert "3 at most" in probs and "no cast face" in probs and "picked at 6/10" in probs
+
+
+def test_a_good_set_passes():
+    ok = [("a", {"pattern_id": "P1", "words": "Almost dead", "score": 9}), ("b", {"pattern_id": "P2", "words": "Closed?"}),
+          ("c", {"pattern_id": "P3", "words": ""})]
+    assert thumbs.channel_problems(ok, RULES, pick="a") == []

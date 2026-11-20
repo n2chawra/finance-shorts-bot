@@ -74,5 +74,22 @@
     "_why": "research 2026-11-18 (style.json): references speak ~151 words a minute in Shorts, ~158 long; comments praise a calm narrator. Kokoro speaks ~164 words a minute per unit of speed",
     "short": 0.92,
     "long": 0.97
+  },
+  "thumbs": {
+    "_why": "style-study/2026-11-20-thumbnails.md (about 40 niche hits): the object cut open with its inside lit, one hero object glowing plus a verdict word, and scale shock lead; no faces; 0-3 words (4 max)",
+    "playbook": "channels/how-tech-and-ai-actually-work-chips-ai-p/style-study/2026-11-20-thumbnails.md",
+    "maxWords": 4,
+    "noFace": true,
+    "minScore": 8,
+    "patterns": {
+      "P1": "INSIDE: the familiar object cut open, its interior lit",
+      "P2": "the hero object glowing plus one verdict word",
+      "P3": "scale shock: tiny against huge, or a magnifier inset",
+      "P4": "exploded stack, the parts floating apart in order",
+      "P5": "A becomes B transformation split",
+      "P6": "one labelled secret: the object, an arrow, the part that matters",
+      "P7": "stakes: the object under threat",
+      "P8": "odd one out in the feed (a challenger)"
+    }
   }
 }
