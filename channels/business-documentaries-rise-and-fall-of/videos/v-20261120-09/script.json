@@ -1,0 +1,1026 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 40712,
+ "story": "product_craze_short",
+ "shape": "timeline",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "ledger",
+  "key": "D",
+  "bpm": 76
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "myth",
+ "cta": "Scarcity or the colours: which one sold the cup? Comment",
+ "feed_id": "2026-11-19-stanley-cup",
+ "facts": [
+  {
+   "label": "Stanley's revenue in 2019",
+   "value": 73,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2019-12-31",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/12/23/how-a-40-ounce-cup-turned-stanley-into-a-750-million-a-year-business.html",
+   "fixed": true
+  },
+  {
+   "label": "Stanley's revenue in 2020",
+   "value": 94,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2020-12-31",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/12/23/how-a-40-ounce-cup-turned-stanley-into-a-750-million-a-year-business.html",
+   "fixed": true
+  },
+  {
+   "label": "Stanley's revenue in 2021",
+   "value": 194,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2021-12-31",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/12/23/how-a-40-ounce-cup-turned-stanley-into-a-750-million-a-year-business.html",
+   "fixed": true
+  },
+  {
+   "label": "Stanley's revenue in 2022",
+   "value": 402,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2022-12-31",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/12/23/how-a-40-ounce-cup-turned-stanley-into-a-750-million-a-year-business.html",
+   "fixed": true
+  },
+  {
+   "label": "Stanley's projected sales in 2023, more than",
+   "value": 750,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2023-12-23",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/12/23/how-a-40-ounce-cup-turned-stanley-into-a-750-million-a-year-business.html",
+   "latest": true,
+   "checked": "2026-11-19"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "turn",
+  "sec": 1.2,
+  "words": "Then it *went viral*",
+  "figure": "{fact1}",
+  "tag": "A year",
+  "angle": "number"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "doc",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Stanley sold {fact1} a year. Then one cup went viral.",
+   "events": {
+    "stanley": {
+     "word": "Stanley"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "year": {
+     "word": "year"
+    },
+    "cup": {
+     "word": "cup"
+    },
+    "viral": {
+     "word": "viral"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "sold"
+    },
+    {
+     "kind": "boom",
+     "at": "viral"
+    }
+   ],
+   "params": {
+    "place": [
+     "a shop shelf of Stanley Quenchers",
+     "shops everywhere"
+    ],
+    "things": [
+     "Quencher cups",
+     "yearly sales"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "sold",
+      "size": "medium"
+     },
+     {
+      "at": "cup",
+      "size": "close"
+     },
+     {
+      "at": "viral",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stanley",
+      "what": "the shelf pushes in, a Stanley label"
+     },
+     {
+      "at": "sold",
+      "what": "the shelf dims, the yearly sales count up"
+     },
+     {
+      "at": "cup",
+      "what": "a red marker rings one cup"
+     },
+     {
+      "at": "viral",
+      "what": "a punch montage of Stanley shops"
+     }
+    ],
+    "fig": {
+     "sales": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-stanley-quencher-in-a-shop-5c6990de.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "out": "viral"
+     },
+     {
+      "kind": "count",
+      "figure": "sales",
+      "eyebrow": "Stanley sold",
+      "unit": "in sales a year",
+      "countAt": "sold",
+      "countLen": 30,
+      "tone": "gold",
+      "at": "sold",
+      "out": "cup"
+     },
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "every": 9,
+      "grade": "doc",
+      "at": "viral",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-stanley-drinkware-vacuum-flasks-company-26-janua-99476534.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-stanley-bottles-tumblers-vacuum-flasks-company-2-a1436d44.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-stanley-drinkware-vacuum-flasks-mall-store-26-ja-06b98799.jpg",
+        "focus": [
+         0.6,
+         0.5
+        ]
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Stanley",
+      "sub": "the flask maker",
+      "at": "stanley",
+      "out": "sold"
+     },
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "CNBC",
+      "date": "2023-12-23",
+      "at": "year",
+      "out": "cup"
+     }
+    ]
+   }
+  },
+  {
+   "id": "barely",
+   "scene": "doc",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Not a new cup. Stanley, the old flask maker, already sold this one, and it barely sold.",
+   "events": {
+    "new": {
+     "word": "new"
+    },
+    "flask": {
+     "word": "flask"
+    },
+    "already": {
+     "word": "already"
+    },
+    "barely": {
+     "word": "barely"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "barely"
+    }
+   ],
+   "params": {
+    "place": [
+     "a museum case of old Stanley bottles",
+     "old Stanley adverts on a desk"
+    ],
+    "things": [
+     "old vacuum bottles",
+     "old adverts"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "already",
+      "size": "wide"
+     },
+     {
+      "at": "barely",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "new",
+      "what": "old Stanley bottles in a museum case, black and white"
+     },
+     {
+      "at": "flask",
+      "what": "a label: the old flask maker"
+     },
+     {
+      "at": "already",
+      "what": "old adverts thrown onto a desk one by one"
+     },
+     {
+      "at": "barely",
+      "what": "a red stamp slams: barely sold"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-universal-stanley-vacuum-bottles-new-britain-ind-c2db225d.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-left",
+      "amount": 0.1,
+      "grade": "archive",
+      "treatment": "bw",
+      "out": "already"
+     },
+     {
+      "kind": "montage",
+      "mode": "stack",
+      "every": 11,
+      "grade": "archive",
+      "at": "already",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-1916-stanley-vacuum-bottle-288aa23a.png"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-1925-stanley-supervac-advertisement-16da72a0.png"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-1928-stanley-coffee-servers-advertisement-59484e09.png"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Stanley",
+      "sub": "the old flask maker",
+      "at": "flask",
+      "out": "already"
+     },
+     {
+      "kind": "stamp",
+      "text": "Barely sold",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.34
+      ],
+      "tilt": -8,
+      "at": "barely"
+     }
+    ]
+   }
+  },
+  {
+   "id": "blog",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So who saw it first? Three women who ran a shopping blog. They bought a batch themselves, sold it to their readers, and it was gone in days.",
+   "events": {
+    "who": {
+     "word": "who"
+    },
+    "women": {
+     "word": "women"
+    },
+    "blog": {
+     "word": "blog"
+    },
+    "batch": {
+     "word": "batch"
+    },
+    "readers": {
+     "word": "readers"
+    },
+    "gone": {
+     "word": "gone"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "blog"
+    },
+    {
+     "kind": "boom",
+     "at": "gone"
+    }
+   ],
+   "params": {
+    "place": [
+     "a woman shopping online in a park",
+     "a card paying at a laptop"
+    ],
+    "things": [
+     "laptop",
+     "shopping blog",
+     "card"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "blog",
+      "size": "medium"
+     },
+     {
+      "at": "batch",
+      "size": "close"
+     },
+     {
+      "at": "gone",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "women",
+      "what": "a woman at a laptop, cut out over the blurred park"
+     },
+     {
+      "at": "blog",
+      "what": "A SHOPPING BLOG lands behind her"
+     },
+     {
+      "at": "batch",
+      "what": "cut to a card paying on a laptop"
+     },
+     {
+      "at": "gone",
+      "what": "a red SOLD OUT stamp slams"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "depth",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-woman-online-shopping-concept-woman-in-the-green-ef5c7be7.jpg",
+      "cut": "media/business-documentaries-rise-and-fall-of/commons-photo-woman-online-shopping-concept-woman-in-the-green-ef5c7be7-cut.png",
+      "title": "A shopping blog",
+      "sub": "three women, one batch",
+      "titleAt": "blog",
+      "focus": [
+       0.25,
+       0.45
+      ],
+      "side": "right",
+      "bgTreatment": "none",
+      "grade": "warm",
+      "particles": true,
+      "out": "batch"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-person-using-a-credit-card-to-make-an-online-pur-cd535320.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "warm",
+      "at": "batch"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Their readers",
+      "sub": "bought every cup",
+      "at": "readers",
+      "out": "gone"
+     },
+     {
+      "kind": "stamp",
+      "text": "Sold out",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.32
+      ],
+      "tilt": 7,
+      "at": "gone"
+     }
+    ]
+   }
+  },
+  {
+   "id": "boss",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So what changed? Stanley hired a new boss from Crocs. He found the blog, and sold the cup to women, in new colours.",
+   "events": {
+    "changed": {
+     "word": "changed"
+    },
+    "boss": {
+     "word": "boss"
+    },
+    "crocs": {
+     "word": "Crocs"
+    },
+    "found": {
+     "word": "found"
+    },
+    "women": {
+     "word": "women"
+    },
+    "colours": {
+     "word": "colours"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "colours"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Crocs store",
+     "a Stanley wall of colours"
+    ],
+    "things": [
+     "Crocs store",
+     "coloured Quenchers"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "crocs",
+      "size": "medium"
+     },
+     {
+      "at": "colours",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "boss",
+      "what": "a Crocs store front cut out over the blurred mall"
+     },
+     {
+      "at": "crocs",
+      "what": "FROM CROCS lands between the layers"
+     },
+     {
+      "at": "women",
+      "what": "an arrow: sold to women"
+     },
+     {
+      "at": "colours",
+      "what": "cut to the colour wall, a marker rings a cup"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "depth",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-in-toronto-8fabf48d.jpg",
+      "cut": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-in-toronto-8fabf48d-cut.png",
+      "title": "From Crocs",
+      "sub": "Stanley's new boss",
+      "titleAt": "crocs",
+      "side": "right",
+      "bgTreatment": "bw",
+      "grade": "doc",
+      "out": "colours"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-stanley-drinkware-company-26-january-2025-philip-8a9f65c6.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "colours"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "arrow",
+      "from": [
+       0.25,
+       0.3
+      ],
+      "to": [
+       0.5,
+       0.5
+      ],
+      "label": "sold to women",
+      "at": "women",
+      "out": "colours"
+     }
+    ]
+   }
+  },
+  {
+   "id": "rise",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Sales jumped to {fact2}, climbed to {fact3}, and hit {fact4}.",
+   "events": {
+    "sales": {
+     "word": "Sales"
+    },
+    "jumped": {
+     "word": "jumped"
+    },
+    "climbed": {
+     "word": "climbed"
+    },
+    "then": {
+     "word": "hit"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "jumped"
+    }
+   ],
+   "params": {
+    "place": [
+     "a bar chart of Stanley's yearly sales"
+    ],
+    "things": [
+     "yearly sales bars"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "climbed",
+      "size": "medium"
+     },
+     {
+      "at": "then",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sales",
+      "what": "the bars start to draw"
+     },
+     {
+      "at": "jumped",
+      "what": "the second bar rises"
+     },
+     {
+      "at": "climbed",
+      "what": "the third bar doubles"
+     },
+     {
+      "at": "then",
+      "what": "the last bar towers, its figure counts up in gold"
+     }
+    ],
+    "fig": {
+     "ya": "{fact1}",
+     "yb": "{fact2}",
+     "yc": "{fact3}",
+     "yd": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "chart",
+      "type": "bar",
+      "values": [
+       73,
+       94,
+       194,
+       402
+      ],
+      "figs": [
+       "ya",
+       "yb",
+       "yc",
+       "yd"
+      ],
+      "hiBar": 3,
+      "tone": "rise",
+      "title": "Stanley's sales",
+      "sub": "a year",
+      "drawAt": "sales",
+      "drawLen": 24
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "CNBC",
+      "date": "2023-12-23",
+      "at": "sales"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "doc",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "And Stanley added scarcity: limited colour drops. Shops put up signs limiting how many cups you could buy.",
+   "events": {
+    "trick": {
+     "word": "added"
+    },
+    "scarcity": {
+     "word": "scarcity"
+    },
+    "signs": {
+     "word": "signs"
+    },
+    "limiting": {
+     "word": "limiting"
+    },
+    "buy": {
+     "word": "buy"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "scarcity"
+    }
+   ],
+   "params": {
+    "place": [
+     "a shop shelf with a limit sign"
+    ],
+    "things": [
+     "Quenchers",
+     "limit sign"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "signs",
+      "size": "close"
+     },
+     {
+      "at": "buy",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "scarcity",
+      "what": "a LIMITED DROPS stamp slams"
+     },
+     {
+      "at": "signs",
+      "what": "a red marker rings the limit sign"
+     },
+     {
+      "at": "buy",
+      "what": "an arrow from the sign to the cups"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-stanley-quencher-h2-0-tumbler-limit-2-per-custom-e643303f.png",
+      "focus": [
+       0.35,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Limited drops",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "scarcity",
+      "out": "signs"
+     },
+     {
+      "kind": "arrow",
+      "from": [
+       0.3,
+       0.45
+      ],
+      "to": [
+       0.6,
+       0.6
+      ],
+      "at": "buy"
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "doc",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Four years later, Stanley was projected to sell more than {fact5} in a single year.",
+   "events": {
+    "by": {
+     "word": "Four"
+    },
+    "stanley": {
+     "word": "Stanley"
+    },
+    "projected": {
+     "word": "projected"
+    },
+    "sell": {
+     "word": "sell"
+    },
+    "single": {
+     "word": "single"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "by"
+    },
+    {
+     "kind": "swell",
+     "at": "projected"
+    }
+   ],
+   "params": {
+    "place": [
+     "a news page",
+     "a gold poster over an old Stanley illustration"
+    ],
+    "things": [
+     "CNBC headline",
+     "gold figure"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "projected",
+      "size": "close"
+     },
+     {
+      "at": "year",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "by",
+      "what": "the CNBC headline card drops in"
+     },
+     {
+      "at": "sell",
+      "what": "cut to the gold poster over the old bottle"
+     },
+     {
+      "at": "sell",
+      "what": "the gold figure catches its sheen"
+     }
+    ],
+    "fig": {
+     "big": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "CNBC",
+        "date": "2023-12-23",
+        "title": "How a forty-ounce cup turned Stanley into a {fact5} a year business",
+        "style": "web",
+        "hi": "Stanley"
+       }
+      ],
+      "on": [
+       "start"
+      ],
+      "out": "sell",
+      "enter": "zoom"
+     },
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-1916-stanley-vacuum-bottle-illustration-304f5309.png",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "date": "2023-12-23",
+      "title": "Stanley",
+      "figure": "big",
+      "sub": "projected sales in one year",
+      "on": "sell",
+      "at": "sell"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "CNBC",
+      "date": "2023-12-23",
+      "at": "by"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ending",
+   "scene": "doc",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Spot one in a cup holder today, and remember: it once barely sold.",
+   "events": {
+    "next": {
+     "word": "Spot"
+    },
+    "holder": {
+     "word": "holder"
+    },
+    "remember": {
+     "word": "remember"
+    },
+    "barely": {
+     "word": "barely"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "barely"
+    }
+   ],
+   "params": {
+    "place": [
+     "the shop shelf of Quenchers again"
+    ],
+    "things": [
+     "Quencher cups"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "remember",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "holder",
+      "what": "back on the shelf of Quenchers"
+     },
+     {
+      "at": "barely",
+      "what": "a label: it once barely sold"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-stanley-quencher-in-a-shop-5c6990de.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "move": "pull",
+      "amount": 0.1,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Once",
+      "sub": "it barely sold",
+      "at": "barely"
+     }
+    ]
+   }
+  }
+ ],
+ "narrator": "am_fenrir"
+}

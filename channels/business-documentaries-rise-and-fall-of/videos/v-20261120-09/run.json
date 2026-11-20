@@ -1,0 +1,235 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-20T07:03:45.501781+00:00",
+    "finishedAt": "2026-11-20T07:03:45.501781+00:00",
+    "notes": [
+      "topic category 'drinkware' was used in the last 3 videos",
+      "topic is too close to v-20261120-07 ('Stanley Sold $73 Million a Year. Then One Cup Went Viral', similarity 1.00) within 60 days",
+      "description opens with 'how did a', already used by v-20261120-07",
+      "shape 'timeline' was used in the last 3 videos: pick another, or invent one the topic needs",
+      "feed topic '2026-11-19-stanley-cup' can't be used: an earlier video already used it"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:03:52.886983+00:00",
+    "finishedAt": "2026-11-20T07:03:52.886983+00:00",
+    "notes": [
+      "Owner remake (20 Nov 2026) of stale v-20261120-07: plan copied unchanged. The near-duplicate topic, same-story, shape, feed-topic and opening-phrase variety rules do not apply to this remake (owner's instruction); check-plan's failures on them are waived."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:37:59.638892+00:00",
+    "finishedAt": "2026-11-20T07:37:59.638892+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words",
+      "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:38:54.935385+00:00",
+    "finishedAt": "2026-11-20T07:38:54.935385+00:00",
+    "notes": [
+      "All 5 CNBC facts confirmed on the source page (2023-12-23): revenue $73M 2019, $94M 2020, $194M 2021, $402M 2022, projected to top $750M 2023; verify item met (payoff says 'projected'). Story claims checked: Quencher sales middling, restocking stopped by 2019 (CNBC); Buy Guide women bought a wholesale batch (5,000), sold out within days (CNBC); three women (LeSueur, Cannon, Hutchinson per Sun-Sentinel and Las Vegas Review-Journal); Terence Reilly ex-Crocs, president 2020, worked with The Buy Guide on new colours and courted women (CNBC, Wikipedia); limited-edition colours, Reilly wants 'a little bit of scarcity', Target limited two per person (CNBC). No advice, tone journalistic, description ends with the channel disclaimer. Notes: 'He found the blog' simplifies CNBC (an employee told Reilly about it in listening sessions); 2023 figure is a Dec 2023 projection."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:38:09.788908+00:00",
+    "finishedAt": "2026-11-20T07:39:01.174467+00:00",
+    "notes": [
+      "41 s, night/ledger (preview only)",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-20T07:41:18.792279+00:00",
+    "finishedAt": "2026-11-20T07:41:18.792279+00:00",
+    "notes": [
+      "[script] thumbnail (script.thumbnail at: boss, sec 2.6): the cover is the blurred, darkened Crocs store front with 'THEN IT WENT VIRAL' -- no Stanley, no cup, mostly dark empty frame, and it reads as if Crocs went viral; the planned figure {fact1} / tag 'A year' do not show. Move the thumbnail to the hook beat (the Quencher shelf) or the rise chart so it shows the cup and the subject."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:41:09.815616+00:00",
+    "finishedAt": "2026-11-20T07:44:22.426869+00:00",
+    "notes": [
+      "41 s, night/ledger, peak -1.0 dB, mean -17.9 dB",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words",
+      "warning: the music sits only 17.7 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-20T07:44:36.155084+00:00",
+    "finishedAt": "2026-11-20T07:44:52.822638+00:00",
+    "notes": [
+      "the cover looks like v-20261120-07's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:45:17.895419+00:00",
+    "finishedAt": "2026-11-20T07:45:34.340910+00:00",
+    "notes": [
+      "41 s, night/ledger (preview only)",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-20T07:46:12.160260+00:00",
+    "finishedAt": "2026-11-20T07:46:12.160260+00:00",
+    "notes": [
+      "[script] thumbnail (script.thumbnail at: rise, sec 2.6): the frame is mid-transition -- the chart title 'Stanley's sales' is still a blur (so the cover names no subject: no Stanley, no cup), and the $402M label is faded grey on the dark background; the lower half is empty. The 25.0 s preview still (about 4.4 s into rise) has the title, all four bars and labels fully drawn: move sec to about 4.4-5.0."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:49:05.888759+00:00",
+    "finishedAt": "2026-11-20T07:52:15.947242+00:00",
+    "notes": [
+      "41 s, night/ledger, peak -1.0 dB, mean -17.9 dB",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words",
+      "warning: the music sits only 17.7 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:52:37.304724+00:00",
+    "finishedAt": "2026-11-20T07:52:53.352251+00:00",
+    "notes": [
+      "41 s, night/ledger (preview only)",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:53:20.224959+00:00",
+    "finishedAt": "2026-11-20T07:53:34.877648+00:00",
+    "notes": [
+      "41 s, night/ledger (preview only)",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:53:53.231668+00:00",
+    "finishedAt": "2026-11-20T07:53:53.231668+00:00",
+    "notes": [
+      "Thumbnail now turn@1.2s: sharp, colourful Quenchers with STANLEY on every cup and the real 'Limit 2 per customer' sign, words clear of the cups; stills 0-40.7s each a real place matching its line (shelf, museum case, blogger, Crocs, colour wall, CNBC sales chart, limit sign, $750M poster, loop to shelf), no overlap/cut-off/placeholder, disclaimer on the last frames; 41 s, layout/craft clean, audio -1.0/-17.9 dB."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:56:11.756608+00:00",
+    "finishedAt": "2026-11-20T07:59:16.240496+00:00",
+    "notes": [
+      "41 s, night/ledger, peak -1.0 dB, mean -17.9 dB",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('one cup went viral'): new words",
+      "note: beat 'hook' opens like a line in one of the last scripts ('stanley sold a'): new words",
+      "note: beat 'barely' opens like a line in one of the last scripts ('not a new'): new words",
+      "note: beat 'blog' opens like a line in one of the last scripts ('so who saw'): new words",
+      "note: beat 'boss' opens like a line in one of the last scripts ('so what changed'): new words",
+      "note: beat 'rise' opens like a line in one of the last scripts ('sales jumped to'): new words",
+      "note: beat 'turn' opens like a line in one of the last scripts ('and stanley added'): new words",
+      "note: beat 'payoff' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: beat 'ending' opens like a line in one of the last scripts ('spot one in'): new words",
+      "warning: the music sits only 17.7 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-20T07:59:25.869294+00:00",
+    "finishedAt": "2026-11-20T07:59:25.869294+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
