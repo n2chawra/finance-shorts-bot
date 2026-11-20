@@ -122,14 +122,14 @@ def _wait(bucket: str, interval: float) -> None:
         _last[bucket] = time.monotonic()
 
 
-def open_url(url: str, headers: dict, bucket: str, interval: float, timeout: int = 60):
+def open_url(url: str, headers: dict, bucket: str, interval: float, timeout: int = 60, attempts: int = 6):
     """GET with a per-source rate limit, waiting out 429/503 (Retry-After) a few times."""
-    for attempt in range(6):
+    for attempt in range(attempts):
         _wait(bucket, interval)
         try:
             return urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout)
         except urllib.error.HTTPError as e:
-            if e.code not in (429, 503) or attempt == 5:
+            if e.code not in (429, 503) or attempt == attempts - 1:
                 raise
             time.sleep(max(float(e.headers.get("Retry-After") or 0), 2 ** attempt))
     raise RuntimeError("unreachable")
@@ -152,12 +152,13 @@ def get_json(url: str, headers: dict, bucket: str, interval: float, cache_key: s
     return data
 
 
-def download(url: str, dest: Path, headers: dict, bucket: str, interval: float, max_bytes: int | None = None) -> Path:
+def download(url: str, dest: Path, headers: dict, bucket: str, interval: float, max_bytes: int | None = None,
+             attempts: int = 6) -> Path:
     """Stream a file to `dest` (via a .part file), refusing anything over `max_bytes`."""
     dest.parent.mkdir(parents=True, exist_ok=True)
     part = dest.with_name(dest.name + ".part")
     n = 0
-    with open_url(url, headers, bucket, interval, timeout=120) as r, open(part, "wb") as f:
+    with open_url(url, headers, bucket, interval, timeout=120, attempts=attempts) as r, open(part, "wb") as f:
         for chunk in iter(lambda: r.read(1 << 20), b""):
             n += len(chunk)
             if max_bytes and n > max_bytes:

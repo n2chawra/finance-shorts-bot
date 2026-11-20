@@ -6,6 +6,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+import urllib.error
 from pathlib import Path
 
 from . import STOCK_CHANNELS, licence
@@ -103,8 +104,32 @@ def fetch(slug: str, ref: str, max_mb: int = MAX_MB, root: Path = ROOT) -> dict:
     aid = asset_id(source, c["kind"], c["id"])
     dest = cache_root(slug) / source / f"{aid}.{c['ext']}"
     headers = p.headers() if source != "pexels" else {"User-Agent": p.headers()["User-Agent"]}   # never send the key to the CDN
-    download(c["url"], dest, headers, source + "-files", getattr(p, "file_interval", p.interval), max_mb << 20)
+    # Wikimedia throttles original files per IP (429 on upload.wikimedia.org, 20 Nov 2026) and still serves its
+    # standard thumbnail widths: a Commons photo comes as a standard-width thumbnail.
+    urls = (_commons_thumbs(c) if source == "commons" and c["kind"] == "photo" else []) + [c["url"]]
+    for i, url in enumerate(urls):
+        try:
+            last = i == len(urls) - 1
+            download(url, dest, headers, source + "-files", getattr(p, "file_interval", p.interval), max_mb << 20,
+                     attempts=6 if last else 2)   # a thumbnail width that is throttled: try the next one soon
+            break
+        except urllib.error.HTTPError as e:
+            if i == len(urls) - 1 or e.code not in (400, 404, 429):
+                raise
     return record(slug, _build(slug, c, dest), root)
+
+
+def _commons_thumbs(c: dict) -> list[str]:
+    """Standard-width thumbnail URLs of a Commons original (Wikimedia serves only its standard widths)."""
+    m = re.match(r"(https://(?:upload|thumb)\.wikimedia\.org/wikipedia/commons)/(\w/\w\w)/([^/?]+)$", c["url"].split("?")[0])
+    if not m:
+        return []
+    _, hashed, name = m.groups()
+    base = "https://thumb.wikimedia.org/wikipedia/commons"   # the thumbnail host, not throttled with upload.wikimedia.org
+    width = min(int(c.get("width") or 1920), 1920)
+    steps = [w for w in (500, 960, 1280, 1920) if w >= width][:1] or [1920]   # the smallest standard width that keeps every pixel
+    tail = name + (".png" if name.lower().endswith((".tif", ".tiff")) else "")
+    return [f"{base}/thumb/{hashed}/{name}/{w}px-{tail}" for w in steps + [w for w in (1920, 1280, 960) if w not in steps]]
 
 
 # ---- EDGAR ---------------------------------------------------------------------------------------------
