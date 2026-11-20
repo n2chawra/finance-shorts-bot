@@ -33,7 +33,7 @@ SVG `<g>` (inside a flat `Stage`/`View` or any `<svg>`, parent coordinates):
 | piece | props |
 |---|---|
 | `ForceDiagram` | `x, y, size, value` 0..1, `forces` [{label, angle [a0,a1] (0 up), len [l0,l1], tone, dashed, at}], `body` wing/box/none, `bank` [b0,b1], `title` |
-| `CauseChain` | `x, y, w, links` [{label, at}], `broken` (index), `breakAt`, `vertical`, `size` |
+| `CauseChain` | `x, y, w, links` [{label, at}], `broken` (the box whose incoming link snaps), `breakAt`, `vertical`, `size` |
 | `Callout` | `point`, `label` (both [x,y]), `text`, `sub`, `tone`, `at`, `outAt`: the leader draws, then the mono label types on |
 | `Elevation` | box `x, y, w, h`, `kind` bridge/dam/hull/building, `axis` {max, unit, ticks, label}, `level` 0..1 + `levelLabel`, `dims` [{from, to (box shares), label, at}], `stress` 0..1 (grey → amber → red), `fail` 0..1 (girder hinges, dam cracks, hull lists, column buckles), `failPart`, `drawAt` |
 | `AltimeterTape` | `value, step, unit, floor` (red below) |

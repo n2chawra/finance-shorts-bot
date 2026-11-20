@@ -39,7 +39,7 @@ export const MonoLabel: React.FC<LookProp & { x: number; y: number; t: number; a
   const k = ease(t, at, 6);
   if (k <= 0) return null;
   const s = typed(text.toUpperCase(), t, at, 1.6), s2 = sub ? typed(sub, t, at === undefined ? undefined : at + text.length / 1.6, 1.8) : "";
-  const wBox = Math.max(text.length, (sub ?? "").length * 0.8) * size * 0.64 + size * 1.2;
+  const wBox = Math.max(text.length * 0.74, (sub ?? "").length * 0.66) * size + size * 1.2;   // Courier ~0.6em + letter-spacing
   const hBox = size * (sub ? 2.7 : 1.6);
   const bx = anchor === "start" ? x - size * 0.6 : anchor === "end" ? x - wBox + size * 0.6 : x - wBox / 2;
   return (
@@ -95,11 +95,15 @@ export const ForceDiagram: React.FC<LookProp & {
         const r0 = size * 0.14;
         const x1 = x + Math.cos(a) * r0, y1 = y + Math.sin(a) * r0, x2 = x + Math.cos(a) * (r0 + len), y2 = y + Math.sin(a) * (r0 + len);
         const c = toneOf(L, f.tone ?? "accent");
-        const lx = x + Math.cos(a) * (r0 + len + size * 0.12), ly = y + Math.sin(a) * (r0 + len + size * 0.12);
+        const anchor = Math.cos(a) > 0.3 ? "start" : Math.cos(a) < -0.3 ? "end" : "middle";
+        const tw = f.label.length * size * 0.075 * 0.74, half = size * 1.2;     // keep the label inside the diagram's own box
+        let lx = x + Math.cos(a) * (r0 + len + size * 0.12);
+        const ly = y + Math.sin(a) * (r0 + len + size * 0.12);
+        lx = anchor === "start" ? Math.min(lx, x + half - tw) : anchor === "end" ? Math.max(lx, x - half + tw) : Math.max(x - half + tw / 2, Math.min(lx, x + half - tw / 2));
         return (
           <g key={i}>
             <Arrow x1={x1} y1={y1} x2={x2} y2={y2} k={outCubic(k)} color={c} w={size * 0.028} dashed={f.dashed} wobble={L.wobble} seed={i + 7} />
-            <MonoLabel look={L} t={t} at={f.at} x={lx} y={ly + size * 0.03} text={f.label} size={size * 0.075} color={c} anchor={Math.cos(a) > 0.3 ? "start" : Math.cos(a) < -0.3 ? "end" : "middle"} />
+            <MonoLabel look={L} t={t} at={f.at} x={lx} y={ly + size * 0.03} text={f.label} size={size * 0.075} color={c} anchor={anchor} />
           </g>
         );
       })}
@@ -110,8 +114,8 @@ export const ForceDiagram: React.FC<LookProp & {
 
 // ------------------------------------------------------------------ CauseChain
 
-/** A strip of causes ("less lift → nose drops → spiral") that fills link by link on the words; the
- * link at `broken` cracks and turns red at `breakAt`. Horizontal, or vertical for a Short. */
+/** A strip of causes ("less lift → nose drops → spiral") that fills link by link on the words; at
+ * `breakAt` the link INTO box `broken` snaps (two red halves pull apart) and that box turns red, its label whole. Horizontal, or vertical for a Short. */
 export const CauseChain: React.FC<LookProp & {
   t: number; x: number; y: number; w: number; links: { label: string; at?: number }[];
   broken?: number; breakAt?: number; vertical?: boolean; size?: number;
@@ -131,29 +135,31 @@ export const CauseChain: React.FC<LookProp & {
         const cx = vertical ? x + w / 2 : x + i * (cell + gap) + cell / 2;
         const cy = vertical ? y + i * (cell + gap) : y;
         const bw = vertical ? w : cell, bh = size * 1.9;
-        const split = isB ? bk * size * 0.5 : 0;
+        const split = isB ? bk * gap * 0.3 : 0;
         const shake = isB ? Math.sin(t * 2.3) * (1 - bk) * size * 0.15 : 0;
         const pk = outCubic(k);
         return (
-          <g key={i} opacity={pk} transform={`translate(${shake} ${(1 - pk) * size * 0.4})`}>
-            {i > 0 ? (
-              <Arrow color={i === broken && bk > 0 ? L.fail : L.muted} w={size * 0.12} k={pk}
-                x1={vertical ? cx : cx - bw / 2 - gap + size * 0.15} y1={vertical ? cy - gap - bh / 2 + size * 0.5 : cy}
-                x2={vertical ? cx : cx - bw / 2 - size * 0.15} y2={vertical ? cy - bh / 2 - size * 0.1 : cy} />
-            ) : null}
-            {split === 0 ? (
+          <g key={i} opacity={pk} transform={`translate(0 ${(1 - pk) * size * 0.4})`}>
+            {i > 0 ? (() => {
+              // the link into this box; at `broken` it snaps: two red halves pull apart with jagged ends
+              const ax = vertical ? cx : cx - bw / 2 - gap + size * 0.15, ay = vertical ? cy - gap - bh / 2 + size * 0.5 : cy;
+              const zx = vertical ? cx : cx - bw / 2 - size * 0.15, zy = vertical ? cy - bh / 2 - size * 0.1 : cy;
+              if (!isB) return <Arrow color={L.muted} w={size * 0.12} k={pk} x1={ax} y1={ay} x2={zx} y2={zy} />;
+              const mx = (ax + zx) / 2, my = (ay + zy) / 2, ux = vertical ? 0 : 1, uy = vertical ? 1 : 0, g = split + size * 0.08;
+              const jag = (px: number, py: number, dir: number) =>
+                `M${px},${py} l${dir * ux * size * 0.12 + uy * size * 0.18},${dir * uy * size * 0.12 + ux * size * 0.18} l${-uy * size * 0.36},${-ux * size * 0.36}`;
+              return (
+                <g>
+                  <line x1={ax} y1={ay} x2={mx - ux * g} y2={my - uy * g} stroke={L.fail} strokeWidth={size * 0.12} strokeLinecap="round" />
+                  <path d={jag(mx - ux * g, my - uy * g, 1)} stroke={L.fail} strokeWidth={size * 0.07} fill="none" opacity={bk} />
+                  <Arrow color={L.fail} w={size * 0.12} x1={mx + ux * g} y1={my + uy * g} x2={zx} y2={zy} />
+                  <path d={jag(mx + ux * g, my + uy * g, -1)} stroke={L.fail} strokeWidth={size * 0.07} fill="none" opacity={bk} />
+                </g>
+              );
+            })() : null}
+            <g transform={`translate(${shake} 0)`}>
               <rect x={cx - bw / 2} y={cy - bh / 2} width={bw} height={bh} fill={L.panel} stroke={c} strokeWidth={size * 0.08} rx={size * 0.2} />
-            ) : (
-              <>
-                <g transform={`translate(${-split} 0) rotate(${-split * 0.15} ${cx} ${cy})`}>
-                  <path d={`M${cx},${cy - bh / 2} H${cx - bw / 2} V${cy + bh / 2} H${cx}`} fill={L.panel} stroke={c} strokeWidth={size * 0.08} />
-                </g>
-                <g transform={`translate(${split} 0) rotate(${split * 0.15} ${cx} ${cy})`}>
-                  <path d={`M${cx},${cy - bh / 2} H${cx + bw / 2} V${cy + bh / 2} H${cx}`} fill={L.panel} stroke={c} strokeWidth={size * 0.08} />
-                </g>
-              </>
-            )}
-            {isB ? <path d={`M${cx},${cy - bh / 2} l${size * 0.15},${bh * 0.3} l${-size * 0.25},${bh * 0.2} l${size * 0.2},${bh * 0.5}`} stroke={L.fail} strokeWidth={size * 0.08} fill="none" opacity={bk} /> : null}
+            </g>
             <text x={cx} y={cy + size * 0.36} textAnchor="middle" fontFamily={L.fonts.mono} fontWeight={700} fontSize={size} letterSpacing={size * 0.08} fill={isB ? L.fail : L.ink}>
               {typed(ln.label.toUpperCase(), t, ln.at, 1.5)}
             </text>

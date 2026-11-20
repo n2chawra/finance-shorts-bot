@@ -42,7 +42,7 @@ export const AltimeterTape: React.FC<LookProp & Box & { value: number; step: num
           return (
             <g key={i}>
               <line x1={x + w * 0.14} y1={ty} x2={x + w * 0.3} y2={ty} stroke={L.line} strokeWidth={2} />
-              <text x={x + w * 0.36} y={ty + size * 0.025} fontFamily={L.fonts.mono} fontSize={size * 0.065} fill={L.muted}>{fmtNum(v)}</text>
+              {Math.abs(ty - cy) > size * 0.09 ? <text x={x + w * 0.36} y={ty + size * 0.025} fontFamily={L.fonts.mono} fontSize={size * 0.065} fill={L.muted}>{fmtNum(v)}</text> : null}
             </g>
           );
         })}
