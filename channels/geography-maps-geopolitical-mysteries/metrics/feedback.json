@@ -1,7 +1,83 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 5,
   "notes": [
+    {
+      "id": "cmwoj53c80003l509bv0e56dz",
+      "kind": "general",
+      "area": "voice",
+      "text": "Use more voice type so that I can know which sound better",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-20T05:19:43.401Z",
+      "video": {
+        "id": "v-20261120-05",
+        "title": "One passport for every UN country?",
+        "format": "short",
+        "status": "queued",
+        "story": "what_if_world",
+        "shape": "what-if",
+        "hookStyle": "challenge",
+        "hook": "What if one passport worked everywhere, because Earth was one country?"
+      }
+    },
+    {
+      "id": "cmwoj49a30001l209xjb20lqx",
+      "kind": "general",
+      "area": "animation",
+      "text": "Add sound effects for small small things like in this video when truck moving to other place could have been sounded. When things pop up small sound effects when screen moves that sound effects. So that it feels like engaging and wow to hear.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-20T05:19:04.443Z",
+      "video": {
+        "id": "v-20261120-05",
+        "title": "One passport for every UN country?",
+        "format": "short",
+        "status": "queued",
+        "story": "what_if_world",
+        "shape": "what-if",
+        "hookStyle": "challenge",
+        "hook": "What if one passport worked everywhere, because Earth was one country?"
+      }
+    },
+    {
+      "id": "cmwoizq2r0001l5097xs9mxx4",
+      "kind": "improve",
+      "area": null,
+      "text": "Loved the video. Two things to improve.\n\n1. For currencies u could have shown real currency not a sample drawn with name.\n2. The camera change or screen change should be smooth move not abrupt.\n\nIf u can't show real images animated them as characters like napoleon character when it's spoken in script. Likewise script according.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-20T05:15:32.931Z",
+      "video": {
+        "id": "v-20261120-05",
+        "title": "One passport for every UN country?",
+        "format": "short",
+        "status": "queued",
+        "story": "what_if_world",
+        "shape": "what-if",
+        "hookStyle": "challenge",
+        "hook": "What if one passport worked everywhere, because Earth was one country?"
+      }
+    },
+    {
+      "id": "cmwoiqjki0001l409a2gj48qx",
+      "kind": "wrong",
+      "area": "topic",
+      "text": "Don't like the topic . Anything topics that are explained not in the map are wrong and should not be taken. This niche is all about working with maps just like our past two video of greenland and other. \n\nMake sure this does not happen again.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-20T05:08:24.594Z",
+      "video": {
+        "id": "v-20261120-04",
+        "title": "Why did Britain hide a power station inside a mountain?",
+        "format": "short",
+        "status": "published",
+        "story": "why_shaped",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "Why did Britain hide a whole power station inside a mountain in Wales?"
+      }
+    },
     {
       "id": "cmwlu7uww0001kz09ua9f25hp",
       "kind": "stale",
