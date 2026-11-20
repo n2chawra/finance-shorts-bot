@@ -32,6 +32,9 @@ PROGRESSIONS: dict[str, list[list[tuple[int, tuple[int, int, int]]]]] = {
     # the business-documentary channel's own beds (CHANNEL_GENRES): dark, minor, a file being read at night
     "ledger": [[(0, MIN), (8, MAJ), (5, MIN), (7, MIN)], [(0, MIN), (10, MAJ), (8, MAJ), (7, MIN)], [(0, MIN), (5, MIN), (3, MAJ), (8, MAJ)]],
     "dossier": [[(0, MIN), (8, MAJ), (10, MAJ), (7, MIN)], [(0, MIN), (0, MIN), (8, MAJ), (5, MIN)]],
+    # the disasters channel's own beds (CHANNEL_GENRES): low, still, a structure under load
+    "undertow": [[(0, MIN), (8, MAJ), (5, MIN), (0, MIN)], [(0, MIN), (3, MAJ), (8, MAJ), (7, MIN)]],
+    "brace": [[(0, MIN), (0, MIN), (1, MAJ), (0, MIN)], [(0, MIN), (8, MAJ), (7, MIN), (7, MIN)]],
 }
 ARPS: list[tuple[int, ...]] = [(0, 1, 2, 1, 0, 2, 1, 2), (0, 2, 1, 2, 0, 2, 1, 2), (2, 1, 0, 1, 2, 1, 0, 1)]
 CUTOFF: dict[str, dict[str, float]] = {
@@ -45,6 +48,8 @@ CUTOFF: dict[str, dict[str, float]] = {
     "datahall": {"pad": 1100, "bass": 200, "lead": 1400, "shimmer": 9000},
     "ledger": {"pad": 2400, "bass": 160, "lead": 1500},
     "dossier": {"pad": 1400, "bass": 180, "lead": 1300},
+    "undertow": {"pad": 420, "bass": 150, "lead": 700},
+    "brace": {"pad": 900, "bass": 170, "lead": 1100},
 }
 
 
@@ -401,10 +406,45 @@ def _dossier(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
             bed.add("lead", _voice("tri", note(ch[(q + b) % 3] + 12), beat*0.7, 0.01, 0.2, 5.0), st + q*beat, 0.05)
 
 
+def _undertow(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The disasters channel's long-video bed (2026-11-20, research/sound.md: Fault Lines' beatless drone,
+    334 Hz, ~49% bass, ~33 dB under the voice): a root-and-fifth sub drone held four bars, a dark
+    detuned pad swelling in and out every two bars (the breath), a lone low sine note now and then.
+    No pulse, no kick, nothing bright: it sits under the voice and rises in the gaps."""
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[(b//4) % len(chords)]
+        low = ch[0] - 12 if ch[0] >= 48 else ch[0]
+        if b % 4 == 0:
+            bed.add("bass", _voice("sine", note(low), 4*bed.bar, 2.0, 2.0), st, 0.16)
+            bed.add("bass", _voice("sine", note(low + 7), 4*bed.bar, 2.5, 2.0), st, 0.07)
+        if b % 2 == 0:
+            for m in ch[:2]:
+                for det in (1.0, 1.006):
+                    bed.add("pad", _voice("saw", note(m + 12)*det, 2*bed.bar, 0.45*2*bed.bar, 0.45*2*bed.bar), st, 0.026)
+        if b % 3 == 2:
+            bed.add("lead", _voice("sine", note(ch[1] + 12), bed.bar, 0.6, 0.8), st + 0.5*bed.bar, 0.04)
+
+
+def _brace(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The disasters channel's tension bed for reconstructions and Shorts (66-76 BPM): the undertow's pad
+    a chord a bar, a muted felt sub pulse on beats 1 and 3, a ticking low tom on 4, a pad that climbs a
+    semitone every 4 bars (rising pressure). No hats: the clock ticks are the script's own effects."""
+    beat = bed.beat
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[b % len(chords)]
+        low = ch[0] - 12 if ch[0] >= 48 else ch[0]
+        lift = (b // 4) % 3
+        for m in ch:
+            bed.add("pad", _voice("saw", note(m + 12 + lift), bed.bar, 0.5, 0.5), st, 0.026)
+        for q in (0, 2):
+            bed.add("bass", _voice("sine", note(low), beat*0.9, 0.006, 0.35, 3.0), st + q*beat, 0.14 if q == 0 else 0.1)
+        bed.add("lead", _voice("tri", note(low + 12), beat*0.25, 0.003, 0.08, 6.0), st + 3*beat, 0.05)
+
+
 _BUILDERS: dict[str, Callable[[_Bed, np.random.Generator, Chords], None]] = {
     "pop": _pop, "cinematic": _cinematic, "synthwave": _synthwave, "acoustic": _acoustic,
     "explorer": _explorer, "atlas": _atlas, "circuit": _circuit, "datahall": _datahall,
-    "ledger": _ledger, "dossier": _dossier}
+    "ledger": _ledger, "dossier": _dossier, "undertow": _undertow, "brace": _brace}
 
 
 def make_bed(rng: np.random.Generator, dur: float, genre: str, key: str, bpm: float, pulse: bool = False) -> np.ndarray:

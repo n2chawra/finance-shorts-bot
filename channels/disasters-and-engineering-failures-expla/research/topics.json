@@ -1,0 +1,1516 @@
+{
+ "note": "First topics from the setup research (20 Nov 2026): 18 long videos in advice.md's shares (stunt/ride 4, rail 3, air crash + rule 4, every corner cut 4, space 1, maritime/industrial 2), each with one promo Short. Every fact was checked on 20 Nov on the official report page or in reputable outlets agreeing; figures that could not be verified were left out and are listed under 'verify'. 'stories' holds the format id.",
+ "topics": [
+  {
+   "id": "2026-11-20-shoreham-hunter",
+   "format": "long",
+   "title": "The Air Show Loop That Started Too Low",
+   "category": "airshow",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "stunt_gone_wrong"
+   ],
+   "currency": "GBP",
+   "reach": "global",
+   "demand": {
+    "family": "It went wrong (rides, stunts, amateur engineering)",
+    "url": "https://www.youtube.com/watch?v=NiIZ8SU_bis",
+    "note": "core 1.93x, 409,809 median (advice.md)"
+   },
+   "hook": "On 22 August 2015, a 1955 jet fighter began a loop over Shoreham and never had the height to finish it.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A vintage Hawker Hunter starts a display loop lower than the pilot's authorised minimum for aerobatics",
+    "It enters slower than the pilot's stated minimum and without full thrust",
+    "It reaches the top of the loop below the height needed to complete it",
+    "No escape manoeuvre is flown; the jet comes down on the busy A27 Shoreham bypass"
+   ],
+   "rule_after": "AAIB AAR 1/2017 made 11 safety recommendations (after 7 in SB 4/2015 and 14 in SB 1/2016); the CAA tightened UK display rules: pilot display authorisations, risk assessments, and display lines kept away from crowds and roads.",
+   "human_moment": "Two young Worthing United footballers were driving to a match on the A27 when the jet came down.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the Shoreham Airshow crash",
+     "value": 2015,
+     "unit": "year",
+     "as_of": "2015-08-22",
+     "source": "AAIB AAR 1/2017",
+     "url": "https://www.gov.uk/aaib-reports/aircraft-accident-report-aar-1-2017-g-bxfi-22-august-2015",
+     "fixed": true
+    },
+    {
+     "label": "Road users and bystanders killed",
+     "value": 11,
+     "unit": "count",
+     "as_of": "2015-08-22",
+     "source": "AAIB AAR 1/2017",
+     "url": "https://www.gov.uk/aaib-reports/aircraft-accident-report-aar-1-2017-g-bxfi-22-august-2015",
+     "fixed": true
+    },
+    {
+     "label": "Other people injured, including the pilot",
+     "value": 13,
+     "unit": "count",
+     "as_of": "2015-08-22",
+     "source": "AAIB AAR 1/2017",
+     "url": "https://www.gov.uk/aaib-reports/aircraft-accident-report-aar-1-2017-g-bxfi-22-august-2015",
+     "fixed": true
+    },
+    {
+     "label": "Safety recommendations in the final report",
+     "value": 11,
+     "unit": "count",
+     "as_of": "2017-03-03",
+     "source": "AAIB AAR 1/2017",
+     "url": "https://www.gov.uk/aaib-reports/aircraft-accident-report-aar-1-2017-g-bxfi-22-august-2015",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Entry height ~185 ft vs a 500 ft minimum is quoted only by press (Portsmouth News): read the exact entry/apex heights and speeds in the AAIB PDF before using them",
+    "Footballers' names (Matt Grimstone, Jacob Schilt): confirm before naming"
+   ],
+   "sources": [
+    "https://www.gov.uk/aaib-reports/aircraft-accident-report-aar-1-2017-g-bxfi-22-august-2015",
+    "https://assets.publishing.service.gov.uk/media/58b9247740f0b67ec80000fc/AAR_1-2017_G-BXFI.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-reno-galloping-ghost",
+   "format": "long",
+   "title": "The Racing Plane Modified Past Its Limits",
+   "category": "air racing",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "stunt_gone_wrong"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "It went wrong (rides, stunts, amateur engineering)",
+    "url": "https://www.youtube.com/watch?v=NiIZ8SU_bis",
+    "note": "core 1.93x, 409,809 median (advice.md)"
+   },
+   "hook": "At 512 miles an hour, a 1940s fighter rebuilt for racing pitched straight up over the Reno grandstand.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A P-51D Mustang is heavily modified for unlimited-class racing; the changes were never flight-tested or engineered for race speed",
+    "Worn lock nuts let the elevator trim tab attachment screws loosen; one tab has a fatigue crack",
+    "The reduced stiffness lets aerodynamic flutter start at about 445 knots on lap three",
+    "The tab fails, the aircraft rolls and pitches up at 17.3 g, the pilot is incapacitated, and it dives into the box seats"
+   ],
+   "rule_after": "NTSB AAB-12/01 (Aug 2012) and 10 recommendations (Apr 2012): engineering evaluation of racer modifications, pre-race inspections, G-awareness for pilots, and race course and crowd lines moved further from spectators.",
+   "human_moment": "The pilot, Jimmy Leeward, was 74 and a veteran Reno racer.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the crash",
+     "value": 2011,
+     "unit": "year",
+     "as_of": "2011-09-16",
+     "source": "AOPA",
+     "url": "https://www.aopa.org/news-and-media/all-news/2012/august/27/reno-crash-traced-to-failed-screws-untested-modifications",
+     "fixed": true
+    },
+    {
+     "label": "Speed at pylon 8 when the upset began, knots",
+     "value": 445,
+     "unit": "count",
+     "as_of": "2011-09-16",
+     "source": "NTSB press release, 27 Aug 2012",
+     "url": "https://webarchive.library.unt.edu/web/20120927234245/http:/www.ntsb.gov/news/2012/120827.html",
+     "fixed": true
+    },
+    {
+     "label": "Same speed in miles an hour",
+     "value": 512,
+     "unit": "count",
+     "as_of": "2011-09-16",
+     "source": "NTSB press release, 27 Aug 2012",
+     "url": "https://webarchive.library.unt.edu/web/20120927234245/http:/www.ntsb.gov/news/2012/120827.html",
+     "fixed": true
+    },
+    {
+     "label": "Pitch-up load at the upset, g",
+     "value": 17.3,
+     "unit": "count",
+     "as_of": "2011-09-16",
+     "source": "NTSB AAB-12/01 via AIN",
+     "url": "https://ainonline.com/aviation-news/2012-09-03/ntsb-details-cause-p-51-reno-accident",
+     "fixed": true
+    },
+    {
+     "label": "People killed (the pilot and 10 spectators)",
+     "value": 11,
+     "unit": "count",
+     "as_of": "2011-09-16",
+     "source": "AOPA",
+     "url": "https://www.aopa.org/news-and-media/all-news/2012/august/27/reno-crash-traced-to-failed-screws-untested-modifications",
+     "fixed": true
+    },
+    {
+     "label": "Safety recommendations issued by the NTSB",
+     "value": 10,
+     "unit": "count",
+     "as_of": "2012-04-10",
+     "source": "NTSB investigation page",
+     "url": "https://www.ntsb.gov/investigations/Pages/WPR11MA454.aspx",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Injured count differs (69 vs 'more than 70'): don't state it"
+   ],
+   "sources": [
+    "https://www.ntsb.gov/investigations/Pages/WPR11MA454.aspx",
+    "https://ntsb.gov/investigations/accidentreports/reports/aab1201.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-orlando-freefall",
+   "format": "long",
+   "title": "The Drop Tower Seat Someone Adjusted",
+   "category": "amusement ride",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "stunt_gone_wrong"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "It went wrong (rides, stunts, amateur engineering)",
+    "url": "https://www.youtube.com/watch?v=NiIZ8SU_bis",
+    "note": "core 1.93x, 409,809 median (advice.md)"
+   },
+   "hook": "The seat's sensor said the harness was locked. Someone had adjusted it to say that.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "The FreeFall drop tower opens at ICON Park, Orlando",
+    "Harness proximity sensors on two seats are manually loosened and re-set, so a harness reads 'locked' with a gap of nearly 7 in (normal is about 3 in)",
+    "A rider bigger than the seat was designed for is seated; the ride's checks pass",
+    "Under the braking force the gap opens further and the rider slips out"
+   ],
+   "rule_after": "Florida's Tyre Sampson Act (CS/CS/SB 902, Chapter 2023-50, in force 1 July 2023): ride commissioning and certification reports, regular testing, and controls on operator modifications.",
+   "human_moment": "Tyre Sampson was 14 and visiting Orlando; Florida's ride-safety law now carries his name.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the accident",
+     "value": 2022,
+     "unit": "year",
+     "as_of": "2022-03-24",
+     "source": "Florida Senate, SB 902 enrolled text",
+     "url": "https://www.flsenate.gov/Session/Bill/2023/902/BillText/er/HTML",
+     "fixed": true
+    },
+    {
+     "label": "Tyre Sampson's age",
+     "value": 14,
+     "unit": "count",
+     "as_of": "2022-03-24",
+     "source": "Florida Senate, SB 902 enrolled text",
+     "url": "https://www.flsenate.gov/Session/Bill/2023/902/BillText/er/HTML",
+     "fixed": true
+    },
+    {
+     "label": "Restraint opening the adjusted sensor allowed, inches (near)",
+     "value": 7,
+     "unit": "count",
+     "as_of": "2022-04-18",
+     "source": "Quest Engineering report for FDACS, via AP/NBC",
+     "url": "https://www.nbcdfw.com/news/national-international/sensors-were-adjusted-on-florida-amusement-park-ride-where-teen-fell-to-death/2943320/",
+     "fixed": true
+    },
+    {
+     "label": "Normal restraint opening, inches (near)",
+     "value": 3,
+     "unit": "count",
+     "as_of": "2022-04-18",
+     "source": "Quest Engineering report for FDACS, via AP/NBC",
+     "url": "https://www.nbcdfw.com/news/national-international/sensors-were-adjusted-on-florida-amusement-park-ride-where-teen-fell-to-death/2943320/",
+     "fixed": true
+    },
+    {
+     "label": "Fine paid by the ride operator",
+     "value": 250000,
+     "unit": "money",
+     "as_of": "2023-01-01",
+     "source": "Florida Senate bill analysis",
+     "url": "https://flsenate.gov/Session/Bill/2023/902/Analyses/2023s00902.fp.PDF",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Tower height: 430 ft (state report via AP) vs 400 ft (bill analysis): settle before showing",
+    "Fine date: check the as_of in the analysis"
+   ],
+   "sources": [
+    "https://www.flsenate.gov/Committees/BillSummaries/2023/html/902",
+    "https://www.cbsnews.com/news/tyre-sampson-death-icon-park-manual-adjustment-ride-unsafe"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-titan-submersible",
+   "format": "long",
+   "title": "The Submarine That Was Never Certified",
+   "category": "deep-sea tourism",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "stunt_gone_wrong"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "It went wrong (rides, stunts, amateur engineering)",
+    "url": "https://www.youtube.com/watch?v=NiIZ8SU_bis",
+    "note": "core 1.93x, 409,809 median (advice.md)"
+   },
+   "hook": "Seven seconds after its last message, Titan was gone.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "OceanGate builds Titan with a carbon-fibre pressure hull and chooses not to have it classed or certified",
+    "Repeated dives load the hull; warning signs on earlier dives are not acted on",
+    "Engineering protocols for testing and maintenance are not followed",
+    "On the dive to Titanic the pressure hull loses its structural integrity and implodes"
+   ],
+   "rule_after": "USCG Marine Board of Investigation report (5 Aug 2025): operators to file dive and emergency-response plans with the Coast Guard, Coast Guard oversight of new submersible construction, and regulatory gaps closed.",
+   "human_moment": "Suleman Dawood, 19, went along with his father on the dive.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the implosion",
+     "value": 2023,
+     "unit": "year",
+     "as_of": "2023-06-18",
+     "source": "NPR on the USCG report",
+     "url": "https://www.npr.org/2025/08/05/nx-s1-5493502/coast-guard-titan-submersible-oceangate-investigation",
+     "fixed": true
+    },
+    {
+     "label": "People aboard, all killed",
+     "value": 5,
+     "unit": "count",
+     "as_of": "2023-06-18",
+     "source": "PBS NewsHour on the USCG report",
+     "url": "https://www.pbs.org/newshour/science/titan-submersible-disaster-that-killed-5-on-way-to-titanic-ruins-was-preventable-coast-guard-says",
+     "fixed": true
+    },
+    {
+     "label": "Depth where communications were lost, metres",
+     "value": 3346,
+     "unit": "m",
+     "as_of": "2023-06-18",
+     "source": "USNI News on the USCG report",
+     "url": "https://news.usni.org/2025/08/05/titan-implosion-was-preventable-coast-guard-says",
+     "fixed": true
+    },
+    {
+     "label": "Seconds between the last message and the implosion",
+     "value": 7,
+     "unit": "count",
+     "as_of": "2023-06-18",
+     "source": "USNI News on the USCG report",
+     "url": "https://news.usni.org/2025/08/05/titan-implosion-was-preventable-coast-guard-says",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "NTSB's own report may still be pending: say 'the Coast Guard's report'",
+    "Suleman Dawood's age: confirm before use"
+   ],
+   "sources": [
+    "https://news.usni.org/2025/08/06/u-s-coast-guard-report-on-the-titan-submersible-implosion",
+    "https://www.news.uscg.mil/Press-Releases/Article/4265651/coast-guard-marine-board-of-investigation-releases-report-on-titan-submersible/"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-carmont",
+   "format": "long",
+   "title": "The Drain That Was Never Built to Its Drawing",
+   "category": "rail",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "rail_crash"
+   ],
+   "currency": "GBP",
+   "reach": "global",
+   "demand": {
+    "family": "Rail crash",
+    "url": "https://www.youtube.com/watch?v=2l3_547XTdY",
+    "note": "1.04x, 15% hits, 154,694 median (advice.md)"
+   },
+   "hook": "At 09:37 on 12 August 2020, a train on a Scottish curve met gravel that should have stayed in a drain.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A drain is installed on the slope above the line at Carmont in 2011-12, but not built to its design",
+    "Part of it is missing from Network Rail's drain maintenance list, so it is never inspected",
+    "Extreme rain washes debris from the drain and the ground around it onto the track",
+    "The train, at 73 mph, hits the debris and derails off a bridge"
+   ],
+   "rule_after": "RAIB 02/2022: Network Rail overhauled extreme-weather operations (speed restrictions on weather alerts), drainage asset records and construction checks; RAIB issued its weather Summary of Learning.",
+   "human_moment": "The train had been turned back because a landslip blocked the line ahead; it was returning to Aberdeen when it met the debris.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the derailment",
+     "value": 2020,
+     "unit": "year",
+     "as_of": "2020-08-12",
+     "source": "RAIB report 02/2022",
+     "url": "https://www.gov.uk/raib-reports/report-02-slash-2022-derailment-of-a-passenger-train-at-carmont",
+     "fixed": true
+    },
+    {
+     "label": "Train speed at the collision, mph",
+     "value": 73,
+     "unit": "count",
+     "as_of": "2020-08-12",
+     "source": "RAIB report 02/2022",
+     "url": "https://www.gov.uk/raib-reports/report-02-slash-2022-derailment-of-a-passenger-train-at-carmont",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 3,
+     "unit": "count",
+     "as_of": "2020-08-12",
+     "source": "RAIB report 02/2022",
+     "url": "https://www.gov.uk/raib-reports/report-02-slash-2022-derailment-of-a-passenger-train-at-carmont",
+     "fixed": true
+    },
+    {
+     "label": "Other people injured on the train",
+     "value": 6,
+     "unit": "count",
+     "as_of": "2020-08-12",
+     "source": "RAIB report 02/2022",
+     "url": "https://www.gov.uk/raib-reports/report-02-slash-2022-derailment-of-a-passenger-train-at-carmont",
+     "fixed": true
+    },
+    {
+     "label": "Year the drain installation began (2011-2012)",
+     "value": 2011,
+     "unit": "year",
+     "as_of": "2012-12-31",
+     "source": "RAIB report 02/2022",
+     "url": "https://www.gov.uk/raib-reports/report-02-slash-2022-derailment-of-a-passenger-train-at-carmont",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Turned-back-by-landslip detail: confirm wording in the RAIB synopsis"
+   ],
+   "sources": [
+    "https://www.gov.uk/raib-reports/report-02-slash-2022-derailment-of-a-passenger-train-at-carmont",
+    "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1059412/R022022_220310_Carmont.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-lac-megantic",
+   "format": "long",
+   "title": "The Parked Train That Rolled Into Town",
+   "category": "rail",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "rail_crash"
+   ],
+   "currency": "CAD",
+   "reach": "global",
+   "demand": {
+    "family": "Rail crash",
+    "url": "https://www.youtube.com/watch?v=2l3_547XTdY",
+    "note": "1.04x, 15% hits, 154,694 median (advice.md)"
+   },
+   "hook": "Shortly before 1 a.m., a train nobody was driving reached 65 miles an hour as it came into Lac-Mégantic.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A one-person crew parks a crude-oil train on a downhill main line and sets too few hand brakes",
+    "The test meant to prove the hand brakes hold is done with the air brakes still applied",
+    "A locomotive fire is put out by shutting the engine down, so the air brakes slowly bleed off",
+    "The train rolls downhill into town and 63 tank cars derail in the centre"
+   ],
+   "rule_after": "TSB R13D0054 (Aug 2014): Canada required physical defences against runaways, stricter hand-brake rules, two-person crews for dangerous goods, tougher tank-car standards and audited safety management.",
+   "human_moment": "It was a summer Friday night; the Musi-Café bar in the town centre was full.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the disaster",
+     "value": 2013,
+     "unit": "year",
+     "as_of": "2013-07-06",
+     "source": "TSB R13D0054 summary",
+     "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+     "fixed": true
+    },
+    {
+     "label": "Speed as the train approached the town centre, mph",
+     "value": 65,
+     "unit": "count",
+     "as_of": "2013-07-06",
+     "source": "TSB R13D0054 summary",
+     "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+     "fixed": true
+    },
+    {
+     "label": "Tank cars derailed",
+     "value": 63,
+     "unit": "count",
+     "as_of": "2013-07-06",
+     "source": "TSB R13D0054 summary",
+     "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 47,
+     "unit": "count",
+     "as_of": "2013-07-06",
+     "source": "TSB R13D0054",
+     "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html",
+     "fixed": true
+    },
+    {
+     "label": "Contributing factors the TSB listed",
+     "value": 18,
+     "unit": "count",
+     "as_of": "2014-08-19",
+     "source": "TSB news release",
+     "url": "https://bst-tsb.gc.ca/eng/medias-media/communiques/rail/2014/r13d0054-20140819.html",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "72 tank cars in total and 'about 7 miles' come from trade coverage (OHS Online): check in the report before showing",
+    "Musi-Café detail: confirm"
+   ],
+   "sources": [
+    "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+    "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-chatsworth",
+   "format": "long",
+   "title": "The Text Message That Ran a Red Signal",
+   "category": "rail",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "rail_crash"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Rail crash",
+    "url": "https://www.youtube.com/watch?v=2l3_547XTdY",
+    "note": "1.04x, 15% hits, 154,694 median (advice.md)"
+   },
+   "hook": "Forty-seven seconds out of Chatsworth station, the engineer's phone buzzed.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A Metrolink commuter train leaves Chatsworth on a single-track section shared with freight",
+    "The engineer, texting on duty, receives a message 47 seconds after departure",
+    "He passes a red signal at Control Point Topanga without reacting",
+    "No positive train control exists to stop him; the train meets a Union Pacific freight head-on"
+   ],
+   "rule_after": "NTSB (Jan 2010) cited the missing positive train control; Congress passed the Rail Safety Improvement Act of 2008 weeks after the crash, mandating PTC, and the FRA banned personal phone use by train crews.",
+   "human_moment": "Firefighters spent hours cutting survivors out of the front passenger car on a Friday commute home.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the collision",
+     "value": 2008,
+     "unit": "year",
+     "as_of": "2008-09-12",
+     "source": "NTSB DCA08MR009",
+     "url": "https://www.ntsb.gov/investigations/Pages/DCA08MR009.aspx",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 25,
+     "unit": "count",
+     "as_of": "2008-09-12",
+     "source": "NTSB via Safety+Health",
+     "url": "https://www.safetyandhealthmagazine.com/articles/ntsb-distracted-operator-led-to-california-train-crash-2",
+     "fixed": true
+    },
+    {
+     "label": "Seconds after departure the engineer received a text",
+     "value": 47,
+     "unit": "count",
+     "as_of": "2008-09-12",
+     "source": "NTSB executive summary (BLET)",
+     "url": "https://ble-t.org/news/ntsbs-executive-summary-conclusions-regarding-2008-metrolink-accident",
+     "fixed": true
+    },
+    {
+     "label": "Characters in that text message",
+     "value": 71,
+     "unit": "count",
+     "as_of": "2008-09-12",
+     "source": "NTSB executive summary (BLET)",
+     "url": "https://ble-t.org/news/ntsbs-executive-summary-conclusions-regarding-2008-metrolink-accident",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Injured: 'more than 100' vs 135: say 'more than 100'",
+    "RSIA 2008 signing date (16 Oct 2008) and the firefighters detail: confirm before showing"
+   ],
+   "sources": [
+    "https://www.ntsb.gov/investigations/Pages/DCA08MR009.aspx",
+    "https://www.ntsb.gov/Advocacy/SafetyIssues/Pages/Positive-Train-Control.aspx"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-grand-canyon-1956",
+   "format": "long",
+   "title": "The Mid-Air Crash That Created the FAA",
+   "category": "aviation",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "air_crash_rule"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Air crash, minute by minute, ending on the rule",
+    "url": "https://www.youtube.com/watch?v=_blF6L04Dfk",
+    "note": "Fascinating Horror's Eastern 212: 2.4M (advice.md)"
+   },
+   "hook": "Two airliners left Los Angeles minutes apart. Over the Grand Canyon they were at the same height.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "TWA 2 and United 718 depart Los Angeles minutes apart, both bound east",
+    "TWA asks for a higher altitude and ends up at 21,000 ft, United's altitude",
+    "Outside controlled airspace, controllers cannot separate them; pilots must 'see and be seen'",
+    "Both weave around towering clouds over the canyon and converge"
+   ],
+   "rule_after": "The Federal Aviation Act of 1958 (signed 23 Aug 1958) created the Federal Aviation Agency with one national air traffic control system; radar and positive control of high-altitude airspace followed.",
+   "human_moment": "United 718's last radio call, garbled, was later deciphered as the crew saying they were going in.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the collision",
+     "value": 1956,
+     "unit": "year",
+     "as_of": "1956-06-30",
+     "source": "FAA Lessons Learned",
+     "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N6902C",
+     "fixed": true
+    },
+    {
+     "label": "People aboard both aircraft, none survived",
+     "value": 128,
+     "unit": "count",
+     "as_of": "1956-06-30",
+     "source": "CBS News",
+     "url": "https://www.cbsnews.com/news/1956-grand-canyon-airplane-crash-a-game-changer",
+     "fixed": true
+    },
+    {
+     "label": "Altitude both flights were at, feet",
+     "value": 21000,
+     "unit": "count",
+     "as_of": "1956-06-30",
+     "source": "AOPA",
+     "url": "https://aopa.org/news-and-media/all-news/2014/may/02/midair-spurred-modern-atc",
+     "fixed": true
+    },
+    {
+     "label": "Year the Federal Aviation Act created the FAA",
+     "value": 1958,
+     "unit": "year",
+     "as_of": "1958-08-23",
+     "source": "FAA Lessons Learned",
+     "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N6902C",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "'1,000 on top' clearance and the last-radio detail: read in the CAB report before narrating"
+   ],
+   "sources": [
+    "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N6902C",
+    "https://aopa.org/news-and-media/all-news/2014/may/02/midair-spurred-modern-atc"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-eastern-401",
+   "format": "long",
+   "title": "A Burned-Out Bulb and a Jet Nobody Was Flying",
+   "category": "aviation",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "air_crash_rule"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Air crash, minute by minute, ending on the rule",
+    "url": "https://www.youtube.com/watch?v=_blF6L04Dfk",
+    "note": "Fascinating Horror's Eastern 212: 2.4M (advice.md)"
+   },
+   "hook": "Three pilots were looking at one small light. Nobody was looking at the altitude.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "On approach to Miami the nose-gear 'down' light doesn't come on: the bulb has burned out",
+    "The crew levels off on autopilot and all three crew members focus on the light",
+    "The altitude hold is disconnected without anyone noticing; the L-1011 starts a slow descent",
+    "An altitude warning goes unheard; the jet flies into the Everglades at night"
+   ],
+   "rule_after": "NTSB-AAR-73-14; the FAA names it a precipitating accident for crew resource management (CRM): one pilot always flies the aircraft, clear division of duties in a malfunction.",
+   "human_moment": "Airboat operator Bud Marquis, nearby in the swamp, reached the wreck first and guided rescuers to survivors.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the crash",
+     "value": 1972,
+     "unit": "year",
+     "as_of": "1972-12-29",
+     "source": "FAA Lessons Learned",
+     "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N310EA",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 101,
+     "unit": "count",
+     "as_of": "1972-12-29",
+     "source": "NBC Miami 50-year retrospective",
+     "url": "https://www.nbcmiami.com/news/local/tragedy-in-the-everglades-remembering-the-crash-of-eastern-airlines-flight-401-50-years-later/2937046/?amp=1",
+     "fixed": true
+    },
+    {
+     "label": "People who survived",
+     "value": 75,
+     "unit": "count",
+     "as_of": "1972-12-29",
+     "source": "NBC Miami 50-year retrospective",
+     "url": "https://www.nbcmiami.com/news/local/tragedy-in-the-everglades-remembering-the-crash-of-eastern-airlines-flight-401-50-years-later/2937046/?amp=1",
+     "fixed": true
+    },
+    {
+     "label": "People aboard",
+     "value": 176,
+     "unit": "count",
+     "as_of": "1972-12-29",
+     "source": "Aviation Safety Network",
+     "url": "https://aviation-safety.net/asndb/330292",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Check 101/75/176 against the NTSB report (the FAA page counts differently)",
+    "Bud Marquis: confirm in two outlets"
+   ],
+   "sources": [
+    "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N310EA",
+    "https://www.faa.gov/sites/faa.gov/files/EasternL1011_0.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-air-canada-797",
+   "format": "long",
+   "title": "The Fire Nobody Could See for 15 Minutes",
+   "category": "aviation",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "air_crash_rule"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Air crash, minute by minute, ending on the rule",
+    "url": "https://www.youtube.com/watch?v=_blF6L04Dfk",
+    "note": "Fascinating Horror's Eastern 212: 2.4M (advice.md)"
+   },
+   "hook": "Smoke was coming from the back lavatory. There was no detector there to warn anyone.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A fire starts in or behind the rear lavatory of a DC-9 at cruise",
+    "Lavatories have no smoke detectors; it burns unseen for almost 15 minutes",
+    "By the time the crew understands, smoke fills the cabin and electrical failures take out instruments",
+    "The jet lands at Cincinnati; the cabin flashes over shortly after the exits open"
+   ],
+   "rule_after": "After NTSB recommendations, the FAA required smoke detectors in airliner lavatories and automatic fire extinguishers in lavatory waste bins (mid-1980s).",
+   "human_moment": "Canadian folk singer Stan Rogers was among the passengers lost.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the fire",
+     "value": 1983,
+     "unit": "year",
+     "as_of": "1983-06-02",
+     "source": "FAA Lessons Learned",
+     "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/C-FTLU",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 23,
+     "unit": "count",
+     "as_of": "1983-06-02",
+     "source": "NTSB AAR-86/02",
+     "url": "https://www.faa.gov/sites/faa.gov/files/AAR86-02.pdf",
+     "fixed": true
+    },
+    {
+     "label": "People who survived",
+     "value": 23,
+     "unit": "count",
+     "as_of": "1983-06-02",
+     "source": "NTSB AAR-86/02",
+     "url": "https://www.faa.gov/sites/faa.gov/files/AAR86-02.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Minutes the fire burned undetected (almost)",
+     "value": 15,
+     "unit": "count",
+     "as_of": "1983-06-02",
+     "source": "FAA Lessons Learned",
+     "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/C-FTLU",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Exact FAA rule dates for detectors and extinguishers come from a 1985 newspaper: check the Federal Register",
+    "Floor-proximity lighting and fire-blocking seats: unverified, don't claim them",
+    "Stan Rogers: confirm in two outlets"
+   ],
+   "sources": [
+    "https://www.faa.gov/lessons_learned/transport_airplane/accidents/C-FTLU",
+    "https://www.ntsb.gov/investigations/Pages/DCA83AA028.aspx"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-colgan-3407",
+   "format": "long",
+   "title": "Why Airline Pilots Now Need 1,500 Hours",
+   "category": "aviation",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "air_crash_rule"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Air crash, minute by minute, ending on the rule",
+    "url": "https://www.youtube.com/watch?v=_blF6L04Dfk",
+    "note": "Fascinating Horror's Eastern 212: 2.4M (advice.md)"
+   },
+   "hook": "The stick shaker fired on the approach to Buffalo. The captain pulled back.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A regional Q400 approaches Buffalo at night in icing; the crew chats through the approach",
+    "Airspeed decays unnoticed; the stick shaker warns of a stall",
+    "The captain pulls back instead of pushing forward; the aircraft stalls and rolls",
+    "Training, fatigue and the airline's procedures had left the crew unprepared for that moment"
+   ],
+   "rule_after": "Airline Safety and FAA Extension Act of 2010 (signed 1 Aug 2010): airline first officers need an ATP certificate with 1,500 hours (in force 1 Aug 2013), plus new fatigue rules and stall-recovery training.",
+   "human_moment": "The victims' families lobbied Congress for more than a year until the law passed.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the crash",
+     "value": 2009,
+     "unit": "year",
+     "as_of": "2009-02-12",
+     "source": "FAA Lessons Learned",
+     "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N200WQ",
+     "fixed": true
+    },
+    {
+     "label": "People killed (49 aboard and 1 on the ground)",
+     "value": 50,
+     "unit": "count",
+     "as_of": "2009-02-12",
+     "source": "PBS Frontline",
+     "url": "https://www.pbs.org/wgbh/frontline/article/faa-misses-deadline-for-implementing-pilot-fatigue-and-training-rules",
+     "fixed": true
+    },
+    {
+     "label": "Flight hours now required for an airline first officer",
+     "value": 1500,
+     "unit": "count",
+     "as_of": "2013-08-01",
+     "source": "AIN",
+     "url": "https://backend.ainonline.com/aviation-news/air-transport/2025-01-06/colgan-air-flight-3407-crash-and-its-enduring-impact",
+     "fixed": true
+    },
+    {
+     "label": "Safety recommendations in the NTSB report",
+     "value": 25,
+     "unit": "count",
+     "as_of": "2010-02-02",
+     "source": "NTSB AAR-10/01",
+     "url": "https://webarchive.library.unt.edu/web/20120915201702/http://www.ntsb.gov/doclib/reports/2010/AAR1001.pdf",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Beverly Eckert (9/11 widow) was aboard: a possible sourced connection, confirm before use"
+   ],
+   "sources": [
+    "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N200WQ",
+    "https://webarchive.library.unt.edu/web/20120915201702/http://www.ntsb.gov/doclib/reports/2010/AAR1001.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-hyatt-walkways",
+   "format": "long",
+   "title": "One Phone Call Doubled the Load on This Walkway",
+   "category": "building",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "corner_cut_structure"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Bridge, dam or building: every corner cut",
+    "url": "https://www.youtube.com/watch?v=plYQ-StbrOE",
+    "note": "Plainly Difficult 629K, 561K (advice.md)"
+   },
+   "hook": "Hundreds were dancing in the hotel atrium. Above them hung two walkways on thin steel rods.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "The original design hangs the 4th- and 2nd-floor walkways from one continuous rod per hanger",
+    "Even that connection reaches only about 60% of what the building code expected",
+    "During construction the fabricator asks, by phone, to switch to two offset rods; the change goes through without full checks",
+    "The 4th-floor box beams now carry both walkways, roughly double the load; during a tea dance the connections pull through"
+   ],
+   "rule_after": "NBS BSS 143 (1982); the engineers lost their licences, and the profession made the structural engineer of record responsible for connection design and shop-drawing review.",
+   "human_moment": "Rescuers worked through the night to free people trapped under the fallen walkways.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the collapse",
+     "value": 1981,
+     "unit": "year",
+     "as_of": "1981-07-17",
+     "source": "Britannica",
+     "url": "https://britannica.com/event/Hyatt-Regency-walkway-collapse",
+     "fixed": true
+    },
+    {
+     "label": "Share of the code's expected capacity the original design reached, percent (about)",
+     "value": 60,
+     "unit": "percent",
+     "as_of": "1982-05-01",
+     "source": "NBS BSS 143 via NIST",
+     "url": "https://www.nist.gov/publications/investigation-kansas-city-hyatt-regency-walkways-collapse-nbs-bss-143",
+     "fixed": true
+    },
+    {
+     "label": "How many times the rod change multiplied the load on the 4th-floor connections (about)",
+     "value": 2,
+     "unit": "count",
+     "as_of": "1982-05-01",
+     "source": "NBS BSS 143 via NIST",
+     "url": "https://www.nist.gov/publications/investigation-kansas-city-hyatt-regency-walkways-collapse-nbs-bss-143",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Death toll differs (114 Britannica vs 113 NIST page): left out of facts; settle before showing"
+   ],
+   "sources": [
+    "https://www.nist.gov/el/walkway-collapse-kansas-city-missouri-1981",
+    "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-fiu-bridge",
+   "format": "long",
+   "title": "The Bridge That Cracked for Days Before It Fell",
+   "category": "bridge",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "corner_cut_structure"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Bridge, dam or building: every corner cut",
+    "url": "https://www.youtube.com/watch?v=plYQ-StbrOE",
+    "note": "Plainly Difficult 629K, 561K (advice.md)"
+   },
+   "hook": "The cracks were growing. Traffic was still running underneath.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "The designer underestimates the load on one truss joint (member 11/12) and overestimates its capacity",
+    "The independent peer review doesn't catch it",
+    "After the span is moved into place, cracks at the joint grow; the engineer of record says they are not a safety concern",
+    "Crews re-tension a rod in the cracked member with the road open below; the joint fails"
+   ],
+   "rule_after": "NTSB HAR-19/02 (Oct 2019): independent peer review of critical connections, and closing roads when a structure under construction shows dangerous cracking.",
+   "human_moment": "Alexa Duran, an FIU student, was driving under the bridge when it fell.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the collapse",
+     "value": 2018,
+     "unit": "year",
+     "as_of": "2018-03-15",
+     "source": "NTSB HWY18MH009",
+     "url": "https://www.ntsb.gov/investigations/pages/hwy18mh009.aspx",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 6,
+     "unit": "count",
+     "as_of": "2018-03-15",
+     "source": "NBC News",
+     "url": "https://www.nbcnews.com/news/us-news/ntsb-finds-design-errors-bridge-collapsed-miami-killing-6-n936846",
+     "fixed": true
+    },
+    {
+     "label": "Lanes of road under the bridge",
+     "value": 8,
+     "unit": "count",
+     "as_of": "2018-03-15",
+     "source": "NTSB HAR-19/02",
+     "url": "https://www.ntsb.gov/investigations/accidentreports/reports/har1902.pdf",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "174 ft span / 950 tons from one outlet only: check in HAR-19/02",
+    "Alexa Duran: confirm in two outlets"
+   ],
+   "sources": [
+    "https://www.ntsb.gov/investigations/pages/hwy18mh009.aspx",
+    "https://www.ntsb.gov/investigations/accidentreports/reports/har1902.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-oroville-spillway",
+   "format": "long",
+   "title": "America's Tallest Dam and the Crack Under Its Spillway",
+   "category": "dam",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "corner_cut_structure"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Bridge, dam or building: every corner cut",
+    "url": "https://www.youtube.com/watch?v=plYQ-StbrOE",
+    "note": "Plainly Difficult 629K, 561K (advice.md)"
+   },
+   "hook": "Water had been getting under the concrete for decades. In February 2017 the chute broke open.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "The 1960s spillway chute is built with thin slabs, in places on poor rock, with drains that let water under them",
+    "Cracks and joints let water in; uplift pressure builds under the slabs",
+    "Inspections are visual only and miss the design flaws for decades",
+    "A slab lifts at full flow, a crater forms, and the emergency spillway erodes, forcing an evacuation"
+   ],
+   "rule_after": "Independent Forensic Team final report (5 Jan 2018): 'long-term systemic failure'; both spillways were rebuilt and dam-safety reviews moved to full design-level assessments.",
+   "human_moment": "Nobody died; families downstream left their homes on a Sunday evening with little warning.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the spillway failure",
+     "value": 2017,
+     "unit": "year",
+     "as_of": "2017-02-12",
+     "source": "KQED",
+     "url": "https://www.kqed.org/news/11615626/oroville-panel-says-dam-officials-missed-clues-to-spillway-flaws",
+     "fixed": true
+    },
+    {
+     "label": "People evacuated downstream (about)",
+     "value": 188000,
+     "unit": "count",
+     "as_of": "2017-02-12",
+     "source": "KQED / CBS News",
+     "url": "https://kqed.org/news/11690563/new-cost-for-oroville-dam-spillway-disaster-1-1-billion",
+     "fixed": true
+    },
+    {
+     "label": "Total cost of response and repairs",
+     "value": 1.1,
+     "unit": "money_billion",
+     "currency": "USD",
+     "as_of": "2018-09-05",
+     "source": "KQED / CBS News",
+     "url": "https://kqed.org/news/11690563/new-cost-for-oroville-dam-spillway-disaster-1-1-billion",
+     "fixed": true
+    },
+    {
+     "label": "Cost of the emergency response alone",
+     "value": 160,
+     "unit": "money_million",
+     "currency": "USD",
+     "as_of": "2017-05-31",
+     "source": "California DWR FAQ",
+     "url": "https://water.ca.gov/Programs/State-Water-Project/SWP-Facilities/Oroville/Oroville-Spillways/FAQs",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "'Little warning' wording: check timing of the order",
+    "Tallest dam in the US: confirm before the title ships"
+   ],
+   "sources": [
+    "https://water.ca.gov/Programs/State-Water-Project/SWP-Facilities/Oroville/Oroville-Spillways/Forensic-Team",
+    "https://damfailures.org/sites/default/files/wp-pdf/IR_IFT_Oroville.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-ronan-point",
+   "format": "long",
+   "title": "The Tower Block That Fell Like Cards",
+   "category": "building",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "corner_cut_structure"
+   ],
+   "currency": "GBP",
+   "reach": "global",
+   "demand": {
+    "family": "Bridge, dam or building: every corner cut",
+    "url": "https://www.youtube.com/watch?v=plYQ-StbrOE",
+    "note": "Plainly Difficult 629K, 561K (advice.md)"
+   },
+   "hook": "Two months after it opened, one corner of a 22-storey tower fell away floor by floor.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "Ronan Point is built from large precast concrete panels held together largely by their own weight, with no frame",
+    "A gas explosion high in the block blows out a load-bearing flank wall",
+    "The floors above lose their support and drop; their impact breaks every floor below",
+    "The inquiry finds the collapse was inherent in the design: nobody had planned for progressive collapse"
+   ],
+   "rule_after": "Griffiths inquiry (Nov 1968): UK building regulations added the disproportionate-collapse rule (now Part A), and susceptible blocks had their gas cut off until strengthened.",
+   "human_moment": "The tenant whose kitchen the gas leak was in survived the explosion.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the collapse",
+     "value": 1968,
+     "unit": "year",
+     "as_of": "1968-05-16",
+     "source": "UK National Archives",
+     "url": "https://www.nationalarchives.gov.uk/education/resources/sixties-britain/ronan-point-collapse/",
+     "fixed": true
+    },
+    {
+     "label": "Storeys in the tower",
+     "value": 22,
+     "unit": "count",
+     "as_of": "1968-05-16",
+     "source": "UK National Archives",
+     "url": "https://www.nationalarchives.gov.uk/education/resources/sixties-britain/ronan-point-collapse/",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 4,
+     "unit": "count",
+     "as_of": "1968-05-16",
+     "source": "Building / Designing Buildings Wiki",
+     "url": "https://www.building.co.uk/news/the-extent-of-the-collapse-was-inherent-in-the-design-of-ronan-point/3057816.article",
+     "fixed": true
+    },
+    {
+     "label": "Months the tower had been open",
+     "value": 2,
+     "unit": "count",
+     "as_of": "1968-05-16",
+     "source": "Designing Buildings Wiki",
+     "url": "https://www.designingbuildings.co.uk/wiki/Ronan_Point",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Floor of the explosion (18th vs 19th in accounts): check Hansard or the report",
+    "Tenant (Ivy Hodge) and her survival: confirm before naming"
+   ],
+   "sources": [
+    "https://api.parliament.uk/historic-hansard/commons/1968/nov/06/ronan-point-flats-report"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-mars-climate-orbiter",
+   "format": "long",
+   "title": "One Unit Mistake Lost a $125M Spacecraft",
+   "category": "space",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "space_failure"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Space mission failure",
+    "url": "https://www.youtube.com/watch?v=qfCTDPMFLfQ",
+    "note": "core 1.59x, a gap (advice.md)"
+   },
+   "hook": "After nine months on the way to Mars, the spacecraft arrived far lower than planned.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "Lockheed Martin's ground software ('Small Forces') reports thruster impulse in pound-force seconds",
+    "JPL's navigation software reads the numbers as newton-seconds, about 4.45 times smaller",
+    "Every small thruster firing is under-counted; the trajectory error grows for months",
+    "Doubts are raised informally but not escalated; the orbiter arrives too low and is lost"
+   ],
+   "rule_after": "NASA Mishap Investigation Board (Phase I, 10 Nov 1999): end-to-end verification of software interfaces and units, and a formal path for engineers to escalate concerns.",
+   "human_moment": "Navigators had noticed the trajectory didn't fit, and said so, but the worry never stopped the mission.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year contact was lost",
+     "value": 1999,
+     "unit": "year",
+     "as_of": "1999-09-23",
+     "source": "NASA JPL",
+     "url": "https://www.jpl.nasa.gov/news/mars-climate-orbiter-team-finds-likely-cause-of-loss/",
+     "fixed": true
+    },
+    {
+     "label": "Cost of the spacecraft",
+     "value": 125,
+     "unit": "money_million",
+     "currency": "USD",
+     "as_of": "1999-09-23",
+     "source": "Physics Today / IEEE Spectrum",
+     "url": "https://physicstoday.aip.org/news/mars-climate-orbiter-lost",
+     "fixed": true
+    },
+    {
+     "label": "Planned closest approach to Mars, km (about)",
+     "value": 226,
+     "unit": "km",
+     "as_of": "1999-11-10",
+     "source": "NASA MIB Phase I report",
+     "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Closest approach from tracking before orbit insertion, km (about)",
+     "value": 110,
+     "unit": "km",
+     "as_of": "1999-11-10",
+     "source": "NASA MIB Phase I report",
+     "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Lowest closest approach the orbiter could survive, km",
+     "value": 80,
+     "unit": "km",
+     "as_of": "1999-11-10",
+     "source": "NASA MIB Phase I report",
+     "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Pound-force to newton factor 4.45 is physics (code computes it)",
+    "Board's later ~57 km estimate: not confirmed, don't use",
+    "Navigators' concerns detail and 'nine months' cruise: confirm in the report"
+   ],
+   "sources": [
+    "https://www.jpl.nasa.gov/news/mars-climate-orbiter-team-finds-likely-cause-of-loss/",
+    "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-herald-of-free-enterprise",
+   "format": "long",
+   "title": "The Ferry That Sailed With Its Doors Open",
+   "category": "maritime",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "maritime_industrial"
+   ],
+   "currency": "GBP",
+   "reach": "global",
+   "demand": {
+    "family": "Ship sinking / maritime, industrial",
+    "url": "https://www.youtube.com/watch?v=QCzC7H1HttY",
+    "note": "0.93-0.99x, 11-13% hits (advice.md)"
+   },
+   "hook": "The bow doors were open. Nobody on the bridge could see them, and nobody had to report it.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "The assistant bosun, whose job is to close the bow doors, is asleep when the ferry leaves Zeebrugge",
+    "The officer meant to check assumes it's done; the master has no indicator and no report",
+    "Company standing orders say nothing about the doors; bow-down and speeding up, the ship takes the sea onto the open car deck",
+    "Water on the undivided vehicle deck destroys her stability and she capsizes"
+   ],
+   "rule_after": "Sheen formal investigation (1987): bow-door indicator lights and monitoring on ro-ro ferries and stronger stability rules; the company-wide failings it found were a major reason for the IMO's ISM Code, the safety-management system every ship operator must run.",
+   "human_moment": "Passengers and crew formed human chains and ladders to pull people up out of the flooded ship.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the capsize",
+     "value": 1987,
+     "unit": "year",
+     "as_of": "1987-03-06",
+     "source": "UK P&I Club",
+     "url": "https://ukpandi.com/news-and-resources/articles/2022/the-capsizing-of-the-herald-of-free-enterprise",
+     "fixed": true
+    },
+    {
+     "label": "Lives lost",
+     "value": 193,
+     "unit": "count",
+     "as_of": "1987-03-06",
+     "source": "MAIB report page",
+     "url": "https://gov.uk/maib-reports/flooding-and-subsequent-capsize-of-ro-ro-passenger-ferry-herald-of-free-enterprise-off-the-port-of-zeebrugge-belgium-with-loss-of-193-lives",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Add from the Sheen report: people aboard, minutes to capsize, speed when water came in",
+    "Human-chain detail and Andrew Parker's George Medal: confirm before naming"
+   ],
+   "sources": [
+    "https://gov.uk/maib-reports/flooding-and-subsequent-capsize-of-ro-ro-passenger-ferry-herald-of-free-enterprise-off-the-port-of-zeebrugge-belgium-with-loss-of-193-lives",
+    "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  },
+  {
+   "id": "2026-11-20-texas-city-refinery",
+   "format": "long",
+   "title": "The Refinery Tower They Overfilled",
+   "category": "industrial",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "maritime_industrial"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "family": "Ship sinking / maritime, industrial",
+    "url": "https://www.youtube.com/watch?v=QCzC7H1HttY",
+    "note": "0.93-0.99x, 11-13% hits (advice.md)"
+   },
+   "hook": "The gauge said the tower's level was fine. It was filling to the top.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "During start-up, operators fill the raffinate splitter tower far above its normal level; the level reading is wrong",
+    "The tower overfills and over-pressurises; relief valves send liquid to an old blowdown drum",
+    "The drum vents straight to the air through a stack; a 1992 OSHA citation about a similar drum was dropped and it was never tied to a flare",
+    "Flammable liquid erupts from the stack, forms a vapour cloud and ignites among contractors' trailers parked nearby"
+   ],
+   "rule_after": "CSB final report (Mar 2007): BP removed atmospheric blowdown stacks at its US refineries; trailers were moved out of blast zones industry-wide, and process-safety measures joined injury rates.",
+   "human_moment": "The 15 who died were contract workers in or near trailers placed close to the unit for convenience.",
+   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+   "facts": [
+    {
+     "label": "Year of the explosion",
+     "value": 2005,
+     "unit": "year",
+     "as_of": "2005-03-23",
+     "source": "CSB",
+     "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 15,
+     "unit": "count",
+     "as_of": "2005-03-23",
+     "source": "CSB",
+     "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+     "fixed": true
+    },
+    {
+     "label": "People injured",
+     "value": 180,
+     "unit": "count",
+     "as_of": "2005-03-23",
+     "source": "CSB",
+     "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+     "fixed": true
+    },
+    {
+     "label": "Gallons of flammable liquid sent to the blowdown drum",
+     "value": 51900,
+     "unit": "count",
+     "as_of": "2005-03-23",
+     "source": "CSB final report",
+     "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+     "fixed": true
+    },
+    {
+     "label": "Trailers totally destroyed",
+     "value": 13,
+     "unit": "count",
+     "as_of": "2005-03-23",
+     "source": "CSB final report",
+     "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+     "fixed": true
+    },
+    {
+     "label": "Farthest distance a trailer occupant was injured, feet",
+     "value": 479,
+     "unit": "count",
+     "as_of": "2005-03-23",
+     "source": "CSB final report",
+     "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Eva Rowe (lost both parents, pushed for BP documents) as a named human moment: confirm in two outlets",
+    "Name the trailer guidance (API RP 753) only after checking"
+   ],
+   "sources": [
+    "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+    "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-05-19",
+   "status": "new",
+   "promo_short": true
+  }
+ ]
+}

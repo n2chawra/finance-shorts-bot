@@ -1,0 +1,75 @@
+{
+  "name": "Disaster Desk",
+  "language": "en-gb",
+  "voices": {
+    "_why": "build spec §5 and sound.md: the references are calm, unhurried British-sounding documentary narrators (Fascinating Horror, Plainly Difficult) at ~134-164 wpm with a pause after each sentence; bm_lewis is the deepest British male in the Kokoro pack and no other channel uses it (Paisa am_michael, Craze & Crash am_fenrir, The Why Atlas bm_george/bf_emma, tech am_michael/af_heart). bm_daniel is the fallback if sample 1 shows a problem. One voice on both formats: a documentary channel is recognised by its narrator; real people's words (cockpit, radio, witnesses) are never voiced (report.md risk 6)",
+    "shortsNarrator": "bm_lewis",
+    "longNarrators": ["bm_lewis"]
+  },
+  "currency": "USD",
+  "currencies": ["USD", "GBP", "EUR", "INR"],
+  "_currencyWhy": "costs appear rarely (a repair bill, a lost spacecraft); USD default, GBP/EUR/INR for a story in that country",
+  "numbers": "simple",
+  "_numbersWhy": "the hits show dates, times, altitudes, speeds, loads and counts, not money maths (style.json figureShare); figures come from sourced facts and simple maths (a countdown, a speed conversion)",
+  "disclaimer": "Based on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.",
+  "stories": "true",
+  "look": {
+    "_why": "style.json: cast false, 3D animation in every measured Short, long references mix 3D reconstruction, flat engineering diagrams, maps and cards; owner (20 Nov): every kit in every video and no look ever repeats; build spec 'Where we beat them' and §9",
+    "cast": "none",
+    "palettes": null,
+    "engine": "directed",
+    "kits": ["three", "flat", "doc"],
+    "style": "investigative reconstruction: type-accurate 3D of the vehicle or structure and the failing part in cutaway at the moment of failure, flat engineering diagrams and cause chains, the real investigation report page with the finding highlighted, licensed photos; mono labels typing on the word; honesty tags on every realistic shot; red always means the failure; a different look recipe every video",
+    "rotation": {
+      "_why": "owner, 20 Nov: 'no repetition of animation style… everything should look like it's new'; build spec §9. generator/looks.py picks one recipe per video, never one of the last `avoidLast`; the director codes every beat in it",
+      "avoidLast": 4,
+      "recipes": ["night-grid", "blueprint", "clay-studio", "chalk-site", "investigators-desk", "instrument-panel", "storm-weather", "archive-rebuild", "satellite-atlas", "cross-section"]
+    },
+    "honestyTags": ["3D reconstruction · not actual footage", "as reported", "general principle", "time paused", "2× speed"]
+  },
+  "uploadCategory": "27",
+  "_uploadCategoryWhy": "27 Education: explains how and why real failures happened from official reports (advertisers pay full rates for educational coverage of tragedies told without gore); a judgement, the research did not measure category",
+  "note": "Written by the /new-channel build phase from research/advice.md, report.md, verdict.md, style.json, sound.md, counts.json, families.json and style-study/2026-11-20-references.md. generator/pack.py reads it.",
+  "motion": {
+    "_why": "sound.md: long references cut 2.5-5.6 times a minute (one 3D move ~11 s) but something moves the whole time (camera drift, path marker, instrument); we keep a new thing on screen every ~4 s (a label typing on, a figure, a stress colour change) without forcing cuts",
+    "maxGapSec": 4.0
+  },
+  "sound": {
+    "_why": "research/sound.md (20 Nov 2026): Fault Lines, the only reference with a bed, sits a beatless bass-heavy drone (334 Hz, 49% bass) ~33 dB under the voice with ~16 dB ducking and a 44 dB drop before a chapter card; the other references are voice-only with hard silences between lines; long videos <=3 effects a minute, none on cuts; the Short 28 cuts a minute, ~6 effects. We keep the restraint and add what none of them has: a breathing drone, mechanical foley on things moving, silence then one sub-boom at the failure, a clock tick. bedLevel/duck are starting values, to be measured on a Kokoro build (music_under_voice_db) to hit ~32 dB long / ~22 dB Shorts",
+    "genres": ["undertow", "brace"],
+    "_genresWhy": "the channel's own beds (renderer/engine/music.py CHANNEL_GENRES): undertow beatless/<=60 BPM low pad + sub swell, 300-400 Hz brightness, for long videos; brace 66-76 BPM muted low pulse + rising pad, for reconstruction stretches and Shorts. Never another channel's beds",
+    "bedLevel": {"short": 0.22, "long": 0.16},
+    "duck": {"short": 0.6, "long": 0.85},
+    "sfx": ["groan", "creak", "rivet", "squelch", "chime", "clatter", "rush", "tick", "subboom"],
+    "_sfxWhy": "sound.md 'Where we beat them': structure groans and creaks under load, rivet pops, radio squelch, cockpit chime, rail clatter, water rush, a clock tick on each step of the reconstruction clock, one sub-boom on the frame the part gives way; nothing on plain cuts",
+    "transitionSfx": null,
+    "sfxPerMinute": {"short": 10, "long": 4},
+    "preRevealDrop": {"db": -30, "sec": 0.8, "shortSec": 0.6},
+    "_preRevealDropWhy": "silence before the failure (Fault Lines' 44 dB drop before chapter 2; the dips to black at impact): 0.6-1.0 s, then the sub-boom"
+  },
+  "length": {
+    "_why": "owner, 20 Nov: long videos 8-10 min (over the scan's 10-15 min best band; references 608-695 s, median 651 s); Shorts are one promo cut per long video from its moment of failure: the scan's best Shorts bands are 35-50 s (62,205 median) and 20-35 s (49,509)",
+    "short": [30, 50],
+    "long": [480, 600]
+  },
+  "cadence": {
+    "_why": "owner, 20 Nov: one long video every 48 hours plus one promo Short per long video (counts.json suggested 2 long a week and 3 Shorts a day; the owner's numbers win)",
+    "longEveryHours": 48,
+    "promoShortPerLong": 1
+  },
+  "samples": {
+    "_why": "owner's research-once rule; long-first channel: the long sample and its promo Short",
+    "short": 1,
+    "long": 1
+  },
+  "voiceSpeed": {
+    "_why": "sound.md: references ~134-164 wpm (Fault Lines ~140, Major Disasters ~134, Plainly Difficult ~164); Kokoro ≈164 wpm per unit speed → long 0.92 (~150 wpm, gripping but calm), Shorts 1.0 (~164)",
+    "short": 1.0,
+    "long": 0.92
+  },
+  "likeness": {
+    "_why": "owner, 20 Nov: references are a reference, not a template; likeness checks pace and hook only. Long secPerShot from sampled sheets is unreliable (style.json ~57 s), so the measured cuts a minute are used: ~4 a minute → 15 s per shot at most",
+    "wordsPerMin": {"short": 164, "long": 150},
+    "secPerShot": {"long": 15}
+  }
+}

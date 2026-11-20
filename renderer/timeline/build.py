@@ -28,7 +28,8 @@ import numpy as np
 from renderer.engine import voice as tts
 from renderer.engine.audio import (SR, Mixer, integrated_lufs, sfx_beep, sfx_boom, sfx_clink, sfx_ding, sfx_fail, sfx_kaching,
                                    sfx_chime, sfx_glass, sfx_paper, sfx_pin, sfx_pop, sfx_riser, sfx_scribble, sfx_swell,
-                                   sfx_thud, sfx_tick, sfx_whoosh)
+                                   sfx_thud, sfx_tick, sfx_whoosh, sfx_groan, sfx_creak, sfx_rivet, sfx_squelch,
+                                   sfx_clatter, sfx_rush, sfx_subboom)
 from renderer.engine.music import gain_curve, make_bed
 from renderer.engine.formatting import LEGACY_CURRENCY, Money, fact_value, money_for, month_year
 from renderer.engine import sfx_sets
@@ -374,6 +375,10 @@ SFX = {
     "pin-high": lambda r: sfx_pin(1.3), "thud": lambda r: sfx_thud(r), "chime": lambda r: sfx_chime(),
     # machine sounds (the tech channel): a sub swell on a scale reveal, a glass tone when a figure lands
     "swell": lambda r: sfx_swell(r), "glass": lambda r: sfx_glass(),
+    # structure sounds (the disasters channel): load, joints, radio, rails, water, the moment of failure
+    "groan": lambda r: sfx_groan(r), "creak": lambda r: sfx_creak(r), "rivet": lambda r: sfx_rivet(r),
+    "squelch": lambda r: sfx_squelch(r), "clatter": lambda r: sfx_clatter(r), "rush": lambda r: sfx_rush(r),
+    "subboom": lambda r: sfx_subboom(r),
 }
 
 

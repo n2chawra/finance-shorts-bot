@@ -216,6 +216,73 @@ def sfx_glass(f0: float = 1244.5) -> np.ndarray:
     return s*(1 + 0.12*np.sin(2*np.pi*5.5*t))*np.minimum(1, t/0.003)*0.3
 
 
+# ---------------- structure sounds (the disasters channel's own effects, 2026-11-20, research/sound.md) ----------------
+
+def sfx_groan(rng: np.random.Generator, dur: float = 1.6) -> np.ndarray:
+    """Metal under load: a low, slowly bending tone with a rough edge, rising in the middle."""
+    t = tarr(dur)
+    f = 55 + 18*np.sin(np.pi*t/dur) + 6*np.sin(2*np.pi*1.3*t)
+    tone = np.sin(2*np.pi*np.cumsum(f)/SR) + 0.35*np.sign(np.sin(2*np.pi*np.cumsum(f*2.01)/SR))
+    grit = lp(rng.standard_normal(len(t)), 420)*0.5
+    env = np.sin(np.pi*t/dur)**1.5
+    return lp(tone + grit, 600)*env*0.55
+
+
+def sfx_creak(rng: np.random.Generator, dur: float = 0.7) -> np.ndarray:
+    """A creak: a train of tiny clicks whose rate glides, like wood or a joint slipping."""
+    t = tarr(dur)
+    rate = 40 + 90*(t/dur)
+    phase = np.cumsum(rate)/SR
+    clicks = (np.diff(np.floor(phase), prepend=0) > 0).astype(float)
+    body = lfilter([1.0], [1.0, -1.6*np.cos(2*np.pi*700/SR), 0.81], clicks)   # a resonance ~700 Hz
+    return body*np.sin(np.pi*t/dur)*0.25 + hp(rng.standard_normal(len(t)), 2000)*0.01
+
+
+def sfx_rivet(rng: np.random.Generator) -> np.ndarray:
+    """A rivet or bolt letting go: a sharp metallic ping with a short ring."""
+    t = tarr(0.35)
+    ring = sum(a*np.sin(2*np.pi*f*t)*np.exp(-t*d) for f, a, d in ((2150, 1.0, 22), (3480, 0.5, 30), (5230, 0.25, 45)))
+    crack = hp(rng.standard_normal(len(t)), 3000)*np.exp(-t*400)
+    return np.tanh((ring*0.4 + crack*0.6)*0.9)*0.75
+
+
+def sfx_squelch(rng: np.random.Generator, dur: float = 0.4) -> np.ndarray:
+    """A radio squelch: a burst of band-limited hiss with a click on and off."""
+    t = tarr(dur)
+    n = hp(lp(rng.standard_normal(len(t)), 3200), 400)
+    env = np.minimum(1, t/0.004)*np.minimum(1, (dur - t)/0.02)
+    return n*env*0.22
+
+
+def sfx_clatter(rng: np.random.Generator, dur: float = 1.2) -> np.ndarray:
+    """Rail clatter: wheel-on-joint double knocks, two pairs a second, over a low rumble."""
+    t = tarr(dur)
+    out = lp(rng.standard_normal(len(t)), 180)*0.25
+    for k0 in np.arange(0.05, dur - 0.1, 0.5):
+        for dk in (0.0, 0.11):
+            i = int((k0 + dk)*SR)
+            tt = t[:len(t) - i][:int(0.08*SR)]
+            out[i:i + len(tt)] += np.sin(2*np.pi*120*tt)*np.exp(-tt*60)*0.7
+    return out*0.6
+
+
+def sfx_rush(rng: np.random.Generator, dur: float = 1.8) -> np.ndarray:
+    """Water rushing in: low noise that opens up and grows, then holds."""
+    t = tarr(dur)
+    n = rng.standard_normal(len(t))
+    grow = np.minimum(1, t/(dur*0.6))
+    return (lp(n, 500)*0.7 + lp(n, 2200)*0.3*grow)*grow*np.minimum(1, (dur - t)/0.15)*0.6
+
+
+def sfx_subboom(rng: np.random.Generator) -> np.ndarray:
+    """The moment of failure: one deep sub hit with a long tail, no bright crack (no gore, no crash)."""
+    t = tarr(2.4)
+    f = 32 + 60*np.exp(-t*5)
+    body = np.sin(2*np.pi*np.cumsum(f)/SR)*np.exp(-t*1.6)
+    air = lp(rng.standard_normal(len(t)), 250)*np.exp(-t*3)*0.4
+    return np.tanh((body + air)*1.4)*0.95
+
+
 def _k_weight(x: np.ndarray, sr: int) -> np.ndarray:
     """The K-weighting pre-filter (a high shelf, then a high pass) for any sample rate, by the
     analogue-prototype formulas libebur128 uses, so 44.1 kHz needs no resampling."""
