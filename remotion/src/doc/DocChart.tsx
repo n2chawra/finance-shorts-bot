@@ -40,7 +40,7 @@ export const DocChart: React.FC<DocChartProps> = ({
   const accent = tone === "fall" ? DOC.red : tone === "rise" ? DOC.gold : "#7fb2ff";
   const x0 = v ? w * 0.1 : w * 0.1, x1 = v ? w * 0.9 : w * 0.86;
   // Shorts: the bars end above the caption band (~1110–1350 px of 1920; owner 20 Nov: the captions sat on the bars)
-  const y0 = v ? h * 0.27 : h * 0.3, y1 = v ? h * 0.56 : h * 0.8;
+  const y0 = v ? h * 0.27 : h * 0.26, y1 = v ? h * 0.56 : h * 0.74;
   const n = Math.max(1, values.length);
   const max = Math.max(...values, 0), min = Math.min(...values);
   const lo = kind === "bar" || zero ? 0 : min - (max - min) * 0.12;
