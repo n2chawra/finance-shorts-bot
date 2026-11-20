@@ -25,7 +25,7 @@
       "key": "data-audit-late",
       "severity": "info",
       "title": "The data audit lands after the auditor has run",
-      "detail": "The auditor starts around 22:00-23:00 IST, but GitHub starts the 13:53 UTC data-audit cron 3.5 to 5 hours late (17:41 UTC on 17 Nov, 17:21 UTC on 18 Nov, i.e. after 22:50 IST), so tonight's auditor read last night's audit (23 h old) and skipped the data check. The workflow itself succeeds.",
+      "detail": "The auditor starts around 22:00-23:00 IST, but GitHub starts the 13:53 UTC data-audit cron 3.5 to 5 hours late (17:41 UTC on 17 Nov, 17:21 UTC on 18 Nov, 17:27 UTC on 19 Nov, i.e. after 22:50 IST), so for the third night running the auditor read the previous night's audit (23 h old) and skipped the data check. The workflow itself succeeds, and the last audit had no errors or warnings on any channel.",
       "fix": "Choose one: 1. move the data-audit cron in .github/workflows/data-audit.yml earlier (e.g. 08:23 UTC) so even a 5-hour delay lands before 22:00 IST; or 2. move the auditor routine to about 01:07 IST (still inside window A)."
     }
   ]
