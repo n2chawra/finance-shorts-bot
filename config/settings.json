@@ -1,10 +1,10 @@
 {
-  "backlog": 1,
+  "backlog": 2,
   "backlogByFormat": {
-    "short": 1,
+    "short": 2,
     "long": 0
   },
-  "ingestedAt": "2026-11-19T23:41:03.211872+00:00",
+  "ingestedAt": "2026-11-20T00:10:35.715894+00:00",
   "backlogCap": 30,
   "generationPaused": true,
   "uploadsPaused": false,
@@ -23,6 +23,14 @@
   "queue": [
     {
       "id": "v-20261120-03",
+      "format": "short",
+      "position": 1,
+      "locked": false,
+      "picked": false,
+      "editorRank": 1
+    },
+    {
+      "id": "v-20261120-05",
       "format": "short",
       "position": 1,
       "locked": false,
