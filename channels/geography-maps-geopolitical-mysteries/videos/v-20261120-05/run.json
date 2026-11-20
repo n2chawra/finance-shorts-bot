@@ -1,0 +1,295 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:41:33.739499+00:00",
+    "finishedAt": "2026-11-19T23:41:33.739499+00:00",
+    "notes": [
+      "title opens with 'what if the', already used by v-20261118-01",
+      "description opens with 'what happens if', already used by v-20261119-03",
+      "title 'What if the whole world became one country?' has no money figure and no famous name: put the biggest figure or the famous person or company in it (\"Why Google pays Apple $20B…\"), unless `arms.title` is \"plain\"",
+      "the description's first two lines must name the subject 'The world map' (\"Elon Musk's record pay deal...\"): YouTube reads it to know who the video is about, even when the title keeps the name back"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:41:42.621873+00:00",
+    "finishedAt": "2026-11-19T23:41:42.621873+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:42:04.615230+00:00",
+    "finishedAt": "2026-11-19T23:42:04.615230+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:42:05.493038+00:00",
+    "finishedAt": "2026-11-19T23:42:05.493038+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "warning: beat 'passport' runs 7.6 s with 4.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:42:32.048448+00:00",
+    "finishedAt": "2026-11-19T23:42:32.048448+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:42:38.618604+00:00",
+    "finishedAt": "2026-11-19T23:42:38.618604+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "beat 'flag' (promise) already says the payoff's figure {fact1}: hold it back for the payoff. The opening names the subject and asks the question; once the answer is out, viewers leave at 5-6 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:42:42.970548+00:00",
+    "finishedAt": "2026-11-19T23:42:42.970548+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:43:16.942585+00:00",
+    "finishedAt": "2026-11-19T23:43:16.942585+00:00",
+    "notes": [
+      "Beat 'clocks': 'the sun rises over Tokyo while London is fast asleep' is wrong. Tokyo sunrise (about 04:25-06:50 JST across the year) is about 19:25-21:50 the evening before in London (JST is 8-9 h ahead), so London is still awake at dinner, not asleep. A true version: 'the sun rises over Tokyo while London is still eating dinner' or 'the sun sets over Tokyo just as London wakes up' (Tokyo sunset about 16:30-19:00 JST = about 07:30-10:00 London).",
+      "Facts confirmed on their pages (WebFetch, 2026-11-19): UN 193 member states (en.wikipedia.org/wiki/Member_states_of_the_United_Nations: 'comprise 193 sovereign states'); 180 currencies legal tender in UN member states (en.wikipedia.org/wiki/List_of_circulating_currencies: 'There are 180 currencies recognized as legal tender in United Nations (UN) member states'). Other lines OK: left-hand traffic in Britain, India, Japan is true; Lisbon to Singapore is a continuous land route; framed throughout as a what-if; description ends with the channel disclaimer."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:44:07.989354+00:00",
+    "finishedAt": "2026-11-19T23:44:07.989354+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:44:08.931852+00:00",
+    "finishedAt": "2026-11-19T23:44:08.931852+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:44:26.707767+00:00",
+    "finishedAt": "2026-11-19T23:44:26.707767+00:00",
+    "notes": [
+      "Re-review after fix: 193 UN members and 180 legal-tender currencies confirmed on their Wikipedia pages (WebFetch 2026-11-19); new clocks line is true (Tokyo sunset ~16:30-19:00 JST = ~07:30-10:00 London, waking hours); left-hand traffic in Britain/India/Japan, Lisbon-Singapore land route, what-if framing, both verify items, description sources and closing disclaimer all OK. Notes: clocks moment 'London sits in the dark' fits only winter dawn (could be early light); hook's 'only one country left' merges UN members only."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:47:11.088211+00:00",
+    "finishedAt": "2026-11-19T23:47:11.088211+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:48:06.748598+00:00",
+    "finishedAt": "2026-11-19T23:48:06.748598+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:49:10.490927+00:00",
+    "finishedAt": "2026-11-19T23:49:10.490927+00:00",
+    "notes": [
+      "Re-review of lengthened lines: facts unchanged (193 UN members, 180 currencies, confirmed on their Wikipedia pages 2026-11-19); Lisbon-Singapore by road crosses Europe and Asia (two continents, true); 'no visa', 'time zones all stay', capitals 'says it should win' and Paris-to-Peru are what-if consequences, not claims about real positions; hook now 'Earth was one country' (fixes the UN-only gap); description and disclaimer unchanged and OK."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:48:58.459844+00:00",
+    "finishedAt": "2026-11-19T23:49:59.183575+00:00",
+    "notes": [
+      "text 'CURRENCIES' at 27.9 s is 38.7 px, below the 44 px minimum",
+      "text 'TOKYO' at 48.6 s runs outside the frame",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:50:08.727447+00:00",
+    "finishedAt": "2026-11-19T23:50:52.831945+00:00",
+    "notes": [
+      "64 s, ember/atlas (preview only)",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:51:33.908674+00:00",
+    "finishedAt": "2026-11-19T23:52:19.598742+00:00",
+    "notes": [
+      "text 'LONDON' at 48.6 s runs outside the frame",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:52:24.019034+00:00",
+    "finishedAt": "2026-11-19T23:53:09.339232+00:00",
+    "notes": [
+      "64 s, ember/atlas (preview only)",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:54:15.076698+00:00",
+    "finishedAt": "2026-11-19T23:54:15.076698+00:00",
+    "notes": [
+      "[script] 20.0s (beat drive): 'A truck leaves Lisbon and drives all the way to Singapore' shows a bare zoomed map of Eurasia: no truck, no Lisbon or Singapore pin, no route, nobody doing anything. Empty place; the picture does not show the line. Direct it as a truck driving a drawn route Lisbon to Singapore with a border post lifting.",
+      "[script] 25.0s (beat money): 'rupees, dollars, euros, yen... melt into one coin' shows only a small purple 'RUPEE' text chip floating over Russia. A text chip standing in for a real thing (show notes/coins on their countries melting into one coin), and it sits over the wrong country.",
+      "[script] 5.0s (beat flag), 30.0s and 35.0s (beat capital), 40.0s (beat road), 45.0s (beat clocks): nobody acts for most of these beats; each is the world map with one prop (a moon; grey unlabelled pins; a crown; a KEEP LEFT sign over Russia with no cars or drivers; a lone clock). 30.0s and 35.0s read as the same picture. Give each beat a character doing the action on its real spot (flags dropping, leaders at their capitals, cars switching sides in Britain/India/Japan, someone asleep in Tokyo vs waking in London), well below the bar of v-directed-netflix.",
+      "[scene] 50.0s (beat clocks): the LONDON pin sits over France/Spain and the man waking in bed stands in North Africa (Algeria), not in London; the place doesn't match the line. Also the sun is cut off at the right edge.",
+      "[scene] 0.0s and 63.9s (hook passport) and 60.0s (beat loop): the 'PASSPORT' word is wider than the passport cover and spills over its edges onto the map; at 60.0s it runs off the left edge of the frame (cut off). Size the label to the cover.",
+      "[script] audio mean -16.1 dB vs target about -18 dB (peak -1.0 dB ok); bring the mix down ~2 dB."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:55:32.546281+00:00",
+    "finishedAt": "2026-11-19T23:56:16.613078+00:00",
+    "notes": [
+      "text 'CASH' at 27.9 s is 34.2 px, below the 44 px minimum",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:56:20.527133+00:00",
+    "finishedAt": "2026-11-19T23:57:04.253959+00:00",
+    "notes": [
+      "64 s, ember/atlas (preview only)",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-19T23:57:13.705728+00:00",
+    "finishedAt": "2026-11-19T23:57:57.039674+00:00",
+    "notes": [
+      "64 s, ember/atlas (preview only)",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:58:50.358053+00:00",
+    "finishedAt": "2026-11-19T23:58:50.358053+00:00",
+    "notes": [
+      "[scene] 55.0s (beat payoff): a white diagonal stroke (the FOREIGN cross-out/airport-sign moment) runs straight across the traveller's face and head; it covers the only character in the shot. Move the stroke off him or place him away from it.",
+      "[scene] 20.0s (beat drive): the SINGAPORE label is cut off at the right edge (only 'SIN' shows), and Lisbon has already left the frame, so the still shows neither end of the route by name. Keep both labels inside the frame (place the label left of its pin, as done for Beijing).",
+      "[script] 40.0s (beat road): the KEEP LEFT sign and the driver stand in Arctic Russia, not in Britain, India or Japan; the driver only stands beside the sign. The three roads hang below the countries over Morocco/Mauritania, the Indian Ocean and the Philippine Sea. Put the sign and a driver switching sides on Britain's road, with each road attached to its country.",
+      "[scene] 30.0s and 35.0s (beat capital): mayors are cut in half by the frame edge (Washington's at the left at 30.0s, Beijing's at the right at 35.0s), and at 35.0s the WASHINGTON label touches the left edge. Keep the three mayors whole inside the frame."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-19T23:59:54.571329+00:00",
+    "finishedAt": "2026-11-20T00:00:38.861497+00:00",
+    "notes": [
+      "text 'LISBON' at 22.0 s runs outside the frame",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T00:00:44.026752+00:00",
+    "finishedAt": "2026-11-20T00:01:29.726792+00:00",
+    "notes": [
+      "64 s, ember/atlas (preview only)",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T00:02:08.603244+00:00",
+    "finishedAt": "2026-11-20T00:02:53.516995+00:00",
+    "notes": [
+      "64 s, ember/atlas (preview only)",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-20T00:03:28.744343+00:00",
+    "finishedAt": "2026-11-20T00:03:28.744343+00:00",
+    "notes": [
+      "Third look: every beat is on the map with someone acting (flags, truck on Lisbon route, cash fan, three mayors, cars on Britain/India/Japan roads, London sleeper bubble, traveller and plane); PASSPORT fits its cover, no cut-off labels or faces covered, hook names the subject, loop and pick-one close, channel disclaimer on last frame. Minor: 55.0s traveller stands in the Atlantic west of Ireland, 40.0s KEEP LEFT pole slants across Britain's road, 30.0s a thin map-edge band at the very bottom; audio mean -16.1 dB is the channel's renderer mix (~2 dB over -18)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-20T00:03:39.940453+00:00",
+    "finishedAt": "2026-11-20T00:10:31.793644+00:00",
+    "notes": [
+      "64 s, ember/atlas, peak -1.0 dB, mean -16.1 dB",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-20T00:10:35.716057+00:00",
+    "finishedAt": "2026-11-20T00:10:35.716057+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

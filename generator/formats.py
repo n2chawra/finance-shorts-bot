@@ -72,6 +72,19 @@ BUDGET_ARM = "budget"
 
 def mix_problems(plan: dict, entries: list[dict], root: Path = ROOT, fmt: str = "short") -> list[str]:
     from improvement import arms as _arms
+    from . import channels as _channels
+    if _channels.current() != _channels.default():
+        # the fixed run, the "personal budget" tiers and the variant system are Paisa Panchayat's (2026-11-11);
+        # another channel's low-tier formats are just less proven, not personal budget. Keep only the
+        # 2-of-3 core rule, and never let it deadlock: with one core format, the no-repeat rule (variety
+        # STORY_WINDOW) can forbid it, and the next Short must then be another format (2026-11-20: Craze &
+        # Crash's first run failed with "no format can pass").
+        core = core_ids(root, fmt)
+        last = entries[-1].get("story") if entries else None
+        if core_needed(entries, root, fmt) and plan.get("story") not in core and not (len(core) == 1 and last in core):
+            need, window = CORE_MIN
+            return [f"at least {need} of every {window} Shorts use a core format ({', '.join(core)}): this one must be core"]
+        return []
     fixed_run = fmt == "short" and bool(_arms.frozen(root))
     if fixed_run and tiers(root, fmt).get(plan.get("story") or "") == "low":
         return [f"{plan.get('story')!r} is a personal-budget format: off during the fixed run (owner, 2026-11-11). Tell a "

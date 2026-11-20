@@ -85,13 +85,26 @@ def logo(slug: str | None = None, root: Path = ROOT) -> str | None:
     return rel
 
 
+# The owner's pace notes, applied at once (owner, 2026-11-19: "the feedback I have goes straight away, don't add it
+# as a test"). channel.json is the owner's file, so a note lands here; it wins only when it is faster than
+# channel.json, so the owner raising voiceSpeed there later takes over by itself.
+OWNER_PACE: dict[str, dict[str, float]] = {
+    # "Just increase the pace a little bit" (v-20261119-01): 0.92 -> 1.0, about 151 -> 164 words a minute
+    "how-tech-and-ai-actually-work-chips-ai-p": {"short": 1.0},
+}
+
+
 def voice_speed(fmt: str, slug: str | None = None, root: Path = ROOT) -> float | None:
     """The channel's own narrator speed for a format (channel.json `voiceSpeed`: {"short": x, "long": y}, the
     total speed the voice is spoken at), or None for the platform's default (Paisa Panchayat's pace). A channel
     never inherits another's pace (owner, 2026-11-18: the tech channel's sample spoke at 229 words a minute,
     channel #1's money-Shorts pace, against its references' 151)."""
     v = (load(slug, root).get("voiceSpeed") or {}).get(fmt)
-    return float(v) if isinstance(v, (int, float)) else None
+    own = float(v) if isinstance(v, (int, float)) else None
+    note = OWNER_PACE.get(slug or current(), {}).get(fmt)
+    if own is not None and note is not None and note > own:
+        return note
+    return own
 
 
 def voice_ok(name: str) -> bool:

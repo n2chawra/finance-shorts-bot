@@ -1,6 +1,6 @@
 {
   "note": "The champion recipe every Short follows (CLAUDE.md, the weekly loop). The improver updates it whenever a challenger is kept: the rule it adds or replaces gets `since` and `from: \"cycle <n>\"`, and the cycle goes into `changes`. Shown on the dashboard's Growth loop page.",
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-19",
   "rules": [
     {
       "id": "true-story",
@@ -67,6 +67,12 @@
       "text": "Shot and build beats: the cast big, money as a thing, a camera that follows each action",
       "since": "2026-10-21",
       "from": "owner review"
+    },
+    {
+      "id": "real-subject-first-frame",
+      "text": "The hook shows the real subject from frame 0: the person's freely licensed photo head or the company's logo as a die-cut sticker, big, named, with the hook figure beside it (never a copyrighted poster or a frame of the show)",
+      "since": "2026-11-19",
+      "from": "owner note 2026-11-19 (cycle 1 closed early)"
     }
   ],
   "changes": [
@@ -75,6 +81,13 @@
       "id": "content-reset",
       "verdict": "owner",
       "change": "After the content research (every Short stopped at 150-1,190 views): everyday-thing topics, ask-then-answer openings, plain words, loop endings; the everyday-brands and per-unit-hook challengers were folded in"
+    },
+    {
+      "cycle": 1,
+      "date": "2026-11-19",
+      "id": "real-subject-first-frame",
+      "verdict": "owner",
+      "change": "The real person's photo or the company's logo in the first frame became the default for every Short; cycle 1 closed before its verdict at the owner's word"
     }
   ]
 }

@@ -237,6 +237,12 @@
       "action": "fixed",
       "note": "Effects: every new video now gets its own sound set (glass, arcade, deep, wood, felt or the old one), chosen to suit its music, with bells and dings tuned to its own music key, so no two Shorts in a row click, whoosh and ding the same; checked on four recent scripts, which got deep, arcade, wood and felt at the same loudness. Music: genre, key and tempo already change every video but the bed sits about 20 dB under the voice with no tune of its own, so a per-video melody ('own-motif-bed') is now first in line for the weekly loop's next sound test.",
       "commit": "8569914"
+    },
+    {
+      "id": "cmwn030r50001l909xcce0rtj",
+      "action": "fixed",
+      "note": "Every Short now shows the real person's photo or the company's logo big in its first frame (the test was closed and made the default, your 19 Nov word). A show's own poster or logo is the studio's copyright and stays off, so a Squid Game Short opens on Netflix's logo; lint also now checks each Short follows any test group it is in.",
+      "commit": "8cae8f7"
     }
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "experiments": [
+    {
+      "id": "geo-flag-fill",
+      "area": "colour",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-19",
+      "templates": [
+        "short_story"
+      ],
+      "cycle": 1,
+      "metric": "heldAfterHook",
+      "guard": "qa_failures",
+      "minPerArm": 8,
+      "maxDays": 7,
+      "hypothesis": "A country covered by its own flag is recognised faster than a flat colour, so more viewers stay past the hook (owner, 19 Nov: 'test both if one video works better do then and drop other').",
+      "proposal": "owner note cmwn0jklx0001ib092if21wgj",
+      "adoptedAt": "2026-11-19",
+      "note": "Made the default without a verdict (owner, 2026-11-19: 'The feedback I have goes straight away, don't add it as a test')."
+    },
+    {
+      "id": "2026-11-19-border-trace",
+      "area": "look",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-19",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "description": "Map channels: the country a line is about gets a bright line with a glowing head running round its border until it closes (remotion/src/flat/map.tsx Fill.trace; director.md)",
+      "evidence": "owner note cmwn0p9tz0001jv09zeeqqwpd (19 Nov, on v-20261119-03): 'should be highlighted in animated way like lines rounding and completing over the corners'"
+    }
+  ]
+}

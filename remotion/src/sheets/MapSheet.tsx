@@ -1,7 +1,8 @@
 /**
  * A test reel for the map component (src/flat/map.tsx), 1080×1920, 6 s: the world map with Chile
  * recoloured, a route from Shanghai to Rotterdam drawing through Suez, Chile lifted onto India for
- * scale, and Gambia framed inside Senegal. For checking the look in stills; not part of any video.
+ * scale, Gambia framed inside Senegal, and (from 6 s) Greenland traced round its border with Greenland and
+ * Denmark under their flags. For checking the look in stills; not part of any video.
  */
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
@@ -28,6 +29,11 @@ export const MapSheet: React.FC = () => {
           <WorldMap w={W} h={H} fit={["India", "Pakistan", "Bangladesh", "Nepal"]} pad={120} kind="flat" colors={{ India: { fill: "#ffc43d" } }}>
             <Lift name="Chile" to={[78, 22]} k={k(f, 60, 100)} rot={0} label={f > 100 ? "Chile" : undefined} />
           </WorldMap>
+        ) : f >= 180 ? (
+            <WorldMap w={W} h={H} center={[-25, 66]} scale={1100} kind="flat" look="vintage" political={0.55}
+              colors={{ Greenland: { fill: "#d9483b", flag: "Greenland", paint: k(f, 215, 245), trace: k(f, 185, 215) }, Denmark: { fill: "#d9483b", flag: "Denmark", k: k(f, 200, 215) } }}>
+              <MapLabel at={[-41, 72.5]} text="Greenland" k={k(f, 190, 200)} />
+            </WorldMap>
         ) : (
           <WorldMap w={W} h={H} fit={["Gambia", "Senegal"]} pad={140} kind="flat" colors={{ Gambia: { fill: "#e8453c", k: k(f, 125, 140) }, Senegal: { fill: "#5fae6a" } }}>
             <MapLabel at={[-15.4, 13.45]} text="Gambia" k={k(f, 135, 145)} dy={-90} />

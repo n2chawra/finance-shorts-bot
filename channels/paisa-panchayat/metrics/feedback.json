@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 0,
   "notes": [
     {
       "id": "cmwn030r50001l909xcce0rtj",
       "kind": "improve",
       "area": null,
       "text": "Should have added squid game real logo or real poster or anything that close to image of squid games .",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "improver fixed: Every Short now shows the real person's photo or the company's logo big in its first frame (the test was closed and made the default, your 19 Nov word). A show's own poster or logo is the studio's copyright and stays off, so a Squid Game Short opens on Netflix's logo; lint also now checks each Short follows any test group it is in. (8cae8f7)",
       "at": "2026-11-19T03:38:27.857Z",
       "video": {
         "id": "v-20261119-12",

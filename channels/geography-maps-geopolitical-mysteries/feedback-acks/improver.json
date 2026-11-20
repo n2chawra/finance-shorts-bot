@@ -1,0 +1,16 @@
+{
+  "acks": [
+    {
+      "id": "cmwn0p9tz0001jv09zeeqqwpd",
+      "action": "fixed",
+      "note": "The map kit can now trace a country: a bright line with a glowing head runs round its border and closes on the word that names it, then stays lit (flat/map.tsx `trace`); the director now does this for every country a line is about.",
+      "commit": "907610b"
+    },
+    {
+      "id": "cmwn0jklx0001ib092if21wgj",
+      "action": "fixed",
+      "note": "Done for every Short, no test: the country a line is about is coloured and its whole flag sits inside it, true to its shape and as big as fits (about 60 flags, checked in stills: India, the UK, France, Germany, Denmark, the USA, Canada, Mexico, Chile, Greenland), and named people like Napoleon stand on the map as their photo head.",
+      "commit": "25d465b"
+    }
+  ]
+}

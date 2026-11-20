@@ -1,0 +1,118 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 27519,
+  "duration_sec": 31,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "cinematic",
+    "key": "E",
+    "bpm": 92,
+    "sfx": "glass",
+    "look": {
+      "stage": "night",
+      "header": "chalk",
+      "holder": "phone",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Michael Jordan paid about $275M for a losing team.",
+        "start": 0.3,
+        "seconds": 3.54,
+        "window": 3.93,
+        "fill": 0.901
+      },
+      {
+        "scene": "promise",
+        "text": "So what was it worth when he finally sold?",
+        "start": 4.23,
+        "seconds": 1.81,
+        "window": 2.27,
+        "fill": 0.797
+      },
+      {
+        "scene": "court",
+        "text": "On the court, it kept losing. Not one playoff round won while he ran it.",
+        "start": 6.5,
+        "seconds": 3.45,
+        "window": 4.0,
+        "fill": 0.863
+      },
+      {
+        "scene": "tv",
+        "text": "But every NBA team gets an equal share of the league's TV money, win or lose.",
+        "start": 10.5,
+        "seconds": 3.85,
+        "window": 4.4,
+        "fill": 0.875
+      },
+      {
+        "scene": "deals",
+        "text": "And while he owned it, those TV deals got far bigger.",
+        "start": 14.9,
+        "seconds": 2.46,
+        "window": 2.93,
+        "fill": 0.84
+      },
+      {
+        "scene": "turn",
+        "text": "So the team's price climbed with the league, not with the scoreboard.",
+        "start": 17.83,
+        "seconds": 3.03,
+        "window": 3.47,
+        "fill": 0.873
+      },
+      {
+        "scene": "payoff",
+        "text": "When he sold, the team was valued at about $3B. That's 10.9× what he paid.",
+        "start": 21.3,
+        "seconds": 4.98,
+        "window": 5.5,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "Winning games or owning the team: which made Michael Jordan richer?",
+        "start": 26.8,
+        "seconds": 3.11,
+        "window": 3.57,
+        "fill": 0.871
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.9,
+    "lufs": -15.6,
+    "music_under_voice_db": 22.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 4.56,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

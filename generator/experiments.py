@@ -64,3 +64,48 @@ def prompt_notes(video_id: str, root: Path = ROOT) -> list[dict]:
         if note:
             out.append({"id": e["id"], "area": e.get("area"), "variant": v, "templates": e.get("templates", ["all"]), "instruction": note})
     return out
+
+
+def _code(video_id: str, root: Path) -> dict[str, str]:
+    """The video's own beat files (remotion/src/videos/<id>/*.tsx), by component name."""
+    d = root / "remotion" / "src" / "videos" / video_id
+    return {f.stem: f.read_text(encoding="utf-8") for f in sorted(d.glob("*.tsx"))} if d.is_dir() else {}
+
+
+PHOTO = re.compile(r"photo[:=]|<Photo\b|\bPhoto\s*\(")
+
+
+def adherence_problems(video_id: str, script: dict, root: Path = ROOT) -> list[str]:
+    """Whether the video does what its arm of each running experiment asks, for experiments that carry a
+    `check` (2026-11-19: 3 of 10 Shorts on the on side of cycle 1 had no real photo in the hook and 1 of 8 on
+    the off side had one, because the director never read the test's instruction; the verdict would have
+    measured the coin toss, not the change). Checks:
+      {"kind": "hook-photo"}  on: the first beat shows a real photo or logo; off: it shows none
+      {"kind": "code", "pattern": "<regex>", "what": "…"}  on: some beat file of the video matches
+    A script may waive one in `experimentWaivers` ({id: "why"}), e.g. no freely licensed file exists."""
+    out: list[str] = []
+    waived = script.get("experimentWaivers") or {}
+    beats = script.get("beats") or []
+    code = _code(video_id, root)
+    for e in load(root):
+        chk = e.get("check")
+        if not chk or e["id"] in waived or not applies(e, script.get("template")):
+            continue
+        arm = variant(e["id"], video_id, float(e.get("share", 0.5)))
+        if chk.get("kind") == "hook-photo" and beats:
+            hook = beats[0]
+            comp = (hook.get("params") or {}).get("component") or "Hook"   # coded hooks before directed beats: Hook.tsx
+            text = json.dumps(hook) + code.get(comp, "")
+            has = bool(PHOTO.search(text))
+            if arm == "on" and not has:
+                out.append(f"experiment {e['id']} (on): the hook beat shows no real photo or logo; draw the subject's "
+                           f"freely licensed photo or logo big from frame 0 (`photo=\"<name>\"` or a photo sticker; "
+                           f"python -m generator.images list), or say why not in script.experimentWaivers")
+            if arm == "off" and has:
+                out.append(f"experiment {e['id']} (off): the hook beat shows a real photo or logo; this video is on "
+                           f"the off side, so draw the subject instead (photos may appear from the second beat)")
+        elif chk.get("kind") == "code" and arm == "on":
+            if not any(re.search(chk["pattern"], t) for t in code.values()):
+                out.append(f"experiment {e['id']} (on): no beat has {chk.get('what', chk['pattern'])}; this video is on "
+                           f"the on side of the test, so it must")
+    return out

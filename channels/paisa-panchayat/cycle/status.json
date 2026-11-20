@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-19T16:45:34.083266+00:00",
+  "generatedAt": "2026-11-20T02:31:50.434455+00:00",
   "cycle": 1,
-  "running": "real-subject-first-frame",
+  "running": null,
   "thresholds": {
     "keepPoints": 5,
     "revertPoints": -5,
@@ -34,7 +34,7 @@
         "side": "off",
         "publishAt": "2026-11-18T01:37:00.000Z",
         "counted": false,
-        "value": null,
+        "value": 0.632,
         "views": 73
       },
       {
@@ -43,7 +43,7 @@
         "side": "off",
         "publishAt": "2026-11-17T13:37:00.000Z",
         "counted": false,
-        "value": null,
+        "value": 0.329,
         "views": 444
       },
       {
@@ -52,7 +52,7 @@
         "side": "on",
         "publishAt": "2026-11-17T07:07:00.000Z",
         "counted": false,
-        "value": 0.364,
+        "value": 0.397,
         "views": 975
       },
       {
@@ -61,7 +61,7 @@
         "side": "on",
         "publishAt": "2026-11-17T01:37:00.000Z",
         "counted": false,
-        "value": 0.404,
+        "value": 0.373,
         "views": 450
       },
       {
@@ -69,8 +69,8 @@
         "title": "Amazon's whole North American store made $29.6B. Its rented computers made $45.6B 🖥️",
         "side": "on",
         "publishAt": "2026-11-16T13:37:00.000Z",
-        "counted": false,
-        "value": 0.317,
+        "counted": true,
+        "value": 0.295,
         "views": 46
       },
       {
@@ -78,8 +78,8 @@
         "title": "Larry Ellison's salary was $1 until 2025. He pledged 413M Oracle shares",
         "side": "on",
         "publishAt": "2026-11-16T07:07:00.000Z",
-        "counted": false,
-        "value": 0.423,
+        "counted": true,
+        "value": 0.433,
         "views": 210
       },
       {
@@ -87,7 +87,7 @@
         "title": "Grand Theft Auto V has sold 230M copies since 2013 🎮",
         "side": "off",
         "publishAt": "2026-11-16T01:37:00.000Z",
-        "counted": false,
+        "counted": true,
         "value": 0.351,
         "views": 590
       },
@@ -97,7 +97,7 @@
         "side": "on",
         "publishAt": "2026-11-14T13:37:00.000Z",
         "counted": true,
-        "value": 0.308,
+        "value": 0.311,
         "views": 223
       },
       {
@@ -106,7 +106,7 @@
         "side": "off",
         "publishAt": "2026-11-14T07:07:00.000Z",
         "counted": true,
-        "value": 0.484,
+        "value": 0.483,
         "views": 905
       },
       {
@@ -115,7 +115,7 @@
         "side": "on",
         "publishAt": "2026-11-14T01:37:00.000Z",
         "counted": true,
-        "value": 0.433,
+        "value": 0.434,
         "views": 459
       },
       {
@@ -124,7 +124,7 @@
         "side": "on",
         "publishAt": "2026-11-13T13:37:00.000Z",
         "counted": true,
-        "value": 0.257,
+        "value": 0.258,
         "views": 487
       },
       {
@@ -133,7 +133,7 @@
         "side": "on",
         "publishAt": "2026-11-13T07:07:00.000Z",
         "counted": true,
-        "value": 0.381,
+        "value": 0.382,
         "views": 1022
       },
       {
@@ -147,171 +147,5 @@
       }
     ]
   },
-  "experiment": {
-    "id": "real-subject-first-frame",
-    "kind": "first-second",
-    "area": "hook",
-    "description": "Shorts: the real person's photo or the company's logo in the first frame, against a drawn subject (judged on stayed to watch)",
-    "on": "First frame for this Short (weekly loop, cycle 1, on): the hook beat shows the real subject itself: the famous person as a cut-out photo bobblehead (`\"who\": \"photo:<name>\"`) or the company's logo as a die-cut sticker (`\"prop\": \"photo:<name>\"`), big, with its name as a label and the hook figure beside it, from frame 0. Fetch it with `python -m generator.images fetch` (writer.md, real photos). If no freely licensed file exists, say so in the report and draw the subject instead.",
-    "off": "First frame for this Short (weekly loop, cycle 1, off): no real photo or logo in the hook beat; draw the subject (its product, building or a cast stand-in labelled with its name), big, with the hook figure beside it. Real photos may still appear later in the video.",
-    "startedAt": "2026-11-13",
-    "metric": "stayed",
-    "minPerArm": 8,
-    "maxDays": 7,
-    "extended": false,
-    "published": {
-      "on": 10,
-      "off": 5
-    },
-    "counted": {
-      "on": 9,
-      "off": 2
-    },
-    "value": {
-      "on": 0.351,
-      "off": 0.432
-    },
-    "points": -8.2,
-    "pOnBetter": 0.13,
-    "days": 6,
-    "verdict": "wait",
-    "why": "2 of 8 Shorts a side have two days of data; day 6 of 7",
-    "videos": [
-      {
-        "id": "v-20261119-12",
-        "title": "Squid Game cost Netflix $21.4M. What was it really worth? 🦑",
-        "side": "on",
-        "publishAt": "2026-11-19T13:37:00.000Z",
-        "counted": false,
-        "value": null,
-        "views": 52
-      },
-      {
-        "id": "v-20261119-11",
-        "title": "Elon Musk and every billionaire, shared with you: how much each? 💸",
-        "side": "off",
-        "publishAt": "2026-11-19T01:37:00.000Z",
-        "counted": false,
-        "value": null,
-        "views": 43
-      },
-      {
-        "id": "v-20261117-02",
-        "title": "AMC charges $12.73 a ticket. Why does it care more about your popcorn? 🍿",
-        "side": "off",
-        "publishAt": "2026-11-18T01:37:00.000Z",
-        "counted": false,
-        "value": null,
-        "views": 73
-      },
-      {
-        "id": "v-20261117-04",
-        "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
-        "side": "off",
-        "publishAt": "2026-11-17T13:37:00.000Z",
-        "counted": false,
-        "value": null,
-        "views": 444
-      },
-      {
-        "id": "v-20261117-03",
-        "title": "How long does a Disneyland character work to buy one ticket? 🏰",
-        "side": "on",
-        "publishAt": "2026-11-17T07:07:00.000Z",
-        "counted": false,
-        "value": 0.364,
-        "views": 975
-      },
-      {
-        "id": "v-20261117-01",
-        "title": "Edwin Castro won the biggest jackpot ever. Why wasn't it all his? 🎟️",
-        "side": "on",
-        "publishAt": "2026-11-17T01:37:00.000Z",
-        "counted": false,
-        "value": 0.404,
-        "views": 450
-      },
-      {
-        "id": "v-20261116-04",
-        "title": "Amazon's whole North American store made $29.6B. Its rented computers made $45.6B 🖥️",
-        "side": "on",
-        "publishAt": "2026-11-16T13:37:00.000Z",
-        "counted": false,
-        "value": 0.317,
-        "views": 46
-      },
-      {
-        "id": "v-20261116-02",
-        "title": "Larry Ellison's salary was $1 until 2025. He pledged 413M Oracle shares",
-        "side": "on",
-        "publishAt": "2026-11-16T07:07:00.000Z",
-        "counted": false,
-        "value": 0.423,
-        "views": 210
-      },
-      {
-        "id": "v-20261116-01",
-        "title": "Grand Theft Auto V has sold 230M copies since 2013 🎮",
-        "side": "off",
-        "publishAt": "2026-11-16T01:37:00.000Z",
-        "counted": false,
-        "value": 0.351,
-        "views": 590
-      },
-      {
-        "id": "v-20261114-03",
-        "title": "The Las Vegas Strip keeps $16,772 every minute 🎰",
-        "side": "on",
-        "publishAt": "2026-11-14T13:37:00.000Z",
-        "counted": true,
-        "value": 0.308,
-        "views": 223
-      },
-      {
-        "id": "v-20261114-02",
-        "title": "Costco's profit was $9.23B. The card paid 64% of it",
-        "side": "off",
-        "publishAt": "2026-11-14T07:07:00.000Z",
-        "counted": true,
-        "value": 0.484,
-        "views": 905
-      },
-      {
-        "id": "v-20261114-01",
-        "title": "19% of America's $40.61T debt is owed to itself 🇺🇸",
-        "side": "on",
-        "publishAt": "2026-11-14T01:37:00.000Z",
-        "counted": true,
-        "value": 0.433,
-        "views": 459
-      },
-      {
-        "id": "v-20261113-03",
-        "title": "Netflix spent $17.1B on new shows and still kept $11B",
-        "side": "on",
-        "publishAt": "2026-11-13T13:37:00.000Z",
-        "counted": true,
-        "value": 0.257,
-        "views": 487
-      },
-      {
-        "id": "v-20261113-05",
-        "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
-        "side": "on",
-        "publishAt": "2026-11-13T07:07:00.000Z",
-        "counted": true,
-        "value": 0.381,
-        "views": 1022
-      },
-      {
-        "id": "v-20261113-01",
-        "title": "MrBeast made $300M in one year. IShowSpeed made $30M",
-        "side": "on",
-        "publishAt": "2026-11-13T01:37:00.000Z",
-        "counted": true,
-        "value": 0.325,
-        "views": 957
-      }
-    ]
-  }
+  "experiment": null
 }
