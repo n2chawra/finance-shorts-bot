@@ -26,9 +26,13 @@ import { ProductStage } from "./ProductStage";
 import { Split, type Side } from "./Split";
 import { DOC, fmtDate, isGrade, outCubic, type Surface } from "./theme";
 import { Timeline, type YearMark } from "./Timeline";
+import { autoEnter, EnterFx, isEnter, LightLeak } from "./Transitions";
+import { ArrowMark, CircleMark, DateSlam, slamShake, StampMark } from "./Annotate";
+import { isMontageMode, Montage } from "./Montage";
+import { Depth } from "./Depth";
 
-export const LAYER_KINDS = ["footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", ...FIGURE_KINDS] as const;
-export const OVERLAY_KINDS = ["lowerThird", "source", "chapter", "label"] as const;
+export const LAYER_KINDS = ["footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "montage", "depth", ...FIGURE_KINDS] as const;
+export const OVERLAY_KINDS = ["lowerThird", "source", "chapter", "label", "circle", "arrow", "stamp", "date"] as const;
 
 type Any = Record<string, unknown>;
 const s = (v: unknown, d = ""): string => (typeof v === "string" ? v : typeof v === "number" ? String(v) : d);
@@ -121,6 +125,16 @@ const Layer: React.FC<{ c: Ctx; l: Any }> = ({ c, l }) => {
       return <ProductStage mode={l.mode === "pallet" || l.mode === "wall" ? l.mode : "stage"} items={list(l.items).map((it, i) => ({ src: s(it.src), aspect: typeof it.aspect === "number" ? it.aspect : undefined,
         label: typeof it.label === "string" ? it.label : undefined, at: ev(it.at, 4 + i * 16) }))} count={figOf(fig, l.count)} countLabel={typeof l.countLabel === "string" ? l.countLabel : undefined}
         fillAt={ev(l.fillAt, 6)} fillLen={n(l.fillLen, 36)} backdrop={l.backdrop === "paper" ? "paper" : "charcoal"} t={t} end={end} w={w} h={h} />;
+    case "montage":
+      return <Montage items={list(l.items).map((it) => ({ src: s(it.src), focus: Array.isArray(it.focus) ? pair(it.focus, [0.5, 0.4]) : undefined,
+        aspect: typeof it.aspect === "number" ? it.aspect : undefined, caption: typeof it.caption === "string" ? it.caption : undefined,
+        at: it.at !== undefined ? ev(it.at, 0) : undefined }))} mode={isMontageMode(l.mode) ? l.mode : "punch"} every={n(l.every, 10)}
+        grade={isGrade(l.grade) ? l.grade : "doc"} t={t} end={end} w={w} h={h} />;
+    case "depth":
+      return <Depth src={s(l.src)} cut={s(l.cut)} title={typeof l.title === "string" ? l.title : undefined} sub={typeof l.sub === "string" ? l.sub : undefined}
+        titleAt={ev(l.titleAt, 8)} tone={l.tone === "white" || l.tone === "red" ? l.tone : "gold"} bgTreatment={l.bgTreatment === "archive" || l.bgTreatment === "none" ? l.bgTreatment : "bw"}
+        grade={isGrade(l.grade) ? l.grade : "doc"} focus={Array.isArray(l.focus) ? pair(l.focus, [0.5, 0.45]) : undefined} side={l.side === "right" ? "right" : "left"}
+        particles={l.particles === true} t={t} end={end} w={w} h={h} />;
     default:
       return isFigureKind(l.kind) ? <FigureLayer l={l} fig={fig} t={t} end={end} w={w} h={h} ev={ev} /> : null;
   }
@@ -151,27 +165,24 @@ const Overlay: React.FC<{ c: Ctx; o: Any }> = ({ c, o }) => {
     case "chapter":
       return <ChapterCard n={typeof o.n === "number" ? o.n : undefined} title={s(o.title)} kicker={typeof o.kicker === "string" ? o.kicker : undefined}
         t={m.t - a} end={z - a} w={w} h={h} on={4} plate={n(o.plate, 0.7)} style={chapterStyle(o.style)} />;
+    case "circle":
+      return <CircleMark t={m.t} inAt={a} outAt={typeof o.out === "string" ? z : undefined} w={w} h={h} pos={pair(o.pos, [0.5, 0.45])} r={n(o.r, 0.16)}
+        tone={o.tone === "gold" || o.tone === "white" ? o.tone : "red"} label={typeof o.label === "string" ? o.label : undefined} />;
+    case "arrow":
+      return <ArrowMark t={m.t} inAt={a} outAt={typeof o.out === "string" ? z : undefined} w={w} h={h} from={pair(o.from, [0.3, 0.3])} to={pair(o.to, [0.5, 0.5])}
+        label={typeof o.label === "string" ? o.label : undefined} tone={o.tone === "gold" || o.tone === "white" ? o.tone : "red"} />;
+    case "stamp":
+      return <StampMark t={m.t} inAt={a} outAt={typeof o.out === "string" ? z : undefined} w={w} h={h} text={s(o.text)} pos={Array.isArray(o.pos) ? pair(o.pos, [0.5, 0.35]) : undefined}
+        tone={o.tone === "gold" || o.tone === "white" ? o.tone : "red"} tilt={typeof o.tilt === "number" ? o.tilt : undefined} />;
+    case "date":
+      return <DateSlam t={m.t} inAt={a} outAt={typeof o.out === "string" ? z : undefined} w={w} h={h} date={s(o.date)} sub={typeof o.sub === "string" ? o.sub : undefined}
+        pos={o.pos === "center" ? "center" : "top"} />;
     case "label":
       return <LabelBox text={figOf(c.fig, o.text) ?? ""} sub={typeof o.sub === "string" ? o.sub : undefined} t={m.t} w={w} h={h} inAt={a}
         outAt={typeof o.out === "string" ? z : undefined} tone={o.tone === "red" ? "red" : "white"} />;
     default:
       return null;
   }
-};
-
-/** How a layer arrives on its word: a cut (default), a fade, or a camera flash (photos, headlines). */
-const Enter: React.FC<{ kind: unknown; t: number; children: React.ReactNode }> = ({ kind, t, children }) => {
-  if (kind === "fade") return <AbsoluteFill style={{ opacity: outCubic(t / 10) }}>{children}</AbsoluteFill>;
-  if (kind === "flash") {
-    const f = Math.max(0, 1 - t / 7);
-    return (
-      <AbsoluteFill>
-        {children}
-        {f > 0 ? <AbsoluteFill style={{ background: "#fff", opacity: f * 0.9 }} /> : null}
-      </AbsoluteFill>
-    );
-  }
-  return <AbsoluteFill>{children}</AbsoluteFill>;
 };
 
 export const DocScene: React.FC<SceneProps> = (p) => {
@@ -184,15 +195,20 @@ export const DocScene: React.FC<SceneProps> = (p) => {
   const overlays = list(P.overlays);
   // a punch: the whole picture snaps 5% closer on a word and holds
   const pk = typeof P.punch === "string" ? outCubic((m.t - m.at(P.punch, Infinity)) / 6) : 0;
+  // a stamp or date slam shakes the whole picture as it lands
+  const slam = overlays.filter((o) => o.kind === "stamp" || o.kind === "date").map((o) => slamShake(m.t, span(c, o)[0])).find((q) => q.x || q.y);
+  const seed = `${p.beat.id}`;
   return (
     <AbsoluteFill style={{ background: DOC.bg, overflow: "hidden" }}>
-      <AbsoluteFill style={{ transform: pk > 0 ? `scale(${1 + 0.05 * pk})` : undefined }}>
+      <AbsoluteFill style={{ transform: [pk > 0 ? `scale(${1 + 0.05 * pk})` : "", slam ? `translate(${slam.x}px, ${slam.y}px) rotate(${slam.r}deg)` : ""].join(" ").trim() || undefined }}>
         {layers.map((l, i) => {
           const [a, z] = span(c, l);
           // a layer with no `out` holds past the beat's end (the video's tail after the last beat)
           if (m.t < a || (typeof l.out === "string" && m.t >= z)) return null;
-          return <Enter key={i} kind={l.enter} t={m.t - a}><Layer c={c} l={l} /></Enter>;
+          const kind = isEnter(l.enter) ? l.enter : autoEnter(s(l.kind), `${seed}:${p.tl.beats.findIndex((b) => b.id === p.beat.id)}`, i);
+          return <EnterFx key={i} kind={kind} t={m.t - a} w={w} h={h}><Layer c={c} l={l} /></EnterFx>;
         })}
+        <LightLeak t={m.t} seed={seed} o={0.12} />
       </AbsoluteFill>
       {overlays.map((o, i) => {
         const [a, z] = span(c, o);

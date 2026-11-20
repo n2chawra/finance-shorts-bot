@@ -66,6 +66,31 @@ its band. Never a person on camera, a cast or an AI scene.
 - **One grade over every source** (`grade`: `doc` by default, `archive` for old photos, `night` or
   `cold` for the fall); old 4:3 or vertical sources use `aspect` (blurred pillarbox).
 
+### Variety and motion (owner, 2026-11-20; `doc_video_problems` fails the script otherwise)
+
+Read `style-study/2026-11-20-same-topic.md`. The first two Shorts reused 3–6 photos across every cut and
+showed nothing but photos, count-ups and the poster; the owner called it repetitive and short on effects.
+
+- **Every picture once in a Short** (the last beat may repeat the opening picture for the loop); in a long
+  video at most twice and never in neighbouring beats. Fetch more pictures than beats: aim for one per cut
+  (beats + 3 at least). When a subject has few photos, change the kind of picture instead of repeating one:
+  its document, a headline, a timeline of its years, a map of where it happened, a product wall, a depth shot.
+- **Devices**: a Short uses at least 3 kinds from document, headline, chart, timeline, split, map, polaroids,
+  products, listing, ticker, sink, donut, montage, depth (always a document or headline); a long video 5.
+- **`depth`** (the Business Casual 2.5D shot): a real photo split into the greyed background and the
+  subject cut out in front (`python -m generator.media cutout --channel <slug> <asset id>` writes
+  `<id>-cut.png`), with the name or the claim in big type between the layers (`src`, `cut`, `title`, `sub`,
+  `titleAt`, `side`, `bgTreatment`, `particles`). Use it when a name or a place is spoken.
+- **`montage`** for a fast run of pictures on one line ("in shops, on TikTok, in cup holders"): `items`
+  [{src, focus}], `mode` punch (hook, 0.3–0.5 s each), stack (prints thrown on a desk) or grid (an evidence wall).
+- **Overlays on at least every other beat, two or more kinds**: `circle` {pos, r, label} rings the thing on
+  the photo on its word; `arrow` {from, to, label}; `stamp` {text, tone} slams SOLD OUT, LIMIT, RECALLED
+  (no digits); `date` {date (ISO), sub} slams the year and place; plus `label`, `lowerThird`, `source`.
+- **Entrances**: leave a layer's `enter` out and the kit picks a whip, zoom, focus, glitch, drop, iris or
+  shutter by what the layer is; name one (`whip-left`, `zoom`, `drop`…) to choose; `cut` on at most half.
+- **Then and now**: an archival print (`photo` frame polaroid, treatment bw) landing over today's footage or
+  photo of the same place; **labelled cut-outs** (`products` stage, each label on its name) to compare brands.
+
 ### What never goes on screen
 
 - **No identifiable stock person on a negative beat** (a fall, a layoff, a fraud, a loss): use hands,

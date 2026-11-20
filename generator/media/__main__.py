@@ -1,4 +1,4 @@
-"""python -m generator.media <search|fetch|edgar|credits|check|stage|list> --channel <slug> ..."""
+"""python -m generator.media <search|fetch|edgar|cutout|credits|check|stage|list> --channel <slug> ..."""
 from __future__ import annotations
 
 import argparse
@@ -60,6 +60,9 @@ def main(argv: list[str] | None = None) -> int:
     k.add_argument("target", help="script.json or video id")
     g = cmd("stage", help="copy a script's assets into remotion/public/media/<slug>/")
     g.add_argument("target", help="video id or script.json")
+    u = cmd("cutout", help="cut a logged photo's subject out of its background (<id>-cut.png, for a depth layer)")
+    u.add_argument("asset", help="the photo's asset id, as fetch printed it")
+    u.add_argument("--model", default=library.CUT_MODEL, help="rembg model (isnet-general-use for hard cases)")
     cmd("list", help="the licence log")
     a = ap.parse_args(argv)
     try:
@@ -106,6 +109,10 @@ def main(argv: list[str] | None = None) -> int:
                 print(p)
             print(f"{len(library.script_assets(script, vid))} assets, {len(probs)} problems", file=sys.stderr)
             return 1 if probs else 0
+        elif a.cmd == "cutout":
+            r = library.cutout(slug, a.asset, a.model)
+            print(f"media/{slug}/{r['id']}.png  ({r['width']}x{r['height']})  from {r['of']}")
+            print(f"cached: {cache_root(slug) / r['path']}\nlogged: {log_path(slug)}", file=sys.stderr)
         elif a.cmd == "stage":
             script, vid = library.read_script(slug, a.target)
             for p in library.stage(slug, script, vid):

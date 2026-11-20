@@ -17,3 +17,12 @@ Fix: every picture shows the thing being said.
 
 ## 4. The payoff is the most surprising fact (general)
 Fix: hold the most surprising figure or fact for the payoff, and make the last line loop into the first.
+
+## 5. Every picture once, and things arrive with motion (owner, 2026-11-20)
+Seen in: v-20261120-07 (Stanley: 6 photos across 17 cuts, the shop shelf 4 times) and v-20261120-08 (Nike: 3
+sneaker photos 5 times); both had no overlay, no document and only plain hard cuts. Owner: "same images are
+being used many times… effects are very less".
+Fix: a Short shows each picture once (only the loop's last picture may repeat the first); at least 3 devices
+beyond photos (document or headline always, then depth, montage, polaroids, listing, sink, split, timeline,
+map, products…); an overlay on every other beat (circle, arrow, stamp, date, label, lowerThird); leave `enter`
+out so every layer arrives with a whip, zoom, focus, drop or glitch. Code: `doc_video_problems`.

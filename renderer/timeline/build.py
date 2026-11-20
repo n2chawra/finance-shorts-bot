@@ -120,7 +120,7 @@ ID_KEYS = ID_KEYS | {"out", "pushAt", "markAt", "underAt", "quoteAt", "drawAt", 
 # ...and three kinds of string that hold digits but are not figures: a file the media fetcher staged under
 # remotion/public (its name is the stock site's id), a date (shown as "Apr 2, 2001"; the fact review checks
 # it) and an SEC form's name ("Form 10-K")
-MEDIA_KEYS = frozenset({"src", "icons"})
+MEDIA_KEYS = frozenset({"src", "icons", "cut"})
 MEDIA_PATH = re.compile(r"^(?:media|real|doc-demo)/(?!.*\.\.)[\w./-]+\.(?:mp4|webm|mov|jpe?g|png|webp)$")
 DATE_KEYS = frozenset({"date"})
 ISO_DATE = re.compile(r"^\d{4}(?:-\d{2}(?:-\d{2})?)?$")
@@ -536,8 +536,12 @@ def directed_problems(b: "Beat", where: str) -> list[str]:
     return out
 
 
-DOC_LAYERS = ("footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "count", "listing", "ticker", "sink", "donut", "poster")
-DOC_OVERLAYS = ("lowerThird", "source", "chapter", "label")
+DOC_LAYERS = ("footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "count", "listing", "ticker", "sink", "donut", "poster", "montage", "depth")
+DOC_OVERLAYS = ("lowerThird", "source", "chapter", "label", "circle", "arrow", "stamp", "date")
+DOC_ENTERS = ("cut", "fade", "flash", "whip-left", "whip-right", "zoom", "focus", "shutter", "glitch", "drop", "iris", "slide-up")
+# the devices that make a doc video more than photos with a voice (owner, 2026-11-20: "same images are being
+# used many times, effects are very less"): count, poster and plain photos/footage don't count
+DOC_DEVICES = ("document", "headline", "chart", "timeline", "split", "map", "polaroids", "products", "listing", "ticker", "sink", "donut", "montage", "depth")
 # the keys in a doc layer that name a moment (a spoken word in the beat's events)
 DOC_MOMENT_KEYS = ("at", "out", "pushAt", "markAt", "underAt", "quoteAt", "drawAt", "countAt", "fillAt", "flipAt", "tagAt", "tapeAt", "sinkAt", "leftAt", "rightAt", "winAt", "landAt", "titleAt", "on")
 
@@ -578,6 +582,12 @@ def doc_problems(b: "Beat", where: str) -> list[str]:
             out.append(f"{where}: params.layers[{i}].src is a staged file under remotion/public (media/<slug>/<file> or real/<file>)")
         if l["kind"] == "document" and not (l.get("src") or l.get("lines")):
             out.append(f"{where}: params.layers[{i}] (a document) needs the page: src (an image) or lines (its text)")
+        if l.get("enter") is not None and l.get("enter") not in DOC_ENTERS:
+            out.append(f"{where}: params.layers[{i}].enter is one of {', '.join(DOC_ENTERS)} (leave it out to let the kit pick)")
+        if l["kind"] == "depth" and not (isinstance(l.get("cut"), str) and MEDIA_PATH.match(l["cut"])):
+            out.append(f"{where}: params.layers[{i}] (depth) needs cut: the subject's cut-out PNG (python -m generator.media cutout)")
+        if l["kind"] == "montage" and len([x for x in l.get("items") or [] if isinstance(x, dict) and x.get("src")]) < 3:
+            out.append(f"{where}: params.layers[{i}] (montage) needs at least 3 items, each with its own src")
         if l["kind"] == "chart" and not (isinstance(l.get("values"), list) and l["values"]):
             out.append(f"{where}: params.layers[{i}] (a chart) needs values (\"@maths.series\" or the facts' numbers)")
     for i, o in enumerate(p.get("overlays") or []):
@@ -590,6 +600,70 @@ def doc_problems(b: "Beat", where: str) -> list[str]:
         if ev not in b.events and ev not in ("start", "end"):
             out.append(f"{where}: {path} {ev!r} is not one of this beat's events (name the word in `events` first)")
             break
+    return out
+
+
+def _doc_sources(beat: dict) -> list[str]:
+    """Every picture file a doc beat shows (photos, clips, cut-outs, montage and polaroid prints, split sides)."""
+    out: list[str] = []
+    def walk(node):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if k in ("src", "cut") and isinstance(v, str) and MEDIA_PATH.match(v):
+                    out.append(v)
+                elif isinstance(v, (dict, list)):
+                    walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+    p = beat.get("params") or {}
+    walk(p.get("layers") or [])
+    return out
+
+
+def doc_video_problems(script: dict) -> list[str]:
+    """Variety across a whole doc video (owner, 2026-11-20, on the first Stanley and Nike Shorts: "same images
+    are being used many times… effects are very less"; they showed 6 and 3 photos across 17 and 15 cuts, no
+    overlays and no document). A Short shows every picture once (its last beat may repeat the first beat's
+    picture, the loop), several devices beyond photos, a document or headline, and overlays; a long video
+    shows a picture at most twice and never in neighbouring beats. Scripts made before the rule carry
+    "docCraft": 1."""
+    beats = [b for b in script.get("beats") or [] if isinstance(b, dict) and b.get("scene") == "doc"]
+    if not beats or int(script.get("docCraft", 2)) < 2:
+        return []
+    short, out = script.get("format") == "short", []
+    seen: dict[str, list[int]] = {}
+    for i, b in enumerate(beats):
+        for src in dict.fromkeys(_doc_sources(b)):
+            seen.setdefault(src, []).append(i)
+    first = set(_doc_sources(beats[0]))
+    for src, where in seen.items():
+        name = src.rsplit("/", 1)[-1]
+        if short:
+            uses = [i for i in where if not (i == len(beats) - 1 and src in first and 0 in where)]
+            inside = sum(_doc_sources(beats[i]).count(src) for i in uses)
+            if len(uses) > 1 or inside > 1:
+                out.append(f"{name} is shown {len(uses) if len(uses) > 1 else inside} times: a Short shows each picture once "
+                           "(the last beat may repeat the opening picture for the loop); fetch another")
+        elif len(where) > 2 or any(q - p == 1 for p, q in zip(where, where[1:])):
+            out.append(f"{name} is in beats {where}: a long video shows a picture at most twice, never in neighbouring beats")
+    layers = [l for b in beats for l in (b.get("params") or {}).get("layers") or [] if isinstance(l, dict)]
+    overlays = [o for b in beats for o in (b.get("params") or {}).get("overlays") or [] if isinstance(o, dict)]
+    devices = {l.get("kind") for l in layers} & set(DOC_DEVICES)
+    need_dev, need_ov = (3, (len(beats) + 1)//2) if short else (5, len(beats)//2)
+    if len(devices) < need_dev:
+        out.append(f"the video uses {len(devices)} device kinds ({', '.join(sorted(devices)) or 'none'}); use at least {need_dev} of "
+                   f"{', '.join(DOC_DEVICES)}: photos, count-ups and the poster alone read as a slideshow")
+    if not devices & {"document", "headline"}:
+        out.append("no document or headline: the channel's signature is the page that holds the figure, highlighted on the word")
+    if len(overlays) < need_ov or len({o.get("kind") for o in overlays}) < 2:
+        out.append(f"{len(overlays)} overlays of {len({o.get('kind') for o in overlays})} kinds; use at least {need_ov} of two or more kinds "
+                   "(circle, arrow, stamp, date, label, lowerThird, source)")
+    plain = sum(1 for l in layers if l.get("enter") == "cut")
+    if layers and plain > len(layers)//2:
+        out.append(f"{plain} of {len(layers)} layers enter on a plain cut; leave `enter` out (the kit picks a whip, zoom, focus, drop…) or name one")
+    if short and len(set(seen)) < len(beats) + 3:
+        out.append(f"{len(set(seen))} different pictures for {len(beats)} beats; a Short needs at least {len(beats) + 3} (about one per cut)")
     return out
 
 
@@ -649,6 +723,8 @@ def check_script(script: dict) -> dict:
             timed.append({"id": b.id, "frames": frames, "events": events})
     # a long video ends on the end card; a Short loops back to its hook instead and shows the
     # disclaimer as a small line over its last moments (owner, 2026-10-21)
+    if bad := doc_video_problems(script):
+        raise ValueError("doc video: " + "; ".join(bad))
     if fmt == "long" and beats[-1].scene != "end":
         raise ValueError("the last beat must be the end card (scene \"end\"), which carries the disclaimer")
     _thumbnail(script.get("thumbnail"), figures, results, [b.get("id") for b in script.get("beats") or []])

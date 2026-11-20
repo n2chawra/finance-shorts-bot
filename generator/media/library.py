@@ -315,6 +315,43 @@ def stage(slug: str, script: dict, vid: str | None = None, root: Path = ROOT) ->
     return out
 
 
+CUT_MODEL = "u2netp"   # rembg's small model (generator/images.py), downloaded once per machine, never into the repo
+CUT_MAX = 1800         # px on the long side: enough for a full-frame layer, keeps the PNG small
+
+
+def cutout(slug: str, aid: str, model: str = CUT_MODEL, root: Path = ROOT) -> dict:
+    """The subject of a logged photo cut out of its background (doc `depth` layer, 2026-11-20): a transparent
+    PNG with the photo's own aspect, so it registers over the photo when both are cover-fitted. Logged as
+    `<aid>-cut`, a derived asset that carries the source's licence and credit (noting the change)."""
+    log = load_log(slug, root)
+    r = log.get(aid)
+    if not r:
+        raise MediaError(f"{aid}: not in the licence log; fetch it first")
+    if r.get("kind") != "photo":
+        raise MediaError(f"{aid}: only a photo can be cut out (this is a {r.get('kind')})")
+    src = cache_root(slug) / r["path"]
+    if not src.is_file():
+        raise MediaError(f"{src} is missing; fetch it again ({r.get('ref')})")
+    try:
+        from PIL import Image
+        from rembg import new_session, remove
+    except ImportError as e:
+        raise MediaError("cutting out a photo needs rembg: python -m pip install -r generator/requirements-images.txt") from e
+    im = Image.open(src).convert("RGB")
+    im.thumbnail((CUT_MAX, CUT_MAX))
+    out = remove(im, session=new_session(model))
+    cid = f"{aid}-cut"
+    dest = src.with_name(f"{cid}.png")
+    out.save(dest, optimize=True)
+    att = dict(r.get("attribution") or {})
+    if att.get("text") and "background removed" not in att["text"]:
+        att["text"] = att["text"].rstrip(")") + ", background removed)" if att["text"].endswith(")") else att["text"] + " (background removed)"
+    rec = {**r, "id": cid, "of": aid, "derived": "cutout (rembg " + model + ")", "attribution": att,
+           "path": str(Path(r["path"]).with_name(dest.name)).replace("\\", "/"), "sha256": sha256(dest), "bytes": dest.stat().st_size,
+           "width": out.width, "height": out.height, "fetchedAt": now()}
+    return record(slug, rec, root)
+
+
 def read_script(slug: str, target: str, root: Path = ROOT) -> tuple[dict, str | None]:
     """A script from a path, or a video id in the channel's videos folder."""
     p = Path(target)

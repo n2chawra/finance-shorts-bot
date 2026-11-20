@@ -64,8 +64,22 @@ and checks the params with `renderer/timeline/build.py` `doc_problems`. `DocBeat
 | `polaroids` | `PolaroidRow` | `items` [{src, aspect, caption, at, bw}] (each print unblurs and lifts on its `at`, the others dim), `surface`, `bw`, `dim`. Two rows in a Short. |
 | `products` | `ProductStage` | `mode` stage/pallet/wall, `items` [{src (transparent PNG), aspect, label, at}], `backdrop` charcoal/paper; pallet/wall: `count` (a `params.fig` key; at most 240 units drawn, the full figure lands after), `countLabel`, `fillAt`, `fillLen` |
 
-Overlays: `lowerThird` {name, role}, `source` {form?, text, date?, pos}, `label` {text, sub, tone white/red} and
-`chapter` (the same card over the picture under it).
+| `montage` | `Montage` | `items` [{src, focus, caption, at}] (at least 3, each a different picture), `mode` punch (hook: a zoom punch + flash per picture) / stack (prints thrown onto a desk) / grid (an evidence wall), `every` (frames), `grade` |
+| `depth` | `Depth` | 2.5D: `src` (the photo, greyed and blurred behind), `cut` (its cut-out PNG from `python -m generator.media cutout`, in front), `title` + `sub` between the layers on `titleAt`, `side`, `tone`, `bgTreatment` bw/archive/none, `particles` |
+
+Overlays: `lowerThird` {name, role}, `source` {form?, text, date?, pos}, `label` {text, sub, tone white/red},
+`chapter` (the same card over the picture under it), and the marks (`Annotate.tsx`, 2026-11-20): `circle` {pos [x,y],
+r, label, tone} (a hand-drawn ring on the thing), `arrow` {from, to, label}, `stamp` {text, pos, tone, tilt} (slams
+and shakes the picture; no digits), `date` {date (ISO), sub, pos top/center}.
+
+Entrances (`Transitions.tsx`): a layer's `enter` is cut, fade, flash, whip-left, whip-right, zoom, focus, shutter,
+glitch, drop, iris or slide-up. Left out, the kit picks one by the layer's kind (full-frame pictures whip, zoom, focus,
+glitch or flash; framed things drop, slide or open; the poster flashes) and never the same twice in a row; the
+video's first layer is a plain cut. A soft light leak drifts over every doc beat.
+
+Variety across the video (`renderer/timeline/build.py` `doc_video_problems`, owner 2026-11-20): a Short shows each
+picture once (the last beat may repeat the first picture), at least 3 device kinds (a document or headline among them),
+an overlay on every other beat; a long video at most twice a picture, never in neighbouring beats, 5 device kinds.
 
 Grades (`theme.tsx` `GRADES`): `doc`, `cold`, `warm`, `night`, `bleach`, `archive`, `bw`, `none`. Each grade is a tone
 curve for each channel (an SVG table, which works like a 1D LUT) followed by CSS adjustments.
