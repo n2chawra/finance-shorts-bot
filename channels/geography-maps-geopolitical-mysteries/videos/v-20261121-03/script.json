@@ -1,0 +1,1321 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 31846,
+ "story": "why_shaped",
+ "shape": "timeline",
+ "currency": "USD",
+ "style": {
+  "palette": "ocean",
+  "genre": "explorer",
+  "key": "B",
+  "bpm": 78,
+  "look": {
+   "stage": "flat",
+   "header": "sticky",
+   "holder": "sign",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Saint Helena or Pitcairn: which lonely island should we map next? Comment",
+ "feed_id": "2026-11-19-tristan-most-remote-island",
+ "facts": [
+  {
+   "label": "Distance from Tristan da Cunha to Saint Helena, its nearest inhabited neighbour",
+   "value": 2430,
+   "unit": "km",
+   "as_of": "2026-11-19",
+   "source": "Tristan da Cunha Government",
+   "url": "https://www.tristandacunha.org/?p=17",
+   "fixed": true
+  },
+  {
+   "label": "Distance from Tristan da Cunha to South Africa",
+   "value": 2816,
+   "unit": "km",
+   "as_of": "2026-11-19",
+   "source": "Tristan da Cunha Government",
+   "url": "https://www.tristandacunha.org/about-tristan/",
+   "fixed": true
+  },
+  {
+   "label": "Permanent inhabitants of the main island (September 2026)",
+   "value": 222,
+   "unit": "count",
+   "as_of": "2026-09-01",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Tristan_da_Cunha"
+  },
+  {
+   "label": "Year the United Kingdom annexed the islands",
+   "value": 1816,
+   "unit": "year",
+   "as_of": "1816-08-14",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Tristan_da_Cunha",
+   "fixed": true
+  },
+  {
+   "label": "Islanders evacuated after the 1961 eruption",
+   "value": 264,
+   "unit": "count",
+   "as_of": "1961-10-10",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Tristan_da_Cunha",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "Who lives *here*?",
+  "tag": "Tristan da Cunha",
+  "angle": "question"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Tristan da Cunha: the most remote island anyone lives on. Who settled here?",
+   "events": {
+    "tristan": {
+     "word": "Tristan"
+    },
+    "remote": {
+     "word": "remote"
+    },
+    "island": {
+     "word": "island"
+    },
+    "lives": {
+     "word": "lives"
+    },
+    "who": {
+     "word": "Who"
+    },
+    "settle": {
+     "word": "settled"
+    },
+    "here": {
+     "word": "here"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "island",
+     "gain": 0.5
+    },
+    {
+     "kind": "pin",
+     "at": "lives"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the globe diving to the South Atlantic, Tristan da Cunha alone in it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "island",
+      "size": "medium"
+     },
+     {
+      "at": "settle",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "tristan",
+      "what": "the globe already turning as the camera dives toward the South Atlantic"
+     },
+     {
+      "at": "remote",
+      "what": "the empty ocean fills the frame, rings of waves around one dot"
+     },
+     {
+      "at": "island",
+      "what": "the island's volcano outline draws itself and TRISTAN DA CUNHA writes on"
+     },
+     {
+      "at": "lives",
+      "what": "a pin drops onto the island with a ping"
+     },
+     {
+      "at": "who",
+      "what": "a big question mark bounces up beside it"
+     },
+     {
+      "at": "settle",
+      "what": "tiny house roofs pop on the island's north shore"
+     },
+     {
+      "at": "here",
+      "what": "the pin pulses"
+     }
+    ],
+    "things": [
+     "globe",
+     "south atlantic",
+     "tristan island",
+     "name label",
+     "pin",
+     "question mark",
+     "houses"
+    ]
+   }
+  },
+  {
+   "id": "far",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Its nearest neighbour, Saint Helena, sits {fact1} to the north, and South Africa is {fact2} away to the east.",
+   "events": {
+    "nearest": {
+     "word": "nearest"
+    },
+    "neighbour": {
+     "word": "neighbour"
+    },
+    "saint": {
+     "word": "Saint"
+    },
+    "helena": {
+     "word": "Helena"
+    },
+    "sits": {
+     "word": "sits"
+    },
+    "north": {
+     "word": "north"
+    },
+    "south": {
+     "word": "South"
+    },
+    "africa": {
+     "word": "Africa"
+    },
+    "is": {
+     "word": "is"
+    },
+    "away": {
+     "word": "away"
+    },
+    "east": {
+     "word": "east"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "saint"
+    },
+    {
+     "kind": "scribble",
+     "at": "africa",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Far",
+    "place": "on the map: the South Atlantic from Saint Helena to Cape Town",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "sec": 2.9,
+      "size": "medium"
+     },
+     {
+      "at": "north",
+      "size": "wide"
+     },
+     {
+      "sec": 6.2,
+      "size": "wide"
+     },
+     {
+      "at": "east",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nearest",
+      "what": "the camera pulls back from Tristan"
+     },
+     {
+      "at": "neighbour",
+      "what": "a ruler line starts north from Tristan"
+     },
+     {
+      "at": "saint",
+      "what": "Saint Helena's island pops up far to the north"
+     },
+     {
+      "at": "helena",
+      "what": "its name writes on"
+     },
+     {
+      "at": "sits",
+      "what": "the distance sign rises beside the ruler"
+     },
+     {
+      "at": "north",
+      "what": "the ruler's end pulses at Saint Helena"
+     },
+     {
+      "at": "south",
+      "what": "South Africa traces itself and fills with its flag"
+     },
+     {
+      "at": "africa",
+      "what": "a second ruler line runs east toward Cape Town"
+     },
+     {
+      "at": "is",
+      "what": "the second distance sign rises"
+     },
+     {
+      "at": "away",
+      "what": "Cape Town's pin drops"
+     },
+     {
+      "at": "east",
+      "what": "the camera settles wide on both lines"
+     }
+    ],
+    "things": [
+     "tristan island",
+     "saint helena",
+     "ruler lines",
+     "distance signs",
+     "south africa"
+    ],
+    "fig": {
+     "helena": "{fact1}",
+     "africa": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "boat",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "There's no airport and no runway. To get here, you sail for about a week from Cape Town.",
+   "events": {
+    "airport": {
+     "word": "airport"
+    },
+    "runway": {
+     "word": "runway"
+    },
+    "get": {
+     "word": "get"
+    },
+    "sail": {
+     "word": "sail"
+    },
+    "week": {
+     "word": "week"
+    },
+    "cape": {
+     "word": "Cape"
+    },
+    "town": {
+     "word": "Town"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "airport"
+    },
+    {
+     "kind": "paper",
+     "at": "sail",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Boat",
+    "place": "on the map: Cape Town's harbour and the sea lane to Tristan",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sail",
+      "size": "wide"
+     },
+     {
+      "at": "town",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "airport",
+      "what": "a plane icon flies toward the island and is stamped out with a red cross"
+     },
+     {
+      "at": "runway",
+      "what": "a runway strip on the island is crossed out"
+     },
+     {
+      "at": "get",
+      "what": "the camera swings east to Cape Town"
+     },
+     {
+      "at": "sail",
+      "what": "a supply ship leaves the Cape Town pin"
+     },
+     {
+      "at": "week",
+      "what": "a calendar sign flips its days as the ship sails"
+     },
+     {
+      "at": "cape",
+      "what": "the ship's wake draws across the ocean"
+     },
+     {
+      "at": "town",
+      "what": "the ship reaches the island"
+     }
+    ],
+    "things": [
+     "crossed-out plane",
+     "runway",
+     "cape town pin",
+     "supply ship",
+     "calendar sign",
+     "sea lane"
+    ]
+   }
+  },
+  {
+   "id": "people",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Yet {fact3} people live here, in one village squeezed between the sea and a volcano, growing potatoes and fishing for lobster.",
+   "events": {
+    "yet": {
+     "word": "Yet"
+    },
+    "live": {
+     "word": "live"
+    },
+    "village": {
+     "word": "village"
+    },
+    "squeezed": {
+     "word": "squeezed"
+    },
+    "volcano": {
+     "word": "volcano"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "potatoes": {
+     "word": "potatoes"
+    },
+    "lobster": {
+     "word": "lobster"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "live"
+    }
+   ],
+   "params": {
+    "component": "People",
+    "place": "on the map: Tristan close, its north shore and the volcano",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "volcano",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "yet",
+      "what": "the island fills the middle of the frame, its cone rising"
+     },
+     {
+      "at": "live",
+      "what": "a village sign plants on the north shore with the head count"
+     },
+     {
+      "at": "village",
+      "what": "little houses pop along the strip of flat land"
+     },
+     {
+      "at": "squeezed",
+      "what": "the sea and the cliffs press in from both sides"
+     },
+     {
+      "at": "volcano",
+      "what": "the volcano's peak puffs a small cloud"
+     },
+     {
+      "at": "sea",
+      "what": "the surf rings pulse in against the shore"
+     },
+     {
+      "at": "potatoes",
+      "what": "potato patches stripe the slope behind the village"
+     },
+     {
+      "at": "lobster",
+      "what": "a fishing boat with a lobster pot bobs off the shore"
+     }
+    ],
+    "things": [
+     "tristan close",
+     "volcano",
+     "village houses",
+     "head count sign",
+     "cliffs",
+     "potato patches",
+     "lobster boat"
+    ],
+    "fig": {
+     "people": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "clue",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So why here at all? The clue is on that neighbour to the north.",
+   "events": {
+    "why": {
+     "word": "why"
+    },
+    "all": {
+     "word": "all"
+    },
+    "clue": {
+     "word": "clue"
+    },
+    "neighbour": {
+     "word": "neighbour"
+    },
+    "north": {
+     "word": "north"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "clue",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Clue",
+    "place": "on the map: the sea lane north from Tristan to Saint Helena",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "north",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "why",
+      "what": "a question mark hops off the island"
+     },
+     {
+      "at": "all",
+      "what": "the camera starts gliding north over the ocean"
+     },
+     {
+      "at": "clue",
+      "what": "a magnifying glass slides over the sea"
+     },
+     {
+      "at": "neighbour",
+      "what": "Saint Helena comes into the lens"
+     },
+     {
+      "at": "north",
+      "what": "Saint Helena glows under the glass"
+     }
+    ],
+    "things": [
+     "tristan island",
+     "magnifying glass",
+     "saint helena",
+     "question mark"
+    ]
+   }
+  },
+  {
+   "id": "prison",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "After losing at Waterloo, Napoleon, the French emperor who had ruled much of Europe, was locked away on Saint Helena, a speck of rock far from Europe.",
+   "events": {
+    "losing": {
+     "word": "losing"
+    },
+    "waterloo": {
+     "word": "Waterloo"
+    },
+    "napoleon": {
+     "word": "Napoleon"
+    },
+    "locked": {
+     "word": "locked"
+    },
+    "saint": {
+     "word": "Saint"
+    },
+    "speck": {
+     "word": "speck"
+    },
+    "europe": {
+     "word": "Europe"
+    },
+    "emperor": {
+     "word": "emperor"
+    },
+    "ruled": {
+     "word": "ruled"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "waterloo"
+    },
+    {
+     "kind": "paper",
+     "at": "locked",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Prison",
+    "place": "on the map: Europe at Waterloo down the Atlantic to Saint Helena",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "napoleon",
+      "size": "medium"
+     },
+     {
+      "at": "speck",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "losing",
+      "what": "Europe on the map, a crossed swords mark at Waterloo"
+     },
+     {
+      "at": "waterloo",
+      "what": "the swords break and Belgium's border traces"
+     },
+     {
+      "at": "napoleon",
+      "what": "Napoleon (his real face) appears on the map at Waterloo"
+     },
+     {
+      "at": "locked",
+      "what": "a British ship takes him and sails south down the Atlantic"
+     },
+     {
+      "at": "saint",
+      "what": "the ship reaches Saint Helena"
+     },
+     {
+      "at": "speck",
+      "what": "Napoleon stands on the tiny island behind a fence"
+     },
+     {
+      "at": "europe",
+      "what": "the camera pulls back to show Europe far away"
+     },
+     {
+      "at": "emperor",
+      "what": "a crown pops over his head"
+     },
+     {
+      "at": "ruled",
+      "what": "France and its neighbours tint blue"
+     }
+    ],
+    "things": [
+     "waterloo swords",
+     "belgium",
+     "napoleon photo head",
+     "british ship",
+     "saint helena",
+     "fence"
+    ]
+   }
+  },
+  {
+   "id": "fear",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Britain feared the French would use nearly empty Tristan to rescue him. So in {fact4}, it sent soldiers and claimed the island.",
+   "events": {
+    "britain": {
+     "word": "Britain"
+    },
+    "french": {
+     "word": "French"
+    },
+    "empty": {
+     "word": "empty"
+    },
+    "rescue": {
+     "word": "rescue"
+    },
+    "soldiers": {
+     "word": "soldiers"
+    },
+    "claimed": {
+     "word": "claimed"
+    },
+    "island": {
+     "word": "island"
+    },
+    "him": {
+     "word": "him"
+    },
+    "sent": {
+     "word": "sent"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "claimed"
+    }
+   ],
+   "params": {
+    "component": "Fear",
+    "place": "on the map: Saint Helena and Tristan, the sea between them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "rescue",
+      "size": "wide"
+     },
+     {
+      "at": "claimed",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "britain",
+      "what": "the Union flag pops over Saint Helena"
+     },
+     {
+      "at": "french",
+      "what": "a French ship appears in the open sea"
+     },
+     {
+      "at": "empty",
+      "what": "Tristan sits almost bare, one lone hut on it"
+     },
+     {
+      "at": "rescue",
+      "what": "a dashed red route runs from Tristan up to Saint Helena, the French ship on it"
+     },
+     {
+      "at": "soldiers",
+      "what": "a British ship sails to Tristan, redcoats on deck"
+     },
+     {
+      "at": "claimed",
+      "what": "a Union flag plants on Tristan with the year on a sign"
+     },
+     {
+      "at": "island",
+      "what": "the dashed rescue route snaps and fades"
+     },
+     {
+      "at": "him",
+      "what": "Napoleon's head appears on Saint Helena"
+     },
+     {
+      "at": "sent",
+      "what": "the British ship sets off from the Cape"
+     }
+    ],
+    "things": [
+     "saint helena",
+     "tristan",
+     "french ship",
+     "dashed rescue route",
+     "british ship",
+     "union flag",
+     "year sign"
+    ],
+    "fig": {
+     "year": "{fact4}"
+    }
+   }
+  },
+  {
+   "id": "stay",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "When the soldiers left, one corporal, William Glass, asked to stay with his family. Sailors and settlers joined them, and their village got a grand name: Edinburgh of the Seven Seas.",
+   "events": {
+    "soldiers": {
+     "word": "soldiers"
+    },
+    "left": {
+     "word": "left"
+    },
+    "corporal": {
+     "word": "corporal"
+    },
+    "glass": {
+     "word": "Glass"
+    },
+    "stay": {
+     "word": "stay"
+    },
+    "sailors": {
+     "word": "Sailors"
+    },
+    "settlers": {
+     "word": "settlers"
+    },
+    "grand": {
+     "word": "grand"
+    },
+    "edinburgh": {
+     "word": "Edinburgh"
+    },
+    "seas": {
+     "word": "Seas"
+    },
+    "family": {
+     "word": "family"
+    },
+    "joined": {
+     "word": "joined"
+    },
+    "village": {
+     "word": "village"
+    },
+    "name": {
+     "word": "name"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "stay"
+    }
+   ],
+   "params": {
+    "component": "Stay",
+    "place": "on the map: Tristan's north shore, ships leaving and arriving",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "glass",
+      "size": "close"
+     },
+     {
+      "at": "settlers",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "soldiers",
+      "what": "the garrison's ship loads up at the shore"
+     },
+     {
+      "at": "left",
+      "what": "it sails away north off the frame"
+     },
+     {
+      "at": "corporal",
+      "what": "one small figure stays on the shore"
+     },
+     {
+      "at": "glass",
+      "what": "William Glass, his wife and children stand by a hut, a name label writes on"
+     },
+     {
+      "at": "stay",
+      "what": "a hut pops up beside them"
+     },
+     {
+      "at": "sailors",
+      "what": "small boats sail in from the west"
+     },
+     {
+      "at": "settlers",
+      "what": "more huts pop along the shore"
+     },
+     {
+      "at": "grand",
+      "what": "a signpost plants in the village"
+     },
+     {
+      "at": "edinburgh",
+      "what": "EDINBURGH writes on the signpost"
+     },
+     {
+      "at": "seas",
+      "what": "OF THE SEVEN SEAS writes under it"
+     },
+     {
+      "at": "family",
+      "what": "his wife and children step up beside him"
+     },
+     {
+      "at": "joined",
+      "what": "the boats land at the shore"
+     },
+     {
+      "at": "village",
+      "what": "the huts' roofs brighten"
+     },
+     {
+      "at": "name",
+      "what": "the camera eases back to the signpost"
+     }
+    ],
+    "things": [
+     "garrison ship",
+     "glass family",
+     "hut",
+     "small boats",
+     "more huts",
+     "village signpost"
+    ]
+   }
+  },
+  {
+   "id": "erupt",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then the volcano erupted right beside the village, and all {fact5} islanders were shipped to England.",
+   "events": {
+    "volcano": {
+     "word": "volcano"
+    },
+    "erupted": {
+     "word": "erupted"
+    },
+    "islanders": {
+     "word": "islanders"
+    },
+    "shipped": {
+     "word": "shipped"
+    },
+    "england": {
+     "word": "England"
+    },
+    "beside": {
+     "word": "beside"
+    },
+    "village": {
+     "word": "village"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "erupted"
+    }
+   ],
+   "params": {
+    "component": "Erupt",
+    "place": "on the map: Tristan erupting, then the long route north to England",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "shipped",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "volcano",
+      "what": "the island shakes"
+     },
+     {
+      "at": "erupted",
+      "what": "lava and a tall ash cloud burst from the side of the cone"
+     },
+     {
+      "at": "islanders",
+      "what": "a sign with the number of islanders lifts off the village"
+     },
+     {
+      "at": "shipped",
+      "what": "a ship carrying the islanders sails north up the Atlantic"
+     },
+     {
+      "at": "england",
+      "what": "the route lands on England, a pin drops"
+     },
+     {
+      "at": "beside",
+      "what": "the lava runs down toward the village houses"
+     },
+     {
+      "at": "village",
+      "what": "the houses shake as the lava nears"
+     },
+     {
+      "at": "all",
+      "what": "the islanders gather on the shore"
+     }
+    ],
+    "things": [
+     "volcano",
+     "lava",
+     "ash cloud",
+     "islanders sign",
+     "evacuation ship",
+     "england pin"
+    ],
+    "fig": {
+     "islanders": "{fact5}"
+    }
+   }
+  },
+  {
+   "id": "back",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "But in England most of them missed home, and they chose to sail all the way back.",
+   "events": {
+    "most": {
+     "word": "most"
+    },
+    "chose": {
+     "word": "chose"
+    },
+    "sail": {
+     "word": "sail"
+    },
+    "back": {
+     "word": "back"
+    },
+    "missed": {
+     "word": "missed"
+    },
+    "home": {
+     "word": "home"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "back",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Back",
+    "place": "on the map: England down the Atlantic to Tristan",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "back",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "most",
+      "what": "the ship turns at England"
+     },
+     {
+      "at": "chose",
+      "what": "houses on the map of England stay grey"
+     },
+     {
+      "at": "sail",
+      "what": "the ship sails the whole Atlantic south"
+     },
+     {
+      "at": "back",
+      "what": "it reaches Tristan and the village lights come back on"
+     },
+     {
+      "at": "missed",
+      "what": "a grey cloud rains over the English houses"
+     },
+     {
+      "at": "home",
+      "what": "Tristan glows far to the south"
+     }
+    ],
+    "things": [
+     "england",
+     "return ship",
+     "atlantic route",
+     "village lights"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "So {fact3} people live on the loneliest island on Earth because one prisoner was once locked up next door.",
+   "events": {
+    "people": {
+     "word": "people"
+    },
+    "loneliest": {
+     "word": "loneliest"
+    },
+    "earth": {
+     "word": "Earth"
+    },
+    "prisoner": {
+     "word": "prisoner"
+    },
+    "locked": {
+     "word": "locked"
+    },
+    "door": {
+     "word": "door"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "locked",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: Saint Helena and Tristan together, the line between them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "prisoner",
+      "size": "close"
+     },
+     {
+      "at": "door",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "people",
+      "what": "the islanders stand along the shore, the head count sign beside them"
+     },
+     {
+      "at": "loneliest",
+      "what": "Tristan's village glows in the empty ocean"
+     },
+     {
+      "at": "earth",
+      "what": "the camera rises over the South Atlantic"
+     },
+     {
+      "at": "prisoner",
+      "what": "Napoleon's face lights up on Saint Helena far to the north"
+     },
+     {
+      "at": "locked",
+      "what": "a bright line ties Saint Helena to Tristan"
+     },
+     {
+      "at": "door",
+      "what": "a door sign NEXT DOOR stamps on the line"
+     }
+    ],
+    "things": [
+     "tristan village",
+     "islanders",
+     "napoleon on saint helena",
+     "tie line",
+     "distance sign"
+    ],
+    "fig": {
+     "people": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Saint Helena or Pitcairn: which lonely island should we map next? Tell me below, and look again at Tristan da Cunha.",
+   "events": {
+    "helena": {
+     "word": "Helena"
+    },
+    "pitcairn": {
+     "word": "Pitcairn"
+    },
+    "lonely": {
+     "word": "lonely"
+    },
+    "map": {
+     "word": "map"
+    },
+    "below": {
+     "word": "below"
+    },
+    "again": {
+     "word": "again"
+    },
+    "tristan": {
+     "word": "Tristan"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "pitcairn"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the camera rising to the globe and diving back to Tristan",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pitcairn",
+      "size": "wide"
+     },
+     {
+      "at": "tristan",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "helena",
+      "what": "Saint Helena's pin pulses"
+     },
+     {
+      "at": "pitcairn",
+      "what": "the camera swings west and a Pitcairn pin pops far off in the Pacific"
+     },
+     {
+      "at": "lonely",
+      "what": "both pins bob"
+     },
+     {
+      "at": "map",
+      "what": "the map turns into the globe"
+     },
+     {
+      "at": "below",
+      "what": "a comment bubble pops beside the globe"
+     },
+     {
+      "at": "again",
+      "what": "the globe turns back toward the South Atlantic"
+     },
+     {
+      "at": "tristan",
+      "what": "Tristan's outline draws itself again, as in the first frame"
+     }
+    ],
+    "things": [
+     "saint helena pin",
+     "pitcairn pin",
+     "globe",
+     "comment bubble",
+     "tristan outline"
+    ]
+   }
+  }
+ ]
+}

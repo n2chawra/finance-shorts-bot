@@ -1,0 +1,151 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 31846,
+  "duration_sec": 71,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "explorer",
+    "key": "B",
+    "bpm": 78,
+    "look": {
+      "stage": "flat",
+      "header": "sticky",
+      "holder": "sign",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Tristan da Cunha: the most remote island anyone lives on. Who settled here?",
+        "start": 0.3,
+        "seconds": 3.46,
+        "window": 4.1,
+        "fill": 0.844
+      },
+      {
+        "scene": "far",
+        "text": "Its nearest neighbour, Saint Helena, sits 2,430 km to the north, and South Africa is 2,816 km away to the east.",
+        "start": 4.4,
+        "seconds": 7.68,
+        "window": 8.33,
+        "fill": 0.922
+      },
+      {
+        "scene": "boat",
+        "text": "There's no airport and no runway. To get here, you sail for about a week from Cape Town.",
+        "start": 12.73,
+        "seconds": 3.95,
+        "window": 4.63,
+        "fill": 0.853
+      },
+      {
+        "scene": "people",
+        "text": "Yet 222 people live here, in one village squeezed between the sea and a volcano, growing potatoes and fishing for lobster.",
+        "start": 17.37,
+        "seconds": 6.19,
+        "window": 6.83,
+        "fill": 0.906
+      },
+      {
+        "scene": "clue",
+        "text": "So why here at all? The clue is on that neighbour to the north.",
+        "start": 24.2,
+        "seconds": 2.53,
+        "window": 3.17,
+        "fill": 0.798
+      },
+      {
+        "scene": "prison",
+        "text": "After losing at Waterloo, Napoleon, the French emperor who had ruled much of Europe, was locked away on Saint Helena, a speck of rock far from Europe.",
+        "start": 27.37,
+        "seconds": 6.42,
+        "window": 7.0,
+        "fill": 0.917
+      },
+      {
+        "scene": "fear",
+        "text": "Britain feared the French would use nearly empty Tristan to rescue him. So in 1816, it sent soldiers and claimed the island.",
+        "start": 34.37,
+        "seconds": 5.72,
+        "window": 6.37,
+        "fill": 0.898
+      },
+      {
+        "scene": "stay",
+        "text": "When the soldiers left, one corporal, William Glass, asked to stay with his family. Sailors and settlers joined them, and their village got a grand name: Edinburgh of the Seven Seas.",
+        "start": 40.73,
+        "seconds": 7.83,
+        "window": 8.5,
+        "fill": 0.921
+      },
+      {
+        "scene": "erupt",
+        "text": "Then the volcano erupted right beside the village, and all 264 islanders were shipped to England.",
+        "start": 49.23,
+        "seconds": 4.87,
+        "window": 5.53,
+        "fill": 0.881
+      },
+      {
+        "scene": "back",
+        "text": "But in England most of them missed home, and they chose to sail all the way back.",
+        "start": 54.77,
+        "seconds": 3.51,
+        "window": 4.17,
+        "fill": 0.842
+      },
+      {
+        "scene": "payoff",
+        "text": "So 222 people live on the loneliest island on Earth because one prisoner was once locked up next door.",
+        "start": 58.93,
+        "seconds": 5.18,
+        "window": 5.83,
+        "fill": 0.889
+      },
+      {
+        "scene": "loop",
+        "text": "Saint Helena or Pitcairn: which lonely island should we map next? Tell me below, and look again at Tristan da Cunha.",
+        "start": 64.77,
+        "seconds": 4.99,
+        "window": 5.63,
+        "fill": 0.886
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0,
+    "lufs": -14.7,
+    "music_under_voice_db": 30.8
+  },
+  "craft_problems": [
+    "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 6.107,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

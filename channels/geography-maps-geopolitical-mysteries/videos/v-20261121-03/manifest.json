@@ -1,0 +1,434 @@
+{
+  "id": "v-20261121-03",
+  "createdAt": "2026-11-20T23:50:53.893053+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why does anyone live on Tristan da Cunha?",
+    "category": "islands",
+    "reach": "global",
+    "feed_id": "2026-11-19-tristan-most-remote-island"
+  },
+  "title": "Who would settle Tristan da Cunha?",
+  "description": "Who would choose to live on Tristan da Cunha, the most remote island anyone lives on?\nTristan da Cunha: no airport, a volcano, and a famous prisoner on the island next door.\nSources: Tristan da Cunha Government, Wikipedia (Sep 2026). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#TristanDaCunha",
+    "#Geography",
+    "#Maps",
+    "#Napoleon"
+  ],
+  "hookStyle": "question",
+  "cta": "Saint Helena or Pitcairn: which lonely island should we map next? Comment",
+  "seed": 31846,
+  "style": {
+    "palette": "ocean",
+    "genre": "explorer",
+    "key": "B",
+    "bpm": 78,
+    "look": {
+      "stage": "flat",
+      "header": "sticky",
+      "holder": "sign",
+      "entrance": "slide"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Tristan da Cunha: the most remote island anyone lives on. Who settled here?",
+        "start": 0.3,
+        "seconds": 3.46,
+        "window": 4.1,
+        "fill": 0.844
+      },
+      {
+        "scene": "far",
+        "text": "Its nearest neighbour, Saint Helena, sits 2,430 km to the north, and South Africa is 2,816 km away to the east.",
+        "start": 4.4,
+        "seconds": 7.68,
+        "window": 8.33,
+        "fill": 0.922
+      },
+      {
+        "scene": "boat",
+        "text": "There's no airport and no runway. To get here, you sail for about a week from Cape Town.",
+        "start": 12.73,
+        "seconds": 3.95,
+        "window": 4.63,
+        "fill": 0.853
+      },
+      {
+        "scene": "people",
+        "text": "Yet 222 people live here, in one village squeezed between the sea and a volcano, growing potatoes and fishing for lobster.",
+        "start": 17.37,
+        "seconds": 6.19,
+        "window": 6.83,
+        "fill": 0.906
+      },
+      {
+        "scene": "clue",
+        "text": "So why here at all? The clue is on that neighbour to the north.",
+        "start": 24.2,
+        "seconds": 2.53,
+        "window": 3.17,
+        "fill": 0.798
+      },
+      {
+        "scene": "prison",
+        "text": "After losing at Waterloo, Napoleon, the French emperor who had ruled much of Europe, was locked away on Saint Helena, a speck of rock far from Europe.",
+        "start": 27.37,
+        "seconds": 6.42,
+        "window": 7.0,
+        "fill": 0.917
+      },
+      {
+        "scene": "fear",
+        "text": "Britain feared the French would use nearly empty Tristan to rescue him. So in 1816, it sent soldiers and claimed the island.",
+        "start": 34.37,
+        "seconds": 5.72,
+        "window": 6.37,
+        "fill": 0.898
+      },
+      {
+        "scene": "stay",
+        "text": "When the soldiers left, one corporal, William Glass, asked to stay with his family. Sailors and settlers joined them, and their village got a grand name: Edinburgh of the Seven Seas.",
+        "start": 40.73,
+        "seconds": 7.83,
+        "window": 8.5,
+        "fill": 0.921
+      },
+      {
+        "scene": "erupt",
+        "text": "Then the volcano erupted right beside the village, and all 264 islanders were shipped to England.",
+        "start": 49.23,
+        "seconds": 4.87,
+        "window": 5.53,
+        "fill": 0.881
+      },
+      {
+        "scene": "back",
+        "text": "But in England most of them missed home, and they chose to sail all the way back.",
+        "start": 54.77,
+        "seconds": 3.51,
+        "window": 4.17,
+        "fill": 0.842
+      },
+      {
+        "scene": "payoff",
+        "text": "So 222 people live on the loneliest island on Earth because one prisoner was once locked up next door.",
+        "start": 58.93,
+        "seconds": 5.18,
+        "window": 5.83,
+        "fill": 0.889
+      },
+      {
+        "scene": "loop",
+        "text": "Saint Helena or Pitcairn: which lonely island should we map next? Tell me below, and look again at Tristan da Cunha.",
+        "start": 64.77,
+        "seconds": 4.99,
+        "window": 5.63,
+        "fill": 0.886
+      }
+    ]
+  },
+  "durationSec": 71,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0,
+    "lufs": -14.7,
+    "music_under_voice_db": 30.8
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of 5 lengthened beats, all confirmed. people: potatoes (Wikipedia Potato Patches: mainly potatoes grown for self-sufficiency) and lobster (MSC: rock lobster is the main income). prison: Napoleon was the French emperor and ruled much of Europe. stay: the settlement was renamed Edinburgh of the Seven Seas after Prince Alfred's 1867 visit (Wikipedia). erupt: a parasitic cone very close to the settlement (Wikipedia). back: Hansard 19 Apr 1962, a Colonial Office minister: 'a number of them feel homesick and want to go back'; most returned in 1963. Other beats unchanged from the earlier passes."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Third round: all 12 beats on the map, full TRISTAN DA CUNHA name from frame 0 to the loop, figures on signs (2,430/2,816 km, 222 PEOPLE, 1816), CAPE TOWN, SAINT HELENA and TRISTAN labels now clear of ships, Napoleon, routes and captions; 'SAINT HELE'/'TRISTA' at 25-26 s are mid type-on reveals (MapLabel type over 12-14 frames); no layout problems, audio -1/-16 dB, 71 s in the channel's 60-80 s arm."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:21:37.103620+00:00",
+      "finishedAt": "2026-11-20T23:21:37.103620+00:00",
+      "notes": [
+        "style.bpm must be 72–80 for explorer",
+        "shape 'reveal' was used in the last 3 videos: pick another, or invent one the topic needs"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:21:41.817818+00:00",
+      "finishedAt": "2026-11-20T23:21:41.817818+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:23:26.639741+00:00",
+      "finishedAt": "2026-11-20T23:23:26.639741+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "beat 'far' (promise) already says the payoff's figure {fact1}: hold it back for the payoff. The opening names the subject and asks the question; once the answer is out, viewers leave at 5-6 s"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:23:34.314624+00:00",
+      "finishedAt": "2026-11-20T23:23:34.314624+00:00",
+      "notes": [
+        "beat 'payoff': params.camera key at 'away' is not one of this beat's events"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:23:39.096521+00:00",
+      "finishedAt": "2026-11-20T23:23:39.096521+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:24:43.095980+00:00",
+      "finishedAt": "2026-11-20T23:24:43.095980+00:00",
+      "notes": [
+        "All 5 facts confirmed: 222 inhabitants (Sep 2026), 1816 annexation to stop a Napoleon rescue base, 264 evacuated in 1961 (Wikipedia page fetched); 2,430 km to Saint Helena and 2,816 km to South Africa via web search showing tristandacunha.org's own figures (site unreachable here; Wikipedia now says ~2,437/2,787 km). Verify items OK: garrison purpose confirmed, hook speaks no figure. Glass was a Royal Artillery corporal with wife and children; no airstrip; six-day sail; most returned 1963; disclaimer ends description. Note: 'empty Tristan' in the fear beat simplifies, since one or two survivors of Lambert's 1810 party (Thomas Currie) were still there in 1816; 'nearly empty' would be exact."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:25:10.575023+00:00",
+      "finishedAt": "2026-11-20T23:25:10.575023+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:25:18.495247+00:00",
+      "finishedAt": "2026-11-20T23:25:18.495247+00:00",
+      "notes": [
+        "Re-review of beat 'fear' only: 'nearly empty Tristan' now matches the record (only a survivor or two of Lambert's 1810 party were there in 1816); 1816 annexation to keep the island from being used to free Napoleon confirmed on Wikipedia; the rest is unchanged from the earlier pass."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:29:54.828381+00:00",
+      "finishedAt": "2026-11-20T23:31:17.764209+00:00",
+      "notes": [
+        "text 'SAINT HELENA' at 58.5 s runs outside the frame",
+        "2.2 s with nothing new on screen in beat 'fear' (at most 1.8 s): add an action on the phrase being said there",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the turn starts at 49% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:31:40.173912+00:00",
+      "finishedAt": "2026-11-20T23:31:40.173912+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:32:39.326869+00:00",
+      "finishedAt": "2026-11-20T23:32:39.326869+00:00",
+      "notes": [
+        "Re-review of 5 lengthened beats, all confirmed. people: potatoes (Wikipedia Potato Patches: mainly potatoes grown for self-sufficiency) and lobster (MSC: rock lobster is the main income). prison: Napoleon was the French emperor and ruled much of Europe. stay: the settlement was renamed Edinburgh of the Seven Seas after Prince Alfred's 1867 visit (Wikipedia). erupt: a parasitic cone very close to the settlement (Wikipedia). back: Hansard 19 Apr 1962, a Colonial Office minister: 'a number of them feel homesick and want to go back'; most returned in 1963. Other beats unchanged from the earlier passes."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:33:53.078753+00:00",
+      "finishedAt": "2026-11-20T23:34:56.143835+00:00",
+      "notes": [
+        "71 s, ocean/explorer (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:35:55.067100+00:00",
+      "finishedAt": "2026-11-20T23:36:49.914157+00:00",
+      "notes": [
+        "71 s, ocean/explorer (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:36:59.661848+00:00",
+      "finishedAt": "2026-11-20T23:37:51.540599+00:00",
+      "notes": [
+        "71 s, ocean/explorer (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:38:41.988554+00:00",
+      "finishedAt": "2026-11-20T23:38:41.988554+00:00",
+      "notes": [
+        "[scene] 0.0 s (first frame) and 70.0/70.7 s (loop end): the hook beat's island label is clipped to 'TRISTAN D' while the camera is wide, so the first frame does not fully name the subject; the full 'TRISTAN DA CUNHA' only appears by 2.9 s. Show the whole name from frame 0 (hook / loop beats, remotion/src/videos/v-20261121-03)",
+        "[scene] 15.0 s (boat beat): 'CAPE TOWN' label runs off the right edge ('CAPE TOWI'); keep the label inside the frame",
+        "[scene] 26.1 s (clue beat): the magnifier covers the 'SAINT HELENA' label ('SAINT HELE'), and the 'TRISTAN' label sits under the caption words at the bottom",
+        "[scene] 38.5 s (fear beat) and 62.7 s (payoff beat): Napoleon's figure and the ship stand on top of the 'SAINT HELENA' label ('SAI T HELENA', 'SAINT ELENA'); at 62.7 s the 'TRISTAN' label also touches the caption. Move the figure off the label",
+        "[script] 5.0 s (far beat), 25.0 s (clue beat) and 60.0 s (payoff beat): near-empty frames: a tiny island marker or a lone '?' on open ocean, with nothing happening for that part of the line. Start the far beat on the route lines, give the clue beat its magnifier/route from the start, and frame the payoff at medium on Saint Helena + Tristan with the line between them"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:39:39.615738+00:00",
+      "finishedAt": "2026-11-20T23:40:33.496834+00:00",
+      "notes": [
+        "71 s, ocean/explorer (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:41:04.159612+00:00",
+      "finishedAt": "2026-11-20T23:41:04.159612+00:00",
+      "notes": [
+        "[scene] 15.7 s (boat beat, probe f00470): the Cape Town steamer sits on top of the 'CAPE TOWN' label, so it reads 'CAP TOWN'; keep the ship (and its route) clear of the label",
+        "[scene] 26.1 s (clue beat, probe f00783): the magnifier's handle now covers the moved 'SAINT HELENA' label below the island, so it reads 'SAI...' ; put the label where the lens and handle are not",
+        "[scene] 38.5 s (fear beat, probe f01156): the red dashed route from Tristan still crosses the 'SAINT HELENA' label (through 'IN'), and the French ship sits right over the island; end the route before the label or move the label",
+        "[scene] 62.7 s (payoff beat, probe f01881): Napoleon still stands over the start of the 'SAINT HELENA' label (reads 'S INT HELENA'); move him further left or the label right"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:42:00.608442+00:00",
+      "finishedAt": "2026-11-20T23:42:53.384347+00:00",
+      "notes": [
+        "71 s, ocean/explorer (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:43:06.851283+00:00",
+      "finishedAt": "2026-11-20T23:43:57.196798+00:00",
+      "notes": [
+        "71 s, ocean/explorer (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:44:18.390087+00:00",
+      "finishedAt": "2026-11-20T23:44:18.390087+00:00",
+      "notes": [
+        "Third round: all 12 beats on the map, full TRISTAN DA CUNHA name from frame 0 to the loop, figures on signs (2,430/2,816 km, 222 PEOPLE, 1816), CAPE TOWN, SAINT HELENA and TRISTAN labels now clear of ships, Napoleon, routes and captions; 'SAINT HELE'/'TRISTA' at 25-26 s are mid type-on reveals (MapLabel type over 12-14 frames); no layout problems, audio -1/-16 dB, 71 s in the channel's 60-80 s arm."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:44:27.487557+00:00",
+      "finishedAt": "2026-11-20T23:50:04.902019+00:00",
+      "notes": [
+        "71 s, ocean/explorer, peak -1.0 dB, mean -16.0 dB",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 3 questions in about 86 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:50:53.893181+00:00",
+      "finishedAt": "2026-11-20T23:50:53.893181+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261121-03",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261121-03"
+  }
+}
