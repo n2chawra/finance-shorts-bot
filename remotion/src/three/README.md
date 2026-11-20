@@ -59,6 +59,46 @@ Demos (one still each, `--gl=angle`, 30–90 s on the PC with a cold bundle): `T
 `Thumb3DDemoHero` (P2), `Thumb3DDemoScale` (P3 with a loupe). Stills in
 `channels/how-tech-and-ai-actually-work-chips-ai-p/samples/thumb3d/`.
 
+## The disaster kit (`disaster/`, disasters channel; 2026-11-20)
+
+For `channels/disasters-and-engineering-failures-expla/` (build spec: its
+`style-study/2026-11-20-references.md` §3, §8, §9). Import from `../three` like the rest.
+
+- **Looks** (`look.tsx`): `<DisasterStage look="nightGrid | blueprint | clay | chalk | storm | crossSection">`
+  wraps Stage3D with the look's backdrop, floor, fog, lights and look pass, and gives every piece a
+  painter (`useDLook().paint(role, colour)`): Clay Studio / Engineer's Cross-Section turn every role into
+  warm clay with one accent (`clayMat()`: matte, sheen, a cheap sky-facing AO term). `RAMP` /
+  `rampColor()`: grey → amber → red; red always means the failure.
+- **Vehicles** (`Vehicles.tsx`): `Jet` (length, sweep, `engines` underWing / rear / tri, `perWing`, `tail`
+  conventional / T, windows, girth, livery, gear; nose +x; `jetTailplaneAt()` gives the hinge), `Train`
+  + `Track` (power car `nose` loco / highSpeed / cab, n carriages, bogies with turning wheels, pantograph,
+  per-car `poses` for a derailment), `Ship` (`hull` ferry / cargo / liner, decks, funnels, seeded
+  containers, `bowDoors` 0–1 as clamshell or visor; waterline y=0, bow +x).
+- **Structures** (`Structures.tsx`): `GirderBridge`, `TrussBridge` (spans, piers wall / columns),
+  `Dam` (gravity / arch, `level` of the reservoir, overtopping sheet above 1), `Building` (floors, bays,
+  skin frame / glass / atrium, hung `walkways`), `Ride` (arm or coaster segment), `Member` (a strut a→b).
+- **Every hero has `wrap` hooks** on the part that fails (`wrap.tailplane`, `wrapSpan[1]`,
+  `wrapWalkway[4]`, `wrapArm`, `wrap[i]` per carriage…): put a `Failure3D` there.
+- **Failure3D** (`Failure3D.tsx`): `stress` 0–1 recolours the part along the ramp (all of it, or a `hot`
+  spot with `hotRadius`), glowing into bloom with a pulse near 1; `mode` + `progress`: `hinge` (pivot,
+  axis, angle), `buckle` (sags and kinks between `span` x0..x1 in the vertex shader; plain boxes are
+  re-tessellated automatically, other geometry needs its own segments), `shear` / `tear` (a `cut` plane
+  splits the part with clipping planes; the far side slides and drops or peels about the cut).
+  `debris`: seeded slow-motion chunks and amber sparks to a floor. Parts only, never people.
+- **Path3D** (`Path3D.tsx`): samples `{t, x,y,z}` or `{t, lat,lon,alt}` (+ `geo` projection) → a tube
+  coloured by `v` on the ramp, a drop curtain to the ground, a dashed ground trace, `events` as Label3D
+  callouts that write on as the head passes, a `marker` (a Jet) carried along with `bank`, and a `gap`
+  so the tube doesn't run through it. `buildPath` + `pathPose(path, t)` put a camera or model on it.
+- **Atmos3D** (`Atmos3D.tsx`): `CloudDeck` (noise sheet + low-poly puffs, drifting), `Ocean` (faceted
+  vertex-shader waves; `oceanHeight` / `oceanTilt` give the same surface in JS so a ship floats and
+  rolls on it), `Smoke` (sprites on a fixed life cycle, optional fire-light `glow` at the base), `Rain`.
+
+Demo: `Disaster3DDemo` (12 s, one look per scene: jet tailplane hinge on a path over clouds, a
+girder bridge buckling, a ferry listing with bow doors open in rain, a dam filling). Stills in
+`channels/disasters-and-engineering-failures-expla/samples/3d-kit/`.
+Weak so far: the dam scene's framing (banks crowd a 9:16 frame), hulls are extruded "soap bars", no
+interior/cut caps on shear and tear, a buckled part's shadow doesn't bend, labels don't follow a sag.
+
 ## How a director codes a beat
 
 One video = one `<Stage3D>`, one `<Sequence layout="none">` per beat inside it (one WebGL context;

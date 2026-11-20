@@ -18,6 +18,7 @@ import { TechFlatDemos } from "./flat/tech/Demo";
 import { TechAvatar, TechBanner } from "./sheets/TechBrand";
 import { TECH3D_DEMO, Tech3DDemo } from "./three/demo/Tech3DDemo";
 import { TECH3D_DEMO2, Tech3DDemo2 } from "./three/demo/Tech3DDemo2";
+import { DISASTER3D_DEMO, Disaster3DDemo } from "./three/demo/Disaster3DDemo";
 import { calculateLongThumb3DMetadata, LONG_THUMB3D, LongThumb3D } from "./compositions/LongThumb3D";
 import { Thumb3DDemos } from "./three/demo/Thumb3DDemos";
 import { DocDemos } from "./doc/Demo";
@@ -63,6 +64,7 @@ export const Root: React.FC = () => (
     {/* the 3D kit (src/three, tech channel): one demo Short using every piece */}
     <Composition id="Tech3DDemo" component={Tech3DDemo} {...TECH3D_DEMO} />
     <Composition id="Tech3DDemo2" component={Tech3DDemo2} {...TECH3D_DEMO2} />
+    <Composition id="Disaster3DDemo" component={Disaster3DDemo} {...DISASTER3D_DEMO} />
     <Thumb3DDemos />
     {/* channel art (assets/channel/): `npx remotion still src/index.ts ChannelAvatar|ChannelBanner <out.png>` */}
     <Still id="ChannelAvatar" component={ChannelAvatar} width={AVATAR.width} height={AVATAR.height} />
