@@ -1,0 +1,22 @@
+{
+  "agent": "research",
+  "channel": "business-documentaries-rise-and-fall-of",
+  "day": "2026-11-21",
+  "startedAt": "2026-11-20T19:33:04Z",
+  "finishedAt": "2026-11-20T19:37:55Z",
+  "summary": "Policy night for Craze & Crash: no new YouTube rule affects us (the July renaming to 'generic or repetitive content' and the May AI labels; we use real licensed footage and no AI scenes). Added 4 sourced Short topics: Dollar Shave Club, Microsoft and Nokia, Yahoo's refused $44.6B, and the Crocs crash.",
+  "decision": "acted",
+  "why": "Founder bet, the core Short format, had one open topic; now three. References: Nokia 2.7M on a 20.7K channel, Crocs 777K on 3.65K, Gillette and Dollar Shave Club 653K on 10.8K, Yahoo 64.8K on 19.3K. Our two public Shorts have no stayed-to-watch data yet, so no proposal from our own numbers.",
+  "findings": [
+    {"title": "Nokia's fall is this month's biggest niche Short", "detail": "2.7M views on a 20.7K channel (14 s) and 6.0M on a 281K channel. Topic added: Microsoft paid EUR 5.44B, then wrote off $7.6B.", "link": "https://www.youtube.com/shorts/-W42eyz4Z9A"},
+    {"title": "YouTube's 'inauthentic content' is now 'generic or repetitive content'", "detail": "A renaming, no new rule (16 Jul 2026). Our risk would be a narrated stock-footage compilation; the profile and recipe already forbid it.", "link": "https://www.tubefilter.com/2026/07/13/youtube-inauthentic-content-monetization-policy-update/"},
+    {"title": "AI labels are now prominent and applied automatically", "detail": "Only for photorealistic AI-made content; we use real licensed photos and footage, so containsSyntheticMedia stays false.", "link": "https://blog.youtube/news-and-events/improving-ai-labels-for-viewers-and-creators/"},
+    {"title": "Dollar Shave Club: a ~$4,500 video to a reported $1B sale", "detail": "Revenue $4M, $19M, $65M in 2012-14 (founder, Fortune). A core founder-bet Short.", "link": "https://fortune.com/2015/03/10/dollar-shave-club-founding/"}
+  ],
+  "changes": [
+    {"title": "4 Short topics in the feed", "detail": "research/topics.json: Dollar Shave Club (8.22), Nokia (7.73), Yahoo (6.81), Crocs (6.69). 10 Shorts open.", "branch": "agent/research/2026-11-21/business-documentaries-rise-and-fall-of"},
+    {"title": "Merge-cap notification resolved", "detail": "The guard now counts research merges per channel, so the 20 Nov warning is dropped.", "branch": "agent/research/2026-11-21/business-documentaries-rise-and-fall-of"}
+  ],
+  "nextCheck": "2026-11-22",
+  "links": [{"label": "Report", "url": "channels/business-documentaries-rise-and-fall-of/research/2026-11-21.md"}]
+}
