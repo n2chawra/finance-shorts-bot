@@ -235,7 +235,10 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
     if style.get("key") not in KEYS:
         out.append(f"style.key must be one of {', '.join(KEYS)}")
     from . import looks          # the board's look rotates like the palette (owner, 2026-11-02)
-    out += looks.problems(style.get("look"), [e for e in history if e.get("format", "short") == plan.get("format", "short")])
+    same_format = [e for e in history if e.get("format", "short") == plan.get("format", "short")]
+    out += looks.problems(style.get("look"), same_format)
+    recipes, avoid_last = looks.rotation()      # a channel with a look rotation (disasters, 2026-11-20)
+    out += looks.recipe_problems(style, same_format, recipes, avoid_last)
 
     if last:
         if style.get("palette") == last["style"]["palette"]:

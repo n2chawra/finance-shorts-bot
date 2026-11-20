@@ -75,4 +75,53 @@ def for_state(history: list[dict]) -> dict:
     """What the planner needs: the options and the looks of the last videos."""
     return {"options": {k: list(v) for k, v in LOOKS.items()},
             "retired_palettes": dict(RETIRED_PALETTES),
-            "recent": [lk for e in history[-LOOK_WINDOW:] if (lk := look_of(e))]}
+            "recent": [lk for e in history[-LOOK_WINDOW:] if (lk := look_of(e))],
+            **_recipe_state(history)}
+
+
+def _recipe_state(history: list[dict]) -> dict:
+    """A channel with a look rotation: its recipes and the ones the next video may not take."""
+    try:
+        recipes, n = rotation()
+    except Exception:  # noqa: BLE001 - no pack: no rotation
+        return {}
+    if not recipes:
+        return {}
+    used = [r for e in history if (r := recipe_of(e))][-n:] if n > 0 else []
+    return {"recipes": recipes, "recipe_blocked": used}
+
+
+# ---- look recipes (disasters channel, 2026-11-20) -------------------------------------------------
+# A channel whose channel.json has `look.rotation` ({recipes, avoidLast}) draws every video in one named
+# recipe (remotion/src/disaster/looks.ts, three/disaster/look.tsx): the plan sets `style.recipe`, one of
+# the channel's recipes and none of the last `avoidLast` videos' (owner, 20 Nov: "no repetition of
+# animation style"). Counted per format, so a promo Short cut from a long video may share its look.
+
+def recipe_of(entry: dict) -> str | None:
+    r = (entry.get("style") or {}).get("recipe")
+    return r if isinstance(r, str) else None
+
+
+def recipe_problems(style: object, history: list[dict], recipes: list[str] | tuple[str, ...], avoid_last: int) -> list[str]:
+    """`style.recipe` is one of `recipes` and not one of the last `avoid_last` videos' recipes."""
+    if not recipes:
+        return []
+    rec = style.get("recipe") if isinstance(style, dict) else None
+    if rec not in recipes:
+        return [f"style.recipe must be one of {', '.join(recipes)} (this channel's look rotation)"]
+    recent = [(e.get("id"), r) for e in history if (r := recipe_of(e))][-max(0, int(avoid_last)):] if avoid_last > 0 else []
+    for vid, r in recent:
+        if r == rec:
+            free = [x for x in recipes if x not in {r2 for _, r2 in recent}]
+            return [f"style.recipe {rec!r} was used by {vid}, one of the last {avoid_last} videos: pick one of {', '.join(free) or 'the others'}"]
+    return []
+
+
+def rotation(pack_data: dict | None = None) -> tuple[list[str], int]:
+    """The channel's look rotation from its pack: (recipes, avoidLast); ([], 0) when it has none."""
+    if pack_data is None:
+        from . import pack
+        pack_data = pack.load()
+    rot = ((pack_data.get("look") or {}).get("rotation") or {}) if isinstance(pack_data, dict) else {}
+    recipes = [r for r in rot.get("recipes") or [] if isinstance(r, str)]
+    return recipes, int(rot.get("avoidLast") or 0)

@@ -88,6 +88,10 @@ the sound.
   - the doc kit (`remotion/src/doc/`) for the report page with the highlighter, licensed photos, chapter cards and the timeline.
 - **A new look every video:** one recipe from `channel.json` `look.rotation`, never one of the last 4. The 3D look pass,
   the flat palette and the doc grade all follow it.
+- **The director's kit for this channel:** `remotion/src/disaster/` (README there) for the look recipe
+  (`<DisasterLookProvider value={style.recipe}>`, `useDisasterLook`, `Texture`) and the flat/doc pieces (ForceDiagram,
+  CauseChain, Elevation, the Instrument set, Callout, HonestyTag, ReportPage, CauseBoard), and `remotion/src/three/disaster/`
+  for the 3D pieces in the same look (`LOOKS[recipe].three`). The plan sets `style.recipe`; check-plan refuses a recent one.
 - **Constant identity across looks:** mono labels typing on the spoken word, the honesty tags, and red only for the failure.
 - **Our upgrades over the references:**
   - type-accurate 3D;
