@@ -109,6 +109,13 @@ export default function NotificationsPage() {
   const critical = data.open.filter((n) => n.severity === "critical").length;
   // proposals wait for Approve or Decline; resolving one would drop it with no decision
   const resolvable = data.open.filter((n) => !n.proposal).map((n) => n.id);
+  // info items (research, improver and Scout notes) can bury the one red card; fold them under the
+  // ones that need the owner. Proposals wait for a decision, so they stay out of the fold.
+  const fyi = data.open.filter((n) => n.severity === "info" && !n.proposal);
+  const needsYou = data.open.filter((n) => !fyi.includes(n));
+  const fold = fyi.length > 0 && needsYou.length > 0;
+  const openItem = (n: Notification) => <Item key={n.id} n={n} busy={act.isPending} onResolve={() => run([n.id], "resolve", "Marked resolved")}
+    onDecide={(a) => run([n.id], a, a === "approve" ? "Approved: setting changed" : "Declined")} />;
 
   return (
     <Stagger>
@@ -125,10 +132,20 @@ export default function NotificationsPage() {
           </p>
           <ul className="flex flex-col gap-5">
             <AnimatePresence initial={false}>
-              {data.open.map((n) => <Item key={n.id} n={n} busy={act.isPending} onResolve={() => run([n.id], "resolve", "Marked resolved")}
-                onDecide={(a) => run([n.id], a, a === "approve" ? "Approved: setting changed" : "Declined")} />)}
+              {(fold ? needsYou : data.open).map(openItem)}
             </AnimatePresence>
           </ul>
+          {fold && (
+            <details className="group mt-6" data-testid="fyi-fold">
+              <summary className="panel-sm hover-raise inline-flex h-10 cursor-pointer list-none items-center gap-1.5 bg-surface px-3.5 text-[12.5px] font-semibold">
+                <Info className="size-4 text-ink2" aria-hidden />
+                <span className="group-open:hidden">Show</span><span className="hidden group-open:inline">Hide</span> for your information ({fyi.length})
+              </summary>
+              <ul className="mt-3 flex flex-col gap-5">
+                <AnimatePresence initial={false}>{fyi.map(openItem)}</AnimatePresence>
+              </ul>
+            </details>
+          )}
         </>
       )}
 
