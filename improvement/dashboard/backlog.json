@@ -604,16 +604,21 @@
    "detail": "Most open notifications are info-level proposals from research, the improver and Scout (about a dozen today), so a critical one like the YouTube sign-in can be the only red card in a long list. Sort critical → warning → info, and put info items in a 'For your information (N)' fold that stays open if it's the only group. Notification-centre guidance (Carbon, saasui.design 2026): ruthless prioritisation and fewer, actionable alerts. Helps the owner act on what matters in a twice-a-day check.",
    "page": "notifications",
    "found": "2026-11-09",
-   "status": "open"
+   "status": "done",
+   "done": "2026-11-20",
+   "lastTouched": {
+    "apps/dashboard/src/app/notifications/page.tsx": "2026-11-20",
+    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-20"
+   }
   },
   {
    "id": "video-48h-mark",
    "kind": "idea",
    "title": "Video page: show the 48-hour views the variant system judges on",
-   "detail": "Since 2026-11-04 every option is judged on public views 48 hours after publishing (hourly snapshots). On a published Short's page, show '48 h: N views' (or 'judged in 13 h') next to the variant options it tried. Creator-analytics guides stress that early numbers are noisy and that the dashboard should say how settled a number is; this ties the page to the one number that decides defaults.",
+   "detail": "Since 2026-11-04 every option is judged on public views 48 hours after publishing (hourly snapshots). On a published Short's page, show '48 h: N views' (or 'judged in 13 h') next to the variant options it tried. Creator-analytics guides stress that early numbers are noisy and that the dashboard should say how settled a number is; this ties the page to the one number that decides defaults. 2026-11-20: declined, the variant system is frozen (config/arms.json) and the weekly loop judges on stayed-to-watch, not 48-hour views.",
    "page": "video",
    "found": "2026-11-09",
-   "status": "open"
+   "status": "declined"
   },
   {
    "id": "smoke-route-after-test",
@@ -703,9 +708,28 @@
    "id": "tsc-before-build",
    "kind": "bug",
    "title": "tsc fails on a fresh clone until next build has run once",
-   "detail": "next-env.d.ts (gitignored) declares the image module types; without it tsc reports 'Cannot find module @/assets/channels/*.png'. Build passes, and tsc passes after it. Harmless for Netlify and the merge workflow if they build first; worth a src/types/images.d.ts if a tsc-first check ever trips on it.",
+   "detail": "next-env.d.ts (gitignored) declares the image module types; without it tsc reports 'Cannot find module @/assets/channels/*.png'. Build passes, and tsc passes after it. Harmless for Netlify and the merge workflow if they build first; worth a src/types/images.d.ts if a tsc-first check ever trips on it. 2026-11-20: fixed upstream by src/types/static-images.d.ts; tsc passes with next-env.d.ts removed.",
    "page": "all",
    "found": "2026-11-19",
+   "status": "done",
+   "done": "2026-11-20"
+  },
+  {
+   "id": "notif-snooze",
+   "kind": "idea",
+   "title": "Notifications: snooze an item until a day",
+   "detail": "Exception queues work when each item has a state (fixed, dismissed, deferred), not just open/resolved (Buteau, 'From monitoring to exception workflows'). A 'Remind me Monday' on a warning the owner can't act on yet would keep the list to what needs him today. Needs a snoozedUntil field, so the auditor's lane for the schema part.",
+   "page": "notifications",
+   "found": "2026-11-20",
+   "status": "open"
+  },
+  {
+   "id": "video-retention-drop-picture",
+   "kind": "idea",
+   "title": "Video page: name the picture on screen at each retention drop",
+   "detail": "Retention guides point at the steepest slope as the place to start. The auditor already ties each drop to its picture in analysis/pictures.json; showing 'lost 18% at 5.2 s: the price tag close-up' under the retention chart turns the curve into a fix the owner can read in one look.",
+   "page": "video",
+   "found": "2026-11-20",
    "status": "open"
   }
  ]

@@ -1,0 +1,17 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-20",
+  "startedAt": "2026-11-20T17:32:11Z",
+  "finishedAt": "2026-11-20T17:42:03Z",
+  "summary": "Bug hunt: tsc, lint, build and all smoke tests pass, every page is clean for all four channels, and the live site is up. Notifications now fold the info-only notes under the ones that need you.",
+  "decision": "acted",
+  "why": "No bugs found tonight. The top open idea for a page the owner checks twice a day was the Notifications fold: the sign-in alert could be the only red card in a long list of agent notes.",
+  "findings": [
+    {"title": "tsc on a fresh clone fixed upstream", "detail": "src/types/static-images.d.ts (added today) declares the image types, so tsc passes without next-env.d.ts; backlog item closed."}
+  ],
+  "changes": [
+    {"title": "Notifications: info notes folded under the ones that need you", "detail": "Critical and warning cards and pending proposals stay on top; info notes sit behind 'Show for your information (N)'. Smoke test added.", "branch": "agent/dashboard/2026-11-20"}
+  ],
+  "nextCheck": "2026-11-22",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-20.md"}]
+}
