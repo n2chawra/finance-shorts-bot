@@ -1,0 +1,45 @@
+{
+  "call": "go-with-conditions",
+  "reason": "Long disaster and failure videos from small channels break out (Fault Lines, 11K subs: 1.94M on a 10-min 3D crash reconstruction), the long trend is rising (4.96), and the quality references hold 400K-1.1M medians; but a flood of new low-effort channels sits at 30-300 views, so it only works at high craft.",
+  "conditions": [
+    "Craft before volume (owner, 20 Nov): no sample ships unless it beats the references' first minute; the new low-effort channels in this scan get 9-285 median long views.",
+    "No repeated look (owner): a look-rotation and novelty gate in QA that fails a video whose kit mix, palette, camera language or place set repeats a recent video's; every video mixes kits (flat 2D, 3D, doc kit with real photos and report documents).",
+    "Long videos 10-15 min, not 5-6: the 10-15 min band has the best median on niche channels (775 on-niche, 69,187 raw; 16% hit rate) and every small-channel breakout is 10-15 min; 3-6 min is the weakest band (81).",
+    "3D only for the key 60-120 s per video (the moment of failure): cloud 3D renders about 3.75 s a frame, so a full 3D long video would take 15+ hours; the rest in 2D and the doc kit.",
+    "Settled, sourced stories: official investigation reports (NTSB, AAIB, BEA, ATSB, TSB, CSB) and reputable outlets; recent events told from preliminary reports only, with no blame beyond the report.",
+    "Respectful and advertiser-friendly: no gore, no bodies, no victim close-ups, no sensational 'horror' thumbnails; deaths stated plainly, ending on what changed."
+  ],
+  "for": [
+    "Small channels break out on long video: Fault Lines Official (11K subs) 1,941,409 and 551,482 views at 10 min; Engineering Revealed (2.5K) 389,157 and 228,073 at 15 min; Major Disasters (420 subs) 185,887; BUILT TO HOLD (842 subs) 159,148.",
+    "Proven demand at the top: 90-day long medians Practical Engineering 1,144,945, Fascinating Horror 635,479, Plainly Difficult 401,670 (10-11 min videos); the long trend is rising (direction 4.96).",
+    "Good money for the views: transport and education niches have the top median RPMs in AIR's 300-channel data ($5.69 transport, $10.22 education; estimates); 10-15 min videos carry mid-rolls."
+  ],
+  "against": [
+    "Supply is rising fast at the bottom: about 12 new channels (6-842 subs) post 5-47 long videos each at 9-285 median views; 'low supply' holds only for well-made videos.",
+    "The 3D reconstructions that drive the biggest small-channel hits render slowly in the cloud (about 3.75 s a frame); 3D must be limited to key moments or rendered on the PC.",
+    "YouTube's bar doubles to 8,000 watch hours on 1 Feb 2027; reaching 4,000 before then needs about 50K long views in 10 weeks, so a hit, not the plan; tragedy topics can get limited ads if told graphically."
+  ],
+  "earnings": {
+    "m6": {"low": 0, "likely": 300, "high": 4000},
+    "m12": {"low": 100, "likely": 1500, "high": 12000},
+    "assumptions": "Estimates, not facts. One long video every 48 h (about 15 a month, 10-15 min) + 1 promo Short each. Partner programme at 8,000 watch hours (bar from 1 Feb 2027): about 90K long views at ~5.5 min watched, reached in month 3-5 in 'likely' (sooner with one breakout), never in 'low'. Long RPM $5 likely (AIR transport median $5.69, education $10.22; estimates); Shorts ignored. m6 likely: ~60K long views a month after joining. m12 likely: ~300K a month (15 videos x ~20K, small-channel hits 150K-1.9M as upside). High: one Fault Lines-sized hit a month. Sponsors not counted."
+  },
+  "demand": {
+    "shortsMedianViews90d": 17793,
+    "smallChannelsWithHit": "12/20",
+    "direction": 4.96,
+    "longMedianViews90d": 353,
+    "note": "On-niche channels only (20; news, Indian politics and fact channels the searches caught are excluded). The long median (353) is dragged down by ~12 new tiny channels posting many low-view videos; quality references: Practical Engineering 1,144,945, Fascinating Horror 635,479, Plainly Difficult 401,670. Raw scan: long 23,026, Shorts 35,163, best band 10-15 min 69,187. smallChannelsWithHit = on-niche channels under 50K subs with a 10K+ video in 90 days."
+  },
+  "doable": {
+    "look": "Every kit combined per video: 3D (remotion/src/three) for the moment of failure, flat 2D (remotion/src/flat) for maps, cutaways and the timeline, the doc kit (remotion/src/doc, generator/media) for real photos, report pages, diagrams and headlines. Build items: a look-rotation and novelty gate, a 3D vehicle/structure set (plane, ship, train, bridge, building kit pieces), a cockpit-voice and radio transcript prop, and a flight/route path tool on the 2D map.",
+    "voice": "Kokoro narrator (calm documentary voice, American or British English); the references are calm narrated documentaries, so a TTS narrator fits. Never voice a real person's words (cockpit recordings, witnesses) with TTS: show them as transcript text.",
+    "policy": "Inauthentic content (judged channel-wide) -> original research and scripts, varied looks per video. Advertiser-friendly: educational tragedy coverage earns ads; graphic injury or sensational framing gets limited ads. US government reports and diagrams are public domain; other countries' reports cited, not reproduced in full; photos from Commons with credits. Synthetic-content label when a realistic reconstruction of a real event could be mistaken for footage."
+  },
+  "references": {
+    "Fascinating Horror": "14 long in 90 days, 635,479 median, ~11 min",
+    "Plainly Difficult": "13 long, 401,670 median, ~10 min",
+    "Practical Engineering": "7 long, 1,144,945 median, ~18 min; 'Stopping the Unstoppable' 5,620,536"
+  },
+  "writtenAt": "2026-11-20T14:20:00Z"
+}
