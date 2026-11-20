@@ -1,0 +1,407 @@
+{
+  "id": "v-20261120-07",
+  "createdAt": "2026-11-20T04:40:02.892682+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Stanley Sold $73 Million a Year. Then One Cup Went Viral",
+    "category": "drinkware",
+    "reach": "global",
+    "feed_id": "2026-11-19-stanley-cup"
+  },
+  "title": "Stanley Sold $73M a Year. Then One Cup Went Viral",
+  "description": "How did a cup Stanley barely sold turn a flask brand into a craze?\nSources: CNBC (Dec 2023).\nBased on public records and reporting. Not financial or legal advice.\n\nPhoto: Donald Trung Quoc Don (Chữ Hán: 徵國單) - Wikimedia Commons.(Want to use this image?), CC BY-SA 4.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Crocs_store_at_the_%22Beurstraverse%22_or_%22Koopgoot%22_(2018)_02.jpg)\nPhoto: Unknown author, CC BY-SA 4.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Stanley_bottles_tumblers_Vacuum_flasks_company_26_January_2025_Philippines1.jpg)\nPhoto: Unknown author, CC BY-SA 4.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Stanley_drinkware_company_26_January_2025_Philippines3.jpg)\nPhoto: Unknown author, CC BY-SA 4.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Stanley_drinkware_Vacuum_flasks_mall_store_26_January_2025_Philippines1.jpg)\nPhoto: PK-WIKI, CC BY 4.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Stanley_Quencher_H2.0_Tumbler_%E2%80%94Limit_2_per_customer.png)\nPhoto: ishmael daro, CC BY 2.0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Stanley_Quencher_in_a_shop.jpg)\nPhoto: Daderot, CC0, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Universal_Stanley_vacuum_bottles_-_New_Britain_Industrial_Museum_-_DSC09891.JPG)",
+  "hashtags": [
+    "#Shorts",
+    "#Stanley",
+    "#StanleyCup",
+    "#BusinessStory",
+    "#Quencher"
+  ],
+  "hookStyle": "myth",
+  "cta": "Scarcity or the colours: which one sold the cup? Comment",
+  "seed": 40712,
+  "style": {
+    "palette": "night",
+    "genre": "ledger",
+    "key": "D",
+    "bpm": 76,
+    "voice": "am_fenrir",
+    "arms": {
+      "length": "30-55",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Stanley sold $73M a year. Then one cup went viral.",
+        "start": 0.3,
+        "seconds": 3.21,
+        "window": 3.87,
+        "fill": 0.829
+      },
+      {
+        "scene": "barely",
+        "text": "Not a new cup. Stanley, the old flask maker, already sold this one, and it barely sold.",
+        "start": 4.17,
+        "seconds": 3.81,
+        "window": 4.47,
+        "fill": 0.852
+      },
+      {
+        "scene": "blog",
+        "text": "So who saw it first? Three women who ran a shopping blog. They bought a batch themselves, sold it to their readers, and it was gone in days.",
+        "start": 8.63,
+        "seconds": 5.35,
+        "window": 6.03,
+        "fill": 0.887
+      },
+      {
+        "scene": "boss",
+        "text": "So what changed? Stanley hired a new boss from Crocs. He found the blog, and sold the cup to women, in new colours.",
+        "start": 14.67,
+        "seconds": 5.26,
+        "window": 5.93,
+        "fill": 0.887
+      },
+      {
+        "scene": "rise",
+        "text": "Sales jumped to $94M, climbed to $194M, and hit $402M.",
+        "start": 20.6,
+        "seconds": 5.57,
+        "window": 6.23,
+        "fill": 0.894
+      },
+      {
+        "scene": "turn",
+        "text": "And Stanley added scarcity: limited colour drops. Shops put up signs limiting how many cups you could buy.",
+        "start": 26.83,
+        "seconds": 4.6,
+        "window": 5.27,
+        "fill": 0.873
+      },
+      {
+        "scene": "payoff",
+        "text": "Four years later, Stanley was projected to sell more than $750M in a single year.",
+        "start": 32.1,
+        "seconds": 4.24,
+        "window": 4.9,
+        "fill": 0.865
+      },
+      {
+        "scene": "ending",
+        "text": "Spot one in a cup holder today, and remember: it once barely sold.",
+        "start": 37.0,
+        "seconds": 2.74,
+        "window": 3.4,
+        "fill": 0.806
+      }
+    ]
+  },
+  "durationSec": 41,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.0,
+    "lufs": -16.2,
+    "music_under_voice_db": 17.6
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "am_fenrir",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review: all 5 figures (73/94/194/402M revenue 2019-22, 2023 projected to top 750M per data CNBC reviewed) confirmed on the CNBC 23 Dec 2023 page; fixed beats now match it (Reilly joined 2020 as president from Crocs and found The Buy Guide after arriving; limited-edition colour drops and Target limit-two signs); three women founders confirmed by Retail Dive/Marketing Dive; 'projected' kept per verify; disclaimer in description; no advice."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after the rise fix: stills every 0.7 s show $94M, $194M and $402M landing on jumped/climbed/hit (only a faded count-up start at each entry, like the hook); real Stanley places throughout, hook names Stanley without the $750M payoff, ending loops, channel disclaimer on last frames, layout/craft clean, audio -1/-18 dB, 41 s in the 30-55 s range."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:20:18.664120+00:00",
+      "finishedAt": "2026-11-20T04:20:18.664120+00:00",
+      "notes": [
+        "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:20:24.428838+00:00",
+      "finishedAt": "2026-11-20T04:20:24.428838+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:23:42.001998+00:00",
+      "finishedAt": "2026-11-20T04:23:42.001998+00:00",
+      "notes": [
+        "beat 'hook'.params.layers[1].eyebrow contains a typed number; use a placeholder: 'Stanley, 2019'",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: beat 'ending' opens like a line in one of the last scripts ('so next time'): new words",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:23:49.110820+00:00",
+      "finishedAt": "2026-11-20T04:23:49.110820+00:00",
+      "notes": [
+        "beat 'hook'.say contains a typed number; use a placeholder: 'In 2019, Stanley sold {fact1} a year. Then one cup went viral.'",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:23:56.045601+00:00",
+      "finishedAt": "2026-11-20T04:23:56.045601+00:00",
+      "notes": [
+        "beat 'rise'.params.layers[1].labels[0] contains a typed number; use a placeholder: '2019'",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:24:01.406976+00:00",
+      "finishedAt": "2026-11-20T04:24:01.406976+00:00",
+      "notes": [
+        "beat 'rise'.params.layers[1].figure contains a typed number; use a placeholder: 'y22'",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:24:05.616196+00:00",
+      "finishedAt": "2026-11-20T04:24:05.616196+00:00",
+      "notes": [
+        "beat 'ending'.events.next: no word 'next' in this beat's spoken line",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:24:09.741133+00:00",
+      "finishedAt": "2026-11-20T04:24:09.741133+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:24:14.958904+00:00",
+      "finishedAt": "2026-11-20T04:24:14.958904+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "warning: beat 'rise' runs 5.6 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:24:26.102278+00:00",
+      "finishedAt": "2026-11-20T04:24:26.102278+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:27:19.163578+00:00",
+      "finishedAt": "2026-11-20T04:27:19.163578+00:00",
+      "notes": [
+        "Beat 'boss': 'Stanley took the hint, and hired a new boss from Crocs' states Stanley hired Terence Reilly because of The Buy Guide's success. The source (CNBC, 23 Dec 2023) does not say that: Reilly joined in 2020 as president (seven years at Crocs) and learned of the blog on a listening tour after he arrived. Unsourced motive/causation about a real company. Fix e.g.: 'So what changed? Stanley hired a new boss from Crocs. He found the blog, and sold the cup to women, in new colours.' (lower third 'Stanley's new president, from Crocs' is also more exact than 'boss').",
+        "Beat 'turn': 'And the trick was scarcity' plus the overlay 'Scarcity / the real product' presents scarcity as THE cause. CNBC credits women buyers, 100+ colours and social media, with Reilly wanting only 'a little bit of scarcity' in limited-edition drops; the video's own CTA asks 'scarcity or the colours'. Conclusion beyond the source. Fix e.g.: 'And Stanley added scarcity: limited colour drops. Shops put up signs limiting how many cups you could buy.' and drop 'the real product' (e.g. sub 'limited drops'). The limit-signs claim itself is confirmed (CNBC: Target stores limited two per person; Reilly's quote)."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:30:26.192055+00:00",
+      "finishedAt": "2026-11-20T04:30:26.192055+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:30:33.904673+00:00",
+      "finishedAt": "2026-11-20T04:30:45.663590+00:00",
+      "notes": [
+        "12 sound effects in 41 s: this channel allows 16 a minute (11 here; channel.json sound.sfxPerMinute)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:30:51.436172+00:00",
+      "finishedAt": "2026-11-20T04:30:51.436172+00:00",
+      "notes": [
+        "Re-review: all 5 figures (73/94/194/402M revenue 2019-22, 2023 projected to top 750M per data CNBC reviewed) confirmed on the CNBC 23 Dec 2023 page; fixed beats now match it (Reilly joined 2020 as president from Crocs and found The Buy Guide after arriving; limited-edition colour drops and Target limit-two signs); three women founders confirmed by Retail Dive/Marketing Dive; 'projected' kept per verify; disclaimer in description; no advice."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:30:50.056457+00:00",
+      "finishedAt": "2026-11-20T04:31:26.463155+00:00",
+      "notes": [
+        "2 of 9 consecutive stills look the same (at 10 s, 41 s): change the set, the shot size or what is on screen"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:31:50.335960+00:00",
+      "finishedAt": "2026-11-20T04:32:06.076275+00:00",
+      "notes": [
+        "41 s, night/ledger (preview only)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:32:21.195202+00:00",
+      "finishedAt": "2026-11-20T04:32:21.195202+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:32:24.434221+00:00",
+      "finishedAt": "2026-11-20T04:32:41.351790+00:00",
+      "notes": [
+        "41 s, night/ledger (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:33:42.352761+00:00",
+      "finishedAt": "2026-11-20T04:33:42.352761+00:00",
+      "notes": [
+        "[script] 21.3-25.0s (beat rise, still 24.7s): the sales count card shows 'STANLEY'S SALES $0M' for about 3.6 s while the voice says $94M and $194M; the count layer appears at 'jumped' but countAt is 'then' (= 'hit'), so the card sits on $0M and is still mid-count ($324M at 25.0s) as '$402M' is spoken. Show the climb on screen (e.g. the figure stepping 94 -> 194 -> 402 on jumped/climbed/hit, or bring the card in at 'hit' with the count starting at 'jumped'), so no $0M is ever visible and the rise reads on mute."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T04:35:16.414798+00:00",
+      "finishedAt": "2026-11-20T04:35:16.414798+00:00",
+      "notes": [
+        "beat 'rise'.params.layers[1].figure contains a typed number; use a placeholder: 'y1'",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:35:21.820138+00:00",
+      "finishedAt": "2026-11-20T04:35:21.820138+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the title 'Stanley Sold {fact1} a Year. Then One Cup Went Viral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:35:24.982112+00:00",
+      "finishedAt": "2026-11-20T04:35:41.478309+00:00",
+      "notes": [
+        "41 s, night/ledger (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:36:53.921339+00:00",
+      "finishedAt": "2026-11-20T04:36:53.921339+00:00",
+      "notes": [
+        "Re-review after the rise fix: stills every 0.7 s show $94M, $194M and $402M landing on jumped/climbed/hit (only a faded count-up start at each entry, like the hook); real Stanley places throughout, hook names Stanley without the $750M payoff, ending loops, channel disclaimer on last frames, layout/craft clean, audio -1/-18 dB, 41 s in the 30-55 s range."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:37:05.974610+00:00",
+      "finishedAt": "2026-11-20T04:39:57.979102+00:00",
+      "notes": [
+        "41 s, night/ledger, peak -1.0 dB, mean -18.0 dB",
+        "warning: integrated loudness -16.2 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+        "warning: the music sits only 17.6 dB under the voice (at least 18 in a Short)"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-20T04:40:02.892864+00:00",
+      "finishedAt": "2026-11-20T04:40:02.892864+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261120-07",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261120-07"
+  }
+}

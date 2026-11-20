@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 40712,
+  "duration_sec": 41,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "ledger",
+    "key": "D",
+    "bpm": 76
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Stanley sold $73M a year. Then one cup went viral.",
+        "start": 0.3,
+        "seconds": 3.21,
+        "window": 3.87,
+        "fill": 0.829
+      },
+      {
+        "scene": "barely",
+        "text": "Not a new cup. Stanley, the old flask maker, already sold this one, and it barely sold.",
+        "start": 4.17,
+        "seconds": 3.81,
+        "window": 4.47,
+        "fill": 0.852
+      },
+      {
+        "scene": "blog",
+        "text": "So who saw it first? Three women who ran a shopping blog. They bought a batch themselves, sold it to their readers, and it was gone in days.",
+        "start": 8.63,
+        "seconds": 5.35,
+        "window": 6.03,
+        "fill": 0.887
+      },
+      {
+        "scene": "boss",
+        "text": "So what changed? Stanley hired a new boss from Crocs. He found the blog, and sold the cup to women, in new colours.",
+        "start": 14.67,
+        "seconds": 5.26,
+        "window": 5.93,
+        "fill": 0.887
+      },
+      {
+        "scene": "rise",
+        "text": "Sales jumped to $94M, climbed to $194M, and hit $402M.",
+        "start": 20.6,
+        "seconds": 5.57,
+        "window": 6.23,
+        "fill": 0.894
+      },
+      {
+        "scene": "turn",
+        "text": "And Stanley added scarcity: limited colour drops. Shops put up signs limiting how many cups you could buy.",
+        "start": 26.83,
+        "seconds": 4.6,
+        "window": 5.27,
+        "fill": 0.873
+      },
+      {
+        "scene": "payoff",
+        "text": "Four years later, Stanley was projected to sell more than $750M in a single year.",
+        "start": 32.1,
+        "seconds": 4.24,
+        "window": 4.9,
+        "fill": 0.865
+      },
+      {
+        "scene": "ending",
+        "text": "Spot one in a cup holder today, and remember: it once barely sold.",
+        "start": 37.0,
+        "seconds": 2.74,
+        "window": 3.4,
+        "fill": 0.806
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.0,
+    "lufs": -16.2,
+    "music_under_voice_db": 17.6
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 9.053,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
