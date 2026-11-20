@@ -1,0 +1,17 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-20",
+  "startedAt": "2026-11-20T16:37:39Z",
+  "finishedAt": "2026-11-20T16:38:27Z",
+  "summary": "How Tech Works, first review: watched both published Shorts (microwave, Hoover Dam) frame by frame. No lesson yet: neither has any retention data.",
+  "decision": "waited",
+  "why": "Both Shorts have 0 Analytics views and no stayed, hook hold or drop points (Analytics lag). A lesson needs a drop or a stayed number. Public views: Hoover Dam 116 in under a day, microwave 45.",
+  "findings": [
+    {"title": "Both Shorts open on the subject with the question spoken", "detail": "Microwave and chocolate at 0 s; the Hoover Dam face at 0 s, but showing a full lake while the line says the lake drops."},
+    {"title": "Hoover Dam runs 15 s past its payoff", "detail": "The new low-lake estimate lands at ~45 s, then a second figure (160 MW) follows. Check for a drop after 45 s once data arrives."},
+    {"title": "No per-video Analytics for this channel yet", "detail": "If still empty on 24 Nov, it's a data bug for the auditor."}
+  ],
+  "changes": [],
+  "nextCheck": "2026-11-24",
+  "links": [{"label": "Report", "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/review/2026-11-20.md"}]
+}
