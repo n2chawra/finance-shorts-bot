@@ -51,7 +51,7 @@ export const DISASTER_LOOKS: Record<DLookName, DLook> = {
     stage: { backdrop: { top: "#1b4fb0", bottom: "#0b2a6b", glow: "rgba(255,255,255,0.08)" }, floor: { grid: true, opacity: 0.3 }, bloom: 0.5, vignette: 0.35, rim: "#ffffff", light: 0.9 },
   },
   clay: {
-    name: "clay", clay: true, accent: "#2f7de1", sky: "#0b0b0d", water: "#9cc3e0", label: "#2f7de1", colors: BASE,
+    name: "clay", clay: true, accent: "#2f7de1", sky: "#0b0b0d", water: "#78acd8", label: "#2f7de1", colors: BASE,
     stage: { backdrop: { top: "#1a1a1d", bottom: "#050506", glow: "rgba(255,240,220,0.06)" }, floor: true, bloom: 0.4, vignette: 0.5, rim: "#fff1df", light: 0.72 },
   },
   chalk: {

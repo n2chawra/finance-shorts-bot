@@ -4,7 +4,9 @@
 import type { ThreeElements } from "@react-three/fiber";
 import React, { useMemo } from "react";
 import * as THREE from "three";
-import type { V3 } from "../core";
+import { rnd, type V3 } from "../core";
+import { canvasTexture } from "../textures";
+import { Smoke } from "./Atmos3D";
 import { useDLook, type Paint } from "./look";
 
 type Group = ThreeElements["group"];
@@ -152,20 +154,86 @@ export type DamProps = Group & {
   /** the flow over the crest when overtopping, 0..1 (also turns on at level > 1) */
   overflow?: number;
   frame?: number;
+  seed?: string;
 };
 
-/** Dam across a valley: dam along z, upstream toward -x, reservoir a water box filled to `level`,
- * valley sides as stepped rock slabs, a river downstream. Origin at the dam's foot centre. */
-export const Dam: React.FC<DamProps> = ({ kind = "gravity", length = 8, height = 3, level = 0.6, reach = 9, gates = 4, overflow, frame = 0, ...g }) => {
-  const { paint } = useDLook();
+const vnoise = (seed: string, x: number, z: number) => {
+  const xi = Math.floor(x), zi = Math.floor(z), fx = x - xi, fz = z - zi;
+  const h = (i: number, k: number) => rnd(seed, (i + 1000) * 7919 + (k + 1000));
+  const sx = fx * fx * (3 - 2 * fx), sz = fz * fz * (3 - 2 * fz);
+  return (h(xi, zi) * (1 - sx) + h(xi + 1, zi) * sx) * (1 - sz) + (h(xi, zi + 1) * (1 - sx) + h(xi + 1, zi + 1) * sx) * sz;
+};
+
+/** Falling water: soft vertical streaks and foam on a translucent sheet, tiled and scrolled. */
+function waterStreakTexture(): THREE.Texture {
+  return canvasTexture("dam-streaks", 128, 512, (g) => {
+    g.fillStyle = "rgba(220,236,248,0.55)";
+    g.fillRect(0, 0, 128, 512);
+    for (let i = 0; i < 70; i++) {
+      const x = rnd("streak", i) * 128, w = 1 + rnd("streak", i + 100) * 4, y = rnd("streak", i + 200) * 512, l = 60 + rnd("streak", i + 300) * 260;
+      const a = 0.25 + rnd("streak", i + 400) * 0.6;
+      for (const dy of [0, -512]) {
+        const gr = g.createLinearGradient(0, y + dy, 0, y + dy + l);
+        gr.addColorStop(0, "rgba(255,255,255,0)");
+        gr.addColorStop(0.5, `rgba(255,255,255,${a})`);
+        gr.addColorStop(1, "rgba(255,255,255,0)");
+        g.fillStyle = gr;
+        g.fillRect(x, y + dy, w, l);
+      }
+    }
+    for (let i = 0; i < 26; i++) {
+      const x = rnd("foam", i) * 128, y = rnd("foam", i + 50) * 512, r = 6 + rnd("foam", i + 90) * 16;
+      const gr = g.createRadialGradient(x, y, 0, x, y, r);
+      gr.addColorStop(0, "rgba(255,255,255,0.7)");
+      gr.addColorStop(1, "rgba(255,255,255,0)");
+      g.fillStyle = gr;
+      g.fillRect(x - r, y - r, r * 2, r * 2);
+    }
+  });
+}
+
+/** A ribbon along a profile in the xy plane, swept across z: u across, v along the profile (world length). */
+function ribbon(profile: [number, number][], width: number, segZ = 24): THREE.BufferGeometry {
+  const pos: number[] = [], uv: number[] = [], idx: number[] = [];
+  let s = 0;
+  profile.forEach(([x, y], i) => {
+    if (i > 0) s += Math.hypot(x - profile[i - 1]![0], y - profile[i - 1]![1]);
+    for (let k = 0; k <= segZ; k++) {
+      const u = k / segZ;
+      pos.push(x, y, (u - 0.5) * width);
+      uv.push(u * width * 0.5, -s * 0.35);
+    }
+  });
+  const row = segZ + 1;
+  for (let i = 0; i < profile.length - 1; i++) for (let k = 0; k < segZ; k++) {
+    const a = i * row + k, b = a + 1, c = a + row, d = c + 1;
+    idx.push(a, c, b, b, c, d);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+  g.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
+  g.setIndex(idx);
+  g.computeVertexNormals();
+  return g;
+}
+
+/** Dam across a valley: dam along z, upstream toward -x, the reservoir filled to `level`, valley
+ * walls as a seeded terrain that rises past the dam's ends and falls away downstream (so a 9:16 shot
+ * from downstream sees the face, the reservoir and the pour), a river below. Overtopping pours as a
+ * streaming sheet over the crest and down the face, with spray at the toe. Origin at the dam's foot
+ * centre. */
+export const Dam: React.FC<DamProps> = ({ kind = "gravity", length = 8, height = 3, level = 0.6, reach = 9, gates = 4, overflow, frame = 0, seed = "dam", ...g }) => {
+  const look = useDLook();
+  const { paint } = look;
+  const base = height * 0.8, crest = height * 0.12;
   const geo = useMemo(() => {
     if (kind === "gravity") {
-      // cross-section: vertical upstream face, sloped downstream face, crest road
+      // cross-section: vertical upstream face, sloped downstream face, crest road; keyed into the walls
       const s = new THREE.Shape();
-      const base = height * 0.8, crest = height * 0.12;
       s.moveTo(0, 0); s.lineTo(base, 0); s.lineTo(crest, height); s.lineTo(0, height); s.closePath();
-      const geom = new THREE.ExtrudeGeometry(s, { depth: length, bevelEnabled: false });
-      geom.translate(-crest / 2, 0, -length / 2);
+      const depth = length + height * 0.6;
+      const geom = new THREE.ExtrudeGeometry(s, { depth, bevelEnabled: false });
+      geom.translate(-crest / 2, 0, -depth / 2);
       geom.computeVertexNormals();
       return geom;
     }
@@ -173,14 +241,12 @@ export const Dam: React.FC<DamProps> = ({ kind = "gravity", length = 8, height =
     const R = length * 0.75, ang = 2 * Math.asin(Math.min(0.99, length / 2 / R));
     const s = new THREE.Shape();
     const th = height * 0.18;
-    // convex toward the reservoir (upstream, -x): the arc around angle π
     s.absarc(0, 0, R, Math.PI - ang / 2, Math.PI + ang / 2, false);
     s.absarc(0, 0, R - th, Math.PI + ang / 2, Math.PI - ang / 2, true);
     const geom = new THREE.ExtrudeGeometry(s, { depth: height, bevelEnabled: false, curveSegments: 40 });
-    geom.rotateX(-Math.PI / 2); // depth → +y
+    geom.rotateX(-Math.PI / 2);
     const p = geom.attributes.position as THREE.BufferAttribute;
     for (let i = 0; i < p.count; i++) {
-      // thinner toward the crest: pull the inner (downstream) face out toward the outer one
       const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
       const r = Math.hypot(x, z);
       if (r < R - th * 0.5) {
@@ -192,54 +258,97 @@ export const Dam: React.FC<DamProps> = ({ kind = "gravity", length = 8, height =
     geom.translate(R - th / 2, 0, 0);
     geom.computeVertexNormals();
     return geom;
-  }, [kind, length, height]);
-  const bank = useMemo(() => {
-    const w = height * 1.6, sh2 = new THREE.Shape();
-    sh2.moveTo(0, 0); sh2.lineTo(0, height * 1.12); sh2.lineTo(w * 0.35, height * 1.12); sh2.lineTo(w, 0); sh2.closePath();
-    const g2 = new THREE.ExtrudeGeometry(sh2, { depth: reach + 4, bevelEnabled: false });
-    // shape x → world +z (outward), shape y → up, extrusion → along +x
-    g2.rotateY(-Math.PI / 2);
-    g2.translate(reach + 4, 0, 0);
-    g2.computeVertexNormals();
-    return g2;
-  }, [height, reach]);
+  }, [kind, length, height, base, crest]);
+
+  // the valley: a V narrowing to the river, its walls meeting the crest at the dam's ends, rolling
+  // ground beyond, an upstream rim closing the reservoir; seeded relief on the walls only
+  const down = height * 3.2;
+  const terrain = useMemo(() => {
+    const W = length + height * 9;
+    const sizeX = reach + 2 + down;
+    const t = new THREE.PlaneGeometry(sizeX, W, 140, 110);
+    t.rotateX(-Math.PI / 2);
+    t.translate(-(reach + 2) + sizeX / 2, 0, 0);
+    const p = t.attributes.position as THREE.BufferAttribute;
+    const floorHalf = length * 0.18;
+    for (let i = 0; i < p.count; i++) {
+      const x = p.getX(i), z = p.getZ(i), az = Math.abs(z);
+      const u = Math.min(1, Math.max(0, (az - floorHalf) / (length / 2 + 0.12 - floorHalf)));
+      let h = height * 1.06 * Math.pow(u, 1.25);
+      h += height * 0.22 * Math.min(1, Math.max(0, (az - length / 2) / (height * 1.6)));
+      h *= 1 - 0.5 * Math.min(1, Math.max(0, (x - base) / down));
+      h += height * 1.2 * Math.min(1, Math.max(0, (-x - (reach - 1.2)) / 2.4));
+      h += (vnoise(seed, x * 0.9, z * 0.9) - 0.5) * height * 0.16 * u + (vnoise(`${seed}f`, x * 2.6, z * 2.6) - 0.5) * height * 0.05 * u;
+      p.setY(i, x < 0 && u < 0.05 ? h - 0.06 : h);
+    }
+    t.computeVertexNormals();
+    return t;
+  }, [length, height, reach, down, base, seed]);
+
   const lv = Math.max(0, level);
   const waterH = Math.min(lv, 1.04) * height;
   const over = overflow ?? Math.max(0, Math.min(1, (lv - 1) * 8));
-  const flick = 0.85 + 0.15 * Math.sin(frame * 0.7);
-  const upFace = kind === "gravity" ? -height * 0.06 : -0.1;
+  const upFace = kind === "gravity" ? -crest / 2 : -0.1;
+  const toe = base - crest / 2;
+
+  // the pour: over the crest, round the lip, down the face, out along the river
+  const sheetW = length * 0.9;
+  const sheet = useMemo(() => {
+    if (kind !== "gravity") return null;
+    const fx = toe - crest / 2, fy = -height, fl = Math.hypot(fx, fy);
+    const n: [number, number] = [-fy / fl, fx / fl];
+    const thk = 0.05;
+    const prof: [number, number][] = [[upFace - 0.05, height * 1.04], [crest / 2 - 0.05, height * 1.035], [crest / 2 + 0.03, height + 0.01]];
+    for (let i = 1; i <= 12; i++) {
+      const u = i / 12;
+      prof.push([crest / 2 + fx * u + n[0] * thk * (1 + u), height + fy * u + n[1] * thk * (1 + u)]);
+    }
+    prof.push([toe + 0.35, 0.09], [toe + 1.0, 0.05], [toe + 2.2, 0.035]);
+    return ribbon(prof, sheetW);
+  }, [kind, toe, crest, height, upFace, sheetW]);
+  const sheetMat = useMemo(() => {
+    const tex = waterStreakTexture().clone();
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.needsUpdate = true;
+    return new THREE.MeshStandardMaterial({ color: look.clay ? "#bcdcf4" : "#e4f1fb", map: tex, transparent: true, roughness: 0.25, metalness: 0, side: THREE.DoubleSide, depthWrite: false });
+  }, [look.clay]);
+  (sheetMat.map as THREE.Texture).offset.set(0, frame * 0.055);
+  sheetMat.opacity = Math.min(0.9, over * 1.6);
+  const fx = toe - crest / 2;
+
   return (
     <group {...g}>
       <mesh geometry={geo} material={paint("concrete")} {...sh} />
-      {/* crest road and gate piers */}
+      {/* block joints down the face: they give the face scale and read through the pour */}
+      {kind === "gravity" && Array.from({ length: 9 }, (_, i) => (
+        <mesh key={i} position={[crest / 2 + fx / 2 + 0.006, height / 2, (i / 8 - 0.5) * length]} rotation-z={Math.atan2(-height, fx)} material={paint("dark", "#55524c")}>
+          <boxGeometry args={[Math.hypot(fx, height), 0.02, 0.025]} />
+        </mesh>
+      ))}
       {kind === "gravity" && (
         <group position={[0, height, 0]}>
-          <mesh position={[0, 0.05, 0]} material={paint("concrete")} {...sh}><boxGeometry args={[height * 0.18, 0.1, length]} /></mesh>
+          <mesh position={[0, 0.05, 0]} material={paint("concrete")} {...sh}><boxGeometry args={[crest * 1.1, 0.1, length + height * 0.6]} /></mesh>
           {Array.from({ length: gates + 1 }, (_, i) => (
             <mesh key={i} position={[0, 0.22, -length * 0.25 + (i * length * 0.5) / gates]} material={paint("concrete")} {...sh}><boxGeometry args={[0.32, 0.36, 0.12]} /></mesh>
           ))}
         </group>
       )}
-      {/* valley sides: sloped banks rising to the dam's ends (wedges, so a high camera sees over them) */}
-      {[-1, 1].map((s) => (
-        <mesh key={s} geometry={bank} position={[-reach + 1, 0, s * (length / 2)]} scale={[1, 1, s]} material={paint("ground")} {...sh} />
-      ))}
+      <mesh geometry={terrain} material={paint("ground")} receiveShadow castShadow />
       {/* reservoir: a water block whose top is the level */}
       {waterH > 0.01 && (
-        <mesh position={[upFace - reach / 2, waterH / 2, 0]} material={paint("water")} receiveShadow>
-          <boxGeometry args={[reach, waterH, length + 1.2]} />
+        <mesh position={[upFace - reach / 2 - 0.02, waterH / 2 - 0.05, 0]} material={paint("water")} receiveShadow>
+          <boxGeometry args={[reach, waterH + 0.1, length + height * 3]} />
         </mesh>
       )}
       {/* downstream river */}
-      <mesh position={[reach * 0.4, 0.02, 0]} rotation-x={-Math.PI / 2} material={paint("water")} receiveShadow>
-        <planeGeometry args={[reach * 0.8, length * 0.35]} />
+      <mesh position={[toe + down / 2, 0.02, 0]} rotation-x={-Math.PI / 2} material={paint("water")} receiveShadow>
+        <planeGeometry args={[down + 0.4, length * 0.5]} />
       </mesh>
-      {/* overtopping sheet down the face */}
-      {over > 0.01 && (
-        <mesh position={[height * 0.42, height * 0.5, 0]} rotation-z={kind === "gravity" ? Math.atan2(height * 0.68, height) : 0} material={paint("water")}>
-          <boxGeometry args={[0.06 * flick + 0.02, height * 1.15 * over, length * 0.95]} />
-        </mesh>
-      )}
+      {sheet && over > 0.01 && <mesh geometry={sheet} material={sheetMat} renderOrder={4} />}
+      {over > 0.05 && [-0.33, 0, 0.33].map((u, i) => (
+        <Smoke key={i} frame={frame + i * 17} at={[toe + 0.15, 0.05, u * sheetW]} height={height * 0.55} width={height * 0.6} count={12} life={46}
+          wind={[1.6, 0, 0]} color="#f2f6fa" opacity={0.55 * Math.min(1, over * 1.4)} seed={`${seed}spray${i}`} />
+      ))}
     </group>
   );
 };

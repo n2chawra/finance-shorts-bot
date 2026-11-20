@@ -1,8 +1,8 @@
-// Atmos3D: weather and sea, deterministic and cheap: a cloud deck (a noise sheet plus low-poly
+// Atmos3D: weather and sea, deterministic and cheap: a cloud deck (a noise sheet plus soft sprite
 // puffs), an ocean surface (displaced in the vertex shader, faceted; `oceanHeight` gives the same
 // surface in JS so a ship can float and roll on it), a smoke column (soft sprites on a fixed life
 // cycle) and rain streaks. Every one is a pure function of `frame`.
-import React, { useLayoutEffect, useMemo, useRef } from "react";
+import React, { useMemo } from "react";
 import * as THREE from "three";
 import { rnd, type V3 } from "../core";
 import { canvasTexture } from "../textures";
@@ -25,7 +25,7 @@ export type CloudDeckProps = {
   cover?: number;
   color?: string;
   shade?: string;
-  /** low-poly puffs on top for depth */
+  /** soft sprite puffs on top for depth (clusters of camera-facing cumulus sprites) */
   puffs?: number;
   /** drift per frame (world units) */
   wind?: [number, number];
@@ -52,37 +52,77 @@ export const CloudDeck: React.FC<CloudDeckProps> = ({ frame, y = 0, size = 80, c
       }`,
   }), [cover, top, low, size]);
   (sheet.uniforms.uOff!.value as THREE.Vector2).set(frame * wind[0], -frame * wind[1]);
-  const ref = useRef<THREE.InstancedMesh>(null);
-  const geo = useMemo(() => new THREE.IcosahedronGeometry(1, 1), []);
-  const pmat = useMemo(() => new THREE.MeshStandardMaterial({ color: top, roughness: 1, flatShading: true }), [top]);
-  const tmp = useMemo(() => new THREE.Object3D(), []);
-  useLayoutEffect(() => {
-    const m = ref.current;
-    if (!m) return;
-    const half = size * 0.38;
+  const tex = useMemo(() => cloudTexture(), []);
+  const half = size * 0.38;
+  // soft volume: each puff is a small cluster of camera-facing sprites (a cumulus texture lit from
+  // above, drawn in code), tinted between the deck's shade and top colours; no geometry to facet
+  const sprites = useMemo(() => {
+    const out: { x: number; y: number; z: number; sx: number; sy: number; c: THREE.Color; a: number }[] = [];
+    const cTop = new THREE.Color(top), cLow = new THREE.Color(low);
     for (let i = 0; i < puffs; i++) {
       const r = (k: number) => rnd(seed, i * 7 + k);
-      // wrap the drift so puffs stay over the deck
-      const x = (((r(0) * 2 - 1) * half + frame * wind[0] + half) % (2 * half) + 2 * half) % (2 * half) - half;
-      const z = (r(1) * 2 - 1) * half - frame * wind[1];
-      const s = 0.8 + r(2) * 2.4;
-      tmp.position.set(x, y - s * 0.25, z);
-      tmp.scale.set(s * (1.2 + r(3)), s * 0.45, s * (1 + r(4) * 0.8));
-      tmp.rotation.set(0, r(5) * 6, 0);
-      tmp.updateMatrix();
-      m.setMatrixAt(i, tmp.matrix);
+      const s = 0.9 + r(2) * 2.6;
+      const n = 3 + Math.floor(r(3) * 2);
+      for (let k = 0; k < n; k++) {
+        const q = (j: number) => rnd(`${seed}c`, i * 31 + k * 5 + j);
+        out.push({
+          x: (r(0) * 2 - 1) * half + (q(0) - 0.5) * s * 1.4, y: (q(1) - 0.3) * s * 0.35, z: (r(1) * 2 - 1) * half + (q(2) - 0.5) * s * 1.1,
+          sx: s * (1.5 + q(3) * 1.1), sy: s * (0.8 + q(4) * 0.45), c: cLow.clone().lerp(cTop, 0.45 + 0.55 * q(1)), a: 0.75 + q(0) * 0.25,
+        });
+      }
     }
-    m.instanceMatrix.needsUpdate = true;
-  });
+    return out;
+  }, [puffs, seed, top, low, half]);
   return (
     <group userData={{ noFail: true }}>
       <mesh rotation-x={-Math.PI / 2} position={[0, y - 0.3, 0]} material={sheet} renderOrder={1} userData={{ noFail: true }}>
         <planeGeometry args={[size, size, 1, 1]} />
       </mesh>
-      {puffs > 0 && <instancedMesh ref={ref} args={[geo, pmat, puffs]} receiveShadow userData={{ noFail: true }} frustumCulled={false} />}
+      {sprites.map((p, i) => {
+        // wrap the drift so puffs stay over the deck; the cluster's anchor is scaled out to the deck
+        const ax = p.x, az = p.z;
+        const x = (((ax + frame * wind[0] + half) % (2 * half)) + 2 * half) % (2 * half) - half;
+        return (
+          <sprite key={i} position={[x, y + p.y + p.sy * 0.18, az - frame * wind[1]]} scale={[p.sx, p.sy, 1]} renderOrder={2} userData={{ noFail: true }}>
+            <spriteMaterial map={tex} color={p.c} transparent opacity={p.a} depthWrite={false} fog />
+          </sprite>
+        );
+      })}
     </group>
   );
 };
+
+/** A cumulus puff on a transparent canvas: overlapping soft lobes, a flat-ish base, lit from above
+ * (white crown, grey underside). Seeded, drawn once. */
+function cloudTexture(): THREE.Texture {
+  return canvasTexture("dcloud-puff", 256, 160, (g) => {
+    for (let i = 0; i < 14; i++) {
+      const u = rnd("cloudtex", i), v = rnd("cloudtex", i + 40), w = rnd("cloudtex", i + 80);
+      const x = 128 + (u - 0.5) * 150, r = 34 + w * 34, yb = 112 - r * 0.55 - Math.abs(u - 0.5) * 30 - v * 14;
+      const grad = g.createRadialGradient(x, yb, 0, x, yb, r);
+      grad.addColorStop(0, "rgba(255,255,255,0.55)");
+      grad.addColorStop(0.6, "rgba(255,255,255,0.32)");
+      grad.addColorStop(1, "rgba(255,255,255,0)");
+      g.fillStyle = grad;
+      g.fillRect(0, 0, 256, 160);
+    }
+    // shade the underside: keep alpha, darken toward the base
+    g.globalCompositeOperation = "source-atop";
+    const sh = g.createLinearGradient(0, 30, 0, 140);
+    sh.addColorStop(0, "rgba(255,255,255,0)");
+    sh.addColorStop(1, "rgba(120,128,140,0.75)");
+    g.fillStyle = sh;
+    g.fillRect(0, 0, 256, 160);
+    // feather the bottom edge so no straight line shows
+    g.globalCompositeOperation = "destination-out";
+    const fe = g.createLinearGradient(0, 118, 0, 160);
+    fe.addColorStop(0, "rgba(0,0,0,0)");
+    fe.addColorStop(1, "rgba(0,0,0,1)");
+    g.fillStyle = fe;
+    g.fillRect(0, 0, 256, 160);
+    g.globalCompositeOperation = "source-over";
+  });
+}
 
 // ---------------------------------------------------------------- ocean
 

@@ -5,7 +5,7 @@
 //   - fracture by `progress` 0 → 1: `hinge` (rotates about `pivot` on `axis`), `buckle` (sags and
 //     kinks between `span` x0..x1, bent in the vertex shader), `shear` (cut by a plane; the far side
 //     slides along `slide` and drops), `tear` (cut; the far side peels away about the cut line);
-//   - slow-motion debris (seeded chunks and sparks) from `debris.at`.
+//   - slow-motion debris from `debris.at`: metal panels or concrete lumps with rebar, and sparks.
 // Never bodies or gore: this shows parts, not people. Pure function of its props (drive them from
 // the frame with cue()); no state between frames.
 import React, { useLayoutEffect, useMemo, useRef } from "react";
@@ -39,6 +39,8 @@ export type DebrisSpec = {
   color?: string;
   /** amber sparks as well (default true) */
   sparks?: boolean;
+  /** "metal" (thin bent skin panels, metallic sheen) or "concrete" (sawn-faced lumps with rebar stubs) */
+  kind?: "metal" | "concrete";
   seed?: string;
 };
 
@@ -79,19 +81,11 @@ type U = {
 
 let ids = 0;
 
-function patch(src: THREE.Material, U: U, owner: string, planes: THREE.Plane[] | null, doubleSide: boolean): THREE.Material {
-  const m = src.clone();
-  const prev = src.onBeforeCompile;
-  const prevKey = src.customProgramCacheKey();
-  m.userData = { ...src.userData, failOwner: owner, failSrc: src };
-  if (planes) m.clippingPlanes = planes;
-  if (doubleSide) m.side = THREE.DoubleSide;
-  m.onBeforeCompile = (sh, r) => {
-    prev.call(src, sh, r);
-    Object.assign(sh.uniforms, U);
-    sh.vertexShader = sh.vertexShader
-      .replace("#include <common>", "#include <common>\nuniform mat4 fM;\nuniform mat4 fMInv;\nuniform float fBuckle;\nuniform vec3 fSpan;\nvarying vec3 vFW;")
-      .replace("#include <project_vertex>", `
+type Cap = { fCapOn: { value: number }; fCapW: { value: THREE.Vector3 } };
+
+/** The bend (buckle) in GLSL, shared by the colour and the shadow-depth materials. */
+const BEND_DECL = "uniform mat4 fM;\nuniform mat4 fMInv;\nuniform float fBuckle;\nuniform vec3 fSpan;";
+const BEND_VERTEX = `
         vec4 fP = vec4( transformed, 1.0 );
         #ifdef USE_BATCHING
           fP = batchingMatrix * fP;
@@ -108,18 +102,51 @@ function patch(src: THREE.Material, U: U, owner: string, planes: THREE.Plane[] |
           fl.z += fBuckle * 0.16 * fk;
           fW = fM * vec4( fl, 1.0 );
         }
-        vFW = fW.xyz;
         vec4 mvPosition = viewMatrix * fW;
-        gl_Position = projectionMatrix * mvPosition;`);
+        gl_Position = projectionMatrix * mvPosition;`;
+
+/** A shadow-depth material that bends like the part, so a buckled member's shadow sags with it. */
+function bentDepth(U: U): THREE.MeshDepthMaterial {
+  const m = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBADepthPacking });
+  m.onBeforeCompile = (sh) => {
+    Object.assign(sh.uniforms, { fM: U.fM, fMInv: U.fMInv, fBuckle: U.fBuckle, fSpan: U.fSpan });
+    sh.vertexShader = sh.vertexShader
+      .replace("#include <common>", `#include <common>\n${BEND_DECL}`)
+      .replace("#include <project_vertex>", BEND_VERTEX);
+  };
+  m.customProgramCacheKey = () => "dfail-depth1";
+  return m;
+}
+
+function patch(src: THREE.Material, U: U, owner: string, planes: THREE.Plane[] | null, doubleSide: boolean, cap?: Cap): THREE.Material {
+  const m = src.clone();
+  const prev = src.onBeforeCompile;
+  const prevKey = src.customProgramCacheKey();
+  m.userData = { ...src.userData, failOwner: owner, failSrc: src };
+  if (planes) { m.clippingPlanes = planes; m.clipShadows = true; }
+  if (doubleSide) m.side = THREE.DoubleSide;
+  const capU: Cap = cap ?? { fCapOn: { value: 0 }, fCapW: { value: new THREE.Vector3(0, 1, 0) } };
+  m.onBeforeCompile = (sh, r) => {
+    prev.call(src, sh, r);
+    Object.assign(sh.uniforms, U, capU);
+    sh.vertexShader = sh.vertexShader
+      .replace("#include <common>", `#include <common>\n${BEND_DECL}\nvarying vec3 vFW;`)
+      .replace("#include <project_vertex>", `${BEND_VERTEX}
+        vFW = fW.xyz;`);
     sh.fragmentShader = sh.fragmentShader
-      .replace("#include <common>", "#include <common>\nuniform float fTint;\nuniform vec3 fHot;\nuniform float fRadius;\nuniform vec3 fRamp;\nuniform float fGlow;\nvarying vec3 vFW;")
+      .replace("#include <common>", "#include <common>\nuniform float fTint;\nuniform vec3 fHot;\nuniform float fRadius;\nuniform vec3 fRamp;\nuniform float fGlow;\nuniform float fCapOn;\nuniform vec3 fCapW;\nvarying vec3 vFW;")
       .replace("#include <color_fragment>", `#include <color_fragment>
         float fK = fRadius > 0.0 ? 1.0 - smoothstep( fRadius * 0.25, fRadius, distance( vFW, fHot ) ) : 1.0;
-        diffuseColor.rgb = mix( diffuseColor.rgb, fRamp, clamp( fTint * fK, 0.0, 1.0 ) );`)
+        diffuseColor.rgb = mix( diffuseColor.rgb, fRamp, clamp( fTint * fK, 0.0, 1.0 ) );
+        // the cut face: through a clipped part we see its inside (back faces); paint that as a solid
+        // cap a shade darker than the part, lit as a flat face lying on the cut plane
+        if ( fCapOn > 0.5 && !gl_FrontFacing ) diffuseColor.rgb *= 0.62;`)
+      .replace("#include <normal_fragment_maps>", `#include <normal_fragment_maps>
+        if ( fCapOn > 0.5 && !gl_FrontFacing ) normal = normalize( ( viewMatrix * vec4( fCapW, 0.0 ) ).xyz );`)
       .replace("#include <emissivemap_fragment>", `#include <emissivemap_fragment>
         totalEmissiveRadiance += fRamp * fGlow * fK;`);
   };
-  m.customProgramCacheKey = () => `${prevKey}|dfail1`;
+  m.customProgramCacheKey = () => `${prevKey}|dfail2`;
   m.needsUpdate = true;
   return m;
 }
@@ -141,15 +168,16 @@ function tessellate(mesh: THREE.Mesh) {
   mesh.geometry = t;
 }
 
-function applyTree(root: THREE.Object3D | null, U: U, owner: string, planes: THREE.Plane[] | null, doubleSide: boolean, bend = false) {
+function applyTree(root: THREE.Object3D | null, U: U, owner: string, planes: THREE.Plane[] | null, doubleSide: boolean, bend = false, cap?: Cap, depth?: THREE.Material) {
   if (!root) return;
   root.traverse((o) => {
     const mesh = o as THREE.Mesh;
     if (!mesh.isMesh || o.userData.noClip || o.userData.noFail || !mesh.material) return;
     if (bend && !(mesh as THREE.InstancedMesh).isInstancedMesh) tessellate(mesh);
+    if (bend && depth && mesh.castShadow) mesh.customDepthMaterial = depth;
     const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
     if (mats.every((x) => x.userData.failOwner === owner)) return;
-    const own = mats.map((x) => (x.userData.failOwner === owner ? x : patch((x.userData.failSrc as THREE.Material | undefined) ?? x, U, owner, planes, doubleSide)));
+    const own = mats.map((x) => (x.userData.failOwner === owner ? x : patch((x.userData.failSrc as THREE.Material | undefined) ?? x, U, owner, planes, doubleSide, cap)));
     mesh.material = Array.isArray(mesh.material) ? own : own[0]!;
   });
 }
@@ -168,6 +196,9 @@ export const Failure3D: React.FC<Failure3DProps> = ({
     fM: { value: new THREE.Matrix4() }, fMInv: { value: new THREE.Matrix4() }, fBuckle: { value: 0 }, fSpan: { value: new THREE.Vector3() },
     fTint: { value: 0 }, fHot: { value: new THREE.Vector3() }, fRadius: { value: 0 }, fRamp: { value: new THREE.Color() }, fGlow: { value: 0 },
   }), []);
+  const capA = useMemo<Cap>(() => ({ fCapOn: { value: 0 }, fCapW: { value: new THREE.Vector3() } }), []);
+  const capB = useMemo<Cap>(() => ({ fCapOn: { value: 0 }, fCapW: { value: new THREE.Vector3() } }), []);
+  const depth = useMemo(() => bentDepth(U), [U]);
   const planeA = useMemo(() => new THREE.Plane(), []);
   const planeB = useMemo(() => new THREE.Plane(), []);
   const split = (mode === "shear" || mode === "tear") && !!cut;
@@ -217,9 +248,15 @@ export const Failure3D: React.FC<Failure3DProps> = ({
       // three keeps the positive side of a clipping plane: A keeps the -normal side, B the +normal side
       planeA.setFromNormalAndCoplanarPoint(n.clone().negate(), at).applyMatrix4(partA.current!.matrixWorld);
       planeB.setFromNormalAndCoplanarPoint(n, at).applyMatrix4(partB.current!.matrixWorld);
+      // each side's cut face looks across the cut: A's toward +normal, B's toward -normal (world)
+      const nm = (o: THREE.Object3D) => new THREE.Matrix3().getNormalMatrix(o.matrixWorld);
+      capA.fCapW.value.copy(n).applyMatrix3(nm(partA.current!)).normalize();
+      capB.fCapW.value.copy(n).negate().applyMatrix3(nm(partB.current!)).normalize();
     }
-    applyTree(partA.current, U, `${id}A${split ? "s" : ""}`, split ? [planeA] : null, split, mode === "buckle");
-    if (split) applyTree(partB.current, U, `${id}B`, [planeB], true);
+    capA.fCapOn.value = split ? 1 : 0;
+    capB.fCapOn.value = split ? 1 : 0;
+    applyTree(partA.current, U, `${id}A${split ? "s" : ""}`, split ? [planeA] : null, split, mode === "buckle", capA, depth);
+    if (split) applyTree(partB.current, U, `${id}B`, [planeB], true, false, capB);
   });
 
   return (
@@ -237,23 +274,69 @@ export const Failure3D: React.FC<Failure3DProps> = ({
   );
 };
 
-/** Slow-motion debris: seeded chunks (and amber sparks) thrown from a point, falling under gravity
- * to a floor. Pure function of progress. */
+/** A thin angular shard (a torn skin panel): an irregular quadrilateral-plus-notch, extruded thin,
+ * edges lightly bevelled so they catch the light. Unit size, centred. */
+function shardGeometry(): THREE.BufferGeometry {
+  const s = new THREE.Shape();
+  s.moveTo(-0.55, -0.38); s.lineTo(0.12, -0.5); s.lineTo(0.62, -0.08); s.lineTo(0.3, 0.12); s.lineTo(0.42, 0.46); s.lineTo(-0.3, 0.34); s.lineTo(-0.18, 0.02);
+  s.closePath();
+  const g = new THREE.ExtrudeGeometry(s, { depth: 0.05, bevelEnabled: true, bevelThickness: 0.012, bevelSize: 0.012, bevelSegments: 1 });
+  g.translate(0, 0, -0.025);
+  // a slight crumple: bend the panel along x so it isn't a flat card
+  const p = g.attributes.position as THREE.BufferAttribute;
+  for (let i = 0; i < p.count; i++) p.setZ(i, p.getZ(i) + 0.12 * p.getX(i) * p.getX(i) - 0.05 * p.getY(i));
+  g.computeVertexNormals();
+  return g;
+}
+
+/** A broken concrete lump: a low-poly rock with flattened (sawn) faces. Unit size, centred. */
+function chunkGeometry(): THREE.BufferGeometry {
+  const g = new THREE.DodecahedronGeometry(1, 0);
+  const p = g.attributes.position as THREE.BufferAttribute;
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+    p.setXYZ(i, Math.max(-0.7, Math.min(0.82, x)), Math.max(-0.5, Math.min(0.6, y)), Math.max(-0.75, Math.min(0.66, z)));
+  }
+  g.computeVertexNormals();
+  return g;
+}
+
+const shardMats = new Map<string, THREE.Material>();
+/** Sheet metal: bright, metallic, smooth enough to flash as it tumbles. */
+function shardMat(color: string): THREE.Material {
+  let m = shardMats.get(color);
+  if (!m) {
+    m = new THREE.MeshPhysicalMaterial({ color, metalness: 0.75, roughness: 0.28, clearcoat: 0.4, side: THREE.DoubleSide });
+    shardMats.set(color, m);
+  }
+  return m;
+}
+
+/** Slow-motion debris: seeded pieces (and amber sparks) thrown from a point, falling under gravity
+ * to a floor. `kind` "metal": thin bent skin panels with a metallic sheen (a jet, a ship, a steel
+ * member); "concrete": sawn-faced lumps, some trailing rebar stubs (a deck, a dam, a slab). Pure
+ * function of progress. */
 export const Debris: React.FC<DebrisSpec & { progress: number }> = ({
   count = 36, at, spread = 0.15, dir = [0, 1, 0], speed = 2.2, size = 0.07, start = 0, seconds = 2.4, slow = 0.4, gravity = 6, floor = -1e9,
-  color, sparks = true, seed = "debris", progress,
+  color, sparks = true, seed = "debris", kind = "metal", progress,
 }) => {
-  const { paint } = useDLook();
+  const look = useDLook();
+  const { paint } = look;
   const chunks = useRef<THREE.InstancedMesh>(null);
+  const bars = useRef<THREE.InstancedMesh>(null);
   const sp = useRef<THREE.InstancedMesh>(null);
-  const geo = useMemo(() => new THREE.IcosahedronGeometry(1, 0), []);
+  const metal = kind === "metal";
+  const geo = useMemo(() => (metal ? shardGeometry() : chunkGeometry()), [metal]);
+  const bgeo = useMemo(() => new THREE.CylinderGeometry(1, 1, 1, 6), []);
   const sgeo = useMemo(() => new THREE.SphereGeometry(1, 6, 4), []);
   const tmp = useMemo(() => new THREE.Object3D(), []);
+  const local = useMemo(() => new THREE.Matrix4(), []);
   const nSp = sparks ? Math.round(count * 0.5) : 0;
+  const nBars = metal ? 0 : count;
   const t = Math.max(0, (progress - start) / Math.max(1e-3, 1 - start)) * seconds * slow;
   const d = useMemo(() => new THREE.Vector3(...dir).normalize(), [dir[0], dir[1], dir[2]]);
   useLayoutEffect(() => {
-    const place = (m: THREE.InstancedMesh | null, n: number, key: string, sz: number, spd: number, life: number) => {
+    const place = (m: THREE.InstancedMesh | null, n: number, key: string, sz: number, spd: number, life: number, flat: boolean, rebar?: THREE.InstancedMesh | null) => {
       if (!m) return;
       for (let i = 0; i < n; i++) {
         const r = (k: number) => rnd(`${seed}${key}`, i * 11 + k);
@@ -261,22 +344,35 @@ export const Debris: React.FC<DebrisSpec & { progress: number }> = ({
         const o = new THREE.Vector3(r(4) - 0.5, r(5) - 0.5, r(6) - 0.5).multiplyScalar(spread * 2);
         const tt = t * (0.85 + r(7) * 0.3);
         const y = at[1] + o.y + v.y * tt - 0.5 * gravity * tt * tt;
+        const landed = y <= floor;
         tmp.position.set(at[0] + o.x + v.x * tt, Math.max(floor, y), at[2] + o.z + v.z * tt);
-        tmp.rotation.set(r(8) * 6 + tt * 4 * (r(9) - 0.5), r(10) * 6 + tt * 3, tt * 2);
+        // panels tumble slowly about a seeded axis; landed pieces stop turning
+        const spin = landed ? 0 : tt;
+        tmp.rotation.set(r(8) * 6 + spin * 2.2 * (r(9) - 0.5), r(10) * 6 + spin * 1.6, spin * 1.2 * (r(1) - 0.5));
         const alive = t > 0 && tt < life;
-        const s = alive ? sz * (0.4 + r(3) * 0.9) * (life < 10 ? 1 - tt / life : 1) : 0;
-        tmp.scale.set(s, s * (0.6 + r(2) * 0.6), s * (0.7 + r(1) * 0.5));
+        const s = alive ? sz * (0.45 + r(3) * 0.9) * (life < 10 ? 1 - tt / life : 1) : 0;
+        if (flat) tmp.scale.set(s * (1.1 + r(2) * 0.8), s * (0.7 + r(1) * 0.6), s);
+        else tmp.scale.set(s * (0.8 + r(2) * 0.5), s * (0.6 + r(2) * 0.5), s * (0.7 + r(1) * 0.5));
         tmp.updateMatrix();
         m.setMatrixAt(i, tmp.matrix);
+        if (rebar) {
+          // one or two bent bar stubs poking out of about half the lumps
+          const has = r(5) > 0.45 && s > 0;
+          local.compose(new THREE.Vector3(0.4, 0.5, 0.08), new THREE.Quaternion().setFromEuler(new THREE.Euler(0.3, 0, -0.7 + r(6) * 0.6)), new THREE.Vector3(0.045, has ? 1.1 + r(4) * 0.7 : 0, 0.045));
+          rebar.setMatrixAt(i, tmp.matrix.clone().multiply(local));
+        }
       }
       m.instanceMatrix.needsUpdate = true;
+      if (rebar) rebar.instanceMatrix.needsUpdate = true;
     };
-    place(chunks.current, count, "c", size, speed, 1e9);
-    place(sp.current, nSp, "s", size * 0.35, speed * 1.6, 0.9);
+    place(chunks.current, count, "c", size, speed, 1e9, metal, metal ? null : bars.current);
+    place(sp.current, nSp, "s", size * 0.35, speed * 1.6, 0.9, false);
   });
+  const mat = metal ? (look.clay ? paint("metal", color) : shardMat(color ?? "#c4cbd4")) : paint("concrete", color);
   return (
     <group userData={{ noFail: true }}>
-      <instancedMesh ref={chunks} args={[geo, undefined, count]} material={paint("concrete", color)} castShadow userData={{ noFail: true }} frustumCulled={false} />
+      <instancedMesh ref={chunks} args={[geo, undefined, count]} material={mat} castShadow userData={{ noFail: true }} frustumCulled={false} />
+      {nBars > 0 && <instancedMesh ref={bars} args={[bgeo, undefined, nBars]} material={paint("dark", "#5a3a2a")} castShadow userData={{ noFail: true }} frustumCulled={false} />}
       {nSp > 0 && <instancedMesh ref={sp} args={[sgeo, undefined, nSp]} material={glow("#ffb23e")} userData={{ noFail: true }} frustumCulled={false} />}
     </group>
   );

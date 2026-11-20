@@ -11,7 +11,7 @@ import { AbsoluteFill, Sequence, useCurrentFrame } from "remotion";
 import * as THREE from "three";
 import {
   Camera3D, CloudDeck, cue, Dam, DisasterStage, Failure3D, Focus, GirderBridge, Jet, jetTailplaneAt, Label3D, moves, Ocean,
-  oceanHeight, oceanTilt, Path3D, pathPose, buildPath, Rain, Ship, Smoke, Tag, type PathSample,
+  HonestyTag, oceanHeight, oceanTilt, Path3D, pathPose, buildPath, Rain, Ship, Smoke, type PathSample,
 } from "../index";
 
 export const DISASTER3D_DEMO = { fps: 30, durationInFrames: 360, width: 1080, height: 1920 } as const;
@@ -38,7 +38,7 @@ const SceneA: React.FC = () => {
   // wide chase → close on the tail
   const close = cue(frame, 34, 22);
   const offWide = new THREE.Vector3(-3.4, 1.6, 4.2).applyQuaternion(head.quat);
-  const offClose = new THREE.Vector3(-1.9, 0.75, 1.75).applyQuaternion(head.quat);
+  const offClose = new THREE.Vector3(-1.05, 0.5, 1.55).applyQuaternion(head.quat);
   const off = offWide.lerp(offClose, close);
   const look = new THREE.Vector3().lerpVectors(hp, tailW, close);
   const camPos = look.clone().add(off);
@@ -54,7 +54,7 @@ const SceneA: React.FC = () => {
           <Jet {...JET} livery={{ tail: "#1d3a6e", stripe: "#1d3a6e" }}
             wrap={{
               tailplane: (el) => (
-                <Failure3D stress={stress} frame={frame} hot={[-0.05, 0, 0]} hotRadius={0.35} mode="hinge" progress={hinge} axis={[0, 0, 1]} angle={0.42}
+                <Failure3D stress={stress} frame={frame} hot={[-0.05, 0, 0]} hotRadius={0.35} mode="hinge" progress={hinge} axis={[0, 0, 1]} angle={0.3}
                   pivot={[-0.12, 0, 0]} debris={{ at: [-0.12, 0, 0], count: 10, size: 0.014, speed: 0.6, dir: [-1, 0.3, 0], start: 0.05, seconds: 1.6, slow: 0.5, gravity: 1.5, seed: "jackscrew" }}>
                   {el}
                 </Failure3D>
@@ -81,7 +81,7 @@ const SceneB: React.FC = () => {
         wrapSpan={{
           1: (el) => (
             <Failure3D stress={stress} frame={frame} hot={[2, -0.15, 0]} hotRadius={1.6} mode="buckle" progress={buckle} span={[0, 4]} sag={1.1} sharp={1.6}
-              debris={{ at: [2, -0.25, 0], count: 40, size: 0.07, speed: 1.2, dir: [0, -0.4, 0], spread: 0.6, start: 0.15, seconds: 2.4, slow: 0.4, gravity: 3, floor: -2.25, seed: "girder" }}>
+              debris={{ at: [2, -0.25, 0], count: 40, size: 0.07, speed: 1.2, dir: [0, -0.4, 0], spread: 0.6, start: 0.15, seconds: 2.4, slow: 0.4, gravity: 3, floor: -2.25, seed: "girder", kind: "concrete" }}>
               {el}
             </Failure3D>
           ),
@@ -106,15 +106,16 @@ const SceneC: React.FC = () => {
   const y = oceanHeight(0, 0, frame, WAVES) - 0.05 - list * 0.6;
   return (
     <>
-      <Camera3D keys={moves.pushIn(0, 90, [1.8, 0.9, 0], [1, 0.3, 0.62], 15.5, 12.5)} drift={0.02} />
-      <Focus at={[2.5, 0.8, 0]} range={4} />
+      {/* bow-quarter: the whole ship foreshortened into a 9:16 frame, the open bow nearest */}
+      <Camera3D keys={moves.pushIn(0, 90, [0.9, 0.75, 0], [1, 0.36, 0.5], 19, 15.5)} drift={0.02} />
+      <Focus at={[3.2, 0.6, 0]} range={5} />
       <Ocean frame={frame} size={70} segments={150} waves={WAVES} />
       <Rain frame={frame} center={[3, 3.5, 3]} size={[16, 8, 14]} count={1100} />
       <group position={[0, y, 0]} rotation={[roll * 0.6 + list, 0, pitch * 0.6 - list * 0.12]}>
         <Ship hull="ferry" length={8} bowDoors={doors} doorType="clamshell" livery={{ funnel: "#d62828", band: "#1d3557" }} />
       </group>
       <Smoke frame={frame + 200} at={[-1.6, 1.9, 0]} height={3.5} width={1.6} count={18} color="#5b6168" opacity={0.45} wind={[-1.2, 0, 0.2]} seed="funnel" />
-      <Label3D at={[4, 0.5, 0]} offset={[0.4, 1.6, 0.8]} text="Bow doors open" sub="sea reaches the car deck" start={14} px={44} color="#ff8a2a" />
+      <Label3D at={[4, 0.5, 0]} offset={[-0.6, 2.4, 1.2]} text="Bow doors open" sub="sea reaches the car deck" start={14} px={44} color="#ff8a2a" />
     </>
   );
 };
@@ -123,18 +124,19 @@ const SceneC: React.FC = () => {
 
 const SceneD: React.FC = () => {
   const frame = useCurrentFrame();
-  const level = 0.5 + cue(frame, 4, 66, (x) => x) * 0.58;
+  const level = 0.62 + cue(frame, 0, 52, (x) => x) * 0.5;
   return (
     <>
-      <Camera3D keys={moves.pushIn(0, 80, [-1.5, 1.2, 0], [1, 0.62, 1.15], 27, 23)} drift={0.01} />
-      <Focus at={[-1, 1.6, 0]} range={5} />
-      <Dam kind="gravity" length={8} height={3} level={level} reach={10} frame={frame} />
-      <Label3D at={[-3, level * 3, 2.4]} offset={[-0.4, 1.0, 0.8]} text="Reservoir level" sub="rising to the crest" start={8} px={44} color="#2f7de1" />
+      {/* from downstream, high and oblique: river in front, the face and the pour, the reservoir behind */}
+      <Camera3D keys={moves.pushIn(0, 80, [0.3, 1.0, 0], [1, 0.5, 0.58], 23, 20)} drift={0.01} />
+      <Focus at={[1.2, 1.4, 0]} range={6} />
+      <Dam kind="gravity" length={6} height={3} level={level} reach={9} frame={frame} />
+      <Label3D at={[-2.2, Math.min(level, 1.04) * 3, -1.6]} offset={[-0.4, 0.5, -0.6]} text={level > 1 ? "Overtopping" : "Reservoir level"} sub={level > 1 ? "water over the crest" : "rising to the crest"} start={8} px={44} color="#2f7de1" />
     </>
   );
 };
 
-const tag = <AbsoluteFill style={{ pointerEvents: "none" }}><Tag kind="recreation" /></AbsoluteFill>;
+const tag = <AbsoluteFill style={{ pointerEvents: "none" }}><HonestyTag kind="reconstruction" /></AbsoluteFill>;
 
 export const Disaster3DDemo: React.FC = () => (
   <AbsoluteFill style={{ background: "#000" }}>

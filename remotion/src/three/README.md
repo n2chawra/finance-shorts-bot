@@ -70,12 +70,19 @@ For `channels/disasters-and-engineering-failures-expla/` (build spec: its
   warm clay with one accent (`clayMat()`: matte, sheen, a cheap sky-facing AO term). `RAMP` /
   `rampColor()`: grey → amber → red; red always means the failure.
 - **Vehicles** (`Vehicles.tsx`): `Jet` (length, sweep, `engines` underWing / rear / tri, `perWing`, `tail`
-  conventional / T, windows, girth, livery, gear; nose +x; `jetTailplaneAt()` gives the hinge), `Train`
+  conventional / T, windows, girth, `span`, livery, gear; nose +x; `jetTailplaneAt()` gives the hinge). One
+  `jetDims()` holds every proportion: drooped nose and upswept tail cone, a swept tapered fin on the
+  top centreline with a rudder line, the stabiliser at its foot or (T) on its tip, airfoil-section
+  wings thinning to the tip, root and belly fairings, nacelles with intake lip, fan, spinner and
+  exhaust cone, cockpit glazing and window rows laid on the skin, a painted cheat line. `Train`
   + `Track` (power car `nose` loco / highSpeed / cab, n carriages, bogies with turning wheels, pantograph,
   per-car `poses` for a derailment), `Ship` (`hull` ferry / cargo / liner, decks, funnels, seeded
-  containers, `bowDoors` 0–1 as clamshell or visor; waterline y=0, bow +x).
+  containers, `bowDoors` 0–1 as clamshell or visor; waterline y=0, bow +x): a flared bow with an upright
+  door face, a sheer line, painted deck, boot top and band; rounded deck houses with window rows, bridge
+  wings, mast, lifeboats, a capped funnel.
 - **Structures** (`Structures.tsx`): `GirderBridge`, `TrussBridge` (spans, piers wall / columns),
-  `Dam` (gravity / arch, `level` of the reservoir, overtopping sheet above 1), `Building` (floors, bays,
+  `Dam` (gravity / arch, `level` of the reservoir; a seeded valley terrain that frames a 9:16 shot
+  from downstream; above 1 a streaming sheet pours over the crest and down the face, spray at the toe), `Building` (floors, bays,
   skin frame / glass / atrium, hung `walkways`), `Ride` (arm or coaster segment), `Member` (a strut a→b).
 - **Every hero has `wrap` hooks** on the part that fails (`wrap.tailplane`, `wrapSpan[1]`,
   `wrapWalkway[4]`, `wrapArm`, `wrap[i]` per carriage…): put a `Failure3D` there.
@@ -83,21 +90,27 @@ For `channels/disasters-and-engineering-failures-expla/` (build spec: its
   spot with `hotRadius`), glowing into bloom with a pulse near 1; `mode` + `progress`: `hinge` (pivot,
   axis, angle), `buckle` (sags and kinks between `span` x0..x1 in the vertex shader; plain boxes are
   re-tessellated automatically, other geometry needs its own segments), `shear` / `tear` (a `cut` plane
-  splits the part with clipping planes; the far side slides and drops or peels about the cut).
-  `debris`: seeded slow-motion chunks and amber sparks to a floor. Parts only, never people.
+  splits the part with clipping planes; the far side slides and drops or peels about the cut; each cut
+  face shows a solid cap a shade darker, lit as the cut plane). A buckled part's shadow bends with it.
+  `debris`: seeded slow-motion pieces and amber sparks to a floor, `kind` metal (thin bent panels,
+  metallic sheen) or concrete (sawn lumps with rebar stubs). Parts only, never people.
 - **Path3D** (`Path3D.tsx`): samples `{t, x,y,z}` or `{t, lat,lon,alt}` (+ `geo` projection) → a tube
   coloured by `v` on the ramp, a drop curtain to the ground, a dashed ground trace, `events` as Label3D
   callouts that write on as the head passes, a `marker` (a Jet) carried along with `bank`, and a `gap`
   so the tube doesn't run through it. `buildPath` + `pathPose(path, t)` put a camera or model on it.
-- **Atmos3D** (`Atmos3D.tsx`): `CloudDeck` (noise sheet + low-poly puffs, drifting), `Ocean` (faceted
+- **Atmos3D** (`Atmos3D.tsx`): `CloudDeck` (noise sheet + soft sprite puffs lit from above, drifting), `Ocean` (faceted
   vertex-shader waves; `oceanHeight` / `oceanTilt` give the same surface in JS so a ship floats and
   rolls on it), `Smoke` (sprites on a fixed life cycle, optional fire-light `glow` at the base), `Rain`.
 
 Demo: `Disaster3DDemo` (12 s, one look per scene: jet tailplane hinge on a path over clouds, a
 girder bridge buckling, a ferry listing with bow doors open in rain, a dam filling). Stills in
 `channels/disasters-and-engineering-failures-expla/samples/3d-kit/`.
-Weak so far: the dam scene's framing (banks crowd a 9:16 frame), hulls are extruded "soap bars", no
-interior/cut caps on shear and tear, a buckled part's shadow doesn't bend, labels don't follow a sag.
+- **HonestyTag** (`HonestyTag.tsx`): the channel's wording (`HONESTY_TAGS`, from channel.json
+  `look.honestyTags`: "3D reconstruction · not actual footage" …), Courier Prime, top left; pass it in
+  the stage's `overlay`.
+
+Weak so far: the ocean is faceted (flat-shaded), labels don't follow a sag, the Label3D leader can
+overshoot its box, cap shading assumes closed meshes.
 
 ## How a director codes a beat
 

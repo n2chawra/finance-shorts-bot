@@ -5,3 +5,4 @@ export * from "./Structures";
 export * from "./Failure3D";
 export * from "./Path3D";
 export * from "./Atmos3D";
+export * from "./HonestyTag";
