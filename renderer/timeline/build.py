@@ -30,7 +30,7 @@ from renderer.engine.audio import (SR, Mixer, integrated_lufs, sfx_beep, sfx_boo
                                    sfx_chime, sfx_glass, sfx_paper, sfx_pin, sfx_pop, sfx_riser, sfx_scribble, sfx_swell,
                                    sfx_thud, sfx_tick, sfx_whoosh, sfx_groan, sfx_creak, sfx_rivet, sfx_squelch,
                                    sfx_clatter, sfx_rush, sfx_subboom)
-from renderer.engine.music import gain_curve, make_bed
+from renderer.engine.music import gain_curve, make_bed, make_motif
 from renderer.engine.formatting import LEGACY_CURRENCY, Money, fact_value, money_for, month_year
 from renderer.engine import sfx_sets
 from renderer.engine.style import resolve_style
@@ -49,6 +49,8 @@ VOICE_DUCK = 0.72                 # music drops this much under speech (0.6 unti
 SFX_BUS = 0.5
 SFX_UNDER_VOICE = 0.6
 VOICE_RMS = 0.2                   # every line levelled to the same loudness, peaks kept under 0.95
+OWN_MOTIF_SINCE = 20261122          # each Short's own tune (channel #1) from the videos of this day
+MOTIF_LEVEL = 0.8                  # the tune in a pause, against the bed's level
 QUIET_BED, QUIET_LEVEL, QUIET_DUCK = "quiet-bed", 0.32, 0.92   # the experiment's bed level and duck
 DISCLAIMER = "Illustrative only. Not financial advice."
 TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
@@ -500,10 +502,16 @@ def directed_cues(params: dict, events: dict[str, int], start: float, allowed: "
     return out
 
 
+def made_since(out: Path, day: int) -> bool:
+    """Whether the video in this output folder (named by its id, v-YYYYMMDD-NN) was made on or after `day`;
+    a folder without an id (a test, a sample) counts as new. Published videos re-render as they were."""
+    d = re.match(r"^[A-Za-z]+-(\d{8})-", out.name)
+    return not d or int(d.group(1)) >= day
+
+
 def auto_directed(out: Path) -> bool:
     """Directed cues apply to videos from AUTO_DIRECTED_SINCE (by the id in the output folder's name)."""
-    d = re.match(r"^[A-Za-z]+-(\d{8})-", out.name)
-    return not d or int(d.group(1)) >= AUTO_DIRECTED_SINCE
+    return made_since(out, AUTO_DIRECTED_SINCE)
 
 
 def _drop_envelope(n: int, drops: list[float], before: float = DROP_BEFORE, level: float = DROP_LEVEL) -> np.ndarray:
@@ -859,7 +867,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     timeline_beats, lines, cursor, drops = [], [], 0.0, []
     drop_shape = own_drop(own_sound, fmt)
     automatic: set[int] = set()     # ids of the sounds the builder added (transitions, cues), for cap_sfx
-    directed_ok = auto_directed(out)
+    # a channel with its own effects list first (2026-11-21); channel #1's Shorts change one sound at a time
+    # (its own tune tonight), so its directed cues wait for their own change
+    directed_ok = auto_directed(out) and bool(own_sound) and bool(own_sound.get("sfx"))
     for b in beats:
         where = f"beat {b.id!r}"
         params = _resolve(b.params, figures, results, f"{where}.params")
@@ -936,7 +946,15 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, SHORT_DUCK if fmt == "short" else VOICE_DUCK)
     if own_sound:   # the channel's own mix, measured on its references (channel.json sound)
         level, duck_by = own_level(own_sound, "bedLevel", fmt, level), own_level(own_sound, "duck", fmt, duck_by)
-    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*_drop_envelope(mixer.n, drops, *(drop_shape or ())))
+    drop_env = _drop_envelope(mixer.n, drops, *(drop_shape or ()))
+    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*drop_env)
+    motif = None
+    if fmt == "short" and not own_sound and made_since(out, OWN_MOTIF_SINCE):
+        # each Short's own tune, heard only in the pauses between lines (owner note cmwk4neu, 2026-11-17: the
+        # same background in every Short; made the default on 2026-11-21 under the owner's 19 Nov rule that
+        # his feedback goes straight away, not as a test). Channel #1 only: other channels have their own beds
+        tune, motif = make_motif(np.random.default_rng(seed + 11), length, style.key, style.bpm)
+        mixer.add_bed(tune, level*MOTIF_LEVEL*(1 - duck)*drop_env)
     per_minute = ((own_sound.get("sfxPerMinute") or {}) if own_sound else {}).get(fmt)
     if per_minute is not None:
         cap_sfx(timeline_beats, automatic, float(per_minute), length)
@@ -987,7 +1005,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                   **({} if own_sound else {"sfx": style.sfx}),
                   **({"look": (script.get("style") or {})["look"]} if (script.get("style") or {}).get("look") else {})},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems, "lufs": lufs,
-                  **({"music_under_voice_db": under} if under is not None else {})},
+                  **({"music_under_voice_db": under} if under is not None else {}), **({"motif": motif} if motif else {})},
         # the channel's own corner logo (generator/pack.py logo): "sikka", a remotion/public path, or None
         "logo": channel_pack.logo(),
         # the channel's cast (channel.json look.cast): "none" for a channel told without characters (the business

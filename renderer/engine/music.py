@@ -474,3 +474,60 @@ def gain_curve(dur: float, base: float, segments: Sequence[tuple[float, float, f
     for a, b, g in segments:
         gain[int(a*SR):int(b*SR)] = g
     return np.convolve(gain, np.ones(smooth)/smooth, mode="same")
+
+
+# Weekly-loop cycle 2 challenger "own-motif-bed" (owner note cmwk4neu, 2026-11-17, on v-20261117-01: the
+# same background in every Short): each Short's bed carries its own short tune, a five- or six-note phrase
+# from a pentatonic scale in the video's key, on an instrument picked per video, played every two bars. The
+# mix lets it through only in the pauses between lines and drops it before the payoff with the rest of the
+# bed (renderer/timeline/build.py). Its own random stream, so the bed itself is the same on both sides.
+MOTIF_SCALES = {"minor": (0, 3, 5, 7, 10), "major": (0, 2, 4, 7, 9)}
+MOTIF_RHYTHMS = [(0.5, 0.5, 1.0, 0.5, 1.5), (1.0, 0.5, 0.5, 1.0, 1.0), (0.5, 0.5, 0.5, 0.5, 2.0),
+                 (0.75, 0.25, 1.0, 0.5, 0.5, 1.0)]
+MOTIF_INSTRUMENTS = ("pluck", "mallet", "bell", "flute")
+
+
+def _bell(freq: float, dur: float) -> np.ndarray:
+    """A small glass bell: the note and an inharmonic partial ringing out. Do not mutate."""
+    t = tarr(dur)
+    s = np.sin(2*np.pi*freq*t)*np.exp(-t*3.2) + 0.4*np.sin(2*np.pi*freq*2.76*t)*np.exp(-t*7)
+    return s*np.minimum(1, t/0.003)*np.clip((dur - t)/0.03, 0, 1)
+
+
+def _flute(freq: float, dur: float) -> np.ndarray:
+    """A soft breathy lead: a sine with a slow attack and a little vibrato. Do not mutate."""
+    t = tarr(dur)
+    s = np.sin(2*np.pi*freq*t + 0.004*freq/5.5*np.sin(2*np.pi*5.5*t)) + 0.15*np.sin(4*np.pi*freq*t)
+    return s*np.minimum(1, t/0.06)*np.clip((dur - t)/0.08, 0, 1)
+
+
+def make_motif(rng: np.random.Generator, dur: float, key: str, bpm: float) -> tuple[np.ndarray, dict]:
+    """A video's own tune, `dur` s long and normalised to BED_RMS where it plays, and what it is."""
+    k = KEYS.index(key)
+    mode = ("minor", "major")[int(rng.integers(2))]
+    scale = MOTIF_SCALES[mode]
+    rhythm = MOTIF_RHYTHMS[int(rng.integers(len(MOTIF_RHYTHMS)))]
+    inst = MOTIF_INSTRUMENTS[int(rng.integers(len(MOTIF_INSTRUMENTS)))]
+    play = {"pluck": _pluck, "mallet": _mallet, "bell": _bell, "flute": _flute}[inst]
+    root = 67 + (k - 7) % 12 - 12*((k - 7) % 12 > 6)     # around G4
+    degrees = [int(x) for x in rng.integers(0, 7, len(rhythm))]
+    degrees[0], degrees[-1] = 0, int(rng.choice([0, 2, 4]))
+    beat = 60/bpm
+    out = np.zeros(int(SR*dur))
+    phrase = 8*beat                                     # the tune every two bars, answered the second time
+    n = 0
+    while n*phrase < dur:
+        t0 = n*phrase
+        for i, (deg, length) in enumerate(zip(degrees, rhythm)):
+            d = deg if not (n % 2 and i == len(degrees) - 1) else (deg + 2) % 7
+            midi = root + scale[d % 5] + 12*(d // 5)
+            note_ = play(note(midi), min(length*beat*1.6, 1.6))
+            a = int(t0*SR)
+            if a >= len(out):
+                break
+            b = min(len(out), a + len(note_))
+            out[a:b] += note_[:b - a]
+            t0 += length*beat
+        n += 1
+    rms = float(np.sqrt(np.mean(out[out != 0]**2))) if np.any(out) else 1.0
+    return out*(BED_RMS/rms), {"instrument": inst, "mode": mode, "notes": len(rhythm)}
