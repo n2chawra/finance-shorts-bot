@@ -2111,6 +2111,88 @@
         "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
         "https://learninglegacy.crossrail.co.uk/wp-content/uploads/2017/04/Machine-driven-tunnels-on-the-Elizabeth-line-London.pdf"
       ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "priority": "normal",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-22",
+      "expires": "2027-02-20",
+      "status": "new",
+      "id": "2026-11-22-how-wings-lift",
+      "title": "Why Is the School Answer for How Planes Fly Wrong?",
+      "category": "machines",
+      "stories": [
+        "machine_works"
+      ],
+      "demand": {
+        "title": "What Makes an Airplane Fly | 3D Animation",
+        "views": 3489716,
+        "url": "https://youtube.com/shorts/Vz7ejvMGBXk",
+        "channel": "3D Eye",
+        "channelSubs": 161000,
+        "outlier": 21.68,
+        "ageDays": 12.9,
+        "viewsPerDay": 270056
+      },
+      "hook": "Most of us were taught why a wing lifts a plane. NASA says that answer is wrong.",
+      "angle": "Cutaway of an A380 wing in a wind tunnel of glowing streamlines. The school answer: air over the longer top must hurry to meet the air underneath (equal transit). Show two air parcels split at the leading edge: the top one arrives first, not together, so the premise fails; a flat paper plane and a symmetric wing still lift. The real step: the wing at an angle turns the airflow downward, faster flow and lower pressure above, the air is pushed down and the wing is pushed up. Payoff (computed by code from the two Airbus figures): each square metre of an A380's wing holds up about 680 kg at take-off, a small car on every square metre. Loop back to the wing.",
+      "why_now": "3D Eye's airplane Short has 3.49M views in 13 days on a 161K channel (21.7x) and adds 270K a day; it is the only on-profile machine in that channel's top five. A myth the niche's expert commenters correct: exactly the 'never skip the causal step' rule in our profile.",
+      "facts": [
+        {
+          "label": "Maximum take-off weight of the Airbus A380, in tonnes",
+          "value": 575,
+          "unit": "count",
+          "as_of": "2022-02-01",
+          "source": "Airbus",
+          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Reference wing area of the A380, in square metres",
+          "value": 845,
+          "unit": "count",
+          "as_of": "2022-02-01",
+          "source": "Airbus",
+          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Wingspan of the A380, in metres",
+          "value": 79.8,
+          "unit": "count",
+          "as_of": "2022-02-01",
+          "source": "Airbus",
+          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Maximum certified seating of the A380",
+          "value": 853,
+          "unit": "count",
+          "as_of": "2022-02-01",
+          "source": "Airbus",
+          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+          "fixed": true
+        }
+      ],
+      "maths": null,
+      "verify": [
+        "A380 575 t maximum take-off weight, 845 m2 wing area, 79.8 m wingspan, 853 max seats (Airbus Facts and Figures, Feb 2022)",
+        "NASA Glenn: the equal-transit theory is wrong; molecules split at the leading edge do not meet at the trailing edge; its predicted lift is much less than observed; symmetric wings and flat plates lift",
+        "Load per square metre is computed by code (575,000 kg / 845 m2), never typed; say 'at maximum take-off weight'",
+        "The streamline drawing: tag it 'illustration'; air over the top arrives at the trailing edge first (show it so)"
+      ],
+      "sources": [
+        "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+        "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/foilw1",
+        "https://www.grc.nasa.gov/WWW/K-12/WindTunnel/disclaimer.html"
+      ]
     }
   ]
 }
