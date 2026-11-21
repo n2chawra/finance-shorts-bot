@@ -1,0 +1,22 @@
+{
+  "agent": "research",
+  "day": "2026-11-22",
+  "channel": "geography-maps-geopolitical-mysteries",
+  "startedAt": "2026-11-21T18:43:08Z",
+  "finishedAt": "2026-11-21T18:46:41Z",
+  "summary": "Geography channel, Sunday teardown of Odd Atlas and WorldShift: added 3 map-answer topics (same population per country, Chile's shape, the Wakhan Corridor) and one title challenger to the weekly-loop list.",
+  "decision": "acted",
+  "why": "Odd Atlas (5.25K subs, median 56.7K views a Short) names the visible shape in 9 of its top 15 titles; WorldShift's whole-world what-ifs reach 46x its subscribers. No stayed-to-watch data of ours yet, so the title idea is a challenger, not a change.",
+  "findings": [
+    {"title": "Odd Atlas titles name the oddity on the map", "detail": "Triangle 554K, strip 540K, finger 277K, wall 220K, ruler 114K, all on 5.25K subscribers; our titles name the place plus a fact."},
+    {"title": "WorldShift: whole-world what-ifs win", "detail": "One country 2.95M, same population 160K, same land area 57K, on 3.47K subscribers."},
+    {"title": "Wakhan Corridor is in the news", "detail": "Afghanistan's new road through it ends at the closed Chinese border (Al Jazeera, 14 Nov 2026).", "link": "https://www.aljazeera.com/features/2026/11/14/wakhan-corridor-afghanistan-china-taliban"},
+    {"title": "Claude Code 2.1.330", "detail": "WebFetch freeze and empty-page fixes; nothing to change in the pipeline."}
+  ],
+  "changes": [
+    {"title": "3 topics in the feed", "detail": "what-if same population (7.35), Chile long and thin (7.15), Wakhan finger to China (7.59, waits on borders)."},
+    {"title": "Challenger geo-title-names-the-oddity", "detail": "First-second title test on stayed to watch, after geo-claim-hook in cycle/backlog.json."}
+  ],
+  "nextCheck": "2026-11-23",
+  "links": [{"label": "Report", "url": "channels/geography-maps-geopolitical-mysteries/research/2026-11-22.md"}]
+}
