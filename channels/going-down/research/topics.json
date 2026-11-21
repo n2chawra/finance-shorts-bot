@@ -1,4 +1,2459 @@
 {
-  "note": "First topics from the research, with sourced facts.",
-  "topics": []
+ "note": "First topics (21 Nov 2026): 2 research agents, every layer sourced; each topic verify list names conflicts for the fact reviewer. Grand Central is the owner-approved sample.",
+ "topics": [
+  {
+   "id": "2026-11-21-grand-central",
+   "format": "short",
+   "title": "What's Under Grand Central?",
+   "category": "station",
+   "place": "Grand Central Terminal, New York",
+   "country": "US",
+   "reach": "global",
+   "hook": "What's under Grand Central? Let's go down.",
+   "layers": [
+    {
+     "name": "Street level (42nd St / Park Ave)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The reference point: every depth below is measured from the street outside the terminal.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Main Concourse",
+     "depthFt": 20,
+     "depthM": 6.1,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The great hall sits on the same level as the upper train platforms, a short ramp down from the street.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central_Terminal",
+     "confidence": "medium"
+    },
+    {
+     "name": "Metro-North upper-level tracks",
+     "depthFt": 20,
+     "depthM": 6.1,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The upper of the terminal's two track levels, about 30 tracks for Metro-North trains.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "42nd Street Shuttle (S) platforms",
+     "depthFt": 20,
+     "depthM": 6.1,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The shallowest subway at Grand Central, the shuttle to Times Square, at the same depth as the upper tracks.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Lexington Ave 4/5/6 subway platforms",
+     "depthFt": 50,
+     "depthM": 15.2,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The 4, 5 and 6 trains run north-south under Lexington Avenue 30 feet below the shuttle.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Metro-North lower-level tracks",
+     "depthFt": 60,
+     "depthM": 18.3,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The second track level, about 26 tracks, stacked directly under the upper level.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Grand Central Madison concourse (LIRR)",
+     "depthFt": 60,
+     "depthM": 18.3,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The new Long Island Rail Road hall, opened January 2023, sits level with the western part of Metro-North's lower level.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central_Madison",
+     "confidence": "medium"
+    },
+    {
+     "name": "Flushing Line 7 train platform",
+     "depthFt": 80,
+     "depthM": 24.4,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The deepest of the subway platforms here, the 7 train heading under the East River to Queens.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "M42 secret sub-basement (substation)",
+     "depthFt": 105,
+     "depthM": 32,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "A hidden electrical substation that powers the terminal and the tracks' third rails, left off maps and blueprints for decades.",
+     "url": "https://en.wikipedia.org/wiki/M42_(sub-basement)",
+     "confidence": "medium"
+    },
+    {
+     "name": "Grand Central Madison upper track level",
+     "depthFt": 130,
+     "depthM": 39.6,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The upper deck of two bi-level rock caverns holding the LIRR's tracks, reached by escalators up to 182 feet long.",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "confidence": "medium"
+    },
+    {
+     "name": "Grand Central Madison lower track level (deepest platforms)",
+     "depthFt": 150,
+     "depthM": 45.7,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The deepest platforms at Grand Central: 8 tracks and 4 platforms in all, blasted out of rock about 150 feet under the street.",
+     "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2023/03/long-awaited-grand-central-madison-station-opens-in-new-york-city",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "Grand Central Madison's escalators are 182 feet long, the city's longest, and a one-way ride takes about 90 seconds (MTA).",
+    "url": "https://away.mta.info/articles/welcome-to-grand-central-madison-guide"
+   },
+   "facts": [
+    {
+     "label": "Main Concourse depth",
+     "value": 20,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/Grand_Central_Terminal",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central_Terminal",
+     "fixed": true
+    },
+    {
+     "label": "Metro-North upper-level tracks depth",
+     "value": 20,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "42nd Street Shuttle (S) platforms depth",
+     "value": 20,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "Lexington Ave 4/5/6 subway platforms depth",
+     "value": 50,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "Metro-North lower-level tracks depth",
+     "value": 60,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "Grand Central Madison concourse (LIRR) depth",
+     "value": 60,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/Grand_Central_Madison",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central_Madison",
+     "fixed": true
+    },
+    {
+     "label": "Flushing Line 7 train platform depth",
+     "value": 80,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "M42 secret sub-basement (substation) depth",
+     "value": 105,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/M42_(sub-basement)",
+     "url": "https://en.wikipedia.org/wiki/M42_(sub-basement)",
+     "fixed": true
+    },
+    {
+     "label": "Grand Central Madison upper track level depth",
+     "value": 130,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "Grand Central Madison lower track level (deepest platforms) depth",
+     "value": 150,
+     "unit": "ft",
+     "as_of": "2026",
+     "source": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2023/03/long-awaited-grand-central-madison-station-opens-in-new-york-city",
+     "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2023/03/long-awaited-grand-central-madison-station-opens-in-new-york-city",
+     "fixed": true
+    },
+    {
+     "label": "Grand Central Madison escalator ride, one way",
+     "value": 90,
+     "unit": "s",
+     "as_of": "2023",
+     "source": "MTA guide",
+     "url": "https://away.mta.info/articles/welcome-to-grand-central-madison-guide",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Madison depth: 150 ft (ASCE) vs 140/175 elsewhere; M42 depth 105-109 ft",
+    "Owner-approved sample: E:/work/going-down-sample (22 s)"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station",
+    "https://en.wikipedia.org/wiki/Grand_Central_Madison",
+    "https://en.wikipedia.org/wiki/Grand_Central_Terminal",
+    "https://en.wikipedia.org/wiki/M42_(sub-basement)",
+    "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2023/03/long-awaited-grand-central-madison-station-opens-in-new-york-city"
+   ],
+   "found": "2026-11-21",
+   "status": "new",
+   "priority": "high"
+  },
+  {
+   "id": "2026-11-21-times-square",
+   "format": "short",
+   "title": "What's Under Times Square?",
+   "category": "station",
+   "place": "Times Square-42nd Street station complex, New York",
+   "country": "United States",
+   "reach": "global",
+   "hook": "What's hiding under the busiest crossroads in the world?",
+   "layers": [
+    {
+     "name": "Times Square street level",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "ft",
+     "kind": "surface",
+     "what": "The reference point: the street outside, where every depth below is measured from.",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "42nd Street Shuttle (S) platform",
+     "depthFt": 20,
+     "depthM": 6.1,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The shallowest station in the complex, the shuttle across to Grand Central.",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "IRT Broadway-Seventh Avenue Line (1/2/3) platforms",
+     "depthFt": 40,
+     "depthM": 12,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The 1, 2 and 3 trains run under Seventh Avenue.",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "BMT Broadway Line (N/Q/R/W) platforms",
+     "depthFt": 50,
+     "depthM": 15,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The N, Q, R and W trains run under Broadway itself.",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    },
+    {
+     "name": "IRT Flushing Line (7) platform",
+     "depthFt": 60,
+     "depthM": 18,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "The deepest station in the complex: the 7 train, heading east under 42nd Street toward Queens.",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "confidence": "high"
+    }
+   ],
+   "payoff": {
+    "fact": "Times Square-42nd Street is the busiest station in the New York subway, 1st of 423, with 61,203,303 riders in 2025.",
+    "value": 61203303,
+    "unit": "riders (2025)",
+    "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station"
+   },
+   "facts": [
+    {
+     "label": "Shuttle platform depth",
+     "value": 20,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Times Square-42nd Street station",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "1/2/3 platform depth",
+     "value": 40,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Times Square-42nd Street station",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "N/Q/R/W platform depth",
+     "value": 50,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Times Square-42nd Street station",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "7 train platform depth (deepest)",
+     "value": 60,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Times Square-42nd Street station",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "Riders in 2025",
+     "value": 61203303,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia (MTA ridership), Times Square-42nd Street station",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "fixed": true
+    },
+    {
+     "label": "Stations in the subway (rank 1st of)",
+     "value": 423,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia, Times Square-42nd Street station",
+     "url": "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Depths are Wikipedia-only (no MTA figure found); same style as the Grand Central list.",
+    "Only 4 underground layers and a 60 ft bottom: shallow for the format; a writer may want bedrock (no depth found) or the 8th Ave A/C/E at 42 St-Port Authority (no depth found)."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Times_Square%E2%80%9342nd_Street_station"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-hampstead-deepest-tube",
+   "format": "short",
+   "title": "What's Under Hampstead?",
+   "category": "station",
+   "place": "Hampstead tube station, London Underground",
+   "country": "United Kingdom",
+   "reach": "global",
+   "hook": "How deep is the deepest station on the London Underground?",
+   "layers": [
+    {
+     "name": "Hampstead street level (Heath Street)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "The station entrance on the hill in Hampstead, the reference point.",
+     "url": "https://en.wikipedia.org/wiki/Hampstead_tube_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Bottom of the lift shaft",
+     "depthFt": 180,
+     "depthM": 55,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "The deepest lift shaft on the Underground; there are no escalators, only lifts and a spiral stair.",
+     "url": "https://en.wikipedia.org/wiki/Hampstead_tube_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Northern line platforms",
+     "depthFt": 192,
+     "depthM": 58.5,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "The deepest platforms on the whole London Underground network.",
+     "url": "https://en.wikipedia.org/wiki/Hampstead_tube_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Northern line tunnel under the Heath / North End ghost station",
+     "depthFt": 221,
+     "depthM": 67,
+     "sourceUnit": "ft",
+     "kind": "chamber",
+     "what": "Just up the line, the never-opened North End station would have been the deepest on the network; in the Cold War it became the control centre for the tube's flood gates, its entrance disguised as an electricity substation.",
+     "url": "https://en.wikipedia.org/wiki/North_End_tube_station",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "If the lifts fail, the spiral emergency staircase at Hampstead has 320 steps, the most of any Tube station (TfL).",
+    "value": 320,
+    "unit": "steps",
+    "url": "https://art.tfl.gov.uk/labyrinth/artwork/hampstead/"
+   },
+   "facts": [
+    {
+     "label": "Lift shaft depth",
+     "value": 55,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Hampstead tube station",
+     "url": "https://en.wikipedia.org/wiki/Hampstead_tube_station",
+     "fixed": true
+    },
+    {
+     "label": "Platform depth below ground",
+     "value": 58.5,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Hampstead tube station",
+     "url": "https://en.wikipedia.org/wiki/Hampstead_tube_station",
+     "fixed": true
+    },
+    {
+     "label": "North End (unopened) depth below ground",
+     "value": 221,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, North End tube station",
+     "url": "https://en.wikipedia.org/wiki/North_End_tube_station",
+     "fixed": true
+    },
+    {
+     "label": "Steps on the emergency stair",
+     "value": 320,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "TfL Art on the Underground, Labyrinth: Hampstead",
+     "url": "https://art.tfl.gov.uk/labyrinth/artwork/hampstead/",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "TfL's Labyrinth page says the Northern line 'section at Hampstead' is 221 ft deep, i.e. it attributes 221 ft to Hampstead, while Wikipedia gives Hampstead platforms 58.5 m (192 ft) and 221 ft (67 m) to North End: tell 221 ft as the tunnel/North End, not the platform.",
+    "Step count: TfL 320; London Transport Museum (via How It Works) 310. Use 320 with TfL as source.",
+    "North End's Cold War role is Wikipedia-only (medium)."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hampstead_tube_station",
+    "https://en.wikipedia.org/wiki/North_End_tube_station",
+    "https://art.tfl.gov.uk/labyrinth/artwork/hampstead/"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-big-ben",
+   "format": "short",
+   "title": "What's Under Big Ben?",
+   "category": "tower",
+   "place": "Elizabeth Tower (Big Ben) and Westminster station, London",
+   "country": "United Kingdom",
+   "reach": "global",
+   "hook": "What's under Big Ben that makes it lean?",
+   "layers": [
+    {
+     "name": "Bridge Street / Parliament Square ground level",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "The foot of the 61-metre clock tower, the reference point.",
+     "url": "https://www.scientificamerican.com/article/is-londons-big-ben-falling/",
+     "confidence": "high"
+    },
+    {
+     "name": "Concrete raft foundation",
+     "depthFt": null,
+     "depthM": 7,
+     "sourceUnit": "m",
+     "kind": "foundation",
+     "what": "The whole tower stands on one concrete slab 15 m square and 3 m thick, 7 m below the street.",
+     "url": "https://www.scientificamerican.com/article/is-londons-big-ben-falling/",
+     "confidence": "medium"
+    },
+    {
+     "name": "Terrace gravel, then London Clay",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "strata",
+     "what": "The raft sits on a layer of gravel with soft London Clay below it, which is why the tower can move.",
+     "url": "https://en.wikipedia.org/wiki/Elizabeth_Tower",
+     "confidence": "high"
+    },
+    {
+     "name": "Westminster station Jubilee line box",
+     "depthFt": 128,
+     "depthM": 39,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "A 39-metre-deep hole for the Jubilee line escalators, the deepest excavation ever made in central London, dug only 34 m from the tower.",
+     "url": "https://en.wikipedia.org/wiki/Westminster_tube_station",
+     "confidence": "high"
+    }
+   ],
+   "payoff": {
+    "fact": "Big Ben leans roughly 230 mm to the north-west over its 55 m height (about 500 mm at the very top), and engineers pumped thousands of tons of concrete under it while the Jubilee line was dug next door.",
+    "value": 230,
+    "unit": "mm",
+    "url": "https://en.wikipedia.org/wiki/Elizabeth_Tower"
+   },
+   "facts": [
+    {
+     "label": "Raft depth below ground",
+     "value": 7,
+     "unit": "m",
+     "as_of": "2009",
+     "source": "Scientific American, 'Is London's Big Ben falling?'",
+     "url": "https://www.scientificamerican.com/article/is-londons-big-ben-falling/",
+     "fixed": true
+    },
+    {
+     "label": "Raft size (square side)",
+     "value": 15,
+     "unit": "m",
+     "as_of": "2009",
+     "source": "Scientific American",
+     "url": "https://www.scientificamerican.com/article/is-londons-big-ben-falling/",
+     "fixed": true
+    },
+    {
+     "label": "Raft thickness",
+     "value": 3,
+     "unit": "m",
+     "as_of": "2009",
+     "source": "Scientific American",
+     "url": "https://www.scientificamerican.com/article/is-londons-big-ben-falling/",
+     "fixed": true
+    },
+    {
+     "label": "Westminster station box depth",
+     "value": 39,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Westminster tube station",
+     "url": "https://en.wikipedia.org/wiki/Westminster_tube_station",
+     "fixed": true
+    },
+    {
+     "label": "Distance from tower to the box",
+     "value": 34,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Westminster tube station",
+     "url": "https://en.wikipedia.org/wiki/Westminster_tube_station",
+     "fixed": true
+    },
+    {
+     "label": "Lean over 55 m height",
+     "value": 230,
+     "unit": "mm",
+     "as_of": "2025",
+     "source": "Wikipedia, Elizabeth Tower",
+     "url": "https://en.wikipedia.org/wiki/Elizabeth_Tower",
+     "fixed": true
+    },
+    {
+     "label": "Lean at the finial",
+     "value": 500,
+     "unit": "mm",
+     "as_of": "2025",
+     "source": "Wikipedia, Elizabeth Tower",
+     "url": "https://en.wikipedia.org/wiki/Elizabeth_Tower",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Raft depth conflicts: Scientific American and Ingenia (Royal Academy of Engineering) say 7 m below ground; a fandom/encyclopedia copy says 4 m. Wikipedia gives foundations '12 feet (3.7 m) thick' vs SciAm 3 m thick. Used 7 m (two engineering-press sources).",
+    "Westminster box: Wikipedia 39 m; Hopkins Architects and The B1M say a 30 m escalator box; SciAm says 'nearly 40 meters'. Jubilee and District/Circle platform depths not found.",
+    "No official parliament.uk foundation figure found (parliament.uk gives the footprint as 12 m square). Only 3 depths: thin for a dive."
+   ],
+   "sources": [
+    "https://www.scientificamerican.com/article/is-londons-big-ben-falling/",
+    "https://en.wikipedia.org/wiki/Elizabeth_Tower",
+    "https://en.wikipedia.org/wiki/Westminster_tube_station",
+    "https://ingenia.org.uk/articles/innovative-engineering-to-control-big-ben-s-tilt/"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-st-peters-necropolis",
+   "format": "short",
+   "title": "What's Under St Peter's Basilica?",
+   "category": "religious",
+   "place": "St Peter's Basilica, Vatican City",
+   "country": "Vatican City",
+   "reach": "global",
+   "hook": "What's buried under the biggest church in the world?",
+   "layers": [
+    {
+     "name": "Basilica floor (nave and papal altar)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "The floor of today's basilica under Bernini's canopy, the reference point.",
+     "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+     "confidence": "high"
+    },
+    {
+     "name": "Vatican Grottoes (papal tombs)",
+     "depthFt": null,
+     "depthM": 3,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "A church-like crypt of chapels and popes' tombs on the floor level of the old 4th-century basilica.",
+     "url": "https://www.barcelo.com/guia-turismo/en/italy/roma/things-to-do/vatican-necropolis/",
+     "confidence": "low"
+    },
+    {
+     "name": "Top of the Roman necropolis",
+     "depthFt": 16,
+     "depthM": 5,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "A street of Roman family tombs from the 1st to 4th century AD, buried when Constantine built the first basilica on top.",
+     "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+     "confidence": "high"
+    },
+    {
+     "name": "Necropolis under the central nave",
+     "depthFt": null,
+     "depthM": 10,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "The pre-Constantine necropolis lies about ten metres down beneath the central nave.",
+     "url": "https://www.turismoroma.it/en/places/st-peter%E2%80%99s-tomb-vatican-necropolis-pre-constantinian-and-constantinian-basilica",
+     "confidence": "medium"
+    },
+    {
+     "name": "Deepest tombs / St Peter's tomb niche and Graffiti Wall",
+     "depthFt": 39,
+     "depthM": 12,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "At the bottom, a niche held as St Peter's tomb, with a wall of Latin graffiti and a marble-lined hole that held human bones.",
+     "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "The 22 excavated Roman tombs held more than 1,000 burials; Mausoleum H alone had at least 170.",
+    "value": 1000,
+    "unit": "burials",
+    "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis"
+   },
+   "facts": [
+    {
+     "label": "Necropolis shallowest depth below basilica",
+     "value": 5,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Vatican Necropolis",
+     "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+     "fixed": true
+    },
+    {
+     "label": "Necropolis deepest depth below basilica",
+     "value": 12,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Vatican Necropolis",
+     "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+     "fixed": true
+    },
+    {
+     "label": "Necropolis depth under the central nave",
+     "value": 10,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Turismo Roma (City of Rome)",
+     "url": "https://www.turismoroma.it/en/places/st-peter%E2%80%99s-tomb-vatican-necropolis-pre-constantinian-and-constantinian-basilica",
+     "fixed": true
+    },
+    {
+     "label": "Grottoes depth below ground",
+     "value": 3,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Barcelo travel guide",
+     "url": "https://www.barcelo.com/guia-turismo/en/italy/roma/things-to-do/vatican-necropolis/",
+     "fixed": true
+    },
+    {
+     "label": "Excavated tombs",
+     "value": 22,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia, Vatican Necropolis",
+     "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+     "fixed": true
+    },
+    {
+     "label": "Burials in those tombs",
+     "value": 1000,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia, Vatican Necropolis ('more than 1,000 funerals')",
+     "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+     "fixed": true
+    },
+    {
+     "label": "Burials in Mausoleum H",
+     "value": 170,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia, Vatican Necropolis ('at least 170')",
+     "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Grottoes 3 m is from a travel guide only (low); Wikipedia gives no figure.",
+    "That St Peter's tomb is at the 12 m bottom is an inference: Wikipedia gives only the 5-12 m range for the whole necropolis. Say 'down to 12 m' for the necropolis, not 'Peter's tomb at 12 m'.",
+    "The bones' identity as St Peter is a Church claim (Paul VI, 1968), not established fact: say 'held to be'.",
+    "'Biggest church in the world' in the hook needs its own source (commonly 'largest church by interior measure'; Wikipedia St Peter's Basilica)."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+    "https://www.turismoroma.it/en/places/st-peter%E2%80%99s-tomb-vatican-necropolis-pre-constantinian-and-constantinian-basilica",
+    "https://www.barcelo.com/guia-turismo/en/italy/roma/things-to-do/vatican-necropolis/"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-colosseum-hypogeum",
+   "format": "short",
+   "title": "What's Under the Colosseum?",
+   "category": "stadium",
+   "place": "Colosseum, Rome",
+   "country": "Italy",
+   "reach": "global",
+   "hook": "What was hidden under the Colosseum's sand?",
+   "layers": [
+    {
+     "name": "Arena floor (rebuilt wooden deck)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "Where the gladiators fought, on a wooden floor covered in sand, the reference point.",
+     "url": "https://en.wikipedia.org/wiki/Colosseum",
+     "confidence": "high"
+    },
+    {
+     "name": "Hypogeum upper level",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "The first of two underground floors of tunnels and cages where animals and fighters waited.",
+     "url": "https://en.wikipedia.org/wiki/Colosseum",
+     "confidence": "high"
+    },
+    {
+     "name": "Hypogeum floor",
+     "depthFt": null,
+     "depthM": 6,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "A maze of corridors, cells and lift shafts about 6 m under the arena, with 80 vertical shafts and lifts to send animals and scenery up through trapdoors.",
+     "url": "https://www.walksofitaly.com/blog/attractions/colosseum-underground-reopened",
+     "confidence": "medium"
+    },
+    {
+     "name": "Tunnels to the gladiator school",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "Passages ran out to the nearby stables and the Ludus Magnus gladiator barracks; the French cleared 83 m of it.",
+     "url": "https://the-colosseum.net/wp/en/foundations/",
+     "confidence": "medium"
+    },
+    {
+     "name": "Bottom of the foundation ring",
+     "depthFt": null,
+     "depthM": 13,
+     "sourceUnit": "m",
+     "kind": "foundation",
+     "what": "A ring of Roman concrete 31 m wide and over 12 m thick, poured into the drained bed of Nero's lake; it reaches 13 m down under the outer walls.",
+     "url": "https://the-colosseum.net/wp/en/foundations/",
+     "confidence": "low"
+    }
+   ],
+   "payoff": {
+    "fact": "Eighty vertical shafts gave instant access to the arena, so animals could appear out of the floor.",
+    "value": 80,
+    "unit": "shafts",
+    "url": "https://en.wikipedia.org/wiki/Colosseum"
+   },
+   "facts": [
+    {
+     "label": "Hypogeum depth below arena",
+     "value": 6,
+     "unit": "m",
+     "as_of": "2021",
+     "source": "Walks of Italy / Ancient Origins (secondary)",
+     "url": "https://www.walksofitaly.com/blog/attractions/colosseum-underground-reopened",
+     "fixed": true
+    },
+    {
+     "label": "Vertical shafts to the arena",
+     "value": 80,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia, Colosseum",
+     "url": "https://en.wikipedia.org/wiki/Colosseum",
+     "fixed": true
+    },
+    {
+     "label": "Foundation ring width",
+     "value": 31,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "the-colosseum.net",
+     "url": "https://the-colosseum.net/wp/en/foundations/",
+     "fixed": true
+    },
+    {
+     "label": "Foundation ring thickness",
+     "value": 12,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "the-colosseum.net ('over 12 metres')",
+     "url": "https://the-colosseum.net/wp/en/foundations/",
+     "fixed": true
+    },
+    {
+     "label": "Foundation depth under outer walls",
+     "value": 13,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "secondary (search result; source site not opened)",
+     "url": "https://the-colosseum.net/wp/en/foundations/",
+     "fixed": true
+    },
+    {
+     "label": "Earth burying the hypogeum by the early 1800s",
+     "value": 40,
+     "unit": "ft",
+     "as_of": "2011",
+     "source": "Smithsonian Magazine, 'Secrets of the Colosseum'",
+     "url": "https://www.smithsonianmag.com/history/secrets-of-the-colosseum-75827047/",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "No official Parco archeologico del Colosseo depth found; 6 m is from tour/popular sites (medium). The 13 m figure came from a search snippet whose page was not opened (low); the-colosseum.net itself gives a 6 m excavation plus 6 m raised, 'over 12 m' thick.",
+    "Shaft counts conflict: Wikipedia 80 shafts; another source 60 capstans. Use 80 (Wikipedia).",
+    "Nero's lake: Wikipedia says the site had an artificial lake that was filled in; no depth."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Colosseum",
+    "https://the-colosseum.net/wp/en/foundations/",
+    "https://www.walksofitaly.com/blog/attractions/colosseum-underground-reopened",
+    "https://www.smithsonianmag.com/history/secrets-of-the-colosseum-75827047/"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-burj-khalifa",
+   "format": "short",
+   "title": "What's Under the Burj Khalifa?",
+   "category": "tower",
+   "place": "Burj Khalifa, Dubai",
+   "country": "United Arab Emirates",
+   "reach": "global",
+   "hook": "The world's tallest building stands on desert sand. So what's holding it up?",
+   "layers": [
+    {
+     "name": "Ground level, Downtown Dubai",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "The base of a 828 m tower, next to Dubai Mall.",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "confidence": "high"
+    },
+    {
+     "name": "Concrete raft",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "foundation",
+     "what": "A solid concrete slab 3.7 m thick spreads the tower's weight over the piles.",
+     "url": "https://www.issmge.org/uploads/publications/1/45/2008_06_0008.pdf",
+     "confidence": "medium"
+    },
+    {
+     "name": "Salty groundwater",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "water",
+     "what": "Groundwater rich in sulphates and chlorides that eats concrete, so a cathodic protection system runs under the slab.",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "confidence": "high"
+    },
+    {
+     "name": "192 bored piles",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "foundation",
+     "what": "Concrete piles 1.5 m wide and 43 m long under the raft.",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "confidence": "high"
+    },
+    {
+     "name": "Pile tips",
+     "depthFt": 164,
+     "depthM": 50,
+     "sourceUnit": "m",
+     "kind": "foundation",
+     "what": "The piles end more than 50 m below ground.",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "The foundation holds over 45,000 cubic metres of concrete, more than 110,000 tonnes.",
+    "value": 110000,
+    "unit": "tonnes",
+    "url": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+   },
+   "facts": [
+    {
+     "label": "Raft thickness",
+     "value": 3.7,
+     "unit": "m",
+     "as_of": "2008",
+     "source": "Poulos & Bunce, ISSMGE 2008",
+     "url": "https://www.issmge.org/uploads/publications/1/45/2008_06_0008.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Piles",
+     "value": 192,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "fixed": true
+    },
+    {
+     "label": "Pile diameter",
+     "value": 1.5,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "fixed": true
+    },
+    {
+     "label": "Pile length",
+     "value": 43,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "fixed": true
+    },
+    {
+     "label": "Foundation depth",
+     "value": 50,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia ('more than 50 m')",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "fixed": true
+    },
+    {
+     "label": "Foundation concrete weight",
+     "value": 110000,
+     "unit": "tonnes",
+     "as_of": "2025",
+     "source": "Wikipedia ('more than')",
+     "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Only 2 layers have depths; raft top/basement depth not found. Medium as a topic.",
+    "Pile count 192 (Wikipedia) vs 194 (other sources); pile length 43 m (Wikipedia) vs 47.45 m (Poulos & Bunce) vs ~50 m below raft.",
+    "The ISSMGE PDF URL is a best guess for the Poulos & Bunce 2008 paper: confirm the link before ship.",
+    "Ground type under the piles (weak sandstone/siltstone per design papers) not yet sourced.",
+    "Brief offered Dubai Mall / Burj Al Arab; Burj Khalifa had the best-sourced foundation."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Burj_Khalifa",
+    "https://www.issmge.org/uploads/publications/1/45/2008_06_0008.pdf"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-channel-tunnel",
+   "format": "short",
+   "title": "What's Under the English Channel?",
+   "category": "tunnel",
+   "place": "Channel Tunnel, between Folkestone (UK) and Coquelles (France)",
+   "country": "United Kingdom / France",
+   "reach": "global",
+   "hook": "How deep under the sea does the train from London to Paris go?",
+   "layers": [
+    {
+     "name": "Sea surface, Strait of Dover",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "water",
+     "what": "The busy shipping lane above, the reference point.",
+     "url": "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+     "confidence": "high"
+    },
+    {
+     "name": "Seabed",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "water",
+     "what": "The floor of the Channel; no single water depth along the route was found.",
+     "url": "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+     "confidence": "low"
+    },
+    {
+     "name": "Chalk marl (the tunnelling layer)",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "strata",
+     "what": "A soft, waterproof chalky rock; the route was bent up and down to stay inside it.",
+     "url": "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+     "confidence": "high"
+    },
+    {
+     "name": "Undersea crossover cavern",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "cavern",
+     "what": "A cave under the sea where trains can switch tunnels; its roof is 35 m below the seabed, and the French one is 180 m long, 19 m high and 25 m wide.",
+     "url": "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+     "confidence": "high"
+    },
+    {
+     "name": "Three tunnels (two rail, one service)",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "Two 7.6 m rail tunnels and a 4.8 m service tunnel between them, on average 45 m below the seabed.",
+     "url": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+     "confidence": "high"
+    },
+    {
+     "name": "Lowest point",
+     "depthFt": null,
+     "depthM": 115,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "The deepest point of the tunnels, 115 m below the sea surface, where 75 m of rock lies over them.",
+     "url": "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "37.9 km of the tunnel runs under the sea, the longest undersea section of any tunnel in the world.",
+    "value": 37.9,
+    "unit": "km",
+    "url": "https://en.wikipedia.org/wiki/Channel_Tunnel"
+   },
+   "facts": [
+    {
+     "label": "Lowest point below sea surface",
+     "value": 115,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Geological Society of London, Channel Tunnel geosite",
+     "url": "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+     "fixed": true
+    },
+    {
+     "label": "Greatest rock cover",
+     "value": 75,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Geological Society of London",
+     "url": "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+     "fixed": true
+    },
+    {
+     "label": "Average depth below seabed",
+     "value": 45,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Channel Tunnel",
+     "url": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+     "fixed": true
+    },
+    {
+     "label": "Crossover cavern crown below seabed",
+     "value": 35,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Geological Society of London",
+     "url": "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+     "fixed": true
+    },
+    {
+     "label": "Rail tunnel width",
+     "value": 7.6,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Channel Tunnel",
+     "url": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+     "fixed": true
+    },
+    {
+     "label": "Service tunnel width",
+     "value": 4.8,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Channel Tunnel",
+     "url": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+     "fixed": true
+    },
+    {
+     "label": "Undersea length",
+     "value": 37.9,
+     "unit": "km",
+     "as_of": "2025",
+     "source": "Wikipedia, Channel Tunnel",
+     "url": "https://en.wikipedia.org/wiki/Channel_Tunnel",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "BIG CONFLICT on the deepest point: Eurotunnel and Wikipedia say '75 m (246 ft) below sea level'; the Geological Society says the lowest point is 115 m below sea surface with 75 m rock cover (its own intro also says 'at its lowest point, it is 75 m deep'). Most likely 75 m is rock cover below the seabed. Fact reviewer must settle 75 vs 115 before use; safest line: '75 m of rock above you'.",
+    "eurotunnel.com returned 403 to our fetcher; its figures were seen only in search snippets.",
+    "Sea depth along the route not found (Eurostar says the Channel's deepest point is 175 m, not on the route). 'Longest undersea section in the world' is Wikipedia's claim; confirm."
+   ],
+   "sources": [
+    "https://www.geolsoc.org.uk/GeositesChannelTunnel",
+    "https://en.wikipedia.org/wiki/Channel_Tunnel",
+    "https://eurotunnel.com/uk/build/the-channel-tunnel/"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-park-pobedy",
+   "format": "short",
+   "title": "What's Under Moscow?",
+   "category": "station",
+   "place": "Park Pobedy station, Moscow Metro",
+   "country": "Russia",
+   "reach": "global",
+   "hook": "How long does it take to ride down to Moscow's deepest station?",
+   "layers": [
+    {
+     "name": "Street vestibule, Kutuzovsky Prospekt / Victory Park",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "The entrance building by Victory Park, the reference point.",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "confidence": "high"
+    },
+    {
+     "name": "Escalator tunnel",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "A single inclined tunnel of escalators 126 m long, the longest in Europe, with 740 steps each.",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "confidence": "high"
+    },
+    {
+     "name": "Platform hall (lines 3 and 8A)",
+     "depthFt": 276,
+     "depthM": 84,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "Two island platforms and four tracks, the deepest station in Moscow.",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "confidence": "high"
+    },
+    {
+     "name": "Lowest point of the station",
+     "depthFt": 318,
+     "depthM": 97,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "The station's maximum depth, third-deepest of any metro station in the world by that measure.",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "Each escalator is 126 m long with 740 steps, and the ride takes about three minutes.",
+    "value": 3,
+    "unit": "minutes",
+    "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)"
+   },
+   "facts": [
+    {
+     "label": "Station depth (official)",
+     "value": 84,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Park Pobedy (Moscow Metro)",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "fixed": true
+    },
+    {
+     "label": "Maximum depth",
+     "value": 97,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Park Pobedy (Moscow Metro)",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "fixed": true
+    },
+    {
+     "label": "Escalator length",
+     "value": 126,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia, Park Pobedy (Moscow Metro)",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "fixed": true
+    },
+    {
+     "label": "Steps per escalator",
+     "value": 740,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia, Park Pobedy (Moscow Metro)",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "fixed": true
+    },
+    {
+     "label": "Ride time",
+     "value": 3,
+     "unit": "minutes",
+     "as_of": "2025",
+     "source": "Wikipedia, Park Pobedy (Moscow Metro) ('approximately three minutes')",
+     "url": "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Replacement for the White House. Only 3 depths (0, 84, 97 m) plus a null escalator layer: thin; the dive is mostly one escalator tunnel.",
+    "Depth disputed: a Wikipedia talk page editor estimates ~73 m (not official). A mos.ru release says an escalator 'almost 130 metres long' working 'at a depth of 68 metres' (unclear if it is this station): not used.",
+    "Russia as a global topic: check the channel's reach/sensitivity rules."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Park_Pobedy_(Moscow_Metro)",
+    "https://www.mos.ru/en/news/item/19418073/"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-hoover-dam",
+   "format": "short",
+   "title": "What's Under Hoover Dam?",
+   "category": "dam",
+   "place": "Hoover Dam, Nevada-Arizona border",
+   "country": "United States",
+   "reach": "global",
+   "hook": "How far down does Hoover Dam really go?",
+   "layers": [
+    {
+     "name": "Crest roadway",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "ft",
+     "kind": "surface",
+     "what": "The road across the top of the dam, 1,232 ft above sea level, the reference point.",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "confidence": "high"
+    },
+    {
+     "name": "Lake Mead behind the dam",
+     "depthFt": 590,
+     "depthM": 180,
+     "sourceUnit": "ft",
+     "kind": "water",
+     "what": "At its fullest the reservoir is up to 590 ft deep, measured from the lake surface, not from the crest.",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "confidence": "medium"
+    },
+    {
+     "name": "Diversion tunnels",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "Four tunnels 50 ft wide bored through the canyon walls to move the whole Colorado River aside while the dam was built.",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "confidence": "high"
+    },
+    {
+     "name": "Powerhouse at the dam's toe",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "ft",
+     "kind": "chamber",
+     "what": "A U-shaped powerhouse at the downstream foot of the dam, holding 17 main generators.",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "confidence": "high"
+    },
+    {
+     "name": "Foundation rock",
+     "depthFt": 726.4,
+     "depthM": 221.4,
+     "sourceUnit": "ft",
+     "kind": "foundation",
+     "what": "The dam is 726.4 ft from foundation rock to the crest roadway, and 660 ft thick at the bottom; the river's gravel was dug away 110 to 130 ft (139 ft in the cutoff trench) below the low-water surface to reach it.",
+     "url": "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html",
+     "confidence": "high"
+    },
+    {
+     "name": "Grout holes in the rock",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "ft",
+     "kind": "strata",
+     "what": "Holes drilled up to 150 ft into the volcanic andesite breccia under the dam and filled with grout to seal it.",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "Poured in one go, the dam's concrete would have taken 125 years to cool, so it was built in columns with cooling pipes.",
+    "value": 125,
+    "unit": "years",
+    "url": "https://en.wikipedia.org/wiki/Hoover_Dam"
+   },
+   "facts": [
+    {
+     "label": "Height, foundation rock to crest roadway",
+     "value": 726.4,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "US Bureau of Reclamation, Hoover Dam FAQ",
+     "url": "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html",
+     "fixed": true
+    },
+    {
+     "label": "Base thickness",
+     "value": 660,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Hoover Dam (USBR project page lists base width 660 ft)",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "fixed": true
+    },
+    {
+     "label": "Crest thickness",
+     "value": 45,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Hoover Dam",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "fixed": true
+    },
+    {
+     "label": "Excavation to foundation rock in the cutoff trench (below low-water surface)",
+     "value": 139,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "US Bureau of Reclamation, Hoover Dam FAQ",
+     "url": "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html",
+     "fixed": true
+    },
+    {
+     "label": "Lake Mead maximum water depth",
+     "value": 590,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Hoover Dam",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "fixed": true
+    },
+    {
+     "label": "Diversion tunnel finished diameter",
+     "value": 50,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Hoover Dam",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "fixed": true
+    },
+    {
+     "label": "Grout holes, deepest",
+     "value": 150,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia, Hoover Dam",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "fixed": true
+    },
+    {
+     "label": "Years to cool if poured at once",
+     "value": 125,
+     "unit": "years",
+     "as_of": "2025",
+     "source": "Wikipedia, Hoover Dam",
+     "url": "https://en.wikipedia.org/wiki/Hoover_Dam",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Replacement for the Empire State Building. Depths use mixed references: 726.4 ft is from the crest; 590 ft is from the lake surface; 139 ft and 110-130 ft are below the river's low-water surface; 150 ft is into the rock below the foundation. Keep the meter tied to the crest and say the others as 'down to the rock' facts, or let the director pick one datum.",
+    "Lake Mead max depth 590 ft is Wikipedia; today's lake is far lower (drought), say 'when full'.",
+    "Number of diversion tunnels (four) is common knowledge but was not in the fetched excerpt: confirm."
+   ],
+   "sources": [
+    "https://www.usbr.gov/lc/hooverdam/faqs/damfaqs.html",
+    "https://en.wikipedia.org/wiki/Hoover_Dam",
+    "https://www.usbr.gov/projects/index.php?id=122"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-g-cans-tokyo",
+   "format": "short",
+   "title": "What's Under Tokyo's Suburbs?",
+   "category": "tunnel",
+   "place": "Metropolitan Area Outer Underground Discharge Channel (G-Cans), Kasukabe, Saitama, Greater Tokyo",
+   "country": "Japan",
+   "reach": "global",
+   "hook": "There's a field outside Tokyo with a door in it. What's underneath?",
+   "layers": [
+    {
+     "name": "Ground level (Kasukabe, Saitama)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "A sports field and an admin building on the edge of Greater Tokyo; everything below is measured from here.",
+     "url": "https://www.ktr.mlit.go.jp/edogawa/gaikaku/hant/edogawa_hant00728.html",
+     "confidence": "high"
+    },
+    {
+     "name": "Surge tank roof ('the underground temple')",
+     "depthFt": null,
+     "depthM": 22,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "A concrete hall 177 m long and 78 m wide sits 22 m underground, holding back the water's pressure for the pumps.",
+     "url": "https://www.ktr.mlit.go.jp/edogawa/gaikaku/hant/edogawa_hant00728.html",
+     "confidence": "high"
+    },
+    {
+     "name": "59 pillars, 18 m tall",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "Fifty-nine pillars, each 18 m high and about 500 tonnes, hold the roof up against the groundwater pushing the tank to float.",
+     "url": "https://www.ktr.mlit.go.jp/edogawa/gaikaku/hant/edogawa_hant00728.html",
+     "confidence": "high"
+    },
+    {
+     "name": "Connecting tunnels",
+     "depthFt": 160,
+     "depthM": 50,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "A 6.4 km tunnel about 50 m down links the shafts, carrying flood water from the rivers to the pumps.",
+     "url": "https://en.wikipedia.org/wiki/Metropolitan_Area_Outer_Underground_Discharge_Channel",
+     "confidence": "medium"
+    },
+    {
+     "name": "Bottom of the giant shafts (silos)",
+     "depthFt": null,
+     "depthM": 70,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "Five vertical shafts about 30 m wide and about 70 m deep swallow overflowing rivers.",
+     "url": "https://www.pacific.co.jp/e/service/project/shutoken-gaikaku/",
+     "confidence": "high"
+    }
+   ],
+   "payoff": {
+    "fact": "Its 78 pumps can push up to 200 tonnes of water a second out to the Edo River.",
+    "value": 200,
+    "unit": "tonnes per second",
+    "url": "https://en.wikipedia.org/wiki/Metropolitan_Area_Outer_Underground_Discharge_Channel"
+   },
+   "facts": [
+    {
+     "label": "Surge tank depth below ground",
+     "value": 22,
+     "unit": "m",
+     "as_of": "2024",
+     "source": "MLIT Edogawa River Office",
+     "url": "https://www.ktr.mlit.go.jp/edogawa/gaikaku/hant/edogawa_hant00728.html",
+     "fixed": true
+    },
+    {
+     "label": "Surge tank length",
+     "value": 177,
+     "unit": "m",
+     "as_of": "2024",
+     "source": "MLIT Edogawa River Office",
+     "url": "https://www.ktr.mlit.go.jp/edogawa/gaikaku/hant/edogawa_hant00728.html",
+     "fixed": true
+    },
+    {
+     "label": "Pillars",
+     "value": 59,
+     "unit": "count",
+     "as_of": "2024",
+     "source": "MLIT Edogawa River Office",
+     "url": "https://www.ktr.mlit.go.jp/edogawa/gaikaku/hant/edogawa_hant00728.html",
+     "fixed": true
+    },
+    {
+     "label": "Pillar height",
+     "value": 18,
+     "unit": "m",
+     "as_of": "2024",
+     "source": "MLIT Edogawa River Office",
+     "url": "https://www.ktr.mlit.go.jp/edogawa/gaikaku/hant/edogawa_hant00728.html",
+     "fixed": true
+    },
+    {
+     "label": "Tunnel depth",
+     "value": 50,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Metropolitan_Area_Outer_Underground_Discharge_Channel",
+     "fixed": true
+    },
+    {
+     "label": "Shaft depth",
+     "value": 70,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Pacific Consultants (designer) / MLIT 'about 70 m'",
+     "url": "https://www.pacific.co.jp/e/service/project/shutoken-gaikaku/",
+     "fixed": true
+    },
+    {
+     "label": "Pumping capacity",
+     "value": 200,
+     "unit": "tonnes per second",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Metropolitan_Area_Outer_Underground_Discharge_Channel",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Tank height: MLIT says 18 m, Wikipedia says 25.4 m; use MLIT's 18 m.",
+    "Shaft depth: MLIT's general page says about 70 m; its technical page gives up to 76.5 m excavated (shafts 1-4) and 74.5 m (shaft 5). Say 'about 70 m'.",
+    "Tunnel depth of 50 m is Wikipedia/Interesting Engineering, not yet seen on an MLIT page.",
+    "It's in Saitama, not Tokyo proper: say 'just outside Tokyo'."
+   ],
+   "sources": [
+    "https://www.ktr.mlit.go.jp/edogawa/gaikaku/hant/edogawa_hant00728.html",
+    "https://www.pacific.co.jp/e/service/project/shutoken-gaikaku/",
+    "https://en.wikipedia.org/wiki/Metropolitan_Area_Outer_Underground_Discharge_Channel"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-arsenalna-kyiv",
+   "format": "short",
+   "title": "What's Under Kyiv?",
+   "category": "station",
+   "place": "Arsenalna station, Kyiv Metro",
+   "country": "Ukraine",
+   "reach": "global",
+   "hook": "Kyiv has a metro station so deep you need two escalators. What's at the bottom?",
+   "layers": [
+    {
+     "name": "Street-level lobby (Pechersk)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "A small round lobby beside the old Arsenal factory.",
+     "url": "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)",
+     "confidence": "high"
+    },
+    {
+     "name": "First escalator",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "The first of two escalator runs, 55.8 m long.",
+     "url": "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)",
+     "confidence": "medium"
+    },
+    {
+     "name": "Middle landing and second escalator",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "You walk off and onto a second run, 46.6 m long; the whole trip takes up to five minutes.",
+     "url": "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)",
+     "confidence": "medium"
+    },
+    {
+     "name": "Platform",
+     "depthFt": 346,
+     "depthM": 105.5,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "One island platform, 105.5 m down, opened 1960; the line had to stay level to cross the Dnieper by bridge at the next stop.",
+     "url": "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "For 63 years it was the deepest metro station in the world, until Chongqing's Hongyancun beat it in 2023.",
+    "value": 105.5,
+    "unit": "m",
+    "url": "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)"
+   },
+   "facts": [
+    {
+     "label": "Station depth",
+     "value": 105.5,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia (body text)",
+     "url": "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)",
+     "fixed": true
+    },
+    {
+     "label": "Escalator run 1",
+     "value": 55.8,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)",
+     "fixed": true
+    },
+    {
+     "label": "Escalator run 2",
+     "value": 46.6,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)",
+     "fixed": true
+    },
+    {
+     "label": "Ride time",
+     "value": 5,
+     "unit": "min",
+     "as_of": "2025",
+     "source": "Wikipedia ('up to five minutes'), Atlas Obscura",
+     "url": "https://www.atlasobscura.com/places/arsenalna-metro-station",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "NOT the deepest station in the world any more: Wikipedia says second deepest since Hongyancun (Chongqing) in 2023. The brief's claim is outdated.",
+    "Depth conflict on Wikipedia itself: infobox 130.5 m vs body 105.5 m. 105.5 m is the widely quoted figure; confirm with Kyiv Metro before ship.",
+    "'63 years' in the payoff is computed (1960 opening to 2023); have code compute it or drop it. 1960 opening year and the Dnieper reason (Ferrovial blog) need a check.",
+    "Depths of the middle landing are not published."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Arsenalna_(Kyiv_Metro)",
+    "https://www.atlasobscura.com/places/arsenalna-metro-station",
+    "https://www.ferrovial.com/blog/en/2016/12/why-do-some-subway-stations-seem-more-like-a-journey-to-the-centre-of-the-earth/"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-hongyancun-chongqing",
+   "format": "short",
+   "title": "What's Under Chongqing?",
+   "category": "station",
+   "place": "Hongyancun station, Chongqing Rail Transit (replaces Pyongyang Metro)",
+   "country": "China",
+   "reach": "global",
+   "hook": "The world's deepest metro station is in a city built on mountains. How far down is it?",
+   "layers": [
+    {
+     "name": "Upper entrance (street level)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "The top entrance in Yuzhong District; depths are measured from street level here.",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Seven escalators down",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "From entrance 4 the ride down is seven escalators in a row and takes about 8 minutes if you skip the lift.",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "confidence": "medium"
+    },
+    {
+     "name": "Line 9 tracks",
+     "depthFt": 348,
+     "depthM": 106,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "Top of rail for Line 9, opened January 2022, 106 m below the surface.",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "confidence": "medium"
+    },
+    {
+     "name": "Deepest point",
+     "depthFt": 381,
+     "depthM": 116,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "The bottom of the station, 116 m below street level, the deepest of any metro station.",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "confidence": "medium"
+    },
+    {
+     "name": "Lower entrance on the hillside",
+     "depthFt": 463,
+     "depthM": 141,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "A second entrance down the hill, more than 141 m lower than the top one and below the platforms, so you can walk out into daylight beneath the trains.",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "confidence": "low"
+    }
+   ],
+   "payoff": {
+    "fact": "The two entrances are more than 141 m apart in height, so the bottom door is lower than the trains.",
+    "value": 141,
+    "unit": "m",
+    "url": "https://en.wikipedia.org/wiki/Hongyancun_station"
+   },
+   "facts": [
+    {
+     "label": "Deepest point below street",
+     "value": 116,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "fixed": true
+    },
+    {
+     "label": "Top of rail depth",
+     "value": 106,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "fixed": true
+    },
+    {
+     "label": "Height between entrances 2 and 4",
+     "value": 141,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia ('over 141 meters')",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "fixed": true
+    },
+    {
+     "label": "Escalator segments",
+     "value": 7,
+     "unit": "count",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "fixed": true
+    },
+    {
+     "label": "Escalator ride",
+     "value": 8,
+     "unit": "min",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Hongyancun_station",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Pyongyang dropped: Wikipedia's 110 m track depth and 3.5 min ride are uncited; only the 64 m escalator rise is cited (Chinese sources). Fewer than 4 sourced layers.",
+    "Hongyancun figures are Wikipedia only; find a Chongqing Rail Transit or Chinese news source for 116 m.",
+    "Lower entrance 'below platform level' is marked citation needed (low). Its depth is a height difference between entrances, not from the upper street: label it that way.",
+    "Line 5 platform depth (opened Nov 2023) not found."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hongyancun_station",
+    "https://en.wikipedia.org/wiki/Pyongyang_Metro"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-hku-station-hong-kong",
+   "format": "short",
+   "title": "What's Under Hong Kong Island?",
+   "category": "station",
+   "place": "HKU station, MTR Island Line, Hong Kong",
+   "country": "Hong Kong",
+   "reach": "global",
+   "hook": "Some exits of this Hong Kong station have no stairs or escalators at all. What's down there?",
+   "layers": [
+    {
+     "name": "Street level, Mid-Levels / Western District",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "Steep streets near the University of Hong Kong.",
+     "url": "https://en.wikipedia.org/wiki/HKU_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Lift-only exits A1, A2, C1",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "Three exits so deep under Mid-Levels that they are lifts only: eight lifts at A1/A2 and four at C1.",
+     "url": "https://en.wikipedia.org/wiki/HKU_station",
+     "confidence": "high"
+    },
+    {
+     "name": "Concourse",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "The ticket hall between the lifts and the platforms; no depth published.",
+     "url": "https://en.wikipedia.org/wiki/HKU_station",
+     "confidence": "low"
+    },
+    {
+     "name": "Platform cavern",
+     "depthFt": 230,
+     "depthM": 70,
+     "sourceUnit": "m",
+     "kind": "cavern",
+     "what": "A rock cavern 250 m long and 22 m wide, 70 m below ground, the MTR's deepest and biggest cavern station when it opened in 2014.",
+     "url": "https://en.wikipedia.org/wiki/HKU_station",
+     "confidence": "high"
+    }
+   ],
+   "payoff": {
+    "fact": "The station is a single rock cavern 250 m long, 70 m under the hillside.",
+    "value": 250,
+    "unit": "m",
+    "url": "https://www.scmp.com/news/hong-kong/article/1643932/emergency-refuge-areas-deepest-mtr-stop"
+   },
+   "facts": [
+    {
+     "label": "Station depth",
+     "value": 70,
+     "unit": "m",
+     "as_of": "2014",
+     "source": "Wikipedia / HKU Bulletin May 2015",
+     "url": "https://www4.hku.hk/pubunit/Bulletin/2015_May_Vol.16_No.2/news_in_brief/page6.html",
+     "fixed": true
+    },
+    {
+     "label": "Cavern length",
+     "value": 250,
+     "unit": "m",
+     "as_of": "2014",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/HKU_station",
+     "fixed": true
+    },
+    {
+     "label": "Cavern width",
+     "value": 22,
+     "unit": "m",
+     "as_of": "2014",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/HKU_station",
+     "fixed": true
+    },
+    {
+     "label": "Lifts at exits A1/A2",
+     "value": 8,
+     "unit": "count",
+     "as_of": "2014",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/HKU_station",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Weakest topic: only 2 layers have depths. Consider replacing with Singapore Bencoolen (43 m) or merging.",
+    "By sea level, Admiralty platforms are lower (33.6 m below Principal Datum); say 'below ground', not 'lowest'.",
+    "Opened 28 Dec 2014; 'deepest' claim is as of opening, re-check against Exhibition Centre / newer lines."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/HKU_station",
+    "https://www4.hku.hk/pubunit/Bulletin/2015_May_Vol.16_No.2/news_in_brief/page6.html",
+    "https://www.scmp.com/news/hong-kong/article/1643932/emergency-refuge-areas-deepest-mtr-stop"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-sofi-stadium",
+   "format": "short",
+   "title": "What's Under SoFi Stadium?",
+   "category": "stadium",
+   "place": "SoFi Stadium, Inglewood, Los Angeles",
+   "country": "United States",
+   "reach": "global",
+   "hook": "The NFL's most expensive stadium looks short from the street. Where's the rest of it?",
+   "layers": [
+    {
+     "name": "Street grade (old Hollywood Park)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "ft",
+     "kind": "surface",
+     "what": "Fans walk in near ground level; the roof has to stay low under LAX's flight path.",
+     "url": "https://webcf.waybackmachine.org/web/20221230213154/https://advertise.sportsbusinessjournal.com/docs/SoFiStadium_ADV_Sept14_8pg_LO.pdf",
+     "confidence": "medium"
+    },
+    {
+     "name": "Concrete ring wall cap",
+     "depthFt": 10,
+     "depthM": null,
+     "sourceUnit": "ft",
+     "kind": "foundation",
+     "what": "A 10 ft cast-in-place concrete wall, about 4,200 ft around, tops the bowl's retaining wall.",
+     "url": "https://www.kpff.com/project/sofi-stadium-mass-excavation-tunnels-ring-wall/",
+     "confidence": "medium"
+    },
+    {
+     "name": "Earth retaining wall",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "ft",
+     "kind": "foundation",
+     "what": "A 90 ft mechanically stabilized earth wall below it holds back the dirt around the dug-out bowl.",
+     "url": "https://www.kpff.com/project/sofi-stadium-mass-excavation-tunnels-ring-wall/",
+     "confidence": "medium"
+    },
+    {
+     "name": "Service tunnel",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "ft",
+     "kind": "tunnel",
+     "what": "A two-lane truck tunnel runs down to the field for stage and service vehicles.",
+     "url": "https://www.kpff.com/project/sofi-stadium-mass-excavation-tunnels-ring-wall/",
+     "confidence": "medium"
+    },
+    {
+     "name": "Playing field",
+     "depthFt": 100,
+     "depthM": null,
+     "sourceUnit": "ft",
+     "kind": "chamber",
+     "what": "The field sits at the bottom of a bowl dug 100 ft below the existing grade.",
+     "url": "https://www.kpff.com/project/sofi-stadium-mass-excavation-tunnels-ring-wall/",
+     "confidence": "high"
+    }
+   ],
+   "payoff": {
+    "fact": "Builders dug out about 7 million cubic yards of dirt so the stadium could stay under LAX's flight path.",
+    "value": 7000000,
+    "unit": "cu yd",
+    "url": "https://webcf.waybackmachine.org/web/20221230213154/https://advertise.sportsbusinessjournal.com/docs/SoFiStadium_ADV_Sept14_8pg_LO.pdf"
+   },
+   "facts": [
+    {
+     "label": "Bowl excavation depth",
+     "value": 100,
+     "unit": "ft",
+     "as_of": "2020",
+     "source": "KPFF (engineer)",
+     "url": "https://www.kpff.com/project/sofi-stadium-mass-excavation-tunnels-ring-wall/",
+     "fixed": true
+    },
+    {
+     "label": "Ring wall cap height",
+     "value": 10,
+     "unit": "ft",
+     "as_of": "2020",
+     "source": "KPFF",
+     "url": "https://www.kpff.com/project/sofi-stadium-mass-excavation-tunnels-ring-wall/",
+     "fixed": true
+    },
+    {
+     "label": "Earth wall height",
+     "value": 90,
+     "unit": "ft",
+     "as_of": "2020",
+     "source": "KPFF",
+     "url": "https://www.kpff.com/project/sofi-stadium-mass-excavation-tunnels-ring-wall/",
+     "fixed": true
+    },
+    {
+     "label": "Dirt excavated",
+     "value": 7000000,
+     "unit": "cu yd",
+     "as_of": "2020",
+     "source": "Sports Business Journal supplement",
+     "url": "https://webcf.waybackmachine.org/web/20221230213154/https://advertise.sportsbusinessjournal.com/docs/SoFiStadium_ADV_Sept14_8pg_LO.pdf",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Excavation volume conflicts: SBJ 7 million cu yd vs USA Today (2019) 8 million 'from the bowl alone'. Use 7M or say 'millions'.",
+    "KPFF's own page says 90 ft MSE in one place and 100 ft in another.",
+    "No source gives depths for the concourses or the service tunnel; Wikipedia page has no depth.",
+    "Category of 'Camp Nou'/'Wembley' not used: SoFi has the only sourced dug-in depth."
+   ],
+   "sources": [
+    "https://www.kpff.com/project/sofi-stadium-mass-excavation-tunnels-ring-wall/",
+    "https://webcf.waybackmachine.org/web/20221230213154/https://advertise.sportsbusinessjournal.com/docs/SoFiStadium_ADV_Sept14_8pg_LO.pdf",
+    "https://www.pressreader.com/usa/usa-today-us-edition/20191113/281964609543469"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-great-pyramid",
+   "format": "short",
+   "title": "What's Under the Great Pyramid?",
+   "category": "landmark",
+   "place": "Great Pyramid of Giza",
+   "country": "Egypt",
+   "reach": "global",
+   "hook": "Everyone knows what's inside the Great Pyramid. What's underneath it?",
+   "layers": [
+    {
+     "name": "Summit",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "Today's top is 138.5 m above the base; it was 146.6 m when built.",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "confidence": "high"
+    },
+    {
+     "name": "Base level (Giza plateau)",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "The bedrock plateau the pyramid stands on; the chamber depth is measured from here.",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "confidence": "high"
+    },
+    {
+     "name": "Descending Passage",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "A narrow passage sloping down at about 26 degrees, cut 72 m on into the bedrock after the turn-off to the upper chambers.",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "confidence": "high"
+    },
+    {
+     "name": "Subterranean Chamber",
+     "depthFt": 89,
+     "depthM": 27,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "A rough, unfinished room about 4 m high, carved out of the rock about 27 m below the base.",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "confidence": "high"
+    },
+    {
+     "name": "The pit in the floor",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "A pit in the chamber floor, about 1.5 m deep originally, later dug to about 3 m; in 1837 Vyse had it sunk to 50 ft hunting for more rooms.",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "The deepest room in the Great Pyramid was never finished: it sits about 27 m under the base, cut into solid rock.",
+    "value": 27,
+    "unit": "m",
+    "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
+   },
+   "facts": [
+    {
+     "label": "Current height",
+     "value": 138.5,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "fixed": true
+    },
+    {
+     "label": "Subterranean Chamber depth below base",
+     "value": 27,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia ('about 27 m (89 ft)')",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "fixed": true
+    },
+    {
+     "label": "Chamber height",
+     "value": 4,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "fixed": true
+    },
+    {
+     "label": "Descending Passage further length",
+     "value": 72,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "fixed": true
+    },
+    {
+     "label": "Vyse's pit sinking (1837)",
+     "value": 50,
+     "unit": "ft",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Summit is above the 0 datum: show it as height (+138.5 m), not depth, or start the dive at the summit and let code add 138.5 + 27.",
+    "Pit depths are relative to the chamber floor, not the base; don't put them on the meter as absolute depths.",
+    "Vyse 'directed to 50 ft (15 m)': check whether the shaft actually reached that depth.",
+    "Payoff is modest (27 m); the twist is 'unfinished' + entering from above the ground."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-hauz-khas-delhi",
+   "format": "short",
+   "title": "What's Under Delhi's Hauz Khas?",
+   "category": "station",
+   "place": "Hauz Khas metro station, Delhi Metro",
+   "country": "India",
+   "reach": "local",
+   "hook": "Delhi's deepest metro station had to dig under another metro line. How far down did it go?",
+   "layers": [
+    {
+     "name": "Street level, Outer Ring Road",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "The station sits by one of Delhi's busiest roads, which ruled out digging the usual way.",
+     "url": "https://www.newsbytesapp.com/news/india/new-haus-khas-station-an-engineering-challenge/story",
+     "confidence": "medium"
+    },
+    {
+     "name": "Yellow Line station",
+     "depthFt": null,
+     "depthM": 17,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "The older Yellow Line station, about 17 m deep, opened 2010.",
+     "url": "https://www.inkl.com/news/magenta-line-10-storey-down-hauz-khas-to-be-deepest-station-of-delhi-metro",
+     "confidence": "medium"
+    },
+    {
+     "name": "Five-level box: concourse and three intermediate levels",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "what": "The new station is Delhi Metro's first with five levels, linked to the old one by a ramp, with about 22 escalators.",
+     "url": "https://www.pressreader.com/india/hindustan-times-delhi/20180525/281547996559418",
+     "confidence": "medium"
+    },
+    {
+     "name": "Magenta Line tunnel under the Yellow Line",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "Just past the station the new tunnel passes 3 m below the existing Yellow Line tunnel.",
+     "url": "https://www.inkl.com/news/magenta-line-10-storey-down-hauz-khas-to-be-deepest-station-of-delhi-metro",
+     "confidence": "medium"
+    },
+    {
+     "name": "Magenta Line platforms",
+     "depthFt": 95,
+     "depthM": 29,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "The deepest station in Delhi Metro, 29 m down, opened May 2018.",
+     "url": "https://en.wikipedia.org/wiki/Hauz_Khas_metro_station",
+     "confidence": "high"
+    }
+   ],
+   "payoff": {
+    "fact": "Building under the old station would have meant going 42 m deep, so engineers put the new one beside it at 29 m.",
+    "value": 42,
+    "unit": "m",
+    "url": "https://www.newsbytesapp.com/news/india/new-haus-khas-station-an-engineering-challenge/story"
+   },
+   "facts": [
+    {
+     "label": "Magenta Line station depth",
+     "value": 29,
+     "unit": "m",
+     "as_of": "2018",
+     "source": "Wikipedia / DMRC official via NewsBytes",
+     "url": "https://en.wikipedia.org/wiki/Hauz_Khas_metro_station",
+     "fixed": true
+    },
+    {
+     "label": "Yellow Line station depth",
+     "value": 17,
+     "unit": "m",
+     "as_of": "2018",
+     "source": "Hindustan Times via inkl",
+     "url": "https://www.inkl.com/news/magenta-line-10-storey-down-hauz-khas-to-be-deepest-station-of-delhi-metro",
+     "fixed": true
+    },
+    {
+     "label": "Gap below Yellow Line tunnel",
+     "value": 3,
+     "unit": "m",
+     "as_of": "2018",
+     "source": "Hindustan Times via inkl",
+     "url": "https://www.inkl.com/news/magenta-line-10-storey-down-hauz-khas-to-be-deepest-station-of-delhi-metro",
+     "fixed": true
+    },
+    {
+     "label": "Depth if built below the old station",
+     "value": 42,
+     "unit": "m",
+     "as_of": "2018",
+     "source": "DMRC official via NewsBytes",
+     "url": "https://www.newsbytesapp.com/news/india/new-haus-khas-station-an-engineering-challenge/story",
+     "fixed": true
+    },
+    {
+     "label": "Escalators",
+     "value": 22,
+     "unit": "count",
+     "as_of": "2018",
+     "source": "Hindustan Times",
+     "url": "https://www.pressreader.com/india/hindustan-times-delhi/20180525/281547996559418",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Local topic (India); payoff is small for a global Short. Mumbai Metro Line 3 was weaker (stations 22-30 m, no named deepest station); the Mumbai bullet-train BKC station (32.5 m, under construction) is an alternative.",
+    "Depth conflicts: 29 m (most), 30 m (old mirror), 32 m (HT Feb 2018, track depth).",
+    "17 m Yellow Line depth and 3 m gap are news reports, not DMRC documents; open the inkl/HT pages to confirm wording.",
+    "Wikipedia gives 29 m (95 ft) in ft and m."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hauz_Khas_metro_station",
+    "https://www.newsbytesapp.com/news/india/new-haus-khas-station-an-engineering-challenge/story",
+    "https://www.inkl.com/news/magenta-line-10-storey-down-hauz-khas-to-be-deepest-station-of-delhi-metro",
+    "https://www.pressreader.com/india/hindustan-times-delhi/20180525/281547996559418"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-21-gotthard-base-tunnel",
+   "format": "short",
+   "title": "What's Under the Swiss Alps?",
+   "category": "tunnel",
+   "place": "Gotthard Base Tunnel, Switzerland",
+   "country": "Switzerland",
+   "reach": "global",
+   "hook": "There's a train running under this Alpine peak. How much mountain is on top of it?",
+   "layers": [
+    {
+     "name": "Summit of Piz Vatgira",
+     "depthFt": 0,
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "what": "A 2,981 m peak directly above the tunnel's deepest point.",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "confidence": "high"
+    },
+    {
+     "name": "Sedrun vertical shafts",
+     "depthFt": 2625,
+     "depthM": 800,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "what": "Two shafts drop 800 m from Sedrun's access tunnel to the rail line, the depth of an elevator ride through a mountain.",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "confidence": "medium"
+    },
+    {
+     "name": "Hot rock",
+     "depthFt": null,
+     "depthM": null,
+     "sourceUnit": "m",
+     "kind": "strata",
+     "what": "Rock so deep and hot that, unventilated, the tunnel would reach 46 °C.",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "confidence": "high"
+    },
+    {
+     "name": "The two rail tubes, deepest point",
+     "depthFt": 8040,
+     "depthM": 2450,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "what": "57 km twin tubes, with 2,450 m of rock overhead under Piz Vatgira.",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "confidence": "high"
+    }
+   ],
+   "payoff": {
+    "fact": "Trains here run with 2,450 m of rock above them, about three Burj Khalifas of mountain.",
+    "value": 2450,
+    "unit": "m",
+    "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel"
+   },
+   "facts": [
+    {
+     "label": "Maximum rock cover",
+     "value": 2450,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "fixed": true
+    },
+    {
+     "label": "Piz Vatgira elevation",
+     "value": 2981,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "fixed": true
+    },
+    {
+     "label": "Sedrun shaft depth",
+     "value": 800,
+     "unit": "m",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "fixed": true
+    },
+    {
+     "label": "Rock temperature unventilated",
+     "value": 46,
+     "unit": "C",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "fixed": true
+    },
+    {
+     "label": "Tunnel length",
+     "value": 57.09,
+     "unit": "km",
+     "as_of": "2025",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Datum mix: 800 m shaft depth is from Sedrun's access level, not from Piz Vatgira's summit. Label it 'from Sedrun' or drop from the meter.",
+    "Piz Vatgira 2,981 vs 2,983 m on the same page.",
+    "'Three Burj Khalifas' is a comparison the code must compute (2450/828 = 2.96) or drop.",
+    "Confirm 2,450 m with AlpTransit Gotthard AG (official builder) and the rock types (gneiss/granite) at that section.",
+    "Only 4 layers; ventilation/emergency stop at Sedrun/Faido could add a fifth."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Gotthard_Base_Tunnel"
+   ],
+   "found": "2026-11-21",
+   "status": "new"
+  }
+ ]
 }
