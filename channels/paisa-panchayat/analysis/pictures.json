@@ -1,99 +1,87 @@
 {
-  "note": "The auditor's weekly animation tally (agents/auditor.md 3b): what was on screen at each drop point of the Shorts of the last 21 days. Drops in the first 1.5 s are left out (the hook's job).",
-  "writtenAt": "2026-11-15T17:20:00Z",
+  "note": "The auditor's weekly animation tally (agents/auditor.md 3b): what was on screen at each drop point of the Shorts published 1-21 Nov with drop points and held-after-hook (30 Shorts, 11 of them directed 2D). Drops in the first 1.5 s are left out (the hook's job). Kinds with fewer than 3 Shorts are left out.",
+  "writtenAt": "2026-11-21T17:25:00Z",
   "lossByPicture": [
     {
-      "kind": "build scene with the cast on screen",
-      "drops": 21,
-      "shorts": 9,
-      "avgDrop": 0.182
-    },
-    {
-      "kind": "board card (diagram, no cast)",
-      "drops": 14,
+      "kind": "board card (diagram, no cast; older kit)",
+      "drops": 16,
       "shorts": 8,
-      "avgDrop": 0.188
+      "avgDrop": 0.179
     },
     {
-      "kind": "custom coded beat (Hook/Turn/Payoff)",
+      "kind": "directed promise beat at 5-8 s (a whip to a new place, a big total landing on a thing)",
+      "drops": 12,
+      "shorts": 10,
+      "avgDrop": 0.222
+    },
+    {
+      "kind": "build scene (older kit)",
+      "drops": 16,
+      "shorts": 9,
+      "avgDrop": 0.151
+    },
+    {
+      "kind": "custom coded beat (Hook/Turn/Payoff; older kit)",
+      "drops": 9,
+      "shorts": 7,
+      "avgDrop": 0.193
+    },
+    {
+      "kind": "directed build beat (after 8 s)",
       "drops": 8,
       "shorts": 6,
-      "avgDrop": 0.197
+      "avgDrop": 0.144
     },
     {
-      "kind": "build scene with things only",
-      "drops": 10,
-      "shorts": 7,
-      "avgDrop": 0.133
-    },
-    {
-      "kind": "shot scene with the cast on screen",
-      "drops": 7,
-      "shorts": 3,
-      "avgDrop": 0.159
+      "kind": "headline card (older kit)",
+      "drops": 4,
+      "shorts": 4,
+      "avgDrop": 0.235
     }
   ],
   "options": [
     {
-      "by": "look",
-      "value": "ribbon",
-      "n": 5,
-      "heldAfterHook": 0.31
-    },
-    {
-      "by": "look",
-      "value": "sticky",
-      "n": 4,
-      "heldAfterHook": 0.295
-    },
-    {
       "by": "genre",
       "value": "synthwave",
-      "n": 4,
-      "heldAfterHook": 0.283
+      "n": 8,
+      "heldAfterHook": 0.385
     },
     {
       "by": "palette",
       "value": "ember",
-      "n": 9,
-      "heldAfterHook": 0.252
-    },
-    {
-      "by": "genre",
-      "value": "cinematic",
-      "n": 7,
-      "heldAfterHook": 0.24
+      "n": 11,
+      "heldAfterHook": 0.327
     },
     {
       "by": "genre",
       "value": "pop",
       "n": 8,
-      "heldAfterHook": 0.238
+      "heldAfterHook": 0.321
     },
     {
       "by": "genre",
-      "value": "lofi",
-      "n": 5,
-      "heldAfterHook": 0.228
+      "value": "cinematic",
+      "n": 8,
+      "heldAfterHook": 0.27
     },
     {
       "by": "palette",
       "value": "ocean",
-      "n": 4,
-      "heldAfterHook": 0.206
+      "n": 5,
+      "heldAfterHook": 0.259
     },
     {
       "by": "palette",
       "value": "plum",
-      "n": 7,
-      "heldAfterHook": 0.164
+      "n": 5,
+      "heldAfterHook": 0.25
     }
   ],
-  "worst": "palette plum: 16.4% held after the hook (7 Shorts) against 26.6% for the other palettes (19 Shorts), 10.2 points lower. Four of the seven are October Shorts, when every palette held less, so the gap is partly the older recipe.",
+  "worst": "none this week: the lowest, palette plum, held 25.0% after the hook (5 Shorts) against 33.4% for the other palettes, 8.4 points lower, under the 10-point bar. Cinematic music is 6.8 points under the other genres (27.0% against 33.8%, 8 Shorts).",
   "reference": [
-    "v-20261110-03",
-    "v-20261110-02",
-    "v-20261105-06"
+    "v-20261113-03",
+    "v-20261117-03",
+    "v-20261110-03"
   ],
-  "directedNote": "No directed 2D Short (from 14 Nov) has drop points yet; next Sunday's tally is the first that can rank directed pictures."
+  "directedNote": "First tally with directed 2D Shorts: 11 of them held 34.5% after the hook on average against 30.5% for the 19 older-kit Shorts. Their losses gather in one place: in 10 of 11, the promise beat (5-8 s) lost 22.2 points on average, against 14.4 for directed build beats. 10 of the 11 promise beats entered on a whip to a new place with the total slamming onto a scoreboard, billboard or counter; the one that entered on a cut (v-20261114-02) had no fall there, which is one Short, not proof."
 }

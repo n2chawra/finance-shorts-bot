@@ -1,6 +1,20 @@
 {
   "notifications": [
     {
+      "key": "publish-cover-other-channels",
+      "severity": "warning",
+      "title": "Shorts of every channel but Paisa Panchayat go up without our cover",
+      "detail": "workers/publish.ts applyCover finds the cover with cpath(ROOT, 'videos'), which follows the CHANNEL variable. Publish loops over every channel without setting it, so for The Why Atlas, the tech, business, disasters and Going Down channels it looks in channels/paisa-panchayat/videos/<id>/, finds nothing and logs '<id>: no cover in the repo; YouTube picks a frame'. The same mistake in stats.ts (drop points of other channels had no line) was fixed tonight; publish.ts is owner-only, so the auditor can't change it.",
+      "fix": "1. In a Claude Code session, in workers/publish.ts applyCover replace `const dir = path.join(cpath(ROOT, \"videos\"), videoId);` with `const dir = path.dirname(videoFile(ROOT, run.channelId, videoId, \"manifest.json\"));` and import videoFile from ./lib/channels.ts (added tonight). 2. Check the next Publish log shows 'cover set from thumbnail.png' for a non-Paisa Short. 3. Optionally set the covers of the Shorts already up by hand in YouTube Studio."
+    },
+    {
+      "key": "weekly-loop-idle",
+      "severity": "warning",
+      "title": "No weekly-loop test has run since 19 Nov",
+      "detail": "Paisa Panchayat's cycle/backlog.json has running: null since cycle 1 closed on 19 Nov (the owner adopted it). The improver's 20 Nov branch was blocked on a merge conflict in generator/tests/test_media.py (the auditor fixed the same test that night), and there is no improver activity report for 20 or 21 Nov, so the next challenger was never started. If the improver routine itself didn't run, only the owner can see why.",
+      "fix": "1. On claude.ai/code, open the improver routine's last two runs and check they started and finished. 2. If they ran, nothing else is needed: its next run should start cycle 2 from cycle/backlog.json. 3. If they failed or hit the usage limit, re-run the improver once by hand."
+    },
+    {
       "key": "renderer-network",
       "severity": "warning",
       "title": "renderer/thumbs.py downloads from YouTube, against the no-network rule",
@@ -20,13 +34,6 @@
       "title": "The hourly watchdog runs only every 4-11 hours",
       "detail": "watchdog.yml is scheduled every hour, but GitHub ran it 11 times between 7 Nov 09:58 and 10 Nov 09:42 UTC (gaps of 4-11 hours). The hourly view snapshots behind the dashboard's 'realtime' chart and the 48-hour views therefore have gaps, and owner alerts can arrive hours late.",
       "fix": "Optional. 1. Accept it, or 2. start watchdog.yml from the Netlify publish heartbeat the way Publish is started (workflows are owner-only files)."
-    },
-    {
-      "key": "data-audit-late",
-      "severity": "info",
-      "title": "The data audit lands after the auditor has run",
-      "detail": "The auditor starts around 22:00-23:00 IST, but GitHub starts the 13:53 UTC data-audit cron 3.5 to 5 hours late (17:41 UTC on 17 Nov, 17:21 UTC on 18 Nov, 17:27 UTC on 19 Nov, i.e. after 22:50 IST), so for the third night running the auditor read the previous night's audit (23 h old) and skipped the data check. The workflow itself succeeds, and the last audit had no errors or warnings on any channel.",
-      "fix": "Choose one: 1. move the data-audit cron in .github/workflows/data-audit.yml earlier (e.g. 08:23 UTC) so even a 5-hour delay lands before 22:00 IST; or 2. move the auditor routine to about 01:07 IST (still inside window A)."
     }
   ]
 }
