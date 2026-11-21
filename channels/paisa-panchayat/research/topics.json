@@ -5658,6 +5658,94 @@
       "found": "2026-11-21",
       "expires": "2027-02-19",
       "status": "new"
+    },
+    {
+      "id": "2026-11-22-musk-jet-belongs-to-spacex-tesla-pays",
+      "format": "short",
+      "title": "Elon Musk flies a private jet everywhere. Why isn't it his?",
+      "category": "wealth",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "secret_of_rich"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Elon Musk Doesn't Personally Own His Private Jet 🤯💰 #shorts #rich #richlife",
+        "views": 72692,
+        "url": "https://youtube.com/shorts/4zrkKBg_P-c",
+        "channel": "ElonKnows",
+        "channelSubs": 489,
+        "outlier": 72.7
+      },
+      "hook": "Elon Musk flies a private jet almost everywhere. But on paper, the jet isn't his.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Lane 4 (a celebrity's money moving). The jet Musk flies is owned and operated by SpaceX, one of his companies, and Tesla, another of his companies, pays SpaceX whenever he uses it for Tesla work: $700,000 in 2023 and $400,000 in 2025, at rates the two companies set (Tesla's filings, a practice since 2016). The same filings show Tesla paying a security company Musk owns $2.4M in 2023 and $4.8M in 2025. The turn: the richest man's biggest luxury is billed between his own companies. The payoff: the security bill, which doubled in two years.",
+      "why_now": "A breakout in this week's market feed: 'Why Elon Musk Doesn't Personally Own His Private Jet' (60 s, 13 Nov) has 72.7K views on a 489-subscriber channel (19 Nov). Tesla's latest filing with these figures is the FY2025 10-K/A (30 Apr 2026).",
+      "maths": "security growth = 4.8 / 2.4 (facts 3, 4) = 2x in two years; jet bill fell from 700K to 400K (facts 1, 2); security per day in 2025 = 4.8M / 365 (fact 4) ~ $13,000 a day.",
+      "facts": [
+        {
+          "label": "What Tesla paid SpaceX in 2023 for using a jet SpaceX owns",
+          "value": 700,
+          "unit": "money_thousand",
+          "currency": "USD",
+          "as_of": "2024-04-17",
+          "source": "Tesla 2024 proxy statement (TechCrunch, 17 Apr 2024)",
+          "url": "https://techcrunch.com/2024/04/17/tesla-x-advertising-musk-stock-package-delware-texas",
+          "latest": true,
+          "checked": "2026-11-22"
+        },
+        {
+          "label": "What Tesla paid SpaceX in 2025 for using a SpaceX-owned aircraft",
+          "value": 400,
+          "unit": "money_thousand",
+          "currency": "USD",
+          "as_of": "2026-04-30",
+          "source": "Tesla FY2025 Form 10-K/A (Electrek, 1 May 2026)",
+          "url": "https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/",
+          "latest": true,
+          "checked": "2026-11-22"
+        },
+        {
+          "label": "What Tesla paid a security company Musk owns in 2023",
+          "value": 2.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2024-04-17",
+          "source": "Tesla 2024 proxy statement (TechCrunch, 17 Apr 2024)",
+          "url": "https://techcrunch.com/2024/04/17/tesla-x-advertising-musk-stock-package-delware-texas",
+          "latest": true,
+          "checked": "2026-11-22"
+        },
+        {
+          "label": "What Tesla paid a security company Musk owns in 2025",
+          "value": 4.8,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-04-30",
+          "source": "Tesla FY2025 Form 10-K/A (Electrek, 1 May 2026)",
+          "url": "https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/",
+          "latest": true,
+          "checked": "2026-11-22"
+        }
+      ],
+      "verify": [
+        "the jet is owned and operated by SpaceX; Tesla is invoiced for its use at rates the two companies set, subject to FAA rules (Tesla's filing language, practice since 2016)",
+        "the security firm figures are only part of Musk's security cost (Tesla says so); the firm started providing services in December 2023",
+        "these are disclosed related-party payments, entirely legal: never imply wrongdoing",
+        "never say how many jets Musk has or what they cost: sources disagree"
+      ],
+      "sources": [
+        "https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/",
+        "https://techcrunch.com/2024/04/17/tesla-x-advertising-musk-stock-package-delware-texas",
+        "https://www.sec.gov/Archives/edgar/data/1318605/000119312523094075/d451342ddef14a.htm"
+      ],
+      "found": "2026-11-22",
+      "expires": "2027-02-20",
+      "status": "new"
     }
   ]
 }
