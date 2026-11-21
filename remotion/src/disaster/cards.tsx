@@ -83,7 +83,7 @@ export const ReportPage: React.FC<LookProp & Omit<DocumentPropProps, "w" | "h" |
   const L = useDisasterLook(look);
   const { width: w, height: h } = useVideoConfig();
   const v = h > w, u = Math.min(w, h) / 1080;
-  const size = (v ? 34 : 26) * u;
+  const size = (v ? 34 : 32) * u;
   const chip: React.CSSProperties = { fontFamily: L.fonts.mono, fontWeight: 700, fontSize: size, letterSpacing: size * 0.1, color: L.ink, background: L.panel, padding: `${size * 0.3}px ${size * 0.6}px`, borderRadius: 4 * u };
   return (
     <AbsoluteFill>

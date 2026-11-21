@@ -978,39 +978,87 @@
    "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
    "facts": [
     {
-     "label": "Year of the collapse",
+     "label": "Year the Hyatt Regency walkways collapsed",
      "value": 1981,
      "unit": "year",
-     "as_of": "1981-07-17",
-     "source": "Britannica",
-     "url": "https://britannica.com/event/Hyatt-Regency-walkway-collapse",
+     "as_of": "1982-05-01",
+     "source": "NBS Building Science Series 143 (NIST)",
+     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
      "fixed": true
     },
     {
-     "label": "Share of the code's expected capacity the original design reached, percent (about)",
+     "label": "Day of July 1981 the walkways collapsed",
+     "value": 17,
+     "unit": "count",
+     "as_of": "1982-05-01",
+     "source": "NBS Building Science Series 143 (NIST)",
+     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Hour of the collapse (p.m.), approximately 7:05 p.m.",
+     "value": 7,
+     "unit": "count",
+     "as_of": "1982-05-01",
+     "source": "NBS Building Science Series 143 (NIST)",
+     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Minutes past the hour of the collapse (approximately 7:05 p.m.)",
+     "value": 5,
+     "unit": "count",
+     "as_of": "1982-05-01",
+     "source": "NBS Building Science Series 143 (NIST)",
+     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+     "fixed": true
+    },
+    {
+     "label": "People left dead by the collapse (NBS executive summary)",
+     "value": 113,
+     "unit": "count",
+     "as_of": "1982-05-01",
+     "source": "NBS Building Science Series 143 (NIST)",
+     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Ultimate capacity of the original continuous-rod connection, percent of that expected under the Kansas City Building Code (approximately)",
      "value": 60,
      "unit": "percent",
      "as_of": "1982-05-01",
-     "source": "NBS BSS 143 via NIST",
-     "url": "https://www.nist.gov/publications/investigation-kansas-city-hyatt-regency-walkways-collapse-nbs-bss-143",
+     "source": "NBS Building Science Series 143 (NIST)",
+     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
      "fixed": true
     },
     {
-     "label": "How many times the rod change multiplied the load on the 4th-floor connections (about)",
+     "label": "How many times the rod change multiplied the load on the fourth-floor box beam-hanger rod connections (essentially doubled)",
      "value": 2,
      "unit": "count",
      "as_of": "1982-05-01",
-     "source": "NBS BSS 143 via NIST",
-     "url": "https://www.nist.gov/publications/investigation-kansas-city-hyatt-regency-walkways-collapse-nbs-bss-143",
+     "source": "NBS Building Science Series 143 (NIST)",
+     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Year ASCE adopted the policy assigning responsibility for steel connection design to the engineer of record (October 1985)",
+     "value": 1985,
+     "unit": "year",
+     "as_of": "2011-07-01",
+     "source": "ASCE Civil Engineering magazine",
+     "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public",
      "fixed": true
     }
    ],
    "verify": [
-    "Death toll differs (114 Britannica vs 113 NIST page): left out of facts; settle before showing"
+    "Death toll: the NBS report and NIST page say 113 dead (later counts say 114); the script uses the report's 113",
+    "Phone request: ASCE Civil Engineering (Jan 2007) says the fabricator requested approval of the double-rod system by telephone and the engineer verbally approved; the engineering firm disputed receiving the call, so it is tagged 'as reported'"
    ],
    "sources": [
+    "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
     "https://www.nist.gov/el/walkway-collapse-kansas-city-missouri-1981",
-    "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
+    "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public"
    ],
    "found": "2026-11-20",
    "expires": "2027-05-19",

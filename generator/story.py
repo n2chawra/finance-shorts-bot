@@ -136,6 +136,10 @@ def _levels(script: dict) -> bool:
     told = [b for b in (script.get("beats") or []) if b.get("scene") != "end"]
     if told and all(b.get("scene") == "doc" for b in told):
         return False
+    # a long video told wholly in directed shots (the disasters channel, 2026-11-21): each shot carries its own
+    # figures on things in the place, so there are no board chips or HUD counter either
+    if told and script.get("format") == "long" and all(b.get("scene") == "directed" for b in told):
+        return False
     if script.get("format") == "long" or script.get("shape") is None:
         return True
     from . import shapes

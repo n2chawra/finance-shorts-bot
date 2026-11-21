@@ -298,7 +298,7 @@ def _structure(spec: dict | None) -> dict | None:
 
 
 # a thumbnail's notes on what it copies (YouTube ids, view counts, the pattern in words): never shown
-THUMB_META = ("references", "pattern", "component", "score", "why")
+THUMB_META = ("references", "pattern", "component", "score", "why", "engine")
 
 
 def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_ids: list[str] | None = None) -> dict | None:
