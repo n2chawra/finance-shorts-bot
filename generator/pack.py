@@ -120,13 +120,18 @@ def pack_problems(p: dict) -> list[str]:
     if not str(p.get("disclaimer") or "").strip():
         out.append("disclaimer is empty: every channel carries one (a fiction channel says the story is made up)")
     voices = p.get("voices") or {}
-    for v in [voices.get("shortsNarrator"), *(voices.get("longNarrators") or [])]:
+    if "shortsNarrators" in voices and not isinstance(voices["shortsNarrators"], list):
+        out.append("voices.shortsNarrators is a list of Kokoro voices the Shorts rotate through")
+    for v in [voices.get("shortsNarrator"), *(voices.get("longNarrators") or []), *(voices.get("shortsNarrators") or [])]:
         if not v or not voice_ok(str(v)):
             out.append(f"voice {v!r} is not a Kokoro voice (like am_michael, bf_emma, hf_alpha)")
     lang = str(p.get("language") or "")
     narrator = str(voices.get("shortsNarrator") or "")
     if narrator and voice_ok(narrator) and KOKORO_LANG[narrator[0]].split("-")[0] != lang.split("-")[0]:
         out.append(f"the Shorts narrator {narrator!r} speaks {KOKORO_LANG[narrator[0]]}, the channel is {lang!r}")
+    for v in voices.get("shortsNarrators") or []:
+        if voice_ok(str(v)) and KOKORO_LANG[str(v)[0]].split("-")[0] != lang.split("-")[0]:
+            out.append(f"the Shorts narrator {v!r} speaks {KOKORO_LANG[str(v)[0]]}, the channel is {lang!r}")
     if p.get("currency") not in (p.get("currencies") or []):
         out.append("currency must be one of currencies")
     snd = p.get("sound")

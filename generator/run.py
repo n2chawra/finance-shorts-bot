@@ -299,9 +299,24 @@ def heard(script: dict, narrator: str | None) -> dict:
 SHORTS_NARRATOR = "am_michael"   # the voice of "Why billionaires never sell their stock"; no cast member uses it
 
 
-def next_narrator(entries: list[dict], taken: set[str] = frozenset()) -> str:
-    """The narrator voice these videos used longest ago (a never-used one first), never one in `taken`."""
-    last = {v: -1 for v in NARRATOR_VOICES if v not in taken} or {v: -1 for v in NARRATOR_VOICES}
+def shorts_narrators(voices: dict, root: Path = ROOT) -> list[str]:
+    """The voices a channel's Shorts rotate through (none: the one shortsNarrator): channel.json
+    voices.shortsNarrators, else the channel's cycle/voices.json `shortsNarrators`. Only Kokoro voices
+    in the channel's language count."""
+    pool = voices.get("shortsNarrators")
+    if not pool:
+        f = cpath(root, "improvement/cycle/voices.json")
+        pool = (json.loads(f.read_text(encoding="utf-8")).get("shortsNarrators") if f.exists() else None) or []
+    lang = str(pack.load(root=root).get("language") or "").split("-")[0]
+    return [v for v in pool if isinstance(v, str) and pack.voice_ok(v)
+            and pack.KOKORO_LANG[v[0]].split("-")[0] == lang]
+
+
+def next_narrator(entries: list[dict], taken: set[str] = frozenset(), pool: list[str] | None = None) -> str:
+    """The narrator voice these videos used longest ago (a never-used one first), never one in `taken`.
+    `pool`: the voices to rotate through (default every narrator voice)."""
+    voices = list(pool or NARRATOR_VOICES)
+    last = {v: -1 for v in voices if v not in taken} or {v: -1 for v in voices}
     for i, e in enumerate(entries):
         voice = (e.get("style") or {}).get("voice")
         if voice in last:
@@ -513,7 +528,14 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         if plan_format(script) == "short":
             # one narrator for every Short (owner review, 2026-11-11): the growing channels in this niche keep
             # one voice, and ours changed every video. Long videos still rotate.
-            narrator = pack.load(root=root)["voices"]["shortsNarrator"]   # the channel's own Shorts voice
+            voices = pack.load(root=root)["voices"]
+            narrator = voices["shortsNarrator"]   # the channel's own Shorts voice
+            # a channel whose owner wants to hear several voices (geography, owner 2026-11-20: "use more voice
+            # type so that I can know which sound better") lists them in channel.json voices.shortsNarrators or
+            # its weekly loop's cycle/voices.json: its Shorts rotate through them, the one used longest ago
+            # first, kept on a re-render
+            if pool := [v for v in shorts_narrators(voices, root) if v not in taken]:
+                narrator = script["narrator"] if script.get("narrator") in pool else next_narrator(earlier, taken, pool)
             if script.get("narrator") != narrator:
                 script["narrator"] = narrator
                 _write(d / "script.json", script)
