@@ -1,0 +1,334 @@
+{
+  "id": "v-20261122-02",
+  "createdAt": "2026-11-21T22:12:59.088239+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "The private jet Elon Musk flies belongs to SpaceX, Tesla pays SpaceX when he uses it, and Tesla also pays a security company he owns",
+    "category": "wealth",
+    "reach": "global",
+    "feed_id": "2026-11-22-musk-jet-belongs-to-spacex-tesla-pays"
+  },
+  "title": "Elon Musk flies a private jet everywhere. Why isn't it his? ✈️",
+  "description": "Elon Musk flies a private jet almost everywhere. So why isn't the jet his?\nThe answer is in Tesla's own filings: one of his companies bills another.\nSources: Tesla's proxy statement and annual report filing, reported by TechCrunch and Electrek (Apr 2024, Apr 2026). The characters are not advisers.\nIllustrative only. Not financial advice.\n\nLogo: SpaceX, Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:SpaceX_logo_black.svg)\nLogo: Unknown authorUnknown author, Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Tesla_Motors_Logo.svg)",
+  "hashtags": [
+    "#Shorts",
+    "#ElonMusk",
+    "#Tesla",
+    "#SpaceX",
+    "#Money"
+  ],
+  "hookStyle": "question",
+  "cta": "The jet bill or the guards' bill: which surprised you more? Comment",
+  "seed": 40917,
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "E",
+    "bpm": 112,
+    "sfx": "arcade",
+    "look": {
+      "stage": "desert",
+      "header": "sticky",
+      "holder": "phone",
+      "entrance": "drop"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "28-35",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "22"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Elon Musk flies a private jet almost everywhere. So why isn't the jet his?",
+        "start": 0.3,
+        "seconds": 3.68,
+        "window": 4.23,
+        "fill": 0.87
+      },
+      {
+        "scene": "promise",
+        "text": "On paper, it belongs to SpaceX, his rocket company.",
+        "start": 4.53,
+        "seconds": 2.57,
+        "window": 3.03,
+        "fill": 0.848
+      },
+      {
+        "scene": "bill",
+        "text": "When he flies for Tesla, Tesla gets the bill: $700K in a single year.",
+        "start": 7.57,
+        "seconds": 4.29,
+        "window": 4.77,
+        "fill": 0.899
+      },
+      {
+        "scene": "less",
+        "text": "Last year, it was down to $400K. So is the jet the big bill?",
+        "start": 12.33,
+        "seconds": 3.79,
+        "window": 4.27,
+        "fill": 0.888
+      },
+      {
+        "scene": "guards",
+        "text": "No. Everywhere Musk goes, guards go too. Who pays them?",
+        "start": 16.6,
+        "seconds": 2.85,
+        "window": 3.3,
+        "fill": 0.864
+      },
+      {
+        "scene": "turn",
+        "text": "Tesla pays part of the bill, to a security company Musk owns.",
+        "start": 19.9,
+        "seconds": 3.03,
+        "window": 3.53,
+        "fill": 0.858
+      },
+      {
+        "scene": "payoff",
+        "text": "Last year alone, that company got $4.8M: 12 times the jet bill.",
+        "start": 23.43,
+        "seconds": 4.3,
+        "window": 4.73,
+        "fill": 0.909
+      },
+      {
+        "scene": "loop",
+        "text": "The jet bill or the guards' bill: which surprised you? It all starts with one jet.",
+        "start": 28.17,
+        "seconds": 3.88,
+        "window": 4.33,
+        "fill": 0.896
+      }
+    ]
+  },
+  "durationSec": 33,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.5,
+    "lufs": -15.1,
+    "music_under_voice_db": 22.1
+  },
+  "experiments": {
+    "promise-stays-in-hook-place": "off"
+  },
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after the rewrite. Facts confirmed: $700K (2023 jet) on the TechCrunch page and in Tesla's 2024 proxy; $400K (2025 jet) and $4.8M (2025 security company) on the Electrek page (FY2025 10-K/A). The payoff now sets two full-year 2025 figures side by side (4.8M / 400K = 12x, maths cmp). The turn now says Tesla pays 'part of the bill', which matches the filing's 'a portion of the total cost'. 'Last year' = 2025 is correct today. Ownership line matches the filing: 'aircraft owned and operated by SpaceX'. Nothing implies wrongdoing, no advice, disclaimer present. Notes: fact3 ($2.4M) is no longer used and could be dropped; the description's '(Apr 2026)' fits only the Electrek source, TechCrunch is Apr 2024."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Directed 2D throughout, 7 places (runway, launch site, Tesla office, hangar, street, security office, money wall); Musk photo head names the subject at 0 s; figures on invoices, clipboard and counter; payoff $4.8M = 12x the $400K jet bill; pick-one loop back to the runway; disclaimer in description, none on screen; layout/craft empty, peak -1.0 dB, mean -16.5 dB, 33 s; on par with reference v-20261117-03. Minor: guards cropped at the frame edges at 20 s, counter mid-count at 25 s."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:01:00.649759+00:00",
+      "finishedAt": "2026-11-21T22:01:00.649759+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T22:02:02.136535+00:00",
+      "finishedAt": "2026-11-21T22:02:02.136535+00:00",
+      "notes": [
+        "a story needs beats",
+        "no `promise` beat: every video has a promise early, a turn about two thirds in, and a payoff that answers the hook",
+        "no `turn` beat: every video has a promise early, a turn about two thirds in, and a payoff that answers the hook",
+        "no `payoff` beat: every video has a promise early, a turn about two thirds in, and a payoff that answers the hook",
+        "note: 0 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T22:02:06.876529+00:00",
+      "finishedAt": "2026-11-21T22:02:06.876529+00:00",
+      "notes": [
+        "beat 'bill'.say contains a typed number; use a placeholder: 'When he flies for Tesla, Tesla gets a bill: {fact1} in 2023.'",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T22:02:27.497777+00:00",
+      "finishedAt": "2026-11-21T22:02:27.497777+00:00",
+      "notes": [
+        "beat 'loop'.events.guards: no word \"guards'\" in this beat's spoken line"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T22:02:32.831074+00:00",
+      "finishedAt": "2026-11-21T22:02:32.831074+00:00",
+      "notes": [
+        "description mentions '2025', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:02:37.218428+00:00",
+      "finishedAt": "2026-11-21T22:02:37.218428+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:02:38.076873+00:00",
+      "finishedAt": "2026-11-21T22:02:38.076873+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-21T22:04:19.659711+00:00",
+      "finishedAt": "2026-11-21T22:04:19.659711+00:00",
+      "notes": [
+        "turn/payoff ('At first, $2.4M.' -> 'Lately, $4.8M a year. Twice as much.'): misleading comparison. Tesla's 2024 proxy says the service agreement with Musk's security company began in December 2023, so the $2.4M covers only the weeks after that (plus about $0.5M through Feb 2024), while $4.8M is a full year (2025). Viewers will hear that the yearly cost doubled, and the figures don't support that: Tesla's 2025 proxy puts full-year 2024 at about $2.8M. Fix: compare 2024 ($2.8M, Tesla 2025 proxy) with 2025 ($4.8M), or say plainly that the $2.4M came in its first month (Dec 2023), and drop 'Twice as much' unless the compared periods are both full years.",
+        "guards/turn ('Who pays them? Tesla does, to a security company Musk owns.'): this overstates the filing. Tesla says these payments are 'a portion of the total cost of security services concerning Elon Musk' (it's in the topic's verify list). The line implies Tesla pays for all his guards through his firm. Fix: something like 'Tesla pays part of it, to a security company Musk owns.'",
+        "Facts confirmed: $700K (2023, SpaceX jet) and $2.4M (2023, security firm) appear on the TechCrunch 17 Apr 2024 page and in Tesla's 2024 proxy (ir.tesla.com pre14a: 'aircraft owned and operated by SpaceX at rates determined by Tesla and SpaceX, subject to rules of the FAA', since April 2016). $400K and $4.8M (2025) appear on the Electrek 1 May 2026 page (FY2025 10-K/A). Wording on legality, disclaimer, title and the rest of the beats are fine."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:05:06.956844+00:00",
+      "finishedAt": "2026-11-21T22:05:06.956844+00:00",
+      "notes": [
+        "17 figures computed from inputs; 17 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:05:21.311540+00:00",
+      "finishedAt": "2026-11-21T22:05:21.311540+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-21T22:07:08.405625+00:00",
+      "finishedAt": "2026-11-21T22:07:51.987247+00:00",
+      "notes": [
+        "text 'INVOICE' at 15.0 s is 30.2 px, below the 44 px minimum",
+        "3 of 8 stills are mostly empty background (at 5 s, 20 s, 33 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:08:04.348350+00:00",
+      "finishedAt": "2026-11-21T22:08:04.348350+00:00",
+      "notes": [
+        "Re-review after the rewrite. Facts confirmed: $700K (2023 jet) on the TechCrunch page and in Tesla's 2024 proxy; $400K (2025 jet) and $4.8M (2025 security company) on the Electrek page (FY2025 10-K/A). The payoff now sets two full-year 2025 figures side by side (4.8M / 400K = 12x, maths cmp). The turn now says Tesla pays 'part of the bill', which matches the filing's 'a portion of the total cost'. 'Last year' = 2025 is correct today. Ownership line matches the filing: 'aircraft owned and operated by SpaceX'. Nothing implies wrongdoing, no advice, disclaimer present. Notes: fact3 ($2.4M) is no longer used and could be dropped; the description's '(Apr 2026)' fits only the Electrek source, TechCrunch is Apr 2024."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-21T22:08:43.161884+00:00",
+      "finishedAt": "2026-11-21T22:09:20.567848+00:00",
+      "notes": [
+        "3 of 8 stills are mostly empty background (at 5 s, 20 s, 33 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:10:04.722154+00:00",
+      "finishedAt": "2026-11-21T22:10:39.023346+00:00",
+      "notes": [
+        "33 s, ember/pop (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:11:19.508484+00:00",
+      "finishedAt": "2026-11-21T22:11:19.508484+00:00",
+      "notes": [
+        "Directed 2D throughout, 7 places (runway, launch site, Tesla office, hangar, street, security office, money wall); Musk photo head names the subject at 0 s; figures on invoices, clipboard and counter; payoff $4.8M = 12x the $400K jet bill; pick-one loop back to the runway; disclaimer in description, none on screen; layout/craft empty, peak -1.0 dB, mean -16.5 dB, 33 s; on par with reference v-20261117-03. Minor: guards cropped at the frame edges at 20 s, counter mid-count at 25 s."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:11:31.857691+00:00",
+      "finishedAt": "2026-11-21T22:12:54.816934+00:00",
+      "notes": [
+        "33 s, ember/pop, peak -1.0 dB, mean -16.5 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-21T22:12:59.088468+00:00",
+      "finishedAt": "2026-11-21T22:12:59.088468+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261122-02",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261122-02"
+  }
+}

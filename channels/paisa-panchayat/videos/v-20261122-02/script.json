@@ -1,0 +1,798 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 40917,
+  "story": "billionaire_question",
+  "shape": "the-invoice",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "pop",
+    "key": "E",
+    "bpm": 112,
+    "look": {
+      "stage": "desert",
+      "header": "sticky",
+      "holder": "phone",
+      "entrance": "drop"
+    }
+  },
+  "arms": {
+    "length": "28-35",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "22"
+  },
+  "hook_style": "question",
+  "cta": "The jet bill or the guards' bill: which surprised you more? Comment",
+  "feed_id": "2026-11-22-musk-jet-belongs-to-spacex-tesla-pays",
+  "facts": [
+    {
+      "label": "What Tesla paid SpaceX in 2023 for using a jet SpaceX owns",
+      "value": 700,
+      "unit": "money_thousand",
+      "currency": "USD",
+      "as_of": "2024-04-17",
+      "source": "Tesla",
+      "url": "https://techcrunch.com/2024/04/17/tesla-x-advertising-musk-stock-package-delware-texas"
+    },
+    {
+      "label": "What Tesla paid SpaceX in 2025 for using a SpaceX-owned aircraft",
+      "value": 400,
+      "unit": "money_thousand",
+      "currency": "USD",
+      "as_of": "2026-04-30",
+      "source": "Tesla",
+      "url": "https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/"
+    },
+    {
+      "label": "What Tesla paid a security company Musk owns in 2023",
+      "value": 2.4,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2024-04-17",
+      "source": "Tesla",
+      "url": "https://techcrunch.com/2024/04/17/tesla-x-advertising-musk-stock-package-delware-texas"
+    },
+    {
+      "label": "What Tesla paid a security company Musk owns in 2025",
+      "value": 4.8,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2026-04-30",
+      "source": "Tesla",
+      "url": "https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/"
+    }
+  ],
+  "maths": [
+    {
+      "name": "sec",
+      "kind": "share",
+      "total": 4800000,
+      "parts": 1,
+      "facts": {
+        "total": 4
+      }
+    },
+    {
+      "name": "cmp",
+      "kind": "share",
+      "total": 4800000,
+      "parts": 1,
+      "per_year": 400000,
+      "facts": {
+        "total": 4,
+        "per_year": 2
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 3.0,
+    "words": "Why isn't it *his*?",
+    "figure": "{fact1}",
+    "tag": "Musk's jet",
+    "angle": "number",
+    "who": "rohan"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Elon Musk flies a private jet almost everywhere. So why isn't the jet his?",
+      "events": {
+        "elon": {
+          "word": "Elon"
+        },
+        "flies": {
+          "word": "flies"
+        },
+        "jet": {
+          "word": "jet"
+        },
+        "why": {
+          "word": "why"
+        },
+        "his": {
+          "word": "his"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "elon"
+        },
+        {
+          "kind": "whoosh",
+          "at": "flies"
+        },
+        {
+          "kind": "ding",
+          "at": "why"
+        },
+        {
+          "kind": "boom",
+          "at": "his"
+        }
+      ],
+      "params": {
+        "component": "Hook",
+        "place": "a desert runway at sunset, a white private jet with its steps down",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "jet",
+            "size": "wide"
+          },
+          {
+            "at": "his",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "elon",
+            "what": "Elon Musk walks across the runway toward the jet, waving"
+          },
+          {
+            "at": "flies",
+            "what": "the jet's engines glow and heat shimmers off the runway"
+          },
+          {
+            "at": "jet",
+            "what": "the camera pulls back to show the whole white jet"
+          },
+          {
+            "at": "why",
+            "what": "Musk stops on the steps and looks back"
+          },
+          {
+            "at": "his",
+            "what": "a big red question mark stamps onto the jet's door"
+          }
+        ],
+        "things": [
+          "white private jet",
+          "runway",
+          "jet steps",
+          "elon musk",
+          "question mark"
+        ],
+        "fig": {}
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "On paper, it belongs to SpaceX, his rocket company.",
+      "events": {
+        "paper": {
+          "word": "paper"
+        },
+        "belongs": {
+          "word": "belongs"
+        },
+        "spacex": {
+          "word": "SpaceX"
+        },
+        "rocket": {
+          "word": "rocket"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "paper"
+        },
+        {
+          "kind": "pop",
+          "at": "spacex"
+        },
+        {
+          "kind": "whoosh",
+          "at": "rocket"
+        }
+      ],
+      "params": {
+        "component": "Promise",
+        "place": "SpaceX's launch site at dusk, the jet parked by the launch tower",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "belongs",
+            "size": "medium"
+          },
+          {
+            "at": "rocket",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "paper",
+            "what": "close on the jet's tail by the launch tower, an ownership paper flapping on it"
+          },
+          {
+            "at": "belongs",
+            "what": "the paper turns and shows the owner line"
+          },
+          {
+            "at": "spacex",
+            "what": "the SpaceX logo stamps onto the tail fin"
+          },
+          {
+            "at": "rocket",
+            "what": "the camera pulls back as a SpaceX rocket lifts off the tower behind the jet"
+          }
+        ],
+        "things": [
+          "jet tail fin",
+          "ownership paper",
+          "SpaceX logo",
+          "launch tower",
+          "rocket"
+        ],
+        "fig": {}
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "bill",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "When he flies for Tesla, Tesla gets the bill: {fact1} in a single year.",
+      "events": {
+        "when": {
+          "word": "When"
+        },
+        "tesla": {
+          "word": "Tesla"
+        },
+        "gets": {
+          "word": "gets"
+        },
+        "bill": {
+          "word": "bill"
+        },
+        "single": {
+          "word": "single"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "when"
+        },
+        {
+          "kind": "pop",
+          "at": "tesla"
+        },
+        {
+          "kind": "whoosh",
+          "at": "bill"
+        },
+        {
+          "kind": "kaching",
+          "at": "single"
+        }
+      ],
+      "params": {
+        "component": "Bill",
+        "place": "Tesla's office, an invoice printing out of a big printer",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "bill",
+            "size": "close"
+          },
+          {
+            "at": "single",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "when",
+            "what": "the jet flies past the office window"
+          },
+          {
+            "at": "tesla",
+            "what": "the Tesla logo lights up on the office wall"
+          },
+          {
+            "at": "gets",
+            "what": "a clerk turns to the printer"
+          },
+          {
+            "at": "bill",
+            "what": "an invoice with the SpaceX logo rolls out of the printer"
+          },
+          {
+            "at": "single",
+            "what": "the amount stamps on the invoice"
+          }
+        ],
+        "things": [
+          "office window",
+          "Tesla logo",
+          "printer",
+          "invoice",
+          "clerk"
+        ],
+        "fig": {
+          "bill23": "{fact1}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "less",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Last year, it was down to {fact2}. So is the jet the big bill?",
+      "events": {
+        "last": {
+          "word": "Last"
+        },
+        "down": {
+          "word": "down"
+        },
+        "so": {
+          "word": "So"
+        },
+        "big": {
+          "word": "big"
+        },
+        "bill": {
+          "word": "bill"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "last"
+        },
+        {
+          "kind": "kaching",
+          "at": "down"
+        },
+        {
+          "kind": "ding",
+          "at": "big"
+        }
+      ],
+      "params": {
+        "component": "Less",
+        "place": "SpaceX's hangar, a clipboard of invoices beside the parked jet",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "down",
+            "size": "close"
+          },
+          {
+            "at": "big",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "last",
+            "what": "a mechanic flips the clipboard to the newest invoice"
+          },
+          {
+            "at": "down",
+            "what": "the smaller amount stamps on the new invoice"
+          },
+          {
+            "at": "so",
+            "what": "the camera pulls back across the hangar"
+          },
+          {
+            "at": "big",
+            "what": "the jet in the hangar shrinks into the background, a question mark lights over it"
+          }
+        ],
+        "things": [
+          "hangar",
+          "parked jet",
+          "clipboard",
+          "invoice",
+          "mechanic"
+        ],
+        "fig": {
+          "bill25": "{fact2}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "guards",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "No. Everywhere Musk goes, guards go too. Who pays them?",
+      "events": {
+        "no": {
+          "word": "No"
+        },
+        "everywhere": {
+          "word": "Everywhere"
+        },
+        "guards": {
+          "word": "guards"
+        },
+        "too": {
+          "word": "too"
+        },
+        "pays": {
+          "word": "pays"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "no"
+        },
+        {
+          "kind": "whoosh",
+          "at": "everywhere"
+        },
+        {
+          "kind": "pop",
+          "at": "guards"
+        }
+      ],
+      "params": {
+        "component": "Guards",
+        "place": "a city street at night outside a hotel, black cars at the kerb",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "guards",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "no",
+            "what": "the light flips to night"
+          },
+          {
+            "at": "everywhere",
+            "what": "Musk steps out of a black car"
+          },
+          {
+            "at": "guards",
+            "what": "guards in black suits with earpieces close in around him"
+          },
+          {
+            "at": "too",
+            "what": "more guards step out of the cars behind"
+          },
+          {
+            "at": "pays",
+            "what": "a question mark lights over the guards"
+          }
+        ],
+        "things": [
+          "hotel door",
+          "black cars",
+          "elon musk",
+          "guards in black suits",
+          "street lamps"
+        ],
+        "fig": {}
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "turn",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "Tesla pays part of the bill, to a security company Musk owns.",
+      "events": {
+        "tesla": {
+          "word": "Tesla"
+        },
+        "part": {
+          "word": "part"
+        },
+        "security": {
+          "word": "security"
+        },
+        "company": {
+          "word": "company"
+        },
+        "owns": {
+          "word": "owns"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tesla"
+        },
+        {
+          "kind": "whoosh",
+          "at": "security"
+        },
+        {
+          "kind": "boom",
+          "at": "owns"
+        }
+      ],
+      "params": {
+        "component": "Security",
+        "place": "the security company's office, a door with a shield sign",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "company",
+            "size": "medium"
+          },
+          {
+            "at": "owns",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "tesla",
+            "what": "a Tesla envelope slides under the security office door"
+          },
+          {
+            "at": "security",
+            "what": "the shield sign on the door lights up"
+          },
+          {
+            "at": "company",
+            "what": "the door swings open on rows of monitors"
+          },
+          {
+            "at": "owns",
+            "what": "Musk sits behind the desk with an OWNER nameplate"
+          },
+          {
+            "at": "part",
+            "what": "a slice of a security bill tears off and slides under the door"
+          }
+        ],
+        "things": [
+          "security office door",
+          "shield sign",
+          "monitors",
+          "Tesla envelope",
+          "owner nameplate"
+        ],
+        "fig": {}
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "Last year alone, that company got {fact4}: {cmp_years} times the jet bill.",
+      "events": {
+        "last": {
+          "word": "Last"
+        },
+        "alone": {
+          "word": "alone"
+        },
+        "got": {
+          "word": "got"
+        },
+        "jet": {
+          "word": "jet"
+        },
+        "bill": {
+          "word": "bill"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "last"
+        },
+        {
+          "kind": "tick",
+          "at": "alone"
+        },
+        {
+          "kind": "kaching",
+          "at": "got"
+        },
+        {
+          "kind": "boom",
+          "at": "jet"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "place": "the security office's money wall, a big counter over two stacks of cash",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "got",
+            "size": "close"
+          },
+          {
+            "at": "jet",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "last",
+            "what": "the small jet-bill stack stands on the left under its invoice"
+          },
+          {
+            "at": "alone",
+            "what": "the security stack starts to rise on the right"
+          },
+          {
+            "at": "got",
+            "what": "the counter over it lands on the amount as the stack shoots up"
+          },
+          {
+            "at": "jet",
+            "what": "a ratio stamp slams between the two stacks"
+          },
+          {
+            "at": "bill",
+            "what": "the guards on the monitors turn to look"
+          }
+        ],
+        "things": [
+          "money wall",
+          "big counter",
+          "jet bill stack",
+          "security cash stack",
+          "monitors"
+        ],
+        "fig": {
+          "jet": "{fact2}",
+          "sec25": "{fact4}",
+          "ratio": "{cmp_years}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "The jet bill or the guards' bill: which surprised you? It all starts with one jet.",
+      "events": {
+        "jet": {
+          "word": "jet"
+        },
+        "or": {
+          "word": "or"
+        },
+        "which": {
+          "word": "which"
+        },
+        "starts": {
+          "word": "starts"
+        },
+        "one": {
+          "word": "one"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "jet"
+        },
+        {
+          "kind": "pop",
+          "at": "or"
+        },
+        {
+          "kind": "ding",
+          "at": "which"
+        },
+        {
+          "kind": "whoosh",
+          "at": "starts"
+        }
+      ],
+      "params": {
+        "component": "Loop",
+        "place": "back on the desert runway at sunset by the white jet",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "starts",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "jet",
+            "what": "the jet invoice flutters down on the left"
+          },
+          {
+            "at": "or",
+            "what": "the guards' cheque flutters down on the right"
+          },
+          {
+            "at": "which",
+            "what": "a question mark pops between them"
+          },
+          {
+            "at": "starts",
+            "what": "the papers blow away and the camera swings back to the jet as Musk walks toward it"
+          }
+        ],
+        "things": [
+          "white private jet",
+          "jet invoice",
+          "guards' cheque",
+          "question mark",
+          "elon musk"
+        ],
+        "fig": {}
+      },
+      "transition": "cut"
+    }
+  ],
+  "narrator": "am_michael"
+}
