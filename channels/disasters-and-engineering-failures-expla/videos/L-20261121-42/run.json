@@ -1,0 +1,318 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T08:37:55.418130+00:00",
+    "finishedAt": "2026-11-21T08:37:55.418130+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T08:42:19.515142+00:00",
+    "finishedAt": "2026-11-21T08:42:19.515142+00:00",
+    "notes": [
+      "beat 'hotel-2'.params.shot contains a typed number; use a placeholder: 'exterior2'",
+      "note: 13 questions in about 458 s of speech; at least 15 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T08:42:28.184596+00:00",
+    "finishedAt": "2026-11-21T08:42:28.184596+00:00",
+    "notes": [
+      "beat 'design': params.camera key at 'rod' is not one of this beat's events"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T08:42:34.457180+00:00",
+    "finishedAt": "2026-11-21T08:42:34.457180+00:00",
+    "notes": [
+      "beat 'outro'.params.assumption contains a typed number; use a placeholder: 'From the National Bureau of Standards walkway investigation (1982) and ASCE. 3D scenes are reconstructions, not actual footage.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T08:42:39.501633+00:00",
+    "finishedAt": "2026-11-21T08:42:39.501633+00:00",
+    "notes": [
+      "description mentions '143,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "facts[7].source must be 'ASCE Civil Engineering magazine' as in the feed, or its start cut at a word or before '(' (e.g. 'ASCE Civil Engineering magazine')",
+      "facts[8] (1980 year, 2007-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (40 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (15 m, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (1500 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (2000 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (63 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (31 percent, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (8 percent, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (8 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (4 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (186 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (10 count, 2007-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (2 count, 2011-07-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (6 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (3 count, 2007-01-01) is not one of the feed topic's facts; copy them exactly",
+      "the source line 'Data: NBS Building Science Series 143 (NIST) · ASCE Civil Engineering magazine, July 2011 · ASCE Civil Engineering magazine, January 2007 · Jul 2011' is too wide for the frame (2468 of 1784 px at 30 px): shorten each facts[].source to the publisher (e.g. 'NBS Building Science Series'), one name per publisher"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T08:42:57.475158+00:00",
+    "finishedAt": "2026-11-21T08:42:57.475158+00:00",
+    "notes": [
+      "facts[8] (1980 year, 2007-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (40 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (15 m, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (1500 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (2000 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (63 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (31 percent, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (8 percent, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (8 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (4 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (186 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (10 count, 2007-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (2 count, 2011-07-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (6 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (3 count, 2007-01-01) is not one of the feed topic's facts; copy them exactly"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T08:43:13.218484+00:00",
+    "finishedAt": "2026-11-21T08:43:13.218484+00:00",
+    "notes": [
+      "23 figures computed from inputs; 23 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T08:51:23.575527+00:00",
+    "finishedAt": "2026-11-21T08:51:23.575527+00:00",
+    "notes": [
+      "26 figures computed from inputs; 26 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T09:13:39.277177+00:00",
+    "finishedAt": "2026-11-21T09:13:39.277177+00:00",
+    "notes": [
+      "promise: 'It wasn't bad steel, and it wasn't bad welding' (and the struck-out BAD WELDING card) overstates NBS BSS 143 s10.6: box beam weld penetration averaged below AWS D1.1-79; NBS concluded only that materials and workmanship played no significant role in initiating the collapse. Say that instead (e.g. 'The investigators found the steel and the workmanship played no significant role') and change the card to match.",
+      "who: 'So who checked the new joint? Nobody did.' contradicts NBS (shop drawings 'were reviewed by the contractor, structural engineer and architect', per their stamps) and the script's own review/seal beats. Sources say the connection was never calculated, not that nobody reviewed it: e.g. 'So who calculated the new joint? Nobody did.' The empty CHECKED box in who and promise-2 must become an unticked CONNECTION CALCS (or similar) line, since the drawings were stamped.",
+      "today: 'Today, a change to a connection goes back to the engineer who designed it, and it is checked before it is built' is stated as universal present practice, unsourced (connection design is still often delegated to the fabricator's engineer, with EOR review). Tie it to the source: e.g. 'Since then, the engineer of record answers for every connection, and a change to one is meant to be checked before it is built.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T09:14:54.628068+00:00",
+    "finishedAt": "2026-11-21T09:14:54.628068+00:00",
+    "notes": [
+      "26 figures computed from inputs; 26 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T09:15:13.270074+00:00",
+    "finishedAt": "2026-11-21T09:15:13.270074+00:00",
+    "notes": [
+      "Re-review after rewrite: promise now uses NBS s10.6 wording (steel/workmanship no significant role), who/promise-2 say the joint was never calculated (CONNECTION CALCS), today tied to the 1985 ASCE policy, never tagged as reported; all 26 facts confirmed on the NBS BSS 143 PDF and the ASCE 2007/2011 pages (original design holding confirmed via STRUCTURE magazine + NBS capacities); verify list met (113 dead, phone call tagged as reported); disclaimer ends the description."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T09:16:41.884432+00:00",
+    "finishedAt": "2026-11-21T09:31:54.925434+00:00",
+    "notes": [
+      "text 'ROD TWO · FOURTH TO SECOND' at 180.9 s runs outside the frame",
+      "text 'ONE ROD: TO THE ROOF' at 207.5 s reaches 1048 px, inside the bottom 36 px",
+      "text 'TWO RODS: TO THE UPPER BEAM' at 207.5 s reaches 1048 px, inside the bottom 36 px",
+      "text 'REVIEW CHECKLIST' at 252.6 s runs outside the frame",
+      "text 'MEMBER SIZES' at 252.6 s runs outside the frame",
+      "text 'ASSOCIATE ENGINEERS, ABOUT' at 266.3 s is 26.3 px, below the 30 px minimum",
+      "text 'below code' at 284.0 s is 24 px, below the 30 px minimum",
+      "text 'load doubled' at 284.0 s is 24 px, below the 30 px minimum",
+      "text 'nobody calculated it' at 284.0 s is 24 px, below the 30 px minimum",
+      "text 'WEAK JOINT' at 274.0 s is 22.1 px, below the 30 px minimum",
+      "text 'ROD CHANGE' at 274.0 s is 22.1 px, below the 30 px minimum",
+      "text 'by phone, as reported' at 274.0 s is 15.6 px, below the 30 px minimum",
+      "text 'DETAILER' at 274.0 s is 22.1 px, below the 30 px minimum",
+      "text 'no calculation' at 274.0 s is 15.6 px, below the 30 px minimum",
+      "text 'REVIEW' at 274.0 s is 22.1 px, below the 30 px minimum",
+      "text 'connection not checked' at 274.0 s is 15.6 px, below the 30 px minimum",
+      "text '✗ BEAM FLANGE AND WELD' at 339.5 s runs outside the frame",
+      "text 'AS REPORTED · NEWSPAPER CHRONOLOGY IN THE NBS REPORT' at 379.8 s is 28 px, below the 30 px minimum",
+      "text 'THE ORIGINAL DESIGN' at 436.9 s reaches 1061 px, inside the bottom 36 px",
+      "text 'AS BUILT' at 436.9 s reaches 1061 px, inside the bottom 36 px",
+      "text 'below the building code' at 508.8 s is 28 px, below the 30 px minimum",
+      "text 'agreed by phone, as reported' at 508.8 s is 28 px, below the 30 px minimum",
+      "text 'no calculation, as reported' at 508.8 s is 28 px, below the 30 px minimum",
+      "text 'spot checks only, as reported' at 508.8 s is 28 px, below the 30 px minimum",
+      "35 of 103 stills are mostly empty background (at 10 s, 15 s, 25 s, 65 s, 70 s, 95 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: four shots in a row open medium (from 'who'): vary the shot size",
+      "note: 31 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 74 of 74 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T09:37:41.849430+00:00",
+    "finishedAt": "2026-11-21T09:52:46.262495+00:00",
+    "notes": [
+      "23 of 103 stills are mostly empty background (at 15 s, 25 s, 100 s, 115 s, 155 s, 170 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: four shots in a row open medium (from 'who'): vary the shot size",
+      "note: 31 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 74 of 74 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T09:57:29.416209+00:00",
+    "finishedAt": "2026-11-21T10:13:31.187357+00:00",
+    "notes": [
+      "text 'FABRICATOR · JOB FOLDERS' at 236.7 s runs outside the frame",
+      "note: four shots in a row open medium (from 'who'): vary the shot size",
+      "note: 31 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 74 of 74 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T10:16:30.769179+00:00",
+    "finishedAt": "2026-11-21T10:16:30.769179+00:00",
+    "notes": [
+      "[scene] code: layout_problems not empty: 'FABRICATOR · JOB FOLDERS' runs outside the frame at 236.7 s (beat detailer)",
+      "[scene] every beat: the channel's round badge top-left sits on the first letters of the honesty tag ('3D reconstruction' reads 'ɪ3D', 'AS REPORTED' reads 'ɪS REPORTED', 'GENERAL PRINCIPLE' clipped) at 0-25, 45-130, 185-260, 290-460 s",
+      "[scene] lesson 8 caption collisions: 40 s promise-2 caption over the drawing's lower beam and nut; 205 s path 'ONE ROD: TO THE ROOF' under the caption; 315 s light 'ON THE WALKWAYS' under 'The building code'; 435 s turn 'AS BUILT' under 'one-rod design'",
+      "[scene] text on text / cut off: 450 s payoff 'THE FINDING / MINIMAL CAPACITY · OWN WEIGHT' printed over the report's body text; 465 s boards 'MISCONDUCT' runs off its card and the white caption sits on the cream card (also 485 s policy); 260 s seal header 'SHOP DRAWINGS · ATRIUM WALKWAYS' cut off at the top and left edges; 435 s turn left diagram runs off the left edge; 505-510 s ask 'THE CAUSE CHAIN' drawn over the pinned notes; 180 s two-rods 'UPPER ROD / roof to the fourth floor' crossed by the beam line",
+      "[scene] lesson 5 (pale grey boxes): 45-55 s hotel/hotel-2 and 60-90 s walks, walks-2, rods, why-hang, year are washed-out white-blue, flat-lit, blocky towers with lollipop trees (80 s a giant low-poly plant covers the right third); 410 s rig is plain white boxes. Needs dark ground, key light, shadows, real materials",
+      "[scene] lesson 5 materials: the steel box beam is textured like speckled terrazzo/stone, not painted steel, in every cutaway (10, 15, 100-125, 200, 220-225, 500 s)",
+      "[script] lesson 6: 229-287 s (who, detailer, assumed, review, seal, load, tease-party, recap) is 58 s of the flat desk/cork-board look with no 3D, and 128-198 s has no 3D at all; diagrams/desk must be 3-6 s inserts, same look at most ~30 s. Move the detailer/review/seal chain into the 3D office or the atrium joint",
+      "[script] D: places with nothing in them or nobody acting: 165 s fab ('the fabricator's shop') is an empty blueprint with one line; 305 s tape is a blurred grey slab, no news camera or tripod; 265 s load shows ten blank brown cards for '10 associate engineers' (reads as nothing on mute); 490 s today is one box and an arrow on an empty grid; 155-195 s and 229-269 s desk beats are still papers and a phone with no hand or action",
+      "[script] 390-395 s tease-lab: evidence card label reads 'EVIDENCE · 9UE', a meaningless string",
+      "[script] no chapter beats: render.json chapters is only 'Intro' and the description has an empty 'CHAPTERS' heading; the chapter cards ('THE LAST MINUTES' 290 s, 'WHAT THEY FOUND' 400 s, 'WHAT CHANGED' 460 s) are inside directed beats, so YouTube gets no chapters. Recipe asks for 7 chapter cards",
+      "[script] thumbnails: B (Studio's pick, 8) copies the layout of the 1.1M 'The Design Change That Took 114 Lives' sitting next to it (split frame, tick left, cross right, INTENDED/BUILT words) and is a flat 2D drawing, against the recipe's 3D-at-failure thumbnail; C is the pale atrium (lesson 5). A ('TWICE THE WEIGHT', 3D walkway, red joint, arrow) is the one to click: set thumbnail_pick to a"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T10:21:16.434797+00:00",
+    "finishedAt": "2026-11-21T10:21:16.434797+00:00",
+    "notes": [
+      "26 figures computed from inputs; 26 cross-checked against closed-form formulas.",
+      "`structure.levels` needs 4 or more steps the viewer waits for (\"Sell\", \"Borrow\", \"Never sell\"): the promise of a structure is what keeps people past the hook",
+      "the climbing number (params.hud.counter) changes 0 times; at least 3: a number that climbs level by level is a reason to keep watching"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T10:22:35.611980+00:00",
+    "finishedAt": "2026-11-21T10:22:35.611980+00:00",
+    "notes": [
+      "26 figures computed from inputs; 26 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T10:27:43.099178+00:00",
+    "finishedAt": "2026-11-21T10:46:34.864329+00:00",
+    "notes": [
+      "514 s, night/undertow (preview only)",
+      "note: four shots in a row open medium (from 'watch'): vary the shot size",
+      "note: 31 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 74 of 74 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T10:47:49.256888+00:00",
+    "finishedAt": "2026-11-21T10:47:49.256888+00:00",
+    "notes": [
+      "[scene] 305 s (beat tape): about three quarters of the frame is solid black (left 1400 px mean brightness 1.8), only a grey slab at the right; the camera sits inside or against the news-camera model. Frame the camera and tripod from outside",
+      "[scene] 460 s (beat boards): the chapter title 'WHAT CHANGED' is drawn on top of the first licence card's 'STATE OF MISSOURI' text and the coffee mug; text on text. Move the title clear of the cards",
+      "[scene] 165-170 s (fab, thread): the new fabricator's shop is a pale near-white floor with a rod on two trestles and nothing else (lesson 5: pale, empty); the captions 'rod and saw a' / 'The rod would need' are white on light grey and hard to read. Darken the shop, light it, add the shop's detail",
+      "[script] 265 s (beat load): still ten blank brown cards for '10 associate engineers, each running several projects'; nothing on them says engineers or projects, so it reads as nothing on mute",
+      "[scene] 390-395 s (beat tease-lab): 'EVIDENCE · THE JOINT' runs past the right edge of its red tab (lesson 8: label box sized to its text)",
+      "[scene] 260 s (seal) and 485 s (policy): the white caption sits on the cream paper and is low contrast; keep the caption over the dark desk or shade under it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T10:55:10.511061+00:00",
+    "finishedAt": "2026-11-21T11:14:36.903847+00:00",
+    "notes": [
+      "514 s, night/undertow (preview only)",
+      "note: four shots in a row open medium (from 'watch'): vary the shot size",
+      "note: 31 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 74 of 74 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T11:15:06.162675+00:00",
+    "finishedAt": "2026-11-21T11:15:06.162675+00:00",
+    "notes": [
+      "Third look: all round-two items fixed (tape frames the news camera at 305 s, WHAT CHANGED off the licence cards at 460 s, dark lit fabricator's shop 165-170 s, ENGINEER plates at 265 s, evidence tab sized, seal/policy captions on the dark desk); layout_problems empty, 514 s, audio -1.0/-18.6 dB; thumbnail A picked. Remaining notes only: desk beats have no hands, all beats directed, 31 s without a close-up; ship must write the YouTube chapters into the description."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T11:17:09.338086+00:00",
+    "finishedAt": "2026-11-21T11:17:09.338086+00:00",
+    "notes": [
+      "26 figures computed from inputs; 26 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T11:17:14.066607+00:00",
+    "finishedAt": "2026-11-21T11:17:14.066607+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T11:17:15.242250+00:00",
+    "finishedAt": "2026-11-21T11:17:15.242250+00:00",
+    "notes": [
+      "26 figures computed from inputs; 26 cross-checked against closed-form formulas."
+    ]
+  }
+]
