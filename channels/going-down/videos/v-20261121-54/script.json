@@ -1,0 +1,611 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 54331,
+  "story": "station_dive",
+  "shape": "straight-down",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "recipe": "rain-blue",
+    "genre": "cinematic",
+    "key": "E",
+    "bpm": 88,
+    "look": {
+      "stage": "street",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "pop"
+    }
+  },
+  "arms": {
+    "length": "20-25",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "question",
+  "cta": "Lift or stairs: which would you take? Comment",
+  "feed_id": "2026-11-21-hampstead-deepest-tube",
+  "facts": [
+    {
+      "label": "Lift shaft depth",
+      "value": 55,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hampstead_tube_station"
+    },
+    {
+      "label": "Platform depth below ground",
+      "value": 58.5,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hampstead_tube_station"
+    },
+    {
+      "label": "North End depth",
+      "value": 221,
+      "unit": "ft",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/North_End_tube_station"
+    },
+    {
+      "label": "Steps on the emergency stair",
+      "value": 320,
+      "unit": "count",
+      "as_of": "2025",
+      "source": "TfL Art on the Underground",
+      "url": "https://art.tfl.gov.uk/labyrinth/artwork/hampstead/"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "street",
+    "sec": 0.5,
+    "words": "How deep is *Hampstead*?",
+    "tag": "Going down",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "street",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "London's deepest Tube station has no escalators at all. What's under Hampstead?",
+      "events": {
+        "deepest": {
+          "word": "deepest"
+        },
+        "tube": {
+          "word": "Tube"
+        },
+        "escalators": {
+          "word": "escalators"
+        },
+        "hampstead": {
+          "word": "Hampstead"
+        }
+      },
+      "sfx": [],
+      "params": {
+        "component": "Dive",
+        "place": "Hampstead station's front on a rainy hill street",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "escalators",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "deepest",
+            "what": "rain falls on the red station front, a bus passing"
+          },
+          {
+            "at": "tube",
+            "what": "the station sign lights"
+          },
+          {
+            "at": "escalators",
+            "what": "the camera tips down toward the entrance"
+          },
+          {
+            "at": "hampstead",
+            "what": "the depth meter waits at zero"
+          }
+        ],
+        "things": [
+          "Hampstead station front",
+          "traffic on the wet street",
+          "depth meter"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "surface",
+          "world": {
+            "look": "storm",
+            "unit": "m",
+            "note": "Depths: Wikipedia, TfL · not to scale",
+            "strata": [
+              {
+                "kind": "clay",
+                "toFt": 120
+              },
+              {
+                "kind": "sand",
+                "toFt": 260
+              }
+            ]
+          },
+          "layer": {
+            "kind": "surface",
+            "preset": "tube",
+            "label": "Hampstead",
+            "wall": "#8c1c13",
+            "trim": "#6e1510",
+            "vehicle": "#d32f2f"
+          }
+        }
+      }
+    },
+    {
+      "id": "lifts",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact1}: the lifts drop straight down a shaft.",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "lifts": {
+          "word": "lifts"
+        },
+        "drop": {
+          "word": "drop"
+        },
+        "straight": {
+          "word": "straight"
+        },
+        "shaft": {
+          "word": "shaft"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the bottom of the lift shaft",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "shaft",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives down beside the lift shaft"
+          },
+          {
+            "at": "lifts",
+            "what": "the lift car slides down the shaft"
+          },
+          {
+            "at": "straight",
+            "what": "the shaft glows top to bottom"
+          },
+          {
+            "at": "shaft",
+            "what": "the lift lobby sign lands"
+          }
+        ],
+        "things": [
+          "lift shaft",
+          "lift car",
+          "lift lobby sign"
+        ],
+        "fig": {
+          "depth": "{fact1}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.1,
+          "layers": [
+            {
+              "kind": "chamber",
+              "type": "vault",
+              "label": "Lifts",
+              "props": [
+                "pipes",
+                "lamp"
+              ]
+            },
+            {
+              "kind": "shaft",
+              "type": "elevator",
+              "fromFt": 0,
+              "toFt": 170,
+              "side": "right",
+              "glowOn": "straight"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "platforms",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact2}: the Northern line platforms, the deepest in London.",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "northern": {
+          "word": "Northern"
+        },
+        "platforms": {
+          "word": "platforms"
+        },
+        "deepest": {
+          "word": "deepest"
+        },
+        "london": {
+          "word": "London"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the Northern line platform tunnel",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "deepest",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives to the platform tunnel"
+          },
+          {
+            "at": "northern",
+            "what": "a train rushes in"
+          },
+          {
+            "at": "platforms",
+            "what": "the platform sign lights"
+          },
+          {
+            "at": "deepest",
+            "what": "the camera eases back to show the depth"
+          },
+          {
+            "at": "london",
+            "what": "the train pulls out"
+          }
+        ],
+        "things": [
+          "platform tunnel",
+          "train",
+          "station sign"
+        ],
+        "fig": {
+          "depth": "{fact2}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.12,
+          "layer": {
+            "kind": "tunnel",
+            "type": "subway",
+            "label": "Northern",
+            "color": "lightgray",
+            "stripe": "black",
+            "bullets": [
+              [
+                "N",
+                "black"
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "northend",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Further up the line, deeper still, at {fact3}: North End, a station that never opened.",
+      "events": {
+        "further": {
+          "word": "Further"
+        },
+        "depth": {
+          "word": 7
+        },
+        "deeper": {
+          "word": "deeper"
+        },
+        "north": {
+          "word": "North"
+        },
+        "never": {
+          "word": "never"
+        },
+        "opened": {
+          "word": "opened"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "rush",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "North End, the unopened station up the line",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "north",
+            "size": "medium"
+          },
+          {
+            "at": "never",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "further",
+            "what": "the camera sweeps along the tunnel"
+          },
+          {
+            "at": "depth",
+            "what": "it dives to a dark, empty station, the unbuilt station's plans unrolled on the floor"
+          },
+          {
+            "at": "north",
+            "what": "the stamp UNOPENED lands on the dark hall"
+          },
+          {
+            "at": "never",
+            "what": "the red lamp flashes in the empty hall"
+          },
+          {
+            "at": "opened",
+            "what": "the camera holds on the hall that never opened"
+          }
+        ],
+        "things": [
+          "empty unlit hall",
+          "station sign",
+          "stamp",
+          "plans",
+          "crates"
+        ],
+        "fig": {
+          "depth": "{fact3}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.15,
+          "layer": {
+            "kind": "chamber",
+            "type": "vault",
+            "color": "#262633",
+            "label": "North End",
+            "stamp": "UNOPENED",
+            "stampOn": "north",
+            "plansOn": "depth",
+            "props": [
+              "lamp",
+              "crates",
+              "blueprint"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "steps",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "And the emergency stair back up has {fact4} steps.",
+      "events": {
+        "emergency": {
+          "word": "emergency"
+        },
+        "stair": {
+          "word": "stair"
+        },
+        "back": {
+          "word": "back"
+        },
+        "has": {
+          "word": "has"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "subboom",
+          "at": "has"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the whole stack under Hampstead, the emergency stair glowing",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "stair",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "emergency",
+            "what": "the camera pulls back to the whole stack"
+          },
+          {
+            "at": "stair",
+            "what": "the long stair lights up with climbers"
+          },
+          {
+            "at": "back",
+            "what": "the step counter appears"
+          },
+          {
+            "at": "has",
+            "what": "the counter counts up the steps"
+          }
+        ],
+        "things": [
+          "whole cutaway stack",
+          "emergency stair with climbers",
+          "step counter"
+        ],
+        "fig": {
+          "steps": "{fact4}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "emergency",
+          "zoom": 1.0,
+          "pull": "has",
+          "layer": {
+            "kind": "shaft",
+            "type": "stairs",
+            "fromFt": 0,
+            "toFt": 192,
+            "side": "left",
+            "riders": 5,
+            "glowOn": "stair",
+            "counter": {
+              "fig": "steps",
+              "label": "STEPS",
+              "on": "has"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "All the way up to Hampstead.",
+      "events": {
+        "all": {
+          "word": "All"
+        },
+        "way": {
+          "word": "way"
+        },
+        "up": {
+          "word": "up"
+        },
+        "hampstead": {
+          "word": "Hampstead"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "hampstead"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "climbing back up to Hampstead's street",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "hampstead",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "all",
+            "what": "the camera rides up through the layers"
+          },
+          {
+            "at": "way",
+            "what": "the meter counts back down"
+          },
+          {
+            "at": "up",
+            "what": "the street comes back into view"
+          },
+          {
+            "at": "hampstead",
+            "what": "it lands on the opening frame"
+          }
+        ],
+        "things": [
+          "the layers passing",
+          "depth meter",
+          "Hampstead station"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "rideup"
+        }
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}
