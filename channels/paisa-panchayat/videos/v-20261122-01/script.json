@@ -1,0 +1,883 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 73519,
+  "story": "money_scale",
+  "shape": "the-price-tag",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "synthwave",
+    "key": "G",
+    "bpm": 104,
+    "look": {
+      "stage": "city",
+      "header": "strip",
+      "holder": "box",
+      "entrance": "slide"
+    }
+  },
+  "arms": {
+    "length": "28-35",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "22"
+  },
+  "hook_style": "challenge",
+  "cta": "Standard or Ultimate: which one did you buy? Comment",
+  "feed_id": "2026-11-20-gta-6-79-99-how-many-copies",
+  "facts": [
+    {
+      "label": "Price of Grand Theft Auto VI, Standard Edition, US",
+      "value": 79.99,
+      "unit": "money",
+      "currency": "USD",
+      "as_of": "2026-06-25",
+      "source": "Take-Two Interactive",
+      "url": "https://www.itechpost.com/articles/236457/20260625/gta-6-costs-7999-take-two-confirms-standard-edition-ultimate-edition-november-19-release.htm"
+    },
+    {
+      "label": "Price of Grand Theft Auto VI, Ultimate Edition, US",
+      "value": 99.99,
+      "unit": "money",
+      "currency": "USD",
+      "as_of": "2026-06-25",
+      "source": "Take-Two Interactive",
+      "url": "https://www.itechpost.com/articles/236457/20260625/gta-6-costs-7999-take-two-confirms-standard-edition-ultimate-edition-november-19-release.htm"
+    },
+    {
+      "label": "Take-Two net bookings outlook for the three months ending 31 Dec 2026, low end",
+      "value": 3350,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2026-11-09",
+      "source": "Take-Two Interactive",
+      "url": "https://finviz.com/news/419503/take-two-interactive-software-inc-reports-results-for-fiscal-second-quarter-2027"
+    },
+    {
+      "label": "Take-Two net bookings outlook for the three months ending 31 Dec 2026, high end",
+      "value": 3500,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2026-11-09",
+      "source": "Take-Two Interactive",
+      "url": "https://finviz.com/news/419503/take-two-interactive-software-inc-reports-results-for-fiscal-second-quarter-2027"
+    }
+  ],
+  "maths": [
+    {
+      "name": "std",
+      "kind": "share",
+      "total": 3350000000,
+      "parts": 1,
+      "per_year": 79.99,
+      "facts": {
+        "total": 3,
+        "per_year": 1
+      }
+    },
+    {
+      "name": "ult",
+      "kind": "share",
+      "total": 3350000000,
+      "parts": 1,
+      "per_year": 99.99,
+      "facts": {
+        "total": 3,
+        "per_year": 2
+      }
+    },
+    {
+      "name": "top",
+      "kind": "share",
+      "total": 3500000000,
+      "parts": 1,
+      "facts": {
+        "total": 4
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.6,
+    "words": "How many *copies*?",
+    "figure": "{fact1}",
+    "tag": "One copy",
+    "angle": "number",
+    "who": "rohan"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Take-Two's New Year forecast: how many GTA Six copies is it?",
+      "events": {
+        "take-twos": {
+          "word": "Take-Two's"
+        },
+        "forecast": {
+          "word": "forecast"
+        },
+        "gta": {
+          "word": "GTA"
+        },
+        "copies": {
+          "word": "copies"
+        },
+        "it": {
+          "word": "it"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "take-twos"
+        },
+        {
+          "kind": "boom",
+          "at": "forecast"
+        },
+        {
+          "kind": "kaching",
+          "at": "gta"
+        },
+        {
+          "kind": "whoosh",
+          "at": "copies"
+        }
+      ],
+      "params": {
+        "component": "Hook",
+        "place": "a game shop at night, the GTA VI shelf under a spotlight",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "gta",
+            "size": "wide"
+          },
+          {
+            "at": "it",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "take-twos",
+            "what": "the Take-Two logo sticker jumps on the shelf sign"
+          },
+          {
+            "at": "forecast",
+            "what": "the spotlight snaps on over the big GTA VI box on the shelf"
+          },
+          {
+            "at": "gta",
+            "what": "the yellow price tag swings onto the box"
+          },
+          {
+            "at": "copies",
+            "what": "copies of the box slide out along the shelf, one after another"
+          },
+          {
+            "at": "it",
+            "what": "Rohan's hand reaches in for the front box"
+          }
+        ],
+        "things": [
+          "GTA VI box",
+          "price tag",
+          "game shelf",
+          "Take-Two logo",
+          "rohan's hand"
+        ],
+        "fig": {
+          "price": "{fact1}"
+        }
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "Each copy is {fact1}. Take-Two expects at least {std_total} from all its games by New Year.",
+      "events": {
+        "each": {
+          "word": "Each"
+        },
+        "copy": {
+          "word": "copy"
+        },
+        "is": {
+          "word": "is"
+        },
+        "take-two": {
+          "word": "Take-Two"
+        },
+        "expects": {
+          "word": "expects"
+        },
+        "least": {
+          "word": "least"
+        },
+        "from": {
+          "word": "from"
+        },
+        "all": {
+          "word": "all"
+        },
+        "games": {
+          "word": "games"
+        },
+        "new": {
+          "word": "New"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "kaching",
+          "at": "each"
+        },
+        {
+          "kind": "whoosh",
+          "at": "copy"
+        },
+        {
+          "kind": "kaching",
+          "at": "expects"
+        },
+        {
+          "kind": "pop",
+          "at": "games"
+        }
+      ],
+      "params": {
+        "component": "Promise",
+        "place": "a game shop at night, the GTA VI shelf under a spotlight",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "expects",
+            "size": "medium"
+          },
+          {
+            "at": "games",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "each",
+            "what": "the price tag on the box flips round and stamps the price"
+          },
+          {
+            "at": "copy",
+            "what": "the camera starts to pull back"
+          },
+          {
+            "at": "is",
+            "what": "the price tag stamps again, bigger, as the camera climbs the wall"
+          },
+          {
+            "at": "take-two",
+            "what": "the wall TV lights up with the Take-Two logo"
+          },
+          {
+            "at": "expects",
+            "what": "the TV's counter counts up to the low figure"
+          },
+          {
+            "at": "least",
+            "what": "an AT LEAST stamp lands on the TV"
+          },
+          {
+            "at": "from",
+            "what": "the figure on the TV flashes as it lands"
+          },
+          {
+            "at": "all",
+            "what": "the shelves of other games light up one by one"
+          },
+          {
+            "at": "games",
+            "what": "a ring of other game boxes circles the TV"
+          },
+          {
+            "at": "new",
+            "what": "a New Year banner drops over the TV"
+          }
+        ],
+        "things": [
+          "wall TV",
+          "Take-Two logo",
+          "forecast counter",
+          "game shelves",
+          "new year banner"
+        ],
+        "fig": {
+          "low": "{std_total}",
+          "price": "{fact1}"
+        }
+      },
+      "transition": "match"
+    },
+    {
+      "id": "counter",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Rohan pays it at the counter. One copy, sold.",
+      "events": {
+        "rohan": {
+          "word": "Rohan"
+        },
+        "pays": {
+          "word": "pays"
+        },
+        "counter": {
+          "word": "counter"
+        },
+        "copy": {
+          "word": "copy"
+        },
+        "sold": {
+          "word": "sold"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "rohan"
+        },
+        {
+          "kind": "kaching",
+          "at": "pays"
+        },
+        {
+          "kind": "ding",
+          "at": "copy"
+        },
+        {
+          "kind": "pop",
+          "at": "sold"
+        }
+      ],
+      "params": {
+        "component": "Counter",
+        "place": "the checkout counter, a card reader and a receipt printer",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "copy",
+            "size": "close"
+          },
+          {
+            "at": "sold",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "rohan",
+            "what": "Rohan steps up to the counter with the box"
+          },
+          {
+            "at": "pays",
+            "what": "he taps his card on the reader, it beeps green"
+          },
+          {
+            "at": "counter",
+            "what": "the till screen shows the price"
+          },
+          {
+            "at": "copy",
+            "what": "the cashier slides the box into a bag, a tally on the till reads one"
+          },
+          {
+            "at": "sold",
+            "what": "the till's tally clicks over and a SOLD sticker slaps on the bag"
+          }
+        ],
+        "things": [
+          "checkout counter",
+          "card reader",
+          "till screen",
+          "shopping bag",
+          "sold sticker"
+        ],
+        "fig": {
+          "price": "{fact1}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "queue",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Behind him, the queue runs round the block. How many to go?",
+      "events": {
+        "behind": {
+          "word": "Behind"
+        },
+        "queue": {
+          "word": "queue"
+        },
+        "runs": {
+          "word": "runs"
+        },
+        "block": {
+          "word": "block"
+        },
+        "many": {
+          "word": "many"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "behind"
+        },
+        {
+          "kind": "pop",
+          "at": "queue"
+        },
+        {
+          "kind": "whoosh",
+          "at": "runs"
+        },
+        {
+          "kind": "riser",
+          "at": "many"
+        }
+      ],
+      "params": {
+        "component": "Queue",
+        "place": "the pavement outside the shop at night, a queue of gamers round the block",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "block",
+            "size": "wide"
+          },
+          {
+            "at": "many",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "behind",
+            "what": "Rohan walks out of the shop with his bag"
+          },
+          {
+            "at": "queue",
+            "what": "a line of gamers holding boxes fills the pavement"
+          },
+          {
+            "at": "runs",
+            "what": "more gamers spill out of the shop door"
+          },
+          {
+            "at": "block",
+            "what": "the camera pulls back: the queue bends round the corner of the block"
+          },
+          {
+            "at": "many",
+            "what": "a question mark lights up on the shop's neon sign"
+          }
+        ],
+        "things": [
+          "shop door",
+          "queue of gamers",
+          "neon sign",
+          "street corner",
+          "rohan with bag"
+        ],
+        "fig": {}
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "pile",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "To reach {std_total}, the boxes pile past the roof, into the clouds.",
+      "events": {
+        "reach": {
+          "word": "reach"
+        },
+        "boxes": {
+          "word": "boxes"
+        },
+        "roof": {
+          "word": "roof"
+        },
+        "into": {
+          "word": "into"
+        },
+        "clouds": {
+          "word": "clouds"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "reach"
+        },
+        {
+          "kind": "pop",
+          "at": "boxes"
+        },
+        {
+          "kind": "boom",
+          "at": "roof"
+        },
+        {
+          "kind": "riser",
+          "at": "into"
+        }
+      ],
+      "params": {
+        "component": "Pile",
+        "place": "the street outside the shop, a tower of game boxes rising into the night",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "roof",
+            "size": "wide"
+          },
+          {
+            "at": "clouds",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "reach",
+            "what": "a billboard over the shop flips to the low figure"
+          },
+          {
+            "at": "boxes",
+            "what": "boxes drop onto the pavement and start stacking"
+          },
+          {
+            "at": "roof",
+            "what": "the stack shoots up past the shop roof"
+          },
+          {
+            "at": "into",
+            "what": "the camera tilts up the tower"
+          },
+          {
+            "at": "clouds",
+            "what": "the top of the tower vanishes into the clouds"
+          }
+        ],
+        "things": [
+          "shop front",
+          "billboard",
+          "tower of game boxes",
+          "street lamps",
+          "clouds"
+        ],
+        "fig": {
+          "low": "{std_total}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "turn",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "But if every fan paid {fact2} for the Ultimate? Then it buys only {ult_years} copies.",
+      "events": {
+        "but": {
+          "word": "But"
+        },
+        "fan": {
+          "word": "fan"
+        },
+        "ultimate": {
+          "word": "Ultimate"
+        },
+        "only": {
+          "word": "only"
+        },
+        "copies": {
+          "word": "copies"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "but"
+        },
+        {
+          "kind": "pop",
+          "at": "ultimate"
+        },
+        {
+          "kind": "kaching",
+          "at": "only"
+        },
+        {
+          "kind": "whoosh",
+          "at": "only"
+        }
+      ],
+      "params": {
+        "component": "Ultimate",
+        "place": "a glass display case, the gold Ultimate box under a gold spotlight",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "only",
+            "size": "close"
+          },
+          {
+            "at": "copies",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "but",
+            "what": "the light turns gold"
+          },
+          {
+            "at": "fan",
+            "what": "a fan in a cap presses against the glass case"
+          },
+          {
+            "at": "ultimate",
+            "what": "the gold Ultimate box rises on its stand"
+          },
+          {
+            "at": "only",
+            "what": "its gold price tag stamps on and the counter on the case lands on the smaller count"
+          },
+          {
+            "at": "copies",
+            "what": "the stack beside the case shrinks"
+          }
+        ],
+        "things": [
+          "glass display case",
+          "gold Ultimate box",
+          "gold price tag",
+          "fan in a cap",
+          "copy counter"
+        ],
+        "fig": {
+          "price": "{fact2}",
+          "copies": "{ult_years}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "By New Year, that money buys {std_years} standard copies.",
+      "events": {
+        "by": {
+          "word": "By"
+        },
+        "money": {
+          "word": "money"
+        },
+        "buys": {
+          "word": "buys"
+        },
+        "standard": {
+          "word": "standard"
+        },
+        "copies": {
+          "word": "copies"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "by"
+        },
+        {
+          "kind": "tick",
+          "at": "money"
+        },
+        {
+          "kind": "ding",
+          "at": "buys"
+        },
+        {
+          "kind": "boom",
+          "at": "copies"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "place": "the city from above at night, a mountain of game boxes over the towers",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "money",
+            "size": "medium"
+          },
+          {
+            "at": "copies",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "by",
+            "what": "the camera dives over the night city as New Year fireworks start"
+          },
+          {
+            "at": "money",
+            "what": "the big counter over the mountain of boxes starts counting"
+          },
+          {
+            "at": "buys",
+            "what": "more fireworks burst over the towers"
+          },
+          {
+            "at": "standard",
+            "what": "the STANDARD tag stamps onto the mountain"
+          },
+          {
+            "at": "copies",
+            "what": "the counter lands on the copy count"
+          }
+        ],
+        "things": [
+          "night city",
+          "mountain of game boxes",
+          "price tag",
+          "copy counter",
+          "fireworks"
+        ],
+        "fig": {
+          "copies": "{std_years}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "Standard or Ultimate: which did you buy? Check the tag.",
+      "events": {
+        "standard": {
+          "word": "Standard"
+        },
+        "ultimate": {
+          "word": "Ultimate"
+        },
+        "buy": {
+          "word": "buy"
+        },
+        "check": {
+          "word": "Check"
+        },
+        "tag": {
+          "word": "tag"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "standard"
+        },
+        {
+          "kind": "pop",
+          "at": "ultimate"
+        },
+        {
+          "kind": "ding",
+          "at": "tag"
+        }
+      ],
+      "params": {
+        "component": "Loop",
+        "place": "back in the game shop at night, Rohan at the GTA VI shelf",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "check",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "standard",
+            "what": "Rohan holds up the standard box in one hand"
+          },
+          {
+            "at": "ultimate",
+            "what": "and the gold Ultimate box in the other"
+          },
+          {
+            "at": "buy",
+            "what": "a question mark pops between them"
+          },
+          {
+            "at": "check",
+            "what": "he puts one back on the shelf"
+          },
+          {
+            "at": "tag",
+            "what": "the yellow price tag swings on the box, as in the first frame"
+          }
+        ],
+        "things": [
+          "GTA VI box",
+          "gold Ultimate box",
+          "price tag",
+          "game shelf",
+          "rohan"
+        ],
+        "fig": {
+          "price": "{fact1}"
+        }
+      },
+      "transition": "cut"
+    }
+  ],
+  "narrator": "am_michael"
+}
