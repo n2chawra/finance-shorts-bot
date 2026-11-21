@@ -1559,6 +1559,261 @@
    "expires": "2027-05-19",
    "status": "new",
    "promo_short": true
+  },
+  {
+   "id": "2026-11-22-new-orleans-stuck-rudder",
+   "format": "short",
+   "title": "A tanker's rudder jammed on the Mississippi; two minutes later it hit a docked riverboat, which capsized in 22 minutes (NTSB, preliminary)",
+   "category": "ship",
+   "kind": "trend",
+   "priority": "trending",
+   "stories": [
+    "promo_why_it_failed"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "What REALLY Happened in the New Orleans Ship Collision?",
+    "views": 70331,
+    "url": "https://www.youtube.com/watch?v=4kkNl2yl1Lw",
+    "channel": "World explained",
+    "channelSubs": 3820,
+    "outlier": 18.4
+   },
+   "hook": "On the thirteenth of November, a 520-foot tanker on the Mississippi lost its steering. It had two minutes.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "The Atlantic Asphalt's steering fails and holds its rudder hard to starboard (NTSB, preliminary)",
+    "The tanker swings toward the east bank where the riverboat American Heritage is docked at mile 96",
+    "The data recorder logs anchor and emergency ship-handling orders; two minutes after the rudder stuck, it hits",
+    "The riverboat rolls onto its side in about 22 minutes; all 190 aboard are accounted for"
+   ],
+   "rule_after": "None yet: the NTSB will publish a preliminary report and later a probable cause; the Coast Guard classed it a major marine casualty. End on what investigators will check and when.",
+   "human_moment": "Two police officers on the dock were thrown into the river; everyone aboard was accounted for.",
+   "angle": "Why can't a 520-foot ship stop or turn in two minutes? Show the stuck rudder in a flat diagram, the turning circle and the current, then the riverboat rolling, with every claim labelled preliminary and no blame.",
+   "why_now": "8 days old; 5+ niche Shorts this week, best 70K on a 3.8K channel (18x) and Fault Lines' long video 118K (10.7x); the NTSB preliminary report is still to come, so a follow-up exists.",
+   "facts": [
+    {
+     "label": "People aboard the riverboat",
+     "value": 190,
+     "unit": "count",
+     "as_of": "2026-11-13",
+     "source": "NTSB DCA27MM003",
+     "url": "https://www.ntsb.gov/investigations/pages/dca27mm003.aspx"
+    },
+    {
+     "label": "Passengers aboard the riverboat",
+     "value": 140,
+     "unit": "count",
+     "as_of": "2026-11-13",
+     "source": "NTSB DCA27MM003",
+     "url": "https://www.ntsb.gov/investigations/pages/dca27mm003.aspx"
+    },
+    {
+     "label": "Minutes from the stuck rudder to the collision",
+     "value": 2,
+     "unit": "count",
+     "as_of": "2026-11-15",
+     "source": "NTSB briefing via AP",
+     "url": "https://abc11.com/story/officials-say-tankers-steering-failed-before-crashed-cruise-ship-new-orleans/20042888/"
+    },
+    {
+     "label": "Minutes for the riverboat to capsize",
+     "value": 22,
+     "unit": "count",
+     "as_of": "2026-11-15",
+     "source": "NTSB briefing via AP",
+     "url": "https://abc11.com/story/officials-say-tankers-steering-failed-before-crashed-cruise-ship-new-orleans/20042888/"
+    },
+    {
+     "label": "Tanker length in feet, about",
+     "value": 520,
+     "unit": "count",
+     "as_of": "2026-11-15",
+     "source": "AP",
+     "url": "https://abc11.com/story/officials-say-tankers-steering-failed-before-crashed-cruise-ship-new-orleans/20042888/"
+    },
+    {
+     "label": "Initial damage estimate, over",
+     "value": 2,
+     "unit": "money_million",
+     "currency": "USD",
+     "as_of": "2026-11-13",
+     "source": "NTSB DCA27MM003",
+     "url": "https://www.ntsb.gov/investigations/pages/dca27mm003.aspx"
+    }
+   ],
+   "verify": [
+    "Every cause claim is the NTSB's preliminary wording: the steering failed and the rudder stuck to starboard; its cause is not known (Barnum: 'It could be many different things')",
+    "Do not say whether the anchors were let go: the recorder logged the commands only",
+    "Hospitalised: the NTSB page says 36, AP says 32; use neither or say 'dozens'",
+    "Label every realistic shot '3D reconstruction · not actual footage' and the whole video 'preliminary'",
+    "No ship-handling or pilot blame"
+   ],
+   "sources": [
+    "https://www.ntsb.gov/investigations/pages/dca27mm003.aspx",
+    "https://abc11.com/story/officials-say-tankers-steering-failed-before-crashed-cruise-ship-new-orleans/20042888/",
+    "https://www.wafb.com/2026/11/15/tanker-steering-failure-preceded-cruise-ship-collision-ntsb-says/"
+   ],
+   "found": "2026-11-22",
+   "expires": "2026-11-25",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-22-fedex-80-narita",
+   "format": "short",
+   "title": "FedEx Flight 80: an MD-11 bounced three times at Narita and its wing broke off on the third touchdown",
+   "category": "air",
+   "kind": "evergreen",
+   "priority": "high",
+   "stories": [
+    "promo_why_it_failed"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Its Just a Normal RC Airplane Crash... FedEx Flight 80",
+    "views": 7634605,
+    "url": "https://www.youtube.com/watch?v=t6b9DNWgMhg",
+    "channel": "GustyAviation",
+    "channelSubs": 27100,
+    "outlier": 281.7
+   },
+   "hook": "At 6:49 in the morning, a cargo jet touched down at Narita. It would touch down three times.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A high sink rate approach in strong gusty wind, autothrottle on, airspeed and attitude unstable",
+    "A late flare: hard landing and the first bounce",
+    "Large nose-down elevator input: the second touchdown on the nose gear, porpoising",
+    "The third touchdown: the load from the left main gear overloads the wing structure, the wing breaks, fuel spills and burns"
+   ],
+   "rule_after": "JTSB final report adopted 5 April 2013, with safety recommendations to the FAA (26 April 2013) to reduce severe hard landings on the MD-11 and to address gear-to-wing overload under a mainly vertical load.",
+   "human_moment": "Only the two pilots were aboard the cargo flight.",
+   "angle": "Why does a wing break on a runway? The fuse pin that should let the gear break away first was designed for a rearward load; on the third touchdown the load was mostly vertical, so it went into the wing.",
+   "why_now": "The niche's biggest breakout Short in the scan (7.6M on a 27.1K channel, 282x) is this crash; a settled event with a final JTSB report and a clear mechanism no one in the scan explained.",
+   "facts": [
+    {
+     "label": "Year of the accident",
+     "value": 2009,
+     "unit": "year",
+     "as_of": "2009-03-23",
+     "source": "JTSB AA2013-4",
+     "url": "https://jtsb.mlit.go.jp/eng-air_report/N526FE.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Touchdowns, the wing broke on the last",
+     "value": 3,
+     "unit": "count",
+     "as_of": "2013-04-05",
+     "source": "JTSB AA2013-4",
+     "url": "https://jtsb.mlit.go.jp/eng-air_report/N526FE.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Pilots aboard, both killed",
+     "value": 2,
+     "unit": "count",
+     "as_of": "2013-04-05",
+     "source": "JTSB AA2013-4",
+     "url": "https://jtsb.mlit.go.jp/eng-air_report/N526FE.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Year the final report was adopted",
+     "value": 2013,
+     "unit": "year",
+     "as_of": "2013-04-05",
+     "source": "JTSB AA2013-4",
+     "url": "https://jtsb.mlit.go.jp/eng-air_report/N526FE.pdf",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Read the wind and gust figures, sink rate and touchdown loads in the JTSB report body before using any",
+    "The fuse-pin mechanism in the report's own words (synopsis: the fire might have been prevented had the fuse pin failed and the gear separated)",
+    "The report number AA2013-4 on the PDF cover",
+    "Deaths stated once: both pilots"
+   ],
+   "sources": [
+    "https://jtsb.mlit.go.jp/eng-air_report/N526FE.pdf",
+    "https://jtsb.mlit.go.jp/eng-air_report/FAA_20130426.pdf"
+   ],
+   "found": "2026-11-22",
+   "expires": "2027-02-20",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-22-adamuz-broken-rail",
+   "format": "short",
+   "title": "Adamuz, Spain: investigators say the rail had already broken before the high-speed train reached it (CIAF, preliminary)",
+   "category": "rail",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "promo_failure_moment"
+   ],
+   "currency": "EUR",
+   "reach": "global",
+   "demand": {
+    "title": "How Did Two High-Speed Trains CRASH in Spain?",
+    "views": 1254029,
+    "url": "https://www.youtube.com/watch?v=wOizOTA9e-A",
+    "channel": "World explained",
+    "channelSubs": 3820,
+    "outlier": 328.3,
+    "note": "about Spain's October Urda collision; proves demand for Spanish high-speed crashes"
+   },
+   "hook": "On the eighteenth of January, a high-speed train crossed a rail near Adamuz that, investigators say, was already broken.",
+   "templates": [
+    "any"
+   ],
+   "cause_chain": [
+    "A fracture in the right-hand rail on the Madrid-Andalusia high-speed line (CIAF, preliminary)",
+    "Wheel-tread notches show trains that passed earlier crossed the break too",
+    "The Iryo train's rear carriages derail and are struck by an oncoming Renfe train",
+    "Laboratory tests on the rail and weld are still pending"
+   ],
+   "rule_after": "None final: the CIAF says only its final report is definitive. End on what the lab tests will show, and keep it apart from October's Urda collision.",
+   "human_moment": "Earlier trains that day crossed the same spot, and their wheels carry the marks.",
+   "angle": "How can a rail break and still carry trains? Show the crack, the notches on the wheels, then the derailment, labelled preliminary.",
+   "why_now": "Spain's high-speed crashes are the niche's #2 Short (1.25M, 328x) and Major Disasters' best long (186K, 443x); the Urda case is open and political, Adamuz has a published preliminary finding.",
+   "facts": [
+    {
+     "label": "Year of the derailment",
+     "value": 2026,
+     "unit": "year",
+     "as_of": "2026-01-18",
+     "source": "Reuters",
+     "url": "https://www.thestar.com.my/news/world/2026/01/23/rail-fracture-likely-occurred-before-train-crash-in-southern-spain-investigators-say",
+     "fixed": true
+    },
+    {
+     "label": "People killed",
+     "value": 45,
+     "unit": "count",
+     "as_of": "2026-01-23",
+     "source": "Reuters",
+     "url": "https://www.thestar.com.my/news/world/2026/01/23/rail-fracture-likely-occurred-before-train-crash-in-southern-spain-investigators-say"
+    }
+   ],
+   "verify": [
+    "Find the CIAF's own preliminary note (transportes.gob.es / CIAF) and use its words; it calls the fracture a working hypothesis",
+    "How many earlier trains carried the notches (one search summary said three): only from the CIAF",
+    "Whether the weld was the cause is not established: do not say it",
+    "Never mix in the 28 Oct Urda collision (open court case, no finding)"
+   ],
+   "sources": [
+    "https://www.thestar.com.my/news/world/2026/01/23/rail-fracture-likely-occurred-before-train-crash-in-southern-spain-investigators-say",
+    "https://railway-news.com/spanish-investigators-identify-broken-rail-in-fatal-adamuz-derailment/"
+   ],
+   "found": "2026-11-22",
+   "expires": "2027-02-20",
+   "status": "new"
   }
  ]
 }
