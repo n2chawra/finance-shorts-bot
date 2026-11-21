@@ -243,59 +243,6 @@
       "demand_checked": "2026-11-20"
     },
     {
-      "id": "2026-11-17-indonesia-islands-count",
-      "format": "short",
-      "title": "Why doesn't anyone agree how many islands Indonesia has?",
-      "category": "geography",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "why_shaped"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Why Chile Is So Long & Narrow",
-        "views": 10605551,
-        "url": "https://youtube.com/watch?v=7iZflr3qD-4"
-      },
-      "hook": "Why can't a country count its own islands?",
-      "templates": [
-        "any"
-      ],
-      "angle": "Indonesia's island count depends on who counts and what an island is: about 17,508 in the 1996 official count, 17,380 named islands in its mapping agency's 2024 gazetteer, 63 more than a year before.",
-      "why_now": "First topics for the channel, from the setup research (families.json: the two core kinds).",
-      "facts": [
-        {
-          "label": "Indonesia's islands in the older official count",
-          "value": 17508,
-          "unit": "count",
-          "as_of": "2004-01-01",
-          "source": "CIA World Factbook (archived)",
-          "url": "https://user.iiasa.ac.at/~marek/fbook/04/print/id.html",
-          "fixed": true
-        },
-        {
-          "label": "Indonesia's named islands in the national gazetteer of its mapping agency (BIG), 2024",
-          "value": 17380,
-          "unit": "count",
-          "as_of": "2024-12-12",
-          "source": "Badan Informasi Geospasial, via Kontan",
-          "url": "https://nasional.kontan.co.id/news/resmi-dari-badan-geospasial-ini-jumlah-pulau-di-seluruh-indonesia-tahun-2024",
-          "latest": true,
-          "checked": "2026-11-19"
-        }
-      ],
-      "verify": [
-        "BIG's 2024 gazetteer lists 17,380 named islands (12 Dec 2024); replaced the 2022 figure of 13,466 on 2026-11-19"
-      ],
-      "sources": [
-        "https://seasia.co/2026/11/04/known-as-an-archipelagic-nation-indonesia-still-cannot-agree-on-how-many-islands-it-has"
-      ],
-      "status": "rejected",
-      "reason": "Owner marked v-20261120-04 (Dinorwig) wrong on 20 Nov: a topic whose answer is not on the map is never taken. The answer here is how people count and define an island, not a border, route, shape or position."
-    },
-    {
       "id": "2026-11-17-kazakhstan-biggest-landlocked",
       "format": "short",
       "title": "Why is Kazakhstan the biggest country with no sea?",
@@ -1516,155 +1463,6 @@
       ]
     },
     {
-      "format": "short",
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-20",
-      "expires": "2027-02-18",
-      "status": "rejected",
-      "id": "2026-11-20-red-sea-name",
-      "title": "Why is the Red Sea called red when it's blue?",
-      "category": "seas",
-      "priority": "normal",
-      "stories": [
-        "why_shaped"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Why Is the Red Sea Called RED?! (It's Not Red)",
-        "views": 448658,
-        "url": "https://youtube.com/shorts/ceoy7KOLqIw",
-        "channel": "Geo on the go",
-        "channelSubs": 3480,
-        "outlier": 128.9
-      },
-      "hook": "The Red Sea is blue. So why does every map call it red?",
-      "angle": "Two explanations historians weigh: red algae blooms (Trichodesmium) at the surface, or an old colour code for directions, red for south as black for north (the Black Sea); the video says it isn't settled.",
-      "why_now": "449K views on a 3.5K-subscriber channel (129x); only 2 Shorts on it in 30 days.",
-      "device": "zoom from space",
-      "facts": [
-        {
-          "label": "Length of the Red Sea",
-          "value": 2250,
-          "unit": "km",
-          "as_of": "2026-11-20",
-          "source": "Wikipedia, Red Sea",
-          "url": "https://en.wikipedia.org/wiki/Red_Sea",
-          "fixed": true
-        },
-        {
-          "label": "Widest point of the Red Sea",
-          "value": 355,
-          "unit": "km",
-          "as_of": "2026-11-20",
-          "source": "Wikipedia, Red Sea",
-          "url": "https://en.wikipedia.org/wiki/Red_Sea",
-          "fixed": true
-        },
-        {
-          "label": "Surface area of the Red Sea",
-          "value": 438000,
-          "unit": "km2",
-          "as_of": "2026-11-20",
-          "source": "Wikipedia, Red Sea",
-          "url": "https://en.wikipedia.org/wiki/Red_Sea",
-          "fixed": true
-        },
-        {
-          "label": "Deepest point of the Red Sea (Suakin Trough)",
-          "value": 2730,
-          "unit": "m",
-          "as_of": "2026-11-20",
-          "source": "Wikipedia, Red Sea",
-          "url": "https://en.wikipedia.org/wiki/Red_Sea",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "The origin of the name is not settled: algae and the colour-for-direction theory both presented as theories",
-        "Herodotus used 'Red Sea' and 'Southern Sea' interchangeably (5th century BCE)"
-      ],
-      "sources": [
-        "https://en.wikipedia.org/wiki/Red_Sea"
-      ],
-      "reason": "Owner marked v-20261120-04 (Dinorwig) wrong on 20 Nov: a topic whose answer is not on the map is never taken. The answer is algae or an old colour-for-direction naming habit, not something on the map."
-    },
-    {
-      "format": "short",
-      "kind": "evergreen",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-20",
-      "expires": "2027-02-18",
-      "status": "rejected",
-      "id": "2026-11-20-north-korea-dark-at-night",
-      "title": "Why is North Korea dark at night?",
-      "category": "energy",
-      "priority": "normal",
-      "stories": [
-        "why_shaped"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "The World at Night Tells the Truth: What Night Lights Reveal About Countries",
-        "views": 1234958,
-        "url": "https://youtube.com/shorts/c8xJS1xuu9U",
-        "channel": "KG Explains",
-        "channelSubs": 28400,
-        "outlier": 43.5
-      },
-      "hook": "From space at night, one country in Asia almost disappears. Why?",
-      "angle": "On the night map South Korea blazes and the north is nearly black between China and the South: all of South Korea has electricity, about six in ten North Koreans do.",
-      "why_now": "The night-lights Short has 1.23M views on a 28.4K-subscriber channel (43x); 5 night-map Shorts in 30 days, none on the Korean split itself.",
-      "device": "flood or grow",
-      "facts": [
-        {
-          "label": "Share of North Koreans with access to electricity, 2024",
-          "value": 61.4,
-          "unit": "percent",
-          "as_of": "2024-12-31",
-          "source": "World Bank, Access to electricity (EG.ELC.ACCS.ZS)",
-          "url": "https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS?locations=KP",
-          "latest": true,
-          "checked": "2026-11-20"
-        },
-        {
-          "label": "Share of South Koreans with access to electricity, 2024",
-          "value": 100,
-          "unit": "percent",
-          "as_of": "2024-12-31",
-          "source": "World Bank, Access to electricity (EG.ELC.ACCS.ZS)",
-          "url": "https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS?locations=KR",
-          "latest": true,
-          "checked": "2026-11-20"
-        },
-        {
-          "label": "North Korea's population, 2025",
-          "value": 26571036,
-          "unit": "count",
-          "as_of": "2025-07-01",
-          "source": "World Bank, Population, total (SP.POP.TOTL)",
-          "url": "https://data.worldbank.org/indicator/SP.POP.TOTL?locations=KP",
-          "latest": true,
-          "checked": "2026-11-20"
-        }
-      ],
-      "verify": [
-        "Figures only: no side taken in the Korean conflict, no claim about the government beyond the sourced figures",
-        "The night picture is drawn (our map), not a NASA photo"
-      ],
-      "sources": [
-        "https://api.worldbank.org/v2/country/PRK/indicator/EG.ELC.ACCS.ZS?format=json&mrnev=2",
-        "https://api.worldbank.org/v2/country/KOR/indicator/EG.ELC.ACCS.ZS?format=json&mrnev=2"
-      ],
-      "reason": "Owner marked v-20261120-04 (Dinorwig) wrong on 20 Nov: a topic whose answer is not on the map is never taken. The night map only shows the effect; the answer (61% have electricity) is a power-supply fact, not a where."
-    },
-    {
       "id": "2026-11-21-doubly-landlocked",
       "title": "Why do Uzbekistan and Liechtenstein have to cross two countries to reach the sea?",
       "category": "borders",
@@ -1821,6 +1619,264 @@
       ],
       "found": "2026-11-21",
       "expires": "2027-02-19",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-22-wakhan-finger-to-china",
+      "title": "Why does Afghanistan have a thin finger reaching all the way to China?",
+      "category": "borders",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "why_shaped"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Why Afghanistan has a thin finger reaching all the way to China",
+        "views": 277408,
+        "url": "https://youtube.com/shorts/NXgsnA-qGNE",
+        "channel": "Odd Atlas",
+        "channelSubs": 5250,
+        "outlier": 52.8
+      },
+      "hook": "Afghanistan has a strip of land 350 kilometres long that ends at China. Who drew it, and why?",
+      "angle": "The Wakhan Corridor was left to Afghanistan by the 1893 Durand Line agreement and the 1895 Pamir boundary protocols so that the Russian and British empires would never touch: a buffer about 350 km long, 13 to 65 km wide, ending in a 92 km border with China at a pass that is still closed.",
+      "why_now": "Map answer by design: two empires' borders on the map with a thin gap left between them. The reference is 53x its channel (277K on 5.25K subscribers); Al Jazeera reported on 14 Nov 2026 that Afghanistan's new road through the corridor ends at the closed Chinese border.",
+      "map_answer": "a buffer strip: Russian empire to the north, British India to the south, and the thin gap the camera follows east to China",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "facts": [
+        {
+          "label": "Length of the Wakhan Corridor, about, in kilometres",
+          "value": 350,
+          "unit": "count",
+          "as_of": "2026-11-14",
+          "source": "Al Jazeera",
+          "url": "https://www.aljazeera.com/features/2026/11/14/wakhan-corridor-afghanistan-china-taliban",
+          "fixed": true
+        },
+        {
+          "label": "Narrowest width of the corridor in kilometres",
+          "value": 13,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Wakhan Corridor",
+          "url": "https://en.wikipedia.org/wiki/Wakhan_Corridor",
+          "fixed": true
+        },
+        {
+          "label": "Widest width of the corridor in kilometres",
+          "value": 65,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Wakhan Corridor",
+          "url": "https://en.wikipedia.org/wiki/Wakhan_Corridor",
+          "fixed": true
+        },
+        {
+          "label": "Length of the corridor's border with China in kilometres",
+          "value": 92,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Wakhan Corridor",
+          "url": "https://en.wikipedia.org/wiki/Wakhan_Corridor",
+          "fixed": true
+        },
+        {
+          "label": "Year of the Pamir Boundary Commission that fixed the corridor",
+          "value": 1895,
+          "unit": "year",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Wakhan Corridor",
+          "url": "https://en.wikipedia.org/wiki/Wakhan_Corridor",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Say 'about 350 km'; the width 13-65 km is Wikipedia's figure",
+        "The buffer purpose (keep Russian and British territory apart) is the historians' account: attribute it to the 1895 agreement, not to one empire",
+        "No Taliban politics: mention the closed pass only as a fact, from Al Jazeera 14 Nov 2026",
+        "Pakistan's side borders and Kashmir stay off the map or as Afghanistan recognises them per the profile"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Wakhan_Corridor",
+        "https://www.aljazeera.com/features/2026/11/14/wakhan-corridor-afghanistan-china-taliban"
+      ],
+      "found": "2026-11-22",
+      "expires": "2027-02-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-22-chile-long-thin",
+      "title": "How did Chile end up 4,270 km long but only 177 km wide?",
+      "category": "geography",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "why_shaped"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How did Chile become 4,300 km long but only 180 km wide?",
+        "views": 100833,
+        "url": "https://youtube.com/shorts/knvkSSxR71Q",
+        "channel": "Odd Atlas",
+        "channelSubs": 5250,
+        "outlier": 19.2
+      },
+      "hook": "Chile is as long as Europe is wide, yet you can cross it in an afternoon. What squeezed it?",
+      "angle": "The Andes on one side and the Pacific on the other leave a thin strip; Chile runs 4,270 km from north to south with an average width of only 177 km, and its highest peak, Ojos del Salado, rises 6,893 m on the wall that sets its eastern border.",
+      "why_now": "Map answer by design: the Andes as a wall down the map, the ocean as the other wall. 19x its channel (101K on 5.25K); a 1.6M long video (History Matters) shows the question's evergreen pull. Our feed's shapes are all borders; this is a mountain shape.",
+      "map_answer": "two walls: the Andes ridge drawn down the east, the Pacific on the west, and the country filling the strip between",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "facts": [
+        {
+          "label": "Chile's length from north to south in kilometres",
+          "value": 4270,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Geography of Chile",
+          "url": "https://en.wikipedia.org/wiki/Geography_of_Chile",
+          "fixed": true
+        },
+        {
+          "label": "Chile's average width in kilometres",
+          "value": 177,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Geography of Chile",
+          "url": "https://en.wikipedia.org/wiki/Geography_of_Chile",
+          "fixed": true
+        },
+        {
+          "label": "Chile's total area in square kilometres",
+          "value": 756102,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Geography of Chile",
+          "url": "https://en.wikipedia.org/wiki/Geography_of_Chile",
+          "fixed": true
+        },
+        {
+          "label": "Height of Ojos del Salado, Chile's highest peak, in metres",
+          "value": 6893,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Geography of Chile",
+          "url": "https://en.wikipedia.org/wiki/Geography_of_Chile",
+          "fixed": true
+        },
+        {
+          "label": "Length of Chile's coastline in kilometres",
+          "value": 6435,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "Wikipedia, Geography of Chile",
+          "url": "https://en.wikipedia.org/wiki/Geography_of_Chile",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Any comparison (as long as Europe is wide, Lisbon to Moscow) must be a distance the fact reviewer confirms, or drop it",
+        "If the War of the Pacific (1879-1884) is told for the northern desert, tell it as historians agree and draw Bolivia's and Peru's borders as each recognises them; no taking sides",
+        "The Andes as the main reason is the explanation (Britannica, Tomas Pueyo); say 'mostly'"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Geography_of_Chile",
+        "https://unchartedterritories.tomaspueyo.com/p/why-is-chile-so-long"
+      ],
+      "found": "2026-11-22",
+      "expires": "2027-02-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-22-what-if-same-population",
+      "title": "What if every country had the same number of people?",
+      "category": "population",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "what_if_world"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "What If Every Country Had the Same Population",
+        "views": 160024,
+        "url": "https://youtube.com/shorts/56NEMo32Lc4",
+        "channel": "WorldShift",
+        "channelSubs": 3470,
+        "outlier": 46.1
+      },
+      "hook": "Share the world's people out equally between every country. India loses over a billion. Who gains the most?",
+      "angle": "Split the world's 8.2 billion people (World Bank, 2025) equally between the 193 UN member states and each gets about 42.6 million (code computes it): India would shed about 1.42 billion people while Tuvalu, with 9,492, would grow over four thousand times. The map is redrawn as people move: crowded coasts empty, Russia's and Canada's empty land fills. Every share and difference is computed in code from the facts.",
+      "why_now": "Map answer by design: a population map recoloured country by country as people flow out of India and China and into the empty giants. 46x its channel (160K on 3.47K); WorldShift's 'whole world one country' (2.95M) shows the what-if-the-whole-world family wins in this niche, and population is a category our feed doesn't have.",
+      "map_answer": "a dot-density map of where people live, redrawn as dots flow out of the crowded countries into the empty ones",
+      "templates": [
+        "any"
+      ],
+      "format": "short",
+      "maths": null,
+      "facts": [
+        {
+          "label": "World population",
+          "value": 8215424893,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "World Bank (SP.POP.TOTL)",
+          "url": "https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?format=json&mrv=1",
+          "latest": true,
+          "checked": "2026-11-22"
+        },
+        {
+          "label": "India's population",
+          "value": 1463865525,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "World Bank (SP.POP.TOTL)",
+          "url": "https://api.worldbank.org/v2/country/IND/indicator/SP.POP.TOTL?format=json&mrv=1",
+          "latest": true,
+          "checked": "2026-11-22"
+        },
+        {
+          "label": "Tuvalu's population",
+          "value": 9492,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "World Bank (SP.POP.TOTL)",
+          "url": "https://api.worldbank.org/v2/country/TUV/indicator/SP.POP.TOTL?format=json&mrv=1",
+          "latest": true,
+          "checked": "2026-11-22"
+        },
+        {
+          "label": "Member states of the United Nations",
+          "value": 193,
+          "unit": "count",
+          "as_of": "2026-11-22",
+          "source": "United Nations",
+          "url": "https://www.un.org/en/about-us/member-states",
+          "latest": true,
+          "checked": "2026-11-22"
+        }
+      ],
+      "verify": [
+        "Every share and difference is computed in code from these facts, never typed",
+        "Say it is a thought experiment; no claim that anyone proposes it",
+        "193 UN members (Vatican and Palestine are observers): say 'UN member states'"
+      ],
+      "sources": [
+        "https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?format=json&mrv=1",
+        "https://www.un.org/en/about-us/member-states"
+      ],
+      "found": "2026-11-22",
+      "expires": "2027-02-20",
       "status": "new"
     }
   ]
