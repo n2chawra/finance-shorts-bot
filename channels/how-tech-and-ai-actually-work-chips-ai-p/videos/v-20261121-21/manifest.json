@@ -1,5 +1,5 @@
 {
-  "id": "v-20261121-01",
+  "id": "v-20261121-21",
   "createdAt": "2026-11-20T22:23:15.156661+00:00",
   "status": "qa_passed",
   "format": "short",
@@ -325,7 +325,7 @@
       "startedAt": "2026-11-20T20:41:08.910054+00:00",
       "finishedAt": "2026-11-20T20:41:08.910054+00:00",
       "notes": [
-        "[scene] Thumbnail (thumbnail.png/.jpg, thumbnail.at='dive', sec 4.0): the frame is empty, only the dark studio floor grid under 'THE FIRST TRANSISTOR'. The Dive component draws nothing when the thumbnail renders that moment, yet the 50.0s still of the same beat shows the die full of switches. Fix Dive (remotion/src/videos/v-20261121-01/Dive.tsx) for the thumbnail render, or as a workaround point thumbnail.at at a beat that draws, e.g. 'press' (the wedge on the germanium, 25s) or 'wedge'.",
+        "[scene] Thumbnail (thumbnail.png/.jpg, thumbnail.at='dive', sec 4.0): the frame is empty, only the dark studio floor grid under 'THE FIRST TRANSISTOR'. The Dive component draws nothing when the thumbnail renders that moment, yet the 50.0s still of the same beat shows the die full of switches. Fix Dive (remotion/src/videos/v-20261121-21/Dive.tsx) for the thumbnail render, or as a workaround point thumbnail.at at a beat that draws, e.g. 'press' (the wedge on the germanium, 25s) or 'wedge'.",
         "[script] 55.0s (loop beat, 'on a plastic wedge'): the top half of the frame is black and the chip and board sit low, right under the caption. No gold wedge is visible although the line names it. Frame the wedge sinking into the chip mid-frame at a closer size so the payoff-to-loop shot isn't half empty."
       ]
     },
@@ -390,9 +390,9 @@
     "script": "script.json"
   },
   "release": {
-    "tag": "video-v-20261121-01",
+    "tag": "video-v-20261121-21",
     "asset": "video.mp4",
     "uploaded": false,
-    "mediaBranch": "media/v-20261121-01"
+    "mediaBranch": "media/v-20261121-21"
   }
 }

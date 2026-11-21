@@ -177,6 +177,10 @@ on a new branch `media/<id>` (the current commit plus `video.mp4`). A GitHub Act
 Release `video-<id>` and deletes the branch. Cloud sessions are not allowed to create releases
 themselves, so do not try `gh release` or the `--release` flag.
 
+- If `ship` says the id **is already used** (another run shipped it while you worked; ids are unique across
+  channels because the database and the release tag key videos by id alone), run
+  `python -m generator.run reid <id>`: it moves the video, its own code and its history entry to a free id
+  of this channel's block. Then ship the new id. Never ship two videos under one id.
 - If the **push to main** fails, run `git pull --rebase origin main` and `git push origin HEAD:main`
   once, then `python -m generator.run media <id>` to push the video branch.
 - If the **media branch push** fails, retry `python -m generator.run media <id>` once.

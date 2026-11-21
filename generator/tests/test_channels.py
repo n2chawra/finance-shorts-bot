@@ -153,3 +153,50 @@ def test_a_channel_can_keep_the_picture_moving_more_often(monkeypatch):
     assert craft.visual_gap() == craft.VISUAL_GAP
     monkeypatch.setenv("CHANNEL", "geography-maps-geopolitical-mysteries")
     assert craft.visual_gap() == 1.8
+
+
+def test_each_channel_numbers_its_ids_from_its_own_block(tmp_path, monkeypatch):
+    """2026-11-21: two channels' runs started together and both took v-20261121-01 (the id was free in
+    each checkout); the second mp4 landed in the first one's release. Each channel now has its own block."""
+    import json
+    from datetime import datetime, timezone
+    from generator import history
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "id-blocks.json").write_text(json.dumps({"blocks": {"paisa-panchayat": 0}}), encoding="utf-8")
+    at = datetime(2026, 11, 21, 6, 0, tzinfo=timezone.utc)
+    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    assert history.next_id([], at, tmp_path) == "v-20261121-01"
+    monkeypatch.setenv("CHANNEL", "space-facts")          # a new channel gets the next block, kept for good
+    assert history.next_id([], at, tmp_path) == "v-20261121-11"
+    assert json.loads((tmp_path / "config" / "id-blocks.json").read_text(encoding="utf-8"))["blocks"]["space-facts"] == 1
+    (tmp_path / "channels" / "space-facts" / "videos" / "v-20261121-11").mkdir(parents=True)
+    assert history.next_id([], at, tmp_path) == "v-20261121-12"
+    assert history.next_id([], at, tmp_path, fmt="long") == "L-20261121-11"
+
+
+def test_reid_moves_a_video_and_only_its_own_code(tmp_path, monkeypatch):
+    import json
+    from generator import history, run
+    monkeypatch.setenv("CHANNEL", "space-facts")
+    monkeypatch.setattr(history, "fetch_main", lambda root=None: False)
+    (tmp_path / "config").mkdir()
+    (tmp_path / "config" / "id-blocks.json").write_text(json.dumps({"blocks": {"paisa-panchayat": 0, "space-facts": 1}}), encoding="utf-8")
+    v = tmp_path / "channels" / "space-facts" / "videos" / "v-20261121-01"
+    v.mkdir(parents=True)
+    (v / "script.json").write_text(json.dumps({"beats": [{"params": {"component": "Hook"}}]}), encoding="utf-8")
+    (v / "manifest.json").write_text(json.dumps({"id": "v-20261121-01", "release": {"tag": "video-v-20261121-01"}}), encoding="utf-8")
+    h = tmp_path / "channels" / "space-facts" / "history"
+    h.mkdir()
+    (h / "history.json").write_text(json.dumps([{"id": "v-20261121-01"}]), encoding="utf-8")
+    code = tmp_path / "remotion" / "src" / "videos" / "v-20261121-01"
+    code.mkdir(parents=True)
+    (code / "Hook.tsx").write_text('import { P } from "./Parts";\n', encoding="utf-8")
+    (code / "Parts.tsx").write_text("export const P = 1;\n", encoding="utf-8")
+    (code / "City.tsx").write_text("// the other channel's video of the same id\n", encoding="utf-8")
+    (tmp_path / "channels" / "paisa-panchayat" / "videos" / "v-20261121-01").mkdir(parents=True)
+    assert run.reid("v-20261121-01", root=tmp_path) == "v-20261121-11"
+    nv = tmp_path / "channels" / "space-facts" / "videos" / "v-20261121-11"
+    assert json.loads((nv / "manifest.json").read_text(encoding="utf-8"))["release"]["tag"] == "video-v-20261121-11"
+    assert json.loads((h / "history.json").read_text(encoding="utf-8")) == [{"id": "v-20261121-11"}]
+    assert sorted(p.name for p in (tmp_path / "remotion" / "src" / "videos" / "v-20261121-11").iterdir()) == ["Hook.tsx", "Parts.tsx"]
+    assert [p.name for p in code.iterdir()] == ["City.tsx"]

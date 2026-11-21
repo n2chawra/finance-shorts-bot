@@ -20,10 +20,12 @@ Exit code 0 means the step passed; 1 means it failed and the reasons are printed
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
+from datetime import datetime
 from pathlib import Path
 
 from renderer import advice, craft, remotion, thumbs
@@ -600,6 +602,11 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         blockers.append("already shipped (manifest.json exists)")
     if blockers:
         raise ValueError("cannot ship: " + "; ".join(blockers))
+    # another run (another channel's, or this one's) may have shipped this id while we made the video:
+    # the database and the release tag key videos by id alone, so a second video under it is lost
+    if (holder := history.taken_elsewhere(vid, root)):
+        raise ValueError(f"cannot ship: {vid} is already used by {holder} on origin/main; run "
+                         f"`python -m generator.run reid {vid}` to move this video to a free id, then ship again")
 
     created = history.now().isoformat()
     fmt = plan_format(plan)
@@ -648,6 +655,73 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         except subprocess.CalledProcessError as e:
             raise ValueError(f"manifest and history are saved, but pushing media/{vid} failed: {(e.stderr or b'').decode(errors='replace').strip() or e}") from e
     return manifest
+
+
+_IMPORT = re.compile(r"""from\s+["']\./([A-Za-z0-9_.-]+)["']""")
+
+
+def _own_code(vid: str, script: dict, root: Path) -> list[Path]:
+    """This video's files in remotion/src/videos/<vid>/: the components its beats name and what they
+    import from the folder (the folder can also hold another channel's video of the same id)."""
+    code = root / "remotion" / "src" / "videos" / vid
+    if not code.is_dir():
+        return []
+    todo = [str((b.get("params") or {}).get("component")) for b in script.get("beats", []) if (b.get("params") or {}).get("component")]
+    th = script.get("thumbnail") or {}
+    if th.get("component"):
+        todo.append(str(th["component"]))
+    seen: dict[str, Path] = {}
+    while todo:
+        name = todo.pop().removesuffix(".tsx").removesuffix(".ts")
+        f = next((code / f"{name}{ext}" for ext in (".tsx", ".ts") if (code / f"{name}{ext}").is_file()), None)
+        if f is None or f.name in seen:
+            continue
+        seen[f.name] = f
+        todo.extend(_IMPORT.findall(f.read_text(encoding="utf-8")))
+    return sorted(seen.values())
+
+
+def reid(old: str, new: str | None = None, root: Path = ROOT) -> str:
+    """Move a video (made or shipped) to a free id: its folder, its own code, its history entry and every
+    mention of the old id in its files. For a video whose id another run took first."""
+    d = _dir(old, root)
+    if not d.is_dir():
+        raise ValueError(f"no video folder for {old}")
+    history.fetch_main(root)
+    entries = history.load(root)
+    fmt = "long" if old.startswith("L-") else "short"
+    if new is None:
+        day = datetime.strptime(old.split("-")[1], "%Y%m%d").replace(hour=12, tzinfo=history.IST)
+        new = history.next_id([e for e in entries if e["id"] != old], at=day, root=root, fmt=fmt)
+    if new in history.used_ids([], new.split("-")[0], root):
+        raise ValueError(f"{new} is already used")
+    script = _read(d / "script.json") if (d / "script.json").is_file() else {}
+    own = _own_code(old, script, root)
+    tracked = lambda p: subprocess.run(["git", "ls-files", "--error-unmatch", str(p)], cwd=root, capture_output=True).returncode == 0
+    nd = d.parent / new
+    if tracked(d / "plan.json") or tracked(d / "manifest.json"):
+        subprocess.run(["git", "mv", str(d), str(nd)], cwd=root, check=True)
+    else:
+        d.rename(nd)
+    if own:
+        ncode = root / "remotion" / "src" / "videos" / new
+        ncode.mkdir(parents=True, exist_ok=True)
+        for f in own:
+            if tracked(f):
+                subprocess.run(["git", "mv", str(f), str(ncode / f.name)], cwd=root, check=True)
+            else:
+                f.rename(ncode / f.name)
+        oc = root / "remotion" / "src" / "videos" / old
+        if oc.is_dir() and not any(oc.iterdir()):
+            oc.rmdir()
+    quoted = (f'"{old}"', f'"{new}"')
+    for f in [*nd.glob("*.json"), cpath(root, "history/history.json"), cpath(root, shapes.FILE), cpath(root, "improvement/editor/ranking.json")]:
+        if f.is_file():
+            t = f.read_text(encoding="utf-8")
+            u = t.replace(old, new) if f.parent == nd else t.replace(*quoted)
+            if u != t:
+                f.write_text(u, encoding="utf-8", newline="\n")
+    return new
 
 
 def gh_exe() -> str:
@@ -795,6 +869,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--push", action="store_true")
     p.add_argument("--media-branch", action="store_true")
     sub.add_parser("media").add_argument("id")
+    p = sub.add_parser("reid")              # move a video to a free id (another run shipped its id first)
+    p.add_argument("id")
+    p.add_argument("--to", default=None)
     p = sub.add_parser("release")
     p.add_argument("id")
     p.add_argument("--commit", action="store_true")
@@ -831,6 +908,9 @@ def main(argv: list[str] | None = None) -> int:
         if a.cmd == "ship":
             m = ship(a.id, a.commit, a.release, push=a.push, media_branch=a.media_branch)
             print(f"shipped {m['id']}: {m['title']} (release uploaded: {m['release']['uploaded']}, media branch: {m['release'].get('mediaBranch', 'none')})")
+            return 0
+        if a.cmd == "reid":
+            print(f"moved {a.id} to {reid(a.id, a.to)}")
             return 0
         if a.cmd == "media":
             print(f"pushed {push_media_branch(a.id)}")
