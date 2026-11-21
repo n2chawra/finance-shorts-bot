@@ -1,0 +1,810 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 17781,
+ "story": "promo_failure_moment",
+ "shape": "moment-before",
+ "currency": "USD",
+ "style": {
+  "recipe": "blueprint",
+  "palette": "night",
+  "genre": "brace",
+  "key": "D",
+  "bpm": 70
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Who should have caught the change: the steel maker or the engineer? Comment",
+ "feed_id": "2026-11-20-hyatt-walkways",
+ "facts": [
+  {
+   "label": "Year the Hyatt Regency walkways collapsed",
+   "value": 1981,
+   "unit": "year",
+   "as_of": "1982-05-01",
+   "source": "NBS",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Day of July 1981 the walkways collapsed",
+   "value": 17,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Ultimate capacity of the original continuous-rod connection, percent of that expected under the Kansas City Building Code (approximately)",
+   "value": 60,
+   "unit": "percent",
+   "as_of": "1982-05-01",
+   "source": "NBS",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+   "fixed": true
+  },
+  {
+   "label": "How many times the rod change multiplied the load on the fourth-floor box beam-hanger rod connections (essentially doubled)",
+   "value": 2,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "double",
+  "sec": 1.5,
+  "words": "One *phone call*",
+  "tag": "Hyatt Regency",
+  "angle": "question"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "One phone call dropped the Hyatt Regency walkways. How?",
+   "events": {
+    "phone": {
+     "word": "phone"
+    },
+    "call": {
+     "word": "call"
+    },
+    "hyatt": {
+     "word": "Hyatt"
+    },
+    "walkways": {
+     "word": "walkways"
+    },
+    "how": {
+     "word": "How"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": [
+     "under the upper walkway's box beam, at one hanger nut",
+     "the hotel atrium from the lobby floor"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "call",
+      "size": "close"
+     },
+     {
+      "at": "walkways",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "phone",
+      "what": "a ring pulses round the nut under the beam"
+     },
+     {
+      "at": "call",
+      "what": "the camera pulls back up the rod, the beam turning amber"
+     },
+     {
+      "at": "hyatt",
+      "what": "the hotel's name and the dated caption type on"
+     },
+     {
+      "at": "walkways",
+      "what": "cut to the atrium: both walkways stacked over the lobby"
+     },
+     {
+      "at": "how",
+      "what": "the walkways shiver on their rods"
+     }
+    ],
+    "things": [
+     "hanger rod",
+     "nut and washer",
+     "box beam",
+     "two stacked walkways",
+     "atrium"
+    ],
+    "fig": {
+     "year": "{fact1}",
+     "day": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "creak",
+     "at": "how"
+    }
+   ]
+  },
+  {
+   "id": "drawing",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "On paper, one long rod ran through both walkways.",
+   "events": {
+    "paper": {
+     "word": "paper"
+    },
+    "rod": {
+     "word": "rod"
+    },
+    "long": {
+     "word": "long"
+    },
+    "both": {
+     "word": "both"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Drawing",
+    "place": "the engineer's drawing on a drafting table",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "rod",
+      "size": "close"
+     },
+     {
+      "at": "both",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "paper",
+      "what": "the drawing sheet slides onto the table under a lamp"
+     },
+     {
+      "at": "rod",
+      "what": "one long rod draws down from the roof"
+     },
+     {
+      "at": "long",
+      "what": "a mono label types on: HANGER ROD"
+     },
+     {
+      "at": "both",
+      "what": "both walkway beams light up on the same rod"
+     }
+    ],
+    "things": [
+     "drafting table",
+     "drawing sheet",
+     "one long rod",
+     "two walkway beams",
+     "pencil"
+    ]
+   }
+  },
+  {
+   "id": "weak",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Even that met only about {fact3} of what the code expected. Then it got worse.",
+   "events": {
+    "even": {
+     "word": "Even"
+    },
+    "only": {
+     "word": "only"
+    },
+    "code": {
+     "word": "code"
+    },
+    "worse": {
+     "word": "worse"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Weak",
+    "place": "the test bench: a load gauge beside the joint",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "code",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "even",
+      "what": "the joint sits on the bench under the gauge"
+     },
+     {
+      "at": "only",
+      "what": "the gauge needle climbs and stops short"
+     },
+     {
+      "at": "code",
+      "what": "the code's line marks the gauge, far above the needle"
+     },
+     {
+      "at": "worse",
+      "what": "the gap between them shades amber"
+     }
+    ],
+    "things": [
+     "load gauge",
+     "code limit line",
+     "beam and rod joint",
+     "source line"
+    ],
+    "fig": {
+     "pct": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "only"
+    }
+   ]
+  },
+  {
+   "id": "call",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The steel maker phoned to split it into two shorter rods. The change went through.",
+   "events": {
+    "phoned": {
+     "word": "phoned"
+    },
+    "split": {
+     "word": "split"
+    },
+    "shorter": {
+     "word": "shorter"
+    },
+    "change": {
+     "word": "change"
+    },
+    "through": {
+     "word": "through"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Call",
+    "place": "the steel maker's revised shop drawing on the desk, a phone beside it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "split",
+      "size": "close"
+     },
+     {
+      "at": "change",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "phoned",
+      "what": "the desk phone rings, its handset jumping"
+     },
+     {
+      "at": "split",
+      "what": "the one rod on the drawing splits into two offset rods"
+     },
+     {
+      "at": "shorter",
+      "what": "the lower rod slides out beside the upper one"
+     },
+     {
+      "at": "change",
+      "what": "a stamp slams down: REVISED"
+     },
+     {
+      "at": "through",
+      "what": "the sheet slides away"
+     }
+    ],
+    "things": [
+     "desk phone",
+     "shop drawing",
+     "two offset rods",
+     "revised stamp"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "squelch",
+     "at": "phoned"
+    }
+   ]
+  },
+  {
+   "id": "force",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Now one nut held its own walkway, and the one hanging below.",
+   "events": {
+    "nut": {
+     "word": "nut"
+    },
+    "own": {
+     "word": "own"
+    },
+    "below": {
+     "word": "below"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Force",
+    "place": "inside the box beam: a cutaway of the upper connection",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "own",
+      "size": "medium"
+     },
+     {
+      "at": "below",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nut",
+      "what": "the cutaway beam opens, the nut glowing"
+     },
+     {
+      "at": "own",
+      "what": "a down arrow: its own walkway"
+     },
+     {
+      "at": "below",
+      "what": "a second arrow joins it: the walkway below, pulling on the same nut"
+     }
+    ],
+    "things": [
+     "box beam cutaway",
+     "nut and washer",
+     "upper rod",
+     "lower rod",
+     "force arrows"
+    ]
+   }
+  },
+  {
+   "id": "double",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "That's {fact4} times the load. How long could it hold?",
+   "events": {
+    "that's": {
+     "word": "That's"
+    },
+    "load": {
+     "word": "load"
+    },
+    "long": {
+     "word": "long"
+    },
+    "hold": {
+     "word": "hold"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Double",
+    "place": "the same joint, the load gauge past its limit",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "load",
+      "size": "close"
+     },
+     {
+      "at": "hold",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "that's",
+      "what": "the two arrows merge into one fat arrow"
+     },
+     {
+      "at": "load",
+      "what": "the gauge swings past the code line, the figure stamps on"
+     },
+     {
+      "at": "long",
+      "what": "the beam flange bends under the nut"
+     },
+     {
+      "at": "hold",
+      "what": "the flange turns red"
+     }
+    ],
+    "things": [
+     "merged arrow",
+     "load gauge",
+     "bending flange",
+     "times figure"
+    ],
+    "fig": {
+     "times": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "hold"
+    }
+   ]
+  },
+  {
+   "id": "dance",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "July {fact1}. A tea dance fills the lobby.",
+   "events": {
+    "tea": {
+     "word": "tea"
+    },
+    "july": {
+     "word": "July"
+    },
+    "dance": {
+     "word": "dance"
+    },
+    "lobby": {
+     "word": "lobby"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Dance",
+    "place": "the atrium on the evening of the tea dance, seen from high on the far side",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "dance",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "tea",
+      "what": "the atrium lights warm up for the evening"
+     },
+     {
+      "at": "july",
+      "what": "the date caption types on"
+     },
+     {
+      "at": "dance",
+      "what": "the dance floor lights pulse in time"
+     },
+     {
+      "at": "lobby",
+      "what": "the camera drifts up to the walkways overhead"
+     }
+    ],
+    "things": [
+     "atrium",
+     "two stacked walkways",
+     "third walkway",
+     "dance floor lights",
+     "date caption"
+    ],
+    "fig": {
+     "year": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "fail",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "",
+   "events": {
+    "strain": {
+     "sec": 0.4
+    },
+    "reveal": {
+     "sec": 1.0
+    },
+    "wide": {
+     "sec": 1.9
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Fail",
+    "place": "the upper connection in cutaway, time slowed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "strain",
+      "what": "the nut glows red and the flange tears"
+     },
+     {
+      "at": "reveal",
+      "what": "the nut and washer pull through the beam, sparks"
+     },
+     {
+      "at": "wide",
+      "what": "cut wide from far away: the walkways drop"
+     }
+    ],
+    "things": [
+     "box beam cutaway",
+     "nut pulling through",
+     "sparks",
+     "both walkways"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "reveal"
+    }
+   ],
+   "min_sec": 3.0
+  },
+  {
+   "id": "fell",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "The nuts pulled through the beams. Both walkways fell.",
+   "events": {
+    "nuts": {
+     "word": "nuts"
+    },
+    "beams": {
+     "word": "beams"
+    },
+    "both": {
+     "word": "both"
+    },
+    "fell": {
+     "word": "fell"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Fell",
+    "place": "the atrium from far above, the walkways down, dust rising",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "beams",
+      "size": "medium"
+     },
+     {
+      "at": "fell",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nuts",
+      "what": "a hanger rod swings free, its nut gone"
+     },
+     {
+      "at": "beams",
+      "what": "the empty hangers sway against the dark"
+     },
+     {
+      "at": "both",
+      "what": "the dust rises around both fallen walkways"
+     },
+     {
+      "at": "fell",
+      "what": "the camera pulls back and up"
+     }
+    ],
+    "things": [
+     "empty hanger rods",
+     "fallen walkways",
+     "dust",
+     "atrium"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "both"
+    }
+   ]
+  },
+  {
+   "id": "ask",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "The change was never fully checked. Whose job was that: the steel maker's, or the engineers'?",
+   "events": {
+    "change": {
+     "word": "change"
+    },
+    "checked": {
+     "word": "checked"
+    },
+    "whose": {
+     "word": "whose"
+    },
+    "engineers": {
+     "word": "engineers"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Ask",
+    "place": "the investigator's cause chain pinned on the board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "checked",
+      "size": "close"
+     },
+     {
+      "at": "whose",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "change",
+      "what": "the chain writes on: one long rod, the phone call, double the load"
+     },
+     {
+      "at": "checked",
+      "what": "the link to the check snaps, red"
+     },
+     {
+      "at": "whose",
+      "what": "a question mark stamps over the broken link"
+     },
+     {
+      "at": "engineers",
+      "what": "the chain pulses"
+     }
+    ],
+    "things": [
+     "cause chain",
+     "broken link",
+     "question mark",
+     "investigator's board"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "checked"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "It all starts with one phone call.",
+   "events": {
+    "starts": {
+     "word": "starts"
+    },
+    "call": {
+     "word": "call"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Loop",
+    "place": "back under the upper walkway, at the nut",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "call",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "starts",
+      "what": "the camera dives back down the rod"
+     },
+     {
+      "at": "call",
+      "what": "the nut fills the frame, amber, as the hook opens"
+     }
+    ],
+    "things": [
+     "hanger rod",
+     "nut and washer",
+     "box beam"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,1016 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "id": "L-20261121-41",
+  "seed": 31781,
+  "title": "One Phone Call Doubled the Load on This Walkway",
+  "story": "corner_cut_structure",
+  "narrator": "bm_lewis",
+  "currency": "USD",
+  "sample_length": [
+    55,
+    70
+  ],
+  "style": {
+    "palette": "ocean",
+    "genre": "undertow",
+    "key": "C",
+    "bpm": 56,
+    "recipe": "blueprint"
+  },
+  "feed_id": "2026-11-20-hyatt-walkways",
+  "hook_style": "conflict",
+  "cta": "Who should have caught that phone call? Tell us in the comments",
+  "facts": [
+    {
+      "label": "Year the Hyatt Regency walkways collapsed",
+      "value": 1981,
+      "unit": "year",
+      "as_of": "1982-05-01",
+      "source": "NBS Building Science Series 143 (NIST)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    },
+    {
+      "label": "Day of July 1981 the walkways collapsed",
+      "value": 17,
+      "unit": "count",
+      "as_of": "1982-05-01",
+      "source": "NBS Building Science Series 143 (NIST)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    },
+    {
+      "label": "Hour of the collapse (p.m.), approximately 7:05 p.m.",
+      "value": 7,
+      "unit": "count",
+      "as_of": "1982-05-01",
+      "source": "NBS Building Science Series 143 (NIST)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    },
+    {
+      "label": "Minutes past the hour of the collapse (approximately 7:05 p.m.)",
+      "value": 5,
+      "unit": "count",
+      "as_of": "1982-05-01",
+      "source": "NBS Building Science Series 143 (NIST)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    },
+    {
+      "label": "People left dead by the collapse (NBS executive summary)",
+      "value": 113,
+      "unit": "count",
+      "as_of": "1982-05-01",
+      "source": "NBS Building Science Series 143 (NIST)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    },
+    {
+      "label": "Ultimate capacity of the original continuous-rod connection, percent of that expected under the Kansas City Building Code (approximately)",
+      "value": 60,
+      "unit": "percent",
+      "as_of": "1982-05-01",
+      "source": "NBS Building Science Series 143 (NIST)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    },
+    {
+      "label": "How many times the rod change multiplied the load on the fourth-floor box beam-hanger rod connections (essentially doubled)",
+      "value": 2,
+      "unit": "count",
+      "as_of": "1982-05-01",
+      "source": "NBS Building Science Series 143 (NIST)",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    },
+    {
+      "label": "Year ASCE adopted the policy assigning responsibility for steel connection design to the engineer of record (October 1985)",
+      "value": 1985,
+      "unit": "year",
+      "as_of": "2011-07-01",
+      "source": "ASCE Civil Engineering magazine",
+      "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public"
+    }
+  ],
+  "maths": [],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "say": "The Hyatt Regency, Kansas City, {fact1}. Two walkways hang over a crowded lobby.",
+      "events": {
+        "hyatt": {
+          "word": "Hyatt"
+        },
+        "kansas": {
+          "word": "Kansas"
+        },
+        "two": {
+          "word": "Two"
+        },
+        "walkways": {
+          "word": "walkways"
+        },
+        "crowded": {
+          "word": "crowded"
+        },
+        "lobby": {
+          "word": "lobby"
+        }
+      },
+      "params": {
+        "component": "Hook",
+        "place": "the Hyatt Regency atrium, early evening",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "two",
+            "size": "medium"
+          },
+          {
+            "at": "lobby",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "hyatt",
+            "what": "the hotel's name types on in mono over the atrium, date and place caption already on screen"
+          },
+          {
+            "at": "kansas",
+            "what": "the camera starts its push into the atrium, roof trusses passing overhead"
+          },
+          {
+            "at": "two",
+            "what": "the two stacked walkways' edges light up"
+          },
+          {
+            "at": "walkways",
+            "what": "labels draw to the fourth- and second-floor walkways"
+          },
+          {
+            "at": "crowded",
+            "what": "the dance-floor lights under the walkways pulse on"
+          },
+          {
+            "at": "lobby",
+            "what": "the camera tilts down to the glowing lobby floor below the walkways"
+          }
+        ],
+        "things": [
+          "glass atrium roof",
+          "roof trusses",
+          "fourth-floor walkway",
+          "second-floor walkway",
+          "hanger rods",
+          "dance-floor lights",
+          "date caption"
+        ],
+        "fig": {
+          "year": "{fact1}",
+          "day": "{fact2}"
+        }
+      }
+    },
+    {
+      "id": "fall",
+      "scene": "directed",
+      "role": "turn",
+      "say": "Then, at about {fact4} past {fact3} in the evening, the upper walkway gives way.",
+      "min_sec": 9.5,
+      "events": {
+        "then": {
+          "word": "Then"
+        },
+        "upper": {
+          "word": "upper"
+        },
+        "gives": {
+          "word": "gives"
+        },
+        "way": {
+          "word": "way"
+        },
+        "reveal": {
+          "end": 2.0
+        },
+        "land": {
+          "end": 0.9
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "then",
+          "gain": 0.5
+        },
+        {
+          "kind": "groan",
+          "at": "upper",
+          "gain": 0.6
+        },
+        {
+          "kind": "subboom",
+          "at": "reveal",
+          "gain": 1.0
+        }
+      ],
+      "params": {
+        "component": "Fall",
+        "place": "the fourth-floor walkway's middle connection, then the atrium from far away",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "upper",
+            "size": "close"
+          },
+          {
+            "at": "reveal",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "then",
+            "what": "close inside the upper walkway's middle box beam, cut away: the roof rod, washer and nut; a clock card shows the time"
+          },
+          {
+            "at": "upper",
+            "what": "the camera pushes in on the nut and washer under the beam, the steel warming from grey to amber"
+          },
+          {
+            "at": "gives",
+            "what": "the connection glows red and pulses; the music falls away to silence"
+          },
+          {
+            "at": "reveal",
+            "what": "sub-boom: the seam tears and the nut pulls through the beam; then cut wide as the upper walkway drops onto the lower and both fall"
+          },
+          {
+            "at": "land",
+            "what": "dust rises from the lobby floor; the empty hanger rods swing from the roof"
+          }
+        ],
+        "things": [
+          "upper walkway",
+          "box beam",
+          "hanger rod",
+          "clock",
+          "dust",
+          "swinging rods"
+        ],
+        "fig": {
+          "hour": "{fact3}",
+          "minute": "{fact4}"
+        }
+      }
+    },
+    {
+      "id": "toll",
+      "scene": "directed",
+      "role": "build",
+      "say": "{fact5} people died.",
+      "min_sec": 4.5,
+      "events": {
+        "people": {
+          "word": "people"
+        },
+        "died": {
+          "word": "died"
+        }
+      },
+      "params": {
+        "component": "Toll",
+        "place": "the atrium from high above, after the collapse",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "died",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "people",
+            "what": "high wide view, the fallen walkways lie stacked on the lobby floor in settling dust; the camera begins a slow crane up and away"
+          },
+          {
+            "at": "died",
+            "what": "the scene dims and a quiet line types on: the most devastating structural collapse in the United States"
+          }
+        ],
+        "things": [
+          "fallen walkways",
+          "empty hanger rods",
+          "dust",
+          "quiet toll line"
+        ],
+        "fig": {
+          "deaths": "{fact5}"
+        }
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "directed",
+      "role": "promise",
+      "say": "Why? Not weak steel. One change, agreed over the phone.",
+      "events": {
+        "why": {
+          "word": "why"
+        },
+        "weak": {
+          "word": "weak"
+        },
+        "steel": {
+          "word": "steel"
+        },
+        "change": {
+          "word": "change"
+        },
+        "agreed": {
+          "word": "agreed"
+        },
+        "phone": {
+          "word": "phone"
+        }
+      },
+      "params": {
+        "component": "Promise",
+        "place": "an engineer's blueprint table",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "change",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "why",
+            "what": "a blueprint of the hanger detail unrolls on the table"
+          },
+          {
+            "at": "weak",
+            "what": "a steel rod drawn on the blueprint, a label 'WEAK STEEL?' types on"
+          },
+          {
+            "at": "steel",
+            "what": "the label is struck through in red"
+          },
+          {
+            "at": "change",
+            "what": "the camera pushes in as a single rod splits into two on the drawing"
+          },
+          {
+            "at": "agreed",
+            "what": "a revision cloud draws around the split"
+          },
+          {
+            "at": "phone",
+            "what": "a telephone handset drawn in the corner rings, sound waves pulsing"
+          }
+        ],
+        "things": [
+          "blueprint sheet",
+          "hanger rod drawing",
+          "struck-through label",
+          "revision cloud",
+          "telephone"
+        ]
+      }
+    },
+    {
+      "id": "design",
+      "scene": "directed",
+      "role": "build",
+      "say": "The design hung both walkways from one long rod. Even that reached only about {fact6} of what the code required.",
+      "events": {
+        "design": {
+          "word": "design"
+        },
+        "both": {
+          "word": "both"
+        },
+        "rod": {
+          "word": "rod"
+        },
+        "even": {
+          "word": "Even"
+        },
+        "reached": {
+          "word": "reached"
+        },
+        "code": {
+          "word": "code"
+        },
+        "required": {
+          "word": "required"
+        }
+      },
+      "params": {
+        "component": "Design",
+        "place": "the original drawing: a side elevation of the hangers",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "rod",
+            "size": "medium"
+          },
+          {
+            "at": "reached",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "design",
+            "what": "the side elevation draws: roof beam, fourth-floor and second-floor box beams"
+          },
+          {
+            "at": "both",
+            "what": "both walkway decks fill in"
+          },
+          {
+            "at": "rod",
+            "what": "one continuous rod draws from the roof through both beams, a nut under each"
+          },
+          {
+            "at": "even",
+            "what": "a load gauge slides in beside the drawing"
+          },
+          {
+            "at": "reached",
+            "what": "the needle climbs and stops at the figure, short of the code line"
+          },
+          {
+            "at": "code",
+            "what": "the code limit line on the gauge flashes"
+          }
+        ],
+        "things": [
+          "side elevation",
+          "roof beam",
+          "box beams",
+          "continuous rod",
+          "nuts",
+          "load gauge"
+        ],
+        "fig": {
+          "pct": "{fact6}"
+        }
+      }
+    },
+    {
+      "id": "change",
+      "scene": "directed",
+      "role": "build",
+      "say": "Then the fabricator asked, by phone, for two shorter rods. The engineer said yes.",
+      "events": {
+        "fabricator": {
+          "word": "fabricator"
+        },
+        "phone": {
+          "word": "phone"
+        },
+        "two": {
+          "word": "two"
+        },
+        "shorter": {
+          "word": "shorter"
+        },
+        "engineer": {
+          "word": "engineer"
+        },
+        "yes": {
+          "word": "yes"
+        }
+      },
+      "params": {
+        "component": "Change",
+        "place": "the fabricator's shop drawing",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "two",
+            "size": "close"
+          },
+          {
+            "at": "yes",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "fabricator",
+            "what": "the shop drawing slides over the original, tagged 'as reported'"
+          },
+          {
+            "at": "phone",
+            "what": "the telephone rings, a dashed line runs from it to the rod"
+          },
+          {
+            "at": "two",
+            "what": "the long rod is cut at the fourth-floor beam and the lower half slides sideways"
+          },
+          {
+            "at": "shorter",
+            "what": "two offset rods settle, each with its own nut"
+          },
+          {
+            "at": "yes",
+            "what": "an 'APPROVED' stamp lands on the drawing"
+          }
+        ],
+        "things": [
+          "shop drawing",
+          "telephone",
+          "cut rod",
+          "two offset rods",
+          "approved stamp"
+        ]
+      }
+    },
+    {
+      "id": "double",
+      "scene": "directed",
+      "role": "build",
+      "say": "Now the lower walkway hung from the upper one. The nuts under it carried double.",
+      "events": {
+        "lower": {
+          "word": "lower"
+        },
+        "upper": {
+          "word": "upper"
+        },
+        "nuts": {
+          "word": "nuts"
+        },
+        "carried": {
+          "word": "carried"
+        },
+        "double": {
+          "word": "double"
+        }
+      },
+      "params": {
+        "component": "Double",
+        "place": "the load path at the fourth-floor box beam",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "nuts",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "lower",
+            "what": "a load arrow runs down from the lower walkway into the upper beam"
+          },
+          {
+            "at": "upper",
+            "what": "the upper walkway's own load arrow joins it"
+          },
+          {
+            "at": "nuts",
+            "what": "the camera pushes in on the nut under the upper beam, it turns amber"
+          },
+          {
+            "at": "carried",
+            "what": "the two arrows merge into one thick arrow on the nut"
+          },
+          {
+            "at": "double",
+            "what": "the multiplier stamps beside the nut in red"
+          }
+        ],
+        "things": [
+          "force diagram",
+          "load arrows",
+          "upper box beam",
+          "nut",
+          "multiplier"
+        ],
+        "fig": {
+          "times": "{fact7}"
+        }
+      }
+    },
+    {
+      "id": "nut",
+      "scene": "directed",
+      "role": "payoff",
+      "say": "That evening, one nut pulled straight through its steel beam.",
+      "events": {
+        "evening": {
+          "word": "evening"
+        },
+        "nut": {
+          "word": "nut"
+        },
+        "pulled": {
+          "word": "pulled"
+        },
+        "straight": {
+          "word": "straight"
+        },
+        "through": {
+          "word": "through"
+        },
+        "beam": {
+          "word": "beam"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "creak",
+          "at": "nut",
+          "gain": 0.6
+        },
+        {
+          "kind": "rivet",
+          "at": "through",
+          "gain": 0.8
+        }
+      ],
+      "params": {
+        "component": "Nut",
+        "place": "inside the fourth-floor box beam, cut away",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "nut",
+            "size": "close"
+          },
+          {
+            "at": "through",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "evening",
+            "what": "the box beam turns in the dark, half cut away to show the two rods inside"
+          },
+          {
+            "at": "nut",
+            "what": "the camera pushes in on the washer and nut under the bottom flange"
+          },
+          {
+            "at": "pulled",
+            "what": "stress colour climbs from grey through amber to red around the nut"
+          },
+          {
+            "at": "through",
+            "what": "the welded seam splits, the flange folds open and the nut slips through, slowed"
+          },
+          {
+            "at": "beam",
+            "what": "sparks and steel flecks fall away in slow motion"
+          }
+        ],
+        "things": [
+          "box beam cutaway",
+          "two channels welded",
+          "hanger rods",
+          "washer and nut",
+          "stress colour",
+          "sparks"
+        ]
+      }
+    },
+    {
+      "id": "report",
+      "scene": "directed",
+      "role": "build",
+      "say": "The federal report confirmed it: the change doubled the load.",
+      "events": {
+        "federal": {
+          "word": "federal"
+        },
+        "report": {
+          "word": "report"
+        },
+        "confirmed": {
+          "word": "confirmed"
+        },
+        "change": {
+          "word": "change"
+        },
+        "doubled": {
+          "word": "doubled"
+        },
+        "load": {
+          "word": "load"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigators' report on the desk",
+        "src": "media/disasters-and-engineering-failures-expla/report-document-89e880ead391-p007.png",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "confirmed",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "federal",
+            "what": "the report page settles on the desk, the agency and date chips type on"
+          },
+          {
+            "at": "confirmed",
+            "what": "the camera pushes in to the finding"
+          },
+          {
+            "at": "doubled",
+            "what": "the highlighter swipes across 'doubled the load'"
+          },
+          {
+            "at": "load",
+            "what": "a red underline draws under it"
+          }
+        ],
+        "things": [
+          "report page",
+          "agency chip",
+          "date chip",
+          "highlighter",
+          "underline"
+        ]
+      }
+    },
+    {
+      "id": "after",
+      "scene": "directed",
+      "role": "build",
+      "say": "Two engineers lost their licences, and their society made every connection the designer's job.",
+      "events": {
+        "engineers": {
+          "word": "engineers"
+        },
+        "licences": {
+          "word": "licences"
+        },
+        "society": {
+          "word": "society"
+        },
+        "every": {
+          "word": "every"
+        },
+        "connection": {
+          "word": "connection"
+        },
+        "job": {
+          "word": "job"
+        }
+      },
+      "params": {
+        "component": "After",
+        "place": "the rule book after the collapse",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "every",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "engineers",
+            "what": "two engineering licences slide onto the blueprint"
+          },
+          {
+            "at": "licences",
+            "what": "both are stamped REVOKED"
+          },
+          {
+            "at": "society",
+            "what": "the society's rule card slides in over the licences, the year in yellow"
+          },
+          {
+            "at": "every",
+            "what": "the words engineer of record type on the card"
+          },
+          {
+            "at": "connection",
+            "what": "a line draws from the rule to the connection detail"
+          },
+          {
+            "at": "job",
+            "what": "the connection detail lights up and ticks green"
+          }
+        ],
+        "things": [
+          "engineering licences",
+          "revoked stamps",
+          "rule card",
+          "connection detail"
+        ],
+        "fig": {
+          "year": "{fact8}"
+        }
+      }
+    },
+    {
+      "id": "ask",
+      "scene": "directed",
+      "role": "loop",
+      "say": "Who should have caught that phone call? Tell us below.",
+      "events": {
+        "who": {
+          "word": "Who"
+        },
+        "caught": {
+          "word": "caught"
+        },
+        "phone": {
+          "word": "phone"
+        },
+        "below": {
+          "word": "below"
+        }
+      },
+      "params": {
+        "component": "Ask",
+        "place": "the cause board",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "phone",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "who",
+            "what": "the cause board's first card stamps: original connection too weak"
+          },
+          {
+            "at": "caught",
+            "what": "the second card stamps: rod change during construction"
+          },
+          {
+            "at": "phone",
+            "what": "the third card stamps: approved by phone, as reported"
+          },
+          {
+            "at": "below",
+            "what": "the question underlines in yellow"
+          }
+        ],
+        "things": [
+          "cause board",
+          "three cause cards",
+          "stamps",
+          "question"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "transition": "fade",
+      "params": {
+        "cta": "Who should have caught that phone call?",
+        "follow": "Subscribe for the next investigation",
+        "assumption": "From the National Bureau of Standards walkway investigation and ASCE. The reconstructions are not actual footage."
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "custom",
+    "engine": "3d",
+    "component": "ThumbFail",
+    "words": "Twice the *weight*",
+    "things": [
+      "upper walkway",
+      "red connection",
+      "arrow"
+    ],
+    "arrow": {
+      "from": [
+        0.3,
+        0.62
+      ],
+      "to": [
+        0.52,
+        0.5
+      ]
+    },
+    "pattern": "the walkway itself in 3D at a low three-quarter view, the failing connection red, an arrow to it, three heavy words on the left",
+    "references": [
+      {
+        "id": "uekCFs-vNug",
+        "views": 1202059,
+        "what": "the walkway in 3D on a dark ground, an arrow and three heavy words"
+      },
+      {
+        "id": "VnvGwFegbC8",
+        "views": 2678603,
+        "what": "three stacked heavy words beside the subject"
+      },
+      {
+        "id": "lXaBxX4ieFY",
+        "views": 1127275,
+        "what": "the intended and the built connection side by side, a tick and a cross, two heavy words"
+      }
+    ],
+    "score": 7,
+    "why": "The structure is the subject and the red connection is the mystery; it reads at phone size like the Stewart Hicks hit without copying its people or its words."
+  },
+  "thumbnails": [
+    {
+      "layout": "custom",
+      "component": "ThumbB",
+      "words": "Drawn vs *built*",
+      "things": [
+        "two hanger details",
+        "tick and cross"
+      ],
+      "pattern": "the detail as drawn beside the detail as built, a tick and a cross, two heavy words",
+      "references": [
+        {
+          "id": "lXaBxX4ieFY",
+          "views": 1127275,
+          "what": "the intended and the built connection side by side, a tick and a cross, two heavy words"
+        },
+        {
+          "id": "uekCFs-vNug",
+          "views": 1202059,
+          "what": "the walkway in 3D on a dark ground, an arrow and three heavy words"
+        },
+        {
+          "id": "VnvGwFegbC8",
+          "views": 2678603,
+          "what": "three stacked heavy words beside the subject"
+        }
+      ],
+      "score": 8,
+      "why": "Explains the whole story in one glance, the pattern of the 1.1M Deconstructed hit, on our own blueprint and drawing."
+    },
+    {
+      "layout": "custom",
+      "component": "ThumbC",
+      "words": "It *doubled*",
+      "things": [
+        "report page",
+        "red ring"
+      ],
+      "pattern": "big serious type over one document picture, the key line circled",
+      "references": [
+        {
+          "id": "ObJHBU_LBa0",
+          "views": 1664092,
+          "what": "big serious serif type over one picture of the scene"
+        },
+        {
+          "id": "jgG-gnpn0os",
+          "views": 1195707,
+          "what": "huge spaced type over one picture of the atrium"
+        },
+        {
+          "id": "VnvGwFegbC8",
+          "views": 2678603,
+          "what": "three stacked heavy words beside the subject"
+        }
+      ],
+      "score": 6,
+      "why": "The real report is proof, but a page of type is harder to read at phone size than a structure."
+    }
+  ],
+  "thumbnail_pick": "b"
+}
