@@ -20,7 +20,7 @@ import { dropPoints, hookHold, spokenBeats } from "./lib/retention.ts";
 import { failKey, statsOutcome } from "./lib/stats-failures.ts";
 import { analyticsStartDay, channelDays } from "./lib/analytics.ts";
 import { DAY_METRICS, TokenError, accessToken, dailyStats, report, retentionCurve } from "./lib/youtube.ts";
-import { cpath, layout } from "./lib/channels.ts";
+import { layout, videoFile } from "./lib/channels.ts";
 import { activeChannels, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 
 const DAY_MS = 86_400_000;
@@ -47,9 +47,10 @@ async function deleteIfStale(prisma: PrismaClient, run: Run): Promise<boolean> {
   return true;
 }
 
-/** The spoken beats of a video from its committed timeline (the workflow checks the repo out). */
-function beatsOf(videoId: string) {
-  const file = cpath(path.resolve(import.meta.dirname, ".."), "videos", videoId, "timeline.json");
+/** The spoken beats of a video from its committed timeline, in its own channel's folder (the workflow
+ * checks the repo out). Until 21 Nov every channel's timeline was looked up in the default channel's. */
+function beatsOf(channelId: string, videoId: string) {
+  const file = videoFile(path.resolve(import.meta.dirname, ".."), channelId, videoId, "timeline.json");
   if (!existsSync(file)) return [];
   try {
     return spokenBeats(JSON.parse(readFileSync(file, "utf8")));
@@ -142,7 +143,7 @@ async function statsChannel(prisma: PrismaClient, run: Run, refreshToken: Channe
           return { curve: [] as [number, number][], relative: [] as [number, number][] };
         });
         const format = u.video.format === "long" ? "long" : "short";
-        const drops = dropPoints(curve, u.video.durationSec, beatsOf(u.videoId));
+        const drops = dropPoints(curve, u.video.durationSec, beatsOf(channelId, u.videoId));
         await prisma.upload.update({ where: { id: u.id }, data: {
           retention: curve.length ? curve : Prisma.DbNull, relRetention: relative.length ? relative : Prisma.DbNull,
           drops: drops.length ? drops : Prisma.DbNull, hookHold: hookHold(curve, u.video.durationSec, format), retentionAt: new Date(),

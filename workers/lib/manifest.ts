@@ -6,6 +6,11 @@ const Topic = z.object({ title: z.string().min(1), category: z.string().min(1), 
 /** Shorts are v-YYYYMMDD-NN, long-form videos L-YYYYMMDD-NN. */
 export const VIDEO_ID = /^(v|L)-\d{8}-\d{2,}$/;
 
+/** A video's format from its id: a failed manifest has no `format`, but its id says it (L- is long). */
+export function formatOfId(id: string): "short" | "long" {
+  return id.startsWith("L-") ? "long" : "short";
+}
+
 const Step = z.object({
   agent: z.string(),
   status: z.enum(["ok", "failed", "skipped"]),

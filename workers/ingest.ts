@@ -16,7 +16,7 @@ import path from "node:path";
 import { Prisma, PrismaClient } from "@prisma/client";
 
 import { releaseAssetUrl, repoSlug } from "./lib/github.ts";
-import { Manifest, type ShippedManifest } from "./lib/manifest.ts";
+import { formatOfId, Manifest, type ShippedManifest } from "./lib/manifest.ts";
 import { istDay } from "./lib/publishing.ts";
 import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotifications, importEditorRanking, importFeedbackAcks, snapshotDocs } from "./lib/agents-sync.ts";
 import { type FeedTopic, loadFeeds, sourceWithTopic } from "./lib/origin.ts";
@@ -96,7 +96,7 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
       const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category, channelId } });
       await tx.video.create({
         data: {
-          id: m.id, channelId, templateId: m.template, topicId: topic.id, status: "failed", failReason: m.failReason, script, style: {},
+          id: m.id, channelId, templateId: m.template, topicId: topic.id, status: "failed", format: formatOfId(m.id), failReason: m.failReason, script, style: {},
           durationSec: 0, title: m.title, description: "", tags: [], createdAt,
         },
       });

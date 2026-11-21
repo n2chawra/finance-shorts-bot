@@ -63,6 +63,13 @@ export function cpath(root: string, ...segments: string[]): string {
   return path.join(root, crel(segments.join("/"), root));
 }
 
+/** Absolute path of a file in one channel's video folder, e.g. its timeline.json. Workers that loop over
+ * every channel (stats, publish) don't set `CHANNEL`, so they must name the channel: `cpath` alone
+ * would look in the default channel's folder for every channel's video. */
+export function videoFile(root: string, slug: string, videoId: string, name: string): string {
+  return path.join(root, crel(`videos/${videoId}/${name}`, root, slug));
+}
+
 /** Every channel with a folder, else just the default (before the move). */
 export function allChannels(root: string = REPO): string[] {
   const base = path.join(root, "channels");
