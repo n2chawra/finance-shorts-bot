@@ -10,6 +10,7 @@ import { Badge, Button, Card, Empty, ErrorNote, IconTile, Loading, PageHeader, S
 import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
 import { useAddFeedback, useFeedback, usePatchFeedback } from "@/lib/queries";
 import { feedbackToShow } from "@/lib/recent";
+import { onTabListKeyDown, tabIndexFor } from "@/lib/tab-keys";
 import { FEEDBACK_AREAS, type Feedback } from "@/lib/schemas";
 
 /*
@@ -118,9 +119,9 @@ export default function FeedbackPage() {
         <Composer />
 
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div role="tablist" aria-label="Feedback filter" className="flex w-fit gap-1 rounded-xl bg-surface-3 p-1">
+          <div role="tablist" aria-label="Feedback filter" onKeyDown={onTabListKeyDown} className="flex w-fit gap-1 rounded-xl bg-surface-3 p-1">
             {tabs.map((t) => (
-              <button key={t.value} type="button" role="tab" aria-selected={filter === t.value} onClick={() => setFilter(t.value)}
+              <button key={t.value} type="button" role="tab" aria-selected={filter === t.value} tabIndex={tabIndexFor(filter === t.value)} onClick={() => setFilter(t.value)}
                 className={`flex h-8 items-center gap-1.5 rounded-lg px-3 text-[13px] font-medium transition-colors ${filter === t.value ? "bg-surface text-ink shadow-xs" : "text-ink2 hover:text-ink"}`}>
                 <t.icon aria-hidden className="size-3.5" />{t.label}
                 <span className={`rounded-md px-1.5 text-[11px] tabular-nums ${filter === t.value ? "bg-brand-soft text-brand-text" : "bg-wash-2 text-muted"}`}>{t.n}</span>

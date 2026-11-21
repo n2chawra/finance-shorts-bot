@@ -10,6 +10,7 @@ import { Sparkline } from "@/components/charts";
 import { type Accent, Delta, IconTile, Num, tabClass } from "@/components/ui";
 import { fmtCompact, fmtDate, fmtRelative } from "@/lib/format";
 import type { AiChannel, AiVideo } from "@/lib/studio-schema";
+import { onTabListKeyDown, tabIndexFor } from "@/lib/tab-keys";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -17,11 +18,11 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Tabs<T extends string>({ value, onChange, tabs }: { value: T; onChange: (v: T) => void; tabs: { value: T; label: string; icon: LucideIcon }[] }) {
   return (
-    <div role="tablist" aria-label="Analytics sections" className="no-scrollbar scroll-fade-x -mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1.5 md:mx-0 md:px-0">
+    <div role="tablist" aria-label="Analytics sections" onKeyDown={onTabListKeyDown} className="no-scrollbar scroll-fade-x -mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1.5 md:mx-0 md:px-0">
       {tabs.map((t) => {
         const on = t.value === value;
         return (
-          <button key={t.value} role="tab" aria-selected={on} type="button" onClick={() => onChange(t.value)} data-state={on ? "active" : "inactive"} className={tabClass}>
+          <button key={t.value} role="tab" aria-selected={on} tabIndex={tabIndexFor(on)} type="button" onClick={() => onChange(t.value)} data-state={on ? "active" : "inactive"} className={tabClass}>
             <t.icon aria-hidden className={`size-4 ${on ? "text-brand" : ""}`} />{t.label}
           </button>
         );

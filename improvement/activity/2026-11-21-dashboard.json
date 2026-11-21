@@ -1,0 +1,18 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-21",
+  "startedAt": "2026-11-21T17:32:28Z",
+  "finishedAt": "2026-11-21T17:47:16Z",
+  "summary": "Bug hunt: tsc, lint, build and all smoke tests pass, every page is clean on all six channels, and the live site is up. The tab rows on Feedback, Videos and Analytics now work with the arrow keys.",
+  "decision": "acted",
+  "why": "Reviewing the Feedback page's code turned up one real keyboard bug, shared by three pages. It was small and testable, so it is fixed in one commit with a smoke test.",
+  "findings": [
+    {"title": "Tab rows ignored the arrow keys", "detail": "Feedback, Videos and Analytics used role=tab without arrow keys or a single Tab stop. Fixed."},
+    {"title": "Study smoke test flaked once under load", "detail": "Passed 3/3 alone and in the next full run; logged as smoke-study-load."}
+  ],
+  "changes": [
+    {"title": "Arrow keys move between tabs (Feedback, Videos, Analytics)", "detail": "Shared helper lib/tab-keys.ts: Left/Right/Home/End choose a tab, only the chosen tab is in the Tab order. Smoke test added.", "branch": "agent/dashboard/2026-11-21"}
+  ],
+  "nextCheck": "2026-11-22",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-21.md"}]
+}
