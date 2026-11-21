@@ -1,0 +1,1167 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52417,
+ "story": "why_shaped",
+ "shape": "the-drift",
+ "currency": "USD",
+ "style": {
+  "palette": "paper",
+  "genre": "explorer",
+  "key": "A",
+  "bpm": 76,
+  "look": {
+   "stage": "city",
+   "header": "sticky",
+   "holder": "blackboard",
+   "entrance": "drop"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Is the east side of your city the poorer side too? Comment",
+ "feed_id": "2026-11-21-east-side-poorer",
+ "facts": [
+  {
+   "label": "Industrial chimneys whose locations the study mapped",
+   "value": 5000,
+   "unit": "count",
+   "as_of": "2021-05-01",
+   "source": "Heblich",
+   "url": "https://econpapers.repec.org/RePEc:ucp:jpolec:doi:10.1086/713101",
+   "latest": true,
+   "checked": "2026-11-21"
+  },
+  {
+   "label": "Share of neighbourhood segregation in 2011 that past pollution explains, at most",
+   "value": 20,
+   "unit": "percent",
+   "as_of": "2021-05-01",
+   "source": "Heblich",
+   "url": "https://econpapers.repec.org/RePEc:ucp:jpolec:doi:10.1086/713101",
+   "latest": true,
+   "checked": "2026-11-21"
+  },
+  {
+   "label": "Census year the study measured segregation in",
+   "value": 2011,
+   "unit": "year",
+   "as_of": "2021-05-01",
+   "source": "Heblich",
+   "url": "https://econpapers.repec.org/RePEc:ucp:jpolec:doi:10.1086/713101",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.5,
+  "words": "Why the *poor* east?",
+  "tag": "English cities",
+  "angle": "question"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Why is the east side of so many old English cities the poorer side?",
+   "events": {
+    "east": {
+     "word": "east"
+    },
+    "side": {
+     "word": "side"
+    },
+    "old": {
+     "word": "old"
+    },
+    "english": {
+     "word": "English"
+    },
+    "cities": {
+     "word": "cities"
+    },
+    "poorer": {
+     "word": "poorer"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "side",
+     "gain": 0.4
+    },
+    {
+     "kind": "pin",
+     "at": "poorer"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "on the map: an old English city, split down the middle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "poorer",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "east",
+      "what": "the east half of the city plan turns grey, its streets crowded"
+     },
+     {
+      "at": "side",
+      "what": "a dividing line draws down the middle of the city"
+     },
+     {
+      "at": "old",
+      "what": "the label OLD ENGLISH CITY writes on"
+     },
+     {
+      "at": "english",
+      "what": "a red-cross pennant pops up on the town hall"
+     },
+     {
+      "at": "cities",
+      "what": "the river through the city shimmers"
+     },
+     {
+      "at": "poorer",
+      "what": "a big question mark drops onto the grey east side"
+     }
+    ],
+    "things": [
+     "city plan",
+     "river",
+     "west villas",
+     "east terraces",
+     "dividing line",
+     "question mark"
+    ]
+   }
+  },
+  {
+   "id": "again",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "From London to the mill towns of the north, it happens again and again. And the reason isn't on the ground. It's in the air.",
+   "events": {
+    "london": {
+     "word": "London"
+    },
+    "mill": {
+     "word": "mill"
+    },
+    "north": {
+     "word": "north"
+    },
+    "again": {
+     "word": "again"
+    },
+    "reason": {
+     "word": "reason"
+    },
+    "ground": {
+     "word": "ground"
+    },
+    "air": {
+     "word": "air"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "London"
+    },
+    {
+     "kind": "pin-high",
+     "at": "again"
+    },
+    {
+     "kind": "chime",
+     "at": "air",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Again",
+    "place": "on the map: England, its old cities pinned",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "ground",
+      "size": "medium"
+     },
+     {
+      "at": "air",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "london",
+      "what": "a pin drops on London and splits into a green west and a grey east"
+     },
+     {
+      "at": "mill",
+      "what": "pins drop on the mill towns, Manchester, Leeds, Sheffield"
+     },
+     {
+      "at": "north",
+      "what": "the camera slides north up England"
+     },
+     {
+      "at": "again",
+      "what": "every pin splits green west, grey east"
+     },
+     {
+      "at": "reason",
+      "what": "a magnifying glass sweeps over the map"
+     },
+     {
+      "at": "ground",
+      "what": "the glass presses on the land and finds nothing"
+     },
+     {
+      "at": "air",
+      "what": "the glass lifts and swirls of wind appear over the map"
+     }
+    ],
+    "things": [
+     "england map",
+     "city pins",
+     "magnifying glass",
+     "wind swirls"
+    ]
+   }
+  },
+  {
+   "id": "wind",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Most days, Britain's wind blows in from the west, off the Atlantic Ocean, right across the country to the North Sea.",
+   "events": {
+    "most": {
+     "word": "Most"
+    },
+    "days": {
+     "word": "days"
+    },
+    "wind": {
+     "word": "wind"
+    },
+    "west": {
+     "word": "west"
+    },
+    "atlantic": {
+     "word": "Atlantic"
+    },
+    "across": {
+     "word": "across"
+    },
+    "north": {
+     "word": "North"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "wind",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "component": "Wind",
+    "place": "on the map: Britain and the Atlantic to its west",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "west",
+      "size": "medium"
+     },
+     {
+      "at": "across",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "most",
+      "what": "the camera pulls out to show the Atlantic west of Britain"
+     },
+     {
+      "at": "days",
+      "what": "a weathervane rises on the map and spins"
+     },
+     {
+      "at": "wind",
+      "what": "long wind arrows sweep in from the ocean"
+     },
+     {
+      "at": "west",
+      "what": "the weathervane points west, the label WEST WIND writes on"
+     },
+     {
+      "at": "atlantic",
+      "what": "ATLANTIC OCEAN writes across the sea"
+     },
+     {
+      "at": "across",
+      "what": "the arrows run right across Britain"
+     },
+     {
+      "at": "north",
+      "what": "NORTH SEA writes on beyond the east coast"
+     }
+    ],
+    "things": [
+     "atlantic ocean",
+     "britain",
+     "wind arrows",
+     "weathervane"
+    ]
+   }
+  },
+  {
+   "id": "chimneys",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then came the factories, burning coal. Researchers have mapped about {fact1} of their chimneys in England's cities in the eighteen eighties.",
+   "events": {
+    "factories": {
+     "word": "factories"
+    },
+    "coal": {
+     "word": "coal"
+    },
+    "researchers": {
+     "word": "Researchers"
+    },
+    "mapped": {
+     "word": "mapped"
+    },
+    "chimneys": {
+     "word": "chimneys"
+    },
+    "cities": {
+     "word": "cities"
+    },
+    "eighties": {
+     "word": "eighties"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "factories"
+    },
+    {
+     "kind": "scribble",
+     "at": "mapped",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Chimneys",
+    "place": "on the map: England, a chimney rising at every city",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "mapped",
+      "size": "close"
+     },
+     {
+      "at": "cities",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "factories",
+      "what": "factory chimneys rise at the city pins"
+     },
+     {
+      "at": "coal",
+      "what": "coal heaps pile beside the chimneys, smoke puffs"
+     },
+     {
+      "at": "researchers",
+      "what": "a surveyor stands on the map with a clipboard"
+     },
+     {
+      "at": "mapped",
+      "what": "a counter board plants on the map and counts up the chimneys"
+     },
+     {
+      "at": "chimneys",
+      "what": "more chimneys pop up across England"
+     },
+     {
+      "at": "cities",
+      "what": "the camera eases back over the whole country"
+     },
+     {
+      "at": "eighties",
+      "what": "a COAL AGE stamp lands on the board"
+     }
+    ],
+    "things": [
+     "england map",
+     "factory chimneys",
+     "coal heaps",
+     "surveyor",
+     "counter board"
+    ],
+    "fig": {
+     "chimneys": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "smoke",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "And the west wind did what wind does. It carried all that smoke east, over the streets downwind, day after day. So who had to breathe it?",
+   "events": {
+    "wind": {
+     "word": "wind"
+    },
+    "does": {
+     "word": "does"
+    },
+    "carried": {
+     "word": "carried"
+    },
+    "smoke": {
+     "word": "smoke"
+    },
+    "east": {
+     "word": "east"
+    },
+    "streets": {
+     "word": "streets"
+    },
+    "downwind": {
+     "word": "downwind"
+    },
+    "after": {
+     "word": "after"
+    },
+    "breathe": {
+     "word": "breathe"
+    }
+   },
+   "transition": "match",
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "carried",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Smoke",
+    "place": "on the map: the city plan, smoke drifting east",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "smoke",
+      "size": "close"
+     },
+     {
+      "at": "downwind",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "wind",
+      "what": "wind arrows blow across the city from the west"
+     },
+     {
+      "at": "does",
+      "what": "the arrows gust harder and the pennant streams east"
+     },
+     {
+      "at": "carried",
+      "what": "smoke pours from the chimneys and leans east"
+     },
+     {
+      "at": "smoke",
+      "what": "a black cloud rolls across the city"
+     },
+     {
+      "at": "east",
+      "what": "the cloud settles over the east half"
+     },
+     {
+      "at": "streets",
+      "what": "the east streets go dark grey under it"
+     },
+     {
+      "at": "downwind",
+      "what": "DOWNWIND writes on under the cloud"
+     },
+     {
+      "at": "after",
+      "what": "the cloud swells, day after day"
+     },
+     {
+      "at": "breathe",
+      "what": "a question mark puffs out of the cloud"
+     }
+    ],
+    "things": [
+     "city plan",
+     "chimneys",
+     "smoke cloud",
+     "wind arrows"
+    ]
+   }
+  },
+  {
+   "id": "rich",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Families who could pay moved upwind, into big houses with gardens on the clean west side.",
+   "events": {
+    "families": {
+     "word": "Families"
+    },
+    "pay": {
+     "word": "pay"
+    },
+    "upwind": {
+     "word": "upwind"
+    },
+    "houses": {
+     "word": "houses"
+    },
+    "gardens": {
+     "word": "gardens"
+    },
+    "clean": {
+     "word": "clean"
+    },
+    "west": {
+     "word": "west"
+    }
+   },
+   "transition": "match",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "houses"
+    }
+   ],
+   "params": {
+    "component": "Rich",
+    "place": "on the map: the west side of the city, upwind",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "houses",
+      "size": "close"
+     },
+     {
+      "at": "west",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "families",
+      "what": "a family in top hats stands on the map"
+     },
+     {
+      "at": "pay",
+      "what": "they lift a bag of coins"
+     },
+     {
+      "at": "upwind",
+      "what": "a horse carriage rolls west against the arrows"
+     },
+     {
+      "at": "houses",
+      "what": "big villas pop up on the west side"
+     },
+     {
+      "at": "gardens",
+      "what": "green gardens and trees fill in around them"
+     },
+     {
+      "at": "clean",
+      "what": "the sky over the west turns bright"
+     },
+     {
+      "at": "west",
+      "what": "the west half traces in green"
+     }
+    ],
+    "things": [
+     "city plan",
+     "family",
+     "carriage",
+     "villas",
+     "gardens"
+    ]
+   }
+  },
+  {
+   "id": "poor",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Workers who couldn't stayed east, in cheap terraced streets under the soot, breathing everyone else's smoke.",
+   "events": {
+    "workers": {
+     "word": "Workers"
+    },
+    "couldn't": {
+     "word": "couldn't"
+    },
+    "east": {
+     "word": "east"
+    },
+    "cheap": {
+     "word": "cheap"
+    },
+    "terraced": {
+     "word": "terraced"
+    },
+    "soot": {
+     "word": "soot"
+    },
+    "breathing": {
+     "word": "breathing"
+    }
+   },
+   "transition": "match",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "terraced",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "component": "Poor",
+    "place": "on the map: the east side of the city, downwind",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "terraced",
+      "size": "close"
+     },
+     {
+      "at": "soot",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "workers",
+      "what": "a line of mill workers stands on the east side"
+     },
+     {
+      "at": "couldn't",
+      "what": "their pockets turn out empty"
+     },
+     {
+      "at": "east",
+      "what": "the camera slides east into the smoke"
+     },
+     {
+      "at": "cheap",
+      "what": "rows of tiny houses pack in"
+     },
+     {
+      "at": "terraced",
+      "what": "the terraced rows join end to end"
+     },
+     {
+      "at": "soot",
+      "what": "soot flakes fall and the east traces in grey"
+     },
+     {
+      "at": "breathing",
+      "what": "the workers cough as the cloud rolls over them"
+     }
+    ],
+    "things": [
+     "city plan",
+     "mill workers",
+     "terraced rows",
+     "soot"
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Then the mills closed, and the air cleared. And the strange part? The split stayed.",
+   "events": {
+    "mills": {
+     "word": "mills"
+    },
+    "closed": {
+     "word": "closed"
+    },
+    "air": {
+     "word": "air"
+    },
+    "cleared": {
+     "word": "cleared"
+    },
+    "strange": {
+     "word": "strange"
+    },
+    "split": {
+     "word": "split"
+    },
+    "stayed": {
+     "word": "stayed"
+    }
+   },
+   "transition": "match",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "mills"
+    },
+    {
+     "kind": "pin-high",
+     "at": "stayed"
+    }
+   ],
+   "params": {
+    "component": "Turn",
+    "place": "on the map: the same city, the mills shut",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "cleared",
+      "size": "wide"
+     },
+     {
+      "at": "stayed",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mills",
+      "what": "the chimneys topple one by one"
+     },
+     {
+      "at": "closed",
+      "what": "a CLOSED board nails onto a mill"
+     },
+     {
+      "at": "air",
+      "what": "the black cloud breaks up"
+     },
+     {
+      "at": "cleared",
+      "what": "the sky over the city turns blue"
+     },
+     {
+      "at": "strange",
+      "what": "the camera pushes to the dividing line"
+     },
+     {
+      "at": "split",
+      "what": "the dividing line glows red"
+     },
+     {
+      "at": "stayed",
+      "what": "the line stamps down hard, west still green, east still grey"
+     }
+    ],
+    "things": [
+     "city plan",
+     "toppling chimneys",
+     "closed board",
+     "clear sky",
+     "dividing line"
+    ]
+   }
+  },
+  {
+   "id": "stuck",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Rich streets kept pulling in rich families, and cheap streets kept pulling in the poor, long after the smoke was gone, generation after generation.",
+   "events": {
+    "rich": {
+     "word": "Rich"
+    },
+    "families": {
+     "word": "families"
+    },
+    "cheap": {
+     "word": "cheap"
+    },
+    "poor": {
+     "word": "poor"
+    },
+    "long": {
+     "word": "long"
+    },
+    "gone": {
+     "word": "gone"
+    },
+    "generation": {
+     "word": "generation"
+    }
+   },
+   "transition": "match",
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "cheap",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Stuck",
+    "place": "on the map: the modern city, two halves",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "cheap",
+      "size": "close"
+     },
+     {
+      "at": "gone",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rich",
+      "what": "a moving van drives into the green west"
+     },
+     {
+      "at": "families",
+      "what": "a family steps out at a villa"
+     },
+     {
+      "at": "cheap",
+      "what": "a second van drives into the grey east"
+     },
+     {
+      "at": "poor",
+      "what": "a family carries boxes into a terrace"
+     },
+     {
+      "at": "long",
+      "what": "modern cars and buses run along the streets"
+     },
+     {
+      "at": "gone",
+      "what": "the camera pulls back over both halves"
+     },
+     {
+      "at": "generation",
+      "what": "the vans drive in again, again and again"
+     }
+    ],
+    "things": [
+     "city plan",
+     "moving vans",
+     "villas",
+     "terraces",
+     "modern traffic"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "In {fact3}, more than a century later, that old smoke still explains up to {fact2} of how England's neighbourhoods split into rich and poor.",
+   "events": {
+    "in": {
+     "word": "In"
+    },
+    "more": {
+     "word": "more"
+    },
+    "century": {
+     "word": "century"
+    },
+    "later": {
+     "word": "later"
+    },
+    "smoke": {
+     "word": "smoke"
+    },
+    "still": {
+     "word": "still"
+    },
+    "explains": {
+     "word": "explains"
+    },
+    "up": {
+     "word": "up"
+    },
+    "how": {
+     "word": "how"
+    },
+    "neighbourhoods": {
+     "word": "neighbourhoods"
+    },
+    "rich": {
+     "word": "rich"
+    },
+    "poor": {
+     "word": "poor"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "explains",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: England in the census year, the city pins split",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "smoke",
+      "size": "close"
+     },
+     {
+      "at": "neighbourhoods",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "in",
+      "what": "the census board with the year drops onto the map"
+     },
+     {
+      "at": "more",
+      "what": "the city pins pulse"
+     },
+     {
+      "at": "century",
+      "what": "the COAL AGE tag peels off the census board"
+     },
+     {
+      "at": "later",
+      "what": "the census board swings on its post"
+     },
+     {
+      "at": "smoke",
+      "what": "a ghost of the old smoke drifts across the map"
+     },
+     {
+      "at": "still",
+      "what": "the camera pushes in on the ghost smoke over the cities"
+     },
+     {
+      "at": "explains",
+      "what": "a share board plants on the map, its bar filling"
+     },
+     {
+      "at": "up",
+      "what": "the UP TO board lands beside the census board"
+     },
+     {
+      "at": "how",
+      "what": "the share bar fills to its mark"
+     },
+     {
+      "at": "neighbourhoods",
+      "what": "the camera pulls back over England, every pin split"
+     },
+     {
+      "at": "rich",
+      "what": "the west halves glow green"
+     },
+     {
+      "at": "poor",
+      "what": "the east halves glow grey"
+     }
+    ],
+    "things": [
+     "england map",
+     "census board",
+     "share board",
+     "ghost smoke",
+     "city pins"
+    ],
+    "fig": {
+     "year": "{fact3}",
+     "share": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "West side or east side: which half of your city is the rich one? Tell me below. And next time you're there, check the wind, and ask:",
+   "events": {
+    "west": {
+     "word": "West"
+    },
+    "east": {
+     "word": "east"
+    },
+    "half": {
+     "word": "half"
+    },
+    "city": {
+     "word": "city"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "next": {
+     "word": "next"
+    },
+    "check": {
+     "word": "check"
+    },
+    "wind": {
+     "word": "wind"
+    },
+    "ask": {
+     "word": "ask"
+    }
+   },
+   "transition": "match",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "half"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "on the map: back to the old English city, split down the middle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "half",
+      "size": "medium"
+     },
+     {
+      "at": "wind",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "west",
+      "what": "the west half of the city pulses green"
+     },
+     {
+      "at": "east",
+      "what": "the east half pulses grey"
+     },
+     {
+      "at": "half",
+      "what": "a comment bubble pops up over the river"
+     },
+     {
+      "at": "city",
+      "what": "the camera glides to the first frame"
+     },
+     {
+      "at": "tell",
+      "what": "the comment bubble wobbles"
+     },
+     {
+      "at": "next",
+      "what": "the bubble pops away"
+     },
+     {
+      "at": "check",
+      "what": "the weathervane on the town hall spins"
+     },
+     {
+      "at": "wind",
+      "what": "the vane points west, an arrow sweeps east"
+     },
+     {
+      "at": "ask",
+      "what": "the question mark starts to drop onto the east side"
+     }
+    ],
+    "things": [
+     "city plan",
+     "comment bubble",
+     "weathervane",
+     "question mark"
+    ]
+   }
+  }
+ ]
+}

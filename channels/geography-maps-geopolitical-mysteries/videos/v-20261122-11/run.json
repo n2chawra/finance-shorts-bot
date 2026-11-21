@@ -1,0 +1,142 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-21T23:19:12.678204+00:00",
+    "finishedAt": "2026-11-21T23:19:12.678204+00:00",
+    "notes": [
+      "style.bpm must be 72–80 for explorer",
+      "shape 'reveal' is 2 of the last 8 videos: at most 25%"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:19:24.060321+00:00",
+    "finishedAt": "2026-11-21T23:19:24.060321+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T23:21:51.705361+00:00",
+    "finishedAt": "2026-11-21T23:21:51.705361+00:00",
+    "notes": [
+      "beat 'chimneys'.events.eighties: no word 'eighties' in this beat's spoken line",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: beat 'wind' opens like a line in one of the last scripts ('look at the'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T23:21:59.958432+00:00",
+    "finishedAt": "2026-11-21T23:21:59.958432+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T23:22:04.452823+00:00",
+    "finishedAt": "2026-11-21T23:22:04.452823+00:00",
+    "notes": [
+      "the source line 'Data: Heblich, Trew and Zylberberg · May 2021' is too wide for the frame (1124 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'Heblich'), one name per publisher"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:22:09.257451+00:00",
+    "finishedAt": "2026-11-21T23:22:09.257451+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:23:02.267272+00:00",
+    "finishedAt": "2026-11-21T23:23:02.267272+00:00",
+    "notes": [
+      "Facts confirmed: 5,000 chimneys (~5,000, 70 English cities, 1880; JPE 2021 abstract on econpapers + CEP/LSE abstract + St Andrews/Bristol pages), up to 20% of neighbourhood segregation in 2011 (JPE abstract verbatim 'up to 20% of observed neighborhood segregation in 2011'), 2011 year; verify list met (England only, 'up to 20%', no 'causes', no Paris); westerly/south-westerly prevailing wind confirmed on metoffice.gov.uk; disclaimer ends description. Note: 'again' beat shows every pin split west/east, the study finds this on average, not in every city."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T23:29:49.372745+00:00",
+    "finishedAt": "2026-11-21T23:31:12.578986+00:00",
+    "notes": [
+      "text 'ATLANTIC OCEAN' at 13.8 s runs outside the frame",
+      "text 'EAST' at 31.7 s runs outside the frame",
+      "text 'WEST' at 36.4 s runs outside the frame",
+      "note: the first figure appears at 15.5 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:31:42.676042+00:00",
+    "finishedAt": "2026-11-21T23:32:33.892319+00:00",
+    "notes": [
+      "63 s, paper/explorer (preview only)",
+      "note: the first figure appears at 15.5 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:32:38.955341+00:00",
+    "finishedAt": "2026-11-21T23:33:28.829063+00:00",
+    "notes": [
+      "63 s, paper/explorer (preview only)",
+      "note: the first figure appears at 15.5 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:33:42.238605+00:00",
+    "finishedAt": "2026-11-21T23:34:33.868860+00:00",
+    "notes": [
+      "63 s, paper/explorer (preview only)",
+      "note: the first figure appears at 15.5 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T23:35:59.275657+00:00",
+    "finishedAt": "2026-11-21T23:35:59.275657+00:00",
+    "notes": [
+      "[script] 55.0s (payoff beat, Payoff.tsx): the share bar under the UP TO 20% board is drawn straight across the NEWCASTLE label (reads 'NEWCA'), text over text right beside the payoff figure; move the bar/board so no city label sits under it (the bar is also a thin sliver, give it size).",
+      "[script] 20.0s (chimneys beat, Chimneys.tsx): a chimney and its smoke sit on the NEWCASTLE label (reads 'NEW( ASTLE'), and the LONDON label sits on the caption line touching 'chimneys in England's'; keep city labels clear of the chimneys and above the caption band.",
+      "[script] 35.0s (poor beat, Poor.tsx): the line says workers stayed east under the soot while the rich lived on the clean west side, but the still shows the west villas with gardens buried under the black cloud and the three workers standing on green villa ground; the camera has not reached the east terraces. Keep the smoke and the workers on the grey terraced east, the villas clear.",
+      "[script] 40.0s and 45.0s (turn, stuck): two beats in a row are the same split city plan at nearly the same size (stuck only adds a small van and a family half off the left edge); give stuck its own shot (e.g. wide on both halves with the vans clearly arriving, or a street-level close on a villa vs a terrace)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:36:28.802866+00:00",
+    "finishedAt": "2026-11-21T23:37:21.243980+00:00",
+    "notes": [
+      "63 s, paper/explorer (preview only)",
+      "note: the first figure appears at 15.5 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:37:31.825730+00:00",
+    "finishedAt": "2026-11-21T23:38:25.245202+00:00",
+    "notes": [
+      "63 s, paper/explorer (preview only)",
+      "note: the first figure appears at 15.5 s; one by 9 s"
+    ]
+  }
+]
