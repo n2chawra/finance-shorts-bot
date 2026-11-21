@@ -32,6 +32,8 @@ export const Legible: React.FC<{ x: number; y: number; w: number; h: number; siz
   const sx0 = c.cx + (mx - (w * s) / 2 - c.cx) * c.z, sx1 = c.cx + (mx + (w * s) / 2 - c.cx) * c.z;
   const sy0 = ANCHOR_Y + (my - (h * s) / 2 - c.camY) * c.z, sy1 = ANCHOR_Y + (my + (h * s) / 2 - c.camY) * c.z;
   const scenery = size * s * c.z < MIN_READ || sx0 < 0 || sx1 > c.W || sy0 < 0 || sy1 > c.H - BOTTOM;
+  // far too small to read (a whole-stack pull-back): a smudge of letters is noise, so it isn't drawn (QA, 2026-11-21)
+  if (size * s * c.z < 30) return null;
   return (
     <g data-probe={scenery ? "skip" : undefined} transform={s > 1 ? `translate(${mx} ${my}) scale(${s}) translate(${-mx} ${-my})` : undefined}>
       {children}
