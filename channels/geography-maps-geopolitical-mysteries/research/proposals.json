@@ -33,9 +33,11 @@
       "effort": "S",
       "risk": "A planner could write a vague map_answer; QA still enforces lesson #1.",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "adoptedAt": "2026-11-21",
+      "note": "generator/planrules.py, cycle/plan-rules.json mapAnswer; planner.md"
     }
   ]
 }

@@ -34,9 +34,11 @@
       "effort": "S",
       "risk": "Over-weights one fast channel's spike; capped at +1.0 so demand and breakout still dominate.",
       "metric": "views48h",
-      "status": "new",
+      "status": "adopted",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "adoptedAt": "2026-11-21",
+      "note": "generator/topics.py traction(): views a day of a reference under 30 days, faded to 0 by 90 days, +0 to +1.0"
     }
   ]
 }
