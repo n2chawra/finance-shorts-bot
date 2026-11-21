@@ -82,6 +82,7 @@ def adherence_problems(video_id: str, script: dict, root: Path = ROOT) -> list[s
     measured the coin toss, not the change). Checks:
       {"kind": "hook-photo"}  on: the first beat shows a real photo or logo; off: it shows none
       {"kind": "code", "pattern": "<regex>", "what": "…"}  on: some beat file of the video matches
+      {"kind": "promise-place"}  on: the promise beat stays in the hook's place, entered on "match"; off: it moves
     A script may waive one in `experimentWaivers` ({id: "why"}), e.g. no freely licensed file exists."""
     out: list[str] = []
     waived = script.get("experimentWaivers") or {}
@@ -104,6 +105,19 @@ def adherence_problems(video_id: str, script: dict, root: Path = ROOT) -> list[s
             if arm == "off" and has:
                 out.append(f"experiment {e['id']} (off): the hook beat shows a real photo or logo; this video is on "
                            f"the off side, so draw the subject instead (photos may appear from the second beat)")
+        elif chk.get("kind") == "promise-place" and len(beats) > 1:
+            # weekly-loop cycle 2 promise-stays-in-hook-place: the promise beat stays where the hook is
+            hook = beats[0]
+            promise = next((b for b in beats[1:] if b.get("role") == "promise"), beats[1])
+            places = lambda b: [str(x).strip().lower() for x in ((lambda v: v if isinstance(v, list) else [v])((b.get("params") or {}).get("place")) or []) if x]  # noqa: E731
+            same = bool(places(hook)) and bool(places(promise)) and places(promise)[0] == places(hook)[-1]
+            if arm == "on" and not (same and promise.get("transition") == "match"):
+                out.append(f"experiment {e['id']} (on): the promise beat {promise.get('id')!r} must stay in the hook's place "
+                           f"(params.place exactly {places(hook)[-1] if places(hook) else 'the hook place'!r}) and enter on "
+                           f"transition \"match\", moving on with one continuous camera move")
+            if arm == "off" and same:
+                out.append(f"experiment {e['id']} (off): the promise beat {promise.get('id')!r} is in the hook's place; this "
+                           f"video is on the off side, so the promise goes to a new place as the champion does")
         elif chk.get("kind") == "code" and arm == "on":
             if not any(re.search(chk["pattern"], t) for t in code.values()):
                 out.append(f"experiment {e['id']} (on): no beat has {chk.get('what', chk['pattern'])}; this video is on "

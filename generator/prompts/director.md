@@ -88,6 +88,24 @@ every video look the same: one skyline, floating cards, a header of text. Never 
    turn. A beat that flips the story changes the light.
 8. **It loops.** The last moment leads back into the first frame (the payoff pushes into the TV glow the
    hook opens on).
+9. **One stage, one camera** (owner, 2026-11-20, on the geography Short v-20261120-05: "the camera change
+   or screen change should be smooth move not abrupt"). When two beats in a row happen on the same stage
+   (the same map, the same city from above), the next beat opens on the framing the last one ended on and
+   moves from there (pan, push or pull over the map) instead of jumping to a new framing on a `cut`; give
+   it `transition: "match"` (a soft 14-frame blend) so the stage never jumps. Keep `cut` for a change of
+   place.
+10. **The real thing, not a sample** (same note: "for currencies u could have shown real currency not a
+   sample drawn with name"). A banknote, coin, flag, passport or landmark a line names is shown as itself:
+   a freely licensed photo from Wikimedia Commons as a die-cut sticker (`"prop": "photo:<name>"`, fetched
+   with `python -m generator.images fetch`; US banknotes are public domain, most others are not: check the
+   licence, never NC/ND). With no free file, draw it with its real colours, layout and portrait shape,
+   never a generic note with a name written on it.
+11. **A person the line names is on screen on their name** (same note: "animate them as characters like
+   napoleon character when it's spoken in script"). Napoleon, a queen, a treaty's signers: on their name
+   they appear as a character on our body, with their real head from a public-domain portrait
+   (`"who": "photo:<name>"`; paintings before 1900 are public domain on Commons) or, with none, a drawn
+   `Char` dressed for their time (Napoleon's bicorne and coat). On a map channel they stand small on the
+   map where the story puts them. They never speak.
 
 ## Step 1: the shot list (in `script.json`)
 

@@ -1,0 +1,69 @@
+{
+  "agent": "improver",
+  "day": "2026-11-21",
+  "startedAt": "2026-11-21T17:03:54Z",
+  "finishedAt": "2026-11-21T17:17:15Z",
+  "summary": "Answered all five open owner notes (four on geography, one on tech), made Paisa Panchayat's own-tune sound note the default as the owner asked on 19 Nov, started weekly-loop cycle 2 (the promise beat stays in the hook's place) and fixed the flat kit's long hair covering faces. Redoes last night's blocked branch.",
+  "decision": "acted",
+  "why": "Owner notes come first and the owner said on 19 Nov his feedback goes straight away; no Shorts challenger had run since cycle 1 closed on 19 Nov; the auditor's tally names the promise beat the worst picture (-22.2 points in 10 of 11 Shorts).",
+  "findings": [
+    {
+      "title": "Paisa Panchayat: stayed to watch 37.9% (14 days), down from 44.4%",
+      "detail": "Cycle 1 (real photo in the hook) measured off 38.0% vs on 35.8% (5 vs 9 Shorts) before the owner adopted it. Last week's Shorts: median 400 views in 48 h, 94% viewed, 30.8 s average view (n 6). Long tests quiet-bed 1 of 4 and chart-gap-fill 2 of 4 a side: waiting."
+    },
+    {
+      "title": "Directed beats had no automatic sounds",
+      "detail": "Since 13 Nov every beat is directed, and only build and board beats got automatic cues, so a Short's only effects were the few its script named; this is what the geography owner heard."
+    },
+    {
+      "title": "Flat kit bug: long hair drawn over the face",
+      "detail": "remotion/src/flat/cast.tsx drew the long-hair panel after the face (QA overlap notes on 20 videos in 14 days); no published video uses it."
+    },
+    {
+      "title": "Other channels",
+      "detail": "Geography 2 Shorts with 48 h data, tech 1, the rest 0: no experiments; their own loops wait for data."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Own tune in every new Paisa Panchayat Short",
+      "detail": "renderer/engine/music.py make_motif, mixed only in the pauses and dropped before the payoff; owner note cmwk4neu",
+      "branch": "agent/improver/2026-11-21",
+      "experiment": "2026-11-21-own-motif-bed"
+    },
+    {
+      "title": "Weekly loop cycle 2: promise-stays-in-hook-place",
+      "detail": "Half the Shorts keep the promise beat in the hook's place on a match with one camera move; lint check promise-place; judged on held after the hook",
+      "branch": "agent/improver/2026-11-21",
+      "experiment": "promise-stays-in-hook-place"
+    },
+    {
+      "title": "Directed beats sound their moments and camera moves",
+      "detail": "Channels with their own effects list (geography, tech, business docs, disasters, going-down); 2 a beat, 0.8 s apart",
+      "branch": "agent/improver/2026-11-21",
+      "experiment": "2026-11-21-directed-sfx"
+    },
+    {
+      "title": "Geography: voices rotate, map-answer gate, camera, banknotes, named people",
+      "detail": "cycle/voices.json, generator/planrules.py + cycle/plan-rules.json, director.md rules 9-11",
+      "branch": "agent/improver/2026-11-21"
+    },
+    {
+      "title": "Tech: topic feed ranks rising references higher",
+      "detail": "generator/topics.py traction (proposal tech-topic-traction-score)",
+      "branch": "agent/improver/2026-11-21"
+    },
+    {
+      "title": "Flat kit: long hair behind the head",
+      "detail": "remotion/src/flat/cast.tsx",
+      "branch": "agent/improver/2026-11-21"
+    }
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [
+    {
+      "label": "Journal",
+      "url": "channels/paisa-panchayat/journal.md"
+    }
+  ]
+}

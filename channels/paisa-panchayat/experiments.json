@@ -221,6 +221,28 @@
       "description": "Shorts: the real person's photo or the company's logo in the first frame, against a drawn subject (judged on stayed to watch)",
       "adoptedAt": "2026-11-19",
       "note": "Made the default without a verdict (owner, 2026-11-19: 'The feedback I have goes straight away, don't add it as a test')."
+    },
+    {
+      "id": "promise-stays-in-hook-place",
+      "area": "camera",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-21",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "metric": "heldAfterHook",
+      "cycle": 2,
+      "prompt": {
+        "on": "Promise beat for this Short (weekly loop, cycle 2, on): the second beat (role promise, about 5-8 s) stays in the hook's place. Copy the hook beat's last `params.place` exactly into the promise beat, give it `transition: \"match\"`, and move on with one continuous camera move in the same world (a push-in or a pull-back reveal from the hook's last framing), the figure landing on a thing there on its spoken word. The next beat after the promise changes place as usual.",
+        "off": "Promise beat for this Short (weekly loop, cycle 2, off, the champion): the second beat (role promise) goes to a new place on a whip (`transition: \"whip\"`), where the figure slams onto a thing in that place, as our Shorts have done since 2026-11-13."
+      },
+      "check": {
+        "kind": "promise-place"
+      },
+      "proposal": "auditor 2026-11-22 picture tally",
+      "description": "Shorts: the promise beat stays in the hook's place and moves on with one camera move, against the champion's whip to a new place (judged on held after the hook)"
     }
   ]
 }

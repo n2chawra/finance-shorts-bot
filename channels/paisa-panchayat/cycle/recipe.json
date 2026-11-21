@@ -1,6 +1,6 @@
 {
   "note": "The champion recipe every Short follows (CLAUDE.md, the weekly loop). The improver updates it whenever a challenger is kept: the rule it adds or replaces gets `since` and `from: \"cycle <n>\"`, and the cycle goes into `changes`. Shown on the dashboard's Growth loop page.",
-  "updatedAt": "2026-11-19",
+  "updatedAt": "2026-11-21",
   "rules": [
     {
       "id": "true-story",
@@ -73,6 +73,12 @@
       "text": "The hook shows the real subject from frame 0: the person's freely licensed photo head or the company's logo as a die-cut sticker, big, named, with the hook figure beside it (never a copyrighted poster or a frame of the show)",
       "since": "2026-11-19",
       "from": "owner note 2026-11-19 (cycle 1 closed early)"
+    },
+    {
+      "id": "own-tune",
+      "text": "Each Short's bed carries its own short tune (a pentatonic phrase in its key on its own instrument), heard in the pauses between lines and dropped before the payoff",
+      "since": "2026-11-21",
+      "from": "owner note 2026-11-17"
     }
   ],
   "changes": [
@@ -88,6 +94,12 @@
       "id": "real-subject-first-frame",
       "verdict": "owner",
       "change": "The real person's photo or the company's logo in the first frame became the default for every Short; cycle 1 closed before its verdict at the owner's word"
+    },
+    {
+      "date": "2026-11-21",
+      "id": "own-motif-bed",
+      "verdict": "owner",
+      "change": "Each Short's own tune in the pauses became the default (owner's sound note of 17 Nov; his 19 Nov rule: feedback goes straight away)"
     }
   ]
 }

@@ -128,6 +128,30 @@ def breakout_of(demand) -> float | None:
     return None
 
 
+# Traction (owner, 2026-11-19, on the tech channel: "choose topics which are gaining traction"; proposal
+# tech-topic-traction-score): a reference that is rising now (views a day, research's demand.viewsPerDay and
+# demand.ageDays) lifts its topic, on a log scale; a reference over a month old counts less, over 90 days not
+# at all. Topics without the fields score as before.
+TRACTION = [(1_000, 0.0), (10_000, 0.3), (100_000, 0.7), (300_000, 1.0)]
+TRACTION_FRESH, TRACTION_STALE = 30, 90
+
+
+def traction(demand: dict | None) -> float:
+    import math
+    d = demand or {}
+    vpd, age = d.get("viewsPerDay"), d.get("ageDays")
+    if not isinstance(vpd, (int, float)) or not isinstance(age, (int, float)) or vpd <= TRACTION[0][0] or age >= TRACTION_STALE:
+        return 0.0
+    x = math.log10(vpd)
+    value = TRACTION[-1][1]
+    for (a, va), (b, vb) in zip(TRACTION, TRACTION[1:]):
+        if vpd <= b:
+            value = va + (vb - va)*(x - math.log10(a))/(math.log10(b) - math.log10(a))
+            break
+    fade = 1.0 if age <= TRACTION_FRESH else (TRACTION_STALE - age)/(TRACTION_STALE - TRACTION_FRESH)
+    return round(value*fade, 2)
+
+
 def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, float]:
     """Why a topic ranks where it does (owner, 2026-10-26: "rank on the topic too, not just views";
     "test all kinds of video"): proven demand (its reference video, capped), our own results with
@@ -140,6 +164,8 @@ def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, f
     outlier = breakout_of(topic.get("demand"))
     if outlier is not None:
         parts["breakout"] = next((b for r, b in BREAKOUT if outlier >= r), BIG_CHANNEL_PENALTY)
+    if (tr := traction(topic.get("demand"))) > 0:
+        parts["traction"] = tr
     parts["priority"] = {"breaking": 2.0, "trending": 2.0, "high": 0.4}.get(topic.get("priority") or "", 0.0)
     parts["global"] = 0.6 if topic.get("reach") == "global" else 0.0
     story = _story(topic)

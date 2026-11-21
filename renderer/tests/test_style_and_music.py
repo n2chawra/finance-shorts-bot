@@ -180,3 +180,28 @@ def test_sound_sets_sound_different_and_classic_is_unchanged() -> None:
     d = render("ding", np.random.default_rng(1), "deep", "D", classic)
     g = render("ding", np.random.default_rng(1), "deep", "G", classic)
     assert not np.array_equal(d, g)
+
+
+def test_own_motif_is_clean_differs_per_video_and_is_in_key() -> None:
+    """Weekly-loop cycle 2 own-motif-bed: each Short's own tune (owner note cmwk4neu, 2026-11-17)."""
+    from renderer.engine.music import make_motif
+    a, info = make_motif(np.random.default_rng(1), 12, "D", 100)
+    assert np.isfinite(a).all() and len(a) == 12*SR and np.abs(a).max() < 1.0
+    assert np.sqrt(np.mean(a[a != 0]**2)) == pytest.approx(BED_RMS)
+    assert info["instrument"] in ("pluck", "mallet", "bell", "flute") and info["mode"] in ("minor", "major")
+    same, _ = make_motif(np.random.default_rng(1), 12, "D", 100)
+    assert (a == same).all()
+    tunes = {tuple(sorted(make_motif(np.random.default_rng(s), 6, "D", 100)[1].items())) for s in range(12)}
+    assert len(tunes) >= 4                       # different videos, different tunes and instruments
+    assert not np.allclose(a, make_motif(np.random.default_rng(1), 12, "G", 100)[0])
+
+
+def test_new_shorts_carry_their_own_tune_and_published_ones_do_not(tmp_path) -> None:
+    import json
+    from pathlib import Path
+    from renderer.timeline.build import build
+    script = json.loads((Path(__file__).resolve().parents[2] / "examples" / "short_story_prepay.json").read_text())
+    new = build(script, tmp_path / "v-20261122-01", voice="estimate")
+    old = build(script, tmp_path / "v-20261120-01", voice="estimate")
+    assert new["audio"]["motif"]["instrument"] in ("pluck", "mallet", "bell", "flute")
+    assert "motif" not in old["audio"]

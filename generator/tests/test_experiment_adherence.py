@@ -48,3 +48,18 @@ def test_waiver_and_code_check(tmp_path):
     assert adherence_problems(vid, {**script, "experimentWaivers": {"t-photo": "no flag in the table"}}, root) == []
     (root / "remotion/src/videos" / vid / "Hook.tsx").write_text("const c = { Denmark: { fill: RED, flag: \"Denmark\" } };")
     assert adherence_problems(vid, script, root) == []
+
+
+def test_promise_place_check(tmp_path):
+    """Cycle 2 promise-stays-in-hook-place: on, the promise stays in the hook's place on a match; off, it moves."""
+    root = _root(tmp_path, {"kind": "promise-place"})
+    def script(place: str, transition: str) -> dict:
+        return {"template": "short_story", "beats": [
+            {"id": "hook", "role": "hook", "params": {"place": ["a city street at night", "the back seat of the car"]}},
+            {"id": "promise", "role": "promise", "transition": transition, "params": {"place": place}}]}
+    on, off = _ids("on"), _ids("off")
+    assert adherence_problems(on, script("the back seat of the car", "match"), root) == []
+    assert any("(on)" in p for p in adherence_problems(on, script("the back seat of the car", "whip"), root))
+    assert any("(on)" in p for p in adherence_problems(on, script("the city from above", "match"), root))
+    assert adherence_problems(off, script("the city from above", "whip"), root) == []
+    assert any("(off)" in p for p in adherence_problems(off, script("The back seat of the car", "cut"), root))

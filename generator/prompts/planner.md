@@ -222,6 +222,12 @@ Illustrative only. Not financial advice.",
 For a feed topic, `topic` also has `"feed_id": "<the topic's id>"`. A trend you found yourself
 (the midday trend run only) goes in `topic.trend` instead — see `generator/prompts/trend_run.md`.
 
+A channel whose `cycle/plan-rules.json` has `mapAnswer` (the geography channel, owner 2026-11-20: "anything
+topics that are explained not in the map are wrong") also writes `topic.map_answer`: one line naming what on
+the map the answer is (a border, a route, a shape, a distance, where a place sits next to another; a feed
+topic's own `map_answer` when it has one). If the answer is a machine, a law, a habit or a cut-away, pick
+another topic: check-plan fails it (`generator/planrules.py`).
+
 Categories in use: `compounding`, `investing`, `index_funds`, `retirement`, `credit_card`, `debt`,
 `mortgage`, `loans`, `inflation`, `interest_rates`, `savings`, `emergency_fund`, `budgeting`,
 `spending`, `subscriptions`, `tax`, `insurance`, `housing`, `gold`, `salary`, `car`, `business`, `wealth`; India stories also `sip`, `fd`,
