@@ -46,9 +46,11 @@ export const Bullet: React.FC<{ x: number; y: number; r: number; color: string; 
 );
 
 /** A hanging station sign: line bullets, a name and the depth figure in the accent colour. */
-export const Sign: React.FC<{ x: number; y: number; text: string; depth: string; bullets?: [string, string][]; accent: string; w?: number }> = ({ x, y, text, depth, bullets = [], accent, w = 600 }) => {
+export const Sign: React.FC<{ x: number; y: number; text: string; depth: string; bullets?: [string, string][]; accent: string; w?: number; k?: number }> = ({ x, y, text, depth, bullets = [], accent, w = 600, k = 1 }) => {
   const h = 96;
+  if (k <= 0) return null;
   return (
+    <g opacity={Math.min(1, k)} transform={k < 1 ? `translate(0 ${(1 - k) * -40})` : undefined}>
     <Legible x={x} y={y} w={w} h={h} size={46}>
       <Limb a={[x + 120, y - 70]} b={[x + 120, y]} w={8} color="#2a2a33" sw={3} />
       <Limb a={[x + w - 120, y - 70]} b={[x + w - 120, y]} w={8} color="#2a2a33" sw={3} />
@@ -58,6 +60,7 @@ export const Sign: React.FC<{ x: number; y: number; text: string; depth: string;
       <Txt x={x + 40 + bullets.length * 74} y={y + h / 2 + 6} size={46} fill="#f4f1e8" anchor="start" weight={700}>{text}</Txt>
       <Txt x={x + w - 26} y={y + h / 2 + 6} size={48} fill={accent} anchor="end" weight={800}>{depth}</Txt>
     </Legible>
+    </g>
   );
 };
 
@@ -147,8 +150,10 @@ export const Surface: React.FC<PieceProps> = ({ L, w, g }) => {
   const laps = Math.max(1, Math.round((w.total / 30) * 260 / 3600));
   const car = (i: number) => (((g / w.total) * laps + i / 5) % 1) * 3600 - 1500;
   const water = preset === "bridge" || preset === "dam";
-  const ny = preset === "station" ? -1040 : -120;
-  const name = s.label ? <Legible x={90} y={ny - 30} w={900} h={60} size={46}><Txt x={540} y={ny} size={46} fill={shade(wall, -0.6)} weight={800}>{s.label.toUpperCase()}</Txt></Legible> : null;
+  const tube = preset === "tube";
+  const ny = preset === "station" ? -1040 : tube ? -545 : -120;
+  const nsize = tube ? 60 : 46;
+  const name = s.label ? <Legible x={90} y={ny - 35} w={900} h={70} size={nsize}><Txt x={540} y={ny} size={nsize} fill={tube ? look.paper : shade(wall, -0.6)} weight={800}>{s.label.toUpperCase()}</Txt></Legible> : null;
   return (
     <g>
       <rect x={-2400} y={-3200} width={5900} height={3200} fill={look.skyLow} />
@@ -173,6 +178,28 @@ export const Surface: React.FC<PieceProps> = ({ L, w, g }) => {
           <Ball x={540} y={-1200} r={84} fill="#fff6dc" shadow={false} />
           <Limb a={[540, -1200]} b={[540, -1262]} w={10} color={INK} sw={0} />
           <Limb a={[540, -1200]} b={[586, -1200]} w={10} color={INK} sw={0} />
+        </g>
+      ) : tube ? (
+        // a London Underground front (2026-11-21): two storeys of glazed tiles, arched first-floor windows,
+        // the name on a dark frieze, three arched openings at street level, lit inside
+        <g>
+          <Block x={60} y={-1000} w={960} h={1000} fill={wall} shadow="right" />
+          {Array.from({ length: 11 }, (_, r) => <line key={r} x1={64} x2={1016} y1={-1000 + (r + 1) * 84} y2={-1000 + (r + 1) * 84} stroke={shade(wall, -0.18)} strokeWidth={3} />)}
+          <Block x={30} y={-1060} w={1020} h={70} fill={trim} shadow="bottom" />
+          {[0, 1, 2].map((i) => (
+            <g key={i}>
+              <rect x={130 + i * 300} y={-880} width={220} height={190} fill={glass} stroke={INK} strokeWidth={STROKE} />
+              <path d={`M ${130 + i * 300} -880 a 110 110 0 0 1 220 0`} fill={glass} stroke={INK} strokeWidth={STROKE} />
+              <line x1={240 + i * 300} x2={240 + i * 300} y1={-990} y2={-690} stroke={shade(glass, -0.2)} strokeWidth={6} />
+            </g>
+          ))}
+          <Block x={40} y={-615} w={1000} h={140} fill={shade(wall, -0.5)} shadow="bottom" />
+          {[0, 1, 2].map((i) => (
+            <g key={i}>
+              <path d={`M ${110 + i * 300} 0 L ${110 + i * 300} -320 a 130 130 0 0 1 260 0 L ${370 + i * 300} 0 Z`} fill={shade(wall, -0.55)} stroke={INK} strokeWidth={STROKE} />
+              <rect x={145 + i * 300} y={-290} width={190} height={290} fill={i === 1 ? look.light : shade(glass, -0.35)} stroke={INK} strokeWidth={5} />
+            </g>
+          ))}
         </g>
       ) : preset === "tower" ? (
         <g>
@@ -280,7 +307,7 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
         ) : <g transform={`translate(${tx} 0)`}><Train x={0} y={yb} color={s.color ?? "#c9ced8"} stripe={s.stripe ?? "#6d6e76"} bullet={s.bullets?.[0]} road={road} /></g>}
       </g>
       <rect x={x0} y={yb - h} width={x1 - x0} height={h + 40} rx={26} fill="none" stroke={INK} strokeWidth={STROKE} />
-      <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} />
+      <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
     </g>
   );
 };
@@ -323,7 +350,7 @@ export const Chamber: React.FC<PieceProps> = ({ L, w, g }) => {
       {has("bunks") ? [0, 1].map((i) => <g key={i}><Block x={160} y={yb - 110 - i * 120} w={360} h={40} fill="#6b705c" shadow="bottom" /><Limb a={[170, yb]} b={[170, yb - 250]} w={10} color="#555" sw={3} /><Limb a={[510, yb]} b={[510, yb - 250]} w={10} color="#555" sw={3} /></g>) : null}
       {has("desk") ? <g><Block x={600} y={yb - 110} w={260} h={30} fill="#8a5a3a" shadow="bottom" /><Block x={620} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /><Block x={820} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /></g> : null}
       {s.stamp ? <Legible x={170} y={yb - h + 26} w={260} h={110} size={66}><Tag x={170} y={yb - h + 26} w={260} h={110} text={s.stamp} bg={look.accent} k={stamp} rot={-4} /></Legible> : null}
-      {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} /> : null}
+      {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land)} /> : null}
       {!s.label && depthLabel(L, w) ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8)} rot={3} /></Legible> : null}
       {has("blueprint") && plans > 0 ? (
         <g opacity={plans} transform={`rotate(6 760 ${yb - h - 60})`}>
@@ -358,7 +385,7 @@ export const Cavern: React.FC<PieceProps> = ({ L, w, g }) => {
           <g transform={`translate(${(i ? -1 : 1) * ((g * 4) % 400) - 200} 0)`}><Train x={0} y={yb} color={s.stripe ?? "#d6dbe4"} stripe={trains[i % trains.length]!} /></g>
         </g>
       ))}
-      <Sign x={240} y={yLow - 270} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} />
+      <Sign x={240} y={yLow - 270} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
     </g>
   );
 };
@@ -443,7 +470,7 @@ export const Water: React.FC<PieceProps> = ({ L, w, g }) => {
       {!aquifer ? [0, 1, 2].map((i) => <path key={i} transform={`translate(${((g * (2 + i)) % 160) - 160} 0)`} d={`M -2400 ${y0 + 30 + i * 50} ${Array.from({ length: 40 }, () => "q 40 -16 80 0 t 80 0").join(" ")}`} fill="none" stroke={shade(c, 0.35)} strokeWidth={6} opacity={0.7} />) : null}
       {drops.map(([x, ph, sz], i) => <circle key={i} cx={x} cy={y0 + ((ph + g / 90) % 1) * (y1 - y0)} r={sz} fill={shade(c, 0.5)} opacity={0.6} />)}
       {s.type === "sea" ? <rect x={-2400} y={y1 - 60} width={5900} height={60} fill={look.sand} stroke={INK} strokeWidth={STROKE} /> : null}
-      <Sign x={240} y={y0 + 120} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} accent={look.accent} />
+      <Sign x={240} y={y0 + 120} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
     </g>
   );
 };

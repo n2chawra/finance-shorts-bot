@@ -135,6 +135,8 @@ def test_depth_and_time_units_on_screen_and_spoken():
     assert spoken("1 ft", "USD") == "one foot"
     assert spoken("90 s", "USD") == "ninety seconds"
     assert spoken("5 min", "USD") == "five minutes"
+    assert fact_value(110000, "tonnes", "USD") == "110,000 tonnes"
+    assert spoken("110,000 tonnes", "USD") == "one hundred ten thousand tonnes"
 
 
 def test_a_fact_dated_by_its_year_alone():

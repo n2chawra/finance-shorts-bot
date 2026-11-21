@@ -8,7 +8,8 @@ import { Easing } from "remotion";
 import type { Timeline } from "../contract/timeline";
 import { diveLook, type DiveLook } from "./looks";
 
-export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest";
+// "counter": draws nothing in the world; it only holds a beat's on-screen counter (the payoff's figure)
+export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest" | "counter";
 
 /** One piece of the world. Only the fields of its `kind` matter (README "Pieces"). */
 export interface LayerSpec {
@@ -18,7 +19,7 @@ export interface LayerSpec {
   label?: string;            // the words on its sign ("SHUTTLE", "M42", "MADISON")
   on?: string;               // the event its moment lands on (default: the beat's `on`)
   // surface
-  preset?: "station" | "tower" | "stadium" | "monument" | "bridge" | "dam" | "street";
+  preset?: "station" | "tube" | "stadium" | "tower" | "monument" | "bridge" | "dam" | "street";
   wall?: string; trim?: string; glass?: string; vehicle?: string;
   // tunnel / cavern
   type?: string;             // tunnel: subway | rail | road | utility; chamber: secret | vault | bunker | machine;
@@ -134,7 +135,7 @@ export function diveWorld(tl: Timeline): DiveWorld {
 
   // depth → world y: true to scale where layers are far apart, opened up where they crowd (not to scale)
   const PX = Math.min(36, 5400 / maxFt);
-  const depths = [...new Set(layers.filter((l) => !["surface", "shaft", "foundation"].includes(l.spec.kind)).map((l) => l.ft))].sort((a, b) => a - b);
+  const depths = [...new Set(layers.filter((l) => !["surface", "shaft", "foundation", "counter"].includes(l.spec.kind)).map((l) => l.ft))].sort((a, b) => a - b);
   const anchors: [number, number][] = [[0, 0]];
   for (const d of depths) {
     if (d <= 0) continue;

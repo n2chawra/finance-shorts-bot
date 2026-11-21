@@ -44,12 +44,12 @@ placement), `label`}], `unit` "ft" (default) or "m" (meter shows m first), `note
 ## Pieces (`layer.kind`)
 
 Common: `depth` (fig key, default "depth"), `ft` (placement when no figure), `label` (sign words), `on` (its
-moment, default the beat's `on`), `counter` {`fig`, `label`, `on`, `side`}: a display beside it that counts a
-figure up on its word (the 90 s ride).
+moment, default the beat's `on`), `counter` {`fig`, `label`, `on`}: a display on screen (top right, clear of the meter) that counts a
+figure up on its word (the 90 s ride) and shows until its beat ends.
 
 | kind | params | draws |
 |---|---|---|
-| `surface` | `preset` station / tower / stadium / monument / bridge / dam / street, `label`, `wall`, `trim`, `glass`, `color`, `vehicle` | sky, skyline, the landmark, the street with looping traffic (boats for bridge/dam) |
+| `surface` | `preset` station / tube (a London Underground front) / tower / stadium / monument / bridge / dam / street, `label`, `wall`, `trim`, `glass`, `color`, `vehicle` | sky, skyline, the landmark, the street with looping traffic (boats for bridge/dam) |
 | `tunnel` | `type` subway / rail / road / utility, `color` (vehicle), `stripe`, `bullets` [[text, colour]], `light`, `dir` 1/-1 | a lit cross-section, track or road, the sign with the depth, a train/car running through on its word (utility: cables, flowing) |
 | `chamber` | `type` secret / vault / bunker / machine, `props` [machines, lamp, blueprint, safe, gold, crates, bunks, pipes, desk], `stamp` + `stampOn`, `plansOn`, `color` | a room in the rock; the stamp lands on its word; a depth tag (or a sign when `label`) |
 | `cavern` | `levels` 1/2, `trains` [stripe per level], `stripe` (car body), `bullets`, `light`, `color` | a deep hall with platforms and moving trains, its sign |
@@ -57,6 +57,7 @@ figure up on its word (the 90 s ride).
 | `foundation` | `type` piles / raft / caissons, `count`, `color` | from the street to its depth, driven down on its word, a depth tag |
 | `water` | `type` river / aquifer / sea, `toFt`, `color` | a water band (waves, bubbles, a sea bed) with its sign |
 | `deepest` | `text` ("deepest point") | the payoff: a beacon ring and a stamped tag "TEXT · DEPTH" on its word |
+| `counter` | `counter` only | nothing in the world: holds a beat's on-screen counter (the payoff figure on a pull-back) |
 
 ## Camera rules
 

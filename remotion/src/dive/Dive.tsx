@@ -17,7 +17,9 @@ export const DepthMeter: React.FC<{ w: DiveWorld; ft: number }> = ({ w, ft }) =>
   const x = 34, y0 = 230, y1 = 1360;
   const u = Math.min(1, Math.max(0, ft / w.maxFt));
   const py = y0 + u * (y1 - y0);
-  const m = Math.round(ft * 0.3048);
+  // whole metres, or a half where the depth really sits on one (58.5 m reads as its sign does; 221 ft is 67 m, not 67.5)
+  const mx = ft * 0.3048, half = Math.floor(mx) + 0.5;
+  const m = Math.abs(mx - half) < 0.1 ? half : Math.round(mx);
   const metric = w.cfg.unit === "m";
   const main = metric ? `${m} m` : `${Math.round(ft)} ft`;
   const sub = metric ? `${Math.round(ft)} ft below` : `${m} m below`;

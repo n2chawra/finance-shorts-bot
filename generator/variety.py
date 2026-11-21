@@ -243,7 +243,9 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
     if last:
         if style.get("palette") == last["style"]["palette"]:
             out.append(f"palette {style.get('palette')!r} was used by the previous video")
-        if style.get("genre") == last["style"]["genre"]:
+        # a channel with one music bed (Going Down: "cinematic" only, channel.json sound.genres) can't rotate it;
+        # its key and tempo still change (the rule below)
+        if style.get("genre") == last["style"]["genre"] and len(genres) > 1:
             out.append(f"music genre {style.get('genre')!r} was used by the previous video")
         if (style.get("key"), style.get("bpm")) == (last["style"]["key"], last["style"]["bpm"]):
             out.append("music key and tempo are identical to the previous video")
