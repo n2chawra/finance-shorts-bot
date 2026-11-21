@@ -6,7 +6,10 @@
       "area": "pipeline",
       "title": "Long topics in the research feed never reach the long video state",
       "change": "For this channel, research/topics.json holds 13 topics with \"format\": \"long\" (11 from the setup, 2 tonight), but `python -m generator.run state --format long` reads longform/topics.json, which has only the Crocs sample. Either Scout copies the research feed's long topics into longform/topics.json on its next run, or the long state also offers research topics whose format is long.",
-      "evidence": ["channels/business-documentaries-rise-and-fall-of/research/topics.json", "channels/business-documentaries-rise-and-fall-of/longform/topics.json"],
+      "evidence": [
+        "channels/business-documentaries-rise-and-fall-of/research/topics.json",
+        "channels/business-documentaries-rise-and-fall-of/longform/topics.json"
+      ],
       "expectedEffect": "Studio sees 13 sourced long topics instead of 1",
       "confidence": "high",
       "effort": "S",
@@ -14,6 +17,26 @@
       "metric": "qa_failures",
       "status": "new",
       "route": "adopt",
+      "priority": "normal"
+    },
+    {
+      "id": "long-title-verdict",
+      "date": "2026-11-22",
+      "area": "title",
+      "title": "Long titles that pass a verdict on a brand ('X Is Paying for It Now') against claim titles",
+      "change": "Long videos only (their own test, not the Shorts loop): for a brand_backlash or company_rise_fall film where the brand's own decision (a price, a recipe, a size) lost the fans and the record shows it, title it as a verdict in our own words ('Pizza Hut Is Paying for It Now', 'Why Everyone Stopped Forgiving Five Guys') against the recipe's claim title. Never Bagholder Association's exact phrase; never a verdict that implies wrongdoing no court or regulator found.",
+      "evidence": [
+        "Niche scan 2026-11-19: Bagholder Association (10.8K subs) titles of the form 'X Is (Finally) Getting What They Deserve...' have a median of 464,541 views over 9 long videos (Pepsi 1.39M, Doritos 1.28M, Krispy Kreme 734K, Gillette 653K, Wendy's 465K, Burger King 102K) against 28,440 for its other 51; topics are the same kind (KFC, Pizza Hut, LEGO, Five Guys).",
+        "https://www.youtube.com/watch?v=3Hp03-lSQRw",
+        "Company Man (1.8M subs): 'X vs. Y' median 291,835 (4) vs 160,302 for all 26; 'The Decline of X...What Happened?' 190,559 (9)."
+      ],
+      "expectedEffect": "higher click-through on long videos; the 16x gap is one channel and partly its best brands, so expect far less",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "tone: the profile asks for a journalistic voice that advertisers accept; a verdict title must rest on the film's sourced cause",
+      "metric": "views7d",
+      "status": "new",
+      "route": "experiment",
       "priority": "normal"
     }
   ]
