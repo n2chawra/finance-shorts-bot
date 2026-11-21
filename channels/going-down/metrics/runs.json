@@ -3,7 +3,7 @@
   "days": [
     {
       "day": "2026-11-21",
-      "shipped": 0,
+      "shipped": 1,
       "failed": 2
     }
   ],
@@ -21,6 +21,13 @@
       "template": "short_story",
       "status": "failed",
       "reason": "QA [scene]: the dive kit has no tomb, crypt or dome pieces, so St Peter's Grottoes, necropolis and niche all drew as the same empty chamber and the basilica as a generic two-tower church; the meter showed an unsourced 3 m at the Grottoes"
+    },
+    {
+      "id": "v-20261121-53",
+      "day": "2026-11-21",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
     }
   ]
 }
