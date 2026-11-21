@@ -1,5 +1,19 @@
 {
   "note": "Every video attempted in the last 60 days. Written by the ingest workflow.",
-  "days": [],
-  "videos": []
+  "days": [
+    {
+      "day": "2026-11-21",
+      "shipped": 0,
+      "failed": 1
+    }
+  ],
+  "videos": [
+    {
+      "id": "v-20261121-51",
+      "day": "2026-11-21",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "layout gate: the dive kit (remotion/src/dive) draws its 46-48 px signs and landmark label at the opening/loop zoom 0.82 and the pull-back zoom ~0.4, so they measure 18-41 px (under the 44 px minimum) and the loop's last frame puts the first depth sign in the bottom 120 px; no script change can avoid it"
+    }
+  ]
 }
