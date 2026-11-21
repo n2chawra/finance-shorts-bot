@@ -1,0 +1,1066 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 44529,
+ "story": "founder_bet",
+ "shape": "the-overnight-bet",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "dossier",
+  "key": "E",
+  "bpm": 80
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "shock_number",
+ "cta": "Mailed blades or the drugstore shelf: where do you buy yours? Comment",
+ "feed_id": "2026-11-21-dollar-shave-club-4500",
+ "facts": [
+  {
+   "label": "Cost of Dollar Shave Club's launch video, about",
+   "value": 4500,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2012-03-06",
+   "source": "Fortune",
+   "url": "https://fortune.com/2015/03/10/dollar-shave-club-founding/",
+   "fixed": true
+  },
+  {
+   "label": "Seed round Dollar Shave Club closed the day the video launched",
+   "value": 1,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2012-03-06",
+   "source": "Fortune",
+   "url": "https://fortune.com/2015/03/10/dollar-shave-club-founding/",
+   "fixed": true
+  },
+  {
+   "label": "Dollar Shave Club's revenue in 2012",
+   "value": 4,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2012-12-31",
+   "source": "Fortune",
+   "url": "https://fortune.com/2015/03/10/dollar-shave-club-founding/",
+   "fixed": true
+  },
+  {
+   "label": "Dollar Shave Club's revenue in 2013",
+   "value": 19,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2013-12-31",
+   "source": "Fortune",
+   "url": "https://fortune.com/2015/03/10/dollar-shave-club-founding/",
+   "fixed": true
+  },
+  {
+   "label": "Dollar Shave Club's revenue in 2014",
+   "value": 65,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2014-12-31",
+   "source": "Fortune",
+   "url": "https://fortune.com/2015/03/10/dollar-shave-club-founding/",
+   "fixed": true
+  },
+  {
+   "label": "Price Unilever paid in cash, as reported",
+   "value": 1,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2016-07-19",
+   "source": "Fortune",
+   "url": "https://fortune.com/2016/07/19/unilever-buys-dollar-shave-club-for-1-billion/",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.5,
+  "words": "One cheap *video*",
+  "figure": "{fact1}",
+  "tag": "It cost",
+  "angle": "number"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "doc",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Dollar Shave Club started with one video that cost about {fact1}.",
+   "events": {
+    "dollar": {
+     "word": "Dollar"
+    },
+    "started": {
+     "word": "started"
+    },
+    "video": {
+     "word": "video"
+    },
+    "cost": {
+     "word": "cost"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "video"
+    },
+    {
+     "kind": "boom",
+     "at": "cost"
+    }
+   ],
+   "params": {
+    "place": [
+     "the Dollar Shave Club name",
+     "razor cartridges in a fast run",
+     "the price of one video"
+    ],
+    "things": [
+     "Dollar Shave Club logo",
+     "cartridges",
+     "the video's cost"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "video",
+      "size": "medium"
+     },
+     {
+      "at": "cost",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "dollar",
+      "what": "a label: Dollar Shave Club"
+     },
+     {
+      "at": "video",
+      "what": "a punch montage of razors and blades"
+     },
+     {
+      "at": "cost",
+      "what": "the cost counts up"
+     }
+    ],
+    "fig": {
+     "cost": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dollar-shave-club-logo-2020-a2478f31.png",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.08,
+      "grade": "doc",
+      "out": "video",
+      "aspect": 1.5
+     },
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "every": 8,
+      "grade": "doc",
+      "at": "video",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-cartridge-for-gillette-mach3-razor-2015-08-03-58ca4e33.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-gillette-mach3-razor-from-indonesia-2015-08-03-447592dd.jpg",
+        "focus": [
+         0.12,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-cartridge-razor-vs-safety-razor-30072527861-bf84b164.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "count",
+      "figure": "cost",
+      "eyebrow": "one video",
+      "unit": "about, to make",
+      "countAt": "cost",
+      "countLen": 24,
+      "tone": "gold",
+      "at": "cost"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Dollar Shave Club",
+      "sub": "razors by mail",
+      "at": "dollar",
+      "out": "video"
+     }
+    ]
+   }
+  },
+  {
+   "id": "funded",
+   "scene": "doc",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "The day it went up, investors put in {fact2}. Then the orders poured in.",
+   "events": {
+    "day": {
+     "word": "day"
+    },
+    "investors": {
+     "word": "investors"
+    },
+    "orders": {
+     "word": "orders"
+    },
+    "poured": {
+     "word": "poured"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "investors"
+    }
+   ],
+   "params": {
+    "place": [
+     "a web shop's servers the day the video went up"
+    ],
+    "things": [
+     "servers",
+     "the money raised"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "investors",
+      "size": "medium"
+     },
+     {
+      "at": "orders",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "day",
+      "what": "the date slams in"
+     },
+     {
+      "at": "investors",
+      "what": "a stamp: FUNDED"
+     },
+     {
+      "at": "orders",
+      "what": "the servers push in"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-server-room-22397102849-6ce83ab5.jpg",
+      "focus": [
+       0.6,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "cold"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2012-03-06",
+      "sub": "the video goes up",
+      "pos": "top",
+      "at": "day",
+      "out": "investors"
+     },
+     {
+      "kind": "stamp",
+      "text": "Funded",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "investors",
+      "out": "orders"
+     },
+     {
+      "kind": "label",
+      "text": "Orders",
+      "sub": "from the first day",
+      "at": "orders"
+     }
+    ]
+   }
+  },
+  {
+   "id": "bet",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Its bet: razor blades mailed to your door every month, instead of a trip to the shop. Would anyone sign up?",
+   "events": {
+    "bet": {
+     "word": "bet"
+    },
+    "blades": {
+     "word": "blades"
+    },
+    "mailed": {
+     "word": "mailed"
+    },
+    "door": {
+     "word": "door"
+    },
+    "month": {
+     "word": "month"
+    },
+    "shop": {
+     "word": "shop"
+    },
+    "sign": {
+     "word": "sign"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "door"
+    }
+   ],
+   "params": {
+    "place": [
+     "the shop shelf against the box at your door"
+    ],
+    "things": [
+     "blades in a shop",
+     "a parcel at the door"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "door",
+      "size": "wide"
+     },
+     {
+      "at": "shop",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bet",
+      "what": "the parcel side slides in"
+     },
+     {
+      "at": "month",
+      "what": "a label: every month"
+     },
+     {
+      "at": "shop",
+      "what": "the shop side slides in"
+     },
+     {
+      "at": "sign",
+      "what": "a stamp: SIGN UP?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "split",
+      "left": {
+       "name": "By mail",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-damaged-fragile-parcel-delivered-to-doorstep-40970521.jpg",
+       "fit": "cover",
+       "sub": "every month"
+      },
+      "right": {
+       "name": "The shop",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-shaving-set-264a75d0.jpg",
+       "fit": "cover",
+       "sub": "a trip each time"
+      },
+      "leftAt": "bet",
+      "rightAt": "shop"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Every month",
+      "sub": "to your door",
+      "at": "month",
+      "out": "shop"
+     },
+     {
+      "kind": "stamp",
+      "text": "Sign up?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "sign"
+     }
+    ]
+   }
+  },
+  {
+   "id": "growth",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The founder told Fortune it sold {fact3} in its first year, {fact4} the next, then {fact5}.",
+   "events": {
+    "founder": {
+     "word": "founder"
+    },
+    "fortune": {
+     "word": "Fortune"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "then": {
+     "word": "then"
+    },
+    "year": {
+     "word": "year"
+    },
+    "next": {
+     "word": "next"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "sold"
+    },
+    {
+     "kind": "tick",
+     "at": "then"
+    }
+   ],
+   "params": {
+    "place": [
+     "the company's sales, year by year, over a shaving brush"
+    ],
+    "things": [
+     "sales bars",
+     "shaving brush"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "sold",
+      "size": "medium"
+     },
+     {
+      "at": "next",
+      "size": "wide"
+     },
+     {
+      "at": "then",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fortune",
+      "what": "a source chip: Fortune interview"
+     },
+     {
+      "at": "sold",
+      "what": "the bars draw"
+     },
+     {
+      "at": "then",
+      "what": "the last bar towers"
+     },
+     {
+      "at": "year",
+      "what": "a label: first year"
+     },
+     {
+      "at": "next",
+      "what": "the second bar rises"
+     }
+    ],
+    "fig": {
+     "one": "{fact3}",
+     "two": "{fact4}",
+     "three": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-rasierpinsel-10591aba.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.08,
+      "grade": "night"
+     },
+     {
+      "kind": "chart",
+      "type": "bar",
+      "values": [
+       4,
+       19,
+       65
+      ],
+      "figs": [
+       "one",
+       "two",
+       "three"
+      ],
+      "title": "What it sold",
+      "sub": "a year, by the founder's account",
+      "tone": "rise",
+      "hiBar": 2,
+      "drawAt": "sold",
+      "plate": false,
+      "at": "founder"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "INTERVIEW",
+      "text": "Fortune",
+      "date": "2015-03-10",
+      "at": "fortune"
+     },
+     {
+      "kind": "label",
+      "text": "Year one",
+      "sub": "by the founder's account",
+      "at": "year",
+      "out": "next"
+     }
+    ]
+   }
+  },
+  {
+   "id": "question",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So what is a box of mailed razors really worth?",
+   "events": {
+    "box": {
+     "word": "box"
+    },
+    "mailed": {
+     "word": "mailed"
+    },
+    "worth": {
+     "word": "worth"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "worth"
+    }
+   ],
+   "params": {
+    "place": [
+     "an open Dollar Shave Club welcome box"
+    ],
+    "things": [
+     "the welcome box",
+     "a razor inside"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "box",
+      "size": "close"
+     },
+     {
+      "at": "worth",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "box",
+      "what": "a label: the welcome box"
+     },
+     {
+      "at": "worth",
+      "what": "a stamp: WORTH?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-welcome-package-dollar-shave-club-038dac1e.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "warm",
+      "frame": "polaroid",
+      "surface": "desk",
+      "tilt": -4,
+      "landAt": "box"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "The welcome box",
+      "sub": "Dollar Shave Club",
+      "at": "box",
+      "out": "worth"
+     },
+     {
+      "kind": "stamp",
+      "text": "Worth?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "worth"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "doc",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Four years after that video, Unilever, the company behind Dove soap, came to buy it.",
+   "events": {
+    "years": {
+     "word": "years"
+    },
+    "unilever": {
+     "word": "Unilever"
+    },
+    "dove": {
+     "word": "Dove"
+    },
+    "buy": {
+     "word": "buy"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "unilever"
+    }
+   ],
+   "params": {
+    "place": [
+     "Unilever's office tower in Rotterdam",
+     "a Unilever sign"
+    ],
+    "things": [
+     "Unilever's offices",
+     "Unilever sign"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "dove",
+      "size": "close"
+     },
+     {
+      "at": "buy",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "years",
+      "what": "the date slams in"
+     },
+     {
+      "at": "unilever",
+      "what": "a lower third: Unilever"
+     },
+     {
+      "at": "dove",
+      "what": "cut to the Unilever sign"
+     },
+     {
+      "at": "buy",
+      "what": "a stamp: SOLD"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-rotterdam-unilever-adfebb9a.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "rise",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "dove"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-unilever-logo-delft-21juni2006-98d12ce0.jpg",
+      "focus": [
+       0.4,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "dove"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2016-07-19",
+      "sub": "four years on",
+      "pos": "top",
+      "at": "years",
+      "out": "unilever"
+     },
+     {
+      "kind": "lowerThird",
+      "name": "Unilever",
+      "role": "maker of Dove",
+      "at": "unilever",
+      "out": "dove"
+     },
+     {
+      "kind": "stamp",
+      "text": "Sold",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "buy"
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "doc",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Fortune's sources put the price at {fact6}, all in cash, for a company one cheap video started.",
+   "events": {
+    "sources": {
+     "word": "sources"
+    },
+    "price": {
+     "word": "price"
+    },
+    "cash": {
+     "word": "cash"
+    },
+    "company": {
+     "word": "company"
+    },
+    "started": {
+     "word": "started"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "price"
+    }
+   ],
+   "params": {
+    "place": [
+     "the Fortune report",
+     "the poster over a razor cartridge"
+    ],
+    "things": [
+     "Fortune headline",
+     "the price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "price",
+      "size": "wide"
+     },
+     {
+      "at": "started",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sources",
+      "what": "the headline's words are highlighted"
+     },
+     {
+      "at": "price",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "cash",
+      "what": "a stamp: REPORTED"
+     },
+     {
+      "at": "started",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "price": "{fact6}"
+    },
+    "layers": [
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "Fortune",
+        "date": "2016-07-19",
+        "title": "Unilever buys Dollar Shave Club for {fact6}",
+        "style": "web",
+        "hi": "Dollar Shave Club"
+       }
+      ],
+      "on": [
+       "start"
+      ],
+      "markAt": "sources",
+      "out": "price",
+      "enter": "zoom"
+     },
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-gillette-fusion-razor-cartridge-a0f1fa33.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "date": "2016-07-19",
+      "title": "Dollar Shave Club",
+      "figure": "price",
+      "sub": "reportedly, in cash",
+      "on": "price",
+      "at": "price"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "Fortune",
+      "date": "2016-07-19",
+      "at": "sources",
+      "out": "price"
+     },
+     {
+      "kind": "stamp",
+      "text": "Reported",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -5,
+      "at": "cash",
+      "out": "started"
+     },
+     {
+      "kind": "stamp",
+      "text": "One video",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": 5,
+      "at": "started"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ending",
+   "scene": "doc",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Mailed blades or the shop shelf: where do you buy yours? Either way, it all goes back to one video.",
+   "events": {
+    "mailed": {
+     "word": "Mailed"
+    },
+    "shelf": {
+     "word": "shelf"
+    },
+    "yours": {
+     "word": "yours"
+    },
+    "either": {
+     "word": "Either"
+    },
+    "video": {
+     "word": "video"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "video"
+    }
+   ],
+   "params": {
+    "place": [
+     "a razor in a bathroom",
+     "the Dollar Shave Club name from the first frame"
+    ],
+    "things": [
+     "razor",
+     "the first razor again"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "yours",
+      "size": "close"
+     },
+     {
+      "at": "video",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mailed",
+      "what": "a label: by mail?"
+     },
+     {
+      "at": "shelf",
+      "what": "a label: or the shop?"
+     },
+     {
+      "at": "video",
+      "what": "back to the razor from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-safety-razor-shaving-kit-ab7fd6d6.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "warm",
+      "out": "video"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dollar-shave-club-logo-2020-a2478f31.png",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "video",
+      "aspect": 1.5
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "By mail?",
+      "at": "mailed",
+      "out": "shelf"
+     },
+     {
+      "kind": "label",
+      "text": "Or the shop?",
+      "at": "shelf",
+      "out": "either"
+     }
+    ]
+   }
+  }
+ ]
+}

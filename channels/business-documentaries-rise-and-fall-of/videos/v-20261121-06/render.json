@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 44529,
+  "duration_sec": 37,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "dossier",
+    "key": "E",
+    "bpm": 80
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Dollar Shave Club started with one video that cost about $4,500.",
+        "start": 0.3,
+        "seconds": 3.55,
+        "window": 4.23,
+        "fill": 0.839
+      },
+      {
+        "scene": "funded",
+        "text": "The day it went up, investors put in $1M. Then the orders poured in.",
+        "start": 4.53,
+        "seconds": 3.5,
+        "window": 4.13,
+        "fill": 0.847
+      },
+      {
+        "scene": "bet",
+        "text": "Its bet: razor blades mailed to your door every month, instead of a trip to the shop. Would anyone sign up?",
+        "start": 8.67,
+        "seconds": 4.42,
+        "window": 5.07,
+        "fill": 0.872
+      },
+      {
+        "scene": "growth",
+        "text": "The founder told Fortune it sold $4M in its first year, $19M the next, then $65M.",
+        "start": 13.73,
+        "seconds": 5.95,
+        "window": 6.63,
+        "fill": 0.897
+      },
+      {
+        "scene": "question",
+        "text": "So what is a box of mailed razors really worth?",
+        "start": 20.37,
+        "seconds": 1.73,
+        "window": 2.33,
+        "fill": 0.742
+      },
+      {
+        "scene": "turn",
+        "text": "Four years after that video, Unilever, the company behind Dove soap, came to buy it.",
+        "start": 22.7,
+        "seconds": 3.41,
+        "window": 4.0,
+        "fill": 0.853
+      },
+      {
+        "scene": "payoff",
+        "text": "Fortune's sources put the price at $1B, all in cash, for a company one cheap video started.",
+        "start": 26.7,
+        "seconds": 4.74,
+        "window": 5.4,
+        "fill": 0.878
+      },
+      {
+        "scene": "ending",
+        "text": "Mailed blades or the shop shelf: where do you buy yours? Either way, it all goes back to one video.",
+        "start": 32.1,
+        "seconds": 4.32,
+        "window": 4.97,
+        "fill": 0.869
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.7,
+    "lufs": -15.8,
+    "music_under_voice_db": 18.2
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 5.634,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,187 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:54:37.196601+00:00",
+    "finishedAt": "2026-11-21T00:54:37.196601+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:59:18.758997+00:00",
+    "finishedAt": "2026-11-21T00:59:18.758997+00:00",
+    "notes": [
+      "beat 'growth'.params.layers[1].figs[0] contains a typed number; use a placeholder: 'y1'",
+      "beat 'hook' (hook) already says the payoff's figure {fact1}: hold it back for the payoff. The opening names the subject and asks the question; once the answer is out, viewers leave at 5-6 s",
+      "0 dated steps; a true-history dates at least 2 moments (facts with unit \"year\")",
+      "the title 'One {fact1} Video Built Dollar Shave Club' states the payoff's figure {fact1}: the title asks the question and the payoff answers it (\"How does Costco make money on a {price} hot dog?\")",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'One {fact1} Video Built Dollar Shave Club' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:59:30.334735+00:00",
+    "finishedAt": "2026-11-21T00:59:30.334735+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:59:31.447197+00:00",
+    "finishedAt": "2026-11-21T00:59:31.447197+00:00",
+    "notes": [
+      "beat 'growth'.say contains a typed number; use a placeholder: 'The founder told Fortune it sold {fact3} in 2012, {fact4} the next year, then {fact5}.'",
+      "script.shape must be the plan's shape ('the-overnight-bet'): the spine is checked by it",
+      "note: the title 'One {fact1} Video Built Dollar Shave Club' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:59:36.397057+00:00",
+    "finishedAt": "2026-11-21T00:59:36.397057+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "warning: beat 'growth' runs 6.4 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: the title 'One {fact1} Video Built Dollar Shave Club' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:59:46.638910+00:00",
+    "finishedAt": "2026-11-21T00:59:46.638910+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'One {fact1} Video Built Dollar Shave Club' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:59:53.252876+00:00",
+    "finishedAt": "2026-11-21T01:00:25.399470+00:00",
+    "notes": [
+      "37 s, ember/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:00:42.239204+00:00",
+    "finishedAt": "2026-11-21T01:00:42.239204+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'One {fact1} Video Built Dollar Shave Club' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:00:53.071028+00:00",
+    "finishedAt": "2026-11-21T01:00:53.071028+00:00",
+    "notes": [
+      "All 6 facts confirmed on the Fortune pages (WebFetch): Dubin interview 10 Mar 2015 states video ~$4,500, $1M seed closed 6 Mar 2012 same day as launch, revenue $4M/$19M/$65M for 2012/13/14 (attributed to the founder in voice and on screen); Fortune 19 Jul 2016 reports $1B in cash from sources close to the deal, terms undisclosed (voice says 'Fortune's sources', screen says 'reported, price not disclosed'). Verify list met; no advice, disclaimer ends description. Notes: hook 'started with one video' simplifies (company founded 2011, the video was its launch); description Sources line should also cite Fortune (Mar 2015); hook montage includes a visibly Gillette-branded kit for ~8 frames and the hook/ending Mach3 crop is a Gillette razor under the DSC label (branding cropped out) - an unbranded razor would be cleaner."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:00:48.651135+00:00",
+    "finishedAt": "2026-11-21T01:01:06.516501+00:00",
+    "notes": [
+      "37 s, ember/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:01:17.497980+00:00",
+    "finishedAt": "2026-11-21T01:01:17.497980+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'One {fact1} Video Built Dollar Shave Club' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T01:01:22.694790+00:00",
+    "finishedAt": "2026-11-21T01:01:39.240336+00:00",
+    "notes": [
+      "2 of 9 stills are mostly empty background (at 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:01:55.135401+00:00",
+    "finishedAt": "2026-11-21T01:02:17.592491+00:00",
+    "notes": [
+      "37 s, ember/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:02:27.777180+00:00",
+    "finishedAt": "2026-11-21T01:02:44.364392+00:00",
+    "notes": [
+      "37 s, ember/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T01:04:01.947473+00:00",
+    "finishedAt": "2026-11-21T01:04:01.947473+00:00",
+    "notes": [
+      "[script] 8.7-9.8 s (beat 'bet'): empty frame, only dark background behind the caption 'ITS BET' (still 9.0 s) because the split's left side waits for 'mailed' (leftAt). Bring the parcel side in at 'start' or 'bet'.",
+      "[script] 18.0 s (beat 'growth'): the 'Year one / by the founder's account' label sits over the middle bar and hides its $19M figure exactly while the narrator says $19M. Give the label an out at 'next' or a position clear of the chart (e.g. top, under the title).",
+      "[script] 13.7-15.2 s (beat 'growth' before 'sold'): a washed-out, blown-up shaving-brush close-up with nothing readable (still 13.5 s); the chart/source chip should arrive at 'founder' or 'start' so the beat opens on the sales picture."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:04:18.434854+00:00",
+    "finishedAt": "2026-11-21T01:04:34.518603+00:00",
+    "notes": [
+      "37 s, ember/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:05:20.824367+00:00",
+    "finishedAt": "2026-11-21T01:05:20.824367+00:00",
+    "notes": [
+      "Re-review after fixes: parcel side now on screen at 9.0 s, 'Year one' label gone before the $19M bar (18.0 s), sales chart in from 'founder'; every beat has a real place and a figure on a thing, hook names Dollar Shave Club without the $1B payoff, loops to the logo, pick-one ending, disclaimer in description, layout/craft clean, audio -1.0/-17.7 dB, 37 s."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:05:29.483426+00:00",
+    "finishedAt": "2026-11-21T01:07:55.058811+00:00",
+    "notes": [
+      "37 s, ember/dossier, peak -1.0 dB, mean -17.7 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-21T01:07:58.808607+00:00",
+    "finishedAt": "2026-11-21T01:07:58.808607+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
