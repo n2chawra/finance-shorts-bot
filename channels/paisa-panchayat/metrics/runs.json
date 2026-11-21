@@ -155,6 +155,11 @@
       "day": "2026-11-21",
       "shipped": 2,
       "failed": 0
+    },
+    {
+      "day": "2026-11-22",
+      "shipped": 1,
+      "failed": 1
     }
   ],
   "videos": [
@@ -938,6 +943,20 @@
     {
       "id": "v-20261121-02",
       "day": "2026-11-21",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261122-01",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "fact review and QA: the feed topic divides Take-Two's all-games quarterly bookings forecast by one GTA VI price, so the payoff copy count is not a true GTA figure and the needed caveat makes the second line widen to a whole list's total"
+    },
+    {
+      "id": "v-20261122-02",
+      "day": "2026-11-22",
       "template": "short_story",
       "status": "shipped",
       "reason": null
