@@ -1,0 +1,23 @@
+{
+ "agent": "research",
+ "day": "2026-11-22",
+ "channel": "going-down",
+ "startedAt": "2026-11-21T20:22:35Z",
+ "finishedAt": "2026-11-21T20:28:29Z",
+ "summary": "Going Down's first research night: a teardown of Cutaway Instinct and From The Ground Up, 2 new topics (Derinkuyu, Kolkata's under-river metro), a demand reference added to SoFi, every open topic tagged with its dive format, 1 hook challenger and 1 trial shape.",
+  "decision": "acted",
+ "why": "No channel numbers yet. Demand: Derinkuyu 2.5M on a 77K channel, Kolkata's underwater metro 3.7M on 638K. Cutaway Instinct has drifted to brand and stadium explainers (most 5-50K), while From The Ground Up's hidden-space Shorts reach 1.3-16M.",
+ "findings": [
+  {"title": "Cutaway Instinct has left 'what's under' for brands and stadiums", "detail": "Most of its last 40 Shorts get 5-50K views; its one recent 'What's Under' Short got 6.2K. The pure dive is less contested than we thought.", "link": "https://www.youtube.com/@CutawayInstinct/shorts"},
+  {"title": "Hidden-space promises carry From The Ground Up", "detail": "Hidden Room 16M, Secret Hideout 1.7M, Secret Bunker 1.4M, Underground City 1.3M on 81K subs.", "link": "https://www.youtube.com/@GroundNUp/shorts"},
+  {"title": "Derinkuyu is a breakout", "detail": "2.5M views on a 77K channel (32x).", "link": "https://www.youtube.com/shorts/KiDMZIe1zRQ"},
+  {"title": "The Paris Catacombs are a breakout too, but need sourcing", "detail": "1.8M views on an 83K channel. Only the 20 m depth is sourced, so it's held out of the feed until 3 more depths are found.", "link": "https://www.youtube.com/shorts/9ZyAXcjjkpg"}
+ ],
+ "changes": [
+  {"title": "2 topics added, SoFi reference added, 17 topics tagged with a format", "detail": "channels/going-down/research/topics.json", "branch": "agent/research/2026-11-22/going-down"},
+  {"title": "Challenger gd-hidden-hook (first-second, stayed)", "detail": "channels/going-down/cycle/backlog.json", "branch": "agent/research/2026-11-22/going-down"},
+  {"title": "Trial shape 'becomes' and two format examples", "detail": "shapes.json, formats.json", "branch": "agent/research/2026-11-22/going-down"}
+ ],
+ "nextCheck": "2026-11-23",
+ "links": [{"label": "Report", "url": "channels/going-down/research/2026-11-22.md"}]
+}
