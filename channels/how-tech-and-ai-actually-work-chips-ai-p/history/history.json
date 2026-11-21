@@ -109,5 +109,42 @@
     "format": "short",
     "story": "invention_story",
     "shape": "build-and-dive"
+  },
+  {
+    "id": "v-20261122-21",
+    "created_at": "2026-11-21T21:24:11.189948+00:00",
+    "template": "short_story",
+    "topic": {
+      "title": "How a Crossrail tunnel boring machine dug the Elizabeth line under London, lining the tunnel as it went, and passed a working Tube line",
+      "category": "machines",
+      "reach": "global",
+      "feed_id": "2026-11-21-tbm-under-london"
+    },
+    "title": "How Did Crossrail Tunnel Past the Tube?",
+    "description": "How did Crossrail dig a new railway through ground already full of Tube tunnels?\nWe walk a 150-metre tunnel boring machine from its spinning cutterhead to the arm that builds the tunnel's concrete rings behind it, then show how close it came to the Northern line.\nSources: Arup (Nov 2026).\nAnimations are simplified illustrations, not exact to scale.",
+    "hook_style": "conflict",
+    "cta": "Which machine should we take apart next? Comment",
+    "style": {
+      "palette": "ember",
+      "genre": "circuit",
+      "key": "G",
+      "bpm": 73,
+      "look": {
+        "stage": "city",
+        "header": "ribbon",
+        "holder": "sign",
+        "entrance": "slide"
+      },
+      "voice": "am_michael",
+      "arms": {
+        "length": "45-60",
+        "title": "figure_or_name",
+        "style": "shot",
+        "category": "28"
+      }
+    },
+    "format": "short",
+    "story": "machine_works",
+    "shape": "nose-to-tail"
   }
 ]

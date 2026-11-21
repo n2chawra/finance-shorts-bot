@@ -1,0 +1,133 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 70822,
+  "duration_sec": 59,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "circuit",
+    "key": "G",
+    "bpm": 73,
+    "look": {
+      "stage": "city",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Crossrail dug a railway between London's Tube tunnels.",
+        "start": 0.3,
+        "seconds": 3.67,
+        "window": 4.2,
+        "fill": 0.874
+      },
+      {
+        "scene": "size",
+        "text": "How? Its machines were 150 metres long, and each built the tunnel as it dug.",
+        "start": 4.5,
+        "seconds": 6.01,
+        "window": 6.5,
+        "fill": 0.925
+      },
+      {
+        "scene": "wheel",
+        "text": "At the front, a steel wheel spins into the clay, cutting a hole 7.1 metres across.",
+        "start": 11.0,
+        "seconds": 6.09,
+        "window": 6.73,
+        "fill": 0.905
+      },
+      {
+        "scene": "chamber",
+        "text": "Why doesn't the ground cave in? Dug clay fills a sealed chamber that pushes back.",
+        "start": 17.73,
+        "seconds": 4.88,
+        "window": 5.53,
+        "fill": 0.882
+      },
+      {
+        "scene": "belt",
+        "text": "Where does it go? A conveyor carries the clay back along the machine.",
+        "start": 23.27,
+        "seconds": 4.18,
+        "window": 4.7,
+        "fill": 0.889
+      },
+      {
+        "scene": "ring",
+        "text": "At the back, an arm bolts concrete pieces into a ring, lining the tunnel.",
+        "start": 27.97,
+        "seconds": 4.86,
+        "window": 5.33,
+        "fill": 0.912
+      },
+      {
+        "scene": "forward",
+        "text": "It pushes off each ring and creeps forward. Together, the machines dug 42 kilometres under London.",
+        "start": 33.3,
+        "seconds": 6.89,
+        "window": 7.5,
+        "fill": 0.919
+      },
+      {
+        "scene": "checked",
+        "text": "Over 17,000 buildings, rails and pipes were checked for movement. At Tottenham Court Road, the Northern line was already there.",
+        "start": 40.8,
+        "seconds": 9.08,
+        "window": 9.53,
+        "fill": 0.953
+      },
+      {
+        "scene": "payoff",
+        "text": "The new tunnel passed over it with just 700 millimetres to spare.",
+        "start": 50.33,
+        "seconds": 4.42,
+        "window": 4.9,
+        "fill": 0.902
+      },
+      {
+        "scene": "loop",
+        "text": "A new line, threaded between the old ones.",
+        "start": 55.23,
+        "seconds": 2.75,
+        "window": 3.27,
+        "fill": 0.841
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.1,
+    "lufs": -15.3,
+    "music_under_voice_db": 25.6
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 16.074,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

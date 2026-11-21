@@ -1,0 +1,171 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:10:00.338153+00:00",
+    "finishedAt": "2026-11-21T20:10:00.338153+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T20:11:22.291091+00:00",
+    "finishedAt": "2026-11-21T20:11:22.291091+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "no `turn` beat: every video has a promise early, a turn about two thirds in, and a payoff that answers the hook",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:11:28.791816+00:00",
+    "finishedAt": "2026-11-21T20:11:28.791816+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T20:12:25.732166+00:00",
+    "finishedAt": "2026-11-21T20:12:25.732166+00:00",
+    "notes": [
+      "Beat 'ring': 'an arm bolts curved concrete pieces into a ring, a tunnel 7.1 metres across' with the diameter bracket spanning the ring is wrong. 7.1 m is the excavated (cutterhead) diameter; the concrete ring is 6.8 m outside and 6.2 m inside (Crossrail Learning Legacy, Machine-driven tunnels on the Elizabeth line; Arup's '7.1m diameter tunnels' means the bored size). Fix: tie {fact3} to the hole the wheel cuts (e.g. 'the wheel cuts a hole 7.1 metres across', bracket on the cutterhead/bore in the wheel beat) or source the 6.2 m internal figure.",
+      "Beat 'forward': 'It pushes off each new ring and creeps forward, for 42 kilometres under central London' says one machine dug 42 km. Arup's 42 km is all the new tunnels together, dug by eight TBMs (about 26 miles total). Fix: e.g. 'Together, the machines dug 42 kilometres of tunnel under central London.'",
+      "Confirmed on the Arup page (WebFetch): 150 m long TBMs, 42 km of new tunnels, '7.1m diameter tunnels', 700 mm between the Elizabeth and Northern line tunnels at Tottenham Court Road, impact assessments on over 17,000 buildings, railways, major utilities and other assets. Description ends with the disclaimer. Note for the redo: Arup says the tunnels were threaded OVER the Northern line, so the 'checked'/'payoff' pictures should put the new tunnel above it, not level beside it."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:13:43.823556+00:00",
+    "finishedAt": "2026-11-21T20:13:43.823556+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:13:50.956955+00:00",
+    "finishedAt": "2026-11-21T20:13:50.956955+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:14:01.818087+00:00",
+    "finishedAt": "2026-11-21T20:14:01.818087+00:00",
+    "notes": [
+      "Re-review after revision: all 5 facts confirmed on the Arup page (150 m TBMs, 42 km of tunnels, 7.1 m diameter, 700 mm to the Northern line at Tottenham Court Road, 17,000+ assets assessed); 7.1 m now tied to the hole the cutterhead cuts (Crossrail Learning Legacy: 7.1 m excavated diameter), 42 km now credited to all the machines together, payoff says 'passed over' as Arup does; description ends with the disclaimer. Note: the fact3 label still reads 'Diameter of the railway tunnels'; 'excavated diameter' would be more exact."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:17:14.747640+00:00",
+    "finishedAt": "2026-11-21T20:17:14.747640+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T20:18:45.681945+00:00",
+    "finishedAt": "2026-11-21T20:21:42.978556+00:00",
+    "notes": [
+      "1.8 s with nothing new on screen in beat 'ring' (at most 1.8 s): add an action on the phrase being said there",
+      "length 63 s is outside 45–60 s: cut about 9 spoken words",
+      "the Short runs 63.1 s but its assigned length (arms.length) is 45-60 s: cut or add a beat",
+      "the hook runs 5.2 s; keep it to 4 s or less"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:22:13.139732+00:00",
+    "finishedAt": "2026-11-21T20:22:13.139732+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T20:22:40.889959+00:00",
+    "finishedAt": "2026-11-21T20:25:15.975169+00:00",
+    "notes": [
+      "1.8 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:25:22.050839+00:00",
+    "finishedAt": "2026-11-21T20:27:37.192995+00:00",
+    "notes": [
+      "59 s, ember/circuit (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:28:28.063471+00:00",
+    "finishedAt": "2026-11-21T20:30:54.269024+00:00",
+    "notes": [
+      "59 s, ember/circuit (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T20:32:06.753174+00:00",
+    "finishedAt": "2026-11-21T20:32:06.753174+00:00",
+    "notes": [
+      "[script] 25.0s (beat belt, Belt.tsx): the words are 'A conveyor carries the' and the 'screw conveyor' label is up, but the frame is filled by the front of the cutterhead, the same close-up as 5.0s (and nearly 15.0s). No screw, belt or clay riding is visible, so the label points at nothing. From 'conveyor', aim the camera at the see-through shield or the belt behind the wheel (a side-on or three-quarter view from behind the wheel) so the screw lifting clay onto the moving belt fills the frame. The caption also sits over the bright wheel rim there, and 'the' is lost."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:32:25.643895+00:00",
+    "finishedAt": "2026-11-21T20:34:50.590253+00:00",
+    "notes": [
+      "59 s, ember/circuit (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:35:03.730370+00:00",
+    "finishedAt": "2026-11-21T20:35:03.730370+00:00",
+    "notes": [
+      "Re-review after the belt fix: at 25.0s the screw conveyor is shown inside the see-through shield under its label, so it no longer repeats the 5.0s cutterhead close-up. 7+ places, figures on things in the scene (brackets, map chip, monitoring screen), the first frame names Crossrail and holds back the 700 mm payoff, the new tunnel sits above the Northern line, the loop matches the first frame, layout and craft checks are empty, audio -1.0/-17.1 dB, the thumbnail is clean."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T20:35:12.476733+00:00",
+    "finishedAt": "2026-11-21T21:24:03.880656+00:00",
+    "notes": [
+      "59 s, ember/circuit, peak -1.0 dB, mean -17.1 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-21T21:24:11.190186+00:00",
+    "finishedAt": "2026-11-21T21:24:11.190186+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
