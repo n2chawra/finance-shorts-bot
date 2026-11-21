@@ -1,0 +1,50 @@
+{
+  "agent": "research",
+  "day": "2026-11-22",
+  "startedAt": "2026-11-21T16:48:48Z",
+  "finishedAt": "2026-11-21T16:53:36Z",
+  "summary": "Sunday competitor teardown (ElonKnows, The Founders Vision) from the market data, one new topic (Musk's jet is SpaceX's; Tesla pays for it) and new evidence for two weekly-loop challengers.",
+  "decision": "acted",
+  "why": "The ElonKnows breakout (72.7K views on 489 subscribers) re-sourced with Tesla's filed figures; McDonald's crew vs CEO is now the channel's most-viewed Short (1,188), evidence for rich-vs-poor-real-people.",
+  "findings": [
+    {
+      "title": "McDonald's crew vs CEO is now our most-viewed Short",
+      "detail": "1,188 views, past 'Why billionaires never sell their stock' (1,121); Disneyland worker vs ticket 986. Both worker-vs-the-top.",
+      "link": "channels/paisa-panchayat/research/2026-11-22.md"
+    },
+    {
+      "title": "No weekly-loop challenger has run since 19 Nov",
+      "detail": "cycle/backlog.json 'running' is empty; the improver should start guess-the-figure.",
+      "link": "channels/paisa-panchayat/cycle/backlog.json"
+    },
+    {
+      "title": "Breakout: why Elon Musk doesn't own his jet",
+      "detail": "72.7K views on 489 subscribers; Tesla paid SpaceX 00K (2023) and 00K (2025) for the jet, and Musk's own security firm .8M (2025).",
+      "link": "https://electrek.co/2026/05/01/tesla-tsla-web-transactions-musk-companies-spacex-xai-10ka-2025/"
+    },
+    {
+      "title": "Claude Code 2.1.330",
+      "detail": "Scheduled tasks and /loop up to 30 days; WebFetch and compaction fixes. Nothing to change.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Topic: Musk's jet belongs to SpaceX",
+      "detail": "secret_of_rich, global, 4 filed facts, score 7.67",
+      "branch": "agent/research/2026-11-22"
+    },
+    {
+      "title": "Evidence for rich-vs-poor-real-people and paradox-title",
+      "detail": "cycle/backlog.json why fields",
+      "branch": "agent/research/2026-11-22"
+    }
+  ],
+  "nextCheck": "2026-11-23",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/paisa-panchayat/research/2026-11-22.md"
+    }
+  ]
+}
