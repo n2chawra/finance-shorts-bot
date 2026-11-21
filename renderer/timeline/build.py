@@ -123,7 +123,7 @@ def _fill(text: str, figures: dict[str, str], where: str) -> str:
 
 # keys whose values name things (an event, an item, a prop, a component) and are never shown: an id
 # like "y1" or "c6-worth" is not a typed number (2026-10-29: six scripts failed on one)
-ID_KEYS = frozenset({"at", "id", "target", "on", "component", "size", "prop", "into", "strike", "lineAt", "who", "kind", "set", "layout",
+ID_KEYS = frozenset({"at", "id", "target", "on", "stamp", "component", "size", "prop", "into", "strike", "lineAt", "who", "kind", "set", "layout",
                      "bg", "color", "tint", "traveller", "pose", "expression", "spot", "where", "from", "to", "tone", "world", "open_at"})
 _IDENT = re.compile(r"^[A-Za-z_][\w-]*$")
 # a doc beat (remotion/src/doc, 2026-11-19): its moments are event names, never shown
@@ -139,12 +139,26 @@ FORM_KEYS = frozenset({"form"})
 FORM_NAME = re.compile(r"^(?:Form )?(?:10-K|10-Q|8-K|S-1|S-4|20-F|40-F|6-K|DEF 14A|13F|SC 13D|SC 13G|Form 4|424B\d)(?:/A)?$")
 
 
+# a dive layer's colours (remotion/src/dive, 2026-11-21): a hex or named colour on the landmark, a tunnel or its
+# trains is paint, not a figure; and a transit line's badge ("4", "7", "S") is the line's name, never a figure
+COLOUR_KEYS = frozenset({"color", "wall", "trim", "glass", "vehicle", "stripe", "light", "trains"})
+COLOUR = re.compile(r"^(?:#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?|[a-z]+)$")
+ROUTE = re.compile(r"^[A-Z0-9]{1,3}$")
+
+
+def _bullets(v) -> bool:
+    """A dive layer's line badges: [[route, colour], ...] such as [["4", "#00933c"], ["S", "gray"]]."""
+    return isinstance(v, list) and all(isinstance(x, list) and len(x) == 2 and isinstance(x[0], str) and isinstance(x[1], str)
+                                       and ROUTE.match(x[0]) and COLOUR.match(x[1]) for x in v)
+
+
 def _verbatim(k: str, v) -> bool:
-    """A param value passed through untouched: an id, a media path, a date or a form name."""
+    """A param value passed through untouched: an id, a media path, a date, a form name or a colour."""
     if not isinstance(v, str):
         return False
     return (k in ID_KEYS and bool(_IDENT.match(v))) or (k in MEDIA_KEYS and bool(MEDIA_PATH.match(v))) \
-        or (k in DATE_KEYS and bool(ISO_DATE.match(v))) or (k in FORM_KEYS and bool(FORM_NAME.match(v)))
+        or (k in DATE_KEYS and bool(ISO_DATE.match(v))) or (k in FORM_KEYS and bool(FORM_NAME.match(v))) \
+        or (k in COLOUR_KEYS and bool(COLOUR.match(v)))
 
 
 def _resolve(value, figures: dict[str, str], results: dict, where: str):
@@ -166,8 +180,8 @@ def _resolve(value, figures: dict[str, str], results: dict, where: str):
     if isinstance(value, list):
         return [_resolve(v, figures, results, f"{where}[{i}]") for i, v in enumerate(value)]
     if isinstance(value, dict):
-        return {k: v if _verbatim(k, v) else [x if _verbatim(k, x) else _resolve(x, figures, results, f"{where}.{k}[{i}]") for i, x in enumerate(v)]
-                if k in MEDIA_KEYS and isinstance(v, list) else _resolve(v, figures, results, f"{where}.{k}")
+        return {k: v if _verbatim(k, v) or (k == "bullets" and _bullets(v)) else [x if _verbatim(k, x) else _resolve(x, figures, results, f"{where}.{k}[{i}]") for i, x in enumerate(v)]
+                if (k in MEDIA_KEYS or k in COLOUR_KEYS) and isinstance(v, list) else _resolve(v, figures, results, f"{where}.{k}")
                 for k, v in value.items()}
     return value
 

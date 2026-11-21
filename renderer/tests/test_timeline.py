@@ -377,3 +377,15 @@ def test_owner_pace_note_speeds_up_a_channels_own_short_voice(monkeypatch):
     assert pack.voice_speed("short", "geography-maps-geopolitical-mysteries") == 0.92
     monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 1.1}})
     assert pack.voice_speed("short", tech) == 1.1          # the owner's own faster setting wins
+
+
+def test_dive_colours_and_line_badges_are_not_typed_figures():
+    """A dive layer's paint ("#00933c") and its line badges ("4", "S") are names, not figures (2026-11-21)."""
+    from renderer.timeline.build import _resolve
+    layer = {"kind": "tunnel", "stripe": "#00933c", "wall": "#efe3c8", "trains": ["#d23b3b", "royalblue"],
+             "bullets": [["4", "#00933c"], ["S", "gray"]], "label": "Lexington"}
+    assert _resolve(layer, {}, {}, "x") == layer
+    with pytest.raises(ValueError):
+        _resolve({"label": "Line 4"}, {}, {}, "x")
+    with pytest.raises(ValueError):
+        _resolve({"bullets": [["105 ft", "gray"]]}, {}, {}, "x")
