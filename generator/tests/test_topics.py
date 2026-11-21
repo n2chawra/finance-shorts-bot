@@ -241,3 +241,18 @@ def test_plan_demand_from_a_giant_channel_fails():
     assert any("audience, not demand" in p for p in formats.check_plan(giant))
     small = {**base, "demand": {**base["demand"], "channelSubs": 50_000}}
     assert not any("audience" in p for p in formats.check_plan(small))
+
+
+def test_a_rising_reference_lifts_its_topic() -> None:
+    """Owner, 2026-11-19 (tech channel): "choose topics which are gaining traction"."""
+    from generator.topics import score_parts, traction
+    assert traction({"viewsPerDay": 10_000, "ageDays": 5}) == 0.3
+    assert traction({"viewsPerDay": 100_000, "ageDays": 5}) == 0.7
+    assert traction({"viewsPerDay": 542_329, "ageDays": 8.9}) == 1.0
+    assert traction({"viewsPerDay": 100_000, "ageDays": 60}) == 0.35      # half-faded between 30 and 90 days
+    assert traction({"viewsPerDay": 500_000, "ageDays": 120}) == 0.0
+    assert traction({"views": 4_000_000}) == 0.0 and traction(None) == 0.0
+    base = {"id": "x", "found": "2026-11-20", "demand": {"views": 2_000_000}}
+    rising = {**base, "demand": {"views": 2_000_000, "viewsPerDay": 245_193, "ageDays": 17.4}}
+    assert "traction" not in score_parts(base, "2026-11-21")
+    assert sum(score_parts(rising, "2026-11-21").values()) > sum(score_parts(base, "2026-11-21").values())
