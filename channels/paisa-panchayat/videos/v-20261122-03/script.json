@@ -1,0 +1,762 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52288,
+  "story": "money_scale",
+  "shape": "the-two-pizzas",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "lofi",
+    "key": "D",
+    "bpm": 88,
+    "look": {
+      "stage": "kitchen",
+      "header": "chalk",
+      "holder": "box",
+      "entrance": "pop"
+    }
+  },
+  "arms": {
+    "length": "28-35",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "22"
+  },
+  "hook_style": "myth",
+  "cta": "The pizza or the coins: which would you have kept? Comment",
+  "feed_id": "2026-11-19-two-pizzas-for-10000-bitcoin",
+  "facts": [
+    {
+      "label": "Bitcoin Laszlo Hanyecz paid for the pizzas in May 2010",
+      "value": 10000,
+      "unit": "count",
+      "as_of": "2010-05-22",
+      "source": "Cointelegraph",
+      "url": "https://cointelegraph.com/news/bitcoin-pizza-day-those-10k-btc-worth-today"
+    },
+    {
+      "label": "Papa John's pizzas bought",
+      "value": 2,
+      "unit": "count",
+      "as_of": "2010-05-22",
+      "source": "Cointelegraph",
+      "url": "https://cointelegraph.com/news/bitcoin-pizza-day-those-10k-btc-worth-today"
+    },
+    {
+      "label": "Value of the 10,000 bitcoin in May 2010",
+      "value": 41,
+      "unit": "money",
+      "currency": "USD",
+      "as_of": "2010-05-22",
+      "source": "Cointelegraph",
+      "url": "https://cointelegraph.com/news/bitcoin-pizza-day-those-10k-btc-worth-today"
+    },
+    {
+      "label": "Value of the 10,000 bitcoin on 22 May 2026 (more than)",
+      "value": 767,
+      "unit": "money_million",
+      "currency": "USD",
+      "as_of": "2026-05-22",
+      "source": "Cointelegraph",
+      "url": "https://cointelegraph.com/news/bitcoin-pizza-day-those-10k-btc-worth-today"
+    }
+  ],
+  "maths": [
+    {
+      "name": "then",
+      "kind": "share",
+      "total": 41,
+      "parts": 2,
+      "facts": {
+        "total": 3,
+        "parts": 2
+      }
+    },
+    {
+      "name": "now",
+      "kind": "share",
+      "total": 767000000,
+      "parts": 2,
+      "facts": {
+        "total": 4,
+        "parts": 2
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 3.2,
+    "words": "What did they *cost*?",
+    "figure": "{fact2}",
+    "tag": "Two pizzas",
+    "angle": "number",
+    "who": "rohan"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Laszlo Hanyecz paid for {fact2} pizzas with bitcoin. So what did they really cost him?",
+      "events": {
+        "laszlo": {
+          "word": "Laszlo"
+        },
+        "paid": {
+          "word": "paid"
+        },
+        "pizzas": {
+          "word": "pizzas"
+        },
+        "bitcoin": {
+          "word": "bitcoin"
+        },
+        "cost": {
+          "word": "cost"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "laszlo"
+        },
+        {
+          "kind": "whoosh",
+          "at": "paid"
+        },
+        {
+          "kind": "ding",
+          "at": "bitcoin"
+        },
+        {
+          "kind": "boom",
+          "at": "cost"
+        }
+      ],
+      "params": {
+        "component": "Hook",
+        "place": "a small apartment doorway at night, a pizza delivery",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "bitcoin",
+            "size": "wide"
+          },
+          {
+            "at": "cost",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "laszlo",
+            "what": "Laszlo opens the door to a Papa John's driver holding two steaming pizza boxes, sent by the stranger"
+          },
+          {
+            "at": "paid",
+            "what": "on his laptop a chat window shows his offer, and coins fly from it to a stranger's avatar"
+          },
+          {
+            "at": "pizzas",
+            "what": "the two boxes slide into his arms, steam curling up"
+          },
+          {
+            "at": "bitcoin",
+            "what": "a gold bitcoin coin spins up on the laptop screen behind him"
+          },
+          {
+            "at": "cost",
+            "what": "a price tag with a question mark drops onto the top box"
+          }
+        ],
+        "things": [
+          "apartment door",
+          "Papa John's driver",
+          "two pizza boxes",
+          "laptop",
+          "price tag"
+        ],
+        "fig": {}
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "He paid {fact1} coins, the first real purchase ever made with bitcoin.",
+      "events": {
+        "he": {
+          "word": "He"
+        },
+        "coins": {
+          "word": "coins"
+        },
+        "first": {
+          "word": "first"
+        },
+        "purchase": {
+          "word": "purchase"
+        },
+        "made": {
+          "word": "made"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "he"
+        },
+        {
+          "kind": "kaching",
+          "at": "coins"
+        },
+        {
+          "kind": "pop",
+          "at": "first"
+        }
+      ],
+      "params": {
+        "component": "Promise",
+        "place": "a small apartment doorway at night, a pizza delivery",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "coins",
+            "size": "medium"
+          },
+          {
+            "at": "made",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "he",
+            "what": "the camera pushes past the boxes to the laptop on the hall table"
+          },
+          {
+            "at": "coins",
+            "what": "a counter on the laptop rolls up the coin count as coins pour out of the screen"
+          },
+          {
+            "at": "first",
+            "what": "a FIRST ribbon stamps on the laptop"
+          },
+          {
+            "at": "purchase",
+            "what": "the receipt prints out of the laptop"
+          },
+          {
+            "at": "made",
+            "what": "the camera pulls back over the hall, coins piled at Laszlo's feet"
+          }
+        ],
+        "things": [
+          "laptop",
+          "coin counter",
+          "bitcoin coins",
+          "receipt",
+          "pizza boxes"
+        ],
+        "fig": {
+          "coins": "{fact1}"
+        }
+      },
+      "transition": "match"
+    },
+    {
+      "id": "then",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Back then, all those coins were worth about {fact3}.",
+      "events": {
+        "back": {
+          "word": "Back"
+        },
+        "all": {
+          "word": "all"
+        },
+        "coins": {
+          "word": "coins"
+        },
+        "worth": {
+          "word": "worth"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "back"
+        },
+        {
+          "kind": "whoosh",
+          "at": "coins"
+        },
+        {
+          "kind": "kaching",
+          "at": "worth"
+        }
+      ],
+      "params": {
+        "component": "Then",
+        "place": "an old desk with a boxy computer monitor showing a price page",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "worth",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "back",
+            "what": "a calendar on the wall flips back to May"
+          },
+          {
+            "at": "all",
+            "what": "the coins pile into a glass jar on the desk"
+          },
+          {
+            "at": "coins",
+            "what": "the jar fills to the brim"
+          },
+          {
+            "at": "worth",
+            "what": "the monitor's price page lands on the figure"
+          }
+        ],
+        "things": [
+          "wall calendar",
+          "boxy monitor",
+          "glass jar of coins",
+          "desk lamp"
+        ],
+        "fig": {
+          "then": "{fact3}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "slice",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "That's about {then_per_part} a pizza. A fair deal?",
+      "events": {
+        "thats": {
+          "word": "That's"
+        },
+        "pizza": {
+          "word": "pizza"
+        },
+        "fair": {
+          "word": "fair"
+        },
+        "deal": {
+          "word": "deal"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "thats"
+        },
+        {
+          "kind": "kaching",
+          "at": "pizza"
+        },
+        {
+          "kind": "ding",
+          "at": "fair"
+        }
+      ],
+      "params": {
+        "component": "Slice",
+        "place": "the kitchen table, two open pizza boxes under a lamp",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "fair",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "thats",
+            "what": "a price tag stamps onto the first pizza"
+          },
+          {
+            "at": "pizza",
+            "what": "a second price tag stamps onto the other pizza"
+          },
+          {
+            "at": "fair",
+            "what": "Laszlo takes a slice, cheese stretching"
+          },
+          {
+            "at": "deal",
+            "what": "he gives a thumbs up"
+          }
+        ],
+        "things": [
+          "kitchen table",
+          "two pizzas",
+          "price tags",
+          "slice of pizza",
+          "laszlo"
+        ],
+        "fig": {
+          "each": "{then_per_part}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "climb",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Bitcoin soared, crashed and soared again. So what were those coins worth later?",
+      "events": {
+        "bitcoin": {
+          "word": "Bitcoin"
+        },
+        "soared": {
+          "word": "soared"
+        },
+        "crashed": {
+          "word": "crashed"
+        },
+        "again": {
+          "word": "again"
+        },
+        "later": {
+          "word": "later"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "bitcoin"
+        },
+        {
+          "kind": "riser",
+          "at": "soared"
+        },
+        {
+          "kind": "boom",
+          "at": "crashed"
+        },
+        {
+          "kind": "riser",
+          "at": "again"
+        },
+        {
+          "kind": "ding",
+          "at": "later"
+        }
+      ],
+      "params": {
+        "component": "Climb",
+        "place": "a city at night, a giant price line zig-zagging up a skyscraper",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "crashed",
+            "size": "medium"
+          },
+          {
+            "at": "later",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "bitcoin",
+            "what": "a gold line starts at the foot of a skyscraper"
+          },
+          {
+            "at": "soared",
+            "what": "the line shoots up the tower"
+          },
+          {
+            "at": "crashed",
+            "what": "it plunges down several floors, windows flashing red"
+          },
+          {
+            "at": "again",
+            "what": "it shoots up again past the roof"
+          },
+          {
+            "at": "later",
+            "what": "a giant bitcoin coin rises over the skyline like a moon"
+          }
+        ],
+        "things": [
+          "skyscraper",
+          "zig-zag price line",
+          "red windows",
+          "bitcoin moon",
+          "night city"
+        ],
+        "fig": {}
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "turn",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "On Pizza Day this year, the same coins were worth more than {fact4}.",
+      "events": {
+        "pizza": {
+          "word": "Pizza"
+        },
+        "same": {
+          "word": "same"
+        },
+        "coins": {
+          "word": "coins"
+        },
+        "more": {
+          "word": "more"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "pizza"
+        },
+        {
+          "kind": "whoosh",
+          "at": "same"
+        },
+        {
+          "kind": "kaching",
+          "at": "more"
+        }
+      ],
+      "params": {
+        "component": "Vault",
+        "place": "a huge bank vault, the coins piled into a golden mountain",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "more",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "pizza",
+            "what": "the vault door swings open, a PIZZA DAY banner over it"
+          },
+          {
+            "at": "same",
+            "what": "the same jar of coins tips over"
+          },
+          {
+            "at": "coins",
+            "what": "the coins swell into a golden mountain filling the vault"
+          },
+          {
+            "at": "more",
+            "what": "the vault's counter lands on the figure"
+          }
+        ],
+        "things": [
+          "vault door",
+          "pizza day banner",
+          "coin jar",
+          "golden mountain of coins",
+          "vault counter"
+        ],
+        "fig": {
+          "now": "{fact4}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "That's over {now_per_part} for each pizza.",
+      "events": {
+        "over": {
+          "word": "over"
+        },
+        "each": {
+          "word": "each"
+        },
+        "pizza": {
+          "word": "pizza"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "riser",
+          "at": "over"
+        },
+        {
+          "kind": "boom",
+          "at": "each"
+        },
+        {
+          "kind": "ding",
+          "at": "pizza"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "place": "an auction stage under a spotlight, one pizza box on a pedestal",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "each",
+            "size": "close"
+          },
+          {
+            "at": "pizza",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "over",
+            "what": "the spotlight hits one pizza box on a velvet pedestal"
+          },
+          {
+            "at": "each",
+            "what": "a giant price tag stamps onto the box"
+          },
+          {
+            "at": "pizza",
+            "what": "the crowd of bidders gasps and the second box rolls in beside it"
+          }
+        ],
+        "things": [
+          "auction stage",
+          "velvet pedestal",
+          "pizza box",
+          "giant price tag",
+          "bidders"
+        ],
+        "fig": {
+          "each": "{now_per_part}"
+        }
+      },
+      "transition": "cut"
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "Pizza or coins: which would you keep? He chose pizza.",
+      "events": {
+        "pizza": {
+          "word": "Pizza"
+        },
+        "coins": {
+          "word": "coins"
+        },
+        "keep": {
+          "word": "keep"
+        },
+        "chose": {
+          "word": "chose"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "pizza"
+        },
+        {
+          "kind": "pop",
+          "at": "coins"
+        },
+        {
+          "kind": "ding",
+          "at": "keep"
+        },
+        {
+          "kind": "whoosh",
+          "at": "chose"
+        }
+      ],
+      "params": {
+        "component": "Loop",
+        "place": "back at the apartment doorway at night",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "chose",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "pizza",
+            "what": "a pizza box floats up on the left"
+          },
+          {
+            "at": "coins",
+            "what": "a pile of bitcoin coins floats up on the right"
+          },
+          {
+            "at": "keep",
+            "what": "a question mark pops between them"
+          },
+          {
+            "at": "chose",
+            "what": "Laszlo takes the pizza boxes at the door as the driver arrives again"
+          }
+        ],
+        "things": [
+          "apartment door",
+          "pizza box",
+          "bitcoin coins",
+          "question mark",
+          "laszlo"
+        ],
+        "fig": {}
+      },
+      "transition": "cut"
+    }
+  ],
+  "narrator": "am_michael"
+}
