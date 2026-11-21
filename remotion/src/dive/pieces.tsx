@@ -99,7 +99,14 @@ export const ScreenCounter: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) =
   if (!live) return null;
   const c = live.L.spec.counter!;
   const k = ramp(g, live.t0 - 3, live.t0 + 18);
-  return <Display x={420} y={230} w={500} h={300} label={c.label ?? ""} value={countText(live.L.fig[c.fig]!, k)} color={w.look.accent} k={k} />;
+  // a long unit word goes up into the label ("110,000 tonnes" ran off the display, 2026-11-21), and the number
+  // is sized to fit the display's width
+  const fig = live.L.fig[c.fig]!;
+  const unit = fig.match(/\s+([A-Za-z]{4,})$/)?.[1];
+  const value = unit ? fig.slice(0, fig.length - unit.length).trim() : fig;
+  const label = unit ? `${c.label ?? ""} · ${unit.toUpperCase()}`.replace(/^ · /, "") : c.label ?? "";
+  const W = 560, h = Math.min(300, (W - 60) / (0.62 * Math.max(1, value.length)) / 0.52);
+  return <Display x={930 - W} y={230} w={W} h={h} label={label} value={countText(value, k)} color={w.look.accent} k={k} />;
 };
 
 // ------------------------------------------------------------------ the ground
@@ -283,9 +290,15 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
   const yb = w.Y(L.ft) + 150;
   const x0 = 90, x1 = 990, h = s.type === "utility" ? 240 : 320;
   const light = s.light ?? look.light;
-  const run = ramp(g, L.land - 6, L.land + 66);
+  // the train pulls in on its word, stands at the platform while its line is said, and leaves before the
+  // next layer (2026-11-21: one 2.4 s run-through left the tunnel empty in most frames, QA on Hampstead)
   const dir = s.dir ?? 1;
-  const tx = dir === 1 ? -1400 + run * 2700 : 1100 - run * 2700;
+  const arrive = ramp(g, L.land - 6, L.land + 40);
+  const go = Math.max(L.land + 60, L.until - 26);
+  const leave = ramp(g, go, go + 40);
+  const ea = 1 - Math.pow(1 - arrive, 3), el = leave * leave;
+  const STOP = -150;
+  const tx = dir === 1 ? -1400 + (STOP + 1400) * ea + 1500 * el : 1100 - (1100 - STOP) * ea - 1500 * el;
   const id = `dive-tun-${Math.round(L.ft)}-${L.beat}`;
   const road = s.type === "road";
   return (
@@ -353,7 +366,8 @@ export const Chamber: React.FC<PieceProps> = ({ L, w, g }) => {
       {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land)} /> : null}
       {!s.label && depthLabel(L, w) ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8)} rot={3} /></Legible> : null}
       {has("blueprint") && plans > 0 ? (
-        <g opacity={plans} transform={`rotate(6 760 ${yb - h - 60})`}>
+        // over the room's roof, or inside it when the room has a sign up there (it hid North End's depth, 2026-11-21)
+        <g opacity={plans} transform={`${s.label ? "translate(-380 300) " : ""}rotate(6 760 ${yb - h - 60})`}>
           <Block x={600} y={yb - h - 170} w={330} h={220} fill="#2f6db3" r={6} shadow="bottom" />
           {[1, 2, 3, 4].map((k) => <line key={k} x1={600} x2={930} y1={yb - h - 170 + k * 44} y2={yb - h - 170 + k * 44} stroke="#5f97d6" strokeWidth={3} />)}
           <rect x={640} y={yb - h - 140} width={250} height={150} fill="none" stroke="#e8f2ff" strokeWidth={5} strokeDasharray="18 14" />
@@ -450,7 +464,7 @@ export const Foundation: React.FC<PieceProps> = ({ L, w, g }) => {
         const wd = type === "caissons" ? 150 : 46;
         return <Block key={i} x={x - wd / 2} y={yTop} w={wd} h={Math.max(10, yb - yTop)} fill={c} r={type === "caissons" ? 20 : 4} shadow="right" sw={5} />;
       })}
-      <Legible x={330} y={yBot + 20} w={420} h={96} size={57}><Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} /></Legible>
+      {depthLabel(L, w) ? <Legible x={330} y={yBot + 20} w={420} h={96} size={57}><Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} /></Legible> : null}
       {s.label ? <Legible x={140} y={yBot + 140} w={800} h={60} size={46}><Txt x={540} y={yBot + 170} size={46} fill={look.paper} weight={800}>{s.label.toUpperCase()}</Txt></Legible> : null}
     </g>
   );
