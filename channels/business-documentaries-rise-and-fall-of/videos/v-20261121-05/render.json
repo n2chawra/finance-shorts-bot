@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 51377,
+  "duration_sec": 48,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "ledger",
+    "key": "D",
+    "bpm": 78
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Nokia was in every pocket. So why did Microsoft pay billions for it?",
+        "start": 0.3,
+        "seconds": 3.19,
+        "window": 3.8,
+        "fill": 0.839
+      },
+      {
+        "scene": "price",
+        "text": "And Microsoft didn't buy it cheap. It paid €5.44B for the phones and the patents.",
+        "start": 4.1,
+        "seconds": 4.91,
+        "window": 5.57,
+        "fill": 0.882
+      },
+      {
+        "scene": "split",
+        "text": "€3.79B bought the phone business itself. The other €1.65B paid to use Nokia's patents. So what were those phones really worth?",
+        "start": 9.67,
+        "seconds": 8.15,
+        "window": 8.77,
+        "fill": 0.929
+      },
+      {
+        "scene": "staff",
+        "text": "About 32,000 Nokia staff were set to move over with it, from a company born in Finland.",
+        "start": 18.43,
+        "seconds": 4.04,
+        "window": 4.7,
+        "fill": 0.86
+      },
+      {
+        "scene": "lumia",
+        "text": "But Nokia's smartphones, the Lumias, ran Windows Phone. Not Android, and not the iPhone's system. So who would buy them?",
+        "start": 23.13,
+        "seconds": 5.38,
+        "window": 6.03,
+        "fill": 0.892
+      },
+      {
+        "scene": "turn",
+        "text": "Two summers later, Microsoft stopped trying to grow a phone business of its own. It cut 7,800 jobs, mostly in phones.",
+        "start": 29.17,
+        "seconds": 5.92,
+        "window": 6.6,
+        "fill": 0.897
+      },
+      {
+        "scene": "payoff",
+        "text": "Then it wrote $7.6B off its books, on the phone business it had bought just two years before.",
+        "start": 35.77,
+        "seconds": 4.76,
+        "window": 5.4,
+        "fill": 0.881
+      },
+      {
+        "scene": "ending",
+        "text": "Nokia or iPhone: which was your first phone? The one in your hand runs Android or Apple's system. Before them, it was this.",
+        "start": 41.17,
+        "seconds": 5.79,
+        "window": 6.47,
+        "fill": 0.895
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.3,
+    "lufs": -16.5,
+    "music_under_voice_db": 17.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 5.885,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

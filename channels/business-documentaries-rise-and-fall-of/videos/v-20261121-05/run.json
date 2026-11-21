@@ -1,0 +1,227 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:39:24.467088+00:00",
+    "finishedAt": "2026-11-21T00:39:24.467088+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:39:53.359338+00:00",
+    "finishedAt": "2026-11-21T00:39:53.359338+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:44:18.506145+00:00",
+    "finishedAt": "2026-11-21T00:44:18.506145+00:00",
+    "notes": [
+      "beat 'hook'.params.things[0] contains a typed number; use a placeholder: 'Nokia 3310'",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'Nokia Was in Every Pocket. Microsoft Bought It Anyway' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:44:24.692524+00:00",
+    "finishedAt": "2026-11-21T00:44:24.692524+00:00",
+    "notes": [
+      "beat 'price'.params.place[0] contains a typed number; use a placeholder: \"Microsoft's 2013 deal announcement\"",
+      "note: the title 'Nokia Was in Every Pocket. Microsoft Bought It Anyway' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:44:28.889335+00:00",
+    "finishedAt": "2026-11-21T00:44:28.889335+00:00",
+    "notes": [
+      "beat 'turn'.say contains a typed number; use a placeholder: 'In July 2015, Microsoft gave up. It cut {fact6} jobs, most of them in phones.'",
+      "note: the title 'Nokia Was in Every Pocket. Microsoft Bought It Anyway' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:44:33.837192+00:00",
+    "finishedAt": "2026-11-21T00:44:33.837192+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Nokia Was in Every Pocket. Microsoft Bought It Anyway' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:46:01.511182+00:00",
+    "finishedAt": "2026-11-21T00:46:01.511182+00:00",
+    "notes": [
+      "payoff: 'nearly the whole price of the deal' is an uncomputed comparison across currencies and is wrong by the sources: TechCrunch puts the deal at $7.2B (EUR 5.44B), so the $7.6B write-down is MORE than the whole price, and far more than the EUR 3.79B phone part. Drop the comparison or compute it in code from a sourced USD price (e.g. the 10-K's final purchase price).",
+      "payoff: '$7.6B ... gone in two years' presents an impairment as money lost; the topic's verify item says it was goodwill/asset impairment (TechCrunch: 'goodwill impairment'), not cash. Say it was written off the books, not 'gone'.",
+      "hook + title-adjacent line 'Microsoft bought it, and two years later, gone' and turn 'Microsoft gave up': in July 2015 the phone business was not gone; Nadella said Microsoft would 'run a more effective and focused phone portfolio' and was 'moving from a strategy to grow a standalone phone business' (TechCrunch). Lumias kept selling into 2016-17. Reword to what the source says (stopped trying to grow a standalone phone business; wrote it down).",
+      "Confirmed: EUR 5.44B total, EUR 3.79B Devices & Services, EUR 1.65B patent licence, ~32,000 staff (Microsoft press release page, opened); $7.6B write-down and 7,800 cuts primarily in phones (TechCrunch page, opened). Note: 'in every pocket' (hook, title) is an unsourced market-share hyperbole the topic's verify list warns about; soften or source it. Description ends with the disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:45:09.106291+00:00",
+    "finishedAt": "2026-11-21T00:46:05.996448+00:00",
+    "notes": [
+      "5 of 11 stills are mostly empty background (at 5 s, 10 s, 15 s, 35 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:46:42.737552+00:00",
+    "finishedAt": "2026-11-21T00:46:42.737552+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Nokia Was in Every Pocket. Microsoft Bought It Anyway' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:46:50.285786+00:00",
+    "finishedAt": "2026-11-21T00:46:50.285786+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Nokia Was in Every Pocket. Microsoft Bought It Anyway' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:47:17.526745+00:00",
+    "finishedAt": "2026-11-21T00:47:17.526745+00:00",
+    "notes": [
+      "script.json thumbnail.words 'Bought. Then *gone*' repeats the claim the narration dropped: in July 2015 the phone business was not gone (Nadella, TechCrunch: a 'more effective and focused phone portfolio'), and the $7.6B was a write-down, not money gone. Use e.g. 'Bought. Then *written off*'.",
+      "plan.json description line 1 'why was it gone two years later?' carries the same claim. Reword, e.g. 'and why did it write the business down two years later?'.",
+      "Narration revisions are correct and confirmed: hook 'then wrote it off', turn 'stopped trying to grow a phone business of its own' (matches Nadella's 'moving from a strategy to grow a standalone phone business'), payoff '$7.6B off its books' with no cross-currency comparison. Facts re-confirmed: EUR 5.44B/3.79B/1.65B and ~32,000 staff (Microsoft press release, opened); $7.6B write-down and 7,800 cuts primarily in phones (TechCrunch, opened). Description ends with the disclaimer. Note only: 'in every pocket' (hook, title, hook label) is hyperbole, not a sourced share figure."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:46:57.660429+00:00",
+    "finishedAt": "2026-11-21T00:47:21.745070+00:00",
+    "notes": [
+      "2 of 11 stills are mostly empty background (at 10 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:47:32.823142+00:00",
+    "finishedAt": "2026-11-21T00:47:32.823142+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:47:33.774024+00:00",
+    "finishedAt": "2026-11-21T00:47:33.774024+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Nokia Was in Every Pocket. Microsoft Bought It Anyway' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:47:47.544735+00:00",
+    "finishedAt": "2026-11-21T00:47:47.544735+00:00",
+    "notes": [
+      "Re-review: thumbnail 'Bought, written off' and description 'write the business down two years later' now match the sources (TechCrunch goodwill impairment; Nadella's focused phone portfolio); no 'gone' left in script or plan. All 6 facts confirmed on the Microsoft press release and TechCrunch pages; disclaimer ends the description. Note: 'in every pocket' is hyperbole, not a share figure."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:47:40.437656+00:00",
+    "finishedAt": "2026-11-21T00:48:00.498048+00:00",
+    "notes": [
+      "48 s, night/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T00:48:55.524256+00:00",
+    "finishedAt": "2026-11-21T00:48:55.524256+00:00",
+    "notes": [
+      "[script] 0.0s hook: the first spoken sentence 'Microsoft bought it, then wrote it off.' plus the hook's red WRITTEN OFF stamp and the thumbnail words 'Bought, written off' give away the payoff's twist (the write-off) in the first seconds (check 6). openings.json picked C precisely because it held back the ending, then the spoken line put it back. Keep the write-off for the payoff: e.g. 'Nokia was in every pocket. So why did Microsoft buy it?' and drop the WRITTEN OFF stamp from the hook and the thumbnail.",
+      "[script] 15.0s split beat: the 'The patents / licensed, not bought' label sits on the donut and covers the left of the €3.79B figure and its 'the phone business' sub-label, and the caption 'USE NOKIA'S' sits on the donut legend ('Phone business / Patents'), text over text (check 1). The €3.79B centre figure is also faint gold on the beige photo (check 3). Move the label clear of the donut (or drop it and let the legend name the patents), give the donut its plate or a darker grade so the figure reads.",
+      "[script] 25.0s lumia beat: the 'WINDOWS PHONE' arrow label is small red text on the red-and-blue flower wallpaper and is hard to read (check 3); put it on a plate or point to the screen from the dark bezel."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:49:23.894244+00:00",
+    "finishedAt": "2026-11-21T00:49:23.894244+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Nokia Was in Every Pocket. Microsoft Bought It Anyway' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:49:31.570360+00:00",
+    "finishedAt": "2026-11-21T00:49:51.651263+00:00",
+    "notes": [
+      "48 s, night/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:50:03.235309+00:00",
+    "finishedAt": "2026-11-21T00:50:03.235309+00:00",
+    "notes": [
+      "Re-review after fixes: hook now names Nokia and Microsoft and asks why it paid billions, write-off held for the 40s payoff poster ($7.6B); split beat's €3.79B reads clearly on the darker grade with a LICENSED stamp, no text over text; plated Windows Phone label readable at 25s; every still a real thing on its line, loop back to the 3310, thumbnail 'Microsoft bought this' gives nothing away; layout/craft empty, audio -1.0/-18.3 dB, 48 s in the channel's 30-55 s band."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:50:22.674314+00:00",
+    "finishedAt": "2026-11-21T00:50:22.674314+00:00",
+    "notes": [
+      "All 6 facts confirmed on source pages: Microsoft 2013-09-03 release (EUR 5.44B total in cash, EUR 3.79B D&S, EUR 1.65B patent licence, ~32,000 staff expected to transfer); TechCrunch 2015-07-08 ($7.6B erased from books on the Nokia hardware purchase, 7,800 layoffs primarily in phones, Nadella: moving from a strategy to grow a standalone phone business). Verify list met: euros labelled, 'wrote off its books' for the impairment, no numeric market-share claim. New hook/title/thumbnail/labels checked: 'in every pocket' read as idiom for Nokia's era as top phone maker; 'pay billions for it' clarified next beat as phones + patents. Disclaimer ends description. Notes: title/hook 'it' could read as all of Nokia (Microsoft bought only the phone business; patents licensed); the hook's 'why' is not answered explicitly; plan cta and script cta differ slightly."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:50:11.719581+00:00",
+    "finishedAt": "2026-11-21T00:53:33.803954+00:00",
+    "notes": [
+      "48 s, night/ledger, peak -1.0 dB, mean -18.3 dB",
+      "warning: integrated loudness -16.5 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "warning: the music sits only 17.8 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-21T00:53:40.787903+00:00",
+    "finishedAt": "2026-11-21T00:53:40.787903+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

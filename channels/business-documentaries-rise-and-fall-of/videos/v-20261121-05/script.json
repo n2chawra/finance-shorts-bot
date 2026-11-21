@@ -1,0 +1,1126 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 51377,
+ "story": "rise_fall_short",
+ "shape": "before-after",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "ledger",
+  "key": "D",
+  "bpm": 78
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "conflict",
+ "cta": "Nokia or iPhone: which was your first phone? Comment",
+ "feed_id": "2026-11-21-microsoft-nokia-short",
+ "facts": [
+  {
+   "label": "Microsoft's total price for Nokia's phone business and patents",
+   "value": 5.44,
+   "unit": "money_billion",
+   "currency": "EUR",
+   "as_of": "2013-09-03",
+   "source": "Microsoft",
+   "url": "https://news.microsoft.com/source/2013/09/03/microsoft-to-acquire-nokias-devices-services-business-license-nokias-patents-and-mapping-services/",
+   "fixed": true
+  },
+  {
+   "label": "Part of that price for Nokia's Devices & Services business",
+   "value": 3.79,
+   "unit": "money_billion",
+   "currency": "EUR",
+   "as_of": "2013-09-03",
+   "source": "Microsoft",
+   "url": "https://news.microsoft.com/source/2013/09/03/microsoft-to-acquire-nokias-devices-services-business-license-nokias-patents-and-mapping-services/",
+   "fixed": true
+  },
+  {
+   "label": "Part of that price to license Nokia's patents",
+   "value": 1.65,
+   "unit": "money_billion",
+   "currency": "EUR",
+   "as_of": "2013-09-03",
+   "source": "Microsoft",
+   "url": "https://news.microsoft.com/source/2013/09/03/microsoft-to-acquire-nokias-devices-services-business-license-nokias-patents-and-mapping-services/",
+   "fixed": true
+  },
+  {
+   "label": "Nokia employees expected to move to Microsoft",
+   "value": 32000,
+   "unit": "count",
+   "as_of": "2013-09-03",
+   "source": "Microsoft",
+   "url": "https://news.microsoft.com/source/2013/09/03/microsoft-to-acquire-nokias-devices-services-business-license-nokias-patents-and-mapping-services/",
+   "fixed": true
+  },
+  {
+   "label": "Microsoft's write-off on the Nokia phone business",
+   "value": 7.6,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2015-07-08",
+   "source": "TechCrunch",
+   "url": "https://techcrunch.com/2015/07/08/microsoft-writes-down-7-6b-of-its-nokia-acquisition-announces-7800-layoffs",
+   "fixed": true
+  },
+  {
+   "label": "Jobs Microsoft cut, mostly in phones",
+   "value": 7800,
+   "unit": "count",
+   "as_of": "2015-07-08",
+   "source": "TechCrunch",
+   "url": "https://techcrunch.com/2015/07/08/microsoft-writes-down-7-6b-of-its-nokia-acquisition-announces-7800-layoffs",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.5,
+  "words": "Microsoft bought *this*",
+  "figure": "{fact1}",
+  "tag": "Microsoft paid",
+  "angle": "number"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "doc",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Nokia was in every pocket. So why did Microsoft pay billions for it?",
+   "events": {
+    "nokia": {
+     "word": "Nokia"
+    },
+    "pocket": {
+     "word": "pocket"
+    },
+    "microsoft": {
+     "word": "Microsoft"
+    },
+    "billions": {
+     "word": "billions"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "pocket"
+    },
+    {
+     "kind": "boom",
+     "at": "microsoft"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Nokia phone, up close",
+     "Nokia phones in hands around the world",
+     "Microsoft's campus in Redmond"
+    ],
+    "things": [
+     "an old Nokia phone",
+     "Nokia phones",
+     "Microsoft sign"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "pocket",
+      "size": "medium"
+     },
+     {
+      "at": "microsoft",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nokia",
+      "what": "a label: Nokia"
+     },
+     {
+      "at": "pocket",
+      "what": "a punch montage of Nokia phones"
+     },
+     {
+      "at": "microsoft",
+      "what": "cut to Microsoft's campus sign"
+     },
+     {
+      "at": "billions",
+      "what": "a stamp slams: SOLD"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-3310-front-0cfb97cf.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "pocket"
+     },
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "every": 8,
+      "grade": "doc",
+      "at": "pocket",
+      "out": "microsoft",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-m-pesa-on-nokia-1100-20120430-d42d2cdf.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-1100-20140624-6a71b53a.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-n92-40d66ccd.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-3310-blue-58c5ecaf.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       }
+      ]
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-building92microsoft-8b433d9f.jpg",
+      "focus": [
+       0.25,
+       0.75
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "microsoft"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Nokia",
+      "sub": "the phone in every pocket",
+      "at": "nokia",
+      "out": "pocket"
+     },
+     {
+      "kind": "stamp",
+      "text": "Sold",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "billions"
+     }
+    ]
+   }
+  },
+  {
+   "id": "price",
+   "scene": "doc",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "And Microsoft didn't buy it cheap. It paid {fact1} for the phones and the patents.",
+   "events": {
+    "cheap": {
+     "word": "cheap"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "phones": {
+     "word": "phones"
+    },
+    "patents": {
+     "word": "patents"
+    },
+    "microsoft": {
+     "word": "Microsoft"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "paid"
+    }
+   ],
+   "params": {
+    "place": [
+     "Microsoft's deal announcement"
+    ],
+    "things": [
+     "the press release",
+     "the price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "paid",
+      "size": "close"
+     },
+     {
+      "at": "patents",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "cheap",
+      "what": "the page pushes in"
+     },
+     {
+      "at": "paid",
+      "what": "the highlighter swipes the price"
+     },
+     {
+      "at": "patents",
+      "what": "a source chip lands"
+     }
+    ],
+    "fig": {
+     "total": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "document",
+      "lines": [
+       "Microsoft will purchase substantially",
+       "all of Nokia's Devices & Services",
+       "business and license Nokia's patents,",
+       "for a total transaction price of",
+       "{fact1} in cash."
+      ],
+      "header": {
+       "form": "Press release",
+       "company": "Microsoft",
+       "title": "Microsoft to acquire Nokia's devices & services business"
+      },
+      "hi": 4,
+      "pushAt": "microsoft",
+      "markAt": "paid",
+      "source": {
+       "form": "Press release",
+       "text": "Microsoft",
+       "date": "2013-09-03"
+      }
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2013-09-03",
+      "sub": "Redmond and Espoo",
+      "pos": "top",
+      "at": "patents"
+     }
+    ]
+   }
+  },
+  {
+   "id": "split",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "{fact2} bought the phone business itself. The other {fact3} paid to use Nokia's patents. So what were those phones really worth?",
+   "events": {
+    "bought": {
+     "word": "bought"
+    },
+    "itself": {
+     "word": "itself"
+    },
+    "other": {
+     "word": "other"
+    },
+    "patents": {
+     "word": "patents"
+    },
+    "worth": {
+     "word": "worth"
+    },
+    "nokias": {
+     "word": "Nokia's"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "patents"
+    }
+   ],
+   "params": {
+    "place": [
+     "a table of Nokia's last phones",
+     "the deal split in two"
+    ],
+    "things": [
+     "Nokia phones",
+     "the price split"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "itself",
+      "size": "wide"
+     },
+     {
+      "at": "patents",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bought",
+      "what": "Nokia's phones on a table"
+     },
+     {
+      "at": "itself",
+      "what": "the donut fills with the phone share"
+     },
+     {
+      "at": "other",
+      "what": "a stamp: LICENSED"
+     },
+     {
+      "at": "patents",
+      "what": "the patent share fills"
+     },
+     {
+      "at": "worth",
+      "what": "a stamp: WORTH IT?"
+     }
+    ],
+    "fig": {
+     "phones": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-collection-of-old-phones-and-pdas-503c54ab.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-left",
+      "amount": 0.1,
+      "grade": "night",
+      "aspect": 1.33
+     },
+     {
+      "kind": "donut",
+      "values": [
+       3.79,
+       1.65
+      ],
+      "figure": "phones",
+      "label": "the phone business",
+      "fillAt": "itself",
+      "tone": "gold",
+      "at": "itself",
+      "plate": false
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Nokia's phones",
+      "sub": "factories, staff, the brand's handsets",
+      "at": "bought",
+      "out": "itself"
+     },
+     {
+      "kind": "stamp",
+      "text": "Worth it?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "worth"
+     },
+     {
+      "kind": "stamp",
+      "text": "Licensed",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -5,
+      "at": "other",
+      "out": "worth"
+     }
+    ]
+   }
+  },
+  {
+   "id": "staff",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "About {fact4} Nokia staff were set to move over with it, from a company born in Finland.",
+   "events": {
+    "staff": {
+     "word": "staff"
+    },
+    "move": {
+     "word": "move"
+    },
+    "company": {
+     "word": "company"
+    },
+    "finland": {
+     "word": "Finland"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "company"
+    }
+   ],
+   "params": {
+    "place": [
+     "Nokia's head office by the water in Espoo",
+     "a map of Finland"
+    ],
+    "things": [
+     "Nokia's head office",
+     "Finland"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "company",
+      "size": "medium"
+     },
+     {
+      "at": "finland",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "staff",
+      "what": "Nokia's head office, pushing in"
+     },
+     {
+      "at": "move",
+      "what": "an arrow from the office out of frame"
+     },
+     {
+      "at": "company",
+      "what": "cut to a map of Finland"
+     },
+     {
+      "at": "finland",
+      "what": "a pin lands on Espoo"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-hq-9e0b002b.jpg",
+      "focus": [
+       0.6,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "cold",
+      "out": "company"
+     },
+     {
+      "kind": "map",
+      "fit": [
+       "Finland"
+      ],
+      "hi": [
+       "Finland"
+      ],
+      "pins": [
+       {
+        "lonlat": [
+         24.83,
+         60.18
+        ],
+        "label": "Espoo",
+        "on": "finland"
+       }
+      ],
+      "at": "company"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "lowerThird",
+      "name": "Nokia",
+      "role": "head office, Espoo",
+      "at": "staff",
+      "out": "move"
+     },
+     {
+      "kind": "arrow",
+      "from": [
+       0.55,
+       0.45
+      ],
+      "to": [
+       0.85,
+       0.3
+      ],
+      "label": "to Microsoft",
+      "at": "move",
+      "out": "company"
+     }
+    ]
+   }
+  },
+  {
+   "id": "lumia",
+   "scene": "doc",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "But Nokia's smartphones, the Lumias, ran Windows Phone. Not Android, and not the iPhone's system. So who would buy them?",
+   "events": {
+    "smartphones": {
+     "word": "smartphones"
+    },
+    "lumias": {
+     "word": "Lumias"
+    },
+    "windows": {
+     "word": "Windows"
+    },
+    "android": {
+     "word": "Android"
+    },
+    "system": {
+     "word": "system"
+    },
+    "buy": {
+     "word": "buy"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "windows"
+    },
+    {
+     "kind": "boom",
+     "at": "buy"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Lumia on a desk",
+     "a Lumia's screen up close"
+    ],
+    "things": [
+     "a Lumia phone",
+     "a big yellow Lumia"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "windows",
+      "size": "close"
+     },
+     {
+      "at": "android",
+      "size": "wide"
+     },
+     {
+      "at": "buy",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lumias",
+      "what": "a label: Lumia"
+     },
+     {
+      "at": "windows",
+      "what": "a label: Windows Phone"
+     },
+     {
+      "at": "android",
+      "what": "cut to a bigger Lumia, stamped NOT ANDROID"
+     },
+     {
+      "at": "buy",
+      "what": "the screen pushes in"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-microsoft-nokia-lumia-930-d5bc16f9.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "out": "android"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-lumia-1520-528808b9.png",
+      "aspect": 0.51,
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "night",
+      "at": "android"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Lumia",
+      "sub": "Nokia's smartphone",
+      "at": "lumias",
+      "out": "windows"
+     },
+     {
+      "kind": "label",
+      "text": "Windows Phone",
+      "sub": "Microsoft's system",
+      "at": "windows",
+      "out": "android"
+     },
+     {
+      "kind": "stamp",
+      "text": "Not Android",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -5,
+      "at": "android",
+      "out": "buy"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "doc",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Two summers later, Microsoft stopped trying to grow a phone business of its own. It cut {fact6} jobs, mostly in phones.",
+   "events": {
+    "microsoft": {
+     "word": "Microsoft"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "jobs": {
+     "word": "jobs"
+    },
+    "phones": {
+     "word": "phones"
+    },
+    "summers": {
+     "word": "summers"
+    },
+    "stopped": {
+     "word": "stopped"
+    },
+    "own": {
+     "word": "own"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "summers"
+    },
+    {
+     "kind": "boom",
+     "at": "cut"
+    }
+   ],
+   "params": {
+    "place": [
+     "Microsoft's stone sign",
+     "an old Nokia in the dark"
+    ],
+    "things": [
+     "Microsoft sign",
+     "Nokia phone"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "stopped",
+      "size": "close"
+     },
+     {
+      "at": "phones",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "summers",
+      "what": "the date slams in"
+     },
+     {
+      "at": "stopped",
+      "what": "the sign pushes in"
+     },
+     {
+      "at": "cut",
+      "what": "a red stamp: CUT"
+     },
+     {
+      "at": "phones",
+      "what": "cut to an old Nokia in the dark"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-microsoft-sign-closeup-37ec4e6b.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "cold",
+      "out": "phones"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-1100-52ad827d.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "fall",
+      "amount": 0.1,
+      "grade": "night",
+      "at": "phones"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2015-07-08",
+      "sub": "Redmond",
+      "pos": "top",
+      "at": "summers",
+      "out": "cut"
+     },
+     {
+      "kind": "stamp",
+      "text": "Cut",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -7,
+      "at": "cut",
+      "out": "phones"
+     }
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "doc",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Then it wrote {fact5} off its books, on the phone business it had bought just two years before.",
+   "events": {
+    "wrote": {
+     "word": "wrote"
+    },
+    "books": {
+     "word": "books"
+    },
+    "business": {
+     "word": "business"
+    },
+    "bought": {
+     "word": "bought"
+    },
+    "before": {
+     "word": "before"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "books"
+    }
+   ],
+   "params": {
+    "place": [
+     "the news of the write-off",
+     "the poster over Nokia's last phones"
+    ],
+    "things": [
+     "TechCrunch headline",
+     "the write-off"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "books",
+      "size": "wide"
+     },
+     {
+      "at": "before",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "wrote",
+      "what": "the headline's words are highlighted"
+     },
+     {
+      "at": "books",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "before",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "loss": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "TechCrunch",
+        "date": "2015-07-08",
+        "title": "Microsoft writes down {fact5} of its Nokia acquisition, announces {fact6} layoffs",
+        "style": "web",
+        "hi": "writes down"
+       }
+      ],
+      "on": [
+       "start"
+      ],
+      "out": "books",
+      "enter": "zoom",
+      "markAt": "wrote"
+     },
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-808-pureview-nokia-lumia-520-nokia-lumia-6-26e25876.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "date": "2015-07-08",
+      "title": "Microsoft",
+      "figure": "loss",
+      "sub": "written off on Nokia's phone business",
+      "on": "books",
+      "at": "books"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "TechCrunch",
+      "date": "2015-07-08",
+      "at": "wrote",
+      "out": "books"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ending",
+   "scene": "doc",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Nokia or iPhone: which was your first phone? The one in your hand runs Android or Apple's system. Before them, it was this.",
+   "events": {
+    "first": {
+     "word": "first"
+    },
+    "hand": {
+     "word": "hand"
+    },
+    "android": {
+     "word": "Android"
+    },
+    "apple": {
+     "word": "Apple's"
+    },
+    "before": {
+     "word": "Before"
+    },
+    "this": {
+     "word": "this"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "this"
+    }
+   ],
+   "params": {
+    "place": [
+     "a phone in a hand today",
+     "the old Nokia again"
+    ],
+    "things": [
+     "a smartphone in a hand",
+     "an old Nokia phone"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "hand",
+      "size": "close"
+     },
+     {
+      "at": "this",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "first",
+      "what": "a label asks: your first phone?"
+     },
+     {
+      "at": "hand",
+      "what": "cut to a phone in a hand"
+     },
+     {
+      "at": "android",
+      "what": "a label: Android or iOS"
+     },
+     {
+      "at": "this",
+      "what": "back to the Nokia from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-black-smartphone-in-hand-unsplash-b4b23523.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "out": "this"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nokia-3310-front-0cfb97cf.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "this"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Nokia or iPhone?",
+      "sub": "your first phone",
+      "at": "first",
+      "out": "hand"
+     },
+     {
+      "kind": "label",
+      "text": "Android or iOS",
+      "sub": "the phone in your hand",
+      "at": "android",
+      "out": "before"
+     }
+    ]
+   }
+  }
+ ]
+}
