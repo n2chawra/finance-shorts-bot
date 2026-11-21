@@ -1,49 +1,67 @@
 {
- "note": "The weekly loop's first challengers, from the research (20 Nov 2026): what the research was unsure of, ranked, alternating first-second and look tests.",
- "candidates": [
-  {
-   "id": "dd-open-before-failure",
-   "kind": "first-second",
-   "test": "frame 1 one beat BEFORE the failure (the jet cruising, the bridge standing) against the champion's frame 1 AT the failure",
-   "why": "Fault Lines opens cruising with the date caption (1.94M); Major Disasters opens on a silent warning card; the comments reward suddenness. Unsure which holds better",
-   "from": "research 2026-11-20"
-  },
-  {
-   "id": "dd-bed-voice-only",
-   "kind": "look",
-   "area": "sound",
-   "test": "voice only with hard silences between lines against the champion's breathing drone ~32 dB under",
-   "why": "3 of 4 references run no bed at all; our drone is our own upgrade, unmeasured on viewers",
-   "from": "research 2026-11-20"
-  },
-  {
-   "id": "dd-silent-card",
-   "kind": "first-second",
-   "test": "a 3-4 s silent date/warning card before the cold open against straight into the 3D cold open",
-   "why": "2 of 4 long references open on 6-7 s of silence over a card (sound.md)",
-   "from": "research 2026-11-20"
-  },
-  {
-   "id": "dd-instrument-always",
-   "kind": "look",
-   "area": "picture",
-   "test": "the story's live instrument on screen through the whole reconstruction against only in the last 90 s",
-   "why": "Inside Decoded and World explained keep a telemetry panel in every shot of their Shorts (1.9M, 2.6M); unmeasured on long videos",
-   "from": "research 2026-11-20"
-  },
-  {
-   "id": "dd-title-question",
-   "kind": "first-second",
-   "test": "titles as a question ('Could Any Pilot Have Saved It?') against claim titles",
-   "why": "comments ask questions; Flying for Money's question titles got 2.8M/3.1M",
-   "from": "research 2026-11-20"
-  },
-  {
-   "id": "dd-length-10",
-   "kind": "first-second",
-   "test": "long videos of 10-11 min against the owner's 8-10 min",
-   "why": "the scan's 10-15 min band has the best on-niche median (775 vs 285) and 16% hits; owner's call: only with the owner's OK (notification)",
-   "from": "research 2026-11-20"
-  }
- ]
+  "note": "The weekly loop's first challengers, from the research (20 Nov 2026): what the research was unsure of, ranked, alternating first-second and look tests.",
+  "candidates": [
+    {
+      "id": "dd-open-before-failure",
+      "kind": "first-second",
+      "test": "frame 1 one beat BEFORE the failure (the jet cruising, the bridge standing) against the champion's frame 1 AT the failure",
+      "why": "Fault Lines opens cruising with the date caption (1.94M); Major Disasters opens on a silent warning card; the comments reward suddenness. Unsure which holds better",
+      "from": "research 2026-11-20"
+    },
+    {
+      "id": "dd-bed-voice-only",
+      "kind": "look",
+      "area": "sound",
+      "test": "voice only with hard silences between lines against the champion's breathing drone ~32 dB under",
+      "why": "3 of 4 references run no bed at all; our drone is our own upgrade, unmeasured on viewers",
+      "from": "research 2026-11-20"
+    },
+    {
+      "id": "dd-silent-card",
+      "kind": "first-second",
+      "test": "a 3-4 s silent date/warning card before the cold open against straight into the 3D cold open",
+      "why": "2 of 4 long references open on 6-7 s of silence over a card (sound.md)",
+      "from": "research 2026-11-20"
+    },
+    {
+      "id": "dd-instrument-always",
+      "kind": "look",
+      "area": "picture",
+      "test": "the story's live instrument on screen through the whole reconstruction against only in the last 90 s",
+      "why": "Inside Decoded and World explained keep a telemetry panel in every shot of their Shorts (1.9M, 2.6M); unmeasured on long videos",
+      "from": "research 2026-11-20"
+    },
+    {
+      "id": "dd-title-question",
+      "kind": "first-second",
+      "test": "titles as a question ('Could Any Pilot Have Saved It?') against claim titles",
+      "why": "comments ask questions; Flying for Money's question titles got 2.8M/3.1M",
+      "from": "research 2026-11-20"
+    },
+    {
+      "id": "dd-length-10",
+      "kind": "first-second",
+      "test": "long videos of 10-11 min against the owner's 8-10 min",
+      "why": "the scan's 10-15 min band has the best on-niche median (775 vs 285) and 16% hits; owner's call: only with the owner's OK (notification)",
+      "from": "research 2026-11-20"
+    },
+    {
+      "id": "dd-title-figure-clock",
+      "kind": "first-second",
+      "area": "title",
+      "metric": "stayed",
+      "from": "research 2026-11-22",
+      "test": "Short titles that put the event's own figure against its clock ('Jet Fell 27,000 Feet in 60 Seconds', 'Two Minutes Later It Hit a Cruise Boat') against the champion's plain question title",
+      "why": "Sunday teardown, niche scan of 20 Nov: World explained's 2.56M (669x its 3.8K subs) and Inside Decoded's 1.91M (144x) both name a distance and a time in the title; Trace the Failure's best Shorts do too. Major Disasters' plain-question historic titles sit at 193-1,612. No stayed-to-watch data of ours yet (1 Short, published 21 Nov). The payoff figure must still wait for the payoff: the title figure is the clock, not the toll"
+    },
+    {
+      "id": "dd-short-75s",
+      "kind": "format",
+      "area": "length",
+      "metric": "stayed",
+      "from": "research 2026-11-22",
+      "test": "promo Shorts of 60-90 s (the cause chain told in full) against the champion's 30-50 s",
+      "why": "Sunday teardown: World explained's Shorts median 96 s and its three breakouts run 107-115 s (2.56M, 1.25M, 468K); Inside Decoded's median 73 s, breakouts 81-98 s; Trace the Failure's median 66 s. Major Disasters at 43-46 s has a 193-view median. The setup scan's best bands were 35-50 s and 20-35 s, so the evidence conflicts: test, don't adopt. Judged on stayed to watch; also note views per Short in the digest"
+    }
+  ]
 }

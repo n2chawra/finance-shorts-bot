@@ -1,0 +1,37 @@
+{
+  "claudeCode": {
+    "latest": "2.1.330",
+    "checked": "2026-11-22",
+    "notes": [
+      "2.1.330: WebFetch no longer freezes or returns empty on some pages; built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline (read by tonight's geography research run, not fetched again to keep the run lean)."
+    ]
+  },
+  "sources": {
+    "jtsb-pdf": "jtsb.mlit.go.jp report PDFs fetch as binary; extract text locally (pdftotext), seen 2026-11-22",
+    "aol-ap": "aol.com AP article URLs return 404 to fetch; use a station republication (abc11, wafb), seen 2026-11-22",
+    "ntsb-pages": "ntsb.gov investigation pages fetch fine and carry the dated updates, seen 2026-11-22"
+  },
+  "references": [
+    "4kkNl2yl1Lw",
+    "t6b9DNWgMhg",
+    "wOizOTA9e-A",
+    "JUevp0TSZME",
+    "L73NEgH36JU",
+    "rMMXjMmhlFU",
+    "rPVMYdbWutc",
+    "VVNjHOq8GbU"
+  ],
+  "teardowns": {
+    "2026-11-22": [
+      "World explained",
+      "Inside Decoded",
+      "Trace the Failure",
+      "Major Disasters"
+    ]
+  },
+  "watch": {
+    "ERA27MA026": "Learjet 60 N722BD, Greenacres FL, 1 Nov 2026: NTSB preliminary report due about 1 Dec; the follow-up Short/long when it lands",
+    "DCA27MM003": "Atlantic Asphalt / American Heritage, New Orleans, 13 Nov 2026: preliminary report due",
+    "urda-2026-10-28": "Spain Urda collision: open court case and CIAF probe, minister's red-signal claim only; wait for the CIAF preliminary"
+  }
+}

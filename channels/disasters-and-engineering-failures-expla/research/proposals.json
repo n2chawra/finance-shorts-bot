@@ -1,0 +1,42 @@
+{
+  "proposals": [
+    {
+      "id": "dd-long-feed-from-short-block",
+      "date": "2026-11-22",
+      "area": "pipeline",
+      "title": "Long videos are blocked on this long-first channel by the Paisa 'from_short' rule",
+      "change": "In generator/topics.py winning_short(): for a channel whose channel.json has cadence.longEveryHours (long-first, each Short a promo of a long video; disasters-and-engineering-failures-expla), do not require from_short; or let a long topic name from_short only when the channel's recipe says long videos expand Shorts. Since v-20261121-42 was published on 21 Nov, `python -m generator.run state --channel disasters-and-engineering-failures-expla --format long` blocks every long topic ('names no from_short'), so the owner's 'one long video every 48 hours' cannot run. Add a test with a long-first channel fixture.",
+      "evidence": [
+        "generator/topics.py winning_short(): the 'new channel with no Short' exception ends once any Short is in metrics/videos.json",
+        "state --format long on 2026-11-22: 0 of 4 long videos this week; 2026-11-20-hyatt-walkways blocked_by 'names no from_short'",
+        "channels/disasters-and-engineering-failures-expla/profile.md: long videos one every 48 hours, each with one promo Short"
+      ],
+      "expectedEffect": "Long videos can be planned again; promo Shorts get their long video",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "Paisa Panchayat must keep its rule: gate the exception on the channel's own cadence",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "high"
+    },
+    {
+      "id": "dd-research-topics-format-long",
+      "date": "2026-11-22",
+      "area": "pipeline",
+      "title": "The Shorts feed held only long-format topics",
+      "change": "No code change: research now writes `format: short` promo topics into research/topics.json (3 tonight). Scout/Studio: copy the 18 setup topics' long fields into longform/topics.json if not there yet (only hyatt-walkways is).",
+      "evidence": [
+        "state --channel disasters-and-engineering-failures-expla on 2026-11-22 (before tonight's topics): topic_feed.topics = [] because of_format() drops format 'long'"
+      ],
+      "expectedEffect": "The Shorts runs have topics to pick",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "none",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
+    }
+  ]
+}
