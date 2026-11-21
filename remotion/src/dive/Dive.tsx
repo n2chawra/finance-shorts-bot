@@ -65,13 +65,18 @@ const Dive: React.FC<SceneProps> = (p) => {
   const tempo = p.tl.tempo ?? 1;
   const g = p.beat.from * tempo + p.frame;          // story frames since the video began
   const cam = cameraAt(w, g);
-  const z = Math.min(maxZoomFor(p.tl.id), cam.z);
+  // the camera never stands still: a slow sway and breath on top of its moves, a whole number of cycles over
+  // the video so the last frame still matches the first (the motion gate failed a foundation dive with no trains,
+  // 2026-11-21)
+  const T = Math.max(1, w.total), cyc = (n: number) => Math.sin((g / T) * Math.PI * 2 * n);
+  const z = Math.min(maxZoomFor(p.tl.id), cam.z * (1 + 0.025 * cyc(Math.max(1, Math.round(T / 75)))));
+  const sway = 22 * cyc(Math.max(1, Math.round(T / 55)));
   const shake = w.landings.reduce((s, l) => s + Math.max(0, 1 - Math.abs(g - l) / 5) * 7, 0);
   const cx = p.tl.width / 2;
   return (
     <>
       <Stage p={p} bg={w.look.deep}>
-        <g transform={`translate(${cx + Math.sin(g * 2) * shake} ${ANCHOR_Y}) scale(${z}) translate(${-cx} ${-cam.y})`}>
+        <g transform={`translate(${cx + Math.sin(g * 2) * shake + sway} ${ANCHOR_Y}) scale(${z}) translate(${-cx} ${-cam.y})`}>
           <CamCtx.Provider value={{ z, camY: cam.y, cx, W: p.tl.width, H: p.tl.height }}>
             <World w={w} g={g} />
           </CamCtx.Provider>
