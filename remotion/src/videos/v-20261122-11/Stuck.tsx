@@ -31,7 +31,7 @@ const Stuck: React.FC<SceneProps> = (p) => {
       <View zoom={1.3 - 0.32 * back + m.wave(80, 0.008)} cx={330 + 420 * east * (1 - back) + 210 * back} cy={1120 - 220 * back}>
         <CityPlan t={m.t} west={1} east={1} villas={1} terraces={1} chim={0} smoke={0} labels={0} line={1} traffic={m.lerp([lo, lo + 10], [0, 1])}>
           <g transform="translate(0 0)"><Van x={-80 + 380 * v1} y={1180} color="#3fae6a" /></g>
-          {m.t >= fa ? <g opacity={m.pop(fa, 10)}><Walker x={330} y={1310} s={56} top="#3a3550" face="happy" t={m.t} /><Walker x={400} y={1310} s={48} top="#c9543f" face="happy" t={m.t} /></g> : null}
+          {m.t >= fa ? <g opacity={m.pop(fa, 10) * (1 - m.lerp([ch - 14, ch - 2], [0, 1]))}><Walker x={330} y={1310} s={56} top="#3a3550" face="happy" t={m.t} /><Walker x={400} y={1310} s={48} top="#c9543f" face="happy" t={m.t} /></g> : null}
           <Van x={1160 - 380 * v2} y={1180} color="#8c8a90" flip />
           {ge > 0 && m.t >= ge ? <g><Van x={-80 + 380 * g2} y={1170} color="#3a78c9" /><Van x={1160 - 380 * g2} y={1170} color="#a07a5a" flip /></g> : null}
           {m.t >= po ? <g opacity={m.pop(po, 10)}><Walker x={760} y={1310} s={56} top="#6b5a4a" t={m.t} armR={[150, 170]} armL={[150, 170]} /><Box x={740} y={1080} /><Walker x={850} y={1310} s={50} top="#4a5a6b" t={m.t} /></g> : null}

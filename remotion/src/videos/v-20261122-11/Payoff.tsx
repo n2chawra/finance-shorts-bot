@@ -31,8 +31,8 @@ const Payoff: React.FC<SceneProps> = (p) => {
           return <ellipse key={`${i}${j}`} cx={-100 + f * 1300} cy={y + Math.sin(m.t / 12 + j) * 20} rx={120} ry={60} fill={SOOT} opacity={0.32 * ghost * (1 - Math.abs(f - 0.5))} />;
         })) : null}
       </View>
-      <g transform={`rotate(${m.t >= la ? swing : 0} 300 620)`}><Board x={300} y={420} w={420} label="CENSUS" value={fig.year ?? ""} k={m.pop(i0, 12)} color="#3a5a8c" /></g>
-      <Tag x={110} y={250} w={260} h={72} text="COAL AGE" rot={-8} bg="#e8453c" fg="#ffffff" size={40} k={1 - m.lerp([ce, ce + 10], [0, 1])} />
+      <g transform={`rotate(${m.t >= la ? swing : 0} 190 620)`}><Board x={190} y={420} w={320} label="CENSUS" value={fig.year ?? ""} k={m.pop(i0, 12)} color="#3a5a8c" /></g>
+      <Tag x={60} y={196} w={260} h={72} text="COAL AGE" rot={-8} bg="#e8453c" fg="#ffffff" size={40} k={1 - m.lerp([ce, ce + 10], [0, 1])} />
       {m.t >= ex - 4 ? (
         <g>
           <Board x={760} y={420} w={420} label="UP TO" value={countText(fig.share ?? "", fill)} k={m.pop(up - 2, 12)} />

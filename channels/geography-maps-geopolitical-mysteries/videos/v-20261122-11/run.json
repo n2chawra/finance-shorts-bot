@@ -138,5 +138,36 @@
       "63 s, paper/explorer (preview only)",
       "note: the first figure appears at 15.5 s; one by 9 s"
     ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-21T23:38:43.100641+00:00",
+    "finishedAt": "2026-11-21T23:38:43.100641+00:00",
+    "notes": [
+      "[script] 50.0s and 55.0s (payoff beat, Payoff.tsx): the share bar is now clear, but the CENSUS 2011 board's post now runs straight through the NEWCASTLE label (reads 'NE\\CASTLE'). Move the label or the board so no post or bar crosses a city name.",
+      "[script] 35.0s (poor beat, Poor.tsx): better, but the left third of the frame is still the west villas with gardens under the black cloud, and the three workers stand next to villa rows. Frame only the grey terraced east (or clear the smoke off the villas) so the picture matches 'stayed east, under the soot'.",
+      "[script] 45.0s (stuck beat, Stuck.tsx): no longer repeats the turn's framing, but the family on the west side is cut in half by the left edge; keep them inside the frame while the camera pans."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:39:09.048951+00:00",
+    "finishedAt": "2026-11-21T23:40:04.924435+00:00",
+    "notes": [
+      "63 s, paper/explorer (preview only)",
+      "note: the first figure appears at 15.5 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T23:40:13.479178+00:00",
+    "finishedAt": "2026-11-21T23:41:05.373938+00:00",
+    "notes": [
+      "63 s, paper/explorer (preview only)",
+      "note: the first figure appears at 15.5 s; one by 9 s"
+    ]
   }
 ]
