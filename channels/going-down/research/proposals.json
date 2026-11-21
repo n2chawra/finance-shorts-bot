@@ -1,0 +1,11 @@
+{
+ "proposals": [
+  {"id": "gd-topic-mix-underneath-famous", "date": "2026-11-22", "area": "pipeline",
+   "title": "Prefer places famous for what's underneath",
+   "change": "Research and the planner favour places whose underground is the famous part (underground cities, catacombs, cisterns, under-river metros, deepest stations, officially public bunkers) over landmarks whose underground is only foundations and utilities. Research applies it when sourcing; no code change.",
+   "evidence": ["https://www.youtube.com/shorts/KiDMZIe1zRQ", "https://www.youtube.com/shorts/9ZyAXcjjkpg", "https://www.youtube.com/shorts/Axi5SnRxx9Y", "https://www.youtube.com/@CutawayInstinct/shorts"],
+   "expectedEffect": "more Shorts from topics with 1M+ breakout references",
+   "confidence": "medium", "effort": "S", "risk": "fewer famous-skyline landmarks; sourcing deep layers is harder",
+   "metric": "views48h", "status": "new", "route": "experiment", "priority": "normal"}
+ ]
+}
