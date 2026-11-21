@@ -1,0 +1,190 @@
+{
+  "id": "v-20261121-51",
+  "createdAt": "2026-11-21T15:06:10.216561+00:00",
+  "status": "failed",
+  "failReason": "layout gate: the dive kit (remotion/src/dive) draws its 46-48 px signs and landmark label at the opening/loop zoom 0.82 and the pull-back zoom ~0.4, so they measure 18-41 px (under the 44 px minimum) and the loop's last frame puts the first depth sign in the bottom 120 px; no script change can avoid it",
+  "template": "short_story",
+  "topic": {
+    "title": "What lies under St Peter's Basilica: the popes' crypt, a buried Roman street of tombs and the niche held to be St Peter's grave",
+    "category": "religious",
+    "reach": "global",
+    "feed_id": "2026-11-21-st-peters-necropolis"
+  },
+  "title": "How Deep Does St Peter's Basilica Go?",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-21T14:57:19.868926+00:00",
+      "finishedAt": "2026-11-21T14:57:19.868926+00:00",
+      "notes": [
+        "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky",
+        "style.recipe must be one of dusk-city, night-neon, noon-stone, winter-grey, desert-gold, rain-blue (this channel's look rotation)",
+        "a global video is told in USD; rupees, pounds or euros make it local"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-21T14:57:23.684856+00:00",
+      "finishedAt": "2026-11-21T14:57:23.684856+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T14:59:30.064990+00:00",
+      "finishedAt": "2026-11-21T14:59:30.064990+00:00",
+      "notes": [
+        "invalid literal for int() with base 10: ''",
+        "beat 'grottoes': the line right after the hook is a setup or an explanation ('First,' in 'First, the Grottoes, where the popes are buried.'); 20 of 26 Shorts lost the most viewers here, at 4.5-7 s. Go on with the hook's own story: the next, bigger surprise about the same person or business (\"And it still kept {pro_total}.\")",
+        "no `promise` beat: every video has a promise early, a turn about two thirds in, and a payoff that answers the hook",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T14:59:40.179869+00:00",
+      "finishedAt": "2026-11-21T14:59:40.179869+00:00",
+      "notes": [
+        "invalid literal for int() with base 10: ''",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:00:10.651469+00:00",
+      "finishedAt": "2026-11-21T15:00:10.651469+00:00",
+      "notes": [
+        "beat 'street'.params.dive.layer.wall contains a typed number; use a placeholder: '#efe3c8'",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:00:16.894632+00:00",
+      "finishedAt": "2026-11-21T15:00:16.894632+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:00:24.990791+00:00",
+      "finishedAt": "2026-11-21T15:00:24.990791+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:00:33.380981+00:00",
+      "finishedAt": "2026-11-21T15:00:33.380981+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:01:14.412292+00:00",
+      "finishedAt": "2026-11-21T15:01:14.412292+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:02:31.631850+00:00",
+      "finishedAt": "2026-11-21T15:02:31.631850+00:00",
+      "notes": [
+        "Beat 'niche' ('12 m: the bottom. A niche the Church holds to be Saint Peter's grave.') puts St Peter's niche at 12 m, the deepest point. Wikipedia gives only a 5-12 m range for the whole necropolis and Turismo Roma does not give the tomb's depth; the topic's verify list says exactly this: say the necropolis reaches 12 m, not that Peter's tomb is at 12 m. Fix: separate the two, e.g. '12 m: the necropolis's lowest point.' and then 'And in it, a niche the Church holds to be Saint Peter's grave.' (no depth on the niche; the 'deepest' tag/label must not sit on the niche either).",
+        "Beat 'nave' ('10 m, under the nave: 22 tombs.') reads as 22 tombs at 10 m under the nave. Wikipedia's 22 is the count of excavated tombs in the whole necropolis (5-12 m), not at that level. Fix the wording, e.g. '10 m, under the nave. Archaeologists have dug out 22 tombs.' and keep the TOMBS FOUND counter from implying it counts one level.",
+        "Confirmed: 5 m and 12 m (Wikipedia, 'depths varying between 5 and 12 metres'), 22 excavated tombs and more than 1,000 funerals (Wikipedia), about 10 m under the central nave (turismoroma.it page, fetched), Constantine buried the street to level the ground for his basilica (Wikipedia), popes buried in the Grottoes (Wikipedia Vatican Grottoes, National Geographic via search). 'Held to be' wording for the grave is right. Grottoes shown without a depth (the 3 m is a travel guide only), good. Hook avoids 'biggest church'. Description ends with the channel disclaimer."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:01:44.742655+00:00",
+      "finishedAt": "2026-11-21T15:02:49.380679+00:00",
+      "notes": [
+        "text \"ST PETER'S BASILICA\" at 3.0 s is 37.7 px, below the 44 px minimum",
+        "text \"ST PETER'S BASILICA\" at 6.1 s runs outside the frame",
+        "text 'NECROPOLIS' at 25.8 s is 35.9 px, below the 44 px minimum",
+        "text 'NECROPOLIS' at 25.8 s reaches 1966 px, inside the bottom 120 px",
+        "text '5 M' at 25.8 s is 37.5 px, below the 44 px minimum",
+        "text '5 M' at 25.8 s reaches 1966 px, inside the bottom 120 px",
+        "text 'GROTTOES' at 23.4 s is 25.9 px, below the 44 px minimum",
+        "text 'EXCAVATIONS' at 23.4 s is 18.1 px, below the 44 px minimum",
+        "text '10 M' at 23.4 s is 18.9 px, below the 44 px minimum",
+        "text 'TOMBS FOUND' at 23.4 s is 42.5 px, below the 44 px minimum",
+        "text 'TOMBS FOUND' at 23.4 s runs outside the frame",
+        "text '?' at 23.4 s is 43.2 px, below the 44 px minimum",
+        "text 'BURIALS' at 23.4 s is 42.5 px, below the 44 px minimum",
+        "text '1,000' at 23.4 s runs outside the frame",
+        "text 'THE BOTTOM · 12 M' at 23.4 s is 18.9 px, below the 44 px minimum",
+        "length 27 s is outside 20–25 s: cut about 6 spoken words",
+        "the Short runs 27.0 s but its assigned length (arms.length) is 20-25 s: cut or add a beat",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:03:50.037522+00:00",
+      "finishedAt": "2026-11-21T15:03:50.037522+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:04:27.359174+00:00",
+      "finishedAt": "2026-11-21T15:04:27.359174+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:04:54.121412+00:00",
+      "finishedAt": "2026-11-21T15:05:38.145824+00:00",
+      "notes": [
+        "text 'NECROPOLIS' at 26.8 s is 38.9 px, below the 44 px minimum",
+        "text 'NECROPOLIS' at 26.8 s reaches 1888 px, inside the bottom 120 px",
+        "text '5 M' at 26.8 s is 40.6 px, below the 44 px minimum",
+        "text '5 M' at 26.8 s reaches 1889 px, inside the bottom 120 px",
+        "length 28 s is outside 20–25 s: cut about 9 spoken words",
+        "the Short runs 27.9 s but its assigned length (arms.length) is 20-25 s: cut or add a beat",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    }
+  ]
+}

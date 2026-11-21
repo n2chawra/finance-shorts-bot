@@ -1,0 +1,686 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 51207,
+  "story": "landmark_dive",
+  "shape": "straight-down",
+  "currency": "USD",
+  "style": {
+    "palette": "sky",
+    "recipe": "noon-stone",
+    "genre": "cinematic",
+    "key": "D",
+    "bpm": 84,
+    "look": {
+      "stage": "city",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "drop"
+    }
+  },
+  "arms": {
+    "length": "20-25",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "question",
+  "cta": "Which place should we dive under next? Comment",
+  "feed_id": "2026-11-21-st-peters-necropolis",
+  "facts": [
+    {
+      "label": "Necropolis top depth",
+      "value": 5,
+      "unit": "m",
+      "as_of": "2026-11-21",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+      "as_of_source_year": "2025"
+    },
+    {
+      "label": "Necropolis deepest depth",
+      "value": 12,
+      "unit": "m",
+      "as_of": "2026-11-21",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+      "as_of_source_year": "2025"
+    },
+    {
+      "label": "Necropolis depth under the nave",
+      "value": 10,
+      "unit": "m",
+      "as_of": "2026-11-21",
+      "source": "Turismo Roma",
+      "url": "https://www.turismoroma.it/en/places/st-peter%E2%80%99s-tomb-vatican-necropolis-pre-constantinian-and-constantinian-basilica",
+      "as_of_source_year": "2025"
+    },
+    {
+      "label": "Excavated tombs",
+      "value": 22,
+      "unit": "count",
+      "as_of": "2026-11-21",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+      "as_of_source_year": "2025"
+    },
+    {
+      "label": "Burials in those tombs",
+      "value": 1000,
+      "unit": "count",
+      "as_of": "2026-11-21",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis",
+      "as_of_source_year": "2025"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "street",
+    "sec": 0.5,
+    "words": "What's under *St Peter's*?",
+    "tag": "Going down",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "street",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Under St Peter's Basilica lies a buried street. How far down?",
+      "events": {
+        "under": {
+          "word": "Under"
+        },
+        "basilica": {
+          "word": "Basilica"
+        },
+        "buried": {
+          "word": "buried"
+        },
+        "street": {
+          "word": "street"
+        },
+        "down": {
+          "word": "down"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "buried"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "St Peter's Basilica above St Peter's Square at noon",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "buried",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "under",
+            "what": "the cutaway line under the church's floor glows"
+          },
+          {
+            "at": "basilica",
+            "what": "the name sign on the facade lights"
+          },
+          {
+            "at": "buried",
+            "what": "the camera tips down toward the floor"
+          },
+          {
+            "at": "down",
+            "what": "the depth meter starts at zero"
+          }
+        ],
+        "things": [
+          "basilica facade and dome",
+          "the square with walkers",
+          "depth meter"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "surface",
+          "world": {
+            "look": "noon",
+            "unit": "m",
+            "note": "Depths: Wikipedia, Turismo Roma · not to scale",
+            "strata": [
+              {
+                "kind": "soil",
+                "toFt": 20
+              },
+              {
+                "kind": "clay",
+                "toFt": 60
+              },
+              {
+                "kind": "bedrock",
+                "toFt": 300
+              }
+            ]
+          },
+          "layer": {
+            "kind": "surface",
+            "preset": "monument"
+          }
+        }
+      }
+    },
+    {
+      "id": "grottoes",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Popes lie buried in the Grottoes below.",
+      "events": {
+        "popes": {
+          "word": "Popes"
+        },
+        "buried": {
+          "word": "buried"
+        },
+        "grottoes": {
+          "word": "Grottoes"
+        },
+        "below": {
+          "word": "below"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "popes"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the Vatican Grottoes, the popes' crypt under the floor",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "grottoes",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "popes",
+            "what": "the camera dives through the floor"
+          },
+          {
+            "at": "grottoes",
+            "what": "the stamp GROTTOES lands on the crypt"
+          },
+          {
+            "at": "buried",
+            "what": "the crypt comes into view"
+          },
+          {
+            "at": "below",
+            "what": "the crypt lamp flickers"
+          }
+        ],
+        "things": [
+          "stone crypt",
+          "lamp",
+          "stamp"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "dive",
+          "on": "popes",
+          "zoom": 1.15,
+          "layer": {
+            "kind": "chamber",
+            "type": "vault",
+            "ft": 10,
+            "stamp": "GROTTOES",
+            "stampOn": "grottoes",
+            "props": [
+              "lamp"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "tombs",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact1}: a Roman street of tombs, buried for the first church.",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "roman": {
+          "word": "Roman"
+        },
+        "tombs": {
+          "word": "tombs"
+        },
+        "buried": {
+          "word": "buried"
+        },
+        "church": {
+          "word": "church"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the top of the Roman necropolis, a buried street of tombs",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "tombs",
+            "size": "extreme"
+          },
+          {
+            "at": "church",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives and lands on the necropolis sign with its depth"
+          },
+          {
+            "at": "roman",
+            "what": "the old street lights up"
+          },
+          {
+            "at": "tombs",
+            "what": "the stamp NECROPOLIS lands"
+          },
+          {
+            "at": "church",
+            "what": "the camera eases back to show the church above"
+          }
+        ],
+        "things": [
+          "buried tomb street",
+          "sign with depth",
+          "stamp"
+        ],
+        "fig": {
+          "depth": "{fact1}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.1,
+          "layer": {
+            "kind": "chamber",
+            "type": "secret",
+            "label": "Necropolis",
+            "stamp": "NECROPOLIS",
+            "stampOn": "tombs",
+            "props": [
+              "lamp",
+              "crates"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "nave",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact3}, under the nave. Diggers found {fact4} tombs. But what lies deepest?",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "nave": {
+          "word": "nave"
+        },
+        "diggers": {
+          "word": "Diggers"
+        },
+        "tombs": {
+          "word": "tombs"
+        },
+        "deepest": {
+          "word": "deepest"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the excavations under the central nave, with the stairs visitors walk down",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "tombs",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives to the excavation level"
+          },
+          {
+            "at": "nave",
+            "what": "the stairs glow, walkers going down"
+          },
+          {
+            "at": "diggers",
+            "what": "the dig's lamp swings on"
+          },
+          {
+            "at": "tombs",
+            "what": "the counter counts the tombs up"
+          },
+          {
+            "at": "deepest",
+            "what": "the camera tips down toward the dark below"
+          }
+        ],
+        "things": [
+          "excavation chamber",
+          "stairs with walkers",
+          "tomb counter"
+        ],
+        "fig": {
+          "depth": "{fact3}",
+          "tombs": "{fact4}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.05,
+          "layers": [
+            {
+              "kind": "chamber",
+              "type": "bunker",
+              "label": "Excavations",
+              "props": [
+                "lamp",
+                "desk"
+              ],
+              "counter": {
+                "fig": "tombs",
+                "label": "TOMBS FOUND",
+                "on": "tombs"
+              }
+            },
+            {
+              "kind": "shaft",
+              "type": "stairs",
+              "fromFt": 8,
+              "toFt": 33,
+              "side": "right",
+              "riders": 3,
+              "glowOn": "nave"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "niche",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact2}: the necropolis's lowest point. In it, a niche the Church holds to be Saint Peter's grave.",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "lowest": {
+          "word": "lowest"
+        },
+        "niche": {
+          "word": "niche"
+        },
+        "church": {
+          "word": "Church"
+        },
+        "grave": {
+          "word": "grave"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "rush",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the bottom of the necropolis, the niche held to be St Peter's grave",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "niche",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives to the deepest point"
+          },
+          {
+            "at": "lowest",
+            "what": "the beacon ring pulses"
+          },
+          {
+            "at": "niche",
+            "what": "the deepest tag stamps on"
+          },
+          {
+            "at": "grave",
+            "what": "the niche glows"
+          }
+        ],
+        "things": [
+          "deepest point beacon",
+          "niche",
+          "depth tag"
+        ],
+        "fig": {
+          "depth": "{fact2}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.1,
+          "layer": {
+            "kind": "deepest",
+            "text": "lowest point",
+            "on": "lowest"
+          }
+        }
+      }
+    },
+    {
+      "id": "burials",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "And those tombs held more than {fact5} burials.",
+      "events": {
+        "those": {
+          "word": "those"
+        },
+        "tombs": {
+          "word": "tombs"
+        },
+        "held": {
+          "word": "held"
+        },
+        "burials": {
+          "word": "burials"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "subboom",
+          "at": "held"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the whole stack under the basilica, pulled back",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "tombs",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "those",
+            "what": "the camera starts to pull back"
+          },
+          {
+            "at": "tombs",
+            "what": "the whole stack shows, church to bottom"
+          },
+          {
+            "at": "held",
+            "what": "the burials counter counts up"
+          },
+          {
+            "at": "burials",
+            "what": "the counter lands and flashes"
+          }
+        ],
+        "things": [
+          "whole cutaway stack",
+          "burials counter"
+        ],
+        "fig": {
+          "burials": "{fact5}"
+        },
+        "dive": {
+          "move": "hold",
+          "layer": {
+            "kind": "chamber",
+            "type": "secret",
+            "ft": 30,
+            "counter": {
+              "fig": "burials",
+              "label": "BURIALS",
+              "on": "held",
+              "side": "left"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "All of it, under the floor.",
+      "events": {
+        "all": {
+          "word": "All"
+        },
+        "of": {
+          "word": "of"
+        },
+        "floor": {
+          "word": "floor"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "floor"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "riding back up to the basilica's floor",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "floor",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "all",
+            "what": "the camera rides up through the layers"
+          },
+          {
+            "at": "of",
+            "what": "the meter counts back to zero"
+          },
+          {
+            "at": "floor",
+            "what": "it lands on the opening frame"
+          }
+        ],
+        "things": [
+          "the layers passing",
+          "depth meter",
+          "basilica"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "rideup"
+        }
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}
