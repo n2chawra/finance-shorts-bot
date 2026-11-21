@@ -731,6 +731,32 @@
    "page": "video",
    "found": "2026-11-20",
    "status": "open"
+  },
+  {
+   "id": "tabs-arrow-keys",
+   "kind": "bug",
+   "title": "Feedback, Videos, Analytics: tab rows ignored the arrow keys",
+   "detail": "Hand-made role=tab rows put every tab in the Tab order and did nothing on Left/Right/Home/End (WAI-ARIA tabs pattern). Fixed with lib/tab-keys.ts (roving tabindex + arrow keys); smoke test 'tab rows move with the arrow keys'.",
+   "page": "feedback, videos, analytics",
+   "found": "2026-11-21",
+   "status": "done",
+   "done": "2026-11-21",
+   "lastTouched": {
+    "apps/dashboard/src/app/feedback/page.tsx": "2026-11-21",
+    "apps/dashboard/src/app/videos/page.tsx": "2026-11-21",
+    "apps/dashboard/src/components/studio-parts.tsx": "2026-11-21",
+    "apps/dashboard/src/lib/tab-keys.ts": "2026-11-21",
+    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-21"
+   }
+  },
+  {
+   "id": "smoke-study-load",
+   "kind": "bug",
+   "title": "'study page takes a link' failed once on phone under full-run load",
+   "detail": "Failed once in a full local run on 2026-11-21 (phone-dark), passed 3/3 alone and in the next full run. Same pattern as smoke-stat-cards-load: if it fails again, capture which assertion timed out before changing anything.",
+   "page": "study",
+   "found": "2026-11-21",
+   "status": "open"
   }
  ]
 }
