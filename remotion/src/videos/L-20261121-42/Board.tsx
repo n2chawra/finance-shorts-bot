@@ -61,7 +61,7 @@ const Wall: React.FC<{ t: number; zoom: number; cx: number; cy: number; children
         <defs>
           <radialGradient id="bl" cx="0.5" cy="0.35" r="0.7"><stop offset="0" stopColor="#ffe2b8" stopOpacity="0.2" /><stop offset="1" stopColor="#000" stopOpacity="0.4" /></radialGradient>
         </defs>
-        <g transform={`translate(960 540) scale(${Math.min(1.3, zoom)}) translate(${-cx} ${-cy})`}>
+        <g transform={`translate(960 540) scale(${Math.min(1.3, zoom * (1.012 + 0.012 * Math.sin(t / 70)))}) translate(${-cx - 18 * Math.sin(t / 55)} ${-cy - 10 * Math.sin(t / 80 + 1)})`}>
           <rect x={80} y={60} width={1760} height={900} fill="#6b4f36" />
           <rect x={100} y={80} width={1720} height={860} fill="#8a6a4a" />
           <WallThings />

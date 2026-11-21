@@ -21,7 +21,7 @@ export const Sheet: React.FC<{ t: number; zoom?: number; cx?: number; cy?: numbe
         {Array.from({ length: Math.ceil(H / 40) }, (_, i) => <line key={`gy${i}`} x1={0} y1={i * 40} x2={W} y2={i * 40} stroke="#59c8ff" strokeOpacity={i % 5 ? 0.12 : 0.26} strokeWidth={i % 5 ? 2 : 3} />)}
         <rect x={36} y={36} width={W - 72} height={H - 72} fill="none" stroke="#ffffff" strokeOpacity={0.45} strokeWidth={6} />
         <SheetFurniture />
-        <g transform={`translate(${W / 2} ${H / 2}) scale(${Math.min(1.3, zoom)}) translate(${-cx} ${-cy})`}>{children}</g>
+        <g transform={`translate(${W / 2} ${H / 2}) scale(${Math.min(1.3, zoom * (1.012 + 0.012 * Math.sin(t / 70)))}) translate(${-cx - 18 * Math.sin(t / 55)} ${-cy - 10 * Math.sin(t / 80 + 1)})`}>{children}</g>
       </svg>
       {html}
       <Texture t={t} />

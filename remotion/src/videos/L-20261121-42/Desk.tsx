@@ -27,7 +27,7 @@ const DeskStage: React.FC<{ t: number; zoom: number; cx: number; cy: number; lam
             <stop offset="1" stopColor="#000" stopOpacity="0.3" />
           </radialGradient>
         </defs>
-        <g transform={`translate(${W / 2} ${H / 2}) scale(${Math.min(1.3, zoom)}) translate(${-cx} ${-cy})`}>
+        <g transform={`translate(${W / 2} ${H / 2}) scale(${Math.min(1.3, zoom * (1.012 + 0.012 * Math.sin(t / 70)))}) translate(${-cx - 18 * Math.sin(t / 55)} ${-cy - 10 * Math.sin(t / 80 + 1)})`}>
           {Array.from({ length: 120 }, (_, i) => (
             <path key={i} d={`M -400 ${i * 16 - 300} C 400 ${i * 16 - 280 + (i % 5) * 9}, 1400 ${i * 16 - 318 + (i % 7) * 5}, 2400 ${i * 16 - 300}`} stroke={i % 3 ? "#000" : "#c99a64"} strokeOpacity={i % 3 ? 0.22 + (i % 4) * 0.06 : 0.16} strokeWidth={2 + (i % 4)} fill="none" />
           ))}
