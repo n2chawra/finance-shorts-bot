@@ -19,7 +19,7 @@ export interface LayerSpec {
   label?: string;            // the words on its sign ("SHUTTLE", "M42", "MADISON")
   on?: string;               // the event its moment lands on (default: the beat's `on`)
   // surface
-  preset?: "station" | "tube" | "stadium" | "tower" | "monument" | "bridge" | "dam" | "street";
+  preset?: "station" | "tube" | "needle" | "stadium" | "tower" | "monument" | "bridge" | "dam" | "street";
   wall?: string; trim?: string; glass?: string; vehicle?: string;
   // tunnel / cavern
   type?: string;             // tunnel: subway | rail | road | utility; chamber: secret | vault | bunker | machine;

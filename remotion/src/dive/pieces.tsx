@@ -106,7 +106,7 @@ export const ScreenCounter: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) =
   const value = unit ? fig.slice(0, fig.length - unit.length).trim() : fig;
   const label = unit ? `${c.label ?? ""} · ${unit.toUpperCase()}`.replace(/^ · /, "") : c.label ?? "";
   const W = 560, h = Math.min(300, (W - 60) / (0.62 * Math.max(1, value.length)) / 0.52);
-  return <Display x={930 - W} y={230} w={W} h={h} label={label} value={countText(value, k)} color={w.look.accent} k={k} />;
+  return <Display x={930 - W} y={300} w={W} h={h} label={label} value={countText(value, k)} color={w.look.accent} k={k} />;
 };
 
 // ------------------------------------------------------------------ the ground
@@ -207,6 +207,23 @@ export const Surface: React.FC<PieceProps> = ({ L, w, g }) => {
               <rect x={145 + i * 300} y={-290} width={190} height={290} fill={i === 1 ? look.light : shade(glass, -0.35)} stroke={INK} strokeWidth={5} />
             </g>
           ))}
+        </g>
+      ) : preset === "needle" ? (
+        // a supertall needle (the Burj Khalifa, 2026-11-21): stepped tiers narrowing to a spire on a podium
+        <g>
+          {[[560, 300], [440, 260], [330, 230], [230, 200], [140, 170], [80, 150]].reduce<{ y: number; el: React.ReactNode[] }>((acc, [tw, th], i) => {
+            const y = acc.y - th!;
+            acc.el.push(
+              <g key={i}>
+                <Block x={540 - tw! / 2} y={y} w={tw!} h={th!} fill={i % 2 ? trim : wall} shadow="right" />
+                {Array.from({ length: Math.floor(th! / 50) }, (_, r) => <line key={r} x1={540 - tw! / 2 + 14} x2={540 + tw! / 2 - 14} y1={y + 25 + r * 50} y2={y + 25 + r * 50} stroke={glass} strokeWidth={8} />)}
+              </g>);
+            acc.y = y;
+            return acc;
+          }, { y: -200, el: [] }).el}
+          <Limb a={[540, -1500]} b={[540, -2300]} w={22} color={trim} />
+          <Block x={160} y={-200} w={760} h={200} fill={trim} shadow="right" />
+          <rect x={440} y={-170} width={200} height={170} fill={glass} stroke={INK} strokeWidth={STROKE} />
         </g>
       ) : preset === "tower" ? (
         <g>
@@ -458,14 +475,15 @@ export const Foundation: React.FC<PieceProps> = ({ L, w, g }) => {
   return (
     <g>
       {type === "raft" ? (
-        <Block x={140} y={yb - 160} w={800} h={160} fill={c} shadow="bottom" />
+        // poured from the street down to its depth (it slid down from above the street before, 2026-11-21)
+        k > 0 ? <Block x={140} y={yTop} w={800} h={Math.max(12, (Math.max(yBot, yTop + 160) - yTop) * k)} fill={c} shadow="bottom" /> : null
       ) : Array.from({ length: n }, (_, i) => {
         const x = 170 + (i * 740) / Math.max(1, n - 1);
         const wd = type === "caissons" ? 150 : 46;
         return <Block key={i} x={x - wd / 2} y={yTop} w={wd} h={Math.max(10, yb - yTop)} fill={c} r={type === "caissons" ? 20 : 4} shadow="right" sw={5} />;
       })}
       {depthLabel(L, w) ? <Legible x={330} y={yBot + 20} w={420} h={96} size={57}><Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} /></Legible> : null}
-      {s.label ? <Legible x={140} y={yBot + 140} w={800} h={60} size={46}><Txt x={540} y={yBot + 170} size={46} fill={look.paper} weight={800}>{s.label.toUpperCase()}</Txt></Legible> : null}
+      {s.label && k > 0 ? <g opacity={k}><Legible x={140} y={yBot + 140} w={800} h={60} size={46}><Txt x={540} y={yBot + 170} size={46} fill={look.paper} weight={800}>{s.label.toUpperCase()}</Txt></Legible></g> : null}
     </g>
   );
 };
@@ -482,6 +500,8 @@ export const Water: React.FC<PieceProps> = ({ L, w, g }) => {
     <g>
       <rect x={-2400} y={y0} width={5900} height={y1 - y0} fill={aquifer ? shade(c, -0.2) : c} opacity={aquifer ? 0.85 : 1} />
       {!aquifer ? [0, 1, 2].map((i) => <path key={i} transform={`translate(${((g * (2 + i)) % 160) - 160} 0)`} d={`M -2400 ${y0 + 30 + i * 50} ${Array.from({ length: 40 }, () => "q 40 -16 80 0 t 80 0").join(" ")}`} fill="none" stroke={shade(c, 0.35)} strokeWidth={6} opacity={0.7} />) : null}
+      {/* an aquifer is water held in sand and gravel: draw the grains it soaks through */}
+      {aquifer ? Array.from({ length: 70 }, (_, i) => { const gx = -200 + r() * 1480, gy = y0 + 20 + r() * (y1 - y0 - 40), gs = 14 + r() * 34; return <ellipse key={`g${i}`} cx={gx} cy={gy} rx={gs} ry={gs * 0.7} fill={i % 3 ? look.sand : look.gravel} stroke={INK} strokeWidth={4} opacity={0.9} />; }) : null}
       {drops.map(([x, ph, sz], i) => <circle key={i} cx={x} cy={y0 + ((ph + g / 90) % 1) * (y1 - y0)} r={sz} fill={shade(c, 0.5)} opacity={0.6} />)}
       {s.type === "sea" ? <rect x={-2400} y={y1 - 60} width={5900} height={60} fill={look.sand} stroke={INK} strokeWidth={STROKE} /> : null}
       <Sign x={240} y={y0 + 120} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
