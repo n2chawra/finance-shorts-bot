@@ -1,1 +1,39 @@
-[]
+[
+  {
+    "id": "v-20261121-53",
+    "created_at": "2026-11-21T15:29:47.476811+00:00",
+    "template": "short_story",
+    "topic": {
+      "title": "What lies under Grand Central Terminal: the shuttle, the 4/5/6, the 7, the secret M42 power basement and Grand Central Madison's deep platforms",
+      "category": "station",
+      "reach": "global",
+      "feed_id": "2026-11-21-grand-central"
+    },
+    "title": "How Deep Does Grand Central Go?",
+    "description": "How deep does Grand Central go?\nBelow New York's most famous station run the shuttle, two more subway lines, a secret power basement and the deep platforms of Grand Central Madison.\nSources: Wikipedia, ASCE, MTA (2026).\nDepths from published sources. Cutaway illustrations, not to scale.",
+    "hook_style": "secret",
+    "cta": "Which station should we dive under next? Comment",
+    "style": {
+      "palette": "night",
+      "genre": "cinematic",
+      "key": "A",
+      "bpm": 92,
+      "look": {
+        "stage": "night",
+        "header": "neon",
+        "holder": "sign",
+        "entrance": "slide"
+      },
+      "voice": "am_michael",
+      "arms": {
+        "length": "20-25",
+        "title": "figure_or_name",
+        "style": "shot",
+        "category": "27"
+      }
+    },
+    "format": "short",
+    "story": "station_dive",
+    "shape": "straight-down"
+  }
+]

@@ -1,0 +1,803 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 53719,
+  "story": "station_dive",
+  "shape": "straight-down",
+  "currency": "USD",
+  "style": {
+    "palette": "night",
+    "recipe": "night-neon",
+    "genre": "cinematic",
+    "key": "A",
+    "bpm": 92,
+    "look": {
+      "stage": "night",
+      "header": "neon",
+      "holder": "sign",
+      "entrance": "slide"
+    }
+  },
+  "arms": {
+    "length": "20-25",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "secret",
+  "cta": "Which station should we dive under next? Comment",
+  "feed_id": "2026-11-21-grand-central",
+  "facts": [
+    {
+      "label": "Shuttle platforms depth",
+      "value": 20,
+      "unit": "ft",
+      "as_of": "2026",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station"
+    },
+    {
+      "label": "4/5/6 platforms depth",
+      "value": 50,
+      "unit": "ft",
+      "as_of": "2026",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station"
+    },
+    {
+      "label": "7 platform depth",
+      "value": 80,
+      "unit": "ft",
+      "as_of": "2026",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station"
+    },
+    {
+      "label": "M42 depth",
+      "value": 105,
+      "unit": "ft",
+      "as_of": "2026",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/M42_(sub-basement)"
+    },
+    {
+      "label": "Madison deepest platforms depth",
+      "value": 150,
+      "unit": "ft",
+      "as_of": "2026",
+      "source": "ASCE",
+      "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2023/03/long-awaited-grand-central-madison-station-opens-in-new-york-city"
+    },
+    {
+      "label": "Madison escalator ride",
+      "value": 90,
+      "unit": "s",
+      "as_of": "2023",
+      "source": "MTA guide",
+      "url": "https://away.mta.info/articles/welcome-to-grand-central-madison-guide"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "street",
+    "sec": 0.5,
+    "words": "How deep *Grand Central*?",
+    "tag": "Going down",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "street",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Grand Central has trains stacked under trains. How deep does it go?",
+      "events": {
+        "grand": {
+          "word": "Grand"
+        },
+        "trains": {
+          "word": "trains"
+        },
+        "stacked": {
+          "word": "stacked"
+        },
+        "deep": {
+          "word": "deep"
+        }
+      },
+      "sfx": [],
+      "params": {
+        "component": "Dive",
+        "place": "Grand Central Terminal on Forty-Second Street at night",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "stacked",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "grand",
+            "what": "the station's name glows on its front, cabs passing"
+          },
+          {
+            "at": "trains",
+            "what": "the street cutaway shows the first tunnel's light"
+          },
+          {
+            "at": "stacked",
+            "what": "the camera tips down toward the street"
+          },
+          {
+            "at": "deep",
+            "what": "the depth meter waits at zero"
+          }
+        ],
+        "things": [
+          "Grand Central facade",
+          "yellow cabs on the street",
+          "depth meter"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "surface",
+          "world": {
+            "look": "night",
+            "note": "Depths: Wikipedia, ASCE, MTA · not to scale",
+            "strata": [
+              {
+                "kind": "soil",
+                "toFt": 40
+              },
+              {
+                "kind": "bedrock",
+                "toFt": 400
+              }
+            ]
+          },
+          "layer": {
+            "kind": "surface",
+            "preset": "station",
+            "label": "Grand Central Terminal"
+          }
+        }
+      }
+    },
+    {
+      "id": "shuttle",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact1}: the shuttle to Times Square.",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "shuttle": {
+          "word": "shuttle"
+        },
+        "times": {
+          "word": "Times"
+        },
+        "square": {
+          "word": "Square"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the shuttle tunnel just under the street",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "times",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives through the street to the shuttle"
+          },
+          {
+            "at": "shuttle",
+            "what": "the grey shuttle train runs through"
+          },
+          {
+            "at": "times",
+            "what": "the sign with the depth swings"
+          },
+          {
+            "at": "square",
+            "what": "the train leaves the frame"
+          }
+        ],
+        "things": [
+          "shuttle tunnel",
+          "grey train",
+          "station sign"
+        ],
+        "fig": {
+          "depth": "{fact1}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.15,
+          "layer": {
+            "kind": "tunnel",
+            "type": "subway",
+            "label": "shuttle",
+            "color": "silver",
+            "stripe": "dimgray",
+            "bullets": [
+              [
+                "S",
+                "gray"
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "lex",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact2}: the four, five and six trains.",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "four": {
+          "word": "four"
+        },
+        "five": {
+          "word": "five"
+        },
+        "six": {
+          "word": "six"
+        },
+        "trains": {
+          "word": "trains"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the Lexington Avenue line tunnel",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "six",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives to the green-line tunnel"
+          },
+          {
+            "at": "four",
+            "what": "a green-striped train rushes in"
+          },
+          {
+            "at": "five",
+            "what": "its cars pass the sign"
+          },
+          {
+            "at": "six",
+            "what": "a third green train flashes past"
+          },
+          {
+            "at": "trains",
+            "what": "the camera eases back on the green line sign"
+          }
+        ],
+        "things": [
+          "Lexington tunnel",
+          "green-striped train",
+          "station sign"
+        ],
+        "fig": {
+          "depth": "{fact2}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.1,
+          "layer": {
+            "kind": "tunnel",
+            "type": "subway",
+            "dir": -1,
+            "label": "Lexington",
+            "color": "lightsteelblue",
+            "stripe": "seagreen",
+            "bullets": [
+              [
+                "4",
+                "seagreen"
+              ],
+              [
+                "5",
+                "seagreen"
+              ],
+              [
+                "6",
+                "seagreen"
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "seven",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact3}: the seven train to Queens. And below that?",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "seven": {
+          "word": "seven"
+        },
+        "train": {
+          "word": "train"
+        },
+        "queens": {
+          "word": "Queens"
+        },
+        "below": {
+          "word": "below"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the Flushing line tunnel",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "queens",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives to the purple-line tunnel"
+          },
+          {
+            "at": "seven",
+            "what": "the purple train runs in"
+          },
+          {
+            "at": "train",
+            "what": "its lights sweep the tunnel"
+          },
+          {
+            "at": "queens",
+            "what": "it heads off toward Queens"
+          },
+          {
+            "at": "below",
+            "what": "the camera tips down into dark rock"
+          }
+        ],
+        "things": [
+          "Flushing tunnel",
+          "purple-striped train",
+          "station sign"
+        ],
+        "fig": {
+          "depth": "{fact3}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.12,
+          "layer": {
+            "kind": "tunnel",
+            "type": "subway",
+            "label": "Flushing",
+            "color": "lightsteelblue",
+            "stripe": "darkorchid",
+            "bullets": [
+              [
+                "7",
+                "darkorchid"
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "m42",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact4}: M Forty-Two, a secret basement full of power machines.",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "forty-two": {
+          "word": "Forty-Two"
+        },
+        "secret": {
+          "word": "secret"
+        },
+        "basement": {
+          "word": "basement"
+        },
+        "machines": {
+          "word": "machines"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the secret power basement under the tracks",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "secret",
+            "size": "medium"
+          },
+          {
+            "at": "machines",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera dives into a hidden room"
+          },
+          {
+            "at": "forty-two",
+            "what": "the room's name stamp lands"
+          },
+          {
+            "at": "secret",
+            "what": "the red lamp flashes"
+          },
+          {
+            "at": "machines",
+            "what": "the machines hum and glow"
+          }
+        ],
+        "things": [
+          "secret basement",
+          "power machines",
+          "name stamp",
+          "red lamp"
+        ],
+        "fig": {
+          "depth": "{fact4}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 1.05,
+          "layer": {
+            "kind": "chamber",
+            "type": "secret",
+            "stamp": "M42",
+            "stampOn": "forty-two",
+            "props": [
+              "machines",
+              "lamp"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "madison",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact5}: Grand Central Madison, the deepest platforms.",
+      "events": {
+        "depth": {
+          "word": 0
+        },
+        "grand": {
+          "word": "Grand"
+        },
+        "madison": {
+          "word": "Madison"
+        },
+        "deepest": {
+          "word": "deepest"
+        },
+        "platforms": {
+          "word": "platforms"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "rush",
+          "at": "depth"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the Grand Central Madison cavern, the deepest platforms",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "deepest",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "depth",
+            "what": "the camera rushes down into the giant cavern"
+          },
+          {
+            "at": "madison",
+            "what": "two trains pull in on two levels"
+          },
+          {
+            "at": "deepest",
+            "what": "the escalator shaft lights up beside it"
+          },
+          {
+            "at": "platforms",
+            "what": "riders step off"
+          }
+        ],
+        "things": [
+          "Madison cavern",
+          "two-level platforms",
+          "trains",
+          "escalator shaft"
+        ],
+        "fig": {
+          "depth": "{fact5}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "depth",
+          "zoom": 0.95,
+          "layers": [
+            {
+              "kind": "cavern",
+              "label": "Madison",
+              "levels": 2,
+              "trains": [
+                "firebrick",
+                "royalblue"
+              ],
+              "stripe": "gainsboro",
+              "bullets": [
+                [
+                  "L",
+                  "royalblue"
+                ]
+              ]
+            },
+            {
+              "kind": "shaft",
+              "type": "escalator",
+              "fromFt": 62,
+              "toFt": 130,
+              "side": "right",
+              "glowOn": "deepest"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ride",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "The escalator ride up takes {fact6}.",
+      "events": {
+        "escalator": {
+          "word": "escalator"
+        },
+        "ride": {
+          "word": "ride"
+        },
+        "up": {
+          "word": "up"
+        },
+        "takes": {
+          "word": "takes"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "subboom",
+          "at": "takes"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the whole stack under Grand Central, pulled back",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "escalator",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "escalator",
+            "what": "the camera pulls back to the whole stack"
+          },
+          {
+            "at": "ride",
+            "what": "riders climb the glowing escalators"
+          },
+          {
+            "at": "up",
+            "what": "the ride timer appears"
+          },
+          {
+            "at": "takes",
+            "what": "the timer counts up to the figure"
+          }
+        ],
+        "things": [
+          "whole cutaway stack",
+          "escalators with riders",
+          "ride timer"
+        ],
+        "fig": {
+          "ride": "{fact6}"
+        },
+        "dive": {
+          "move": "pullback",
+          "on": "escalator",
+          "layer": {
+            "kind": "shaft",
+            "type": "pipe",
+            "fromFt": 0,
+            "toFt": 60,
+            "side": "left",
+            "counter": {
+              "fig": "ride",
+              "label": "RIDE UP",
+              "on": "up"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Just to get back up to Grand Central.",
+      "events": {
+        "just": {
+          "word": "Just"
+        },
+        "back": {
+          "word": "back"
+        },
+        "grand": {
+          "word": "Grand"
+        },
+        "central": {
+          "word": "Central"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "central"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "riding back up to Grand Central",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "central",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "just",
+            "what": "the camera rides up through the layers"
+          },
+          {
+            "at": "back",
+            "what": "the meter counts back down"
+          },
+          {
+            "at": "grand",
+            "what": "the street comes back into view"
+          },
+          {
+            "at": "central",
+            "what": "it lands on the opening frame"
+          }
+        ],
+        "things": [
+          "the layers passing",
+          "depth meter",
+          "Grand Central"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "rideup"
+        }
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}

@@ -1,0 +1,167 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-21T15:20:34.804723+00:00",
+    "finishedAt": "2026-11-21T15:20:34.804723+00:00",
+    "notes": [
+      "shape 'straight-down' is not in the library: one of levels, reveal, countdown, question-chain, the-zoom-in, or a new one {id, name, beats, why}"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:20:38.979958+00:00",
+    "finishedAt": "2026-11-21T15:20:38.979958+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:22:05.500063+00:00",
+    "finishedAt": "2026-11-21T15:22:05.500063+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T15:22:06.439279+00:00",
+    "finishedAt": "2026-11-21T15:22:06.439279+00:00",
+    "notes": [
+      "beat 'street'.params.place contains a typed number; use a placeholder: 'Grand Central Terminal on 42nd Street at night'",
+      "beat 'lex' lists the four, five, six trains: show each on its word (an event and a moment for six trains): a listed word is a picture, not just a caption",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T15:22:16.192400+00:00",
+    "finishedAt": "2026-11-21T15:22:16.192400+00:00",
+    "notes": [
+      "beat 'lex'.params.dive.layer.bullets[0][0] contains a typed number; use a placeholder: '4'",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T15:23:07.357448+00:00",
+    "finishedAt": "2026-11-21T15:23:07.357448+00:00",
+    "notes": [
+      "beat 'm42'.params.place contains a typed number; use a placeholder: 'M42, the secret power basement'",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T15:23:48.554501+00:00",
+    "finishedAt": "2026-11-21T15:23:48.554501+00:00",
+    "notes": [
+      "beat 'm42'.params.moments[1].what contains a typed number; use a placeholder: 'the stamp M42 lands'",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T15:23:54.161701+00:00",
+    "finishedAt": "2026-11-21T15:23:54.161701+00:00",
+    "notes": [
+      "description mentions '4,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '5', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '6,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '7', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '42', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "the source line 'Data: https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station · https://en.wikipedia.org/wiki/M42_(sub-basement) · https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2023/03/long-awaited-grand-central-madison-station-opens-in-new-york-city · MTA guide · May 2026' is too wide for the frame (8593 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'https://en.wikipedia.org/wiki/Grand_Central%E2%80%9342nd_Street_station'), one name per publisher",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-21T15:24:06.526017+00:00",
+    "finishedAt": "2026-11-21T15:24:06.526017+00:00",
+    "notes": [
+      "description mentions '4,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '5', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '6,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '7', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "description mentions '42', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:24:38.656917+00:00",
+    "finishedAt": "2026-11-21T15:24:38.656917+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:24:39.701255+00:00",
+    "finishedAt": "2026-11-21T15:24:39.701255+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:24:40.582134+00:00",
+    "finishedAt": "2026-11-21T15:25:31.224167+00:00",
+    "notes": [
+      "25 s, night/cinematic (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:26:17.451325+00:00",
+    "finishedAt": "2026-11-21T15:26:17.451325+00:00",
+    "notes": [
+      "All 6 facts confirmed on their source pages (WebFetch 2026-11-21): Wikipedia Grand Central-42nd St 'Relative depths' lists Shuttle 20 ft, Lexington 50 ft, Flushing 80 ft, LIRR lower level 150 ft; Wikipedia M42 '105 to 109 feet'; ASCE 'roughly 150 ft below street level'; MTA guide '182-feet... one-way trip takes about 90-seconds'. Verify list: Madison 150 ft agreed by ASCE and Wikipedia; M42 shown at the low end of 105-109 ft. Story current (Madison opened 2023). Shuttle to Times Square, 7 to Queens, Madison deepest platforms, M42 a power substation left off maps: all match sources; no security details beyond published. Description ends with the channel disclaimer. Notes (not blocking): MTA says 'about 90 seconds' for the escalators (script says 'takes 90 s'), and the ride ends at the Madison concourse inside Grand Central, not street level; M42 depth is 'thought to be' 105-109 ft."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:26:17.801395+00:00",
+    "finishedAt": "2026-11-21T15:26:17.801395+00:00",
+    "notes": [
+      "25 s directed dive under Grand Central: 0s names the terminal on its facade and asks how deep; 5-20s each layer lands on a lit place with its depth on a station sign or stamp (shuttle 20 FT, Flushing 80 FT, M42 105 FT, Madison 150 FT), trains and escalator riders moving, 6 places; 25s loops onto frame 1; no placeholders, no overlaps beyond the small 'not to scale' credit crossed by the escalator shaft at 15s; fuller than v-20261121-52; thumbnail names the subject; description has the channel disclaimer; layout/craft problems empty, audio -1/-16.1 dB like the channel's other Shorts"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:26:54.773010+00:00",
+    "finishedAt": "2026-11-21T15:28:46.505932+00:00",
+    "notes": [
+      "25 s, night/cinematic, peak -1.0 dB, mean -16.1 dB",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-21T15:29:47.477089+00:00",
+    "finishedAt": "2026-11-21T15:29:47.477089+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
