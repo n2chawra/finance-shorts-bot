@@ -1,0 +1,659 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 55377,
+  "story": "foundation_dive",
+  "shape": "what-holds-it-up",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "recipe": "desert-gold",
+    "genre": "cinematic",
+    "key": "F",
+    "bpm": 96,
+    "look": {
+      "stage": "desert",
+      "header": "sticky",
+      "holder": "receipt",
+      "entrance": "stamp"
+    }
+  },
+  "arms": {
+    "length": "20-25",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "challenge",
+  "cta": "Tallest tower or deepest station: what should we dive under next? Comment",
+  "feed_id": "2026-11-21-burj-khalifa",
+  "facts": [
+    {
+      "label": "Piles",
+      "value": 192,
+      "unit": "count",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+    },
+    {
+      "label": "Pile diameter",
+      "value": 1.5,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+    },
+    {
+      "label": "Pile length",
+      "value": 43,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+    },
+    {
+      "label": "Foundation depth",
+      "value": 50,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+    },
+    {
+      "label": "Foundation concrete weight",
+      "value": 110000,
+      "unit": "tonnes",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "street",
+    "sec": 0.5,
+    "words": "What's under *Burj Khalifa*?",
+    "tag": "Going down",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "street",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "The Burj Khalifa is the tallest tower on Earth. So what's underneath it?",
+      "events": {
+        "burj": {
+          "word": "Burj"
+        },
+        "tallest": {
+          "word": "tallest"
+        },
+        "earth": {
+          "word": "Earth"
+        },
+        "underneath": {
+          "word": "underneath"
+        }
+      },
+      "sfx": [],
+      "params": {
+        "component": "Dive",
+        "place": "the foot of the Burj Khalifa in Downtown Dubai",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "underneath",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "burj",
+            "what": "the name at the tower's base lights, cars passing at its foot"
+          },
+          {
+            "at": "tallest",
+            "what": "the tower glints in the sunset"
+          },
+          {
+            "at": "earth",
+            "what": "the camera starts to tip down"
+          },
+          {
+            "at": "underneath",
+            "what": "the depth meter waits at zero over the sand"
+          }
+        ],
+        "things": [
+          "the tower rising out of frame",
+          "cars passing at its foot",
+          "depth meter"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "surface",
+          "world": {
+            "look": "desert",
+            "unit": "m",
+            "note": "Depths: Wikipedia · not to scale",
+            "strata": [
+              {
+                "kind": "sand",
+                "toFt": 40
+              },
+              {
+                "kind": "gravel",
+                "toFt": 90
+              },
+              {
+                "kind": "bedrock",
+                "toFt": 400
+              }
+            ]
+          },
+          "layer": {
+            "kind": "surface",
+            "preset": "needle",
+            "label": "Burj Khalifa",
+            "wall": "#c9d3dc",
+            "trim": "#9aa8b6",
+            "glass": "#7fc3e8"
+          }
+        }
+      }
+    },
+    {
+      "id": "raft",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "A giant concrete slab carries the whole tower.",
+      "events": {
+        "giant": {
+          "word": "giant"
+        },
+        "concrete": {
+          "word": "concrete"
+        },
+        "slab": {
+          "word": "slab"
+        },
+        "tower": {
+          "word": "tower"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "giant"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the concrete raft under the tower",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "concrete",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "giant",
+            "what": "the camera dives under the street"
+          },
+          {
+            "at": "slab",
+            "what": "the raft slab is poured in under the tower"
+          },
+          {
+            "at": "concrete",
+            "what": "the slab sets grey and solid"
+          },
+          {
+            "at": "tower",
+            "what": "the tower's weight presses down on it"
+          }
+        ],
+        "things": [
+          "concrete raft",
+          "tower base",
+          "sand"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "dive",
+          "on": "giant",
+          "zoom": 0.85,
+          "layer": {
+            "kind": "foundation",
+            "type": "raft",
+            "ft": 30,
+            "depth": "none",
+            "on": "slab"
+          }
+        }
+      }
+    },
+    {
+      "id": "water",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Below it, salty groundwater that eats concrete. So how does it stand?",
+      "events": {
+        "below": {
+          "word": "Below"
+        },
+        "salty": {
+          "word": "salty"
+        },
+        "groundwater": {
+          "word": "groundwater"
+        },
+        "eats": {
+          "word": "eats"
+        },
+        "stand": {
+          "word": "stand"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "rush",
+          "at": "groundwater"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the salty groundwater under the raft",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "eats",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "below",
+            "what": "the camera sinks into wet sand"
+          },
+          {
+            "at": "salty",
+            "what": "the water band shimmers"
+          },
+          {
+            "at": "groundwater",
+            "what": "bubbles rise through it"
+          },
+          {
+            "at": "eats",
+            "what": "the water laps at the concrete"
+          },
+          {
+            "at": "stand",
+            "what": "the camera tips down into the dark below"
+          }
+        ],
+        "things": [
+          "groundwater band",
+          "bubbles",
+          "wet sand"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "dive",
+          "on": "below",
+          "zoom": 0.8,
+          "layer": {
+            "kind": "water",
+            "type": "aquifer",
+            "ft": 50,
+            "toFt": 70,
+            "depth": "none",
+            "label": "Groundwater"
+          }
+        }
+      }
+    },
+    {
+      "id": "piles",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "So {fact1} concrete piles, each {fact3} long, are drilled down through it.",
+      "events": {
+        "so": {
+          "word": "So"
+        },
+        "concrete": {
+          "word": "concrete"
+        },
+        "piles": {
+          "word": "piles"
+        },
+        "long": {
+          "word": "long"
+        },
+        "drilled": {
+          "word": "drilled"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "clatter",
+          "at": "drilled"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the forest of piles under the raft",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "drilled",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "so",
+            "what": "the piles are drilled down through the sand, the pile counter counting"
+          },
+          {
+            "at": "concrete",
+            "what": "the counter lands on the count"
+          },
+          {
+            "at": "piles",
+            "what": "the piles go on down past the groundwater"
+          },
+          {
+            "at": "long",
+            "what": "the camera follows them down"
+          },
+          {
+            "at": "drilled",
+            "what": "the bored holes reach full length, filled with concrete"
+          }
+        ],
+        "things": [
+          "concrete piles",
+          "pile counter",
+          "groundwater"
+        ],
+        "fig": {
+          "piles": "{fact1}",
+          "length": "{fact3}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "so",
+          "zoom": 0.8,
+          "layer": {
+            "kind": "foundation",
+            "type": "piles",
+            "count": 9,
+            "ft": 160,
+            "depth": "none",
+            "on": "so",
+            "counter": {
+              "fig": "piles",
+              "label": "PILES",
+              "on": "so"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "tips",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Their tips sit more than {fact4} below the street.",
+      "events": {
+        "tips": {
+          "word": "tips"
+        },
+        "sit": {
+          "word": "sit"
+        },
+        "below": {
+          "word": "below"
+        },
+        "street": {
+          "word": "street"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "tips"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the tips of the piles, the deepest point",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "below",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "tips",
+            "what": "the camera dives to the pile tips"
+          },
+          {
+            "at": "sit",
+            "what": "the beacon ring pulses at the bottom"
+          },
+          {
+            "at": "below",
+            "what": "the deepest tag stamps on"
+          },
+          {
+            "at": "street",
+            "what": "the meter holds at the bottom"
+          }
+        ],
+        "things": [
+          "pile tips",
+          "deepest point beacon",
+          "depth tag"
+        ],
+        "fig": {
+          "depth": "{fact4}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "tips",
+          "zoom": 1.0,
+          "layer": {
+            "kind": "deepest",
+            "text": "pile tips",
+            "on": "tips"
+          }
+        }
+      }
+    },
+    {
+      "id": "weight",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "The foundation alone weighs more than {fact5}.",
+      "events": {
+        "foundation": {
+          "word": "foundation"
+        },
+        "alone": {
+          "word": "alone"
+        },
+        "weighs": {
+          "word": "weighs"
+        },
+        "more": {
+          "word": "more"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "subboom",
+          "at": "weighs"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the whole foundation under the Burj Khalifa, pulled back",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "foundation",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "foundation",
+            "what": "the camera pulls back to the whole foundation"
+          },
+          {
+            "at": "alone",
+            "what": "the raft and piles glow together"
+          },
+          {
+            "at": "weighs",
+            "what": "the weight counter appears"
+          },
+          {
+            "at": "more",
+            "what": "the counter counts up the tonnes"
+          }
+        ],
+        "things": [
+          "whole foundation",
+          "weight counter"
+        ],
+        "fig": {
+          "weight": "{fact5}"
+        },
+        "dive": {
+          "move": "pullback",
+          "on": "foundation",
+          "layer": {
+            "kind": "counter",
+            "counter": {
+              "fig": "weight",
+              "label": "WEIGHT",
+              "on": "weighs"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "All of it, holding up the Burj Khalifa.",
+      "events": {
+        "all": {
+          "word": "All"
+        },
+        "holding": {
+          "word": "holding"
+        },
+        "burj": {
+          "word": "Burj"
+        },
+        "khalifa": {
+          "word": "Khalifa"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "khalifa"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "riding back up to the foot of the tower",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "khalifa",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "all",
+            "what": "the camera rides up through the layers"
+          },
+          {
+            "at": "holding",
+            "what": "the meter counts back down"
+          },
+          {
+            "at": "burj",
+            "what": "the tower's foot comes back into view"
+          },
+          {
+            "at": "khalifa",
+            "what": "it lands on the opening frame"
+          }
+        ],
+        "things": [
+          "the layers passing",
+          "depth meter",
+          "Burj Khalifa"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "rideup"
+        }
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}

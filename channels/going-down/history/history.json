@@ -72,5 +72,42 @@
     "format": "short",
     "story": "station_dive",
     "shape": "straight-down"
+  },
+  {
+    "id": "v-20261121-55",
+    "created_at": "2026-11-21T16:04:02.777875+00:00",
+    "template": "short_story",
+    "topic": {
+      "title": "What holds up the Burj Khalifa: a concrete raft, salty groundwater, and 192 bored piles reaching more than 50 m down",
+      "category": "tower",
+      "reach": "global",
+      "feed_id": "2026-11-21-burj-khalifa"
+    },
+    "title": "What's Under the Burj Khalifa?",
+    "description": "What's under the Burj Khalifa?\nUnder the world's tallest building sit a concrete raft, salty groundwater and a forest of bored concrete piles.\nSources: Wikipedia (2025).\nDepths from published sources. Cutaway illustrations, not to scale.",
+    "hook_style": "challenge",
+    "cta": "Tallest tower or deepest station: what should we dive under next? Comment",
+    "style": {
+      "palette": "ember",
+      "genre": "cinematic",
+      "key": "F",
+      "bpm": 96,
+      "look": {
+        "stage": "desert",
+        "header": "sticky",
+        "holder": "receipt",
+        "entrance": "stamp"
+      },
+      "voice": "am_michael",
+      "arms": {
+        "length": "20-25",
+        "title": "figure_or_name",
+        "style": "shot",
+        "category": "27"
+      }
+    },
+    "format": "short",
+    "story": "foundation_dive",
+    "shape": "what-holds-it-up"
   }
 ]
