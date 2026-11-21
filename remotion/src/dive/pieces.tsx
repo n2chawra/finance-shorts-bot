@@ -3,25 +3,53 @@
  * street level growing down (`w.Y(ft)`). Each piece is a pure function of the story frame `g` and its layer;
  * figures come from the layer's params.fig, never typed here.
  */
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { Ball, Block, Display, Glow, INK, Limb, STROKE, Tag, Txt, countText, rng, shade } from "../flat/kit";
-import { depthText, ramp, type DiveWorld, type Layer } from "./world";
+import { ANCHOR_Y, depthText, ramp, type DiveWorld, type Layer } from "./world";
 
 export interface PieceProps { L: Layer; w: DiveWorld; g: number }
 const unitOf = (w: DiveWorld) => w.cfg.unit ?? "ft";
 const depthLabel = (L: Layer, w: DiveWorld) => depthText(L.fig[L.spec.depth ?? "depth"], unitOf(w));
 
+// ------------------------------------------------------------------ legible at every zoom
+
+/** The camera this frame (Dive provides it), so world-space words can stay readable on screen. */
+export interface DiveCam { z: number; camY: number; cx: number; W: number; H: number }
+export const CamCtx = createContext<DiveCam>({ z: 1, camY: 0, cx: 540, W: 1080, H: 1920 });
+
+const SHOWN = 48, GROW_MAX = 1.3, MIN_READ = 45, BOTTOM = 130;
+/**
+ * Words drawn in the world (a sign, a tag, the landmark's name) shrink with the camera: at the opening framing
+ * (zoom 0.82) a 46 px sign read 37.7 px and failed the layout gate (2026-11-21, v-20261121-51). Legible grows
+ * its box about its centre by up to 1.3x so the text shows at 48 px or more, and where it still can't be read
+ * (the whole-stack pull-back, passing out of the frame or through the bottom 130 px on a camera move) it is
+ * scenery that frame, not text to read: the layout probe skips it there.
+ */
+export const Legible: React.FC<{ x: number; y: number; w: number; h: number; size: number; children: React.ReactNode }> = ({ x, y, w, h, size, children }) => {
+  const c = useContext(CamCtx);
+  const s = Math.min(GROW_MAX, Math.max(1, SHOWN / (size * c.z)));
+  const mx = x + w / 2, my = y + h / 2;
+  const sx0 = c.cx + (mx - (w * s) / 2 - c.cx) * c.z, sx1 = c.cx + (mx + (w * s) / 2 - c.cx) * c.z;
+  const sy0 = ANCHOR_Y + (my - (h * s) / 2 - c.camY) * c.z, sy1 = ANCHOR_Y + (my + (h * s) / 2 - c.camY) * c.z;
+  const scenery = size * s * c.z < MIN_READ || sx0 < 0 || sx1 > c.W || sy0 < 0 || sy1 > c.H - BOTTOM;
+  return (
+    <g data-probe={scenery ? "skip" : undefined} transform={s > 1 ? `translate(${mx} ${my}) scale(${s}) translate(${-mx} ${-my})` : undefined}>
+      {children}
+    </g>
+  );
+};
+
 // ------------------------------------------------------------------ shared bits
 
 export const Bullet: React.FC<{ x: number; y: number; r: number; color: string; t: string }> = ({ x, y, r, color, t }) => (
-  <g><circle cx={x} cy={y} r={r} fill={color} stroke={INK} strokeWidth={4} /><Txt x={x} y={y + 2} size={r * 1.25} fill="#fff" weight={800}>{t}</Txt></g>
+  <g><circle cx={x} cy={y} r={r} fill={color} stroke={INK} strokeWidth={4} /><Txt x={x} y={y + 2} size={r * 1.25} fill="#fff" weight={800} deco>{t}</Txt></g>
 );
 
 /** A hanging station sign: line bullets, a name and the depth figure in the accent colour. */
 export const Sign: React.FC<{ x: number; y: number; text: string; depth: string; bullets?: [string, string][]; accent: string; w?: number }> = ({ x, y, text, depth, bullets = [], accent, w = 600 }) => {
   const h = 96;
   return (
-    <g>
+    <Legible x={x} y={y} w={w} h={h} size={46}>
       <Limb a={[x + 120, y - 70]} b={[x + 120, y]} w={8} color="#2a2a33" sw={3} />
       <Limb a={[x + w - 120, y - 70]} b={[x + w - 120, y]} w={8} color="#2a2a33" sw={3} />
       <Block x={x} y={y} w={w} h={h} fill="#111318" r={8} shadow="bottom" />
@@ -29,7 +57,7 @@ export const Sign: React.FC<{ x: number; y: number; text: string; depth: string;
       {bullets.map(([t, c], i) => <Bullet key={i} x={x + 56 + i * 74} y={y + h / 2 + 6} r={30} color={c} t={t} />)}
       <Txt x={x + 40 + bullets.length * 74} y={y + h / 2 + 6} size={46} fill="#f4f1e8" anchor="start" weight={700}>{text}</Txt>
       <Txt x={x + w - 26} y={y + h / 2 + 6} size={48} fill={accent} anchor="end" weight={800}>{depth}</Txt>
-    </g>
+    </Legible>
   );
 };
 
@@ -59,16 +87,15 @@ export const Train: React.FC<{ x: number; y: number; color: string; stripe: stri
   </g>
 );
 
-/** A counter on a layer (a ride timer, a pump rate): counts its figure up on its word. */
-const Counter: React.FC<PieceProps & { y: number }> = ({ L, w, g, y }) => {
-  const c = L.spec.counter;
-  if (!c) return null;
-  const v = L.fig[c.fig];
-  if (!v) return null;
-  const t0 = L.at(c.on);
-  const k = ramp(g, t0 - 3, t0 + 18);
-  const left = c.side === "left";
-  return <Display x={left ? -1100 : 1180} y={y} w={1000} h={600} label={c.label ?? ""} value={countText(v, k)} color={w.look.accent} k={k} />;
+/** The layer counters (a ride timer, a pump rate, a count): drawn on screen by Dive (`ScreenCounter`), so
+ * they are never off the frame; the latest counter whose word has come shows, counting up on that word. */
+export const ScreenCounter: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) => {
+  const live = w.layers.filter((L) => L.spec.counter && L.fig[L.spec.counter.fig]).map((L) => ({ L, t0: L.at(L.spec.counter!.on) }))
+    .filter(({ t0 }) => g >= t0 - 3).sort((a, b) => b.t0 - a.t0)[0];
+  if (!live) return null;
+  const c = live.L.spec.counter!;
+  const k = ramp(g, live.t0 - 3, live.t0 + 18);
+  return <Display x={420} y={230} w={500} h={300} label={c.label ?? ""} value={countText(live.L.fig[c.fig]!, k)} color={w.look.accent} k={k} />;
 };
 
 // ------------------------------------------------------------------ the ground
@@ -119,7 +146,8 @@ export const Surface: React.FC<PieceProps> = ({ L, w, g }) => {
   const laps = Math.max(1, Math.round((w.total / 30) * 260 / 3600));
   const car = (i: number) => (((g / w.total) * laps + i / 5) % 1) * 3600 - 1500;
   const water = preset === "bridge" || preset === "dam";
-  const name = s.label ? <Txt x={540} y={preset === "station" ? -1040 : -120} size={46} fill={shade(wall, -0.6)} weight={800}>{s.label.toUpperCase()}</Txt> : null;
+  const ny = preset === "station" ? -1040 : -120;
+  const name = s.label ? <Legible x={90} y={ny - 30} w={900} h={60} size={46}><Txt x={540} y={ny} size={46} fill={shade(wall, -0.6)} weight={800}>{s.label.toUpperCase()}</Txt></Legible> : null;
   return (
     <g>
       <rect x={-2400} y={-3200} width={5900} height={3200} fill={look.skyLow} />
@@ -252,7 +280,6 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
       </g>
       <rect x={x0} y={yb - h} width={x1 - x0} height={h + 40} rx={26} fill="none" stroke={INK} strokeWidth={STROKE} />
       <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} />
-      <Counter L={L} w={w} g={g} y={yb - h - 120} />
     </g>
   );
 };
@@ -294,18 +321,17 @@ export const Chamber: React.FC<PieceProps> = ({ L, w, g }) => {
       {has("crates") ? [0, 1, 2].map((i) => <Block key={i} x={600 + i * 110 - (i === 2 ? 55 : 0)} y={yb - (i === 2 ? 200 : 100)} w={100} h={100} fill="#b07a45" r={4} shadow="right" />) : null}
       {has("bunks") ? [0, 1].map((i) => <g key={i}><Block x={160} y={yb - 110 - i * 120} w={360} h={40} fill="#6b705c" shadow="bottom" /><Limb a={[170, yb]} b={[170, yb - 250]} w={10} color="#555" sw={3} /><Limb a={[510, yb]} b={[510, yb - 250]} w={10} color="#555" sw={3} /></g>) : null}
       {has("desk") ? <g><Block x={600} y={yb - 110} w={260} h={30} fill="#8a5a3a" shadow="bottom" /><Block x={620} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /><Block x={820} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /></g> : null}
-      {s.stamp ? <Tag x={170} y={yb - h + 26} w={260} h={110} text={s.stamp} bg={look.accent} k={stamp} rot={-4} /> : null}
+      {s.stamp ? <Legible x={170} y={yb - h + 26} w={260} h={110} size={66}><Tag x={170} y={yb - h + 26} w={260} h={110} text={s.stamp} bg={look.accent} k={stamp} rot={-4} /></Legible> : null}
       {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} /> : null}
-      {!s.label ? <Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8)} rot={3} /> : null}
+      {!s.label ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8)} rot={3} /></Legible> : null}
       {has("blueprint") && plans > 0 ? (
         <g opacity={plans} transform={`rotate(6 760 ${yb - h - 60})`}>
           <Block x={600} y={yb - h - 170} w={330} h={220} fill="#2f6db3" r={6} shadow="bottom" />
           {[1, 2, 3, 4].map((k) => <line key={k} x1={600} x2={930} y1={yb - h - 170 + k * 44} y2={yb - h - 170 + k * 44} stroke="#5f97d6" strokeWidth={3} />)}
           <rect x={640} y={yb - h - 140} width={250} height={150} fill="none" stroke="#e8f2ff" strokeWidth={5} strokeDasharray="18 14" />
-          <Txt x={765} y={yb - h - 65} size={110} fill="#ff5a4a" weight={900} stroke={INK}>?</Txt>
+          <Legible x={715} y={yb - h - 125} w={100} h={120} size={110}><Txt x={765} y={yb - h - 65} size={110} fill="#ff5a4a" weight={900} stroke={INK}>?</Txt></Legible>
         </g>
       ) : null}
-      <Counter L={L} w={w} g={g} y={yb - h - 140} />
     </g>
   );
 };
@@ -332,7 +358,6 @@ export const Cavern: React.FC<PieceProps> = ({ L, w, g }) => {
         </g>
       ))}
       <Sign x={240} y={yLow - 270} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} />
-      <Counter L={L} w={w} g={g} y={w.Y(w.maxFt * 0.44)} />
     </g>
   );
 };
@@ -375,7 +400,6 @@ export const Shaft: React.FC<PieceProps> = ({ L, w, g }) => {
         const x = a[0] + (b[0] - a[0]) * u, y = a[1] + (b[1] - a[1]) * u;
         return <g key={i}><Ball x={x} y={y - 70} r={20} fill="#f2c9a0" shadow={false} sw={4} /><Block x={x - 18} y={y - 52} w={36} h={50} fill={colors[i % colors.length]!} r={10} shadow={false} sw={4} /></g>;
       })}
-      <Counter L={L} w={w} g={g} y={Math.min(y0, y1)} />
     </g>
   );
 };
@@ -398,9 +422,8 @@ export const Foundation: React.FC<PieceProps> = ({ L, w, g }) => {
         const wd = type === "caissons" ? 150 : 46;
         return <Block key={i} x={x - wd / 2} y={yTop} w={wd} h={Math.max(10, yb - yTop)} fill={c} r={type === "caissons" ? 20 : 4} shadow="right" sw={5} />;
       })}
-      <Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} />
-      {s.label ? <Txt x={540} y={yBot + 170} size={46} fill={look.paper} weight={800}>{s.label.toUpperCase()}</Txt> : null}
-      <Counter L={L} w={w} g={g} y={yBot - 400} />
+      <Legible x={330} y={yBot + 20} w={420} h={96} size={57}><Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} /></Legible>
+      {s.label ? <Legible x={140} y={yBot + 140} w={800} h={60} size={46}><Txt x={540} y={yBot + 170} size={46} fill={look.paper} weight={800}>{s.label.toUpperCase()}</Txt></Legible> : null}
     </g>
   );
 };
@@ -420,7 +443,6 @@ export const Water: React.FC<PieceProps> = ({ L, w, g }) => {
       {drops.map(([x, ph, sz], i) => <circle key={i} cx={x} cy={y0 + ((ph + g / 90) % 1) * (y1 - y0)} r={sz} fill={shade(c, 0.5)} opacity={0.6} />)}
       {s.type === "sea" ? <rect x={-2400} y={y1 - 60} width={5900} height={60} fill={look.sand} stroke={INK} strokeWidth={STROKE} /> : null}
       <Sign x={240} y={y0 + 120} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} accent={look.accent} />
-      <Counter L={L} w={w} g={g} y={y0 - 100} />
     </g>
   );
 };
@@ -438,7 +460,7 @@ export const Deepest: React.FC<PieceProps> = ({ L, w, g }) => {
       <ellipse cx={540} cy={y} rx={460 * k} ry={60 * k} fill="none" stroke={look.accent} strokeWidth={14} />
       <Limb a={[900, y]} b={[900, y - 330]} w={12} color="#d6dbe4" sw={4} />
       <path d={`M 906 ${y - 330} L 1060 ${y - 290} L 906 ${y - 250} Z`} fill={look.accent} stroke={INK} strokeWidth={5} />
-      <Tag x={250} y={y + 60} w={580} h={110} text={`${(L.spec.text ?? "deepest point").toUpperCase()} · ${depthLabel(L, w)}`} size={48} bg={look.accent} k={k} rot={-2} />
+      <Legible x={250} y={y + 60} w={580} h={110} size={48}><Tag x={250} y={y + 60} w={580} h={110} text={`${(L.spec.text ?? "deepest point").toUpperCase()} · ${depthLabel(L, w)}`} size={48} bg={look.accent} k={k} rot={-2} /></Legible>
     </g>
   );
 };

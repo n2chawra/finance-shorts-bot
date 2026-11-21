@@ -9,7 +9,7 @@
 import React from "react";
 import type { SceneProps } from "../scenes/kit";
 import { INK, STROKE, SourceLine, Stage, Txt, maxZoomFor } from "../flat/kit";
-import { PIECES, Strata } from "./pieces";
+import { CamCtx, PIECES, ScreenCounter, Strata } from "./pieces";
 import { ANCHOR_Y, cameraAt, diveWorld, type DiveWorld } from "./world";
 
 /** The depth meter on the left edge: a bar filling to the camera's depth, the depth in ft and in m (m computed here). */
@@ -59,9 +59,12 @@ const Dive: React.FC<SceneProps> = (p) => {
     <>
       <Stage p={p} bg={w.look.deep}>
         <g transform={`translate(${cx + Math.sin(g * 2) * shake} ${ANCHOR_Y}) scale(${z}) translate(${-cx} ${-cam.y})`}>
-          <World w={w} g={g} />
+          <CamCtx.Provider value={{ z, camY: cam.y, cx, W: p.tl.width, H: p.tl.height }}>
+            <World w={w} g={g} />
+          </CamCtx.Provider>
         </g>
         <DepthMeter w={w} ft={cam.ft} />
+        <ScreenCounter w={w} g={g} />
         {w.cfg.note ? <Txt x={cx} y={120} size={26} fill="#f4f1e8" deco>{w.cfg.note}</Txt> : null}
       </Stage>
       <SourceLine p={p} />

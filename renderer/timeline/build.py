@@ -74,6 +74,16 @@ OCTOBER_PACE = "october-voice-pace"
 OCTOBER_VOICE = 1.4
 
 
+def beat_pad(fmt: str) -> tuple[float, float]:
+    """The silence before and after each beat's line (story seconds): LEAD and TAIL, or the channel's own
+    (channel.json `beatPad`: {"short": [lead, tail]}). Going Down's approved sample ran its narration on with
+    almost no pause between layers (70 words in 22 s); 0.85 s a beat made its first Short 28 s (2026-11-21)."""
+    own = (channel_pack.load().get("beatPad") or {}).get(fmt)
+    if isinstance(own, (list, tuple)) and len(own) == 2 and all(isinstance(x, (int, float)) and 0 <= x <= 1 for x in own):
+        return float(own[0]), float(own[1])
+    return LEAD, TAIL
+
+
 def voice_speed(script: dict, fmt: str, tempo: float) -> float:
     """The voice's speed: the script's speed at the video's tempo. Every Short speaks at the October pace since
     2026-11-12 (the experiment was adopted into the weekly loop's first champion recipe)."""
@@ -710,6 +720,7 @@ def check_script(script: dict) -> dict:
     scenes, out, timed = scene_names(), [], []
     tempo = float(script.get("tempo", TEMPOS[fmt]))
     speed = voice_speed(script, fmt, tempo)
+    pad = beat_pad(fmt)
     for b in beats:
         where = f"beat {b.id!r}"
         if b.scene not in scenes:
@@ -732,9 +743,9 @@ def check_script(script: dict) -> dict:
         out.append({"id": b.id, "scene": b.scene, "speaker": b.speaker, "say": text, "spoken": spoken})
         if fmt == "short":
             line = _estimate(spoken, speed) if spoken else None
-            dur = max(b.min_sec/tempo, LEAD/tempo + line.seconds + TAIL/tempo) if line else max(b.min_sec/tempo, GAP_NO_VOICE/tempo)
+            dur = max(b.min_sec/tempo, pad[0]/tempo + line.seconds + pad[1]/tempo) if line else max(b.min_sec/tempo, GAP_NO_VOICE/tempo)
             frames = max(1, round(dur*FPS))
-            events = {n: round(_event_time(spec, line.words if line else [], LEAD/tempo, frames/FPS, where, tempo)*FPS)
+            events = {n: round(_event_time(spec, line.words if line else [], pad[0]/tempo, frames/FPS, where, tempo)*FPS)
                       for n, spec in b.events.items()}
             timed.append({"id": b.id, "frames": frames, "events": events})
     # a long video ends on the end card; a Short loops back to its hook instead and shows the
@@ -764,7 +775,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     lang, disclaimer = pack["language"], (pack["disclaimer"] or DISCLAIMER)
     tempo = float(script.get("tempo", TEMPOS[fmt]))
     speed = voice_speed(script, fmt, tempo)        # the voice, at the video's pace
-    lead, tail, gap = LEAD/tempo, TAIL/tempo, GAP_NO_VOICE/tempo
+    pad = beat_pad(fmt)
+    lead, tail, gap = pad[0]/tempo, pad[1]/tempo, GAP_NO_VOICE/tempo
 
     beats = [Beat(**b) for b in script["beats"]]
     if len({b.id for b in beats}) != len(beats):

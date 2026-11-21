@@ -122,3 +122,22 @@ def test_geography_units_on_screen_and_spoken():
     assert spoken("4,300 km", "USD") == "four thousand three hundred kilometres"
     assert spoken("10,689 km²", "USD") == "ten thousand six hundred eighty nine square kilometres"
     assert spoken("58 m", "USD") == "fifty eight metres"
+
+
+def test_depth_and_time_units_on_screen_and_spoken():
+    """Feet, seconds and minutes for Going Down (2026-11-21): '150 ft' is spoken 'one hundred fifty feet'."""
+    from renderer.engine.formatting import fact_value
+    from renderer.engine.voice import spoken
+    assert fact_value(150, "ft", "USD") == "150 ft"
+    assert fact_value(90, "s", "USD") == "90 s"
+    assert fact_value(5, "min", "USD") == "5 min"
+    assert spoken("150 ft", "USD") == "one hundred fifty feet"
+    assert spoken("1 ft", "USD") == "one foot"
+    assert spoken("90 s", "USD") == "ninety seconds"
+    assert spoken("5 min", "USD") == "five minutes"
+
+
+def test_a_fact_dated_by_its_year_alone():
+    from renderer.engine.formatting import month_year
+    assert month_year("2025") == "2025"
+    assert month_year("2026-11-21") == "Nov 2026"
