@@ -1,0 +1,381 @@
+{
+  "id": "v-20261121-42",
+  "createdAt": "2026-11-21T16:34:47.401094+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Lac-Mégantic: a parked oil train with too few hand brakes rolled away once its locomotive's engine was shut down after a fire",
+    "category": "rail",
+    "reach": "global",
+    "feed_id": "2026-11-20-lac-megantic"
+  },
+  "title": "How Did a Train With No One Aboard Reach Lac-Mégantic?",
+  "description": "How did a train with no one aboard reach Lac-Mégantic at full speed?\nIt was parked on a hill for the night. We rebuild it in 3D: the hand brakes, the brake test, the fire, and the air that slowly leaked away.\nSources: TSB, TSB news release (Aug 2014).\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.",
+  "hashtags": [
+    "#Shorts",
+    "#LacMegantic",
+    "#TrainDisaster",
+    "#EngineeringFailure",
+    "#RailSafety"
+  ],
+  "hookStyle": "question",
+  "cta": "Hand brakes or the brake test: which should have stopped it? Comment",
+  "seed": 52913,
+  "style": {
+    "palette": "ember",
+    "genre": "brace",
+    "key": "E",
+    "bpm": 68,
+    "voice": "bm_lewis",
+    "arms": {
+      "length": "30-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "A train with no one aboard reached Lac-Mégantic. How?",
+        "start": 0.3,
+        "seconds": 3.73,
+        "window": 4.37,
+        "fill": 0.854
+      },
+      {
+        "scene": "speed",
+        "text": "It was doing 65 miles an hour.",
+        "start": 4.67,
+        "seconds": 2.36,
+        "window": 3.03,
+        "fill": 0.779
+      },
+      {
+        "scene": "hill",
+        "text": "Its driver had parked it on a downhill main line.",
+        "start": 7.7,
+        "seconds": 3.2,
+        "window": 3.83,
+        "fill": 0.836
+      },
+      {
+        "scene": "brakes",
+        "text": "He set the hand brakes. Too few.",
+        "start": 11.53,
+        "seconds": 2.11,
+        "window": 2.77,
+        "fill": 0.762
+      },
+      {
+        "scene": "test",
+        "text": "The brake test was done with the air brakes on. So what was holding it?",
+        "start": 14.3,
+        "seconds": 4.18,
+        "window": 4.83,
+        "fill": 0.865
+      },
+      {
+        "scene": "fire",
+        "text": "Then the locomotive caught fire. Firefighters shut its engine down.",
+        "start": 19.13,
+        "seconds": 4.32,
+        "window": 4.93,
+        "fill": 0.876
+      },
+      {
+        "scene": "leak",
+        "text": "With the engine off, its brakes leaked away.",
+        "start": 24.07,
+        "seconds": 2.79,
+        "window": 3.43,
+        "fill": 0.813
+      },
+      {
+        "scene": "roll",
+        "text": "In the dark, it rolled toward the town.",
+        "start": 29.5,
+        "seconds": 2.27,
+        "window": 2.9,
+        "fill": 0.783
+      },
+      {
+        "scene": "derail",
+        "text": "63 tank cars of crude oil derailed in the town centre.",
+        "start": 32.4,
+        "seconds": 4.28,
+        "window": 4.93,
+        "fill": 0.868
+      },
+      {
+        "scene": "toll",
+        "text": "47 people were killed.",
+        "start": 37.33,
+        "seconds": 1.92,
+        "window": 2.57,
+        "fill": 0.747
+      },
+      {
+        "scene": "board",
+        "text": "18 factors were found. Hand brakes or the test: which should have stopped it?",
+        "start": 39.9,
+        "seconds": 4.78,
+        "window": 5.43,
+        "fill": 0.88
+      },
+      {
+        "scene": "loop",
+        "text": "It began with a train left on a hill.",
+        "start": 45.33,
+        "seconds": 2.54,
+        "window": 3.2,
+        "fill": 0.794
+      }
+    ]
+  },
+  "durationSec": 49,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.5,
+    "lufs": -16.1,
+    "music_under_voice_db": 22.4
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_lewis",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of changed loop line only: 'It began with a train left on a hill, with no one aboard.' True per TSB R13D0054 (the train was left unattended on the main line on a descending grade at Nantes, the start of the cause chain); no longer reduces 18 factors to one cause, so the earlier style note is resolved. All other facts as previously confirmed (TSB official search results)."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: HELD stamp at 18s and LAC-MÉGANTIC label at 40-44s now clear; every beat in a lit place (hero brake-shoe shot 28s, derail 34-38s), loop closes, codes/audio/disclaimer ok; minor: the 18s '?' grazes the right edge but reads"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-21T14:50:31.791223+00:00",
+      "finishedAt": "2026-11-21T14:50:31.791223+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T14:52:02.724824+00:00",
+      "finishedAt": "2026-11-21T14:52:02.724824+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "the picture shows figures the voice never says (toll {fact1}): say each one where it appears, with what it means (\"he gets {x} now, and {y} waits ten years\"), or take it off the picture; viewers can't follow numbers nobody explains",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T14:52:13.495904+00:00",
+      "finishedAt": "2026-11-21T14:52:13.495904+00:00",
+      "notes": [
+        "beat 'test': params.camera key at 'nothing' is not one of this beat's events"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T14:52:17.728803+00:00",
+      "finishedAt": "2026-11-21T14:52:17.728803+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-21T14:53:16.561602+00:00",
+      "finishedAt": "2026-11-21T14:53:16.561602+00:00",
+      "notes": [
+        "TSB pages 403 to fetch; all 5 facts confirmed by search on official TSB results (tsb.gc.ca R13D0054 summary/report/backgrounder, canada.ca news release): 6 Jul 2013, 65 mph, 63 tank cars derailed, 47 dead, 18 causes and contributing factors. Chain matches TSB findings: one-person crew, 7 hand brakes insufficient, hand-brake test done with locomotive air brakes applied, Nantes fire dept shut the lead locomotive down per railway instructions, independent-brake air leaked off. Topic verify items (72 cars, 7 miles, Musi-Cafe) not used. No blame beyond report, toll stated once, description ends with channel disclaimer. Note: loop line 'All because a train was left on a hill' simplifies 18 factors (style only)."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-21T14:55:13.754943+00:00",
+      "finishedAt": "2026-11-21T14:55:13.754943+00:00",
+      "notes": [
+        "Re-review of changed loop line only: 'It began with a train left on a hill, with no one aboard.' True per TSB R13D0054 (the train was left unattended on the main line on a descending grade at Nantes, the start of the cause chain); no longer reduces 18 factors to one cause, so the earlier style note is resolved. All other facts as previously confirmed (TSB official search results)."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:00:55.496097+00:00",
+      "finishedAt": "2026-11-21T15:00:55.496097+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:02:16.973250+00:00",
+      "finishedAt": "2026-11-21T15:05:53.934095+00:00",
+      "notes": [
+        "7 of 11 stills are mostly empty background (at 15 s, 25 s, 30 s, 35 s, 40 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 49% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:07:28.104880+00:00",
+      "finishedAt": "2026-11-21T15:10:24.644219+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 40 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 49% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:11:09.899732+00:00",
+      "finishedAt": "2026-11-21T15:14:01.219436+00:00",
+      "notes": [
+        "49 s, ember/brace (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 49% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:14:52.452990+00:00",
+      "finishedAt": "2026-11-21T15:14:52.452990+00:00",
+      "notes": [
+        "[scene] 45.0s board beat (Board.tsx): the red '?' stamp sits on top of the third row's text, covering 'WITH' in 'BRAKE TEST WITH AIR BRAKES ON', the very choice the closing question asks about; move the '?' clear of the rows (e.g. below the list or beside the title)",
+        "[script] 40.0s board beat: the investigators' board is a floating card on a bare blueprint grid with the top half of the frame empty (one row typed on) - no place, the figure 18 on a headline line rather than on a thing; put the board in a room or on a desk/wall (lesson 6 diagrams as inserts is met, but rule D wants a place)",
+        "[script] lessons.md #7 repeated: the Short's first frame is the train approaching, not the failing part (the brake shoe / hand brake) a second before failure already amber, and no still shows the failure itself in a frame-filling cutaway (35.0s is the tank cars before 'derailed'); open on the brake letting go and make the derail the hero shot",
+        "[scene] lessons.md #5: the locomotive at 10.0s and 20.0s is plain red boxes with flat paint, window cut-outs and no wear or detail, and the town at 35.0s is box houses; give the loco real materials and detail",
+        "[script] 25.0s leak diagram: the brake wheel circle on the right runs to the frame's right edge into the right-hand button column; pull it in"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:16:14.315755+00:00",
+      "finishedAt": "2026-11-21T15:19:14.661686+00:00",
+      "notes": [
+        "49 s, ember/brace (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 49% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:24:50.472161+00:00",
+      "finishedAt": "2026-11-21T15:27:47.542676+00:00",
+      "notes": [
+        "49 s, ember/brace (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 49% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-21T15:31:48.100391+00:00",
+      "finishedAt": "2026-11-21T15:31:48.100391+00:00",
+      "notes": [
+        "[scene] 18.0s test beat (Test.tsx): the red '?' lands on top of the green HELD stamp, covering 'D' and most of the word, so the beat's answer (air brakes held it) is hidden by the question mark; place the '?' clear of the stamp (e.g. above HAND BRAKES or right of the HOLD TEST bar)",
+        "[scene] 40.0-44.0s board beat (Board.tsx line profile): the moving train marker passes over the red 'LAC-MÉGANTIC' label (reads 'LAC-MÉGANT_C' at 44s) and the red X sits on its last letter; put the label above the line end or stop the marker before it, so the town's name stays readable"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:32:42.270376+00:00",
+      "finishedAt": "2026-11-21T15:35:33.014518+00:00",
+      "notes": [
+        "49 s, ember/brace (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 49% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:39:22.273436+00:00",
+      "finishedAt": "2026-11-21T15:39:22.273436+00:00",
+      "notes": [
+        "Round 3: HELD stamp at 18s and LAC-MÉGANTIC label at 40-44s now clear; every beat in a lit place (hero brake-shoe shot 28s, derail 34-38s), loop closes, codes/audio/disclaimer ok; minor: the 18s '?' grazes the right edge but reads"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T15:39:32.229215+00:00",
+      "finishedAt": "2026-11-21T16:34:39.458044+00:00",
+      "notes": [
+        "49 s, ember/brace, peak -1.0 dB, mean -18.5 dB",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 49% of the video; between 50% and 85%",
+        "warning: integrated loudness -16.1 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-21T16:34:47.401371+00:00",
+      "finishedAt": "2026-11-21T16:34:47.401371+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261121-42",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261121-42"
+  }
+}

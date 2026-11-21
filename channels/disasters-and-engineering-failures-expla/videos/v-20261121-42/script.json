@@ -1,0 +1,937 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52913,
+ "story": "promo_failure_moment",
+ "shape": "the-chain",
+ "currency": "USD",
+ "style": {
+  "recipe": "night-grid",
+  "palette": "ember",
+  "genre": "brace",
+  "key": "E",
+  "bpm": 68
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Hand brakes or the brake test: which should have stopped it? Comment",
+ "feed_id": "2026-11-20-lac-megantic",
+ "facts": [
+  {
+   "label": "Year of the disaster",
+   "value": 2013,
+   "unit": "year",
+   "as_of": "2013-07-06",
+   "source": "TSB",
+   "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+   "fixed": true
+  },
+  {
+   "label": "Speed as the train approached the town centre, mph",
+   "value": 65,
+   "unit": "count",
+   "as_of": "2013-07-06",
+   "source": "TSB",
+   "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+   "fixed": true
+  },
+  {
+   "label": "Tank cars derailed",
+   "value": 63,
+   "unit": "count",
+   "as_of": "2013-07-06",
+   "source": "TSB",
+   "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+   "fixed": true
+  },
+  {
+   "label": "People killed",
+   "value": 47,
+   "unit": "count",
+   "as_of": "2013-07-06",
+   "source": "TSB",
+   "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html",
+   "fixed": true
+  },
+  {
+   "label": "Contributing factors the TSB listed",
+   "value": 18,
+   "unit": "count",
+   "as_of": "2014-08-19",
+   "source": "TSB news release",
+   "url": "https://bst-tsb.gc.ca/eng/medias-media/communiques/rail/2014/r13d0054-20140819.html",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "derail",
+  "sec": 2.6,
+  "words": "No one *aboard*",
+  "tag": "Lac-Mégantic",
+  "angle": "question"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "A train with no one aboard reached Lac-Mégantic. How?",
+   "events": {
+    "train": {
+     "word": "train"
+    },
+    "aboard": {
+     "word": "aboard"
+    },
+    "reached": {
+     "word": "reached"
+    },
+    "how": {
+     "word": "How"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": [
+     "beside the track on the last curve into town, at night",
+     "the empty locomotive cab"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "aboard",
+      "size": "close"
+     },
+     {
+      "at": "how",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "train",
+      "what": "the black oil train's headlights come at the camera, LAC-MÉGANTIC on screen"
+     },
+     {
+      "at": "aboard",
+      "what": "cut inside: the cab's lamp on, the driver's seat empty, NO ONE ABOARD types on"
+     },
+     {
+      "at": "reached",
+      "what": "the trees stream past the cab window"
+     },
+     {
+      "at": "how",
+      "what": "cut low by the rails as the tank cars streak past"
+     }
+    ],
+    "things": [
+     "crude-oil train",
+     "tank cars",
+     "empty cab",
+     "date caption",
+     "town lights"
+    ],
+    "fig": {
+     "year": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "clatter",
+     "at": "train"
+    }
+   ]
+  },
+  {
+   "id": "speed",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It was doing {fact2} miles an hour.",
+   "events": {
+    "doing": {
+     "word": "doing"
+    },
+    "miles": {
+     "word": "miles"
+    },
+    "hour": {
+     "word": "hour"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Speed",
+    "place": "low beside the rails as the runaway streams past",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "hour",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "doing",
+      "what": "the speed dial sweeps up as the tank cars streak by"
+     },
+     {
+      "at": "miles",
+      "what": "the needle swings into the red"
+     },
+     {
+      "at": "hour",
+      "what": "the figure lands on the dial, sparks off the wheels"
+     }
+    ],
+    "things": [
+     "speed dial",
+     "tank cars",
+     "wheels",
+     "rails"
+    ],
+    "fig": {
+     "speed": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "doing"
+    }
+   ]
+  },
+  {
+   "id": "hill",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Its driver had parked it on a downhill main line.",
+   "events": {
+    "driver": {
+     "word": "driver"
+    },
+    "parked": {
+     "word": "parked"
+    },
+    "downhill": {
+     "word": "downhill"
+    },
+    "line": {
+     "word": "line"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hill",
+    "place": "the main line on the hill above the town, the train parked in the dark",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "parked",
+      "size": "medium"
+     },
+     {
+      "at": "downhill",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "driver",
+      "what": "a lamp moves away from the cab: the driver leaving"
+     },
+     {
+      "at": "parked",
+      "what": "the camera drifts along the line of tank cars"
+     },
+     {
+      "at": "downhill",
+      "what": "a dashed slope line and a DOWNHILL label draw along the rails"
+     },
+     {
+      "at": "line",
+      "what": "the town's lights glow far below"
+     }
+    ],
+    "things": [
+     "parked train",
+     "hillside rails",
+     "slope line",
+     "distant town lights"
+    ]
+   }
+  },
+  {
+   "id": "brakes",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "He set the hand brakes. Too few.",
+   "events": {
+    "set": {
+     "word": "set"
+    },
+    "hand": {
+     "word": "hand"
+    },
+    "few": {
+     "word": "few"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Brakes",
+    "place": "the end platform of a tank car, at its hand brake wheel",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "few",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "set",
+      "what": "the hand brake wheel turns, its chain tightening"
+     },
+     {
+      "at": "hand",
+      "what": "the brake shoe clamps onto the wheel"
+     },
+     {
+      "at": "few",
+      "what": "pull back over the whole train: only a few cars glow amber, the rest dark"
+     }
+    ],
+    "things": [
+     "hand brake wheel",
+     "brake chain",
+     "brake shoe",
+     "line of tank cars"
+    ]
+   }
+  },
+  {
+   "id": "test",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The brake test was done with the air brakes on. So what was holding it?",
+   "events": {
+    "test": {
+     "word": "test"
+    },
+    "done": {
+     "word": "done"
+    },
+    "air": {
+     "word": "air"
+    },
+    "on": {
+     "word": "on"
+    },
+    "holding": {
+     "word": "holding"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Test",
+    "place": "the investigators' diagram of the train's two brakes",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "air",
+      "size": "close"
+     },
+     {
+      "at": "holding",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "test",
+      "what": "the diagram draws on: hand brakes and the locomotive's air brakes"
+     },
+     {
+      "at": "done",
+      "what": "a test bar starts to fill"
+     },
+     {
+      "at": "air",
+      "what": "the air brakes light up, doing the holding"
+     },
+     {
+      "at": "on",
+      "what": "a HELD label stamps on"
+     },
+     {
+      "at": "holding",
+      "what": "the label turns: AIR BRAKES, NOT HAND BRAKES, and a question mark"
+     }
+    ],
+    "things": [
+     "brake diagram",
+     "hand brake marks",
+     "air brake line",
+     "test result stamp"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "holding"
+    }
+   ]
+  },
+  {
+   "id": "fire",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then the locomotive caught fire. Firefighters shut its engine down.",
+   "events": {
+    "locomotive": {
+     "word": "locomotive"
+    },
+    "fire": {
+     "word": "fire"
+    },
+    "firefighters": {
+     "word": "firefighters"
+    },
+    "down": {
+     "word": "down"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Fire",
+    "place": "the head of the parked train, the locomotive burning, a fire truck's lights",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "fire",
+      "size": "close"
+     },
+     {
+      "at": "firefighters",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "locomotive",
+      "what": "the locomotive sits dark at the head of the train"
+     },
+     {
+      "at": "fire",
+      "what": "flames and smoke burst from its engine hatch"
+     },
+     {
+      "at": "firefighters",
+      "what": "red lights flash across the train from a fire truck"
+     },
+     {
+      "at": "down",
+      "what": "the flames die, the exhaust stops, the cab lamp goes out"
+     }
+    ],
+    "things": [
+     "lead locomotive",
+     "engine fire",
+     "smoke",
+     "fire truck lights"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "fire"
+    }
+   ]
+  },
+  {
+   "id": "leak",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "With the engine off, its brakes leaked away.",
+   "events": {
+    "engine": {
+     "word": "engine"
+    },
+    "off": {
+     "word": "off"
+    },
+    "brakes": {
+     "word": "brakes"
+    },
+    "leaked": {
+     "word": "leaked"
+    },
+    "away": {
+     "word": "away"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Leak",
+    "place": "inside the brake cylinder, in cross-section",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "leaked",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "engine",
+      "what": "the compressor stops"
+     },
+     {
+      "at": "off",
+      "what": "the pressure gauge needle starts to fall"
+     },
+     {
+      "at": "brakes",
+      "what": "air particles stream out of the cylinder"
+     },
+     {
+      "at": "leaked",
+      "what": "the piston backs off, the brake shoe lifts"
+     },
+     {
+      "at": "away",
+      "what": "the gauge reaches the red"
+     }
+    ],
+    "things": [
+     "brake cylinder",
+     "piston",
+     "pressure gauge",
+     "escaping air"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "squelch",
+     "at": "leaked"
+    }
+   ]
+  },
+  {
+   "id": "release",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "",
+   "events": {
+    "strain": {
+     "sec": 0.3
+    },
+    "reveal": {
+     "sec": 0.9
+    },
+    "wide": {
+     "sec": 1.6
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Release",
+    "place": "at the locomotive's wheel and brake shoe, time slowed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "strain",
+      "what": "the brake shoe glows red as it lets go"
+     },
+     {
+      "at": "reveal",
+      "what": "the wheel creeps, then turns"
+     },
+     {
+      "at": "wide",
+      "what": "wide: the whole train starts to move"
+     }
+    ],
+    "things": [
+     "brake shoe",
+     "locomotive wheel",
+     "rail",
+     "moving train"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "reveal"
+    }
+   ],
+   "min_sec": 2.2
+  },
+  {
+   "id": "roll",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "In the dark, it rolled toward the town.",
+   "events": {
+    "dark": {
+     "word": "dark"
+    },
+    "rolled": {
+     "word": "rolled"
+    },
+    "town": {
+     "word": "town"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Roll",
+    "place": "the track down the hill, the runaway gathering speed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "rolled",
+      "size": "wide"
+     },
+     {
+      "at": "town",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "dark",
+      "what": "the train slides past the camera, empty"
+     },
+     {
+      "at": "rolled",
+      "what": "the camera rises over the train pulling away"
+     },
+     {
+      "at": "town",
+      "what": "the lights of Lac-Mégantic ahead at the bottom of the grade"
+     }
+    ],
+    "things": [
+     "runaway train",
+     "hillside track",
+     "town lights"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "clatter",
+     "at": "rolled"
+    }
+   ]
+  },
+  {
+   "id": "derail",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "{fact3} tank cars of crude oil derailed in the town centre.",
+   "events": {
+    "tank": {
+     "word": "tank"
+    },
+    "crude": {
+     "word": "crude"
+    },
+    "derailed": {
+     "word": "derailed"
+    },
+    "centre": {
+     "word": "centre"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Derail",
+    "place": "the curve in the town centre",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "derailed",
+      "size": "close"
+     },
+     {
+      "at": "centre",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "tank",
+      "what": "the tank cars stream into the curve, the counter on the car's side"
+     },
+     {
+      "at": "crude",
+      "what": "CRUDE OIL label types on a tank"
+     },
+     {
+      "at": "derailed",
+      "what": "silence then the sub-boom: the cars jackknife off the rails"
+     },
+     {
+      "at": "centre",
+      "what": "wide: the piled cars glow orange in the town"
+     }
+    ],
+    "things": [
+     "tank cars",
+     "curve",
+     "derailed pile",
+     "fire glow",
+     "counter"
+    ],
+    "fig": {
+     "cars": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "derailed"
+    }
+   ]
+  },
+  {
+   "id": "toll",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "{fact4} people were killed.",
+   "events": {
+    "people": {
+     "word": "people"
+    },
+    "killed": {
+     "word": "killed"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Toll",
+    "place": "the town centre from high above, the fire glow far below",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "killed",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "people",
+      "what": "the camera rises slowly over the glow"
+     },
+     {
+      "at": "killed",
+      "what": "a quiet mono line types on: the figure and LAC-MÉGANTIC"
+     }
+    ],
+    "things": [
+     "town from above",
+     "fire glow",
+     "smoke",
+     "memorial caption"
+    ],
+    "fig": {
+     "dead": "{fact4}"
+    }
+   }
+  },
+  {
+   "id": "board",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "{fact5} factors were found. Hand brakes or the test: which should have stopped it?",
+   "events": {
+    "factors": {
+     "word": "factors"
+    },
+    "found": {
+     "word": "found"
+    },
+    "brakes": {
+     "word": "brakes"
+    },
+    "test": {
+     "word": "test"
+    },
+    "which": {
+     "word": "which"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Board",
+    "place": "the investigators' cause board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "brakes",
+      "size": "close"
+     },
+     {
+      "at": "which",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "found",
+      "what": "the investigators' board slides in under its title"
+     },
+     {
+      "at": "factors",
+      "what": "the count stamps on the board"
+     },
+     {
+      "at": "brakes",
+      "what": "TOO FEW HAND BRAKES stamps"
+     },
+     {
+      "at": "test",
+      "what": "TEST WITH AIR BRAKES ON stamps"
+     },
+     {
+      "at": "which",
+      "what": "a question mark lands between them"
+     }
+    ],
+    "things": [
+     "cause board",
+     "factor count",
+     "hand brake card",
+     "brake test card",
+     "question mark"
+    ],
+    "fig": {
+     "factors": "{fact5}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "brakes"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "It began with a train left on a hill.",
+   "events": {
+    "began": {
+     "word": "began"
+    },
+    "left": {
+     "word": "left"
+    },
+    "hill": {
+     "word": "hill"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Loop",
+    "place": "back beside the line in front of the parked locomotive",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "hill",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "began",
+      "what": "the camera glides in along the line toward the headlights"
+     },
+     {
+      "at": "left",
+      "what": "the cab lamp and headlights brighten"
+     },
+     {
+      "at": "hill",
+      "what": "the frame settles on the hook's first picture, headlights facing us"
+     }
+    ],
+    "things": [
+     "parked train",
+     "empty cab",
+     "cab lamp"
+    ]
+   }
+  }
+ ]
+}
