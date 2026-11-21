@@ -1,0 +1,143 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52907,
+  "duration_sec": 62,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "atlas",
+    "key": "D",
+    "bpm": 90,
+    "look": {
+      "stage": "desert",
+      "header": "ribbon",
+      "holder": "box",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The Strait of Hormuz shuts for a week. Which country runs out first?",
+        "start": 0.3,
+        "seconds": 2.9,
+        "window": 3.5,
+        "fill": 0.829
+      },
+      {
+        "scene": "flow",
+        "text": "Every day, about 20.9M barrels of oil sail through this one gap, a lane of sea between Iran's mountains and the tip of Oman.",
+        "start": 3.8,
+        "seconds": 6.47,
+        "window": 7.1,
+        "fill": 0.911
+      },
+      {
+        "scene": "day1",
+        "text": "Day one: the tankers stop. Kuwait, Qatar and Bahrain are stuck behind the gate, and their ships have nowhere else to go.",
+        "start": 10.9,
+        "seconds": 5.25,
+        "window": 5.93,
+        "fill": 0.885
+      },
+      {
+        "scene": "coast",
+        "text": "Look at the map: every bit of their coast lies inside the Gulf, like a room with only one door.",
+        "start": 16.83,
+        "seconds": 4.18,
+        "window": 4.83,
+        "fill": 0.865
+      },
+      {
+        "scene": "day2",
+        "text": "Day two: Saudi Arabia has a way round, a pipeline west across the desert to the Red Sea.",
+        "start": 21.67,
+        "seconds": 4.08,
+        "window": 4.73,
+        "fill": 0.863
+      },
+      {
+        "scene": "day3",
+        "text": "Day three: the Emirates pipe oil to Fujairah, a port just outside the strait.",
+        "start": 26.4,
+        "seconds": 3.29,
+        "window": 3.93,
+        "fill": 0.837
+      },
+      {
+        "scene": "small",
+        "text": "But those two pipes carry only a small part of what the tankers did, and the rest has nowhere to go.",
+        "start": 30.33,
+        "seconds": 4.38,
+        "window": 5.07,
+        "fill": 0.864
+      },
+      {
+        "scene": "day4",
+        "text": "Day four: no new tankers leave for China, India, Japan or South Korea, and most of the oil through Hormuz sails east to Asia.",
+        "start": 35.4,
+        "seconds": 5.92,
+        "window": 6.6,
+        "fill": 0.897
+      },
+      {
+        "scene": "turn",
+        "text": "And the strangest part? Iran ships most of its own oil from inside the Gulf too, from an island called Kharg.",
+        "start": 42.0,
+        "seconds": 4.82,
+        "window": 5.47,
+        "fill": 0.881
+      },
+      {
+        "scene": "payoff",
+        "text": "So who runs out first? Kuwait, Qatar and Bahrain run out of ways to sell their oil: this gap is their only road out, and it carries about 20% of all the oil the world uses.",
+        "start": 47.47,
+        "seconds": 8.05,
+        "window": 8.73,
+        "fill": 0.922
+      },
+      {
+        "scene": "loop",
+        "text": "Hormuz or Malacca: which strait should we shut next? Tell me below, while the Strait of Hormuz shuts for a week.",
+        "start": 56.2,
+        "seconds": 4.57,
+        "window": 5.17,
+        "fill": 0.884
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9,
+    "lufs": -14.5,
+    "music_under_voice_db": 31.2
+  },
+  "craft_problems": [
+    "note: 23 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 6.94,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

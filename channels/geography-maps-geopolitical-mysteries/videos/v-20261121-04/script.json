@@ -1,0 +1,1160 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52907,
+ "story": "what_if_world",
+ "shape": "domino",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "atlas",
+  "key": "D",
+  "bpm": 90,
+  "look": {
+   "stage": "desert",
+   "header": "ribbon",
+   "holder": "box",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "Hormuz or Malacca: which strait should we shut next? Comment",
+ "feed_id": "2026-11-17-what-if-hormuz-closed",
+ "facts": [
+  {
+   "label": "Oil flow through the Strait of Hormuz, first half of 2025 (million barrels a day)",
+   "value": 20.9,
+   "unit": "count_million",
+   "as_of": "2026-03-03",
+   "source": "US Energy Information Administration",
+   "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+   "latest": true,
+   "checked": "2026-11-19"
+  },
+  {
+   "label": "Strait of Hormuz flow as a share of global petroleum liquids consumption, first half of 2025 (about)",
+   "value": 20,
+   "unit": "percent",
+   "as_of": "2026-03-03",
+   "source": "US Energy Information Administration",
+   "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+   "latest": true,
+   "checked": "2026-11-19"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.0,
+  "words": "Who runs *out*?",
+  "tag": "Strait of Hormuz",
+  "angle": "question"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "The Strait of Hormuz shuts for a week. Which country runs out first?",
+   "events": {
+    "strait": {
+     "word": "Strait"
+    },
+    "hormuz": {
+     "word": "Hormuz"
+    },
+    "shuts": {
+     "word": "shuts"
+    },
+    "week": {
+     "word": "week"
+    },
+    "country": {
+     "word": "country"
+    },
+    "runs": {
+     "word": "runs"
+    },
+    "first": {
+     "word": "first"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "shuts"
+    },
+    {
+     "kind": "pin",
+     "at": "week"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the Gulf, the strait between Iran and Oman",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "shuts",
+      "size": "close"
+     },
+     {
+      "at": "country",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "strait",
+      "what": "tankers already file through the narrow strait, the name HORMUZ writing on"
+     },
+     {
+      "at": "hormuz",
+      "what": "the strait's two shores trace in light, Iran above and Oman below"
+     },
+     {
+      "at": "shuts",
+      "what": "a red barrier slams down across the water"
+     },
+     {
+      "at": "week",
+      "what": "a DAY ONE counter sign plants on the shore"
+     },
+     {
+      "at": "country",
+      "what": "the camera pulls back over the whole Gulf"
+     },
+     {
+      "at": "runs",
+      "what": "the tankers bunch up behind the barrier"
+     },
+     {
+      "at": "first",
+      "what": "a question mark bounces over the Gulf"
+     }
+    ],
+    "things": [
+     "gulf map",
+     "tankers",
+     "barrier",
+     "day counter sign",
+     "question mark"
+    ]
+   }
+  },
+  {
+   "id": "flow",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Every day, about {fact1} barrels of oil sail through this one gap, a lane of sea between Iran's mountains and the tip of Oman.",
+   "events": {
+    "every": {
+     "word": "Every"
+    },
+    "day": {
+     "word": "day"
+    },
+    "oil": {
+     "word": "oil"
+    },
+    "sail": {
+     "word": "sail"
+    },
+    "gap": {
+     "word": "gap"
+    },
+    "lane": {
+     "word": "lane"
+    },
+    "mountains": {
+     "word": "mountains"
+    },
+    "oman": {
+     "word": "Oman"
+    },
+    "about": {
+     "word": "about"
+    },
+    "barrels": {
+     "word": "barrels"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "sail",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Flow",
+    "place": "on the map: the strait seen close, the shipping lane",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "gap",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "every",
+      "what": "the camera glides along the shipping lane"
+     },
+     {
+      "at": "day",
+      "what": "a sun crosses the sky sign"
+     },
+     {
+      "at": "oil",
+      "what": "barrels stack up on the tankers' decks"
+     },
+     {
+      "at": "sail",
+      "what": "a stream of tankers runs through the lane, the counter on a buoy counting up"
+     },
+     {
+      "at": "gap",
+      "what": "the lane narrows between the two shores"
+     },
+     {
+      "at": "lane",
+      "what": "the two-way lane draws on the water"
+     },
+     {
+      "at": "mountains",
+      "what": "Iran's mountains rise along the north shore"
+     },
+     {
+      "at": "oman",
+      "what": "Oman's tip glows on the south shore"
+     },
+     {
+      "at": "about",
+      "what": "the buoy sign bobs up"
+     },
+     {
+      "at": "barrels",
+      "what": "the counter on the buoy lands"
+     }
+    ],
+    "things": [
+     "shipping lane",
+     "tanker stream",
+     "barrels",
+     "buoy counter"
+    ],
+    "fig": {
+     "barrels": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "day1",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Day one: the tankers stop. Kuwait, Qatar and Bahrain are stuck behind the gate, and their ships have nowhere else to go.",
+   "events": {
+    "day": {
+     "word": "Day"
+    },
+    "tankers": {
+     "word": "tankers"
+    },
+    "stop": {
+     "word": "stop"
+    },
+    "kuwait": {
+     "word": "Kuwait"
+    },
+    "qatar": {
+     "word": "Qatar"
+    },
+    "bahrain": {
+     "word": "Bahrain"
+    },
+    "stuck": {
+     "word": "stuck"
+    },
+    "ships": {
+     "word": "ships"
+    },
+    "nowhere": {
+     "word": "nowhere"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "stop"
+    },
+    {
+     "kind": "pin",
+     "at": "kuwait"
+    }
+   ],
+   "params": {
+    "component": "Trapped",
+    "place": "on the map: the Gulf from the strait to Kuwait",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "kuwait",
+      "size": "medium"
+     },
+     {
+      "at": "stuck",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "day",
+      "what": "the counter sign flips to DAY ONE"
+     },
+     {
+      "at": "tankers",
+      "what": "tankers line up along the Gulf"
+     },
+     {
+      "at": "stop",
+      "what": "they halt with a jolt"
+     },
+     {
+      "at": "kuwait",
+      "what": "Kuwait traces and fills with its flag"
+     },
+     {
+      "at": "qatar",
+      "what": "Qatar traces and fills with its flag"
+     },
+     {
+      "at": "bahrain",
+      "what": "Bahrain traces and fills with its flag"
+     },
+     {
+      "at": "stuck",
+      "what": "the barrier at the strait glows red"
+     },
+     {
+      "at": "ships",
+      "what": "the stuck tankers turn round"
+     },
+     {
+      "at": "nowhere",
+      "what": "they bump into the shore and the barrier"
+     }
+    ],
+    "things": [
+     "day counter",
+     "tankers",
+     "kuwait",
+     "qatar",
+     "bahrain",
+     "barrier"
+    ]
+   }
+  },
+  {
+   "id": "coast",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Look at the map: every bit of their coast lies inside the Gulf, like a room with only one door.",
+   "events": {
+    "look": {
+     "word": "Look"
+    },
+    "map": {
+     "word": "map"
+    },
+    "coast": {
+     "word": "coast"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "gulf": {
+     "word": "Gulf"
+    },
+    "door": {
+     "word": "door"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "coast",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Coast",
+    "place": "on the map: the Gulf's inner shore",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "gulf",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "look",
+      "what": "the camera sweeps along the Gulf's inner shore"
+     },
+     {
+      "at": "map",
+      "what": "the four countries' coastlines glow"
+     },
+     {
+      "at": "coast",
+      "what": "a bright line runs along their whole coast"
+     },
+     {
+      "at": "inside",
+      "what": "the line stays inside the Gulf, ending short of the strait"
+     },
+     {
+      "at": "gulf",
+      "what": "the Gulf's water darkens like a closed room"
+     },
+     {
+      "at": "door",
+      "what": "the barrier at the strait glows like a shut door"
+     }
+    ],
+    "things": [
+     "coastline line",
+     "gulf water",
+     "four countries"
+    ]
+   }
+  },
+  {
+   "id": "day2",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Day two: Saudi Arabia has a way round, a pipeline west across the desert to the Red Sea.",
+   "events": {
+    "day": {
+     "word": "Day"
+    },
+    "saudi": {
+     "word": "Saudi"
+    },
+    "arabia": {
+     "word": "Arabia"
+    },
+    "way": {
+     "word": "way"
+    },
+    "pipeline": {
+     "word": "pipeline"
+    },
+    "west": {
+     "word": "west"
+    },
+    "desert": {
+     "word": "desert"
+    },
+    "red": {
+     "word": "Red"
+    },
+    "sea": {
+     "word": "Sea"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "pipeline",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Desert",
+    "place": "on the map: Saudi Arabia from the Gulf to the Red Sea",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pipeline",
+      "size": "wide"
+     },
+     {
+      "at": "sea",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "day",
+      "what": "the counter sign flips to DAY TWO"
+     },
+     {
+      "at": "saudi",
+      "what": "Saudi Arabia traces"
+     },
+     {
+      "at": "arabia",
+      "what": "it fills with its flag"
+     },
+     {
+      "at": "way",
+      "what": "an arrow curls round the strait"
+     },
+     {
+      "at": "pipeline",
+      "what": "a pipe starts drawing from the Gulf coast"
+     },
+     {
+      "at": "west",
+      "what": "it runs west"
+     },
+     {
+      "at": "desert",
+      "what": "across the sand, dunes on either side"
+     },
+     {
+      "at": "red",
+      "what": "it reaches the Red Sea coast"
+     },
+     {
+      "at": "sea",
+      "what": "a tanker loads at the Red Sea port"
+     }
+    ],
+    "things": [
+     "day counter",
+     "saudi arabia",
+     "pipeline",
+     "dunes",
+     "red sea port",
+     "tanker"
+    ]
+   }
+  },
+  {
+   "id": "day3",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Day three: the Emirates pipe oil to Fujairah, a port just outside the strait.",
+   "events": {
+    "day": {
+     "word": "Day"
+    },
+    "emirates": {
+     "word": "Emirates"
+    },
+    "pipe": {
+     "word": "pipe"
+    },
+    "fujairah": {
+     "word": "Fujairah"
+    },
+    "port": {
+     "word": "port"
+    },
+    "outside": {
+     "word": "outside"
+    },
+    "strait": {
+     "word": "strait"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "fujairah"
+    }
+   ],
+   "params": {
+    "component": "Fujairah",
+    "place": "on the map: the Emirates and the coast past the strait",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "fujairah",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "day",
+      "what": "the counter sign flips to DAY THREE"
+     },
+     {
+      "at": "emirates",
+      "what": "the Emirates trace and fill with their flag"
+     },
+     {
+      "at": "pipe",
+      "what": "a pipe draws east across the Emirates"
+     },
+     {
+      "at": "fujairah",
+      "what": "a pin drops on Fujairah"
+     },
+     {
+      "at": "port",
+      "what": "cranes pop up at the port"
+     },
+     {
+      "at": "outside",
+      "what": "the camera shows the port on the far side of the barrier"
+     },
+     {
+      "at": "strait",
+      "what": "a tanker slips away from the port"
+     }
+    ],
+    "things": [
+     "day counter",
+     "emirates",
+     "pipe",
+     "fujairah pin",
+     "cranes",
+     "tanker"
+    ]
+   }
+  },
+  {
+   "id": "small",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "But those two pipes carry only a small part of what the tankers did, and the rest has nowhere to go.",
+   "events": {
+    "two": {
+     "word": "two"
+    },
+    "pipes": {
+     "word": "pipes"
+    },
+    "small": {
+     "word": "small"
+    },
+    "part": {
+     "word": "part"
+    },
+    "tankers": {
+     "word": "tankers"
+    },
+    "rest": {
+     "word": "rest"
+    }
+   },
+   "transition": "cut",
+   "sfx": [],
+   "params": {
+    "component": "Small",
+    "place": "on the map: the whole Gulf, both pipes and the blocked strait",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "small",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "two",
+      "what": "both pipelines glow"
+     },
+     {
+      "at": "pipes",
+      "what": "oil drips out of their ends"
+     },
+     {
+      "at": "small",
+      "what": "a thin trickle beside a fat stream of tankers"
+     },
+     {
+      "at": "part",
+      "what": "the trickle shrinks"
+     },
+     {
+      "at": "tankers",
+      "what": "the stuck tankers behind the barrier bob"
+     },
+     {
+      "at": "rest",
+      "what": "oil barrels pile up on the docks"
+     }
+    ],
+    "things": [
+     "two pipelines",
+     "trickle",
+     "stuck tankers"
+    ]
+   }
+  },
+  {
+   "id": "day4",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Day four: no new tankers leave for China, India, Japan or South Korea, and most of the oil through Hormuz sails east to Asia.",
+   "events": {
+    "day": {
+     "word": "Day"
+    },
+    "leave": {
+     "word": "leave"
+    },
+    "china": {
+     "word": "China"
+    },
+    "india": {
+     "word": "India"
+    },
+    "japan": {
+     "word": "Japan"
+    },
+    "south": {
+     "word": "South"
+    },
+    "korea": {
+     "word": "Korea"
+    },
+    "most": {
+     "word": "most"
+    },
+    "east": {
+     "word": "east"
+    },
+    "asia": {
+     "word": "Asia"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "arrive"
+    }
+   ],
+   "params": {
+    "component": "Asia",
+    "place": "on the map: Asia, the routes east from Hormuz",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "asia",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "day",
+      "what": "the counter sign flips to DAY FOUR"
+     },
+     {
+      "at": "leave",
+      "what": "the tankers at Hormuz stay put, the dashed routes east stay empty"
+     },
+     {
+      "at": "china",
+      "what": "China traces and fills with its flag"
+     },
+     {
+      "at": "india",
+      "what": "India traces and fills with its flag"
+     },
+     {
+      "at": "japan",
+      "what": "Japan traces and fills with its flag"
+     },
+     {
+      "at": "south",
+      "what": "South Korea traces"
+     },
+     {
+      "at": "korea",
+      "what": "it fills with its flag"
+     },
+     {
+      "at": "most",
+      "what": "a fat arrow from Hormuz points east"
+     },
+     {
+      "at": "east",
+      "what": "the arrow sweeps across the Indian Ocean"
+     },
+     {
+      "at": "asia",
+      "what": "the empty routes to Asia's ports blink"
+     }
+    ],
+    "things": [
+     "day counter",
+     "china",
+     "india",
+     "japan",
+     "south korea",
+     "broken routes"
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "And the strangest part? Iran ships most of its own oil from inside the Gulf too, from an island called Kharg.",
+   "events": {
+    "strangest": {
+     "word": "strangest"
+    },
+    "iran": {
+     "word": "Iran"
+    },
+    "ships": {
+     "word": "ships"
+    },
+    "own": {
+     "word": "own"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "gulf": {
+     "word": "Gulf"
+    },
+    "kharg": {
+     "word": "Kharg"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "own"
+    }
+   ],
+   "params": {
+    "component": "Kharg",
+    "place": "on the map: Iran's Gulf coast and Kharg Island",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "own",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "strangest",
+      "what": "a question mark spins over Iran"
+     },
+     {
+      "at": "iran",
+      "what": "Iran traces and fills with its flag"
+     },
+     {
+      "at": "ships",
+      "what": "a tanker sets off from Kharg Island"
+     },
+     {
+      "at": "own",
+      "what": "a pin drops on Kharg, deep inside the Gulf"
+     },
+     {
+      "at": "inside",
+      "what": "the tanker's route runs to the barrier and stops"
+     },
+     {
+      "at": "gulf",
+      "what": "Iran's own tanker bobs stuck behind its own barrier"
+     },
+     {
+      "at": "kharg",
+      "what": "KHARG ISLAND writes on beside the pin"
+     }
+    ],
+    "things": [
+     "iran",
+     "kharg island pin",
+     "iranian tanker",
+     "barrier"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "So who runs out first? Kuwait, Qatar and Bahrain run out of ways to sell their oil: this gap is their only road out, and it carries about {fact2} of all the oil the world uses.",
+   "events": {
+    "who": {
+     "word": "who"
+    },
+    "kuwait": {
+     "word": "Kuwait"
+    },
+    "qatar": {
+     "word": "Qatar"
+    },
+    "bahrain": {
+     "word": "Bahrain"
+    },
+    "sell": {
+     "word": "sell"
+    },
+    "gap": {
+     "word": "gap"
+    },
+    "road": {
+     "word": "road"
+    },
+    "carries": {
+     "word": "carries"
+    },
+    "world": {
+     "word": "world"
+    },
+    "all": {
+     "word": "all"
+    },
+    "uses": {
+     "word": "uses"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "carries",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: the Gulf and the whole world beyond the strait",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "gap",
+      "size": "close"
+     },
+     {
+      "at": "world",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "who",
+      "what": "the counter sign flips to DAY FIVE"
+     },
+     {
+      "at": "kuwait",
+      "what": "Kuwait lights up"
+     },
+     {
+      "at": "qatar",
+      "what": "Qatar lights up"
+     },
+     {
+      "at": "bahrain",
+      "what": "Bahrain lights up"
+     },
+     {
+      "at": "sell",
+      "what": "oil tanks on their coasts fill to the brim"
+     },
+     {
+      "at": "gap",
+      "what": "the camera pushes toward the strait"
+     },
+     {
+      "at": "road",
+      "what": "a road of light runs from their coasts to the barrier and stops"
+     },
+     {
+      "at": "carries",
+      "what": "a big sign over the strait shows the share"
+     },
+     {
+      "at": "world",
+      "what": "the camera pulls back to the world, lines spreading from the strait"
+     },
+     {
+      "at": "all",
+      "what": "the share sign pulses"
+     },
+     {
+      "at": "uses",
+      "what": "the world's coastlines glow where the lines reach"
+     }
+    ],
+    "things": [
+     "day counter",
+     "oil tanks",
+     "four countries",
+     "arrow",
+     "share sign",
+     "world"
+    ],
+    "fig": {
+     "share": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Hormuz or Malacca: which strait should we shut next? Tell me below, while the Strait of Hormuz shuts for a week.",
+   "events": {
+    "hormuz": {
+     "word": "Hormuz"
+    },
+    "malacca": {
+     "word": "Malacca"
+    },
+    "strait": {
+     "word": "strait"
+    },
+    "shut": {
+     "word": "shut"
+    },
+    "below": {
+     "word": "below"
+    },
+    "week": {
+     "word": "week"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "while": {
+     "word": "while"
+    },
+    "shuts": {
+     "word": "shuts"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "malacca"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "on the map: Asia from Hormuz to Malacca, then back to Hormuz",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "malacca",
+      "size": "wide"
+     },
+     {
+      "at": "week",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hormuz",
+      "what": "a pin pulses at Hormuz"
+     },
+     {
+      "at": "malacca",
+      "what": "the camera swings east and a pin drops at the Strait of Malacca"
+     },
+     {
+      "at": "strait",
+      "what": "both straits glow"
+     },
+     {
+      "at": "shut",
+      "what": "a barrier hovers over Malacca"
+     },
+     {
+      "at": "below",
+      "what": "a comment bubble pops"
+     },
+     {
+      "at": "week",
+      "what": "the shores' glow fades back to the first frame, tankers filing through"
+     },
+     {
+      "at": "tell",
+      "what": "the bubble wobbles"
+     },
+     {
+      "at": "while",
+      "what": "the camera starts diving back west to Hormuz"
+     },
+     {
+      "at": "shuts",
+      "what": "the strait's shores come into view as in the first frame"
+     }
+    ],
+    "things": [
+     "hormuz pin",
+     "malacca pin",
+     "barrier",
+     "comment bubble"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,382 @@
+{
+  "id": "v-20261121-04",
+  "createdAt": "2026-11-21T00:06:46.743778+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "What if the Strait of Hormuz closed?",
+    "category": "trade",
+    "reach": "global",
+    "feed_id": "2026-11-17-what-if-hormuz-closed"
+  },
+  "title": "Hormuz shuts for a week. Who runs out first?",
+  "description": "The Strait of Hormuz shuts for a week: which country runs out first?\nThe Strait of Hormuz, the gap of sea between Iran and Oman, and the countries behind it, day by day on the map.\nSources: US Energy Information Administration (Mar 2026). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#StraitOfHormuz",
+    "#Geography",
+    "#Maps",
+    "#WhatIf"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Hormuz or Malacca: which strait should we shut next? Comment",
+  "seed": 52907,
+  "style": {
+    "palette": "night",
+    "genre": "atlas",
+    "key": "D",
+    "bpm": 90,
+    "look": {
+      "stage": "desert",
+      "header": "ribbon",
+      "holder": "box",
+      "entrance": "draw"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The Strait of Hormuz shuts for a week. Which country runs out first?",
+        "start": 0.3,
+        "seconds": 2.9,
+        "window": 3.5,
+        "fill": 0.829
+      },
+      {
+        "scene": "flow",
+        "text": "Every day, about 20.9M barrels of oil sail through this one gap, a lane of sea between Iran's mountains and the tip of Oman.",
+        "start": 3.8,
+        "seconds": 6.47,
+        "window": 7.1,
+        "fill": 0.911
+      },
+      {
+        "scene": "day1",
+        "text": "Day one: the tankers stop. Kuwait, Qatar and Bahrain are stuck behind the gate, and their ships have nowhere else to go.",
+        "start": 10.9,
+        "seconds": 5.25,
+        "window": 5.93,
+        "fill": 0.885
+      },
+      {
+        "scene": "coast",
+        "text": "Look at the map: every bit of their coast lies inside the Gulf, like a room with only one door.",
+        "start": 16.83,
+        "seconds": 4.18,
+        "window": 4.83,
+        "fill": 0.865
+      },
+      {
+        "scene": "day2",
+        "text": "Day two: Saudi Arabia has a way round, a pipeline west across the desert to the Red Sea.",
+        "start": 21.67,
+        "seconds": 4.08,
+        "window": 4.73,
+        "fill": 0.863
+      },
+      {
+        "scene": "day3",
+        "text": "Day three: the Emirates pipe oil to Fujairah, a port just outside the strait.",
+        "start": 26.4,
+        "seconds": 3.29,
+        "window": 3.93,
+        "fill": 0.837
+      },
+      {
+        "scene": "small",
+        "text": "But those two pipes carry only a small part of what the tankers did, and the rest has nowhere to go.",
+        "start": 30.33,
+        "seconds": 4.38,
+        "window": 5.07,
+        "fill": 0.864
+      },
+      {
+        "scene": "day4",
+        "text": "Day four: no new tankers leave for China, India, Japan or South Korea, and most of the oil through Hormuz sails east to Asia.",
+        "start": 35.4,
+        "seconds": 5.92,
+        "window": 6.6,
+        "fill": 0.897
+      },
+      {
+        "scene": "turn",
+        "text": "And the strangest part? Iran ships most of its own oil from inside the Gulf too, from an island called Kharg.",
+        "start": 42.0,
+        "seconds": 4.82,
+        "window": 5.47,
+        "fill": 0.881
+      },
+      {
+        "scene": "payoff",
+        "text": "So who runs out first? Kuwait, Qatar and Bahrain run out of ways to sell their oil: this gap is their only road out, and it carries about 20% of all the oil the world uses.",
+        "start": 47.47,
+        "seconds": 8.05,
+        "window": 8.73,
+        "fill": 0.922
+      },
+      {
+        "scene": "loop",
+        "text": "Hormuz or Malacca: which strait should we shut next? Tell me below, while the Strait of Hormuz shuts for a week.",
+        "start": 56.2,
+        "seconds": 4.57,
+        "window": 5.17,
+        "fill": 0.884
+      }
+    ]
+  },
+  "durationSec": 62,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9,
+    "lufs": -14.5,
+    "music_under_voice_db": 31.2
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Length edits re-reviewed. coast: 'like a room with only one door' is a fair simile for Kuwait, Qatar and Bahrain, whose whole coast is inside the Gulf. turn: 'from an island called Kharg' confirmed by Bloomberg, SCMP (JP Morgan) and Argus/Kpler: Kharg handles about 84-96% of Iran's crude exports, so 'most' holds. The rest was passed on rewrite 1 and is unchanged."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 2: all four notes fixed in the new stills. Coast labels clear at 20 s (THE GULF over water, QATAR apart from KUWAIT); payoff names KUWAIT, BAHRAIN and QATAR at 50 s; small beat labels SAUDI PIPE and UAE PIPE with a PIPES vs TANKERS chart at 35 s; IRAN clear of the sign and mountains at 5 s and 10 s. Hook names Hormuz and asks the question; the last frame loops to the first; layout_problems empty; 62 s fits 60-80."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:41:17.498647+00:00",
+      "finishedAt": "2026-11-20T23:41:17.498647+00:00",
+      "notes": [
+        "story 'what_if_world' was told in the last 1 videos",
+        "music genre 'atlas' was used by the previous video",
+        "hook style 'challenge' was used by the previous video",
+        "description opens with 'what happens to', already used by v-20261118-01"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:45:25.006184+00:00",
+      "finishedAt": "2026-11-20T23:45:25.006184+00:00",
+      "notes": [
+        "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:45:36.837949+00:00",
+      "finishedAt": "2026-11-20T23:45:36.837949+00:00",
+      "notes": [
+        "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:46:42.561621+00:00",
+      "finishedAt": "2026-11-20T23:46:42.561621+00:00",
+      "notes": [
+        "payoff: 'Kuwait, Iraq, Qatar and Bahrain have no other way out' is false for Iraq: the Kirkuk-Ceyhan pipeline to Turkey's Mediterranean port is exporting again (restarted 17 Nov 2026 at ~120,000 b/d, aiming at 500,000; 1.5M b/d capacity; Reuters via The National, BOE Report, 17 Nov 2026). Drop Iraq from the 'no way out' list or say Iraq has only a small northern pipe; same for day1's 'stuck behind the gate' if it implies no exit.",
+        "payoff/title: 'Who runs out first? The sellers' is a conclusion no source supports: the sellers do not run out of oil, and nothing in the video shows they are hit first (Asian importers hold reserves). Either say what they run out of (a way to sell / storage space / income) and attribute it, or reframe the question so the answer is what the sources show (Kuwait, Qatar, Bahrain: no route out but the strait).",
+        "day4: 'Day four: tankers for China, India, Japan and South Korea never arrive' is wrong on timing: a tanker from Hormuz takes about 2-3 weeks to East Asia, so ships already at sea still arrive on day four; say instead that no new tankers leave for Asia (EIA: China, India, Japan, South Korea took 74% of Hormuz crude in 1H25, 89% went to Asia, so 'most sails east to Asia' is right).",
+        "Confirmed (passes): fact1 20.9M b/d and fact2 about 20% of global petroleum liquids consumption, 1H25, both on the EIA World Oil Transit Chokepoints page (updated 3 Mar 2026). Saudi East-West to Red Sea and UAE pipe to Fujairah exist; EIA: about 4.7M b/d bypass capacity vs 20.9M, so 'only a small part' is fair. Iran: Goreh-Jask effective ~0.3M b/d, so 'most from inside the Gulf' holds. Description ends with the channel disclaimer."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:47:19.894303+00:00",
+      "finishedAt": "2026-11-20T23:47:19.894303+00:00",
+      "notes": [
+        "beat 'day4': params.camera key at 'arrive' is not one of this beat's events"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:47:24.107620+00:00",
+      "finishedAt": "2026-11-20T23:47:24.107620+00:00",
+      "notes": [
+        "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:47:33.806002+00:00",
+      "finishedAt": "2026-11-20T23:47:33.806002+00:00",
+      "notes": [
+        "Rewrite 1 re-reviewed. Iraq is out of day1, the payoff and the beat params (it has the Kirkuk-Ceyhan pipeline). The payoff now answers the title with what the sources show: Kuwait, Qatar and Bahrain have no route out but the strait. Day4 now says no new tankers leave for Asia. Confirmed on the EIA Chokepoints page (3 Mar 2026): 20.9M b/d and about 20% of world petroleum liquids consumption in 1H25, 89% to Asia, bypass about 4.7M b/d, Goreh-Jask about 0.3M b/d. Description ends with the disclaimer."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:51:39.618304+00:00",
+      "finishedAt": "2026-11-20T23:51:39.618304+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:51:45.658633+00:00",
+      "finishedAt": "2026-11-20T23:52:55.053048+00:00",
+      "notes": [
+        "text 'HORMUZ' at 2.5 s runs outside the frame",
+        "length 59 s is outside 60–80 s: add about 3 spoken words",
+        "the Short runs 58.9 s but its assigned length (arms.length) is 60-80 s: cut or add a beat",
+        "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:53:12.271203+00:00",
+      "finishedAt": "2026-11-20T23:53:12.271203+00:00",
+      "notes": [
+        "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:53:56.005926+00:00",
+      "finishedAt": "2026-11-20T23:53:56.005926+00:00",
+      "notes": [
+        "Length edits re-reviewed. coast: 'like a room with only one door' is a fair simile for Kuwait, Qatar and Bahrain, whose whole coast is inside the Gulf. turn: 'from an island called Kharg' confirmed by Bloomberg, SCMP (JP Morgan) and Argus/Kpler: Kharg handles about 84-96% of Iran's crude exports, so 'most' holds. The rest was passed on rewrite 1 and is unchanged."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:53:40.107149+00:00",
+      "finishedAt": "2026-11-20T23:54:35.642396+00:00",
+      "notes": [
+        "62 s, night/atlas (preview only)",
+        "note: 23 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:55:21.556905+00:00",
+      "finishedAt": "2026-11-20T23:56:12.790545+00:00",
+      "notes": [
+        "62 s, night/atlas (preview only)",
+        "note: 23 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:57:10.318901+00:00",
+      "finishedAt": "2026-11-20T23:57:10.318901+00:00",
+      "notes": [
+        "[scene] 20.0s, coast beat (remotion/src/videos/v-20261121-04/Coast.tsx): the labels BAHRAIN, THE GULF and QATAR are drawn on top of each other, with the yellow coast line through them, so none of them reads. Move THE GULF out over open water and space the country labels apart.",
+        "[script] 50.0s, payoff beat (Payoff.tsx): this is the answer, but on mute Kuwait, Qatar and Bahrain carry no names. Three small blank white squares stand in for the 'oil tanks' (unlabelled objects), and on mute the frame doesn't say who runs out first. Label the three countries and draw the tanks as recognisable full tanks with oil.",
+        "[script] 35.0s, small beat (Small.tsx): no label or figure anywhere. Two thin yellow lines and a few black blobs; 'only a small part of what the tankers did' exists only in the voice. Show the comparison on a thing in the place (a thin pipe trickle against the fat tanker lane, each tagged), and label the pipes and the stuck barrels.",
+        "[scene] 5.0s and 10.0s, flow beat (Flow.tsx): the IRAN label sits behind the BARRELS A DAY buoy sign at 5 s, and the drawn mountains cover it at 10 s. Put the label clear of the sign and the mountains."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-20T23:58:06.154168+00:00",
+      "finishedAt": "2026-11-20T23:58:57.509718+00:00",
+      "notes": [
+        "text 'KUWAIT' at 53.3 s runs outside the frame",
+        "text 'BAHRAIN' at 53.3 s runs outside the frame",
+        "note: 23 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-20T23:59:02.261446+00:00",
+      "finishedAt": "2026-11-20T23:59:53.365709+00:00",
+      "notes": [
+        "62 s, night/atlas (preview only)",
+        "note: 23 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-21T00:00:14.585551+00:00",
+      "finishedAt": "2026-11-21T00:00:14.585551+00:00",
+      "notes": [
+        "Round 2: all four notes fixed in the new stills. Coast labels clear at 20 s (THE GULF over water, QATAR apart from KUWAIT); payoff names KUWAIT, BAHRAIN and QATAR at 50 s; small beat labels SAUDI PIPE and UAE PIPE with a PIPES vs TANKERS chart at 35 s; IRAN clear of the sign and mountains at 5 s and 10 s. Hook names Hormuz and asks the question; the last frame loops to the first; layout_problems empty; 62 s fits 60-80."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T00:00:23.250689+00:00",
+      "finishedAt": "2026-11-21T00:06:41.838294+00:00",
+      "notes": [
+        "62 s, night/atlas, peak -1.0 dB, mean -15.9 dB",
+        "note: 23 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-21T00:06:46.743952+00:00",
+      "finishedAt": "2026-11-21T00:06:46.743952+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261121-04",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261121-04"
+  }
+}
