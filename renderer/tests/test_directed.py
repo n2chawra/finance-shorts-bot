@@ -131,3 +131,29 @@ def test_the_reference_video_code_has_no_typed_figures() -> None:
     folder = REPO / "remotion" / "src" / "videos" / "v-directed-netflix"
     for f in folder.glob("*.tsx"):
         assert not remotion.TYPED_FIGURE.search(remotion._COMMENTS.sub("", f.read_text(encoding="utf-8"))), f.name
+
+
+# ---- directed beats sound their own moments (owner, 2026-11-20, geography v-20261120-05)
+def test_directed_cues_follow_the_moments_and_the_channel_sounds():
+    from pathlib import Path
+    from renderer.timeline.build import DIRECTED_MAX_PER_BEAT, auto_directed, directed_cues
+    params = {"moments": [{"at": "a", "what": "pins pop up on every continent"},
+                          {"at": "b", "what": "a truck drives to the port"},
+                          {"at": "c", "what": "the board stamps on"}],
+              "camera": [{"sec": 0, "size": "wide"}, {"at": "b", "size": "close"}]}
+    events = {"a": 0, "b": 30, "c": 60}
+    general = directed_cues(params, events, 1.0)
+    assert [s["kind"] for _, s in general] == ["pop", "whoosh"][:DIRECTED_MAX_PER_BEAT]
+    assert general[0][0] == 1.0 and all(s["at"] == "auto" for _, s in general)
+    maps = directed_cues(params, events, 0.0, ["scribble", "paper", "pin", "pin-high", "thud", "chime"])
+    assert [s["kind"] for _, s in maps] == ["pin", "paper"]
+    # a channel without any fitting sound gets nothing rather than another channel's sounds
+    assert directed_cues(params, events, 0.0, ["groan"]) == []
+    # never closer than the minimum gap, never more than the cap
+    crowd = {"moments": [{"at": k, "what": "a pin lands"} for k in "abcdef"]}
+    many = directed_cues(crowd, {k: i*3 for i, k in enumerate("abcdef")}, 0.0)
+    assert len(many) <= DIRECTED_MAX_PER_BEAT
+    assert all(b[0] - a[0] >= 0.8 - 1e-9 for a, b in zip(many, many[1:]))
+    # published videos re-render as they were
+    assert not auto_directed(Path("videos/v-20261120-05")) and auto_directed(Path("videos/v-20261122-01"))
+    assert auto_directed(Path("/tmp/anything"))

@@ -413,6 +413,10 @@ WHOOSH_TRANSITIONS = ("zoom-through", "whip", "match", "slide", "blinds")
 SHORT_DUCK = 0.89                 # Shorts: the bed about 8 dB lower under speech than VOICE_DUCK left it
 DROP_BEFORE, DROP_LEVEL = 0.5, 0.12   # the bed dips this long before a reveal, to this share of its level
 REVEALS = {"stamp", "cross", "term", "equation"}   # actions a drop announces (an equation: its result)
+# channel #1's effects (a channel without its own sound list): the money and pop sounds, not the map,
+# machine or structure ones
+GENERAL_SFX = ("pop", "pop-high", "whoosh", "clink", "ding", "boom", "fail", "tick", "beep", "riser", "kaching")
+
 AUTO_SFX = {"stamp": ("boom", 0.32), "cross": ("fail", 0.28), "tick": ("ding", 0.28), "header": ("whoosh", 0.22),
             "enter": ("pop", 0.3), "equation": ("pop", 0.3), "term": ("pop-high", 0.32), "bars": ("pop", 0.28),
             "ring": ("pop", 0.28), "grid": ("pop", 0.28), "calendar": ("tick", 0.4), "buttons": ("pop", 0.28),
@@ -444,6 +448,62 @@ def _cues(params: dict, events: dict[str, int], start: float) -> tuple[list[tupl
             if isinstance(it, dict) and it.get("at") and (x := t(it["at"])) is not None:
                 sfx.append((x, {"kind": "pop", "at": "auto", "gain": 0.26}))
     return sfx, drops
+
+
+# Directed beats sound their own moments (owner, 2026-11-20, on the geography Short v-20261120-05: "Add sound
+# effects for small small things ... when truck moving to other place ... when things pop up ... when screen
+# moves"). Build and board beats had automatic cues from their actions since October; directed beats (every
+# beat since 2026-11-13) had none, so a Short's only sounds were the few the script named. Each moment and each
+# camera change on a word gets a soft sound picked from what the moment says, from the channel's own effects
+# when it has a list. Videos made before AUTO_DIRECTED_SINCE re-render as they were.
+AUTO_DIRECTED_SINCE = 20261122
+DIRECTED_CUES: list[tuple[str, tuple[str, ...], tuple[str, ...]]] = [
+    # (kind of moment, words in its `what`, the sounds to try in order)
+    ("hit", ("stamp", "slam", "shut", "crash", "smash", "thud", "drops onto", "falls", "lands hard", "crack"), ("thud", "boom", "subboom", "rivet", "pop")),
+    ("count", ("count", "counter", "ticks", "clock", "timer", "tally", "flips", "day ", "year"), ("tick", "clatter", "pop")),
+    ("draw", ("draw", "writes", "write", "trace", "line", "border", "sketch", "underline", "circle", "scribble", "erase", "rub"), ("scribble", "paper", "tick", "pop")),
+    ("move", ("move", "moves", "slide", "slides", "sail", "drive", "drives", "fly", "flies", "travel", "truck", "ship", "train",
+              "plane", "rolls", "drifts", "sweeps", "pans", "pulls back", "push", "zoom", "dives", "races", "spins", "turns"), ("whoosh", "paper", "rush", "swell")),
+    ("pop", ("pop", "appear", "lands", "land", "arrive", "pins", "pin ", "flag", "rises", "grows", "stack", "fills", "lights", "glow", "opens", "shows"), ("pop", "pin", "pin-high", "glass", "chime", "tick")),
+]
+DIRECTED_GAIN = {"hit": 0.3, "count": 0.3, "draw": 0.24, "move": 0.18, "pop": 0.24}
+DIRECTED_MAX_PER_BEAT = 2      # a few small sounds a beat, never a sound on every word
+DIRECTED_MIN_GAP = 0.8         # seconds between two automatic sounds
+
+
+def _directed_kind(what: str) -> str:
+    w = f" {what.lower()} "
+    for kind, words, _ in DIRECTED_CUES:
+        if any(x in w for x in words):
+            return kind
+    return "pop"
+
+
+def directed_cues(params: dict, events: dict[str, int], start: float, allowed: "list[str] | None" = None) -> list[tuple[float, dict]]:
+    """Automatic sounds for a directed beat (absolute seconds): its moments, then its camera changes on words,
+    at most DIRECTED_MAX_PER_BEAT, DIRECTED_MIN_GAP apart, from `allowed` (a channel's own effects) when given."""
+    picks: list[tuple[float, str]] = []
+    for mo in params.get("moments") or []:
+        if isinstance(mo, dict) and isinstance(mo.get("at"), str) and mo["at"] in events:
+            picks.append((start + events[mo["at"]]/FPS, _directed_kind(str(mo.get("what") or ""))))
+    for k in params.get("camera") or []:
+        if isinstance(k, dict) and isinstance(k.get("at"), str) and k["at"] in events:
+            picks.append((start + events[k["at"]]/FPS, "move"))
+    out: list[tuple[float, dict]] = []
+    sounds = {kind: tries for kind, _, tries in DIRECTED_CUES}
+    for at, kind in sorted(picks, key=lambda x: x[0]):
+        if len(out) >= DIRECTED_MAX_PER_BEAT or (out and at - out[-1][0] < DIRECTED_MIN_GAP):
+            continue
+        name = next((x for x in sounds[kind] if (allowed is None and x in SFX and x in GENERAL_SFX) or (allowed is not None and x in allowed)), None)
+        if name:
+            out.append((at, {"kind": name, "at": "auto", "gain": DIRECTED_GAIN[kind]}))
+    return out
+
+
+def auto_directed(out: Path) -> bool:
+    """Directed cues apply to videos from AUTO_DIRECTED_SINCE (by the id in the output folder's name)."""
+    d = re.match(r"^[A-Za-z]+-(\d{8})-", out.name)
+    return not d or int(d.group(1)) >= AUTO_DIRECTED_SINCE
 
 
 def _drop_envelope(n: int, drops: list[float], before: float = DROP_BEFORE, level: float = DROP_LEVEL) -> np.ndarray:
@@ -799,6 +859,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     timeline_beats, lines, cursor, drops = [], [], 0.0, []
     drop_shape = own_drop(own_sound, fmt)
     automatic: set[int] = set()     # ids of the sounds the builder added (transitions, cues), for cap_sfx
+    directed_ok = auto_directed(out)
     for b in beats:
         where = f"beat {b.id!r}"
         params = _resolve(b.params, figures, results, f"{where}.params")
@@ -848,6 +909,12 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                     automatic.add(id(sp))
                     last = x
             drops.extend(beat_drops)
+        if b.scene == "directed" and directed_ok:
+            mine = [x for x, _ in b_sfx]
+            for x, sp in directed_cues(params, events, cursor, own_sound.get("sfx") if own_sound else None):
+                if all(abs(x - y) > 0.15 for y in mine):   # never on top of the script's own sounds
+                    b_sfx.append((x, sp))
+                    automatic.add(id(sp))
         if drop_shape and ("reveal" in events or b.role in DROP_ROLES[fmt]):
             drops.append(cursor + events.get("reveal", events["speech"])/FPS)
         timeline_beats[-1]["_sfx"] = b_sfx
