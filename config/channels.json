@@ -218,13 +218,21 @@
     },
     "going-down": {
       "name": "Going Down",
-      "status": "setup",
+      "status": "active",
       "settings": {
         "longPerWeek": 0,
-        "dailyVideoTarget": 3
+        "dailyVideoTarget": 3,
+        "uploadTimes": [
+          "05:37",
+          "12:17",
+          "18:27"
+        ],
+        "uploadsPaused": false,
+        "generationPaused": false,
+        "trendUploadTimes": []
       },
       "setup": {
-        "stage": "research",
+        "stage": "launched",
         "decision": {
           "at": "2026-11-21T14:35:14.010Z",
           "choice": "continue"
@@ -234,7 +242,8 @@
       "backlogByFormat": {
         "short": 0,
         "long": 0
-      }
+      },
+      "youtubeChannelId": "UCrL_x5hlWotAXKrFO-Chaww"
     }
   }
 }
