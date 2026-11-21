@@ -88,10 +88,11 @@ export const Train: React.FC<{ x: number; y: number; color: string; stripe: stri
 );
 
 /** The layer counters (a ride timer, a pump rate, a count): drawn on screen by Dive (`ScreenCounter`), so
- * they are never off the frame; the latest counter whose word has come shows, counting up on that word. */
+ * they are never off the frame; the latest counter whose word has come shows, counting up on that word, until
+ * its beat ends (so the loop's last frame matches the first). */
 export const ScreenCounter: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) => {
   const live = w.layers.filter((L) => L.spec.counter && L.fig[L.spec.counter.fig]).map((L) => ({ L, t0: L.at(L.spec.counter!.on) }))
-    .filter(({ t0 }) => g >= t0 - 3).sort((a, b) => b.t0 - a.t0)[0];
+    .filter(({ L, t0 }) => g >= t0 - 3 && g < L.until).sort((a, b) => b.t0 - a.t0)[0];
   if (!live) return null;
   const c = live.L.spec.counter!;
   const k = ramp(g, live.t0 - 3, live.t0 + 18);
@@ -323,7 +324,7 @@ export const Chamber: React.FC<PieceProps> = ({ L, w, g }) => {
       {has("desk") ? <g><Block x={600} y={yb - 110} w={260} h={30} fill="#8a5a3a" shadow="bottom" /><Block x={620} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /><Block x={820} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /></g> : null}
       {s.stamp ? <Legible x={170} y={yb - h + 26} w={260} h={110} size={66}><Tag x={170} y={yb - h + 26} w={260} h={110} text={s.stamp} bg={look.accent} k={stamp} rot={-4} /></Legible> : null}
       {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} /> : null}
-      {!s.label ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8)} rot={3} /></Legible> : null}
+      {!s.label && depthLabel(L, w) ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8)} rot={3} /></Legible> : null}
       {has("blueprint") && plans > 0 ? (
         <g opacity={plans} transform={`rotate(6 760 ${yb - h - 60})`}>
           <Block x={600} y={yb - h - 170} w={330} h={220} fill="#2f6db3" r={6} shadow="bottom" />

@@ -61,7 +61,7 @@ export interface DiveParams {
   world?: DiveWorldCfg;      // on the first dive beat
 }
 
-export interface Layer { spec: LayerSpec; ft: number; fig: Record<string, string>; land: number; at: (name?: string) => number; beat: number }
+export interface Layer { spec: LayerSpec; ft: number; fig: Record<string, string>; land: number; at: (name?: string) => number; beat: number; until: number }
 export interface Key { g: number; y: number; z: number; ft: number }
 
 export interface DiveWorld {
@@ -116,7 +116,7 @@ export function diveWorld(tl: Timeline): DiveWorld {
 
   const layers: Layer[] = [];
   const beatAt = new Map<number, { land: number; at: (n?: string) => number }>();
-  for (const { i, b, d, g0 } of dives) {
+  for (const { i, b, d, g0, g1 } of dives) {
     const fig = (b.params.fig ?? {}) as Record<string, string>;
     const ev = (name?: string) => (name && name in b.events ? g0 + b.events[name]! * tempo : NaN);
     const land = Number.isFinite(ev(d!.on)) ? ev(d!.on) : g0 + 2;
@@ -127,7 +127,7 @@ export function diveWorld(tl: Timeline): DiveWorld {
       const named = spec.depth !== undefined ? figFeet(fig[spec.depth], unit) : NaN;
       const placed = spec.kind === "shaft" ? (spec.toFt ?? spec.ft) : spec.ft;
       const ft = spec.kind === "surface" ? 0 : Number.isFinite(named) ? named : placed !== undefined ? placed : (figFeet(fig.depth, unit) || 0);
-      layers.push({ spec, ft, fig, land: spec.on ? at(spec.on) : land, at, beat: i });
+      layers.push({ spec, ft, fig, land: spec.on ? at(spec.on) : land, at, beat: i, until: g1 });
     }
   }
   const maxFt = Math.max(1, ...layers.map((l) => l.ft));
