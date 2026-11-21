@@ -31,6 +31,7 @@ import { DocCaptionDemo } from "./fx/chunkCaptions.demo";
 import { DocAvatar, DocBanner } from "./sheets/DocBrand";
 import { DisasterAvatar, DisasterBanner } from "./sheets/DisasterBrand";
 import { DisasterKitDemo } from "./disaster/Demo";
+import { DiveKitDemo } from "./dive/Demo";
 
 export const Root: React.FC = () => (
   <>
@@ -61,6 +62,7 @@ export const Root: React.FC = () => (
     <DocCaptionDemo />
     {/* the disasters channel 2D/doc kit (src/disaster): every piece in three looks */}
     <DisasterKitDemo />
+    <DiveKitDemo />
     <Still id="DocAvatar" component={DocAvatar} width={800} height={800} />
     <Still id="DocBanner" component={DocBanner} width={2560} height={1440} />
     <Still id="DisasterAvatar" component={DisasterAvatar} width={800} height={800} />
