@@ -1,0 +1,33 @@
+{
+ "note": "The weekly loop's challengers (fast path, 21 Nov 2026).",
+ "candidates": [
+  {
+   "id": "gd-open-mid-dive",
+   "kind": "first-second",
+   "test": "frame 1 already falling through the street surface (motion from frame 1) against the champion's still landmark shot",
+   "why": "the sample opens on a still facade for ~2.5 s; a dive already moving may stop more swipes",
+   "from": "build 2026-11-21"
+  },
+  {
+   "id": "gd-pullback-early",
+   "kind": "look",
+   "test": "a 1 s pull-back showing the whole stack right after the hook, then layer by layer, against the champion's pull-back only at the payoff",
+   "why": "showing the depth to come may hold viewers through the middle",
+   "from": "build 2026-11-21"
+  },
+  {
+   "id": "gd-title-figure",
+   "kind": "first-second",
+   "test": "a title with the deepest figure against the question title ('What's Under Grand Central?')",
+   "why": "Cutaway Instinct's hits use the question; a figure may stop more scrollers",
+   "from": "build 2026-11-21"
+  },
+  {
+   "id": "gd-real-sound",
+   "kind": "look",
+   "test": "a train rumble and station hum on each tunnel layer against whooshes only",
+   "why": "sound that matches the layer may hold after the hook",
+   "from": "build 2026-11-21"
+  }
+ ]
+}
