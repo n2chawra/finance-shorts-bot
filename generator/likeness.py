@@ -90,6 +90,10 @@ def likeness(vid: str, root: Path = ROOT) -> dict:
     for key, per in ((pack.load(root=root) or {}).get("likeness") or {}).items():
         if isinstance(per, dict) and isinstance(per.get(fmt), (int, float)):
             targets[key] = {**(targets.get(key) or {}), "median": per[fmt]}
+    # an owner pace note (pack.OWNER_PACE) is the pace we aim at, so it is the pace we are measured on
+    if (note := pack.OWNER_PACE.get(channels.current(), {}).get(fmt)) and (own := pack.voice_speed(fmt, root=root)) == note:
+        from .story import WORDS_PER_SPEED
+        targets["wordsPerMin"] = {**(targets.get("wordsPerMin") or {}), "median": round(WORDS_PER_SPEED * own)}
     rows = compare(our, targets)
     judged = [r for r in rows if r["within"] is not None]
     out = {"video": vid, "format": fmt, "references": block.get("n", 0), "ours": our, "rows": rows,

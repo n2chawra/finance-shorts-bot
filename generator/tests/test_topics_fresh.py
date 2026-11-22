@@ -55,3 +55,19 @@ def test_the_variant_system_s_hook_wins_over_rotation():
 
 def test_a_placeholder_figure_counts_in_a_title():
     assert formats.title_problems("Your {bonus} bonus: what the rich do with it") == []
+
+
+def test_the_long_feed_offers_the_research_feeds_long_topics(tmp_path):
+    # 2026-11-22: the new channels' setups put 13-18 long topics in research/topics.json; Studio saw one
+    from generator.channels import cpath
+    short = cpath(tmp_path, topics.FILES["short"])
+    long_ = cpath(tmp_path, topics.FILES["long"])
+    short.parent.mkdir(parents=True, exist_ok=True)
+    long_.parent.mkdir(parents=True, exist_ok=True)
+    short.write_text(json.dumps({"topics": [{"id": "s1"}, {"id": "l1", "format": "long", "title": "research"},
+                                            {"id": "l2", "format": "long"}]}))
+    long_.write_text(json.dumps({"topics": [{"id": "l1", "format": "long", "title": "scout"}]}))
+    got = {t["id"]: t for t in topics.load(tmp_path, "long")}
+    assert set(got) == {"l1", "l2"} and got["l1"]["title"] == "scout"     # Scout's entry wins
+    assert [t["id"] for t in topics.load(tmp_path, "short")] == ["s1", "l1", "l2"]   # the Shorts feed is unchanged
+    assert topics.get("l2", tmp_path, "long")["id"] == "l2"

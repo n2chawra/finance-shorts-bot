@@ -1,0 +1,1 @@
+2026-11-22 waited: no Shorts with 48 h data; recurring 'the dive kit has no pieces' QA failure (2 Shorts) is covered by the owner's 22 Nov rule that kit channels add pieces during the video run. Re-check 2026-11-24.

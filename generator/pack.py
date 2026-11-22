@@ -91,6 +91,8 @@ def logo(slug: str | None = None, root: Path = ROOT) -> str | None:
 OWNER_PACE: dict[str, dict[str, float]] = {
     # "Just increase the pace a little bit" (v-20261119-01): 0.92 -> 1.0, about 151 -> 164 words a minute
     "how-tech-and-ai-actually-work-chips-ai-p": {"short": 1.0},
+    # "Increase the pace by 1.25" (L-20261121-42, 22 Nov): long 0.92 -> 1.15, about 151 -> 189 words a minute
+    "disasters-and-engineering-failures-expla": {"long": 1.15},
 }
 
 

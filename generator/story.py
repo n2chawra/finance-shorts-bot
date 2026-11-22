@@ -729,3 +729,51 @@ def timeline_problems(script: dict, tl: dict, earlier: list[dict] | None = None)
     if hook["frames"] / fps > sp["hook_max"]:
         out.append(f"the hook runs {hook['frames'] / fps:.1f} s; keep it to {sp['hook_max']:.0f} s or less")
     return out
+
+
+# People on screen, not only a count (owner, 2026-11-22, on the Hyatt walkway long video L-20261121-42: "only
+# showing death counts is not enough. Make that scenes. Don't make it very cruel or bloody"). Its crowd, tape and
+# toll beats spoke of thousands of people over lit chairs, a viewfinder and fallen walkways: nobody was there.
+_HARM = re.compile(r"\b(died|dead|deaths?|killed|injured|injuries|victims?|survivors?|survived|"
+                   r"trapped|drowned|crushed|lives\s+(?:lost|were\s+lost))\b", re.I)
+_CROWD = re.compile(r"\b(crowds?|passengers|guests|onlookers|spectators|commuters|dancers|diners|riders|"
+                    r"(?:\{\w+\}|\d[\d,.]*)\s+(?:people|men|women|children|workers|miners|sailors))\b", re.I)
+_SHOWN = re.compile(r"\b(people|persons?|crowds?|guests|passengers|workers|crew|rescuers?|firefighters?|paramedics|"
+                    r"dancers|diners|onlookers|spectators|commuters|riders|survivors?|staff|miners|sailors|pilots?|"
+                    r"drivers?|man|woman|men|women|child|children|famil(?:y|ies)|silhouettes?|couples?|"
+                    r"crowd3d|rescuers|char)\b", re.I)
+_GORE = re.compile(r"\b(blood|bloody|gore|gory|corpses?|bodies|body\s+bags?)\b", re.I)
+
+
+def people_problems(script: dict) -> list[str]:
+    """A beat whose line speaks of people hurt, or of a crowd, shows people in its place (its params' place,
+    moments or things name them, or the beat before it does), and never draws blood or bodies."""
+    out = []
+    beats = [b for b in script.get("beats", []) if isinstance(b.get("params"), dict)]
+    shown_before = False
+    for b in beats:
+        p = b["params"]
+        text = " ".join(str(p.get(k) or "") if isinstance(p.get(k), str) else json_text(p.get(k)) for k in ("place", "moments", "things", "who", "people"))
+        shows = bool(_SHOWN.search(text))
+        say = b.get("say") or ""
+        if (m := _HARM.search(say) or _CROWD.search(say)) and not shows and not shown_before:
+            out.append(f"beat '{b.get('id')}' says '{m.group(0)}' but its place, moments and things show nobody: put the "
+                       "people in the place (Crowd3D or small Char figures before, looking up or hurrying away at the "
+                       "failure, Rescuers with lamps after; the toll on a thing there), never only a count "
+                       "(director.md rule 12)")
+        if g := _GORE.search(text):
+            out.append(f"beat '{b.get('id')}' draws '{g.group(0)}': no blood, bodies or injuries; show the aftermath "
+                       "with rescuers, lights and an emptied floor instead (director.md rule 12)")
+        shown_before = shows
+    return out
+
+
+def json_text(v) -> str:
+    """Every string inside a params value (moments are a list of dicts), joined for a word search."""
+    if isinstance(v, str):
+        return v
+    if isinstance(v, dict):   # a moment's "at" is the spoken word it fires on, not something shown
+        return " ".join(json_text(x) for k, x in v.items() if k not in ("at", "word", "sec"))
+    if isinstance(v, (list, tuple)):
+        return " ".join(json_text(x) for x in v)
+    return ""

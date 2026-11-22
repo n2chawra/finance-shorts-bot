@@ -359,3 +359,24 @@ def test_a_finance_word_on_the_second_line_fails():
         beat("rev", "build", "Its services revenue was {a} last year.")]}
     probs = story.second_line_problems(jargon)
     assert probs and "finance word" in probs[0]
+
+
+def test_people_problems_want_people_in_the_place():
+    """Owner, 2026-11-22 (Hyatt walkway): a line about a crowd or the dead shows people, never gore."""
+    from generator.story import people_problems
+
+    def beat(i, say, **p):
+        return {"id": i, "scene": "directed", "say": say, "params": {"place": "the atrium", "moments": [], "things": [], **p}}
+
+    empty = {"beats": [beat("crowd", "By the evening, the crowd was {fact12} people.", things=["tables and chairs"],
+                            moments=[{"at": "crowd", "what": "every chair lights warm"}])]}
+    assert any("crowd" in p for p in people_problems(empty))   # the moment's "at" word is not something shown
+    full = {"beats": [beat("crowd", "By the evening, the crowd was {fact12} people.", things=["Crowd3D dancing under the walkways"])]}
+    assert people_problems(full) == []
+    toll = {"beats": [beat("fall", "Then it fell.", things=["a crowd looking up"]),
+                      beat("toll", "{fact5} people died.", things=["fallen walkways", "dust"])]}
+    assert people_problems(toll) == []   # the beat before put them there
+    gore = {"beats": [beat("toll", "{fact5} people died.", things=["rescuers", "blood on the floor"])]}
+    assert any("blood" in p for p in people_problems(gore))
+    money = {"beats": [beat("hook", "Why does this coffee hurt your wallet?", things=["a cup"])]}
+    assert people_problems(money) == []
