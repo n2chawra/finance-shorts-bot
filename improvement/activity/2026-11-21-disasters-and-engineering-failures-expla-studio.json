@@ -1,0 +1,45 @@
+{
+  "agent": "studio",
+  "day": "2026-11-21",
+  "startedAt": "2026-11-21T08:31:09Z",
+  "finishedAt": "2026-11-22T09:08:09Z",
+  "summary": "Made Disaster Desk's first long video, L-20261121-42 'The Hyatt Walkway Collapse: One Phone Call Doubled the Load' (8:34), and queued it for the next long slot.",
+  "decision": "acted",
+  "why": "state --format long said video (0 of 4 long videos this week). The long feed held one usable topic, the Hyatt walkways (Scout's first batch). The internal sample on the same topic was never uploaded, so this is the full 8-10 min version, rebuilt per lessons 5-10 of the owner's sample review.",
+  "findings": [
+    {
+      "title": "Fact review: failed once, then passed",
+      "detail": "Round one flagged three over-claims: 'it wasn't bad welding' (NBS found shallow welds but no significant role in starting the collapse), 'nobody checked the joint' (the shop drawings were stamped; the joint was never calculated) and an unsourced present-day practice. All three were rewritten and round two passed. 26 sourced facts come from NBS BSS 143 and ASCE Civil Engineering (Jan 2007, Jul 2011); 18 of them were added to the topic's feed entry with their URLs, so the number check can trace them.",
+      "link": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    },
+    {
+      "title": "QA: failed twice, passed on the third look",
+      "detail": "Round one: pale or blocky 3D, steel that looked like stone, cameras inside walls, labels under captions, too long without 3D, no chapters. Round two: six small items (a black frame, an overlap, a pale shop). All were fixed, and five flat beats were rebuilt in 3D."
+    },
+    {
+      "title": "The look",
+      "detail": "Night-grid recipe. A new 3D atrium (textured terrazzo, trusses, glass roof, tables, bandstand, lit walkways); the box-beam joint in brushed steel in cutaway; the tear as the hero shot; the NBS test hall; the real report page with the finding highlighted. Diagrams and desk scenes are short inserts."
+    },
+    {
+      "title": "Rendering cost",
+      "detail": "Software WebGL in the cloud renders this video's 3D at about 2 s a frame on 4 cores: one full render of the 15,413 frames takes 8-9 hours. The first full render failed the motion gate (the promise board held still for 10 s); a slow drift on the 2D stages fixed it (longest still 2 s, 1.2% still samples) and the second render passed every gate. A container restart left a duplicate render running for part of the night, which slowed it; the chunks were checked frame by frame before shipping."
+    }
+  ],
+  "changes": [
+    {
+      "title": "L-20261121-42 shipped",
+      "detail": "Thumbnails A (pick: 3D walkway with the red joint, 'Twice the weight'), B and C; chapters in the description. Shipped to main as e7332cd; the mp4 goes up via media/L-20261121-42."
+    },
+    {
+      "title": "Long topic feed: facts added",
+      "detail": "channels/disasters-and-engineering-failures-expla/longform/topics.json and research/topics.json, topic 2026-11-20-hyatt-walkways: 18 sourced facts (NBS, ASCE) the script uses, each with its URL."
+    }
+  ],
+  "nextCheck": "2026-11-23",
+  "links": [
+    {
+      "label": "Video folder",
+      "url": "channels/disasters-and-engineering-failures-expla/videos/L-20261121-42/"
+    }
+  ]
+}

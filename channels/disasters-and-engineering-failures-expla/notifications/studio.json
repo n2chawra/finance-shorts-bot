@@ -1,3 +1,11 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "first-long-hyatt-L-20261121-42",
+      "severity": "info",
+      "title": "First Disaster Desk long video is in the queue: the Hyatt walkway collapse",
+      "detail": "L-20261121-42 'The Hyatt Walkway Collapse: One Phone Call Doubled the Load' (8:34) shipped to main on 22 Nov at 14:36 IST for tonight's long slot (Sunday 22:47 IST), about 8 hours ahead rather than the 24 h lead you prefer: the cloud renders 3D in software at about 2 s a frame, and the motion gate failed the first full render, so it was rendered twice. It is the full version of the internal sample, rebuilt after your review: a detailed 3D atrium (textured floor, trusses, tables, lit walkways), the joint as brushed steel in cutaway, a 3D failure shot, the NBS test hall and the real report page, with diagrams and desk scenes as short inserts. Facts come from the NBS report and two ASCE articles; the fact reviewer passed it on the second round and QA on the third. The channel has no Shorts yet, so there is no Short to link as its related video. The long topic feed had only this one topic, so Tuesday's Studio run will have nothing to make unless Scout adds topics first.",
+      "fix": "1. Watch it on the dashboard before 22:47 IST tonight; mark it stale if the look or pace isn't right. 2. Thumbnail: Studio picked A ('Twice the weight', the 3D walkway with the red joint); B (drawn vs built) and C ('Never calculated') are the alternatives. After it publishes you can run YouTube's Test & Compare with thumbnail.png, thumbnail-b.png and thumbnail-c.png. 3. For a Tuesday long video, have Scout add topics (or run Scout once by hand) before Tuesday 10:20 IST. 4. Rendering a 3D-heavy 8-10 min video takes 8-9 hours in the cloud: consider starting the Studio routine earlier, or rendering on your PC with a GPU (--gl=angle), to keep the 24 h lead."
+    }
+  ]
 }
