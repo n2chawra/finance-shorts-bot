@@ -1,0 +1,50 @@
+{
+  "agent": "research",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-22T19:08:15Z",
+  "finishedAt": "2026-11-22T19:12:56Z",
+  "summary": "Hooks and retention night: both of our Shorts with a retention curve lost their biggest share of viewers at 7.5 s, on a line that turned to a date or a record, so I queued a first-second test that shows the machine working by 6 s and keeps history until after 10 s. Added one machine topic (how the Golden Gate Bridge's cables were spun).",
+  "decision": "acted",
+  "why": "Microwave fell 81% to 52% at 7.5 s on 'In 1945, radar engineer Percy Spencer...', Hoover Dam 100% to 81% at 7.5 s on 'Historically, it made up to 2,074 megawatts'; Crossrail, whose second line was the machine, has 1,362 views in a day, 5x any other Short. References open on the mechanism (AI Tech 3.7's dam, 8.7M views on 11K subscribers).",
+  "findings": [
+    {
+      "title": "Both measured Shorts lost the most viewers at 7.5 s, on a backstory line",
+      "detail": "Microwave -29 points on the 1945 line; Hoover Dam -19 points on the historical megawatts line. The transistor Short repeats the pattern; its curve isn't in yet.",
+      "link": "channels/how-tech-and-ai-actually-work-chips-ai-p/metrics/analytics.json"
+    },
+    {
+      "title": "Crossrail is our best Short by 5x",
+      "detail": "1,362 views in its first day; its second line went straight into the boring machine, and its topic came from the reference with the most views a day.",
+      "link": "channels/how-tech-and-ai-actually-work-chips-ai-p/videos/v-20261122-21/script.json"
+    },
+    {
+      "title": "The biggest reference outlier opens inside the machine",
+      "detail": "AI Tech 3.7's 'How a Dam Generates Electricity': 8.7M views on 11K subscribers, 41 s, no history at all.",
+      "link": "https://youtube.com/shorts/rHk5j8d8yog"
+    },
+    {
+      "title": "Bridges are the niche's strongest structures lane",
+      "detail": "Proto Craft's 'How Humans Mastered Bridge Building' 2.44M on 93.6K subscribers (26x).",
+      "link": "https://www.youtube.com/watch?v=Hl9LUJud62Y"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Challenger tech-mechanism-by-6s",
+      "detail": "First-second test on stayed to watch, first in its kind in cycle/backlog.json.",
+      "branch": "agent/research/2026-11-23/how-tech-and-ai-actually-work-chips-ai-p"
+    },
+    {
+      "title": "Topic: Golden Gate Bridge cable spinning",
+      "detail": "machine_works, global, 6 sourced facts (Golden Gate District, NASA); payoff computed by code.",
+      "branch": "agent/research/2026-11-23/how-tech-and-ai-actually-work-chips-ai-p"
+    }
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-23.md"
+    }
+  ]
+}
