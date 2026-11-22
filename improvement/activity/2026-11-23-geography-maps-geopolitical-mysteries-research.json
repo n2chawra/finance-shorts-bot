@@ -1,0 +1,53 @@
+{
+  "agent": "research",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-22T18:42:55Z",
+  "finishedAt": "2026-11-22T18:47:05Z",
+  "summary": "Hooks night for the geography channel: re-read the five reference openings against ours, added our own first-line numbers to the claim-hook challenger, and added 3 topics (Russia's size, Singapore's wealth, Oman's enclave inside the UAE).",
+  "decision": "acted",
+  "why": "Each new topic has a breakout reference (53x, 10x, 17x its channel's subscribers) and a new category, so it can be planned at once. The Greenland Short, which opens on a contradiction you can see on the map, holds 74.7% viewed against 48-55% for plain 'Why did/What if' openers, but that's 3 Shorts, so it's evidence for the queued test, not a change.",
+  "findings": [
+    {
+      "title": "Our best opener is a visible contradiction",
+      "detail": "'Greenland sits next to Canada, yet belongs to Denmark' 74.7% viewed; Dinorwig 48%, Suez 55%. Added to geo-claim-hook's evidence."
+    },
+    {
+      "title": "Russia's expansion: 2.84M on a 53.6K channel",
+      "detail": "How Russia got So Big (Mihul Rawat); now the top of our feed at 8.6.",
+      "link": "https://youtube.com/shorts/TjFt2IyudxU"
+    },
+    {
+      "title": "Singapore as a place story: 1.29M on 125K",
+      "detail": "Tests the place_resources kind with a map answer: every lane through one strait.",
+      "link": "https://youtube.com/shorts/7cteyeo8d60"
+    },
+    {
+      "title": "Singapore's port set records in 2025",
+      "detail": "44.66M TEU, 56.77M tonnes of ship fuel (MPA).",
+      "link": "https://www.mpa.gov.sg/media-centre/details/singapore-posts-record-port-performance-in-2025-and-develops-future-readiness-through-industry-collaborations-for-2026"
+    },
+    {
+      "title": "Claude Code: still 2.1.330",
+      "detail": "Nothing new for the pipeline."
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 topics added to the feed",
+      "detail": "how-russia-got-so-big, singapore-rich-small-island, oman-enclave-inside-uae",
+      "branch": "agent/research/2026-11-23/geography-maps-geopolitical-mysteries"
+    },
+    {
+      "title": "Evidence added to the geo-claim-hook challenger",
+      "detail": "Our first-line numbers; its place on the list is unchanged.",
+      "branch": "agent/research/2026-11-23/geography-maps-geopolitical-mysteries"
+    }
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/geography-maps-geopolitical-mysteries/research/2026-11-23.md"
+    }
+  ]
+}
