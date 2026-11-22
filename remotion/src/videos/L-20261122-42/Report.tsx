@@ -1,14 +1,13 @@
-// Report (doc kit): the real pages of the National Bureau of Standards report (NBS BSS 143, 1982, public
-// domain) on the desk, the finding highlighted on its word. Params: `src` (the page, staged by
-// generator.media), `box` (the finding's line on the page), `page`, `mode` (ruledout adds two RULED OUT
-// stamps on "steel" and "workmanship"; arrive is the date line), and the moments name the words the page
+// Report (doc kit): the real pages of the U.S. Chemical Safety Board's final report on BP Texas City (2007,
+// public domain) on the desk, the finding highlighted on its word. Params: `src` (the page, staged by
+// generator.media), `box` (the finding's line on the page), `page`, `mode` (osha adds a WITHDRAWN stamp), and the moments name the words the page
 // settles, pushes in and highlights on.
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import type { SceneProps } from "../../scenes/kit";
 import { motion } from "../../flat/kit";
 import { DisasterLookProvider, HonestyTag, ReportPage, Texture } from "../../disaster/index";
-import { moments, RECIPE, RED, ANTON } from "./ui";
+import { LampStrip, moments, RECIPE, RED, ANTON } from "./ui";
 
 type Params = { src?: string; box?: [number, number, number, number]; page?: number; mode?: string; moments?: { at: string }[] };
 
@@ -29,13 +28,13 @@ const Report: React.FC<SceneProps> = (p) => {
   };
   return (
     <DisasterLookProvider value={RECIPE}>
-      <ReportPage t={t} end={m.end} src={P.src ?? ""} aspect={1373 / 1910} box={P.box ?? [0.07, 0.4, 0.85, 0.02]}
+      <ReportPage t={t} end={m.end} src={P.src ?? ""} aspect={1530 / 1980} box={P.box ?? [0.07, 0.4, 0.85, 0.02]}
         focusAt={first + 6} hiAt={last} underAt={last + 10}
-        agency="National Bureau of Standards" report="the Kansas City Hyatt Regency walkways collapse" page={P.page ?? 1} date="1982-05-01" kind="Investigation" push={2.3} />
+        agency="U.S. Chemical Safety Board" report="refinery explosion and fire, BP Texas City" page={P.page ?? 1} date="2007-03-20" kind="Investigation" push={2.3} />
       <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(3,6,4,0.85) 78%, rgba(3,6,4,0.85) 100%)" }} />
-      {P.mode === "ruledout" && stamp(ev.steel, 300, "STEEL · RULED OUT")}
-      {P.mode === "ruledout" && stamp(ev.workmanship, 440, "WORKMANSHIP · RULED OUT")}
+      {P.mode === "osha" && stamp(ev.withdrawn, 320, "WITHDRAWN")}
       <HonestyTag t={t} tag="the real report" at={0} />
+      <LampStrip t={t} marks={Object.values(ev)} />
       <Texture t={t} />
     </DisasterLookProvider>
   );

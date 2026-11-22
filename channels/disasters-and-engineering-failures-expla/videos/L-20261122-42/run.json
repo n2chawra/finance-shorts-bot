@@ -1,0 +1,86 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-22T06:12:45.490486+00:00",
+    "finishedAt": "2026-11-22T06:12:45.490486+00:00",
+    "notes": [
+      "story must be one of future_value, early_vs_late, cost_of_habit, decision_duel, myth_bust, how_it_works, trap_alert, rule_change, case_study, checklist, psychology, history, rich_vs_poor, secret_of_rich, how_they_make_money, salary_breakdown, which_one_are_you, guess_the_number, list_explained, once_you_understand, billionaire_question, money_scale, promo_failure_moment, promo_why_it_failed, promo_how_it_works, stunt_gone_wrong, rail_crash, air_crash_rule, corner_cut_structure, breaking_reconstruction",
+      "story maritime_industrial has no reference video with 100,000+ views yet (best 0): pick one of stunt_gone_wrong, rail_crash, air_crash_rule, corner_cut_structure, breaking_reconstruction"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T06:12:49.443077+00:00",
+    "finishedAt": "2026-11-22T06:12:49.443077+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T06:15:27.429567+00:00",
+    "finishedAt": "2026-11-22T06:15:27.429567+00:00",
+    "notes": [
+      "beat 's-night'.params.mode contains a typed number; use a placeholder: 'fill1'",
+      "note: 5 questions in about 393 s of speech; at least 13 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T06:16:26.071667+00:00",
+    "finishedAt": "2026-11-22T06:16:26.071667+00:00",
+    "notes": [
+      "beat 's-hours'.params.mode contains a typed number; use a placeholder: 'fill2'",
+      "note: 14 questions in about 466 s of speech; at least 15 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T06:16:33.794976+00:00",
+    "finishedAt": "2026-11-22T06:16:33.794976+00:00",
+    "notes": [
+      "beat 's-tease'.params.mode contains a typed number; use a placeholder: 'split0'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T06:16:37.190141+00:00",
+    "finishedAt": "2026-11-22T06:16:37.190141+00:00",
+    "notes": [
+      "description mentions '195', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T06:16:41.288601+00:00",
+    "finishedAt": "2026-11-22T06:16:41.288601+00:00",
+    "notes": [
+      "31 figures computed from inputs; 31 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T06:19:47.028145+00:00",
+    "finishedAt": "2026-11-22T06:19:47.028145+00:00",
+    "notes": [
+      "31 figures computed from inputs; 31 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T06:19:48.097790+00:00",
+    "finishedAt": "2026-11-22T06:19:48.097790+00:00",
+    "notes": [
+      "All facts confirmed against the CSB final report (Mar 2007); 479 ft from the CSB trailer blast damage release (Jun 2006); wording notes applied (s-habit, g-meeting, g-why, w-agree)"
+    ]
+  }
+]
