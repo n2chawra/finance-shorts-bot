@@ -1,0 +1,979 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 51973,
+  "story": "invention_story",
+  "shape": "timeline",
+  "currency": "USD",
+  "style": {
+    "palette": "sky",
+    "genre": "datahall",
+    "key": "C",
+    "bpm": 65,
+    "look": {
+      "stage": "street",
+      "header": "sticky",
+      "holder": "phone",
+      "entrance": "stamp"
+    }
+  },
+  "arms": {
+    "length": "45-60",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "28"
+  },
+  "hook_style": "challenge",
+  "cta": "What should we build in 3D next? Comment",
+  "feed_id": "2026-11-19-first-mobile-phone",
+  "facts": [
+    {
+      "label": "Weeks Motorola's team had to build a working prototype for the FCC meeting",
+      "value": 6,
+      "unit": "count",
+      "as_of": "1973-02-01",
+      "source": "Motorola Solutions",
+      "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html"
+    },
+    {
+      "label": "Year of the public demonstration in New York (3 April)",
+      "value": 1973,
+      "unit": "year",
+      "as_of": "1973-04-03",
+      "source": "Motorola Solutions",
+      "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html"
+    },
+    {
+      "label": "Years of development before the commercial phone, more than",
+      "value": 10,
+      "unit": "count",
+      "as_of": "1983-09-21",
+      "source": "Motorola Solutions",
+      "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html"
+    },
+    {
+      "label": "Motorola's investment in it, in millions of dollars, more than",
+      "value": 100,
+      "unit": "money_million",
+      "as_of": "1983-09-21",
+      "source": "Motorola Solutions",
+      "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
+      "currency": "USD"
+    },
+    {
+      "label": "Weight of the DynaTAC 8000X, in grams",
+      "value": 785,
+      "unit": "count",
+      "as_of": "1983-03-06",
+      "source": "Guinness World Records",
+      "url": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone"
+    },
+    {
+      "label": "Length of the DynaTAC 8000X, in millimetres",
+      "value": 300,
+      "unit": "count",
+      "as_of": "1983-03-06",
+      "source": "Guinness World Records",
+      "url": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 1.8,
+    "words": "Why a *brick*?",
+    "tag": "How it was made",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "role": "hook",
+      "transition": "cut",
+      "say": "Motorola's first phone you could carry was a brick. Why?",
+      "events": {
+        "motorola's": {
+          "word": "Motorola's"
+        },
+        "first": {
+          "word": "first"
+        },
+        "carry": {
+          "word": "carry"
+        },
+        "brick": {
+          "word": "brick"
+        },
+        "why": {
+          "word": "Why"
+        }
+      },
+      "params": {
+        "component": "Hook",
+        "place": "a lit studio stage: the first Motorola handset on sale standing tall beside a modern phone",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "carry",
+            "size": "medium"
+          },
+          {
+            "at": "why",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "motorola's",
+            "what": "the old handset, labelled Motorola from the first frame, turns on its plinth as its wordmark plate lights"
+          },
+          {
+            "at": "first",
+            "what": "its antenna catches the rim light"
+          },
+          {
+            "at": "carry",
+            "what": "the modern phone beside it lights up and hops, tiny against it, as the camera pushes in"
+          },
+          {
+            "at": "brick",
+            "what": "a clay brick slides in next to it, the same block shape, and a label writes on: brick"
+          },
+          {
+            "at": "why",
+            "what": "close on the handset's keypad, its buttons lighting one by one"
+          }
+        ],
+        "things": [
+          "first Motorola handset",
+          "modern phone",
+          "brick",
+          "plinth",
+          "Motorola wordmark"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "why"
+        }
+      ]
+    },
+    {
+      "id": "weeks",
+      "role": "promise",
+      "transition": "whip",
+      "say": "Its engineers had just {fact1} weeks to build one, to show America's phone regulators.",
+      "events": {
+        "engineers": {
+          "word": "engineers"
+        },
+        "just": {
+          "word": "just"
+        },
+        "weeks": {
+          "word": "weeks"
+        },
+        "build": {
+          "word": "build"
+        },
+        "show": {
+          "word": "show"
+        },
+        "regulators": {
+          "word": "regulators"
+        }
+      },
+      "params": {
+        "component": "Weeks",
+        "place": "an engineering workbench from the seventies at night, a wall calendar above it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "weeks",
+            "size": "close"
+          },
+          {
+            "at": "show",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "engineers",
+            "what": "soldering irons glow and circuit boards slide across the bench"
+          },
+          {
+            "at": "just",
+            "what": "the wall calendar's pages start tearing off one after another"
+          },
+          {
+            "at": "weeks",
+            "what": "the weeks figure slams onto the calendar in amber"
+          },
+          {
+            "at": "build",
+            "what": "parts of the handset snap together on the bench"
+          },
+          {
+            "at": "show",
+            "what": "pull back: a briefcase and a meeting badge beside the finished prototype"
+          },
+          {
+            "at": "regulators",
+            "what": "a label writes on over the badge: the regulators' meeting"
+          }
+        ],
+        "things": [
+          "workbench",
+          "wall calendar",
+          "soldering iron",
+          "circuit boards",
+          "prototype handset",
+          "briefcase"
+        ],
+        "fig": {
+          "weeks": "{fact1}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "weeks"
+        }
+      ]
+    },
+    {
+      "id": "parts",
+      "role": "build",
+      "transition": "cut",
+      "say": "Everything had to fit in one hand: a radio, an antenna, and a battery to power them.",
+      "events": {
+        "everything": {
+          "word": "Everything"
+        },
+        "fit": {
+          "word": "fit"
+        },
+        "hand": {
+          "word": "hand"
+        },
+        "radio": {
+          "word": "radio"
+        },
+        "antenna": {
+          "word": "antenna"
+        },
+        "battery": {
+          "word": "battery"
+        },
+        "power": {
+          "word": "power"
+        }
+      },
+      "params": {
+        "component": "Parts",
+        "place": "above the workbench: the prototype opened up, its parts floating apart in a column of light",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "radio",
+            "size": "close"
+          },
+          {
+            "at": "power",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "everything",
+            "what": "the handset's shell lifts away"
+          },
+          {
+            "at": "fit",
+            "what": "the parts hover in a stack above the bench"
+          },
+          {
+            "at": "hand",
+            "what": "a hand outline traces round the handset's grip"
+          },
+          {
+            "at": "radio",
+            "what": "the radio boards slide out and glow green, a label writes on"
+          },
+          {
+            "at": "antenna",
+            "what": "the antenna rises out of the top and lights, labelled"
+          },
+          {
+            "at": "battery",
+            "what": "the battery pack drops out of the bottom, the heaviest block, labelled"
+          },
+          {
+            "at": "power",
+            "what": "power lines light from the battery up into the boards"
+          }
+        ],
+        "things": [
+          "prototype shell",
+          "radio boards",
+          "antenna",
+          "battery pack",
+          "power lines"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "radio"
+        },
+        {
+          "kind": "tick",
+          "at": "antenna"
+        },
+        {
+          "kind": "thud",
+          "at": "battery"
+        }
+      ]
+    },
+    {
+      "id": "waves",
+      "role": "build",
+      "transition": "cut",
+      "say": "How does it call with no wire? The radio turns your voice into radio waves for a tower nearby.",
+      "events": {
+        "how": {
+          "word": "How"
+        },
+        "call": {
+          "word": "call"
+        },
+        "wire": {
+          "word": "wire"
+        },
+        "radio": {
+          "word": "radio"
+        },
+        "turns": {
+          "word": "turns"
+        },
+        "voice": {
+          "word": "voice"
+        },
+        "waves": {
+          "word": "waves"
+        },
+        "tower": {
+          "word": "tower"
+        },
+        "nearby": {
+          "word": "nearby"
+        }
+      },
+      "params": {
+        "component": "Waves",
+        "place": "a city block at night from above, the handset on a street corner and a radio tower on a rooftop",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "radio",
+            "size": "medium"
+          },
+          {
+            "at": "tower",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "how",
+            "what": "close on the handset's mouthpiece, a phone cord that isn't there fades and snaps away"
+          },
+          {
+            "at": "call",
+            "what": "the handset's red display blinks"
+          },
+          {
+            "at": "wire",
+            "what": "a cut wire falls away"
+          },
+          {
+            "at": "radio",
+            "what": "the radio board inside glows through the shell"
+          },
+          {
+            "at": "turns",
+            "what": "the keypad lights up"
+          },
+          {
+            "at": "voice",
+            "what": "a sound wave pulses out of the mouthpiece"
+          },
+          {
+            "at": "waves",
+            "what": "rings of radio waves spread out over the street"
+          },
+          {
+            "at": "tower",
+            "what": "the camera rises to the rooftop tower as the waves reach it and it lights"
+          },
+          {
+            "at": "nearby",
+            "what": "the tower's dish blinks back"
+          }
+        ],
+        "things": [
+          "handset",
+          "sound wave",
+          "radio waves",
+          "rooftop tower",
+          "city block"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "waves"
+        }
+      ]
+    },
+    {
+      "id": "cells",
+      "role": "build",
+      "transition": "cut",
+      "say": "Each tower covers one small patch, a cell. That's the cell in cell phone.",
+      "events": {
+        "each": {
+          "word": "Each"
+        },
+        "covers": {
+          "word": "covers"
+        },
+        "patch": {
+          "word": "patch"
+        },
+        "cell": {
+          "word": "cell"
+        },
+        "that's": {
+          "word": "That's"
+        },
+        "phone": {
+          "word": "phone"
+        }
+      },
+      "params": {
+        "component": "Cells",
+        "place": "high above the city: the towers' patches drawn as a honeycomb of glowing hexagons",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "patch",
+            "size": "medium"
+          },
+          {
+            "at": "phone",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "each",
+            "what": "towers light one after another across the city"
+          },
+          {
+            "at": "covers",
+            "what": "a glowing hexagon spreads out round each tower"
+          },
+          {
+            "at": "patch",
+            "what": "one hexagon lifts and glows amber"
+          },
+          {
+            "at": "cell",
+            "what": "a label writes on in the hexagon: cell"
+          },
+          {
+            "at": "that's",
+            "what": "a dot for the handset crosses from one hexagon into the next and the call follows it"
+          },
+          {
+            "at": "phone",
+            "what": "the camera dives down onto the handset at the centre"
+          }
+        ],
+        "things": [
+          "radio towers",
+          "hexagon cells",
+          "city grid",
+          "handset dot"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "glass",
+          "at": "cell"
+        }
+      ]
+    },
+    {
+      "id": "call",
+      "role": "build",
+      "transition": "cut",
+      "say": "In April of {fact2} it made a real call, on a New York street.",
+      "events": {
+        "april": {
+          "word": "April"
+        },
+        "of": {
+          "word": "of"
+        },
+        "it": {
+          "word": "it"
+        },
+        "made": {
+          "word": "made"
+        },
+        "real": {
+          "word": "real"
+        },
+        "call": {
+          "word": "call"
+        },
+        "new": {
+          "word": "New"
+        },
+        "street": {
+          "word": "street"
+        }
+      },
+      "params": {
+        "component": "Call",
+        "place": "a New York street in daylight, tall buildings and a crossing, the prototype raised to someone's ear",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "sec": 1.9,
+            "size": "wide"
+          },
+          {
+            "at": "made",
+            "size": "medium"
+          },
+          {
+            "at": "call",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "april",
+            "what": "a street banner with the date lands over the crossing as the camera glides down the avenue"
+          },
+          {
+            "at": "of",
+            "what": "the camera sweeps on down the avenue toward the crossing"
+          },
+          {
+            "at": "it",
+            "what": "a passer-by walks up the far pavement"
+          },
+          {
+            "at": "made",
+            "what": "a figure on the pavement lifts the prototype to his ear"
+          },
+          {
+            "at": "real",
+            "what": "a signal arc leaps from the handset to a rooftop tower"
+          },
+          {
+            "at": "call",
+            "what": "close on the handset as its light blinks with the call"
+          },
+          {
+            "at": "new",
+            "what": "the passer-by turns to look"
+          },
+          {
+            "at": "street",
+            "what": "the handset's display blinks again over the street"
+          }
+        ],
+        "things": [
+          "New York street",
+          "buildings",
+          "date banner",
+          "person with prototype",
+          "signal arc"
+        ],
+        "fig": {
+          "year": "{fact2}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "call"
+        }
+      ]
+    },
+    {
+      "id": "shop",
+      "role": "turn",
+      "transition": "cut",
+      "say": "But that phone wasn't for sale. The first one you could buy weighed {fact5} grams, and was {fact6} millimetres long.",
+      "events": {
+        "but": {
+          "word": "But"
+        },
+        "sale": {
+          "word": "sale"
+        },
+        "first": {
+          "word": "first"
+        },
+        "buy": {
+          "word": "buy"
+        },
+        "weighed": {
+          "word": "weighed"
+        },
+        "grams": {
+          "word": "grams"
+        },
+        "was": {
+          "word": "was"
+        },
+        "millimetres": {
+          "word": "millimetres"
+        },
+        "long": {
+          "word": "long"
+        }
+      },
+      "params": {
+        "component": "Shop",
+        "place": "a shop counter: the first handset on sale on a weighing scale, a modern phone beside it at true size",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "buy",
+            "size": "close"
+          },
+          {
+            "sec": 4.9,
+            "size": "close"
+          },
+          {
+            "at": "long",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "but",
+            "what": "the prototype stands on a shop counter as the shutter behind it rolls down"
+          },
+          {
+            "at": "sale",
+            "what": "a NOT FOR SALE label writes on beside it"
+          },
+          {
+            "at": "first",
+            "what": "the shutter starts rolling up on the shop's shelves"
+          },
+          {
+            "at": "buy",
+            "what": "the shop is open: the first handset on sale stands over the scale"
+          },
+          {
+            "at": "weighed",
+            "what": "the handset drops onto a weighing scale and the needle swings"
+          },
+          {
+            "at": "grams",
+            "what": "the scale's display counts up to the weight"
+          },
+          {
+            "at": "was",
+            "what": "a modern phone slides in beside it on the counter"
+          },
+          {
+            "at": "millimetres",
+            "what": "a length bracket runs up the old handset"
+          },
+          {
+            "at": "long",
+            "what": "the camera pulls back to show both standing side by side"
+          }
+        ],
+        "things": [
+          "shop shutter",
+          "shop counter",
+          "prototype",
+          "first handset on sale",
+          "weighing scale",
+          "modern phone",
+          "length bracket"
+        ],
+        "fig": {
+          "grams": "{fact5}",
+          "mm": "{fact6}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "weighed"
+        },
+        {
+          "kind": "tick",
+          "at": "grams"
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "role": "payoff",
+      "transition": "cut",
+      "say": "Getting that brick into a shop took over {fact4} of Motorola's money, and more than {fact3} years.",
+      "events": {
+        "getting": {
+          "word": "Getting"
+        },
+        "brick": {
+          "word": "brick"
+        },
+        "into": {
+          "word": "into"
+        },
+        "shop": {
+          "word": "shop"
+        },
+        "took": {
+          "word": "took"
+        },
+        "over": {
+          "word": "over"
+        },
+        "of": {
+          "word": "of"
+        },
+        "motorola's": {
+          "word": "Motorola's"
+        },
+        "and": {
+          "word": "and"
+        },
+        "more": {
+          "word": "more"
+        },
+        "years": {
+          "word": "years"
+        }
+      },
+      "params": {
+        "component": "Payoff",
+        "place": "a long glowing timeline rail in the dark, prototype handsets standing along it from the street call to the shop",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "took",
+            "size": "wide"
+          },
+          {
+            "at": "over",
+            "size": "close"
+          },
+          {
+            "sec": 3.2,
+            "size": "medium"
+          },
+          {
+            "at": "and",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "getting",
+            "what": "the camera starts flying along the rail past prototype handsets"
+          },
+          {
+            "at": "brick",
+            "what": "each prototype is a little smaller and neater than the last"
+          },
+          {
+            "at": "into",
+            "what": "the camera turns toward the far end of the rail"
+          },
+          {
+            "at": "shop",
+            "what": "the shop at the far end of the rail lights its window"
+          },
+          {
+            "at": "took",
+            "what": "the rail lights up end to end"
+          },
+          {
+            "at": "over",
+            "what": "the money figure lands on the shop's sign board in amber"
+          },
+          {
+            "at": "of",
+            "what": "the MOTOROLA wordmark glows over the rail"
+          },
+          {
+            "at": "motorola's",
+            "what": "the rail pulses from end to end"
+          },
+          {
+            "at": "and",
+            "what": "the camera settles on the shop front"
+          },
+          {
+            "at": "more",
+            "what": "the years figure counts up on the shop's lit window"
+          },
+          {
+            "at": "years",
+            "what": "the prototypes light one by one along the rail"
+          }
+        ],
+        "things": [
+          "timeline rail",
+          "prototype handsets",
+          "shop with sign board",
+          "shop window",
+          "money figure"
+        ],
+        "fig": {
+          "years": "{fact3}",
+          "money": "{fact4}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "over"
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "role": "loop",
+      "transition": "match",
+      "say": "All of that, for a phone that fit in one hand.",
+      "events": {
+        "all": {
+          "word": "All"
+        },
+        "that": {
+          "word": "that"
+        },
+        "phone": {
+          "word": "phone"
+        },
+        "fit": {
+          "word": "fit"
+        },
+        "hand": {
+          "word": "hand"
+        }
+      },
+      "params": {
+        "component": "Loop",
+        "place": "back on the lit studio stage, the handset on its plinth beside the modern phone",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "phone",
+            "size": "medium"
+          },
+          {
+            "at": "hand",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "all",
+            "what": "the rail's light flows into the handset's keypad"
+          },
+          {
+            "at": "that",
+            "what": "the handset turns on its plinth"
+          },
+          {
+            "at": "phone",
+            "what": "the camera pulls back past the modern phone, its screen glowing"
+          },
+          {
+            "at": "fit",
+            "what": "a hand outline traces round the grip"
+          },
+          {
+            "at": "hand",
+            "what": "the wide stage shot of the first frame, the antenna catching the rim light"
+          }
+        ],
+        "things": [
+          "first Motorola handset",
+          "modern phone",
+          "plinth",
+          "hand outline"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": []
+    }
+  ],
+  "narrator": "am_michael"
+}

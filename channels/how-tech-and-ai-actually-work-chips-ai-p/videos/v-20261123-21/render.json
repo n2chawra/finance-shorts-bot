@@ -1,0 +1,125 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 51973,
+  "duration_sec": 55,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "datahall",
+    "key": "C",
+    "bpm": 65,
+    "look": {
+      "stage": "street",
+      "header": "sticky",
+      "holder": "phone",
+      "entrance": "stamp"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Motorola's first phone you could carry was a brick. Why?",
+        "start": 0.3,
+        "seconds": 3.77,
+        "window": 4.17,
+        "fill": 0.904
+      },
+      {
+        "scene": "weeks",
+        "text": "Its engineers had just 6 weeks to build one, to show America's phone regulators.",
+        "start": 4.47,
+        "seconds": 5.55,
+        "window": 6.07,
+        "fill": 0.914
+      },
+      {
+        "scene": "parts",
+        "text": "Everything had to fit in one hand: a radio, an antenna, and a battery to power them.",
+        "start": 10.53,
+        "seconds": 5.64,
+        "window": 6.13,
+        "fill": 0.92
+      },
+      {
+        "scene": "waves",
+        "text": "How does it call with no wire? The radio turns your voice into radio waves for a tower nearby.",
+        "start": 16.67,
+        "seconds": 6.35,
+        "window": 6.97,
+        "fill": 0.911
+      },
+      {
+        "scene": "cells",
+        "text": "Each tower covers one small patch, a cell. That's the cell in cell phone.",
+        "start": 23.63,
+        "seconds": 4.92,
+        "window": 5.33,
+        "fill": 0.923
+      },
+      {
+        "scene": "call",
+        "text": "In April of 1973 it made a real call, on a New York street.",
+        "start": 28.97,
+        "seconds": 5.27,
+        "window": 5.73,
+        "fill": 0.92
+      },
+      {
+        "scene": "shop",
+        "text": "But that phone wasn't for sale. The first one you could buy weighed 785 grams, and was 300 millimetres long.",
+        "start": 34.7,
+        "seconds": 8.57,
+        "window": 9.07,
+        "fill": 0.945
+      },
+      {
+        "scene": "payoff",
+        "text": "Getting that brick into a shop took over $100M of Motorola's money, and more than 10 years.",
+        "start": 43.77,
+        "seconds": 7.1,
+        "window": 7.77,
+        "fill": 0.914
+      },
+      {
+        "scene": "loop",
+        "text": "All of that, for a phone that fit in one hand.",
+        "start": 51.53,
+        "seconds": 2.86,
+        "window": 3.3,
+        "fill": 0.867
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.0,
+    "music_under_voice_db": 26.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 17.315,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
