@@ -51,7 +51,7 @@ export const DepthMeter: React.FC<{ w: DiveWorld; ft: number }> = ({ w, ft }) =>
 
 /** The world at story frame g: strata, then the pieces back to front. */
 export const World: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) => {
-  const order = ["water", "pour", "surface", "foundation", "shaft", "tunnel", "passage", "chamber", "room", "hall", "pumps", "cavern", "deepest"];
+  const order = ["water", "pour", "surface", "foundation", "well", "shaft", "tunnel", "passage", "chamber", "room", "hall", "pumps", "cavern", "deepest"];
   const all: Record<string, React.FC<{ L: (typeof w.layers)[number]; w: DiveWorld; g: number }>> = { ...PIECES, ...MORE_PIECES };
   const sorted = [...w.layers].sort((a, b) => order.indexOf(a.spec.kind) - order.indexOf(b.spec.kind));
   return (

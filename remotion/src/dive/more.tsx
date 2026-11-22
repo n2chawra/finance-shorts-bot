@@ -17,7 +17,7 @@
  * add it, register it in MORE_PIECES, list it in README "Pieces", never change how an existing piece draws.
  */
 import React from "react";
-import { Ball, Block, Glow, INK, Limb, STROKE, Tag, Txt, rng, shade } from "../flat/kit";
+import { Ball, Block, Glow, INK, Limb, STROKE, Tag, Txt, countText, rng, shade } from "../flat/kit";
 import { Legible, Sign, Surface, Train, outro, useNear, type PieceProps } from "./pieces";
 import { depthText, ramp, type DiveWorld, type Layer } from "./world";
 
@@ -108,6 +108,31 @@ const Marker: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number
   return <g opacity={near}><Legible x={x + 180} y={y} w={260} h={90} size={52}><Tag x={x + 180} y={y} w={260} h={90} text={d} bg={w.look.paper} k={k} rot={-3} /></Legible></g>;
 };
 
+/** A figure carved on a stone tablet in the piece (`spec.tally`), counting up on its word, possibly in a later
+ * beat: the payoff's figure on a thing in the place, not a card on the screen. */
+const Tally: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number }> = ({ L, w, g, x, y }) => {
+  const t = L.spec.tally;
+  if (!t) return null;
+  const figs = t.beat ? w.figs[t.beat] ?? {} : L.fig;
+  const fig = figs[t.fig];
+  if (!fig) return null;
+  const t0 = t.beat ? w.ev(t.beat, t.on) : L.at(t.on);
+  const at = Number.isFinite(t0) ? t0 : L.land;
+  const k = ramp(g, at - 3, at + 20) * outro(w, g);
+  if (k <= 0) return null;
+  const W = 520, H = 230;
+  return (
+    <g opacity={Math.min(1, k * 3)} transform={`rotate(-2 ${x + W / 2} ${y + H / 2})`}>
+      <Legible x={x} y={y} w={W} h={H} size={96}>
+        <Block x={x} y={y} w={W} h={H} fill="#d9d2bf" r={18} shadow="bottom" />
+        <rect x={x + 16} y={y + 16} width={W - 32} height={H - 32} rx={12} fill="none" stroke="#a89f88" strokeWidth={6} />
+        {t.label ? <Txt x={x + W / 2} y={y + 66} size={56} fill="#5a4a3a" weight={800}>{t.label.toUpperCase()}</Txt> : null}
+        <Txt x={x + W / 2} y={y + 172} size={96} fill={INK} weight={900}>{countText(fig, k)}</Txt>
+      </Legible>
+    </g>
+  );
+};
+
 // ------------------------------------------------------------------ room
 
 /** A room carved in the rock: an uneven arched cave with a lamp, and the life of its `type` moving in it. */
@@ -170,6 +195,11 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
         {[360, 720].map((cx, i) => <Flame key={cx} x={cx} y={yb - 200} g={g} w={w} ph={i * 2} />)}
         {Array.from({ length: n }, (_, i) => <Person key={i} x={420 + i * 220} y={yb - 26} i={i + 1} pose="kneel" step={0} dir={i % 2 ? -1 : 1} />)}
       </> : null}
+      {type === "crowd" ? <>
+        {/* families and their animals filling the room, walking both ways */}
+        {Array.from({ length: s.people ?? 8 }, (_, i) => { const u = walk(i, 1, i * 0.13); const dir = i % 2 ? -1 : 1; const x = dir === 1 ? 150 + u * 780 : 930 - u * 780; return <Person key={i} x={x} y={yb - 26 - (i % 3) * 8} i={i} step={u * 14} dir={dir} s={0.8 + (i % 3) * 0.06} />; })}
+        {[0, 1].map((i) => { const u = walk(i + 9, 1, 0.5); return <Animal key={`a${i}`} x={200 + ((u + i * 0.5) % 1) * 680} y={yb - 26} i={i} step={u * 12} />; })}
+      </> : null}
       {type === "tombs" ? <>
         {[0, 1].map((row) => [0, 1, 2, 3].map((c) => <Block key={`${row}${c}`} x={300 + c * 160} y={top + 90 + row * 120} w={130} h={80} fill={shade(inside, -0.3)} r={30} shadow={false} sw={4} />))}
         <Person x={200 + 600 * walk(0, 1)} y={yb - 26} i={5} lamp step={walk(0, 1) * 8} />
@@ -190,6 +220,49 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
         </>;
       })() : null}
       <Marker L={L} w={w} g={g} x={240} y={top - 160} />
+      <Tally L={L} w={w} g={g} x={280} y={top + 30} />
+    </g>
+  );
+};
+
+// ------------------------------------------------------------------ well
+
+/** A well and air shaft from the street down to its depth, passing carved floors (people at their openings), a
+ * bucket riding a rope, air arrows flowing down, the water at the bottom; its sign lands at the bottom on its word. */
+export const Well: React.FC<PieceProps> = ({ L, w, g }) => {
+  const s = L.spec, look = w.look;
+  const yb = w.Y(L.ft) + 120, y0 = 64, cx = 540, half = 90;
+  const rock = s.color ?? shade(look.chalk, -0.35);
+  // floors open onto the shaft only near its bottom, where the camera lands: higher up the shaft passes behind the
+  // other layers' rooms (it ran in front of the stables and the door on v-20261122-54)
+  const floors = 2, fTop = Math.max(y0 + 200, yb - 900);
+  const u = loopU(w, g, Math.max(1, Math.round(w.total / 150)));
+  const bucketY = y0 + 80 + (yb - y0 - 220) * (0.5 - 0.5 * Math.cos(u * TAU));
+  return (
+    <g>
+      <rect x={cx - half - 14} y={y0} width={half * 2 + 28} height={yb - y0 + 40} fill={shade(look.deep, 0.06)} />
+      <rect x={cx - half} y={y0} width={half * 2} height={yb - y0} fill={shade(rock, -0.5)} stroke={INK} strokeWidth={STROKE} />
+      {/* floors opening onto the shaft, a person at each */}
+      {Array.from({ length: floors }, (_, i) => {
+        const fy = fTop + ((i + 0.8) * (yb - fTop - 160)) / floors;
+        const left = i % 2 === 0;
+        const x0 = left ? cx - half - 300 : cx + half;
+        return (
+          <g key={i}>
+            <path d={`M ${x0} ${fy} v -170 q 0 -40 40 -40 h 220 q 40 0 40 40 v 170 z`} fill={shade(rock, -0.45)} stroke={INK} strokeWidth={5} />
+            <Person x={left ? cx - half - 70 : cx + half + 70} y={fy} i={i + 2} s={0.8} dir={left ? 1 : -1} step={0} pose={i === 0 ? "carry" : "stand"} />
+          </g>
+        );
+      })}
+      {/* air flowing down */}
+      {[0, 1, 2, 3].map((i) => { const v = loopU(w, g, 6, i / 4); const ay = y0 + v * (yb - y0 - 100); return <path key={i} d={`M ${cx - 50} ${ay} l 18 30 l 18 -30`} fill="none" stroke="#e8f6ff" strokeWidth={6} opacity={0.7} />; })}
+      {/* the rope and the bucket */}
+      <line x1={cx + 30} x2={cx + 30} y1={y0} y2={bucketY} stroke="#c9a26a" strokeWidth={6} />
+      <path d={`M ${cx + 8} ${bucketY} h 44 l -6 50 h -32 z`} fill="#8a5a3a" stroke={INK} strokeWidth={4} />
+      {/* the water at the bottom */}
+      <rect x={cx - half} y={yb - 70} width={half * 2} height={70} fill={look.water} />
+      {[0, 1].map((i) => <path key={i} transform={`translate(${-loopU(w, g, 10, i / 2) * 80} 0)`} d={`M ${cx - half} ${yb - 60 + i * 26} ${Array.from({ length: 4 }, () => "q 20 -8 40 0 t 40 0").join(" ")}`} fill="none" stroke="#e8f6ff" strokeWidth={5} />)}
+      <Marker L={L} w={w} g={g} x={240} y={yb - 420} />
     </g>
   );
 };
@@ -230,6 +303,7 @@ export const Hall: React.FC<PieceProps> = ({ L, w, g }) => {
       {[0, 1, 2].map((i) => { const u = loopU(w, g, 1, i / 3); return <ellipse key={i} cx={x0 + u * (x1 - x0)} cy={yb - 60 - i * 30} rx={180} ry={26} fill="#e8f2ff" opacity={0.18} />; })}
       <Person x={x0 + 120 + walker * (x1 - x0 - 240)} y={yb - 18} i={4} lamp step={walker * 12} s={0.9} />
       <Marker L={L} w={w} g={g} x={240} y={top - 150} />
+      <Tally L={L} w={w} g={g} x={280} y={top + 40} />
     </g>
   );
 };
@@ -296,6 +370,7 @@ export const Pumps: React.FC<PieceProps> = ({ L, w, g }) => {
       })}
       <Glow x={540} y={yb - 150} r={420} color={look.water} o={0.25 * on} />
       <Marker L={L} w={w} g={g} x={240} y={top - 150} />
+      <Tally L={L} w={w} g={g} x={280} y={top - 420} />
     </g>
   );
 };
@@ -448,4 +523,4 @@ export const SurfaceMore: React.FC<PieceProps> = (props) => {
   );
 };
 
-export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour };
+export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well };

@@ -12,7 +12,7 @@ import { diveLook, type DiveLook } from "./looks";
 export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest" | "counter"
   // added 2026-11-22 (more.tsx, owner: "the kit improves itself when making a video"): carved rooms, a pillared
   // hall, a walkway or water passage, a pump room, water pouring in
-  | "room" | "hall" | "passage" | "pumps" | "pour";
+  | "room" | "hall" | "passage" | "pumps" | "pour" | "well";
 
 /** One piece of the world. Only the fields of its `kind` matter (README "Pieces"). */
 export interface LayerSpec {
@@ -26,6 +26,9 @@ export interface LayerSpec {
     | "town" | "field" | "sea" | "mountain" | "pyramid" | "dome" | "arena";   // more.tsx, 2026-11-22
   plate?: boolean;           // a readable name plate over the landmark (default on for the more.tsx presets)
   people?: number;           // room / hall / passage: how many people move in it
+  // a figure carved on a tablet in the piece, counting up on a word of this beat or a later one (the payoff said in
+  // the next beat, QA 2026-11-22: "20,000 is a floating headline card"): {fig, label, beat?, on}
+  tally?: { fig: string; label?: string; beat?: string; on?: string };
   wall?: string; trim?: string; glass?: string; vehicle?: string;
   // tunnel / cavern
   type?: string;             // tunnel: subway | rail | road | utility; chamber: secret | vault | bunker | machine;
@@ -76,6 +79,10 @@ export interface DiveWorld {
   layers: Layer[]; maxFt: number; total: number;
   Y: (ft: number) => number;
   keys: Key[]; landings: number[];
+  /** the story frame of a word in any beat (by beat id), NaN when there is none */
+  ev: (beat: string, name?: string) => number;
+  /** every beat's params.fig, by beat id */
+  figs: Record<string, Record<string, string>>;
 }
 
 /** The first number in a figure string ("105 ft" → 105, "1,200 m" → 1200); NaN when there is none. */
@@ -188,7 +195,13 @@ export function diveWorld(tl: Timeline): DiveWorld {
     }
     if (d!.pull) pull(at(d!.pull));
   }
-  const w: DiveWorld = { look: diveLook(cfg.look), cfg, layers, maxFt, total, Y, keys, landings };
+  const figs: Record<string, Record<string, string>> = {};
+  for (const { b } of beats) figs[b.id] = (b.params.fig ?? {}) as Record<string, string>;
+  const ev = (beat: string, name?: string): number => {
+    const x = beats.find((y) => y.b.id === beat);
+    return x && name && name in x.b.events ? x.g0 + x.b.events[name]! * tempo : NaN;
+  };
+  const w: DiveWorld = { look: diveLook(cfg.look), cfg, layers, maxFt, total, Y, keys, landings, ev, figs };
   cache.set(tl, w);
   return w;
 }
