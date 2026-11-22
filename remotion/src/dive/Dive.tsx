@@ -23,7 +23,8 @@ const sourcedFt = (w: DiveWorld): number[] => [0, ...w.layers.filter((L) => {
 }).map((L) => L.ft)];
 
 export const DepthMeter: React.FC<{ w: DiveWorld; ft: number }> = ({ w, ft }) => {
-  const x = 34, y0 = 230, y1 = 1360;
+  // starts under the source chip (QA 2026-11-22: "Data: …" ran over the 0 m tag)
+  const x = 34, y0 = 360, y1 = 1360;
   const u = Math.min(1, Math.max(0, ft / w.maxFt));
   const py = y0 + u * (y1 - y0);
   // whole metres, or a half where the depth really sits on one (58.5 m reads as its sign does; 221 ft is 67 m, not 67.5)

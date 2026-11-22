@@ -79,7 +79,8 @@ export const Tally: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: 
   // one line when the label and the figure fit side by side, else the label over the figure (QA-style check on
   // v-20261122-55: "UNDER THE SEA" ran into "37.9 km")
   const label = (t.label ?? "").toUpperCase(), shown = countText(fig, 1);
-  const W = 640, oneLine = label.length * 48 * 0.62 + shown.length * 72 * 0.6 + 110 < W;
+  // right of the depth meter's tag (QA 2026-11-22: the PILLARS tablet ran over "22 m")
+  const W = 540, oneLine = label.length * 48 * 0.62 + shown.length * 72 * 0.6 + 110 < W;
   const H = oneLine ? 116 : 190;
   y -= H - 116;            // a taller tablet grows upward, clear of the piece under it
   return (
@@ -400,7 +401,7 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
       </g>
       <rect x={x0} y={yb - h} width={x1 - x0} height={h + 40} rx={26} fill="none" stroke={INK} strokeWidth={STROKE} />
       <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
-      <Tally L={L} w={w} g={g} x={220} y={yb - h - 190} />
+      <Tally L={L} w={w} g={g} x={370} y={yb - h - 190} />
     </g>
   );
 };

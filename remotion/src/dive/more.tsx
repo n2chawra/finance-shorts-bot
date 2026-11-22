@@ -197,7 +197,7 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
         </>;
       })() : null}
       <Marker L={L} w={w} g={g} x={240} y={top - 160} />
-      <Tally L={L} w={w} g={g} x={220} y={top - 10} />
+      <Tally L={L} w={w} g={g} x={370} y={top - 10} />
     </g>
   );
 };
@@ -281,7 +281,7 @@ export const Hall: React.FC<PieceProps> = ({ L, w, g }) => {
       {[0, 1, 2].map((i) => { const u = loopU(w, g, 1, i / 3); return <ellipse key={i} cx={x0 + u * (x1 - x0)} cy={yb - 60 - i * 30} rx={180} ry={26} fill="#e8f2ff" opacity={0.18} />; })}
       <Person x={x0 + 120 + walker * (x1 - x0 - 240)} y={yb - 18} i={4} lamp step={walker * 12} s={0.9} />
       <Marker L={L} w={w} g={g} x={240} y={top - 150} />
-      <Tally L={L} w={w} g={g} x={280} y={top + 40} />
+      <Tally L={L} w={w} g={g} x={370} y={top + 40} />
     </g>
   );
 };
@@ -348,7 +348,7 @@ export const Pumps: React.FC<PieceProps> = ({ L, w, g }) => {
       })}
       <Glow x={540} y={yb - 150} r={420} color={look.water} o={0.25 * on} />
       <Marker L={L} w={w} g={g} x={240} y={top - 150} />
-      <Tally L={L} w={w} g={g} x={280} y={top - 420} />
+      <Tally L={L} w={w} g={g} x={370} y={top + 14} />
     </g>
   );
 };
@@ -388,13 +388,18 @@ export const Pour: React.FC<PieceProps> = ({ L, w, g }) => {
 // ------------------------------------------------------------------ more landmarks
 
 /** A name plate over the landmark: dark board, light words, readable at the opening zoom. */
-const Plate: React.FC<{ y: number; text: string; accent: string }> = ({ y, text, accent }) => (
-  <Legible x={170} y={y} w={740} h={120} size={64}>
+const Plate: React.FC<{ y: number; text: string; accent: string }> = ({ y, text, accent }) => {
+  // it leaves with the street when the camera dives, never under the source chip (QA 2026-11-22)
+  const near = useNear(y + 60);
+  if (near <= 0) return null;
+  return (
+  <g opacity={near}><Legible x={170} y={y} w={740} h={120} size={64}>
     <Block x={170} y={y} w={740} h={120} fill="#111318" r={14} shadow="bottom" />
     <rect x={186} y={y + 12} width={708} height={8} fill={accent} />
     <Txt x={540} y={y + 78} size={64} fill="#f4f1e8" weight={800}>{text}</Txt>
-  </Legible>
-);
+  </Legible></g>
+  );
+};
 
 const NEW_PRESETS = ["town", "field", "sea", "mountain", "pyramid", "dome", "arena"];
 

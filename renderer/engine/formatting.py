@@ -259,7 +259,7 @@ def fact_value(value: float, unit: str, currency: str = LEGACY_CURRENCY) -> str:
     if unit in ("ft", "s", "min", "tonnes"):
         return f"{shown} {unit}"
     if unit in ("tonnes_per_s", "tonnes per second"):
-        return f"{shown} t/s"
+        return f"{shown} tonnes/s"   # "t/s" didn't read on mute (QA 2026-11-22)
     if unit == "m3_per_s":
         return f"{shown} m³/s"
     if unit == "count_lakh":
