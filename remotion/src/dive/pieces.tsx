@@ -53,6 +53,49 @@ export const Legible: React.FC<{ x: number; y: number; w: number; h: number; siz
   );
 };
 
+/** A figure carved on a stone tablet in the piece (`spec.tally`), counting up on its word, possibly in a later
+ * beat: the payoff's figure on a thing in the place, not a card on the screen. */
+export const Tally: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number }> = ({ L, w, g, x, y: y0 }) => {
+  let y = y0;
+  // one tally, or a list that take turns: the latest whose word has come shows (a figure said in a later beat
+  // replaces the last one on the same tablet)
+  const list = [...(L.spec.tally ? [L.spec.tally] : []), ...(L.spec.tallies ?? [])].map((t) => {
+    const t0 = t.beat ? w.ev(t.beat, t.on) : L.at(t.on);
+    return { t, at: Number.isFinite(t0) ? t0 : L.land };
+  }).sort((a, b) => a.at - b.at);
+  const cur = list.filter((x) => g >= x.at - 3).pop() ?? list[0];
+  if (!cur) return null;
+  const { t, at } = cur;
+  const figs = t.beat ? w.figs[t.beat] ?? {} : L.fig;
+  const fig = figs[t.fig];
+  if (!fig) return null;
+  const k = ramp(g, at - 3, at + 20) * outro(w, g);
+  if (k <= 0) return null;
+  // high on the back wall, above the people's heads (QA 2026-11-22: a 230 px tablet hid the whole crowd)
+  // one line across the top of the vault, clear of the heads below (QA 2026-11-22, twice)
+  // one line when the label and the figure fit side by side, else the label over the figure (QA-style check on
+  // v-20261122-55: "UNDER THE SEA" ran into "37.9 km")
+  const label = (t.label ?? "").toUpperCase(), shown = countText(fig, 1);
+  const W = 640, oneLine = label.length * 48 * 0.62 + shown.length * 72 * 0.6 + 110 < W;
+  const H = oneLine ? 116 : 190;
+  y -= H - 116;            // a taller tablet grows upward, clear of the piece under it
+  return (
+    <g opacity={Math.min(1, k * 3)} transform={`rotate(-2 ${x + W / 2} ${y + H / 2})`}>
+      <Legible x={x} y={y} w={W} h={H} size={48}>
+        <Block x={x} y={y} w={W} h={H} fill="#d9d2bf" r={18} shadow="bottom" />
+        <rect x={x + 16} y={y + 16} width={W - 32} height={H - 32} rx={12} fill="none" stroke="#a89f88" strokeWidth={6} />
+        {oneLine ? <>
+          {label ? <Txt x={x + 36} y={y + 76} size={48} fill="#5a4a3a" weight={800} anchor="start">{label}</Txt> : null}
+          <Txt x={x + W - 36} y={y + 82} size={72} fill={INK} weight={900} anchor="end">{countText(fig, k)}</Txt>
+        </> : <>
+          <Txt x={x + W / 2} y={y + 68} size={48} fill="#5a4a3a" weight={800}>{label}</Txt>
+          <Txt x={x + W / 2} y={y + 152} size={72} fill={INK} weight={900}>{countText(fig, k)}</Txt>
+        </>}
+      </Legible>
+    </g>
+  );
+};
+
 // ------------------------------------------------------------------ shared bits
 
 export const Bullet: React.FC<{ x: number; y: number; r: number; color: string; t: string }> = ({ x, y, r, color, t }) => (
@@ -326,7 +369,8 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
   // next layer (2026-11-21: one 2.4 s run-through left the tunnel empty in most frames, QA on Hampstead)
   const dir = s.dir ?? 1;
   const arrive = ramp(g, L.land - 6, L.land + 40);
-  const go = Math.max(L.land + 60, L.until - 26);
+  // `stay`: the train stays at the platform until the loop (a later beat still talks about this tunnel)
+  const go = s.stay ? w.total - 40 : Math.max(L.land + 60, L.until - 26);
   const leave = ramp(g, go, go + 40);
   const ea = 1 - Math.pow(1 - arrive, 3), el = leave * leave;
   const STOP = -150;
@@ -353,6 +397,7 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
       </g>
       <rect x={x0} y={yb - h} width={x1 - x0} height={h + 40} rx={26} fill="none" stroke={INK} strokeWidth={STROKE} />
       <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+      <Tally L={L} w={w} g={g} x={220} y={yb - h - 190} />
     </g>
   );
 };

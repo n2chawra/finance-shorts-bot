@@ -29,6 +29,8 @@ export interface LayerSpec {
   // a figure carved on a tablet in the piece, counting up on a word of this beat or a later one (the payoff said in
   // the next beat, QA 2026-11-22: "20,000 is a floating headline card"): {fig, label, beat?, on}
   tally?: { fig: string; label?: string; beat?: string; on?: string };
+  stay?: boolean;            // tunnel: the train stays until the loop instead of leaving at its beat's end
+  tallies?: { fig: string; label?: string; beat?: string; on?: string }[];
   wall?: string; trim?: string; glass?: string; vehicle?: string;
   // tunnel / cavern
   type?: string;             // tunnel: subway | rail | road | utility; chamber: secret | vault | bunker | machine;

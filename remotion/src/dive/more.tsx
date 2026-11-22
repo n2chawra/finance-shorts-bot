@@ -17,8 +17,8 @@
  * add it, register it in MORE_PIECES, list it in README "Pieces", never change how an existing piece draws.
  */
 import React from "react";
-import { Ball, Block, Glow, INK, Limb, STROKE, Tag, Txt, countText, rng, shade } from "../flat/kit";
-import { Legible, Sign, Surface, Train, outro, useNear, type PieceProps } from "./pieces";
+import { Ball, Block, Glow, INK, Limb, STROKE, Tag, Txt, rng, shade } from "../flat/kit";
+import { Legible, Sign, Surface, Tally, Train, outro, useNear, type PieceProps } from "./pieces";
 import { depthText, ramp, type DiveWorld, type Layer } from "./world";
 
 const unitOf = (w: DiveWorld) => w.cfg.unit ?? "ft";
@@ -106,33 +106,6 @@ const Marker: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number
   if (s.label) return <Sign x={x} y={y} w={wd} text={s.label.toUpperCase()} depth={d} accent={w.look.accent} k={k} />;
   if (!d || near <= 0) return null;
   return <g opacity={near}><Legible x={x + 180} y={y} w={260} h={90} size={52}><Tag x={x + 180} y={y} w={260} h={90} text={d} bg={w.look.paper} k={k} rot={-3} /></Legible></g>;
-};
-
-/** A figure carved on a stone tablet in the piece (`spec.tally`), counting up on its word, possibly in a later
- * beat: the payoff's figure on a thing in the place, not a card on the screen. */
-const Tally: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number }> = ({ L, w, g, x, y }) => {
-  const t = L.spec.tally;
-  if (!t) return null;
-  const figs = t.beat ? w.figs[t.beat] ?? {} : L.fig;
-  const fig = figs[t.fig];
-  if (!fig) return null;
-  const t0 = t.beat ? w.ev(t.beat, t.on) : L.at(t.on);
-  const at = Number.isFinite(t0) ? t0 : L.land;
-  const k = ramp(g, at - 3, at + 20) * outro(w, g);
-  if (k <= 0) return null;
-  // high on the back wall, above the people's heads (QA 2026-11-22: a 230 px tablet hid the whole crowd)
-  // one line across the top of the vault, clear of the heads below (QA 2026-11-22, twice)
-  const W = 640, H = 116;
-  return (
-    <g opacity={Math.min(1, k * 3)} transform={`rotate(-2 ${x + W / 2} ${y + H / 2})`}>
-      <Legible x={x} y={y} w={W} h={H} size={48}>
-        <Block x={x} y={y} w={W} h={H} fill="#d9d2bf" r={18} shadow="bottom" />
-        <rect x={x + 16} y={y + 16} width={W - 32} height={H - 32} rx={12} fill="none" stroke="#a89f88" strokeWidth={6} />
-        {t.label ? <Txt x={x + 36} y={y + 76} size={48} fill="#5a4a3a" weight={800} anchor="start">{t.label.toUpperCase()}</Txt> : null}
-        <Txt x={x + W - 36} y={y + 82} size={72} fill={INK} weight={900} anchor="end">{countText(fig, k)}</Txt>
-      </Legible>
-    </g>
-  );
 };
 
 // ------------------------------------------------------------------ room
