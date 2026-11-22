@@ -558,17 +558,18 @@
       "templates": [
         "any"
       ],
-      "angle": "If Antarctica's ice sheet melted, sea level would rise about 60 metres: which cities and countries would be under water.",
+      "angle": "If Antarctica's ice sheet melted, sea level would rise about 58 metres: which cities and countries would be under water.",
       "why_now": "First topics for the channel, from the setup research (families.json: the two core kinds).",
       "facts": [
         {
           "label": "Sea level rise if the Antarctic Ice Sheet melted (about)",
-          "value": 60,
+          "value": 58,
           "unit": "m",
           "as_of": "2024-01-01",
           "source": "National Snow and Ice Data Center",
           "url": "https://nsidc.org/learn/parts-cryosphere/ice-sheets",
-          "fixed": true
+          "fixed": true,
+          "checked": "2026-11-22"
         }
       ]
     },

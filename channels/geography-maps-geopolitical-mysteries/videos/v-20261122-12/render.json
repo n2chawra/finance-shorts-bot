@@ -1,0 +1,137 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 70213,
+  "duration_sec": 64,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "atlas",
+    "key": "F",
+    "bpm": 88,
+    "look": {
+      "stage": "space",
+      "header": "strip",
+      "holder": "box",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Antarctica's ice melts, all of it. Which countries vanish from the map first?",
+        "start": 0.3,
+        "seconds": 3.4,
+        "window": 4.03,
+        "fill": 0.844
+      },
+      {
+        "scene": "ice",
+        "text": "From space, Antarctica is a whole white continent at the bottom of the world, buried under ice so thick it hides whole mountain ranges.",
+        "start": 4.33,
+        "seconds": 6.32,
+        "window": 7.0,
+        "fill": 0.903
+      },
+      {
+        "scene": "water",
+        "text": "Melt it, and all that water runs into the one ocean that touches every coast on Earth. So where does it hit first?",
+        "start": 11.33,
+        "seconds": 5.04,
+        "window": 5.63,
+        "fill": 0.895
+      },
+      {
+        "scene": "dutch",
+        "text": "Start in Europe. The Netherlands is low, flat land, and the North Sea pours in until most of it is gone, Amsterdam and Rotterdam included.",
+        "start": 16.97,
+        "seconds": 6.07,
+        "window": 6.73,
+        "fill": 0.902
+      },
+      {
+        "scene": "bengal",
+        "text": "Fly east to Bangladesh, a country of river mouths. Most of it slips under the Bay of Bengal, and the capital, Dhaka, goes with it.",
+        "start": 23.7,
+        "seconds": 5.98,
+        "window": 6.6,
+        "fill": 0.906
+      },
+      {
+        "scene": "florida",
+        "text": "Across the Atlantic, the sea closes in on Florida's long peninsula, and most of the state is under water too.",
+        "start": 30.3,
+        "seconds": 4.99,
+        "window": 5.63,
+        "fill": 0.886
+      },
+      {
+        "scene": "keep",
+        "text": "But those three keep their high ground. So which countries lose everything?",
+        "start": 35.93,
+        "seconds": 2.98,
+        "window": 3.63,
+        "fill": 0.821
+      },
+      {
+        "scene": "maldives",
+        "text": "Out in the Indian Ocean lie the Maldives, hundreds of coral islands, none much higher than a house. Every one goes under. A whole country, gone.",
+        "start": 39.57,
+        "seconds": 6.18,
+        "window": 6.83,
+        "fill": 0.905
+      },
+      {
+        "scene": "pacific",
+        "text": "Then the Pacific: Tuvalu and the Marshall Islands, whole nations built on low rings of coral, wiped off the map.",
+        "start": 46.4,
+        "seconds": 5.06,
+        "window": 5.63,
+        "fill": 0.899
+      },
+      {
+        "scene": "payoff",
+        "text": "All because the sea would stand about 58 m higher than it does today, and their highest ground is nowhere near that.",
+        "start": 52.03,
+        "seconds": 5.11,
+        "window": 5.77,
+        "fill": 0.886
+      },
+      {
+        "scene": "loop",
+        "text": "Netherlands or Florida: which new coastline surprised you more? Tell me below, before Antarctica's ice melts, all of it.",
+        "start": 57.8,
+        "seconds": 5.49,
+        "window": 6.13,
+        "fill": 0.896
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9,
+    "lufs": -14.7,
+    "music_under_voice_db": 31.7
+  },
+  "craft_problems": [
+    "note: four shots in a row open wide (from 'florida'): vary the shot size"
+  ]
+}

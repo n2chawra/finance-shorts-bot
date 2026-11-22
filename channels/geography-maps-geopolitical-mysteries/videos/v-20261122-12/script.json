@@ -1,0 +1,1040 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 70213,
+ "story": "what_if_world",
+ "shape": "the-meltdown",
+ "currency": "USD",
+ "style": {
+  "palette": "sky",
+  "genre": "atlas",
+  "key": "F",
+  "bpm": 88,
+  "look": {
+   "stage": "space",
+   "header": "strip",
+   "holder": "box",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "Netherlands or Florida: which new coastline surprised you more? Comment",
+ "feed_id": "2026-11-17-what-if-antarctica-melted",
+ "facts": [
+  {
+   "label": "Sea level rise if the Antarctic Ice Sheet melted (about)",
+   "value": 58,
+   "unit": "m",
+   "as_of": "2024-01-01",
+   "source": "National Snow and Ice Data Center",
+   "url": "https://nsidc.org/learn/parts-cryosphere/ice-sheets",
+   "fixed": true,
+   "checked": "2026-11-22"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "Which countries *vanish*?",
+  "tag": "Antarctica melts",
+  "angle": "question"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Antarctica's ice melts, all of it. Which countries vanish from the map first?",
+   "events": {
+    "ice": {
+     "word": "ice"
+    },
+    "melts": {
+     "word": "melts"
+    },
+    "all": {
+     "word": "all"
+    },
+    "countries": {
+     "word": "countries"
+    },
+    "vanish": {
+     "word": "vanish"
+    },
+    "map": {
+     "word": "map"
+    },
+    "first": {
+     "word": "first"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "melts"
+    },
+    {
+     "kind": "pin",
+     "at": "map"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the whole world from space, Antarctica at the bottom",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "vanish",
+      "size": "medium"
+     },
+     {
+      "at": "first",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ice",
+      "what": "the white ice cap of Antarctica glows at the bottom of the world"
+     },
+     {
+      "at": "melts",
+      "what": "cracks run across the ice and it starts to drip"
+     },
+     {
+      "at": "all",
+      "what": "meltwater spreads out from the coast in rings"
+     },
+     {
+      "at": "countries",
+      "what": "coastlines around the world flicker blue"
+     },
+     {
+      "at": "vanish",
+      "what": "the camera pushes in on the flickering coasts of Europe and Asia"
+     },
+     {
+      "at": "map",
+      "what": "a question mark drops onto the ocean"
+     },
+     {
+      "at": "first",
+      "what": "the camera eases back to the whole world"
+     }
+    ],
+    "things": [
+     "world map",
+     "antarctica ice cap",
+     "meltwater rings",
+     "coastlines",
+     "question mark"
+    ]
+   }
+  },
+  {
+   "id": "ice",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "From space, Antarctica is a whole white continent at the bottom of the world, buried under ice so thick it hides whole mountain ranges.",
+   "events": {
+    "space": {
+     "word": "space"
+    },
+    "white": {
+     "word": "white"
+    },
+    "continent": {
+     "word": "continent"
+    },
+    "bottom": {
+     "word": "bottom"
+    },
+    "buried": {
+     "word": "buried"
+    },
+    "thick": {
+     "word": "thick"
+    },
+    "mountain": {
+     "word": "mountain"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "bottom"
+    }
+   ],
+   "params": {
+    "component": "Ice",
+    "place": "on the map: Antarctica from above, the South Pole",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "bottom",
+      "size": "medium"
+     },
+     {
+      "at": "mountain",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "space",
+      "what": "the camera dives toward the South Pole"
+     },
+     {
+      "at": "white",
+      "what": "Antarctica traces in light"
+     },
+     {
+      "at": "continent",
+      "what": "ANTARCTICA writes across the ice"
+     },
+     {
+      "at": "bottom",
+      "what": "the South Pole pin drops in the middle of the ice"
+     },
+     {
+      "at": "buried",
+      "what": "the ice thickens into a dome"
+     },
+     {
+      "at": "thick",
+      "what": "a cut line shows the ice deep over the land"
+     },
+     {
+      "at": "mountain",
+      "what": "mountain peaks show faintly under the ice"
+     }
+    ],
+    "things": [
+     "antarctica",
+     "south pole pin",
+     "ice dome",
+     "hidden mountains"
+    ]
+   }
+  },
+  {
+   "id": "water",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Melt it, and all that water runs into the one ocean that touches every coast on Earth. So where does it hit first?",
+   "events": {
+    "melt": {
+     "word": "Melt"
+    },
+    "water": {
+     "word": "water"
+    },
+    "runs": {
+     "word": "runs"
+    },
+    "ocean": {
+     "word": "ocean"
+    },
+    "coast": {
+     "word": "coast"
+    },
+    "earth": {
+     "word": "Earth"
+    },
+    "hit": {
+     "word": "hit"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "runs",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Water",
+    "place": "on the map: the Southern Ocean and every ocean beyond it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "ocean",
+      "size": "wide"
+     },
+     {
+      "at": "earth",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "melt",
+      "what": "the ice cap shrinks, its edge dripping"
+     },
+     {
+      "at": "water",
+      "what": "blue water rings spread out from Antarctica"
+     },
+     {
+      "at": "runs",
+      "what": "arrows of water run north into the Atlantic, Indian and Pacific"
+     },
+     {
+      "at": "ocean",
+      "what": "the camera pulls back over all the oceans"
+     },
+     {
+      "at": "coast",
+      "what": "every coastline on the map traces in blue"
+     },
+     {
+      "at": "earth",
+      "what": "the sea level line on the map rises"
+     },
+     {
+      "at": "hit",
+      "what": "a question mark drops onto the map"
+     }
+    ],
+    "things": [
+     "antarctica",
+     "water rings",
+     "arrows",
+     "coastlines"
+    ]
+   }
+  },
+  {
+   "id": "dutch",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Start in Europe. The Netherlands is low, flat land, and the North Sea pours in until most of it is gone, Amsterdam and Rotterdam included.",
+   "events": {
+    "europe": {
+     "word": "Europe"
+    },
+    "netherlands": {
+     "word": "Netherlands"
+    },
+    "flat": {
+     "word": "flat"
+    },
+    "north": {
+     "word": "North"
+    },
+    "pours": {
+     "word": "pours"
+    },
+    "gone": {
+     "word": "gone"
+    },
+    "amsterdam": {
+     "word": "Amsterdam"
+    },
+    "rotterdam": {
+     "word": "Rotterdam"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "Netherlands"
+    },
+    {
+     "kind": "paper",
+     "at": "pours",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Dutch",
+    "place": "on the map: the Netherlands and the North Sea",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "flat",
+      "size": "close"
+     },
+     {
+      "at": "gone",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "europe",
+      "what": "the camera flies to Europe"
+     },
+     {
+      "at": "netherlands",
+      "what": "the Netherlands traces with its flag"
+     },
+     {
+      "at": "flat",
+      "what": "windmills stand on the flat land"
+     },
+     {
+      "at": "north",
+      "what": "the North Sea writes on"
+     },
+     {
+      "at": "pours",
+      "what": "water pours in over the coast"
+     },
+     {
+      "at": "gone",
+      "what": "most of the country turns to sea, the windmills sinking"
+     },
+     {
+      "at": "amsterdam",
+      "what": "a pin on Amsterdam sinks under the water"
+     },
+     {
+      "at": "rotterdam",
+      "what": "a pin on Rotterdam sinks under the water"
+     }
+    ],
+    "things": [
+     "netherlands",
+     "flag",
+     "windmills",
+     "north sea",
+     "floodwater"
+    ]
+   }
+  },
+  {
+   "id": "bengal",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Fly east to Bangladesh, a country of river mouths. Most of it slips under the Bay of Bengal, and the capital, Dhaka, goes with it.",
+   "events": {
+    "fly": {
+     "word": "Fly"
+    },
+    "bangladesh": {
+     "word": "Bangladesh"
+    },
+    "river": {
+     "word": "river"
+    },
+    "mouths": {
+     "word": "mouths"
+    },
+    "slips": {
+     "word": "slips"
+    },
+    "bay": {
+     "word": "Bay"
+    },
+    "dhaka": {
+     "word": "Dhaka"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "Bangladesh"
+    }
+   ],
+   "params": {
+    "component": "Bengal",
+    "place": "on the map: Bangladesh and the Bay of Bengal",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "bangladesh",
+      "size": "medium"
+     },
+     {
+      "at": "slips",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fly",
+      "what": "a plane flies east over the map"
+     },
+     {
+      "at": "bangladesh",
+      "what": "Bangladesh traces with its flag"
+     },
+     {
+      "at": "river",
+      "what": "rivers fan out into the sea"
+     },
+     {
+      "at": "mouths",
+      "what": "a small boat bobs at the river mouth"
+     },
+     {
+      "at": "slips",
+      "what": "the water creeps north over the land"
+     },
+     {
+      "at": "bay",
+      "what": "BAY OF BENGAL writes on the new sea"
+     },
+     {
+      "at": "dhaka",
+      "what": "a pin on Dhaka sinks under the water"
+     }
+    ],
+    "things": [
+     "bangladesh",
+     "flag",
+     "rivers",
+     "boat",
+     "floodwater"
+    ]
+   }
+  },
+  {
+   "id": "florida",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Across the Atlantic, the sea closes in on Florida's long peninsula, and most of the state is under water too.",
+   "events": {
+    "atlantic": {
+     "word": "Atlantic"
+    },
+    "long": {
+     "word": "long"
+    },
+    "peninsula": {
+     "word": "peninsula"
+    },
+    "closes": {
+     "word": "closes"
+    },
+    "most": {
+     "word": "most"
+    },
+    "water": {
+     "word": "water"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "Florida"
+    }
+   ],
+   "params": {
+    "component": "Florida",
+    "place": "on the map: Florida and the Gulf of Mexico",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "peninsula",
+      "size": "medium"
+     },
+     {
+      "at": "water",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "atlantic",
+      "what": "the camera crosses the Atlantic"
+     },
+     {
+      "at": "long",
+      "what": "Florida traces in light"
+     },
+     {
+      "at": "peninsula",
+      "what": "a palm tree and a beach hut stand on the peninsula"
+     },
+     {
+      "at": "closes",
+      "what": "the sea eats in from both sides"
+     },
+     {
+      "at": "most",
+      "what": "only a few patches of high ground are left"
+     },
+     {
+      "at": "water",
+      "what": "the palm tree sinks, the water closing over it"
+     }
+    ],
+    "things": [
+     "florida",
+     "palm tree",
+     "beach hut",
+     "floodwater"
+    ]
+   }
+  },
+  {
+   "id": "keep",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "But those three keep their high ground. So which countries lose everything?",
+   "events": {
+    "three": {
+     "word": "three"
+    },
+    "keep": {
+     "word": "keep"
+    },
+    "high": {
+     "word": "high"
+    },
+    "which": {
+     "word": "which"
+    },
+    "everything": {
+     "word": "everything"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin-high",
+     "at": "everything"
+    }
+   ],
+   "params": {
+    "component": "Keep",
+    "place": "on the map: the world, three countries flooded but still there",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "high",
+      "size": "medium"
+     },
+     {
+      "at": "everything",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "three",
+      "what": "the Netherlands, Bangladesh and Florida pulse on the map"
+     },
+     {
+      "at": "keep",
+      "what": "their high ground glows green"
+     },
+     {
+      "at": "high",
+      "what": "small hills rise above the water on each"
+     },
+     {
+      "at": "which",
+      "what": "a question mark spins over the Indian Ocean"
+     },
+     {
+      "at": "everything",
+      "what": "the camera pushes toward the open ocean"
+     }
+    ],
+    "things": [
+     "world map",
+     "three flooded places",
+     "hills",
+     "question mark"
+    ]
+   }
+  },
+  {
+   "id": "maldives",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Out in the Indian Ocean lie the Maldives, hundreds of coral islands, none much higher than a house. Every one goes under. A whole country, gone.",
+   "events": {
+    "indian": {
+     "word": "Indian"
+    },
+    "maldives": {
+     "word": "Maldives"
+    },
+    "coral": {
+     "word": "coral"
+    },
+    "house": {
+     "word": "house"
+    },
+    "every": {
+     "word": "Every"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "gone": {
+     "word": "gone"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "gone"
+    }
+   ],
+   "params": {
+    "component": "Maldives",
+    "place": "on the map: the Maldives in the Indian Ocean",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "coral",
+      "size": "close"
+     },
+     {
+      "at": "gone",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "indian",
+      "what": "the camera dives into the Indian Ocean"
+     },
+     {
+      "at": "maldives",
+      "what": "a chain of tiny islands traces in light, MALDIVES writing on"
+     },
+     {
+      "at": "coral",
+      "what": "palm trees and little houses stand on the islands"
+     },
+     {
+      "at": "house",
+      "what": "a house stands beside a height marker"
+     },
+     {
+      "at": "every",
+      "what": "the water rises over the islands one by one"
+     },
+     {
+      "at": "whole",
+      "what": "the flag sinks below the waves"
+     },
+     {
+      "at": "gone",
+      "what": "only rings of ripples are left on the sea"
+     }
+    ],
+    "things": [
+     "maldives",
+     "islands",
+     "palm trees",
+     "houses",
+     "flag"
+    ]
+   }
+  },
+  {
+   "id": "pacific",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then the Pacific: Tuvalu and the Marshall Islands, whole nations built on low rings of coral, wiped off the map.",
+   "events": {
+    "pacific": {
+     "word": "Pacific"
+    },
+    "tuvalu": {
+     "word": "Tuvalu"
+    },
+    "marshall": {
+     "word": "Marshall"
+    },
+    "nations": {
+     "word": "nations"
+    },
+    "rings": {
+     "word": "rings"
+    },
+    "wiped": {
+     "word": "wiped"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "wiped",
+     "gain": 0.5
+    }
+   ],
+   "params": {
+    "component": "Pacific",
+    "place": "on the map: Tuvalu and the Marshall Islands in the Pacific",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "marshall",
+      "size": "medium"
+     },
+     {
+      "at": "wiped",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pacific",
+      "what": "the camera swings out over the Pacific"
+     },
+     {
+      "at": "tuvalu",
+      "what": "the islands of Tuvalu light up"
+     },
+     {
+      "at": "marshall",
+      "what": "the Marshall Islands light up further north"
+     },
+     {
+      "at": "nations",
+      "what": "both flags plant on their islands"
+     },
+     {
+      "at": "rings",
+      "what": "the coral rings glow"
+     },
+     {
+      "at": "wiped",
+      "what": "an eraser sweeps the islands off the map"
+     }
+    ],
+    "things": [
+     "pacific",
+     "tuvalu",
+     "marshall islands",
+     "flags",
+     "eraser"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "All because the sea would stand about {fact1} higher than it does today, and their highest ground is nowhere near that.",
+   "events": {
+    "all": {
+     "word": "All"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "stand": {
+     "word": "stand"
+    },
+    "higher": {
+     "word": "higher"
+    },
+    "highest": {
+     "word": "highest"
+    },
+    "nowhere": {
+     "word": "nowhere"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "stand",
+     "gain": 0.4
+    }
+   ],
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: the world with its new coastlines, a sea gauge at the Maldives",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "higher",
+      "size": "close"
+     },
+     {
+      "at": "nowhere",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "all",
+      "what": "a sea gauge post rises out of the ocean"
+     },
+     {
+      "at": "sea",
+      "what": "the water climbs the gauge"
+     },
+     {
+      "at": "stand",
+      "what": "the gauge sign lands on the figure"
+     },
+     {
+      "at": "higher",
+      "what": "the camera pushes in on the gauge"
+     },
+     {
+      "at": "highest",
+      "what": "a tiny island hill stands beside the gauge, far below the line"
+     },
+     {
+      "at": "nowhere",
+      "what": "the camera pulls back over the new world map"
+     }
+    ],
+    "things": [
+     "sea gauge",
+     "water level",
+     "island hill",
+     "new world map"
+    ],
+    "fig": {
+     "rise": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Netherlands or Florida: which new coastline surprised you more? Tell me below, before Antarctica's ice melts, all of it.",
+   "events": {
+    "netherlands": {
+     "word": "Netherlands"
+    },
+    "florida": {
+     "word": "Florida"
+    },
+    "coastline": {
+     "word": "coastline"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "before": {
+     "word": "before"
+    },
+    "melts": {
+     "word": "melts"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "Tell"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": "on the map: back to the whole world from space",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tell",
+      "size": "wide"
+     },
+     {
+      "at": "melts",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "netherlands",
+      "what": "the Netherlands glows on the map"
+     },
+     {
+      "at": "florida",
+      "what": "Florida glows across the ocean"
+     },
+     {
+      "at": "coastline",
+      "what": "the new coastlines trace in blue"
+     },
+     {
+      "at": "tell",
+      "what": "a comment bubble pops"
+     },
+     {
+      "at": "before",
+      "what": "the water drains back off the map"
+     },
+     {
+      "at": "melts",
+      "what": "the ice cap of Antarctica returns, white, as in the first frame"
+     }
+    ],
+    "things": [
+     "world map",
+     "netherlands",
+     "florida",
+     "comment bubble",
+     "antarctica"
+    ]
+   }
+  }
+ ]
+}
