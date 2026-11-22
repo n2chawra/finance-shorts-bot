@@ -1,0 +1,22 @@
+{
+  "agent": "research",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-22T16:48:49Z",
+  "finishedAt": "2026-11-22T16:54:05Z",
+  "summary": "Monday hooks pass. I added two re-sourced topics for this week's money moments: an airline's profit per passenger (Thanksgiving travel) and Walmart's worker vs CEO (Black Friday). I also added new evidence for the paradox-title challenger.",
+  "decision": "acted",
+  "why": "Our figure-free paradox titles about one named person (Arnold 899 views, Musk's jet 928 in a day) match the breakouts' pattern. Workers vs the top lead the channel (McDonald's 1,194). Topics about a company's cut trail by views (Uber 154) but are level on stayed to watch (38.8% vs 39.2%), so I proposed no test.",
+  "findings": [
+    {"title": "Paradox titles on one named person are our best starts this week", "detail": "'Why did Arnold Schwarzenegger work on Twins for free?' 899 views; 'Elon Musk flies a private jet everywhere. Why isn't it his?' 928. I added them to the paradox-title challenger's evidence; stayed to watch isn't in yet.", "link": "channels/paisa-panchayat/research/2026-11-23.md"},
+    {"title": "A company's cut vs named people: same stayed to watch", "detail": "Since 12 Nov, Shorts about named people or workers had 39.2% stayed and about 540 median views; Shorts about a company's cut had 38.8% and about 370. The gap is views, not hold, so there's no challenger.", "link": "channels/paisa-panchayat/research/2026-11-23.md"},
+    {"title": "Airlines expect to keep $4.50 per passenger in 2026", "detail": "IATA, 7 Jun 2026: half of 2025's $9.10, on 5.1 billion passengers. Added as a high-priority topic for Thanksgiving week.", "link": "https://www.iata.org/en/pressroom/2026-releases/06-07-middle-east-disruptions-high-fuel-prices-halve-airline-industry-profitability/"},
+    {"title": "Walmart: CEO $29.24M, median associate $30,520 (958 to 1)", "detail": "FY2026 proxy. The CEO earns a worker's year in about 9 hours. Added for Black Friday week, spaced from Starbucks and McDonald's.", "link": "https://www.sec.gov/Archives/edgar/data/0000104169/000119312526173673/wmt-20260423.htm"},
+    {"title": "Claude: nothing new", "detail": "Claude Code is still 2.1.330; Fable/Mythos 5.2 are already in seen.json.", "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"}
+  ],
+  "changes": [
+    {"title": "2 topics added to the feed", "detail": "2026-11-23-airline-keeps-4-50-of-your-ticket (score 8.91), 2026-11-23-walmart-worker-year-in-9-ceo-hours (7.49).", "branch": "agent/research/2026-11-23"},
+    {"title": "Evidence for paradox-title", "detail": "cycle/backlog.json: Arnold and Musk-jet figure-free paradox titles.", "branch": "agent/research/2026-11-23"}
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [{"label": "Report", "url": "channels/paisa-panchayat/research/2026-11-23.md"}]
+}
