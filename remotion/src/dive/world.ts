@@ -168,8 +168,10 @@ export function diveWorld(tl: Timeline): DiveWorld {
   // the camera: keys on the story clock, eased between
   const maxZ = 1.3;
   const stackTop = -250, stackBottom = Y(maxFt) + 500;
-  const stackZ = Math.min(0.85, 1820 / (stackBottom - stackTop));
-  const stack = { y: stackTop + ANCHOR_Y / stackZ, z: stackZ };
+  // the whole stack fits between the top of the frame and the captions (QA 2026-11-22: the pull-back cut the deepest
+  // room at the bottom edge, its figure inside the Shorts UI zone)
+  const stackZ = Math.min(0.85, 1400 / (stackBottom - stackTop));
+  const stack = { y: stackTop + (ANCHOR_Y - 60) / stackZ, z: stackZ };
   const keys: Key[] = [{ g: 0, ...TOP }];
   const landings: number[] = [];
   const last = () => keys[keys.length - 1]!;

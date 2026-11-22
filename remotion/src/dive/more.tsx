@@ -100,10 +100,10 @@ const Jar: React.FC<{ x: number; y: number; s?: number; c?: string }> = ({ x, y,
 );
 
 /** A sign or a depth tag for a piece: the sign when the layer has a label, else a tag with the depth figure. */
-const Marker: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number }> = ({ L, w, g, x, y }) => {
+const Marker: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number; wd?: number }> = ({ L, w, g, x, y, wd = 600 }) => {
   const s = L.spec, d = depthLabel(L, w), k = ramp(g, L.land - 16, L.land) * outro(w, g);
   const near = useNear(y + 48);
-  if (s.label) return <Sign x={x} y={y} w={600} text={s.label.toUpperCase()} depth={d} accent={w.look.accent} k={k} />;
+  if (s.label) return <Sign x={x} y={y} w={wd} text={s.label.toUpperCase()} depth={d} accent={w.look.accent} k={k} />;
   if (!d || near <= 0) return null;
   return <g opacity={near}><Legible x={x + 180} y={y} w={260} h={90} size={52}><Tag x={x + 180} y={y} w={260} h={90} text={d} bg={w.look.paper} k={k} rot={-3} /></Legible></g>;
 };
@@ -120,14 +120,15 @@ const Tally: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number 
   const at = Number.isFinite(t0) ? t0 : L.land;
   const k = ramp(g, at - 3, at + 20) * outro(w, g);
   if (k <= 0) return null;
-  const W = 520, H = 230;
+  // high on the back wall, above the people's heads (QA 2026-11-22: a 230 px tablet hid the whole crowd)
+  const W = 440, H = 170;
   return (
     <g opacity={Math.min(1, k * 3)} transform={`rotate(-2 ${x + W / 2} ${y + H / 2})`}>
-      <Legible x={x} y={y} w={W} h={H} size={96}>
+      <Legible x={x} y={y} w={W} h={H} size={80}>
         <Block x={x} y={y} w={W} h={H} fill="#d9d2bf" r={18} shadow="bottom" />
         <rect x={x + 16} y={y + 16} width={W - 32} height={H - 32} rx={12} fill="none" stroke="#a89f88" strokeWidth={6} />
-        {t.label ? <Txt x={x + W / 2} y={y + 66} size={56} fill="#5a4a3a" weight={800}>{t.label.toUpperCase()}</Txt> : null}
-        <Txt x={x + W / 2} y={y + 172} size={96} fill={INK} weight={900}>{countText(fig, k)}</Txt>
+        {t.label ? <Txt x={x + W / 2} y={y + 56} size={48} fill="#5a4a3a" weight={800}>{t.label.toUpperCase()}</Txt> : null}
+        <Txt x={x + W / 2} y={y + 138} size={80} fill={INK} weight={900}>{countText(fig, k)}</Txt>
       </Legible>
     </g>
   );
@@ -197,8 +198,8 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
       </> : null}
       {type === "crowd" ? <>
         {/* families and their animals filling the room, walking both ways */}
-        {Array.from({ length: s.people ?? 8 }, (_, i) => { const u = walk(i, 1, i * 0.13); const dir = i % 2 ? -1 : 1; const x = dir === 1 ? 150 + u * 780 : 930 - u * 780; return <Person key={i} x={x} y={yb - 26 - (i % 3) * 8} i={i} step={u * 14} dir={dir} s={0.8 + (i % 3) * 0.06} />; })}
-        {[0, 1].map((i) => { const u = walk(i + 9, 1, 0.5); return <Animal key={`a${i}`} x={200 + ((u + i * 0.5) % 1) * 680} y={yb - 26} i={i} step={u * 12} />; })}
+        {Array.from({ length: s.people ?? 12 }, (_, i) => { const u = walk(i, 1, i * 0.13); const dir = i % 2 ? -1 : 1; const x = dir === 1 ? 150 + u * 780 : 930 - u * 780; return <Person key={i} x={x} y={yb - 26 - (i % 3) * 8} i={i} step={u * 14} dir={dir} s={0.8 + (i % 3) * 0.06} />; })}
+        {[0, 1, 2].map((i) => { const u = walk(i + 9, 1, 0.5); return <Animal key={`a${i}`} x={200 + ((u + i * 0.33) % 1) * 680} y={yb - 26} i={i} step={u * 12} />; })}
       </> : null}
       {type === "tombs" ? <>
         {[0, 1].map((row) => [0, 1, 2, 3].map((c) => <Block key={`${row}${c}`} x={300 + c * 160} y={top + 90 + row * 120} w={130} h={80} fill={shade(inside, -0.3)} r={30} shadow={false} sw={4} />))}
@@ -220,7 +221,7 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
         </>;
       })() : null}
       <Marker L={L} w={w} g={g} x={240} y={top - 160} />
-      <Tally L={L} w={w} g={g} x={280} y={top + 30} />
+      <Tally L={L} w={w} g={g} x={320} y={top + 14} />
     </g>
   );
 };
@@ -235,7 +236,7 @@ export const Well: React.FC<PieceProps> = ({ L, w, g }) => {
   const rock = s.color ?? shade(look.chalk, -0.35);
   // floors open onto the shaft only near its bottom, where the camera lands: higher up the shaft passes behind the
   // other layers' rooms (it ran in front of the stables and the door on v-20261122-54)
-  const floors = 2, fTop = Math.max(y0 + 200, yb - 900);
+  const floors = 2, fTop = Math.max(y0 + 200, yb - 700);
   const u = loopU(w, g, Math.max(1, Math.round(w.total / 150)));
   const bucketY = y0 + 80 + (yb - y0 - 220) * (0.5 - 0.5 * Math.cos(u * TAU));
   return (
@@ -262,7 +263,8 @@ export const Well: React.FC<PieceProps> = ({ L, w, g }) => {
       {/* the water at the bottom */}
       <rect x={cx - half} y={yb - 70} width={half * 2} height={70} fill={look.water} />
       {[0, 1].map((i) => <path key={i} transform={`translate(${-loopU(w, g, 10, i / 2) * 80} 0)`} d={`M ${cx - half} ${yb - 60 + i * 26} ${Array.from({ length: 4 }, () => "q 20 -8 40 0 t 40 0").join(" ")}`} fill="none" stroke="#e8f6ff" strokeWidth={5} />)}
-      <Marker L={L} w={w} g={g} x={240} y={yb - 420} />
+      {/* the sign hangs at the water line, clear of the floors' openings (QA 2026-11-22: it sat on a person's head) */}
+      <Marker L={L} w={w} g={g} x={400} y={yb + 30} wd={500} />
     </g>
   );
 };
