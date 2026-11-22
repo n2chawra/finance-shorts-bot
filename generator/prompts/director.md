@@ -107,6 +107,17 @@ every video look the same: one skyline, floating cards, a header of text. Never 
    `Char` dressed for their time (Napoleon's bicorne and coat). On a map channel they stand small on the
    map where the story puts them. They never speak.
 
+12. **People are on screen, not only a count** (owner, 2026-11-22, on the Hyatt walkway long video: "only
+   showing death counts is not enough. Make that scenes. Don't make it very cruel or bloody"). Where a line
+   speaks of people (a crowd, passengers, guests, workers, the dead and injured), the beat shows them in the
+   place: before, the crowd under or on the structure going about their evening (`Crowd3D` in the 3D kit,
+   small `Char` figures on the flat kit); at the failure, the figures look up or hurry away (`scatterAt`) and
+   the shot dips to dust, black or a cut before anything reaches them; after, rescuers with lamps
+   (`Rescuers`), emergency lights, an emptied floor, the toll on a thing in that place (a memorial plaque, the
+   rescue board), never on a bare card over empty rooms. Never blood, bodies, injuries or a real victim's
+   face. `python -m generator.run lint` fails a beat whose line speaks of people when its `params` (place,
+   moments, things) show none.
+
 ## Step 1: the shot list (in `script.json`)
 
 Every beat becomes `"scene": "directed"` with these `params` (the build rejects a beat without them):
