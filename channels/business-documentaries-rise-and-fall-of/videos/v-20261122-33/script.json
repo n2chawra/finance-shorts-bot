@@ -1,0 +1,1041 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 27411,
+ "story": "product_craze_short",
+ "shape": "timeline",
+ "currency": "USD",
+ "style": {
+  "palette": "mint",
+  "genre": "ledger",
+  "key": "C",
+  "bpm": 76
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "myth",
+ "cta": "Fed it on time or let it die: which kid were you? Comment",
+ "feed_id": "2026-11-19-tamagotchi",
+ "facts": [
+  {
+   "label": "Tamagotchi units shipped worldwide by 31 July 2025",
+   "value": 100,
+   "unit": "count_million",
+   "as_of": "2025-07-31",
+   "source": "Bandai Namco Holdings",
+   "url": "https://www.bandainamco.co.jp/en/ir/library/newsletter82_special.html",
+   "latest": true,
+   "checked": "2026-11-19"
+  },
+  {
+   "label": "Year Tamagotchi launched (23 November)",
+   "value": 1996,
+   "unit": "year",
+   "as_of": "1996-11-23",
+   "source": "Bandai Namco Holdings",
+   "url": "https://www.bandainamco.co.jp/en/ir/library/newsletter82_special.html",
+   "fixed": true
+  },
+  {
+   "label": "Units sold in Japan in its first eight months, about",
+   "value": 10,
+   "unit": "count_million",
+   "as_of": "1997-07-31",
+   "source": "Bandai Namco Holdings",
+   "url": "https://www.bandainamco.co.jp/en/ir/library/newsletter82_special.html",
+   "fixed": true
+  },
+  {
+   "label": "Share of all shipments sold outside Japan",
+   "value": 51,
+   "unit": "percent",
+   "as_of": "2025-07-31",
+   "source": "Bandai Namco Holdings",
+   "url": "https://www.bandainamco.co.jp/en/ir/library/newsletter82_special.html",
+   "latest": true,
+   "checked": "2026-11-19"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.5,
+  "words": "A toy that *dies*",
+  "angle": "question"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Tamagotchi could die in your pocket, and kids still lined up to own one.",
+   "events": {
+    "tamagotchi": {
+     "word": "Tamagotchi"
+    },
+    "die": {
+     "word": "die"
+    },
+    "pocket": {
+     "word": "pocket"
+    },
+    "kids": {
+     "word": "kids"
+    },
+    "own": {
+     "word": "own"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "die"
+    },
+    {
+     "kind": "boom",
+     "at": "kids"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Tamagotchi egg in close-up",
+     "Tamagotchi mascots at a fan festival"
+    ],
+    "things": [
+     "Tamagotchi",
+     "Tamagotchi mascots"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "pocket",
+      "size": "medium"
+     },
+     {
+      "at": "kids",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "tamagotchi",
+      "what": "a label: Tamagotchi"
+     },
+     {
+      "at": "die",
+      "what": "a stamp: IT DIES"
+     },
+     {
+      "at": "kids",
+      "what": "cut to the Tamagotchi mascots"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tamagotchi-connection-v4-5961e03a.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "kids"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tamagotchi-character-mascots-at-anime-festival-a-f7f98bbf.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "warm",
+      "at": "kids"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Tamagotchi",
+      "sub": "by Bandai",
+      "at": "tamagotchi",
+      "out": "die"
+     },
+     {
+      "kind": "stamp",
+      "text": "It dies",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "die",
+      "out": "kids"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "launch",
+   "role": "promise",
+   "say": "Bandai put it on sale in Japan in November {fact2}. In eight months, Japan bought about {fact3} of them.",
+   "events": {
+    "bandai": {
+     "word": "Bandai"
+    },
+    "sale": {
+     "word": "sale"
+    },
+    "japan": {
+     "word": "Japan"
+    },
+    "november": {
+     "word": "November"
+    },
+    "eight": {
+     "word": "eight"
+    },
+    "months": {
+     "word": "months"
+    },
+    "bought": {
+     "word": "bought"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "bought"
+    }
+   ],
+   "params": {
+    "place": [
+     "Bandai Namco's head office in Tokyo",
+     "a Tokyo toy shop"
+    ],
+    "things": [
+     "Bandai head office",
+     "toy shop",
+     "the sales count"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "eight",
+      "size": "medium"
+     },
+     {
+      "at": "bought",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bandai",
+      "what": "a lower third: Bandai"
+     },
+     {
+      "at": "november",
+      "what": "the date slams in"
+     },
+     {
+      "at": "eight",
+      "what": "cut to a toy shop"
+     },
+     {
+      "at": "bought",
+      "what": "the count runs up"
+     }
+    ],
+    "fig": {
+     "japan": "{fact3}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-bandai-namco-headquaters-a1730137.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "rise",
+      "amount": 0.12,
+      "grade": "cold",
+      "out": "eight"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-toy-store-in-hiroo-355c24cf.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "eight"
+     },
+     {
+      "kind": "count",
+      "figure": "japan",
+      "eyebrow": "sold in Japan",
+      "unit": "about, in eight months",
+      "countAt": "bought",
+      "countLen": 24,
+      "tone": "gold",
+      "at": "bought"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "lowerThird",
+      "name": "Bandai",
+      "role": "the toy maker",
+      "at": "bandai",
+      "out": "november"
+     },
+     {
+      "kind": "date",
+      "date": "1996-11-23",
+      "sub": "on sale in Japan",
+      "pos": "top",
+      "at": "november",
+      "out": "eight"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "trick",
+   "role": "build",
+   "say": "The trick was the pet inside. It got hungry, it got sick, and if you forgot it, it died.",
+   "events": {
+    "trick": {
+     "word": "trick"
+    },
+    "pet": {
+     "word": "pet"
+    },
+    "hungry": {
+     "word": "hungry"
+    },
+    "sick": {
+     "word": "sick"
+    },
+    "forgot": {
+     "word": "forgot"
+    },
+    "died": {
+     "word": "died"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "hungry"
+    },
+    {
+     "kind": "boom",
+     "at": "died"
+    }
+   ],
+   "params": {
+    "place": [
+     "three Tamagotchis in a fast run"
+    ],
+    "things": [
+     "a Tamagotchi in a hand",
+     "a worn Tamagotchi",
+     "a museum Tamagotchi"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "hungry",
+      "size": "medium"
+     },
+     {
+      "at": "died",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pet",
+      "what": "the first Tamagotchi punches in"
+     },
+     {
+      "at": "hungry",
+      "what": "a second one: hungry"
+     },
+     {
+      "at": "sick",
+      "what": "a third one: sick"
+     },
+     {
+      "at": "died",
+      "what": "a stamp: GAME OVER"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "stack",
+      "every": 10,
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-luna-s-tamagotchi-flickr-ed5232d1.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "caption": "The pet",
+        "at": "start"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tamagotchi-0124-ubt-46a61624.jpeg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "caption": "Hungry",
+        "at": "hungry"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-gele-tamagotchi-objectnr-78041-3387cfe8.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "caption": "Sick",
+        "at": "sick"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Game over",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "died"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "question",
+   "role": "build",
+   "say": "Crazes like that fade fast. So why didn't this one?",
+   "events": {
+    "crazes": {
+     "word": "Crazes"
+    },
+    "fade": {
+     "word": "fade"
+    },
+    "fast": {
+     "word": "fast"
+    },
+    "why": {
+     "word": "why"
+    },
+    "one": {
+     "word": "one"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "why"
+    }
+   ],
+   "params": {
+    "place": [
+     "a busy Tokyo crossing"
+    ],
+    "things": [
+     "the crowd",
+     "the question"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "fade",
+      "size": "medium"
+     },
+     {
+      "at": "why",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "crazes",
+      "what": "the crossing drifts"
+     },
+     {
+      "at": "fade",
+      "what": "a label: crazes fade"
+     },
+     {
+      "at": "why",
+      "what": "a stamp: WHY NOT?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pedestrians-crossing-akihabara-tokyo-japan-76cebe04.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-left",
+      "amount": 0.12,
+      "grade": "night"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Crazes fade",
+      "sub": "and then they are gone",
+      "at": "fade",
+      "out": "why"
+     },
+     {
+      "kind": "stamp",
+      "text": "Why not?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "why"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "versions",
+   "role": "turn",
+   "say": "Bandai kept bringing it back in new shapes, with colour screens and new pets to raise.",
+   "events": {
+    "bandai": {
+     "word": "Bandai"
+    },
+    "back": {
+     "word": "back"
+    },
+    "shapes": {
+     "word": "shapes"
+    },
+    "colour": {
+     "word": "colour"
+    },
+    "pets": {
+     "word": "pets"
+    },
+    "raise": {
+     "word": "raise"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "shapes"
+    }
+   ],
+   "params": {
+    "place": [
+     "a shelf of Tamagotchi versions",
+     "the colour Tamagotchi"
+    ],
+    "things": [
+     "Tamagotchi versions",
+     "colour Tamagotchi",
+     "the newest one"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "colour",
+      "size": "close"
+     },
+     {
+      "at": "pets",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "back",
+      "what": "the versions push in"
+     },
+     {
+      "at": "colour",
+      "what": "cut to a colour-screen model"
+     },
+     {
+      "at": "pets",
+      "what": "cut to a recent model"
+     },
+     {
+      "at": "raise",
+      "what": "a label: new pets"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-various-tamagotchi-virtual-pet-devices-50bd5645.png",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "out": "colour"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tamagotchi-connection-2024-re-release-aafe0282.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "warm",
+      "at": "colour",
+      "out": "pets"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tamagotchi-uni-5f7202f5.png",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "pets",
+      "aspect": 1.0
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "New shapes",
+      "sub": "version after version",
+      "at": "shapes",
+      "out": "pets"
+     },
+     {
+      "kind": "label",
+      "text": "New pets",
+      "sub": "to raise",
+      "at": "raise"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "world",
+   "role": "build",
+   "say": "And it left Japan. By Bandai's count, {fact4} of all of them went to buyers outside the country.",
+   "events": {
+    "left": {
+     "word": "left"
+    },
+    "japan": {
+     "word": "Japan"
+    },
+    "bandai's": {
+     "word": "Bandai's"
+    },
+    "count": {
+     "word": "count"
+    },
+    "outside": {
+     "word": "outside"
+    },
+    "country": {
+     "word": "country"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "count"
+    }
+   ],
+   "params": {
+    "place": [
+     "a map of the world from Japan",
+     "Bandai Namco's own report"
+    ],
+    "things": [
+     "world map",
+     "Bandai report"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "count",
+      "size": "medium"
+     },
+     {
+      "at": "outside",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "japan",
+      "what": "Japan lights up with a pin"
+     },
+     {
+      "at": "count",
+      "what": "Bandai's report lands"
+     },
+     {
+      "at": "outside",
+      "what": "the highlighter swipes the line"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "map",
+      "center": [
+       140,
+       30
+      ],
+      "scale": 260,
+      "hi": [
+       "Japan"
+      ],
+      "pins": [
+       {
+        "lonlat": [
+         139.7,
+         35.7
+        ],
+        "label": "Tokyo",
+        "on": "japan"
+       }
+      ],
+      "out": "count"
+     },
+     {
+      "kind": "document",
+      "at": "count",
+      "header": {
+       "form": "Shareholder newsletter",
+       "company": "Bandai Namco Holdings",
+       "title": "Tamagotchi shipments worldwide"
+      },
+      "lines": [
+       "Tamagotchi went on sale in Japan",
+       "and then in countries around the world.",
+       "More than half of all units shipped",
+       "went to buyers outside Japan."
+      ],
+      "hi": 2,
+      "phrase": "More than half of all units shipped",
+      "pushAt": "count",
+      "markAt": "outside",
+      "source": {
+       "form": "NEWSLETTER",
+       "text": "Bandai Namco Holdings",
+       "date": "2025-07-31"
+      }
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact4}",
+      "sub": "shipped outside Japan",
+      "at": "outside"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "By July last year, Bandai had shipped {fact1} Tamagotchis. A pet that dies, and still sells.",
+   "events": {
+    "july": {
+     "word": "July"
+    },
+    "bandai": {
+     "word": "Bandai"
+    },
+    "shipped": {
+     "word": "shipped"
+    },
+    "tamagotchis": {
+     "word": "Tamagotchis"
+    },
+    "dies": {
+     "word": "dies"
+    },
+    "sells": {
+     "word": "sells"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "shipped"
+    }
+   ],
+   "params": {
+    "place": [
+     "the poster over a Tamagotchi shop in Tokyo"
+    ],
+    "things": [
+     "Tamagotchi shop",
+     "the shipped count"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tamagotchis",
+      "size": "wide"
+     },
+     {
+      "at": "sells",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "july",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "dies",
+      "what": "a stamp: STILL SELLING"
+     },
+     {
+      "at": "sells",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "total": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tamagotchi-books-at-tama-depa-shop-tokyo-dome-ci-34a12811.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "date": "2025-07-31",
+      "title": "Tamagotchi",
+      "figure": "total",
+      "sub": "shipped worldwide \u00b7 since the first one",
+      "on": "july",
+      "at": "july"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Still selling",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -5,
+      "at": "dies",
+      "out": "sells"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Fed it on time, or let it die: which kid were you? Either way, it was a Tamagotchi.",
+   "events": {
+    "fed": {
+     "word": "Fed"
+    },
+    "time": {
+     "word": "time"
+    },
+    "die": {
+     "word": "die"
+    },
+    "kid": {
+     "word": "kid"
+    },
+    "either": {
+     "word": "Either"
+    },
+    "tamagotchi": {
+     "word": "Tamagotchi"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "tamagotchi"
+    }
+   ],
+   "params": {
+    "place": [
+     "a newer Tamagotchi in a hand",
+     "the Tamagotchi from the first frame"
+    ],
+    "things": [
+     "newer Tamagotchi",
+     "Tamagotchi"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "kid",
+      "size": "close"
+     },
+     {
+      "at": "tamagotchi",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fed",
+      "what": "a stamp: FED IT?"
+     },
+     {
+      "at": "die",
+      "what": "a stamp: OR NOT?"
+     },
+     {
+      "at": "tamagotchi",
+      "what": "back to the Tamagotchi from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tamagotchi-connection-familitchi-v5-484b1ee8.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "warm",
+      "out": "tamagotchi"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tamagotchi-connection-v4-5961e03a.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "tamagotchi"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Fed it?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "fed",
+      "out": "die"
+     },
+     {
+      "kind": "stamp",
+      "text": "Or not?",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 5,
+      "at": "die",
+      "out": "either"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}

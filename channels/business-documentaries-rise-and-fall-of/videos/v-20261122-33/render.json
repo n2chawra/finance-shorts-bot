@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 27411,
+  "duration_sec": 36,
+  "tempo": 1.2,
+  "style": {
+    "palette": "mint",
+    "genre": "ledger",
+    "key": "C",
+    "bpm": 76
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Tamagotchi could die in your pocket, and kids still lined up to own one.",
+        "start": 0.3,
+        "seconds": 2.84,
+        "window": 3.5,
+        "fill": 0.811
+      },
+      {
+        "scene": "launch",
+        "text": "Bandai put it on sale in Japan in November 1996. In eight months, Japan bought about 10M of them.",
+        "start": 3.8,
+        "seconds": 5.39,
+        "window": 6.03,
+        "fill": 0.894
+      },
+      {
+        "scene": "trick",
+        "text": "The trick was the pet inside. It got hungry, it got sick, and if you forgot it, it died.",
+        "start": 9.83,
+        "seconds": 4.0,
+        "window": 4.67,
+        "fill": 0.857
+      },
+      {
+        "scene": "question",
+        "text": "Crazes like that fade fast. So why didn't this one?",
+        "start": 14.5,
+        "seconds": 2.35,
+        "window": 3.03,
+        "fill": 0.776
+      },
+      {
+        "scene": "versions",
+        "text": "Bandai kept bringing it back in new shapes, with colour screens and new pets to raise.",
+        "start": 17.53,
+        "seconds": 3.32,
+        "window": 4.0,
+        "fill": 0.83
+      },
+      {
+        "scene": "world",
+        "text": "And it left Japan. By Bandai's count, 51% of all of them went to buyers outside the country.",
+        "start": 21.53,
+        "seconds": 4.45,
+        "window": 5.07,
+        "fill": 0.878
+      },
+      {
+        "scene": "payoff",
+        "text": "By July last year, Bandai had shipped 100M Tamagotchis. A pet that dies, and still sells.",
+        "start": 26.6,
+        "seconds": 4.62,
+        "window": 5.3,
+        "fill": 0.872
+      },
+      {
+        "scene": "ending",
+        "text": "Fed it on time, or let it die: which kid were you? Either way, it was a Tamagotchi.",
+        "start": 31.9,
+        "seconds": 3.6,
+        "window": 4.23,
+        "fill": 0.851
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.3,
+    "lufs": -16.3,
+    "music_under_voice_db": 17.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 15.421,
+    "still_share": 0.053,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}
