@@ -1,18 +1,105 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-21T16:14:44.297Z",
+  "generatedAt": "2026-11-22T16:27:25.806Z",
   "channel": "going-down",
-  "noData": "No video of this channel is on YouTube yet: nothing to compare.",
-  "youtubeChecked": false,
+  "youtubeChecked": true,
   "summary": {
-    "videos": 5,
-    "checked": 0,
+    "videos": 11,
+    "checked": 3,
     "error": 0,
-    "warning": 0,
-    "info": 0,
+    "warning": 1,
+    "info": 1,
     "owner": 0,
     "persistentErrors": 0
   },
-  "issues": [],
-  "videos": []
+  "issues": [
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
+      "videoId": "v-20261122-54",
+      "youtubeId": "OmpJ0gG2Cv8",
+      "detail": "Dashboard shows 188 views, YouTube 215; live counts last refreshed 18 min ago (they refresh while the dashboard is open)."
+    },
+    {
+      "kind": "ahead_of_youtube",
+      "severity": "warning",
+      "videoId": "v-20261121-54",
+      "youtubeId": "pPV_eh5PgjU",
+      "detail": "Dashboard shows 434 views, YouTube 363. Either YouTube removed invalid views or the dashboard over-counts."
+    }
+  ],
+  "videos": [
+    {
+      "id": "v-20261122-54",
+      "title": "The City Under Derinkuyu: How Deep Does It Go?",
+      "youtubeId": "OmpJ0gG2Cv8",
+      "state": "published",
+      "publishAt": "2026-11-22T12:57:00.000Z",
+      "dashboard": {
+        "views": 188,
+        "likes": 2,
+        "comments": 0,
+        "liveAt": "2026-11-22T16:09:40.019Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 215,
+        "likes": 3,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261121-54",
+      "title": "How Deep Does London's Deepest Station Go?",
+      "youtubeId": "pPV_eh5PgjU",
+      "state": "published",
+      "publishAt": "2026-11-22T06:47:00.000Z",
+      "dashboard": {
+        "views": 434,
+        "likes": 4,
+        "comments": 0,
+        "liveAt": "2026-11-22T16:09:40.019Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 363,
+        "likes": 3,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261121-53",
+      "title": "How Deep Does Grand Central Go?",
+      "youtubeId": "eWkLr5lxoUQ",
+      "state": "published",
+      "publishAt": "2026-11-22T00:07:00.000Z",
+      "dashboard": {
+        "views": 436,
+        "likes": 6,
+        "comments": 0,
+        "liveAt": "2026-11-22T16:09:40.019Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 438,
+        "likes": 6,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    }
+  ]
 }

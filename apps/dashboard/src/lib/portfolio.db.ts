@@ -4,7 +4,7 @@
  * last 90 days with their summed stats, the per-channel counts, and the agents' weekly-loop docs.
  */
 import { docKey } from "./channel-scopes";
-import { istToday, median, type Portfolio, type PortfolioChannel, type PortfolioVideo, type Today, todaySlots, verdictOf } from "./portfolio";
+import { istToday, median, runningId, type Portfolio, type PortfolioChannel, type PortfolioVideo, type Today, todaySlots, verdictOf } from "./portfolio";
 import { prismaAll as db } from "./prisma";
 import { upcomingSlots } from "./slots";
 
@@ -117,12 +117,15 @@ export async function getPortfolio(): Promise<Portfolio> {
     }
 
     const st = doc.get(docKey("cycleStatus", ch.id)) as { experiment?: { id?: string; description?: string | null } | null; cycle?: number | null } | null | undefined;
-    const bl = doc.get(docKey("cycleBacklog", ch.id)) as { running?: string | null; cycle?: number; history?: { id?: string; verdict?: string | null; test?: string }[] } | null | undefined;
-    const lastDone = [...(bl?.history ?? [])].reverse().find((h) => h.verdict && h.id);
+    const bl = doc.get(docKey("cycleBacklog", ch.id)) as { running?: unknown; cycle?: number; history?: { id?: unknown; verdict?: unknown; test?: unknown }[] } | null | undefined;
+    const text = (x: unknown) => (typeof x === "string" ? x : null);
+    const lastDone = [...(Array.isArray(bl?.history) ? bl!.history! : [])].reverse().find((h) => text(h?.verdict) && text(h?.id));
+    const blRunning = bl?.running && typeof bl.running === "object" ? (bl.running as { test?: unknown }) : null;
     const loop = st || bl ? {
-      running: st?.experiment?.id ?? bl?.running ?? null, description: st?.experiment?.description ?? null,
+      running: text(st?.experiment?.id) ?? runningId(bl?.running),
+      description: text(st?.experiment?.description) ?? text(blRunning?.test),
       cycle: typeof st?.cycle === "number" ? st.cycle : typeof bl?.cycle === "number" ? bl.cycle : null,
-      lastVerdict: lastDone ? { id: lastDone.id!, verdict: lastDone.verdict!, test: lastDone.test ?? null } : null,
+      lastVerdict: lastDone ? { id: text(lastDone.id)!, verdict: text(lastDone.verdict)!, test: text(lastDone.test) } : null,
     } : null;
 
     if (live) {

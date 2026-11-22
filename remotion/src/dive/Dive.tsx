@@ -10,6 +10,7 @@ import React from "react";
 import type { SceneProps } from "../scenes/kit";
 import { INK, STROKE, SourceLine, Stage, Txt, maxZoomFor } from "../flat/kit";
 import { CamCtx, PIECES, ScreenCounter, Strata } from "./pieces";
+import { MORE_PIECES } from "./more";
 import { ANCHOR_Y, cameraAt, diveWorld, figFeet, type DiveWorld } from "./world";
 
 /** The depth meter on the left edge: a bar filling to the camera's depth, the depth in ft and in m (m computed here). */
@@ -22,7 +23,8 @@ const sourcedFt = (w: DiveWorld): number[] => [0, ...w.layers.filter((L) => {
 }).map((L) => L.ft)];
 
 export const DepthMeter: React.FC<{ w: DiveWorld; ft: number }> = ({ w, ft }) => {
-  const x = 34, y0 = 230, y1 = 1360;
+  // starts under the source chip (QA 2026-11-22: "Data: …" ran over the 0 m tag)
+  const x = 34, y0 = 360, y1 = 1360;
   const u = Math.min(1, Math.max(0, ft / w.maxFt));
   const py = y0 + u * (y1 - y0);
   // whole metres, or a half where the depth really sits on one (58.5 m reads as its sign does; 221 ft is 67 m, not 67.5)
@@ -50,12 +52,37 @@ export const DepthMeter: React.FC<{ w: DiveWorld; ft: number }> = ({ w, ft }) =>
 
 /** The world at story frame g: strata, then the pieces back to front. */
 export const World: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) => {
-  const order = ["water", "surface", "foundation", "shaft", "tunnel", "chamber", "cavern", "deepest"];
+  const order = ["water", "pour", "surface", "foundation", "well", "shaft", "tunnel", "passage", "chamber", "room", "hall", "pumps", "cavern", "deepest"];
+  const all: Record<string, React.FC<{ L: (typeof w.layers)[number]; w: DiveWorld; g: number }>> = { ...PIECES, ...MORE_PIECES };
   const sorted = [...w.layers].sort((a, b) => order.indexOf(a.spec.kind) - order.indexOf(b.spec.kind));
   return (
     <g>
       <Strata w={w} />
-      {sorted.map((L, i) => { const P = PIECES[L.spec.kind]; return P ? <P key={i} L={L} w={w} g={g} /> : null; })}
+      {sorted.map((L, i) => { const P = all[L.spec.kind]; return P ? <P key={i} L={L} w={w} g={g} /> : null; })}
+    </g>
+  );
+};
+
+/** On a pull-back the pieces are too small for their own signs, so each labelled layer gets a readable name chip
+ * on screen, centred on its box (QA 2026-11-22, v-20261122-55: "four tiny boxes, the signs are gone, the payoff
+ * ends emptier than any other still"). */
+const StackLegend: React.FC<{ w: DiveWorld; y: number; z: number; cx: number }> = ({ w, y, z, cx }) => {
+  const k = 1 - Math.min(1, Math.max(0, (z - 0.5) / 0.12));
+  if (k <= 0) return null;
+  return (
+    <g opacity={k}>
+      {w.layers.filter((L) => L.spec.label && L.spec.kind !== "surface").map((L, i) => {
+        const sy = ANCHOR_Y + (w.Y(L.ft) - 10 - y) * z;
+        if (sy < 180 || sy > 1380) return null;
+        const label = L.spec.label!.toUpperCase();
+        const wd = label.length * 28 + 48;
+        return (
+          <g key={i}>
+            <rect x={cx - wd / 2} y={sy - 34} width={wd} height={68} rx={14} fill="#111318" stroke={w.look.accent} strokeWidth={4} />
+            <Txt x={cx} y={sy + 2} size={44} fill="#f4f1e8" weight={800}>{label}</Txt>
+          </g>
+        );
+      })}
     </g>
   );
 };
@@ -81,9 +108,16 @@ const Dive: React.FC<SceneProps> = (p) => {
             <World w={w} g={g} />
           </CamCtx.Provider>
         </g>
+        <StackLegend w={w} y={cam.y} z={z} cx={cx} />
         <DepthMeter w={w} ft={cam.ft} />
         <ScreenCounter w={w} g={g} />
-        {w.cfg.note ? <Txt x={cx} y={120} size={26} fill="#f4f1e8" deco>{w.cfg.note}</Txt> : null}
+        {/* the fine print shows at the street (the hook and the loop's landing), never over a layer's sign below
+            (QA 2026-11-22: the note ran across the TUNNEL and FLOODWATER signs) */}
+        {w.cfg.note && cam.ft < 8 ? <g opacity={1 - cam.ft / 8}>
+          {/* a dark pill so the fine print reads on a pale sky (QA 2026-11-22: white on light blue) */}
+          <rect x={cx - (w.cfg.note.length * 7.6 + 28)} y={96} width={(w.cfg.note.length * 7.6 + 28) * 2} height={40} rx={20} fill="#0f1224" opacity={0.55} />
+          <Txt x={cx} y={120} size={26} fill="#f4f1e8" deco>{w.cfg.note}</Txt>
+        </g> : null}
       </Stage>
       <SourceLine p={p} />
     </>

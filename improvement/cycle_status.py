@@ -45,6 +45,10 @@ def status(root: Path = ROOT, now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     backlog = _read(cpath(root, "improvement/cycle/backlog.json"), {})
     running = backlog.get("running")
+    if isinstance(running, dict):    # 21 Nov: the improver wrote the whole entry here; the id is what everything reads
+        running = running.get("id")
+    if not isinstance(running, str) or not running:
+        running = None
     exps = {e["id"]: e for e in _read(cpath(root, "config/experiments.json"), {"experiments": []})["experiments"]}
     videos = _read(cpath(root, "metrics/videos.json"), {"videos": []})["videos"]
     shorts = [v for v in videos if v.get("format", "short") == "short"]

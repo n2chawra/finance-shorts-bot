@@ -115,6 +115,14 @@ def test_blocks_bringing_back_the_long_video_short_gate(repo: Path, gate: str) -
     assert any("never be blocked by from_short" in x for x in guard.check("improver", "main", "HEAD")["reasons"])
 
 
+@pytest.mark.parametrize("running, ok", [("promise-stays-in-hook-place", True), (None, True), ({"id": "x", "test": "y"}, False)])
+def test_a_weekly_loop_running_field_is_an_id(repo: Path, running: object, ok: bool) -> None:
+    # 2026-11-22: a whole entry in `running` broke the dashboard's All channels page
+    change(repo, "channels/demo/cycle/backlog.json", json.dumps({"running": running, "cycle": 2, "history": []}))
+    bad = [x for x in guard.check("improver", "main", "HEAD")["reasons"] if "`running` must be" in x]
+    assert (not bad) == ok
+
+
 def test_blocks_loosening_the_liveliness_gate(repo: Path) -> None:
     gates = (repo / "renderer/gates.py").read_text(encoding="utf-8")
     change(repo, "renderer/gates.py", gates.replace("LIVELY_MEDIAN = 1.2", "LIVELY_MEDIAN = 0.5", 1))

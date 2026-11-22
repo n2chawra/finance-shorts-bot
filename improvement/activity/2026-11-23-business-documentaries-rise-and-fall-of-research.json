@@ -1,0 +1,51 @@
+{
+  "agent": "research",
+  "channel": "business-documentaries-rise-and-fall-of",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-22T19:33:11Z",
+  "finishedAt": "2026-11-22T19:39:32Z",
+  "summary": "Hooks night for Craze & Crash: compared question and claim titles inside each channel of the niche scan and our own six Shorts' openings, added that evidence to two waiting challengers, and added 3 sourced Short topics (Toys R Us's 735 stores, Sears's mail-order houses, Kodak's $1 Brownie).",
+  "decision": "acted",
+  "why": "The feed had only 9 open Short topics (about 4-5 days at 2 a day). In the scan, the closest business channels' question titles get 0.71-0.92x their claim titles, so the claim champion stays. Our two object-first paradox openings (Stanley 1,139, Tamagotchi 764) out-viewed the deal-first ones (12-46), though there's no stayed-to-watch data yet.",
+  "findings": [
+    {
+      "title": "Question titles don't beat claims in our niche",
+      "detail": "Within-channel, English Shorts under 90 days: Rise Fall Repeat 0.71x, Ravate 0.73x, Signal 404 0.77x; median of 19 channels 1.09x; 3x+ breakout share 23% vs 22%.",
+      "link": "channels/business-documentaries-rise-and-fall-of/research/2026-11-23.md"
+    },
+    {
+      "title": "Our object-first openings out-viewed deal-first ones",
+      "detail": "Stanley's cup 1,139 and Tamagotchi 764 against the $35 Swoosh 12, Nokia/Microsoft 46, Dollar Shave Club 38. Views only; Analytics shows 0 engaged views so far.",
+      "link": "channels/business-documentaries-rise-and-fall-of/research/2026-11-23.md"
+    },
+    {
+      "title": "Sears's 'How Sears was built' Short broke out",
+      "detail": "90K on 19.9K (4.5x) at Rise Fall Repeat; became a sourced Sears mail-order-house topic.",
+      "link": "https://www.youtube.com/shorts/FzyXzeM-y4o"
+    },
+    {
+      "title": "New Coke Shorts flop in the scan",
+      "detail": "524, 2,184 and 552 views; kept as a long topic only.",
+      "link": "https://www.coca-colacompany.com/about-us/history/new-coke-the-most-memorable-marketing-blunder-ever"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 Short topics added to the feed",
+      "detail": "2026-11-23-toys-r-us-735-short, 2026-11-23-sears-mail-order-house-short, 2026-11-23-kodak-brownie-1-short",
+      "branch": "agent/research/2026-11-23/business-documentaries-rise-and-fall-of"
+    },
+    {
+      "title": "Evidence added to doc-short-question-hook and doc-document-first",
+      "detail": "No new challenger; both leanings favour the current champion.",
+      "branch": "agent/research/2026-11-23/business-documentaries-rise-and-fall-of"
+    }
+  ],
+  "nextCheck": "2026-11-25",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/business-documentaries-rise-and-fall-of/research/2026-11-23.md"
+    }
+  ]
+}

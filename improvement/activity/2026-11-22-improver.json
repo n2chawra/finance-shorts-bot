@@ -1,0 +1,64 @@
+{
+  "agent": "improver",
+  "day": "2026-11-22",
+  "startedAt": "2026-11-22T17:04:03Z",
+  "finishedAt": "2026-11-22T17:16:32Z",
+  "summary": "Answered the owner's three notes on Disaster Desk's Hyatt walkway long video: disaster scenes now show the people (a 3D crowd and rescuers, no gore) and long videos speak 1.25x faster; the hook note went to Studio. Studio's long topic list now includes the research feed's long topics (Disaster Desk 17, Craze & Crash 14, up from 1). Wrote the Sunday weekly summaries.",
+  "decision": "acted",
+  "why": "Owner notes come first (three open on L-20261121-42, one handed to me by the auditor). Studio had one long topic per new channel while research held 13-18. Paisa Panchayat's cycle 2 is on day 1 of 7 with no data, so its loop waits.",
+  "findings": [
+    {
+      "title": "Paisa Panchayat: last week's Shorts had a median of 389 views in 48 h, 90.3% average viewed and 38.7% stayed to watch (n 7)",
+      "detail": "Up from 207 views and 33.8% stayed the week before (n 17); the 14-day stayed to watch is 37.9%, still under the 45% floor. Best: the Disneyland ticket Short (950 views, 98.7% viewed). Cycle 2 promise-stays-in-hook-place has 0 of 8 Shorts a side with data, verdict by 28 Nov. Long tests quiet-bed 1 of 4 and chart-gap-fill 2 of 4 a side."
+    },
+    {
+      "title": "Disaster Desk's walkway video showed nobody",
+      "detail": "Its crowd, tape, toll and recap beats spoke of 1,600 people and 114 deaths over lit chairs, a viewfinder and fallen walkways. The 3D kit's own README said 'parts only, never people'. The new lint check flags 5 beats in it, and 1-2 in each of 3 other disaster videos."
+    },
+    {
+      "title": "Long topic feed gap on the new channels",
+      "detail": "state --format long read only longform/topics.json (1 topic each), while research/topics.json held 18 (Disaster Desk) and 13 (Craze & Crash) sourced long topics."
+    },
+    {
+      "title": "Other channels",
+      "detail": "Geography 4 Shorts with 48 h data (59.8% viewed), tech 2, the rest 0: no challengers started. Every channel's upload queue was empty tonight (config/channels.json health red), which is the video runs' problem, not a test's. Going Down's 'the dive kit has no pieces' QA failure (2 Shorts) is covered by the owner's 22 Nov rule that kit channels add pieces during the video run."
+    },
+    {
+      "title": "Shape promoted",
+      "detail": "Paisa Panchayat hidden-payer: trial -> active (3 Shorts, 70.7% viewed vs the 53.5% median)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "People in disaster scenes, not only a count (Disaster Desk owner note)",
+      "detail": "remotion/src/three/disaster/People.tsx: Crowd3D and Rescuers (checked in stills: scene E of Disaster3DDemo); director.md rule 12; generator/story.py people_problems in lint",
+      "branch": "agent/improver/2026-11-22"
+    },
+    {
+      "title": "Disaster Desk long videos 1.25x faster",
+      "detail": "generator/pack.py OWNER_PACE long 1.15 (was 0.92); likeness measures against it",
+      "branch": "agent/improver/2026-11-22"
+    },
+    {
+      "title": "Long state offers the research feed's long topics",
+      "detail": "generator/topics.py load(fmt='long'); proposals long-topics-feed-gap, dd-research-topics-format-long",
+      "branch": "agent/improver/2026-11-22"
+    },
+    {
+      "title": "Weekly summaries 2026-W47 for all six channels",
+      "detail": "channels/<slug>/weekly/2026-W47.md",
+      "branch": "agent/improver/2026-11-22"
+    }
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [
+    {
+      "label": "Paisa Panchayat weekly",
+      "url": "channels/paisa-panchayat/weekly/2026-W47.md"
+    },
+    {
+      "label": "Disaster Desk weekly",
+      "url": "channels/disasters-and-engineering-failures-expla/weekly/2026-W47.md"
+    }
+  ]
+}

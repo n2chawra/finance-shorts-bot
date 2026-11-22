@@ -44,11 +44,23 @@ MAX_OPEN = 30       # at most this many open topics per feed; the lowest scores 
 AGE_PENALTY = 0.03  # score lost per day since found (a 21-day-old topic loses 0.63, about a 4x smaller reference)
 
 
-def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+def _read(root: Path, fmt: str) -> list[dict]:
     path = cpath(root, FILES[fmt])
     if not path.is_file():
         return []
     return [t for t in json.loads(path.read_text(encoding="utf-8")).get("topics", []) if isinstance(t, dict) and t.get("id")]
+
+
+def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+    """A format's feed. The long feed also offers the research feed's `"format": "long"` topics (2026-11-22: the
+    new channels' setups put 13-18 sourced long topics there, while Studio's state read only longform/topics.json,
+    which held one; research proposals long-topics-feed-gap and dd-research-topics-format-long). Scout's entry
+    wins when both have the same id."""
+    own = _read(root, fmt)
+    if fmt != "long":
+        return own
+    ids = {t["id"] for t in own}
+    return own + [t for t in _read(root, "short") if t.get("format") == "long" and t["id"] not in ids]
 
 
 def get(feed_id: str, root: Path = ROOT, fmt: str | None = None) -> dict | None:
@@ -270,12 +282,31 @@ def _day(s: object) -> date | None:
         return None
 
 
+def _as_of_end(s: object) -> date | None:
+    """The last day a fact's `as_of` covers: a full date as is, "2024" as 31 Dec 2024, "2024-03" as 31 Mar,
+    "2024-Q3" as 30 Sep. Research dates 1 in 8 facts by year only, which `_day` can't read, so those were
+    never checked for a newer release (2027 would have let a "2025" annual figure through unchecked)."""
+    if (d := _day(s)) is not None:
+        return d
+    m = re.fullmatch(r"(\d{4})(?:-(?:(\d{2})|Q([1-4])))?", str(s).strip())
+    if not m:
+        return None      # "current", "FY2025": nothing to date it by
+    year, month, quarter = int(m[1]), m[2] and int(m[2]), m[3] and int(m[3])
+    if quarter:
+        month = quarter * 3
+    if not month:
+        return date(year, 12, 31)
+    if not 1 <= month <= 12:
+        return None
+    return (date(year + month // 12, month % 12 + 1, 1)) - timedelta(days=1)
+
+
 def stale_facts(topic: dict, today: str) -> list[str]:
     """Facts over a year old that research hasn't confirmed as still the latest in the last 30 days."""
     now = date.fromisoformat(today)
     out = []
     for f in topic.get("facts") or []:
-        as_of = _day(f.get("as_of"))
+        as_of = _as_of_end(f.get("as_of"))
         # a year ("hallmarking became mandatory in 2021") is history, never replaced by a newer release;
         # so is a fact research marks `fixed` (a country's area, a border's length: no yearly release)
         if as_of is None or f.get("unit") == "year" or f.get("fixed") is True or (now - as_of).days <= FACT_FRESH_DAYS:

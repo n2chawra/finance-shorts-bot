@@ -17,6 +17,23 @@ const depthLabel = (L: Layer, w: DiveWorld) => depthText(L.fig[L.spec.depth ?? "
 export interface DiveCam { z: number; camY: number; cx: number; W: number; H: number }
 export const CamCtx = createContext<DiveCam>({ z: 1, camY: 0, cx: 540, W: 1080, H: 1920 });
 
+/** 1 near the camera's point, 0 once a world y is far above or below it on screen: a neighbouring layer's sign or
+ * tag fades out before it reaches the top note or the caption band (QA 2026-11-22: "the note is drawn across the
+ * FLOODWATER sign", "the caption sits on the FLOODWATER sign"). */
+export const useNear = (y: number, bandsOnly = false): number => {
+  const c = useContext(CamCtx);
+  const sy = ANCHOR_Y + (y - c.camY) * c.z;
+  // `bandsOnly`: a landmark's name plate stays up at the opening framing, far above the camera's point; it only
+  // keeps out of the top band and the captions (QA 2026-11-22: the plate vanished from the hook)
+  if (bandsOnly) return Math.min(ramp(sy, 170, 230), 1 - ramp(sy, 1270, 1330));
+  // and never in the caption band (from ~1330 px) or under the top note: a sign there reads as clutter on a camera
+  // move (QA 2026-11-22, v-20261122-56: the TUNNEL sign under "Then giant pumps throw")
+  return Math.min(1 - ramp(Math.abs(sy - ANCHOR_Y), 420, 500), ramp(sy, 170, 230), 1 - ramp(sy, 1270, 1330));
+};
+/** 1 for the whole video, falling to 0 over its last second, so whatever arrived on its word is gone again when
+ * the ride up lands on the first frame (QA 2026-11-22: "the last frame shows the pillars, frame 0 has none"). */
+export const outro = (w: DiveWorld, g: number): number => 1 - ramp(g, w.total - 32, w.total - 6);
+
 const SHOWN = 48, GROW_MAX = 1.3, MIN_READ = 45, BOTTOM = 130;
 /**
  * Words drawn in the world (a sign, a tag, the landmark's name) shrink with the camera: at the opening framing
@@ -41,6 +58,51 @@ export const Legible: React.FC<{ x: number; y: number; w: number; h: number; siz
   );
 };
 
+/** A figure carved on a stone tablet in the piece (`spec.tally`), counting up on its word, possibly in a later
+ * beat: the payoff's figure on a thing in the place, not a card on the screen. */
+export const Tally: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number }> = ({ L, w, g, x, y: y0 }) => {
+  let y = y0;
+  // one tally, or a list that take turns: the latest whose word has come shows (a figure said in a later beat
+  // replaces the last one on the same tablet)
+  const list = [...(L.spec.tally ? [L.spec.tally] : []), ...(L.spec.tallies ?? [])].map((t) => {
+    const t0 = t.beat ? w.ev(t.beat, t.on) : L.at(t.on);
+    return { t, at: Number.isFinite(t0) ? t0 : L.land };
+  }).sort((a, b) => a.at - b.at);
+  const cur = list.filter((x) => g >= x.at - 3).pop() ?? list[0];
+  if (!cur) return null;
+  const { t, at } = cur;
+  const figs = t.beat ? w.figs[t.beat] ?? {} : L.fig;
+  const fig = figs[t.fig];
+  if (!fig) return null;
+  const near = useNear(y + 60);
+  const k = ramp(g, at - 3, at + 20) * outro(w, g) * near;
+  if (k <= 0) return null;
+  // high on the back wall, above the people's heads (QA 2026-11-22: a 230 px tablet hid the whole crowd)
+  // one line across the top of the vault, clear of the heads below (QA 2026-11-22, twice)
+  // one line when the label and the figure fit side by side, else the label over the figure (QA-style check on
+  // v-20261122-55: "UNDER THE SEA" ran into "37.9 km")
+  const label = (t.label ?? "").toUpperCase(), shown = countText(fig, 1);
+  // right of the depth meter's tag (QA 2026-11-22: the PILLARS tablet ran over "22 m")
+  const W = 540, oneLine = label.length * 48 * 0.62 + shown.length * 72 * 0.6 + 110 < W;
+  const H = oneLine ? 116 : 190;
+  y -= H - 116;            // a taller tablet grows upward, clear of the piece under it
+  return (
+    <g opacity={Math.min(1, k * 3)} transform={`rotate(-2 ${x + W / 2} ${y + H / 2})`}>
+      <Legible x={x} y={y} w={W} h={H} size={48}>
+        <Block x={x} y={y} w={W} h={H} fill="#d9d2bf" r={18} shadow="bottom" />
+        <rect x={x + 16} y={y + 16} width={W - 32} height={H - 32} rx={12} fill="none" stroke="#a89f88" strokeWidth={6} />
+        {oneLine ? <>
+          {label ? <Txt x={x + 36} y={y + 76} size={48} fill="#5a4a3a" weight={800} anchor="start">{label}</Txt> : null}
+          <Txt x={x + W - 36} y={y + 82} size={72} fill={INK} weight={900} anchor="end">{countText(fig, k)}</Txt>
+        </> : <>
+          <Txt x={x + W / 2} y={y + 68} size={48} fill="#5a4a3a" weight={800}>{label}</Txt>
+          <Txt x={x + W / 2} y={y + 152} size={72} fill={INK} weight={900}>{countText(fig, k)}</Txt>
+        </>}
+      </Legible>
+    </g>
+  );
+};
+
 // ------------------------------------------------------------------ shared bits
 
 export const Bullet: React.FC<{ x: number; y: number; r: number; color: string; t: string }> = ({ x, y, r, color, t }) => (
@@ -50,9 +112,10 @@ export const Bullet: React.FC<{ x: number; y: number; r: number; color: string; 
 /** A hanging station sign: line bullets, a name and the depth figure in the accent colour. */
 export const Sign: React.FC<{ x: number; y: number; text: string; depth: string; bullets?: [string, string][]; accent: string; w?: number; k?: number }> = ({ x, y, text, depth, bullets = [], accent, w = 600, k = 1 }) => {
   const h = 96;
-  if (k <= 0) return null;
+  const near = useNear(y + h / 2);
+  if (k <= 0 || near <= 0) return null;
   return (
-    <g opacity={Math.min(1, k)} transform={k < 1 ? `translate(0 ${(1 - k) * -40})` : undefined}>
+    <g opacity={Math.min(1, k) * near} transform={k < 1 ? `translate(0 ${(1 - k) * -40})` : undefined}>
     <Legible x={x} y={y} w={w} h={h} size={46}>
       <Limb a={[x + 120, y - 70]} b={[x + 120, y]} w={8} color="#2a2a33" sw={3} />
       <Limb a={[x + w - 120, y - 70]} b={[x + w - 120, y]} w={8} color="#2a2a33" sw={3} />
@@ -313,7 +376,8 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
   // next layer (2026-11-21: one 2.4 s run-through left the tunnel empty in most frames, QA on Hampstead)
   const dir = s.dir ?? 1;
   const arrive = ramp(g, L.land - 6, L.land + 40);
-  const go = Math.max(L.land + 60, L.until - 26);
+  // `stay`: the train stays at the platform until the loop (a later beat still talks about this tunnel)
+  const go = s.stay ? w.total - 40 : Math.max(L.land + 60, L.until - 26);
   const leave = ramp(g, go, go + 40);
   const ea = 1 - Math.pow(1 - arrive, 3), el = leave * leave;
   const STOP = -150;
@@ -339,7 +403,8 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
         ) : <g transform={`translate(${tx} 0)`}><Train x={0} y={yb} color={s.color ?? "#c9ced8"} stripe={s.stripe ?? "#6d6e76"} bullet={s.bullets?.[0]} road={road} /></g>}
       </g>
       <rect x={x0} y={yb - h} width={x1 - x0} height={h + 40} rx={26} fill="none" stroke={INK} strokeWidth={STROKE} />
-      <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
+      <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+      <Tally L={L} w={w} g={g} x={370} y={yb - h - 190} />
     </g>
   );
 };
@@ -354,8 +419,8 @@ export const Chamber: React.FC<PieceProps> = ({ L, w, g }) => {
   const wallC = s.color ?? (type === "vault" ? "#3a3f52" : type === "bunker" ? "#4a4a3a" : "#2f3a34");
   const lamp = 0.5 + 0.5 * Math.sin(g * 0.3);
   const stampAt = L.at(s.stampOn), plansAt = L.at(s.plansOn);
-  const stamp = ramp(g, stampAt, stampAt + 8);
-  const plans = ramp(g, plansAt - 3, plansAt + 6);
+  const stamp = ramp(g, stampAt, stampAt + 8) * outro(w, g);
+  const plans = ramp(g, plansAt - 3, plansAt + 6) * outro(w, g);
   return (
     <g>
       <rect x={x0 - 14} y={yb - h - 14} width={x1 - x0 + 28} height={h + 40} rx={20} fill={shade(look.deep, 0.05)} />
@@ -382,8 +447,8 @@ export const Chamber: React.FC<PieceProps> = ({ L, w, g }) => {
       {has("bunks") ? [0, 1].map((i) => <g key={i}><Block x={160} y={yb - 110 - i * 120} w={360} h={40} fill="#6b705c" shadow="bottom" /><Limb a={[170, yb]} b={[170, yb - 250]} w={10} color="#555" sw={3} /><Limb a={[510, yb]} b={[510, yb - 250]} w={10} color="#555" sw={3} /></g>) : null}
       {has("desk") ? <g><Block x={600} y={yb - 110} w={260} h={30} fill="#8a5a3a" shadow="bottom" /><Block x={620} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /><Block x={820} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /></g> : null}
       {s.stamp ? <Legible x={170} y={yb - h + 26} w={260} h={110} size={66}><Tag x={170} y={yb - h + 26} w={260} h={110} text={s.stamp} bg={look.accent} k={stamp} rot={-4} /></Legible> : null}
-      {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land)} /> : null}
-      {!s.label && depthLabel(L, w) ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8)} rot={3} /></Legible> : null}
+      {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} /> : null}
+      {!s.label && depthLabel(L, w) ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8) * outro(w, g)} rot={3} /></Legible> : null}
       {has("blueprint") && plans > 0 ? (
         // over the room's roof, or inside it when the room has a sign up there (it hid North End's depth, 2026-11-21)
         <g opacity={plans} transform={`${s.label ? "translate(-380 300) " : ""}rotate(6 760 ${yb - h - 60})`}>
@@ -418,7 +483,7 @@ export const Cavern: React.FC<PieceProps> = ({ L, w, g }) => {
           <g transform={`translate(${(i ? -1 : 1) * ((g * 4) % 400) - 200} 0)`}><Train x={0} y={yb} color={s.stripe ?? "#d6dbe4"} stripe={trains[i % trains.length]!} /></g>
         </g>
       ))}
-      <Sign x={240} y={yLow - 270} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
+      <Sign x={240} y={yLow - 270} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
     </g>
   );
 };
@@ -472,8 +537,9 @@ export const Foundation: React.FC<PieceProps> = ({ L, w, g }) => {
   const type = s.type ?? "piles";
   const n = s.count ?? (type === "caissons" ? 3 : 7);
   const c = s.color ?? "#b9b4a8";
-  const k = ramp(g, L.land - 10, L.land + 20);
+  const k = ramp(g, L.land - 10, L.land + 20) * outro(w, g);
   const yb = yTop + (yBot - yTop) * k;
+  const near = useNear(yBot + 60);
   return (
     <g>
       {type === "raft" ? (
@@ -484,7 +550,7 @@ export const Foundation: React.FC<PieceProps> = ({ L, w, g }) => {
         const wd = type === "caissons" ? 150 : 46;
         return <Block key={i} x={x - wd / 2} y={yTop} w={wd} h={Math.max(10, yb - yTop)} fill={c} r={type === "caissons" ? 20 : 4} shadow="right" sw={5} />;
       })}
-      {depthLabel(L, w) ? <Legible x={330} y={yBot + 20} w={420} h={96} size={57}><Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} /></Legible> : null}
+      {depthLabel(L, w) && near > 0 ? <g opacity={near}><Legible x={330} y={yBot + 20} w={420} h={96} size={57}><Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} /></Legible></g> : null}
       {s.label && k > 0 ? <g opacity={k}><Legible x={140} y={yBot + 140} w={800} h={60} size={46}><Txt x={540} y={yBot + 170} size={46} fill={look.paper} weight={800}>{s.label.toUpperCase()}</Txt></Legible></g> : null}
     </g>
   );
@@ -506,7 +572,7 @@ export const Water: React.FC<PieceProps> = ({ L, w, g }) => {
       {aquifer ? Array.from({ length: 70 }, (_, i) => { const gx = -200 + r() * 1480, gy = y0 + 20 + r() * (y1 - y0 - 40), gs = 14 + r() * 34; return <ellipse key={`g${i}`} cx={gx} cy={gy} rx={gs} ry={gs * 0.7} fill={i % 3 ? look.sand : look.gravel} stroke={INK} strokeWidth={4} opacity={0.9} />; }) : null}
       {drops.map(([x, ph, sz], i) => <circle key={i} cx={x} cy={y0 + ((ph + g / 90) % 1) * (y1 - y0)} r={sz} fill={shade(c, 0.5)} opacity={0.6} />)}
       {s.type === "sea" ? <rect x={-2400} y={y1 - 60} width={5900} height={60} fill={look.sand} stroke={INK} strokeWidth={STROKE} /> : null}
-      <Sign x={240} y={y0 + 120} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
+      <Sign x={240} y={y0 + 120} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
     </g>
   );
 };
@@ -515,7 +581,7 @@ export const Water: React.FC<PieceProps> = ({ L, w, g }) => {
 export const Deepest: React.FC<PieceProps> = ({ L, w, g }) => {
   const look = w.look;
   const y = w.Y(L.ft) + 210;
-  const k = ramp(g, L.land - 2, L.land + 10);
+  const k = ramp(g, L.land - 2, L.land + 10) * outro(w, g);
   if (k <= 0) return null;
   const pulse = 0.5 + 0.5 * Math.sin(g * 0.25);
   return (

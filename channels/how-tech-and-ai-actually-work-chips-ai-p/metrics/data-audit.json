@@ -1,19 +1,51 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-21T16:14:44.297Z",
+  "generatedAt": "2026-11-22T16:27:25.806Z",
   "channel": "how-tech-and-ai-actually-work-chips-ai-p",
   "youtubeChecked": true,
   "summary": {
-    "videos": 3,
-    "checked": 3,
+    "videos": 4,
+    "checked": 4,
     "error": 0,
     "warning": 0,
-    "info": 0,
+    "info": 1,
     "owner": 0,
     "persistentErrors": 0
   },
-  "issues": [],
+  "issues": [
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
+      "videoId": "v-20261122-21",
+      "youtubeId": "7PmOpk6lixc",
+      "detail": "Dashboard shows 1294 views, YouTube 1365; live counts last refreshed 103 min ago (they refresh while the dashboard is open)."
+    }
+  ],
   "videos": [
+    {
+      "id": "v-20261122-21",
+      "title": "How Did Crossrail Tunnel Past the Tube?",
+      "youtubeId": "7PmOpk6lixc",
+      "state": "published",
+      "publishAt": "2026-11-22T00:37:00.000Z",
+      "dashboard": {
+        "views": 1294,
+        "likes": 34,
+        "comments": 1,
+        "liveAt": "2026-11-22T14:44:15.958Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1365,
+        "likes": 34,
+        "comments": 1
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261121-21",
       "title": "What Did the First Transistor Actually Look Like?",
@@ -21,14 +53,14 @@
       "state": "published",
       "publishAt": "2026-11-21T02:37:00.000Z",
       "dashboard": {
-        "views": 255,
+        "views": 284,
         "likes": 3,
         "comments": 0,
-        "liveAt": "2026-11-21T14:51:31.539Z"
+        "liveAt": "2026-11-22T14:44:15.958Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 255,
+        "views": 284,
         "likes": 3,
         "comments": 0
       },
@@ -48,7 +80,7 @@
         "views": 118,
         "likes": 4,
         "comments": 0,
-        "liveAt": "2026-11-21T14:51:31.539Z"
+        "liveAt": "2026-11-22T14:44:15.958Z"
       },
       "youtube": {
         "privacy": "public",
@@ -57,9 +89,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 114,
+        "days": 1,
+        "lastDay": "2026-11-19"
       }
     },
     {
@@ -72,7 +104,7 @@
         "views": 45,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-21T14:51:31.539Z"
+        "liveAt": "2026-11-22T14:44:15.958Z"
       },
       "youtube": {
         "privacy": "public",
@@ -81,9 +113,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 37,
-        "days": 1,
-        "lastDay": "2026-11-18"
+        "views": 45,
+        "days": 2,
+        "lastDay": "2026-11-19"
       }
     }
   ]

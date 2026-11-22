@@ -689,3 +689,21 @@ test("tab rows move with the arrow keys and keep one tab in the Tab order", asyn
     await expect(tabs.first()).toBeFocused();
   }
 });
+
+test("calendar day chips show whole times and counts, or marks when the day is too narrow", async ({ page }) => {
+  await signIn(page);
+  // 1440 px fits chips; 1280 px (the side panel squeezes each day to ~58 px) clipped every chip to "12.1K ♡62…" and "2… LONG"
+  for (const width of [1440, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/calendar");
+    await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+    await page.waitForLoadState("networkidle");
+    const clipped = await page.locator("button[aria-pressed] span").evaluateAll((els) => els
+      .filter((e) => (e as HTMLElement).offsetParent && e.children.length === 0 && e.textContent && e.scrollWidth > e.clientWidth + 1)
+      .map((e) => e.textContent));
+    expect(clipped, `clipped calendar text at ${width}px`).toEqual([]);
+    const chips = await page.locator("button[aria-pressed] span.\\@container > span").evaluateAll((els) => els
+      .filter((e) => (e as HTMLElement).offsetParent && e.scrollWidth > e.clientWidth + 1).map((e) => e.textContent));
+    expect(chips, `overflowing calendar chips at ${width}px`).toEqual([]);
+  }
+});

@@ -1,14 +1,14 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-21T16:14:44.297Z",
+  "generatedAt": "2026-11-22T16:27:25.806Z",
   "channel": "geography-maps-geopolitical-mysteries",
   "youtubeChecked": true,
   "summary": {
-    "videos": 8,
-    "checked": 7,
+    "videos": 10,
+    "checked": 9,
     "error": 0,
     "warning": 0,
-    "info": 1,
+    "info": 2,
     "owner": 0,
     "persistentErrors": 0
   },
@@ -16,24 +16,79 @@
     {
       "kind": "behind_youtube_stale",
       "severity": "info",
+      "videoId": "v-20261122-12",
+      "youtubeId": "KZz5CJl_umI",
+      "detail": "Dashboard shows 0 views, YouTube 258; live counts last refreshed never (they refresh while the dashboard is open)."
+    },
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
       "videoId": "v-20261121-04",
       "youtubeId": "BrgElqpL2V0",
-      "detail": "Dashboard shows 0 views, YouTube 102; live counts last refreshed never (they refresh while the dashboard is open)."
+      "detail": "Dashboard shows 872 views, YouTube 928; live counts last refreshed 104 min ago (they refresh while the dashboard is open)."
     }
   ],
   "videos": [
+    {
+      "id": "v-20261122-12",
+      "title": "Antarctica melts. Which countries vanish first?",
+      "youtubeId": "KZz5CJl_umI",
+      "state": "published",
+      "publishAt": "2026-11-22T15:07:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "public",
+        "views": 258,
+        "likes": 10,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261122-11",
+      "title": "Why are English cities poorer in the east?",
+      "youtubeId": "83m8dzRZ6hc",
+      "state": "published",
+      "publishAt": "2026-11-22T04:07:00.000Z",
+      "dashboard": {
+        "views": 1152,
+        "likes": 27,
+        "comments": 1,
+        "liveAt": "2026-11-22T14:43:40.289Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1176,
+        "likes": 27,
+        "comments": 1
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261121-04",
       "title": "Hormuz shuts for a week. Who runs out first?",
       "youtubeId": "BrgElqpL2V0",
       "state": "published",
       "publishAt": "2026-11-21T15:07:00.000Z",
-      "dashboard": null,
+      "dashboard": {
+        "views": 872,
+        "likes": 13,
+        "comments": 1,
+        "liveAt": "2026-11-22T14:43:40.289Z"
+      },
       "youtube": {
         "privacy": "public",
-        "views": 102,
-        "likes": 4,
-        "comments": 0
+        "views": 928,
+        "likes": 14,
+        "comments": 1
       },
       "analytics": {
         "views": 0,
@@ -48,14 +103,14 @@
       "state": "published",
       "publishAt": "2026-11-21T04:07:00.000Z",
       "dashboard": {
-        "views": 955,
-        "likes": 19,
+        "views": 1173,
+        "likes": 20,
         "comments": 0,
-        "liveAt": "2026-11-21T14:57:14.513Z"
+        "liveAt": "2026-11-22T14:43:40.289Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 964,
+        "views": 1173,
         "likes": 20,
         "comments": 0
       },
@@ -72,15 +127,15 @@
       "state": "published",
       "publishAt": "2026-11-20T15:07:00.000Z",
       "dashboard": {
-        "views": 918,
-        "likes": 19,
+        "views": 1045,
+        "likes": 21,
         "comments": 3,
-        "liveAt": "2026-11-21T14:57:14.513Z"
+        "liveAt": "2026-11-22T14:43:40.289Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 916,
-        "likes": 19,
+        "views": 1042,
+        "likes": 21,
         "comments": 3
       },
       "analytics": {
@@ -96,21 +151,21 @@
       "state": "published",
       "publishAt": "2026-11-20T04:07:00.000Z",
       "dashboard": {
-        "views": 105,
-        "likes": 4,
+        "views": 164,
+        "likes": 5,
         "comments": 0,
-        "liveAt": "2026-11-21T14:57:14.513Z"
+        "liveAt": "2026-11-22T14:43:40.289Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 106,
-        "likes": 4,
+        "views": 164,
+        "likes": 5,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 43,
+        "days": 1,
+        "lastDay": "2026-11-19"
       }
     },
     {
@@ -120,21 +175,21 @@
       "state": "published",
       "publishAt": "2026-11-19T15:07:00.000Z",
       "dashboard": {
-        "views": 925,
+        "views": 986,
         "likes": 22,
         "comments": 0,
-        "liveAt": "2026-11-21T14:57:14.513Z"
+        "liveAt": "2026-11-22T14:43:40.289Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 922,
+        "views": 986,
         "likes": 22,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 604,
+        "days": 1,
+        "lastDay": "2026-11-19"
       }
     },
     {
@@ -144,21 +199,21 @@
       "state": "published",
       "publishAt": "2026-11-19T04:07:00.000Z",
       "dashboard": {
-        "views": 1213,
+        "views": 1224,
         "likes": 20,
         "comments": 1,
-        "liveAt": "2026-11-21T14:57:14.513Z"
+        "liveAt": "2026-11-22T14:43:40.289Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1215,
+        "views": 1224,
         "likes": 18,
         "comments": 1
       },
       "analytics": {
-        "views": 476,
-        "days": 1,
-        "lastDay": "2026-11-18"
+        "views": 1201,
+        "days": 2,
+        "lastDay": "2026-11-19"
       }
     },
     {
@@ -171,7 +226,7 @@
         "views": 14,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-21T14:57:14.513Z"
+        "liveAt": "2026-11-22T14:43:40.289Z"
       },
       "youtube": {
         "privacy": "public",
@@ -180,9 +235,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 11,
-        "days": 1,
-        "lastDay": "2026-11-18"
+        "views": 12,
+        "days": 2,
+        "lastDay": "2026-11-19"
       }
     }
   ]

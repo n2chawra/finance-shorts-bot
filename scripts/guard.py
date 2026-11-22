@@ -171,6 +171,18 @@ def invariants(head: str) -> list[str]:
             or re.search(r"^(def winning_short|WIN_MIN_VIEWS)", topics_py, re.M)):
         out.append("generator/topics.py: a long topic must never be blocked by from_short or a Short's views "
                    "(owner, 2026-11-22: that gate stopped every new channel's long videos)")
+    # a weekly loop's `running` is the test's id or null: on 21 Nov the improver wrote the whole entry there and the
+    # dashboard's All channels page failed to load (owner, 2026-11-22)
+    for bl_file in ["improvement/cycle/backlog.json", *sorted(f for f in git("ls-tree", "-r", "--name-only", head, "--", "channels").splitlines()
+                                                            if re.fullmatch(r"channels/[^/]+/cycle/backlog\.json", f))]:
+        try:
+            running = json.loads(show(head, bl_file) or "{}").get("running")
+        except ValueError:
+            out.append(f"{bl_file} is not valid JSON")
+            continue
+        if running is not None and not isinstance(running, str):
+            out.append(f"{bl_file}: `running` must be the test's id (a string) or null, not a {type(running).__name__}; "
+                       "the entry itself belongs in `history`")
     # the weekly loop (owner, 2026-11-12): one Shorts challenger at a time, so a verdict is never two changes blurred
     # per channel: each channel's own experiments file once it has a folder (multi-channel layout)
     listed = git("ls-tree", "-r", "--name-only", head, "--", "channels").splitlines()

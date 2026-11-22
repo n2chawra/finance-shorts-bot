@@ -8,8 +8,8 @@
     },
     {
       "day": "2026-11-22",
-      "shipped": 0,
-      "failed": 2
+      "shipped": 3,
+      "failed": 3
     }
   ],
   "videos": [
@@ -61,6 +61,34 @@
       "template": "short_story",
       "status": "failed",
       "reason": "Fact review: the feed's depths conflict with the operator (115 m and 45 m rejected; Getlink says an average 40 m below the seabed), and Getlink's 40 m is not in the topic feed, so the number check fails it; research should re-source the Channel Tunnel topic with Getlink's figures"
+    },
+    {
+      "id": "v-20261122-53",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA after 3 rounds: the dive kit's fixed top note and caption band left no room for the floodwater and pump-room layers (they collided with signs or captions), and without them the typhoon and pumps lines showed bare rock; fact review passed"
+    },
+    {
+      "id": "v-20261122-54",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261122-55",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261122-56",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
     }
   ]
 }

@@ -757,6 +757,20 @@
    "page": "study",
    "found": "2026-11-21",
    "status": "open"
+  },
+  {
+   "id": "calendar-chips-clipped",
+   "kind": "bug",
+   "title": "Calendar: day chips clipped their likes and times",
+   "detail": "At 1440 px a published chip needed 86-93 px in an 81 px day, so likes read '12.1K ♡62…'; a planned long video read '2… LONG'; at 1024-1280 px (side panel open) every chip was squeezed to 21-58 px. Fixed: tighter chips, whole times, long videos marked with the legend's dash, 'Long'/'empty' only when they fit, and days too narrow for chips show the phone's marks (container query). Smoke test added.",
+   "page": "calendar",
+   "found": "2026-11-22",
+   "status": "done",
+   "done": "2026-11-22",
+   "lastTouched": {
+    "apps/dashboard/src/app/calendar/page.tsx": "2026-11-22"
+   },
+   "commit": "423ffc3"
   }
  ]
 }

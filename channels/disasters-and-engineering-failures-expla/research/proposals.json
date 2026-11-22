@@ -16,9 +16,10 @@
       "effort": "S",
       "risk": "Paisa Panchayat must keep its rule: gate the exception on the channel's own cadence",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "done",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "reason": "Already fixed on main on 22 Nov (522702a: a long topic never needs one of our Shorts, on any channel)."
     },
     {
       "id": "dd-research-topics-format-long",
@@ -34,6 +35,27 @@
       "effort": "S",
       "risk": "none",
       "metric": "qa_failures",
+      "status": "done",
+      "route": "adopt",
+      "priority": "normal",
+      "reason": "The long state now also reads the research feed's format-long topics (288bb5c): 17 open long topics instead of 1, so no copying is needed."
+    },
+    {
+      "id": "dd-feed-celebrity-crash-lane",
+      "date": "2026-11-23",
+      "area": "script",
+      "title": "Famous-passenger crashes: tell the report's mechanism, not the celebrity",
+      "change": "For the three topics added tonight with a famous person aboard (Calabasas S-76B, the Long-EZ, the Convair 240), the writer names the person once as the NTSB does, states deaths once, and spends the Short on the mechanism (inner ear in a turn, a handle behind the shoulder, a fuel gauge against the map). The fact reviewer checks the report's own probable-cause words. No new code: a note for the writer and QA when these topics are taken.",
+      "evidence": [
+        "https://www.youtube.com/watch?v=mKPO7QpA_38",
+        "https://www.youtube.com/watch?v=WMCCJSMQue8",
+        "https://www.youtube.com/watch?v=vEbJiNa-1zc"
+      ],
+      "expectedEffect": "Flight Simulator's famous-flight Shorts run 13-68x its 158K subscribers; done with respect they stay ad-friendly and inside the profile's 'cause, not gore' line.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Reads as exploiting a celebrity death if the title leads with the name and the toll; keep the title on the machine.",
+      "metric": "avgViewPct",
       "status": "new",
       "route": "adopt",
       "priority": "normal"

@@ -1,0 +1,337 @@
+{
+  "id": "v-20261122-55",
+  "createdAt": "2026-11-22T05:51:19.332614+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "How deep the Channel Tunnel runs under the sea between England and France: two rail tunnels and a service tunnel in chalk, an undersea crossover cavern, and the lowest point below the waves",
+    "category": "tunnel",
+    "reach": "global",
+    "feed_id": "2026-11-21-channel-tunnel"
+  },
+  "title": "The Channel Tunnel: How Deep Do the Trains Go?",
+  "description": "The Channel Tunnel takes trains from England to France under the sea. How far down is it?\nSources: Getlink, Wikipedia (2025).\nDepths from published sources. Cutaway illustrations, not to scale.",
+  "hashtags": [
+    "#Shorts",
+    "#ChannelTunnel",
+    "#Eurostar",
+    "#Engineering",
+    "#Underground"
+  ],
+  "hookStyle": "secret",
+  "cta": "Under the sea or under a mountain: which tunnel should we dive next? Comment",
+  "seed": 40733,
+  "style": {
+    "palette": "sky",
+    "genre": "cinematic",
+    "key": "G",
+    "bpm": 92,
+    "look": {
+      "stage": "space",
+      "header": "neon",
+      "holder": "phone",
+      "entrance": "pop"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "20-25",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.3,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "coast",
+        "text": "A train to Paris dives under the sea in the Channel Tunnel. How far down?",
+        "start": 0.13,
+        "seconds": 3.87,
+        "window": 3.87,
+        "fill": 1.0
+      },
+      {
+        "scene": "rail",
+        "text": "Below the seabed, it races through soft chalk.",
+        "start": 4.0,
+        "seconds": 2.53,
+        "window": 2.6,
+        "fill": 0.973
+      },
+      {
+        "scene": "service",
+        "text": "Between its rail tunnels runs a smaller one, for repairs and rescues.",
+        "start": 6.6,
+        "seconds": 3.79,
+        "window": 3.87,
+        "fill": 0.979
+      },
+      {
+        "scene": "cavern",
+        "text": "Under the sea, a huge cavern lets trains swap tunnels. How deep now?",
+        "start": 10.47,
+        "seconds": 4.0,
+        "window": 4.0,
+        "fill": 1.0
+      },
+      {
+        "scene": "deep",
+        "text": "On average, it runs 40 m below the seabed.",
+        "start": 14.47,
+        "seconds": 2.79,
+        "window": 2.77,
+        "fill": 1.007
+      },
+      {
+        "scene": "length",
+        "text": "And 37.9 km of the tunnel runs under the sea.",
+        "start": 17.23,
+        "seconds": 3.78,
+        "window": 3.83,
+        "fill": 0.987
+      },
+      {
+        "scene": "loop",
+        "text": "Then the train climbs back out, into France.",
+        "start": 21.07,
+        "seconds": 2.38,
+        "window": 2.47,
+        "fill": 0.964
+      }
+    ]
+  },
+  "durationSec": 24,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.9,
+    "lufs": -15.4,
+    "music_under_voice_db": 23.7
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "fact1 40 m average below seabed confirmed on its URL getlinkgroup.com/uk/the-channel-tunnel ('bored at an average 40m below the sea bed'); operator figure preferred over Wikipedia's 45 m per profile. fact2 37.9 km undersea confirmed on its URL en.wikipedia.org/wiki/Channel_Tunnel ('longest underwater section... 37.9 km'; Getlink rounds to 37 km, Britannica 37.8 km). Crossover caverns under the sea (Getlink: 7 km off England, 13 km off France), service tunnel for maintenance and rescue (Getlink), and chalk all match. The topic's 75 vs 115 m lowest-point conflict is not used. Description ends with the channel disclaimer. No advice, tone fine."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: 40 m tablet lands on 'average' and holds; source note readable on a dark pill; meter moves; the pull-back at 21.0 s now fills the frame (sea at top, four tunnels with readable name chips); hook names the Channel Tunnel and asks how deep; loop lands on the first frame. Minor, not blocking: 22.5 s the CHANNEL TUNNEL sign is cut at the top edge mid ride-up; 9-10.5 s the caption crosses the cavern edge and train wheels (no face, figure or text covered)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-22T05:31:40.589176+00:00",
+      "finishedAt": "2026-11-22T05:31:40.589176+00:00",
+      "notes": [
+        "style.look.header 'ribbon' was used by the previous video (v-20261122-54)",
+        "shape 'reveal' was used in the last 3 videos: pick another, or invent one the topic needs"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:31:48.230148+00:00",
+      "finishedAt": "2026-11-22T05:31:48.230148+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:31:49.164226+00:00",
+      "finishedAt": "2026-11-22T05:31:49.164226+00:00",
+      "notes": [
+        "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:32:28.321443+00:00",
+      "finishedAt": "2026-11-22T05:33:16.895095+00:00",
+      "notes": [
+        "24 s, sky/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the first figure appears at 14.3 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:33:24.175616+00:00",
+      "finishedAt": "2026-11-22T05:33:24.175616+00:00",
+      "notes": [
+        "fact1 40 m average below seabed confirmed on its URL getlinkgroup.com/uk/the-channel-tunnel ('bored at an average 40m below the sea bed'); operator figure preferred over Wikipedia's 45 m per profile. fact2 37.9 km undersea confirmed on its URL en.wikipedia.org/wiki/Channel_Tunnel ('longest underwater section... 37.9 km'; Getlink rounds to 37 km, Britannica 37.8 km). Crossover caverns under the sea (Getlink: 7 km off England, 13 km off France), service tunnel for maintenance and rescue (Getlink), and chalk all match. The topic's 75 vs 115 m lowest-point conflict is not used. Description ends with the channel disclaimer. No advice, tone fine."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:35:00.658301+00:00",
+      "finishedAt": "2026-11-22T05:35:49.173465+00:00",
+      "notes": [
+        "24 s, sky/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the first figure appears at 14.3 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:37:24.229953+00:00",
+      "finishedAt": "2026-11-22T05:38:16.465736+00:00",
+      "notes": [
+        "24 s, sky/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the first figure appears at 14.3 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T05:39:54.583188+00:00",
+      "finishedAt": "2026-11-22T05:39:54.583188+00:00",
+      "notes": [
+        "[script] 15.0-17.3 s, beat 'deep' (the turn): the 40 m figure is spoken at ~15.8 s but its 'BELOW SEABED' tablet only starts on 'below' (~16.3 s), still reads 20 m at 16.5 s, reaches 40 m at ~17.07 s and is replaced by 'UNDER THE SEA' at ~17.3 s: the turn's figure is readable for about 0.2 s and only after it was said, so on mute the 40 m is effectively never seen. Put the tally on 'average' or 'runs' (tallies[0].on) so it lands before the figure is spoken and holds for the rest of the beat.",
+        "[script] 15.0-21.0 s, beats 'deep' and 'length': two beats in a row are the same picture (the DEEP CHALK tunnel with the same white/yellow train, only the tablet text changes), and that tunnel is also the same picture as 'rail' at 4.5-6.0 s. The payoff (37.9 km under the sea) is shown on a short tunnel box with nothing showing length or the sea; the promised pull-back to the sea and every tunnel fires on 'sea' (~20.8 s) and at 21.0 s still shows only Crossover over Deep chalk. Start the pull-back on 'And'/'tunnel' so the payoff beat is its own wide picture of the whole crossing under the sea.",
+        "[scene] Dive surface layer, beat 'coast' 0-3 s: the 'Depths: Getlink · not to scale' note at the top is pale white on the light-blue sky and unreadable.",
+        "[scene] Dive depth meter, 4.5-21 s: after the 0 m readout at the surface the meter shows no number at all, the bar is already full with its pointer at the bottom from 4.5 s and never moves, so it doesn't follow 'How far down?' / 'How deep now?' / '40 m' (layers have depth 'none'). Minor: 15-19.5 s the rail tunnel above is cut by the top edge and its train runs under the channel icon."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:41:29.022651+00:00",
+      "finishedAt": "2026-11-22T05:42:15.957106+00:00",
+      "notes": [
+        "24 s, sky/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the first figure appears at 14.3 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T05:43:14.236966+00:00",
+      "finishedAt": "2026-11-22T05:43:14.236966+00:00",
+      "notes": [
+        "[script] 21.0 s (end of the payoff beat 'length', on 'sea.'): the new pull-back lands on a frame that is about 80% flat grey chalk. The four tunnels are tiny boxes about 210 px wide stacked in the middle, their signs and the 37.9 km tablet are gone, and the sea is a thin strip cut off at the top edge. The payoff ends emptier than any other still and doesn't show the undersea run. The gap comes from the layers' depths: rail ft 230, service 290, cavern 360, deep 430, under a seabed at about 20 ft, so the stack is mostly empty chalk above them. Bring the tunnels up close under the seabed (e.g. 60/90/120/160 ft; the depths are 'none', so no figure changes), or end the pull tighter, so the whole crossing with the sea fills the frame and stays readable. Also, 17.2-19.5 s still repeats the 'deep' picture (the same DEEP CHALK tunnel with only the tablet changed) until the pull starts at about 19.7 s."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:44:24.860378+00:00",
+      "finishedAt": "2026-11-22T05:45:13.347043+00:00",
+      "notes": [
+        "24 s, sky/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the first figure appears at 14.3 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:46:16.949057+00:00",
+      "finishedAt": "2026-11-22T05:47:00.634875+00:00",
+      "notes": [
+        "24 s, sky/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the first figure appears at 14.3 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:48:01.819214+00:00",
+      "finishedAt": "2026-11-22T05:48:49.073481+00:00",
+      "notes": [
+        "24 s, sky/cinematic (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the first figure appears at 14.3 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:49:34.526564+00:00",
+      "finishedAt": "2026-11-22T05:49:34.526564+00:00",
+      "notes": [
+        "Round 3: 40 m tablet lands on 'average' and holds; source note readable on a dark pill; meter moves; the pull-back at 21.0 s now fills the frame (sea at top, four tunnels with readable name chips); hook names the Channel Tunnel and asks how deep; loop lands on the first frame. Minor, not blocking: 22.5 s the CHANNEL TUNNEL sign is cut at the top edge mid ride-up; 9-10.5 s the caption crosses the cavern edge and train wheels (no face, figure or text covered)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:49:43.725954+00:00",
+      "finishedAt": "2026-11-22T05:51:17.536214+00:00",
+      "notes": [
+        "24 s, sky/cinematic, peak -1.0 dB, mean -16.9 dB",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the first figure appears at 14.3 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-22T05:51:19.332976+00:00",
+      "finishedAt": "2026-11-22T05:51:19.332976+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261122-55",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261122-55"
+  }
+}

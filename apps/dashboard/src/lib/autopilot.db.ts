@@ -2,6 +2,7 @@
 import { agentTimes } from "./agent-times";
 import { currentChannel } from "./channel-scope";
 import { ChallengerSchema, CycleRowSchema, type Growth, GrowthSchema, LessonSchema, LoopStatusSchema, PicturesSchema, RecipeSchema, StayedRowSchema, nextReviewerRun } from "./growth";
+import { runningId } from "./portfolio";
 import { RECENT_DAYS } from "./recent";
 import type { Notification as Row } from "@prisma/client";
 
@@ -143,7 +144,7 @@ export async function getGrowth(): Promise<Growth> {
   return GrowthSchema.parse({
     source: "database",
     status: status.success ? status.data : null,
-    running: typeof backlog.running === "string" ? backlog.running : null,
+    running: runningId(backlog.running),
     cycle: typeof backlog.cycle === "number" ? backlog.cycle : 0,
     challengers: listOf(backlog, "challengers").map((c) => ChallengerSchema.safeParse(c)).filter((p) => p.success).map((p) => p.data!),
     history: listOf(backlog, "history").map((c) => CycleRowSchema.safeParse(c)).filter((p) => p.success).map((p) => p.data!),

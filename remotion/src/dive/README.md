@@ -59,6 +59,25 @@ figure up on its word (the 90 s ride) and shows until its beat ends.
 | `deepest` | `text` ("deepest point") | the payoff: a beacon ring and a stamped tag "TEXT · DEPTH" on its word |
 | `counter` | `counter` only | nothing in the world: holds a beat's on-screen counter (the payoff figure on a pull-back) |
 
+### More pieces (`more.tsx`, 2026-11-22)
+
+The first kit drew transit only, so a day of Going Down Shorts failed QA (a stone town drew as a city street,
+carved rooms as one bunker box). The video run now adds what a topic needs (`generator/prompts/routine.md`
+section 3c). Every piece has something alive in it, and a `label` (sign) or depth tag.
+
+| kind | params | draws |
+|---|---|---|
+| `room` | `type` living / stable / press / storage / church / kitchen / door / tombs, `people`, `stamp` + `stampOn` (door), `color` (rock) | a carved, arched cave room: people at home, animals at a trough, someone treading grapes with juice running, jars, kneeling people and candles, an oven, a round stone door rolling shut on its word, burial niches |
+| `hall` | `count` (3-9 pillars), `color` | a pillared hall: two rows of pillars rising on its word, light shafts, mist, a walker with a lamp |
+| `passage` | `type` walk / water / sewer, `people`, `dir`, `color`, `stripe` (water) | an arched passage: people walking with lamps, or water surging on its word with debris |
+| `pumps` | `count` (2-4) | a pump room: impellers spinning faster from its word, water rising up the pipes |
+| `pour` | `color` | floodwater pouring in from the left into a rising, churning pool |
+| `surface` presets | `town`, `field`, `sea`, `mountain`, `pyramid`, `dome`, `arena`; `plate` (default on for these; `true` adds one to the older presets) | low stone houses with a dome and a tower and people walking; a field with a small building, trees and a goal; the sea with ferries and white cliffs; a snowy peak with a train leaving a portal; a pyramid in sand; a domed basilica; an arena of arches. All have a dark name plate with the `label` |
+
+Kit-wide since 2026-11-22: a sign or tag fades when it is far from the camera's point (a neighbour layer never
+sits under the top note or the captions); the `note` shows only near the street; whatever arrived on its word
+leaves over the last second (`outro`), so the last frame is the first.
+
 ## Camera rules
 
 - One layer per beat; the camera **dives on the word that names the layer** (`on`: the depth figure's first

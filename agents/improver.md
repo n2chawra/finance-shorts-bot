@@ -184,7 +184,10 @@ running (a verdict closed the last one in section 1, tonight or earlier), start 
   list at the top of its kind first; answer the note `testing` with the cycle number.
 - Before you pick, append what the cycle that just ended measured to `stayedByCycle`
   (`{"cycle", "champion": <stayed of the off side>, "challenger": <on side>, "verdict"}` from the
-  evaluator), move the entry to `history` with its verdict, and set `running` and `cycle`.
+  evaluator), move the entry to `history` with its verdict, and set `running` and `cycle`. `running`
+  is the new test's **id only** (a string); the entry itself goes into `history` with `cycle`,
+  `started` and `"verdict": null` (21 Nov: the whole entry in `running` broke the All channels page;
+  `scripts/guard.py` refuses it).
 - **Keep the recipe file current**: when a verdict is `keep`, fold the change into
   `channels/<channel>/cycle/recipe.json` too (add the rule, or replace the one it changes, with `since` set to
   today and `from: "cycle <n>"`; append `{"cycle", "date", "id", "verdict", "change"}` to `changes`;

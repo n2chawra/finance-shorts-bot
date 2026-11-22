@@ -9,7 +9,10 @@ import type { Timeline } from "../contract/timeline";
 import { diveLook, type DiveLook } from "./looks";
 
 // "counter": draws nothing in the world; it only holds a beat's on-screen counter (the payoff's figure)
-export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest" | "counter";
+export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest" | "counter"
+  // added 2026-11-22 (more.tsx, owner: "the kit improves itself when making a video"): carved rooms, a pillared
+  // hall, a walkway or water passage, a pump room, water pouring in
+  | "room" | "hall" | "passage" | "pumps" | "pour" | "well";
 
 /** One piece of the world. Only the fields of its `kind` matter (README "Pieces"). */
 export interface LayerSpec {
@@ -19,7 +22,15 @@ export interface LayerSpec {
   label?: string;            // the words on its sign ("SHUTTLE", "M42", "MADISON")
   on?: string;               // the event its moment lands on (default: the beat's `on`)
   // surface
-  preset?: "station" | "tube" | "needle" | "stadium" | "tower" | "monument" | "bridge" | "dam" | "street";
+  preset?: "station" | "tube" | "needle" | "stadium" | "tower" | "monument" | "bridge" | "dam" | "street"
+    | "town" | "field" | "sea" | "mountain" | "pyramid" | "dome" | "arena";   // more.tsx, 2026-11-22
+  plate?: boolean;           // a readable name plate over the landmark (default on for the more.tsx presets)
+  people?: number;           // room / hall / passage: how many people move in it
+  // a figure carved on a tablet in the piece, counting up on a word of this beat or a later one (the payoff said in
+  // the next beat, QA 2026-11-22: "20,000 is a floating headline card"): {fig, label, beat?, on}
+  tally?: { fig: string; label?: string; beat?: string; on?: string };
+  stay?: boolean;            // tunnel: the train stays until the loop instead of leaving at its beat's end
+  tallies?: { fig: string; label?: string; beat?: string; on?: string }[];
   wall?: string; trim?: string; glass?: string; vehicle?: string;
   // tunnel / cavern
   type?: string;             // tunnel: subway | rail | road | utility; chamber: secret | vault | bunker | machine;
@@ -70,6 +81,10 @@ export interface DiveWorld {
   layers: Layer[]; maxFt: number; total: number;
   Y: (ft: number) => number;
   keys: Key[]; landings: number[];
+  /** the story frame of a word in any beat (by beat id), NaN when there is none */
+  ev: (beat: string, name?: string) => number;
+  /** every beat's params.fig, by beat id */
+  figs: Record<string, Record<string, string>>;
 }
 
 /** The first number in a figure string ("105 ft" → 105, "1,200 m" → 1200); NaN when there is none. */
@@ -140,7 +155,10 @@ export function diveWorld(tl: Timeline): DiveWorld {
   for (const d of depths) {
     if (d <= 0) continue;
     const prev = anchors[anchors.length - 1]!;
-    anchors.push([d, Math.max(d * PX, prev[1] + (prev[0] === 0 ? FIRST : GAP))]);
+    // at least a gap apart, and at most 1.3 gaps (2026-11-22: a first layer placed deep left the pull-back mostly
+    // empty rock between the street and the stack; the cutaway is "not to scale" anyway)
+    const min = prev[1] + (prev[0] === 0 ? FIRST : GAP);
+    anchors.push([d, Math.min(Math.max(d * PX, min), min + 0.3 * GAP)]);
   }
   const Y = (ft: number): number => {
     if (ft <= 0) return ft * PX;
@@ -155,8 +173,10 @@ export function diveWorld(tl: Timeline): DiveWorld {
   // the camera: keys on the story clock, eased between
   const maxZ = 1.3;
   const stackTop = -250, stackBottom = Y(maxFt) + 500;
-  const stackZ = Math.min(0.85, 1820 / (stackBottom - stackTop));
-  const stack = { y: stackTop + ANCHOR_Y / stackZ, z: stackZ };
+  // the whole stack fits between the top of the frame and the captions (QA 2026-11-22: the pull-back cut the deepest
+  // room at the bottom edge, its figure inside the Shorts UI zone)
+  const stackZ = Math.min(0.85, 1400 / (stackBottom - stackTop));
+  const stack = { y: stackTop + (ANCHOR_Y - 60) / stackZ, z: stackZ };
   const keys: Key[] = [{ g: 0, ...TOP }];
   const landings: number[] = [];
   const last = () => keys[keys.length - 1]!;
@@ -182,7 +202,13 @@ export function diveWorld(tl: Timeline): DiveWorld {
     }
     if (d!.pull) pull(at(d!.pull));
   }
-  const w: DiveWorld = { look: diveLook(cfg.look), cfg, layers, maxFt, total, Y, keys, landings };
+  const figs: Record<string, Record<string, string>> = {};
+  for (const { b } of beats) figs[b.id] = (b.params.fig ?? {}) as Record<string, string>;
+  const ev = (beat: string, name?: string): number => {
+    const x = beats.find((y) => y.b.id === beat);
+    return x && name && name in x.b.events ? x.g0 + x.b.events[name]! * tempo : NaN;
+  };
+  const w: DiveWorld = { look: diveLook(cfg.look), cfg, layers, maxFt, total, Y, keys, landings, ev, figs };
   cache.set(tl, w);
   return w;
 }

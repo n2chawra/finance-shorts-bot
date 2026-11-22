@@ -23,7 +23,7 @@ export const PortfolioChannelSchema = z.object({
   id: z.string(), name: z.string(), status: z.string(),
   /** a channel still in setup: its stage ("research", "samples"…) */
   stage: z.string().nullable(),
-  health: z.object({ color: z.enum(["green", "amber", "red"]), reason: z.string(), at: z.string().optional() }).nullable(),
+  health: z.object({ color: z.enum(["green", "amber", "red"]), reason: z.string(), at: z.string().nullish() }).nullable().catch(null),
   /** the last day YouTube Analytics has reached for this channel */
   statsThrough: z.string().nullable(),
   /** net subscribers from Analytics over the last 12 months (the platform keeps no lifetime counter) */
@@ -48,7 +48,7 @@ export const PortfolioChannelSchema = z.object({
   loop: z.object({
     running: z.string().nullable(), description: z.string().nullable(), cycle: n,
     lastVerdict: z.object({ id: z.string(), verdict: z.string(), test: z.string().nullable() }).nullable(),
-  }).nullable(),
+  }).nullable().catch(null),   // agents' docs: a bad shape shows "between tests", never an error page (2026-11-22)
   ypp: z.object({ subs: n, watchHoursLong365: n, shortsViews90: n }),
   verdict: z.object({ call: z.enum(VERDICTS), why: z.string() }),
 });
@@ -66,6 +66,14 @@ export const PortfolioSchema = z.object({
   today: z.array(z.lazy(() => TodaySchema)).default([]),
 });
 export type Portfolio = z.infer<typeof PortfolioSchema>;
+
+/** The running test's id from a weekly-loop doc: `running` is meant to be the id, but on 21 Nov the improver wrote the
+ * whole challenger entry there and the All channels page failed to load. Either form gives the id; anything else null. */
+export function runningId(x: unknown): string | null {
+  if (typeof x === "string") return x || null;
+  if (x && typeof x === "object" && typeof (x as { id?: unknown }).id === "string") return (x as { id: string }).id || null;
+  return null;
+}
 
 export function median(xs: number[]): number | null {
   if (!xs.length) return null;

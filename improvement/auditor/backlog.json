@@ -1002,7 +1002,8 @@
       ],
       "severity": "low",
       "found": "2026-11-21",
-      "status": "open"
+      "status": "fixed",
+      "fixed": "2026-11-23"
     },
     {
       "id": "wrk-014",
@@ -1028,6 +1029,19 @@
       "severity": "medium",
       "found": "2026-11-22",
       "status": "open"
+    },
+    {
+      "id": "gen-008",
+      "kind": "bug",
+      "title": "Facts dated by year, month or quarter were never checked for a newer release",
+      "detail": "generator/topics.py stale_facts read as_of with date.fromisoformat, which refuses '2024', '2024-03' and '2024-Q3'; 119 of 994 feed facts are year-only, so from 2027 a '2025' annual figure would have passed unchecked. New _as_of_end reads them as the last day they cover. No topic in tonight's feeds changes. Test in generator/tests/test_topics_fresh.py.",
+      "files": [
+        "generator/topics.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-23",
+      "status": "fixed",
+      "fixed": "2026-11-23"
     }
   ]
 }

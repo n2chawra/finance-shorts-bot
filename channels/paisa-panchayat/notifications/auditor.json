@@ -8,13 +8,6 @@
       "fix": "1. In a Claude Code session, in workers/publish.ts applyCover replace `const dir = path.join(cpath(ROOT, \"videos\"), videoId);` with `const dir = path.dirname(videoFile(ROOT, run.channelId, videoId, \"manifest.json\"));` and import videoFile from ./lib/channels.ts (added tonight). 2. Check the next Publish log shows 'cover set from thumbnail.png' for a non-Paisa Short. 3. Optionally set the covers of the Shorts already up by hand in YouTube Studio."
     },
     {
-      "key": "weekly-loop-idle",
-      "severity": "warning",
-      "title": "No weekly-loop test has run since 19 Nov",
-      "detail": "Paisa Panchayat's cycle/backlog.json has running: null since cycle 1 closed on 19 Nov (the owner adopted it). The improver's 20 Nov branch was blocked on a merge conflict in generator/tests/test_media.py (the auditor fixed the same test that night), and there is no improver activity report for 20 or 21 Nov, so the next challenger was never started. If the improver routine itself didn't run, only the owner can see why.",
-      "fix": "1. On claude.ai/code, open the improver routine's last two runs and check they started and finished. 2. If they ran, nothing else is needed: its next run should start cycle 2 from cycle/backlog.json. 3. If they failed or hit the usage limit, re-run the improver once by hand."
-    },
-    {
       "key": "renderer-network",
       "severity": "warning",
       "title": "renderer/thumbs.py downloads from YouTube, against the no-network rule",

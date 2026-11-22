@@ -5746,6 +5746,165 @@
       "found": "2026-11-22",
       "expires": "2027-02-20",
       "status": "new"
+    },
+    {
+      "id": "2026-11-23-walmart-worker-year-in-9-ceo-hours",
+      "format": "short",
+      "title": "Walmart's typical worker earns a year's pay. How many hours does its CEO need to earn the same?",
+      "category": "salary",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "rich_vs_poor"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "The difference between poor and rich #2danimation #shorts",
+        "views": 383713,
+        "url": "https://youtube.com/shorts/J8VxouRoLck",
+        "channel": "Kruze clips",
+        "channelSubs": 772,
+        "outlier": 497.0
+      },
+      "hook": "Walmart's typical worker earns thirty thousand dollars a year. So how many hours does Walmart's CEO need to earn the same?",
+      "templates": [
+        "any"
+      ],
+      "angle": "Lane 5 (what the workers at a place you visit earn), per hour, in Black Friday week: Walmart's fiscal 2026 proxy says its median associate earned $30,520 and CEO Doug McMillon $29,240,930, a 958 to 1 ratio. Spread over every hour of the year, the CEO earned a worker's whole year in about 9 hours, less than one work shift.",
+      "why_now": "Black Friday is 27 Nov and Walmart is where most of it is spent. The worker-vs-the-top Shorts lead the channel (McDonald's 1,194 views, 48.4% stayed; Disneyland 986). The FY2026 proxy (23 Apr 2026) is the latest. Space it a week from the Starbucks barista topic and the McDonald's Short (20 Nov): never two of these in the same week.",
+      "maths": "CEO per hour = 29,240,930 / (365 x 24) (fact 0) ~ $3,338; hours for a worker's year = 30,520 / 3,338 (facts 1, 0) ~ 9.1 hours; ratio 29,240,930 / 30,520 ~ 958 (fact 2 checks it).",
+      "facts": [
+        {
+          "label": "Walmart CEO Doug McMillon total compensation, fiscal 2026",
+          "value": 29240930,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-01-31",
+          "source": "Walmart 2026 proxy statement (DEF 14A, 23 Apr 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000104169/000119312526173673/wmt-20260423.htm",
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Walmart median associate annual total compensation, fiscal 2026",
+          "value": 30520,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-01-31",
+          "source": "Walmart 2026 proxy statement (DEF 14A, 23 Apr 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000104169/000119312526173673/wmt-20260423.htm",
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Walmart CEO pay ratio to the median associate (x to 1), fiscal 2026",
+          "value": 958,
+          "unit": "count",
+          "as_of": "2026-01-31",
+          "source": "Walmart 2026 proxy statement (DEF 14A, 23 Apr 2026)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000104169/000119312526173673/wmt-20260423.htm",
+          "latest": true,
+          "checked": "2026-11-23"
+        }
+      ],
+      "verify": [
+        "the three figures are in the CEO Pay Ratio section of the DEF 14A (page 91 in its contents); research could only read them through a search quote and Talk Business ($29.241M), so the fact reviewer must open that section",
+        "the CEO for fiscal 2026 (ended 31 Jan 2026) was Doug McMillon; John Furner became CEO on 1 Feb 2026: never put Furner's name on these figures",
+        "CEO pay is total compensation (mostly stock awards), not cash salary; the median associate includes part-time workers worldwide",
+        "no claim that the pay is unfair or illegal: two figures side by side"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/0000104169/000119312526173673/wmt-20260423.htm",
+        "https://talkbusiness.net/2026/04/walmart-top-execs-earn-21-3-more-compensation-in-fiscal-2026/",
+        "https://corporate.walmart.com/news/2026/04/23/walmart-releases-2026-annual-report-and-proxy-statement"
+      ],
+      "found": "2026-11-23",
+      "expires": "2027-02-21",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-23-airline-keeps-4-50-of-your-ticket",
+      "format": "short",
+      "title": "You pay hundreds for a plane ticket. How much does the airline actually keep?",
+      "category": "business",
+      "kind": "evergreen",
+      "priority": "high",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Airlines Quietly Became Banks (Wendover Productions; views from an aggregator, subscribers about 4.7M, unverified)",
+        "views": 7200000,
+        "url": "https://rosetta.to/u/wendoverproductions/how-airlines-quietly-became-banks",
+        "channel": "Wendover Productions"
+      },
+      "hook": "You pay hundreds of dollars for one plane seat. So how much of it does the airline actually keep?",
+      "templates": [
+        "any"
+      ],
+      "angle": "Lane 1 (what a named seller makes on the thing you buy), per passenger: IATA, the airlines' own trade body, expects the world's airlines to keep $4.50 of profit per passenger in 2026, half the $9.10 of 2025, on 5.1 billion passengers and $23.0 billion of net profit. The turn: fuel and the Middle East disruption halved it in one year. The payoff: about the price of a coffee per seat.",
+      "why_now": "Thanksgiving week (26 Nov) is the busiest US flying week, and the Christmas rush follows. IATA's June 2026 outlook is the latest; its December 2026 outlook (usually the first or second week of December) will replace it, so make it before then or re-source it.",
+      "maths": "profit per passenger = 23.0B / 5.1B (facts 0, 1) ~ $4.51, which fact 2 ($4.50) checks; the drop = 9.10 - 4.50 (facts 3, 2) = $4.60, about half.",
+      "facts": [
+        {
+          "label": "world airlines' expected net profit, 2026",
+          "value": 23.0,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2026-06-07",
+          "source": "IATA (7 Jun 2026)",
+          "url": "https://www.iata.org/en/pressroom/2026-releases/06-07-middle-east-disruptions-high-fuel-prices-halve-airline-industry-profitability/",
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "passengers the world's airlines expect to carry, 2026",
+          "value": 5.1,
+          "unit": "count_billion",
+          "as_of": "2026-06-07",
+          "source": "IATA (7 Jun 2026)",
+          "url": "https://www.iata.org/en/pressroom/2026-releases/06-07-middle-east-disruptions-high-fuel-prices-halve-airline-industry-profitability/",
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "airlines' expected net profit per passenger, 2026",
+          "value": 4.5,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-06-07",
+          "source": "IATA (7 Jun 2026)",
+          "url": "https://www.iata.org/en/pressroom/2026-releases/06-07-middle-east-disruptions-high-fuel-prices-halve-airline-industry-profitability/",
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "airlines' net profit per passenger, 2025",
+          "value": 9.1,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-06-07",
+          "source": "IATA (7 Jun 2026)",
+          "url": "https://www.iata.org/en/pressroom/2026-releases/06-07-middle-east-disruptions-high-fuel-prices-halve-airline-industry-profitability/",
+          "latest": true,
+          "checked": "2026-11-23"
+        }
+      ],
+      "verify": [
+        "the 2026 figures are IATA's June 2026 forecast, not a final result: say 'expects' or 'this year's forecast'",
+        "if IATA has published its December 2026 outlook by the time this is made, use that release's figures instead",
+        "it is the world airline industry's average, not one airline's: never put a single airline's name or logo on the $4.50"
+      ],
+      "sources": [
+        "https://www.iata.org/en/pressroom/2026-releases/06-07-middle-east-disruptions-high-fuel-prices-halve-airline-industry-profitability/",
+        "https://www.iata.org/en/iata-repository/publications/economic-reports/profits-and-margins-to-shrink-in-2026-but-remain-positive/"
+      ],
+      "found": "2026-11-23",
+      "expires": "2026-12-07",
+      "status": "new"
     }
   ]
 }

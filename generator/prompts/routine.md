@@ -65,6 +65,8 @@ they changed (a template README you haven't read yet is fine). Pick a different 
 each video; `state` already excludes recently used ones.
 
 Video runs never build or change templates: that is the improver agent's job (`agents/improver.md`).
+The one exception is a channel drawn on a **kit** (`look.kits` in its `channel.json`, e.g. Going Down's dive kit):
+the video run grows that kit itself when a topic needs a piece it lacks (section 3c).
 
 ## 2. Plan (you)
 
@@ -112,6 +114,30 @@ video the owner approved (copy how it works, never its places or pictures). The 
 file (imports, no figure typed into code, every directed beat's file present, no randomness or
 clocks, `tsc`). Ship commits the folder with the video.
 
+## 3c. Kit gaps: grow the kit, never drop the video (owner, 2026-11-22)
+
+Owner, after a Going Down run failed all three Shorts because the dive kit had no piece for a stone town, carved
+rooms or a pillared flood tank: "fix it so that it never fails again: the kit improves itself when making video
+so no run stops this way". For a channel whose `channel.json` `look.kits` names a kit (`remotion/src/<kit>/`):
+
+1. **Before directing**, list what each beat must show (the landmark above ground, each layer, the thing that
+   moves in it) and check it against the kit's README "Pieces" table. A topic is never skipped or failed because
+   the kit can't draw it yet.
+2. **A missing or unrecognisable piece is added now**: a new `kind`, `type`, `preset` or prop in the kit (for the
+   dive kit, `remotion/src/dive/more.tsx`, registered in `MORE_PIECES`, or a new file registered the same way),
+   following the kit's contract: world coordinates, a pure function of the story frame, figures only from
+   `params.fig`, something alive in it (people, animals, water, machines), anything that arrives on a word leaves
+   in the last second (`outro`) so the loop matches, signs through the kit's `Sign`/`Marker` (they fade away from
+   the camera's point, clear of the note and the captions). Add its row to the kit README. **Additive only**: never
+   change how an existing piece draws, except to fix a bug a QA note named (say so in the report).
+3. **Check it**: `cd remotion && npx tsc --noEmit -p .`, then `lint` and the stills; look at the frames where it
+   shows.
+4. **Commit the kit change on its own**, before ship: `git add remotion/src/<kit> && git commit -q -m "<Kit>
+   kit: <piece> (for <id>)"`. Ship pushes it with the video.
+
+The same applies to a QA `[scene]` note on a kit channel (section 6): fix the piece in the kit and re-render the
+stills; it is never a reason to fail the video while QA rounds remain.
+
 ## 4. Fact review (a subagent with fresh context)
 
 Spawn one subagent. Give it only this: the video id, and the instruction to read
@@ -120,6 +146,13 @@ script or why you wrote it that way. Wait for its verdict.
 
 If it fails the script: fix the lines it named (section 3 again, including the number check),
 then ask the **same** subagent to review again. Two rewrites at most.
+
+**A corrected figure** (owner, 2026-11-22: the Channel Tunnel Short failed because the reviewer confirmed the
+operator's 40 m but the feed only had Wikipedia's 45 m): when the reviewer replaces a feed figure with one it
+confirmed on a more official source, add that figure to the topic's `facts` in
+`channels/<channel>/research/topics.json` (label, value, unit, as_of, source, url as the reviewer gave them, plus
+`"added_by": "fact_review <id>"`), use it in the script, and ask the reviewer to check the changed lines. A figure
+the reviewer did not confirm on the page it names is never added. This does not count as a rewrite of its own.
 
 ## 5. Stills first, then QA review, then the video
 
@@ -158,7 +191,10 @@ If it fails the video, fix each problem according to its tag, render the stills 
 
 - **`[script]`:** fix the script lines it named, re-run the number check, ask the fact reviewer
   to re-review the changed lines, then render the stills again.
-- **`[template]`** or **`[scene]`:** a problem in how a scene draws (overlap, cut-off text, a frozen
+- **`[scene]` on a kit channel** (`look.kits`, section 3c): fix or add the piece in the kit, commit it, render the
+  stills again and ask the same QA subagent to look again. A round whose only notes are `[scene]` kit fixes does not
+  count toward the three (owner, 2026-11-22: a kit problem never stops a run), up to five QA rounds in all.
+- **`[template]`** or **`[scene]`** (other channels): a problem in how a scene draws (overlap, cut-off text, a frozen
   picture) is in Remotion code, which the routine does not change. First try a script fix that
   avoids it (another scene, fewer words on screen, an actor moved). If no script change can, go
   to "If the video cannot be made to pass" and name the scene and beat in the reason, so the
@@ -213,7 +249,8 @@ at the top candidates, and commit `channels/<channel>/editor/ranking.json`. One 
   hard rules, and a `wrong` note is a rule until it is addressed.
 - Never edit `config/settings.json`, `CLAUDE.md`, `PLAN.md`, anything under `apps/`, `workers/`
   or `.github/`, or these prompt files. Under `renderer/`, a video run may only make the
-  template repair described in section 6.
+  template repair described in section 6. Under `remotion/src/<kit>/`, a kit channel's run may add pieces
+  (section 3c).
 - Never force-push, delete a branch, or rewrite history.
 - Never commit an mp4 or wav file to `main`. The only place an mp4 goes is the `media/<id>` branch that `ship` creates.
 - Do not use any connector. The only web access in a video run is the fact reviewer confirming
