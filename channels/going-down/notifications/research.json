@@ -1,6 +1,11 @@
-{"notifications": [
- {"key": "gd-market-scan-missing", "severity": "info",
-  "title": "The weekly market scan doesn't cover Going Down",
-  "detail": "market.yml only writes Paisa Panchayat's data to the market-data branch (last run 19 Nov). Going Down has search queries in channels/going-down/market.json, but nobody runs them. Research worked from manual YouTube searches tonight, which use up the nightly search budget.",
-  "fix": "1. Add a channel loop (or a CHANNEL input) to .github/workflows/market.yml that reads channels/<slug>/market.json queries for every active channel in config/channels.json. 2. Write each channel's result to its own file on market-data (e.g. going-down/market.json). Workflows are owner-only, so this needs you or an approved change."}
-]}
+{
+ "notifications": [
+  {
+   "key": "gd-market-scan-missing",
+   "severity": "info",
+   "title": "The weekly market scan doesn't cover Going Down",
+   "detail": "market.yml still writes only Paisa Panchayat's data to the market-data branch (last run 19 Nov, checked 23 Nov). Nobody runs Going Down's queries in channels/going-down/market.json, so research reads YouTube search pages by hand, which uses up the nightly search budget.",
+   "fix": "1. Add a channel loop (or a CHANNEL input) to .github/workflows/market.yml that reads channels/<slug>/market.json queries for every active channel in config/channels.json. 2. Write each channel's result to its own file on market-data (e.g. going-down/market.json). Workflows are owner-only, so this needs you or an approved change."
+  }
+ ]
+}

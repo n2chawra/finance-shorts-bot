@@ -1903,7 +1903,18 @@
    "status": "new",
    "stories": [
     "station_dive"
-   ]
+   ],
+   "demand": {
+    "title": "World's deepest subway station 116m below ground",
+    "views": 225000,
+    "url": "https://www.youtube.com/shorts/7YOdrvo0f60",
+    "channel": "Wandering Minds",
+    "channelSubs": 1890,
+    "outlier": 119.0
+   },
+   "kind": "evergreen",
+   "priority": "normal",
+   "why_now": "breakout: a Hongyancun Short has 225K views on a 1.9K channel (119x); 'deepest metro station' Shorts also at 832K and 518K"
   },
   {
    "id": "2026-11-21-hku-station-hong-kong",
@@ -2810,6 +2821,311 @@
    ],
    "found": "2026-11-22",
    "expires": "2027-02-20",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-23-kola-superdeep-borehole",
+   "format": "short",
+   "title": "What's at the Bottom of the Deepest Hole on Earth?",
+   "category": "landmark",
+   "place": "Kola Superdeep Borehole, Pechengsky District, Murmansk Oblast, Russia",
+   "country": "Russia",
+   "kind": "evergreen",
+   "priority": "high",
+   "stories": [
+    "landmark_dive"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "The Deepest Hole In The World",
+    "views": 8200000,
+    "url": "https://www.youtube.com/shorts/5H96WEbholA",
+    "channel": "PB The Creator",
+    "channelSubs": 201000,
+    "outlier": 40.8
+   },
+   "hook": "Russia drilled the deepest hole on Earth. What did they find at the bottom?",
+   "templates": [
+    "any"
+   ],
+   "angle": "The deepest hole humans ever dug: what was down there layer by layer, and why did they stop?",
+   "why_now": "evergreen giant: 'deepest hole on earth' Shorts at 27M, 25M, 12M, 8.2M, 6.3M; 8.2M on a 201K channel is a 41x breakout. A pure vertical dive, exactly our format.",
+   "layers": [
+    {
+     "name": "The drill site on the Kola Peninsula (now welded shut)",
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "confidence": "high"
+    },
+    {
+     "name": "Water pooled in the granite",
+     "depthM": 3000,
+     "sourceUnit": "m",
+     "kind": "water",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "confidence": "high",
+     "note": "3-6 km band; speak the top, 3 km"
+    },
+    {
+     "name": "Microscopic plankton fossils",
+     "depthM": 6000,
+     "sourceUnit": "m",
+     "kind": "strata",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "confidence": "high"
+    },
+    {
+     "name": "Where basalt was expected and never found: more granite",
+     "depthM": 7000,
+     "sourceUnit": "m",
+     "kind": "strata",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "confidence": "high"
+    },
+    {
+     "name": "180 degrees: the fourth hole stops (1992)",
+     "depthM": 11882,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "confidence": "high"
+    },
+    {
+     "name": "The bottom, 1989",
+     "depthM": 12262,
+     "sourceUnit": "m",
+     "kind": "shaft",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "confidence": "high"
+    }
+   ],
+   "payoff": {
+    "fact": "After 12 km down, the hole is only 23 cm wide, about 9 inches.",
+    "value": 23,
+    "unit": "cm",
+    "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole"
+   },
+   "facts": [
+    {
+     "label": "Maximum true vertical depth",
+     "value": 12262,
+     "unit": "m",
+     "as_of": "1989-01-01",
+     "source": "Wikipedia, Kola Superdeep Borehole",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "fixed": true
+    },
+    {
+     "label": "Borehole diameter",
+     "value": 23,
+     "unit": "cm",
+     "as_of": "1989-01-01",
+     "source": "Wikipedia, Kola Superdeep Borehole",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "fixed": true
+    },
+    {
+     "label": "Depth where the fourth hole stopped",
+     "value": 11882,
+     "unit": "m",
+     "as_of": "1992-01-01",
+     "source": "Wikipedia, Kola Superdeep Borehole",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "fixed": true
+    },
+    {
+     "label": "Temperature that stopped drilling",
+     "value": 180,
+     "unit": "celsius",
+     "as_of": "1992-01-01",
+     "source": "Wikipedia, Kola Superdeep Borehole",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "fixed": true
+    },
+    {
+     "label": "Depth of the plankton fossils",
+     "value": 6,
+     "unit": "km",
+     "as_of": "1989-01-01",
+     "source": "Wikipedia, Kola Superdeep Borehole",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "fixed": true
+    },
+    {
+     "label": "Depth where basalt was expected",
+     "value": 7,
+     "unit": "km",
+     "as_of": "1989-01-01",
+     "source": "Wikipedia, Kola Superdeep Borehole",
+     "url": "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "All figures are Wikipedia; confirm 12,262 m and 23 cm with ICDP, the USGS or a Russian Academy of Sciences source (Kozlovsky 1984/1987 is the primary).",
+    "The 'sounds of hell' recording is a hoax: leave it out or say it is a legend.",
+    "Drilling began 24 May 1970 and ended 1995 for lack of funding (Wikipedia); 1992 is when hole 4 stopped at 180 C. Don't mix the two dates.",
+    "The site is abandoned and welded shut (2012 photo); don't show or suggest a way in.",
+    "Kola is a scientific borehole, not a military site: no security details beyond what is published."
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Kola_Superdeep_Borehole"
+   ],
+   "found": "2026-11-23",
+   "expires": "2027-02-21",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-23-paris-catacombs",
+   "format": "short",
+   "title": "What's Under Paris?",
+   "category": "city",
+   "place": "Paris: the Catacombs, Cite and Abbesses metro stations, the Grand Paris Express",
+   "country": "France",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "landmark_dive"
+   ],
+   "currency": "EUR",
+   "reach": "global",
+   "demand": {
+    "title": "Catacombs of Paris are bigger than you think",
+    "views": 2400000,
+    "url": "https://www.youtube.com/shorts/VGgq8wBMEDc",
+    "channel": "Psychopoly",
+    "channelSubs": 824,
+    "outlier": 2912.6
+   },
+   "hook": "Under the streets of Paris, millions of people are still down there. How deep does it go?",
+   "templates": [
+    "any"
+   ],
+   "angle": "A city built on top of its own quarries and its own dead: what is under Paris, layer by layer?",
+   "why_now": "breakout: 2.4M on an 824-subscriber channel; more Catacombs Shorts at 1.8M (83K channel) and 1.6M. Held back on 22 Nov for lack of depths; now four are sourced.",
+   "layers": [
+    {
+     "name": "Paris street level",
+     "depthM": 0,
+     "sourceUnit": "m",
+     "kind": "surface",
+     "url": "https://www.catacombes.paris.fr/en",
+     "confidence": "high"
+    },
+    {
+     "name": "The Catacombs: the ossuary in the old quarries",
+     "depthM": 20,
+     "sourceUnit": "m",
+     "kind": "chamber",
+     "url": "https://www.catacombes.paris.fr/en",
+     "confidence": "high"
+    },
+    {
+     "name": "Cite station, line 4, on the island under the Seine",
+     "depthM": 25,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "url": "https://www.sortiraparis.com/en/news/in-paris/articles/280379-the-most-astonishing-metro-stations-in-paris-the-highest-the-deepest",
+     "confidence": "medium"
+    },
+    {
+     "name": "Abbesses station, line 12, under Montmartre hill (176-step spiral stair)",
+     "depthM": 36,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "url": "https://www.sortiraparis.com/en/news/in-paris/articles/280379-the-most-astonishing-metro-stations-in-paris-the-highest-the-deepest",
+     "confidence": "medium"
+    },
+    {
+     "name": "Saint-Maur-Creteil, Grand Paris Express line 15 (being built)",
+     "depthM": 52,
+     "sourceUnit": "m",
+     "kind": "tunnel",
+     "url": "https://www.sortiraparis.com/en/news/in-paris/articles/282604-line-15-abbesses-to-lose-its-status-as-the-deepest-metro-station",
+     "confidence": "medium"
+    }
+   ],
+   "payoff": {
+    "fact": "The Catacombs hold the remains of more than six million people.",
+    "value": 6,
+    "unit": "count_million",
+    "url": "https://en.wikipedia.org/wiki/Catacombs_of_Paris"
+   },
+   "facts": [
+    {
+     "label": "Depth of the Catacombs",
+     "value": 20,
+     "unit": "m",
+     "as_of": "2026-11-23",
+     "source": "Catacombes de Paris (official site)",
+     "url": "https://www.catacombes.paris.fr/en",
+     "fixed": true
+    },
+    {
+     "label": "People whose remains lie in the Catacombs",
+     "value": 6,
+     "unit": "count_million",
+     "as_of": "2026-11-23",
+     "source": "Les Catacombes de Paris, via Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Catacombs_of_Paris",
+     "fixed": true
+    },
+    {
+     "label": "Depth of Cite station",
+     "value": 25,
+     "unit": "m",
+     "as_of": "2022-08-28",
+     "source": "Sortiraparis",
+     "url": "https://www.sortiraparis.com/en/news/in-paris/articles/280379-the-most-astonishing-metro-stations-in-paris-the-highest-the-deepest",
+     "fixed": true
+    },
+    {
+     "label": "Depth of Abbesses station",
+     "value": 36,
+     "unit": "m",
+     "as_of": "2022-08-28",
+     "source": "Sortiraparis",
+     "url": "https://www.sortiraparis.com/en/news/in-paris/articles/280379-the-most-astonishing-metro-stations-in-paris-the-highest-the-deepest",
+     "fixed": true
+    },
+    {
+     "label": "Steps on the Abbesses spiral stair",
+     "value": 176,
+     "unit": "count",
+     "as_of": "2022-08-28",
+     "source": "Sortiraparis",
+     "url": "https://www.sortiraparis.com/en/news/in-paris/articles/280379-the-most-astonishing-metro-stations-in-paris-the-highest-the-deepest",
+     "fixed": true
+    },
+    {
+     "label": "Depth of Saint-Maur-Creteil station, line 15",
+     "value": 52,
+     "unit": "m",
+     "as_of": "2022-10-03",
+     "source": "Sortiraparis",
+     "url": "https://www.sortiraparis.com/en/news/in-paris/articles/282604-line-15-abbesses-to-lose-its-status-as-the-deepest-metro-station",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Abbesses: RATP's own page says the rail level is 30 m below the roadway; Sortiraparis and Wikipedia say 36 m. Prefer RATP (official) if the reviewer can reach ratp.fr/en/discover/heritage/history-abbesses-station (403 to our fetch), else say 36 m from street level.",
+    "Line 14 platforms (36.7 m) may already beat Abbesses; never call Abbesses 'the deepest in Paris' without the reviewer's check.",
+    "Line 15 South was due 2026: check whether Saint-Maur-Creteil has opened and say 'being built' or 'opened' accordingly.",
+    "The Catacombs official site says 'several million'; 'more than six million' is from the Catacombs' own guide via Wikipedia. Confirm it, else say 'millions'.",
+    "The layers are in different parts of Paris: the cutaway is a stack of Paris's depths, say so in the description. Never show how to enter the closed quarries."
+   ],
+   "sources": [
+    "https://www.catacombes.paris.fr/en",
+    "https://www.sortiraparis.com/en/news/in-paris/articles/280379-the-most-astonishing-metro-stations-in-paris-the-highest-the-deepest",
+    "https://www.sortiraparis.com/en/news/in-paris/articles/282604-line-15-abbesses-to-lose-its-status-as-the-deepest-metro-station",
+    "https://en.wikipedia.org/wiki/Catacombs_of_Paris",
+    "https://en.wikipedia.org/wiki/Abbesses_station"
+   ],
+   "found": "2026-11-23",
+   "expires": "2027-02-21",
    "status": "new"
   }
  ]
