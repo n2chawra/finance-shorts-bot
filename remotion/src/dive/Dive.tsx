@@ -10,6 +10,7 @@ import React from "react";
 import type { SceneProps } from "../scenes/kit";
 import { INK, STROKE, SourceLine, Stage, Txt, maxZoomFor } from "../flat/kit";
 import { CamCtx, PIECES, ScreenCounter, Strata } from "./pieces";
+import { MORE_PIECES } from "./more";
 import { ANCHOR_Y, cameraAt, diveWorld, figFeet, type DiveWorld } from "./world";
 
 /** The depth meter on the left edge: a bar filling to the camera's depth, the depth in ft and in m (m computed here). */
@@ -50,12 +51,13 @@ export const DepthMeter: React.FC<{ w: DiveWorld; ft: number }> = ({ w, ft }) =>
 
 /** The world at story frame g: strata, then the pieces back to front. */
 export const World: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) => {
-  const order = ["water", "surface", "foundation", "shaft", "tunnel", "chamber", "cavern", "deepest"];
+  const order = ["water", "pour", "surface", "foundation", "shaft", "tunnel", "passage", "chamber", "room", "hall", "pumps", "cavern", "deepest"];
+  const all: Record<string, React.FC<{ L: (typeof w.layers)[number]; w: DiveWorld; g: number }>> = { ...PIECES, ...MORE_PIECES };
   const sorted = [...w.layers].sort((a, b) => order.indexOf(a.spec.kind) - order.indexOf(b.spec.kind));
   return (
     <g>
       <Strata w={w} />
-      {sorted.map((L, i) => { const P = PIECES[L.spec.kind]; return P ? <P key={i} L={L} w={w} g={g} /> : null; })}
+      {sorted.map((L, i) => { const P = all[L.spec.kind]; return P ? <P key={i} L={L} w={w} g={g} /> : null; })}
     </g>
   );
 };
@@ -83,7 +85,9 @@ const Dive: React.FC<SceneProps> = (p) => {
         </g>
         <DepthMeter w={w} ft={cam.ft} />
         <ScreenCounter w={w} g={g} />
-        {w.cfg.note ? <Txt x={cx} y={120} size={26} fill="#f4f1e8" deco>{w.cfg.note}</Txt> : null}
+        {/* the fine print shows at the street (the hook and the loop's landing), never over a layer's sign below
+            (QA 2026-11-22: the note ran across the TUNNEL and FLOODWATER signs) */}
+        {w.cfg.note && cam.ft < 8 ? <g opacity={1 - cam.ft / 8}><Txt x={cx} y={120} size={26} fill="#f4f1e8" deco>{w.cfg.note}</Txt></g> : null}
       </Stage>
       <SourceLine p={p} />
     </>

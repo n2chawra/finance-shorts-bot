@@ -214,7 +214,9 @@ FACT_UNITS = ("year", "rupees", "rupees_lakh", "rupees_crore", "percent", "count
               # distances, areas and heights for a geography channel (multi-channel plan, 2026-11-17)
               "km", "km2", "m",
               # depths and times for Going Down (2026-11-21): feet as the US sources give them, a ride in seconds or minutes
-              "ft", "s", "min", "tonnes")
+              "ft", "s", "min", "tonnes",
+              # flow rates (Going Down, 2026-11-22: G-Cans pumps "200 tonnes per second" had no unit)
+              "tonnes_per_s", "tonnes per second", "m3_per_s")
 _SCALE = {"thousand": "K", "million": "M", "billion": "B", "trillion": "T"}
 
 
@@ -256,6 +258,10 @@ def fact_value(value: float, unit: str, currency: str = LEGACY_CURRENCY) -> str:
         return f"{shown} m"
     if unit in ("ft", "s", "min", "tonnes"):
         return f"{shown} {unit}"
+    if unit in ("tonnes_per_s", "tonnes per second"):
+        return f"{shown} t/s"
+    if unit == "m3_per_s":
+        return f"{shown} m³/s"
     if unit == "count_lakh":
         return f"{shown} L"
     if unit == "count_crore":

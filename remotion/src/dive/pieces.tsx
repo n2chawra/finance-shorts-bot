@@ -17,6 +17,18 @@ const depthLabel = (L: Layer, w: DiveWorld) => depthText(L.fig[L.spec.depth ?? "
 export interface DiveCam { z: number; camY: number; cx: number; W: number; H: number }
 export const CamCtx = createContext<DiveCam>({ z: 1, camY: 0, cx: 540, W: 1080, H: 1920 });
 
+/** 1 near the camera's point, 0 once a world y is far above or below it on screen: a neighbouring layer's sign or
+ * tag fades out before it reaches the top note or the caption band (QA 2026-11-22: "the note is drawn across the
+ * FLOODWATER sign", "the caption sits on the FLOODWATER sign"). */
+export const useNear = (y: number): number => {
+  const c = useContext(CamCtx);
+  const sy = ANCHOR_Y + (y - c.camY) * c.z;
+  return 1 - ramp(Math.abs(sy - ANCHOR_Y), 500, 600);
+};
+/** 1 for the whole video, falling to 0 over its last second, so whatever arrived on its word is gone again when
+ * the ride up lands on the first frame (QA 2026-11-22: "the last frame shows the pillars, frame 0 has none"). */
+export const outro = (w: DiveWorld, g: number): number => 1 - ramp(g, w.total - 32, w.total - 6);
+
 const SHOWN = 48, GROW_MAX = 1.3, MIN_READ = 45, BOTTOM = 130;
 /**
  * Words drawn in the world (a sign, a tag, the landmark's name) shrink with the camera: at the opening framing
@@ -50,9 +62,10 @@ export const Bullet: React.FC<{ x: number; y: number; r: number; color: string; 
 /** A hanging station sign: line bullets, a name and the depth figure in the accent colour. */
 export const Sign: React.FC<{ x: number; y: number; text: string; depth: string; bullets?: [string, string][]; accent: string; w?: number; k?: number }> = ({ x, y, text, depth, bullets = [], accent, w = 600, k = 1 }) => {
   const h = 96;
-  if (k <= 0) return null;
+  const near = useNear(y + h / 2);
+  if (k <= 0 || near <= 0) return null;
   return (
-    <g opacity={Math.min(1, k)} transform={k < 1 ? `translate(0 ${(1 - k) * -40})` : undefined}>
+    <g opacity={Math.min(1, k) * near} transform={k < 1 ? `translate(0 ${(1 - k) * -40})` : undefined}>
     <Legible x={x} y={y} w={w} h={h} size={46}>
       <Limb a={[x + 120, y - 70]} b={[x + 120, y]} w={8} color="#2a2a33" sw={3} />
       <Limb a={[x + w - 120, y - 70]} b={[x + w - 120, y]} w={8} color="#2a2a33" sw={3} />
@@ -339,7 +352,7 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
         ) : <g transform={`translate(${tx} 0)`}><Train x={0} y={yb} color={s.color ?? "#c9ced8"} stripe={s.stripe ?? "#6d6e76"} bullet={s.bullets?.[0]} road={road} /></g>}
       </g>
       <rect x={x0} y={yb - h} width={x1 - x0} height={h + 40} rx={26} fill="none" stroke={INK} strokeWidth={STROKE} />
-      <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
+      <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
     </g>
   );
 };
@@ -354,8 +367,8 @@ export const Chamber: React.FC<PieceProps> = ({ L, w, g }) => {
   const wallC = s.color ?? (type === "vault" ? "#3a3f52" : type === "bunker" ? "#4a4a3a" : "#2f3a34");
   const lamp = 0.5 + 0.5 * Math.sin(g * 0.3);
   const stampAt = L.at(s.stampOn), plansAt = L.at(s.plansOn);
-  const stamp = ramp(g, stampAt, stampAt + 8);
-  const plans = ramp(g, plansAt - 3, plansAt + 6);
+  const stamp = ramp(g, stampAt, stampAt + 8) * outro(w, g);
+  const plans = ramp(g, plansAt - 3, plansAt + 6) * outro(w, g);
   return (
     <g>
       <rect x={x0 - 14} y={yb - h - 14} width={x1 - x0 + 28} height={h + 40} rx={20} fill={shade(look.deep, 0.05)} />
@@ -382,8 +395,8 @@ export const Chamber: React.FC<PieceProps> = ({ L, w, g }) => {
       {has("bunks") ? [0, 1].map((i) => <g key={i}><Block x={160} y={yb - 110 - i * 120} w={360} h={40} fill="#6b705c" shadow="bottom" /><Limb a={[170, yb]} b={[170, yb - 250]} w={10} color="#555" sw={3} /><Limb a={[510, yb]} b={[510, yb - 250]} w={10} color="#555" sw={3} /></g>) : null}
       {has("desk") ? <g><Block x={600} y={yb - 110} w={260} h={30} fill="#8a5a3a" shadow="bottom" /><Block x={620} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /><Block x={820} y={yb - 80} w={20} h={80} fill="#6e4b35" shadow={false} sw={4} /></g> : null}
       {s.stamp ? <Legible x={170} y={yb - h + 26} w={260} h={110} size={66}><Tag x={170} y={yb - h + 26} w={260} h={110} text={s.stamp} bg={look.accent} k={stamp} rot={-4} /></Legible> : null}
-      {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land)} /> : null}
-      {!s.label && depthLabel(L, w) ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8)} rot={3} /></Legible> : null}
+      {s.label ? <Sign x={240} y={yb - h - 150} w={600} text={s.label.toUpperCase()} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} /> : null}
+      {!s.label && depthLabel(L, w) ? <Legible x={680} y={yb - h + 140} w={240} h={80} size={48}><Tag x={680} y={yb - h + 140} w={240} h={80} text={depthLabel(L, w)} bg={look.paper} k={ramp(g, L.land, L.land + 8) * outro(w, g)} rot={3} /></Legible> : null}
       {has("blueprint") && plans > 0 ? (
         // over the room's roof, or inside it when the room has a sign up there (it hid North End's depth, 2026-11-21)
         <g opacity={plans} transform={`${s.label ? "translate(-380 300) " : ""}rotate(6 760 ${yb - h - 60})`}>
@@ -418,7 +431,7 @@ export const Cavern: React.FC<PieceProps> = ({ L, w, g }) => {
           <g transform={`translate(${(i ? -1 : 1) * ((g * 4) % 400) - 200} 0)`}><Train x={0} y={yb} color={s.stripe ?? "#d6dbe4"} stripe={trains[i % trains.length]!} /></g>
         </g>
       ))}
-      <Sign x={240} y={yLow - 270} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
+      <Sign x={240} y={yLow - 270} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
     </g>
   );
 };
@@ -472,8 +485,9 @@ export const Foundation: React.FC<PieceProps> = ({ L, w, g }) => {
   const type = s.type ?? "piles";
   const n = s.count ?? (type === "caissons" ? 3 : 7);
   const c = s.color ?? "#b9b4a8";
-  const k = ramp(g, L.land - 10, L.land + 20);
+  const k = ramp(g, L.land - 10, L.land + 20) * outro(w, g);
   const yb = yTop + (yBot - yTop) * k;
+  const near = useNear(yBot + 60);
   return (
     <g>
       {type === "raft" ? (
@@ -484,7 +498,7 @@ export const Foundation: React.FC<PieceProps> = ({ L, w, g }) => {
         const wd = type === "caissons" ? 150 : 46;
         return <Block key={i} x={x - wd / 2} y={yTop} w={wd} h={Math.max(10, yb - yTop)} fill={c} r={type === "caissons" ? 20 : 4} shadow="right" sw={5} />;
       })}
-      {depthLabel(L, w) ? <Legible x={330} y={yBot + 20} w={420} h={96} size={57}><Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} /></Legible> : null}
+      {depthLabel(L, w) && near > 0 ? <g opacity={near}><Legible x={330} y={yBot + 20} w={420} h={96} size={57}><Tag x={330} y={yBot + 20} w={420} h={96} text={depthLabel(L, w)} bg={look.paper} k={k} rot={-2} /></Legible></g> : null}
       {s.label && k > 0 ? <g opacity={k}><Legible x={140} y={yBot + 140} w={800} h={60} size={46}><Txt x={540} y={yBot + 170} size={46} fill={look.paper} weight={800}>{s.label.toUpperCase()}</Txt></Legible></g> : null}
     </g>
   );
@@ -506,7 +520,7 @@ export const Water: React.FC<PieceProps> = ({ L, w, g }) => {
       {aquifer ? Array.from({ length: 70 }, (_, i) => { const gx = -200 + r() * 1480, gy = y0 + 20 + r() * (y1 - y0 - 40), gs = 14 + r() * 34; return <ellipse key={`g${i}`} cx={gx} cy={gy} rx={gs} ry={gs * 0.7} fill={i % 3 ? look.sand : look.gravel} stroke={INK} strokeWidth={4} opacity={0.9} />; }) : null}
       {drops.map(([x, ph, sz], i) => <circle key={i} cx={x} cy={y0 + ((ph + g / 90) % 1) * (y1 - y0)} r={sz} fill={shade(c, 0.5)} opacity={0.6} />)}
       {s.type === "sea" ? <rect x={-2400} y={y1 - 60} width={5900} height={60} fill={look.sand} stroke={INK} strokeWidth={STROKE} /> : null}
-      <Sign x={240} y={y0 + 120} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land)} />
+      <Sign x={240} y={y0 + 120} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
     </g>
   );
 };
@@ -515,7 +529,7 @@ export const Water: React.FC<PieceProps> = ({ L, w, g }) => {
 export const Deepest: React.FC<PieceProps> = ({ L, w, g }) => {
   const look = w.look;
   const y = w.Y(L.ft) + 210;
-  const k = ramp(g, L.land - 2, L.land + 10);
+  const k = ramp(g, L.land - 2, L.land + 10) * outro(w, g);
   if (k <= 0) return null;
   const pulse = 0.5 + 0.5 * Math.sin(g * 0.25);
   return (

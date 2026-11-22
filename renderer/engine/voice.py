@@ -50,12 +50,13 @@ def spoken(display: str, currency: str = "INR") -> str:
     if s[:1] in "-−" and len(s) > 1:   # '-$19,470' (a value that fell) → 'minus nineteen thousand … dollars'
         return "minus " + spoken(s[1:], currency)
     # a distance, area, height or depth ('4,300 km', '150 ft'), or a time ('90 s', '5 min'; Going Down, 2026-11-21)
-    m = re.fullmatch(r"([\d.,]+)\s*(km²|km|m|ft|s|min|tonnes)", s)
+    m = re.fullmatch(r"([\d.,]+)\s*(km²|km|m³/s|t/s|m|ft|s|min|tonnes)", s)
     if m:
         num = _trim(m.group(1).replace(",", ""))
         words = {"km²": ("square kilometre", "square kilometres"), "km": ("kilometre", "kilometres"), "m": ("metre", "metres"),
                  "ft": ("foot", "feet"), "s": ("second", "seconds"), "min": ("minute", "minutes"),
-                 "tonnes": ("tonne", "tonnes")}[m.group(2)]
+                 "tonnes": ("tonne", "tonnes"), "t/s": ("tonne a second", "tonnes a second"),
+                 "m³/s": ("cubic metre a second", "cubic metres a second")}[m.group(2)]
         return say_numbers(f"{num} {words[0] if num == '1' else words[1]}", indian=False)
     western = _western(s)
     if western is not None:

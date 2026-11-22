@@ -9,7 +9,10 @@ import type { Timeline } from "../contract/timeline";
 import { diveLook, type DiveLook } from "./looks";
 
 // "counter": draws nothing in the world; it only holds a beat's on-screen counter (the payoff's figure)
-export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest" | "counter";
+export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest" | "counter"
+  // added 2026-11-22 (more.tsx, owner: "the kit improves itself when making a video"): carved rooms, a pillared
+  // hall, a walkway or water passage, a pump room, water pouring in
+  | "room" | "hall" | "passage" | "pumps" | "pour";
 
 /** One piece of the world. Only the fields of its `kind` matter (README "Pieces"). */
 export interface LayerSpec {
@@ -19,7 +22,10 @@ export interface LayerSpec {
   label?: string;            // the words on its sign ("SHUTTLE", "M42", "MADISON")
   on?: string;               // the event its moment lands on (default: the beat's `on`)
   // surface
-  preset?: "station" | "tube" | "needle" | "stadium" | "tower" | "monument" | "bridge" | "dam" | "street";
+  preset?: "station" | "tube" | "needle" | "stadium" | "tower" | "monument" | "bridge" | "dam" | "street"
+    | "town" | "field" | "sea" | "mountain" | "pyramid" | "dome" | "arena";   // more.tsx, 2026-11-22
+  plate?: boolean;           // a readable name plate over the landmark (default on for the more.tsx presets)
+  people?: number;           // room / hall / passage: how many people move in it
   wall?: string; trim?: string; glass?: string; vehicle?: string;
   // tunnel / cavern
   type?: string;             // tunnel: subway | rail | road | utility; chamber: secret | vault | bunker | machine;

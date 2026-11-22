@@ -380,7 +380,9 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
 **T. Recipe work** (when backlog is full, or every ~5th run): add or improve a story recipe in a
 template's README with a checked example script (`generator/prompts/template_builder.md`). Video
 runs never change scene code; the improver agent may (scenes, cast, camera, design, new `maths`
-kinds), behind A/B flags (owner, 2026-10-17). Limited by settings:
+kinds), behind A/B flags (owner, 2026-10-17). Exception (owner, 2026-11-22): a channel drawn on a kit
+(`look.kits`, e.g. Going Down's dive kit) adds the pieces a topic needs during the video run, additively
+(`generator/prompts/routine.md` section 3c), so a missing piece never fails a video. Limited by settings:
 at most `templateWork.maxPerDay` runs a day (default 1) and no new templates past
 `templateWork.maxTemplates` (default 10). With `generationPaused` a run does nothing at all.
 
