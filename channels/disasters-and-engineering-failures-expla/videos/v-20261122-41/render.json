@@ -1,0 +1,119 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61847,
+  "duration_sec": 48,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "undertow",
+    "key": "A",
+    "bpm": 58
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why couldn't this Mississippi tanker stop?",
+        "start": 0.3,
+        "seconds": 2.45,
+        "window": 3.07,
+        "fill": 0.798
+      },
+      {
+        "scene": "rudder",
+        "text": "Its rudder had stuck to starboard. From then, it had 2 minutes.",
+        "start": 3.37,
+        "seconds": 4.01,
+        "window": 4.67,
+        "fill": 0.859
+      },
+      {
+        "scene": "steer",
+        "text": "A rudder throws the propeller's water to one side. So what does a stuck one do?",
+        "start": 8.03,
+        "seconds": 4.96,
+        "window": 5.6,
+        "fill": 0.886
+      },
+      {
+        "scene": "swing",
+        "text": "It keeps turning the ship. Why not just stop?",
+        "start": 13.63,
+        "seconds": 2.58,
+        "window": 3.2,
+        "fill": 0.806
+      },
+      {
+        "scene": "nobrake",
+        "text": "A ship has no brakes. Only engines in reverse and anchors, and a ship this size slides a long way.",
+        "start": 16.83,
+        "seconds": 6.7,
+        "window": 7.37,
+        "fill": 0.909
+      },
+      {
+        "scene": "hit",
+        "text": "2 minutes after the rudder stuck, it hit a docked riverboat with 190 people aboard.",
+        "start": 26.2,
+        "seconds": 5.62,
+        "window": 6.27,
+        "fill": 0.896
+      },
+      {
+        "scene": "capsize",
+        "text": "Then the riverboat rolled over. Slowly. It took 22 minutes.",
+        "start": 32.47,
+        "seconds": 4.34,
+        "window": 5.0,
+        "fill": 0.868
+      },
+      {
+        "scene": "board",
+        "text": "Why it stuck isn't known yet. The fast hit or the slow capsize: which surprised you more?",
+        "start": 37.47,
+        "seconds": 5.87,
+        "window": 6.53,
+        "fill": 0.899
+      },
+      {
+        "scene": "loop",
+        "text": "It all began with one rudder that would not turn.",
+        "start": 44.0,
+        "seconds": 2.92,
+        "window": 3.53,
+        "fill": 0.827
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -19.1,
+    "lufs": -16.9,
+    "music_under_voice_db": 21.7
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 5.916,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
