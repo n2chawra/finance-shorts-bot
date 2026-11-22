@@ -1,0 +1,229 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:40:20.814526+00:00",
+    "finishedAt": "2026-11-22T04:40:20.814526+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:40:29.787383+00:00",
+    "finishedAt": "2026-11-22T04:40:29.787383+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T04:41:16.098456+00:00",
+    "finishedAt": "2026-11-22T04:41:16.098456+00:00",
+    "notes": [
+      "unknown fact unit 'tonnes per second'; use one of year, rupees, rupees_lakh, rupees_crore, percent, count, count_lakh, count_crore, money, money_thousand, money_million, money_billion, money_trillion, count_thousand, count_million, count_billion, km, km2, m, ft, s, min, tonnes",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'The Giant Hidden Under a Field Near Tokyo' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T04:41:24.069678+00:00",
+    "finishedAt": "2026-11-22T04:41:24.069678+00:00",
+    "notes": [
+      "facts[4] (200 tonnes, 2025) is not one of the feed topic's facts; copy them exactly",
+      "the source line \"Data: MLIT Edogawa River Office · Wikipedia · Pacific Consultants (designer) / MLIT 'about 70 m' · May 2025\" is too wide for the frame (2640 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'MLIT Edogawa River Office'), one name per publisher",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'The Giant Hidden Under a Field Near Tokyo' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:42:11.844120+00:00",
+    "finishedAt": "2026-11-22T04:42:11.844120+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: 0 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'The Giant Hidden Under a Field Near Tokyo' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:42:49.870451+00:00",
+    "finishedAt": "2026-11-22T04:42:49.870451+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'The Giant Hidden Under a Field Near Tokyo' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:43:26.895249+00:00",
+    "finishedAt": "2026-11-22T04:43:26.895249+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'The Giant Hidden Under a Field Near Tokyo' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T04:43:55.436791+00:00",
+    "finishedAt": "2026-11-22T04:44:49.472294+00:00",
+    "notes": [
+      "1 of 6 stills are mostly empty background (at 5 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 45% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:44:52.584670+00:00",
+    "finishedAt": "2026-11-22T04:44:52.584670+00:00",
+    "notes": [
+      "All 5 facts confirmed on MLIT Edogawa River Office pages: 22 m tank depth, 59 pillars, 18 m pillar height (edogawa_hant00728, also 177x78x18 m tank); shafts about 70 m deep, 30 m wide (edogawa00404; Pacific Consultants URL now 301-redirects); channel 50 m below ground (MLIT English overview edogawa_index045, plus Wikipedia citing Water Technology). Verify list followed: MLIT 18 m used over Wikipedia's 25.4 m, 'about 70 m' said, 'outside Tokyo' said. No advice, no hedging problems; description ends with the channel disclaimer. Style note: the last line 'the field stays dry' is loose, since the channel protects the surrounding river basin rather than that field."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:45:27.582611+00:00",
+    "finishedAt": "2026-11-22T04:46:06.634706+00:00",
+    "notes": [
+      "25 s, mint/cinematic (preview only)",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 45% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T04:46:49.972092+00:00",
+    "finishedAt": "2026-11-22T04:46:49.972092+00:00",
+    "notes": [
+      "[script] 0.0s/24.6s + thumbnail: the line says 'a field outside Tokyo' but the place is four city buildings on a street, no field; the only name, 'G-CANS', is dark grey on a grey facade and unreadable, and the title and first sentence keep the name back ('something huge is hiding'), so a stranger on mute cannot say what this is about (check 6, lesson 1). Name G-Cans / Tokyo's flood channel in the first line and show the real surface (the field and the intake/control building) with a readable sign.",
+      "[script] 5.0s: the source card 'Data: MLIT Edogawa River Office · Wikipedia · Pacific Consultants · 2025' sits in a dark box over the pillars and over the 'Depths: MLIT, Wikipedia · not to scale' note (text on text); the hall itself is 5 pillar stubs cut off at the top edge with the rest of the frame empty soil and a lone '22 M' sign, no hall and no 59 pillars on screen. Show the pillared hall big (wide shot inside it) with the count on a thing in it.",
+      "[script] 10.0s: '18 m' is a floating black headline card ('EACH PILLAR 18 m') over the pillars instead of on a thing in the place (a height tape on a pillar, a sign); the leftover '22 M' sign repeats the previous beat (check D, figure as headline).",
+      "[script] 15.0s: 'Typhoons flood the rivers, and the water pours in here' over a thin tunnel strip in a mostly empty grey rock frame, no river, no typhoon, no water pouring in; most of the frame is flat background (checks 11, templated look).",
+      "[script] 20.0s: the 'Depths: MLIT, Wikipedia · not to scale' note is drawn on top of the TUNNEL 50 M sign (text on text); 'giant pumps' are never shown, the middle 60% of the frame is empty grey rock, and the caption 'and giant pumps throw' sits on the '70 m / 230 ft below' meter tag. Show the pumps and the water going back out on this line.",
+      "[scene] Dive kit, every beat: the 'Depths: ... not to scale' world note at the top is placed at a fixed y and collides with whatever layer/sign the camera lands on (5.0s source card, 20.0s tunnel sign); it needs to avoid signs or sit in a reserved strip.",
+      "[script] loop 24.6s -> 0.0s: the end frame shows pillars under the street while the opening frame shows plain soil, so the loop jumps visibly; land the ride-up on exactly frame 1."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:47:23.360526+00:00",
+    "finishedAt": "2026-11-22T04:47:23.360526+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:47:24.380517+00:00",
+    "finishedAt": "2026-11-22T04:47:24.380517+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:48:15.103746+00:00",
+    "finishedAt": "2026-11-22T04:48:15.103746+00:00",
+    "notes": [
+      "Re-review after the edits. New hook 'Under the streets outside Tokyo hides a giant flood channel' is accurate: the 50 m tunnel runs under National Route 16 (MLIT) in Saitama, just outside Tokyo. New loop line 'the streets above, outside Tokyo, stay dry' fits the channel's flood-protection role and fixes the earlier loose 'field' line. New title 'Tokyo's Giant Flood Tunnel: How Deep Does It Go?' is answered by the video's depths (22/50/about 70 m). The description ends with the channel disclaimer. Figures are unchanged and stay confirmed on MLIT pages (edogawa_hant00728, edogawa00404, edogawa_index045)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:48:03.753075+00:00",
+    "finishedAt": "2026-11-22T04:48:52.736528+00:00",
+    "notes": [
+      "25 s, mint/cinematic (preview only)",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:49:36.298125+00:00",
+    "finishedAt": "2026-11-22T04:50:19.033606+00:00",
+    "notes": [
+      "25 s, mint/cinematic (preview only)",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T04:50:39.119800+00:00",
+    "finishedAt": "2026-11-22T04:50:39.119800+00:00",
+    "notes": [
+      "[script] 20.0s (f00600): the caption 'and giant pumps throw' sits right on the pump room, the thing that line is about. 'throw' is grey on the grey pump wheels and can't be read, and the red/grey/blue pipes run through the caption words. Place the pump room above the caption band (a different zoom or layer depth on beat 4), so the pumps are seen clear of the words.",
+      "[script] 15.0s (f00450): the caption 'Typhoons flood the' is drawn over the FLOODWATER sign and its hanger posts, so text sits on text. Raise the floodwater layer, or its sign, out of the caption band on beat 3.",
+      "[scene] Dive kit, beat 4 at 20.0s: the world note 'Depths: MLIT, Wikipedia · not to scale' is drawn across the FLOODWATER sign at the top of the frame (text on text). This is the same fixed-y collision flagged before at the tunnel sign, and the kit needs to keep that note clear of signs.",
+      "[scene] Loop 24.9s -> 0.0s: the last frame shows the 7 pillars under the street, but frame 0 has none (the kit drives them in on their word), so the loop still jumps. The ride-up should end on frame 1 exactly (minor; the spoken loop works)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:51:34.705828+00:00",
+    "finishedAt": "2026-11-22T04:52:19.293727+00:00",
+    "notes": [
+      "25 s, mint/cinematic (preview only)",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T04:53:01.469390+00:00",
+    "finishedAt": "2026-11-22T04:53:39.576684+00:00",
+    "notes": [
+      "25 s, mint/cinematic (preview only)",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T04:54:01.660085+00:00",
+    "finishedAt": "2026-11-22T04:54:01.660085+00:00",
+    "notes": [
+      "[script] 20.0s (f00600), the payoff beat: the line is 'giant pumps throw it all back out', but no pump is on screen. The picture is a pebble-and-water band labelled SHAFT 70 M, and about 60% of the frame is plain grey rock (checks 11, picture doesn't match the line; templated look, mostly flat background). Either show the pumps clear of the caption band and the top note (another depth or zoom, or a pull-back so the pump room sits mid-frame), or rewrite the line to what the frame shows (the shaft dropping into its pool). Don't leave pumps in the words with none in the picture.",
+      "[script] 15.0s (f00450): 'Typhoons flood the rivers, and the water pours in here' plays over a dry-looking tunnel strip in mostly empty grey rock. There's no river, no typhoon and no water pouring in, apart from the tunnel's own blue line (check 11). Show water rushing into or along the tunnel on 'pours' (a bigger, closer tunnel shot), or cut the line down to what is drawn.",
+      "[scene] Loop 24.9s -> 0.0s (minor): the last frame shows the pillars under the street but frame 0 has none, so the picture jumps at the loop even though the spoken loop works."
+    ]
+  }
+]
