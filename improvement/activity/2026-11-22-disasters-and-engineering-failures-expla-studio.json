@@ -1,0 +1,34 @@
+{
+  "agent": "studio",
+  "day": "2026-11-22",
+  "startedAt": "2026-11-22T04:51:13Z",
+  "finishedAt": "2026-11-22T04:57:06Z",
+  "summary": "Disaster Desk long video not made: check-plan refuses the only long topic (Hyatt Regency walkways) because it names no winning Short, and this long-first channel has none. I added 16 sourced facts and a 7-chapter outline from the NBS report to the topic so the next run can script it at once.",
+  "decision": "blocked",
+  "why": "generator/topics.py winning_short() requires `from_short` (a Short with 100+ views in the top third by stayed to watch); the channel's only Short (v-20261121-42, Lac-M\u00e9gantic) has 0 views and a different subject; the new-channel exemption ended when it published on 21 Nov. Studio never changes code (agents/policy.md).",
+  "findings": [
+    {
+      "title": "from_short gate blocks long-first channels",
+      "detail": "check-plan: feed topic '2026-11-20-hyatt-walkways' can't be used: names no `from_short`. Every long topic on this channel will fail the same way until the rule exempts long-first channels."
+    },
+    {
+      "title": "NBS report read for the Hyatt topic",
+      "detail": "Added facts 9-24: 186 injured, 63 people on the walkways, 31% load at collapse, 302 kN expected vs 83 kN tested, 53% third floor, 7:04/7:08 timeline, 1,500-2,000 crowd, NBS arrival 21 Jul, 4 in rod offset, 8-inch channels, 8% dead load, opened 1980.",
+      "link": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Hyatt topic: facts and outline",
+      "detail": "channels/disasters-and-engineering-failures-expla/longform/topics.json",
+      "branch": "agent/studio/2026-11-22/disasters-and-engineering-failures-expla"
+    }
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [
+    {
+      "label": "Notification",
+      "url": "channels/disasters-and-engineering-failures-expla/notifications/studio.json"
+    }
+  ]
+}
