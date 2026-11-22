@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T22:20:54.970916+00:00",
+  "generatedAt": "2026-11-22T22:30:46.021622+00:00",
   "cycle": 2,
   "running": "promise-stays-in-hook-place",
   "thresholds": {
@@ -195,8 +195,8 @@
     "points": null,
     "pOnBetter": 0.5,
     "days": 1,
-    "verdict": "wait",
-    "why": "0 of 8 Shorts a side have two days of data; day 1 of 7",
+    "verdict": "revert",
+    "why": "QA/fact failures 25% with the change vs 0% without",
     "videos": [
       {
         "id": "v-20261122-03",
