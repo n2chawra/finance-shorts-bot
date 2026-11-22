@@ -325,5 +325,28 @@
     "notes": [
       "Manifest written; release asset not uploaded (dry run)."
     ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-22T00:17:48.166064+00:00",
+    "finishedAt": "2026-11-22T00:17:48.166064+00:00",
+    "notes": [
+      "topic category 'climate' was used in the last 3 videos",
+      "story 'what_if_world' was told in the last 1 videos",
+      "topic is too close to v-20261122-12 (\"What if all of Antarctica's ice melted?\", similarity 1.00) within 60 days",
+      "style.look is the same as v-20261122-12's (space, strip, box, pop): change at least one part",
+      "style.look.stage 'space' was used by the previous video (v-20261122-12)",
+      "style.look.header 'strip' was used by the previous video (v-20261122-12)",
+      "palette 'sky' was used by the previous video",
+      "music genre 'atlas' was used by the previous video",
+      "music key and tempo are identical to the previous video",
+      "hook style 'challenge' was used by the previous video",
+      "end CTA opens the same way as the previous video's",
+      "description opens with 'what if every', already used by v-20261122-12",
+      "shape 'the-meltdown' already exists: name it as a string, or give the new one another id",
+      "shape 'the-meltdown' was used in the last 3 videos: pick another, or invent one the topic needs",
+      "feed topic '2026-11-17-what-if-antarctica-melted' can't be used: an earlier video already used it"
+    ]
   }
 ]
