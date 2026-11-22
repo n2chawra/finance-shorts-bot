@@ -169,7 +169,9 @@
           "currency": "USD",
           "as_of": "2024-12-31",
           "source": "Toys n Playthings (Funko FY2025 results)",
-          "url": "https://www.toysnplaythings.media/funko-reports-2025-q4-and-full-year-results/"
+          "url": "https://www.toysnplaythings.media/funko-reports-2025-q4-and-full-year-results/",
+          "latest": true,
+          "checked": "2026-11-23"
         }
       ],
       "verify": [
@@ -2518,6 +2520,295 @@
       ],
       "found": "2026-11-22",
       "expires": "2027-02-20",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-23-kodak-brownie-1-short",
+      "format": "short",
+      "title": "Kodak Sold a Camera for $1. Then It Invented the One That Ended It",
+      "category": "photography",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "rise_fall_short"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Kodak Turned a $1 Camera Into a Fortune",
+        "views": 21418,
+        "url": "https://www.youtube.com/shorts/wqdPMPCX58w",
+        "channel": "Rise Fall Repeat",
+        "channelSubs": 19900,
+        "outlier": 1.08
+      },
+      "hook": "Kodak put a camera in every hand for one dollar, and then built the camera that took them all away.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The thing in your hand: a camera, and the film you paid for every roll. 1900: the Brownie sells for $1, film 15 cents a roll (Kodak's own milestones), so Kodak earns on every picture you take. 1975: a Kodak engineer, Steve Sasson, builds the first digital camera, the size of a toaster, 10,000 pixels. No film, so nothing to sell after the camera. 1988: 145,300 people work for Kodak. January 2012: Chapter 11, 18,800 left (AP). Payoff: 145,300 to 18,800. Global beat: the filing left Kodak's international operations out (AP).",
+      "why_now": "A camera and a roll of film the viewer's family held; a settled story told from Kodak's own milestones page and the AP report of the filing. Distinct from the long-video topic 2026-11-19-kodak-digital: this Short turns on the $1 camera and the 15-cent film.",
+      "facts": [
+        {
+          "label": "Price of the first Brownie camera",
+          "value": 1,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "1900-01-01",
+          "source": "Kodak (company milestones)",
+          "url": "https://www.kodak.com/en/company/page/milestones/",
+          "fixed": true
+        },
+        {
+          "label": "Price of a roll of Brownie film, in cents",
+          "value": 15,
+          "unit": "count",
+          "as_of": "1900-01-01",
+          "source": "Kodak (company milestones)",
+          "url": "https://www.kodak.com/en/company/page/milestones/",
+          "fixed": true
+        },
+        {
+          "label": "Year Kodak built the first digital camera",
+          "value": 1975,
+          "unit": "year",
+          "as_of": "1975-01-01",
+          "source": "Kodak (company milestones)",
+          "url": "https://www.kodak.com/en/company/page/milestones/",
+          "fixed": true
+        },
+        {
+          "label": "Pixels in that first digital camera's pictures",
+          "value": 10000,
+          "unit": "count",
+          "as_of": "1975-01-01",
+          "source": "Kodak (company milestones)",
+          "url": "https://www.kodak.com/en/company/page/milestones/",
+          "fixed": true
+        },
+        {
+          "label": "Kodak's worldwide payroll at its 1988 peak",
+          "value": 145300,
+          "unit": "count",
+          "as_of": "1988-12-31",
+          "source": "Associated Press (via The Daily Record)",
+          "url": "https://thedailyrecord.com/2012/01/19/former-trailblazer-kodak-files-for-chapter-11/",
+          "fixed": true
+        },
+        {
+          "label": "Kodak's worldwide payroll when it filed for Chapter 11",
+          "value": 18800,
+          "unit": "count",
+          "as_of": "2012-01-19",
+          "source": "Associated Press (via The Daily Record)",
+          "url": "https://thedailyrecord.com/2012/01/19/former-trailblazer-kodak-files-for-chapter-11/",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Chapter 11 filed 19 January 2012 in the Southern District of New York (AP)",
+        "Kodak's page gives 10,000 pixels (.01 megapixels); AP says 0.1 megapixels: use Kodak's own figure",
+        "Emerged from Chapter 11 on 3 September 2013 (Kodak milestones): say it, so the ending is accurate"
+      ],
+      "sources": [
+        "https://www.kodak.com/en/company/page/milestones/",
+        "https://thedailyrecord.com/2012/01/19/former-trailblazer-kodak-files-for-chapter-11/"
+      ],
+      "found": "2026-11-23",
+      "expires": "2027-02-21",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-23-toys-r-us-735-short",
+      "format": "short",
+      "title": "Toys R Us Had 735 Stores in America. It Closed Every One",
+      "category": "retail",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "rise_fall_short"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Toys R Us Went Bankrupt. So Why Is It Still Here?",
+        "views": 50580,
+        "url": "https://www.youtube.com/watch?v=36Of-rXVqoI",
+        "channel": "Bagholder Association",
+        "channelSubs": 10800,
+        "outlier": 4.68
+      },
+      "hook": "Toys R Us was where every birthday present came from, and in 2018 it closed every store it had in America.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The thing in your hand: the toy you unwrapped. September 2017: Toys R Us files for Chapter 11 with $5 billion in debt to repay. January 2018: it plans to close 180 stores. March 2018: it asks the court to liquidate all 735 U.S. stores, as many as 33,000 jobs (NBC News). It was about 10% of Mattel's and Hasbro's sales. Payoff: all 735. Global beat: the 100 U.K. stores closed too, while Canada, Central Europe and Asia were put up for sale.",
+      "why_now": "Bagholder's film (50.6K on 10.8K, 4.7x) is a niche breakout; a store the viewer visited as a child, told from NBC's report of the court filing. Short version of the long topic 2026-11-19-toys-r-us.",
+      "facts": [
+        {
+          "label": "Toys R Us U.S. stores being liquidated",
+          "value": 735,
+          "unit": "count",
+          "as_of": "2018-03-15",
+          "source": "NBC News",
+          "url": "https://www.nbcnews.com/business/consumer/game-over-bankrupt-toys-r-us-files-liquidation-n856831",
+          "fixed": true
+        },
+        {
+          "label": "U.S. jobs affected, as many as",
+          "value": 33000,
+          "unit": "count",
+          "as_of": "2018-03-15",
+          "source": "NBC News",
+          "url": "https://www.nbcnews.com/business/consumer/game-over-bankrupt-toys-r-us-files-liquidation-n856831",
+          "fixed": true
+        },
+        {
+          "label": "Debt Toys R Us had to repay",
+          "value": 5,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2018-03-15",
+          "source": "NBC News",
+          "url": "https://www.nbcnews.com/business/consumer/game-over-bankrupt-toys-r-us-files-liquidation-n856831",
+          "fixed": true
+        },
+        {
+          "label": "Stores it first planned to close in January 2018",
+          "value": 180,
+          "unit": "count",
+          "as_of": "2018-01-31",
+          "source": "NBC News",
+          "url": "https://www.nbcnews.com/business/consumer/game-over-bankrupt-toys-r-us-files-liquidation-n856831",
+          "fixed": true
+        },
+        {
+          "label": "Share of Mattel's and Hasbro's revenue from Toys R Us, about",
+          "value": 10,
+          "unit": "percent",
+          "as_of": "2018-03-15",
+          "source": "NBC News",
+          "url": "https://www.nbcnews.com/business/consumer/game-over-bankrupt-toys-r-us-files-liquidation-n856831",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Chapter 11 filed September 2017; liquidation sought March 2018 (NBC, 15 Mar 2018)",
+        "Say 'as many as 33,000' (NBC); CBS and CNN gave about 31,000",
+        "U.K. liquidation of 100 stores and the sale of other international units: CBS News (https://www.cbsnews.com/news/toys-r-us-shutting-u-s-stores-liquidating-inventory) or leave out",
+        "No claim that the brand is gone today: it was later revived, so end on 2018 or say it came back"
+      ],
+      "sources": [
+        "https://www.nbcnews.com/business/consumer/game-over-bankrupt-toys-r-us-files-liquidation-n856831"
+      ],
+      "found": "2026-11-23",
+      "expires": "2027-02-21",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-23-sears-mail-order-house-short",
+      "format": "short",
+      "title": "Sears Sold 70,000 Houses by Mail. Then It Couldn't Keep Its Stores",
+      "category": "homes",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "product_craze_short"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Sears was built",
+        "views": 90132,
+        "url": "https://www.youtube.com/shorts/FzyXzeM-y4o",
+        "channel": "Rise Fall Repeat",
+        "channelSubs": 19900,
+        "outlier": 4.53
+      },
+      "hook": "You could once order a whole house from the Sears catalog, and it came by train in 30,000 pieces.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The thing in your hand: the catalog. 1908 to 1940: Sears sells 70,000 to 75,000 mail-order homes in 447 styles, each kit 30,000 pieces by rail, one listed at $883 (CNBC). The store that could ship a house reached 4,000 stores in 2012; by May 2018 fewer than 900, and on 15 October 2018 it filed for Chapter 11 when a $134 million debt payment came due (PBS NewsHour / AP). Payoff: 4,000 to fewer than 900. Global beat: many of those kit houses still stand across the U.S.",
+      "why_now": "Rise Fall Repeat's 'How Sears was built' (90K on 19.9K, 4.5x) is one of its few Shorts to beat its channel; a catalog house is a thing people still live in. New subject for the channel.",
+      "facts": [
+        {
+          "label": "Mail-order homes Sears sold from 1908 to 1940, at least",
+          "value": 70000,
+          "unit": "count",
+          "as_of": "1940-12-31",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2017/03/24/remember-when-sears-sold-mail-order-homes.html",
+          "fixed": true
+        },
+        {
+          "label": "House styles in the Sears catalog",
+          "value": 447,
+          "unit": "count",
+          "as_of": "1940-12-31",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2017/03/24/remember-when-sears-sold-mail-order-homes.html",
+          "fixed": true
+        },
+        {
+          "label": "Pieces in a Sears house kit",
+          "value": 30000,
+          "unit": "count",
+          "as_of": "1940-12-31",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2017/03/24/remember-when-sears-sold-mail-order-homes.html",
+          "fixed": true
+        },
+        {
+          "label": "Catalog price of one Sears house shown",
+          "value": 883,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "1940-12-31",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2017/03/24/remember-when-sears-sold-mail-order-homes.html",
+          "fixed": true
+        },
+        {
+          "label": "Sears stores at the 2012 peak",
+          "value": 4000,
+          "unit": "count",
+          "as_of": "2012-12-31",
+          "source": "PBS NewsHour (AP)",
+          "url": "https://www.pbs.org/newshour/economy/sears-files-for-chapter-11-amid-plunging-sales-and-massive-debt",
+          "fixed": true
+        },
+        {
+          "label": "Sears stores in May 2018, fewer than",
+          "value": 900,
+          "unit": "count",
+          "as_of": "2018-05-31",
+          "source": "PBS NewsHour (AP)",
+          "url": "https://www.pbs.org/newshour/economy/sears-files-for-chapter-11-amid-plunging-sales-and-massive-debt",
+          "fixed": true
+        },
+        {
+          "label": "Debt payment due the day Sears filed",
+          "value": 134,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2018-10-15",
+          "source": "PBS NewsHour (AP)",
+          "url": "https://www.pbs.org/newshour/economy/sears-files-for-chapter-11-amid-plunging-sales-and-massive-debt",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "CNBC gives 70,000 to 75,000 homes: say 'more than 70,000' or 'about 70,000'",
+        "The 4,000-store 2012 peak counts Sears Holdings (Sears and Kmart) as PBS/AP reports it: say 'Sears had' only as PBS words it",
+        "Chapter 11 filed 15 October 2018 (PBS)"
+      ],
+      "sources": [
+        "https://www.cnbc.com/2017/03/24/remember-when-sears-sold-mail-order-homes.html",
+        "https://www.pbs.org/newshour/economy/sears-files-for-chapter-11-amid-plunging-sales-and-massive-debt"
+      ],
+      "found": "2026-11-23",
+      "expires": "2027-02-21",
       "status": "new"
     }
   ]
