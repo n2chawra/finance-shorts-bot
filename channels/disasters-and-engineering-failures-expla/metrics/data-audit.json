@@ -1,12 +1,11 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-21T16:14:44.297Z",
+  "generatedAt": "2026-11-22T16:27:25.806Z",
   "channel": "disasters-and-engineering-failures-expla",
-  "noData": "No video of this channel is on YouTube yet: nothing to compare.",
-  "youtubeChecked": false,
+  "youtubeChecked": true,
   "summary": {
-    "videos": 0,
-    "checked": 0,
+    "videos": 2,
+    "checked": 2,
     "error": 0,
     "warning": 0,
     "info": 0,
@@ -14,5 +13,49 @@
     "persistentErrors": 0
   },
   "issues": [],
-  "videos": []
+  "videos": [
+    {
+      "id": "L-20261121-42",
+      "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
+      "youtubeId": "mYr-5sprGUY",
+      "state": "scheduled",
+      "publishAt": "2026-11-22T17:17:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "private",
+        "views": 0,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261121-42",
+      "title": "How Did a Train With No One Aboard Reach Lac-Mégantic?",
+      "youtubeId": "_HwI147o_4o",
+      "state": "published",
+      "publishAt": "2026-11-21T17:47:00.000Z",
+      "dashboard": {
+        "views": 158,
+        "likes": 4,
+        "comments": 1,
+        "liveAt": "2026-11-22T14:45:03.682Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 157,
+        "likes": 4,
+        "comments": 1
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    }
+  ]
 }

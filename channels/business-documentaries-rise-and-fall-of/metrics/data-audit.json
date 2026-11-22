@@ -1,11 +1,11 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-21T16:14:44.297Z",
+  "generatedAt": "2026-11-22T16:27:25.806Z",
   "channel": "business-documentaries-rise-and-fall-of",
   "youtubeChecked": true,
   "summary": {
-    "videos": 8,
-    "checked": 4,
+    "videos": 11,
+    "checked": 6,
     "error": 0,
     "warning": 0,
     "info": 1,
@@ -16,23 +16,71 @@
     {
       "kind": "behind_youtube_stale",
       "severity": "info",
-      "videoId": "v-20261121-05",
-      "youtubeId": "V00suWwIJCE",
-      "detail": "Dashboard shows 6 views, YouTube 31; live counts last refreshed 158 min ago (they refresh while the dashboard is open)."
+      "videoId": "v-20261122-33",
+      "youtubeId": "DBbxHG_Cxt8",
+      "detail": "Dashboard shows 469 views, YouTube 679; live counts last refreshed 103 min ago (they refresh while the dashboard is open)."
     }
   ],
   "videos": [
     {
-      "id": "v-20261121-06",
-      "title": "One $4,500 Video Built Dollar Shave Club",
-      "youtubeId": "-3HETTrafYA",
+      "id": "v-20261122-32",
+      "title": "Toyota vs Mercedes: The Car Built to Steal Its Buyers",
+      "youtubeId": "20YVbsWTfbg",
       "state": "scheduled",
-      "publishAt": "2026-11-21T16:47:00.000Z",
+      "publishAt": "2026-11-22T16:47:00.000Z",
       "dashboard": null,
       "youtube": {
         "privacy": "private",
         "views": 0,
         "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261122-33",
+      "title": "Why Did Kids Love Tamagotchi, a Toy That Could Die?",
+      "youtubeId": "DBbxHG_Cxt8",
+      "state": "published",
+      "publishAt": "2026-11-22T12:17:00.000Z",
+      "dashboard": {
+        "views": 469,
+        "likes": 16,
+        "comments": 0,
+        "liveAt": "2026-11-22T14:44:37.272Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 679,
+        "likes": 27,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261121-06",
+      "title": "One $4,500 Video Built Dollar Shave Club",
+      "youtubeId": "-3HETTrafYA",
+      "state": "published",
+      "publishAt": "2026-11-21T16:47:00.000Z",
+      "dashboard": {
+        "views": 35,
+        "likes": 1,
+        "comments": 0,
+        "liveAt": "2026-11-22T14:44:37.272Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 35,
+        "likes": 1,
         "comments": 0
       },
       "analytics": {
@@ -48,14 +96,14 @@
       "state": "published",
       "publishAt": "2026-11-21T12:17:00.000Z",
       "dashboard": {
-        "views": 6,
-        "likes": 1,
+        "views": 46,
+        "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-21T13:37:08.019Z"
+        "liveAt": "2026-11-22T14:44:37.272Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 31,
+        "views": 46,
         "likes": 2,
         "comments": 0
       },
@@ -72,15 +120,15 @@
       "state": "published",
       "publishAt": "2026-11-20T16:47:00.000Z",
       "dashboard": {
-        "views": 8,
-        "likes": 0,
+        "views": 12,
+        "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-21T13:37:08.019Z"
+        "liveAt": "2026-11-22T14:44:37.272Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 11,
-        "likes": 1,
+        "views": 12,
+        "likes": 0,
         "comments": 0
       },
       "analytics": {
@@ -96,14 +144,14 @@
       "state": "published",
       "publishAt": "2026-11-20T12:17:00.000Z",
       "dashboard": {
-        "views": 1080,
+        "views": 1139,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-21T13:37:08.019Z"
+        "liveAt": "2026-11-22T14:44:37.272Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1129,
+        "views": 1138,
         "likes": 2,
         "comments": 0
       },
