@@ -4594,7 +4594,7 @@
       },
       "params": {
         "component": "Unit",
-        "place": "the cleared ground by the unit",
+        "place": "the trailers beside the unit",
         "camera": [
           {
             "sec": 0,
@@ -4608,33 +4608,35 @@
         "moments": [
           {
             "at": "change",
-            "what": "the camera rises over the cleared ground"
+            "what": "the camera moves along the trailers"
           },
           {
             "at": "report",
-            "what": "the empty pad catches the light"
+            "what": "the unit looms behind them"
           },
           {
             "at": "months",
-            "what": "the caption types on"
+            "what": "the light shifts across the siding"
           },
           {
             "at": "urgent",
-            "what": "the caption locks: urgent recommendations"
+            "what": "a CSB URGENT RECOMMENDATION tag pins over the trailers"
           }
         ],
         "things": [
-          "cleared ground",
+          "trailers",
           "unit",
-          "caption"
+          "recommendation tag"
         ],
-        "shot": "cleared",
-        "phase": "cleared",
+        "shot": "trailers",
         "chapter": "WHAT CHANGED",
-        "captionText": {
-          "at": "urgent",
-          "text": "CSB · URGENT RECOMMENDATIONS"
-        },
+        "labels": [
+          {
+            "at": "urgent",
+            "text": "CSB · URGENT RECOMMENDATION",
+            "target": "trailers"
+          }
+        ],
         "chapter_n": 7
       }
     },
@@ -4953,7 +4955,7 @@
           },
           {
             "at": "filled",
-            "what": "FILLED FOR HOURS pins to the tower top"
+            "what": "FILLED FOR HOURS pins to the tower"
           },
           {
             "at": "flare",
@@ -4968,7 +4970,7 @@
           "unit from above",
           "four tags"
         ],
-        "shot": "high",
+        "shot": "wide",
         "labels": [
           {
             "at": "gauge",
@@ -4978,7 +4980,7 @@
           {
             "at": "filled",
             "text": "FILLED FOR HOURS",
-            "target": "top"
+            "target": "tower"
           },
           {
             "at": "flare",
@@ -5085,8 +5087,8 @@
         "what": "the same lit pipework with one big time label telling the moment"
       }
     ],
-    "score": 8,
-    "why": "The subject of the most viewed hit, in our own lit 3D, with words that set up the title's twist; reads at phone size as a tall bright jet against a grey sky."
+    "score": 6,
+    "why": "The most viewed hit's subject, but our 3D reads pale and the jet small at feed size; QA preferred B."
   },
   "thumbnails": [
     {
@@ -5115,8 +5117,8 @@
           "what": "the liquid geyser erupting from the stack over the refinery's columns, sky behind"
         }
       ],
-      "score": 7,
-      "why": "Explains the whole story in one glance: calm green NORMAL beside a tower full to the top in red; less exciting than a 3D eruption."
+      "score": 8,
+      "why": "Clearest at small size and promises the title exactly: calm green NORMAL beside a tower full to the top in red."
     },
     {
       "layout": "custom",
@@ -5148,5 +5150,5 @@
       "why": "Credible and on-brand, but a page of text is harder to read small than the eruption or the gauges."
     }
   ],
-  "thumbnail_pick": "a"
+  "thumbnail_pick": "b"
 }

@@ -187,22 +187,39 @@ export const Trailer: React.FC<{ at: V3; rot?: number; crush?: number; lit?: num
   );
 };
 
-/** The diesel pickup truck, engine idling (exhaust puffs). */
+/** The diesel pickup truck, engine idling: a painted cab with glass, a bed with sides and a tailgate, tyres
+ * on rims, headlights, a bumper; exhaust puffs from the tailpipe; `spark` flashes at the engine. */
 export const Truck: React.FC<{ frame: number; spark?: number }> = ({ frame, spark = 0 }) => {
   const M = useMats();
   return (
     <group position={TRUCK} rotation-y={0.4}>
-      <mesh position={[-0.2, 0.42, 0]} material={M.red} castShadow><boxGeometry args={[0.6, 0.3, 0.5]} /></mesh>
-      <mesh position={[0.3, 0.36, 0]} material={M.red} castShadow><boxGeometry args={[0.42, 0.18, 0.5]} /></mesh>
-      {[-1, 1].map((s) => <mesh key={s} position={[0.3, 0.52, s * 0.23]} material={M.red}><boxGeometry args={[0.42, 0.16, 0.04]} /></mesh>)}
-      <mesh position={[0.5, 0.52, 0]} material={M.red}><boxGeometry args={[0.04, 0.16, 0.5]} /></mesh>
-      <mesh position={[-0.12, 0.72, 0]} material={M.red} castShadow><boxGeometry args={[0.42, 0.28, 0.48]} /></mesh>
-      {[-1, 1].map((s) => <mesh key={`l${s}`} position={[-0.51, 0.45, s * 0.17]} material={glow("#fff4d8", 0.8)}><boxGeometry args={[0.02, 0.06, 0.1]} /></mesh>)}
-      <mesh position={[-0.12, 0.74, 0]} material={M.glass}><boxGeometry args={[0.44, 0.2, 0.5]} /></mesh>
-      {[-0.32, 0.32].map((x) => [-1, 1].map((s) => <mesh key={`${x}${s}`} position={[x, 0.18, s * 0.26]} rotation-x={Math.PI / 2} material={M.dark}><cylinderGeometry args={[0.16, 0.16, 0.08, 14]} /></mesh>))}
-      <Smoke frame={frame} at={[0.55, 0.25, -0.2]} height={1.2} width={0.4} count={8} life={60} color="#6b6f74" opacity={0.35} wind={[0.4, 0.3, 0]} seed="exhaust" />
-      {spark > 0 && <pointLight position={[0.3, 0.5, 0]} intensity={8 * spark} distance={3} color="#ffd08a" />}
-      {spark > 0 && <mesh position={[0.3, 0.5, 0.26]} material={glow("#fff1c8", q(spark))}><sphereGeometry args={[0.08, 8, 8]} /></mesh>}
+      {/* chassis and cab */}
+      <mesh position={[0, 0.3, 0]} material={M.dark}><boxGeometry args={[1.25, 0.1, 0.46]} /></mesh>
+      <mesh position={[-0.38, 0.44, 0]} material={M.red} castShadow><boxGeometry args={[0.42, 0.22, 0.5]} /></mesh>
+      <mesh position={[-0.12, 0.62, 0]} material={M.red} castShadow><boxGeometry args={[0.36, 0.3, 0.5]} /></mesh>
+      <mesh position={[-0.12, 0.78, 0]} material={M.red}><boxGeometry args={[0.3, 0.04, 0.48]} /></mesh>
+      {[-1, 1].map((s) => <mesh key={s} position={[-0.12, 0.66, s * 0.252]} material={M.glass}><planeGeometry args={[0.3, 0.16]} /></mesh>)}
+      <mesh position={[-0.305, 0.66, 0]} rotation-y={Math.PI / 2} rotation-x={-0.25} material={M.glass}><planeGeometry args={[0.46, 0.18]} /></mesh>
+      {/* the bed */}
+      <mesh position={[0.32, 0.38, 0]} material={M.red} castShadow><boxGeometry args={[0.6, 0.06, 0.5]} /></mesh>
+      {[-1, 1].map((s) => <mesh key={`b${s}`} position={[0.32, 0.5, s * 0.235]} material={M.red}><boxGeometry args={[0.6, 0.2, 0.03]} /></mesh>)}
+      <mesh position={[0.61, 0.5, 0]} material={M.red}><boxGeometry args={[0.03, 0.2, 0.5]} /></mesh>
+      <mesh position={[0.32, 0.605, 0]} material={M.dark}><boxGeometry args={[0.6, 0.012, 0.5]} /></mesh>
+      {/* bumper, grille, lights */}
+      <mesh position={[-0.61, 0.33, 0]} material={M.steel}><boxGeometry args={[0.05, 0.08, 0.52]} /></mesh>
+      <mesh position={[-0.595, 0.46, 0]} material={M.dark}><planeGeometry args={[0.001, 0.001]} /></mesh>
+      {[-1, 1].map((s) => <mesh key={`l${s}`} position={[-0.592, 0.47, s * 0.18]} rotation-y={-Math.PI / 2} material={glow("#fff4d8", 0.85)}><circleGeometry args={[0.04, 12]} /></mesh>)}
+      {[-1, 1].map((s) => <mesh key={`t${s}`} position={[0.622, 0.5, s * 0.2]} rotation-y={Math.PI / 2} material={glow("#ff3b30", 0.6)}><planeGeometry args={[0.04, 0.08]} /></mesh>)}
+      {/* wheels: tyres on rims */}
+      {[-0.38, 0.36].map((x) => [-1, 1].map((s) => (
+        <group key={`${x}${s}`} position={[x, 0.16, s * 0.25]}>
+          <mesh rotation-x={Math.PI / 2} material={M.dark} castShadow><cylinderGeometry args={[0.15, 0.15, 0.1, 18]} /></mesh>
+          <mesh rotation-x={Math.PI / 2} position={[0, 0, s * 0.052]} material={M.steel}><cylinderGeometry args={[0.08, 0.08, 0.01, 14]} /></mesh>
+        </group>
+      )))}
+      <Smoke frame={frame} at={[0.6, 0.22, -0.18]} height={1.2} width={0.4} count={8} life={60} color="#55595e" opacity={0.4} wind={[0.4, 0.3, 0]} seed="exhaust" />
+      {spark > 0 && <pointLight position={[-0.4, 0.5, 0]} intensity={8 * spark} distance={3} color="#ffd08a" />}
+      {spark > 0 && <mesh position={[-0.4, 0.58, 0.26]} material={glow("#fff1c8", q(spark))}><sphereGeometry args={[0.07, 8, 8]} /></mesh>}
     </group>
   );
 };
@@ -307,9 +324,9 @@ export const Vapour: React.FC<{ frame: number; k: number }> = ({ frame, k }) => 
         const x = DRUM[0] + Math.cos(a) * d * 0.8, z = Math.sin(a) * d * 1.3;
         const s = (1.2 + rnd("vs", i) * 1.8) * (0.4 + 0.6 * k);
         return (
-          <mesh key={i} position={[x, 0.35 + 0.1 * Math.sin(frame / 20 + i), z]} scale={[s * 1.4, 0.35 * s, s]}>
+          <mesh key={i} position={[x, 0.12 + 0.04 * Math.sin(frame / 20 + i), z]} scale={[s * 1.4, 0.12 * s, s]}>
             <sphereGeometry args={[1, 16, 10]} />
-            <meshBasicMaterial color="#d8e2c0" transparent opacity={0.16} depthWrite={false} />
+            <meshBasicMaterial color="#b7c2a2" transparent opacity={0.12} depthWrite={false} />
           </mesh>
         );
       })}
