@@ -78,7 +78,7 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; p: Sc
     <g>
       <DrawBox x={DX - 110} y={700} w={220} h={240} k={ramp(t, flare ? 0 : e("drum"), 14)} fill="#2a1c10" color={L.label} />
       <DrawBox x={DX - 30} y={180} w={60} h={520} k={ramp(t, flare ? 0 : e("stack"), 20)} fill="#2a1c10" color={L.label} />
-      <MonoLabel x={DX + 140} y={820} t={t} at={flare ? 0 : e("drum")} text="BLOWDOWN DRUM" size={42} />
+      <MonoLabel x={DX - 140} y={820} t={t} at={flare ? 0 : e("drum")} text="BLOWDOWN DRUM" size={42} anchor="end" />
       <MonoLabel x={DX + 80} y={300} t={t} at={flare ? 0 : e("stack")} text="OPEN STACK" size={42} />
       <DrawLine x1={300} y1={880} x2={DX - 110} y2={880} k={1} color={L.line} w={12} />
       <MonoLabel x={300} y={840} t={t} at={0} text="FROM THE RELIEF VALVES" size={38} />

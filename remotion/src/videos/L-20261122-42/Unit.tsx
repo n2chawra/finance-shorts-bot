@@ -90,7 +90,7 @@ const Unit: React.FC<SceneProps> = (p) => {
       <Furnace burn={P.burners ? cue(t, e(P.burners), 20) : dawn ? 0 : 0.8} />
       {!after && !cleared && <Truck frame={t} spark={P.spark ? cue(t, e(P.spark), 4) * (0.6 + 0.4 * Math.sin(t)) : 0} />}
       <Geyser frame={t} k={geyser} />
-      <Vapour frame={t} k={cloud} />
+      <Vapour frame={t} k={P.shot === "truck" || P.shot === "truckclose" || P.shot === "spray" ? cloud * 0.4 : cloud} />
       <Blast k={blastK} />
       {phase === "blast" && <Debris at={[DRUM[0] + 1, 1, 3]} count={60} spread={2} dir={[0, 1, 0]} speed={4} size={0.12} start={0.05} seconds={2} slow={0.6} gravity={4} floor={0} kind="metal" seed="blast" progress={blastK} />}
       {(after || (phase === "blast" && blastK > 0.5)) && <Aftermath frame={t + 200} fire={P.fire || phase === "blast" ? 1 : 0.5} />}

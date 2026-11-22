@@ -145,8 +145,12 @@ export const Truck: React.FC<{ frame: number; spark?: number }> = ({ frame, spar
   const M = useMats();
   return (
     <group position={TRUCK} rotation-y={0.4}>
-      <mesh position={[0, 0.45, 0]} material={M.white} castShadow><boxGeometry args={[1.0, 0.35, 0.5]} /></mesh>
-      <mesh position={[-0.12, 0.72, 0]} material={M.white} castShadow><boxGeometry args={[0.42, 0.28, 0.48]} /></mesh>
+      <mesh position={[-0.2, 0.42, 0]} material={M.red} castShadow><boxGeometry args={[0.6, 0.3, 0.5]} /></mesh>
+      <mesh position={[0.3, 0.36, 0]} material={M.red} castShadow><boxGeometry args={[0.42, 0.18, 0.5]} /></mesh>
+      {[-1, 1].map((s) => <mesh key={s} position={[0.3, 0.52, s * 0.23]} material={M.red}><boxGeometry args={[0.42, 0.16, 0.04]} /></mesh>)}
+      <mesh position={[0.5, 0.52, 0]} material={M.red}><boxGeometry args={[0.04, 0.16, 0.5]} /></mesh>
+      <mesh position={[-0.12, 0.72, 0]} material={M.red} castShadow><boxGeometry args={[0.42, 0.28, 0.48]} /></mesh>
+      {[-1, 1].map((s) => <mesh key={`l${s}`} position={[-0.51, 0.45, s * 0.17]} material={glow("#fff4d8", 0.8)}><boxGeometry args={[0.02, 0.06, 0.1]} /></mesh>)}
       <mesh position={[-0.12, 0.74, 0]} material={M.glass}><boxGeometry args={[0.44, 0.2, 0.5]} /></mesh>
       {[-0.32, 0.32].map((x) => [-1, 1].map((s) => <mesh key={`${x}${s}`} position={[x, 0.18, s * 0.26]} rotation-x={Math.PI / 2} material={M.dark}><cylinderGeometry args={[0.16, 0.16, 0.08, 14]} /></mesh>))}
       <Smoke frame={frame} at={[0.55, 0.25, -0.2]} height={1.2} width={0.4} count={8} life={60} color="#6b6f74" opacity={0.35} wind={[0.4, 0.3, 0]} seed="exhaust" />

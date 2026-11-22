@@ -900,6 +900,12 @@
       "role": "level",
       "say": "At its heart stood the raffinate splitter, a distillation tower {fact7} feet tall.",
       "events": {
+        "stood": {
+          "word": "stood"
+        },
+        "distillation": {
+          "word": "distillation"
+        },
         "heart": {
           "word": "heart"
         },
@@ -924,6 +930,14 @@
           }
         ],
         "moments": [
+          {
+            "at": "stood",
+            "what": "the camera starts to tilt up"
+          },
+          {
+            "at": "distillation",
+            "what": "the tower name types on"
+          },
           {
             "at": "heart",
             "what": "the camera stands at the tower base"
@@ -3440,8 +3454,11 @@
       "id": "b-ignite",
       "scene": "directed",
       "role": "level",
-      "say": "The cloud ignited.",
+      "say": "Then, in an instant, the whole cloud ignited.",
       "events": {
+        "then": {
+          "word": "Then"
+        },
         "cloud": {
           "word": "cloud"
         },
@@ -3464,8 +3481,12 @@
         ],
         "moments": [
           {
-            "at": "cloud",
+            "at": "then",
             "what": "silence; the haze hangs still"
+          },
+          {
+            "at": "cloud",
+            "what": "the haze shimmers"
           },
           {
             "at": "ignited",
@@ -3489,7 +3510,7 @@
           "gain": 1.0
         }
       ],
-      "min_sec": 4.5
+      "min_sec": 4
     },
     {
       "id": "b-trailers",

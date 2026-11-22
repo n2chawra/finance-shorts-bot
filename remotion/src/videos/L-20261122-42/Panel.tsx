@@ -94,14 +94,19 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; p: Sc
     : [{ label: "MEETING", on: ramp(t, e("safety"), 10), color: L.label }, { label: "BOARD", on: 0.3, color: L.ok }, { label: "TOWER LEVEL", on: 0.15, color: L.ok }];
   return (
     <g>
-      <rect x={100} y={140} width={1720} height={820} rx={24} fill="#0a0d0b" stroke={L.line} strokeOpacity={0.35} strokeWidth={4} />
+      <rect x={100} y={140} width={1720} height={820} rx={24} fill="none" stroke={L.line} strokeOpacity={0.35} strokeWidth={4} />
+      {[0, 1, 2, 3].map((i) => (
+        <g key={i} transform={`translate(${180 + i * 420} 600)`}>
+          <rect width={360} height={200} rx={10} fill="#0b120e" stroke={L.line} strokeOpacity={0.6} strokeWidth={3} />
+          <polyline points={Array.from({ length: 12 }, (_, j) => `${20 + j * 29},${140 - 60 * Math.abs(Math.sin(j * 0.7 + i + t / 40))}`).join(" ")} fill="none" stroke={i === 1 ? L.label : L.ok} strokeWidth={4} />
+          <text x={20} y={34} fontFamily={L.fonts.mono} fontWeight={700} fontSize={30} fill={L.ink}>{["FEED", "TOWER", "FURNACE", "PRESSURE"][i]}</text>
+        </g>
+      ))}
       {lamps.map((l, i) => <Lamp key={i} x={420 + i * 540} y={420} on={l.on} color={l.color} label={l.label} t={t} />)}
       {mode === "alarms" && <circle cx={1500} cy={420} r={110} fill="none" stroke={L.fail} strokeWidth={9} pathLength={1} strokeDasharray={1} strokeDashoffset={1 - ramp(t, e("never"), 14)} />}
-      {mode === "alarms" && <TowerGauge x={1560} v={0.055 * ramp(t, e("range"), 10) + 0.01} color={L.ok} label="" t={t} dim />}
-      {mode === "three" && <rect x={760} y={680} width={400} height={180} rx={14} fill="#1d2226" stroke={L.line} strokeWidth={4} opacity={ramp(t, e("watching"), 10)} />}
-      {mode === "three" && <MonoLabel x={960} y={790} t={t} at={e("console")} text="ONE OPERATOR" size={44} anchor="middle" color={L.label} />}
-      {mode === "supervisor" && <MonoLabel x={960} y={760} t={t} at={e("place")} text="NO TRAINED STAND-IN" size={52} anchor="middle" color={L.fail} box />}
-      {mode === "meeting" && <MonoLabel x={960} y={760} t={t} at={e("room")} text="SAFETY MEETING · CONTROL ROOM" size={48} anchor="middle" color={L.label} box />}
+                  {mode === "three" && <MonoLabel x={960} y={900} t={t} at={e("console")} text="ONE OPERATOR" size={44} anchor="middle" color={L.label} />}
+      {mode === "supervisor" && <MonoLabel x={960} y={900} t={t} at={e("place")} text="NO TRAINED STAND-IN" size={52} anchor="middle" color={L.fail} box />}
+      {mode === "meeting" && <MonoLabel x={960} y={900} t={t} at={e("room")} text="SAFETY MEETING · CONTROL ROOM" size={48} anchor="middle" color={L.label} box />}
     </g>
   );
 };
