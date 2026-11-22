@@ -44,11 +44,23 @@ MAX_OPEN = 30       # at most this many open topics per feed; the lowest scores 
 AGE_PENALTY = 0.03  # score lost per day since found (a 21-day-old topic loses 0.63, about a 4x smaller reference)
 
 
-def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+def _read(root: Path, fmt: str) -> list[dict]:
     path = cpath(root, FILES[fmt])
     if not path.is_file():
         return []
     return [t for t in json.loads(path.read_text(encoding="utf-8")).get("topics", []) if isinstance(t, dict) and t.get("id")]
+
+
+def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+    """A format's feed. The long feed also offers the research feed's `"format": "long"` topics (2026-11-22: the
+    new channels' setups put 13-18 sourced long topics there, while Studio's state read only longform/topics.json,
+    which held one; research proposals long-topics-feed-gap and dd-research-topics-format-long). Scout's entry
+    wins when both have the same id."""
+    own = _read(root, fmt)
+    if fmt != "long":
+        return own
+    ids = {t["id"] for t in own}
+    return own + [t for t in _read(root, "short") if t.get("format") == "long" and t["id"] not in ids]
 
 
 def get(feed_id: str, root: Path = ROOT, fmt: str | None = None) -> dict | None:
