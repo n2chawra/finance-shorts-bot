@@ -1,0 +1,320 @@
+{
+  "id": "v-20261122-31",
+  "createdAt": "2026-11-22T01:02:10.505586+00:00",
+  "status": "failed",
+  "failReason": "QA review failed after 3 rounds: the turn beat's polaroids row (doc PolaroidRow) lands in a Short's caption band, so the big captions cover the print captions; all other notes were fixed",
+  "template": "short_story",
+  "topic": {
+    "title": "Toyota Built 450 Prototypes Before Anyone Heard of Lexus",
+    "category": "cars",
+    "reach": "global",
+    "feed_id": "2026-11-22-lexus-450-prototypes"
+  },
+  "title": "Toyota vs Mercedes: The Car Built to Steal Its Buyers",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:39:33.776453+00:00",
+      "finishedAt": "2026-11-22T00:39:33.776453+00:00",
+      "notes": [
+        "story 'founder_bet' was told in the last 1 videos",
+        "music genre 'dossier' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:39:41.773506+00:00",
+      "finishedAt": "2026-11-22T00:39:41.773506+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:41:32.663216+00:00",
+      "finishedAt": "2026-11-22T00:41:32.663216+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:51:53.662293+00:00",
+      "finishedAt": "2026-11-22T00:51:53.662293+00:00",
+      "notes": [
+        "beat 'hook'.params.place[0] contains a typed number; use a placeholder: 'a 1985 Toyota Cressida at the kerb'",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:51:57.934661+00:00",
+      "finishedAt": "2026-11-22T00:51:57.934661+00:00",
+      "notes": [
+        "beat 'leaving'.params.things[2] contains a typed number; use a placeholder: 'BMW 7 Series'",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:52:04.334663+00:00",
+      "finishedAt": "2026-11-22T00:52:04.334663+00:00",
+      "notes": [
+        "beat 'secret'.params.moments[0].at contains a typed number; use a placeholder: '1984'",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:52:09.283794+00:00",
+      "finishedAt": "2026-11-22T00:52:09.283794+00:00",
+      "notes": [
+        "beat 'secret'.say contains a typed number; use a placeholder: 'So in 1984, Toyota started a secret project: a luxury car to win them back.'",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:52:19.261155+00:00",
+      "finishedAt": "2026-11-22T00:52:19.261155+00:00",
+      "notes": [
+        "beat 'turn': params.overlays[0].out 'september' is not one of this beat's events (name the word in `events` first)",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:52:23.027835+00:00",
+      "finishedAt": "2026-11-22T00:52:23.027835+00:00",
+      "notes": [
+        "doc video: commons-photo-tmc-headquarters-building-toyota-cho-toyota-2019-43d2ef04.jpg is shown 2 times: a Short shows each picture once (the last beat may repeat the opening picture for the loop); fetch another",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:52:27.646731+00:00",
+      "finishedAt": "2026-11-22T00:52:27.646731+00:00",
+      "notes": [
+        "description mentions '75', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:52:31.598645+00:00",
+      "finishedAt": "2026-11-22T00:52:31.598645+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:53:13.871076+00:00",
+      "finishedAt": "2026-11-22T00:53:13.871076+00:00",
+      "notes": [
+        "All 6 facts confirmed on their source pages: Toyota 75-years history (development began 1984 under Circle-F, ~6 years, ~450 prototypes, >3.5M km tests, US Lexus network Sept 1989, buyers moving to Mercedes/BMW); Jalopnik 11 Jul 2026 ($1 billion, attributed on screen and voiced as 'about'); Motoring Research ($35,000 launch price, 16,000 forecast hit by end of 1989). Verify items met: six years/Sept 1989 matches Toyota, no outsold-Mercedes claim, $1B attributed to Jalopnik. Description ends with the disclaimer; no advice, tone journalistic. Notes: the 'secret' beat's document card shows paraphrased lines styled as Toyota's history page (not verbatim) - consider wording closer to the source; the ending's 'both came from people who once drove a Toyota' is loose rhetoric."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:52:44.408891+00:00",
+      "finishedAt": "2026-11-22T00:53:42.258216+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 30 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:54:11.287292+00:00",
+      "finishedAt": "2026-11-22T00:54:11.287292+00:00",
+      "notes": [
+        "doc video: the video uses 2 device kinds (document, montage); use at least 3 of document, headline, chart, timeline, split, map, polaroids, products, listing, ticker, sink, donut, montage, depth: photos, count-ups and the poster alone read as a slideshow",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:54:23.050296+00:00",
+      "finishedAt": "2026-11-22T00:54:23.050296+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:54:30.745447+00:00",
+      "finishedAt": "2026-11-22T00:54:53.594737+00:00",
+      "notes": [
+        "45 s, ocean/ledger (preview only)",
+        "note: the turn starts at 48% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:55:08.632044+00:00",
+      "finishedAt": "2026-11-22T00:55:08.632044+00:00",
+      "notes": [
+        "Re-review of revised beats: hook Toyota/Mercedes split (Mercedes wins, matches Toyota history that buyers moving up switched to Mercedes/BMW); forecast beat label '16,000 cars, the forecast, hit' with 1989-12-31 date matches Motoring Research ('by the end of 1989, Lexus had hit its forecast of 16,000 sales'); new ending 'the Lexus was built by Toyota' is true (Lexus is Toyota's luxury brand) and fixes the earlier loose line. Facts unchanged and confirmed in the first review. Note: the forecast beat's showroom photo is a Lexus dealership in Setagaya, Tokyo, on a US-1989 beat; no location is claimed on screen, but a US or neutral showroom would fit better."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:56:25.829205+00:00",
+      "finishedAt": "2026-11-22T00:56:25.829205+00:00",
+      "notes": [
+        "[script] 0.0-3.3 s (hook, split layer): rightAt 'mercedes' leaves the bottom half of the frame plain dark background for the whole first sentence (frames 3, 30, 60 show only the Cressida on top and the caption on empty navy), and frame 0 is fully black before the Toyota fades in. Show the Mercedes side from the start (rightAt 'start'; keep win at 'mercedes') so the first frame is Toyota vs Mercedes, full.",
+        "[script] 10.0 s (secret beat): the SECRET stamp at pos [0.5, 0.28] lands on the date overlay; 'JAN 1, 1984 / TOYOTA CITY, JAPAN' is half-covered and hard to read. Move the stamp lower (e.g. pos y 0.45) or end the date at 'secret'.",
+        "[scene] ~17.3 s (cost beat, label count-up of fact4 $1B): the count-up is formatted in whole billions, so it shows '$0B' as the figure for half its run (frame 520), a broken number on screen; by the 20.0 s still the figure has gone. The count-up should count in M below 1B (or slam the final value). Script workaround: no count-up on this label.",
+        "[script] 28-34 s (forecast beat): 'But that is not the surprising number.' (and the 'NOT THIS' stamp) announces what is coming (check 7b); cut it and go straight to the 450 prototypes."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:57:26.511765+00:00",
+      "finishedAt": "2026-11-22T00:57:26.511765+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:57:34.941574+00:00",
+      "finishedAt": "2026-11-22T00:58:04.077463+00:00",
+      "notes": [
+        "text 'the S-Class' at 2.6 s reaches 1851 px, inside the bottom 120 px",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:58:08.861461+00:00",
+      "finishedAt": "2026-11-22T00:58:08.861461+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:58:09.964638+00:00",
+      "finishedAt": "2026-11-22T00:58:31.544438+00:00",
+      "notes": [
+        "text 'Mercedes-Benz' at 2.6 s reaches 1850 px, inside the bottom 120 px",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:58:52.632822+00:00",
+      "finishedAt": "2026-11-22T00:58:52.632822+00:00",
+      "notes": [
+        "[script] 2.6 s (hook split): render.json layout_problems is not empty: the Mercedes side's sub 'the S-Class' reaches 1851 px, inside the bottom 120 px now that the right half shows from the start. Drop the right side's sub (the name 'Mercedes-Benz' is enough) or shorten the split's text so nothing sits in the bottom zone.",
+        "[script] 38.1-43 s (ending, Lexus of Madison photo): the replacement showroom shows no Lexus at all. The crop is an oversaturated cyan sky, a tree and a row of anonymous cars; no sign, badge or car you could name as a Lexus (frames 1155 and 1200). The 'Lexus?' and 'Or Mercedes?' stamps sit on a picture that doesn't show either badge, and the line asks 'which badge'. Use a photo where the Lexus badge or dealer sign reads (the earlier emblem was fine; a different emblem shot from the 25 s one, or an LS 400 front).",
+        "[script] 17-22 s (cost beat): the $1B figure is now a small white tag ('$1B / the bill, about', about 40 px, upper left of the Toyota badge; frames 560, 600, 620). It is tiny next to the 3.5M slam two beats earlier and easy to miss. Show it as the beat's big figure (like the testing beat's 3.5M), not as a corner label."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:58:55.189868+00:00",
+      "finishedAt": "2026-11-22T00:58:55.189868+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:58:58.454317+00:00",
+      "finishedAt": "2026-11-22T00:59:19.020328+00:00",
+      "notes": [
+        "44 s, ocean/ledger (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:59:27.790781+00:00",
+      "finishedAt": "2026-11-22T00:59:27.790781+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:59:28.928795+00:00",
+      "finishedAt": "2026-11-22T00:59:55.106190+00:00",
+      "notes": [
+        "44 s, ocean/ledger (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T01:00:19.129703+00:00",
+      "finishedAt": "2026-11-22T01:00:19.129703+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Toyota vs Mercedes: The Car Built to Steal Its Buyers' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T01:00:20.060889+00:00",
+      "finishedAt": "2026-11-22T01:00:43.168367+00:00",
+      "notes": [
+        "44 s, ocean/ledger (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T01:01:25.602888+00:00",
+      "finishedAt": "2026-11-22T01:01:25.602888+00:00",
+      "notes": [
+        "[script] 25.5-28.3 s (turn beat, polaroids): the two LS 400 polaroids are one small row at caption height on a mostly empty brown desk (frames 770, 815). The big captions ('IN AMERICA', 'AT $35,000 A') sit right on the prints' bottom edge and cover their handwritten caption 'The first Lexus'. Text over text, and the cars are small in a frame that is two-thirds flat desk. Replace the polaroids with one full-frame photo of the LS 400 (or a photo layer with frame 'polaroid' and pos in the upper half, big), keeping the date and the {fact5} label.",
+        "[scene] PolaroidRow (doc kit): a single row of two prints in a Short lands at the captions' height, so the row's captions always collide with the big directed captions. It should sit above the caption band (or need two rows, as its README says)."
+      ]
+    }
+  ]
+}
