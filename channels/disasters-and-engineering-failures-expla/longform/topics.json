@@ -340,6 +340,333 @@
         "7 What changed: Missouri board revoked two engineers' licences (gross negligence, misconduct); ASCE Oct 1985 policy: the engineer of record is responsible for all steel design including connections; payoff: they fell at 31% of what the code expected; ask: which link should have been caught first?"
       ],
       "studio_note": "2026-11-22: studio could not start this topic: check-plan refuses a long topic without `from_short`, and this long-first channel's only Short (Lac-Mégantic promo, 0 views) can't qualify. Facts 9-24 and the outline were added from the NBS report so the next run can go straight to the script."
+    },
+    {
+      "id": "2026-11-20-texas-city-refinery-long",
+      "format": "long",
+      "title": "The Gauge Said Normal. The Tower Was Nearly Full.",
+      "category": "industrial",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "maritime_industrial"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "family": "Ship sinking / maritime, industrial",
+        "url": "https://www.youtube.com/watch?v=QCzC7H1HttY",
+        "note": "0.93-0.99x, 11-13% hits (advice.md)"
+      },
+      "hook": "The gauge said the tower's level was fine. It was filling to the top.",
+      "templates": [
+        "any"
+      ],
+      "cause_chain": [
+        "During start-up, operators fill the raffinate splitter tower far above its normal level; the level reading is wrong",
+        "The tower overfills and over-pressurises; relief valves send liquid to an old blowdown drum",
+        "The drum vents straight to the air through a stack; a 1992 OSHA citation about a similar drum was dropped and it was never tied to a flare",
+        "Flammable liquid erupts from the stack, forms a vapour cloud and ignites among contractors' trailers parked nearby"
+      ],
+      "rule_after": "CSB urgent recommendations (25 Oct 2005): API to write new guidelines so occupied trailers sit safely away from hazardous process areas (API agreed), and an industry safety alert; final report Mar 2007 on blowdown stacks, alarms and fatigue.",
+      "human_moment": "The 15 who died were contract workers in or near trailers placed close to the unit for convenience.",
+      "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+      "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+      "facts": [
+        {
+          "label": "Year of the explosion",
+          "value": 2005,
+          "unit": "year",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+          "fixed": true
+        },
+        {
+          "label": "People killed",
+          "value": 15,
+          "unit": "count",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+          "fixed": true
+        },
+        {
+          "label": "People injured",
+          "value": 180,
+          "unit": "count",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+          "fixed": true
+        },
+        {
+          "label": "Gallons of flammable liquid sent to the blowdown drum",
+          "value": 51900,
+          "unit": "count",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Trailers totally destroyed",
+          "value": 13,
+          "unit": "count",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Farthest distance a trailer occupant was injured, feet",
+          "value": 479,
+          "unit": "count",
+          "as_of": "2006-06-30",
+          "source": "CSB",
+          "url": "https://www.csb.gov/csb-releases-trailer-blast-damage-information-from-bp-texas-city-accident/",
+          "fixed": true
+        },
+        {
+          "label": "Height of the raffinate splitter tower, feet (170-foot tall tower)",
+          "value": 170,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "The level transmitter measured only within the bottom this many feet of the tower",
+          "value": 9,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Actual liquid level in the tower at 11:16 a.m., feet",
+          "value": 67,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Actual liquid level in the tower at 11:50 a.m., feet",
+          "value": 98,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Actual liquid level in the tower at 12:42 p.m., feet",
+          "value": 140,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Actual liquid level in the tower at 1:04 p.m., feet",
+          "value": 158,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Level transmitter reading at 1:04 p.m., percent (shown as 7.9 ft)",
+          "value": 78,
+          "unit": "percent",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Hours liquid was pumped into the tower without any removed (over three hours)",
+          "value": 3,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Pressure at the bottom of the overhead pipe before the overfill, psi (about)",
+          "value": 21,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Pressure at the bottom of the overhead pipe as it filled with liquid, psi (about)",
+          "value": 64,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Feet below the top of the tower where the relief valves sat (148 feet)",
+          "value": 148,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Minutes the three pressure relief valves stayed open",
+          "value": 6,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Height of the blowdown stack, feet (113-foot tall stack)",
+          "value": 113,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Distance of the idling diesel pickup truck from the blowdown drum, feet (about)",
+          "value": 25,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Closest distance trailers had been sited from the blowdown drum, feet",
+          "value": 121,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Consecutive days ISOM operators had worked 12-hour shifts (29 or more)",
+          "value": 29,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "People ordered to shelter in place",
+          "value": 43000,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Day of March 2005 of the explosion",
+          "value": 23,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Hour of the explosion (p.m.), 1:20 p.m.",
+          "value": 1,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past the hour of the explosion (1:20 p.m.)",
+          "value": 20,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Trailers damaged (more than 40)",
+          "value": 40,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Year OSHA cited a similar blowdown drum and stack as unsafe (citation later withdrawn)",
+          "value": 1992,
+          "unit": "year",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Earlier start-ups (of those studied) in which the liquid level rose beyond the transmitter's range",
+          "value": 15,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Raffinate splitter start-ups studied by the CSB (including 23 March 2005)",
+          "value": 19,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Level the start-up procedure said to fill the tower to, percent on the transmitter (6.5 feet)",
+          "value": 50,
+          "unit": "percent",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Eva Rowe (lost both parents, pushed for BP documents) as a named human moment: confirm in two outlets",
+        "Name the trailer guidance (API RP 753) only after checking",
+        "Added by studio 2026-11-22 from the CSB final report (Mar 2007): sec 1.1, 1.3, key findings, timeline table, sec 2.2.5, trailer damage, 1.7.2.2 (urgent recommendation to API, Oct 25 2005)"
+      ],
+      "sources": [
+        "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+        "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-05-19",
+      "status": "new",
+      "promo_short": true,
+      "search": "bp texas city refinery explosion"
     }
   ]
 }
