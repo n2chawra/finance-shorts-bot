@@ -1,0 +1,18 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-22",
+  "startedAt": "2026-11-22T17:32:25Z",
+  "finishedAt": "2026-11-22T17:59:42Z",
+  "summary": "Sunday bug hunt: tsc, lint, build and every smoke test pass, all pages are clean on the six live channels, and the live site is up. The Calendar's day chips no longer cut off likes and times.",
+  "decision": "acted",
+  "why": "Reviewing the Calendar page turned up a measured layout bug: published chips needed 86-93 px in an 81 px day at 1440 px, and every chip was squeezed to 21-58 px at 1024-1280 px. It was small and testable, so it is fixed in one commit with a smoke test that failed before the fix.",
+  "findings": [
+    {"title": "Calendar chips clipped likes and times", "detail": "\"12.1K ♡62…\" and \"2… LONG\" at 1440 px, unreadable at 1024-1280 px. Fixed."},
+    {"title": "No owner notes for the dashboard", "detail": "The open Disasters note (long-video hook) was already handed to Studio."}
+  ],
+  "changes": [
+    {"title": "Calendar day chips fit their day", "detail": "Tighter chips, whole times, long videos marked with the legend's dash, 'Long' and 'empty' only when they fit; days too narrow show the phone's marks. Smoke test added.", "branch": "agent/dashboard/2026-11-22"}
+  ],
+  "nextCheck": "2026-11-29",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-22.md"}]
+}
