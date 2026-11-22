@@ -90,7 +90,7 @@ const Diagram: React.FC<SceneProps> = (p) => {
   const e = (n: string) => ev[n] ?? 1e9;
   const drift = t / Math.max(1, m.end);
   return (
-    <Sheet t={t} marks={Object.values(ev)} zoom={1.02 + 0.06 * drift} cx={960 + 20 * drift} cy={540} html={<HonestyTag t={t} tag="principle" at={0} sub="forces simplified" />}>
+    <Sheet t={t} marks={Object.values(ev)} zoom={1.18 + 0.08 * drift} cx={960 + 20 * drift} cy={560} html={<HonestyTag t={t} tag="principle" at={0} sub="forces simplified" />}>
       <Inner t={t} e={e} mode={mode} inch={figOf(p, "inch")} />
     </Sheet>
   );

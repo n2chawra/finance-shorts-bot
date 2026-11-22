@@ -40,7 +40,7 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; year:
       </g>
     );
   }
-  const card = mode === "policy" ? ramp(t, e("society"), 16) : 1;
+  const card = mode === "policy" ? 0.35 + 0.65 * ramp(t, e("society"), 16) : 1;
   const hi = mode === "eor" ? ramp(t, e("engineer"), 24) : 0;
   const under = mode === "eor" ? ramp(t, e("connections"), 14) : 0;
   return (
@@ -56,7 +56,7 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; year:
       <text x={440} y={745} fontFamily={L.fonts.body} fontSize={48} fill="#1d2b2a">for all steel design, connections included.</text>
       <line x1={985} y1={760} x2={985 + 300 * under} y2={760} stroke="#d0251b" strokeWidth={7} strokeLinecap="round" />
       {Array.from({ length: 3 }, (_, i) => <rect key={i} x={440} y={830 + i * 46} width={940 - (i % 2) * 220} height={14} fill="#c9c6bb" />)}
-      <text x={440} y={975} fontFamily={L.fonts.mono} fontSize={28} fill="#6b6b6b">Policy adopted by the ASCE Board of Direction (paraphrased)</text>
+      <text x={440} y={975} fontFamily={L.fonts.mono} fontSize={32} fill="#6b6b6b">ASCE Board of Direction policy (paraphrased)</text>
     </g>
   );
 };

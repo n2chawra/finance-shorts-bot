@@ -7,8 +7,8 @@
 import React from "react";
 import type { SceneProps } from "../../scenes/kit";
 import { countText, motion } from "../../flat/kit";
-import { LoadGauge, MissionClock, MonoLabel, useDisasterLook } from "../../disaster/index";
-import { ramp, Sheet } from "./elev";
+import { MissionClock, MonoLabel, useDisasterLook } from "../../disaster/index";
+import { BigGauge, ramp, Sheet } from "./elev";
 import { figOf, moments } from "./ui";
 
 type Params = { mode?: string };
@@ -38,7 +38,7 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; p: Sc
   const crowd = mode === "arrive" ? 0.15 + 0.5 * ramp(t, e("arriving"), 60) : 0.9;
   const pulse = mode === "band" ? 0.75 + 0.25 * Math.sin(t / 3) * ramp(t, e("contest"), 8) : crowd;
   const sweep = mode === "redout" ? (t / 30) * 60 : 0;
-  const showClock = mode !== "arrive" && mode !== "gauge";
+  const showClock = mode === "band" || mode === "call";
   const pct = parseFloat(figOf(p, "pct")) || 0;
   return (
     <g>
@@ -52,11 +52,12 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; p: Sc
           <Lamp x={470} y={640} on={ramp(t, e("afternoon"), 12)} color="#ffd84a" label="AFTERNOON" t={t} />
         </g>
       )}
+      {mode === "redout" && <text x={160} y={420} fontFamily={L.fonts.value} fontSize={150} fill={red > 0.5 ? L.fail : L.ink}>{red > 0.5 ? "FAILURE" : "HOLDING"}</text>}
       {mode === "gauge" && (
         <g>
-          <LoadGauge x={200} y={140} size={640} value={(pct / 100) * ramp(t, e("load"), 30)} limit={1} unit="%" label="load at collapse" limitLabel="code strength" />
-          <text x={1150} y={560} fontFamily={L.fonts.value} fontSize={200} fill={L.label} opacity={ramp(t, e("reached"), 10)}>{countText(figOf(p, "pct"), ramp(t, e("reached"), 16))}</text>
-          <MonoLabel x={1150} y={650} t={t} at={e("code")} text="OF A CODE-BUILT CONNECTION" size={40} />
+          <BigGauge x={200} y={260} w={1500} v={(pct / 100) * 0.9 * ramp(t, e("load"), 30)} mark={ramp(t, e("built"), 12) > 0 ? 0.9 : undefined} label="load at collapse, worst connection" markLabel="code strength" />
+          <text x={200} y={720} fontFamily={L.fonts.value} fontSize={220} fill={L.label} opacity={ramp(t, e("reached"), 10)}>{countText(figOf(p, "pct"), ramp(t, e("reached"), 16))}</text>
+          <MonoLabel x={720} y={640} t={t} at={e("code")} text="OF A CODE-BUILT CONNECTION" size={48} />
         </g>
       )}
       {mode !== "gauge" && (

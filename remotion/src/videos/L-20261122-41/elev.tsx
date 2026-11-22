@@ -18,6 +18,10 @@ export const Sheet: React.FC<{ t: number; zoom?: number; cx?: number; cy?: numbe
     <AbsoluteFill>
       <LookBackground />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
+        <defs>
+          <pattern id="draft-grid" width={90} height={90} patternUnits="userSpaceOnUse"><rect x={0} y={0} width={90} height={4} fill="#39ff9a" /><rect x={0} y={0} width={4} height={90} fill="#39ff9a" /></pattern>
+        </defs>
+        <rect x={0} y={0} width={W} height={H} fill="url(#draft-grid)" opacity={0.3} />
         <rect x={36} y={36} width={W - 72} height={H - 72} fill="none" stroke="#39ff9a" strokeOpacity={0.35} strokeWidth={6} />
         <g transform={`translate(${W / 2} ${H / 2}) scale(${Math.min(1.3, zoom)}) translate(${-cx} ${-cy})`}>{children}</g>
       </svg>
@@ -163,3 +167,21 @@ export const Stamp: React.FC<{ x: number; y: number; t: number; at: number; text
   );
 };
 export default Sheet;
+
+/** A big horizontal gauge: a track, a fill to `v` (0..1), a red mark at `mark` with its label, a label over
+ * it and an optional value at the fill's end. Figures only from the caller (params.fig). */
+export const BigGauge: React.FC<{ x: number; y: number; w: number; v: number; mark?: number; label: string; markLabel?: string; value?: string; color?: string }> = ({ x, y, w, v, mark, label, markLabel, value, color }) => {
+  const L = useDisasterLook();
+  const h = 110, k = clamp(v), c = color ?? (k > 0.85 ? L.fail : k > 0.6 ? "#ffb23e" : L.ok);
+  return (
+    <g>
+      <text x={x} y={y - 24} fontFamily={L.fonts.mono} fontWeight={700} fontSize={40} letterSpacing={4} fill={L.ink}>{label.toUpperCase()}</text>
+      <rect x={x} y={y} width={w} height={h} rx={10} fill="#0b0f0c" stroke={L.line} strokeOpacity={0.6} strokeWidth={4} />
+      {Array.from({ length: 11 }, (_, i) => <line key={i} x1={x + (w * i) / 10} y1={y + h} x2={x + (w * i) / 10} y2={y + h + 22} stroke={L.line} strokeOpacity={0.6} strokeWidth={3} />)}
+      <rect x={x + 8} y={y + 8} width={(w - 16) * k} height={h - 16} rx={6} fill={c} />
+      {mark !== undefined && <line x1={x + w * mark} y1={y - 30} x2={x + w * mark} y2={y + h + 30} stroke={L.fail} strokeWidth={8} />}
+      {mark !== undefined && markLabel && <text x={Math.min(x + w * mark, x + w - 10)} y={y + h + 80} textAnchor={mark > 0.8 ? "end" : "middle"} fontFamily={L.fonts.mono} fontWeight={700} fontSize={38} fill={L.fail}>{markLabel.toUpperCase()}</text>}
+      {value ? <text x={x + Math.max(160, (w - 16) * k) + 20} y={y + h - 22} fontFamily={L.fonts.value} fontSize={80} fill={L.ink}>{value}</text> : null}
+    </g>
+  );
+};

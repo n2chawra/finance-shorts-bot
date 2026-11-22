@@ -5,8 +5,8 @@
 import React from "react";
 import type { SceneProps } from "../../scenes/kit";
 import { countText, motion } from "../../flat/kit";
-import { HonestyTag, LoadGauge, MonoLabel, useDisasterLook } from "../../disaster/index";
-import { ramp, Sheet, Stamp } from "./elev";
+import { HonestyTag, MonoLabel, useDisasterLook } from "../../disaster/index";
+import { BigGauge, ramp, Sheet, Stamp } from "./elev";
 import { figOf, moments } from "./ui";
 
 type Params = { mode?: string };
@@ -55,10 +55,10 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; p: Sc
   const lim = mode === "double" ? 0.95 : 0.85;
   return (
     <g>
-      <LoadGauge x={240} y={130} size={720} value={val} limit={lim} unit="" label={mode === "double" ? "load on the fourth-floor nut" : "crowd load on the walkways"} limitLabel={mode === "double" ? "" : "design load"} />
-      {mode === "double" && <Stamp x={1400} y={500} t={t} at={e("load")} text={`×${f("times")}`} color={L.fail} size={200} rot={-6} />}
-      {mode === "double" && <MonoLabel x={1180} y={760} t={t} at={e("more")} text="THE ORIGINAL DESIGN'S LOAD" size={38} />}
-      {mode === "design" && <MonoLabel x={1150} y={420} t={t} at={e("designed")} text="FAR BELOW DESIGN LOAD" size={52} color={L.ok} box />}
+      <BigGauge x={200} y={330} w={1500} v={val} mark={mode === "double" ? undefined : lim} label={mode === "double" ? "load on the fourth-floor nut" : "crowd load on the walkways"} markLabel={mode === "double" ? undefined : "design load"} />
+      {mode === "double" && <Stamp x={1400} y={720} t={t} at={e("load")} text={`×${f("times")}`} color={L.fail} size={160} rot={-6} />}
+      {mode === "double" && <MonoLabel x={200} y={720} t={t} at={e("more")} text="VS THE ORIGINAL DESIGN" size={44} />}
+      {mode === "design" && <MonoLabel x={200} y={720} t={t} at={e("designed")} text="FAR BELOW THE DESIGN LOAD" size={56} color={L.ok} box />}
     </g>
   );
 };

@@ -11,7 +11,7 @@ import type { SceneProps } from "../../scenes/kit";
 import { motion } from "../../flat/kit";
 import { Camera3D, cue, Debris, DisasterStage, Focus, glow, Label3D, type CamKey, type V3 } from "../../three/index";
 import { BeamCutaway, HH, NUT, UZ, LZ } from "./cutaway";
-import { Walkway } from "./world";
+import { Surround, Walkway } from "./world";
 import { figOf, kitClock, MonoCaption, moments, Overlay, Readout } from "./ui";
 import { useMats } from "./world";
 
@@ -44,6 +44,7 @@ const Beam: React.FC<SceneProps> = (p) => {
       <DisasterStage look="nightGrid" floor={false} dof={0.8} shadowBox={7} fog={{ color: "#05080a", near: 8, far: 30 }}
         overlay={<Overlay t={t} marks={Object.values(ev)} text="3D reconstruction · cutaway"><MonoCaption t={t} at={e("box")} text="THREE BOX BEAMS UNDER EACH WALKWAY" /></Overlay>}>
         <Camera3D keys={keys} frame={t} drift={0.006} />
+        <Surround />
         <Focus at={[0, -0.2, 0]} range={3} />
         <pointLight position={[0, -2, 2]} intensity={4} distance={10} color="#ffe2b8" />
         <group scale={0.55}><Walkway y={0} lit={cue(t, e("walkway"), 10) * (1 - under)} hot={[0, 1, 2].map(() => cue(t, e("box"), 12) * 0.35)} /></group>
@@ -58,6 +59,7 @@ const Beam: React.FC<SceneProps> = (p) => {
       <DisasterStage look="nightGrid" floor={false} dof={0.9} shadowBox={4} fog={{ color: "#05080a", near: 6, far: 25 }}
         overlay={<Overlay t={t} marks={Object.values(ev)} text="3D reconstruction · general principle"><Readout x={1300} y={150} label="EACH CHANNEL" value={`${figOf(p, "inch")} IN DEEP`} k={cue(t, e("two"), 12)} /></Overlay>}>
         <Camera3D keys={keys} frame={t} drift={0.006} />
+        <Surround />
         <Focus at={[0, 0, 0]} range={2} />
         <Channel side={-1} x={-1.2 * slide} />
         <Channel side={1} x={1.2 * slide} />
@@ -82,12 +84,13 @@ const Beam: React.FC<SceneProps> = (p) => {
     : pose([3, 0.6, 2.6], [0, -0.1, 0], [2.2, -0.2, 2], [0, -0.3, 0]);
   const rested = cue(t, e("rested"), 12);
   return (
-    <DisasterStage look="nightGrid" floor={false} dof={0.9} shadowBox={3} fog={{ color: "#05080a", near: 6, far: 20 }}
+    <DisasterStage look="nightGrid" floor={false} dof={0.9} shadowBox={3} fog={{ color: "#05080a", near: 8, far: 32 }}
       overlay={<Overlay t={t} marks={Object.values(ev)} text="3D reconstruction · cutaway">
         {mode === "built" && <MonoCaption t={t} at={e("nut")} text="FOURTH-FLOOR BOX BEAM · AS BUILT" />}
         {mode === "bend" && <MonoCaption t={t} at={0} text="EAST END · MIDDLE BOX BEAM · SLOWED" />}
       </Overlay>}>
       <Camera3D keys={keys} frame={t} drift={0.005} />
+      <Surround dist={5} />
       <Focus at={mode === "rod" ? [0, 0, 0] : NUT} range={mode === "rod" ? 1.6 : 0.6} />
       <pointLight position={[1.5, 1.2, 2]} intensity={2.2} distance={8} color="#ffcf9a" />
       <pointLight position={[-1.5, -1.5, 1]} intensity={1.4} distance={6} color="#59c8ff" />

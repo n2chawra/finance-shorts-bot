@@ -250,6 +250,9 @@
         "kansas": {
           "word": "Kansas"
         },
+        "hang": {
+          "word": "hang"
+        },
         "two": {
           "word": "Two"
         },
@@ -285,6 +288,10 @@
           {
             "at": "kansas",
             "what": "the camera glides in under the glass roof trusses"
+          },
+          {
+            "at": "hang",
+            "what": "the hanger rods glint as the camera passes"
           },
           {
             "at": "two",
@@ -880,6 +887,79 @@
             "at": "fourth",
             "text": "FOURTH FLOOR",
             "target": "fourth"
+          }
+        ],
+        "chapter_n": 1
+      }
+    },
+    {
+      "id": "c1-link",
+      "scene": "directed",
+      "role": "level",
+      "say": "They linked the hotel tower to its meeting rooms, high above the lobby floor.",
+      "events": {
+        "linked": {
+          "word": "linked"
+        },
+        "tower": {
+          "word": "tower"
+        },
+        "rooms": {
+          "word": "rooms"
+        },
+        "lobby": {
+          "word": "lobby"
+        },
+        "high": {
+          "word": "high"
+        }
+      },
+      "params": {
+        "component": "Atrium",
+        "place": "the atrium floor, looking up",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "high",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "linked",
+            "what": "the walkways light end to end"
+          },
+          {
+            "at": "tower",
+            "what": "the tower-side balcony lights"
+          },
+          {
+            "at": "rooms",
+            "what": "the function-block balcony lights"
+          },
+          {
+            "at": "lobby",
+            "what": "the camera tips down to the floor far below"
+          }
+        ],
+        "things": [
+          "walkways",
+          "balconies",
+          "lobby floor"
+        ],
+        "shot": "terrace",
+        "dance": 0.5,
+        "lit": [
+          {
+            "at": "linked",
+            "part": "stack"
+          },
+          {
+            "at": "linked",
+            "part": "third"
           }
         ],
         "chapter_n": 1
@@ -2282,6 +2362,66 @@
           "three review stamps"
         ],
         "mode": "stamps",
+        "chapter_n": 3
+      }
+    },
+    {
+      "id": "e-sums",
+      "scene": "directed",
+      "role": "level",
+      "say": "As reported, the outside detailer assumed the connection had already been designed, and did no calculations on it.",
+      "events": {
+        "reported": {
+          "word": "reported"
+        },
+        "detailer": {
+          "word": "detailer"
+        },
+        "designed": {
+          "word": "designed"
+        },
+        "calculations": {
+          "word": "calculations"
+        }
+      },
+      "params": {
+        "component": "Desk",
+        "place": "the drafting table, the connection detail",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "calculations",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "reported",
+            "what": "an AS REPORTED tag sits on the frame"
+          },
+          {
+            "at": "detailer",
+            "what": "the lamp swings over the sheet"
+          },
+          {
+            "at": "designed",
+            "what": "the connection detail is ringed in red"
+          },
+          {
+            "at": "calculations",
+            "what": "an empty calculation box stays blank beside it"
+          }
+        ],
+        "things": [
+          "drawing",
+          "red ring",
+          "empty calculation box"
+        ],
+        "mode": "circle",
+        "calc": true,
         "chapter_n": 3
       }
     },
@@ -4817,10 +4957,16 @@
       "id": "loop",
       "scene": "directed",
       "role": "loop",
-      "say": "Which link should have been caught first? Tell us in the comments.",
+      "say": "Which link should have been caught first: the detail, the change, or the review? Tell us in the comments.",
       "events": {
         "link": {
           "word": "link"
+        },
+        "detail": {
+          "word": "detail"
+        },
+        "review": {
+          "word": "review"
         },
         "caught": {
           "word": "caught"
@@ -4846,6 +4992,14 @@
           {
             "at": "link",
             "what": "the three links hang over the atrium as tags"
+          },
+          {
+            "at": "detail",
+            "what": "the camera starts to pull back"
+          },
+          {
+            "at": "review",
+            "what": "the walkways glint"
           },
           {
             "at": "caught",

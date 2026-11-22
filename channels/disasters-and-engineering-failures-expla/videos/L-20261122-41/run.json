@@ -145,5 +145,42 @@
     "notes": [
       "All 24 facts confirmed against NBS BSS 143 and ASCE CE Jan 2007/Jul 2011; title now 'One Rod Change…'; hook-not matches NBS conclusion 9; phone call tagged as reported and disputed; disclaimer present"
     ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:30:00.477958+00:00",
+    "finishedAt": "2026-11-22T05:43:42.224844+00:00",
+    "notes": [
+      "text 'CONTRACT DWG' at 159.0 s is 29.1 px, below the 30 px minimum",
+      "text 'STEEL FABRICATOR' at 165.8 s is 29.1 px, below the 30 px minimum",
+      "text '1' at 226.2 s runs outside the frame",
+      "text \"THE ORIGINAL DESIGN'S LOAD\" at 226.2 s runs outside the frame",
+      "text '0' at 260.9 s runs outside the frame",
+      "text '1' at 376.4 s is 21 px, below the 30 px minimum",
+      "text 'short of the code from the start' at 399.3 s is 28.8 px, below the 30 px minimum",
+      "text 'fourth-floor connections' at 405.9 s is 28.8 px, below the 30 px minimum",
+      "text 'Policy adopted by the ASCE Board of Direction (paraphrased)' at 440.2 s is 29.1 px, below the 30 px minimum",
+      "text 'the box beam-hanger rod connection' at 460.6 s is 28.8 px, below the 30 px minimum",
+      "text 'the change doubled the load' at 460.6 s is 28.8 px, below the 30 px minimum",
+      "4.5 s with nothing new on screen in beat 'hook' (at most 4.0 s): add an action on the phrase being said there",
+      "35 of 94 stills are mostly empty background (at 10 s, 20 s, 30 s, 35 s, 90 s, 100 s): fill the frame (a set, the cast big, money as a thing)",
+      "length 469 s is outside 480–600 s: add about 33 spoken words",
+      "note: four shots in a row open wide (from 'promise'): vary the shot size",
+      "note: 40 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set 'the original drawing on the light table' in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 80 of 80 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T05:46:15.183936+00:00",
+    "finishedAt": "2026-11-22T05:46:15.183936+00:00",
+    "notes": [
+      "24 figures computed from inputs; 24 cross-checked against closed-form formulas."
+    ]
   }
 ]

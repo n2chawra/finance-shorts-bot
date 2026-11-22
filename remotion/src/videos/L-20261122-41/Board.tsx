@@ -20,9 +20,10 @@ const Board: React.FC<SceneProps> = (p) => {
     return (
       <DisasterLookProvider value={RECIPE}>
         <LookBackground />
+        <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}><defs><pattern id="bg-grid" width={90} height={90} patternUnits="userSpaceOnUse"><rect width={90} height={4} fill="#39ff9a" /><rect width={4} height={90} fill="#39ff9a" /></pattern></defs><rect width={1920} height={1080} fill="url(#bg-grid)" opacity={0.3} /></svg>
         <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
           <g transform={`translate(960 540) scale(${1 + 0.05 * (t / Math.max(1, m.end))}) translate(-960 -540)`}>
-            <CauseChain t={t} x={170} y={470} w={1580} size={44} broken={2} breakAt={e("through")}
+            <CauseChain t={t} x={140} y={500} w={1640} size={60} broken={2} breakAt={e("through")}
               links={[{ label: "weak detail", at: e("weak") }, { label: "rods changed", at: e("change") }, { label: "review let it through", at: e("review") }]} />
           </g>
         </svg>
@@ -32,11 +33,11 @@ const Board: React.FC<SceneProps> = (p) => {
   }
   const inch = figOf(p, "inch");
   const causes: Cause[] = mode === "score"
-    ? [{ label: "A weak detail", detail: "the box beam-hanger rod connection", at: e("weak"), verdict: "cause" },
-       { label: `A rod moved ${inch} inches`, detail: "the change doubled the load", at: e("rod"), verdict: "cause" },
-       { label: "A review that let it through", detail: "stamped as reviewed", at: e("review"), verdict: "factor" }]
-    : [{ label: "Original detail too weak", detail: "short of the code from the start", at: mode === "factors" ? e("weak") : 0, verdict: "cause" },
-       { label: "Rod change doubled the load", detail: "fourth-floor connections", at: mode === "factors" ? e("doubled") : 0, verdict: "cause" },
+    ? [{ label: "A weak detail", at: e("weak"), verdict: "cause" },
+       { label: `A rod moved ${inch} inches`, at: e("rod"), verdict: "cause" },
+       { label: "A review that let it through", at: e("review"), verdict: "factor" }]
+    : [{ label: "Original detail too weak", at: mode === "factors" ? e("weak") : 0, verdict: "cause" },
+       { label: "Rod change doubled the load", at: mode === "factors" ? e("doubled") : 0, verdict: "cause" },
        ...(mode === "ruled" ? [{ label: "Workmanship", at: e("welding"), verdict: "ruled out" as const }, { label: "Materials", at: e("materials"), verdict: "ruled out" as const }] : [])];
   return (
     <DisasterLookProvider value={RECIPE}>

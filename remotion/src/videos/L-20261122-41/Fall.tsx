@@ -12,7 +12,7 @@ import { motion } from "../../flat/kit";
 import { Camera3D, cue, Debris, DisasterStage, Focus, Label3D, Smoke, type CamKey } from "../../three/index";
 import { DisasterLookProvider, MissionClock } from "../../disaster/index";
 import { BeamCutaway, NUT } from "./cutaway";
-import { Atrium, LOWER_Y, Walkways } from "./world";
+import { Atrium, LOWER_Y, Surround, Walkways } from "./world";
 import { figOf, kitClock, MonoCaption, moments, Overlay, RECIPE } from "./ui";
 
 type Params = { mode?: string };
@@ -38,7 +38,7 @@ const Fall: React.FC<SceneProps> = (p) => {
     const hour = Number(figOf(p, "hour") || "0"), minute = Number(figOf(p, "minute") || "0");
     const clockIn = mode === "hook" ? cue(t, e("evening"), 10) : 0;
     return (
-      <DisasterStage look="nightGrid" floor={false} dof={1} shadowBox={3} fog={{ color: "#05080a", near: 6, far: 20 }}
+      <DisasterStage look="nightGrid" floor={false} dof={1} shadowBox={3} fog={{ color: "#05080a", near: 8, far: 32 }}
         overlay={
           <Overlay t={t} marks={Object.values(ev)} text="3D reconstruction · cutaway · slowed">
             {clockIn > 0 && (
@@ -52,6 +52,7 @@ const Fall: React.FC<SceneProps> = (p) => {
           </Overlay>
         }>
         <Camera3D keys={keys} frame={t} drift={0.004} />
+        <Surround dist={5} dim={t > tear ? 0.5 : 0} />
         <Focus at={NUT} range={0.7} />
         <pointLight position={[1.5, 1.5, 2]} intensity={2.2} distance={8} color="#ffcf9a" />
         <group rotation-y={0.3}>

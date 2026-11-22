@@ -10,8 +10,9 @@ import { Easing } from "remotion";
 import type { SceneProps } from "../../scenes/kit";
 import { countText, motion } from "../../flat/kit";
 import { Camera3D, cue, Debris, DisasterStage, Focus, glow, type CamKey } from "../../three/index";
-import { DisasterLookProvider, LoadGauge } from "../../disaster/index";
+import { DisasterLookProvider } from "../../disaster/index";
 import { BeamCutaway } from "./cutaway";
+import { BigGauge } from "./elev";
 import { figOf, MonoCaption, moments, Overlay, Readout, RECIPE } from "./ui";
 import { useMats } from "./world";
 
@@ -44,7 +45,7 @@ const Lab: React.FC<SceneProps> = (p) => {
           {mode === "test" && (
             <DisasterLookProvider value={RECIPE}>
               <svg width={1920} height={1080} style={{ position: "absolute", left: 0, top: 0 }}>
-                <LoadGauge x={1380} y={140} size={420} value={gauge} limit={1} unit="" label="ram load" limitLabel="" />
+                <BigGauge x={1180} y={170} w={620} v={gauge} label="ram load" />
               </svg>
             </DisasterLookProvider>
           )}

@@ -228,3 +228,32 @@ export const Walkways: React.FC<WalkwaysProps> = ({ frame, fall = 0, lit = {}, o
   );
 };
 export default Atrium;
+
+/** The atrium as seen from inside a close-up: two walls of lit windows and floor bands behind the subject
+ * (blurred by the lens), the floor far below. For the cutaway and lab beats, so a close shot is still in the
+ * hotel, never on black. */
+export const Surround: React.FC<{ dist?: number; y?: number; dim?: number }> = ({ dist = 7, y = 0, dim = 0 }) => {
+  const M = useMats();
+  const wall = (key: string, pos: V3, rotY: number) => (
+    <group key={key} position={pos} rotation-y={rotY}>
+      <mesh material={M.wall}><planeGeometry args={[30, 16]} /></mesh>
+      {Array.from({ length: 7 }, (_, f) => (
+        <group key={f}>
+          <mesh position={[0, -6 + f * 2, 0.02]} material={M.steel}><planeGeometry args={[30, 0.18]} /></mesh>
+          {Array.from({ length: 12 }, (_, i) => (
+            <mesh key={i} position={[-13 + i * 2.4, -5.1 + f * 2, 0.03]} material={glow(WARM, Math.round((0.25 + 0.55 * rnd(`sw${key}`, f * 12 + i)) * (1 - dim) * 10) / 10)}>
+              <planeGeometry args={[1.3, 0.9]} />
+            </mesh>
+          ))}
+        </group>
+      ))}
+    </group>
+  );
+  return (
+    <group position={[0, y, 0]}>
+      {wall("a", [0, 0, -dist], 0)}
+      {wall("b", [-dist, 0, 0], Math.PI / 2)}
+      <mesh position={[0, -4, 0]} rotation-x={-Math.PI / 2} material={M.stone}><planeGeometry args={[40, 40]} /></mesh>
+    </group>
+  );
+};
