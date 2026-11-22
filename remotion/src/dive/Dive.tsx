@@ -87,7 +87,11 @@ const Dive: React.FC<SceneProps> = (p) => {
         <ScreenCounter w={w} g={g} />
         {/* the fine print shows at the street (the hook and the loop's landing), never over a layer's sign below
             (QA 2026-11-22: the note ran across the TUNNEL and FLOODWATER signs) */}
-        {w.cfg.note && cam.ft < 8 ? <g opacity={1 - cam.ft / 8}><Txt x={cx} y={120} size={26} fill="#f4f1e8" deco>{w.cfg.note}</Txt></g> : null}
+        {w.cfg.note && cam.ft < 8 ? <g opacity={1 - cam.ft / 8}>
+          {/* a dark pill so the fine print reads on a pale sky (QA 2026-11-22: white on light blue) */}
+          <rect x={cx - (w.cfg.note.length * 7.6 + 28)} y={96} width={(w.cfg.note.length * 7.6 + 28) * 2} height={40} rx={20} fill="#0f1224" opacity={0.55} />
+          <Txt x={cx} y={120} size={26} fill="#f4f1e8" deco>{w.cfg.note}</Txt>
+        </g> : null}
       </Stage>
       <SourceLine p={p} />
     </>
