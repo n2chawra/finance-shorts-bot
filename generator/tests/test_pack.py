@@ -145,3 +145,11 @@ def test_a_sound_level_may_be_set_per_format():
     for bad, words in (({"bedLevel": {"reel": 0.2}}, "bedLevel"), ({"duck": {"short": 1.4}}, "duck"),
                        ({"duck": {}}, "duck"), ({"bedLevel": "loud"}, "bedLevel"), ({"duck": -0.1}, "duck")):
         assert any(words in p for p in pack.pack_problems({**pack.DEFAULTS, "sound": {**good, **bad}})), bad
+
+
+def test_disaster_desk_long_pace_note():
+    """Owner, 2026-11-22 on L-20261121-42: "Increase the pace by 1.25" -> long 0.92 * 1.25 = 1.15; Shorts unchanged."""
+    from generator import pack
+    slug = "disasters-and-engineering-failures-expla"
+    assert pack.voice_speed("long", slug) == 1.15
+    assert pack.voice_speed("short", slug) == 1.0
