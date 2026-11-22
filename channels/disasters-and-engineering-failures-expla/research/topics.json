@@ -1976,6 +1976,376 @@
    "found": "2026-11-22",
    "expires": "2027-02-20",
    "status": "new"
+  },
+  {
+   "templates": [
+    "any"
+   ],
+   "stories": [
+    "promo_why_it_failed"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "format": "short",
+   "kind": "evergreen",
+   "found": "2026-11-23",
+   "expires": "2027-02-21",
+   "status": "new",
+   "id": "2026-11-23-calabasas-s76-cloud",
+   "category": "air",
+   "priority": "high",
+   "title": "Calabasas, 2020: why the NTSB says a helicopter climbing out of cloud was already turning the wrong way (Kobe Bryant's flight, NTSB AAR-21/01)",
+   "demand": {
+    "title": "What actually happened during Kobe Bryant's final flight",
+    "views": 10798785,
+    "url": "https://www.youtube.com/watch?v=mKPO7QpA_38",
+    "channel": "Flight Simulator",
+    "channelSubs": 158000,
+    "outlier": 68.3
+   },
+   "hook": "In January 2020, a helicopter climbed into cloud over Calabasas. Two minutes later, nine people were dead.",
+   "angle": "How can a pilot not know he is turning? Show the inner ear's fluid settling in a steady turn (flat diagram), the climb at 1,500 ft a minute into cloud, the pilot reporting a climb while the helicopter banks left and descends, then the NTSB's four recommendations. Stated once and plainly: nine died. No victims shown; the report's words only.",
+   "why_now": "The niche's biggest settled-event Short in the scan: 10.8M views on a 158K channel (68x). The NTSB final report gives a clear mechanism (spatial disorientation) that the reference only simulated.",
+   "facts": [
+    {
+     "label": "Year of the crash",
+     "value": 2020,
+     "unit": "year",
+     "as_of": "2020-01-26",
+     "source": "NTSB",
+     "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx",
+     "fixed": true
+    },
+    {
+     "label": "People killed, the pilot and eight passengers",
+     "value": 9,
+     "unit": "count",
+     "as_of": "2021-02-09",
+     "source": "NTSB",
+     "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx",
+     "fixed": true
+    },
+    {
+     "label": "Altitude reached above sea level, feet",
+     "value": 2400,
+     "unit": "count",
+     "as_of": "2021-02-09",
+     "source": "NTSB",
+     "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx",
+     "fixed": true
+    },
+    {
+     "label": "Climb rate into the cloud, feet per minute",
+     "value": 1500,
+     "unit": "count",
+     "as_of": "2021-02-09",
+     "source": "NTSB",
+     "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx",
+     "fixed": true
+    },
+    {
+     "label": "Minutes from the start of the climb to the crash",
+     "value": 2,
+     "unit": "count",
+     "as_of": "2021-02-09",
+     "source": "NTSB",
+     "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx",
+     "fixed": true
+    },
+    {
+     "label": "Safety recommendations issued",
+     "value": 4,
+     "unit": "count",
+     "as_of": "2021-02-09",
+     "source": "NTSB",
+     "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Probable cause in the NTSB's words: continued VFR flight into instrument conditions, spatial disorientation and loss of control (AAR-21/01)",
+    "The pilot told ATC he was climbing while the helicopter was descending in a left turn (report body)",
+    "Deaths stated once: nine; name Kobe Bryant only as the subject the NTSB names as a passenger, no other victims named",
+    "No blame beyond the report: also the operator's safety-management oversight finding"
+   ],
+   "sources": [
+    "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx",
+    "https://www.ntsb.gov/investigations/pages/dca20ma059.aspx",
+    "https://data.ntsb.gov/investigations/AccidentReports/Reports/AAR2101.pdf"
+   ]
+  },
+  {
+   "templates": [
+    "any"
+   ],
+   "stories": [
+    "promo_why_it_failed"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "format": "short",
+   "kind": "evergreen",
+   "found": "2026-11-23",
+   "expires": "2027-02-21",
+   "status": "new",
+   "id": "2026-11-23-hudson-1549-turn-back",
+   "category": "aviation",
+   "priority": "normal",
+   "title": "US Airways 1549: could the A320 have glided back to LaGuardia after both engines took in geese? (NTSB AAR-10/03)",
+   "demand": {
+    "title": "Could Sully have made it back? #aviation #simulation",
+    "views": 678717,
+    "url": "https://www.youtube.com/watch?v=IobUVPJlLb8",
+    "channel": "Flight Simulator",
+    "channelSubs": 158000,
+    "outlier": 4.3
+   },
+   "hook": "Two minutes after take-off from LaGuardia, an Airbus lost both engines to geese. Could it have turned back?",
+   "angle": "The simulator runs that made it back all turned at once; the NTSB added the seconds a real crew needs to understand what happened, and those runs did not make it. Show the glide cone shrinking second by second over the Hudson. Everyone survived, which is the payoff: the river was the right call.",
+   "why_now": "679K on a 158K channel (4.3x) asks exactly this question; a settled final report, no deaths (full ad rates), and the turning-back question is the one the comments argue about.",
+   "facts": [
+    {
+     "label": "Year of the ditching",
+     "value": 2009,
+     "unit": "year",
+     "as_of": "2009-01-15",
+     "source": "NTSB",
+     "url": "https://www.ntsb.gov/investigations/Pages/DCA09MA026.aspx",
+     "fixed": true
+    },
+    {
+     "label": "Passengers aboard, including a lap-held child",
+     "value": 150,
+     "unit": "count",
+     "as_of": "2010-05-04",
+     "source": "NTSB",
+     "url": "https://www.ntsb.gov/investigations/Pages/DCA09MA026.aspx",
+     "fixed": true
+    },
+    {
+     "label": "Crew members aboard",
+     "value": 5,
+     "unit": "count",
+     "as_of": "2010-05-04",
+     "source": "NTSB",
+     "url": "https://www.ntsb.gov/investigations/Pages/DCA09MA026.aspx",
+     "fixed": true
+    },
+    {
+     "label": "Minutes after leaving LaGuardia that the birds hit",
+     "value": 2,
+     "unit": "count",
+     "as_of": "2010-05-04",
+     "source": "NTSB",
+     "url": "https://www.ntsb.gov/investigations/Pages/DCA09MA026.aspx",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "The simulator finding and the added reaction delay in the NTSB report body (AAR-10/03; FAA copy of the findings)",
+    "The bird-strike altitude and the time from strike to ditching from the report, not from Wikipedia",
+    "Nobody died: say so as the payoff, plainly"
+   ],
+   "sources": [
+    "https://www.ntsb.gov/investigations/Pages/DCA09MA026.aspx",
+    "https://www.faa.gov/sites/faa.gov/files/2025-04/usairways1549_findings.pdf",
+    "https://www.faa.gov/sites/faa.gov/files/2025-04/usair_a320.pdf"
+   ]
+  },
+  {
+   "templates": [
+    "any"
+   ],
+   "stories": [
+    "promo_why_it_failed"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "format": "short",
+   "kind": "evergreen",
+   "found": "2026-11-23",
+   "expires": "2027-02-21",
+   "status": "new",
+   "id": "2026-11-23-long-ez-fuel-selector",
+   "category": "air",
+   "priority": "normal",
+   "title": "Pacific Grove, 1997: a fuel handle behind the pilot's left shoulder and the right-rudder push that followed (John Denver's Long-EZ, NTSB LAX98FA008)",
+   "demand": {
+    "title": "Recreating John Denver's Fatal Plane Crash #simulation #aviation",
+    "views": 2121709,
+    "url": "https://www.youtube.com/watch?v=WMCCJSMQue8",
+    "channel": "Flight Simulator",
+    "channelSubs": 158000,
+    "outlier": 13.4
+   },
+   "hook": "In 1997, a small homebuilt plane took off with ten gallons in one tank and five in the other. The switch between them was behind the pilot's shoulder.",
+   "angle": "Why does reaching behind you turn a plane? Show the cockpit layout, the twist to the left, the right foot pressing as the body turns, the plane yawing and rolling at a few hundred feet. The report's cause: attention diverted and inadvertent right rudder while working the handle, and not refuelling.",
+   "why_now": "2.1M on a 158K channel (13x). A design-of-the-cockpit story, not a pilot-blame story, with a final NTSB probable cause.",
+   "facts": [
+    {
+     "label": "Year of the crash",
+     "value": 1997,
+     "unit": "year",
+     "as_of": "1997-10-12",
+     "source": "NTSB via AVweb",
+     "url": "https://avweb.com/features/close-up-the-john-denver-crash/",
+     "fixed": true
+    },
+    {
+     "label": "Gallons in the right tank at departure",
+     "value": 10,
+     "unit": "count",
+     "as_of": "1999-01-26",
+     "source": "NTSB via AVweb",
+     "url": "https://avweb.com/features/close-up-the-john-denver-crash/",
+     "fixed": true
+    },
+    {
+     "label": "Gallons in the left tank at departure",
+     "value": 5,
+     "unit": "count",
+     "as_of": "1999-01-26",
+     "source": "NTSB via AVweb",
+     "url": "https://avweb.com/features/close-up-the-john-denver-crash/",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Read the NTSB brief LAX98FA008 itself for the probable cause wording and the handle position; AVweb quotes it",
+    "Deaths stated once: the pilot, John Denver",
+    "The selector valve found about halfway between positions (report)"
+   ],
+   "sources": [
+    "https://avweb.com/features/close-up-the-john-denver-crash/",
+    "https://www.aopa.org/news-and-media/all-news/2012/december/pilot/safety-pilot-landmark-accident-not-so-easy"
+   ]
+  },
+  {
+   "templates": [
+    "any"
+   ],
+   "stories": [
+    "promo_why_it_failed"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "format": "short",
+   "kind": "evergreen",
+   "found": "2026-11-23",
+   "expires": "2027-02-21",
+   "status": "new",
+   "id": "2026-11-23-convair-240-fuel-exhaustion",
+   "category": "air",
+   "priority": "normal",
+   "title": "Gillsburg, 1977: a Convair 240 with one engine burning too much fuel ran both tanks dry (Lynyrd Skynyrd's plane, NTSB AAR-78-06)",
+   "demand": {
+    "title": "Recreating Lynyrd Skynyrd's Fatal Plane Crash #aviation",
+    "views": 2457129,
+    "url": "https://www.youtube.com/watch?v=vEbJiNa-1zc",
+    "channel": "Flight Simulator",
+    "channelSubs": 158000,
+    "outlier": 15.6
+   },
+   "hook": "In October 1977, a chartered Convair carrying a rock band ran out of fuel over Mississippi. Both engines.",
+   "angle": "How does a crew run out of fuel without knowing? The right engine's fault (undetermined) raised its fuel burn, the planning had no margin, both engines stopped; show the fuel gauge falling against the map. The NTSB's cause in its own words: fuel exhaustion due to crew inattention, contributing inadequate planning and the engine malfunction.",
+   "why_now": "2.5M on a 158K channel (15.6x); a settled final report and a simple, visual cause chain (a fuel gauge against a map).",
+   "facts": [
+    {
+     "label": "Year of the crash",
+     "value": 1977,
+     "unit": "year",
+     "as_of": "1977-10-20",
+     "source": "NTSB AAR-78-06",
+     "url": "https://libraryonline.erau.edu/online-full-text/ntsb/aircraft-accident-reports/AAR78-06.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Engines that lost power",
+     "value": 2,
+     "unit": "count",
+     "as_of": "1978-06-19",
+     "source": "NTSB AAR-78-06",
+     "url": "https://libraryonline.erau.edu/online-full-text/ntsb/aircraft-accident-reports/AAR78-06.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Year the report was adopted",
+     "value": 1978,
+     "unit": "year",
+     "as_of": "1978-06-19",
+     "source": "NTSB AAR-78-06",
+     "url": "https://libraryonline.erau.edu/online-full-text/ntsb/aircraft-accident-reports/AAR78-06.pdf",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Deaths and the number aboard from the report (sources differ on secondary pages: read AAR-78-06)",
+    "Probable cause and both contributing factors in the report's words",
+    "Distance from the intended airport and the time of fuel exhaustion from the report body before using any"
+   ],
+   "sources": [
+    "https://libraryonline.erau.edu/online-full-text/ntsb/aircraft-accident-reports/AAR78-06.pdf",
+    "https://aviation-safety.net/wikibase/329006"
+   ]
+  },
+  {
+   "templates": [
+    "any"
+   ],
+   "stories": [
+    "promo_why_it_failed"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "format": "short",
+   "kind": "evergreen",
+   "found": "2026-11-23",
+   "expires": "2027-02-21",
+   "status": "new",
+   "id": "2026-11-23-chernobyl-az5-tips",
+   "category": "industrial",
+   "priority": "normal",
+   "title": "Chernobyl, 1986: the shutdown button briefly added power, because the control rods had graphite tips (IAEA INSAG-7)",
+   "demand": {
+    "title": "Chernobyl Blew Up Testing Its Own Backup Plan",
+    "views": 140067,
+    "url": "https://www.youtube.com/watch?v=cIFSnU3lqiY",
+    "channel": "Inside Decoded",
+    "channelSubs": 13300,
+    "outlier": 10.5
+   },
+   "hook": "At Chernobyl, the operators pressed the button that shuts a reactor down. For a few seconds, it did the opposite.",
+   "angle": "Why would a shutdown add power? Show the rod in cutaway: graphite displacer below the absorber, water pushed out of the bottom of the channel as the rod enters, power rising at the core's base. INSAG-7's own words on the positive scram and on the test changes; no radiation horror.",
+   "why_now": "Inside Decoded's Short on it did 140K on 13.3K (10.5x); the 1992 IAEA report names a design cause most Shorts skip.",
+   "facts": [
+    {
+     "label": "Year of the accident",
+     "value": 1986,
+     "unit": "year",
+     "as_of": "1986-04-26",
+     "source": "IAEA INSAG-7",
+     "url": "https://pub.iaea.org/MTCD/publications/PDF/Pub913e_web.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Year INSAG-7 was published",
+     "value": 1992,
+     "unit": "year",
+     "as_of": "1992-11-01",
+     "source": "IAEA INSAG-7",
+     "url": "https://pub.iaea.org/MTCD/publications/PDF/Pub913e_web.pdf",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "The positive scram wording, the displacer length and the test power level in INSAG-7's own text (IAEA PDF); do not use the forum timeline",
+    "The immediate deaths figure only from an official source, stated once",
+    "No speculation beyond INSAG-7; INSAG-1's older operator-blame line is superseded"
+   ],
+   "sources": [
+    "https://pub.iaea.org/MTCD/publications/PDF/Pub913e_web.pdf",
+    "https://www.epj-n.org/articles/epjn/pdf/2021/01/epjn200018.pdf"
+   ]
   }
  ]
 }

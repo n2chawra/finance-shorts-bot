@@ -1,0 +1,56 @@
+{
+  "agent": "research",
+  "day": "2026-11-23",
+  "channel": "disasters-and-engineering-failures-expla",
+  "startedAt": "2026-11-22T19:58:15Z",
+  "finishedAt": "2026-11-22T20:03:40Z",
+  "summary": "Disaster Desk, Monday (hooks): added 5 Short topics from breakouts with final official reports (Calabasas S-76B, Convair 240, Long-EZ, Hudson 1549, Chernobyl) and put the owner's stakes-first hook on the weekly loop's list as the top first-second challenger.",
+  "decision": "acted",
+  "why": "The Shorts feed had one usable topic (FedEx 80). The owner's 22 Nov note asked for a hook that leads with the stakes, and the three breakouts in our shot sheets (1.91M, 7.4M, 2.56M) all open on the scale in the first sentence, while ours open on a plain question. No data of our own yet (0 videos with 48 h numbers).",
+  "findings": [
+    {
+      "title": "Breakouts open on the scale, not a question",
+      "detail": "Inside Decoded's 1.91M Short speaks 'a jet fell more than 26,000 feet' at 1 s; Athena_Explains' 7.4M names the 167 saved at 1 s. Now challenger dd-stakes-first-hook.",
+      "link": "https://www.youtube.com/watch?v=L73NEgH36JU"
+    },
+    {
+      "title": "Famous-flight reconstructions are the niche's biggest settled-event Shorts",
+      "detail": "Flight Simulator (158K subs): Kobe Bryant's flight 10.8M, Lynyrd Skynyrd 2.46M, John Denver 2.12M, Sully 679K. Each has a final NTSB report, so each is now a topic told from the report.",
+      "link": "https://www.youtube.com/watch?v=mKPO7QpA_38"
+    },
+    {
+      "title": "FAA nationwide ground stop of 13 Nov: cause still open",
+      "detail": "A telecommunications failure at the en-route centres with no official finding yet, so no Short until there is one.",
+      "link": "https://ny1.com/nyc/all-boroughs/ap-top-news/2026/11/13/flights-halted-at-airports-across-us-due-to-air-traffic-control-communications-problems-faa-says"
+    },
+    {
+      "title": "Learjet ERA27MA026 preliminary not out",
+      "detail": "NTSB's last update 9 Nov; due about 1 Dec. Still on the watch list.",
+      "link": "https://www.ntsb.gov/investigations/Pages/ERA27MA026.aspx"
+    }
+  ],
+  "changes": [
+    {
+      "title": "5 Short topics added",
+      "detail": "Calabasas (high, 10.05), Convair 240 (9.04), Long-EZ (8.98), Hudson 1549 (8.08), Chernobyl (7.80).",
+      "branch": "agent/research/2026-11-23/disasters-and-engineering-failures-expla"
+    },
+    {
+      "title": "Challenger dd-stakes-first-hook",
+      "detail": "First-second test, top of its kind in cycle/backlog.json, from the owner's note.",
+      "branch": "agent/research/2026-11-23/disasters-and-engineering-failures-expla"
+    },
+    {
+      "title": "Proposal dd-feed-celebrity-crash-lane",
+      "detail": "Name a famous passenger once as the report does; keep the title on the machine.",
+      "branch": "agent/research/2026-11-23/disasters-and-engineering-failures-expla"
+    }
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/disasters-and-engineering-failures-expla/research/2026-11-23.md"
+    }
+  ]
+}
