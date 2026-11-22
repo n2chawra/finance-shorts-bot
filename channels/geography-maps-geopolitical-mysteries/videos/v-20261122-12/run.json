@@ -274,5 +274,27 @@
       "note: four shots in a row open wide (from 'florida'): vary the shot size",
       "note: the first figure appears at 51.7 s; one by 9 s"
     ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T00:08:50.736525+00:00",
+    "finishedAt": "2026-11-22T00:08:50.736525+00:00",
+    "notes": [
+      "[scene] 55.0s and 55.8s payoff (component Payoff): a hard-edged translucent blue rectangle still sits over the whole of India and the Arabian Sea behind the gauge. It is smaller than before but still reads as a box pasted on the map; the rising water should fill only the sea, or the gauge itself.",
+      "[scene] 55.0s and 55.8s payoff: the '58 m' signboard's post ends in mid-air over Afghanistan and western China, about 230 px above the top of the gauge, which stands in the sea south of India. The sign should stand on the gauge at the Maldives, not float over unrelated countries.",
+      "[scene] 55.8s payoff: the 'ISLAND' label (y ~1375) sits right on top of the caption 'and their highest ground' (y ~1450). Move the island and its label up, clear of the captions. Re-check after the pull-back that the Netherlands and Florida are drawn under the new sea as well."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T00:09:19.105155+00:00",
+    "finishedAt": "2026-11-22T00:10:12.482755+00:00",
+    "notes": [
+      "64 s, sky/atlas (preview only)",
+      "note: four shots in a row open wide (from 'florida'): vary the shot size",
+      "note: the first figure appears at 51.7 s; one by 9 s"
+    ]
   }
 ]
