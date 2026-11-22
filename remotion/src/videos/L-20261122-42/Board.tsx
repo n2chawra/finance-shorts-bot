@@ -55,7 +55,8 @@ const Board: React.FC<SceneProps> = (p) => {
     causes = [{ label: "A blind gauge", at: e("gauge"), verdict: "cause" }, { label: "A tower filled for hours", at: e("filled"), verdict: "cause" },
       { label: "A stack with no flare", at: e("flare"), verdict: "cause" }, { label: "Trailers too close", at: e("trailers"), verdict: "cause" }];
   } else if (mode === "intro") {
-    causes = [];
+    causes = all.map((c, i) => ({ ...c, at: (e("traced") ?? 20) - 20 + i * 10 }));
+    title = "Five links";
   } else {
     const n = ORDER.indexOf(mode);
     causes = all.slice(0, n + 1).map((c, i) => (i === n ? { ...c, at: e(stampAt[mode] ?? "") !== undefined ? (e(stampAt[mode]!)! - 14) : 0 } : { ...c, at: undefined }));

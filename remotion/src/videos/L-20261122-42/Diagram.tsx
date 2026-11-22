@@ -81,7 +81,7 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; p: Sc
       <MonoLabel x={DX - 140} y={820} t={t} at={flare ? 0 : e("drum")} text="BLOWDOWN DRUM" size={42} anchor="end" />
       <MonoLabel x={DX + 80} y={300} t={t} at={flare ? 0 : e("stack")} text="OPEN STACK" size={42} />
       <DrawLine x1={300} y1={880} x2={DX - 110} y2={880} k={1} color={L.line} w={12} />
-      <MonoLabel x={300} y={840} t={t} at={0} text="FROM THE RELIEF VALVES" size={38} />
+      <MonoLabel x={300} y={950} t={t} at={0} text="FROM THE RELIEF VALVES" size={38} />
       <Arrow x1={DX} y1={200} x2={DX} y2={60} k={flare ? 1 : ramp(t, e("vented"), 14)} color={L.fail} w={10} />
       {!flare && <circle cx={DX} cy={180} r={70} fill="none" stroke={L.fail} strokeWidth={7} opacity={ramp(t, e("air"), 10)} />}
       {flare && (

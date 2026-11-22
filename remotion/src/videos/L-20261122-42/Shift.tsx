@@ -24,7 +24,7 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; p: Sc
           const x = 150 + (i % 8) * 170, y = 220 + Math.floor(i / 8) * 230;
           const amber = i < over && t >= e("range");
           return (
-            <g key={i} opacity={i < shown ? 1 : 0.12}>
+            <g key={i} opacity={i < shown ? 1 : 0.45}>
               <rect x={x} y={y} width={150} height={190} rx={12} fill={amber ? "rgba(255,176,0,0.25)" : "#0b0f0c"} stroke={amber ? L.label : L.line} strokeWidth={4} />
               <rect x={x + 50} y={y + 30} width={50} height={130} fill="none" stroke={amber ? L.label : L.line} strokeWidth={3} />
               <rect x={x + 53} y={y + 157 - (amber ? 110 : 20)} width={44} height={amber ? 110 : 20} fill={amber ? L.label : L.ok} />

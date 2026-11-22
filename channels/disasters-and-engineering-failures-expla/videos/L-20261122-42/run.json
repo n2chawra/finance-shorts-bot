@@ -139,5 +139,23 @@
       "note: directed is 76 of 76 composed beats (at most 40%): vary how each idea is shown",
       "note: directed 4 times in a row: change the device"
     ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T07:06:38.867387+00:00",
+    "finishedAt": "2026-11-22T07:06:38.867387+00:00",
+    "notes": [
+      "Round 1: too little 3D (2D runs 113-149 s, 164-202 s, 357-460 s); hero shots weak (hook, geyser, ignition); box-like 3D; text-only frames (promise, r-board, w-score); toll as floating text; label collisions; chapters missing; same panel too long"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T07:08:35.591635+00:00",
+    "finishedAt": "2026-11-22T07:08:35.591635+00:00",
+    "notes": [
+      "31 figures computed from inputs; 31 cross-checked against closed-form formulas."
+    ]
   }
 ]

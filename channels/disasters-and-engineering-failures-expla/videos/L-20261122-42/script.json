@@ -381,8 +381,9 @@
           "day": "{fact24}",
           "height": "{fact7}"
         },
-        "shot": "hook",
+        "shot": "hookclose",
         "caption": "date",
+        "pipeFill": "texas",
         "tag": {
           "at": "tower",
           "fig": "height",
@@ -597,8 +598,8 @@
         }
       },
       "params": {
-        "component": "Board",
-        "place": "the cause chain",
+        "component": "Unit",
+        "place": "the unit, the three links pinned on it",
         "camera": [
           {
             "sec": 0,
@@ -612,30 +613,50 @@
         "moments": [
           {
             "at": "failure",
-            "what": "the board lights"
+            "what": "the camera glides across the unit"
           },
           {
             "at": "gauge",
-            "what": "the first link writes on: blind gauge"
+            "what": "a BLIND GAUGE tag pins to the transmitter at the tower base"
           },
           {
             "at": "vent",
-            "what": "the second link: vent with no flare"
+            "what": "a VENT, NO FLARE tag pins to the stack"
           },
           {
             "at": "trailers",
-            "what": "the third link: trailers too close"
+            "what": "a TRAILERS TOO CLOSE tag pins over the trailers"
           },
           {
             "at": "close",
-            "what": "the chain glows red"
+            "what": "the three tags glow together"
           }
         ],
         "things": [
-          "cause chain",
-          "three links"
+          "unit",
+          "tower base",
+          "stack",
+          "trailers",
+          "three tags"
         ],
-        "mode": "chain"
+        "shot": "wide",
+        "labels": [
+          {
+            "at": "gauge",
+            "text": "BLIND GAUGE",
+            "target": "gauge"
+          },
+          {
+            "at": "vent",
+            "text": "VENT · NO FLARE",
+            "target": "stack"
+          },
+          {
+            "at": "trailers",
+            "text": "TRAILERS TOO CLOSE",
+            "target": "trailers"
+          }
+        ]
       }
     },
     {
@@ -1395,14 +1416,14 @@
       "role": "level",
       "say": "He stopped when the gauge read near the top of its range. One high level alarm sounded. The backup alarm never did.",
       "events": {
-        "high": {
-          "word": "high"
-        },
         "stopped": {
           "word": "stopped"
         },
         "range": {
           "word": "range"
+        },
+        "high": {
+          "word": "high"
         },
         "alarm": {
           "word": "alarm"
@@ -1415,8 +1436,8 @@
         }
       },
       "params": {
-        "component": "Panel",
-        "place": "the control board, night",
+        "component": "Tower",
+        "place": "the tower base and its alarm lamps",
         "camera": [
           {
             "sec": 0,
@@ -1429,20 +1450,20 @@
         ],
         "moments": [
           {
+            "at": "stopped",
+            "what": "the liquid settles at the top of the range bracket"
+          },
+          {
+            "at": "range",
+            "what": "the bracket glows full"
+          },
+          {
             "at": "high",
             "what": "the high alarm lamp warms"
           },
           {
-            "at": "stopped",
-            "what": "the feed lamp goes off"
-          },
-          {
-            "at": "range",
-            "what": "the gauge bar reaches the top of its scale"
-          },
-          {
             "at": "alarm",
-            "what": "the first alarm lamp flashes"
+            "what": "the high alarm lamp flashes amber"
           },
           {
             "at": "backup",
@@ -1454,11 +1475,11 @@
           }
         ],
         "things": [
-          "gauge bar",
-          "alarm lamps",
-          "red ring"
+          "tower base",
+          "range bracket",
+          "alarm lamps"
         ],
-        "mode": "alarms",
+        "mode": "alarm",
         "chapter_n": 2
       },
       "sfx": [
@@ -1593,11 +1614,11 @@
       "role": "level",
       "say": "The operators had been working twelve hour shifts for {fact22} or more days in a row.",
       "events": {
-        "twelve": {
-          "word": "twelve"
-        },
         "operators": {
           "word": "operators"
+        },
+        "twelve": {
+          "word": "twelve"
         },
         "shifts": {
           "word": "shifts"
@@ -1607,8 +1628,8 @@
         }
       },
       "params": {
-        "component": "Shift",
-        "place": "the shift calendar",
+        "component": "Unit",
+        "place": "the unit at the shift change",
         "camera": [
           {
             "sec": 0,
@@ -1621,31 +1642,36 @@
         ],
         "moments": [
           {
-            "at": "twelve",
-            "what": "each bar stretches long"
+            "at": "operators",
+            "what": "the camera finds the control room by the unit"
           },
           {
-            "at": "operators",
-            "what": "the shift calendar pins up"
+            "at": "twelve",
+            "what": "its window band glows"
           },
           {
             "at": "shifts",
-            "what": "each day fills with a long shift bar"
+            "what": "the light inside flickers"
           },
           {
             "at": "row",
-            "what": "the run of days is counted in amber"
+            "what": "a days tag counts up"
           }
         ],
         "things": [
-          "calendar",
-          "shift bars",
-          "day count"
+          "control room",
+          "window band",
+          "days tag"
         ],
         "fig": {
           "days": "{fact22}"
         },
-        "mode": "days",
+        "shot": "control",
+        "tag": {
+          "at": "row",
+          "fig": "days",
+          "label": "DAYS IN A ROW"
+        },
         "chapter_n": 2
       }
     },
@@ -1873,6 +1899,9 @@
       "role": "level",
       "say": "Late in the morning, the supervisor left for a family emergency. No one trained took his place.",
       "events": {
+        "late": {
+          "word": "Late"
+        },
         "supervisor": {
           "word": "supervisor"
         },
@@ -1884,8 +1913,8 @@
         }
       },
       "params": {
-        "component": "Panel",
-        "place": "the empty supervisor desk",
+        "component": "Unit",
+        "place": "the satellite control room",
         "camera": [
           {
             "sec": 0,
@@ -1898,23 +1927,32 @@
         ],
         "moments": [
           {
+            "at": "late",
+            "what": "the camera drifts toward the control room"
+          },
+          {
             "at": "supervisor",
-            "what": "the supervisor lamp goes out"
+            "what": "the doorway light goes off"
           },
           {
             "at": "emergency",
-            "what": "the door lamp blinks"
+            "what": "the door stands shut"
           },
           {
             "at": "place",
-            "what": "the empty desk lamp stays dark"
+            "what": "a caption types: no trained stand-in"
           }
         ],
         "things": [
-          "supervisor lamp",
-          "empty desk"
+          "control room",
+          "door",
+          "caption"
         ],
-        "mode": "supervisor",
+        "shot": "control",
+        "captionText": {
+          "at": "place",
+          "text": "SUPERVISOR GONE · NO TRAINED STAND-IN"
+        },
         "chapter_n": 2
       }
     },
@@ -1987,8 +2025,8 @@
         }
       },
       "params": {
-        "component": "Panel",
-        "place": "the two readouts",
+        "component": "Tower",
+        "place": "inside the tower, beside the board",
         "camera": [
           {
             "sec": 0,
@@ -2002,23 +2040,23 @@
         "moments": [
           {
             "at": "see",
-            "what": "the board readout lights: what they saw"
+            "what": "a board readout hangs beside the tower: LOW"
           },
           {
             "at": "really",
-            "what": "the actual readout lights beside it"
+            "what": "the tower turns to glass and a second readout lights: RISING"
           },
           {
             "at": "tower",
-            "what": "a tower outline fills between them"
+            "what": "the liquid inside climbs past the bracket"
           }
         ],
         "things": [
-          "board readout",
-          "actual readout",
-          "tower outline"
+          "tower cutaway",
+          "two readouts",
+          "rising liquid"
         ],
-        "mode": "split",
+        "mode": "compare",
         "chapter": "THE GAUGE",
         "chapter_n": 3
       }
@@ -2093,8 +2131,8 @@
         }
       },
       "params": {
-        "component": "Panel",
-        "place": "the two readouts",
+        "component": "Tower",
+        "place": "inside the tower, cut away",
         "camera": [
           {
             "sec": 0,
@@ -2108,25 +2146,30 @@
         "moments": [
           {
             "at": "before",
-            "what": "the actual readout ticks"
+            "what": "the real level tag counts up"
           },
           {
             "at": "noon",
-            "what": "the tower outline fills higher"
+            "what": "the liquid climbs higher in the glass tower"
           }
         ],
         "things": [
-          "two readouts",
-          "tower outline"
+          "tower cutaway",
+          "liquid",
+          "level tag"
         ],
         "fig": {
           "actual": "{fact10}",
           "tower": "{fact7}"
         },
-        "mode": "split",
+        "mode": "level",
+        "tag": {
+          "at": "before",
+          "fig": "actual",
+          "label": "REAL LEVEL · FEET"
+        },
         "chapter_n": 3
-      },
-      "transition": "match"
+      }
     },
     {
       "id": "g-140",
@@ -2142,8 +2185,8 @@
         }
       },
       "params": {
-        "component": "Panel",
-        "place": "the two readouts",
+        "component": "Tower",
+        "place": "inside the tower, cut away",
         "camera": [
           {
             "sec": 0,
@@ -2157,25 +2200,30 @@
         "moments": [
           {
             "at": "early",
-            "what": "the actual readout ticks amber"
+            "what": "the level tag counts up"
           },
           {
             "at": "afternoon",
-            "what": "the tower outline is past three quarters"
+            "what": "the liquid passes three quarters of the tower"
           }
         ],
         "things": [
-          "two readouts",
-          "tower outline"
+          "tower cutaway",
+          "liquid",
+          "level tag"
         ],
         "fig": {
           "actual": "{fact11}",
           "tower": "{fact7}"
         },
-        "mode": "split",
+        "mode": "level",
+        "tag": {
+          "at": "early",
+          "fig": "actual",
+          "label": "REAL LEVEL · FEET"
+        },
         "chapter_n": 3
-      },
-      "transition": "match"
+      }
     },
     {
       "id": "g-158",
@@ -3127,7 +3175,7 @@
         "fig": {
           "stack": "{fact19}"
         },
-        "shot": "stack",
+        "shot": "stackclose",
         "phase": "geyser",
         "geyserAt": "erupted",
         "tag": {
@@ -3498,7 +3546,7 @@
           "fireball",
           "pressure wave"
         ],
-        "shot": "blast",
+        "shot": "ignite",
         "phase": "blast",
         "blastAt": "ignited",
         "chapter_n": 5
@@ -3794,7 +3842,6 @@
         },
         "shot": "high",
         "phase": "after",
-        "toll": true,
         "chapter_n": 5
       },
       "min_sec": 6
@@ -3933,8 +3980,8 @@
         }
       },
       "params": {
-        "component": "Report",
-        "place": "the CSB final report",
+        "component": "Unit",
+        "place": "above the unit, after",
         "camera": [
           {
             "sec": 0,
@@ -3948,27 +3995,24 @@
         "moments": [
           {
             "at": "safety",
-            "what": "the report slides in"
+            "what": "the investigation caption types on over the wrecked unit"
           },
           {
             "at": "blunt",
-            "what": "the camera pushes to the finding"
+            "what": "the camera holds high over the trailer area"
           }
         ],
         "things": [
-          "report",
-          "finding"
+          "unit after the blast",
+          "caption"
         ],
-        "mode": "cover",
+        "shot": "high",
+        "phase": "after",
         "chapter": "THE FINDINGS",
-        "src": "media/disasters-and-engineering-failures-expla/report-document-3f57172277f7-p018.png",
-        "box": [
-          0.118,
-          0.272,
-          0.713,
-          0.012
-        ],
-        "page": 18,
+        "captionText": {
+          "at": "safety",
+          "text": "U.S. CHEMICAL SAFETY BOARD · INVESTIGATION"
+        },
         "chapter_n": 6
       }
     },
@@ -4091,22 +4135,22 @@
       "role": "level",
       "say": "Liquid was fed in for over {fact14} hours with none taken out, against the start-up procedure.",
       "events": {
+        "fed": {
+          "word": "fed"
+        },
         "hours": {
           "word": "hours"
         },
         "none": {
           "word": "none"
         },
-        "fed": {
-          "word": "fed"
-        },
         "procedure": {
           "word": "procedure"
         }
       },
       "params": {
-        "component": "Board",
-        "place": "the investigation board",
+        "component": "Tower",
+        "place": "inside the tower, filling",
         "camera": [
           {
             "sec": 0,
@@ -4119,33 +4163,38 @@
         ],
         "moments": [
           {
+            "at": "fed",
+            "what": "the finding card types on over the filling tower"
+          },
+          {
             "at": "hours",
-            "what": "the hours on the card light amber"
+            "what": "the liquid climbs in the glass"
           },
           {
             "at": "none",
-            "what": "a status lamp lights"
-          },
-          {
-            "at": "fed",
-            "what": "card one writes on"
+            "what": "the outlet stays dark"
           },
           {
             "at": "procedure",
-            "what": "it stamps CAUSE"
+            "what": "CAUSE stamps on the card"
           }
         ],
         "things": [
-          "cause cards",
-          "stamp"
+          "tower cutaway",
+          "liquid",
+          "finding card"
         ],
         "fig": {
           "hours": "{fact14}"
         },
-        "mode": "cfeed",
+        "mode": "fillday",
+        "finding": {
+          "at": "procedure",
+          "text": "FED FOR HOURS, NONE TAKEN OUT",
+          "verdict": "CAUSE"
+        },
         "chapter_n": 6
-      },
-      "transition": "match"
+      }
     },
     {
       "id": "r-instr",
@@ -4153,11 +4202,11 @@
       "role": "level",
       "say": "Instruments and alarms gave false readings, and the operators were likely tired and poorly trained.",
       "events": {
-        "false": {
-          "word": "false"
-        },
         "instruments": {
           "word": "Instruments"
+        },
+        "false": {
+          "word": "false"
         },
         "alarms": {
           "word": "alarms"
@@ -4170,8 +4219,8 @@
         }
       },
       "params": {
-        "component": "Board",
-        "place": "the investigation board",
+        "component": "Tower",
+        "place": "the level transmitter",
         "camera": [
           {
             "sec": 0,
@@ -4184,34 +4233,39 @@
         ],
         "moments": [
           {
-            "at": "false",
-            "what": "a status lamp lights"
+            "at": "instruments",
+            "what": "the transmitter fills the frame"
           },
           {
-            "at": "instruments",
-            "what": "card two writes on"
+            "at": "false",
+            "what": "its bracket flickers"
           },
           {
             "at": "alarms",
-            "what": "it stamps CAUSE"
+            "what": "the finding card stamps CAUSE"
           },
           {
             "at": "tired",
-            "what": "card three writes on"
+            "what": "the calibration tag shows a different density"
           },
           {
             "at": "trained",
-            "what": "it stamps FACTOR"
+            "what": "the card holds"
           }
         ],
         "things": [
-          "cause cards",
-          "stamps"
+          "transmitter",
+          "bracket",
+          "finding card"
         ],
-        "mode": "cinstr",
+        "mode": "calib",
+        "finding": {
+          "at": "alarms",
+          "text": "FALSE READINGS · TIRED, UNDERTRAINED CREW",
+          "verdict": "CAUSE"
+        },
         "chapter_n": 6
-      },
-      "transition": "match"
+      }
     },
     {
       "id": "r-turnover",
@@ -4352,22 +4406,22 @@
       "role": "level",
       "say": "The blowdown stack was an unsafe design, kept in service despite earlier warnings.",
       "events": {
+        "blowdown": {
+          "word": "blowdown"
+        },
         "unsafe": {
           "word": "unsafe"
         },
         "service": {
           "word": "service"
         },
-        "blowdown": {
-          "word": "blowdown"
-        },
         "warnings": {
           "word": "warnings"
         }
       },
       "params": {
-        "component": "Board",
-        "place": "the investigation board",
+        "component": "Unit",
+        "place": "the blowdown stack",
         "camera": [
           {
             "sec": 0,
@@ -4380,30 +4434,35 @@
         ],
         "moments": [
           {
+            "at": "blowdown",
+            "what": "the camera rises up the old stack"
+          },
+          {
             "at": "unsafe",
-            "what": "a status lamp lights"
+            "what": "the open top comes into view"
           },
           {
             "at": "service",
-            "what": "the card glows"
-          },
-          {
-            "at": "blowdown",
-            "what": "card four writes on"
+            "what": "the finding card types on"
           },
           {
             "at": "warnings",
-            "what": "it stamps CAUSE"
+            "what": "CAUSE stamps on the card"
           }
         ],
         "things": [
-          "cause cards",
-          "stamp"
+          "blowdown stack",
+          "drum",
+          "finding card"
         ],
-        "mode": "cstack",
+        "shot": "stack",
+        "finding": {
+          "at": "warnings",
+          "text": "UNSAFE STACK KEPT IN SERVICE",
+          "verdict": "CAUSE"
+        },
         "chapter_n": 6
-      },
-      "transition": "match"
+      }
     },
     {
       "id": "r-sited",
@@ -4411,22 +4470,22 @@
       "role": "level",
       "say": "And occupied trailers had been placed too close to a unit handling highly hazardous materials.",
       "events": {
+        "occupied": {
+          "word": "occupied"
+        },
         "trailers": {
           "word": "trailers"
         },
         "close": {
           "word": "close"
         },
-        "occupied": {
-          "word": "occupied"
-        },
         "hazardous": {
           "word": "hazardous"
         }
       },
       "params": {
-        "component": "Board",
-        "place": "the investigation board",
+        "component": "Unit",
+        "place": "the trailers beside the unit",
         "camera": [
           {
             "sec": 0,
@@ -4439,30 +4498,35 @@
         ],
         "moments": [
           {
+            "at": "occupied",
+            "what": "the camera moves along the trailers"
+          },
+          {
             "at": "trailers",
-            "what": "a status lamp lights"
+            "what": "the unit looms behind them"
           },
           {
             "at": "close",
-            "what": "the card glows"
-          },
-          {
-            "at": "occupied",
-            "what": "card five writes on"
+            "what": "the finding card types on"
           },
           {
             "at": "hazardous",
-            "what": "it stamps CAUSE"
+            "what": "CAUSE stamps on the card"
           }
         ],
         "things": [
-          "cause cards",
-          "stamp"
+          "trailers",
+          "unit",
+          "finding card"
         ],
-        "mode": "csited",
+        "shot": "trailers",
+        "finding": {
+          "at": "hazardous",
+          "text": "OCCUPIED TRAILERS TOO CLOSE",
+          "verdict": "CAUSE"
+        },
         "chapter_n": 6
-      },
-      "transition": "match"
+      }
     },
     {
       "id": "r-tease",
@@ -4515,11 +4579,11 @@
       "role": "level",
       "say": "Did anything change? Months before its final report, the board issued urgent recommendations.",
       "events": {
-        "report": {
-          "word": "report"
-        },
         "change": {
           "word": "change"
+        },
+        "report": {
+          "word": "report"
         },
         "months": {
           "word": "Months"
@@ -4529,8 +4593,8 @@
         }
       },
       "params": {
-        "component": "Rec",
-        "place": "the urgent recommendation letter",
+        "component": "Unit",
+        "place": "the cleared ground by the unit",
         "camera": [
           {
             "sec": 0,
@@ -4543,28 +4607,34 @@
         ],
         "moments": [
           {
-            "at": "report",
-            "what": "the letter header lights"
+            "at": "change",
+            "what": "the camera rises over the cleared ground"
           },
           {
-            "at": "change",
-            "what": "the desk lamp comes on"
+            "at": "report",
+            "what": "the empty pad catches the light"
           },
           {
             "at": "months",
-            "what": "the letter slides in"
+            "what": "the caption types on"
           },
           {
             "at": "urgent",
-            "what": "URGENT stamps on"
+            "what": "the caption locks: urgent recommendations"
           }
         ],
         "things": [
-          "letter",
-          "urgent stamp"
+          "cleared ground",
+          "unit",
+          "caption"
         ],
-        "mode": "urgent",
+        "shot": "cleared",
+        "phase": "cleared",
         "chapter": "WHAT CHANGED",
+        "captionText": {
+          "at": "urgent",
+          "text": "CSB · URGENT RECOMMENDATIONS"
+        },
         "chapter_n": 7
       }
     },
@@ -4635,11 +4705,11 @@
       "role": "level",
       "say": "The institute agreed. And the board called for an alert urging companies to act promptly to place their trailers safely.",
       "events": {
-        "institute": {
-          "word": "institute"
-        },
         "agreed": {
           "word": "agreed"
+        },
+        "institute": {
+          "word": "institute"
         },
         "alert": {
           "word": "alert"
@@ -4652,8 +4722,8 @@
         }
       },
       "params": {
-        "component": "Plan",
-        "place": "the site plan, redrawn",
+        "component": "Unit",
+        "place": "the trailers moving away",
         "camera": [
           {
             "sec": 0,
@@ -4666,32 +4736,38 @@
         ],
         "moments": [
           {
-            "at": "institute",
-            "what": "the alert banner starts to slide"
+            "at": "agreed",
+            "what": "the camera rises over the trailer area"
           },
           {
-            "at": "agreed",
-            "what": "an AGREED stamp lands"
+            "at": "institute",
+            "what": "the trailers start to move"
           },
           {
             "at": "alert",
-            "what": "an alert banner slides in"
+            "what": "the alert caption types on"
           },
           {
             "at": "trailers",
-            "what": "the trailers slide out of the red zone"
+            "what": "the trailers roll away from the unit"
           },
           {
             "at": "safely",
-            "what": "the red zone stays empty"
+            "what": "the ground near the drum stays empty"
           }
         ],
         "things": [
-          "site plan",
-          "trailers moving",
-          "red zone"
+          "trailers moving away",
+          "unit",
+          "caption"
         ],
-        "mode": "move",
+        "shot": "cleared",
+        "phase": "cleared",
+        "away": "trailers",
+        "captionText": {
+          "at": "alert",
+          "text": "SAFETY ALERT · PLACE TRAILERS SAFELY"
+        },
         "chapter_n": 7
       }
     },
@@ -4715,8 +4791,8 @@
         }
       },
       "params": {
-        "component": "Rec",
-        "place": "the relief-system guide",
+        "component": "Unit",
+        "place": "the stack and a flare",
         "camera": [
           {
             "sec": 0,
@@ -4730,28 +4806,40 @@
         "moments": [
           {
             "at": "stack",
-            "what": "a stack icon lights on the letter"
+            "what": "an OPEN STACK tag pins to the old stack"
           },
           {
             "at": "revise",
-            "what": "the guide title highlights"
+            "what": "the caption types on"
           },
           {
             "at": "hazards",
-            "what": "the hazard line highlights"
+            "what": "the camera drifts toward a new line"
           },
           {
             "at": "alternatives",
-            "what": "a flare icon replaces the open stack"
+            "what": "a pipe runs out to a flare that rises and lights"
           }
         ],
         "things": [
-          "letter",
-          "guide title",
-          "stack icon",
-          "flare icon"
+          "old stack",
+          "pipe",
+          "flare",
+          "caption"
         ],
-        "mode": "relief",
+        "shot": "flare",
+        "flare": "alternatives",
+        "labels": [
+          {
+            "at": "stack",
+            "text": "OPEN STACK",
+            "target": "stack"
+          }
+        ],
+        "captionText": {
+          "at": "revise",
+          "text": "CSB · REVISE THE RELIEF-SYSTEM GUIDE"
+        },
         "chapter_n": 7
       }
     },
@@ -4846,8 +4934,8 @@
         }
       },
       "params": {
-        "component": "Board",
-        "place": "the cause scorecard",
+        "component": "Unit",
+        "place": "the unit, the four links pinned on it",
         "camera": [
           {
             "sec": 0,
@@ -4861,26 +4949,48 @@
         "moments": [
           {
             "at": "gauge",
-            "what": "link one stamps"
+            "what": "BLIND GAUGE pins to the tower base"
           },
           {
             "at": "filled",
-            "what": "link two stamps"
+            "what": "FILLED FOR HOURS pins to the tower top"
           },
           {
             "at": "flare",
-            "what": "link three stamps"
+            "what": "NO FLARE pins to the stack"
           },
           {
             "at": "trailers",
-            "what": "link four stamps"
+            "what": "TRAILERS TOO CLOSE pins over the trailers"
           }
         ],
         "things": [
-          "scorecard",
-          "four links"
+          "unit from above",
+          "four tags"
         ],
-        "mode": "score",
+        "shot": "high",
+        "labels": [
+          {
+            "at": "gauge",
+            "text": "BLIND GAUGE",
+            "target": "gauge"
+          },
+          {
+            "at": "filled",
+            "text": "FILLED FOR HOURS",
+            "target": "top"
+          },
+          {
+            "at": "flare",
+            "text": "NO FLARE",
+            "target": "stack"
+          },
+          {
+            "at": "trailers",
+            "text": "TRAILERS TOO CLOSE",
+            "target": "trailers"
+          }
+        ],
         "chapter_n": 7
       }
     },

@@ -82,3 +82,29 @@ export const LampStrip: React.FC<{ t: number; marks: number[] }> = ({ t, marks }
     </div>
   );
 };
+
+/** A chapter card: the chapter's name types on in mono, top-left under the tag, for the opening seconds. */
+export const ChapterCard: React.FC<{ t: number; text: string }> = ({ t, text }) => {
+  const o = t < 75 ? 1 : Math.max(0, 1 - (t - 75) / 12);
+  if (o <= 0) return null;
+  return (
+    <div style={{ position: "absolute", left: 56, top: 96, opacity: o, display: "flex", alignItems: "center", gap: 16 }}>
+      <div style={{ width: 10, height: 52, background: AMBER }} />
+      <div style={{ fontFamily: ANTON, fontSize: 52, letterSpacing: 3, color: INK, background: "rgba(4,8,6,0.75)", padding: "2px 18px" }}>{text.slice(0, Math.max(0, Math.floor(t * 1.2)))}</div>
+    </div>
+  );
+};
+
+/** A finding card pinned over a 3D shot: the board's finding types on, then its verdict stamps. */
+export const Finding: React.FC<{ t: number; at: number; text: string; verdict: string }> = ({ t, at, text, verdict }) => {
+  const k = Math.min(1, Math.max(0, (t - at + 30) / 10));
+  if (k <= 0) return null;
+  const s = t >= at ? Math.min(1, (t - at) / 6) : 0;
+  const col = verdict === "FACTOR" ? AMBER : RED;
+  return (
+    <div style={{ position: "absolute", left: 56, top: 170, opacity: k, background: "rgba(4,8,6,0.88)", borderLeft: `10px solid ${col}`, padding: "16px 26px", maxWidth: 900 }}>
+      <div style={{ fontFamily: MONO, fontWeight: 700, fontSize: 38, letterSpacing: 3, color: INK }}>{text.slice(0, Math.max(0, Math.floor((t - at + 30) * 1.8)))}</div>
+      {s > 0 && <div style={{ display: "inline-block", marginTop: 12, border: `5px solid ${col}`, color: col, fontFamily: ANTON, fontSize: 44, padding: "0 14px", transform: `rotate(-6deg) scale(${1.6 - 0.6 * s})`, opacity: s }}>{verdict}</div>}
+    </div>
+  );
+};

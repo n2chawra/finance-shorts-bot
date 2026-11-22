@@ -12,10 +12,10 @@ import type { SceneProps } from "../../scenes/kit";
 import { countText, motion } from "../../flat/kit";
 import { Camera3D, cue, DisasterStage, Focus, glow, Label3D, Smoke, type CamKey, type V3 } from "../../three/index";
 import { Column, Overhead, Site, TOWER_H, TOWER_R } from "./refinery";
-import { AMBER, figOf, GREEN, kitClock, MonoCaption, moments, Overlay, Readout, RED } from "./ui";
+import { AMBER, ChapterCard, figOf, Finding, GREEN, kitClock, MonoCaption, moments, Overlay, Readout, RED } from "./ui";
 
 type Tag = { at: string; fig: string; label: string };
-type Params = { mode?: string; tag?: Tag };
+type Params = { mode?: string; tag?: Tag; chapter?: string; finding?: { at: string; text: string; verdict: string } };
 const BAND = 0.06;            // the bottom of the tower the gauge could read, as a share of the height (drawn)
 
 const Liquid: React.FC<{ level: number; hot?: boolean }> = ({ level, hot }) => level <= 0 ? null : (
@@ -51,20 +51,29 @@ const Tower: React.FC<SceneProps> = (p) => {
     mode === "trays" || mode === "normal" || mode === "span" || mode === "calib" || mode === "glass" ? 0.04 :
     mode === "blind" ? 0.045 :
     mode === "fillnight" ? 0.01 + 0.05 * cue(t, e("filling"), 60) :
-    mode === "fillday" ? 0.06 + 0.4 * cue(t, e("filled") - 20, Math.max(40, end - e("filled") + 10), (x) => x) :
+    mode === "fillday" ? 0.06 + 0.4 * cue(t, Math.min(e("filled"), e("fed")) - 20, Math.max(40, end - Math.min(e("filled"), e("fed")) + 10), (x) => x) :
     mode === "spill" ? 0.97 :
-    mode === "payoff" ? 0.15 + (ratio - 0.15) * cue(t, e("tower"), 40) : 0.05;
+    mode === "payoff" ? 0.15 + (ratio - 0.15) * cue(t, e("tower"), 40) :
+    mode === "level" ? Math.max(0.06, ratio - 0.12) + 0.12 * cue(t, 0, 30) :
+    mode === "compare" ? 0.06 + 0.33 * cue(t, e("really"), 40) :
+    mode === "alarm" ? 0.055 : 0.05;
   const base: V3 = [0, 0.6, 0];
   const pose = (a: V3, la: V3, b: V3, lb: V3, fov = 40): CamKey[] => [{ f: 0, pos: a, look: la, fov }, { f: end + 10, pos: b, look: lb, fov }];
   const keys =
-    mode === "hookfull" || mode === "fillday" || mode === "payoff" ? pose([7, 7, 13], [0, 8, 0], [6, 8.5, 11], [0, 9, 0], 48) :
+    mode === "alarm" ? pose([3.4, 1.6, 4.2], [0, 1, 0], [2.8, 1.4, 3.4], [0, 1, 0]) :
+    mode === "hookfull" || mode === "fillday" || mode === "payoff" || mode === "level" || mode === "compare" ? pose([7, 7, 13], [0, 8, 0], [6, 8.5, 11], [0, 9, 0], 48) :
     mode === "trays" ? pose([3.4, 5, 4.4], [0, 5, 0], [2.8, 6.4, 3.8], [0, 6.5, 0]) :
     mode === "blind" ? pose([3.2, 1.2, 4], [0, 1, 0], [3.6, 3, 4.6], [0, 12, 0], 52) :
     mode === "spill" ? pose([3, 17.4, 3.6], [0.4, 17, 0], [2.6, 17.8, 3], [0.6, 17.2, 0]) :
     mode === "glass" ? pose([1.6, 1.4, 1.8], [0, 1.1, 0.6], [1.2, 1.25, 1.4], [0, 1.1, 0.6], 34) :
     pose([3, 1.6, 3.8], [0, 0.8, 0], [2.4, 1.3, 3], [0, 0.8, 0], 38);
   const glass = cue(t, Math.min(e("fact"), e("inside"), e("last"), mode === "hookfull" || mode === "trays" || mode === "payoff" ? 1e9 : 0), 14);
-  const bracket = mode === "span" ? cue(t, e("see"), 12) : ["blind", "calib", "fillnight", "fillday", "payoff"].includes(mode) ? 1 : 0;
+  const lamp = (on: boolean, c: string, label: string, x: number) => (
+    <div style={{ position: "absolute", left: x, top: 180, textAlign: "center", fontFamily: "'Courier Prime', monospace", fontWeight: 700, fontSize: 32, color: "#d9ffe8" }}>
+      <div style={{ width: 70, height: 70, borderRadius: 35, margin: "0 auto 10px", background: on ? c : "rgba(57,255,154,0.12)", boxShadow: on ? `0 0 30px ${c}` : "none", border: "4px solid rgba(57,255,154,0.5)" }} />{label}
+    </div>
+  );
+  const bracket = mode === "span" ? cue(t, e("see"), 12) : ["blind", "calib", "fillnight", "fillday", "payoff", "alarm", "level", "compare"].includes(mode) ? 1 : 0;
   const dark = mode === "blind" ? cue(t, e("blind"), 20) : 0;
   const rangeTop = TOWER_H * BAND + 0.3;
   const fig = (n?: string) => figOf(p, n);
@@ -72,7 +81,14 @@ const Tower: React.FC<SceneProps> = (p) => {
     <DisasterStage look="storm" floor={false} dof={1} shadowBox={14} light={0.85} fog={{ color: "#3a434d", near: 20, far: 80 }}
       overlay={
         <Overlay t={t} marks={Object.values(ev)} text="3D reconstruction · cutaway">
-          {P.tag && <Readout x={1240} y={170} label={P.tag.label} k={cue(t, e(P.tag.at), 12)} value={countText(fig(P.tag.fig), cue(t, e(P.tag.at), 20))} />}
+          {P.chapter && <ChapterCard t={t} text={P.chapter} />}
+          {P.finding && <Finding t={t} at={e(P.finding.at)} text={P.finding.text} verdict={P.finding.verdict} />}
+          {mode === "alarm" && lamp(t >= e("alarm") && Math.floor(t / 8) % 2 === 0, AMBER, "HIGH ALARM", 1300)}
+          {mode === "alarm" && lamp(false, RED, "BACKUP ALARM", 1560)}
+          {mode === "alarm" && t >= e("never") && <div style={{ position: "absolute", left: 1548, top: 160, width: 230, height: 230, borderRadius: 115, border: `8px solid ${RED}` }} />}
+          {(mode === "compare") && <Readout x={140} y={300} label="THE BOARD SHOWED" value="LOW" k={cue(t, e("see"), 12)} color={GREEN} />}
+          {(mode === "compare") && <Readout x={1300} y={170} label="IN THE TOWER" value="RISING" k={cue(t, e("really"), 12)} color={AMBER} />}
+          {P.tag && <Readout x={mode === "span" ? 140 : 1240} y={mode === "span" ? 300 : 170} label={P.tag.label} k={cue(t, e(P.tag.at), 12)} value={countText(fig(P.tag.fig), cue(t, e(P.tag.at), 20))} />}
           {mode === "calib" && <MonoCaption t={t} at={e("calibrated")} text="CALIBRATED FOR A DIFFERENT DENSITY" top={170} color={RED} />}
           {mode === "glass" && <MonoCaption t={t} at={e("years")} text="SIGHT GLASS · NONFUNCTIONAL FOR YEARS" top={170} color={AMBER} />}
           {mode === "payoff" && (
