@@ -1,5 +1,63 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
-  "notes": []
+  "open": 3,
+  "notes": [
+    {
+      "id": "cmwrnqrk10001l109q8tokt2j",
+      "kind": "improve",
+      "area": "pace",
+      "text": "Increase the pace by 1.25 .",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-22T09:51:51.554Z",
+      "video": {
+        "id": "L-20261121-42",
+        "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
+        "format": "long",
+        "status": "queued",
+        "story": "corner_cut_structure",
+        "shape": null,
+        "hookStyle": "conflict",
+        "hook": "Kansas City, {fact1}. Two steel walkways hang over a crowded hotel lobby, one directly above the other."
+      }
+    },
+    {
+      "id": "cmwrnqbfn0001jx09r3rmj7jn",
+      "kind": "improve",
+      "area": "other",
+      "text": "Animation didn't show people beneath and gets crushed by the walkway only showing death counts is not enough. Make that scenes. Don't make it very cruel or bloody just so that it seems like what would have happened.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-22T09:51:30.659Z",
+      "video": {
+        "id": "L-20261121-42",
+        "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
+        "format": "long",
+        "status": "queued",
+        "story": "corner_cut_structure",
+        "shape": null,
+        "hookStyle": "conflict",
+        "hook": "Kansas City, {fact1}. Two steel walkways hang over a crowded hotel lobby, one directly above the other."
+      }
+    },
+    {
+      "id": "cmwrnoaza0001jv09ogy086yi",
+      "kind": "improve",
+      "area": "hook",
+      "text": "The hook should have said that will engage people even more . Like this small issue resulted in death of this many people etc etc that actually make people curious about the rest video . Currently it's good but only for people who wants to see full video.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-22T09:49:56.758Z",
+      "video": {
+        "id": "L-20261121-42",
+        "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
+        "format": "long",
+        "status": "queued",
+        "story": "corner_cut_structure",
+        "shape": null,
+        "hookStyle": "conflict",
+        "hook": "Kansas City, {fact1}. Two steel walkways hang over a crowded hotel lobby, one directly above the other."
+      }
+    }
+  ]
 }
