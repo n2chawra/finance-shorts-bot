@@ -1,126 +1,282 @@
 {
- "note": "Long-video topics for Disaster Desk (the planner's feed for --format long); copied from research/topics.json with facts verified against the report.",
- "topics": [
-  {
-   "id": "2026-11-20-hyatt-walkways",
-   "format": "long",
-   "title": "One Phone Call Doubled the Load on This Walkway",
-   "category": "building",
-   "kind": "evergreen",
-   "priority": "normal",
-   "stories": [
-    "corner_cut_structure"
-   ],
-   "currency": "USD",
-   "reach": "global",
-   "demand": {
-    "family": "Bridge, dam or building: every corner cut",
-    "url": "https://www.youtube.com/watch?v=plYQ-StbrOE",
-    "note": "Plainly Difficult 629K, 561K (advice.md)"
-   },
-   "hook": "Hundreds were dancing in the hotel atrium. Above them hung two walkways on thin steel rods.",
-   "templates": [
-    "long_story"
-   ],
-   "cause_chain": [
-    "The original design hangs the 4th- and 2nd-floor walkways from one continuous rod per hanger",
-    "Even that connection reaches only about 60% of what the building code expected",
-    "During construction the fabricator asks, by phone, to switch to two offset rods; the change goes through without full checks",
-    "The 4th-floor box beams now carry both walkways, roughly double the load; during a tea dance the connections pull through"
-   ],
-   "rule_after": "NBS BSS 143 (1982); the engineers lost their licences, and the profession made the structural engineer of record responsible for connection design and shop-drawing review.",
-   "human_moment": "Rescuers worked through the night to free people trapped under the fallen walkways.",
-   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
-   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
-   "facts": [
+  "note": "Long-video topics for Disaster Desk (the planner's feed for --format long); copied from research/topics.json with facts verified against the report.",
+  "topics": [
     {
-     "label": "Year the Hyatt Regency walkways collapsed",
-     "value": 1981,
-     "unit": "year",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "Day of July 1981 the walkways collapsed",
-     "value": 17,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "Hour of the collapse (p.m.), approximately 7:05 p.m.",
-     "value": 7,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "Minutes past the hour of the collapse (approximately 7:05 p.m.)",
-     "value": 5,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "People left dead by the collapse (NBS executive summary)",
-     "value": 113,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "Ultimate capacity of the original continuous-rod connection, percent of that expected under the Kansas City Building Code (approximately)",
-     "value": 60,
-     "unit": "percent",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "How many times the rod change multiplied the load on the fourth-floor box beam-hanger rod connections (essentially doubled)",
-     "value": 2,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "Year ASCE adopted the policy assigning responsibility for steel connection design to the engineer of record (October 1985)",
-     "value": 1985,
-     "unit": "year",
-     "as_of": "2011-07-01",
-     "source": "ASCE Civil Engineering magazine",
-     "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public",
-     "fixed": true
+      "id": "2026-11-20-hyatt-walkways",
+      "format": "long",
+      "title": "One Phone Call Doubled the Load on This Walkway",
+      "category": "building",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "corner_cut_structure"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "family": "Bridge, dam or building: every corner cut",
+        "url": "https://www.youtube.com/watch?v=plYQ-StbrOE",
+        "note": "Plainly Difficult 629K, 561K (advice.md)"
+      },
+      "hook": "Hundreds were dancing in the hotel atrium. Above them hung two walkways on thin steel rods.",
+      "templates": [
+        "long_story"
+      ],
+      "cause_chain": [
+        "The original design hangs the 4th- and 2nd-floor walkways from one continuous rod per hanger",
+        "Even that connection reaches only about 60% of what the building code expected",
+        "During construction the fabricator asks, by phone, to switch to two offset rods; the change goes through without full checks",
+        "The 4th-floor box beams now carry both walkways, roughly double the load; during a tea dance the connections pull through"
+      ],
+      "rule_after": "NBS BSS 143 (1982); the engineers lost their licences, and the profession made the structural engineer of record responsible for connection design and shop-drawing review.",
+      "human_moment": "Rescuers worked through the night to free people trapped under the fallen walkways.",
+      "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+      "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+      "facts": [
+        {
+          "label": "Year the Hyatt Regency walkways collapsed",
+          "value": 1981,
+          "unit": "year",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Day of July 1981 the walkways collapsed",
+          "value": 17,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Hour of the collapse (p.m.), approximately 7:05 p.m.",
+          "value": 7,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past the hour of the collapse (approximately 7:05 p.m.)",
+          "value": 5,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "People left dead by the collapse (NBS executive summary)",
+          "value": 113,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Ultimate capacity of the original continuous-rod connection, percent of that expected under the Kansas City Building Code (approximately)",
+          "value": 60,
+          "unit": "percent",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "How many times the rod change multiplied the load on the fourth-floor box beam-hanger rod connections (essentially doubled)",
+          "value": 2,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Year ASCE adopted the policy assigning responsibility for steel connection design to the engineer of record (October 1985)",
+          "value": 1985,
+          "unit": "year",
+          "as_of": "2011-07-01",
+          "source": "ASCE Civil Engineering magazine",
+          "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public",
+          "fixed": true
+        },
+        {
+          "label": "People injured in the collapse (NBS executive summary)",
+          "value": 186,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "People on the second and fourth floor walkways at the collapse (NBS credible estimate from a news videotape)",
+          "value": 63,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Maximum load on a fourth floor box beam-hanger rod connection at the collapse, percent of the ultimate capacity expected under the Kansas City Building Code",
+          "value": 31,
+          "unit": "percent",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Hanger rods suspending the fourth floor walkway from the atrium roof framing",
+          "value": 6,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Year the Hyatt Regency Kansas City opened (July 1980)",
+          "value": 1980,
+          "unit": "year",
+          "as_of": "2007-01-01",
+          "source": "ASCE Civil Engineering magazine (Jan 2007)",
+          "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
+          "fixed": true
+        },
+        {
+          "label": "Inches the second-to-fourth floor rod was offset inward along the box beam (4 in, 102 mm)",
+          "value": 4,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minimum ultimate load a fourth floor box beam-hanger rod connection should have supported under the code, kN (68 kips)",
+          "value": 302,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Average ultimate capacity estimated for the six fourth floor walkway connections, kN (18.6 kips)",
+          "value": 83,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Actual walkway dead load above the nominal dead load, percent (approximately)",
+          "value": 8,
+          "unit": "percent",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Day of July 1981 the NBS researchers first arrived in Kansas City",
+          "value": 21,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Third floor walkway connection under the original detail, percent of the expected ultimate capacity (approximately)",
+          "value": 53,
+          "unit": "percent",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Depth in inches of the steel channels (MC8) paired into each box beam",
+          "value": 8,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Crowd in the atrium area at 7:00 PM, low estimate (NBS timeline from the Kansas City Times/Star)",
+          "value": 1500,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Crowd in the atrium area at 7:00 PM, high estimate (NBS timeline)",
+          "value": 2000,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past 7 PM the band returned from its break to play for a dance contest (7:04 PM, NBS timeline)",
+          "value": 4,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past 7 PM the fire department dispatcher received the first call for help (7:08 PM, NBS timeline)",
+          "value": 8,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Death toll: the NBS report and NIST page say 113 dead (later counts say 114); the script uses the report's 113",
+        "Phone request: ASCE Civil Engineering (Jan 2007) says the fabricator requested approval of the double-rod system by telephone and the engineer verbally approved; the engineering firm disputed receiving the call, so it is tagged 'as reported'",
+        "Added by studio 2026-11-22 from the NBS report (exec summary pp. v-vii, ch. 3 timeline p. 33, sec. 5.3.2, 10.3, 10.5) and ASCE Civil Engineering Jan 2007 (opened July 1980); Missouri board revoked two engineers' licences for gross negligence and misconduct (ASCE Civil Engineering July 2011)"
+      ],
+      "sources": [
+        "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+        "https://www.nist.gov/el/walkway-collapse-kansas-city-missouri-1981",
+        "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
+        "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-05-19",
+      "status": "new",
+      "promo_short": true,
+      "search": "hyatt regency walkway collapse",
+      "outline": [
+        "Hook (0-45 s): the atrium full on 17 Jul 1981, two stacked walkways on roof rods; 7:05 the upper one gives way onto the lower and both fall; steel and workmanship were not the cause (NBS conclusion 9); promise: a weak detail, a rod change, a review that missed it",
+        "1 The hotel: opened 1980; glass atrium; three walkways (2nd/4th stacked, 3rd offset), no columns, hung on rods; dance event, crowd 1,500-2,000 at 7:00 PM",
+        "2 The design: box beam = two 8-inch channels welded toe to toe; rod through the beam, washer and nut under it; one continuous rod roof-4th-2nd; even this would reach ~60% of the code's expected capacity",
+        "3 The change: fabricator's shop drawings use two rods, the lower set offset 4 in; request by phone, approved verbally (as reported; the firm disputed it); stamped as reviewed; the 4th-floor connection's load essentially doubled",
+        "4 The last minutes (MissionClock): 7:00 crowd; 63 people on the 2nd/4th walkways (news videotape); 7:04 band back for the dance contest; max load only 31% of the code-expected capacity; from day one barely able to carry their own weight",
+        "5 The failure (3D hero cutaway): connection 9UE, east end of the 4th-floor middle box beam; flanges rotate, lower weld splits, rod pulls through; neighbours fail; 4th drops onto 2nd, both fall; 7:08 first call; 113 dead, 186 injured (one beat)",
+        "6 The findings: NBS arrives 21 Jul; weighed spans (dead load ~8% over nominal), lab mock-ups; 302 kN expected vs 83 kN average; two factors; with the original rods the 3rd-floor walkway (53%) would have been weakest",
+        "7 What changed: Missouri board revoked two engineers' licences (gross negligence, misconduct); ASCE Oct 1985 policy: the engineer of record is responsible for all steel design including connections; payoff: they fell at 31% of what the code expected; ask: which link should have been caught first?"
+      ],
+      "studio_note": "2026-11-22: studio could not start this topic: check-plan refuses a long topic without `from_short`, and this long-first channel's only Short (Lac-Mégantic promo, 0 views) can't qualify. Facts 9-24 and the outline were added from the NBS report so the next run can go straight to the script."
     }
-   ],
-   "verify": [
-    "Death toll: the NBS report and NIST page say 113 dead (later counts say 114); the script uses the report's 113",
-    "Phone request: ASCE Civil Engineering (Jan 2007) says the fabricator requested approval of the double-rod system by telephone and the engineer verbally approved; the engineering firm disputed receiving the call, so it is tagged 'as reported'"
-   ],
-   "sources": [
-    "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-    "https://www.nist.gov/el/walkway-collapse-kansas-city-missouri-1981",
-    "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
-    "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public"
-   ],
-   "found": "2026-11-20",
-   "expires": "2027-05-19",
-   "status": "new",
-   "promo_short": true,
-   "search": "hyatt regency walkway collapse"
-  }
- ]
+  ]
 }
