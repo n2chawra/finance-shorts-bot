@@ -192,7 +192,8 @@ If it fails the video, fix each problem according to its tag, render the stills 
 - **`[script]`:** fix the script lines it named, re-run the number check, ask the fact reviewer
   to re-review the changed lines, then render the stills again.
 - **`[scene]` on a kit channel** (`look.kits`, section 3c): fix or add the piece in the kit, commit it, render the
-  stills again and ask the same QA subagent to look again.
+  stills again and ask the same QA subagent to look again. A round whose only notes are `[scene]` kit fixes does not
+  count toward the three (owner, 2026-11-22: a kit problem never stops a run), up to five QA rounds in all.
 - **`[template]`** or **`[scene]`** (other channels): a problem in how a scene draws (overlap, cut-off text, a frozen
   picture) is in Remotion code, which the routine does not change. First try a script fix that
   avoids it (another scene, fewer words on screen, an actor moved). If no script change can, go

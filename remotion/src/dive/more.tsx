@@ -121,14 +121,15 @@ const Tally: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: number 
   const k = ramp(g, at - 3, at + 20) * outro(w, g);
   if (k <= 0) return null;
   // high on the back wall, above the people's heads (QA 2026-11-22: a 230 px tablet hid the whole crowd)
-  const W = 440, H = 170;
+  // one line across the top of the vault, clear of the heads below (QA 2026-11-22, twice)
+  const W = 640, H = 116;
   return (
     <g opacity={Math.min(1, k * 3)} transform={`rotate(-2 ${x + W / 2} ${y + H / 2})`}>
-      <Legible x={x} y={y} w={W} h={H} size={80}>
+      <Legible x={x} y={y} w={W} h={H} size={48}>
         <Block x={x} y={y} w={W} h={H} fill="#d9d2bf" r={18} shadow="bottom" />
         <rect x={x + 16} y={y + 16} width={W - 32} height={H - 32} rx={12} fill="none" stroke="#a89f88" strokeWidth={6} />
-        {t.label ? <Txt x={x + W / 2} y={y + 56} size={48} fill="#5a4a3a" weight={800}>{t.label.toUpperCase()}</Txt> : null}
-        <Txt x={x + W / 2} y={y + 138} size={80} fill={INK} weight={900}>{countText(fig, k)}</Txt>
+        {t.label ? <Txt x={x + 36} y={y + 76} size={48} fill="#5a4a3a" weight={800} anchor="start">{t.label.toUpperCase()}</Txt> : null}
+        <Txt x={x + W - 36} y={y + 82} size={72} fill={INK} weight={900} anchor="end">{countText(fig, k)}</Txt>
       </Legible>
     </g>
   );
@@ -147,6 +148,7 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
   const n = s.people ?? (type === "stable" ? 1 : type === "church" ? 2 : 3);
   const arch = `M ${x0} ${yb} L ${x0 + 6} ${top + 120} Q ${x0 + 20} ${top + 10} ${x0 + 170} ${top - 6} Q ${540} ${top - 40} ${x1 - 170} ${top - 4} Q ${x1 - 16} ${top + 14} ${x1 - 4} ${top + 120} L ${x1} ${yb} Z`;
   const walk = (i: number, laps = 1, ph = 0) => loopU(w, g, laps, ph + i * 0.37);
+  const phases = Array.from({ length: 16 }, () => r());
   return (
     <g>
       <path d={arch} transform={`translate(0 -18) scale(1)`} fill={shade(look.deep, 0.06)} />
@@ -197,8 +199,9 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
         {Array.from({ length: n }, (_, i) => <Person key={i} x={420 + i * 220} y={yb - 26} i={i + 1} pose="kneel" step={0} dir={i % 2 ? -1 : 1} />)}
       </> : null}
       {type === "crowd" ? <>
+        {/* seeded phases: walkers in two directions with linear phases met in pairs (v-20261122-54) */}
         {/* families and their animals filling the room, walking both ways */}
-        {Array.from({ length: s.people ?? 12 }, (_, i) => { const u = walk(i, 1, i * 0.13); const dir = i % 2 ? -1 : 1; const x = dir === 1 ? 150 + u * 780 : 930 - u * 780; return <Person key={i} x={x} y={yb - 26 - (i % 3) * 8} i={i} step={u * 14} dir={dir} s={0.8 + (i % 3) * 0.06} />; })}
+        {Array.from({ length: s.people ?? 12 }, (_, i) => { const n = s.people ?? 12; const dir = i % 2 ? -1 : 1; const u = loopU(w, g, dir === 1 ? 1 : 2, phases[i] ?? 0); const x = 150 + (dir === 1 ? u : 1 - u) * 780; return <Person key={i} x={x} y={yb - 26} i={i} step={u * 14} dir={dir} s={0.8} />; })}
         {[0, 1, 2].map((i) => { const u = walk(i + 9, 1, 0.5); return <Animal key={`a${i}`} x={200 + ((u + i * 0.33) % 1) * 680} y={yb - 26} i={i} step={u * 12} />; })}
       </> : null}
       {type === "tombs" ? <>
@@ -221,7 +224,7 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
         </>;
       })() : null}
       <Marker L={L} w={w} g={g} x={240} y={top - 160} />
-      <Tally L={L} w={w} g={g} x={320} y={top + 14} />
+      <Tally L={L} w={w} g={g} x={220} y={top - 10} />
     </g>
   );
 };
