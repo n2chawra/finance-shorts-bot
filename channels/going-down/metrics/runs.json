@@ -5,6 +5,11 @@
       "day": "2026-11-21",
       "shipped": 3,
       "failed": 2
+    },
+    {
+      "day": "2026-11-22",
+      "shipped": 0,
+      "failed": 1
     }
   ],
   "videos": [
@@ -42,6 +47,13 @@
       "template": "short_story",
       "status": "shipped",
       "reason": null
+    },
+    {
+      "id": "v-20261122-51",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA [scene]: the dive kit has no stone-town surface preset (Derinkuyu drew as a generic city street with taxis) and no carved-room pieces (stables, wine presses, a rolling stone door, people or animals), so every layer was the same bunker box; the topic needs new dive-kit pieces"
     }
   ]
 }
