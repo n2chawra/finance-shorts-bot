@@ -1,0 +1,149 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T05:12:24.684792+00:00",
+    "finishedAt": "2026-11-22T05:12:24.684792+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:15:57.346740+00:00",
+    "finishedAt": "2026-11-22T05:15:57.346740+00:00",
+    "notes": [
+      "beat 'promise'.params.mode contains a typed number; use a placeholder: 'chain3'",
+      "`structure.levels` (the level chips) belongs to the levels shape; a None video builds its stakes in `build` beats without chips",
+      "note: 2 questions in about 447 s of speech; at least 14 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:16:24.598506+00:00",
+    "finishedAt": "2026-11-22T05:16:24.598506+00:00",
+    "notes": [
+      "beat 'c1-open'.params.chapter contains a typed number; use a placeholder: '1 · THE HOTEL'",
+      "note: 14 questions in about 460 s of speech; at least 15 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:16:30.478697+00:00",
+    "finishedAt": "2026-11-22T05:16:30.478697+00:00",
+    "notes": [
+      "beat 'c1-three'.params.labels[0].text contains a typed number; use a placeholder: '2ND'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:16:33.895894+00:00",
+    "finishedAt": "2026-11-22T05:16:33.895894+00:00",
+    "notes": [
+      "beat 'd-each'.params.moments[2].what contains a typed number; use a placeholder: 'each beam gets a 1× tag'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:16:37.907975+00:00",
+    "finishedAt": "2026-11-22T05:16:37.907975+00:00",
+    "notes": [
+      "beat 'l-31'.params.mode contains a typed number; use a placeholder: 'gauge31'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:16:41.317878+00:00",
+    "finishedAt": "2026-11-22T05:16:41.317878+00:00",
+    "notes": [
+      "beat 'outro'.params.assumption contains a typed number; use a placeholder: 'From the National Bureau of Standards investigation (BSS 143, 1982) and ASCE Civil Engineering. The 3D scenes are reconstructions, not actual footage.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:16:44.985086+00:00",
+    "finishedAt": "2026-11-22T05:16:44.985086+00:00",
+    "notes": [
+      "description mentions '143,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "facts[8] (186 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (63 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (31 percent, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (6 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (1980 year, 2007-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (4 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (302 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (83 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (8 percent, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (21 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (53 percent, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (8 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (1500 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (2000 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (4 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[23] (8 count, 1982-05-01) is not one of the feed topic's facts; copy them exactly",
+      "the source line 'Data: NBS Building Science Series 143 (NIST) · ASCE Civil Engineering magazine · ASCE Civil Engineering magazine (Jan 2007) · Jul 2011' is too wide for the frame (2245 of 1784 px at 30 px): shorten each facts[].source to the publisher (e.g. 'NBS Building Science Series'), one name per publisher"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T05:17:01.956879+00:00",
+    "finishedAt": "2026-11-22T05:17:01.956879+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T05:17:02.998188+00:00",
+    "finishedAt": "2026-11-22T05:17:02.998188+00:00",
+    "notes": [
+      "24 figures computed from inputs; 24 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T05:19:57.526833+00:00",
+    "finishedAt": "2026-11-22T05:19:57.526833+00:00",
+    "notes": [
+      "hook-not: report does not clear the welds (sec 10.6/5.3.3)",
+      "title stated the disputed phone call as fact"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T05:19:58.415497+00:00",
+    "finishedAt": "2026-11-22T05:19:58.415497+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T05:19:59.407390+00:00",
+    "finishedAt": "2026-11-22T05:19:59.407390+00:00",
+    "notes": [
+      "24 figures computed from inputs; 24 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T05:20:59.462975+00:00",
+    "finishedAt": "2026-11-22T05:20:59.462975+00:00",
+    "notes": [
+      "All 24 facts confirmed against NBS BSS 143 and ASCE CE Jan 2007/Jul 2011; title now 'One Rod Change…'; hook-not matches NBS conclusion 9; phone call tagged as reported and disputed; disclaimer present"
+    ]
+  }
+]
