@@ -20,9 +20,12 @@ export const CamCtx = createContext<DiveCam>({ z: 1, camY: 0, cx: 540, W: 1080, 
 /** 1 near the camera's point, 0 once a world y is far above or below it on screen: a neighbouring layer's sign or
  * tag fades out before it reaches the top note or the caption band (QA 2026-11-22: "the note is drawn across the
  * FLOODWATER sign", "the caption sits on the FLOODWATER sign"). */
-export const useNear = (y: number): number => {
+export const useNear = (y: number, bandsOnly = false): number => {
   const c = useContext(CamCtx);
   const sy = ANCHOR_Y + (y - c.camY) * c.z;
+  // `bandsOnly`: a landmark's name plate stays up at the opening framing, far above the camera's point; it only
+  // keeps out of the top band and the captions (QA 2026-11-22: the plate vanished from the hook)
+  if (bandsOnly) return Math.min(ramp(sy, 170, 230), 1 - ramp(sy, 1270, 1330));
   // and never in the caption band (from ~1330 px) or under the top note: a sign there reads as clutter on a camera
   // move (QA 2026-11-22, v-20261122-56: the TUNNEL sign under "Then giant pumps throw")
   return Math.min(1 - ramp(Math.abs(sy - ANCHOR_Y), 420, 500), ramp(sy, 170, 230), 1 - ramp(sy, 1270, 1330));

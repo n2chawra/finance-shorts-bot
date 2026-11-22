@@ -390,7 +390,7 @@ export const Pour: React.FC<PieceProps> = ({ L, w, g }) => {
 /** A name plate over the landmark: dark board, light words, readable at the opening zoom. */
 const Plate: React.FC<{ y: number; text: string; accent: string }> = ({ y, text, accent }) => {
   // it leaves with the street when the camera dives, never under the source chip (QA 2026-11-22)
-  const near = useNear(y + 60);
+  const near = useNear(y + 60, true);
   if (near <= 0) return null;
   return (
   <g opacity={near}><Legible x={170} y={y} w={740} h={120} size={64}>
@@ -408,7 +408,7 @@ export const SurfaceMore: React.FC<PieceProps> = (props) => {
   const { L, w, g } = props;
   const s = L.spec, look = w.look;
   const preset = s.preset ?? "station";
-  const plate = s.label && (s.plate ?? NEW_PRESETS.includes(preset)) ? <Plate y={-1230} text={s.label.toUpperCase()} accent={look.accent} /> : null;
+  const plate = s.label && (s.plate ?? NEW_PRESETS.includes(preset)) ? <Plate y={-1000} text={s.label.toUpperCase()} accent={look.accent} /> : null;
   if (!NEW_PRESETS.includes(preset)) return <g><Surface {...props} />{plate}</g>;
   const wall = s.wall ?? "#e3cfa6", trim = s.trim ?? shade(wall, -0.15), glass = s.glass ?? "#ffd98a";
   const laps = Math.max(1, Math.round((w.total / 30) * 260 / 3600));
