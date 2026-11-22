@@ -9,7 +9,7 @@
     {
       "day": "2026-11-22",
       "shipped": 0,
-      "failed": 1
+      "failed": 2
     }
   ],
   "videos": [
@@ -54,6 +54,13 @@
       "template": "short_story",
       "status": "failed",
       "reason": "QA [scene]: the dive kit has no stone-town surface preset (Derinkuyu drew as a generic city street with taxis) and no carved-room pieces (stables, wine presses, a rolling stone door, people or animals), so every layer was the same bunker box; the topic needs new dive-kit pieces"
+    },
+    {
+      "id": "v-20261122-52",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "Fact review: the feed's depths conflict with the operator (115 m and 45 m rejected; Getlink says an average 40 m below the seabed), and Getlink's 40 m is not in the topic feed, so the number check fails it; research should re-source the Channel Tunnel topic with Getlink's figures"
     }
   ]
 }
