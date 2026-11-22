@@ -87,7 +87,7 @@ const Tower: React.FC<SceneProps> = (p) => {
       <Focus at={mode === "glass" ? [0, 1.1, 0.6] : keys[1]!.look} range={mode === "glass" ? 1 : 8} />
       <directionalLight position={[-12, 20, 10]} intensity={1.2} color="#fff4e0" castShadow />
       <ambientLight intensity={0.3} color="#8fa0b4" />
-      <Site trailers={0} />
+      <Site trailers={0} frame={t} />
       <Column glass={glass} />
       <Overhead fill={mode === "spill" ? cue(t, e("top") , 30) : 0} />
       {glass > 0 && <Trays lit={mode === "trays" ? cue(t, e("trays"), 40, (x) => x) : 0} />}

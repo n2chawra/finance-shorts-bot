@@ -64,7 +64,7 @@ const Board: React.FC<SceneProps> = (p) => {
   return (
     <DisasterLookProvider value={RECIPE}>
       <CauseBoard t={t} title={title} titleAt={mode === "intro" ? e("happen") : 0} causes={causes} />
-      <div style={{ position: "absolute", inset: 0, opacity: 0.35 }}><Grid /></div>
+      <div style={{ position: "absolute", inset: 0 }}><Grid /></div>
       <LampStrip t={t} marks={Object.values(ev)} />
       <Texture t={t} />
     </DisasterLookProvider>

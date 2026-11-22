@@ -83,7 +83,7 @@ const Unit: React.FC<SceneProps> = (p) => {
       <Focus at={S.lb} range={14} />
       <directionalLight position={[-20, 30, 15]} intensity={dawn ? 0.6 : 1.4} color={dawn ? "#ffb070" : "#fff4e0"} castShadow />
       <ambientLight intensity={0.25} color="#8fa0b4" />
-      <Site trailers={cleared ? 0 : 1} crush={after ? 1 : 0} town={P.shot === "town"} />
+      <Site trailers={cleared ? 0 : 1} crush={after ? 1 : 0} town={P.shot === "town"} frame={t} />
       <Column />
       <Overhead fill={cue(t, e(P.pipeFill), 30)} valves={Math.max(cue(t, e(P.valvesOpen), 8), geyser > 0 ? 1 : 0)} flow={Math.max(cue(t, e(P.valvesOpen) + 6, 30), cue(t, e(P.drumFill), 30), geyser > 0 ? 1 : 0)} />
       <Blowdown fill={Math.max(cue(t, e(P.drumFill) + 10, 40), geyser > 0 || cloud > 0 ? 1 : 0)} />

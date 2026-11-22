@@ -7,7 +7,7 @@
 // trailers, fires, smoke). No people are drawn.
 import React from "react";
 import { Easing } from "remotion";
-import { glow, rnd, Smoke, useDLook, type V3 } from "../../three/index";
+import { CloudDeck, glow, rnd, Smoke, useDLook, type V3 } from "../../three/index";
 
 export const TOWER_H = 17, TOWER_R = 0.65;
 export const VALVE_Y = 2.2, PIPE_X = 1.0;
@@ -161,10 +161,25 @@ export const Truck: React.FC<{ frame: number; spark?: number }> = ({ frame, spar
 };
 
 /** The refinery around the unit: pad, gravel, pipe racks, other columns, spheres and tanks, a fence and the town edge. */
-export const Site: React.FC<{ trailers?: number; crush?: number; town?: boolean }> = ({ trailers = 1, crush = 0, town = false }) => {
+export const Site: React.FC<{ trailers?: number; crush?: number; town?: boolean; frame?: number }> = ({ trailers = 1, crush = 0, town = false, frame = 0 }) => {
   const M = useMats();
   return (
     <group>
+      {/* the sky and the rest of the refinery on the horizon */}
+      <CloudDeck frame={frame} y={34} size={220} cover={0.55} puffs={40} seed="tc-sky" />
+      {Array.from({ length: 46 }, (_, i) => {
+        const a = -1.2 + (i / 45) * 2.4, d = 45 + rnd("hz", i) * 20, h = 4 + rnd("hh", i) * 14, w = 0.4 + rnd("hw", i) * 1.4;
+        return <mesh key={`h${i}`} position={[4 + Math.sin(a) * d, h / 2, -Math.cos(a) * d]} material={M.dark}><boxGeometry args={[w, h, w]} /></mesh>;
+      })}
+      {/* paving seams and painted lines on the unit pad, gravel bands outside */}
+      {Array.from({ length: 12 }, (_, i) => <mesh key={`sx${i}`} position={[-8 + i * 2, 0.02, 0]} rotation-x={-Math.PI / 2}><planeGeometry args={[0.05, 9]} /><meshBasicMaterial color="#2c2a27" /></mesh>)}
+      {Array.from({ length: 5 }, (_, i) => <mesh key={`sz${i}`} position={[3, 0.02, -4 + i * 2]} rotation-x={-Math.PI / 2}><planeGeometry args={[22, 0.05]} /><meshBasicMaterial color="#2c2a27" /></mesh>)}
+      <mesh position={[3, 0.025, 4.3]} rotation-x={-Math.PI / 2}><planeGeometry args={[22, 0.12]} /><meshBasicMaterial color="#d9a520" /></mesh>
+      {Array.from({ length: 30 }, (_, i) => (
+        <mesh key={`g${i}`} position={[-20 + rnd("gx", i) * 50, 0.015, 6 + rnd("gz", i) * 26]} rotation-x={-Math.PI / 2} rotation-z={rnd("gr", i) * 3}>
+          <planeGeometry args={[2 + rnd("gw", i) * 5, 0.6 + rnd("gl", i) * 1.5]} /><meshBasicMaterial color={i % 2 ? "#2f2e2b" : "#4a4843"} />
+        </mesh>
+      ))}
       <mesh rotation-x={-Math.PI / 2} position={[4, 0, 4]} material={M.gravel} receiveShadow><planeGeometry args={[120, 90]} /></mesh>
       <mesh rotation-x={-Math.PI / 2} position={[3, 0.01, 0]} material={M.pad} receiveShadow><planeGeometry args={[22, 9]} /></mesh>
       {/* pipe rack along the unit */}
