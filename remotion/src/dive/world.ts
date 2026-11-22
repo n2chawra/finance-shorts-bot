@@ -155,7 +155,10 @@ export function diveWorld(tl: Timeline): DiveWorld {
   for (const d of depths) {
     if (d <= 0) continue;
     const prev = anchors[anchors.length - 1]!;
-    anchors.push([d, Math.max(d * PX, prev[1] + (prev[0] === 0 ? FIRST : GAP))]);
+    // at least a gap apart, and at most 1.3 gaps (2026-11-22: a first layer placed deep left the pull-back mostly
+    // empty rock between the street and the stack; the cutaway is "not to scale" anyway)
+    const min = prev[1] + (prev[0] === 0 ? FIRST : GAP);
+    anchors.push([d, Math.min(Math.max(d * PX, min), min + 0.3 * GAP)]);
   }
   const Y = (ft: number): number => {
     if (ft <= 0) return ft * PX;

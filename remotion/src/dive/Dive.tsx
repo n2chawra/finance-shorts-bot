@@ -62,6 +62,30 @@ export const World: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) => {
   );
 };
 
+/** On a pull-back the pieces are too small for their own signs, so each labelled layer gets a readable name chip
+ * on screen, centred on its box (QA 2026-11-22, v-20261122-55: "four tiny boxes, the signs are gone, the payoff
+ * ends emptier than any other still"). */
+const StackLegend: React.FC<{ w: DiveWorld; y: number; z: number; cx: number }> = ({ w, y, z, cx }) => {
+  const k = 1 - Math.min(1, Math.max(0, (z - 0.5) / 0.12));
+  if (k <= 0) return null;
+  return (
+    <g opacity={k}>
+      {w.layers.filter((L) => L.spec.label && L.spec.kind !== "surface").map((L, i) => {
+        const sy = ANCHOR_Y + (w.Y(L.ft) - 10 - y) * z;
+        if (sy < 180 || sy > 1380) return null;
+        const label = L.spec.label!.toUpperCase();
+        const wd = label.length * 28 + 48;
+        return (
+          <g key={i}>
+            <rect x={cx - wd / 2} y={sy - 34} width={wd} height={68} rx={14} fill="#111318" stroke={w.look.accent} strokeWidth={4} />
+            <Txt x={cx} y={sy + 2} size={44} fill="#f4f1e8" weight={800}>{label}</Txt>
+          </g>
+        );
+      })}
+    </g>
+  );
+};
+
 const Dive: React.FC<SceneProps> = (p) => {
   const w = diveWorld(p.tl);
   const tempo = p.tl.tempo ?? 1;
@@ -83,6 +107,7 @@ const Dive: React.FC<SceneProps> = (p) => {
             <World w={w} g={g} />
           </CamCtx.Provider>
         </g>
+        <StackLegend w={w} y={cam.y} z={z} cx={cx} />
         <DepthMeter w={w} ft={cam.ft} />
         <ScreenCounter w={w} g={g} />
         {/* the fine print shows at the street (the hook and the loop's landing), never over a layer's sign below

@@ -23,7 +23,7 @@ export const CamCtx = createContext<DiveCam>({ z: 1, camY: 0, cx: 540, W: 1080, 
 export const useNear = (y: number): number => {
   const c = useContext(CamCtx);
   const sy = ANCHOR_Y + (y - c.camY) * c.z;
-  return 1 - ramp(Math.abs(sy - ANCHOR_Y), 500, 600);
+  return 1 - ramp(Math.abs(sy - ANCHOR_Y), 420, 500);
 };
 /** 1 for the whole video, falling to 0 over its last second, so whatever arrived on its word is gone again when
  * the ride up lands on the first frame (QA 2026-11-22: "the last frame shows the pillars, frame 0 has none"). */
