@@ -1,1 +1,11 @@
-{"notifications": []}
+{
+  "notifications": [
+    {
+      "key": "recipe-hook-stakes",
+      "severity": "info",
+      "title": "Disaster Desk recipe still keeps the death toll out of the long hook",
+      "detail": "Your 22 Nov note on the Hyatt walkway video asks the long hook to say up front that a small issue killed this many people. The channel's recipe (channels/disasters-and-engineering-failures-expla/prompts/recipe.md) says the opposite in two places: 'The turning figure… never goes in the title or the first line' and, in 'The first 45 seconds', item 4 'The whole arc in 45 s, without the toll'. Studio follows the recipe, and no agent may edit it. Tonight: people are now shown in the scenes (crowd, rescuers, no gore) and long videos speak 1.25x faster.",
+      "fix": "1. Open channels/disasters-and-engineering-failures-expla/prompts/recipe.md. 2. In 'The story', change 'It never goes in the title or the first line' to 'The long hook states it with the small cause (\"one changed rod killed 114 people\"); never in the title.' 3. In 'The first 45 seconds', delete ', without the toll' from item 4. 4. Optional: set voiceSpeed.long to 1.15 in channel.json so it matches what generator/pack.py OWNER_PACE now uses."
+    }
+  ]
+}

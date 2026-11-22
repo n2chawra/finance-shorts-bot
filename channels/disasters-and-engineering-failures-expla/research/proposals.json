@@ -16,9 +16,10 @@
       "effort": "S",
       "risk": "Paisa Panchayat must keep its rule: gate the exception on the channel's own cadence",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "done",
       "route": "adopt",
-      "priority": "high"
+      "priority": "high",
+      "reason": "Already fixed on main on 22 Nov (522702a: a long topic never needs one of our Shorts, on any channel)."
     },
     {
       "id": "dd-research-topics-format-long",
@@ -34,9 +35,10 @@
       "effort": "S",
       "risk": "none",
       "metric": "qa_failures",
-      "status": "new",
+      "status": "done",
       "route": "adopt",
-      "priority": "normal"
+      "priority": "normal",
+      "reason": "The long state now also reads the research feed's format-long topics (288bb5c): 17 open long topics instead of 1, so no copying is needed."
     }
   ]
 }

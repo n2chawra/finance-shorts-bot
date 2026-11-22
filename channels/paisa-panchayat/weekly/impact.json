@@ -1,6 +1,6 @@
 {
  "note": "Written by python -m generator.impact (improver, nightly). weeks: Shorts by IST publish week; stayedToWatch = engaged views / views (did not swipe away); changes: Shorts 14 days before vs after each landed change (sameWeek = other changes within 3 days, so effects mix).",
- "updatedAt": "2026-11-21T17:16:24+00:00",
+ "updatedAt": "2026-11-22T17:15:14+00:00",
  "weeks": [
   {
    "week": "2026-10-12",
@@ -303,7 +303,7 @@
    "n": 17,
    "medianViews48h": 207,
    "avgViewPct": 71.4,
-   "stayedToWatch": 0.339,
+   "stayedToWatch": 0.338,
    "avgViewSec": 20.6,
    "videos": [
     {
@@ -311,8 +311,8 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261114-02",
@@ -374,27 +374,27 @@
   },
   {
    "week": "2026-11-16",
-   "n": 6,
-   "medianViews48h": 400.5,
-   "avgViewPct": 94.0,
-   "stayedToWatch": 0.373,
-   "avgViewSec": 30.8,
+   "n": 7,
+   "medianViews48h": 389,
+   "avgViewPct": 90.3,
+   "stayedToWatch": 0.387,
+   "avgViewSec": 29.2,
    "videos": [
     {
      "id": "v-20261117-03",
      "title": "How long does a Disneyland character work to buy one ticket? 🏰",
      "day": "2026-11-17",
-     "views48h": 954,
-     "avgViewPct": 99.1,
-     "stayedToWatch": 0.397
+     "views48h": 950,
+     "avgViewPct": 98.7,
+     "stayedToWatch": 0.4
     },
     {
      "id": "v-20261117-04",
      "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
      "day": "2026-11-17",
-     "views48h": 427,
-     "avgViewPct": 57.7,
-     "stayedToWatch": 0.372
+     "views48h": 428,
+     "avgViewPct": 56.5,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261116-01",
@@ -408,25 +408,33 @@
      "id": "v-20261117-01",
      "title": "Edwin Castro won the biggest jackpot ever. Why wasn't it all his? 🎟️",
      "day": "2026-11-17",
-     "views48h": 390,
-     "avgViewPct": 68.1,
-     "stayedToWatch": 0.383
+     "views48h": 389,
+     "avgViewPct": 68.2,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261116-02",
      "title": "Larry Ellison's salary was $1 until 2025. He pledged 413M Oracle shares",
      "day": "2026-11-16",
      "views48h": 197,
-     "avgViewPct": 78.8,
-     "stayedToWatch": 0.431
+     "avgViewPct": 78,
+     "stayedToWatch": 0.437
+    },
+    {
+     "id": "v-20261117-02",
+     "title": "AMC charges $12.73 a ticket. Why does it care more about your popcorn? 🍿",
+     "day": "2026-11-18",
+     "views48h": 91,
+     "avgViewPct": 74.5,
+     "stayedToWatch": 0.455
     },
     {
      "id": "v-20261116-04",
      "title": "Amazon's whole North American store made $29.6B. Its rented computers made $45.6B 🖥️",
      "day": "2026-11-16",
      "views48h": 44,
-     "avgViewPct": 204.9,
-     "stayedToWatch": 0.304
+     "avgViewPct": 200.6,
+     "stayedToWatch": 0.298
     }
    ]
   }
@@ -439,11 +447,11 @@
    "day": "2026-11-21",
    "description": "Every new Paisa Panchayat Short carries its own tune (a pentatonic phrase in its key on a per-video instrument: pluck, mallet, bell or flute) heard only in the pauses between lines and dropped before the payoff (renderer/engine/music.py make_motif)",
    "before": {
-    "n": 23,
-    "medianViews48h": 350,
-    "avgViewPct": 77.3,
-    "stayedToWatch": 0.348,
-    "avgViewSec": 23.2
+    "n": 24,
+    "medianViews48h": 278.5,
+    "avgViewPct": 76.9,
+    "stayedToWatch": 0.353,
+    "avgViewSec": 23.1
    },
    "after": {
     "n": 0,
@@ -463,11 +471,11 @@
    "day": "2026-11-21",
    "description": "Directed beats on channels with their own effects list get soft automatic sounds on their moments and camera changes (2 a beat at most, 0.8 s apart; renderer/timeline/build.py directed_cues). Channel #1 later, one sound change at a time",
    "before": {
-    "n": 23,
-    "medianViews48h": 350,
-    "avgViewPct": 77.3,
-    "stayedToWatch": 0.348,
-    "avgViewSec": 23.2
+    "n": 24,
+    "medianViews48h": 278.5,
+    "avgViewPct": 76.9,
+    "stayedToWatch": 0.353,
+    "avgViewSec": 23.1
    },
    "after": {
     "n": 0,
@@ -487,11 +495,11 @@
    "day": "2026-11-19",
    "description": "Lint fails a Short that doesn't do its side of a running test that carries a `check` (generator/experiments.py adherence_problems); director.md tells the director to print and follow its side",
    "before": {
-    "n": 26,
-    "medianViews48h": 278.5,
-    "avgViewPct": 75.5,
-    "stayedToWatch": 0.348,
-    "avgViewSec": 22.8
+    "n": 27,
+    "medianViews48h": 207,
+    "avgViewPct": 75.2,
+    "stayedToWatch": 0.352,
+    "avgViewSec": 22.7
    },
    "after": {
     "n": 0,
@@ -518,20 +526,20 @@
     "avgViewSec": 21.8
    },
    "after": {
-    "n": 9,
-    "medianViews48h": 411,
-    "avgViewPct": 82.5,
-    "stayedToWatch": 0.385,
-    "avgViewSec": 26.9
+    "n": 10,
+    "medianViews48h": 400.0,
+    "avgViewPct": 81.0,
+    "stayedToWatch": 0.393,
+    "avgViewSec": 26.2
    },
    "afterVideos": [
     {
      "id": "v-20261117-03",
      "title": "How long does a Disneyland character work to buy one ticket? 🏰",
      "day": "2026-11-17",
-     "views48h": 954,
-     "avgViewPct": 99.1,
-     "stayedToWatch": 0.397
+     "views48h": 950,
+     "avgViewPct": 98.7,
+     "stayedToWatch": 0.4
     },
     {
      "id": "v-20261114-02",
@@ -545,9 +553,9 @@
      "id": "v-20261117-04",
      "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
      "day": "2026-11-17",
-     "views48h": 427,
-     "avgViewPct": 57.7,
-     "stayedToWatch": 0.372
+     "views48h": 428,
+     "avgViewPct": 56.5,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261114-01",
@@ -569,28 +577,28 @@
      "id": "v-20261117-01",
      "title": "Edwin Castro won the biggest jackpot ever. Why wasn't it all his? 🎟️",
      "day": "2026-11-17",
-     "views48h": 390,
-     "avgViewPct": 68.1,
-     "stayedToWatch": 0.383
+     "views48h": 389,
+     "avgViewPct": 68.2,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261114-03",
      "title": "The Las Vegas Strip keeps $16,772 every minute 🎰",
      "day": "2026-11-14",
      "views48h": 207,
-     "avgViewPct": 58.8,
-     "stayedToWatch": 0.311
+     "avgViewPct": 58,
+     "stayedToWatch": 0.307
     },
     {
      "id": "v-20261116-02",
      "title": "Larry Ellison's salary was $1 until 2025. He pledged 413M Oracle shares",
      "day": "2026-11-16",
      "views48h": 197,
-     "avgViewPct": 78.8,
-     "stayedToWatch": 0.431
+     "avgViewPct": 78,
+     "stayedToWatch": 0.437
     }
    ],
-   "viewsRatio": 4.89,
+   "viewsRatio": 4.76,
    "sameWeek": 2
   },
   {
@@ -607,11 +615,11 @@
     "avgViewSec": 19.4
    },
    "after": {
-    "n": 20,
-    "medianViews48h": 370.0,
-    "avgViewPct": 79.4,
-    "stayedToWatch": 0.351,
-    "avgViewSec": 24.2
+    "n": 21,
+    "medianViews48h": 350,
+    "avgViewPct": 78.8,
+    "stayedToWatch": 0.356,
+    "avgViewSec": 24.0
    },
    "afterVideos": [
     {
@@ -619,16 +627,16 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261117-03",
      "title": "How long does a Disneyland character work to buy one ticket? 🏰",
      "day": "2026-11-17",
-     "views48h": 954,
-     "avgViewPct": 99.1,
-     "stayedToWatch": 0.397
+     "views48h": 950,
+     "avgViewPct": 98.7,
+     "stayedToWatch": 0.4
     },
     {
      "id": "v-20261114-02",
@@ -666,9 +674,9 @@
      "id": "v-20261117-04",
      "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
      "day": "2026-11-17",
-     "views48h": 427,
-     "avgViewPct": 57.7,
-     "stayedToWatch": 0.372
+     "views48h": 428,
+     "avgViewPct": 56.5,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261114-01",
@@ -679,7 +687,7 @@
      "stayedToWatch": 0.434
     }
    ],
-   "viewsRatio": 3.36,
+   "viewsRatio": 3.18,
    "sameWeek": 5
   },
   {
@@ -696,11 +704,11 @@
     "avgViewSec": 19.5
    },
    "after": {
-    "n": 23,
-    "medianViews48h": 350,
-    "avgViewPct": 77.3,
-    "stayedToWatch": 0.348,
-    "avgViewSec": 23.2
+    "n": 24,
+    "medianViews48h": 278.5,
+    "avgViewPct": 76.9,
+    "stayedToWatch": 0.353,
+    "avgViewSec": 23.1
    },
    "afterVideos": [
     {
@@ -708,16 +716,16 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261117-03",
      "title": "How long does a Disneyland character work to buy one ticket? 🏰",
      "day": "2026-11-17",
-     "views48h": 954,
-     "avgViewPct": 99.1,
-     "stayedToWatch": 0.397
+     "views48h": 950,
+     "avgViewPct": 98.7,
+     "stayedToWatch": 0.4
     },
     {
      "id": "v-20261114-02",
@@ -755,9 +763,9 @@
      "id": "v-20261117-04",
      "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
      "day": "2026-11-17",
-     "views48h": 427,
-     "avgViewPct": 57.7,
-     "stayedToWatch": 0.372
+     "views48h": 428,
+     "avgViewPct": 56.5,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261114-01",
@@ -768,7 +776,7 @@
      "stayedToWatch": 0.434
     }
    ],
-   "viewsRatio": 2.63,
+   "viewsRatio": 2.09,
    "sameWeek": 5
   },
   {
@@ -785,11 +793,11 @@
     "avgViewSec": 19.5
    },
    "after": {
-    "n": 23,
-    "medianViews48h": 350,
-    "avgViewPct": 77.3,
-    "stayedToWatch": 0.348,
-    "avgViewSec": 23.2
+    "n": 24,
+    "medianViews48h": 278.5,
+    "avgViewPct": 76.9,
+    "stayedToWatch": 0.353,
+    "avgViewSec": 23.1
    },
    "afterVideos": [
     {
@@ -797,16 +805,16 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261117-03",
      "title": "How long does a Disneyland character work to buy one ticket? 🏰",
      "day": "2026-11-17",
-     "views48h": 954,
-     "avgViewPct": 99.1,
-     "stayedToWatch": 0.397
+     "views48h": 950,
+     "avgViewPct": 98.7,
+     "stayedToWatch": 0.4
     },
     {
      "id": "v-20261114-02",
@@ -844,9 +852,9 @@
      "id": "v-20261117-04",
      "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
      "day": "2026-11-17",
-     "views48h": 427,
-     "avgViewPct": 57.7,
-     "stayedToWatch": 0.372
+     "views48h": 428,
+     "avgViewPct": 56.5,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261114-01",
@@ -857,7 +865,7 @@
      "stayedToWatch": 0.434
     }
    ],
-   "viewsRatio": 2.63,
+   "viewsRatio": 2.09,
    "sameWeek": 5
   },
   {
@@ -874,11 +882,11 @@
     "avgViewSec": 19.5
    },
    "after": {
-    "n": 23,
-    "medianViews48h": 350,
-    "avgViewPct": 77.3,
-    "stayedToWatch": 0.348,
-    "avgViewSec": 23.2
+    "n": 24,
+    "medianViews48h": 278.5,
+    "avgViewPct": 76.9,
+    "stayedToWatch": 0.353,
+    "avgViewSec": 23.1
    },
    "afterVideos": [
     {
@@ -886,16 +894,16 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261117-03",
      "title": "How long does a Disneyland character work to buy one ticket? 🏰",
      "day": "2026-11-17",
-     "views48h": 954,
-     "avgViewPct": 99.1,
-     "stayedToWatch": 0.397
+     "views48h": 950,
+     "avgViewPct": 98.7,
+     "stayedToWatch": 0.4
     },
     {
      "id": "v-20261114-02",
@@ -933,9 +941,9 @@
      "id": "v-20261117-04",
      "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
      "day": "2026-11-17",
-     "views48h": 427,
-     "avgViewPct": 57.7,
-     "stayedToWatch": 0.372
+     "views48h": 428,
+     "avgViewPct": 56.5,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261114-01",
@@ -946,7 +954,7 @@
      "stayedToWatch": 0.434
     }
    ],
-   "viewsRatio": 2.63,
+   "viewsRatio": 2.09,
    "sameWeek": 5
   },
   {
@@ -963,11 +971,11 @@
     "avgViewSec": 19.5
    },
    "after": {
-    "n": 23,
-    "medianViews48h": 350,
-    "avgViewPct": 77.3,
-    "stayedToWatch": 0.348,
-    "avgViewSec": 23.2
+    "n": 24,
+    "medianViews48h": 278.5,
+    "avgViewPct": 76.9,
+    "stayedToWatch": 0.353,
+    "avgViewSec": 23.1
    },
    "afterVideos": [
     {
@@ -975,16 +983,16 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261117-03",
      "title": "How long does a Disneyland character work to buy one ticket? 🏰",
      "day": "2026-11-17",
-     "views48h": 954,
-     "avgViewPct": 99.1,
-     "stayedToWatch": 0.397
+     "views48h": 950,
+     "avgViewPct": 98.7,
+     "stayedToWatch": 0.4
     },
     {
      "id": "v-20261114-02",
@@ -1022,9 +1030,9 @@
      "id": "v-20261117-04",
      "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
      "day": "2026-11-17",
-     "views48h": 427,
-     "avgViewPct": 57.7,
-     "stayedToWatch": 0.372
+     "views48h": 428,
+     "avgViewPct": 56.5,
+     "stayedToWatch": 0.384
     },
     {
      "id": "v-20261114-01",
@@ -1035,7 +1043,7 @@
      "stayedToWatch": 0.434
     }
    ],
-   "viewsRatio": 2.63,
+   "viewsRatio": 2.09,
    "sameWeek": 5
   },
   {
@@ -1054,9 +1062,9 @@
    "after": {
     "n": 28,
     "medianViews48h": 202.0,
-    "avgViewPct": 73.3,
+    "avgViewPct": 73.1,
     "stayedToWatch": 0.347,
-    "avgViewSec": 22.5
+    "avgViewSec": 22.4
    },
    "afterVideos": [
     {
@@ -1064,16 +1072,16 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261117-03",
      "title": "How long does a Disneyland character work to buy one ticket? 🏰",
      "day": "2026-11-17",
-     "views48h": 954,
-     "avgViewPct": 99.1,
-     "stayedToWatch": 0.397
+     "views48h": 950,
+     "avgViewPct": 98.7,
+     "stayedToWatch": 0.4
     },
     {
      "id": "v-20261114-02",
@@ -1119,9 +1127,9 @@
      "id": "v-20261117-04",
      "title": "At gas stations with a shop, gas is 65% of sales. What's their cut? ⛽",
      "day": "2026-11-17",
-     "views48h": 427,
-     "avgViewPct": 57.7,
-     "stayedToWatch": 0.372
+     "views48h": 428,
+     "avgViewPct": 56.5,
+     "stayedToWatch": 0.384
     }
    ],
    "viewsRatio": 0.96,
@@ -1143,7 +1151,7 @@
    "after": {
     "n": 27,
     "medianViews48h": 87,
-    "avgViewPct": 70.5,
+    "avgViewPct": 70.3,
     "stayedToWatch": 0.346,
     "avgViewSec": 22.3
    },
@@ -1153,8 +1161,8 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261114-02",
@@ -1232,7 +1240,7 @@
    "after": {
     "n": 27,
     "medianViews48h": 87,
-    "avgViewPct": 70.5,
+    "avgViewPct": 70.3,
     "stayedToWatch": 0.346,
     "avgViewSec": 22.3
    },
@@ -1242,8 +1250,8 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261114-02",
@@ -1321,7 +1329,7 @@
    "after": {
     "n": 27,
     "medianViews48h": 87,
-    "avgViewPct": 70.5,
+    "avgViewPct": 70.3,
     "stayedToWatch": 0.346,
     "avgViewSec": 22.3
    },
@@ -1331,8 +1339,8 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261114-02",
@@ -1410,7 +1418,7 @@
    "after": {
     "n": 27,
     "medianViews48h": 87,
-    "avgViewPct": 70.5,
+    "avgViewPct": 70.3,
     "stayedToWatch": 0.346,
     "avgViewSec": 22.3
    },
@@ -1420,8 +1428,8 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261114-02",
@@ -1499,7 +1507,7 @@
    "after": {
     "n": 27,
     "medianViews48h": 87,
-    "avgViewPct": 70.5,
+    "avgViewPct": 70.3,
     "stayedToWatch": 0.346,
     "avgViewSec": 22.3
    },
@@ -1509,8 +1517,8 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261114-02",
@@ -1588,7 +1596,7 @@
    "after": {
     "n": 27,
     "medianViews48h": 87,
-    "avgViewPct": 70.5,
+    "avgViewPct": 70.3,
     "stayedToWatch": 0.346,
     "avgViewSec": 22.3
    },
@@ -1598,8 +1606,8 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261114-02",
@@ -1677,7 +1685,7 @@
    "after": {
     "n": 25,
     "medianViews48h": 87,
-    "avgViewPct": 64.8,
+    "avgViewPct": 64.7,
     "stayedToWatch": 0.352,
     "avgViewSec": 20.9
    },
@@ -1687,8 +1695,8 @@
      "title": "One night of Taylor Swift's Eras Tour brought in $13.9M",
      "day": "2026-11-13",
      "views48h": 969,
-     "avgViewPct": 68.5,
-     "stayedToWatch": 0.381
+     "avgViewPct": 68.6,
+     "stayedToWatch": 0.382
     },
     {
      "id": "v-20261114-02",
