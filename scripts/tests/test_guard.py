@@ -14,7 +14,8 @@ import guard  # noqa: E402
 
 COPIED = ["remotion/src/design/rules.ts", "remotion/src/design/frame.ts", "remotion/src/scenes/stage.tsx",
           "remotion/src/compositions/StoryVideo.tsx",
-          "renderer/timeline/build.py", "renderer/gates.py", "generator/run.py", "generator/numbers.py"]
+          "renderer/timeline/build.py", "renderer/gates.py", "generator/run.py", "generator/numbers.py",
+          "generator/topics.py"]
 
 
 def sh(root: Path, *args: str) -> None:
@@ -98,6 +99,20 @@ def test_blocks_weakening_the_shorts_layout_rules(repo: Path, field: str, was: i
     assert f"{field}: {was}" in frame
     change(repo, "remotion/src/design/frame.ts", frame.replace(f"{field}: {was}", f"{field}: {now}", 1))
     assert any(error in x for x in guard.check("improver", "main", "HEAD")["reasons"])
+
+
+@pytest.mark.parametrize("gate", [
+    '    if fmt == "long" and not topic.get("from_short"):\n        return "names no from_short"\n',
+    '    if fmt == "long" and short_views(topic) < 100:\n        return "its Short has too few views"\n',
+])
+def test_blocks_bringing_back_the_long_video_short_gate(repo: Path, gate: str) -> None:
+    # owner, 2026-11-22: the from_short views gate stopped every new channel's Studio runs
+    src = (repo / "generator/topics.py").read_text(encoding="utf-8")
+    assert guard.invariants("HEAD") == []
+    marker = "    return None\n"
+    i = src.index(marker, src.index("def blocked_reason("))
+    change(repo, "generator/topics.py", src[:i] + gate + src[i:])
+    assert any("never be blocked by from_short" in x for x in guard.check("improver", "main", "HEAD")["reasons"])
 
 
 def test_blocks_loosening_the_liveliness_gate(repo: Path) -> None:

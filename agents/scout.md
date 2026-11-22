@@ -27,14 +27,18 @@ Run `python3 -m generator.feedback --agent scout` and follow `agents/policy.md`,
 fix every note in your lane tonight (notes handed to you first), hand on what belongs to another agent,
 and answer each in `channels/<channel>/feedback-acks/scout.json` (commit it with your branch).
 
-## 1a. Long videos grow out of our winning Shorts (owner, 2026-11-04; this comes first)
-Our long videos got 1–11 views each: no browse or suggested impressions, only our channel page and
-search, 13% viewed. A 13-subscriber channel whose audience came from Shorts has nobody for YouTube to
-test a generic 8-minute video on. So from now on:
-- **Every long topic is the full story of one of our recent Shorts that held viewers best** (owner,
-  2026-11-12: the 1,000-view rule left no topics). From the Shorts of the last 30 days with 100+ views,
-  rank by `stayed` (stayed to watch) in `channels/<channel>/metrics/videos.json`, then by views; take one in the top
-  third. Name it in the topic as `"from_short": "<id>"`; a topic without one is not offered to Studio.
+## 1a. Long topics: no Short of ours is needed (owner, 2026-11-22; this comes first)
+The rule that a long video must expand one of our Shorts (1,000+ views from 4 Nov, 100+ from 12 Nov)
+is **gone, on every channel**. It blocked every long topic on the new channels, whose Shorts had 0–25
+views, and Studio runs stopped with nothing to make. Now:
+- **Pick long topics on demand**: the niche's proven long formats and reference videos (below), the
+  channel's research, and what our own viewers responded to.
+- **A Short of ours is a bonus, never a gate.** When one of our Shorts tells the same story and held
+  viewers well (`stayed` in `channels/<channel>/metrics/videos.json`), name it as `"from_short": "<id>"`
+  so the long video opens on its hook and its description links it. Leave it out otherwise. Never hold
+  a topic back, mark it `held`, or tell the owner a long video can't be made because no Short has
+  enough views.
+- `scripts/guard.py` refuses any change that brings back a gate on a Short's views.
 - **Title as people search it**, the question the Short raised ("How do billionaires avoid taxes?",
   "Why don't billionaires sell their stock?"), 40–65 characters.
 - **3–4 minutes** (settings 180–240 s since 2026-11-12; the 5–8 minute ones were watched 2–12%): 3–4

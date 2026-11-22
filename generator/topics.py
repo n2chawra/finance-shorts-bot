@@ -261,10 +261,6 @@ def too_close(topic: dict, everything: list[dict], today: str) -> str | None:
 # such a fact and marks it `latest: true` with the day it checked (`checked`); that holds for 30 days.
 FACT_FRESH_DAYS = 365
 FACT_RECHECK_DAYS = 30
-# a long-video topic expands one of our Shorts of the last WIN_DAYS days with WIN_MIN_VIEWS+ views, in the top
-# third by stayed to watch (owner, 2026-11-12; it replaced the 2026-11-04 rule of 1,000 views)
-WIN_DAYS = 30
-WIN_MIN_VIEWS = 100
 
 
 def _day(s: object) -> date | None:
@@ -291,52 +287,16 @@ def stale_facts(topic: dict, today: str) -> list[str]:
     return out
 
 
-def winning_short(topic: dict, root: Path = ROOT, today: str | None = None) -> str | None:
-    """Why a long-video topic can't be used: it must name `from_short`, one of our recent Shorts that held
-    viewers best (owner, 2026-11-12, replacing the 1,000-view rule that left no topics): from our Shorts
-    published in the last WIN_DAYS days with WIN_MIN_VIEWS+ views, ranked by stayed to watch then views,
-    one in the top third (agents/scout.md 1a)."""
-    sid = topic.get("from_short")
-    try:
-        videos = json.loads((cpath(root, "metrics/videos.json")).read_text(encoding="utf-8")).get("videos", [])
-    except (OSError, ValueError):
-        videos = None    # no metrics here (tests, a fresh clone): trust the topic
-    if not sid:
-        # a new channel's samples (setup, 2026-11-19): it has published no Short yet, so there is none to expand
-        if videos is not None and not any(x.get("format", "short") == "short" for x in videos):
-            return None
-        return "names no `from_short` (a long video expands one of our recent Shorts in the top third by stayed to watch)"
-    if videos is None:
-        return None      # no metrics here (tests, a fresh clone): trust the topic
-    v = next((x for x in videos if x.get("id") == sid), None)
-    if v is None:
-        return f"from_short {sid!r} is not a published video"
-    now = date.fromisoformat(today) if today else date.today()
-
-    def recent(x: dict) -> bool:
-        day = _day(x.get("publishAt"))
-        return day is None or (now - day).days <= WIN_DAYS
-
-    if (v.get("views") or 0) < WIN_MIN_VIEWS:
-        return f"from_short {sid} has {v.get('views') or 0} views, under {WIN_MIN_VIEWS:,}"
-    if not recent(v):
-        return f"from_short {sid} was published over {WIN_DAYS} days ago"
-    pool = [x for x in videos if x.get("format", "short") == "short" and (x.get("views") or 0) >= WIN_MIN_VIEWS and recent(x)]
-    pool.sort(key=lambda x: (x.get("stayed") or 0, x.get("views") or 0), reverse=True)
-    top = [x.get("id") for x in pool[:max(1, math.ceil(len(pool) / 3))]]
-    if sid not in top:
-        rank = next((i for i, x in enumerate(pool, 1) if x.get("id") == sid), len(pool))
-        return (f"from_short {sid} is #{rank} of {len(pool)} recent Shorts by stayed to watch, "
-                f"not in the top third (the top {len(top)})")
-    return None
-
-
 def blocked_reason(topic: dict, today: str, fmt: str, root: Path = ROOT) -> str | None:
-    """Why an otherwise open topic can't be made now: stale facts, or a long topic without a winning Short."""
+    """Why an otherwise open topic can't be made now: stale facts. Nothing else.
+
+    A long topic never needs one of our Shorts (owner, 2026-11-22). The rule that a long video must expand
+    a Short with 1,000+ (4 Nov), then 100+ (12 Nov) views blocked every long topic on the new channels,
+    whose Shorts had 0-25 views, and Studio runs stopped with nothing to make. `from_short` stays an
+    optional link (the description points to that Short); it is never a gate, on any channel, and
+    scripts/guard.py refuses a branch that brings a views gate back."""
     if (old := stale_facts(topic, today)):
         return "facts may be out of date (research must confirm the latest release): " + "; ".join(old[:3])
-    if fmt == "long":
-        return winning_short(topic, root, today)
     return None
 
 

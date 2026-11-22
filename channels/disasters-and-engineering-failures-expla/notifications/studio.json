@@ -1,11 +1,3 @@
 {
-  "notifications": [
-    {
-      "key": "long-first-from-short-gate",
-      "severity": "critical",
-      "title": "Disaster Desk: no long video can be made (the from_short rule blocks every topic)",
-      "detail": "Studio's 22 Nov run stopped at check-plan: \"feed topic '2026-11-20-hyatt-walkways' can't be used: names no `from_short`\". That rule (Paisa Panchayat, 12 Nov) makes a long video expand one of our Shorts with 100+ views in the top third by stayed to watch. Disaster Desk is long-first: its Shorts are promos cut from long videos, and its only Short (Lac-M\u00e9gantic, published 21 Nov) has 0 views. The code exempted a channel with no published Short, so the exemption ended when that Short went out. Until fixed, every studio run (Sat/Sun/Tue/Thu) stops here and the Sun/Mon/Wed/Fri 22:47 long slots stay empty, starting Monday 23 Nov. Studio may not change code. The Hyatt topic now has 24 sourced facts and a 7-chapter outline, ready to script.",
-      "fix": "1. Exempt long-first channels from the rule: in generator/topics.py winning_short(), return None when the channel's channel.json has cadence.promoShortPerLong (or when the profile/recipe is long-first), with a test in generator/tests/test_topics_fresh.py (the auditor can make this fix tonight if you add it as a feedback note on the channel; it is a bug, not a recipe change). 2. Then start the studio routine for disasters-and-engineering-failures-expla by hand so Monday's 22:47 IST slot still gets a video (a 8-10 min video needs ~36 h with render)."
-    }
-  ]
+  "notifications": []
 }

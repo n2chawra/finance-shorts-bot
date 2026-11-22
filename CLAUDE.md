@@ -66,7 +66,8 @@ Read `PLAN.md` for milestones and current status. Update its checkboxes as work 
     (`renderer/advice.py`). Captions end 340 px above a Short's bottom edge; one upload category; no
     country tag on global videos.
   - **Settings (owner, confirmed 2026-11-20)**: 2 Shorts a day at 07:07 and 19:07 IST; one long video a week (Saturday 20:07 IST),
-    3–4 minutes (180–240 s), the full story of a recent Short that held viewers best; research,
+    3–4 minutes (180–240 s); a long topic never needs one of our Shorts (owner, 2026-11-22: the
+    from_short views gate stopped every new channel's long videos; `scripts/guard.py` keeps it out); research,
     auditor and improver nightly, the dashboard agent Sundays, scout and studio on, monthly off.
   Where a bullet below says otherwise, this one wins.
 - **Directed 2D shots (owner, 2026-11-13, after the Netflix remake: "I absolutely loved this… now new
@@ -288,7 +289,7 @@ is in `remotion/src/cast/`, the scenes in `remotion/src/scenes/`.
 | | Shorts | Long-form |
 |---|---|---|
 | Made by | the video routine (04:07 IST, 2 a day) | the **Studio** agent (`agents/studio.md`, Thursdays 08:05 IST, 1 a week) |
-| Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, Mon and Thu 09:37 IST): since 2026-11-04 always the full story of one of our Shorts with 1K+ views, titled as people search it |
+| Topics from | the research agent's feed | the **Scout** agent's feed (`agents/scout.md`, Mon and Thu 09:37 IST): proven long formats, titled as people search them; a Short of ours it expands (`from_short`) is optional, never required (owner, 2026-11-22) |
 | Template | `short_story` (1080×1920, a skit per format in its README) | `long_story` (1920×1080, a list of chapters, the scene catalog in its README) |
 | Length / pace | 20–35 s (settings), tempo 1.2 (~175 spoken words a minute) | 300–400 s (settings), tempo 1.25 (~180 words a minute; 1.5 until 2026-11-04) |
 | Ids | `v-YYYYMMDD-NN` | `L-YYYYMMDD-NN` |

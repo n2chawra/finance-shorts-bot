@@ -1,11 +1,3 @@
 {
-  "notifications": [
-    {
-      "key": "tech-long-from-short-gate",
-      "severity": "warning",
-      "title": "How Tech Works can't make a long video: every long topic is blocked by the 'from_short' rule",
-      "detail": "The rule from 12 Nov (a long video must expand one of our Shorts with 100+ views) was made for Paisa Panchayat. This channel is long-first (2 long videos a week planned) and has one Short with 25 views, so all 10 long topics Scout put in the feed today are blocked and Studio will skip this week's long videos.",
-      "fix": "1. Decide whether this channel's long videos may come straight from the feed until it has Shorts with 100+ views. 2. If yes, leave a 'general' note on the dashboard saying so; the improver adds a per-channel switch to generator/topics.py (backlog item tech-long-from-short-gate). 3. If no, nothing to do: long videos start once a Short passes 100 views."
-    }
-  ]
+  "notifications": []
 }

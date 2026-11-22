@@ -5,9 +5,10 @@
       "found": "2026-11-22",
       "route": "owner",
       "where": "code",
-      "status": "open",
+      "status": "done",
       "title": "The from_short gate blocks every long video on this long-first channel",
-      "detail": "generator/topics.py winning_short() requires a long topic to name one of our Shorts (100+ views, top third by stayed to watch). Disaster Desk is long-first (recipe.md: each Short promotes a long video), its only Short has 0 views and is about Lac-Mégantic, so no long topic can pass check-plan. The new-channel exemption ended when the first promo Short published (21 Nov)."
+      "detail": "generator/topics.py winning_short() requires a long topic to name one of our Shorts (100+ views, top third by stayed to watch). Disaster Desk is long-first (recipe.md: each Short promotes a long video), its only Short has 0 views and is about Lac-Mégantic, so no long topic can pass check-plan. The new-channel exemption ended when the first promo Short published (21 Nov).",
+      "outcome": "Fixed by the owner's rule of 2026-11-22: generator/topics.py no longer blocks a long topic on from_short or a Short's views (winning_short removed, on every channel); scripts/guard.py refuses a branch that brings it back. state --format long shows every feed topic usable."
     }
   ]
 }

@@ -162,6 +162,15 @@ def invariants(head: str) -> list[str]:
     numbers = show(head, "generator/numbers.py") or ""
     if "def number_check(" not in numbers:
         out.append("generator/numbers.py must keep number_check()")
+    # a long video never needs one of our Shorts (owner, 2026-11-22): the from_short views gate (1K+, then 100+)
+    # stopped every new channel's Studio runs; no agent may bring back a gate on a Short's views or on from_short
+    topics_py = show(head, "generator/topics.py") or ""
+    block = re.search(r"^def blocked_reason\(.*?(?=^def |\Z)", topics_py, re.M | re.S)
+    code = block.group(0).split('"""')[-1] if block else ""     # the function's code, after its docstring
+    if (not block or "from_short" in code or "views" in code or "metrics" in code
+            or re.search(r"^(def winning_short|WIN_MIN_VIEWS)", topics_py, re.M)):
+        out.append("generator/topics.py: a long topic must never be blocked by from_short or a Short's views "
+                   "(owner, 2026-11-22: that gate stopped every new channel's long videos)")
     # the weekly loop (owner, 2026-11-12): one Shorts challenger at a time, so a verdict is never two changes blurred
     # per channel: each channel's own experiments file once it has a folder (multi-channel layout)
     listed = git("ls-tree", "-r", "--name-only", head, "--", "channels").splitlines()

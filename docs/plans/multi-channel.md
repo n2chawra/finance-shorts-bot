@@ -180,9 +180,9 @@ second channel launches (the system raises a notification with the steps).
        cycle), the quota left across channels, and the plan's usage, with the reason for each. The
        owner's own numbers from "Add channel" are shown next to the advice. Whichever the owner
        accepts on the Launch review becomes the channel's settings.
-     - **Shorts, long or both:** long videos only where the niche's long hits show demand. Until one
-       of the channel's own Shorts wins, the long-video topics come from this research, because
-       channel #1's Scout rule (the full story of a Short with 1K+ views) has no Shorts to draw on yet.
+     - **Shorts, long or both:** long videos only where the niche's long hits show demand. Long-video
+       topics come from this research and Scout's feed. No channel's long video ever needs one of its
+       own Shorts to have views first (owner, 2026-11-22).
 4. **Build the channel pack (automatic)** in `channels/<slug>/`:
    - `profile.md`;
    - `formats.json` and `shapes.json` (starting from the shared library);

@@ -56,12 +56,13 @@ Write `channels/<channel>/videos/<id>/plan.json`, following `generator/prompts/p
 - `story`: the topic's long format (`formats` in `state`: `list_explained`, `once_you_understand`,
   `which_one_are_you`, `how_they_make_money`, `rich_vs_poor`) and `demand`: the topic's reference
   video `{title, views, url}`. `check-plan` fails without both (owner reset, 2026-10-21).
-- **The topic expands a winning Short** (owner, 2026-11-12): it must carry `from_short` (one of our
-  Shorts of the last 30 days in the top third by stayed to watch, with 100+ views). If the feed has none, pick that Short yourself from
-  `channels/<channel>/metrics/videos.json`. The first 30 s restate that Short's hook and promise the full answer; the
-  description's first line links it ("The 30-second version: https://youtube.com/shorts/<its YouTube id>").
-  3–4 minutes (`longLengthMinSec`–`longLengthMaxSec`, 180–240 s since 2026-11-12). After shipping, raise an owner notification:
-  "In YouTube Studio open the Short <title> → Related video → pick <this long video>" (the API can't set it).
+- **No Short of ours is needed** (owner, 2026-11-22, on every channel): any usable feed topic can be
+  made. Never stop a run, or skip a long video, because no Short has enough views. If the topic names a
+  `from_short`, the first 30 s restate that Short's hook and promise the full answer, and the
+  description's first line links it ("The 30-second version: https://youtube.com/shorts/<its YouTube id>"),
+  and after shipping you raise an owner notification: "In YouTube Studio open the Short <title> →
+  Related video → pick <this long video>" (the API can't set it). Without one, open on the long video's
+  own question. 3–4 minutes (`longLengthMinSec`–`longLengthMaxSec`, 180–240 s since 2026-11-12).
 - `title`: phrased as people search the question the Short raised ("How do billionaires avoid
   taxes?"), else a big promise someone would click, in the shape of the reference video's ("Every money
   trap the middle class falls into", "Once you understand X, you'll never Y"). 40–70 characters.
