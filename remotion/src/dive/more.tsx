@@ -291,7 +291,7 @@ export const Hall: React.FC<PieceProps> = ({ L, w, g }) => {
 /** A passage: `walk` (an arched tunnel, people walking through with lamps), `water` (a rushing channel), `sewer`. */
 export const Passage: React.FC<PieceProps> = ({ L, w, g }) => {
   const s = L.spec, look = w.look;
-  const yb = w.Y(L.ft) + 150, x0 = 70, x1 = 1010, h = 300, top = yb - h;
+  const yb = w.Y(L.ft) + 190, x0 = 50, x1 = 1030, h = 400, top = yb - h;
   const type = s.type ?? "walk";
   const wall = s.color ?? (type === "walk" ? shade(look.chalk, -0.3) : "#5b6270");
   const water = type !== "walk";
@@ -335,8 +335,8 @@ export const Pumps: React.FC<PieceProps> = ({ L, w, g }) => {
         return (
           <g key={i}>
             {/* the pipe up from each pump, water rising through it */}
-            <Limb a={[cx, cy - 100]} b={[cx, top - 900]} w={56} color="#8a95a8" sw={STROKE} />
-            <line x1={cx} x2={cx} y1={cy - 100} y2={top - 900} stroke={look.water} strokeWidth={24} strokeDasharray="40 30" strokeDashoffset={(g * (3 + 12 * on)) % 70} />
+            <Limb a={[cx, cy - 100]} b={[cx, top - 260]} w={56} color="#8a95a8" sw={STROKE} />
+            <line x1={cx} x2={cx} y1={cy - 100} y2={top - 260} stroke={look.water} strokeWidth={24} strokeDasharray="40 30" strokeDashoffset={(g * (3 + 12 * on)) % 70} />
             <Ball x={cx} y={cy} r={112} fill="#5b6270" />
             <g transform={`rotate(${spin + i * 30} ${cx} ${cy})`}>
               {[0, 72, 144, 216, 288].map((a) => <g key={a} transform={`rotate(${a} ${cx} ${cy})`}><path d={`M ${cx} ${cy} q 40 -30 86 -14 q -36 10 -62 44 z`} fill="#c9d6e2" stroke={INK} strokeWidth={4} /></g>)}
@@ -361,13 +361,23 @@ export const Pour: React.FC<PieceProps> = ({ L, w, g }) => {
   const y = w.Y(L.ft), c = s.color ?? look.water;
   const k = ramp(g, L.land - 6, L.land + 16) * outro(w, g);
   const pool = 120 + 160 * k;
+  const wall = s.wall ?? "#b9b4a8";
   return (
     <g>
-      <rect x={-2400} y={y + 200 - pool} width={5900} height={pool + 60} fill={c} />
-      {[0, 1, 2].map((i) => <path key={i} transform={`translate(${-loopU(w, g, 10 + i * 4) * 160} 0)`} d={`M -400 ${y + 220 - pool + i * 40} ${Array.from({ length: 14 }, () => "q 40 -18 80 0 t 80 0").join(" ")}`} fill="none" stroke={shade(c, 0.4)} strokeWidth={7} opacity={0.75} />)}
+      {/* the shaft itself: a concrete cylinder seen in section, lit rings and a ladder down its wall */}
+      <rect x={110} y={y - 700} width={860} height={960} fill={shade(wall, -0.55)} />
+      {[0, 1, 2, 3].map((i) => <rect key={i} x={110} y={y - 640 + i * 200} width={860} height={14} fill={shade(wall, -0.3)} />)}
+      {[0, 1, 2, 3].map((i) => <Glow key={`l${i}`} x={240 + i * 200} y={y - 600} r={120} color="#fff3c2" o={0.35} />)}
+      <Block x={60} y={y - 700} w={70} h={960} fill={wall} shadow="right" />
+      <Block x={950} y={y - 700} w={70} h={960} fill={wall} shadow="left" />
+      {Array.from({ length: 16 }, (_, i) => <line key={`r${i}`} x1={900} x2={940} y1={y - 680 + i * 50} y2={y - 680 + i * 50} stroke="#d6dbe4" strokeWidth={6} />)}
+      <line x1={900} x2={900} y1={y - 690} y2={y + 160} stroke="#d6dbe4" strokeWidth={6} />
+      <line x1={940} x2={940} y1={y - 690} y2={y + 160} stroke="#d6dbe4" strokeWidth={6} />
+      <rect x={130} y={y + 200 - pool} width={820} height={pool + 60} fill={c} />
+      {[0, 1, 2].map((i) => <path key={i} transform={`translate(${-loopU(w, g, 10 + i * 4) * 160} 0)`} d={`M 130 ${y + 220 - pool + i * 40} ${Array.from({ length: 14 }, () => "q 40 -18 80 0 t 80 0").join(" ")}`} fill="none" stroke={shade(c, 0.4)} strokeWidth={7} opacity={0.75} />)}
       {k > 0 ? <>
-        <path d={`M -60 ${y - 320} Q 260 ${y - 300} 330 ${y + 200 - pool}`} fill="none" stroke={c} strokeWidth={130 * k} strokeLinecap="round" />
-        <path d={`M -60 ${y - 320} Q 260 ${y - 300} 330 ${y + 200 - pool}`} fill="none" stroke="#e8f6ff" strokeWidth={18} strokeDasharray="50 40" strokeDashoffset={-loopU(w, g, 30) * 90} opacity={0.8 * k} />
+        <path d={`M 130 ${y - 520} Q 300 ${y - 480} 360 ${y + 200 - pool}`} fill="none" stroke={c} strokeWidth={130 * k} strokeLinecap="round" />
+        <path d={`M 130 ${y - 520} Q 300 ${y - 480} 360 ${y + 200 - pool}`} fill="none" stroke="#e8f6ff" strokeWidth={18} strokeDasharray="50 40" strokeDashoffset={-loopU(w, g, 30) * 90} opacity={0.8 * k} />
         {Array.from({ length: 9 }, (_, i) => { const u = loopU(w, g, 8, i / 9); return <circle key={i} cx={330 + (i - 4) * 40 * u} cy={y + 190 - pool - Math.sin(u * Math.PI) * 120} r={14} fill="#e8f6ff" opacity={0.8 * k} />; })}
       </> : null}
       <Marker L={L} w={w} g={g} x={420} y={y - 230} />

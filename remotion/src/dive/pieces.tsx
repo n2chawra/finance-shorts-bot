@@ -23,7 +23,9 @@ export const CamCtx = createContext<DiveCam>({ z: 1, camY: 0, cx: 540, W: 1080, 
 export const useNear = (y: number): number => {
   const c = useContext(CamCtx);
   const sy = ANCHOR_Y + (y - c.camY) * c.z;
-  return 1 - ramp(Math.abs(sy - ANCHOR_Y), 420, 500);
+  // and never in the caption band (from ~1330 px) or under the top note: a sign there reads as clutter on a camera
+  // move (QA 2026-11-22, v-20261122-56: the TUNNEL sign under "Then giant pumps throw")
+  return Math.min(1 - ramp(Math.abs(sy - ANCHOR_Y), 420, 500), ramp(sy, 170, 230), 1 - ramp(sy, 1270, 1330));
 };
 /** 1 for the whole video, falling to 0 over its last second, so whatever arrived on its word is gone again when
  * the ride up lands on the first frame (QA 2026-11-22: "the last frame shows the pillars, frame 0 has none"). */
@@ -69,7 +71,8 @@ export const Tally: React.FC<{ L: Layer; w: DiveWorld; g: number; x: number; y: 
   const figs = t.beat ? w.figs[t.beat] ?? {} : L.fig;
   const fig = figs[t.fig];
   if (!fig) return null;
-  const k = ramp(g, at - 3, at + 20) * outro(w, g);
+  const near = useNear(y + 60);
+  const k = ramp(g, at - 3, at + 20) * outro(w, g) * near;
   if (k <= 0) return null;
   // high on the back wall, above the people's heads (QA 2026-11-22: a 230 px tablet hid the whole crowd)
   // one line across the top of the vault, clear of the heads below (QA 2026-11-22, twice)
