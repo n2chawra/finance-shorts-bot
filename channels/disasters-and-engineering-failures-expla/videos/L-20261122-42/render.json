@@ -1,0 +1,662 @@
+{
+  "template": "long_story",
+  "renderer": "remotion",
+  "seed": 42322,
+  "duration_sec": 483,
+  "tempo": 1.25,
+  "style": {
+    "palette": "night",
+    "genre": "undertow",
+    "key": "E",
+    "bpm": 52
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 0.92,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Texas City, March 23, 2005. A refinery tower 170 feet tall is being started up after maintenance.",
+        "start": 0.27,
+        "seconds": 9.54,
+        "window": 10.17,
+        "fill": 0.938
+      },
+      {
+        "scene": "hook-gauge",
+        "text": "In the control room, its level gauge says the liquid sits near the bottom.",
+        "start": 10.43,
+        "seconds": 4.62,
+        "window": 5.27,
+        "fill": 0.877
+      },
+      {
+        "scene": "hook-full",
+        "text": "In fact, the liquid is almost at the top.",
+        "start": 15.7,
+        "seconds": 2.64,
+        "window": 3.17,
+        "fill": 0.833
+      },
+      {
+        "scene": "hook-geyser",
+        "text": "It pours out through relief valves, fills an old vent stack, and erupts into the air like a geyser.",
+        "start": 18.87,
+        "seconds": 6.39,
+        "window": 7.03,
+        "fill": 0.909
+      },
+      {
+        "scene": "promise",
+        "text": "It wasn't one failure. It was a gauge that couldn't see, a vent with no flare, and trailers parked too close.",
+        "start": 25.9,
+        "seconds": 7.18,
+        "window": 7.8,
+        "fill": 0.921
+      },
+      {
+        "scene": "promise2",
+        "text": "Here is the unit, the start-up, the gauge, the overflow, the blast, the findings, and what changed.",
+        "start": 33.7,
+        "seconds": 6.93,
+        "window": 7.57,
+        "fill": 0.915
+      },
+      {
+        "scene": "u-refinery",
+        "text": "The BP refinery at Texas City was the third largest in the United States.",
+        "start": 41.27,
+        "seconds": 5.61,
+        "window": 6.27,
+        "fill": 0.895
+      },
+      {
+        "scene": "u-isom",
+        "text": "Its isomerization unit turned refinery streams into high octane blending stock for gasoline.",
+        "start": 47.53,
+        "seconds": 6.77,
+        "window": 7.4,
+        "fill": 0.915
+      },
+      {
+        "scene": "u-trailers",
+        "text": "Nearby, contract workers were using temporary trailers, set up for maintenance work on another unit.",
+        "start": 54.93,
+        "seconds": 6.23,
+        "window": 6.87,
+        "fill": 0.907
+      },
+      {
+        "scene": "u-tower",
+        "text": "At its heart stood the raffinate splitter, a distillation tower 170 feet tall.",
+        "start": 61.8,
+        "seconds": 6.23,
+        "window": 6.83,
+        "fill": 0.912
+      },
+      {
+        "scene": "u-how",
+        "text": "How does a splitter work? A furnace heats the liquid, the light part boils up the tower, and the heavy part is drawn off at the bottom.",
+        "start": 68.63,
+        "seconds": 8.44,
+        "window": 9.07,
+        "fill": 0.931
+      },
+      {
+        "scene": "u-trays",
+        "text": "Inside, stacked trays split the liquid into a light part and a heavy part.",
+        "start": 77.7,
+        "seconds": 4.7,
+        "window": 5.33,
+        "fill": 0.882
+      },
+      {
+        "scene": "u-normal",
+        "text": "Normally, only the bottom few feet of the tower held liquid.",
+        "start": 83.03,
+        "seconds": 4.2,
+        "window": 4.83,
+        "fill": 0.87
+      },
+      {
+        "scene": "u-transmitter",
+        "text": "How did anyone know the level? A level transmitter watched the liquid. But it could only see the bottom 9 feet.",
+        "start": 87.87,
+        "seconds": 7.14,
+        "window": 7.77,
+        "fill": 0.919
+      },
+      {
+        "scene": "u-tease",
+        "text": "Above that line, the gauge was blind. On March 23, that blind spot would matter.",
+        "start": 95.63,
+        "seconds": 6.41,
+        "window": 7.03,
+        "fill": 0.912
+      },
+      {
+        "scene": "s-maint",
+        "text": "The unit had been shut down for maintenance. Now crews were starting it up again.",
+        "start": 102.67,
+        "seconds": 4.82,
+        "window": 5.47,
+        "fill": 0.881
+      },
+      {
+        "scene": "s-night",
+        "text": "The night operator began filling the tower with liquid before dawn.",
+        "start": 108.13,
+        "seconds": 4.59,
+        "window": 5.17,
+        "fill": 0.888
+      },
+      {
+        "scene": "s-stop",
+        "text": "He stopped when the gauge read near the top of its range. One high level alarm sounded. The backup alarm never did.",
+        "start": 113.3,
+        "seconds": 7.89,
+        "window": 8.53,
+        "fill": 0.925
+      },
+      {
+        "scene": "s-procedure",
+        "text": "The start-up procedure said to fill it only to 50% on the gauge.",
+        "start": 121.83,
+        "seconds": 4.9,
+        "window": 5.53,
+        "fill": 0.886
+      },
+      {
+        "scene": "s-habit",
+        "text": "Was going past the gauge unusual? No. In 15 of the 19 start-ups the board studied, the level went beyond its range.",
+        "start": 127.37,
+        "seconds": 8.84,
+        "window": 9.47,
+        "fill": 0.933
+      },
+      {
+        "scene": "s-shifts",
+        "text": "The operators had been working twelve hour shifts for 29 or more days in a row.",
+        "start": 136.83,
+        "seconds": 5.64,
+        "window": 6.27,
+        "fill": 0.9
+      },
+      {
+        "scene": "s-board",
+        "text": "Who was watching? One board operator, running three units from the same console.",
+        "start": 143.1,
+        "seconds": 5.28,
+        "window": 5.9,
+        "fill": 0.895
+      },
+      {
+        "scene": "s-restart",
+        "text": "Mid-morning, the day crew restarted the feed and lit the furnace burners.",
+        "start": 149.0,
+        "seconds": 4.84,
+        "window": 5.47,
+        "fill": 0.885
+      },
+      {
+        "scene": "s-in",
+        "text": "Liquid kept flowing in. But the valve that takes liquid out stayed shut.",
+        "start": 154.47,
+        "seconds": 4.7,
+        "window": 5.3,
+        "fill": 0.887
+      },
+      {
+        "scene": "s-hours",
+        "text": "For over 3 hours, the tower filled and almost nothing left it.",
+        "start": 159.77,
+        "seconds": 4.17,
+        "window": 4.8,
+        "fill": 0.869
+      },
+      {
+        "scene": "s-super",
+        "text": "Late in the morning, the supervisor left for a family emergency. No one trained took his place.",
+        "start": 164.57,
+        "seconds": 6.53,
+        "window": 7.17,
+        "fill": 0.911
+      },
+      {
+        "scene": "s-tease",
+        "text": "On the board, the level looked fine. In the tower, it was climbing.",
+        "start": 171.73,
+        "seconds": 4.33,
+        "window": 4.97,
+        "fill": 0.871
+      },
+      {
+        "scene": "g-two",
+        "text": "What did the operators see, and what was really in the tower?",
+        "start": 176.7,
+        "seconds": 3.61,
+        "window": 4.23,
+        "fill": 0.853
+      },
+      {
+        "scene": "g-67",
+        "text": "Late morning, the gauge still showed a low level. The real level was 67 feet.",
+        "start": 180.93,
+        "seconds": 5.77,
+        "window": 6.4,
+        "fill": 0.902
+      },
+      {
+        "scene": "g-98",
+        "text": "Before noon, it was 98 feet.",
+        "start": 187.33,
+        "seconds": 2.38,
+        "window": 3.0,
+        "fill": 0.793
+      },
+      {
+        "scene": "g-140",
+        "text": "Early afternoon, 140 feet.",
+        "start": 190.33,
+        "seconds": 2.86,
+        "window": 3.47,
+        "fill": 0.824
+      },
+      {
+        "scene": "g-158",
+        "text": "Then 158 feet, in a tower 170 feet tall. And the gauge showed the level falling.",
+        "start": 193.8,
+        "seconds": 7.49,
+        "window": 8.13,
+        "fill": 0.921
+      },
+      {
+        "scene": "g-why",
+        "text": "Why? The transmitter was set up for the bottom of the tower, and calibrated for a liquid of a different density.",
+        "start": 201.93,
+        "seconds": 6.66,
+        "window": 7.27,
+        "fill": 0.916
+      },
+      {
+        "scene": "g-glass",
+        "text": "Could they look inside? The only window was a sight glass on the tower. It had been unreadable for years.",
+        "start": 209.2,
+        "seconds": 6.88,
+        "window": 7.5,
+        "fill": 0.917
+      },
+      {
+        "scene": "g-meeting",
+        "text": "Minutes later, a safety meeting began in the main control room.",
+        "start": 216.7,
+        "seconds": 4.41,
+        "window": 5.0,
+        "fill": 0.882
+      },
+      {
+        "scene": "g-tease",
+        "text": "With the tower nearly full, the liquid had one way left to go: over the top.",
+        "start": 221.7,
+        "seconds": 5.16,
+        "window": 5.7,
+        "fill": 0.905
+      },
+      {
+        "scene": "o-q",
+        "text": "What happens when a tower overfills?",
+        "start": 227.4,
+        "seconds": 2.36,
+        "window": 3.0,
+        "fill": 0.787
+      },
+      {
+        "scene": "o-pipe",
+        "text": "At the top, liquid spilled into the overhead pipe, which ran back down the side of the tower.",
+        "start": 230.4,
+        "seconds": 5.74,
+        "window": 6.33,
+        "fill": 0.907
+      },
+      {
+        "scene": "o-valves",
+        "text": "At the bottom of that pipe, 148 feet down, sat three pressure relief valves.",
+        "start": 236.73,
+        "seconds": 5.77,
+        "window": 6.4,
+        "fill": 0.902
+      },
+      {
+        "scene": "o-psi",
+        "text": "As the pipe filled with liquid, the pressure there rose from about 21 to about 64 psi.",
+        "start": 243.13,
+        "seconds": 6.63,
+        "window": 7.27,
+        "fill": 0.912
+      },
+      {
+        "scene": "o-open",
+        "text": "The relief valves did their job and opened. For 6 minutes, they stayed open.",
+        "start": 250.4,
+        "seconds": 5.52,
+        "window": 6.13,
+        "fill": 0.9
+      },
+      {
+        "scene": "o-gallons",
+        "text": "They sent about 51,900 gallons of flammable liquid to the blowdown drum.",
+        "start": 256.53,
+        "seconds": 6.09,
+        "window": 6.67,
+        "fill": 0.913
+      },
+      {
+        "scene": "o-old",
+        "text": "The drum and its stack were decades old, and vented straight to the open air.",
+        "start": 263.2,
+        "seconds": 4.82,
+        "window": 5.47,
+        "fill": 0.881
+      },
+      {
+        "scene": "o-flare",
+        "text": "It had never been connected to a flare, which would have burned the vapour off safely.",
+        "start": 268.67,
+        "seconds": 4.68,
+        "window": 5.3,
+        "fill": 0.883
+      },
+      {
+        "scene": "o-osha",
+        "text": "In 1992, a federal inspector had cited a similar drum and stack as unsafe. The citation was later withdrawn.",
+        "start": 273.97,
+        "seconds": 9.59,
+        "window": 10.23,
+        "fill": 0.937
+      },
+      {
+        "scene": "o-geyser",
+        "text": "The drum overfilled. Liquid erupted from the top of the 113 foot stack, like a geyser.",
+        "start": 284.2,
+        "seconds": 6.85,
+        "window": 7.47,
+        "fill": 0.917
+      },
+      {
+        "scene": "o-vapour",
+        "text": "The liquid was so volatile that it turned to vapour as it fell.",
+        "start": 291.67,
+        "seconds": 4.25,
+        "window": 4.87,
+        "fill": 0.873
+      },
+      {
+        "scene": "o-tease",
+        "text": "And 25 feet from the drum, a pickup truck sat idling, its engine running.",
+        "start": 296.53,
+        "seconds": 5.52,
+        "window": 6.13,
+        "fill": 0.9
+      },
+      {
+        "scene": "b-cloud",
+        "text": "Where did it go? A cloud of flammable vapour spread along the ground, toward the trailers.",
+        "start": 302.67,
+        "seconds": 5.94,
+        "window": 6.57,
+        "fill": 0.904
+      },
+      {
+        "scene": "b-time",
+        "text": "At 20 past 1 in the afternoon, it found an ignition source.",
+        "start": 309.23,
+        "seconds": 4.35,
+        "window": 4.97,
+        "fill": 0.875
+      },
+      {
+        "scene": "turn",
+        "text": "What lit it? The most likely source, the board found, was the idling diesel pickup truck.",
+        "start": 314.2,
+        "seconds": 5.86,
+        "window": 6.47,
+        "fill": 0.906
+      },
+      {
+        "scene": "b-ignite",
+        "text": "Then, in an instant, the whole cloud ignited.",
+        "start": 320.67,
+        "seconds": 3.3,
+        "window": 3.93,
+        "fill": 0.84
+      },
+      {
+        "scene": "b-trailers",
+        "text": "The blast tore through the trailers parked near the unit.",
+        "start": 324.6,
+        "seconds": 3.32,
+        "window": 3.93,
+        "fill": 0.845
+      },
+      {
+        "scene": "b-121",
+        "text": "Some had been placed as close as 121 feet from the blowdown drum.",
+        "start": 328.53,
+        "seconds": 5.17,
+        "window": 5.8,
+        "fill": 0.891
+      },
+      {
+        "scene": "b-damage",
+        "text": "More than 40 trailers were damaged. 13 were destroyed.",
+        "start": 334.33,
+        "seconds": 4.09,
+        "window": 4.7,
+        "fill": 0.87
+      },
+      {
+        "scene": "b-479",
+        "text": "A person in a trailer was injured as far as 479 feet away.",
+        "start": 339.03,
+        "seconds": 5.27,
+        "window": 5.87,
+        "fill": 0.898
+      },
+      {
+        "scene": "b-toll",
+        "text": "15 people died. All of them were in or near those trailers. 180 were injured.",
+        "start": 344.9,
+        "seconds": 6.45,
+        "window": 7.07,
+        "fill": 0.912
+      },
+      {
+        "scene": "b-shelter",
+        "text": "Around the refinery, 43,000 people were told to stay indoors.",
+        "start": 351.97,
+        "seconds": 4.71,
+        "window": 5.33,
+        "fill": 0.884
+      },
+      {
+        "scene": "b-tease",
+        "text": "Why were people in trailers so close to a unit starting up? The board asked that too.",
+        "start": 357.3,
+        "seconds": 5.67,
+        "window": 6.27,
+        "fill": 0.904
+      },
+      {
+        "scene": "r-csb",
+        "text": "The U.S. Chemical Safety Board investigated. Its finding was blunt.",
+        "start": 363.57,
+        "seconds": 5.33,
+        "window": 5.97,
+        "fill": 0.893
+      },
+      {
+        "scene": "r-levels",
+        "text": "The disaster was caused by organizational and safety deficiencies at all levels of the company.",
+        "start": 369.53,
+        "seconds": 6.55,
+        "window": 7.17,
+        "fill": 0.914
+      },
+      {
+        "scene": "r-board",
+        "text": "Why did it happen? The board traced it link by link.",
+        "start": 376.7,
+        "seconds": 3.38,
+        "window": 3.97,
+        "fill": 0.851
+      },
+      {
+        "scene": "r-procedure",
+        "text": "Liquid was fed in for over 3 hours with none taken out, against the start-up procedure.",
+        "start": 380.67,
+        "seconds": 5.82,
+        "window": 6.47,
+        "fill": 0.9
+      },
+      {
+        "scene": "r-instr",
+        "text": "Instruments and alarms gave false readings, and the operators were likely tired and poorly trained.",
+        "start": 387.13,
+        "seconds": 6.52,
+        "window": 7.17,
+        "fill": 0.909
+      },
+      {
+        "scene": "r-turnover",
+        "text": "And there was no requirement to pass on the state of the start-up from one shift to the next.",
+        "start": 394.3,
+        "seconds": 5.5,
+        "window": 6.07,
+        "fill": 0.906
+      },
+      {
+        "scene": "r-warn",
+        "text": "Warning signs had been there for years, the board wrote, but company officials did not step in effectively.",
+        "start": 400.37,
+        "seconds": 6.83,
+        "window": 7.43,
+        "fill": 0.919
+      },
+      {
+        "scene": "r-stack",
+        "text": "The blowdown stack was an unsafe design, kept in service despite earlier warnings.",
+        "start": 407.8,
+        "seconds": 6.04,
+        "window": 6.67,
+        "fill": 0.906
+      },
+      {
+        "scene": "r-sited",
+        "text": "And occupied trailers had been placed too close to a unit handling highly hazardous materials.",
+        "start": 414.47,
+        "seconds": 6.5,
+        "window": 7.13,
+        "fill": 0.912
+      },
+      {
+        "scene": "r-tease",
+        "text": "So what changed after Texas City?",
+        "start": 421.6,
+        "seconds": 2.53,
+        "window": 3.17,
+        "fill": 0.798
+      },
+      {
+        "scene": "w-urgent",
+        "text": "Did anything change? Months before its final report, the board issued urgent recommendations.",
+        "start": 424.77,
+        "seconds": 6.53,
+        "window": 7.17,
+        "fill": 0.911
+      },
+      {
+        "scene": "w-api",
+        "text": "It asked the American Petroleum Institute to write new guidelines to keep occupied trailers away from hazardous process areas.",
+        "start": 431.93,
+        "seconds": 8.31,
+        "window": 8.97,
+        "fill": 0.926
+      },
+      {
+        "scene": "w-agree",
+        "text": "The institute agreed. And the board called for an alert urging companies to act promptly to place their trailers safely.",
+        "start": 440.9,
+        "seconds": 7.63,
+        "window": 8.27,
+        "fill": 0.923
+      },
+      {
+        "scene": "w-521",
+        "text": "And the vent stack? The board asked the institute to revise its guide on relief systems, naming the hazards of blowdown drums and urging safer alternatives.",
+        "start": 449.17,
+        "seconds": 10.92,
+        "window": 11.57,
+        "fill": 0.944
+      },
+      {
+        "scene": "payoff",
+        "text": "The last reading before the blast: the gauge said the level was falling. The tower held 158 feet of liquid.",
+        "start": 460.73,
+        "seconds": 8.04,
+        "window": 8.67,
+        "fill": 0.927
+      },
+      {
+        "scene": "w-score",
+        "text": "A blind gauge. A tower filled for hours. A stack with no flare. Trailers too close.",
+        "start": 469.4,
+        "seconds": 6.35,
+        "window": 7.0,
+        "fill": 0.907
+      },
+      {
+        "scene": "loop",
+        "text": "Which link should have broken the chain first? Tell us in the comments.",
+        "start": 476.4,
+        "seconds": 4.01,
+        "window": 4.63,
+        "fill": 0.866
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.6,
+    "lufs": -16.4,
+    "music_under_voice_db": 32.0
+  },
+  "craft_problems": [
+    "note: four shots in a row open wide (from 'promise'): vary the shot size",
+    "note: 53 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+    "note: set 'the site plan' in 3 shots in a row: move the story somewhere else",
+    "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+    "note: directed is 76 of 76 composed beats (at most 40%): vary how each idea is shown",
+    "note: directed 4 times in a row: change the device"
+  ],
+  "liveliness": {
+    "median": 3.181,
+    "still_share": 0.025,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}

@@ -1,303 +1,312 @@
 {
- "note": "The niche's formats, tiers from research/families.json (20 Nov 2026 scan: 1,230 on-niche titles labelled). demand = hit ids the format rests on; examples = measured views. Tiers: core = families' core; low = in the niche, weaker or crowded (on-niche medians are dragged down by ~12 tiny new channels); avoid = the planner must not pick it.",
- "seen": [],
- "formats": [
-  {
-   "id": "stunt_gone_wrong",
-   "format": "long",
-   "name": "It went wrong: a ride, stunt or amateur build that failed",
-   "tier": "core",
-   "emotion": "'how did nobody check that?', then relief at understanding the physics",
-   "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
-   "beats": "cold open at the moment it fails (3D, slowed, the part shown, no bodies) -> who built it and why, the confidence -> how it was meant to work (flat diagram, forces) -> the corners cut, each a document or photo -> the day: a clock on screen, instrument rising -> silence, the failure in cutaway, one sub-boom -> the wide shot from far away, the toll stated plainly -> the investigation's finding on the report page, highlighted -> what changed (the rule, the standard) -> cause scorecard",
-   "demand": [
-    "NiIZ8SU_bis",
-    "Szjrjma49JM",
-    "6d4yzrEIvaI"
-   ],
-   "examples": [
+  "note": "The niche's formats, tiers from research/families.json (20 Nov 2026 scan: 1,230 on-niche titles labelled). demand = hit ids the format rests on; examples = measured views. Tiers: core = families' core; low = in the niche, weaker or crowded (on-niche medians are dragged down by ~12 tiny new channels); avoid = the planner must not pick it.",
+  "seen": [],
+  "formats": [
     {
-     "title": "Homemade Catapult Goes Wrong",
-     "views": 1146640,
-     "url": "https://www.youtube.com/watch?v=NiIZ8SU_bis"
+      "id": "stunt_gone_wrong",
+      "format": "long",
+      "name": "It went wrong: a ride, stunt or amateur build that failed",
+      "tier": "core",
+      "emotion": "'how did nobody check that?', then relief at understanding the physics",
+      "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
+      "beats": "cold open at the moment it fails (3D, slowed, the part shown, no bodies) -> who built it and why, the confidence -> how it was meant to work (flat diagram, forces) -> the corners cut, each a document or photo -> the day: a clock on screen, instrument rising -> silence, the failure in cutaway, one sub-boom -> the wide shot from far away, the toll stated plainly -> the investigation's finding on the report page, highlighted -> what changed (the rule, the standard) -> cause scorecard",
+      "demand": [
+        "NiIZ8SU_bis",
+        "Szjrjma49JM",
+        "6d4yzrEIvaI"
+      ],
+      "examples": [
+        {
+          "title": "Homemade Catapult Goes Wrong",
+          "views": 1146640,
+          "url": "https://www.youtube.com/watch?v=NiIZ8SU_bis"
+        },
+        {
+          "title": "Human Cannonball Stunt Goes Wrong",
+          "views": 1113149,
+          "url": "https://www.youtube.com/watch?v=6d4yzrEIvaI"
+        }
+      ],
+      "_why": "families.json: long stunt, ride or amateur gone wrong, 13 videos, 1.93x, 409,809 median (core, gap); advice.md: 4 of 15 in month 1",
+      "markets": [
+        "global"
+      ]
     },
     {
-     "title": "Human Cannonball Stunt Goes Wrong",
-     "views": 1113149,
-     "url": "https://www.youtube.com/watch?v=6d4yzrEIvaI"
-    }
-   ],
-   "_why": "families.json: long stunt, ride or amateur gone wrong, 13 videos, 1.93x, 409,809 median (core, gap); advice.md: 4 of 15 in month 1",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "rail_crash",
-   "format": "long",
-   "name": "Rail crash: the signal, the speed and the minute that decided it",
-   "tier": "low",
-   "emotion": "dread as the clock and the speed dial close in",
-   "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
-   "beats": "cold open: the train at speed on its path, the speed dial, the curve or signal ahead -> the line, the train, the crew (licensed photos) -> how the safety system was meant to work (flat signal diagram) -> the gaps, one per document -> the last minutes with a clock and speed dial -> silence, the derailment in 3D at distance, the failing part in cutaway -> the toll plainly -> the report's finding -> what changed -> cause scorecard",
-   "demand": [
-    "2l3_547XTdY",
-    "Y5NuJDMYKlU"
-   ],
-   "examples": [
-    {
-     "title": "The tracks Just Disappeared | The Birtley Train Derailment",
-     "views": 513376,
-     "url": "https://www.youtube.com/watch?v=2l3_547XTdY"
-    }
-   ],
-   "_why": "families.json: long rail crash, 10 videos, 1.04x, 15% hits, 154,694 median; advice.md: 3 of 15",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "air_crash_rule",
-   "format": "long",
-   "name": "Air crash, minute by minute, ending on the rule it created",
-   "tier": "low",
-   "emotion": "'rules are written in blood' (the top comment kind)",
-   "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
-   "beats": "cold open: the aircraft on its 3D path with altitude and clock -> the flight, the aircraft type, the crew (photos) -> the conditions (weather, airport map) -> the chain of small decisions, the transcript as text (never voiced) -> the last 90 s with the live instrument -> silence, the impact far away, no bodies -> survivors and toll, the turning figure held for a beat -> the report page, finding highlighted -> the rule written after it, named and dated -> cause scorecard",
-   "demand": [
-    "_blF6L04Dfk",
-    "dcfldWqanJc"
-   ],
-   "examples": [
-    {
-     "title": "This Led To The Sterile Cockpit Rule: Eastern Airlines 212",
-     "views": 2408180,
-     "url": "https://www.youtube.com/watch?v=_blF6L04Dfk"
+      "id": "rail_crash",
+      "format": "long",
+      "name": "Rail crash: the signal, the speed and the minute that decided it",
+      "tier": "low",
+      "emotion": "dread as the clock and the speed dial close in",
+      "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
+      "beats": "cold open: the train at speed on its path, the speed dial, the curve or signal ahead -> the line, the train, the crew (licensed photos) -> how the safety system was meant to work (flat signal diagram) -> the gaps, one per document -> the last minutes with a clock and speed dial -> silence, the derailment in 3D at distance, the failing part in cutaway -> the toll plainly -> the report's finding -> what changed -> cause scorecard",
+      "demand": [
+        "2l3_547XTdY",
+        "Y5NuJDMYKlU"
+      ],
+      "examples": [
+        {
+          "title": "The tracks Just Disappeared | The Birtley Train Derailment",
+          "views": 513376,
+          "url": "https://www.youtube.com/watch?v=2l3_547XTdY"
+        }
+      ],
+      "_why": "families.json: long rail crash, 10 videos, 1.04x, 15% hits, 154,694 median; advice.md: 3 of 15",
+      "markets": [
+        "global"
+      ]
     },
     {
-     "title": "The Florida Learjet Crash Reconstructed in 3D: The Last 60 Seconds",
-     "views": 1941409,
-     "url": "https://www.youtube.com/watch?v=dcfldWqanJc"
-    }
-   ],
-   "_why": "families.json: long air crash explained 27 videos, 1.05x (dragged by tiny channels); Fascinating Horror 2.4M and Fault Lines 1.94M; comments.md theme 1; advice.md: 4 of 15",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "corner_cut_structure",
-   "format": "long",
-   "name": "Every corner cut: the bridge, dam or building that failed",
-   "tier": "low",
-   "emotion": "anger at each shortcut, then the satisfaction of the mechanism",
-   "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
-   "beats": "cold open: the structure standing, stress colour already amber, the moment before -> who built it, when, for how much -> how it was designed to carry the load (cross-section, force arrows) -> each corner cut as a numbered stamp with its document -> the warnings ignored -> the day with a load gauge -> silence, the failing part (shear, hinge, buckle) in cutaway, sub-boom -> the toll plainly -> the inquiry's finding -> what changed -> cause scorecard (corners cut stamped)",
-   "demand": [
-    "plYQ-StbrOE",
-    "zjSuCwk8f1A"
-   ],
-   "examples": [
-    {
-     "title": "Every Corner Cut Led to 27 Lives Lost",
-     "views": 628753,
-     "url": "https://www.youtube.com/watch?v=plYQ-StbrOE"
+      "id": "air_crash_rule",
+      "format": "long",
+      "name": "Air crash, minute by minute, ending on the rule it created",
+      "tier": "low",
+      "emotion": "'rules are written in blood' (the top comment kind)",
+      "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
+      "beats": "cold open: the aircraft on its 3D path with altitude and clock -> the flight, the aircraft type, the crew (photos) -> the conditions (weather, airport map) -> the chain of small decisions, the transcript as text (never voiced) -> the last 90 s with the live instrument -> silence, the impact far away, no bodies -> survivors and toll, the turning figure held for a beat -> the report page, finding highlighted -> the rule written after it, named and dated -> cause scorecard",
+      "demand": [
+        "_blF6L04Dfk",
+        "dcfldWqanJc"
+      ],
+      "examples": [
+        {
+          "title": "This Led To The Sterile Cockpit Rule: Eastern Airlines 212",
+          "views": 2408180,
+          "url": "https://www.youtube.com/watch?v=_blF6L04Dfk"
+        },
+        {
+          "title": "The Florida Learjet Crash Reconstructed in 3D: The Last 60 Seconds",
+          "views": 1941409,
+          "url": "https://www.youtube.com/watch?v=dcfldWqanJc"
+        }
+      ],
+      "_why": "families.json: long air crash explained 27 videos, 1.05x (dragged by tiny channels); Fascinating Horror 2.4M and Fault Lines 1.94M; comments.md theme 1; advice.md: 4 of 15",
+      "markets": [
+        "global"
+      ]
     },
     {
-     "title": "Every Corner Cut led to 65 Lives Lost",
-     "views": 560984,
-     "url": "https://www.youtube.com/watch?v=zjSuCwk8f1A"
-    }
-   ],
-   "_why": "families.json: bridge 0.84x, dam/infrastructure 1.0x, building 0.96x (13-14% hits); Plainly Difficult 629K and 561K; advice.md: 4 of 15",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "space_failure",
-   "format": "long",
-   "name": "Space mission failure: one small mistake, one huge loss",
-   "tier": "core",
-   "emotion": "disbelief that something tiny broke something enormous",
-   "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
-   "beats": "cold open: the spacecraft at the moment it is lost -> the mission, the cost, the team -> how it was meant to work (diagram) -> the small mistake, traced through documents -> the timeline with mission clock -> the loss in 3D -> the board's finding -> what changed -> cause scorecard",
-   "demand": [
-    "qfCTDPMFLfQ",
-    "deFuJZOMzAw"
-   ],
-   "examples": [],
-   "_why": "families.json: long space mission failure, 11 videos, 1.59x (core, gap); advice.md: 1 of 15",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "maritime_industrial",
-   "format": "long",
-   "name": "Ship or plant: the door left open, the valve that failed",
-   "tier": "low",
-   "emotion": "the horror of a routine step skipped",
-   "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
-   "beats": "cold open: the ship listing or the plant at the moment of release -> the vessel or plant, its routine -> how the safety step works (diagram) -> the step skipped, documents -> the clock and the instrument (list angle, pressure) -> silence, the failure -> the toll plainly -> the report's finding -> what changed -> cause scorecard",
-   "demand": [
-    "QCzC7H1HttY",
-    "LLJp23OQacI",
-    "4fLIIcokZbU"
-   ],
-   "examples": [],
-   "_why": "families.json: ship 0.99x, industrial 0.93x, 11-13% hits; advice.md: 2 of 15",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "breaking_reconstruction",
-   "format": "long",
-   "name": "Recent crash reconstructed (fast lane): what the data shows so far",
-   "tier": "core",
-   "emotion": "urgency: 'what actually happened?'",
-   "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence. Every claim labelled 'preliminary' with its source (official statement, ATC audio as text, ADS-B data).",
-   "beats": "cold open: the last 60-90 s on the path with altitude and clock -> the flight and aircraft -> what the data shows, step by step -> what investigators will look at (no blame) -> what happens next and when the preliminary report is due -> pinned follow-up promise",
-   "demand": [
-    "dcfldWqanJc",
-    "Ayk__UBphmU"
-   ],
-   "examples": [
-    {
-     "title": "The Florida Learjet Crash Reconstructed in 3D: The Last 60 Seconds",
-     "views": 1941409,
-     "url": "https://www.youtube.com/watch?v=dcfldWqanJc"
+      "id": "corner_cut_structure",
+      "format": "long",
+      "name": "Every corner cut: the bridge, dam or building that failed",
+      "tier": "low",
+      "emotion": "anger at each shortcut, then the satisfaction of the mechanism",
+      "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
+      "beats": "cold open: the structure standing, stress colour already amber, the moment before -> who built it, when, for how much -> how it was designed to carry the load (cross-section, force arrows) -> each corner cut as a numbered stamp with its document -> the warnings ignored -> the day with a load gauge -> silence, the failing part (shear, hinge, buckle) in cutaway, sub-boom -> the toll plainly -> the inquiry's finding -> what changed -> cause scorecard (corners cut stamped)",
+      "demand": [
+        "plYQ-StbrOE",
+        "zjSuCwk8f1A"
+      ],
+      "examples": [
+        {
+          "title": "Every Corner Cut Led to 27 Lives Lost",
+          "views": 628753,
+          "url": "https://www.youtube.com/watch?v=plYQ-StbrOE"
+        },
+        {
+          "title": "Every Corner Cut led to 65 Lives Lost",
+          "views": 560984,
+          "url": "https://www.youtube.com/watch?v=zjSuCwk8f1A"
+        }
+      ],
+      "_why": "families.json: bridge 0.84x, dam/infrastructure 1.0x, building 0.96x (13-14% hits); Plainly Difficult 629K and 561K; advice.md: 4 of 15",
+      "markets": [
+        "global"
+      ]
     },
     {
-     "title": "Major Disasters (420 subs)",
-     "views": 185887,
-     "url": "https://www.youtube.com/watch?v=Ayk__UBphmU"
-    }
-   ],
-   "_why": "families.json: long breaking news disaster, 44 videos, 1.37x, 30% hits (core); comments.md: the 1 Nov Learjet crash pulled 8.3M/3.1M/2.8M/1.9M; takes the next slot when a major crash happens",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "promo_failure_moment",
-   "format": "short",
-   "name": "Promo Short: the moment of failure from this week's long video",
-   "tier": "core",
-   "emotion": "'wait, how?' then watch the full story",
-   "hook": "Frame 1 is the vehicle or structure in 3D a second before it fails, with a mono caption (date · place) and the reconstruction tag; subject named by 2 s; a figure (altitude, speed, load) on screen by 3 s; never the death toll in the first line",
-   "beats": "the moment before (3D, instrument on screen) -> the one cause in a flat diagram -> silence, the failure in cutaway, sub-boom -> one question the long video answers ('so why did nobody check?') -> the long video as the related video",
-   "demand": [
-    "V0CGuxCbeIk",
-    "L73NEgH36JU",
-    "JUevp0TSZME"
-   ],
-   "examples": [
-    {
-     "title": "How Smith machhar save 167 passengers | 3d Explained",
-     "views": 7454183,
-     "url": "https://www.youtube.com/watch?v=V0CGuxCbeIk"
+      "id": "space_failure",
+      "format": "long",
+      "name": "Space mission failure: one small mistake, one huge loss",
+      "tier": "core",
+      "emotion": "disbelief that something tiny broke something enormous",
+      "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
+      "beats": "cold open: the spacecraft at the moment it is lost -> the mission, the cost, the team -> how it was meant to work (diagram) -> the small mistake, traced through documents -> the timeline with mission clock -> the loss in 3D -> the board's finding -> what changed -> cause scorecard",
+      "demand": [
+        "qfCTDPMFLfQ",
+        "deFuJZOMzAw"
+      ],
+      "examples": [],
+      "_why": "families.json: long space mission failure, 11 videos, 1.59x (core, gap); advice.md: 1 of 15",
+      "markets": [
+        "global"
+      ]
     },
     {
-     "title": "How Did the Florida Plane Crash Happen?",
-     "views": 2556311,
-     "url": "https://www.youtube.com/watch?v=JUevp0TSZME"
+      "id": "maritime_industrial",
+      "format": "long",
+      "name": "Ship or plant: the door left open, the valve that failed",
+      "tier": "low",
+      "emotion": "the horror of a routine step skipped",
+      "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence.",
+      "beats": "cold open: the ship listing or the plant at the moment of release -> the vessel or plant, its routine -> how the safety step works (diagram) -> the step skipped, documents -> the clock and the instrument (list angle, pressure) -> silence, the failure -> the toll plainly -> the report's finding -> what changed -> cause scorecard",
+      "demand": [
+        "QCzC7H1HttY",
+        "LLJp23OQacI",
+        "4fLIIcokZbU"
+      ],
+      "examples": [
+        {
+          "id": "goSEyGNfiPM",
+          "title": "Updated BP Texas City Animation on the 15th Anniversary of the Explosion",
+          "views": 2263886,
+          "url": "https://www.youtube.com/watch?v=goSEyGNfiPM",
+          "channel": "USCSB",
+          "checked": "2026-11-22"
+        }
+      ],
+      "_why": "families.json: ship 0.99x, industrial 0.93x, 11-13% hits; advice.md: 2 of 15",
+      "markets": [
+        "global"
+      ]
     },
     {
-     "title": "Palm Beach Learjet Crash: 26,000 Feet in About a Minute",
-     "views": 1911282,
-     "url": "https://www.youtube.com/watch?v=L73NEgH36JU"
-    }
-   ],
-   "_why": "owner: 1 promo Short per long; families.json Shorts core: air crash explained 1.59x, flight-sim what-if 1.58x, how engineering works 1.52x; 3D in every measured Short",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "natural_disaster_explained",
-   "format": "long",
-   "name": "Natural disaster explained",
-   "tier": "avoid",
-   "emotion": "",
-   "hook": "not made: the planner never picks an avoid format",
-   "beats": "not made (see _why)",
-   "demand": [],
-   "examples": [],
-   "_why": "families.json: long 0.66x, Shorts 0.61x",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "miniature_fx",
-   "format": "short",
-   "name": "Fictional miniature disaster FX",
-   "tier": "avoid",
-   "emotion": "",
-   "hook": "not made: the planner never picks an avoid format",
-   "beats": "not made (see _why)",
-   "demand": [],
-   "examples": [],
-   "_why": "families.json: 0.61x; fiction breaks the true-only rule",
-   "markets": [
-    "global"
-   ]
-  },
-  {
-   "id": "promo_why_it_failed",
-   "format": "short",
-   "markets": [
-    "global"
-   ],
-   "name": "Promo Short: why it failed, explained in 40 seconds",
-   "tier": "core",
-   "emotion": "the click of finally understanding the physics",
-   "hook": "Frame 1 is the failing part in 3D cutaway already amber, with the date caption and the tag; the question named by 2 s ('Why did this tail stop working at 26,000 feet?'); a figure by 3 s",
-   "beats": "the question on the failing part -> how it should work (flat diagram, 2 steps) -> what happened instead (stress to red, the part gives way) -> the change it led to -> 'the full story' points to the long video",
-   "demand": [
-    "JUevp0TSZME",
-    "L73NEgH36JU",
-    "WImj7TCdf0w"
-   ],
-   "examples": [
-    {
-     "title": "What actually happened during Kobe Bryant's final flight",
-     "views": 10798785,
-     "url": "https://www.youtube.com/watch?v=mKPO7QpA_38"
+      "id": "breaking_reconstruction",
+      "format": "long",
+      "name": "Recent crash reconstructed (fast lane): what the data shows so far",
+      "tier": "core",
+      "emotion": "urgency: 'what actually happened?'",
+      "hook": "Frame 1 is the moment of failure or one beat before it, in 3D, with a mono caption (date · place · altitude/speed) and the tag '3D reconstruction · not actual footage'; the vehicle or structure named by 2 s; a figure on screen by 5 s; the whole arc told in the first 45 s without the death toll; then the promise of one cause chain; then the title card with a drop to silence. Every claim labelled 'preliminary' with its source (official statement, ATC audio as text, ADS-B data).",
+      "beats": "cold open: the last 60-90 s on the path with altitude and clock -> the flight and aircraft -> what the data shows, step by step -> what investigators will look at (no blame) -> what happens next and when the preliminary report is due -> pinned follow-up promise",
+      "demand": [
+        "dcfldWqanJc",
+        "Ayk__UBphmU"
+      ],
+      "examples": [
+        {
+          "title": "The Florida Learjet Crash Reconstructed in 3D: The Last 60 Seconds",
+          "views": 1941409,
+          "url": "https://www.youtube.com/watch?v=dcfldWqanJc"
+        },
+        {
+          "title": "Major Disasters (420 subs)",
+          "views": 185887,
+          "url": "https://www.youtube.com/watch?v=Ayk__UBphmU"
+        }
+      ],
+      "_why": "families.json: long breaking news disaster, 44 videos, 1.37x, 30% hits (core); comments.md: the 1 Nov Learjet crash pulled 8.3M/3.1M/2.8M/1.9M; takes the next slot when a major crash happens",
+      "markets": [
+        "global"
+      ]
     },
     {
-     "title": "How Did the Florida Plane Crash Happen?",
-     "views": 2556311,
-     "url": "https://www.youtube.com/watch?v=JUevp0TSZME"
-    }
-   ],
-   "_why": "families.json: short air crash explained, 30 Shorts, 1.59x (core, gap); always cut from this week's long video (owner: 1 promo Short per long)"
-  },
-  {
-   "id": "promo_how_it_works",
-   "format": "short",
-   "markets": [
-    "global"
-   ],
-   "name": "Promo Short: the safety system that should have stopped it",
-   "tier": "core",
-   "emotion": "'I never knew that existed'",
-   "hook": "Frame 1 is the safety system in 3D (a signal, a sensor, a bow door, a tail de-icer) working normally, with a caption; named by 2 s; a figure by 3 s",
-   "beats": "how the system works (3D + flat labels) -> the day it was off, bypassed or misread -> the failure in one shot -> the question the long video answers",
-   "demand": [
-    "iMcKJFuI2rQ",
-    "d3ok9s4khPM"
-   ],
-   "examples": [
+      "id": "promo_failure_moment",
+      "format": "short",
+      "name": "Promo Short: the moment of failure from this week's long video",
+      "tier": "core",
+      "emotion": "'wait, how?' then watch the full story",
+      "hook": "Frame 1 is the vehicle or structure in 3D a second before it fails, with a mono caption (date · place) and the reconstruction tag; subject named by 2 s; a figure (altitude, speed, load) on screen by 3 s; never the death toll in the first line",
+      "beats": "the moment before (3D, instrument on screen) -> the one cause in a flat diagram -> silence, the failure in cutaway, sub-boom -> one question the long video answers ('so why did nobody check?') -> the long video as the related video",
+      "demand": [
+        "V0CGuxCbeIk",
+        "L73NEgH36JU",
+        "JUevp0TSZME"
+      ],
+      "examples": [
+        {
+          "title": "How Smith machhar save 167 passengers | 3d Explained",
+          "views": 7454183,
+          "url": "https://www.youtube.com/watch?v=V0CGuxCbeIk"
+        },
+        {
+          "title": "How Did the Florida Plane Crash Happen?",
+          "views": 2556311,
+          "url": "https://www.youtube.com/watch?v=JUevp0TSZME"
+        },
+        {
+          "title": "Palm Beach Learjet Crash: 26,000 Feet in About a Minute",
+          "views": 1911282,
+          "url": "https://www.youtube.com/watch?v=L73NEgH36JU"
+        }
+      ],
+      "_why": "owner: 1 promo Short per long; families.json Shorts core: air crash explained 1.59x, flight-sim what-if 1.58x, how engineering works 1.52x; 3D in every measured Short",
+      "markets": [
+        "global"
+      ]
+    },
     {
-     "title": "How Do Pilots Land a Plane When They CAN'T See the Runway?",
-     "views": 468120,
-     "url": "https://www.youtube.com/watch?v=iMcKJFuI2rQ"
+      "id": "natural_disaster_explained",
+      "format": "long",
+      "name": "Natural disaster explained",
+      "tier": "avoid",
+      "emotion": "",
+      "hook": "not made: the planner never picks an avoid format",
+      "beats": "not made (see _why)",
+      "demand": [],
+      "examples": [],
+      "_why": "families.json: long 0.66x, Shorts 0.61x",
+      "markets": [
+        "global"
+      ]
+    },
+    {
+      "id": "miniature_fx",
+      "format": "short",
+      "name": "Fictional miniature disaster FX",
+      "tier": "avoid",
+      "emotion": "",
+      "hook": "not made: the planner never picks an avoid format",
+      "beats": "not made (see _why)",
+      "demand": [],
+      "examples": [],
+      "_why": "families.json: 0.61x; fiction breaks the true-only rule",
+      "markets": [
+        "global"
+      ]
+    },
+    {
+      "id": "promo_why_it_failed",
+      "format": "short",
+      "markets": [
+        "global"
+      ],
+      "name": "Promo Short: why it failed, explained in 40 seconds",
+      "tier": "core",
+      "emotion": "the click of finally understanding the physics",
+      "hook": "Frame 1 is the failing part in 3D cutaway already amber, with the date caption and the tag; the question named by 2 s ('Why did this tail stop working at 26,000 feet?'); a figure by 3 s",
+      "beats": "the question on the failing part -> how it should work (flat diagram, 2 steps) -> what happened instead (stress to red, the part gives way) -> the change it led to -> 'the full story' points to the long video",
+      "demand": [
+        "JUevp0TSZME",
+        "L73NEgH36JU",
+        "WImj7TCdf0w"
+      ],
+      "examples": [
+        {
+          "title": "What actually happened during Kobe Bryant's final flight",
+          "views": 10798785,
+          "url": "https://www.youtube.com/watch?v=mKPO7QpA_38"
+        },
+        {
+          "title": "How Did the Florida Plane Crash Happen?",
+          "views": 2556311,
+          "url": "https://www.youtube.com/watch?v=JUevp0TSZME"
+        }
+      ],
+      "_why": "families.json: short air crash explained, 30 Shorts, 1.59x (core, gap); always cut from this week's long video (owner: 1 promo Short per long)"
+    },
+    {
+      "id": "promo_how_it_works",
+      "format": "short",
+      "markets": [
+        "global"
+      ],
+      "name": "Promo Short: the safety system that should have stopped it",
+      "tier": "core",
+      "emotion": "'I never knew that existed'",
+      "hook": "Frame 1 is the safety system in 3D (a signal, a sensor, a bow door, a tail de-icer) working normally, with a caption; named by 2 s; a figure by 3 s",
+      "beats": "how the system works (3D + flat labels) -> the day it was off, bypassed or misread -> the failure in one shot -> the question the long video answers",
+      "demand": [
+        "iMcKJFuI2rQ",
+        "d3ok9s4khPM"
+      ],
+      "examples": [
+        {
+          "title": "How Do Pilots Land a Plane When They CAN'T See the Runway?",
+          "views": 468120,
+          "url": "https://www.youtube.com/watch?v=iMcKJFuI2rQ"
+        }
+      ],
+      "_why": "families.json: short how engineering works, 88 Shorts, 1.52x, 24% hits (core); cut from this week's long video"
     }
-   ],
-   "_why": "families.json: short how engineering works, 88 Shorts, 1.52x, 24% hits (core); cut from this week's long video"
-  }
- ]
+  ]
 }
