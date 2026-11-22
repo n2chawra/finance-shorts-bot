@@ -14,6 +14,19 @@ def test_a_fact_over_a_year_old_needs_a_recent_check():
     assert topics.stale_facts({"facts": [{"value": 1, "as_of": "2026-06-30"}]}, "2026-11-05") == []
 
 
+def test_a_fact_dated_by_year_month_or_quarter_is_checked_too():
+    # 1 in 8 feed facts give only a year; `date.fromisoformat` can't read it, so they were never flagged
+    assert topics.stale_facts({"facts": [{"value": 1, "as_of": "2024"}]}, "2026-11-05")       # ended 31 Dec 2024
+    assert topics.stale_facts({"facts": [{"value": 1, "as_of": "2025"}]}, "2026-11-05") == []  # ends 31 Dec 2025
+    assert topics.stale_facts({"facts": [{"value": 1, "as_of": "2025-03"}]}, "2026-11-05")
+    assert topics.stale_facts({"facts": [{"value": 1, "as_of": "2025-12"}]}, "2026-11-05") == []
+    assert topics.stale_facts({"facts": [{"value": 1, "as_of": "2025-Q4"}]}, "2026-11-05") == []  # 31 Dec 2025
+    assert topics.stale_facts({"facts": [{"value": 1, "as_of": "2025-Q3"}]}, "2026-11-05")       # 30 Sep 2025
+    for odd in ("current", "FY2025", "2025-13", ""):
+        assert topics.stale_facts({"facts": [{"value": 1, "as_of": odd}]}, "2026-11-05") == [], odd
+    assert topics.stale_facts({"facts": [{"value": 1, "unit": "year", "as_of": "2020"}]}, "2026-11-05") == []
+
+
 def test_a_long_topic_never_needs_one_of_our_shorts(tmp_path):
     # owner, 2026-11-22: the from_short rule (1,000+ views on 4 Nov, 100+ on 12 Nov) blocked every long topic on
     # the new channels (Shorts with 0-25 views) and Studio runs stopped. No views gate, on any channel.

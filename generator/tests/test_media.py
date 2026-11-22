@@ -395,3 +395,24 @@ def test_a_throttled_commons_thumbnail_falls_through_to_the_next_width(repo, mon
     monkeypatch.setattr(library, "download", fake)
     library.fetch(DOC, "commons:photo:File:Store_front.tif", root=repo)
     assert tried == [("1280px-Store_front.tif.png", 2), ("1920px-Store_front.tif.png", 2)]   # the original is never asked for
+
+
+def test_a_tif_s_png_thumbnail_is_cached_as_png_and_the_original_as_tif(repo, monkeypatch):
+    # gen-007: the PNG thumbnail of a .tif was cached under .tif, and the static server sent it as image/tiff
+    import urllib.error
+    monkeypatch.setattr(library, "provider", lambda name: FakeCommons())
+    monkeypatch.setattr(library, "licence_snapshot", lambda url, headers: "f" * 64)
+    thumbs_fail = [False]
+
+    def fake(url, dest, headers, bucket, interval, max_bytes=None, attempts=6):
+        if thumbs_fail[0] and url.endswith(".png"):
+            raise urllib.error.HTTPError(url, 404, "Not Found", {}, None)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(b"bytes")
+        return dest
+    monkeypatch.setattr(library, "download", fake)
+    rec = library.fetch(DOC, "commons:photo:File:Store_front.tif", root=repo)
+    assert rec["path"].endswith(".png"), rec["path"]
+    thumbs_fail[0] = True                                      # no thumbnail at all: the original, under its own name
+    rec = library.fetch(DOC, "commons:photo:File:Other.tif", root=repo)
+    assert rec["path"].endswith(".tif"), rec["path"]
