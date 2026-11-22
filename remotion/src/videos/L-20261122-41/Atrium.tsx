@@ -74,7 +74,7 @@ const Atrium: React.FC<SceneProps> = (p) => {
     <DisasterStage look="nightGrid" floor="reflect" dof={1.2} shadowBox={11} fog={{ color: "#05080a", near: 18, far: 55 }}
       overlay={
         <Overlay t={t} marks={Object.values(ev)} text={after ? "3D reconstruction · after the collapse" : undefined}>
-          {P.caption === "date" && <MonoCaption t={t} at={-80} text={`JULY ${fig("day")}, ${fig("year")} · KANSAS CITY, MISSOURI`} size={34} />}
+          {P.caption === "date" && <MonoCaption t={t} at={-80} text={`JULY ${fig("day")}, ${fig("year")} · KANSAS CITY, MISSOURI`} size={34} color={t >= e("july") && t < e("july") + 12 ? AMBER : "#ffd84a"} />}
           {P.caption === "date" && <MonoCaption t={t} at={e("hyatt")} text="HYATT REGENCY HOTEL · THE ATRIUM" top={164} size={30} color={INK} />}
           {P.counter && (
             <Readout x={1300} y={150} label={P.counter.label} k={cue(t, e(P.counter.at), 12)}

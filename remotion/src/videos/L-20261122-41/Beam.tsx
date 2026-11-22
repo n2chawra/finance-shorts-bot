@@ -90,7 +90,7 @@ const Beam: React.FC<SceneProps> = (p) => {
         {mode === "bend" && <MonoCaption t={t} at={0} text="EAST END · MIDDLE BOX BEAM · SLOWED" />}
       </Overlay>}>
       <Camera3D keys={keys} frame={t} drift={0.005} />
-      <Surround dist={5} />
+      <Surround dist={8} />
       <Focus at={mode === "rod" ? [0, 0, 0] : NUT} range={mode === "rod" ? 1.6 : 0.6} />
       <pointLight position={[1.5, 1.2, 2]} intensity={2.2} distance={8} color="#ffcf9a" />
       <pointLight position={[-1.5, -1.5, 1]} intensity={1.4} distance={6} color="#59c8ff" />

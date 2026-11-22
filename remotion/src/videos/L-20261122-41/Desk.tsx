@@ -40,10 +40,14 @@ const Inner: React.FC<{ t: number; e: (n: string) => number; mode: string; end: 
         <g transform="translate(960 530) scale(0.82) translate(-960 -540)">
           <Elev t={t} cx={960} split={split} hot={mode === "circle" ? 0.4 : 0} rodColor={mode === "erase" ? `rgba(255,176,0,${1 - ramp(t, e("changed"), 20)})` : undefined} />
         </g>
+        {mode !== "circle" && (
+          <g>
         {/* the title block */}
         <rect x={1120} y={800} width={430} height={115} fill="none" stroke={L.line} strokeWidth={3} />
         <MonoLabel x={1140} y={845} t={t} at={mode === "shop" ? e("shop") : 0} text={mode === "erase" || mode === "unroll" ? "WALKWAY HANGER" : "SHOP DRAWING"} size={36} />
         <MonoLabel x={1140} y={895} t={t} at={mode === "shop" ? e("fabricator") : 0} text={mode === "erase" || mode === "unroll" ? "CONTRACT DRAWING" : "STEEL FABRICATOR"} size={36} color={L.label} />
+          </g>
+        )}
       </Paper>
       {mode === "unroll" && <rect x={380} y={230} width={1160} height={18} fill={L.label} opacity={0.5 * ramp(t, e("watched"), 12)} />}
       {mode === "erase" && (

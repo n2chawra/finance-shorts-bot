@@ -232,7 +232,7 @@ export default Atrium;
 /** The atrium as seen from inside a close-up: two walls of lit windows and floor bands behind the subject
  * (blurred by the lens), the floor far below. For the cutaway and lab beats, so a close shot is still in the
  * hotel, never on black. */
-export const Surround: React.FC<{ dist?: number; y?: number; dim?: number }> = ({ dist = 7, y = 0, dim = 0 }) => {
+export const Surround: React.FC<{ dist?: number; y?: number; dim?: number }> = ({ dist = 9, y = 0, dim = 0 }) => {
   const M = useMats();
   const wall = (key: string, pos: V3, rotY: number) => (
     <group key={key} position={pos} rotation-y={rotY}>
@@ -241,8 +241,8 @@ export const Surround: React.FC<{ dist?: number; y?: number; dim?: number }> = (
         <group key={f}>
           <mesh position={[0, -6 + f * 2, 0.02]} material={M.steel}><planeGeometry args={[30, 0.18]} /></mesh>
           {Array.from({ length: 12 }, (_, i) => (
-            <mesh key={i} position={[-13 + i * 2.4, -5.1 + f * 2, 0.03]} material={glow(WARM, Math.round((0.25 + 0.55 * rnd(`sw${key}`, f * 12 + i)) * (1 - dim) * 10) / 10)}>
-              <planeGeometry args={[1.3, 0.9]} />
+            <mesh key={i} position={[-13 + i * 2.4, -5.1 + f * 2, 0.03]} material={glow(WARM, Math.round((0.12 + 0.3 * rnd(`sw${key}`, f * 12 + i)) * (1 - dim) * 10) / 10)}>
+              <planeGeometry args={[0.9, 0.6]} />
             </mesh>
           ))}
         </group>

@@ -52,7 +52,7 @@ const Fall: React.FC<SceneProps> = (p) => {
           </Overlay>
         }>
         <Camera3D keys={keys} frame={t} drift={0.004} />
-        <Surround dist={5} dim={t > tear ? 0.5 : 0} />
+        <Surround dist={8} dim={t > tear ? 0.5 : 0} />
         <Focus at={NUT} range={0.7} />
         <pointLight position={[1.5, 1.5, 2]} intensity={2.2} distance={8} color="#ffcf9a" />
         <group rotation-y={0.3}>
