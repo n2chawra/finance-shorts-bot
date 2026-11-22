@@ -1,6 +1,6 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 3,
+  "open": 2,
   "notes": [
     {
       "id": "cmwrnqrk10001l109q8tokt2j",
@@ -8,32 +8,13 @@
       "area": "pace",
       "text": "Increase the pace by 1.25 .",
       "status": "open",
-      "response": "auditor handed → studio: A long video's pacing is set as Studio writes and builds it, not a data or pipeline bug. · waiting for studio",
+      "response": "auditor handed → studio: A long video's pacing is set as Studio writes and builds it, not a data or pipeline bug. · improver fixed: Disaster Desk long videos now speak at 1.15 instead of 0.92 (1.25 times faster, about 189 words a minute instead of 151); Studio's length check counts at the new pace, so it writes about a quarter more words to stay at 8-10 minutes. Shorts are unchanged. (110f301) · waiting for studio",
       "at": "2026-11-22T09:51:51.554Z",
       "video": {
         "id": "L-20261121-42",
         "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
         "format": "long",
-        "status": "scheduled",
-        "story": "corner_cut_structure",
-        "shape": null,
-        "hookStyle": "conflict",
-        "hook": "Kansas City, {fact1}. Two steel walkways hang over a crowded hotel lobby, one directly above the other."
-      }
-    },
-    {
-      "id": "cmwrnqbfn0001jx09r3rmj7jn",
-      "kind": "improve",
-      "area": "other",
-      "text": "Animation didn't show people beneath and gets crushed by the walkway only showing death counts is not enough. Make that scenes. Don't make it very cruel or bloody just so that it seems like what would have happened.",
-      "status": "open",
-      "response": "auditor handed → improver: Showing the people under the walkway as a scene is how the video looks, the improver's and Studio's lane. · waiting for improver",
-      "at": "2026-11-22T09:51:30.659Z",
-      "video": {
-        "id": "L-20261121-42",
-        "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
-        "format": "long",
-        "status": "scheduled",
+        "status": "published",
         "story": "corner_cut_structure",
         "shape": null,
         "hookStyle": "conflict",
@@ -46,13 +27,32 @@
       "area": "hook",
       "text": "The hook should have said that will engage people even more . Like this small issue resulted in death of this many people etc etc that actually make people curious about the rest video . Currently it's good but only for people who wants to see full video.",
       "status": "open",
-      "response": "auditor handed → studio: The long video's hook is written by Studio, so the stakes-first opening is theirs. · waiting for studio",
+      "response": "auditor handed → studio: The long video's hook is written by Studio, so the stakes-first opening is theirs. · improver handed → studio: Studio writes the long hook. The channel recipe (prompts/recipe.md) still says the toll never goes in the first 45 s or the first line, which is the opposite of your note; your note is newer and wins, and I asked you on the Notifications page to update the recipe so it stays that way. · waiting for studio",
       "at": "2026-11-22T09:49:56.758Z",
       "video": {
         "id": "L-20261121-42",
         "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
         "format": "long",
-        "status": "scheduled",
+        "status": "published",
+        "story": "corner_cut_structure",
+        "shape": null,
+        "hookStyle": "conflict",
+        "hook": "Kansas City, {fact1}. Two steel walkways hang over a crowded hotel lobby, one directly above the other."
+      }
+    },
+    {
+      "id": "cmwrnqbfn0001jx09r3rmj7jn",
+      "kind": "improve",
+      "area": "other",
+      "text": "Animation didn't show people beneath and gets crushed by the walkway only showing death counts is not enough. Make that scenes. Don't make it very cruel or bloody just so that it seems like what would have happened.",
+      "status": "addressed",
+      "response": "auditor handed → improver: Showing the people under the walkway as a scene is how the video looks, the improver's and Studio's lane. · improver fixed: The 3D kit now has people: a crowd that dances, looks up and hurries away from the failing part, and rescuers with head lamps for the aftermath; the director must put people in any beat that speaks of a crowd or of the dead and injured, and lint fails a beat that shows nobody or draws blood or bodies. The next long video is drawn this way; L-20261121-42 itself is already scheduled. (3d54829)",
+      "at": "2026-11-22T09:51:30.659Z",
+      "video": {
+        "id": "L-20261121-42",
+        "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
+        "format": "long",
+        "status": "published",
         "story": "corner_cut_structure",
         "shape": null,
         "hookStyle": "conflict",
