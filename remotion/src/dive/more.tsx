@@ -4,7 +4,7 @@
  * town drew as a city street with taxis, carved rooms as one empty bunker box, a pillared flood tank as nothing.
  * These pieces add what those videos needed, each with something alive in it (people, animals, water, machines):
  *
- *   room     a room carved in rock: living | stable | press | storage | church | kitchen | door | tombs
+ *   room     a room carved in rock: living | stable | press | storage | church | kitchen | door | tombs | ossuary
  *   hall     a pillared hall (a flood tank, a cistern, a crypt): `count` pillars, light shafts, mist, a walker
  *   passage  a passage: walk (people with lamps in a line) | water (a rushing channel) | sewer
  *   pumps    a pump room: impellers spinning, pipes carrying water up
@@ -181,6 +181,37 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
         {[0, 1].map((row) => [0, 1, 2, 3].map((c) => <Block key={`${row}${c}`} x={300 + c * 160} y={top + 90 + row * 120} w={130} h={80} fill={shade(inside, -0.3)} r={30} shadow={false} sw={4} />))}
         <Person x={200 + 600 * walk(0, 1)} y={yb - 26} i={5} lamp step={walk(0, 1) * 8} />
       </> : null}
+      {type === "ossuary" ? (() => {
+        // an ossuary (the Paris Catacombs, v-20261123-51): the walls stacked with bones, rows of long bones with
+        // their knobbed ends facing out and bands of skulls between them, visitors walking past with lamps
+        const bone = "#e9e0c8", boneDark = shade(bone, -0.3);
+        const wx0 = 170, wx1 = 910, wy0 = top + 70, wy1 = yb - 40;
+        const rows: React.ReactNode[] = [];
+        for (let row = 0, y = wy1; y > wy0 + 30; row++) {
+          const skulls = row % 3 === 1;
+          const rh = skulls ? 62 : 34;
+          y -= rh;
+          if (skulls) {
+            for (let x = wx0 + 34; x < wx1 - 20; x += 64) rows.push(<g key={`s${row}-${x}`}>
+              <Ball x={x} y={y + 30} r={28} fill={bone} shadow={false} sw={4} />
+              <circle cx={x - 10} cy={y + 28} r={7} fill={INK} /><circle cx={x + 10} cy={y + 28} r={7} fill={INK} />
+              <path d={`M ${x - 3} ${y + 44} l 3 -6 l 3 6 z`} fill={INK} />
+            </g>);
+          } else {
+            for (let x = wx0 + 20; x < wx1 - 10; x += 34) rows.push(<g key={`b${row}-${x}`}>
+              <circle cx={x} cy={y + 17} r={15} fill={bone} stroke={INK} strokeWidth={3} />
+              <circle cx={x} cy={y + 17} r={5} fill={boneDark} />
+            </g>);
+          }
+        }
+        return <>
+          <rect x={wx0} y={wy0} width={wx1 - wx0} height={wy1 - wy0} fill={shade(inside, -0.2)} />
+          {rows}
+          {/* the lamp light on the bone wall breathes, a whole number of times over the video */}
+          <Glow x={540} y={(wy0 + wy1) / 2} r={420 * (0.92 + 0.08 * loopSin(w, g, 0.6))} color="#ffcf7a" o={0.28} />
+          {Array.from({ length: Math.max(1, n) }, (_, i) => { const dir = i % 2 ? -1 : 1; const u = walk(i, 1, i * 0.5); const x = 180 + (dir === 1 ? u : 1 - u) * 720; return <Person key={`v${i}`} x={x} y={yb - 26} i={i + 2} lamp={i === 0} step={u * 10} dir={dir} s={0.85} />; })}
+        </>;
+      })() : null}
       {type === "door" ? (() => {
         // a round stone door rolls across the doorway on its word (`on`), people behind it
         const shut = ramp(g, L.land - 4, L.land + 22) * outro(w, g);

@@ -67,7 +67,7 @@ section 3c). Every piece has something alive in it, and a `label` (sign) or dept
 
 | kind | params | draws |
 |---|---|---|
-| `room` | `type` living / stable / press / storage / church / kitchen / door / tombs, `people`, `stamp` + `stampOn` (door), `color` (rock) | a carved, arched cave room: people at home, animals at a trough, someone treading grapes with juice running, jars, kneeling people and candles, an oven, a round stone door rolling shut on its word, burial niches |
+| `room` | `type` living / stable / press / storage / church / kitchen / door / tombs / ossuary, `people`, `stamp` + `stampOn` (door), `color` (rock) | a carved, arched cave room: people at home, animals at a trough, someone treading grapes with juice running, jars, kneeling people and candles, an oven, a round stone door rolling shut on its word, burial niches, an ossuary wall of stacked bones and skulls with visitors walking past (2026-11-23) |
 | `hall` | `count` (3-9 pillars), `color` | a pillared hall: two rows of pillars rising on its word, light shafts, mist, a walker with a lamp |
 | `passage` | `type` walk / water / sewer, `people`, `dir`, `color`, `stripe` (water) | an arched passage: people walking with lamps, or water surging on its word with debris |
 | `pumps` | `count` (2-4) | a pump room: impellers spinning faster from its word, water rising up the pipes |
