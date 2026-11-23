@@ -594,7 +594,7 @@ export const Dig: React.FC<PieceProps> = ({ L, w, g }) => {
 export const Spiral: React.FC<PieceProps> = ({ L, w, g }) => {
   const s = L.spec, look = w.look;
   const y0 = w.Y(s.fromFt ?? 0) + 60, y1 = w.Y(s.toFt ?? L.ft) + 160;
-  const cx = s.side === "left" ? 300 : 800, rw = 130;
+  const cx = s.side === "left" ? 230 : 850, rw = 130;
   const col = s.color ?? "#2fa86a";
   const glowAt = L.at(s.glowOn);
   const glow = ramp(g, glowAt - 3, glowAt + 12) * outro(w, g);
@@ -615,7 +615,7 @@ export const Spiral: React.FC<PieceProps> = ({ L, w, g }) => {
         {Array.from({ length: 6 }, (_, j) => { const t = (j + 0.5) / 6; return <line key={j} x1={a[0] + (b[0] - a[0]) * t} y1={a[1] + (b[1] - a[1]) * t - 9} x2={a[0] + (b[0] - a[0]) * t} y2={a[1] + (b[1] - a[1]) * t + 9} stroke={shade(col, -0.4)} strokeWidth={4} />; })}
       </g>; })}
       {Array.from({ length: s.riders ?? 4 }, (_, i) => { const up = i % 2 === 0; const u0 = loopU(w, g, 1, i / (s.riders ?? 4)); const u = up ? 1 - u0 : u0; const [x, y] = at(u); return <Person key={i} x={x} y={y - 12} i={i + 1} step={u0 * n * 3} s={0.55} dir={x > cx ? -1 : 1} />; })}
-      <Sign x={cx > 540 ? 150 : 560} y={y1 - 160} w={430} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+      <Sign x={cx > 540 ? 200 : 410} y={y1 - 160} w={470} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
     </g>
   );
 };
