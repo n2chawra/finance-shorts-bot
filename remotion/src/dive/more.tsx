@@ -4,10 +4,11 @@
  * town drew as a city street with taxis, carved rooms as one empty bunker box, a pillared flood tank as nothing.
  * These pieces add what those videos needed, each with something alive in it (people, animals, water, machines):
  *
- *   room     a room carved in rock: living | stable | press | storage | church | kitchen | door | tombs | ossuary
+ *   room     a room carved in rock: living | stable | press | storage | church | kitchen | door | tombs | ossuary | grave
  *   hall     a pillared hall (a flood tank, a cistern, a crypt): `count` pillars, light shafts, mist, a walker
  *   passage  a passage: walk (people with lamps in a line) | water (a rushing channel) | sewer
  *   pumps    a pump room: impellers spinning, pipes carrying water up
+ *   vent     a ventilation shaft's fan room, air rising up a shaft that fades out above
  *   spiral   a spiral stair in a round shaft, people climbing and walking down its flights
  *   dig      a station still being built: shored box, turning cutterhead, workers, a swinging crane hook
  *   pour     water pouring in from the left into a churning pool (a flood arriving)
@@ -182,6 +183,17 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
       {type === "tombs" ? <>
         {[0, 1].map((row) => [0, 1, 2, 3].map((c) => <Block key={`${row}${c}`} x={300 + c * 160} y={top + 90 + row * 120} w={130} h={80} fill={shade(inside, -0.3)} r={30} shadow={false} sw={4} />))}
         <Person x={200 + 600 * walk(0, 1)} y={yb - 26} i={5} lamp step={walk(0, 1) * 8} />
+      </> : null}
+      {type === "grave" ? <>
+        {/* a grave shrine (St Peter's, v-20261123-52): a red plastered wall with a small two-column shrine against it,
+            candles flickering, someone kneeling, an archaeologist with a lamp walking along */}
+        <rect x={380} y={top + 70} width={320} height={yb - top - 96} fill="#b5483a" stroke={INK} strokeWidth={5} />
+        {[440, 640].map((cx) => <Block key={cx} x={cx - 18} y={yb - 250} w={36} h={224} fill="#efe6d2" r={6} shadow={false} sw={4} />)}
+        <path d={`M 410 ${yb - 250} L 540 ${yb - 330} L 670 ${yb - 250} Z`} fill="#efe6d2" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+        <Block x={470} y={yb - 120} w={140} h={94} fill={shade(inside, -0.2)} r={8} shadow={false} sw={4} />
+        <Flame x={430} y={yb - 60} g={g} w={w} ph={1} /><Flame x={650} y={yb - 60} g={g} w={w} ph={2} />
+        <Person x={330} y={yb - 26} i={2} pose="kneel" s={0.85} />
+        {(() => { const u = walk(3, 1); return <Person x={720 + u * 200} y={yb - 26} i={4} lamp step={u * 8} dir={-1} s={0.85} />; })()}
       </> : null}
       {type === "ossuary" ? (() => {
         // an ossuary (the Paris Catacombs, v-20261123-51): the walls stacked with bones, rows of long bones with
@@ -620,4 +632,39 @@ export const Spiral: React.FC<PieceProps> = ({ L, w, g }) => {
   );
 };
 
-export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well, dig: Dig, spiral: Spiral };
+
+// ------------------------------------------------------------------ vent (2026-11-23, for v-20261123-53)
+
+/** A ventilation shaft's bottom: a fan room with a big fan turning, air arrows rising up a shaft that fades out
+ *  upward (it never crosses the layers above), a worker on the gantry, the sign with the depth. */
+export const Vent: React.FC<PieceProps> = ({ L, w, g }) => {
+  const s = L.spec, look = w.look;
+  const yb = w.Y(L.ft) + 160, x0 = 200, x1 = 880, top = yb - 330;
+  const cx = 540, half = 110, shaftTop = top - 380;
+  const wall = s.color ?? "#4c5462";
+  const spin = loopU(w, g, Math.max(1, Math.round(w.total / 30 * 10))) * 360;
+  const fid = `vent-fade-${L.beat}`;
+  return (
+    <g>
+      <defs><linearGradient id={fid} x1="0" y1="1" x2="0" y2="0"><stop offset="0" stopColor={shade(wall, -0.4)} stopOpacity={1} /><stop offset="1" stopColor={shade(wall, -0.4)} stopOpacity={0} /></linearGradient></defs>
+      <rect x={cx - half} y={shaftTop} width={half * 2} height={top - shaftTop + 10} fill={`url(#${fid})`} />
+      {[0, 1, 2, 3, 4].map((i) => { const v = loopU(w, g, 8, i / 5); const ay = top + 40 - v * (top - shaftTop); return <path key={i} d={`M ${cx - 24} ${ay + 18} l 24 -26 l 24 26`} fill="none" stroke="#e8f6ff" strokeWidth={7} strokeLinecap="round" opacity={0.85 * (1 - v)} />; })}
+      <rect x={x0 - 16} y={top - 16} width={x1 - x0 + 32} height={yb - top + 32} rx={30} fill={shade(look.deep, 0.05)} />
+      <rect x={x0} y={top} width={x1 - x0} height={yb - top} rx={24} fill={wall} stroke={INK} strokeWidth={STROKE} />
+      <rect x={cx - half} y={top - 6} width={half * 2} height={20} fill={shade(wall, -0.4)} />
+      <Glow x={cx} y={top + 160} r={260} color={s.light ?? "#cfe8ff"} o={0.35} />
+      {/* the fan in its ring */}
+      <circle cx={cx} cy={top + 170} r={128} fill={shade(wall, -0.35)} stroke={INK} strokeWidth={STROKE} />
+      <g transform={`rotate(${spin} ${cx} ${top + 170})`}>
+        {[0, 1, 2, 3, 4].map((j) => <path key={j} transform={`rotate(${j * 72} ${cx} ${top + 170})`} d={`M ${cx} ${top + 170} q 40 -40 10 -112 q -46 20 -10 112 z`} fill="#c9ced8" stroke={INK} strokeWidth={4} />)}
+        <circle cx={cx} cy={top + 170} r={22} fill="#e8432f" stroke={INK} strokeWidth={4} />
+      </g>
+      {/* a gantry with a worker checking the fan */}
+      <rect x={x0 + 10} y={yb - 40} width={x1 - x0 - 20} height={16} fill="#e0a23a" stroke={INK} strokeWidth={3} />
+      {(() => { const u = loopU(w, g, 1, 0.2); return <Person x={260 + (u < 0.5 ? u * 2 : 2 - u * 2) * 120} y={yb - 40} i={4} step={u * 10} dir={u < 0.5 ? 1 : -1} s={0.8} lamp />; })()}
+      <Sign x={560} y={yb - 140} w={300} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+    </g>
+  );
+};
+
+export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well, dig: Dig, spiral: Spiral, vent: Vent };
