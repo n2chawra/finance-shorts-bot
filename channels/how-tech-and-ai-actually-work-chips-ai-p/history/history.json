@@ -183,5 +183,30 @@
     "format": "short",
     "story": "invention_story",
     "shape": "timeline"
+  },
+  {
+    "id": "L-20261123-21",
+    "created_at": "2026-11-23T12:09:33.642263+00:00",
+    "template": "long_story",
+    "topic": {
+      "title": "How Starlink's Flat Dish Aims at Satellites Without Moving",
+      "category": "internet",
+      "feed_id": "2026-11-18-starlink-flat-dish",
+      "reach": "global"
+    },
+    "title": "How Does Starlink's Flat Dish Aim Without Moving?",
+    "description": "How does Starlink's flat dish follow satellites racing across the sky without ever turning?\nWe follow one signal from your laptop up to a Starlink satellite and back, open the dish in 3D, and draw its phased array wave by wave: how many tiny antennas firing a fraction apart bend a beam with no motor.\nThen the handoff, when your satellite sets and the next one rises, and how the network grew from its first launch.\n\n0:00 The dish that never turns\n0:36 The old way: one fixed satellite\n1:19 Why lower is faster\n2:30 Inside the dish\n3:34 Bending the beam\n4:40 The handoff\n5:40 The network\n6:16 Your video, start to finish\n\nSources: Space.com, Starlink, Wikipedia (Geostationary orbit, Starlink), Nov 2026.\nAnimations are simplified illustrations, not exact to scale.",
+    "hook_style": "secret",
+    "cta": "Which machine should we take apart next? Tell us in the comments",
+    "style": {
+      "palette": "ocean",
+      "genre": "circuit",
+      "key": "D",
+      "bpm": 72,
+      "voice": "am_michael"
+    },
+    "format": "long",
+    "story": "how_network_works",
+    "shape": null
   }
 ]
