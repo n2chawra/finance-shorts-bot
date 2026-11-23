@@ -1,0 +1,20 @@
+{
+  "agent": "scout",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-23T04:08:26Z",
+  "finishedAt": "2026-11-23T04:14:19Z",
+  "summary": "Checked our last long video honestly and added one topic: why the cinema cares more about your popcorn than your ticket (AMC's own filings, from our #4 November Short). The last long video, L-20261111-01, never reached YouTube, so the channel has had no long video for 19 days.",
+  "decision": "acted",
+  "why": "Saturday row (own output). L-20261111-01 is not in the long queue, has no upload in the 22 Nov data audit and no stats. It ran 380 s against the 180-240 s rule and used none of the directed beats the next video needs. The feed now has 9 usable topics.",
+  "findings": [
+    {"title": "L-20261111-01 never uploaded", "detail": "Shipped 11 Nov with its release; long backlog 0, no Upload row, no stats. Last long video out: L-20261104-01 (4 Nov)."},
+    {"title": "380 s against a 240 s cap", "detail": "longLengthMaxSec is still 900, so the length check passed it. 54 checks and renders to ship it."},
+    {"title": "Next long video is the first directed one", "detail": "L-20261111-01 had 0 directed beats of 63; plan the first directed one at 3-4 chapters, 36-45 beats.", "link": "channels/paisa-panchayat/longform/2026-11-23.md"}
+  ],
+  "changes": [
+    {"title": "Topic: why the cinema cares more about your popcorn", "detail": "2026-11-23-why-cinema-cares-about-popcorn, 9 AMC facts from SEC filings, from v-20261117-02 (45.5% stayed).", "branch": "agent/scout/2026-11-23"},
+    {"title": "3 backlog items", "detail": "2 adopt (first directed long video at 3-4 min; fewer failed checks), 1 experiment (chapter titles as questions).", "branch": "agent/scout/2026-11-23"}
+  ],
+  "nextCheck": "2026-11-26",
+  "links": [{"label": "Report", "url": "channels/paisa-panchayat/longform/2026-11-23.md"}]
+}
