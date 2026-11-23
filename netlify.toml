@@ -3,7 +3,8 @@
   base = "apps/dashboard"
   command = "npm run build"
   publish = ".next"
-  # Routines and ingest push several commits a day that never touch the dashboard. Skip those builds
+  # Netlify builds are stopped (2026-11-23): .github/workflows/deploy-dashboard.yml builds on GitHub and deploys
+  # with the CLI. Routines and ingest push several commits a day that never touch the dashboard. Skip those builds
   # (exit 0 = skip) so they don't use up the free build minutes. Runs from the base directory.
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ../../netlify.toml"
 

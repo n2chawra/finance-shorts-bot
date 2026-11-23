@@ -1,0 +1,86 @@
+# Builds the dashboard on GitHub and uploads it to Netlify (owner, 2026-11-23). Netlify's own build on every
+# push ran ~50 times a day, and each skipped build still cost ~17 s of its 300 free build minutes a month
+# (1,139 builds in November, only 99 commits touched the dashboard). Netlify's builds are now stopped; this
+# public repo's Actions minutes are free, and a deploy built here uses no Netlify build minutes.
+#
+# It deploys only when the dashboard really changed: each deploy's message carries a hash of apps/dashboard
+# and netlify.toml, and a run whose hash matches the live deploy stops before building. Agent branches are
+# merged by a workflow (whose push never starts other workflows), so it also runs after every agent merge
+# and, as a safety net, every 6 hours.
+#
+# Needs two repository secrets: NETLIFY_AUTH_TOKEN (Netlify → User settings → Applications → personal
+# access token) and NETLIFY_SITE_ID (the site's Project configuration → Project ID).
+name: Deploy dashboard
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/dashboard/**"
+      - "netlify.toml"
+      - ".github/workflows/deploy-dashboard.yml"
+  workflow_run:
+    workflows: ["Agent merge"]
+    types: [completed]
+  schedule:
+    - cron: "41 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Deploy even if the dashboard has not changed"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# a newer commit replaces a deploy still waiting or building: five dashboard commits in an hour make one deploy
+concurrency:
+  group: deploy-dashboard
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Has the dashboard changed since the live deploy?
+        id: check
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::error::Add the NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID repository secrets"; exit 1
+          fi
+          hash=$(git rev-parse HEAD:apps/dashboard)-$(git rev-parse HEAD:netlify.toml | cut -c1-12)
+          echo "hash=$hash" >> "$GITHUB_OUTPUT"
+          live=$(curl -sf -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" | jq -r '.published_deploy.title // ""')
+          echo "live deploy: ${live:-none}"
+          if [ "${{ inputs.force }}" != "true" ] && [[ "$live" == *"$hash"* ]]; then
+            echo "The live dashboard is already this version; nothing to deploy."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.skip != 'true'
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/dashboard/package-lock.json
+
+      - name: Install
+        if: steps.check.outputs.skip != 'true'
+        working-directory: apps/dashboard
+        run: npm ci
+
+      - name: Build and deploy to production
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          npx --yes netlify-cli@17 deploy --build --prod --site "$NETLIFY_SITE_ID" \
+            --message "dashboard ${{ steps.check.outputs.hash }} (main@${GITHUB_SHA::7})"
