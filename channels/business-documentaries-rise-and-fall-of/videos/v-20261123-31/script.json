@@ -1,0 +1,1085 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52914,
+ "story": "rise_fall_short",
+ "shape": "before-after",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "ledger",
+  "key": "D",
+  "bpm": 76
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Glazed doughnut or McFlurry: which would you order at the counter? Comment",
+ "feed_id": "2026-11-22-krispy-kreme-mcdonalds",
+ "facts": [
+  {
+   "label": "McDonald's restaurants selling Krispy Kreme when the deal ended, about",
+   "value": 2400,
+   "unit": "count",
+   "as_of": "2025-06-24",
+   "source": "Krispy Kreme",
+   "url": "https://www.sec.gov/Archives/edgar/data/1857154/000185715425000102/a991pressrelease-june2025.htm",
+   "fixed": true
+  },
+  {
+   "label": "McDonald's U.S. restaurants in total, about",
+   "value": 13500,
+   "unit": "count",
+   "as_of": "2025-06-24",
+   "source": "Krispy Kreme",
+   "url": "https://www.sec.gov/Archives/edgar/data/1857154/000185715425000102/a991pressrelease-june2025.htm",
+   "latest": true,
+   "checked": "2026-11-22"
+  },
+  {
+   "label": "Countries Krispy Kreme operates in, more than",
+   "value": 40,
+   "unit": "count",
+   "as_of": "2025-06-24",
+   "source": "Krispy Kreme",
+   "url": "https://www.sec.gov/Archives/edgar/data/1857154/000185715425000102/a991pressrelease-june2025.htm",
+   "latest": true,
+   "checked": "2026-11-22"
+  },
+  {
+   "label": "Fall in Krispy Kreme's share price so far in 2025, more than",
+   "value": 73,
+   "unit": "percent",
+   "as_of": "2025-06-24",
+   "source": "NBC News",
+   "url": "https://www.nbcnews.com/business/consumer/mcdonalds-krispy-kreme-end-partnership-rcna214702",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.5,
+  "words": "Why the *break-up*?",
+  "angle": "versus"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Krispy Kreme was going to put glazed doughnuts in every McDonald's in America.",
+   "events": {
+    "krispy": {
+     "word": "Krispy"
+    },
+    "glazed": {
+     "word": "glazed"
+    },
+    "america": {
+     "word": "America"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "glazed"
+    }
+   ],
+   "params": {
+    "place": [
+     "McDonald's golden arches",
+     "a box of Krispy Kreme glazed doughnuts",
+     "a McDonald's by the road"
+    ],
+    "things": [
+     "golden arches",
+     "McDonald's restaurant",
+     "Krispy Kreme box"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "glazed",
+      "size": "close"
+     },
+     {
+      "at": "america",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "krispy",
+      "what": "a label: Krispy Kreme"
+     },
+     {
+      "at": "glazed",
+      "what": "split: the McDonald's side"
+     },
+     {
+      "at": "america",
+      "what": "the Krispy Kreme box side"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-mcdonald-s-in-indianapolis-everett-01-7fa050d4.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "out": "glazed"
+     },
+     {
+      "kind": "split",
+      "left": {
+       "name": "McDonald's",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-mcdonald-s-in-broad-ripple-91b49bc0.jpg",
+       "fit": "cover"
+      },
+      "right": {
+       "name": "Krispy Kreme",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-krispy-kreme-doughnuts-2023-06-26-7ca8eeb2.jpg",
+       "fit": "cover"
+      },
+      "leftAt": "glazed",
+      "rightAt": "america",
+      "at": "glazed"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Krispy Kreme",
+      "sub": "in every McDonald's?",
+      "at": "krispy",
+      "out": "glazed"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "deal",
+   "role": "promise",
+   "say": "Then they broke up. The deal, announced in March, was to reach all {fact2} of them, with fresh boxes every morning.",
+   "events": {
+    "deal": {
+     "word": "deal"
+    },
+    "march": {
+     "word": "March"
+    },
+    "reach": {
+     "word": "reach"
+    },
+    "fresh": {
+     "word": "fresh"
+    },
+    "morning": {
+     "word": "morning"
+    },
+    "broke": {
+     "word": "broke"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "broke"
+    },
+    {
+     "kind": "boom",
+     "at": "reach"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Krispy Kreme delivery truck in a car park"
+    ],
+    "things": [
+     "delivery truck",
+     "the restaurant count"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "reach",
+      "size": "medium"
+     },
+     {
+      "at": "fresh",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "broke",
+      "what": "a stamp: BROKE UP"
+     },
+     {
+      "at": "march",
+      "what": "the date slams in"
+     },
+     {
+      "at": "reach",
+      "what": "the restaurant count counts up"
+     },
+     {
+      "at": "fresh",
+      "what": "an arrow to the truck's side: fresh daily"
+     }
+    ],
+    "fig": {
+     "stores": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-krispy-kreme-delivery-truck-side-5a7941ab.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc"
+     },
+     {
+      "kind": "count",
+      "figure": "stores",
+      "eyebrow": "McDonald's in America",
+      "unit": "restaurants, about",
+      "countAt": "reach",
+      "countLen": 30,
+      "tone": "gold",
+      "at": "reach",
+      "out": "fresh"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Broke up",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "broke",
+      "out": "march"
+     },
+     {
+      "kind": "date",
+      "date": "2024-03-26",
+      "sub": "the deal is announced",
+      "pos": "top",
+      "at": "march",
+      "out": "reach"
+     },
+     {
+      "kind": "arrow",
+      "from": [
+       0.3,
+       0.62
+      ],
+      "to": [
+       0.45,
+       0.45
+      ],
+      "label": "Fresh, daily",
+      "at": "fresh"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "abroad",
+   "role": "build",
+   "say": "Krispy Kreme sells in more than {fact3} countries, like this motorway stop in England.",
+   "events": {
+    "sells": {
+     "word": "sells"
+    },
+    "countries": {
+     "word": "countries"
+    },
+    "england": {
+     "word": "England"
+    }
+   },
+   "params": {
+    "place": [
+     "a Krispy Kreme counter at an English motorway service station"
+    ],
+    "things": [
+     "Krispy Kreme counter",
+     "country count"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "countries",
+      "size": "medium"
+     },
+     {
+      "at": "england",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sells",
+      "what": "the counter rises into view"
+     },
+     {
+      "at": "countries",
+      "what": "a label with the country count"
+     },
+     {
+      "at": "england",
+      "what": "a place label: Wetherby, England"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-krispy-kreme-doughnuts-counter-wetherby-service-7a820046.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "aspect": "vertical",
+      "move": "rise",
+      "amount": 0.12,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact3} countries",
+      "sub": "more than",
+      "at": "countries",
+      "out": "england"
+     },
+     {
+      "kind": "label",
+      "text": "Wetherby, England",
+      "sub": "a motorway service station",
+      "at": "england"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "trucks",
+   "role": "build",
+   "say": "Trucks drove the boxes out from Krispy Kreme's own kitchens, restaurant after restaurant. But who paid for all those trips?",
+   "events": {
+    "trucks": {
+     "word": "Trucks"
+    },
+    "kitchens": {
+     "word": "kitchens"
+    },
+    "restaurant": {
+     "word": "restaurant"
+    },
+    "paid": {
+     "word": "paid"
+    }
+   },
+   "params": {
+    "place": [
+     "a Krispy Kreme shop",
+     "the road between restaurants"
+    ],
+    "things": [
+     "Krispy Kreme shop",
+     "delivery van",
+     "doughnut trays"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "kitchens",
+      "size": "wide"
+     },
+     {
+      "at": "restaurant",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "trucks",
+      "what": "the Krispy Kreme shop"
+     },
+     {
+      "at": "kitchens",
+      "what": "a van on the road"
+     },
+     {
+      "at": "restaurant",
+      "what": "trays of doughnuts"
+     },
+     {
+      "at": "paid",
+      "what": "a glazed doughnut and a stamp: WHO PAID?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "every": 12,
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-a-modern-krispy-kreme-shop-in-the-winston-salem-c0b38862.jpg",
+        "focus": [
+         0.4,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-krispy-kreme-delivery-truck-pittsfield-township-3bbbcfde.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "kitchens"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-krispy-kreme-assort-01d8d0d1.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "restaurant"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-glazed-doughnut-1387303-d2c1ebf1.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "paid"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Who paid?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -5,
+      "at": "paid"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "why",
+   "role": "build",
+   "say": "So why would anyone walk away from McDonald's?",
+   "events": {
+    "walk": {
+     "word": "walk"
+    },
+    "away": {
+     "word": "away"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "away"
+    }
+   ],
+   "params": {
+    "place": [
+     "a box of doughnuts on a car seat"
+    ],
+    "things": [
+     "doughnut box"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "away",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "walk",
+      "what": "the box pushes in"
+     },
+     {
+      "at": "away",
+      "what": "a stamp: WHY?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-krispy-kreme-donuts-ada2c606.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "aspect": "vertical",
+      "move": "push",
+      "amount": 0.14,
+      "grade": "warm"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Why?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "away"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "costs",
+   "role": "build",
+   "say": "Krispy Kreme said it could not get its costs in line with how many doughnuts sold.",
+   "events": {
+    "krispy": {
+     "word": "Krispy"
+    },
+    "said": {
+     "word": "said"
+    },
+    "costs": {
+     "word": "costs"
+    },
+    "line": {
+     "word": "line"
+    },
+    "sold": {
+     "word": "sold"
+    }
+   },
+   "params": {
+    "place": [
+     "Krispy Kreme's press release"
+    ],
+    "things": [
+     "press release",
+     "highlighter"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "costs",
+      "size": "medium"
+     },
+     {
+      "at": "line",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "krispy",
+      "what": "the press release card lands"
+     },
+     {
+      "at": "costs",
+      "what": "a source chip: the filing"
+     },
+     {
+      "at": "line",
+      "what": "the highlighter swipes 'costs in line with unit demand'"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "Krispy Kreme press release",
+        "date": "2025-06-24",
+        "title": "\u201cEfforts to bring our costs in line with unit demand were unsuccessful.\u201d",
+        "style": "paper",
+        "hi": "costs in line with unit demand"
+       }
+      ],
+      "on": [
+       "krispy"
+      ],
+      "markAt": "line"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "8-K",
+      "text": "Krispy Kreme",
+      "date": "2025-06-24",
+      "at": "costs"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "shares",
+   "role": "build",
+   "say": "By then, its shares were down more than {fact4} so far that year.",
+   "events": {
+    "shares": {
+     "word": "shares"
+    },
+    "down": {
+     "word": "down"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "down"
+    }
+   ],
+   "params": {
+    "place": [
+     "the Krispy Kreme neon sign in Atlanta"
+    ],
+    "things": [
+     "neon sign",
+     "the share fall"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "down",
+      "size": "close"
+     },
+     {
+      "at": "year",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "shares",
+      "what": "the sign pushes in"
+     },
+     {
+      "at": "down",
+      "what": "the fall counts up in red"
+     },
+     {
+      "at": "year",
+      "what": "a source chip: NBC News"
+     }
+    ],
+    "fig": {
+     "fall": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-krispy-kreme-doughnuts-neon-sign-on-ponce-in-atl-e6502ddf.jpg",
+      "focus": [
+       0.6,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "night"
+     },
+     {
+      "kind": "count",
+      "figure": "fall",
+      "eyebrow": "shares fell more than",
+      "unit": "so far that year",
+      "countAt": "down",
+      "countLen": 30,
+      "tone": "red",
+      "at": "down"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "NBC News",
+      "date": "2025-06-24",
+      "at": "year"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "over",
+   "role": "turn",
+   "say": "So the two companies called it off, and in July the deal was over.",
+   "events": {
+    "companies": {
+     "word": "companies"
+    },
+    "off": {
+     "word": "off"
+    },
+    "july": {
+     "word": "July"
+    },
+    "over": {
+     "word": "over"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "over"
+    }
+   ],
+   "params": {
+    "place": [
+     "Krispy Kreme's SEC filing"
+    ],
+    "things": [
+     "the SEC filing",
+     "highlighter"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "off",
+      "size": "medium"
+     },
+     {
+      "at": "over",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "companies",
+      "what": "inside a McDonald's"
+     },
+     {
+      "at": "off",
+      "what": "the filing page lands"
+     },
+     {
+      "at": "july",
+      "what": "the highlighter swipes 'jointly decided to end' and the date slams in"
+     },
+     {
+      "at": "over",
+      "what": "a stamp: OVER"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-flatbush-mcdonald-s-td-2018-03-17-01-fc171390.jpg",
+      "focus": [
+       0.72,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "cold",
+      "out": "off"
+     },
+     {
+      "kind": "document",
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-1857154-0001857154-25-000102-p002.png",
+      "box": [
+       0.04,
+       0.15,
+       0.92,
+       0.04
+      ],
+      "pushAt": "off",
+      "markAt": "july",
+      "source": {
+       "form": "Form 8-K",
+       "text": "Krispy Kreme, Inc.",
+       "date": "2025-06-24"
+      },
+      "push": 1.7,
+      "tilt": 6,
+      "at": "off"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2025-07-02",
+      "sub": "the deal ends",
+      "pos": "top",
+      "at": "july",
+      "out": "over"
+     },
+     {
+      "kind": "stamp",
+      "text": "Over",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "over"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "When it ended, Krispy Kreme was in only about {fact1} of those McDonald's.",
+   "events": {
+    "ended": {
+     "word": "ended"
+    },
+    "only": {
+     "word": "only"
+    },
+    "those": {
+     "word": "those"
+    }
+   },
+   "params": {
+    "place": [
+     "the poster over a wall of Krispy Kreme boxes"
+    ],
+    "things": [
+     "Krispy Kreme boxes",
+     "the restaurant count"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "only",
+      "size": "wide"
+     },
+     {
+      "at": "those",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ended",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "only",
+      "what": "the figure lands"
+     },
+     {
+      "at": "those",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "got": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-krispy-kreme-december-2025-sarah-stierch-01-bf4a2f99.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "date": "2025-06-24",
+      "title": "Krispy Kreme at McDonald's",
+      "figure": "got",
+      "sub": "restaurants, about \u00b7 of {fact2}",
+      "on": "ended",
+      "at": "ended"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Glazed doughnut or McFlurry: which would you order at the counter? Remember,",
+   "events": {
+    "glazed": {
+     "word": "Glazed"
+    },
+    "mcflurry": {
+     "word": "McFlurry"
+    },
+    "counter": {
+     "word": "counter"
+    }
+   },
+   "params": {
+    "place": [
+     "inside a McDonald's",
+     "the golden arches from the first frame"
+    ],
+    "things": [
+     "McDonald's dining room",
+     "golden arches"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "mcflurry",
+      "size": "medium"
+     },
+     {
+      "at": "counter",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "glazed",
+      "what": "a stamp: GLAZED?"
+     },
+     {
+      "at": "mcflurry",
+      "what": "a stamp: OR MCFLURRY?"
+     },
+     {
+      "at": "counter",
+      "what": "back to the arches from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-interior-mcdonald-s-restaurant-downtown-saint-jo-6dda3af5.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "warm",
+      "out": "counter"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-mcdonald-s-in-indianapolis-everett-01-7fa050d4.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "counter"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Glazed?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "glazed",
+      "out": "mcflurry"
+     },
+     {
+      "kind": "stamp",
+      "text": "Or McFlurry?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 5,
+      "at": "mcflurry",
+      "out": "counter"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}
