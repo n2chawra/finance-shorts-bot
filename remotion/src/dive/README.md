@@ -50,7 +50,7 @@ figure up on its word (the 90 s ride) and shows until its beat ends; `counter.y`
 | kind | params | draws |
 |---|---|---|
 | `surface` | `preset` station / tube (a London Underground front) / needle (a supertall with setbacks and a spire) / tower / stadium / monument / bridge / dam / street, `label`, `wall`, `trim`, `glass`, `color`, `vehicle` | sky, skyline, the landmark, the street with looping traffic (boats for bridge/dam) |
-| `tunnel` | `type` subway / rail / road / utility, `color` (vehicle), `stripe`, `bullets` [[text, colour]], `light`, `dir` 1/-1, `river` (a river with a boat right over it, 2026-11-23), `signX` (the sign's x, default 240) | a lit cross-section, track or road, the sign with the depth, a train/car running through on its word (utility: cables, flowing) |
+| `tunnel` | `type` subway / rail / road / utility, `color` (vehicle), `stripe`, `bullets` [[text, colour]], `light`, `dir` 1/-1, `signX` (the sign's x, default 240) | a lit cross-section, track or road, the sign with the depth, a train/car running through on its word (utility: cables, flowing) |
 | `chamber` | `type` secret / vault / bunker / machine, `props` [machines, lamp, blueprint, safe, gold, crates, bunks, pipes, desk], `stamp` + `stampOn`, `plansOn`, `color` | a room in the rock; the stamp lands on its word; a depth tag (or a sign when `label`) |
 | `cavern` | `levels` 1/2, `trains` [stripe per level], `stripe` (car body), `bullets`, `light`, `color` | a deep hall with platforms and moving trains, its sign |
 | `shaft` | `type` escalator / elevator / stairs / pipe, `fromFt`, `toFt`, `side`, `riders`, `glowOn`, `color`, `stripe` | runs between two depths with riders; glows on its word |

@@ -32,8 +32,6 @@ export const useNear = (y: number, bandsOnly = false): number => {
 };
 /** 1 for the whole video, falling to 0 over its last second, so whatever arrived on its word is gone again when
  * the ride up lands on the first frame (QA 2026-11-22: "the last frame shows the pillars, frame 0 has none"). */
-/** 0..1, a whole number of laps over the video (so the loop matches) */
-const loopU2 = (w: DiveWorld, g: number, laps: number, ph = 0) => (((g / Math.max(1, w.total)) * Math.max(1, Math.round(laps)) + ph) % 1 + 1) % 1;
 export const outro = (w: DiveWorld, g: number): number => 1 - ramp(g, w.total - 32, w.total - 6);
 
 const SHOWN = 48, GROW_MAX = 1.3, MIN_READ = 45, BOTTOM = 130;
@@ -391,19 +389,6 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
   const road = s.type === "road";
   return (
     <g>
-      {s.river ? (() => {
-        // `river` (2026-11-23, v-20261123-53): the river runs right over this tunnel, a silt bed and the water with
-        // a boat crossing, so a tunnel under a river reads as under the river (QA: "never shows the river")
-        const top = yb - h - 360, bed = yb - h - 110;
-        const bx = loopU2(w, g, 1) * 2200 - 600;
-        return <g>
-          <rect x={-2400} y={bed} width={5900} height={100} fill={shade(look.sand, -0.2)} />
-          <rect x={-2400} y={top} width={5900} height={bed - top} fill={look.water} />
-          {[0, 1, 2].map((r) => <path key={r} transform={`translate(${-loopU2(w, g, 6, r / 3) * 160} 0)`} d={`M -600 ${top + 70 + r * 90} ${Array.from({ length: 14 }, () => "q 40 -14 80 0 t 80 0").join(" ")}`} fill="none" stroke="#e8f6ff" strokeWidth={5} opacity={0.6} />)}
-          <path d={`M ${bx} ${top + 6} h 220 l -40 60 h -140 z`} fill="#e8743a" stroke={INK} strokeWidth={5} />
-          <rect x={bx + 70} y={top - 50} width={80} height={56} fill="#f4f1e8" stroke={INK} strokeWidth={4} />
-        </g>;
-      })() : null}
       <clipPath id={id}><rect x={x0} y={yb - h} width={x1 - x0} height={h + 40} rx={26} /></clipPath>
       <rect x={x0 - 14} y={yb - h - 14} width={x1 - x0 + 28} height={h + 68} rx={34} fill={shade(look.deep, 0.08)} />
       <g clipPath={`url(#${id})`}>
