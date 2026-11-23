@@ -639,8 +639,8 @@ export const Spiral: React.FC<PieceProps> = ({ L, w, g }) => {
  *  upward (it never crosses the layers above), a worker on the gantry, the sign with the depth. */
 export const Vent: React.FC<PieceProps> = ({ L, w, g }) => {
   const s = L.spec, look = w.look;
-  const yb = w.Y(L.ft) + 160, x0 = 200, x1 = 880, top = yb - 330;
-  const cx = 540, half = 110, shaftTop = top - 380;
+  const yb = w.Y(L.ft) + 200, x0 = 70, x1 = 1010, top = yb - 480;
+  const cx = 540, half = 130, shaftTop = top - 420;
   const wall = s.color ?? "#4c5462";
   const spin = loopU(w, g, Math.max(1, Math.round(w.total / 30 * 10))) * 360;
   const fid = `vent-fade-${L.beat}`;
@@ -652,17 +652,19 @@ export const Vent: React.FC<PieceProps> = ({ L, w, g }) => {
       <rect x={x0 - 16} y={top - 16} width={x1 - x0 + 32} height={yb - top + 32} rx={30} fill={shade(look.deep, 0.05)} />
       <rect x={x0} y={top} width={x1 - x0} height={yb - top} rx={24} fill={wall} stroke={INK} strokeWidth={STROKE} />
       <rect x={cx - half} y={top - 6} width={half * 2} height={20} fill={shade(wall, -0.4)} />
-      <Glow x={cx} y={top + 160} r={260} color={s.light ?? "#cfe8ff"} o={0.35} />
+      <Glow x={cx} y={top + 220} r={360} color={s.light ?? "#cfe8ff"} o={0.35} />
       {/* the fan in its ring */}
-      <circle cx={cx} cy={top + 170} r={128} fill={shade(wall, -0.35)} stroke={INK} strokeWidth={STROKE} />
-      <g transform={`rotate(${spin} ${cx} ${top + 170})`}>
-        {[0, 1, 2, 3, 4].map((j) => <path key={j} transform={`rotate(${j * 72} ${cx} ${top + 170})`} d={`M ${cx} ${top + 170} q 40 -40 10 -112 q -46 20 -10 112 z`} fill="#c9ced8" stroke={INK} strokeWidth={4} />)}
-        <circle cx={cx} cy={top + 170} r={22} fill="#e8432f" stroke={INK} strokeWidth={4} />
+      <circle cx={cx} cy={top + 220} r={170} fill={shade(wall, -0.35)} stroke={INK} strokeWidth={STROKE} />
+      <g transform={`rotate(${spin} ${cx} ${top + 220}) translate(${cx} ${top + 220}) scale(1.33) translate(${-cx} ${-(top + 220)})`}>
+        {[0, 1, 2, 3, 4].map((j) => <path key={j} transform={`rotate(${j * 72} ${cx} ${top + 220})`} d={`M ${cx} ${top + 220} q 40 -40 10 -112 q -46 20 -10 112 z`} fill="#c9ced8" stroke={INK} strokeWidth={4} />)}
+        <circle cx={cx} cy={top + 220} r={22} fill="#e8432f" stroke={INK} strokeWidth={4} />
       </g>
       {/* a gantry with a worker checking the fan */}
       <rect x={x0 + 10} y={yb - 40} width={x1 - x0 - 20} height={16} fill="#e0a23a" stroke={INK} strokeWidth={3} />
-      {(() => { const u = loopU(w, g, 1, 0.2); return <Person x={260 + (u < 0.5 ? u * 2 : 2 - u * 2) * 120} y={yb - 40} i={4} step={u * 10} dir={u < 0.5 ? 1 : -1} s={0.8} lamp />; })()}
-      <Sign x={560} y={yb - 140} w={300} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+      {(() => { const u = loopU(w, g, 1, 0.2); return <><Person x={130 + (u < 0.5 ? u * 2 : 2 - u * 2) * 180} y={yb - 40} i={4} step={u * 10} dir={u < 0.5 ? 1 : -1} s={0.9} lamp /><Person x={760 + (u < 0.5 ? 1 - u * 2 : u * 2 - 1) * 180} y={yb - 40} i={1} step={u * 10} dir={u < 0.5 ? -1 : 1} s={0.9} pose="carry" /></>; })()}
+      {/* pipes along the walls carrying the air out */}
+      {[110, 930].map((px) => <rect key={px} x={px - 16} y={top + 20} width={32} height={yb - top - 70} fill="#8d96a5" stroke={INK} strokeWidth={4} />)}
+      <Sign x={240} y={top - 130} w={600} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
     </g>
   );
 };
