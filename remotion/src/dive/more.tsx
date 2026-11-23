@@ -639,7 +639,7 @@ export const Spiral: React.FC<PieceProps> = ({ L, w, g }) => {
  *  upward (it never crosses the layers above), a worker on the gantry, the sign with the depth. */
 export const Vent: React.FC<PieceProps> = ({ L, w, g }) => {
   const s = L.spec, look = w.look;
-  const yb = w.Y(L.ft) + 200, x0 = 70, x1 = 1010, top = yb - 480;
+  const yb = w.Y(L.ft) + 420, x0 = 70, x1 = 1010, top = yb - 640;
   const cx = 540, half = 130, shaftTop = top - 420;
   const wall = s.color ?? "#4c5462";
   const spin = loopU(w, g, Math.max(1, Math.round(w.total / 30 * 10))) * 360;
