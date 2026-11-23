@@ -84,8 +84,8 @@ shows progress.
 **a. Topic families (labels by Claude, ranking by code).** Get the raw scan
 (`git show origin/niche-data:<slug>.json > .niche-data/<slug>.json`). Read every title and give each a
 topic family: what the video is *about* and *how* it is told, 6–14 families for the niche (for
-channel #1 these would be "billionaire money", "how a famous business makes money", "salary
-breakdowns", "market news", "personal budget tips"…). Label every title, not a sample: an unlabelled
+a geography niche these would be "what if a world changed", "why a country is shaped like that",
+"borders", "rankings", "travel facts"…). Label every title, not a sample: an unlabelled
 video can't count. Write `.niche-data/<slug>-labels.json` (video id → family; it holds no titles but stays
 off main with the raw data).
 
@@ -115,7 +115,7 @@ use and nobody re-researches:
   (dB), music character (tempo, brightness, bass share), effects a minute and their kinds, ducking and
   drops. This becomes `channel.json` `sound` (genres, bedLevel, duck, sfx, transitionSfx, and optionally
   `sfxPerMinute` {short, long}, enforced, and `preRevealDrop` {db, sec, shortSec}) in the build; a channel
-  never borrows channel #1's beds or effects. Check the levels on a Kokoro build, not by formula: the
+  never borrows another channel's beds or effects. Check the levels on a Kokoro build, not by formula: the
   duck's smoothing takes about 2 dB off −20·log10(1 − duck) (0.8 measures ~12.5 dB, 0.9 ~18), and
   bedLevel 0.22 with duck 0.8 put the bed 23.6–25.5 dB under the voice (`music_under_voice_db`, 2026-11-18).
 - **Kit gaps**: what our kit can't draw yet, built during step 4, not after the first sample.
@@ -168,7 +168,7 @@ Scaffold makes the folders and starting files (never overwrites). Then fill, fro
   `look.cast` (`none` when `style.json` says no cast, else the shared studio cast); `uploadCategory`;
   **`length`** `{"short": [min, max], "long": [min, max]}` in seconds from `style.json` and the scan's
   length bands. A channel never inherits another's length (owner, 2026-11-18): `config/settings.json`'s
-  are Paisa Panchayat's; `generator/settings.py` reads the pack's, and the channel's own dashboard
+  are the platform defaults; `generator/settings.py` reads the pack's, and the channel's own dashboard
   setting still overrides them.
 - **`profile.md`**: who it is for, what it covers and never covers, where facts come from, the rules of
   its field, the risks from the verdict turned into rules. 150+ words.
@@ -176,10 +176,10 @@ Scaffold makes the folders and starting files (never overwrites). Then fill, fro
   name, hook, beats, tier core|low|avoid from the numbers, the hits it rests on as `demand`).
 - **`research/shapes.json`**: keep the shared shapes the niche's hits use; drop the rest.
 - **`research/topics.json`**: 15–20 first topics, the core families first; true channels carry sourced
-  `facts` (value, unit, source URL, as_of) on each, exactly as channel #1's research agent writes them.
+  `facts` (value, unit, source URL, as_of) on each, exactly as the research agent writes them (`agents/research.md`).
 - **`prompts/recipe.md`**: the champion recipe: length, topic kinds and their shares, the opening rules
-  from `firstSecond`, the look and style targets from `style.json`, the ending. The writer follows it
-  where CLAUDE.md describes Paisa Panchayat's recipe.
+  from `firstSecond`, the look and style targets from `style.json`, the ending. The writer and director follow it
+  over the shared prompts' defaults.
 - **`cycle/backlog.json`** `candidates`: what the research was unsure of, ranked, alternating
   first-second and look tests (the weekly loop's first challengers).
 - **`market.json`** `queries`: the niche's searches for the daily market scan.
@@ -231,7 +231,7 @@ clicks **I like it**, sends **notes**, or **Stop**. Read `config/channels.json` 
   push. After three rounds of notes without an approval, ask the owner whether the niche or the
   reference should change instead.
 - **Approved** (`review.approved`): the approved samples become the channel's reference videos (the
-  director and QA work to them, as `v-directed-netflix` is for channel #1). The owner then creates the
+  director and QA work to them; name them in `prompts/recipe.md`). The owner then creates the
   channel on YouTube from the branding kit, clicks **Connect YouTube**, then **Launch**: the channel goes
   live with the accepted counts, and its samples are the first uploads. The Launch review shows the
   routine times the channel will get and refuses Launch when it doesn't fit (window A full, the spare
@@ -256,4 +256,4 @@ and exit in seconds, so pausing never needs rescheduling.
 
 - Technique only from other channels: never their words, characters, art or voice.
 - Every figure in a verdict or advice comes from `scan.json`, `families.json` or a cited source.
-- One channel's setup never touches another channel's folder or `channels/paisa-panchayat/`.
+- One channel's setup never touches another channel's folder.

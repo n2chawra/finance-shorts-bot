@@ -6,7 +6,6 @@ import { calculateThumbnailMetadata, THUMB, Thumbnail } from "./compositions/Thu
 import type { Timeline } from "./contract/timeline";
 import sample from "./fixtures/sample-timeline.json";
 import { ActingTest } from "./sheets/ActingTest";
-import { AVATAR, BANNER, ChannelAvatar, ChannelBanner } from "./sheets/ChannelArt";
 import { CharacterSheet } from "./sheets/CharacterSheet";
 import { Promo, type PromoProps } from "./promo/Promo";
 import { PromoThumb } from "./promo/Thumb";
@@ -30,9 +29,7 @@ import { DepthDemos } from "./doc/demos/DepthDemo";
 import { DocCaptionDemo } from "./fx/chunkCaptions.demo";
 import { DocAvatar, DocBanner } from "./sheets/DocBrand";
 import { DisasterAvatar, DisasterBanner } from "./sheets/DisasterBrand";
-import { DiveAvatar, DiveBanner } from "./sheets/DiveBrand";
 import { DisasterKitDemo } from "./disaster/Demo";
-import { DiveKitDemo } from "./dive/Demo";
 
 export const Root: React.FC = () => (
   <>
@@ -63,13 +60,10 @@ export const Root: React.FC = () => (
     <DocCaptionDemo />
     {/* the disasters channel 2D/doc kit (src/disaster): every piece in three looks */}
     <DisasterKitDemo />
-    <DiveKitDemo />
     <Still id="DocAvatar" component={DocAvatar} width={800} height={800} />
     <Still id="DocBanner" component={DocBanner} width={2560} height={1440} />
     <Still id="DisasterAvatar" component={DisasterAvatar} width={800} height={800} />
     <Still id="DisasterBanner" component={DisasterBanner} width={2560} height={1440} />
-    <Still id="DiveAvatar" component={DiveAvatar} width={800} height={800} />
-    <Still id="DiveBanner" component={DiveBanner} width={2560} height={1440} />
     <Still id="TechAvatar" component={TechAvatar} width={800} height={800} />
     <Still id="TechBanner" component={TechBanner} width={2560} height={1440} />
     {/* the 3D kit (src/three, tech channel): one demo Short using every piece */}
@@ -77,9 +71,6 @@ export const Root: React.FC = () => (
     <Composition id="Tech3DDemo2" component={Tech3DDemo2} {...TECH3D_DEMO2} />
     <Composition id="Disaster3DDemo" component={Disaster3DDemo} {...DISASTER3D_DEMO} />
     <Thumb3DDemos />
-    {/* channel art (assets/channel/): `npx remotion still src/index.ts ChannelAvatar|ChannelBanner <out.png>` */}
-    <Still id="ChannelAvatar" component={ChannelAvatar} width={AVATAR.width} height={AVATAR.height} />
-    <Still id="ChannelBanner" component={ChannelBanner} width={BANNER.width} height={BANNER.height} />
     {/* the owner's own explainer: how the channel's motion graphics are made with Claude + Remotion */}
     <Composition id="Promo" component={Promo} fps={30} width={1920} height={1080} durationInFrames={300}
       defaultProps={{ scenes: [], durationInFrames: 300 } satisfies PromoProps}

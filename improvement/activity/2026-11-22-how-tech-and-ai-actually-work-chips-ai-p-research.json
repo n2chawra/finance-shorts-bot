@@ -1,0 +1,21 @@
+{
+  "agent": "research",
+  "channel": "how-tech-and-ai-actually-work-chips-ai-p",
+  "day": "2026-11-22",
+  "startedAt": "2026-11-21T19:08:17Z",
+  "finishedAt": "2026-11-21T19:12:29Z",
+  "summary": "Took apart two fast-growing 3D explainer channels (3D Eye, You Built A...) and added one Shorts topic (why the school answer for how planes fly is wrong), a trial story shape and one challenger for the weekly loop.",
+  "decision": "acted",
+  "why": "3D Eye's airplane Short has 3.49M views in 13 days (21.7x its channel); You Built A...'s small-to-giant Shorts reach 2.53M on 12K subscribers. Our own Shorts have too few views (45-255) for the evaluator to rank anything yet.",
+  "findings": [
+    {"title": "A myth fixed with a 3D picture pulls millions", "detail": "3D Eye's 'What Makes an Airplane Fly' adds 270K views a day; NASA Glenn says the common school answer for lift is wrong. Added as tonight's topic with Airbus A380 figures.", "link": "https://youtube.com/shorts/Vz7ejvMGBXk"},
+    {"title": "One repeatable shape: a small thing becomes a giant one", "detail": "You Built A... (12K subscribers) runs every video this way; bricks to skyscraper has 2.53M (211x). Added as a trial shape and a challenger.", "link": "https://www.youtube.com/watch?v=TJYWeAiZUVE"},
+    {"title": "'3D Animation' in a title makes no difference", "detail": "Across 1,955 recent niche Shorts: 0.94x the channel median with '3D' in the title, 1.00x without. Not proposed.", "link": "https://youtube.com/shorts/Vz7ejvMGBXk"}
+  ],
+  "changes": [
+    {"title": "1 topic added", "detail": "2026-11-22-how-wings-lift (score 10.16, second in the feed), 4 Airbus facts.", "branch": "agent/research/2026-11-22/how-tech-and-ai-actually-work-chips-ai-p"},
+    {"title": "Trial shape small-to-giant and challenger tech-small-to-giant", "detail": "In research/shapes.json and cycle/backlog.json (last among first-second tests: one channel, low confidence).", "branch": "agent/research/2026-11-22/how-tech-and-ai-actually-work-chips-ai-p"}
+  ],
+  "nextCheck": "2026-11-23",
+  "links": [{"label": "Report", "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-22.md"}]
+}

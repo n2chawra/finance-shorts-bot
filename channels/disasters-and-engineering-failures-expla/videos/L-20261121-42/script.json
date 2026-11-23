@@ -1,0 +1,4879 @@
+{
+ "template": "long_story",
+ "format": "long",
+ "id": "L-20261121-42",
+ "seed": 42817,
+ "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
+ "story": "corner_cut_structure",
+ "narrator": "bm_lewis",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "undertow",
+  "key": "D",
+  "bpm": 54,
+  "recipe": "night-grid"
+ },
+ "feed_id": "2026-11-20-hyatt-walkways",
+ "hook_style": "conflict",
+ "cta": "Which link in the chain should have stopped it? Tell us in the comments",
+ "facts": [
+  {
+   "label": "Year the Hyatt Regency walkways collapsed",
+   "value": 1981,
+   "unit": "year",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Day of July 1981 the walkways collapsed",
+   "value": 17,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Hour of the collapse (p.m.), approximately 7:05 p.m.",
+   "value": 7,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Minutes past the hour of the collapse (approximately 7:05 p.m.)",
+   "value": 5,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "People left dead by the collapse (NBS executive summary)",
+   "value": 113,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Ultimate capacity of the original continuous-rod connection, percent of that expected under the Kansas City Building Code (approximately)",
+   "value": 60,
+   "unit": "percent",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "How many times the rod change multiplied the load on the fourth-floor box beam-hanger rod connections (essentially doubled)",
+   "value": 2,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Year ASCE adopted the policy assigning responsibility for steel connection design, including connections, to the engineer of record (October 1985)",
+   "value": 1985,
+   "unit": "year",
+   "as_of": "2011-07-01",
+   "source": "ASCE Civil Engineering magazine",
+   "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public"
+  },
+  {
+   "label": "Year the Hyatt Regency Kansas City opened for business (July 1980)",
+   "value": 1980,
+   "unit": "year",
+   "as_of": "2007-01-01",
+   "source": "ASCE Civil Engineering magazine",
+   "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse"
+  },
+  {
+   "label": "Storeys of the hotel's tower section (a 40-story tower)",
+   "value": 40,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Height of the atrium, about 50 ft (15 m)",
+   "value": 15,
+   "unit": "m",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Crowd in the atrium at 7:00 p.m., low end of the newspaper estimate (1500 to 2000), as summarised in the NBS report",
+   "value": 1500,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Crowd in the atrium at 7:00 p.m., high end of the newspaper estimate (1500 to 2000), as summarised in the NBS report",
+   "value": 2000,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Credible estimate of combined second and fourth floor walkway occupancy at the time of collapse, from the videotape",
+   "value": 63,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Maximum load on a fourth floor box beam-hanger rod connection at the time of collapse, percent of the ultimate capacity expected of a connection designed under the Kansas City Building Code",
+   "value": 31,
+   "unit": "percent",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "How much heavier the actual walkway dead load (self-weight) was than the nominal dead load (approximately 8 percent)",
+   "value": 8,
+   "unit": "percent",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Depth in inches of each of the two steel channels welded toe to toe into a box beam (8-inch channels)",
+   "value": 8,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Minutes past 7 p.m. when the band returned from its break and began to play for the dance contest (7:04 p.m., newspaper chronology in the NBS report)",
+   "value": 4,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "People injured in the collapse (NBS executive summary)",
+   "value": 186,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Associate engineers the engineer of record was responsible for (roughly 10, each supervising six or seven projects)",
+   "value": 10,
+   "unit": "count",
+   "as_of": "2007-01-01",
+   "source": "ASCE Civil Engineering magazine",
+   "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse"
+  },
+  {
+   "label": "Professional engineers whose licences the Missouri Board revoked after the investigation",
+   "value": 2,
+   "unit": "count",
+   "as_of": "2011-07-01",
+   "source": "ASCE Civil Engineering magazine",
+   "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public"
+  },
+  {
+   "label": "Hanger rods suspending the fourth floor walkway from the atrium roof framing",
+   "value": 6,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Years ASCE suspended the engineer of record from membership",
+   "value": 3,
+   "unit": "count",
+   "as_of": "2007-01-01",
+   "source": "ASCE Civil Engineering magazine",
+   "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse"
+  },
+  {
+   "label": "Minutes past 7 p.m. when the Kansas City Fire Department dispatcher received the first call for help (7:08 p.m., newspaper chronology in the NBS report)",
+   "value": 8,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Minutes past 7 p.m. when the call went out for cutting tools (7:19 p.m., newspaper chronology in the NBS report)",
+   "value": 19,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  },
+  {
+   "label": "Minutes past 7 p.m. when the call went out for a forklift (7:23 p.m., newspaper chronology in the NBS report)",
+   "value": 23,
+   "unit": "count",
+   "as_of": "1982-05-01",
+   "source": "NBS Building Science Series 143 (NIST)",
+   "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf"
+  }
+ ],
+ "maths": [],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "say": "Kansas City, {fact1}. Two steel walkways hang over a crowded hotel lobby, one directly above the other.",
+   "events": {
+    "kansas": {
+     "word": "Kansas"
+    },
+    "steel": {
+     "word": "steel"
+    },
+    "walkways": {
+     "word": "walkways"
+    },
+    "crowded": {
+     "word": "crowded"
+    },
+    "lobby": {
+     "word": "lobby"
+    },
+    "directly": {
+     "word": "directly"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "under the fourth-floor walkway of the Hyatt Regency atrium, at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "walkways",
+      "size": "medium"
+     },
+     {
+      "at": "lobby",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "kansas",
+      "what": "the date and place caption types on over the amber-lit nut under the upper walkway"
+     },
+     {
+      "at": "steel",
+      "what": "the rod glints as the camera slides back along the box beam"
+     },
+     {
+      "at": "walkways",
+      "what": "the camera pulls back: both walkways in frame, rails and glass catching the light"
+     },
+     {
+      "at": "crowded",
+      "what": "the dance-floor lights pulse on below"
+     },
+     {
+      "at": "lobby",
+      "what": "the full atrium opens: roof trusses, balconies, tables and chairs"
+     },
+     {
+      "at": "directly",
+      "what": "a dashed line drops from the upper walkway to the lower"
+     }
+    ],
+    "things": [
+     "amber nut and washer",
+     "box beam",
+     "hanger rods",
+     "two walkways",
+     "glass roof",
+     "dance floor lights",
+     "tables and chairs",
+     "date caption"
+    ],
+    "shot": "hook",
+    "fig": {
+     "year": "{fact1}",
+     "day": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "hook-nut",
+   "scene": "directed",
+   "role": "build",
+   "say": "On the upper walkway, one nut and washer are holding far more than they were ever meant to.",
+   "events": {
+    "upper": {
+     "word": "upper"
+    },
+    "nut": {
+     "word": "nut"
+    },
+    "holding": {
+     "word": "holding"
+    },
+    "far": {
+     "word": "far"
+    },
+    "ever": {
+     "word": "ever"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "inside the fourth-floor box beam, cut away",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "nut",
+      "size": "extreme"
+     },
+     {
+      "at": "ever",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "upper",
+      "what": "the beam's near face cuts away to show the rods inside"
+     },
+     {
+      "at": "nut",
+      "what": "the camera pushes onto the nut under the bottom flange"
+     },
+     {
+      "at": "holding",
+      "what": "load arrows press down onto the washer"
+     },
+     {
+      "at": "far",
+      "what": "the steel warms grey to amber around the nut"
+     },
+     {
+      "at": "ever",
+      "what": "a mono label types on: FOURTH-FLOOR BOX BEAM"
+     }
+    ],
+    "things": [
+     "box beam cutaway",
+     "two rods",
+     "nut and washer",
+     "load arrows",
+     "stress colour"
+    ],
+    "shot": "tease"
+   }
+  },
+  {
+   "id": "hook-tear",
+   "scene": "directed",
+   "role": "build",
+   "say": "At about {fact4} past {fact3} in the evening, the beam around that nut tears open.",
+   "events": {
+    "about": {
+     "word": "about"
+    },
+    "evening": {
+     "word": "evening"
+    },
+    "beam": {
+     "word": "beam"
+    },
+    "tears": {
+     "word": "tears"
+    }
+   },
+   "params": {
+    "component": "Fall",
+    "place": "the fourth-floor box beam, close",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "evening",
+      "size": "extreme"
+     },
+     {
+      "at": "tears",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "about",
+      "what": "a clock card slides in with the time"
+     },
+     {
+      "at": "evening",
+      "what": "stress climbs from amber to red, the music falls away"
+     },
+     {
+      "at": "beam",
+      "what": "the weld seam glows and pulses"
+     },
+     {
+      "at": "tears",
+      "what": "sub-boom: the seam rips, the nut pulls through, sparks fall"
+     }
+    ],
+    "things": [
+     "box beam",
+     "clock",
+     "weld seam",
+     "nut",
+     "sparks"
+    ],
+    "shot": "tease",
+    "fig": {
+     "hour": "{fact3}",
+     "minute": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "beam",
+     "gain": 0.5
+    },
+    {
+     "kind": "subboom",
+     "at": "tears",
+     "gain": 0.9
+    }
+   ]
+  },
+  {
+   "id": "hook-fall",
+   "scene": "directed",
+   "role": "build",
+   "say": "In seconds, both walkways are on the floor.",
+   "events": {
+    "seconds": {
+     "word": "seconds"
+    },
+    "both": {
+     "word": "both"
+    },
+    "floor": {
+     "word": "floor"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium from high above, after the collapse",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "floor",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "seconds",
+      "what": "seen from the roof trusses, dust rolls across the lobby floor"
+     },
+     {
+      "at": "both",
+      "what": "the two fallen walkways lie stacked, lit in red outline"
+     },
+     {
+      "at": "floor",
+      "what": "the empty hanger rods swing from the roof"
+     }
+    ],
+    "things": [
+     "fallen walkways",
+     "dust",
+     "empty rods",
+     "roof trusses"
+    ],
+    "shot": "after"
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "say": "Why? The investigators found the steel and the workmanship played no significant role. It was a chain of small decisions, and one of them was made over the phone.",
+   "events": {
+    "why": {
+     "word": "Why"
+    },
+    "steel": {
+     "word": "steel"
+    },
+    "workmanship": {
+     "word": "workmanship"
+    },
+    "chain": {
+     "word": "chain"
+    },
+    "decisions": {
+     "word": "decisions"
+    },
+    "phone": {
+     "word": "phone"
+    }
+   },
+   "params": {
+    "component": "Board",
+    "place": "the investigators' cause board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "chain",
+      "size": "medium"
+     },
+     {
+      "at": "phone",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "why",
+      "what": "the board lights up, five empty links pinned across it"
+     },
+     {
+      "at": "steel",
+      "what": "a card STEEL? drops and is struck out in red"
+     },
+     {
+      "at": "workmanship",
+      "what": "a card WORKMANSHIP? drops and is struck out"
+     },
+     {
+      "at": "chain",
+      "what": "the five links light one after another"
+     },
+     {
+      "at": "decisions",
+      "what": "each link takes a pin"
+     },
+     {
+      "at": "phone",
+      "what": "the middle link becomes a telephone handset, ringing"
+     }
+    ],
+    "things": [
+     "cause board",
+     "struck-out cards",
+     "five links",
+     "telephone"
+    ],
+    "shot": "promise"
+   }
+  },
+  {
+   "id": "promise-2",
+   "scene": "directed",
+   "role": "build",
+   "say": "This is how one small change on a drawing doubled the load, and why nobody caught it.",
+   "events": {
+    "change": {
+     "word": "change"
+    },
+    "drawing": {
+     "word": "drawing"
+    },
+    "doubled": {
+     "word": "doubled"
+    },
+    "nobody": {
+     "word": "nobody"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "the engineer's drawing of the hanger, side elevation",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "doubled",
+      "size": "close"
+     },
+     {
+      "at": "nobody",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "change",
+      "what": "the one long rod on the drawing splits into two"
+     },
+     {
+      "at": "drawing",
+      "what": "a revision cloud draws round the split"
+     },
+     {
+      "at": "doubled",
+      "what": "two load arrows merge into one thick red arrow on the nut"
+     },
+     {
+      "at": "nobody",
+      "what": "an unticked CONNECTION CALCS line flashes on the title block"
+     }
+    ],
+    "things": [
+     "side elevation",
+     "split rod",
+     "revision cloud",
+     "load arrows",
+     "title block"
+    ],
+    "shot": "split"
+   }
+  },
+  {
+   "id": "title",
+   "scene": "directed",
+   "role": "build",
+   "say": "The Hyatt Regency walkway collapse.",
+   "events": {
+    "hyatt": {
+     "word": "Hyatt"
+    },
+    "walkway": {
+     "word": "walkway"
+    },
+    "collapse": {
+     "word": "collapse"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium seen through the glass roof, at dusk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "collapse",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hyatt",
+      "what": "the camera sinks through the glass roof grid"
+     },
+     {
+      "at": "walkway",
+      "what": "the title writes on in mono across the roof beams"
+     },
+     {
+      "at": "collapse",
+      "what": "the music drops to silence, then the drone returns"
+     }
+    ],
+    "things": [
+     "glass roof grid",
+     "title",
+     "walkways below"
+    ],
+    "shot": "title"
+   },
+   "min_sec": 4.0
+  },
+  {
+   "id": "hotel",
+   "scene": "directed",
+   "role": "build",
+   "say": "The Hyatt Regency in Kansas City opened in {fact9}.",
+   "events": {
+    "hyatt": {
+     "word": "Hyatt"
+    },
+    "kansas": {
+     "word": "Kansas"
+    },
+    "opened": {
+     "word": "opened"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "outside the hotel, the tower and the atrium, afternoon",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "opened",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hyatt",
+      "what": "the chapter title THE HOTEL types on"
+     },
+     {
+      "at": "kansas",
+      "what": "the camera glides past the tower at an angle"
+     },
+     {
+      "at": "opened",
+      "what": "the opening year lights up on the sign by the entrance"
+     }
+    ],
+    "things": [
+     "hotel tower",
+     "glass atrium",
+     "function block",
+     "entrance sign"
+    ],
+    "shot": "exterior",
+    "fig": {
+     "year": "{fact9}"
+    },
+    "chapter": "The hotel"
+   }
+  },
+  {
+   "id": "hotel-2",
+   "scene": "directed",
+   "role": "build",
+   "say": "A {fact10}-storey tower, a block of ballrooms, and between them a glass atrium about {fact11} high.",
+   "events": {
+    "tower": {
+     "word": "tower"
+    },
+    "ballrooms": {
+     "word": "ballrooms"
+    },
+    "glass": {
+     "word": "glass"
+    },
+    "high": {
+     "word": "high"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "outside the hotel, the tower and the atrium, afternoon",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "ballrooms",
+      "size": "medium"
+     },
+     {
+      "at": "high",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "tower",
+      "what": "the tower's floor count runs up its edge"
+     },
+     {
+      "at": "ballrooms",
+      "what": "the low function block lights from inside"
+     },
+     {
+      "at": "glass",
+      "what": "the atrium's glass roof catches the sun"
+     },
+     {
+      "at": "high",
+      "what": "a height marker draws up the atrium's side"
+     }
+    ],
+    "things": [
+     "tower",
+     "floor counter",
+     "function block",
+     "glass atrium",
+     "height marker"
+    ],
+    "shot": "exterior-wide",
+    "fig": {
+     "storeys": "{fact10}",
+     "height": "{fact11}"
+    }
+   }
+  },
+  {
+   "id": "walks",
+   "scene": "directed",
+   "role": "build",
+   "say": "Across that atrium ran three walkways, at the second, third and fourth floors.",
+   "events": {
+    "atrium": {
+     "word": "atrium"
+    },
+    "three": {
+     "word": "three"
+    },
+    "second": {
+     "word": "second"
+    },
+    "third": {
+     "word": "third"
+    },
+    "fourth": {
+     "word": "fourth"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "inside the atrium, by day",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "three",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "atrium",
+      "what": "the camera drifts in through the lobby, sunlight through the roof"
+     },
+     {
+      "at": "three",
+      "what": "three walkway edges light in turn"
+     },
+     {
+      "at": "second",
+      "what": "a label SECOND FLOOR draws to the lowest"
+     },
+     {
+      "at": "third",
+      "what": "a label THIRD FLOOR to the offset one"
+     },
+     {
+      "at": "fourth",
+      "what": "a label FOURTH FLOOR to the top one"
+     }
+    ],
+    "things": [
+     "lobby",
+     "three walkways",
+     "floor labels",
+     "sunlight"
+    ],
+    "shot": "day"
+   }
+  },
+  {
+   "id": "walks-2",
+   "scene": "directed",
+   "role": "build",
+   "say": "The third was set off to one side. The fourth-floor walkway ran directly above the second.",
+   "events": {
+    "third": {
+     "word": "third"
+    },
+    "fourth-floor": {
+     "word": "fourth-floor"
+    },
+    "directly": {
+     "word": "directly"
+    },
+    "second": {
+     "word": "second"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "inside the atrium, by day, from the end of the walkways",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "directly",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "third",
+      "what": "the offset third-floor walkway glows and slides a guide line to the side"
+     },
+     {
+      "at": "fourth-floor",
+      "what": "the fourth-floor walkway glows"
+     },
+     {
+      "at": "directly",
+      "what": "a plumb line drops from it to the second-floor walkway"
+     },
+     {
+      "at": "second",
+      "what": "the second-floor walkway glows beneath"
+     }
+    ],
+    "things": [
+     "offset walkway",
+     "stacked walkways",
+     "plumb line"
+    ],
+    "shot": "end-on"
+   }
+  },
+  {
+   "id": "rods",
+   "scene": "directed",
+   "role": "build",
+   "say": "No columns held them up over the lobby. Each one hung from the roof on thin steel rods.",
+   "events": {
+    "columns": {
+     "word": "columns"
+    },
+    "hung": {
+     "word": "hung"
+    },
+    "roof": {
+     "word": "roof"
+    },
+    "rods": {
+     "word": "rods"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium, looking up the hanger rods",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "roof",
+      "size": "wide"
+     },
+     {
+      "at": "rods",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "columns",
+      "what": "ghost columns rise under the walkway and fade out"
+     },
+     {
+      "at": "hung",
+      "what": "the camera tilts up from the walkway"
+     },
+     {
+      "at": "roof",
+      "what": "the roof trusses come into view"
+     },
+     {
+      "at": "rods",
+      "what": "the rods light up one after another, a mono label HANGER RODS"
+     }
+    ],
+    "things": [
+     "ghost columns",
+     "walkway",
+     "hanger rods",
+     "roof trusses"
+    ],
+    "shot": "tilt"
+   }
+  },
+  {
+   "id": "why-hang",
+   "scene": "directed",
+   "role": "build",
+   "say": "Why hang them? Because a walkway floating in the air looks weightless, and it keeps the lobby floor clear for crowds.",
+   "events": {
+    "why": {
+     "word": "Why"
+    },
+    "floating": {
+     "word": "floating"
+    },
+    "weightless": {
+     "word": "weightless"
+    },
+    "clear": {
+     "word": "clear"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the lobby floor, low angle under the walkways",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "weightless",
+      "size": "close"
+     },
+     {
+      "at": "clear",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "why",
+      "what": "a low shot from the lobby floor up at the walkways"
+     },
+     {
+      "at": "floating",
+      "what": "the walkways seem to hover against the glass"
+     },
+     {
+      "at": "weightless",
+      "what": "light glides along the underside"
+     },
+     {
+      "at": "clear",
+      "what": "the open floor below fills with tables and chairs"
+     }
+    ],
+    "things": [
+     "walkways from below",
+     "glass roof",
+     "tables and chairs"
+    ],
+    "shot": "low"
+   }
+  },
+  {
+   "id": "year",
+   "scene": "directed",
+   "role": "build",
+   "say": "For a year, they held. Nobody could see what was wrong with them.",
+   "events": {
+    "year": {
+     "word": "year"
+    },
+    "held": {
+     "word": "held"
+    },
+    "wrong": {
+     "word": "wrong"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium as days pass, light sweeping through",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "wrong",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "year",
+      "what": "sunlight sweeps across the atrium again and again as days pass"
+     },
+     {
+      "at": "held",
+      "what": "the walkways stay still while the light moves"
+     },
+     {
+      "at": "wrong",
+      "what": "the camera pushes into one box beam under the upper walkway, an amber point on it"
+     }
+    ],
+    "things": [
+     "walkways",
+     "sweeping sunlight",
+     "box beam"
+    ],
+    "shot": "days"
+   }
+  },
+  {
+   "id": "tease-joint",
+   "scene": "directed",
+   "role": "tease",
+   "say": "So what was wrong from the very first day? To see it, you have to look inside one joint.",
+   "events": {
+    "wrong": {
+     "word": "wrong"
+    },
+    "first": {
+     "word": "first"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "joint": {
+     "word": "joint"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "the box beam under the fourth-floor walkway, approached from outside",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "inside",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "wrong",
+      "what": "the walkway's underside fills the frame"
+     },
+     {
+      "at": "first",
+      "what": "the camera slides along to the middle box beam"
+     },
+     {
+      "at": "inside",
+      "what": "the beam's skin peels away to show the inside"
+     },
+     {
+      "at": "joint",
+      "what": "the nut and washer are lit, a mono label THE JOINT"
+     }
+    ],
+    "things": [
+     "walkway underside",
+     "box beam",
+     "cutaway",
+     "nut and washer"
+    ],
+    "shot": "enter"
+   }
+  },
+  {
+   "id": "box",
+   "scene": "directed",
+   "role": "build",
+   "say": "Under each walkway ran steel box beams. Each one was two {fact17}-inch channels, welded toe to toe.",
+   "events": {
+    "steel": {
+     "word": "steel"
+    },
+    "box": {
+     "word": "box"
+    },
+    "channels": {
+     "word": "channels"
+    },
+    "welded": {
+     "word": "welded"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "an empty steel shop, two channels on a bench",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "channels",
+      "size": "close"
+     },
+     {
+      "at": "welded",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "steel",
+      "what": "the chapter title HOW IT WAS MEANT TO HOLD types on"
+     },
+     {
+      "at": "box",
+      "what": "a box beam turns on the bench"
+     },
+     {
+      "at": "channels",
+      "what": "the beam splits into two C-shaped channels, the depth marked"
+     },
+     {
+      "at": "welded",
+      "what": "they slide together and a weld bead runs along the seam, glowing"
+     }
+    ],
+    "things": [
+     "work bench",
+     "two steel channels",
+     "depth mark",
+     "weld bead"
+    ],
+    "shot": "build",
+    "fig": {
+     "depth": "{fact17}"
+    },
+    "chapter": "How it was meant to hold"
+   }
+  },
+  {
+   "id": "rodnut",
+   "scene": "directed",
+   "role": "build",
+   "say": "A rod came down from the roof, through a hole in the beam. Underneath, a nut and washer held the beam up.",
+   "events": {
+    "rod": {
+     "word": "rod"
+    },
+    "hole": {
+     "word": "hole"
+    },
+    "nut": {
+     "word": "nut"
+    },
+    "held": {
+     "word": "held"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "the box beam at the end of a walkway",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "hole",
+      "size": "close"
+     },
+     {
+      "at": "nut",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rod",
+      "what": "a hanger rod descends from above"
+     },
+     {
+      "at": "hole",
+      "what": "it threads through the holes in the top and bottom flange"
+     },
+     {
+      "at": "nut",
+      "what": "a washer slides up and a nut spins on beneath the beam"
+     },
+     {
+      "at": "held",
+      "what": "the beam settles onto the nut, an arrow up from it"
+     }
+    ],
+    "things": [
+     "hanger rod",
+     "flange holes",
+     "washer",
+     "nut",
+     "support arrow"
+    ],
+    "shot": "rodnut"
+   }
+  },
+  {
+   "id": "seam",
+   "scene": "directed",
+   "role": "build",
+   "say": "Here is the weak spot. The rod passed through a hole drilled right where the two channels' edges met, along the weld.",
+   "events": {
+    "weak": {
+     "word": "weak"
+    },
+    "hole": {
+     "word": "hole"
+    },
+    "edges": {
+     "word": "edges"
+    },
+    "weld": {
+     "word": "weld"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "the bottom of the box beam, close",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "hole",
+      "size": "extreme"
+     },
+     {
+      "at": "weld",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "weak",
+      "what": "the camera slides under the beam's bottom face"
+     },
+     {
+      "at": "hole",
+      "what": "the rod hole glows, drilled through the seam"
+     },
+     {
+      "at": "edges",
+      "what": "the two flange edges light either side of it"
+     },
+     {
+      "at": "weld",
+      "what": "the weld bead along the seam lights amber"
+     }
+    ],
+    "things": [
+     "beam bottom",
+     "rod hole",
+     "flange edges",
+     "weld bead"
+    ],
+    "shot": "seam"
+   }
+  },
+  {
+   "id": "lips",
+   "scene": "directed",
+   "role": "build",
+   "say": "So the whole weight pressed down through one washer onto two thin flange lips, held together by that weld. How much could that take?",
+   "events": {
+    "weight": {
+     "word": "weight"
+    },
+    "washer": {
+     "word": "washer"
+    },
+    "lips": {
+     "word": "lips"
+    },
+    "weld": {
+     "word": "weld"
+    },
+    "take": {
+     "word": "take"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "the bottom of the box beam, cut away",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "washer",
+      "size": "close"
+     },
+     {
+      "at": "take",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "weight",
+      "what": "a load arrow presses down the beam"
+     },
+     {
+      "at": "washer",
+      "what": "the washer lights under the flange"
+     },
+     {
+      "at": "lips",
+      "what": "the two flange lips flex, exaggerated"
+     },
+     {
+      "at": "weld",
+      "what": "the weld bead pulses"
+     },
+     {
+      "at": "take",
+      "what": "a question mark beside the joint"
+     }
+    ],
+    "things": [
+     "load arrow",
+     "washer",
+     "flange lips",
+     "weld"
+    ],
+    "shot": "lips",
+    "tag": "principle"
+   }
+  },
+  {
+   "id": "design",
+   "scene": "directed",
+   "role": "build",
+   "say": "What did the engineers draw? One long rod for both walkways.",
+   "events": {
+    "draw": {
+     "word": "draw"
+    },
+    "long": {
+     "word": "long"
+    },
+    "both": {
+     "word": "both"
+    },
+    "rod": {
+     "word": "rod"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "the engineers' contract drawing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "rod",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "draw",
+      "what": "the side elevation draws on: roof, fourth-floor and second-floor beams"
+     },
+     {
+      "at": "long",
+      "what": "one continuous rod draws from the roof down"
+     },
+     {
+      "at": "both",
+      "what": "both walkway decks fill in"
+     }
+    ],
+    "things": [
+     "side elevation",
+     "roof framing",
+     "two box beams",
+     "continuous rod"
+    ],
+    "shot": "design"
+   }
+  },
+  {
+   "id": "design-2",
+   "scene": "directed",
+   "role": "build",
+   "say": "It ran from the roof, through the fourth-floor beam, and straight on down through the second-floor beam.",
+   "events": {
+    "roof": {
+     "word": "roof"
+    },
+    "fourth-floor": {
+     "word": "fourth-floor"
+    },
+    "straight": {
+     "word": "straight"
+    },
+    "second-floor": {
+     "word": "second-floor"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "the engineers' contract drawing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "second-floor",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "roof",
+      "what": "a light runs down the rod from the roof"
+     },
+     {
+      "at": "fourth-floor",
+      "what": "it passes through the upper beam"
+     },
+     {
+      "at": "straight",
+      "what": "and keeps going"
+     },
+     {
+      "at": "second-floor",
+      "what": "it reaches the lower beam's nut"
+     }
+    ],
+    "things": [
+     "continuous rod",
+     "running light",
+     "upper beam",
+     "lower beam"
+    ],
+    "shot": "trace"
+   }
+  },
+  {
+   "id": "design-3",
+   "scene": "directed",
+   "role": "build",
+   "say": "Each beam sat on its own nut, so each nut carried only its own walkway.",
+   "events": {
+    "each": {
+     "word": "Each"
+    },
+    "nut": {
+     "word": "nut"
+    },
+    "carried": {
+     "word": "carried"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "the two box beams on one long rod, as designed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "carried",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "each",
+      "what": "a load arrow drops onto the upper nut"
+     },
+     {
+      "at": "nut",
+      "what": "a second arrow drops onto the lower nut"
+     },
+     {
+      "at": "carried",
+      "what": "both arrows the same size, labelled ONE WALKWAY"
+     }
+    ],
+    "things": [
+     "two stacked box beams",
+     "one rod",
+     "two nuts",
+     "two equal arrows"
+    ],
+    "shot": "stack"
+   }
+  },
+  {
+   "id": "weak",
+   "scene": "directed",
+   "role": "build",
+   "say": "Was that design safe? Not quite. The investigators found it reached only about {fact6} of the strength the Kansas City code expected.",
+   "events": {
+    "safe": {
+     "word": "safe"
+    },
+    "investigators": {
+     "word": "investigators"
+    },
+    "only": {
+     "word": "only"
+    },
+    "strength": {
+     "word": "strength"
+    },
+    "code": {
+     "word": "code"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "a strength gauge beside the drawing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "strength",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "safe",
+      "what": "a strength gauge slides in beside the joint"
+     },
+     {
+      "at": "investigators",
+      "what": "the needle starts to climb"
+     },
+     {
+      "at": "only",
+      "what": "a label ORIGINAL DESIGN types on beside the gauge"
+     },
+     {
+      "at": "strength",
+      "what": "it stops at the figure, short of the code line"
+     },
+     {
+      "at": "code",
+      "what": "the code line flashes red"
+     }
+    ],
+    "things": [
+     "strength gauge",
+     "code line",
+     "joint drawing"
+    ],
+    "shot": "gauge",
+    "fig": {
+     "pct": "{fact6}"
+    }
+   }
+  },
+  {
+   "id": "tease-call",
+   "scene": "directed",
+   "role": "tease",
+   "say": "So the drawing was already short. Then, during construction, someone asked a simple question.",
+   "events": {
+    "drawing": {
+     "word": "drawing"
+    },
+    "construction": {
+     "word": "construction"
+    },
+    "question": {
+     "word": "question"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the engineers' office at night, a phone on the desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "question",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "drawing",
+      "what": "the drawing lies on the desk under a lamp"
+     },
+     {
+      "at": "construction",
+      "what": "a site photo slides in next to it"
+     },
+     {
+      "at": "question",
+      "what": "the desk phone starts to ring, the handset shaking"
+     }
+    ],
+    "things": [
+     "desk",
+     "drawing",
+     "lamp",
+     "telephone"
+    ],
+    "shot": "phone-ring"
+   }
+  },
+  {
+   "id": "fab",
+   "scene": "directed",
+   "role": "build",
+   "say": "The steel fabricator looked at that long rod and saw a problem.",
+   "events": {
+    "fabricator": {
+     "word": "fabricator"
+    },
+    "rod": {
+     "word": "rod"
+    },
+    "problem": {
+     "word": "problem"
+    }
+   },
+   "params": {
+    "component": "Lab",
+    "place": "the fabricator's shop floor, the long rod on trestles",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "problem",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fabricator",
+      "what": "the chapter title THE CHAIN types on, the long rod lies across the shop floor"
+     },
+     {
+      "at": "rod",
+      "what": "its whole length lights"
+     },
+     {
+      "at": "problem",
+      "what": "a question mark appears over its middle"
+     }
+    ],
+    "things": [
+     "shop floor",
+     "long rod on trestles",
+     "question mark"
+    ],
+    "shot": "shop-rod",
+    "chapter": "The chain"
+   }
+  },
+  {
+   "id": "thread",
+   "scene": "directed",
+   "role": "build",
+   "say": "How do you put a nut halfway up a rod that long? The rod would need thread most of its length, or the nut wound all the way up.",
+   "events": {
+    "nut": {
+     "word": "nut"
+    },
+    "halfway": {
+     "word": "halfway"
+    },
+    "thread": {
+     "word": "thread"
+    },
+    "wound": {
+     "word": "wound"
+    }
+   },
+   "params": {
+    "component": "Lab",
+    "place": "the fabricator's shop floor, close on the rod",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "thread",
+      "size": "close"
+     },
+     {
+      "at": "wound",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nut",
+      "what": "a nut slides onto the bottom of the rod"
+     },
+     {
+      "at": "halfway",
+      "what": "a target mark at the middle"
+     },
+     {
+      "at": "thread",
+      "what": "thread lines spread along the rod"
+     },
+     {
+      "at": "wound",
+      "what": "the nut spins its long way up, a turn counter racing"
+     }
+    ],
+    "things": [
+     "long rod",
+     "nut",
+     "thread",
+     "target mark"
+    ],
+    "shot": "shop-thread"
+   }
+  },
+  {
+   "id": "two-rods",
+   "scene": "directed",
+   "role": "build",
+   "say": "Two shorter rods were simpler. One from the roof to the fourth-floor beam. A second from that beam down to the second floor.",
+   "events": {
+    "two": {
+     "word": "Two"
+    },
+    "simpler": {
+     "word": "simpler"
+    },
+    "roof": {
+     "word": "roof"
+    },
+    "second": {
+     "word": "second"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "the fabricator's shop drawing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "roof",
+      "size": "medium"
+     },
+     {
+      "at": "second",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "two",
+      "what": "the long rod splits in two"
+     },
+     {
+      "at": "simpler",
+      "what": "a short tick mark"
+     },
+     {
+      "at": "roof",
+      "what": "the first rod draws from roof to upper beam"
+     },
+     {
+      "at": "second",
+      "what": "the second rod draws from the upper beam down, offset beside the first"
+     }
+    ],
+    "things": [
+     "shop drawing",
+     "split rod",
+     "two offset rods"
+    ],
+    "shot": "shop"
+   }
+  },
+  {
+   "id": "call",
+   "scene": "directed",
+   "role": "build",
+   "say": "As reported, the fabricator asked for the change by telephone. The structural engineer agreed, on the understanding that a written request would follow.",
+   "events": {
+    "reported": {
+     "word": "reported"
+    },
+    "telephone": {
+     "word": "telephone"
+    },
+    "fabricator": {
+     "word": "fabricator"
+    },
+    "agreed": {
+     "word": "agreed"
+    },
+    "written": {
+     "word": "written"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the engineers' office, the phone call",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "telephone",
+      "size": "close"
+     },
+     {
+      "at": "written",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "reported",
+      "what": "an AS REPORTED tag appears"
+     },
+     {
+      "at": "telephone",
+      "what": "the handset lifts, sound waves pulse"
+     },
+     {
+      "at": "fabricator",
+      "what": "a FABRICATOR tag drops beside the shop drawing"
+     },
+     {
+      "at": "agreed",
+      "what": "a hand-written note OK slides under it"
+     },
+     {
+      "at": "written",
+      "what": "an empty request form slides in"
+     }
+    ],
+    "things": [
+     "telephone",
+     "sound waves",
+     "note",
+     "empty form"
+    ],
+    "shot": "call"
+   }
+  },
+  {
+   "id": "never",
+   "scene": "directed",
+   "role": "build",
+   "say": "As reported, the written request never came.",
+   "events": {
+    "written": {
+     "word": "written"
+    },
+    "never": {
+     "word": "never"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the engineers' office, the in-tray",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "never",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "written",
+      "what": "the form waits in the in-tray"
+     },
+     {
+      "at": "never",
+      "what": "days flip on the desk calendar; the tray stays empty"
+     }
+    ],
+    "things": [
+     "in-tray",
+     "desk calendar"
+    ],
+    "shot": "never"
+   },
+   "min_sec": 3.0
+  },
+  {
+   "id": "same",
+   "scene": "directed",
+   "role": "build",
+   "say": "On paper the two joints look almost the same. They aren't.",
+   "events": {
+    "paper": {
+     "word": "paper"
+    },
+    "joints": {
+     "word": "joints"
+    },
+    "same": {
+     "word": "same"
+    },
+    "aren't": {
+     "word": "aren't"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "two box beams side by side, cut away",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "aren't",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "paper",
+      "what": "two cut-away box beams turn side by side"
+     },
+     {
+      "at": "joints",
+      "what": "the left shows one long rod, the right two rods"
+     },
+     {
+      "at": "same",
+      "what": "both slow to the same angle"
+     },
+     {
+      "at": "aren't",
+      "what": "the right one's nut glows amber"
+     }
+    ],
+    "things": [
+     "two box beams",
+     "one rod",
+     "two rods",
+     "amber nut"
+    ],
+    "shot": "compare"
+   }
+  },
+  {
+   "id": "path",
+   "scene": "directed",
+   "role": "build",
+   "say": "With one rod, the lower walkway hangs from the roof. With two, it hangs from the upper walkway's beam.",
+   "events": {
+    "one": {
+     "word": "one"
+    },
+    "roof": {
+     "word": "roof"
+    },
+    "two": {
+     "word": "two"
+    },
+    "upper": {
+     "word": "upper"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "the load path drawing, both versions",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "two",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "one",
+      "what": "on the left a load line runs from the lower walkway straight to the roof"
+     },
+     {
+      "at": "roof",
+      "what": "it ends at the roof"
+     },
+     {
+      "at": "two",
+      "what": "on the right the line stops at the upper beam"
+     },
+     {
+      "at": "upper",
+      "what": "the upper beam lights"
+     }
+    ],
+    "things": [
+     "two elevations",
+     "load lines",
+     "roof"
+    ],
+    "shot": "paths"
+   }
+  },
+  {
+   "id": "rope",
+   "scene": "directed",
+   "role": "build",
+   "say": "Think of two climbers on one rope. Each holds the rope with their own hands. Now tie the lower climber to the upper one's harness instead.",
+   "events": {
+    "climbers": {
+     "word": "climbers"
+    },
+    "rope": {
+     "word": "rope"
+    },
+    "hands": {
+     "word": "hands"
+    },
+    "tie": {
+     "word": "tie"
+    },
+    "harness": {
+     "word": "harness"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "a general principle: two climbers on a rope",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "harness",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "climbers",
+      "what": "two climbers hang on one rope, drawn in outline"
+     },
+     {
+      "at": "rope",
+      "what": "the rope pulls taut from the anchor"
+     },
+     {
+      "at": "hands",
+      "what": "each one's grip glows"
+     },
+     {
+      "at": "tie",
+      "what": "the lower climber's rope is cut and retied to the upper climber's harness"
+     },
+     {
+      "at": "harness",
+      "what": "the upper grip turns amber, carrying both"
+     }
+    ],
+    "things": [
+     "rope",
+     "two climbers",
+     "grips",
+     "harness"
+    ],
+    "shot": "rope",
+    "tag": "principle"
+   }
+  },
+  {
+   "id": "double",
+   "scene": "directed",
+   "role": "build",
+   "say": "Now the nut under the upper beam carries its own walkway, and the whole walkway below it.",
+   "events": {
+    "nut": {
+     "word": "nut"
+    },
+    "own": {
+     "word": "own"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "below": {
+     "word": "below"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "inside the fourth-floor box beam, cut away",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "nut",
+      "size": "close"
+     },
+     {
+      "at": "below",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nut",
+      "what": "the camera pushes in on the roof rod's nut"
+     },
+     {
+      "at": "own",
+      "what": "one load arrow presses on it"
+     },
+     {
+      "at": "whole",
+      "what": "a second arrow comes up the lower rod and joins it"
+     },
+     {
+      "at": "below",
+      "what": "the nut turns amber"
+     }
+    ],
+    "things": [
+     "box beam cutaway",
+     "roof rod nut",
+     "two arrows",
+     "amber"
+    ],
+    "shot": "double"
+   }
+  },
+  {
+   "id": "doubled",
+   "scene": "directed",
+   "role": "build",
+   "say": "The load on that connection essentially doubled.",
+   "events": {
+    "load": {
+     "word": "load"
+    },
+    "doubled": {
+     "word": "doubled"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "inside the fourth-floor box beam, cut away",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "doubled",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "load",
+      "what": "the two arrows merge into one thick red one"
+     },
+     {
+      "at": "doubled",
+      "what": "the multiplier stamps beside the nut"
+     }
+    ],
+    "things": [
+     "thick arrow",
+     "nut",
+     "multiplier"
+    ],
+    "shot": "doubled",
+    "fig": {
+     "times": "{fact7}"
+    }
+   },
+   "min_sec": 3.5
+  },
+  {
+   "id": "who",
+   "scene": "directed",
+   "role": "build",
+   "say": "So who calculated the new joint? Nobody did.",
+   "events": {
+    "who": {
+     "word": "who"
+    },
+    "calculated": {
+     "word": "calculated"
+    },
+    "nobody": {
+     "word": "Nobody"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "the as-built joint, turning in the dark",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "nobody",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "who",
+      "what": "the as-built joint turns, its two rods lit"
+     },
+     {
+      "at": "calculated",
+      "what": "a CONNECTION CALCS line types on beside it"
+     },
+     {
+      "at": "nobody",
+      "what": "the line reads NONE in red and the joint's outline dashes red"
+     }
+    ],
+    "things": [
+     "as-built joint",
+     "calcs line",
+     "red outline"
+    ],
+    "shot": "nocalc"
+   }
+  },
+  {
+   "id": "detailer",
+   "scene": "directed",
+   "role": "build",
+   "say": "The fabricator was busy, and passed the drawings to an outside detailer.",
+   "events": {
+    "busy": {
+     "word": "busy"
+    },
+    "passed": {
+     "word": "passed"
+    },
+    "detailer": {
+     "word": "detailer"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "a second desk across town",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "detailer",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "busy",
+      "what": "a tower of job folders grows on the fabricator's desk"
+     },
+     {
+      "at": "passed",
+      "what": "the drawings slide off across the frame"
+     },
+     {
+      "at": "detailer",
+      "what": "they land on a second desk, tagged OUTSIDE DETAILER"
+     }
+    ],
+    "things": [
+     "job folders",
+     "drawings",
+     "second desk",
+     "tag"
+    ],
+    "shot": "detailer"
+   }
+  },
+  {
+   "id": "assumed",
+   "scene": "directed",
+   "role": "build",
+   "say": "As reported, the detailer believed the two-rod joint had already been designed, so he did no calculations on it.",
+   "events": {
+    "reported": {
+     "word": "reported"
+    },
+    "believed": {
+     "word": "believed"
+    },
+    "designed": {
+     "word": "designed"
+    },
+    "calculations": {
+     "word": "calculations"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the detailer's desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "calculations",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "reported",
+      "what": "an AS REPORTED tag appears"
+     },
+     {
+      "at": "believed",
+      "what": "a sticky note ALREADY DESIGNED? sticks to the joint"
+     },
+     {
+      "at": "designed",
+      "what": "a tick is scribbled beside the note"
+     },
+     {
+      "at": "calculations",
+      "what": "the calculation pad stays blank, a red line through it"
+     }
+    ],
+    "things": [
+     "sticky note",
+     "joint sketch",
+     "blank calculation pad"
+    ],
+    "shot": "assumed"
+   }
+  },
+  {
+   "id": "review",
+   "scene": "directed",
+   "role": "build",
+   "say": "Back at the engineers' office, a technician reviewed the drawings. The joint wasn't detailed on them, and nobody calculated it.",
+   "events": {
+    "office": {
+     "word": "office"
+    },
+    "technician": {
+     "word": "technician"
+    },
+    "detailed": {
+     "word": "detailed"
+    },
+    "calculated": {
+     "word": "calculated"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "the as-built joint, seen as the reviewers never saw it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "detailed",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "office",
+      "what": "the joint sits small in the dark, a drawing-sheet frame round it"
+     },
+     {
+      "at": "technician",
+      "what": "a checklist panel slides in: dimensions, sizes, materials ticked"
+     },
+     {
+      "at": "detailed",
+      "what": "the camera pushes in: the connection itself is a blank dashed circle"
+     },
+     {
+      "at": "calculated",
+      "what": "the CONNECTIONS line stays unticked, red"
+     }
+    ],
+    "things": [
+     "as-built joint",
+     "checklist panel",
+     "dashed circle"
+    ],
+    "shot": "review"
+   }
+  },
+  {
+   "id": "seal",
+   "scene": "directed",
+   "role": "build",
+   "say": "The engineer of record made spot checks, and put his seal on the drawings.",
+   "events": {
+    "spot": {
+     "word": "spot"
+    },
+    "seal": {
+     "word": "seal"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the engineers' office, the seal",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "seal",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "spot",
+      "what": "a few red check marks dot the sheet"
+     },
+     {
+      "at": "seal",
+      "what": "the engineer's seal stamps down on the title block"
+     }
+    ],
+    "things": [
+     "spot checks",
+     "seal stamp",
+     "title block"
+    ],
+    "shot": "seal"
+   },
+   "sfx": [
+    {
+     "kind": "rivet",
+     "at": "seal",
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "load",
+   "scene": "directed",
+   "role": "build",
+   "say": "How could that happen? He was responsible for about {fact20} associate engineers, each running several projects at once.",
+   "events": {
+    "happen": {
+     "word": "happen"
+    },
+    "associate": {
+     "word": "associate"
+    },
+    "several": {
+     "word": "several"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the engineers' office floor, rows of desks",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "several",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "happen",
+      "what": "the camera pulls back over rows of desks"
+     },
+     {
+      "at": "associate",
+      "what": "desk lamps light in a row, the count on the wall board"
+     },
+     {
+      "at": "several",
+      "what": "folders stack up on every desk"
+     }
+    ],
+    "things": [
+     "rows of desks",
+     "lamps",
+     "wall board",
+     "folders"
+    ],
+    "shot": "office",
+    "fig": {
+     "assoc": "{fact20}"
+    }
+   }
+  },
+  {
+   "id": "tease-party",
+   "scene": "directed",
+   "role": "tease",
+   "say": "Four links, each one small. And the walkways were already hanging by them when the hotel planned a party.",
+   "events": {
+    "four": {
+     "word": "Four"
+    },
+    "small": {
+     "word": "small"
+    },
+    "hanging": {
+     "word": "hanging"
+    },
+    "party": {
+     "word": "party"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium in the late afternoon, the walkways hanging",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "hanging",
+      "size": "close"
+     },
+     {
+      "at": "party",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "four",
+      "what": "four link chips appear over the atrium: weak joint, rod change, detailer, review"
+     },
+     {
+      "at": "small",
+      "what": "the chips shrink to the corner"
+     },
+     {
+      "at": "hanging",
+      "what": "the camera pushes along the hanger rods to the upper walkway"
+     },
+     {
+      "at": "party",
+      "what": "the dance-floor lights come on below"
+     }
+    ],
+    "things": [
+     "atrium",
+     "link chips",
+     "hanger rods",
+     "dance floor"
+    ],
+    "shot": "links"
+   }
+  },
+  {
+   "id": "recap",
+   "scene": "directed",
+   "role": "build",
+   "say": "So far: a joint that was already weak, a change that doubled its load, and drawings that nobody calculated. What was still missing? A crowd.",
+   "events": {
+    "weak": {
+     "word": "weak"
+    },
+    "doubled": {
+     "word": "doubled"
+    },
+    "calculated": {
+     "word": "calculated"
+    },
+    "missing": {
+     "word": "missing"
+    },
+    "crowd": {
+     "word": "crowd"
+    }
+   },
+   "params": {
+    "component": "Board",
+    "place": "the investigators' cause board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "crowd",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "weak",
+      "what": "the weak-joint card lights"
+     },
+     {
+      "at": "doubled",
+      "what": "the phone-call card lights"
+     },
+     {
+      "at": "calculated",
+      "what": "the review card lights"
+     },
+     {
+      "at": "missing",
+      "what": "an empty space on the board"
+     },
+     {
+      "at": "crowd",
+      "what": "the dance poster fills the space"
+     }
+    ],
+    "things": [
+     "cause board",
+     "three cards",
+     "dance poster"
+    ],
+    "shot": "recap"
+   }
+  },
+  {
+   "id": "friday",
+   "scene": "directed",
+   "role": "build",
+   "say": "Friday, July {fact2}, {fact1}. A dance in the atrium.",
+   "events": {
+    "friday": {
+     "word": "Friday"
+    },
+    "dance": {
+     "word": "dance"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium in the early evening, set for a dance",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "dance",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "friday",
+      "what": "the chapter title THE LAST MINUTES types on; the date caption"
+     },
+     {
+      "at": "dance",
+      "what": "the bandstand lights come up, the dance floor glows"
+     }
+    ],
+    "things": [
+     "bandstand",
+     "dance floor",
+     "tables",
+     "date caption"
+    ],
+    "shot": "party",
+    "fig": {
+     "day": "{fact2}",
+     "year": "{fact1}"
+    },
+    "chapter": "The last minutes"
+   }
+  },
+  {
+   "id": "crowd",
+   "scene": "directed",
+   "role": "build",
+   "say": "By the evening, newspapers put the crowd at {fact12} to {fact13} people.",
+   "events": {
+    "evening": {
+     "word": "evening"
+    },
+    "newspapers": {
+     "word": "newspapers"
+    },
+    "put": {
+     "word": "put"
+    },
+    "crowd": {
+     "word": "crowd"
+    },
+    "people": {
+     "word": "people"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium, full tables, evening",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "crowd",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "evening",
+      "what": "the lobby lamps glow brighter"
+     },
+     {
+      "at": "newspapers",
+      "what": "a newspaper clipping card slides in, AS REPORTED"
+     },
+     {
+      "at": "put",
+      "what": "the clipping's headline underlines"
+     },
+     {
+      "at": "crowd",
+      "what": "every table and chair across the lobby lights warm, the estimate on the bandstand's board"
+     },
+     {
+      "at": "people",
+      "what": "the camera keeps rising over the full lobby"
+     }
+    ],
+    "things": [
+     "lobby lamps",
+     "newspaper card",
+     "tables and chairs",
+     "estimate board"
+    ],
+    "shot": "crowd",
+    "fig": {
+     "lo": "{fact12}",
+     "hi": "{fact13}"
+    }
+   }
+  },
+  {
+   "id": "watch",
+   "scene": "directed",
+   "role": "build",
+   "say": "Some watched from the walkways above.",
+   "events": {
+    "watched": {
+     "word": "watched"
+    },
+    "walkways": {
+     "word": "walkways"
+    },
+    "above": {
+     "word": "above"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the walkways from the dance floor",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "above",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "watched",
+      "what": "the camera rises from the dance floor"
+     },
+     {
+      "at": "walkways",
+      "what": "the walkway rails glow warm"
+     },
+     {
+      "at": "above",
+      "what": "small lights along the rails, where people stood"
+     }
+    ],
+    "things": [
+     "dance floor",
+     "walkway rails",
+     "rail lights"
+    ],
+    "shot": "watch"
+   }
+  },
+  {
+   "id": "tape",
+   "scene": "directed",
+   "role": "build",
+   "say": "A television crew was filming. From its tape, investigators later counted about {fact14} people on the second and fourth-floor walkways.",
+   "events": {
+    "television": {
+     "word": "television"
+    },
+    "tape": {
+     "word": "tape"
+    },
+    "counted": {
+     "word": "counted"
+    },
+    "second": {
+     "word": "second"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "a news camera on a tripod on the balcony",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tape",
+      "size": "close"
+     },
+     {
+      "at": "counted",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "television",
+      "what": "a news camera on a tripod pans across the atrium"
+     },
+     {
+      "at": "tape",
+      "what": "its viewfinder fills the frame"
+     },
+     {
+      "at": "counted",
+      "what": "count marks tick along the walkways in the viewfinder"
+     },
+     {
+      "at": "second",
+      "what": "the count settles on the viewfinder"
+     }
+    ],
+    "things": [
+     "news camera",
+     "tripod",
+     "viewfinder",
+     "count marks"
+    ],
+    "shot": "tape",
+    "fig": {
+     "count": "{fact14}"
+    }
+   }
+  },
+  {
+   "id": "light",
+   "scene": "directed",
+   "role": "build",
+   "say": "Is that a heavy load? No. The building code expected walkways like these to carry far more people than that.",
+   "events": {
+    "heavy": {
+     "word": "heavy"
+    },
+    "code": {
+     "word": "code"
+    },
+    "far": {
+     "word": "far"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "a load comparison drawn over the walkway",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "code",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "heavy",
+      "what": "a load bar for the people on the walkways"
+     },
+     {
+      "at": "code",
+      "what": "a far taller bar for what the code expected"
+     },
+     {
+      "at": "far",
+      "what": "the gap between them shades"
+     }
+    ],
+    "things": [
+     "two load bars",
+     "walkway outline"
+    ],
+    "shot": "lightload"
+   }
+  },
+  {
+   "id": "band",
+   "scene": "directed",
+   "role": "build",
+   "say": "At {fact18} minutes past {fact3}, the band came back from its break for a dance contest.",
+   "events": {
+    "minutes": {
+     "word": "minutes"
+    },
+    "band": {
+     "word": "band"
+    },
+    "contest": {
+     "word": "contest"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the bandstand, close",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "band",
+      "size": "close"
+     },
+     {
+      "at": "contest",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "minutes",
+      "what": "the lobby clock ticks"
+     },
+     {
+      "at": "band",
+      "what": "the bandstand lights flare"
+     },
+     {
+      "at": "contest",
+      "what": "the dance floor tiles pulse to the beat"
+     }
+    ],
+    "things": [
+     "lobby clock",
+     "bandstand",
+     "dance floor"
+    ],
+    "shot": "band",
+    "fig": {
+     "hour": "{fact3}",
+     "minute": "{fact18}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "minutes",
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "tease-fail",
+   "scene": "directed",
+   "role": "tease",
+   "say": "One minute later, under the upper walkway, one nut was about to let go.",
+   "events": {
+    "minute": {
+     "word": "minute"
+    },
+    "upper": {
+     "word": "upper"
+    },
+    "nut": {
+     "word": "nut"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "under the fourth-floor walkway, the lights of the dance below",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "nut",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "minute",
+      "what": "the lobby clock ticks once more"
+     },
+     {
+      "at": "upper",
+      "what": "the camera rises to the upper walkway's underside"
+     },
+     {
+      "at": "nut",
+      "what": "it finds the middle box beam's nut, glowing amber"
+     }
+    ],
+    "things": [
+     "lobby clock",
+     "walkway underside",
+     "amber nut"
+    ],
+    "shot": "approach",
+    "fig": {
+     "hour": "{fact3}",
+     "minute": "{fact18}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "minute",
+     "gain": 0.4
+    }
+   ]
+  },
+  {
+   "id": "where",
+   "scene": "directed",
+   "role": "build",
+   "say": "It began at the east end of the fourth-floor walkway's middle box beam.",
+   "events": {
+    "began": {
+     "word": "began"
+    },
+    "east": {
+     "word": "east"
+    },
+    "middle": {
+     "word": "middle"
+    },
+    "beam": {
+     "word": "beam"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "along the underside of the fourth-floor walkway",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "middle",
+      "size": "medium"
+     },
+     {
+      "at": "beam",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "began",
+      "what": "the chapter title THE FAILURE types on"
+     },
+     {
+      "at": "east",
+      "what": "the camera tracks along the walkway's underside"
+     },
+     {
+      "at": "middle",
+      "what": "the middle box beam lights"
+     },
+     {
+      "at": "beam",
+      "what": "a label MIDDLE BOX BEAM · EAST END draws to its end"
+     }
+    ],
+    "things": [
+     "walkway underside",
+     "three box beams",
+     "label"
+    ],
+    "shot": "locate",
+    "chapter": "The failure"
+   }
+  },
+  {
+   "id": "notrod",
+   "scene": "directed",
+   "role": "build",
+   "say": "The rod held. The nut held. The beam around them did not.",
+   "events": {
+    "rod": {
+     "word": "rod"
+    },
+    "nut": {
+     "word": "nut"
+    },
+    "beam": {
+     "word": "beam"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "inside the fourth-floor box beam, cut away",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "beam",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rod",
+      "what": "the rod ticks green"
+     },
+     {
+      "at": "nut",
+      "what": "the nut ticks green"
+     },
+     {
+      "at": "beam",
+      "what": "the flange and weld around the nut flush red"
+     }
+    ],
+    "things": [
+     "rod",
+     "nut",
+     "flange",
+     "weld",
+     "ticks"
+    ],
+    "shot": "notrod"
+   }
+  },
+  {
+   "id": "tear",
+   "scene": "directed",
+   "role": "build",
+   "say": "The welded seam split, the flange bent open, and the nut and washer pulled straight through.",
+   "events": {
+    "welded": {
+     "word": "welded"
+    },
+    "split": {
+     "word": "split"
+    },
+    "bent": {
+     "word": "bent"
+    },
+    "through": {
+     "word": "through"
+    }
+   },
+   "params": {
+    "component": "Fall",
+    "place": "inside the fourth-floor box beam, cut away, slowed down",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "split",
+      "size": "extreme"
+     },
+     {
+      "at": "through",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "welded",
+      "what": "silence: the seam glows red under the nut"
+     },
+     {
+      "at": "split",
+      "what": "sub-boom: the seam rips open"
+     },
+     {
+      "at": "bent",
+      "what": "the flange folds down"
+     },
+     {
+      "at": "through",
+      "what": "the nut and washer punch through, sparks and steel flecks fall"
+     }
+    ],
+    "things": [
+     "box beam cutaway",
+     "weld seam",
+     "flange",
+     "nut",
+     "sparks"
+    ],
+    "shot": "tear"
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "split",
+     "gain": 1.0
+    },
+    {
+     "kind": "rivet",
+     "at": "through",
+     "gain": 0.7
+    }
+   ],
+   "min_sec": 6.0
+  },
+  {
+   "id": "cascade",
+   "scene": "directed",
+   "role": "build",
+   "say": "And with one hanger gone? The others took its share, and failed one after another.",
+   "events": {
+    "hanger": {
+     "word": "hanger"
+    },
+    "others": {
+     "word": "others"
+    },
+    "failed": {
+     "word": "failed"
+    }
+   },
+   "params": {
+    "component": "Fall",
+    "place": "the fourth-floor walkway from the side",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "others",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hanger",
+      "what": "the first connection lets go, the beam drops at that end"
+     },
+     {
+      "at": "others",
+      "what": "the next connections glow red in turn"
+     },
+     {
+      "at": "failed",
+      "what": "each one pops in sequence along the walkway"
+     }
+    ],
+    "things": [
+     "walkway",
+     "connections",
+     "red glow"
+    ],
+    "shot": "cascade"
+   },
+   "sfx": [
+    {
+     "kind": "creak",
+     "at": "others",
+     "gain": 0.6
+    }
+   ]
+  },
+  {
+   "id": "drop",
+   "scene": "directed",
+   "role": "build",
+   "say": "The fourth-floor walkway fell onto the second, and both crashed to the lobby floor.",
+   "events": {
+    "fell": {
+     "word": "fell"
+    },
+    "second": {
+     "word": "second"
+    },
+    "crashed": {
+     "word": "crashed"
+    }
+   },
+   "params": {
+    "component": "Fall",
+    "place": "the atrium, wide",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "second",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fell",
+      "what": "the upper walkway drops onto the lower"
+     },
+     {
+      "at": "second",
+      "what": "both tilt and fall"
+     },
+     {
+      "at": "crashed",
+      "what": "dust rises from the lobby floor"
+     }
+    ],
+    "things": [
+     "two walkways",
+     "dust",
+     "rods"
+    ],
+    "shot": "drop"
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "crashed",
+     "gain": 0.8
+    }
+   ]
+  },
+  {
+   "id": "toll",
+   "scene": "directed",
+   "role": "build",
+   "say": "{fact5} people died and {fact19} were injured. The federal report called it the most devastating structural collapse ever to take place in the United States.",
+   "events": {
+    "people": {
+     "word": "people"
+    },
+    "injured": {
+     "word": "injured"
+    },
+    "were": {
+     "word": "were"
+    },
+    "collapse": {
+     "word": "collapse"
+    },
+    "federal": {
+     "word": "federal"
+    },
+    "report": {
+     "word": "report"
+    },
+    "devastating": {
+     "word": "devastating"
+    },
+    "united": {
+     "word": "United"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium from high above, after the collapse, dimmed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "report",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "people",
+      "what": "high view, the fallen walkways in settling dust, the camera craning slowly up"
+     },
+     {
+      "at": "injured",
+      "what": "the lights dim"
+     },
+     {
+      "at": "were",
+      "what": "the dust settles lower"
+     },
+     {
+      "at": "collapse",
+      "what": "the camera stops rising"
+     },
+     {
+      "at": "federal",
+      "what": "the lights dim further"
+     },
+     {
+      "at": "report",
+      "what": "a quiet line types on: THE MOST DEVASTATING STRUCTURAL COLLAPSE"
+     },
+     {
+      "at": "devastating",
+      "what": "the camera keeps rising"
+     },
+     {
+      "at": "united",
+      "what": "the second line types on: EVER TO TAKE PLACE IN THE UNITED STATES · NBS"
+     }
+    ],
+    "things": [
+     "fallen walkways",
+     "dust",
+     "quiet line"
+    ],
+    "shot": "toll",
+    "fig": {
+     "dead": "{fact5}",
+     "injured": "{fact19}"
+    }
+   },
+   "min_sec": 10.0
+  },
+  {
+   "id": "rescue",
+   "scene": "directed",
+   "role": "build",
+   "say": "The first call for help reached the fire department at {fact24} minutes past {fact3}. By {fact25} past, rescuers were calling for cutting tools, and by {fact26} past, a forklift.",
+   "events": {
+    "call": {
+     "word": "call"
+    },
+    "fire": {
+     "word": "fire"
+    },
+    "department": {
+     "word": "department"
+    },
+    "minutes": {
+     "word": "minutes"
+    },
+    "rescuers": {
+     "word": "rescuers"
+    },
+    "cutting": {
+     "word": "cutting"
+    },
+    "forklift": {
+     "word": "forklift"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium after the collapse, emergency lights",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "cutting",
+      "size": "close"
+     },
+     {
+      "at": "forklift",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "call",
+      "what": "red and blue light washes in through the doors"
+     },
+     {
+      "at": "fire",
+      "what": "the lobby clock card shows the time"
+     },
+     {
+      "at": "department",
+      "what": "the emergency lights strengthen"
+     },
+     {
+      "at": "minutes",
+      "what": "the clock card ticks over to the first call"
+     },
+     {
+      "at": "rescuers",
+      "what": "work lights come on over the fallen walkways"
+     },
+     {
+      "at": "cutting",
+      "what": "sparks from a cutting tool at the walkway edge"
+     },
+     {
+      "at": "forklift",
+      "what": "a forklift's lights move in"
+     }
+    ],
+    "things": [
+     "emergency lights",
+     "lobby clock",
+     "work lights",
+     "sparks",
+     "forklift lights"
+    ],
+    "shot": "rescue",
+    "fig": {
+     "hour": "{fact3}",
+     "call": "{fact24}",
+     "tools": "{fact25}",
+     "forklift": "{fact26}"
+    }
+   }
+  },
+  {
+   "id": "third",
+   "scene": "directed",
+   "role": "build",
+   "say": "The third-floor walkway, hung on its own rods from the roof, stayed up.",
+   "events": {
+    "third-floor": {
+     "word": "third-floor"
+    },
+    "own": {
+     "word": "own"
+    },
+    "stayed": {
+     "word": "stayed"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium, the third-floor walkway still hanging",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "stayed",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "third-floor",
+      "what": "the offset walkway is lit, still in place"
+     },
+     {
+      "at": "own",
+      "what": "its rods light up to the roof"
+     },
+     {
+      "at": "stayed",
+      "what": "a green tick beside it"
+     }
+    ],
+    "things": [
+     "third-floor walkway",
+     "its rods",
+     "tick"
+    ],
+    "shot": "third"
+   }
+  },
+  {
+   "id": "tease-lab",
+   "scene": "directed",
+   "role": "tease",
+   "say": "Investigators had to answer one question. Was it the change alone, or was the joint always too weak?",
+   "events": {
+    "investigators": {
+     "word": "Investigators"
+    },
+    "question": {
+     "word": "question"
+    },
+    "change": {
+     "word": "change"
+    },
+    "weak": {
+     "word": "weak"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the investigators' table, the evidence",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "weak",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "investigators",
+      "what": "an evidence bag with a bent washer and nut lands on the table"
+     },
+     {
+      "at": "question",
+      "what": "the evidence tag swings"
+     },
+     {
+      "at": "change",
+      "what": "the shop drawing slides beside it"
+     },
+     {
+      "at": "weak",
+      "what": "the original drawing slides in on the other side; a question mark between them"
+     }
+    ],
+    "things": [
+     "evidence bag",
+     "nut and washer",
+     "two drawings",
+     "question mark"
+    ],
+    "shot": "evidence"
+   }
+  },
+  {
+   "id": "nbs",
+   "scene": "directed",
+   "role": "build",
+   "say": "The National Bureau of Standards took the case, and weighed pieces of the fallen walkways.",
+   "events": {
+    "national": {
+     "word": "National"
+    },
+    "case": {
+     "word": "case"
+    },
+    "weighed": {
+     "word": "weighed"
+    }
+   },
+   "params": {
+    "component": "Lab",
+    "place": "the National Bureau of Standards' test hall",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "weighed",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "national",
+      "what": "the chapter title WHAT THEY FOUND types on over the test hall"
+     },
+     {
+      "at": "case",
+      "what": "a walkway section rests on a floor scale"
+     },
+     {
+      "at": "weighed",
+      "what": "the scale's display counts up"
+     }
+    ],
+    "things": [
+     "test hall",
+     "walkway section",
+     "floor scale"
+    ],
+    "shot": "scale",
+    "chapter": "What the investigators found"
+   }
+  },
+  {
+   "id": "heavier",
+   "scene": "directed",
+   "role": "build",
+   "say": "The decks were about {fact16} heavier than the drawings assumed. That was not enough to explain it.",
+   "events": {
+    "decks": {
+     "word": "decks"
+    },
+    "heavier": {
+     "word": "heavier"
+    },
+    "drawings": {
+     "word": "drawings"
+    },
+    "explain": {
+     "word": "explain"
+    }
+   },
+   "params": {
+    "component": "Lab",
+    "place": "the test hall, the floor scale",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "heavier",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "decks",
+      "what": "a concrete core sample sits on the scale"
+     },
+     {
+      "at": "heavier",
+      "what": "the display shows the extra weight"
+     },
+     {
+      "at": "drawings",
+      "what": "a DRAWN WEIGHT line appears on the display"
+     },
+     {
+      "at": "explain",
+      "what": "a small arrow on a big gauge: too small"
+     }
+    ],
+    "things": [
+     "core sample",
+     "scale display",
+     "gauge"
+    ],
+    "shot": "scale-close",
+    "fig": {
+     "pct": "{fact16}"
+    }
+   }
+  },
+  {
+   "id": "rig",
+   "scene": "directed",
+   "role": "build",
+   "say": "So they built copies of the box beam joint and pulled on them until they broke.",
+   "events": {
+    "built": {
+     "word": "built"
+    },
+    "copies": {
+     "word": "copies"
+    },
+    "pulled": {
+     "word": "pulled"
+    },
+    "broke": {
+     "word": "broke"
+    }
+   },
+   "params": {
+    "component": "Lab",
+    "place": "the test hall, a hydraulic test rig",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "copies",
+      "size": "medium"
+     },
+     {
+      "at": "broke",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "built",
+      "what": "a box beam specimen is lowered into the rig"
+     },
+     {
+      "at": "copies",
+      "what": "a row of identical specimens waits on a rack"
+     },
+     {
+      "at": "pulled",
+      "what": "the ram pulls the rod, the load needle climbs"
+     },
+     {
+      "at": "broke",
+      "what": "the specimen's nut jerks through"
+     }
+    ],
+    "things": [
+     "test rig",
+     "specimens",
+     "hydraulic ram",
+     "load needle"
+    ],
+    "shot": "rig"
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "pulled",
+     "gain": 0.5
+    }
+   ]
+  },
+  {
+   "id": "same-way",
+   "scene": "directed",
+   "role": "build",
+   "say": "They broke the way the real ones did. The weld split, and the nut punched through.",
+   "events": {
+    "broke": {
+     "word": "broke"
+    },
+    "weld": {
+     "word": "weld"
+    },
+    "nut": {
+     "word": "nut"
+    }
+   },
+   "params": {
+    "component": "Lab",
+    "place": "the test rig, close on the specimen",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "nut",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "broke",
+      "what": "the specimen in close-up"
+     },
+     {
+      "at": "weld",
+      "what": "the weld seam opens"
+     },
+     {
+      "at": "nut",
+      "what": "the nut punches through, flecks fall"
+     }
+    ],
+    "things": [
+     "specimen",
+     "weld seam",
+     "nut"
+    ],
+    "shot": "rigfail"
+   },
+   "sfx": [
+    {
+     "kind": "rivet",
+     "at": "nut",
+     "gain": 0.6
+    }
+   ]
+  },
+  {
+   "id": "sums",
+   "scene": "directed",
+   "role": "build",
+   "say": "Then they did the sums. How much was that joint carrying on the night?",
+   "events": {
+    "sums": {
+     "word": "sums"
+    },
+    "carrying": {
+     "word": "carrying"
+    },
+    "night": {
+     "word": "night"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "a calculation sheet over the joint drawing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "night",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sums",
+      "what": "a calculation sheet slides over the joint"
+     },
+     {
+      "at": "carrying",
+      "what": "a load arrow on the nut"
+     },
+     {
+      "at": "night",
+      "what": "a strength gauge slides in, empty"
+     }
+    ],
+    "things": [
+     "calculation sheet",
+     "joint",
+     "gauge"
+    ],
+    "shot": "sums"
+   }
+  },
+  {
+   "id": "peak",
+   "scene": "directed",
+   "role": "build",
+   "say": "At most, about {fact15} of what a joint built to the code should have held.",
+   "events": {
+    "most": {
+     "word": "most"
+    },
+    "joint": {
+     "word": "joint"
+    },
+    "code": {
+     "word": "code"
+    },
+    "held": {
+     "word": "held"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "the strength gauge",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "code",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "most",
+      "what": "the bar fills and stops low"
+     },
+     {
+      "at": "joint",
+      "what": "a mono label A JOINT BUILT TO CODE draws to the code line"
+     },
+     {
+      "at": "code",
+      "what": "the code line far above it lights"
+     },
+     {
+      "at": "held",
+      "what": "the gap between them shades red"
+     }
+    ],
+    "things": [
+     "gauge",
+     "needle",
+     "code line"
+    ],
+    "shot": "gauge-peak",
+    "fig": {
+     "pct": "{fact15}"
+    }
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "say": "And here is the turn. Under the original one-rod design, those same joints would have survived that night.",
+   "events": {
+    "turn": {
+     "word": "turn"
+    },
+    "original": {
+     "word": "original"
+    },
+    "joints": {
+     "word": "joints"
+    },
+    "survived": {
+     "word": "survived"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "the two joints side by side, original and as built",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "original",
+      "size": "medium"
+     },
+     {
+      "at": "survived",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "turn",
+      "what": "the drawing splits in two"
+     },
+     {
+      "at": "original",
+      "what": "the one-rod joint on the left lights"
+     },
+     {
+      "at": "joints",
+      "what": "the night's load arrow presses on both"
+     },
+     {
+      "at": "survived",
+      "what": "the left one holds with a green tick, the right one flashes red"
+     }
+    ],
+    "things": [
+     "two joints",
+     "load arrows",
+     "tick",
+     "red flash"
+    ],
+    "shot": "turn"
+   }
+  },
+  {
+   "id": "below",
+   "scene": "directed",
+   "role": "build",
+   "say": "The original still fell short of the code. But it would have held.",
+   "events": {
+    "original": {
+     "word": "original"
+    },
+    "short": {
+     "word": "short"
+    },
+    "held": {
+     "word": "held"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "the original joint",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "held",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "original",
+      "what": "the left joint alone"
+     },
+     {
+      "at": "short",
+      "what": "its gauge shows the original figure, under the code line"
+     },
+     {
+      "at": "held",
+      "what": "the nut stays put, a green glow"
+     }
+    ],
+    "things": [
+     "original joint",
+     "gauge",
+     "green glow"
+    ],
+    "shot": "held",
+    "fig": {
+     "pct": "{fact6}",
+     "peak": "{fact15}"
+    }
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "say": "With two rods, the report says, from the day they were built the walkways had only minimal capacity to resist their own weight.",
+   "events": {
+    "rods": {
+     "word": "rods"
+    },
+    "report": {
+     "word": "report"
+    },
+    "day": {
+     "word": "day"
+    },
+    "built": {
+     "word": "built"
+    },
+    "minimal": {
+     "word": "minimal"
+    },
+    "weight": {
+     "word": "weight"
+    }
+   },
+   "params": {
+    "component": "Report",
+    "place": "the investigators' report on the desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "report",
+      "size": "medium"
+     },
+     {
+      "at": "weight",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rods",
+      "what": "the real report page settles on the desk, the agency and date chips type on"
+     },
+     {
+      "at": "report",
+      "what": "the camera pushes into the abstract"
+     },
+     {
+      "at": "day",
+      "what": "the line to be marked brightens"
+     },
+     {
+      "at": "built",
+      "what": "the highlighter swipes across the line"
+     },
+     {
+      "at": "minimal",
+      "what": "the highlight runs on to the second line"
+     },
+     {
+      "at": "weight",
+      "what": "a red underline draws under OWN WEIGHT"
+     }
+    ],
+    "things": [
+     "report page",
+     "agency chip",
+     "highlighter",
+     "underline"
+    ],
+    "shot": "minimal",
+    "src": "media/disasters-and-engineering-failures-expla/report-document-89e880ead391-p007.png"
+   }
+  },
+  {
+   "id": "edge",
+   "scene": "directed",
+   "role": "build",
+   "say": "For a year, people walked across a structure that could barely hold itself up.",
+   "events": {
+    "year": {
+     "word": "year"
+    },
+    "walked": {
+     "word": "walked"
+    },
+    "barely": {
+     "word": "barely"
+    }
+   },
+   "params": {
+    "component": "Atrium",
+    "place": "the atrium by day, the walkways empty",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "barely",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "year",
+      "what": "sunlight in the empty atrium again"
+     },
+     {
+      "at": "walked",
+      "what": "a light passes along the walkway deck"
+     },
+     {
+      "at": "barely",
+      "what": "the camera pushes in on the amber box beam"
+     }
+    ],
+    "things": [
+     "walkways",
+     "sunlight",
+     "amber box beam"
+    ],
+    "shot": "edge"
+   }
+  },
+  {
+   "id": "boards",
+   "scene": "directed",
+   "role": "build",
+   "say": "In Missouri, the engineering board revoked the licences of {fact21} engineers involved, for gross negligence and misconduct.",
+   "events": {
+    "missouri": {
+     "word": "Missouri"
+    },
+    "revoked": {
+     "word": "revoked"
+    },
+    "engineers": {
+     "word": "engineers"
+    },
+    "negligence": {
+     "word": "negligence"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the state board's table",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "revoked",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "missouri",
+      "what": "the chapter title WHAT CHANGED types on; two licence cards slide onto the table"
+     },
+     {
+      "at": "revoked",
+      "what": "each is stamped REVOKED"
+     },
+     {
+      "at": "engineers",
+      "what": "the second card is stamped"
+     },
+     {
+      "at": "negligence",
+      "what": "a ruling paper slides under them"
+     }
+    ],
+    "things": [
+     "licence cards",
+     "revoked stamps",
+     "ruling paper"
+    ],
+    "shot": "licences",
+    "fig": {
+     "n": "{fact21}"
+    },
+    "chapter": "What changed"
+   }
+  },
+  {
+   "id": "gap",
+   "scene": "directed",
+   "role": "build",
+   "say": "The engineer of record argued that it was common practice to leave connections to the fabricator. Whose job was the joint?",
+   "events": {
+    "argued": {
+     "word": "argued"
+    },
+    "connections": {
+     "word": "connections"
+    },
+    "joint": {
+     "word": "joint"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the engineers' office, a drawing between two desks",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "joint",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "argued",
+      "what": "two desks, one at each side of the frame"
+     },
+     {
+      "at": "connections",
+      "what": "the joint drawing slides between them"
+     },
+     {
+      "at": "joint",
+      "what": "it stops in the gap, a question mark over it"
+     }
+    ],
+    "things": [
+     "two desks",
+     "joint drawing",
+     "question mark"
+    ],
+    "shot": "gap"
+   }
+  },
+  {
+   "id": "policy",
+   "scene": "directed",
+   "role": "build",
+   "say": "In {fact8}, the American Society of Civil Engineers answered: the engineer of record is responsible for the design of every steel connection.",
+   "events": {
+    "american": {
+     "word": "American"
+    },
+    "answered": {
+     "word": "answered"
+    },
+    "responsible": {
+     "word": "responsible"
+    },
+    "connection": {
+     "word": "connection"
+    }
+   },
+   "params": {
+    "component": "Desk",
+    "place": "the society's policy statement on the desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "responsible",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "american",
+      "what": "a policy card slides onto the desk, the year in yellow"
+     },
+     {
+      "at": "answered",
+      "what": "the joint drawing slides to the engineer's side"
+     },
+     {
+      "at": "responsible",
+      "what": "the words ENGINEER OF RECORD type on"
+     },
+     {
+      "at": "connection",
+      "what": "the joint ticks green"
+     }
+    ],
+    "things": [
+     "policy card",
+     "joint drawing",
+     "tick"
+    ],
+    "shot": "policy",
+    "fig": {
+     "year": "{fact8}"
+    }
+   }
+  },
+  {
+   "id": "today",
+   "scene": "directed",
+   "role": "build",
+   "say": "Since then, the engineer of record answers for every connection, and a change to one is meant to be checked before it is built.",
+   "events": {
+    "change": {
+     "word": "change"
+    },
+    "engineer": {
+     "word": "engineer"
+    },
+    "checked": {
+     "word": "checked"
+    },
+    "built": {
+     "word": "built"
+    }
+   },
+   "params": {
+    "component": "Drawing",
+    "place": "a change request loop drawn round the joint",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "checked",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "change",
+      "what": "a change request leaves the shop"
+     },
+     {
+      "at": "engineer",
+      "what": "it travels to the engineer's desk"
+     },
+     {
+      "at": "checked",
+      "what": "a calculation stamps CHECKED"
+     },
+     {
+      "at": "built",
+      "what": "it returns to the shop"
+     }
+    ],
+    "things": [
+     "change request",
+     "loop arrows",
+     "checked stamp"
+    ],
+    "shot": "loop"
+   }
+  },
+  {
+   "id": "study",
+   "scene": "directed",
+   "role": "build",
+   "say": "Engineering students still study this joint. A rod, a nut, a washer, and one phone call.",
+   "events": {
+    "students": {
+     "word": "students"
+    },
+    "rod": {
+     "word": "rod"
+    },
+    "nut": {
+     "word": "nut"
+    },
+    "washer": {
+     "word": "washer"
+    },
+    "phone": {
+     "word": "phone"
+    }
+   },
+   "params": {
+    "component": "Joint",
+    "place": "the joint on a dark table, turning slowly",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "phone",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "students",
+      "what": "the box beam joint turns slowly under a spotlight"
+     },
+     {
+      "at": "rod",
+      "what": "the rod lights"
+     },
+     {
+      "at": "nut",
+      "what": "the nut lights"
+     },
+     {
+      "at": "washer",
+      "what": "the washer lights"
+     },
+     {
+      "at": "phone",
+      "what": "a telephone cord coils into frame beside it"
+     }
+    ],
+    "things": [
+     "joint model",
+     "spotlight",
+     "telephone cord"
+    ],
+    "shot": "study"
+   }
+  },
+  {
+   "id": "ask",
+   "scene": "directed",
+   "role": "loop",
+   "say": "So which link should have stopped it? The weak original joint, the phone call, the detailer, or the review and the seal?",
+   "events": {
+    "link": {
+     "word": "link"
+    },
+    "original": {
+     "word": "original"
+    },
+    "phone": {
+     "word": "phone"
+    },
+    "detailer": {
+     "word": "detailer"
+    },
+    "seal": {
+     "word": "seal"
+    }
+   },
+   "params": {
+    "component": "Board",
+    "place": "the investigators' cause board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "seal",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "link",
+      "what": "the cause chain card list pins up"
+     },
+     {
+      "at": "original",
+      "what": "the original joint stamps FACTOR · NBS"
+     },
+     {
+      "at": "phone",
+      "what": "the rod change stamps FACTOR · NBS"
+     },
+     {
+      "at": "detailer",
+      "what": "the detailer stamps AS REPORTED"
+     },
+     {
+      "at": "seal",
+      "what": "the review and seal stamp AS REPORTED; a yellow line underlines the board"
+     }
+    ],
+    "things": [
+     "cause board",
+     "four links",
+     "stamps",
+     "question"
+    ],
+    "shot": "score"
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "params": {
+    "cta": "Which link should have stopped it?",
+    "follow": "Subscribe for the next investigation",
+    "assumption": "From the National Bureau of Standards walkway investigation and ASCE. The reconstructions are not actual footage."
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "custom",
+  "engine": "3d",
+  "component": "Thumb",
+  "words": "Twice the *weight*",
+  "things": [
+   "upper walkway",
+   "red connection",
+   "arrow"
+  ],
+  "arrow": {
+   "from": [
+    0.3,
+    0.62
+   ],
+   "to": [
+    0.55,
+    0.47
+   ]
+  },
+  "pattern": "the walkway itself in 3D at a low three-quarter view, the failing connection red, an arrow to it, heavy words on the left",
+  "references": [
+   {
+    "id": "uekCFs-vNug",
+    "views": 1202085,
+    "what": "the walkway itself in 3D on a dark ground, an arrow and a few heavy words"
+   },
+   {
+    "id": "VnvGwFegbC8",
+    "views": 2678603,
+    "what": "three stacked heavy words beside the subject"
+   },
+   {
+    "id": "lXaBxX4ieFY",
+    "views": 1127295,
+    "what": "the intended and the built connection side by side, a tick and a cross, two heavy words"
+   }
+  ],
+  "score": 8,
+  "why": "Our own 3D at the moment of failure, as the recipe asks: the walkway with its red joint and an arrow to it, three heavy words; it reads at phone size next to the 1.2M Stewart Hicks hit without copying its people or words, and the QA reviewer would click it first."
+ },
+ "thumbnails": [
+  {
+   "layout": "custom",
+   "component": "ThumbB",
+   "words": "Drawn vs *built*",
+   "things": [
+    "two hanger details",
+    "tick and cross"
+   ],
+   "pattern": "the detail as designed beside the detail as built, a tick and a cross, two heavy words",
+   "references": [
+    {
+     "id": "lXaBxX4ieFY",
+     "views": 1127295,
+     "what": "the intended and the built connection side by side, a tick and a cross, two heavy words"
+    },
+    {
+     "id": "uekCFs-vNug",
+     "views": 1202085,
+     "what": "the walkway itself in 3D on a dark ground, an arrow and a few heavy words"
+    },
+    {
+     "id": "VnvGwFegbC8",
+     "views": 2678603,
+     "what": "three stacked heavy words beside the subject"
+    }
+   ],
+   "score": 6,
+   "why": "Clear at phone size, but its split frame with a tick and a cross sits too close to the 1.13M Deconstructed thumbnail beside it, and it is a flat drawing where the recipe asks for our 3D."
+  },
+  {
+   "layout": "custom",
+   "engine": "3d",
+   "component": "ThumbC",
+   "words": "Never *calculated*",
+   "things": [
+    "the atrium",
+    "sagging red walkway"
+   ],
+   "pattern": "heavy serious type over one wide picture of the atrium",
+   "references": [
+    {
+     "id": "jgG-gnpn0os",
+     "views": 1195713,
+     "what": "huge spaced serious type over one wide picture of the atrium"
+    },
+    {
+     "id": "ObJHBU_LBa0",
+     "views": 1664127,
+     "what": "big serious serif type over one picture of the scene"
+    },
+    {
+     "id": "VnvGwFegbC8",
+     "views": 2678603,
+     "what": "three stacked heavy words beside the subject"
+    }
+   ],
+   "score": 5,
+   "why": "Serious type over the atrium like the 1.2M Brick Immortar thumbnail, but the atrium reads pale and the sagging walkway is not clear enough to stop a scroll."
+  }
+ ],
+ "thumbnail_pick": "a"
+}

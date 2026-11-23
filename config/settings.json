@@ -1,10 +1,10 @@
 {
-  "backlog": 0,
+  "backlog": 2,
   "backlogByFormat": {
     "short": 0,
-    "long": 0
+    "long": 2
   },
-  "ingestedAt": "2026-11-21T01:07:58.808467+00:00",
+  "ingestedAt": "2026-11-23T12:09:33.642263+00:00",
   "backlogCap": 30,
   "generationPaused": true,
   "uploadsPaused": false,
@@ -20,7 +20,24 @@
     "07:07",
     "19:07"
   ],
-  "queue": [],
+  "queue": [
+    {
+      "id": "L-20261123-31",
+      "format": "long",
+      "position": 1,
+      "locked": false,
+      "picked": false,
+      "editorRank": null
+    },
+    {
+      "id": "L-20261123-21",
+      "format": "long",
+      "position": 1,
+      "locked": false,
+      "picked": false,
+      "editorRank": null
+    }
+  ],
   "disclaimer": "Illustrative only. Not financial advice.",
   "templateWork": {
     "maxPerDay": 1,

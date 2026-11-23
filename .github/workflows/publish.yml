@@ -27,6 +27,11 @@ on:
         description: "Upload this many queued Shorts now (public ~15 min later, 5 min apart); 0 = only fill slots"
         required: false
         default: "0"
+      covers_now:
+        description: "Set every missing cover of the last 3 weeks now, even ones YouTube refused (after verifying a channel)"
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: read
@@ -53,6 +58,7 @@ jobs:
       YT_WEB_CLIENT_SECRET: ${{ secrets.YT_WEB_CLIENT_SECRET }}
       GITHUB_TOKEN: ${{ github.token }}
       UPLOAD_NOW: ${{ inputs.upload_now || '0' }}
+      COVERS_NOW: ${{ inputs.covers_now && '1' || '0' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

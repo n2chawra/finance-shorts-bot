@@ -1,0 +1,1002 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 70822,
+  "story": "machine_works",
+  "shape": "nose-to-tail",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "circuit",
+    "key": "G",
+    "bpm": 73,
+    "look": {
+      "stage": "city",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "slide"
+    }
+  },
+  "arms": {
+    "length": "45-60",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "28"
+  },
+  "hook_style": "conflict",
+  "cta": "Which machine should we take apart next? Comment",
+  "feed_id": "2026-11-21-tbm-under-london",
+  "facts": [
+    {
+      "label": "Length of each Crossrail tunnel boring machine, in metres",
+      "value": 150,
+      "unit": "count",
+      "as_of": "2026-11-21",
+      "source": "Arup",
+      "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/"
+    },
+    {
+      "label": "Kilometres of new tunnels under central London",
+      "value": 42,
+      "unit": "count",
+      "as_of": "2026-11-21",
+      "source": "Arup",
+      "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/"
+    },
+    {
+      "label": "Diameter of the railway tunnels, in metres",
+      "value": 7.1,
+      "unit": "count",
+      "as_of": "2026-11-21",
+      "source": "Arup",
+      "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/"
+    },
+    {
+      "label": "Millimetres between the Elizabeth line and Northern line tunnels at Tottenham Court Road",
+      "value": 700,
+      "unit": "count",
+      "as_of": "2026-11-21",
+      "source": "Arup",
+      "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/"
+    },
+    {
+      "label": "Buildings, railways and utilities assessed for ground movement, over",
+      "value": 17000,
+      "unit": "count",
+      "as_of": "2026-11-21",
+      "source": "Arup",
+      "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.5,
+    "words": "Past the *Tube*?",
+    "tag": "How it works",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "role": "hook",
+      "transition": "cut",
+      "say": "Crossrail dug a railway between London's Tube tunnels.",
+      "events": {
+        "crossrail": {
+          "word": "Crossrail"
+        },
+        "railway": {
+          "word": "railway"
+        },
+        "between": {
+          "word": "between"
+        },
+        "tube": {
+          "word": "Tube"
+        },
+        "london's": {
+          "word": "London's"
+        }
+      },
+      "params": {
+        "component": "Hook",
+        "place": [
+          "London's ground sliced open under the streets at night, old Tube tunnels glowing in the clay",
+          "the face of the new tunnel, a cutterhead spinning toward them"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "between",
+            "size": "medium"
+          },
+          {
+            "at": "tube",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "crossrail",
+            "what": "the cutaway of London's ground glows, streets and buildings on top, the spinning cutterhead nosing in, its name written beside it"
+          },
+          {
+            "at": "railway",
+            "what": "a bright line of new tunnel grows behind the cutterhead"
+          },
+          {
+            "at": "london's",
+            "what": "street lamps and windows light along the surface"
+          },
+          {
+            "at": "between",
+            "what": "the camera glides down into the clay as the old Tube tunnels light one by one, trains sliding through"
+          },
+          {
+            "at": "tube",
+            "what": "close on the cutterhead, the Tube tunnel in its path glowing amber"
+          }
+        ],
+        "things": [
+          "London ground cutaway",
+          "street buildings",
+          "tunnel boring machine cutterhead",
+          "old Tube tunnels",
+          "Tube trains"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "tube"
+        }
+      ]
+    },
+    {
+      "id": "size",
+      "role": "promise",
+      "transition": "cut",
+      "say": "How? Its machines were {fact1} metres long, and each built the tunnel as it dug.",
+      "events": {
+        "machines": {
+          "word": "machines"
+        },
+        "long": {
+          "word": "long"
+        },
+        "each": {
+          "word": "each"
+        },
+        "built": {
+          "word": "built"
+        },
+        "dug": {
+          "word": "dug"
+        },
+        "how": {
+          "word": "How"
+        },
+        "metres": {
+          "word": "metres"
+        },
+        "tunnel": {
+          "word": "tunnel"
+        }
+      },
+      "params": {
+        "component": "Size",
+        "place": "the new tunnel seen side-on, the whole machine laid out inside it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "long",
+            "size": "wide"
+          },
+          {
+            "at": "built",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "how",
+            "what": "the cutterhead spins close, sparks of clay flying"
+          },
+          {
+            "at": "machines",
+            "what": "the camera pulls back from the cutterhead along the shield"
+          },
+          {
+            "at": "long",
+            "what": "a dimension bracket runs the machine's full length and its figure counts up"
+          },
+          {
+            "at": "each",
+            "what": "the trailing gantries light one after another"
+          },
+          {
+            "at": "built",
+            "what": "concrete rings appear behind the machine's tail"
+          },
+          {
+            "at": "dug",
+            "what": "the cutterhead turns and the machine creeps forward one step"
+          },
+          {
+            "at": "metres",
+            "what": "the bracket's figure counts up as the camera keeps pulling back"
+          },
+          {
+            "at": "tunnel",
+            "what": "the finished tunnel lights behind the tail"
+          }
+        ],
+        "things": [
+          "tunnel boring machine",
+          "shield",
+          "trailing gantries",
+          "length bracket",
+          "concrete rings"
+        ],
+        "fig": {
+          "length": "{fact1}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "long"
+        }
+      ]
+    },
+    {
+      "id": "wheel",
+      "role": "build",
+      "transition": "cut",
+      "say": "At the front, a steel wheel spins into the clay, cutting a hole {fact3} metres across.",
+      "events": {
+        "front": {
+          "word": "front"
+        },
+        "steel": {
+          "word": "steel"
+        },
+        "spins": {
+          "word": "spins"
+        },
+        "clay": {
+          "word": "clay"
+        },
+        "hole": {
+          "word": "hole"
+        },
+        "across": {
+          "word": "across"
+        }
+      },
+      "params": {
+        "component": "Wheel",
+        "place": "the cutting face: the clay wall, the wheel pressed against it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "steel",
+            "size": "close"
+          },
+          {
+            "at": "hole",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "front",
+            "what": "the camera swings round to face the cutterhead"
+          },
+          {
+            "at": "steel",
+            "what": "a label writes on: cutterhead"
+          },
+          {
+            "at": "spins",
+            "what": "the wheel spins faster, its cutting discs catching the light"
+          },
+          {
+            "at": "clay",
+            "what": "clay crumbles off the face in chunks"
+          },
+          {
+            "at": "hole",
+            "what": "a bracket spans the wheel"
+          },
+          {
+            "at": "across",
+            "what": "the hole's figure lands on the bracket"
+          }
+        ],
+        "things": [
+          "cutterhead wheel",
+          "cutting discs",
+          "clay face",
+          "clay chunks",
+          "diameter bracket"
+        ],
+        "fig": {
+          "diameter": "{fact3}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "steel"
+        }
+      ]
+    },
+    {
+      "id": "chamber",
+      "role": "build",
+      "transition": "cut",
+      "say": "Why doesn't the ground cave in? Dug clay fills a sealed chamber that pushes back.",
+      "events": {
+        "ground": {
+          "word": "ground"
+        },
+        "cave": {
+          "word": "cave"
+        },
+        "dug": {
+          "word": "Dug"
+        },
+        "fills": {
+          "word": "fills"
+        },
+        "sealed": {
+          "word": "sealed"
+        },
+        "pushes": {
+          "word": "pushes"
+        }
+      },
+      "params": {
+        "component": "Chamber",
+        "place": "inside the shield, cut open: the sealed chamber behind the wheel",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "dug",
+            "size": "medium"
+          },
+          {
+            "at": "pushes",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "ground",
+            "what": "the ground above the machine cracks"
+          },
+          {
+            "at": "cave",
+            "what": "loose clay trickles from the roof"
+          },
+          {
+            "at": "dug",
+            "what": "the shield turns see-through and the chamber behind the wheel shows"
+          },
+          {
+            "at": "fills",
+            "what": "clay chunks pour into the chamber and fill it"
+          },
+          {
+            "at": "sealed",
+            "what": "the chamber's back wall glows: a sealed bulkhead"
+          },
+          {
+            "at": "pushes",
+            "what": "pressure arrows push out into the face, and the cracks close"
+          }
+        ],
+        "things": [
+          "shield cutaway",
+          "pressure chamber",
+          "bulkhead",
+          "clay chunks",
+          "pressure arrows"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "pushes"
+        }
+      ]
+    },
+    {
+      "id": "belt",
+      "role": "build",
+      "transition": "match",
+      "say": "Where does it go? A conveyor carries the clay back along the machine.",
+      "events": {
+        "where": {
+          "word": "Where"
+        },
+        "go": {
+          "word": "go"
+        },
+        "conveyor": {
+          "word": "conveyor"
+        },
+        "carries": {
+          "word": "carries"
+        },
+        "clay": {
+          "word": "clay"
+        },
+        "back": {
+          "word": "back"
+        },
+        "machine": {
+          "word": "machine"
+        }
+      },
+      "params": {
+        "component": "Belt",
+        "place": "along the back-up gantries, the conveyor running the machine's length",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "back",
+            "size": "medium"
+          },
+          {
+            "at": "machine",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "where",
+            "what": "close on the full chamber, clay spilling at its floor"
+          },
+          {
+            "at": "go",
+            "what": "the screw starts turning"
+          },
+          {
+            "at": "conveyor",
+            "what": "the screw lifts clay up onto the belt"
+          },
+          {
+            "at": "carries",
+            "what": "the belt lights and starts moving"
+          },
+          {
+            "at": "clay",
+            "what": "clay lumps ride the belt"
+          },
+          {
+            "at": "back",
+            "what": "the camera tracks the clay back along the gantries"
+          },
+          {
+            "at": "machine",
+            "what": "pull back: the belt runs the machine's whole length into the finished tunnel"
+          }
+        ],
+        "things": [
+          "screw conveyor",
+          "conveyor belt",
+          "clay lumps",
+          "gantries",
+          "finished tunnel"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "back"
+        }
+      ]
+    },
+    {
+      "id": "ring",
+      "role": "build",
+      "transition": "cut",
+      "say": "At the back, an arm bolts concrete pieces into a ring, lining the tunnel.",
+      "events": {
+        "back": {
+          "word": "back"
+        },
+        "arm": {
+          "word": "arm"
+        },
+        "bolts": {
+          "word": "bolts"
+        },
+        "ring": {
+          "word": "ring"
+        },
+        "lining": {
+          "word": "lining"
+        },
+        "concrete": {
+          "word": "concrete"
+        },
+        "pieces": {
+          "word": "pieces"
+        }
+      },
+      "params": {
+        "component": "Ring",
+        "place": "the tail of the machine, looking down the tunnel where the ring is built",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "arm",
+            "size": "close"
+          },
+          {
+            "at": "lining",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "back",
+            "what": "the camera reaches the machine's tail"
+          },
+          {
+            "at": "arm",
+            "what": "a yellow erector arm swings up"
+          },
+          {
+            "at": "concrete",
+            "what": "it lifts a curved concrete segment"
+          },
+          {
+            "at": "bolts",
+            "what": "the segment clicks into place with a flash"
+          },
+          {
+            "at": "ring",
+            "what": "the last pieces close the ring"
+          },
+          {
+            "at": "lining",
+            "what": "the camera pulls back down the tunnel: ring after ring lines it"
+          },
+          {
+            "at": "pieces",
+            "what": "the segment swings up toward the ring's gap"
+          }
+        ],
+        "things": [
+          "erector arm",
+          "concrete segments",
+          "finished ring",
+          "lined tunnel"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "bolts"
+        }
+      ]
+    },
+    {
+      "id": "forward",
+      "role": "build",
+      "transition": "cut",
+      "say": "It pushes off each ring and creeps forward. Together, the machines dug {fact2} kilometres under London.",
+      "events": {
+        "pushes": {
+          "word": "pushes"
+        },
+        "creeps": {
+          "word": "creeps"
+        },
+        "forward": {
+          "word": "forward"
+        },
+        "together": {
+          "word": "Together"
+        },
+        "machines": {
+          "word": "machines"
+        },
+        "kilometres": {
+          "word": "kilometres"
+        },
+        "dug": {
+          "word": "dug"
+        },
+        "london": {
+          "word": "London"
+        },
+        "ring": {
+          "word": "ring"
+        }
+      },
+      "params": {
+        "component": "Forward",
+        "place": [
+          "the jacks behind the shield",
+          "central London from above, the tunnel lines drawn under it"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "together",
+            "size": "medium"
+          },
+          {
+            "at": "london",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "pushes",
+            "what": "hydraulic jacks push against the new ring"
+          },
+          {
+            "at": "creeps",
+            "what": "the whole machine slides forward one step"
+          },
+          {
+            "at": "forward",
+            "what": "the cutterhead turns again"
+          },
+          {
+            "at": "together",
+            "what": "cut to above London: the tunnel lines growing under the streets"
+          },
+          {
+            "at": "machines",
+            "what": "glowing machine heads lead each line"
+          },
+          {
+            "at": "kilometres",
+            "what": "a counter on the line counts up"
+          },
+          {
+            "at": "dug",
+            "what": "the glowing heads race ahead along the lines"
+          },
+          {
+            "at": "london",
+            "what": "the river and street grid light across the map"
+          },
+          {
+            "at": "ring",
+            "what": "the newest ring flashes as the rams press on it"
+          }
+        ],
+        "things": [
+          "hydraulic jacks",
+          "tunnel line under London",
+          "kilometre counter",
+          "city streets"
+        ],
+        "fig": {
+          "km": "{fact2}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "forward"
+        }
+      ]
+    },
+    {
+      "id": "checked",
+      "role": "turn",
+      "transition": "cut",
+      "say": "Over {fact5} buildings, rails and pipes were checked for movement. At Tottenham Court Road, the Northern line was already there.",
+      "events": {
+        "buildings": {
+          "word": "buildings"
+        },
+        "pipes": {
+          "word": "pipes"
+        },
+        "checked": {
+          "word": "checked"
+        },
+        "movement": {
+          "word": "movement"
+        },
+        "tottenham": {
+          "word": "Tottenham"
+        },
+        "northern": {
+          "word": "Northern"
+        },
+        "already": {
+          "word": "already"
+        },
+        "rails": {
+          "word": "rails"
+        }
+      },
+      "params": {
+        "component": "Checked",
+        "place": [
+          "the streets above the line, every building tagged with a sensor",
+          "Tottenham Court Road station, the Northern line tunnel below"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "checked",
+            "size": "medium"
+          },
+          {
+            "at": "tottenham",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "buildings",
+            "what": "sensor dots light on the buildings"
+          },
+          {
+            "at": "rails",
+            "what": "rail lines light"
+          },
+          {
+            "at": "pipes",
+            "what": "pipes under the street light"
+          },
+          {
+            "at": "checked",
+            "what": "the counter of checked things counts up on a monitoring screen"
+          },
+          {
+            "at": "movement",
+            "what": "a sensor needle trembles and holds still"
+          },
+          {
+            "at": "tottenham",
+            "what": "cut down to the station: the platform tunnels in the clay"
+          },
+          {
+            "at": "northern",
+            "what": "the Northern line tunnel glows, a train sliding through"
+          },
+          {
+            "at": "already",
+            "what": "the new machine's cutterhead arrives just above it"
+          }
+        ],
+        "things": [
+          "buildings with sensors",
+          "rail lines",
+          "street pipes",
+          "monitoring screen",
+          "Northern line tunnel",
+          "cutterhead"
+        ],
+        "fig": {
+          "assets": "{fact5}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "checked"
+        },
+        {
+          "kind": "swell",
+          "at": "already"
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "role": "payoff",
+      "transition": "cut",
+      "say": "The new tunnel passed over it with just {fact4} millimetres to spare.",
+      "events": {
+        "new": {
+          "word": "new"
+        },
+        "passed": {
+          "word": "passed"
+        },
+        "over": {
+          "word": "over"
+        },
+        "just": {
+          "word": "just"
+        },
+        "spare": {
+          "word": "spare"
+        },
+        "tunnel": {
+          "word": "tunnel"
+        },
+        "millimetres": {
+          "word": "millimetres"
+        }
+      },
+      "params": {
+        "component": "Payoff",
+        "place": "between the two tunnels, the thin band of clay over the Northern line",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "over",
+            "size": "close"
+          },
+          {
+            "at": "spare",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "new",
+            "what": "the new tunnel's cutterhead slides in above the Northern line tunnel"
+          },
+          {
+            "at": "passed",
+            "what": "the camera tracks beside it"
+          },
+          {
+            "at": "over",
+            "what": "the clay between the tunnels thins"
+          },
+          {
+            "at": "just",
+            "what": "a bracket spans the gap"
+          },
+          {
+            "at": "spare",
+            "what": "the gap's figure slams onto the bracket in amber"
+          },
+          {
+            "at": "tunnel",
+            "what": "the new tunnel's rings glow behind the cutterhead"
+          },
+          {
+            "at": "millimetres",
+            "what": "the bracket's ticks pulse as the figure's unit writes on"
+          }
+        ],
+        "things": [
+          "new tunnel",
+          "Northern line tunnel",
+          "clay gap",
+          "gap bracket"
+        ],
+        "fig": {
+          "gap": "{fact4}"
+        }
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "spare"
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "role": "loop",
+      "transition": "match",
+      "say": "A new line, threaded between the old ones.",
+      "events": {
+        "new": {
+          "word": "new"
+        },
+        "threaded": {
+          "word": "threaded"
+        },
+        "between": {
+          "word": "between"
+        },
+        "old": {
+          "word": "old"
+        }
+      },
+      "params": {
+        "component": "Loop",
+        "place": "pulling back out through the clay to London's ground sliced open",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "threaded",
+            "size": "medium"
+          },
+          {
+            "at": "old",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "new",
+            "what": "the new tunnel lights along its length"
+          },
+          {
+            "at": "threaded",
+            "what": "the camera pulls back up through the clay"
+          },
+          {
+            "at": "between",
+            "what": "the streets and buildings light on top"
+          },
+          {
+            "at": "old",
+            "what": "the old Tube tunnels glow around the new one, the cutterhead spinning as in the first frame"
+          }
+        ],
+        "things": [
+          "London ground cutaway",
+          "new tunnel",
+          "old Tube tunnels",
+          "cutterhead"
+        ]
+      },
+      "scene": "directed",
+      "speaker": "narrator",
+      "sfx": []
+    }
+  ],
+  "narrator": "am_michael"
+}

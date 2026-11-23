@@ -70,6 +70,8 @@ LOCKED = [
     "workers/publish.ts", "workers/auth.ts", "workers/reset-data.ts", "workers/data-audit.ts", "workers/lib/data-audit.ts",
     "workers/tests/data-audit.test.ts", "workers/lib/uploads.ts", "workers/lib/publishing.ts", "workers/lib/youtube.ts",
     "workers/lib/settings.ts", "workers/prisma/*", "workers/scripts/*", "workers/package.json", "workers/package-lock.json",
+    # deleting a channel (owner, 2026-11-23): only the dashboard's button and delete-channel.yml, never an agent
+    "workers/delete-channel.ts", "workers/lib/delete-channel.ts", "workers/tests/delete-channel.test.ts",
     # the layout gate measures the rendered text with this probe: it never changes with the scenes it measures
     "remotion/src/fx/probe.tsx",
     # the variant system (2026-11-04): its options, rules and verdicts change only by the owner or its own
@@ -162,6 +164,27 @@ def invariants(head: str) -> list[str]:
     numbers = show(head, "generator/numbers.py") or ""
     if "def number_check(" not in numbers:
         out.append("generator/numbers.py must keep number_check()")
+    # a long video never needs one of our Shorts (owner, 2026-11-22): the from_short views gate (1K+, then 100+)
+    # stopped every new channel's Studio runs; no agent may bring back a gate on a Short's views or on from_short
+    topics_py = show(head, "generator/topics.py") or ""
+    block = re.search(r"^def blocked_reason\(.*?(?=^def |\Z)", topics_py, re.M | re.S)
+    code = block.group(0).split('"""')[-1] if block else ""     # the function's code, after its docstring
+    if (not block or "from_short" in code or "views" in code or "metrics" in code
+            or re.search(r"^(def winning_short|WIN_MIN_VIEWS)", topics_py, re.M)):
+        out.append("generator/topics.py: a long topic must never be blocked by from_short or a Short's views "
+                   "(owner, 2026-11-22: that gate stopped every new channel's long videos)")
+    # a weekly loop's `running` is the test's id or null: on 21 Nov the improver wrote the whole entry there and the
+    # dashboard's All channels page failed to load (owner, 2026-11-22)
+    for bl_file in ["improvement/cycle/backlog.json", *sorted(f for f in git("ls-tree", "-r", "--name-only", head, "--", "channels").splitlines()
+                                                            if re.fullmatch(r"channels/[^/]+/cycle/backlog\.json", f))]:
+        try:
+            running = json.loads(show(head, bl_file) or "{}").get("running")
+        except ValueError:
+            out.append(f"{bl_file} is not valid JSON")
+            continue
+        if running is not None and not isinstance(running, str):
+            out.append(f"{bl_file}: `running` must be the test's id (a string) or null, not a {type(running).__name__}; "
+                       "the entry itself belongs in `history`")
     # the weekly loop (owner, 2026-11-12): one Shorts challenger at a time, so a verdict is never two changes blurred
     # per channel: each channel's own experiments file once it has a folder (multi-channel layout)
     listed = git("ls-tree", "-r", "--name-only", head, "--", "channels").splitlines()
@@ -178,9 +201,19 @@ def invariants(head: str) -> list[str]:
 
 
 def _branch_channel(branch: str) -> str:
-    """The channel a per-channel agent's branch names (agent/<name>/<date>/<slug>); older branches are Paisa Panchayat's."""
+    """The channel a per-channel agent's branch names (agent/<name>/<date>/<slug>); "" for a branch without one
+    (the guard rejects such a branch: it never stands for the default channel)."""
     parts = (branch or "").split("/")
-    return parts[3] if len(parts) > 3 and parts[3] else DEFAULT_CHANNEL
+    return parts[3] if len(parts) > 3 and parts[3] else ""
+
+
+def channel_folders(rev: str) -> set[str]:
+    """The channel folders (channels/<slug>/) that exist at `rev`."""
+    try:
+        out = git("ls-tree", "-d", "--name-only", f"{rev}:channels")
+    except subprocess.CalledProcessError:
+        return set()
+    return {line.strip() for line in out.splitlines() if line.strip()}
 
 
 def merges_today(agent: str, now: datetime, channel: str | None = None) -> int:
@@ -193,16 +226,16 @@ def merges_today(agent: str, now: datetime, channel: str | None = None) -> int:
     log = json.loads(path.read_text(encoding="utf-8"))
     mine = [e for e in log.get("merges", []) if e.get("agent") == agent and e.get("result") == "merged" and e.get("dayIst") == day]
     if agent in PER_CHANNEL_AGENTS:
-        want = channel or DEFAULT_CHANNEL
-        mine = [e for e in mine if _branch_channel(e.get("branch", "")) == want]
+        mine = [e for e in mine if _branch_channel(e.get("branch", "")) == (channel or "")]
     return len(mine)
 
 
 # agents that work for one channel at a time (the routine names it; branch agent/<name>/<date>/<slug>):
 # they may change only their own channel's folder. The shared agents (auditor, improver, dashboard,
 # monthly) work across channels.
+# A per-channel agent's branch must name its channel, and that channel must have a folder on the base: an old
+# routine of a deleted channel (its prompt names none) never lands in another channel, nor recreates its own.
 PER_CHANNEL_AGENTS = {"research", "reviewer", "scout", "studio"}
-DEFAULT_CHANNEL = "paisa-panchayat"
 # agents' data (reports, feeds, metrics) is not code: it doesn't count toward the line limit or need tests
 DATA_PREFIXES = ("improvement/", "channels/")
 
@@ -235,14 +268,24 @@ def check(agent: str, base: str, head: str, now: datetime | None = None, channel
         files.append((status, path))
     if not files:
         return {"ok": False, "reasons": ["the branch changes nothing"], "files": [], "needsTests": False}
+    folders = channel_folders(base)
+    if agent in PER_CHANNEL_AGENTS:
+        if not channel:
+            reasons.append(f"the branch names no channel; a {agent} branch is agent/{agent}/<date>/<slug> "
+                           f"(a routine whose prompt names no channel belongs to a deleted channel and should disable itself)")
+        elif channel not in folders:
+            reasons.append(f"channels/{channel}/ does not exist on {base}: the {agent} agent works only for a live channel")
     for status, path in files:
         unlocked = match(path, UNLOCK.get(agent, [])) and not match(path, LOCKED)
         if match(path, FORBID) and not unlocked:
             reasons.append(f"{path}: protected file; no agent may change it")
         elif not match(path, ALLOW[agent]):
             reasons.append(f"{path}: outside what the {agent} agent may change")
-        if agent in PER_CHANNEL_AGENTS and path.startswith("channels/") and not path.startswith(f"channels/{channel or DEFAULT_CHANNEL}/"):
-            reasons.append(f"{path}: another channel's folder; the {agent} agent works for channels/{channel or DEFAULT_CHANNEL}/ only")
+        if agent in PER_CHANNEL_AGENTS and channel and path.startswith("channels/") and not path.startswith(f"channels/{channel}/"):
+            reasons.append(f"{path}: another channel's folder; the {agent} agent works for channels/{channel}/ only")
+        m = re.match(r"channels/([^/]+)/", path)
+        if m and m.group(1) not in folders and status != "D":
+            reasons.append(f"{path}: channels/{m.group(1)}/ does not exist on {base} (a deleted channel is never recreated by an agent)")
         if status == "D" and TEST_FILE.search(path):
             reasons.append(f"{path}: deleting a test file is not allowed (rewrite or move tests instead)")
         if path.lower().endswith(MEDIA_EXT) and status != "D":
@@ -271,7 +314,7 @@ def check(agent: str, base: str, head: str, now: datetime | None = None, channel
     reasons += invariants(head)
     reasons += changes_added(base, head, files)
     if merges_today(agent, now, channel) >= MAX_MERGES_PER_DAY:
-        where = f" for channels/{channel or DEFAULT_CHANNEL}/" if agent in PER_CHANNEL_AGENTS else ""
+        where = f" for channels/{channel}/" if agent in PER_CHANNEL_AGENTS and channel else ""
         reasons.append(f"the {agent} agent already merged {MAX_MERGES_PER_DAY} changes today{where}")
     needs_tests = any(not p.startswith(DATA_PREFIXES) for _, p in files)
     return {"ok": not reasons, "reasons": sorted(set(reasons)), "files": [p for _, p in files], "codeLines": code_lines,

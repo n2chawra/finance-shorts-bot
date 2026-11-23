@@ -41,7 +41,7 @@ CHANNEL_KEYS = ("uploadTimes", "trendUploadTimes", "shortEveryDays", "dailyVideo
 def pack_lengths(root: Path = ROOT) -> dict:
     """The current channel's own video lengths from its pack (channels/<channel>/channel.json `length`:
     {"short": [min, max], "long": [min, max]} in seconds). A channel never inherits another's lengths
-    (owner, 2026-11-18): config/settings.json's are Paisa Panchayat's, which has no pack. The channel's
+    (owner, 2026-11-18): config/settings.json's are channel #1's, which has no pack. The channel's
     own dashboard setting (config/channels.json) still overrides these."""
     from .channels import channel_root   # late: channels reads the layout file
     f = channel_root(root=root) / "channel.json"

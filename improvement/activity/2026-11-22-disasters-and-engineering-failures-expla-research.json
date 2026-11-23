@@ -1,0 +1,24 @@
+{
+  "agent": "research",
+  "day": "2026-11-22",
+  "channel": "disasters-and-engineering-failures-expla",
+  "startedAt": "2026-11-21T19:58:30Z",
+  "finishedAt": "2026-11-21T20:05:30Z",
+  "summary": "Disaster Desk, Sunday teardown of World explained, Inside Decoded, Trace the Failure and Major Disasters. Added the channel's first 3 Shorts topics (the feed held only long ones), 2 challengers, and a high-priority fix proposal: the long-video feed is blocked.",
+  "decision": "acted",
+  "why": "Every 1M+ Short in the niche is a crash from the last 3-5 weeks (Learjet 2.56M at 669x subs, Spain trains 1.25M at 328x). Major Disasters' historic Shorts on our own feed's topics got 193-1,612 views. state offered the Shorts runs 0 topics, and generator/topics.py blocks every long topic since our first Short published.",
+  "findings": [
+    {"title": "The breakouts are this month's crashes", "detail": "Florida Learjet 2.56M / 1.91M, Spain trains 1.25M, New Orleans 70K on 3.8K-13K channels; older Fault Lines long videos 2-52K."},
+    {"title": "Historic Shorts on our feed's stories did poorly elsewhere", "detail": "Major Disasters: Hyatt, FIU, Oroville, Tacoma, Teton as 43-67 s 3D Shorts, 193-1,612 views. Exception: FedEx 80 at 7.6M (282x)."},
+    {"title": "Titles put a figure against a clock", "detail": "'Jet Fell 27,000 Feet in 60 Seconds' 2.56M; 'Two Minutes Later It Hit a Cruise Boat'. Queued as challenger dd-title-figure-clock."},
+    {"title": "New Orleans: the rudder stuck, 2 minutes to impact, 22 to capsize", "detail": "NTSB DCA27MM003 and its briefing via AP; preliminary report still to come.", "link": "https://www.ntsb.gov/investigations/pages/dca27mm003.aspx"},
+    {"title": "Long videos blocked by the Paisa from_short rule", "detail": "winning_short() blocks every long topic once a channel has published a Short; this long-first channel can make none (0 of 4 this week)."}
+  ],
+  "changes": [
+    {"title": "3 Shorts topics", "detail": "New Orleans stuck rudder (trending, 9.75, expires 25 Nov), FedEx 80 Narita (high, 10.18), Adamuz broken rail (8.75, waits on rail)."},
+    {"title": "2 challengers", "detail": "dd-title-figure-clock (first-second) and dd-short-75s (format, 60-90 s promo Shorts) in cycle/backlog.json."},
+    {"title": "Proposal dd-long-feed-from-short-block", "detail": "adopt, high: gate the from_short rule on the channel's cadence so long-first channels can plan long videos."}
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [{"label": "Report", "url": "channels/disasters-and-engineering-failures-expla/research/2026-11-22.md"}]
+}

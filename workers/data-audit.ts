@@ -20,7 +20,7 @@ import { z } from "zod";
 import { audit, persistent, type DashVideo, type Issue, type YtVideo } from "./lib/data-audit.ts";
 import { notify, resolveOthers } from "./lib/notify.ts";
 import { accessToken, videoInfo } from "./lib/youtube.ts";
-import { cpath, layout } from "./lib/channels.ts";
+import { CHANNEL_ONE, cpath, layout } from "./lib/channels.ts";
 import { activeChannels, tokenOf } from "./lib/channel-auth.ts";
 import { COST, QuotaKeeper } from "./lib/quota.ts";
 import { youtubeClientConfigured } from "./lib/uploads.ts";
@@ -68,7 +68,7 @@ async function youtubeNumbers(ch: Channel, ids: string[], quota: QuotaKeeper): P
 /** One channel's audit into its own metrics/data-audit.json. Channel #1's file and notification keys are as before;
  * another channel's keys are "<slug>:data-audit:…" (the form lib/scoped.ts gives its other notifications). */
 async function auditChannel(prisma: PrismaClient, store: Store, ch: Channel, quota: QuotaKeeper, now: Date): Promise<void> {
-  const first = ch.id === layout().default;
+  const first = ch.id === CHANNEL_ONE;   // channel #1 kept the plain keys (lib/channel-scopes.ts PLAIN_KEY_CHANNEL)
   const key = (k: string) => (first ? k : `${ch.id}:${k}`);
   const label = first ? "" : `${ch.name}: `;
   const out = cpath(ROOT, "metrics", "data-audit.json");
@@ -120,7 +120,7 @@ async function auditChannel(prisma: PrismaClient, store: Store, ch: Channel, quo
   writeFileSync(out, JSON.stringify(report, null, 2) + "\n");
 
   // the owner hears only about what needs them, or what the auditor failed to fix for two nights
-  const channelId = first ? {} : { channelId: ch.id };
+  const channelId = { channelId: ch.id };
   const raised = new Set<string>();
   const unlinked = issues.filter((i) => i.kind === "unlinked");
   if (unlinked.length) {

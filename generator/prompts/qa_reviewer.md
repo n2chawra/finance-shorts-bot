@@ -19,8 +19,9 @@ own render checks it. You are checking what code cannot see.
 
 ## Reject if any of these is true
 
-D. **Not directed like the reference** (owner, 2026-11-13: every new video is directed 2D shots, like
-   `channels/paisa-panchayat/videos/v-directed-netflix/`). Open the stills next to the beats in `script.json` (`params.place`,
+D. **Not directed** (owner, 2026-11-13: every new video is directed shots, `generator/prompts/director.md`,
+   at least as well as the channel's reference videos: its 3 best published Shorts by `stayed` in
+   `channels/<channel>/metrics/videos.json`, their `channels/<channel>/videos/<id>/preview.png`). Open the stills next to the beats in `script.json` (`params.place`,
    `moments`). Reject `[script]` naming the stills when:
    - a still shows no place (a plain colour, a floating card, a lone icon, a skyline backdrop behind
      props) or a place that has nothing to do with its line;
@@ -65,8 +66,9 @@ D. **Not directed like the reference** (owner, 2026-11-13: every new video is di
    between two concrete choices, and a finance word a stranger wouldn't use ("revenue", "Treasury",
    "net worth", "margin") anywhere in the first 10 s.
    Check every item in `channels/<channel>/prompts/lessons.md` too: a video that repeats a lesson is a reject.
-6b. **Weaker than our best** (Shorts; the weekly loop): open the contact sheets of the Shorts in
-   `channels/<channel>/analysis/pictures.json` → `reference` (our own Shorts that held viewers best). Reject
+6b. **Weaker than our best** (Shorts; the weekly loop): open the contact sheets (`channels/<channel>/videos/<id>/preview.png`)
+   of the channel's 3 best published Shorts by `stayed` in `channels/<channel>/metrics/videos.json` (our own
+   Shorts that held viewers best; `generator/prompts/director.md`, "The bar", prints their ids). Reject
    `[scene]` a video whose frames are clearly emptier, smaller or harder to read than theirs, naming
    the stills.
 7. **Disclaimer in the description, never on screen** (owner, 2026-11-20): reject `[script]` a
@@ -109,7 +111,7 @@ not guess about frames you cannot.
 Pass:
 
 ```
-python -m generator.run record <id> qa_review --passed --note "<one line on what you saw>"
+python -m generator.run record <id> qa_review --passed --note "<one line on what you saw>" --channel <channel>
 ```
 
 Reject (one `--note` per problem, each naming the frame time and what is wrong). Start each
@@ -122,7 +124,7 @@ note with who has to fix it:
   Name the scene and the beat, as precisely as you can: the owner fixes scenes.
 
 ```
-python -m generator.run record <id> qa_review --failed --note "[script] <problem 1>" --note "[scene] <problem 2>"
+python -m generator.run record <id> qa_review --failed --note "[script] <problem 1>" --note "[scene] <problem 2>" --channel <channel>
 ```
 
 Reply with PASS or FAIL and your notes.

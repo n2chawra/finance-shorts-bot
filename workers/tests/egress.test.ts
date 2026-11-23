@@ -56,11 +56,12 @@ test("each channel's activity file is its own row, tagged with its channel, and 
   const { mkdirSync } = await import("node:fs");
   const root = mkdtempSync(path.join(tmpdir(), "act-"));
   mkdirSync(path.join(root, "improvement", "activity"), { recursive: true });
-  mkdirSync(path.join(root, "channels", "going-down"), { recursive: true });
-  mkdirSync(path.join(root, "channels", "paisa-panchayat"), { recursive: true });
+  mkdirSync(path.join(root, "channels", "second-one"), { recursive: true });
+  mkdirSync(path.join(root, "channels", "first-channel"), { recursive: true });
   const act = { agent: "research", day: "2026-11-23", summary: "s", decision: "acted", why: "w", findings: [], changes: [] };
   writeFileSync(path.join(root, "improvement", "activity", "2026-11-23-research.json"), JSON.stringify(act));
-  writeFileSync(path.join(root, "improvement", "activity", "2026-11-23-going-down-research.json"), JSON.stringify({ ...act, summary: "other" }));
+  writeFileSync(path.join(root, "improvement", "activity", "2026-11-23-second-one-research.json"), JSON.stringify({ ...act, summary: "other" }));
+  writeFileSync(path.join(root, "improvement", "activity", "2026-11-23-auditor.json"), JSON.stringify({ ...act, agent: "auditor" }));
   const rows = new Map<string, Record<string, unknown>>();
   const docs = new Map<string, unknown>();
   const prisma = {
@@ -74,8 +75,10 @@ test("each channel's activity file is its own row, tagged with its channel, and 
     },
   };
   assert.equal(await importActivity(prisma as never, root), 2);
-  assert.deepEqual([...rows.keys()].sort(), ["2026-11-23-going-down-research", "2026-11-23-research"]);
-  assert.equal(rows.get("2026-11-23-going-down-research")!.channelId, "going-down");
-  assert.equal(rows.get("2026-11-23-research")!.channelId, undefined);
+  // a channel agent's plain file is channel #1's, which is gone from this repo: not imported
+  assert.deepEqual([...rows.keys()].sort(), ["2026-11-23-auditor", "2026-11-23-second-one-research"]);
+  assert.equal(rows.get("2026-11-23-second-one-research")!.channelId, "second-one");
+  // a shared agent's row is the platform's (null), never the column's default channel
+  assert.equal(rows.get("2026-11-23-auditor")!.channelId, null);
   assert.equal(await importActivity(prisma as never, root), 0);
 });

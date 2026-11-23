@@ -49,10 +49,15 @@ def spoken(display: str, currency: str = "INR") -> str:
         return year_words(int(s))
     if s[:1] in "-−" and len(s) > 1:   # '-$19,470' (a value that fell) → 'minus nineteen thousand … dollars'
         return "minus " + spoken(s[1:], currency)
-    m = re.fullmatch(r"([\d.,]+)\s*(km²|km|m)", s)      # a distance, area or height: '4,300 km'
+    # a distance, area, height or depth ('4,300 km', '150 ft'), or a time ('90 s', '5 min'; the dive channel, 2026-11-21)
+    m = re.fullmatch(r"([\d.,]+)\s*(km²|km|m³/s|tonnes/s|t/s|m|ft|s|min|tonnes)", s)
     if m:
-        word = {"km²": "square kilometres", "km": "kilometres", "m": "metres"}[m.group(2)]
-        return say_numbers(f"{_trim(m.group(1).replace(',', ''))} {word}", indian=False)
+        num = _trim(m.group(1).replace(",", ""))
+        words = {"km²": ("square kilometre", "square kilometres"), "km": ("kilometre", "kilometres"), "m": ("metre", "metres"),
+                 "ft": ("foot", "feet"), "s": ("second", "seconds"), "min": ("minute", "minutes"),
+                 "tonnes": ("tonne", "tonnes"), "t/s": ("tonne a second", "tonnes a second"), "tonnes/s": ("tonne a second", "tonnes a second"),
+                 "m³/s": ("cubic metre a second", "cubic metres a second")}[m.group(2)]
+        return say_numbers(f"{num} {words[0] if num == '1' else words[1]}", indian=False)
     western = _western(s)
     if western is not None:
         return say_numbers(western, indian=False)

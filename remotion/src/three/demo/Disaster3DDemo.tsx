@@ -5,17 +5,19 @@
 //   B  Chalk Site: a girder bridge; the middle span's stress climbs and it buckles, slow debris
 //   C  Storm: a ro-ro ferry with its bow doors open, listing on a faceted sea in the rain
 //   D  Clay Studio: a gravity dam, the reservoir rising to the crest and overtopping
+//   E  Clay Studio: an atrium with hung walkways, a crowd dancing below that looks up and hurries away,
+//      a dip to dust, then rescuers with lamps (People.tsx; no figure is ever touched on screen)
 // Labels are words, not figures (figures come from params.fig in real beats).
 import React from "react";
 import { AbsoluteFill, Sequence, useCurrentFrame } from "remotion";
 import * as THREE from "three";
 import {
   Camera3D, CloudDeck, cue, Dam, DisasterStage, Failure3D, Focus, GirderBridge, Jet, jetTailplaneAt, Label3D, moves, Ocean,
-  HonestyTag, oceanHeight, oceanTilt, Path3D, pathPose, buildPath, Rain, Ship, Smoke, type PathSample,
+  HonestyTag, Crowd3D, mat, Member, Rescuers, oceanHeight, oceanTilt, Path3D, pathPose, buildPath, Rain, Ship, Smoke, type PathSample,
 } from "../index";
 
-export const DISASTER3D_DEMO = { fps: 30, durationInFrames: 360, width: 1080, height: 1920 } as const;
-const S = { A: [0, 100], B: [100, 190], C: [190, 280], D: [280, 360] } as const;
+export const DISASTER3D_DEMO = { fps: 30, durationInFrames: 450, width: 1080, height: 1920 } as const;
+const S = { A: [0, 100], B: [100, 190], C: [190, 280], D: [280, 360], E: [360, 450] } as const;
 
 // ---------------------------------------------------------------- A: the jet and its path
 
@@ -136,6 +138,26 @@ const SceneD: React.FC = () => {
   );
 };
 
+
+// ---------------------------------------------------------------- E: the people under the walkways
+
+const SceneE: React.FC = () => {
+  const frame = useCurrentFrame();
+  const after = frame >= 52;
+  return (
+    <>
+      <Camera3D keys={moves.pushIn(0, 90, [0, 0.55, 0], [0.35, 0.4, 1], 6.5, 5)} drift={0.02} />
+      <Focus at={[0, 0.3, 0]} range={4} />
+      {/* two walkways hung one above the other over the lobby, on rods from the roof */}
+      {[1.4, 2.1].map((y) => <Member key={y} a={[-3, y, 0]} b={[3, y, 0]} t={0.22} material={mat("white", "#cfc6b8")} />)}
+      {[-2, -0.7, 0.7, 2].map((x) => <Member key={x} a={[x, 1.3, 0]} b={[x, 3, 0]} t={0.03} material={mat("aluminium", "#8d939b")} />)}
+      {!after && <Crowd3D count={70} area={[4.6, 3.4]} mood="dance" scatterAt={30} from={[0, 0, 0]} seed="lobby" />}
+      {after && <Smoke frame={frame} at={[0, 0.1, -1.2]} height={0.8} width={3} count={10} color="#d8cfc2" opacity={0.25} wind={[0.2, 0.1, 0]} seed="dust" />}
+      {after && <Rescuers enterAt={56} spots={[[-0.9, 0, 0.6], [0.1, 0, 0.9], [1.0, 0, 0.4]]} />}
+    </>
+  );
+};
+
 const tag = <AbsoluteFill style={{ pointerEvents: "none" }}><HonestyTag kind="reconstruction" /></AbsoluteFill>;
 
 export const Disaster3DDemo: React.FC = () => (
@@ -151,6 +173,9 @@ export const Disaster3DDemo: React.FC = () => (
     </Sequence>
     <Sequence from={S.D[0]} durationInFrames={S.D[1] - S.D[0]}>
       <DisasterStage look="clay" dof={2} shadowBox={10} overlay={tag}><SceneD /></DisasterStage>
+    </Sequence>
+    <Sequence from={S.E[0]} durationInFrames={S.E[1] - S.E[0]}>
+      <DisasterStage look="clay" dof={2} shadowBox={8} overlay={tag}><SceneE /></DisasterStage>
     </Sequence>
   </AbsoluteFill>
 );

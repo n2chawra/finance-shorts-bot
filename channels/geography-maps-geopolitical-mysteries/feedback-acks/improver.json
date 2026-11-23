@@ -1,16 +1,52 @@
 {
-  "acks": [
-    {
-      "id": "cmwn0p9tz0001jv09zeeqqwpd",
-      "action": "fixed",
-      "note": "The map kit can now trace a country: a bright line with a glowing head runs round its border and closes on the word that names it, then stays lit (flat/map.tsx `trace`); the director now does this for every country a line is about.",
-      "commit": "907610b"
-    },
-    {
-      "id": "cmwn0jklx0001ib092if21wgj",
-      "action": "fixed",
-      "note": "Done for every Short, no test: the country a line is about is coloured and its whole flag sits inside it, true to its shape and as big as fits (about 60 flags, checked in stills: India, the UK, France, Germany, Denmark, the USA, Canada, Mexico, Chile, Greenland), and named people like Napoleon stand on the map as their photo head.",
-      "commit": "25d465b"
-    }
-  ]
+ "acks": [
+  {
+   "id": "cmwn0p9tz0001jv09zeeqqwpd",
+   "action": "fixed",
+   "note": "The map kit can now trace a country: a bright line with a glowing head runs round its border and closes on the word that names it, then stays lit (flat/map.tsx `trace`); the director now does this for every country a line is about.",
+   "commit": "907610b"
+  },
+  {
+   "id": "cmwn0jklx0001ib092if21wgj",
+   "action": "fixed",
+   "note": "Done for every Short, no test: the country a line is about is coloured and its whole flag sits inside it, true to its shape and as big as fits (about 60 flags, checked in stills: India, the UK, France, Germany, Denmark, the USA, Canada, Mexico, Chile, Greenland), and named people like Napoleon stand on the map as their photo head.",
+   "commit": "25d465b"
+  },
+  {
+   "id": "cmwoj53c80003l509bv0e56dz",
+   "action": "fixed",
+   "note": "From the next Short, each one uses a different British voice in turn (George, Emma, Lewis, Isabella, Fable, Alice), the one used longest ago first, so you can compare; each Short's voice is in its history entry. Tell me which to keep and the rest come off the list.",
+   "commit": "aa3fc24"
+  },
+  {
+   "id": "cmwoj49a30001l209xjb20lqx",
+   "action": "fixed",
+   "note": "Directed beats now play soft sounds of the channel's own set on what happens in them: a pin on things popping up, a paper swish when something moves or the camera moves, a thud on a stamp, a scribble on a line being drawn (two a beat at most), from the next Short.",
+   "commit": "17c6583"
+  },
+  {
+   "id": "cmwoizq2r0001l5097xs9mxx4",
+   "action": "fixed",
+   "note": "The director now keeps one camera across beats on the same map (it opens where the last beat ended and glides on, a soft blend instead of a cut), shows a real banknote as a freely licensed photo (US notes are public domain) or drawn in its real colours and layout, and puts a named person like Napoleon on screen on his name as a character with his real portrait head.",
+   "commit": "5c9239d"
+  },
+  {
+   "id": "cmwoiqjki0001l409a2gj48qx",
+   "action": "fixed",
+   "note": "Every plan must now say what on the map the answer is (a border, route, shape, distance or position) before a script is written; check-plan fails a plan without one, or one whose answer is a machine, a law or a cut-away (research and the reviewer did their parts).",
+   "commit": "4bf7e8d"
+  },
+  {
+   "id": "cmwstm4180001jv0917t7gywr",
+   "action": "fixed",
+   "note": "Fixed for every map video: the code check before render now fails a video whose country is named on the map but never shows its flag (renderer/remotion.py map_flag_problems), so the director must give Russia its flag where its area grows. It found the same miss on Peru in another Short. This Short is already live, so it can't be changed.",
+   "commit": "6c7f696"
+  },
+  {
+   "id": "cmwlu7uww0001kz09ua9f25hp",
+   "action": "fixed",
+   "note": "Noted: only the Suez sample went out, and sample 2 is this channel's bar.",
+   "commit": "6c7f696"
+  }
+ ]
 }

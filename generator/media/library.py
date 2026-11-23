@@ -108,6 +108,9 @@ def fetch(slug: str, ref: str, max_mb: int = MAX_MB, root: Path = ROOT) -> dict:
     # standard thumbnail widths: a Commons photo comes as a standard-width thumbnail.
     urls = (_commons_thumbs(c) if source == "commons" and c["kind"] == "photo" else []) + [c["url"]]
     for i, url in enumerate(urls):
+        # a .tif original's thumbnail is a PNG ("…px-X.tif.png"): name the cached file after what came, so the
+        # static server sends image/png, not image/tiff (gen-007)
+        dest = dest.with_suffix(".png") if url.endswith(".png") and i < len(urls) - 1 else dest.with_suffix(f".{c['ext']}")
         try:
             last = i == len(urls) - 1
             download(url, dest, headers, source + "-files", getattr(p, "file_interval", p.interval), max_mb << 20,

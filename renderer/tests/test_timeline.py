@@ -228,9 +228,10 @@ def test_check_script_warns_only_for_shorts() -> None:
     assert tb.check_script(script(beats, format="short"))["warnings"] == []
 
 
-def test_the_shorts_reference_keeps_an_event_every_few_seconds() -> None:
-    """The reference Short (the casino remake, at the 2026-10-30 pace) keeps an event every 3 s."""
-    s = json.loads((cpath(EXAMPLES.parent, "videos") / "v-remake-casino" / "script.json").read_text(encoding="utf-8"))
+def test_the_shorts_reference_keeps_an_event_every_few_seconds(monkeypatch) -> None:
+    """A shipped Short (the geography channel's, 23 Nov) keeps an event every 3 s at its channel's pace."""
+    monkeypatch.setenv("CHANNEL", "geography-maps-geopolitical-mysteries")
+    s = json.loads((cpath(EXAMPLES.parent, "videos") / "v-20261123-11" / "script.json").read_text(encoding="utf-8"))
     assert tb.check_script(s)["warnings"] == []
     assert tb.TEMPOS["short"] == 1.2
 
@@ -256,6 +257,13 @@ def test_a_doc_thumbnail_jump_takes_two_placeholders() -> None:
     assert t["jump"]["from"] == "$847.4M" and t["jump"]["to"] == "$4.04B"
     with pytest.raises(ValueError):
         tb._thumbnail({"layout": "custom", "words": "How", "jump": {"from": "{then}", "to": "nothing"}}, figs, {})
+
+
+def test_a_doc_thumbnail_keeps_its_pattern_id_as_a_note() -> None:
+    # channel.json thumbs (2026-11-20): each spec names a playbook pattern ("P1"…"P8"); renderer/thumbs.py
+    # channel_problems requires it, so the typed-number check must pass it through as a note, like `pattern`
+    t = tb._thumbnail({"layout": "custom", "component": "Thumb", "pattern_id": "P1", "words": "Almost *dead*"}, {}, {})
+    assert t["pattern_id"] == "P1"
 
 
 def test_audio_reports_loudness(tmp_path: Path) -> None:
@@ -373,7 +381,19 @@ def test_owner_pace_note_speeds_up_a_channels_own_short_voice(monkeypatch):
     monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 0.92, "long": 0.97}})
     tech = "how-tech-and-ai-actually-work-chips-ai-p"
     assert pack.voice_speed("short", tech) == 1.0
-    assert pack.voice_speed("long", tech) == 0.97          # Shorts only
-    assert pack.voice_speed("short", "geography-maps-geopolitical-mysteries") == 0.92
+    assert pack.voice_speed("long", tech) == pack.MIN_SPEED["long"]   # 0.97 is under the floor for every channel (2026-11-23)
+    assert pack.voice_speed("short", "geography-maps-geopolitical-mysteries") == pack.MIN_SPEED["short"]   # no note, but the floor
     monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 1.1}})
     assert pack.voice_speed("short", tech) == 1.1          # the owner's own faster setting wins
+
+
+def test_dive_colours_and_line_badges_are_not_typed_figures():
+    """A dive layer's paint ("#00933c") and its line badges ("4", "S") are names, not figures (2026-11-21)."""
+    from renderer.timeline.build import _resolve
+    layer = {"kind": "tunnel", "stripe": "#00933c", "wall": "#efe3c8", "trains": ["#d23b3b", "royalblue"],
+             "bullets": [["4", "#00933c"], ["S", "gray"]], "label": "Lexington"}
+    assert _resolve(layer, {}, {}, "x") == layer
+    with pytest.raises(ValueError):
+        _resolve({"label": "Line 4"}, {}, {}, "x")
+    with pytest.raises(ValueError):
+        _resolve({"bullets": [["105 ft", "gray"]]}, {}, {}, "x")

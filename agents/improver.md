@@ -24,7 +24,7 @@ Use `$PY` wherever this page says `python`.
 Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused` or
 `agents.improver` false.
 
-**Channels** (`agents/policy.md`, "Many channels"): you serve every live channel, not only Paisa Panchayat.
+**Channels** (`agents/policy.md`, "Many channels"): you serve every live channel, one at a time.
 ```
 CHANNELS=$(python -c "import json;c=json.load(open('config/channels.json'))['channels'];print(' '.join(k for k,v in c.items() if v['status'] in ('active','paused')))"); echo "CHANNELS=$CHANNELS"
 ```
@@ -36,8 +36,9 @@ experiments (1), its recurring failures (2), the weekly loop (4: at most one Sho
 channel**, its own `cycle/`, `experiments.json`, `changes.json`), its journal, weekly summary,
 `generator.impact` and notifications. **Shared, done once:** code, template and prompt changes in
 `generator/`, `renderer/`, `remotion/src` and the activity file (name the channel of each finding and
-change). A shared change must keep every channel's look: Paisa Panchayat's flat kit
-(`remotion/src/flat/`), the geography channel's maps, a 3D channel's `remotion/src/three/`; check
+change). A shared change must keep every channel's look: the flat kit
+(`remotion/src/flat/`) and the geography channel's maps, the 3D kit `remotion/src/three/`, the doc and
+disaster kits (`remotion/src/doc/`, `remotion/src/disaster/`); check
 stills for each channel it can reach. Budget: if all channels won't fit in one lean run, take them by
 `health` in `config/channels.json` (red, then amber, then green) and note the ones left for tomorrow.
 
@@ -78,7 +79,7 @@ For each experiment the evaluator marks:
 Closing counts as tonight's change if it touches code.
 
 ## 2. Fix recurring failures
-Start from `python -m generator.run failures` (Shorts and long: the last two weeks' failed checks,
+Start from `python -m generator.run failures --channel <slug>` (per channel; Shorts and long: the last two weeks' failed checks,
 grouped, most widespread first). A kind that hit three or more videos is fixed **at its source**: in the
 component that draws it (labels and tags clamp themselves since 2026-10-29: `studio/labels.tsx`,
 `design/fit.ts`), the check's message (say how to fix it), or `generator/prompts/checklist.md` (what
@@ -86,7 +87,7 @@ writers read before writing). Add a line to the checklist for each new kind you 
 If the evaluator lists recurring failures (the same QA/fact reason twice in 3 days), fix the cause
 (usually a prompt or recipe that keeps producing rejected scripts, or a check in `generator/` or
 `renderer/timeline/`) before starting anything new. Reproduce with
-`python -m generator.run number-check <id>` on the failed video, or check an example with
+`python -m generator.run number-check <id> --channel <slug>` on the failed video, or check an example with
 `python -c "import json; from renderer.timeline.build import check_script; check_script(json.load(open('examples/<name>.json')))"`.
 These are fixes, not experiments. A failure in a scene (`remotion/src/scenes/`, the cast, the
 camera) is yours to fix too: reproduce it on the video's `timeline.json` with
@@ -139,7 +140,7 @@ equal priority take the long one. Set the item's `status` as you would a proposa
 
 **Directed 2D shots (owner, 2026-11-13; Shorts and long videos).** Every new video is drawn on the flat
 kit (`remotion/src/flat/`: `kit.tsx`, `cast.tsx`, `README.md`) by per-video directed beats
-(`generator/prompts/director.md`; reference `remotion/src/videos/v-directed-netflix/`). This is now the
+(`generator/prompts/director.md`; the kit README's examples and each channel's best Shorts are the bar). This is now the
 look you improve: kit pieces the director keeps hand-drawing (a new building, a vehicle, a crowd, a
 weather layer, a phone screen), the cast (`Char`: faces, poses, hair, outfits, mouths that talk on the
 words), camera helpers, light, and the director prompt's rules, judged by the weekly loop like any look
@@ -184,7 +185,10 @@ running (a verdict closed the last one in section 1, tonight or earlier), start 
   list at the top of its kind first; answer the note `testing` with the cycle number.
 - Before you pick, append what the cycle that just ended measured to `stayedByCycle`
   (`{"cycle", "champion": <stayed of the off side>, "challenger": <on side>, "verdict"}` from the
-  evaluator), move the entry to `history` with its verdict, and set `running` and `cycle`.
+  evaluator), move the entry to `history` with its verdict, and set `running` and `cycle`. `running`
+  is the new test's **id only** (a string); the entry itself goes into `history` with `cycle`,
+  `started` and `"verdict": null` (21 Nov: the whole entry in `running` broke the All channels page;
+  `scripts/guard.py` refuses it).
 - **Keep the recipe file current**: when a verdict is `keep`, fold the change into
   `channels/<channel>/cycle/recipe.json` too (add the rule, or replace the one it changes, with `since` set to
   today and `from: "cycle <n>"`; append `{"cycle", "date", "id", "verdict", "change"}` to `changes`;

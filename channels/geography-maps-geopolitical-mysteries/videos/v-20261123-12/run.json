@@ -1,0 +1,164 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-23T00:12:57.871904+00:00",
+    "finishedAt": "2026-11-23T00:12:57.871904+00:00",
+    "notes": [
+      "description opens with 'what happens to', already used by v-20261118-01"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:13:00.930798+00:00",
+    "finishedAt": "2026-11-23T00:13:00.930798+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:14:04.023215+00:00",
+    "finishedAt": "2026-11-23T00:14:04.023215+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:14:04.845862+00:00",
+    "finishedAt": "2026-11-23T00:14:04.845862+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "warning: beat 'oil' runs 7.1 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words",
+      "note: beat 'singapore' opens like a line in one of the last scripts ('and the strangest'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:14:12.392976+00:00",
+    "finishedAt": "2026-11-23T00:14:12.392976+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T00:14:22.462572+00:00",
+    "finishedAt": "2026-11-23T00:14:22.462572+00:00",
+    "notes": [
+      "beat 'loop': params.camera key at 'night' is not one of this beat's events",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:14:25.984167+00:00",
+    "finishedAt": "2026-11-23T00:14:25.984167+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:14:57.727282+00:00",
+    "finishedAt": "2026-11-23T00:14:57.727282+00:00",
+    "notes": [
+      "All 5 facts confirmed on source pages: EIA World Oil Transit Chokepoints (updated 3 Mar 2026) shows 23.2M b/d and 29% of maritime oil flows in 1H25 and names Sunda, Lombok and round-the-archipelago detours; Wikipedia Strait of Malacca shows 900 km long, 2.8 km at the Phillip Channel, ~25% of world traded goods. Thought experiment stated in beat 2 and description; no advice; channel disclaimer ends the description."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:18:37.372035+00:00",
+    "finishedAt": "2026-11-23T00:18:37.372035+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T00:20:57.099671+00:00",
+    "finishedAt": "2026-11-23T00:22:16.815959+00:00",
+    "notes": [
+      "text 'SUMATRA SIDE' at 9.6 s runs outside the frame",
+      "1.9 s with nothing new on screen in beat 'narrow' (at most 1.8 s): add an action on the phrase being said there",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T00:23:18.669111+00:00",
+    "finishedAt": "2026-11-23T00:24:18.128620+00:00",
+    "notes": [
+      "1.9 s with nothing new on screen in beat 'narrow' (at most 1.8 s): add an action on the phrase being said there",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:24:29.878408+00:00",
+    "finishedAt": "2026-11-23T00:25:30.390739+00:00",
+    "notes": [
+      "60 s, ember/atlas (preview only)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:25:44.744727+00:00",
+    "finishedAt": "2026-11-23T00:26:48.174335+00:00",
+    "notes": [
+      "60 s, ember/atlas (preview only)",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:29:15.857786+00:00",
+    "finishedAt": "2026-11-23T00:29:15.857786+00:00",
+    "notes": [
+      "Every beat on the map, 8+ places (strait, Phillip Channel, Andaman mouth, Asia, Sunda, Lombok, Singapore, region); figures on things (23.2M BARRELS tag, 25% on crate stack, width/length stamps in code); first frame names the strait with tankers, question held back; payoff routes bend round Indonesia; 59.8s returns to the 0s frame; layout empty, audio -1/-16.3 dB, 60 s in channel range; as full as Greenland v-20261119-02. Minor: hook barrier small at 2.5s, GULF rig near left edge 22.5-25s, description has stray 'The characters are not advisers.'"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:26:52.876557+00:00",
+    "finishedAt": "2026-11-23T00:35:39.202928+00:00",
+    "notes": [
+      "60 s, ember/atlas, peak -1.0 dB, mean -16.3 dB",
+      "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:35:48.825791+00:00",
+    "finishedAt": "2026-11-23T00:35:48.825791+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

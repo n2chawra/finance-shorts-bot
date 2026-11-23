@@ -20,9 +20,10 @@ import { COST, QuotaKeeper } from "./lib/quota.ts";
 
 import { existsSync } from "node:fs";
 import { ChannelList, CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket, subscribersOf } from "./lib/market.ts";
-import { youtubeConfigured } from "./lib/uploads.ts";
+import { youtubeClientConfigured } from "./lib/uploads.ts";
+import { tokenOf } from "./lib/channel-auth.ts";
 import { accessToken } from "./lib/youtube.ts";
-import { cpath, layout } from "./lib/channels.ts";
+import { allChannels, cpath, crel, layout } from "./lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const DAY_MS = 86_400_000;
@@ -62,10 +63,25 @@ async function market(token: string, cfg: MarketConfig, now: Date) {
   return { searched: cfg.queries, regions, since: after, ...rankMarket(details, queryOf, cfg, now, subs) };
 }
 
-/** Each open long topic's most viewed videos, searched once a week (thumb-refs.json; renderer/thumbs.py). */
+/** Every channel's open long topics (owner, 2026-11-23: "thumbnails are made for every video by studying the same
+ * topic's other videos' thumbnails": until then only channel #1's topics were searched, so the other channels'
+ * long thumbnails had only their demand video and a live search to go on). A topic that fails to parse is skipped. */
+function allLongTopics() {
+  const out: ReturnType<typeof LongTopic.parse>[] = [];
+  for (const slug of allChannels(ROOT)) {
+    const file = path.join(ROOT, crel("improvement/longform/topics.json", ROOT, slug));
+    if (!existsSync(file)) continue;
+    for (const t of (JSON.parse(readFileSync(file, "utf8")).topics ?? []) as unknown[]) {
+      const r = LongTopic.safeParse(t);
+      if (r.success) out.push(r.data);
+    }
+  }
+  return out;
+}
+
+/** Each open long topic's most viewed videos, on every channel, searched once a week (thumb-refs.json; renderer/thumbs.py). */
 async function thumbRefs(token: string, cfg: MarketConfig, now: Date) {
-  const file = cpath(ROOT, "improvement", "longform", "topics.json");
-  const topics = existsSync(file) ? LongTopic.array().parse(JSON.parse(readFileSync(file, "utf8")).topics ?? []) : [];
+  const topics = allLongTopics();
   const prevFile = process.env.PREV_THUMB_REFS;
   const prev = parsePrevRefs(prevFile && existsSync(prevFile) ? readFileSync(prevFile, "utf8") : null);
   const day = now.toISOString().slice(0, 10);
@@ -106,12 +122,29 @@ async function comments(token: string, now: Date) {
   }
 }
 
+/** The default channel's stored sign-in (it reads public data too, on the same project quota), else the
+ * YT_REFRESH_TOKEN secret's. */
+async function readToken(): Promise<string | null> {
+  if (process.env.DATABASE_URL && process.env.SESSION_SECRET) {
+    const prisma = new PrismaClient();
+    try {
+      const ch = await prisma.channel.findUnique({ where: { id: layout().default } });
+      const t = ch && (ch.status === "active" || ch.status === "paused") ? tokenOf(ch) : null;
+      if (t) return accessToken(t.refreshToken, t.client);
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
+  return process.env.YT_REFRESH_TOKEN ? accessToken() : null;
+}
+
 async function main(): Promise<void> {
   const outDir = path.resolve(process.argv[2] ?? "market-data");
-  if (!youtubeConfigured()) return;
+  if (!youtubeClientConfigured()) return;
   const cfg = MarketConfig.parse(JSON.parse(readFileSync(cpath(ROOT, "config", "market.json"), "utf8")));
   const now = new Date();
-  const token = await accessToken();
+  const token = await readToken();
+  if (!token) return void console.log("::notice::No YouTube sign-in to read with (the default channel isn't connected and YT_REFRESH_TOKEN is not set). Nothing to do.");
   const m = await market(token, cfg, now);
   const c = await comments(token, now);
   // a failed reference search never costs the day's market data

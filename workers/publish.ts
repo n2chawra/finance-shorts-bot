@@ -30,9 +30,9 @@ import {
 import { loadSettings, type Settings } from "./lib/settings.ts";
 import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
-import { TokenError, UPLOAD_CATEGORY, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
-import { coverFile } from "./lib/cover.ts";
-import { channelPack, cpath, layout } from "./lib/channels.ts";
+import { TokenError, accessToken, setThumbnail, uploadVideo } from "./lib/youtube.ts";
+import { COVERS_PER_RUN, COVER_DAYS, coverFile, isPermissionRefusal, needsCover } from "./lib/cover.ts";
+import { CHANNEL_ONE, channelPack, videoFile } from "./lib/channels.ts";
 import { activeChannels, channelSettings, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { COST, QuotaKeeper } from "./lib/quota.ts";
 
@@ -44,22 +44,58 @@ type Format = "short" | "long";
 type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string; category: string };
 
 /** Our designed cover instead of the frame YouTube picks (owner, 2026-11-03: "the thumbnail is wrong").
- * The video is already uploaded, so a refused cover is reported, never a failed upload. */
-async function applyCover(prisma: PrismaClient, run: Run, token: string, videoId: string, youtubeId: string, style: unknown): Promise<void> {
-  const dir = path.join(cpath(ROOT, "videos"), videoId);
+ * The video is already uploaded, so a refused cover is reported, never a failed upload. The result is kept in
+ * the video's style (`coverSetAt`, or `coverTries`) so repairCovers can retry a cover that didn't go up. */
+async function applyCover(prisma: PrismaClient, run: Run, token: string, videoId: string, youtubeId: string, style: unknown): Promise<boolean> {
+  // the video's own channel folder: cpath alone is the default channel's, which left every other channel's
+  // videos with YouTube's frame (Disaster Desk's Hyatt long video, 22 Nov)
+  const dir = path.dirname(videoFile(ROOT, run.channelId, videoId, "manifest.json"));
   const file = coverFile(dir, style);   // the owner's pick, else Studio's (long videos have three; lib/cover.ts)
-  if (!file) return void console.log(`${videoId}: no cover in the repo; YouTube picks a frame`);
-  if (!run.quota.take("thumbnail", COST.thumbnail)) return void console.log(`${videoId}: no quota left for the cover today; YouTube picks a frame`);
+  const mark = async (data: Record<string, unknown>) => {
+    const base = (style && typeof style === "object" ? style : {}) as Record<string, unknown>;
+    const next = { ...base, ...data } as Prisma.InputJsonObject;
+    await prisma.video.update({ where: { id: videoId }, data: { style: next } }).catch((e) => console.log(`${videoId}: couldn't record the cover: ${e}`));
+  };
+  const tries = Number(((style ?? {}) as { coverTries?: unknown }).coverTries ?? 0) || 0;
+  if (!file) {
+    console.log(`::warning::${videoId}: no cover in ${path.relative(ROOT, dir)}; YouTube picks a frame`);
+    await mark({ coverTries: tries + 1 });
+    return false;
+  }
+  if (!run.quota.take("thumbnail", COST.thumbnail)) { console.log(`${videoId}: no quota left for the cover today; retried on a later run`); return false; }
   try {
     await setThumbnail(token, youtubeId, file);
     console.log(`${videoId}: cover set from ${path.basename(file)}`);
+    await mark({ coverSetAt: new Date().toISOString(), coverFile: path.basename(file) });
     await resolve(prisma, run.key("cover-refused"));
+    return true;
   } catch (e) {
     const why = e instanceof Error ? e.message : String(e);
     console.log(`${videoId}: ${why}`);
+    // not verified for custom thumbnails: wait and ask again (lib/cover.ts REFUSED_RETRY_H); anything else uses a try
+    await mark(isPermissionRefusal(why) ? { coverRefusedAt: new Date().toISOString() } : { coverTries: tries + 1 });
     await notify(prisma, { key: run.key("cover-refused"), channelId: run.channelId, source: "publish", severity: "warning", title: "YouTube didn't take our cover",
-      detail: `${videoId} (${youtubeId}) went up with YouTube's own frame as its cover: ${why}`,
+      detail: `${videoId} (${youtubeId}) shows YouTube's own frame as its cover: ${why}${isPermissionRefusal(why) ? ` ${run.label}isn't verified for custom thumbnails yet. The publisher asks again every 6 hours, so every cover of the last 3 weeks goes up within hours of verifying.` : ""}`,
       fix: "If it says the account can't set custom thumbnails: verify the channel (youtube.com/verify, a phone number) and features such as custom thumbnails turn on. Then set this cover by hand in YouTube Studio, or ask Claude to re-apply it." });
+    return false;
+  }
+}
+
+/** Recent uploads that still show YouTube's frame get our cover, a few a run (lib/cover.ts needsCover). */
+async function repairCovers(prisma: PrismaClient, run: Run, token: string): Promise<void> {
+  const since = new Date(Date.now() - COVER_DAYS * 86_400_000);
+  const ups = await prisma.upload.findMany({
+    where: { youtubeId: { not: null }, publishAt: { gte: since }, state: { in: ["scheduled", "uploaded", "published"] }, video: { deletedAt: null, channelId: run.channelId } },
+    orderBy: { publishAt: "desc" }, select: { youtubeId: true, video: { select: { id: true, style: true } } },
+  });
+  // COVERS_NOW=1 (Publish → covers_now, after the owner verifies a channel): every miss, refused ones too, this run
+  const now = process.env.COVERS_NOW === "1";
+  const refused = (s: unknown) => (s && typeof s === "object" && "coverRefusedAt" in s ? 1 : 0);
+  const todo = ups.filter((u) => needsCover(u.video.style, run.channelId === CHANNEL_ONE, now ? Infinity : Date.now(), now))
+    .sort((a, b) => refused(a.video.style) - refused(b.video.style)).slice(0, now ? 60 : COVERS_PER_RUN);
+  for (const u of todo) {
+    console.log(`${u.video.id}: no cover of ours on YouTube yet; setting it`);
+    await applyCover(prisma, run, token, u.video.id, u.youtubeId!, u.video.style);
   }
 }
 
@@ -74,11 +110,11 @@ async function main(): Promise<void> {
     const channels = await activeChannels(prisma);
     if (!channels.length) console.log("No active channel. Nothing to do.");
     for (const ch of channels) {
-      const first = ch.id === layout().default;
+      const first = ch.id === CHANNEL_ONE;   // channel #1 kept the plain keys (lib/channel-scopes.ts PLAIN_KEY_CHANNEL)
       const run: Run = { channelId: ch.id, settings: channelSettings(base, ch.settings), quota,
         key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: `,
-        // the channel's own upload category (its pack); channel #1 keeps categoryOf's single category
-        category: first ? UPLOAD_CATEGORY : channelPack(ch.id).uploadCategory };
+        // the channel's own upload category (its pack; "22" without one)
+        category: channelPack(ch.id).uploadCategory };
       console.log(`== ${ch.name} (${ch.id})`);
       try {
         await publishChannel(prisma, run, tokenOf(ch));
@@ -118,6 +154,7 @@ async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: Chan
     }
     const refreshed = await refreshPublished(prisma, token, new Date(), channelId);
     if (refreshed.published.length || refreshed.stillPrivate.length || refreshed.missing.length) console.log("status check:", refreshed);
+    await repairCovers(prisma, run, token);   // before the pause check: a cover is never held back by paused uploads
 
     if (settings.uploadsPaused) return void console.log("Uploads are paused in settings. Nothing uploaded.");
 
@@ -246,7 +283,7 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
     const file = path.join(dir, "video.mp4");
     await downloadReleaseAsset(repoSlug(ROOT), `video-${video.id}`, "video.mp4", file);
     const meta = youtubeMeta(video, disclaimer, format);
-    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: run.channelId === layout().default ? categoryOf(video.style) : run.category });
+    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: run.category });
     await prisma.$transaction([
       prisma.upload.upsert({
         where: { videoId: video.id },

@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 0,
   "notes": [
     {
       "id": "cmwn0yhck0001jj0928f6obym",
       "kind": "general",
       "area": "topic",
       "text": "Make sure you choose topics which are gaining traction. Because what's in demand will be watched other does not matter how good will be not seen by people.",
-      "status": "open",
-      "response": "improver handed → research: Which Shorts topics we pick (and whether they're gaining traction) is the research agent's lane; Scout already did the long-video part. · research partly → improver: Tonight 3 more Shorts topics from references rising now: tunnel boring machine (245K views a day, 118x its channel), the Paris Metro's rubber tyres (542K a day) and AI-made GPU frames (113K a day), each with views a day recorded; the improver's part is still ranking the feed by that traction (proposal tech-topic-traction-score). · scout partly → research: Long topics now ranked by traction: I added the rocket-engine and NVIDIA-chip topics from the niche's fastest-growing long videos (66K and 24K views a day) and set high priority on the four whose references are growing fastest; Shorts topics are research's part. · waiting for research, improver",
+      "status": "addressed",
+      "response": "improver fixed: The topic feed now ranks a topic whose reference video is rising this month higher (by its views a day, up to +1 point; references over 90 days old add nothing), so the planner takes what is gaining traction first. (7d101e8) · research partly → improver: Tonight 3 more Shorts topics from references rising now: tunnel boring machine (245K views a day, 118x its channel), the Paris Metro's rubber tyres (542K a day) and AI-made GPU frames (113K a day), each with views a day recorded; the improver's part is still ranking the feed by that traction (proposal tech-topic-traction-score). · scout partly → research: Long topics now ranked by traction: I added the rocket-engine and NVIDIA-chip topics from the niche's fastest-growing long videos (66K and 24K views a day) and set high priority on the four whose references are growing fastest; Shorts topics are research's part.",
       "at": "2026-11-19T04:02:55.701Z",
       "video": {
         "id": "v-20261119-01",

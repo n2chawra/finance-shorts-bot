@@ -1,6 +1,6 @@
 # Champion recipe: Disaster Desk
 
-The writer and the director follow this wherever CLAUDE.md describes Paisa Panchayat's recipe (money Shorts, the 28–35 s
+The writer and the director follow this over the shared prompts' defaults (money Shorts, the 28–35 s
 length, the flat cast). The hard rules do not change:
 - true, sourced facts;
 - every figure from code or a sourced `facts` entry;
@@ -32,8 +32,11 @@ the sound.
 - **Fast lane:** a major recent crash (official statements, ATC as text, ADS-B data) takes the next slot, labelled
   preliminary, with a follow-up when the preliminary report lands.
 - **Avoid:** natural-disaster explainers, fiction, open blame, gore.
-- **The turning figure:** hold the survivor or death figure for one beat ("about 50 were alive… only 10 survived"). It
-  never goes in the title or the first line.
+- **The turning figure:** hold the survivor or death figure for one beat ("about 50 were alive… only 10 survived").
+  Never in the title. **A long video's first line states the stakes** (owner, 2026-11-22: "like this small issue
+  resulted in death of this many people… that actually make people curious about the rest"): the small cause and
+  what it led to, plainly and without horror ("One changed rod on a hotel walkway killed 114 people."). A Short
+  still keeps the toll for its payoff.
 - **Technical depth:** explain the physics properly, one step at a time, on a flat diagram. Viewers write paragraph-long
   explanations in the comments.
 - **One human moment,** told with respect: a crew member who went back, a last radio call shown as text, a passer-by.
@@ -46,7 +49,8 @@ the sound.
    speed or load) and the tag "3D reconstruction · not actual footage". Never a logo ident or a sponsor.
 2. **The vehicle or structure named by 2 s.**
 3. **A figure on screen by 5 s:** altitude, speed, load or a clock.
-4. **The whole arc in 45 s,** without the toll: what it was, what went wrong, how fast it happened.
+4. **The whole arc in 45 s:** the stakes first (the small cause and the toll it led to, one plain sentence), then
+   what it was, what went wrong, how fast it happened.
 5. **The promise of one cause chain:** "It wasn't one mistake. It was five, and the last one took eleven seconds."
 6. **Title card with a drop to silence** (0.8 s), then the drone returns.
 

@@ -1,5 +1,9 @@
 # Many channels on one platform: a one-time setup per channel, start and pause any time
 
+_2026-11-23: channel #1 (the first finance channel) and a second channel drawn on a dive kit were deleted
+from the platform (Delete channel on the Channels page). "Channel #1" below is history; the default
+channel is now `geography-maps-geopolitical-mysteries`._
+
 _Updated 2026-11-17 (owner, before moving to the Max plan). Four changes:_
 - _Every channel sets its own Shorts and long-video counts, both for making and for posting._
 - _Before any big research, a **quick verdict** says whether the niche is doable and worth it (money
@@ -180,9 +184,9 @@ second channel launches (the system raises a notification with the steps).
        cycle), the quota left across channels, and the plan's usage, with the reason for each. The
        owner's own numbers from "Add channel" are shown next to the advice. Whichever the owner
        accepts on the Launch review becomes the channel's settings.
-     - **Shorts, long or both:** long videos only where the niche's long hits show demand. Until one
-       of the channel's own Shorts wins, the long-video topics come from this research, because
-       channel #1's Scout rule (the full story of a Short with 1K+ views) has no Shorts to draw on yet.
+     - **Shorts, long or both:** long videos only where the niche's long hits show demand. Long-video
+       topics come from this research and Scout's feed. No channel's long video ever needs one of its
+       own Shorts to have views first (owner, 2026-11-22).
 4. **Build the channel pack (automatic)** in `channels/<slug>/`:
    - `profile.md`;
    - `formats.json` and `shapes.json` (starting from the shared library);
@@ -210,7 +214,7 @@ second channel launches (the system raises a notification with the steps).
    - The owner clicks **I like it**, leaves notes (fixed and re-rendered; a note on the look changes
      the pack, so later videos follow it too), or clicks **Stop**. After 3 rounds of notes without an
      approval, the page asks whether the niche or the reference should change instead.
-   - The approved samples become the channel's reference videos, as `v-directed-netflix` is for
+   - The approved samples become the channel's reference videos, as the first channel's approved reference was for
      channel #1 (the director and QA work to them), and the first videos of the pre-launch backlog.
 6. **Branding kit and connect (owner):**
    - the kit is shown on the Channels page: name ideas, avatar and banner PNGs to download, and the
@@ -324,8 +328,8 @@ uploads. Both were visible in public data beforehand. The setup measures them:
 
 ## Hands-off after launch
 - **Automatic drop diagnosis.** If a channel's stayed to watch falls 10 points or more below its
-  previous two weeks (views alone swing too much to trust), a routine runs the analysis done for Paisa
-  Panchayat on 2026-11-04 and 2026-11-11:
+  previous two weeks (views alone swing too much to trust), a routine runs the analysis done for channel #1
+  on 2026-11-04 and 2026-11-11:
   - length, topic family, gaps, what changed, the upload method and category;
   - it fixes what the rules allow (revert the last default change, retire a losing family);
   - it notifies only for decisions.
@@ -402,14 +406,14 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   usage runs short or after the move to a bigger plan. The video run makes that many and the posting
   slots follow; the dashboard checks the quota and usage totals first.
 
-## Platform changes (one-time; Paisa Panchayat becomes channel #1 with no change in behaviour)
+## Platform changes (one-time; the first finance channel becomes channel #1 with no change in behaviour)
 1. **Repo layout:**
    - every per-channel file moves under `channels/<slug>/`: profile, market, formats, shapes
      and the weekly loop's challenger list, topic feeds, history, `videos/`, metrics, editor ranking, feedback acknowledgements and
      notifications;
    - shared code stays where it is;
    - `generator/settings.py` gains `channel_root(slug)`, and every command takes `--channel` (default
-     `paisa-panchayat`);
+     channel #1; now `geography-maps-geopolitical-mysteries`);
    - video ids stay unique per folder.
 2. **Database (one migration):**
    - a `Channel` table;
@@ -450,8 +454,8 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   (`generationPaused`, `agents.paused`).
   - Paths: `config/channel-layout.json` maps every per-channel file into `channels/<slug>/`; code reads
     them through `generator/channels.py` and `workers/lib/channels.ts`; `generator.run --channel`.
-    Paisa Panchayat's files moved to `channels/paisa-panchayat/` (git renames, history kept).
-  - Database: `Channel` table (Paisa Panchayat, active), `channelId` on Video, Topic, ChannelDay,
+    Channel #1's files moved to `channels/<its slug>/` (git renames, history kept).
+  - Database: `Channel` table (channel #1, active), `channelId` on Video, Topic, ChannelDay,
     Breakdown, Notification, AgentActivity, Feedback and Study. `Setting` and `Template` stay
     platform-wide; per-channel overrides live in `Channel.settings`.
   - Workers: publish, stats, stats-deep and the snapshot loop over channels, each with its own token
@@ -482,7 +486,7 @@ uploads. Both were visible in public data beforehand. The setup measures them:
   titles only on the `niche-data` branch for 30 days; reads with channel #1's sign-in, ~1,400 units),
   setup stages with the verdict and Continue/Stop on the Channels page, `lib/setup-sync.ts`, and
   `.claude/skills/new-channel` (scan + verdict phases). Backtest: finds big money over budget tips;
-  misses the news and length lessons (`channels/paisa-panchayat/research/backtest-2026-11-17.md`).
+  misses the news and length lessons (channel #1's `research/backtest-2026-11-17.md`).
   Next: 3b full research and advice, 3c channel pack and the niche-agnostic pipeline, 3d samples and
   the Launch review, 3e routines for many channels.
 - **2026-11-17: step 3b (full research numbers) done.** `lib/research.ts` + `niche-research.ts`: families
@@ -545,12 +549,12 @@ uploads. Both were visible in public data beforehand. The setup measures them:
 
 ## Verification
 - Channel #1 after the refactor: all test suites pass, and a full dry-run video
-  (`generator.run state/check-plan/render --channel paisa-panchayat`) matches today's output.
+  (`generator.run state/check-plan/render --channel <channel #1>`) matches today's output.
 - Two test channels in sample mode: the dashboard switches and filters, and pause stops the
   publisher and the routines (a routine exits on a paused channel).
 - A full setup run on a sample niche: the pack passes `check-plan`, and two sample Shorts render and
   pass the gates.
-- **Verdict backtest:** run the quick verdict on Paisa Panchayat's niche (a Go is expected) and on a
+- **Verdict backtest:** run the quick verdict on channel #1's niche (a Go is expected) and on a
   niche whose hits depend on real footage or faces on camera (a "not doable" is expected). Also run
   it on one with very low demand (a Don't is expected).
 - **Sample likeness:** for each sample, the measured shot length, cuts a minute and words a minute are
@@ -559,11 +563,11 @@ uploads. Both were visible in public data beforehand. The setup measures them:
 - **Video counts:** a channel set to 0 Shorts or 0 long videos makes and posts none; making ahead of
   posting stops at the backlog cap; a change that would go over the quota is warned about.
 - Quota keeper: unit tests for the budget and its priority order.
-- **Research backtest on Paisa Panchayat:** run the niche research as if the channel were new and
+- **Research backtest on channel #1:** run the niche research as if the channel were new and
   check that it ranks billionaire and money-at-scale stories above news and personal budget, and Shorts
   of 35 s or less above longer ones. If it doesn't find our own lessons, it isn't deep enough.
 - Drop diagnosis replayed on the 28 Oct – 3 Nov data finds length, topic and the upload gap.
-- The research backtest on Paisa Panchayat also finds the first-second lesson: hits state the subject
+- The research backtest on channel #1 also finds the first-second lesson: hits state the subject
   and the number in the title and first line.
 - Two test channels each run their own weekly loop: a challenger on one never counts toward the
   other's verdict, and the guard blocks a second challenger on either.

@@ -24,7 +24,7 @@ export type HealthInput = {
   critical: string[];
   /** generation paused on purpose: no buffer alarm */
   generationPaused?: boolean;
-  /** the stop rule's notice and 1 a day: new channels. Channel #1 keeps CLAUDE.md's own escalation (the improver's) */
+  /** the stop rule's notice and 1 a day: every channel but channel #1 (deleted 2026-11-23), which kept the improver's escalation */
   stopRuleActions?: boolean;
 };
 export type Health = {

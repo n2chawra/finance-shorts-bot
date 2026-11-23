@@ -2111,6 +2111,187 @@
         "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
         "https://learninglegacy.crossrail.co.uk/wp-content/uploads/2017/04/Machine-driven-tunnels-on-the-Elizabeth-line-London.pdf"
       ]
+    },
+    {
+      "format": "short",
+      "kind": "evergreen",
+      "priority": "normal",
+      "currency": "USD",
+      "reach": "global",
+      "templates": [
+        "any"
+      ],
+      "found": "2026-11-22",
+      "expires": "2027-02-20",
+      "status": "new",
+      "id": "2026-11-22-how-wings-lift",
+      "title": "Why Is the School Answer for How Planes Fly Wrong?",
+      "category": "machines",
+      "stories": [
+        "machine_works"
+      ],
+      "demand": {
+        "title": "What Makes an Airplane Fly | 3D Animation",
+        "views": 3489716,
+        "url": "https://youtube.com/shorts/Vz7ejvMGBXk",
+        "channel": "3D Eye",
+        "channelSubs": 161000,
+        "outlier": 21.68,
+        "ageDays": 12.9,
+        "viewsPerDay": 270056
+      },
+      "hook": "Most of us were taught why a wing lifts a plane. NASA says that answer is wrong.",
+      "angle": "Cutaway of an A380 wing in a wind tunnel of glowing streamlines. The school answer: air over the longer top must hurry to meet the air underneath (equal transit). Show two air parcels split at the leading edge: the top one arrives first, not together, so the premise fails; a flat paper plane and a symmetric wing still lift. The real step: the wing at an angle turns the airflow downward, faster flow and lower pressure above, the air is pushed down and the wing is pushed up. Payoff (computed by code from the two Airbus figures): each square metre of an A380's wing holds up about 680 kg at take-off, a small car on every square metre. Loop back to the wing.",
+      "why_now": "3D Eye's airplane Short has 3.49M views in 13 days on a 161K channel (21.7x) and adds 270K a day; it is the only on-profile machine in that channel's top five. A myth the niche's expert commenters correct: exactly the 'never skip the causal step' rule in our profile.",
+      "facts": [
+        {
+          "label": "Maximum take-off weight of the Airbus A380, in tonnes",
+          "value": 575,
+          "unit": "count",
+          "as_of": "2022-02-01",
+          "source": "Airbus",
+          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Reference wing area of the A380, in square metres",
+          "value": 845,
+          "unit": "count",
+          "as_of": "2022-02-01",
+          "source": "Airbus",
+          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Wingspan of the A380, in metres",
+          "value": 79.8,
+          "unit": "count",
+          "as_of": "2022-02-01",
+          "source": "Airbus",
+          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Maximum certified seating of the A380",
+          "value": 853,
+          "unit": "count",
+          "as_of": "2022-02-01",
+          "source": "Airbus",
+          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+          "fixed": true
+        }
+      ],
+      "maths": null,
+      "verify": [
+        "A380 575 t maximum take-off weight, 845 m2 wing area, 79.8 m wingspan, 853 max seats (Airbus Facts and Figures, Feb 2022)",
+        "NASA Glenn: the equal-transit theory is wrong; molecules split at the leading edge do not meet at the trailing edge; its predicted lift is much less than observed; symmetric wings and flat plates lift",
+        "Load per square metre is computed by code (575,000 kg / 845 m2), never typed; say 'at maximum take-off weight'",
+        "The streamline drawing: tag it 'illustration'; air over the top arrives at the trailing edge first (show it so)"
+      ],
+      "sources": [
+        "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+        "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/foilw1",
+        "https://www.grc.nasa.gov/WWW/K-12/WindTunnel/disclaimer.html"
+      ]
+    },
+    {
+      "id": "2026-11-23-golden-gate-cable-spinning",
+      "format": "short",
+      "title": "How Was the Golden Gate Bridge's Cable Spun in the Air, One Wire at a Time?",
+      "category": "structures",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "machine_works"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How Humans Mastered Bridge Building",
+        "views": 2436229,
+        "url": "https://www.youtube.com/watch?v=Hl9LUJud62Y",
+        "channel": "Proto Craft",
+        "channelSubs": 93600,
+        "outlier": 26.03
+      },
+      "hook": "Each of the Golden Gate Bridge's two main cables is almost a metre thick. Nobody lifted it into place.",
+      "templates": [
+        "any"
+      ],
+      "angle": "Cutaway of a main cable over the tower saddle. The mechanism: spinning wheels run back and forth between the anchorages on a cable, each trip laying a pencil-thin steel wire, 0.192 in, across the strait; wires are bundled into 61 strands, then squeezed round and wrapped. Dive from the bridge to the cable cross-section to a single wire with its scale badge. Payoff (computed by code from the sourced facts): the 80,000 miles of wire in both cables would wrap round the Earth's equator about 3 times. Loop back to the cable on the tower.",
+      "why_now": "Machine Shorts are our best lane so far: Crossrail (tunnel boring machine) reached 1,362 views in its first day, 5x any other Short. Bridges are the niche's strongest structure lane in the 18 Nov scan: Proto Craft's 'How Humans Mastered Bridge Building' 2.44M on 93.6K subscribers (26x) and 'How Bridges Get Super Strength' 515K (5.5x, a 46 s Short). Nobody in the scan tells how a suspension cable is actually made.",
+      "facts": [
+        {
+          "label": "Galvanized steel wires in one main cable",
+          "value": 27572,
+          "unit": "count",
+          "as_of": "1937-05-27",
+          "source": "Golden Gate Bridge, Highway and Transportation District",
+          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+          "fixed": true
+        },
+        {
+          "label": "Diameter of one of those wires, in inches",
+          "value": 0.192,
+          "unit": "count",
+          "as_of": "1937-05-27",
+          "source": "Golden Gate Bridge, Highway and Transportation District",
+          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+          "fixed": true
+        },
+        {
+          "label": "Diameter of one main cable including the wrapping, in metres",
+          "value": 0.92,
+          "unit": "count",
+          "as_of": "1937-05-27",
+          "source": "Golden Gate Bridge, Highway and Transportation District",
+          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+          "fixed": true
+        },
+        {
+          "label": "Total length of steel wire in both main cables, in kilometres",
+          "value": 129000,
+          "unit": "count",
+          "as_of": "1937-05-27",
+          "source": "Golden Gate Bridge, Highway and Transportation District",
+          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+          "fixed": true
+        },
+        {
+          "label": "Main span between the towers, in metres",
+          "value": 1280,
+          "unit": "count",
+          "as_of": "1937-05-27",
+          "source": "Golden Gate Bridge, Highway and Transportation District",
+          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+          "fixed": true
+        },
+        {
+          "label": "Earth's equatorial radius, in kilometres",
+          "value": 6378.137,
+          "unit": "count",
+          "as_of": "2024-01-01",
+          "source": "NASA NSSDCA Earth Fact Sheet",
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+          "fixed": true
+        }
+      ],
+      "maths": null,
+      "verify": [
+        "Golden Gate District: 27,572 galvanized steel wires of 0.192 in per main cable (61 strands, about 452 wires each); main cable 36 3/8 in (0.92 m) with wrapping; 80,000 mi (129,000 km) of wire in both main cables; main span 4,200 ft (1,280 m); built 1933-1937",
+        "The cables were spun in place, wire by wire, by wheels travelling between the anchorages (Golden Gate exhibit 'Spinning the main cables'; PBS American Experience)",
+        "Times round the equator is computed by code: 129,000 km / (2 x pi x 6,378.137 km), about 3.2; say 'about three times', never typed",
+        "Tag the cable cross-section 'illustration, not to scale'; the as_of date is the bridge's opening (27 May 1937)"
+      ],
+      "sources": [
+        "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+        "https://www.goldengate.org/exhibits/spinning-the-main-cables/",
+        "https://www.pbs.org/wgbh/americanexperience/features/goldengate-spinning",
+        "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+      ],
+      "found": "2026-11-23",
+      "expires": "2027-02-21",
+      "status": "new"
     }
   ]
 }

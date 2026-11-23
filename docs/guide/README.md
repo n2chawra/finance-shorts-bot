@@ -3,7 +3,12 @@
 This folder explains the whole project, from the one-minute pitch to how every piece works. Read
 it top to bottom once, then use it as a reference when someone asks you a question.
 
-**Channel:** Money in 60 (YouTube Shorts) · **Dashboard:** https://courageous-granita-bb8b51.netlify.app
+> **Note (2026-11-23):** this guide was written when the project ran one finance channel, which has
+> since been deleted. The pipeline it describes is the same, but upload times, the disclaimer, the cast
+> and the finance examples are that channel's. Each live channel's own settings and strategy are in
+> `channels/<slug>/` (`channel.json`, `profile.md`, `prompts/recipe.md`); the current brief is `CLAUDE.md`.
+
+**Channels:** see `config/channels.json` (default `geography-maps-geopolitical-mysteries`) · **Dashboard:** https://courageous-granita-bb8b51.netlify.app
 · **Repo:** `n2chawra/finance-shorts-bot` (private)
 
 ## Start here

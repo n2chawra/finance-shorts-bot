@@ -5,7 +5,7 @@ import path from "node:path";
 import { test } from "node:test";
 
 import { channelSettings, decryptToken, encryptToken, refreshTokenOf } from "../lib/channel-auth.ts";
-import { cpath, crel, mapped } from "../lib/channels.ts";
+import { CHANNEL_ONE, cpath, crel, layout, mapped } from "../lib/channels.ts";
 import { COST, QuotaKeeper, allowed, migrate, quotaDay } from "../lib/quota.ts";
 import { DEFAULT_SETTINGS } from "../lib/settings.ts";
 
@@ -13,14 +13,14 @@ const SECRET = "a-test-secret-of-enough-length";
 
 test("legacy paths until the channel has a folder, then the folder", () => {
   const root = mkdtempSync(path.join(tmpdir(), "ch-"));
-  assert.equal(crel("videos/v-1/plan.json", root, "paisa-panchayat"), "videos/v-1/plan.json");
-  mkdirSync(path.join(root, "channels", "paisa-panchayat"), { recursive: true });
-  assert.equal(crel("videos/v-1/plan.json", root, "paisa-panchayat"), "channels/paisa-panchayat/videos/v-1/plan.json");
-  assert.equal(crel("improvement/research/topics.json", root, "paisa-panchayat"), "channels/paisa-panchayat/research/topics.json");
-  assert.equal(crel("config/settings.json", root, "paisa-panchayat"), "config/settings.json");
+  assert.equal(crel("videos/v-1/plan.json", root, "first-channel"), "videos/v-1/plan.json");
+  mkdirSync(path.join(root, "channels", "first-channel"), { recursive: true });
+  assert.equal(crel("videos/v-1/plan.json", root, "first-channel"), "channels/first-channel/videos/v-1/plan.json");
+  assert.equal(crel("improvement/research/topics.json", root, "first-channel"), "channels/first-channel/research/topics.json");
+  assert.equal(crel("config/settings.json", root, "first-channel"), "config/settings.json");
   assert.equal(mapped("improvement/activity/x.json"), null);
-  process.env.CHANNEL = "paisa-panchayat";
-  assert.equal(cpath(root, "history", "history.json"), path.join(root, "channels", "paisa-panchayat", "history", "history.json"));
+  process.env.CHANNEL = "first-channel";
+  assert.equal(cpath(root, "history", "history.json"), path.join(root, "channels", "first-channel", "history", "history.json"));
   delete process.env.CHANNEL;
 });
 
@@ -33,7 +33,7 @@ test("tokens round-trip, and a wrong secret can't read them", () => {
 
 test("channel #1 falls back to the secret until its token is stored; others need their own", () => {
   const env = { YT_REFRESH_TOKEN: "env-token", SESSION_SECRET: SECRET } as NodeJS.ProcessEnv;
-  assert.equal(refreshTokenOf({ id: "paisa-panchayat", refreshTokenEnc: null }, env), "env-token");
+  assert.equal(refreshTokenOf({ id: CHANNEL_ONE, refreshTokenEnc: null }, env), "env-token");
   assert.equal(refreshTokenOf({ id: "second", refreshTokenEnc: null }, env), null);
   assert.equal(refreshTokenOf({ id: "second", refreshTokenEnc: encryptToken("own", SECRET) }, env), "own");
 });
@@ -98,7 +98,7 @@ test("quota day resets at midnight Pacific, and an old single-pool row moves to 
 test("a manifest belongs to the channel folder it sits in", async () => {
   const { channelOfManifest } = await import("../ingest.ts");
   const root = path.join(tmpdir(), "repo");
-  assert.equal(channelOfManifest(path.join(root, "videos", "v-1", "manifest.json"), root), "paisa-panchayat");
+  assert.equal(channelOfManifest(path.join(root, "videos", "v-1", "manifest.json"), root), layout().default);
   assert.equal(channelOfManifest(path.join(root, "channels", "second-one", "videos", "v-1", "manifest.json"), root), "second-one");
 });
 

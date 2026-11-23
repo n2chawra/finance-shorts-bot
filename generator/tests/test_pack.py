@@ -5,7 +5,7 @@ from generator import pack
 
 
 def test_channel_one_without_a_pack_keeps_its_values(tmp_path, monkeypatch):
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    monkeypatch.setenv("CHANNEL", "first-channel")
     p = pack.load(root=tmp_path)
     assert p["voices"]["shortsNarrator"] == "am_michael"
     assert p["language"] == "en-us" and p["numbers"] == "finance" and p["currency"] == "USD"
@@ -15,7 +15,7 @@ def test_channel_one_without_a_pack_keeps_its_values(tmp_path, monkeypatch):
 
 
 def test_the_dashboard_disclaimer_setting_still_applies_without_a_pack(tmp_path, monkeypatch):
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    monkeypatch.setenv("CHANNEL", "first-channel")
     (tmp_path / "config").mkdir()
     (tmp_path / "config" / "settings.json").write_text(json.dumps({"disclaimer": "Not advice."}), encoding="utf-8")
     assert pack.load(root=tmp_path)["disclaimer"] == "Not advice."
@@ -94,7 +94,7 @@ def test_a_channels_own_sound_block_is_checked():
 
 def test_a_channel_has_its_own_length_never_another_channels(tmp_path, monkeypatch):
     """owner, 2026-11-18: a channel's lengths come from its own pack, never from config/settings.json
-    (Paisa Panchayat's); its own dashboard setting still wins"""
+    (the platform's); its own dashboard setting still wins"""
     from generator import settings
     (tmp_path / "config").mkdir()
     (tmp_path / "config" / "settings.json").write_text(json.dumps({"lengthMinSec": 20, "lengthMaxSec": 35}), encoding="utf-8")
@@ -110,7 +110,7 @@ def test_a_channel_has_its_own_length_never_another_channels(tmp_path, monkeypat
 
 
 def test_each_channel_carries_its_own_logo_never_another_channels(tmp_path, monkeypatch):
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    monkeypatch.setenv("CHANNEL", "first-channel")
     assert pack.logo(root=tmp_path) == "sikka"                     # channel #1 (no pack): its mascot, as before
     pack.scaffold("space-facts", "Space Facts", root=tmp_path)
     assert pack.logo("space-facts", root=tmp_path) is None         # no avatar yet: no logo, never Sikka
@@ -145,3 +145,11 @@ def test_a_sound_level_may_be_set_per_format():
     for bad, words in (({"bedLevel": {"reel": 0.2}}, "bedLevel"), ({"duck": {"short": 1.4}}, "duck"),
                        ({"duck": {}}, "duck"), ({"bedLevel": "loud"}, "bedLevel"), ({"duck": -0.1}, "duck")):
         assert any(words in p for p in pack.pack_problems({**pack.DEFAULTS, "sound": {**good, **bad}})), bad
+
+
+def test_disaster_desk_long_pace_note():
+    """Owner, 2026-11-22 on L-20261121-42: "Increase the pace by 1.25" -> long 0.92 * 1.25 = 1.15; Shorts unchanged."""
+    from generator import pack
+    slug = "disasters-and-engineering-failures-expla"
+    assert pack.voice_speed("long", slug) == 1.15
+    assert pack.voice_speed("short", slug) == 1.0

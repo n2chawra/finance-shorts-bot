@@ -667,3 +667,43 @@ test("all channels: every stat tile shows its whole label", async ({ page }) => 
   expect(cut, "stat tile labels cut off").toEqual([]);
   await expect(tiles.locator("dt", { hasText: "Views 7d" }).first()).toBeVisible();
 });
+
+test("tab rows move with the arrow keys and keep one tab in the Tab order", async ({ page, isMobile }) => {
+  test.skip(isMobile, "keyboard navigation is a desktop check");
+  await signIn(page);
+  // Feedback, Videos and Analytics said role="tab" but ignored Left/Right (2026-11-21)
+  for (const [path, list] of [["/feedback", "Feedback filter"], ["/videos", "Status"], ["/analytics", "Analytics sections"]] as const) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1 }).first()).toBeVisible({ timeout: 30_000 });
+    const tablist = page.getByRole("tablist", { name: list });
+    const tabs = tablist.getByRole("tab");
+    await expect(tablist.locator('[role="tab"][tabindex="0"]')).toHaveCount(1);
+    const selected = tablist.locator('[role="tab"][aria-selected="true"]');
+    const before = await selected.textContent();
+    await selected.focus();
+    await page.keyboard.press("ArrowRight");
+    await expect(selected).not.toHaveText(before ?? "", { timeout: 10_000 });
+    await expect(tablist.locator('[role="tab"][aria-selected="true"]')).toBeFocused();
+    await page.keyboard.press("Home");
+    await expect(tabs.first()).toHaveAttribute("aria-selected", "true");
+    await expect(tabs.first()).toBeFocused();
+  }
+});
+
+test("calendar day chips show whole times and counts, or marks when the day is too narrow", async ({ page }) => {
+  await signIn(page);
+  // 1440 px fits chips; 1280 px (the side panel squeezes each day to ~58 px) clipped every chip to "12.1K ♡62…" and "2… LONG"
+  for (const width of [1440, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/calendar");
+    await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Calendar/, { timeout: 30_000 });
+    await page.waitForLoadState("networkidle");
+    const clipped = await page.locator("button[aria-pressed] span").evaluateAll((els) => els
+      .filter((e) => (e as HTMLElement).offsetParent && e.children.length === 0 && e.textContent && e.scrollWidth > e.clientWidth + 1)
+      .map((e) => e.textContent));
+    expect(clipped, `clipped calendar text at ${width}px`).toEqual([]);
+    const chips = await page.locator("button[aria-pressed] span.\\@container > span").evaluateAll((els) => els
+      .filter((e) => (e as HTMLElement).offsetParent && e.scrollWidth > e.clientWidth + 1).map((e) => e.textContent));
+    expect(chips, `overflowing calendar chips at ${width}px`).toEqual([]);
+  }
+});

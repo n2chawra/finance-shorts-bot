@@ -212,11 +212,11 @@ def _save(root: Path, st_: dict, verdicts: list[dict], obs: dict, now: datetime)
 
 
 def own_channel(root: Path = ROOT) -> dict | None:
-    """The variant system is channel #1's. Another channel (one with its own pack) takes its own length
+    """The variant system was channel #1's (it had no pack). A channel with its own pack takes its own length
     and upload category instead (multi-channel, 2026-11-17: a geography Short assigned "28-35" failed its
-    own 60-80 s recipe); None for channel #1."""
-    from generator import channels, pack, settings
-    if channels.current() == channels.default() or not pack.path(root=root).is_file():
+    own 60-80 s recipe); None for a channel without a pack."""
+    from generator import pack, settings
+    if not pack.path(root=root).is_file():
         return None
     s = settings.load(root)
     return {"length": f"{s['lengthMinSec']}-{s['lengthMaxSec']}", "title": "figure_or_name", "style": "shot",

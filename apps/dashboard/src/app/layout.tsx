@@ -11,7 +11,7 @@ const jet = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet", display
 
 export const metadata: Metadata = {
   title: "Channel studio",
-  description: "Backlog, uploads, analytics and agents for the Paisa Panchayat channel",
+  description: "Backlog, uploads, analytics and agents for the owner's YouTube channels",
 };
 
 export const viewport: Viewport = {

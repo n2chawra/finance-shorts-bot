@@ -1,0 +1,20 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-22T16:33:31Z",
+  "finishedAt": "2026-11-22T16:40:08Z",
+  "summary": "Data audit clean on all six channels (one YouTube view correction, not a bug). Fixed two small generator bugs, wrote 7 video verdicts and Paisa Panchayat's weekly review, handed 3 Disaster Desk notes on.",
+  "decision": "acted",
+  "why": "Facts dated by year only (119 of 994) were never checked for a newer release, and a Commons TIFF thumbnail was cached under the wrong extension; both fixed with tests that fail on the old code.",
+  "findings": [
+    {"title": "Going Down: dashboard 434 views, YouTube 363 (v-20261121-54)", "detail": "The live count only takes numbers YouTube returned, so YouTube removed about 71 views after counting them; the dashboard follows after two matching lower reads."},
+    {"title": "Paisa Panchayat: 07:07 IST Shorts get the most views", "detail": "Median 477 views at 48 hours (12 Shorts) against 133 at 19:07 (15), same stayed-to-watch rate."},
+    {"title": "McDonald's worker vs CEO Short: 1,194 views, 48.4% stayed", "detail": "Biggest fall, 18.5 points, at 5.3 s on the 'worker in Poland' twist."}
+  ],
+  "changes": [
+    {"title": "Old facts dated by year, month or quarter are now checked", "detail": "generator/topics.py: stale_facts reads '2024', '2024-03', '2024-Q3' as the last day they cover (gen-008).", "branch": "agent/auditor/2026-11-23"},
+    {"title": "A TIFF's PNG thumbnail is cached as .png", "detail": "generator/media/library.py fetch names the file after what downloaded (gen-007).", "branch": "agent/auditor/2026-11-23"}
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [{"label": "Report", "url": "improvement/auditor/2026-11-23.md"}]
+}

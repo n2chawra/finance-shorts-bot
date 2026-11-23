@@ -15,7 +15,7 @@ import { replaceWhere, replaceableKinds } from "./lib/breakdowns.ts";
 import { notify, resolve } from "./lib/notify.ts";
 import { istDay } from "./lib/publishing.ts";
 import { youtubeClientConfigured } from "./lib/uploads.ts";
-import { layout } from "./lib/channels.ts";
+import { CHANNEL_ONE } from "./lib/channels.ts";
 import { activeChannels, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { accessToken, comments, report } from "./lib/youtube.ts";
 import { QuotaKeeper } from "./lib/quota.ts";
@@ -54,7 +54,7 @@ async function reach(prisma: PrismaClient, token: string, channelId: string, cha
   const h = { authorization: `Bearer ${token}` };
   const types = await fetch(`${REPORTING}/reportTypes`, { headers: h });
   if (types.status === 403) {
-    await notify(prisma, { key: "reporting-api-needed", source: "stats", severity: "warning", title: "Switch on the YouTube Reporting API: long videos can't be fixed blind",
+    await notify(prisma, { key: "reporting-api-needed", channelId: null, source: "stats", severity: "warning", title: "Switch on the YouTube Reporting API: long videos can't be fixed blind",
       detail: "Impressions and click-through rate come only from the YouTube Reporting API, which is still off in the Google Cloud project that holds our YouTube sign-in. Our long videos got 1–11 views each, and without impressions we can't tell whether YouTube isn't showing them or people see them and don't click.",
       fix: "Open https://console.developers.google.com/apis/api/youtubereporting.googleapis.com/overview?project=926280782174 (signed in as the channel's Google account) and click Enable. The next daily stats run creates the report job; numbers arrive about 2 days later." });
     return "reporting API off";
@@ -108,7 +108,7 @@ async function main(): Promise<void> {
       const refreshToken = tokenOf(ch);
       if (!refreshToken) { console.log(`::notice::${ch.id} is not connected to YouTube yet.`); continue; }
       console.log(`== ${ch.name} (${ch.id})`);
-      await deepChannel(prisma, ch.id, ch.name, refreshToken, ch.id === layout().default);
+      await deepChannel(prisma, ch.id, ch.name, refreshToken, ch.id === CHANNEL_ONE);
     }
   } finally {
     await prisma.$disconnect();

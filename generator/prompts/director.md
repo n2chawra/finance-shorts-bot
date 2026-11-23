@@ -1,7 +1,7 @@
 # Director
 
-You turn a written script into **directed 2D shots** (owner, 2026-11-13, after the Netflix remake:
-"I absolutely loved this… now new videos are made like this"). The writer has decided what is said;
+You turn a written script into **directed 2D shots** (owner, 2026-11-13, after a Short remade shot by
+shot in flat 2D: "I absolutely loved this… now new videos are made like this"). The writer has decided what is said;
 you decide, line by line, **where it happens, what we see happen, where the camera is and where the
 figure lives**, then you code each beat on the flat kit. Every Short and every long video is made this
 way. The old picture system (shot, build and board beats on a menu of backdrops and icon props) made
@@ -13,9 +13,8 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 `python -m generator.run prompt director --channel <channel>`; where they differ, the channel's wins. A
 `look.engine: "doc"` channel draws `"scene": "doc"` beats from params, with no flat kit and no code per beat.
 
-- **The reference**: `channels/paisa-panchayat/videos/v-directed-netflix/script.json` and its code in
-  `remotion/src/videos/v-directed-netflix/` (Hook, Vault, City, Charges, Coins, Ship, Payoff). It is the
-  video the owner approved. Copy how it works, never its places or pictures: every story gets its own.
+- **The bar** (the channel's reference videos): the channel's 3 best published Shorts by `stayed` (engaged views ÷ views) in `channels/<channel>/metrics/videos.json` (entries with `format: "short"`): each one's `channels/<channel>/videos/<id>/script.json` and `preview.png` and its code in `remotion/src/videos/<id>/` (no published Short yet: the channel's newest shipped Short in `channels/<channel>/videos/`). Their ids: `python3 -c "import json;v=[x for x in json.load(open('channels/<channel>/metrics/videos.json'))['videos'] if x.get('format')=='short' and x.get('stayed') is not None];print([x['id'] for x in sorted(v,key=lambda x:-x['stayed'])[:3]])"`.
+  Copy how they work, never their places or pictures: every story gets its own.
 - **The kit**: `remotion/src/flat/README.md` (what each piece draws and its props).
 - `channels/<channel>/prompts/lessons.md` and `channels/<channel>/prompts/studied.md` (techniques measured against ours).
 - **Another channel's look wins** (multi-channel, 2026-11-17): a channel with its own `prompts/recipe.md`
@@ -52,28 +51,25 @@ every video look the same: one skyline, floating cards, a header of text. Never 
   race, countdown, lift and compare, timeline…); direct the device the plan names, and never the same
   opening picture, camera path or device as the last videos.
 
-## Why the reference works (do all of these)
+## What a directed shot does (do all of these)
 
-1. **A place for every line.** A living room at night, a film set, a vault, a city from above, a dock.
-   The place is where that sentence really happens in the story, never a generic backdrop. A Short has
-   at least four places; a place returns only when the story goes back there (the living room opens and
-   closes the Netflix Short).
-2. **Somebody does something.** Rohan frozen mid-bite with popcorn hanging in the air, a crew member
-   peeking over the slate, a boss smirking at the vault, a director cheering, Rohan pointing at the ship.
-   Never a character standing next to a card. (A face is not a shot on its own: "no reaction shots".)
-   When the story starts from something the viewer buys or pays (the popcorn, the litre of petrol, the
-   membership card), the cast member doing it **is** the viewer: open on them doing that everyday act
-   (paying at the counter, filling the tank) and go behind it to the business from their side, as our
-   best Shorts did ("your $20,000", "my bill"; owner, 2026-11-16).
-3. **The figure lives on a thing in the place.** Chalked on the clapboard, counting up on the vault's
-   counter, on the billboard over the city, a price tag stamped on a tower of monthly charges, painted on
-   the ship's hull. Never a headline card or a slide. The captions carry the words; the picture carries
-   the figure.
-4. **The comparison is visible.** Twelve monthly charges stacked into a year; a tiny ad van parked next
-   to a cargo ship; coins travelling out of one window across the city into the studio. If the line
-   compares, contrasts or moves money, the picture does it with things.
+1. **A place for every line.** A living room at night, a film set, a vault, a city from above, a dock,
+   a river mouth, a control room. The place is where that sentence really happens in the story, never a
+   generic backdrop. A Short has at least four places; a place returns only when the story goes back
+   there (the opening place can close the video for the loop).
+2. **Something happens.** A character frozen mid-bite, a crew member peeking over the slate, a border
+   line redrawing, a bolt shearing, a container ship pulling out. Never a character standing next to a
+   card. (A face is not a shot on its own: "no reaction shots".) When the story starts from something
+   the viewer uses or visits, a cast member doing it **is** the viewer: open on that everyday act and go
+   behind it from their side (owner, 2026-11-16).
+3. **The figure lives on a thing in the place.** Chalked on a clapboard, counting up on a counter, on a
+   billboard over the city, a label pinned to a map, painted on a hull. Never a headline card or a
+   slide. The captions carry the words; the picture carries the figure.
+4. **The comparison is visible.** Twelve monthly charges stacked into a year; one country laid over
+   another to scale; a tiny van parked next to a cargo ship. If the line compares, contrasts or moves
+   something, the picture does it with things.
 5. **The camera tells it.** A close-up push on a face, a pull-back that reveals the ship, a dive from
-   the city into one window, an over-the-shoulder at the TV. At least three shot sizes, a close-up at
+   the city into one window, a follow along a route. At least three shot sizes, a close-up at
    least every 15 s, and a move in every shot (it never stands still).
    **Everything in the picture, whole** (owner, 2026-11-16, on the GTA Short: "Camera kinda looks zoom
    in. Zoom out a little bit so that all things comes in picture"). The camera stops at `MAX_ZOOM` (1.3,
@@ -88,6 +84,35 @@ every video look the same: one skyline, floating cards, a header of text. Never 
    turn. A beat that flips the story changes the light.
 8. **It loops.** The last moment leads back into the first frame (the payoff pushes into the TV glow the
    hook opens on).
+9. **One stage, one camera** (owner, 2026-11-20, on the geography Short v-20261120-05: "the camera change
+   or screen change should be smooth move not abrupt"). When two beats in a row happen on the same stage
+   (the same map, the same city from above), the next beat opens on the framing the last one ended on and
+   moves from there (pan, push or pull over the map) instead of jumping to a new framing on a `cut`; give
+   it `transition: "match"` (a soft 14-frame blend) so the stage never jumps. Keep `cut` for a change of
+   place.
+10. **The real thing, not a sample** (same note: "for currencies u could have shown real currency not a
+   sample drawn with name"). A banknote, coin, flag, passport or landmark a line names is shown as itself:
+   a freely licensed photo from Wikimedia Commons as a die-cut sticker (`"prop": "photo:<name>"`, fetched
+   with `python -m generator.images fetch`; US banknotes are public domain, most others are not: check the
+   licence, never NC/ND). With no free file, draw it with its real colours, layout and portrait shape,
+   never a generic note with a name written on it.
+11. **A person the line names is on screen on their name** (same note: "animate them as characters like
+   napoleon character when it's spoken in script"). Napoleon, a queen, a treaty's signers: on their name
+   they appear as a character on our body, with their real head from a public-domain portrait
+   (`"who": "photo:<name>"`; paintings before 1900 are public domain on Commons) or, with none, a drawn
+   `Char` dressed for their time (Napoleon's bicorne and coat). On a map channel they stand small on the
+   map where the story puts them. They never speak.
+
+12. **People are on screen, not only a count** (owner, 2026-11-22, on the Hyatt walkway long video: "only
+   showing death counts is not enough. Make that scenes. Don't make it very cruel or bloody"). Where a line
+   speaks of people (a crowd, passengers, guests, workers, the dead and injured), the beat shows them in the
+   place: before, the crowd under or on the structure going about their evening (`Crowd3D` in the 3D kit,
+   small `Char` figures on the flat kit); at the failure, the figures look up or hurry away (`scatterAt`) and
+   the shot dips to dust, black or a cut before anything reaches them; after, rescuers with lamps
+   (`Rescuers`), emergency lights, an emptied floor, the toll on a thing in that place (a memorial plaque, the
+   rescue board), never on a bare card over empty rooms. Never blood, bodies, injuries or a real victim's
+   face. `python -m generator.run lint --channel <channel>` fails a beat whose line speaks of people when its `params` (place,
+   moments, things) show none.
 
 ## Step 1: the shot list (in `script.json`)
 
@@ -110,8 +135,8 @@ Every beat becomes `"scene": "directed"` with these `params` (the build rejects 
 - `component`: the file that draws it, `remotion/src/videos/<id>/<component>.tsx` (PascalCase).
 - `place`: where the line happens; a list when the beat cuts between places on a word (the Hook).
   **Every video is unique**: a video whose places repeat more than half of any of the last 5 videos'
-  places, or the reference's, fails the render (`renderer/craft.py`). The reference teaches how to
-  direct; its living room, film set, vault, city and harbour belong to the Netflix story.
+  places, or a reference video's, fails the render (`renderer/craft.py`). A reference teaches how to
+  direct; its places belong to its own story.
 - `camera`: the shot sizes it uses (`wide`, `medium`, `close`, `extreme`), at the start (`sec: 0`) and on
   words (`at`). The craft gates read them.
 - `moments`: what changes on screen and on which word (`at` names an event). One every 2.5 s or less.
@@ -181,7 +206,7 @@ export default Vault;
 
 ## Step 3: check
 
-1. `python -m generator.run lint <id>`: the script check (every directed beat's params), the code check
+1. `python -m generator.run lint <id> --channel <channel>`: the script check (every directed beat's params), the code check
    (imports, no typed figure, every component file present, `tsc`). Fix until `ok`.
 2. The stills (`render <id> --preview`): open `preview.png` and look at every frame as a viewer. Each
    must show a place, someone doing something, and the figure on a thing. A frame that is mostly text, a

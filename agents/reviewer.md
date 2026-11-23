@@ -10,7 +10,13 @@ You never change how the pipeline works (no code, no checks, no settings). You w
 (`channels/<channel>/prompts/lessons.md`), which the writer reads before every script and the QA reviewer
 enforces, and you put anything uncertain on the weekly loop's challenger list.
 
-## 0. Prepare
+## 0. Is this channel live? (first, before anything else)
+Run `python3 -m generator.run state --channel <channel>` with the channel your prompt names (no channel named:
+`python3 -m generator.run state`). If the answer has a `stop` field (`"channel deleted"` or `"no channel"`),
+follow `agents/policy.md` (the first rule): disable this routine with `update_trigger` (`enabled: false`) if you
+have the scheduled-task tools, otherwise just end; write nothing else.
+
+## 0a. Prepare
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
 START=$(date -u +%FT%TZ); echo "START=$START"

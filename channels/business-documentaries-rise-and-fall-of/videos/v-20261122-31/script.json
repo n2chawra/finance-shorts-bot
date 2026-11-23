@@ -1,0 +1,1151 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61873,
+ "story": "business_war_short",
+ "shape": "versus",
+ "currency": "USD",
+ "style": {
+  "palette": "ocean",
+  "genre": "ledger",
+  "key": "A",
+  "bpm": 78
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "conflict",
+ "cta": "Lexus or Mercedes: which badge would you park outside? Comment",
+ "feed_id": "2026-11-22-lexus-450-prototypes",
+ "facts": [
+  {
+   "label": "Year Toyota began developing its flagship luxury car",
+   "value": 1984,
+   "unit": "year",
+   "as_of": "1984-01-01",
+   "source": "Toyota",
+   "url": "https://www.toyota-global.com/company/history_of_toyota/75years/text/leaping_forward_as_a_global_corporation/chapter2/section3/item5.html",
+   "fixed": true
+  },
+  {
+   "label": "Vehicle prototypes built, approximately",
+   "value": 450,
+   "unit": "count",
+   "as_of": "1989-09-01",
+   "source": "Toyota",
+   "url": "https://www.toyota-global.com/company/history_of_toyota/75years/text/leaping_forward_as_a_global_corporation/chapter2/section3/item5.html",
+   "fixed": true
+  },
+  {
+   "label": "Kilometres of driving tests, more than",
+   "value": 3.5,
+   "unit": "count_million",
+   "as_of": "1989-09-01",
+   "source": "Toyota",
+   "url": "https://www.toyota-global.com/company/history_of_toyota/75years/text/leaping_forward_as_a_global_corporation/chapter2/section3/item5.html",
+   "fixed": true
+  },
+  {
+   "label": "Development cost of the first Lexus, about",
+   "value": 1,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-07-11",
+   "source": "Jalopnik",
+   "url": "https://www.jalopnik.com/2211027/lexus-ls-400-toyota-f1-flagship-secret-project-billion-dollar/",
+   "fixed": true
+  },
+  {
+   "label": "U.S. launch price of the Lexus LS 400",
+   "value": 35000,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "1989-09-01",
+   "source": "Motoring Research",
+   "url": "https://www.motoringresearch.com/car-news/lexus-ls-400-review/",
+   "fixed": true
+  },
+  {
+   "label": "Lexus sales forecast it hit by the end of 1989",
+   "value": 16000,
+   "unit": "count",
+   "as_of": "1989-12-31",
+   "source": "Motoring Research",
+   "url": "https://www.motoringresearch.com/car-news/lexus-ls-400-review/",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.5,
+  "words": "Toyota vs *Mercedes*",
+  "angle": "versus"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Toyota could sell a car to anyone, except the people who bought a Mercedes.",
+   "events": {
+    "toyota": {
+     "word": "Toyota"
+    },
+    "sell": {
+     "word": "sell"
+    },
+    "anyone": {
+     "word": "anyone"
+    },
+    "except": {
+     "word": "except"
+    },
+    "mercedes": {
+     "word": "Mercedes"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "except"
+    },
+    {
+     "kind": "boom",
+     "at": "mercedes"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Toyota Cressida from the eighties at the kerb",
+     "a Mercedes S-Class"
+    ],
+    "things": [
+     "Toyota Cressida",
+     "Mercedes S-Class"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "anyone",
+      "size": "wide"
+     },
+     {
+      "at": "mercedes",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "toyota",
+      "what": "the Toyota pushes in"
+     },
+     {
+      "at": "except",
+      "what": "a stamp: EXCEPT"
+     },
+     {
+      "at": "mercedes",
+      "what": "cut to the Mercedes"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-1985-toyota-cressida-mx73-glx-i-sedan-2012-03-05-c770e522.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "out": "mercedes"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-mercedes-benz-w126-mopf-1x7a0398-c1cae528.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "mercedes"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Except",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "except",
+      "out": "mercedes"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "leaving",
+   "role": "promise",
+   "say": "Its own best customers got richer, and traded up to Mercedes and BMW.",
+   "events": {
+    "customers": {
+     "word": "customers"
+    },
+    "richer": {
+     "word": "richer"
+    },
+    "traded": {
+     "word": "traded"
+    },
+    "mercedes": {
+     "word": "Mercedes"
+    },
+    "bmw": {
+     "word": "BMW"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "traded"
+    }
+   ],
+   "params": {
+    "place": [
+     "the luxury cars Toyota's buyers moved to"
+    ],
+    "things": [
+     "Mercedes star",
+     "Mercedes rear",
+     "BMW flagship"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "mercedes",
+      "size": "medium"
+     },
+     {
+      "at": "bmw",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "customers",
+      "what": "the Mercedes star punches in"
+     },
+     {
+      "at": "mercedes",
+      "what": "the S-Class from behind"
+     },
+     {
+      "at": "bmw",
+      "what": "the BMW flagship"
+     },
+     {
+      "at": "traded",
+      "what": "an arrow: traded up"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "every": 10,
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-mercedes-emblem-auto-car-mercedes-benz-benz-1744-8d930790.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "customers"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-mercedes-benz-380-sel-w126-1983-left-rear-view-375aa82b.jpg",
+        "focus": [
+         0.5,
+         0.55
+        ],
+        "at": "mercedes"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-bmw-7-series-e32-9bb80a10.jpg",
+        "focus": [
+         0.5,
+         0.55
+        ],
+        "at": "bmw"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "arrow",
+      "from": [
+       0.25,
+       0.62
+      ],
+      "to": [
+       0.7,
+       0.38
+      ],
+      "label": "Traded up",
+      "at": "traded",
+      "out": "mercedes"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "secret",
+   "role": "build",
+   "say": "So in {fact1}, Toyota started a secret project: a luxury car to win them back.",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "toyota": {
+     "word": "Toyota"
+    },
+    "secret": {
+     "word": "secret"
+    },
+    "project": {
+     "word": "project"
+    },
+    "luxury": {
+     "word": "luxury"
+    },
+    "back": {
+     "word": "back"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "secret"
+    },
+    {
+     "kind": "scribble",
+     "at": "luxury"
+    }
+   ],
+   "params": {
+    "place": [
+     "Toyota's head office in Toyota City",
+     "Toyota's own company history"
+    ],
+    "things": [
+     "Toyota head office",
+     "Toyota history page"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "project",
+      "size": "medium"
+     },
+     {
+      "at": "luxury",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "the date slams in"
+     },
+     {
+      "at": "secret",
+      "what": "a stamp: SECRET"
+     },
+     {
+      "at": "project",
+      "what": "Toyota's history page lands"
+     },
+     {
+      "at": "luxury",
+      "what": "the highlighter swipes the line"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tmc-headquarters-building-toyota-cho-toyota-2019-43d2ef04.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "rise",
+      "amount": 0.12,
+      "grade": "cold",
+      "out": "project"
+     },
+     {
+      "kind": "document",
+      "at": "project",
+      "header": {
+       "form": "Company history",
+       "company": "Toyota Motor Corporation",
+       "title": "Leaping forward as a global corporation"
+      },
+      "lines": [
+       "Toyota began developing a flagship car",
+       "for customers who wanted more than a Toyota",
+       "and were leaving for European luxury brands.",
+       "The project took roughly six years."
+      ],
+      "hi": 1,
+      "phrase": "for customers who wanted more than a Toyota",
+      "pushAt": "project",
+      "markAt": "luxury",
+      "source": {
+       "form": "HISTORY",
+       "text": "Toyota",
+       "date": "1984-01-01"
+      }
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "1984-01-01",
+      "sub": "Toyota City, Japan",
+      "pos": "top",
+      "at": "so",
+      "out": "secret"
+     },
+     {
+      "kind": "stamp",
+      "text": "Secret",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.45
+      ],
+      "tilt": -6,
+      "at": "secret",
+      "out": "project"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "testing",
+   "role": "build",
+   "say": "Its engineers drove test cars more than {fact3} kilometres.",
+   "events": {
+    "engineers": {
+     "word": "engineers"
+    },
+    "drove": {
+     "word": "drove"
+    },
+    "test": {
+     "word": "test"
+    },
+    "cars": {
+     "word": "cars"
+    },
+    "kilometres": {
+     "word": "kilometres"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "test"
+    }
+   ],
+   "params": {
+    "place": [
+     "a test car's dashboard on a long winter road"
+    ],
+    "things": [
+     "odometer",
+     "the test distance"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "drove",
+      "size": "medium"
+     },
+     {
+      "at": "kilometres",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "engineers",
+      "what": "a label: test cars"
+     },
+     {
+      "at": "test",
+      "what": "the kilometres count up"
+     }
+    ],
+    "fig": {
+     "km": "{fact3}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-car-odometer-on-road-with-trees-and-snow-1056160-9d63ed67.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "night"
+     },
+     {
+      "kind": "count",
+      "figure": "km",
+      "eyebrow": "test driving",
+      "unit": "kilometres, more than",
+      "countAt": "test",
+      "countLen": 30,
+      "tone": "white",
+      "at": "test"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Test cars",
+      "sub": "on every kind of road",
+      "at": "engineers",
+      "out": "test"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "cost",
+   "role": "build",
+   "say": "Jalopnik puts the bill at about {fact4}. So would a Mercedes buyer ever pay that kind of money for a Toyota?",
+   "events": {
+    "jalopnik": {
+     "word": "Jalopnik"
+    },
+    "bill": {
+     "word": "bill"
+    },
+    "about": {
+     "word": "about"
+    },
+    "mercedes": {
+     "word": "Mercedes"
+    },
+    "buyer": {
+     "word": "buyer"
+    },
+    "toyota": {
+     "word": "Toyota"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "bill"
+    },
+    {
+     "kind": "boom",
+     "at": "toyota"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Toyota badge on a grille"
+    ],
+    "things": [
+     "Toyota badge",
+     "the bill"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "bill",
+      "size": "wide"
+     },
+     {
+      "at": "toyota",
+      "size": "close"
+     }
+    ],
+    "fig": {
+     "bill": "{fact4}"
+    },
+    "moments": [
+     {
+      "at": "jalopnik",
+      "what": "a source chip: Jalopnik"
+     },
+     {
+      "at": "bill",
+      "what": "the bill slams in"
+     },
+     {
+      "at": "buyer",
+      "what": "the badge pushes in"
+     },
+     {
+      "at": "toyota",
+      "what": "a stamp: A TOYOTA?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-toyota-emblem-on-the-front-grill-of-toyota-fortu-f403d57b.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc"
+     },
+     {
+      "kind": "count",
+      "figure": "bill",
+      "eyebrow": "the bill",
+      "unit": "about, to develop",
+      "countAt": "bill",
+      "countLen": 2,
+      "tone": "gold",
+      "at": "bill",
+      "out": "buyer"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "Jalopnik",
+      "date": "2026-07-11",
+      "at": "jalopnik",
+      "out": "buyer"
+     },
+     {
+      "kind": "stamp",
+      "text": "A Toyota?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": -6,
+      "at": "toyota"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "turn",
+   "role": "turn",
+   "say": "Toyota left its own name off. Six years on, it opened Lexus in America, at {fact5} a car.",
+   "events": {
+    "name": {
+     "word": "name"
+    },
+    "off": {
+     "word": "off"
+    },
+    "six": {
+     "word": "Six"
+    },
+    "lexus": {
+     "word": "Lexus"
+    },
+    "america": {
+     "word": "America"
+    },
+    "car": {
+     "word": "car"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "lexus"
+    }
+   ],
+   "params": {
+    "place": [
+     "the first Lexus on a showroom print"
+    ],
+    "things": [
+     "The first Lexus",
+     "the price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "lexus",
+      "size": "medium"
+     },
+     {
+      "at": "car",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "off",
+      "what": "a stamp: NO TOYOTA"
+     },
+     {
+      "at": "six",
+      "what": "the date slams in"
+     },
+     {
+      "at": "lexus",
+      "what": "the first Lexus print lifts"
+     },
+     {
+      "at": "america",
+      "what": "the second print lifts"
+     },
+     {
+      "at": "car",
+      "what": "a label with the price"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lexus-grill-emblem-2013-lexus-ls-460-9864297793-e4e9d2cc.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "night",
+      "out": "lexus"
+     },
+     {
+      "kind": "polaroids",
+      "at": "lexus",
+      "surface": "desk",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lexus-ls-400-xf10-fec99c8a.jpg",
+        "caption": "The first Lexus",
+        "at": "lexus"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lexus-ls-400-ucf20-classic-gala-2025-dsc-1092-fbbb22c4.jpg",
+        "caption": "Its big sedan",
+        "at": "america"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "No Toyota",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "off",
+      "out": "six"
+     },
+     {
+      "kind": "date",
+      "date": "1989-09-01",
+      "sub": "Lexus opens in the U.S.",
+      "pos": "top",
+      "at": "six",
+      "out": "car"
+     },
+     {
+      "kind": "label",
+      "text": "{fact5}",
+      "sub": "the first Lexus, new",
+      "at": "car"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "forecast",
+   "role": "build",
+   "say": "By the end of that year, Lexus had hit its forecast of {fact6} cars.",
+   "events": {
+    "end": {
+     "word": "end"
+    },
+    "year": {
+     "word": "year"
+    },
+    "lexus": {
+     "word": "Lexus"
+    },
+    "forecast": {
+     "word": "forecast"
+    },
+    "cars": {
+     "word": "cars"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "forecast"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Lexus showroom"
+    ],
+    "things": [
+     "Lexus dealership",
+     "the forecast"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "lexus",
+      "size": "medium"
+     },
+     {
+      "at": "forecast",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "end",
+      "what": "the date slams in"
+     },
+     {
+      "at": "lexus",
+      "what": "the showroom pushes in"
+     },
+     {
+      "at": "forecast",
+      "what": "a label with the forecast"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2005-baldrige-award-winner-park-place-lexus-5940-ff70bf0e.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "1989-12-31",
+      "sub": "the first year ends",
+      "pos": "top",
+      "at": "end",
+      "out": "forecast"
+     },
+     {
+      "kind": "label",
+      "text": "{fact6} cars",
+      "sub": "the forecast, hit",
+      "at": "forecast"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "Behind that one car, Toyota had built about {fact2} prototypes, before anyone had heard the name Lexus.",
+   "events": {
+    "behind": {
+     "word": "Behind"
+    },
+    "car": {
+     "word": "car"
+    },
+    "built": {
+     "word": "built"
+    },
+    "prototypes": {
+     "word": "prototypes"
+    },
+    "anyone": {
+     "word": "anyone"
+    },
+    "name": {
+     "word": "name"
+    },
+    "lexus": {
+     "word": "Lexus"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "built"
+    }
+   ],
+   "params": {
+    "place": [
+     "the poster over the first Lexus"
+    ],
+    "things": [
+     "The first Lexus",
+     "the prototype count"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "prototypes",
+      "size": "wide"
+     },
+     {
+      "at": "lexus",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "behind",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "anyone",
+      "what": "a stamp: PROTOTYPES"
+     },
+     {
+      "at": "lexus",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "protos": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lexus-ls-400-ucf20-classic-gala-2025-dsc-1091-0723a96d.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "date": "1989-09-01",
+      "title": "The first Lexus",
+      "figure": "protos",
+      "sub": "prototypes, about \u00b7 over six years",
+      "on": "behind",
+      "at": "behind"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Prototypes",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -5,
+      "at": "anyone",
+      "out": "lexus"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Lexus or Mercedes: which badge would you park outside? Either way, the Lexus was built by Toyota.",
+   "events": {
+    "lexus": {
+     "word": "Lexus"
+    },
+    "mercedes": {
+     "word": "Mercedes"
+    },
+    "badge": {
+     "word": "badge"
+    },
+    "outside": {
+     "word": "outside"
+    },
+    "either": {
+     "word": "Either"
+    },
+    "toyota": {
+     "word": "Toyota"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "toyota"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Lexus badge up close",
+     "the Toyota from the first frame"
+    ],
+    "things": [
+     "Lexus badge",
+     "Toyota Cressida"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "outside",
+      "size": "medium"
+     },
+     {
+      "at": "toyota",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lexus",
+      "what": "a label: Lexus?"
+     },
+     {
+      "at": "mercedes",
+      "what": "a label: or Mercedes?"
+     },
+     {
+      "at": "toyota",
+      "what": "back to the Toyota from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lexus-emblem-2013-lexus-ls-460-9864196465-95ce80e3.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "warm",
+      "out": "toyota"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-1985-toyota-cressida-mx73-glx-i-sedan-2012-03-05-c770e522.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "toyota"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Lexus?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "lexus",
+      "out": "mercedes"
+     },
+     {
+      "kind": "stamp",
+      "text": "Or Mercedes?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 5,
+      "at": "mercedes",
+      "out": "either"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}

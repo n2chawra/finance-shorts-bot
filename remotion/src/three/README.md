@@ -94,6 +94,12 @@ For `channels/disasters-and-engineering-failures-expla/` (build spec: its
   face shows a solid cap a shade darker, lit as the cut plane). A buckled part's shadow bends with it.
   `debris`: seeded slow-motion pieces and amber sparks to a floor, `kind` metal (thin bent panels,
   metallic sheen) or concrete (sawn lumps with rebar stubs). Parts only, never people.
+- **People** (`People.tsx`, owner 2026-11-22: "only showing death counts is not enough. Make that scenes. Don't
+  make it very cruel or bloody"): `Crowd3D` (seeded clay figures without faces on an `area`; `mood` stand /
+  dance / lookUp; `scatterAt` + `from`: everyone turns and hurries away from the failing part; `goneAt` fades
+  them out for the empty floor after a cut) and `Rescuers` (hi-vis figures with head lamps that walk in on
+  `enterAt` and bend over the debris). The failure never touches a figure on screen: dip to dust or black
+  before contact, then show the aftermath with rescuers and lights.
 - **Path3D** (`Path3D.tsx`): samples `{t, x,y,z}` or `{t, lat,lon,alt}` (+ `geo` projection) → a tube
   coloured by `v` on the ramp, a drop curtain to the ground, a dashed ground trace, `events` as Label3D
   callouts that write on as the head passes, a `marker` (a Jet) carried along with `bank`, and a `gap`

@@ -1,0 +1,329 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:25:41.346388+00:00",
+    "finishedAt": "2026-11-23T03:25:41.346388+00:00",
+    "notes": [
+      "style.bpm must be 70–75 for circuit"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T03:25:46.031798+00:00",
+    "finishedAt": "2026-11-23T03:25:46.031798+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:30:22.680865+00:00",
+    "finishedAt": "2026-11-23T03:30:22.680865+00:00",
+    "notes": [
+      "beat 'hook': moment at None is not one of this beat's events (name the word in `events` first)",
+      "note: 4 questions in about 359 s of speech; at least 11 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'bench': a \"Here's the game\" / \"Let's…\" warm-up is a line the channel has used too often; say it a new way"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:30:48.903259+00:00",
+    "finishedAt": "2026-11-23T03:30:48.903259+00:00",
+    "notes": [
+      "beat 'route2'.params.moments[1].do contains a typed number; use a placeholder: 'chapter1'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:30:54.417879+00:00",
+    "finishedAt": "2026-11-23T03:30:54.417879+00:00",
+    "notes": [
+      "beat 'far'.events.problem: no word 'problem' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:31:06.896194+00:00",
+    "finishedAt": "2026-11-23T03:31:06.896194+00:00",
+    "notes": [
+      "beat 'handoff'.params.moments[5].do contains a typed number; use a placeholder: 'rise2'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:31:12.504066+00:00",
+    "finishedAt": "2026-11-23T03:31:12.504066+00:00",
+    "notes": [
+      "beat 'outro'.params.assumption contains a typed number; use a placeholder: 'Simplified 3D illustrations: satellites, beams and waves are drawn far larger than life and not to scale.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T03:31:17.132059+00:00",
+    "finishedAt": "2026-11-23T03:31:17.132059+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:33:16.849079+00:00",
+    "finishedAt": "2026-11-23T03:33:16.849079+00:00",
+    "notes": [
+      "fact1 'Altitude of the Starlink constellation, about 550 km' is out of date: SpaceX (Michael Nicolls, 1 Jan 2026; Space.com, The Register, ISPreview) is lowering all ~4,400 satellites at ~550 km to ~480 km over 2026, and by Sep 2026 CelesTrak elements showed most at ~450-490 km. starlink.com/technology (JS-only, confirmed via search snippet) still says about 550 km, but that is superseded. Replace fact1 with ~480 km sourced to Space.com/The Register (Jan 2026, quoting SpaceX), or reword as 'Starlink's satellites fly about 480 km up (lowered from 550 km during 2026)'. Affects beats hook2, low, fire (labels/lines {fact1}), and maths low (part 480 -> low_pct 1.3%) in beat ratio.",
+      "Beat ratio: 'The trip up and back shrinks by the same amount' reads as shrinking BY 1.5%; it shrinks TO about that share. Change to e.g. 'The trip up and back shrinks to the same small share.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:34:07.277415+00:00",
+    "finishedAt": "2026-11-23T03:34:07.277415+00:00",
+    "notes": [
+      "facts[0] (480 km, 2026-01-01) is not one of the feed topic's facts; copy them exactly",
+      "the source line \"Data: Space.com (SpaceX's Michael Nicolls) · Wikipedia (Geostationary orbit) · Starlink (Technology) · Wikipedia (Starlink) · Nov 2026\" is too wide for the frame (2227 of 1784 px at 30 px): shorten each facts[].source to the publisher (e.g. 'Space.com'), one name per publisher"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:34:21.789527+00:00",
+    "finishedAt": "2026-11-23T03:34:21.789527+00:00",
+    "notes": [
+      "facts[0] (480 km, 2026-01-01) is not one of the feed topic's facts; copy them exactly"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T03:34:38.287823+00:00",
+    "finishedAt": "2026-11-23T03:34:38.287823+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T03:35:03.421844+00:00",
+    "finishedAt": "2026-11-23T03:35:03.421844+00:00",
+    "notes": [
+      "Re-review after revision: fact1 480 km confirmed on Space.com (all ~550 km satellites to ~480 km over 2026); 35,786 km on Wikipedia; 5 Ku-band arrays on starlink.com/technology (via search); 60 satellites May 2019 on Wikipedia + Spaceflight Now/Axios/CBS; low_pct 1.3% and ratio line fixed; cables drawn right; disclaimer present. Note: plan.json description Sources line omits Space.com."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T03:37:20.864849+00:00",
+    "finishedAt": "2026-11-23T03:37:20.864849+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T03:41:42.477780+00:00",
+    "finishedAt": "2026-11-23T03:41:42.477780+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T03:46:01.010820+00:00",
+    "finishedAt": "2026-11-23T03:57:55.905335+00:00",
+    "notes": [
+      "thumbnail is 1920x1080; a long video's must be 1280x720"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:00:03.648783+00:00",
+    "finishedAt": "2026-11-23T04:00:45.693193+00:00",
+    "notes": [
+      "thumbnail.pattern_id contains a typed number; use a placeholder: 'P4'"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:00:50.379285+00:00",
+    "finishedAt": "2026-11-23T04:00:50.379285+00:00",
+    "notes": [
+      "Beat catchit is out of causal order: it sits between upcable and fire, so the satellite 'catches it' before the dish's antennas fire the beam up (profile rule: never skip or misorder the causal step). Move catchit to right after fire, and reword home so it does not repeat the downlink, e.g. 'Into the internet through the ground station, and your video rides the same path back to you.' The claim itself is fine (uplink on a Ku-band phased array, Starlink technology page; a separate beam down to the gateway)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:01:33.557312+00:00",
+    "finishedAt": "2026-11-23T04:01:33.557312+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:01:46.838188+00:00",
+    "finishedAt": "2026-11-23T04:01:46.838188+00:00",
+    "notes": [
+      "Re-check: catchit now after fire, home reworded (no repeated downlink), shells after web; figures runs clean (480 km, 35,786 km, 5 arrays, 60 in 2019, 1.3%), all facts confirmed earlier (Space.com, Wikipedia, starlink.com via search, Spaceflight Now/Axios/CBS); added beats' claims (radome, clapping analogy, tilted shells, uplink/downlink) sound; disclaimer present. Note: description Sources line should add Space.com."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:01:38.470182+00:00",
+    "finishedAt": "2026-11-23T04:13:07.189524+00:00",
+    "notes": [
+      "text 'NOT TO SCALE' at 57.6 s is 26 px, below the 30 px minimum",
+      "text 'ILLUSTRATION' at 318.9 s is 26 px, below the 30 px minimum",
+      "51 of 85 stills are mostly empty background (at 5 s, 15 s, 20 s, 25 s, 35 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+      "thumbnail.png is empty at phone size (edges 0.144, 0.15-0.5): fill it with the story",
+      "thumbnail-b.png is empty at phone size (edges 0.099, 0.15-0.5): fill it with the story",
+      "thumbnail-c.png is empty at phone size (edges 0.121, 0.15-0.5): fill it with the story",
+      "thumbnails: thumbnail A: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: thumbnail B: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: thumbnail C: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+      "thumbnails: `thumbnail_pick`: \"a\", \"b\" or \"c\", the one you rate best; it goes up unless the owner picks another",
+      "note: only 3 shot sizes (close, medium, wide); a long video needs at least 4 of wide, medium, close, extreme",
+      "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:20:20.166744+00:00",
+    "finishedAt": "2026-11-23T04:20:20.166744+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:20:21.107742+00:00",
+    "finishedAt": "2026-11-23T04:32:44.335268+00:00",
+    "notes": [
+      "16 of 85 stills are mostly empty background (at 35 s, 50 s, 120 s, 130 s, 155 s, 160 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: only 3 shot sizes (close, medium, wide); a long video needs at least 4 of wide, medium, close, extreme",
+      "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:37:08.533202+00:00",
+    "finishedAt": "2026-11-23T04:49:25.086877+00:00",
+    "notes": [
+      "426 s, ocean/circuit (preview only)",
+      "note: only 3 shot sizes (close, medium, wide); a long video needs at least 4 of wide, medium, close, extreme",
+      "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:51:10.100326+00:00",
+    "finishedAt": "2026-11-23T04:51:10.100326+00:00",
+    "notes": [
+      "[script] BLOCKING 5.0s, beat hook (Roof, moment at 'satellite', wide on sky): frame is only the dusk sky gradient and stars, no satellite, no dish, no roof - an empty frame inside the hook while the line says 'a satellite racing across the sky'. Keep the satellite (and its streak) in frame on the 'satellite' and 'cam_the' moments, or hold the medium on dish+sky.",
+      "[script] BLOCKING 70.0s, beat still (Street, sec 0 close on sky / cam_and close on sky): frame is a black starfield over a flat ground plane with one unlabelled white dot - nothing that says 'hangs still', no street, ladder or bolted mount as the place promises. Open on the medium street with the dish+mount and the fixed satellite in one frame; move the close to the mount on 'bolted'.",
+      "[scene] BLOCKING 0.0s hook, 140.0s swing, 165.0s radome, 420.0s loop: the white directed captions ('This flat Starlink dish', 'To follow it,', 'The cover is plastic', 'Until then,') sit directly on the white dish/cover and are close to unreadable - the very first frame of the video included. Give directed captions a dark stroke/shadow strong enough for white backgrounds (remotion/src/fx/captions.tsx); in the script, frame the dish above the caption band on these moments.",
+      "[script] 210.0s wifi: the 'wifi' label is drawn on top of the channel badge in the top-left corner and is small; place it on the router/phone instead (non-blocking).",
+      "[script] 290.0s problem and 410.0s payoff are the same picture (dusk sky, one satellite, a few streaks, roofs at the bottom); 20s route, 275s recap and 405s home are the same route-map composition. The payoff promises 'a sky full of passing satellites': show many satellites, or another shot size, so the payoff isn't a repeat (non-blocking).",
+      "[script] 355-375s web/shells/always: five globe stills in a row, 360 and 365 near-identical small globe in the middle of the frame; add a close or a different angle (e.g. the house dot under the web for 'always') (non-blocking). Code notes agree: only 3 shot sizes, 30 s without a close.",
+      "[script] 425s end card draws 'Simplified illustrations ... not to scale' on screen; the disclaimer belongs only in the description (owner 2026-11-20). Description has it, so remove the end-card line (non-blocking).",
+      "Thumbnail A ('NO MOTOR', exploded dish with lit grid) reads at feed size, matches the title and the teardown, stands out beside Branch's 9.9M without copying it; A is the one I would click, agreeing with Studio's pick and score. Length 426 s within channel band 420-480; layout_problems empty; audio peak -1.0 dB, mean -16.5 dB (slightly hot vs -18, within tolerance)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:51:52.645006+00:00",
+    "finishedAt": "2026-11-23T04:51:52.645006+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:52:25.591220+00:00",
+    "finishedAt": "2026-11-23T05:05:25.700964+00:00",
+    "notes": [
+      "426 s, ocean/circuit (preview only)",
+      "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T05:05:53.639359+00:00",
+    "finishedAt": "2026-11-23T05:05:53.639359+00:00",
+    "notes": [
+      "Round 2: all blocking fixes verified in fresh stills (5s dish+beam on roof, 70s medium street with dishes, captions clear of the dish at 0/140/165/420s, wifi label on laptop, end card without the on-screen line); thumbnail A reads small and matches the title; 360-365s small-globe stills still look alike (minor)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T05:05:47.012476+00:00",
+    "finishedAt": "2026-11-23T12:05:38.522262+00:00",
+    "notes": [
+      "426 s, ocean/circuit, peak -1.0 dB, mean -16.5 dB",
+      "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+      "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T12:09:05.322748+00:00",
+    "finishedAt": "2026-11-23T12:09:05.322748+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-23T12:09:33.642558+00:00",
+    "finishedAt": "2026-11-23T12:09:33.642558+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

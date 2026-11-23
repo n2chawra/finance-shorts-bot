@@ -108,7 +108,7 @@ def test_check_refuses_unlogged_or_disallowed_assets_and_credits_the_rest(repo, 
 def test_stock_sources_only_on_the_documentary_channel(repo, monkeypatch):
     _offline(monkeypatch)
     with pytest.raises(store.MediaError, match="Commons only"):
-        library.fetch("paisa-panchayat", "pexels:video:42", root=repo)
+        library.fetch("first-channel", "pexels:video:42", root=repo)
 
 
 def test_refused_licence_is_never_downloaded(repo, monkeypatch):
@@ -255,7 +255,7 @@ def test_archive_search_and_fetch_log_a_muted_public_domain_clip(repo, monkeypat
     assert rec["attribution"]["required"] is False and "Internet Archive" in rec["attribution"]["text"]
     assert library.check(DOC, {"beats": [{"bg": "clip:archive-video-supermkt1955"}]}, root=repo) == []
     with pytest.raises(store.MediaError, match="Commons only"):
-        library.fetch("paisa-panchayat", "archive:video:SuperMkt1955", root=repo)
+        library.fetch("first-channel", "archive:video:SuperMkt1955", root=repo)
 
 
 LOC_ITEM = {"item": {"title": "Interior of general store", "date": "1939", "contributor_names": ["Lee, Russell"],
@@ -356,8 +356,8 @@ def test_a_staged_src_path_counts_as_the_asset_and_must_be_this_channels(repo, m
     assert library.script_assets(ok) == {"pexels-video-42"}
     assert library.check(DOC, ok, root=repo) == []
     assert library.credit_lines(DOC, ok, root=repo)
-    other = {"beats": [{"params": {"layers": [{"kind": "footage", "src": "media/paisa-panchayat/pexels-video-42.mp4"}]}}]}
-    assert any("staged for the channel paisa-panchayat" in p for p in library.check(DOC, other, root=repo))
+    other = {"beats": [{"params": {"layers": [{"kind": "footage", "src": "media/first-channel/pexels-video-42.mp4"}]}}]}
+    assert any("staged for the channel first-channel" in p for p in library.check(DOC, other, root=repo))
     assert library.script_assets({"beats": [{"params": {"src": "real/enron.png"}}]}) == set()   # Commons photos: images.py
 
 
@@ -395,3 +395,24 @@ def test_a_throttled_commons_thumbnail_falls_through_to_the_next_width(repo, mon
     monkeypatch.setattr(library, "download", fake)
     library.fetch(DOC, "commons:photo:File:Store_front.tif", root=repo)
     assert tried == [("1280px-Store_front.tif.png", 2), ("1920px-Store_front.tif.png", 2)]   # the original is never asked for
+
+
+def test_a_tif_s_png_thumbnail_is_cached_as_png_and_the_original_as_tif(repo, monkeypatch):
+    # gen-007: the PNG thumbnail of a .tif was cached under .tif, and the static server sent it as image/tiff
+    import urllib.error
+    monkeypatch.setattr(library, "provider", lambda name: FakeCommons())
+    monkeypatch.setattr(library, "licence_snapshot", lambda url, headers: "f" * 64)
+    thumbs_fail = [False]
+
+    def fake(url, dest, headers, bucket, interval, max_bytes=None, attempts=6):
+        if thumbs_fail[0] and url.endswith(".png"):
+            raise urllib.error.HTTPError(url, 404, "Not Found", {}, None)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(b"bytes")
+        return dest
+    monkeypatch.setattr(library, "download", fake)
+    rec = library.fetch(DOC, "commons:photo:File:Store_front.tif", root=repo)
+    assert rec["path"].endswith(".png"), rec["path"]
+    thumbs_fail[0] = True                                      # no thumbnail at all: the original, under its own name
+    rec = library.fetch(DOC, "commons:photo:File:Other.tif", root=repo)
+    assert rec["path"].endswith(".tif"), rec["path"]

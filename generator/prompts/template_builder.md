@@ -6,15 +6,18 @@ looking mass-produced: every video is still its own storyboard, a recipe is the 
 
 ## Check that you may
 
-Run `python -m generator.run state`. Continue only if `mode` is `template_work`.
+Run `python -m generator.run state --channel <channel>` first, with the channel this run names (no channel named:
+`python -m generator.run state`). If the answer has a `stop` field (`"channel deleted"` or `"no channel"`), follow
+the rule at the top of `generator/prompts/routine.md` (disable this routine with `update_trigger` if you have the
+scheduled-task tools, otherwise just end; write nothing else). Continue only if `mode` is `template_work`.
 
 ## Decide what to do
 
 Read `renderer/templates/short_story/README.md` (Shorts recipes), `renderer/templates/long_story/README.md`
 (the scene table, cast, acting and numbers) and `channels/<channel>/history/template_work.json`.
 
-- **Add** a recipe when there is a kind of finance story none of the recipes tells well (a loan
-  cost breakdown, a tax-saving comparison, a goal countdown, a before/after budget). It must use
+- **Add** a recipe when there is a kind of story in a channel's niche none of the recipes tells well
+  (a cause chain, a before/after, a countdown, a comparison at scale). It must use
   the scenes in a new order and rhythm, not rename an existing recipe.
 - **Improve** a recipe when the evaluator or QA shows a weakness: a beat order that keeps
   producing a still stretch, a hook that lands late, a recipe the planner never picks.
@@ -43,10 +46,10 @@ there, write the recipe with existing scenes and note the missing one in your re
 Only when both pass, record the work:
 
 ```
-python -m generator.run template-work <recipe> build --enabled
+python -m generator.run template-work <recipe> build --enabled --channel <channel>
 ```
 
 If it does not pass, leave the recipe out of the README (keep your work on a branch or delete it) and record
-`python -m generator.run template-work <recipe> build` without `--enabled`, so the daily limit still counts the attempt.
+`python -m generator.run template-work <recipe> build --channel <channel>` without `--enabled`, so the daily limit still counts the attempt.
 
 Reply with what you built or changed, and why the channel needed it.

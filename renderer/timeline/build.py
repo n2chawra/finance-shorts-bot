@@ -30,7 +30,7 @@ from renderer.engine.audio import (SR, Mixer, integrated_lufs, sfx_beep, sfx_boo
                                    sfx_chime, sfx_glass, sfx_paper, sfx_pin, sfx_pop, sfx_riser, sfx_scribble, sfx_swell,
                                    sfx_thud, sfx_tick, sfx_whoosh, sfx_groan, sfx_creak, sfx_rivet, sfx_squelch,
                                    sfx_clatter, sfx_rush, sfx_subboom)
-from renderer.engine.music import gain_curve, make_bed
+from renderer.engine.music import gain_curve, make_bed, make_motif
 from renderer.engine.formatting import LEGACY_CURRENCY, Money, fact_value, money_for, month_year
 from renderer.engine import sfx_sets
 from renderer.engine.style import resolve_style
@@ -49,6 +49,8 @@ VOICE_DUCK = 0.72                 # music drops this much under speech (0.6 unti
 SFX_BUS = 0.5
 SFX_UNDER_VOICE = 0.6
 VOICE_RMS = 0.2                   # every line levelled to the same loudness, peaks kept under 0.95
+OWN_MOTIF_SINCE = 20261122          # each Short's own tune (channel #1) from the videos of this day
+MOTIF_LEVEL = 0.8                  # the tune in a pause, against the bed's level
 QUIET_BED, QUIET_LEVEL, QUIET_DUCK = "quiet-bed", 0.32, 0.92   # the experiment's bed level and duck
 DISCLAIMER = "Illustrative only. Not financial advice."
 TYPED_NUMBER = re.compile(r"[0-9₹$£€]")   # a digit or any currency sign
@@ -74,11 +76,21 @@ OCTOBER_PACE = "october-voice-pace"
 OCTOBER_VOICE = 1.4
 
 
+def beat_pad(fmt: str) -> tuple[float, float]:
+    """The silence before and after each beat's line (story seconds): LEAD and TAIL, or the channel's own
+    (channel.json `beatPad`: {"short": [lead, tail]}). The dive channel's approved sample ran its narration on with
+    almost no pause between layers (70 words in 22 s); 0.85 s a beat made its first Short 28 s (2026-11-21)."""
+    own = (channel_pack.load().get("beatPad") or {}).get(fmt)
+    if isinstance(own, (list, tuple)) and len(own) == 2 and all(isinstance(x, (int, float)) and 0 <= x <= 1 for x in own):
+        return float(own[0]), float(own[1])
+    return LEAD, TAIL
+
+
 def voice_speed(script: dict, fmt: str, tempo: float) -> float:
     """The voice's speed: the script's speed at the video's tempo. Every Short speaks at the October pace since
     2026-11-12 (the experiment was adopted into the weekly loop's first champion recipe)."""
     own = channel_pack.voice_speed(fmt) if "speed" not in script else None
-    if own:   # the channel's own pace (channel.json voiceSpeed), never Paisa Panchayat's
+    if own:   # the channel's own pace (channel.json voiceSpeed), never channel #1's
         return own
     if "speed" not in script and fmt == "short":
         return OCTOBER_VOICE
@@ -113,7 +125,7 @@ def _fill(text: str, figures: dict[str, str], where: str) -> str:
 
 # keys whose values name things (an event, an item, a prop, a component) and are never shown: an id
 # like "y1" or "c6-worth" is not a typed number (2026-10-29: six scripts failed on one)
-ID_KEYS = frozenset({"at", "id", "target", "on", "component", "size", "prop", "into", "strike", "lineAt", "who", "kind", "set", "layout",
+ID_KEYS = frozenset({"at", "id", "target", "on", "stamp", "component", "size", "prop", "into", "strike", "lineAt", "who", "kind", "set", "layout",
                      "bg", "color", "tint", "traveller", "pose", "expression", "spot", "where", "from", "to", "tone", "world", "open_at"})
 _IDENT = re.compile(r"^[A-Za-z_][\w-]*$")
 # a doc beat (remotion/src/doc, 2026-11-19): its moments are event names, never shown
@@ -129,12 +141,26 @@ FORM_KEYS = frozenset({"form"})
 FORM_NAME = re.compile(r"^(?:Form )?(?:10-K|10-Q|8-K|S-1|S-4|20-F|40-F|6-K|DEF 14A|13F|SC 13D|SC 13G|Form 4|424B\d)(?:/A)?$")
 
 
+# a layer's colours (first for the retired dive kit, 2026-11-21): a hex or named colour on the landmark, a tunnel or its
+# trains is paint, not a figure; and a transit line's badge ("4", "7", "S") is the line's name, never a figure
+COLOUR_KEYS = frozenset({"color", "wall", "trim", "glass", "vehicle", "stripe", "light", "trains"})
+COLOUR = re.compile(r"^(?:#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?|[a-z]+)$")
+ROUTE = re.compile(r"^[A-Z0-9]{1,3}$")
+
+
+def _bullets(v) -> bool:
+    """A dive layer's line badges: [[route, colour], ...] such as [["4", "#00933c"], ["S", "gray"]]."""
+    return isinstance(v, list) and all(isinstance(x, list) and len(x) == 2 and isinstance(x[0], str) and isinstance(x[1], str)
+                                       and ROUTE.match(x[0]) and COLOUR.match(x[1]) for x in v)
+
+
 def _verbatim(k: str, v) -> bool:
-    """A param value passed through untouched: an id, a media path, a date or a form name."""
+    """A param value passed through untouched: an id, a media path, a date, a form name or a colour."""
     if not isinstance(v, str):
         return False
     return (k in ID_KEYS and bool(_IDENT.match(v))) or (k in MEDIA_KEYS and bool(MEDIA_PATH.match(v))) \
-        or (k in DATE_KEYS and bool(ISO_DATE.match(v))) or (k in FORM_KEYS and bool(FORM_NAME.match(v)))
+        or (k in DATE_KEYS and bool(ISO_DATE.match(v))) or (k in FORM_KEYS and bool(FORM_NAME.match(v))) \
+        or (k in COLOUR_KEYS and bool(COLOUR.match(v)))
 
 
 def _resolve(value, figures: dict[str, str], results: dict, where: str):
@@ -156,8 +182,8 @@ def _resolve(value, figures: dict[str, str], results: dict, where: str):
     if isinstance(value, list):
         return [_resolve(v, figures, results, f"{where}[{i}]") for i, v in enumerate(value)]
     if isinstance(value, dict):
-        return {k: v if _verbatim(k, v) else [x if _verbatim(k, x) else _resolve(x, figures, results, f"{where}.{k}[{i}]") for i, x in enumerate(v)]
-                if k in MEDIA_KEYS and isinstance(v, list) else _resolve(v, figures, results, f"{where}.{k}")
+        return {k: v if _verbatim(k, v) or (k == "bullets" and _bullets(v)) else [x if _verbatim(k, x) else _resolve(x, figures, results, f"{where}.{k}[{i}]") for i, x in enumerate(v)]
+                if (k in MEDIA_KEYS or k in COLOUR_KEYS) and isinstance(v, list) else _resolve(v, figures, results, f"{where}.{k}")
                 for k, v in value.items()}
     return value
 
@@ -298,7 +324,7 @@ def _structure(spec: dict | None) -> dict | None:
 
 
 # a thumbnail's notes on what it copies (YouTube ids, view counts, the pattern in words): never shown
-THUMB_META = ("references", "pattern", "component", "score", "why", "engine")
+THUMB_META = ("references", "pattern", "pattern_id", "component", "score", "why", "engine")
 
 
 def _thumbnail(spec: dict | None, figures: dict[str, str], results: dict, beat_ids: list[str] | None = None) -> dict | None:
@@ -389,6 +415,10 @@ WHOOSH_TRANSITIONS = ("zoom-through", "whip", "match", "slide", "blinds")
 SHORT_DUCK = 0.89                 # Shorts: the bed about 8 dB lower under speech than VOICE_DUCK left it
 DROP_BEFORE, DROP_LEVEL = 0.5, 0.12   # the bed dips this long before a reveal, to this share of its level
 REVEALS = {"stamp", "cross", "term", "equation"}   # actions a drop announces (an equation: its result)
+# channel #1's effects (a channel without its own sound list): the money and pop sounds, not the map,
+# machine or structure ones
+GENERAL_SFX = ("pop", "pop-high", "whoosh", "clink", "ding", "boom", "fail", "tick", "beep", "riser", "kaching")
+
 AUTO_SFX = {"stamp": ("boom", 0.32), "cross": ("fail", 0.28), "tick": ("ding", 0.28), "header": ("whoosh", 0.22),
             "enter": ("pop", 0.3), "equation": ("pop", 0.3), "term": ("pop-high", 0.32), "bars": ("pop", 0.28),
             "ring": ("pop", 0.28), "grid": ("pop", 0.28), "calendar": ("tick", 0.4), "buttons": ("pop", 0.28),
@@ -420,6 +450,68 @@ def _cues(params: dict, events: dict[str, int], start: float) -> tuple[list[tupl
             if isinstance(it, dict) and it.get("at") and (x := t(it["at"])) is not None:
                 sfx.append((x, {"kind": "pop", "at": "auto", "gain": 0.26}))
     return sfx, drops
+
+
+# Directed beats sound their own moments (owner, 2026-11-20, on the geography Short v-20261120-05: "Add sound
+# effects for small small things ... when truck moving to other place ... when things pop up ... when screen
+# moves"). Build and board beats had automatic cues from their actions since October; directed beats (every
+# beat since 2026-11-13) had none, so a Short's only sounds were the few the script named. Each moment and each
+# camera change on a word gets a soft sound picked from what the moment says, from the channel's own effects
+# when it has a list. Videos made before AUTO_DIRECTED_SINCE re-render as they were.
+AUTO_DIRECTED_SINCE = 20261122
+DIRECTED_CUES: list[tuple[str, tuple[str, ...], tuple[str, ...]]] = [
+    # (kind of moment, words in its `what`, the sounds to try in order)
+    ("hit", ("stamp", "slam", "shut", "crash", "smash", "thud", "drops onto", "falls", "lands hard", "crack"), ("thud", "boom", "subboom", "rivet", "pop")),
+    ("count", ("count", "counter", "ticks", "clock", "timer", "tally", "flips", "day ", "year"), ("tick", "clatter", "pop")),
+    ("draw", ("draw", "writes", "write", "trace", "line", "border", "sketch", "underline", "circle", "scribble", "erase", "rub"), ("scribble", "paper", "tick", "pop")),
+    ("move", ("move", "moves", "slide", "slides", "sail", "drive", "drives", "fly", "flies", "travel", "truck", "ship", "train",
+              "plane", "rolls", "drifts", "sweeps", "pans", "pulls back", "push", "zoom", "dives", "races", "spins", "turns"), ("whoosh", "paper", "rush", "swell")),
+    ("pop", ("pop", "appear", "lands", "land", "arrive", "pins", "pin ", "flag", "rises", "grows", "stack", "fills", "lights", "glow", "opens", "shows"), ("pop", "pin", "pin-high", "glass", "chime", "tick")),
+]
+DIRECTED_GAIN = {"hit": 0.3, "count": 0.3, "draw": 0.24, "move": 0.18, "pop": 0.24}
+DIRECTED_MAX_PER_BEAT = 2      # a few small sounds a beat, never a sound on every word
+DIRECTED_MIN_GAP = 0.8         # seconds between two automatic sounds
+
+
+def _directed_kind(what: str) -> str:
+    w = f" {what.lower()} "
+    for kind, words, _ in DIRECTED_CUES:
+        if any(x in w for x in words):
+            return kind
+    return "pop"
+
+
+def directed_cues(params: dict, events: dict[str, int], start: float, allowed: "list[str] | None" = None) -> list[tuple[float, dict]]:
+    """Automatic sounds for a directed beat (absolute seconds): its moments, then its camera changes on words,
+    at most DIRECTED_MAX_PER_BEAT, DIRECTED_MIN_GAP apart, from `allowed` (a channel's own effects) when given."""
+    picks: list[tuple[float, str]] = []
+    for mo in params.get("moments") or []:
+        if isinstance(mo, dict) and isinstance(mo.get("at"), str) and mo["at"] in events:
+            picks.append((start + events[mo["at"]]/FPS, _directed_kind(str(mo.get("what") or ""))))
+    for k in params.get("camera") or []:
+        if isinstance(k, dict) and isinstance(k.get("at"), str) and k["at"] in events:
+            picks.append((start + events[k["at"]]/FPS, "move"))
+    out: list[tuple[float, dict]] = []
+    sounds = {kind: tries for kind, _, tries in DIRECTED_CUES}
+    for at, kind in sorted(picks, key=lambda x: x[0]):
+        if len(out) >= DIRECTED_MAX_PER_BEAT or (out and at - out[-1][0] < DIRECTED_MIN_GAP):
+            continue
+        name = next((x for x in sounds[kind] if (allowed is None and x in SFX and x in GENERAL_SFX) or (allowed is not None and x in allowed)), None)
+        if name:
+            out.append((at, {"kind": name, "at": "auto", "gain": DIRECTED_GAIN[kind]}))
+    return out
+
+
+def made_since(out: Path, day: int) -> bool:
+    """Whether the video in this output folder (named by its id, v-YYYYMMDD-NN) was made on or after `day`;
+    a folder without an id (a test, a sample) counts as new. Published videos re-render as they were."""
+    d = re.match(r"^[A-Za-z]+-(\d{8})-", out.name)
+    return not d or int(d.group(1)) >= day
+
+
+def auto_directed(out: Path) -> bool:
+    """Directed cues apply to videos from AUTO_DIRECTED_SINCE (by the id in the output folder's name)."""
+    return made_since(out, AUTO_DIRECTED_SINCE)
 
 
 def _drop_envelope(n: int, drops: list[float], before: float = DROP_BEFORE, level: float = DROP_LEVEL) -> np.ndarray:
@@ -710,6 +802,7 @@ def check_script(script: dict) -> dict:
     scenes, out, timed = scene_names(), [], []
     tempo = float(script.get("tempo", TEMPOS[fmt]))
     speed = voice_speed(script, fmt, tempo)
+    pad = beat_pad(fmt)
     for b in beats:
         where = f"beat {b.id!r}"
         if b.scene not in scenes:
@@ -732,9 +825,9 @@ def check_script(script: dict) -> dict:
         out.append({"id": b.id, "scene": b.scene, "speaker": b.speaker, "say": text, "spoken": spoken})
         if fmt == "short":
             line = _estimate(spoken, speed) if spoken else None
-            dur = max(b.min_sec/tempo, LEAD/tempo + line.seconds + TAIL/tempo) if line else max(b.min_sec/tempo, GAP_NO_VOICE/tempo)
+            dur = max(b.min_sec/tempo, pad[0]/tempo + line.seconds + pad[1]/tempo) if line else max(b.min_sec/tempo, GAP_NO_VOICE/tempo)
             frames = max(1, round(dur*FPS))
-            events = {n: round(_event_time(spec, line.words if line else [], LEAD/tempo, frames/FPS, where, tempo)*FPS)
+            events = {n: round(_event_time(spec, line.words if line else [], pad[0]/tempo, frames/FPS, where, tempo)*FPS)
                       for n, spec in b.events.items()}
             timed.append({"id": b.id, "frames": frames, "events": events})
     # a long video ends on the end card; a Short loops back to its hook instead and shows the
@@ -764,7 +857,8 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     lang, disclaimer = pack["language"], (pack["disclaimer"] or DISCLAIMER)
     tempo = float(script.get("tempo", TEMPOS[fmt]))
     speed = voice_speed(script, fmt, tempo)        # the voice, at the video's pace
-    lead, tail, gap = LEAD/tempo, TAIL/tempo, GAP_NO_VOICE/tempo
+    pad = beat_pad(fmt)
+    lead, tail, gap = pad[0]/tempo, pad[1]/tempo, GAP_NO_VOICE/tempo
 
     beats = [Beat(**b) for b in script["beats"]]
     if len({b.id for b in beats}) != len(beats):
@@ -773,6 +867,9 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     timeline_beats, lines, cursor, drops = [], [], 0.0, []
     drop_shape = own_drop(own_sound, fmt)
     automatic: set[int] = set()     # ids of the sounds the builder added (transitions, cues), for cap_sfx
+    # a channel with its own effects list first (2026-11-21); channel #1's Shorts change one sound at a time
+    # (its own tune tonight), so its directed cues wait for their own change
+    directed_ok = auto_directed(out) and bool(own_sound) and bool(own_sound.get("sfx"))
     for b in beats:
         where = f"beat {b.id!r}"
         params = _resolve(b.params, figures, results, f"{where}.params")
@@ -822,6 +919,12 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                     automatic.add(id(sp))
                     last = x
             drops.extend(beat_drops)
+        if b.scene == "directed" and directed_ok:
+            mine = [x for x, _ in b_sfx]
+            for x, sp in directed_cues(params, events, cursor, own_sound.get("sfx") if own_sound else None):
+                if all(abs(x - y) > 0.15 for y in mine):   # never on top of the script's own sounds
+                    b_sfx.append((x, sp))
+                    automatic.add(id(sp))
         if drop_shape and ("reveal" in events or b.role in DROP_ROLES[fmt]):
             drops.append(cursor + events.get("reveal", events["speech"])/FPS)
         timeline_beats[-1]["_sfx"] = b_sfx
@@ -843,7 +946,15 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     level, duck_by = (QUIET_LEVEL, QUIET_DUCK) if quiet else (0.5, SHORT_DUCK if fmt == "short" else VOICE_DUCK)
     if own_sound:   # the channel's own mix, measured on its references (channel.json sound)
         level, duck_by = own_level(own_sound, "bedLevel", fmt, level), own_level(own_sound, "duck", fmt, duck_by)
-    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*_drop_envelope(mixer.n, drops, *(drop_shape or ())))
+    drop_env = _drop_envelope(mixer.n, drops, *(drop_shape or ()))
+    mixer.add_bed(bed, gain_curve(length, level)*(1 - duck_by*duck)*drop_env)
+    motif = None
+    if fmt == "short" and not own_sound and made_since(out, OWN_MOTIF_SINCE):
+        # each Short's own tune, heard only in the pauses between lines (owner note cmwk4neu, 2026-11-17: the
+        # same background in every Short; made the default on 2026-11-21 under the owner's 19 Nov rule that
+        # his feedback goes straight away, not as a test). Channel #1 only: other channels have their own beds
+        tune, motif = make_motif(np.random.default_rng(seed + 11), length, style.key, style.bpm)
+        mixer.add_bed(tune, level*MOTIF_LEVEL*(1 - duck)*drop_env)
     per_minute = ((own_sound.get("sfxPerMinute") or {}) if own_sound else {}).get(fmt)
     if per_minute is not None:
         cap_sfx(timeline_beats, automatic, float(per_minute), length)
@@ -894,7 +1005,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
                   **({} if own_sound else {"sfx": style.sfx}),
                   **({"look": (script.get("style") or {})["look"]} if (script.get("style") or {}).get("look") else {})},
         "audio": {"file": "audio.wav", "peak_db": round(peak, 1), "mean_db": round(mean, 1), "stems": stems, "lufs": lufs,
-                  **({"music_under_voice_db": under} if under is not None else {})},
+                  **({"music_under_voice_db": under} if under is not None else {}), **({"motif": motif} if motif else {})},
         # the channel's own corner logo (generator/pack.py logo): "sikka", a remotion/public path, or None
         "logo": channel_pack.logo(),
         # the channel's cast (channel.json look.cast): "none" for a channel told without characters (the business

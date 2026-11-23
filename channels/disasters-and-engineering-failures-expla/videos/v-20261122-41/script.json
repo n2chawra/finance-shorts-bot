@@ -1,0 +1,839 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61847,
+ "story": "promo_why_it_failed",
+ "shape": "the-two-clocks",
+ "currency": "USD",
+ "style": {
+  "recipe": "satellite-atlas",
+  "palette": "ocean",
+  "genre": "undertow",
+  "key": "A",
+  "bpm": 58
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "shock_number",
+ "cta": "The fast hit or the slow capsize: which surprised you more? Comment",
+ "feed_id": "2026-11-22-new-orleans-stuck-rudder",
+ "facts": [
+  {
+   "label": "People aboard the riverboat",
+   "value": 190,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/pages/dca27mm003.aspx"
+  },
+  {
+   "label": "Passengers aboard the riverboat",
+   "value": 140,
+   "unit": "count",
+   "as_of": "2026-11-13",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/pages/dca27mm003.aspx"
+  },
+  {
+   "label": "Minutes from the stuck rudder to the collision",
+   "value": 2,
+   "unit": "count",
+   "as_of": "2026-11-15",
+   "source": "NTSB",
+   "url": "https://abc11.com/story/officials-say-tankers-steering-failed-before-crashed-cruise-ship-new-orleans/20042888/"
+  },
+  {
+   "label": "Minutes for the riverboat to capsize",
+   "value": 22,
+   "unit": "count",
+   "as_of": "2026-11-15",
+   "source": "NTSB",
+   "url": "https://abc11.com/story/officials-say-tankers-steering-failed-before-crashed-cruise-ship-new-orleans/20042888/"
+  },
+  {
+   "label": "Tanker length in feet, about",
+   "value": 520,
+   "unit": "count",
+   "as_of": "2026-11-15",
+   "source": "AP",
+   "url": "https://abc11.com/story/officials-say-tankers-steering-failed-before-crashed-cruise-ship-new-orleans/20042888/"
+  },
+  {
+   "label": "Initial damage estimate, over",
+   "value": 2,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2026-11-13",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/pages/dca27mm003.aspx"
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "impact",
+  "sec": 0.9,
+  "words": "No *steering*",
+  "tag": "Mississippi",
+  "angle": "question"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Why couldn't this Mississippi tanker stop?",
+   "events": {
+    "mississippi": {
+     "word": "Mississippi"
+    },
+    "tanker": {
+     "word": "tanker"
+    },
+    "stop": {
+     "word": "stop"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": [
+     "on the Mississippi at New Orleans at night, beside the tanker's bow",
+     "the river from high above the city"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tanker",
+      "size": "close"
+     },
+     {
+      "at": "stop",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mississippi",
+      "what": "the dark tanker slides along the night river, MISSISSIPPI RIVER · NEW ORLEANS typed on"
+     },
+     {
+      "at": "tanker",
+      "what": "push in: the bow starts to swing off its line, a red STEERING LOST label"
+     },
+     {
+      "at": "stop",
+      "what": "cut high over the bend: the city lights and the tanker's wake curving toward the far bank"
+     }
+    ],
+    "things": [
+     "tanker",
+     "river",
+     "city lights",
+     "date caption"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "steering"
+    }
+   ]
+  },
+  {
+   "id": "rudder",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Its rudder had stuck to starboard. From then, it had {fact3} minutes.",
+   "events": {
+    "rudder": {
+     "word": "rudder"
+    },
+    "stuck": {
+     "word": "stuck"
+    },
+    "starboard": {
+     "word": "starboard"
+    },
+    "then": {
+     "word": "then"
+    },
+    "minutes": {
+     "word": "minutes"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Rudder",
+    "place": "under the tanker's stern, in cutaway below the waterline",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "starboard",
+      "size": "extreme"
+     },
+     {
+      "at": "minutes",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rudder",
+      "what": "the camera dives under the stern to the rudder behind the propeller"
+     },
+     {
+      "at": "stuck",
+      "what": "the rudder swings hard over and stops, its stock turning amber"
+     },
+     {
+      "at": "starboard",
+      "what": "STUCK TO STARBOARD types on, the blade glows red"
+     },
+     {
+      "at": "then",
+      "what": "a clock ring appears over the stern"
+     },
+     {
+      "at": "minutes",
+      "what": "the clock starts at the figure and begins counting down"
+     }
+    ],
+    "things": [
+     "stern",
+     "rudder blade",
+     "propeller",
+     "waterline cutaway",
+     "countdown clock"
+    ],
+    "fig": {
+     "minutes": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "creak",
+     "at": "stuck"
+    },
+    {
+     "kind": "tick",
+     "at": "minutes"
+    }
+   ]
+  },
+  {
+   "id": "steer",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "A rudder throws the propeller's water to one side. So what does a stuck one do?",
+   "events": {
+    "rudder": {
+     "word": "rudder"
+    },
+    "throws": {
+     "word": "throws"
+    },
+    "propeller's": {
+     "word": "propeller's"
+    },
+    "side": {
+     "word": "side"
+    },
+    "stuck": {
+     "word": "stuck"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Steer",
+    "place": "a flat plan view of the stern from above, a general principle diagram",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "propeller's",
+      "size": "close"
+     },
+     {
+      "at": "side",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rudder",
+      "what": "the hull's plan view draws on, the rudder marked"
+     },
+     {
+      "at": "throws",
+      "what": "the rudder angles over"
+     },
+     {
+      "at": "propeller's",
+      "what": "water streams from the propeller in arrows"
+     },
+     {
+      "at": "side",
+      "what": "the stream bends sideways and a force arrow pushes the stern, the bow arrow turns"
+     },
+     {
+      "at": "stuck",
+      "what": "the rudder locks over, the arrows keep pushing"
+     }
+    ],
+    "things": [
+     "hull plan view",
+     "rudder",
+     "propeller wash arrows",
+     "force arrow"
+    ]
+   }
+  },
+  {
+   "id": "swing",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "It keeps turning the ship. Why not just stop?",
+   "events": {
+    "keeps": {
+     "word": "keeps"
+    },
+    "turning": {
+     "word": "turning"
+    },
+    "ship": {
+     "word": "ship"
+    },
+    "stop": {
+     "word": "stop"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Swing",
+    "place": "the river bend from above, the tanker's track drawn on the water",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "turning",
+      "size": "medium"
+     },
+     {
+      "at": "ship",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "keeps",
+      "what": "the tanker seen from above, its track line drawing behind it"
+     },
+     {
+      "at": "turning",
+      "what": "the track bends into a curve, an arrow on the bow points across the river"
+     },
+     {
+      "at": "ship",
+      "what": "pull back: the curve tightening toward the far bank and the docks"
+     },
+     {
+      "at": "stop",
+      "what": "a STOP? label pulses at the bow"
+     }
+    ],
+    "things": [
+     "river from above",
+     "tanker",
+     "track line",
+     "bow arrow",
+     "far bank docks"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "turning"
+    }
+   ]
+  },
+  {
+   "id": "nobrake",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "A ship has no brakes. Only engines in reverse and anchors, and a ship this size slides a long way.",
+   "events": {
+    "ship": {
+     "word": "ship"
+    },
+    "brakes": {
+     "word": "brakes"
+    },
+    "engines": {
+     "word": "engines"
+    },
+    "reverse": {
+     "word": "reverse"
+    },
+    "anchors": {
+     "word": "anchors"
+    },
+    "slides": {
+     "word": "slides"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "NoBrake",
+    "place": "beside the tanker's hull on the river at night, a flat overlay of what a ship has to stop with",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "reverse",
+      "size": "close"
+     },
+     {
+      "at": "slides",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ship",
+      "what": "the tanker in profile on the brown water"
+     },
+     {
+      "at": "brakes",
+      "what": "NO BRAKES stamps on the hull"
+     },
+     {
+      "at": "engines",
+      "what": "the propeller lights amber under the stern"
+     },
+     {
+      "at": "reverse",
+      "what": "a short REVERSE arrow points aft from the stern"
+     },
+     {
+      "at": "anchors",
+      "what": "an ANCHORS label and anchor marks at the bow"
+     },
+     {
+      "at": "slides",
+      "what": "pull back: a long slide arrow runs ahead of the bow, A LONG WAY TO STOP"
+     }
+    ],
+    "things": [
+     "tanker hull",
+     "propeller",
+     "reverse arrow",
+     "anchor marks",
+     "slide arrow",
+     "no-brakes stamp"
+    ]
+   }
+  },
+  {
+   "id": "impact",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "",
+   "events": {
+    "near": {
+     "sec": 0.25
+    },
+    "hit": {
+     "sec": 1.0
+    },
+    "wide": {
+     "sec": 1.7
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Impact",
+    "place": "at the dock, the tanker's bow meeting the riverboat's side, time slowed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "near",
+      "what": "silence: the tanker's bow fills the frame, metres from the white hull"
+     },
+     {
+      "at": "hit",
+      "what": "the sub-boom: the bow strikes, plating buckles red, sparks"
+     },
+     {
+      "at": "wide",
+      "what": "wide: the riverboat shoved against the dock"
+     }
+    ],
+    "things": [
+     "tanker bow",
+     "riverboat hull",
+     "sparks",
+     "buckled plating",
+     "dock"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "hit"
+    }
+   ],
+   "min_sec": 2.4
+  },
+  {
+   "id": "hit",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "{fact3} minutes after the rudder stuck, it hit a docked riverboat with {fact1} people aboard.",
+   "events": {
+    "rudder": {
+     "word": "rudder"
+    },
+    "hit": {
+     "word": "hit"
+    },
+    "docked": {
+     "word": "docked"
+    },
+    "riverboat": {
+     "word": "riverboat"
+    },
+    "people": {
+     "word": "people"
+    },
+    "aboard": {
+     "word": "aboard"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hit",
+    "place": "the riverboat's dock on the river bank, seen from the water",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "riverboat",
+      "size": "medium"
+     },
+     {
+      "at": "aboard",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rudder",
+      "what": "the countdown clock reaches zero"
+     },
+     {
+      "at": "hit",
+      "what": "the tanker's bow pressed into the riverboat"
+     },
+     {
+      "at": "docked",
+      "what": "pull along the dock lines"
+     },
+     {
+      "at": "riverboat",
+      "what": "the white riverboat's decks light up"
+     },
+     {
+      "at": "people",
+      "what": "a sign on the dock counts the people aboard"
+     },
+     {
+      "at": "aboard",
+      "what": "the riverboat's lit windows"
+     }
+    ],
+    "things": [
+     "riverboat",
+     "dock",
+     "tanker bow",
+     "people-aboard sign",
+     "countdown clock"
+    ],
+    "fig": {
+     "aboard": "{fact1}",
+     "minutes": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "clatter",
+     "at": "hit"
+    }
+   ]
+  },
+  {
+   "id": "capsize",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Then the riverboat rolled over. Slowly. It took {fact4} minutes.",
+   "events": {
+    "riverboat": {
+     "word": "riverboat"
+    },
+    "rolled": {
+     "word": "rolled"
+    },
+    "over": {
+     "word": "over"
+    },
+    "slowly": {
+     "word": "Slowly"
+    },
+    "took": {
+     "word": "took"
+    },
+    "minutes": {
+     "word": "minutes"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Capsize",
+    "place": "beside the riverboat in the river, a list gauge and a second clock",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "slowly",
+      "size": "close"
+     },
+     {
+      "at": "minutes",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "riverboat",
+      "what": "the riverboat begins to lean away from the dock"
+     },
+     {
+      "at": "rolled",
+      "what": "the list gauge needle climbs"
+     },
+     {
+      "at": "over",
+      "what": "the decks tilt toward the water"
+     },
+     {
+      "at": "slowly",
+      "what": "a second clock counts up on the hull"
+     },
+     {
+      "at": "took",
+      "what": "the clock keeps counting as the hull goes over"
+     },
+     {
+      "at": "minutes",
+      "what": "the figure lands on the clock, the hull on its side"
+     }
+    ],
+    "things": [
+     "riverboat",
+     "list gauge",
+     "second clock",
+     "river",
+     "dock"
+    ],
+    "fig": {
+     "capsize": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "rolled"
+    }
+   ]
+  },
+  {
+   "id": "board",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Why it stuck isn't known yet. The fast hit or the slow capsize: which surprised you more?",
+   "events": {
+    "stuck": {
+     "word": "stuck"
+    },
+    "known": {
+     "word": "known"
+    },
+    "fast": {
+     "word": "fast"
+    },
+    "slow": {
+     "word": "slow"
+    },
+    "which": {
+     "word": "which"
+    },
+    "more": {
+     "word": "more"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Board",
+    "place": "the investigators' preliminary board, the two clocks pinned on it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "fast",
+      "size": "close"
+     },
+     {
+      "at": "which",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stuck",
+      "what": "the board slides in, PRELIMINARY stamped at the top"
+     },
+     {
+      "at": "known",
+      "what": "CAUSE OF THE JAM: UNDER INVESTIGATION types on"
+     },
+     {
+      "at": "fast",
+      "what": "the FAST HIT card lights with its clock"
+     },
+     {
+      "at": "slow",
+      "what": "the SLOW CAPSIZE card lights with its clock"
+     },
+     {
+      "at": "which",
+      "what": "a question mark lands between them"
+     },
+     {
+      "at": "more",
+      "what": "the two clocks pulse on the board"
+     }
+    ],
+    "things": [
+     "preliminary board",
+     "fast hit card",
+     "slow capsize card",
+     "two clocks",
+     "question mark"
+    ],
+    "fig": {
+     "minutes": "{fact3}",
+     "capsize": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "which"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "It all began with one rudder that would not turn.",
+   "events": {
+    "began": {
+     "word": "began"
+    },
+    "rudder": {
+     "word": "rudder"
+    },
+    "turn": {
+     "word": "turn"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Loop",
+    "place": "back on the river beside the tanker's bow at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "turn",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "began",
+      "what": "the camera glides in over the water toward the tanker"
+     },
+     {
+      "at": "rudder",
+      "what": "the stern's wake glows amber"
+     },
+     {
+      "at": "turn",
+      "what": "the frame settles on the hook's first picture, the bow beside us"
+     }
+    ],
+    "things": [
+     "tanker",
+     "river",
+     "city lights"
+    ]
+   }
+  }
+ ]
+}

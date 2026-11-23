@@ -599,13 +599,13 @@
       "id": "wrk-005",
       "kind": "data",
       "title": "Hourly snapshots skip a Short until stats marks it published",
-      "detail": "workers/snapshot.ts only reads uploads with state 'published'; a scheduled Short becomes 'published' when stats.ts (every 3 h) sees it public, so the first 1–3 hours have no snapshot and the video page's first-48-hours chart spreads those views evenly from publish time. Option: also snapshot 'scheduled' uploads whose publishAt has passed.",
+      "detail": "workers/snapshot.ts only reads uploads with state 'published'; a scheduled Short becomes 'published' when stats.ts (every 3 h) sees it public, so the first 1–3 hours have no snapshot and the video page's first-48-hours chart spreads those views evenly from publish time. Option: also snapshot 'scheduled' uploads whose publishAt has passed. Fixed 2026-11-22: workers/lib/snapshot-scope.ts also takes scheduled uploads whose publishAt has passed (tests/snapshot-scope.test.ts).",
       "files": [
         "workers/snapshot.ts"
       ],
       "severity": "low",
       "found": "2026-11-04",
-      "status": "open"
+      "status": "fixed"
     },
     {
       "id": "wrk-006",
@@ -870,13 +870,13 @@
       "id": "wrk-q02",
       "kind": "quality",
       "title": "Failed manifests stored as format short",
-      "detail": "ingest.ts creates failed videos without format, so failed long videos count as Shorts; set from the id prefix.",
+      "detail": "ingest.ts creates failed videos without format, so failed long videos count as Shorts; set from the id prefix. Fixed 2026-11-22: formatOfId (lib/manifest.ts) sets it from the id; rows already stored keep 'short'.",
       "files": [
         "workers/ingest.ts"
       ],
       "severity": "low",
       "found": "2026-11-13",
-      "status": "open"
+      "status": "fixed"
     },
     {
       "id": "wrk-q03",
@@ -1002,7 +1002,46 @@
       ],
       "severity": "low",
       "found": "2026-11-21",
+      "status": "fixed",
+      "fixed": "2026-11-23"
+    },
+    {
+      "id": "wrk-014",
+      "kind": "data",
+      "title": "Other channels' drop points had no beat or spoken line",
+      "detail": "workers/stats.ts beatsOf looked up timeline.json with cpath, which follows CHANNEL; stats loops over every channel without setting it, so every channel's timeline was looked for in paisa-panchayat's folder and came back empty. Geography's and the tech channel's drops (e.g. Greenland at 5.9 s) had beat, line and scene blank, which also blinds the reviewer and the picture tally there. Fixed: videoFile(root, slug, id, name) in lib/channels.ts, used with the channel's id; tests/video-file.test.ts fails without it. The next stats run refills the drops.",
+      "files": [
+        "workers/stats.ts",
+        "workers/lib/channels.ts"
+      ],
+      "severity": "high",
+      "found": "2026-11-22",
+      "status": "fixed"
+    },
+    {
+      "id": "wrk-015",
+      "kind": "bug",
+      "title": "publish.ts looks for every channel's cover in Paisa Panchayat's folder",
+      "detail": "applyCover uses cpath(ROOT, 'videos') with CHANNEL unset while publish loops over channels, so a Short of any other channel finds no cover and goes up with YouTube's own frame ('no cover in the repo'). publish.ts is owner-locked: raised as an owner notification with the one-line fix (videoFile from lib/channels.ts).",
+      "files": [
+        "workers/publish.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-22",
       "status": "open"
+    },
+    {
+      "id": "gen-008",
+      "kind": "bug",
+      "title": "Facts dated by year, month or quarter were never checked for a newer release",
+      "detail": "generator/topics.py stale_facts read as_of with date.fromisoformat, which refuses '2024', '2024-03' and '2024-Q3'; 119 of 994 feed facts are year-only, so from 2027 a '2025' annual figure would have passed unchecked. New _as_of_end reads them as the last day they cover. No topic in tonight's feeds changes. Test in generator/tests/test_topics_fresh.py.",
+      "files": [
+        "generator/topics.py"
+      ],
+      "severity": "low",
+      "found": "2026-11-23",
+      "status": "fixed",
+      "fixed": "2026-11-23"
     }
   ]
 }

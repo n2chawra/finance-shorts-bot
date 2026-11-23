@@ -72,9 +72,9 @@ BUDGET_ARM = "budget"
 
 def mix_problems(plan: dict, entries: list[dict], root: Path = ROOT, fmt: str = "short") -> list[str]:
     from improvement import arms as _arms
-    from . import channels as _channels
-    if _channels.current() != _channels.default():
-        # the fixed run, the "personal budget" tiers and the variant system are Paisa Panchayat's (2026-11-11);
+    from . import pack as _pack
+    if _pack.path(root=root).is_file():
+        # the fixed run, the "personal budget" tiers and the variant system were channel #1's (2026-11-11);
         # another channel's low-tier formats are just less proven, not personal budget. Keep only the
         # 2-of-3 core rule, and never let it deadlock: with one core format, the no-repeat rule (variety
         # STORY_WINDOW) can forbid it, and the next Short must then be another format (2026-11-20: Craze &

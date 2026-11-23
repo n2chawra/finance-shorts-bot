@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-/** Paisa Panchayat mark: three rising bars in a blue-to-violet tile. Scales with `className`. */
+/** The studio mark: three rising bars in a blue-to-violet tile. Scales with `className`. */
 export function LogoMark({ className = "size-8" }: { className?: string }) {
   // a unique gradient id per mark: with a shared id, a mark inside a hidden panel blanks the others
   const id = `pp-${useId().replace(/:/g, "")}`;
@@ -20,7 +20,7 @@ export function LogoMark({ className = "size-8" }: { className?: string }) {
   );
 }
 
-export function Wordmark({ sub = "Studio", tone = "ink", name = "Paisa Panchayat" }: { sub?: string; tone?: "ink" | "light"; name?: string }) {
+export function Wordmark({ sub = "Studio", tone = "ink", name = "Channel studio" }: { sub?: string; tone?: "ink" | "light"; name?: string }) {
   return (
     <span className="min-w-0 leading-tight">
       <span className={`block truncate text-[14px] font-semibold tracking-[-0.01em] ${tone === "light" ? "text-white" : "text-ink"}`}>{name}</span>

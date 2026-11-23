@@ -1,0 +1,6855 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "seed": 55023,
+  "story": "how_network_works",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 72
+  },
+  "hook_style": "secret",
+  "cta": "Which machine should we take apart next? Tell us in the comments",
+  "feed_id": "2026-11-18-starlink-flat-dish",
+  "title": "How Does Starlink's Flat Dish Aim Without Moving?",
+  "facts": [
+    {
+      "label": "Altitude SpaceX is lowering its Starlink satellites to during 2026, about",
+      "value": 480,
+      "unit": "km",
+      "as_of": "2026-01-01",
+      "fixed": true,
+      "source": "Space.com",
+      "url": "https://www.space.com/space-exploration/satellites/spacex-lowering-orbits-of-4-400-starlink-satellites-for-safetys-sake"
+    },
+    {
+      "label": "Altitude of a geostationary satellite above the equator",
+      "value": 35786,
+      "unit": "km",
+      "as_of": "2026-11-18",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Geostationary_orbit"
+    },
+    {
+      "label": "Ku-band phased-array antennas on each Starlink satellite",
+      "value": 5,
+      "unit": "count",
+      "as_of": "2026-11-18",
+      "source": "Starlink",
+      "url": "https://www.starlink.com/technology"
+    },
+    {
+      "label": "Operational satellites in the first Starlink launch",
+      "value": 60,
+      "unit": "count",
+      "as_of": "2019-05-24",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Starlink"
+    },
+    {
+      "label": "Year of that first operational launch",
+      "value": 2019,
+      "unit": "year",
+      "as_of": "2019-05-24",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Starlink"
+    }
+  ],
+  "maths": [
+    {
+      "name": "low",
+      "kind": "rate",
+      "part": 480,
+      "whole": 35786,
+      "facts": {
+        "part": 1,
+        "whole": 2
+      }
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "transition": "cut",
+      "say": "This flat Starlink dish is talking to a satellite racing across the sky, and it never turns to follow it.",
+      "events": {
+        "starlink": {
+          "word": "Starlink"
+        },
+        "dish": {
+          "word": "dish"
+        },
+        "talking": {
+          "word": "talking"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "racing": {
+          "word": "racing"
+        },
+        "sky": {
+          "word": "sky"
+        },
+        "never": {
+          "word": "never"
+        },
+        "turns": {
+          "word": "turns"
+        },
+        "follow": {
+          "word": "follow"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_the": {
+          "word": "the"
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "a rooftop at dusk, the flat Starlink dish on its mast under a darkening sky",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "satellite",
+            "size": "wide",
+            "on": "dish"
+          },
+          {
+            "at": "cam_the",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "never",
+            "size": "close",
+            "on": "mount"
+          },
+          {
+            "at": "follow",
+            "size": "medium",
+            "on": "dish"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "a satellite already streaks across the dusk sky over the roof"
+          },
+          {
+            "at": "starlink",
+            "do": "label",
+            "what": "the name writes on beside the dish"
+          },
+          {
+            "at": "talking",
+            "do": "beam",
+            "what": "a thin cyan beam joins the dish face to the satellite"
+          },
+          {
+            "at": "racing",
+            "do": "track",
+            "what": "the satellite speeds up across the sky, the beam swinging with it"
+          },
+          {
+            "at": "never",
+            "do": "lock",
+            "what": "close on the mount: a ring pulses round it, the bolts glow, nothing turns"
+          },
+          {
+            "at": "follow",
+            "do": "face",
+            "what": "the dish face's grid lights up from inside"
+          }
+        ],
+        "things": [
+          "flat Starlink dish",
+          "roof mast",
+          "dusk sky",
+          "satellite streak",
+          "cyan beam"
+        ],
+        "labels": [
+          {
+            "at": "starlink",
+            "text": "Starlink dish",
+            "on": "dish"
+          },
+          {
+            "at": "never",
+            "text": "no motor turns",
+            "on": "mount"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "racing"
+        },
+        {
+          "kind": "tick",
+          "at": "never",
+          "gain": 0.6
+        }
+      ]
+    },
+    {
+      "id": "hook2",
+      "scene": "directed",
+      "role": "hook",
+      "transition": "cut",
+      "say": "That satellite flies about {fact1} above you, and in a few minutes it slips below the horizon. So how does a dish that never moves keep up?",
+      "events": {
+        "satellite": {
+          "word": "satellite"
+        },
+        "flies": {
+          "word": "flies"
+        },
+        "above": {
+          "word": "above"
+        },
+        "minutes": {
+          "word": "minutes"
+        },
+        "slips": {
+          "word": "slips"
+        },
+        "horizon": {
+          "word": "horizon"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_dish": {
+          "word": "dish"
+        },
+        "cam_hundred": {
+          "word": "hundred"
+        },
+        "cam_keep": {
+          "word": "keep"
+        },
+        "cam_so": {
+          "word": "so"
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the same roof seen from the ridge, the satellite falling toward the far rooftops",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "cam_hundred",
+            "size": "medium",
+            "on": "sky"
+          },
+          {
+            "at": "above",
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "slips",
+            "size": "wide",
+            "on": "horizon"
+          },
+          {
+            "at": "cam_so",
+            "size": "medium",
+            "on": "horizon"
+          },
+          {
+            "at": "cam_dish",
+            "size": "medium",
+            "on": "horizon"
+          },
+          {
+            "at": "cam_keep",
+            "size": "close",
+            "on": "horizon"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "the satellite crosses high over the roofs, the beam on it"
+          },
+          {
+            "at": "flies",
+            "do": "altitude",
+            "what": "a dotted altitude line drops from the satellite to the roof, its height written on it"
+          },
+          {
+            "at": "above",
+            "do": "beam",
+            "what": "the beam brightens along its length"
+          },
+          {
+            "at": "minutes",
+            "do": "track",
+            "what": "the satellite slides fast toward the far rooftops"
+          },
+          {
+            "at": "slips",
+            "do": "set",
+            "what": "it sinks behind the horizon line and dims"
+          },
+          {
+            "at": "horizon",
+            "do": "rise",
+            "what": "a second satellite appears low on the opposite side"
+          }
+        ],
+        "things": [
+          "altitude line",
+          "far rooftops",
+          "horizon line",
+          "second satellite"
+        ],
+        "labels": [
+          {
+            "at": "flies",
+            "text": "{fact1}",
+            "on": "sat",
+            "fig": "alt"
+          }
+        ],
+        "fig": {
+          "alt": "{fact1}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "slips"
+        }
+      ]
+    },
+    {
+      "id": "route",
+      "scene": "directed",
+      "role": "promise",
+      "transition": "cut",
+      "say": "So here's the trip every video you watch on it makes: up from the dish, to the satellite, down to a ground station, and into the internet.",
+      "events": {
+        "trip": {
+          "word": "trip"
+        },
+        "video": {
+          "word": "video"
+        },
+        "up": {
+          "word": "up"
+        },
+        "dish": {
+          "word": "dish"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "down": {
+          "word": "down"
+        },
+        "ground": {
+          "word": "ground"
+        },
+        "internet": {
+          "word": "internet"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_on": {
+          "word": "on"
+        }
+      },
+      "params": {
+        "component": "Route",
+        "place": "a night landscape from above: a house, the sky, a field of ground station dishes and a data centre",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "cam_on",
+            "size": "medium",
+            "on": "all"
+          },
+          {
+            "at": "dish",
+            "size": "medium",
+            "on": "house"
+          },
+          {
+            "at": "satellite",
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "ground",
+            "size": "medium",
+            "on": "gateway"
+          },
+          {
+            "at": "internet",
+            "size": "wide",
+            "on": "all"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "map",
+            "what": "the whole route lies under the camera at night, every stop dark"
+          },
+          {
+            "at": "trip",
+            "do": "path",
+            "what": "a dotted route draws from the house up into the sky and down to the far field"
+          },
+          {
+            "at": "video",
+            "do": "house",
+            "what": "the house's window lights with a playing video"
+          },
+          {
+            "at": "up",
+            "do": "up",
+            "what": "a pulse leaves the dish and climbs"
+          },
+          {
+            "at": "satellite",
+            "do": "sat",
+            "what": "the satellite lights as the pulse reaches it"
+          },
+          {
+            "at": "down",
+            "do": "down",
+            "what": "the pulse drops toward the field of dishes"
+          },
+          {
+            "at": "ground",
+            "do": "gate",
+            "what": "the ground station's dishes light in a row"
+          },
+          {
+            "at": "internet",
+            "do": "dc",
+            "what": "a buried fibre line glows to the data centre, its windows lighting"
+          }
+        ],
+        "things": [
+          "route map",
+          "house window",
+          "satellite",
+          "ground station dishes",
+          "fibre line",
+          "data centre"
+        ],
+        "labels": [
+          {
+            "at": "dish",
+            "text": "your dish",
+            "on": "house"
+          },
+          {
+            "at": "satellite",
+            "text": "satellite",
+            "on": "sat"
+          },
+          {
+            "at": "ground",
+            "text": "ground station",
+            "on": "gateway"
+          },
+          {
+            "at": "internet",
+            "text": "internet",
+            "on": "dc"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "up"
+        },
+        {
+          "kind": "pop",
+          "at": "ground"
+        }
+      ]
+    },
+    {
+      "id": "route2",
+      "scene": "directed",
+      "role": "promise",
+      "transition": "cut",
+      "say": "On the way we'll open the dish, watch it bend a beam with no moving parts, and see why it takes so many satellites.",
+      "events": {
+        "way": {
+          "word": "way"
+        },
+        "open": {
+          "word": "open"
+        },
+        "bend": {
+          "word": "bend"
+        },
+        "beam": {
+          "word": "beam"
+        },
+        "moving": {
+          "word": "moving"
+        },
+        "many": {
+          "word": "many"
+        },
+        "satellites": {
+          "word": "satellites"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_why": {
+          "word": "why"
+        }
+      },
+      "params": {
+        "component": "Route",
+        "place": "the same route map, its stops turning into chapter signs",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "open",
+            "size": "medium",
+            "on": "house"
+          },
+          {
+            "at": "bend",
+            "size": "medium",
+            "on": "sky"
+          },
+          {
+            "at": "cam_why",
+            "size": "close",
+            "on": "sky"
+          },
+          {
+            "at": "many",
+            "size": "wide",
+            "on": "sky"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "path",
+            "what": "the lit route from the last shot, the camera drifting along it"
+          },
+          {
+            "at": "open",
+            "do": "chapA",
+            "what": "a sign rises by the house: inside the dish"
+          },
+          {
+            "at": "bend",
+            "do": "chapB",
+            "what": "a sign rises in the sky: bending the beam"
+          },
+          {
+            "at": "beam",
+            "do": "up",
+            "what": "a beam leans up from the dish"
+          },
+          {
+            "at": "moving",
+            "do": "chapC",
+            "what": "a sign rises by the satellite: the handoff"
+          },
+          {
+            "at": "many",
+            "do": "swarm",
+            "what": "more satellites fade in across the sky in a long line"
+          },
+          {
+            "at": "satellites",
+            "do": "chapD",
+            "what": "a last sign: the network"
+          }
+        ],
+        "things": [
+          "chapter signs",
+          "leaning beam",
+          "line of satellites"
+        ],
+        "labels": [
+          {
+            "at": "open",
+            "text": "inside the dish",
+            "on": "house"
+          },
+          {
+            "at": "bend",
+            "text": "bending the beam",
+            "on": "sky"
+          },
+          {
+            "at": "moving",
+            "text": "the handoff",
+            "on": "sat"
+          },
+          {
+            "at": "satellites",
+            "text": "the network",
+            "on": "gateway"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "open",
+          "gain": 0.5
+        },
+        {
+          "kind": "tick",
+          "at": "bend",
+          "gain": 0.5
+        },
+        {
+          "kind": "tick",
+          "at": "moving",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "old",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "For decades, satellite internet and TV worked another way. Look at the dishes on this street.",
+      "events": {
+        "decades": {
+          "word": "decades"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "tv": {
+          "word": "TV"
+        },
+        "another": {
+          "word": "another"
+        },
+        "look": {
+          "word": "Look"
+        },
+        "dishes": {
+          "word": "dishes"
+        },
+        "street": {
+          "word": "street"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_internet": {
+          "word": "internet"
+        },
+        "cam_way": {
+          "word": "way"
+        }
+      },
+      "params": {
+        "component": "Street",
+        "place": "a quiet suburban street at night, a TV dish on every house",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "street"
+          },
+          {
+            "at": "cam_internet",
+            "size": "medium",
+            "on": "street"
+          },
+          {
+            "at": "cam_way",
+            "size": "close",
+            "on": "street"
+          },
+          {
+            "at": "look",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "street",
+            "size": "wide",
+            "on": "street"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sign",
+            "what": "a street sign glows at the corner: the old way"
+          },
+          {
+            "at": "decades",
+            "do": "houses",
+            "what": "porch lights come on along the street"
+          },
+          {
+            "at": "tv",
+            "do": "tv",
+            "what": "a TV flickers blue in a front window"
+          },
+          {
+            "at": "look",
+            "do": "dishes",
+            "what": "the curved dishes on the roofs catch the light, one by one"
+          },
+          {
+            "at": "street",
+            "do": "aimline",
+            "what": "faint aim lines rise from every dish, all parallel"
+          }
+        ],
+        "things": [
+          "street sign",
+          "porch lights",
+          "front window TV",
+          "curved TV dishes",
+          "aim lines"
+        ],
+        "labels": [
+          {
+            "at": "dishes",
+            "text": "curved dish",
+            "on": "dish"
+          }
+        ],
+        "sign": {
+          "text": "The old way",
+          "at": "decades",
+          "on": "corner"
+        }
+      }
+    },
+    {
+      "id": "geo",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Every one of them points at the same spot in the sky: one satellite, {fact2} above the equator.",
+      "events": {
+        "every": {
+          "word": "Every"
+        },
+        "points": {
+          "word": "points"
+        },
+        "same": {
+          "word": "same"
+        },
+        "spot": {
+          "word": "spot"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "above": {
+          "word": "above"
+        },
+        "equator": {
+          "word": "equator"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_hundred": {
+          "word": "hundred"
+        },
+        "cam_five": {
+          "word": "five"
+        },
+        "cam_sky": {
+          "word": "sky"
+        },
+        "cam_of": {
+          "word": "of"
+        }
+      },
+      "params": {
+        "component": "Street",
+        "place": "the same street, the camera tilting up the aim lines into the night sky",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "cam_of",
+            "size": "close",
+            "on": "dish"
+          },
+          {
+            "at": "same",
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "cam_sky",
+            "size": "medium",
+            "on": "sky"
+          },
+          {
+            "at": "satellite",
+            "size": "close",
+            "on": "sat"
+          },
+          {
+            "at": "cam_five",
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "cam_hundred",
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "equator",
+            "size": "medium",
+            "on": "sat"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "aimline",
+            "what": "the aim lines from every dish already glow"
+          },
+          {
+            "at": "points",
+            "do": "converge",
+            "what": "the lines tilt up and meet at one point"
+          },
+          {
+            "at": "spot",
+            "do": "satdot",
+            "what": "a bright dot appears where they meet"
+          },
+          {
+            "at": "satellite",
+            "do": "sat",
+            "what": "the dot becomes a box-shaped satellite with long panels"
+          },
+          {
+            "at": "above",
+            "do": "height",
+            "what": "a height plate hangs under it, the distance counting up"
+          },
+          {
+            "at": "equator",
+            "do": "equator",
+            "what": "a glowing line for the equator draws on the horizon"
+          }
+        ],
+        "things": [
+          "meeting point",
+          "TV satellite",
+          "height plate",
+          "equator line"
+        ],
+        "labels": [
+          {
+            "at": "satellite",
+            "text": "TV satellite",
+            "on": "sat"
+          },
+          {
+            "at": "above",
+            "text": "{fact2}",
+            "on": "plate",
+            "fig": "geo"
+          }
+        ],
+        "fig": {
+          "geo": "{fact2}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "spot"
+        },
+        {
+          "kind": "swell",
+          "at": "above"
+        }
+      ]
+    },
+    {
+      "id": "orbit",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Why that height? Up there, one trip around the Earth takes as long as the Earth takes to turn once.",
+      "events": {
+        "height": {
+          "word": "height"
+        },
+        "trip": {
+          "word": "trip"
+        },
+        "around": {
+          "word": "around"
+        },
+        "earth": {
+          "word": "Earth"
+        },
+        "turn": {
+          "word": "turn"
+        },
+        "once": {
+          "word": "once"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_long": {
+          "word": "long"
+        },
+        "cam_up": {
+          "word": "up"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "Earth in space, a thin ring drawn at that height around it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "geo"
+          },
+          {
+            "at": "cam_up",
+            "size": "medium",
+            "on": "geo"
+          },
+          {
+            "at": "trip",
+            "size": "wide",
+            "on": "earth"
+          },
+          {
+            "at": "cam_long",
+            "size": "medium",
+            "on": "earth"
+          },
+          {
+            "at": "turn",
+            "size": "medium",
+            "on": "earth"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "earth",
+            "what": "the Earth turns slowly in the dark, lit from one side"
+          },
+          {
+            "at": "height",
+            "do": "geoRing",
+            "what": "a ring draws around it, far out, to scale"
+          },
+          {
+            "at": "trip",
+            "do": "geoSat",
+            "what": "the satellite appears on the ring"
+          },
+          {
+            "at": "around",
+            "do": "ride",
+            "what": "it rides the ring, the Earth turning under it"
+          },
+          {
+            "at": "turn",
+            "do": "pin",
+            "what": "a marker on the ground below it turns at the same rate"
+          },
+          {
+            "at": "once",
+            "do": "lockline",
+            "what": "a line from marker to satellite stays straight, the two moving together"
+          }
+        ],
+        "things": [
+          "Earth",
+          "geostationary ring",
+          "TV satellite",
+          "ground marker",
+          "tie line"
+        ],
+        "labels": [
+          {
+            "at": "height",
+            "text": "geostationary orbit",
+            "on": "geo"
+          },
+          {
+            "at": "turn",
+            "text": "same spot below",
+            "on": "pin"
+          }
+        ],
+        "tag": "notToScale"
+      }
+    },
+    {
+      "id": "sameway",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "That's why every TV dish on a street faces the same way: they're all staring at one fixed point in the sky.",
+      "events": {
+        "every": {
+          "word": "every"
+        },
+        "dish": {
+          "word": "dish"
+        },
+        "street": {
+          "word": "street"
+        },
+        "same": {
+          "word": "same"
+        },
+        "way": {
+          "word": "way"
+        },
+        "staring": {
+          "word": "staring"
+        },
+        "fixed": {
+          "word": "fixed"
+        },
+        "point": {
+          "word": "point"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Street",
+        "place": "the street seen from above the roofs, every dish facing one way",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "street"
+          },
+          {
+            "at": "same",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "staring",
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "point",
+            "size": "close",
+            "on": "sat"
+          }
+        ],
+        "moments": [
+          {
+            "at": "every",
+            "do": "dishes",
+            "what": "the dishes on every roof light up in a row"
+          },
+          {
+            "at": "street",
+            "do": "houses",
+            "what": "porch lights run down the street"
+          },
+          {
+            "at": "same",
+            "do": "aimline",
+            "what": "an aim line rises from each dish, all parallel"
+          },
+          {
+            "at": "way",
+            "do": "converge",
+            "what": "the lines lean toward one point"
+          },
+          {
+            "at": "staring",
+            "do": "satdot",
+            "what": "a bright dot shines where they meet"
+          },
+          {
+            "at": "point",
+            "do": "sat",
+            "what": "close on the dot: the box satellite with its panels"
+          }
+        ],
+        "things": [
+          "row of dishes",
+          "parallel aim lines",
+          "fixed point",
+          "box satellite"
+        ]
+      }
+    },
+    {
+      "id": "still",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So the satellite seems to hang still, and the dish can be bolted in place, aimed once, and left alone.",
+      "events": {
+        "seems": {
+          "word": "seems"
+        },
+        "hang": {
+          "word": "hang"
+        },
+        "still": {
+          "word": "still"
+        },
+        "bolted": {
+          "word": "bolted"
+        },
+        "aimed": {
+          "word": "aimed"
+        },
+        "once": {
+          "word": "once"
+        },
+        "alone": {
+          "word": "alone"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_and": {
+          "word": "and"
+        }
+      },
+      "params": {
+        "component": "Street",
+        "place": "back on the street: a fitter's ladder against a house, the dish's mount bolted to the wall",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "street"
+          },
+          {
+            "at": "cam_and",
+            "size": "close",
+            "on": "street"
+          },
+          {
+            "at": "bolted",
+            "size": "close",
+            "on": "mount"
+          },
+          {
+            "at": "aimed",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "alone",
+            "size": "wide",
+            "on": "street"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "satdot",
+            "what": "the satellite dot hangs over the roofs"
+          },
+          {
+            "at": "hang",
+            "do": "hold",
+            "what": "the stars wheel slowly behind it while it stays put"
+          },
+          {
+            "at": "bolted",
+            "do": "bolts",
+            "what": "close on the mount: four bolts glow amber"
+          },
+          {
+            "at": "aimed",
+            "do": "aimline",
+            "what": "one aim line fires from the dish to the dot"
+          },
+          {
+            "at": "once",
+            "do": "check",
+            "what": "a tick lights on the mount"
+          },
+          {
+            "at": "alone",
+            "do": "dim",
+            "what": "the street goes quiet, the dishes still"
+          }
+        ],
+        "things": [
+          "satellite dot",
+          "wheeling stars",
+          "mount bolts",
+          "single aim line",
+          "tick"
+        ],
+        "labels": [
+          {
+            "at": "bolted",
+            "text": "bolted in place",
+            "on": "mount"
+          }
+        ]
+      }
+    },
+    {
+      "id": "calltease",
+      "scene": "directed",
+      "role": "tease",
+      "transition": "cut",
+      "say": "That's fine for TV. But what happens when you're on a video call?",
+      "events": {
+        "fine": {
+          "word": "fine"
+        },
+        "tv": {
+          "word": "TV"
+        },
+        "but": {
+          "word": "But"
+        },
+        "happens": {
+          "word": "happens"
+        },
+        "video": {
+          "word": "video"
+        },
+        "call": {
+          "word": "call"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Home",
+        "place": "a living room at night, a laptop on a table on a video call",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "laptop"
+          },
+          {
+            "at": "but",
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "call",
+            "size": "medium",
+            "on": "room"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "laptop",
+            "what": "the laptop's screen glows with a call"
+          },
+          {
+            "at": "tv",
+            "do": "tv",
+            "what": "a TV on the wall plays smoothly"
+          },
+          {
+            "at": "but",
+            "do": "lag",
+            "what": "the call's picture freezes, a loading ring spins"
+          },
+          {
+            "at": "happens",
+            "do": "lagcount",
+            "what": "the ring keeps spinning"
+          },
+          {
+            "at": "call",
+            "do": "wifi",
+            "what": "faint wifi rings pulse from the router on the shelf"
+          }
+        ],
+        "things": [
+          "laptop video call",
+          "wall TV",
+          "loading ring",
+          "router",
+          "wifi rings"
+        ]
+      }
+    },
+    {
+      "id": "far",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So what's wrong with that? Distance. Your click has to climb all the way up to that satellite, and all the way back down.",
+      "events": {
+        "wrong": {
+          "word": "wrong"
+        },
+        "distance": {
+          "word": "Distance"
+        },
+        "click": {
+          "word": "click"
+        },
+        "climb": {
+          "word": "climb"
+        },
+        "up": {
+          "word": "up"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "back": {
+          "word": "back"
+        },
+        "down": {
+          "word": "down"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "Earth and the far ring again, a pulse ready on the ground",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "earth"
+          },
+          {
+            "at": "distance",
+            "size": "wide",
+            "on": "geo"
+          },
+          {
+            "at": "satellite",
+            "size": "medium",
+            "on": "geo"
+          },
+          {
+            "at": "down",
+            "size": "medium",
+            "on": "earth"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "geoRing",
+            "what": "the ring hangs around the Earth, the satellite on it"
+          },
+          {
+            "at": "wrong",
+            "do": "geoSat",
+            "what": "the satellite flashes on the ring"
+          },
+          {
+            "at": "distance",
+            "do": "bracket",
+            "what": "a long bracket draws from the ground to the ring"
+          },
+          {
+            "at": "click",
+            "do": "pin",
+            "what": "a dot lights on the ground: your house"
+          },
+          {
+            "at": "climb",
+            "do": "pulseUp",
+            "what": "a pulse leaves the ground and climbs the long way out"
+          },
+          {
+            "at": "satellite",
+            "do": "geoSat",
+            "what": "the satellite flashes as the pulse arrives"
+          },
+          {
+            "at": "back",
+            "do": "pulseDown",
+            "what": "the pulse falls back toward the Earth"
+          },
+          {
+            "at": "down",
+            "do": "pin",
+            "what": "the ground dot flashes as it lands"
+          }
+        ],
+        "things": [
+          "distance bracket",
+          "ground dot",
+          "signal pulse",
+          "TV satellite"
+        ],
+        "labels": [
+          {
+            "at": "distance",
+            "text": "{fact2}",
+            "on": "mid",
+            "fig": "geo"
+          }
+        ],
+        "fig": {
+          "geo": "{fact2}"
+        },
+        "tag": "notToScale"
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "climb"
+        },
+        {
+          "kind": "tick",
+          "at": "down",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "light",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Radio moves at the speed of light, but that's still a long trip, and a web page needs many of them, one after another.",
+      "events": {
+        "radio": {
+          "word": "Radio"
+        },
+        "speed": {
+          "word": "speed"
+        },
+        "light": {
+          "word": "light"
+        },
+        "long": {
+          "word": "long"
+        },
+        "trip": {
+          "word": "trip"
+        },
+        "page": {
+          "word": "page"
+        },
+        "many": {
+          "word": "many"
+        },
+        "another": {
+          "word": "another"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_of": {
+          "word": "of"
+        },
+        "cam_them": {
+          "word": "them"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the pulse's path traced out as a glowing thread from Earth to the ring",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "geo"
+          },
+          {
+            "at": "cam_of",
+            "size": "close",
+            "on": "earth"
+          },
+          {
+            "at": "long",
+            "size": "medium",
+            "on": "mid"
+          },
+          {
+            "at": "page",
+            "size": "medium",
+            "on": "earth"
+          },
+          {
+            "at": "cam_them",
+            "size": "close",
+            "on": "earth"
+          },
+          {
+            "at": "another",
+            "size": "wide",
+            "on": "geo"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "geoRing",
+            "what": "the far ring and the satellite"
+          },
+          {
+            "at": "radio",
+            "do": "pulseUp",
+            "what": "a pulse streaks up the thread"
+          },
+          {
+            "at": "light",
+            "do": "pulseDown",
+            "what": "it streaks back down"
+          },
+          {
+            "at": "long",
+            "do": "thread",
+            "what": "the thread glows along its whole length"
+          },
+          {
+            "at": "page",
+            "do": "pulses",
+            "what": "a train of pulses runs up and down, one behind another"
+          },
+          {
+            "at": "another",
+            "do": "count",
+            "what": "a counter of round trips ticks up on the ground plate"
+          }
+        ],
+        "things": [
+          "light-speed pulse",
+          "signal thread",
+          "pulse train",
+          "round-trip counter"
+        ],
+        "tag": "notToScale"
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "page",
+          "gain": 0.4
+        },
+        {
+          "kind": "tick",
+          "at": "another",
+          "gain": 0.4
+        }
+      ]
+    },
+    {
+      "id": "laghome",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "You feel it. On a video call, people talk over each other, because every word arrives a beat late.",
+      "events": {
+        "feel": {
+          "word": "feel"
+        },
+        "call": {
+          "word": "call"
+        },
+        "talk": {
+          "word": "talk"
+        },
+        "over": {
+          "word": "over"
+        },
+        "every": {
+          "word": "every"
+        },
+        "word": {
+          "word": "word"
+        },
+        "late": {
+          "word": "late"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_video": {
+          "word": "video"
+        },
+        "cam_because": {
+          "word": "because"
+        }
+      },
+      "params": {
+        "component": "Home",
+        "place": "the living room, the call still frozen on the laptop",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "cam_video",
+            "size": "medium",
+            "on": "laptop"
+          },
+          {
+            "at": "talk",
+            "size": "medium",
+            "on": "laptop"
+          },
+          {
+            "at": "cam_because",
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "late",
+            "size": "medium",
+            "on": "room"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "lag",
+            "what": "the frozen call and its spinning ring"
+          },
+          {
+            "at": "feel",
+            "do": "laptop",
+            "what": "the picture jumps forward a few frames"
+          },
+          {
+            "at": "talk",
+            "do": "bubbles",
+            "what": "two speech bubbles pop on the screen at once"
+          },
+          {
+            "at": "over",
+            "do": "clash",
+            "what": "they bump into each other and shake"
+          },
+          {
+            "at": "word",
+            "do": "late",
+            "what": "a word bubble drifts in late"
+          },
+          {
+            "at": "late",
+            "do": "wifi",
+            "what": "the router's rings pulse slowly"
+          }
+        ],
+        "things": [
+          "frozen call",
+          "speech bubbles",
+          "late word bubble",
+          "router"
+        ]
+      }
+    },
+    {
+      "id": "low",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So what if the satellite flew lower? Bring it down, to about {fact1}.",
+      "events": {
+        "bring": {
+          "word": "bring"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "down": {
+          "word": "down"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_hundred": {
+          "word": "hundred"
+        },
+        "cam_kilometres": {
+          "word": "kilometres"
+        },
+        "cam_lower": {
+          "word": "lower"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the Earth up close, a thin shell drawn just above its surface",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "geo"
+          },
+          {
+            "at": "cam_lower",
+            "size": "medium",
+            "on": "geo"
+          },
+          {
+            "at": "down",
+            "size": "medium",
+            "on": "leo",
+            "move": "dive"
+          },
+          {
+            "at": "cam_hundred",
+            "size": "close",
+            "on": "leo"
+          },
+          {
+            "at": "cam_kilometres",
+            "size": "medium",
+            "on": "leo"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "geoRing",
+            "what": "the far ring around the Earth"
+          },
+          {
+            "at": "bring",
+            "do": "dropSat",
+            "what": "the satellite leaves the far ring and drops inward"
+          },
+          {
+            "at": "satellite",
+            "do": "leoShell",
+            "what": "a thin shell lights just above the surface"
+          },
+          {
+            "at": "down",
+            "do": "leoSat",
+            "what": "the satellite settles into the shell, close to the ground"
+          }
+        ],
+        "things": [
+          "low shell",
+          "dropping satellite",
+          "Earth's surface"
+        ],
+        "labels": [
+          {
+            "at": "down",
+            "text": "{fact1}",
+            "on": "leo",
+            "fig": "leo"
+          }
+        ],
+        "fig": {
+          "leo": "{fact1}"
+        },
+        "tag": "notToScale"
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "bring"
+        },
+        {
+          "kind": "pop",
+          "at": "down"
+        }
+      ]
+    },
+    {
+      "id": "ratio",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "That's only {low_pct} of the old height. The trip up and back shrinks to the same small share.",
+      "events": {
+        "only": {
+          "word": "only"
+        },
+        "old": {
+          "word": "old"
+        },
+        "height": {
+          "word": "height"
+        },
+        "trip": {
+          "word": "trip"
+        },
+        "up": {
+          "word": "up"
+        },
+        "back": {
+          "word": "back"
+        },
+        "shrinks": {
+          "word": "shrinks"
+        },
+        "share": {
+          "word": "share"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_percent": {
+          "word": "percent"
+        },
+        "cam_same": {
+          "word": "same"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the far ring and the low shell side by side, two brackets beside them",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "leo"
+          },
+          {
+            "at": "cam_percent",
+            "size": "close",
+            "on": "leo"
+          },
+          {
+            "at": "old",
+            "size": "wide",
+            "on": "geo"
+          },
+          {
+            "at": "trip",
+            "size": "wide",
+            "on": "earth"
+          },
+          {
+            "at": "shrinks",
+            "size": "medium",
+            "on": "leo"
+          },
+          {
+            "at": "cam_same",
+            "size": "close",
+            "on": "leo"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "leoShell",
+            "what": "the low shell around the Earth"
+          },
+          {
+            "at": "only",
+            "do": "pct",
+            "what": "the share lands on a plate beside the shell"
+          },
+          {
+            "at": "old",
+            "do": "geoRing",
+            "what": "the far ring fades back in for comparison"
+          },
+          {
+            "at": "height",
+            "do": "bracket",
+            "what": "a long bracket and a tiny bracket stand side by side"
+          },
+          {
+            "at": "trip",
+            "do": "pulseLeo",
+            "what": "a pulse flicks up to the low shell and back"
+          },
+          {
+            "at": "up",
+            "do": "pulseUp",
+            "what": "another sets off for the far ring"
+          },
+          {
+            "at": "shrinks",
+            "do": "pulses",
+            "what": "the low pulse goes up and back again and again before the far one returns"
+          }
+        ],
+        "things": [
+          "share plate",
+          "two brackets",
+          "short pulse",
+          "long pulse"
+        ],
+        "labels": [
+          {
+            "at": "only",
+            "text": "{low_pct}",
+            "on": "leo",
+            "fig": "pct"
+          }
+        ],
+        "fig": {
+          "pct": "{low_pct}"
+        },
+        "tag": "notToScale"
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "trip",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "hop",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Light covers that short hop so fast that the distance stops being the slow part of the trip.",
+      "events": {
+        "light": {
+          "word": "Light"
+        },
+        "short": {
+          "word": "short"
+        },
+        "hop": {
+          "word": "hop"
+        },
+        "fast": {
+          "word": "fast"
+        },
+        "distance": {
+          "word": "distance"
+        },
+        "slow": {
+          "word": "slow"
+        },
+        "part": {
+          "word": "part"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_the": {
+          "word": "the"
+        },
+        "cam_of": {
+          "word": "of"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the low shell, a pulse flicking between the ground and a satellite",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "leo"
+          },
+          {
+            "at": "hop",
+            "size": "close",
+            "on": "leoSat"
+          },
+          {
+            "at": "cam_the",
+            "size": "close",
+            "on": "earth"
+          },
+          {
+            "at": "slow",
+            "size": "medium",
+            "on": "earth"
+          },
+          {
+            "at": "cam_of",
+            "size": "close",
+            "on": "earth"
+          }
+        ],
+        "moments": [
+          {
+            "at": "light",
+            "do": "pulseLeo",
+            "what": "a pulse flicks from the ground up to the low satellite"
+          },
+          {
+            "at": "short",
+            "do": "leoSat",
+            "what": "the satellite flashes as it arrives"
+          },
+          {
+            "at": "hop",
+            "do": "pulses",
+            "what": "pulses flick up and down, one after another"
+          },
+          {
+            "at": "fast",
+            "do": "thread",
+            "what": "the short thread glows solid"
+          },
+          {
+            "at": "distance",
+            "do": "bracket",
+            "what": "a tiny bracket shows the short gap"
+          },
+          {
+            "at": "slow",
+            "do": "pin",
+            "what": "the ground dot glows steady"
+          }
+        ],
+        "things": [
+          "short hop",
+          "pulse train",
+          "tiny bracket"
+        ],
+        "tag": "notToScale"
+      }
+    },
+    {
+      "id": "snappy",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So the delay drops from something you notice to something you don't.",
+      "events": {
+        "delay": {
+          "word": "delay"
+        },
+        "drops": {
+          "word": "drops"
+        },
+        "notice": {
+          "word": "notice"
+        },
+        "dont": {
+          "word": "don't"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Home",
+        "place": "the living room again, the call now smooth",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "laptop"
+          },
+          {
+            "at": "drops",
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "dont",
+            "size": "medium",
+            "on": "room"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "lag",
+            "what": "the call frozen for a moment"
+          },
+          {
+            "at": "delay",
+            "do": "play",
+            "what": "it unfreezes and plays smoothly"
+          },
+          {
+            "at": "drops",
+            "do": "bubbles",
+            "what": "speech bubbles take turns neatly"
+          },
+          {
+            "at": "notice",
+            "do": "wifi",
+            "what": "the router's rings pulse quickly"
+          },
+          {
+            "at": "dont",
+            "do": "check",
+            "what": "a green tick pops by the call"
+          }
+        ],
+        "things": [
+          "smooth call",
+          "turn-taking bubbles",
+          "quick wifi rings",
+          "green tick"
+        ]
+      }
+    },
+    {
+      "id": "catch",
+      "scene": "directed",
+      "role": "tease",
+      "transition": "cut",
+      "say": "But low comes with a catch. A satellite this low can't hang still.",
+      "events": {
+        "low": {
+          "word": "low"
+        },
+        "catch": {
+          "word": "catch"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "cant": {
+          "word": "can't"
+        },
+        "still": {
+          "word": "still"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the low shell from close above the Earth's curve",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "leo"
+          },
+          {
+            "at": "catch",
+            "size": "close",
+            "on": "leoSat"
+          },
+          {
+            "at": "still",
+            "size": "medium",
+            "on": "leo"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "leoSat",
+            "what": "the low satellite over the Earth's curve"
+          },
+          {
+            "at": "catch",
+            "do": "spin",
+            "what": "the Earth's surface starts sliding by beneath it"
+          },
+          {
+            "at": "satellite",
+            "do": "speed",
+            "what": "speed streaks trail behind the satellite"
+          },
+          {
+            "at": "cant",
+            "do": "pinSlide",
+            "what": "the ground marker below slides away from it"
+          },
+          {
+            "at": "still",
+            "do": "ride",
+            "what": "the satellite races round the curve"
+          }
+        ],
+        "things": [
+          "sliding surface",
+          "speed streaks",
+          "ground marker"
+        ],
+        "tag": "notToScale"
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "catch"
+        }
+      ]
+    },
+    {
+      "id": "race",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Why not? Down here it has to race around the planet to stay up, so it crosses your sky in minutes.",
+      "events": {
+        "race": {
+          "word": "race"
+        },
+        "around": {
+          "word": "around"
+        },
+        "planet": {
+          "word": "planet"
+        },
+        "stay": {
+          "word": "stay"
+        },
+        "crosses": {
+          "word": "crosses"
+        },
+        "sky": {
+          "word": "sky"
+        },
+        "minutes": {
+          "word": "minutes"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_down": {
+          "word": "down"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the whole Earth, the low satellite whipping round it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "earth"
+          },
+          {
+            "at": "cam_down",
+            "size": "medium",
+            "on": "earth"
+          },
+          {
+            "at": "crosses",
+            "size": "medium",
+            "on": "pin"
+          },
+          {
+            "at": "minutes",
+            "size": "medium",
+            "on": "earth"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "leoShell",
+            "what": "the low shell around the whole Earth"
+          },
+          {
+            "at": "race",
+            "do": "ride",
+            "what": "the satellite whips round the planet"
+          },
+          {
+            "at": "planet",
+            "do": "trail",
+            "what": "a glowing trail draws behind it"
+          },
+          {
+            "at": "stay",
+            "do": "pin",
+            "what": "your house's dot lights on the ground"
+          },
+          {
+            "at": "crosses",
+            "do": "overhead",
+            "what": "the satellite sweeps over the dot and away"
+          },
+          {
+            "at": "minutes",
+            "do": "cone",
+            "what": "a cone of sky over the dot lights while it passes, then empties"
+          }
+        ],
+        "things": [
+          "orbit trail",
+          "house dot",
+          "sky cone"
+        ],
+        "tag": "notToScale"
+      }
+    },
+    {
+      "id": "swing",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "To follow it, an old dish would have to swing across the whole sky, again and again, all day.",
+      "events": {
+        "follow": {
+          "word": "follow"
+        },
+        "old": {
+          "word": "old"
+        },
+        "swing": {
+          "word": "swing"
+        },
+        "whole": {
+          "word": "whole"
+        },
+        "sky": {
+          "word": "sky"
+        },
+        "again": {
+          "word": "again"
+        },
+        "day": {
+          "word": "day"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the dusk rooftop, an old curved dish bolted beside the flat one",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "swing",
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "day",
+            "size": "medium",
+            "on": "olddish"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "a satellite crosses the sky"
+          },
+          {
+            "at": "old",
+            "do": "olddish",
+            "what": "a curved TV dish appears on the roof beside the flat one"
+          },
+          {
+            "at": "swing",
+            "do": "oldswing",
+            "what": "it swings on its mount to chase the satellite, creaking"
+          },
+          {
+            "at": "sky",
+            "do": "track",
+            "what": "the satellite runs ahead of it"
+          },
+          {
+            "at": "again",
+            "do": "rise",
+            "what": "the next satellite rises and the dish swings all the way back"
+          },
+          {
+            "at": "day",
+            "do": "wear",
+            "what": "its mount glows red with strain"
+          }
+        ],
+        "things": [
+          "curved TV dish",
+          "swinging mount",
+          "next satellite",
+          "strained mount"
+        ],
+        "labels": [
+          {
+            "at": "old",
+            "text": "curved dish",
+            "on": "olddish"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "swing"
+        },
+        {
+          "kind": "whoosh",
+          "at": "again"
+        }
+      ]
+    },
+    {
+      "id": "inside",
+      "scene": "directed",
+      "role": "tease",
+      "transition": "cut",
+      "say": "Starlink's flat dish doesn't move at all. So what is inside it?",
+      "events": {
+        "starlinks": {
+          "word": "Starlink's"
+        },
+        "flat": {
+          "word": "flat"
+        },
+        "move": {
+          "word": "move"
+        },
+        "all": {
+          "word": "all"
+        },
+        "inside": {
+          "word": "inside"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the rooftop, the old dish gone, close on the flat dish face",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "move",
+            "size": "close",
+            "on": "mount"
+          },
+          {
+            "at": "inside",
+            "size": "close",
+            "on": "dish"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "a satellite crossing overhead, the beam on it"
+          },
+          {
+            "at": "starlinks",
+            "do": "beam",
+            "what": "the flat dish's beam follows it"
+          },
+          {
+            "at": "move",
+            "do": "lock",
+            "what": "the mount stays still, a ring pulses round it"
+          },
+          {
+            "at": "all",
+            "do": "track",
+            "what": "the satellite keeps racing"
+          },
+          {
+            "at": "inside",
+            "do": "face",
+            "what": "the dish face goes see-through and its grid glows"
+          }
+        ],
+        "things": [
+          "flat dish",
+          "still mount",
+          "glowing grid"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "inside"
+        }
+      ]
+    },
+    {
+      "id": "bench",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Here it is on a workbench. On the outside, it's just a flat white panel on a stand, with one cable.",
+      "events": {
+        "workbench": {
+          "word": "workbench"
+        },
+        "outside": {
+          "word": "outside"
+        },
+        "flat": {
+          "word": "flat"
+        },
+        "white": {
+          "word": "white"
+        },
+        "panel": {
+          "word": "panel"
+        },
+        "stand": {
+          "word": "stand"
+        },
+        "cable": {
+          "word": "cable"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_just": {
+          "word": "just"
+        },
+        "cam_is": {
+          "word": "is"
+        }
+      },
+      "params": {
+        "component": "Bench",
+        "place": "a workbench under one lamp, the dish laid flat on it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "bench"
+          },
+          {
+            "at": "cam_is",
+            "size": "medium",
+            "on": "bench"
+          },
+          {
+            "at": "cam_just",
+            "size": "medium",
+            "on": "bench"
+          },
+          {
+            "at": "white",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "cable",
+            "size": "close",
+            "on": "cable"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sign",
+            "what": "a work lamp clicks on over the bench; a tag on the lamp reads: inside the dish"
+          },
+          {
+            "at": "workbench",
+            "do": "dish",
+            "what": "the dish lies on the bench"
+          },
+          {
+            "at": "flat",
+            "do": "turn",
+            "what": "it turns to show how thin it is"
+          },
+          {
+            "at": "panel",
+            "do": "face",
+            "what": "its white face catches the lamp"
+          },
+          {
+            "at": "stand",
+            "do": "stand",
+            "what": "the stand lights"
+          },
+          {
+            "at": "cable",
+            "do": "cable",
+            "what": "the single cable lights along its length"
+          }
+        ],
+        "things": [
+          "work lamp",
+          "workbench",
+          "white panel",
+          "stand",
+          "single cable"
+        ],
+        "labels": [
+          {
+            "at": "stand",
+            "text": "stand",
+            "on": "stand"
+          },
+          {
+            "at": "cable",
+            "text": "one cable",
+            "on": "cable"
+          }
+        ],
+        "sign": {
+          "text": "Inside the dish",
+          "at": "workbench",
+          "on": "lamp"
+        }
+      }
+    },
+    {
+      "id": "nomirror",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Lift the white cover, and there's no curved mirror inside, like a TV dish has.",
+      "events": {
+        "lift": {
+          "word": "Lift"
+        },
+        "cover": {
+          "word": "cover"
+        },
+        "curved": {
+          "word": "curved"
+        },
+        "mirror": {
+          "word": "mirror"
+        },
+        "tv": {
+          "word": "TV"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Bench",
+        "place": "the bench, a ghostly curved TV dish hovering beside the flat one",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "curved",
+            "size": "medium",
+            "on": "ghost"
+          },
+          {
+            "at": "tv",
+            "size": "medium",
+            "on": "dish"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "dish",
+            "what": "the dish on the bench"
+          },
+          {
+            "at": "lift",
+            "do": "open",
+            "what": "the white cover lifts off and floats up"
+          },
+          {
+            "at": "cover",
+            "do": "board",
+            "what": "a flat board shows underneath"
+          },
+          {
+            "at": "curved",
+            "do": "ghost",
+            "what": "a see-through curved dish appears beside it"
+          },
+          {
+            "at": "mirror",
+            "do": "ghostRay",
+            "what": "rays bounce off its curve into one point"
+          },
+          {
+            "at": "tv",
+            "do": "ghostOut",
+            "what": "the ghost dish fades with a cross"
+          }
+        ],
+        "things": [
+          "white cover",
+          "flat board",
+          "ghost curved dish",
+          "reflected rays"
+        ],
+        "labels": [
+          {
+            "at": "curved",
+            "text": "curved mirror",
+            "on": "ghost"
+          }
+        ]
+      }
+    },
+    {
+      "id": "radome",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "The cover is plastic for a reason: radio passes straight through it, while rain and snow stay out.",
+      "events": {
+        "cover": {
+          "word": "cover"
+        },
+        "plastic": {
+          "word": "plastic"
+        },
+        "reason": {
+          "word": "reason"
+        },
+        "radio": {
+          "word": "radio"
+        },
+        "through": {
+          "word": "through"
+        },
+        "rain": {
+          "word": "rain"
+        },
+        "snow": {
+          "word": "snow"
+        },
+        "out": {
+          "word": "out"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Bench",
+        "place": "the lifted white cover floating over the board, rain falling on it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "radio",
+            "size": "close",
+            "on": "dish"
+          },
+          {
+            "at": "out",
+            "size": "medium",
+            "on": "dish"
+          }
+        ],
+        "moments": [
+          {
+            "at": "cover",
+            "do": "open",
+            "what": "the white cover hangs over the board"
+          },
+          {
+            "at": "plastic",
+            "do": "face",
+            "what": "it turns see-through for a moment"
+          },
+          {
+            "at": "radio",
+            "do": "ripple",
+            "what": "ripples pass up through the cover untouched"
+          },
+          {
+            "at": "through",
+            "do": "ripIn",
+            "what": "another comes down through it to the board"
+          },
+          {
+            "at": "rain",
+            "do": "rain",
+            "what": "rain drops bounce off the cover"
+          },
+          {
+            "at": "snow",
+            "do": "snow",
+            "what": "flakes slide off its edge"
+          }
+        ],
+        "things": [
+          "white cover",
+          "ripples through plastic",
+          "raindrops",
+          "snow"
+        ]
+      }
+    },
+    {
+      "id": "grid",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So what is there instead? A board, covered in a grid of many tiny antennas, each one a small flat metal patch.",
+      "events": {
+        "instead": {
+          "word": "Instead"
+        },
+        "board": {
+          "word": "board"
+        },
+        "grid": {
+          "word": "grid"
+        },
+        "many": {
+          "word": "many"
+        },
+        "tiny": {
+          "word": "tiny"
+        },
+        "antennas": {
+          "word": "antennas"
+        },
+        "patch": {
+          "word": "patch"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_one": {
+          "word": "one"
+        },
+        "cam_covered": {
+          "word": "covered"
+        },
+        "cam_a": {
+          "word": "a"
+        }
+      },
+      "params": {
+        "component": "Bench",
+        "place": "close over the board, a grid of small metal squares",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "board"
+          },
+          {
+            "at": "cam_a",
+            "size": "close",
+            "on": "board"
+          },
+          {
+            "at": "cam_covered",
+            "size": "close",
+            "on": "board"
+          },
+          {
+            "at": "grid",
+            "size": "close",
+            "on": "board"
+          },
+          {
+            "at": "cam_one",
+            "size": "medium",
+            "on": "board"
+          },
+          {
+            "at": "patch",
+            "size": "extreme",
+            "on": "patch",
+            "move": "dive"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "board",
+            "what": "the board under the lifted cover"
+          },
+          {
+            "at": "instead",
+            "do": "grid",
+            "what": "rows of small squares light across it"
+          },
+          {
+            "at": "many",
+            "do": "wave",
+            "what": "a wave of light runs over the grid"
+          },
+          {
+            "at": "tiny",
+            "do": "patch",
+            "what": "one square brightens"
+          },
+          {
+            "at": "antennas",
+            "do": "patchLabel",
+            "what": "a label draws to it"
+          },
+          {
+            "at": "patch",
+            "do": "patchUp",
+            "what": "the patch lifts a little off the board"
+          }
+        ],
+        "things": [
+          "antenna grid",
+          "light wave",
+          "one metal patch"
+        ],
+        "labels": [
+          {
+            "at": "antennas",
+            "text": "antenna",
+            "on": "patch"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "tiny"
+        }
+      ]
+    },
+    {
+      "id": "own",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Each patch can send and hear radio on its own, but one by itself is too small to aim at anything.",
+      "events": {
+        "patch": {
+          "word": "patch"
+        },
+        "send": {
+          "word": "send"
+        },
+        "hear": {
+          "word": "hear"
+        },
+        "radio": {
+          "word": "radio"
+        },
+        "own": {
+          "word": "own"
+        },
+        "small": {
+          "word": "small"
+        },
+        "aim": {
+          "word": "aim"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_but": {
+          "word": "but"
+        },
+        "cam_its": {
+          "word": "its"
+        }
+      },
+      "params": {
+        "component": "Bench",
+        "place": "one patch close, faint ripples rising from it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "patch"
+          },
+          {
+            "at": "radio",
+            "size": "medium",
+            "on": "patch"
+          },
+          {
+            "at": "cam_its",
+            "size": "close",
+            "on": "patch"
+          },
+          {
+            "at": "cam_but",
+            "size": "close",
+            "on": "patch"
+          },
+          {
+            "at": "aim",
+            "size": "medium",
+            "on": "board"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "patchUp",
+            "what": "the lifted patch over the board"
+          },
+          {
+            "at": "send",
+            "do": "ripple",
+            "what": "a ripple rises from it in every direction"
+          },
+          {
+            "at": "hear",
+            "do": "ripIn",
+            "what": "a ripple comes in and the patch flashes"
+          },
+          {
+            "at": "radio",
+            "do": "ripple",
+            "what": "more ripples rise, spreading wide"
+          },
+          {
+            "at": "small",
+            "do": "spread",
+            "what": "they spread so wide they fade into nothing"
+          },
+          {
+            "at": "aim",
+            "do": "cross",
+            "what": "a small cross shows by the faint ripples"
+          }
+        ],
+        "things": [
+          "lifted patch",
+          "outgoing ripples",
+          "incoming ripple",
+          "fading spread"
+        ]
+      }
+    },
+    {
+      "id": "chips",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So who tells each one when to fire? The chips underneath. They control every antenna's timing, down to a tiny fraction of a second.",
+      "events": {
+        "underneath": {
+          "word": "Underneath"
+        },
+        "chips": {
+          "word": "chips"
+        },
+        "control": {
+          "word": "control"
+        },
+        "antennas": {
+          "word": "antenna's"
+        },
+        "timing": {
+          "word": "timing"
+        },
+        "fraction": {
+          "word": "fraction"
+        },
+        "second": {
+          "word": "second"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_one": {
+          "word": "one"
+        },
+        "cam_to": {
+          "word": "to"
+        },
+        "cam_a": {
+          "word": "a"
+        },
+        "cam_tells": {
+          "word": "tells"
+        },
+        "cam_a_nw": {
+          "word": 22
+        }
+      },
+      "params": {
+        "component": "Bench",
+        "place": "the board flipped over, chips on its back",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "board"
+          },
+          {
+            "at": "cam_tells",
+            "size": "close",
+            "on": "board"
+          },
+          {
+            "at": "cam_one",
+            "size": "close",
+            "on": "board"
+          },
+          {
+            "at": "cam_to",
+            "size": "close",
+            "on": "board"
+          },
+          {
+            "at": "chips",
+            "size": "close",
+            "on": "chips"
+          },
+          {
+            "at": "timing",
+            "size": "medium",
+            "on": "board"
+          },
+          {
+            "at": "cam_a",
+            "size": "close",
+            "on": "board"
+          },
+          {
+            "at": "cam_a_nw",
+            "size": "medium",
+            "on": "board"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "flip",
+            "what": "the board turns over"
+          },
+          {
+            "at": "chips",
+            "do": "chips",
+            "what": "a row of dark chips glows along its back"
+          },
+          {
+            "at": "control",
+            "do": "traces",
+            "what": "lines of light run from the chips out to the patches"
+          },
+          {
+            "at": "antennas",
+            "do": "grid",
+            "what": "the patches flicker on the other side"
+          },
+          {
+            "at": "timing",
+            "do": "timing",
+            "what": "a ticking bar appears over each line"
+          },
+          {
+            "at": "fraction",
+            "do": "timing",
+            "what": "the bars tick at slightly different moments"
+          }
+        ],
+        "things": [
+          "dark chips",
+          "light traces",
+          "timing bars"
+        ],
+        "labels": [
+          {
+            "at": "chips",
+            "text": "control chips",
+            "on": "chips"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "timing",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "cable",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "The dish's one cable runs down to the router inside. The router plugs into the wall for its power.",
+      "events": {
+        "cable": {
+          "word": "cable"
+        },
+        "runs": {
+          "word": "runs"
+        },
+        "router": {
+          "word": "router"
+        },
+        "inside": {
+          "word": "inside"
+        },
+        "plugs": {
+          "word": "plugs"
+        },
+        "wall": {
+          "word": "wall"
+        },
+        "power": {
+          "word": "power"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_the": {
+          "word": "the"
+        },
+        "cam_the_nk": {
+          "word": 10
+        }
+      },
+      "params": {
+        "component": "Home",
+        "place": "inside the house: the dish cable coming down through the ceiling to a router on a shelf",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "cable"
+          },
+          {
+            "at": "cam_the",
+            "size": "close",
+            "on": "router"
+          },
+          {
+            "at": "router",
+            "size": "medium",
+            "on": "router"
+          },
+          {
+            "at": "cam_the_nk",
+            "size": "close",
+            "on": "router"
+          },
+          {
+            "at": "wall",
+            "size": "close",
+            "on": "outlet"
+          },
+          {
+            "at": "power",
+            "size": "medium",
+            "on": "router"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "room",
+            "what": "the living room at night, the router on its shelf"
+          },
+          {
+            "at": "cable",
+            "do": "cable",
+            "what": "the dish cable glows coming down through the ceiling"
+          },
+          {
+            "at": "runs",
+            "do": "cableRun",
+            "what": "light runs along it to the router"
+          },
+          {
+            "at": "router",
+            "do": "router",
+            "what": "the router's lights come on"
+          },
+          {
+            "at": "plugs",
+            "do": "plug",
+            "what": "a separate power cord drops from the router to the wall"
+          },
+          {
+            "at": "power",
+            "do": "power",
+            "what": "the wall socket glows amber"
+          }
+        ],
+        "things": [
+          "ceiling",
+          "dish cable",
+          "router",
+          "power cord",
+          "wall socket"
+        ],
+        "labels": [
+          {
+            "at": "cable",
+            "text": "dish cable",
+            "on": "cable"
+          },
+          {
+            "at": "power",
+            "text": "power",
+            "on": "outlet"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wifi",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "From there, the router turns it into wifi, for your laptop and the phone in your hand.",
+      "events": {
+        "router": {
+          "word": "router"
+        },
+        "turns": {
+          "word": "turns"
+        },
+        "wifi": {
+          "word": "wifi"
+        },
+        "laptop": {
+          "word": "laptop"
+        },
+        "phone": {
+          "word": "phone"
+        },
+        "hand": {
+          "word": "hand"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Home",
+        "place": "the living room: router, laptop and a phone on the sofa",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "router"
+          },
+          {
+            "at": "wifi",
+            "size": "medium",
+            "on": "room"
+          },
+          {
+            "at": "laptop",
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "phone",
+            "size": "medium",
+            "on": "phone"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "router",
+            "what": "the router glowing on its shelf"
+          },
+          {
+            "at": "turns",
+            "do": "wifi",
+            "what": "rings of wifi pulse out across the room"
+          },
+          {
+            "at": "laptop",
+            "do": "laptop",
+            "what": "the laptop screen lights"
+          },
+          {
+            "at": "phone",
+            "do": "phone",
+            "what": "a phone on the sofa lights"
+          },
+          {
+            "at": "hand",
+            "do": "phoneUp",
+            "what": "the phone tilts up as if picked up"
+          }
+        ],
+        "things": [
+          "wifi rings",
+          "laptop",
+          "phone",
+          "sofa"
+        ],
+        "labels": [
+          {
+            "at": "wifi",
+            "text": "wifi",
+            "on": "laptop"
+          }
+        ]
+      }
+    },
+    {
+      "id": "together",
+      "scene": "directed",
+      "role": "tease",
+      "transition": "cut",
+      "say": "One patch can't aim. Many working together can. Here's how.",
+      "events": {
+        "patch": {
+          "word": "patch"
+        },
+        "aim": {
+          "word": "aim"
+        },
+        "working": {
+          "word": "working"
+        },
+        "together": {
+          "word": "together"
+        },
+        "how": {
+          "word": "how"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Bench",
+        "place": "back on the bench, the whole grid seen from above",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "patch"
+          },
+          {
+            "at": "working",
+            "size": "wide",
+            "on": "board"
+          },
+          {
+            "at": "how",
+            "size": "medium",
+            "on": "board"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "patchUp",
+            "what": "one patch alone, faint"
+          },
+          {
+            "at": "aim",
+            "do": "cross",
+            "what": "its faint ripples fade"
+          },
+          {
+            "at": "working",
+            "do": "grid",
+            "what": "the whole grid lights"
+          },
+          {
+            "at": "together",
+            "do": "beamUp",
+            "what": "a single strong beam rises from the grid"
+          },
+          {
+            "at": "how",
+            "do": "beamTilt",
+            "what": "the beam leans to one side"
+          }
+        ],
+        "things": [
+          "lone patch",
+          "whole grid",
+          "strong beam"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "together"
+        }
+      ]
+    },
+    {
+      "id": "tank",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Here's the trick, drawn wave by wave. Line up a row of the antennas.",
+      "events": {
+        "trick": {
+          "word": "trick"
+        },
+        "drawn": {
+          "word": "drawn"
+        },
+        "wave": {
+          "word": "wave"
+        },
+        "line": {
+          "word": "Line"
+        },
+        "row": {
+          "word": "row"
+        },
+        "antennas": {
+          "word": "antennas"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_of": {
+          "word": "of"
+        }
+      },
+      "params": {
+        "component": "Tank",
+        "place": "a dark lab bench: a row of antennas seen side-on under a glowing ripple sheet",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "row"
+          },
+          {
+            "at": "line",
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "cam_of",
+            "size": "close",
+            "on": "row"
+          },
+          {
+            "at": "antennas",
+            "size": "close",
+            "on": "left"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sign",
+            "what": "a glowing panel over the bench reads: bending the beam"
+          },
+          {
+            "at": "drawn",
+            "do": "sheet",
+            "what": "a dark glassy sheet lights faintly above the bench"
+          },
+          {
+            "at": "wave",
+            "do": "fireOne",
+            "what": "one ripple rises from the middle antenna"
+          },
+          {
+            "at": "line",
+            "do": "row",
+            "what": "eight antennas slide into a row"
+          },
+          {
+            "at": "antennas",
+            "do": "labels",
+            "what": "each antenna's base lights"
+          }
+        ],
+        "things": [
+          "lab bench",
+          "ripple sheet",
+          "row of antennas",
+          "single ripple"
+        ],
+        "sign": {
+          "text": "Bending the beam",
+          "at": "trick",
+          "on": "panel"
+        }
+      }
+    },
+    {
+      "id": "same",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "When they all send at the same instant, their ripples add up into one strong wave, heading straight up.",
+      "events": {
+        "send": {
+          "word": "send"
+        },
+        "same": {
+          "word": "same"
+        },
+        "instant": {
+          "word": "instant"
+        },
+        "ripples": {
+          "word": "ripples"
+        },
+        "add": {
+          "word": "add"
+        },
+        "strong": {
+          "word": "strong"
+        },
+        "wave": {
+          "word": "wave"
+        },
+        "straight": {
+          "word": "straight"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Tank",
+        "place": "the row of antennas, all firing together",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "ripples",
+            "size": "wide",
+            "on": "row"
+          },
+          {
+            "at": "straight",
+            "size": "medium",
+            "on": "front"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "row",
+            "what": "the row, quiet"
+          },
+          {
+            "at": "send",
+            "do": "fire",
+            "what": "every antenna fires at once"
+          },
+          {
+            "at": "instant",
+            "do": "timing",
+            "what": "the timing bars over them all line up level"
+          },
+          {
+            "at": "ripples",
+            "do": "rings",
+            "what": "half-circle ripples rise from each one"
+          },
+          {
+            "at": "add",
+            "do": "front",
+            "what": "where they overlap, a bright flat wave front forms"
+          },
+          {
+            "at": "strong",
+            "do": "frontGlow",
+            "what": "the wave front brightens"
+          },
+          {
+            "at": "straight",
+            "do": "arrow",
+            "what": "an arrow rises straight up from it"
+          }
+        ],
+        "things": [
+          "level timing bars",
+          "half-circle ripples",
+          "flat wave front",
+          "upward arrow"
+        ],
+        "delay": 0
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "send"
+        }
+      ]
+    },
+    {
+      "id": "delay",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Now make each antenna fire a little later than the one beside it.",
+      "events": {
+        "make": {
+          "word": "make"
+        },
+        "antenna": {
+          "word": "antenna"
+        },
+        "later": {
+          "word": "later"
+        },
+        "beside": {
+          "word": "beside"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_fire": {
+          "word": "fire"
+        }
+      },
+      "params": {
+        "component": "Tank",
+        "place": "the same row, the timing bars over the antennas starting to step",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "cam_fire",
+            "size": "close",
+            "on": "row"
+          },
+          {
+            "at": "later",
+            "size": "close",
+            "on": "bars"
+          },
+          {
+            "at": "beside",
+            "size": "medium",
+            "on": "row"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "rings",
+            "what": "the flat ripples rising"
+          },
+          {
+            "at": "make",
+            "do": "bars",
+            "what": "the timing bars light over every antenna"
+          },
+          {
+            "at": "antenna",
+            "do": "step",
+            "what": "each bar slides a step later than the last, a staircase"
+          },
+          {
+            "at": "later",
+            "do": "stepGlow",
+            "what": "the staircase glows amber"
+          },
+          {
+            "at": "beside",
+            "do": "fireStep",
+            "what": "the antennas fire one after another, left to right"
+          }
+        ],
+        "things": [
+          "timing staircase",
+          "antennas firing in turn"
+        ],
+        "labels": [
+          {
+            "at": "later",
+            "text": "a little later",
+            "on": "bars"
+          }
+        ],
+        "delay": 1
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "antenna",
+          "gain": 0.5
+        },
+        {
+          "kind": "tick",
+          "at": "beside",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "clap",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Think of a row of people clapping. Clap together and the sound goes straight ahead. Clap one after another, and it heads off at an angle.",
+      "events": {
+        "row": {
+          "word": "row"
+        },
+        "clapping": {
+          "word": "clapping"
+        },
+        "together": {
+          "word": "together"
+        },
+        "straight": {
+          "word": "straight"
+        },
+        "after": {
+          "word": "after"
+        },
+        "another": {
+          "word": "another"
+        },
+        "angle": {
+          "word": "angle"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_heads": {
+          "word": "heads"
+        },
+        "cam_sound": {
+          "word": "sound"
+        }
+      },
+      "params": {
+        "component": "Tank",
+        "place": "the row of antennas, each one now a pair of clapping hands",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "together",
+            "size": "wide",
+            "on": "row"
+          },
+          {
+            "at": "cam_sound",
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "cam_heads",
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "angle",
+            "size": "medium",
+            "on": "front"
+          }
+        ],
+        "moments": [
+          {
+            "at": "row",
+            "do": "row",
+            "what": "the row of antennas"
+          },
+          {
+            "at": "clapping",
+            "do": "clap",
+            "what": "a pair of hands claps over each antenna"
+          },
+          {
+            "at": "together",
+            "do": "fire",
+            "what": "all of them clap at once"
+          },
+          {
+            "at": "straight",
+            "do": "arrow",
+            "what": "a sound arrow goes straight up"
+          },
+          {
+            "at": "after",
+            "do": "fireStep",
+            "what": "they clap in turn, left to right"
+          },
+          {
+            "at": "another",
+            "do": "frontTilt",
+            "what": "the front of the sound slants"
+          },
+          {
+            "at": "angle",
+            "do": "arrowLean",
+            "what": "the arrow leans off to the side"
+          }
+        ],
+        "things": [
+          "clapping hands",
+          "straight arrow",
+          "slanted front"
+        ],
+        "delay": "clap"
+      }
+    },
+    {
+      "id": "tilt",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So what happens to the wave? The ripples still add up, but now the wave front tilts, and the beam leans over toward the late side.",
+      "events": {
+        "ripples": {
+          "word": "ripples"
+        },
+        "add": {
+          "word": "add"
+        },
+        "front": {
+          "word": "front"
+        },
+        "tilts": {
+          "word": "tilts"
+        },
+        "beam": {
+          "word": "beam"
+        },
+        "leans": {
+          "word": "leans"
+        },
+        "late": {
+          "word": "late"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_the": {
+          "word": "the"
+        },
+        "cam_now": {
+          "word": "now"
+        }
+      },
+      "params": {
+        "component": "Tank",
+        "place": "the ripple sheet, the wave front now slanted",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "row"
+          },
+          {
+            "at": "cam_the",
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "cam_now",
+            "size": "close",
+            "on": "row"
+          },
+          {
+            "at": "front",
+            "size": "medium",
+            "on": "front"
+          },
+          {
+            "at": "leans",
+            "size": "wide",
+            "on": "row"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "fireStep",
+            "what": "the antennas firing left to right"
+          },
+          {
+            "at": "ripples",
+            "do": "rings",
+            "what": "the ripples rise in turn"
+          },
+          {
+            "at": "add",
+            "do": "front",
+            "what": "a wave front forms where they overlap"
+          },
+          {
+            "at": "tilts",
+            "do": "frontTilt",
+            "what": "the front stands slanted"
+          },
+          {
+            "at": "beam",
+            "do": "arrow",
+            "what": "an arrow grows from it"
+          },
+          {
+            "at": "leans",
+            "do": "arrowLean",
+            "what": "the arrow leans to the right"
+          },
+          {
+            "at": "late",
+            "do": "lateSide",
+            "what": "the last antenna on the right flashes"
+          }
+        ],
+        "things": [
+          "slanted wave front",
+          "leaning arrow",
+          "late antenna"
+        ],
+        "delay": 1
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "leans"
+        }
+      ]
+    },
+    {
+      "id": "steer",
+      "scene": "directed",
+      "role": "turn",
+      "transition": "cut",
+      "say": "Change the delays, and the beam swings across the sky. Nothing turns. Nothing moves. It's aiming by timing.",
+      "events": {
+        "change": {
+          "word": "Change"
+        },
+        "delays": {
+          "word": "delays"
+        },
+        "swings": {
+          "word": "swings"
+        },
+        "sky": {
+          "word": "sky"
+        },
+        "nothing": {
+          "word": "Nothing"
+        },
+        "turns": {
+          "word": "turns"
+        },
+        "moves": {
+          "word": "moves"
+        },
+        "timing": {
+          "word": "timing"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_aiming": {
+          "word": "aiming"
+        },
+        "cam_and": {
+          "word": "and"
+        }
+      },
+      "params": {
+        "component": "Tank",
+        "place": "the row and a model satellite hung over the bench, moving across",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "row"
+          },
+          {
+            "at": "cam_and",
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "swings",
+            "size": "wide",
+            "on": "sat"
+          },
+          {
+            "at": "nothing",
+            "size": "close",
+            "on": "row"
+          },
+          {
+            "at": "cam_aiming",
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "timing",
+            "size": "medium",
+            "on": "bars"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "frontTilt",
+            "what": "the slanted front rising"
+          },
+          {
+            "at": "change",
+            "do": "sweep",
+            "what": "the timing staircase flattens and leans the other way"
+          },
+          {
+            "at": "swings",
+            "do": "swing",
+            "what": "the beam swings across the bench"
+          },
+          {
+            "at": "sky",
+            "do": "sat",
+            "what": "a model satellite slides along a wire overhead, the beam staying on it"
+          },
+          {
+            "at": "nothing",
+            "do": "lockRow",
+            "what": "close on the antennas: none of them has moved"
+          },
+          {
+            "at": "turns",
+            "do": "hold",
+            "what": "the antennas stay put while the ripples keep sweeping"
+          },
+          {
+            "at": "moves",
+            "do": "lockRow",
+            "what": "a ring pulses along the still row"
+          },
+          {
+            "at": "timing",
+            "do": "bars",
+            "what": "the timing bars glow, the only thing changing"
+          }
+        ],
+        "things": [
+          "changing staircase",
+          "swinging beam",
+          "model satellite",
+          "still antennas"
+        ],
+        "labels": [
+          {
+            "at": "timing",
+            "text": "timing only",
+            "on": "bars"
+          }
+        ],
+        "delay": "sweep"
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "nothing"
+        }
+      ]
+    },
+    {
+      "id": "name",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Engineers call this a phased array. The dish does it with its whole grid at once, in every direction.",
+      "events": {
+        "engineers": {
+          "word": "Engineers"
+        },
+        "phased": {
+          "word": "phased"
+        },
+        "array": {
+          "word": "array"
+        },
+        "dish": {
+          "word": "dish"
+        },
+        "grid": {
+          "word": "grid"
+        },
+        "every": {
+          "word": "every"
+        },
+        "direction": {
+          "word": "direction"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_with": {
+          "word": "with"
+        }
+      },
+      "params": {
+        "component": "Tank",
+        "place": "the bench from above, the whole grid of antennas in place of the row",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "array",
+            "size": "wide",
+            "on": "row"
+          },
+          {
+            "at": "cam_with",
+            "size": "medium",
+            "on": "row"
+          },
+          {
+            "at": "grid",
+            "size": "wide",
+            "on": "grid"
+          },
+          {
+            "at": "direction",
+            "size": "medium",
+            "on": "grid"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "fireStep",
+            "what": "the row firing in turn"
+          },
+          {
+            "at": "engineers",
+            "do": "nameplate",
+            "what": "a plate lights on the bench: phased array"
+          },
+          {
+            "at": "phased",
+            "do": "grid",
+            "what": "the row spreads into a full square grid"
+          },
+          {
+            "at": "dish",
+            "do": "gridFire",
+            "what": "the grid fires in a diagonal wave"
+          },
+          {
+            "at": "every",
+            "do": "gridSwing",
+            "what": "the beam over it swings left, then forward"
+          },
+          {
+            "at": "direction",
+            "do": "gridCircle",
+            "what": "the beam traces a slow circle"
+          }
+        ],
+        "things": [
+          "phased array plate",
+          "square antenna grid",
+          "circling beam"
+        ],
+        "labels": [
+          {
+            "at": "engineers",
+            "text": "phased array",
+            "on": "plate"
+          }
+        ],
+        "delay": 1
+      }
+    },
+    {
+      "id": "fast",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "And because it's only timing, it can change its aim far faster than any motor could swing a dish.",
+      "events": {
+        "timing": {
+          "word": "timing"
+        },
+        "change": {
+          "word": "change"
+        },
+        "aim": {
+          "word": "aim"
+        },
+        "faster": {
+          "word": "faster"
+        },
+        "motor": {
+          "word": "motor"
+        },
+        "swing": {
+          "word": "swing"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the rooftop at dusk, the beam glued to a passing satellite",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "aim",
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "motor",
+            "size": "medium",
+            "on": "olddish"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "a satellite crossing the dusk sky"
+          },
+          {
+            "at": "timing",
+            "do": "beam",
+            "what": "the beam locks onto it"
+          },
+          {
+            "at": "change",
+            "do": "jump",
+            "what": "the beam flicks between two satellites, back and forth"
+          },
+          {
+            "at": "faster",
+            "do": "track",
+            "what": "it flicks faster and faster"
+          },
+          {
+            "at": "motor",
+            "do": "olddish",
+            "what": "a curved dish beside it is still turning"
+          },
+          {
+            "at": "swing",
+            "do": "oldswing",
+            "what": "it lags far behind"
+          }
+        ],
+        "things": [
+          "flicking beam",
+          "two satellites",
+          "lagging curved dish"
+        ]
+      }
+    },
+    {
+      "id": "recap",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So far: the satellites fly low to keep the trip short, and the dish follows them by timing, not turning.",
+      "events": {
+        "far": {
+          "word": "far"
+        },
+        "satellites": {
+          "word": "satellites"
+        },
+        "low": {
+          "word": "low"
+        },
+        "trip": {
+          "word": "trip"
+        },
+        "short": {
+          "word": "short"
+        },
+        "dish": {
+          "word": "dish"
+        },
+        "timing": {
+          "word": "timing"
+        },
+        "turning": {
+          "word": "turning"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Route",
+        "place": "the night route map again, the first two stops lit",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "satellites",
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "dish",
+            "size": "medium",
+            "on": "house"
+          },
+          {
+            "at": "turning",
+            "size": "wide",
+            "on": "all"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "map",
+            "what": "the route map at night"
+          },
+          {
+            "at": "satellites",
+            "do": "sat",
+            "what": "the satellite lights low over the map"
+          },
+          {
+            "at": "low",
+            "do": "lowline",
+            "what": "a short bracket shows how low it is"
+          },
+          {
+            "at": "trip",
+            "do": "up",
+            "what": "a quick pulse climbs from the dish"
+          },
+          {
+            "at": "short",
+            "do": "down",
+            "what": "it drops straight back"
+          },
+          {
+            "at": "dish",
+            "do": "house",
+            "what": "the house and its dish light"
+          },
+          {
+            "at": "timing",
+            "do": "tickA",
+            "what": "a tick lands by the dish"
+          },
+          {
+            "at": "turning",
+            "do": "tickB",
+            "what": "a second tick lands by the satellite"
+          }
+        ],
+        "things": [
+          "route map",
+          "low bracket",
+          "quick pulse",
+          "two ticks"
+        ]
+      }
+    },
+    {
+      "id": "problem",
+      "scene": "directed",
+      "role": "tease",
+      "transition": "cut",
+      "say": "But there's a problem no timing can fix. In a few minutes, your satellite drops below the horizon.",
+      "events": {
+        "problem": {
+          "word": "problem"
+        },
+        "timing": {
+          "word": "timing"
+        },
+        "fix": {
+          "word": "fix"
+        },
+        "minutes": {
+          "word": "minutes"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "drops": {
+          "word": "drops"
+        },
+        "horizon": {
+          "word": "horizon"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the rooftop, the satellite sinking toward the far roofs",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "minutes",
+            "size": "wide",
+            "on": "horizon"
+          },
+          {
+            "at": "horizon",
+            "size": "close",
+            "on": "horizon"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "the satellite low in the sky, the beam on it"
+          },
+          {
+            "at": "problem",
+            "do": "track",
+            "what": "it slides on toward the roofs"
+          },
+          {
+            "at": "fix",
+            "do": "beamStrain",
+            "what": "the beam leans as far as it can go"
+          },
+          {
+            "at": "satellite",
+            "do": "set",
+            "what": "the satellite sinks behind the horizon"
+          },
+          {
+            "at": "drops",
+            "do": "beamOff",
+            "what": "the beam flickers"
+          },
+          {
+            "at": "horizon",
+            "do": "dark",
+            "what": "the sky goes empty for a moment"
+          }
+        ],
+        "things": [
+          "sinking satellite",
+          "straining beam",
+          "empty sky"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "drops"
+        }
+      ]
+    },
+    {
+      "id": "handoff",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So the dish hands off. Before the first satellite sets, the next one is already rising.",
+      "events": {
+        "hands": {
+          "word": "hands"
+        },
+        "off": {
+          "word": "off"
+        },
+        "first": {
+          "word": "first"
+        },
+        "sets": {
+          "word": "sets"
+        },
+        "next": {
+          "word": "next"
+        },
+        "rising": {
+          "word": "rising"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_before": {
+          "word": "before"
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the rooftop, a sign on the chimney reading: the handoff",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "cam_before",
+            "size": "medium",
+            "on": "sky"
+          },
+          {
+            "at": "first",
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "next",
+            "size": "medium",
+            "on": "satB"
+          },
+          {
+            "at": "rising",
+            "size": "wide",
+            "on": "sky"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sign",
+            "what": "a small sign on the chimney lights: the handoff"
+          },
+          {
+            "at": "hands",
+            "do": "sat",
+            "what": "the first satellite low in the west, the beam on it"
+          },
+          {
+            "at": "first",
+            "do": "track",
+            "what": "it sinks toward the roofs"
+          },
+          {
+            "at": "sets",
+            "do": "set",
+            "what": "it nears the horizon"
+          },
+          {
+            "at": "next",
+            "do": "rise",
+            "what": "a second satellite climbs up from the east"
+          },
+          {
+            "at": "rising",
+            "do": "riseTag",
+            "what": "a label tags it: next"
+          }
+        ],
+        "things": [
+          "chimney sign",
+          "setting satellite",
+          "rising satellite"
+        ],
+        "labels": [
+          {
+            "at": "rising",
+            "text": "next",
+            "on": "satB"
+          }
+        ],
+        "sign": {
+          "text": "The handoff",
+          "at": "hands",
+          "on": "chimney"
+        }
+      }
+    },
+    {
+      "id": "switch",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "The chips change the timing, and in a blink the beam jumps from the old satellite to the new one.",
+      "events": {
+        "chips": {
+          "word": "chips"
+        },
+        "timing": {
+          "word": "timing"
+        },
+        "blink": {
+          "word": "blink"
+        },
+        "beam": {
+          "word": "beam"
+        },
+        "jumps": {
+          "word": "jumps"
+        },
+        "old": {
+          "word": "old"
+        },
+        "new": {
+          "word": "new"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "close on the dish face, both satellites in the sky behind it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "blink",
+            "size": "close",
+            "on": "dish"
+          },
+          {
+            "at": "jumps",
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "new",
+            "size": "medium",
+            "on": "satB"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "both satellites in the sky, the beam on the old one"
+          },
+          {
+            "at": "chips",
+            "do": "face",
+            "what": "the dish face's grid flickers from inside"
+          },
+          {
+            "at": "timing",
+            "do": "faceWave",
+            "what": "a wave runs across the grid the other way"
+          },
+          {
+            "at": "blink",
+            "do": "flash",
+            "what": "a flash"
+          },
+          {
+            "at": "jumps",
+            "do": "handoff",
+            "what": "the beam swings across to the new satellite"
+          },
+          {
+            "at": "old",
+            "do": "set",
+            "what": "the old one sinks away"
+          },
+          {
+            "at": "new",
+            "do": "lockNew",
+            "what": "a ring locks round the new one"
+          }
+        ],
+        "things": [
+          "flickering grid",
+          "jumping beam",
+          "old satellite",
+          "new satellite"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "jumps"
+        },
+        {
+          "kind": "pop",
+          "at": "new",
+          "gain": 0.6
+        }
+      ]
+    },
+    {
+      "id": "seamless",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Does your video stop? No. Most of the time, the handoff happens too fast to notice.",
+      "events": {
+        "video": {
+          "word": "video"
+        },
+        "stop": {
+          "word": "stop"
+        },
+        "time": {
+          "word": "time"
+        },
+        "handoff": {
+          "word": "handoff"
+        },
+        "fast": {
+          "word": "fast"
+        },
+        "notice": {
+          "word": "notice"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_most": {
+          "word": "most"
+        },
+        "cam_no": {
+          "word": "no"
+        }
+      },
+      "params": {
+        "component": "Home",
+        "place": "the living room, the video still playing on the laptop",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "laptop"
+          },
+          {
+            "at": "cam_no",
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "cam_most",
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "handoff",
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "notice",
+            "size": "medium",
+            "on": "room"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "play",
+            "what": "the video playing on the laptop"
+          },
+          {
+            "at": "stop",
+            "do": "laptop",
+            "what": "a progress bar keeps moving"
+          },
+          {
+            "at": "handoff",
+            "do": "blip",
+            "what": "a tiny blip crosses the router's lights"
+          },
+          {
+            "at": "fast",
+            "do": "wifi",
+            "what": "the wifi rings keep pulsing"
+          },
+          {
+            "at": "notice",
+            "do": "check",
+            "what": "a green tick by the screen"
+          }
+        ],
+        "things": [
+          "playing video",
+          "progress bar",
+          "router blip",
+          "green tick"
+        ]
+      }
+    },
+    {
+      "id": "allday",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "And it happens again and again, all day and all night, for every dish under the sky.",
+      "events": {
+        "again": {
+          "word": "again"
+        },
+        "day": {
+          "word": "day"
+        },
+        "night": {
+          "word": "night"
+        },
+        "every": {
+          "word": "every"
+        },
+        "dish": {
+          "word": "dish"
+        },
+        "sky": {
+          "word": "sky"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_and": {
+          "word": "and"
+        },
+        "cam_again_nf": {
+          "word": 5
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the rooftop, satellites rising and setting one after another",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "cam_and",
+            "size": "medium",
+            "on": "sky"
+          },
+          {
+            "at": "cam_again_nf",
+            "size": "close",
+            "on": "sky"
+          },
+          {
+            "at": "night",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "sky",
+            "size": "wide",
+            "on": "sky"
+          }
+        ],
+        "moments": [
+          {
+            "at": "again",
+            "do": "swarm",
+            "what": "satellites stream across the sky one after another"
+          },
+          {
+            "at": "day",
+            "do": "handoff",
+            "what": "the beam hops to the next"
+          },
+          {
+            "at": "night",
+            "do": "stars",
+            "what": "the stars come out brighter"
+          },
+          {
+            "at": "every",
+            "do": "face",
+            "what": "the dish face glows"
+          },
+          {
+            "at": "dish",
+            "do": "lights",
+            "what": "the neighbours' windows light up"
+          },
+          {
+            "at": "sky",
+            "do": "track",
+            "what": "the satellites keep coming"
+          }
+        ],
+        "things": [
+          "stream of satellites",
+          "hopping beam",
+          "neighbours' windows"
+        ]
+      }
+    },
+    {
+      "id": "satside",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "And here's the surprise. The satellite is doing the same trick. Each one carries {fact3} phased arrays of its own.",
+      "events": {
+        "surprise": {
+          "word": "surprise"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "same": {
+          "word": "same"
+        },
+        "trick": {
+          "word": "trick"
+        },
+        "carries": {
+          "word": "carries"
+        },
+        "arrays": {
+          "word": "arrays"
+        },
+        "own": {
+          "word": "own"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_phased": {
+          "word": "phased"
+        }
+      },
+      "params": {
+        "component": "SatClose",
+        "place": "high above the Earth's curve, a flat satellite with a long solar wing",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "sat"
+          },
+          {
+            "at": "satellite",
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "carries",
+            "size": "close",
+            "on": "panels"
+          },
+          {
+            "at": "cam_phased",
+            "size": "medium",
+            "on": "panels"
+          },
+          {
+            "at": "own",
+            "size": "medium",
+            "on": "sat"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "the satellite glides over the Earth's curve, its wing catching the sun"
+          },
+          {
+            "at": "surprise",
+            "do": "turn",
+            "what": "it rolls to show its underside"
+          },
+          {
+            "at": "same",
+            "do": "grid",
+            "what": "grids of small patches glow on its underside"
+          },
+          {
+            "at": "trick",
+            "do": "beams",
+            "what": "a beam leans out from it"
+          },
+          {
+            "at": "carries",
+            "do": "panels",
+            "what": "the arrays light one by one and the count lands on a plate"
+          },
+          {
+            "at": "own",
+            "do": "beams",
+            "what": "each array sends its own beam"
+          }
+        ],
+        "things": [
+          "flat satellite",
+          "solar wing",
+          "underside arrays",
+          "count plate"
+        ],
+        "labels": [
+          {
+            "at": "carries",
+            "text": "{fact3}",
+            "on": "panels",
+            "fig": "arrays"
+          }
+        ],
+        "fig": {
+          "arrays": "{fact3}"
+        },
+        "tag": "illustration"
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "surprise"
+        },
+        {
+          "kind": "pop",
+          "at": "carries"
+        }
+      ]
+    },
+    {
+      "id": "cells",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Its beams sweep the ground below, each one serving the dishes in a patch of land at a time.",
+      "events": {
+        "beams": {
+          "word": "beams"
+        },
+        "sweep": {
+          "word": "sweep"
+        },
+        "ground": {
+          "word": "ground"
+        },
+        "serving": {
+          "word": "serving"
+        },
+        "dishes": {
+          "word": "dishes"
+        },
+        "patch": {
+          "word": "patch"
+        },
+        "time": {
+          "word": "time"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "SatClose",
+        "place": "the ground far below the satellite, lit patches spread across it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "ground",
+            "size": "wide",
+            "on": "ground"
+          },
+          {
+            "at": "patch",
+            "size": "medium",
+            "on": "ground"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "beams",
+            "what": "beams leaning down from the satellite"
+          },
+          {
+            "at": "sweep",
+            "do": "sweep",
+            "what": "the beams sweep across the land"
+          },
+          {
+            "at": "ground",
+            "do": "cells",
+            "what": "patches of ground light where they land"
+          },
+          {
+            "at": "serving",
+            "do": "dishes",
+            "what": "tiny dish dots light inside a patch"
+          },
+          {
+            "at": "patch",
+            "do": "cellHop",
+            "what": "a beam hops to the next patch"
+          },
+          {
+            "at": "time",
+            "do": "cellHopB",
+            "what": "and the next"
+          }
+        ],
+        "things": [
+          "sweeping beams",
+          "lit patches of land",
+          "dish dots"
+        ]
+      }
+    },
+    {
+      "id": "gateway",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Then it passes your signal down to a ground station, which is wired into the internet.",
+      "events": {
+        "passes": {
+          "word": "passes"
+        },
+        "signal": {
+          "word": "signal"
+        },
+        "down": {
+          "word": "down"
+        },
+        "ground": {
+          "word": "ground"
+        },
+        "station": {
+          "word": "station"
+        },
+        "wired": {
+          "word": "wired"
+        },
+        "internet": {
+          "word": "internet"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "SatClose",
+        "place": "the satellite and, far below, a field of ground station dishes beside a road",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "down",
+            "size": "wide",
+            "on": "gateway"
+          },
+          {
+            "at": "station",
+            "size": "medium",
+            "on": "gateway"
+          },
+          {
+            "at": "internet",
+            "size": "wide",
+            "on": "gateway"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "beams",
+            "what": "the satellite and its beams"
+          },
+          {
+            "at": "passes",
+            "do": "downlink",
+            "what": "a separate beam drops from it toward the ground"
+          },
+          {
+            "at": "signal",
+            "do": "pulseDown",
+            "what": "a pulse runs down the beam"
+          },
+          {
+            "at": "ground",
+            "do": "gate",
+            "what": "a field of ground station dishes lights"
+          },
+          {
+            "at": "station",
+            "do": "gateLabel",
+            "what": "a label writes on"
+          },
+          {
+            "at": "wired",
+            "do": "fibre",
+            "what": "a glowing cable runs from the station to a building"
+          },
+          {
+            "at": "internet",
+            "do": "dc",
+            "what": "the building's windows light"
+          }
+        ],
+        "things": [
+          "downlink beam",
+          "ground station dishes",
+          "fibre cable",
+          "data building"
+        ],
+        "labels": [
+          {
+            "at": "station",
+            "text": "ground station",
+            "on": "gateway"
+          }
+        ]
+      }
+    },
+    {
+      "id": "one",
+      "scene": "directed",
+      "role": "tease",
+      "transition": "cut",
+      "say": "But one satellite only ever covers a small patch of the planet. So how do you get a signal everywhere?",
+      "events": {
+        "one": {
+          "word": "one"
+        },
+        "covers": {
+          "word": "covers"
+        },
+        "small": {
+          "word": "small"
+        },
+        "patch": {
+          "word": "patch"
+        },
+        "planet": {
+          "word": "planet"
+        },
+        "everywhere": {
+          "word": "everywhere"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_you": {
+          "word": "you"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the whole Earth, a single low satellite with its lit patch of ground",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "earth"
+          },
+          {
+            "at": "patch",
+            "size": "medium",
+            "on": "leoSat"
+          },
+          {
+            "at": "cam_you",
+            "size": "close",
+            "on": "leoSat"
+          },
+          {
+            "at": "everywhere",
+            "size": "wide",
+            "on": "earth"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "leoShell",
+            "what": "the low shell around the Earth"
+          },
+          {
+            "at": "one",
+            "do": "leoSat",
+            "what": "one satellite on the shell"
+          },
+          {
+            "at": "covers",
+            "do": "footprint",
+            "what": "a lit patch under it on the ground"
+          },
+          {
+            "at": "small",
+            "do": "ride",
+            "what": "the patch slides with it"
+          },
+          {
+            "at": "planet",
+            "do": "dark",
+            "what": "the rest of the planet stays dark"
+          },
+          {
+            "at": "everywhere",
+            "do": "question",
+            "what": "dark spots pulse across the globe"
+          }
+        ],
+        "things": [
+          "single satellite",
+          "lit footprint",
+          "dark planet"
+        ],
+        "tag": "notToScale"
+      }
+    },
+    {
+      "id": "launch",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Starlink's first {fact4} working satellites went up together, on one rocket, in {fact5}.",
+      "events": {
+        "starlinks": {
+          "word": "Starlink's"
+        },
+        "first": {
+          "word": "first"
+        },
+        "working": {
+          "word": "working"
+        },
+        "satellites": {
+          "word": "satellites"
+        },
+        "together": {
+          "word": "together"
+        },
+        "rocket": {
+          "word": "rocket"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_nineteen": {
+          "word": "nineteen"
+        }
+      },
+      "params": {
+        "component": "Launch",
+        "place": "space above the Earth, a rocket's nose cone opening",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "stack"
+          },
+          {
+            "at": "satellites",
+            "size": "medium",
+            "on": "stack"
+          },
+          {
+            "at": "rocket",
+            "size": "wide",
+            "on": "stack"
+          },
+          {
+            "at": "cam_nineteen",
+            "size": "medium",
+            "on": "stack"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sign",
+            "what": "a plate on the rocket's upper stage reads: the network"
+          },
+          {
+            "at": "starlinks",
+            "do": "fairing",
+            "what": "the nose cone splits open"
+          },
+          {
+            "at": "first",
+            "do": "stack",
+            "what": "a tall stack of flat satellites stands inside"
+          },
+          {
+            "at": "working",
+            "do": "count",
+            "what": "the count lands on the stack's base plate"
+          },
+          {
+            "at": "together",
+            "do": "year",
+            "what": "the year lights beside it"
+          },
+          {
+            "at": "rocket",
+            "do": "release",
+            "what": "the stack starts to drift apart"
+          }
+        ],
+        "things": [
+          "nose cone",
+          "satellite stack",
+          "count plate",
+          "year plate",
+          "upper stage"
+        ],
+        "labels": [
+          {
+            "at": "working",
+            "text": "{fact4}",
+            "on": "plate",
+            "fig": "count"
+          },
+          {
+            "at": "together",
+            "text": "{fact5}",
+            "on": "year",
+            "fig": "year"
+          }
+        ],
+        "fig": {
+          "count": "{fact4}",
+          "year": "{fact5}"
+        },
+        "sign": {
+          "text": "The network",
+          "at": "starlinks",
+          "on": "stage"
+        },
+        "tag": "illustration"
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "starlinks"
+        },
+        {
+          "kind": "pop",
+          "at": "working"
+        }
+      ]
+    },
+    {
+      "id": "spread",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "They spread out into a long line, like beads on a string, then climbed up to their places.",
+      "events": {
+        "spread": {
+          "word": "spread"
+        },
+        "long": {
+          "word": "long"
+        },
+        "line": {
+          "word": "line"
+        },
+        "beads": {
+          "word": "beads"
+        },
+        "string": {
+          "word": "string"
+        },
+        "climbed": {
+          "word": "climbed"
+        },
+        "places": {
+          "word": "places"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_a": {
+          "word": "a"
+        },
+        "cam_on": {
+          "word": "on"
+        }
+      },
+      "params": {
+        "component": "Launch",
+        "place": "the drifting stack over the Earth, spreading into a line",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "stack"
+          },
+          {
+            "at": "cam_a",
+            "size": "medium",
+            "on": "train"
+          },
+          {
+            "at": "line",
+            "size": "wide",
+            "on": "train"
+          },
+          {
+            "at": "cam_on",
+            "size": "medium",
+            "on": "train"
+          },
+          {
+            "at": "places",
+            "size": "wide",
+            "on": "train"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "release",
+            "what": "the satellites drifting apart"
+          },
+          {
+            "at": "spread",
+            "do": "spread",
+            "what": "they fan out"
+          },
+          {
+            "at": "line",
+            "do": "train",
+            "what": "they settle into one long line"
+          },
+          {
+            "at": "beads",
+            "do": "beads",
+            "what": "each one glints in turn along it"
+          },
+          {
+            "at": "climbed",
+            "do": "climb",
+            "what": "the front of the line rises higher"
+          },
+          {
+            "at": "places",
+            "do": "spaced",
+            "what": "they space out evenly"
+          }
+        ],
+        "things": [
+          "drifting satellites",
+          "line of satellites",
+          "glints"
+        ],
+        "tag": "illustration"
+      }
+    },
+    {
+      "id": "web",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Did one launch do it? No. Since then, launch after launch has filled the low sky with a moving web of them.",
+      "events": {
+        "then": {
+          "word": "then"
+        },
+        "launch": {
+          "word": "launch"
+        },
+        "after": {
+          "word": "after"
+        },
+        "filled": {
+          "word": "filled"
+        },
+        "low": {
+          "word": "low"
+        },
+        "sky": {
+          "word": "sky"
+        },
+        "moving": {
+          "word": "moving"
+        },
+        "web": {
+          "word": "web"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_no": {
+          "word": "no"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the whole Earth, more and more low satellites joining the shell",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "earth"
+          },
+          {
+            "at": "cam_no",
+            "size": "close",
+            "on": "earth"
+          },
+          {
+            "at": "filled",
+            "size": "wide",
+            "on": "earth"
+          },
+          {
+            "at": "web",
+            "size": "wide",
+            "on": "earth"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "leoShell",
+            "what": "a few satellites on the low shell"
+          },
+          {
+            "at": "then",
+            "do": "fillA",
+            "what": "a new batch joins"
+          },
+          {
+            "at": "launch",
+            "do": "fillB",
+            "what": "another batch"
+          },
+          {
+            "at": "after",
+            "do": "fillC",
+            "what": "and another, the shell filling"
+          },
+          {
+            "at": "filled",
+            "do": "many",
+            "what": "dots crowd every track round the planet"
+          },
+          {
+            "at": "moving",
+            "do": "ride",
+            "what": "they all move along their tracks"
+          },
+          {
+            "at": "web",
+            "do": "links",
+            "what": "faint lines join neighbours into a web"
+          }
+        ],
+        "things": [
+          "filling shell",
+          "moving dots",
+          "web of links"
+        ],
+        "tag": "notToScale"
+      }
+    },
+    {
+      "id": "shells",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Each group flies its own tilted path, so between them, the rings of satellites wrap the whole planet.",
+      "events": {
+        "group": {
+          "word": "group"
+        },
+        "tilted": {
+          "word": "tilted"
+        },
+        "path": {
+          "word": "path"
+        },
+        "rings": {
+          "word": "rings"
+        },
+        "wrap": {
+          "word": "wrap"
+        },
+        "planet": {
+          "word": "planet"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_between": {
+          "word": "between"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "the Earth, a few tilted rings of satellites around it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "leoSat"
+          },
+          {
+            "at": "tilted",
+            "size": "wide",
+            "on": "earth"
+          },
+          {
+            "at": "cam_between",
+            "size": "medium",
+            "on": "earth"
+          },
+          {
+            "at": "planet",
+            "size": "medium",
+            "on": "earth"
+          }
+        ],
+        "moments": [
+          {
+            "at": "group",
+            "do": "leoShell",
+            "what": "one ring of satellites circles the Earth"
+          },
+          {
+            "at": "tilted",
+            "do": "fillA",
+            "what": "a second ring tilts across it"
+          },
+          {
+            "at": "path",
+            "do": "fillB",
+            "what": "a third ring, tilted the other way"
+          },
+          {
+            "at": "rings",
+            "do": "fillC",
+            "what": "more rings cross over each other"
+          },
+          {
+            "at": "wrap",
+            "do": "many",
+            "what": "the rings wrap the globe like a ball of string"
+          },
+          {
+            "at": "planet",
+            "do": "ride",
+            "what": "every satellite moves along its ring"
+          }
+        ],
+        "things": [
+          "tilted rings",
+          "crossing paths",
+          "wrapped globe"
+        ],
+        "tag": "notToScale"
+      }
+    },
+    {
+      "id": "always",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "That's why the sky above your house is never empty: one is always rising as another one sets.",
+      "events": {
+        "sky": {
+          "word": "sky"
+        },
+        "house": {
+          "word": "house"
+        },
+        "never": {
+          "word": "never"
+        },
+        "empty": {
+          "word": "empty"
+        },
+        "rising": {
+          "word": "rising"
+        },
+        "another": {
+          "word": "another"
+        },
+        "sets": {
+          "word": "sets"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_one": {
+          "word": "one"
+        }
+      },
+      "params": {
+        "component": "Globe",
+        "place": "close above the planet, your house's dot under the moving web",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "pin"
+          },
+          {
+            "at": "never",
+            "size": "close",
+            "on": "pin"
+          },
+          {
+            "at": "cam_one",
+            "size": "medium",
+            "on": "pin"
+          },
+          {
+            "at": "sets",
+            "size": "medium",
+            "on": "pin"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "many",
+            "what": "the web of satellites over the Earth"
+          },
+          {
+            "at": "sky",
+            "do": "cone",
+            "what": "a cone of sky over the house's dot lights"
+          },
+          {
+            "at": "house",
+            "do": "pin",
+            "what": "the dot glows"
+          },
+          {
+            "at": "never",
+            "do": "overhead",
+            "what": "a satellite crosses the cone"
+          },
+          {
+            "at": "rising",
+            "do": "rise",
+            "what": "another enters from one side"
+          },
+          {
+            "at": "sets",
+            "do": "set",
+            "what": "the first leaves the other side"
+          }
+        ],
+        "things": [
+          "sky cone",
+          "house dot",
+          "passing satellites"
+        ],
+        "tag": "notToScale"
+      }
+    },
+    {
+      "id": "back",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "So follow your video one last time. You press play, and the laptop asks for it over wifi.",
+      "events": {
+        "follow": {
+          "word": "follow"
+        },
+        "video": {
+          "word": "video"
+        },
+        "last": {
+          "word": "last"
+        },
+        "press": {
+          "word": "press"
+        },
+        "play": {
+          "word": "play"
+        },
+        "laptop": {
+          "word": "laptop"
+        },
+        "wifi": {
+          "word": "wifi"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_time": {
+          "word": "time"
+        }
+      },
+      "params": {
+        "component": "Home",
+        "place": "the living room, the cursor over a play button on the laptop",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "room"
+          },
+          {
+            "at": "cam_time",
+            "size": "close",
+            "on": "room"
+          },
+          {
+            "at": "press",
+            "size": "close",
+            "on": "laptop"
+          },
+          {
+            "at": "wifi",
+            "size": "medium",
+            "on": "router"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "room",
+            "what": "the living room at night"
+          },
+          {
+            "at": "follow",
+            "do": "laptop",
+            "what": "the laptop lights"
+          },
+          {
+            "at": "press",
+            "do": "click",
+            "what": "the cursor clicks play"
+          },
+          {
+            "at": "play",
+            "do": "lag",
+            "what": "a loading ring"
+          },
+          {
+            "at": "laptop",
+            "do": "pulseOut",
+            "what": "a pulse leaves the laptop"
+          },
+          {
+            "at": "wifi",
+            "do": "wifi",
+            "what": "it rides the wifi rings to the router"
+          }
+        ],
+        "things": [
+          "play button",
+          "cursor click",
+          "wifi pulse",
+          "router"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "press",
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "upcable",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "The router sends it up the cable, and the dish works out where your satellite is right now.",
+      "events": {
+        "router": {
+          "word": "router"
+        },
+        "cable": {
+          "word": "cable"
+        },
+        "dish": {
+          "word": "dish"
+        },
+        "works": {
+          "word": "works"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "now": {
+          "word": "now"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_your": {
+          "word": "your"
+        }
+      },
+      "params": {
+        "component": "Home",
+        "place": "the router, the dish cable running up through the ceiling",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "router"
+          },
+          {
+            "at": "cable",
+            "size": "medium",
+            "on": "cable"
+          },
+          {
+            "at": "cam_your",
+            "size": "close",
+            "on": "cable"
+          },
+          {
+            "at": "now",
+            "size": "close",
+            "on": "cable"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "router",
+            "what": "the router's lights"
+          },
+          {
+            "at": "router",
+            "do": "cableUp",
+            "what": "a pulse leaves the router"
+          },
+          {
+            "at": "cable",
+            "do": "cableRun",
+            "what": "it climbs the cable to the ceiling"
+          },
+          {
+            "at": "dish",
+            "do": "ceiling",
+            "what": "the ceiling glows where the cable goes through"
+          },
+          {
+            "at": "works",
+            "do": "router",
+            "what": "the router's lights blink"
+          },
+          {
+            "at": "now",
+            "do": "cable",
+            "what": "the cable glows full length"
+          }
+        ],
+        "things": [
+          "climbing pulse",
+          "dish cable",
+          "ceiling"
+        ]
+      }
+    },
+    {
+      "id": "fire",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Its tiny antennas fire a fraction apart, and the beam leans up to a satellite {fact1} overhead.",
+      "events": {
+        "tiny": {
+          "word": "tiny"
+        },
+        "antennas": {
+          "word": "antennas"
+        },
+        "fire": {
+          "word": "fire"
+        },
+        "fraction": {
+          "word": "fraction"
+        },
+        "beam": {
+          "word": "beam"
+        },
+        "leans": {
+          "word": "leans"
+        },
+        "satellite": {
+          "word": "satellite"
+        },
+        "overhead": {
+          "word": "overhead"
+        },
+        "start": {
+          "sec": 0
+        },
+        "cam_four": {
+          "word": "four"
+        },
+        "cam_eighty": {
+          "word": "eighty"
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the dusk rooftop, the dish face lit, a satellite overhead",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close",
+            "on": "dish"
+          },
+          {
+            "at": "fire",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "leans",
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "cam_four",
+            "size": "medium",
+            "on": "sky"
+          },
+          {
+            "at": "cam_eighty",
+            "size": "close",
+            "on": "sky"
+          },
+          {
+            "at": "overhead",
+            "size": "medium",
+            "on": "sat"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "face",
+            "what": "the dish face's grid glowing"
+          },
+          {
+            "at": "antennas",
+            "do": "faceWave",
+            "what": "a wave runs across the grid"
+          },
+          {
+            "at": "fire",
+            "do": "rings",
+            "what": "ripples rise off the dish"
+          },
+          {
+            "at": "fraction",
+            "do": "faceWave",
+            "what": "another wave, slanted"
+          },
+          {
+            "at": "beam",
+            "do": "beam",
+            "what": "the beam forms"
+          },
+          {
+            "at": "leans",
+            "do": "track",
+            "what": "it leans up toward the satellite"
+          },
+          {
+            "at": "overhead",
+            "do": "altitude",
+            "what": "the height writes on the altitude line"
+          }
+        ],
+        "things": [
+          "glowing grid",
+          "ripples",
+          "leaning beam",
+          "altitude line"
+        ],
+        "labels": [
+          {
+            "at": "overhead",
+            "text": "{fact1}",
+            "on": "sat",
+            "fig": "alt"
+          }
+        ],
+        "fig": {
+          "alt": "{fact1}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "beam"
+        }
+      ]
+    },
+    {
+      "id": "catchit",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "The satellite catches it on one of its arrays, and points another beam down to the ground.",
+      "events": {
+        "satellite": {
+          "word": "satellite"
+        },
+        "catches": {
+          "word": "catches"
+        },
+        "arrays": {
+          "word": "arrays"
+        },
+        "points": {
+          "word": "points"
+        },
+        "another": {
+          "word": "another"
+        },
+        "beam": {
+          "word": "beam"
+        },
+        "ground": {
+          "word": "ground"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "SatClose",
+        "place": "the satellite over the Earth's curve, the beam from below arriving",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "arrays",
+            "size": "close",
+            "on": "panels"
+          },
+          {
+            "at": "ground",
+            "size": "wide",
+            "on": "gateway"
+          }
+        ],
+        "moments": [
+          {
+            "at": "satellite",
+            "do": "sat",
+            "what": "the satellite glides over the curve"
+          },
+          {
+            "at": "catches",
+            "do": "uplink",
+            "what": "a beam arrives from below and touches its underside"
+          },
+          {
+            "at": "arrays",
+            "do": "panels",
+            "what": "an array on its underside flashes"
+          },
+          {
+            "at": "points",
+            "do": "downlink",
+            "what": "a second beam leans down from it"
+          },
+          {
+            "at": "beam",
+            "do": "pulseDown",
+            "what": "a pulse runs down the second beam"
+          },
+          {
+            "at": "ground",
+            "do": "gate",
+            "what": "the ground station's dishes light far below"
+          }
+        ],
+        "things": [
+          "uplink beam",
+          "underside array",
+          "downlink beam",
+          "ground station"
+        ]
+      }
+    },
+    {
+      "id": "home",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Into the internet through the ground station, and your video rides the same path back to you.",
+      "events": {
+        "into": {
+          "word": "Into"
+        },
+        "ground": {
+          "word": "ground"
+        },
+        "internet": {
+          "word": "internet"
+        },
+        "video": {
+          "word": "video"
+        },
+        "rides": {
+          "word": "rides"
+        },
+        "path": {
+          "word": "path"
+        },
+        "back": {
+          "word": "back"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Route",
+        "place": "the route map at night, the whole trip lighting stop by stop",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium",
+            "on": "sat"
+          },
+          {
+            "at": "ground",
+            "size": "medium",
+            "on": "gateway"
+          },
+          {
+            "at": "internet",
+            "size": "wide",
+            "on": "all"
+          },
+          {
+            "at": "back",
+            "size": "medium",
+            "on": "house"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "the satellite over the map"
+          },
+          {
+            "at": "into",
+            "do": "down",
+            "what": "a pulse drops to the ground station"
+          },
+          {
+            "at": "ground",
+            "do": "gate",
+            "what": "the station's dishes light"
+          },
+          {
+            "at": "internet",
+            "do": "dc",
+            "what": "the data centre lights"
+          },
+          {
+            "at": "video",
+            "do": "back",
+            "what": "a pulse sets off back along the route"
+          },
+          {
+            "at": "rides",
+            "do": "path",
+            "what": "it runs up to the satellite and down"
+          },
+          {
+            "at": "back",
+            "do": "house",
+            "what": "the house window lights with the playing video"
+          }
+        ],
+        "things": [
+          "ground station",
+          "data centre",
+          "return pulse",
+          "house window"
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "transition": "cut",
+      "say": "All in a blink. From a flat dish that never moves, aimed at satellites that never stop.",
+      "events": {
+        "blink": {
+          "word": "blink"
+        },
+        "flat": {
+          "word": "flat"
+        },
+        "dish": {
+          "word": "dish"
+        },
+        "never": {
+          "word": "never"
+        },
+        "moves": {
+          "word": "moves"
+        },
+        "satellites": {
+          "word": "satellites"
+        },
+        "stop": {
+          "word": "stop"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the dusk rooftop, wide, the dish and the sky full of passing satellites",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "dish",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "moves",
+            "size": "close",
+            "on": "mount"
+          },
+          {
+            "at": "stop",
+            "size": "wide",
+            "on": "sky"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "swarm",
+            "what": "the sky full of satellites crossing"
+          },
+          {
+            "at": "blink",
+            "do": "flash",
+            "what": "a flash along the beam"
+          },
+          {
+            "at": "flat",
+            "do": "face",
+            "what": "the dish face glows"
+          },
+          {
+            "at": "never",
+            "do": "lock",
+            "what": "the ring pulses round the still mount"
+          },
+          {
+            "at": "satellites",
+            "do": "track",
+            "what": "satellites stream across the sky"
+          },
+          {
+            "at": "stop",
+            "do": "handoff",
+            "what": "the beam hops to the next one"
+          }
+        ],
+        "things": [
+          "satellite swarm",
+          "still mount",
+          "hopping beam"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "blink"
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "transition": "cut",
+      "say": "Which machine should we take apart next? Tell us. Until then, look up: one is crossing your sky right now.",
+      "events": {
+        "machine": {
+          "word": "machine"
+        },
+        "apart": {
+          "word": "apart"
+        },
+        "tell": {
+          "word": "Tell"
+        },
+        "look": {
+          "word": "look"
+        },
+        "crossing": {
+          "word": "crossing"
+        },
+        "sky": {
+          "word": "sky"
+        },
+        "now": {
+          "word": "now"
+        },
+        "start": {
+          "sec": 0
+        }
+      },
+      "params": {
+        "component": "Roof",
+        "place": "the rooftop at dusk, the camera settling on the dish where it began",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide",
+            "on": "sky"
+          },
+          {
+            "at": "tell",
+            "size": "medium",
+            "on": "dish"
+          },
+          {
+            "at": "now",
+            "size": "medium",
+            "on": "dish"
+          }
+        ],
+        "moments": [
+          {
+            "at": "start",
+            "do": "sat",
+            "what": "a satellite crossing the dusk sky"
+          },
+          {
+            "at": "machine",
+            "do": "face",
+            "what": "the dish face glows"
+          },
+          {
+            "at": "apart",
+            "do": "question",
+            "what": "a question mark lights over the roof"
+          },
+          {
+            "at": "look",
+            "do": "stars",
+            "what": "the stars brighten"
+          },
+          {
+            "at": "crossing",
+            "do": "beam",
+            "what": "the beam reaches up to the satellite"
+          },
+          {
+            "at": "now",
+            "do": "track",
+            "what": "it races on, the dish still"
+          }
+        ],
+        "things": [
+          "question mark",
+          "stars",
+          "crossing satellite"
+        ]
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "transition": "fade",
+      "params": {
+        "cta": "Which machine should we take apart next?",
+        "follow": "Subscribe for the next teardown"
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "custom",
+    "engine": "3d",
+    "component": "ThumbDish",
+    "pattern_id": "P4",
+    "words": "No *motor*",
+    "things": [
+      "flat dish exploded",
+      "glowing antenna grid"
+    ],
+    "score": 9,
+    "why": "1,2,3,4,5,6,7,8,10 = 9; missed 9: the back housing runs into the bottom-right corner. The opened dish with its lit grid poses the title's question and reads at phone size; it sits next to Branch's 9.9M teardown without copying it",
+    "pattern": "the dish itself taken apart in layers in 3D, the antenna grid glowing in the middle, ripples leaving it, two heavy words on the left",
+    "references": [
+      {
+        "id": "qs2QcycggWU",
+        "views": 9887359,
+        "what": "the Starlink dish exploded in layers, its antenna grid lit, ripples to a satellite"
+      },
+      {
+        "id": "mno_K8MHX-k",
+        "views": 678599,
+        "what": "a Starlink satellite cut open, its insides lit"
+      },
+      {
+        "id": "RP0zrz803R8",
+        "views": 1744559,
+        "what": "the white flat dish as the object, two short words"
+      }
+    ]
+  },
+  "thumbnails": [
+    {
+      "layout": "custom",
+      "engine": "3d",
+      "component": "ThumbBeams",
+      "pattern_id": "P6",
+      "words": "Bent *beams*",
+      "things": [
+        "flat satellite",
+        "beam cones",
+        "lit ground patches"
+      ],
+      "score": 8,
+      "why": "1,2,3,4,5,6,7,8 = 8; missed 9 (the beams reach the bottom-right corner) and 10 (close to The Space Race's beams-on-Earth layout)",
+      "pattern": "satellites above the night Earth with cones of beam light landing on rings of ground, few or no words",
+      "references": [
+        {
+          "id": "DW-aL_MiUz4",
+          "views": 4632145,
+          "what": "two satellites over the night Earth, beam cones onto rings of ground"
+        },
+        {
+          "id": "su9MtcYkzgw",
+          "views": 772024,
+          "what": "satellites streaming over the Earth, two heavy words"
+        },
+        {
+          "id": "giQ8xEWjnBs",
+          "views": 7389545,
+          "what": "one flat Starlink satellite and its long solar wing big on a dark ground, heavy words"
+        }
+      ]
+    },
+    {
+      "layout": "custom",
+      "engine": "3d",
+      "component": "ThumbHero",
+      "pattern_id": "P2",
+      "words": "It never *turns*",
+      "things": [
+        "flat dish on mast",
+        "beam",
+        "satellite"
+      ],
+      "score": 8,
+      "why": "1,2,4,5,6,7,8,9 = 8; missed 3 (the roof under the dish is hard to read at 168 px) and 10 (three stacked words is busier than our playbook's best)",
+      "pattern": "the white flat dish itself as the hero, big and lit, a short verdict in heavy words",
+      "references": [
+        {
+          "id": "b2KrXmRwBfg",
+          "views": 883599,
+          "what": "the white dish on its stand fills the frame, a few heavy words left"
+        },
+        {
+          "id": "uQgeBs78xO8",
+          "views": 1166132,
+          "what": "a dish on a house roof, big words"
+        },
+        {
+          "id": "RP0zrz803R8",
+          "views": 1744559,
+          "what": "the white flat dish held up as the object, short words"
+        }
+      ]
+    }
+  ],
+  "thumbnail_pick": "a",
+  "narrator": "am_michael"
+}

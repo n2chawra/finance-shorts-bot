@@ -50,7 +50,7 @@ GL_TABS = 4   # a 3D video's tabs at once (src/three/README.md: the demos render
 
 HOOK_IMPORTS = ("react", "remotion", "@remotion/paths", "@remotion/shapes", "@remotion/noise",
                 "../../studio/", "../../cast/", "../../scenes/kit", "../../fx/", "../../design/", "../../fmt/", "../../contract/",
-                "../../flat/", "../../three/", "../../disaster/", "../../dive/", "../../doc/thumb")
+                "../../flat/", "../../three/", "../../disaster/", "../../doc/thumb")
 # a figure typed into a video's code ("$11B", '>325M<', "45.2 billion"): every figure on screen comes from
 # the script (params filled by Python), never from the component (CLAUDE.md: numbers are computed by code)
 TYPED_FIGURE = re.compile(r"""["'`>][^"'`<>\n]*?(?:[$£€₹]\s?\d|\b\d[\d,]*(?:\.\d+)?(?:K|M|B|bn|Cr|L)\b|\b\d[\d,]*(?:\.\d+)?\s(?:million|billion|trillion|lakh|crore)\b)""")
@@ -96,6 +96,8 @@ def custom_problems(video_id: str) -> list[str]:
             comp = (b.get("params") or {}).get("component")
             if b.get("scene") == "directed" and isinstance(comp, str) and comp not in names:
                 out.append(f"beat {b.get('id')!r} is directed by {comp}.tsx, which is not in remotion/src/videos/{video_id}/: write it")
+        out += map_flag_problems(beats, {f.stem: f.read_text(encoding="utf-8") for f in files})
+        out += picture_once_problems(beats, fmt=str(json.loads(script.read_text(encoding="utf-8")).get("format") or "short"))
     if files and not out:
         node = shutil.which("node")
         tsc = REMOTION/"node_modules"/"typescript"/"bin"/"tsc"
@@ -103,6 +105,85 @@ def custom_problems(video_id: str) -> list[str]:
             r = subprocess.run([node, str(tsc), "--noEmit", "-p", str(REMOTION)], cwd=REMOTION, capture_output=True, text=True)
             if r.returncode != 0:
                 out.append("it does not type-check: " + " | ".join(l for l in r.stdout.splitlines() if "videos/" in l.replace("\\", "/"))[:900])
+    return out
+
+
+# Natural Earth names the flag kit draws (remotion/src/flat/flags.tsx), and what a line calls them
+FLAGS_TSX = REMOTION/"src"/"flat"/"flags.tsx"
+FLAG_ALIASES = {"Britain": "United Kingdom", "UK": "United Kingdom", "America": "United States of America",
+                "USA": "United States of America", "the US": "United States of America", "Czechia": "Czech Rep."}
+
+
+def flag_names() -> set[str]:
+    try:
+        code = FLAGS_TSX.read_text(encoding="utf-8")
+    except OSError:
+        return set()
+    table = code[code.find("const FLAGS"):code.find("export const hasFlag")]
+    return {m.group(2) for m in re.finditer(r'^\s*("?)([A-Z][^":\n]*?)\1\s*:\s*[A-Za-z_]+\s*[(,]', table, re.M)}
+
+
+def map_flag_problems(beats: list[dict], code_of: dict[str, str]) -> list[str]:
+    """A map beat that names a country shows that country's flag (owner, 2026-11-23, on the Russia Short: "Where is
+    the flag of Russia?? Should have put it as the area kept growing"; director.md has asked for it since 19 Nov).
+    Every channel: each country the flag kit has that a map beat's line names shows its flag (`flag: "<name>"` in the
+    WorldMap's colors, or FlagArt) in at least one of the map beats that name it."""
+    names = flag_names()
+    if not names:
+        return []
+    shown: dict[str, bool] = {}
+    first: dict[str, tuple[str, str]] = {}
+    for b in beats:
+        comp = (b.get("params") or {}).get("component")
+        own = _COMMENTS.sub("", code_of.get(comp, "")) if isinstance(comp, str) else ""
+        # a map beat: it draws the flat map kit itself or through this video's own files (props.tsx wraps it)
+        local = [_COMMENTS.sub("", code_of.get(m, "")) for m in re.findall(r"""from\s+["']\./([\w-]+)["']""", own)]
+        if b.get("scene") != "directed" or not re.search(r"""flat/map["']|WorldMap""", own + "".join(local)):
+            continue
+        code = own + "\n".join(local)
+        said = str(b.get("say") or b.get("line") or "")
+        named = {n for n in names if re.search(rf"\b{re.escape(n)}\b", said)}
+        named |= {full for alias, full in FLAG_ALIASES.items() if full in names and re.search(rf"\b{re.escape(alias)}\b", said)}
+        for n in named:
+            first.setdefault(n, (str(b.get("id")), str(comp)))
+            has = bool(re.search(rf"""(?:flag\b[^\n;]{{0,120}}|FlagArt[^>]{{0,120}})["'`]{re.escape(n)}["'`]""", code))
+            shown[n] = shown.get(n, False) or has
+    out = []
+    for n in sorted(k for k, v in shown.items() if not v):
+        bid, comp = first[n]
+        out.append(f"{n} is named on the map but its flag is never shown: give it `flag: \"{n}\"` in the WorldMap's "
+                   f"colors (or FlagArt name=\"{n}\") at least in beat {bid!r} ({comp}.tsx), where the line first names it")
+    return out
+
+
+def picture_once_problems(beats: list[dict], fmt: str = "short") -> list[str]:
+    """Every picture once (owner, 2026-11-20 on Rise & Fall: "the same 3 sneaker photos reused and almost no effects"),
+    on every channel: a photo or picture file (a `src` in a beat's params) is in one beat of a Short, except the last
+    beat coming back to the first one's for the loop; at most two beats of a long video."""
+    used: dict[str, list[int]] = {}
+
+    def walk(x: object, i: int) -> None:
+        if isinstance(x, dict):
+            for k, v in x.items():
+                if k == "src" and isinstance(v, str) and re.search(r"\.(jpe?g|png|webp)$", v, re.I):
+                    used.setdefault(v, [])
+                    if i not in used[v]:
+                        used[v].append(i)
+                else:
+                    walk(v, i)
+        elif isinstance(x, list):
+            for y in x:
+                walk(y, i)
+
+    for i, b in enumerate(beats):
+        walk(b.get("params") or {}, i)
+    last, out = len(beats) - 1, []
+    for src, at in used.items():
+        rest = [i for i in at if not (fmt == "short" and i == last and 0 in at)]
+        if len(rest) > (2 if fmt == "long" else 1):
+            ids = ", ".join(repr(beats[i].get("id")) for i in at)
+            out.append(f"{src.split('/')[-1]} is shown in {len(at)} beats ({ids}): every picture once "
+                       f"({'twice at most in a long video' if fmt == 'long' else 'the loop beat may repeat the first'}); find another picture")
     return out
 
 

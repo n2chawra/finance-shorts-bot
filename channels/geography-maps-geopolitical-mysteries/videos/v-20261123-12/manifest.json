@@ -1,0 +1,349 @@
+{
+  "id": "v-20261123-12",
+  "createdAt": "2026-11-23T00:35:48.825483+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "What if the Strait of Malacca closed?",
+    "category": "straits",
+    "reach": "global",
+    "feed_id": "2026-11-19-what-if-malacca-closed",
+    "map_answer": "the shipping lane between Malaysia and Sumatra rubbed out on the map, and the tankers' new routes drawn south through the Sunda Strait and the Lombok Strait, round Indonesia's islands"
+  },
+  "title": "The Strait of Malacca closes. Which way round?",
+  "description": "If the Strait of Malacca shut, where would the ships go? A thought experiment.\nThe Strait of Malacca between Malaysia and Sumatra, and the long ways round, on the map.\nSources: US Energy Information Administration, Wikipedia (Mar 2026). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#Malacca",
+    "#Geography",
+    "#Maps",
+    "#Shipping"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Malacca or Hormuz: which closure would hurt the world more? Comment",
+  "seed": 38417,
+  "style": {
+    "palette": "ember",
+    "genre": "atlas",
+    "key": "G",
+    "bpm": 92,
+    "look": {
+      "stage": "night",
+      "header": "strip",
+      "holder": "receipt",
+      "entrance": "slide"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The Strait of Malacca closes overnight. Which way do the oil tankers go now?",
+        "start": 0.3,
+        "seconds": 3.48,
+        "window": 4.17,
+        "fill": 0.835
+      },
+      {
+        "scene": "narrow",
+        "text": "It's only a thought experiment, but look how thin this lane is: between Malaysia and the island of Sumatra, just 2.8 km wide at its narrowest.",
+        "start": 4.47,
+        "seconds": 7.04,
+        "window": 7.7,
+        "fill": 0.914
+      },
+      {
+        "scene": "oil",
+        "text": "And yet every day about 23.2M barrels of oil squeeze through it, 29% of all the oil that moves by sea.",
+        "start": 12.17,
+        "seconds": 6.11,
+        "window": 6.77,
+        "fill": 0.903
+      },
+      {
+        "scene": "length",
+        "text": "It runs 900 km from end to end, the short cut from the oil fields of the Gulf to the factories of China, Japan and Korea.",
+        "start": 18.93,
+        "seconds": 6.24,
+        "window": 6.9,
+        "fill": 0.904
+      },
+      {
+        "scene": "erase",
+        "text": "Now rub it out. A tanker sailing east from India meets a wall of land, with Sumatra on one side and Malaysia on the other.",
+        "start": 25.83,
+        "seconds": 5.74,
+        "window": 6.4,
+        "fill": 0.897
+      },
+      {
+        "scene": "sunda",
+        "text": "So where's the next door? The Sunda Strait, a gap between Sumatra and Java, far to the south.",
+        "start": 32.23,
+        "seconds": 3.96,
+        "window": 4.6,
+        "fill": 0.861
+      },
+      {
+        "scene": "lombok",
+        "text": "Other tankers sail further still, through the Lombok Strait, east of Bali, and then north past Borneo.",
+        "start": 36.83,
+        "seconds": 4.41,
+        "window": 5.07,
+        "fill": 0.87
+      },
+      {
+        "scene": "singapore",
+        "text": "Stranger still, Singapore, a port city at the narrow end of the lane, suddenly sits beside a blocked lane with no way through.",
+        "start": 41.9,
+        "seconds": 5.36,
+        "window": 6.03,
+        "fill": 0.889
+      },
+      {
+        "scene": "payoff",
+        "text": "Because this one lane carries about 25% of all the goods the world trades, every one of those ships now takes the long way round.",
+        "start": 47.93,
+        "seconds": 6.02,
+        "window": 6.67,
+        "fill": 0.903
+      },
+      {
+        "scene": "loop",
+        "text": "Malacca or Hormuz: which closure would hurt the world more? Tell me below. Now picture it once more:",
+        "start": 54.6,
+        "seconds": 4.29,
+        "window": 4.97,
+        "fill": 0.863
+      }
+    ]
+  },
+  "durationSec": 60,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -15.0,
+    "music_under_voice_db": 30.8
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "All 5 facts confirmed on source pages: EIA World Oil Transit Chokepoints (updated 3 Mar 2026) shows 23.2M b/d and 29% of maritime oil flows in 1H25 and names Sunda, Lombok and round-the-archipelago detours; Wikipedia Strait of Malacca shows 900 km long, 2.8 km at the Phillip Channel, ~25% of world traded goods. Thought experiment stated in beat 2 and description; no advice; channel disclaimer ends the description."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Every beat on the map, 8+ places (strait, Phillip Channel, Andaman mouth, Asia, Sunda, Lombok, Singapore, region); figures on things (23.2M BARRELS tag, 25% on crate stack, width/length stamps in code); first frame names the strait with tankers, question held back; payoff routes bend round Indonesia; 59.8s returns to the 0s frame; layout empty, audio -1/-16.3 dB, 60 s in channel range; as full as Greenland v-20261119-02. Minor: hook barrier small at 2.5s, GULF rig near left edge 22.5-25s, description has stray 'The characters are not advisers.'"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-23T00:12:57.871904+00:00",
+      "finishedAt": "2026-11-23T00:12:57.871904+00:00",
+      "notes": [
+        "description opens with 'what happens to', already used by v-20261118-01"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:13:00.930798+00:00",
+      "finishedAt": "2026-11-23T00:13:00.930798+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:14:04.023215+00:00",
+      "finishedAt": "2026-11-23T00:14:04.023215+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:14:04.845862+00:00",
+      "finishedAt": "2026-11-23T00:14:04.845862+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "warning: beat 'oil' runs 7.1 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words",
+        "note: beat 'singapore' opens like a line in one of the last scripts ('and the strangest'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:14:12.392976+00:00",
+      "finishedAt": "2026-11-23T00:14:12.392976+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-23T00:14:22.462572+00:00",
+      "finishedAt": "2026-11-23T00:14:22.462572+00:00",
+      "notes": [
+        "beat 'loop': params.camera key at 'night' is not one of this beat's events",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:14:25.984167+00:00",
+      "finishedAt": "2026-11-23T00:14:25.984167+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:14:57.727282+00:00",
+      "finishedAt": "2026-11-23T00:14:57.727282+00:00",
+      "notes": [
+        "All 5 facts confirmed on source pages: EIA World Oil Transit Chokepoints (updated 3 Mar 2026) shows 23.2M b/d and 29% of maritime oil flows in 1H25 and names Sunda, Lombok and round-the-archipelago detours; Wikipedia Strait of Malacca shows 900 km long, 2.8 km at the Phillip Channel, ~25% of world traded goods. Thought experiment stated in beat 2 and description; no advice; channel disclaimer ends the description."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:18:37.372035+00:00",
+      "finishedAt": "2026-11-23T00:18:37.372035+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T00:20:57.099671+00:00",
+      "finishedAt": "2026-11-23T00:22:16.815959+00:00",
+      "notes": [
+        "text 'SUMATRA SIDE' at 9.6 s runs outside the frame",
+        "1.9 s with nothing new on screen in beat 'narrow' (at most 1.8 s): add an action on the phrase being said there",
+        "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T00:23:18.669111+00:00",
+      "finishedAt": "2026-11-23T00:24:18.128620+00:00",
+      "notes": [
+        "1.9 s with nothing new on screen in beat 'narrow' (at most 1.8 s): add an action on the phrase being said there",
+        "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:24:29.878408+00:00",
+      "finishedAt": "2026-11-23T00:25:30.390739+00:00",
+      "notes": [
+        "60 s, ember/atlas (preview only)",
+        "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:25:44.744727+00:00",
+      "finishedAt": "2026-11-23T00:26:48.174335+00:00",
+      "notes": [
+        "60 s, ember/atlas (preview only)",
+        "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:29:15.857786+00:00",
+      "finishedAt": "2026-11-23T00:29:15.857786+00:00",
+      "notes": [
+        "Every beat on the map, 8+ places (strait, Phillip Channel, Andaman mouth, Asia, Sunda, Lombok, Singapore, region); figures on things (23.2M BARRELS tag, 25% on crate stack, width/length stamps in code); first frame names the strait with tankers, question held back; payoff routes bend round Indonesia; 59.8s returns to the 0s frame; layout empty, audio -1/-16.3 dB, 60 s in channel range; as full as Greenland v-20261119-02. Minor: hook barrier small at 2.5s, GULF rig near left edge 22.5-25s, description has stray 'The characters are not advisers.'"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:26:52.876557+00:00",
+      "finishedAt": "2026-11-23T00:35:39.202928+00:00",
+      "notes": [
+        "60 s, ember/atlas, peak -1.0 dB, mean -16.3 dB",
+        "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: beat 'hook' opens like a line in one of the last scripts ('the strait of'): new words"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-23T00:35:48.825791+00:00",
+      "finishedAt": "2026-11-23T00:35:48.825791+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261123-12",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261123-12"
+  }
+}

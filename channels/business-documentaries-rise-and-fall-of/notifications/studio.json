@@ -1,0 +1,8 @@
+{"notifications": [
+  {"key": "doc-footage-fetch", "severity": "warning", "title": "Business documentaries: stock footage can't be fetched in the cloud, so long videos are almost all stills",
+   "detail": "On 23 Nov every Wikimedia Commons video download timed out after 8 minutes (11 clips tried, even 5-8 s ones), and Pexels/Pixabay are off because PEXELS_API_KEY and PIXABAY_API_KEY are not set. L-20261123-31 (Crocs) has one footage clip; the channel's recipe asks for 35-45% footage. Photos, filing pages and graphics carry it instead.",
+   "fix": "1. Create free API keys at pexels.com/api and pixabay.com/api/docs. 2. Add them as PEXELS_API_KEY and PIXABAY_API_KEY to the routine environment on claude.ai (environment settings, as with SEC_USER_AGENT). 3. The next Studio run searches them automatically (generator/media)."},
+  {"key": "crocs-test-compare", "severity": "info", "title": "Crocs long video: three thumbnails ready for Test & Compare",
+   "detail": "L-20261123-31 ships with thumbnail A (picked, P1 cracked clog in the crash V, 'Almost dead', -$185M), B (P4 share price $75 -> $0.8, 'How?') and C (P2 cracked store sign, 'What happened?'). All three scored 8/10 on the playbook checklist.",
+   "fix": "1. After it publishes, open it in YouTube Studio on a computer. 2. Thumbnail -> Test & Compare. 3. Upload thumbnail.png, thumbnail-b.png and thumbnail-c.png from channels/business-documentaries-rise-and-fall-of/videos/L-20261123-31/."}
+]}

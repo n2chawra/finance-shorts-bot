@@ -8,10 +8,10 @@ Writers (the video routine, Studio) read this before writing a script, and again
 hard rules (a `wrong` note is a rule until the improver addresses it), and his picks and stales show
 what he wants on the channel. `failures` prints the open notes at the top too.
 
-**Then what failed lately.** `python -m generator.run failures --format short` (or `long`)
+**Then what failed lately.** `python -m generator.run failures --format short --channel <channel>` (or `long`)
 groups the last two weeks' failed checks with the fix for each. Avoid every item it lists.
 
-**After every edit, run the quick check.** `python -m generator.run lint <id>` takes about twenty
+**After every edit, run the quick check.** `python -m generator.run lint <id> --channel <channel>` takes about twenty
 seconds. It builds the timeline on an estimated voice and runs every check that needs no pixels: the
 story spine, the picture following the words, gaps, shot sizes, devices, props against recent
 videos, the thumbnail spec, length and your own code (`tsc`). Fix until it prints `ok`, and only then
@@ -71,7 +71,7 @@ fix any beat near a limit as well.
 - **Story**: one person in one concrete moment, no more than 2 hedges (might, can, some), no warm-up
   opener, a new open question every 2–3 beats, the hook's answer only in the payoff.
 
-## Directed shots (every new video; owner, 2026-11-13; reference `channels/paisa-panchayat/videos/v-directed-netflix/`)
+## Directed shots (every new video; owner, 2026-11-13; `generator/prompts/director.md`)
 - **Every beat's params**: `component`, `place`, `camera` (sizes on words), `moments` (each on an event),
   `things`, `fig` (placeholders). The build rejects a directed beat without them.
 - **Four places or more in a Short**, none the same as a recent video's (a note from the craft gate);

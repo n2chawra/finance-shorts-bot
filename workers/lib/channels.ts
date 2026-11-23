@@ -4,12 +4,20 @@
  * `config/channel-layout.json` maps each legacy repo path to its place in `channels/<slug>/`. A
  * channel without a folder yet keeps the legacy paths, so ingest, publish and stats behave the same
  * before and after the move. The channel is `CHANNEL`, else the layout's default.
+ *
+ * A channel the owner deleted on the dashboard (Channel.status "deleting", until delete-channel.yml has
+ * removed it) is skipped by every worker: `allChannels` leaves it out, and the database loops only take
+ * active and paused channels (lib/channel-auth.ts `activeChannels`). A channel whose folder is gone from the repo
+ * while other channels' remain is skipped too (`inRepo`), even while its row is still active.
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 
 const REPO = path.resolve(import.meta.dirname, "..", "..");
+/** Channel #1 (deleted 2026-11-23), by id: a few rules keyed on "channel #1's old rows" (its env token, covers set
+ * before the cover mark) must not move to whichever channel is the layout's default now. */
+export const CHANNEL_ONE = "paisa-panchayat";
 const SLUG = /^[a-z0-9][a-z0-9-]{1,40}$/;
 
 const LayoutSchema = z.object({ default: z.string().regex(SLUG), map: z.record(z.string(), z.string()) });
@@ -63,13 +71,64 @@ export function cpath(root: string, ...segments: string[]): string {
   return path.join(root, crel(segments.join("/"), root));
 }
 
-/** Every channel with a folder, else just the default (before the move). */
+/** Absolute path of a file in one channel's video folder, e.g. its timeline.json. Workers that loop over
+ * every channel (stats, publish) don't set `CHANNEL`, so they must name the channel: `cpath` alone
+ * would look in the default channel's folder for every channel's video. */
+export function videoFile(root: string, slug: string, videoId: string, name: string): string {
+  return path.join(root, crel(`videos/${videoId}/${name}`, root, slug));
+}
+
+/** Channels the database says are being deleted, learnt by a worker before config/channels.json catches up. */
+const deletingFromDb = new Set<string>();
+export function markDeleting(slugs: Iterable<string>): void {
+  for (const s of slugs) deletingFromDb.add(s);
+}
+
+/** Channels being deleted: config/channels.json's status "deleting" (or "deleted"), plus any `markDeleting` named. */
+export function deletingChannels(root: string = REPO): Set<string> {
+  const out = new Set(deletingFromDb);
+  try {
+    const j = JSON.parse(readFileSync(path.join(root, "config", "channels.json"), "utf8")) as { channels?: Record<string, { status?: string }> };
+    for (const [slug, c] of Object.entries(j.channels ?? {})) if (c?.status === "deleting" || c?.status === "deleted") out.add(slug);
+  } catch { /* no file yet */ }
+  return out;
+}
+
+/** Every channel with a folder (minus channels being deleted), else just the default (before the move). */
 export function allChannels(root: string = REPO): string[] {
   const base = path.join(root, "channels");
+  const gone = deletingChannels(root);
   const found = existsSync(base)
-    ? readdirSync(base).filter((n) => SLUG.test(n) && statSync(path.join(base, n)).isDirectory()).sort()
+    ? readdirSync(base).filter((n) => SLUG.test(n) && !gone.has(n) && statSync(path.join(base, n)).isDirectory()).sort()
     : [];
   return found.length ? found : [layout(root).default];
+}
+
+/** Every channels/<slug>/ folder in the repo (deleted ones included while their folder is still there). */
+export function channelFolders(root: string = REPO): Set<string> {
+  const base = path.join(root, "channels");
+  if (!existsSync(base)) return new Set();
+  return new Set(readdirSync(base).filter((n) => SLUG.test(n) && statSync(path.join(base, n)).isDirectory()));
+}
+
+/**
+ * Whether a channel is still in the repo: it has a channels/<slug>/ folder, or no channel has one yet (before the
+ * multi-channel move). A Channel row still active or paused whose folder is gone while others' remain (2026-11-23:
+ * Paisa Panchayat and Going Down were removed from the repo before the owner pressed Delete) is not live: no
+ * uploads, no ingest, no stats, no routine entry for it.
+ */
+export function inRepo(slug: string, root: string = REPO, folders: Set<string> = channelFolders(root)): boolean {
+  return folders.size === 0 || folders.has(slug);
+}
+
+/** The rows of the channels still in the repo (`inRepo`), in their order; the others are logged once and dropped. */
+export function liveInRepo<T extends { id: string }>(rows: T[], root: string = REPO): T[] {
+  const folders = channelFolders(root);
+  return rows.filter((r) => {
+    if (inRepo(r.id, root, folders)) return true;
+    console.log(`::notice::${r.id} has no channels/${r.id}/ folder in the repo: skipped (press Delete channel on the dashboard to remove it).`);
+    return false;
+  });
 }
 
 /** A channel's pack values the workers need (channels/<slug>/channel.json, generator/pack.py); channel #1's without one. */

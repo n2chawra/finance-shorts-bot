@@ -1,0 +1,119 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61873,
+  "duration_sec": 44,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "dossier",
+    "key": "A",
+    "bpm": 82
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Toyota could sell a car to anyone, except the people who bought a Mercedes.",
+        "start": 0.3,
+        "seconds": 2.99,
+        "window": 3.67,
+        "fill": 0.815
+      },
+      {
+        "scene": "leaving",
+        "text": "Its own best customers got richer, and traded up to Mercedes and BMW.",
+        "start": 3.97,
+        "seconds": 3.41,
+        "window": 4.07,
+        "fill": 0.838
+      },
+      {
+        "scene": "secret",
+        "text": "So in 1984, Toyota started a secret project: a luxury car to win them back.",
+        "start": 8.03,
+        "seconds": 4.08,
+        "window": 4.73,
+        "fill": 0.863
+      },
+      {
+        "scene": "testing",
+        "text": "Its engineers drove test cars more than 3.5M kilometres.",
+        "start": 12.77,
+        "seconds": 3.09,
+        "window": 3.77,
+        "fill": 0.82
+      },
+      {
+        "scene": "cost",
+        "text": "Jalopnik puts the bill at about $1B. So would a Mercedes buyer ever pay that kind of money for a Toyota?",
+        "start": 16.53,
+        "seconds": 5.16,
+        "window": 5.8,
+        "fill": 0.89
+      },
+      {
+        "scene": "turn",
+        "text": "Toyota left its own name off. Six years on, it opened Lexus in America, at $35,000 a car.",
+        "start": 22.33,
+        "seconds": 5.43,
+        "window": 6.07,
+        "fill": 0.895
+      },
+      {
+        "scene": "forecast",
+        "text": "By the end of that year, Lexus had hit its forecast of 16,000 cars.",
+        "start": 28.4,
+        "seconds": 3.28,
+        "window": 3.97,
+        "fill": 0.826
+      },
+      {
+        "scene": "payoff",
+        "text": "Behind that one car, Toyota had built about 450 prototypes, before anyone had heard the name Lexus.",
+        "start": 32.37,
+        "seconds": 5.04,
+        "window": 5.7,
+        "fill": 0.884
+      },
+      {
+        "scene": "ending",
+        "text": "Lexus or Mercedes: which badge would you park outside? Either way, the Lexus was built by Toyota.",
+        "start": 38.07,
+        "seconds": 4.62,
+        "window": 5.27,
+        "fill": 0.877
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.6,
+    "lufs": -15.6,
+    "music_under_voice_db": 18.2
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 13.448,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

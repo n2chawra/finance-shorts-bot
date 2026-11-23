@@ -1,0 +1,521 @@
+{
+  "id": "v-20261122-12",
+  "createdAt": "2026-11-22T00:17:17.883076+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "What if all of Antarctica's ice melted?",
+    "category": "climate",
+    "reach": "global",
+    "feed_id": "2026-11-17-what-if-antarctica-melted",
+    "map_answer": "new coastlines drawn on the world map: the sea moving inland over the low places (the Netherlands, Bangladesh, Florida) as Antarctica's ice turns to water"
+  },
+  "title": "Antarctica melts. Which countries vanish first?",
+  "description": "What if every bit of ice on Antarctica melted away?\nAntarctica, the Netherlands, Bangladesh and Florida, with the new coastlines on the map, as a thought experiment.\nSources: National Snow and Ice Data Center (Jan 2024). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#Antarctica",
+    "#Geography",
+    "#Maps",
+    "#SeaLevel"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Netherlands or Florida: which new coastline surprised you more? Comment",
+  "seed": 70213,
+  "style": {
+    "palette": "sky",
+    "genre": "atlas",
+    "key": "F",
+    "bpm": 88,
+    "look": {
+      "stage": "space",
+      "header": "strip",
+      "holder": "box",
+      "entrance": "pop"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Antarctica's ice melts, all of it. Which countries vanish from the map first?",
+        "start": 0.3,
+        "seconds": 3.4,
+        "window": 4.03,
+        "fill": 0.844
+      },
+      {
+        "scene": "ice",
+        "text": "From space, Antarctica is a whole white continent at the bottom of the world, buried under ice so thick it hides whole mountain ranges.",
+        "start": 4.33,
+        "seconds": 6.32,
+        "window": 7.0,
+        "fill": 0.903
+      },
+      {
+        "scene": "water",
+        "text": "Melt it, and all that water runs into the one ocean that touches every coast on Earth. So where does it hit first?",
+        "start": 11.33,
+        "seconds": 5.04,
+        "window": 5.63,
+        "fill": 0.895
+      },
+      {
+        "scene": "dutch",
+        "text": "Start in Europe. The Netherlands is low, flat land, and the North Sea pours in until most of it is gone, Amsterdam and Rotterdam included.",
+        "start": 16.97,
+        "seconds": 6.07,
+        "window": 6.73,
+        "fill": 0.902
+      },
+      {
+        "scene": "bengal",
+        "text": "Fly east to Bangladesh, a country of river mouths. Most of it slips under the Bay of Bengal, and the capital, Dhaka, goes with it.",
+        "start": 23.7,
+        "seconds": 5.98,
+        "window": 6.6,
+        "fill": 0.906
+      },
+      {
+        "scene": "florida",
+        "text": "Across the Atlantic, the sea closes in on Florida's long peninsula, and most of the state is under water too.",
+        "start": 30.3,
+        "seconds": 4.99,
+        "window": 5.63,
+        "fill": 0.886
+      },
+      {
+        "scene": "keep",
+        "text": "But those three keep their high ground. So which countries lose everything?",
+        "start": 35.93,
+        "seconds": 2.98,
+        "window": 3.63,
+        "fill": 0.821
+      },
+      {
+        "scene": "maldives",
+        "text": "Out in the Indian Ocean lie the Maldives, hundreds of coral islands, none much higher than a house. Every one goes under. A whole country, gone.",
+        "start": 39.57,
+        "seconds": 6.18,
+        "window": 6.83,
+        "fill": 0.905
+      },
+      {
+        "scene": "pacific",
+        "text": "Then the Pacific: Tuvalu and the Marshall Islands, whole nations built on low rings of coral, wiped off the map.",
+        "start": 46.4,
+        "seconds": 5.06,
+        "window": 5.63,
+        "fill": 0.899
+      },
+      {
+        "scene": "payoff",
+        "text": "All because the sea would stand about 58 m higher than it does today, and their highest ground is nowhere near that.",
+        "start": 52.03,
+        "seconds": 5.11,
+        "window": 5.77,
+        "fill": 0.886
+      },
+      {
+        "scene": "loop",
+        "text": "Netherlands or Florida: which new coastline surprised you more? Tell me below, before Antarctica's ice melts, all of it.",
+        "start": 57.8,
+        "seconds": 5.49,
+        "window": 6.13,
+        "fill": 0.896
+      }
+    ]
+  },
+  "durationSec": 64,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9,
+    "lufs": -14.7,
+    "music_under_voice_db": 31.7
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "1 figures computed from inputs; 1 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of 3 extended lines: Amsterdam (about -2 to +2 m) and Rotterdam (much of it below sea level, lowest about -6 m) and Dhaka (about 4-15 m above sea level, Britannica/World Bank range) all lie far below a 58 m rise (NSIDC), so 'Amsterdam and Rotterdam included' and 'Dhaka goes with it' are true; water line adds only a question. Earlier checks stand."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: every beat is directed on the map (11 places). The water now visibly fills the Netherlands, Bangladesh and Florida. The payoff's 58 m sign stands on a gauge at the Maldives, with no box and clear of the captions. The first frame names Antarctica, the loop returns to it, and the closing question is a pick-one. 64 s, layout clean, audio -1/-15.9 dB, disclaimer in the description."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-21T23:46:46.314660+00:00",
+      "finishedAt": "2026-11-21T23:46:46.314660+00:00",
+      "notes": [
+        "title 'What if every country had the same population?' has no money figure and no famous name: put the biggest figure or the famous person or company in it (\"Why Google pays Apple $20B…\"), unless `arms.title` is \"plain\""
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:46:50.430816+00:00",
+      "finishedAt": "2026-11-21T23:46:50.430816+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:47:15.594033+00:00",
+      "finishedAt": "2026-11-21T23:47:15.594033+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T23:47:58.419178+00:00",
+      "finishedAt": "2026-11-21T23:47:58.419178+00:00",
+      "notes": [
+        "beat 'tuvalu': params.camera key at 'people' is not one of this beat's events",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:48:13.911571+00:00",
+      "finishedAt": "2026-11-21T23:48:13.911571+00:00",
+      "notes": [
+        "26 figures computed from inputs; 26 cross-checked against closed-form formulas.",
+        "warning: beat 'even' runs 11.4 s with 4.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'india' runs 9.3 s with 4.8 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'payoff' runs 7.1 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:49:16.314783+00:00",
+      "finishedAt": "2026-11-21T23:49:16.314783+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T23:50:28.640288+00:00",
+      "finishedAt": "2026-11-21T23:50:28.640288+00:00",
+      "notes": [
+        "beat 'florida'.events.florida: no word 'Florida' in this beat's spoken line",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T23:50:34.296146+00:00",
+      "finishedAt": "2026-11-21T23:50:34.296146+00:00",
+      "notes": [
+        "beat 'maldives': params.camera key at 'islands' is not one of this beat's events",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T23:50:39.247420+00:00",
+      "finishedAt": "2026-11-21T23:50:39.247420+00:00",
+      "notes": [
+        "beat 'pacific': params.camera key at 'map' is not one of this beat's events",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-21T23:50:44.451714+00:00",
+      "finishedAt": "2026-11-21T23:50:44.451714+00:00",
+      "notes": [
+        "beat 'loop'.events.antarctica: no word 'Antarctica' in this beat's spoken line",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:50:50.659437+00:00",
+      "finishedAt": "2026-11-21T23:50:50.659437+00:00",
+      "notes": [
+        "1 figures computed from inputs; 1 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:51:22.964753+00:00",
+      "finishedAt": "2026-11-21T23:51:22.964753+00:00",
+      "notes": [
+        "1 figures computed from inputs; 1 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-21T23:51:52.737034+00:00",
+      "finishedAt": "2026-11-21T23:51:52.737034+00:00",
+      "notes": [
+        "facts[0] / payoff beat ('about {fact1}' = 60 m): the cited source (nsidc.org/learn/parts-cryosphere/ice-sheets, fetched 2026-11-21) says 'If the entire Antarctic Ice Sheet melted, sea level would rise about 58 meters (190 feet)'. Value 60 does not match the source; web search also gives 58 m (Al Jazeera 57 m), no source found for 60. Fix: set the fact value to 58 (unit m, NSIDC) in topics.json and script.json; the line 'about fifty-eight metres' then stands.",
+        "Note for the rewrite (not a separate failure): florida beat/moment 'only a thin strip in the north is left' is loose: at ~58 m most of the peninsula goes, but the high central ridge (to ~95 m) and parts of the panhandle stay. 'most of the state is under water' is right; consider 'shrinks to its northern hills and a few ridge islands' or keep the line vague. Rest checked and fine: ice beat (new line, no Europe claim; hidden mountain ranges e.g. Gamburtsev true), Netherlands/Bangladesh mostly below 58 m, Maldives (highest ~2.4 m), Tuvalu (~4.6 m), Marshall Islands (~10 m); description ends with the channel disclaimer; no advice, tone fine."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:52:14.122442+00:00",
+      "finishedAt": "2026-11-21T23:52:14.122442+00:00",
+      "notes": [
+        "1 figures computed from inputs; 1 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:52:26.379869+00:00",
+      "finishedAt": "2026-11-21T23:52:26.379869+00:00",
+      "notes": [
+        "Re-review: fact1 now 58 m, matches NSIDC ice-sheets page ('about 58 meters (190 feet)', fetched 2026-11-21) in script and topics.json; Florida line/moment reworded to the sea closing in with a few patches of high ground left (accurate); ice line (no Europe claim) true; NL/Bangladesh mostly below 58 m, Maldives/Tuvalu/Marshall Islands far below; description ends with channel disclaimer; no advice, tone fine."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:55:07.707529+00:00",
+      "finishedAt": "2026-11-21T23:55:07.707529+00:00",
+      "notes": [
+        "1 figures computed from inputs; 1 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:55:49.593628+00:00",
+      "finishedAt": "2026-11-21T23:55:49.593628+00:00",
+      "notes": [
+        "Re-review of 3 extended lines: Amsterdam (about -2 to +2 m) and Rotterdam (much of it below sea level, lowest about -6 m) and Dhaka (about 4-15 m above sea level, Britannica/World Bank range) all lie far below a 58 m rise (NSIDC), so 'Amsterdam and Rotterdam included' and 'Dhaka goes with it' are true; water line adds only a question. Earlier checks stand."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:55:40.307261+00:00",
+      "finishedAt": "2026-11-21T23:56:53.896532+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-21T23:57:26.395155+00:00",
+      "finishedAt": "2026-11-21T23:58:19.633241+00:00",
+      "notes": [
+        "text 'ANTARCTICA' at 2.8 s reaches 1947 px, inside the bottom 120 px",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:58:24.929331+00:00",
+      "finishedAt": "2026-11-21T23:59:16.807480+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-21T23:59:31.292712+00:00",
+      "finishedAt": "2026-11-22T00:00:24.499425+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:00:39.700994+00:00",
+      "finishedAt": "2026-11-22T00:01:33.909314+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:01:48.168888+00:00",
+      "finishedAt": "2026-11-22T00:02:40.315674+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:02:49.155057+00:00",
+      "finishedAt": "2026-11-22T00:03:45.598509+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:04:43.974815+00:00",
+      "finishedAt": "2026-11-22T00:04:43.974815+00:00",
+      "notes": [
+        "[script] 55.0s payoff (beat payoff, place 'the world with its new coastlines, a sea gauge at the Maldives'): the world map is buried under one big flat translucent blue rectangle with a ruler down the middle and a '58 m' signboard; no new coastline and no Maldives are visible, so the payoff is a slide over a dimmed map rather than the answer drawn on the map (lesson 1). Show the flooded coastlines (Netherlands, Bangladesh, Florida gone, the island nations gone), with the gauge standing on the Maldives.",
+        "[script] 20.0s dutch and 25.0s bengal: the Netherlands is lit orange (with a tangle of overlapping windmills) and Bangladesh is lit green with a flag. Neither shows the sea coming in, though the lines say 'the North Sea pours in until most of it is gone' and 'most of it slips under the Bay of Bengal'. Only Florida (35.0s) is drawn under water. The flood is the video's whole answer, so each of these beats needs the water to fill the land on its words ('pours', 'slips under').",
+        "[scene] 40.0s maldives (component Maldives): the Maldives islands are drawn as a single vertical stack of palm-tree islands sitting on top of each other, which looks like a glitch. At 45.0s the 'HOUSE' label sits right on top of the 'MALDIVES' label, and the house and gauge float in a hard-edged translucent rectangle that is off to the side of the islands. Spread the atolls down their real chain, put the house and gauge on one island, and keep the labels apart.",
+        "[script] 10.0s ice: the ICE/ROCK cross-section is a floating card over the ocean, and the line's 'hides whole mountain ranges' moment (peaks under the ice) is not visible. Draw the cut-away on the continent itself, with the peaks under the dome."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:06:09.060328+00:00",
+      "finishedAt": "2026-11-22T00:07:01.927094+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:07:15.203213+00:00",
+      "finishedAt": "2026-11-22T00:08:10.787610+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T00:08:50.736525+00:00",
+      "finishedAt": "2026-11-22T00:08:50.736525+00:00",
+      "notes": [
+        "[scene] 55.0s and 55.8s payoff (component Payoff): a hard-edged translucent blue rectangle still sits over the whole of India and the Arabian Sea behind the gauge. It is smaller than before but still reads as a box pasted on the map; the rising water should fill only the sea, or the gauge itself.",
+        "[scene] 55.0s and 55.8s payoff: the '58 m' signboard's post ends in mid-air over Afghanistan and western China, about 230 px above the top of the gauge, which stands in the sea south of India. The sign should stand on the gauge at the Maldives, not float over unrelated countries.",
+        "[scene] 55.8s payoff: the 'ISLAND' label (y ~1375) sits right on top of the caption 'and their highest ground' (y ~1450). Move the island and its label up, clear of the captions. Re-check after the pull-back that the Netherlands and Florida are drawn under the new sea as well."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:09:19.105155+00:00",
+      "finishedAt": "2026-11-22T00:10:12.482755+00:00",
+      "notes": [
+        "64 s, sky/atlas (preview only)",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:10:26.094314+00:00",
+      "finishedAt": "2026-11-22T00:10:26.094314+00:00",
+      "notes": [
+        "Round 3: every beat is directed on the map (11 places). The water now visibly fills the Netherlands, Bangladesh and Florida. The payoff's 58 m sign stands on a gauge at the Maldives, with no box and clear of the captions. The first frame names Antarctica, the loop returns to it, and the closing question is a pick-one. 64 s, layout clean, audio -1/-15.9 dB, disclaimer in the description."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:10:58.676003+00:00",
+      "finishedAt": "2026-11-22T00:17:06.171937+00:00",
+      "notes": [
+        "64 s, sky/atlas, peak -1.0 dB, mean -15.9 dB",
+        "note: four shots in a row open wide (from 'florida'): vary the shot size",
+        "note: the first figure appears at 51.7 s; one by 9 s"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-22T00:17:17.883458+00:00",
+      "finishedAt": "2026-11-22T00:17:17.883458+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261122-12",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261122-12"
+  }
+}

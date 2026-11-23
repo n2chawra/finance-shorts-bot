@@ -174,7 +174,7 @@ function ChannelSwitcher({ onNavigate, compact = false }: { onNavigate?: () => v
   const { data, current, brand } = useCurrentChannel();
   const switchTo = useSwitchChannel();
   const router = useRouter();
-  // the browser tab names the channel on screen (it said "Paisa Panchayat" on every channel)
+  // the browser tab names the channel on screen (it once said the first channel's name on every channel)
   useEffect(() => { if (current && !compact) document.title = `${brand.name} · Studio`; }, [current, brand.name, compact]);
   return (
     <DropdownMenu.Root modal={false}>
@@ -195,7 +195,7 @@ function ChannelSwitcher({ onNavigate, compact = false }: { onNavigate?: () => v
       <DropdownMenu.Portal>
         <DropdownMenu.Content align="start" sideOffset={6} collisionPadding={8} className="z-50 w-[248px] animate-pop rounded-xl border border-ring bg-surface p-1 shadow-pop">
           <DropdownMenu.Label className="px-2 py-1.5 text-[11px] font-medium text-muted">Channels</DropdownMenu.Label>
-          {(data?.channels ?? []).map((c) => {
+          {(data?.channels ?? []).filter((c) => c.status !== "deleting").map((c) => {
             const b = channelBrand(c.id, c.name);
             return (
               <DropdownMenu.Item key={c.id} onSelect={() => { if (c.id !== data?.current) switchTo(c.id); onNavigate?.(); }}

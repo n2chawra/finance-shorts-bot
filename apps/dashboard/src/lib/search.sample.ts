@@ -1,8 +1,7 @@
 import { matches, type SearchResult } from "./search";
 
-/** Sample search data (no database): four channels with a few videos each. */
+/** Sample search data (no database): three channels with a few videos each. */
 const channels = [
-  { id: "paisa-panchayat", name: "Paisa Panchayat", status: "active" },
   { id: "geography-maps-geopolitical-mysteries", name: "The Why Atlas", status: "active" },
   { id: "how-tech-and-ai-actually-work-chips-ai-p", name: "A Billion Switches", status: "active" },
   { id: "business-documentaries-rise-and-fall-of", name: "Craze & Crash", status: "active" },
@@ -12,10 +11,6 @@ const v = (id: string, title: string, status: string, channelId: string, views: 
   ({ id, title, status, format, channelId, channelName: name(channelId), views });
 
 const videos = [
-  v("v-20261118-01", "Why a $5 Costco hot dog never went up in price", "published", "paisa-panchayat", 1190),
-  v("v-20261118-02", "What Netflix makes on your monthly plan", "published", "paisa-panchayat", 842),
-  v("v-20261119-01", "How much a Taylor Swift ticket really pays her", "queued", "paisa-panchayat", null),
-  v("L-20261118-01", "The full story of the Costco hot dog", "scheduled", "paisa-panchayat", null, "long"),
   v("v-20261117-01", "Why the Suez Canal can't be widened", "published", "geography-maps-geopolitical-mysteries", 5320),
   v("v-20261118-03", "Why Russia has eleven time zones", "published", "geography-maps-geopolitical-mysteries", 2210),
   v("v-20261119-02", "Why Bolivia has a navy but no sea", "queued", "geography-maps-geopolitical-mysteries", null),

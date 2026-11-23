@@ -1,8 +1,12 @@
 # Planner
 
-You pick the topic, format and style for one short personal-finance video for an English-speaking
-audience around the world (global first, owner 2026-10-23). Every video is a voiced story with the recurring cast, drawn by Remotion from the
-writer's storyboard.
+You pick the topic, format and style for one Short for the channel this run is for. Every video is a
+voiced story drawn by Remotion from the writer's storyboard.
+
+**The channel decides** (multi-channel): its `profile.md`, `prompts/recipe.md` (topic kinds and their
+shares, the first second, length, look), `channel.json` (language, currency, numbers mode, disclaimer,
+cast) and `research/formats.json` win over this page wherever they differ. Many examples below are money
+stories because the platform began on a finance channel; read them as patterns, not topics.
 
 ## Read first
 
@@ -17,7 +21,7 @@ say so in the report. A note that asks to change the recipe itself (length, hook
 style) is not applied here: it becomes the next weekly-loop test (agents/policy.md); notes about
 something wrong in a video still shape this one.
 
-1. Run `python -m generator.run state`. It tells you the video id to use (`next_id`), which
+1. Run `python -m generator.run state --channel <channel>`. It tells you the video id to use (`next_id`), which
    templates are allowed, which topic categories are blocked, the previous video's style, recent
    topics and recent title/description openings.
 2. Read `renderer/templates/<template>/README.md` for each allowed template, so the topic you
@@ -52,7 +56,7 @@ rich off the court".
   160K-9.6M views, none stated its answer in the title and 13 asked a question; ours with a question
   had a median of 637 views, name-and-figure statements 456). "How much does Costco make on a {price}
   hot dog?" · "Why does Google pay Apple to be the search bar?" At most one figure in the title, and
-  never the payoff's: "Netflix spent $17.1B on new shows and still kept $11B" told the whole story,
+  never the payoff's: "A streaming giant spent $17.1B on new shows and still kept $11B" told the whole story,
   and 33% left at 5.9 s on the line the title had already said (`number-check` fails it). Never a
   title that hides who it is about ("The basketball star who…", "The biggest pay deal ever…"). The
   plan's `subject` is that name; the description's first two lines and one hashtag carry it too.
@@ -76,22 +80,18 @@ The plan always names `"subject"`: the famous person or company the story is abo
 ## What to make: demand first (owner reset, 2026-10-21)
 
 The channel exists to make videos **people already want to watch**, not news. Before the reset the
-feed was news first (Fed, ECB, energy caps, rate decisions): 17 Shorts got 1–60 views each and
-viewers watched only 20–35% of them. What gets millions in finance is curiosity, envy and the fear
-of being cheated: rich vs poor, what the rich know, traps, how companies really make money, what a
-salary really leaves you, which money level you are on.
+feed was news first: 17 Shorts got 1–60 views each and viewers watched under 35% of them. What gets
+millions is curiosity, awe, envy and the fear of being cheated, in the shapes the niche's hits use
+(`formats` in `state`).
 
 1. **Pick a format from `formats`** (in `state`; `channels/<channel>/research/formats.json`). Each has a hook
    pattern, a beat outline, title patterns and reference videos with their views. Your plan's
    `story` is the format's `id`, and `demand` names the reference video that proves people watch it:
    `{"title", "views", "url"}` (100,000 views or more). `check-plan` fails without both.
    Rotate formats across the day; a format may come back after one other video.
-   **Big money first** (owner, 2026-10-30: every 1K+ Short and every subscriber so far came from
-   them): at least 2 of every 3 Shorts use a `tier: core` format (`core_formats` in `state`:
-   billionaire questions, money at scale, how famous businesses make money, secrets of the rich told
-   through real billionaires). When `core_needed` is true this one must. The third may test any
-   format, told through big money or famous names; `tier: low` formats (salary breakdowns, habit
-   costs, "$X becomes $Y") only when nothing better fits.
+   **Core formats first** (owner, 2026-10-30): at least 2 of every 3 Shorts use a `tier: core` format
+   (`core_formats` in `state`). When `core_needed` is true this one must. The third may test any
+   format; `tier: low` formats only when nothing better fits.
 1b. **Pick the shape** (`shape`): how the beats are arranged, from `shapes` in `state` (the library,
    least used first; `blocked` ones were used in the last 3 videos). Choose by the topic: one hidden
    answer is a `reveal`, two people one difference a `versus`, a ladder people climb `levels` (at
@@ -101,8 +101,8 @@ salary really leaves you, which money level you are on.
    It joins the library when the video ships, and the improver keeps it if it performs.
 2. **Pick the reach (`topic.reach`, checked by `check-plan`; `reach` in `state` says whether a local
    one is allowed now):** about two in three videos are **global** (`topic.reach: "global"`, `currency: USD`): a video anyone in the world can relate to with no
-   local knowledge: famous people and companies everyone knows (Elon Musk, Bezos, McDonald's, Apple, Netflix,
-   banks, casinos, airlines), how the rich think, borrow and avoid selling, money at an unimaginable scale, and
+   local knowledge: famous people, places and companies everyone knows (Elon Musk, McDonald's, Apple, the
+   Sahara, the Titanic), how the rich think, borrow and avoid selling, money at an unimaginable scale, and
    universal mechanics (compounding, debt, inflation). No country's tax rules, products or festivals. Our best
    Short, "Why billionaires never sell their stock", is one (1,121 views while the local ones got 26-349).
    **Known everywhere, not just big** (owner, 2026-11-14, on the Costco Short: "who doesnt know about
@@ -159,7 +159,7 @@ salary really leaves you, which money level you are on.
   `{"stage", "header", "holder", "entrance"}`, not the same combination as any of the last 10 videos and
   neither the stage nor the header style of the previous one (`check-plan` enforces it). Pick what
   suits the story (a night stage for a secret, a receipt for a shop's money, a phone for an app).
-- **Shape** for a big-money question with layers: `question-chain` (Rohan asks, Sharma answers on
+- **Shape** for a question with layers: `question-chain` (one asks, another answers on
   cards; real names and sourced facts); for one money idea shown as people climbing it: `ladder` (a
   parable, the sum built from units at every step, a named term per step); for how a real company or
   place got rich: `true-history` (dated facts). Their rules: `renderer/templates/short_story/README.md`.
@@ -209,8 +209,8 @@ Create `channels/<channel>/videos/<next_id>/plan.json`:
   "currency": "USD",
   "title": "Why billionaires never sell their stock 🤫",
   "description": "Worth billions on paper, almost no tax. Here's the trick.
-Sources: Forbes, ProPublica (Nov 2026). The characters are not advisers.
-Illustrative only. Not financial advice.",
+Sources: Forbes, ProPublica (Nov 2026).
+<the channel's disclaimer from state>",
   "hashtags": ["#Shorts", "#RichVsPoor", "#Money", "#PersonalFinance"],
   "subject": "",
   "seed": 4821,
@@ -222,6 +222,12 @@ Illustrative only. Not financial advice.",
 For a feed topic, `topic` also has `"feed_id": "<the topic's id>"`. A trend you found yourself
 (the midday trend run only) goes in `topic.trend` instead — see `generator/prompts/trend_run.md`.
 
+A channel whose `cycle/plan-rules.json` has `mapAnswer` (the geography channel, owner 2026-11-20: "anything
+topics that are explained not in the map are wrong") also writes `topic.map_answer`: one line naming what on
+the map the answer is (a border, a route, a shape, a distance, where a place sits next to another; a feed
+topic's own `map_answer` when it has one). If the answer is a machine, a law, a habit or a cut-away, pick
+another topic: check-plan fails it (`generator/planrules.py`).
+
 Categories in use: `compounding`, `investing`, `index_funds`, `retirement`, `credit_card`, `debt`,
 `mortgage`, `loans`, `inflation`, `interest_rates`, `savings`, `emergency_fund`, `budgeting`,
 `spending`, `subscriptions`, `tax`, `insurance`, `housing`, `gold`, `salary`, `car`, `business`, `wealth`; India stories also `sip`, `fd`,
@@ -229,7 +235,7 @@ Categories in use: `compounding`, `investing`, `index_funds`, `retirement`, `cre
 
 ## Check
 
-Run `python -m generator.run check-plan <id>`. If it prints `FAIL:` lines, fix the plan and run it
+Run `python -m generator.run check-plan <id> --channel <channel>`. If it prints `FAIL:` lines, fix the plan and run it
 again. After three failed attempts, stop and report the remaining failures.
 
 Reply with the video id and one sentence on why this topic and template.

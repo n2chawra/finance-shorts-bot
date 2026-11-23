@@ -15,7 +15,7 @@ export type Notice = {
   fix: string;
   /** A setting change the owner can approve with one click (the monthly review's proposals). */
   proposal?: { setting: string; value?: unknown; current?: unknown };
-  /** The channel it is about; null for the whole platform; left out: the column default (channel #1). */
+  /** The channel it is about; null for the whole platform; left out: the column default (the layout's default channel). */
   channelId?: string | null;
 };
 
@@ -72,7 +72,7 @@ export function workflowNotices(runs: WorkflowRun[]): { key: string; raise: Noti
   for (const r of runs) if (!latest.has(r.name)) latest.set(r.name, r);
   return [...latest.values()].map((r) => {
     const key = `workflow:${r.name}`;
-    return { key, raise: r.conclusion === "failure" ? { key, source: "watchdog", severity: "warning" as const, title: `GitHub Action "${r.name}" failed`,
+    return { key, raise: r.conclusion === "failure" ? { key, source: "watchdog", channelId: null, severity: "warning" as const, title: `GitHub Action "${r.name}" failed`,
       detail: `Its last run (${r.created_at}) failed: ${r.html_url}`,
       fix: "Open the link and read the red step. Often temporary (the next scheduled run fixes it). If it fails twice in a row, paste the log into a Claude Code session." } : null };
   });

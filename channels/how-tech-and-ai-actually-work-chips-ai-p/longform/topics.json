@@ -731,17 +731,18 @@
       "templates": [
         "long_story"
       ],
-      "angle": "A phased array: many tiny antennas fire a fraction of a second apart so the beam bends where it's needed, handing off between satellites about 550 km up instead of one 35,786 km up. Draw the cables right (viewers caught a power cable drawn as data).",
+      "angle": "A phased array: many tiny antennas fire a fraction of a second apart so the beam bends where it's needed, handing off between satellites about 480 km up instead of one 35,786 km up. Draw the cables right (viewers caught a power cable drawn as data).",
       "why_now": "First topics for the channel, from the setup research (advice.md: internet long, example title 2). Viewers asked about LEO vs GEO and the phased-array dish (comment notes #14).",
       "facts": [
         {
-          "label": "Altitude of the Starlink constellation, about",
-          "value": 550,
+          "label": "Altitude SpaceX is lowering its Starlink satellites to during 2026, about",
+          "value": 480,
           "unit": "km",
-          "as_of": "2026-11-18",
-          "source": "Starlink (Technology)",
-          "url": "https://www.starlink.com/technology",
-          "fixed": true
+          "as_of": "2026-01-01",
+          "source": "Space.com",
+          "url": "https://www.space.com/space-exploration/satellites/spacex-lowering-orbits-of-4-400-starlink-satellites-for-safetys-sake",
+          "fixed": true,
+          "note": "Studio 2026-11-23: the fact review found 550 km out of date (SpaceX moving ~4,400 satellites to ~480 km in 2026)"
         },
         {
           "label": "Altitude of a geostationary satellite above the equator",
@@ -781,7 +782,7 @@
       "search": "how does starlink work",
       "outline": [
         "hook: the dish follows satellites racing across the sky and never moves",
-        "route map: dish -> beam -> satellite at 550 km -> ground station -> internet",
+        "route map: dish -> beam -> satellite at about 480 km -> ground station -> internet",
         "ch1 the old way: a dish aimed at one satellite 35,786 km up",
         "ch2 why low is faster (computed round-trip comparison)",
         "ch3 inside the flat dish: many tiny antennas",
@@ -791,7 +792,7 @@
         "ch6 from 60 satellites in 2019 to the network now",
         "climb back out: the video loads; cables drawn right"
       ],
-      "maths": "signal round trip at 550 km vs 35,786 km at light speed",
+      "maths": "signal round trip at 480 km vs 35,786 km at light speed",
       "verify": [
         "Starlink altitude and antennas",
         "geostationary altitude",
@@ -1041,6 +1042,239 @@
       ],
       "found": "2026-11-19",
       "expires": "2027-11-19",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-23-crossrail-under-the-tube",
+      "format": "long",
+      "title": "How Do You Dig a Railway Under London Without Hitting the Tube?",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "GBP",
+      "reach": "global",
+      "demand": {
+        "title": "So You Want to Build a Tunnel...",
+        "views": 887365,
+        "url": "https://www.youtube.com/watch?v=Ssw5bdx1HKw",
+        "channel": "Practical Engineering",
+        "note": "also 'Tunnel Construction Explained' (The B1M, 795,856) and 'Tunnel Boring Machine (TBM) Explained - 3D Animation' (LifeAda, 545,269); views read from YouTube search 2026-11-23"
+      },
+      "from_short": "v-20261122-21",
+      "category": "engineering",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "search": "how do tunnel boring machines dig under cities",
+      "hook": "A new railway had to pass over the Northern line with 700 millimetres to spare. Here is the machine that did it.",
+      "angle": "Walk a Crossrail tunnel boring machine front to back (cutterhead, pressure chamber, screw and conveyor, segment erector, thrust rams), then show how it was steered between the Tube's tunnels without moving the buildings above. Arup and Crossrail figures only; the cost story stays a footnote.",
+      "why_now": "Our own breakout: the Crossrail Short (v-20261122-21) has 1,362 views, nearly 5x our next best (284). Tunnel explainers hold demand for years (Practical Engineering 887K in 9 months, The B1M 796K, LifeAda 545K).",
+      "outline": [
+        "hook: a train tunnel threaded 700 mm above the Northern line, under 17,000 buildings that must not move",
+        "route map: walk the 150 m machine from the spinning wheel at the front to the rams at the back",
+        "ch1 the cutterhead: a 7.1 m steel wheel chewing London clay (picture: the wheel face, cutters lit)",
+        "ch2 why the ground doesn't cave in: the sealed chamber of dug clay that pushes back (the causal step; draw the pressure arrows)",
+        "ch3 where 7 million tonnes went: screw, conveyor, out to Wallasea Island (computed: tonnes per km)",
+        "recap and tease: it digs and holds the ground; now it has to build the tunnel behind itself",
+        "ch4 the erector arm bolting concrete segments into a ring, then pushing off it to creep forward",
+        "ch5 eight machines in pairs, 42 km of tunnel (computed: 42 / 8 per machine)",
+        "ch6 the hardest stretch, strongest last: Tottenham Court Road, over the Northern line with 700 mm to spare, every building watched",
+        "end: the line opens 24 May 2022; loop to the wheel at the front"
+      ],
+      "maths": "tonnes of spoil per km of tunnel (7,000,000 / 42); km dug per machine (42 / 8); the 700 mm gap against the 7.1 m tunnel as a share",
+      "verify": [
+        "150 m machines, 7.1 m diameter, 42 km of tunnels (Arup)",
+        "700 mm between Elizabeth and Northern line tunnels at Tottenham Court Road (Arup)",
+        "over 17,000 assets assessed for ground movement (Arup)",
+        "8 TBMs, nearly 1,000 tonnes each, about 7 million tonnes excavated, central section opened 24 May 2022 (Wikipedia, cross-check Crossrail Learning Legacy)",
+        "the pressure-balance chamber described correctly for London clay (earth pressure balance machines)"
+      ],
+      "facts": [
+        {
+          "label": "Length of each Crossrail tunnel boring machine, in metres",
+          "value": 150,
+          "unit": "count",
+          "as_of": "2026-11-23",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Diameter of the railway tunnels, in metres",
+          "value": 7.1,
+          "unit": "count",
+          "as_of": "2026-11-23",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Kilometres of new tunnels under central London",
+          "value": 42,
+          "unit": "km",
+          "as_of": "2026-11-23",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Millimetres between the Elizabeth line and Northern line tunnels at Tottenham Court Road",
+          "value": 700,
+          "unit": "count",
+          "as_of": "2026-11-23",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Buildings, railways and utilities assessed for ground movement, over",
+          "value": 17000,
+          "unit": "count",
+          "as_of": "2026-11-23",
+          "source": "Arup",
+          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+          "fixed": true
+        },
+        {
+          "label": "Tunnel boring machines that dug the Crossrail tunnels",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2026-11-23",
+          "source": "Wikipedia (Crossrail)",
+          "url": "https://en.wikipedia.org/wiki/Crossrail",
+          "fixed": true
+        },
+        {
+          "label": "Material excavated, about, in millions of tonnes",
+          "value": 7,
+          "unit": "count_million",
+          "as_of": "2026-11-23",
+          "source": "Wikipedia (Crossrail)",
+          "url": "https://en.wikipedia.org/wiki/Crossrail",
+          "fixed": true
+        },
+        {
+          "label": "Year the Elizabeth line's central section opened",
+          "value": 2022,
+          "unit": "year",
+          "as_of": "2022-05-24",
+          "source": "Wikipedia (Crossrail)",
+          "url": "https://en.wikipedia.org/wiki/Crossrail",
+          "fixed": true
+        }
+      ],
+      "sources": [
+        "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+        "https://en.wikipedia.org/wiki/Crossrail",
+        "https://learninglegacy.crossrail.co.uk/wp-content/uploads/2017/04/Machine-driven-tunnels-on-the-Elizabeth-line-London.pdf"
+      ],
+      "found": "2026-11-23",
+      "expires": "2027-11-23",
+      "status": "new"
+    },
+    {
+      "id": "2026-11-23-tap-to-pay-inside",
+      "format": "long",
+      "title": "What Happens Inside Your Card When You Tap to Pay?",
+      "stories": [
+        "inside_when_you"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "How does Tap to Pay Work?",
+        "views": 769367,
+        "url": "https://www.youtube.com/watch?v=N_6k_jd5pnA",
+        "channel": "Branch Education",
+        "channelSubs": 2780000,
+        "outlier": 1.2
+      },
+      "category": "gadgets",
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "long_story"
+      ],
+      "search": "how does tap to pay work",
+      "hook": "Your card has no battery. Held 4 centimetres from a reader, it wakes up, does cryptography and answers in a blink. Here's how.",
+      "angle": "Follow one tap: the reader's 13.56 MHz field powers the card's coil by induction, the chip wakes, the two talk at 106 kbit/s, the chip signs a one-time code, the network approves. Technology only: no buying advice, no security bypass.",
+      "why_now": "Everyone does this daily and Visa says more than 80% of its face-to-face payments worldwide are now taps; Branch Education's version has 769K in two months. Pairs with the Face ID topic as a second everyday gadget video.",
+      "outline": [
+        "hook: no battery, 4 cm, a blink",
+        "route map: the reader -> the field -> the coil in the card -> the chip -> the one-time code -> the network",
+        "ch1 the reader's field: 13.56 MHz, drawn as the field lines around two coils (the picture the video hangs on)",
+        "ch2 why it needs 4 cm: induction falls away fast with distance (the causal step)",
+        "ch3 the card wakes: the coil turns the field into power for the chip",
+        "recap and tease: the card is on; now it has to prove it's real",
+        "ch4 the conversation: 106 kbit/s, the reader asks, the chip answers (computed: bytes moved in the tap)",
+        "ch5 the one-time code: why a copied tap can't be replayed (no bypass detail)",
+        "ch6 strongest last: the trip to the network and back before you lift your hand; more than 80% of Visa's in-person payments now work this way",
+        "loop: the hand comes back to the reader"
+      ],
+      "maths": "bits moved at 106 kbit/s in a fraction of a second; wavelength of 13.56 MHz against the 4 cm range (why it's near-field)",
+      "verify": [
+        "13.56 MHz, 4 cm or less, 106 kbit/s base rate (ISO/IEC 14443 / NFC)",
+        "passive card powered by the reader's field (inductive coupling)",
+        "Visa: tap-to-pay over 80% of face-to-face transactions globally (Q1 FY2026 call); check for a newer figure (a Q4 FY2026 report says nearly 85%)",
+        "the one-time cryptogram described at the level EMVCo publishes, nothing more"
+      ],
+      "facts": [
+        {
+          "label": "Frequency an NFC reader and card talk on, in megahertz",
+          "value": 13.56,
+          "unit": "count",
+          "as_of": "2026-11-23",
+          "source": "Wikipedia (Near-field communication)",
+          "url": "https://en.wikipedia.org/wiki/Near-field_communication",
+          "fixed": true
+        },
+        {
+          "label": "Distance NFC works over, at most, in centimetres",
+          "value": 4,
+          "unit": "count",
+          "as_of": "2026-11-23",
+          "source": "Wikipedia (Near-field communication)",
+          "url": "https://en.wikipedia.org/wiki/Near-field_communication",
+          "fixed": true
+        },
+        {
+          "label": "Base NFC data rate, in kilobits per second",
+          "value": 106,
+          "unit": "count",
+          "as_of": "2026-11-23",
+          "source": "Wikipedia (Near-field communication)",
+          "url": "https://en.wikipedia.org/wiki/Near-field_communication",
+          "fixed": true
+        },
+        {
+          "label": "Year the NFC Forum was founded",
+          "value": 2004,
+          "unit": "year",
+          "as_of": "2004-03-18",
+          "source": "Wikipedia (Near-field communication)",
+          "url": "https://en.wikipedia.org/wiki/Near-field_communication",
+          "fixed": true
+        },
+        {
+          "label": "Share of Visa face-to-face transactions worldwide that are tap to pay, over",
+          "value": 80,
+          "unit": "percent",
+          "as_of": "2026-01-29",
+          "source": "Visa (Q1 FY2026 earnings call)",
+          "url": "https://s1.q4cdn.com/050606653/files/doc_financials/2026/q1/CORRECTED-TRANSCRIPT_-Visa-Inc-V-US-Q1-2026-Earnings-Call-29-January-2026-5_00-PM-ET.pdf",
+          "latest": true,
+          "checked": "2026-11-23"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Near-field_communication",
+        "https://s1.q4cdn.com/050606653/files/doc_financials/2026/q1/CORRECTED-TRANSCRIPT_-Visa-Inc-V-US-Q1-2026-Earnings-Call-29-January-2026-5_00-PM-ET.pdf",
+        "https://www.pymnts.com/visa/2025/visa-tap-to-pay-tops-76-percent-of-face-to-face-transactions-globally/"
+      ],
+      "found": "2026-11-23",
+      "expires": "2027-11-23",
       "status": "new"
     }
   ]

@@ -8,6 +8,14 @@
       "to": "1.0 (about 164 words a minute; generator/pack.py OWNER_PACE until channel.json says the same)",
       "why": "owner note 2026-11-19: 'Just increase the pace a little bit'",
       "by": "improver"
+    },
+    {
+      "at": "2026-11-21T17:45:00Z",
+      "what": "sound: soft automatic effects on a directed beat's moments and camera moves",
+      "from": "only the effects the script named",
+      "to": "up to 2 a beat, 0.8 s apart, from the channel's own effects list, picked by what the moment does (pop/pin on things appearing, a swish on moves, a thud on stamps, a tick on counters, a scribble on lines; renderer/timeline/build.py directed_cues); the channel's per-minute cap still applies",
+      "why": "geography owner note 2026-11-20 (cmwoj49a); directed beats had no automatic cues since 2026-11-13",
+      "by": "improver"
     }
   ]
 }

@@ -44,11 +44,23 @@ MAX_OPEN = 30       # at most this many open topics per feed; the lowest scores 
 AGE_PENALTY = 0.03  # score lost per day since found (a 21-day-old topic loses 0.63, about a 4x smaller reference)
 
 
-def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+def _read(root: Path, fmt: str) -> list[dict]:
     path = cpath(root, FILES[fmt])
     if not path.is_file():
         return []
     return [t for t in json.loads(path.read_text(encoding="utf-8")).get("topics", []) if isinstance(t, dict) and t.get("id")]
+
+
+def load(root: Path = ROOT, fmt: str = "short") -> list[dict]:
+    """A format's feed. The long feed also offers the research feed's `"format": "long"` topics (2026-11-22: the
+    new channels' setups put 13-18 sourced long topics there, while Studio's state read only longform/topics.json,
+    which held one; research proposals long-topics-feed-gap and dd-research-topics-format-long). Scout's entry
+    wins when both have the same id."""
+    own = _read(root, fmt)
+    if fmt != "long":
+        return own
+    ids = {t["id"] for t in own}
+    return own + [t for t in _read(root, "short") if t.get("format") == "long" and t["id"] not in ids]
 
 
 def get(feed_id: str, root: Path = ROOT, fmt: str | None = None) -> dict | None:
@@ -128,6 +140,30 @@ def breakout_of(demand) -> float | None:
     return None
 
 
+# Traction (owner, 2026-11-19, on the tech channel: "choose topics which are gaining traction"; proposal
+# tech-topic-traction-score): a reference that is rising now (views a day, research's demand.viewsPerDay and
+# demand.ageDays) lifts its topic, on a log scale; a reference over a month old counts less, over 90 days not
+# at all. Topics without the fields score as before.
+TRACTION = [(1_000, 0.0), (10_000, 0.3), (100_000, 0.7), (300_000, 1.0)]
+TRACTION_FRESH, TRACTION_STALE = 30, 90
+
+
+def traction(demand: dict | None) -> float:
+    import math
+    d = demand or {}
+    vpd, age = d.get("viewsPerDay"), d.get("ageDays")
+    if not isinstance(vpd, (int, float)) or not isinstance(age, (int, float)) or vpd <= TRACTION[0][0] or age >= TRACTION_STALE:
+        return 0.0
+    x = math.log10(vpd)
+    value = TRACTION[-1][1]
+    for (a, va), (b, vb) in zip(TRACTION, TRACTION[1:]):
+        if vpd <= b:
+            value = va + (vb - va)*(x - math.log10(a))/(math.log10(b) - math.log10(a))
+            break
+    fade = 1.0 if age <= TRACTION_FRESH else (TRACTION_STALE - age)/(TRACTION_STALE - TRACTION_FRESH)
+    return round(value*fade, 2)
+
+
 def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, float]:
     """Why a topic ranks where it does (owner, 2026-10-26: "rank on the topic too, not just views";
     "test all kinds of video"): proven demand (its reference video, capped), our own results with
@@ -140,6 +176,8 @@ def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, f
     outlier = breakout_of(topic.get("demand"))
     if outlier is not None:
         parts["breakout"] = next((b for r, b in BREAKOUT if outlier >= r), BIG_CHANNEL_PENALTY)
+    if (tr := traction(topic.get("demand"))) > 0:
+        parts["traction"] = tr
     parts["priority"] = {"breaking": 2.0, "trending": 2.0, "high": 0.4}.get(topic.get("priority") or "", 0.0)
     parts["global"] = 0.6 if topic.get("reach") == "global" else 0.0
     story = _story(topic)
@@ -235,10 +273,6 @@ def too_close(topic: dict, everything: list[dict], today: str) -> str | None:
 # such a fact and marks it `latest: true` with the day it checked (`checked`); that holds for 30 days.
 FACT_FRESH_DAYS = 365
 FACT_RECHECK_DAYS = 30
-# a long-video topic expands one of our Shorts of the last WIN_DAYS days with WIN_MIN_VIEWS+ views, in the top
-# third by stayed to watch (owner, 2026-11-12; it replaced the 2026-11-04 rule of 1,000 views)
-WIN_DAYS = 30
-WIN_MIN_VIEWS = 100
 
 
 def _day(s: object) -> date | None:
@@ -248,12 +282,31 @@ def _day(s: object) -> date | None:
         return None
 
 
+def _as_of_end(s: object) -> date | None:
+    """The last day a fact's `as_of` covers: a full date as is, "2024" as 31 Dec 2024, "2024-03" as 31 Mar,
+    "2024-Q3" as 30 Sep. Research dates 1 in 8 facts by year only, which `_day` can't read, so those were
+    never checked for a newer release (2027 would have let a "2025" annual figure through unchecked)."""
+    if (d := _day(s)) is not None:
+        return d
+    m = re.fullmatch(r"(\d{4})(?:-(?:(\d{2})|Q([1-4])))?", str(s).strip())
+    if not m:
+        return None      # "current", "FY2025": nothing to date it by
+    year, month, quarter = int(m[1]), m[2] and int(m[2]), m[3] and int(m[3])
+    if quarter:
+        month = quarter * 3
+    if not month:
+        return date(year, 12, 31)
+    if not 1 <= month <= 12:
+        return None
+    return (date(year + month // 12, month % 12 + 1, 1)) - timedelta(days=1)
+
+
 def stale_facts(topic: dict, today: str) -> list[str]:
     """Facts over a year old that research hasn't confirmed as still the latest in the last 30 days."""
     now = date.fromisoformat(today)
     out = []
     for f in topic.get("facts") or []:
-        as_of = _day(f.get("as_of"))
+        as_of = _as_of_end(f.get("as_of"))
         # a year ("hallmarking became mandatory in 2021") is history, never replaced by a newer release;
         # so is a fact research marks `fixed` (a country's area, a border's length: no yearly release)
         if as_of is None or f.get("unit") == "year" or f.get("fixed") is True or (now - as_of).days <= FACT_FRESH_DAYS:
@@ -265,52 +318,16 @@ def stale_facts(topic: dict, today: str) -> list[str]:
     return out
 
 
-def winning_short(topic: dict, root: Path = ROOT, today: str | None = None) -> str | None:
-    """Why a long-video topic can't be used: it must name `from_short`, one of our recent Shorts that held
-    viewers best (owner, 2026-11-12, replacing the 1,000-view rule that left no topics): from our Shorts
-    published in the last WIN_DAYS days with WIN_MIN_VIEWS+ views, ranked by stayed to watch then views,
-    one in the top third (agents/scout.md 1a)."""
-    sid = topic.get("from_short")
-    try:
-        videos = json.loads((cpath(root, "metrics/videos.json")).read_text(encoding="utf-8")).get("videos", [])
-    except (OSError, ValueError):
-        videos = None    # no metrics here (tests, a fresh clone): trust the topic
-    if not sid:
-        # a new channel's samples (setup, 2026-11-19): it has published no Short yet, so there is none to expand
-        if videos is not None and not any(x.get("format", "short") == "short" for x in videos):
-            return None
-        return "names no `from_short` (a long video expands one of our recent Shorts in the top third by stayed to watch)"
-    if videos is None:
-        return None      # no metrics here (tests, a fresh clone): trust the topic
-    v = next((x for x in videos if x.get("id") == sid), None)
-    if v is None:
-        return f"from_short {sid!r} is not a published video"
-    now = date.fromisoformat(today) if today else date.today()
-
-    def recent(x: dict) -> bool:
-        day = _day(x.get("publishAt"))
-        return day is None or (now - day).days <= WIN_DAYS
-
-    if (v.get("views") or 0) < WIN_MIN_VIEWS:
-        return f"from_short {sid} has {v.get('views') or 0} views, under {WIN_MIN_VIEWS:,}"
-    if not recent(v):
-        return f"from_short {sid} was published over {WIN_DAYS} days ago"
-    pool = [x for x in videos if x.get("format", "short") == "short" and (x.get("views") or 0) >= WIN_MIN_VIEWS and recent(x)]
-    pool.sort(key=lambda x: (x.get("stayed") or 0, x.get("views") or 0), reverse=True)
-    top = [x.get("id") for x in pool[:max(1, math.ceil(len(pool) / 3))]]
-    if sid not in top:
-        rank = next((i for i, x in enumerate(pool, 1) if x.get("id") == sid), len(pool))
-        return (f"from_short {sid} is #{rank} of {len(pool)} recent Shorts by stayed to watch, "
-                f"not in the top third (the top {len(top)})")
-    return None
-
-
 def blocked_reason(topic: dict, today: str, fmt: str, root: Path = ROOT) -> str | None:
-    """Why an otherwise open topic can't be made now: stale facts, or a long topic without a winning Short."""
+    """Why an otherwise open topic can't be made now: stale facts. Nothing else.
+
+    A long topic never needs one of our Shorts (owner, 2026-11-22). The rule that a long video must expand
+    a Short with 1,000+ (4 Nov), then 100+ (12 Nov) views blocked every long topic on the new channels,
+    whose Shorts had 0-25 views, and Studio runs stopped with nothing to make. `from_short` stays an
+    optional link (the description points to that Short); it is never a gate, on any channel, and
+    scripts/guard.py refuses a branch that brings a views gate back."""
     if (old := stale_facts(topic, today)):
         return "facts may be out of date (research must confirm the latest release): " + "; ".join(old[:3])
-    if fmt == "long":
-        return winning_short(topic, root, today)
     return None
 
 

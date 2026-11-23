@@ -8,7 +8,7 @@ import path from "node:path";
 
 import type { Prisma, PrismaClient } from "@prisma/client";
 
-import { layout } from "./channels.ts";
+import { CHANNEL_ONE, layout, liveInRepo } from "./channels.ts";
 import { type Week, digest, health, istWeek } from "./health.ts";
 import { notify, resolve } from "./notify.ts";
 import { loadSettings } from "./settings.ts";
@@ -27,7 +27,8 @@ export function logChange(root: string, slug: string, change: { what: string; fr
 
 export async function syncHealth(prisma: PrismaClient, root: string, now = new Date()): Promise<string[]> {
   const platform = await loadSettings(prisma);
-  const channels = await prisma.channel.findMany({ where: { status: { in: ["active", "paused"] } }, orderBy: { createdAt: "asc" } });
+  // a channel whose folder is gone from the repo (removed before the owner pressed Delete) gets no health or notices
+  const channels = liveInRepo(await prisma.channel.findMany({ where: { status: { in: ["active", "paused"] } }, orderBy: { createdAt: "asc" } }), root);
   const since = new Date(now.getTime() - 8 * 7 * DAY);
   // minutes of routine runs in the last week: video runs (AgentRun, by the video's channel) and agent nights
   const runs = await prisma.agentRun.findMany({ where: { startedAt: { gte: new Date(now.getTime() - 7 * DAY) }, finishedAt: { not: null } },
@@ -64,7 +65,7 @@ export async function syncHealth(prisma: PrismaClient, root: string, now = new D
       weeks: [...byWeek.values()].sort((a, b) => a.week.localeCompare(b.week)),
       usageMinutes: minutes.get(ch.id) ?? 0, allUsageMinutes: all, critical,
       generationPaused: Boolean((own.generationPaused as boolean | undefined) ?? platform.generationPaused),
-      stopRuleActions: ch.id !== layout().default,
+      stopRuleActions: ch.id !== CHANNEL_ONE,
     });
     // the channel's notices: raised while the condition holds, resolved when it clears
     for (const n of h.notices) await notify(prisma, { ...n, source: "health", channelId: ch.id });

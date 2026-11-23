@@ -1,0 +1,56 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-22",
+  "startedAt": "2026-11-21T16:33:09Z",
+  "finishedAt": "2026-11-21T16:43:06Z",
+  "summary": "Fixed a stats bug that left every channel but Paisa Panchayat without the spoken line at its drop points, plus two small worker bugs; wrote the video verdicts and the first picture tally with directed Shorts, and queued a look test for the 5-8 s promise beat.",
+  "decision": "acted",
+  "why": "The data audit had no errors, but the Why Atlas' and the tech channel's drop points had empty beat and line fields: stats looked for their timelines in Paisa Panchayat's folder. The tally shows directed Shorts lose 22.2 points at the promise beat in 10 of 11.",
+  "findings": [
+    {
+      "title": "Other channels' drop points had no line (all channels)",
+      "detail": "workers/stats.ts looked up timeline.json in the default channel's folder for every channel. Fixed with a test."
+    },
+    {
+      "title": "Other channels' Shorts go up without our cover (owner-only file)",
+      "detail": "workers/publish.ts has the same folder mistake; owner notification with the fix."
+    },
+    {
+      "title": "No weekly-loop test since 19 Nov (paisa-panchayat)",
+      "detail": "cycle/backlog.json running is null; the improver's 20 Nov branch was blocked on a conflict and there is no improver report for 20-21 Nov."
+    },
+    {
+      "title": "Directed Shorts lose most at the promise beat (paisa-panchayat)",
+      "detail": "22.2 points on average at 5-8 s in 10 of 11 directed Shorts, against 14.4 for build beats; challenger promise-stays-in-hook-place added."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Drop points matched in each channel's own folder",
+      "detail": "videoFile() in workers/lib/channels.ts, used by stats.ts; tests/video-file.test.ts.",
+      "branch": "agent/auditor/2026-11-22"
+    },
+    {
+      "title": "Snapshots include a scheduled Short past its publish time",
+      "detail": "workers/lib/snapshot-scope.ts (wrk-005).",
+      "branch": "agent/auditor/2026-11-22"
+    },
+    {
+      "title": "Failed long videos stored as long",
+      "detail": "formatOfId in workers/lib/manifest.ts (wrk-q02).",
+      "branch": "agent/auditor/2026-11-22"
+    },
+    {
+      "title": "Analysis for 5 videos on 3 channels and the weekly picture tally",
+      "detail": "channels/*/analysis/videos.json, paisa-panchayat pictures.json, a look challenger in cycle/backlog.json.",
+      "branch": "agent/auditor/2026-11-22"
+    }
+  ],
+  "nextCheck": "2026-11-23",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-22.md"
+    }
+  ]
+}

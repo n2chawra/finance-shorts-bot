@@ -71,8 +71,10 @@ def spec_problems(th: dict, title: str, story: str | None = None) -> list[str]:
                 f"(python -m renderer.thumbs refs <id>), not a fixed type (got {th.get('layout')!r}; owner, 2026-10-29)"]
     refs = [r for r in th.get("references") or [] if isinstance(r, dict)]
     good = [r for r in refs if re.fullmatch(YT_ID, str(r.get("id", ""))) and int(r.get("views") or 0) >= REF_VIEWS and len(str(r.get("what", ""))) >= 8]
-    if len(good) < REF_MIN:
-        out.append(f"`references` needs {REF_MIN}+ hits on this topic, each {{id, views (100K+), what: what its thumbnail does}} "
+    unique = len(str(th.get("unique") or "")) >= 20   # owner, 2026-11-23: a topic nobody has covered has no hits to study
+    if len(good) < REF_MIN and not unique:
+        out.append(f"`references` needs {REF_MIN}+ hits on this topic, each {{id, views (100K+), what: what its thumbnail does}}, "
+                   f"or, when the topic has fewer (a new or unique topic), `unique`: what you searched and found "
                    f"(has {len(good)}): python -m renderer.thumbs refs <id> shows the topic's top videos")
     if len(str(th.get("pattern", ""))) < 20:
         out.append("`pattern`: say in a sentence what the hits' thumbnails share (the picture, the face, the words, the colours), "
@@ -209,6 +211,31 @@ def manifest_entries(script: dict) -> list[dict]:
     pick = script.get("thumbnail_pick") or "a"
     return [{"file": PICKS[k], "angle": th.get("angle"), "layout": th.get("layout"), "pattern": th.get("pattern"),
              "score": th.get("score"), "why": th.get("why"), "picked": k == pick} for k, th in specs(script)]
+
+
+SHORT_REF_VIEWS = 10_000
+
+
+def short_cover_problems(th: dict | None, demand: dict | None = None) -> list[str]:
+    """Notes, never failures: a Short's cover is modelled on this topic's own hits when they exist (owner, 2026-11-23:
+    "thumbnails are made for every video by studying the same topic's other videos' thumbnails", every channel), but
+    "not every video might have a reference; some might be unique" (the same day): a cover that says `unique` (what
+    was searched and that nothing comparable came up) is designed freely. Otherwise `references` name at least one
+    video on this topic (the plan's `demand` counts) with what its cover does, and `pattern` what ours takes."""
+    if not th or len(str(th.get("unique") or "")) >= 20:
+        return []
+    out = []
+    refs = [r for r in th.get("references") or [] if isinstance(r, dict) and re.fullmatch(YT_ID, str(r.get("id", "")))
+            and int(r.get("views") or 0) >= SHORT_REF_VIEWS and len(str(r.get("what", ""))) >= 8]
+    if not refs:
+        m = re.search(r"(?:v=|youtu\.be/|shorts/)(" + YT_ID + ")", str((demand or {}).get("url", "")))
+        hint = f' (the plan\'s demand video {m.group(1)} is one: {{"id": "{m.group(1)}", "views": {int((demand or {}).get("views") or 0)}, "what": "<what its cover shows>"}})' if m else ""
+        out.append("the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its "
+                   f"cover shows}}, studied before the cover is chosen{hint}, or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits")
+    if len(str(th.get("pattern", ""))) < 20:
+        out.append("the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) "
+                   "and what ours takes from it")
+    return out
 
 
 def problems(script: dict, out: Path) -> list[str]:

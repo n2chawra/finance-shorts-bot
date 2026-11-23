@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "channel": "business-documentaries-rise-and-fall-of",
+  "day": "2026-11-22",
+  "startedAt": "2026-11-21T19:33:23Z",
+  "finishedAt": "2026-11-21T19:39:16Z",
+  "summary": "Competitor teardown for Craze & Crash (Ravate, Bagholder Association, plus re-checks of Rise Fall Repeat and Company Man). Added 3 sourced Short topics (Lexus's 450 prototypes, Krispy Kreme quitting McDonald's, Angry Birds sold for less than its B listing) and one long-video title proposal.",
+  "decision": "acted",
+  "why": "The core Short format had no usable topic (Spanx and Yahoo wait on recent categories); Lexus is now the top usable topic (7.86). Bagholder's verdict titles have a 464,541 median over 9 films against 28,440 for its other 51. Our Shorts have no stayed-to-watch data yet.",
+  "findings": [
+    {
+      "title": "Bagholder's verdict titles: 16x its other titles",
+      "detail": "9 'X Is (Finally) Getting What They Deserve...' films, median 464,541 views, against 28,440 for its other 51 on similar brands. Proposed as a long-video title test in our own words.",
+      "link": "https://www.youtube.com/watch?v=3Hp03-lSQRw"
+    },
+    {
+      "title": "Rise Fall Repeat's long Shorts didn't win on length",
+      "detail": "Its Shorts 120-200 days old got about 1,100-1,300 views at any length; only the last 90 days grew. The length challenger's evidence is corrected; Ravate gives weak support (60-100 s ahead in 2 of 3 age windows)."
+    },
+    {
+      "title": "Lexus: 450 prototypes, a 1984 start, 5,000 at launch",
+      "detail": "Toyota's own history plus Jalopnik and Motoring Research. Reference 511K on 19.9K.",
+      "link": "https://www.toyota-global.com/company/history_of_toyota/75years/text/leaping_forward_as_a_global_corporation/chapter2/section3/item5.html"
+    },
+    {
+      "title": "Krispy Kreme left McDonald's after reaching about 2,400 of 13,500 stores",
+      "detail": "Its own 8-K, June 2025: costs couldn't be brought in line with demand. Reference 734K on 10.8K.",
+      "link": "https://www.sec.gov/Archives/edgar/data/1857154/000185715425000102/a991pressrelease-june2025.htm"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 Short topics in the feed",
+      "detail": "research/topics.json: Lexus (founder_bet, 7.86), Krispy Kreme (6.92), Angry Birds (6.16). 11 open, 8 usable.",
+      "branch": "agent/research/2026-11-22/business-documentaries-rise-and-fall-of"
+    },
+    {
+      "title": "Proposal long-title-verdict",
+      "detail": "research/proposals.json: a verdict title against a claim title, long videos only, low confidence.",
+      "branch": "agent/research/2026-11-22/business-documentaries-rise-and-fall-of"
+    },
+    {
+      "title": "Length challenger evidence corrected",
+      "detail": "cycle/backlog.json doc-short-length-50: the Rise Fall Repeat split was a time effect.",
+      "branch": "agent/research/2026-11-22/business-documentaries-rise-and-fall-of"
+    }
+  ],
+  "nextCheck": "2026-11-23",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/business-documentaries-rise-and-fall-of/research/2026-11-22.md"
+    }
+  ]
+}

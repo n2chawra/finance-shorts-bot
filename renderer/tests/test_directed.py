@@ -1,4 +1,4 @@
-"""Directed beats (owner, 2026-11-13: the flat 2D Netflix remake is how new videos are made): the script
+"""Directed beats (owner, 2026-11-13: the flat 2D remake is how new videos are made): the script
 says where each line happens, its shot sizes and its moments; the craft gates read them; a video's own
 code draws them on the flat kit with no figure typed into it."""
 import json
@@ -11,11 +11,18 @@ from renderer.timeline import build as tb
 from generator.channels import cpath
 
 REPO = Path(__file__).resolve().parents[2]
-REFERENCE = cpath(REPO, "videos") / "v-directed-netflix" / "script.json"
+# a shipped directed Short (the disasters channel's, 22 Nov) stands in for an approved reference
+CHANNEL = "disasters-and-engineering-failures-expla"
+VIDEO = "v-20261122-41"
+
+
+@pytest.fixture(autouse=True)
+def _its_channel(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CHANNEL", CHANNEL)
 
 
 def reference() -> dict:
-    return json.loads(REFERENCE.read_text(encoding="utf-8"))
+    return json.loads((cpath(REPO, "videos", CHANNEL) / VIDEO / "script.json").read_text(encoding="utf-8"))
 
 
 def test_the_reference_script_passes_the_checks() -> None:
@@ -78,13 +85,14 @@ def test_places_are_not_the_last_videos_places_again() -> None:
     assert any(p.startswith(tuple("0123456789")) for p in craft.prop_problems(mine, [("v-old", theirs)]) if "places were in" in p)
 
 
-def test_a_video_never_copies_the_reference_videos_places() -> None:
+def test_a_video_never_copies_the_reference_videos_places(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(craft, "REFERENCES", (VIDEO,))
     ref = [b["params"]["place"] for b in reference()["beats"]]
-    flat = [x for p in ref for x in ([p] if isinstance(p, str) else p)]
+    flat = list(dict.fromkeys(x for p in ref for x in ([p] if isinstance(p, str) else p)))
     copy = tl_of([directed(i, "close", p, i * 4) for i, p in enumerate(flat[:5])])
-    assert any("places were in v-directed-netflix" in p for p in craft.prop_problems(copy, []))
+    assert any(f"places were in {VIDEO}" in p for p in craft.prop_problems(copy, []))
     own = tl_of([directed(i, "close", p, i * 4) for i, p in enumerate(["a stadium", "a locker room", "a bank lobby", "a jet"])])
-    assert not any("v-directed-netflix" in p for p in craft.prop_problems(own, []))
+    assert not any(VIDEO in p for p in craft.prop_problems(own, []))
 
 
 @pytest.fixture
@@ -128,6 +136,33 @@ def test_every_directed_beat_needs_its_file(tree: Path) -> None:
 
 
 def test_the_reference_video_code_has_no_typed_figures() -> None:
-    folder = REPO / "remotion" / "src" / "videos" / "v-directed-netflix"
+    folder = REPO / "remotion" / "src" / "videos" / VIDEO
+    assert list(folder.glob("*.tsx"))
     for f in folder.glob("*.tsx"):
         assert not remotion.TYPED_FIGURE.search(remotion._COMMENTS.sub("", f.read_text(encoding="utf-8"))), f.name
+
+
+# ---- directed beats sound their own moments (owner, 2026-11-20, geography v-20261120-05)
+def test_directed_cues_follow_the_moments_and_the_channel_sounds():
+    from pathlib import Path
+    from renderer.timeline.build import DIRECTED_MAX_PER_BEAT, auto_directed, directed_cues
+    params = {"moments": [{"at": "a", "what": "pins pop up on every continent"},
+                          {"at": "b", "what": "a truck drives to the port"},
+                          {"at": "c", "what": "the board stamps on"}],
+              "camera": [{"sec": 0, "size": "wide"}, {"at": "b", "size": "close"}]}
+    events = {"a": 0, "b": 30, "c": 60}
+    general = directed_cues(params, events, 1.0)
+    assert [s["kind"] for _, s in general] == ["pop", "whoosh"][:DIRECTED_MAX_PER_BEAT]
+    assert general[0][0] == 1.0 and all(s["at"] == "auto" for _, s in general)
+    maps = directed_cues(params, events, 0.0, ["scribble", "paper", "pin", "pin-high", "thud", "chime"])
+    assert [s["kind"] for _, s in maps] == ["pin", "paper"]
+    # a channel without any fitting sound gets nothing rather than another channel's sounds
+    assert directed_cues(params, events, 0.0, ["groan"]) == []
+    # never closer than the minimum gap, never more than the cap
+    crowd = {"moments": [{"at": k, "what": "a pin lands"} for k in "abcdef"]}
+    many = directed_cues(crowd, {k: i*3 for i, k in enumerate("abcdef")}, 0.0)
+    assert len(many) <= DIRECTED_MAX_PER_BEAT
+    assert all(b[0] - a[0] >= 0.8 - 1e-9 for a, b in zip(many, many[1:]))
+    # published videos re-render as they were
+    assert not auto_directed(Path("videos/v-20261120-05")) and auto_directed(Path("videos/v-20261122-01"))
+    assert auto_directed(Path("/tmp/anything"))

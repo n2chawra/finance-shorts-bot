@@ -111,12 +111,20 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
 - [x] `directed` scene: per-beat code in `remotion/src/videos/<id>/`, its own camera, no HUD, big captions
 - [x] Script check for directed params; craft gates read places, sizes, moments and things; code check
       allows the kit, fails a typed figure and a missing beat file; tests (`renderer/tests/test_directed.py`)
-- [x] Reference video `v-directed-netflix` (the owner-approved Netflix remake, as script + code)
+- [x] First owner-approved reference video (script + code; removed with its channel on 2026-11-23)
 - [x] Director step and prompt (`generator/prompts/director.md`); writer, routine, QA, checklist,
       templates, Studio (long videos), improver, reviewer, policy and CLAUDE.md moved to it
 - [ ] First routine-made directed Short reviewed by the owner
 - [ ] First directed long video (Studio) reviewed by the owner
 - [ ] Lip sync for a speaking cast member from the voice's phonemes (`talkAt` is a stand-in)
+
+## M10 — Multi-channel platform (`docs/plans/multi-channel.md`)
+- [x] `channels/<slug>/` layout, `Channel` table, `--channel` on every command, per-channel settings,
+      routines and YouTube connection (2026-11-17)
+- [x] `/new-channel` skill: verdict → research → pack → samples → review → Launch → routines
+- [x] Channels live: Geography (default), How Tech Works, Craze & Crash, Disaster Desk
+- [x] Kits per channel: flat, 3D (`remotion/src/three/`), documentary (`remotion/src/doc/`), disaster
+- [x] Delete channel (dashboard + delete-channel.yml); Paisa Panchayat and Going Down removed 2026-11-23
 
 ## Later (not scheduled)
 - Edit title/description of a queued video before upload
@@ -378,7 +386,7 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   `market-data` branch; `channel/profile.md` and the new-channel guide. Found: research page fetches
   fail (cloud network), the 16 Oct auditor run was refused for usage.
 - 2026-10-18: Channel goes global (owner): English-speaking viewers anywhere, India about one video in
-  five; name "Paisa Panchayat" and the cast stay. Scripts carry a `currency` (USD default; GBP, EUR,
+  five; the name and the cast stay. Scripts carry a `currency` (USD default; GBP, EUR,
   INR for a country's story): Money formatting in Python and Remotion (parity tested), the voice reads
   dollars/pounds/euros and millions, maths, facts and the number check follow it; plans must name
   one. Profile, prompts, research, Scout, Studio and the market searches rewritten for a global
@@ -457,7 +465,11 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   close-ups, textbook payoffs. Now: no invented examples (hard rule), no reaction shots and a shareable
   payoff (notes + QA), `generator/prompts/lessons.md`, and the **reviewer** agent (Tue and Fri) that
   repeats this review on new videos and keeps the lessons current.
-- 2026-11-13: The owner watched a Netflix Short remade in flat 2D, directed shot by shot (a place for
+- 2026-11-13: The owner watched a Short remade in flat 2D, directed shot by shot (a place for
   every line, the cast acting, the figure on a thing in the place, a moving camera, changes on words),
   and said "I absolutely loved this… now new videos are made like this… also fix in long video same
   thing". Every new Short and long video is now directed 2D (M9): director step, flat kit, checks, prompts.
+- 2026-11-23: The owner deleted the first finance channel and a dive-kit channel from the platform (Delete
+  channel on the Channels page → `delete-channel.yml` purges rows, release videos and the folder; their
+  routines disable themselves). The default channel is now `geography-maps-geopolitical-mysteries`;
+  CLAUDE.md is the platform's brief, each channel's strategy lives in `channels/<slug>/`.

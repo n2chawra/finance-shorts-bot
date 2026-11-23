@@ -1,0 +1,172 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-22T01:00:58.040816+00:00",
+    "finishedAt": "2026-11-22T01:00:58.040816+00:00",
+    "notes": [
+      "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky",
+      "music genre 'dossier' was used by the previous video",
+      "description opens with 'how did a', already used by v-20261120-07"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-22T01:01:03.192593+00:00",
+    "finishedAt": "2026-11-22T01:01:03.192593+00:00",
+    "notes": [
+      "music genre 'dossier' was used by the previous video"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:02:27.555816+00:00",
+    "finishedAt": "2026-11-22T01:02:27.555816+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T01:03:34.671027+00:00",
+    "finishedAt": "2026-11-22T01:03:34.671027+00:00",
+    "notes": [
+      "hashtags mentions '9', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:03:38.379622+00:00",
+    "finishedAt": "2026-11-22T01:03:38.379622+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:03:39.280258+00:00",
+    "finishedAt": "2026-11-22T01:03:39.280258+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:03:49.755469+00:00",
+    "finishedAt": "2026-11-22T01:03:49.755469+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T01:03:56.643761+00:00",
+    "finishedAt": "2026-11-22T01:04:29.976304+00:00",
+    "notes": [
+      "2 of 9 stills are mostly empty background (at 10 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 48% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:04:36.276601+00:00",
+    "finishedAt": "2026-11-22T01:04:36.276601+00:00",
+    "notes": [
+      "All 4 facts confirmed on the Bandai Namco newsletter82_special page (WebFetch): launched 23 Nov 1996; 10 million sold in Japan within eight months; 100 million shipped worldwide as of end of July 2025 (script says 'shipped', so the verify item is met); overseas shipments 51% of the total. 'By July last year' is right as of Nov 2026. Colour screen (Plus Color 2008) and new versions are on the same page. No advice, the tone is fine, and the description ends with the disclaimer. Notes: the world beat's document lines paraphrase the newsletter rather than quote it; the hook's 'exactly why kids wanted one' and the label 'most within a year or two' are framing, not sourced."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:05:12.474050+00:00",
+    "finishedAt": "2026-11-22T01:05:12.474050+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:05:13.619483+00:00",
+    "finishedAt": "2026-11-22T01:05:37.896943+00:00",
+    "notes": [
+      "36 s, mint/ledger (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 47% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:05:44.610234+00:00",
+    "finishedAt": "2026-11-22T01:05:44.610234+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:05:45.578548+00:00",
+    "finishedAt": "2026-11-22T01:06:02.277520+00:00",
+    "notes": [
+      "36 s, mint/ledger (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 47% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:06:28.374435+00:00",
+    "finishedAt": "2026-11-22T01:06:28.374435+00:00",
+    "notes": [
+      "Re-review of changed lines. Hook 'kids still lined up to own one': queues at Japanese stores in the 1996-97 boom are reported by the South China Morning Post (early-morning queues at stores rumoured to have stock) and Smithsonian Magazine (shoppers waiting outside stores for shipments); those reports name parents as well as kids. The question label sub 'and then they are gone' is general framing and claims no fact. The swapped pictures are Commons photos of Tamagotchi models and Tamagotchi shops, with no captions that claim facts. The earlier pass on all 4 Bandai Namco facts and the disclaimer still stands."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:06:48.947341+00:00",
+    "finishedAt": "2026-11-22T01:06:48.947341+00:00",
+    "notes": [
+      "36.4 s in the channel's 30-55 s band, audio -1.0/-18.3 dB, no layout or craft problems; first frame is the boxed Tamagotchi labelled 'Tamagotchi', title and hook name it and hold back the 100M payoff; every beat a real place or thing (Bandai HQ, polaroid montage, Akihabara crossing, Connection model, Bandai newsletter with source chip, 100M poster at the payoff), each picture once with the loop back to the opening box; pick-one ending loops into 'Tamagotchi could die'; disclaimer in the description. Minor: the 10 s still shows a single polaroid on the brown desk before the montage stacks, acceptable."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:06:59.237175+00:00",
+    "finishedAt": "2026-11-22T01:09:45.382496+00:00",
+    "notes": [
+      "36 s, mint/ledger, peak -1.0 dB, mean -18.3 dB",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 47% of the video; between 50% and 85%",
+      "warning: integrated loudness -16.3 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "warning: the music sits only 17.8 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-22T01:09:49.576064+00:00",
+    "finishedAt": "2026-11-22T01:09:49.576064+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

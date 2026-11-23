@@ -1,0 +1,937 @@
+{
+  "id": "L-20261123-21",
+  "createdAt": "2026-11-23T12:09:33.642263+00:00",
+  "status": "qa_passed",
+  "format": "long",
+  "template": "long_story",
+  "topic": {
+    "title": "How Starlink's Flat Dish Aims at Satellites Without Moving",
+    "category": "internet",
+    "feed_id": "2026-11-18-starlink-flat-dish",
+    "reach": "global"
+  },
+  "title": "How Does Starlink's Flat Dish Aim Without Moving?",
+  "description": "How does Starlink's flat dish follow satellites racing across the sky without ever turning?\nWe follow one signal from your laptop up to a Starlink satellite and back, open the dish in 3D, and draw its phased array wave by wave: how many tiny antennas firing a fraction apart bend a beam with no motor.\nThen the handoff, when your satellite sets and the next one rises, and how the network grew from its first launch.\n\n0:00 The dish that never turns\n0:36 The old way: one fixed satellite\n1:19 Why lower is faster\n2:30 Inside the dish\n3:34 Bending the beam\n4:40 The handoff\n5:40 The network\n6:16 Your video, start to finish\n\nSources: Space.com, Starlink, Wikipedia (Geostationary orbit, Starlink), Nov 2026.\nAnimations are simplified illustrations, not exact to scale.",
+  "hashtags": [
+    "#Starlink",
+    "#PhasedArray",
+    "#HowItWorks",
+    "#SatelliteInternet",
+    "#Engineering"
+  ],
+  "hookStyle": "secret",
+  "cta": "Which machine should we take apart next? Tell us in the comments",
+  "seed": 55023,
+  "style": {
+    "palette": "ocean",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 72,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 0.97,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "This flat Starlink dish is talking to a satellite racing across the sky, and it never turns to follow it.",
+        "start": 0.27,
+        "seconds": 6.96,
+        "window": 7.4,
+        "fill": 0.941
+      },
+      {
+        "scene": "hook2",
+        "text": "That satellite flies about 480 km above you, and in a few minutes it slips below the horizon. So how does a dish that never moves keep up?",
+        "start": 7.67,
+        "seconds": 10.6,
+        "window": 11.03,
+        "fill": 0.961
+      },
+      {
+        "scene": "route",
+        "text": "So here's the trip every video you watch on it makes: up from the dish, to the satellite, down to a ground station, and into the internet.",
+        "start": 18.7,
+        "seconds": 8.98,
+        "window": 9.4,
+        "fill": 0.955
+      },
+      {
+        "scene": "route2",
+        "text": "On the way we'll open the dish, watch it bend a beam with no moving parts, and see why it takes so many satellites.",
+        "start": 28.1,
+        "seconds": 7.71,
+        "window": 8.3,
+        "fill": 0.929
+      },
+      {
+        "scene": "old",
+        "text": "For decades, satellite internet and TV worked another way. Look at the dishes on this street.",
+        "start": 36.4,
+        "seconds": 6.12,
+        "window": 6.6,
+        "fill": 0.927
+      },
+      {
+        "scene": "geo",
+        "text": "Every one of them points at the same spot in the sky: one satellite, 35,786 km above the equator.",
+        "start": 43.0,
+        "seconds": 9.63,
+        "window": 10.2,
+        "fill": 0.944
+      },
+      {
+        "scene": "orbit",
+        "text": "Why that height? Up there, one trip around the Earth takes as long as the Earth takes to turn once.",
+        "start": 53.2,
+        "seconds": 6.25,
+        "window": 6.73,
+        "fill": 0.929
+      },
+      {
+        "scene": "sameway",
+        "text": "That's why every TV dish on a street faces the same way: they're all staring at one fixed point in the sky.",
+        "start": 59.93,
+        "seconds": 7.32,
+        "window": 7.77,
+        "fill": 0.942
+      },
+      {
+        "scene": "still",
+        "text": "So the satellite seems to hang still, and the dish can be bolted in place, aimed once, and left alone.",
+        "start": 67.7,
+        "seconds": 6.8,
+        "window": 7.17,
+        "fill": 0.948
+      },
+      {
+        "scene": "calltease",
+        "text": "That's fine for TV. But what happens when you're on a video call?",
+        "start": 74.87,
+        "seconds": 4.52,
+        "window": 4.97,
+        "fill": 0.909
+      },
+      {
+        "scene": "far",
+        "text": "So what's wrong with that? Distance. Your click has to climb all the way up to that satellite, and all the way back down.",
+        "start": 79.83,
+        "seconds": 8.14,
+        "window": 8.47,
+        "fill": 0.961
+      },
+      {
+        "scene": "light",
+        "text": "Radio moves at the speed of light, but that's still a long trip, and a web page needs many of them, one after another.",
+        "start": 88.3,
+        "seconds": 7.86,
+        "window": 8.3,
+        "fill": 0.947
+      },
+      {
+        "scene": "laghome",
+        "text": "You feel it. On a video call, people talk over each other, because every word arrives a beat late.",
+        "start": 96.6,
+        "seconds": 6.63,
+        "window": 7.1,
+        "fill": 0.934
+      },
+      {
+        "scene": "low",
+        "text": "So what if the satellite flew lower? Bring it down, to about 480 km.",
+        "start": 103.7,
+        "seconds": 6.19,
+        "window": 6.7,
+        "fill": 0.924
+      },
+      {
+        "scene": "ratio",
+        "text": "That's only 1.3% of the old height. The trip up and back shrinks to the same small share.",
+        "start": 110.4,
+        "seconds": 6.52,
+        "window": 7.03,
+        "fill": 0.927
+      },
+      {
+        "scene": "hop",
+        "text": "Light covers that short hop so fast that the distance stops being the slow part of the trip.",
+        "start": 117.43,
+        "seconds": 5.88,
+        "window": 6.3,
+        "fill": 0.933
+      },
+      {
+        "scene": "snappy",
+        "text": "So the delay drops from something you notice to something you don't.",
+        "start": 123.73,
+        "seconds": 3.96,
+        "window": 4.2,
+        "fill": 0.943
+      },
+      {
+        "scene": "catch",
+        "text": "But low comes with a catch. A satellite this low can't hang still.",
+        "start": 127.93,
+        "seconds": 4.35,
+        "window": 4.87,
+        "fill": 0.893
+      },
+      {
+        "scene": "race",
+        "text": "Why not? Down here it has to race around the planet to stay up, so it crosses your sky in minutes.",
+        "start": 132.8,
+        "seconds": 6.64,
+        "window": 7.1,
+        "fill": 0.935
+      },
+      {
+        "scene": "swing",
+        "text": "To follow it, an old dish would have to swing across the whole sky, again and again, all day.",
+        "start": 139.9,
+        "seconds": 6.18,
+        "window": 6.57,
+        "fill": 0.941
+      },
+      {
+        "scene": "inside",
+        "text": "Starlink's flat dish doesn't move at all. So what is inside it?",
+        "start": 146.47,
+        "seconds": 4.3,
+        "window": 4.67,
+        "fill": 0.921
+      },
+      {
+        "scene": "bench",
+        "text": "Here it is on a workbench. On the outside, it's just a flat white panel on a stand, with one cable.",
+        "start": 151.13,
+        "seconds": 7.0,
+        "window": 7.33,
+        "fill": 0.955
+      },
+      {
+        "scene": "nomirror",
+        "text": "Lift the white cover, and there's no curved mirror inside, like a TV dish has.",
+        "start": 158.47,
+        "seconds": 5.28,
+        "window": 5.9,
+        "fill": 0.895
+      },
+      {
+        "scene": "radome",
+        "text": "The cover is plastic for a reason: radio passes straight through it, while rain and snow stay out.",
+        "start": 164.37,
+        "seconds": 6.47,
+        "window": 6.93,
+        "fill": 0.934
+      },
+      {
+        "scene": "grid",
+        "text": "So what is there instead? A board, covered in a grid of many tiny antennas, each one a small flat metal patch.",
+        "start": 171.3,
+        "seconds": 7.91,
+        "window": 8.53,
+        "fill": 0.927
+      },
+      {
+        "scene": "own",
+        "text": "Each patch can send and hear radio on its own, but one by itself is too small to aim at anything.",
+        "start": 179.83,
+        "seconds": 6.94,
+        "window": 7.37,
+        "fill": 0.942
+      },
+      {
+        "scene": "chips",
+        "text": "So who tells each one when to fire? The chips underneath. They control every antenna's timing, down to a tiny fraction of a second.",
+        "start": 187.2,
+        "seconds": 9.49,
+        "window": 9.93,
+        "fill": 0.956
+      },
+      {
+        "scene": "cable",
+        "text": "The dish's one cable runs down to the router inside. The router plugs into the wall for its power.",
+        "start": 197.13,
+        "seconds": 6.95,
+        "window": 7.37,
+        "fill": 0.943
+      },
+      {
+        "scene": "wifi",
+        "text": "From there, the router turns it into wifi, for your laptop and the phone in your hand.",
+        "start": 204.5,
+        "seconds": 5.49,
+        "window": 5.97,
+        "fill": 0.92
+      },
+      {
+        "scene": "together",
+        "text": "One patch can't aim. Many working together can. Here's how.",
+        "start": 210.47,
+        "seconds": 3.9,
+        "window": 4.37,
+        "fill": 0.892
+      },
+      {
+        "scene": "tank",
+        "text": "Here's the trick, drawn wave by wave. Line up a row of the antennas.",
+        "start": 214.83,
+        "seconds": 4.99,
+        "window": 5.5,
+        "fill": 0.907
+      },
+      {
+        "scene": "same",
+        "text": "When they all send at the same instant, their ripples add up into one strong wave, heading straight up.",
+        "start": 220.33,
+        "seconds": 6.55,
+        "window": 7.0,
+        "fill": 0.936
+      },
+      {
+        "scene": "delay",
+        "text": "Now make each antenna fire a little later than the one beside it.",
+        "start": 227.33,
+        "seconds": 4.5,
+        "window": 4.77,
+        "fill": 0.943
+      },
+      {
+        "scene": "clap",
+        "text": "Think of a row of people clapping. Clap together and the sound goes straight ahead. Clap one after another, and it heads off at an angle.",
+        "start": 232.1,
+        "seconds": 9.07,
+        "window": 9.47,
+        "fill": 0.958
+      },
+      {
+        "scene": "tilt",
+        "text": "So what happens to the wave? The ripples still add up, but now the wave front tilts, and the beam leans over toward the late side.",
+        "start": 241.57,
+        "seconds": 8.87,
+        "window": 9.37,
+        "fill": 0.947
+      },
+      {
+        "scene": "steer",
+        "text": "Change the delays, and the beam swings across the sky. Nothing turns. Nothing moves. It's aiming by timing.",
+        "start": 250.93,
+        "seconds": 7.99,
+        "window": 8.4,
+        "fill": 0.951
+      },
+      {
+        "scene": "name",
+        "text": "Engineers call this a phased array. The dish does it with its whole grid at once, in every direction.",
+        "start": 259.33,
+        "seconds": 6.56,
+        "window": 7.13,
+        "fill": 0.92
+      },
+      {
+        "scene": "fast",
+        "text": "And because it's only timing, it can change its aim far faster than any motor could swing a dish.",
+        "start": 266.47,
+        "seconds": 6.31,
+        "window": 6.83,
+        "fill": 0.924
+      },
+      {
+        "scene": "recap",
+        "text": "So far: the satellites fly low to keep the trip short, and the dish follows them by timing, not turning.",
+        "start": 273.3,
+        "seconds": 7.56,
+        "window": 7.93,
+        "fill": 0.953
+      },
+      {
+        "scene": "problem",
+        "text": "But there's a problem no timing can fix. In a few minutes, your satellite drops below the horizon.",
+        "start": 281.23,
+        "seconds": 6.71,
+        "window": 7.0,
+        "fill": 0.959
+      },
+      {
+        "scene": "handoff",
+        "text": "So the dish hands off. Before the first satellite sets, the next one is already rising.",
+        "start": 288.23,
+        "seconds": 6.01,
+        "window": 6.37,
+        "fill": 0.943
+      },
+      {
+        "scene": "switch",
+        "text": "The chips change the timing, and in a blink the beam jumps from the old satellite to the new one.",
+        "start": 294.6,
+        "seconds": 5.91,
+        "window": 6.3,
+        "fill": 0.938
+      },
+      {
+        "scene": "seamless",
+        "text": "Does your video stop? No. Most of the time, the handoff happens too fast to notice.",
+        "start": 300.9,
+        "seconds": 5.89,
+        "window": 6.47,
+        "fill": 0.91
+      },
+      {
+        "scene": "allday",
+        "text": "And it happens again and again, all day and all night, for every dish under the sky.",
+        "start": 307.37,
+        "seconds": 5.61,
+        "window": 6.17,
+        "fill": 0.909
+      },
+      {
+        "scene": "satside",
+        "text": "And here's the surprise. The satellite is doing the same trick. Each one carries 5 phased arrays of its own.",
+        "start": 313.53,
+        "seconds": 7.61,
+        "window": 8.0,
+        "fill": 0.951
+      },
+      {
+        "scene": "cells",
+        "text": "Its beams sweep the ground below, each one serving the dishes in a patch of land at a time.",
+        "start": 321.53,
+        "seconds": 5.99,
+        "window": 6.43,
+        "fill": 0.932
+      },
+      {
+        "scene": "gateway",
+        "text": "Then it passes your signal down to a ground station, which is wired into the internet.",
+        "start": 327.97,
+        "seconds": 5.5,
+        "window": 5.97,
+        "fill": 0.921
+      },
+      {
+        "scene": "one",
+        "text": "But one satellite only ever covers a small patch of the planet. So how do you get a signal everywhere?",
+        "start": 333.93,
+        "seconds": 6.94,
+        "window": 7.27,
+        "fill": 0.955
+      },
+      {
+        "scene": "launch",
+        "text": "Starlink's first 60 working satellites went up together, on one rocket, in 2019.",
+        "start": 341.2,
+        "seconds": 6.36,
+        "window": 6.77,
+        "fill": 0.939
+      },
+      {
+        "scene": "spread",
+        "text": "They spread out into a long line, like beads on a string, then climbed up to their places.",
+        "start": 347.97,
+        "seconds": 5.92,
+        "window": 6.5,
+        "fill": 0.911
+      },
+      {
+        "scene": "web",
+        "text": "Did one launch do it? No. Since then, launch after launch has filled the low sky with a moving web of them.",
+        "start": 354.47,
+        "seconds": 7.5,
+        "window": 7.87,
+        "fill": 0.953
+      },
+      {
+        "scene": "shells",
+        "text": "Each group flies its own tilted path, so between them, the rings of satellites wrap the whole planet.",
+        "start": 362.33,
+        "seconds": 6.96,
+        "window": 7.37,
+        "fill": 0.944
+      },
+      {
+        "scene": "always",
+        "text": "That's why the sky above your house is never empty: one is always rising as another one sets.",
+        "start": 369.7,
+        "seconds": 6.26,
+        "window": 6.87,
+        "fill": 0.911
+      },
+      {
+        "scene": "back",
+        "text": "So follow your video one last time. You press play, and the laptop asks for it over wifi.",
+        "start": 376.57,
+        "seconds": 6.45,
+        "window": 6.83,
+        "fill": 0.944
+      },
+      {
+        "scene": "upcable",
+        "text": "The router sends it up the cable, and the dish works out where your satellite is right now.",
+        "start": 383.4,
+        "seconds": 5.31,
+        "window": 5.87,
+        "fill": 0.905
+      },
+      {
+        "scene": "fire",
+        "text": "Its tiny antennas fire a fraction apart, and the beam leans up to a satellite 480 km overhead.",
+        "start": 389.27,
+        "seconds": 8.21,
+        "window": 8.5,
+        "fill": 0.966
+      },
+      {
+        "scene": "catchit",
+        "text": "The satellite catches it on one of its arrays, and points another beam down to the ground.",
+        "start": 397.77,
+        "seconds": 5.49,
+        "window": 6.0,
+        "fill": 0.915
+      },
+      {
+        "scene": "home",
+        "text": "Into the internet through the ground station, and your video rides the same path back to you.",
+        "start": 403.77,
+        "seconds": 5.61,
+        "window": 6.2,
+        "fill": 0.905
+      },
+      {
+        "scene": "payoff",
+        "text": "All in a blink. From a flat dish that never moves, aimed at satellites that never stop.",
+        "start": 409.97,
+        "seconds": 5.79,
+        "window": 6.3,
+        "fill": 0.919
+      },
+      {
+        "scene": "loop",
+        "text": "Which machine should we take apart next? Tell us. Until then, look up: one is crossing your sky right now.",
+        "start": 416.27,
+        "seconds": 7.18,
+        "window": 7.63,
+        "fill": 0.941
+      }
+    ]
+  },
+  "durationSec": 426,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.5,
+    "lufs": -14.8,
+    "music_under_voice_db": 26.3
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-check: catchit now after fire, home reworded (no repeated downlink), shells after web; figures runs clean (480 km, 35,786 km, 5 arrays, 60 in 2019, 1.3%), all facts confirmed earlier (Space.com, Wikipedia, starlink.com via search, Spaceflight Now/Axios/CBS); added beats' claims (radome, clapping analogy, tilted shells, uplink/downlink) sound; disclaimer present. Note: description Sources line should add Space.com."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 2: all blocking fixes verified in fresh stills (5s dish+beam on roof, 70s medium street with dishes, captions clear of the dish at 0/140/165/420s, wifi label on laptop, end card without the on-screen line); thumbnail A reads small and matches the title; 360-365s small-globe stills still look alike (minor)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:25:41.346388+00:00",
+      "finishedAt": "2026-11-23T03:25:41.346388+00:00",
+      "notes": [
+        "style.bpm must be 70–75 for circuit"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-23T03:25:46.031798+00:00",
+      "finishedAt": "2026-11-23T03:25:46.031798+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:30:22.680865+00:00",
+      "finishedAt": "2026-11-23T03:30:22.680865+00:00",
+      "notes": [
+        "beat 'hook': moment at None is not one of this beat's events (name the word in `events` first)",
+        "note: 4 questions in about 359 s of speech; at least 11 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: beat 'bench': a \"Here's the game\" / \"Let's…\" warm-up is a line the channel has used too often; say it a new way"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:30:48.903259+00:00",
+      "finishedAt": "2026-11-23T03:30:48.903259+00:00",
+      "notes": [
+        "beat 'route2'.params.moments[1].do contains a typed number; use a placeholder: 'chapter1'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:30:54.417879+00:00",
+      "finishedAt": "2026-11-23T03:30:54.417879+00:00",
+      "notes": [
+        "beat 'far'.events.problem: no word 'problem' in this beat's spoken line"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:31:06.896194+00:00",
+      "finishedAt": "2026-11-23T03:31:06.896194+00:00",
+      "notes": [
+        "beat 'handoff'.params.moments[5].do contains a typed number; use a placeholder: 'rise2'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:31:12.504066+00:00",
+      "finishedAt": "2026-11-23T03:31:12.504066+00:00",
+      "notes": [
+        "beat 'outro'.params.assumption contains a typed number; use a placeholder: 'Simplified 3D illustrations: satellites, beams and waves are drawn far larger than life and not to scale.'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T03:31:17.132059+00:00",
+      "finishedAt": "2026-11-23T03:31:17.132059+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:33:16.849079+00:00",
+      "finishedAt": "2026-11-23T03:33:16.849079+00:00",
+      "notes": [
+        "fact1 'Altitude of the Starlink constellation, about 550 km' is out of date: SpaceX (Michael Nicolls, 1 Jan 2026; Space.com, The Register, ISPreview) is lowering all ~4,400 satellites at ~550 km to ~480 km over 2026, and by Sep 2026 CelesTrak elements showed most at ~450-490 km. starlink.com/technology (JS-only, confirmed via search snippet) still says about 550 km, but that is superseded. Replace fact1 with ~480 km sourced to Space.com/The Register (Jan 2026, quoting SpaceX), or reword as 'Starlink's satellites fly about 480 km up (lowered from 550 km during 2026)'. Affects beats hook2, low, fire (labels/lines {fact1}), and maths low (part 480 -> low_pct 1.3%) in beat ratio.",
+        "Beat ratio: 'The trip up and back shrinks by the same amount' reads as shrinking BY 1.5%; it shrinks TO about that share. Change to e.g. 'The trip up and back shrinks to the same small share.'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:34:07.277415+00:00",
+      "finishedAt": "2026-11-23T03:34:07.277415+00:00",
+      "notes": [
+        "facts[0] (480 km, 2026-01-01) is not one of the feed topic's facts; copy them exactly",
+        "the source line \"Data: Space.com (SpaceX's Michael Nicolls) · Wikipedia (Geostationary orbit) · Starlink (Technology) · Wikipedia (Starlink) · Nov 2026\" is too wide for the frame (2227 of 1784 px at 30 px): shorten each facts[].source to the publisher (e.g. 'Space.com'), one name per publisher"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:34:21.789527+00:00",
+      "finishedAt": "2026-11-23T03:34:21.789527+00:00",
+      "notes": [
+        "facts[0] (480 km, 2026-01-01) is not one of the feed topic's facts; copy them exactly"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T03:34:38.287823+00:00",
+      "finishedAt": "2026-11-23T03:34:38.287823+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T03:35:03.421844+00:00",
+      "finishedAt": "2026-11-23T03:35:03.421844+00:00",
+      "notes": [
+        "Re-review after revision: fact1 480 km confirmed on Space.com (all ~550 km satellites to ~480 km over 2026); 35,786 km on Wikipedia; 5 Ku-band arrays on starlink.com/technology (via search); 60 satellites May 2019 on Wikipedia + Spaceflight Now/Axios/CBS; low_pct 1.3% and ratio line fixed; cables drawn right; disclaimer present. Note: plan.json description Sources line omits Space.com."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T03:37:20.864849+00:00",
+      "finishedAt": "2026-11-23T03:37:20.864849+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T03:41:42.477780+00:00",
+      "finishedAt": "2026-11-23T03:41:42.477780+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T03:46:01.010820+00:00",
+      "finishedAt": "2026-11-23T03:57:55.905335+00:00",
+      "notes": [
+        "thumbnail is 1920x1080; a long video's must be 1280x720"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T04:00:03.648783+00:00",
+      "finishedAt": "2026-11-23T04:00:45.693193+00:00",
+      "notes": [
+        "thumbnail.pattern_id contains a typed number; use a placeholder: 'P4'"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-23T04:00:50.379285+00:00",
+      "finishedAt": "2026-11-23T04:00:50.379285+00:00",
+      "notes": [
+        "Beat catchit is out of causal order: it sits between upcable and fire, so the satellite 'catches it' before the dish's antennas fire the beam up (profile rule: never skip or misorder the causal step). Move catchit to right after fire, and reword home so it does not repeat the downlink, e.g. 'Into the internet through the ground station, and your video rides the same path back to you.' The claim itself is fine (uplink on a Ku-band phased array, Starlink technology page; a separate beam down to the gateway)."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T04:01:33.557312+00:00",
+      "finishedAt": "2026-11-23T04:01:33.557312+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T04:01:46.838188+00:00",
+      "finishedAt": "2026-11-23T04:01:46.838188+00:00",
+      "notes": [
+        "Re-check: catchit now after fire, home reworded (no repeated downlink), shells after web; figures runs clean (480 km, 35,786 km, 5 arrays, 60 in 2019, 1.3%), all facts confirmed earlier (Space.com, Wikipedia, starlink.com via search, Spaceflight Now/Axios/CBS); added beats' claims (radome, clapping analogy, tilted shells, uplink/downlink) sound; disclaimer present. Note: description Sources line should add Space.com."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T04:01:38.470182+00:00",
+      "finishedAt": "2026-11-23T04:13:07.189524+00:00",
+      "notes": [
+        "text 'NOT TO SCALE' at 57.6 s is 26 px, below the 30 px minimum",
+        "text 'ILLUSTRATION' at 318.9 s is 26 px, below the 30 px minimum",
+        "51 of 85 stills are mostly empty background (at 5 s, 15 s, 20 s, 25 s, 35 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+        "thumbnail.png is empty at phone size (edges 0.144, 0.15-0.5): fill it with the story",
+        "thumbnail-b.png is empty at phone size (edges 0.099, 0.15-0.5): fill it with the story",
+        "thumbnail-c.png is empty at phone size (edges 0.121, 0.15-0.5): fill it with the story",
+        "thumbnails: thumbnail A: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+        "thumbnails: thumbnail B: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+        "thumbnails: thumbnail C: rate it, `score` 1-10 and `why` (would a viewer pick it over the hits next to it in python -m renderer.thumbs feed?)",
+        "thumbnails: `thumbnail_pick`: \"a\", \"b\" or \"c\", the one you rate best; it goes up unless the owner picks another",
+        "note: only 3 shot sizes (close, medium, wide); a long video needs at least 4 of wide, medium, close, extreme",
+        "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T04:20:20.166744+00:00",
+      "finishedAt": "2026-11-23T04:20:20.166744+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T04:20:21.107742+00:00",
+      "finishedAt": "2026-11-23T04:32:44.335268+00:00",
+      "notes": [
+        "16 of 85 stills are mostly empty background (at 35 s, 50 s, 120 s, 130 s, 155 s, 160 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: only 3 shot sizes (close, medium, wide); a long video needs at least 4 of wide, medium, close, extreme",
+        "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-23T04:37:08.533202+00:00",
+      "finishedAt": "2026-11-23T04:49:25.086877+00:00",
+      "notes": [
+        "426 s, ocean/circuit (preview only)",
+        "note: only 3 shot sizes (close, medium, wide); a long video needs at least 4 of wide, medium, close, extreme",
+        "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-23T04:51:10.100326+00:00",
+      "finishedAt": "2026-11-23T04:51:10.100326+00:00",
+      "notes": [
+        "[script] BLOCKING 5.0s, beat hook (Roof, moment at 'satellite', wide on sky): frame is only the dusk sky gradient and stars, no satellite, no dish, no roof - an empty frame inside the hook while the line says 'a satellite racing across the sky'. Keep the satellite (and its streak) in frame on the 'satellite' and 'cam_the' moments, or hold the medium on dish+sky.",
+        "[script] BLOCKING 70.0s, beat still (Street, sec 0 close on sky / cam_and close on sky): frame is a black starfield over a flat ground plane with one unlabelled white dot - nothing that says 'hangs still', no street, ladder or bolted mount as the place promises. Open on the medium street with the dish+mount and the fixed satellite in one frame; move the close to the mount on 'bolted'.",
+        "[scene] BLOCKING 0.0s hook, 140.0s swing, 165.0s radome, 420.0s loop: the white directed captions ('This flat Starlink dish', 'To follow it,', 'The cover is plastic', 'Until then,') sit directly on the white dish/cover and are close to unreadable - the very first frame of the video included. Give directed captions a dark stroke/shadow strong enough for white backgrounds (remotion/src/fx/captions.tsx); in the script, frame the dish above the caption band on these moments.",
+        "[script] 210.0s wifi: the 'wifi' label is drawn on top of the channel badge in the top-left corner and is small; place it on the router/phone instead (non-blocking).",
+        "[script] 290.0s problem and 410.0s payoff are the same picture (dusk sky, one satellite, a few streaks, roofs at the bottom); 20s route, 275s recap and 405s home are the same route-map composition. The payoff promises 'a sky full of passing satellites': show many satellites, or another shot size, so the payoff isn't a repeat (non-blocking).",
+        "[script] 355-375s web/shells/always: five globe stills in a row, 360 and 365 near-identical small globe in the middle of the frame; add a close or a different angle (e.g. the house dot under the web for 'always') (non-blocking). Code notes agree: only 3 shot sizes, 30 s without a close.",
+        "[script] 425s end card draws 'Simplified illustrations ... not to scale' on screen; the disclaimer belongs only in the description (owner 2026-11-20). Description has it, so remove the end-card line (non-blocking).",
+        "Thumbnail A ('NO MOTOR', exploded dish with lit grid) reads at feed size, matches the title and the teardown, stands out beside Branch's 9.9M without copying it; A is the one I would click, agreeing with Studio's pick and score. Length 426 s within channel band 420-480; layout_problems empty; audio peak -1.0 dB, mean -16.5 dB (slightly hot vs -18, within tolerance)."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T04:51:52.645006+00:00",
+      "finishedAt": "2026-11-23T04:51:52.645006+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-23T04:52:25.591220+00:00",
+      "finishedAt": "2026-11-23T05:05:25.700964+00:00",
+      "notes": [
+        "426 s, ocean/circuit (preview only)",
+        "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T05:05:53.639359+00:00",
+      "finishedAt": "2026-11-23T05:05:53.639359+00:00",
+      "notes": [
+        "Round 2: all blocking fixes verified in fresh stills (5s dish+beam on roof, 70s medium street with dishes, captions clear of the dish at 0/140/165/420s, wifi label on laptop, end card without the on-screen line); thumbnail A reads small and matches the title; 360-365s small-globe stills still look alike (minor)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-23T05:05:47.012476+00:00",
+      "finishedAt": "2026-11-23T12:05:38.522262+00:00",
+      "notes": [
+        "426 s, ocean/circuit, peak -1.0 dB, mean -16.5 dB",
+        "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+        "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-23T12:09:05.322748+00:00",
+      "finishedAt": "2026-11-23T12:09:05.322748+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-23T12:09:33.642558+00:00",
+      "finishedAt": "2026-11-23T12:09:33.642558+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-L-20261123-21",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/L-20261123-21"
+  },
+  "thumbnails": [
+    {
+      "file": "thumbnail.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the dish itself taken apart in layers in 3D, the antenna grid glowing in the middle, ripples leaving it, two heavy words on the left",
+      "score": 9,
+      "why": "1,2,3,4,5,6,7,8,10 = 9; missed 9: the back housing runs into the bottom-right corner. The opened dish with its lit grid poses the title's question and reads at phone size; it sits next to Branch's 9.9M teardown without copying it",
+      "picked": true
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "satellites above the night Earth with cones of beam light landing on rings of ground, few or no words",
+      "score": 8,
+      "why": "1,2,3,4,5,6,7,8 = 8; missed 9 (the beams reach the bottom-right corner) and 10 (close to The Space Race's beams-on-Earth layout)",
+      "picked": false
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the white flat dish itself as the hero, big and lit, a short verdict in heavy words",
+      "score": 8,
+      "why": "1,2,4,5,6,7,8,9 = 8; missed 3 (the roof under the dish is hard to read at 168 px) and 10 (three stacked words is busier than our playbook's best)",
+      "picked": false
+    }
+  ],
+  "thumbnailModel": {
+    "pattern": "the dish itself taken apart in layers in 3D, the antenna grid glowing in the middle, ripples leaving it, two heavy words on the left",
+    "references": [
+      "qs2QcycggWU",
+      "mno_K8MHX-k",
+      "RP0zrz803R8"
+    ]
+  }
+}

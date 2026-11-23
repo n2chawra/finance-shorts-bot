@@ -37,13 +37,15 @@ def test_state_shows_each_format_with_its_best_example(root: Path) -> None:
 
 
 def test_the_repo_formats_are_well_formed() -> None:
-    """Every format id is a story the variety rules know, and every short format shows demand."""
-    from generator.variety import STORIES
+    """Every format id is a story the variety rules know (the shared STORIES plus the channel's own), and every
+    short format shows demand."""
+    from generator.variety import known_stories
+    stories = known_stories()
     for fmt in ("short", "long"):
         for f in formats.load(REPO, fmt):
-            assert f["id"] in STORIES, f["id"]
+            assert f["id"] in stories, f["id"]
             assert f.get("hook") and f.get("beats") and f.get("examples"), f["id"]
-    assert formats.ids(REPO, "short") and formats.ids(REPO, "long")
+    assert formats.ids(REPO, "short")   # long formats only where the channel makes long videos
 
 
 def test_a_format_below_the_demand_floor_is_not_offered(root: Path) -> None:

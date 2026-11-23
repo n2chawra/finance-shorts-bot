@@ -141,7 +141,9 @@ def shot_problems(tl: dict) -> list[str]:
     return out
 
 
-REFERENCES = ("v-directed-netflix",)   # approved directed videos kept as teaching examples (videos/<id>/script.json)
+# approved directed videos kept as teaching examples (videos/<id>/script.json of the current channel). Empty since
+# 2026-11-23: the first one (v-directed-netflix) went with its channel.
+REFERENCES: tuple[str, ...] = ()
 
 
 def reference_scripts(skip: str = "") -> list[tuple[str, dict]]:
@@ -319,8 +321,8 @@ def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
     out = []
     # a directed video's places: not the same rooms as a recent video (the old kit stood every video in
     # front of one skyline)
-    # Every video must be unique (CLAUDE.md): this one fails, it is not a note. The approved reference
-    # (v-directed-netflix) teaches how to direct; its places are never copied either.
+    # Every video must be unique (CLAUDE.md): this one fails, it is not a note. An approved reference
+    # (REFERENCES) teaches how to direct; its places are never copied either.
     here = {x for b in tl["beats"] if b["scene"] == "directed" for x in places(b)}
     for vid, other in [*earlier[-PLACE_WINDOW:], *reference_scripts(skip=str(tl.get("id") or ""))]:
         theirs = {x for b in other.get("beats") or [] if b.get("scene") == "directed" for x in places(b)}

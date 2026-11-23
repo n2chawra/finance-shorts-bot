@@ -7,6 +7,7 @@ import { Suspense, useEffect, useState } from "react";
 import { Card, Empty, ErrorNote, Loading, PageHeader, SelectField, fieldClass } from "@/components/ui";
 import { titleCase } from "@/lib/format";
 import { useOverview, useTemplates, useVideos } from "@/lib/queries";
+import { onTabListKeyDown, tabIndexFor } from "@/lib/tab-keys";
 
 import { VideoCard } from "./video-card";
 
@@ -30,7 +31,7 @@ function Videos() {
   const counts = useOverview().data?.counts;
   // topic options come from the videos themselves: a fixed list missed every category added since
   const everything = useVideos({});
-  // only the templates this channel's videos use: the full list showed Paisa Panchayat's old ones everywhere
+  // only the templates this channel's videos use: the full list showed the first channel's old ones everywhere
   const used = new Set((everything.data ?? []).map((v) => v.templateId));
   const categories = [...new Set([...(everything.data ?? []).map((v) => v.topic.category), ...(filters.category ? [filters.category] : [])])].sort();
   // a count beside each topic says which ones the channel leans on and never offers an empty result unawares
@@ -52,12 +53,12 @@ function Videos() {
     <>
       <PageHeader title="Videos" sub="Everything the routines have made, newest first" />
 
-      <div className="no-scrollbar scroll-fade-x mb-4 flex w-fit max-w-full gap-1 overflow-x-auto rounded-xl bg-surface-3 p-1" role="tablist" aria-label="Status">
+      <div className="no-scrollbar scroll-fade-x mb-4 flex w-fit max-w-full gap-1 overflow-x-auto rounded-xl bg-surface-3 p-1" role="tablist" aria-label="Status" onKeyDown={onTabListKeyDown}>
         {TABS.map((t) => {
           const on = filters.status === t.value;
           const n = t.value ? counts?.[t.value] : total;
           return (
-            <button key={t.label} type="button" role="tab" aria-selected={on} onClick={() => set("status", t.value)}
+            <button key={t.label} type="button" role="tab" aria-selected={on} tabIndex={tabIndexFor(on)} onClick={() => set("status", t.value)}
               className={`flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-3 text-[13px] font-medium transition-colors ${on ? "bg-surface text-ink shadow-xs" : "text-ink2 hover:text-ink"}`}>
               {t.label}
               {n !== undefined && <span className={`rounded-md px-1.5 text-[11px] tabular-nums ${on ? "bg-brand-soft text-brand-text" : "bg-wash-2 text-muted"}`}>{n}</span>}

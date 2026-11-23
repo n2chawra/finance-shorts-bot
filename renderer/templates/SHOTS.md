@@ -1,7 +1,8 @@
 # The shot system (2026-10-21 to 2026-11-13; old videos only)
 
 > **New videos are directed 2D shots** (owner, 2026-11-13): `generator/prompts/director.md`, the flat
-> kit in `remotion/src/flat/`, the reference `videos/v-directed-netflix/`. This page describes the kit
+> kit in `remotion/src/flat/`, and each channel's reference videos (its 3 best Shorts by `stayed` in
+> `channels/<channel>/metrics/videos.json`; `generator/prompts/director.md`, "The bar"). This page describes the kit
 > they replaced; it stays for re-renders of old videos.
 
 
@@ -9,8 +10,8 @@ The owner: "numbers in a box, two lines of text, most of the screen empty, every
 a template." The fixed layouts (`stage`, `bignumber`, `kinetic`, `split`…) are retired for new
 videos: **at least 60% of a video's beats are `shot` (or the `hook`)**, or the render fails
 (`renderer/craft.py`). Read `.claude/skills/motion-direction/SKILL.md` first. The reference Short
-is `examples/short_story_shot.json` (with its hook in `remotion/src/videos/v-showcase-raise/Hook.tsx`):
-it scored 9.3 on motion and the owner approved it.
+is `examples/short_story_shot.json`: it scored 9.3 on motion and the owner approved it (its hook's code went
+with the Paisa Panchayat channel, deleted 2026-11-23; a coded hook on the flat kit: `remotion/src/videos/v-20261118-01/Hook.tsx`).
 
 ## A shot
 
@@ -90,7 +91,7 @@ of 312 hens), with a level tracker and a climbing number.
 `PALETTE`, `shade`, `bob`). A prop is drawn centred on x = 0, base on y = 0, about `s` tall; `k`
 (0..1) and `state` are what the story changes (a chart's climb, `"crash"`, a loan `"signed"`).
 Ten things for a 60-second Short is normal. Shared money things: `note`, `coin`, `cash`, `box`.
-Example: `remotion/src/videos/v-remake-billionaires/props.tsx`.
+Example (on the flat kit, which replaced `studio/draw` for new videos): `remotion/src/videos/v-20261118-01/props.tsx`.
 
 **A build beat** (`"scene": "build"`) is one world filling up phrase by phrase:
 

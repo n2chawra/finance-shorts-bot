@@ -1,0 +1,409 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:10:00.937012+00:00",
+    "finishedAt": "2026-11-22T20:10:00.937012+00:00",
+    "notes": [
+      "style.bpm must be 60–66 for datahall"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:10:04.837407+00:00",
+    "finishedAt": "2026-11-22T20:10:04.837407+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:10:41.267420+00:00",
+    "finishedAt": "2026-11-22T20:10:41.267420+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:20:06.108854+00:00",
+    "finishedAt": "2026-11-22T20:20:06.108854+00:00",
+    "notes": [
+      "beat 'hook'.params.place contains a typed number; use a placeholder: 'a lit studio stage: the 1983 Motorola handset standing tall beside a modern phone'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:20:11.073139+00:00",
+    "finishedAt": "2026-11-22T20:20:11.073139+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:21:09.012260+00:00",
+    "finishedAt": "2026-11-22T20:21:09.012260+00:00",
+    "notes": [
+      "All 6 facts confirmed: Motorola Solutions page (6 weeks to build an FCC prototype, 3 Apr 1973 NYC demo, more than 10 years and a US$100M investment; TIME and Motorola's regional pages also say over $100M) and the Guinness page (DynaTAC 8000X on sale 6 Mar 1983, 785 g, 300 x 44 x 89 mm). Verify items met. The radio, tower and cell lines are correct. No advice; disclaimer ends the description. Note: the title asks 'why a brick' and the parts beat answers it only implicitly (radio, antenna, battery in one hand)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:26:32.271920+00:00",
+    "finishedAt": "2026-11-22T20:26:32.271920+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:27:06.498096+00:00",
+    "finishedAt": "2026-11-22T20:27:06.498096+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:27:42.518417+00:00",
+    "finishedAt": "2026-11-22T20:27:42.518417+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:28:20.825008+00:00",
+    "finishedAt": "2026-11-22T20:28:20.825008+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:28:51.095669+00:00",
+    "finishedAt": "2026-11-22T20:31:39.190646+00:00",
+    "notes": [
+      "text 'NOT TO SCALE' at 21.2 s is 26 px, below the 44 px minimum",
+      "text 'ILLUSTRATION' at 2.9 s is 26 px, below the 44 px minimum",
+      "2.3 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there",
+      "2 of 12 stills are mostly empty background (at 45 s, 54 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:32:39.107920+00:00",
+    "finishedAt": "2026-11-22T20:32:39.107920+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:33:05.577815+00:00",
+    "finishedAt": "2026-11-22T20:35:35.953900+00:00",
+    "notes": [
+      "2.2 s with nothing new on screen in beat 'call' (at most 1.8 s): add an action on the phrase being said there",
+      "2 of 12 stills are mostly empty background (at 15 s, 45 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:36:01.912188+00:00",
+    "finishedAt": "2026-11-22T20:36:01.912188+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:36:28.773314+00:00",
+    "finishedAt": "2026-11-22T20:38:50.352297+00:00",
+    "notes": [
+      "2.0 s with nothing new on screen in beat 'call' (at most 1.8 s): add an action on the phrase being said there",
+      "3 of 12 stills are mostly empty background (at 0 s, 45 s, 55 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:39:30.898013+00:00",
+    "finishedAt": "2026-11-22T20:39:30.898013+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:39:54.853968+00:00",
+    "finishedAt": "2026-11-22T20:42:25.081978+00:00",
+    "notes": [
+      "2.0 s with nothing new on screen in beat 'call' (at most 1.8 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:42:40.490937+00:00",
+    "finishedAt": "2026-11-22T20:42:40.490937+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:43:09.509754+00:00",
+    "finishedAt": "2026-11-22T20:45:38.746568+00:00",
+    "notes": [
+      "1.9 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there",
+      "2 of 13 stills are mostly empty background (at 45 s, 50 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:46:14.077071+00:00",
+    "finishedAt": "2026-11-22T20:46:14.077071+00:00",
+    "notes": [
+      "beat 'payoff': moment at None is not one of this beat's events (name the word in `events` first)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:46:23.405212+00:00",
+    "finishedAt": "2026-11-22T20:46:23.405212+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:46:50.094807+00:00",
+    "finishedAt": "2026-11-22T20:49:16.389592+00:00",
+    "notes": [
+      "1.9 s with nothing new on screen in beat 'call' (at most 1.8 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:49:28.296298+00:00",
+    "finishedAt": "2026-11-22T20:49:28.296298+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:49:56.146468+00:00",
+    "finishedAt": "2026-11-22T20:52:22.263752+00:00",
+    "notes": [
+      "1.8 s with nothing new on screen in beat 'shop' (at most 1.8 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:52:33.795046+00:00",
+    "finishedAt": "2026-11-22T20:52:33.795046+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:52:56.604522+00:00",
+    "finishedAt": "2026-11-22T20:55:24.315136+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:55:45.735580+00:00",
+    "finishedAt": "2026-11-22T20:55:45.735580+00:00",
+    "notes": [
+      "Re-review after 3 line changes. The hook ('Motorola's first phone you could carry was a brick') is true: the 1973 DynaTAC prototype. The call line (April 1973, New York street) matches Motorola's page (demo 3 Apr 1973, NYC). The payoff (over $100M of Motorola's money, more than 10 years) matches Motorola ('more than 10 years and a US$100 million investment'); 'over $100M' is backed by TIME and Motorola's regional pages. Other facts are unchanged and confirmed (6 weeks for the FCC; Guinness: 785 g, 300 mm, on sale 6 Mar 1983). Disclaimer present, no advice."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T20:56:14.670356+00:00",
+    "finishedAt": "2026-11-22T20:56:14.670356+00:00",
+    "notes": [
+      "[script] 50.0s payoff (beat 'payoff'): the two story figures sit in a floating headline card top-left ('10 years of work' / '$100M spent') instead of on a thing on the rail (a sign at the shop end, a counter, a tag); the card's labels also crowd each other ('spent' runs into 'years of work'). Put each fig on an object in the place.",
+      "[script] 35.0s beat 'shop': the whole frame is a plain roller shutter with no NOT FOR SALE card visible, nobody acting and no handset - reads as an empty frame on mute; show the prototype/card on the shutter or open the counter earlier.",
+      "[script] 45.0s beat 'payoff' opening: handsets on a rail against blue panels, no shop and no figure while the line says 'into a shop took over'; the shop end of the rail should be in view.",
+      "[script] 0.0s first frame: the handset carries no Motorola name (the wordmark writes on later), so on mute the first still is an unlabelled phone; have the MOTOROLA plate/label on the handset from frame 0.",
+      "[scene] thumbnail.png (hook at 2.5 s): the top third of the handset is a ghosted, blurred smear (mid-transition / motion blur), the subject's antenna and earpiece unreadable; pick a settled frame."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:57:14.970272+00:00",
+    "finishedAt": "2026-11-22T20:57:14.970272+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T20:57:41.743444+00:00",
+    "finishedAt": "2026-11-22T21:00:10.321301+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:00:21.976178+00:00",
+    "finishedAt": "2026-11-22T21:00:21.976178+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:00:47.229566+00:00",
+    "finishedAt": "2026-11-22T21:03:08.994110+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:03:31.483833+00:00",
+    "finishedAt": "2026-11-22T21:03:31.483833+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:03:55.542259+00:00",
+    "finishedAt": "2026-11-22T21:06:23.559584+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:07:19.533705+00:00",
+    "finishedAt": "2026-11-22T21:09:47.112181+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T21:10:10.432785+00:00",
+    "finishedAt": "2026-11-22T21:10:10.432785+00:00",
+    "notes": [
+      "[script] 50.0s payoff (beat 'payoff', 'and more than 10'): the years figure on the shop's lit window is hidden - the foreground prototype handset stands in front of it and the 'on sale' label sits on top of it, so only '10' half-shows and 'years of work' reads as 'ork'. Move the handset/label off the window (or the camera) so the figure and its words read; the $100M sign board also runs into the right edge.",
+      "[scene] thumbnail.png (0.4 s): the 'Motorola / first phone on sale' label is caught mid-fade - the word Motorola is a dim grey blur on the dark wall and its leader line crosses the handset. Take the frame after the label has fully written on (e.g. ~1.5-2.5 s at this framing)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:10:32.778394+00:00",
+    "finishedAt": "2026-11-22T21:10:32.778394+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:10:56.704594+00:00",
+    "finishedAt": "2026-11-22T21:13:23.517046+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:14:07.680208+00:00",
+    "finishedAt": "2026-11-22T21:16:37.894968+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:17:13.149032+00:00",
+    "finishedAt": "2026-11-22T21:19:44.306083+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:20:16.562775+00:00",
+    "finishedAt": "2026-11-22T21:22:42.530784+00:00",
+    "notes": [
+      "55 s, sky/datahall (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:22:58.715340+00:00",
+    "finishedAt": "2026-11-22T21:22:58.715340+00:00",
+    "notes": [
+      "Re-review 3: payoff at 50 s now shows $100M spent on the shop sign and 10 years of work on the window plate, both readable (a rail post only grazes the k of work); Motorola labelled from frame 0; shop/shutter beats filled; thumbnail at 1.8 s crisp with label clear of the word band; 55 s in the channel's 45-60 s range, audio -1.0/-16.8 dB, no layout or craft problems, loop back to the first frame."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T21:23:07.038434+00:00",
+    "finishedAt": "2026-11-22T22:09:02.387292+00:00",
+    "notes": [
+      "55 s, sky/datahall, peak -1.0 dB, mean -16.8 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:09:10.888808+00:00",
+    "finishedAt": "2026-11-22T22:09:10.888808+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

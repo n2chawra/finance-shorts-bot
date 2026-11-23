@@ -15,6 +15,10 @@ records every step in videos/<id>/run.json.
     python -m generator.run template-work <template> <action> [--enabled]
     python -m generator.run prompt <name>                 generator/prompts/<name>.md + the channel's prompts/<name>.md
 
+Every command needs the channel: `--channel <slug>` or the `CHANNEL` environment variable. Without one,
+`state` answers `{"stop": "no channel"}` and every other command exits 2 (the CLI never falls back to the
+layout's default channel). A deleted channel's `state` answers `{"stop": "channel deleted"}`, other commands exit 2.
+
 Exit code 0 means the step passed; 1 means it failed and the reasons are printed.
 """
 import argparse
@@ -36,7 +40,7 @@ from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, 
 from . import editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
-from . import channels, crosschannel, pack
+from . import channels, crosschannel, pack, planrules
 from .channels import cpath
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
@@ -299,9 +303,24 @@ def heard(script: dict, narrator: str | None) -> dict:
 SHORTS_NARRATOR = "am_michael"   # the voice of "Why billionaires never sell their stock"; no cast member uses it
 
 
-def next_narrator(entries: list[dict], taken: set[str] = frozenset()) -> str:
-    """The narrator voice these videos used longest ago (a never-used one first), never one in `taken`."""
-    last = {v: -1 for v in NARRATOR_VOICES if v not in taken} or {v: -1 for v in NARRATOR_VOICES}
+def shorts_narrators(voices: dict, root: Path = ROOT) -> list[str]:
+    """The voices a channel's Shorts rotate through (none: the one shortsNarrator): channel.json
+    voices.shortsNarrators, else the channel's cycle/voices.json `shortsNarrators`. Only Kokoro voices
+    in the channel's language count."""
+    pool = voices.get("shortsNarrators")
+    if not pool:
+        f = cpath(root, "improvement/cycle/voices.json")
+        pool = (json.loads(f.read_text(encoding="utf-8")).get("shortsNarrators") if f.exists() else None) or []
+    lang = str(pack.load(root=root).get("language") or "").split("-")[0]
+    return [v for v in pool if isinstance(v, str) and pack.voice_ok(v)
+            and pack.KOKORO_LANG[v[0]].split("-")[0] == lang]
+
+
+def next_narrator(entries: list[dict], taken: set[str] = frozenset(), pool: list[str] | None = None) -> str:
+    """The narrator voice these videos used longest ago (a never-used one first), never one in `taken`.
+    `pool`: the voices to rotate through (default every narrator voice)."""
+    voices = list(pool or NARRATOR_VOICES)
+    last = {v: -1 for v in voices if v not in taken} or {v: -1 for v in voices}
     for i, e in enumerate(entries):
         voice = (e.get("style") or {}).get("voice")
         if voice in last:
@@ -343,6 +362,8 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
             problems.append(f"currency must be one of {', '.join(currencies)}: {ch['currency']} unless the story is about one country")
         # channels must not look alike (multi-channel plan, step 4): too close to another channel's recent video fails
         problems += crosschannel.problems(plan, root)
+        # the channel's own plan rules (cycle/plan-rules.json; geography: the answer is on the map)
+        problems += planrules.check_plan(plan, root)
         # a Short has no end card any more, so the description always carries the channel's disclaimer
         if ch["disclaimer"] not in plan["description"]:
             problems.append(f"description must include the disclaimer: {ch['disclaimer']}")
@@ -474,6 +495,7 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
     problems += craft.prop_problems(tl, [(e["id"], _tl(e)) for e in earlier[-craft.PROP_WINDOW:]])
     problems += story.timeline_problems(script, tl, [_read_script(e["id"], root) for e in earlier[-10:]])
     problems += images.script_problems(script, vid, root)
+    problems += story.people_problems(script)   # people in the place, not only a count (owner, 2026-11-22)
     problems += experiments.adherence_problems(vid, script, root)   # the video follows its arm of each test
     if plan_format(script) == "long" and script.get("thumbnail"):
         for k, th in thumbs.specs(script):   # A, B and C (owner, 2026-11-11: three to pick from)
@@ -513,7 +535,14 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
         if plan_format(script) == "short":
             # one narrator for every Short (owner review, 2026-11-11): the growing channels in this niche keep
             # one voice, and ours changed every video. Long videos still rotate.
-            narrator = pack.load(root=root)["voices"]["shortsNarrator"]   # the channel's own Shorts voice
+            voices = pack.load(root=root)["voices"]
+            narrator = voices["shortsNarrator"]   # the channel's own Shorts voice
+            # a channel whose owner wants to hear several voices (geography, owner 2026-11-20: "use more voice
+            # type so that I can know which sound better") lists them in channel.json voices.shortsNarrators or
+            # its weekly loop's cycle/voices.json: its Shorts rotate through them, the one used longest ago
+            # first, kept on a re-render
+            if pool := [v for v in shorts_narrators(voices, root) if v not in taken]:
+                narrator = script["narrator"] if script.get("narrator") in pool else next_narrator(earlier, taken, pool)
             if script.get("narrator") != narrator:
                 script["narrator"] = narrator
                 _write(d / "script.json", script)
@@ -541,6 +570,10 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     if plan_format(script) == "short" and not script.get("thumbnail"):
         problems.append("a Short needs a `thumbnail` (its cover): `scene` (a frame of the video under the words: the default), "
                         "`versus`, `secret` or `story` (renderer/templates/short_story/README.md)")
+    cover_notes: list[str] = []
+    if plan_format(script) == "short":   # modelled on this topic's hits' covers when there are some: a note, never a failure (owner, 2026-11-23)
+        plan_s = _read(d / "plan.json") if (d / "plan.json").is_file() else {}
+        cover_notes = [f"note: cover: {p}" for p in thumbs.short_cover_problems(script.get("thumbnail"), plan_s.get("demand") or (plan_s.get("topic") or {}).get("demand"))]
     # a long video's thumbnails sell the whole promise, in words that add to the title (renderer/thumbs.py)
     plan_ = numbers.fill_plan(_read(d / "plan.json"), script) if (d / "plan.json").is_file() else {}
     problems += thumbs.problems({**script, "title": plan_.get("title", script.get("title", "")), "story": script.get("story") or plan_.get("story")}, d)
@@ -573,6 +606,7 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     if plan_format(script) == "short" and (d / "timeline.json").exists():   # measured on the real voice timing
         warnings = [f"warning: {w}" for w in event_gaps(_read(d / "timeline.json")["beats"])]
     warnings += [f"warning: {w}" for w in loudness_warnings(audio, plan_format(script))] if rendered else []
+    warnings += cover_notes
     problems, advice_ = advice.split(problems)     # notes are logged and shown, and never fail the render
     for n in advice_:
         print(n.upper()[:5] + n[5:])
@@ -831,6 +865,10 @@ def fail(vid: str, reason: str, root: Path = ROOT) -> dict:
     return manifest
 
 
+NO_CHANNEL = {"stop": "no channel",
+              "why": "this run names no channel (--channel <slug> or CHANNEL): a per-channel routine stops and disables itself"}
+
+
 def _pop_channel(argv: list[str]) -> tuple[list[str], str | None]:
     """`--channel <slug>` (or `--channel=<slug>`) anywhere on the command line: the channel to work on."""
     out, slug, i = [], None, 0
@@ -891,8 +929,26 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("action")
     p.add_argument("--enabled", action="store_true")
     argv, slug = _pop_channel(sys.argv[1:] if argv is None else list(argv))
-    channels.use(slug)
     a = ap.parse_args(argv)
+    # every command is per-channel: the CLI never falls back to the layout's default channel, so a routine
+    # whose prompt names no channel (an old routine of a deleted channel) can't run for another one.
+    # `state` tells it to stop (generator/prompts/routine.md, agents/policy.md); every other command refuses
+    if not (slug or os.environ.get("CHANNEL")):
+        if a.cmd == "state":
+            print(json.dumps({**NO_CHANNEL, "format": a.format}, indent=2))
+            return 0
+        print(f"error: no channel: pass --channel <slug> or set CHANNEL (python -m generator.run {a.cmd} --channel <slug>)",
+              file=sys.stderr)
+        return 2
+    channels.use(slug)
+    # a deleted channel (generator/channels.py deleted): `state` tells the routine to disable itself
+    # (generator/prompts/routine.md, agents/policy.md), and nothing else runs, so no file is written for it
+    if channels.deleted():
+        if a.cmd == "state":
+            print(json.dumps({**channels.STOP, "channel": channels.current()}, indent=2))
+            return 0
+        print(f"error: channel {channels.current()!r} was deleted: nothing to do", file=sys.stderr)
+        return 2
 
     try:
         if a.cmd == "state":

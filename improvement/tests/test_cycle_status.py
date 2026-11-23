@@ -31,3 +31,12 @@ def test_status_counts_each_side_and_judges_the_running_challenger(tmp_path: Pat
 def test_no_running_challenger(tmp_path: Path) -> None:
     write(tmp_path / "improvement/cycle/backlog.json", {"running": None, "cycle": 0})
     assert cycle_status.status(tmp_path)["experiment"] is None
+
+
+def test_a_whole_entry_in_running_is_read_as_its_id(tmp_path: Path) -> None:
+    # 2026-11-21: the improver wrote the challenger entry itself into `running`; exps.get(dict) raised
+    write(tmp_path / "improvement/cycle/backlog.json", {"running": {"id": "x", "kind": "look"}, "cycle": 2, "history": [{"id": "x", "kind": "look", "cycle": 2}]})
+    write(tmp_path / "config/experiments.json", {"experiments": [{"id": "x", "format": "short", "status": "running", "startedAt": "2026-11-01"}]})
+    write(tmp_path / "metrics/videos.json", {"videos": []})
+    s = cycle_status.status(tmp_path, datetime(2026, 11, 5, tzinfo=timezone.utc))
+    assert s["running"] == "x" and s["experiment"]["id"] == "x"

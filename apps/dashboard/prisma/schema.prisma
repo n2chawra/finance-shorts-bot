@@ -59,7 +59,7 @@ model Topic {
   title     String
   embedding Unsupported("vector")? // filled once an embedding model is available
   createdAt DateTime               @default(now())
-  channelId String                 @default("paisa-panchayat")
+  channelId String                 @default("geography-maps-geopolitical-mysteries")
   channel   Channel                @relation(fields: [channelId], references: [id])
   videos    Video[]
 
@@ -98,7 +98,7 @@ model Video {
   pickedAt      DateTime?
   pickReason    String?
   orderLocked   Boolean     @default(false)
-  channelId     String      @default("paisa-panchayat")
+  channelId     String      @default("geography-maps-geopolitical-mysteries")
   channel       Channel     @relation(fields: [channelId], references: [id])
   qaChecks      QaCheck[]
   feedback      Feedback[]
@@ -191,7 +191,7 @@ model ChannelDay {
   subsGained   Int      @default(0)
   subsLost     Int      @default(0)
   playlistAdds Int      @default(0)
-  channelId    String   @default("paisa-panchayat")
+  channelId    String   @default("geography-maps-geopolitical-mysteries")
   channel      Channel  @relation(fields: [channelId], references: [id])
 
   @@id([channelId, day, format])
@@ -208,7 +208,7 @@ model Breakdown {
   share        Float    @default(0)
   extra        Json?
   refreshedAt  DateTime @default(now())
-  channelId    String   @default("paisa-panchayat")
+  channelId    String   @default("geography-maps-geopolitical-mysteries")
   channel      Channel  @relation(fields: [channelId], references: [id])
 
   @@id([channelId, scope, kind, key])
@@ -290,7 +290,7 @@ model Notification {
   /// the owner marked it resolved: it stays closed for a week even if its check still fails
   dismissedAt DateTime?
   /// the channel it is about; null for the whole platform (quota, shared agents)
-  channelId   String?   @default("paisa-panchayat")
+  channelId   String?   @default("geography-maps-geopolitical-mysteries")
   channel     Channel?  @relation(fields: [channelId], references: [id])
 
   @@index([resolvedAt])
@@ -313,7 +313,7 @@ model AgentActivity {
   finishedAt DateTime?
   createdAt  DateTime  @default(now())
   /// null for a shared agent run (auditor, dashboard, improver, monthly)
-  channelId  String?   @default("paisa-panchayat")
+  channelId  String?   @default("geography-maps-geopolitical-mysteries")
   channel    Channel?  @relation(fields: [channelId], references: [id])
 
   @@index([day])
@@ -343,7 +343,7 @@ model Feedback {
   addressedAt DateTime?
   createdAt   DateTime  @default(now())
   /// null: feedback on the whole platform
-  channelId   String?   @default("paisa-panchayat")
+  channelId   String?   @default("geography-maps-geopolitical-mysteries")
   channel     Channel?  @relation(fields: [channelId], references: [id])
 
   @@index([status, createdAt])
@@ -368,7 +368,7 @@ model Study {
   createdAt  DateTime  @default(now())
   doneAt     DateTime?
   /// our channel the study is for (`channel` above is the studied video's channel name)
-  channelId  String    @default("paisa-panchayat")
+  channelId  String    @default("geography-maps-geopolitical-mysteries")
   forChannel Channel   @relation(fields: [channelId], references: [id])
 
   @@index([status, createdAt])
@@ -381,9 +381,10 @@ enum ChannelStatus {
   review
   active
   paused
+  deleting // the owner pressed Delete channel; delete-channel.yml purges its rows, then the Channel row
 }
 
-/// One YouTube channel run by the platform. Paisa Panchayat is the first ("paisa-panchayat").
+/// One YouTube channel run by the platform. Rows without a channel take the default channel ("geography-maps-geopolitical-mysteries", config/channel-layout.json).
 model Channel {
   id               String          @id // slug: the folder name under channels/
   name             String

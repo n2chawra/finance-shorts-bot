@@ -4,12 +4,13 @@
       "id": "tech-long-from-short-gate",
       "kind": "bug",
       "title": "The 'from_short' rule blocks every long topic on this long-first channel",
-      "detail": "generator/topics.py winning_short() requires a long topic to name one of our Shorts with 100+ views in the top third by stayed to watch (a Paisa Panchayat rule, owner 2026-11-12). This channel's profile is long-first (a long video a week, Shorts cut from it; longPerWeek 2) and has one Short with 25 views, so all 10 topics in longform/topics.json are blocked and Studio cannot make this week's 2 long videos. Fix: let a channel opt out (e.g. channel.json \"longFrom\": \"feed\" or skip the rule when profile is long-first) until it has 3+ Shorts with 100+ views; add a test. Worked when `state --format long` shows usable_now true for the feed's topics.",
+      "detail": "generator/topics.py winning_short() requires a long topic to name one of our Shorts with 100+ views in the top third by stayed to watch (a channel #1 rule, owner 2026-11-12). This channel's profile is long-first (a long video a week, Shorts cut from it; longPerWeek 2) and has one Short with 25 views, so all 10 topics in longform/topics.json are blocked and Studio cannot make this week's 2 long videos. Fix: let a channel opt out (e.g. channel.json \"longFrom\": \"feed\" or skip the rule when profile is long-first) until it has 3+ Shorts with 100+ views; add a test. Worked when `state --format long` shows usable_now true for the feed's topics.",
       "where": "script",
       "route": "owner",
       "priority": "high",
       "found": "2026-11-19",
-      "status": "open"
+      "status": "done",
+      "outcome": "Fixed by the owner's rule of 2026-11-22: generator/topics.py no longer blocks a long topic on from_short or a Short's views (winning_short removed, on every channel); scripts/guard.py refuses a branch that brings it back. state --format long shows every feed topic usable."
     },
     {
       "id": "tech-long-title-question",
@@ -31,6 +32,72 @@
       "route": "owner",
       "priority": "normal",
       "found": "2026-11-19",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-walk-the-object",
+      "kind": "craft",
+      "title": "Build each long video as a walk through one object, a viewer question opening every chapter",
+      "detail": "Our only breakout, the Crossrail Short (v-20261122-21, 1,362 views vs 284 for our next best; its stayed-to-watch is not in yet), walks one machine front to back: wheel, chamber, conveyor, erector, rams, each beat opened by the question a viewer would ask ('How?', 'Why doesn't the ground cave in?', 'Where does it go?'). Studio: order long chapters along the object's physical path (front to back, outside in, top down), open each chapter on that question in the viewer's voice, and put the causal step (the profile's 'never skip it') in its own chapter. Worked if the first long video's retention curve has no chapter-boundary cliff deeper than 10 points (stats.yml drop points).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-one-moment-title",
+      "kind": "craft",
+      "title": "Title on one moment of an everyday action ('in one second', 'when you tap')",
+      "detail": "Niche scan 18 Nov, long videos 7-25 min (n=215): titles framed on one moment or the viewer's action ('in one second', 'one frame', 'when you ...') hit 3x their channel's median 2 of 4 times (median 10x; Silicon Up Close's CPU and AI-chip videos) vs 13% for the rest. Small sample: fold into the open tech-long-title-question experiment as its second arm rather than adopting.",
+      "where": "thumbnail",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-format-how-its-built",
+      "kind": "idea",
+      "title": "A long format for machines and megaprojects ('how it's built / how the machine works')",
+      "detail": "The channel's long formats (inside_when_you, how_ai_works, how_network_works) have no home for a machine or a build. 2+ videos over 1M share that shape: 'Inside Virginia's $4 Billion Tunneling Megaproject' (BuildWitt, 3.0M), 'The Real Reason Starship Has 33 Engines' (The Space Race, 2.1M), 'MEGA TUNNEL MACHINES' (WELT, 1.8M), 'Inside SpaceX's $3 Billion Starfactory' (1.2M). Improver: add a long format 'how_the_machine_works' (tier core) to channels/how-tech-and-ai-actually-work-chips-ai-p/research/formats.json: the machine's job and one impossible constraint in the hook, a front-to-back walk of its parts, the constraint solved last. The rocket and Crossrail topics are filed under inside_when_you until then.",
+      "where": "template",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-3d-empty-frames",
+      "kind": "craft",
+      "title": "3D long videos: dark stages read as 'empty' to the craft gate; give every place texture",
+      "detail": "L-20261123-21 (Starlink) failed the empty-frame gate twice (51, then 16 of 85 stills) on smooth night skies, space and plain walls. What passed: a field of soft glowing motes in every place (Dust), surface detail (pegboard, panelling, floorboards, a lat/long grid on the Earth, a measuring grid on glass), and cameras framed on things, not sky. The improver could lift Dust, DotGrid and Lines from remotion/src/videos/L-20261123-21/kit.tsx into remotion/src/three/.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-3d-render-time",
+      "kind": "idea",
+      "title": "A 7-minute 3D long video takes about 7 hours to render in the cloud",
+      "detail": "L-20261123-21 (426 s, 11 chunks of 1,200 frames, swangle software GL on 4 cores) rendered 05:18-12:04 UTC, 27-74 min a chunk; the bench chunk was slowest (materials created per frame with continuous opacity: quantise them). Plan the run's time around it, and keep per-frame materials cached (q()).",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-facts-stale-altitude",
+      "kind": "bug",
+      "title": "Scout feed fact: Starlink altitude 550 km was out of date",
+      "detail": "The fact review found SpaceX is lowering its ~4,400 satellites from 550 km to about 480 km during 2026 (Space.com, 1 Jan 2026). Studio corrected 2026-11-18-starlink-flat-dish in longform/topics.json. The same topic's copy in research/topics.json (research's lane) still says 550 km. Scout: check as_of figures against the last year's news before putting them in a topic.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
       "status": "open"
     }
   ]

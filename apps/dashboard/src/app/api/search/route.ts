@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
   if (!process.env.DATABASE_URL) return NextResponse.json(sampleSearch(q) satisfies SearchResult);
 
   const [chans, rows] = await Promise.all([
-    db.channel.findMany({ select: { id: true, name: true, status: true } }),
+    db.channel.findMany({ where: { status: { not: "deleting" } }, select: { id: true, name: true, status: true } }),
     db.video.findMany({
       where: { deletedAt: null, OR: [{ title: { contains: q, mode: "insensitive" } }, { id: { contains: q, mode: "insensitive" } }] },
       orderBy: { createdAt: "desc" },
@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
   const names = new Map(chans.map((c) => [c.id, nameOf(c.id, c.name)]));
   const result: SearchResult = {
     channels: chans.map((c) => ({ id: c.id, name: nameOf(c.id, c.name), status: c.status })).filter((c) => matches(q, c.name, c.id)),
-    videos: rows.map((v) => ({
+    videos: rows.filter((v) => names.has(v.channelId)).map((v) => ({
       id: v.id, title: v.title, status: v.status, format: v.format, channelId: v.channelId,
       channelName: names.get(v.channelId) ?? v.channelId,
       // the live public counter where there is one, else Analytics' daily views summed

@@ -1,126 +1,1317 @@
 {
- "note": "Long-video topics for Disaster Desk (the planner's feed for --format long); copied from research/topics.json with facts verified against the report.",
- "topics": [
-  {
-   "id": "2026-11-20-hyatt-walkways",
-   "format": "long",
-   "title": "One Phone Call Doubled the Load on This Walkway",
-   "category": "building",
-   "kind": "evergreen",
-   "priority": "normal",
-   "stories": [
-    "corner_cut_structure"
-   ],
-   "currency": "USD",
-   "reach": "global",
-   "demand": {
-    "family": "Bridge, dam or building: every corner cut",
-    "url": "https://www.youtube.com/watch?v=plYQ-StbrOE",
-    "note": "Plainly Difficult 629K, 561K (advice.md)"
-   },
-   "hook": "Hundreds were dancing in the hotel atrium. Above them hung two walkways on thin steel rods.",
-   "templates": [
-    "long_story"
-   ],
-   "cause_chain": [
-    "The original design hangs the 4th- and 2nd-floor walkways from one continuous rod per hanger",
-    "Even that connection reaches only about 60% of what the building code expected",
-    "During construction the fabricator asks, by phone, to switch to two offset rods; the change goes through without full checks",
-    "The 4th-floor box beams now carry both walkways, roughly double the load; during a tea dance the connections pull through"
-   ],
-   "rule_after": "NBS BSS 143 (1982); the engineers lost their licences, and the profession made the structural engineer of record responsible for connection design and shop-drawing review.",
-   "human_moment": "Rescuers worked through the night to free people trapped under the fallen walkways.",
-   "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
-   "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
-   "facts": [
+  "note": "Long-video topics for Disaster Desk (the planner's feed for --format long); copied from research/topics.json with facts verified against the report.",
+  "topics": [
     {
-     "label": "Year the Hyatt Regency walkways collapsed",
-     "value": 1981,
-     "unit": "year",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
+      "id": "2026-11-20-hyatt-walkways",
+      "format": "long",
+      "title": "One Phone Call Doubled the Load on This Walkway",
+      "category": "building",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "corner_cut_structure"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "family": "Bridge, dam or building: every corner cut",
+        "url": "https://www.youtube.com/watch?v=plYQ-StbrOE",
+        "note": "Plainly Difficult 629K, 561K (advice.md)"
+      },
+      "hook": "Hundreds were dancing in the hotel atrium. Above them hung two walkways on thin steel rods.",
+      "templates": [
+        "long_story"
+      ],
+      "cause_chain": [
+        "The original design hangs the 4th- and 2nd-floor walkways from one continuous rod per hanger",
+        "Even that connection reaches only about 60% of what the building code expected",
+        "During construction the fabricator asks, by phone, to switch to two offset rods; the change goes through without full checks",
+        "The 4th-floor box beams now carry both walkways, roughly double the load; during a tea dance the connections pull through"
+      ],
+      "rule_after": "NBS BSS 143 (1982); the engineers lost their licences, and the profession made the structural engineer of record responsible for connection design and shop-drawing review.",
+      "human_moment": "Rescuers worked through the night to free people trapped under the fallen walkways.",
+      "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+      "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+      "facts": [
+        {
+          "label": "Year the Hyatt Regency walkways collapsed",
+          "value": 1981,
+          "unit": "year",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Day of July 1981 the walkways collapsed",
+          "value": 17,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Hour of the collapse (p.m.), approximately 7:05 p.m.",
+          "value": 7,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past the hour of the collapse (approximately 7:05 p.m.)",
+          "value": 5,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "People left dead by the collapse (NBS executive summary)",
+          "value": 113,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Ultimate capacity of the original continuous-rod connection, percent of that expected under the Kansas City Building Code (approximately)",
+          "value": 60,
+          "unit": "percent",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "How many times the rod change multiplied the load on the fourth-floor box beam-hanger rod connections (essentially doubled)",
+          "value": 2,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Year ASCE adopted the policy assigning responsibility for steel connection design to the engineer of record (October 1985)",
+          "value": 1985,
+          "unit": "year",
+          "as_of": "2011-07-01",
+          "source": "ASCE Civil Engineering magazine",
+          "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public",
+          "fixed": true
+        },
+        {
+          "label": "People injured in the collapse (NBS executive summary)",
+          "value": 186,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "People on the second and fourth floor walkways at the collapse (NBS credible estimate from a news videotape)",
+          "value": 63,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Maximum load on a fourth floor box beam-hanger rod connection at the collapse, percent of the ultimate capacity expected under the Kansas City Building Code",
+          "value": 31,
+          "unit": "percent",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Hanger rods suspending the fourth floor walkway from the atrium roof framing",
+          "value": 6,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Year the Hyatt Regency Kansas City opened (July 1980)",
+          "value": 1980,
+          "unit": "year",
+          "as_of": "2007-01-01",
+          "source": "ASCE Civil Engineering magazine (Jan 2007)",
+          "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
+          "fixed": true
+        },
+        {
+          "label": "Inches the second-to-fourth floor rod was offset inward along the box beam (4 in, 102 mm)",
+          "value": 4,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minimum ultimate load a fourth floor box beam-hanger rod connection should have supported under the code, kN (68 kips)",
+          "value": 302,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Average ultimate capacity estimated for the six fourth floor walkway connections, kN (18.6 kips)",
+          "value": 83,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Actual walkway dead load above the nominal dead load, percent (approximately)",
+          "value": 8,
+          "unit": "percent",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Day of July 1981 the NBS researchers first arrived in Kansas City",
+          "value": 21,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Third floor walkway connection under the original detail, percent of the expected ultimate capacity (approximately)",
+          "value": 53,
+          "unit": "percent",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Depth in inches of the steel channels (MC8) paired into each box beam",
+          "value": 8,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Crowd in the atrium area at 7:00 PM, low estimate (NBS timeline from the Kansas City Times/Star)",
+          "value": 1500,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Crowd in the atrium area at 7:00 PM, high estimate (NBS timeline)",
+          "value": 2000,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past 7 PM the band returned from its break to play for a dance contest (7:04 PM, NBS timeline)",
+          "value": 4,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past 7 PM the fire department dispatcher received the first call for help (7:08 PM, NBS timeline)",
+          "value": 8,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Storeys of the hotel's tower section (a 40-story tower)",
+          "value": 40,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Height of the atrium, about 50 ft (15 m)",
+          "value": 15,
+          "unit": "m",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Associate engineers the engineer of record was responsible for (roughly 10, each supervising six or seven projects)",
+          "value": 10,
+          "unit": "count",
+          "as_of": "2007-01-01",
+          "source": "ASCE Civil Engineering magazine",
+          "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
+          "fixed": true
+        },
+        {
+          "label": "Professional engineers whose licences the Missouri Board revoked after the investigation",
+          "value": 2,
+          "unit": "count",
+          "as_of": "2011-07-01",
+          "source": "ASCE Civil Engineering magazine",
+          "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public",
+          "fixed": true
+        },
+        {
+          "label": "Years ASCE suspended the engineer of record from membership",
+          "value": 3,
+          "unit": "count",
+          "as_of": "2007-01-01",
+          "source": "ASCE Civil Engineering magazine",
+          "url": "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past 7 p.m. when the call went out for cutting tools (7:19 p.m., newspaper chronology in the NBS report)",
+          "value": 19,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past 7 p.m. when the call went out for a forklift (7:23 p.m., newspaper chronology in the NBS report)",
+          "value": 23,
+          "unit": "count",
+          "as_of": "1982-05-01",
+          "source": "NBS Building Science Series 143 (NIST)",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Death toll: the NBS report and NIST page say 113 dead (later counts say 114); the script uses the report's 113",
+        "Phone request: ASCE Civil Engineering (Jan 2007) says the fabricator requested approval of the double-rod system by telephone and the engineer verbally approved; the engineering firm disputed receiving the call, so it is tagged 'as reported'",
+        "Added by studio 2026-11-22 from the NBS report (exec summary pp. v-vii, ch. 3 timeline p. 33, sec. 5.3.2, 10.3, 10.5) and ASCE Civil Engineering Jan 2007 (opened July 1980); Missouri board revoked two engineers' licences for gross negligence and misconduct (ASCE Civil Engineering July 2011)"
+      ],
+      "sources": [
+        "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
+        "https://www.nist.gov/el/walkway-collapse-kansas-city-missouri-1981",
+        "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
+        "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-05-19",
+      "status": "new",
+      "promo_short": true,
+      "search": "hyatt regency walkway collapse",
+      "outline": [
+        "Hook (0-45 s): the atrium full on 17 Jul 1981, two stacked walkways on roof rods; 7:05 the upper one gives way onto the lower and both fall; steel and workmanship were not the cause (NBS conclusion 9); promise: a weak detail, a rod change, a review that missed it",
+        "1 The hotel: opened 1980; glass atrium; three walkways (2nd/4th stacked, 3rd offset), no columns, hung on rods; dance event, crowd 1,500-2,000 at 7:00 PM",
+        "2 The design: box beam = two 8-inch channels welded toe to toe; rod through the beam, washer and nut under it; one continuous rod roof-4th-2nd; even this would reach ~60% of the code's expected capacity",
+        "3 The change: fabricator's shop drawings use two rods, the lower set offset 4 in; request by phone, approved verbally (as reported; the firm disputed it); stamped as reviewed; the 4th-floor connection's load essentially doubled",
+        "4 The last minutes (MissionClock): 7:00 crowd; 63 people on the 2nd/4th walkways (news videotape); 7:04 band back for the dance contest; max load only 31% of the code-expected capacity; from day one barely able to carry their own weight",
+        "5 The failure (3D hero cutaway): connection 9UE, east end of the 4th-floor middle box beam; flanges rotate, lower weld splits, rod pulls through; neighbours fail; 4th drops onto 2nd, both fall; 7:08 first call; 113 dead, 186 injured (one beat)",
+        "6 The findings: NBS arrives 21 Jul; weighed spans (dead load ~8% over nominal), lab mock-ups; 302 kN expected vs 83 kN average; two factors; with the original rods the 3rd-floor walkway (53%) would have been weakest",
+        "7 What changed: Missouri board revoked two engineers' licences (gross negligence, misconduct); ASCE Oct 1985 policy: the engineer of record is responsible for all steel design including connections; payoff: they fell at 31% of what the code expected; ask: which link should have been caught first?"
+      ],
+      "studio_note": "2026-11-22: studio could not start this topic: check-plan refuses a long topic without `from_short`, and this long-first channel's only Short (Lac-Mégantic promo, 0 views) can't qualify. Facts 9-24 and the outline were added from the NBS report so the next run can go straight to the script."
     },
     {
-     "label": "Day of July 1981 the walkways collapsed",
-     "value": 17,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
+      "id": "2026-11-20-texas-city-refinery-long",
+      "format": "long",
+      "title": "The Gauge Said Normal. The Tower Was Nearly Full.",
+      "category": "industrial",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "maritime_industrial"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "family": "Ship sinking / maritime, industrial",
+        "url": "https://www.youtube.com/watch?v=QCzC7H1HttY",
+        "note": "0.93-0.99x, 11-13% hits (advice.md)"
+      },
+      "hook": "The gauge said the tower's level was fine. It was filling to the top.",
+      "templates": [
+        "any"
+      ],
+      "cause_chain": [
+        "During start-up, operators fill the raffinate splitter tower far above its normal level; the level reading is wrong",
+        "The tower overfills and over-pressurises; relief valves send liquid to an old blowdown drum",
+        "The drum vents straight to the air through a stack; a 1992 OSHA citation about a similar drum was dropped and it was never tied to a flare",
+        "Flammable liquid erupts from the stack, forms a vapour cloud and ignites among contractors' trailers parked nearby"
+      ],
+      "rule_after": "CSB urgent recommendations (25 Oct 2005): API to write new guidelines so occupied trailers sit safely away from hazardous process areas (API agreed), and an industry safety alert; final report Mar 2007 on blowdown stacks, alarms and fatigue.",
+      "human_moment": "The 15 who died were contract workers in or near trailers placed close to the unit for convenience.",
+      "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+      "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report.",
+      "facts": [
+        {
+          "label": "Year of the explosion",
+          "value": 2005,
+          "unit": "year",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+          "fixed": true
+        },
+        {
+          "label": "People killed",
+          "value": 15,
+          "unit": "count",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+          "fixed": true
+        },
+        {
+          "label": "People injured",
+          "value": 180,
+          "unit": "count",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+          "fixed": true
+        },
+        {
+          "label": "Gallons of flammable liquid sent to the blowdown drum",
+          "value": 51900,
+          "unit": "count",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Trailers totally destroyed",
+          "value": 13,
+          "unit": "count",
+          "as_of": "2005-03-23",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Farthest distance a trailer occupant was injured, feet",
+          "value": 479,
+          "unit": "count",
+          "as_of": "2006-06-30",
+          "source": "CSB",
+          "url": "https://www.csb.gov/csb-releases-trailer-blast-damage-information-from-bp-texas-city-accident/",
+          "fixed": true
+        },
+        {
+          "label": "Height of the raffinate splitter tower, feet (170-foot tall tower)",
+          "value": 170,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "The level transmitter measured only within the bottom this many feet of the tower",
+          "value": 9,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Actual liquid level in the tower at 11:16 a.m., feet",
+          "value": 67,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Actual liquid level in the tower at 11:50 a.m., feet",
+          "value": 98,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Actual liquid level in the tower at 12:42 p.m., feet",
+          "value": 140,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Actual liquid level in the tower at 1:04 p.m., feet",
+          "value": 158,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Level transmitter reading at 1:04 p.m., percent (shown as 7.9 ft)",
+          "value": 78,
+          "unit": "percent",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Hours liquid was pumped into the tower without any removed (over three hours)",
+          "value": 3,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Pressure at the bottom of the overhead pipe before the overfill, psi (about)",
+          "value": 21,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Pressure at the bottom of the overhead pipe as it filled with liquid, psi (about)",
+          "value": 64,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Feet below the top of the tower where the relief valves sat (148 feet)",
+          "value": 148,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Minutes the three pressure relief valves stayed open",
+          "value": 6,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Height of the blowdown stack, feet (113-foot tall stack)",
+          "value": 113,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Distance of the idling diesel pickup truck from the blowdown drum, feet (about)",
+          "value": 25,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Closest distance trailers had been sited from the blowdown drum, feet",
+          "value": 121,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Consecutive days ISOM operators had worked 12-hour shifts (29 or more)",
+          "value": 29,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "People ordered to shelter in place",
+          "value": 43000,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Day of March 2005 of the explosion",
+          "value": 23,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Hour of the explosion (p.m.), 1:20 p.m.",
+          "value": 1,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Minutes past the hour of the explosion (1:20 p.m.)",
+          "value": 20,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Trailers damaged (more than 40)",
+          "value": 40,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Year OSHA cited a similar blowdown drum and stack as unsafe (citation later withdrawn)",
+          "value": 1992,
+          "unit": "year",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Earlier start-ups (of those studied) in which the liquid level rose beyond the transmitter's range",
+          "value": 15,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Raffinate splitter start-ups studied by the CSB (including 23 March 2005)",
+          "value": 19,
+          "unit": "count",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        },
+        {
+          "label": "Level the start-up procedure said to fill the tower to, percent on the transmitter (6.5 feet)",
+          "value": 50,
+          "unit": "percent",
+          "as_of": "2007-03-20",
+          "source": "CSB",
+          "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Eva Rowe (lost both parents, pushed for BP documents) as a named human moment: confirm in two outlets",
+        "Name the trailer guidance (API RP 753) only after checking",
+        "Added by studio 2026-11-22 from the CSB final report (Mar 2007): sec 1.1, 1.3, key findings, timeline table, sec 2.2.5, trailer damage, 1.7.2.2 (urgent recommendation to API, Oct 25 2005)"
+      ],
+      "sources": [
+        "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+        "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-05-19",
+      "status": "new",
+      "promo_short": true,
+      "search": "bp texas city refinery explosion"
     },
     {
-     "label": "Hour of the collapse (p.m.), approximately 7:05 p.m.",
-     "value": 7,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
+      "id": "2026-11-20-mars-climate-orbiter",
+      "format": "long",
+      "title": "One Unit Mistake Lost a $125M Spacecraft",
+      "category": "space",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "space_failure"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "family": "Space mission failure",
+        "url": "https://www.youtube.com/watch?v=qfCTDPMFLfQ",
+        "note": "core 1.59x, a gap (advice.md)"
+      },
+      "hook": "One file used pounds where it should have used newtons, and a $125 million spacecraft flew into Mars's air at 57 kilometres.",
+      "templates": [
+        "long_story"
+      ],
+      "cause_chain": [
+        "The interface spec says newton-seconds",
+        "The ground 'Small Forces' file writes pound-seconds",
+        "Thruster pushes are 10-14x more frequent than planned, so the 4.45x underestimate builds up",
+        "Navigation discrepancies are reported only informally and TCM-5 is not executed"
+      ],
+      "rule_after": "NASA Mishap Investigation Board (Phase I, 10 Nov 1999): end-to-end verification of software interfaces and units, and a formal path for engineers to escalate concerns.",
+      "human_moment": "Navigators had noticed the trajectory didn't fit, and said so, but the worry never stopped the mission.",
+      "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+      "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report. Scout 2026-11-23: full facts from the official report, a stakes-first hook (owner's note of 2026-11-22) and a chapter outline.",
+      "facts": [
+        {
+          "label": "Year the orbiter was launched",
+          "value": 1998,
+          "unit": "year",
+          "as_of": "1999-11-10",
+          "source": "NASA MCO Mishap Investigation Board Phase I report",
+          "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Year contact was lost",
+          "value": 1999,
+          "unit": "year",
+          "as_of": "1999-11-10",
+          "source": "NASA MCO Mishap Investigation Board Phase I report",
+          "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Cost of the spacecraft",
+          "value": 125,
+          "unit": "money_million",
+          "as_of": "1999-11-10",
+          "source": "Physics Today",
+          "url": "https://physicstoday.aip.org/news/mars-climate-orbiter-lost",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Planned first closest approach to Mars after TCM-4, km",
+          "value": 226,
+          "unit": "km",
+          "as_of": "1999-11-10",
+          "source": "NASA MCO Mishap Investigation Board Phase I report",
+          "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Closest approach from tracking one hour before orbit insertion, km (as low as)",
+          "value": 110,
+          "unit": "km",
+          "as_of": "1999-11-10",
+          "source": "NASA MCO Mishap Investigation Board Phase I report",
+          "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Lowest closest approach the orbiter could survive, km",
+          "value": 80,
+          "unit": "km",
+          "as_of": "1999-11-10",
+          "source": "NASA MCO Mishap Investigation Board Phase I report",
+          "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Closest approach estimated afterwards with corrected small-force data, km",
+          "value": 57,
+          "unit": "km",
+          "as_of": "1999-11-10",
+          "source": "NASA MCO Mishap Investigation Board Phase I report",
+          "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Seconds earlier than predicted that the signal was lost behind Mars",
+          "value": 49,
+          "unit": "count",
+          "as_of": "1999-11-10",
+          "source": "NASA MCO Mishap Investigation Board Phase I report",
+          "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Minutes of predicted occultation after which no signal returned",
+          "value": 21,
+          "unit": "count",
+          "as_of": "1999-11-10",
+          "source": "NASA MCO Mishap Investigation Board Phase I report",
+          "url": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        }
+      ],
+      "verify": [
+        "All board figures from the MIB Phase I report pp. 6 and 13-14 (read 2026-11-23): launch 11 Dec 1998; MOI 23 Sep 1999 09:00:46 UTC; LOS 09:04:52, 49 s early; 226 km planned, 150-170 km in the week before, as low as 110 km one hour before, 80 km survivable, 57 km afterwards (p. 14)",
+        "Root cause in the board's words (p. 6, 16): failure to use metric units in the ground software file 'Small Forces'; the AMD file was delivered in lbf-s instead of the SIS's N-s, underestimating the effect by 4.45 (code computes 4.448 from physics)",
+        "Contributing: working-level navigation discrepancies 'only informally reported', Doppler-only solutions consistently closer, TCM-5 discussed verbally but not executed (pp. 13, 18-19)",
+        "$125M cost is from Physics Today, not the board report: label it 'Data: Physics Today'",
+        "Name no individual engineers; the board names the units, the file and the process, and both teams (spacecraft team, Colorado; navigation team, JPL)"
+      ],
+      "sources": [
+        "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf",
+        "https://physicstoday.aip.org/news/mars-climate-orbiter-lost",
+        "https://www.jpl.nasa.gov/news/mars-climate-orbiter-team-finds-likely-cause-of-loss/"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-05-19",
+      "status": "new",
+      "promo_short": true,
+      "search": "mars climate orbiter metric error explained",
+      "outline": [
+        "Hook (0-15 s, owner 2026-11-22: small cause + scale first): 23 Sep 1999, 09:04:52 UTC, the orbiter slips behind Mars 49 s early and never comes back; one file in pounds instead of newtons, a $125M spacecraft, 57 km instead of 226 km; promise: four chances to catch it, and all four missed",
+        "1 The mission (0:15-1:30): launched 11 Dec 1998, a weather satellite for Mars and relay for the Polar Lander; picture the whole video hangs on: a thread of trajectory from Earth to Mars that drifts a hair every few days",
+        "2 How it was meant to work (flat diagram): reaction wheels spin up, small thrusters dump the momentum (AMD events), each push is reported to the navigators in newton-seconds per the interface spec",
+        "3 The leak: the 'Small Forces' file reports pound-seconds; every push looks 4.45x smaller than it was (code: 1 lbf = 4.448 N); the asymmetric solar array means AMD events 10-14 times more often than planned, so the error piles up; cliffhanger: the navigators noticed",
+        "4 The warnings (recap-and-tease at ~4:00): Doppler-only fixes kept saying 'closer'; concerns only informally reported; 226 km becomes 150-170 km in the final week",
+        "5 The last hour (MissionClock + altitude gauge): tracking says as low as 110 km, survival line 80 km; TCM-5 discussed verbally, not executed; 09:00:46 engine start, 09:04:52 loss of signal, 21 min of silence that never ends",
+        "6 The finding: 29 Sep, the factor of 4.45 is found; corrected estimate 57 km, inside the air; the report page with 'failure to use metric units' highlighted",
+        "7 What changed: the board's recommendations for the Polar Lander (verify small-forces models, a TCM-5 plan and readiness); ending ask: which of the four checks should have caught it first?"
+      ],
+      "scouted": "2026-11-23"
     },
     {
-     "label": "Minutes past the hour of the collapse (approximately 7:05 p.m.)",
-     "value": 5,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
+      "id": "2026-11-20-colgan-3407",
+      "format": "long",
+      "title": "Why Airline Pilots Now Need 1,500 Hours",
+      "category": "aviation",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "air_crash_rule"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "family": "Air crash, minute by minute, ending on the rule",
+        "url": "https://www.youtube.com/watch?v=_blF6L04Dfk",
+        "note": "Fascinating Horror's Eastern 212: 2.4M (advice.md)"
+      },
+      "hook": "A stall warning on a calm night approach to Buffalo, one pull back on the controls, and 27 seconds later 50 people were dead. It changed how every US airline pilot is trained.",
+      "templates": [
+        "long_story"
+      ],
+      "cause_chain": [
+        "A regional Q400 approaches Buffalo at night in icing; the crew chats through the approach",
+        "Airspeed decays unnoticed; the stick shaker warns of a stall",
+        "The captain pulls back instead of pushing forward; the aircraft stalls and rolls",
+        "Training, fatigue and the airline's procedures had left the crew unprepared for that moment"
+      ],
+      "rule_after": "Airline Safety and FAA Extension Act of 2010 (signed 1 Aug 2010): airline first officers need an ATP certificate with 1,500 hours (in force 1 Aug 2013), plus new fatigue rules and stall-recovery training.",
+      "human_moment": "The victims' families lobbied Congress for more than a year until the law passed.",
+      "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+      "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report. Scout 2026-11-23: full facts from the official report, a stakes-first hook (owner's note of 2026-11-22) and a chapter outline.",
+      "facts": [
+        {
+          "label": "Year of the crash",
+          "value": 2009,
+          "unit": "year",
+          "as_of": "2010-02-02",
+          "source": "NTSB AAR-10/01",
+          "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "People aboard who were killed (2 pilots, 2 flight attendants, 45 passengers)",
+          "value": 49,
+          "unit": "count",
+          "as_of": "2010-02-02",
+          "source": "NTSB AAR-10/01",
+          "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "People killed on the ground",
+          "value": 1,
+          "unit": "count",
+          "as_of": "2010-02-02",
+          "source": "NTSB AAR-10/01",
+          "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Distance of the crash site from the airport, nautical miles (about)",
+          "value": 5,
+          "unit": "count",
+          "as_of": "2010-02-02",
+          "source": "NTSB AAR-10/01",
+          "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Landing reference speed briefed for flaps 15, knots",
+          "value": 118,
+          "unit": "count",
+          "as_of": "2010-02-02",
+          "source": "NTSB AAR-10/01",
+          "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Airspeed when the autopilot disengaged at the stick shaker, knots",
+          "value": 131,
+          "unit": "count",
+          "as_of": "2010-02-02",
+          "source": "NTSB AAR-10/01",
+          "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Roll angle reached after the pull, degrees left wing down",
+          "value": 45,
+          "unit": "count",
+          "as_of": "2010-02-02",
+          "source": "NTSB AAR-10/01",
+          "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Safety recommendations to the FAA in the report (A-10-10 to A-10-34)",
+          "value": 25,
+          "unit": "count",
+          "as_of": "2010-02-02",
+          "source": "NTSB AAR-10/01",
+          "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Flight hours now required for an airline first officer",
+          "value": 1500,
+          "unit": "count",
+          "as_of": "2025-01-06",
+          "source": "AIN",
+          "url": "https://backend.ainonline.com/aviation-news/air-transport/2025-01-06/colgan-air-flight-3407-crash-and-its-enduring-impact",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        }
+      ],
+      "verify": [
+        "NTSB AAR-10/01 read 2026-11-23 (exec summary p. ix and pp. 1-5): 12 Feb 2009 about 2217 EST; 49 aboard + 1 on the ground; stick shaker 2216:27.4 at 131 kt, control column aft 2216:27.8, roll 45° left, stick pusher ~2216:34, flaps retracted, CVR ends ~2216:54 (code computes ~27 s)",
+        "Probable cause in the NTSB's words: 'the captain's inappropriate response to the activation of the stick shaker'; four contributing factors incl. airspeed monitoring, sterile cockpit, and Colgan's icing airspeed procedures. Fatigue was discussed but NOT in the probable cause (Chairman Hersman wanted it): say exactly that",
+        "1,500 hours: Airline Safety and FAA Extension Act of 2010 and the FAA's 2013 rule; confirm the year of the FAA rule on faa.gov before showing it",
+        "First officer's overnight commute Seattle→Memphis→Newark (report p. 1) is a fact of the report; state it without blame, and never name either pilot (report's words only)",
+        "Beverly Eckert connection: leave out unless a reputable outlet confirms"
+      ],
+      "sources": [
+        "https://backend.ainonline.com/aviation-news/air-transport/2025-01-06/colgan-air-flight-3407-crash-and-its-enduring-impact",
+        "https://webarchive.library.unt.edu/web/20120915201702/http://www.ntsb.gov/doclib/reports/2010/AAR1001.pdf",
+        "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N200WQ",
+        "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-05-19",
+      "status": "new",
+      "promo_short": true,
+      "search": "colgan air flight 3407 crash explained",
+      "outline": [
+        "Hook (0-15 s): the stall warning, one pull back, 27 s, 50 dead; the twist: the plane was flying fine; promise: why one reflex rewrote US pilot rules",
+        "1 The flight (0:15-1:30): Continental Connection 3407, a Q400 turboprop, Newark to Buffalo on a winter night, clear enough to see the lights; ice detected, the de-icing on",
+        "2 How it should work (flat diagram): the low-speed cue rises in icing; the stick shaker warns before a stall; the trained response is nose down, power up",
+        "3 The chain, one link per beat: airspeed briefed 118 kt; casual talk below 10,000 ft (sterile cockpit); gear down, flaps called, speed bleeds to 131 kt while the cue climbs, nobody calls it",
+        "4 Recap-and-tease (~4:00): three small lapses so far, the fourth takes under a second",
+        "5 The last 27 seconds (MissionClock + airspeed tape): 2216:27.4 shaker; 2216:27.8 the column comes back; 45° roll; pusher pushes, is overpowered; flaps up; 2216:54 the recording ends; the house in Clarence Center, 5 nm out; 49 aboard and 1 on the ground (one beat)",
+        "6 The findings: the report page, probable cause highlighted; fatigue and commuting discussed but not proven; 25 recommendations",
+        "7 What changed (the families' campaign as fact, not drama): 2010 Act, 1,500 hours for airline first officers, new rest rules and stall training; ending ask: rule, reflex or rest, which one would you have fixed first?"
+      ],
+      "scouted": "2026-11-23"
     },
     {
-     "label": "People left dead by the collapse (NBS executive summary)",
-     "value": 113,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
+      "id": "2026-11-20-herald-of-free-enterprise",
+      "format": "long",
+      "title": "The Ferry That Sailed With Its Doors Open",
+      "category": "maritime",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "maritime_industrial"
+      ],
+      "currency": "GBP",
+      "reach": "global",
+      "demand": {
+        "family": "Ship sinking / maritime, industrial",
+        "url": "https://www.youtube.com/watch?v=QCzC7H1HttY",
+        "note": "0.93-0.99x, 11-13% hits (advice.md)"
+      },
+      "hook": "One man asleep in his cabin, one bow door left open, and four minutes after a ferry passed the harbour wall at Zeebrugge, 193 people were dead.",
+      "templates": [
+        "long_story"
+      ],
+      "cause_chain": [
+        "The assistant bosun, whose job is to close the bow doors, is asleep when the ferry leaves Zeebrugge",
+        "The officer meant to check assumes it's done; the master has no indicator and no report",
+        "Company standing orders say nothing about the doors; bow-down and speeding up, the ship takes the sea onto the open car deck",
+        "Water on the undivided vehicle deck destroys her stability and she capsizes"
+      ],
+      "rule_after": "Sheen formal investigation (1987): bow-door indicator lights and monitoring on ro-ro ferries and stronger stability rules; the company-wide failings it found were a major reason for the IMO's ISM Code, the safety-management system every ship operator must run.",
+      "human_moment": "Passengers and crew formed human chains and ladders to pull people up out of the flooded ship.",
+      "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+      "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report. Scout 2026-11-23: full facts from the official report, a stakes-first hook (owner's note of 2026-11-22) and a chapter outline.",
+      "facts": [
+        {
+          "label": "Year of the capsize",
+          "value": 1987,
+          "unit": "year",
+          "as_of": "1987-09-01",
+          "source": "Formal Investigation (Sheen report), MSA 1894",
+          "url": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Crew aboard",
+          "value": 80,
+          "unit": "count",
+          "as_of": "1987-09-01",
+          "source": "Formal Investigation (Sheen report), MSA 1894",
+          "url": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Passengers aboard (approximately)",
+          "value": 459,
+          "unit": "count",
+          "as_of": "1987-09-01",
+          "source": "Formal Investigation (Sheen report), MSA 1894",
+          "url": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Cars aboard",
+          "value": 81,
+          "unit": "count",
+          "as_of": "1987-09-01",
+          "source": "Formal Investigation (Sheen report), MSA 1894",
+          "url": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Freight vehicles aboard",
+          "value": 47,
+          "unit": "count",
+          "as_of": "1987-09-01",
+          "source": "Formal Investigation (Sheen report), MSA 1894",
+          "url": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Minutes from passing the outer mole to capsizing (about)",
+          "value": 4,
+          "unit": "count",
+          "as_of": "1987-09-01",
+          "source": "Formal Investigation (Sheen report), MSA 1894",
+          "url": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Speed the ferry accelerated towards, knots (possible ultimate)",
+          "value": 18,
+          "unit": "count",
+          "as_of": "1987-09-01",
+          "source": "Formal Investigation (Sheen report), MSA 1894",
+          "url": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Lives lost",
+          "value": 193,
+          "unit": "count",
+          "as_of": "1987-09-01",
+          "source": "MAIB report page",
+          "url": "https://gov.uk/maib-reports/flooding-and-subsequent-capsize-of-ro-ro-passenger-ferry-herald-of-free-enterprise-off-the-port-of-zeebrugge-belgium-with-loss-of-193-lives",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Year a master asked for bow-door indicator lights on the bridge",
+          "value": 1985,
+          "unit": "year",
+          "as_of": "1987-09-01",
+          "source": "Formal Investigation (Sheen report), MSA 1894",
+          "url": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        }
+      ],
+      "verify": [
+        "Sheen report read 2026-11-23 (JESIP text copy of MSA 1894): para 1.1-1.2 sailed 18.05 GMT, crew 80, 81 cars, 47 freight vehicles, ~459 passengers, passed the outer mole 18.24, capsized about four minutes later; para 9.3 accelerated from 14 kt to a possible 18 kt, squat and bow wave put water over the spade onto G deck",
+        "Toll: Sheen para 1.2 says 'not less than 150 passengers and 38 members of the crew' (188) at the time; the MAIB page says 193 lives: show 193 from MAIB and do not show 188",
+        "Para 18.2-18.6: the PRIDE sailed with doors open on 29 Oct 1983; a master's memo of 28 Jun 1985 asked for bow/stern door indicators on the bridge; managers' replies (e.g. 'Do they need an indicator to tell them whether the deck storekeeper is awake and sober?') may appear only as on-screen transcript text, attributed to 'a deputy chief superintendent', never named",
+        "'From top to bottom the body corporate was infected with the disease of sloppiness' (Sheen): on-screen report quote",
+        "Do not name the assistant bosun, the chief officer or the master in narration; the report's roles only (living people)",
+        "Rule after: MAIB formed 1989 (MAIB page); bridge door indicators fitted across the class after the disaster (Sheen 18.x); confirm any wider rule (SOLAS 1988 amendments) before showing"
+      ],
+      "sources": [
+        "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf",
+        "https://gov.uk/maib-reports/flooding-and-subsequent-capsize-of-ro-ro-passenger-ferry-herald-of-free-enterprise-off-the-port-of-zeebrugge-belgium-with-loss-of-193-lives"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-05-19",
+      "status": "new",
+      "promo_short": true,
+      "search": "herald of free enterprise disaster explained",
+      "outline": [
+        "Hook (0-15 s): 6 Mar 1987, 18.24, a ferry passes the harbour wall at Zeebrugge with its bow doors open; four minutes later it is on its side; 193 dead (once, plainly); promise: the warning that was written down two years earlier",
+        "1 The ship (0:15-1:30): a roll-on roll-off ferry, cars in one end and out the other; 80 crew, ~459 passengers, 81 cars, 47 lorries; a calm night, very little sea",
+        "2 How it was meant to work (flat diagram): the bow doors close at harbour stations; the bridge has no way to see them; the system is 'someone would have said'",
+        "3 The chain: the Zeebrugge berth needs the ship trimmed by the head; the man whose job it is falls asleep; the officer who should check leaves for the bridge; nobody reports, because nobody has to",
+        "4 Recap-and-tease (~3:30): it had happened before, on a sister ship in 1983",
+        "5 The four minutes (MissionClock + speed gauge + bow-height cutaway in 3D): past the mole, 14 kt to 18 kt, squat and bow wave, water over the spade onto the car deck; free surface rolls her; she lands on a sandbank on her side",
+        "6 The findings: the 1985 memo asking for a light on the bridge, and the replies (on-screen transcript); 'the disease of sloppiness' highlighted on the report page",
+        "7 What changed: indicator lights fitted after the disaster; the MAIB formed in 1989; ending ask: one light, one alarm, one checklist: which should have come first?"
+      ],
+      "scouted": "2026-11-23"
     },
     {
-     "label": "Ultimate capacity of the original continuous-rod connection, percent of that expected under the Kansas City Building Code (approximately)",
-     "value": 60,
-     "unit": "percent",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "How many times the rod change multiplied the load on the fourth-floor box beam-hanger rod connections (essentially doubled)",
-     "value": 2,
-     "unit": "count",
-     "as_of": "1982-05-01",
-     "source": "NBS Building Science Series 143 (NIST)",
-     "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-     "fixed": true
-    },
-    {
-     "label": "Year ASCE adopted the policy assigning responsibility for steel connection design to the engineer of record (October 1985)",
-     "value": 1985,
-     "unit": "year",
-     "as_of": "2011-07-01",
-     "source": "ASCE Civil Engineering magazine",
-     "url": "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public",
-     "fixed": true
+      "id": "2026-11-20-lac-megantic",
+      "format": "long",
+      "title": "The Parked Train That Rolled Into Town",
+      "category": "rail",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "rail_crash"
+      ],
+      "currency": "CAD",
+      "reach": "global",
+      "demand": {
+        "family": "Rail crash",
+        "url": "https://www.youtube.com/watch?v=2l3_547XTdY",
+        "note": "1.04x, 15% hits, 154,694 median (advice.md)"
+      },
+      "hook": "Seven hand brakes on a train that needed at least seventeen: shortly before 1 a.m. it rolled 7.2 miles downhill into Lac-Mégantic at 65 miles an hour, and 47 people died.",
+      "templates": [
+        "long_story"
+      ],
+      "cause_chain": [
+        "A one-person crew parks a crude-oil train on a downhill main line and sets too few hand brakes",
+        "The test meant to prove the hand brakes hold is done with the air brakes still applied",
+        "A locomotive fire is put out by shutting the engine down, so the air brakes slowly bleed off",
+        "The train rolls downhill into town and 63 tank cars derail in the centre"
+      ],
+      "rule_after": "TSB R13D0054 (Aug 2014): Canada required physical defences against runaways, stricter hand-brake rules, two-person crews for dangerous goods, tougher tank-car standards and audited safety management.",
+      "human_moment": "It was a summer Friday night; the Musi-Café bar in the town centre was full.",
+      "angle": "Open at the moment of failure with a date/place/speed caption, cut back, walk the cause chain step by step with the physics, hold the toll for a turn, end on the rule that changed (named and dated).",
+      "why_now": "First batch (advice.md topic kinds and shares); settled event with an official report. Scout 2026-11-23: full facts from the official report, a stakes-first hook (owner's note of 2026-11-22) and a chapter outline.",
+      "facts": [
+        {
+          "label": "Year of the disaster",
+          "value": 2013,
+          "unit": "year",
+          "as_of": "2014-08-19",
+          "source": "TSB R13D0054 summary",
+          "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Distance the runaway train rolled to Lac-Mégantic, miles",
+          "value": 7.2,
+          "unit": "count",
+          "as_of": "2014-08-19",
+          "source": "TSB R13D0054",
+          "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Speed as the train approached the town centre, mph",
+          "value": 65,
+          "unit": "count",
+          "as_of": "2014-08-19",
+          "source": "TSB R13D0054 summary",
+          "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Tank cars of crude oil in the train",
+          "value": 72,
+          "unit": "count",
+          "as_of": "2014-08-19",
+          "source": "TSB R13D0054",
+          "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Tank cars derailed",
+          "value": 63,
+          "unit": "count",
+          "as_of": "2014-08-19",
+          "source": "TSB R13D0054 summary",
+          "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Hand brakes applied to secure the train",
+          "value": 7,
+          "unit": "count",
+          "as_of": "2014-08-19",
+          "source": "TSB R13D0054",
+          "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Minimum hand brakes needed without the air brakes",
+          "value": 17,
+          "unit": "count",
+          "as_of": "2014-08-19",
+          "source": "TSB R13D0054",
+          "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "People killed",
+          "value": 47,
+          "unit": "count",
+          "as_of": "2014-08-19",
+          "source": "TSB R13D0054",
+          "url": "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Findings as to causes and contributing factors",
+          "value": 18,
+          "unit": "count",
+          "as_of": "2014-08-19",
+          "source": "TSB news release, 19 Aug 2014",
+          "url": "https://bst-tsb.gc.ca/eng/medias-media/communiques/rail/2014/r13d0054-20140819.html",
+          "fixed": true,
+          "latest": true,
+          "checked": "2026-11-23"
+        }
+      ],
+      "verify": [
+        "TSB pages return 403 to this session's fetcher (2026-11-23); figures confirmed by web search against the TSB report/summary: 7 hand brakes applied (locomotives + buffer car), at least 17 and possibly 26 needed without the air brakes; the hand-brake test was done with the locomotive air brakes still applied; ~01:00 the train started rolling, 7.2 miles; 65 mph; 63 of 72 tank cars derailed; 47 killed; 18 cause findings. Fact reviewer: confirm on the TSB summary page or two reputable outlets",
+        "~6 million litres spilled and ~100,000 L reaching the lake/river: confirm in the report before showing",
+        "The lead locomotive fire, its shutdown by firefighters and the loss of air pressure: state as the TSB sequence; no blame beyond the report (the engineer's criminal acquittal exists: do not mention charges)",
+        "Musi-Café detail: leave out unless confirmed"
+      ],
+      "sources": [
+        "https://bst-tsb.gc.ca/eng/medias-media/communiques/rail/2014/r13d0054-20140819.html",
+        "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054-r-es.html",
+        "https://bst-tsb.gc.ca/eng/rapports-reports/rail/2013/r13d0054/r13d0054.html"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-05-19",
+      "status": "new",
+      "promo_short": true,
+      "search": "lac megantic train disaster explained",
+      "from_short": "v-20261121-42",
+      "outline": [
+        "Hook (0-15 s): 7 brakes where 17 were needed; a train with nobody aboard, 7.2 miles downhill, 65 mph into a town asleep; 47 dead (once); promise: a test that lied, a fire put out the right way, and a brake nobody was holding",
+        "1 The train (0:15-1:30): 72 tank cars of crude, 5 locomotives, one person crew, parked for the night at Nantes on the main line above the town; the picture the video hangs on: a slope with a train held by a handful of wheels",
+        "2 How it was meant to work (flat diagram): air brakes leak off over hours; hand brakes are mechanical and permanent; the rule: enough hand brakes to hold the train with no air at all",
+        "3 The chain: 7 hand brakes set; the test is run with the locomotive air brakes still on, so it passes; the lead locomotive, poorly repaired, is left running to keep air",
+        "4 Recap-and-tease (~3:30): the train is safe only while one engine keeps running",
+        "5 The night (MissionClock + air-pressure gauge + speed gauge): the engine catches fire; it is shut down; air pressure bleeds away; ~01:00 the train moves; 7.2 miles; 65 mph at the curve in town; 63 tank cars derail, fire (3D, the derailing bogie, no victims)",
+        "6 The findings: 18 cause factors; the report page with the hand-brake test finding highlighted; 17 vs 7 as a gauge",
+        "7 What changed: Canada's rules on securing unattended trains, crew size and tank-car standards (name and date each from the TSB/Transport Canada pages); ending ask: which of the 18 should have been the first to stop it?"
+      ],
+      "scouted": "2026-11-23"
     }
-   ],
-   "verify": [
-    "Death toll: the NBS report and NIST page say 113 dead (later counts say 114); the script uses the report's 113",
-    "Phone request: ASCE Civil Engineering (Jan 2007) says the fabricator requested approval of the double-rod system by telephone and the engineer verbally approved; the engineering firm disputed receiving the call, so it is tagged 'as reported'"
-   ],
-   "sources": [
-    "https://nvlpubs.nist.gov/nistpubs/Legacy/BSS/nbsbuildingscience143.pdf",
-    "https://www.nist.gov/el/walkway-collapse-kansas-city-missouri-1981",
-    "https://www.asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2007/01/the-hyatt-regency-walkway-collapse",
-    "https://asce.org/publications-and-news/civil-engineering-source/civil-engineering-magazine/article/2011/07/ensuring-the-safety-health-and-welfare-of-the-public"
-   ],
-   "found": "2026-11-20",
-   "expires": "2027-05-19",
-   "status": "new",
-   "promo_short": true,
-   "search": "hyatt regency walkway collapse"
-  }
- ]
+  ]
 }

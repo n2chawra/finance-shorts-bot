@@ -1,42 +1,6 @@
 {
   "note": "Written by ingest from the Channel table. Routines read their channel's entry (generator/settings.py).",
   "channels": {
-    "paisa-panchayat": {
-      "name": "Paisa Panchayat",
-      "status": "active",
-      "settings": {
-        "longPerWeek": 1,
-        "uploadTimes": [
-          "07:07",
-          "19:07"
-        ],
-        "longUploadDays": [
-          6
-        ],
-        "dailyVideoTarget": 2,
-        "generationPaused": false,
-        "longLengthMaxSec": 240,
-        "trendUploadTimes": [
-          "16:07",
-          "22:07"
-        ]
-      },
-      "health": {
-        "at": "2026-11-21T14:37:18.851Z",
-        "color": "red",
-        "reason": "The upload queue is empty; 0 Shorts ready: under a day",
-        "stayed": 0.3791360294117647,
-        "bufferDays": 0,
-        "usageShare": 0.32,
-        "stayedBefore": 0.4441265567149108,
-        "weeksUnderFloor": 2
-      },
-      "backlog": 0,
-      "backlogByFormat": {
-        "short": 0,
-        "long": 0
-      }
-    },
     "geography-maps-geopolitical-mysteries": {
       "name": "Geography, maps & geopolitical mysteries",
       "status": "active",
@@ -64,12 +28,12 @@
         }
       },
       "health": {
-        "at": "2026-11-21T14:37:18.851Z",
+        "at": "2026-11-23T13:33:20.013Z",
         "color": "red",
         "reason": "0 Shorts ready: under a day",
-        "stayed": null,
+        "stayed": 0.5751269035532995,
         "bufferDays": 0,
-        "usageShare": 0.26,
+        "usageShare": 0.04,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
@@ -112,19 +76,19 @@
         }
       },
       "health": {
-        "at": "2026-11-21T14:37:18.851Z",
+        "at": "2026-11-23T13:33:20.013Z",
         "color": "red",
-        "reason": "0 Shorts ready: under a day",
-        "stayed": null,
+        "reason": "How tech and AI actually work: chips, AI, phones, the internet and gadgets explained: under a day of Shorts ready; 0 Shorts ready: under a day",
+        "stayed": 0.5472154963680388,
         "bufferDays": 0,
-        "usageShare": 0.33,
+        "usageShare": 0.2,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
-      "backlog": 0,
+      "backlog": 1,
       "backlogByFormat": {
         "short": 0,
-        "long": 0
+        "long": 1
       }
     },
     "business-documentaries-rise-and-fall-of": {
@@ -156,19 +120,19 @@
         }
       },
       "health": {
-        "at": "2026-11-21T14:37:18.851Z",
+        "at": "2026-11-23T13:33:20.013Z",
         "color": "red",
-        "reason": "Craze & Crash: under a day of Shorts ready; 0 Shorts ready: under a day",
-        "stayed": null,
+        "reason": "0 Shorts ready: under a day",
+        "stayed": 0.2843137254901961,
         "bufferDays": 0,
-        "usageShare": 0.1,
+        "usageShare": 0.07,
         "stayedBefore": null,
-        "weeksUnderFloor": 0
+        "weeksUnderFloor": 1
       },
-      "backlog": 0,
+      "backlog": 1,
       "backlogByFormat": {
         "short": 0,
-        "long": 0
+        "long": 1
       }
     },
     "disasters-and-engineering-failures-expla": {
@@ -201,12 +165,12 @@
         }
       },
       "health": {
-        "at": "2026-11-21T14:37:18.851Z",
+        "at": "2026-11-23T13:33:20.013Z",
         "color": "red",
-        "reason": "Disasters and engineering failures explained: under a day of Shorts ready; Disasters and engineering failures explained: No new videos for many hours; Disasters and engineering failures explained: The upload queue is empty; 0 Shorts ready: under a day",
+        "reason": "0 Shorts ready: under a day",
         "stayed": null,
         "bufferDays": 0,
-        "usageShare": 0,
+        "usageShare": 0.67,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
@@ -215,35 +179,6 @@
         "short": 0,
         "long": 0
       }
-    },
-    "going-down": {
-      "name": "Going Down",
-      "status": "active",
-      "settings": {
-        "longPerWeek": 0,
-        "dailyVideoTarget": 3,
-        "uploadTimes": [
-          "05:37",
-          "12:17",
-          "18:27"
-        ],
-        "uploadsPaused": false,
-        "generationPaused": false,
-        "trendUploadTimes": []
-      },
-      "setup": {
-        "stage": "launched",
-        "decision": {
-          "at": "2026-11-21T14:35:14.010Z",
-          "choice": "continue"
-        }
-      },
-      "backlog": 0,
-      "backlogByFormat": {
-        "short": 0,
-        "long": 0
-      },
-      "youtubeChannelId": "UCrL_x5hlWotAXKrFO-Chaww"
     }
   }
 }

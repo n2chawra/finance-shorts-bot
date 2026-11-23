@@ -1,18 +1,20 @@
 {
   "claudeCode": {
-    "latest": "2.1.329",
-    "checked": "2026-11-21",
+    "latest": "2.1.330",
+    "checked": "2026-11-23",
     "notes": [
       "2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow",
       "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline.",
-      "2.1.329: /tasks lists scheduled tasks and wakeups; MCP octet-stream files saved properly; fixes only. Nothing for the pipeline."
+      "2.1.329: /tasks lists scheduled tasks and wakeups; MCP octet-stream files saved properly; fixes only. Nothing for the pipeline.",
+      "2.1.330: WebFetch no longer freezes or returns empty on some pages (helps research reads); built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline."
     ]
   },
   "sources": {
     "cia-world-factbook": "retired (live pages show a sunset notice), seen 2026-11-19",
     "worldbank-api": "api.worldbank.org/v2 JSON works from routines (data.worldbank.org pages return 403 to fetch), seen 2026-11-20",
     "britannica": "403 to fetch from routines; use Wikipedia or official pages, seen 2026-11-20",
-    "youtube-pages": "youtube.com/shorts pages return only navigation to fetch; identify a reference from the niche scan title, seen 2026-11-21"
+    "youtube-pages": "youtube.com/shorts pages return only navigation to fetch; identify a reference from the niche scan title, seen 2026-11-21",
+    "mpa-singapore": "mpa.gov.sg media releases carry the yearly port figures (2025: 44.66M TEU), seen 2026-11-23"
   },
   "references": [
     "oTTBp0g4eXw",
@@ -32,6 +34,15 @@
     "7b8ggcaofoQ",
     "W96FDhzXpkA",
     "CbOsnWF5JDw",
-    "RQ2aN69cRYc"
-  ]
+    "RQ2aN69cRYc",
+    "hb3Itn4o0IQ",
+    "TjFt2IyudxU",
+    "7cteyeo8d60"
+  ],
+  "teardowns": {
+    "2026-11-22": [
+      "Odd Atlas",
+      "WorldShift"
+    ]
+  }
 }

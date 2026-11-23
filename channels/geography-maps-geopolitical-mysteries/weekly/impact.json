@@ -1,0 +1,74 @@
+{
+ "note": "Written by python -m generator.impact (improver, nightly). weeks: Shorts by IST publish week; stayedToWatch = engaged views / views (did not swipe away); changes: Shorts 14 days before vs after each landed change (sameWeek = other changes within 3 days, so effects mix).",
+ "updatedAt": "2026-11-22T17:15:14+00:00",
+ "weeks": [
+  {
+   "week": "2026-11-16",
+   "n": 1,
+   "medianViews48h": 12,
+   "avgViewPct": 55,
+   "stayedToWatch": 0.583,
+   "avgViewSec": 33.0,
+   "videos": [
+    {
+     "id": "v-20261118-01",
+     "title": "What if the Suez Canal closed for a year?",
+     "day": "2026-11-18",
+     "views48h": 12,
+     "avgViewPct": 55,
+     "stayedToWatch": 0.583
+    }
+   ]
+  }
+ ],
+ "changes": [
+  {
+   "id": "geo-flag-fill",
+   "area": "colour",
+   "status": "adopted",
+   "day": "2026-11-19",
+   "description": "A country covered by its own flag is recognised faster than a flat colour, so more viewers stay past the hook (owner, 19 Nov: 'test both if one video works better do then and drop other').",
+   "before": {
+    "n": 1,
+    "medianViews48h": 12,
+    "avgViewPct": 55,
+    "stayedToWatch": 0.583,
+    "avgViewSec": 33.0
+   },
+   "after": {
+    "n": 0,
+    "medianViews48h": null,
+    "avgViewPct": null,
+    "stayedToWatch": null,
+    "avgViewSec": null
+   },
+   "afterVideos": [],
+   "viewsRatio": null,
+   "sameWeek": 1
+  },
+  {
+   "id": "2026-11-19-border-trace",
+   "area": "look",
+   "status": "adopted",
+   "day": "2026-11-19",
+   "description": "Map channels: the country a line is about gets a bright line with a glowing head running round its border until it closes (remotion/src/flat/map.tsx Fill.trace; director.md)",
+   "before": {
+    "n": 1,
+    "medianViews48h": 12,
+    "avgViewPct": 55,
+    "stayedToWatch": 0.583,
+    "avgViewSec": 33.0
+   },
+   "after": {
+    "n": 0,
+    "medianViews48h": null,
+    "avgViewPct": null,
+    "stayedToWatch": null,
+    "avgViewSec": null
+   },
+   "afterVideos": [],
+   "viewsRatio": null,
+   "sameWeek": 1
+  }
+ ]
+}

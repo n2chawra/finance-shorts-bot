@@ -1,0 +1,34 @@
+{
+ "acks": [
+  {
+   "id": "cmwrnqbfn0001jx09r3rmj7jn",
+   "action": "fixed",
+   "note": "The 3D kit now has people: a crowd that dances, looks up and hurries away from the failing part, and rescuers with head lamps for the aftermath; the director must put people in any beat that speaks of a crowd or of the dead and injured, and lint fails a beat that shows nobody or draws blood or bodies. The next long video is drawn this way; L-20261121-42 itself is already scheduled.",
+   "commit": "3d54829"
+  },
+  {
+   "id": "cmwrnqrk10001l109q8tokt2j",
+   "action": "fixed",
+   "note": "Disaster Desk long videos now speak at 1.15 instead of 0.92 (1.25 times faster, about 189 words a minute instead of 151); Studio's length check counts at the new pace, so it writes about a quarter more words to stay at 8-10 minutes. Shorts are unchanged.",
+   "commit": "110f301"
+  },
+  {
+   "id": "cmwrnoaza0001jv09ogy086yi",
+   "action": "handed",
+   "to": "studio",
+   "note": "Studio writes the long hook. The channel recipe (prompts/recipe.md) still says the toll never goes in the first 45 s or the first line, which is the opposite of your note; your note is newer and wins, and I asked you on the Notifications page to update the recipe so it stays that way."
+  },
+  {
+   "id": "cmwrnqrk10001l109q8tokt2j",
+   "action": "fixed",
+   "note": "Done, and for every channel: Disaster Desk long videos speak at 1.15 (about 189 words a minute, was 0.92), now in channel.json too; and no channel's narrator goes under 1.0 in a Short or 1.15 in a long video (generator/pack.py MIN_SPEED), because three channels' notes asked for a faster pace. The Gauge long video (L-20261122-42) was rendered before this, at the old pace.",
+   "commit": "6c7f696"
+  },
+  {
+   "id": "cmwrnoaza0001jv09ogy086yi",
+   "action": "fixed",
+   "note": "Done, and for every channel: the recipe's rule that kept the toll out of the first line is gone; a long video's first sentence now states the small cause and how big it got (\"One changed rod on a hotel walkway killed 114 people.\"), plainly, never in the title. Studio's instructions say so for every channel's long videos, and it is lesson 9 in every channel's lessons.md.",
+   "commit": "6c7f696"
+  }
+ ]
+}

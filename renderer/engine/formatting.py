@@ -6,6 +6,7 @@ full ($10 billion when the words are exact), $1.5M short, $1.5 million long, $1.
 script names its `currency`; scripts from before the channel went global (2026-10-18) have none and
 are rupee scripts.
 """
+import re
 import math
 from dataclasses import dataclass
 from functools import wraps
@@ -211,7 +212,11 @@ FACT_UNITS = ("year", "rupees", "rupees_lakh", "rupees_crore", "percent", "count
               "money", "money_thousand", "money_million", "money_billion", "money_trillion",
               "count_thousand", "count_million", "count_billion",
               # distances, areas and heights for a geography channel (multi-channel plan, 2026-11-17)
-              "km", "km2", "m")
+              "km", "km2", "m",
+              # depths and times for the dive channel (2026-11-21): feet as the US sources give them, a ride in seconds or minutes
+              "ft", "s", "min", "tonnes",
+              # flow rates (the dive channel, 2026-11-22: G-Cans pumps "200 tonnes per second" had no unit)
+              "tonnes_per_s", "tonnes per second", "m3_per_s")
 _SCALE = {"thousand": "K", "million": "M", "billion": "B", "trillion": "T"}
 
 
@@ -251,6 +256,12 @@ def fact_value(value: float, unit: str, currency: str = LEGACY_CURRENCY) -> str:
         return f"{shown} km²"
     if unit == "m":
         return f"{shown} m"
+    if unit in ("ft", "s", "min", "tonnes"):
+        return f"{shown} {unit}"
+    if unit in ("tonnes_per_s", "tonnes per second"):
+        return f"{shown} tonnes/s"   # "t/s" didn't read on mute (QA 2026-11-22)
+    if unit == "m3_per_s":
+        return f"{shown} m³/s"
     if unit == "count_lakh":
         return f"{shown} L"
     if unit == "count_crore":
@@ -262,6 +273,8 @@ MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 
 
 def month_year(iso_day: str) -> str:
-    """'2026-06-30' → 'Jun 2026'."""
+    """'2026-06-30' → 'Jun 2026'; a fact dated by its year only ('2025', a building's depth) → '2025'."""
+    if re.fullmatch(r"\d{4}", str(iso_day).strip()):
+        return str(iso_day).strip()
     y, m = iso_day[:4], int(iso_day[5:7])
     return f"{MONTHS[m - 1]} {y}"

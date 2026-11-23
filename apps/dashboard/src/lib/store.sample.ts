@@ -501,7 +501,7 @@ export function listHandUploads(): HandUpload[] {
   return db().videos.flatMap((v) => {
     if (!v.upload || (v.status !== "queued" && v.status !== "scheduled")) return [];
     const reason = missReason({ state: v.upload.state, error: v.upload.error, publishAt: new Date(v.upload.publishAt) }, now);
-    return reason ? [{ channelId: "paisa-panchayat", channelName: "Paisa Panchayat", slotAt: v.upload.publishAt, reason, error: v.upload.error, video: v }] : [];
+    return reason ? [{ channelId: "geography-maps-geopolitical-mysteries", channelName: "The Why Atlas", slotAt: v.upload.publishAt, reason, error: v.upload.error, video: v }] : [];
   }).sort((a, b) => Date.parse(a.slotAt) - Date.parse(b.slotAt));
 }
 

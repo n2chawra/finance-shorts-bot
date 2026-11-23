@@ -1,19 +1,21 @@
 # short_story — Shorts on Remotion
 
-A vertical Short (1080×1920; its length is the setting `lengthMinSec`–`lengthMaxSec`, 35–50 s since 2026-10-29) told in beats by the recurring cast, drawn by Remotion.
+A vertical Short (1080×1920; its length is the channel's setting `lengthMinSec`–`lengthMaxSec`) told in beats, drawn by Remotion.
+The channel's `prompts/recipe.md` and `channel.json` win over this page's recipes and examples, many of
+which are money stories from the platform's first channel.
 Same pipeline, scenes, cast, numbers and rules as [`long_story`](../long_story/README.md): read
 that README for the script fields, `maths` kinds, beats, events, acting and the scene table.
 Example: [`examples/short_story.json`](../../../examples/short_story.json). There is no
-`schema.json`: `python -m generator.run number-check <id>` validates the whole script.
+`schema.json`: `python -m generator.run number-check <id> --channel <channel>` validates the whole script.
 
 ## Directed shots (every new Short, since 2026-11-13)
 
-**Read `generator/prompts/director.md` and `remotion/src/flat/README.md` first.** The owner, after the
-Netflix remake: "I absolutely loved this… now new videos are made like this." Every beat is
+**Read `generator/prompts/director.md` and `remotion/src/flat/README.md` first.** The owner, after a
+Short remade shot by shot in flat 2D: "I absolutely loved this… now new videos are made like this." Every beat is
 `"scene": "directed"`: a place built for the line, someone doing something, the figure on a thing in
 that place, a camera that moves, every change on a spoken word, coded per beat in
-`remotion/src/videos/<id>/` on the flat kit. Reference: `channels/paisa-panchayat/videos/v-directed-netflix/script.json` with
-its code in `remotion/src/videos/v-directed-netflix/`. The sections below on shots, the board and the
+`remotion/src/videos/<id>/` on the channel's kit (flat by default). The bar is the channel's reference
+videos: the channel's 3 best published Shorts by `stayed` (engaged views ÷ views) in `channels/<channel>/metrics/videos.json` (entries with `format: "short"`): each one's `channels/<channel>/videos/<id>/script.json` and `preview.png` and its code in `remotion/src/videos/<id>/` (no published Short yet: the channel's newest shipped Short in `channels/<channel>/videos/`). The sections below on shots, the board and the
 old scenes describe the kits it replaced (kept so old videos can be re-rendered); the story spine,
 recipes, cover and evidence sections still apply.
 
@@ -61,7 +63,7 @@ for a character moment with a `bubble`, and keep plain `bignumber` beats rare. E
 ## The board: rooms and cards (owner, 2026-11-02; a test variant for Shorts since 2026-11-04, used when the plan's `arms.style` is `board`; long videos keep it)
 
 After a frame-by-frame study of The Curious Plot (their "$0 salary" Short 43K, "egg selling" 1.3M;
-ours on the same topic 151) and four demos the owner reviewed (`v-remake-salary`): the question is
+ours on the same topic 151) and four demos the owner reviewed (deleted with the Paisa Panchayat channel, 2026-11-23): the question is
 asked in a **room**, every answer is a **card**, a new picture every sentence, every clause animated,
 and the whole story readable with the sound off. `scene: "board"`, `remotion/src/studio/board.tsx`.
 
@@ -128,7 +130,7 @@ name, the word being said and every figure in yellow.
 
 ## Evidence: `source` and `pen` (2026-10-19)
 
-From the Casual Finance study (`channels/paisa-panchayat/style-study/2026-10-19-casual-finance.md`): show the
+From a style study of an animated explainer channel (2026-10-19): show the
 proof at the moment of the claim, and mark it up while it is spoken.
 - **`source`**: for a news fact, draw the document: `publisher` (words only), `title`, and `lines`,
   each `{text, highlight?, underline?, at?}` (`underline`: a red marker line under the words). The highlighted line is the sentence being spoken, with the fact as
@@ -155,6 +157,15 @@ a cost; `road` for anything that takes years; `fork` instead of side-by-side bar
 The cover is what makes someone tap (owner, 2026-10-21): on the channel page, in search and on the
 Shorts shelf. A Short without one fails the render.
 
+**Study this topic's own hits first** (owner, 2026-11-23, every channel: "thumbnails are made for every video by
+studying the same topic's other videos' thumbnails"). Look at the covers of the most viewed videos on this
+topic (`python -m renderer.thumbs refs <id>`; the plan's `demand` video is one), say what they share, and pick
+the frame, words and layout that fit it in our look. The cover names them: `"references": [{"id", "views",
+"what": "what its cover shows"}]` (at least one, 10K+ views) and `"pattern"`: what they share and what ours
+takes. Technique only, never their picture or words. A new or unique topic may have no comparable videos: then
+write `"unique": "<what you searched and found>"` and design the cover freely. Missing references are a note at
+render, never a failure. (Long videos: the same, with `unique` in place of the three references; agents/studio.md.)
+
 **`scene`, the default** (owner, 2026-10-24: "the thumbnails look the same with different texts"): the cover is a frame of the video itself, its custom hook near the end by default, with the channel's look on top: the big `words` over a blurred, darkened band (the scene's own money objects carry the figures; `figure` stays required by the contract). Every video has its own hook and sets, so every cover is a different picture. `at` picks another beat (its id) and `sec` the second into it (story clock): choose the frame that tells the story at a glance, the cast big, a money object in view, nothing mid-transition. The fixed layouts below are for when no frame can carry the cover; never the same layout two videos in a row. The render fails a cover that looks like one of the last six of its format (`renderer/craft.py` `cover_problems`).
 
 `{"layout": "scene", "at": "hook", "words": "Billionaires *never* sell", "figure": "{tax_total}", "tag": "Tax if you sell", "angle": "number", "who": "sharma"}`
@@ -171,8 +182,7 @@ Shorts shelf. A Short without one fails the render.
   amount on the thing (`hero`, `small`, `tag`) turning into the big one on a receipt (`figure`, `to`).
 
 `words`: four at most, the topic in the viewer's words; one word between asterisks is highlighted
-yellow. Figures are placeholders, like everywhere else. Example covers: `channels/paisa-panchayat/videos/v-20261021-04`,
-`channels/paisa-panchayat/videos/v-20261021-05`.
+yellow. Figures are placeholders, like everywhere else.
 
 ## The story spine: depth without losing the hook (owner, 2026-10-26; shapes 2026-10-30)
 
@@ -236,7 +246,6 @@ with more than three things or no thing at 0.28+, and a grow under 1.3×. A pile
 Never: "Wait, what?", "Wait. So my…", "Same X. Same Y.", "didn't lift a finger", "for doing
 nothing", or a line opening from the last 10 scripts. The picture follows every phrase: build
 beats with the story's own props (`renderer/templates/SHOTS.md`, "The build scene").
-Reference: `channels/paisa-panchayat/videos/v-remake-casino/script.json` (a `reveal`).
 
 ## Story recipes: the formats people watch (owner reset, 2026-10-21)
 

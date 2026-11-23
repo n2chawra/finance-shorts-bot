@@ -1,6 +1,6 @@
 {
   "_comment": "Where each channel's own files live. Keys are the legacy paths (repo root, before the multi-channel refactor); values are paths inside channels/<slug>/. A channel whose folder doesn't exist yet still uses the legacy paths. Read by generator/channels.py and workers/lib/channels.ts; longest key wins.",
-  "default": "paisa-panchayat",
+  "default": "geography-maps-geopolitical-mysteries",
   "map": {
     "channel/profile.md": "profile.md",
     "config/market.json": "market.json",

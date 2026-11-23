@@ -9,7 +9,7 @@ import { createCipheriv, createDecipheriv, randomBytes, scryptSync } from "node:
 import type { Channel, PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
-import { layout } from "./channels.ts";
+import { CHANNEL_ONE, liveInRepo } from "./channels.ts";
 import { SettingsSchema, type Settings } from "./settings.ts";
 
 const SALT = "finance-shorts-bot:youtube-refresh-token:v1";
@@ -49,10 +49,14 @@ export function openToken(sealed: string, secret?: string): ChannelToken {
   return { refreshToken: text, client: "desktop" };
 }
 
+/** The channel the YT_REFRESH_TOKEN secret signs in to (channel #1, from workers/auth.ts). Pinned by id, not "the
+ * default channel": when the default moved (2026-11-23) the secret must never upload another channel's videos to it. */
+export const ENV_TOKEN_CHANNEL = CHANNEL_ONE;
+
 /** The sign-in for a channel, or null when it isn't connected yet. Channel #1 falls back to YT_REFRESH_TOKEN. */
 export function tokenOf(ch: Pick<Channel, "id" | "refreshTokenEnc">, env: NodeJS.ProcessEnv = process.env): ChannelToken | null {
   if (ch.refreshTokenEnc) return openToken(ch.refreshTokenEnc, env.SESSION_SECRET);
-  if (ch.id === layout().default && env.YT_REFRESH_TOKEN) return { refreshToken: env.YT_REFRESH_TOKEN, client: "desktop" };
+  if (ch.id === ENV_TOKEN_CHANNEL && env.YT_REFRESH_TOKEN) return { refreshToken: env.YT_REFRESH_TOKEN, client: "desktop" };
   return null;
 }
 
@@ -77,8 +81,10 @@ export function channelSettings(base: Settings, own: unknown): Settings {
   return out.success ? out.data : base;
 }
 
-/** Channels the uploader and stats serve: active ones (paused ones keep their stats, see `withStats`). */
-export async function activeChannels(prisma: PrismaClient, withStats = false): Promise<Channel[]> {
+/** Channels the uploader and stats serve: active ones (paused ones keep their stats, see `withStats`). A channel
+ * being deleted ("deleting") is never served, nor one whose channels/<slug>/ folder is gone from the repo while
+ * other channels' remain (lib/channels.ts `inRepo`): its row may still say active until the owner presses Delete. */
+export async function activeChannels(prisma: PrismaClient, withStats = false, root?: string): Promise<Channel[]> {
   const status = withStats ? { in: ["active" as const, "paused" as const] } : "active" as const;
-  return prisma.channel.findMany({ where: { status }, orderBy: { createdAt: "asc" } });
+  return liveInRepo(await prisma.channel.findMany({ where: { status }, orderBy: { createdAt: "asc" } }), root);
 }

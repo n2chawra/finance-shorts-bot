@@ -1,0 +1,22 @@
+{
+ "acks": [
+  {
+   "id": "cmwomfswj0001la094xyv1e8d",
+   "action": "fixed",
+   "note": "Done, and for every channel: a picture may appear in one beat of a Short (the loop beat may repeat the first) and two of a long video; the code check now fails a repeat (renderer/remotion.py picture_once_problems). Rise & Fall's recent Shorts already pass.",
+   "commit": "6c7f696"
+  },
+  {
+   "id": "cmwomepth0001jm09miknx4kp",
+   "action": "fixed",
+   "note": "Same fix as the sneaker note: every picture once, now a code check on every channel.",
+   "commit": "6c7f696"
+  },
+  {
+   "id": "cmwneubv20001ld09t9aq4ya6",
+   "action": "fixed",
+   "note": "Done: Rise & Fall speaks at 1.35 (Shorts) and 1.33 (long) since 20 Nov, and every channel now has a minimum pace.",
+   "commit": "6c7f696"
+  }
+ ]
+}

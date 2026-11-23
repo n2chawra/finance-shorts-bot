@@ -31,7 +31,7 @@ Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused`
   code another agent changed in the last 3 days (fixing a real bug in it is fine).
 
 ## 0a. Channels (every run; `agents/policy.md`, "Many channels")
-You serve every live channel, not only Paisa Panchayat. List them:
+You serve every live channel, one at a time. List them:
 ```
 CHANNELS=$(python -c "import json;c=json.load(open('config/channels.json'))['channels'];print(' '.join(k for k,v in c.items() if v['status'] in ('active','paused')))"); echo "CHANNELS=$CHANNELS"
 ```

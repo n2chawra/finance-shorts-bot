@@ -5,8 +5,11 @@ from pathlib import Path
 import pytest
 
 from generator import history, run
+from generator.channels import cpath
 
 from .conftest import NOW, entry, example, make_plan
+
+pytestmark = pytest.mark.usefixtures("packless")   # the built-in values, no channel's own pack
 
 VID = "v-20261013-01"
 
@@ -576,3 +579,24 @@ def test_the_documentary_channel_has_its_director_prompt() -> None:
     from generator import channels
     text = channels.prompt("director", "business-documentaries-rise-and-fall-of")
     assert "# Director" in text and '"scene": "doc"' in text and "generator.media search" in text
+
+
+def test_a_channel_with_a_voice_pool_rotates_its_shorts_narrator(root: Path) -> None:
+    """Geography owner, 2026-11-20: "Use more voice type so that I can know which sound better": a channel's
+    cycle/voices.json lists voices its Shorts rotate through, the one used longest ago first."""
+    pool = ["am_puck", "am_michael", "af_heart"]
+    f = cpath(root, "improvement/cycle/voices.json")
+    f.parent.mkdir(parents=True, exist_ok=True)
+    f.write_text(json.dumps({"shortsNarrators": pool + ["ef_dora", "nobody"]}), encoding="utf-8")
+    assert run.shorts_narrators({}, root) == pool          # only Kokoro voices in the channel's language
+    history.append({**entry(1, voice="am_puck"), "format": "short"}, root)
+    plan = make_plan()
+    put(root, "plan.json", plan)
+    put(root, "script.json", {**script_for(plan), "narrator": "af_bella"})
+    run.render(VID, preview=True, root=root)
+    saved = json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))
+    assert saved["narrator"] == "am_michael"               # never used, first in the pool
+    run.render(VID, preview=True, root=root)                # a re-render keeps its voice
+    assert json.loads((root / "videos" / VID / "script.json").read_text(encoding="utf-8"))["narrator"] == "am_michael"
+    f.unlink()
+    assert run.shorts_narrators({}, root) == []

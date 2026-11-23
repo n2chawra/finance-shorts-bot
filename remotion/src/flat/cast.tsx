@@ -259,7 +259,6 @@ export const Char: React.FC<CharProps> = (props) => {
     const cap = `${arc(1.04, 172, 8, 24)} ${fringe}`;
     return (
       <g>
-        {hair === "long" ? <rect x={head[0] - 1.02 * hr} y={head[1] - 0.2 * hr} width={2.04 * hr} height={1.25 * hr} rx={0.3 * hr} fill={hairColor} stroke={INK} strokeWidth={sw} /> : null}
         {hair === "spiky"
           ? [115, 90, 65].map((a, i) => {
               const r0 = 0.9, r1 = 1.38;
@@ -333,6 +332,8 @@ export const Char: React.FC<CharProps> = (props) => {
           <g transform={`translate(${head[0]} ${head[1]})`}><PhotoHead name={photo} r={hr * 0.75} /></g>
         ) : (
           <>
+            {/* long hair falls behind the head (QA, 2026-11-20: drawn after the face it covered the eyes and mouth) */}
+            {hair === "long" ? <rect x={head[0] - 1.02 * hr} y={head[1] - 0.2 * hr} width={2.04 * hr} height={1.25 * hr} rx={0.3 * hr} fill={hairColor} stroke={INK} strokeWidth={sw} /> : null}
             <Ball x={head[0] - hr * 0.98} y={head[1] + hr * 0.05} r={0.13 * hr} fill={skin} sw={sw} />
             <Ball x={head[0] + hr * 0.98} y={head[1] + hr * 0.05} r={0.13 * hr} fill={skin} sw={sw} />
             <circle cx={head[0]} cy={head[1]} r={hr} fill={shade(skin, -0.16)} />

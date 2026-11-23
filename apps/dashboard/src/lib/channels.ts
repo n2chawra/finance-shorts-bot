@@ -3,10 +3,10 @@ import { z } from "zod";
 /*
  * Many channels on one platform (docs/plans/multi-channel.md). The dashboard shows one channel at a
  * time, picked in the sidebar's switcher and kept in the `channel` cookie; every page's data is
- * scoped to it (lib/channel-scope.ts). Paisa Panchayat is the first channel.
+ * scoped to it (lib/channel-scope.ts).
  */
 
-export const DEFAULT_CHANNEL = "paisa-panchayat";
+export const DEFAULT_CHANNEL = "geography-maps-geopolitical-mysteries";
 export const CHANNEL_COOKIE = "channel";
 export const SLUG = /^[a-z0-9][a-z0-9-]{1,40}$/;
 /** The settings a channel keeps for itself (Channel.settings); the rest are platform-wide. The same list
@@ -30,8 +30,18 @@ export const ChannelSettingsSchema = z.object({
 }).partial();
 export type ChannelSettings = z.infer<typeof ChannelSettingsSchema>;
 
-export const ChannelStatusSchema = z.enum(["setup", "review", "active", "paused"]);
+export const ChannelStatusSchema = z.enum(["setup", "review", "active", "paused", "deleting"]);
 export type ChannelStatus = z.infer<typeof ChannelStatusSchema>;
+
+/** A channel being deleted is gone for every purpose but the Channels page's "Deleting…" card. */
+export const isLiveChannel = (c: { status: string }): boolean => c.status !== "deleting";
+
+/** "Delete channel": the owner types the channel's slug or its exact name to confirm. */
+export const ChannelDeleteSchema = z.object({ confirm: z.string().max(120) });
+export const confirmsDelete = (typed: string, c: { id: string; name: string }): boolean => {
+  const t = typed.trim();
+  return t.length > 0 && (t === c.id || t === c.name.trim());
+};
 
 /*
  * A new channel's setup (multi-channel plan, step 3): scanning → verdict (the owner's Continue/Stop) →
@@ -130,5 +140,6 @@ export function slugify(s: string): string {
   return SLUG.test(slug) ? slug : `channel-${Date.now().toString(36)}`;
 }
 
-/** The cookie value if it's a valid slug, else the default channel. */
-export const channelFromCookie = (v: string | undefined | null): string => (v && SLUG.test(v) ? v : DEFAULT_CHANNEL);
+/** The cookie value if it's a valid slug (and, given the live channels, one of them), else the default channel. */
+export const channelFromCookie = (v: string | undefined | null, live?: ReadonlySet<string>): string =>
+  (v && SLUG.test(v) && (!live || live.has(v)) ? v : DEFAULT_CHANNEL);

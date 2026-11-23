@@ -25,7 +25,9 @@ const KIND: Record<Kind, { dot: string; chip: string; label: string }> = {
   planned: { dot: "border-[1.5px] border-muted", chip: "border border-line bg-surface text-ink2", label: "Planned (queue order)" },   // hollow: told from scheduled by shape, not colour alone
 };
 const MAX_CHIPS = 4;   // 3 Shorts and a long video fit; more shows "+N more"
-const LongTag = () => <span className="ml-auto shrink-0 rounded-[4px] bg-brand-soft px-1 py-px text-[9.5px] font-semibold uppercase tracking-wide text-brand-text">Long</span>;
+const CHIP_LONG = "w-3 rounded-[2px]";   // a long video's chip mark: the legend's dash, so it reads as long even when "Long" doesn't fit
+// "Long" only where the chip has room for it beside the time; a narrow cell keeps the time whole and the dash
+const LongTag = () => <span className="ml-auto hidden shrink-0 @min-[100px]:inline rounded-[4px] bg-brand-soft px-1 py-px text-[9.5px] font-semibold uppercase tracking-wide text-brand-text">Long</span>;
 
 export default function CalendarPage() {
   const videos = useVideos({});
@@ -138,33 +140,34 @@ export default function CalendarPage() {
                 <Tip key={k} label={dayTip(k)}>
                 <button type="button" onClick={() => setSelected(k)} aria-pressed={on}
                   aria-label={`${d} ${monthName}${list.length ? `, ${list.map((e) => `${KIND[e.kind].label}${e.video.format === "long" ? " long video" : ""}: ${e.video.title}`).join("; ")}` : gaps.length ? "" : ", no upload"}${gaps.map((g) => `, nothing ready for the ${hhmm(g.at)} ${g.format === "long" ? "long-video" : "Short"} slot`).join("")}`}
-                  className={`relative flex min-h-16 flex-col gap-1.5 p-1.5 text-left text-xs transition-colors md:min-h-[116px] md:gap-2 md:p-2 ${edge} ${on ? "bg-brand-soft shadow-[inset_0_0_0_1.5px_var(--color-brand)]" : "hover:bg-surface-2"}`}>
+                  className={`@container/day relative flex min-h-16 flex-col gap-1.5 p-1.5 text-left text-xs transition-colors md:min-h-[116px] md:gap-2 md:p-2 ${edge} ${on ? "bg-brand-soft shadow-[inset_0_0_0_1.5px_var(--color-brand)]" : "hover:bg-surface-2"}`}>
                   <span className="flex items-center justify-between gap-1">
                     <span className={`grid size-6 place-items-center rounded-full text-[12.5px] tabular-nums ${k === today ? "bg-primary font-semibold text-white" : on ? "font-semibold text-ink" : "font-medium text-ink2"}`}>{d}</span>
                     {published(k).length > 1 && <span className="hidden items-center gap-1 text-[11px] font-semibold tabular-nums text-ink2 md:inline-flex" title="views of the day's videos"><Eye aria-hidden className="size-3 text-muted" />{fmtCompact(views)}</span>}
                   </span>
-                  {/* phones: one mark per upload */}
-                  <span className="flex flex-wrap items-center gap-1 md:hidden">
+                  {/* narrow days (phones, and laptops where the side panel squeezes the month): one mark per upload */}
+                  <span className="flex flex-wrap items-center gap-1 @min-[76px]/day:hidden">
                     {list.map((e) => <span key={e.video.id} aria-hidden data-kind={e.kind} className={`h-2 shrink-0 ${e.video.format === "long" ? LONG_MARK : "w-2 rounded-full"} ${KIND[e.kind].dot}`} />)}
                     {gaps.map((g) => <span key={`gap-${g.format}-${g.at}`} aria-hidden data-gap className={`h-2 shrink-0 border border-dashed border-warning ${g.format === "long" ? LONG_MARK : "w-2 rounded-full"}`} />)}
                   </span>
-                  {/* wider screens: one even chip per slot, in time order */}
-                  <span className="hidden flex-col gap-1 md:flex">
+                  {/* days wide enough for a chip: one even chip per slot, in time order */}
+                  <span className="@container hidden flex-col gap-1 @min-[76px]/day:flex">
                     {chips.slice(0, MAX_CHIPS).map((c) => c.gap ? (
-                      <span key={`gap-${c.gap.format}-${c.gap.at}`} data-gap className="flex h-[22px] min-w-0 items-center gap-1.5 rounded-md border border-dashed border-warning/70 px-1.5 text-[11px] leading-none text-warning-text">
-                        <span aria-hidden className="size-1.5 shrink-0 rounded-full border border-dashed border-warning" />
-                        <span className="truncate tabular-nums">{hhmm(c.gap.at)} empty</span>
+                      <span key={`gap-${c.gap.format}-${c.gap.at}`} data-gap className="flex h-[22px] min-w-0 items-center gap-1 rounded-md border border-dashed border-warning/70 px-1 text-[11px] leading-none text-warning-text">
+                        <span aria-hidden className={`h-1.5 shrink-0 border border-dashed border-warning ${c.gap.format === "long" ? CHIP_LONG : "w-1.5 rounded-full"}`} />
+                        <span className="shrink-0 tabular-nums">{hhmm(c.gap.at)}</span>
+                        <span className={`hidden ${c.gap.format === "long" ? "@min-[140px]:inline" : "@min-[92px]:inline"}`}>empty</span>
                         {c.gap.format === "long" && <LongTag />}
                       </span>
                     ) : (
-                      <span key={c.entry!.video.id} className={`flex h-[22px] min-w-0 items-center gap-1.5 overflow-hidden rounded-md px-1.5 text-[11px] leading-none tabular-nums ${KIND[c.entry!.kind].chip}`}>
-                        <span aria-hidden className={`size-1.5 shrink-0 rounded-full ${KIND[c.entry!.kind].dot}`} />
+                      <span key={c.entry!.video.id} className={`flex h-[22px] min-w-0 items-center gap-1 overflow-hidden rounded-md px-1 text-[11px] leading-none tabular-nums ${KIND[c.entry!.kind].chip}`}>
+                        <span aria-hidden className={`h-1.5 shrink-0 ${c.entry!.video.format === "long" ? CHIP_LONG : "w-1.5 rounded-full"} ${KIND[c.entry!.kind].dot} ${c.entry!.kind === "published" ? "hidden @min-[96px]:block" : ""}`} />
                         {c.entry!.kind === "published" ? (
                           <>
                             <span className="shrink-0" aria-label={`${fmtNum(c.entry!.video.totals?.views ?? 0)} views`}>{fmtCompact(c.entry!.video.totals?.views ?? 0)}</span>
-                            <span data-testid="day-likes" className="inline-flex min-w-0 items-center gap-0.5 font-normal opacity-80"><Heart aria-label="likes" className="size-2.5 shrink-0" />{fmtCompact(c.entry!.video.totals?.likes ?? 0)}</span>
+                            <span data-testid="day-likes" className="inline-flex shrink-0 items-center gap-0.5 font-normal opacity-80"><Heart aria-label="likes" className="size-2.5 shrink-0" />{fmtCompact(c.entry!.video.totals?.likes ?? 0)}</span>
                           </>
-                        ) : <span className="truncate">{hhmm(c.entry!.at)}</span>}
+                        ) : <span className="shrink-0">{hhmm(c.entry!.at)}</span>}
                         {c.entry!.video.format === "long" && <LongTag />}
                       </span>
                     ))}

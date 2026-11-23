@@ -4,8 +4,8 @@ How every video is drawn since 2026-11-13 (owner: "I absolutely loved this… no
 like this"). A **directed** beat is one SVG per frame: a place built for the line, the cast acting in
 it, the figure written on a thing in that place, a camera that moves, every change on a spoken word.
 House style: an ink outline on every shape, one painted shadow tone per shape, gradient glows for
-light, Poppins for words. The director's rules are in `generator/prompts/director.md`; the approved
-reference is `remotion/src/videos/v-directed-netflix/` with `channels/paisa-panchayat/videos/v-directed-netflix/script.json`.
+light, Poppins for words. The director's rules are in `generator/prompts/director.md`; each channel's
+reference videos (its approved samples) are its bar.
 
 ## `kit.tsx`
 

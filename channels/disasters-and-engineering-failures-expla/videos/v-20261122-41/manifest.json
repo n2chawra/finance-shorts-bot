@@ -1,0 +1,442 @@
+{
+  "id": "v-20261122-41",
+  "createdAt": "2026-11-22T16:58:01.254593+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "New Orleans: a tanker's rudder jammed on the Mississippi and two minutes later it hit a docked riverboat, which capsized in 22 minutes (NTSB, preliminary)",
+    "category": "ship",
+    "reach": "global",
+    "feed_id": "2026-11-22-new-orleans-stuck-rudder"
+  },
+  "title": "Why Couldn't This Mississippi Tanker Stop?",
+  "description": "Why couldn't a tanker on the Mississippi at New Orleans stop before it hit a docked riverboat?\nIts rudder jammed. We reconstruct it in 3D from the NTSB's preliminary information: the stuck rudder, why a ship can't brake, the riverboat. The cause of the jam is still under investigation.\nSources: NTSB, AP (Nov 2026).\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.",
+  "hashtags": [
+    "#Shorts",
+    "#NewOrleans",
+    "#MississippiRiver",
+    "#NTSB",
+    "#ShipCollision"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "The fast hit or the slow capsize: which surprised you more? Comment",
+  "seed": 61847,
+  "style": {
+    "palette": "ocean",
+    "genre": "undertow",
+    "key": "A",
+    "bpm": 58,
+    "voice": "bm_lewis",
+    "arms": {
+      "length": "30-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why couldn't this Mississippi tanker stop?",
+        "start": 0.3,
+        "seconds": 2.45,
+        "window": 3.07,
+        "fill": 0.798
+      },
+      {
+        "scene": "rudder",
+        "text": "Its rudder had stuck to starboard. From then, it had 2 minutes.",
+        "start": 3.37,
+        "seconds": 4.01,
+        "window": 4.67,
+        "fill": 0.859
+      },
+      {
+        "scene": "steer",
+        "text": "A rudder throws the propeller's water to one side. So what does a stuck one do?",
+        "start": 8.03,
+        "seconds": 4.96,
+        "window": 5.6,
+        "fill": 0.886
+      },
+      {
+        "scene": "swing",
+        "text": "It keeps turning the ship. Why not just stop?",
+        "start": 13.63,
+        "seconds": 2.58,
+        "window": 3.2,
+        "fill": 0.806
+      },
+      {
+        "scene": "nobrake",
+        "text": "A ship has no brakes. Only engines in reverse and anchors, and a ship this size slides a long way.",
+        "start": 16.83,
+        "seconds": 6.7,
+        "window": 7.37,
+        "fill": 0.909
+      },
+      {
+        "scene": "hit",
+        "text": "2 minutes after the rudder stuck, it hit a docked riverboat with 190 people aboard.",
+        "start": 26.2,
+        "seconds": 5.62,
+        "window": 6.27,
+        "fill": 0.896
+      },
+      {
+        "scene": "capsize",
+        "text": "Then the riverboat rolled over. Slowly. It took 22 minutes.",
+        "start": 32.47,
+        "seconds": 4.34,
+        "window": 5.0,
+        "fill": 0.868
+      },
+      {
+        "scene": "board",
+        "text": "Why it stuck isn't known yet. The fast hit or the slow capsize: which surprised you more?",
+        "start": 37.47,
+        "seconds": 5.87,
+        "window": 6.53,
+        "fill": 0.899
+      },
+      {
+        "scene": "loop",
+        "text": "It all began with one rudder that would not turn.",
+        "start": 44.0,
+        "seconds": 2.92,
+        "window": 3.53,
+        "fill": 0.827
+      }
+    ]
+  },
+  "durationSec": 48,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -19.1,
+    "lufs": -16.9,
+    "music_under_voice_db": 21.7
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_lewis",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite: nobrake now says engines in reverse and anchors, no current-as-opponent and no claim the anchors were used (verify item kept); board pick-one is the sourced 2 vs 22 minute clocks, cause labelled under investigation, PRELIMINARY on screen. All 6 facts confirmed earlier (NTSB DCA27MM003 page: 190 aboard, 140 passengers, >$2M; AP via abc11 quoting NTSB: starboard rudder, 2 min, 22 min, ~520 ft; WAFB: 2 min, starboard). Description ends with the channel disclaimer. Notes: the nobrake moments carry no visible 'general principle' tag even though the rewrite says it is tagged; '3D' in the description is accepted on the coordinator's word that 3D-kit shots ship, and each one needs the '3D reconstruction · not actual footage' label."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: hook opens on the amber rudder loupe at the named place; capsize clock reads ELAPSED until it lands on 22; river now a dark rough surface with broken light flecks and hull foam (no beige glare at 20/30s, no car-park look at 35s); window-grid towers; all directed places distinct, figures on things, captions clear, layout/craft empty, 48 s, audio -1.0/-19.1 dB, disclaimer in description. Minor: dock at 35s is still plain grey slabs."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-22T14:50:31.142055+00:00",
+      "finishedAt": "2026-11-22T14:50:31.142055+00:00",
+      "notes": [
+        "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-22T14:50:35.399812+00:00",
+      "finishedAt": "2026-11-22T14:50:35.399812+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-22T14:52:20.382724+00:00",
+      "finishedAt": "2026-11-22T14:52:20.382724+00:00",
+      "notes": [
+        "description mentions '003,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}, {fact6}…) or drop it",
+        "the source line 'Data: NTSB DCA27MM003 · NTSB briefing via AP · AP · Nov 2026' is too wide for the frame (1565 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'NTSB'), one name per publisher",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T14:52:39.927265+00:00",
+      "finishedAt": "2026-11-22T14:52:39.927265+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T14:59:39.039277+00:00",
+      "finishedAt": "2026-11-22T14:59:39.039277+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:00:26.848324+00:00",
+      "finishedAt": "2026-11-22T15:00:26.848324+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T15:02:23.660053+00:00",
+      "finishedAt": "2026-11-22T15:02:23.660053+00:00",
+      "notes": [
+        "Beat nobrake ('A ship has no brakes. Only its propeller, in reverse, against the current.') and its picture (long current arrows overpowering a short reverse arrow): no source says the current worked against stopping. Workboat reports the Atlantic Asphalt was northbound, i.e. upbound against the current, where the current would help slow it, not hinder it. 'Only its propeller' is also false in general: ships have anchors, and the recorder logged anchor commands (NTSB via AP/WAFB). Fix: e.g. 'A ship has no brakes: only engines in reverse and anchors, and a loaded ship takes a long way to stop', with no current-as-opponent overlay.",
+        "Beat board ('Rudder or current: which made it unstoppable?'), the RIVER CURRENT card, and plan cta: presents the river current as a candidate cause of the collision. No NTSB or press source names the current as a factor; this is speculation about an open investigation, which the channel profile forbids. Replace with a pick-one that stays inside the sourced facts (e.g. about the two clocks: 2 minutes to impact vs 22 minutes to capsize).",
+        "Confirmed facts (no change needed): 190 aboard (140 passengers + 50 crew) and damage over $2M on the NTSB DCA27MM003 page; rudder stuck to starboard, 2 minutes from stuck rudder to collision, 22 minutes to capsize, ~520 ft tanker, cause not yet known, riverboat docked: AP via abc11.com (quoting NTSB's Barnum and DeLeeuw), 2 minutes and starboard also WAFB. Description ends with the channel disclaimer. Note: description says 'We rebuild the two minutes in 3D' but every beat is a flat directed 2D shot; reword if no 3D shot ships."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-22T15:01:13.502297+00:00",
+      "finishedAt": "2026-11-22T15:05:05.137900+00:00",
+      "notes": [
+        "text 'NTSB · PRELIMINARY' at 6.3 s is 30 px, below the 44 px minimum",
+        "text '72°' at 33.6 s is 42.9 px, below the 44 px minimum",
+        "text 'LIST' at 33.6 s is 21.5 px, below the 44 px minimum",
+        "text 'TIME COMPRESSED' at 33.6 s is 36 px, below the 44 px minimum",
+        "note: the turn starts at 49% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:05:32.235376+00:00",
+      "finishedAt": "2026-11-22T15:05:32.235376+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:05:33.652452+00:00",
+      "finishedAt": "2026-11-22T15:05:33.652452+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:07:16.693451+00:00",
+      "finishedAt": "2026-11-22T15:07:16.693451+00:00",
+      "notes": [
+        "Re-review after rewrite: nobrake now says engines in reverse and anchors, no current-as-opponent and no claim the anchors were used (verify item kept); board pick-one is the sourced 2 vs 22 minute clocks, cause labelled under investigation, PRELIMINARY on screen. All 6 facts confirmed earlier (NTSB DCA27MM003 page: 190 aboard, 140 passengers, >$2M; AP via abc11 quoting NTSB: starboard rudder, 2 min, 22 min, ~520 ft; WAFB: 2 min, starboard). Description ends with the channel disclaimer. Notes: the nobrake moments carry no visible 'general principle' tag even though the rewrite says it is tagged; '3D' in the description is accepted on the coordinator's word that 3D-kit shots ship, and each one needs the '3D reconstruction · not actual footage' label."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:06:45.140716+00:00",
+      "finishedAt": "2026-11-22T15:10:19.657946+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:11:29.681514+00:00",
+      "finishedAt": "2026-11-22T15:14:46.642165+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:15:35.239515+00:00",
+      "finishedAt": "2026-11-22T15:19:09.922956+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:19:50.640763+00:00",
+      "finishedAt": "2026-11-22T15:23:07.931270+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T15:23:55.197042+00:00",
+      "finishedAt": "2026-11-22T15:23:55.197042+00:00",
+      "notes": [
+        "[scene] 35.0s, beat capsize (remotion/src/videos/v-20261122-41/Capsize.tsx): the count-up clock reads '7 MIN' over the fixed caption 'TO CAPSIZE', so on mute (and in any frame before 22) it states a wrong figure; the capsize took 22 minutes. Caption the running count as elapsed time (e.g. 'SINCE THE HIT' / 'LISTING') and only show 'TO CAPSIZE' once it lands on 22.",
+        "[script] 0.0s, beat hook: lessons.md #7 says a Short's first frame is the failing part a second before failure, already amber; the first frame is a calm side view of the tanker hull with a TANKER chip, nothing failing and the stuck rudder not seen until 5s. Open on the stern/rudder already amber with the bow swinging (or put the swing and STEERING LOST on frame 0).",
+        "[scene] 0.0s, 15.0s, 20.0s, 35.0s, 45.0s (satellite-atlas river set): lessons.md #5 'never grey boxes' - the New Orleans skyline is plain untextured boxes with stripe windows and the river is pale faceted low-poly triangles (worst at 15s and 35s, washed pale grey-blue); no material or key-light detail on the bank or dock. Needs textured water, real-looking riverfront and dock detail, darker graded night."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:25:32.951297+00:00",
+      "finishedAt": "2026-11-22T15:28:55.607100+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:29:03.911733+00:00",
+      "finishedAt": "2026-11-22T15:32:34.415146+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:32:41.763259+00:00",
+      "finishedAt": "2026-11-22T15:36:14.943454+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-22T15:36:34.170277+00:00",
+      "finishedAt": "2026-11-22T15:36:34.170277+00:00",
+      "notes": [
+        "[scene] 20.0s (nobrake) and 30.0s (hit): the new warm key light washes the river into a flat, even beige plane; under the tanker at 20s the lower half of the frame reads as sand or a desert floor, not water, with no reflection or shimmer. lessons.md #5 (no flat-lit, pale 3D). Keep the water dark and let the warm light show only as streaks on it.",
+        "[scene] 35.0s (capsize, the payoff): the river around the capsizing riverboat is flat pale grey and the light streaks are straight tan stripes, so with the plain grey dock slabs and bollards it reads as a riverboat lying in a car park with lane markings. Needs dark water with ripples or reflections where it meets the hull. lessons.md #5."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:37:36.123538+00:00",
+      "finishedAt": "2026-11-22T15:40:53.378021+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:41:08.257209+00:00",
+      "finishedAt": "2026-11-22T15:44:24.390362+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:44:40.221937+00:00",
+      "finishedAt": "2026-11-22T15:48:00.324577+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:48:11.055042+00:00",
+      "finishedAt": "2026-11-22T15:51:42.887568+00:00",
+      "notes": [
+        "48 s, ocean/undertow (preview only)",
+        "note: the turn starts at 50% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:51:58.773077+00:00",
+      "finishedAt": "2026-11-22T15:51:58.773077+00:00",
+      "notes": [
+        "Round 3: hook opens on the amber rudder loupe at the named place; capsize clock reads ELAPSED until it lands on 22; river now a dark rough surface with broken light flecks and hull foam (no beige glare at 20/30s, no car-park look at 35s); window-grid towers; all directed places distinct, figures on things, captions clear, layout/craft empty, 48 s, audio -1.0/-19.1 dB, disclaimer in description. Minor: dock at 35s is still plain grey slabs."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-22T15:52:07.863482+00:00",
+      "finishedAt": "2026-11-22T16:57:55.049213+00:00",
+      "notes": [
+        "48 s, ocean/undertow, peak -1.0 dB, mean -19.1 dB",
+        "note: the turn starts at 50% of the video; between 50% and 85%",
+        "warning: integrated loudness -16.9 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-22T16:58:01.254898+00:00",
+      "finishedAt": "2026-11-22T16:58:01.254898+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261122-41",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261122-41"
+  },
+  "priority": {
+    "level": "trending",
+    "until": "2026-11-25"
+  }
+}

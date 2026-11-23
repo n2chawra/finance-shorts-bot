@@ -1,0 +1,157 @@
+# Delete one channel for good (the dashboard's "Delete channel", 2026-11-23). The dashboard marks the channel
+# "deleting" (no more uploads, stats or ingest for it; its routines find no entry in config/channels.json and
+# disable themselves) and starts this workflow on main with the channel's slug. It refuses a channel that isn't
+# marked "deleting" and the default channel, so a typo here can't wipe a live channel.
+#
+#   1. which videos go (workers/delete-channel.ts list): its database rows and its folder's records, minus any id
+#      another channel's folder records; written to a file, printed, and kept as a run artifact
+#   2. GitHub: each of those videos' releases and tags (video-<id>)
+#   3. the database: every row of the channel, then its Channel row (workers/delete-channel.ts purge). Last but the
+#      repo, so a failed run can be re-run and still find every video to remove
+#   4. the repo: channels/<slug>/, its config/channels.json entry, its per-video code (remotion/src/videos/<id>);
+#      config/id-blocks.json keeps its block (ids are never reused) and lists the slug under "retired"
+name: Delete channel
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "The channel's slug (it must be marked deleting on the dashboard)"
+        required: true
+        type: string
+      confirm:
+        description: "Only when not started from the dashboard: the channel's slug or exact name again, to mark it deleting here"
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write   # delete releases and tags, push the removal to main
+  actions: write    # start Ingest afterwards (config/channels.json, the backlog)
+
+concurrency:
+  group: delete-channel-${{ inputs.channel }}
+
+jobs:
+  delete:
+    runs-on: ubuntu-24.04   # pinned like the other workflows
+    timeout-minutes: 30
+    env:
+      CHANNEL_SLUG: ${{ inputs.channel }}
+      CONFIRM: ${{ inputs.confirm }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      GH_TOKEN: ${{ github.token }}
+      IDS_FILE: /tmp/delete-channel-ids.txt
+    steps:
+      - name: Check the slug
+        run: |
+          [[ "$CHANNEL_SLUG" =~ ^[a-z0-9][a-z0-9-]{1,40}$ ]] || { echo "::error::bad channel slug '$CHANNEL_SLUG'"; exit 1; }
+          [ -n "$DATABASE_URL" ] && [ -n "$DIRECT_URL" ] || { echo "::error::Set the DATABASE_URL and DIRECT_URL repository secrets"; exit 1; }
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - run: npm ci
+        working-directory: workers
+      - run: npm run generate
+        working-directory: workers
+      - name: Apply migrations
+        working-directory: workers
+        run: npm run migrate
+      # started without the dashboard: what its Delete button does (needs the typed confirmation; never the default)
+      - name: Mark the channel deleting
+        if: ${{ inputs.confirm != '' }}
+        working-directory: workers
+        shell: bash
+        run: npm run --silent delete-channel -- mark "$CHANNEL_SLUG" "$CONFIRM" | tee -a "$GITHUB_STEP_SUMMARY"
+      # refuses unless the channel is marked deleting (and never the default channel); deletes nothing
+      - name: List the channel's videos
+        working-directory: workers
+        shell: bash
+        run: |
+          npm run --silent delete-channel -- list "$CHANNEL_SLUG" "$IDS_FILE" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "Ids to remove:"; cat "$IDS_FILE"
+      - name: Keep the id list
+        uses: actions/upload-artifact@v4
+        with:
+          name: delete-channel-${{ inputs.channel }}-ids
+          path: /tmp/delete-channel-ids.txt
+          if-no-files-found: error
+          retention-days: 90
+      - name: Delete the videos' releases and tags
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "$(grep -c . "$IDS_FILE" || true) videos to remove" | tee -a "$GITHUB_STEP_SUMMARY"
+          gone=0
+          while read -r id; do
+            [[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$ ]] || continue
+            if gh release delete "video-$id" --cleanup-tag -y 2>/dev/null; then gone=$((gone + 1));
+            else git push -q origin ":refs/tags/video-$id" 2>/dev/null || true; fi   # a tag without a release
+          done < "$IDS_FILE"
+          echo "$gone releases deleted" | tee -a "$GITHUB_STEP_SUMMARY"
+      # checks again (status deleting, not the default), then deletes the rows; a database error fails the job
+      - name: Delete the channel's database rows
+        working-directory: workers
+        shell: bash
+        run: npm run --silent delete-channel -- purge "$CHANNEL_SLUG" | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Remove the channel's files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          remove() {
+            [ ! -e "channels/$CHANNEL_SLUG" ] || git rm -rq "channels/$CHANNEL_SLUG"
+            while read -r id; do
+              # the id list leaves out every id another channel's folder records (workers/lib/delete-channel.ts)
+              [[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$ ]] && [ -e "remotion/src/videos/$id" ] && git rm -rq "remotion/src/videos/$id" || true
+            done < "$IDS_FILE"
+            python3 - <<'PY'
+          import json, os
+          slug = os.environ["CHANNEL_SLUG"]
+          def edit(path, change):
+              if not os.path.isfile(path):
+                  return
+              with open(path, encoding="utf-8") as f:
+                  data = json.load(f)
+              if change(data):
+                  with open(path, "w", encoding="utf-8") as f:
+                      f.write(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+          def channels(d):
+              return d.get("channels", {}).pop(slug, None) is not None
+          def blocks(d):   # the block stays (ids are never reused); the slug is retired
+              retired = d.setdefault("retired", [])
+              if slug in retired:
+                  return False
+              retired.append(slug)
+              return True
+          edit("config/channels.json", channels)
+          edit("config/id-blocks.json", blocks)
+          PY
+            git add config/channels.json config/id-blocks.json
+          }
+          remove
+          if git diff --cached --quiet; then echo "Nothing left in the repo for $CHANNEL_SLUG"; exit 0; fi
+          git commit -q -m "Delete channel $CHANNEL_SLUG"
+          # main moves often (routines, ingest): rebase on it and try again, redoing the removal on a conflict
+          for try in 1 2 3 4 5; do
+            git push -q origin HEAD:main && { echo "Pushed: Delete channel $CHANNEL_SLUG" | tee -a "$GITHUB_STEP_SUMMARY"; exit 0; }
+            git fetch -q origin main
+            if ! git rebase -q origin/main; then
+              git rebase --abort
+              git reset -q --hard origin/main
+              remove
+              git diff --cached --quiet && exit 0
+              git commit -q -m "Delete channel $CHANNEL_SLUG"
+            fi
+            sleep $((try * 5))
+          done
+          echo "::error::could not push the removal to main"; exit 1
+      - name: Refresh config/channels.json and the backlog
+        run: gh workflow run ingest.yml --ref main || echo "::warning::could not start Ingest"

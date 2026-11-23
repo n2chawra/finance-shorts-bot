@@ -1,14 +1,33 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 5,
+  "open": 0,
   "notes": [
+    {
+      "id": "cmwstm4180001jv0917t7gywr",
+      "kind": "improve",
+      "area": null,
+      "text": "Where is the flag of russia?? Should have put it as the area was keep growing it would have been looked better than this .",
+      "status": "addressed",
+      "response": "improver fixed: Fixed for every map video: the code check before render now fails a video whose country is named on the map but never shows its flag (renderer/remotion.py map_flag_problems), so the director must give Russia its flag where its area grows. It found the same miss on Peru in another Short. This Short is already live, so it can't be changed. (6c7f696)",
+      "at": "2026-11-23T05:23:58.317Z",
+      "video": {
+        "id": "v-20261123-11",
+        "title": "Russia once ended at the Urals. Then what?",
+        "format": "short",
+        "status": "published",
+        "story": "why_shaped",
+        "shape": "the-relay",
+        "hookStyle": "question",
+        "hook": "Russia once ended at the Ural Mountains. So how did it reach the Pacific?"
+      }
+    },
     {
       "id": "cmwoj53c80003l509bv0e56dz",
       "kind": "general",
       "area": "voice",
       "text": "Use more voice type so that I can know which sound better",
-      "status": "open",
-      "response": "reviewer handed → improver: Trying other voices is a voice change, which only the weekly loop's challenger can make; that is the improver's lane. · waiting for improver",
+      "status": "addressed",
+      "response": "improver fixed: From the next Short, each one uses a different British voice in turn (George, Emma, Lewis, Isabella, Fable, Alice), the one used longest ago first, so you can compare; each Short's voice is in its history entry. Tell me which to keep and the rest come off the list. (aa3fc24) · reviewer handed → improver: Trying other voices is a voice change, which only the weekly loop's challenger can make; that is the improver's lane.",
       "at": "2026-11-20T05:19:43.401Z",
       "video": {
         "id": "v-20261120-05",
@@ -26,8 +45,8 @@
       "kind": "general",
       "area": "animation",
       "text": "Add sound effects for small small things like in this video when truck moving to other place could have been sounded. When things pop up small sound effects when screen moves that sound effects. So that it feels like engaging and wow to hear.",
-      "status": "open",
-      "response": "reviewer handed → improver: Sound effects for moving trucks, pop-ups and screen moves are how the videos sound, which is the improver's lane. · waiting for improver",
+      "status": "addressed",
+      "response": "improver fixed: Directed beats now play soft sounds of the channel's own set on what happens in them: a pin on things popping up, a paper swish when something moves or the camera moves, a thud on a stamp, a scribble on a line being drawn (two a beat at most), from the next Short. (17c6583) · reviewer handed → improver: Sound effects for moving trucks, pop-ups and screen moves are how the videos sound, which is the improver's lane.",
       "at": "2026-11-20T05:19:04.443Z",
       "video": {
         "id": "v-20261120-05",
@@ -45,8 +64,8 @@
       "kind": "improve",
       "area": null,
       "text": "Loved the video. Two things to improve.\n\n1. For currencies u could have shown real currency not a sample drawn with name.\n2. The camera change or screen change should be smooth move not abrupt.\n\nIf u can't show real images animated them as characters like napoleon character when it's spoken in script. Likewise script according.",
-      "status": "open",
-      "response": "reviewer handed → improver: Real currency pictures, smooth camera moves and drawn characters like Napoleon are how the videos look and move, which is the improver's lane. · waiting for improver",
+      "status": "addressed",
+      "response": "improver fixed: The director now keeps one camera across beats on the same map (it opens where the last beat ended and glides on, a soft blend instead of a cut), shows a real banknote as a freely licensed photo (US notes are public domain) or drawn in its real colours and layout, and puts a named person like Napoleon on screen on his name as a character with his real portrait head. (5c9239d) · reviewer handed → improver: Real currency pictures, smooth camera moves and drawn characters like Napoleon are how the videos look and move, which is the improver's lane.",
       "at": "2026-11-20T05:15:32.931Z",
       "video": {
         "id": "v-20261120-05",
@@ -64,8 +83,8 @@
       "kind": "wrong",
       "area": "topic",
       "text": "Don't like the topic . Anything topics that are explained not in the map are wrong and should not be taken. This niche is all about working with maps just like our past two video of greenland and other. \n\nMake sure this does not happen again.",
-      "status": "open",
-      "response": "research partly → improver: Rejected the three open topics whose answer isn't on the map (Indonesia's island count, the Red Sea's name, North Korea at night); every new topic now carries a map_answer line (tonight: the two doubly landlocked countries, and why old cities' east sides are poorer). Left for the improver: proposal map-answer-gate, a check-plan rule that fails a plan with no map answer. · reviewer partly → research: Added lesson 1 to this channel's lessons.md (the writer follows it, QA enforces it): a script's answer must be a border, route, shape or position on the map, or the topic is dropped. Research should stop feeding topics whose answer is a machine or a law, like the Welsh power station. · waiting for improver",
+      "status": "addressed",
+      "response": "improver fixed: Every plan must now say what on the map the answer is (a border, route, shape, distance or position) before a script is written; check-plan fails a plan without one, or one whose answer is a machine, a law or a cut-away (research and the reviewer did their parts). (4bf7e8d) · research partly → improver: Rejected the three open topics whose answer isn't on the map (Indonesia's island count, the Red Sea's name, North Korea at night); every new topic now carries a map_answer line (tonight: the two doubly landlocked countries, and why old cities' east sides are poorer). Left for the improver: proposal map-answer-gate, a check-plan rule that fails a plan with no map answer. · reviewer partly → research: Added lesson 1 to this channel's lessons.md (the writer follows it, QA enforces it): a script's answer must be a border, route, shape or position on the map, or the topic is dropped. Research should stop feeding topics whose answer is a machine or a law, like the Welsh power station.",
       "at": "2026-11-20T05:08:24.594Z",
       "video": {
         "id": "v-20261120-04",
@@ -76,25 +95,6 @@
         "shape": "reveal",
         "hookStyle": "question",
         "hook": "Why did Britain hide a whole power station inside a mountain in Wales?"
-      }
-    },
-    {
-      "id": "cmwlu7uww0001kz09ua9f25hp",
-      "kind": "stale",
-      "area": null,
-      "text": "Owner: only the Suez sample goes out; sample 2 is the bar for this channel",
-      "status": "open",
-      "response": null,
-      "at": "2026-11-18T08:06:29.473Z",
-      "video": {
-        "id": "v-20261117-05",
-        "title": "Why does Gambia sit inside Senegal?",
-        "format": "short",
-        "status": "rejected",
-        "story": "why_shaped",
-        "shape": "reveal",
-        "hookStyle": "question",
-        "hook": "Why does Gambia sit inside Senegal, like a worm inside an apple?"
       }
     },
     {
@@ -133,6 +133,25 @@
         "shape": "timeline",
         "hookStyle": "question",
         "hook": "Greenland sits next to Canada, not Europe, yet it belongs to Denmark. Why?"
+      }
+    },
+    {
+      "id": "cmwlu7uww0001kz09ua9f25hp",
+      "kind": "stale",
+      "area": null,
+      "text": "Owner: only the Suez sample goes out; sample 2 is the bar for this channel",
+      "status": "addressed",
+      "response": "improver fixed: Noted: only the Suez sample went out, and sample 2 is this channel's bar. (6c7f696)",
+      "at": "2026-11-18T08:06:29.473Z",
+      "video": {
+        "id": "v-20261117-05",
+        "title": "Why does Gambia sit inside Senegal?",
+        "format": "short",
+        "status": "rejected",
+        "story": "why_shaped",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "Why does Gambia sit inside Senegal, like a worm inside an apple?"
       }
     }
   ]

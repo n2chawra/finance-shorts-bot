@@ -40,7 +40,7 @@ and answer each in `channels/<channel>/feedback-acks/studio.json` (commit it wit
 
 ## 1. Decide whether to make one
 ```
-python -m generator.run state --format long
+python -m generator.run state --format long --channel <channel>
 ```
 `mode` tells you: `paused` or `idle` → write the activity file saying why, push, and stop. `video` →
 make one, using `next_id` as the id for the whole run.
@@ -53,39 +53,38 @@ notification for the owner — do not invent a topic, Scout's research is what m
 Write `channels/<channel>/videos/<id>/plan.json`, following `generator/prompts/planner.md` for the fields, with:
 - `template`: `long_story`
 - `topic`: `{"title", "category", "feed_id": "<the topic's id>"}` from the feed topic
-- `story`: the topic's long format (`formats` in `state`: `list_explained`, `once_you_understand`,
-  `which_one_are_you`, `how_they_make_money`, `rich_vs_poor`) and `demand`: the topic's reference
+- `story`: the topic's long format (`formats` in `state`, from the channel's
+  `research/formats.json`) and `demand`: the topic's reference
   video `{title, views, url}`. `check-plan` fails without both (owner reset, 2026-10-21).
-- **The topic expands a winning Short** (owner, 2026-11-12): it must carry `from_short` (one of our
-  Shorts of the last 30 days in the top third by stayed to watch, with 100+ views). If the feed has none, pick that Short yourself from
-  `channels/<channel>/metrics/videos.json`. The first 30 s restate that Short's hook and promise the full answer; the
-  description's first line links it ("The 30-second version: https://youtube.com/shorts/<its YouTube id>").
-  3–4 minutes (`longLengthMinSec`–`longLengthMaxSec`, 180–240 s since 2026-11-12). After shipping, raise an owner notification:
-  "In YouTube Studio open the Short <title> → Related video → pick <this long video>" (the API can't set it).
-- `title`: phrased as people search the question the Short raised ("How do billionaires avoid
-  taxes?"), else a big promise someone would click, in the shape of the reference video's ("Every money
-  trap the middle class falls into", "Once you understand X, you'll never Y"). 40–70 characters.
+- **No Short of ours is needed** (owner, 2026-11-22, on every channel): any usable feed topic can be
+  made. Never stop a run, or skip a long video, because no Short has enough views. If the topic names a
+  `from_short`, the first 30 s restate that Short's hook and promise the full answer, and the
+  description's first line links it ("The 30-second version: https://youtube.com/shorts/<its YouTube id>"),
+  and after shipping you raise an owner notification: "In YouTube Studio open the Short <title> →
+  Related video → pick <this long video>" (the API can't set it). Without one, open on the long video's
+  own question. The channel's long length (`longLengthMinSec`–`longLengthMaxSec` in `state`).
+- `title`: phrased as people search the topic's question, else a big promise someone would click, in
+  the shape of the reference video's ("Once you understand X, you'll never Y"). 40–70 characters.
 - `description`: 3–5 lines on what the video covers, then the chapter list (you fill in the real
-  timestamps after rendering), then the line "An animated story with illustrative numbers; the
-  characters are not advisers.", then the disclaimer from `state` (YouTube's policy on content that
-  presents itself as an expert giving financial advice; Shorts carry the same line).
+  timestamps after rendering), then the disclaimer from `state` (the channel's `channel.json`; Shorts carry
+  the same line).
 - `hashtags` (3–6, no `#Shorts`), `hook_style`, `cta`, `seed`, `style` as for a Short.
 
 ```
-python -m generator.run check-plan <id>
+python -m generator.run check-plan <id> --channel <channel>
 ```
 
 ## 3. Write the script
 **First, what keeps failing** (2026-10-29): read `generator/prompts/checklist.md` and run
-`python -m generator.run failures --format long`. Write so that none of it happens again.
+`python -m generator.run failures --format long --channel <channel>`. Write so that none of it happens again.
 
 **Directed 2D shots, like the Shorts** (owner, 2026-11-13: "also fix in long video same thing"): every
 beat except the `end` card is `"scene": "directed"`. (A channel whose `channel.json` `look.engine` is `doc`: every beat except the `end` card is
 `"scene": "doc"` instead; follow `python -m generator.run prompt director --channel <channel>`.) Follow `generator/prompts/director.md` (Step 1: a
 place, someone doing something, the figure on a thing, the camera and the moments on words; Step 2: one
 file per beat in `remotion/src/videos/<id>/` on the flat kit, `remotion/src/flat/`). A long video is
-1920×1080: compose for landscape (the reference `v-directed-netflix` is a Short; the same kit, places
-and ideas work wider, with slower moves). Each chapter gets its own places; a chapter opener is a
+1920×1080: compose for landscape (the channel's reference Shorts work wider, with the same kit,
+places and ideas and slower moves). Each chapter gets its own places; a chapter opener is a
 directed beat in the chapter's first place with its title on a thing there (a sign, a door, a screen),
 not a title card. The render fails a video with empty frames, one shot size or one place
 (`renderer/craft.py`).
@@ -102,28 +101,31 @@ the viewer *see* happen?
   owner found it too fast, 2026-11-04). Aim for the setting `longLengthMinSec`–`longLengthMaxSec`
   (180–240 s: **540–720 words across 36–50 beats**) (a beat is one line and one picture,
   3–8 s). Add a beat that *does* something, never stretch one.
+- **The first sentence states the stakes** (owner, 2026-11-22, on every channel): what is at stake in plain
+  words, the small cause and how big it got (a toll, a sum, a scale), so someone who isn't already a fan wants
+  the rest ("One changed rod on a hotel walkway killed 114 people."). Never a slow scene-setter first; keep the
+  title free of it. The channel's recipe says how strongly (no horror on Disaster Desk).
 - **Shape (the format's list).** A 30-second hook that promises every item and teases the worst one.
   Then one `chapter` per item (6–9), each a mini story with the cast, one or two computed figures
   and a cliffhanger into the next; a recap-and-tease every 2–3 minutes; the strongest item last.
   End on what to do, then the `end` beat. Big captions run along the bottom automatically.
-- **People, not slides.** Put a cast moment (`stage`, someone reacting, a line of dialogue)
-  between data scenes. Rohan makes the mistake, Priya explains, Sharma has seen it all, Sikka
-  cheers. They are characters in a story, never advisors: nobody tells the viewer what to buy.
+- **Things happening, not slides.** On a channel with a cast (`look.cast`), put a cast moment between
+  data scenes; on one without, something in the place acts (a map redraws, a part fails, a product
+  moves). Characters are in a story, never advisers: nobody tells the viewer what to buy.
 - **A new picture every 3–6 seconds**, and the picture reacts on the word: name an event
   (`{"word": "owes"}`) and land the figure, the sound and the camera punch on it.
 - **On screen: keywords and figures only.** Never the narration word for word.
-- **Numbers** come only from `maths` (`card_min_due`, `emi`, `sip`, `lumpsum`) through
-  placeholders like `{card_total_paid}` and `"@card.balance"`, in the plan's `currency` (USD unless
-  the story is about one country; see `channels/<channel>/profile.md` for realistic inputs per currency). Never
+- **Numbers** come only from sourced `facts` and `maths` through placeholders like `{fact_area}` and
+  `"@calc.total"`, in the plan's `currency` where money appears (the channel's `channel.json`). Never
   type a digit or a currency sign into any text.
   State the simplification on the end card (`assumption`).
 - **Thumbnails**: three, coded for this video from its own topic's hits, rated, one picked (below).
 - Say the honest thing. If the tidy answer has a catch, the catch is the most valuable beat.
 
 ```
-python -m generator.run number-check <id>     # must print ok
-python -m generator.run figures <id>          # every figure, and every beat's line as written and as spoken
-python -m generator.run lint <id>             # ~20 s: spine, picture, devices, props, thumbnail, own code; must print ok
+python -m generator.run number-check <id> --channel <channel>     # must print ok
+python -m generator.run figures <id> --channel <channel>          # every figure, and every beat's line as written and as spoken
+python -m generator.run lint <id> --channel <channel>             # ~20 s: spine, picture, devices, props, thumbnail, own code; must print ok
 ```
 Run `lint` after every change to the script or the video's code, before any stills: it finds in
 seconds what used to cost a render each.
@@ -149,6 +151,11 @@ spec check fails a calm face, more than 3 things and a scale word the title does
 topic and shock in five seconds, no text-only slides, and each scene's place, time, land and weather
 chosen for this story.
 
+**A topic nobody has covered** (owner, 2026-11-23: "not every video might have a reference; some might be unique"):
+when `python -m renderer.thumbs refs <id>` and a search find fewer than three hits on this topic, don't borrow another
+topic's hits. Give each spec `"unique": "<what you searched and what came up>"` and design the three from the
+channel's own thumbnail patterns and the video's strongest picture; references are then optional.
+
 ## 4. Fact review (a subagent with fresh context)
 Spawn one subagent. Give it only the video id and the instruction to read
 `generator/prompts/fact_reviewer.md` and follow it exactly. Tell it nothing about your reasoning.
@@ -161,7 +168,7 @@ first long video was rendered three times, twice for problems the stills already
 
 1. **Stills** (a few minutes):
    ```
-   nohup python -m generator.run render <id> --preview > /tmp/stills-<id>.log 2>&1 &
+   nohup python -m generator.run render <id> --preview --channel <channel> > /tmp/stills-<id>.log 2>&1 &
    ```
    It builds the voice and timeline, draws the contact sheet, the thumbnail and the layout
    probe, and checks layout, length (the settings' range) and sound. It must end with `ok`. `FAIL:` lines:
@@ -170,7 +177,7 @@ first long video was rendered three times, twice for problems the stills already
    voice is cached).
 3. **The video**, once QA has passed:
    ```
-   nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
+   nohup python -m generator.run render <id> --channel <channel> > /tmp/render-<id>.log 2>&1 &
    ```
    **This takes 20–40 minutes** for 3–4 min at the shot system's detail, and a command may only run 10, so start it in the background like
    this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
@@ -191,7 +198,7 @@ Fix what it names and render the stills again. **Two rounds at most**.
 Put the chapter timestamps into the description (`chapters` in `channels/<channel>/videos/<id>/render.json`, in
 seconds; YouTube needs the first one to be `0:00`). Then:
 ```
-python -m generator.run ship <id> --commit --push --media-branch
+python -m generator.run ship <id> --commit --push --media-branch --channel <channel>
 ```
 This commits the manifest to `main`, then pushes the mp4 on a branch `media/<id>`; a workflow turns
 it into Release `video-<id>` and deletes the branch. Cloud sessions may not create releases, so
@@ -201,7 +208,7 @@ in 90 MB parts that the workflow joins back (2026-10-21); nothing to do by hand.
 ## 8. If it cannot be made to pass
 After the limits above (two plan attempts, two rewrites, two re-renders):
 ```
-python -m generator.run fail <id> --reason "<what went wrong, precisely>"
+python -m generator.run fail <id> --reason "<what went wrong, precisely>" --channel <channel>
 ```
 Then add what you learned to `channels/<channel>/longform/backlog.json` so Scout can act on it, and say so
 in your activity entry. A failed long video is not a disaster — shipping a bad one is.

@@ -1,6 +1,6 @@
 import type { Prisma } from "@prisma/client";
 
-import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSchema, ChannelSettingsSchema, DEFAULT_CHANNEL, type ReviewAction, ReviewSchema, SetupSchema, slugify } from "./channels";
+import { type Channel, type ChannelCreate, type ChannelPatch, ChannelSchema, ChannelSettingsSchema, type ReviewAction, ReviewSchema, SetupSchema, slugify } from "./channels";
 import { dispatchWorkflow } from "./dispatch";
 import { type PlanChannel, type Slot, fitCheck, promptFor } from "./routine-plan";
 import { prismaAll as db } from "./prisma";
@@ -26,7 +26,7 @@ export async function listChannels(): Promise<Channel[]> {
     const count = (status: string) => byStatus.find((b) => b.channelId === r.id && b.status === status)?._count ?? 0;
     return {
       id: r.id, name: r.name, status: r.status, // channel #1 signs in with the YT_REFRESH_TOKEN secret until it is connected here
-      connected: Boolean(r.refreshTokenEnc) || r.id === DEFAULT_CHANNEL,
+      connected: Boolean(r.refreshTokenEnc),
       youtubeChannelId: r.youtubeChannelId, connectedAt: r.connectedAt?.toISOString() ?? null,
       settings: own.success ? own.data : {}, request: stored.request ?? null,
       counts: { queued: count("queued"), published: count("published"), views7d: Number(views.find((v) => v.channelId === r.id)?.views ?? 0) },
@@ -151,7 +151,7 @@ export async function launchChannel(id: string): Promise<Channel | { error: stri
   await db.channel.update({ where: { id }, data: { status: "active", settings: {
     ...stored, dailyVideoTarget: approved.shortsPerDay, longPerWeek: approved.longPerWeek, generationPaused: false, uploadsPaused: false,
     // its own trend slots, none by default: inheriting the platform's put the geography channel's trend
-    // slots on the same minutes as Paisa Panchayat's (2026-11-18)
+    // slots on the same minutes as the first channel's (2026-11-18)
     trendUploadTimes: (stored as Record<string, unknown>).trendUploadTimes ?? [],
     setup: { ...setup.data, stage: "launched", note: `Launched ${now.slice(0, 10)}: the approved samples go out first`, updatedAt: now },
   } as Prisma.InputJsonValue } });

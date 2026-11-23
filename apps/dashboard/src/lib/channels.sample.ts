@@ -3,7 +3,7 @@ import { type Channel, type ChannelCreate, type ChannelPatch, DEFAULT_CHANNEL, s
 /** Sample channels for running the dashboard with no database (store.ts's sample mode). */
 const now = new Date().toISOString();
 const channels: Channel[] = [
-  { id: DEFAULT_CHANNEL, name: "Paisa Panchayat", status: "active", connected: true, youtubeChannelId: "UC-sample-1", connectedAt: now,
+  { id: DEFAULT_CHANNEL, name: "The Why Atlas", status: "active", connected: true, youtubeChannelId: "UC-sample-1", connectedAt: now,
     settings: {}, request: null, counts: { queued: 6, published: 64, views7d: 4210 }, setup: null,
     health: { color: "amber", reason: "stayed to watch fell to 37% from 44%: diagnosis tonight", bufferDays: 2, stayed: 0.37, usageShare: 1 }, createdAt: "2026-10-13T00:00:00.000Z" },
   { id: "space-facts-daily", name: "Space Facts Daily", status: "setup", connected: false, youtubeChannelId: null, connectedAt: null,
@@ -110,7 +110,7 @@ export async function launchChannel(id: string): Promise<Channel | { error: stri
 
 export async function channelFit(id: string) {
   const { fitCheck, promptFor } = await import("./routine-plan");
-  const live = [{ id: DEFAULT_CHANNEL, name: "Paisa Panchayat", shortsPerDay: 3, longPerWeek: 2, uploadTimes: ["07:07", "12:37", "19:07"], longUploadTimes: ["20:07"] }];
+  const live = [{ id: DEFAULT_CHANNEL, name: "The Why Atlas", shortsPerDay: 2, longPerWeek: 0, uploadTimes: ["09:37", "20:37"], longUploadTimes: [] }];
   const f = fitCheck(live, { id, name: id, shortsPerDay: 2, longPerWeek: 0, uploadTimes: ["08:07", "14:07"] });
   return { fits: f.fits, problems: f.problems, slots: f.slots.map((s) => ({ ...s, prompt: promptFor(s) })) };
 }

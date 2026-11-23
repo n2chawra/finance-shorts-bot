@@ -15,6 +15,16 @@
       "day": "2026-11-21",
       "shipped": 2,
       "failed": 0
+    },
+    {
+      "day": "2026-11-22",
+      "shipped": 2,
+      "failed": 1
+    },
+    {
+      "day": "2026-11-23",
+      "shipped": 3,
+      "failed": 0
     }
   ],
   "videos": [
@@ -71,6 +81,48 @@
       "id": "v-20261121-06",
       "day": "2026-11-21",
       "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261122-31",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA review failed after 3 rounds: the turn beat's polaroids row (doc PolaroidRow) lands in a Short's caption band, so the big captions cover the print captions; all other notes were fixed"
+    },
+    {
+      "id": "v-20261122-33",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261122-32",
+      "day": "2026-11-22",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261123-31",
+      "day": "2026-11-23",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261123-32",
+      "day": "2026-11-23",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "L-20261123-31",
+      "day": "2026-11-23",
+      "template": "long_story",
       "status": "shipped",
       "reason": null
     }

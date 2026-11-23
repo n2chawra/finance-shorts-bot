@@ -14,7 +14,6 @@ import { fmtDateTime, fmtDayKey, fmtRelative, titleCase } from "@/lib/format";
 import { useAgents, useSettings, useChannels } from "@/lib/queries";
 import { fmtMinutes, fmtRunWindow, summarizeRunTimes } from "@/lib/run-times";
 import type { Activity, Agents } from "@/lib/schemas";
-import { VariantsCard } from "@/components/variants";
 import { isRecent } from "@/lib/recent";
 
 const AGENT: Record<Activity["agent"], { name: string; role: string; icon: typeof Bot; time: string }> = {
@@ -319,7 +318,7 @@ export default function AgentsPage() {
   const { data, error, isLoading } = useAgents();
   const settings = useSettings().data;
   const channels = useChannels().data;
-  // each channel's own schedule (lib/agent-times.ts): the times were Paisa Panchayat's, and stale, on every channel
+  // each channel's own schedule (lib/agent-times.ts): the first channel's times once showed, stale, on every channel
   const times = agentTimes(channels?.current ?? DEFAULT_CHANNEL);
   const [tab, setTab] = useState("activity");
   if (isLoading) return <Loading />;
@@ -382,7 +381,6 @@ export default function AgentsPage() {
         <Stat label="Last report" accent="sky" icon={CalendarClock} value={lastNight ? fmtDayKey(lastNight) : "—"} sub={`${Object.values(times).filter((x) => x).map((x) => x!.label).join(" · ")} IST`} />
       </div>
 
-      {(channels?.current ?? DEFAULT_CHANNEL) === DEFAULT_CHANNEL && <VariantsCard data={data} />}
 
       <Tabs.Root value={tab} onValueChange={setTab} className="mt-8">
         <Tabs.List aria-label="Agent sections" className={tabListClass}>
