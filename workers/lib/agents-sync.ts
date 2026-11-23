@@ -8,6 +8,7 @@
  *               improvement/template-decisions.json → Template weight / enabled (applied once each)
  *   DB → repo   metrics/videos.json, metrics/runs.json (what the agents judge changes by)
  */
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
@@ -64,15 +65,21 @@ export async function importActivity(prisma: PrismaClient, root: string): Promis
   // the folder is the source of truth: drop rows whose file was removed
   const ids = new Set(readdirSync(dir).filter((x) => x.endsWith(".json")).map((x) => x.replace(/\.json$/, "")));
   await prisma.agentActivity.deleteMany({ where: { id: { notIn: [...ids] } } });
+  const seen = await loadHashes(prisma, ACTIVITY_HASHES);
+  const next = { ...seen };
   for (const f of readdirSync(dir).filter((x) => x.endsWith(".json")).sort().slice(-120)) {
     const parsed = Activity.safeParse(readJson(path.join(dir, f)));
     if (!parsed.success) { console.error(`::warning::${f}: ${parsed.error.issues[0]?.message}`); continue; }
     const a = parsed.data;
     const data = { agent: a.agent, day: a.day, summary: a.summary, decision: a.decision, why: a.why, findings: a.findings, changes: a.changes, nextCheck: a.nextCheck ?? null, links: a.links,
       startedAt: a.startedAt ? new Date(a.startedAt) : null, finishedAt: a.finishedAt ? new Date(a.finishedAt) : null };
-    await prisma.agentActivity.upsert({ where: { id: `${a.day}-${a.agent}` }, update: data, create: { id: `${a.day}-${a.agent}`, ...data } });
+    const id = `${a.day}-${a.agent}`, h = hashOf(data);
+    if (seen[id] === h) continue;   // unchanged since the last run: nothing sent (Supabase egress, 2026-11-23)
+    await prisma.agentActivity.upsert({ where: { id }, update: data, create: { id, ...data }, select: { id: true } });
+    next[id] = h;
     n++;
   }
+  if (n) await saveHashes(prisma, ACTIVITY_HASHES, next);
   return n;
 }
 
@@ -176,23 +183,49 @@ export function trimDoc(key: string, value: unknown): unknown {
   return Array.isArray(list) && list.length > keep[1] ? { ...(value as object), [keep[0]]: list.slice(-keep[1]) } : value;
 }
 
-export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<void> {
+/**
+ * The agents' repo files into RepoDoc, only those that changed since the last run. Ingest runs ~50 times a day and
+ * used to re-send all ~25 docs for every channel each time (~3 MB, twice over in an upsert): ~8 MB a run through
+ * the pooler, nearly all of the ~400 MB a day of Supabase egress (2026-11-23). A short hash of each doc as last
+ * written is kept in RepoDoc "docHashes"; delete that row to force a full rewrite.
+ */
+export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<number> {
+  const docs: [string, Prisma.InputJsonValue][] = [];
   const lessonsFile = cpath(root, "generator", "prompts", "lessons.md");
-  if (existsSync(lessonsFile)) {
-    const value = { lessons: parseLessons(readFileSync(lessonsFile, "utf8")) } as Prisma.InputJsonValue;
-    await prisma.repoDoc.upsert({ where: { key: "lessons" }, update: { value }, create: { key: "lessons", value }, select: { key: true } });
-  }
+  if (existsSync(lessonsFile)) docs.push(["lessons", { lessons: parseLessons(readFileSync(lessonsFile, "utf8")) } as Prisma.InputJsonValue]);
   for (const [key, rel] of Object.entries(DOCS)) {
     const file = cpath(root, rel);
     if (!existsSync(file)) continue;
     try {
       const raw = readJson(file);
-      const value = trimDoc(key, key === "topicFeed" ? withUsage(raw, root) : raw) as Prisma.InputJsonValue;
-      await prisma.repoDoc.upsert({ where: { key }, update: { value }, create: { key, value }, select: { key: true } });
+      docs.push([key, trimDoc(key, key === "topicFeed" ? withUsage(raw, root) : raw) as Prisma.InputJsonValue]);
     } catch (e) {
       console.error(`::warning::${rel}: ${e instanceof Error ? e.message : e}`);
     }
   }
+  const seen = await loadHashes(prisma, DOC_HASHES);
+  const next = { ...seen };
+  let n = 0;
+  for (const [key, value] of docs) {
+    const h = hashOf(value);
+    if (seen[key] === h) continue;
+    await prisma.repoDoc.upsert({ where: { key }, update: { value }, create: { key, value }, select: { key: true } });
+    next[key] = h;
+    n++;
+  }
+  if (n) await saveHashes(prisma, DOC_HASHES, next);
+  return n;
+}
+
+const DOC_HASHES = "docHashes", ACTIVITY_HASHES = "activityHashes";
+/** A short content hash: what was last written, so an unchanged doc or record is not sent again. */
+export const hashOf = (v: unknown): string => createHash("sha1").update(JSON.stringify(v)).digest("base64url").slice(0, 16);
+async function loadHashes(prisma: PrismaClient, key: string): Promise<Record<string, string>> {
+  const row = await prisma.repoDoc.findUnique({ where: { key }, select: { value: true } });
+  return row?.value && typeof row.value === "object" && !Array.isArray(row.value) ? row.value as Record<string, string> : {};
+}
+async function saveHashes(prisma: PrismaClient, key: string, value: Record<string, string>): Promise<void> {
+  await prisma.repoDoc.upsert({ where: { key }, update: { value }, create: { key, value }, select: { key: true } });
 }
 
 /** Apply each agent template decision once; the applied ids are remembered in RepoDoc. */
