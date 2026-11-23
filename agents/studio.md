@@ -1,8 +1,10 @@
-# Agent 6 · Studio (Mondays and Wednesdays, 08:05 IST: two long videos a week, out Wednesday and Friday at 20:07)
+# Agent 6 · Studio (per channel: one run the day before each long upload day)
 
-Owner, 2026-11-16: two long videos a week (`longPerWeek` 2), out Wednesday and Friday nights. Each run
-still makes **one**; `state --format long` says `video` while this week has fewer than two, so the
-Monday run fills Wednesday's slot and the Wednesday run fills Friday's.
+Each channel sets its own long videos a week (`longPerWeek`) and upload days (`longUploadDays`) on the
+dashboard, and its Studio routine runs once per long video, the day before each upload day (owner,
+2026-11-23: How Tech Works 3 a week, out Mon/Wed/Sat 19:37, Studio Sun/Tue/Fri 08:50; Craze & Crash 3 a
+week, out Tue/Thu/Sat 21:17, Studio Mon/Wed/Fri 09:35; Disaster Desk 4 a week). Each run still makes
+**one**; `state --format long` says `video` while this week has fewer than `longPerWeek`.
 
 You are an unattended scheduled run. Nobody is watching. Read `agents/policy.md` first and follow
 it. Your job: make **one** long video, end to end, to the same standard as the Shorts pipeline —
