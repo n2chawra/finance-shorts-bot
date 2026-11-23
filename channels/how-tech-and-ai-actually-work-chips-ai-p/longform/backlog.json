@@ -33,6 +33,39 @@
       "priority": "normal",
       "found": "2026-11-19",
       "status": "open"
+    },
+    {
+      "id": "tech-long-walk-the-object",
+      "kind": "craft",
+      "title": "Build each long video as a walk through one object, a viewer question opening every chapter",
+      "detail": "Our only breakout, the Crossrail Short (v-20261122-21, 1,362 views vs 284 for our next best; its stayed-to-watch is not in yet), walks one machine front to back: wheel, chamber, conveyor, erector, rams, each beat opened by the question a viewer would ask ('How?', 'Why doesn't the ground cave in?', 'Where does it go?'). Studio: order long chapters along the object's physical path (front to back, outside in, top down), open each chapter on that question in the viewer's voice, and put the causal step (the profile's 'never skip it') in its own chapter. Worked if the first long video's retention curve has no chapter-boundary cliff deeper than 10 points (stats.yml drop points).",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-one-moment-title",
+      "kind": "craft",
+      "title": "Title on one moment of an everyday action ('in one second', 'when you tap')",
+      "detail": "Niche scan 18 Nov, long videos 7-25 min (n=215): titles framed on one moment or the viewer's action ('in one second', 'one frame', 'when you ...') hit 3x their channel's median 2 of 4 times (median 10x; Silicon Up Close's CPU and AI-chip videos) vs 13% for the rest. Small sample: fold into the open tech-long-title-question experiment as its second arm rather than adopting.",
+      "where": "thumbnail",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-format-how-its-built",
+      "kind": "idea",
+      "title": "A long format for machines and megaprojects ('how it's built / how the machine works')",
+      "detail": "The channel's long formats (inside_when_you, how_ai_works, how_network_works) have no home for a machine or a build. 2+ videos over 1M share that shape: 'Inside Virginia's $4 Billion Tunneling Megaproject' (BuildWitt, 3.0M), 'The Real Reason Starship Has 33 Engines' (The Space Race, 2.1M), 'MEGA TUNNEL MACHINES' (WELT, 1.8M), 'Inside SpaceX's $3 Billion Starfactory' (1.2M). Improver: add a long format 'how_the_machine_works' (tier core) to channels/how-tech-and-ai-actually-work-chips-ai-p/research/formats.json: the machine's job and one impossible constraint in the hook, a front-to-back walk of its parts, the constraint solved last. The rocket and Crossrail topics are filed under inside_when_you until then.",
+      "where": "template",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
     }
   ]
 }
