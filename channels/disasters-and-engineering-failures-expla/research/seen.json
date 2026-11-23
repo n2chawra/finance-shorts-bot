@@ -1,17 +1,21 @@
 {
   "claudeCode": {
     "latest": "2.1.330",
-    "checked": "2026-11-23",
+    "checked": "2026-11-24",
     "notes": [
       "2.1.330: WebFetch no longer freezes or returns empty on some pages; built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline (read by tonight's geography research run, not fetched again to keep the run lean).",
-      "2026-11-23: still 2.1.330 (30-day scheduled tasks, subagent and WebFetch fixes); nothing for the pipeline."
+      "2026-11-23: still 2.1.330 (30-day scheduled tasks, subagent and WebFetch fixes); nothing for the pipeline.",
+      "2026-11-24: still 2.1.330 (raw CHANGELOG.md read); nothing for the pipeline."
     ]
   },
   "sources": {
     "jtsb-pdf": "jtsb.mlit.go.jp report PDFs fetch as binary; extract text locally (pdftotext), seen 2026-11-22",
     "aol-ap": "aol.com AP article URLs return 404 to fetch; use a station republication (abc11, wafb), seen 2026-11-22",
     "ntsb-pages": "ntsb.gov investigation pages fetch fine and carry the dated updates, seen 2026-11-22",
-    "ntsb-press": "www-s.ntsb.gov press releases fetch fine with the figures; the UNT web archive of old NTSB summaries comes back empty, seen 2026-11-23"
+    "ntsb-press": "www-s.ntsb.gov press releases fetch fine with the figures; the UNT web archive of old NTSB summaries comes back empty, seen 2026-11-23",
+    "yt-watch": "youtube.com/watch pages redirect to a captcha after a few fetches; the results page (ytInitialData), oembed (channel) and the channel page (subscribers) still work, seen 2026-11-24",
+    "cpsc-pdf": "cpsc.gov letter PDFs come back as binary in WebFetch; pdftotext on the saved file reads them, seen 2026-11-24",
+    "wsdot-tnb": "wsdot.wa.gov/tnbhistory pages fetch fine (the old connections3.htm path is 404), seen 2026-11-24"
   },
   "references": [
     "4kkNl2yl1Lw",
@@ -26,7 +30,12 @@
     "WMCCJSMQue8",
     "vEbJiNa-1zc",
     "IobUVPJlLb8",
-    "cIFSnU3lqiY"
+    "cIFSnU3lqiY",
+    "AKCt2aJhgsI",
+    "Y0opv4I8QQg",
+    "w6jYxL9ymd0",
+    "xEPswDYbcnk",
+    "-5idPqAlLGU"
   ],
   "teardowns": {
     "2026-11-22": [
@@ -37,9 +46,12 @@
     ]
   },
   "watch": {
-    "ERA27MA026": "Learjet 60 N722BD, Greenacres FL, 1 Nov 2026: NTSB preliminary report due about 1 Dec; the follow-up Short/long when it lands; checked 2026-11-23: no preliminary yet (last NTSB update 9 Nov)",
+    "ERA27MA026": "Learjet 60 N722BD, Greenacres FL, 1 Nov 2026: NTSB preliminary report due about 1 Dec; the follow-up Short/long when it lands; checked 2026-11-23: no preliminary yet (last NTSB update 9 Nov); 2026-11-24: not re-checked (due ~1 Dec)",
     "DCA27MM003": "Atlantic Asphalt / American Heritage, New Orleans, 13 Nov 2026: preliminary report due",
     "urda-2026-10-28": "Spain Urda collision: open court case and CIAF probe, minister's red-signal claim only; wait for the CIAF preliminary",
     "faa-ground-stop-2026-11-13": "Nationwide FAA ground stop, 13 Nov 2026: telecommunications failure at en-route centres, cause not officially found (Duffy: routers overloaded; Mullin: checking the new AI routing system). A Short only after an official finding"
+  },
+  "crowded": {
+    "apollo-13-oxygen-tank": "2026-11-24: 20+ Shorts on the tank and its 28 V switch, none above 3.6K views: crowded, skip"
   }
 }
