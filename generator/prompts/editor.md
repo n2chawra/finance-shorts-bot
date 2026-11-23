@@ -9,8 +9,8 @@ minutes; keep it lean.
 
 ## 1. Scores from our data
 ```
-python -m generator.run rank                 # every ready Short, best first, with its score and parts
-python -m generator.run state | head -c 4000  # owner_feedback: the owner's notes, picks and stales
+python -m generator.run rank --channel <channel>                 # every ready Short, best first, with its score and parts
+python -m generator.run state --channel <channel> | head -c 4000  # owner_feedback: the owner's notes, picks and stales
 ```
 `rank` scores each ready video out of 10 from what our numbers say works: `tier` (big-money formats:
 every 1K+ Short so far), `ours` (how its story, shape and hook style did for us), `taste` (the

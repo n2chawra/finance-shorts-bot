@@ -6,7 +6,10 @@ looking mass-produced: every video is still its own storyboard, a recipe is the 
 
 ## Check that you may
 
-Run `python -m generator.run state`. Continue only if `mode` is `template_work`.
+Run `python -m generator.run state --channel <channel>` first, with the channel this run names (no channel named:
+`python -m generator.run state`). If the answer has a `stop` field (`"channel deleted"` or `"no channel"`), follow
+the rule at the top of `generator/prompts/routine.md` (disable this routine with `update_trigger` if you have the
+scheduled-task tools, otherwise just end; write nothing else). Continue only if `mode` is `template_work`.
 
 ## Decide what to do
 
@@ -43,10 +46,10 @@ there, write the recipe with existing scenes and note the missing one in your re
 Only when both pass, record the work:
 
 ```
-python -m generator.run template-work <recipe> build --enabled
+python -m generator.run template-work <recipe> build --enabled --channel <channel>
 ```
 
 If it does not pass, leave the recipe out of the README (keep your work on a branch or delete it) and record
-`python -m generator.run template-work <recipe> build` without `--enabled`, so the daily limit still counts the attempt.
+`python -m generator.run template-work <recipe> build --channel <channel>` without `--enabled`, so the daily limit still counts the attempt.
 
 Reply with what you built or changed, and why the channel needed it.

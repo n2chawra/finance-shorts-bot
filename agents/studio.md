@@ -40,7 +40,7 @@ and answer each in `channels/<channel>/feedback-acks/studio.json` (commit it wit
 
 ## 1. Decide whether to make one
 ```
-python -m generator.run state --format long
+python -m generator.run state --format long --channel <channel>
 ```
 `mode` tells you: `paused` or `idle` → write the activity file saying why, push, and stop. `video` →
 make one, using `next_id` as the id for the whole run.
@@ -71,12 +71,12 @@ Write `channels/<channel>/videos/<id>/plan.json`, following `generator/prompts/p
 - `hashtags` (3–6, no `#Shorts`), `hook_style`, `cta`, `seed`, `style` as for a Short.
 
 ```
-python -m generator.run check-plan <id>
+python -m generator.run check-plan <id> --channel <channel>
 ```
 
 ## 3. Write the script
 **First, what keeps failing** (2026-10-29): read `generator/prompts/checklist.md` and run
-`python -m generator.run failures --format long`. Write so that none of it happens again.
+`python -m generator.run failures --format long --channel <channel>`. Write so that none of it happens again.
 
 **Directed 2D shots, like the Shorts** (owner, 2026-11-13: "also fix in long video same thing"): every
 beat except the `end` card is `"scene": "directed"`. (A channel whose `channel.json` `look.engine` is `doc`: every beat except the `end` card is
@@ -123,9 +123,9 @@ the viewer *see* happen?
 - Say the honest thing. If the tidy answer has a catch, the catch is the most valuable beat.
 
 ```
-python -m generator.run number-check <id>     # must print ok
-python -m generator.run figures <id>          # every figure, and every beat's line as written and as spoken
-python -m generator.run lint <id>             # ~20 s: spine, picture, devices, props, thumbnail, own code; must print ok
+python -m generator.run number-check <id> --channel <channel>     # must print ok
+python -m generator.run figures <id> --channel <channel>          # every figure, and every beat's line as written and as spoken
+python -m generator.run lint <id> --channel <channel>             # ~20 s: spine, picture, devices, props, thumbnail, own code; must print ok
 ```
 Run `lint` after every change to the script or the video's code, before any stills: it finds in
 seconds what used to cost a render each.
@@ -168,7 +168,7 @@ first long video was rendered three times, twice for problems the stills already
 
 1. **Stills** (a few minutes):
    ```
-   nohup python -m generator.run render <id> --preview > /tmp/stills-<id>.log 2>&1 &
+   nohup python -m generator.run render <id> --preview --channel <channel> > /tmp/stills-<id>.log 2>&1 &
    ```
    It builds the voice and timeline, draws the contact sheet, the thumbnail and the layout
    probe, and checks layout, length (the settings' range) and sound. It must end with `ok`. `FAIL:` lines:
@@ -177,7 +177,7 @@ first long video was rendered three times, twice for problems the stills already
    voice is cached).
 3. **The video**, once QA has passed:
    ```
-   nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
+   nohup python -m generator.run render <id> --channel <channel> > /tmp/render-<id>.log 2>&1 &
    ```
    **This takes 20–40 minutes** for 3–4 min at the shot system's detail, and a command may only run 10, so start it in the background like
    this and check `tail -3 /tmp/render-<id>.log` every few minutes. If it is cut off, run the same
@@ -198,7 +198,7 @@ Fix what it names and render the stills again. **Two rounds at most**.
 Put the chapter timestamps into the description (`chapters` in `channels/<channel>/videos/<id>/render.json`, in
 seconds; YouTube needs the first one to be `0:00`). Then:
 ```
-python -m generator.run ship <id> --commit --push --media-branch
+python -m generator.run ship <id> --commit --push --media-branch --channel <channel>
 ```
 This commits the manifest to `main`, then pushes the mp4 on a branch `media/<id>`; a workflow turns
 it into Release `video-<id>` and deletes the branch. Cloud sessions may not create releases, so
@@ -208,7 +208,7 @@ in 90 MB parts that the workflow joins back (2026-10-21); nothing to do by hand.
 ## 8. If it cannot be made to pass
 After the limits above (two plan attempts, two rewrites, two re-renders):
 ```
-python -m generator.run fail <id> --reason "<what went wrong, precisely>"
+python -m generator.run fail <id> --reason "<what went wrong, precisely>" --channel <channel>
 ```
 Then add what you learned to `channels/<channel>/longform/backlog.json` so Scout can act on it, and say so
 in your activity entry. A failed long video is not a disaster — shipping a bad one is.

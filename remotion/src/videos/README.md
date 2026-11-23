@@ -3,7 +3,8 @@
 **Since 2026-11-13 every new video is directed** (owner: "now new videos are made like this"): one file
 per beat, `<Component>.tsx`, chosen by `"scene": "directed", "params": {"component": "<Component>", ...}`,
 drawn on the flat kit (`../../flat/kit`, `../../flat/cast`; `remotion/src/flat/README.md`). The rules
-are in `generator/prompts/director.md`; each channel's reference videos are its bar. Figures come from `p.beat.params.fig`, never typed into the
+are in `generator/prompts/director.md`; each channel's reference videos are its bar (its 3 best Shorts by `stayed` in
+`channels/<channel>/metrics/videos.json`; `generator/prompts/director.md`, "The bar"). Figures come from `p.beat.params.fig`, never typed into the
 file. What follows describes the older per-video code (hooks, custom beats, props) that old videos use.
 
 
@@ -18,7 +19,7 @@ dynamic to the script"):
   viewed thumbnails (`python -m renderer.thumbs refs <id>`), built from `../../studio/thumb`
   (`Glow`, `Face`, `Thing`, `Words`, `Arrow`, `Ring`, `Badge`, `Split`). It default-exports a
   `React.FC<ThumbProps>` (`{ tl, th, w, h }`, 1280×720) and is chosen by `"thumbnail": {"layout":
-  "custom", "component": "Thumb", ...}`. Reference: `L-remake-borrow/Thumb.tsx`.
+  "custom", "component": "Thumb", ...}`. Reference: `L-20261119-01/Thumb.tsx`.
 - A sourced video's "Data: …" line is printed once (owner, 2026-11-03): print it in your own beat
   only when `showsSource(p)` from `../../studio/source` is true, and print the whole `tl.sources`
   line there (every source and the month), not one part of it.
@@ -29,14 +30,13 @@ dynamic to the script"):
 
 Every file follows the contract below (`renderer/remotion.py` `custom_problems`). A beat whose file is
 missing or fails falls back to a build or shot with the same params. Reference:
-`v-remake-billionaires/` (the remake of our most-watched Short).
+`v-20261118-01/` (a map Short: `Hook.tsx` and `props.tsx` on the flat kit).
 
 ## The hook
 
 Each video's first seconds are written for that video (owner, 2026-10-21). The hook is the richest
 frame of the video: the topic's world at its most extreme, the conflict on screen, the cast big.
-Reference: `v-showcase-raise/Hook.tsx` (a split screen: the poor and the rich life getting the same
-raise at the same moment), approved by the owner.
+Reference: `v-20261118-01/Hook.tsx` (the map is the stage, the route draws on the first words).
 
 ## Contract
 

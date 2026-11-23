@@ -3,18 +3,23 @@
 You are an unattended scheduled run for the video platform. Nobody is watching and nobody
 will answer questions. Do one run as described here, then stop. Work only in this repository.
 
-**A deleted channel stops its own routine (owner, 2026-11-23).** If `python -m generator.run state --channel
-<channel>` (either format) answers `"stop": "channel deleted"`, or this run's prompt names no channel and it is not
-the shared spare run, the channel was deleted: call `list_triggers`, find this routine (the one whose prompt
-matches this run), set it `enabled: false` with `update_trigger`, and end the run without changes (nothing made,
-committed or pushed). The shared agents (auditor, improver, dashboard, monthly) are exempt (`agents/policy.md`).
+**First, before anything else: ask `state` whether this run may go on (owner, 2026-11-23).** Run
+`python -m generator.run state --channel <channel>` with the channel this run's prompt names (`CHANNEL=<slug>`,
+`--channel <slug>`). If the prompt names no channel (and it is not the shared spare run below), run
+`python -m generator.run state` with no channel: it answers `"stop": "no channel"`. On **any** answer with a
+`stop` field (`"channel deleted"`: the owner deleted this channel; `"no channel"`: an old routine of a deleted
+channel), this routine must not run again: if you have the scheduled-task tools (`list_triggers`,
+`update_trigger`), find this routine (the one whose prompt matches this run) and set it `enabled: false`;
+if you don't have them, just end. Either way end the run at once and write nothing else (no sync, no file,
+no commit, no push, no activity). Every other `generator.run` command refuses to run without a channel. The
+shared agents (auditor, improver, dashboard, monthly) are exempt (`agents/policy.md`).
 
 Keep the run lean: it uses a Claude Pro plan's quota. Read only the files this page names, do not
 run the test suite, do not explore the codebase, and do not improve things you were not asked to.
 
 **Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names. Pass `--channel <channel>` to every `python -m generator.run` command. Shared code, `config/settings.json` and `improvement/activity/` stay where they are. Every channel has `channels/<channel>/channel.json` (its language, voices, currency, numbers mode, disclaimer, true or fiction stories, look; `python -m generator.pack show <channel>`) and `channels/<channel>/prompts/recipe.md`, its champion recipe: where CLAUDE.md describes a recipe, topics or look, each channel follows its own recipe.md and pack; the hard rules (true facts or declared fiction, figures from code, uniqueness, voice only from Kokoro) bind every channel.
 
-**The spare run with many channels** (09:07, shared). When the prompt says "spare run" and names no channel: for every channel in `config/channels.json` with `status: "active"`, run `python -m generator.run state --channel <channel>`; skip any that answers `"stop": "channel deleted"`; take the one in `mode: "video"` with the smallest `backlog` (ties: the first in the file) and do one run for it. If none is in `mode: "video"`, report "nothing to make up" and stop. One channel a spare run.
+**The spare run with many channels** (09:07, shared). When the prompt says "spare run" and names no channel: for every channel in `config/channels.json` with `status: "active"`, run `python -m generator.run state --channel <channel>`; skip any whose answer has a `stop` field (never disable the spare run for it); take the one in `mode: "video"` with the smallest `backlog` (ties: the first in the file) and do one run for it. If none is in `mode: "video"`, report "nothing to make up" and stop. One channel a spare run.
 
 ## 0. Prepare
 
@@ -39,8 +44,8 @@ can have several Pythons and only one has the packages.
   If it is still missing, stop and report "ffmpeg could not be installed" with the error text.
 ## 1. Decide what this run does
 
-Run `python -m generator.run state --channel <channel>`. If it answers `"stop": "channel deleted"`, follow the
-rule at the top of this page (disable this routine and end). Otherwise read `mode`:
+Read the `state` you ran first (`python -m generator.run state --channel <channel>`). If it has a `stop` field,
+you already ended (the rule at the top of this page). Otherwise read `mode`:
 
 | mode | What to do |
 |---|---|
@@ -52,7 +57,7 @@ rule at the top of this page (disable this routine and end). Otherwise read `mod
 
 One run makes all of the day's missing videos, so the setup above happens once a day instead of
 once per video. For each video, do sections 2 to 7 (or the failure path), then run
-`python -m generator.run state` again:
+`python -m generator.run state --channel <channel>` again:
 
 - If `mode` is still `video`, start the next video with the new `next_id`.
 - Otherwise the day's target is met: stop the loop.
@@ -72,8 +77,8 @@ they changed (a template README you haven't read yet is fine). Pick a different 
 each video; `state` already excludes recently used ones.
 
 Video runs never build or change templates: that is the improver agent's job (`agents/improver.md`).
-The one exception is a channel drawn on a **kit** (`look.kits` in its `channel.json`):
-the video run grows that kit itself when a topic needs a piece it lacks (section 3c).
+The one exception is the channel's **kit** (`look.kits` in its `channel.json`, else its `look.engine`, else
+the flat kit; section 3c): the video run grows that kit itself when a topic needs a piece it lacks (section 3c).
 
 ## 2. Plan (you)
 
@@ -93,7 +98,7 @@ beat. One round only; never argue with the pick.
 
 ## 3. Write (you)
 
-First read `generator/prompts/checklist.md` and run `python -m generator.run failures --format short`:
+First read `generator/prompts/checklist.md` and run `python -m generator.run failures --format short --channel <channel>`:
 the mistakes the last runs made, each with its fix (2026-10-29: videos took up to twelve failed
 steps to ship). Then follow `generator/prompts/writer.md`. It ends with the number check, which is
 code and must print `ok`.
@@ -112,30 +117,42 @@ with the channel's additions appended; where they differ, the channel's win). A 
 with no code per beat and its media through `python -m generator.media`; lint and render fail any other scene,
 and the render fails any media not in the channel's licence log.
 
-When the script and the code are written, run `python -m generator.run lint <id>` (about twenty
+When the script and the code are written, run `python -m generator.run lint <id> --channel <channel>` (about twenty
 seconds, no voice or frames) and fix until it prints `ok`. Run it again after every later fix, before
 the stills.
 
-Reference: the channel's best recent video with its code in `remotion/src/videos/<id>/` (copy how it works, never
-its places or pictures). The render checks every
+Reference: the channel's 3 best published Shorts by `stayed` (engaged views ÷ views) in `channels/<channel>/metrics/videos.json` (entries with `format: "short"`): each one's `channels/<channel>/videos/<id>/script.json` and `preview.png` and its code in `remotion/src/videos/<id>/` (no published Short yet: the channel's newest shipped Short in `channels/<channel>/videos/`) (`generator/prompts/director.md`, "The bar", prints their ids; copy how they work, never
+their places or pictures). The render checks every
 file (imports, no figure typed into code, every directed beat's file present, no randomness or
 clocks, `tsc`). Ship commits the folder with the video.
 
 ## 3c. Kit gaps: grow the kit, never drop the video (owner, 2026-11-22)
 
 Owner, after a run failed all three Shorts because the channel's kit had no piece for what the topic showed: "fix it
-so that it never fails again: the kit improves itself when making video so no run stops this way". For a channel whose `channel.json` `look.kits` names a kit (`remotion/src/<kit>/`):
+so that it never fails again: the kit improves itself when making video so no run stops this way". The channel's
+kits are its `channel.json` `look.kits` (e.g. the disasters channel: `three`, `flat`, `doc`), else its
+`look.engine` (`three`, `doc`), else the flat kit; each lives in `remotion/src/<kit>/` with a README that lists
+its pieces:
 
-1. **Before directing**, list what each beat must show (the landmark above ground, each layer, the thing that
-   moves in it) and check it against the kit's README "Pieces" table. A topic is never skipped or failed because
-   the kit can't draw it yet.
-2. **A missing or unrecognisable piece is added now**: a new `kind`, `type`, `preset` or prop in the kit (in a new
-   or existing file of the kit, registered the way its README says),
-   following the kit's contract: world coordinates, a pure function of the story frame, figures only from
-   `params.fig`, something alive in it (people, animals, water, machines), anything that arrives on a word leaves
-   in the last second (`outro`) so the loop matches, signs through the kit's `Sign`/`Marker` (they fade away from
-   the camera's point, clear of the note and the captions). Add its row to the kit README. **Additive only**: never
-   change how an existing piece draws, except to fix a bug a QA note named (say so in the report).
+| kit | where its pieces are listed | channel-specific part |
+|---|---|---|
+| `flat` | `remotion/src/flat/README.md`: the tables for `kit.tsx`, `map.tsx`, `cast.tsx` | `flat/tech/` (the tech channel's dark pieces, its own table) |
+| `three` | `remotion/src/three/README.md`: "How a director codes a beat" (places, things, moves, scale, labels) | `three/disaster/` ("The disaster kit" section: looks, vehicles, structures) |
+| `disaster` (2D/doc for the disasters channel) | `remotion/src/disaster/README.md`: "Pieces" (SVG and HTML tables) and "The look" | its pieces are exported from `remotion/src/disaster/index.ts` |
+| `doc` | `remotion/src/doc/README.md`: "Layers" and "Figure objects" | `"scene": "doc"` beats need no code; a beat is params only |
+
+1. **Before directing**, list what each beat must show (the place, the thing at its centre, what moves) and check
+   it against the kit's README. A topic is never skipped or failed because the kit can't draw it yet.
+2. **A missing or unrecognisable piece is added now**: a new component, preset or prop in the kit (in a new or
+   existing file of the kit, exported from its `index.ts` where it has one), following the kit's contract
+   (`remotion/src/flat/README.md` "Contract", the rules at the end of the 3D kit's "How a director codes a
+   beat"): a pure function of the frame (no clocks, no `Math.random`; seeded `rng`/`random` only), figures
+   only from `params.fig` (never typed in), times as frames on the story clock (`motion(p).at("word")` or the
+   beat's word frames), anything that arrives on a word gone or settled in the last second so the loop
+   matches. Add its row to the kit README's table. On a `doc` channel, prefer a combination of existing layers;
+   a new layer kind is a new case in `remotion/src/doc/DocBeat.tsx` plus its name in `DOC_LAYERS`
+   (`renderer/timeline/build.py`) and a row in the README "Layers" table. **Additive only**: never change how
+   an existing piece draws, except to fix a bug a QA note named (say so in the report).
 3. **Check it**: `cd remotion && npx tsc --noEmit -p .`, then `lint` and the stills; look at the frames where it
    shows.
 4. **Commit the kit change on its own**, before ship: `git add remotion/src/<kit> && git commit -q -m "<Kit>
@@ -167,7 +184,7 @@ Rendering the video is the slow part, so QA looks at the stills **before** it is
 
 1. **Stills** (about a minute):
    ```
-   python -m generator.run render <id> --preview
+   python -m generator.run render <id> --preview --channel <channel>
    ```
    It builds the voice and timeline, draws the contact sheet (`preview.png`), the thumbnail and
    the layout probe, and checks layout, length and sound levels. It must print `ok`. `FAIL:` lines:
@@ -178,7 +195,7 @@ Rendering the video is the slow part, so QA looks at the stills **before** it is
    voice is cached, so this is quick.
 3. **The video**, once QA has passed:
    ```
-   nohup python -m generator.run render <id> > /tmp/render-<id>.log 2>&1 &
+   nohup python -m generator.run render <id> --channel <channel> > /tmp/render-<id>.log 2>&1 &
    ```
    A Short takes 2–5 minutes; check `tail -3 /tmp/render-<id>.log` every minute or two. It must
    print `ok`. A `FAIL:` here is the motion gate (`liveliness`): fix the beat it names and render
@@ -197,7 +214,7 @@ If it fails the video, fix each problem according to its tag, render the stills 
 
 - **`[script]`:** fix the script lines it named, re-run the number check, ask the fact reviewer
   to re-review the changed lines, then render the stills again.
-- **`[scene]` on a kit channel** (`look.kits`, section 3c): fix or add the piece in the kit, commit it, render the
+- **`[scene]` on a kit piece** (section 3c): fix or add the piece in the kit, commit it, render the
   stills again and ask the same QA subagent to look again. A round whose only notes are `[scene]` kit fixes does not
   count toward the three (owner, 2026-11-22: a kit problem never stops a run), up to five QA rounds in all.
 - **`[template]`** or **`[scene]`** (other channels): a problem in how a scene draws (overlap, cut-off text, a frozen
@@ -211,7 +228,7 @@ If it fails the video, fix each problem according to its tag, render the stills 
 When number check, fact review and QA review have all passed:
 
 ```
-python -m generator.run ship <id> --commit --push --media-branch
+python -m generator.run ship <id> --commit --push --media-branch --channel <channel>
 ```
 
 This writes the manifest, appends to history, commits to `main` and pushes, then pushes the mp4
@@ -221,11 +238,11 @@ themselves, so do not try `gh release` or the `--release` flag.
 
 - If `ship` says the id **is already used** (another run shipped it while you worked; ids are unique across
   channels because the database and the release tag key videos by id alone), run
-  `python -m generator.run reid <id>`: it moves the video, its own code and its history entry to a free id
+  `python -m generator.run reid <id> --channel <channel>`: it moves the video, its own code and its history entry to a free id
   of this channel's block. Then ship the new id. Never ship two videos under one id.
 - If the **push to main** fails, run `git pull --rebase origin main` and `git push origin HEAD:main`
-  once, then `python -m generator.run media <id>` to push the video branch.
-- If the **media branch push** fails, retry `python -m generator.run media <id>` once.
+  once, then `python -m generator.run media <id> --channel <channel>` to push the video branch.
+- If the **media branch push** fails, retry `python -m generator.run media <id> --channel <channel>` once.
 - If either still fails, report the exact error text. The mp4 is lost when this session ends;
   a later run cannot recover it.
 ### If the video cannot be made to pass
@@ -234,18 +251,18 @@ After the limits above are used up (three plan attempts, two rewrites, three re-
 undo any template repair that did not lead to a pass (`git checkout -- renderer`), then:
 
 ```
-python -m generator.run fail <id> --reason "<which check failed and why, one sentence>"
+python -m generator.run fail <id> --reason "<which check failed and why, one sentence>" --channel <channel>
 git add channels/<channel>/videos/<id> && git commit -q -m "Mark video <id> failed" && git push origin HEAD:main
 ```
 
 A failed video is never released. **Then go back to the loop** (section 1a): run
-`python -m generator.run state` again (it gives a new `next_id`) and, if its mode is still
+`python -m generator.run state --channel <channel>` again (it gives a new `next_id`) and, if its mode is still
 `video` and the run's limits allow, make the next video with a **different template** from the
 one that failed.
 
 ## 8. The editor (every run, also idle ones)
 
-Follow `generator/prompts/editor.md`: score every ready Short (`python -m generator.run rank`), look
+Follow `generator/prompts/editor.md`: score every ready Short (`python -m generator.run rank --channel <channel>`), look
 at the top candidates, and commit `channels/<channel>/editor/ranking.json`. One Short goes out every
 `shortEveryDays` days, so the best of the queue must be first (owner, 2026-10-30).
 

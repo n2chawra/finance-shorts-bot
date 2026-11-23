@@ -201,9 +201,19 @@ def invariants(head: str) -> list[str]:
 
 
 def _branch_channel(branch: str) -> str:
-    """The channel a per-channel agent's branch names (agent/<name>/<date>/<slug>); a branch without one counts as the default channel's."""
+    """The channel a per-channel agent's branch names (agent/<name>/<date>/<slug>); "" for a branch without one
+    (the guard rejects such a branch: it never stands for the default channel)."""
     parts = (branch or "").split("/")
-    return parts[3] if len(parts) > 3 and parts[3] else DEFAULT_CHANNEL
+    return parts[3] if len(parts) > 3 and parts[3] else ""
+
+
+def channel_folders(rev: str) -> set[str]:
+    """The channel folders (channels/<slug>/) that exist at `rev`."""
+    try:
+        out = git("ls-tree", "-d", "--name-only", f"{rev}:channels")
+    except subprocess.CalledProcessError:
+        return set()
+    return {line.strip() for line in out.splitlines() if line.strip()}
 
 
 def merges_today(agent: str, now: datetime, channel: str | None = None) -> int:
@@ -216,16 +226,16 @@ def merges_today(agent: str, now: datetime, channel: str | None = None) -> int:
     log = json.loads(path.read_text(encoding="utf-8"))
     mine = [e for e in log.get("merges", []) if e.get("agent") == agent and e.get("result") == "merged" and e.get("dayIst") == day]
     if agent in PER_CHANNEL_AGENTS:
-        want = channel or DEFAULT_CHANNEL
-        mine = [e for e in mine if _branch_channel(e.get("branch", "")) == want]
+        mine = [e for e in mine if _branch_channel(e.get("branch", "")) == (channel or "")]
     return len(mine)
 
 
 # agents that work for one channel at a time (the routine names it; branch agent/<name>/<date>/<slug>):
 # they may change only their own channel's folder. The shared agents (auditor, improver, dashboard,
 # monthly) work across channels.
+# A per-channel agent's branch must name its channel, and that channel must have a folder on the base: an old
+# routine of a deleted channel (its prompt names none) never lands in another channel, nor recreates its own.
 PER_CHANNEL_AGENTS = {"research", "reviewer", "scout", "studio"}
-DEFAULT_CHANNEL = "geography-maps-geopolitical-mysteries"   # config/channel-layout.json "default"
 # agents' data (reports, feeds, metrics) is not code: it doesn't count toward the line limit or need tests
 DATA_PREFIXES = ("improvement/", "channels/")
 
@@ -258,14 +268,24 @@ def check(agent: str, base: str, head: str, now: datetime | None = None, channel
         files.append((status, path))
     if not files:
         return {"ok": False, "reasons": ["the branch changes nothing"], "files": [], "needsTests": False}
+    folders = channel_folders(base)
+    if agent in PER_CHANNEL_AGENTS:
+        if not channel:
+            reasons.append(f"the branch names no channel; a {agent} branch is agent/{agent}/<date>/<slug> "
+                           f"(a routine whose prompt names no channel belongs to a deleted channel and should disable itself)")
+        elif channel not in folders:
+            reasons.append(f"channels/{channel}/ does not exist on {base}: the {agent} agent works only for a live channel")
     for status, path in files:
         unlocked = match(path, UNLOCK.get(agent, [])) and not match(path, LOCKED)
         if match(path, FORBID) and not unlocked:
             reasons.append(f"{path}: protected file; no agent may change it")
         elif not match(path, ALLOW[agent]):
             reasons.append(f"{path}: outside what the {agent} agent may change")
-        if agent in PER_CHANNEL_AGENTS and path.startswith("channels/") and not path.startswith(f"channels/{channel or DEFAULT_CHANNEL}/"):
-            reasons.append(f"{path}: another channel's folder; the {agent} agent works for channels/{channel or DEFAULT_CHANNEL}/ only")
+        if agent in PER_CHANNEL_AGENTS and channel and path.startswith("channels/") and not path.startswith(f"channels/{channel}/"):
+            reasons.append(f"{path}: another channel's folder; the {agent} agent works for channels/{channel}/ only")
+        m = re.match(r"channels/([^/]+)/", path)
+        if m and m.group(1) not in folders and status != "D":
+            reasons.append(f"{path}: channels/{m.group(1)}/ does not exist on {base} (a deleted channel is never recreated by an agent)")
         if status == "D" and TEST_FILE.search(path):
             reasons.append(f"{path}: deleting a test file is not allowed (rewrite or move tests instead)")
         if path.lower().endswith(MEDIA_EXT) and status != "D":
@@ -294,7 +314,7 @@ def check(agent: str, base: str, head: str, now: datetime | None = None, channel
     reasons += invariants(head)
     reasons += changes_added(base, head, files)
     if merges_today(agent, now, channel) >= MAX_MERGES_PER_DAY:
-        where = f" for channels/{channel or DEFAULT_CHANNEL}/" if agent in PER_CHANNEL_AGENTS else ""
+        where = f" for channels/{channel}/" if agent in PER_CHANNEL_AGENTS and channel else ""
         reasons.append(f"the {agent} agent already merged {MAX_MERGES_PER_DAY} changes today{where}")
     needs_tests = any(not p.startswith(DATA_PREFIXES) for _, p in files)
     return {"ok": not reasons, "reasons": sorted(set(reasons)), "files": [p for _, p in files], "codeLines": code_lines,

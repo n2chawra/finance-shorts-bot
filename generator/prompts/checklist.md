@@ -8,10 +8,10 @@ Writers (the video routine, Studio) read this before writing a script, and again
 hard rules (a `wrong` note is a rule until the improver addresses it), and his picks and stales show
 what he wants on the channel. `failures` prints the open notes at the top too.
 
-**Then what failed lately.** `python -m generator.run failures --format short` (or `long`)
+**Then what failed lately.** `python -m generator.run failures --format short --channel <channel>` (or `long`)
 groups the last two weeks' failed checks with the fix for each. Avoid every item it lists.
 
-**After every edit, run the quick check.** `python -m generator.run lint <id>` takes about twenty
+**After every edit, run the quick check.** `python -m generator.run lint <id> --channel <channel>` takes about twenty
 seconds. It builds the timeline on an estimated voice and runs every check that needs no pixels: the
 story spine, the picture following the words, gaps, shot sizes, devices, props against recent
 videos, the thumbnail spec, length and your own code (`tsc`). Fix until it prints `ok`, and only then

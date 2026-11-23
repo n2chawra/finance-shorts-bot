@@ -13,9 +13,8 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 `python -m generator.run prompt director --channel <channel>`; where they differ, the channel's wins. A
 `look.engine: "doc"` channel draws `"scene": "doc"` beats from params, with no flat kit and no code per beat.
 
-- **The bar**: the channel's reference videos (its approved samples and best Shorts, named in its
-  `prompts/recipe.md` and by the auditor's weekly tally), their `script.json` and their code in
-  `remotion/src/videos/<id>/`. Copy how they work, never their places or pictures: every story gets its own.
+- **The bar** (the channel's reference videos): the channel's 3 best published Shorts by `stayed` (engaged views ÷ views) in `channels/<channel>/metrics/videos.json` (entries with `format: "short"`): each one's `channels/<channel>/videos/<id>/script.json` and `preview.png` and its code in `remotion/src/videos/<id>/` (no published Short yet: the channel's newest shipped Short in `channels/<channel>/videos/`). Their ids: `python3 -c "import json;v=[x for x in json.load(open('channels/<channel>/metrics/videos.json'))['videos'] if x.get('format')=='short' and x.get('stayed') is not None];print([x['id'] for x in sorted(v,key=lambda x:-x['stayed'])[:3]])"`.
+  Copy how they work, never their places or pictures: every story gets its own.
 - **The kit**: `remotion/src/flat/README.md` (what each piece draws and its props).
 - `channels/<channel>/prompts/lessons.md` and `channels/<channel>/prompts/studied.md` (techniques measured against ours).
 - **Another channel's look wins** (multi-channel, 2026-11-17): a channel with its own `prompts/recipe.md`
@@ -112,7 +111,7 @@ every video look the same: one skyline, floating cards, a header of text. Never 
    the shot dips to dust, black or a cut before anything reaches them; after, rescuers with lamps
    (`Rescuers`), emergency lights, an emptied floor, the toll on a thing in that place (a memorial plaque, the
    rescue board), never on a bare card over empty rooms. Never blood, bodies, injuries or a real victim's
-   face. `python -m generator.run lint` fails a beat whose line speaks of people when its `params` (place,
+   face. `python -m generator.run lint --channel <channel>` fails a beat whose line speaks of people when its `params` (place,
    moments, things) show none.
 
 ## Step 1: the shot list (in `script.json`)
@@ -207,7 +206,7 @@ export default Vault;
 
 ## Step 3: check
 
-1. `python -m generator.run lint <id>`: the script check (every directed beat's params), the code check
+1. `python -m generator.run lint <id> --channel <channel>`: the script check (every directed beat's params), the code check
    (imports, no typed figure, every component file present, `tsc`). Fix until `ok`.
 2. The stills (`render <id> --preview`): open `preview.png` and look at every frame as a viewer. Each
    must show a place, someone doing something, and the figure on a thing. A frame that is mostly text, a

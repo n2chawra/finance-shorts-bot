@@ -120,7 +120,7 @@ async function auditChannel(prisma: PrismaClient, store: Store, ch: Channel, quo
   writeFileSync(out, JSON.stringify(report, null, 2) + "\n");
 
   // the owner hears only about what needs them, or what the auditor failed to fix for two nights
-  const channelId = first ? {} : { channelId: ch.id };
+  const channelId = { channelId: ch.id };
   const raised = new Set<string>();
   const unlinked = issues.filter((i) => i.kind === "unlinked");
   if (unlinked.length) {

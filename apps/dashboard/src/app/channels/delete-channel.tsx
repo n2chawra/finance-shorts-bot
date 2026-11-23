@@ -7,8 +7,8 @@ import { useState } from "react";
 import { z } from "zod";
 
 import { useToast } from "@/components/toast";
-import { buttonClass, fieldClass } from "@/components/ui";
-import { type Channel, confirmsDelete } from "@/lib/channels";
+import { Tip, buttonClass, fieldClass } from "@/components/ui";
+import { type Channel, DEFAULT_CHANNEL, confirmsDelete } from "@/lib/channels";
 
 /** POST /api/channels/[id]/delete's answer: the database part is done; the workflow may not have started. */
 const DeleteResultSchema = z.object({
@@ -38,6 +38,7 @@ export function DeleteChannel({ c }: { c: Channel }) {
   const [typed, setTyped] = useState("");
   const del = useMutation({ mutationFn: deleteChannel, onSettled: () => qc.invalidateQueries() });
   const ok = confirmsDelete(typed, c);
+  const isDefault = c.id === DEFAULT_CHANNEL;
 
   const submit = () => del.mutate({ id: c.id, confirm: typed }, {
     onSuccess: (r) => {
@@ -47,6 +48,17 @@ export function DeleteChannel({ c }: { c: Channel }) {
     },
     onError: (e) => toast(e.message, "error"),
   });
+
+  // the default channel can't be deleted (the API and delete-channel.yml refuse it): the button stays, disabled, saying why
+  if (isDefault) {
+    return (
+      <Tip label="The default channel can't be deleted. Make another channel the default first.">
+        <span className="inline-flex" tabIndex={0}>
+          <button type="button" disabled aria-disabled className={buttonClass("ghost", false, "sm")}><Trash2 aria-hidden className="size-4" />Delete channel</button>
+        </span>
+      </Tip>
+    );
+  }
 
   return (
     <AlertDialog.Root open={open} onOpenChange={(o) => { if (!o) setTyped(""); setOpen(o); }}>

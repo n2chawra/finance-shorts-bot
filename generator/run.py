@@ -15,6 +15,10 @@ records every step in videos/<id>/run.json.
     python -m generator.run template-work <template> <action> [--enabled]
     python -m generator.run prompt <name>                 generator/prompts/<name>.md + the channel's prompts/<name>.md
 
+Every command needs the channel: `--channel <slug>` or the `CHANNEL` environment variable. Without one,
+`state` answers `{"stop": "no channel"}` and every other command exits 2 (the CLI never falls back to the
+layout's default channel). A deleted channel's `state` answers `{"stop": "channel deleted"}`, other commands exit 2.
+
 Exit code 0 means the step passed; 1 means it failed and the reasons are printed.
 """
 import argparse
@@ -861,6 +865,10 @@ def fail(vid: str, reason: str, root: Path = ROOT) -> dict:
     return manifest
 
 
+NO_CHANNEL = {"stop": "no channel",
+              "why": "this run names no channel (--channel <slug> or CHANNEL): a per-channel routine stops and disables itself"}
+
+
 def _pop_channel(argv: list[str]) -> tuple[list[str], str | None]:
     """`--channel <slug>` (or `--channel=<slug>`) anywhere on the command line: the channel to work on."""
     out, slug, i = [], None, 0
@@ -921,8 +929,18 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("action")
     p.add_argument("--enabled", action="store_true")
     argv, slug = _pop_channel(sys.argv[1:] if argv is None else list(argv))
-    channels.use(slug)
     a = ap.parse_args(argv)
+    # every command is per-channel: the CLI never falls back to the layout's default channel, so a routine
+    # whose prompt names no channel (an old routine of a deleted channel) can't run for another one.
+    # `state` tells it to stop (generator/prompts/routine.md, agents/policy.md); every other command refuses
+    if not (slug or os.environ.get("CHANNEL")):
+        if a.cmd == "state":
+            print(json.dumps({**NO_CHANNEL, "format": a.format}, indent=2))
+            return 0
+        print(f"error: no channel: pass --channel <slug> or set CHANNEL (python -m generator.run {a.cmd} --channel <slug>)",
+              file=sys.stderr)
+        return 2
+    channels.use(slug)
     # a deleted channel (generator/channels.py deleted): `state` tells the routine to disable itself
     # (generator/prompts/routine.md, agents/policy.md), and nothing else runs, so no file is written for it
     if channels.deleted():

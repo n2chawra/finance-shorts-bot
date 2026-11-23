@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { ChannelDeleteSchema, SLUG, confirmsDelete } from "@/lib/channels";
+import { ChannelDeleteSchema, DEFAULT_CHANNEL, SLUG, confirmsDelete } from "@/lib/channels";
 import { forgetLiveChannels } from "@/lib/channel-scope";
 import { dispatchWorkflow } from "@/lib/dispatch";
 import { prismaAll as db } from "@/lib/prisma";
@@ -20,6 +20,9 @@ const UNPUBLISHED = ["planned", "scripted", "verified", "rendered", "qa_passed",
 export async function POST(req: Request, ctx: { params: Promise<{ id: string }> }) {
   const { id } = await ctx.params;
   if (!SLUG.test(id)) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  // rows without a channel and the workers' fallbacks use the default channel (config/channel-layout.json), and
+  // delete-channel.yml refuses it too: change the default first
+  if (id === DEFAULT_CHANNEL) return NextResponse.json({ error: "This is the default channel, so it can't be deleted. Make another channel the default (config/channel-layout.json) first." }, { status: 400 });
   const parsed = ChannelDeleteSchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Type the channel's slug or name to confirm" }, { status: 400 });
   if (!process.env.DATABASE_URL) return NextResponse.json({ error: "Deleting a channel needs the database (this dashboard runs on sample data)" }, { status: 400 });

@@ -16,6 +16,7 @@ COPIED = ["remotion/src/design/rules.ts", "remotion/src/design/frame.ts", "remot
           "remotion/src/compositions/StoryVideo.tsx",
           "renderer/timeline/build.py", "renderer/gates.py", "generator/run.py", "generator/numbers.py",
           "generator/topics.py"]
+LIVE = ["geography-maps-geopolitical-mysteries", "space-facts", "b-chan", "demo"]   # channel folders on the base
 
 
 def sh(root: Path, *args: str) -> None:
@@ -27,6 +28,9 @@ def repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
     for f in COPIED:
         (tmp_path / f).parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(REPO / f, tmp_path / f)
+    for slug in LIVE:
+        (tmp_path / "channels" / slug).mkdir(parents=True)
+        (tmp_path / "channels" / slug / "profile.md").write_text(f"# {slug}\n", encoding="utf-8")
     sh(tmp_path, "init", "-q", "-b", "main")
     sh(tmp_path, "config", "user.email", "t@t"); sh(tmp_path, "config", "user.name", "t")
     sh(tmp_path, "add", "."); sh(tmp_path, "commit", "-q", "-m", "base")
@@ -70,9 +74,9 @@ def test_blocks_workflows_and_files_outside_the_allow_list(repo: Path) -> None:
 
 def test_research_may_only_write_reports(repo: Path) -> None:
     change(repo, "improvement/research/2026-10-16.md", "# report\n")
-    assert guard.check("research", "main", "HEAD")["ok"]
+    assert guard.check("research", "main", "HEAD", channel="demo")["ok"]
     change(repo, "generator/prompts/planner.md", "x\n")
-    assert not guard.check("research", "main", "HEAD")["ok"]
+    assert not guard.check("research", "main", "HEAD", channel="demo")["ok"]
 
 
 def test_blocks_removing_the_disclaimer(repo: Path) -> None:
@@ -168,7 +172,7 @@ def test_daily_merge_limit_is_per_channel_for_per_channel_agents(repo: Path) -> 
 
 def test_reports_only_branches_skip_the_test_suite(repo: Path) -> None:
     change(repo, "improvement/research/2026-10-16.md", "# report\n")
-    assert guard.check("research", "main", "HEAD")["needsTests"] is False
+    assert guard.check("research", "main", "HEAD", channel="demo")["needsTests"] is False
 
 
 def test_auditor_may_fix_workers_and_live_counts(repo: Path) -> None:
@@ -227,11 +231,12 @@ def test_every_agent_may_answer_the_owners_notes_in_its_own_file_only(repo: Path
     """Owner, 2026-11-10: any agent that can fix a note gets it, and answers it in its own file."""
     sh(repo, "checkout", "-q", "-B", f"agent/{agent}/x")
     change(repo, f"improvement/feedback-acks/{agent}.json", '{"acks": []}\n')
-    r = guard.check(agent, "main", "HEAD")
+    channel = "demo" if agent in guard.PER_CHANNEL_AGENTS else None
+    r = guard.check(agent, "main", "HEAD", channel=channel)
     assert r["ok"], r["reasons"]
     other = "research" if agent != "research" else "dashboard"
     change(repo, f"improvement/feedback-acks/{other}.json", '{"acks": []}\n')
-    assert not guard.check(agent, "main", "HEAD")["ok"]
+    assert not guard.check(agent, "main", "HEAD", channel=channel)["ok"]
 
 
 # ---------------- many channels (multi-channel plan, step 4) ----------------
@@ -245,15 +250,30 @@ def test_a_per_channel_agent_stays_in_its_channel_folder(repo: Path) -> None:
     assert any("another channel's folder" in x for x in r["reasons"]), r["reasons"]
 
 
-def test_without_a_channel_a_per_channel_agent_works_for_the_default_channel(repo: Path) -> None:
-    change(repo, "channels/space-facts/research/topics.json", "{}\n")
+def test_a_per_channel_branch_without_a_channel_is_rejected(repo: Path) -> None:
+    # an old routine of a deleted channel names no channel: it must never land in the default channel
+    change(repo, "channels/geography-maps-geopolitical-mysteries/research/topics.json", "{}\n")
     r = guard.check("research", "main", "HEAD")
-    assert any("channels/geography-maps-geopolitical-mysteries/ only" in x for x in r["reasons"]), r["reasons"]
+    assert not r["ok"] and any("names no channel" in x for x in r["reasons"]), r["reasons"]
+    assert guard.check("research", "main", "HEAD", channel="geography-maps-geopolitical-mysteries")["ok"]
+
+
+def test_a_branch_for_a_channel_without_a_folder_is_rejected(repo: Path) -> None:
+    change(repo, "channels/gone-chan/research/topics.json", "{}\n")
+    r = guard.check("research", "main", "HEAD", channel="gone-chan")
+    assert any("channels/gone-chan/ does not exist on main: the research agent" in x for x in r["reasons"]), r["reasons"]
+    assert any("a deleted channel is never recreated" in x for x in r["reasons"]), r["reasons"]
+
+
+def test_no_agent_recreates_a_deleted_channel_folder(repo: Path) -> None:
+    change(repo, "channels/gone-chan/notifications/improver.json", "{}\n")
+    r = guard.check("improver", "main", "HEAD")
+    assert any("a deleted channel is never recreated" in x for x in r["reasons"]), r["reasons"]
 
 
 def test_channel_data_is_not_code(repo: Path) -> None:
     change(repo, "channels/geography-maps-geopolitical-mysteries/research/2026-11-20.md", "line\n" * 5000)
-    r = guard.check("research", "main", "HEAD")
+    r = guard.check("research", "main", "HEAD", channel="geography-maps-geopolitical-mysteries")
     assert r["codeLines"] == 0 and not r["needsTests"], r
 
 

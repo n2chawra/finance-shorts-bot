@@ -6,12 +6,16 @@ each legacy repo path to its place in a channel folder. A channel whose folder d
 (the tests' temporary repos) keeps the legacy paths, so the pipeline behaves the same either way.
 
 The channel is `--channel` on a command (which sets `CHANNEL` for its subprocesses too), else the
-`CHANNEL` environment variable, else the layout's default (`geography-maps-geopolitical-mysteries`).
+`CHANNEL` environment variable, else (library code and tests only) the layout's default. The
+`generator.run` CLI never uses the default: with no channel named, `state` answers `{"stop": "no channel"}`
+and every other command exits 2.
 
-A channel the owner deleted on the dashboard is `deleted()`: config/channels.json (written by ingest) no
-longer lists it, or lists it as being deleted, or its folder is gone (delete-channel.yml). `generator.run`
-then does nothing for it: `state` answers `{"stop": "channel deleted"}` so the routine disables itself, and
-every other command fails before it writes a file (a deleted channel's paths would fall back to the repo root).
+A channel the owner deleted on the dashboard is `deleted()`: config/channels.json (written by ingest) lists
+it as deleting or deleted, or its `channels/<slug>/` folder is gone while other channels have folders
+(delete-channel.yml). Being merely absent from config/channels.json does not count, so a partial file can
+never stop a live channel. `generator.run` then does nothing for it: `state` answers
+`{"stop": "channel deleted"}` so the routine disables itself, and every other command fails before it writes
+a file (a deleted channel's paths would fall back to the repo root).
 """
 from __future__ import annotations
 
@@ -112,37 +116,40 @@ def _entries(root: Path) -> dict | None:
     return entries if isinstance(entries, dict) and entries else None
 
 
-def deleted(slug: str | None = None, root: Path = ROOT) -> bool:
-    """True when the channel was deleted, or is being deleted: config/channels.json lists other channels but not
-    this one, or lists it as deleting; or other channels have folders and this one's is gone. A repo with
-    neither file nor folders (the tests' temporary repos) has no deleted channel."""
-    slug = slug or current()
-    entries = _entries(root)
-    if entries is not None:
-        entry = entries.get(slug)
-        if not isinstance(entry, dict) or entry.get("status") in GONE:
-            return True
+def _folders(root: Path) -> list[str]:
     base = root / "channels"
-    if base.is_dir() and any(p.is_dir() and SLUG.match(p.name) for p in base.iterdir()) and not (base / slug).is_dir():
+    return sorted(p.name for p in base.iterdir() if p.is_dir() and SLUG.match(p.name)) if base.is_dir() else []
+
+
+def _status(slug: str, root: Path) -> str | None:
+    entry = (_entries(root) or {}).get(slug)
+    return entry.get("status") if isinstance(entry, dict) else None
+
+
+def deleted(slug: str | None = None, root: Path = ROOT) -> bool:
+    """True when the channel was deleted, or is being deleted: config/channels.json lists it with status
+    deleting or deleted, or other channels have folders and this one's is gone. A channel that is only
+    missing from config/channels.json is not deleted (a partial file never stops a live channel). A repo with
+    no channel folders (the tests' temporary repos) has no deleted channel unless its file says so."""
+    slug = slug or current()
+    if _status(slug, root) in GONE:
         return True
-    return False
+    folders = _folders(root)
+    return bool(folders) and slug not in folders
 
 
 def require_live(slug: str | None = None, root: Path = ROOT) -> str:
     """The channel, or ChannelDeleted when it was deleted (so nothing is written for it)."""
     slug = slug or current()
     if deleted(slug, root):
-        raise ChannelDeleted(f"channel {slug!r} was deleted (config/channels.json no longer runs it): nothing to do")
+        raise ChannelDeleted(f"channel {slug!r} was deleted (config/channels.json marks it deleted, or its folder is gone): nothing to do")
     return slug
 
 
 def all_channels(root: Path = ROOT) -> list[str]:
-    """Every channel with a folder that isn't being deleted, else just the default (before the move)."""
-    base = root / "channels"
-    found = sorted(p.name for p in base.iterdir() if p.is_dir() and SLUG.match(p.name)) if base.is_dir() else []
-    entries = _entries(root)
-    if entries is not None:   # a channel being deleted still has its folder until delete-channel.yml runs
-        found = [s for s in found if (entries.get(s) or {}).get("status") not in GONE]
+    """Every channel with a folder that isn't `deleted()` (not listed as deleting/deleted), else just the
+    default (before the move)."""
+    found = [s for s in _folders(root) if _status(s, root) not in GONE]
     return found or [default()]
 
 

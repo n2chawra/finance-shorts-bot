@@ -6,7 +6,7 @@ which are money stories from the platform's first channel.
 Same pipeline, scenes, cast, numbers and rules as [`long_story`](../long_story/README.md): read
 that README for the script fields, `maths` kinds, beats, events, acting and the scene table.
 Example: [`examples/short_story.json`](../../../examples/short_story.json). There is no
-`schema.json`: `python -m generator.run number-check <id>` validates the whole script.
+`schema.json`: `python -m generator.run number-check <id> --channel <channel>` validates the whole script.
 
 ## Directed shots (every new Short, since 2026-11-13)
 
@@ -15,7 +15,7 @@ Short remade shot by shot in flat 2D: "I absolutely loved this… now new videos
 `"scene": "directed"`: a place built for the line, someone doing something, the figure on a thing in
 that place, a camera that moves, every change on a spoken word, coded per beat in
 `remotion/src/videos/<id>/` on the channel's kit (flat by default). The bar is the channel's reference
-videos (its approved samples, named in its recipe). The sections below on shots, the board and the
+videos: the channel's 3 best published Shorts by `stayed` (engaged views ÷ views) in `channels/<channel>/metrics/videos.json` (entries with `format: "short"`): each one's `channels/<channel>/videos/<id>/script.json` and `preview.png` and its code in `remotion/src/videos/<id>/` (no published Short yet: the channel's newest shipped Short in `channels/<channel>/videos/`). The sections below on shots, the board and the
 old scenes describe the kits it replaced (kept so old videos can be re-rendered); the story spine,
 recipes, cover and evidence sections still apply.
 
@@ -63,7 +63,7 @@ for a character moment with a `bubble`, and keep plain `bignumber` beats rare. E
 ## The board: rooms and cards (owner, 2026-11-02; a test variant for Shorts since 2026-11-04, used when the plan's `arms.style` is `board`; long videos keep it)
 
 After a frame-by-frame study of The Curious Plot (their "$0 salary" Short 43K, "egg selling" 1.3M;
-ours on the same topic 151) and four demos the owner reviewed (`v-remake-salary`): the question is
+ours on the same topic 151) and four demos the owner reviewed (deleted with the Paisa Panchayat channel, 2026-11-23): the question is
 asked in a **room**, every answer is a **card**, a new picture every sentence, every clause animated,
 and the whole story readable with the sound off. `scene: "board"`, `remotion/src/studio/board.tsx`.
 

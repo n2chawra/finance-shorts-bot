@@ -1,11 +1,14 @@
 # Delete one channel for good (the dashboard's "Delete channel", 2026-11-23). The dashboard marks the channel
 # "deleting" (no more uploads, stats or ingest for it; its routines find no entry in config/channels.json and
 # disable themselves) and starts this workflow on main with the channel's slug. It refuses a channel that isn't
-# marked "deleting", so a typo here can't wipe a live channel.
+# marked "deleting" and the default channel, so a typo here can't wipe a live channel.
 #
-#   1. the database: every row of the channel, then its Channel row (workers/delete-channel.ts)
-#   2. GitHub: each of its videos' releases and tags (video-<id>)
-#   3. the repo: channels/<slug>/, its config/channels.json entry, its per-video code (remotion/src/videos/<id>);
+#   1. which videos go (workers/delete-channel.ts list): its database rows and its folder's records, minus any id
+#      another channel's folder records; written to a file, printed, and kept as a run artifact
+#   2. GitHub: each of those videos' releases and tags (video-<id>)
+#   3. the database: every row of the channel, then its Channel row (workers/delete-channel.ts purge). Last but the
+#      repo, so a failed run can be re-run and still find every video to remove
+#   4. the repo: channels/<slug>/, its config/channels.json entry, its per-video code (remotion/src/videos/<id>);
 #      config/id-blocks.json keeps its block (ids are never reused) and lists the slug under "retired"
 name: Delete channel
 
@@ -54,31 +57,37 @@ jobs:
       - name: Apply migrations
         working-directory: workers
         run: npm run migrate
-      # refuses unless the channel is marked deleting; writes its video ids to $IDS_FILE before deleting
-      - name: Delete the channel's database rows
+      # refuses unless the channel is marked deleting (and never the default channel); deletes nothing
+      - name: List the channel's videos
         working-directory: workers
         shell: bash
-        run: npm run delete-channel -- "$CHANNEL_SLUG" "$IDS_FILE" | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          npm run --silent delete-channel -- list "$CHANNEL_SLUG" "$IDS_FILE" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "Ids to remove:"; cat "$IDS_FILE"
+      - name: Keep the id list
+        uses: actions/upload-artifact@v4
+        with:
+          name: delete-channel-${{ inputs.channel }}-ids
+          path: ${{ runner.temp }}/delete-channel-ids.txt
+          if-no-files-found: error
+          retention-days: 90
       - name: Delete the videos' releases and tags
         shell: bash
         run: |
           set -euo pipefail
-          hist="channels/$CHANNEL_SLUG/history/history.json"
-          # the repo's own record too (videos never ingested, or a re-run after the rows are gone)
-          if [ -f "$hist" ]; then
-            python3 -c 'import json,sys; [print(e["id"]) for e in json.load(open(sys.argv[1])) if isinstance(e, dict) and e.get("id")]' "$hist" >> "$IDS_FILE"
-          fi
-          if [ -d "channels/$CHANNEL_SLUG/videos" ]; then ls "channels/$CHANNEL_SLUG/videos" >> "$IDS_FILE"; fi
-          sort -u "$IDS_FILE" | grep -E '^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$' > "$IDS_FILE.sorted" || true
-          mv "$IDS_FILE.sorted" "$IDS_FILE"
-          echo "$(wc -l < "$IDS_FILE") videos to remove" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "$(grep -c . "$IDS_FILE" || true) videos to remove" | tee -a "$GITHUB_STEP_SUMMARY"
           gone=0
           while read -r id; do
-            [ -n "$id" ] || continue
+            [[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$ ]] || continue
             if gh release delete "video-$id" --cleanup-tag -y 2>/dev/null; then gone=$((gone + 1));
             else git push -q origin ":refs/tags/video-$id" 2>/dev/null || true; fi   # a tag without a release
           done < "$IDS_FILE"
           echo "$gone releases deleted" | tee -a "$GITHUB_STEP_SUMMARY"
+      # checks again (status deleting, not the default), then deletes the rows; a database error fails the job
+      - name: Delete the channel's database rows
+        working-directory: workers
+        shell: bash
+        run: npm run --silent delete-channel -- purge "$CHANNEL_SLUG" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Remove the channel's files
         shell: bash
         run: |
@@ -88,7 +97,8 @@ jobs:
           remove() {
             [ ! -e "channels/$CHANNEL_SLUG" ] || git rm -rq "channels/$CHANNEL_SLUG"
             while read -r id; do
-              [ -n "$id" ] && [ -e "remotion/src/videos/$id" ] && git rm -rq "remotion/src/videos/$id" || true
+              # the id list leaves out every id another channel's folder records (workers/lib/delete-channel.ts)
+              [[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,80}$ ]] && [ -e "remotion/src/videos/$id" ] && git rm -rq "remotion/src/videos/$id" || true
             done < "$IDS_FILE"
             python3 - <<'PY'
           import json, os

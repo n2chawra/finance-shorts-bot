@@ -58,10 +58,9 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   most were about something the viewer buys, owns or watches.
   - **The opening is already chosen**: use the title, first line and first frame picked in
     `channels/<channel>/videos/<id>/openings.json` (routine step 2b).
-  - **Look at the bar first**: the channel's reference videos (its approved samples, named in its
-    recipe, and their code in `remotion/src/videos/<id>/`), and the contact sheets (`channels/<channel>/videos/<id>/preview.png`)
-    of the Shorts in `channels/<channel>/analysis/pictures.json` → `reference`, our own Shorts that held viewers
-    best. Draw at least that well: as full, as big, as clear. Copy how they work, never their pictures.
+  - **Look at the bar first** (the channel's reference videos): the channel's 3 best published Shorts by `stayed` (engaged views ÷ views) in `channels/<channel>/metrics/videos.json` (entries with `format: "short"`): each one's `channels/<channel>/videos/<id>/script.json` and `preview.png` and its code in `remotion/src/videos/<id>/` (no published Short yet: the channel's newest shipped Short in `channels/<channel>/videos/`)
+    (`generator/prompts/director.md`, "The bar", prints their ids). Draw at least that well: as full, as big,
+    as clear. Copy how they work, never their pictures.
   - **One surprising true money fact about a real, named person or business.** The plan's `subject`
     is named in the title and in the hook's first sentence; **the payoff's figure is not** (it waits
     for the payoff). `number-check` fails a payoff figure said in the hook or the promise, a title that
@@ -150,7 +149,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   `"scene": "directed"`. Write each beat's `say`, `role` and `events` (the words where something will
   change: a burst, a stamp, a reveal), then follow `generator/prompts/director.md` for its `params`
   (component, place, camera, moments, things, fig) and its code in `remotion/src/videos/<id>/`. Copy
-  the shape of the channel's reference videos' `script.json`, never their words or places. The render fails a
+  the shape of the channel's reference videos' `script.json` (its 3 best Shorts by `stayed`, above), never their words or places. The render fails a
   video with empty frames, one shot size or one place (`renderer/craft.py`).
 - **The first beat is the hook, directed like the rest**: the subject recognisable in frame 0 with
   something already moving, the first change on a word within 1.5 s, a cut to a second place on a
@@ -316,12 +315,12 @@ $50 million salary").
 ## Check
 
 Before writing, read `generator/prompts/checklist.md` and the output of
-`python -m generator.run failures` (what failed lately and how to avoid it).
+`python -m generator.run failures --channel <channel>` (what failed lately and how to avoid it).
 
-Run `python -m generator.run number-check <id>`. If it prints `FAIL:` lines, fix the script and
+Run `python -m generator.run number-check <id> --channel <channel>`. If it prints `FAIL:` lines, fix the script and
 run it again. You get two rewrites; after that, stop and report the failures.
 
-Then run `python -m generator.run figures <id>` and read every beat's line as a listener would
+Then run `python -m generator.run figures <id> --channel <channel>` and read every beat's line as a listener would
 (`spoken`) and every figure as a viewer would. Fix anything that reads badly once the numbers are
 filled in, and re-run the number check.
 

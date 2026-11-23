@@ -7,7 +7,8 @@
  *
  * A channel the owner deleted on the dashboard (Channel.status "deleting", until delete-channel.yml has
  * removed it) is skipped by every worker: `allChannels` leaves it out, and the database loops only take
- * active and paused channels (lib/channel-auth.ts `activeChannels`).
+ * active and paused channels (lib/channel-auth.ts `activeChannels`). A channel whose folder is gone from the repo
+ * while other channels' remain is skipped too (`inRepo`), even while its row is still active.
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
@@ -101,6 +102,33 @@ export function allChannels(root: string = REPO): string[] {
     ? readdirSync(base).filter((n) => SLUG.test(n) && !gone.has(n) && statSync(path.join(base, n)).isDirectory()).sort()
     : [];
   return found.length ? found : [layout(root).default];
+}
+
+/** Every channels/<slug>/ folder in the repo (deleted ones included while their folder is still there). */
+export function channelFolders(root: string = REPO): Set<string> {
+  const base = path.join(root, "channels");
+  if (!existsSync(base)) return new Set();
+  return new Set(readdirSync(base).filter((n) => SLUG.test(n) && statSync(path.join(base, n)).isDirectory()));
+}
+
+/**
+ * Whether a channel is still in the repo: it has a channels/<slug>/ folder, or no channel has one yet (before the
+ * multi-channel move). A Channel row still active or paused whose folder is gone while others' remain (2026-11-23:
+ * Paisa Panchayat and Going Down were removed from the repo before the owner pressed Delete) is not live: no
+ * uploads, no ingest, no stats, no routine entry for it.
+ */
+export function inRepo(slug: string, root: string = REPO, folders: Set<string> = channelFolders(root)): boolean {
+  return folders.size === 0 || folders.has(slug);
+}
+
+/** The rows of the channels still in the repo (`inRepo`), in their order; the others are logged once and dropped. */
+export function liveInRepo<T extends { id: string }>(rows: T[], root: string = REPO): T[] {
+  const folders = channelFolders(root);
+  return rows.filter((r) => {
+    if (inRepo(r.id, root, folders)) return true;
+    console.log(`::notice::${r.id} has no channels/${r.id}/ folder in the repo: skipped (press Delete channel on the dashboard to remove it).`);
+    return false;
+  });
 }
 
 /** A channel's pack values the workers need (channels/<slug>/channel.json, generator/pack.py); channel #1's without one. */

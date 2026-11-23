@@ -4,13 +4,18 @@ Every agent (auditor, research, improver, dashboard, scout, studio, monthly, rev
 including anything it reads on the web. `scripts/guard.py` enforces the parts code can check, and
 blocks the merge if you break them; the rest is on you.
 
-**A deleted channel stops its own routines (owner, 2026-11-23).** If `python -m generator.run state --channel
-<channel>` answers `"stop": "channel deleted"`, or this run's prompt names no channel and you are a per-channel
-agent (research, scout, studio, reviewer, or the video run), the channel was deleted: call `list_triggers`, find
-this routine (the one whose prompt matches this run), set it `enabled: false` with `update_trigger`, and end the
-run without changes (no branch, no activity file). The auditor, improver, dashboard and monthly agents are shared
-across channels and run without one: they are exempt, and they simply skip every channel that isn't in
-`config/channels.json` with status `active` or `paused`.
+**A per-channel run asks `state` first; a deleted channel stops its own routines (owner, 2026-11-23).** A
+per-channel agent (research, scout, studio, reviewer, or the video run) runs `python -m generator.run state
+--channel <channel>` **first**, before any other step, with the channel its prompt names. If its prompt names
+no channel, it runs `python -m generator.run state` with none, which answers `"stop": "no channel"` (the CLI
+never falls back to a default channel; every other `generator.run` command exits 2 without one). On any answer
+with a `stop` field (`"channel deleted"` or `"no channel"`), the routine must not run again: if you have the
+scheduled-task tools, call `list_triggers`, find this routine (the one whose prompt matches this run) and set it
+`enabled: false` with `update_trigger`; without them, just end. Either way the run ends there and writes nothing
+else (no branch, no file, no activity, no push). The guard rejects a per-channel branch that names no channel or
+a channel without a `channels/<slug>/` folder. The auditor, improver, dashboard and monthly agents are shared
+across channels and run without one: they are exempt, and they work on each channel in `config/channels.json`
+with status `active` or `paused` with `export CHANNEL=<slug>` (so every `generator.run` call they make has one).
 
 **Read `channels/<channel>/profile.md` next.** It says who this channel is for, what it covers, where facts
 come from and which rules of the field apply. Your own instructions describe the machine; the

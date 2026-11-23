@@ -21,7 +21,7 @@ say so in the report. A note that asks to change the recipe itself (length, hook
 style) is not applied here: it becomes the next weekly-loop test (agents/policy.md); notes about
 something wrong in a video still shape this one.
 
-1. Run `python -m generator.run state`. It tells you the video id to use (`next_id`), which
+1. Run `python -m generator.run state --channel <channel>`. It tells you the video id to use (`next_id`), which
    templates are allowed, which topic categories are blocked, the previous video's style, recent
    topics and recent title/description openings.
 2. Read `renderer/templates/<template>/README.md` for each allowed template, so the topic you
@@ -235,7 +235,7 @@ Categories in use: `compounding`, `investing`, `index_funds`, `retirement`, `cre
 
 ## Check
 
-Run `python -m generator.run check-plan <id>`. If it prints `FAIL:` lines, fix the plan and run it
+Run `python -m generator.run check-plan <id> --channel <channel>`. If it prints `FAIL:` lines, fix the plan and run it
 again. After three failed attempts, stop and report the remaining failures.
 
 Reply with the video id and one sentence on why this topic and template.

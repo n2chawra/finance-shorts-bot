@@ -22,7 +22,7 @@ import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotif
 import { type FeedTopic, loadFeeds, sourceWithTopic } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 import { syncThumbs } from "./lib/cover.ts";
-import { allChannels, cpath, crel, layout, markDeleting } from "./lib/channels.ts";
+import { allChannels, channelFolders, cpath, crel, inRepo, layout, markDeleting } from "./lib/channels.ts";
 import { CHANNEL_KEYS } from "./lib/channel-auth.ts";
 import { syncSetups } from "./lib/setup-sync.ts";
 import { scopedPrisma } from "./lib/scoped.ts";
@@ -210,9 +210,13 @@ export const newestStamp = (stamps: string[]): string | null =>
 /** config/channels.json for the routines (they have no database): every channel's status, its own
  * settings (over config/settings.json) and its own backlog. A routine for a channel that isn't
  * active exits at once (generator/settings.py). */
-export async function buildChannelsFile(prisma: PrismaClient): Promise<Record<string, unknown>> {
-  // a channel being deleted is left out: its routines then find no entry and disable themselves (generator/run.py state)
-  const rows = await prisma.channel.findMany({ where: { status: { not: "deleting" } }, orderBy: { createdAt: "asc" } });
+export async function buildChannelsFile(prisma: PrismaClient, root = ROOT): Promise<Record<string, unknown>> {
+  // a channel being deleted is left out: its routines then find no entry and disable themselves (generator/run.py state);
+  // so is an active or paused one whose folder is gone from the repo (lib/channels.ts inRepo). A channel still being
+  // set up has no folder yet and stays.
+  const folders = channelFolders(root);
+  const rows = (await prisma.channel.findMany({ where: { status: { not: "deleting" } }, orderBy: { createdAt: "asc" } }))
+    .filter((ch) => (ch.status !== "active" && ch.status !== "paused") || inRepo(ch.id, root, folders));
   const out: Record<string, unknown> = {};
   for (const ch of rows) {
     const own = Object.fromEntries(Object.entries((ch.settings ?? {}) as Record<string, unknown>).filter(([k]) => (CHANNEL_KEYS as readonly string[]).includes(k)));
@@ -281,10 +285,19 @@ async function main(): Promise<void> {
     lap("templates");
     const feeds = loadFeeds(ROOT);
     const have = new Set((await prisma.video.findMany({ select: { id: true } })).map((v) => v.id));
-    const result = { queued: [] as string[], failed: [] as string[], waiting: [] as string[], invalid: [] as string[] };
+    // a folder whose Channel row is gone (delete-channel.yml purged it and hasn't removed the folder yet) or not made
+    // yet: its videos and topics would fail on the channel's foreign key, so they wait
+    const rows = new Set((await prisma.channel.findMany({ select: { id: true } })).map((c) => c.id));
+    const result = { queued: [] as string[], failed: [] as string[], waiting: [] as string[], invalid: [] as string[], noChannel: [] as string[] };
     for (const file of manifestPaths()) {
       const id = path.basename(path.dirname(file));
       if (have.has(id)) continue;
+      const channelId = channelOfManifest(file);
+      if (!rows.has(channelId)) {
+        if (!result.noChannel.includes(channelId)) console.log(`::notice::${channelId} has no Channel row: its manifests are not ingested.`);
+        result.noChannel.push(id);
+        continue;
+      }
       try {
         result[await ingestOne(prisma, file, repo, feeds)].push(id);
       } catch (e) {

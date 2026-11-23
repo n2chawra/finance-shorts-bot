@@ -17,10 +17,25 @@ import { z } from "zod";
 
 import { notify, resolveOthers } from "./notify.ts";
 import { istDay, isUrgent } from "./publishing.ts";
-import { allChannels, cpath } from "./channels.ts";
+import { CHANNEL_ONE, allChannels, cpath } from "./channels.ts";
 
 const DAY_MS = 86_400_000;
 const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio", "monthly", "reviewer"] as const;
+/** Agents that run once for the whole platform: their activity rows have no channel (channelId null), so they show
+ * on every channel's Agents page instead of taking the column's default channel. */
+export const SHARED_AGENTS: readonly string[] = ["auditor", "improver", "dashboard", "monthly"];
+
+/** The channel an activity file belongs to: "<day>-<slug>-<agent>.json" names it; a shared agent's plain file is the
+ * platform's (null); a channel agent's plain file is channel #1's (before the multi-channel move). Nothing to import
+ * (undefined) for a file of a channel no longer in the repo, channel #1's included. */
+export function activityChannel(id: string, day: string, agent: string, slugs: string[]): string | null | undefined {
+  const named = [...slugs].sort((a, b) => b.length - a.length).find((c) => id.startsWith(`${day}-${c}-`));
+  if (named) return named;
+  const middle = id.startsWith(`${day}-`) && id.endsWith(`-${agent}`) ? id.slice(day.length + 1, -(agent.length + 1)) : "";
+  if (middle) return undefined;   // names a channel that is no longer in the repo
+  if (SHARED_AGENTS.includes(agent)) return null;
+  return slugs.includes(CHANNEL_ONE) ? CHANNEL_ONE : undefined;
+}
 
 const readJson = (file: string): unknown => JSON.parse(readFileSync(file, "utf8"));
 
@@ -67,8 +82,7 @@ export async function importActivity(prisma: PrismaClient, root: string): Promis
   await prisma.agentActivity.deleteMany({ where: { id: { notIn: [...ids] } } });
   const seen = await loadHashes(prisma, ACTIVITY_HASHES);
   const next = { ...seen };
-  // longest slug first, so a slug that starts another one can't take its files
-  const slugs = allChannels(root).sort((a, b) => b.length - a.length);
+  const slugs = allChannels(root);
   for (const f of readdirSync(dir).filter((x) => x.endsWith(".json")).sort().slice(-120)) {
     const parsed = Activity.safeParse(readJson(path.join(dir, f)));
     if (!parsed.success) { console.error(`::warning::${f}: ${parsed.error.issues[0]?.message}`); continue; }
@@ -78,8 +92,9 @@ export async function importActivity(prisma: PrismaClient, root: string): Promis
     // one row per file: since the multi-channel move an agent writes <day>-<channel>-<agent>.json for each channel,
     // and keying rows by <day>-<agent> made those files overwrite each other on every run (2026-11-23)
     const id = f.replace(/\.json$/, "");
-    const channelId = slugs.find((c) => id.startsWith(`${a.day}-${c}-`));
-    if (channelId) Object.assign(data, { channelId });
+    const channelId = activityChannel(id, a.day, a.agent, slugs);
+    if (channelId === undefined) continue;   // a deleted channel's old report
+    Object.assign(data, { channelId });
     const h = hashOf(data);
     if (seen[id] === h) continue;   // unchanged since the last run: nothing sent (Supabase egress, 2026-11-23)
     await prisma.agentActivity.upsert({ where: { id }, update: data, create: { id, ...data }, select: { id: true } });

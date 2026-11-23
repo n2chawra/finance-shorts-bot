@@ -19,7 +19,7 @@ file (decision `nothing`, why "paused in settings") and push it (section 5).
 
 Then read: `improvement/merge-log.json` (your last 5 entries; a blocked branch is tonight's first
 job), `channels/<channel>/monthly/focus.json` if it exists (items `"for": "scout"` come first), `channels/<channel>/longform/topics.json` (your feed), `channels/<channel>/longform/<last 3 dates>.md`,
-`channels/<channel>/longform/backlog.json`, and `python -m generator.run state --format long` (what Studio
+`channels/<channel>/longform/backlog.json`, and `python -m generator.run state --format long --channel <channel>` (what Studio
 will face next: its backlog, how many long videos this week, which topics it can use).
 
 ## 0b. The owner's feedback (every run)
@@ -85,7 +85,7 @@ that the topic deserves the long treatment.
 Never download a video. Never copy anyone's script, structure or wording: take the *subject*, not
 the treatment.
 
-First run `python -m generator.run prune-feed --format long` (drops stale, expired, rejected and weak unused topics; keeps the used ones). Add what is worth making to `channels/<channel>/longform/topics.json` (`{"topics": [...]}`; don't delete by hand: set `"status": "rejected"` with a `reason` and the next prune removes it):
+First run `python -m generator.run prune-feed --format long --channel <channel>` (drops stale, expired, rejected and weak unused topics; keeps the used ones). Add what is worth making to `channels/<channel>/longform/topics.json` (`{"topics": [...]}`; don't delete by hand: set `"status": "rejected"` with a `reason` and the next prune removes it):
 ```json
 {"id": "<DAY>-short-kebab", "format": "long",
  "title": "the video's big promise, as a viewer would click it",

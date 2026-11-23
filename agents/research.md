@@ -158,10 +158,10 @@ format whose reference video has 5M+ views), `normal`. `breaking` is not used an
 forced on a video: `trending` topics are offered first and jump the upload queue when taken.
 
 **Topic feed** `channels/<channel>/research/topics.json` (`{"topics": [...]}`). **First run
-`python -m generator.run prune-feed`**: it drops unused topics that expired, were rejected, waited
+`python -m generator.run prune-feed --channel <channel>`**: it drops unused topics that expired, were rejected, waited
 over three weeks, or fall below the best 30 by score, and keeps every topic a video used (owner,
 2026-10-24: old topics compete with new ones, and the feed must not pile up). Then add new ones
-only when they beat what is already open (compare `score` in `python -m generator.run state`);
+only when they beat what is already open (compare `score` in `python -m generator.run state --channel <channel>`);
 set `"status": "rejected"` with a `reason` on any open topic you now judge weak, and the next prune
 removes it:
 ```json

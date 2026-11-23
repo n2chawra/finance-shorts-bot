@@ -8,7 +8,14 @@ uploaded for the channel's next upload slot and jumps the queue.
 Most days there is no strong new trend. Then you stop after the sweep — that is a good run.
 Keep it lean: it shares a Pro-plan usage window with other routines.
 
-## 0. Prepare
+## 0. Is this channel live? (first, before anything else)
+
+Run `python -m generator.run state --channel <channel>` with the channel this run's prompt names (no channel
+named: `python -m generator.run state`). If the answer has a `stop` field (`"channel deleted"` or
+`"no channel"`), follow the rule at the top of `generator/prompts/routine.md`: disable this routine with
+`update_trigger` (`enabled: false`) if you have the scheduled-task tools, otherwise just end; write nothing else.
+
+## 0a. Prepare
 
 ```
 bash scripts/sync-main.sh   # always first: the cached clone's local main can be stale
@@ -18,7 +25,7 @@ Then the rest of section 0 of `generator/prompts/routine.md` (find the Python, f
 
 ## 1. Should this run make anything?
 
-Run `python -m generator.run state`.
+Read the `mode` of the `state` you ran in section 0.
 - `paused`: report "generation is paused" and stop.
 - `video`: a `trending` topic is waiting in the feed (`topic_feed.urgent`) or today's videos
   aren't all made. Make **one** video by following `routine.md` sections 2–7,
@@ -32,20 +39,20 @@ Look for one moment in the niche that lots of people **around the world** (or in
 talking about **today or since yesterday**. A global one (a famous person, place or company, something
 anyone can relate to) is best: `topic.reach: "global"`. A one-country trend is `"local"` with
 `topic.reach_reason: {"kind": "occasion", "name": "<the trend>", "date": "<today>"}`, and only if
-`reach.local_allowed` in `state` is true (`generator/reach.py`). Look for the kind that fills the niche's Shorts comments, not a news bulletin (owner reset,
-2026-10-21: central bank decisions and inflation releases are not trends people watch):
-- A viral conversation in the niche (for a finance niche: a salary reveal, a scam everyone is
-  warning about; for geography: a border change, a map everyone is sharing).
+`reach.local_allowed` in `state` is true (`generator/reach.py`). Look for the kind that fills the niche's Shorts
+comments, not a news bulletin (a routine data release or an official announcement nobody discusses is not a trend):
+- A viral conversation in the niche, as `channels/<channel>/profile.md` describes it (who the viewers are and
+  what they care about).
 - What the niche's Shorts are blowing up right now (`market-data` / `niche-data`).
 - Google Trends for the niche's terms.
 
 It is worth a video only if **all** of these hold:
 1. It is current: you can show a source dated today or yesterday that shows the attention.
-2. It is about the viewer's money, and you can explain what it means for them without predicting
-   prices or giving buy/sell advice (no recent market prices used to suggest future prices, no
-   return claims, no single stocks).
-3. It can be told in one of the `formats` in `state` (rich vs poor, what the rich know, the trap,
-   how they make money, salary breakdown…), with that format's `story` and `demand`.
+2. It is inside the channel's niche and recipe (`channels/<channel>/profile.md`, `channels/<channel>/prompts/recipe.md`):
+   the subject is one the channel covers, the story is true and sourced the way the profile says facts are
+   sourced, and it respects the rules of the field the profile names (for a money channel: no price
+   predictions, buy/sell advice or return claims; for any channel: no speculation told as fact).
+3. It can be told in one of the `formats` in `state`, with that format's `story` and `demand`.
 4. It isn't already in `recent_topics` or the feed.
 
 If nothing passes, report what you checked in two lines and stop.
@@ -55,7 +62,7 @@ If nothing passes, report what you checked in two lines and stop.
 Follow `routine.md` sections 2–7 for **one** video, with these changes to the plan:
 - Put the trend in the plan as `topic.trend` (not `feed_id`; video runs never edit the feed):
   ```json
-  "topic": {"title": "...", "category": "gold",
+  "topic": {"title": "...", "category": "<one of the channel's categories>",
             "trend": {"id": "trend-<YYYY-MM-DD>-short-slug", "why_now": "what is happening now",
                       "sources": ["https://..."], "found": "<YYYY-MM-DD>", "expires": "<today + 1 to 3 days>",
                       "facts": [ ... only for a news story, each with the exact figure at its url ... ]}}

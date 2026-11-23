@@ -79,7 +79,7 @@ For each experiment the evaluator marks:
 Closing counts as tonight's change if it touches code.
 
 ## 2. Fix recurring failures
-Start from `python -m generator.run failures` (Shorts and long: the last two weeks' failed checks,
+Start from `python -m generator.run failures --channel <slug>` (per channel; Shorts and long: the last two weeks' failed checks,
 grouped, most widespread first). A kind that hit three or more videos is fixed **at its source**: in the
 component that draws it (labels and tags clamp themselves since 2026-10-29: `studio/labels.tsx`,
 `design/fit.ts`), the check's message (say how to fix it), or `generator/prompts/checklist.md` (what
@@ -87,7 +87,7 @@ writers read before writing). Add a line to the checklist for each new kind you 
 If the evaluator lists recurring failures (the same QA/fact reason twice in 3 days), fix the cause
 (usually a prompt or recipe that keeps producing rejected scripts, or a check in `generator/` or
 `renderer/timeline/`) before starting anything new. Reproduce with
-`python -m generator.run number-check <id>` on the failed video, or check an example with
+`python -m generator.run number-check <id> --channel <slug>` on the failed video, or check an example with
 `python -c "import json; from renderer.timeline.build import check_script; check_script(json.load(open('examples/<name>.json')))"`.
 These are fixes, not experiments. A failure in a scene (`remotion/src/scenes/`, the cast, the
 camera) is yours to fix too: reproduce it on the video's `timeline.json` with

@@ -26,7 +26,8 @@ const ROUTINES = "claude.ai → Code → Routines";
 
 type Check = { key: string; raise: Notice | null };
 
-const notice = (key: string, severity: Notice["severity"], title: string, detail: string, fix: string): Notice => ({ key, source: "watchdog", severity, title, detail, fix });
+/** A platform-wide notice (the site, the agents, the schedule): channelId null, so it shows on every channel. */
+const notice = (key: string, severity: Notice["severity"], title: string, detail: string, fix: string): Notice => ({ key, source: "watchdog", severity, title, detail, fix, channelId: null });
 
 /**
  * One channel's video pipeline (its own videos, queue, slots and settings). `prisma` is narrowed to the
@@ -177,7 +178,7 @@ async function main(): Promise<void> {
     // each active channel's pipeline and sign-in, with its own settings (a paused channel makes and uploads nothing)
     for (const ch of await activeChannels(prisma, true)) {
       const first = ch.id === CHANNEL_ONE;   // channel #1 kept the plain keys (lib/channel-scopes.ts PLAIN_KEY_CHANNEL)
-      const run: ChannelRun = first ? { key: (k) => k, label: "" } : { key: (k) => `${k}:${ch.id}`, label: `${ch.name}: `, channelId: ch.id };
+      const run: ChannelRun = first ? { key: (k) => k, label: "", channelId: ch.id } : { key: (k) => `${k}:${ch.id}`, label: `${ch.name}: `, channelId: ch.id };
       // a paused channel's pipeline notices close: nothing is expected of it
       if (ch.status !== "active") { checks.push(...PIPELINE_KEYS.map((k) => ({ key: run.key(k), raise: null }))); continue; }
       try {
