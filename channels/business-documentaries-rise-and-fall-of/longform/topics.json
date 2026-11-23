@@ -1,6 +1,472 @@
 {
-  "note": "Long-video topics for the business documentaries channel. First entry written for the long sample (19 Nov 2026) from research/topics.json 2026-11-19-crocs-comeback, with every figure re-sourced to Crocs' own Form 10-K filings on SEC EDGAR (rendered pages in the media licence log).",
+  "note": "Long-video topics for the business documentaries channel. First entry written for the long sample (19 Nov 2026) from research/topics.json 2026-11-19-crocs-comeback, with every figure re-sourced to Crocs' own Form 10-K filings on SEC EDGAR (rendered pages in the media licence log). Since 2026-11-23 scout also keeps outlined copies of research's long topics here (same id: this entry wins, generator/topics.py load); facts and sources carried over unchanged, with new sourced ones added.",
   "topics": [
+    {
+      "id": "2026-11-19-funko-pop",
+      "format": "long",
+      "title": "What Happened to Funko Pop? The Year It Paid to Destroy Its Own Toys",
+      "category": "collectibles",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "product_boom_bust"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "WTF Happened to Labubu?",
+        "views": 2280000,
+        "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0",
+        "channel": "Fortune & Fall",
+        "channelSubs": 6500
+      },
+      "hook": "In 2023 the company behind Funko Pop decided to throw away tens of millions of dollars of its own figures.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Start on a shelf of Funko Pops. The collector boom, then too many figures: year-end 2022 inventory of $246.4M (up 48%), warehouses so full it rented containers, and a $30–36M write-down of figures approved for destruction (its own 10-K). Where it is now: 2025 net sales of $908.2M, down from about $1.05B. The lesson: a collectible needs scarcity, a factory needs volume.",
+      "why_now": "First topics (advice.md: example title 'What Happened to Funko Pop?'). Viewers group it with Labubu (~4 mentions).",
+      "facts": [
+        {
+          "label": "Funko's inventory at the end of 2022",
+          "value": 246.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "CBS News",
+          "url": "https://www.cbsnews.com/news/funko-pop-30-million-inventory-collectibles",
+          "fixed": true
+        },
+        {
+          "label": "Rise in that inventory from a year earlier",
+          "value": 48,
+          "unit": "percent",
+          "as_of": "2022-12-31",
+          "source": "CBS News",
+          "url": "https://www.cbsnews.com/news/funko-pop-30-million-inventory-collectibles",
+          "fixed": true
+        },
+        {
+          "label": "Low end of the write-down for figures approved for destruction",
+          "value": 30,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2023-03-01",
+          "source": "Funko 10-K 2022 (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1704711/000170471123000008/fnko-20221231.htm",
+          "fixed": true
+        },
+        {
+          "label": "High end of that write-down",
+          "value": 36,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2023-03-01",
+          "source": "Funko 10-K 2022 (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1704711/000170471123000008/fnko-20221231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Funko's net sales in 2025",
+          "value": 908.2,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Toys n Playthings (Funko FY2025 results)",
+          "url": "https://www.toysnplaythings.media/funko-reports-2025-q4-and-full-year-results/"
+        },
+        {
+          "label": "Funko's net sales in 2024",
+          "value": 1.05,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2024-12-31",
+          "source": "Toys n Playthings (Funko FY2025 results)",
+          "url": "https://www.toysnplaythings.media/funko-reports-2025-q4-and-full-year-results/",
+          "latest": true,
+          "checked": "2026-11-23"
+        },
+        {
+          "label": "Funko's IPO price per share",
+          "value": 12.0,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2017-11-01",
+          "source": "Funko press release",
+          "url": "https://investor.funko.com/news-and-events/press-releases/Press-Releases/2017/Funko-Inc-Announces-Pricing-of-Initial-Public-Offering/default.aspx",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "The write-down was for products 'approved for destruction' (10-K wording); CBS said 'eliminate'",
+        "IPO: $12.00 per share, priced 1 Nov 2017 (Funko press release); never say the share price today without a sourced figure"
+      ],
+      "sources": [
+        "https://www.cbsnews.com/news/funko-pop-30-million-inventory-collectibles",
+        "https://www.sec.gov/Archives/edgar/data/1704711/000170471123000008/fnko-20221231.htm",
+        "https://www.toysnplaythings.media/funko-reports-2025-q4-and-full-year-results/",
+        "https://investor.funko.com/news-and-events/press-releases/Press-Releases/2017/Funko-Inc-Announces-Pricing-of-Initial-Public-Offering/default.aspx"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "outline": [
+        "cold open (0-30 s): frame 1 a full shelf of boxed Pops, the price tag on one; 'Funko' named by 1 s; the 10-K line 'approved for destruction' highlighted by 8 s with the {fact3}-{fact4} write-down; by 25 s the turn: the company that sold scarcity had too much of it",
+        "promise by ~60 s: 'no rival hurt Funko; the factory did' -> CHAPTER 1 card, music drop",
+        "ch1 the box: one figure, one licence, a window box made to stay shut (collectors keep it sealed); what a Pop is for",
+        "ch2 the boom: the IPO priced at {fact7} a share (Funko's own release, Nov 2017) on a business built on licences; every fandom a new shelf",
+        "ch3 the turn: more figures every year; inventory at {fact1}, up {fact2}% in a year (CBS); the warehouses full",
+        "recap-and-tease (~8 min): 'by now it had more Pops than buyers. Then it did something toy companies never say out loud'",
+        "ch4 the write-down (payoff, ~38%): the 10-K page, highlighter on 'approved for destruction'; what a write-down is in one plain sentence",
+        "ch5 what it cost: net sales from about {fact6} to {fact5} (Funko FY2025 results); a sinking bar with a ghost of its old height",
+        "ch6 the global beat: the same shelf in UK and European stores (only if a sourced figure is found; else skip)",
+        "ending: the mechanism in plain words ('a collectible needs scarcity; a factory needs volume'), Labubu named as the same pattern only as a question for the comments, end screen"
+      ],
+      "picture": "the sealed window box: shown once full on the shelf, last as a stack of the same box in a warehouse",
+      "search": "what happened to funko pop",
+      "outlined": "2026-11-23"
+    },
+    {
+      "id": "2026-11-19-beanie-babies",
+      "format": "long",
+      "title": "The Beanie Baby Bubble: When a $5 Toy Was a Retirement Plan",
+      "category": "collectibles",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "product_boom_bust"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "WTF Happened to Labubu?",
+        "views": 2280000,
+        "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0",
+        "channel": "Fortune & Fall",
+        "channelSubs": 6500
+      },
+      "hook": "In 1998, a bean bag that cost five dollars made one man more money than Mattel and Hasbro combined.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Open on a bin of Beanie Babies in an attic. Ty Warner's 1998: sales past $1.4 billion on a toy wholesaling at $2.50, retirements and hangtag rumours turning kids' toys into 'investments', eBay's early years riding on them; then the crash, ending with a 2010 auction where 500 of them went for under $100. Close with the same pattern in later blind-box crazes (how it went outside the US: the Canadian distributor's $80M+ a year).",
+      "why_now": "First topics (advice.md: product boom and bust, core). Viewers' most-named comparison (~12 mentions, comments.md).",
+      "facts": [
+        {
+          "label": "Ty Inc.'s annual sales in 1998",
+          "value": 1.4,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "1998-12-31",
+          "source": "WPSU / NPR Planet Money",
+          "url": "https://radio.wpsu.org/2015-03-02/the-beanie-baby-boom-and-bust-what-happened",
+          "fixed": true
+        },
+        {
+          "label": "Wholesale price of one Beanie Baby",
+          "value": 2.5,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "1998-12-31",
+          "source": "WPSU / NPR Planet Money",
+          "url": "https://radio.wpsu.org/2015-03-02/the-beanie-baby-boom-and-bust-what-happened",
+          "fixed": true
+        },
+        {
+          "label": "Ty Warner's pretax income in 1998, more than Mattel's and Hasbro's earnings combined",
+          "value": 700,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "1998-12-31",
+          "source": "WPSU / NPR Planet Money",
+          "url": "https://radio.wpsu.org/2015-03-02/the-beanie-baby-boom-and-bust-what-happened",
+          "fixed": true
+        },
+        {
+          "label": "Number of the rare #1 Bear ever made",
+          "value": 253,
+          "unit": "count",
+          "as_of": "1998-12-12",
+          "source": "WPSU / NPR Planet Money",
+          "url": "https://radio.wpsu.org/2015-03-02/the-beanie-baby-boom-and-bust-what-happened",
+          "fixed": true
+        },
+        {
+          "label": "What a lot of at least 500 Beanie Babies sold for at a 2010 auction, under",
+          "value": 100,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2010-01-01",
+          "source": "WPSU / NPR Planet Money",
+          "url": "https://radio.wpsu.org/2015-03-02/the-beanie-baby-boom-and-bust-what-happened",
+          "fixed": true
+        },
+        {
+          "label": "What one Beanie Baby cost in a shop",
+          "value": 5,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "1999-09-30",
+          "source": "HISTORY.com",
+          "url": "https://www.history.com/articles/how-the-beanie-baby-craze-came-to-a-crashing-end",
+          "fixed": true
+        },
+        {
+          "label": "Year Ty's notice said all Beanies would be retired on 31 December",
+          "value": 1999,
+          "unit": "year",
+          "as_of": "1999-09-30",
+          "source": "HISTORY.com",
+          "url": "https://www.history.com/articles/how-the-beanie-baby-craze-came-to-a-crashing-end",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Sales 'surpassed $1.4 billion' in 1998 (some outlets say $1.3B: say 'about $1.4 billion')",
+        "Pretax income $700M vs Mattel + Hasbro earnings combined",
+        "$5 shop price and the September 1999 notice text from HISTORY.com; never describe Ty Warner's later tax case (not the story, and legal care)"
+      ],
+      "sources": [
+        "https://radio.wpsu.org/2015-03-02/the-beanie-baby-boom-and-bust-what-happened",
+        "https://www.history.com/articles/how-the-beanie-baby-craze-came-to-a-crashing-end"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "outline": [
+        "cold open (0-30 s): frame 1 a bin of Beanie Babies in an attic, a heart-shaped hangtag in close-up; named by 1 s; the price flip by 8 s: a {fact6} toy, {fact2} wholesale, and a company selling {fact1} in 1998; by 25 s the auction lot of 500 under {fact5}",
+        "promise by ~60 s: 'no rival popped this bubble; one press release did' -> CHAPTER 1 card",
+        "ch1 the toy: a small bean bag, under-stuffed so it could pose; a tag with a name, a birthday and a poem",
+        "ch2 the trick: retirements and monthly caps per shop, scarcity on purpose (attribute to reporting); the rare #1 Bear, only {fact4} made",
+        "ch3 the market: price guides, early eBay, kids' toys bought as a retirement plan; Ty's pretax income {fact3}, more than Mattel and Hasbro combined (NPR)",
+        "recap-and-tease (~8 min): 'everyone was sure the price only went up. Then the company that made the scarcity announced the ultimate one'",
+        "ch4 the notice (payoff, ~38%): the September {fact7} press release rebuilt as a typeset card, highlighter on 'All Beanies will be retired'; the reversal months later ('The Beginning' bear)",
+        "ch5 the crash: listing prices flipping with red tags; the 2010 auction lot of 500+ for under {fact5}",
+        "ch6 the global beat: Canada's distributor (only with a sourced figure), the craze outside the US",
+        "ending: 'scarcity was the product'; the same pattern in later blind-box crazes, asked as a question for the comments; end screen"
+      ],
+      "picture": "the heart hangtag: kept on in the boom, a price sticker over it in the crash",
+      "search": "beanie baby bubble explained",
+      "outlined": "2026-11-23"
+    },
+    {
+      "id": "2026-11-20-gillette-writedown",
+      "format": "long",
+      "title": "Gillette's Ad Got the Blame. P&G's Filing Blamed Your Face",
+      "category": "consumer goods",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "brand_backlash"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Gillette Is (Finally) Getting What They Deserve...",
+        "views": 653448,
+        "url": "https://www.youtube.com/watch?v=Stz7bzbHRV4",
+        "channel": "Bagholder Association",
+        "channelSubs": 10800,
+        "outlier": 60.5
+      },
+      "hook": "In July 2019, Procter and Gamble wrote eight billion dollars off one razor brand.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Open on a razor cartridge in a bathroom. The best-known razor in the world, the blade-and-handle model, then the 2019 'We Believe' ad and the boycott calls everyone remembers. Then the document device: P&G's own reason for the $8.0B writedown (Reuters, 30 Jul 2019): currency, competition from Dollar Shave Club and Harry's, and men shaving less often; grooming sales down in 11 of 12 quarters. The cause wasn't the ad, it was the beard and the $9 subscription razor. Global beat: currency hit outside the US. Attribute the ad backlash to reporting, the writedown reasons to P&G.",
+      "why_now": "Breakout: 653K on a 10.8K channel (60x), the strongest English brand-backlash outlier in the scan; brand backlash is a recipe gap (29% hits, one channel posting it).",
+      "facts": [
+        {
+          "label": "P&G's noncash impairment charge on Gillette",
+          "value": 8.0,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2019-07-30",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2019/07/30/procter-gamble-writes-down-gillette-business-but-remains-confident-in-its-future.html",
+          "fixed": true
+        },
+        {
+          "label": "P&G's net loss for the quarter of the writedown",
+          "value": 5.24,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2019-06-30",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2019/07/30/procter-gamble-writes-down-gillette-business-but-remains-confident-in-its-future.html",
+          "fixed": true
+        },
+        {
+          "label": "P&G's 2018 sales of men's razors and blades",
+          "value": 6.22,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2018-06-30",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2019/07/30/procter-gamble-writes-down-gillette-business-but-remains-confident-in-its-future.html",
+          "fixed": true
+        },
+        {
+          "label": "Quarters of the last 12 in which P&G's grooming sales fell",
+          "value": 11,
+          "unit": "count",
+          "as_of": "2019-07-30",
+          "source": "Reuters via Business Day",
+          "url": "https://www.businessday.co.za/bd/companies/2019-07-30-procter-gamble-posts-strong-profit-amid-8bn-writedown-of-gillette/",
+          "fixed": true
+        },
+        {
+          "label": "What P&G agreed to pay for the whole Gillette company (razors, Duracell, Oral-B, Braun), approximately",
+          "value": 57,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2005-01-28",
+          "source": "P&G press release, Form 8-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0000080424/000091412105000257/pr705153-ex99_1.txt",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "P&G's stated reasons: foreign exchange, increased competition, a contracting blades and razors market, men shaving less often (Reuters)",
+        "P&G bought Gillette in 2005 for about $57 billion (P&G or Reuters; add as a fact if confirmed)",
+        "Do not say the ad caused the writedown: P&G did not say so; the ad's backlash is attributed to reporting",
+        "$57B is the whole Gillette company, announced 28 Jan 2005 (P&G 8-K); at close P&G recorded about $53.5B: say 'agreed to pay about'; never call it the price of the razor brand alone"
+      ],
+      "sources": [
+        "https://www.cnbc.com/2019/07/30/procter-gamble-writes-down-gillette-business-but-remains-confident-in-its-future.html",
+        "https://www.businessday.co.za/bd/companies/2019-07-30-procter-gamble-posts-strong-profit-amid-8bn-writedown-of-gillette/",
+        "https://www.sec.gov/Archives/edgar/data/0000080424/000091412105000257/pr705153-ex99_1.txt"
+      ],
+      "found": "2026-11-20",
+      "expires": "2027-02-18",
+      "status": "new",
+      "outline": [
+        "cold open (0-30 s): frame 1 a razor cartridge on a bathroom shelf; 'Gillette' named by 1 s; by 8 s P&G's {fact1} write-down, the filing line highlighted; by 25 s 'everyone blamed an ad. P&G's own reasons named something else'",
+        "promise by ~60 s: 'the ad isn't in P&G's list. Your face is' -> CHAPTER 1 card",
+        "ch1 the model: a cheap handle, costly blades; the best-known razor in the world",
+        "ch2 the deal: P&G agrees to buy the whole Gillette company for about {fact5} in 2005 (P&G's 8-K; say razors, Duracell, Oral-B and Braun came with it)",
+        "ch3 the empire: razors and blades selling {fact3} a year for P&G (2018)",
+        "ch4 the ad: January 2019 'We Believe' and the boycott calls, attributed to reporting; no claim that it moved sales",
+        "recap-and-tease (~8 min): 'six months later P&G wrote down the brand. The internet had its answer. The filing had another'",
+        "ch5 the filing (payoff, ~38%): the reasons on the page, highlighted one by one: currency, competition, a shrinking market, men shaving less often; grooming sales down in {fact4} of 12 quarters; the {fact2} quarterly loss",
+        "ch6 the challengers: Dollar Shave Club and Harry's mail-order razors (figures only if sourced); the beard years",
+        "ch7 the global beat: the currency hit came from sales outside the US",
+        "ending: the mechanism ('a razor company sells shaves, and men bought fewer'); question for the comments; end screen"
+      ],
+      "picture": "the cartridge: new in the open, a dusty one beside a beard trimmer at the end",
+      "search": "what happened to gillette",
+      "outlined": "2026-11-23"
+    },
+    {
+      "id": "2026-11-19-toys-r-us",
+      "format": "long",
+      "title": "How Toys R Us Lost to Its Own Loan",
+      "category": "retail",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "company_rise_fall"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "KFC Won the World. So Why Is It Losing America?",
+        "views": 591000,
+        "url": "https://www.youtube.com/watch?v=hJTqDdf4jQc",
+        "channel": "Bagholder Association",
+        "channelSubs": 10800
+      },
+      "hook": "Toys R Us was paying about 400 million dollars a year in interest before it sold a single toy.",
+      "templates": [
+        "long_story"
+      ],
+      "angle": "Open on the giraffe and an empty store. The 2005 buyout by KKR, Bain Capital and Vornado for $6.6B left about $5B of debt and roughly $400M a year in interest; Chapter 11 in September 2017 with about 1,600 stores; in March 2018 the court asked to sell off all 735 US stores, with up to 33,000 jobs. Amazon was the weather; the loan was the leak.",
+      "why_now": "First topics (advice.md example title 'How Toys R Us Lost to Itself').",
+      "facts": [
+        {
+          "label": "Price of the 2005 buyout",
+          "value": 6.6,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2005-12-31",
+          "source": "Reuters",
+          "url": "https://uk.investing.com/news/stock-market-news/how-5-billion-of-debt-caught-up-with-toys-r-us-513728",
+          "fixed": true
+        },
+        {
+          "label": "Interest Toys R Us paid each year, about",
+          "value": 400,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2017-09-20",
+          "source": "Reuters",
+          "url": "https://uk.investing.com/news/stock-market-news/how-5-billion-of-debt-caught-up-with-toys-r-us-513728",
+          "fixed": true
+        },
+        {
+          "label": "Debt when it filed for bankruptcy",
+          "value": 5.2,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2017-09-20",
+          "source": "Reuters",
+          "url": "https://uk.investing.com/news/stock-market-news/how-5-billion-of-debt-caught-up-with-toys-r-us-513728",
+          "fixed": true
+        },
+        {
+          "label": "Stores at the time, approximately",
+          "value": 1600,
+          "unit": "count",
+          "as_of": "2017-09-20",
+          "source": "Reuters",
+          "url": "https://uk.investing.com/news/stock-market-news/how-5-billion-of-debt-caught-up-with-toys-r-us-513728",
+          "fixed": true
+        },
+        {
+          "label": "US stores to be liquidated in 2018",
+          "value": 735,
+          "unit": "count",
+          "as_of": "2018-03-15",
+          "source": "UPI",
+          "url": "https://www.upi.com/Top_News/US/2018/03/15/Toys-R-Us-profoundly-sad-to-liquidate-all-US-stores/3781521116475/",
+          "fixed": true
+        },
+        {
+          "label": "Jobs at risk, as many as",
+          "value": 33000,
+          "unit": "count",
+          "as_of": "2018-03-15",
+          "source": "UPI",
+          "url": "https://www.upi.com/Top_News/US/2018/03/15/Toys-R-Us-profoundly-sad-to-liquidate-all-US-stores/3781521116475/",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Some outlets give the buyout as $7.5B and the debt as 'nearly $8 billion': use Reuters' $6.6B and $5.2B and say so"
+      ],
+      "sources": [
+        "https://uk.investing.com/news/stock-market-news/how-5-billion-of-debt-caught-up-with-toys-r-us-513728",
+        "https://www.upi.com/Top_News/US/2018/03/15/Toys-R-Us-profoundly-sad-to-liquidate-all-US-stores/3781521116475/"
+      ],
+      "found": "2026-11-19",
+      "expires": "2027-02-17",
+      "status": "new",
+      "outline": [
+        "cold open (0-30 s): frame 1 the store sign over an empty car park; 'Toys R Us' named by 1 s; by 8 s about {fact2} a year in interest, highlighted on the filing coverage; by 25 s {fact5} US stores closed, as many as {fact6} jobs",
+        "promise by ~60 s: 'Amazon was the weather. The loan was the leak' -> CHAPTER 1 card",
+        "ch1 the category killer: one huge store with every toy, the giraffe, the catalogue",
+        "ch2 the buyout: KKR, Bain Capital and Vornado pay {fact1} in 2005, most of it borrowed and put on the company",
+        "ch3 the bill: about {fact2} a year in interest before the first toy is sold; a ticker counting it up",
+        "recap-and-tease (~8 min): 'the stores still made money. Just not enough to pay the loan and fix the stores'",
+        "ch4 the filing (payoff, ~38%): Chapter 11 in September 2017 with {fact3} of debt and about {fact4} stores",
+        "ch5 the end: March 2018, all {fact5} US stores to be sold off; up to {fact6} jobs",
+        "ch6 the global beat: how the brand lived on outside the US (only with a sourced figure)",
+        "ending: the mechanism ('a loan can't be outsold'); question for the comments; end screen"
+      ],
+      "picture": "the receipt: a toy's price, then the same receipt with the interest line printed under it",
+      "search": "what happened to toys r us",
+      "outlined": "2026-11-23"
+    },
     {
       "id": "2026-11-19-crocs-comeback-long",
       "format": "long",
@@ -8,23 +474,100 @@
       "category": "footwear",
       "kind": "evergreen",
       "priority": "high",
-      "stories": ["product_boom_bust"],
+      "stories": [
+        "product_boom_bust"
+      ],
       "currency": "USD",
       "reach": "global",
-      "templates": ["long_story"],
-      "demand": {"title": "WTF Happened to Labubu?", "views": 2280000, "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0", "channel": "Fortune & Fall"},
+      "templates": [
+        "long_story"
+      ],
+      "demand": {
+        "title": "WTF Happened to Labubu?",
+        "views": 2280000,
+        "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0",
+        "channel": "Fortune & Fall"
+      },
       "search": "what happened to crocs",
       "angle": "Open on a pair of Crocs. The craze to 2007 ($847.4M sales), the crash in 2008 (sales $721.6M, a $185.1M loss, staff cut from about 5,300 to 3,700, a going-concern warning in its own 10-K), and the comeback to about $4.04B in 2025. What changed: the same 'ugly' shoe sold as a canvas (charms, collaborations) instead of a fad. Chapter 1: one model, the Beach, in six colours, launched in 2002 for water sports; the Croslite formula kept as a trade secret.",
       "why_now": "Long sample for the channel's Launch review (product boom and bust, core: advice.md).",
       "facts": [
-        {"label": "Crocs' revenues in 2007", "value": 847.4, "unit": "money_million", "currency": "USD", "as_of": "2007-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs' revenues in 2008", "value": 721.6, "unit": "money_million", "currency": "USD", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs' loss in 2008", "value": 185.1, "unit": "money_million", "currency": "USD", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs employees at the end of 2007", "value": 5300, "unit": "count", "as_of": "2007-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs employees at the end of 2008, approximately", "value": 3700, "unit": "count", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs, Inc. revenues in 2025 ($4,040.6 million in the filing; Crocs and HEYDUDE brands)", "value": 4.04, "unit": "money_billion", "currency": "USD", "as_of": "2025-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm", "fixed": true},
-        {"label": "Year Crocs first introduced its footwear (a single model)", "value": 2002, "unit": "year", "as_of": "2006-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm", "fixed": true},
-        {"label": "Colours the first model came in", "value": 6, "unit": "count", "as_of": "2006-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm", "fixed": true}
+        {
+          "label": "Crocs' revenues in 2007",
+          "value": 847.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' revenues in 2008",
+          "value": 721.6,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' loss in 2008",
+          "value": 185.1,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs employees at the end of 2007",
+          "value": 5300,
+          "unit": "count",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs employees at the end of 2008, approximately",
+          "value": 3700,
+          "unit": "count",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs, Inc. revenues in 2025 ($4,040.6 million in the filing; Crocs and HEYDUDE brands)",
+          "value": 4.04,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year Crocs first introduced its footwear (a single model)",
+          "value": 2002,
+          "unit": "year",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Colours the first model came in",
+          "value": 6,
+          "unit": "count",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        }
       ],
       "verify": [
         "2008 10-K risk factor: 'Our auditors have expressed substantial doubt about our ability to continue as a going concern.'",
@@ -39,7 +582,20 @@
       ],
       "found": "2026-11-19",
       "expires": "2027-02-17",
-      "status": "new"
+      "status": "new",
+      "outline": [
+        "cold open (0-30 s): frame 1 a pair of Crocs; named by 1 s; {fact1} a year at the height of the craze by 6 s; the 2008 fall ({fact2}, a {fact3} loss) by 15 s; the going-concern line highlighted by 25 s",
+        "promise by ~60 s: 'not a new shoe; what it did with the old one' -> CHAPTER 1 card",
+        "ch1 the Beach: one model in {fact8} colours, {fact7}, for water sports; Croslite a trade secret",
+        "ch2 the craze: everyone wore them; the 'ugly' jokes",
+        "ch3 the crash: staff from {fact4} to about {fact5}; the auditors' doubt in its own 10-K",
+        "recap-and-tease (~8 min): 'by 2009 the jokes had won. Then the same shoe started selling again'",
+        "ch4 the turn (payoff, ~38%): the shoe as a canvas, charms and collaborations (sourced figures only)",
+        "ch5 the comeback: about {fact6} in 2025 (the company, with HEYDUDE)",
+        "ending: 'a fad sells a shoe once; a canvas sells it again'; question for the comments"
+      ],
+      "picture": "the clog: plain in 2002, covered in charms in 2025",
+      "outlined": "2026-11-23"
     }
   ]
 }

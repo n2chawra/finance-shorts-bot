@@ -2,6 +2,156 @@
   "note": "Long-video topics, written by the Scout agent (agents/scout.md) and used by Studio (agents/studio.md). These first four were seeded by the owner's session to give Studio something to start on; Scout adds to them daily.",
   "topics": [
     {
+      "id": "2026-11-23-why-cinema-cares-about-popcorn",
+      "format": "long",
+      "title": "Why does the cinema care more about your popcorn than your ticket?",
+      "stories": [
+        "how_they_make_money"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "from_short": "v-20261117-02",
+      "demand": {
+        "title": "How Did Costco Become a Members-Only Retail Giant? (CNBC)",
+        "views": 4800000,
+        "url": "https://www.youtube.com/watch?v=dzejHGniMTQ",
+        "channel": "CNBC",
+        "note": "format reference (how_they_make_money, long): three searches found no cinema-economics video with a confirmed 500K+ view count; the market job's search below finds this topic's own hits for thumbnails"
+      },
+      "category": "entertainment",
+      "kind": "evergreen",
+      "priority": "high",
+      "templates": [
+        "long_story"
+      ],
+      "search": "why is movie theater popcorn so expensive",
+      "angle": "Our Short asked why AMC cares more about your $7.87 of snacks than your $12.73 ticket. The long version answers what it left open: where the ticket money goes (about half to the studio), what the popcorn really costs AMC (about 18 cents of each snack dollar), why the snack keeps almost as much per person as the ticket, and why, with all that, AMC still lost $632.4M in 2025.",
+      "why_now": "Expands 'AMC charges $12.73 a ticket. Why does it care more about your popcorn?' (v-20261117-02, 45.5% stayed to watch, #4 of 26 November Shorts with 100+ views). A thing every viewer buys (CLAUDE.md 'the thing in your hand', 16 Nov), global, with a per-person figure anyone can feel. All facts are AMC's own SEC filings: Q3 2026 (the latest quarter) for the per-person figures, full-year 2025 for the year.",
+      "facts": [
+        {
+          "label": "Average ticket price, AMC, three months to 30 Sep 2026",
+          "value": 12.73,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        },
+        {
+          "label": "Food and beverage revenue per patron, AMC, three months to 30 Sep 2026",
+          "value": 7.87,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        },
+        {
+          "label": "AMC admissions revenues, three months to 30 Sep 2026",
+          "value": 953.5,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        },
+        {
+          "label": "AMC film exhibition costs, three months to 30 Sep 2026",
+          "value": 476.5,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        },
+        {
+          "label": "AMC food and beverage revenues, three months to 30 Sep 2026",
+          "value": 589.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        },
+        {
+          "label": "AMC food and beverage costs, three months to 30 Sep 2026",
+          "value": 107.1,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2026-09-30",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        },
+        {
+          "label": "AMC attendance (patrons), full year 2025",
+          "value": 219412,
+          "unit": "count_thousand",
+          "as_of": "2025-12-31",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000018/amc-20260223xex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        },
+        {
+          "label": "AMC net loss, full year 2025",
+          "value": 632.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000018/amc-20260223xex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        },
+        {
+          "label": "Screens AMC operated at the end of 2025",
+          "value": 9640,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "AMC Entertainment",
+          "url": "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000018/amc-20260223xex99d1.htm",
+          "checked": "2026-11-23",
+          "latest": true
+        }
+      ],
+      "outline": [
+        "hook (0:00): the Short's first picture and line: a $12.73 ticket and a $7.87 popcorn bucket on the counter, and the question which one AMC wants you to buy. The picture the whole video hangs on: the ticket stub torn in two at the door (half walks off to a studio truck), the popcorn bucket staying behind the counter",
+        "promise (by 0:20): three answers, and the last one is why a company that keeps 82 cents of every snack dollar still lost $632.4M. Don't answer the title in the hook",
+        "item 1 (~50 s), the ticket: $953.5M of tickets, $476.5M paid on to the studios (facts): the share the studio takes (computed, about half), so of $12.73 AMC keeps about $6.36 (computed). Rohan hands over the ticket; the studio truck drives off with half the stub",
+        "item 2 (~50 s), the popcorn: $589.4M of snacks, $107.1M of food cost (facts): the food is about 18% (computed), so of $7.87 AMC keeps about $6.44 (computed). Priya behind the counter: the corn in the bucket costs less than the bag it comes in",
+        "recap at ~1:45 (one line): a $12.73 ticket keeps about the same as a $7.87 bucket. Tease: then why is AMC losing money?",
+        "item 3 (strongest, ~60 s), the turn: 219.4M visits and 9,640 screens in 2025 (facts), yet a $632.4M net loss (fact): rent, staff and debt on screens that sit empty most weekday afternoons; the snack money is what keeps the lights on. Sharma has seen it before: empty rows on a Tuesday",
+        "payoff + loop: the snack keeps more per dollar than the ticket ever does, which is why the cinema cares more about your popcorn; back to the bucket on the counter"
+      ],
+      "maths": "computed shares and per-person splits from the facts: studio share = film exhibition costs / admissions (Q3 2026), ticket kept = ticket price x (1 - share); food share = F&B costs / F&B revenues, snack kept = F&B per patron x (1 - food share); compare the two kept amounts. No new maths kind needed (ratio/compare).",
+      "verify": [
+        "All Q3 2026 figures in AMC's 8-K exhibit for the quarter to 30 Sep 2026 (sec.gov, accession 0001411579-26-000073)",
+        "Full-year 2025 attendance 219,412 thousand, net loss $632.4M and 9,640 screens in AMC's 23 Feb 2026 8-K exhibit (accession 0001411579-26-000018)",
+        "Say 'paid to the studios' (film exhibition costs), never a fixed contract percentage: the filing gives a total, not each deal's split",
+        "Never say the loss is caused by any one thing; the filing gives the total loss, so name rent, staff and debt as costs a cinema has, not as AMC's amounts"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000073/amc-ex99d1.htm",
+        "https://www.sec.gov/Archives/edgar/data/1411579/000141157926000018/amc-20260223xex99d1.htm",
+        "https://investor.amctheatres.com/news-events/press-releases/detail/414/amc-entertainment-holdings-inc-reports-fourth-quarter-and-full-year-2025-results"
+      ],
+      "found": "2026-11-23",
+      "expires": "2027-11-23",
+      "status": "new"
+    },
+    {
       "format": "long",
       "currency": "USD",
       "reach": "global",
@@ -39,7 +189,7 @@
           "as_of": "2023-02-14",
           "source": "California Lottery",
           "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
-          "checked": "2026-11-19",
+          "checked": "2026-11-23",
           "latest": true
         },
         {
@@ -50,7 +200,7 @@
           "as_of": "2023-02-14",
           "source": "California Lottery",
           "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
-          "checked": "2026-11-19",
+          "checked": "2026-11-23",
           "latest": true
         },
         {
@@ -60,7 +210,7 @@
           "as_of": "2023-02-14",
           "source": "California Lottery",
           "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
-          "checked": "2026-11-19",
+          "checked": "2026-11-23",
           "latest": true
         },
         {
@@ -71,7 +221,7 @@
           "as_of": "2023-02-14",
           "source": "California Lottery",
           "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
-          "checked": "2026-11-19",
+          "checked": "2026-11-23",
           "latest": true
         },
         {
@@ -82,7 +232,7 @@
           "as_of": "2023-02-14",
           "source": "California Lottery",
           "url": "https://www.powerball.com/ca-lottery-announces-sole-winner-of-record-breaking-2.04-billion-powerball-jackpot",
-          "checked": "2026-11-19",
+          "checked": "2026-11-23",
           "latest": true
         },
         {
@@ -234,7 +384,7 @@
           "as_of": "2025-05-31",
           "source": "Oracle",
           "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526402816/orcl-20260925.htm",
-          "checked": "2026-11-19",
+          "checked": "2026-11-23",
           "latest": true
         },
         {
@@ -264,7 +414,7 @@
           "as_of": "2025-09-26",
           "source": "Oracle",
           "url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526402816/orcl-20260925.htm",
-          "checked": "2026-11-19",
+          "checked": "2026-11-23",
           "latest": true
         }
       ],
@@ -399,133 +549,6 @@
       ],
       "found": "2026-11-05",
       "expires": "2027-11-05",
-      "status": "rejected",
-      "kind": "evergreen",
-      "id": "2026-11-05-why-billionaires-never-sell",
-      "from_short": "v-20261021-05",
-      "from_short_views": 1170,
-      "title": "Why don't billionaires ever sell their stock?",
-      "stories": [
-        "how_they_make_money"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How Billionaires never pay Taxes",
-        "views": 54000000,
-        "url": "https://www.youtube.com/shorts/klS_tpY7V04"
-      },
-      "category": "tax",
-      "priority": "high",
-      "search": "why billionaires never sell their stock",
-      "angle": "Our Short said they borrow instead. The long version answers the questions it left open: why a loan isn't taxed, who lends them billions, what happens when the shares fall, and what happens when they die.",
-      "why_now": "Expands our 1,170-view Short 'Why billionaires never sell their stock' (v-20261021-05, 72% viewed), the second-best Short we have. Owner 2026-11-04: long videos grow out of 1K+ Shorts. Different from L-20261023-01 (debt in general, 13 views): this is one question, the one the Short raised, titled as people search it.",
-      "outline": [
-        "hook (0:00): restate the Short in Sikka's words: 'billionaires almost never sell; they borrow'. Rohan: 'then where does the money for the yacht come from?' Picture the whole video hangs on: a vault of shares that never opens, with a pipe of loans coming out of its side",
-        "promise (by 0:25): four answers, and the last one is the reason the vault never has to open",
-        "item 1 (~60 s, reveal at 0:45), selling is taxed: sell $1M of stock bought for almost nothing and up to the top 20% long-term rate goes to tax (fact: IRS 20%; maths fee_take 20% of $1M = $200,000)",
-        "item 2, a loan isn't income: borrow $1M against the shares at an assumed 5% for 10 years: interest $272,786 (emi) while the untouched $1M at an assumed 8% grows to $2.16M (lumpsum). Board card: the two sums side by side",
-        "recap-and-tease at ~2:00: 'so borrowing is cheaper than selling. But who lends a billionaire money, and how much?'",
-        "item 3, the real numbers: Elon Musk has about 207.5 million Tesla shares pledged (Tesla's October 2026 proxy, down from about 236 million a year earlier) as collateral; Tesla caps the borrowing at $3.5B or 25% of their value, (facts). Tesla's 2025 filing said he had no loans against them; the 2026 coverage doesn't say either way, so never say he has a loan now. Priya: the arrangement is the point, flexibility on tap",
-        "item 4, the year with no tax: ProPublica's IRS files: the 25 richest Americans grew $401B richer in 2014-2018 and paid $13.6B, a 3.4% 'true tax rate'; Musk paid no federal income tax in 2018 (facts). Sharma Uncle: legal, every step",
-        "recap-and-tease at ~4:00: 'and when the shares fall? the bank can sell them for you' (the risk, said plainly)",
-        "item 5 (strongest, last): why the vault never opens: the loan is paid from new loans while shares keep growing, and US heirs inherit at a stepped-up value (verify IRS step-up); the same mechanism at our size is just 'don't sell your index fund for a car'",
-        "ending: loop back to the Short's line, ask the viewer 'would you borrow against your shares?', one CTA, disclaimer end card"
-      ],
-      "maths": "fee_take (20% of $1M), emi ($1M at an assumed 5% for 10 years), lumpsum ($1M at an assumed 8% for 10 years), compare (interest vs growth)",
-      "facts": [
-        {
-          "label": "top US long-term capital gains tax rate (2025)",
-          "value": 20,
-          "unit": "percent",
-          "as_of": "2025",
-          "source": "IRS Topic 409",
-          "url": "https://www.irs.gov/taxtopics/tc409"
-        },
-        {
-          "label": "Tesla shares Elon Musk has pledged as loan collateral",
-          "value": 207.5,
-          "unit": "count_million",
-          "as_of": "2026-10-19",
-          "source": "Reuters on Tesla's 2026 proxy statement (via The Standard, Hong Kong)",
-          "url": "https://www.thestandard.com.hk/finance/article/345885/Tesla-asks-shareholders-to-re-elect-Musk-Denholm-and-Straubel-at-December-annual-meeting",
-          "checked": "2026-11-09"
-        },
-        {
-          "label": "Tesla's cap on what Musk may borrow against pledged shares (lesser of this or 25% of their value)",
-          "value": 3.5,
-          "unit": "money_billion",
-          "as_of": "2026-10-19",
-          "source": "Reuters on Tesla's 2026 proxy statement (via The Edge Malaysia)",
-          "url": "https://theedgemalaysia.com/node/822384",
-          "checked": "2026-11-09",
-          "currency": "USD"
-        },
-        {
-          "label": "the 25 richest Americans' wealth growth, 2014-2018",
-          "value": 401,
-          "unit": "money_billion",
-          "as_of": "2021-06-08",
-          "source": "ProPublica, The Secret IRS Files",
-          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "currency": "USD",
-          "latest": true,
-          "checked": "2026-11-09"
-        },
-        {
-          "label": "federal income tax those 25 paid, 2014-2018",
-          "value": 13.6,
-          "unit": "money_billion",
-          "as_of": "2021-06-08",
-          "source": "ProPublica, The Secret IRS Files",
-          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "currency": "USD",
-          "latest": true,
-          "checked": "2026-11-09"
-        },
-        {
-          "label": "their 'true tax rate' (tax paid / wealth growth)",
-          "value": 3.4,
-          "unit": "percent",
-          "as_of": "2021-06-08",
-          "source": "ProPublica, The Secret IRS Files",
-          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "latest": true,
-          "checked": "2026-11-09"
-        },
-        {
-          "label": "the year Elon Musk paid no federal income tax",
-          "value": 2018,
-          "unit": "year",
-          "as_of": "2021-06-08",
-          "source": "ProPublica, The Secret IRS Files",
-          "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-          "latest": true,
-          "checked": "2026-11-09"
-        }
-      ],
-      "verify": [
-        "IRS: 20% top long-term capital gains rate; the step-up in basis at death (IRS Publication 551)",
-        "Tesla: about 207.5 million pledged shares and the lesser of $3.5B / 25% cap, from Tesla's 19 Oct 2026 proxy (DEF 14A, 'Pledging of Shares' on SEC EDGAR); Reuters reported it. The 2025 filing's 'currently does not have any loans' is a 2025 statement: say it with its year, never imply he has a loan now",
-        "ProPublica figures are from leaked IRS data (2021): say 'according to IRS records obtained by ProPublica'",
-        "Nothing alleges a crime: every step is legal; 5% and 8% are assumptions said as such"
-      ],
-      "sources": [
-        "https://ir.tesla.com/_flysystem/s3/sec/000110465925097147/tm252289d30_defa14a-gen.pdf",
-        "https://theedgemalaysia.com/node/822384",
-        "https://www.irs.gov/taxtopics/tc409",
-        "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
-        "https://www.thestandard.com.hk/finance/article/345885/Tesla-asks-shareholders-to-re-elect-Musk-Denholm-and-Straubel-at-December-annual-meeting"
-      ],
-      "reason": "2026-11-19: its Short (v-20261021-05) is #23 of 36 by stayed to watch, outside the top third; replaced by 2026-11-19-why-billionaires-tiny-salary"
-    },
-    {
-      "format": "long",
-      "templates": [
-        "long_story"
-      ],
-      "found": "2026-11-05",
-      "expires": "2027-11-05",
       "status": "new",
       "kind": "evergreen",
       "id": "2026-11-05-why-cant-billionaires-pay-tax",
@@ -585,7 +608,7 @@
           "source": "White House Council of Economic Advisers",
           "url": "https://bidenwhitehouse.archives.gov/cea/written-materials/2021/09/23/what-is-the-average-federal-individual-income-tax-rate-on-the-wealthiest-americans/",
           "latest": true,
-          "checked": "2026-11-09"
+          "checked": "2026-11-23"
         },
         {
           "label": "the 25 richest Americans' wealth growth, 2014-2018",
@@ -596,7 +619,7 @@
           "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
           "currency": "USD",
           "latest": true,
-          "checked": "2026-11-09"
+          "checked": "2026-11-23"
         },
         {
           "label": "federal income tax those 25 paid, 2014-2018",
@@ -607,7 +630,7 @@
           "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
           "currency": "USD",
           "latest": true,
-          "checked": "2026-11-09"
+          "checked": "2026-11-23"
         },
         {
           "label": "their 'true tax rate' (tax paid / wealth growth)",
@@ -617,7 +640,7 @@
           "source": "ProPublica, The Secret IRS Files",
           "url": "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
           "latest": true,
-          "checked": "2026-11-09"
+          "checked": "2026-11-23"
         },
         {
           "label": "billionaires on Forbes' 2026 list (a record)",
@@ -663,111 +686,6 @@
         "https://www.propublica.org/article/the-secret-irs-files-trove-of-never-before-seen-records-reveal-how-the-wealthiest-avoid-income-tax",
         "https://www.spokesman.com/stories/2026/mar/10/forbes-reveals-worlds-richest-people-of-2026-see-w"
       ]
-    },
-    {
-      "id": "2026-11-02-signs-secretly-rich",
-      "format": "long",
-      "title": "7 signs someone is secretly rich (and what they do that you don't)",
-      "stories": [
-        "list_explained"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "7 Signs Someone is Secretly Wealthy (Humphrey Yang)",
-        "views": 1145318,
-        "url": "https://www.youtube.com/watch?v=SnX_GHgiwu0"
-      },
-      "category": "wealth_habits",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "search": "signs someone is secretly wealthy",
-      "angle": "The richest person on your street probably looks the poorest. Here is what they do with the money everyone else spends on looking rich.",
-      "why_now": "Money-at-scale and 'how the rich work' is our core tier (owner, 2026-10-30). Reference shape has 1.1M (Humphrey Yang), and 'Rich Dad Poor Dad Explained: 7 Rules of Money' reached 2.7M in three months, so the 'what the rich do differently' list is pulling now. It is the mirror of the middle-class-traps topic: tell it at least two weeks apart and from the rich side (Sharma is the quiet millionaire).",
-      "outline": [
-        "hook (0:00): two neighbours, one in a brand-new $45,000 car, one (Sharma) in a 12-year-old hatchback; 'one of them is a millionaire. It isn't the one you think.' The picture the video hangs on: a house with a plain front door and a vault behind it",
-        "promise (by 0:25): seven signs, and the last one is the one almost nobody copies; one line, no list of names",
-        "sign 1, the old car: a $45,000 car at 8% is $912 a month and $9,746 of interest (emi); the same $912 invested for the five years is $65,674 (sip) — reveal by 0:45",
-        "sign 2, the smaller house than they can afford: $600,000 vs $400,000 at 7% for 30 years costs $479,018 more in total (emi x2, compare)",
-        "recap-and-tease at ~2:30: 'two signs you can see from the street. The next five you can't'",
-        "sign 3, no subscriptions they don't use: $150 a month is $18,000 in ten years (fee_take)",
-        "sign 4, they pay themselves first: $1,000 a month at an assumed 7% for 25 years is $814,797 from $300,000 put in (sip) — second big reveal at ~3:00",
-        "sign 5, they own things that pay them: $100,000 owned at an assumed 7% is $761,226 in 30 years (lumpsum); Priya draws the stacked chart",
-        "recap-and-tease at ~5:30: 'five habits. The last two are why it never runs out'",
-        "sign 6, they live on what it earns, not what it is: $2 million taken at 4% a year is $80,000 a year (share, parts 25), without touching the pile",
-        "sign 7 (strongest, ~2/3 in): the house gap invested instead: the $1,331 a month the bigger house would cost, invested for 30 years at an assumed 7%, is $1.6M (sip) — the quiet neighbour's vault opens",
-        "payoff: rich isn't what you see, it's what you don't spend; which of the seven do you already do? (comment)",
-        "ending within 30 s: one CTA, disclaimer end card"
-      ],
-      "maths": "emi (car), sip (car payment invested), emi x2 + compare (house sizes), fee_take (subscriptions), sip (pay yourself first), lumpsum (owning), share (4% of $2M over 25 parts), sip (house gap invested)",
-      "verify": [
-        "Returns and loan rates are assumptions, said as such",
-        "The 4% figure is a common rule of thumb, not a guarantee",
-        "No real person is named as 'secretly rich' without a reputable source"
-      ],
-      "sources": [
-        "https://www.youtube.com/watch?v=SnX_GHgiwu0",
-        "https://www.youtube.com/watch?v=p9eoEFtNu1A"
-      ],
-      "found": "2026-11-02",
-      "expires": "2027-11-02",
-      "status": "rejected",
-      "reason": "2026-11-19: names no from_short, so Studio can never use it (owner rule, 4 and 12 Nov)"
-    },
-    {
-      "id": "2026-11-02-house-costs-twice",
-      "format": "long",
-      "title": "Why your house really costs you twice its price",
-      "stories": [
-        "once_you_understand"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "If Nobody Can Afford A Home... Who's Going To Buy Them? (How Money Works)",
-        "views": 4083139,
-        "url": "https://www.youtube.com/watch?v=1zjcZ661ups"
-      },
-      "category": "home_loan",
-      "kind": "evergreen",
-      "priority": "normal",
-      "templates": [
-        "long_story"
-      ],
-      "search": "how mortgages really work explained",
-      "angle": "A $400,000 house on a 30-year loan costs $958,036. Where does the other $558,036 go, and who decides it?",
-      "why_now": "Housing is the most-watched money fear after inflation: How Money Works 4.08M, IWTTBR 'Renting vs Buying: The Lie You've Been Told' 1.02M, Warikoo 2.8M on why Gen Z stopped saving. Every country has mortgages; told in USD with a 30-year loan so anyone can follow. Our maths covers it end to end (emi, compare, loan_prepay, price_rise), and no long video of ours has told it since the India repo-rate one (Oct 18).",
-      "outline": [
-        "hook (0:00): Rohan gets the keys to a $400,000 house; behind him a second, ghost house builds itself brick by brick as the payments roll — the picture the video hangs on: the house you buy and the house you pay for the bank",
-        "promise (by 0:25): six things the bank knows about your mortgage that you don't, and the last one can save you a hundred thousand dollars",
-        "item 1, the total: $400,000 at 7% for 30 years is $2,661 a month and $958,036 in all (emi) — reveal by 0:45",
-        "item 2, the early years: in the first years most of each payment is interest (emi; Priya's chart, interest band above principal, crossover marked)",
-        "recap-and-tease at ~2:30: 'that's what the loan costs. Now watch one percent'",
-        "item 3, one percent: at 6% instead of 7% you pay $94,683 less (emi, compare)",
-        "item 4, the 15-year loan: $3,595 a month, $247,156 of interest, $310,879 less than the 30-year (emi, compare) — Sharma has seen both",
-        "recap-and-tease at ~5:00: 'so the bank wins on time. Here's how you take some back'",
-        "item 5, the rent side: $2,000 rent rising 3% a year is $4,855 a month in 30 years, $456,064 extra (price_rise): why renting isn't free either",
-        "item 6 (strongest, ~2/3 in): one $20,000 extra payment in year one: keep the term and save $26,780, or keep the payment and finish 49 months early, saving $111,110 (loan_prepay)",
-        "payoff: the price on the sign is the smallest number in the deal; the one question to ask before signing: 'what is the total?'",
-        "ending within 30 s: one CTA, disclaimer end card"
-      ],
-      "maths": "emi (400k at 7% for 30y, at 6% for 30y, at 7% for 15y) + compare x2, price_rise (rent $2,000 at 3% for 30y), loan_prepay ($20,000 in month 12)",
-      "verify": [
-        "Rates are assumptions, said as such; no current national average quoted unless sourced",
-        "Prepayment rules and penalties differ by lender and country: say so",
-        "No claim that buying or renting is always better"
-      ],
-      "sources": [
-        "https://www.youtube.com/watch?v=1zjcZ661ups",
-        "https://www.youtube.com/watch?v=ETROzuOFffA"
-      ],
-      "found": "2026-11-02",
-      "expires": "2027-11-02",
-      "status": "rejected",
-      "reason": "2026-11-19: names no from_short, so Studio can never use it (owner rule, 4 and 12 Nov)"
     },
     {
       "id": "2026-10-28-once-you-understand-a-billion",
@@ -1610,7 +1528,7 @@
           "as_of": "2025-07-01",
           "source": "US Census Bureau",
           "url": "https://www.census.gov/newsroom/press-releases/2026/population-growth-slows.html",
-          "checked": "2026-11-16",
+          "checked": "2026-11-23",
           "latest": true
         }
       ],

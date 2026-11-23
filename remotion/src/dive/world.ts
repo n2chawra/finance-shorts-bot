@@ -12,7 +12,7 @@ import { diveLook, type DiveLook } from "./looks";
 export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest" | "counter"
   // added 2026-11-22 (more.tsx, owner: "the kit improves itself when making a video"): carved rooms, a pillared
   // hall, a walkway or water passage, a pump room, water pouring in
-  | "room" | "hall" | "passage" | "pumps" | "pour" | "well";
+  | "room" | "hall" | "passage" | "pumps" | "pour" | "well" | "dig" | "spiral" | "vent";
 
 /** One piece of the world. Only the fields of its `kind` matter (README "Pieces"). */
 export interface LayerSpec {
@@ -51,7 +51,8 @@ export interface LayerSpec {
   glowOn?: string;
   count?: number;
   // a counter on any layer: a display that counts params.fig[counter.fig] up on its word
-  counter?: { fig: string; label?: string; on?: string; side?: "left" | "right" };
+  signX?: number;           // tunnel: the sign's x (default 240), to clear the meter tag
+  counter?: { fig: string; label?: string; on?: string; side?: "left" | "right"; y?: number };   // y: the display's top on screen (default 300), to keep it off a sign (2026-11-23)
   // deepest
   text?: string;
 }

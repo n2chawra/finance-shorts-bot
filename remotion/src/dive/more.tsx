@@ -4,10 +4,13 @@
  * town drew as a city street with taxis, carved rooms as one empty bunker box, a pillared flood tank as nothing.
  * These pieces add what those videos needed, each with something alive in it (people, animals, water, machines):
  *
- *   room     a room carved in rock: living | stable | press | storage | church | kitchen | door | tombs
+ *   room     a room carved in rock: living | stable | press | storage | church | kitchen | door | tombs | ossuary | grave
  *   hall     a pillared hall (a flood tank, a cistern, a crypt): `count` pillars, light shafts, mist, a walker
  *   passage  a passage: walk (people with lamps in a line) | water (a rushing channel) | sewer
  *   pumps    a pump room: impellers spinning, pipes carrying water up
+ *   vent     a ventilation shaft's fan room, air rising up a shaft that fades out above
+ *   spiral   a spiral stair in a round shaft, people climbing and walking down its flights
+ *   dig      a station still being built: shored box, turning cutterhead, workers, a swinging crane hook
  *   pour     water pouring in from the left into a churning pool (a flood arriving)
  *   surface  more presets: town | field | sea | mountain | pyramid | dome | arena, each with a readable name plate
  *
@@ -181,6 +184,48 @@ export const Room: React.FC<PieceProps> = ({ L, w, g }) => {
         {[0, 1].map((row) => [0, 1, 2, 3].map((c) => <Block key={`${row}${c}`} x={300 + c * 160} y={top + 90 + row * 120} w={130} h={80} fill={shade(inside, -0.3)} r={30} shadow={false} sw={4} />))}
         <Person x={200 + 600 * walk(0, 1)} y={yb - 26} i={5} lamp step={walk(0, 1) * 8} />
       </> : null}
+      {type === "grave" ? <>
+        {/* a grave shrine (St Peter's, v-20261123-52): a red plastered wall with a small two-column shrine against it,
+            candles flickering, someone kneeling, an archaeologist with a lamp walking along */}
+        <rect x={380} y={top + 70} width={320} height={yb - top - 96} fill="#b5483a" stroke={INK} strokeWidth={5} />
+        {[440, 640].map((cx) => <Block key={cx} x={cx - 18} y={yb - 250} w={36} h={224} fill="#efe6d2" r={6} shadow={false} sw={4} />)}
+        <path d={`M 410 ${yb - 250} L 540 ${yb - 330} L 670 ${yb - 250} Z`} fill="#efe6d2" stroke={INK} strokeWidth={5} strokeLinejoin="round" />
+        <Block x={470} y={yb - 120} w={140} h={94} fill={shade(inside, -0.2)} r={8} shadow={false} sw={4} />
+        <Flame x={430} y={yb - 60} g={g} w={w} ph={1} /><Flame x={650} y={yb - 60} g={g} w={w} ph={2} />
+        <Person x={330} y={yb - 26} i={2} pose="kneel" s={0.85} />
+        {(() => { const u = walk(3, 1); return <Person x={720 + u * 200} y={yb - 26} i={4} lamp step={u * 8} dir={-1} s={0.85} />; })()}
+      </> : null}
+      {type === "ossuary" ? (() => {
+        // an ossuary (the Paris Catacombs, v-20261123-51): the walls stacked with bones, rows of long bones with
+        // their knobbed ends facing out and bands of skulls between them, visitors walking past with lamps
+        const bone = "#e9e0c8", boneDark = shade(bone, -0.3);
+        const wx0 = 170, wx1 = 910, wy0 = top + 70, wy1 = yb - 40;
+        const rows: React.ReactNode[] = [];
+        for (let row = 0, y = wy1; y > wy0 + 30; row++) {
+          const skulls = row % 3 === 1;
+          const rh = skulls ? 62 : 34;
+          y -= rh;
+          if (skulls) {
+            for (let x = wx0 + 34; x < wx1 - 20; x += 64) rows.push(<g key={`s${row}-${x}`}>
+              <Ball x={x} y={y + 30} r={28} fill={bone} shadow={false} sw={4} />
+              <circle cx={x - 10} cy={y + 28} r={7} fill={INK} /><circle cx={x + 10} cy={y + 28} r={7} fill={INK} />
+              <path d={`M ${x - 3} ${y + 44} l 3 -6 l 3 6 z`} fill={INK} />
+            </g>);
+          } else {
+            for (let x = wx0 + 20; x < wx1 - 10; x += 34) rows.push(<g key={`b${row}-${x}`}>
+              <circle cx={x} cy={y + 17} r={15} fill={bone} stroke={INK} strokeWidth={3} />
+              <circle cx={x} cy={y + 17} r={5} fill={boneDark} />
+            </g>);
+          }
+        }
+        return <>
+          <rect x={wx0} y={wy0} width={wx1 - wx0} height={wy1 - wy0} fill={shade(inside, -0.2)} />
+          {rows}
+          {/* the lamp light on the bone wall breathes, a whole number of times over the video */}
+          <Glow x={540} y={(wy0 + wy1) / 2} r={420 * (0.92 + 0.08 * loopSin(w, g, 0.6))} color="#ffcf7a" o={0.28} />
+          {Array.from({ length: Math.max(1, n) }, (_, i) => { const dir = i % 2 ? -1 : 1; const u = walk(i, 1, i * 0.5); const x = 180 + (dir === 1 ? u : 1 - u) * 720; return <Person key={`v${i}`} x={x} y={yb - 26} i={i + 2} lamp={i === 0} step={u * 10} dir={dir} s={0.85} />; })}
+        </>;
+      })() : null}
       {type === "door" ? (() => {
         // a round stone door rolls across the doorway on its word (`on`), people behind it
         const shut = ramp(g, L.land - 4, L.land + 22) * outro(w, g);
@@ -516,4 +561,112 @@ export const SurfaceMore: React.FC<PieceProps> = (props) => {
   );
 };
 
-export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well };
+
+// ------------------------------------------------------------------ dig (2026-11-23, for v-20261123-51)
+
+/** A station still being built: a dug box with shoring, a tunnel-boring machine's cutterhead turning in the end
+ *  wall, workers in hard hats walking the floor, a crane hook swinging down the shaft, sparks from a welder. */
+export const Dig: React.FC<PieceProps> = ({ L, w, g }) => {
+  const s = L.spec, look = w.look;
+  const x0 = 60, x1 = 1020, yb = w.Y(L.ft) + 150, top = yb - 560;
+  const wall = s.color ?? "#5b5f6b";
+  const spin = loopU(w, g, Math.max(1, Math.round(w.total / 30 * 8))) * 360;
+  const walk = (i: number) => loopU(w, g, 1, i * 0.41);
+  return (
+    <g>
+      <rect x={x0 - 16} y={top - 16} width={x1 - x0 + 32} height={yb - top + 48} rx={40} fill={shade(look.deep, 0.05)} />
+      <rect x={x0} y={top} width={x1 - x0} height={yb - top + 20} rx={30} fill={wall} stroke={INK} strokeWidth={STROKE} />
+      {/* shoring struts across the box */}
+      {[0, 1, 2].map((i) => <Block key={i} x={x0 + 10} y={top + 90 + i * 130} w={x1 - x0 - 20} h={22} fill="#e0a23a" shadow="bottom" sw={4} />)}
+      {[0, 1, 2, 3].map((i) => <Glow key={`l${i}`} x={180 + i * 240} y={top + 60} r={150} color={s.light ?? "#ffe0a0"} o={0.45} />)}
+      {/* the cutterhead in the right wall */}
+      <g transform={`rotate(${spin} 900 ${yb - 200})`}>
+        <Ball x={900} y={yb - 200} r={170} fill="#c9ced8" />
+        {[0, 60, 120].map((a) => <line key={a} x1={900 + 160 * Math.cos(a * Math.PI / 180)} y1={yb - 200 + 160 * Math.sin(a * Math.PI / 180)} x2={900 - 160 * Math.cos(a * Math.PI / 180)} y2={yb - 200 - 160 * Math.sin(a * Math.PI / 180)} stroke={INK} strokeWidth={10} />)}
+        <circle cx={900} cy={yb - 200} r={40} fill="#e8432f" stroke={INK} strokeWidth={5} />
+      </g>
+      {/* the crane hook swinging */}
+      {(() => { const sw = loopSin(w, g, 0.5) * 60; return <g><line x1={420} y1={top} x2={420 + sw} y2={top + 260} stroke={INK} strokeWidth={6} /><Block x={390 + sw} y={top + 260} w={60} h={50} fill="#ffc43d" r={8} shadow={false} sw={4} /></g>; })()}
+      {/* sparks from a welder at the left wall */}
+      <Glow x={150} y={yb - 140} r={80 * (0.7 + 0.3 * Math.abs(loopSin(w, g, 3)))} color="#fff2a8" o={0.8} />
+      <Person x={190} y={yb - 6} i={1} pose="kneel" s={0.9} />
+      {[0, 1, 2].map((i) => { const u = walk(i); const dir = i % 2 ? -1 : 1; return <Person key={i} x={260 + (dir === 1 ? u : 1 - u) * 420} y={yb - 6} i={i + 3} step={u * 12} dir={dir} s={0.9} />; })}
+      {/* hard hats */}
+      <rect x={x0} y={yb - 6} width={x1 - x0} height={26} fill={shade(wall, -0.3)} />
+      <Sign x={240} y={top - 130} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+    </g>
+  );
+};
+
+
+// ------------------------------------------------------------------ spiral (2026-11-23, for v-20261123-51)
+
+/** A spiral stair in a round shaft from `fromFt` to `toFt` (Abbesses): flights zigzag down the drum, people climb
+ *  up and walk down them, the drum glows on `glowOn`, its sign with the depth beside the bottom. */
+export const Spiral: React.FC<PieceProps> = ({ L, w, g }) => {
+  const s = L.spec, look = w.look;
+  const y0 = w.Y(s.fromFt ?? 0) + 60, y1 = w.Y(s.toFt ?? L.ft) + 160;
+  const cx = s.side === "left" ? 230 : 850, rw = 130;
+  const col = s.color ?? "#2fa86a";
+  const glowAt = L.at(s.glowOn);
+  const glow = ramp(g, glowAt - 3, glowAt + 12) * outro(w, g);
+  const step = 110, n = Math.max(2, Math.floor((y1 - y0) / step));
+  // the zigzag path of the flights, top to bottom
+  const pts: [number, number][] = Array.from({ length: n + 1 }, (_, i) => [i % 2 ? cx + rw - 24 : cx - rw + 24, y0 + i * step]);
+  const at = (u: number): [number, number] => { const f = u * n, i = Math.min(n - 1, Math.floor(f)), t = f - i; const a = pts[i]!, b = pts[i + 1]!; return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; };
+  return (
+    <g>
+      <rect x={cx - rw - 18} y={y0 - 18} width={2 * rw + 36} height={y1 - y0 + 36} rx={40} fill={shade(look.deep, 0.05)} />
+      <rect x={cx - rw} y={y0} width={2 * rw} height={y1 - y0} rx={30} fill={shade(col, -0.55)} stroke={INK} strokeWidth={STROKE} />
+      <Glow x={cx} y={(y0 + y1) / 2} r={(y1 - y0) * 0.6} color={col} o={0.15 + 0.35 * glow} />
+      {/* the central newel post */}
+      <rect x={cx - 10} y={y0} width={20} height={y1 - y0} fill={shade(col, -0.3)} />
+      {pts.slice(0, -1).map((a, i) => { const b = pts[i + 1]!; return <g key={i}>
+        <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={INK} strokeWidth={30} strokeLinecap="round" />
+        <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={col} strokeWidth={20} strokeLinecap="round" />
+        {Array.from({ length: 6 }, (_, j) => { const t = (j + 0.5) / 6; return <line key={j} x1={a[0] + (b[0] - a[0]) * t} y1={a[1] + (b[1] - a[1]) * t - 9} x2={a[0] + (b[0] - a[0]) * t} y2={a[1] + (b[1] - a[1]) * t + 9} stroke={shade(col, -0.4)} strokeWidth={4} />; })}
+      </g>; })}
+      {Array.from({ length: s.riders ?? 4 }, (_, i) => { const up = i % 2 === 0; const u0 = loopU(w, g, 1, i / (s.riders ?? 4)); const u = up ? 1 - u0 : u0; const [x, y] = at(u); return <Person key={i} x={x} y={y - 12} i={i + 1} step={u0 * n * 3} s={0.55} dir={x > cx ? -1 : 1} />; })}
+      <Sign x={cx > 540 ? 200 : 410} y={y1 - 160} w={470} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+    </g>
+  );
+};
+
+
+// ------------------------------------------------------------------ vent (2026-11-23, for v-20261123-53)
+
+/** A ventilation shaft's bottom: a fan room with a big fan turning, air arrows rising up a shaft that fades out
+ *  upward (it never crosses the layers above), a worker on the gantry, the sign with the depth. */
+export const Vent: React.FC<PieceProps> = ({ L, w, g }) => {
+  const s = L.spec, look = w.look;
+  const yb = w.Y(L.ft) + 420, x0 = 70, x1 = 1010, top = yb - 640;
+  const cx = 540, half = 130, shaftTop = top - 420;
+  const wall = s.color ?? "#4c5462";
+  const spin = loopU(w, g, Math.max(1, Math.round(w.total / 30 * 10))) * 360;
+  const fid = `vent-fade-${L.beat}`;
+  return (
+    <g>
+      <defs><linearGradient id={fid} x1="0" y1="1" x2="0" y2="0"><stop offset="0" stopColor={shade(wall, -0.4)} stopOpacity={1} /><stop offset="1" stopColor={shade(wall, -0.4)} stopOpacity={0} /></linearGradient></defs>
+      <rect x={cx - half} y={shaftTop} width={half * 2} height={top - shaftTop + 10} fill={`url(#${fid})`} />
+      {[0, 1, 2, 3, 4].map((i) => { const v = loopU(w, g, 8, i / 5); const ay = top + 40 - v * (top - shaftTop); return <path key={i} d={`M ${cx - 24} ${ay + 18} l 24 -26 l 24 26`} fill="none" stroke="#e8f6ff" strokeWidth={7} strokeLinecap="round" opacity={0.85 * (1 - v)} />; })}
+      <rect x={x0 - 16} y={top - 16} width={x1 - x0 + 32} height={yb - top + 32} rx={30} fill={shade(look.deep, 0.05)} />
+      <rect x={x0} y={top} width={x1 - x0} height={yb - top} rx={24} fill={wall} stroke={INK} strokeWidth={STROKE} />
+      <rect x={cx - half} y={top - 6} width={half * 2} height={20} fill={shade(wall, -0.4)} />
+      <Glow x={cx} y={top + 220} r={360} color={s.light ?? "#cfe8ff"} o={0.35} />
+      {/* the fan in its ring */}
+      <circle cx={cx} cy={top + 220} r={170} fill={shade(wall, -0.35)} stroke={INK} strokeWidth={STROKE} />
+      <g transform={`rotate(${spin} ${cx} ${top + 220}) translate(${cx} ${top + 220}) scale(1.33) translate(${-cx} ${-(top + 220)})`}>
+        {[0, 1, 2, 3, 4].map((j) => <path key={j} transform={`rotate(${j * 72} ${cx} ${top + 220})`} d={`M ${cx} ${top + 220} q 40 -40 10 -112 q -46 20 -10 112 z`} fill="#c9ced8" stroke={INK} strokeWidth={4} />)}
+        <circle cx={cx} cy={top + 220} r={22} fill="#e8432f" stroke={INK} strokeWidth={4} />
+      </g>
+      {/* a gantry with a worker checking the fan */}
+      <rect x={x0 + 10} y={yb - 40} width={x1 - x0 - 20} height={16} fill="#e0a23a" stroke={INK} strokeWidth={3} />
+      {(() => { const u = loopU(w, g, 1, 0.2); return <><Person x={130 + (u < 0.5 ? u * 2 : 2 - u * 2) * 180} y={yb - 40} i={4} step={u * 10} dir={u < 0.5 ? 1 : -1} s={0.9} lamp /><Person x={760 + (u < 0.5 ? 1 - u * 2 : u * 2 - 1) * 180} y={yb - 40} i={1} step={u * 10} dir={u < 0.5 ? -1 : 1} s={0.9} pose="carry" /></>; })()}
+      {/* pipes along the walls carrying the air out */}
+      {[110, 930].map((px) => <rect key={px} x={px - 16} y={top + 20} width={32} height={yb - top - 70} fill="#8d96a5" stroke={INK} strokeWidth={4} />)}
+      <Sign x={240} y={top - 130} w={600} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+    </g>
+  );
+};
+
+export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well, dig: Dig, spiral: Spiral, vent: Vent };

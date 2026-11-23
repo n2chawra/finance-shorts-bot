@@ -45,12 +45,12 @@ placement), `label`}], `unit` "ft" (default) or "m" (meter shows m first), `note
 
 Common: `depth` (fig key, default "depth"), `ft` (placement when no figure), `label` (sign words), `on` (its
 moment, default the beat's `on`), `counter` {`fig`, `label`, `on`}: a display on screen (top right, clear of the meter) that counts a
-figure up on its word (the 90 s ride) and shows until its beat ends.
+figure up on its word (the 90 s ride) and shows until its beat ends; `counter.y` moves the display down the screen (default 300) when it would cover a sign.
 
 | kind | params | draws |
 |---|---|---|
 | `surface` | `preset` station / tube (a London Underground front) / needle (a supertall with setbacks and a spire) / tower / stadium / monument / bridge / dam / street, `label`, `wall`, `trim`, `glass`, `color`, `vehicle` | sky, skyline, the landmark, the street with looping traffic (boats for bridge/dam) |
-| `tunnel` | `type` subway / rail / road / utility, `color` (vehicle), `stripe`, `bullets` [[text, colour]], `light`, `dir` 1/-1 | a lit cross-section, track or road, the sign with the depth, a train/car running through on its word (utility: cables, flowing) |
+| `tunnel` | `type` subway / rail / road / utility, `color` (vehicle), `stripe`, `bullets` [[text, colour]], `light`, `dir` 1/-1, `signX` (the sign's x, default 240) | a lit cross-section, track or road, the sign with the depth, a train/car running through on its word (utility: cables, flowing) |
 | `chamber` | `type` secret / vault / bunker / machine, `props` [machines, lamp, blueprint, safe, gold, crates, bunks, pipes, desk], `stamp` + `stampOn`, `plansOn`, `color` | a room in the rock; the stamp lands on its word; a depth tag (or a sign when `label`) |
 | `cavern` | `levels` 1/2, `trains` [stripe per level], `stripe` (car body), `bullets`, `light`, `color` | a deep hall with platforms and moving trains, its sign |
 | `shaft` | `type` escalator / elevator / stairs / pipe, `fromFt`, `toFt`, `side`, `riders`, `glowOn`, `color`, `stripe` | runs between two depths with riders; glows on its word |
@@ -67,11 +67,14 @@ section 3c). Every piece has something alive in it, and a `label` (sign) or dept
 
 | kind | params | draws |
 |---|---|---|
-| `room` | `type` living / stable / press / storage / church / kitchen / door / tombs, `people`, `stamp` + `stampOn` (door), `color` (rock) | a carved, arched cave room: people at home, animals at a trough, someone treading grapes with juice running, jars, kneeling people and candles, an oven, a round stone door rolling shut on its word, burial niches |
+| `room` | `type` living / stable / press / storage / church / kitchen / door / tombs / ossuary / grave, `people`, `stamp` + `stampOn` (door), `color` (rock) | a carved, arched cave room: people at home, animals at a trough, someone treading grapes with juice running, jars, kneeling people and candles, an oven, a round stone door rolling shut on its word, burial niches, an ossuary wall of stacked bones and skulls with visitors walking past (2026-11-23), a grave shrine on a red wall with candles and someone kneeling (2026-11-23) |
 | `hall` | `count` (3-9 pillars), `color` | a pillared hall: two rows of pillars rising on its word, light shafts, mist, a walker with a lamp |
 | `passage` | `type` walk / water / sewer, `people`, `dir`, `color`, `stripe` (water) | an arched passage: people walking with lamps, or water surging on its word with debris |
 | `pumps` | `count` (2-4) | a pump room: impellers spinning faster from its word, water rising up the pipes |
 | `pour` | `color` | floodwater pouring in from the left into a rising, churning pool |
+| `dig` | `label`, `bullets`, `color` (box), `light` | a station still being built (2026-11-23): a shored concrete box, a tunnel-boring cutterhead turning in the end wall, workers walking, a welder's sparks, a crane hook swinging; its sign with the depth |
+| `spiral` | `fromFt`, `toFt`, `ft`, `side`, `riders`, `glowOn`, `color`, `label` | a spiral stair in a round shaft (2026-11-23): flights zigzag down the drum around a newel post, people climbing up and walking down, the drum glowing on its word, its sign beside the bottom |
+| `vent` | `label`, `color`, `light` | a ventilation shaft's fan room (2026-11-23): a big fan turning, air arrows rising up a shaft that fades out above, a worker with a lamp on the gantry, its sign |
 | `surface` presets | `town`, `field`, `sea`, `mountain`, `pyramid`, `dome`, `arena`; `plate` (default on for these; `true` adds one to the older presets) | low stone houses with a dome and a tower and people walking; a field with a small building, trees and a goal; the sea with ferries and white cliffs; a snowy peak with a train leaving a portal; a pyramid in sand; a domed basilica; an arena of arches. All have a dark name plate with the `label` |
 
 Kit-wide since 2026-11-22: a sign or tag fades when it is far from the camera's point (a neighbour layer never

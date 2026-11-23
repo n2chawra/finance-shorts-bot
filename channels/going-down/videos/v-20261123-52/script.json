@@ -1,0 +1,662 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 62813,
+  "story": "foundation_dive",
+  "shape": "straight-down",
+  "currency": "USD",
+  "style": {
+    "palette": "ocean",
+    "recipe": "desert-gold",
+    "genre": "cinematic",
+    "key": "E",
+    "bpm": 92,
+    "look": {
+      "stage": "studio",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "pop"
+    }
+  },
+  "arms": {
+    "length": "20-25",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "conflict",
+  "cta": "Vatican or Paris: which went deeper? Comment",
+  "feed_id": "2026-11-21-st-peters-necropolis",
+  "facts": [
+    {
+      "label": "Grottoes depth below ground",
+      "value": 3,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Barcelo",
+      "url": "https://www.barcelo.com/guia-turismo/en/italy/roma/things-to-do/vatican-necropolis/"
+    },
+    {
+      "label": "Necropolis shallowest depth below basilica",
+      "value": 5,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis"
+    },
+    {
+      "label": "Necropolis depth under the central nave",
+      "value": 10,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Turismo Roma",
+      "url": "https://www.turismoroma.it/en/places/st-peter%E2%80%99s-tomb-vatican-necropolis-pre-constantinian-and-constantinian-basilica"
+    },
+    {
+      "label": "Necropolis deepest depth below basilica",
+      "value": 12,
+      "unit": "m",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis"
+    },
+    {
+      "label": "Excavated tombs",
+      "value": 22,
+      "unit": "count",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis"
+    },
+    {
+      "label": "Burials in those tombs",
+      "value": 1000,
+      "unit": "count",
+      "as_of": "2025",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vatican_Necropolis"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "dome",
+    "sec": 0.5,
+    "words": "Under the *Vatican*",
+    "tag": "Going down",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "dome",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Under the Vatican's biggest church, something Roman is buried. What is it?",
+      "events": {
+        "vaticans": {
+          "word": "Vatican's"
+        },
+        "church": {
+          "word": "church"
+        },
+        "roman": {
+          "word": "Roman"
+        },
+        "buried": {
+          "word": "buried"
+        },
+        "what": {
+          "word": "What"
+        }
+      },
+      "sfx": [],
+      "params": {
+        "component": "Dive",
+        "place": "the square in front of St Peter's dome in golden light",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "buried",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "vaticans",
+            "what": "people cross the square under the dome"
+          },
+          {
+            "at": "church",
+            "what": "the ST PETER'S name plate lights"
+          },
+          {
+            "at": "roman",
+            "what": "lamps glow in the earth below"
+          },
+          {
+            "at": "buried",
+            "what": "the camera starts to tip down"
+          },
+          {
+            "at": "what",
+            "what": "the meter waits at zero"
+          }
+        ],
+        "things": [
+          "St Peter's dome",
+          "people in the square",
+          "depth meter"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "surface",
+          "world": {
+            "look": "desert",
+            "unit": "m",
+            "note": "Depths: Wikipedia, Turismo Roma · not to scale",
+            "strata": [
+              {
+                "kind": "soil",
+                "toFt": 12
+              },
+              {
+                "kind": "clay",
+                "toFt": 60
+              },
+              {
+                "kind": "sand",
+                "toFt": 200
+              },
+              {
+                "kind": "bedrock",
+                "toFt": 500
+              }
+            ]
+          },
+          "layer": {
+            "kind": "surface",
+            "preset": "dome",
+            "label": "St Peter's",
+            "wall": "#efe2c4",
+            "trim": "#d2bf98",
+            "glass": "#8fb7d8",
+            "vehicle": "none"
+          }
+        }
+      }
+    },
+    {
+      "id": "grottoes",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "{fact1} down: the grottoes, where popes are buried.",
+      "events": {
+        "down": {
+          "word": "down"
+        },
+        "grottoes": {
+          "word": "grottoes"
+        },
+        "popes": {
+          "word": "popes"
+        },
+        "buried": {
+          "word": "buried"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "down"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "the papal grottoes",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "popes",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "down",
+            "what": "the camera dives under the floor"
+          },
+          {
+            "at": "grottoes",
+            "what": "the Grottoes sign lands"
+          },
+          {
+            "at": "popes",
+            "what": "candles flicker by the tombs"
+          },
+          {
+            "at": "buried",
+            "what": "people kneel in prayer"
+          }
+        ],
+        "things": [
+          "papal tombs",
+          "candles",
+          "people kneeling"
+        ],
+        "fig": {
+          "depth": "{fact1}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "down",
+          "zoom": 1.1,
+          "layer": {
+            "kind": "room",
+            "type": "church",
+            "label": "Grottoes",
+            "people": 3,
+            "on": "grottoes",
+            "color": "#b9a98c"
+          }
+        }
+      }
+    },
+    {
+      "id": "street",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Deeper, at {fact2}, a Roman street of tombs.",
+      "events": {
+        "deeper": {
+          "word": "Deeper"
+        },
+        "roman": {
+          "word": "Roman"
+        },
+        "street": {
+          "word": "street"
+        },
+        "tombs": {
+          "word": "tombs"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "Deeper"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "a buried Roman street of tombs",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "tombs",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "deeper",
+            "what": "the camera drops past the grottoes"
+          },
+          {
+            "at": "roman",
+            "what": "the Necropolis sign lands"
+          },
+          {
+            "at": "street",
+            "what": "visitors with lamps walk the street"
+          },
+          {
+            "at": "tombs",
+            "what": "the tomb fronts light up"
+          }
+        ],
+        "things": [
+          "buried street",
+          "people with lamps",
+          "depth sign"
+        ],
+        "fig": {
+          "depth": "{fact2}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "deeper",
+          "zoom": 1.0,
+          "layer": {
+            "kind": "passage",
+            "type": "walk",
+            "label": "Necropolis",
+            "people": 4,
+            "on": "roman",
+            "color": "#a8916e"
+          }
+        }
+      }
+    },
+    {
+      "id": "nave",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Under the nave, {fact3}: {fact5} tombs, dug out.",
+      "events": {
+        "under": {
+          "word": "Under"
+        },
+        "nave": {
+          "word": "nave"
+        },
+        "tombs": {
+          "word": "tombs"
+        },
+        "dug": {
+          "word": "dug"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "Under"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "excavated tombs under the nave",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "tombs",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "under",
+            "what": "the camera dives below the nave"
+          },
+          {
+            "at": "nave",
+            "what": "the Nave sign lands"
+          },
+          {
+            "at": "tombs",
+            "what": "the tomb count is carved on the wall"
+          },
+          {
+            "at": "dug",
+            "what": "a digger with a lamp walks past the niches"
+          }
+        ],
+        "things": [
+          "burial niches",
+          "carved count",
+          "depth sign"
+        ],
+        "fig": {
+          "depth": "{fact3}",
+          "tombs": "{fact5}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "under",
+          "zoom": 1.05,
+          "layer": {
+            "kind": "room",
+            "type": "tombs",
+            "label": "Nave",
+            "on": "nave",
+            "color": "#9c8a6c",
+            "tally": {
+              "fig": "tombs",
+              "label": "Tombs",
+              "on": "nave"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "deepest",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "Its deepest level: {fact4}.",
+      "events": {
+        "deepest": {
+          "word": "deepest"
+        },
+        "level": {
+          "word": "level"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "rush",
+          "at": "deepest"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "a grave shrine on a red wall at the necropolis's deepest level",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "level",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "deepest",
+            "what": "the camera dives to a red wall with a small shrine"
+          },
+          {
+            "at": "level",
+            "what": "candles flicker as someone kneels"
+          }
+        ],
+        "things": [
+          "red wall shrine",
+          "candles",
+          "person kneeling"
+        ],
+        "fig": {
+          "depth": "{fact4}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "deepest",
+          "zoom": 0.9,
+          "layer": {
+            "kind": "room",
+            "type": "grave",
+            "label": "Deepest",
+            "on": "level",
+            "color": "#a08c6a",
+            "tally": {
+              "fig": "burials",
+              "label": "Burials",
+              "beat": "burials",
+              "on": "more"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "burials",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "More than {fact6} burials, around a grave held to be Saint Peter's.",
+      "events": {
+        "more": {
+          "word": "More"
+        },
+        "burials": {
+          "word": "burials"
+        },
+        "grave": {
+          "word": "grave"
+        },
+        "peters": {
+          "word": "Peter's"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "subboom",
+          "at": "burials"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "close on the grave shrine and its carved count",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "more",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "more",
+            "what": "the camera pushes in on the shrine"
+          },
+          {
+            "at": "burials",
+            "what": "the burial count is carved on the wall"
+          },
+          {
+            "at": "grave",
+            "what": "candles flicker at the red wall"
+          },
+          {
+            "at": "peters",
+            "what": "the archaeologist's lamp passes the shrine"
+          }
+        ],
+        "things": [
+          "grave shrine close up",
+          "carved burial count",
+          "candles"
+        ],
+        "fig": {
+          "burials": "{fact6}"
+        },
+        "dive": {
+          "move": "dive",
+          "on": "more",
+          "zoom": 1.3,
+          "layer": {
+            "kind": "counter",
+            "ft": 39.37,
+            "depth": "none"
+          }
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "And they built the Vatican's biggest church on top.",
+      "events": {
+        "and": {
+          "word": "And"
+        },
+        "built": {
+          "word": "built"
+        },
+        "church": {
+          "word": "church"
+        },
+        "top": {
+          "word": "top"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "top"
+        }
+      ],
+      "params": {
+        "component": "Dive",
+        "place": "riding back up to St Peter's",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "top",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "and",
+            "what": "the camera rides up through the layers"
+          },
+          {
+            "at": "built",
+            "what": "the meter counts back"
+          },
+          {
+            "at": "church",
+            "what": "the dome comes back"
+          },
+          {
+            "at": "top",
+            "what": "it lands on the opening frame"
+          }
+        ],
+        "things": [
+          "the layers passing",
+          "depth meter",
+          "St Peter's dome"
+        ],
+        "fig": {},
+        "dive": {
+          "move": "rideup"
+        }
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}

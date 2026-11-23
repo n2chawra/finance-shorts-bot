@@ -1,0 +1,1107 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 51893,
+ "story": "why_shaped",
+ "shape": "the-relay",
+ "currency": "USD",
+ "style": {
+  "palette": "forest",
+  "genre": "explorer",
+  "key": "D",
+  "bpm": 80,
+  "look": {
+   "stage": "field",
+   "header": "neon",
+   "holder": "phone",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Fur or gold: which do you think built more empires? Comment",
+ "feed_id": "2026-11-23-how-russia-got-so-big",
+ "facts": [
+  {
+   "label": "Number of Cossacks in Yermak's campaign",
+   "value": 540,
+   "unit": "count",
+   "as_of": "2026-11-23",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Russian_conquest_of_Siberia",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "How did it *grow*?",
+  "tag": "Russia",
+  "angle": "question"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Russia once ended at the Ural Mountains. So how did it reach the Pacific?",
+   "events": {
+    "russia": {
+     "word": "Russia"
+    },
+    "ended": {
+     "word": "ended"
+    },
+    "ural": {
+     "word": "Ural"
+    },
+    "mountains": {
+     "word": "Mountains"
+    },
+    "how": {
+     "word": "how"
+    },
+    "reach": {
+     "word": "reach"
+    },
+    "pacific": {
+     "word": "Pacific"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the Ural Mountains, a small Russia to their west",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "reach",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "russia",
+      "what": "Russia's small red shape west of the mountains traces in light"
+     },
+     {
+      "at": "ended",
+      "what": "its east edge stops in a hard line"
+     },
+     {
+      "at": "ural",
+      "what": "the Ural ridge rises along the line"
+     },
+     {
+      "at": "mountains",
+      "what": "URAL MOUNTAINS writes along the ridge"
+     },
+     {
+      "at": "how",
+      "what": "a Cossack boat pushes off east from the ridge"
+     },
+     {
+      "at": "reach",
+      "what": "the camera pulls back east across empty Siberia"
+     },
+     {
+      "at": "pacific",
+      "what": "the Pacific coast glows far to the right and a question mark drops on it"
+     }
+    ],
+    "things": [
+     "map of northern Asia",
+     "small red Russia",
+     "Ural ridge",
+     "cossack boat",
+     "pacific coast",
+     "question mark"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "ended"
+    },
+    {
+     "kind": "pin",
+     "at": "pacific"
+    }
+   ]
+  },
+  {
+   "id": "siberia",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Beyond them lay Siberia, a frozen forest so wide it ran all the way to the far side of Asia.",
+   "events": {
+    "beyond": {
+     "word": "Beyond"
+    },
+    "siberia": {
+     "word": "Siberia"
+    },
+    "frozen": {
+     "word": "frozen"
+    },
+    "forest": {
+     "word": "forest"
+    },
+    "wide": {
+     "word": "wide"
+    },
+    "far": {
+     "word": "far"
+    },
+    "asia": {
+     "word": "Asia"
+    },
+    "ran": {
+     "word": "ran"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Siberia",
+    "place": "on the map: Siberia, east of the Urals",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "forest",
+      "size": "medium"
+     },
+     {
+      "at": "far",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "beyond",
+      "what": "the camera glides east over the ridge"
+     },
+     {
+      "at": "siberia",
+      "what": "SIBERIA writes across the land"
+     },
+     {
+      "at": "frozen",
+      "what": "frost spreads over the rivers"
+     },
+     {
+      "at": "forest",
+      "what": "pine trees pop up across the map"
+     },
+     {
+      "at": "wide",
+      "what": "the pines spread out to the edges of the map"
+     },
+     {
+      "at": "ran",
+      "what": "a gold measuring line stretches east from the Urals"
+     },
+     {
+      "at": "far",
+      "what": "the line runs on to the Pacific shore"
+     },
+     {
+      "at": "asia",
+      "what": "the coast flashes at the end of the line"
+     }
+    ],
+    "things": [
+     "siberia",
+     "frost on rivers",
+     "pine forest",
+     "measuring line",
+     "pacific shore"
+    ]
+   }
+  },
+  {
+   "id": "yermak",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then a Cossack chief called Yermak crossed them, rowing and dragging river boats, with just {fact1} men.",
+   "events": {
+    "cossack": {
+     "word": "Cossack"
+    },
+    "yermak": {
+     "word": "Yermak"
+    },
+    "crossed": {
+     "word": "crossed"
+    },
+    "rowing": {
+     "word": "rowing"
+    },
+    "dragging": {
+     "word": "dragging"
+    },
+    "boats": {
+     "word": "boats"
+    },
+    "men": {
+     "word": "men"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Yermak",
+    "place": "on the map: the Ural pass, the rivers on its eastern side",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "yermak",
+      "size": "close"
+     },
+     {
+      "at": "men",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "cossack",
+      "what": "a Cossack in a red coat stands in the bow of a boat at the ridge"
+     },
+     {
+      "at": "yermak",
+      "what": "YERMAK labels him"
+     },
+     {
+      "at": "crossed",
+      "what": "the boat climbs over the ridge"
+     },
+     {
+      "at": "rowing",
+      "what": "the oars dip"
+     },
+     {
+      "at": "dragging",
+      "what": "men haul the boat on logs over the pass"
+     },
+     {
+      "at": "boats",
+      "what": "more boats follow in a line"
+     },
+     {
+      "at": "men",
+      "what": "a banner on the sail shows the number of men"
+     }
+    ],
+    "things": [
+     "cossack boat",
+     "yermak",
+     "ural ridge",
+     "log rollers",
+     "banner"
+    ],
+    "fig": {
+     "men": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "yermak"
+    },
+    {
+     "kind": "paper",
+     "at": "men"
+    }
+   ]
+  },
+  {
+   "id": "sibir",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "A rich merchant family, the Stroganovs, paid for the trip, and Yermak took the capital of the Khan of Sibir.",
+   "events": {
+    "merchant": {
+     "word": "merchant"
+    },
+    "stroganovs": {
+     "word": "Stroganovs"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "trip": {
+     "word": "trip"
+    },
+    "took": {
+     "word": "took"
+    },
+    "capital": {
+     "word": "capital"
+    },
+    "sibir": {
+     "word": "Sibir"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sibir",
+    "place": "on the map: from the Stroganovs' lands on the Kama to Sibir on the Irtysh",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "took",
+      "size": "close"
+     },
+     {
+      "at": "sibir",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "merchant",
+      "what": "a merchant in a fur hat stands west of the Urals"
+     },
+     {
+      "at": "stroganovs",
+      "what": "STROGANOVS labels his lands"
+     },
+     {
+      "at": "paid",
+      "what": "a bag of coins flies to the boats"
+     },
+     {
+      "at": "trip",
+      "what": "the boats row down the river east"
+     },
+     {
+      "at": "took",
+      "what": "the khan's walled town on the Irtysh is reached"
+     },
+     {
+      "at": "capital",
+      "what": "a red banner is planted on it"
+     },
+     {
+      "at": "sibir",
+      "what": "SIBIR writes over it and red spreads to it"
+     }
+    ],
+    "things": [
+     "merchant",
+     "coin bag",
+     "boats",
+     "khan's town",
+     "red banner"
+    ]
+   }
+  },
+  {
+   "id": "fur",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "But what were they really after? Fur. Sable and fox pelts sold for a fortune in Moscow.",
+   "events": {
+    "what": {
+     "word": "what"
+    },
+    "after": {
+     "word": "after"
+    },
+    "fur": {
+     "word": "Fur"
+    },
+    "sable": {
+     "word": "Sable"
+    },
+    "fox": {
+     "word": "fox"
+    },
+    "fortune": {
+     "word": "fortune"
+    },
+    "moscow": {
+     "word": "Moscow"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Fur",
+    "place": "on the map: the forest by the Irtysh, a route back to Moscow",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "fur",
+      "size": "medium"
+     },
+     {
+      "at": "moscow",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "what",
+      "what": "a question mark pulses over the forest"
+     },
+     {
+      "at": "after",
+      "what": "the camera pushes into the trees"
+     },
+     {
+      "at": "fur",
+      "what": "a pile of furs bursts out of the trees"
+     },
+     {
+      "at": "sable",
+      "what": "a dark sable pelt pops up"
+     },
+     {
+      "at": "fox",
+      "what": "an orange fox pelt pops beside it"
+     },
+     {
+      "at": "fortune",
+      "what": "coins rain on the pile"
+     },
+     {
+      "at": "moscow",
+      "what": "the pelts fly along a route west to Moscow"
+     }
+    ],
+    "things": [
+     "question mark",
+     "fur pile",
+     "sable pelt",
+     "fox pelt",
+     "coins",
+     "route to moscow"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin-high",
+     "at": "sable"
+    },
+    {
+     "kind": "pin-high",
+     "at": "fox"
+    },
+    {
+     "kind": "chime",
+     "at": "fortune"
+    }
+   ]
+  },
+  {
+   "id": "fort",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So every village they reached paid a tax in furs, called yasak, and each time the Cossacks built a wooden fort to collect it.",
+   "events": {
+    "village": {
+     "word": "village"
+    },
+    "reached": {
+     "word": "reached"
+    },
+    "tax": {
+     "word": "tax"
+    },
+    "yasak": {
+     "word": "yasak"
+    },
+    "wooden": {
+     "word": "wooden"
+    },
+    "fort": {
+     "word": "fort"
+    },
+    "collect": {
+     "word": "collect"
+    },
+    "cossacks": {
+     "word": "Cossacks"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Fort",
+    "place": "on the map: a riverbank in western Siberia, Tobolsk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "fort",
+      "size": "close"
+     },
+     {
+      "at": "collect",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "village",
+      "what": "a village of tents sits by the river"
+     },
+     {
+      "at": "reached",
+      "what": "a boat lands beside it"
+     },
+     {
+      "at": "tax",
+      "what": "a sack of furs walks from the village"
+     },
+     {
+      "at": "yasak",
+      "what": "a YASAK sign stamps on the sack"
+     },
+     {
+      "at": "cossacks",
+      "what": "a Cossack strides in from the right, an axe raised"
+     },
+     {
+      "at": "wooden",
+      "what": "logs drop onto the bank"
+     },
+     {
+      "at": "fort",
+      "what": "the log walls and tower stand up as a fort"
+     },
+     {
+      "at": "collect",
+      "what": "the furs pile up inside and red spreads round the fort"
+     }
+    ],
+    "things": [
+     "tent village",
+     "boat",
+     "fur sack",
+     "yasak sign",
+     "log fort"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "fort"
+    }
+   ]
+  },
+  {
+   "id": "rivers",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "How far could that go? Up the Ob, across to the Yenisei, on to the Lena, dragging the boats from river to river, and every new fort became the start of the next run.",
+   "events": {
+    "far": {
+     "word": "far"
+    },
+    "ob": {
+     "word": "Ob"
+    },
+    "yenisei": {
+     "word": "Yenisei"
+    },
+    "lena": {
+     "word": "Lena"
+    },
+    "dragging": {
+     "word": "dragging"
+    },
+    "river": {
+     "word": "river"
+    },
+    "new": {
+     "word": "new"
+    },
+    "start": {
+     "word": "start"
+    },
+    "run": {
+     "word": "run"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Rivers",
+    "place": "on the map: the Ob, the Yenisei and the Lena across Siberia",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "yenisei",
+      "size": "medium"
+     },
+     {
+      "at": "dragging",
+      "size": "close"
+     },
+     {
+      "at": "river",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "far",
+      "what": "the camera pulls back over all of Siberia"
+     },
+     {
+      "at": "ob",
+      "what": "the Ob traces in blue and a fort pops on it"
+     },
+     {
+      "at": "yenisei",
+      "what": "the Yenisei traces and a fort pops on it"
+     },
+     {
+      "at": "lena",
+      "what": "the Lena traces and a fort pops on it"
+     },
+     {
+      "at": "dragging",
+      "what": "men drag a boat over land between rivers"
+     },
+     {
+      "at": "river",
+      "what": "red spreads east from fort to fort"
+     },
+     {
+      "at": "new",
+      "what": "a new fort pops at the red front"
+     },
+     {
+      "at": "start",
+      "what": "the red front flashes and races on"
+     },
+     {
+      "at": "run",
+      "what": "a boat shoots off east from the newest fort"
+     }
+    ],
+    "things": [
+     "ob river",
+     "yenisei river",
+     "lena river",
+     "forts",
+     "boat on rollers",
+     "red spreading"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "ob"
+    },
+    {
+     "kind": "pin",
+     "at": "yenisei"
+    },
+    {
+     "kind": "pin",
+     "at": "lena"
+    }
+   ]
+  },
+  {
+   "id": "native",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "The people already living there, Siberia's native peoples, were made to pay, and many who fought back were crushed.",
+   "events": {
+    "people": {
+     "word": "people"
+    },
+    "living": {
+     "word": "living"
+    },
+    "native": {
+     "word": "native"
+    },
+    "pay": {
+     "word": "pay"
+    },
+    "fought": {
+     "word": "fought"
+    },
+    "crushed": {
+     "word": "crushed"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Native",
+    "place": "on the map: hunters' camps along the Lena and across the taiga",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pay",
+      "size": "close"
+     },
+     {
+      "at": "crushed",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "people",
+      "what": "hunters' camps light up across the forest"
+     },
+     {
+      "at": "living",
+      "what": "families stand by their tents with reindeer"
+     },
+     {
+      "at": "native",
+      "what": "their camps glow warm on the map"
+     },
+     {
+      "at": "pay",
+      "what": "a fur is handed over to a Cossack"
+     },
+     {
+      "at": "fought",
+      "what": "a hunter raises a bow at the fort"
+     },
+     {
+      "at": "crushed",
+      "what": "the light goes cold and the camps dim under the red"
+     }
+    ],
+    "things": [
+     "hunters' camps",
+     "reindeer",
+     "tents",
+     "cossack",
+     "fort"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "crushed"
+    }
+   ]
+  },
+  {
+   "id": "pacific",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "And just one lifetime after Yermak crossed the Urals, Cossacks stood on the shore of the Pacific.",
+   "events": {
+    "lifetime": {
+     "word": "lifetime"
+    },
+    "yermak": {
+     "word": "Yermak"
+    },
+    "urals": {
+     "word": "Urals"
+    },
+    "cossacks": {
+     "word": "Cossacks"
+    },
+    "stood": {
+     "word": "stood"
+    },
+    "shore": {
+     "word": "shore"
+    },
+    "pacific": {
+     "word": "Pacific"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Pacific",
+    "place": "on the map: the shore of the Sea of Okhotsk, the Pacific",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "cossacks",
+      "size": "medium"
+     },
+     {
+      "at": "pacific",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lifetime",
+      "what": "the red race line runs on across the last mountains"
+     },
+     {
+      "at": "yermak",
+      "what": "Yermak's first boat glows far back at the Urals"
+     },
+     {
+      "at": "urals",
+      "what": "the Ural ridge flashes"
+     },
+     {
+      "at": "cossacks",
+      "what": "Cossacks walk onto the beach"
+     },
+     {
+      "at": "stood",
+      "what": "they stop at the water's edge"
+     },
+     {
+      "at": "shore",
+      "what": "waves break and red reaches the coast"
+     },
+     {
+      "at": "pacific",
+      "what": "a red banner is planted at the edge of the ocean"
+     }
+    ],
+    "things": [
+     "race line",
+     "cossacks",
+     "beach",
+     "waves",
+     "red banner"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "pacific"
+    }
+   ]
+  },
+  {
+   "id": "biggest",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "That race for fur is most of why Russia is now the biggest country on Earth, stretching from the Baltic Sea to the Pacific.",
+   "events": {
+    "race": {
+     "word": "race"
+    },
+    "fur": {
+     "word": "fur"
+    },
+    "russia": {
+     "word": "Russia"
+    },
+    "biggest": {
+     "word": "biggest"
+    },
+    "country": {
+     "word": "country"
+    },
+    "earth": {
+     "word": "Earth"
+    },
+    "baltic": {
+     "word": "Baltic"
+    },
+    "pacific": {
+     "word": "Pacific"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Biggest",
+    "place": "on the map: the whole of Russia from the Baltic to the Pacific",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "biggest",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "race",
+      "what": "the camera pulls back across the continent"
+     },
+     {
+      "at": "fur",
+      "what": "fur pelts flicker along the rivers"
+     },
+     {
+      "at": "russia",
+      "what": "Russia's whole border traces in light"
+     },
+     {
+      "at": "biggest",
+      "what": "the flag fills Russia"
+     },
+     {
+      "at": "country",
+      "what": "BIGGEST COUNTRY writes across it"
+     },
+     {
+      "at": "earth",
+      "what": "the camera rests on the whole country"
+     },
+     {
+      "at": "baltic",
+      "what": "a pin drops on the Baltic coast"
+     },
+     {
+      "at": "pacific",
+      "what": "a pin drops on the Pacific coast and a line joins them"
+     }
+    ],
+    "things": [
+     "russia",
+     "flag",
+     "rivers",
+     "label"
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Fur or gold: which built more empires? Tell me below. And it all started with a few boats, rowing east from the place where",
+   "events": {
+    "fur": {
+     "word": "Fur"
+    },
+    "gold": {
+     "word": "gold"
+    },
+    "empires": {
+     "word": "empires"
+    },
+    "few": {
+     "word": "few"
+    },
+    "boats": {
+     "word": "boats"
+    },
+    "rowing": {
+     "word": "rowing"
+    },
+    "east": {
+     "word": "east"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "below": {
+     "word": "below"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: back at the Urals",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "few",
+      "size": "medium"
+     },
+     {
+      "at": "east",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fur",
+      "what": "a fur pelt pops on the left"
+     },
+     {
+      "at": "gold",
+      "what": "a gold bar pops on the right"
+     },
+     {
+      "at": "empires",
+      "what": "both glow over the map"
+     },
+     {
+      "at": "tell",
+      "what": "a comment bubble pops between the fur and the gold"
+     },
+     {
+      "at": "below",
+      "what": "the bubble drops down and the camera starts gliding west"
+     },
+     {
+      "at": "few",
+      "what": "the camera glides back to the Urals"
+     },
+     {
+      "at": "boats",
+      "what": "three boats appear at the ridge"
+     },
+     {
+      "at": "rowing",
+      "what": "the oars dip and the boats move"
+     },
+     {
+      "at": "east",
+      "what": "the red shrinks back west of the Urals"
+     }
+    ],
+    "things": [
+     "fur pelt",
+     "gold bar",
+     "urals",
+     "boats",
+     "small red russia"
+    ]
+   }
+  }
+ ]
+}

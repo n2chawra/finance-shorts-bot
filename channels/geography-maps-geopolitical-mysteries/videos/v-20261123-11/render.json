@@ -1,0 +1,143 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 51893,
+  "duration_sec": 61,
+  "tempo": 1.2,
+  "style": {
+    "palette": "forest",
+    "genre": "explorer",
+    "key": "D",
+    "bpm": 80,
+    "look": {
+      "stage": "field",
+      "header": "neon",
+      "holder": "phone",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Russia once ended at the Ural Mountains. So how did it reach the Pacific?",
+        "start": 0.3,
+        "seconds": 3.3,
+        "window": 3.9,
+        "fill": 0.846
+      },
+      {
+        "scene": "siberia",
+        "text": "Beyond them lay Siberia, a frozen forest so wide it ran all the way to the far side of Asia.",
+        "start": 4.2,
+        "seconds": 4.41,
+        "window": 5.07,
+        "fill": 0.87
+      },
+      {
+        "scene": "yermak",
+        "text": "Then a Cossack chief called Yermak crossed them, rowing and dragging river boats, with just 540 men.",
+        "start": 9.27,
+        "seconds": 4.72,
+        "window": 5.37,
+        "fill": 0.879
+      },
+      {
+        "scene": "sibir",
+        "text": "A rich merchant family, the Stroganovs, paid for the trip, and Yermak took the capital of the Khan of Sibir.",
+        "start": 14.63,
+        "seconds": 4.74,
+        "window": 5.4,
+        "fill": 0.878
+      },
+      {
+        "scene": "fur",
+        "text": "But what were they really after? Fur. Sable and fox pelts sold for a fortune in Moscow.",
+        "start": 20.03,
+        "seconds": 3.98,
+        "window": 4.63,
+        "fill": 0.86
+      },
+      {
+        "scene": "fort",
+        "text": "So every village they reached paid a tax in furs, called yasak, and each time the Cossacks built a wooden fort to collect it.",
+        "start": 24.67,
+        "seconds": 5.2,
+        "window": 5.83,
+        "fill": 0.892
+      },
+      {
+        "scene": "rivers",
+        "text": "How far could that go? Up the Ob, across to the Yenisei, on to the Lena, dragging the boats from river to river, and every new fort became the start of the next run.",
+        "start": 30.5,
+        "seconds": 7.16,
+        "window": 7.8,
+        "fill": 0.918
+      },
+      {
+        "scene": "native",
+        "text": "The people already living there, Siberia's native peoples, were made to pay, and many who fought back were crushed.",
+        "start": 38.3,
+        "seconds": 4.63,
+        "window": 5.3,
+        "fill": 0.874
+      },
+      {
+        "scene": "pacific",
+        "text": "And just one lifetime after Yermak crossed the Urals, Cossacks stood on the shore of the Pacific.",
+        "start": 43.6,
+        "seconds": 4.14,
+        "window": 4.73,
+        "fill": 0.875
+      },
+      {
+        "scene": "biggest",
+        "text": "That race for fur is most of why Russia is now the biggest country on Earth, stretching from the Baltic Sea to the Pacific.",
+        "start": 48.33,
+        "seconds": 5.55,
+        "window": 6.13,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "Fur or gold: which built more empires? Tell me below. And it all started with a few boats, rowing east from the place where",
+        "start": 54.47,
+        "seconds": 5.57,
+        "window": 6.23,
+        "fill": 0.894
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0,
+    "lufs": -14.6,
+    "music_under_voice_db": 31.1
+  },
+  "craft_problems": [
+    "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 5.597,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

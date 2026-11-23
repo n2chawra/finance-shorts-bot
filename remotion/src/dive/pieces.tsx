@@ -51,6 +51,9 @@ export const Legible: React.FC<{ x: number; y: number; w: number; h: number; siz
   const scenery = size * s * c.z < MIN_READ || sx0 < 0 || sx1 > c.W || sy0 < 0 || sy1 > c.H - BOTTOM;
   // far too small to read (a whole-stack pull-back): a smudge of letters is noise, so it isn't drawn (QA, 2026-11-21)
   if (size * s * c.z < 30) return null;
+  // and not where the pull-back's name chips (Dive.tsx StackLegend, from zoom 0.62) take over: the sign under its
+  // chip drew every name twice (QA 2026-11-23, v-20261123-51: "CITE and SAINT-MAUR each appear twice")
+  if (c.z < 0.62) return null;
   return (
     <g data-probe={scenery ? "skip" : undefined} transform={s > 1 ? `translate(${mx} ${my}) scale(${s}) translate(${-mx} ${-my})` : undefined}>
       {children}
@@ -171,7 +174,7 @@ export const ScreenCounter: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) =
   const value = unit ? fig.slice(0, fig.length - unit.length).trim() : fig;
   const label = unit ? `${c.label ?? ""} · ${unit.toUpperCase()}`.replace(/^ · /, "") : c.label ?? "";
   const W = 560, h = Math.min(300, (W - 60) / (0.62 * Math.max(1, value.length)) / 0.52);
-  return <Display x={930 - W} y={300} w={W} h={h} label={label} value={countText(value, k)} color={w.look.accent} k={k} />;
+  return <Display x={930 - W} y={c.y ?? 300} w={W} h={h} label={label} value={countText(value, k)} color={w.look.accent} k={k} />;
 };
 
 // ------------------------------------------------------------------ the ground
@@ -403,7 +406,7 @@ export const Tunnel: React.FC<PieceProps> = ({ L, w, g }) => {
         ) : <g transform={`translate(${tx} 0)`}><Train x={0} y={yb} color={s.color ?? "#c9ced8"} stripe={s.stripe ?? "#6d6e76"} bullet={s.bullets?.[0]} road={road} /></g>}
       </g>
       <rect x={x0} y={yb - h} width={x1 - x0} height={h + 40} rx={26} fill="none" stroke={INK} strokeWidth={STROKE} />
-      <Sign x={240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+      <Sign x={s.signX ?? 240} y={yb - h + 52} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
       <Tally L={L} w={w} g={g} x={370} y={yb - h - 190} />
     </g>
   );

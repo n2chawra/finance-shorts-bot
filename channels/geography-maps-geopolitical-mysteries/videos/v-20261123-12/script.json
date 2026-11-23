@@ -1,0 +1,1090 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38417,
+ "story": "what_if_world",
+ "shape": "what-if",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "atlas",
+  "key": "G",
+  "bpm": 92,
+  "look": {
+   "stage": "night",
+   "header": "strip",
+   "holder": "receipt",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "Malacca or Hormuz: which closure would hurt the world more? Comment",
+ "feed_id": "2026-11-19-what-if-malacca-closed",
+ "facts": [
+  {
+   "label": "Oil flow through the Strait of Malacca, first half of 2025 (million barrels a day)",
+   "value": 23.2,
+   "unit": "count_million",
+   "as_of": "2026-03-03",
+   "source": "US Energy Information Administration",
+   "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+   "latest": true,
+   "checked": "2026-11-19"
+  },
+  {
+   "label": "Malacca's share of total maritime oil flows, first half of 2025",
+   "value": 29,
+   "unit": "percent",
+   "as_of": "2026-03-03",
+   "source": "US Energy Information Administration",
+   "url": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+   "latest": true,
+   "checked": "2026-11-19"
+  },
+  {
+   "label": "Strait of Malacca, length",
+   "value": 900,
+   "unit": "km",
+   "as_of": "2026-11-19",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Strait_of_Malacca",
+   "fixed": true
+  },
+  {
+   "label": "Width at its narrowest, the Phillip Channel",
+   "value": 2.8,
+   "unit": "km",
+   "as_of": "2026-11-19",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Strait_of_Malacca",
+   "fixed": true
+  },
+  {
+   "label": "Share of the world's traded goods carried through the strait (about)",
+   "value": 25,
+   "unit": "percent",
+   "as_of": "2026-11-19",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Strait_of_Malacca",
+   "latest": true,
+   "checked": "2026-11-19"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "Which *way* now?",
+  "tag": "Malacca shuts",
+  "angle": "question"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "The Strait of Malacca closes overnight. Which way do the oil tankers go now?",
+   "events": {
+    "strait": {
+     "word": "Strait"
+    },
+    "malacca": {
+     "word": "Malacca"
+    },
+    "closes": {
+     "word": "closes"
+    },
+    "overnight": {
+     "word": "overnight"
+    },
+    "way": {
+     "word": "way"
+    },
+    "tankers": {
+     "word": "tankers"
+    },
+    "now": {
+     "word": "now"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the Strait of Malacca between Malaysia and Sumatra, Singapore at its narrow end",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "way",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "strait",
+      "what": "tankers sail in a line up the strait"
+     },
+     {
+      "at": "malacca",
+      "what": "STRAIT OF MALACCA writes along the water"
+     },
+     {
+      "at": "closes",
+      "what": "a red barrier slams down across the narrow end"
+     },
+     {
+      "at": "overnight",
+      "what": "the map dims to night and the barrier's lamps glow"
+     },
+     {
+      "at": "way",
+      "what": "the tankers bunch up behind the barrier"
+     },
+     {
+      "at": "tankers",
+      "what": "the camera pulls back over the islands"
+     },
+     {
+      "at": "now",
+      "what": "question marks pop over the sea routes south"
+     }
+    ],
+    "things": [
+     "strait of malacca",
+     "tankers",
+     "red barrier",
+     "night",
+     "question marks"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "closes"
+    },
+    {
+     "kind": "pin",
+     "at": "now"
+    }
+   ]
+  },
+  {
+   "id": "narrow",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It's only a thought experiment, but look how thin this lane is: between Malaysia and the island of Sumatra, just {fact4} wide at its narrowest.",
+   "events": {
+    "thought": {
+     "word": "thought"
+    },
+    "look": {
+     "word": "look"
+    },
+    "thin": {
+     "word": "thin"
+    },
+    "malaysia": {
+     "word": "Malaysia"
+    },
+    "sumatra": {
+     "word": "Sumatra"
+    },
+    "wide": {
+     "word": "wide"
+    },
+    "narrowest": {
+     "word": "narrowest"
+    },
+    "experiment": {
+     "word": "experiment"
+    },
+    "island": {
+     "word": "island"
+    },
+    "just": {
+     "word": "just"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Narrow",
+    "place": "on the map: the Phillip Channel at Singapore, the narrowest point",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "thin",
+      "size": "close"
+     },
+     {
+      "at": "narrowest",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "thought",
+      "what": "a thought bubble frames the map"
+     },
+     {
+      "at": "experiment",
+      "what": "the bubble's dots float up"
+     },
+     {
+      "at": "look",
+      "what": "the camera pushes in on the strait"
+     },
+     {
+      "at": "thin",
+      "what": "the water lane glows thin between the coasts"
+     },
+     {
+      "at": "malaysia",
+      "what": "Malaysia traces in light"
+     },
+     {
+      "at": "island",
+      "what": "the islands across the channel glow"
+     },
+     {
+      "at": "sumatra",
+      "what": "Sumatra traces in light"
+     },
+     {
+      "at": "just",
+      "what": "the measuring bar starts drawing across the channel"
+     },
+     {
+      "at": "wide",
+      "what": "the bar locks in and the width stamps on its sign"
+     },
+     {
+      "at": "narrowest",
+      "what": "a tanker squeezes between the bar's ends"
+     }
+    ],
+    "things": [
+     "phillip channel",
+     "malaysia",
+     "sumatra",
+     "measuring bar",
+     "tanker"
+    ],
+    "fig": {
+     "width": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "wide"
+    }
+   ]
+  },
+  {
+   "id": "oil",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "And yet every day about {fact1} barrels of oil squeeze through it, {fact2} of all the oil that moves by sea.",
+   "events": {
+    "yet": {
+     "word": "yet"
+    },
+    "every": {
+     "word": "every"
+    },
+    "day": {
+     "word": "day"
+    },
+    "barrels": {
+     "word": "barrels"
+    },
+    "squeeze": {
+     "word": "squeeze"
+    },
+    "oil": {
+     "word": "oil"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "through": {
+     "word": "through"
+    },
+    "moves": {
+     "word": "moves"
+    },
+    "about": {
+     "word": "about"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Oil",
+    "place": "on the map: the Andaman Sea entrance of the strait, tankers queuing in",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "barrels",
+      "size": "medium"
+     },
+     {
+      "at": "sea",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "yet",
+      "what": "the camera pulls back to the strait's northern mouth"
+     },
+     {
+      "at": "every",
+      "what": "a day counter sign lights up"
+     },
+     {
+      "at": "about",
+      "what": "barrels start stacking on the leading tanker's deck"
+     },
+     {
+      "at": "day",
+      "what": "tankers start streaming in"
+     },
+     {
+      "at": "barrels",
+      "what": "barrels stack up on a tanker deck with the figure"
+     },
+     {
+      "at": "squeeze",
+      "what": "the tankers squeeze into the lane"
+     },
+     {
+      "at": "oil",
+      "what": "a drop of oil glints on the deck"
+     },
+     {
+      "at": "sea",
+      "what": "a pie dial on a buoy fills to the share"
+     },
+     {
+      "at": "through",
+      "what": "the leading tanker slips into the narrow lane"
+     },
+     {
+      "at": "moves",
+      "what": "ships all over the sea light up"
+     },
+     {
+      "at": "all",
+      "what": "a dashed oil trail runs along the whole lane"
+     }
+    ],
+    "things": [
+     "tankers",
+     "barrels",
+     "day sign",
+     "oil drops",
+     "buoy dial"
+    ],
+    "fig": {
+     "barrels": "{fact1}",
+     "share": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin-high",
+     "at": "barrels"
+    },
+    {
+     "kind": "chime",
+     "at": "sea"
+    }
+   ]
+  },
+  {
+   "id": "length",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "It runs {fact3} from end to end, the short cut from the oil fields of the Gulf to the factories of China, Japan and Korea.",
+   "events": {
+    "runs": {
+     "word": "runs"
+    },
+    "end": {
+     "word": "end"
+    },
+    "short": {
+     "word": "short"
+    },
+    "gulf": {
+     "word": "Gulf"
+    },
+    "china": {
+     "word": "China"
+    },
+    "japan": {
+     "word": "Japan"
+    },
+    "korea": {
+     "word": "Korea"
+    },
+    "fields": {
+     "word": "fields"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Length",
+    "place": "on the map: from the Gulf across the Indian Ocean, through the strait to East Asia",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "short",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "runs",
+      "what": "a ruler draws along the whole strait"
+     },
+     {
+      "at": "end",
+      "what": "the length stamps on the ruler"
+     },
+     {
+      "at": "short",
+      "what": "the camera pulls back to all of Asia"
+     },
+     {
+      "at": "fields",
+      "what": "an oil rig rises on the Gulf"
+     },
+     {
+      "at": "gulf",
+      "what": "GULF writes beside it"
+     },
+     {
+      "at": "china",
+      "what": "China lights up with a factory"
+     },
+     {
+      "at": "japan",
+      "what": "Japan lights up with a factory"
+     },
+     {
+      "at": "korea",
+      "what": "Korea lights up and a route joins them all through the strait"
+     }
+    ],
+    "things": [
+     "ruler",
+     "oil rig",
+     "factories",
+     "route line"
+    ],
+    "fig": {
+     "length": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "runs"
+    },
+    {
+     "kind": "pin",
+     "at": "korea"
+    }
+   ]
+  },
+  {
+   "id": "erase",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Now rub it out. A tanker sailing east from India meets a wall of land, with Sumatra on one side and Malaysia on the other.",
+   "events": {
+    "rub": {
+     "word": "rub"
+    },
+    "out": {
+     "word": "out"
+    },
+    "tanker": {
+     "word": "tanker"
+    },
+    "india": {
+     "word": "India"
+    },
+    "wall": {
+     "word": "wall"
+    },
+    "sumatra": {
+     "word": "Sumatra"
+    },
+    "malaysia": {
+     "word": "Malaysia"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Erase",
+    "place": "on the map: the strait being rubbed out, the coasts closing up",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tanker",
+      "size": "close"
+     },
+     {
+      "at": "malaysia",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rub",
+      "what": "an eraser sweeps across the strait"
+     },
+     {
+      "at": "out",
+      "what": "the lane disappears into land"
+     },
+     {
+      "at": "tanker",
+      "what": "a tanker sails in from the west"
+     },
+     {
+      "at": "india",
+      "what": "a FROM INDIA sign pops on the tanker's wake"
+     },
+     {
+      "at": "wall",
+      "what": "the tanker bumps into the new land and stops"
+     },
+     {
+      "at": "sumatra",
+      "what": "Sumatra flashes"
+     },
+     {
+      "at": "malaysia",
+      "what": "Malaysia flashes"
+     }
+    ],
+    "things": [
+     "eraser",
+     "closed strait",
+     "tanker",
+     "wall of land"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "rub"
+    },
+    {
+     "kind": "thud",
+     "at": "wall"
+    }
+   ]
+  },
+  {
+   "id": "sunda",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So where's the next door? The Sunda Strait, a gap between Sumatra and Java, far to the south.",
+   "events": {
+    "where's": {
+     "word": "where's"
+    },
+    "door": {
+     "word": "door"
+    },
+    "sunda": {
+     "word": "Sunda"
+    },
+    "gap": {
+     "word": "gap"
+    },
+    "sumatra": {
+     "word": "Sumatra"
+    },
+    "java": {
+     "word": "Java"
+    },
+    "south": {
+     "word": "south"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sunda",
+    "place": "on the map: the Sunda Strait between Sumatra and Java",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "sunda",
+      "size": "medium"
+     },
+     {
+      "at": "south",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "where's",
+      "what": "a question mark hops along Sumatra's coast"
+     },
+     {
+      "at": "door",
+      "what": "a door outline opens at the south end"
+     },
+     {
+      "at": "sunda",
+      "what": "SUNDA STRAIT writes in the gap"
+     },
+     {
+      "at": "gap",
+      "what": "the gap glows"
+     },
+     {
+      "at": "sumatra",
+      "what": "Sumatra traces"
+     },
+     {
+      "at": "java",
+      "what": "Java traces"
+     },
+     {
+      "at": "south",
+      "what": "a new dashed route draws south round Sumatra into the gap"
+     }
+    ],
+    "things": [
+     "question mark",
+     "door",
+     "sunda strait",
+     "dashed route"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "sunda"
+    }
+   ]
+  },
+  {
+   "id": "lombok",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Other tankers sail further still, through the Lombok Strait, east of Bali, and then north past Borneo.",
+   "events": {
+    "other": {
+     "word": "Other"
+    },
+    "further": {
+     "word": "further"
+    },
+    "lombok": {
+     "word": "Lombok"
+    },
+    "bali": {
+     "word": "Bali"
+    },
+    "north": {
+     "word": "north"
+    },
+    "borneo": {
+     "word": "Borneo"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Lombok",
+    "place": "on the map: the Lombok Strait east of Bali, then up past Borneo",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "lombok",
+      "size": "medium"
+     },
+     {
+      "at": "borneo",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "other",
+      "what": "a second tanker peels off further east"
+     },
+     {
+      "at": "further",
+      "what": "its route draws on along Java"
+     },
+     {
+      "at": "lombok",
+      "what": "LOMBOK STRAIT writes in the gap"
+     },
+     {
+      "at": "bali",
+      "what": "Bali lights up beside it"
+     },
+     {
+      "at": "north",
+      "what": "the route turns north"
+     },
+     {
+      "at": "borneo",
+      "what": "Borneo lights up as the route runs past it"
+     }
+    ],
+    "things": [
+     "tanker",
+     "lombok strait",
+     "bali",
+     "borneo",
+     "route"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "lombok"
+    }
+   ]
+  },
+  {
+   "id": "singapore",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Stranger still, Singapore, a port city at the narrow end of the lane, suddenly sits beside a blocked lane with no way through.",
+   "events": {
+    "stranger": {
+     "word": "Stranger"
+    },
+    "singapore": {
+     "word": "Singapore"
+    },
+    "port": {
+     "word": "port"
+    },
+    "narrow": {
+     "word": "narrow"
+    },
+    "suddenly": {
+     "word": "suddenly"
+    },
+    "blocked": {
+     "word": "blocked"
+    },
+    "through": {
+     "word": "through"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Singapore",
+    "place": "on the map: Singapore at the tip of the Malay Peninsula",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "singapore",
+      "size": "close"
+     },
+     {
+      "at": "blocked",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stranger",
+      "what": "the camera swings back north"
+     },
+     {
+      "at": "singapore",
+      "what": "Singapore glows red, its border traced"
+     },
+     {
+      "at": "port",
+      "what": "cranes and a container ship appear at its harbour"
+     },
+     {
+      "at": "narrow",
+      "what": "the closed lane beside it darkens"
+     },
+     {
+      "at": "suddenly",
+      "what": "the harbour lights flicker"
+     },
+     {
+      "at": "blocked",
+      "what": "a NO WAY THROUGH sign drops at the harbour mouth"
+     },
+     {
+      "at": "through",
+      "what": "the container ship turns back"
+     }
+    ],
+    "things": [
+     "singapore",
+     "port cranes",
+     "container ship",
+     "no way through sign"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "dead"
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Because this one lane carries about {fact5} of all the goods the world trades, every one of those ships now takes the long way round.",
+   "events": {
+    "lane": {
+     "word": "lane"
+    },
+    "carries": {
+     "word": "carries"
+    },
+    "goods": {
+     "word": "goods"
+    },
+    "world": {
+     "word": "world"
+    },
+    "every": {
+     "word": "every"
+    },
+    "long": {
+     "word": "long"
+    },
+    "round": {
+     "word": "round"
+    },
+    "about": {
+     "word": "about"
+    },
+    "trades": {
+     "word": "trades"
+    },
+    "ships": {
+     "word": "ships"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: the whole of Asia, every ship route bending round Indonesia",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "world",
+      "size": "wide"
+     },
+     {
+      "at": "round",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lane",
+      "what": "the closed lane flashes red"
+     },
+     {
+      "at": "carries",
+      "what": "container ships line up behind it"
+     },
+     {
+      "at": "about",
+      "what": "crates start stacking on the quay"
+     },
+     {
+      "at": "goods",
+      "what": "the share stamps on the crate stack"
+     },
+     {
+      "at": "world",
+      "what": "the camera pulls back to the whole region"
+     },
+     {
+      "at": "trades",
+      "what": "the container ships sound their horns and turn"
+     },
+     {
+      "at": "every",
+      "what": "every ship route turns south"
+     },
+     {
+      "at": "ships",
+      "what": "each ship's bow swings south onto the new routes"
+     },
+     {
+      "at": "long",
+      "what": "the routes stretch round the islands"
+     },
+     {
+      "at": "round",
+      "what": "the long loop closes past Borneo"
+     }
+    ],
+    "things": [
+     "closed lane",
+     "container ships",
+     "crate stack",
+     "ship routes"
+    ],
+    "fig": {
+     "share": "{fact5}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "goods"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Malacca or Hormuz: which closure would hurt the world more? Tell me below. Now picture it once more:",
+   "events": {
+    "malacca": {
+     "word": "Malacca"
+    },
+    "hormuz": {
+     "word": "Hormuz"
+    },
+    "closure": {
+     "word": "closure"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "picture": {
+     "word": "picture"
+    },
+    "once": {
+     "word": "once"
+    },
+    "more": {
+     "word": "more"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: back at the Strait of Malacca",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "picture",
+      "size": "medium"
+     },
+     {
+      "at": "more",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "malacca",
+      "what": "MALACCA pin pops on the strait"
+     },
+     {
+      "at": "hormuz",
+      "what": "HORMUZ pin pops far to the west"
+     },
+     {
+      "at": "closure",
+      "what": "both pins pulse red"
+     },
+     {
+      "at": "tell",
+      "what": "a comment bubble pops between them"
+     },
+     {
+      "at": "picture",
+      "what": "the camera glides back to the strait"
+     },
+     {
+      "at": "once",
+      "what": "the tankers sail back into the lane"
+     },
+     {
+      "at": "more",
+      "what": "the strait comes back into frame, tankers sailing up the lane"
+     }
+    ],
+    "things": [
+     "pins",
+     "comment bubble",
+     "strait",
+     "tankers"
+    ]
+   }
+  }
+ ]
+}

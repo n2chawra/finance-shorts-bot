@@ -67,7 +67,7 @@ export const World: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) => {
  * on screen, centred on its box (QA 2026-11-22, v-20261122-55: "four tiny boxes, the signs are gone, the payoff
  * ends emptier than any other still"). */
 const StackLegend: React.FC<{ w: DiveWorld; y: number; z: number; cx: number }> = ({ w, y, z, cx }) => {
-  const k = 1 - Math.min(1, Math.max(0, (z - 0.5) / 0.12));
+  const k = 1 - Math.min(1, Math.max(0, (z - 0.56) / 0.06));   // takes over from the signs at 0.62 (pieces.tsx Legible)
   if (k <= 0) return null;
   return (
     <g opacity={k}>

@@ -1,0 +1,223 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:02:41.228572+00:00",
+    "finishedAt": "2026-11-22T22:02:41.228572+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T22:03:52.410956+00:00",
+    "finishedAt": "2026-11-22T22:03:52.410956+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:03:56.663324+00:00",
+    "finishedAt": "2026-11-22T22:03:56.663324+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+      "warning: beat 'hook' runs 6.7 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:04:10.585701+00:00",
+    "finishedAt": "2026-11-22T22:04:10.585701+00:00",
+    "notes": [
+      "12 figures computed from inputs; 12 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T22:08:25.318497+00:00",
+    "finishedAt": "2026-11-22T22:09:13.662633+00:00",
+    "notes": [
+      "text 'HER YEAR' at 26.8 s is 41.8 px, below the 44 px minimum",
+      "text '$17,279' at 26.8 s is 39.8 px, below the 44 px minimum",
+      "2.7 s with nothing new on screen in beat 'promise' (at most 2.5 s): add an action on the phrase being said there",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 44% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T22:09:16.638159+00:00",
+    "finishedAt": "2026-11-22T22:09:16.638159+00:00",
+    "notes": [
+      "Beat 'cut' ('Then Starbucks cut his pay, all the way down to $31M'), the description ('Starbucks CEO Brian Niccol's pay was cut') and the 'gap' beat built on it say something the source does not. The proxy shows FY2024's $95,801,676 was mostly $90.3M of one-time replacement RSUs/PRSUs for the Chipotle equity he forfeited on joining (Sept 2024, about 3 weeks of FY2024), plus $5M sign-on cash; Starbucks did not cut his pay, the one-time hiring awards fell away (FY25 target pay $39.2M was his first normal year). Rewrite e.g. 'The year before, he got $95.8M, mostly one-time stock to replace what he left at Chipotle. His first normal year: $31M.' and fix the description and the 'gap' line ('So is he any closer to her now?') to match; drop the boardroom-scissors 'cut' picture.",
+      "Beat 'promise' ('Her boss, Brian Niccol, got $95.8M the year before') hides the decisive context that this was a joining package for a few weeks of work, mostly stock valued at grant; say it is one-time replacement stock or leave the FY2024 figure out.",
+      "Facts confirmed on the SEC page itself (Starbucks 2026 DEF 14A, fetched): Summary Compensation Table total $30,992,773 (FY2025) and $95,801,676 (FY2024); pay ratio section: median employee 'a part-time barista in the U.S.', $17,279, ratio 1,794 to 1. Verify items hold (total compensation, not wage; per-hour line says 'spread over every hour of the year'). Minor: description 'Sources: Starbucks 2026 proxy statement (Sep 2025)' should read the proxy (Jan 2026), fiscal year to Sep 2025; disclaimer present."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:09:48.471549+00:00",
+    "finishedAt": "2026-11-22T22:10:27.725582+00:00",
+    "notes": [
+      "33 s, forest/acoustic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 44% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T22:10:55.273181+00:00",
+    "finishedAt": "2026-11-22T22:10:55.273181+00:00",
+    "notes": [
+      "beat 'cut': params.camera key at 'cut' is not one of this beat's events",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:10:59.607100+00:00",
+    "finishedAt": "2026-11-22T22:10:59.607100+00:00",
+    "notes": [
+      "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:11:43.046033+00:00",
+    "finishedAt": "2026-11-22T22:11:43.046033+00:00",
+    "notes": [
+      "Re-review after rewrite: the 'cut' claim and the FY2024 figure are gone from lines, picture and description. All facts confirmed on the SEC page (Starbucks 2026 DEF 14A): FY2025 total $30,992,773, median employee a part-time US barista $17,279, ratio 1,794:1. New line 'most of it came as Starbucks shares' holds (stock awards $19,881,585 of $30,992,773, 64%, grant-date value). 'Last year' = fiscal year to Sep 2025, the latest proxy. Per-hour line says spread over every hour; 4.9 h = before breakfast on day one. Disclaimer present. Notes: fact4 (FY2024) is now unused and could be dropped; US spelling would be 'paycheck'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:11:28.828202+00:00",
+    "finishedAt": "2026-11-22T22:12:10.260565+00:00",
+    "notes": [
+      "32 s, forest/acoustic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 41% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:12:40.371412+00:00",
+    "finishedAt": "2026-11-22T22:13:16.680457+00:00",
+    "notes": [
+      "32 s, forest/acoustic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 41% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:13:58.904131+00:00",
+    "finishedAt": "2026-11-22T22:14:39.985329+00:00",
+    "notes": [
+      "32 s, forest/acoustic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 41% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T22:15:43.996415+00:00",
+    "finishedAt": "2026-11-22T22:15:43.996415+00:00",
+    "notes": [
+      "[scene] 10.0 s, beat promise/cut (boardroom cheque, the flat-kit cheque prop in remotion/src/videos/v-20261123-02/): the cheque's header text 'PAY TO THE ORDER OF' runs off the cheque's left edge and reads 'Y TO THE ORDER OF'; the cheque also stands upright on the table and hides the two middle board members down to their legs, so nobody visibly slides it",
+      "[script] 10.0 s, beat cut (boardroom): the place is a bare beige wall with an unlabelled blue rectangle and the cast in a row behind the table; mostly flat background, weaker than the reference Shorts' full sets (v-20261117-03 at 10-20 s). Put the boardroom on a wider, fuller set (window with skyline, Starbucks logo on the wall, chairs) and have a board member push the cheque at 'most'",
+      "[script] 25.0 s, beat payoff: the 'stadium packed with baristas' reads as a dark empty band with three tiny dots under a sky; no stands, and the scoreboard shows 33 while the caption says 1,794. Start the stands visibly full or filling fast from the beat's start, and make the stadium big enough to read as one"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:17:16.263868+00:00",
+    "finishedAt": "2026-11-22T22:17:54.247842+00:00",
+    "notes": [
+      "32 s, forest/acoustic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 41% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T22:18:17.097475+00:00",
+    "finishedAt": "2026-11-22T22:18:17.097475+00:00",
+    "notes": [
+      "[scene] 10.0 s, boardroom (cut beat, remotion/src/videos/v-20261123-02/ boardroom component): before the slide on 'most', the cheque starts at the left and still hides the second board member's head (only the top of the hair shows behind it); the leftmost member is cut in half by the frame edge; and the two members on the right overlap shoulder to shoulder. Start the cheque on the table between the left pair (below their faces) or off-frame, space the four members so none overlaps or touches the frame edge. The cheque text now fits, the HQ sign, binders and windows read well"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:18:55.683511+00:00",
+    "finishedAt": "2026-11-22T22:19:33.325580+00:00",
+    "notes": [
+      "32 s, forest/acoustic (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 41% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:19:47.171506+00:00",
+    "finishedAt": "2026-11-22T22:19:47.171506+00:00",
+    "notes": [
+      "Five directed places (café, Starbucks HQ boardroom, park seesaw, bedroom, stadium); hook names Starbucks with Niccol's photo; boardroom now clean (four members spaced, cheque below faces, text fits); stadium full, scoreboard lands on 1,794; loops to first frame; code checks clean"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:19:53.872899+00:00",
+    "finishedAt": "2026-11-22T22:21:13.915032+00:00",
+    "notes": [
+      "32 s, forest/acoustic, peak -1.0 dB, mean -16.4 dB",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 41% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-22T22:21:18.132702+00:00",
+    "finishedAt": "2026-11-22T22:21:18.132702+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
