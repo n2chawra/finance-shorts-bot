@@ -17,7 +17,7 @@ import { z } from "zod";
 
 import { notify, resolveOthers } from "./notify.ts";
 import { istDay, isUrgent } from "./publishing.ts";
-import { cpath } from "./channels.ts";
+import { allChannels, cpath } from "./channels.ts";
 
 const DAY_MS = 86_400_000;
 const AGENTS = ["research", "improver", "dashboard", "auditor", "scout", "studio", "monthly", "reviewer"] as const;
@@ -67,13 +67,20 @@ export async function importActivity(prisma: PrismaClient, root: string): Promis
   await prisma.agentActivity.deleteMany({ where: { id: { notIn: [...ids] } } });
   const seen = await loadHashes(prisma, ACTIVITY_HASHES);
   const next = { ...seen };
+  // longest slug first, so a slug that starts another one can't take its files
+  const slugs = allChannels(root).sort((a, b) => b.length - a.length);
   for (const f of readdirSync(dir).filter((x) => x.endsWith(".json")).sort().slice(-120)) {
     const parsed = Activity.safeParse(readJson(path.join(dir, f)));
     if (!parsed.success) { console.error(`::warning::${f}: ${parsed.error.issues[0]?.message}`); continue; }
     const a = parsed.data;
     const data = { agent: a.agent, day: a.day, summary: a.summary, decision: a.decision, why: a.why, findings: a.findings, changes: a.changes, nextCheck: a.nextCheck ?? null, links: a.links,
       startedAt: a.startedAt ? new Date(a.startedAt) : null, finishedAt: a.finishedAt ? new Date(a.finishedAt) : null };
-    const id = `${a.day}-${a.agent}`, h = hashOf(data);
+    // one row per file: since the multi-channel move an agent writes <day>-<channel>-<agent>.json for each channel,
+    // and keying rows by <day>-<agent> made those files overwrite each other on every run (2026-11-23)
+    const id = f.replace(/\.json$/, "");
+    const channelId = slugs.find((c) => id.startsWith(`${a.day}-${c}-`));
+    if (channelId) Object.assign(data, { channelId });
+    const h = hashOf(data);
     if (seen[id] === h) continue;   // unchanged since the last run: nothing sent (Supabase egress, 2026-11-23)
     await prisma.agentActivity.upsert({ where: { id }, update: data, create: { id, ...data }, select: { id: true } });
     next[id] = h;

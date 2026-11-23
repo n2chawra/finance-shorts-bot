@@ -50,3 +50,32 @@ test("agent docs are sent again only when they change", async () => {
   writeFileSync(file, JSON.stringify({ experiments: [{ id: "b" }] }));
   assert.equal(await snapshotDocs(prisma as never, root), 1);
 });
+
+test("each channel's activity file is its own row, tagged with its channel, and unchanged files are not sent again", async () => {
+  const { importActivity } = await import("../lib/agents-sync.ts");
+  const { mkdirSync } = await import("node:fs");
+  const root = mkdtempSync(path.join(tmpdir(), "act-"));
+  mkdirSync(path.join(root, "improvement", "activity"), { recursive: true });
+  mkdirSync(path.join(root, "channels", "going-down"), { recursive: true });
+  mkdirSync(path.join(root, "channels", "paisa-panchayat"), { recursive: true });
+  const act = { agent: "research", day: "2026-11-23", summary: "s", decision: "acted", why: "w", findings: [], changes: [] };
+  writeFileSync(path.join(root, "improvement", "activity", "2026-11-23-research.json"), JSON.stringify(act));
+  writeFileSync(path.join(root, "improvement", "activity", "2026-11-23-going-down-research.json"), JSON.stringify({ ...act, summary: "other" }));
+  const rows = new Map<string, Record<string, unknown>>();
+  const docs = new Map<string, unknown>();
+  const prisma = {
+    agentActivity: {
+      deleteMany: async () => ({ count: 0 }),
+      upsert: async ({ where, create }: { where: { id: string }; create: Record<string, unknown> }) => { rows.set(where.id, create); return { id: where.id }; },
+    },
+    repoDoc: {
+      findUnique: async ({ where }: { where: { key: string } }) => (docs.has(where.key) ? { value: docs.get(where.key) } : null),
+      upsert: async ({ where, update }: { where: { key: string }; update: { value: unknown } }) => { docs.set(where.key, update.value); return { key: where.key }; },
+    },
+  };
+  assert.equal(await importActivity(prisma as never, root), 2);
+  assert.deepEqual([...rows.keys()].sort(), ["2026-11-23-going-down-research", "2026-11-23-research"]);
+  assert.equal(rows.get("2026-11-23-going-down-research")!.channelId, "going-down");
+  assert.equal(rows.get("2026-11-23-research")!.channelId, undefined);
+  assert.equal(await importActivity(prisma as never, root), 0);
+});
