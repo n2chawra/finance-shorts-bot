@@ -1,0 +1,395 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:21:52.109759+00:00",
+    "finishedAt": "2026-11-23T04:21:52.109759+00:00",
+    "notes": [
+      "story 'landmark_dive' was told in the last 1 videos",
+      "a global video is told in USD; rupees, pounds or euros make it local"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:21:57.748007+00:00",
+    "finishedAt": "2026-11-23T04:21:57.748007+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:22:54.146964+00:00",
+    "finishedAt": "2026-11-23T04:22:54.146964+00:00",
+    "notes": [
+      "beat 'line15'.params.place contains a typed number; use a placeholder: 'the deep Line 15 station hall'",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:23:01.017460+00:00",
+    "finishedAt": "2026-11-23T04:23:01.017460+00:00",
+    "notes": [
+      "the source line 'Data: Catacombes de Paris (official site) · Les Catacombes de Paris, via Wikipedia · Sortiraparis · Nov 2026' is too wide for the frame (2622 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'Catacombes de Paris'), one name per publisher",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:23:05.979410+00:00",
+    "finishedAt": "2026-11-23T04:23:05.979410+00:00",
+    "notes": [
+      "facts[1].source must be 'Les Catacombes de Paris, via Wikipedia' as in the feed, or its start cut at a word or before '(' (e.g. 'Les Catacombes de Paris')",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:23:10.419982+00:00",
+    "finishedAt": "2026-11-23T04:23:10.419982+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:24:46.735427+00:00",
+    "finishedAt": "2026-11-23T04:24:46.735427+00:00",
+    "notes": [
+      "Beat line15: 'And 52 m down sits a new Line Fifteen station.' with the moment 'a train glides in' presents Saint-Maur-Creteil as an open, running station. It is not open: Line 15 South slipped to autumn 2027 (Wikipedia Paris Metro Line 15: 'planned to open in autumn 2027'; Societe des grands projets notice, June 2026, pushed commissioning to autumn 2027). The topic's verify list requires saying 'being built' or 'opened'. Fix: say it is still being built (e.g. 'And 52 m down, a Line Fifteen station still being built.') and drop the arriving passenger train (an empty hall or a test train is fine). The 52 m depth itself is confirmed (Sortiraparis 282604: '52 metres underground'; Wikipedia station table agrees).",
+      "All other facts confirmed: Catacombs 20 m (catacombes.paris.fr: 'Twenty meters underground'); 6M people (official site says 'several million'; 'more than six million' per Wikipedia, also National Geographic and Smithsonian report ~six million, so OK); Cite 25 m, Abbesses 36 m and 176 steps (Sortiraparis 280379, page shows all three; RATP page 403, so 36 m said as 'down' from street level per verify, which the line does); no 'deepest' claim made; description carries the disclaimer and says the layers are stacked from different parts of Paris; no entry details for closed quarries."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:23:49.873449+00:00",
+    "finishedAt": "2026-11-23T04:24:47.519478+00:00",
+    "notes": [
+      "24 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:25:58.779771+00:00",
+    "finishedAt": "2026-11-23T04:25:58.779771+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:26:45.679104+00:00",
+    "finishedAt": "2026-11-23T04:26:45.679104+00:00",
+    "notes": [
+      "Beat line15 (re-review): 'And 52 m down, a Line Fifteen station is still being dug.' with 'the boring machine cutterhead turns' is false today. Tunnelling on Line 15 South ended in December 2021 (Societe du Grand Paris: TBM Marina arrived at Creteil-l'Echat on 20 Dec 2021, completing the 37 km tunnel); track was laid by end 2023 and the line is now in test running, with opening slipped to autumn 2027 (Wikipedia Paris Metro Line 15; SGP notice June 2026). Fix: say it is built but not yet open, e.g. 'And 52 m down, a Line Fifteen station that hasn't opened yet.' and show a finished but empty hall (a driverless test train is fine); no boring machine, no digging.",
+      "All other facts stay confirmed as in the first review (20 m, 6M, 25 m, 36 m, 176 steps, 52 m depth; disclaimer present)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:26:24.173945+00:00",
+    "finishedAt": "2026-11-23T04:26:58.017438+00:00",
+    "notes": [
+      "25 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 44% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:27:12.425474+00:00",
+    "finishedAt": "2026-11-23T04:27:12.425474+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:27:48.866107+00:00",
+    "finishedAt": "2026-11-23T04:27:48.866107+00:00",
+    "notes": [
+      "All 6 facts confirmed: Catacombs 20 m (catacombes.paris.fr), 6M people (Wikipedia 'more than six million'; NatGeo/Smithsonian ~six million; official site 'several million'), Cite 25 m, Abbesses 36 m from street and 176 steps (Sortiraparis 280379), Saint-Maur-Creteil 52 m (Sortiraparis 282604, Wikipedia). line15 now true: built, in test running, not open (opening autumn 2027 per Wikipedia and SGP June 2026 notice). No 'deepest' claim; description has disclaimer and the stacked-cutaway note; no quarry access details."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:27:39.566438+00:00",
+    "finishedAt": "2026-11-23T04:28:13.843124+00:00",
+    "notes": [
+      "25 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 44% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:29:23.987282+00:00",
+    "finishedAt": "2026-11-23T04:29:23.987282+00:00",
+    "notes": [
+      "[script] 0.0s hook gives the payoff away: 'Millions of people are still under Paris' is the payoff's twist (22.5s: 'those bones... 6M people'); the first line should name Paris and ask what's under it, holding the dead/bones count back for the payoff (check 6)",
+      "[scene] 12.0-15.0s Dive 'stair' beat (layer kind shaft, type stairs): the line says 'a spiral stair of 176 steps' but it is drawn as a straight diagonal green escalator ramp, the same picture already on screen through the Cite beat (7.5-10.5s); draw an actual spiral stair",
+      "[scene] 12.0-15.0s captions 'At Abbesses,', '36 m down,', '176 steps.' sit right on the next layer's train windows (cream boxes), so the white and yellow '176' are hard to read; the Dive camera frames the train at caption height in the stair beat",
+      "[scene] 21.0s pullback (people beat, counter layer): the CITE sign and SAINT-MAUR sign are drawn twice on top of each other ('4 CI CITE 25 M', doubled SAINT-MAUR 52 M) - text on text",
+      "[scene] 0.0-3.0s the 'LIMESTONE' strata label sits under the captions ('people are', 'Paris.') and at 4.5-6.0s pokes out behind the Data source chip; 4.5-6.0s the '20 m' depth tag covers the left visitor's head in the ossuary"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:30:58.865001+00:00",
+    "finishedAt": "2026-11-23T04:30:58.865001+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:30:59.614386+00:00",
+    "finishedAt": "2026-11-23T04:30:59.614386+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "beat 'street': the line right after the hook announces a structure (\"Let's go\"): give the next surprise instead; viewers leave on a count of what is coming",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:31:27.102585+00:00",
+    "finishedAt": "2026-11-23T04:31:27.102585+00:00",
+    "notes": [
+      "beat 'street'.events.down: no word 'down' in this beat's spoken line",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:31:32.341431+00:00",
+    "finishedAt": "2026-11-23T04:31:32.341431+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:32:08.324542+00:00",
+    "finishedAt": "2026-11-23T04:32:08.324542+00:00",
+    "notes": [
+      "Re-review after QA changes: new hook, loop line and description first line make no new factual claims and stay true (bones under the streets; Line 15 station 'hasn't opened yet' matches the autumn 2027 opening). Figures unchanged, all 6 facts confirmed as before; description still carries the stacked-cutaway note and ends with the disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:31:58.511761+00:00",
+    "finishedAt": "2026-11-23T04:32:35.799506+00:00",
+    "notes": [
+      "length 26 s is outside 20–25 s: cut about 3 spoken words",
+      "the Short runs 25.8 s but its assigned length (arms.length) is 20-25 s: cut or add a beat",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words",
+      "note: the turn starts at 43% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:32:45.992330+00:00",
+    "finishedAt": "2026-11-23T04:32:45.992330+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:33:05.717439+00:00",
+    "finishedAt": "2026-11-23T04:33:36.828295+00:00",
+    "notes": [
+      "25 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words",
+      "note: the turn starts at 43% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:34:10.104024+00:00",
+    "finishedAt": "2026-11-23T04:34:48.241354+00:00",
+    "notes": [
+      "25 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words",
+      "note: the turn starts at 43% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:36:18.048964+00:00",
+    "finishedAt": "2026-11-23T04:36:18.048964+00:00",
+    "notes": [
+      "[scene] 21.0-22.3s payoff (people beat, Dive pullback + counter layer): the PEOPLE 6M counter is drawn exactly over the Catacombs layer, so while the voice says 'But those bones up top? 6M people.' the bones are completely hidden (no skulls, no CATACOMBS sign; they only reappear at 22.5s in the loop). The figure should sit beside or on the ossuary with the bone wall visible, not cover it",
+      "[scene] 12.0-15.0s stair beat at zoom 1.25: the ABBESSES 36 M sign runs off the left edge and under the depth meter bar, which cuts across its first letter; pull the sign right of the meter (or lower the zoom so it fits)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:38:42.437260+00:00",
+    "finishedAt": "2026-11-23T04:39:24.056259+00:00",
+    "notes": [
+      "25 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words",
+      "note: the turn starts at 43% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:40:02.452010+00:00",
+    "finishedAt": "2026-11-23T04:40:37.661399+00:00",
+    "notes": [
+      "25 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words",
+      "note: the turn starts at 43% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T04:41:29.203797+00:00",
+    "finishedAt": "2026-11-23T04:41:29.203797+00:00",
+    "notes": [
+      "[scene] 20.7-22.2s payoff (people beat, counter layer over the ossuary at zoom 0.85): the PEOPLE 6M counter is drawn on top of the Catacombs sign, which reads only 'CATA' for the whole payoff (text over text). The bone wall now shows, but move the counter right/up or the sign left so 'CATACOMBS 20 M' reads in full next to the 6M. Everything else, ABBESSES 36 M at 12-15s included, now reads clean"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:42:54.740664+00:00",
+    "finishedAt": "2026-11-23T04:43:37.605532+00:00",
+    "notes": [
+      "25 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words",
+      "note: the turn starts at 43% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:44:08.026995+00:00",
+    "finishedAt": "2026-11-23T04:44:40.437515+00:00",
+    "notes": [
+      "25 s, ember/cinematic (preview only)",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words",
+      "note: the turn starts at 43% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:45:10.369732+00:00",
+    "finishedAt": "2026-11-23T04:45:10.369732+00:00",
+    "notes": [
+      "Re-checked stills every 0.75 s: hook names Paris without the payoff, 6 directed places each landing on its word, spiral stair and ABBESSES 36 M read clean, payoff rises to the bone wall with CATACOMBS 20 M sign and the 6M counter below it landing on the spoken 6M, loops into frame 1; disclaimer in description, no layout problems, 25 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:45:57.662085+00:00",
+    "finishedAt": "2026-11-23T04:47:20.854549+00:00",
+    "notes": [
+      "25 s, ember/cinematic, peak -1.0 dB, mean -16.2 dB",
+      "note: four shots in a row open medium (from 'cite'): vary the shot size",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the hook ends like one of the last 6 Shorts' hooks ('deep does it go'): new words",
+      "note: the turn starts at 43% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-23T04:49:19.093101+00:00",
+    "finishedAt": "2026-11-23T04:49:19.093101+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
