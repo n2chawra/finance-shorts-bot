@@ -1,42 +1,6 @@
 {
   "note": "Written by ingest from the Channel table. Routines read their channel's entry (generator/settings.py).",
   "channels": {
-    "paisa-panchayat": {
-      "name": "Paisa Panchayat",
-      "status": "active",
-      "settings": {
-        "longPerWeek": 1,
-        "uploadTimes": [
-          "07:07",
-          "19:07"
-        ],
-        "longUploadDays": [
-          6
-        ],
-        "dailyVideoTarget": 2,
-        "generationPaused": false,
-        "longLengthMaxSec": 240,
-        "trendUploadTimes": [
-          "16:07",
-          "22:07"
-        ]
-      },
-      "health": {
-        "at": "2026-11-23T08:39:06.075Z",
-        "color": "red",
-        "reason": "1 Short ready: under a day",
-        "stayed": 0.4193548387096774,
-        "bufferDays": 0.5,
-        "usageShare": 0.05,
-        "stayedBefore": 0.3840170618492034,
-        "weeksUnderFloor": 3
-      },
-      "backlog": 1,
-      "backlogByFormat": {
-        "short": 1,
-        "long": 0
-      }
-    },
     "geography-maps-geopolitical-mysteries": {
       "name": "Geography, maps & geopolitical mysteries",
       "status": "active",
@@ -214,44 +178,6 @@
       "backlogByFormat": {
         "short": 0,
         "long": 1
-      }
-    },
-    "going-down": {
-      "name": "Going Down",
-      "status": "active",
-      "settings": {
-        "longPerWeek": 0,
-        "uploadTimes": [
-          "05:37",
-          "12:17",
-          "18:27"
-        ],
-        "uploadsPaused": false,
-        "dailyVideoTarget": 3,
-        "generationPaused": false,
-        "trendUploadTimes": []
-      },
-      "setup": {
-        "stage": "launched",
-        "decision": {
-          "at": "2026-11-21T14:35:14.010Z",
-          "choice": "continue"
-        }
-      },
-      "health": {
-        "at": "2026-11-23T08:39:06.075Z",
-        "color": "amber",
-        "reason": "1 days of Shorts ready",
-        "stayed": null,
-        "bufferDays": 1,
-        "usageShare": 0.01,
-        "stayedBefore": null,
-        "weeksUnderFloor": 0
-      },
-      "backlog": 3,
-      "backlogByFormat": {
-        "short": 3,
-        "long": 0
       }
     }
   }
