@@ -1022,13 +1022,13 @@
       "id": "wrk-015",
       "kind": "bug",
       "title": "publish.ts looks for every channel's cover in Paisa Panchayat's folder",
-      "detail": "applyCover uses cpath(ROOT, 'videos') with CHANNEL unset while publish loops over channels, so a Short of any other channel finds no cover and goes up with YouTube's own frame ('no cover in the repo'). publish.ts is owner-locked: raised as an owner notification with the one-line fix (videoFile from lib/channels.ts).",
+      "detail": "applyCover uses cpath(ROOT, 'videos') with CHANNEL unset while publish loops over channels, so a Short of any other channel finds no cover and goes up with YouTube's own frame ('no cover in the repo'). publish.ts is owner-locked: raised as an owner notification with the one-line fix (videoFile from lib/channels.ts). Fixed on main by the owner (applyCover now uses videoFile with run.channelId; checked 2026-11-24).",
       "files": [
         "workers/publish.ts"
       ],
       "severity": "medium",
       "found": "2026-11-22",
-      "status": "open"
+      "status": "fixed"
     },
     {
       "id": "gen-008",
@@ -1042,6 +1042,19 @@
       "found": "2026-11-23",
       "status": "fixed",
       "fixed": "2026-11-23"
+    },
+    {
+      "id": "ren-008",
+      "kind": "bug",
+      "title": "Place-uniqueness gate skipped documentary (doc) beats",
+      "detail": "renderer/craft.py prop_problems compared only `directed` beats' places with the last 5 videos, so Craze & Crash (look.engine doc, every beat `doc`) was never checked for reusing a recent video's places. Now `directed` and `doc` (PLACED). No shipped video on any channel trips it; test fails on the old code.",
+      "files": [
+        "renderer/craft.py",
+        "renderer/tests/test_directed.py"
+      ],
+      "severity": "medium",
+      "found": "2026-11-24",
+      "status": "fixed"
     }
   ]
 }

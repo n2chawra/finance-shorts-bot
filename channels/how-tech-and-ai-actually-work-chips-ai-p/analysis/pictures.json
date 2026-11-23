@@ -1,0 +1,23 @@
+{
+  "writtenAt": "2026-11-23T17:20:00Z",
+  "lossByPicture": [
+    {
+      "kind": "3D scene with a figure on a thing",
+      "drops": 4,
+      "shorts": 3,
+      "avgDrop": 16.2
+    },
+    {
+      "kind": "3D scene without a figure",
+      "drops": 5,
+      "shorts": 3,
+      "avgDrop": 12.3
+    }
+  ],
+  "options": [],
+  "worst": "Too few Shorts: 3 with held-after-hook, so no option has the 4 Shorts needed. The two kinds of picture are 3.9 points apart on 3 Shorts each, within noise; the second beat (6 to 8 s) is the biggest loss in every Short (18.5 to 29.6 points), which tech-mechanism-by-6s already tests.",
+  "reference": [
+    "v-20261121-21",
+    "v-20261120-01"
+  ]
+}
