@@ -8,23 +8,697 @@
       "category": "footwear",
       "kind": "evergreen",
       "priority": "high",
-      "stories": ["product_boom_bust"],
+      "stories": [
+        "product_boom_bust"
+      ],
       "currency": "USD",
       "reach": "global",
-      "templates": ["long_story"],
-      "demand": {"title": "WTF Happened to Labubu?", "views": 2280000, "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0", "channel": "Fortune & Fall"},
+      "templates": [
+        "long_story"
+      ],
+      "demand": {
+        "title": "WTF Happened to Labubu?",
+        "views": 2280000,
+        "url": "https://www.youtube.com/watch?v=V6-3wqQoxT0",
+        "channel": "Fortune & Fall"
+      },
       "search": "what happened to crocs",
       "angle": "Open on a pair of Crocs. The craze to 2007 ($847.4M sales), the crash in 2008 (sales $721.6M, a $185.1M loss, staff cut from about 5,300 to 3,700, a going-concern warning in its own 10-K), and the comeback to about $4.04B in 2025. What changed: the same 'ugly' shoe sold as a canvas (charms, collaborations) instead of a fad. Chapter 1: one model, the Beach, in six colours, launched in 2002 for water sports; the Croslite formula kept as a trade secret.",
       "why_now": "Long sample for the channel's Launch review (product boom and bust, core: advice.md).",
       "facts": [
-        {"label": "Crocs' revenues in 2007", "value": 847.4, "unit": "money_million", "currency": "USD", "as_of": "2007-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs' revenues in 2008", "value": 721.6, "unit": "money_million", "currency": "USD", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs' loss in 2008", "value": 185.1, "unit": "money_million", "currency": "USD", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs employees at the end of 2007", "value": 5300, "unit": "count", "as_of": "2007-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs employees at the end of 2008, approximately", "value": 3700, "unit": "count", "as_of": "2008-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm", "fixed": true},
-        {"label": "Crocs, Inc. revenues in 2025 ($4,040.6 million in the filing; Crocs and HEYDUDE brands)", "value": 4.04, "unit": "money_billion", "currency": "USD", "as_of": "2025-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm", "fixed": true},
-        {"label": "Year Crocs first introduced its footwear (a single model)", "value": 2002, "unit": "year", "as_of": "2006-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm", "fixed": true},
-        {"label": "Colours the first model came in", "value": 6, "unit": "count", "as_of": "2006-12-31", "source": "Crocs Form 10-K (SEC EDGAR)", "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm", "fixed": true}
+        {
+          "label": "Crocs' revenues in 2007",
+          "value": 847.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' revenues in 2008",
+          "value": 721.6,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' loss in 2008",
+          "value": 185.1,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs employees at the end of 2007",
+          "value": 5300,
+          "unit": "count",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs employees at the end of 2008, approximately",
+          "value": 3700,
+          "unit": "count",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs, Inc. revenues in 2025 ($4,040.6 million in the filing; Crocs and HEYDUDE brands)",
+          "value": 4.04,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year Crocs first introduced its footwear (a single model)",
+          "value": 2002,
+          "unit": "year",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Colours the first model came in",
+          "value": 6,
+          "unit": "count",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' revenues in 2003",
+          "value": 1.2,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2003-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' revenues in 2005",
+          "value": 108.6,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2005-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Pairs of footwear Crocs sold in 2005",
+          "value": 6,
+          "unit": "count_million",
+          "as_of": "2005-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Share of Crocs' 2005 footwear revenues from the Beach model, approximately",
+          "value": 60.9,
+          "unit": "percent",
+          "as_of": "2005-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Lowest retail price point of Crocs footwear in early 2006",
+          "value": 19.99,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2005-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Highest retail price point of Crocs footwear in early 2006",
+          "value": 59.99,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2005-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year Crocs acquired Foam Creations, maker of the shoe and the croslite formula (June 2004)",
+          "value": 2004,
+          "unit": "year",
+          "as_of": "2004-06-30",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year Crocs' shares were first listed on Nasdaq (8 February 2006)",
+          "value": 2006,
+          "unit": "year",
+          "as_of": "2006-02-08",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' revenues in 2006",
+          "value": 354.7,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746908002093/a2183219z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Pairs of footwear Crocs sold in 2006",
+          "value": 21.6,
+          "unit": "count_million",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746908002093/a2183219z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Pairs of footwear Crocs sold in 2007",
+          "value": 46.9,
+          "unit": "count_million",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746908002093/a2183219z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "U.S. store locations selling Crocs, over (early 2007)",
+          "value": 11000,
+          "unit": "count",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Countries where Crocs were sold, over (early 2007)",
+          "value": 80,
+          "unit": "count",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs footwear models, more than (early 2007)",
+          "value": 25,
+          "unit": "count",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Aggregate purchase price Crocs paid for Jibbitz (December 2006)",
+          "value": 13.5,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2006-12-01",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Jibbitz charm designs (SKUs) available, more than, at the end of 2006",
+          "value": 900,
+          "unit": "count",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Sales of Jibbitz products in 2007",
+          "value": 67.5,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Sales of Jibbitz products in 2008",
+          "value": 47.2,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Highest price of a Crocs share, October-December 2007 (split-adjusted)",
+          "value": 75.21,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Lowest price of a Crocs share, October-December 2007",
+          "value": 33.75,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Lowest price of a Crocs share, October-December 2008",
+          "value": 0.79,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Inventory write-downs Crocs recorded in 2008",
+          "value": 76.3,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Pairs of footwear Crocs sold in 2008",
+          "value": 35.3,
+          "unit": "count_million",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year of Crocs' first annual loss as a public company and the going-concern warning",
+          "value": 2008,
+          "unit": "year",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' revenues in 2009",
+          "value": 645.8,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2009-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746910001357/a2196634z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Stated value of the Series A preferred stock Crocs issued to Blackstone (27 January 2014)",
+          "value": 200,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2014-01-27",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746915001519/a2223339z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' revenues in 2014, about",
+          "value": 1.2,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2014-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746915001519/a2223339z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Company-operated Crocs stores at the end of 2018",
+          "value": 383,
+          "unit": "count",
+          "as_of": "2018-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403619000012/crox12311810-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year Crocs ceased manufacturing in its own factories (Mexico and Italy)",
+          "value": 2018,
+          "unit": "year",
+          "as_of": "2018-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403619000012/crox12311810-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Pairs of shoes Crocs donated in 2020 to frontline healthcare workers and other organizations, over",
+          "value": 860000,
+          "unit": "count",
+          "as_of": "2020-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403621000035/crox-20201231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' revenues in 2021 ($2,313.4 million in the filing)",
+          "value": 2.31,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2021-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403622000011/crox-20211231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Pairs of shoes Crocs sold worldwide in 2021",
+          "value": 103,
+          "unit": "count_million",
+          "as_of": "2021-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403622000011/crox-20211231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Aggregate preliminary purchase price of HEYDUDE at closing (17 February 2022)",
+          "value": 2.3,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2022-02-17",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403623000015/crox-20221231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' asset impairments in 2025, mostly the HEYDUDE trademark and goodwill",
+          "value": 738.1,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "International share of Crocs Brand revenues in 2025",
+          "value": 48.6,
+          "unit": "percent",
+          "as_of": "2025-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs Brand revenues in 2025 ($3,325.8 million in the filing)",
+          "value": 3.33,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2025-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year Crocs issued preferred stock to Blackstone (27 January 2014)",
+          "value": 2014,
+          "unit": "year",
+          "as_of": "2014-01-27",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746915001519/a2223339z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year Crocs donated over 860,000 pairs to frontline healthcare workers and others",
+          "value": 2020,
+          "unit": "year",
+          "as_of": "2020-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403621000035/crox-20201231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year Crocs acquired HEYDUDE (17 February 2022)",
+          "value": 2022,
+          "unit": "year",
+          "as_of": "2022-02-17",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403623000015/crox-20221231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Share of Crocs footwear made in its own Quebec City facility in 2005, approximately",
+          "value": 16.8,
+          "unit": "percent",
+          "as_of": "2005-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' inventories at 31 December 2006",
+          "value": 86.2,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2006-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746908002093/a2183219z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' inventories at 31 December 2007",
+          "value": 248.4,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746908002093/a2183219z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' inventories at 31 December 2008",
+          "value": 143.2,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Customer store locations selling Crocs, including company kiosks and stores, over (early 2008)",
+          "value": 13000,
+          "unit": "count",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746908002093/a2183219z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Share of Crocs' 2020 revenues from its e-commerce channel",
+          "value": 25.9,
+          "unit": "percent",
+          "as_of": "2020-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403621000035/crox-20201231.htm",
+          "fixed": true
+        },
+        {
+          "label": "HEYDUDE revenues from its acquisition to 31 December 2022",
+          "value": 895.9,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2022-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403623000015/crox-20221231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Decrease in HEYDUDE Brand revenues in 2025",
+          "value": 13.3,
+          "unit": "percent",
+          "as_of": "2025-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Company-operated Crocs, Inc. retail stores at the end of 2025",
+          "value": 514,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' wholesale channel revenues in 2007",
+          "value": 738.9,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2007-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' wholesale channel revenues in 2008",
+          "value": 552.1,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "HEYDUDE's share of Crocs, Inc. total assets at 31 December 2022, approximately",
+          "value": 62,
+          "unit": "percent",
+          "as_of": "2022-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403623000015/crox-20221231.htm",
+          "fixed": true
+        },
+        {
+          "label": "HEYDUDE's share of Crocs, Inc. revenues in 2022, approximately",
+          "value": 25,
+          "unit": "percent",
+          "as_of": "2022-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403623000015/crox-20221231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Weight of a size large Beach model, approximately, in ounces",
+          "value": 6,
+          "unit": "count",
+          "as_of": "2005-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Revenue added in 2021 by higher average selling prices",
+          "value": 265.9,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2021-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403622000011/crox-20211231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Year TIME listed Crocs among the 50 worst inventions",
+          "value": 2010,
+          "unit": "year",
+          "as_of": "2010-05-27",
+          "source": "TIME",
+          "url": "https://content.time.com/time/specials/packages/article/0,28804,1991915_1991909_1991743,00.html",
+          "fixed": true
+        },
+        {
+          "label": "Year Balenciaga showed platform Crocs at Paris Fashion Week (October 2017)",
+          "value": 2017,
+          "unit": "year",
+          "as_of": "2017-10-02",
+          "source": "Fortune",
+          "url": "https://fortune.com/2017/10/02/balenciaga-crocs-collaboration-paris-fashion-week/",
+          "fixed": true
+        },
+        {
+          "label": "Crocs' net proceeds from its February 2006 initial public offering, approximately",
+          "value": 96.9,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2006-02-13",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs retail stores closed in 2014 under its strategic plan and otherwise",
+          "value": 104,
+          "unit": "count",
+          "as_of": "2014-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746915001519/a2223339z10-k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Value assigned to the HEYDUDE trademark at acquisition ($1,570.0 million in the filing)",
+          "value": 1.57,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2022-02-17",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403623000015/crox-20221231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Impairment of the HEYDUDE trademark in 2025",
+          "value": 430,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2025-06-30",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Crocs, Inc. employees at the end of 2025, more than",
+          "value": 8010,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
+          "fixed": true
+        },
+        {
+          "label": "Price of Balenciaga's platform Crocs on pre-order (1 February 2018)",
+          "value": 850,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2018-02-01",
+          "source": "Harper's Bazaar Singapore",
+          "url": "https://www.harpersbazaar.com.sg/fashion/news-trends/balenciaga-platform-crocs-sold-out-fashion",
+          "fixed": true
+        },
+        {
+          "label": "Decrease in Crocs' wholesale channel revenues in 2008",
+          "value": 25.3,
+          "unit": "percent",
+          "as_of": "2008-12-31",
+          "source": "Crocs Form 10-K (SEC EDGAR)",
+          "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
+          "fixed": true
+        }
       ],
       "verify": [
         "2008 10-K risk factor: 'Our auditors have expressed substantial doubt about our ability to continue as a going concern.'",
@@ -35,7 +709,18 @@
       "sources": [
         "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm",
         "https://www.sec.gov/Archives/edgar/data/1334036/000133403626000006/crox-20251231.htm",
-        "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm"
+        "https://www.sec.gov/Archives/edgar/data/1334036/000110465907025001/a07-7262_110k.htm",
+        "https://content.time.com/time/specials/packages/article/0,28804,1991915_1991909_1991743,00.html",
+        "https://fortune.com/2017/10/02/balenciaga-crocs-collaboration-paris-fashion-week/",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000104746908002093/a2183219z10-k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000104746910001357/a2196634z10-k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000104746915001519/a2223339z10-k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000133403619000012/crox12311810-k.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000133403621000035/crox-20201231.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000133403622000011/crox-20211231.htm",
+        "https://www.sec.gov/Archives/edgar/data/1334036/000133403623000015/crox-20221231.htm",
+        "https://www.harpersbazaar.com.sg/fashion/news-trends/balenciaga-platform-crocs-sold-out-fashion"
       ],
       "found": "2026-11-19",
       "expires": "2027-02-17",

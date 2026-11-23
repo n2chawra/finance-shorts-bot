@@ -258,6 +258,13 @@ def test_a_doc_thumbnail_jump_takes_two_placeholders() -> None:
         tb._thumbnail({"layout": "custom", "words": "How", "jump": {"from": "{then}", "to": "nothing"}}, figs, {})
 
 
+def test_a_doc_thumbnail_keeps_its_pattern_id_as_a_note() -> None:
+    # channel.json thumbs (2026-11-20): each spec names a playbook pattern ("P1"…"P8"); renderer/thumbs.py
+    # channel_problems requires it, so the typed-number check must pass it through as a note, like `pattern`
+    t = tb._thumbnail({"layout": "custom", "component": "Thumb", "pattern_id": "P1", "words": "Almost *dead*"}, {}, {})
+    assert t["pattern_id"] == "P1"
+
+
 def test_audio_reports_loudness(tmp_path: Path) -> None:
     """Integrated loudness goes into the timeline (research loudness-in-render-json, 2026-11-03); the
     music-under-voice gap only when a real voice spoke (estimate mode places none)."""
