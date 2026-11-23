@@ -42,7 +42,7 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       DIRECT_URL: ${{ secrets.DIRECT_URL }}
       GH_TOKEN: ${{ github.token }}
-      IDS_FILE: ${{ runner.temp }}/delete-channel-ids.txt
+      IDS_FILE: /tmp/delete-channel-ids.txt
     steps:
       - name: Check the slug
         run: |
@@ -80,7 +80,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: delete-channel-${{ inputs.channel }}-ids
-          path: ${{ runner.temp }}/delete-channel-ids.txt
+          path: /tmp/delete-channel-ids.txt
           if-no-files-found: error
           retention-days: 90
       - name: Delete the videos' releases and tags
