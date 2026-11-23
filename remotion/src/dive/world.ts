@@ -12,7 +12,7 @@ import { diveLook, type DiveLook } from "./looks";
 export type LayerKind = "surface" | "tunnel" | "chamber" | "cavern" | "shaft" | "foundation" | "water" | "deepest" | "counter"
   // added 2026-11-22 (more.tsx, owner: "the kit improves itself when making a video"): carved rooms, a pillared
   // hall, a walkway or water passage, a pump room, water pouring in
-  | "room" | "hall" | "passage" | "pumps" | "pour" | "well" | "dig";
+  | "room" | "hall" | "passage" | "pumps" | "pour" | "well" | "dig" | "spiral";
 
 /** One piece of the world. Only the fields of its `kind` matter (README "Pieces"). */
 export interface LayerSpec {

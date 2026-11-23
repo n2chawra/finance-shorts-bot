@@ -73,6 +73,7 @@ section 3c). Every piece has something alive in it, and a `label` (sign) or dept
 | `pumps` | `count` (2-4) | a pump room: impellers spinning faster from its word, water rising up the pipes |
 | `pour` | `color` | floodwater pouring in from the left into a rising, churning pool |
 | `dig` | `label`, `bullets`, `color` (box), `light` | a station still being built (2026-11-23): a shored concrete box, a tunnel-boring cutterhead turning in the end wall, workers walking, a welder's sparks, a crane hook swinging; its sign with the depth |
+| `spiral` | `fromFt`, `toFt`, `ft`, `side`, `riders`, `glowOn`, `color`, `label` | a spiral stair in a round shaft (2026-11-23): flights zigzag down the drum around a newel post, people climbing up and walking down, the drum glowing on its word, its sign beside the bottom |
 | `surface` presets | `town`, `field`, `sea`, `mountain`, `pyramid`, `dome`, `arena`; `plate` (default on for these; `true` adds one to the older presets) | low stone houses with a dome and a tower and people walking; a field with a small building, trees and a goal; the sea with ferries and white cliffs; a snowy peak with a train leaving a portal; a pyramid in sand; a domed basilica; an arena of arches. All have a dark name plate with the `label` |
 
 Kit-wide since 2026-11-22: a sign or tag fades when it is far from the camera's point (a neighbour layer never

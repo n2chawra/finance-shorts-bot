@@ -51,6 +51,9 @@ export const Legible: React.FC<{ x: number; y: number; w: number; h: number; siz
   const scenery = size * s * c.z < MIN_READ || sx0 < 0 || sx1 > c.W || sy0 < 0 || sy1 > c.H - BOTTOM;
   // far too small to read (a whole-stack pull-back): a smudge of letters is noise, so it isn't drawn (QA, 2026-11-21)
   if (size * s * c.z < 30) return null;
+  // and not where the pull-back's name chips (Dive.tsx StackLegend, from zoom 0.62) take over: the sign under its
+  // chip drew every name twice (QA 2026-11-23, v-20261123-51: "CITE and SAINT-MAUR each appear twice")
+  if (c.z < 0.62) return null;
   return (
     <g data-probe={scenery ? "skip" : undefined} transform={s > 1 ? `translate(${mx} ${my}) scale(${s}) translate(${-mx} ${-my})` : undefined}>
       {children}

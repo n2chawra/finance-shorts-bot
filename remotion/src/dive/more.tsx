@@ -8,6 +8,7 @@
  *   hall     a pillared hall (a flood tank, a cistern, a crypt): `count` pillars, light shafts, mist, a walker
  *   passage  a passage: walk (people with lamps in a line) | water (a rushing channel) | sewer
  *   pumps    a pump room: impellers spinning, pipes carrying water up
+ *   spiral   a spiral stair in a round shaft, people climbing and walking down its flights
  *   dig      a station still being built: shored box, turning cutterhead, workers, a swinging crane hook
  *   pour     water pouring in from the left into a churning pool (a flood arriving)
  *   surface  more presets: town | field | sea | mountain | pyramid | dome | arena, each with a readable name plate
@@ -585,4 +586,38 @@ export const Dig: React.FC<PieceProps> = ({ L, w, g }) => {
   );
 };
 
-export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well, dig: Dig };
+
+// ------------------------------------------------------------------ spiral (2026-11-23, for v-20261123-51)
+
+/** A spiral stair in a round shaft from `fromFt` to `toFt` (Abbesses): flights zigzag down the drum, people climb
+ *  up and walk down them, the drum glows on `glowOn`, its sign with the depth beside the bottom. */
+export const Spiral: React.FC<PieceProps> = ({ L, w, g }) => {
+  const s = L.spec, look = w.look;
+  const y0 = w.Y(s.fromFt ?? 0) + 60, y1 = w.Y(s.toFt ?? L.ft) + 160;
+  const cx = s.side === "left" ? 300 : 800, rw = 130;
+  const col = s.color ?? "#2fa86a";
+  const glowAt = L.at(s.glowOn);
+  const glow = ramp(g, glowAt - 3, glowAt + 12) * outro(w, g);
+  const step = 110, n = Math.max(2, Math.floor((y1 - y0) / step));
+  // the zigzag path of the flights, top to bottom
+  const pts: [number, number][] = Array.from({ length: n + 1 }, (_, i) => [i % 2 ? cx + rw - 24 : cx - rw + 24, y0 + i * step]);
+  const at = (u: number): [number, number] => { const f = u * n, i = Math.min(n - 1, Math.floor(f)), t = f - i; const a = pts[i]!, b = pts[i + 1]!; return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; };
+  return (
+    <g>
+      <rect x={cx - rw - 18} y={y0 - 18} width={2 * rw + 36} height={y1 - y0 + 36} rx={40} fill={shade(look.deep, 0.05)} />
+      <rect x={cx - rw} y={y0} width={2 * rw} height={y1 - y0} rx={30} fill={shade(col, -0.55)} stroke={INK} strokeWidth={STROKE} />
+      <Glow x={cx} y={(y0 + y1) / 2} r={(y1 - y0) * 0.6} color={col} o={0.15 + 0.35 * glow} />
+      {/* the central newel post */}
+      <rect x={cx - 10} y={y0} width={20} height={y1 - y0} fill={shade(col, -0.3)} />
+      {pts.slice(0, -1).map((a, i) => { const b = pts[i + 1]!; return <g key={i}>
+        <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={INK} strokeWidth={30} strokeLinecap="round" />
+        <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={col} strokeWidth={20} strokeLinecap="round" />
+        {Array.from({ length: 6 }, (_, j) => { const t = (j + 0.5) / 6; return <line key={j} x1={a[0] + (b[0] - a[0]) * t} y1={a[1] + (b[1] - a[1]) * t - 9} x2={a[0] + (b[0] - a[0]) * t} y2={a[1] + (b[1] - a[1]) * t + 9} stroke={shade(col, -0.4)} strokeWidth={4} />; })}
+      </g>; })}
+      {Array.from({ length: s.riders ?? 4 }, (_, i) => { const up = i % 2 === 0; const u0 = loopU(w, g, 1, i / (s.riders ?? 4)); const u = up ? 1 - u0 : u0; const [x, y] = at(u); return <Person key={i} x={x} y={y - 12} i={i + 1} step={u0 * n * 3} s={0.55} dir={x > cx ? -1 : 1} />; })}
+      <Sign x={cx > 540 ? 150 : 560} y={y1 - 160} w={430} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+    </g>
+  );
+};
+
+export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well, dig: Dig, spiral: Spiral };
