@@ -2818,6 +2818,109 @@
       "found": "2026-11-23",
       "expires": "2027-02-21",
       "status": "new"
+    },
+    {
+      "id": "2026-11-24-marvel-525m-heroes-short",
+      "format": "short",
+      "title": "Marvel Put Captain America Up as Collateral. Disney Paid $4 Billion",
+      "category": "film",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "founder_bet"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "demand": {
+        "title": "Marvel Bet Everything on a Hero Nobody Wanted",
+        "views": 2280179,
+        "url": "https://www.youtube.com/shorts/vBw4jNaJQ28",
+        "channel": "Rise Fall Repeat",
+        "channelSubs": 19900,
+        "outlier": 114.6
+      },
+      "hook": "In 2005 Marvel borrowed the money for its own movies, and the security was ten of its own heroes.",
+      "templates": [
+        "any"
+      ],
+      "angle": "The thing in your hand: a Captain America comic. Dec 1996: Marvel Entertainment Group files Chapter 11 (its FY1996 10-K). By 2005 its best-known film rights are licensed out (Spider-Man with Sony, X-Men and the Fantastic Four with Fox, per the 10-K). The bet: a $525 million film facility from Merrill Lynch, $465M senior and $60M mezzanine, secured by the theatrical film rights to ten characters or titles, Captain America, the Avengers, Black Panther, Doctor Strange among them; if the films failed, the lenders kept those rights. Iron Man, released 2 May 2008, was its first film. On 31 Aug 2009 Disney agreed to buy Marvel for about $4 billion, $30 a share in cash plus Disney stock, for more than 5,000 characters. Gold poster: $4 billion. Ending: the next time you see the Avengers on a poster, they were once a bank's collateral.",
+      "why_now": "Rise Fall Repeat's Marvel founder-bet Short is the niche scan's biggest on-niche breakout (2.28M on 19.9K, 115x) and no topic of ours used the subject; the core founder_bet lane had one open topic (Yahoo).",
+      "facts": [
+        {
+          "label": "Marvel's film slate credit facility",
+          "value": 525,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2005-12-31",
+          "source": "Marvel Entertainment 10-K, FY2005",
+          "url": "https://www.sec.gov/Archives/edgar/data/933730/000111667906000702/marv10k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Senior bank debt inside the facility",
+          "value": 465,
+          "unit": "money_million",
+          "currency": "USD",
+          "as_of": "2005-12-31",
+          "source": "Marvel Entertainment 10-K, FY2005",
+          "url": "https://www.sec.gov/Archives/edgar/data/933730/000111667906000702/marv10k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Characters or titles whose film rights were pledged as collateral",
+          "value": 10,
+          "unit": "count",
+          "as_of": "2005-12-31",
+          "source": "Marvel Entertainment 10-K, FY2005",
+          "url": "https://www.sec.gov/Archives/edgar/data/933730/000111667906000702/marv10k.htm",
+          "fixed": true
+        },
+        {
+          "label": "Disney's price for Marvel",
+          "value": 4,
+          "unit": "money_billion",
+          "currency": "USD",
+          "as_of": "2009-08-31",
+          "source": "The Walt Disney Company",
+          "url": "https://thewaltdisneycompany.com/press-releases/disney-to-acquire-marvel-entertainment/",
+          "fixed": true
+        },
+        {
+          "label": "Cash per Marvel share in Disney's offer",
+          "value": 30,
+          "unit": "money",
+          "currency": "USD",
+          "as_of": "2009-08-31",
+          "source": "The Walt Disney Company",
+          "url": "https://thewaltdisneycompany.com/press-releases/disney-to-acquire-marvel-entertainment/",
+          "fixed": true
+        },
+        {
+          "label": "Marvel characters in the deal (more than)",
+          "value": 5000,
+          "unit": "count",
+          "as_of": "2009-08-31",
+          "source": "The Walt Disney Company",
+          "url": "https://thewaltdisneycompany.com/press-releases/disney-to-acquire-marvel-entertainment/",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Marvel Entertainment Group filed Chapter 11 on 27 Dec 1996 (FY1996 10-K); the 2005 company is Marvel Enterprises/Entertainment, which acquired MEG in 1998: say 'Marvel went bankrupt in 1996', not that the 2005 borrower did",
+        "The ten pledged characters or titles per the FY2005 10-K: Ant-Man, Black Panther, Captain America, Cloak & Dagger, Doctor Strange, Hawkeye, Nick Fury, Power Pack, Shang-Chi, The Avengers. Iron Man is NOT on the list: never say Iron Man was the collateral",
+        "Iron Man released 2 May 2008 (FY2008 10-K). No box-office figure is sourced; leave it out or add one from an official release",
+        "Disney's price is 'approximately $4 billion' in cash and stock, announced 31 Aug 2009; the deal closed later (Dec 2009)",
+        "'If the films failed the lenders kept the rights' is the structure of a secured facility; attribute it as 'the film rights were the security' (10-K wording: pledged as collateral)"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/933730/000111667906000702/marv10k.htm",
+        "https://www.sec.gov/Archives/edgar/data/933730/000136231009002976/c81637e10vk.htm",
+        "https://thewaltdisneycompany.com/press-releases/disney-to-acquire-marvel-entertainment/",
+        "https://www.sec.gov/Archives/edgar/data/0000874808/000095013697000461/0000950136-97-000461.txt"
+      ],
+      "found": "2026-11-24",
+      "expires": "2027-02-22",
+      "status": "new"
     }
   ]
 }
