@@ -92,6 +92,7 @@ def spec_problems(th: dict, title: str, story: str | None = None) -> list[str]:
     if isinstance(things, list) and not 1 <= len(things) <= THINGS_MAX:
         out.append(f"{len(things)} things in the picture (`things`): one subject filling half the frame, {THINGS_MAX} things at most "
                    f"besides the face and the words, so it reads at 168 px wide")
+    out += event_subject_problems(th, title)
     t_scales = {w for w in SCALES if re.search(rf"\b{w}s?\b", title, re.I)}
     w_scales = {w for w in SCALES if re.search(rf"\b{w}s?\b", str(th.get("words", "")), re.I)}
     if t_scales and w_scales - t_scales:
@@ -427,6 +428,89 @@ def subject_words(text: str) -> set[str]:
     """The words of a title that name its subject (a brand, a person, a thing), lower case, plural 's' off."""
     words = re.findall(r"[a-z0-9]+", text.lower().replace("'", "").replace("\u2019", ""))
     return {w[:-1] if len(w) > 4 and w.endswith("s") else w for w in words if len(w) >= 3 and w not in GENERIC and not w.isdigit()}
+
+
+# Owner, 2026-11-23 (Disaster Desk, L-20261122-42, "The Gauge Said Normal. The Tower Was Nearly Full."): long titles
+# and thumbnails were too technical for someone who never heard of the event. A long video is found by people who
+# type the event's common name ("bp texas city refinery explosion"), so its title says that name, then the
+# curiosity ("Inside the Texas City Refinery Explosion", "The Texas City Refinery Explosion: Why the Gauge Lied"),
+# and an event story's thumbnail shows the event itself, never an instrument, a screen or a part.
+EVENT_NOUNS = ("explosion", "collapse", "crash", "disaster", "sinking", "fire", "meltdown", "derailment", "blowout",
+               "spill", "leak", "flood", "tragedy")
+INSTRUMENTS = re.compile(r"\b(gauge|dial|meter|screen|display|readout|panel|sensor|valve|switch|chart|graph|diagram|"
+                         r"schematic|reading|indicator|alarm|monitor|bolt|weld|rivet|part)s?\b", re.I)
+
+
+# words of a search that only ask ("what happened to toys r us"): the title needn't repeat them
+SEARCH_FILLER = {"happened", "happen", "happens", "step", "explain", "works", "use", "used", "inside"}
+
+
+def _stem_in(word: str, words: set[str]) -> bool:
+    """`word` or a form of it ("explosion"/"exploded", "work"/"works", "bp"/"bps") is among `words`."""
+    stem = word[:5] if len(word) >= 6 else word
+    return any(w.startswith(stem) or word.startswith(w) and len(w) >= 3 for w in words)
+
+
+def event_noun(text: str) -> str | None:
+    """The event the words name (explosion, collapse, crash...), if any."""
+    low = text.lower()
+    return next((n for n in EVENT_NOUNS if re.search(rf"\b{n}(s|es)?\b", low)), None)
+
+
+def topic_search(vid: str, root: Path = ROOT) -> str:
+    """What someone who never heard of this story types to find it: the plan's `search`, else its feed topic's."""
+    import json
+    d = cpath(root, "videos") / vid
+    plan = json.loads((d / "plan.json").read_text(encoding="utf-8")) if (d / "plan.json").is_file() else {}
+    if plan.get("search"):
+        return str(plan["search"])
+    tid = (plan.get("topic") or {}).get("feed_id") or (plan.get("topic") or {}).get("id")
+    for name in ("improvement/longform/topics.json", "improvement/research/topics.json"):
+        f = cpath(root, name)
+        if tid and f.is_file():
+            data = json.loads(f.read_text(encoding="utf-8"))
+            for t in (data.get("topics", []) if isinstance(data, dict) else data):
+                if isinstance(t, dict) and t.get("id") == tid and t.get("search"):
+                    return str(t["search"])
+    return ""
+
+
+def long_title_problems(title: str, search: str) -> list[str]:
+    """A long title says the event's common name, as people search it, before any curiosity (owner, 2026-11-23)."""
+    if not search.strip():
+        return ["plan needs `search`: what someone who never heard of this story types to find it, the event's or "
+                "subject's common name (\"bp texas city refinery explosion\", \"how does face id work\"); the title "
+                "says that name (owner, 2026-11-23)"]
+    words = {w: w for w in re.findall(r"[a-z0-9]+", search.lower().replace("'", ""))}
+    want = sorted(w for w in subject_words(search) if w not in SEARCH_FILLER)
+    shown = {w: next((k for k in words if k.startswith(w)), w) for w in want}
+    have = subject_words(title) | {w.rstrip("s") for w in re.findall(r"[a-z0-9]+", title.lower())}
+    missing = [w for w in want if not _stem_in(w, have)]
+    out = []
+    noun = event_noun(search)
+    if noun and not _stem_in(noun, have):
+        out.append(f"the title {title!r} never says {noun!r}: people who don't know the story search the event by its "
+                   f"name ({search!r}), so the title names it, then the curiosity (\"Inside the Texas City Refinery "
+                   f"Explosion\", \"The Texas City Refinery Explosion: Why the Gauge Lied\"; owner, 2026-11-23)")
+    allowed = max(1, len(want) // 3) if len(want) >= 2 else 0   # one word may go ("question" said as "answer")
+    if len(missing) > allowed and not (noun and missing == [noun]):
+        out.append(f"the title {title!r} leaves out {', '.join(shown[w] for w in missing)} of what people search ({search!r}): say the "
+                   f"story's common name a stranger would recognise, not a technical detail of it (owner, 2026-11-23)")
+    return out
+
+
+def event_subject_problems(th: dict, title: str) -> list[str]:
+    """An event story's thumbnail shows the event (the explosion, the collapse, the crowd), not an instrument."""
+    things = th.get("things")
+    if not event_noun(title) or not isinstance(things, list) or not things:
+        return []
+    subject = str(things[0])
+    if INSTRUMENTS.search(subject):
+        return [f"the subject {subject!r} is a detail only someone who knows the story understands: an event's thumbnail "
+                f"shows the event itself at its biggest moment (the fireball over the refinery, the walkway falling on "
+                f"the crowd, the ship on its side), so a stranger sees what happened at a glance; a gauge, screen or part "
+                f"can sit small beside it (owner, 2026-11-23)"]
+    return []
 
 
 def reference_problems(th: dict, refs: list[dict]) -> list[str]:

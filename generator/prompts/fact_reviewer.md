@@ -38,6 +38,12 @@ are the check. A line about a real person may say only what the sources say (no 
      date.
 3. Otherwise — the sources disagree, or nothing reliable shows it — the fact is not confirmed.
 
+**Retired sources** (research factbook-retired, 2026-11-19): the CIA World Factbook's live country pages
+(`cia.gov/the-world-factbook/countries/...`) now show only a retirement notice. A fact cited there is confirmed
+on its archived edition (`cia.gov/the-world-factbook/about/archives/<year>/countries/...`, 2022-2025, named with
+the year: "CIA World Factbook (2022)"), the country's national statistics office or Britannica; never call a live
+Factbook page unreachable-so-search, and fail a `facts[].url` on the live pages with "cite the archived edition".
+
 Write down how each fact was confirmed (the page, or which search results). An unreachable
 website is never a reason to stop: it is a fact you confirm by search, or a failed video.
 

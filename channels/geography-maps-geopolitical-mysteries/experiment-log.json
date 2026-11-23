@@ -31,6 +31,21 @@
       ],
       "description": "Map channels: the country a line is about gets a bright line with a glowing head running round its border until it closes (remotion/src/flat/map.tsx Fill.trace; director.md)",
       "evidence": "owner note cmwn0p9tz0001jv09zeeqqwpd (19 Nov, on v-20261119-03): 'should be highlighted in animated way like lines rounding and completing over the corners'"
+    },
+    {
+      "id": "2026-11-23-factbook-archived",
+      "area": "pipeline",
+      "format": "short",
+      "status": "adopted",
+      "startedAt": "2026-11-23",
+      "templates": [
+        "short_story",
+        "long_story"
+      ],
+      "proposal": "factbook-retired",
+      "description": "Fact review confirms CIA World Factbook figures on the archived editions (2022-2025), the statistics office or Britannica; a facts[].url on the retired live pages fails (generator/prompts/fact_reviewer.md)",
+      "evidence": "research 2026-11-19: the live country pages show only the retirement notice",
+      "guard": "qa_failures"
     }
   ]
 }

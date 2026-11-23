@@ -1,0 +1,57 @@
+{
+  "agent": "improver",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-23T16:52:01Z",
+  "finishedAt": "2026-11-23T16:57:31Z",
+  "summary": "Answered the owner's two notes on Disaster Desk's Texas City long video: long titles must now name the event as people search it, and an event's thumbnail must show the event, not a gauge, both checked in code for every channel. The fact reviewer now uses the archived CIA World Factbook. No Shorts challenger started yet: too little data.",
+  "decision": "acted",
+  "why": "Owner notes come first (two open on L-20261122-42: title and thumbnail too technical). One adopt proposal (factbook-retired) was a plain fix. No experiment is running on any channel and Shorts with 48 h data are 6, 3, 2 and 0, too few to start a weekly-loop cycle; the 21 Nov owner changes still need their first Shorts read.",
+  "findings": [
+    {
+      "title": "Texas City long video: title and thumbnail only made sense to someone who knew the story",
+      "detail": "Topic title 'The Gauge Said Normal. The Tower Was Nearly Full.', video title 'How BP's Texas City Refinery Blew Up While Its Gauge Read Normal' (no 'explosion'), thumbnail A a green NORMAL panel beside a red tank with 'It was full'. The topic's top hit (2.26M views) shows the geyser over the refinery."
+    },
+    {
+      "title": "Evaluator: no experiments running on any channel",
+      "detail": "Geography 6 Shorts with 48 h data (why_shaped 79.3% viewed vs what_if_world 58.7%), tech 3 (45.5% viewed), Craze & Crash 2, Disaster Desk 0. Impact: geography's week of 16 Nov n=3, 737 median views, 62.8% viewed, 59.2% stayed to watch."
+    },
+    {
+      "title": "Recurring failures are mostly notes the checks already explain",
+      "detail": "Top kinds in 14 days: text off the frame (geography 11 videos), gaps with nothing new (tech 6), the story spine (Craze & Crash 13), source lines too wide (Disaster Desk 4); each check's message already says the fix."
+    },
+    {
+      "title": "All four channels' queues are empty (health red)",
+      "detail": "0 Shorts ready on every channel: the video runs' problem, not a test's."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Long titles say the event's searched name (Disaster Desk owner note, every channel)",
+      "detail": "renderer/thumbs.py long_title_problems + topic_search, in check-plan for long plans: plan `search` (else the feed topic's); fails a title without the event noun or most search words. long_story README, checklist.",
+      "branch": "agent/improver/2026-11-23"
+    },
+    {
+      "title": "Event thumbnails show the event, not an instrument (Disaster Desk owner note)",
+      "detail": "renderer/thumbs.py event_subject_problems in the spec check: when the title names an explosion, collapse, crash..., things[0] can't be a gauge, screen, valve or part.",
+      "branch": "agent/improver/2026-11-23"
+    },
+    {
+      "title": "Fact review: CIA World Factbook archived editions (geography, proposal factbook-retired)",
+      "detail": "generator/prompts/fact_reviewer.md",
+      "branch": "agent/improver/2026-11-23",
+      "experiment": "2026-11-23-factbook-archived"
+    },
+    {
+      "title": "Proposal dd-feed-celebrity-crash-lane rejected",
+      "detail": "A note for three topics belongs on those topics in the feed (research); the profile already says cause, not gore.",
+      "branch": "agent/improver/2026-11-23"
+    }
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [
+    {
+      "label": "Long title and thumbnail rule",
+      "url": "renderer/templates/long_story/README.md"
+    }
+  ]
+}

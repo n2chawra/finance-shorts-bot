@@ -164,3 +164,47 @@ def test_a_good_set_passes():
     ok = [("a", {"pattern_id": "P1", "words": "Almost dead", "score": 9}), ("b", {"pattern_id": "P2", "words": "Closed?"}),
           ("c", {"pattern_id": "P3", "words": ""})]
     assert thumbs.channel_problems(ok, RULES, pick="a") == []
+
+
+# owner, 2026-11-23 (Disaster Desk, L-20261122-42): titles and thumbnails a stranger to the event would click
+SEARCH = "bp texas city refinery explosion"
+
+
+def test_a_long_title_names_the_event_as_people_search_it():
+    assert thumbs.long_title_problems("Inside the Texas City Refinery Explosion", SEARCH) == []
+    assert thumbs.long_title_problems("15 Dead in One Night: The Texas City Refinery Explosion", SEARCH) == []
+    abstract = thumbs.long_title_problems("The Gauge Said Normal. The Tower Was Nearly Full.", SEARCH)
+    assert any("never says 'explosion'" in p for p in abstract) and any("leaves out" in p for p in abstract)
+    assert any("never says 'explosion'" in p for p in
+               thumbs.long_title_problems("How BP's Texas City Refinery Blew Up While Its Gauge Read Normal", SEARCH))
+    assert any("plan needs `search`" in p for p in thumbs.long_title_problems("Anything", ""))
+
+
+def test_long_titles_on_other_channels_still_pass():
+    assert thumbs.long_title_problems("How Face ID Actually Works", "how does face id work") == []
+    assert thumbs.long_title_problems("Why Toys R Us Died", "what happened to toys r us") == []
+    assert thumbs.long_title_problems("How Much Energy Does One AI Answer Use?", "how much energy does one ai question use") == []
+    assert thumbs.long_title_problems("The Hyatt Regency Walkway Collapse", "hyatt regency walkway collapse") == []
+
+
+def test_an_event_thumbnail_shows_the_event_not_an_instrument():
+    title = "Inside the Texas City Refinery Explosion"
+    gauge = {**GOOD, "things": ["control-room screen reading NORMAL", "tower"]}
+    assert any("stranger" in p for p in thumbs.spec_problems(gauge, title))
+    fireball = {**GOOD, "things": ["fireball over the refinery towers", "small gauge"]}
+    assert not any("stranger" in p for p in thumbs.spec_problems(fireball, title))
+    # not an event story: a screen may be the subject (the tech channel)
+    assert not any("stranger" in p for p in thumbs.spec_problems(gauge, "How Face ID Actually Works"))
+
+
+def test_topic_search_reads_the_plan_then_the_feed(tmp_path, monkeypatch):
+    monkeypatch.setattr(thumbs, "cpath", lambda root, name: root / name)
+    d = tmp_path / "videos" / "L-x"
+    d.mkdir(parents=True)
+    (d / "plan.json").write_text(json.dumps({"topic": {"feed_id": "t1"}}))
+    feed = tmp_path / "improvement" / "longform"
+    feed.mkdir(parents=True)
+    (feed / "topics.json").write_text(json.dumps({"topics": [{"id": "t1", "search": SEARCH}]}))
+    assert thumbs.topic_search("L-x", tmp_path) == SEARCH
+    (d / "plan.json").write_text(json.dumps({"search": "texas city explosion", "topic": {"feed_id": "t1"}}))
+    assert thumbs.topic_search("L-x", tmp_path) == "texas city explosion"
