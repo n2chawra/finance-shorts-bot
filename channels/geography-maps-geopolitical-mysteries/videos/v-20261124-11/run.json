@@ -1,0 +1,208 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:21:24.333273+00:00",
+    "finishedAt": "2026-11-23T23:21:24.333273+00:00",
+    "notes": [
+      "style.bpm must be 72–80 for explorer",
+      "description opens with 'why is there', already used by v-20261120-04"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:21:29.032917+00:00",
+    "finishedAt": "2026-11-23T23:21:29.032917+00:00",
+    "notes": [
+      "description opens with 'how did a', already used by v-20261119-02"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:21:32.950496+00:00",
+    "finishedAt": "2026-11-23T23:21:32.950496+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:25:30.788915+00:00",
+    "finishedAt": "2026-11-23T23:25:30.788915+00:00",
+    "notes": [
+      "beat 'fortress'.params.moments[0].what contains a typed number; use a placeholder: 'the year sign flips to 1824'",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 2 questions in about 80 s of speech; at least 4 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:25:39.929113+00:00",
+    "finishedAt": "2026-11-23T23:25:39.929113+00:00",
+    "notes": [
+      "beat 'fortress'.say contains a typed number; use a placeholder: 'It began in 1824, when a chief called Moshoeshoe led his people up Thaba Bosiu, a flat-topped mountain no army could take.'"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:26:09.298617+00:00",
+    "finishedAt": "2026-11-23T23:26:09.298617+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:26:10.106374+00:00",
+    "finishedAt": "2026-11-23T23:26:10.106374+00:00",
+    "notes": [
+      "beat 'fortress'.events.flat: no word 'flat' in this beat's spoken line"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:26:14.282459+00:00",
+    "finishedAt": "2026-11-23T23:26:14.282459+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "warning: beat 'size' runs 7.1 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:31:30.870797+00:00",
+    "finishedAt": "2026-11-23T23:31:30.870797+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:33:47.300434+00:00",
+    "finishedAt": "2026-11-23T23:33:47.300434+00:00",
+    "notes": [
+      "Facts confirmed on the cited page en.wikipedia.org/wiki/Geography_of_Lesotho: area 30,355 km2; lowest point 1,400 m at Makhaleng/Orange junction, highest low point of any country. History (Thaba Bosiu, Basotho Wars, 1868 British protection/Basutoland, 1869 Aliwal North border on the Caledon, 1910 Union, 1966 independence) matches Britannica and SAHO. Belgium ~30,689 km2 so 'about as big' holds. Disclaimer ends description. Note: profile prefers Britannica/national sources over Wikipedia for future citations."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:33:10.179484+00:00",
+    "finishedAt": "2026-11-23T23:34:34.478497+00:00",
+    "notes": [
+      "text 'BELGIUM' at 10.1 s runs outside the frame",
+      "text 'BASUTOLAND' at 43.5 s is 34.6 px, below the 44 px minimum",
+      "2.0 s with nothing new on screen in beat 'highest' (at most 1.8 s): add an action on the phrase being said there",
+      "the cover looks like v-20261121-03's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:34:56.510290+00:00",
+    "finishedAt": "2026-11-23T23:34:56.510290+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:35:21.666743+00:00",
+    "finishedAt": "2026-11-23T23:36:13.187287+00:00",
+    "notes": [
+      "2.0 s with nothing new on screen in beat 'highest' (at most 1.8 s): add an action on the phrase being said there"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:36:49.850160+00:00",
+    "finishedAt": "2026-11-23T23:37:38.400147+00:00",
+    "notes": [
+      "70 s, sky/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:37:53.183460+00:00",
+    "finishedAt": "2026-11-23T23:38:41.180832+00:00",
+    "notes": [
+      "70 s, sky/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:40:39.220188+00:00",
+    "finishedAt": "2026-11-23T23:40:39.220188+00:00",
+    "notes": [
+      "[scene] Union beat (45.4-51.1 s, remotion/src/videos/v-20261124-11/Union.tsx): 'Basutoland stayed out' is never shown. At 47.5 s Basutoland is filled the same blue as the Cape colony (BLUE #2f6fd0 vs South Africa #4a7ab0), so it reads as part of the Cape. At 50.0 s the whole union turns that blue and South Africa's map flag sits over Basutoland's west half, with no BASUTOLAND label or edge yet: the edge and label start at 'stayed' (~50 s) with under 1 s left in the beat while the camera is still moving. Fix: give Basutoland a contrasting fill (or leave it uncoloured) from 'colonies' on, keep the SA flag off it (place it west, near 24E), and bring in the edge and label at 'joined', so the hole stays visible while the colours merge.",
+      "[scene] Reveal (5.0 s) and Highest/Loop (62.5, 65.0, 67.5 s): South Africa's map flag is cut by the left edge, leaving a red-green-blue strip at the frame edge next to Lesotho. Hide or fade the South Africa flag when the camera is close on Lesotho, or move it so it stays in frame."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:41:38.191586+00:00",
+    "finishedAt": "2026-11-23T23:42:27.253588+00:00",
+    "notes": [
+      "70 s, sky/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T23:43:41.991180+00:00",
+    "finishedAt": "2026-11-23T23:43:41.991180+00:00",
+    "notes": [
+      "[scene] Kingdom beat (51.1-56.8 s, remotion/src/videos/v-20261124-11/Kingdom.tsx line 56): South Africa's map flag fades in on 'South' (~55 s) at South Africa's centroid while the camera is close on Lesotho, so it sits cut by the left edge as a red-green-blue strip (still at 55.7 s), the same defect fixed in Reveal/Highest/Loop. Drop the map flag here (South Africa glowing round Lesotho and the arrows already show 'on every side') or plant it inside the frame. Re-checked and fixed: Union (46.9-50.7 s) now shows gold Basutoland with a white edge and label, staying out of green South Africa, with the planted flag clear of it; Reveal, Highest and Loop no longer show a cut flag."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:44:16.006238+00:00",
+    "finishedAt": "2026-11-23T23:45:04.867246+00:00",
+    "notes": [
+      "70 s, sky/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:46:14.560006+00:00",
+    "finishedAt": "2026-11-23T23:46:14.560006+00:00",
+    "notes": [
+      "Re-review after fixes: every beat on the map with the flags of Lesotho, South Africa, Belgium and Britain; Union (46.9-50.7 s) now shows gold Basutoland staying out of green South Africa; no cut flag at any frame edge (Kingdom now warms South Africa orange with arrows); signs count to the sourced 30,355 km2 and 1,400 m; loop and pick-one close fine; 70 s, peak -1.0 dB, mean -16.2 dB, layout and craft clean; at the level of v-20261120-05."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:45:11.990556+00:00",
+    "finishedAt": "2026-11-23T23:50:57.473602+00:00",
+    "notes": [
+      "70 s, sky/explorer, peak -1.0 dB, mean -16.2 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-23T23:51:10.583072+00:00",
+    "finishedAt": "2026-11-23T23:51:10.583072+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,1298 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 30355,
+ "story": "why_shaped",
+ "shape": "the-high-ground",
+ "currency": "USD",
+ "style": {
+  "palette": "sky",
+  "genre": "explorer",
+  "key": "E",
+  "bpm": 78,
+  "look": {
+   "stage": "field",
+   "header": "chalk",
+   "holder": "sign",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Mountains or the British: which really saved Lesotho? Comment",
+ "feed_id": "2026-11-17-lesotho-inside-south-africa",
+ "facts": [
+  {
+   "label": "Lesotho, total area",
+   "value": 30355,
+   "unit": "km2",
+   "as_of": "2024-01-01",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Geography_of_Lesotho",
+   "fixed": true
+  },
+  {
+   "label": "Lesotho's lowest point (Orange and Makhaleng rivers), the highest low point of any country",
+   "value": 1400,
+   "unit": "m",
+   "as_of": "2024-01-01",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Geography_of_Lesotho",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "kingdom",
+  "sec": 4.0,
+  "words": "Why the *hole*?",
+  "tag": "Lesotho",
+  "angle": "question",
+  "unique": "no other covers fetched this run; the demand reference (Why Chile Is So Long & Narrow) is a why-shaped map video, so the cover is our own hook frame: the gap in South Africa with Lesotho's flag in it"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Why does South Africa have a hole in the middle?",
+   "events": {
+    "south": {
+     "word": "South"
+    },
+    "africa": {
+     "word": "Africa"
+    },
+    "hole": {
+     "word": "hole"
+    },
+    "middle": {
+     "word": "middle"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: South Africa, the gap in its middle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "middle",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "south",
+      "what": "South Africa's border traces in light round its flag"
+     },
+     {
+      "at": "africa",
+      "what": "the trace runs on round the coast"
+     },
+     {
+      "at": "hole",
+      "what": "a gap in its middle flashes"
+     },
+     {
+      "at": "middle",
+      "what": "the camera pushes in on the gap"
+     }
+    ],
+    "things": [
+     "map of southern africa",
+     "south africa flag",
+     "the gap"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "hole"
+    }
+   ]
+  },
+  {
+   "id": "reveal",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "That hole is a country, Lesotho.",
+   "events": {
+    "hole": {
+     "word": "hole"
+    },
+    "country": {
+     "word": "country"
+    },
+    "lesotho": {
+     "word": "Lesotho"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Reveal",
+    "place": "on the map: the gap in South Africa, close",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "lesotho",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hole",
+      "what": "the gap pulses"
+     },
+     {
+      "at": "country",
+      "what": "the gap's border traces round"
+     },
+     {
+      "at": "lesotho",
+      "what": "Lesotho's flag fills the gap and LESOTHO writes across it"
+     }
+    ],
+    "things": [
+     "the gap",
+     "lesotho border",
+     "lesotho flag"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "lesotho"
+    }
+   ]
+  },
+  {
+   "id": "size",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "A whole kingdom of {fact1}, about as big as Belgium, and every road out of it crosses into South Africa.",
+   "events": {
+    "kingdom": {
+     "word": "kingdom"
+    },
+    "about": {
+     "word": "about"
+    },
+    "belgium": {
+     "word": "Belgium"
+    },
+    "road": {
+     "word": "road"
+    },
+    "crosses": {
+     "word": "crosses"
+    },
+    "south": {
+     "word": "South"
+    },
+    "count": {
+     "sec": 1.9
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Size",
+    "place": "on the map: Lesotho's border posts, Belgium laid beside it for scale",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "belgium",
+      "size": "wide"
+     },
+     {
+      "at": "road",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "kingdom",
+      "what": "a sign on Lesotho shows its area"
+     },
+     {
+      "at": "count",
+      "what": "the area on the sign counts up to its figure"
+     },
+     {
+      "at": "about",
+      "what": "the sign settles with a bump"
+     },
+     {
+      "at": "belgium",
+      "what": "Belgium's shape slides in beside Lesotho, the same size"
+     },
+     {
+      "at": "road",
+      "what": "roads draw out from the capital"
+     },
+     {
+      "at": "crosses",
+      "what": "border gates pop where each road crosses"
+     },
+     {
+      "at": "south",
+      "what": "every road ends inside South Africa"
+     }
+    ],
+    "things": [
+     "area sign",
+     "belgium shape",
+     "roads",
+     "border gates"
+    ],
+    "fig": {
+     "area": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "kingdom"
+    }
+   ]
+  },
+  {
+   "id": "fortress",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "It began with a chief called Moshoeshoe, who led his people up Thaba Bosiu, a flat-topped mountain no army could take.",
+   "events": {
+    "chief": {
+     "word": "chief"
+    },
+    "moshoeshoe": {
+     "word": "Moshoeshoe"
+    },
+    "people": {
+     "word": "people"
+    },
+    "thaba": {
+     "word": "Thaba"
+    },
+    "mountain": {
+     "word": "mountain"
+    },
+    "army": {
+     "word": "army"
+    },
+    "take": {
+     "word": "take"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Fortress",
+    "place": "on the map: Thaba Bosiu, a flat mountain in the Caledon valley",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "moshoeshoe",
+      "size": "close"
+     },
+     {
+      "at": "thaba",
+      "size": "medium"
+     },
+     {
+      "at": "army",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "chief",
+      "what": "a chief in a top hat steps onto the map"
+     },
+     {
+      "at": "moshoeshoe",
+      "what": "MOSHOESHOE labels him"
+     },
+     {
+      "at": "people",
+      "what": "his people walk up behind him"
+     },
+     {
+      "at": "thaba",
+      "what": "a flat-topped mountain rises under them"
+     },
+     {
+      "at": "mountain",
+      "what": "THABA BOSIU writes on it"
+     },
+     {
+      "at": "army",
+      "what": "raiders climb at its foot"
+     },
+     {
+      "at": "take",
+      "what": "they slide back down the cliffs"
+     }
+    ],
+    "things": [
+     "moshoeshoe",
+     "people",
+     "thaba bosiu mountain",
+     "raiders"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "moshoeshoe"
+    },
+    {
+     "kind": "thud",
+     "at": "take"
+    }
+   ]
+  },
+  {
+   "id": "nation",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "From that fortress he gathered clans scattered by war into one nation, the Basotho, farming the wide valleys to the west.",
+   "events": {
+    "fortress": {
+     "word": "fortress"
+    },
+    "gathered": {
+     "word": "gathered"
+    },
+    "clans": {
+     "word": "clans"
+    },
+    "scattered": {
+     "word": "scattered"
+    },
+    "nation": {
+     "word": "nation"
+    },
+    "basotho": {
+     "word": "Basotho"
+    },
+    "farming": {
+     "word": "farming"
+    },
+    "valleys": {
+     "word": "valleys"
+    },
+    "west": {
+     "word": "west"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Nation",
+    "place": "on the map: the valleys west of the mountains",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "nation",
+      "size": "wide"
+     },
+     {
+      "at": "valleys",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fortress",
+      "what": "the camera pulls back from the mountain"
+     },
+     {
+      "at": "gathered",
+      "what": "small groups walk in from every side"
+     },
+     {
+      "at": "clans",
+      "what": "huts pop up across the land"
+     },
+     {
+      "at": "scattered",
+      "what": "more huts land far apart"
+     },
+     {
+      "at": "nation",
+      "what": "a blue colour spreads over all their land"
+     },
+     {
+      "at": "basotho",
+      "what": "BASOTHO writes across it"
+     },
+     {
+      "at": "farming",
+      "what": "fields of maize stripe the valleys"
+     },
+     {
+      "at": "valleys",
+      "what": "the camera glides west over the fields"
+     },
+     {
+      "at": "west",
+      "what": "the land west of the river glows"
+     }
+    ],
+    "things": [
+     "huts",
+     "clans walking",
+     "basotho land",
+     "maize fields"
+    ]
+   }
+  },
+  {
+   "id": "boers",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "But who else wanted those valleys? Boer settlers, who rolled in by ox wagon and founded the Orange Free State right on top of them.",
+   "events": {
+    "valleys": {
+     "word": "valleys"
+    },
+    "wanted": {
+     "word": "wanted"
+    },
+    "boer": {
+     "word": "Boer"
+    },
+    "settlers": {
+     "word": "settlers"
+    },
+    "rolled": {
+     "word": "rolled"
+    },
+    "wagon": {
+     "word": "wagon"
+    },
+    "founded": {
+     "word": "founded"
+    },
+    "orange": {
+     "word": "Orange"
+    },
+    "state": {
+     "word": "State"
+    },
+    "top": {
+     "word": "top"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Boers",
+    "place": "on the map: the Orange Free State, west of the Caledon River",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "wagon",
+      "size": "close"
+     },
+     {
+      "at": "orange",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "boer",
+      "what": "BOERS labels the settlers"
+     },
+     {
+      "at": "settlers",
+      "what": "settlers walk in from the south-west"
+     },
+     {
+      "at": "wagon",
+      "what": "an ox wagon rolls up behind them"
+     },
+     {
+      "at": "founded",
+      "what": "a flag is planted at Bloemfontein"
+     },
+     {
+      "at": "orange",
+      "what": "an orange colour spreads east from it"
+     },
+     {
+      "at": "state",
+      "what": "ORANGE FREE STATE writes on it"
+     },
+     {
+      "at": "wanted",
+      "what": "the valleys flash"
+     },
+     {
+      "at": "valleys",
+      "what": "the valleys glow gold"
+     },
+     {
+      "at": "rolled",
+      "what": "dust puffs behind the settlers"
+     },
+     {
+      "at": "top",
+      "what": "the orange edge flashes against the Basotho blue"
+     }
+    ],
+    "things": [
+     "ox wagon",
+     "settlers",
+     "free state flag",
+     "orange colour"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "founded"
+    }
+   ]
+  },
+  {
+   "id": "wars",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "War after war, the Boers took the farmland, and the Basotho were pushed back toward the mountains.",
+   "events": {
+    "war": {
+     "word": "War"
+    },
+    "boers": {
+     "word": "Boers"
+    },
+    "took": {
+     "word": "took"
+    },
+    "farmland": {
+     "word": "farmland"
+    },
+    "pushed": {
+     "word": "pushed"
+    },
+    "mountains": {
+     "word": "mountains"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Wars",
+    "place": "on the map: the lowlands between Bloemfontein and the mountains",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "took",
+      "size": "close"
+     },
+     {
+      "at": "mountains",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "war",
+      "what": "crossed spears stamp on the border"
+     },
+     {
+      "at": "boers",
+      "what": "horsemen ride east"
+     },
+     {
+      "at": "took",
+      "what": "orange sweeps over the fields"
+     },
+     {
+      "at": "farmland",
+      "what": "the maize fields turn orange"
+     },
+     {
+      "at": "pushed",
+      "what": "the blue shrinks east"
+     },
+     {
+      "at": "mountains",
+      "what": "the blue stops at the mountains and peaks rise along its edge"
+     }
+    ],
+    "things": [
+     "crossed spears",
+     "horsemen",
+     "orange sweep",
+     "shrinking blue",
+     "mountain peaks"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "war"
+    }
+   ]
+  },
+  {
+   "id": "protect",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "So how did any of it survive? Moshoeshoe asked Britain to protect what was left, and his land became Basutoland.",
+   "events": {
+    "survive": {
+     "word": "survive"
+    },
+    "moshoeshoe": {
+     "word": "Moshoeshoe"
+    },
+    "asked": {
+     "word": "asked"
+    },
+    "britain": {
+     "word": "Britain"
+    },
+    "protect": {
+     "word": "protect"
+    },
+    "left": {
+     "word": "left"
+    },
+    "land": {
+     "word": "land"
+    },
+    "basutoland": {
+     "word": "Basutoland"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Protect",
+    "place": "on the map: Thaba Bosiu, a letter sailing to Britain",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "britain",
+      "size": "wide"
+     },
+     {
+      "at": "basutoland",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "survive",
+      "what": "a question mark pulses over the last blue land"
+     },
+     {
+      "at": "moshoeshoe",
+      "what": "Moshoeshoe stands on his mountain"
+     },
+     {
+      "at": "asked",
+      "what": "he holds up a letter"
+     },
+     {
+      "at": "britain",
+      "what": "the letter flies off the top of the map toward Britain"
+     },
+     {
+      "at": "protect",
+      "what": "a British flag drops onto the land"
+     },
+     {
+      "at": "left",
+      "what": "the orange stops moving"
+     },
+     {
+      "at": "land",
+      "what": "the remaining land glows"
+     },
+     {
+      "at": "basutoland",
+      "what": "BASUTOLAND writes across it"
+     }
+    ],
+    "things": [
+     "moshoeshoe",
+     "letter",
+     "british flag",
+     "basutoland"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "asked"
+    },
+    {
+     "kind": "pin",
+     "at": "protect"
+    }
+   ]
+  },
+  {
+   "id": "treaty",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then a treaty drew its north-west border down the Caledon River, where it still runs today.",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "treaty": {
+     "word": "treaty"
+    },
+    "drew": {
+     "word": "drew"
+    },
+    "border": {
+     "word": "border"
+    },
+    "caledon": {
+     "word": "Caledon"
+    },
+    "river": {
+     "word": "River"
+    },
+    "runs": {
+     "word": "runs"
+    },
+    "today": {
+     "word": "today"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Treaty",
+    "place": "on the map: the Caledon River along the north-west border",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "caledon",
+      "size": "close"
+     },
+     {
+      "at": "today",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "then",
+      "what": "the camera slides to the river"
+     },
+     {
+      "at": "treaty",
+      "what": "a treaty paper unrolls on the map"
+     },
+     {
+      "at": "drew",
+      "what": "a giant pen starts drawing"
+     },
+     {
+      "at": "border",
+      "what": "the pen draws the border line"
+     },
+     {
+      "at": "caledon",
+      "what": "the river glows blue under the line"
+     },
+     {
+      "at": "river",
+      "what": "CALEDON RIVER writes along it"
+     },
+     {
+      "at": "runs",
+      "what": "the line closes round the land"
+     },
+     {
+      "at": "today",
+      "what": "today's border traces in light"
+     }
+    ],
+    "things": [
+     "treaty paper",
+     "pen",
+     "caledon river",
+     "border line"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "drew"
+    }
+   ]
+  },
+  {
+   "id": "union",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Decades later, the British colonies all around it joined into one country, South Africa. Basutoland stayed out.",
+   "events": {
+    "decades": {
+     "word": "Decades"
+    },
+    "british": {
+     "word": "British"
+    },
+    "colonies": {
+     "word": "colonies"
+    },
+    "around": {
+     "word": "around"
+    },
+    "joined": {
+     "word": "joined"
+    },
+    "country": {
+     "word": "country"
+    },
+    "south": {
+     "word": "South"
+    },
+    "stayed": {
+     "word": "stayed"
+    },
+    "out": {
+     "word": "out"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Union",
+    "place": "on the map: the four colonies around Basutoland",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "joined",
+      "size": "medium"
+     },
+     {
+      "at": "stayed",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "decades",
+      "what": "the camera pulls back over the whole region"
+     },
+     {
+      "at": "british",
+      "what": "a British flag stands on each colony"
+     },
+     {
+      "at": "colonies",
+      "what": "four colonies light up, each a different colour"
+     },
+     {
+      "at": "around",
+      "what": "their names pop round the edge"
+     },
+     {
+      "at": "joined",
+      "what": "the four colours flow together"
+     },
+     {
+      "at": "country",
+      "what": "one colour fills them all"
+     },
+     {
+      "at": "south",
+      "what": "South Africa's flag fills it"
+     },
+     {
+      "at": "stayed",
+      "what": "Basutoland stays apart, its border flashing"
+     },
+     {
+      "at": "out",
+      "what": "a gap opens round it"
+     }
+    ],
+    "things": [
+     "cape",
+     "natal",
+     "transvaal",
+     "free state",
+     "south africa flag",
+     "basutoland"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "joined"
+    }
+   ]
+  },
+  {
+   "id": "kingdom",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "In the end it became the independent Kingdom of Lesotho, a country of mountains with South Africa on every side.",
+   "events": {
+    "end": {
+     "word": "end"
+    },
+    "became": {
+     "word": "became"
+    },
+    "independent": {
+     "word": "independent"
+    },
+    "lesotho": {
+     "word": "Lesotho"
+    },
+    "mountains": {
+     "word": "mountains"
+    },
+    "south": {
+     "word": "South"
+    },
+    "every": {
+     "word": "every"
+    },
+    "side": {
+     "word": "side"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Kingdom",
+    "place": "on the map: Lesotho's mountains, the border all round",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "lesotho",
+      "size": "close"
+     },
+     {
+      "at": "every",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "end",
+      "what": "the camera pushes back in"
+     },
+     {
+      "at": "became",
+      "what": "a crown drops onto the land"
+     },
+     {
+      "at": "independent",
+      "what": "the British flag lifts away"
+     },
+     {
+      "at": "lesotho",
+      "what": "Lesotho's flag fills the land"
+     },
+     {
+      "at": "mountains",
+      "what": "peaks rise across it"
+     },
+     {
+      "at": "south",
+      "what": "South Africa's colour glows round it"
+     },
+     {
+      "at": "every",
+      "what": "arrows point in from every side"
+     },
+     {
+      "at": "side",
+      "what": "the border flashes all the way round"
+     }
+    ],
+    "things": [
+     "crown",
+     "british flag",
+     "lesotho flag",
+     "peaks",
+     "arrows"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "lesotho"
+    }
+   ]
+  },
+  {
+   "id": "highest",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "And the Basotho kept only the high ground: the lowest point in Lesotho is {fact2} above the sea, higher than any other country's lowest point.",
+   "events": {
+    "basotho": {
+     "word": "Basotho"
+    },
+    "kept": {
+     "word": "kept"
+    },
+    "high": {
+     "word": "high"
+    },
+    "ground": {
+     "word": "ground"
+    },
+    "lowest": {
+     "word": "lowest"
+    },
+    "point": {
+     "word": "point"
+    },
+    "lesotho": {
+     "word": "Lesotho"
+    },
+    "above": {
+     "word": "above"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "higher": {
+     "word": "higher"
+    },
+    "other": {
+     "word": "other"
+    },
+    "country's": {
+     "word": "country's"
+    },
+    "climb": {
+     "sec": 3.95
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Highest",
+    "place": "on the map: the Orange River leaving Lesotho, its lowest point",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "lowest",
+      "size": "close"
+     },
+     {
+      "at": "higher",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "basotho",
+      "what": "the peaks on Lesotho glint"
+     },
+     {
+      "at": "kept",
+      "what": "Lesotho's border glows"
+     },
+     {
+      "at": "high",
+      "what": "Lesotho lifts off the map on its mountains"
+     },
+     {
+      "at": "ground",
+      "what": "its shadow falls on South Africa"
+     },
+     {
+      "at": "lowest",
+      "what": "a pin drops where the river leaves"
+     },
+     {
+      "at": "point",
+      "what": "a height post rises from the pin"
+     },
+     {
+      "at": "lesotho",
+      "what": "the post's sign shows the height"
+     },
+     {
+      "at": "climb",
+      "what": "the height on the sign counts up as the post's marks light"
+     },
+     {
+      "at": "above",
+      "what": "the post grows taller"
+     },
+     {
+      "at": "sea",
+      "what": "a SEA sign glows on the coast"
+     },
+     {
+      "at": "higher",
+      "what": "the camera pulls back over the raised country"
+     },
+     {
+      "at": "other",
+      "what": "the sea sign pulses, low on the coast"
+     },
+     {
+      "at": "country's",
+      "what": "Lesotho's border flashes, highest of all"
+     }
+    ],
+    "things": [
+     "raised lesotho",
+     "pin",
+     "height post",
+     "sign"
+    ],
+    "fig": {
+     "low": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "lowest"
+    },
+    {
+     "kind": "chime",
+     "at": "higher"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Mountains or the British: which really saved it? Tell me. And next time someone asks you,",
+   "events": {
+    "mountains": {
+     "word": "Mountains"
+    },
+    "british": {
+     "word": "British"
+    },
+    "saved": {
+     "word": "saved"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "next": {
+     "word": "next"
+    },
+    "asks": {
+     "word": "asks"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: back over South Africa",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tell",
+      "size": "close"
+     },
+     {
+      "at": "asks",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mountains",
+      "what": "a mountain peak pops on the left"
+     },
+     {
+      "at": "british",
+      "what": "a British flag pops on the right"
+     },
+     {
+      "at": "saved",
+      "what": "both glow over the map"
+     },
+     {
+      "at": "tell",
+      "what": "a comment bubble pops between them"
+     },
+     {
+      "at": "next",
+      "what": "the camera pulls back over South Africa"
+     },
+     {
+      "at": "asks",
+      "what": "the gap in its middle flashes"
+     }
+    ],
+    "things": [
+     "peak",
+     "british flag",
+     "comment bubble",
+     "south africa"
+    ]
+   }
+  }
+ ]
+}
