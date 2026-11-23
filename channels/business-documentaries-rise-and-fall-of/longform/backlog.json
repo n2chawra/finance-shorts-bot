@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "id": "long-intro-title-match",
+      "kind": "craft",
+      "title": "The first 30 seconds show the title's promise, said and on screen",
+      "detail": "YouTube's Intro key moment is the share of viewers still watching after 30 s, and YouTube's own help page says a high Intro means 'the content in the first 30 seconds matched the viewer's expectation of the video's thumbnail and title' (support.google.com/youtube/answer/9314415). Studio: the title's claim (e.g. 'lost to its own loan', 'paid to destroy its own toys', 'the filing blamed your face') is spoken in its own meaning and its object or document is on screen by 10 s, and the thumbnail's object is frame 1 or appears by 10 s. Each outlined topic in longform/topics.json already has this in its cold-open line. Know it worked: Intro (retention at 30 s) on our long videos, compared across them.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "long-fall-by-30s",
+      "kind": "idea",
+      "title": "Test: the whole rise and fall inside the first 30 s instead of by 50 s",
+      "detail": "The recipe's arc tells the rise and fall by 50 s and the one-cause promise by ~65 s; YouTube measures the intro at 30 s. The reference with the earliest turn, Bagholder's KFC (591K on 10.8K), reaches 'but at home…' at 19 s and the ranking chart by 26-36 s (style-study 2026-11-19 section 4). Challenger: the fall's figure lands by 25-30 s, the promise stays at ~60 s. Judge on Intro (retention at 30 s) and on held-after-the-hook, per side, in the long videos' own test; needs 4+ long videos a side.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "long-intro-metric",
+      "kind": "bug",
+      "title": "Record Intro (retention at 30 s) for every long video",
+      "detail": "metrics/videos.json has hookHold, endHold and stayed, but no long video's share still watching at 30 s, which is YouTube's Intro measure and the one a long hook test needs. Add `intro` to each long video's row from the retention curve the stats job already pulls (the point nearest 30 s). Craze & Crash has no long video out yet, so it can be added before the first one. Know it worked: the field appears on the first long video's row 48 h after it goes out.",
+      "where": "metrics",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    }
+  ]
+}

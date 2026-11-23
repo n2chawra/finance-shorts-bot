@@ -1,0 +1,39 @@
+{
+  "agent": "scout",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-23T05:08:19Z",
+  "finishedAt": "2026-11-23T05:12:58Z",
+  "summary": "Craze & Crash's first scout run (hooks and the first 30 seconds). I outlined the five top long topics and added 4 sourced facts to them, and routed 3 intro items. Studio has never run for this channel, so I raised that with the owner.",
+  "decision": "acted",
+  "why": "The feed had 11 usable long topics but none had an outline, which is what Studio leans on hardest. YouTube measures a long video's intro at 30 s, while our arc runs to 65 s. The long backlog is 0 and the channel's long slots are Tuesday and Friday.",
+  "findings": [
+    {
+      "title": "YouTube's Intro = viewers still watching after 30 s, and it checks the title and thumbnail",
+      "detail": "A high Intro means the first 30 s matched the title and thumbnail's promise.",
+      "link": "https://support.google.com/youtube/answer/9314415"
+    },
+    {
+      "title": "No Studio run for this channel yet",
+      "detail": "Long backlog 0; the 24 Nov 21:17 IST long slot will be empty."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Outlines for 5 long topics",
+      "detail": "Funko Pop, Beanie Babies, Gillette, Toys R Us, Crocs: cold open to 30 s, chapters, payoff at ~38%, one picture each; + Funko IPO price, the Beanie Babies' $5 price and 1999 notice, and P&G's $57B Gillette deal",
+      "branch": "agent/scout/2026-11-23/business-documentaries-rise-and-fall-of"
+    },
+    {
+      "title": "3 long-form backlog items",
+      "detail": "adopt: the title's promise by 10 s; experiment: the fall by 30 s; adopt: record intro retention at 30 s",
+      "branch": "agent/scout/2026-11-23/business-documentaries-rise-and-fall-of"
+    }
+  ],
+  "nextCheck": "2026-11-26",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/business-documentaries-rise-and-fall-of/longform/2026-11-23.md"
+    }
+  ]
+}
