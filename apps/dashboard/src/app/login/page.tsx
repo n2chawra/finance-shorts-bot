@@ -6,21 +6,16 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
-import billionSwitches from "@/assets/channels/a-billion-switches.png";
-import crazeAndCrash from "@/assets/channels/craze-and-crash.png";
-import whyAtlas from "@/assets/channels/the-why-atlas.png";
 import { LogoMark } from "@/components/brand";
+import { CHANNEL_BRAND } from "@/lib/channel-brand";
 import { CHANNEL_COOKIE } from "@/lib/channels";
 
 /**
  * The front door of the multi-channel studio. Static names and logos only (bundled with the page,
  * served from /_next/static): nothing about a channel is fetched before sign-in.
  */
-const CHANNELS: { id: string; name: string; niche: string; logo: StaticImageData }[] = [
-  { id: "geography-maps-geopolitical-mysteries", name: "The Why Atlas", niche: "Maps", logo: whyAtlas },
-  { id: "how-tech-and-ai-actually-work-chips-ai-p", name: "A Billion Switches", niche: "Tech", logo: billionSwitches },
-  { id: "business-documentaries-rise-and-fall-of", name: "Craze & Crash", niche: "Business", logo: crazeAndCrash },
-];
+const CHANNELS: { id: string; name: string; niche: string; logo: StaticImageData }[] =
+  Object.entries(CHANNEL_BRAND).map(([id, b]) => ({ id, name: b.name, niche: b.niche, logo: b.logo }));
 
 /** What sign-in opens first: "all" (every channel side by side) or one channel's own pages. Remembered on
  * this device (owner, 2026-11-19: "from login I set which channel I see first, so I don't switch after"). */

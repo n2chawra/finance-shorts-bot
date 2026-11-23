@@ -2,6 +2,7 @@ import type { StaticImageData } from "next/image";
 
 import billionSwitches from "@/assets/channels/a-billion-switches.png";
 import crazeAndCrash from "@/assets/channels/craze-and-crash.png";
+import disasterDesk from "@/assets/channels/disaster-desk.png";
 import whyAtlas from "@/assets/channels/the-why-atlas.png";
 
 /** A channel's public identity: its YouTube name, a short name for tight spots, an accent colour taken
@@ -16,12 +17,14 @@ export type ChannelBrand = {
   initials: string;
 };
 
-/** A channel's public brand (its YouTube name and logo), by channel id. The database keeps the niche a
+/** A channel's public brand (its YouTube name and logo), by channel id. The login page lists these, so a new
+ *  channel goes here once and shows everywhere. The database keeps the niche a
  *  channel was set up with ("How tech and AI actually work: chips, AI…") as its name, too long for cards. */
-export const CHANNEL_BRAND: Record<string, { name: string; short: string; accent: string; logo: StaticImageData }> = {
-  "geography-maps-geopolitical-mysteries": { name: "The Why Atlas", short: "Why Atlas", accent: "#2f86c9", logo: whyAtlas },
-  "how-tech-and-ai-actually-work-chips-ai-p": { name: "A Billion Switches", short: "Switches", accent: "#f08a1c", logo: billionSwitches },
-  "business-documentaries-rise-and-fall-of": { name: "Craze & Crash", short: "Craze & Crash", accent: "#e0452f", logo: crazeAndCrash },
+export const CHANNEL_BRAND: Record<string, { name: string; short: string; niche: string; accent: string; logo: StaticImageData }> = {
+  "geography-maps-geopolitical-mysteries": { name: "The Why Atlas", short: "Why Atlas", niche: "Maps", accent: "#2f86c9", logo: whyAtlas },
+  "how-tech-and-ai-actually-work-chips-ai-p": { name: "A Billion Switches", short: "Switches", niche: "Tech", accent: "#f08a1c", logo: billionSwitches },
+  "business-documentaries-rise-and-fall-of": { name: "Craze & Crash", short: "Craze & Crash", niche: "Business", accent: "#e0452f", logo: crazeAndCrash },
+  "disasters-and-engineering-failures-expla": { name: "Disaster Desk", short: "Disaster Desk", niche: "Disasters", accent: "#d6334a", logo: disasterDesk },
 };
 
 /** Accent for a channel with no brand entry: a neutral slate that reads on both themes. */
