@@ -1,0 +1,898 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38417,
+ "story": "founder_bet",
+ "shape": "underdog-reversal",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "dossier",
+  "key": "F",
+  "bpm": 80
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "shock_number",
+ "cta": "Scissors or the sales job: which one built Spanx? Comment",
+ "feed_id": "2026-11-19-spanx-5000",
+ "facts": [
+  {
+   "label": "Sara Blakely's savings that started Spanx",
+   "value": 5000,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2000-01-01",
+   "source": "CNN Business",
+   "url": "https://abc17news.com/news/2021/10/21/spanx-the-shapewear-brand-valued-at-1-2-billion-in-blackstone-deal/",
+   "fixed": true
+  },
+  {
+   "label": "Year Spanx was founded",
+   "value": 2000,
+   "unit": "year",
+   "as_of": "2000-01-01",
+   "source": "CNN Business",
+   "url": "https://abc17news.com/news/2021/10/21/spanx-the-shapewear-brand-valued-at-1-2-billion-in-blackstone-deal/",
+   "fixed": true
+  },
+  {
+   "label": "Value of Spanx in the Blackstone deal",
+   "value": 1.2,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2021-10-20",
+   "source": "CNN Business",
+   "url": "https://abc17news.com/news/2021/10/21/spanx-the-shapewear-brand-valued-at-1-2-billion-in-blackstone-deal/",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.5,
+  "words": "Spanx from *savings*",
+  "angle": "story"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Sara Blakely started Spanx with {fact1} she had saved selling fax machines.",
+   "events": {
+    "sara": {
+     "word": "Sara"
+    },
+    "spanx": {
+     "word": "Spanx"
+    },
+    "saved": {
+     "word": "saved"
+    },
+    "fax": {
+     "word": "fax"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "saved"
+    },
+    {
+     "kind": "boom",
+     "at": "fax"
+    }
+   ],
+   "params": {
+    "place": [
+     "Sara Blakely, founder of Spanx",
+     "an office fax machine"
+    ],
+    "things": [
+     "Sara Blakely",
+     "her savings",
+     "fax machine"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "saved",
+      "size": "close"
+     },
+     {
+      "at": "fax",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sara",
+      "what": "her name lands between the layers"
+     },
+     {
+      "at": "saved",
+      "what": "a label: her savings"
+     },
+     {
+      "at": "fax",
+      "what": "cut to a fax machine"
+     }
+    ],
+    "fig": {
+     "savings": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "depth",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sara-blakely-69ede4ab.jpg",
+      "cut": "media/business-documentaries-rise-and-fall-of/commons-photo-sara-blakely-69ede4ab-cut.png",
+      "title": "Sara Blakely",
+      "sub": "founder of Spanx",
+      "titleAt": "sara",
+      "side": "left",
+      "bgTreatment": "bw",
+      "out": "fax"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-samsung-sf-370-fax-with-inkjet-printing-3420af77.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "fax"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "sub": "her savings",
+      "at": "saved"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "idea",
+   "role": "promise",
+   "say": "Her whole idea was one pair of pantyhose, with the feet cut off.",
+   "events": {
+    "idea": {
+     "word": "idea"
+    },
+    "pantyhose": {
+     "word": "pantyhose"
+    },
+    "feet": {
+     "word": "feet"
+    },
+    "cut": {
+     "word": "cut"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "cut"
+    }
+   ],
+   "params": {
+    "place": [
+     "a pair of pantyhose",
+     "a pair of scissors"
+    ],
+    "things": [
+     "pantyhose",
+     "scissors",
+     "Spanx shaper"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "feet",
+      "size": "close"
+     },
+     {
+      "at": "cut",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pantyhose",
+      "what": "the pantyhose"
+     },
+     {
+      "at": "feet",
+      "what": "a stamp: NO FEET"
+     },
+     {
+      "at": "cut",
+      "what": "the scissors snap in"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "every": 12,
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sheer-tights-pantyhose-with-two-zone-control-top-51f93dfa.jpg",
+        "focus": [
+         0.5,
+         0.45
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sheer-tights-or-pantyhose-with-low-waist-top-in-9ee6b2df.jpg",
+        "focus": [
+         0.5,
+         0.7
+        ],
+        "at": "feet"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-kleiderscheren-9fa18485.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "cut"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "No feet",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": -6,
+      "at": "feet",
+      "out": "cut"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "patent",
+   "role": "build",
+   "say": "She called it Spanx in {fact2}, in Atlanta, and wrote the patent application herself.",
+   "events": {
+    "spanx": {
+     "word": "Spanx"
+    },
+    "atlanta": {
+     "word": "Atlanta"
+    },
+    "patent": {
+     "word": "patent"
+    },
+    "herself": {
+     "word": "herself"
+    }
+   },
+   "params": {
+    "place": [
+     "Atlanta",
+     "the first Spanx product"
+    ],
+    "things": [
+     "Atlanta skyline",
+     "Spanx shaper"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "patent",
+      "size": "medium"
+     },
+     {
+      "at": "herself",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "spanx",
+      "what": "the date slams in"
+     },
+     {
+      "at": "atlanta",
+      "what": "a place label: Atlanta"
+     },
+     {
+      "at": "patent",
+      "what": "cut to the Spanx shaper"
+     },
+     {
+      "at": "herself",
+      "what": "a stamp: SHE WROTE IT"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-atlanta-skyline-from-jackson-street-bridge-2020-bbd493ba.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "move": "drift-left",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "patent"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-spanx-shaping-pantyhose-super-control-sheers-top-a547e0bb.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "patent"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2000",
+      "sub": "Spanx begins",
+      "pos": "top",
+      "at": "spanx",
+      "out": "patent"
+     },
+     {
+      "kind": "label",
+      "text": "Atlanta, Georgia",
+      "sub": "where Spanx began",
+      "at": "atlanta",
+      "out": "patent"
+     },
+     {
+      "kind": "stamp",
+      "text": "She wrote it",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": -5,
+      "at": "herself"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "neiman",
+   "role": "build",
+   "say": "Her first big order came from Neiman Marcus. But how far could one product go?",
+   "events": {
+    "first": {
+     "word": "first"
+    },
+    "order": {
+     "word": "order"
+    },
+    "neiman": {
+     "word": "Neiman"
+    },
+    "far": {
+     "word": "far"
+    }
+   },
+   "params": {
+    "place": [
+     "the Neiman Marcus store sign"
+    ],
+    "things": [
+     "Neiman Marcus sign"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "order",
+      "size": "medium"
+     },
+     {
+      "at": "neiman",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "first",
+      "what": "the brass sign pushes in"
+     },
+     {
+      "at": "neiman",
+      "what": "an arrow to the sign: first big order"
+     },
+     {
+      "at": "far",
+      "what": "a stamp: HOW FAR?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-neiman-marcus-flagship-store-sign-0f67a38a.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "warm"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "arrow",
+      "from": [
+       0.3,
+       0.65
+      ],
+      "to": [
+       0.5,
+       0.48
+      ],
+      "label": "First big order",
+      "at": "neiman",
+      "out": "far"
+     },
+     {
+      "kind": "stamp",
+      "text": "How far?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": -5,
+      "at": "far"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "owned",
+   "role": "build",
+   "say": "For years she owned all of it, with no investors. So what was it really worth?",
+   "events": {
+    "owned": {
+     "word": "owned"
+    },
+    "investors": {
+     "word": "investors"
+    },
+    "worth": {
+     "word": "worth"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "worth"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Spanx store in a mall"
+    ],
+    "things": [
+     "Spanx store"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "investors",
+      "size": "wide"
+     },
+     {
+      "at": "worth",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "owned",
+      "what": "a stamp: ALL HERS"
+     },
+     {
+      "at": "investors",
+      "what": "a label: no investors"
+     },
+     {
+      "at": "worth",
+      "what": "a stamp: WORTH?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-spanx-store-16156619968-97954c4c.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "All hers",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": -6,
+      "at": "owned",
+      "out": "investors"
+     },
+     {
+      "kind": "label",
+      "text": "No investors",
+      "sub": "the founder owns it all",
+      "at": "investors",
+      "out": "worth"
+     },
+     {
+      "kind": "stamp",
+      "text": "Worth?",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": 5,
+      "at": "worth"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "blackstone",
+   "role": "turn",
+   "say": "Then in October, the investment firm Blackstone bought most of it.",
+   "events": {
+    "october": {
+     "word": "October"
+    },
+    "blackstone": {
+     "word": "Blackstone"
+    },
+    "most": {
+     "word": "most"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "blackstone"
+    }
+   ],
+   "params": {
+    "place": [
+     "Blackstone's tower on Park Avenue"
+    ],
+    "things": [
+     "Blackstone tower"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "blackstone",
+      "size": "medium"
+     },
+     {
+      "at": "most",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "october",
+      "what": "the date slams in"
+     },
+     {
+      "at": "blackstone",
+      "what": "a lower third: Blackstone"
+     },
+     {
+      "at": "most",
+      "what": "a stamp: MAJORITY"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-345-park-avenue-55283843769-9aaea683.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "move": "rise",
+      "amount": 0.12,
+      "grade": "cold"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2021-10-20",
+      "sub": "the Blackstone deal",
+      "pos": "top",
+      "at": "october",
+      "out": "most"
+     },
+     {
+      "kind": "lowerThird",
+      "name": "Blackstone",
+      "role": "investment firm, New York",
+      "at": "blackstone",
+      "out": "most"
+     },
+     {
+      "kind": "stamp",
+      "text": "Majority",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "most"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "That deal valued Spanx, the company that started with one pair of pantyhose, at {fact3}.",
+   "events": {
+    "deal": {
+     "word": "deal"
+    },
+    "started": {
+     "word": "started"
+    },
+    "pantyhose": {
+     "word": "pantyhose"
+    }
+   },
+   "params": {
+    "place": [
+     "the poster over Sara Blakely"
+    ],
+    "things": [
+     "Sara Blakely",
+     "the valuation"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "started",
+      "size": "wide"
+     },
+     {
+      "at": "pantyhose",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "deal",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "started",
+      "what": "the subline settles"
+     },
+     {
+      "at": "pantyhose",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "value": "{fact3}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sara-blakely-2012-shankbone-8e2dc1a2.jpg",
+      "focus": [
+       0.5,
+       0.35
+      ],
+      "date": "2021-10-20",
+      "title": "Spanx",
+      "figure": "value",
+      "sub": "its value in the Blackstone deal",
+      "on": "deal",
+      "at": "deal"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "She kept a big piece too. Scissors or the sales job: which one built Spanx? Remember,",
+   "events": {
+    "kept": {
+     "word": "kept"
+    },
+    "scissors": {
+     "word": "Scissors"
+    },
+    "built": {
+     "word": "built"
+    },
+    "remember": {
+     "word": "Remember"
+    }
+   },
+   "params": {
+    "place": [
+     "the CNN report on the deal",
+     "Sara Blakely from the first frame"
+    ],
+    "things": [
+     "CNN headline",
+     "Sara Blakely"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "scissors",
+      "size": "close"
+     },
+     {
+      "at": "remember",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "kept",
+      "what": "the CNN headline lands"
+     },
+     {
+      "at": "scissors",
+      "what": "a stamp: SCISSORS?"
+     },
+     {
+      "at": "built",
+      "what": "a stamp: SALES?"
+     },
+     {
+      "at": "remember",
+      "what": "back to Sara Blakely from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "CNN Business",
+        "date": "2021-10-20",
+        "title": "Spanx, the shapewear brand, valued at {fact3} in Blackstone deal",
+        "style": "web",
+        "hi": "valued at"
+       }
+      ],
+      "on": [
+       "kept"
+      ],
+      "out": "remember"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sara-blakely-69ede4ab.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "remember"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Scissors?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.14
+      ],
+      "tilt": -4,
+      "at": "scissors",
+      "out": "built"
+     },
+     {
+      "kind": "stamp",
+      "text": "Sales?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.14
+      ],
+      "tilt": -4,
+      "at": "built",
+      "out": "remember"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}

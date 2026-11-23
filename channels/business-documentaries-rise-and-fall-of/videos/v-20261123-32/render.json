@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38417,
+  "duration_sec": 33,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "dossier",
+    "key": "F",
+    "bpm": 80
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Sara Blakely started Spanx with $5,000 she had saved selling fax machines.",
+        "start": 0.3,
+        "seconds": 3.58,
+        "window": 4.27,
+        "fill": 0.838
+      },
+      {
+        "scene": "idea",
+        "text": "Her whole idea was one pair of pantyhose, with the feet cut off.",
+        "start": 4.57,
+        "seconds": 2.56,
+        "window": 3.23,
+        "fill": 0.793
+      },
+      {
+        "scene": "patent",
+        "text": "She called it Spanx in 2000, in Atlanta, and wrote the patent application herself.",
+        "start": 7.8,
+        "seconds": 3.59,
+        "window": 4.23,
+        "fill": 0.849
+      },
+      {
+        "scene": "neiman",
+        "text": "Her first big order came from Neiman Marcus. But how far could one product go?",
+        "start": 12.03,
+        "seconds": 3.56,
+        "window": 4.2,
+        "fill": 0.848
+      },
+      {
+        "scene": "owned",
+        "text": "For years she owned all of it, with no investors. So what was it really worth?",
+        "start": 16.23,
+        "seconds": 3.24,
+        "window": 3.87,
+        "fill": 0.837
+      },
+      {
+        "scene": "blackstone",
+        "text": "Then in October, the investment firm Blackstone bought most of it.",
+        "start": 20.1,
+        "seconds": 2.31,
+        "window": 2.93,
+        "fill": 0.788
+      },
+      {
+        "scene": "payoff",
+        "text": "That deal valued Spanx, the company that started with one pair of pantyhose, at $1.2B.",
+        "start": 23.03,
+        "seconds": 4.52,
+        "window": 5.2,
+        "fill": 0.869
+      },
+      {
+        "scene": "ending",
+        "text": "She kept a big piece too. Scissors or the sales job: which one built Spanx? Remember,",
+        "start": 28.23,
+        "seconds": 3.69,
+        "window": 4.37,
+        "fill": 0.844
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.1,
+    "lufs": -16.1,
+    "music_under_voice_db": 18.1
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.267,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
