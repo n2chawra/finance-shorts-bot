@@ -211,13 +211,16 @@ export const newestStamp = (stamps: string[]): string | null =>
  * settings (over config/settings.json) and its own backlog. A routine for a channel that isn't
  * active exits at once (generator/settings.py). */
 export async function buildChannelsFile(prisma: PrismaClient, root = ROOT): Promise<Record<string, unknown>> {
-  // a channel being deleted is left out: its routines then find no entry and disable themselves (generator/run.py state);
-  // so is an active or paused one whose folder is gone from the repo (lib/channels.ts inRepo). A channel still being
-  // set up has no folder yet and stays.
+  // a channel being deleted is listed with status "deleting" and nothing else: its routines read that, stop and disable
+  // themselves (generator/channels.py deleted()); an active or paused one whose folder is gone from the repo
+  // (lib/channels.ts inRepo) is left out (its routines stop on the missing folder). A channel still being set up has
+  // no folder yet and stays.
   const folders = channelFolders(root);
-  const rows = (await prisma.channel.findMany({ where: { status: { not: "deleting" } }, orderBy: { createdAt: "asc" } }))
+  const all = await prisma.channel.findMany({ orderBy: { createdAt: "asc" } });
+  const rows = all.filter((ch) => ch.status !== "deleting")
     .filter((ch) => (ch.status !== "active" && ch.status !== "paused") || inRepo(ch.id, root, folders));
   const out: Record<string, unknown> = {};
+  for (const ch of all.filter((c) => c.status === "deleting")) out[ch.id] = { name: ch.name, status: "deleting" };
   for (const ch of rows) {
     const own = Object.fromEntries(Object.entries((ch.settings ?? {}) as Record<string, unknown>).filter(([k]) => (CHANNEL_KEYS as readonly string[]).includes(k)));
     const queued = (format?: string) => prisma.video.count({ where: { channelId: ch.id, status: "queued", deletedAt: null, ...(format ? { format } : {}) } });
