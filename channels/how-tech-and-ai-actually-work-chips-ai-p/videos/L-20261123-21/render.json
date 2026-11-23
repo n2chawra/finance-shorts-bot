@@ -1,0 +1,533 @@
+{
+  "template": "long_story",
+  "renderer": "remotion",
+  "seed": 55023,
+  "duration_sec": 426,
+  "tempo": 1.25,
+  "style": {
+    "palette": "ocean",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 72
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 0.97,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "This flat Starlink dish is talking to a satellite racing across the sky, and it never turns to follow it.",
+        "start": 0.27,
+        "seconds": 6.96,
+        "window": 7.4,
+        "fill": 0.941
+      },
+      {
+        "scene": "hook2",
+        "text": "That satellite flies about 480 km above you, and in a few minutes it slips below the horizon. So how does a dish that never moves keep up?",
+        "start": 7.67,
+        "seconds": 10.6,
+        "window": 11.03,
+        "fill": 0.961
+      },
+      {
+        "scene": "route",
+        "text": "So here's the trip every video you watch on it makes: up from the dish, to the satellite, down to a ground station, and into the internet.",
+        "start": 18.7,
+        "seconds": 8.98,
+        "window": 9.4,
+        "fill": 0.955
+      },
+      {
+        "scene": "route2",
+        "text": "On the way we'll open the dish, watch it bend a beam with no moving parts, and see why it takes so many satellites.",
+        "start": 28.1,
+        "seconds": 7.71,
+        "window": 8.3,
+        "fill": 0.929
+      },
+      {
+        "scene": "old",
+        "text": "For decades, satellite internet and TV worked another way. Look at the dishes on this street.",
+        "start": 36.4,
+        "seconds": 6.12,
+        "window": 6.6,
+        "fill": 0.927
+      },
+      {
+        "scene": "geo",
+        "text": "Every one of them points at the same spot in the sky: one satellite, 35,786 km above the equator.",
+        "start": 43.0,
+        "seconds": 9.63,
+        "window": 10.2,
+        "fill": 0.944
+      },
+      {
+        "scene": "orbit",
+        "text": "Why that height? Up there, one trip around the Earth takes as long as the Earth takes to turn once.",
+        "start": 53.2,
+        "seconds": 6.25,
+        "window": 6.73,
+        "fill": 0.929
+      },
+      {
+        "scene": "sameway",
+        "text": "That's why every TV dish on a street faces the same way: they're all staring at one fixed point in the sky.",
+        "start": 59.93,
+        "seconds": 7.32,
+        "window": 7.77,
+        "fill": 0.942
+      },
+      {
+        "scene": "still",
+        "text": "So the satellite seems to hang still, and the dish can be bolted in place, aimed once, and left alone.",
+        "start": 67.7,
+        "seconds": 6.8,
+        "window": 7.17,
+        "fill": 0.948
+      },
+      {
+        "scene": "calltease",
+        "text": "That's fine for TV. But what happens when you're on a video call?",
+        "start": 74.87,
+        "seconds": 4.52,
+        "window": 4.97,
+        "fill": 0.909
+      },
+      {
+        "scene": "far",
+        "text": "So what's wrong with that? Distance. Your click has to climb all the way up to that satellite, and all the way back down.",
+        "start": 79.83,
+        "seconds": 8.14,
+        "window": 8.47,
+        "fill": 0.961
+      },
+      {
+        "scene": "light",
+        "text": "Radio moves at the speed of light, but that's still a long trip, and a web page needs many of them, one after another.",
+        "start": 88.3,
+        "seconds": 7.86,
+        "window": 8.3,
+        "fill": 0.947
+      },
+      {
+        "scene": "laghome",
+        "text": "You feel it. On a video call, people talk over each other, because every word arrives a beat late.",
+        "start": 96.6,
+        "seconds": 6.63,
+        "window": 7.1,
+        "fill": 0.934
+      },
+      {
+        "scene": "low",
+        "text": "So what if the satellite flew lower? Bring it down, to about 480 km.",
+        "start": 103.7,
+        "seconds": 6.19,
+        "window": 6.7,
+        "fill": 0.924
+      },
+      {
+        "scene": "ratio",
+        "text": "That's only 1.3% of the old height. The trip up and back shrinks to the same small share.",
+        "start": 110.4,
+        "seconds": 6.52,
+        "window": 7.03,
+        "fill": 0.927
+      },
+      {
+        "scene": "hop",
+        "text": "Light covers that short hop so fast that the distance stops being the slow part of the trip.",
+        "start": 117.43,
+        "seconds": 5.88,
+        "window": 6.3,
+        "fill": 0.933
+      },
+      {
+        "scene": "snappy",
+        "text": "So the delay drops from something you notice to something you don't.",
+        "start": 123.73,
+        "seconds": 3.96,
+        "window": 4.2,
+        "fill": 0.943
+      },
+      {
+        "scene": "catch",
+        "text": "But low comes with a catch. A satellite this low can't hang still.",
+        "start": 127.93,
+        "seconds": 4.35,
+        "window": 4.87,
+        "fill": 0.893
+      },
+      {
+        "scene": "race",
+        "text": "Why not? Down here it has to race around the planet to stay up, so it crosses your sky in minutes.",
+        "start": 132.8,
+        "seconds": 6.64,
+        "window": 7.1,
+        "fill": 0.935
+      },
+      {
+        "scene": "swing",
+        "text": "To follow it, an old dish would have to swing across the whole sky, again and again, all day.",
+        "start": 139.9,
+        "seconds": 6.18,
+        "window": 6.57,
+        "fill": 0.941
+      },
+      {
+        "scene": "inside",
+        "text": "Starlink's flat dish doesn't move at all. So what is inside it?",
+        "start": 146.47,
+        "seconds": 4.3,
+        "window": 4.67,
+        "fill": 0.921
+      },
+      {
+        "scene": "bench",
+        "text": "Here it is on a workbench. On the outside, it's just a flat white panel on a stand, with one cable.",
+        "start": 151.13,
+        "seconds": 7.0,
+        "window": 7.33,
+        "fill": 0.955
+      },
+      {
+        "scene": "nomirror",
+        "text": "Lift the white cover, and there's no curved mirror inside, like a TV dish has.",
+        "start": 158.47,
+        "seconds": 5.28,
+        "window": 5.9,
+        "fill": 0.895
+      },
+      {
+        "scene": "radome",
+        "text": "The cover is plastic for a reason: radio passes straight through it, while rain and snow stay out.",
+        "start": 164.37,
+        "seconds": 6.47,
+        "window": 6.93,
+        "fill": 0.934
+      },
+      {
+        "scene": "grid",
+        "text": "So what is there instead? A board, covered in a grid of many tiny antennas, each one a small flat metal patch.",
+        "start": 171.3,
+        "seconds": 7.91,
+        "window": 8.53,
+        "fill": 0.927
+      },
+      {
+        "scene": "own",
+        "text": "Each patch can send and hear radio on its own, but one by itself is too small to aim at anything.",
+        "start": 179.83,
+        "seconds": 6.94,
+        "window": 7.37,
+        "fill": 0.942
+      },
+      {
+        "scene": "chips",
+        "text": "So who tells each one when to fire? The chips underneath. They control every antenna's timing, down to a tiny fraction of a second.",
+        "start": 187.2,
+        "seconds": 9.49,
+        "window": 9.93,
+        "fill": 0.956
+      },
+      {
+        "scene": "cable",
+        "text": "The dish's one cable runs down to the router inside. The router plugs into the wall for its power.",
+        "start": 197.13,
+        "seconds": 6.95,
+        "window": 7.37,
+        "fill": 0.943
+      },
+      {
+        "scene": "wifi",
+        "text": "From there, the router turns it into wifi, for your laptop and the phone in your hand.",
+        "start": 204.5,
+        "seconds": 5.49,
+        "window": 5.97,
+        "fill": 0.92
+      },
+      {
+        "scene": "together",
+        "text": "One patch can't aim. Many working together can. Here's how.",
+        "start": 210.47,
+        "seconds": 3.9,
+        "window": 4.37,
+        "fill": 0.892
+      },
+      {
+        "scene": "tank",
+        "text": "Here's the trick, drawn wave by wave. Line up a row of the antennas.",
+        "start": 214.83,
+        "seconds": 4.99,
+        "window": 5.5,
+        "fill": 0.907
+      },
+      {
+        "scene": "same",
+        "text": "When they all send at the same instant, their ripples add up into one strong wave, heading straight up.",
+        "start": 220.33,
+        "seconds": 6.55,
+        "window": 7.0,
+        "fill": 0.936
+      },
+      {
+        "scene": "delay",
+        "text": "Now make each antenna fire a little later than the one beside it.",
+        "start": 227.33,
+        "seconds": 4.5,
+        "window": 4.77,
+        "fill": 0.943
+      },
+      {
+        "scene": "clap",
+        "text": "Think of a row of people clapping. Clap together and the sound goes straight ahead. Clap one after another, and it heads off at an angle.",
+        "start": 232.1,
+        "seconds": 9.07,
+        "window": 9.47,
+        "fill": 0.958
+      },
+      {
+        "scene": "tilt",
+        "text": "So what happens to the wave? The ripples still add up, but now the wave front tilts, and the beam leans over toward the late side.",
+        "start": 241.57,
+        "seconds": 8.87,
+        "window": 9.37,
+        "fill": 0.947
+      },
+      {
+        "scene": "steer",
+        "text": "Change the delays, and the beam swings across the sky. Nothing turns. Nothing moves. It's aiming by timing.",
+        "start": 250.93,
+        "seconds": 7.99,
+        "window": 8.4,
+        "fill": 0.951
+      },
+      {
+        "scene": "name",
+        "text": "Engineers call this a phased array. The dish does it with its whole grid at once, in every direction.",
+        "start": 259.33,
+        "seconds": 6.56,
+        "window": 7.13,
+        "fill": 0.92
+      },
+      {
+        "scene": "fast",
+        "text": "And because it's only timing, it can change its aim far faster than any motor could swing a dish.",
+        "start": 266.47,
+        "seconds": 6.31,
+        "window": 6.83,
+        "fill": 0.924
+      },
+      {
+        "scene": "recap",
+        "text": "So far: the satellites fly low to keep the trip short, and the dish follows them by timing, not turning.",
+        "start": 273.3,
+        "seconds": 7.56,
+        "window": 7.93,
+        "fill": 0.953
+      },
+      {
+        "scene": "problem",
+        "text": "But there's a problem no timing can fix. In a few minutes, your satellite drops below the horizon.",
+        "start": 281.23,
+        "seconds": 6.71,
+        "window": 7.0,
+        "fill": 0.959
+      },
+      {
+        "scene": "handoff",
+        "text": "So the dish hands off. Before the first satellite sets, the next one is already rising.",
+        "start": 288.23,
+        "seconds": 6.01,
+        "window": 6.37,
+        "fill": 0.943
+      },
+      {
+        "scene": "switch",
+        "text": "The chips change the timing, and in a blink the beam jumps from the old satellite to the new one.",
+        "start": 294.6,
+        "seconds": 5.91,
+        "window": 6.3,
+        "fill": 0.938
+      },
+      {
+        "scene": "seamless",
+        "text": "Does your video stop? No. Most of the time, the handoff happens too fast to notice.",
+        "start": 300.9,
+        "seconds": 5.89,
+        "window": 6.47,
+        "fill": 0.91
+      },
+      {
+        "scene": "allday",
+        "text": "And it happens again and again, all day and all night, for every dish under the sky.",
+        "start": 307.37,
+        "seconds": 5.61,
+        "window": 6.17,
+        "fill": 0.909
+      },
+      {
+        "scene": "satside",
+        "text": "And here's the surprise. The satellite is doing the same trick. Each one carries 5 phased arrays of its own.",
+        "start": 313.53,
+        "seconds": 7.61,
+        "window": 8.0,
+        "fill": 0.951
+      },
+      {
+        "scene": "cells",
+        "text": "Its beams sweep the ground below, each one serving the dishes in a patch of land at a time.",
+        "start": 321.53,
+        "seconds": 5.99,
+        "window": 6.43,
+        "fill": 0.932
+      },
+      {
+        "scene": "gateway",
+        "text": "Then it passes your signal down to a ground station, which is wired into the internet.",
+        "start": 327.97,
+        "seconds": 5.5,
+        "window": 5.97,
+        "fill": 0.921
+      },
+      {
+        "scene": "one",
+        "text": "But one satellite only ever covers a small patch of the planet. So how do you get a signal everywhere?",
+        "start": 333.93,
+        "seconds": 6.94,
+        "window": 7.27,
+        "fill": 0.955
+      },
+      {
+        "scene": "launch",
+        "text": "Starlink's first 60 working satellites went up together, on one rocket, in 2019.",
+        "start": 341.2,
+        "seconds": 6.36,
+        "window": 6.77,
+        "fill": 0.939
+      },
+      {
+        "scene": "spread",
+        "text": "They spread out into a long line, like beads on a string, then climbed up to their places.",
+        "start": 347.97,
+        "seconds": 5.92,
+        "window": 6.5,
+        "fill": 0.911
+      },
+      {
+        "scene": "web",
+        "text": "Did one launch do it? No. Since then, launch after launch has filled the low sky with a moving web of them.",
+        "start": 354.47,
+        "seconds": 7.5,
+        "window": 7.87,
+        "fill": 0.953
+      },
+      {
+        "scene": "shells",
+        "text": "Each group flies its own tilted path, so between them, the rings of satellites wrap the whole planet.",
+        "start": 362.33,
+        "seconds": 6.96,
+        "window": 7.37,
+        "fill": 0.944
+      },
+      {
+        "scene": "always",
+        "text": "That's why the sky above your house is never empty: one is always rising as another one sets.",
+        "start": 369.7,
+        "seconds": 6.26,
+        "window": 6.87,
+        "fill": 0.911
+      },
+      {
+        "scene": "back",
+        "text": "So follow your video one last time. You press play, and the laptop asks for it over wifi.",
+        "start": 376.57,
+        "seconds": 6.45,
+        "window": 6.83,
+        "fill": 0.944
+      },
+      {
+        "scene": "upcable",
+        "text": "The router sends it up the cable, and the dish works out where your satellite is right now.",
+        "start": 383.4,
+        "seconds": 5.31,
+        "window": 5.87,
+        "fill": 0.905
+      },
+      {
+        "scene": "fire",
+        "text": "Its tiny antennas fire a fraction apart, and the beam leans up to a satellite 480 km overhead.",
+        "start": 389.27,
+        "seconds": 8.21,
+        "window": 8.5,
+        "fill": 0.966
+      },
+      {
+        "scene": "catchit",
+        "text": "The satellite catches it on one of its arrays, and points another beam down to the ground.",
+        "start": 397.77,
+        "seconds": 5.49,
+        "window": 6.0,
+        "fill": 0.915
+      },
+      {
+        "scene": "home",
+        "text": "Into the internet through the ground station, and your video rides the same path back to you.",
+        "start": 403.77,
+        "seconds": 5.61,
+        "window": 6.2,
+        "fill": 0.905
+      },
+      {
+        "scene": "payoff",
+        "text": "All in a blink. From a flat dish that never moves, aimed at satellites that never stop.",
+        "start": 409.97,
+        "seconds": 5.79,
+        "window": 6.3,
+        "fill": 0.919
+      },
+      {
+        "scene": "loop",
+        "text": "Which machine should we take apart next? Tell us. Until then, look up: one is crossing your sky right now.",
+        "start": 416.27,
+        "seconds": 7.18,
+        "window": 7.63,
+        "fill": 0.941
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.5,
+    "lufs": -14.8,
+    "music_under_voice_db": 26.3
+  },
+  "craft_problems": [
+    "note: four shots in a row open wide (from 'hook2'): vary the shot size",
+    "note: 30 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+    "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+    "note: directed is 60 of 60 composed beats (at most 40%): vary how each idea is shown",
+    "note: directed 4 times in a row: change the device"
+  ],
+  "liveliness": {
+    "median": 10.443,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

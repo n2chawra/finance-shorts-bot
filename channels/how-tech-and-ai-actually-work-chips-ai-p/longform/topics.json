@@ -731,17 +731,18 @@
       "templates": [
         "long_story"
       ],
-      "angle": "A phased array: many tiny antennas fire a fraction of a second apart so the beam bends where it's needed, handing off between satellites about 550 km up instead of one 35,786 km up. Draw the cables right (viewers caught a power cable drawn as data).",
+      "angle": "A phased array: many tiny antennas fire a fraction of a second apart so the beam bends where it's needed, handing off between satellites about 480 km up instead of one 35,786 km up. Draw the cables right (viewers caught a power cable drawn as data).",
       "why_now": "First topics for the channel, from the setup research (advice.md: internet long, example title 2). Viewers asked about LEO vs GEO and the phased-array dish (comment notes #14).",
       "facts": [
         {
-          "label": "Altitude of the Starlink constellation, about",
-          "value": 550,
+          "label": "Altitude SpaceX is lowering its Starlink satellites to during 2026, about",
+          "value": 480,
           "unit": "km",
-          "as_of": "2026-11-18",
-          "source": "Starlink (Technology)",
-          "url": "https://www.starlink.com/technology",
-          "fixed": true
+          "as_of": "2026-01-01",
+          "source": "Space.com",
+          "url": "https://www.space.com/space-exploration/satellites/spacex-lowering-orbits-of-4-400-starlink-satellites-for-safetys-sake",
+          "fixed": true,
+          "note": "Studio 2026-11-23: the fact review found 550 km out of date (SpaceX moving ~4,400 satellites to ~480 km in 2026)"
         },
         {
           "label": "Altitude of a geostationary satellite above the equator",
@@ -781,7 +782,7 @@
       "search": "how does starlink work",
       "outline": [
         "hook: the dish follows satellites racing across the sky and never moves",
-        "route map: dish -> beam -> satellite at 550 km -> ground station -> internet",
+        "route map: dish -> beam -> satellite at about 480 km -> ground station -> internet",
         "ch1 the old way: a dish aimed at one satellite 35,786 km up",
         "ch2 why low is faster (computed round-trip comparison)",
         "ch3 inside the flat dish: many tiny antennas",
@@ -791,7 +792,7 @@
         "ch6 from 60 satellites in 2019 to the network now",
         "climb back out: the video loads; cables drawn right"
       ],
-      "maths": "signal round trip at 550 km vs 35,786 km at light speed",
+      "maths": "signal round trip at 480 km vs 35,786 km at light speed",
       "verify": [
         "Starlink altitude and antennas",
         "geostationary altitude",

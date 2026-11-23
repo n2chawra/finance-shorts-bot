@@ -1,0 +1,50 @@
+{
+  "agent": "studio",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-23T03:21:11Z",
+  "finishedAt": "2026-11-23T12:11:57Z",
+  "summary": "Made and shipped the channel's first full 3D long video, L-20261123-21 'How Does Starlink's Flat Dish Aim Without Moving?' (7:06, 60 directed beats on 9 places, three rated thumbnails, A picked).",
+  "decision": "acted",
+  "why": "state --format long: 0 of 2 long videos this week; Scout's top usable topic (2026-11-18-starlink-flat-dish, priority high, 4.6M-view demand video).",
+  "findings": [
+    {
+      "title": "Fact review caught a stale feed figure",
+      "detail": "Starlink's 550 km altitude is out of date: SpaceX is lowering its satellites to about 480 km during 2026 (Space.com). The video uses 480 km; longform/topics.json corrected; research/topics.json still has 550 km (research's lane).",
+      "link": "https://www.space.com/space-exploration/satellites/spacex-lowering-orbits-of-4-400-starlink-satellites-for-safetys-sake"
+    },
+    {
+      "title": "Fact review round 3 caught a causal-order error",
+      "detail": "The satellite 'caught' the signal before the dish sent it; beats reordered. The channel's rule: never skip or misorder a causal step."
+    },
+    {
+      "title": "QA round 1 failed, round 2 passed",
+      "detail": "Blocking: an empty sky at 5 s, a near-empty starfield at 70 s, white captions on the white dish. Fixed by reframing; round 2 passed."
+    },
+    {
+      "title": "3D dark stages fail the empty-frame gate",
+      "detail": "51 then 16 of 85 stills were 'mostly empty background'; fixed with glowing motes and surface detail in every place (longform/backlog.json tech-long-3d-empty-frames)."
+    },
+    {
+      "title": "Render time",
+      "detail": "426 s of 3D took about 7 hours on the cloud's software GL (05:18-12:04 UTC)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Shipped L-20261123-21",
+      "detail": "Manifest on main (d46e435), mp4 on media/L-20261123-21 (90 MB parts). 426 s; liveliness median 10.4, no still stretches; peak -1.0 dB, mean -16.5 dB; thumbnails A 9/10 (picked), B 8, C 8."
+    },
+    {
+      "title": "Topic feed fact corrected",
+      "detail": "2026-11-18-starlink-flat-dish: 550 km -> 480 km (Space.com, 2026-01-01) in longform/topics.json.",
+      "branch": "agent/studio/2026-11-23/how-tech-and-ai-actually-work-chips-ai-p"
+    }
+  ],
+  "nextCheck": "2026-11-25",
+  "links": [
+    {
+      "label": "Video folder",
+      "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/videos/L-20261123-21/"
+    }
+  ]
+}

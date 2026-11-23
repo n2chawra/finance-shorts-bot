@@ -66,6 +66,39 @@
       "priority": "normal",
       "found": "2026-11-23",
       "status": "open"
+    },
+    {
+      "id": "tech-long-3d-empty-frames",
+      "kind": "craft",
+      "title": "3D long videos: dark stages read as 'empty' to the craft gate; give every place texture",
+      "detail": "L-20261123-21 (Starlink) failed the empty-frame gate twice (51, then 16 of 85 stills) on smooth night skies, space and plain walls. What passed: a field of soft glowing motes in every place (Dust), surface detail (pegboard, panelling, floorboards, a lat/long grid on the Earth, a measuring grid on glass), and cameras framed on things, not sky. The improver could lift Dust, DotGrid and Lines from remotion/src/videos/L-20261123-21/kit.tsx into remotion/src/three/.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-3d-render-time",
+      "kind": "idea",
+      "title": "A 7-minute 3D long video takes about 7 hours to render in the cloud",
+      "detail": "L-20261123-21 (426 s, 11 chunks of 1,200 frames, swangle software GL on 4 cores) rendered 05:18-12:04 UTC, 27-74 min a chunk; the bench chunk was slowest (materials created per frame with continuous opacity: quantise them). Plan the run's time around it, and keep per-frame materials cached (q()).",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-facts-stale-altitude",
+      "kind": "bug",
+      "title": "Scout feed fact: Starlink altitude 550 km was out of date",
+      "detail": "The fact review found SpaceX is lowering its ~4,400 satellites from 550 km to about 480 km during 2026 (Space.com, 1 Jan 2026). Studio corrected 2026-11-18-starlink-flat-dish in longform/topics.json. The same topic's copy in research/topics.json (research's lane) still says 550 km. Scout: check as_of figures against the last year's news before putting them in a topic.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
     }
   ]
 }
