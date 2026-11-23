@@ -1,29 +1,104 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-22T16:27:25.806Z",
+  "generatedAt": "2026-11-23T20:22:07.660Z",
   "channel": "disasters-and-engineering-failures-expla",
   "youtubeChecked": true,
   "summary": {
-    "videos": 2,
-    "checked": 2,
+    "videos": 5,
+    "checked": 5,
     "error": 0,
     "warning": 0,
-    "info": 0,
+    "info": 1,
     "owner": 0,
     "persistentErrors": 0
   },
-  "issues": [],
+  "issues": [
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
+      "videoId": "v-20261123-41",
+      "youtubeId": "gl_scxu3_qQ",
+      "detail": "Dashboard shows 0 views, YouTube 135; live counts last refreshed never (they refresh while the dashboard is open)."
+    }
+  ],
   "videos": [
+    {
+      "id": "v-20261123-41",
+      "title": "Kobe Bryant's Helicopter: Why Did the Pilot Think He Was Climbing?",
+      "youtubeId": "gl_scxu3_qQ",
+      "state": "published",
+      "publishAt": "2026-11-23T17:47:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "public",
+        "views": 135,
+        "likes": 3,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "L-20261122-42",
+      "title": "How BP's Texas City Refinery Blew Up While Its Gauge Read Normal",
+      "youtubeId": "55V_o42yLOc",
+      "state": "published",
+      "publishAt": "2026-11-23T17:17:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "public",
+        "views": 0,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261122-41",
+      "title": "Why Couldn't This Mississippi Tanker Stop?",
+      "youtubeId": "dBTeyU6MfBE",
+      "state": "published",
+      "publishAt": "2026-11-22T17:47:00.000Z",
+      "dashboard": {
+        "views": 1135,
+        "likes": 10,
+        "comments": 0,
+        "liveAt": "2026-11-23T16:35:10.101Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1139,
+        "likes": 10,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "L-20261121-42",
       "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
       "youtubeId": "mYr-5sprGUY",
-      "state": "scheduled",
+      "state": "published",
       "publishAt": "2026-11-22T17:17:00.000Z",
-      "dashboard": null,
+      "dashboard": {
+        "views": 6,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-11-23T16:35:10.101Z"
+      },
       "youtube": {
-        "privacy": "private",
-        "views": 0,
+        "privacy": "public",
+        "views": 6,
         "likes": 0,
         "comments": 0
       },
@@ -40,15 +115,15 @@
       "state": "published",
       "publishAt": "2026-11-21T17:47:00.000Z",
       "dashboard": {
-        "views": 158,
-        "likes": 4,
+        "views": 435,
+        "likes": 11,
         "comments": 1,
-        "liveAt": "2026-11-22T14:45:03.682Z"
+        "liveAt": "2026-11-23T16:35:10.101Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 157,
-        "likes": 4,
+        "views": 436,
+        "likes": 10,
         "comments": 1
       },
       "analytics": {
