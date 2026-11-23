@@ -67,3 +67,10 @@ test("a channel that can't set covers yet is asked again every 6 hours, without 
   assert.equal(isPermissionRefusal("The authenticated user doesn't have permissions to upload and set custom video thumbnails."), true);
   assert.equal(isPermissionRefusal("Media file too large"), false);
 });
+
+test("covers_now retries every miss, refused or out of tries", async () => {
+  const { needsCover } = await import("../lib/cover.ts");
+  assert.equal(needsCover({ coverTries: 3 }, false, Infinity, true), true);
+  assert.equal(needsCover({ coverRefusedAt: "2026-11-23T06:00:00Z" }, false, Infinity, true), true);
+  assert.equal(needsCover({ coverSetAt: "x" }, false, Infinity, true), false);
+});

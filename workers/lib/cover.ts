@@ -43,11 +43,11 @@ export const COVER_DAYS = 21, COVER_TRIES = 3, COVERS_PER_RUN = 4;
  * using up its tries, so the covers go up within hours of the owner verifying it (23 Nov: 3 channels refused). */
 export const REFUSED_RETRY_H = 6;
 export const isPermissionRefusal = (why: string) => /permission|verif/i.test(why);
-export function needsCover(style: unknown, isDefaultChannel: boolean, now: number = Date.now()): boolean {
+export function needsCover(style: unknown, isDefaultChannel: boolean, now: number = Date.now(), force = false): boolean {
   const s = (style && typeof style === "object" ? style : {}) as { coverSetAt?: unknown; coverTries?: unknown; coverRefusedAt?: unknown };
   if (s.coverSetAt) return false;
   if (typeof s.coverRefusedAt === "string") return now - Date.parse(s.coverRefusedAt) >= REFUSED_RETRY_H * 3_600_000;
   const tries = Number(s.coverTries ?? 0) || 0;
-  if (tries >= COVER_TRIES) return false;
+  if (tries >= COVER_TRIES && !force) return false;
   return !isDefaultChannel || s.coverTries !== undefined;
 }

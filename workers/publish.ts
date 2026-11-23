@@ -88,9 +88,11 @@ async function repairCovers(prisma: PrismaClient, run: Run, token: string): Prom
     where: { youtubeId: { not: null }, publishAt: { gte: since }, state: { in: ["scheduled", "uploaded", "published"] }, video: { deletedAt: null, channelId: run.channelId } },
     orderBy: { publishAt: "desc" }, select: { youtubeId: true, video: { select: { id: true, style: true } } },
   });
+  // COVERS_NOW=1 (Publish → covers_now, after the owner verifies a channel): every miss, refused ones too, this run
+  const now = process.env.COVERS_NOW === "1";
   const refused = (s: unknown) => (s && typeof s === "object" && "coverRefusedAt" in s ? 1 : 0);
-  const todo = ups.filter((u) => needsCover(u.video.style, run.channelId === layout().default))
-    .sort((a, b) => refused(a.video.style) - refused(b.video.style)).slice(0, COVERS_PER_RUN);
+  const todo = ups.filter((u) => needsCover(u.video.style, run.channelId === layout().default, now ? Infinity : Date.now(), now))
+    .sort((a, b) => refused(a.video.style) - refused(b.video.style)).slice(0, now ? 60 : COVERS_PER_RUN);
   for (const u of todo) {
     console.log(`${u.video.id}: no cover of ours on YouTube yet; setting it`);
     await applyCover(prisma, run, token, u.video.id, u.youtubeId!, u.video.style);
