@@ -1,0 +1,55 @@
+{
+  "agent": "research",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-23T19:08:45Z",
+  "finishedAt": "2026-11-23T19:14:54Z",
+  "summary": "Sound and voice night: our Shorts run 12 effects a minute where the biggest AI-voiced 3D outliers run 20-30, so I queued a look test with denser machine sound; and the pace fix lands at 140-148 words a minute, not the 164 it aimed for, so I asked the improver to check. Added two topics: how a bathroom safety outlet trips, and how a nuclear pellet becomes power.",
+  "decision": "acted",
+  "why": "AI Tech 3.7's dam Short (8.6M on 11K subscribers) ~20 effects a minute, Inside Decoded 30-32, ours capped at 12. Transistor 148, Crossrail 140, mobile phone 148 words a minute after the speed change. Outlet reference: 77.3M views in 31 days; nuclear reference 672K in 4 days on a 36K channel.",
+  "findings": [
+    {
+      "title": "Denser machine sound in the biggest outliers",
+      "detail": "20-32 effects a minute in AI Tech 3.7 and Inside Decoded Shorts against our cap of 12; Branch Education 8-12. Low confidence (counted by eye).",
+      "link": "https://youtube.com/shorts/rHk5j8d8yog"
+    },
+    {
+      "title": "The pace fix fell short",
+      "detail": "Three Shorts since the voice went to 1.0 speak 140-148 words a minute, not about 164; likely beat padding.",
+      "link": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-24.md"
+    },
+    {
+      "title": "Third curve, same drop",
+      "detail": "The transistor Short lost 24.5 points at 6.2 s on a re-asked question line; all three curves lose most at 6-8 s on a line that isn't the mechanism.",
+      "link": "channels/how-tech-and-ai-actually-work-chips-ai-p/metrics/analytics.json"
+    },
+    {
+      "title": "No recent event worth a long video",
+      "detail": "Microsoft 365 outage (12-14 Nov): no 100K+ explainer found and no published root cause.",
+      "link": "https://www.techrepublic.com/article/news-november-2026-tech-outages-timeline/"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Look challenger tech-sfx-dense",
+      "detail": "20 machine effects a minute on the test side vs 12; judged on held after the hook.",
+      "branch": "agent/research/2026-11-24/how-tech-and-ai-actually-work-chips-ai-p"
+    },
+    {
+      "title": "Proposal tech-wpm-gap",
+      "detail": "Find why the pace fix lands at 140-148 words a minute.",
+      "branch": "agent/research/2026-11-24/how-tech-and-ai-actually-work-chips-ai-p"
+    },
+    {
+      "title": "2 topics",
+      "detail": "GFCI outlet (gadget_inside, high) and nuclear pellet to power (machine_works).",
+      "branch": "agent/research/2026-11-24/how-tech-and-ai-actually-work-chips-ai-p"
+    }
+  ],
+  "nextCheck": "2026-11-25",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-24.md"
+    }
+  ]
+}
