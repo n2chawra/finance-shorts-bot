@@ -7,3 +7,4 @@ export * from "./Path3D";
 export * from "./Atmos3D";
 export * from "./HonestyTag";
 export * from "./People";
+export * from "./Rotorcraft";

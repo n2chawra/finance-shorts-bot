@@ -80,6 +80,7 @@ For `channels/disasters-and-engineering-failures-expla/` (build spec: its
   containers, `bowDoors` 0–1 as clamshell or visor; waterline y=0, bow +x): a flared bow with an upright
   door face, a sheer line, painted deck, boot top and band; rounded deck houses with window rows, bridge
   wings, mast, lifeboats, a capped funnel.
+- **Rotorcraft** (`Rotorcraft.tsx`, 2026-11-23): `Helicopter` (an S-76-shaped twin: drooped nose, tall cabin with big windows, roof engine fairing, four-blade main rotor, slim boom, swept fin, stabiliser, tail rotor on the left; `length`, `rotor`/`tail` blade angles, `blur` 0..1 to a spinning disc, `livery` body/band/belly/glass/rotor, `lights`, `wrap.body|rotor|tail`; nose +x, origin at the mast foot) and `Hills` (seeded rolling hill country with dry-grass tops, green gullies and chaparral bushes; `size`, `height`, `scale`, `ridge` along x at z = 0, `colors`; `hillHeight(x, z, opts)` gives the same surface in JS).
 - **Structures** (`Structures.tsx`): `GirderBridge`, `TrussBridge` (spans, piers wall / columns),
   `Dam` (gravity / arch, `level` of the reservoir; a seeded valley terrain that frames a 9:16 shot
   from downstream; above 1 a streaming sheet pours over the crest and down the face, spray at the toe), `Building` (floors, bays,
