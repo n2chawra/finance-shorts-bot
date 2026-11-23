@@ -1,0 +1,19 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-23T17:32:18Z",
+  "finishedAt": "2026-11-23T17:43:56Z",
+  "summary": "Fixed a smoke test that failed on main after today's Delete-channel controls (it would have blocked every dashboard merge), checked every page on all four live channels and added two Channels-page ideas.",
+  "decision": "acted",
+  "why": "Smoke tests on main: 2 failed (the contact-sheet test in both projects); the lazy sample images now sit below the fold. After the fix: 123 passed, 5 skipped; tsc, lint and build pass.",
+  "findings": [
+    {"title": "Contact-sheet smoke test broke on main", "detail": "The taller channel cards push the Launch review's lazy images below the fold, so their failure never fired in the test. The page itself is fine."},
+    {"title": "Channels page is about 4,200 px tall at desktop width", "detail": "Added as the idea channels-collapse-live-cards.", "link": "https://www.saasui.design/blog/saas-workspace-organization-switcher-ux-patterns"},
+    {"title": "The delete dialog doesn't say how much goes", "detail": "Added as the idea delete-channel-counts.", "link": "https://www.saasui.design/blog/saas-destructive-actions-confirmation-ux-patterns"}
+  ],
+  "changes": [
+    {"title": "Smoke: scroll lazy contact sheets into view", "detail": "The same assertions; each sheet is brought into view so its 404 fires.", "branch": "agent/dashboard/2026-11-23"}
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-23.md"}]
+}

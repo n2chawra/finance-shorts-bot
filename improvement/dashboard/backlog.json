@@ -771,6 +771,37 @@
     "apps/dashboard/src/app/calendar/page.tsx": "2026-11-22"
    },
    "commit": "423ffc3"
+  },
+  {
+   "id": "smoke-contact-sheet-lazy",
+   "kind": "bug",
+   "title": "Smoke test 'contact sheet can't load' failed on main in both projects",
+   "detail": "The Delete-channel controls (owner, 2026-11-23) made each channel card taller, so the sample Launch review's contact sheets sit below the fold. They load lazily, so the mocked 404 never fired and the test saw 1–2 unfailed images. That would have blocked every dashboard branch at merge. The test now scrolls each sheet into view before checking; same assertions.",
+   "page": "channels",
+   "found": "2026-11-23",
+   "status": "done",
+   "done": "2026-11-23",
+   "lastTouched": {
+    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-23"
+   }
+  },
+  {
+   "id": "channels-collapse-live-cards",
+   "kind": "idea",
+   "title": "Channels: collapse each live channel's settings behind one summary row",
+   "detail": "At 1440 px the Channels page is about 4,200 px tall in sample data, and with four live channels each card repeats YouTube, Shorts a day, upload times and long-video days. Showing a one-line summary (status, ready, published, views 7 d, Shorts a day) with the settings opening on tap would keep a channel waiting for a Launch review or a deletion in view. Pattern guides on multi-tenant admin screens recommend the same: put orientation first and keep admin actions apart (saasui.design workspace-switcher patterns).",
+   "page": "channels",
+   "found": "2026-11-23",
+   "status": "open"
+  },
+  {
+   "id": "delete-channel-counts",
+   "kind": "idea",
+   "title": "Delete channel: say how many videos, queued uploads and Shorts ready go",
+   "detail": "Guides on confirming destructive actions recommend stating the count ('Delete 50 contacts?') next to type-to-confirm. The dialog lists what is removed but not how much. Adding '64 videos, 6 ready, 2 scheduled uploads' from the card's existing numbers costs nothing and catches choosing the wrong channel (saasui.design, destructive-action confirmation patterns).",
+   "page": "channels",
+   "found": "2026-11-23",
+   "status": "open"
   }
  ]
 }
