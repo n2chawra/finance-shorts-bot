@@ -1,0 +1,57 @@
+{
+  "agent": "research",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-23T18:43:26Z",
+  "finishedAt": "2026-11-23T18:48:57Z",
+  "summary": "Sound and voice night for the geography channel: our Shorts speak at about 217 words a minute against the references' 185, and the music sits about 31 dB under the voice. I queued both as look challengers and added 2 topics (Australia's Dingo Fence, Canada's lakes).",
+  "decision": "acted",
+  "why": "All 5 reference Shorts speak at 150-194 wpm (median 185, which is also the recipe's own number), while our last 8 run 203-226, so a slower pace goes on the weekly-loop list. Both new topics have references (3.48M and 3.49M views) that beat their channel's 2.09M subscribers, and both are in categories the feed didn't have.",
+  "findings": [
+    {
+      "title": "We talk 17% faster than every reference",
+      "detail": "Ours 203-226 wpm (median about 217); references 150, 174, 185, 189, 194. Queued as geo-pace-185, held after the hook."
+    },
+    {
+      "title": "The music is nearly inaudible",
+      "detail": "30.4-31.7 dB under the voice. The measured references sit at 16 dB (Chile, 10.6M) and 39 dB (One Country, 2.95M). Queued last as geo-music-closer."
+    },
+    {
+      "title": "Dingo Fence: 3.48M in 23 days",
+      "detail": "A 5,614 km line across the map; new topic.",
+      "link": "https://youtube.com/shorts/iZS0b9U9UPs"
+    },
+    {
+      "title": "Canada's lakes: 3.49M",
+      "detail": "879,800 lakes against Russia's 201,200; new topic.",
+      "link": "https://youtube.com/shorts/D0AWufa4iv4"
+    },
+    {
+      "title": "Market scan stale",
+      "detail": "market.json is from 19 Nov and holds finance searches only; the owner was notified."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Challenger geo-pace-185",
+      "detail": "Narration at about 185 wpm against about 217 now (look/voice, held after the hook).",
+      "branch": "agent/research/2026-11-24/geography-maps-geopolitical-mysteries"
+    },
+    {
+      "title": "Challenger geo-music-closer",
+      "detail": "Music bed about 20 dB under the voice instead of about 31 dB (look/sound, low confidence).",
+      "branch": "agent/research/2026-11-24/geography-maps-geopolitical-mysteries"
+    },
+    {
+      "title": "2 topics in the feed",
+      "detail": "Dingo Fence (fences) and Canada's lakes (lakes), both why_shaped, score 7.69.",
+      "branch": "agent/research/2026-11-24/geography-maps-geopolitical-mysteries"
+    }
+  ],
+  "nextCheck": "2026-11-25",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/geography-maps-geopolitical-mysteries/research/2026-11-24.md"
+    }
+  ]
+}
