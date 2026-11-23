@@ -1,14 +1,14 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 2,
+  "open": 0,
   "notes": [
     {
       "id": "cmwstm4180001jv0917t7gywr",
       "kind": "improve",
       "area": null,
       "text": "Where is the flag of russia?? Should have put it as the area was keep growing it would have been looked better than this .",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "improver fixed: Fixed for every map video: the code check before render now fails a video whose country is named on the map but never shows its flag (renderer/remotion.py map_flag_problems), so the director must give Russia its flag where its area grows. It found the same miss on Peru in another Short. This Short is already live, so it can't be changed. (6c7f696)",
       "at": "2026-11-23T05:23:58.317Z",
       "video": {
         "id": "v-20261123-11",
@@ -19,25 +19,6 @@
         "shape": "the-relay",
         "hookStyle": "question",
         "hook": "Russia once ended at the Ural Mountains. So how did it reach the Pacific?"
-      }
-    },
-    {
-      "id": "cmwlu7uww0001kz09ua9f25hp",
-      "kind": "stale",
-      "area": null,
-      "text": "Owner: only the Suez sample goes out; sample 2 is the bar for this channel",
-      "status": "open",
-      "response": null,
-      "at": "2026-11-18T08:06:29.473Z",
-      "video": {
-        "id": "v-20261117-05",
-        "title": "Why does Gambia sit inside Senegal?",
-        "format": "short",
-        "status": "rejected",
-        "story": "why_shaped",
-        "shape": "reveal",
-        "hookStyle": "question",
-        "hook": "Why does Gambia sit inside Senegal, like a worm inside an apple?"
       }
     },
     {
@@ -152,6 +133,25 @@
         "shape": "timeline",
         "hookStyle": "question",
         "hook": "Greenland sits next to Canada, not Europe, yet it belongs to Denmark. Why?"
+      }
+    },
+    {
+      "id": "cmwlu7uww0001kz09ua9f25hp",
+      "kind": "stale",
+      "area": null,
+      "text": "Owner: only the Suez sample goes out; sample 2 is the bar for this channel",
+      "status": "addressed",
+      "response": "improver fixed: Noted: only the Suez sample went out, and sample 2 is this channel's bar. (6c7f696)",
+      "at": "2026-11-18T08:06:29.473Z",
+      "video": {
+        "id": "v-20261117-05",
+        "title": "Why does Gambia sit inside Senegal?",
+        "format": "short",
+        "status": "rejected",
+        "story": "why_shaped",
+        "shape": "reveal",
+        "hookStyle": "question",
+        "hook": "Why does Gambia sit inside Senegal, like a worm inside an apple?"
       }
     }
   ]
