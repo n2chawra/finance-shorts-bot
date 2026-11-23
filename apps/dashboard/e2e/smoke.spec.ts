@@ -653,8 +653,14 @@ test("a channel sample whose contact sheet can't load says so instead of a broke
   await page.route("**/api/media/**", (route) => route.fulfill({ status: 404, json: { error: "Not found" } }));
   await page.goto("/channels");
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Channels", { timeout: 30_000 });
+  // The sheets load lazily, so one below the fold only fails once it is scrolled to: bring each into view.
+  const sheets = page.locator("main img[src*='/api/media/']");
+  await expect(page.getByText("Contact sheet not available yet").or(sheets).first()).toBeVisible({ timeout: 30_000 });
+  await expect.poll(async () => {
+    if (await sheets.count()) await sheets.first().scrollIntoViewIfNeeded({ timeout: 2_000 }).catch(() => {});
+    return sheets.count();
+  }, { timeout: 15_000 }).toBe(0);
   await expect(page.getByText("Contact sheet not available yet").first()).toBeVisible();
-  await expect(page.locator("main img[src*='/api/media/']")).toHaveCount(0);
 });
 
 test("all channels: every stat tile shows its whole label", async ({ page }) => {
