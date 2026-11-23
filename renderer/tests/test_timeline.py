@@ -228,9 +228,10 @@ def test_check_script_warns_only_for_shorts() -> None:
     assert tb.check_script(script(beats, format="short"))["warnings"] == []
 
 
-def test_the_shorts_reference_keeps_an_event_every_few_seconds() -> None:
-    """The reference Short (the casino remake, at the 2026-10-30 pace) keeps an event every 3 s."""
-    s = json.loads((cpath(EXAMPLES.parent, "videos") / "v-remake-casino" / "script.json").read_text(encoding="utf-8"))
+def test_the_shorts_reference_keeps_an_event_every_few_seconds(monkeypatch) -> None:
+    """A shipped Short (the geography channel's, 23 Nov) keeps an event every 3 s at its channel's pace."""
+    monkeypatch.setenv("CHANNEL", "geography-maps-geopolitical-mysteries")
+    s = json.loads((cpath(EXAMPLES.parent, "videos") / "v-20261123-11" / "script.json").read_text(encoding="utf-8"))
     assert tb.check_script(s)["warnings"] == []
     assert tb.TEMPOS["short"] == 1.2
 

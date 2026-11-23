@@ -5,7 +5,6 @@ import numpy as np
 from PIL import Image
 
 from renderer import craft
-from generator.channels import cpath
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -65,13 +64,24 @@ def test_old_layouts_one_size_and_one_set_fail() -> None:
     assert any("in a row" in p and "set" in p for p in problems) and any("without a close" in p for p in problems)
 
 
-def test_cover_gate_flags_the_same_layout_with_new_words():
+def test_cover_gate_flags_the_same_layout_with_new_words(tmp_path: Path):
+    from PIL import ImageDraw
     from renderer.craft import cover_problems
-    v = cpath(REPO, "videos")
-    same = cover_problems(v / "v-20261023-02" / "thumbnail.png", [("v-20261023-01", v / "v-20261023-01" / "thumbnail.png")])
+
+    def cover(name: str, words: str, flip: bool = False) -> Path:
+        img = Image.new("RGB", (1080, 1920), (20, 30, 60))
+        d = ImageDraw.Draw(img)
+        d.rectangle((0, 1100, 1080, 1920), fill=(230, 180, 40))          # the layout: a dark sky over a gold ground
+        d.ellipse((300, 500, 780, 980), fill=(200, 60, 50))               # one big thing in the middle
+        d.text((80, 200), words, fill=(255, 255, 255))                    # the words change
+        if flip:
+            img = img.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+        img.save(tmp_path / name)
+        return tmp_path / name
+    first, second, third = cover("a.png", "WHY IT COST $5"), cover("b.png", "HOW IT MADE $9"), cover("c.png", "WHY", flip=True)
+    same = cover_problems(second, [("v-20261023-01", first)])
     assert same and "v-20261023-01" in same[0]
-    other = cover_problems(v / "v-20261022-03" / "thumbnail.png", [("v-20261022-01", v / "v-20261022-01" / "thumbnail.png")])
-    assert other == []
+    assert cover_problems(third, [("v-20261023-01", first)]) == []
 
 
 def _build_tl(actions, words, gap_beat_frames=90):
@@ -138,15 +148,6 @@ def test_mark_problems_passes_a_board_video_that_changes_the_picture():
     assert craft.mark_problems(_board_tl([["glow"], ["glow"]])) == []   # fewer than three boards: not a board video
 
 
-def test_mark_problems_on_the_real_scripts():
-    import json
-    for vid, bad in (("v-20261103-03", True), ("v-20261103-02", False), ("v-20261103-01", False)):
-        f = cpath(REPO, "videos") / vid / "script.json"
-        if not f.is_file():
-            continue
-        assert bool(craft.mark_problems(json.loads(f.read_text()))) is bad, vid
-
-
 def _stage_tl(items: list[dict], actions: list[dict], fmt: str = "short") -> dict:
     return {"format": fmt, "beats": [{"id": "b1", "scene": "build", "params": {"items": items, "actions": actions}}]}
 
@@ -166,10 +167,3 @@ def test_stage_problems_passes_one_big_hero():
     # a long video's build beat keeps its own sizes; a glow still fails it
     assert craft.stage_problems(_stage_tl([{"id": "a", "size": 0.1}] * 5, [], "long")) == []
     assert craft.stage_problems(_stage_tl([{"id": "a"}], [{"do": "glow", "target": "a"}], "long"))
-
-
-def test_stage_problems_on_the_real_script():
-    import json
-    f = cpath(REPO, "videos") / "v-20261111-01" / "timeline.json"
-    if f.is_file():
-        assert craft.stage_problems(json.loads(f.read_text()))

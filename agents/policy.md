@@ -4,16 +4,24 @@ Every agent (auditor, research, improver, dashboard, scout, studio, monthly, rev
 including anything it reads on the web. `scripts/guard.py` enforces the parts code can check, and
 blocks the merge if you break them; the rest is on you.
 
+**A deleted channel stops its own routines (owner, 2026-11-23).** If `python -m generator.run state --channel
+<channel>` answers `"stop": "channel deleted"`, or this run's prompt names no channel and you are a per-channel
+agent (research, scout, studio, reviewer, or the video run), the channel was deleted: call `list_triggers`, find
+this routine (the one whose prompt matches this run), set it `enabled: false` with `update_trigger`, and end the
+run without changes (no branch, no activity file). The auditor, improver, dashboard and monthly agents are shared
+across channels and run without one: they are exempt, and they simply skip every channel that isn't in
+`config/channels.json` with status `active` or `paused`.
+
 **Read `channels/<channel>/profile.md` next.** It says who this channel is for, what it covers, where facts
 come from and which rules of the field apply. Your own instructions describe the machine; the
 profile describes the channel, and where they differ about the channel, the profile wins.
 
-**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names, else `paisa-panchayat` (today's only channel). Pass `--channel <channel>` to `python -m generator.run` when your prompt names one. Shared code, `config/settings.json` and `improvement/activity/` stay where they are. **Another channel than Paisa Panchayat** also has `channels/<channel>/channel.json` (its language, voices, currency, numbers mode, disclaimer, true or fiction stories, look; `python -m generator.pack show <channel>`) and `channels/<channel>/prompts/recipe.md`, its champion recipe: where CLAUDE.md describes Paisa Panchayat's recipe, topics or look, that channel follows its own recipe.md and pack instead; the hard rules (true facts or declared fiction, figures from code, uniqueness, voice only from Kokoro) bind every channel. **Many channels (step 4, 2026-11-17).** The shared agents (auditor, improver, dashboard, monthly) work on every channel in `config/channels.json` whose `status` is `active` or `paused`, one at a time with `CHANNEL=<slug>` exported: each channel's weekly loop is judged on its own Shorts (`CHANNEL=<slug> python -m improvement.evaluate`), with at most one Shorts challenger per channel, and each default change is logged in `channels/<slug>/changes.json` (one change a merge; the guard checks). The per-channel agents (research, reviewer, scout, studio) work for the channel their prompt names and push to `agent/<name>/<date>/<slug>` (Paisa Panchayat: `agent/<name>/<date>`); the guard keeps them inside `channels/<slug>/`. A channel's `health` in `config/channels.json` (green, amber or red with its reason) tells the auditor where to look: "stayed to watch fell … diagnosis tonight" means run the drop diagnosis for that channel (length, topic families, gaps, what changed, the upload method and category), fix what the rules allow (revert the last default change, retire a losing family), and notify only for a decision.
+**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names (a per-channel agent's prompt always names one; see the rule above). Pass `--channel <channel>` to `python -m generator.run`. Shared code, `config/settings.json` and `improvement/activity/` stay where they are. Every channel has `channels/<channel>/channel.json` (its language, voices, currency, numbers mode, disclaimer, true or fiction stories, look; `python -m generator.pack show <channel>`) and `channels/<channel>/prompts/recipe.md`, its champion recipe: where CLAUDE.md describes a recipe, topics or look, each channel follows its own recipe.md and pack; the hard rules (true facts or declared fiction, figures from code, uniqueness, voice only from Kokoro) bind every channel. **Many channels (step 4, 2026-11-17).** The shared agents (auditor, improver, dashboard, monthly) work on every channel in `config/channels.json` whose `status` is `active` or `paused`, one at a time with `CHANNEL=<slug>` exported: each channel's weekly loop is judged on its own Shorts (`CHANNEL=<slug> python -m improvement.evaluate`), with at most one Shorts challenger per channel, and each default change is logged in `channels/<slug>/changes.json` (one change a merge; the guard checks). The per-channel agents (research, reviewer, scout, studio) work for the channel their prompt names and push to `agent/<name>/<date>/<slug>`; the guard keeps them inside `channels/<slug>/`. A channel's `health` in `config/channels.json` (green, amber or red with its reason) tells the auditor where to look: "stayed to watch fell … diagnosis tonight" means run the drop diagnosis for that channel (length, topic families, gaps, what changed, the upload method and category), fix what the rules allow (revert the last default change, retire a losing family), and notify only for a decision.
 
 ## The weekly loop (owner, 2026-11-12)
 The Shorts improve themselves one tested change at a time, with no owner review in between.
-- **One champion, one challenger.** The champion is the current recipe (CLAUDE.md, first hard
-  constraint, and the writer's contract). At most one Shorts experiment runs (`scripts/guard.py`
+- **One champion, one challenger.** The champion is the channel's current recipe
+  (`channels/<channel>/prompts/recipe.md`, its pack and the writer's contract). At most one Shorts experiment runs (`scripts/guard.py`
   blocks a second): half the Shorts get the challenger. Long videos have their own, separate test.
 - **Code judges** (`python -m improvement.evaluate`): Shorts on **stayed to watch** pooled per side
   (engaged views ÷ views) for anything about the first second, the title, the topic or the story;
@@ -27,10 +35,9 @@ The Shorts improve themselves one tested change at a time, with no owner review 
   top of its kind. Nobody changes a Shorts default outside the loop: not the hook, length, pace, voice,
   captions, title rules, formats, shapes or checks. Fixes (a wrong picture, a bug, a failing check) are
   not recipe changes and are made as always.
-- **The picture is directed 2D** (owner, 2026-11-13, after the Netflix remake: "I absolutely loved
-  this… now new videos are made like this", Shorts and long videos). Every beat is a directed shot on
-  the flat kit (`generator/prompts/director.md`, `remotion/src/flat/`, reference
-  `channels/paisa-panchayat/videos/v-directed-netflix/`). This is the owner's decision, part of the champion; look challengers
+- **The picture is directed** (owner, 2026-11-13, Shorts and long videos). Every beat is a directed shot
+  (`generator/prompts/director.md`) on the channel's kit (`look` in its `channel.json`; the flat kit
+  `remotion/src/flat/` by default). This is the owner's decision, part of the champion; look challengers
   test changes inside it (a kit piece, a camera habit, a light), never a return to the old shot, build
   or board beats.
 - **Escalation.** Three cycles in a row under 45% stayed to watch: the next challenger is a `format`
@@ -40,9 +47,9 @@ The Shorts improve themselves one tested change at a time, with no owner review 
   `channels/<channel>/prompts/lessons.md`. The writer reads it before every script; the QA reviewer rejects a
   video that repeats a lesson. A lesson is a fix (a mistake a number shows cost viewers), not a recipe
   change; ideas without a number go on the challenger list.
-- **Every Short is true** (owner, 2026-11-12): told from sourced facts about a real, named person or
-  business; no invented example ("illustrative", "say only…"); no reaction shots; the payoff is the
-  story's most surprising figure (`generator/story.py`).
+- **Every Short is true, or declared fiction** (owner, 2026-11-12): a channel whose pack says true stories
+  tells sourced facts about real, named people, places or things; no invented example ("illustrative", "say
+  only…"); no reaction shots; the payoff is the story's most surprising fact (`generator/story.py`).
 - **Schedules:** research, auditor and improver nightly; the reviewer Tuesdays and Fridays; the
   dashboard agent weekly (Sundays, the bug hunt and smoke tests only); scout and studio for one long
   video a week; monthly off.
@@ -57,8 +64,8 @@ The Shorts improve themselves one tested change at a time, with no owner review 
 - **All audio is synthesized in code.** No downloaded music, samples or fonts; no copyrighted
   assets. The renderer never uses the network.
 - **Real photos and logos only with a free licence** (owner, 2026-11-11). only with a free licence from Wikimedia Commons (public domain, CC0, CC BY, CC BY-SA; never NC/ND, a search-engine image, a stock photo or another channel's frame), fetched by `python -m generator.images` and credited in the description at ship.
-- **Every video ends with "Illustrative only. Not financial advice."** Minimum text 44 px, nothing
-  within 120 px of the bottom edge.
+- **Every video's description carries its channel's disclaimer** (`disclaimer` in its `channel.json`,
+  checked by check-plan). Minimum text 44 px, nothing within 120 px of the bottom edge.
 - **Every video unique**: the variety rules in `generator/variety.py` only ever get stricter, and only
   the owner changes that file.
 - **Uploads**: count, times, pausing and YouTube credentials belong to the owner. Agents never touch

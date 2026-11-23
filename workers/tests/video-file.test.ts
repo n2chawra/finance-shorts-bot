@@ -14,8 +14,14 @@ test("a video's file is looked up in its own channel's folder, not the default c
   const file = videoFile(ROOT, GEO, ID, "timeline.json");
   assert.equal(path.relative(ROOT, file), path.join("channels", GEO, "videos", ID, "timeline.json"));
   assert.ok(existsSync(file));
-  // what stats.ts did before: CHANNEL is unset there, so cpath looked in Paisa Panchayat's folder
-  if (!process.env.CHANNEL) assert.equal(existsSync(cpath(ROOT, "videos", ID, "timeline.json")), false);
+  // what stats.ts did before: cpath looks in the CHANNEL's folder (else the default's), whichever video it is
+  const before = process.env.CHANNEL;
+  process.env.CHANNEL = "another-channel-slug";
+  try {
+    assert.equal(existsSync(cpath(ROOT, "videos", ID, "timeline.json")), false);
+  } finally {
+    if (before === undefined) delete process.env.CHANNEL; else process.env.CHANNEL = before;
+  }
 });
 
 test("another channel's drop is matched to its beat and spoken line", () => {

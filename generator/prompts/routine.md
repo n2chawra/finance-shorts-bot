@@ -1,14 +1,20 @@
 # Routine: one generation run
 
-You are an unattended scheduled run for the Finance Shorts Bot. Nobody is watching and nobody
+You are an unattended scheduled run for the video platform. Nobody is watching and nobody
 will answer questions. Do one run as described here, then stop. Work only in this repository.
+
+**A deleted channel stops its own routine (owner, 2026-11-23).** If `python -m generator.run state --channel
+<channel>` (either format) answers `"stop": "channel deleted"`, or this run's prompt names no channel and it is not
+the shared spare run, the channel was deleted: call `list_triggers`, find this routine (the one whose prompt
+matches this run), set it `enabled: false` with `update_trigger`, and end the run without changes (nothing made,
+committed or pushed). The shared agents (auditor, improver, dashboard, monthly) are exempt (`agents/policy.md`).
 
 Keep the run lean: it uses a Claude Pro plan's quota. Read only the files this page names, do not
 run the test suite, do not explore the codebase, and do not improve things you were not asked to.
 
-**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names, else `paisa-panchayat` (today's only channel). Pass `--channel <channel>` to `python -m generator.run` when your prompt names one. Shared code, `config/settings.json` and `improvement/activity/` stay where they are. **Another channel than Paisa Panchayat** also has `channels/<channel>/channel.json` (its language, voices, currency, numbers mode, disclaimer, true or fiction stories, look; `python -m generator.pack show <channel>`) and `channels/<channel>/prompts/recipe.md`, its champion recipe: where CLAUDE.md describes Paisa Panchayat's recipe, topics or look, that channel follows its own recipe.md and pack instead; the hard rules (true facts or declared fiction, figures from code, uniqueness, voice only from Kokoro) bind every channel.
+**Channel paths (multi-channel layout, 2026-11-17).** Each channel's own files live in `channels/<channel>/`, where `<channel>` is the channel this run is for: the `CHANNEL` your prompt names. Pass `--channel <channel>` to every `python -m generator.run` command. Shared code, `config/settings.json` and `improvement/activity/` stay where they are. Every channel has `channels/<channel>/channel.json` (its language, voices, currency, numbers mode, disclaimer, true or fiction stories, look; `python -m generator.pack show <channel>`) and `channels/<channel>/prompts/recipe.md`, its champion recipe: where CLAUDE.md describes a recipe, topics or look, each channel follows its own recipe.md and pack; the hard rules (true facts or declared fiction, figures from code, uniqueness, voice only from Kokoro) bind every channel.
 
-**The spare run with many channels** (09:07, shared). When the prompt says "spare run" and names no channel: for every channel in `config/channels.json` with `status: "active"`, run `python -m generator.run state --channel <channel>`; take the one in `mode: "video"` with the smallest `backlog` (ties: channel #1 first) and do one run for it. If none is in `mode: "video"`, report "nothing to make up" and stop. One channel a spare run.
+**The spare run with many channels** (09:07, shared). When the prompt says "spare run" and names no channel: for every channel in `config/channels.json` with `status: "active"`, run `python -m generator.run state --channel <channel>`; skip any that answers `"stop": "channel deleted"`; take the one in `mode: "video"` with the smallest `backlog` (ties: the first in the file) and do one run for it. If none is in `mode: "video"`, report "nothing to make up" and stop. One channel a spare run.
 
 ## 0. Prepare
 
@@ -33,7 +39,8 @@ can have several Pythons and only one has the packages.
   If it is still missing, stop and report "ffmpeg could not be installed" with the error text.
 ## 1. Decide what this run does
 
-Run `python -m generator.run state` and read `mode`:
+Run `python -m generator.run state --channel <channel>`. If it answers `"stop": "channel deleted"`, follow the
+rule at the top of this page (disable this routine and end). Otherwise read `mode`:
 
 | mode | What to do |
 |---|---|
@@ -65,7 +72,7 @@ they changed (a template README you haven't read yet is fine). Pick a different 
 each video; `state` already excludes recently used ones.
 
 Video runs never build or change templates: that is the improver agent's job (`agents/improver.md`).
-The one exception is a channel drawn on a **kit** (`look.kits` in its `channel.json`, e.g. Going Down's dive kit):
+The one exception is a channel drawn on a **kit** (`look.kits` in its `channel.json`):
 the video run grows that kit itself when a topic needs a piece it lacks (section 3c).
 
 ## 2. Plan (you)
@@ -109,22 +116,21 @@ When the script and the code are written, run `python -m generator.run lint <id>
 seconds, no voice or frames) and fix until it prints `ok`. Run it again after every later fix, before
 the stills.
 
-Reference: `remotion/src/videos/v-directed-netflix/` with `channels/paisa-panchayat/videos/v-directed-netflix/script.json`, the
-video the owner approved (copy how it works, never its places or pictures). The render checks every
+Reference: the channel's best recent video with its code in `remotion/src/videos/<id>/` (copy how it works, never
+its places or pictures). The render checks every
 file (imports, no figure typed into code, every directed beat's file present, no randomness or
 clocks, `tsc`). Ship commits the folder with the video.
 
 ## 3c. Kit gaps: grow the kit, never drop the video (owner, 2026-11-22)
 
-Owner, after a Going Down run failed all three Shorts because the dive kit had no piece for a stone town, carved
-rooms or a pillared flood tank: "fix it so that it never fails again: the kit improves itself when making video
-so no run stops this way". For a channel whose `channel.json` `look.kits` names a kit (`remotion/src/<kit>/`):
+Owner, after a run failed all three Shorts because the channel's kit had no piece for what the topic showed: "fix it
+so that it never fails again: the kit improves itself when making video so no run stops this way". For a channel whose `channel.json` `look.kits` names a kit (`remotion/src/<kit>/`):
 
 1. **Before directing**, list what each beat must show (the landmark above ground, each layer, the thing that
    moves in it) and check it against the kit's README "Pieces" table. A topic is never skipped or failed because
    the kit can't draw it yet.
-2. **A missing or unrecognisable piece is added now**: a new `kind`, `type`, `preset` or prop in the kit (for the
-   dive kit, `remotion/src/dive/more.tsx`, registered in `MORE_PIECES`, or a new file registered the same way),
+2. **A missing or unrecognisable piece is added now**: a new `kind`, `type`, `preset` or prop in the kit (in a new
+   or existing file of the kit, registered the way its README says),
    following the kit's contract: world coordinates, a pure function of the story frame, figures only from
    `params.fig`, something alive in it (people, animals, water, machines), anything that arrives on a word leaves
    in the last second (`outro`) so the loop matches, signs through the kit's `Sign`/`Marker` (they fade away from

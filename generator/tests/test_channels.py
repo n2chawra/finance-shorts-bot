@@ -94,7 +94,7 @@ def test_a_channel_in_setup_makes_only_its_samples(tmp_path, monkeypatch):
     (ch / "research").mkdir()
     (ch / "research" / "counts.json").write_text(json.dumps({"longPerWeek": 1}), encoding="utf-8")
     assert run.state(tmp_path, fmt="long")["mode"] == "video"
-    real = json.loads((run.ROOT / "channels" / "paisa-panchayat" / "history" / "history.json").read_text(encoding="utf-8"))
+    real = json.loads((run.ROOT / "channels" / "geography-maps-geopolitical-mysteries" / "history" / "history.json").read_text(encoding="utf-8"))
     entries = [e for e in real if e.get("format", "short") == "short"][-2:]   # two real Shorts' entries as the samples (owner: two are enough)
     (ch / "history" / "history.json").write_text(json.dumps(entries), encoding="utf-8")
     assert "samples are made" in run.state(tmp_path)["reason"]

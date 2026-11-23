@@ -1,4 +1,4 @@
-"""Directed beats (owner, 2026-11-13: the flat 2D Netflix remake is how new videos are made): the script
+"""Directed beats (owner, 2026-11-13: the flat 2D remake is how new videos are made): the script
 says where each line happens, its shot sizes and its moments; the craft gates read them; a video's own
 code draws them on the flat kit with no figure typed into it."""
 import json
@@ -11,11 +11,18 @@ from renderer.timeline import build as tb
 from generator.channels import cpath
 
 REPO = Path(__file__).resolve().parents[2]
-REFERENCE = cpath(REPO, "videos") / "v-directed-netflix" / "script.json"
+# a shipped directed Short (the disasters channel's, 22 Nov) stands in for an approved reference
+CHANNEL = "disasters-and-engineering-failures-expla"
+VIDEO = "v-20261122-41"
+
+
+@pytest.fixture(autouse=True)
+def _its_channel(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("CHANNEL", CHANNEL)
 
 
 def reference() -> dict:
-    return json.loads(REFERENCE.read_text(encoding="utf-8"))
+    return json.loads((cpath(REPO, "videos", CHANNEL) / VIDEO / "script.json").read_text(encoding="utf-8"))
 
 
 def test_the_reference_script_passes_the_checks() -> None:
@@ -78,13 +85,14 @@ def test_places_are_not_the_last_videos_places_again() -> None:
     assert any(p.startswith(tuple("0123456789")) for p in craft.prop_problems(mine, [("v-old", theirs)]) if "places were in" in p)
 
 
-def test_a_video_never_copies_the_reference_videos_places() -> None:
+def test_a_video_never_copies_the_reference_videos_places(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(craft, "REFERENCES", (VIDEO,))
     ref = [b["params"]["place"] for b in reference()["beats"]]
-    flat = [x for p in ref for x in ([p] if isinstance(p, str) else p)]
+    flat = list(dict.fromkeys(x for p in ref for x in ([p] if isinstance(p, str) else p)))
     copy = tl_of([directed(i, "close", p, i * 4) for i, p in enumerate(flat[:5])])
-    assert any("places were in v-directed-netflix" in p for p in craft.prop_problems(copy, []))
+    assert any(f"places were in {VIDEO}" in p for p in craft.prop_problems(copy, []))
     own = tl_of([directed(i, "close", p, i * 4) for i, p in enumerate(["a stadium", "a locker room", "a bank lobby", "a jet"])])
-    assert not any("v-directed-netflix" in p for p in craft.prop_problems(own, []))
+    assert not any(VIDEO in p for p in craft.prop_problems(own, []))
 
 
 @pytest.fixture
@@ -128,7 +136,8 @@ def test_every_directed_beat_needs_its_file(tree: Path) -> None:
 
 
 def test_the_reference_video_code_has_no_typed_figures() -> None:
-    folder = REPO / "remotion" / "src" / "videos" / "v-directed-netflix"
+    folder = REPO / "remotion" / "src" / "videos" / VIDEO
+    assert list(folder.glob("*.tsx"))
     for f in folder.glob("*.tsx"):
         assert not remotion.TYPED_FIGURE.search(remotion._COMMENTS.sub("", f.read_text(encoding="utf-8"))), f.name
 
