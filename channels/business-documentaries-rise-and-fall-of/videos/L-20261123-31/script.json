@@ -593,6 +593,15 @@
    "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746909002818/a2190961z10-k.htm"
   },
   {
+   "label": "Crocs' revenues in 2004",
+   "value": 13.5,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2004-12-31",
+   "source": "Crocs Form 10-K (SEC EDGAR)",
+   "url": "https://www.sec.gov/Archives/edgar/data/1334036/000104746906004382/a2168966z10-k.htm"
+  },
+  {
    "label": "Year TIME listed Crocs among the 50 worst inventions",
    "value": 2010,
    "unit": "year",
@@ -802,11 +811,11 @@
       "figure": "sales",
       "eyebrow": "Crocs, Inc. sales",
       "unit": "in a single year",
-      "countAt": "sold",
+      "countAt": "company",
       "tone": "gold",
       "at": "company",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -846,7 +855,7 @@
    "params": {
     "place": "a pallet of clogs filling up",
     "things": [
-     "a pallet of clogs filling"
+     "pairs shipped in a year"
     ],
     "camera": [
      {
@@ -865,11 +874,7 @@
     "moments": [
      {
       "at": "shipped",
-      "what": "a cut to None"
-     },
-     {
-      "at": "shipped",
-      "what": "it fills: a pallet of clogs filling"
+      "what": "the figure counts up on pairs shipped in a year"
      },
      {
       "at": "pairs",
@@ -878,20 +883,22 @@
     ],
     "layers": [
      {
-      "kind": "products",
-      "mode": "pallet",
-      "items": [
-       {
-        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-single-croc-ef3df225-cut.png",
-        "label": "Crocs",
-        "at": "shipped"
-       }
-      ],
-      "count": "pairs",
-      "countLabel": "pairs sold in one year",
-      "fillAt": "shipped",
-      "fillLen": 40,
-      "backdrop": "charcoal"
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-dadeland-mall-miami-fl-1-december-20-950ae630.jpg",
+      "move": "push",
+      "amount": 0.05,
+      "grade": "night"
+     },
+     {
+      "kind": "count",
+      "figure": "pairs",
+      "eyebrow": "pairs of Crocs",
+      "unit": "in a single year",
+      "countAt": "shipped",
+      "tone": "white",
+      "at": "shipped",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "fig": {
@@ -967,20 +974,32 @@
       "aspect": 1.339
      },
      {
-      "kind": "sink",
-      "name": "Crocs, Inc. sales",
+      "kind": "chart",
+      "type": "bar",
+      "tone": "fall",
+      "title": "One year later",
       "values": [
        847.4,
        721.6
+      ],
+      "labels": [
+       "Before",
+       "After"
       ],
       "figs": [
        "was",
        "now"
       ],
-      "tag": "{fact3} lost",
-      "title": "One year later",
-      "sinkAt": "fallen",
+      "hiBar": 1,
       "drawAt": "sales",
+      "drawLen": 30,
+      "marks": [
+       {
+        "i": 1,
+        "label": "{fact3} lost",
+        "at": "fallen"
+       }
+      ],
       "at": "sales",
       "plate": false
      }
@@ -1047,11 +1066,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-06-004382-p022.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-e-ticker-30b334cb.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "ticker",
@@ -1285,11 +1303,11 @@
       "figure": "now",
       "eyebrow": "Crocs, Inc. sales",
       "unit": "last year",
-      "countAt": "sold",
+      "countAt": "last",
       "tone": "gold",
       "at": "last",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -2126,12 +2144,6 @@
      }
     ],
     "overlays": [
-     {
-      "kind": "date",
-      "date": "2002-11-01",
-      "sub": "the first pairs go on sale",
-      "at": "united"
-     },
      {
       "kind": "label",
       "text": "Modified",
@@ -3149,11 +3161,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001104659-07-025001-p030.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-at-the-beurstraverse-or-koopgoot-201-cf05c2f7.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "donut",
@@ -3165,7 +3176,6 @@
       "label": "made in Quebec City",
       "title": "Where the shoes were made",
       "sub": "the company's own factory",
-      "fillAt": "made",
       "tone": "gold",
       "out": "rest",
       "plate": false
@@ -3334,15 +3344,6 @@
       },
       "surface": "desk"
      }
-    ],
-    "overlays": [
-     {
-      "kind": "date",
-      "date": "2006-03-31",
-      "sub": "the complaint is filed",
-      "pos": "top",
-      "at": "trade"
-     }
     ]
    }
   },
@@ -3421,8 +3422,8 @@
       "countAt": "took",
       "tone": "gold",
       "at": "took",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -3480,11 +3481,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001104659-07-025001-p033.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-outlet-store-14771327729-f31696c5.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -3523,7 +3523,7 @@
     ],
     "fig": {
      "a": "{fact9}",
-     "b": "{fact10}",
+     "b": "{fact69}",
      "c": "{fact10}"
     }
    }
@@ -3598,11 +3598,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-08-002093-p020.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-philippines-shoesb-1e65ee88.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "donut",
@@ -3614,7 +3613,6 @@
       "label": "the Beach model",
       "title": "Footwear sales",
       "sub": "one model's share",
-      "fillAt": "carried",
       "tone": "gold",
       "plate": false
      }
@@ -3706,11 +3704,11 @@
       "figure": "lo",
       "eyebrow": "price of a pair, from",
       "unit": "up to {fact14}",
-      "countAt": "cost",
+      "countAt": "pair",
       "tone": "white",
       "at": "pair",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -4115,11 +4113,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-08-002093-p024.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-e-ticker-30b334cb.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
@@ -4128,8 +4125,9 @@
       "unit": "for the company itself",
       "countAt": "raised",
       "tone": "gold",
-      "blur": 3,
-      "dim": 0.6
+      "at": "raised",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -4427,11 +4425,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-08-002093-p028.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sneakers-sobre-fondo-azul-4c4d2b4c.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -4474,7 +4471,7 @@
     ],
     "fig": {
      "a": "{fact9}",
-     "b": "{fact10}",
+     "b": "{fact69}",
      "c": "{fact10}",
      "d": "{fact17}"
     }
@@ -5108,11 +5105,11 @@
       "figure": "p",
       "eyebrow": "Crocs buys Jibbitz",
       "unit": "the purchase price",
-      "countAt": "for",
+      "countAt": "jibbitz",
       "tone": "gold",
       "at": "jibbitz",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -5337,8 +5334,12 @@
       "size": "medium"
      },
      {
-      "at": "remember",
+      "at": "alone",
       "size": "close"
+     },
+     {
+      "at": "remember",
+      "size": "extreme"
      },
      {
       "at": "sold",
@@ -5366,11 +5367,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p022.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-cash-registers-0ee9a4b9.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
@@ -5379,8 +5379,9 @@
       "unit": "in one year",
       "countAt": "alone",
       "tone": "gold",
-      "blur": 3,
-      "dim": 0.6
+      "at": "alone",
+      "blur": 0,
+      "dim": 0.5
      },
      {
       "kind": "photo",
@@ -5410,11 +5411,11 @@
    "role": "build",
    "say": "And it went shopping. A hockey and lacrosse gear maker called Fury. An Italian design studio, EXO, in Padova. A sandal maker, Ocean Minded. Another footwear brand, Bite.",
    "events": {
-    "bite": {
-     "word": "Bite"
-    },
     "hockey": {
      "word": "hockey"
+    },
+    "bite": {
+     "word": "Bite"
     },
     "italian": {
      "word": "Italian"
@@ -5435,7 +5436,7 @@
    "params": {
     "place": "the purchases, one by one",
     "things": [
-     "a page of the acquisitions year's annual report"
+     "the acquisitions page of the annual report"
     ],
     "camera": [
      {
@@ -5443,7 +5444,7 @@
       "size": "close"
      },
      {
-      "at": "bite",
+      "at": "hockey",
       "size": "extreme"
      },
      {
@@ -5460,6 +5461,10 @@
      }
     ],
     "moments": [
+     {
+      "at": "hockey",
+      "what": "the camera pushes into the acquisitions page of the annual report"
+     },
      {
       "at": "bite",
       "what": "a cut to source"
@@ -5507,12 +5512,15 @@
     ],
     "layers": [
      {
-      "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p033.png",
-      "move": "push",
-      "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "kind": "document",
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-08-002093-p006.png",
+      "aspect": 1.0,
+      "pushAt": "hockey",
+      "source": {
+       "form": "Form 10-K",
+       "text": "Crocs, Inc.",
+       "date": "2008-02-29"
+      }
      }
     ],
     "overlays": [
@@ -5702,11 +5710,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p024.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sneaker-shop-in-kobe-japan-5323845a.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -5805,11 +5812,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p026.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-seemaxx-factory-outlet-center-in-radolfzell-2020-3f231e47.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -5853,7 +5859,7 @@
     ],
     "fig": {
      "a": "{fact9}",
-     "b": "{fact10}",
+     "b": "{fact69}",
      "c": "{fact10}",
      "d": "{fact17}",
      "e": "{fact1}"
@@ -5935,11 +5941,11 @@
       "figure": "hi",
       "eyebrow": "one Crocs share",
       "unit": "the high",
-      "countAt": "traded",
+      "countAt": "share",
       "tone": "gold",
       "at": "share",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -6033,8 +6039,8 @@
       "countAt": "sale",
       "tone": "white",
       "at": "sale",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "fig": {
@@ -6954,7 +6960,7 @@
     "things": [
      "a big shoe store",
      "a shoe shop's shelves",
-     "a page about wholesale customers"
+     "a trading floor"
     ],
     "camera": [
      {
@@ -6997,7 +7003,7 @@
      },
      {
       "at": "months",
-      "what": "a cut to a page about wholesale customers"
+      "what": "a cut to a trading floor"
      },
      {
       "at": "brand",
@@ -7039,12 +7045,12 @@
      },
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p022.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-market-centre-in-tokyo-stock-exchange-bfef453f.jpg",
       "move": "push",
-      "amount": 0.05,
+      "amount": 0.06,
+      "at": "months",
       "grade": "night",
-      "treatment": "bw",
-      "at": "months"
+      "aspect": 1.333
      }
     ],
     "overlays": [
@@ -7176,20 +7182,20 @@
     "lower": {
      "word": "lower"
     },
-    "orders": {
-     "word": "orders"
-    },
     "retailers": {
      "word": "retailers"
     },
     "cut": {
      "word": "cut"
+    },
+    "clear": {
+     "word": "clear"
     }
    },
    "params": {
     "place": "the annual report's explanation",
     "things": [
-     "the inventory paragraph"
+     "the inventory build-up on the crash-year page"
     ],
     "camera": [
      {
@@ -7207,20 +7213,20 @@
      {
       "at": "cut",
       "size": "medium"
+     },
+     {
+      "at": "clear",
+      "size": "extreme"
      }
     ],
     "moments": [
      {
       "at": "plainly",
-      "what": "the camera pushes into the inventory paragraph"
+      "what": "the camera pushes into the inventory build-up on the crash-year page"
      },
      {
       "at": "lower",
-      "what": "the highlighter swipes the inventory paragraph"
-     },
-     {
-      "at": "orders",
-      "what": "underline: the inventory paragraph"
+      "what": "the highlighter swipes the inventory build-up on the crash-year page"
      },
      {
       "at": "plainly",
@@ -7233,34 +7239,30 @@
      {
       "at": "cut",
       "what": "the camera eases in on the word 'cut'"
+     },
+     {
+      "at": "clear",
+      "what": "the camera eases in on the word 'clear'"
      }
     ],
     "layers": [
      {
       "kind": "document",
-      "header": {
-       "form": "Form 10-K",
-       "company": "Crocs, Inc.",
-       "title": "Management's discussion"
-      },
-      "lines": [
-       "We experienced challenges related to the build up of inventory",
-       "of our products at many of our … customers because sales were lower",
-       "than the initial internal projections",
-       "of many of our wholesale customers and distributors.",
-       "Certain major retailers and distributors have curtailed orders."
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p037.png",
+      "box": [
+       0.035,
+       0.692,
+       0.93,
+       0.024
       ],
-      "hi": 1,
-      "phrase": "sales were lower",
+      "aspect": 1.187,
       "pushAt": "plainly",
       "markAt": "lower",
-      "underAt": "orders",
       "source": {
        "form": "Form 10-K",
        "text": "Crocs, Inc.",
        "date": "2009-03-17"
-      },
-      "surface": "desk"
+      }
      }
     ],
     "overlays": [
@@ -7860,11 +7862,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-10-001357-p030.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-market-centre-in-tokyo-stock-exchange-bfef453f.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -8167,28 +8168,39 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-15-001519-p020.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-select-citywalk-mall-interior-of-saket-new-delhi-04b621c2.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
-      "kind": "sink",
-      "name": "Crocs, Inc. sales",
+      "kind": "chart",
+      "type": "bar",
+      "tone": "fall",
+      "title": "Crocs, Inc. sales",
       "values": [
        847.4,
        721.6
+      ],
+      "labels": [
+       "Before",
+       "After"
       ],
       "figs": [
        "was",
        "now"
       ],
-      "tag": "lower",
-      "title": "Crocs, Inc. sales",
-      "sub": "the year after the peak",
+      "hiBar": 1,
       "drawAt": "sales",
-      "sinkAt": "fell",
+      "drawLen": 30,
+      "sub": "the year after the peak",
+      "marks": [
+       {
+        "i": 1,
+        "label": "lower",
+        "at": "fell"
+       }
+      ],
       "plate": false
      }
     ],
@@ -8226,7 +8238,7 @@
    "params": {
     "place": "the wholesale bar sinking",
     "things": [
-     "a store's sale signs",
+     "walls of shoe boxes in a store",
      "sales to shops sinking"
     ],
     "camera": [
@@ -8246,7 +8258,7 @@
     "moments": [
      {
       "at": "retailers",
-      "what": "it leaves a store's sale signs"
+      "what": "it leaves walls of shoe boxes in a store"
      },
      {
       "at": "retailers",
@@ -8280,27 +8292,39 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-hudson-s-bay-store-closing-sale-20250524-11-c793240e.jpg",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-boxes-of-shoes-for-sale-at-rack-room-shoes-at-sp-bef0a684.jpg",
       "move": "push",
       "amount": 0.06,
       "grade": "cold",
-      "aspect": 1.328
+      "aspect": 1.333
      },
      {
-      "kind": "sink",
-      "name": "Sales to retailers",
+      "kind": "chart",
+      "type": "bar",
+      "tone": "fall",
+      "title": "Crocs' wholesale sales",
       "values": [
        738.9,
        552.1
+      ],
+      "labels": [
+       "Before",
+       "After"
       ],
       "figs": [
        "was",
        "now"
       ],
-      "tag": "the shops stopped ordering",
-      "title": "Crocs' wholesale sales",
+      "hiBar": 1,
       "drawAt": "retailers",
-      "sinkAt": "fell",
+      "drawLen": 30,
+      "marks": [
+       {
+        "i": 1,
+        "label": "the shops stopped ordering",
+        "at": "fell"
+       }
+      ],
       "at": "retailers",
       "plate": false
      }
@@ -8311,13 +8335,6 @@
       "text": "Sales to shops",
       "sub": "wholesale",
       "at": "shops"
-     },
-     {
-      "kind": "date",
-      "date": "2008-12-31",
-      "sub": "one year later",
-      "pos": "top",
-      "at": "year"
      },
      {
       "kind": "source",
@@ -8400,20 +8417,32 @@
       "grade": "cold"
      },
      {
-      "kind": "sink",
-      "name": "Pairs sold",
+      "kind": "chart",
+      "type": "bar",
+      "tone": "fall",
+      "title": "Pairs of Crocs sold",
       "values": [
        46.9,
        35.3
+      ],
+      "labels": [
+       "Before",
+       "After"
       ],
       "figs": [
        "was",
        "now"
       ],
-      "tag": "fewer pairs",
-      "title": "Pairs of Crocs sold",
+      "hiBar": 1,
       "drawAt": "sold",
-      "sinkAt": "down",
+      "drawLen": 30,
+      "marks": [
+       {
+        "i": 1,
+        "label": "fewer pairs",
+        "at": "down"
+       }
+      ],
       "at": "sold",
       "plate": false
      }
@@ -8492,20 +8521,32 @@
       "aspect": 1.0
      },
      {
-      "kind": "sink",
-      "name": "Jibbitz sales",
+      "kind": "chart",
+      "type": "bar",
+      "tone": "fall",
+      "title": "Jibbitz sales",
       "values": [
        67.5,
        47.2
+      ],
+      "labels": [
+       "Before",
+       "After"
       ],
       "figs": [
        "was",
        "now"
       ],
-      "tag": "lower",
-      "title": "Jibbitz sales",
+      "hiBar": 1,
       "drawAt": "jibbitz",
-      "sinkAt": "dropped",
+      "drawLen": 30,
+      "marks": [
+       {
+        "i": 1,
+        "label": "lower",
+        "at": "dropped"
+       }
+      ],
       "at": "jibbitz",
       "plate": false
      }
@@ -8527,9 +8568,6 @@
     },
     "colours": {
      "word": "colours"
-    },
-    "styles": {
-     "word": "styles"
     },
     "down": {
      "word": "down"
@@ -8580,10 +8618,6 @@
       "what": "a cut to source"
      },
      {
-      "at": "styles",
-      "what": "a cut to stamp"
-     },
-     {
       "at": "down",
       "what": "the camera eases in on the word 'down'"
      },
@@ -8608,8 +8642,8 @@
       "countAt": "wrote",
       "tone": "red",
       "at": "wrote",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -8619,12 +8653,6 @@
       "text": "Crocs, Inc.",
       "date": "2009-03-17",
       "at": "colours"
-     },
-     {
-      "kind": "stamp",
-      "text": "WRITTEN DOWN",
-      "tone": "red",
-      "at": "styles"
      }
     ],
     "fig": {
@@ -8822,7 +8850,8 @@
       "move": "push",
       "amount": 0.06,
       "out": "outlet",
-      "grade": "cold"
+      "grade": "cold",
+      "enter": "cut"
      },
      {
       "kind": "photo",
@@ -8831,6 +8860,7 @@
       "amount": 0.06,
       "at": "outlet",
       "out": "warehouse",
+      "enter": "cut",
       "aspect": 1.328
      },
      {
@@ -8966,27 +8996,38 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-15-001519-p026.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-galeria-shopping-mall-interior-87-9e2cfe58.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
-      "kind": "sink",
-      "name": "Inventory",
+      "kind": "chart",
+      "type": "bar",
+      "tone": "fall",
+      "title": "Crocs' inventory",
       "values": [
        248.4,
        143.2
+      ],
+      "labels": [
+       "Before",
+       "After"
       ],
       "figs": [
        "was",
        "now"
       ],
-      "tag": "cleared out",
-      "title": "Crocs' inventory",
+      "hiBar": 1,
       "drawAt": "end",
-      "sinkAt": "cut",
+      "drawLen": 30,
+      "marks": [
+       {
+        "i": 1,
+        "label": "cleared out",
+        "at": "cut"
+       }
+      ],
       "plate": false
      }
     ],
@@ -9227,11 +9268,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-15-001519-p030.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-select-citywalk-mall-of-saket-new-delhi-20221218-6804bdcb.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
@@ -9240,8 +9280,9 @@
       "unit": "in a single year",
       "countAt": "lost",
       "tone": "red",
-      "blur": 3,
-      "dim": 0.6
+      "at": "lost",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -9836,11 +9877,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-19-000012-p022.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-moi-groninger-flag-shopping-bags-veendam-2020-0f5ae62d.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -9887,7 +9927,7 @@
    "id": "time",
    "scene": "doc",
    "role": "build",
-   "say": "And then came the joke. In {fact69}, TIME magazine put Crocs on its list of the worst inventions.",
+   "say": "And then came the joke. In {fact70}, TIME magazine put Crocs on its list of the worst inventions.",
    "events": {
     "time": {
      "word": "TIME"
@@ -9929,10 +9969,6 @@
     "moments": [
      {
       "at": "time",
-      "what": "it leaves a lone pink clog"
-     },
-     {
-      "at": "time",
       "what": "it lands: TIME's worst-inventions list"
      },
      {
@@ -9959,7 +9995,6 @@
       "move": "push",
       "amount": 0.06,
       "grade": "cold",
-      "out": "time",
       "aspect": 1.333
      },
      {
@@ -9974,6 +10009,7 @@
         "hi": "Crocs"
        }
       ],
+      "plate": false,
       "at": "time"
      }
     ],
@@ -10015,6 +10051,7 @@
    "params": {
     "place": "TIME's entry, rebuilt",
     "things": [
+     "a newsstand",
      "TIME's Crocs entry"
     ],
     "camera": [
@@ -10075,7 +10112,15 @@
     ],
     "layers": [
      {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-newspaper-stand-in-lutsk-c0e0c9e4.jpg",
+      "move": "push",
+      "amount": 0.06,
+      "aspect": 1.333
+     },
+     {
       "kind": "headline",
+      "plate": false,
       "items": [
        {
         "outlet": "TIME",
@@ -10386,11 +10431,11 @@
    "role": "build",
    "say": "So let's take stock. In a few short years, Crocs had gone from a boat shoe to {fact19} pairs a year, and then to a share worth less than a dollar.",
    "events": {
-    "boat": {
-     "word": "boat"
-    },
     "pairs": {
      "word": "pairs"
+    },
+    "boat": {
+     "word": "boat"
     },
     "dollar": {
      "word": "dollar"
@@ -10414,7 +10459,7 @@
    "params": {
     "place": "the story so far, on a timeline",
     "things": [
-     "a page of an old annual report"
+     "the pairs page of the peak year's annual report"
     ],
     "camera": [
      {
@@ -10422,7 +10467,7 @@
       "size": "close"
      },
      {
-      "at": "boat",
+      "at": "pairs",
       "size": "extreme"
      },
      {
@@ -10447,6 +10492,10 @@
      }
     ],
     "moments": [
+     {
+      "at": "pairs",
+      "what": "the camera pushes into the pairs page of the peak year's annual report"
+     },
      {
       "at": "boat",
       "what": "a cut to label"
@@ -10490,12 +10539,15 @@
     ],
     "layers": [
      {
-      "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p030.png",
-      "move": "push",
-      "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "kind": "document",
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-08-002093-p035.png",
+      "aspect": 1.0,
+      "pushAt": "pairs",
+      "source": {
+       "form": "Form 10-K",
+       "text": "Crocs, Inc.",
+       "date": "2008-02-29"
+      }
      }
     ],
     "overlays": [
@@ -10629,11 +10681,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-19-000012-p028.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-moi-groninger-flag-shopping-bags-veendam-2020-0f5ae62d.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -10829,13 +10880,6 @@
      }
     ],
     "overlays": [
-     {
-      "kind": "date",
-      "date": "2014-01-27",
-      "sub": "Blackstone invests",
-      "pos": "top",
-      "at": "investment"
-     },
      {
       "kind": "lowerThird",
       "name": "Blackstone",
@@ -11074,8 +11118,8 @@
       "countAt": "closed",
       "tone": "red",
       "at": "closed",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -11148,11 +11192,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-19-000012-p033.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-p2060240b-081ed445.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -11379,11 +11422,11 @@
       "figure": "s",
       "eyebrow": "company-operated stores",
       "unit": "left at the end of the year",
-      "countAt": "shops",
+      "countAt": "ended",
       "tone": "white",
       "at": "ended",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -11924,7 +11967,7 @@
    "id": "balenciaga",
    "scene": "doc",
    "role": "build",
-   "say": "Who would put a punchline on a runway? In October {fact70}, the luxury house Balenciaga sent Crocs down its runway in Paris, on platform soles.",
+   "say": "Who would put a punchline on a runway? In October {fact71}, the luxury house Balenciaga sent Crocs down its runway in Paris, on platform soles.",
    "events": {
     "runway": {
      "word": "runway"
@@ -12045,13 +12088,6 @@
       "sub": "on a runway?",
       "at": "punchline",
       "out": "october"
-     },
-     {
-      "kind": "date",
-      "date": "2017-10-01",
-      "sub": "Paris Fashion Week",
-      "pos": "top",
-      "at": "october"
      }
     ]
    }
@@ -12060,7 +12096,7 @@
    "id": "bal-price",
    "scene": "doc",
    "role": "build",
-   "say": "Balenciaga's version went on pre-order for {fact71} a pair. It sold out in hours.",
+   "say": "Balenciaga's version went on pre-order for {fact72} a pair. It sold out in hours.",
    "events": {
     "went": {
      "word": "went"
@@ -12126,11 +12162,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-21-000035-p028.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-couleur-violet-161e0e45.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
@@ -12139,8 +12174,9 @@
       "unit": "a pair, on pre-order",
       "countAt": "went",
       "tone": "gold",
-      "blur": 3,
-      "dim": 0.6
+      "at": "went",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -12158,7 +12194,7 @@
      }
     ],
     "fig": {
-     "b": "{fact71}"
+     "b": "{fact72}"
     }
    }
   },
@@ -12166,7 +12202,7 @@
    "id": "pricing",
    "scene": "doc",
    "role": "build",
-   "say": "A shoe that had once been dumped in clearance bins was now selling, in one version, for {fact71}.",
+   "say": "A shoe that had once been dumped in clearance bins was now selling, in one version, for {fact72}.",
    "events": {
     "clearance": {
      "word": "clearance"
@@ -12240,7 +12276,7 @@
       "right": {
        "name": "Luxury",
        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-mc-macau-cotai-wynn-palace-shop-balenciaga-cloth-b4a15c42.jpg",
-       "figure": "{fact71}",
+       "figure": "{fact72}",
        "sub": "the runway"
       },
       "rightAt": "selling",
@@ -12256,9 +12292,6 @@
    "role": "build",
    "say": "A year later, Crocs released a clog with the rapper Post Malone. It sold out almost instantly.",
    "events": {
-    "post": {
-     "word": "Post"
-    },
     "sold": {
      "word": "sold"
     },
@@ -12291,10 +12324,6 @@
     ],
     "moments": [
      {
-      "at": "post",
-      "what": "lands: Post Malone on stage"
-     },
-     {
       "at": "sold",
       "what": "it leaves Post Malone on stage"
      },
@@ -12322,12 +12351,9 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-post-malone-2018-73950fb9.jpg",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-post-malone-28688652561-d710e6bf.jpg",
       "move": "push",
       "amount": 0.06,
-      "treatment": "bw",
-      "frame": "polaroid",
-      "landAt": "post",
       "out": "sold"
      },
      {
@@ -12361,14 +12387,14 @@
    "role": "build",
    "say": "Then came more. Crocs' own annual report lists partners from Justin Bieber to Balenciaga to a ranch dressing, Hidden Valley.",
    "events": {
-    "justin": {
-     "word": "Justin"
-    },
     "ranch": {
      "word": "ranch"
     },
     "hidden": {
      "word": "Hidden"
+    },
+    "justin": {
+     "word": "Justin"
     },
     "annual": {
      "word": "annual"
@@ -12377,7 +12403,7 @@
    "params": {
     "place": "a wall of partner names",
     "things": [
-     "Justin Bieber",
+     "Justin Bieber on stage",
      "the partners sentence"
     ],
     "camera": [
@@ -12400,12 +12426,8 @@
     ],
     "moments": [
      {
-      "at": "justin",
-      "what": "lands: Justin Bieber"
-     },
-     {
       "at": "ranch",
-      "what": "it leaves Justin Bieber"
+      "what": "it leaves Justin Bieber on stage"
      },
      {
       "at": "ranch",
@@ -12434,10 +12456,8 @@
       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-justin-bieber-in-2015-18e94c1c.jpg",
       "move": "push",
       "amount": 0.06,
-      "treatment": "bw",
-      "frame": "polaroid",
-      "landAt": "justin",
-      "out": "ranch"
+      "out": "ranch",
+      "aspect": 0.699
      },
      {
       "kind": "document",
@@ -13143,8 +13163,8 @@
       "countAt": "gave",
       "tone": "white",
       "at": "gave",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -13311,11 +13331,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-22-000011-p024.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-2025-07-15-9f5c1870.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "donut",
@@ -13327,7 +13346,6 @@
       "label": "online",
       "title": "Crocs sales",
       "sub": "by channel",
-      "fillAt": "online",
       "tone": "gold",
       "plate": false
      }
@@ -13346,13 +13364,6 @@
       "sub": "buying online",
       "at": "home",
       "out": "online"
-     },
-     {
-      "kind": "date",
-      "date": "2020-12-31",
-      "sub": "the pandemic year",
-      "pos": "top",
-      "at": "sales"
      }
     ],
     "fig": {
@@ -13577,7 +13588,7 @@
      },
      {
       "at": "added",
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "higher",
@@ -13609,11 +13620,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-22-000011-p026.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-warehouse-interior-showcasing-organized-shelving-47ba6a25.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
@@ -13622,8 +13632,9 @@
       "unit": "in a single year",
       "countAt": "added",
       "tone": "gold",
-      "blur": 3,
-      "dim": 0.6
+      "at": "added",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -13692,11 +13703,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-22-000011-p028.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-warehouse-distribution-center-1136510-32fdeff8.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "chart",
@@ -13993,7 +14003,7 @@
    "params": {
     "place": "the story so far, on a timeline",
     "things": [
-     "a page of a recent annual report"
+     "checkouts in a busy store"
     ],
     "camera": [
      {
@@ -14070,11 +14080,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p028.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-cash-registers-0ee9a4b9.jpg",
       "move": "push",
-      "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "amount": 0.06,
+      "aspect": 1.333
      }
     ],
     "overlays": [
@@ -14275,11 +14284,11 @@
       "figure": "h",
       "eyebrow": "Crocs buys HEYDUDE",
       "unit": "the purchase price",
-      "countAt": "about",
+      "countAt": "heydude",
       "tone": "gold",
       "at": "heydude",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -14485,11 +14494,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-23-000015-p020.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-amazon-com-distribution-center-in-antwerp-belgiu-d14cea53.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
@@ -14498,8 +14506,9 @@
       "unit": "its value on the books",
       "countAt": "valued",
       "tone": "gold",
-      "blur": 3,
-      "dim": 0.6
+      "at": "valued",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -14676,11 +14685,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-23-000015-p022.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pearl-street-downtown-boulder-colorado-in-winter-a2d1f39f.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
@@ -14689,8 +14697,9 @@
       "unit": "its first months under Crocs",
       "countAt": "brought",
       "tone": "gold",
-      "blur": 3,
-      "dim": 0.6
+      "at": "brought",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -14805,11 +14814,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-23-000015-p024.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pearl-street-mall-boulder-co-2004-e00b135a.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "donut",
@@ -14821,7 +14829,6 @@
       "label": "HEYDUDE",
       "title": "What Crocs, Inc. owned",
       "sub": "on paper, at the end of the year",
-      "fillAt": "everything",
       "tone": "gold",
       "plate": false
      }
@@ -15049,23 +15056,22 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-23-000015-p026.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pearl-street-mall-55028393862-6643aeb9.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
       "figure": "i",
       "eyebrow": "asset impairments",
       "unit": "mostly HEYDUDE",
-      "countAt": "charge",
+      "countAt": "last",
       "tone": "red",
       "at": "last",
       "out": "name",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      },
      {
       "kind": "document",
@@ -15098,13 +15104,6 @@
       "tone": "red",
       "at": "not",
       "out": "last"
-     },
-     {
-      "kind": "date",
-      "date": "2025-12-31",
-      "sub": "the latest annual report",
-      "pos": "top",
-      "at": "last"
      }
     ],
     "fig": {
@@ -15224,7 +15223,7 @@
      },
      {
       "at": "came",
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "charge",
@@ -15269,8 +15268,9 @@
       "unit": "in a single year",
       "countAt": "came",
       "tone": "red",
-      "blur": 3,
-      "dim": 0.6
+      "at": "came",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -15327,7 +15327,7 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-06-004382-p020.png",
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-23-000015-p030.png",
       "move": "push",
       "amount": 0.05,
       "grade": "night",
@@ -15340,8 +15340,9 @@
       "unit": "lower than the year before",
       "countAt": "fell",
       "tone": "red",
-      "blur": 3,
-      "dim": 0.6
+      "at": "fell",
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -15427,7 +15428,7 @@
    "id": "total25",
    "scene": "doc",
    "role": "build",
-   "say": "Even so, the whole company still sold {fact6}. The Crocs brand alone brought in {fact44}.",
+   "say": "Even so, the whole company still sold {fact6}, according to its latest annual report. The Crocs brand alone brought in {fact44}.",
    "events": {
     "crocs": {
      "word": "Crocs"
@@ -15446,6 +15447,12 @@
     },
     "sold": {
      "word": "sold"
+    },
+    "according": {
+     "word": "according"
+    },
+    "report": {
+     "word": "report"
     },
     "in": {
      "word": "in"
@@ -15471,8 +15478,16 @@
       "size": "close"
      },
      {
-      "at": "in",
+      "at": "according",
       "size": "medium"
+     },
+     {
+      "at": "report",
+      "size": "extreme"
+     },
+     {
+      "at": "in",
+      "size": "close"
      }
     ],
     "moments": [
@@ -15511,6 +15526,14 @@
      {
       "at": "sold",
       "what": "the camera eases in on the word 'sold'"
+     },
+     {
+      "at": "according",
+      "what": "the camera eases in on the word 'according'"
+     },
+     {
+      "at": "report",
+      "what": "the camera eases in on the word 'report'"
      },
      {
       "at": "in",
@@ -15565,73 +15588,6 @@
    }
   },
   {
-   "id": "revenue-page",
-   "scene": "doc",
-   "role": "build",
-   "say": "It's right there in the filing.",
-   "events": {
-    "right": {
-     "word": "right"
-    },
-    "filing": {
-     "word": "filing"
-    }
-   },
-   "params": {
-    "place": "the latest annual report",
-    "things": [
-     "the revenue line"
-    ],
-    "camera": [
-     {
-      "sec": 0,
-      "size": "medium"
-     },
-     {
-      "at": "filing",
-      "size": "extreme"
-     }
-    ],
-    "moments": [
-     {
-      "at": "right",
-      "what": "the camera pushes into the revenue line"
-     },
-     {
-      "at": "filing",
-      "what": "the highlighter swipes the revenue line"
-     }
-    ],
-    "layers": [
-     {
-      "kind": "document",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p039.png",
-      "box": [
-       0.038,
-       0.699,
-       0.92,
-       0.017
-      ],
-      "aspect": 0.896,
-      "pushAt": "right",
-      "markAt": "filing",
-      "source": {
-       "form": "Form 10-K",
-       "text": "Crocs, Inc.",
-       "date": "2026-02-12"
-      }
-     }
-    ]
-   },
-   "sfx": [
-    {
-     "kind": "scribble",
-     "at": "filing",
-     "gain": 0.45
-    }
-   ]
-  },
-  {
    "id": "global",
    "scene": "doc",
    "role": "build",
@@ -15665,11 +15621,11 @@
     "camera": [
      {
       "sec": 0,
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "half",
-      "size": "extreme"
+      "size": "close"
      },
      {
       "at": "clogs",
@@ -15740,7 +15696,6 @@
       "label": "outside the U.S.",
       "title": "Crocs brand sales",
       "sub": "by where they're sold",
-      "fillAt": "half",
       "tone": "gold",
       "at": "half",
       "plate": false
@@ -15803,11 +15758,11 @@
     "camera": [
      {
       "sec": 0,
-      "size": "wide"
+      "size": "close"
      },
      {
       "at": "china",
-      "size": "close"
+      "size": "extreme"
      },
      {
       "at": "handful",
@@ -15942,11 +15897,11 @@
     "camera": [
      {
       "sec": 0,
-      "size": "medium"
+      "size": "wide"
      },
      {
       "at": "runs",
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "stores",
@@ -15987,8 +15942,8 @@
       "countAt": "runs",
       "tone": "white",
       "at": "runs",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "fig": {
@@ -16024,11 +15979,11 @@
     "camera": [
      {
       "sec": 0,
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "employs",
-      "size": "extreme"
+      "size": "close"
      },
      {
       "at": "than",
@@ -16082,8 +16037,8 @@
       "countAt": "employs",
       "tone": "white",
       "at": "employs",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -16133,19 +16088,19 @@
     "camera": [
      {
       "sec": 0,
-      "size": "wide"
-     },
-     {
-      "at": "vietnam",
-      "size": "medium"
-     },
-     {
-      "at": "shenzhen",
       "size": "close"
      },
      {
-      "at": "rotterdam",
+      "at": "vietnam",
       "size": "extreme"
+     },
+     {
+      "at": "shenzhen",
+      "size": "wide"
+     },
+     {
+      "at": "rotterdam",
+      "size": "medium"
      },
      {
       "at": "in",
@@ -16368,17 +16323,17 @@
    "params": {
     "place": "the crash, in three pictures",
     "things": [
-     "a page of the crash-year annual report",
+     "an outlet centre",
      "a sale sign"
     ],
     "camera": [
      {
       "sec": 0,
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "discount",
-      "size": "extreme"
+      "size": "close"
      },
      {
       "at": "when",
@@ -16392,7 +16347,7 @@
     "moments": [
      {
       "at": "discount",
-      "what": "it leaves a page of the crash-year annual report"
+      "what": "it leaves an outlet centre"
      },
      {
       "at": "discount",
@@ -16430,12 +16385,12 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p026.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-seemaxx-factory-outlet-center-in-radolfzell-2020-3f231e47.jpg",
       "move": "push",
-      "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw",
-      "out": "discount"
+      "amount": 0.06,
+      "grade": "cold",
+      "out": "discount",
+      "aspect": 1.333
      },
      {
       "kind": "photo",
@@ -16496,17 +16451,17 @@
    "params": {
     "place": "the comeback, in three pictures",
     "things": [
-     "a page of the comeback-year annual report",
+     "a wall of shoes on display",
      "a Crocs store front"
     ],
     "camera": [
      {
       "sec": 0,
-      "size": "wide"
+      "size": "close"
      },
      {
       "at": "up",
-      "size": "medium"
+      "size": "extreme"
      },
      {
       "at": "sold",
@@ -16516,7 +16471,7 @@
     "moments": [
      {
       "at": "up",
-      "what": "it leaves a page of the comeback-year annual report"
+      "what": "it leaves a wall of shoes on display"
      },
      {
       "at": "up",
@@ -16550,12 +16505,11 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p024.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sneakers-sobre-fondo-azul-4c4d2b4c.jpg",
       "move": "push",
-      "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw",
-      "out": "up"
+      "amount": 0.06,
+      "out": "up",
+      "aspect": 1.25
      },
      {
       "kind": "photo",
@@ -16617,11 +16571,11 @@
     "camera": [
      {
       "sec": 0,
-      "size": "medium"
+      "size": "wide"
      },
      {
       "at": "reason",
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "what",
@@ -16723,6 +16677,10 @@
     "camera": [
      {
       "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "peak",
       "size": "close"
      },
      {
@@ -16803,11 +16761,10 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001334036-26-000006-p028.png",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-nasdaq-marketsite-51494550508-598c17bc.jpg",
       "move": "push",
       "amount": 0.05,
-      "grade": "night",
-      "treatment": "bw"
+      "grade": "night"
      },
      {
       "kind": "count",
@@ -16817,8 +16774,9 @@
       "countAt": "peak",
       "tone": "white",
       "out": "share",
-      "blur": 3,
-      "dim": 0.6
+      "at": "peak",
+      "blur": 0,
+      "dim": 0.5
      },
      {
       "kind": "ticker",
@@ -16840,8 +16798,8 @@
       "countAt": "today",
       "tone": "gold",
       "at": "today",
-      "blur": 3,
-      "dim": 0.6
+      "blur": 0,
+      "dim": 0.5
      }
     ],
     "overlays": [
@@ -16897,11 +16855,11 @@
     "camera": [
      {
       "sec": 0,
-      "size": "wide"
+      "size": "close"
      },
      {
       "at": "fad",
-      "size": "close"
+      "size": "extreme"
      },
      {
       "at": "for",
@@ -16998,12 +16956,12 @@
    "params": {
     "place": "the report, the discount line",
     "things": [
-     "the discount line again"
+     "the discounting line on the crash-year page"
     ],
     "camera": [
      {
       "sec": 0,
-      "size": "medium"
+      "size": "wide"
      },
      {
       "at": "discounts",
@@ -17025,11 +16983,11 @@
     "moments": [
      {
       "at": "report",
-      "what": "the camera pushes into the discount line again"
+      "what": "the camera pushes into the discounting line on the crash-year page"
      },
      {
       "at": "discounts",
-      "what": "the highlighter swipes the discount line again"
+      "what": "the highlighter swipes the discounting line on the crash-year page"
      },
      {
       "at": "part",
@@ -17051,26 +17009,21 @@
     "layers": [
      {
       "kind": "document",
-      "header": {
-       "form": "Form 10-K",
-       "company": "Crocs, Inc.",
-       "title": "Management's discussion"
-      },
-      "lines": [
-       "We also observed increased discounting",
-       "of certain product styles and colors",
-       "at a number of our resellers."
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p037.png",
+      "box": [
+       0.035,
+       0.718,
+       0.93,
+       0.024
       ],
-      "hi": 0,
-      "phrase": "increased discounting",
+      "aspect": 1.187,
       "pushAt": "report",
       "markAt": "discounts",
       "source": {
        "form": "Form 10-K",
        "text": "Crocs, Inc.",
        "date": "2009-03-17"
-      },
-      "surface": "desk"
+      }
      }
     ],
     "overlays": [
@@ -17115,15 +17068,15 @@
     "camera": [
      {
       "sec": 0,
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "reordering",
-      "size": "extreme"
+      "size": "close"
      },
      {
       "at": "copies",
-      "size": "wide"
+      "size": "extreme"
      },
      {
       "at": "ending",
@@ -17229,17 +17182,17 @@
    "params": {
     "place": "an old catalogue, then a filing page",
     "things": [
-     "an old shop catalogue page",
+     "walls of shoe boxes for sale",
      "a page of the crash-year annual report"
     ],
     "camera": [
      {
       "sec": 0,
-      "size": "wide"
+      "size": "close"
      },
      {
       "at": "clearance",
-      "size": "medium"
+      "size": "extreme"
      },
      {
       "at": "see",
@@ -17253,7 +17206,7 @@
     "moments": [
      {
       "at": "clearance",
-      "what": "it leaves an old shop catalogue page"
+      "what": "it leaves walls of shoe boxes for sale"
      },
      {
       "at": "clearance",
@@ -17279,12 +17232,11 @@
     "layers": [
      {
       "kind": "photo",
-      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-everything-for-the-garden-16203533078-d3ee9338.jpg",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-boxes-of-shoes-for-sale-at-rack-room-shoes-at-sp-bef0a684.jpg",
       "move": "push",
       "amount": 0.06,
-      "treatment": "archive",
       "out": "clearance",
-      "aspect": 0.774
+      "aspect": 1.333
      },
      {
       "kind": "document",
@@ -17343,11 +17295,11 @@
     "camera": [
      {
       "sec": 0,
-      "size": "medium"
+      "size": "wide"
      },
      {
       "at": "recently",
-      "size": "close"
+      "size": "medium"
      },
      {
       "at": "or",
