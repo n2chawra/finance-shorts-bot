@@ -1,0 +1,1002 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 31956,
+ "story": "machine_works",
+ "shape": "reveal",
+ "currency": "USD",
+ "style": {
+  "palette": "ocean",
+  "genre": "circuit",
+  "key": "A",
+  "bpm": 72,
+  "look": {
+   "stage": "night",
+   "header": "neon",
+   "holder": "sign",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "45-60",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "28"
+ },
+ "hook_style": "question",
+ "cta": "Which train should we take apart next? Comment",
+ "feed_id": "2026-11-21-paris-metro-tyres",
+ "facts": [
+  {
+   "label": "Year Michelin and RATP ran the world's first metro on tyres",
+   "value": 1951,
+   "unit": "year",
+   "as_of": "1951-01-01",
+   "source": "Michelin Metro",
+   "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+   "fixed": true
+  },
+  {
+   "label": "Year Montreal's tyred metro opened",
+   "value": 1966,
+   "unit": "year",
+   "as_of": "1966-01-01",
+   "source": "Michelin Metro",
+   "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+   "fixed": true
+  },
+  {
+   "label": "Trips on the Montreal metro so far, over",
+   "value": 10,
+   "unit": "count_billion",
+   "as_of": "2026-11-21",
+   "source": "Michelin Metro",
+   "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+   "latest": true,
+   "checked": "2026-11-21"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.6,
+  "words": "Metro on *tyres?*",
+  "tag": "Paris Metro",
+  "angle": "question",
+  "references": [
+   {
+    "id": "BDzjNVrfBN8",
+    "views": 4825914,
+    "what": "a clean 3D render of a metro car's inside: seats, poles, blue clay passengers, no words"
+   }
+  ],
+  "pattern": "the reference sells the train itself as a clean 3D render with no words; ours keeps the train big and real in 3D but shows the tyre under it, with three words asking the question"
+ },
+ "narrator": "am_michael",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "This Paris Metro train runs on rubber tyres.",
+   "events": {
+    "paris": {
+     "word": "Paris"
+    },
+    "metro": {
+     "word": "Metro"
+    },
+    "train": {
+     "word": "train"
+    },
+    "rubber": {
+     "word": "rubber"
+    },
+    "tyres": {
+     "word": "tyres"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "paris"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "a dark Paris Metro tunnel, the train coming at the camera",
+     "under the train, at the wheels"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "train",
+      "size": "medium"
+     },
+     {
+      "at": "rubber",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "paris",
+      "what": "the train's headlights flare as it roars out of the tunnel toward the camera"
+     },
+     {
+      "at": "metro",
+      "what": "the yellow M sign over the tunnel mouth lights up"
+     },
+     {
+      "at": "train",
+      "what": "the train's front fills the frame, tunnel lamps streaking past"
+     },
+     {
+      "at": "rubber",
+      "what": "cut low under the car: a fat black rubber tyre spins on a flat track, a label writes on"
+     },
+     {
+      "at": "tyres",
+      "what": "the tyre's tread blurs, the second tyre behind it spins too"
+     }
+    ],
+    "things": [
+     "tunnel arch",
+     "tunnel lamps",
+     "Metro sign",
+     "metro train",
+     "rubber tyre"
+    ]
+   }
+  },
+  {
+   "id": "ask",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Paris first tried it in {fact1}. So what keeps it on the track?",
+   "events": {
+    "paris": {
+     "word": "Paris"
+    },
+    "first": {
+     "word": "first"
+    },
+    "tried": {
+     "word": "tried"
+    },
+    "so": {
+     "word": "So"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "track": {
+     "word": "track"
+    },
+    "in": {
+     "word": "in"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "first"
+    }
+   ],
+   "params": {
+    "component": "Platform",
+    "place": "a tiled Paris Metro station platform, the train standing at it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "keeps",
+      "size": "wide"
+     },
+     {
+      "at": "track",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "paris",
+      "what": "the camera drifts along the white tiled wall past the waiting train"
+     },
+     {
+      "at": "first",
+      "what": "an enamel plaque on the wall writes on the year"
+     },
+     {
+      "at": "tried",
+      "what": "the plaque's year pulses and the train's lights brighten"
+     },
+     {
+      "at": "in",
+      "what": "the yellow M sign on the wall lights up"
+     },
+     {
+      "at": "so",
+      "what": "the train pulls away from the platform"
+     },
+     {
+      "at": "keeps",
+      "what": "the camera drops down over the platform edge to the track"
+     },
+     {
+      "at": "track",
+      "what": "the two flat running tracks light up amber, a label writes on"
+     }
+    ],
+    "things": [
+     "white tiled wall",
+     "enamel year plaque",
+     "metro train",
+     "platform edge",
+     "flat running tracks"
+    ],
+    "fig": {
+     "year": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "tyres",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Under each car, fat tyres roll on two flat running tracks. They carry the weight and drive the train.",
+   "events": {
+    "under": {
+     "word": "Under"
+    },
+    "car": {
+     "word": "car"
+    },
+    "fat": {
+     "word": "fat"
+    },
+    "roll": {
+     "word": "roll"
+    },
+    "flat": {
+     "word": "flat"
+    },
+    "running": {
+     "word": "running"
+    },
+    "carry": {
+     "word": "carry"
+    },
+    "weight": {
+     "word": "weight"
+    },
+    "drive": {
+     "word": "drive"
+    },
+    "train": {
+     "word": "train"
+    }
+   },
+   "transition": "zoom-through",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "weight"
+    }
+   ],
+   "params": {
+    "component": "Tyres",
+    "place": "inside the car's underside, the body turned see-through over the bogie",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "fat",
+      "size": "close"
+     },
+     {
+      "at": "carry",
+      "size": "medium"
+     },
+     {
+      "at": "drive",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "under",
+      "what": "the car body fades to glass, the bogie underneath lit"
+     },
+     {
+      "at": "car",
+      "what": "the bogie's frame glows cyan"
+     },
+     {
+      "at": "fat",
+      "what": "the camera pushes in on the four black tyres"
+     },
+     {
+      "at": "roll",
+      "what": "the tyres start to turn, the track sliding past"
+     },
+     {
+      "at": "flat",
+      "what": "the two flat running tracks glow amber under them, a label writes on"
+     },
+     {
+      "at": "running",
+      "what": "the running tracks run off into the tunnel in light"
+     },
+     {
+      "at": "carry",
+      "what": "weight arrows press down from the car onto each tyre"
+     },
+     {
+      "at": "weight",
+      "what": "the arrows pulse"
+     },
+     {
+      "at": "drive",
+      "what": "a motor on the axle glows and the tyres spin faster"
+     },
+     {
+      "at": "train",
+      "what": "the whole bogie surges forward"
+     }
+    ],
+    "things": [
+     "see-through metro car",
+     "bogie frame",
+     "four rubber tyres",
+     "running tracks",
+     "weight arrows",
+     "traction motor"
+    ]
+   }
+  },
+  {
+   "id": "guide",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "But a tyre can't steer itself. So small sideways wheels press on a guide bar at each side.",
+   "events": {
+    "but": {
+     "word": "But"
+    },
+    "tyre": {
+     "word": "tyre"
+    },
+    "steer": {
+     "word": "steer"
+    },
+    "itself": {
+     "word": "itself"
+    },
+    "small": {
+     "word": "small"
+    },
+    "sideways": {
+     "word": "sideways"
+    },
+    "wheels": {
+     "word": "wheels"
+    },
+    "press": {
+     "word": "press"
+    },
+    "guide": {
+     "word": "guide"
+    },
+    "bar": {
+     "word": "bar"
+    },
+    "side": {
+     "word": "side"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "press"
+    }
+   ],
+   "params": {
+    "component": "Guide",
+    "place": "beside the bogie on a curve of track, looking down at the guide bar",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "small",
+      "size": "close"
+     },
+     {
+      "at": "side",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "but",
+      "what": "the bogie rolls along its track, seen from above"
+     },
+     {
+      "at": "tyre",
+      "what": "the front tyre glows"
+     },
+     {
+      "at": "steer",
+      "what": "the bogie drifts sideways off its line, a red arrow shows it heading off the track"
+     },
+     {
+      "at": "itself",
+      "what": "it slides back onto the line, the arrow fades"
+     },
+     {
+      "at": "small",
+      "what": "small flat wheels pop out at the bogie's four corners, the camera close on one"
+     },
+     {
+      "at": "sideways",
+      "what": "they spin on their sides, a label writes on"
+     },
+     {
+      "at": "wheels",
+      "what": "all four flash as they reach out"
+     },
+     {
+      "at": "press",
+      "what": "they press on a steel bar along the track, a cyan contact flash"
+     },
+     {
+      "at": "guide",
+      "what": "the guide bar lights up along its length, a label writes on"
+     },
+     {
+      "at": "bar",
+      "what": "the bogie rolls on dead straight between the lit bars"
+     },
+     {
+      "at": "side",
+      "what": "the camera pulls up: a guide bar on each side, the bogie turning between them"
+     }
+    ],
+    "things": [
+     "curved track",
+     "rubber tyre",
+     "sideways guide wheels",
+     "steel guide bars",
+     "red drift arrow"
+    ]
+   }
+  },
+  {
+   "id": "grip",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Why the trouble? Rubber grips better than steel, so the train speeds up and brakes harder, and runs quieter.",
+   "events": {
+    "why": {
+     "word": "Why"
+    },
+    "trouble": {
+     "word": "trouble"
+    },
+    "rubber": {
+     "word": "Rubber"
+    },
+    "grips": {
+     "word": "grips"
+    },
+    "steel": {
+     "word": "steel"
+    },
+    "speeds": {
+     "word": "speeds"
+    },
+    "brakes": {
+     "word": "brakes"
+    },
+    "harder": {
+     "word": "harder"
+    },
+    "quieter": {
+     "word": "quieter"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "speeds"
+    }
+   ],
+   "params": {
+    "component": "Grip",
+    "place": "a stretch of tunnel between two stations, seen from the side",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "grips",
+      "size": "close"
+     },
+     {
+      "at": "speeds",
+      "size": "wide"
+     },
+     {
+      "at": "quieter",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "why",
+      "what": "two halves of a lit bench: a steel wheel on a rail and a rubber tyre on a flat track"
+     },
+     {
+      "at": "trouble",
+      "what": "both wheels turn, a label names the rubber one"
+     },
+     {
+      "at": "rubber",
+      "what": "the camera pushes in on the tyre's contact patch"
+     },
+     {
+      "at": "grips",
+      "what": "the tyre squashes on the track, its wide contact patch glowing amber, a label writes on: grip"
+     },
+     {
+      "at": "steel",
+      "what": "the steel wheel's tiny contact point glows and it slips, spinning in place: slip"
+     },
+     {
+      "at": "speeds",
+      "what": "cut wide: a short tunnel between two lit platforms, the train shoots out of the far one, speed streaks behind it"
+     },
+     {
+      "at": "brakes",
+      "what": "it brakes hard into the near station, the brakes glowing red"
+     },
+     {
+      "at": "harder",
+      "what": "it stops right at the platform"
+     },
+     {
+      "at": "quieter",
+      "what": "sound rings around the wheels shrink and fade"
+     }
+    ],
+    "things": [
+     "two station platforms",
+     "tunnel",
+     "steel wheel on rail",
+     "rubber tyre contact patch",
+     "speed streaks",
+     "sound rings"
+    ]
+   }
+  },
+  {
+   "id": "steel",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "And right beside every tyre, on the same axle, sits a steel train wheel, just above an ordinary rail.",
+   "events": {
+    "and": {
+     "word": "And"
+    },
+    "right": {
+     "word": "right"
+    },
+    "beside": {
+     "word": "beside"
+    },
+    "tyre": {
+     "word": "tyre"
+    },
+    "same": {
+     "word": "same"
+    },
+    "axle": {
+     "word": "axle"
+    },
+    "sits": {
+     "word": "sits"
+    },
+    "steel": {
+     "word": "steel"
+    },
+    "wheel": {
+     "word": "wheel"
+    },
+    "above": {
+     "word": "above"
+    },
+    "ordinary": {
+     "word": "ordinary"
+    },
+    "rail": {
+     "word": "rail"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "steel"
+    }
+   ],
+   "params": {
+    "component": "Steel",
+    "place": "behind the tyre, down between it and the track",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "steel",
+      "size": "close"
+     },
+     {
+      "at": "above",
+      "size": "extreme"
+     },
+     {
+      "at": "rail",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "and",
+      "what": "the lights dim to one spot on the tyre"
+     },
+     {
+      "at": "right",
+      "what": "the camera slides round behind the tyre"
+     },
+     {
+      "at": "beside",
+      "what": "the tyre turns see-through"
+     },
+     {
+      "at": "tyre",
+      "what": "the see-through tyre's rim flashes"
+     },
+     {
+      "at": "same",
+      "what": "the hub at the axle's end glows cyan"
+     },
+     {
+      "at": "axle",
+      "what": "the axle glows along its length"
+     },
+     {
+      "at": "sits",
+      "what": "a dark wheel shape shows beside the tyre on the axle"
+     },
+     {
+      "at": "steel",
+      "what": "it lights up amber: a steel train wheel with a flange"
+     },
+     {
+      "at": "wheel",
+      "what": "a label writes on: steel wheel"
+     },
+     {
+      "at": "above",
+      "what": "the camera drops to the gap: a bright bracket between the wheel and the rail"
+     },
+     {
+      "at": "ordinary",
+      "what": "an ordinary rail glows under it, running along inside the flat track"
+     },
+     {
+      "at": "rail",
+      "what": "the camera pulls back: steel wheels and rails all along the bogie"
+     }
+    ],
+    "things": [
+     "see-through tyre",
+     "axle",
+     "steel flanged wheel",
+     "ordinary rail",
+     "gap bracket"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "If a tyre goes flat, that wheel drops onto the rail and the train rolls on. A steel train, hiding inside a rubber one.",
+   "events": {
+    "if": {
+     "word": "If"
+    },
+    "goes": {
+     "word": "goes"
+    },
+    "flat": {
+     "word": "flat"
+    },
+    "drops": {
+     "word": "drops"
+    },
+    "rail": {
+     "word": "rail"
+    },
+    "rolls": {
+     "word": "rolls"
+    },
+    "steel": {
+     "word": "steel"
+    },
+    "hiding": {
+     "word": "hiding"
+    },
+    "rubber": {
+     "word": "rubber"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "drops"
+    }
+   ],
+   "params": {
+    "component": "Flat",
+    "place": [
+     "the flat tyre and the rail, close",
+     "the tunnel, the whole train seen through"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "rolls",
+      "size": "medium"
+     },
+     {
+      "at": "steel",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "if",
+      "what": "a nail glints in the tyre's tread"
+     },
+     {
+      "at": "goes",
+      "what": "air hisses out in a puff"
+     },
+     {
+      "at": "flat",
+      "what": "the tyre sags flat on the track"
+     },
+     {
+      "at": "drops",
+      "what": "the steel wheel drops onto the rail, sparks fly"
+     },
+     {
+      "at": "rail",
+      "what": "the rail glows where the wheel lands"
+     },
+     {
+      "at": "rolls",
+      "what": "the train rolls on, the steel wheel turning on its rail"
+     },
+     {
+      "at": "steel",
+      "what": "the camera pulls back: the whole train turns see-through, every steel wheel glowing amber"
+     },
+     {
+      "at": "hiding",
+      "what": "the steel wheels light up one after another down the train"
+     },
+     {
+      "at": "rubber",
+      "what": "the rubber tyres glow back on around the steel wheels"
+     }
+    ],
+    "things": [
+     "nail in the tread",
+     "air puff",
+     "flat tyre",
+     "steel wheel on rail",
+     "sparks",
+     "see-through train",
+     "glowing steel wheels"
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Montreal built its whole metro this way in {fact2}, and it has carried over {fact3} trips. Back in Paris, the tyres keep rolling.",
+   "events": {
+    "montreal": {
+     "word": "Montreal"
+    },
+    "built": {
+     "word": "built"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "metro": {
+     "word": "metro"
+    },
+    "way": {
+     "word": "way"
+    },
+    "carried": {
+     "word": "carried"
+    },
+    "trips": {
+     "word": "trips"
+    },
+    "back": {
+     "word": "Back"
+    },
+    "paris": {
+     "word": "Paris"
+    },
+    "tyres": {
+     "word": "tyres"
+    },
+    "rolling": {
+     "word": "rolling"
+    },
+    "and": {
+     "word": "and"
+    },
+    "has": {
+     "word": "has"
+    },
+    "in": {
+     "word": "in"
+    },
+    "year": {
+     "sec": 3.75
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "trips"
+    }
+   ],
+   "params": {
+    "component": "Loop",
+    "place": [
+     "a Montreal Metro station with a blue train",
+     "the dark Paris tunnel again"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "carried",
+      "size": "medium"
+     },
+     {
+      "at": "back",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "montreal",
+      "what": "a blue-banded Montreal train glides into a bare concrete station under its blue sign"
+     },
+     {
+      "at": "built",
+      "what": "a plaque on the station wall writes on the year"
+     },
+     {
+      "at": "whole",
+      "what": "the network's coloured lines draw on along the wall"
+     },
+     {
+      "at": "metro",
+      "what": "the lines finish drawing"
+     },
+     {
+      "at": "way",
+      "what": "the train's tyres glow under it"
+     },
+     {
+      "at": "in",
+      "what": "the plaque's year pulses bright"
+     },
+     {
+      "at": "year",
+      "what": "the Montreal sign flashes and the train's tyres glow"
+     },
+     {
+      "at": "and",
+      "what": "the network map's lines flash"
+     },
+     {
+      "at": "has",
+      "what": "the departures board lights up beside it"
+     },
+     {
+      "at": "carried",
+      "what": "a departures board counts up the trips"
+     },
+     {
+      "at": "trips",
+      "what": "the board's figure lands, the train pulls out"
+     },
+     {
+      "at": "back",
+      "what": "cut to the dark Paris tunnel, headlights far off"
+     },
+     {
+      "at": "paris",
+      "what": "the Metro sign lights over the tunnel mouth"
+     },
+     {
+      "at": "tyres",
+      "what": "the train comes on, its tyres turning, headlights flaring"
+     },
+     {
+      "at": "rolling",
+      "what": "the camera settles on the first frame of the video"
+     }
+    ],
+    "things": [
+     "Montreal station",
+     "blue Montreal train",
+     "year plaque",
+     "network line map",
+     "departures board",
+     "Paris tunnel"
+    ],
+    "fig": {
+     "year": "{fact2}",
+     "trips": "{fact3}"
+    }
+   }
+  }
+ ]
+}

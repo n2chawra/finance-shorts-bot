@@ -208,5 +208,42 @@
     "format": "long",
     "story": "how_network_works",
     "shape": null
+  },
+  {
+    "id": "v-20261124-21",
+    "created_at": "2026-11-23T21:18:41.348762+00:00",
+    "template": "short_story",
+    "topic": {
+      "title": "Why some Paris Metro lines roll on rubber tyres, and the steel wheels hidden behind them in case one goes flat",
+      "category": "transport",
+      "reach": "global",
+      "feed_id": "2026-11-21-paris-metro-tyres"
+    },
+    "title": "Why Does the Paris Metro Run on Rubber Tyres?",
+    "description": "How does a Paris Metro train on rubber tyres stay on the track?\nWe cut a rubber-tyred bogie open in 3D: the tyres on flat tracks, the sideways guide wheels, and the steel wheels waiting behind them, then follow the idea from Michelin's 1931 railcar to Montreal.\nSources: Michelin Metro (Nov 2026).\nAnimations are simplified illustrations, not exact to scale.",
+    "hook_style": "question",
+    "cta": "Which train should we take apart next? Comment",
+    "style": {
+      "palette": "ocean",
+      "genre": "circuit",
+      "key": "A",
+      "bpm": 72,
+      "look": {
+        "stage": "night",
+        "header": "neon",
+        "holder": "sign",
+        "entrance": "slide"
+      },
+      "voice": "am_michael",
+      "arms": {
+        "length": "45-60",
+        "title": "figure_or_name",
+        "style": "shot",
+        "category": "28"
+      }
+    },
+    "format": "short",
+    "story": "machine_works",
+    "shape": "reveal"
   }
 ]

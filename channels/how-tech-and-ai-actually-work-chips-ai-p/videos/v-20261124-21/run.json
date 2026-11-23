@@ -1,0 +1,104 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-23T20:09:17.528570+00:00",
+    "finishedAt": "2026-11-23T20:09:17.528570+00:00",
+    "notes": [
+      "style.bpm must be 70–75 for circuit",
+      "plan.arms must be this channel's own {\"length\": \"45-60\", \"title\": \"figure_or_name\", \"style\": \"shot\", \"category\": \"28\"} (from `improvement.arms assign`)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T20:09:22.462510+00:00",
+    "finishedAt": "2026-11-23T20:09:22.462510+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T20:12:17.150134+00:00",
+    "finishedAt": "2026-11-23T20:12:17.150134+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T20:13:33.802200+00:00",
+    "finishedAt": "2026-11-23T20:13:33.802200+00:00",
+    "notes": [
+      "All 3 sourced facts confirmed on metro.michelin.com history page (WebFetch): first metro on tyres with RATP 1951; Montreal metro opened 1966; more than 10 billion trips since. Verify list: 1931 Micheline Paris-Deauville record confirmed on same page; ~1000 passengers/train confirmed (not used); Line 11 1956 not on page and not used in script. Mechanics (tyres on running tracks outside the rails, horizontal guide wheels on guide bars, steel flanged wheels on same axle just above ordinary rails, taking over if a tyre fails) confirmed by STRMTG (French gov) and Wikipedia Rubber-tyred metro / MP 59. Description ends with disclaimer; no advice, no hype. Notes: title 'the Paris Metro' generalises (only lines 1, 4, 6, 11, 14 are rubber-tyred), but the script says 'this train' and never claims all lines; steel wheels also guide through switches (omitted, not wrong)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T20:20:54.123001+00:00",
+    "finishedAt": "2026-11-23T20:23:29.377826+00:00",
+    "notes": [
+      "2.0 s with nothing new on screen in beat 'loop' (at most 1.8 s): add an action on the phrase being said there",
+      "3 of 13 stills are mostly empty background (at 5 s, 25 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+      "the hook runs 4.7 s; keep it to 4 s or less",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T20:25:21.802814+00:00",
+    "finishedAt": "2026-11-23T20:27:30.005545+00:00",
+    "notes": [
+      "1.8 s with nothing new on screen in beat 'loop' (at most 1.8 s): add an action on the phrase being said there",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T20:28:02.275082+00:00",
+    "finishedAt": "2026-11-23T20:30:03.456019+00:00",
+    "notes": [
+      "58 s, ocean/circuit (preview only)",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T20:30:56.694424+00:00",
+    "finishedAt": "2026-11-23T20:30:56.694424+00:00",
+    "notes": [
+      "Directed 3D throughout: Paris tunnel hook naming the train, platform with 1951 plaque, see-through bogie with weight arrows, guide-wheel close, grip bench, steel-wheel cutaway, flat-tyre drop with label, Montreal station with 1966 sign and line map, loop back to the Paris tunnel; no overlaps or cut text (45s 'steel whee' is the label mid write-on), at the level of v-20261119-01/v-20261121-21; weakest still is 25s grip close (tyre half off frame, 'rubber' label on the wall); disclaimer in description; audio peak -1.0, mean -16.6 dB"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T20:31:07.314957+00:00",
+    "finishedAt": "2026-11-23T21:18:23.954988+00:00",
+    "notes": [
+      "58 s, ocean/circuit, peak -1.0 dB, mean -16.6 dB",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-23T21:18:41.349012+00:00",
+    "finishedAt": "2026-11-23T21:18:41.349012+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,272 @@
+{
+  "id": "v-20261124-21",
+  "createdAt": "2026-11-23T21:18:41.348762+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why some Paris Metro lines roll on rubber tyres, and the steel wheels hidden behind them in case one goes flat",
+    "category": "transport",
+    "reach": "global",
+    "feed_id": "2026-11-21-paris-metro-tyres"
+  },
+  "title": "Why Does the Paris Metro Run on Rubber Tyres?",
+  "description": "How does a Paris Metro train on rubber tyres stay on the track?\nWe cut a rubber-tyred bogie open in 3D: the tyres on flat tracks, the sideways guide wheels, and the steel wheels waiting behind them, then follow the idea from Michelin's 1931 railcar to Montreal.\nSources: Michelin Metro (Nov 2026).\nAnimations are simplified illustrations, not exact to scale.",
+  "hashtags": [
+    "#Shorts",
+    "#ParisMetro",
+    "#Michelin",
+    "#Trains",
+    "#HowItWorks"
+  ],
+  "hookStyle": "question",
+  "cta": "Which train should we take apart next? Comment",
+  "seed": 31956,
+  "style": {
+    "palette": "ocean",
+    "genre": "circuit",
+    "key": "A",
+    "bpm": 72,
+    "look": {
+      "stage": "night",
+      "header": "neon",
+      "holder": "sign",
+      "entrance": "slide"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "45-60",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "28"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "This Paris Metro train runs on rubber tyres.",
+        "start": 0.3,
+        "seconds": 3.44,
+        "window": 4.03,
+        "fill": 0.854
+      },
+      {
+        "scene": "ask",
+        "text": "Paris first tried it in 1951. So what keeps it on the track?",
+        "start": 4.33,
+        "seconds": 4.64,
+        "window": 5.1,
+        "fill": 0.91
+      },
+      {
+        "scene": "tyres",
+        "text": "Under each car, fat tyres roll on two flat running tracks. They carry the weight and drive the train.",
+        "start": 9.43,
+        "seconds": 6.93,
+        "window": 7.37,
+        "fill": 0.94
+      },
+      {
+        "scene": "guide",
+        "text": "But a tyre can't steer itself. So small sideways wheels press on a guide bar at each side.",
+        "start": 16.8,
+        "seconds": 6.27,
+        "window": 6.63,
+        "fill": 0.946
+      },
+      {
+        "scene": "grip",
+        "text": "Why the trouble? Rubber grips better than steel, so the train speeds up and brakes harder, and runs quieter.",
+        "start": 23.43,
+        "seconds": 6.57,
+        "window": 7.17,
+        "fill": 0.916
+      },
+      {
+        "scene": "steel",
+        "text": "And right beside every tyre, on the same axle, sits a steel train wheel, just above an ordinary rail.",
+        "start": 30.6,
+        "seconds": 7.04,
+        "window": 7.53,
+        "fill": 0.935
+      },
+      {
+        "scene": "payoff",
+        "text": "If a tyre goes flat, that wheel drops onto the rail and the train rolls on. A steel train, hiding inside a rubber one.",
+        "start": 38.13,
+        "seconds": 8.65,
+        "window": 8.97,
+        "fill": 0.964
+      },
+      {
+        "scene": "loop",
+        "text": "Montreal built its whole metro this way in 1966, and it has carried over 10B trips. Back in Paris, the tyres keep rolling.",
+        "start": 47.1,
+        "seconds": 10.46,
+        "window": 10.83,
+        "fill": 0.966
+      }
+    ]
+  },
+  "durationSec": 58,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.6,
+    "lufs": -14.9,
+    "music_under_voice_db": 26.1
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "All 3 sourced facts confirmed on metro.michelin.com history page (WebFetch): first metro on tyres with RATP 1951; Montreal metro opened 1966; more than 10 billion trips since. Verify list: 1931 Micheline Paris-Deauville record confirmed on same page; ~1000 passengers/train confirmed (not used); Line 11 1956 not on page and not used in script. Mechanics (tyres on running tracks outside the rails, horizontal guide wheels on guide bars, steel flanged wheels on same axle just above ordinary rails, taking over if a tyre fails) confirmed by STRMTG (French gov) and Wikipedia Rubber-tyred metro / MP 59. Description ends with disclaimer; no advice, no hype. Notes: title 'the Paris Metro' generalises (only lines 1, 4, 6, 11, 14 are rubber-tyred), but the script says 'this train' and never claims all lines; steel wheels also guide through switches (omitted, not wrong)."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Directed 3D throughout: Paris tunnel hook naming the train, platform with 1951 plaque, see-through bogie with weight arrows, guide-wheel close, grip bench, steel-wheel cutaway, flat-tyre drop with label, Montreal station with 1966 sign and line map, loop back to the Paris tunnel; no overlaps or cut text (45s 'steel whee' is the label mid write-on), at the level of v-20261119-01/v-20261121-21; weakest still is 25s grip close (tyre half off frame, 'rubber' label on the wall); disclaimer in description; audio peak -1.0, mean -16.6 dB"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-23T20:09:17.528570+00:00",
+      "finishedAt": "2026-11-23T20:09:17.528570+00:00",
+      "notes": [
+        "style.bpm must be 70–75 for circuit",
+        "plan.arms must be this channel's own {\"length\": \"45-60\", \"title\": \"figure_or_name\", \"style\": \"shot\", \"category\": \"28\"} (from `improvement.arms assign`)"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-23T20:09:22.462510+00:00",
+      "finishedAt": "2026-11-23T20:09:22.462510+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T20:12:17.150134+00:00",
+      "finishedAt": "2026-11-23T20:12:17.150134+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T20:13:33.802200+00:00",
+      "finishedAt": "2026-11-23T20:13:33.802200+00:00",
+      "notes": [
+        "All 3 sourced facts confirmed on metro.michelin.com history page (WebFetch): first metro on tyres with RATP 1951; Montreal metro opened 1966; more than 10 billion trips since. Verify list: 1931 Micheline Paris-Deauville record confirmed on same page; ~1000 passengers/train confirmed (not used); Line 11 1956 not on page and not used in script. Mechanics (tyres on running tracks outside the rails, horizontal guide wheels on guide bars, steel flanged wheels on same axle just above ordinary rails, taking over if a tyre fails) confirmed by STRMTG (French gov) and Wikipedia Rubber-tyred metro / MP 59. Description ends with disclaimer; no advice, no hype. Notes: title 'the Paris Metro' generalises (only lines 1, 4, 6, 11, 14 are rubber-tyred), but the script says 'this train' and never claims all lines; steel wheels also guide through switches (omitted, not wrong)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T20:20:54.123001+00:00",
+      "finishedAt": "2026-11-23T20:23:29.377826+00:00",
+      "notes": [
+        "2.0 s with nothing new on screen in beat 'loop' (at most 1.8 s): add an action on the phrase being said there",
+        "3 of 13 stills are mostly empty background (at 5 s, 25 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+        "the hook runs 4.7 s; keep it to 4 s or less",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T20:25:21.802814+00:00",
+      "finishedAt": "2026-11-23T20:27:30.005545+00:00",
+      "notes": [
+        "1.8 s with nothing new on screen in beat 'loop' (at most 1.8 s): add an action on the phrase being said there",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-23T20:28:02.275082+00:00",
+      "finishedAt": "2026-11-23T20:30:03.456019+00:00",
+      "notes": [
+        "58 s, ocean/circuit (preview only)",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T20:30:56.694424+00:00",
+      "finishedAt": "2026-11-23T20:30:56.694424+00:00",
+      "notes": [
+        "Directed 3D throughout: Paris tunnel hook naming the train, platform with 1951 plaque, see-through bogie with weight arrows, guide-wheel close, grip bench, steel-wheel cutaway, flat-tyre drop with label, Montreal station with 1966 sign and line map, loop back to the Paris tunnel; no overlaps or cut text (45s 'steel whee' is the label mid write-on), at the level of v-20261119-01/v-20261121-21; weakest still is 25s grip close (tyre half off frame, 'rubber' label on the wall); disclaimer in description; audio peak -1.0, mean -16.6 dB"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-23T20:31:07.314957+00:00",
+      "finishedAt": "2026-11-23T21:18:23.954988+00:00",
+      "notes": [
+        "58 s, ocean/circuit, peak -1.0 dB, mean -16.6 dB",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-23T21:18:41.349012+00:00",
+      "finishedAt": "2026-11-23T21:18:41.349012+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261124-21",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261124-21"
+  }
+}

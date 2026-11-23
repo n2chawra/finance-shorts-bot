@@ -1,0 +1,119 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 31956,
+  "duration_sec": 58,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "circuit",
+    "key": "A",
+    "bpm": 72,
+    "look": {
+      "stage": "night",
+      "header": "neon",
+      "holder": "sign",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "This Paris Metro train runs on rubber tyres.",
+        "start": 0.3,
+        "seconds": 3.44,
+        "window": 4.03,
+        "fill": 0.854
+      },
+      {
+        "scene": "ask",
+        "text": "Paris first tried it in 1951. So what keeps it on the track?",
+        "start": 4.33,
+        "seconds": 4.64,
+        "window": 5.1,
+        "fill": 0.91
+      },
+      {
+        "scene": "tyres",
+        "text": "Under each car, fat tyres roll on two flat running tracks. They carry the weight and drive the train.",
+        "start": 9.43,
+        "seconds": 6.93,
+        "window": 7.37,
+        "fill": 0.94
+      },
+      {
+        "scene": "guide",
+        "text": "But a tyre can't steer itself. So small sideways wheels press on a guide bar at each side.",
+        "start": 16.8,
+        "seconds": 6.27,
+        "window": 6.63,
+        "fill": 0.946
+      },
+      {
+        "scene": "grip",
+        "text": "Why the trouble? Rubber grips better than steel, so the train speeds up and brakes harder, and runs quieter.",
+        "start": 23.43,
+        "seconds": 6.57,
+        "window": 7.17,
+        "fill": 0.916
+      },
+      {
+        "scene": "steel",
+        "text": "And right beside every tyre, on the same axle, sits a steel train wheel, just above an ordinary rail.",
+        "start": 30.6,
+        "seconds": 7.04,
+        "window": 7.53,
+        "fill": 0.935
+      },
+      {
+        "scene": "payoff",
+        "text": "If a tyre goes flat, that wheel drops onto the rail and the train rolls on. A steel train, hiding inside a rubber one.",
+        "start": 38.13,
+        "seconds": 8.65,
+        "window": 8.97,
+        "fill": 0.964
+      },
+      {
+        "scene": "loop",
+        "text": "Montreal built its whole metro this way in 1966, and it has carried over 10B trips. Back in Paris, the tyres keep rolling.",
+        "start": 47.1,
+        "seconds": 10.46,
+        "window": 10.83,
+        "fill": 0.966
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.6,
+    "lufs": -14.9,
+    "music_under_voice_db": 26.1
+  },
+  "craft_problems": [
+    "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 15.67,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
