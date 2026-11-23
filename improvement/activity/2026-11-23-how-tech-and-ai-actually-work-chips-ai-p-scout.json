@@ -1,0 +1,20 @@
+{
+  "agent": "scout",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-23T04:38:01Z",
+  "finishedAt": "2026-11-23T04:42:44Z",
+  "summary": "How Tech Works: added 2 long topics (a long version of our breakout Crossrail Short, and tap to pay) and 3 script-structure findings. The long feed has 12 usable topics.",
+  "decision": "acted",
+  "why": "The Crossrail Short has 1,362 views, nearly 5x our next best; tunnel explainers hold 545K-887K views; Branch Education's tap-to-pay video has 769K in two months. Structure focus follows Thursday's titles focus.",
+  "findings": [
+    {"title": "Our breakout Short walks one machine front to back", "detail": "v-20261122-21 (1,362 views) orders beats along the machine and opens each with the viewer's question; routed as an adopt item for long chapters."},
+    {"title": "One-moment titles", "detail": "'in one second' / 'when you ...' long titles hit 3x their channel median 2 of 4 times vs 13% (n=215); experiment arm."},
+    {"title": "No long format for machines and megaprojects", "detail": "Four 1M+ videos share the shape; template item for the improver."}
+  ],
+  "changes": [
+    {"title": "2 long topics", "detail": "2026-11-23-crossrail-under-the-tube (high, from_short v-20261122-21), 2026-11-23-tap-to-pay-inside (normal)", "branch": "agent/scout/2026-11-23/how-tech-and-ai-actually-work-chips-ai-p"},
+    {"title": "3 backlog items", "detail": "tech-long-walk-the-object (adopt), tech-long-one-moment-title (experiment), tech-long-format-how-its-built (template)", "branch": "agent/scout/2026-11-23/how-tech-and-ai-actually-work-chips-ai-p"}
+  ],
+  "nextCheck": "2026-11-26",
+  "links": [{"label": "Report", "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/longform/2026-11-23.md"}]
+}
