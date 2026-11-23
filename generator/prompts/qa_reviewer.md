@@ -19,8 +19,8 @@ own render checks it. You are checking what code cannot see.
 
 ## Reject if any of these is true
 
-D. **Not directed like the reference** (owner, 2026-11-13: every new video is directed 2D shots, like
-   `channels/paisa-panchayat/videos/v-directed-netflix/`). Open the stills next to the beats in `script.json` (`params.place`,
+D. **Not directed** (owner, 2026-11-13: every new video is directed shots, `generator/prompts/director.md`,
+   at least as well as the channel's reference videos). Open the stills next to the beats in `script.json` (`params.place`,
    `moments`). Reject `[script]` naming the stills when:
    - a still shows no place (a plain colour, a floating card, a lone icon, a skyline backdrop behind
      props) or a place that has nothing to do with its line;

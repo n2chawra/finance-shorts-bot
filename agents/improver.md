@@ -24,7 +24,7 @@ Use `$PY` wherever this page says `python`.
 Stop (activity `nothing`, push it) if `config/settings.json` has `agents.paused` or
 `agents.improver` false.
 
-**Channels** (`agents/policy.md`, "Many channels"): you serve every live channel, not only Paisa Panchayat.
+**Channels** (`agents/policy.md`, "Many channels"): you serve every live channel, one at a time.
 ```
 CHANNELS=$(python -c "import json;c=json.load(open('config/channels.json'))['channels'];print(' '.join(k for k,v in c.items() if v['status'] in ('active','paused')))"); echo "CHANNELS=$CHANNELS"
 ```

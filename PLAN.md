@@ -469,7 +469,7 @@ after the owner approves samples; Shorts keep shipping on Pillow until then.
   every line, the cast acting, the figure on a thing in the place, a moving camera, changes on words),
   and said "I absolutely loved this… now new videos are made like this… also fix in long video same
   thing". Every new Short and long video is now directed 2D (M9): director step, flat kit, checks, prompts.
-- 2026-11-23: The owner deleted the first finance channel and Going Down from the platform (Delete
+- 2026-11-23: The owner deleted the first finance channel and a dive-kit channel from the platform (Delete
   channel on the Channels page → `delete-channel.yml` purges rows, release videos and the folder; their
   routines disable themselves). The default channel is now `geography-maps-geopolitical-mysteries`;
   CLAUDE.md is the platform's brief, each channel's strategy lives in `channels/<slug>/`.

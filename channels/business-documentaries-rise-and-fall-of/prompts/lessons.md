@@ -36,7 +36,7 @@ Seen in: Disaster Desk's Hyatt long video, 22 Nov: "only showing death counts is
 Fix: when a line says what happened to people or things, the beat shows it happening in the place (the crowd under the walkway, the cars on the bridge), never gory (director.md).
 
 ## 8. A named place, company or person shows its real mark (general)
-Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); Paisa Panchayat's Squid Game and Apple/Google notes.
+Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); earlier notes on the first finance channel's Shorts.
 Fix: a country on the map shows its flag (the code check fails a map video whose named country never gets one), a company its logo, a person their photo head.
 
 ## 9. A long video's first sentence states the stakes (general)

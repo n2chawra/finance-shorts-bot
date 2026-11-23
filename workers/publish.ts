@@ -32,7 +32,7 @@ import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { TokenError, accessToken, setThumbnail, uploadVideo } from "./lib/youtube.ts";
 import { COVERS_PER_RUN, COVER_DAYS, coverFile, isPermissionRefusal, needsCover } from "./lib/cover.ts";
-import { CHANNEL_ONE, channelPack, layout, videoFile } from "./lib/channels.ts";
+import { CHANNEL_ONE, channelPack, videoFile } from "./lib/channels.ts";
 import { activeChannels, channelSettings, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { COST, QuotaKeeper } from "./lib/quota.ts";
 
@@ -110,7 +110,7 @@ async function main(): Promise<void> {
     const channels = await activeChannels(prisma);
     if (!channels.length) console.log("No active channel. Nothing to do.");
     for (const ch of channels) {
-      const first = ch.id === layout().default;
+      const first = ch.id === CHANNEL_ONE;   // channel #1 kept the plain keys (lib/channel-scopes.ts PLAIN_KEY_CHANNEL)
       const run: Run = { channelId: ch.id, settings: channelSettings(base, ch.settings), quota,
         key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: `,
         // the channel's own upload category (its pack; "22" without one)

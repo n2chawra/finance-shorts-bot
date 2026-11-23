@@ -1,14 +1,15 @@
 ---
 name: motion-direction
-description: Art direction for Paisa Panchayat videos: how a directed 2D shot is framed, lit, filled and moved so a video feels made, not templated. Read before directing a script's beats (generator/prompts/director.md), coding a beat on the flat kit, adding to remotion/src/flat, or reviewing stills.
+description: Art direction for the platform's videos (every channel): how a directed 2D shot is framed, lit, filled and moved so a video feels made, not templated. Read before directing a script's beats (generator/prompts/director.md), coding a beat on the flat kit, adding to remotion/src/flat, or reviewing stills.
 ---
 
 # Motion direction
 
-> **Since 2026-11-13 every new video is directed 2D** (owner, after the Netflix remake: "I absolutely
+> **Since 2026-11-13 every new video is directed 2D** (owner, after a Short remade shot by shot in flat 2D: "I absolutely
 > loved this… now new videos are made like this"). Use `generator/prompts/director.md` (the method:
 > a place for every line, someone doing something, the figure on a thing, a moving camera, changes on
-> words) with the flat kit `remotion/src/flat/` and the reference `channels/paisa-panchayat/videos/v-directed-netflix/`. The
+> words) with the channel's kit (`remotion/src/flat/` by default) and the channel's reference videos. A channel's
+> `prompts/recipe.md` and `channel.json` look win where they differ (no cast on a cast-free channel). The
 > rules below still hold as art direction for those shots (fill the frame, light, depth, shot sizes);
 > where they name the old `shot`/`build` scenes, read them as advice for a directed beat.
 

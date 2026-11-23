@@ -70,7 +70,7 @@ Seen in: Rise & Fall, 20 Nov: "the same 3 sneaker photos reused and almost no ef
 Fix: a photo or picture is in one beat of a Short (the loop beat may repeat the first), two of a long video at most; the code check fails a repeat (renderer/remotion.py picture_once_problems).
 
 ## 14. A named place, company or person shows its real mark (general)
-Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); Paisa Panchayat's Squid Game and Apple/Google notes.
+Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); earlier notes on the first finance channel's Shorts.
 Fix: a country on the map shows its flag (the code check fails a map video whose named country never gets one), a company its logo, a person their photo head.
 
 ## 15. A long video's first sentence states the stakes (general)

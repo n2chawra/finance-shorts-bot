@@ -43,7 +43,7 @@ What belongs to one channel is in its folder, not in this file:
 routines. **Deleting a channel** (owner, 2026-11-23): Channels page → Delete → `POST /api/channels/[id]/delete`
 sets status `deleting`; `.github/workflows/delete-channel.yml` (`workers/delete-channel.ts`) purges its
 database rows, release videos and repo folder, and the channel's routines disable themselves at their
-next run. Paisa Panchayat and Going Down were removed this way on 2026-11-23.
+next run. Two earlier channels were removed this way on 2026-11-23.
 
 ---
 

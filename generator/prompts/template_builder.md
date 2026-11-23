@@ -13,8 +13,8 @@ Run `python -m generator.run state`. Continue only if `mode` is `template_work`.
 Read `renderer/templates/short_story/README.md` (Shorts recipes), `renderer/templates/long_story/README.md`
 (the scene table, cast, acting and numbers) and `channels/<channel>/history/template_work.json`.
 
-- **Add** a recipe when there is a kind of finance story none of the recipes tells well (a loan
-  cost breakdown, a tax-saving comparison, a goal countdown, a before/after budget). It must use
+- **Add** a recipe when there is a kind of story in a channel's niche none of the recipes tells well
+  (a cause chain, a before/after, a countdown, a comparison at scale). It must use
   the scenes in a new order and rhythm, not rename an existing recipe.
 - **Improve** a recipe when the evaluator or QA shows a weakness: a beat order that keeps
   producing a still stretch, a hook that lands late, a recipe the planner never picks.

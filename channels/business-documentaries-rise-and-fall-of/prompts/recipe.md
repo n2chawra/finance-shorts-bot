@@ -1,6 +1,6 @@
 # Champion recipe: Business documentaries
 
-The writer and the director follow this where CLAUDE.md describes Paisa Panchayat's recipe (money Shorts,
+The writer and the director follow this over the shared prompts' defaults (money Shorts,
 the 28–35 s length, the flat cast, directed 2D beats). The hard rules do not change: true, sourced facts;
 figures from code or a sourced `facts` entry; one narrator; no real person's words in the voice. Sources:
 `research/advice.md`, `research/report.md`, `research/style.json`, `research/families.json`,

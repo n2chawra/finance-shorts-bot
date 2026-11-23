@@ -1,9 +1,9 @@
 # Routine: midday trend run (~11:30 IST)
 
-You are an unattended scheduled run. Nobody is watching. Your job: catch a money trend **today**,
+You are an unattended scheduled run. Nobody is watching. Your job: catch a trend in the channel's niche (`profile.md`) **today**,
 while people are still talking about it, and make **at most one** Short about it. News and trends
 lose half their first-day views in about seven hours; a video you ship by about 15:00 IST is
-uploaded for the 19:07 slot and jumps the queue.
+uploaded for the channel's next upload slot and jumps the queue.
 
 Most days there is no strong new trend. Then you stop after the sweep — that is a good run.
 Keep it lean: it shares a Pro-plan usage window with other routines.
@@ -28,16 +28,16 @@ Run `python -m generator.run state`.
 
 ## 2. The sweep (at most 4 web searches, 4 page reads)
 
-Look for one money moment that lots of people **around the world** (or in India or the US) are
-talking about **today or since yesterday**. A global one (a billionaire, a famous company, something
+Look for one moment in the niche that lots of people **around the world** (or in one country) are
+talking about **today or since yesterday**. A global one (a famous person, place or company, something
 anyone can relate to) is best: `topic.reach: "global"`. A one-country trend is `"local"` with
 `topic.reach_reason: {"kind": "occasion", "name": "<the trend>", "date": "<today>"}`, and only if
-`reach.local_allowed` in `state` is true (`generator/reach.py`). Look for the kind that fills finance Shorts comments, not a news bulletin (owner reset,
+`reach.local_allowed` in `state` is true (`generator/reach.py`). Look for the kind that fills the niche's Shorts comments, not a news bulletin (owner reset,
 2026-10-21: central bank decisions and inflation releases are not trends people watch):
-- A viral money conversation: a salary reveal, a scam everyone is warning about, a celebrity or
-  billionaire money story, a sale everyone is buying in, a tax change people are angry about.
-- What finance Shorts are blowing up right now (`market-data`: `market.json`).
-- Google Trends (India and US) for money terms.
+- A viral conversation in the niche (for a finance niche: a salary reveal, a scam everyone is
+  warning about; for geography: a border change, a map everyone is sharing).
+- What the niche's Shorts are blowing up right now (`market-data` / `niche-data`).
+- Google Trends for the niche's terms.
 
 It is worth a video only if **all** of these hold:
 1. It is current: you can show a source dated today or yesterday that shows the attention.

@@ -46,3 +46,10 @@ def root(tmp_path: Path) -> Path:
     (tmp_path / "videos").mkdir()
     (tmp_path / "config").mkdir()
     return tmp_path
+
+
+@pytest.fixture
+def packless(monkeypatch: pytest.MonkeyPatch) -> None:
+    """A channel with no pack (no channels/<slug>/channel.json): the platform's built-in values, as channel #1
+    had before it was deleted (2026-11-23). Tests of those defaults use it, so no real channel's pack applies."""
+    monkeypatch.setenv("CHANNEL", "packless-test-channel")

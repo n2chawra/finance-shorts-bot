@@ -120,7 +120,7 @@ export async function importAgentNotifications(prisma: PrismaClient, root: strin
   }
 }
 
-const DOCS: Record<string, string> = {
+export const DOCS: Record<string, string> = {
   experiments: "config/experiments.json",
   experimentLedger: "improvement/experiments.json",
   proposals: "improvement/research/proposals.json",
@@ -224,7 +224,8 @@ export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<
   return n;
 }
 
-const DOC_HASHES = "docHashes", ACTIVITY_HASHES = "activityHashes";
+export const DOC_HASHES = "docHashes";
+const ACTIVITY_HASHES = "activityHashes";
 /** A short content hash: what was last written, so an unchanged doc or record is not sent again. */
 export const hashOf = (v: unknown): string => createHash("sha1").update(JSON.stringify(v)).digest("base64url").slice(0, 16);
 async function loadHashes(prisma: PrismaClient, key: string): Promise<Record<string, string>> {

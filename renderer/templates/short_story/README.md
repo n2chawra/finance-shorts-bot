@@ -1,6 +1,8 @@
 # short_story — Shorts on Remotion
 
-A vertical Short (1080×1920; its length is the setting `lengthMinSec`–`lengthMaxSec`, 35–50 s since 2026-10-29) told in beats by the recurring cast, drawn by Remotion.
+A vertical Short (1080×1920; its length is the channel's setting `lengthMinSec`–`lengthMaxSec`) told in beats, drawn by Remotion.
+The channel's `prompts/recipe.md` and `channel.json` win over this page's recipes and examples, many of
+which are money stories from the platform's first channel.
 Same pipeline, scenes, cast, numbers and rules as [`long_story`](../long_story/README.md): read
 that README for the script fields, `maths` kinds, beats, events, acting and the scene table.
 Example: [`examples/short_story.json`](../../../examples/short_story.json). There is no
@@ -8,12 +10,12 @@ Example: [`examples/short_story.json`](../../../examples/short_story.json). Ther
 
 ## Directed shots (every new Short, since 2026-11-13)
 
-**Read `generator/prompts/director.md` and `remotion/src/flat/README.md` first.** The owner, after the
-Netflix remake: "I absolutely loved this… now new videos are made like this." Every beat is
+**Read `generator/prompts/director.md` and `remotion/src/flat/README.md` first.** The owner, after a
+Short remade shot by shot in flat 2D: "I absolutely loved this… now new videos are made like this." Every beat is
 `"scene": "directed"`: a place built for the line, someone doing something, the figure on a thing in
 that place, a camera that moves, every change on a spoken word, coded per beat in
-`remotion/src/videos/<id>/` on the flat kit. Reference: `channels/paisa-panchayat/videos/v-directed-netflix/script.json` with
-its code in `remotion/src/videos/v-directed-netflix/`. The sections below on shots, the board and the
+`remotion/src/videos/<id>/` on the channel's kit (flat by default). The bar is the channel's reference
+videos (its approved samples, named in its recipe). The sections below on shots, the board and the
 old scenes describe the kits it replaced (kept so old videos can be re-rendered); the story spine,
 recipes, cover and evidence sections still apply.
 
@@ -128,7 +130,7 @@ name, the word being said and every figure in yellow.
 
 ## Evidence: `source` and `pen` (2026-10-19)
 
-From the Casual Finance study (`channels/paisa-panchayat/style-study/2026-10-19-casual-finance.md`): show the
+From a style study of an animated explainer channel (2026-10-19): show the
 proof at the moment of the claim, and mark it up while it is spoken.
 - **`source`**: for a news fact, draw the document: `publisher` (words only), `title`, and `lines`,
   each `{text, highlight?, underline?, at?}` (`underline`: a red marker line under the words). The highlighted line is the sentence being spoken, with the fact as
@@ -180,8 +182,7 @@ render, never a failure. (Long videos: the same, with `unique` in place of the t
   amount on the thing (`hero`, `small`, `tag`) turning into the big one on a receipt (`figure`, `to`).
 
 `words`: four at most, the topic in the viewer's words; one word between asterisks is highlighted
-yellow. Figures are placeholders, like everywhere else. Example covers: `channels/paisa-panchayat/videos/v-20261021-04`,
-`channels/paisa-panchayat/videos/v-20261021-05`.
+yellow. Figures are placeholders, like everywhere else.
 
 ## The story spine: depth without losing the hook (owner, 2026-10-26; shapes 2026-10-30)
 
@@ -245,7 +246,6 @@ with more than three things or no thing at 0.28+, and a grow under 1.3×. A pile
 Never: "Wait, what?", "Wait. So my…", "Same X. Same Y.", "didn't lift a finger", "for doing
 nothing", or a line opening from the last 10 scripts. The picture follows every phrase: build
 beats with the story's own props (`renderer/templates/SHOTS.md`, "The build scene").
-Reference: `channels/paisa-panchayat/videos/v-remake-casino/script.json` (a `reveal`).
 
 ## Story recipes: the formats people watch (owner reset, 2026-10-21)
 

@@ -1,7 +1,7 @@
 # Champion recipe: Geography, maps & geopolitical mysteries
 
-The writer follows this where CLAUDE.md describes Paisa Panchayat's recipe (money stories, the 28–35 s
-length, money figures). The hard rules do not change: true, sourced facts; figures from code or from a
+The writer follows this over the shared prompts' defaults (which often use money stories, a 28–35 s
+length and money figures as examples). The hard rules do not change: true, sourced facts; figures from code or from a
 sourced `facts` entry; one narrator; captions of every word.
 
 ## The story

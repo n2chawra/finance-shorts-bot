@@ -73,7 +73,7 @@ jobs:
         working-directory: .
         # per live channel (config/channels.json, written by the ingest step above): each judged on its own Shorts
         run: |
-          for ch in $(python -c "import json;print(' '.join(k for k,v in json.load(open('config/channels.json'))['channels'].items() if v['status'] in ('active','paused')))" 2>/dev/null || echo paisa-panchayat); do
+          for ch in $(python -c "import json;print(' '.join(k for k,v in json.load(open('config/channels.json'))['channels'].items() if v['status'] in ('active','paused')))" 2>/dev/null || python -c "import json;print(json.load(open('config/channel-layout.json'))['default'])"); do
             CHANNEL="$ch" python -m improvement.cycle_status || echo "::warning::weekly loop scoreboard failed for $ch"
           done
       - name: Sync the new agent files to the dashboard

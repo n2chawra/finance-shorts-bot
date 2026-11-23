@@ -1,6 +1,6 @@
 # Champion recipe: Disaster Desk
 
-The writer and the director follow this wherever CLAUDE.md describes Paisa Panchayat's recipe (money Shorts, the 28–35 s
+The writer and the director follow this over the shared prompts' defaults (money Shorts, the 28–35 s
 length, the flat cast). The hard rules do not change:
 - true, sourced facts;
 - every figure from code or a sourced `facts` entry;

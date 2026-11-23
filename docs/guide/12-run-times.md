@@ -28,7 +28,7 @@ tightest gap.
 
 ### Method, and what is exact
 - **Exact**: the spare run's start (first step stamp) and finish (last step stamp) come from
-  `channels/paisa-panchayat/videos/v-20261016-0*/manifest.json` `agentRuns[].startedAt/finishedAt`, which the code steps stamp.
+  the 16 Oct videos' `manifest.json` (first channel, since deleted) `agentRuns[].startedAt/finishedAt`, which the code steps stamp.
   Finish times of agent runs are exact to the minute: the committer time of the agent's commit
   (`git log origin/main`, and `improvement/merge-log.json` for the merge). Merge times are the Action's.
 - **Estimated**: agent start times. Agents did not record any start, and routines fire up to ~5 min

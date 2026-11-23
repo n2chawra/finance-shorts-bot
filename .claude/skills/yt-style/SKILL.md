@@ -7,7 +7,7 @@ argument-hint: <youtube url> [more urls]
 # Study a YouTube video's animation style
 
 The owner gives one or more YouTube links (videos or Shorts). Watch each one, describe how it is
-made, and turn that into concrete changes for Paisa Panchayat's videos. **Analyze and propose
+made, and turn that into concrete changes for the videos of the channel it is for (ask which if unclear). **Analyze and propose
 only**: change no code until the owner says go.
 
 ## Rules

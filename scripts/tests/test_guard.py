@@ -240,19 +240,19 @@ def test_a_per_channel_agent_stays_in_its_channel_folder(repo: Path) -> None:
     change(repo, "channels/space-facts/research/topics.json", "{}\n")
     ok = guard.check("research", "main", "HEAD", channel="space-facts")
     assert ok["ok"], ok["reasons"]
-    change(repo, "channels/paisa-panchayat/research/topics.json", "{}\n")
+    change(repo, "channels/geography-maps-geopolitical-mysteries/research/topics.json", "{}\n")
     r = guard.check("research", "main", "HEAD", channel="space-facts")
     assert any("another channel's folder" in x for x in r["reasons"]), r["reasons"]
 
 
-def test_without_a_channel_a_per_channel_agent_works_for_channel_one(repo: Path) -> None:
+def test_without_a_channel_a_per_channel_agent_works_for_the_default_channel(repo: Path) -> None:
     change(repo, "channels/space-facts/research/topics.json", "{}\n")
     r = guard.check("research", "main", "HEAD")
-    assert any("channels/paisa-panchayat/ only" in x for x in r["reasons"]), r["reasons"]
+    assert any("channels/geography-maps-geopolitical-mysteries/ only" in x for x in r["reasons"]), r["reasons"]
 
 
 def test_channel_data_is_not_code(repo: Path) -> None:
-    change(repo, "channels/paisa-panchayat/research/2026-11-20.md", "line\n" * 5000)
+    change(repo, "channels/geography-maps-geopolitical-mysteries/research/2026-11-20.md", "line\n" * 5000)
     r = guard.check("research", "main", "HEAD")
     assert r["codeLines"] == 0 and not r["needsTests"], r
 

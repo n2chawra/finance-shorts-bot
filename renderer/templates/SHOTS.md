@@ -1,7 +1,7 @@
 # The shot system (2026-10-21 to 2026-11-13; old videos only)
 
 > **New videos are directed 2D shots** (owner, 2026-11-13): `generator/prompts/director.md`, the flat
-> kit in `remotion/src/flat/`, the reference `videos/v-directed-netflix/`. This page describes the kit
+> kit in `remotion/src/flat/`, and each channel's reference videos. This page describes the kit
 > they replaced; it stays for re-renders of old videos.
 
 

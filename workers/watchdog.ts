@@ -14,7 +14,7 @@ import { istDay, missedSlots, istTime } from "./lib/publishing.ts";
 import { type ObservedRun, clusterRuns, isScheduled, scheduleOverlap, videoRunId, videoSteps } from "./lib/schedule.ts";
 import { loadSettings, type Settings } from "./lib/settings.ts";
 import { youtubeClientConfigured } from "./lib/uploads.ts";
-import { layout } from "./lib/channels.ts";
+import { CHANNEL_ONE } from "./lib/channels.ts";
 import { activeChannels, channelSettings, tokenOf } from "./lib/channel-auth.ts";
 import { scopedPrisma } from "./lib/scoped.ts";
 import { TokenError, accessToken } from "./lib/youtube.ts";
@@ -176,7 +176,7 @@ async function main(): Promise<void> {
     const checks: Check[] = [];
     // each active channel's pipeline and sign-in, with its own settings (a paused channel makes and uploads nothing)
     for (const ch of await activeChannels(prisma, true)) {
-      const first = ch.id === layout().default;
+      const first = ch.id === CHANNEL_ONE;   // channel #1 kept the plain keys (lib/channel-scopes.ts PLAIN_KEY_CHANNEL)
       const run: ChannelRun = first ? { key: (k) => k, label: "" } : { key: (k) => `${k}:${ch.id}`, label: `${ch.name}: `, channelId: ch.id };
       // a paused channel's pipeline notices close: nothing is expected of it
       if (ch.status !== "active") { checks.push(...PIPELINE_KEYS.map((k) => ({ key: run.key(k), raise: null }))); continue; }

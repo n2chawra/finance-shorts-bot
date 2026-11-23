@@ -2,6 +2,9 @@
 
 Research only. No settings, code or crons were changed.
 
+_Note (2026-11-23): channel #1, the finance channel, was deleted from the platform; its data stays
+here as evidence for the slot findings, and its recommendation was removed._
+
 **Question:** some videos get no push at certain upload times, even when they have a good audience and likes. When should each channel post its Shorts and long videos (IST)?
 
 **Short answer:** for Shorts, the time of day is not what decides the push. In our own data no slot is
@@ -18,15 +21,12 @@ two-week rotation test.
 
 | Channel | Shorts a day, slots (IST) | Long videos (IST) |
 |---|---|---|
-| Paisa Panchayat | 2: 07:07, 19:07 (trend slots 16:07, 22:07) | 1 a week, Sat (`longUploadDays: [6]`) at 20:07 (base default) |
+| Channel #1 (finance) | 2: 07:07, 19:07 (trend slots 16:07, 22:07) | 1 a week, Sat (`longUploadDays: [6]`) at 20:07 (base default) |
 | The Why Atlas (geography) | 2: 09:37, 20:37 | none (`longPerWeek: 0`) |
 | A Billion Switches (tech) | 1: 06:07 | 2 a week, Wed + Sat 06:37 |
 | Craze & Crash (business docs) | 2: 17:47, 22:17 | 2 a week, Tue + Fri 21:17 |
 
 `longUploadDays` uses 0 = Sunday (`workers/lib/settings.ts`), so 6 is Saturday.
-**This doesn't match CLAUDE.md for Paisa Panchayat.** CLAUDE.md says 3 Shorts at 07:07, 12:37 and
-19:07, and long videos Wed and Fri at 20:07. The live config has 2 Shorts (12:37 dropped) and one long
-video on Saturday. Worth reconciling one way or the other.
 
 What the slots mean in other time zones:
 
@@ -47,7 +47,7 @@ What the slots mean in other time zones:
 Source: `channels/<slug>/metrics/videos.json` (48 h and 7 day views, stayed to watch) and
 `metrics/analytics.json` (countries, traffic sources, devices).
 
-### Paisa Panchayat (73 videos since 14 Oct)
+### Channel #1, finance (73 videos since 14 Oct)
 
 **Audience** (28 days): US 37%, India 20%, UK 8%, Philippines 7%, Indonesia 6%, Netherlands 4%,
 Germany 4%, Canada 3%. Phone 82%, tablet 12%. 93.5% of views come from the Shorts feed, 0.4% from
@@ -184,7 +184,7 @@ What this shows:
   suggests channels on one Google account affect each other's distribution. Not a cause.
 - **Catch-ups go public 5 minutes apart. This is a likely, small cause.** A slot missed because GitHub
   started the cron late, and every extra "Upload now", goes public 15 min after the run, the next one 5
-  min later (`soonSlot(now, i)`: 15 + 5·i minutes). On 9 Nov two Paisa Shorts went public at 20:53 and
+  min later (`soonSlot(now, i)`: 15 + 5·i minutes). On 9 Nov two channel #1 Shorts went public at 20:53 and
   20:58 and got 29 and 37 views. Two Shorts from one channel minutes apart are shown to the same early
   viewers at once, and the feed rarely pushes both. **Fix to consider (not made):** space catch-ups at
   least 2–3 h apart, or let a missed slot's video take the next free slot instead.
@@ -202,19 +202,6 @@ What this shows:
 The general rule: for Shorts, don't expect a time change to fix a Short that isn't getting pushed.
 Retention in the first seconds, the title and the topic decide that. Pick slots that cover the
 audience's day, keep them consistent, and test.
-
-### Paisa Panchayat
-
-- **Shorts: 07:07 and 12:37 IST** (instead of 07:07 and 19:07). 07:07 IST is the US evening (20:37 ET,
-  17:37 PT) and the Philippines/Indonesia morning; 12:37 IST is the UK/Europe morning and the Southeast
-  Asia afternoon. 12:37 won 10 of 17 same-day comparisons, and 19:07 had the lowest median in both
-  periods. **Confidence: low** (p ≈ 0.2, confounded by the ranking). If a third Short comes back, use
-  19:07 again.
-- **Long video: Saturday or Sunday at 19:37–20:37 IST** (09:07–10:07 ET; afternoon in Europe; evening in
-  India and Southeast Asia). The current Saturday 20:07 already fits; keep it. Weekends are a small plus
-  in both studies. **Confidence: low, and timing isn't the long videos' problem** (1–6 views each).
-- **Stop:** catch-ups 5 minutes apart, and the Wed/Fri vs Saturday mismatch between CLAUDE.md and the
-  config.
 
 ### The Why Atlas
 

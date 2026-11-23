@@ -70,6 +70,8 @@ LOCKED = [
     "workers/publish.ts", "workers/auth.ts", "workers/reset-data.ts", "workers/data-audit.ts", "workers/lib/data-audit.ts",
     "workers/tests/data-audit.test.ts", "workers/lib/uploads.ts", "workers/lib/publishing.ts", "workers/lib/youtube.ts",
     "workers/lib/settings.ts", "workers/prisma/*", "workers/scripts/*", "workers/package.json", "workers/package-lock.json",
+    # deleting a channel (owner, 2026-11-23): only the dashboard's button and delete-channel.yml, never an agent
+    "workers/delete-channel.ts", "workers/lib/delete-channel.ts", "workers/tests/delete-channel.test.ts",
     # the layout gate measures the rendered text with this probe: it never changes with the scenes it measures
     "remotion/src/fx/probe.tsx",
     # the variant system (2026-11-04): its options, rules and verdicts change only by the owner or its own
@@ -199,7 +201,7 @@ def invariants(head: str) -> list[str]:
 
 
 def _branch_channel(branch: str) -> str:
-    """The channel a per-channel agent's branch names (agent/<name>/<date>/<slug>); older branches are Paisa Panchayat's."""
+    """The channel a per-channel agent's branch names (agent/<name>/<date>/<slug>); a branch without one counts as the default channel's."""
     parts = (branch or "").split("/")
     return parts[3] if len(parts) > 3 and parts[3] else DEFAULT_CHANNEL
 
@@ -223,7 +225,7 @@ def merges_today(agent: str, now: datetime, channel: str | None = None) -> int:
 # they may change only their own channel's folder. The shared agents (auditor, improver, dashboard,
 # monthly) work across channels.
 PER_CHANNEL_AGENTS = {"research", "reviewer", "scout", "studio"}
-DEFAULT_CHANNEL = "paisa-panchayat"
+DEFAULT_CHANNEL = "geography-maps-geopolitical-mysteries"   # config/channel-layout.json "default"
 # agents' data (reports, feeds, metrics) is not code: it doesn't count toward the line limit or need tests
 DATA_PREFIXES = ("improvement/", "channels/")
 

@@ -15,7 +15,7 @@ import { replaceWhere, replaceableKinds } from "./lib/breakdowns.ts";
 import { notify, resolve } from "./lib/notify.ts";
 import { istDay } from "./lib/publishing.ts";
 import { youtubeClientConfigured } from "./lib/uploads.ts";
-import { layout } from "./lib/channels.ts";
+import { CHANNEL_ONE } from "./lib/channels.ts";
 import { activeChannels, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { accessToken, comments, report } from "./lib/youtube.ts";
 import { QuotaKeeper } from "./lib/quota.ts";
@@ -108,7 +108,7 @@ async function main(): Promise<void> {
       const refreshToken = tokenOf(ch);
       if (!refreshToken) { console.log(`::notice::${ch.id} is not connected to YouTube yet.`); continue; }
       console.log(`== ${ch.name} (${ch.id})`);
-      await deepChannel(prisma, ch.id, ch.name, refreshToken, ch.id === layout().default);
+      await deepChannel(prisma, ch.id, ch.name, refreshToken, ch.id === CHANNEL_ONE);
     }
   } finally {
     await prisma.$disconnect();

@@ -1,6 +1,10 @@
+import pytest
+
 from generator import variety
 
 from .conftest import NOW, TEMPLATES, entry, make_plan
+
+pytestmark = pytest.mark.usefixtures("packless")   # the built-in rotation, no channel's own pack
 
 
 def check(plan: dict, history: list[dict]) -> list[str]:

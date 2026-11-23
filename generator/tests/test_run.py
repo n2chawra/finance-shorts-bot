@@ -9,6 +9,8 @@ from generator.channels import cpath
 
 from .conftest import NOW, entry, example, make_plan
 
+pytestmark = pytest.mark.usefixtures("packless")   # the built-in values, no channel's own pack
+
 VID = "v-20261013-01"
 
 

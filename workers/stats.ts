@@ -20,7 +20,7 @@ import { dropPoints, hookHold, spokenBeats } from "./lib/retention.ts";
 import { failKey, statsOutcome } from "./lib/stats-failures.ts";
 import { analyticsStartDay, channelDays } from "./lib/analytics.ts";
 import { DAY_METRICS, TokenError, accessToken, dailyStats, report, retentionCurve } from "./lib/youtube.ts";
-import { layout, videoFile } from "./lib/channels.ts";
+import { CHANNEL_ONE, videoFile } from "./lib/channels.ts";
 import { activeChannels, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 
 const DAY_MS = 86_400_000;
@@ -72,7 +72,7 @@ async function main(): Promise<void> {
   const failures: string[] = [];
   try {
     for (const ch of await activeChannels(prisma, true)) {
-      const first = ch.id === layout().default;
+      const first = ch.id === CHANNEL_ONE;   // channel #1 kept the plain keys (lib/channel-scopes.ts PLAIN_KEY_CHANNEL)
       const run: Run = { channelId: ch.id, key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: ` };
       const refreshToken = tokenOf(ch);
       if (!refreshToken) { console.log(`::notice::${ch.id} is not connected to YouTube yet.`); continue; }

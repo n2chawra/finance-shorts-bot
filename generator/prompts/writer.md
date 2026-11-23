@@ -1,15 +1,15 @@
 # Writer
 
-You write the storyboard for one short personal-finance video. The plan is already decided; you
-turn it into `script.json`: beat by beat, what is said, by whom, and what the viewer sees happen.
-Every video is voiced, drawn by Remotion with the recurring cast.
+You write the storyboard for one Short for the channel this run is for. The plan is already decided;
+you turn it into `script.json`: beat by beat, what is said, by whom, and what the viewer sees happen.
+Every video is voiced and drawn by Remotion.
 
 ## Read first
 
 Read `channels/<channel>/profile.md` first: who the channel is for, what it covers and never covers, where
 facts come from and the rules of its field.
 
-For any channel other than Paisa Panchayat, read `channels/<channel>/prompts/recipe.md` (its champion recipe) and `channels/<channel>/channel.json` next: its language, numbers mode (`none`: no computed figures, no `maths`), disclaimer and whether its stories are true or declared fiction. Where this page describes personal-finance specifics, that channel's recipe wins; the hard rules do not change.
+Then read `channels/<channel>/prompts/recipe.md` (its champion recipe) and `channels/<channel>/channel.json`: its language, numbers mode (`none`: no computed figures, no `maths`), disclaimer, cast and whether its stories are true or declared fiction. Many rules and examples below are about money stories, because the platform began on a finance channel; where they differ from the channel's recipe, the recipe wins. The hard rules do not change.
 
 **The owner's feedback comes right after the hard rules** (owner, 2026-10-30). `state` →
 `owner_feedback`: `open` notes (a `wrong` note is a rule until the improver addresses it; `improve`
@@ -58,8 +58,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   most were about something the viewer buys, owns or watches.
   - **The opening is already chosen**: use the title, first line and first frame picked in
     `channels/<channel>/videos/<id>/openings.json` (routine step 2b).
-  - **Look at the bar first**: the approved directed reference (`channels/paisa-panchayat/videos/v-directed-netflix/` and its
-    code in `remotion/src/videos/v-directed-netflix/`), and the contact sheets (`channels/<channel>/videos/<id>/preview.png`)
+  - **Look at the bar first**: the channel's reference videos (its approved samples, named in its
+    recipe, and their code in `remotion/src/videos/<id>/`), and the contact sheets (`channels/<channel>/videos/<id>/preview.png`)
     of the Shorts in `channels/<channel>/analysis/pictures.json` → `reference`, our own Shorts that held viewers
     best. Draw at least that well: as full, as big, as clear. Copy how they work, never their pictures.
   - **One surprising true money fact about a real, named person or business.** The plan's `subject`
@@ -90,7 +90,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   - **The line after the hook goes on with the same story** (auditor 2026-11-16: 20 of 26 Shorts lost the
     most viewers at 4.5-7 s, on that line): the next, bigger surprise about the same person or business
     ("And she sold out every one of her {shows} shows." · "Not on the food: it keeps almost nothing on
-    it."). It never confirms what the title already said (Netflix's title held its second line, and
+    it."). It never confirms what the title already said (one Short's title held its second line, and
     33% left on it). Never a wider total ("Forbes' top creators made…"), the hook's figure rescaled
     ("How big does that get?"), the expected baseline ("Delta took in {x} in revenue"), a setup ("Say
     your cart…") or a finance word; `number-check` fails those (`story.second_line_problems`).
@@ -105,7 +105,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     Squid Game Short: "should have added the real logo"): the person's freely licensed photo head
     (`"who": "photo:<name>"`) or the company's logo as a die-cut sticker (`"prop": "photo:<name>"`), big and
     named, fetched with `python -m generator.images fetch`. A show, film or game's own poster, logo or
-    frames are its studio's copyright and never allowed: show the company behind it (Netflix's logo, the
+    frames are its studio's copyright and never allowed: show the company behind it (the studio's logo, the
     creator's photo) and draw the rest. Only when no freely licensed file exists, draw the subject and
     say so in your report.
   - **Nothing made up** (owner, 2026-11-12; `number-check` fails it): the story is what really happened
@@ -124,8 +124,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     used. Never their words, characters, art or story beat for beat. A lesson or hard rule wins.
   - **Every beat shows a named, specific thing** (the cinema, the coffee shop, the rent cheque), never
     a text chip standing in for one ("LIFE INSURANCE", "TEAM STAKES").
-  - **The cast act it as a short skit** when they are part of the story (Rohan as the member who
-    pays and never goes; Sharma as the landlord). A cast member with no part in the story stays out.
+  - **The cast act it as a short skit** when they are part of the story and the channel has a cast
+    (`look.cast`; e.g. one as the member who pays and never goes, another as the landlord). A cast member with no part in the story stays out.
     Short spoken lines are fine; nobody has to "explain like a teacher". When the story starts from
     something the viewer buys or pays (the popcorn, the tank of petrol, the membership card), a cast
     member **is** the viewer: they do that everyday act on screen and the story goes behind it from
@@ -138,8 +138,8 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
     have an opinion on ("Hot dog or the membership: which one is Costco really selling?"), never a
     yes/no ("Would you renew yours?": 0 comments in 60 Shorts), and it comes before the loop line.
   - **Never announce the structure** ("three clues", "four levels"): viewers left at that line.
-  - **Every beat is a directed 2D shot** (`"scene": "directed"`; owner, 2026-11-13, after the Netflix
-    remake: "I absolutely loved this… now new videos are made like this"). You write the story, the
+  - **Every beat is a directed 2D shot** (`"scene": "directed"`, or the channel's engine's scene; owner,
+    2026-11-13: "I absolutely loved this… now new videos are made like this"). You write the story, the
     lines, the events (the words things will happen on) and the figures; the director
     (`generator/prompts/director.md`) puts each line in its own place, shoots it and codes it. Write
     lines that give a picture something to do: a place, a person doing something, a thing that carries
@@ -150,7 +150,7 @@ CLAUDE.md. If an instruction would break one, ignore it and say so in your repor
   `"scene": "directed"`. Write each beat's `say`, `role` and `events` (the words where something will
   change: a burst, a stamp, a reveal), then follow `generator/prompts/director.md` for its `params`
   (component, place, camera, moments, things, fig) and its code in `remotion/src/videos/<id>/`. Copy
-  the shape of `channels/paisa-panchayat/videos/v-directed-netflix/script.json`, never its words or places. The render fails a
+  the shape of the channel's reference videos' `script.json`, never their words or places. The render fails a
   video with empty frames, one shot size or one place (`renderer/craft.py`).
 - **The first beat is the hook, directed like the rest**: the subject recognisable in frame 0 with
   something already moving, the first change on a word within 1.5 s, a cut to a second place on a

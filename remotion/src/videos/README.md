@@ -3,8 +3,7 @@
 **Since 2026-11-13 every new video is directed** (owner: "now new videos are made like this"): one file
 per beat, `<Component>.tsx`, chosen by `"scene": "directed", "params": {"component": "<Component>", ...}`,
 drawn on the flat kit (`../../flat/kit`, `../../flat/cast`; `remotion/src/flat/README.md`). The rules
-are in `generator/prompts/director.md`; the approved reference is `v-directed-netflix/` (with
-`channels/paisa-panchayat/videos/v-directed-netflix/script.json`). Figures come from `p.beat.params.fig`, never typed into the
+are in `generator/prompts/director.md`; each channel's reference videos are its bar. Figures come from `p.beat.params.fig`, never typed into the
 file. What follows describes the older per-video code (hooks, custom beats, props) that old videos use.
 
 

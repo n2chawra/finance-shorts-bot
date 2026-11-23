@@ -14,7 +14,7 @@ and the economy are told as place stories ("why is a desert country rich?"), not
 any way but the official map of the country a video is about (or left out); conspiracy theories;
 anything about a private person; sports and celebrity topics that only use a map as decoration.
 
-**Where facts come from.** Every figure and claim is sourced, as on Paisa Panchayat: national
+**Where facts come from.** Every figure and claim is sourced (CLAUDE.md, sourced facts): national
 statistics offices, the CIA World Factbook, the World Bank, the UN, Britannica, peer-reviewed or
 official sources for history; Natural Earth (public domain) for map shapes. A claim that rests on
 reports ("according to multiple reports") is attributed on screen. Figures are simple: areas,

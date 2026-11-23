@@ -12,13 +12,13 @@ Python owns every number, every moment and every sound. Remotion only draws.
 
 ## Directed shots (every new video, since 2026-11-13)
 
-**Read `generator/prompts/director.md` and `remotion/src/flat/README.md` first.** The owner, after the
-Netflix remake: "I absolutely loved this… now new videos are made like this… also fix in long video
+**Read `generator/prompts/director.md` and `remotion/src/flat/README.md` first.** The owner, after a
+Short remade shot by shot in flat 2D: "I absolutely loved this… now new videos are made like this… also fix in long video
 same thing." Every beat of a new long video except the `end` card is `"scene": "directed"`: a place
 built for the line, someone doing something, the figure on a thing in that place, a camera that moves,
-every change on a spoken word, coded per beat in `remotion/src/videos/<id>/` on the flat kit. A long
-video is 1920×1080: the same kit and rules as the reference Short (`channels/paisa-panchayat/videos/v-directed-netflix/`),
-composed for landscape, each chapter in its own places. The shot system, the board and the scene table
+every change on a spoken word, coded per beat in `remotion/src/videos/<id>/` on the channel's kit (flat
+by default; `look.engine: doc` draws `"scene": "doc"` beats). A long video is 1920×1080: the same kit
+and rules as the channel's Shorts, composed for landscape, each chapter in its own places. The shot system, the board and the scene table
 below are the older kits, kept so old videos can be re-rendered; a new video doesn't use them.
 
 ## The shot system (2026-10-21 to 2026-11-13; old videos)
@@ -63,8 +63,7 @@ so the viewer always knows where they are. No figure is ever typed: cards and no
 The render fails a long video with fewer than 5 kinds of scene, one kind in more than 40% of the
 composed beats, or the same device more than 3 times in a row (`renderer/craft.py` `device_problems`).
 
-Draw the story's things in `remotion/src/videos/<id>/props.tsx` (10-20 for a long video). Reference:
-`channels/paisa-panchayat/videos/L-remake-borrow/script.json` with `remotion/src/videos/L-remake-borrow/` (hook and chapter one).
+Draw the story's things in `remotion/src/videos/<id>/props.tsx` (10-20 for a long video).
 
 ## The board in a long video (owner, 2026-11-02: "make these changes for long video also")
 
@@ -243,7 +242,7 @@ things in places, not on empty backgrounds.
 
 A figure with `value` counts up and lands exactly on Python's string; its `text` must show that same
 number (or `value` is 0), or the build fails. Every video ends with an
-`end` beat, which always shows "Illustrative only. Not financial advice."
+`end` beat (the end card; the channel's disclaimer goes in the description, owner 2026-11-20).
 
 ## Pace and length
 
