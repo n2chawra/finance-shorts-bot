@@ -257,6 +257,29 @@ const FLAGS: Record<string, Draw> = {
   )),
   Mexico: both(v(["#006847", W, "#ce1126"]), ({ x, y, w, h: hh }) => <circle cx={x + w / 2} cy={y + hh / 2} r={hh * 0.1} fill="#8c5a2b" />),
   Argentina: both(h(["#74acdf", W, "#74acdf"]), ({ x, y, w, h: hh }) => <circle cx={x + w / 2} cy={y + hh / 2} r={hh * 0.09} fill="#f6b40e" />),
+  // South Africa (for v-20261124-11): red over blue, the white-edged green Y from the hoist, the yellow-edged
+  // black triangle in its fork; drawn on a 9:6 grid inside a nested svg, which clips the arms to the box
+  "South Africa": ({ x, y, w, h: hh }) => (
+    <svg x={x} y={y} width={w} height={hh} viewBox="0 0 9 6" preserveAspectRatio="none">
+      <rect x={0} y={0} width={9} height={3} fill="#e03c31" />
+      <rect x={0} y={3} width={9} height={3} fill="#001489" />
+      <path d="M0,0 L4.5,3 L0,6 M4.5,3 H9" fill="none" stroke={W} strokeWidth={2} />
+      <path d="M0,0 L4.5,3 L0,6 M4.5,3 H9" fill="none" stroke="#007749" strokeWidth={1.2} />
+      <path d="M0,0.72 L3.41,3 L0,5.28 Z" fill="#ffb81c" />
+      <path d="M0,1.5 L2.25,3 L0,4.5 Z" fill={K} />
+    </svg>
+  ),
+  // Lesotho: blue, white and green bands (3:4:3) with the black mokorotlo hat in the middle
+  Lesotho: both(h(["#00209f", W, "#009543"], [3, 4, 3]), ({ x, y, w, h: hh }) => {
+    const cx = x + w / 2, cy = y + hh / 2, s = hh * 0.3;
+    return (
+      <g fill={K}>
+        <path d={`M${cx - s * 0.62},${cy + s * 0.42} Q${cx},${cy + s * 0.62} ${cx + s * 0.62},${cy + s * 0.42} L${cx + s * 0.12},${cy - s * 0.38} L${cx - s * 0.12},${cy - s * 0.38} Z`} />
+        <rect x={cx - s * 0.08} y={cy - s * 0.6} width={s * 0.16} height={s * 0.26} />
+        <circle cx={cx} cy={cy - s * 0.62} r={s * 0.1} />
+      </g>
+    );
+  }),
   Chile: ({ x, y, w, h: hh }) => (
     <g>
       <rect x={x} y={y} width={w} height={hh / 2} fill={W} />
