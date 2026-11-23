@@ -262,8 +262,12 @@ async function main(): Promise<void> {
   const checkRelease = !process.argv.includes("--no-release-check");
   const repo = checkRelease ? repoSlug(ROOT) : null;
   const prisma = new PrismaClient();
+  // how long each phase took, in the log: ingest has a 10-minute limit and every query crosses to Singapore
+  let mark = Date.now();
+  const lap = (phase: string) => { console.log(`[${((Date.now() - mark) / 1000).toFixed(1)} s] ${phase}`); mark = Date.now(); };
   try {
     await syncTemplates(prisma);
+    lap("templates");
     const feeds = loadFeeds(ROOT);
     const have = new Set((await prisma.video.findMany({ select: { id: true } })).map((v) => v.id));
     const result = { queued: [] as string[], failed: [] as string[], waiting: [] as string[], invalid: [] as string[] };
@@ -277,16 +281,19 @@ async function main(): Promise<void> {
         console.error(`::error::${id}: ${e instanceof Error ? e.message.split("\n")[0] : e}`);
       }
     }
+    lap("new manifests");
     for (const t of await prisma.video.groupBy({ by: ["templateId"], _max: { createdAt: true } })) {
       await prisma.template.update({ where: { id: t.templateId }, data: { lastUsedAt: t._max.createdAt } });
     }
     await backfillSources(prisma, feeds);
+    lap("sources and thumbnails");
     await syncTemplateWork(prisma);
     await seedSettings(prisma);
 
     // self-improving agents: their reports and decisions in, the metrics they judge by out
     const templateDecisions = await applyTemplateDecisions(prisma, ROOT);
     const activity = await importActivity(prisma, ROOT);
+    lap(`agent activity (${activity} written)`);
     // new channels' setup: the scan's and the skill's progress and the quick verdict, for the Channels page
     const setups = await syncSetups(prisma, ROOT);
     if (setups.length) console.log(`setup: ${setups.join("; ")}`);
@@ -301,14 +308,16 @@ async function main(): Promise<void> {
       process.env.CHANNEL = ch.id;
       const p = scopedPrisma(prisma, ch.id);
       await importAgentNotifications(p, ROOT);
-      await snapshotDocs(p, ROOT);
+      const docs = await snapshotDocs(p, ROOT);
       ranked = [...ranked, ...(await importEditorRanking(p, ROOT))];
       acks += await importFeedbackAcks(p, ROOT);
       metricsChanged = (await exportMetrics(p, ROOT, new Date(), numbers)) || metricsChanged;
+      lap(`${ch.id} (${docs} docs written)`);
     }
     if (before === undefined) delete process.env.CHANNEL; else process.env.CHANNEL = before;
     // each live channel's health: buffer, stayed to watch, the stop rule, usage, the Monday digest (lib/health-sync.ts)
     const healths = await syncHealth(prisma, ROOT);
+    lap("health");
     console.log(`health: ${healths.join("; ")}`);
 
     const file = path.join(ROOT, "config", "settings.json");
