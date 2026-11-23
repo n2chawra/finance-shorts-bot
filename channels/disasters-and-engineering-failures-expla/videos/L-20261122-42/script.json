@@ -3,7 +3,7 @@
   "format": "long",
   "id": "L-20261122-42",
   "seed": 42322,
-  "title": "The Gauge Said Normal. The Tower Was Nearly Full.",
+  "title": "How BP's Texas City Refinery Blew Up While Its Gauge Read Normal",
   "story": "maritime_industrial",
   "narrator": "bm_lewis",
   "currency": "USD",
@@ -5061,21 +5061,15 @@
   ],
   "thumbnail": {
     "layout": "custom",
-    "engine": "3d",
-    "component": "ThumbGeyser",
-    "words": "*Nobody* knew",
+    "component": "ThumbFull",
+    "words": "*It* was full",
     "things": [
-      "blowdown stack geyser",
-      "tower",
-      "vapour cloud"
+      "control-room screen reading NORMAL",
+      "tower full to the brim",
+      "red ring"
     ],
-    "pattern": "the liquid geyser erupting from the stack over the refinery, words on the left",
+    "pattern": "one lit picture that tells the moment with one label: the board's calm green screen beside the tower full and spilling",
     "references": [
-      {
-        "id": "goSEyGNfiPM",
-        "views": 2263886,
-        "what": "the liquid geyser erupting from the stack over the refinery's columns, sky behind"
-      },
       {
         "id": "VCcN4SQkb9A",
         "views": 672742,
@@ -5085,22 +5079,33 @@
         "id": "c9JY3eT4cdM",
         "views": 547200,
         "what": "the same lit pipework with one big time label telling the moment"
+      },
+      {
+        "id": "goSEyGNfiPM",
+        "views": 2263886,
+        "what": "the liquid geyser erupting from the stack over the refinery's columns, sky behind"
       }
     ],
-    "score": 6,
-    "why": "The most viewed hit's subject, but our 3D reads pale and the jet small at feed size; QA preferred B."
+    "score": 8,
+    "why": "The whole story in one look at phone size: the screen says NORMAL, the tower beside it is full and spilling; the words add what the title holds back."
   },
   "thumbnails": [
     {
       "layout": "custom",
-      "component": "ThumbGauge",
-      "words": "*Blind* gauge",
+      "component": "ThumbTruck",
+      "words": "*One* idling truck",
       "things": [
-        "two tower gauges",
-        "red arrow"
+        "stack geyser",
+        "vapour cloud",
+        "pickup truck"
       ],
-      "pattern": "the process drawn as a lit diagram with one label telling the moment",
+      "pattern": "the liquid geyser erupting from the stack over the refinery at night, with the ignition source ringed",
       "references": [
+        {
+          "id": "goSEyGNfiPM",
+          "views": 2263886,
+          "what": "the liquid geyser erupting from the stack over the refinery's columns, sky behind"
+        },
         {
           "id": "VCcN4SQkb9A",
           "views": 672742,
@@ -5110,25 +5115,21 @@
           "id": "c9JY3eT4cdM",
           "views": 547200,
           "what": "the same lit pipework with one big time label telling the moment"
-        },
-        {
-          "id": "goSEyGNfiPM",
-          "views": 2263886,
-          "what": "the liquid geyser erupting from the stack over the refinery's columns, sky behind"
         }
       ],
-      "score": 8,
-      "why": "Clearest at small size and promises the title exactly: calm green NORMAL beside a tower full to the top in red."
+      "score": 7,
+      "why": "The most viewed hit's geyser, bold and dark enough to read small, plus a detail most viewers don't know (an idling truck lit the cloud)."
     },
     {
       "layout": "custom",
-      "component": "ThumbReport",
-      "words": "Every *level* failed",
+      "component": "ThumbTrailers",
+      "words": "*Why* here?",
       "things": [
-        "CSB report page",
-        "red ring"
+        "office trailers",
+        "vapour cloud",
+        "tower"
       ],
-      "pattern": "the official finding up front, heavy words over the document",
+      "pattern": "the real place laid out in daylight, the danger moving toward people's workplace, one question",
       "references": [
         {
           "id": "c9JY3eT4cdM",
@@ -5147,8 +5148,8 @@
         }
       ],
       "score": 6,
-      "why": "Credible and on-brand, but a page of text is harder to read small than the eruption or the gauges."
+      "why": "Asks the question the investigation asked (why were the trailers so close) without showing harm; less striking than A at phone size."
     }
   ],
-  "thumbnail_pick": "b"
+  "thumbnail_pick": "a"
 }

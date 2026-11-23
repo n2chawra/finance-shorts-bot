@@ -10,7 +10,7 @@
     "feed_id": "2026-11-20-texas-city-refinery-long",
     "reach": "global"
   },
-  "title": "The Gauge Said Normal. The Tower Was Nearly Full.",
+  "title": "How BP's Texas City Refinery Blew Up While Its Gauge Read Normal",
   "description": "One March morning a distillation tower at the BP Texas City refinery was started up after maintenance. Its level gauge said the liquid was low. It was nearly at the top.\nWe rebuild the unit in 3D and follow the U.S. Chemical Safety Board's investigation: a tower filled for hours with nothing taken out, a gauge that could only see the bottom of it, an old vent stack with no flare, and trailers parked close by.\nThen what the board found, and what it asked the industry to change.\n\nCHAPTERS\n0:00 Intro\n0:41 The Unit\n1:42 The Start-up\n2:56 The Gauge\n3:47 The Overflow\n5:02 The Blast\n6:03 The Findings\n7:04 What Changed\n\nSource: U.S. Chemical Safety and Hazard Investigation Board, Refinery Explosion and Fire, BP Texas City (final report).\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.\n\nReport: US Chemical Safety Board, CSB Investigation Report: Refinery Explosion and Fire, BP Texas City, page 18 of 341, Public domain (US government work) (https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841)\nReport: US Chemical Safety Board, CSB Investigation Report: Refinery Explosion and Fire, BP Texas City, page 24 of 341, Public domain (US government work) (https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841)",
   "hashtags": [
     "#TexasCity",
@@ -1018,36 +1018,36 @@
       "file": "thumbnail.png",
       "angle": null,
       "layout": "custom",
-      "pattern": "the liquid geyser erupting from the stack over the refinery, words on the left",
-      "score": 6,
-      "why": "The most viewed hit's subject, but our 3D reads pale and the jet small at feed size; QA preferred B.",
-      "picked": false
+      "pattern": "one lit picture that tells the moment with one label: the board's calm green screen beside the tower full and spilling",
+      "score": 8,
+      "why": "The whole story in one look at phone size: the screen says NORMAL, the tower beside it is full and spilling; the words add what the title holds back.",
+      "picked": true
     },
     {
       "file": "thumbnail-b.png",
       "angle": null,
       "layout": "custom",
-      "pattern": "the process drawn as a lit diagram with one label telling the moment",
-      "score": 8,
-      "why": "Clearest at small size and promises the title exactly: calm green NORMAL beside a tower full to the top in red.",
-      "picked": true
+      "pattern": "the liquid geyser erupting from the stack over the refinery at night, with the ignition source ringed",
+      "score": 7,
+      "why": "The most viewed hit's geyser, bold and dark enough to read small, plus a detail most viewers don't know (an idling truck lit the cloud).",
+      "picked": false
     },
     {
       "file": "thumbnail-c.png",
       "angle": null,
       "layout": "custom",
-      "pattern": "the official finding up front, heavy words over the document",
+      "pattern": "the real place laid out in daylight, the danger moving toward people's workplace, one question",
       "score": 6,
-      "why": "Credible and on-brand, but a page of text is harder to read small than the eruption or the gauges.",
+      "why": "Asks the question the investigation asked (why were the trailers so close) without showing harm; less striking than A at phone size.",
       "picked": false
     }
   ],
   "thumbnailModel": {
-    "pattern": "the liquid geyser erupting from the stack over the refinery, words on the left",
+    "pattern": "one lit picture that tells the moment with one label: the board's calm green screen beside the tower full and spilling",
     "references": [
-      "goSEyGNfiPM",
       "VCcN4SQkb9A",
-      "c9JY3eT4cdM"
+      "c9JY3eT4cdM",
+      "goSEyGNfiPM"
     ]
   }
 }

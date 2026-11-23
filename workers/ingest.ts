@@ -149,12 +149,18 @@ function manifestFile(id: string): string | null {
 /** Videos waiting to be posted that were ingested before their source was recorded get it from
  * their manifest, so the posting plan can say where every one came from; and their thumbnails follow the manifest. */
 async function backfillSources(prisma: PrismaClient, feeds: Map<string, FeedTopic>): Promise<void> {
-  for (const v of await prisma.video.findMany({ where: { status: { in: ["queued", "scheduled", "published"] }, deletedAt: null }, select: { id: true, style: true, status: true } })) {
+  for (const v of await prisma.video.findMany({ where: { status: { in: ["queued", "scheduled", "published"] }, deletedAt: null }, select: { id: true, style: true, status: true, title: true, description: true } })) {
     const style = (v.style ?? {}) as Record<string, unknown>;
     const file = manifestFile(v.id);
     if (!file) continue;
     const m = Manifest.safeParse(readJson(file));
     if (!m.success || m.data.status !== "qa_passed") continue;
+    // a new title or description reaches a video that hasn't gone to YouTube yet (owner, 2026-11-23: the Gauge long
+    // video was retitled in its manifest, and the publisher uploads the title the database holds)
+    if (v.status === "queued" && (m.data.title !== v.title || (m.data.description && m.data.description !== v.description))) {
+      await prisma.video.update({ where: { id: v.id }, data: { title: m.data.title, ...(m.data.description ? { description: m.data.description } : {}) } });
+      console.log(`${v.id}: title and description from its manifest`);
+    }
     // a redone set of thumbnails (and Studio's pick) reaches a video that is still waiting (owner, 2026-11-11)
     const withThumbs = v.status === "published" ? style : syncThumbs(style, m.data.thumbnails) ?? style;
     const src = style.source as { feedId?: string | null; topic?: unknown } | undefined;

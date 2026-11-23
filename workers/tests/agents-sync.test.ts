@@ -167,3 +167,14 @@ test("a trend Short ingest put first keeps its place when the morning ranking do
   const order = [...data.values()].sort((x, y) => x.queuePosition - y.queuePosition).map((v) => v.id);
   assert.deepEqual(order, ["trend", "a", "b", "stale-trend"]);
 });
+
+test("a fix closes a note even when an agent it was handed to never answered (2026-11-23)", async () => {
+  const { ackState } = await import("../lib/agents-sync.ts");
+  const acks = [
+    { id: "f1", action: "handed", to: "studio", note: "Studio's video", agent: "auditor" },
+    { id: "f1", action: "fixed", note: "pace raised", agent: "improver" },
+  ];
+  const s = ackState(acks);
+  assert.equal(s.addressed, true);
+  assert.doesNotMatch(s.response, /waiting/);
+});
