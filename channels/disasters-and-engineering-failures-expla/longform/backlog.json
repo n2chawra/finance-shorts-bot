@@ -9,6 +9,39 @@
       "title": "The from_short gate blocks every long video on this long-first channel",
       "detail": "generator/topics.py winning_short() requires a long topic to name one of our Shorts (100+ views, top third by stayed to watch). Disaster Desk is long-first (recipe.md: each Short promotes a long video), its only Short has 0 views and is about Lac-Mégantic, so no long topic can pass check-plan. The new-channel exemption ended when the first promo Short published (21 Nov).",
       "outcome": "Fixed by the owner's rule of 2026-11-22: generator/topics.py no longer blocks a long topic on from_short or a Short's views (winning_short removed, on every channel); scripts/guard.py refuses a branch that brings it back. state --format long shows every feed topic usable."
+    },
+    {
+      "id": "2026-11-23-stakes-first-long-hook",
+      "kind": "craft",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-23",
+      "status": "open",
+      "title": "Long-video hook: small cause plus its scale in the first 15 s (owner's note of 22 Nov)",
+      "detail": "The owner asked (feedback cmwrnoaza0001jv09ogy086yi) for the Hyatt video's hook to say up front that a small issue killed this many people. The reference shot sheets agree: Fault Lines' Learjet video (11K subs, 1.94M views, 176x its subscribers) states the outcome at 5-17 s ('a minute later it hit a road almost vertically; nine aboard, none lived') and the promise at 17-30 s; Inside Decoded's Short (1.9M) opens on a figure in the first line. The slow openers are the weaker ones: Plainly Difficult's Kolkata flyover (1.1M subs, 628K, 0.57x) names its subject at 64 s; Major Disasters' Spain train (186K) gives the stakes at 49-76 s after a 30 s condolence card. Studio: line 1 names the small cause and the scale (the toll stated plainly, once, with respect, no gore or 'horror' words); by 15 s the promise of the chain; frame 1 stays the 3D moment of failure with its date/place caption. Every feed topic Scout enriched on 23 Nov carries such a hook. How we'll know: first-30-s retention of the next two long videos vs the Hyatt (L-20261121-42) and Texas City (L-20261122-42) curves."
+    },
+    {
+      "id": "2026-11-23-recipe-toll-rule",
+      "kind": "craft",
+      "where": "template",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-23",
+      "status": "open",
+      "title": "prompts/recipe.md 'The first 45 seconds' rule 4 ('without the toll') contradicts the owner's newer note",
+      "detail": "Improver: rewrite rule 4 to 'The whole arc in 45 s, and in the first sentence the small cause and its scale (the toll stated once, plainly)'. The owner's note of 22 Nov is newer and wins (agents/policy.md), and the improver already flagged the conflict on the Notifications page. Studio's check: its hook names cause + scale by 15 s."
+    },
+    {
+      "id": "2026-11-23-name-roles-not-people",
+      "kind": "craft",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open",
+      "title": "In cause-chain videos, name roles (the assistant bosun, the captain), never living individuals",
+      "detail": "Herald, Colgan and Lac-Mégantic all turn on one person's action. The profile's defamation rule is 'the report's words only'; the safe way is roles in narration and real people's words only as on-screen transcript text. Each enriched topic's `verify` says which names to leave out."
     }
   ]
 }

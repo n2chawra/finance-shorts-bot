@@ -1,0 +1,45 @@
+{
+  "agent": "scout",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-23T05:38:12Z",
+  "finishedAt": "2026-11-23T05:43:50Z",
+  "summary": "Disaster Desk long feed: I filled in four topics Studio uses next (Mars Climate Orbiter, Colgan 3407, Lac-Mégantic, Herald of Free Enterprise) with 9 report-sourced facts, a chapter outline and a hook that names the small cause and the toll first, and logged three long-video hook items.",
+  "decision": "acted",
+  "why": "Studio needs 4 long videos a week and the feed had 16 open long topics but no outlines and 2-6 facts each. The owner's 22 Nov hook note is backed by the references: the 176x breakout states the outcome by 17 s and the slow openers did 0.57x.",
+  "findings": [
+    {
+      "title": "Outcome-first hooks win in the references",
+      "detail": "Fault Lines' Learjet (11K subs, 1.94M views) states the toll at 5-17 s; Plainly Difficult's Kolkata (1.1M subs, 628K) names its subject at 64 s.",
+      "link": "https://www.youtube.com/watch?v=dcfldWqanJc"
+    },
+    {
+      "title": "MCO's 57 km estimate is in the board report",
+      "detail": "The research note said not to use it; it is on p. 14 of the NASA MIB Phase I report.",
+      "link": "https://discovery.larc.nasa.gov/PDF_FILES/MCO_report_2.pdf"
+    },
+    {
+      "title": "The Herald's warning was written down in 1985",
+      "detail": "Sheen report para 18.4-18.5: a master asked for bow-door lights on the bridge; the managers dismissed it.",
+      "link": "https://assets.publishing.service.gov.uk/media/54c1704ce5274a15b6000025/FormalInvestigation_HeraldofFreeEnterprise-MSA1894.pdf"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Four long topics enriched",
+      "detail": "Scout entries override the research feed's with the same ids: outline, 9 facts, search, stakes-first hook, verify notes (Lac-Mégantic names its Short v-20261121-42).",
+      "branch": "agent/scout/2026-11-23/disasters-and-engineering-failures-expla"
+    },
+    {
+      "title": "Three backlog items",
+      "detail": "Stakes-first long hook (adopt, script), recipe toll rule (adopt, for the improver), roles not names (adopt, script).",
+      "branch": "agent/scout/2026-11-23/disasters-and-engineering-failures-expla"
+    }
+  ],
+  "nextCheck": "2026-11-26",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/disasters-and-engineering-failures-expla/longform/2026-11-23.md"
+    }
+  ]
+}
