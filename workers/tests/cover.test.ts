@@ -57,3 +57,13 @@ test("the publisher reads covers from the video's own channel folder (Disaster D
   assert.match(dir, /channels\/disasters-and-engineering-failures-expla\/videos\/L-20261121-42$/);
   assert.ok(existsSync(path.join(dir, "thumbnail.png")), "the Hyatt long video's cover is in its folder");
 });
+
+test("a channel that can't set covers yet is asked again every 6 hours, without using up tries (23 Nov)", async () => {
+  const { needsCover, isPermissionRefusal } = await import("../lib/cover.ts");
+  const at = Date.parse("2026-11-23T06:00:00Z");
+  const style = { coverRefusedAt: "2026-11-23T06:00:00Z", coverTries: 3 };
+  assert.equal(needsCover(style, false, at + 3_600_000), false);
+  assert.equal(needsCover(style, false, at + 6 * 3_600_000), true);
+  assert.equal(isPermissionRefusal("The authenticated user doesn't have permissions to upload and set custom video thumbnails."), true);
+  assert.equal(isPermissionRefusal("Media file too large"), false);
+});

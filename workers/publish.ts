@@ -31,7 +31,7 @@ import { loadSettings, type Settings } from "./lib/settings.ts";
 import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { TokenError, UPLOAD_CATEGORY, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
-import { COVERS_PER_RUN, COVER_DAYS, coverFile, needsCover } from "./lib/cover.ts";
+import { COVERS_PER_RUN, COVER_DAYS, coverFile, isPermissionRefusal, needsCover } from "./lib/cover.ts";
 import { channelPack, layout, videoFile } from "./lib/channels.ts";
 import { activeChannels, channelSettings, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { COST, QuotaKeeper } from "./lib/quota.ts";
@@ -72,9 +72,10 @@ async function applyCover(prisma: PrismaClient, run: Run, token: string, videoId
   } catch (e) {
     const why = e instanceof Error ? e.message : String(e);
     console.log(`${videoId}: ${why}`);
-    await mark({ coverTries: tries + 1 });
+    // not verified for custom thumbnails: wait and ask again (lib/cover.ts REFUSED_RETRY_H); anything else uses a try
+    await mark(isPermissionRefusal(why) ? { coverRefusedAt: new Date().toISOString() } : { coverTries: tries + 1 });
     await notify(prisma, { key: run.key("cover-refused"), channelId: run.channelId, source: "publish", severity: "warning", title: "YouTube didn't take our cover",
-      detail: `${videoId} (${youtubeId}) went up with YouTube's own frame as its cover: ${why}`,
+      detail: `${videoId} (${youtubeId}) shows YouTube's own frame as its cover: ${why}${isPermissionRefusal(why) ? ` ${run.label}isn't verified for custom thumbnails yet. The publisher asks again every 6 hours, so every cover of the last 3 weeks goes up within hours of verifying.` : ""}`,
       fix: "If it says the account can't set custom thumbnails: verify the channel (youtube.com/verify, a phone number) and features such as custom thumbnails turn on. Then set this cover by hand in YouTube Studio, or ask Claude to re-apply it." });
     return false;
   }
@@ -87,7 +88,9 @@ async function repairCovers(prisma: PrismaClient, run: Run, token: string): Prom
     where: { youtubeId: { not: null }, publishAt: { gte: since }, state: { in: ["scheduled", "uploaded", "published"] }, video: { deletedAt: null, channelId: run.channelId } },
     orderBy: { publishAt: "desc" }, select: { youtubeId: true, video: { select: { id: true, style: true } } },
   });
-  const todo = ups.filter((u) => needsCover(u.video.style, run.channelId === layout().default)).slice(0, COVERS_PER_RUN);
+  const refused = (s: unknown) => (s && typeof s === "object" && "coverRefusedAt" in s ? 1 : 0);
+  const todo = ups.filter((u) => needsCover(u.video.style, run.channelId === layout().default))
+    .sort((a, b) => refused(a.video.style) - refused(b.video.style)).slice(0, COVERS_PER_RUN);
   for (const u of todo) {
     console.log(`${u.video.id}: no cover of ours on YouTube yet; setting it`);
     await applyCover(prisma, run, token, u.video.id, u.youtubeId!, u.video.style);
