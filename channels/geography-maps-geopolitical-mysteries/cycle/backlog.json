@@ -41,6 +41,15 @@
       "why": "All 5 reference Shorts we have shot sheets for (Chile 10.6M, Roll Down a Hill 2.8M, One Country 2.95M, Louisiana, Caspian 2.1M) open with motion 2 and a push-in or tipping move in the first 3-5 s with no text on screen; our Suez Short (18 Nov) holds a medium shot of Egypt with a small 'SUEZ CANAL' label until the word 'closed' (~4 s). No stayed-to-watch data of ours yet (first Short published 18 Nov), so it waits behind the higher-ranked first-second tests."
     },
     {
+      "id": "geo-pace-185",
+      "kind": "look",
+      "area": "voice",
+      "metric": "heldAfterHook",
+      "from": "research 2026-11-24",
+      "test": "narration at the recipe's stated pace, about 185 words a minute (bm_george's speed lowered for the challenger side so a 60-80 s Short carries about 185-245 words), against the champion as rendered now, 203-226 words a minute",
+      "why": "All five reference Shorts speak slower than our slowest: 150, 174, 185, 189 and 194 wpm (median 185; Louisiana 18.7M, Chile 10.6M, One Country 2.95M, Roll Down a Hill 2.77M, Caspian 2.09M; research/sheets word counts over their length). Our last 8 Shorts: 203-226 wpm, median about 217 (render.json words over duration_sec), about 17% faster, while the recipe itself says about 185. If the challenger loses, the recipe's pace line should be corrected to what the champion actually speaks."
+    },
+    {
       "id": "geo-countdown",
       "kind": "look",
       "test": "a DAY 1...7 counter on screen for what-if stories",
@@ -62,6 +71,15 @@
       "from": "auditor 2026-11-24",
       "test": "the second beat (the first fact line, about 5 to 7 s) opens close on the named place and pulls out as its figure lands on the spoken number, against the champion's medium map shot with the figure label already in frame",
       "why": "Picture tally of 23 Nov: in all 5 Shorts with drop points the steepest fall is the second beat, 15.3 to 23.9 points (average 18.1), and all 5 opened that beat on a medium map shot; map shots carrying a figure lost 15.4 points a drop (7 drops, 5 Shorts) against 9.3 for map shots without one (8 drops)."
+    },
+    {
+      "id": "geo-music-closer",
+      "kind": "look",
+      "area": "sound",
+      "metric": "heldAfterHook",
+      "from": "research 2026-11-24",
+      "test": "the explorer/atlas bed about 20 dB under the voice instead of about 31 dB, ducking unchanged, effects unchanged",
+      "why": "Our last 8 Shorts sit 30.4-31.7 dB music-under-voice (render.json audio), so the bed is close to inaudible on a phone. The two measured references split: Map & Myth's Chile (10.6M) at 16 dB, WorldShift's One Country (2.95M) at 39 dB (style-study/2026-11-18-references.md). Weak evidence, so last among the look tests."
     }
   ],
   "running": null,

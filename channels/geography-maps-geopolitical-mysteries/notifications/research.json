@@ -6,6 +6,13 @@
       "title": "Claude Code 2.1.325: scheduled runs now ask before skills with allowed-tools or hooks",
       "detail": "If a routine that uses a skill (motion-direction, remotion-best-practices) ever stops waiting for approval, this change is why. Nothing has stalled so far.",
       "fix": "1. Only if a routine stalls on a skill: add Skill(<name>) to permissions.allow in .claude/settings.json. 2. Re-run the routine."
+    },
+    {
+      "key": "market-data-stale",
+      "severity": "warning",
+      "title": "The daily market scan is 5 days old and isn't searching geography",
+      "detail": "market-data/market.json was generated 2026-11-19 and searched only finance terms ('how does this company make money', 'billionaire money'…), not this channel's queries in channels/geography-maps-geopolitical-mysteries/market.json; comments.json is empty. Research is running on the 17 Nov niche scan instead, so it misses this week's breakouts.",
+      "fix": "1. Open GitHub → Actions → Market (market.yml) and check whether its last runs failed or stopped. 2. If it failed on quota or a secret, fix that and re-run it. 3. If it runs but searches only the old finance queries, ask the auditor (a note on the dashboard) to make the market worker read each active channel's market.json queries."
     }
   ]
 }

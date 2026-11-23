@@ -1,12 +1,13 @@
 {
   "claudeCode": {
     "latest": "2.1.330",
-    "checked": "2026-11-23",
+    "checked": "2026-11-24",
     "notes": [
       "2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow",
       "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline.",
       "2.1.329: /tasks lists scheduled tasks and wakeups; MCP octet-stream files saved properly; fixes only. Nothing for the pipeline.",
-      "2.1.330: WebFetch no longer freezes or returns empty on some pages (helps research reads); built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline."
+      "2.1.330: WebFetch no longer freezes or returns empty on some pages (helps research reads); built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline.",
+      "2026-11-24: 2.1.330 still the newest; its changelog also says scheduled tasks and /loop now run up to 30 days instead of 7. Nothing to change in the pipeline."
     ]
   },
   "sources": {
@@ -14,7 +15,10 @@
     "worldbank-api": "api.worldbank.org/v2 JSON works from routines (data.worldbank.org pages return 403 to fetch), seen 2026-11-20",
     "britannica": "403 to fetch from routines; use Wikipedia or official pages, seen 2026-11-20",
     "youtube-pages": "youtube.com/shorts pages return only navigation to fetch; identify a reference from the niche scan title, seen 2026-11-21",
-    "mpa-singapore": "mpa.gov.sg media releases carry the yearly port figures (2025: 44.66M TEU), seen 2026-11-23"
+    "mpa-singapore": "mpa.gov.sg media releases carry the yearly port figures (2025: 44.66M TEU), seen 2026-11-23",
+    "nature-com": "article pages redirect to a sign-in to fetch; cite the study through a reputable outlet that names it, seen 2026-11-24",
+    "snopes": "402 Payment Required to fetch, seen 2026-11-24",
+    "canada-eccc": "canada.ca 'Water sources: lakes' fetches fine (563 lakes over 100 km2), seen 2026-11-24"
   },
   "references": [
     "oTTBp0g4eXw",
@@ -37,7 +41,9 @@
     "RQ2aN69cRYc",
     "hb3Itn4o0IQ",
     "TjFt2IyudxU",
-    "7cteyeo8d60"
+    "7cteyeo8d60",
+    "iZS0b9U9UPs",
+    "D0AWufa4iv4"
   ],
   "teardowns": {
     "2026-11-22": [
