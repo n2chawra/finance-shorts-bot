@@ -1,0 +1,53 @@
+{
+  "agent": "studio",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-23T04:06:21Z",
+  "finishedAt": "2026-11-23T08:32:54Z",
+  "summary": "Made Business documentaries' first full long video, L-20261123-31 'Why Everyone Stopped Buying Crocs (and Then Didn't)' (15:07, 8 chapters), told from Crocs' own 10-K filings, and shipped it for the next long slot.",
+  "decision": "acted",
+  "why": "state --format long said video (0 of 2 long videos this week). Scout's feed had 14 usable topics; Crocs (2026-11-19-crocs-comeback-long) was the only priority-high one. The 19 Nov sample on this topic was a 71 s internal sample, never uploaded, so this is the full 15-25 min film the channel asks for (900-1500 s).",
+  "findings": [
+    {
+      "title": "Fact review: failed once, then passed",
+      "detail": "Round one found a wrong claim (Crocs marketed kneepads, not the clog, to garden centres: beat cut), 'sales around $1.2B again' (never that high before), a year that read wrong, 'biggest growth markets' (the 10-K says six Tier 1 markets), 'sold $847.4M of foam clogs' in the description (that is total revenue), and filing quotes that weren't word for word. All fixed; round two passed. 72 sourced facts (Crocs 10-Ks 2005-2025, TIME, Fortune, Harper's Bazaar SG), all added to the long topic feed with their URLs.",
+      "link": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1334036&type=10-K"
+    },
+    {
+      "title": "QA: failed twice, passed on the third look",
+      "detail": "Round one (12 items): charts on bright filing pages, counters caught at zero, colliding labels on the sink graphic, date slams over documents, mismatched filing pages, stamps over figures, too many document walls. Round two (4 one-beat items) fixed; the reviewer passed the final stills. Its notes for the scene code (improver): bar-label collisions in the sink graphic, the caption band hiding a centred figure, soft thumbnail cut-outs."
+    },
+    {
+      "title": "The look",
+      "detail": "Doc engine, 158 beats: Crocs photos and stores from Wikimedia Commons, real 10-K pages with the line highlighted (going concern, inventory build-up, discounting, the trade secret, 2025 revenues), typeset filing extracts word for word, figures as count-ups, bars, donuts and tickers over photos under a dark veil, maps, splits, and a chapter card for each of 8 chapters."
+    },
+    {
+      "title": "Footage could not be fetched",
+      "detail": "Every Wikimedia Commons video download timed out after 8 minutes (11 clips), and Pexels/Pixabay keys are not set, so the film has one stock clip instead of the recipe's 35-45% footage. Raised to the owner."
+    },
+    {
+      "title": "A thumbnail bug fixed in shared code",
+      "detail": "The number check rejected the thumbnail spec's pattern_id ('P1') as a typed number while the channel's thumbnail check requires it, so no doc-channel long video could pass both. Added pattern_id to THUMB_META in renderer/timeline/build.py with a test (renderer/tests/test_timeline.py); it ships with the video commit. Studio doesn't normally change code: the auditor may want to review it."
+    },
+    {
+      "title": "Not applied: the 22 Nov 'first sentence states the stakes' rule",
+      "detail": "agents/studio.md gained this rule on main during the run (after the script, the reviews and the 2-hour render). The film's first line names Crocs and its first figure ($847.4M a year) lands at 5 s, the loss and the going-concern warning by 20 s, but the very first sentence is 'Crocs. The foam clog half the world called ugly.' Re-voicing it would have meant a second full render; the next long video follows the rule from line one."
+    }
+  ],
+  "changes": [
+    {
+      "title": "L-20261123-31 shipped",
+      "detail": "Thumbnails A (picked, 8/10: P1 cracked clog in the crash V, 'Almost dead', -$185M), B (P4, $75 -> $0.8, 'How?') and C (P2, cracked store sign, 'What happened?'); chapters in the description. Shipped to main; the mp4 goes up via media/L-20261123-31. Video commit 4eccfbf on main."
+    },
+    {
+      "title": "Long topic feed: facts added",
+      "detail": "channels/business-documentaries-rise-and-fall-of/longform/topics.json, topic 2026-11-19-crocs-comeback-long: 64 sourced facts added (now 72), each with its URL."
+    }
+  ],
+  "nextCheck": "2026-11-25",
+  "links": [
+    {
+      "label": "Video folder",
+      "url": "channels/business-documentaries-rise-and-fall-of/videos/L-20261123-31/"
+    }
+  ]
+}
