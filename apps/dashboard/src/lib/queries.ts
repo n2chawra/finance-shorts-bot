@@ -18,15 +18,15 @@ import type { FeedbackCreate, ManualUpload, NotificationAction, Settings, VideoA
 
 export const useOverview = () => useQuery({ queryKey: ["overview"], queryFn: () => getJson("/api/overview", OverviewSchema) });
 export const useQueue = () => useQuery({ queryKey: ["queue"], queryFn: () => getJson("/api/queue", z.array(VideoSchema)) });
-/** Every channel's videos to upload by hand (their slot was missed, mostly for quota); refetched every minute. */
-export const useHandUploads = () => useQuery({ queryKey: ["hand-uploads"], queryFn: () => getJson("/api/hand-uploads", z.array(HandUploadSchema)), refetchInterval: 60_000 });
+/** Every channel's videos to upload by hand (their slot was missed, mostly for quota). */
+export const useHandUploads = () => useQuery({ queryKey: ["hand-uploads"], queryFn: () => getJson("/api/hand-uploads", z.array(HandUploadSchema)) });
 export const useTemplates = () => useQuery({ queryKey: ["templates"], queryFn: () => getJson("/api/templates", z.array(TemplateSchema)) });
 export const useImpact = () => useQuery({ queryKey: ["impact"], queryFn: () => getJson("/api/impact", ImpactSchema) });
 export const useRuns = () => useQuery({ queryKey: ["runs"], queryFn: () => getJson("/api/runs", z.array(RunSchema)) });
 export const useAnalytics = () => useQuery({ queryKey: ["analytics"], queryFn: () => getJson("/api/analytics", AnalyticsSchema) });
-/** Studio-grade analytics; refetched every minute so the realtime card ticks. */
+/** Studio-grade analytics (refetched with the rest of the dashboard, every 5 min: Supabase egress). */
 export const useStudio = (range: Range, format: Fmt) => useQuery({ queryKey: ["studio", range, format], queryFn: () => getJson(`/api/analytics/studio?range=${range}&format=${format}`, StudioSchema),
-  staleTime: 60_000, refetchInterval: 60_000, placeholderData: keepPreviousData });
+  placeholderData: keepPreviousData });
 export const useVideoStudio = (id: string) => useQuery({ queryKey: ["video-studio", id], queryFn: () => getJson(`/api/videos/${id}/studio`, VideoStudioSchema) });
 export const useSettings = () => useQuery({ queryKey: ["settings"], queryFn: () => getJson("/api/settings", SettingsSchema) });
 export const useVideo = (id: string) => useQuery({ queryKey: ["video", id], queryFn: () => getJson(`/api/videos/${id}`, VideoDetailSchema) });

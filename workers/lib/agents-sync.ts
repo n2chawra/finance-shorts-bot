@@ -166,6 +166,16 @@ function withUsage(value: unknown, root: string): unknown {
   return { ...(value as object), topics };
 }
 
+/** Only what the dashboard shows of the append-only logs: the merge log was 187 KB per channel and the Agents page
+ * reads it on every visit (Supabase egress, 2026-11-23). The repo files keep everything. */
+const KEEP_LAST: Record<string, [string, number]> = { mergeLog: ["merges", 60], armsLog: ["entries", 30] };
+export function trimDoc(key: string, value: unknown): unknown {
+  const keep = KEEP_LAST[key];
+  if (!keep || !value || typeof value !== "object") return value;
+  const list = (value as Record<string, unknown>)[keep[0]];
+  return Array.isArray(list) && list.length > keep[1] ? { ...(value as object), [keep[0]]: list.slice(-keep[1]) } : value;
+}
+
 export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<void> {
   const lessonsFile = cpath(root, "generator", "prompts", "lessons.md");
   if (existsSync(lessonsFile)) {
@@ -177,7 +187,7 @@ export async function snapshotDocs(prisma: PrismaClient, root: string): Promise<
     if (!existsSync(file)) continue;
     try {
       const raw = readJson(file);
-      const value = (key === "topicFeed" ? withUsage(raw, root) : raw) as Prisma.InputJsonValue;
+      const value = trimDoc(key, key === "topicFeed" ? withUsage(raw, root) : raw) as Prisma.InputJsonValue;
       await prisma.repoDoc.upsert({ where: { key }, update: { value }, create: { key, value }, select: { key: true } });
     } catch (e) {
       console.error(`::warning::${rel}: ${e instanceof Error ? e.message : e}`);
@@ -213,9 +223,14 @@ export async function applyTemplateDecisions(prisma: PrismaClient, root: string)
 type Style = { palette?: string; genre?: string; bpm?: number; voice?: string | null; experiments?: Record<string, string>;
   thumbs?: { file: string; angle: string | null; layout?: string | null }[]; thumbTest?: { winner: string; at: string } };
 
-/** metrics/videos.json + metrics/runs.json. Returns true when either file changed. */
-export async function exportMetrics(prisma: PrismaClient, root: string, now = new Date()): Promise<boolean> {
-  const published = await prisma.video.findMany({
+/**
+ * metrics/videos.json, analytics.json, runs.json, decisions.json and feedback.json. Returns true when a file changed.
+ * `full: false` leaves videos.json and analytics.json as they are: they read every published video with its daily
+ * stats, curves and comments, and only change when stats.yml brings new numbers (which runs ingest itself). Ingest
+ * runs ~50 times a day on pushes; doing them every time was most of its Supabase egress (2026-11-23).
+ */
+export async function exportMetrics(prisma: PrismaClient, root: string, now = new Date(), full = true): Promise<boolean> {
+  const published = !full ? [] : await prisma.video.findMany({
     where: { status: "published", deletedAt: null, upload: { isNot: null } },
     include: { topic: true, upload: { include: { stats: true } } },
     omit: { script: true }, // every ingest run; the script is never read here (Supabase egress)
@@ -223,7 +238,7 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
   });
   // views 48 hours after publishing from the hourly public-counter snapshots: no Analytics lag, so the
   // variant system (improvement/arms.py) can judge a Short two days after it went out
-  const snaps = await prisma.liveSnapshot.findMany({ where: { uploadId: { in: published.map((v) => v.upload!.id) } }, select: { uploadId: true, hour: true, views: true } })
+  const snaps = !full ? [] : await prisma.liveSnapshot.findMany({ where: { uploadId: { in: published.map((v) => v.upload!.id) } }, select: { uploadId: true, hour: true, views: true } })
     .catch((e: unknown) => { console.log(`::warning::live snapshots unreadable, views48hLive left empty: ${e instanceof Error ? e.message : e}`); return []; });
   const videos = published.map((v) => {
     const u = v.upload!;
@@ -278,7 +293,7 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
     const next = JSON.stringify(body, null, 2) + "\n";
     if (!existsSync(file) || readFileSync(file, "utf8").replace(/\r\n/g, "\n") !== next) { writeFileSync(file, next); changed = true; }
   };
-  write("videos.json", { note: "Published videos with YouTube numbers. Written by the ingest workflow; read by improvement.evaluate.", videos });
+  if (full) write("videos.json", { note: "Published videos with YouTube numbers. Written by the ingest workflow; read by improvement.evaluate.", videos });
   write("runs.json", { note: "Every video attempted in the last 60 days. Written by the ingest workflow.", days, videos: runs });
   // the owner's answers to agents' proposed setting changes, so the monthly review learns from them
   const decided = await prisma.notification.findMany({ where: { decidedAt: { not: null } }, orderBy: { decidedAt: "asc" },
@@ -286,9 +301,9 @@ export async function exportMetrics(prisma: PrismaClient, root: string, now = ne
   write("decisions.json", { note: "Agent proposals the owner approved or declined on the dashboard. Written by the ingest workflow.",
     decisions: decided.map((d) => ({ key: d.dedupeKey, source: d.source, title: d.title, proposal: d.proposal, decision: d.decision, decidedAt: d.decidedAt!.toISOString() })) });
   // the owner's feedback (2026-10-30): read by the video routine (state) and the agents every night
-  write("feedback.json", await feedbackExport(prisma, now));
+  write("feedback.json", await feedbackExport(prisma, now, root));
   // Studio-grade numbers for the auditor's AI analysis (2026-11-03)
-  write("analytics.json", await analyticsExport(prisma, now));
+  if (full) write("analytics.json", await analyticsExport(prisma, now));
   return changed;
 }
 
@@ -329,6 +344,7 @@ export async function analyticsExport(prisma: PrismaClient, now = new Date()) {
   const published = await prisma.video.findMany({
     where: { status: "published", deletedAt: null, upload: { youtubeId: { not: null } } },
     include: { upload: { include: { stats: true, comments: { orderBy: { likes: "desc" }, take: 20 } } } },
+    omit: { script: true }, // never read here (Supabase egress)
     orderBy: { createdAt: "asc" },
   });
   const breakdowns = await prisma.breakdown.findMany({ where: { OR: [{ scope: { startsWith: "video:" } }, { scope: { in: ["channel:all:28", "channel:short:28", "channel:long:28", "channel:all:90"] } }] } });
@@ -365,13 +381,20 @@ export async function analyticsExport(prisma: PrismaClient, now = new Date()) {
 }
 
 /** metrics/feedback.json: every note of the last 90 days with the video it is about, the open ones first. */
-export async function feedbackExport(prisma: PrismaClient, now = new Date()) {
+export async function feedbackExport(prisma: PrismaClient, now = new Date(), root?: string) {
   const since = new Date(now.getTime() - 90 * DAY_MS);
+  // the script is read from the repo's videos/<id>/script.json: 13 KB a video from the database on every ingest run
+  // was a large share of Supabase egress (2026-11-23)
   const rows = await prisma.feedback.findMany({ where: { createdAt: { gte: since } }, orderBy: { createdAt: "desc" },
-    include: { video: { select: { id: true, title: true, format: true, hookStyle: true, status: true, script: true } } } });
+    include: { video: { select: { id: true, title: true, format: true, hookStyle: true, status: true } } } });
+  const scriptOf = (id: string): unknown => {
+    if (!root) return {};
+    const file = cpath(root, "videos", id, "script.json");
+    try { return existsSync(file) ? readJson(file) : {}; } catch { return {}; }
+  };
   const about = (v: (typeof rows)[number]["video"]) => {
     if (!v) return null;
-    const sc = (v.script ?? {}) as { story?: string; shape?: unknown; beats?: { say?: string }[] };
+    const sc = (scriptOf(v.id) ?? {}) as { story?: string; shape?: unknown; beats?: { say?: string }[] };
     const shape = typeof sc.shape === "string" ? sc.shape : (sc.shape as { id?: string } | undefined)?.id ?? null;
     return { id: v.id, title: v.title, format: v.format, status: v.status, story: sc.story ?? null, shape, hookStyle: v.hookStyle, hook: sc.beats?.[0]?.say ?? null };
   };
@@ -407,7 +430,7 @@ export async function importEditorRanking(prisma: PrismaClient, root: string, no
   await prisma.$transaction(ranked.map((q) => {
     const r = byId.get(q.id)!;
     return prisma.video.update({ where: { id: q.id }, data: { editorRank: r.rank, editorScore: r.score,
-      editorNote: { why: r.why, strengths: r.strengths, risks: r.risks, rankedAt } as Prisma.InputJsonValue } });
+      editorNote: { why: r.why, strengths: r.strengths, risks: r.risks, rankedAt } as Prisma.InputJsonValue }, select: { id: true } });
   }));
   // per format: the owner's own order first, then urgent (trend) videos, then the editor's ranking, then the unranked by age
   const today = istDay(now);
@@ -420,7 +443,7 @@ export async function importEditorRanking(prisma: PrismaClient, root: string, no
       (byId.get(a.id)?.rank ?? 1e6) - (byId.get(b.id)?.rank ?? 1e6) || (a.queuePosition ?? 1e6) - (b.queuePosition ?? 1e6));
     updates.push(...[...locked, ...free].map((q, i) => ({ id: q.id, queuePosition: i + 1 })));
   }
-  await prisma.$transaction(updates.map((u) => prisma.video.update({ where: { id: u.id }, data: { queuePosition: u.queuePosition } })));
+  await prisma.$transaction(updates.map((u) => prisma.video.update({ where: { id: u.id }, data: { queuePosition: u.queuePosition }, select: { id: true } })));
   return ranked.map((q) => q.id);
 }
 

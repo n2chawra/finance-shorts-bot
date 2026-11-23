@@ -37,7 +37,9 @@ const istDay = (d: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/K
 const addDays = (day: string, n: number) => new Date(Date.parse(`${day}T00:00:00Z`) + n * DAY_MS).toISOString().slice(0, 10);
 const dayKey = (d: Date) => d.toISOString().slice(0, 10); // VideoStat.day is a DATE (UTC midnight)
 
-const withRelations = { topic: true, upload: { include: { stats: true } } } satisfies Prisma.VideoInclude;
+// the retention curves (~2.5 KB a video) are read only by the analytics pages' own queries: every list and poll
+// left them out to keep Supabase egress inside the free plan (2026-11-23)
+const withRelations = { topic: true, upload: { omit: { retention: true, relRetention: true, drops: true }, include: { stats: true } } } satisfies Prisma.VideoInclude;
 type VideoRow = Omit<Prisma.VideoGetPayload<{ include: typeof withRelations }>, "script"> & { script?: Prisma.JsonValue }; // script only on the video page (lib/prisma.ts)
 
 /** The Shorts and long-video research feeds, by topic id (for each video's origin). */
@@ -136,7 +138,9 @@ export async function listVideos(f: { status?: string; template?: string; catego
     include: withRelations, orderBy: { createdAt: "desc" }, take: 300,
   });
   const when = (v: VideoRow) => (v.upload?.publishAt ?? v.createdAt).getTime();
-  const feeds = await loadFeeds();
+  // each video's origin from the topic ingest stored on it (style.source.topic), not the live feeds: those are
+  // ~300 KB and were re-read on every poll of this list (Supabase egress, 2026-11-23); the video page still reads them
+  const feeds = new Map<string, Record<string, unknown>>();
   return rows.sort((a, b) => when(b) - when(a)).map((v) => toVideo(v, feeds));
 }
 
