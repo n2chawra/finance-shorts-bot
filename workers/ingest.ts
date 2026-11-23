@@ -166,7 +166,7 @@ async function backfillSources(prisma: PrismaClient, feeds: Map<string, FeedTopi
     const src = style.source as { feedId?: string | null; topic?: unknown } | undefined;
     const snap = src?.feedId && !src.topic ? sourceWithTopic(m.data, feeds).topic ?? null : null;   // backfill the feed topic while it is still in the feed
     if (style.source && withThumbs === style && !snap) continue;
-    await prisma.video.update({ where: { id: v.id }, data: { style: { ...withThumbs, source: style.source ? { ...(style.source as object), ...(snap ? { topic: snap } : {}) } : sourceWithTopic(m.data, feeds) } as Prisma.InputJsonValue } });
+    await prisma.video.update({ where: { id: v.id }, data: { style: { ...withThumbs, source: style.source ? { ...(style.source as object), ...(snap ? { topic: snap } : {}) } : sourceWithTopic(m.data, feeds) } as Prisma.InputJsonValue }, select: { id: true } });
   }
 }
 
@@ -182,6 +182,23 @@ async function syncTemplateWork(prisma: PrismaClient): Promise<void> {
         log: [`${w.action} ${w.template}${w.enabled ? "" : " (not enabled: test videos did not pass)"}`],
       },
     });
+  }
+}
+
+/**
+ * Whether this run re-exports the YouTube numbers (metrics/videos.json, analytics.json): on the schedule, by hand,
+ * and after Stats (which brings new numbers), not on the ~45 pushes a day that only add videos or agent files.
+ * Outside Actions (no GITHUB_EVENT_NAME) always. Supabase egress, 2026-11-23.
+ */
+export function exportsNumbers(env: NodeJS.ProcessEnv = process.env): boolean {
+  const event = env.GITHUB_EVENT_NAME;
+  if (!event || event === "schedule" || event === "workflow_dispatch") return true;
+  if (event !== "workflow_run") return false;
+  try {
+    const payload = JSON.parse(readFileSync(env.GITHUB_EVENT_PATH ?? "", "utf8")) as { workflow_run?: { name?: string } };
+    return payload.workflow_run?.name !== "Release video";
+  } catch {
+    return true;
   }
 }
 
@@ -283,6 +300,7 @@ async function main(): Promise<void> {
     // the agents' notifications and docs in, the editor's ranking and the answers to the owner's notes in,
     // and the metrics the weekly loop judges by out. Channel #1's rows and files are exactly as before.
     let ranked: string[] = [], acks = 0, metricsChanged = false;
+    const numbers = exportsNumbers();
     const before = process.env.CHANNEL;
     for (const ch of await prisma.channel.findMany({ orderBy: { createdAt: "asc" } })) {
       if (!existsSync(path.join(ROOT, "channels", ch.id)) && ch.id !== layout().default) continue;
@@ -292,7 +310,7 @@ async function main(): Promise<void> {
       await snapshotDocs(p, ROOT);
       ranked = [...ranked, ...(await importEditorRanking(p, ROOT))];
       acks += await importFeedbackAcks(p, ROOT);
-      metricsChanged = (await exportMetrics(p, ROOT)) || metricsChanged;
+      metricsChanged = (await exportMetrics(p, ROOT, new Date(), numbers)) || metricsChanged;
     }
     if (before === undefined) delete process.env.CHANNEL; else process.env.CHANNEL = before;
     // each live channel's health: buffer, stayed to watch, the stop rule, usage, the Monday digest (lib/health-sync.ts)
@@ -307,7 +325,7 @@ async function main(): Promise<void> {
     const chNext = JSON.stringify(await buildChannelsFile(prisma), null, 2) + "\n";
     if (!existsSync(chFile) || readFileSync(chFile, "utf8").replace(/\r\n/g, "\n") !== chNext) writeFileSync(chFile, chNext);
 
-    console.log(JSON.stringify({ ...result, settingsChanged, metricsChanged, activity, templateDecisions, ranked: ranked.length, feedbackAnswered: acks, videosInDatabase: await prisma.video.count() }, null, 2));
+    console.log(JSON.stringify({ ...result, settingsChanged, metricsChanged, numbersExported: numbers, activity, templateDecisions, ranked: ranked.length, feedbackAnswered: acks, videosInDatabase: await prisma.video.count() }, null, 2));
     if (result.invalid.length) process.exitCode = 1;
   } finally {
     await prisma.$disconnect();

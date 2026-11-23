@@ -9,12 +9,16 @@ import { useState } from "react";
 import { CommandMenu } from "./command";
 import { ToastProvider } from "./toast";
 
-/** Live dashboard: every query on screen re-fetches this often while the tab is visible. */
-export const LIVE_MS = 30_000;
+/**
+ * Every query on screen re-fetches this often while the tab is visible. Was 30 s: an open dashboard then
+ * re-read the same pages ~120 times an hour and alone used ~300 MB of Supabase egress a day (free plan:
+ * 5 GB a month; 2026-11-23). The data behind it changes every 20 min (publish) to 3 h (stats) anyway.
+ */
+export const LIVE_MS = 5 * 60_000;
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [client] = useState(() => new QueryClient({
-    defaultOptions: { queries: { staleTime: 10_000, retry: 1, refetchInterval: LIVE_MS, refetchIntervalInBackground: false, refetchOnWindowFocus: true } },
+    defaultOptions: { queries: { staleTime: 60_000, retry: 1, refetchInterval: LIVE_MS, refetchIntervalInBackground: false, refetchOnWindowFocus: true } },
   }));
   return (
     <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
