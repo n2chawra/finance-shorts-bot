@@ -1,0 +1,48 @@
+{
+  "agent": "studio",
+  "day": "2026-11-23",
+  "startedAt": "2026-11-22T05:10:00Z",
+  "finishedAt": "2026-11-23T05:38:59Z",
+  "summary": "Shipped L-20261122-42, 'The Gauge Said Normal. The Tower Was Nearly Full.' (BP Texas City refinery explosion, 2005; 8:03, 77 directed beats, CSB report). The owner switched the run off Hyatt (another run was making it) and chose to ship it as rendered after the 22 Nov pace and people notes landed.",
+  "decision": "acted",
+  "why": "Gate removed on main (522702a) so the run restarted; Hyatt left to the other routine; Texas City chosen for an official report we could download (CSB final report, 31 facts) and 2.26M-view demand. Fact review passed (round 2). QA failed twice and passed on a third round, one past the two-round limit, with the owner present. Full render 483 s, liveliness 3.18, audio -1.0/-18.6 dB.",
+  "findings": [
+    {
+      "title": "Shipped before the owner's 22 Nov pace and people notes",
+      "detail": "Rendered at long voice speed 0.92; the improver's OWNER_PACE (1.15) and director rule 12 (people in toll beats) landed while it rendered. Owner chose option A: ship as rendered."
+    },
+    {
+      "title": "Repeats the Hyatt video's palette (night) and music bed (undertow)",
+      "detail": "The Hyatt long video L-20261121-42 shipped while this one rendered; changing them would have meant a 7-hour re-render. Story differs (maritime_industrial vs corner_cut_structure)."
+    },
+    {
+      "title": "Cloud container reclaimed when the session is idle",
+      "detail": "The 7-hour 3D render was killed twice (11:45 and 14:51 UTC) when no session task was running; finished chunks survived. A long Disaster Desk render needs a session task alive the whole time."
+    },
+    {
+      "title": "Directed long videos get no YouTube chapters from the renderer",
+      "detail": "renderer/remotion.py builds render.json chapters only from scene 'chapter' beats; this video's chapters were written into the description by hand from params.chapter."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Video L-20261122-42 on main",
+      "detail": "manifest, script, code remotion/src/videos/L-20261122-42, media branch media/L-20261122-42"
+    },
+    {
+      "title": "Texas City long topic",
+      "detail": "channels/disasters-and-engineering-failures-expla/longform/topics.json, 31 CSB facts"
+    },
+    {
+      "title": "maritime_industrial reference video",
+      "detail": "research/formats.json: CSB 'Updated BP Texas City Animation' (2,263,886 views) added as the format's example (research's file; flagged for the research agent)"
+    }
+  ],
+  "nextCheck": "2026-11-24",
+  "links": [
+    {
+      "label": "Video",
+      "url": "channels/disasters-and-engineering-failures-expla/videos/L-20261122-42/manifest.json"
+    }
+  ]
+}
