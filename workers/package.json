@@ -25,6 +25,7 @@
     "routines": "tsx routines.ts"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "6.19.3",
     "@prisma/client": "6.19.3",
     "zod": "^4.6.7"
   },
