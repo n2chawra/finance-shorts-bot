@@ -26,3 +26,19 @@ Fix: a Short shows each picture once (only the loop's last picture may repeat th
 beyond photos (document or headline always, then depth, montage, polaroids, listing, sink, split, timeline,
 map, products…); an overlay on every other beat (arrow, stamp, date, label, lowerThird; never a red ring, owner 20 Nov); leave `enter`
 out so every layer arrives with a whip, zoom, focus, drop or glitch. Code: `doc_video_problems`.
+
+## 6. Narration is never slow (general)
+Seen in: the owner's notes on How Tech Works (Shorts), Disaster Desk (long) and Rise & Fall: "increase the pace".
+Fix: no channel's narrator speaks under about 164 words a minute in a Short or 189 in a long video (generator/pack.py MIN_SPEED enforces it).
+
+## 7. Show what happens, not only the count (general)
+Seen in: Disaster Desk's Hyatt long video, 22 Nov: "only showing death counts is not enough. Make that scenes."
+Fix: when a line says what happened to people or things, the beat shows it happening in the place (the crowd under the walkway, the cars on the bridge), never gory (director.md).
+
+## 8. A named place, company or person shows its real mark (general)
+Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); Paisa Panchayat's Squid Game and Apple/Google notes.
+Fix: a country on the map shows its flag (the code check fails a map video whose named country never gets one), a company its logo, a person their photo head.
+
+## 9. A long video's first sentence states the stakes (general)
+Seen in: Disaster Desk's Hyatt long video, 22 Nov: the hook was "good only for people who want to see the full video".
+Fix: the first sentence says the small cause and how big it got, in plain words (agents/studio.md); the title stays free of it.

@@ -105,3 +105,23 @@ Seen in: "Your $20,000 savings" ended on $20,815 in a savings account against $2
 a compound-interest lesson most viewers already know. Its viewers who stayed rewatched it (end hold
 145%), but 73% had swiped at the start and nobody shared it.
 Fix: end on the story's most surprising true figure, the one worth sending to a friend.
+
+## 11. Narration is never slow (general)
+Seen in: the owner's notes on How Tech Works (Shorts), Disaster Desk (long) and Rise & Fall: "increase the pace".
+Fix: no channel's narrator speaks under about 164 words a minute in a Short or 189 in a long video (generator/pack.py MIN_SPEED enforces it).
+
+## 12. Show what happens, not only the count (general)
+Seen in: Disaster Desk's Hyatt long video, 22 Nov: "only showing death counts is not enough. Make that scenes."
+Fix: when a line says what happened to people or things, the beat shows it happening in the place (the crowd under the walkway, the cars on the bridge), never gory (director.md).
+
+## 13. Every picture once (general)
+Seen in: Rise & Fall, 20 Nov: "the same 3 sneaker photos reused and almost no effects" (two Shorts marked stale).
+Fix: a photo or picture is in one beat of a Short (the loop beat may repeat the first), two of a long video at most; the code check fails a repeat (renderer/remotion.py picture_once_problems).
+
+## 14. A named place, company or person shows its real mark (general)
+Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); Paisa Panchayat's Squid Game and Apple/Google notes.
+Fix: a country on the map shows its flag (the code check fails a map video whose named country never gets one), a company its logo, a person their photo head.
+
+## 15. A long video's first sentence states the stakes (general)
+Seen in: Disaster Desk's Hyatt long video, 22 Nov: the hook was "good only for people who want to see the full video".
+Fix: the first sentence says the small cause and how big it got, in plain words (agents/studio.md); the title stays free of it.

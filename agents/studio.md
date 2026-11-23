@@ -103,6 +103,10 @@ the viewer *see* happen?
   owner found it too fast, 2026-11-04). Aim for the setting `longLengthMinSec`–`longLengthMaxSec`
   (180–240 s: **540–720 words across 36–50 beats**) (a beat is one line and one picture,
   3–8 s). Add a beat that *does* something, never stretch one.
+- **The first sentence states the stakes** (owner, 2026-11-22, on every channel): what is at stake in plain
+  words, the small cause and how big it got (a toll, a sum, a scale), so someone who isn't already a fan wants
+  the rest ("One changed rod on a hotel walkway killed 114 people."). Never a slow scene-setter first; keep the
+  title free of it. The channel's recipe says how strongly (no horror on Disaster Desk).
 - **Shape (the format's list).** A 30-second hook that promises every item and teases the worst one.
   Then one `chapter` per item (6–9), each a mini story with the cast, one or two computed figures
   and a cliffhanger into the next; a recap-and-tease every 2–3 minutes; the strongest item last.

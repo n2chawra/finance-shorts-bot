@@ -85,6 +85,14 @@ def logo(slug: str | None = None, root: Path = ROOT) -> str | None:
     return rel
 
 
+# The slowest a channel's own narrator may speak (owner, 2026-11-23: "if some feedback looks good for all channels,
+# change for all"). Three channels' owner notes asked for a faster pace (How Tech Works Shorts 0.92 -> 1.0, Disaster
+# Desk long 0.92 -> 1.15, Rise & Fall to 1.5x its references), and none asked for slower except Paisa Panchayat's
+# 215-word long videos (tempo 1.5, 4 Nov). So no channel's narrator goes under about 164 words a minute in a Short
+# or 189 in a long video; a faster channel.json value is kept.
+MIN_SPEED = {"short": 1.0, "long": 1.15}
+
+
 # The owner's pace notes, applied at once (owner, 2026-11-19: "the feedback I have goes straight away, don't add it
 # as a test"). channel.json is the owner's file, so a note lands here; it wins only when it is faster than
 # channel.json, so the owner raising voiceSpeed there later takes over by itself.
@@ -105,7 +113,9 @@ def voice_speed(fmt: str, slug: str | None = None, root: Path = ROOT) -> float |
     own = float(v) if isinstance(v, (int, float)) else None
     note = OWNER_PACE.get(slug or current(), {}).get(fmt)
     if own is not None and note is not None and note > own:
-        return note
+        own = note
+    if own is not None and fmt in MIN_SPEED:
+        own = max(own, MIN_SPEED[fmt])
     return own
 
 
@@ -262,6 +272,26 @@ Fix: every picture shows the thing being said.
 
 ## 4. The payoff is the most surprising fact (general)
 Fix: hold the most surprising figure or fact for the payoff, and make the last line loop into the first.
+
+## 5. Narration is never slow (general)
+Seen in: the owner's notes on How Tech Works (Shorts), Disaster Desk (long) and Rise & Fall: "increase the pace".
+Fix: no channel's narrator speaks under about 164 words a minute in a Short or 189 in a long video (generator/pack.py MIN_SPEED enforces it).
+
+## 6. Show what happens, not only the count (general)
+Seen in: Disaster Desk's Hyatt long video, 22 Nov: "only showing death counts is not enough. Make that scenes."
+Fix: when a line says what happened to people or things, the beat shows it happening in the place (the crowd under the walkway, the cars on the bridge), never gory (director.md).
+
+## 7. Every picture once (general)
+Seen in: Rise & Fall, 20 Nov: "the same 3 sneaker photos reused and almost no effects" (two Shorts marked stale).
+Fix: a photo or picture is in one beat of a Short (the loop beat may repeat the first), two of a long video at most; the code check fails a repeat (renderer/remotion.py picture_once_problems).
+
+## 8. A named place, company or person shows its real mark (general)
+Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); Paisa Panchayat's Squid Game and Apple/Google notes.
+Fix: a country on the map shows its flag (the code check fails a map video whose named country never gets one), a company its logo, a person their photo head.
+
+## 9. A long video's first sentence states the stakes (general)
+Seen in: Disaster Desk's Hyatt long video, 22 Nov: the hook was "good only for people who want to see the full video".
+Fix: the first sentence says the small cause and how big it got, in plain words (agents/studio.md); the title stays free of it.
 """
 
 

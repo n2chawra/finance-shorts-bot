@@ -373,8 +373,8 @@ def test_owner_pace_note_speeds_up_a_channels_own_short_voice(monkeypatch):
     monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 0.92, "long": 0.97}})
     tech = "how-tech-and-ai-actually-work-chips-ai-p"
     assert pack.voice_speed("short", tech) == 1.0
-    assert pack.voice_speed("long", tech) == 0.97          # Shorts only
-    assert pack.voice_speed("short", "geography-maps-geopolitical-mysteries") == 0.92
+    assert pack.voice_speed("long", tech) == pack.MIN_SPEED["long"]   # 0.97 is under the floor for every channel (2026-11-23)
+    assert pack.voice_speed("short", "geography-maps-geopolitical-mysteries") == pack.MIN_SPEED["short"]   # no note, but the floor
     monkeypatch.setattr(pack, "load", lambda slug=None, root=None: {"voiceSpeed": {"short": 1.1}})
     assert pack.voice_speed("short", tech) == 1.1          # the owner's own faster setting wins
 
