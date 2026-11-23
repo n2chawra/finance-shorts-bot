@@ -1,0 +1,46 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-23T16:33:19Z",
+  "finishedAt": "2026-11-23T16:40:22Z",
+  "summary": "Fixed the place-uniqueness gate so documentary videos (Craze & Crash) are checked against recent videos, wrote 5 video verdicts and the first picture tallies, and re-raised the owner items lost with the deleted Paisa Panchayat folder. The data audit hadn't landed yet tonight, so the dashboard-vs-YouTube check was skipped.",
+  "decision": "acted",
+  "why": "renderer/craft.py compared only `directed` beats' places, and every Craze & Crash beat is `doc`, so its videos skipped a uniqueness check; fixed with a test that fails on the old code. No shipped video trips the fixed check.",
+  "findings": [
+    {
+      "title": "Data audit 24 h old at 16:33 UTC (late, not failed)",
+      "detail": "GitHub starts the 08:23 UTC cron between 16:13 and 17:27 UTC; runs 38-41 all succeeded. Owner notification data-audit-late."
+    },
+    {
+      "title": "Why Atlas: every Short's steepest fall is the second beat",
+      "detail": "15.3-23.9 points (average 18.1) in all 5 Shorts with drop points, each opened on a medium map shot. Look challenger geo-second-beat-close queued."
+    },
+    {
+      "title": "Tech: first transistor Short is the channel's best",
+      "detail": "287 views at 48 h (median 118), 25.6% held after the hook (median 13.1%); 24.5-point fall at 6.2 s where the hook's question is asked again."
+    },
+    {
+      "title": "Owner notifications were lost with Paisa Panchayat's folder",
+      "detail": "renderer network, settings all-or-nothing and watchdog cadence re-raised on The Why Atlas; the publish cover path was fixed on main and is closed."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Documentary videos can't reuse a recent video's places",
+      "detail": "renderer/craft.py prop_problems reads `doc` beats' places as well as `directed` ones (ren-008).",
+      "branch": "agent/auditor/2026-11-24"
+    },
+    {
+      "title": "Picture tallies and 5 video verdicts",
+      "detail": "analysis/pictures.json for all four channels; analysis/videos.json for Why Atlas, tech and business.",
+      "branch": "agent/auditor/2026-11-24"
+    }
+  ],
+  "nextCheck": "2026-11-25",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-24.md"
+    }
+  ]
+}

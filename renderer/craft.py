@@ -156,6 +156,9 @@ def reference_scripts(skip: str = "") -> list[tuple[str, dict]]:
     return out
 
 
+PLACED = ("directed", "doc")   # the beats whose params.place says where the line happens
+
+
 def places(b: dict) -> list[str]:
     """Where a directed beat happens (params.place: one place, or a list when it cuts between places)."""
     p = (b.get("params") or {}).get("place")
@@ -323,9 +326,10 @@ def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
     # front of one skyline)
     # Every video must be unique (CLAUDE.md): this one fails, it is not a note. An approved reference
     # (REFERENCES) teaches how to direct; its places are never copied either.
-    here = {x for b in tl["beats"] if b["scene"] == "directed" for x in places(b)}
+    # (a documentary's `doc` beats name their places the same way: look.engine "doc", auditor 2026-11-24)
+    here = {x for b in tl["beats"] if b["scene"] in PLACED for x in places(b)}
     for vid, other in [*earlier[-PLACE_WINDOW:], *reference_scripts(skip=str(tl.get("id") or ""))]:
-        theirs = {x for b in other.get("beats") or [] if b.get("scene") == "directed" for x in places(b)}
+        theirs = {x for b in other.get("beats") or [] if b.get("scene") in PLACED for x in places(b)}
         if len(here) >= 3 and theirs and len(here & theirs) / len(here) > PLACE_OVERLAP_MAX:
             out.append(f"{len(here & theirs)} of its {len(here)} places were in {vid} too ({', '.join(sorted(here & theirs))}): "
                        f"every video gets its own places; put each line where it happens in this story")

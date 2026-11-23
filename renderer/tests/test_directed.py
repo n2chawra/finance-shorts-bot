@@ -166,3 +166,16 @@ def test_directed_cues_follow_the_moments_and_the_channel_sounds():
     # published videos re-render as they were
     assert not auto_directed(Path("videos/v-20261120-05")) and auto_directed(Path("videos/v-20261122-01"))
     assert auto_directed(Path("/tmp/anything"))
+
+
+def test_a_documentary_videos_places_are_not_the_last_videos_places_again() -> None:
+    """The documentary kit's beats are `doc`, not `directed` (look.engine "doc"); their places count the same
+    (auditor 2026-11-24: Craze & Crash videos were never checked against the last videos' places)."""
+    def doc(places: list[str]) -> dict:
+        beats = [directed(i, "close", p, i * 4) for i, p in enumerate(places)]
+        return tl_of([{**b, "scene": "doc"} for b in beats])
+    mine = doc(["a toyota badge on a grille", "toyota's head office", "a mercedes s-class", "a dealer forecourt"])
+    theirs = doc(["a toyota badge on a grille", "toyota's head office", "a mercedes s-class", "a test track"])
+    assert any("places were in" in p for p in craft.prop_problems(mine, [("v-old", theirs)]))
+    fresh = doc(["a krispy kreme shop", "a delivery truck", "a neon sign in atlanta", "a sec filing"])
+    assert not any("places were in" in p for p in craft.prop_problems(fresh, [("v-old", theirs)]))

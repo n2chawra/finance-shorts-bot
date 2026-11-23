@@ -1,3 +1,32 @@
 {
-  "notifications": []
+  "notifications": [
+    {
+      "key": "data-audit-late",
+      "severity": "info",
+      "title": "The daily data audit lands after the auditor starts, so tonight's numbers went unchecked",
+      "detail": "data-audit.yml is scheduled at 08:23 UTC (13:53 IST), but GitHub has started it between 16:13 and 17:27 UTC (21:43 to 22:57 IST) on each of the last four days. The workflow itself succeeds every time (runs 38 to 41). Tonight's auditor started at 16:33 UTC (22:03 IST), when the newest audit was 24 hours old (22 Nov 16:27 UTC), so the dashboard-vs-YouTube check was skipped. Last night it landed six minutes before the auditor and was checked.",
+      "fix": "Optional. 1. In .github/workflows/data-audit.yml move the cron earlier, e.g. \"23 2 * * *\" (07:53 IST), so even an 8-hour delay lands before the 22:00 to 23:00 IST auditor run; or 2. start the auditor routine later (after 23:30 IST). Workflows and routine times are owner-only."
+    },
+    {
+      "key": "renderer-network",
+      "severity": "warning",
+      "title": "renderer/thumbs.py downloads from YouTube, against the no-network rule",
+      "detail": "search_refs scrapes YouTube's search page and fetch_thumb downloads thumbnails from i.ytimg.com, both inside renderer/. CLAUDE.md says the renderer never uses the network, and the guard blocks any agent branch that adds such a line there. The code reached main directly, so the guard never checked it. (Moved here from Paisa Panchayat's notifications when that channel was deleted on 23 Nov; still open.)",
+      "fix": "Choose one: 1. Move search_refs, fetch_thumb and refs_sheet into generator/thumb_refs.py (routine-side, where research tools belong) and import them from there; or 2. if the renderer should keep them, say so in CLAUDE.md, so agents know the exception."
+    },
+    {
+      "key": "settings-all-or-nothing",
+      "severity": "warning",
+      "title": "One bad setting row resets every setting to its default",
+      "detail": "workers/lib/settings.ts validates the merged settings as one object and falls back to the defaults for everything when any row fails (its comment says bad rows are ignored). A row edited by hand in Supabase with a wrong type would quietly switch the uploads pause off and restore the default upload times and daily target in every worker; the dashboard's getSettings does the same. The file is protected, so the auditor can't change it. (Moved here from Paisa Panchayat's notifications when that channel was deleted; still open.)",
+      "fix": "1. In a Claude Code session: in workers/lib/settings.ts, validate each row with SettingsSchema.shape[key].safeParse(row.value), keep the default only for rows that fail and print a ::warning:: naming the key. 2. Do the same in apps/dashboard/src/lib/store.db.ts getSettings. 3. Add a test with one bad row while uploads are paused."
+    },
+    {
+      "key": "watchdog-not-hourly",
+      "severity": "info",
+      "title": "The hourly watchdog runs only every 4-11 hours",
+      "detail": "watchdog.yml is scheduled every hour, but GitHub ran it 11 times between 7 Nov 09:58 and 10 Nov 09:42 UTC (gaps of 4-11 hours). The hourly view snapshots behind the dashboard's 'realtime' chart and the 48-hour views therefore have gaps, and owner alerts can arrive hours late. (Moved here from Paisa Panchayat's notifications when that channel was deleted; still open.)",
+      "fix": "Optional. 1. Accept it, or 2. start watchdog.yml from the Netlify publish heartbeat the way Publish is started (workflows are owner-only files)."
+    }
+  ]
 }
