@@ -174,7 +174,7 @@ export const ScreenCounter: React.FC<{ w: DiveWorld; g: number }> = ({ w, g }) =
   const value = unit ? fig.slice(0, fig.length - unit.length).trim() : fig;
   const label = unit ? `${c.label ?? ""} · ${unit.toUpperCase()}`.replace(/^ · /, "") : c.label ?? "";
   const W = 560, h = Math.min(300, (W - 60) / (0.62 * Math.max(1, value.length)) / 0.52);
-  return <Display x={930 - W} y={300} w={W} h={h} label={label} value={countText(value, k)} color={w.look.accent} k={k} />;
+  return <Display x={930 - W} y={c.y ?? 300} w={W} h={h} label={label} value={countText(value, k)} color={w.look.accent} k={k} />;
 };
 
 // ------------------------------------------------------------------ the ground

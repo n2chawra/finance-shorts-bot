@@ -51,7 +51,7 @@ export interface LayerSpec {
   glowOn?: string;
   count?: number;
   // a counter on any layer: a display that counts params.fig[counter.fig] up on its word
-  counter?: { fig: string; label?: string; on?: string; side?: "left" | "right" };
+  counter?: { fig: string; label?: string; on?: string; side?: "left" | "right"; y?: number };   // y: the display's top on screen (default 300), to keep it off a sign (2026-11-23)
   // deepest
   text?: string;
 }

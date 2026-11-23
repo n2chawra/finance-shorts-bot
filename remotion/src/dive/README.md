@@ -45,7 +45,7 @@ placement), `label`}], `unit` "ft" (default) or "m" (meter shows m first), `note
 
 Common: `depth` (fig key, default "depth"), `ft` (placement when no figure), `label` (sign words), `on` (its
 moment, default the beat's `on`), `counter` {`fig`, `label`, `on`}: a display on screen (top right, clear of the meter) that counts a
-figure up on its word (the 90 s ride) and shows until its beat ends.
+figure up on its word (the 90 s ride) and shows until its beat ends; `counter.y` moves the display down the screen (default 300) when it would cover a sign.
 
 | kind | params | draws |
 |---|---|---|
