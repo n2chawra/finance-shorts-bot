@@ -15,10 +15,11 @@
     "IN"
   ],
   "thumbRefs": {
-    "perDay": 2,
+    "perDay": 10,
     "refreshDays": 7,
     "keep": 8,
-    "minViews": 100000
+    "minViews": 100000,
+    "_perDayWhy": "owner 2026-11-23: every channel's long topics (32 open across 4 channels) get their own top videos searched each week; market runs Mon and Thu, 10 a run (the schema's most) covers 20 a week; the live search at render covers the rest (searches have their own 100-a-day bucket)"
   },
   "_quota": "2026-11-18: 4 queries (was 8) and 2 cover lookups (was 4), twice a week (market.yml Mon, Thu): searches cost 100 units each"
 }

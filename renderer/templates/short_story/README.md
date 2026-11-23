@@ -155,6 +155,15 @@ a cost; `road` for anything that takes years; `fork` instead of side-by-side bar
 The cover is what makes someone tap (owner, 2026-10-21): on the channel page, in search and on the
 Shorts shelf. A Short without one fails the render.
 
+**Study this topic's own hits first** (owner, 2026-11-23, every channel: "thumbnails are made for every video by
+studying the same topic's other videos' thumbnails"). Look at the covers of the most viewed videos on this
+topic (`python -m renderer.thumbs refs <id>`; the plan's `demand` video is one), say what they share, and pick
+the frame, words and layout that fit it in our look. The cover names them: `"references": [{"id", "views",
+"what": "what its cover shows"}]` (at least one, 10K+ views) and `"pattern"`: what they share and what ours
+takes. Technique only, never their picture or words. A new or unique topic may have no comparable videos: then
+write `"unique": "<what you searched and found>"` and design the cover freely. Missing references are a note at
+render, never a failure. (Long videos: the same, with `unique` in place of the three references; agents/studio.md.)
+
 **`scene`, the default** (owner, 2026-10-24: "the thumbnails look the same with different texts"): the cover is a frame of the video itself, its custom hook near the end by default, with the channel's look on top: the big `words` over a blurred, darkened band (the scene's own money objects carry the figures; `figure` stays required by the contract). Every video has its own hook and sets, so every cover is a different picture. `at` picks another beat (its id) and `sec` the second into it (story clock): choose the frame that tells the story at a glance, the cast big, a money object in view, nothing mid-transition. The fixed layouts below are for when no frame can carry the cover; never the same layout two videos in a row. The render fails a cover that looks like one of the last six of its format (`renderer/craft.py` `cover_problems`).
 
 `{"layout": "scene", "at": "hook", "words": "Billionaires *never* sell", "figure": "{tax_total}", "tag": "Tax if you sell", "angle": "number", "who": "sharma"}`

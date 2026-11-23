@@ -154,6 +154,11 @@ spec check fails a calm face, more than 3 things and a scale word the title does
 topic and shock in five seconds, no text-only slides, and each scene's place, time, land and weather
 chosen for this story.
 
+**A topic nobody has covered** (owner, 2026-11-23: "not every video might have a reference; some might be unique"):
+when `python -m renderer.thumbs refs <id>` and a search find fewer than three hits on this topic, don't borrow another
+topic's hits. Give each spec `"unique": "<what you searched and what came up>"` and design the three from the
+channel's own thumbnail patterns and the video's strongest picture; references are then optional.
+
 ## 4. Fact review (a subagent with fresh context)
 Spawn one subagent. Give it only the video id and the instruction to read
 `generator/prompts/fact_reviewer.md` and follow it exactly. Tell it nothing about your reasoning.

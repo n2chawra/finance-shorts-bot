@@ -566,6 +566,10 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     if plan_format(script) == "short" and not script.get("thumbnail"):
         problems.append("a Short needs a `thumbnail` (its cover): `scene` (a frame of the video under the words: the default), "
                         "`versus`, `secret` or `story` (renderer/templates/short_story/README.md)")
+    cover_notes: list[str] = []
+    if plan_format(script) == "short":   # modelled on this topic's hits' covers when there are some: a note, never a failure (owner, 2026-11-23)
+        plan_s = _read(d / "plan.json") if (d / "plan.json").is_file() else {}
+        cover_notes = [f"note: cover: {p}" for p in thumbs.short_cover_problems(script.get("thumbnail"), plan_s.get("demand") or (plan_s.get("topic") or {}).get("demand"))]
     # a long video's thumbnails sell the whole promise, in words that add to the title (renderer/thumbs.py)
     plan_ = numbers.fill_plan(_read(d / "plan.json"), script) if (d / "plan.json").is_file() else {}
     problems += thumbs.problems({**script, "title": plan_.get("title", script.get("title", "")), "story": script.get("story") or plan_.get("story")}, d)
@@ -598,6 +602,7 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     if plan_format(script) == "short" and (d / "timeline.json").exists():   # measured on the real voice timing
         warnings = [f"warning: {w}" for w in event_gaps(_read(d / "timeline.json")["beats"])]
     warnings += [f"warning: {w}" for w in loudness_warnings(audio, plan_format(script))] if rendered else []
+    warnings += cover_notes
     problems, advice_ = advice.split(problems)     # notes are logged and shown, and never fail the render
     for n in advice_:
         print(n.upper()[:5] + n[5:])

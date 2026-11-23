@@ -22,7 +22,7 @@ import { existsSync } from "node:fs";
 import { ChannelList, CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket, subscribersOf } from "./lib/market.ts";
 import { youtubeConfigured } from "./lib/uploads.ts";
 import { accessToken } from "./lib/youtube.ts";
-import { cpath, layout } from "./lib/channels.ts";
+import { allChannels, cpath, crel, layout } from "./lib/channels.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const DAY_MS = 86_400_000;
@@ -62,10 +62,25 @@ async function market(token: string, cfg: MarketConfig, now: Date) {
   return { searched: cfg.queries, regions, since: after, ...rankMarket(details, queryOf, cfg, now, subs) };
 }
 
-/** Each open long topic's most viewed videos, searched once a week (thumb-refs.json; renderer/thumbs.py). */
+/** Every channel's open long topics (owner, 2026-11-23: "thumbnails are made for every video by studying the same
+ * topic's other videos' thumbnails": until then only channel #1's topics were searched, so the other channels'
+ * long thumbnails had only their demand video and a live search to go on). A topic that fails to parse is skipped. */
+function allLongTopics() {
+  const out: ReturnType<typeof LongTopic.parse>[] = [];
+  for (const slug of allChannels(ROOT)) {
+    const file = path.join(ROOT, crel("improvement/longform/topics.json", ROOT, slug));
+    if (!existsSync(file)) continue;
+    for (const t of (JSON.parse(readFileSync(file, "utf8")).topics ?? []) as unknown[]) {
+      const r = LongTopic.safeParse(t);
+      if (r.success) out.push(r.data);
+    }
+  }
+  return out;
+}
+
+/** Each open long topic's most viewed videos, on every channel, searched once a week (thumb-refs.json; renderer/thumbs.py). */
 async function thumbRefs(token: string, cfg: MarketConfig, now: Date) {
-  const file = cpath(ROOT, "improvement", "longform", "topics.json");
-  const topics = existsSync(file) ? LongTopic.array().parse(JSON.parse(readFileSync(file, "utf8")).topics ?? []) : [];
+  const topics = allLongTopics();
   const prevFile = process.env.PREV_THUMB_REFS;
   const prev = parsePrevRefs(prevFile && existsSync(prevFile) ? readFileSync(prevFile, "utf8") : null);
   const day = now.toISOString().slice(0, 10);
