@@ -51,6 +51,8 @@ export interface LayerSpec {
   glowOn?: string;
   count?: number;
   // a counter on any layer: a display that counts params.fig[counter.fig] up on its word
+  river?: boolean;          // tunnel: a river with a boat right over it (2026-11-23)
+  signX?: number;           // tunnel: the sign's x (default 240), to clear the meter tag
   counter?: { fig: string; label?: string; on?: string; side?: "left" | "right"; y?: number };   // y: the display's top on screen (default 300), to keep it off a sign (2026-11-23)
   // deepest
   text?: string;
