@@ -170,3 +170,7 @@ fix any beat near a limit as well.
   frame divided by the zoom, around the camera's centre), draw them at 48 px or more so a slight pull-back
   doesn't dip under 44, and keep real small print under 44 px.
 - **A channel's own voice pace sets the word count.** The tech channel's Shorts speak at about 164 words a minute since 2026-11-19 (owner: "increase the pace a little"), so 125–165 words fill 45–60 s; count at the channel's pace, never at the 150 of its recipe.
+- **A long title names the story as a stranger searches it** (owner, 2026-11-23, Texas City). The plan's `search` is
+  the event's common name ("bp texas city refinery explosion"); the title says it, the event by its noun
+  ("Inside the Texas City Refinery Explosion"), then the curiosity; an event's thumbnail shows the event (the
+  fireball, the collapse), never a gauge or screen as the subject. check-plan and the thumbnail spec check fail both.

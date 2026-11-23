@@ -90,6 +90,27 @@ videos at 16:9, and `board` beats carry most of the explaining:
   sum or a panel already writes is not also a `tag` on a thing in the same beat, and the counter's
   running total is not repeated as a tag (300 s of L-20261104-01 showed $127,544 twice, overlapping).
 
+## A title and a thumbnail a stranger clicks (owner, 2026-11-23)
+
+"Thumbnails are too technical… it should be what makes people click even if they don't know about this tragedy."
+"Titles are very basic… 'Inside the Texas City refinery explosion', '15 dead in one night: the Texas City refinery
+explosion'." Our Texas City video was titled from a detail (the gauge) and its thumbnail showed a gauge panel
+and a red tank with "It was full": only someone who already knew the story could read either.
+- **The plan's `search`**: what someone who never heard of the story types to find it, the event's common name
+  (`"bp texas city refinery explosion"`, `"hyatt regency walkway collapse"`, `"how does face id work"`); the long
+  feed topic's `search` is used when the plan has none.
+- **The title says that name first, then the curiosity**: "Inside the Texas City Refinery Explosion", "The Hyatt
+  Regency Walkway Collapse: Two Rods Instead of One". An event (explosion, collapse, crash, sinking, fire, disaster)
+  is named by its noun, never only by a verb ("blew up") or a detail ("the gauge said normal"). `check-plan`
+  fails a long title that leaves out the event noun or most of the search's words (`renderer/thumbs.py`
+  `long_title_problems`).
+- **An event's thumbnail shows the event**: its subject (`things[0]`) is the biggest moment a stranger recognises
+  at a glance (the fireball over the refinery, the walkway falling on the crowd, the ship on its side, the plane
+  in pieces on the runway), as the topic's most viewed hits do. A gauge, a screen, a valve or a part may sit small
+  beside it, never be the subject (the spec check fails it). The words are the stakes in plain words a stranger
+  feels ("NOBODY WAS WARNED", "ONE TRUCK LIT IT"), never a riddle about a detail they haven't seen ("It was full").
+  The channel's recipe still decides what is off limits (no victims' faces, no gore).
+
 ## The script
 
 | field | |

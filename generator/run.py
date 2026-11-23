@@ -352,6 +352,9 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
             problems += formats.title_problems(plan["title"], plan.get("arms"))
             problems += formats.subject_problems(plan)
             problems += arms.plan_problems(plan, root)
+        if fmt == "long":
+            # owner, 2026-11-23: a long title says the story's common name as people search it, then the curiosity
+            problems += thumbs.long_title_problems(plan["title"], thumbs.topic_search(vid, root))
         if fmt == "short" and "#shorts" not in [h.lower() for h in plan["hashtags"]]:
             problems.append("hashtags must include #Shorts")
         # every plan names its money, from the channel's own currencies (generator/pack.py; channel #1: USD
