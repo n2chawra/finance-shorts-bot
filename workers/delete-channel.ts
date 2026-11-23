@@ -1,6 +1,8 @@
 /**
  * Delete one channel (the dashboard's "Delete channel", 2026-11-23), in two steps of .github/workflows/delete-channel.yml:
  *
+ *   npm run delete-channel -- mark  <slug> <confirm>    what the dashboard's Delete button does, for a run started
+ *                                                       without the dashboard: <confirm> must be the slug or exact name
  *   npm run delete-channel -- list  <slug> <ids-file>   which videos go: writes their ids, one a line, and prints them
  *   npm run delete-channel -- purge <slug>              the channel's database rows, then its Channel row
  *
@@ -94,16 +96,42 @@ async function purge(prisma: PrismaClient, slug: string): Promise<void> {
   console.log(JSON.stringify({ channel: slug, name: ch.name, deleted: counts }, null, 2));
 }
 
+/** Video statuses that are not on YouTube yet (the dashboard route's UNPUBLISHED). */
+const UNPUBLISHED = ["planned", "scripted", "verified", "rendered", "qa_passed", "queued"];
+
+/** The dashboard's Delete button without the dashboard: the typed confirmation must name the channel exactly. */
+async function mark(prisma: PrismaClient, slug: string, confirm: string): Promise<void> {
+  const ch = await channelRow(prisma, slug);
+  const why = !ch ? `no channel ${slug}`
+    : slug === layout(ROOT).default ? `${slug} is the default channel (config/channel-layout.json): make another channel the default first`
+    : confirm.trim() !== ch.id && confirm.trim() !== ch.name ? `the confirmation must be "${ch.id}" or "${ch.name}" exactly`
+    : null;
+  if (why) {
+    console.error(`::error::${why}`);
+    process.exitCode = 1;
+    return;
+  }
+  if (ch!.status === "deleting") return void console.log(`${slug} is already marked deleting`);
+  const [, uploads, videos] = await prisma.$transaction([
+    prisma.channel.update({ where: { id: slug }, data: { status: "deleting" } }),
+    prisma.upload.deleteMany({ where: { youtubeId: null, state: { in: ["pending", "failed"] }, video: { channelId: slug } } }),
+    prisma.video.updateMany({ where: { channelId: slug, status: { in: UNPUBLISHED as never }, upload: { is: null } },
+      data: { status: "rejected", failReason: "Channel deleted", queuePosition: null, pickedAt: null } }),
+  ]);
+  console.log(`${slug}: marked deleting; ${uploads.count} unsent uploads removed, ${videos.count} unpublished videos rejected`);
+}
+
 async function main(): Promise<void> {
   const [mode = "", slug = "", out = "deleted-videos.txt"] = process.argv.slice(2);
-  if (mode !== "list" && mode !== "purge") {
-    console.error("::error::usage: delete-channel list <slug> <ids-file> | delete-channel purge <slug>");
+  if (mode !== "list" && mode !== "purge" && mode !== "mark") {
+    console.error("::error::usage: delete-channel mark <slug> <confirm> | delete-channel list <slug> <ids-file> | delete-channel purge <slug>");
     process.exitCode = 1;
     return;
   }
   const prisma = newPrisma();
   try {
-    if (mode === "list") await list(prisma, slug, out);
+    if (mode === "mark") await mark(prisma, slug, out);
+    else if (mode === "list") await list(prisma, slug, out);
     else await purge(prisma, slug);
   } finally {
     await prisma.$disconnect();
