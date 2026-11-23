@@ -85,7 +85,7 @@ that the topic deserves the long treatment.
 Never download a video. Never copy anyone's script, structure or wording: take the *subject*, not
 the treatment.
 
-First run `python -m generator.run prune-feed --format long --channel <channel>` (drops stale, expired, rejected and weak unused topics; keeps the used ones). Add what is worth making to `channels/<channel>/longform/topics.json` (`{"topics": [...]}`; don't delete by hand: set `"status": "rejected"` with a `reason` and the next prune removes it):
+First run `python -m generator.run prune-feed --format long --channel <channel>` (drops stale, expired, rejected and weak unused topics; keeps the used ones). Add what is worth making to `channels/<channel>/longform/topics.json` (`{"topics": [...]}`; don't delete by hand: set `"status": "rejected"` with a `reason` and the next prune removes it; keep every `"pin"` the owner set, their running order, and never add or change one):
 ```json
 {"id": "<DAY>-short-kebab", "format": "long",
  "title": "the video's big promise, as a viewer would click it",

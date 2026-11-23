@@ -342,6 +342,12 @@ def of_format(topics: list[dict], fmt: str) -> list[dict]:
     return [t for t in topics if t.get("format", "short") in (fmt, "any")]
 
 
+def pin_of(topic: dict) -> float:
+    """The owner's place for a topic in the queue (`"pin": 1` goes first); unpinned topics keep their score order."""
+    p = topic.get("pin")
+    return float(p) if isinstance(p, (int, float)) and not isinstance(p, bool) and p > 0 else float("inf")
+
+
 def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,
               fmt: str = "short") -> dict:
     """What `state` tells the planner: the open topics, best first (`required` is always None now)."""
@@ -351,7 +357,8 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     ctx = context(entries, root)
     # every unused topic competes, old or new: best score first (urgent ones still lead)
     open_.sort(key=lambda t: score(t, today, ctx), reverse=True)
-    open_.sort(key=lambda t: 0 if t.get("priority") in URGENT else 1)
+    # urgent ones still lead; then the owner's running order (2026-11-23: "start with a bang"): `pin` 1, 2, 3… lead, after urgent ones only
+    open_.sort(key=lambda t: (0 if t.get("priority") in URGENT else 1, pin_of(t)))
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed) and blocked_reason(t, today, fmt, root) is None]
     # offered first, and it still earns one extra video that day, but no plan is forced to take it
     urgent = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
@@ -360,7 +367,7 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     shown += [t for t in open_ if t not in usable][:SHOWN - len(shown)]
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
             "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths",
-            "from_short")   # a long topic names the Short it expands (Scout, 2026-11-05)
+            "from_short", "pin")   # a long topic names the Short it expands (Scout, 2026-11-05)
     return {
         "topics": [{**{k: t.get(k) for k in keys}, "score": score(t, today, ctx), "why_score": score_parts(t, today, ctx),
                     "found": t.get("found"), "usable_now": t in usable, "blocked_by": blocked_reason(t, today, fmt, root)} for t in shown],

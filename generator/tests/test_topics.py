@@ -255,3 +255,11 @@ def test_a_rising_reference_lifts_its_topic() -> None:
     rising = {**base, "demand": {"views": 2_000_000, "viewsPerDay": 245_193, "ageDays": 17.4}}
     assert "traction" not in score_parts(base, "2026-11-21")
     assert sum(score_parts(rising, "2026-11-21").values()) > sum(score_parts(base, "2026-11-21").values())
+
+
+def test_owner_pins_lead_the_feed_in_pin_order(root: Path) -> None:
+    # the owner's running order beats the score (2026-11-23: "start with a bang"); urgent topics still lead
+    feed(root, topic("top", "high", category="a"), {**topic("second", "normal", category="b"), "pin": 2},
+         {**topic("first", "normal", category="c"), "pin": 1}, topic("news", "breaking", category="d"))
+    ids = [t["id"] for t in topics.for_state([], TODAY, [], TEMPLATES, root)["topics"]]
+    assert ids == ["news", "first", "second", "top"]
