@@ -9,6 +9,8 @@ import { Badge, Button, Card, ErrorNote, Loading, PageHeader, Segmented, Stagger
 import type { Channel, ChannelStatus, SetupStage, Verdict } from "@/lib/channels";
 import { useAddChannel, useChannelFit, useChannelSamples, useChannels, useDecideChannel, useLaunchChannel, usePatchChannel, useRemoveChannel, useReviewChannel, useSettings, useSwitchChannel } from "@/lib/queries";
 
+import { DeleteChannel } from "./delete-channel";
+
 /*
  * Channels (multi-channel plan, step 2): every YouTube channel the platform runs. Start, pause and
  * dial down each one; add a new one from a niche; connect its YouTube account in one click.
@@ -27,6 +29,7 @@ const STATUS: Record<ChannelStatus, { label: string; tone: Tone; why: string }> 
   review: { label: "Launch review", tone: "violet", why: "Three sample Shorts are ready for your review." },
   active: { label: "Live", tone: "good", why: "Making and uploading videos on its schedule." },
   paused: { label: "Paused", tone: "warning", why: "Nothing is made or uploaded; its routines exit in seconds. The queue is kept." },
+  deleting: { label: "Deleting…", tone: "critical", why: "Nothing more uploads. Its rows, release videos and repo folder are being removed; videos already on YouTube stay there." },
 };
 
 const fmtN = (n: number) => new Intl.NumberFormat("en", { notation: n >= 10_000 ? "compact" : "standard" }).format(n);
@@ -248,6 +251,21 @@ function HealthDot({ color }: { color: keyof typeof HEALTH }) {
   return <span aria-label={`Health: ${color}`} className={`inline-block size-2 shrink-0 rounded-full ${HEALTH[color]}`} />;
 }
 
+/** A channel being deleted: its status and nothing else to do (delete-channel.yml removes the card when done). */
+function DeletingCard({ c }: { c: Channel }) {
+  const s = STATUS.deleting;
+  return (
+    <div id={c.id} className="scroll-mt-20">
+      <Card icon={Tv} accent="surface" title={<span className="flex flex-wrap items-center gap-2">{c.name}<Badge tone={s.tone} dot>{s.label}</Badge></span>} description={s.why}>
+        <p className="text-[12.5px] text-muted">
+          If this stays here for more than an hour, run the &quot;Delete channel&quot; workflow from GitHub Actions with channel <code className="rounded bg-surface-3 px-1">{c.id}</code>.
+          Its routines stop themselves at their next run; delete them at <a href="https://claude.ai/code/routines" target="_blank" rel="noreferrer" className="text-brand-text underline-offset-2 hover:underline">claude.ai/code/routines</a>.
+        </p>
+      </Card>
+    </div>
+  );
+}
+
 function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
   const patch = usePatchChannel();
   const remove = useRemoveChannel();
@@ -304,6 +322,7 @@ function ChannelCard({ c, current }: { c: Channel; current: boolean }) {
                 Remove
               </Button>
             )}
+            <DeleteChannel c={c} />
           </div>
         </div>
 
@@ -416,7 +435,7 @@ export default function ChannelsPage() {
       {data && <QuotaLine channels={data.channels} platform={platform} />}
       {data && (
         <Stagger className="flex flex-col gap-5">
-          {data.channels.map((c) => <ChannelCard key={c.id} c={c} current={c.id === data.current} />)}
+          {data.channels.map((c) => (c.status === "deleting" ? <DeletingCard key={c.id} c={c} /> : <ChannelCard key={c.id} c={c} current={c.id === data.current} />))}
           <AddChannel />
           <OneTimeSetup />
         </Stagger>

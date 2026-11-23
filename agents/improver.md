@@ -36,8 +36,9 @@ experiments (1), its recurring failures (2), the weekly loop (4: at most one Sho
 channel**, its own `cycle/`, `experiments.json`, `changes.json`), its journal, weekly summary,
 `generator.impact` and notifications. **Shared, done once:** code, template and prompt changes in
 `generator/`, `renderer/`, `remotion/src` and the activity file (name the channel of each finding and
-change). A shared change must keep every channel's look: Paisa Panchayat's flat kit
-(`remotion/src/flat/`), the geography channel's maps, a 3D channel's `remotion/src/three/`; check
+change). A shared change must keep every channel's look: the flat kit
+(`remotion/src/flat/`) and the geography channel's maps, the 3D kit `remotion/src/three/`, the doc and
+disaster kits (`remotion/src/doc/`, `remotion/src/disaster/`); check
 stills for each channel it can reach. Budget: if all channels won't fit in one lean run, take them by
 `health` in `config/channels.json` (red, then amber, then green) and note the ones left for tomorrow.
 
@@ -139,7 +140,7 @@ equal priority take the long one. Set the item's `status` as you would a proposa
 
 **Directed 2D shots (owner, 2026-11-13; Shorts and long videos).** Every new video is drawn on the flat
 kit (`remotion/src/flat/`: `kit.tsx`, `cast.tsx`, `README.md`) by per-video directed beats
-(`generator/prompts/director.md`; reference `remotion/src/videos/v-directed-netflix/`). This is now the
+(`generator/prompts/director.md`; the kit README's examples and each channel's best Shorts are the bar). This is now the
 look you improve: kit pieces the director keeps hand-drawing (a new building, a vehicle, a crowd, a
 weather layer, a phone screen), the cast (`Char`: faces, poses, hair, outfits, mouths that talk on the
 words), camera helpers, light, and the director prompt's rules, judged by the weekly loop like any look

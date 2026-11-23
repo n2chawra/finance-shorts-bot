@@ -24,7 +24,7 @@ export async function getPortfolio(): Promise<Portfolio> {
   const dayStart = Date.parse(`${istToday(now).day}T00:00:00+05:30`);
   const todayFrom = new Date(dayStart - 3_600_000), todayTo = new Date(dayStart + DAY + 3_600_000);
   const [channels, days, vids, counts, firsts, upcoming, platform, docs, todays, last24] = await Promise.all([
-    db.channel.findMany({ orderBy: { createdAt: "asc" }, select: { id: true, name: true, status: true, settings: true } }),
+    db.channel.findMany({ where: { status: { not: "deleting" } }, orderBy: { createdAt: "asc" }, select: { id: true, name: true, status: true, settings: true } }),
     db.channelDay.findMany({ where: { day: { gte: since365 } }, orderBy: { day: "asc" },
       select: { channelId: true, day: true, format: true, views: true, engagedViews: true, avgViewPct: true, watchMinutes: true, subsGained: true, subsLost: true } }) as Promise<Day[]>,
     db.$queryRaw<VidRow[]>`

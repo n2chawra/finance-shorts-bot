@@ -50,8 +50,8 @@ function local(file: string, type: string, range: string | null): Response {
   });
 }
 
-/** Channel folders to look in (channel #1 first). Grows with the Channel table in the next step. */
-const CHANNEL_DIRS = (process.env.CHANNELS ?? "paisa-panchayat").split(",").map((c) => c.trim()).filter((c) => /^[a-z0-9][a-z0-9-]{1,40}$/.test(c));
+/** Channel folders to look in when the database doesn't name the video's channel (the default channel first). */
+const CHANNEL_DIRS = (process.env.CHANNELS ?? "geography-maps-geopolitical-mysteries,how-tech-and-ai-actually-work-chips-ai-p,business-documentaries-rise-and-fall-of,disasters-and-engineering-failures-expla").split(",").map((c) => c.trim()).filter((c) => /^[a-z0-9][a-z0-9-]{1,40}$/.test(c));
 
 export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string; kind: string }> }) {
   const { id, kind } = await ctx.params;

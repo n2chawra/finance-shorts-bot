@@ -1,12 +1,10 @@
 "use client";
 
-import { useIsFirstChannel } from "@/lib/queries";
-
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Gauge, Info } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 
-import { Card, IconTile, Num, Tip, type Tone } from "@/components/ui";
+import { Card, Num, Tip, type Tone } from "@/components/ui";
 import { type Band, type MetricDef, METRICS, bandOf, summarize } from "@/lib/scorecard";
 import type { Scorecard } from "@/lib/scorecard";
 
@@ -129,7 +127,6 @@ export function MetricTile({ m, value, before, trail, n, deltaLabel = "vs before
 
 /** The scorecard in one card for the Overview: the verdict and the four numbers, compact. */
 export function ScorecardStrip({ data }: { data: Scorecard }) {
-  const first = useIsFirstChannel();   // the 1.2K ceiling is Paisa Panchayat's own history
   const s = summarize(data.shorts, data.resetDay, 7);
   const v = s.verdict;
   return (
@@ -161,8 +158,6 @@ export function ScorecardStrip({ data }: { data: Scorecard }) {
         })}
       </div>
       <div className="mt-3.5 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[12.5px] text-ink2">
-        {first && <span className="flex items-center gap-2"><IconTile icon={ArrowUpRight} accent={s.pastCeiling ? "mint" : "surface"} size="sm" />
-          <span><b className="tabular-nums">{s.pastCeiling}</b> of {s.recent.length} Shorts past the 1.2K ceiling this week</span></span>}
         <span className="text-muted">{s.measured} of {s.recent.length} have YouTube&apos;s numbers yet (about two days after upload)</span>
       </div>
     </Card>

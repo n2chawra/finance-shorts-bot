@@ -4,12 +4,19 @@
  * `config/channel-layout.json` maps each legacy repo path to its place in `channels/<slug>/`. A
  * channel without a folder yet keeps the legacy paths, so ingest, publish and stats behave the same
  * before and after the move. The channel is `CHANNEL`, else the layout's default.
+ *
+ * A channel the owner deleted on the dashboard (Channel.status "deleting", until delete-channel.yml has
+ * removed it) is skipped by every worker: `allChannels` leaves it out, and the database loops only take
+ * active and paused channels (lib/channel-auth.ts `activeChannels`).
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 
 const REPO = path.resolve(import.meta.dirname, "..", "..");
+/** Channel #1 (deleted 2026-11-23), by id: a few rules keyed on "channel #1's old rows" (its env token, covers set
+ * before the cover mark) must not move to whichever channel is the layout's default now. */
+export const CHANNEL_ONE = "paisa-panchayat";
 const SLUG = /^[a-z0-9][a-z0-9-]{1,40}$/;
 
 const LayoutSchema = z.object({ default: z.string().regex(SLUG), map: z.record(z.string(), z.string()) });
@@ -70,11 +77,28 @@ export function videoFile(root: string, slug: string, videoId: string, name: str
   return path.join(root, crel(`videos/${videoId}/${name}`, root, slug));
 }
 
-/** Every channel with a folder, else just the default (before the move). */
+/** Channels the database says are being deleted, learnt by a worker before config/channels.json catches up. */
+const deletingFromDb = new Set<string>();
+export function markDeleting(slugs: Iterable<string>): void {
+  for (const s of slugs) deletingFromDb.add(s);
+}
+
+/** Channels being deleted: config/channels.json's status "deleting" (or "deleted"), plus any `markDeleting` named. */
+export function deletingChannels(root: string = REPO): Set<string> {
+  const out = new Set(deletingFromDb);
+  try {
+    const j = JSON.parse(readFileSync(path.join(root, "config", "channels.json"), "utf8")) as { channels?: Record<string, { status?: string }> };
+    for (const [slug, c] of Object.entries(j.channels ?? {})) if (c?.status === "deleting" || c?.status === "deleted") out.add(slug);
+  } catch { /* no file yet */ }
+  return out;
+}
+
+/** Every channel with a folder (minus channels being deleted), else just the default (before the move). */
 export function allChannels(root: string = REPO): string[] {
   const base = path.join(root, "channels");
+  const gone = deletingChannels(root);
   const found = existsSync(base)
-    ? readdirSync(base).filter((n) => SLUG.test(n) && statSync(path.join(base, n)).isDirectory()).sort()
+    ? readdirSync(base).filter((n) => SLUG.test(n) && !gone.has(n) && statSync(path.join(base, n)).isDirectory()).sort()
     : [];
   return found.length ? found : [layout(root).default];
 }

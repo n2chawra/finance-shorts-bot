@@ -8,7 +8,7 @@ import path from "node:path";
 
 import type { Prisma, PrismaClient } from "@prisma/client";
 
-import { layout } from "./channels.ts";
+import { CHANNEL_ONE, layout } from "./channels.ts";
 import { type Week, digest, health, istWeek } from "./health.ts";
 import { notify, resolve } from "./notify.ts";
 import { loadSettings } from "./settings.ts";
@@ -64,7 +64,7 @@ export async function syncHealth(prisma: PrismaClient, root: string, now = new D
       weeks: [...byWeek.values()].sort((a, b) => a.week.localeCompare(b.week)),
       usageMinutes: minutes.get(ch.id) ?? 0, allUsageMinutes: all, critical,
       generationPaused: Boolean((own.generationPaused as boolean | undefined) ?? platform.generationPaused),
-      stopRuleActions: ch.id !== layout().default,
+      stopRuleActions: ch.id !== CHANNEL_ONE,
     });
     // the channel's notices: raised while the condition holds, resolved when it clears
     for (const n of h.notices) await notify(prisma, { ...n, source: "health", channelId: ch.id });

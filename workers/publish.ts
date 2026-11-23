@@ -30,9 +30,9 @@ import {
 import { loadSettings, type Settings } from "./lib/settings.ts";
 import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
-import { TokenError, UPLOAD_CATEGORY, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
+import { TokenError, accessToken, setThumbnail, uploadVideo } from "./lib/youtube.ts";
 import { COVERS_PER_RUN, COVER_DAYS, coverFile, isPermissionRefusal, needsCover } from "./lib/cover.ts";
-import { channelPack, layout, videoFile } from "./lib/channels.ts";
+import { CHANNEL_ONE, channelPack, layout, videoFile } from "./lib/channels.ts";
 import { activeChannels, channelSettings, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { COST, QuotaKeeper } from "./lib/quota.ts";
 
@@ -91,7 +91,7 @@ async function repairCovers(prisma: PrismaClient, run: Run, token: string): Prom
   // COVERS_NOW=1 (Publish → covers_now, after the owner verifies a channel): every miss, refused ones too, this run
   const now = process.env.COVERS_NOW === "1";
   const refused = (s: unknown) => (s && typeof s === "object" && "coverRefusedAt" in s ? 1 : 0);
-  const todo = ups.filter((u) => needsCover(u.video.style, run.channelId === layout().default, now ? Infinity : Date.now(), now))
+  const todo = ups.filter((u) => needsCover(u.video.style, run.channelId === CHANNEL_ONE, now ? Infinity : Date.now(), now))
     .sort((a, b) => refused(a.video.style) - refused(b.video.style)).slice(0, now ? 60 : COVERS_PER_RUN);
   for (const u of todo) {
     console.log(`${u.video.id}: no cover of ours on YouTube yet; setting it`);
@@ -113,8 +113,8 @@ async function main(): Promise<void> {
       const first = ch.id === layout().default;
       const run: Run = { channelId: ch.id, settings: channelSettings(base, ch.settings), quota,
         key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: `,
-        // the channel's own upload category (its pack); channel #1 keeps categoryOf's single category
-        category: first ? UPLOAD_CATEGORY : channelPack(ch.id).uploadCategory };
+        // the channel's own upload category (its pack; "22" without one)
+        category: channelPack(ch.id).uploadCategory };
       console.log(`== ${ch.name} (${ch.id})`);
       try {
         await publishChannel(prisma, run, tokenOf(ch));
@@ -283,7 +283,7 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
     const file = path.join(dir, "video.mp4");
     await downloadReleaseAsset(repoSlug(ROOT), `video-${video.id}`, "video.mp4", file);
     const meta = youtubeMeta(video, disclaimer, format);
-    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: run.channelId === layout().default ? categoryOf(video.style) : run.category });
+    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: run.category });
     await prisma.$transaction([
       prisma.upload.upsert({
         where: { videoId: video.id },

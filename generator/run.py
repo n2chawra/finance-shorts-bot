@@ -923,6 +923,14 @@ def main(argv: list[str] | None = None) -> int:
     argv, slug = _pop_channel(sys.argv[1:] if argv is None else list(argv))
     channels.use(slug)
     a = ap.parse_args(argv)
+    # a deleted channel (generator/channels.py deleted): `state` tells the routine to disable itself
+    # (generator/prompts/routine.md, agents/policy.md), and nothing else runs, so no file is written for it
+    if channels.deleted():
+        if a.cmd == "state":
+            print(json.dumps({**channels.STOP, "channel": channels.current()}, indent=2))
+            return 0
+        print(f"error: channel {channels.current()!r} was deleted: nothing to do", file=sys.stderr)
+        return 2
 
     try:
         if a.cmd == "state":

@@ -87,7 +87,8 @@ async function main() {
   try {
     const stuck = new Date(Date.now() - 45 * 60_000);
     const todo = await prisma.study.findMany({
-      where: { OR: [{ status: "queued" }, { status: "watching", createdAt: { lt: stuck } }] },
+      // a study for a channel being deleted is left alone: delete-channel.yml removes it with the channel
+      where: { OR: [{ status: "queued" }, { status: "watching", createdAt: { lt: stuck } }], forChannel: { status: { in: ["active", "paused", "setup", "review"] } } },
       include: { video: { select: { id: true, title: true, format: true, upload: { select: { youtubeId: true } } } } },
       orderBy: { createdAt: "asc" }, take: PER_RUN,
     });

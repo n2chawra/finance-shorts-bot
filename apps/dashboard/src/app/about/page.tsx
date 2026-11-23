@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 };
 
 const CHANNELS = [
-  { name: "Paisa Panchayat", url: "https://www.youtube.com/channel/UCrRPx2PHGrTr0diYoAzvBRQ" },
   { name: "The Why Atlas", url: "https://www.youtube.com/channel/UCj07tN_bibMOuvk5C0-eesg" },
   { name: "A Billion Switches", url: "https://www.youtube.com/@ABillionSwitches" },
 ];

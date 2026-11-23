@@ -3,11 +3,15 @@
 Every channel's own files (profile, topic feed, history, videos, metrics, the weekly loop…) live in
 `channels/<slug>/`; shared code and settings stay where they are. `config/channel-layout.json` maps
 each legacy repo path to its place in a channel folder. A channel whose folder doesn't exist yet
-(Paisa Panchayat before the move, and the tests' temporary repos) keeps the legacy paths, so the
-pipeline behaves the same either way.
+(the tests' temporary repos) keeps the legacy paths, so the pipeline behaves the same either way.
 
 The channel is `--channel` on a command (which sets `CHANNEL` for its subprocesses too), else the
-`CHANNEL` environment variable, else the layout's default (`paisa-panchayat`).
+`CHANNEL` environment variable, else the layout's default (`geography-maps-geopolitical-mysteries`).
+
+A channel the owner deleted on the dashboard is `deleted()`: config/channels.json (written by ingest) no
+longer lists it, or lists it as being deleted, or its folder is gone (delete-channel.yml). `generator.run`
+then does nothing for it: `state` answers `{"stop": "channel deleted"}` so the routine disables itself, and
+every other command fails before it writes a file (a deleted channel's paths would fall back to the repo root).
 """
 from __future__ import annotations
 
@@ -89,10 +93,56 @@ def rel(root: Path, legacy: "str | Path", slug: str | None = None) -> str:
     return cpath(root, legacy, slug).relative_to(root).as_posix()
 
 
+GONE = ("deleting", "deleted")
+STOP = {"stop": "channel deleted"}
+
+
+class ChannelDeleted(RuntimeError):
+    """A command named a channel the owner deleted."""
+
+
+def _entries(root: Path) -> dict | None:
+    f = root / "config" / "channels.json"
+    if not f.is_file():
+        return None
+    try:
+        entries = json.loads(f.read_text(encoding="utf-8")).get("channels")
+    except (ValueError, AttributeError):
+        return None
+    return entries if isinstance(entries, dict) and entries else None
+
+
+def deleted(slug: str | None = None, root: Path = ROOT) -> bool:
+    """True when the channel was deleted, or is being deleted: config/channels.json lists other channels but not
+    this one, or lists it as deleting; or other channels have folders and this one's is gone. A repo with
+    neither file nor folders (the tests' temporary repos) has no deleted channel."""
+    slug = slug or current()
+    entries = _entries(root)
+    if entries is not None:
+        entry = entries.get(slug)
+        if not isinstance(entry, dict) or entry.get("status") in GONE:
+            return True
+    base = root / "channels"
+    if base.is_dir() and any(p.is_dir() and SLUG.match(p.name) for p in base.iterdir()) and not (base / slug).is_dir():
+        return True
+    return False
+
+
+def require_live(slug: str | None = None, root: Path = ROOT) -> str:
+    """The channel, or ChannelDeleted when it was deleted (so nothing is written for it)."""
+    slug = slug or current()
+    if deleted(slug, root):
+        raise ChannelDeleted(f"channel {slug!r} was deleted (config/channels.json no longer runs it): nothing to do")
+    return slug
+
+
 def all_channels(root: Path = ROOT) -> list[str]:
-    """Every channel with a folder, else just the default (before the move)."""
+    """Every channel with a folder that isn't being deleted, else just the default (before the move)."""
     base = root / "channels"
     found = sorted(p.name for p in base.iterdir() if p.is_dir() and SLUG.match(p.name)) if base.is_dir() else []
+    entries = _entries(root)
+    if entries is not None:   # a channel being deleted still has its folder until delete-channel.yml runs
+        found = [s for s in found if (entries.get(s) or {}).get("status") not in GONE]
     return found or [default()]
 
 

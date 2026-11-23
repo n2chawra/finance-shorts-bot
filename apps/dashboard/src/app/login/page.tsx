@@ -8,7 +8,6 @@ import { Suspense, useEffect, useState } from "react";
 
 import billionSwitches from "@/assets/channels/a-billion-switches.png";
 import crazeAndCrash from "@/assets/channels/craze-and-crash.png";
-import paisaPanchayat from "@/assets/channels/paisa-panchayat.png";
 import whyAtlas from "@/assets/channels/the-why-atlas.png";
 import { LogoMark } from "@/components/brand";
 import { CHANNEL_COOKIE } from "@/lib/channels";
@@ -18,7 +17,6 @@ import { CHANNEL_COOKIE } from "@/lib/channels";
  * served from /_next/static): nothing about a channel is fetched before sign-in.
  */
 const CHANNELS: { id: string; name: string; niche: string; logo: StaticImageData }[] = [
-  { id: "paisa-panchayat", name: "Paisa Panchayat", niche: "Money", logo: paisaPanchayat },
   { id: "geography-maps-geopolitical-mysteries", name: "The Why Atlas", niche: "Maps", logo: whyAtlas },
   { id: "how-tech-and-ai-actually-work-chips-ai-p", name: "A Billion Switches", niche: "Tech", logo: billionSwitches },
   { id: "business-documentaries-rise-and-fall-of", name: "Craze & Crash", niche: "Business", logo: crazeAndCrash },

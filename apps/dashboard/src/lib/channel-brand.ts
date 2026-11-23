@@ -2,7 +2,6 @@ import type { StaticImageData } from "next/image";
 
 import billionSwitches from "@/assets/channels/a-billion-switches.png";
 import crazeAndCrash from "@/assets/channels/craze-and-crash.png";
-import paisaPanchayat from "@/assets/channels/paisa-panchayat.png";
 import whyAtlas from "@/assets/channels/the-why-atlas.png";
 
 /** A channel's public identity: its YouTube name, a short name for tight spots, an accent colour taken
@@ -20,7 +19,6 @@ export type ChannelBrand = {
 /** A channel's public brand (its YouTube name and logo), by channel id. The database keeps the niche a
  *  channel was set up with ("How tech and AI actually work: chips, AI…") as its name, too long for cards. */
 export const CHANNEL_BRAND: Record<string, { name: string; short: string; accent: string; logo: StaticImageData }> = {
-  "paisa-panchayat": { name: "Paisa Panchayat", short: "Paisa", accent: "#d99a0b", logo: paisaPanchayat },
   "geography-maps-geopolitical-mysteries": { name: "The Why Atlas", short: "Why Atlas", accent: "#2f86c9", logo: whyAtlas },
   "how-tech-and-ai-actually-work-chips-ai-p": { name: "A Billion Switches", short: "Switches", accent: "#f08a1c", logo: billionSwitches },
   "business-documentaries-rise-and-fall-of": { name: "Craze & Crash", short: "Craze & Crash", accent: "#e0452f", logo: crazeAndCrash },

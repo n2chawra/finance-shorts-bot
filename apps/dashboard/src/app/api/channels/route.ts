@@ -1,15 +1,18 @@
 import { NextResponse } from "next/server";
 
-import { ChannelCreateSchema } from "@/lib/channels";
+import { ChannelCreateSchema, DEFAULT_CHANNEL, isLiveChannel } from "@/lib/channels";
 import { currentChannel } from "@/lib/channel-scope";
 import { addChannel, listChannels } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
-/** Every channel, with the one the switcher has picked. */
+/** Every channel (one being deleted too: the Channels page shows it as "Deleting…"), with the one the
+ * switcher has picked; a pick that is gone or being deleted falls back to the default channel. */
 export async function GET() {
   const [channels, current] = await Promise.all([listChannels(), currentChannel()]);
-  return NextResponse.json({ channels, current: channels.some((c) => c.id === current) ? current : channels[0]?.id ?? current });
+  const live = channels.filter(isLiveChannel);
+  const pick = [current, DEFAULT_CHANNEL].find((id) => live.some((c) => c.id === id)) ?? live[0]?.id ?? current;
+  return NextResponse.json({ channels, current: pick });
 }
 
 /** "Add channel": the owner's niche, a few lines and 1–3 reference channels. The channel starts in setup. */

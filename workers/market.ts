@@ -20,7 +20,8 @@ import { COST, QuotaKeeper } from "./lib/quota.ts";
 
 import { existsSync } from "node:fs";
 import { ChannelList, CommentThreads, LongTopic, MarketConfig, SearchList, type TopicRefs, VideoDetails, dueTopics, keepRefs, parsePrevRefs, pickRefs, rankMarket, subscribersOf } from "./lib/market.ts";
-import { youtubeConfigured } from "./lib/uploads.ts";
+import { youtubeClientConfigured } from "./lib/uploads.ts";
+import { tokenOf } from "./lib/channel-auth.ts";
 import { accessToken } from "./lib/youtube.ts";
 import { allChannels, cpath, crel, layout } from "./lib/channels.ts";
 
@@ -121,12 +122,29 @@ async function comments(token: string, now: Date) {
   }
 }
 
+/** The default channel's stored sign-in (it reads public data too, on the same project quota), else the
+ * YT_REFRESH_TOKEN secret's. */
+async function readToken(): Promise<string | null> {
+  if (process.env.DATABASE_URL && process.env.SESSION_SECRET) {
+    const prisma = new PrismaClient();
+    try {
+      const ch = await prisma.channel.findUnique({ where: { id: layout().default } });
+      const t = ch && (ch.status === "active" || ch.status === "paused") ? tokenOf(ch) : null;
+      if (t) return accessToken(t.refreshToken, t.client);
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
+  return process.env.YT_REFRESH_TOKEN ? accessToken() : null;
+}
+
 async function main(): Promise<void> {
   const outDir = path.resolve(process.argv[2] ?? "market-data");
-  if (!youtubeConfigured()) return;
+  if (!youtubeClientConfigured()) return;
   const cfg = MarketConfig.parse(JSON.parse(readFileSync(cpath(ROOT, "config", "market.json"), "utf8")));
   const now = new Date();
-  const token = await accessToken();
+  const token = await readToken();
+  if (!token) return void console.log("::notice::No YouTube sign-in to read with (the default channel isn't connected and YT_REFRESH_TOKEN is not set). Nothing to do.");
   const m = await market(token, cfg, now);
   const c = await comments(token, now);
   // a failed reference search never costs the day's market data

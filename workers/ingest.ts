@@ -22,7 +22,7 @@ import { applyTemplateDecisions, exportMetrics, importActivity, importAgentNotif
 import { type FeedTopic, loadFeeds, sourceWithTopic } from "./lib/origin.ts";
 import { loadSettings, seedSettings } from "./lib/settings.ts";
 import { syncThumbs } from "./lib/cover.ts";
-import { allChannels, cpath, crel, layout } from "./lib/channels.ts";
+import { allChannels, cpath, crel, layout, markDeleting } from "./lib/channels.ts";
 import { CHANNEL_KEYS } from "./lib/channel-auth.ts";
 import { syncSetups } from "./lib/setup-sync.ts";
 import { scopedPrisma } from "./lib/scoped.ts";
@@ -211,7 +211,8 @@ export const newestStamp = (stamps: string[]): string | null =>
  * settings (over config/settings.json) and its own backlog. A routine for a channel that isn't
  * active exits at once (generator/settings.py). */
 export async function buildChannelsFile(prisma: PrismaClient): Promise<Record<string, unknown>> {
-  const rows = await prisma.channel.findMany({ orderBy: { createdAt: "asc" } });
+  // a channel being deleted is left out: its routines then find no entry and disable themselves (generator/run.py state)
+  const rows = await prisma.channel.findMany({ where: { status: { not: "deleting" } }, orderBy: { createdAt: "asc" } });
   const out: Record<string, unknown> = {};
   for (const ch of rows) {
     const own = Object.fromEntries(Object.entries((ch.settings ?? {}) as Record<string, unknown>).filter(([k]) => (CHANNEL_KEYS as readonly string[]).includes(k)));
@@ -273,6 +274,9 @@ async function main(): Promise<void> {
   let mark = Date.now();
   const lap = (phase: string) => { console.log(`[${((Date.now() - mark) / 1000).toFixed(1)} s] ${phase}`); mark = Date.now(); };
   try {
+    // a channel the owner is deleting (delete-channel.yml removes it): none of its files are read, its manifests
+    // aren't ingested, and config/channels.json leaves it out, so its routines stop themselves
+    markDeleting((await prisma.channel.findMany({ where: { status: "deleting" }, select: { id: true } })).map((c) => c.id));
     await syncTemplates(prisma);
     lap("templates");
     const feeds = loadFeeds(ROOT);
@@ -310,7 +314,7 @@ async function main(): Promise<void> {
     let ranked: string[] = [], acks = 0, metricsChanged = false;
     const numbers = exportsNumbers();
     const before = process.env.CHANNEL;
-    for (const ch of await prisma.channel.findMany({ orderBy: { createdAt: "asc" } })) {
+    for (const ch of await prisma.channel.findMany({ where: { status: { not: "deleting" } }, orderBy: { createdAt: "asc" } })) {
       if (!existsSync(path.join(ROOT, "channels", ch.id)) && ch.id !== layout().default) continue;
       process.env.CHANNEL = ch.id;
       const p = scopedPrisma(prisma, ch.id);

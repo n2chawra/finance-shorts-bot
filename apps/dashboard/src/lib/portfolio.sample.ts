@@ -23,13 +23,6 @@ type Spec = {
 const hoursAgo = (h: number) => new Date(Date.now() - h * 3_600_000).toISOString();
 
 const SPECS: Spec[] = [
-  { id: "paisa-panchayat", name: "Paisa Panchayat", base: 820, trend: 1.25, subs: 61, subs7: 9, subsPrev7: 4, perDay: 3, stayed: 0.43, pctS: 71, pctL: 34, longHours: 46,
-    uploadTimes: ["07:07", "12:37", "19:07"], longUploadTimes: ["20:07"], longUploadDays: [3, 5], firstDaysAgo: 37,
-    titles: ["What Costco really makes on a $1.50 hot dog", "Why a Starbucks latte costs $6 to make", "Taylor Swift's Eras Tour: what one ticket paid for",
-      "What an IKEA Billy shelf earns IKEA", "How much a Netflix password is worth to Netflix", "Why the iPhone's charger left the box"],
-    health: { color: "amber", reason: "stayed to watch 43%, 2 points under the target", at: hoursAgo(5) },
-    loop: { running: "hook-object-first", description: "Open on the thing in your hand, the price on it", cycle: 2, lastVerdict: { id: "title-question", verdict: "kept", test: "title asks, figure waits" } },
-    backlog: { short: 6, long: 1 } },
   { id: "geography-maps-geopolitical-mysteries", name: "The Why Atlas", base: 1450, trend: 1.6, subs: 38, subs7: 14, subsPrev7: 6, perDay: 2, stayed: 0.52, pctS: 78, pctL: 41, longHours: 21,
     uploadTimes: ["08:37", "18:37"], longUploadTimes: ["19:37"], longUploadDays: [2, 6], firstDaysAgo: 19,
     titles: ["Why Egypt earns $9B a year from one canal", "Why Russia's border has a 2-mile gap", "Why Bolivia still has a navy",

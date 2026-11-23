@@ -31,7 +31,7 @@ function Videos() {
   const counts = useOverview().data?.counts;
   // topic options come from the videos themselves: a fixed list missed every category added since
   const everything = useVideos({});
-  // only the templates this channel's videos use: the full list showed Paisa Panchayat's old ones everywhere
+  // only the templates this channel's videos use: the full list showed the first channel's old ones everywhere
   const used = new Set((everything.data ?? []).map((v) => v.templateId));
   const categories = [...new Set([...(everything.data ?? []).map((v) => v.topic.category), ...(filters.category ? [filters.category] : [])])].sort();
   // a count beside each topic says which ones the channel leans on and never offers an empty result unawares

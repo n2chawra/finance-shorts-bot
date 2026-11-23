@@ -89,7 +89,7 @@ async function platformSettings(): Promise<Settings> {
 /**
  * The settings of the channel picked in the switcher: the platform's, with the channel's own values
  * (Channel.settings, the CHANNEL_KEYS) over them (2026-11-18: the page was platform-wide, so choosing
- * 2 a day on the geography channel changed Paisa Panchayat's 3 a day). A channel that isn't live
+ * 2 a day on the geography channel changed the first channel's 3 a day). A channel that isn't live
  * uploads nothing, whatever the platform switch says.
  */
 export async function getSettings(): Promise<Settings> {

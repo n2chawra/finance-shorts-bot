@@ -53,8 +53,8 @@ notification for the owner — do not invent a topic, Scout's research is what m
 Write `channels/<channel>/videos/<id>/plan.json`, following `generator/prompts/planner.md` for the fields, with:
 - `template`: `long_story`
 - `topic`: `{"title", "category", "feed_id": "<the topic's id>"}` from the feed topic
-- `story`: the topic's long format (`formats` in `state`: `list_explained`, `once_you_understand`,
-  `which_one_are_you`, `how_they_make_money`, `rich_vs_poor`) and `demand`: the topic's reference
+- `story`: the topic's long format (`formats` in `state`, from the channel's
+  `research/formats.json`) and `demand`: the topic's reference
   video `{title, views, url}`. `check-plan` fails without both (owner reset, 2026-10-21).
 - **No Short of ours is needed** (owner, 2026-11-22, on every channel): any usable feed topic can be
   made. Never stop a run, or skip a long video, because no Short has enough views. If the topic names a
@@ -62,14 +62,12 @@ Write `channels/<channel>/videos/<id>/plan.json`, following `generator/prompts/p
   description's first line links it ("The 30-second version: https://youtube.com/shorts/<its YouTube id>"),
   and after shipping you raise an owner notification: "In YouTube Studio open the Short <title> →
   Related video → pick <this long video>" (the API can't set it). Without one, open on the long video's
-  own question. 3–4 minutes (`longLengthMinSec`–`longLengthMaxSec`, 180–240 s since 2026-11-12).
-- `title`: phrased as people search the question the Short raised ("How do billionaires avoid
-  taxes?"), else a big promise someone would click, in the shape of the reference video's ("Every money
-  trap the middle class falls into", "Once you understand X, you'll never Y"). 40–70 characters.
+  own question. The channel's long length (`longLengthMinSec`–`longLengthMaxSec` in `state`).
+- `title`: phrased as people search the topic's question, else a big promise someone would click, in
+  the shape of the reference video's ("Once you understand X, you'll never Y"). 40–70 characters.
 - `description`: 3–5 lines on what the video covers, then the chapter list (you fill in the real
-  timestamps after rendering), then the line "An animated story with illustrative numbers; the
-  characters are not advisers.", then the disclaimer from `state` (YouTube's policy on content that
-  presents itself as an expert giving financial advice; Shorts carry the same line).
+  timestamps after rendering), then the disclaimer from `state` (the channel's `channel.json`; Shorts carry
+  the same line).
 - `hashtags` (3–6, no `#Shorts`), `hook_style`, `cta`, `seed`, `style` as for a Short.
 
 ```
@@ -85,8 +83,8 @@ beat except the `end` card is `"scene": "directed"`. (A channel whose `channel.j
 `"scene": "doc"` instead; follow `python -m generator.run prompt director --channel <channel>`.) Follow `generator/prompts/director.md` (Step 1: a
 place, someone doing something, the figure on a thing, the camera and the moments on words; Step 2: one
 file per beat in `remotion/src/videos/<id>/` on the flat kit, `remotion/src/flat/`). A long video is
-1920×1080: compose for landscape (the reference `v-directed-netflix` is a Short; the same kit, places
-and ideas work wider, with slower moves). Each chapter gets its own places; a chapter opener is a
+1920×1080: compose for landscape (the channel's reference Shorts work wider, with the same kit,
+places and ideas and slower moves). Each chapter gets its own places; a chapter opener is a
 directed beat in the chapter's first place with its title on a thing there (a sign, a door, a screen),
 not a title card. The render fails a video with empty frames, one shot size or one place
 (`renderer/craft.py`).
@@ -111,15 +109,14 @@ the viewer *see* happen?
   Then one `chapter` per item (6–9), each a mini story with the cast, one or two computed figures
   and a cliffhanger into the next; a recap-and-tease every 2–3 minutes; the strongest item last.
   End on what to do, then the `end` beat. Big captions run along the bottom automatically.
-- **People, not slides.** Put a cast moment (`stage`, someone reacting, a line of dialogue)
-  between data scenes. Rohan makes the mistake, Priya explains, Sharma has seen it all, Sikka
-  cheers. They are characters in a story, never advisors: nobody tells the viewer what to buy.
+- **Things happening, not slides.** On a channel with a cast (`look.cast`), put a cast moment between
+  data scenes; on one without, something in the place acts (a map redraws, a part fails, a product
+  moves). Characters are in a story, never advisers: nobody tells the viewer what to buy.
 - **A new picture every 3–6 seconds**, and the picture reacts on the word: name an event
   (`{"word": "owes"}`) and land the figure, the sound and the camera punch on it.
 - **On screen: keywords and figures only.** Never the narration word for word.
-- **Numbers** come only from `maths` (`card_min_due`, `emi`, `sip`, `lumpsum`) through
-  placeholders like `{card_total_paid}` and `"@card.balance"`, in the plan's `currency` (USD unless
-  the story is about one country; see `channels/<channel>/profile.md` for realistic inputs per currency). Never
+- **Numbers** come only from sourced `facts` and `maths` through placeholders like `{fact_area}` and
+  `"@calc.total"`, in the plan's `currency` where money appears (the channel's `channel.json`). Never
   type a digit or a currency sign into any text.
   State the simplification on the end card (`assumption`).
 - **Thumbnails**: three, coded for this video from its own topic's hits, rated, one picked (below).
