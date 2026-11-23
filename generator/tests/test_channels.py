@@ -7,11 +7,11 @@ from generator.run import _pop_channel
 
 
 def test_legacy_paths_until_the_channel_folder_exists(tmp_path, monkeypatch):
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")   # recorded, so the test restores it
+    monkeypatch.setenv("CHANNEL", "first-channel")   # recorded, so the test restores it
     assert cpath(tmp_path, "videos") / "v-1" == tmp_path / "videos" / "v-1"
     assert cpath(tmp_path, "improvement/research/topics.json") == tmp_path / "improvement/research/topics.json"
-    (tmp_path / "channels" / "paisa-panchayat").mkdir(parents=True)
-    ch = tmp_path / "channels" / "paisa-panchayat"
+    (tmp_path / "channels" / "first-channel").mkdir(parents=True)
+    ch = tmp_path / "channels" / "first-channel"
     assert cpath(tmp_path, "videos") == ch / "videos"
     assert cpath(tmp_path, "videos/v-1/plan.json") == ch / "videos/v-1/plan.json"
     assert cpath(tmp_path, "improvement/research/topics.json") == ch / "research/topics.json"
@@ -19,19 +19,19 @@ def test_legacy_paths_until_the_channel_folder_exists(tmp_path, monkeypatch):
     assert cpath(tmp_path, "channel/profile.md") == ch / "profile.md"
     assert cpath(tmp_path, "config/experiments.json") == ch / "experiments.json"
     assert cpath(tmp_path, "improvement/experiments.json") == ch / "experiment-log.json"
-    assert channels.rel(tmp_path, "history/history.json") == "channels/paisa-panchayat/history/history.json"
+    assert channels.rel(tmp_path, "history/history.json") == "channels/first-channel/history/history.json"
 
 
 def test_shared_paths_never_move(tmp_path, monkeypatch):
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
-    (tmp_path / "channels" / "paisa-panchayat").mkdir(parents=True)
+    monkeypatch.setenv("CHANNEL", "first-channel")
+    (tmp_path / "channels" / "first-channel").mkdir(parents=True)
     for shared in ("config/settings.json", "improvement/activity/x.json", "renderer/templates", "improvement/merge-log.json"):
         assert cpath(tmp_path, shared) == tmp_path / shared
 
 
 def test_the_channel_comes_from_the_flag_or_the_environment(tmp_path, monkeypatch):
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")   # recorded, so the test restores it
-    assert channels.current() == "paisa-panchayat"
+    monkeypatch.setenv("CHANNEL", "first-channel")   # recorded, so the test restores it
+    assert channels.current() == "first-channel"
     channels.use("second-one")
     assert channels.current() == "second-one"
     (tmp_path / "channels" / "second-one").mkdir(parents=True)
@@ -56,8 +56,8 @@ def _repo(tmp_path, channels: dict):
 
 def test_a_channel_overrides_its_own_settings_and_backlog(tmp_path, monkeypatch):
     from generator.settings import load
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
-    root = _repo(tmp_path, {"paisa-panchayat": {"status": "active", "settings": {"dailyVideoTarget": 1, "agents": {"paused": True}}, "backlog": 2}})
+    monkeypatch.setenv("CHANNEL", "first-channel")
+    root = _repo(tmp_path, {"first-channel": {"status": "active", "settings": {"dailyVideoTarget": 1, "agents": {"paused": True}}, "backlog": 2}})
     s = load(root)
     assert s["dailyVideoTarget"] == 1 and s["backlog"] == 2 and s["generationPaused"] is False
     assert "agents" not in s or s.get("agents", {}).get("paused") is not True
@@ -65,12 +65,12 @@ def test_a_channel_overrides_its_own_settings_and_backlog(tmp_path, monkeypatch)
 
 def test_a_paused_or_unlaunched_channel_makes_nothing(tmp_path, monkeypatch):
     from generator.settings import load
-    root = _repo(tmp_path, {"paisa-panchayat": {"status": "active"}, "second-one": {"status": "paused"}, "third": {"status": "setup"}})
+    root = _repo(tmp_path, {"first-channel": {"status": "active"}, "second-one": {"status": "paused"}, "third": {"status": "setup"}})
     monkeypatch.setenv("CHANNEL", "second-one")
     assert load(root)["generationPaused"] is True
     monkeypatch.setenv("CHANNEL", "third")
     assert load(root)["generationPaused"] is True
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    monkeypatch.setenv("CHANNEL", "first-channel")
     assert load(root)["generationPaused"] is False
 
 
@@ -105,9 +105,9 @@ def test_video_ids_are_unique_across_channels(tmp_path, monkeypatch):
     from datetime import datetime, timezone
     from generator import history
     monkeypatch.setenv("CHANNEL", "space-facts")
-    (tmp_path / "channels" / "paisa-panchayat" / "videos" / "v-20261117-01").mkdir(parents=True)
-    (tmp_path / "channels" / "paisa-panchayat" / "history").mkdir(parents=True)
-    (tmp_path / "channels" / "paisa-panchayat" / "history" / "history.json").write_text(json.dumps([{"id": "v-20261117-02"}]), encoding="utf-8")
+    (tmp_path / "channels" / "first-channel" / "videos" / "v-20261117-01").mkdir(parents=True)
+    (tmp_path / "channels" / "first-channel" / "history").mkdir(parents=True)
+    (tmp_path / "channels" / "first-channel" / "history" / "history.json").write_text(json.dumps([{"id": "v-20261117-02"}]), encoding="utf-8")
     (tmp_path / "channels" / "space-facts").mkdir(parents=True)
     at = datetime(2026, 11, 17, 6, 0, tzinfo=timezone.utc)
     assert history.next_id([], at, tmp_path) == "v-20261117-03"
@@ -122,7 +122,7 @@ def test_a_new_channels_own_rules(monkeypatch):
     assert topics.stale_facts(old, "2026-11-17")
     old["facts"][0]["fixed"] = True
     assert topics.stale_facts(old, "2026-11-17") == []
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    monkeypatch.setenv("CHANNEL", "first-channel")
     assert arms.own_channel() is None
     assert "why_shaped" not in variety.known_stories()
     monkeypatch.setenv("CHANNEL", "geography-maps-geopolitical-mysteries")
@@ -149,7 +149,7 @@ def test_every_listed_word_is_shown_on_its_word(monkeypatch):
 
 def test_a_channel_can_keep_the_picture_moving_more_often(monkeypatch):
     from renderer import craft
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    monkeypatch.setenv("CHANNEL", "first-channel")
     assert craft.visual_gap() == craft.VISUAL_GAP
     monkeypatch.setenv("CHANNEL", "geography-maps-geopolitical-mysteries")
     assert craft.visual_gap() == 1.8
@@ -162,9 +162,9 @@ def test_each_channel_numbers_its_ids_from_its_own_block(tmp_path, monkeypatch):
     from datetime import datetime, timezone
     from generator import history
     (tmp_path / "config").mkdir()
-    (tmp_path / "config" / "id-blocks.json").write_text(json.dumps({"blocks": {"paisa-panchayat": 0}}), encoding="utf-8")
+    (tmp_path / "config" / "id-blocks.json").write_text(json.dumps({"blocks": {"first-channel": 0}}), encoding="utf-8")
     at = datetime(2026, 11, 21, 6, 0, tzinfo=timezone.utc)
-    monkeypatch.setenv("CHANNEL", "paisa-panchayat")
+    monkeypatch.setenv("CHANNEL", "first-channel")
     assert history.next_id([], at, tmp_path) == "v-20261121-01"
     monkeypatch.setenv("CHANNEL", "space-facts")          # a new channel gets the next block, kept for good
     assert history.next_id([], at, tmp_path) == "v-20261121-11"
@@ -180,7 +180,7 @@ def test_reid_moves_a_video_and_only_its_own_code(tmp_path, monkeypatch):
     monkeypatch.setenv("CHANNEL", "space-facts")
     monkeypatch.setattr(history, "fetch_main", lambda root=None: False)
     (tmp_path / "config").mkdir()
-    (tmp_path / "config" / "id-blocks.json").write_text(json.dumps({"blocks": {"paisa-panchayat": 0, "space-facts": 1}}), encoding="utf-8")
+    (tmp_path / "config" / "id-blocks.json").write_text(json.dumps({"blocks": {"first-channel": 0, "space-facts": 1}}), encoding="utf-8")
     v = tmp_path / "channels" / "space-facts" / "videos" / "v-20261121-01"
     v.mkdir(parents=True)
     (v / "script.json").write_text(json.dumps({"beats": [{"params": {"component": "Hook"}}]}), encoding="utf-8")
@@ -193,7 +193,7 @@ def test_reid_moves_a_video_and_only_its_own_code(tmp_path, monkeypatch):
     (code / "Hook.tsx").write_text('import { P } from "./Parts";\n', encoding="utf-8")
     (code / "Parts.tsx").write_text("export const P = 1;\n", encoding="utf-8")
     (code / "City.tsx").write_text("// the other channel's video of the same id\n", encoding="utf-8")
-    (tmp_path / "channels" / "paisa-panchayat" / "videos" / "v-20261121-01").mkdir(parents=True)
+    (tmp_path / "channels" / "first-channel" / "videos" / "v-20261121-01").mkdir(parents=True)
     assert run.reid("v-20261121-01", root=tmp_path) == "v-20261121-11"
     nv = tmp_path / "channels" / "space-facts" / "videos" / "v-20261121-11"
     assert json.loads((nv / "manifest.json").read_text(encoding="utf-8"))["release"]["tag"] == "video-v-20261121-11"

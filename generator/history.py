@@ -57,7 +57,7 @@ def of_format(entries: list[dict], fmt: str = "short") -> list[dict]:
 
 
 # Each channel numbers its ids from its own block of ten (channel 0: 01-10, channel 1: 11-20, ...), so two
-# channels' runs that start at the same time never pick the same id (2026-11-21: Paisa Panchayat's Uber Short
+# channels' runs that start at the same time never pick the same id (2026-11-21: channel #1's Uber Short
 # and How Tech Works' transistor Short were both v-20261121-01, and the second mp4 landed in the first one's
 # release). Blocks are kept in config/id-blocks.json and only ever appended to, so a channel keeps its block.
 ID_BLOCKS = "config/id-blocks.json"

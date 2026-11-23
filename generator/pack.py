@@ -2,7 +2,7 @@
 
 `channels/<slug>/channel.json` declares the channel's language, voices, currency, whether its videos
 compute numbers, its disclaimer, whether its stories are true, its look and its upload category. The
-pipeline reads these instead of Paisa Panchayat's built-in values; with no file (channel #1 before it
+pipeline reads these instead of channel #1's built-in values; with no file (channel #1 before it
 has one, the tests' temporary repos) every value is channel #1's, so nothing changes for it.
 
     python -m generator.pack check <slug>      what the channel still lacks before samples can be made
@@ -24,7 +24,7 @@ from .settings import ROOT
 KOKORO_LANG = {"a": "en-us", "b": "en-gb", "e": "es", "f": "fr", "h": "hi", "i": "it", "j": "ja", "p": "pt-br", "z": "zh"}
 
 DEFAULTS: dict = {
-    "name": "Paisa Panchayat",
+    "name": "Channel",
     "language": "en-us",
     "voices": {"shortsNarrator": "am_michael", "longNarrators": ["hf_alpha", "af_heart", "af_bella", "am_fenrir", "am_puck"]},
     "currency": "USD",
@@ -87,7 +87,7 @@ def logo(slug: str | None = None, root: Path = ROOT) -> str | None:
 
 # The slowest a channel's own narrator may speak (owner, 2026-11-23: "if some feedback looks good for all channels,
 # change for all"). Three channels' owner notes asked for a faster pace (How Tech Works Shorts 0.92 -> 1.0, Disaster
-# Desk long 0.92 -> 1.15, Rise & Fall to 1.5x its references), and none asked for slower except Paisa Panchayat's
+# Desk long 0.92 -> 1.15, Rise & Fall to 1.5x its references), and none asked for slower except channel #1's
 # 215-word long videos (tempo 1.5, 4 Nov). So no channel's narrator goes under about 164 words a minute in a Short
 # or 189 in a long video; a faster channel.json value is kept.
 MIN_SPEED = {"short": 1.0, "long": 1.15}
@@ -106,7 +106,7 @@ OWNER_PACE: dict[str, dict[str, float]] = {
 
 def voice_speed(fmt: str, slug: str | None = None, root: Path = ROOT) -> float | None:
     """The channel's own narrator speed for a format (channel.json `voiceSpeed`: {"short": x, "long": y}, the
-    total speed the voice is spoken at), or None for the platform's default (Paisa Panchayat's pace). A channel
+    total speed the voice is spoken at), or None for the platform's default (channel #1's pace). A channel
     never inherits another's pace (owner, 2026-11-18: the tech channel's sample spoke at 229 words a minute,
     channel #1's money-Shorts pace, against its references' 151)."""
     v = (load(slug, root).get("voiceSpeed") or {}).get(fmt)
@@ -286,7 +286,7 @@ Seen in: Rise & Fall, 20 Nov: "the same 3 sneaker photos reused and almost no ef
 Fix: a photo or picture is in one beat of a Short (the loop beat may repeat the first), two of a long video at most; the code check fails a repeat (renderer/remotion.py picture_once_problems).
 
 ## 8. A named place, company or person shows its real mark (general)
-Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); Paisa Panchayat's Squid Game and Apple/Google notes.
+Seen in: Geography's Russia Short, 23 Nov: "Where is the flag of Russia??" (its area grew in plain red); channel #1's Squid Game and Apple/Google notes.
 Fix: a country on the map shows its flag (the code check fails a map video whose named country never gets one), a company its logo, a person their photo head.
 
 ## 9. A long video's first sentence states the stakes (general)

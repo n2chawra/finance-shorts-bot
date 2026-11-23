@@ -78,7 +78,7 @@ OCTOBER_VOICE = 1.4
 
 def beat_pad(fmt: str) -> tuple[float, float]:
     """The silence before and after each beat's line (story seconds): LEAD and TAIL, or the channel's own
-    (channel.json `beatPad`: {"short": [lead, tail]}). Going Down's approved sample ran its narration on with
+    (channel.json `beatPad`: {"short": [lead, tail]}). The dive channel's approved sample ran its narration on with
     almost no pause between layers (70 words in 22 s); 0.85 s a beat made its first Short 28 s (2026-11-21)."""
     own = (channel_pack.load().get("beatPad") or {}).get(fmt)
     if isinstance(own, (list, tuple)) and len(own) == 2 and all(isinstance(x, (int, float)) and 0 <= x <= 1 for x in own):
@@ -90,7 +90,7 @@ def voice_speed(script: dict, fmt: str, tempo: float) -> float:
     """The voice's speed: the script's speed at the video's tempo. Every Short speaks at the October pace since
     2026-11-12 (the experiment was adopted into the weekly loop's first champion recipe)."""
     own = channel_pack.voice_speed(fmt) if "speed" not in script else None
-    if own:   # the channel's own pace (channel.json voiceSpeed), never Paisa Panchayat's
+    if own:   # the channel's own pace (channel.json voiceSpeed), never channel #1's
         return own
     if "speed" not in script and fmt == "short":
         return OCTOBER_VOICE
@@ -141,7 +141,7 @@ FORM_KEYS = frozenset({"form"})
 FORM_NAME = re.compile(r"^(?:Form )?(?:10-K|10-Q|8-K|S-1|S-4|20-F|40-F|6-K|DEF 14A|13F|SC 13D|SC 13G|Form 4|424B\d)(?:/A)?$")
 
 
-# a dive layer's colours (remotion/src/dive, 2026-11-21): a hex or named colour on the landmark, a tunnel or its
+# a layer's colours (first for the retired dive kit, 2026-11-21): a hex or named colour on the landmark, a tunnel or its
 # trains is paint, not a figure; and a transit line's badge ("4", "7", "S") is the line's name, never a figure
 COLOUR_KEYS = frozenset({"color", "wall", "trim", "glass", "vehicle", "stripe", "light", "trains"})
 COLOUR = re.compile(r"^(?:#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?|[a-z]+)$")

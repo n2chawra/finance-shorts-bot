@@ -15,7 +15,7 @@ def test_disasters_channel_takes_reports_and_public_domain_photos_but_no_stock()
     for src in ("pexels", "pixabay", "edgar"):
         assert not may_use(DD, src)
     assert may_use("business-documentaries-rise-and-fall-of", "pexels")
-    assert not may_use("paisa-panchayat", "report") and may_use("paisa-panchayat", "commons")
+    assert not may_use("first-channel", "report") and may_use("first-channel", "commons")
 
 
 def test_only_official_investigation_bodies_are_accepted():

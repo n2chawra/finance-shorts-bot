@@ -125,7 +125,7 @@ def test_geography_units_on_screen_and_spoken():
 
 
 def test_depth_and_time_units_on_screen_and_spoken():
-    """Feet, seconds and minutes for Going Down (2026-11-21): '150 ft' is spoken 'one hundred fifty feet'."""
+    """Feet, seconds and minutes for the dive channel (2026-11-21): '150 ft' is spoken 'one hundred fifty feet'."""
     from renderer.engine.formatting import fact_value
     from renderer.engine.voice import spoken
     assert fact_value(150, "ft", "USD") == "150 ft"

@@ -4,7 +4,7 @@
       "id": "tech-long-from-short-gate",
       "kind": "bug",
       "title": "The 'from_short' rule blocks every long topic on this long-first channel",
-      "detail": "generator/topics.py winning_short() requires a long topic to name one of our Shorts with 100+ views in the top third by stayed to watch (a Paisa Panchayat rule, owner 2026-11-12). This channel's profile is long-first (a long video a week, Shorts cut from it; longPerWeek 2) and has one Short with 25 views, so all 10 topics in longform/topics.json are blocked and Studio cannot make this week's 2 long videos. Fix: let a channel opt out (e.g. channel.json \"longFrom\": \"feed\" or skip the rule when profile is long-first) until it has 3+ Shorts with 100+ views; add a test. Worked when `state --format long` shows usable_now true for the feed's topics.",
+      "detail": "generator/topics.py winning_short() requires a long topic to name one of our Shorts with 100+ views in the top third by stayed to watch (a channel #1 rule, owner 2026-11-12). This channel's profile is long-first (a long video a week, Shorts cut from it; longPerWeek 2) and has one Short with 25 views, so all 10 topics in longform/topics.json are blocked and Studio cannot make this week's 2 long videos. Fix: let a channel opt out (e.g. channel.json \"longFrom\": \"feed\" or skip the rule when profile is long-first) until it has 3+ Shorts with 100+ views; add a test. Worked when `state --format long` shows usable_now true for the feed's topics.",
       "where": "script",
       "route": "owner",
       "priority": "high",

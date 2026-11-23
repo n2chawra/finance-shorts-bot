@@ -49,7 +49,7 @@ def spoken(display: str, currency: str = "INR") -> str:
         return year_words(int(s))
     if s[:1] in "-−" and len(s) > 1:   # '-$19,470' (a value that fell) → 'minus nineteen thousand … dollars'
         return "minus " + spoken(s[1:], currency)
-    # a distance, area, height or depth ('4,300 km', '150 ft'), or a time ('90 s', '5 min'; Going Down, 2026-11-21)
+    # a distance, area, height or depth ('4,300 km', '150 ft'), or a time ('90 s', '5 min'; the dive channel, 2026-11-21)
     m = re.fullmatch(r"([\d.,]+)\s*(km²|km|m³/s|tonnes/s|t/s|m|ft|s|min|tonnes)", s)
     if m:
         num = _trim(m.group(1).replace(",", ""))

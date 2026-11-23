@@ -213,9 +213,9 @@ FACT_UNITS = ("year", "rupees", "rupees_lakh", "rupees_crore", "percent", "count
               "count_thousand", "count_million", "count_billion",
               # distances, areas and heights for a geography channel (multi-channel plan, 2026-11-17)
               "km", "km2", "m",
-              # depths and times for Going Down (2026-11-21): feet as the US sources give them, a ride in seconds or minutes
+              # depths and times for the dive channel (2026-11-21): feet as the US sources give them, a ride in seconds or minutes
               "ft", "s", "min", "tonnes",
-              # flow rates (Going Down, 2026-11-22: G-Cans pumps "200 tonnes per second" had no unit)
+              # flow rates (the dive channel, 2026-11-22: G-Cans pumps "200 tonnes per second" had no unit)
               "tonnes_per_s", "tonnes per second", "m3_per_s")
 _SCALE = {"thousand": "K", "million": "M", "billion": "B", "trillion": "T"}
 
