@@ -1,2302 +1,2467 @@
 {
-  "note": "First topics from the setup research (18 Nov 2026); every fact checked against its source that day.",
-  "topics": [
+ "note": "First topics from the setup research (18 Nov 2026); every fact checked against its source that day.",
+ "topics": [
+  {
+   "id": "2026-11-18-gpu-one-frame",
+   "format": "long",
+   "title": "What Happens Inside a Graphics Card to Draw One Frame",
+   "category": "chips",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "inside_when_you"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "What Happens Inside a CPU in One Second?",
+    "views": 446892,
+    "url": "https://youtube.com/watch?v=r9qDcQ_b50k",
+    "channel": "Silicon Up Close",
+    "channelSubs": 12700,
+    "outlier": 35.2
+   },
+   "hook": "Every frame of your game is drawn from scratch in a few thousandths of a second. Here is everything that happens.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Follow one frame through an RTX 4090: triangles in, corners moved into place, pixels shaded by 16,384 small maths units at billions of ticks a second, written to memory and sent to the screen. Labelled 3D cut-through: the card, the die, one core.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long, core). Viewers asked for advanced graphics (comment notes #9).",
+   "facts": [
     {
-      "id": "2026-11-18-gpu-one-frame",
-      "format": "long",
-      "title": "What Happens Inside a Graphics Card to Draw One Frame",
-      "category": "chips",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "inside_when_you"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "What Happens Inside a CPU in One Second?",
-        "views": 446892,
-        "url": "https://youtube.com/watch?v=r9qDcQ_b50k",
-        "channel": "Silicon Up Close",
-        "channelSubs": 12700,
-        "outlier": 35.2
-      },
-      "hook": "Every frame of your game is drawn from scratch in a few thousandths of a second. Here is everything that happens.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Follow one frame through an RTX 4090: triangles in, corners moved into place, pixels shaded by 16,384 small maths units at billions of ticks a second, written to memory and sent to the screen. Labelled 3D cut-through: the card, the die, one core.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long, core). Viewers asked for advanced graphics (comment notes #9).",
-      "facts": [
-        {
-          "label": "NVIDIA GeForce RTX 4090: CUDA cores (its small maths units)",
-          "value": 16384,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "NVIDIA (RTX 4090 specs)",
-          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
-          "fixed": true
-        },
-        {
-          "label": "RTX 4090 boost clock, in gigahertz (billions of ticks a second)",
-          "value": 2.52,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "NVIDIA (RTX 4090 specs)",
-          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
-          "fixed": true
-        },
-        {
-          "label": "RTX 4090 graphics memory, in gigabytes (GDDR6X)",
-          "value": 24,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "NVIDIA (RTX 4090 specs)",
-          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
-          "fixed": true
-        },
-        {
-          "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
-          "value": 76,
-          "unit": "count_billion",
-          "as_of": "2022-09-20",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
-          "fixed": true
-        },
-        {
-          "label": "Transistors in the generation before (Ampere), for comparison",
-          "value": 28,
-          "unit": "count_billion",
-          "as_of": "2022-09-20",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
-          "fixed": true
-        }
-      ],
-      "demand_check": "YouTube search 2026-11-23: Branch Education 7.9M (2y), Zevo Lab 256K (8mo)"
+     "label": "NVIDIA GeForce RTX 4090: CUDA cores (its small maths units)",
+     "value": 16384,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "NVIDIA (RTX 4090 specs)",
+     "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+     "fixed": true
     },
     {
-      "id": "2026-11-18-face-unlock",
-      "format": "long",
-      "title": "What Happens Inside Your Phone When You Unlock It With Your Face",
-      "category": "chips",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "inside_when_you"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "What Happens Inside an AI Chip When You Ask a Question",
-        "views": 1024094,
-        "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
-        "channel": "Silicon Up Close",
-        "channelSubs": 12700,
-        "outlier": 80.6
-      },
-      "hook": "Your phone just fired thousands of invisible dots at your face. Here's what it did with them.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Face ID step by step: the dot projector, the infrared camera, the depth map, the neural engine comparing it with the stored maths of your face, the secure check, all before the screen lights. Apple's own figures only; no security how-tos.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long, example title 1).",
-      "facts": [
-        {
-          "label": "Invisible infrared dots Face ID projects onto your face, more than",
-          "value": 30000,
-          "unit": "count",
-          "as_of": "2017-09-12",
-          "source": "Apple Newsroom",
-          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
-          "fixed": true
-        },
-        {
-          "label": "Neural engine operations per second on the iPhone X chip, up to",
-          "value": 600,
-          "unit": "count_billion",
-          "as_of": "2017-09-12",
-          "source": "Apple Newsroom",
-          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
-          "fixed": true
-        },
-        {
-          "label": "Chance a random person unlocks it with one enrolled appearance: less than 1 in",
-          "value": 1000000,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "Apple Support (About Face ID advanced technology)",
-          "url": "https://support.apple.com/en-us/102381",
-          "fixed": true
-        },
-        {
-          "label": "Year Face ID launched, on iPhone X",
-          "value": 2017,
-          "unit": "year",
-          "as_of": "2017-09-12",
-          "source": "Apple Newsroom",
-          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/"
-        }
-      ],
-      "demand_check": "YouTube search 2026-11-23: PawelCodeStuff 1.1M (1mo), WSJ 12M (9y)"
+     "label": "RTX 4090 boost clock, in gigahertz (billions of ticks a second)",
+     "value": 2.52,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "NVIDIA (RTX 4090 specs)",
+     "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+     "fixed": true
     },
     {
-      "id": "2026-11-18-euv-prints-a-chip",
-      "format": "long",
-      "title": "How a Chip Factory Prints Billions of Switches With Light",
-      "category": "chips",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "inside_when_you"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Semiconductor Chip कैसे बनती है? रेत से 2nm Chip तक की पूरी कहानी",
-        "views": 2201309,
-        "url": "https://youtube.com/watch?v=lvcAvPjZwxo",
-        "channel": "PROCESS BHARAT",
-        "channelSubs": 234000,
-        "outlier": 9.4
-      },
-      "hook": "To print a modern chip, a machine blasts drops of molten tin fifty thousand times a second.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Inside ASML's EUV machine: tin droplets hit twice by a laser, plasma giving off 13.5 nm light, mirrors carrying it onto a mask and down onto the wafer, layer by layer. ASML's figures; no export-control politics.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long). Viewers asked for the machines that make chips (comment notes #5).",
-      "facts": [
-        {
-          "label": "Wavelength of EUV light, in nanometres",
-          "value": 13.5,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML",
-          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
-          "fixed": true
-        },
-        {
-          "label": "Times every second a tin droplet is hit and turned into light-making plasma",
-          "value": 50000,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML",
-          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
-          "fixed": true
-        },
-        {
-          "label": "Diameter of each molten tin droplet, in microns (about)",
-          "value": 25,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML",
-          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
-          "fixed": true
-        },
-        {
-          "label": "Speed the droplets leave the generator, in metres per second",
-          "value": 70,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML",
-          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
-          "fixed": true
-        },
-        {
-          "label": "Smallest feature a standard (0.33 NA) EUV machine prints, in nanometres",
-          "value": 13,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML (EUV lithography systems)",
-          "url": "https://www.asml.com/en/products/euv-lithography-systems",
-          "fixed": true
-        },
-        {
-          "label": "Smallest feature a High-NA (0.55 NA) EUV machine prints, in nanometres",
-          "value": 8,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML (EUV lithography systems)",
-          "url": "https://www.asml.com/en/products/euv-lithography-systems",
-          "fixed": true
-        }
-      ],
-      "pin": 1,
-      "demand_check": "YouTube search 2026-11-23: Veritasium 67M (10mo), Branch Education 2.4M (1y), ASML 600K (2y)"
+     "label": "RTX 4090 graphics memory, in gigabytes (GDDR6X)",
+     "value": 24,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "NVIDIA (RTX 4090 specs)",
+     "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+     "fixed": true
     },
     {
-      "id": "2026-11-18-ssd-stores-a-bit",
-      "format": "long",
-      "title": "How an SSD Stores a Bit With No Moving Parts",
-      "category": "chips",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "inside_when_you"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How do microSD Cards Store 2 TB in such a TINY space?",
-        "views": 1560892,
-        "url": "https://youtube.com/watch?v=9kM3mnxrMMM"
-      },
-      "hook": "Your files are electrons trapped in a cage far too small to see. Here's how one gets in and out.",
-      "templates": [
-        "any"
-      ],
-      "angle": "One NAND cell: trapped charge sets a 0 or 1, the read checks it, then 3D stacking piles hundreds of layers (332 in KIOXIA's 2025 generation, from 48 in 2015) into a skyscraper. Keep layers and stacked dies apart (viewers caught that slip before).",
-      "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long). Viewers asked about 3D NAND layers, electron trapping and wear (comment notes #11).",
-      "facts": [
-        {
-          "label": "Year Toshiba (now KIOXIA) invented NAND flash memory",
-          "value": 1987,
-          "unit": "year",
-          "as_of": "1987-01-01",
-          "source": "KIOXIA technology history",
-          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
-        },
-        {
-          "label": "Capacity of the first commercial NAND flash chip, in megabits",
-          "value": 4,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "KIOXIA technology history",
-          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
-          "fixed": true
-        },
-        {
-          "label": "Year the first commercial NAND chip was commercialized",
-          "value": 1991,
-          "unit": "year",
-          "as_of": "1991-01-01",
-          "source": "KIOXIA technology history",
-          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
-        },
-        {
-          "label": "Year KIOXIA announced the first 3D (stacked) flash technology",
-          "value": 2007,
-          "unit": "year",
-          "as_of": "2007-01-01",
-          "source": "KIOXIA technology history",
-          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
-        },
-        {
-          "label": "Layers of memory cells in KIOXIA's BiCS FLASH generation 10 (2025)",
-          "value": 332,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "KIOXIA technology history",
-          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
-          "fixed": true
-        },
-        {
-          "label": "Layers in its 2015 generation, for comparison",
-          "value": 48,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "KIOXIA technology history",
-          "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
-          "fixed": true
-        }
-      ]
+     "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
+     "value": 76,
+     "unit": "count_billion",
+     "as_of": "2022-09-20",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+     "fixed": true
     },
     {
-      "id": "2026-11-18-ai-question-to-answer",
-      "format": "long",
-      "title": "How an AI Turns Your Question Into an Answer, Every Step",
-      "category": "ai",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "how_ai_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How AI works, Explained with Mushrooms ! (Easiest Explanation )",
-        "views": 622117,
-        "url": "https://youtube.com/watch?v=vIM9qCyfVmg",
-        "channel": "Xplained with MUSHROOMS",
-        "channelSubs": 2320,
-        "outlier": 268.2
-      },
-      "hook": "You type a question. Seconds later, words appear. Here is every step in between, down to the chip.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Text cut into tokens, tokens turned into numbers, the numbers multiplied through billions of parameters on the GPU's maths units, one next token picked, repeated. Never skip the hardware-to-answer step. No hype: it predicts text; it doesn't think.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: how-AI-works long, the best hit rate). The top ask in the comments: the missing step from transistors to an answer (comment notes #1).",
-      "facts": [
-        {
-          "label": "Parameters (adjustable numbers) in GPT-3",
-          "value": 175,
-          "unit": "count_billion",
-          "as_of": "2020-05-28",
-          "source": "Brown et al., Language Models are Few-Shot Learners (arXiv)",
-          "url": "https://arxiv.org/abs/2005.14165",
-          "fixed": true
-        },
-        {
-          "label": "Characters of English text in one token, roughly",
-          "value": 4,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "OpenAI Help Center (What are tokens)",
-          "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
-          "fixed": true
-        },
-        {
-          "label": "Words in 100 tokens, roughly",
-          "value": 75,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "OpenAI Help Center (What are tokens)",
-          "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
-          "fixed": true
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-ai-query-energy-water",
-      "format": "long",
-      "title": "What One AI Question Really Costs in Power and Water",
-      "category": "ai",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "how_ai_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "What Happens Inside an AI Chip When You Ask a Question",
-        "views": 1024094,
-        "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
-        "channel": "Silicon Up Close",
-        "channelSubs": 12700,
-        "outlier": 80.6
-      },
-      "hook": "One AI question uses about five drops of water. So why are data centres running short of power?",
-      "templates": [
-        "any"
-      ],
-      "angle": "Follow one prompt into a data centre: the chip's power, the cooling, the water. Google's measured figure per prompt, OpenAI's CEO's stated figure (named as his), then the IEA's total for all data centres. Sources named on screen; no scare framing.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: how-AI-works long, example title 3). Viewers asked what one AI question costs in compute, power and water (comment notes #3).",
-      "facts": [
-        {
-          "label": "Energy used by the median Gemini Apps text prompt, in watt-hours",
-          "value": 0.24,
-          "unit": "count",
-          "as_of": "2025-08-22",
-          "source": "Google Cloud blog",
-          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
-          "fixed": true
-        },
-        {
-          "label": "Water used by the median Gemini Apps text prompt, in millilitres",
-          "value": 0.26,
-          "unit": "count",
-          "as_of": "2025-08-22",
-          "source": "Google Cloud blog",
-          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
-          "fixed": true
-        },
-        {
-          "label": "That water as drops, about",
-          "value": 5,
-          "unit": "count",
-          "as_of": "2025-08-22",
-          "source": "Google Cloud blog",
-          "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
-          "fixed": true
-        },
-        {
-          "label": "Energy an average ChatGPT query uses, in watt-hours (OpenAI CEO's figure)",
-          "value": 0.34,
-          "unit": "count",
-          "as_of": "2025-06-10",
-          "source": "Sam Altman, The Gentle Singularity",
-          "url": "https://blog.samaltman.com/the-gentle-singularity",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "The all-data-centre total: IEA 'Key Questions on Energy and AI' (April 2026) reportedly gives about 485 TWh in 2025 and 950 TWh in 2030; iea.org blocked fetching on 18 Nov, so confirm on the IEA page (or two outlets) and add it as a fact before using it"
-      ],
-      "sources": [
-        "https://iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
-      ]
-    },
-    {
-      "id": "2026-11-18-message-crosses-ocean",
-      "format": "long",
-      "title": "How Your Message Crosses the Ocean in a Tenth of a Second",
-      "category": "internet",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "how_network_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Inside America's Only Internet Sea Cable Maker",
-        "views": 5542424,
-        "url": "https://youtube.com/watch?v=cKnwkxItL2M"
-      },
-      "hook": "Your message to London didn't go to space. It went along the bottom of the Atlantic, in a cable as wide as a garden hose.",
-      "templates": [
-        "any"
-      ],
-      "angle": "From your phone to a landing station, into a fibre pair, light pulses along MAREA's 6,605 km of Atlantic floor, boosted by repeaters, out at Bilbao. Light moves at the speed of light in glass, not in a vacuum (viewers correct this). Any travel time is computed from the length and a sourced speed.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: internet long, a gap). Viewers asked how light carries data in sea cables and how they're laid (comment notes #13).",
-      "facts": [
-        {
-          "label": "Kilometres of submarine cable in service worldwide, over",
-          "value": 1.5,
-          "unit": "count_million",
-          "as_of": "2026-01-01",
-          "source": "TeleGeography Submarine Cable FAQs",
-          "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
-        },
-        {
-          "label": "Active and planned submarine cables TeleGeography tracks, more than",
-          "value": 600,
-          "unit": "count",
-          "as_of": "2026-01-01",
-          "source": "TeleGeography Submarine Cable FAQs",
-          "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
-        },
-        {
-          "label": "Length of the MAREA cable, Virginia Beach to Bilbao",
-          "value": 6605,
-          "unit": "km",
-          "as_of": "2018-02-01",
-          "source": "Wikipedia (MAREA)",
-          "url": "https://en.wikipedia.org/wiki/MAREA",
-          "fixed": true
-        },
-        {
-          "label": "MAREA's fibre pairs",
-          "value": 8,
-          "unit": "count",
-          "as_of": "2018-02-01",
-          "source": "Wikipedia (MAREA)",
-          "url": "https://en.wikipedia.org/wiki/MAREA",
-          "fixed": true
-        },
-        {
-          "label": "MAREA's capacity at completion, in terabits per second, up to",
-          "value": 160,
-          "unit": "count",
-          "as_of": "2017-09-23",
-          "source": "Microsoft News",
-          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
-          "fixed": true
-        },
-        {
-          "label": "How many times faster than the average home connection MAREA is, more than",
-          "value": 16,
-          "unit": "count_million",
-          "as_of": "2017-09-23",
-          "source": "Microsoft News",
-          "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
-          "fixed": true
-        }
-      ],
-      "demand_check": "YouTube search 2026-11-23: VISION 11M (5y), Fluctus 4.3M (3y), RealLifeLore 1.7M (7y)"
-    },
-    {
-      "id": "2026-11-18-starlink-flat-dish",
-      "format": "long",
-      "title": "How Starlink's Flat Dish Aims at Satellites Without Moving",
-      "category": "internet",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "how_network_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How Starlink Actually Works",
-        "views": 4632145,
-        "url": "https://youtube.com/watch?v=DW-aL_MiUz4",
-        "channel": "The Space Race",
-        "channelSubs": 944000,
-        "outlier": 4.9
-      },
-      "hook": "This dish follows satellites racing across the sky, and it never moves. Here's how.",
-      "templates": [
-        "any"
-      ],
-      "angle": "A phased array: many tiny antennas fire a fraction of a second apart so the beam bends where it's needed, handing off between satellites about 550 km up instead of one 35,786 km up. Draw the cables right (viewers caught a power cable drawn as data).",
-      "why_now": "First topics for the channel, from the setup research (advice.md: internet long, example title 2). Viewers asked about LEO vs GEO and the phased-array dish (comment notes #14).",
-      "facts": [
-        {
-          "label": "Altitude of the Starlink constellation, about",
-          "value": 550,
-          "unit": "km",
-          "as_of": "2026-11-18",
-          "source": "Starlink (Technology)",
-          "url": "https://www.starlink.com/technology",
-          "fixed": true
-        },
-        {
-          "label": "Altitude of a geostationary satellite above the equator",
-          "value": 35786,
-          "unit": "km",
-          "as_of": "2026-11-18",
-          "source": "Wikipedia (Geostationary orbit)",
-          "url": "https://en.wikipedia.org/wiki/Geostationary_orbit",
-          "fixed": true
-        },
-        {
-          "label": "Ku-band phased-array antennas on each Starlink satellite",
-          "value": 5,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "Starlink (Technology)",
-          "url": "https://www.starlink.com/technology"
-        },
-        {
-          "label": "Operational satellites in the first Starlink launch",
-          "value": 60,
-          "unit": "count",
-          "as_of": "2019-05-24",
-          "source": "Wikipedia (Starlink)",
-          "url": "https://en.wikipedia.org/wiki/Starlink",
-          "fixed": true
-        },
-        {
-          "label": "Year of that first operational launch",
-          "value": 2019,
-          "unit": "year",
-          "as_of": "2019-05-24",
-          "source": "Wikipedia (Starlink)",
-          "url": "https://en.wikipedia.org/wiki/Starlink"
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-first-mouse-wood",
-      "format": "short",
-      "title": "The First Computer Mouse Was Made of Wood",
-      "category": "history",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How Mouse Works? (3D) by Professor Of Ai",
-        "views": 1346050,
-        "url": "https://youtube.com/watch?v=PE7MIF2YMWk",
-        "channel": "Professor Of AI",
-        "channelSubs": 400000,
-        "outlier": 3.4
-      },
-      "hook": "The first computer mouse was a wooden box with two metal wheels.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Bill English built Doug Engelbart's design at SRI in 1964: a wooden block, two wheels at right angles, one button; shown to the world in a 90-minute demo in 1968. Recreated in 3D. Wood: Computer History Museum caption (https://www.computerhistory.org/revolution/input-output/14/350).",
-      "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts, example title).",
-      "facts": [
-        {
-          "label": "Year Bill English built the first mouse prototype at SRI",
-          "value": 1964,
-          "unit": "year",
-          "as_of": "1964-01-01",
-          "source": "SRI International",
-          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
-        },
-        {
-          "label": "Year the mouse patent was filed",
-          "value": 1967,
-          "unit": "year",
-          "as_of": "1967-01-01",
-          "source": "SRI International",
-          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
-        },
-        {
-          "label": "Year Engelbart showed it in public",
-          "value": 1968,
-          "unit": "year",
-          "as_of": "1968-12-09",
-          "source": "SRI International",
-          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
-        },
-        {
-          "label": "Length of that public demonstration, in minutes",
-          "value": 90,
-          "unit": "count",
-          "as_of": "1968-12-09",
-          "source": "SRI International",
-          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/",
-          "fixed": true
-        },
-        {
-          "label": "Year the patent was issued (X-Y Position Indicator for a Display System)",
-          "value": 1970,
-          "unit": "year",
-          "as_of": "1970-01-01",
-          "source": "SRI International",
-          "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-why-qwerty",
-      "format": "short",
-      "title": "Why Your Keyboard Isn't in ABC Order",
-      "category": "history",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How You Accidentally Invented the Mechanical Typewriter",
-        "views": 6599644,
-        "url": "https://youtube.com/watch?v=ZDhDxu5eNig",
-        "channel": "Badream",
-        "channelSubs": 19800,
-        "outlier": 333.3
-      },
-      "hook": "Why is Q in the corner of your keyboard? The answer is about 150 years old.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Sholes's 1868 typewriter, sold to Remington in 1873, its layout reshuffled until the 1878 patent showed QWERTY. Say the anti-jamming story is disputed rather than state it as fact.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts, example title).",
-      "facts": [
-        {
-          "label": "Year of Sholes's typewriter patent (US 79,265)",
-          "value": 1868,
-          "unit": "year",
-          "as_of": "1868-06-23",
-          "source": "Centre for Computing History",
-          "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
-        },
-        {
-          "label": "Year Sholes sold manufacturing rights to E. Remington and Sons",
-          "value": 1873,
-          "unit": "year",
-          "as_of": "1873-01-01",
-          "source": "Centre for Computing History",
-          "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
-        },
-        {
-          "label": "Year of the patent showing the QWERTY layout (US 207,559)",
-          "value": 1878,
-          "unit": "year",
-          "as_of": "1878-08-27",
-          "source": "Centre for Computing History",
-          "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-first-computer-bug",
-      "format": "short",
-      "title": "The First Computer Bug Was a Real Moth",
-      "category": "history",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How Mr. Potato Head Was Invented",
-        "views": 35566426,
-        "url": "https://youtube.com/watch?v=XFY7-td3LA8",
-        "channel": "Zack D. Films",
-        "channelSubs": 29800000,
-        "outlier": 1.2
-      },
-      "hook": "Engineers opened a computer, found a moth inside, and taped it into the logbook.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Harvard's Mark II, September 1947: operators find a moth between the relays and log the 'first actual case of bug being found'. The word bug was older; this made it famous. Don't say Grace Hopper found it herself (disputed).",
-      "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts).",
-      "facts": [
-        {
-          "label": "Year a moth stuck in Harvard's Mark II computer was logged as a bug",
-          "value": 1947,
-          "unit": "year",
-          "as_of": "1947-09-09",
-          "source": "Centre for Computing History",
-          "url": "https://www.computinghistory.org.uk/det/5927/First-computer-bug-is-found/"
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-first-hard-drive",
-      "format": "short",
-      "title": "The First Hard Drive Had 50 Disks and Held Under 4 Megabytes",
-      "category": "history",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How the Bicycle Was Actually Invented!",
-        "views": 1027331,
-        "url": "https://youtube.com/watch?v=PdszpOPce-Y",
-        "channel": "Engineer Explain in hindi",
-        "channelSubs": 503000,
-        "outlier": 2.0
-      },
-      "hook": "The first hard drive had fifty disks the size of pizzas, and you couldn't even buy it.",
-      "templates": [
-        "any"
-      ],
-      "angle": "IBM's Model 350, 1956: fifty 24-inch disks, the equivalent of 3.75 MB, rented for $750 a month. Trails the SSD long video. Any 'one photo / one song' comparison is computed from 3.75 MB and a stated file size.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts; trails the SSD long video).",
-      "facts": [
-        {
-          "label": "Year IBM shipped the first hard drive, the Model 350",
-          "value": 1956,
-          "unit": "year",
-          "as_of": "1956-06-01",
-          "source": "Computer History Museum",
-          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/"
-        },
-        {
-          "label": "Its capacity, in megabytes (equivalent)",
-          "value": 3.75,
-          "unit": "count",
-          "as_of": "1956-06-01",
-          "source": "Computer History Museum",
-          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
-          "fixed": true
-        },
-        {
-          "label": "Number of disks inside it",
-          "value": 50,
-          "unit": "count",
-          "as_of": "1956-06-01",
-          "source": "Computer History Museum",
-          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
-          "fixed": true
-        },
-        {
-          "label": "Diameter of each disk, in inches",
-          "value": 24,
-          "unit": "count",
-          "as_of": "1956-06-01",
-          "source": "Computer History Museum",
-          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
-          "fixed": true
-        },
-        {
-          "label": "Monthly rent for it",
-          "value": 750,
-          "unit": "money",
-          "currency": "USD",
-          "as_of": "1956-06-01",
-          "source": "Computer History Museum",
-          "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
-          "fixed": true
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-zoom-into-gpu",
-      "format": "short",
-      "title": "Zoom Into a Graphics Chip Until You See the Switches",
-      "category": "chips",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "zoom_inside"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "What Happens Inside an AI Chip When You Ask a Question",
-        "views": 1024094,
-        "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
-        "channel": "Silicon Up Close",
-        "channelSubs": 12700,
-        "outlier": 80.6
-      },
-      "hook": "This chip is smaller than your palm. Inside it is a city of seventy-six billion switches.",
-      "templates": [
-        "any"
-      ],
-      "angle": "One continuous zoom: the card, the die, the blocks of cores, one core, one transistor. Cut from the GPU long video.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
-      "facts": [
-        {
-          "label": "NVIDIA GeForce RTX 4090: CUDA cores (its small maths units)",
-          "value": 16384,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "NVIDIA (RTX 4090 specs)",
-          "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
-          "fixed": true
-        },
-        {
-          "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
-          "value": 76,
-          "unit": "count_billion",
-          "as_of": "2022-09-20",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
-          "fixed": true
-        },
-        {
-          "label": "Transistors in the generation before (Ampere), for comparison",
-          "value": 28,
-          "unit": "count_billion",
-          "as_of": "2022-09-20",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
-          "fixed": true
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-zoom-face-id-dots",
-      "format": "short",
-      "title": "The 30,000 Dots Your Phone Fires at Your Face",
-      "category": "chips",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "zoom_inside"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "What Happens Inside an AI Chip When You Ask a Question",
-        "views": 1024094,
-        "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
-        "channel": "Silicon Up Close",
-        "channelSubs": 12700,
-        "outlier": 80.6
-      },
-      "hook": "Every time you look at your phone, it fires invisible dots at your face.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Exploded view of the notch: dot projector, infrared camera, flood illuminator, then the dots landing on a face as a depth map. Cut from the face-unlock long video.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
-      "facts": [
-        {
-          "label": "Invisible infrared dots Face ID projects onto your face, more than",
-          "value": 30000,
-          "unit": "count",
-          "as_of": "2017-09-12",
-          "source": "Apple Newsroom",
-          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
-          "fixed": true
-        },
-        {
-          "label": "Neural engine operations per second on the iPhone X chip, up to",
-          "value": 600,
-          "unit": "count_billion",
-          "as_of": "2017-09-12",
-          "source": "Apple Newsroom",
-          "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
-          "fixed": true
-        },
-        {
-          "label": "Chance a random person unlocks it with one enrolled appearance: less than 1 in",
-          "value": 1000000,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "Apple Support (About Face ID advanced technology)",
-          "url": "https://support.apple.com/en-us/102381",
-          "fixed": true
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-zoom-euv-tin-drop",
-      "format": "short",
-      "title": "The Chip Machine That Blasts Molten Tin 50,000 Times a Second",
-      "category": "chips",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "zoom_inside"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Semiconductor Chip कैसे बनती है? रेत से 2nm Chip तक की पूरी कहानी",
-        "views": 2201309,
-        "url": "https://youtube.com/watch?v=lvcAvPjZwxo",
-        "channel": "PROCESS BHARAT",
-        "channelSubs": 234000,
-        "outlier": 9.4
-      },
-      "hook": "This drop of molten tin is about to be hit by a laser. Twice.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Zoom into the EUV light source: a 25-micron droplet, flattened by one pulse, vaporised by the next into plasma that gives off 13.5 nm light. Cut from the EUV long video.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
-      "facts": [
-        {
-          "label": "Wavelength of EUV light, in nanometres",
-          "value": 13.5,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML",
-          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
-          "fixed": true
-        },
-        {
-          "label": "Times every second a tin droplet is hit and turned into light-making plasma",
-          "value": 50000,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML",
-          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
-          "fixed": true
-        },
-        {
-          "label": "Diameter of each molten tin droplet, in microns (about)",
-          "value": 25,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML",
-          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
-          "fixed": true
-        },
-        {
-          "label": "Speed the droplets leave the generator, in metres per second",
-          "value": 70,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "ASML",
-          "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
-          "fixed": true
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-ev-battery-cell",
-      "format": "short",
-      "title": "Why Tesla Made Its Battery Cells Bigger",
-      "category": "machines",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "machine_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "18650 Battery Connection Explained Series vs Parallel",
-        "views": 1417957,
-        "url": "https://youtube.com/watch?v=sYFEhrXqegY",
-        "channel": "Engineering School ⚙️",
-        "channelSubs": 206000,
-        "outlier": 6.9
-      },
-      "hook": "An electric car's battery isn't one battery. It's thousands of small cans, and Tesla made the cans bigger.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Exploded pack to one cell: how a cylinder cell stores energy, and why a bigger tabless 46 x 80 mm can was claimed to give more energy and power. Present 5x, 6x and 16% as Tesla's own claims, not test results.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: machines Short, core but crowded).",
-      "facts": [
-        {
-          "label": "Tesla 4680 cell diameter, in millimetres",
-          "value": 46,
-          "unit": "count",
-          "as_of": "2020-09-22",
-          "source": "Electrek (Tesla Battery Day)",
-          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
-          "fixed": true
-        },
-        {
-          "label": "Tesla 4680 cell height, in millimetres",
-          "value": 80,
-          "unit": "count",
-          "as_of": "2020-09-22",
-          "source": "Electrek (Tesla Battery Day)",
-          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
-          "fixed": true
-        },
-        {
-          "label": "Energy increase Tesla claimed for the bigger cell (times)",
-          "value": 5,
-          "unit": "count",
-          "as_of": "2020-09-22",
-          "source": "Electrek (Tesla Battery Day)",
-          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
-          "fixed": true
-        },
-        {
-          "label": "Power increase Tesla claimed (times)",
-          "value": 6,
-          "unit": "count",
-          "as_of": "2020-09-22",
-          "source": "Electrek (Tesla Battery Day)",
-          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
-          "fixed": true
-        },
-        {
-          "label": "Range increase Tesla claimed from the new cell",
-          "value": 16,
-          "unit": "percent",
-          "as_of": "2020-09-22",
-          "source": "Electrek (Tesla Battery Day)",
-          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
-          "fixed": true
-        },
-        {
-          "label": "Year Tesla unveiled the 4680 at Battery Day",
-          "value": 2020,
-          "unit": "year",
-          "as_of": "2020-09-22",
-          "source": "Electrek (Tesla Battery Day)",
-          "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/"
-        }
-      ]
-    },
-    {
-      "id": "2026-11-18-rocket-lands-itself",
-      "format": "short",
-      "title": "How a 70-Metre Rocket Lands Itself Standing Up",
-      "category": "machines",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "machine_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "This changes everything for SpaceX",
-        "views": 1286209,
-        "url": "https://youtube.com/watch?v=A-l58A4GFQY",
-        "channel": "The Space Race",
-        "channelSubs": 944000,
-        "outlier": 1.4
-      },
-      "hook": "This rocket just fell back from space, and it's about to land standing up.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Falcon 9's booster after separation: flip, boost-back, re-entry burn, grid fins steering, one of nine engines relit, legs out, touchdown. First done in December 2015; a landed booster flew again in 2017. The title's 70 is the rounded 69.8 m fact.",
-      "why_now": "First topics for the channel, from the setup research (advice.md: machines Short, core).",
-      "facts": [
-        {
-          "label": "Height of a Falcon 9 (Full Thrust)",
-          "value": 69.8,
-          "unit": "m",
-          "as_of": "2026-11-18",
-          "source": "Wikipedia (Falcon 9)",
-          "url": "https://en.wikipedia.org/wiki/Falcon_9",
-          "fixed": true
-        },
-        {
-          "label": "Merlin engines on the Falcon 9 booster",
-          "value": 9,
-          "unit": "count",
-          "as_of": "2026-11-18",
-          "source": "Wikipedia (Falcon 9)",
-          "url": "https://en.wikipedia.org/wiki/Falcon_9",
-          "fixed": true
-        },
-        {
-          "label": "Year a Falcon 9 booster first landed after an orbital launch (Orbcomm OG-2)",
-          "value": 2015,
-          "unit": "year",
-          "as_of": "2015-12-21",
-          "source": "Wikipedia (Falcon 9)",
-          "url": "https://en.wikipedia.org/wiki/Falcon_9"
-        },
-        {
-          "label": "Year a landed booster first flew again (SES-10)",
-          "value": 2017,
-          "unit": "year",
-          "as_of": "2017-03-30",
-          "source": "Wikipedia (Falcon 9)",
-          "url": "https://en.wikipedia.org/wiki/Falcon_9"
-        }
-      ]
-    },
-    {
-      "id": "2026-11-19-microwave-candy-bar",
-      "format": "short",
-      "title": "The Microwave Oven Was Invented by a Melted Candy Bar",
-      "category": "history",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How You Accidentally Invented the Mechanical Typewriter",
-        "views": 6599644,
-        "url": "https://youtube.com/shorts/ZDhDxu5eNig",
-        "channel": "Badream",
-        "channelSubs": 19800,
-        "outlier": 333.3
-      },
-      "hook": "A radar engineer reached into his pocket and found his candy bar had melted. Nothing around him was hot.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Percy Spencer at Raytheon, 1945, testing a magnetron (the tube that makes radar's microwaves); the melted bar; the same tube boxed into a cooking oven. 3D cutaway of the magnetron: electrons spun by a magnet past resonant cavities, the waves shaking water molecules in food. Payoff: the first Radarange (1947) stood nearly six feet tall and weighed 750 pounds. Build-it-up device.",
-      "why_now": "Invention titles are the scan's strongest Short shape (2.29x channel median, 53% hits, n=34); no microwave topic yet.",
-      "facts": [
-        {
-          "label": "Year Spencer noticed the melted candy bar while testing a magnetron",
-          "value": 1945,
-          "unit": "year",
-          "as_of": "1945-01-01",
-          "source": "History.com",
-          "url": "https://www.history.com/news/microwave-oven-invention"
-        },
-        {
-          "label": "Weight of the 1947 Radarange, in pounds",
-          "value": 750,
-          "unit": "count",
-          "as_of": "1947-01-01",
-          "source": "History.com",
-          "url": "https://www.history.com/news/microwave-oven-invention",
-          "fixed": true
-        },
-        {
-          "label": "Price of the 1947 Radarange, in dollars of the time",
-          "value": 5000,
-          "unit": "money",
-          "as_of": "1947-01-01",
-          "source": "History.com",
-          "url": "https://www.history.com/news/microwave-oven-invention",
-          "currency": "USD",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "Spencer noticed a candy bar in his pocket had melted while testing an active magnetron (1945)",
-        "The 1947 Radarange stood nearly six feet tall, weighed 750 pounds, cost about $5,000"
-      ],
-      "sources": [
-        "https://www.history.com/news/microwave-oven-invention"
-      ],
-      "found": "2026-11-19",
-      "expires": "2027-02-17",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-19-first-digital-camera",
-      "format": "short",
-      "title": "The First Digital Camera Was the Size of a Toaster",
-      "category": "history",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How You Accidentally Invented the Film Camera",
-        "views": 293292,
-        "url": "https://youtube.com/shorts/DgIUii5D-7M",
-        "channel": "Badream",
-        "channelSubs": 19800,
-        "outlier": 14.8
-      },
-      "hook": "In 1975 a Kodak engineer took a photo with no film. Saving it took longer than taking it.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Steve Sasson's Kodak prototype, December 1975: a Fairchild CCD (a grid of light-catching cells) 100 by 100, RAM, then a cassette tape. Capture 50 ms, record 23 s (a counter device). Code computes 100 x 100 = 10,000 pixels against the phone in your hand. Payoff: 23 seconds to save one photo.",
-      "why_now": "Invention family (core, 2.29x); camera inventions proven by Badream's camera Shorts.",
-      "facts": [
-        {
-          "label": "Month and year Sasson took his first photo",
-          "value": 1975,
-          "unit": "year",
-          "as_of": "1975-12-01",
-          "source": "IEEE Spectrum",
-          "url": "https://spectrum.ieee.org/first-digital-camera-history"
-        },
-        {
-          "label": "Pixels along each side of the image",
-          "value": 100,
-          "unit": "count",
-          "as_of": "1975-12-01",
-          "source": "IEEE Spectrum",
-          "url": "https://spectrum.ieee.org/first-digital-camera-history",
-          "fixed": true
-        },
-        {
-          "label": "Seconds to record one image to the cassette tape",
-          "value": 23,
-          "unit": "count",
-          "as_of": "1975-12-01",
-          "source": "IEEE Spectrum",
-          "url": "https://spectrum.ieee.org/first-digital-camera-history",
-          "fixed": true
-        },
-        {
-          "label": "Milliseconds to capture the image",
-          "value": 50,
-          "unit": "count",
-          "as_of": "1975-12-01",
-          "source": "IEEE Spectrum",
-          "url": "https://spectrum.ieee.org/first-digital-camera-history",
-          "fixed": true
-        },
-        {
-          "label": "Weight of the camera, in kilograms",
-          "value": 3.6,
-          "unit": "count",
-          "as_of": "1975-12-01",
-          "source": "IEEE Spectrum",
-          "url": "https://spectrum.ieee.org/first-digital-camera-history",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "100 by 100 pixel CCD; 50 ms capture, 23 s to record to tape; 3.6 kg, about the size of a toaster"
-      ],
-      "sources": [
-        "https://spectrum.ieee.org/first-digital-camera-history"
-      ],
-      "found": "2026-11-19",
-      "expires": "2027-02-17",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-19-first-mobile-phone",
-      "format": "short",
-      "title": "How Motorola Built the First Mobile Phone in Six Weeks",
-      "category": "history",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Most Important Invention In History, Part 2: The Radio",
-        "views": 3964739,
-        "url": "https://youtube.com/shorts/qylpF98bjZI",
-        "channel": "Logibu",
-        "channelSubs": 36100,
-        "outlier": 109.8
-      },
-      "hook": "Motorola had six weeks to build a phone that fit in one hand. Nobody had ever made one.",
-      "templates": [
-        "any"
-      ],
-      "angle": "The DynaTAC prototype working by February 1973, shown in New York on 3 April 1973; inside it: radio, antenna, battery. Then ten years and over $100 million before the DynaTAC 8000X went on sale (6 March 1983): 785 g, 300 mm long. Side-by-side at true size with today's phone.",
-      "why_now": "Invention family; radio/phone inventions are proven by Logibu's series (3.96M on 36K subscribers).",
-      "facts": [
-        {
-          "label": "Weeks Motorola's team had to build a working prototype for the FCC meeting",
-          "value": 6,
-          "unit": "count",
-          "as_of": "1973-02-01",
-          "source": "Motorola Solutions",
-          "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
-          "fixed": true
-        },
-        {
-          "label": "Year of the public demonstration in New York (3 April)",
-          "value": 1973,
-          "unit": "year",
-          "as_of": "1973-04-03",
-          "source": "Motorola Solutions",
-          "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html"
-        },
-        {
-          "label": "Years of development before the commercial phone, more than",
-          "value": 10,
-          "unit": "count",
-          "as_of": "1983-09-21",
-          "source": "Motorola Solutions",
-          "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
-          "fixed": true
-        },
-        {
-          "label": "Motorola's investment in it, in millions of dollars, more than",
-          "value": 100,
-          "unit": "money_million",
-          "as_of": "1983-09-21",
-          "source": "Motorola Solutions",
-          "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
-          "currency": "USD",
-          "fixed": true
-        },
-        {
-          "label": "Weight of the DynaTAC 8000X, in grams",
-          "value": 785,
-          "unit": "count",
-          "as_of": "1983-03-06",
-          "source": "Guinness World Records",
-          "url": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone",
-          "fixed": true
-        },
-        {
-          "label": "Length of the DynaTAC 8000X, in millimetres",
-          "value": 300,
-          "unit": "count",
-          "as_of": "1983-03-06",
-          "source": "Guinness World Records",
-          "url": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "Prototype built in six weeks for an FCC meeting; demonstrated 3 April 1973",
-        "DynaTAC 8000X on sale 6 March 1983, 785 g, 300 x 44 x 89 mm"
-      ],
-      "sources": [
-        "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
-        "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone"
-      ],
-      "found": "2026-11-19",
-      "expires": "2027-02-17",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-19-first-transistor",
-      "format": "short",
-      "title": "The First Transistor Was Two Strips of Gold on a Plastic Wedge",
-      "category": "chips",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Most Important Invention In History: The Pumpjack",
-        "views": 5354114,
-        "url": "https://youtube.com/shorts/UrBA3twKzGc",
-        "channel": "Logibu",
-        "channelSubs": 36100,
-        "outlier": 148.3
-      },
-      "hook": "Every chip you own is built from one idea, first made by hand from gold foil and a piece of plastic.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Bell Labs, 16 December 1947: Bardeen and Brattain press two closely spaced gold contacts onto germanium; the voltage on one controls the current through the other, up to 100 times stronger. Build it up in 3D, then a scale dive to a modern GPU die with up to 76 billion of them (a counter). Never skip the step: what 'amplify' means.",
-      "why_now": "Bridges the invention family (core) into chips, the channel's main subject; the long video on GPUs can reuse the dive.",
-      "facts": [
-        {
-          "label": "Year of the first successful semiconductor amplifier (16 December)",
-          "value": 1947,
-          "unit": "year",
-          "as_of": "1947-12-16",
-          "source": "Computer History Museum",
-          "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/"
-        },
-        {
-          "label": "How many times it amplified the input signal, up to",
-          "value": 100,
-          "unit": "count",
-          "as_of": "1947-12-16",
-          "source": "Computer History Museum",
-          "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/",
-          "fixed": true
-        },
-        {
-          "label": "Year Bell Labs announced it to the public (30 June)",
-          "value": 1948,
-          "unit": "year",
-          "as_of": "1948-06-30",
-          "source": "Computer History Museum",
-          "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/"
-        },
-        {
-          "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
-          "value": 76,
-          "unit": "count_billion",
-          "as_of": "2022-09-20",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "16 Dec 1947 first semiconductor amplifier; gold contacts on germanium; up to 100x; announced 30 June 1948",
-        "Ada Lovelace GPUs up to 76 billion transistors"
-      ],
-      "sources": [
-        "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/",
-        "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/"
-      ],
-      "found": "2026-11-19",
-      "expires": "2027-02-17",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-19-hoover-dam-power",
-      "format": "short",
-      "title": "How Hoover Dam Turns Falling Water Into Electricity",
-      "category": "power",
-      "kind": "evergreen",
-      "priority": "high",
-      "stories": [
-        "machine_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How a Dam Generates Electricity | Hydroelectric Power Explained",
-        "views": 8695933,
-        "url": "https://youtube.com/shorts/rHk5j8d8yog",
-        "channel": "AI Tech 3.7",
-        "channelSubs": 11100,
-        "outlier": 783.4
-      },
-      "hook": "Lake Mead pushes on Hoover Dam all day. Here is how that push becomes the light in a city.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Cutaway run: intake towers, penstocks, water spinning a turbine, the turbine turning a generator's magnets past copper coils. Why the lake's height matters (the deeper the water, the harder it pushes): Reclamation's estimate that at 1,035 feet capacity falls from 1,302 to 382 megawatts. Up to 2,074 megawatts historically, for about 1.3 million people.",
-      "why_now": "The scan's biggest on-topic breakout Short is a dam explainer (8.7M on 11K subscribers, 783x); Reclamation's May 2026 release gives fresh figures.",
-      "facts": [
-        {
-          "label": "Hoover Dam's historical hydropower capacity, in megawatts, up to",
-          "value": 2074,
-          "unit": "count",
-          "as_of": "2026-05-21",
-          "source": "US Bureau of Reclamation",
-          "url": "https://www.usbr.gov/newsroom/news-release/5340"
-        },
-        {
-          "label": "People across the Southwest it supplies, roughly",
-          "value": 1.3,
-          "unit": "count_million",
-          "as_of": "2026-05-21",
-          "source": "US Bureau of Reclamation",
-          "url": "https://www.usbr.gov/newsroom/news-release/5340"
-        },
-        {
-          "label": "Earlier estimate of capacity at a lake elevation of 1,035 feet, in megawatts",
-          "value": 1302,
-          "unit": "count",
-          "as_of": "2026-05-21",
-          "source": "US Bureau of Reclamation",
-          "url": "https://www.usbr.gov/newsroom/news-release/5340"
-        },
-        {
-          "label": "Newer estimate of capacity at that elevation, in megawatts",
-          "value": 382,
-          "unit": "count",
-          "as_of": "2026-05-21",
-          "source": "US Bureau of Reclamation",
-          "url": "https://www.usbr.gov/newsroom/news-release/5340"
-        },
-        {
-          "label": "Megawatts the new turbines are expected to restore, at least",
-          "value": 160,
-          "unit": "count",
-          "as_of": "2026-05-21",
-          "source": "US Bureau of Reclamation",
-          "url": "https://www.usbr.gov/newsroom/news-release/5340"
-        }
-      ],
-      "verify": [
-        "All figures from Reclamation's 21 May 2026 release; say 'historically up to', not today's output"
-      ],
-      "sources": [
-        "https://www.usbr.gov/newsroom/news-release/5340"
-      ],
-      "found": "2026-11-19",
-      "expires": "2027-02-17",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-20-maglev-floats",
-      "format": "short",
-      "title": "How Does Japan's Maglev Train Float Above Its Track?",
-      "category": "transport",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "machine_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Most Important Invention, Part 8! The Maglev Train",
-        "views": 1452626,
-        "url": "https://youtube.com/shorts/UNMHRb5cHOA",
-        "channel": "Logibu",
-        "channelSubs": 36100,
-        "outlier": 40.2,
-        "ageDays": 6.2,
-        "viewsPerDay": 234409
-      },
-      "hook": "This train has no wheels touching anything at full speed. Here is what holds it up.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Cutaway run of JR Central's SCMaglev L0: superconducting magnets on the train, coils in the guideway walls, the train rolling on rubber tyres until it is fast enough to lift, then floating and pulled forward by a moving magnetic field. Payoff: the 21 April 2015 run, 603 km/h, held above 600 for 10.8 seconds over 1.8 km.",
-      "why_now": "Owner note 19 Nov: topics gaining traction. Trains are the niche's fastest-rising Shorts subject this fortnight (15 Shorts, median 2.4x their channel's median; 'Why Did Trains Stop Using Rubber Tyres' 4.8M in 9 days); Logibu's maglev Short is adding 234K views a day.",
-      "facts": [
-        {
-          "label": "Record speed of the Series L0 maglev, in kilometres an hour",
-          "value": 603,
-          "unit": "count",
-          "as_of": "2015-04-21",
-          "source": "Guinness World Records",
-          "url": "https://www.guinnessworldrecords.com/world-records/fastest-maglev-train/",
-          "fixed": true
-        },
-        {
-          "label": "Seconds the run stayed above 600 kilometres an hour",
-          "value": 10.8,
-          "unit": "count",
-          "as_of": "2015-04-21",
-          "source": "Railway Gazette",
-          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
-          "fixed": true
-        },
-        {
-          "label": "Kilometres covered above 600 kilometres an hour",
-          "value": 1.8,
-          "unit": "count",
-          "as_of": "2015-04-21",
-          "source": "Railway Gazette",
-          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
-          "fixed": true
-        },
-        {
-          "label": "Previous record, set by the MLX01 in December 2003, in kilometres an hour",
-          "value": 581,
-          "unit": "count",
-          "as_of": "2003-12-02",
-          "source": "Railway Gazette",
-          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
-          "fixed": true
-        },
-        {
-          "label": "Planned top speed in passenger service, in kilometres an hour",
-          "value": 500,
-          "unit": "count",
-          "as_of": "2015-04-21",
-          "source": "Railway Gazette",
-          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
-          "latest": true,
-          "checked": "2026-11-20"
-        },
-        {
-          "label": "Planned Tokyo to Nagoya journey, in minutes",
-          "value": 40,
-          "unit": "count",
-          "as_of": "2015-04-21",
-          "source": "Railway Gazette",
-          "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
-          "latest": true,
-          "checked": "2026-11-20"
-        }
-      ],
-      "verify": [
-        "603 km/h on 21 April 2015, Series L0 (A07), Yamanashi Maglev Line (Guinness)",
-        "10.8 s and 1.8 km above 600 km/h; 581 km/h MLX01 Dec 2003; 500 km/h planned; Tokyo-Nagoya 40 min (Railway Gazette)",
-        "Do not state an opening date for the Chuo Shinkansen; it has slipped"
-      ],
-      "sources": [
-        "https://www.guinnessworldrecords.com/world-records/fastest-maglev-train/",
-        "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article"
-      ],
-      "found": "2026-11-20",
-      "expires": "2027-02-18",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-20-faraday-first-generator",
-      "format": "short",
-      "title": "How Did a Spinning Copper Disc Become Every Power Station?",
-      "category": "power",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Most important Invention in History, Part 10: The Generator (finally)",
-        "views": 160304,
-        "url": "https://youtube.com/shorts/1TmDAcPMaDw",
-        "channel": "Logibu",
-        "channelSubs": 36100,
-        "outlier": 4.4,
-        "ageDays": 1.5,
-        "viewsPerDay": 108750
-      },
-      "hook": "In 1831 a man spun a copper plate next to a magnet, and a current came out. Every power station still does that.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Build it up: Faraday's induction ring (a current in one coil makes a current in another: the first transformer), then the copper disc turned between a horseshoe magnet's poles with sliding contacts, giving a steady current: the first generator. Climb out to a modern turbine-generator (ties to the Hoover Dam topic). Never skip the step: a conductor moving through a magnetic field pushes the electrons along.",
-      "why_now": "Owner note 19 Nov: traction. Logibu's generator Short gained 160K in 36 hours, its nuclear-plant Short 672K in 4 days (18.6x its channel); invention titles run 2.5x their channel's median in the last 14 days.",
-      "facts": [
-        {
-          "label": "Year Faraday began the experiments that found electromagnetic induction",
-          "value": 1831,
-          "unit": "year",
-          "as_of": "1831-09-01",
-          "source": "US Energy Information Administration",
-          "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
-          "fixed": true
-        },
-        {
-          "label": "Year Faraday was born",
-          "value": 1791,
-          "unit": "year",
-          "as_of": "1791-09-22",
-          "source": "US Energy Information Administration",
-          "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
-          "fixed": true
-        },
-        {
-          "label": "Faraday's age when he became a bookbinder's errand boy",
-          "value": 13,
-          "unit": "count",
-          "as_of": "1804-01-01",
-          "source": "US Energy Information Administration",
-          "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
-          "fixed": true
-        },
-        {
-          "label": "Year he proved magnet, battery and static electricity are the same thing",
-          "value": 1832,
-          "unit": "year",
-          "as_of": "1832-01-01",
-          "source": "US Energy Information Administration",
-          "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "EIA: 1831 induction ring = first transformer; September series, copper disc with sliding contacts between a horseshoe magnet's poles = first generator; born 1791; errand boy at 13; 1832 unity of electricities",
-        "Faraday's age in 1831 is computed by code (1831 - 1791), not typed"
-      ],
-      "sources": [
-        "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php"
-      ],
-      "found": "2026-11-20",
-      "expires": "2027-02-18",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-20-first-bicycle-drais",
-      "format": "short",
-      "title": "Why Did the First Bicycle Have No Pedals?",
-      "category": "transport",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "invention_story"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How the Bicycle Was Actually Invented! (3D Animation)",
-        "views": 1027331,
-        "url": "https://youtube.com/shorts/PdszpOPce-Y",
-        "channel": "Engineer Explain",
-        "channelSubs": 503000,
-        "outlier": 2.0,
-        "ageDays": 7.9,
-        "viewsPerDay": 130470
-      },
-      "hook": "The first bicycle had no pedals, no chain and no brakes. So how did it go anywhere?",
-      "templates": [
-        "any"
-      ],
-      "angle": "Build it up: Karl Drais's running machine, two wheels in a line under a wooden frame, pushed along by the rider's feet; the step that matters is steering keeps two wheels in line upright. Then add what came later part by part (pedals, chain) as a short climb out. Mannheim, 12 June 1817, almost 14 km on the first trip; Drais was 32.",
-      "why_now": "Owner note 19 Nov: traction. Engineer Explain's bicycle Short has 1.03M in 8 days at 130K a day (2x its 503K channel); invention Shorts are the niche's rising family this fortnight.",
-      "facts": [
-        {
-          "label": "Year of the running machine's first trip (12 June, from Mannheim)",
-          "value": 1817,
-          "unit": "year",
-          "as_of": "1817-06-12",
-          "source": "deutschland.de",
-          "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
-          "fixed": true
-        },
-        {
-          "label": "Length of that first trip in kilometres, almost",
-          "value": 14,
-          "unit": "count",
-          "as_of": "1817-06-12",
-          "source": "deutschland.de",
-          "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
-          "fixed": true
-        },
-        {
-          "label": "Karl Drais's age at the time",
-          "value": 32,
-          "unit": "count",
-          "as_of": "1817-06-12",
-          "source": "deutschland.de",
-          "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "12 June 1817 from Mannheim, almost 14 km, Drais 32 (deutschland.de); sources differ on the distance (DPMA: about 15 km there and back), so say 'almost 14 kilometres'",
-        "No pedals, chain or brakes on the 1817 machine: confirm on a museum page before use"
-      ],
-      "sources": [
-        "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle"
-      ],
-      "found": "2026-11-20",
-      "expires": "2027-02-18",
-      "status": "new"
-    },
-    {
-      "id": "2026-11-20-phone-listening-study",
-      "format": "short",
-      "title": "Do Phone Apps Secretly Listen? Researchers Watched 17,000 of Them",
-      "category": "phones",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "gadget_inside"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Does Your Phone Listens to You? (3D)",
-        "views": 2447194,
-        "url": "https://youtube.com/shorts/8dF_BFHRdbs",
-        "channel": "Professor Of AI",
-        "channelSubs": 400000,
-        "outlier": 6.1,
-        "ageDays": 7.2,
-        "viewsPerDay": 337881
-      },
-      "hook": "Northeastern University's researchers made phones run thousands of apps and watched every byte they sent. Here's what came out.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Follow the signal: what the microphone permission actually opens, how the researchers drove 17,260 Android apps automatically and recorded every network packet, and the surprise: no app switched on the microphone, but some sent screenshots and screen recordings of what you did. Show the test rig, not hacking; no how-to.",
-      "why_now": "Owner note 19 Nov: traction. Professor Of AI's phone-listening Short has 2.45M in 7 days (338K a day, 6.1x its channel); phone Shorts run 1.8x their channel's median this fortnight.",
-      "facts": [
-        {
-          "label": "Android apps the study covered",
-          "value": 17260,
-          "unit": "count",
-          "as_of": "2018-06-16",
-          "source": "Pan et al., Proceedings on Privacy Enhancing Technologies 2018",
-          "url": "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf",
-          "latest": true,
-          "checked": "2026-11-20"
-        },
-        {
-          "label": "Apps run and watched in the dynamic test",
-          "value": 9100,
-          "unit": "count",
-          "as_of": "2018-06-16",
-          "source": "Pan et al., Proceedings on Privacy Enhancing Technologies 2018",
-          "url": "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf",
-          "latest": true,
-          "checked": "2026-11-20"
-        },
-        {
-          "label": "Apps that could take screenshots, in thousands",
-          "value": 9,
-          "unit": "count_thousand",
-          "as_of": "2018-07-06",
-          "source": "Northeastern University News",
-          "url": "https://news.northeastern.edu/?p=84687",
-          "latest": true,
-          "checked": "2026-11-20"
-        }
-      ],
-      "verify": [
-        "17,260 apps from Google Play, AppChina, Mi.com, Anzhi; 9,100 in the dynamic analysis (paper)",
-        "'not a single app activated the microphone'; 'no audio leaks at all'; 9,000 could take screenshots (Northeastern, 6 July 2018)",
-        "Android only, 2018, automated interaction: say so; never claim phones can't listen"
-      ],
-      "sources": [
-        "https://news.northeastern.edu/?p=84687",
-        "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf"
-      ],
-      "found": "2026-11-20",
-      "expires": "2027-02-18",
-      "status": "new"
-    },
-    {
-      "format": "short",
-      "kind": "evergreen",
-      "priority": "normal",
-      "currency": "USD",
-      "reach": "global",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-21",
-      "expires": "2027-02-19",
-      "status": "new",
-      "id": "2026-11-21-gpu-invents-frames",
-      "title": "How Does Your Graphics Card Show Frames It Never Drew?",
-      "category": "chips",
-      "stories": [
-        "how_ai_works"
-      ],
-      "demand": {
-        "title": "Amazing DLSS-5 Tech",
-        "views": 2232234,
-        "url": "https://youtube.com/shorts/6UE-ZK_btTs",
-        "channel": "Professor Of AI",
-        "channelSubs": 400000,
-        "outlier": 5.58,
-        "ageDays": 19.8,
-        "viewsPerDay": 112925
-      },
-      "hook": "In some games, most of the frames on your screen were never drawn by the game at all.",
-      "angle": "Inside one frame on an RTX 50 card: the game renders a small, low-resolution frame; tensor cores upscale it, then run AI models that read motion vectors between two real frames and paint the frames in between. Never skip the causal step: what a motion vector is and why the in-between frame can be guessed. Payoff: NVIDIA says DLSS 4 generates 15 of every 16 pixels; DLSS 4.5 can add five frames for every one the game draws. Say plainly what goes wrong (a corner never seen before).",
-      "why_now": "The niche's chip/GPU subject runs 1.68x its channels' median this fortnight; Professor Of AI's DLSS Short has 2.2M views in 20 days (113K a day, 5.6x the channel's subscribers). Our first how_ai_works Short, in a core format.",
-      "facts": [
-        {
-          "label": "Pixels out of every 16 that DLSS 4 generates with AI",
-          "value": 15,
-          "unit": "count",
-          "as_of": "2025-01-06",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
-          "fixed": true
-        },
-        {
-          "label": "AI models the GPU runs for every rendered frame with DLSS 4",
-          "value": 5,
-          "unit": "count",
-          "as_of": "2025-01-06",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
-          "fixed": true
-        },
-        {
-          "label": "Frame-rate multiple over brute-force rendering, up to",
-          "value": 8,
-          "unit": "count",
-          "as_of": "2025-01-06",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
-          "fixed": true
-        },
-        {
-          "label": "Frames DLSS 4.5 generates for every natively rendered frame, up to",
-          "value": 5,
-          "unit": "count",
-          "as_of": "2026-01-06",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
-          "latest": true,
-          "checked": "2026-11-21"
-        },
-        {
-          "label": "Games and apps with DLSS 4.5 Super Resolution, over",
-          "value": 400,
-          "unit": "count",
-          "as_of": "2026-01-06",
-          "source": "NVIDIA GeForce News",
-          "url": "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
-          "latest": true,
-          "checked": "2026-11-21"
-        }
-      ],
-      "verify": [
-        "DLSS 4: 15 of every 16 pixels generated, 5 AI models per rendered frame, up to 8x over brute force (NVIDIA, 6 Jan 2025)",
-        "DLSS 4.5: up to five generated frames per rendered frame (6X), RTX 50 only; Super Resolution in 400+ games (NVIDIA, 6 Jan 2026)",
-        "DLSS 5 (GTC, March 2026) is a different feature (neural lighting), not frame generation: do not mix it in"
-      ],
-      "sources": [
-        "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
-        "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
-        "https://techpowerup.com/review/nvidia-geforce-rtx-50-technical-deep-dive/4.html"
-      ]
-    },
-    {
-      "format": "short",
-      "kind": "evergreen",
-      "priority": "normal",
-      "currency": "USD",
-      "reach": "global",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-21",
-      "expires": "2027-02-19",
-      "status": "new",
-      "id": "2026-11-21-paris-metro-tyres",
-      "title": "Why Does the Paris Metro Run on Rubber Tyres?",
-      "category": "transport",
-      "stories": [
-        "machine_works"
-      ],
-      "demand": {
-        "title": "Why Did Trains Stop Using Rubber Tyres (3D Animation)",
-        "views": 4825914,
-        "url": "https://youtube.com/shorts/BDzjNVrfBN8",
-        "channel": "Engineer Explain in hindi",
-        "channelSubs": 503000,
-        "outlier": 9.59,
-        "ageDays": 8.9,
-        "viewsPerDay": 542329
-      },
-      "hook": "Some trains in Paris run on the same kind of tyres as a truck. So what keeps them on the track?",
-      "angle": "Cutaway of a rubber-tyred bogie: the tyres roll on flat running tracks, horizontal guide wheels press on side bars, and steel safety wheels ride on ordinary rails, ready if a tyre goes flat. Why: grip for faster acceleration and braking between close stations, steeper slopes, less noise and vibration. The story: Michelin's 1931 Micheline railcar, the 1951 first tyred metro, Line 11 in 1956, then Montreal built a whole network on it.",
-      "why_now": "Trains are the niche's fastest-rising Shorts subject this fortnight (median 2.4x); the reference Short added 542K views a day. Re-sourced from Michelin's own history page after RATP's refused (a breakout is re-sourced, never dropped).",
-      "facts": [
-        {
-          "label": "Year Michelin and RATP ran the world's first metro on tyres",
-          "value": 1951,
-          "unit": "year",
-          "as_of": "1951-01-01",
-          "source": "Michelin Metro",
-          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
-          "fixed": true
-        },
-        {
-          "label": "Year the Micheline rubber-tyred railcar broke the Paris-Deauville record (January)",
-          "value": 1931,
-          "unit": "year",
-          "as_of": "1931-01-01",
-          "source": "Michelin Metro",
-          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
-          "fixed": true
-        },
-        {
-          "label": "Year Montreal's tyred metro opened",
-          "value": 1966,
-          "unit": "year",
-          "as_of": "1966-01-01",
-          "source": "Michelin Metro",
-          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
-          "fixed": true
-        },
-        {
-          "label": "Trips on the Montreal metro so far, over",
-          "value": 10,
-          "unit": "count_billion",
-          "as_of": "2026-11-21",
-          "source": "Michelin Metro",
-          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
-          "latest": true,
-          "checked": "2026-11-21"
-        },
-        {
-          "label": "Passengers each Montreal train carries at rush hour, roughly",
-          "value": 1000,
-          "unit": "count",
-          "as_of": "2026-11-21",
-          "source": "Michelin Metro",
-          "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
-          "latest": true,
-          "checked": "2026-11-21"
-        }
-      ],
-      "verify": [
-        "1951 first tyred metro on Line 11 test (Michelin); public service on Line 11 from November 1956 (RATP)",
-        "Micheline Paris-Deauville record, January 1931",
-        "Montreal opened 1966, 10 billion+ trips, ~1,000 passengers a train at rush hour",
-        "The guide wheels and steel safety wheels: confirm the drawing against a technical source before the director draws it"
-      ],
-      "sources": [
-        "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
-        "https://www.ratp.fr/decouvrir/coulisses/modernisation-du-reseau/materiel-roulant-metro-ligne-11"
-      ]
-    },
-    {
-      "format": "short",
-      "kind": "evergreen",
-      "priority": "normal",
-      "currency": "USD",
-      "reach": "global",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-21",
-      "expires": "2027-02-19",
-      "status": "new",
-      "id": "2026-11-21-tbm-under-london",
-      "title": "How Did a 150-Metre Machine Dig a Railway Under London?",
-      "category": "machines",
-      "stories": [
-        "machine_works"
-      ],
-      "demand": {
-        "title": "Most Important Invention, Part 4: The Boring Machine",
-        "views": 4264963,
-        "url": "https://youtube.com/shorts/mNnXJe3Bf4Y",
-        "channel": "Logibu",
-        "channelSubs": 36100,
-        "outlier": 118.1,
-        "ageDays": 17.4,
-        "viewsPerDay": 245193
-      },
-      "hook": "Under London, a machine longer than a football pitch dug a railway right next to a working Tube line.",
-      "angle": "Follow one Crossrail tunnel boring machine from the cutting face back: the spinning cutterhead, the pressurised chamber that holds the ground up, the conveyor that carries spoil away, the arm that bolts concrete segments into a ring behind it, so the tunnel is lined as it is dug. Payoff: at Tottenham Court Road the new tunnel passed 700 millimetres from the Northern line.",
-      "why_now": "Logibu's boring-machine Short has 4.26M views on a 36K channel (118x) and is still adding 245K a day; invention and machine Shorts lead the niche this fortnight.",
-      "facts": [
-        {
-          "label": "Length of each Crossrail tunnel boring machine, in metres",
-          "value": 150,
-          "unit": "count",
-          "as_of": "2026-11-21",
-          "source": "Arup",
-          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
-          "fixed": true
-        },
-        {
-          "label": "Kilometres of new tunnels under central London",
-          "value": 42,
-          "unit": "count",
-          "as_of": "2026-11-21",
-          "source": "Arup",
-          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
-          "fixed": true
-        },
-        {
-          "label": "Diameter of the railway tunnels, in metres",
-          "value": 7.1,
-          "unit": "count",
-          "as_of": "2026-11-21",
-          "source": "Arup",
-          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
-          "fixed": true
-        },
-        {
-          "label": "Millimetres between the Elizabeth line and Northern line tunnels at Tottenham Court Road",
-          "value": 700,
-          "unit": "count",
-          "as_of": "2026-11-21",
-          "source": "Arup",
-          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
-          "fixed": true
-        },
-        {
-          "label": "Buildings, railways and utilities assessed for ground movement, over",
-          "value": 17000,
-          "unit": "count",
-          "as_of": "2026-11-21",
-          "source": "Arup",
-          "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
-          "fixed": true
-        }
-      ],
-      "verify": [
-        "150 m TBMs, 42 km of tunnels, 7.1 m diameter, 700 mm from the Northern line, 17,000+ assets assessed (Arup)",
-        "Eight TBMs, about 1,000 tonnes each (Bechtel/press; confirm before using a weight)"
-      ],
-      "sources": [
-        "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
-        "https://learninglegacy.crossrail.co.uk/wp-content/uploads/2017/04/Machine-driven-tunnels-on-the-Elizabeth-line-London.pdf"
-      ]
-    },
-    {
-      "format": "short",
-      "kind": "evergreen",
-      "priority": "normal",
-      "currency": "USD",
-      "reach": "global",
-      "templates": [
-        "any"
-      ],
-      "found": "2026-11-22",
-      "expires": "2027-02-20",
-      "status": "new",
-      "id": "2026-11-22-how-wings-lift",
-      "title": "Why Is the School Answer for How Planes Fly Wrong?",
-      "category": "machines",
-      "stories": [
-        "machine_works"
-      ],
-      "demand": {
-        "title": "What Makes an Airplane Fly | 3D Animation",
-        "views": 3489716,
-        "url": "https://youtube.com/shorts/Vz7ejvMGBXk",
-        "channel": "3D Eye",
-        "channelSubs": 161000,
-        "outlier": 21.68,
-        "ageDays": 12.9,
-        "viewsPerDay": 270056
-      },
-      "hook": "Most of us were taught why a wing lifts a plane. NASA says that answer is wrong.",
-      "angle": "Cutaway of an A380 wing in a wind tunnel of glowing streamlines. The school answer: air over the longer top must hurry to meet the air underneath (equal transit). Show two air parcels split at the leading edge: the top one arrives first, not together, so the premise fails; a flat paper plane and a symmetric wing still lift. The real step: the wing at an angle turns the airflow downward, faster flow and lower pressure above, the air is pushed down and the wing is pushed up. Payoff (computed by code from the two Airbus figures): each square metre of an A380's wing holds up about 680 kg at take-off, a small car on every square metre. Loop back to the wing.",
-      "why_now": "3D Eye's airplane Short has 3.49M views in 13 days on a 161K channel (21.7x) and adds 270K a day; it is the only on-profile machine in that channel's top five. A myth the niche's expert commenters correct: exactly the 'never skip the causal step' rule in our profile.",
-      "facts": [
-        {
-          "label": "Maximum take-off weight of the Airbus A380, in tonnes",
-          "value": 575,
-          "unit": "count",
-          "as_of": "2022-02-01",
-          "source": "Airbus",
-          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
-          "fixed": true
-        },
-        {
-          "label": "Reference wing area of the A380, in square metres",
-          "value": 845,
-          "unit": "count",
-          "as_of": "2022-02-01",
-          "source": "Airbus",
-          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
-          "fixed": true
-        },
-        {
-          "label": "Wingspan of the A380, in metres",
-          "value": 79.8,
-          "unit": "count",
-          "as_of": "2022-02-01",
-          "source": "Airbus",
-          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
-          "fixed": true
-        },
-        {
-          "label": "Maximum certified seating of the A380",
-          "value": 853,
-          "unit": "count",
-          "as_of": "2022-02-01",
-          "source": "Airbus",
-          "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
-          "fixed": true
-        }
-      ],
-      "maths": null,
-      "verify": [
-        "A380 575 t maximum take-off weight, 845 m2 wing area, 79.8 m wingspan, 853 max seats (Airbus Facts and Figures, Feb 2022)",
-        "NASA Glenn: the equal-transit theory is wrong; molecules split at the leading edge do not meet at the trailing edge; its predicted lift is much less than observed; symmetric wings and flat plates lift",
-        "Load per square metre is computed by code (575,000 kg / 845 m2), never typed; say 'at maximum take-off weight'",
-        "The streamline drawing: tag it 'illustration'; air over the top arrives at the trailing edge first (show it so)"
-      ],
-      "sources": [
-        "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
-        "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/foilw1",
-        "https://www.grc.nasa.gov/WWW/K-12/WindTunnel/disclaimer.html"
-      ]
-    },
-    {
-      "id": "2026-11-23-golden-gate-cable-spinning",
-      "format": "short",
-      "title": "How Was the Golden Gate Bridge's Cable Spun in the Air, One Wire at a Time?",
-      "category": "structures",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "machine_works"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "How Humans Mastered Bridge Building",
-        "views": 2436229,
-        "url": "https://www.youtube.com/watch?v=Hl9LUJud62Y",
-        "channel": "Proto Craft",
-        "channelSubs": 93600,
-        "outlier": 26.03
-      },
-      "hook": "Each of the Golden Gate Bridge's two main cables is almost a metre thick. Nobody lifted it into place.",
-      "templates": [
-        "any"
-      ],
-      "angle": "Cutaway of a main cable over the tower saddle. The mechanism: spinning wheels run back and forth between the anchorages on a cable, each trip laying a pencil-thin steel wire, 0.192 in, across the strait; wires are bundled into 61 strands, then squeezed round and wrapped. Dive from the bridge to the cable cross-section to a single wire with its scale badge. Payoff (computed by code from the sourced facts): the 80,000 miles of wire in both cables would wrap round the Earth's equator about 3 times. Loop back to the cable on the tower.",
-      "why_now": "Machine Shorts are our best lane so far: Crossrail (tunnel boring machine) reached 1,362 views in its first day, 5x any other Short. Bridges are the niche's strongest structure lane in the 18 Nov scan: Proto Craft's 'How Humans Mastered Bridge Building' 2.44M on 93.6K subscribers (26x) and 'How Bridges Get Super Strength' 515K (5.5x, a 46 s Short). Nobody in the scan tells how a suspension cable is actually made.",
-      "facts": [
-        {
-          "label": "Galvanized steel wires in one main cable",
-          "value": 27572,
-          "unit": "count",
-          "as_of": "1937-05-27",
-          "source": "Golden Gate Bridge, Highway and Transportation District",
-          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
-          "fixed": true
-        },
-        {
-          "label": "Diameter of one of those wires, in inches",
-          "value": 0.192,
-          "unit": "count",
-          "as_of": "1937-05-27",
-          "source": "Golden Gate Bridge, Highway and Transportation District",
-          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
-          "fixed": true
-        },
-        {
-          "label": "Diameter of one main cable including the wrapping, in metres",
-          "value": 0.92,
-          "unit": "count",
-          "as_of": "1937-05-27",
-          "source": "Golden Gate Bridge, Highway and Transportation District",
-          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
-          "fixed": true
-        },
-        {
-          "label": "Total length of steel wire in both main cables, in kilometres",
-          "value": 129000,
-          "unit": "count",
-          "as_of": "1937-05-27",
-          "source": "Golden Gate Bridge, Highway and Transportation District",
-          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
-          "fixed": true
-        },
-        {
-          "label": "Main span between the towers, in metres",
-          "value": 1280,
-          "unit": "count",
-          "as_of": "1937-05-27",
-          "source": "Golden Gate Bridge, Highway and Transportation District",
-          "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
-          "fixed": true
-        },
-        {
-          "label": "Earth's equatorial radius, in kilometres",
-          "value": 6378.137,
-          "unit": "count",
-          "as_of": "2024-01-01",
-          "source": "NASA NSSDCA Earth Fact Sheet",
-          "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
-          "fixed": true
-        }
-      ],
-      "maths": null,
-      "verify": [
-        "Golden Gate District: 27,572 galvanized steel wires of 0.192 in per main cable (61 strands, about 452 wires each); main cable 36 3/8 in (0.92 m) with wrapping; 80,000 mi (129,000 km) of wire in both main cables; main span 4,200 ft (1,280 m); built 1933-1937",
-        "The cables were spun in place, wire by wire, by wheels travelling between the anchorages (Golden Gate exhibit 'Spinning the main cables'; PBS American Experience)",
-        "Times round the equator is computed by code: 129,000 km / (2 x pi x 6,378.137 km), about 3.2; say 'about three times', never typed",
-        "Tag the cable cross-section 'illustration, not to scale'; the as_of date is the bridge's opening (27 May 1937)"
-      ],
-      "sources": [
-        "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
-        "https://www.goldengate.org/exhibits/spinning-the-main-cables/",
-        "https://www.pbs.org/wgbh/americanexperience/features/goldengate-spinning",
-        "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
-      ],
-      "found": "2026-11-23",
-      "expires": "2027-02-21",
-      "status": "new"
+     "label": "Transistors in the generation before (Ampere), for comparison",
+     "value": 28,
+     "unit": "count_billion",
+     "as_of": "2022-09-20",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+     "fixed": true
     }
-  ]
+   ],
+   "demand_check": "YouTube search 2026-11-23: Branch Education 7.9M (2y), Zevo Lab 256K (8mo)"
+  },
+  {
+   "id": "2026-11-18-face-unlock",
+   "format": "long",
+   "title": "What Happens Inside Your Phone When You Unlock It With Your Face",
+   "category": "chips",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "inside_when_you"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "What Happens Inside an AI Chip When You Ask a Question",
+    "views": 1024094,
+    "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
+    "channel": "Silicon Up Close",
+    "channelSubs": 12700,
+    "outlier": 80.6
+   },
+   "hook": "Your phone just fired thousands of invisible dots at your face. Here's what it did with them.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Face ID step by step: the dot projector, the infrared camera, the depth map, the neural engine comparing it with the stored maths of your face, the secure check, all before the screen lights. Apple's own figures only; no security how-tos.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long, example title 1).",
+   "facts": [
+    {
+     "label": "Invisible infrared dots Face ID projects onto your face, more than",
+     "value": 30000,
+     "unit": "count",
+     "as_of": "2017-09-12",
+     "source": "Apple Newsroom",
+     "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+     "fixed": true
+    },
+    {
+     "label": "Neural engine operations per second on the iPhone X chip, up to",
+     "value": 600,
+     "unit": "count_billion",
+     "as_of": "2017-09-12",
+     "source": "Apple Newsroom",
+     "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+     "fixed": true
+    },
+    {
+     "label": "Chance a random person unlocks it with one enrolled appearance: less than 1 in",
+     "value": 1000000,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "Apple Support (About Face ID advanced technology)",
+     "url": "https://support.apple.com/en-us/102381",
+     "fixed": true
+    },
+    {
+     "label": "Year Face ID launched, on iPhone X",
+     "value": 2017,
+     "unit": "year",
+     "as_of": "2017-09-12",
+     "source": "Apple Newsroom",
+     "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/"
+    }
+   ],
+   "demand_check": "YouTube search 2026-11-23: PawelCodeStuff 1.1M (1mo), WSJ 12M (9y)"
+  },
+  {
+   "id": "2026-11-18-euv-prints-a-chip",
+   "format": "long",
+   "title": "How a Chip Factory Prints Billions of Switches With Light",
+   "category": "chips",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "inside_when_you"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Semiconductor Chip कैसे बनती है? रेत से 2nm Chip तक की पूरी कहानी",
+    "views": 2201309,
+    "url": "https://youtube.com/watch?v=lvcAvPjZwxo",
+    "channel": "PROCESS BHARAT",
+    "channelSubs": 234000,
+    "outlier": 9.4
+   },
+   "hook": "To print a modern chip, a machine blasts drops of molten tin fifty thousand times a second.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Inside ASML's EUV machine: tin droplets hit twice by a laser, plasma giving off 13.5 nm light, mirrors carrying it onto a mask and down onto the wafer, layer by layer. ASML's figures; no export-control politics.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long). Viewers asked for the machines that make chips (comment notes #5).",
+   "facts": [
+    {
+     "label": "Wavelength of EUV light, in nanometres",
+     "value": 13.5,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML",
+     "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+     "fixed": true
+    },
+    {
+     "label": "Times every second a tin droplet is hit and turned into light-making plasma",
+     "value": 50000,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML",
+     "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+     "fixed": true
+    },
+    {
+     "label": "Diameter of each molten tin droplet, in microns (about)",
+     "value": 25,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML",
+     "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+     "fixed": true
+    },
+    {
+     "label": "Speed the droplets leave the generator, in metres per second",
+     "value": 70,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML",
+     "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+     "fixed": true
+    },
+    {
+     "label": "Smallest feature a standard (0.33 NA) EUV machine prints, in nanometres",
+     "value": 13,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML (EUV lithography systems)",
+     "url": "https://www.asml.com/en/products/euv-lithography-systems",
+     "fixed": true
+    },
+    {
+     "label": "Smallest feature a High-NA (0.55 NA) EUV machine prints, in nanometres",
+     "value": 8,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML (EUV lithography systems)",
+     "url": "https://www.asml.com/en/products/euv-lithography-systems",
+     "fixed": true
+    }
+   ],
+   "pin": 1,
+   "demand_check": "YouTube search 2026-11-23: Veritasium 67M (10mo), Branch Education 2.4M (1y), ASML 600K (2y)"
+  },
+  {
+   "id": "2026-11-18-ssd-stores-a-bit",
+   "format": "long",
+   "title": "How an SSD Stores a Bit With No Moving Parts",
+   "category": "chips",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "inside_when_you"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How do microSD Cards Store 2 TB in such a TINY space?",
+    "views": 1560892,
+    "url": "https://youtube.com/watch?v=9kM3mnxrMMM"
+   },
+   "hook": "Your files are electrons trapped in a cage far too small to see. Here's how one gets in and out.",
+   "templates": [
+    "any"
+   ],
+   "angle": "One NAND cell: trapped charge sets a 0 or 1, the read checks it, then 3D stacking piles hundreds of layers (332 in KIOXIA's 2025 generation, from 48 in 2015) into a skyscraper. Keep layers and stacked dies apart (viewers caught that slip before).",
+   "why_now": "First topics for the channel, from the setup research (advice.md: inside-the-chip long). Viewers asked about 3D NAND layers, electron trapping and wear (comment notes #11).",
+   "facts": [
+    {
+     "label": "Year Toshiba (now KIOXIA) invented NAND flash memory",
+     "value": 1987,
+     "unit": "year",
+     "as_of": "1987-01-01",
+     "source": "KIOXIA technology history",
+     "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+    },
+    {
+     "label": "Capacity of the first commercial NAND flash chip, in megabits",
+     "value": 4,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "KIOXIA technology history",
+     "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+     "fixed": true
+    },
+    {
+     "label": "Year the first commercial NAND chip was commercialized",
+     "value": 1991,
+     "unit": "year",
+     "as_of": "1991-01-01",
+     "source": "KIOXIA technology history",
+     "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+    },
+    {
+     "label": "Year KIOXIA announced the first 3D (stacked) flash technology",
+     "value": 2007,
+     "unit": "year",
+     "as_of": "2007-01-01",
+     "source": "KIOXIA technology history",
+     "url": "https://www.kioxia.com/en-jp/rd/technology/history.html"
+    },
+    {
+     "label": "Layers of memory cells in KIOXIA's BiCS FLASH generation 10 (2025)",
+     "value": 332,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "KIOXIA technology history",
+     "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+     "fixed": true
+    },
+    {
+     "label": "Layers in its 2015 generation, for comparison",
+     "value": 48,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "KIOXIA technology history",
+     "url": "https://www.kioxia.com/en-jp/rd/technology/history.html",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-ai-question-to-answer",
+   "format": "long",
+   "title": "How an AI Turns Your Question Into an Answer, Every Step",
+   "category": "ai",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "how_ai_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How AI works, Explained with Mushrooms ! (Easiest Explanation )",
+    "views": 622117,
+    "url": "https://youtube.com/watch?v=vIM9qCyfVmg",
+    "channel": "Xplained with MUSHROOMS",
+    "channelSubs": 2320,
+    "outlier": 268.2
+   },
+   "hook": "You type a question. Seconds later, words appear. Here is every step in between, down to the chip.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Text cut into tokens, tokens turned into numbers, the numbers multiplied through billions of parameters on the GPU's maths units, one next token picked, repeated. Never skip the hardware-to-answer step. No hype: it predicts text; it doesn't think.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: how-AI-works long, the best hit rate). The top ask in the comments: the missing step from transistors to an answer (comment notes #1).",
+   "facts": [
+    {
+     "label": "Parameters (adjustable numbers) in GPT-3",
+     "value": 175,
+     "unit": "count_billion",
+     "as_of": "2020-05-28",
+     "source": "Brown et al., Language Models are Few-Shot Learners (arXiv)",
+     "url": "https://arxiv.org/abs/2005.14165",
+     "fixed": true
+    },
+    {
+     "label": "Characters of English text in one token, roughly",
+     "value": 4,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "OpenAI Help Center (What are tokens)",
+     "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+     "fixed": true
+    },
+    {
+     "label": "Words in 100 tokens, roughly",
+     "value": 75,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "OpenAI Help Center (What are tokens)",
+     "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-ai-query-energy-water",
+   "format": "long",
+   "title": "What One AI Question Really Costs in Power and Water",
+   "category": "ai",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "how_ai_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "What Happens Inside an AI Chip When You Ask a Question",
+    "views": 1024094,
+    "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
+    "channel": "Silicon Up Close",
+    "channelSubs": 12700,
+    "outlier": 80.6
+   },
+   "hook": "One AI question uses about five drops of water. So why are data centres running short of power?",
+   "templates": [
+    "any"
+   ],
+   "angle": "Follow one prompt into a data centre: the chip's power, the cooling, the water. Google's measured figure per prompt, OpenAI's CEO's stated figure (named as his), then the IEA's total for all data centres. Sources named on screen; no scare framing.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: how-AI-works long, example title 3). Viewers asked what one AI question costs in compute, power and water (comment notes #3).",
+   "facts": [
+    {
+     "label": "Energy used by the median Gemini Apps text prompt, in watt-hours",
+     "value": 0.24,
+     "unit": "count",
+     "as_of": "2025-08-22",
+     "source": "Google Cloud blog",
+     "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+     "fixed": true
+    },
+    {
+     "label": "Water used by the median Gemini Apps text prompt, in millilitres",
+     "value": 0.26,
+     "unit": "count",
+     "as_of": "2025-08-22",
+     "source": "Google Cloud blog",
+     "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+     "fixed": true
+    },
+    {
+     "label": "That water as drops, about",
+     "value": 5,
+     "unit": "count",
+     "as_of": "2025-08-22",
+     "source": "Google Cloud blog",
+     "url": "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+     "fixed": true
+    },
+    {
+     "label": "Energy an average ChatGPT query uses, in watt-hours (OpenAI CEO's figure)",
+     "value": 0.34,
+     "unit": "count",
+     "as_of": "2025-06-10",
+     "source": "Sam Altman, The Gentle Singularity",
+     "url": "https://blog.samaltman.com/the-gentle-singularity",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "The all-data-centre total: IEA 'Key Questions on Energy and AI' (April 2026) reportedly gives about 485 TWh in 2025 and 950 TWh in 2030; iea.org blocked fetching on 18 Nov, so confirm on the IEA page (or two outlets) and add it as a fact before using it"
+   ],
+   "sources": [
+    "https://iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+   ]
+  },
+  {
+   "id": "2026-11-18-message-crosses-ocean",
+   "format": "long",
+   "title": "How Your Message Crosses the Ocean in a Tenth of a Second",
+   "category": "internet",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "how_network_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Inside America's Only Internet Sea Cable Maker",
+    "views": 5542424,
+    "url": "https://youtube.com/watch?v=cKnwkxItL2M"
+   },
+   "hook": "Your message to London didn't go to space. It went along the bottom of the Atlantic, in a cable as wide as a garden hose.",
+   "templates": [
+    "any"
+   ],
+   "angle": "From your phone to a landing station, into a fibre pair, light pulses along MAREA's 6,605 km of Atlantic floor, boosted by repeaters, out at Bilbao. Light moves at the speed of light in glass, not in a vacuum (viewers correct this). Any travel time is computed from the length and a sourced speed.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: internet long, a gap). Viewers asked how light carries data in sea cables and how they're laid (comment notes #13).",
+   "facts": [
+    {
+     "label": "Kilometres of submarine cable in service worldwide, over",
+     "value": 1.5,
+     "unit": "count_million",
+     "as_of": "2026-01-01",
+     "source": "TeleGeography Submarine Cable FAQs",
+     "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
+    },
+    {
+     "label": "Active and planned submarine cables TeleGeography tracks, more than",
+     "value": 600,
+     "unit": "count",
+     "as_of": "2026-01-01",
+     "source": "TeleGeography Submarine Cable FAQs",
+     "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions"
+    },
+    {
+     "label": "Length of the MAREA cable, Virginia Beach to Bilbao",
+     "value": 6605,
+     "unit": "km",
+     "as_of": "2018-02-01",
+     "source": "Wikipedia (MAREA)",
+     "url": "https://en.wikipedia.org/wiki/MAREA",
+     "fixed": true
+    },
+    {
+     "label": "MAREA's fibre pairs",
+     "value": 8,
+     "unit": "count",
+     "as_of": "2018-02-01",
+     "source": "Wikipedia (MAREA)",
+     "url": "https://en.wikipedia.org/wiki/MAREA",
+     "fixed": true
+    },
+    {
+     "label": "MAREA's capacity at completion, in terabits per second, up to",
+     "value": 160,
+     "unit": "count",
+     "as_of": "2017-09-23",
+     "source": "Microsoft News",
+     "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+     "fixed": true
+    },
+    {
+     "label": "How many times faster than the average home connection MAREA is, more than",
+     "value": 16,
+     "unit": "count_million",
+     "as_of": "2017-09-23",
+     "source": "Microsoft News",
+     "url": "https://news.microsoft.com/apac/2017/09/23/microsoft-facebook-telxius-complete-advanced-cable-cross-atlantic/",
+     "fixed": true
+    }
+   ],
+   "demand_check": "YouTube search 2026-11-23: VISION 11M (5y), Fluctus 4.3M (3y), RealLifeLore 1.7M (7y)"
+  },
+  {
+   "id": "2026-11-18-starlink-flat-dish",
+   "format": "long",
+   "title": "How Starlink's Flat Dish Aims at Satellites Without Moving",
+   "category": "internet",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "how_network_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How Starlink Actually Works",
+    "views": 4632145,
+    "url": "https://youtube.com/watch?v=DW-aL_MiUz4",
+    "channel": "The Space Race",
+    "channelSubs": 944000,
+    "outlier": 4.9
+   },
+   "hook": "This dish follows satellites racing across the sky, and it never moves. Here's how.",
+   "templates": [
+    "any"
+   ],
+   "angle": "A phased array: many tiny antennas fire a fraction of a second apart so the beam bends where it's needed, handing off between satellites about 550 km up instead of one 35,786 km up. Draw the cables right (viewers caught a power cable drawn as data).",
+   "why_now": "First topics for the channel, from the setup research (advice.md: internet long, example title 2). Viewers asked about LEO vs GEO and the phased-array dish (comment notes #14).",
+   "facts": [
+    {
+     "label": "Altitude of the Starlink constellation, about",
+     "value": 550,
+     "unit": "km",
+     "as_of": "2026-11-18",
+     "source": "Starlink (Technology)",
+     "url": "https://www.starlink.com/technology",
+     "fixed": true
+    },
+    {
+     "label": "Altitude of a geostationary satellite above the equator",
+     "value": 35786,
+     "unit": "km",
+     "as_of": "2026-11-18",
+     "source": "Wikipedia (Geostationary orbit)",
+     "url": "https://en.wikipedia.org/wiki/Geostationary_orbit",
+     "fixed": true
+    },
+    {
+     "label": "Ku-band phased-array antennas on each Starlink satellite",
+     "value": 5,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "Starlink (Technology)",
+     "url": "https://www.starlink.com/technology"
+    },
+    {
+     "label": "Operational satellites in the first Starlink launch",
+     "value": 60,
+     "unit": "count",
+     "as_of": "2019-05-24",
+     "source": "Wikipedia (Starlink)",
+     "url": "https://en.wikipedia.org/wiki/Starlink",
+     "fixed": true
+    },
+    {
+     "label": "Year of that first operational launch",
+     "value": 2019,
+     "unit": "year",
+     "as_of": "2019-05-24",
+     "source": "Wikipedia (Starlink)",
+     "url": "https://en.wikipedia.org/wiki/Starlink"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-first-mouse-wood",
+   "format": "short",
+   "title": "The First Computer Mouse Was Made of Wood",
+   "category": "history",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How Mouse Works? (3D) by Professor Of Ai",
+    "views": 1346050,
+    "url": "https://youtube.com/watch?v=PE7MIF2YMWk",
+    "channel": "Professor Of AI",
+    "channelSubs": 400000,
+    "outlier": 3.4
+   },
+   "hook": "The first computer mouse was a wooden box with two metal wheels.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Bill English built Doug Engelbart's design at SRI in 1964: a wooden block, two wheels at right angles, one button; shown to the world in a 90-minute demo in 1968. Recreated in 3D. Wood: Computer History Museum caption (https://www.computerhistory.org/revolution/input-output/14/350).",
+   "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts, example title).",
+   "facts": [
+    {
+     "label": "Year Bill English built the first mouse prototype at SRI",
+     "value": 1964,
+     "unit": "year",
+     "as_of": "1964-01-01",
+     "source": "SRI International",
+     "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
+    },
+    {
+     "label": "Year the mouse patent was filed",
+     "value": 1967,
+     "unit": "year",
+     "as_of": "1967-01-01",
+     "source": "SRI International",
+     "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
+    },
+    {
+     "label": "Year Engelbart showed it in public",
+     "value": 1968,
+     "unit": "year",
+     "as_of": "1968-12-09",
+     "source": "SRI International",
+     "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
+    },
+    {
+     "label": "Length of that public demonstration, in minutes",
+     "value": 90,
+     "unit": "count",
+     "as_of": "1968-12-09",
+     "source": "SRI International",
+     "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/",
+     "fixed": true
+    },
+    {
+     "label": "Year the patent was issued (X-Y Position Indicator for a Display System)",
+     "value": 1970,
+     "unit": "year",
+     "as_of": "1970-01-01",
+     "source": "SRI International",
+     "url": "https://www.sri.com/hoi/computer-mouse-and-interactive-computing/"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-why-qwerty",
+   "format": "short",
+   "title": "Why Your Keyboard Isn't in ABC Order",
+   "category": "history",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How You Accidentally Invented the Mechanical Typewriter",
+    "views": 6599644,
+    "url": "https://youtube.com/watch?v=ZDhDxu5eNig",
+    "channel": "Badream",
+    "channelSubs": 19800,
+    "outlier": 333.3
+   },
+   "hook": "Why is Q in the corner of your keyboard? The answer is about 150 years old.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Sholes's 1868 typewriter, sold to Remington in 1873, its layout reshuffled until the 1878 patent showed QWERTY. Say the anti-jamming story is disputed rather than state it as fact.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts, example title).",
+   "facts": [
+    {
+     "label": "Year of Sholes's typewriter patent (US 79,265)",
+     "value": 1868,
+     "unit": "year",
+     "as_of": "1868-06-23",
+     "source": "Centre for Computing History",
+     "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
+    },
+    {
+     "label": "Year Sholes sold manufacturing rights to E. Remington and Sons",
+     "value": 1873,
+     "unit": "year",
+     "as_of": "1873-01-01",
+     "source": "Centre for Computing History",
+     "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
+    },
+    {
+     "label": "Year of the patent showing the QWERTY layout (US 207,559)",
+     "value": 1878,
+     "unit": "year",
+     "as_of": "1878-08-27",
+     "source": "Centre for Computing History",
+     "url": "https://www.computinghistory.org.uk/det/6165/Christopher-Sholes-invents-QWERTY-keyboard/"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-first-computer-bug",
+   "format": "short",
+   "title": "The First Computer Bug Was a Real Moth",
+   "category": "history",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How Mr. Potato Head Was Invented",
+    "views": 35566426,
+    "url": "https://youtube.com/watch?v=XFY7-td3LA8",
+    "channel": "Zack D. Films",
+    "channelSubs": 29800000,
+    "outlier": 1.2
+   },
+   "hook": "Engineers opened a computer, found a moth inside, and taped it into the logbook.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Harvard's Mark II, September 1947: operators find a moth between the relays and log the 'first actual case of bug being found'. The word bug was older; this made it famous. Don't say Grace Hopper found it herself (disputed).",
+   "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts).",
+   "facts": [
+    {
+     "label": "Year a moth stuck in Harvard's Mark II computer was logged as a bug",
+     "value": 1947,
+     "unit": "year",
+     "as_of": "1947-09-09",
+     "source": "Centre for Computing History",
+     "url": "https://www.computinghistory.org.uk/det/5927/First-computer-bug-is-found/"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-first-hard-drive",
+   "format": "short",
+   "title": "The First Hard Drive Had 50 Disks and Held Under 4 Megabytes",
+   "category": "history",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How the Bicycle Was Actually Invented!",
+    "views": 1027331,
+    "url": "https://youtube.com/watch?v=PdszpOPce-Y",
+    "channel": "Engineer Explain in hindi",
+    "channelSubs": 503000,
+    "outlier": 2.0
+   },
+   "hook": "The first hard drive had fifty disks the size of pizzas, and you couldn't even buy it.",
+   "templates": [
+    "any"
+   ],
+   "angle": "IBM's Model 350, 1956: fifty 24-inch disks, the equivalent of 3.75 MB, rented for $750 a month. Trails the SSD long video. Any 'one photo / one song' comparison is computed from 3.75 MB and a stated file size.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: tech-history Shorts; trails the SSD long video).",
+   "facts": [
+    {
+     "label": "Year IBM shipped the first hard drive, the Model 350",
+     "value": 1956,
+     "unit": "year",
+     "as_of": "1956-06-01",
+     "source": "Computer History Museum",
+     "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/"
+    },
+    {
+     "label": "Its capacity, in megabytes (equivalent)",
+     "value": 3.75,
+     "unit": "count",
+     "as_of": "1956-06-01",
+     "source": "Computer History Museum",
+     "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
+     "fixed": true
+    },
+    {
+     "label": "Number of disks inside it",
+     "value": 50,
+     "unit": "count",
+     "as_of": "1956-06-01",
+     "source": "Computer History Museum",
+     "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
+     "fixed": true
+    },
+    {
+     "label": "Diameter of each disk, in inches",
+     "value": 24,
+     "unit": "count",
+     "as_of": "1956-06-01",
+     "source": "Computer History Museum",
+     "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
+     "fixed": true
+    },
+    {
+     "label": "Monthly rent for it",
+     "value": 750,
+     "unit": "money",
+     "currency": "USD",
+     "as_of": "1956-06-01",
+     "source": "Computer History Museum",
+     "url": "https://www.computerhistory.org/storageengine/first-commercial-hard-disk-drive-shipped/",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-zoom-into-gpu",
+   "format": "short",
+   "title": "Zoom Into a Graphics Chip Until You See the Switches",
+   "category": "chips",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "zoom_inside"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "What Happens Inside an AI Chip When You Ask a Question",
+    "views": 1024094,
+    "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
+    "channel": "Silicon Up Close",
+    "channelSubs": 12700,
+    "outlier": 80.6
+   },
+   "hook": "This chip is smaller than your palm. Inside it is a city of seventy-six billion switches.",
+   "templates": [
+    "any"
+   ],
+   "angle": "One continuous zoom: the card, the die, the blocks of cores, one core, one transistor. Cut from the GPU long video.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
+   "facts": [
+    {
+     "label": "NVIDIA GeForce RTX 4090: CUDA cores (its small maths units)",
+     "value": 16384,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "NVIDIA (RTX 4090 specs)",
+     "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+     "fixed": true
+    },
+    {
+     "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
+     "value": 76,
+     "unit": "count_billion",
+     "as_of": "2022-09-20",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+     "fixed": true
+    },
+    {
+     "label": "Transistors in the generation before (Ampere), for comparison",
+     "value": 28,
+     "unit": "count_billion",
+     "as_of": "2022-09-20",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-zoom-face-id-dots",
+   "format": "short",
+   "title": "The 30,000 Dots Your Phone Fires at Your Face",
+   "category": "chips",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "zoom_inside"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "What Happens Inside an AI Chip When You Ask a Question",
+    "views": 1024094,
+    "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
+    "channel": "Silicon Up Close",
+    "channelSubs": 12700,
+    "outlier": 80.6
+   },
+   "hook": "Every time you look at your phone, it fires invisible dots at your face.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Exploded view of the notch: dot projector, infrared camera, flood illuminator, then the dots landing on a face as a depth map. Cut from the face-unlock long video.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
+   "facts": [
+    {
+     "label": "Invisible infrared dots Face ID projects onto your face, more than",
+     "value": 30000,
+     "unit": "count",
+     "as_of": "2017-09-12",
+     "source": "Apple Newsroom",
+     "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+     "fixed": true
+    },
+    {
+     "label": "Neural engine operations per second on the iPhone X chip, up to",
+     "value": 600,
+     "unit": "count_billion",
+     "as_of": "2017-09-12",
+     "source": "Apple Newsroom",
+     "url": "https://www.apple.com/newsroom/2017/09/the-future-is-here-iphone-x/",
+     "fixed": true
+    },
+    {
+     "label": "Chance a random person unlocks it with one enrolled appearance: less than 1 in",
+     "value": 1000000,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "Apple Support (About Face ID advanced technology)",
+     "url": "https://support.apple.com/en-us/102381",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-zoom-euv-tin-drop",
+   "format": "short",
+   "title": "The Chip Machine That Blasts Molten Tin 50,000 Times a Second",
+   "category": "chips",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "zoom_inside"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Semiconductor Chip कैसे बनती है? रेत से 2nm Chip तक की पूरी कहानी",
+    "views": 2201309,
+    "url": "https://youtube.com/watch?v=lvcAvPjZwxo",
+    "channel": "PROCESS BHARAT",
+    "channelSubs": 234000,
+    "outlier": 9.4
+   },
+   "hook": "This drop of molten tin is about to be hit by a laser. Twice.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Zoom into the EUV light source: a 25-micron droplet, flattened by one pulse, vaporised by the next into plasma that gives off 13.5 nm light. Cut from the EUV long video.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: zoom Short, cut from that week's long video).",
+   "facts": [
+    {
+     "label": "Wavelength of EUV light, in nanometres",
+     "value": 13.5,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML",
+     "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+     "fixed": true
+    },
+    {
+     "label": "Times every second a tin droplet is hit and turned into light-making plasma",
+     "value": 50000,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML",
+     "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+     "fixed": true
+    },
+    {
+     "label": "Diameter of each molten tin droplet, in microns (about)",
+     "value": 25,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML",
+     "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+     "fixed": true
+    },
+    {
+     "label": "Speed the droplets leave the generator, in metres per second",
+     "value": 70,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "ASML",
+     "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+     "fixed": true
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-ev-battery-cell",
+   "format": "short",
+   "title": "Why Tesla Made Its Battery Cells Bigger",
+   "category": "machines",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "machine_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "18650 Battery Connection Explained Series vs Parallel",
+    "views": 1417957,
+    "url": "https://youtube.com/watch?v=sYFEhrXqegY",
+    "channel": "Engineering School ⚙️",
+    "channelSubs": 206000,
+    "outlier": 6.9
+   },
+   "hook": "An electric car's battery isn't one battery. It's thousands of small cans, and Tesla made the cans bigger.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Exploded pack to one cell: how a cylinder cell stores energy, and why a bigger tabless 46 x 80 mm can was claimed to give more energy and power. Present 5x, 6x and 16% as Tesla's own claims, not test results.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: machines Short, core but crowded).",
+   "facts": [
+    {
+     "label": "Tesla 4680 cell diameter, in millimetres",
+     "value": 46,
+     "unit": "count",
+     "as_of": "2020-09-22",
+     "source": "Electrek (Tesla Battery Day)",
+     "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+     "fixed": true
+    },
+    {
+     "label": "Tesla 4680 cell height, in millimetres",
+     "value": 80,
+     "unit": "count",
+     "as_of": "2020-09-22",
+     "source": "Electrek (Tesla Battery Day)",
+     "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+     "fixed": true
+    },
+    {
+     "label": "Energy increase Tesla claimed for the bigger cell (times)",
+     "value": 5,
+     "unit": "count",
+     "as_of": "2020-09-22",
+     "source": "Electrek (Tesla Battery Day)",
+     "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+     "fixed": true
+    },
+    {
+     "label": "Power increase Tesla claimed (times)",
+     "value": 6,
+     "unit": "count",
+     "as_of": "2020-09-22",
+     "source": "Electrek (Tesla Battery Day)",
+     "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+     "fixed": true
+    },
+    {
+     "label": "Range increase Tesla claimed from the new cell",
+     "value": 16,
+     "unit": "percent",
+     "as_of": "2020-09-22",
+     "source": "Electrek (Tesla Battery Day)",
+     "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/",
+     "fixed": true
+    },
+    {
+     "label": "Year Tesla unveiled the 4680 at Battery Day",
+     "value": 2020,
+     "unit": "year",
+     "as_of": "2020-09-22",
+     "source": "Electrek (Tesla Battery Day)",
+     "url": "https://electrek.co/2020/09/22/tesla-4680-battery-cell-bigger-power-energy/"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-18-rocket-lands-itself",
+   "format": "short",
+   "title": "How a 70-Metre Rocket Lands Itself Standing Up",
+   "category": "machines",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "machine_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "This changes everything for SpaceX",
+    "views": 1286209,
+    "url": "https://youtube.com/watch?v=A-l58A4GFQY",
+    "channel": "The Space Race",
+    "channelSubs": 944000,
+    "outlier": 1.4
+   },
+   "hook": "This rocket just fell back from space, and it's about to land standing up.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Falcon 9's booster after separation: flip, boost-back, re-entry burn, grid fins steering, one of nine engines relit, legs out, touchdown. First done in December 2015; a landed booster flew again in 2017. The title's 70 is the rounded 69.8 m fact.",
+   "why_now": "First topics for the channel, from the setup research (advice.md: machines Short, core).",
+   "facts": [
+    {
+     "label": "Height of a Falcon 9 (Full Thrust)",
+     "value": 69.8,
+     "unit": "m",
+     "as_of": "2026-11-18",
+     "source": "Wikipedia (Falcon 9)",
+     "url": "https://en.wikipedia.org/wiki/Falcon_9",
+     "fixed": true
+    },
+    {
+     "label": "Merlin engines on the Falcon 9 booster",
+     "value": 9,
+     "unit": "count",
+     "as_of": "2026-11-18",
+     "source": "Wikipedia (Falcon 9)",
+     "url": "https://en.wikipedia.org/wiki/Falcon_9",
+     "fixed": true
+    },
+    {
+     "label": "Year a Falcon 9 booster first landed after an orbital launch (Orbcomm OG-2)",
+     "value": 2015,
+     "unit": "year",
+     "as_of": "2015-12-21",
+     "source": "Wikipedia (Falcon 9)",
+     "url": "https://en.wikipedia.org/wiki/Falcon_9"
+    },
+    {
+     "label": "Year a landed booster first flew again (SES-10)",
+     "value": 2017,
+     "unit": "year",
+     "as_of": "2017-03-30",
+     "source": "Wikipedia (Falcon 9)",
+     "url": "https://en.wikipedia.org/wiki/Falcon_9"
+    }
+   ]
+  },
+  {
+   "id": "2026-11-19-microwave-candy-bar",
+   "format": "short",
+   "title": "The Microwave Oven Was Invented by a Melted Candy Bar",
+   "category": "history",
+   "kind": "evergreen",
+   "priority": "high",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How You Accidentally Invented the Mechanical Typewriter",
+    "views": 6599644,
+    "url": "https://youtube.com/shorts/ZDhDxu5eNig",
+    "channel": "Badream",
+    "channelSubs": 19800,
+    "outlier": 333.3
+   },
+   "hook": "A radar engineer reached into his pocket and found his candy bar had melted. Nothing around him was hot.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Percy Spencer at Raytheon, 1945, testing a magnetron (the tube that makes radar's microwaves); the melted bar; the same tube boxed into a cooking oven. 3D cutaway of the magnetron: electrons spun by a magnet past resonant cavities, the waves shaking water molecules in food. Payoff: the first Radarange (1947) stood nearly six feet tall and weighed 750 pounds. Build-it-up device.",
+   "why_now": "Invention titles are the scan's strongest Short shape (2.29x channel median, 53% hits, n=34); no microwave topic yet.",
+   "facts": [
+    {
+     "label": "Year Spencer noticed the melted candy bar while testing a magnetron",
+     "value": 1945,
+     "unit": "year",
+     "as_of": "1945-01-01",
+     "source": "History.com",
+     "url": "https://www.history.com/news/microwave-oven-invention"
+    },
+    {
+     "label": "Weight of the 1947 Radarange, in pounds",
+     "value": 750,
+     "unit": "count",
+     "as_of": "1947-01-01",
+     "source": "History.com",
+     "url": "https://www.history.com/news/microwave-oven-invention",
+     "fixed": true
+    },
+    {
+     "label": "Price of the 1947 Radarange, in dollars of the time",
+     "value": 5000,
+     "unit": "money",
+     "as_of": "1947-01-01",
+     "source": "History.com",
+     "url": "https://www.history.com/news/microwave-oven-invention",
+     "currency": "USD",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Spencer noticed a candy bar in his pocket had melted while testing an active magnetron (1945)",
+    "The 1947 Radarange stood nearly six feet tall, weighed 750 pounds, cost about $5,000"
+   ],
+   "sources": [
+    "https://www.history.com/news/microwave-oven-invention"
+   ],
+   "found": "2026-11-19",
+   "expires": "2027-02-17",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-19-first-digital-camera",
+   "format": "short",
+   "title": "The First Digital Camera Was the Size of a Toaster",
+   "category": "history",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How You Accidentally Invented the Film Camera",
+    "views": 293292,
+    "url": "https://youtube.com/shorts/DgIUii5D-7M",
+    "channel": "Badream",
+    "channelSubs": 19800,
+    "outlier": 14.8
+   },
+   "hook": "In 1975 a Kodak engineer took a photo with no film. Saving it took longer than taking it.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Steve Sasson's Kodak prototype, December 1975: a Fairchild CCD (a grid of light-catching cells) 100 by 100, RAM, then a cassette tape. Capture 50 ms, record 23 s (a counter device). Code computes 100 x 100 = 10,000 pixels against the phone in your hand. Payoff: 23 seconds to save one photo.",
+   "why_now": "Invention family (core, 2.29x); camera inventions proven by Badream's camera Shorts.",
+   "facts": [
+    {
+     "label": "Month and year Sasson took his first photo",
+     "value": 1975,
+     "unit": "year",
+     "as_of": "1975-12-01",
+     "source": "IEEE Spectrum",
+     "url": "https://spectrum.ieee.org/first-digital-camera-history"
+    },
+    {
+     "label": "Pixels along each side of the image",
+     "value": 100,
+     "unit": "count",
+     "as_of": "1975-12-01",
+     "source": "IEEE Spectrum",
+     "url": "https://spectrum.ieee.org/first-digital-camera-history",
+     "fixed": true
+    },
+    {
+     "label": "Seconds to record one image to the cassette tape",
+     "value": 23,
+     "unit": "count",
+     "as_of": "1975-12-01",
+     "source": "IEEE Spectrum",
+     "url": "https://spectrum.ieee.org/first-digital-camera-history",
+     "fixed": true
+    },
+    {
+     "label": "Milliseconds to capture the image",
+     "value": 50,
+     "unit": "count",
+     "as_of": "1975-12-01",
+     "source": "IEEE Spectrum",
+     "url": "https://spectrum.ieee.org/first-digital-camera-history",
+     "fixed": true
+    },
+    {
+     "label": "Weight of the camera, in kilograms",
+     "value": 3.6,
+     "unit": "count",
+     "as_of": "1975-12-01",
+     "source": "IEEE Spectrum",
+     "url": "https://spectrum.ieee.org/first-digital-camera-history",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "100 by 100 pixel CCD; 50 ms capture, 23 s to record to tape; 3.6 kg, about the size of a toaster"
+   ],
+   "sources": [
+    "https://spectrum.ieee.org/first-digital-camera-history"
+   ],
+   "found": "2026-11-19",
+   "expires": "2027-02-17",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-19-first-mobile-phone",
+   "format": "short",
+   "title": "How Motorola Built the First Mobile Phone in Six Weeks",
+   "category": "history",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Most Important Invention In History, Part 2: The Radio",
+    "views": 3964739,
+    "url": "https://youtube.com/shorts/qylpF98bjZI",
+    "channel": "Logibu",
+    "channelSubs": 36100,
+    "outlier": 109.8
+   },
+   "hook": "Motorola had six weeks to build a phone that fit in one hand. Nobody had ever made one.",
+   "templates": [
+    "any"
+   ],
+   "angle": "The DynaTAC prototype working by February 1973, shown in New York on 3 April 1973; inside it: radio, antenna, battery. Then ten years and over $100 million before the DynaTAC 8000X went on sale (6 March 1983): 785 g, 300 mm long. Side-by-side at true size with today's phone.",
+   "why_now": "Invention family; radio/phone inventions are proven by Logibu's series (3.96M on 36K subscribers).",
+   "facts": [
+    {
+     "label": "Weeks Motorola's team had to build a working prototype for the FCC meeting",
+     "value": 6,
+     "unit": "count",
+     "as_of": "1973-02-01",
+     "source": "Motorola Solutions",
+     "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
+     "fixed": true
+    },
+    {
+     "label": "Year of the public demonstration in New York (3 April)",
+     "value": 1973,
+     "unit": "year",
+     "as_of": "1973-04-03",
+     "source": "Motorola Solutions",
+     "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html"
+    },
+    {
+     "label": "Years of development before the commercial phone, more than",
+     "value": 10,
+     "unit": "count",
+     "as_of": "1983-09-21",
+     "source": "Motorola Solutions",
+     "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
+     "fixed": true
+    },
+    {
+     "label": "Motorola's investment in it, in millions of dollars, more than",
+     "value": 100,
+     "unit": "money_million",
+     "as_of": "1983-09-21",
+     "source": "Motorola Solutions",
+     "url": "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
+     "currency": "USD",
+     "fixed": true
+    },
+    {
+     "label": "Weight of the DynaTAC 8000X, in grams",
+     "value": 785,
+     "unit": "count",
+     "as_of": "1983-03-06",
+     "source": "Guinness World Records",
+     "url": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone",
+     "fixed": true
+    },
+    {
+     "label": "Length of the DynaTAC 8000X, in millimetres",
+     "value": 300,
+     "unit": "count",
+     "as_of": "1983-03-06",
+     "source": "Guinness World Records",
+     "url": "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Prototype built in six weeks for an FCC meeting; demonstrated 3 April 1973",
+    "DynaTAC 8000X on sale 6 March 1983, 785 g, 300 x 44 x 89 mm"
+   ],
+   "sources": [
+    "https://www.motorolasolutions.com/en_us/about/history/explore-motorola-heritage/cell-phone-development.html",
+    "https://www.guinnessworldrecords.com/world-records/118343-first-commercially-available-mobile-phone"
+   ],
+   "found": "2026-11-19",
+   "expires": "2027-02-17",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-19-first-transistor",
+   "format": "short",
+   "title": "The First Transistor Was Two Strips of Gold on a Plastic Wedge",
+   "category": "chips",
+   "kind": "evergreen",
+   "priority": "high",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Most Important Invention In History: The Pumpjack",
+    "views": 5354114,
+    "url": "https://youtube.com/shorts/UrBA3twKzGc",
+    "channel": "Logibu",
+    "channelSubs": 36100,
+    "outlier": 148.3
+   },
+   "hook": "Every chip you own is built from one idea, first made by hand from gold foil and a piece of plastic.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Bell Labs, 16 December 1947: Bardeen and Brattain press two closely spaced gold contacts onto germanium; the voltage on one controls the current through the other, up to 100 times stronger. Build it up in 3D, then a scale dive to a modern GPU die with up to 76 billion of them (a counter). Never skip the step: what 'amplify' means.",
+   "why_now": "Bridges the invention family (core) into chips, the channel's main subject; the long video on GPUs can reuse the dive.",
+   "facts": [
+    {
+     "label": "Year of the first successful semiconductor amplifier (16 December)",
+     "value": 1947,
+     "unit": "year",
+     "as_of": "1947-12-16",
+     "source": "Computer History Museum",
+     "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/"
+    },
+    {
+     "label": "How many times it amplified the input signal, up to",
+     "value": 100,
+     "unit": "count",
+     "as_of": "1947-12-16",
+     "source": "Computer History Museum",
+     "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/",
+     "fixed": true
+    },
+    {
+     "label": "Year Bell Labs announced it to the public (30 June)",
+     "value": 1948,
+     "unit": "year",
+     "as_of": "1948-06-30",
+     "source": "Computer History Museum",
+     "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/"
+    },
+    {
+     "label": "Transistors in NVIDIA's Ada Lovelace GPUs, up to",
+     "value": 76,
+     "unit": "count_billion",
+     "as_of": "2022-09-20",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "16 Dec 1947 first semiconductor amplifier; gold contacts on germanium; up to 100x; announced 30 June 1948",
+    "Ada Lovelace GPUs up to 76 billion transistors"
+   ],
+   "sources": [
+    "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/",
+    "https://www.nvidia.com/en-us/geforce/news/rtx-40-series-graphics-cards-announcements/"
+   ],
+   "found": "2026-11-19",
+   "expires": "2027-02-17",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-19-hoover-dam-power",
+   "format": "short",
+   "title": "How Hoover Dam Turns Falling Water Into Electricity",
+   "category": "power",
+   "kind": "evergreen",
+   "priority": "high",
+   "stories": [
+    "machine_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How a Dam Generates Electricity | Hydroelectric Power Explained",
+    "views": 8695933,
+    "url": "https://youtube.com/shorts/rHk5j8d8yog",
+    "channel": "AI Tech 3.7",
+    "channelSubs": 11100,
+    "outlier": 783.4
+   },
+   "hook": "Lake Mead pushes on Hoover Dam all day. Here is how that push becomes the light in a city.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Cutaway run: intake towers, penstocks, water spinning a turbine, the turbine turning a generator's magnets past copper coils. Why the lake's height matters (the deeper the water, the harder it pushes): Reclamation's estimate that at 1,035 feet capacity falls from 1,302 to 382 megawatts. Up to 2,074 megawatts historically, for about 1.3 million people.",
+   "why_now": "The scan's biggest on-topic breakout Short is a dam explainer (8.7M on 11K subscribers, 783x); Reclamation's May 2026 release gives fresh figures.",
+   "facts": [
+    {
+     "label": "Hoover Dam's historical hydropower capacity, in megawatts, up to",
+     "value": 2074,
+     "unit": "count",
+     "as_of": "2026-05-21",
+     "source": "US Bureau of Reclamation",
+     "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    },
+    {
+     "label": "People across the Southwest it supplies, roughly",
+     "value": 1.3,
+     "unit": "count_million",
+     "as_of": "2026-05-21",
+     "source": "US Bureau of Reclamation",
+     "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    },
+    {
+     "label": "Earlier estimate of capacity at a lake elevation of 1,035 feet, in megawatts",
+     "value": 1302,
+     "unit": "count",
+     "as_of": "2026-05-21",
+     "source": "US Bureau of Reclamation",
+     "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    },
+    {
+     "label": "Newer estimate of capacity at that elevation, in megawatts",
+     "value": 382,
+     "unit": "count",
+     "as_of": "2026-05-21",
+     "source": "US Bureau of Reclamation",
+     "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    },
+    {
+     "label": "Megawatts the new turbines are expected to restore, at least",
+     "value": 160,
+     "unit": "count",
+     "as_of": "2026-05-21",
+     "source": "US Bureau of Reclamation",
+     "url": "https://www.usbr.gov/newsroom/news-release/5340"
+    }
+   ],
+   "verify": [
+    "All figures from Reclamation's 21 May 2026 release; say 'historically up to', not today's output"
+   ],
+   "sources": [
+    "https://www.usbr.gov/newsroom/news-release/5340"
+   ],
+   "found": "2026-11-19",
+   "expires": "2027-02-17",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-20-maglev-floats",
+   "format": "short",
+   "title": "How Does Japan's Maglev Train Float Above Its Track?",
+   "category": "transport",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "machine_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Most Important Invention, Part 8! The Maglev Train",
+    "views": 1452626,
+    "url": "https://youtube.com/shorts/UNMHRb5cHOA",
+    "channel": "Logibu",
+    "channelSubs": 36100,
+    "outlier": 40.2,
+    "ageDays": 6.2,
+    "viewsPerDay": 234409
+   },
+   "hook": "This train has no wheels touching anything at full speed. Here is what holds it up.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Cutaway run of JR Central's SCMaglev L0: superconducting magnets on the train, coils in the guideway walls, the train rolling on rubber tyres until it is fast enough to lift, then floating and pulled forward by a moving magnetic field. Payoff: the 21 April 2015 run, 603 km/h, held above 600 for 10.8 seconds over 1.8 km.",
+   "why_now": "Owner note 19 Nov: topics gaining traction. Trains are the niche's fastest-rising Shorts subject this fortnight (15 Shorts, median 2.4x their channel's median; 'Why Did Trains Stop Using Rubber Tyres' 4.8M in 9 days); Logibu's maglev Short is adding 234K views a day.",
+   "facts": [
+    {
+     "label": "Record speed of the Series L0 maglev, in kilometres an hour",
+     "value": 603,
+     "unit": "count",
+     "as_of": "2015-04-21",
+     "source": "Guinness World Records",
+     "url": "https://www.guinnessworldrecords.com/world-records/fastest-maglev-train/",
+     "fixed": true
+    },
+    {
+     "label": "Seconds the run stayed above 600 kilometres an hour",
+     "value": 10.8,
+     "unit": "count",
+     "as_of": "2015-04-21",
+     "source": "Railway Gazette",
+     "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+     "fixed": true
+    },
+    {
+     "label": "Kilometres covered above 600 kilometres an hour",
+     "value": 1.8,
+     "unit": "count",
+     "as_of": "2015-04-21",
+     "source": "Railway Gazette",
+     "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+     "fixed": true
+    },
+    {
+     "label": "Previous record, set by the MLX01 in December 2003, in kilometres an hour",
+     "value": 581,
+     "unit": "count",
+     "as_of": "2003-12-02",
+     "source": "Railway Gazette",
+     "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+     "fixed": true
+    },
+    {
+     "label": "Planned top speed in passenger service, in kilometres an hour",
+     "value": 500,
+     "unit": "count",
+     "as_of": "2015-04-21",
+     "source": "Railway Gazette",
+     "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+     "latest": true,
+     "checked": "2026-11-20"
+    },
+    {
+     "label": "Planned Tokyo to Nagoya journey, in minutes",
+     "value": 40,
+     "unit": "count",
+     "as_of": "2015-04-21",
+     "source": "Railway Gazette",
+     "url": "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article",
+     "latest": true,
+     "checked": "2026-11-20"
+    }
+   ],
+   "verify": [
+    "603 km/h on 21 April 2015, Series L0 (A07), Yamanashi Maglev Line (Guinness)",
+    "10.8 s and 1.8 km above 600 km/h; 581 km/h MLX01 Dec 2003; 500 km/h planned; Tokyo-Nagoya 40 min (Railway Gazette)",
+    "Do not state an opening date for the Chuo Shinkansen; it has slipped"
+   ],
+   "sources": [
+    "https://www.guinnessworldrecords.com/world-records/fastest-maglev-train/",
+    "https://www.railwaygazette.com/high-speed/japanese-maglev-testing-tops-600-km/h/40789.article"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-02-18",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-20-faraday-first-generator",
+   "format": "short",
+   "title": "How Did a Spinning Copper Disc Become Every Power Station?",
+   "category": "power",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Most important Invention in History, Part 10: The Generator (finally)",
+    "views": 160304,
+    "url": "https://youtube.com/shorts/1TmDAcPMaDw",
+    "channel": "Logibu",
+    "channelSubs": 36100,
+    "outlier": 4.4,
+    "ageDays": 1.5,
+    "viewsPerDay": 108750
+   },
+   "hook": "In 1831 a man spun a copper plate next to a magnet, and a current came out. Every power station still does that.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Build it up: Faraday's induction ring (a current in one coil makes a current in another: the first transformer), then the copper disc turned between a horseshoe magnet's poles with sliding contacts, giving a steady current: the first generator. Climb out to a modern turbine-generator (ties to the Hoover Dam topic). Never skip the step: a conductor moving through a magnetic field pushes the electrons along.",
+   "why_now": "Owner note 19 Nov: traction. Logibu's generator Short gained 160K in 36 hours, its nuclear-plant Short 672K in 4 days (18.6x its channel); invention titles run 2.5x their channel's median in the last 14 days.",
+   "facts": [
+    {
+     "label": "Year Faraday began the experiments that found electromagnetic induction",
+     "value": 1831,
+     "unit": "year",
+     "as_of": "1831-09-01",
+     "source": "US Energy Information Administration",
+     "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
+     "fixed": true
+    },
+    {
+     "label": "Year Faraday was born",
+     "value": 1791,
+     "unit": "year",
+     "as_of": "1791-09-22",
+     "source": "US Energy Information Administration",
+     "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
+     "fixed": true
+    },
+    {
+     "label": "Faraday's age when he became a bookbinder's errand boy",
+     "value": 13,
+     "unit": "count",
+     "as_of": "1804-01-01",
+     "source": "US Energy Information Administration",
+     "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
+     "fixed": true
+    },
+    {
+     "label": "Year he proved magnet, battery and static electricity are the same thing",
+     "value": 1832,
+     "unit": "year",
+     "as_of": "1832-01-01",
+     "source": "US Energy Information Administration",
+     "url": "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "EIA: 1831 induction ring = first transformer; September series, copper disc with sliding contacts between a horseshoe magnet's poles = first generator; born 1791; errand boy at 13; 1832 unity of electricities",
+    "Faraday's age in 1831 is computed by code (1831 - 1791), not typed"
+   ],
+   "sources": [
+    "https://www.eia.gov/kids/history-of-energy/famous-people/faraday.php"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-02-18",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-20-first-bicycle-drais",
+   "format": "short",
+   "title": "Why Did the First Bicycle Have No Pedals?",
+   "category": "transport",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "invention_story"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How the Bicycle Was Actually Invented! (3D Animation)",
+    "views": 1027331,
+    "url": "https://youtube.com/shorts/PdszpOPce-Y",
+    "channel": "Engineer Explain",
+    "channelSubs": 503000,
+    "outlier": 2.0,
+    "ageDays": 7.9,
+    "viewsPerDay": 130470
+   },
+   "hook": "The first bicycle had no pedals, no chain and no brakes. So how did it go anywhere?",
+   "templates": [
+    "any"
+   ],
+   "angle": "Build it up: Karl Drais's running machine, two wheels in a line under a wooden frame, pushed along by the rider's feet; the step that matters is steering keeps two wheels in line upright. Then add what came later part by part (pedals, chain) as a short climb out. Mannheim, 12 June 1817, almost 14 km on the first trip; Drais was 32.",
+   "why_now": "Owner note 19 Nov: traction. Engineer Explain's bicycle Short has 1.03M in 8 days at 130K a day (2x its 503K channel); invention Shorts are the niche's rising family this fortnight.",
+   "facts": [
+    {
+     "label": "Year of the running machine's first trip (12 June, from Mannheim)",
+     "value": 1817,
+     "unit": "year",
+     "as_of": "1817-06-12",
+     "source": "deutschland.de",
+     "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
+     "fixed": true
+    },
+    {
+     "label": "Length of that first trip in kilometres, almost",
+     "value": 14,
+     "unit": "count",
+     "as_of": "1817-06-12",
+     "source": "deutschland.de",
+     "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
+     "fixed": true
+    },
+    {
+     "label": "Karl Drais's age at the time",
+     "value": 32,
+     "unit": "count",
+     "as_of": "1817-06-12",
+     "source": "deutschland.de",
+     "url": "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "12 June 1817 from Mannheim, almost 14 km, Drais 32 (deutschland.de); sources differ on the distance (DPMA: about 15 km there and back), so say 'almost 14 kilometres'",
+    "No pedals, chain or brakes on the 1817 machine: confirm on a museum page before use"
+   ],
+   "sources": [
+    "https://www.deutschland.de/en/topic/life/sports-leisure/2-wheels-200-years-the-history-of-the-bicycle"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-02-18",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-20-phone-listening-study",
+   "format": "short",
+   "title": "Do Phone Apps Secretly Listen? Researchers Watched 17,000 of Them",
+   "category": "phones",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "gadget_inside"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "Does Your Phone Listens to You? (3D)",
+    "views": 2447194,
+    "url": "https://youtube.com/shorts/8dF_BFHRdbs",
+    "channel": "Professor Of AI",
+    "channelSubs": 400000,
+    "outlier": 6.1,
+    "ageDays": 7.2,
+    "viewsPerDay": 337881
+   },
+   "hook": "Northeastern University's researchers made phones run thousands of apps and watched every byte they sent. Here's what came out.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Follow the signal: what the microphone permission actually opens, how the researchers drove 17,260 Android apps automatically and recorded every network packet, and the surprise: no app switched on the microphone, but some sent screenshots and screen recordings of what you did. Show the test rig, not hacking; no how-to.",
+   "why_now": "Owner note 19 Nov: traction. Professor Of AI's phone-listening Short has 2.45M in 7 days (338K a day, 6.1x its channel); phone Shorts run 1.8x their channel's median this fortnight.",
+   "facts": [
+    {
+     "label": "Android apps the study covered",
+     "value": 17260,
+     "unit": "count",
+     "as_of": "2018-06-16",
+     "source": "Pan et al., Proceedings on Privacy Enhancing Technologies 2018",
+     "url": "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf",
+     "latest": true,
+     "checked": "2026-11-20"
+    },
+    {
+     "label": "Apps run and watched in the dynamic test",
+     "value": 9100,
+     "unit": "count",
+     "as_of": "2018-06-16",
+     "source": "Pan et al., Proceedings on Privacy Enhancing Technologies 2018",
+     "url": "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf",
+     "latest": true,
+     "checked": "2026-11-20"
+    },
+    {
+     "label": "Apps that could take screenshots, in thousands",
+     "value": 9,
+     "unit": "count_thousand",
+     "as_of": "2018-07-06",
+     "source": "Northeastern University News",
+     "url": "https://news.northeastern.edu/?p=84687",
+     "latest": true,
+     "checked": "2026-11-20"
+    }
+   ],
+   "verify": [
+    "17,260 apps from Google Play, AppChina, Mi.com, Anzhi; 9,100 in the dynamic analysis (paper)",
+    "'not a single app activated the microphone'; 'no audio leaks at all'; 9,000 could take screenshots (Northeastern, 6 July 2018)",
+    "Android only, 2018, automated interaction: say so; never claim phones can't listen"
+   ],
+   "sources": [
+    "https://news.northeastern.edu/?p=84687",
+    "https://www.ftc.gov/system/files/documents/public_events/1415032/privacycon2019_elleen_pan.pdf"
+   ],
+   "found": "2026-11-20",
+   "expires": "2027-02-18",
+   "status": "new"
+  },
+  {
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "normal",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-21",
+   "expires": "2027-02-19",
+   "status": "new",
+   "id": "2026-11-21-gpu-invents-frames",
+   "title": "How Does Your Graphics Card Show Frames It Never Drew?",
+   "category": "chips",
+   "stories": [
+    "how_ai_works"
+   ],
+   "demand": {
+    "title": "Amazing DLSS-5 Tech",
+    "views": 2232234,
+    "url": "https://youtube.com/shorts/6UE-ZK_btTs",
+    "channel": "Professor Of AI",
+    "channelSubs": 400000,
+    "outlier": 5.58,
+    "ageDays": 19.8,
+    "viewsPerDay": 112925
+   },
+   "hook": "In some games, most of the frames on your screen were never drawn by the game at all.",
+   "angle": "Inside one frame on an RTX 50 card: the game renders a small, low-resolution frame; tensor cores upscale it, then run AI models that read motion vectors between two real frames and paint the frames in between. Never skip the causal step: what a motion vector is and why the in-between frame can be guessed. Payoff: NVIDIA says DLSS 4 generates 15 of every 16 pixels; DLSS 4.5 can add five frames for every one the game draws. Say plainly what goes wrong (a corner never seen before).",
+   "why_now": "The niche's chip/GPU subject runs 1.68x its channels' median this fortnight; Professor Of AI's DLSS Short has 2.2M views in 20 days (113K a day, 5.6x the channel's subscribers). Our first how_ai_works Short, in a core format.",
+   "facts": [
+    {
+     "label": "Pixels out of every 16 that DLSS 4 generates with AI",
+     "value": 15,
+     "unit": "count",
+     "as_of": "2025-01-06",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
+     "fixed": true
+    },
+    {
+     "label": "AI models the GPU runs for every rendered frame with DLSS 4",
+     "value": 5,
+     "unit": "count",
+     "as_of": "2025-01-06",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
+     "fixed": true
+    },
+    {
+     "label": "Frame-rate multiple over brute-force rendering, up to",
+     "value": 8,
+     "unit": "count",
+     "as_of": "2025-01-06",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
+     "fixed": true
+    },
+    {
+     "label": "Frames DLSS 4.5 generates for every natively rendered frame, up to",
+     "value": 5,
+     "unit": "count",
+     "as_of": "2026-01-06",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
+     "latest": true,
+     "checked": "2026-11-21"
+    },
+    {
+     "label": "Games and apps with DLSS 4.5 Super Resolution, over",
+     "value": 400,
+     "unit": "count",
+     "as_of": "2026-01-06",
+     "source": "NVIDIA GeForce News",
+     "url": "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
+     "latest": true,
+     "checked": "2026-11-21"
+    }
+   ],
+   "verify": [
+    "DLSS 4: 15 of every 16 pixels generated, 5 AI models per rendered frame, up to 8x over brute force (NVIDIA, 6 Jan 2025)",
+    "DLSS 4.5: up to five generated frames per rendered frame (6X), RTX 50 only; Super Resolution in 400+ games (NVIDIA, 6 Jan 2026)",
+    "DLSS 5 (GTC, March 2026) is a different feature (neural lighting), not frame generation: do not mix it in"
+   ],
+   "sources": [
+    "https://www.nvidia.com/en-us/geforce/news/dlss4-multi-frame-generation-ai-innovations/",
+    "https://www.nvidia.com/en-us/geforce/news/dlss-4-5-dynamic-multi-frame-gen-6x-2nd-gen-transformer-super-res/",
+    "https://techpowerup.com/review/nvidia-geforce-rtx-50-technical-deep-dive/4.html"
+   ]
+  },
+  {
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "normal",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-21",
+   "expires": "2027-02-19",
+   "status": "new",
+   "id": "2026-11-21-paris-metro-tyres",
+   "title": "Why Does the Paris Metro Run on Rubber Tyres?",
+   "category": "transport",
+   "stories": [
+    "machine_works"
+   ],
+   "demand": {
+    "title": "Why Did Trains Stop Using Rubber Tyres (3D Animation)",
+    "views": 4825914,
+    "url": "https://youtube.com/shorts/BDzjNVrfBN8",
+    "channel": "Engineer Explain in hindi",
+    "channelSubs": 503000,
+    "outlier": 9.59,
+    "ageDays": 8.9,
+    "viewsPerDay": 542329
+   },
+   "hook": "Some trains in Paris run on the same kind of tyres as a truck. So what keeps them on the track?",
+   "angle": "Cutaway of a rubber-tyred bogie: the tyres roll on flat running tracks, horizontal guide wheels press on side bars, and steel safety wheels ride on ordinary rails, ready if a tyre goes flat. Why: grip for faster acceleration and braking between close stations, steeper slopes, less noise and vibration. The story: Michelin's 1931 Micheline railcar, the 1951 first tyred metro, Line 11 in 1956, then Montreal built a whole network on it.",
+   "why_now": "Trains are the niche's fastest-rising Shorts subject this fortnight (median 2.4x); the reference Short added 542K views a day. Re-sourced from Michelin's own history page after RATP's refused (a breakout is re-sourced, never dropped).",
+   "facts": [
+    {
+     "label": "Year Michelin and RATP ran the world's first metro on tyres",
+     "value": 1951,
+     "unit": "year",
+     "as_of": "1951-01-01",
+     "source": "Michelin Metro",
+     "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+     "fixed": true
+    },
+    {
+     "label": "Year the Micheline rubber-tyred railcar broke the Paris-Deauville record (January)",
+     "value": 1931,
+     "unit": "year",
+     "as_of": "1931-01-01",
+     "source": "Michelin Metro",
+     "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+     "fixed": true
+    },
+    {
+     "label": "Year Montreal's tyred metro opened",
+     "value": 1966,
+     "unit": "year",
+     "as_of": "1966-01-01",
+     "source": "Michelin Metro",
+     "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+     "fixed": true
+    },
+    {
+     "label": "Trips on the Montreal metro so far, over",
+     "value": 10,
+     "unit": "count_billion",
+     "as_of": "2026-11-21",
+     "source": "Michelin Metro",
+     "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+     "latest": true,
+     "checked": "2026-11-21"
+    },
+    {
+     "label": "Passengers each Montreal train carries at rush hour, roughly",
+     "value": 1000,
+     "unit": "count",
+     "as_of": "2026-11-21",
+     "source": "Michelin Metro",
+     "url": "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+     "latest": true,
+     "checked": "2026-11-21"
+    }
+   ],
+   "verify": [
+    "1951 first tyred metro on Line 11 test (Michelin); public service on Line 11 from November 1956 (RATP)",
+    "Micheline Paris-Deauville record, January 1931",
+    "Montreal opened 1966, 10 billion+ trips, ~1,000 passengers a train at rush hour",
+    "The guide wheels and steel safety wheels: confirm the drawing against a technical source before the director draws it"
+   ],
+   "sources": [
+    "https://metro.michelin.com/en/our-history-our-achievements-our-vision/",
+    "https://www.ratp.fr/decouvrir/coulisses/modernisation-du-reseau/materiel-roulant-metro-ligne-11"
+   ]
+  },
+  {
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "normal",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-21",
+   "expires": "2027-02-19",
+   "status": "new",
+   "id": "2026-11-21-tbm-under-london",
+   "title": "How Did a 150-Metre Machine Dig a Railway Under London?",
+   "category": "machines",
+   "stories": [
+    "machine_works"
+   ],
+   "demand": {
+    "title": "Most Important Invention, Part 4: The Boring Machine",
+    "views": 4264963,
+    "url": "https://youtube.com/shorts/mNnXJe3Bf4Y",
+    "channel": "Logibu",
+    "channelSubs": 36100,
+    "outlier": 118.1,
+    "ageDays": 17.4,
+    "viewsPerDay": 245193
+   },
+   "hook": "Under London, a machine longer than a football pitch dug a railway right next to a working Tube line.",
+   "angle": "Follow one Crossrail tunnel boring machine from the cutting face back: the spinning cutterhead, the pressurised chamber that holds the ground up, the conveyor that carries spoil away, the arm that bolts concrete segments into a ring behind it, so the tunnel is lined as it is dug. Payoff: at Tottenham Court Road the new tunnel passed 700 millimetres from the Northern line.",
+   "why_now": "Logibu's boring-machine Short has 4.26M views on a 36K channel (118x) and is still adding 245K a day; invention and machine Shorts lead the niche this fortnight.",
+   "facts": [
+    {
+     "label": "Length of each Crossrail tunnel boring machine, in metres",
+     "value": 150,
+     "unit": "count",
+     "as_of": "2026-11-21",
+     "source": "Arup",
+     "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+     "fixed": true
+    },
+    {
+     "label": "Kilometres of new tunnels under central London",
+     "value": 42,
+     "unit": "count",
+     "as_of": "2026-11-21",
+     "source": "Arup",
+     "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+     "fixed": true
+    },
+    {
+     "label": "Diameter of the railway tunnels, in metres",
+     "value": 7.1,
+     "unit": "count",
+     "as_of": "2026-11-21",
+     "source": "Arup",
+     "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+     "fixed": true
+    },
+    {
+     "label": "Millimetres between the Elizabeth line and Northern line tunnels at Tottenham Court Road",
+     "value": 700,
+     "unit": "count",
+     "as_of": "2026-11-21",
+     "source": "Arup",
+     "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+     "fixed": true
+    },
+    {
+     "label": "Buildings, railways and utilities assessed for ground movement, over",
+     "value": 17000,
+     "unit": "count",
+     "as_of": "2026-11-21",
+     "source": "Arup",
+     "url": "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "150 m TBMs, 42 km of tunnels, 7.1 m diameter, 700 mm from the Northern line, 17,000+ assets assessed (Arup)",
+    "Eight TBMs, about 1,000 tonnes each (Bechtel/press; confirm before using a weight)"
+   ],
+   "sources": [
+    "https://www.arup.com/projects/crossrail-elizabeth-line-tunnelling-design/",
+    "https://learninglegacy.crossrail.co.uk/wp-content/uploads/2017/04/Machine-driven-tunnels-on-the-Elizabeth-line-London.pdf"
+   ]
+  },
+  {
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "normal",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-22",
+   "expires": "2027-02-20",
+   "status": "new",
+   "id": "2026-11-22-how-wings-lift",
+   "title": "Why Is the School Answer for How Planes Fly Wrong?",
+   "category": "machines",
+   "stories": [
+    "machine_works"
+   ],
+   "demand": {
+    "title": "What Makes an Airplane Fly | 3D Animation",
+    "views": 3489716,
+    "url": "https://youtube.com/shorts/Vz7ejvMGBXk",
+    "channel": "3D Eye",
+    "channelSubs": 161000,
+    "outlier": 21.68,
+    "ageDays": 12.9,
+    "viewsPerDay": 270056
+   },
+   "hook": "Most of us were taught why a wing lifts a plane. NASA says that answer is wrong.",
+   "angle": "Cutaway of an A380 wing in a wind tunnel of glowing streamlines. The school answer: air over the longer top must hurry to meet the air underneath (equal transit). Show two air parcels split at the leading edge: the top one arrives first, not together, so the premise fails; a flat paper plane and a symmetric wing still lift. The real step: the wing at an angle turns the airflow downward, faster flow and lower pressure above, the air is pushed down and the wing is pushed up. Payoff (computed by code from the two Airbus figures): each square metre of an A380's wing holds up about 680 kg at take-off, a small car on every square metre. Loop back to the wing.",
+   "why_now": "3D Eye's airplane Short has 3.49M views in 13 days on a 161K channel (21.7x) and adds 270K a day; it is the only on-profile machine in that channel's top five. A myth the niche's expert commenters correct: exactly the 'never skip the causal step' rule in our profile.",
+   "facts": [
+    {
+     "label": "Maximum take-off weight of the Airbus A380, in tonnes",
+     "value": 575,
+     "unit": "count",
+     "as_of": "2022-02-01",
+     "source": "Airbus",
+     "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Reference wing area of the A380, in square metres",
+     "value": 845,
+     "unit": "count",
+     "as_of": "2022-02-01",
+     "source": "Airbus",
+     "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Wingspan of the A380, in metres",
+     "value": 79.8,
+     "unit": "count",
+     "as_of": "2022-02-01",
+     "source": "Airbus",
+     "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Maximum certified seating of the A380",
+     "value": 853,
+     "unit": "count",
+     "as_of": "2022-02-01",
+     "source": "Airbus",
+     "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+     "fixed": true
+    }
+   ],
+   "maths": null,
+   "verify": [
+    "A380 575 t maximum take-off weight, 845 m2 wing area, 79.8 m wingspan, 853 max seats (Airbus Facts and Figures, Feb 2022)",
+    "NASA Glenn: the equal-transit theory is wrong; molecules split at the leading edge do not meet at the trailing edge; its predicted lift is much less than observed; symmetric wings and flat plates lift",
+    "Load per square metre is computed by code (575,000 kg / 845 m2), never typed; say 'at maximum take-off weight'",
+    "The streamline drawing: tag it 'illustration'; air over the top arrives at the trailing edge first (show it so)"
+   ],
+   "sources": [
+    "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+    "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/foilw1",
+    "https://www.grc.nasa.gov/WWW/K-12/WindTunnel/disclaimer.html"
+   ]
+  },
+  {
+   "id": "2026-11-23-golden-gate-cable-spinning",
+   "format": "short",
+   "title": "How Was the Golden Gate Bridge's Cable Spun in the Air, One Wire at a Time?",
+   "category": "structures",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "machine_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "How Humans Mastered Bridge Building",
+    "views": 2436229,
+    "url": "https://www.youtube.com/watch?v=Hl9LUJud62Y",
+    "channel": "Proto Craft",
+    "channelSubs": 93600,
+    "outlier": 26.03
+   },
+   "hook": "Each of the Golden Gate Bridge's two main cables is almost a metre thick. Nobody lifted it into place.",
+   "templates": [
+    "any"
+   ],
+   "angle": "Cutaway of a main cable over the tower saddle. The mechanism: spinning wheels run back and forth between the anchorages on a cable, each trip laying a pencil-thin steel wire, 0.192 in, across the strait; wires are bundled into 61 strands, then squeezed round and wrapped. Dive from the bridge to the cable cross-section to a single wire with its scale badge. Payoff (computed by code from the sourced facts): the 80,000 miles of wire in both cables would wrap round the Earth's equator about 3 times. Loop back to the cable on the tower.",
+   "why_now": "Machine Shorts are our best lane so far: Crossrail (tunnel boring machine) reached 1,362 views in its first day, 5x any other Short. Bridges are the niche's strongest structure lane in the 18 Nov scan: Proto Craft's 'How Humans Mastered Bridge Building' 2.44M on 93.6K subscribers (26x) and 'How Bridges Get Super Strength' 515K (5.5x, a 46 s Short). Nobody in the scan tells how a suspension cable is actually made.",
+   "facts": [
+    {
+     "label": "Galvanized steel wires in one main cable",
+     "value": 27572,
+     "unit": "count",
+     "as_of": "1937-05-27",
+     "source": "Golden Gate Bridge, Highway and Transportation District",
+     "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+     "fixed": true
+    },
+    {
+     "label": "Diameter of one of those wires, in inches",
+     "value": 0.192,
+     "unit": "count",
+     "as_of": "1937-05-27",
+     "source": "Golden Gate Bridge, Highway and Transportation District",
+     "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+     "fixed": true
+    },
+    {
+     "label": "Diameter of one main cable including the wrapping, in metres",
+     "value": 0.92,
+     "unit": "count",
+     "as_of": "1937-05-27",
+     "source": "Golden Gate Bridge, Highway and Transportation District",
+     "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+     "fixed": true
+    },
+    {
+     "label": "Total length of steel wire in both main cables, in kilometres",
+     "value": 129000,
+     "unit": "count",
+     "as_of": "1937-05-27",
+     "source": "Golden Gate Bridge, Highway and Transportation District",
+     "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+     "fixed": true
+    },
+    {
+     "label": "Main span between the towers, in metres",
+     "value": 1280,
+     "unit": "count",
+     "as_of": "1937-05-27",
+     "source": "Golden Gate Bridge, Highway and Transportation District",
+     "url": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+     "fixed": true
+    },
+    {
+     "label": "Earth's equatorial radius, in kilometres",
+     "value": 6378.137,
+     "unit": "count",
+     "as_of": "2024-01-01",
+     "source": "NASA NSSDCA Earth Fact Sheet",
+     "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+     "fixed": true
+    }
+   ],
+   "maths": null,
+   "verify": [
+    "Golden Gate District: 27,572 galvanized steel wires of 0.192 in per main cable (61 strands, about 452 wires each); main cable 36 3/8 in (0.92 m) with wrapping; 80,000 mi (129,000 km) of wire in both main cables; main span 4,200 ft (1,280 m); built 1933-1937",
+    "The cables were spun in place, wire by wire, by wheels travelling between the anchorages (Golden Gate exhibit 'Spinning the main cables'; PBS American Experience)",
+    "Times round the equator is computed by code: 129,000 km / (2 x pi x 6,378.137 km), about 3.2; say 'about three times', never typed",
+    "Tag the cable cross-section 'illustration, not to scale'; the as_of date is the bridge's opening (27 May 1937)"
+   ],
+   "sources": [
+    "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+    "https://www.goldengate.org/exhibits/spinning-the-main-cables/",
+    "https://www.pbs.org/wgbh/americanexperience/features/goldengate-spinning",
+    "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+   ],
+   "found": "2026-11-23",
+   "expires": "2027-02-21",
+   "status": "new"
+  },
+  {
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "high",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-24",
+   "expires": "2027-02-22",
+   "status": "new",
+   "id": "2026-11-24-gfci-outlet-trips",
+   "title": "How Does a Bathroom Outlet Know to Cut the Power Before It Hurts You?",
+   "category": "power",
+   "stories": [
+    "gadget_inside"
+   ],
+   "demand": {
+    "title": "How Electrical Outlets Work 🤔",
+    "views": 77292444,
+    "url": "https://youtube.com/shorts/0BZ1C83I2R4",
+    "channel": "Zack D. Films",
+    "channelSubs": 29800000,
+    "outlier": 2.59,
+    "ageDays": 30.9,
+    "viewsPerDay": 2501269
+   },
+   "hook": "The outlet by your sink is counting every bit of current that leaves it, and every bit that comes back.",
+   "angle": "Cutaway of a GFCI outlet beside a sink, opened in 3D. Current goes out on the hot wire and comes back on the neutral; both pass through one small ring (a sensing coil). Equal and opposite, the ring feels nothing. A hair dryer drops in water: some current finds a new path home through water and a person, so less comes back; the ring now feels the difference, a tiny coil voltage wakes the chip, a solenoid snaps the contacts open. Payoff by code from the two OSHA figures: it notices a gap of about 5 thousandths of an amp and cuts the power in 25 thousandths of a second (1000 / 40). Then the TEST button: it simply makes that leak on purpose. Loop back to the ring.",
+   "why_now": "The niche's most-viewed on-profile gadget Short this quarter: Zack D. Films' 'How Electrical Outlets Work' has 77.3M views in 31 days, above its 29.8M subscribers, still adding 2.5M a day. We tell one part it doesn't: the safety outlet everyone has pressed TEST on. A gadget_inside topic (low tier in our recipe, 'only for a strong topic'): this is one.",
+   "facts": [
+    {
+     "label": "Difference between outgoing and returning current at which a GFCI interrupts power, in milliamperes (approximately)",
+     "value": 5,
+     "unit": "count",
+     "as_of": "2026-11-24",
+     "source": "OSHA Construction eTool",
+     "url": "https://www.osha.gov/etools/construction/electrical-incidents/ground-fault-circuit-interrupters",
+     "fixed": true
+    },
+    {
+     "label": "A GFCI shuts off power within as little as one part in this many of a second",
+     "value": 40,
+     "unit": "count",
+     "as_of": "2026-11-24",
+     "source": "OSHA Construction eTool",
+     "url": "https://www.osha.gov/etools/construction/electrical-incidents/ground-fault-circuit-interrupters",
+     "fixed": true
+    },
+    {
+     "label": "Smallest difference between circuit current and returning current a GFCI responds to, in amperes (as little as)",
+     "value": 0.006,
+     "unit": "count",
+     "as_of": "2026-11-24",
+     "source": "U.S. Consumer Product Safety Commission, GFCI fact sheet",
+     "url": "https://www.cpsc.gov/s3fs-public/099_0.pdf",
+     "fixed": true
+    }
+   ],
+   "maths": null,
+   "verify": [
+    "OSHA eTool: GFCI shuts off power within as little as 1/40 of a second when outgoing and returning current differ by approximately 5 milliamperes",
+    "CPSC fact sheet: responds to a difference as small as 0.006 amperes, interrupts power before electricity can affect the heartbeat; works even on two-slot receptacles",
+    "25 milliseconds is computed by code (1000 / 40); say 'as little as'",
+    "The sensing-ring drawing is simplified: tag 'illustration'. No how-to on wiring or bypassing; no advice beyond 'press TEST'"
+   ],
+   "sources": [
+    "https://www.osha.gov/etools/construction/electrical-incidents/ground-fault-circuit-interrupters",
+    "https://www.cpsc.gov/s3fs-public/099_0.pdf"
+   ]
+  },
+  {
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "normal",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-24",
+   "expires": "2027-02-22",
+   "status": "new",
+   "id": "2026-11-24-nuclear-pellet-to-power",
+   "title": "How Does a Pellet the Size of a Fingertip Match a Ton of Coal?",
+   "category": "power",
+   "stories": [
+    "machine_works"
+   ],
+   "demand": {
+    "title": "Most Important Invention, Part 9: Nuclear Power Plant",
+    "views": 671626,
+    "url": "https://youtube.com/shorts/LpnlZqVfNN0",
+    "channel": "Logibu",
+    "channelSubs": 36100,
+    "outlier": 18.6,
+    "ageDays": 4.2,
+    "viewsPerDay": 160372
+   },
+   "hook": "This ceramic pellet is smaller than your fingertip. It makes as much energy as a ton of coal.",
+   "angle": "Cutaway run through a pressurised-water plant, following the heat. One pellet in a fuel rod; a neutron splits a uranium atom, the pieces fly apart and heat the pellet; water under pressure carries the heat away without boiling, a steam generator boils a second loop, steam spins the turbine, the generator makes the power; cooling tower releases only water vapour. Side by side at true size: the pellet next to a ton of coal (DOE). Payoff by code from DOE figures: US reactors made about 782 billion kWh in 2024 from 94 reactors, so one reactor about 8.3 billion kWh a year; running more than 92% of the time. Loop back to the pellet.",
+   "why_now": "Logibu's nuclear plant Short has 672K views in 4 days on a 36K channel (18.6x), adding 160K a day; the series' other parts (boring machine, maglev, radio, pumpjack) are already in our feed and the boring-machine topic made our best Short (Crossrail).",
+   "facts": [
+    {
+     "label": "Electricity generated by U.S. nuclear power plants in 2024, in kilowatthours",
+     "value": 782,
+     "unit": "count_billion",
+     "as_of": "2025-05-07",
+     "source": "U.S. Department of Energy, Office of Nuclear Energy",
+     "url": "https://www.energy.gov/ne/articles/5-fast-facts-about-nuclear-energy",
+     "latest": true,
+     "checked": "2026-11-24"
+    },
+    {
+     "label": "Commercial nuclear reactors operating in the U.S.",
+     "value": 94,
+     "unit": "count",
+     "as_of": "2025-05-07",
+     "source": "U.S. Department of Energy, Office of Nuclear Energy",
+     "url": "https://www.energy.gov/ne/articles/5-fast-facts-about-nuclear-energy",
+     "latest": true,
+     "checked": "2026-11-24"
+    },
+    {
+     "label": "Share of 2023 that U.S. nuclear plants ran at full capacity (more than)",
+     "value": 92,
+     "unit": "percent",
+     "as_of": "2025-05-07",
+     "source": "U.S. Department of Energy, Office of Nuclear Energy",
+     "url": "https://www.energy.gov/ne/articles/5-fast-facts-about-nuclear-energy",
+     "latest": true,
+     "checked": "2026-11-24"
+    },
+    {
+     "label": "Tons of coal one uranium fuel pellet equals in energy",
+     "value": 1,
+     "unit": "count",
+     "as_of": "2018-04-01",
+     "source": "U.S. Department of Energy, Nuclear By The Numbers",
+     "url": "https://www.energy.gov/sites/prod/files/2018/04/f50/2017-NuclearByTheNumbers.pdf",
+     "fixed": true
+    },
+    {
+     "label": "Cubic feet of natural gas one uranium fuel pellet equals in energy",
+     "value": 17000,
+     "unit": "count",
+     "as_of": "2018-04-01",
+     "source": "U.S. Department of Energy, Nuclear By The Numbers",
+     "url": "https://www.energy.gov/sites/prod/files/2018/04/f50/2017-NuclearByTheNumbers.pdf",
+     "fixed": true
+    }
+   ],
+   "maths": null,
+   "verify": [
+    "DOE 5 Fast Facts (7 May 2025): nearly 782 billion kWh in 2024, 94 commercial reactors in 28 states, full capacity more than 92% of the time in 2023",
+    "DOE Nuclear By The Numbers: one pellet (about 0.3 x 0.5 in) equals 1 ton of coal, 17,000 cubic feet of natural gas (its oil figure is 120 gallons; industry sources say 149, so leave oil out)",
+    "Per-reactor output is computed by code (782 billion / 94), say 'on average'",
+    "Reactor drawing simplified: tag '3D recreation, not to scale'; no safety claims beyond the sources"
+   ],
+   "sources": [
+    "https://www.energy.gov/ne/articles/5-fast-facts-about-nuclear-energy",
+    "https://www.energy.gov/sites/prod/files/2018/04/f50/2017-NuclearByTheNumbers.pdf"
+   ]
+  }
+ ]
 }

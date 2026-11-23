@@ -1,44 +1,65 @@
 {
-  "proposals": [
-    {
-      "id": "tech-zoom-short-demand",
-      "date": "2026-11-19",
-      "area": "template",
-      "title": "Zoom Shorts have no breakout reference yet",
-      "change": "Keep zoom-inside Shorts at most 2 in 5 until one of ours proves the shape; their only Short references are Branch Education's (504K-1.0M views on 2.78M subscribers, 0.2-0.4x), which check-plan rejects as demand. Tonight's zoom topics now cite Silicon Up Close's 'What Happens Inside an AI Chip When You Ask a Question' (1.02M on 12.7K, 80.6x) and PROCESS BHARAT's chipmaking video (2.2M on 234K, 9.4x).",
-      "evidence": [
-        "https://youtube.com/watch?v=oBKrR3i6jWM",
-        "https://youtube.com/watch?v=lvcAvPjZwxo"
-      ],
-      "expectedEffect": "plans built on zoom topics pass check-plan; the mix leans on invention Shorts, whose references are real breakouts",
-      "confidence": "medium",
-      "effort": "S",
-      "risk": "zoom Shorts may still work for us; our own numbers decide",
-      "metric": "views48h",
-      "status": "new",
-      "route": "experiment",
-      "priority": "normal"
-    },
-    {
-      "id": "tech-topic-traction-score",
-      "date": "2026-11-20",
-      "area": "pipeline",
-      "title": "Rank the topic feed by traction, not only total views (owner note, 19 Nov)",
-      "change": "In generator/topics.py score_parts, add a 'traction' part from demand.viewsPerDay and demand.ageDays (both now written by research on new topics): a reference under 30 days old adds up to +1.0 on a log scale of views per day (10K/day = +0.3, 100K/day = +0.7, 300K+/day = +1.0); a reference over 90 days old adds nothing. Topics without the fields score as today. Research keeps writing viewsPerDay/ageDays from the niche scan.",
-      "evidence": [
-        "niche-data scan 18 Nov: last-14-day Shorts by subject vs their channel's median: invention 2.54x, trains 2.40x, phones 1.84x, planes 1.77x, chips 1.68x, AI 1.12x, rocket/space 0.90x",
-        "Owner note cmwn0yhck0001jj0928f6obym: 'choose topics which are gaining traction'"
-      ],
-      "expectedEffect": "The planner takes topics whose reference is rising this month (e.g. maglev, 234K views/day) ahead of evergreen ones with a big but old reference.",
-      "confidence": "medium",
-      "effort": "S",
-      "risk": "Over-weights one fast channel's spike; capped at +1.0 so demand and breakout still dominate.",
-      "metric": "views48h",
-      "status": "adopted",
-      "route": "adopt",
-      "priority": "high",
-      "adoptedAt": "2026-11-21",
-      "note": "generator/topics.py traction(): views a day of a reference under 30 days, faded to 0 by 90 days, +0 to +1.0"
-    }
-  ]
+ "proposals": [
+  {
+   "id": "tech-zoom-short-demand",
+   "date": "2026-11-19",
+   "area": "template",
+   "title": "Zoom Shorts have no breakout reference yet",
+   "change": "Keep zoom-inside Shorts at most 2 in 5 until one of ours proves the shape; their only Short references are Branch Education's (504K-1.0M views on 2.78M subscribers, 0.2-0.4x), which check-plan rejects as demand. Tonight's zoom topics now cite Silicon Up Close's 'What Happens Inside an AI Chip When You Ask a Question' (1.02M on 12.7K, 80.6x) and PROCESS BHARAT's chipmaking video (2.2M on 234K, 9.4x).",
+   "evidence": [
+    "https://youtube.com/watch?v=oBKrR3i6jWM",
+    "https://youtube.com/watch?v=lvcAvPjZwxo"
+   ],
+   "expectedEffect": "plans built on zoom topics pass check-plan; the mix leans on invention Shorts, whose references are real breakouts",
+   "confidence": "medium",
+   "effort": "S",
+   "risk": "zoom Shorts may still work for us; our own numbers decide",
+   "metric": "views48h",
+   "status": "new",
+   "route": "experiment",
+   "priority": "normal"
+  },
+  {
+   "id": "tech-topic-traction-score",
+   "date": "2026-11-20",
+   "area": "pipeline",
+   "title": "Rank the topic feed by traction, not only total views (owner note, 19 Nov)",
+   "change": "In generator/topics.py score_parts, add a 'traction' part from demand.viewsPerDay and demand.ageDays (both now written by research on new topics): a reference under 30 days old adds up to +1.0 on a log scale of views per day (10K/day = +0.3, 100K/day = +0.7, 300K+/day = +1.0); a reference over 90 days old adds nothing. Topics without the fields score as today. Research keeps writing viewsPerDay/ageDays from the niche scan.",
+   "evidence": [
+    "niche-data scan 18 Nov: last-14-day Shorts by subject vs their channel's median: invention 2.54x, trains 2.40x, phones 1.84x, planes 1.77x, chips 1.68x, AI 1.12x, rocket/space 0.90x",
+    "Owner note cmwn0yhck0001jj0928f6obym: 'choose topics which are gaining traction'"
+   ],
+   "expectedEffect": "The planner takes topics whose reference is rising this month (e.g. maglev, 234K views/day) ahead of evergreen ones with a big but old reference.",
+   "confidence": "medium",
+   "effort": "S",
+   "risk": "Over-weights one fast channel's spike; capped at +1.0 so demand and breakout still dominate.",
+   "metric": "views48h",
+   "status": "adopted",
+   "route": "adopt",
+   "priority": "high",
+   "adoptedAt": "2026-11-21",
+   "note": "generator/topics.py traction(): views a day of a reference under 30 days, faded to 0 by 90 days, +0 to +1.0"
+  },
+  {
+   "id": "tech-wpm-gap",
+   "date": "2026-11-24",
+   "area": "pacing",
+   "title": "Our Shorts speak at 129-148 words a minute, not the 164 the pace fix aimed for",
+   "change": "Check why the owner's pace fix (voice speed 0.92 -> 1.0, 'about 164 words a minute', commit 8cae8f7) lands at 140-148 words a minute in the three Shorts made since (timeline.json words over duration: transistor 148, Crossrail 140, mobile phone 148; microwave at 0.92 was 130). The gap is likely the beat pads and pauses between beats (channel.json beatPad, TEMPOS short 1.2). If the owner's note meant the spoken pace, close it (shorter pads, not a faster voice); if a pace change beyond that is wanted, it is a weekly-loop test on TEMPOS.",
+   "evidence": [
+    "channels/how-tech-and-ai-actually-work-chips-ai-p/videos/v-20261121-21/timeline.json",
+    "channels/how-tech-and-ai-actually-work-chips-ai-p/videos/v-20261122-21/timeline.json",
+    "channels/how-tech-and-ai-actually-work-chips-ai-p/videos/v-20261123-21/timeline.json",
+    "channels/how-tech-and-ai-actually-work-chips-ai-p/metrics/feedback.json"
+   ],
+   "expectedEffect": "The owner's addressed pace note actually delivered; 5 of 16 reference Shorts in our sheets are 'fast' narrators",
+   "confidence": "medium",
+   "effort": "S",
+   "risk": "Cutting pads too far crowds the reveals; the pre-reveal drop (0.4 s) must stay",
+   "metric": "avgViewPct",
+   "status": "new",
+   "route": "experiment",
+   "priority": "normal"
+  }
+ ]
 }
