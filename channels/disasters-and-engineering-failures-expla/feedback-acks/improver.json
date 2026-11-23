@@ -22,13 +22,13 @@
    "id": "cmwrnqrk10001l109q8tokt2j",
    "action": "fixed",
    "note": "Done, and for every channel: Disaster Desk long videos speak at 1.15 (about 189 words a minute, was 0.92), now in channel.json too; and no channel's narrator goes under 1.0 in a Short or 1.15 in a long video (generator/pack.py MIN_SPEED), because three channels' notes asked for a faster pace. The Gauge long video (L-20261122-42) was rendered before this, at the old pace.",
-   "commit": "f73db09"
+   "commit": "6c7f696"
   },
   {
    "id": "cmwrnoaza0001jv09ogy086yi",
    "action": "fixed",
    "note": "Done, and for every channel: the recipe's rule that kept the toll out of the first line is gone; a long video's first sentence now states the small cause and how big it got (\"One changed rod on a hotel walkway killed 114 people.\"), plainly, never in the title. Studio's instructions say so for every channel's long videos, and it is lesson 9 in every channel's lessons.md.",
-   "commit": "f73db09"
+   "commit": "6c7f696"
   }
  ]
 }

@@ -40,13 +40,13 @@
    "id": "cmwstm4180001jv0917t7gywr",
    "action": "fixed",
    "note": "Fixed for every map video: the code check before render now fails a video whose country is named on the map but never shows its flag (renderer/remotion.py map_flag_problems), so the director must give Russia its flag where its area grows. It found the same miss on Peru in another Short. This Short is already live, so it can't be changed.",
-   "commit": "f73db09"
+   "commit": "6c7f696"
   },
   {
    "id": "cmwlu7uww0001kz09ua9f25hp",
    "action": "fixed",
    "note": "Noted: only the Suez sample went out, and sample 2 is this channel's bar.",
-   "commit": "f73db09"
+   "commit": "6c7f696"
   }
  ]
 }
