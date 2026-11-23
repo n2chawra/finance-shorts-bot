@@ -1,0 +1,207 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T14:50:03.706160+00:00",
+    "finishedAt": "2026-11-23T14:50:03.706160+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-23T14:50:45.394428+00:00",
+    "finishedAt": "2026-11-23T14:50:45.394428+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T14:51:24.067644+00:00",
+    "finishedAt": "2026-11-23T14:51:24.067644+00:00",
+    "notes": [
+      "beat 'hook'.params.place[0] contains a typed number; use a placeholder: 'inside the grey cloud beside the S-76 helicopter'",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: beat 'toll' opens like a line in one of the last scripts ('minutes after the'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T14:51:36.696009+00:00",
+    "finishedAt": "2026-11-23T14:51:36.696009+00:00",
+    "notes": [
+      "beat 'hook'.params.moments[0].what contains a typed number; use a placeholder: 'the white-and-blue S-76 slides through grey cloud, rotor blurring, JAN 2020 · CALABASAS, CALIFORNIA types on'",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-23T14:51:41.791869+00:00",
+    "finishedAt": "2026-11-23T14:51:41.791869+00:00",
+    "notes": [
+      "beat 'report'.params.moments[0].what contains a typed number; use a placeholder: 'the report page slides under the lamp, NTSB AAR-21/01 at the top'",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T14:51:46.344339+00:00",
+    "finishedAt": "2026-11-23T14:51:46.344339+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T14:52:39.583199+00:00",
+    "finishedAt": "2026-11-23T14:52:39.583199+00:00",
+    "notes": [
+      "All 6 facts confirmed on the NTSB press release NR20210209 (crash Jan 26 2020; 9 killed; ~1,500 ft/min climb; ~2,400 ft msl; ~2 min from climb to crash; 4 recommendations); probable cause includes spatial disorientation and loss of control; pilot reported climbing to 4,000 ft msl while descending in a left turn (verbatim on the page); deaths stated once, no gore, no blame beyond the report, disclaimer ends the description. Notes: 2,400 ft is above sea level (1,600 ft AGL), an altimeter reading so fine; the report beat leaves out the decision to continue VFR into IMC and the operator's SMS finding, softer than the report, not misleading."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T14:58:19.718655+00:00",
+    "finishedAt": "2026-11-23T14:58:19.718655+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "warning: beat 'climb' runs 7.7 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T14:59:26.137700+00:00",
+    "finishedAt": "2026-11-23T14:59:26.137700+00:00",
+    "notes": [
+      "Re-review after the length trim: the changed hook, climb, ear, report and loop lines read the same 6 NTSB facts, unchanged and confirmed on press release NR20210209. Hook 'said he was climbing. Was he?' matches the NTSB (the pilot reported climbing to 4,000 ft msl while the helicopter was descending). The ear line is a fair simplification. The report line matches the probable cause. Title unchanged. The disclaimer still ends the description. Note: 2,400 ft is above sea level (1,600 ft AGL)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T14:59:17.981815+00:00",
+    "finishedAt": "2026-11-23T15:01:57.325073+00:00",
+    "notes": [
+      "3 of 11 stills are mostly empty background (at 0 s, 15 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 40% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-23T15:02:45.193539+00:00",
+    "finishedAt": "2026-11-23T15:02:45.193539+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-23T15:03:10.632918+00:00",
+    "finishedAt": "2026-11-23T15:05:23.331805+00:00",
+    "notes": [
+      "2 of 11 stills are mostly empty background (at 15 s, 30 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 40% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T15:05:41.236835+00:00",
+    "finishedAt": "2026-11-23T15:07:52.323511+00:00",
+    "notes": [
+      "47 s, sky/brace (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 40% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-23T15:08:44.600966+00:00",
+    "finishedAt": "2026-11-23T15:08:44.600966+00:00",
+    "notes": [
+      "[scene] 25.0s (turn beat, Turn.tsx): the amber 'what it did' line runs straight through both labels, striking 'WHAT HE FELT' and 'WHAT IT DID'; 'WHAT IT DID' is also amber on pale grey cloud and hard to read. Move the labels off the line's path and give them a dark plate.",
+      "[scene] 15.0s (ear beat, Ear.tsx): the white cochlea curl is drawn on top of the 'TURN FELT' meter label, cutting through 'FELT'. Move the label/meter clear of the cochlea or draw the label above it.",
+      "[script] 40.0s (choice beat): two floating cards on a plain rainy grey backdrop, no place (check D). Put the choice in the cockpit: the pilot's seat/head feeling level next to the real attitude indicator banked left on the panel.",
+      "[script] thumbnail (turn beat at 1.6s): a half-faded ghost 'WHAT HE FELT' label and dashed line sit behind the helicopter, mid-transition. Pick a moment after the labels settle (or before they appear)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T15:10:04.254959+00:00",
+    "finishedAt": "2026-11-23T15:12:11.644905+00:00",
+    "notes": [
+      "47 s, sky/brace (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 40% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-23T15:12:32.047901+00:00",
+    "finishedAt": "2026-11-23T15:12:32.047901+00:00",
+    "notes": [
+      "Re-review after fixes: turn labels now on dark plates clear of the line, TURN FELT meter clear of the ear drawing, choice set in the cockpit (windscreen in cloud, panel screens), thumbnail a clean climb frame; hook names Kobe Bryant/Calabasas, loop and pick-one close OK, disclaimer in description, layout/craft empty, audio -1.0/-18.5 dB, 47 s."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-23T15:22:37.466273+00:00",
+    "finishedAt": "2026-11-23T15:58:44.271321+00:00",
+    "notes": [
+      "47 s, sky/brace, peak -1.0 dB, mean -18.5 dB",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the turn starts at 40% of the video; between 50% and 85%",
+      "warning: integrated loudness -16.4 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-23T16:21:04.448730+00:00",
+    "finishedAt": "2026-11-23T16:21:04.448730+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

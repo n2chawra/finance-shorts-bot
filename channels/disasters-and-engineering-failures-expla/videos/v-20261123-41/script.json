@@ -1,0 +1,802 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 37219,
+ "story": "promo_failure_moment",
+ "shape": "felt-vs-flew",
+ "currency": "USD",
+ "style": {
+  "recipe": "storm-weather",
+  "palette": "sky",
+  "genre": "brace",
+  "key": "D",
+  "bpm": 70
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Your body or the instruments: which would you trust in cloud? Comment",
+ "feed_id": "2026-11-23-calabasas-s76-cloud",
+ "facts": [
+  {
+   "label": "Year of the crash",
+   "value": 2020,
+   "unit": "year",
+   "as_of": "2020-01-26",
+   "source": "NTSB",
+   "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx"
+  },
+  {
+   "label": "People killed, the pilot and eight passengers",
+   "value": 9,
+   "unit": "count",
+   "as_of": "2021-02-09",
+   "source": "NTSB",
+   "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx"
+  },
+  {
+   "label": "Altitude reached above sea level, feet",
+   "value": 2400,
+   "unit": "count",
+   "as_of": "2021-02-09",
+   "source": "NTSB",
+   "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx"
+  },
+  {
+   "label": "Climb rate into the cloud, feet per minute",
+   "value": 1500,
+   "unit": "count",
+   "as_of": "2021-02-09",
+   "source": "NTSB",
+   "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx"
+  },
+  {
+   "label": "Minutes from the start of the climb to the crash",
+   "value": 2,
+   "unit": "count",
+   "as_of": "2021-02-09",
+   "source": "NTSB",
+   "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx"
+  },
+  {
+   "label": "Safety recommendations issued",
+   "value": 4,
+   "unit": "count",
+   "as_of": "2021-02-09",
+   "source": "NTSB",
+   "url": "https://www-s.ntsb.gov/news/press-releases/Pages/NR20210209.aspx"
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "climb",
+  "sec": 1.5,
+  "words": "He said *climbing*",
+  "tag": "Calabasas",
+  "angle": "question"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Kobe Bryant's pilot said he was climbing. Was he?",
+   "events": {
+    "pilot": {
+     "word": "pilot"
+    },
+    "said": {
+     "word": "said"
+    },
+    "climbing": {
+     "word": "climbing"
+    },
+    "was": {
+     "word": "Was"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": [
+     "inside the grey cloud beside the Sikorsky helicopter",
+     "the helicopter's attitude indicator in a loupe"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "said",
+      "size": "close"
+     },
+     {
+      "at": "was",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pilot",
+      "what": "the white-and-blue Sikorsky slides through grey cloud, rotor blurring, the date and place caption on; push in on the cockpit"
+     },
+     {
+      "at": "said",
+      "what": "a loupe opens on the attitude indicator, already tilting amber"
+     },
+     {
+      "at": "climbing",
+      "what": "a PILOT: CLIMBING? label types on beside the loupe"
+     },
+     {
+      "at": "was",
+      "what": "pull wide: the helicopter's rotor disc tilting into a left bank, the cloud thickening around it"
+     }
+    ],
+    "things": [
+     "Sikorsky helicopter",
+     "cloud",
+     "hill ridge",
+     "attitude indicator loupe",
+     "date caption"
+    ],
+    "fig": {
+     "year": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "cloud"
+    }
+   ]
+  },
+  {
+   "id": "climb",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "He climbed to get above the cloud, at {fact4} feet a minute, up to {fact3} feet.",
+   "events": {
+    "climbed": {
+     "word": "climbed"
+    },
+    "above": {
+     "word": "above"
+    },
+    "cloud": {
+     "word": "cloud"
+    },
+    "feet": {
+     "word": "feet"
+    },
+    "minute": {
+     "word": "minute"
+    },
+    "up": {
+     "word": "up"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Climb",
+    "place": "over the Calabasas hills, the helicopter climbing up the face of the cloud deck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "cloud",
+      "size": "medium"
+     },
+     {
+      "at": "up",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "climbed",
+      "what": "the helicopter noses up from the valley toward the cloud deck, its climb path drawing behind it"
+     },
+     {
+      "at": "above",
+      "what": "the bright top of the cloud shows far above"
+     },
+     {
+      "at": "cloud",
+      "what": "it enters the cloud, the hills vanish"
+     },
+     {
+      "at": "feet",
+      "what": "the climb-rate dial on the panel swings to the figure"
+     },
+     {
+      "at": "minute",
+      "what": "the climb path behind the helicopter flares amber, the climb-rate readout pulses"
+     },
+     {
+      "at": "up",
+      "what": "the altimeter tape rolls up to the figure"
+     }
+    ],
+    "things": [
+     "helicopter",
+     "hills",
+     "cloud deck",
+     "climb path",
+     "vertical speed dial",
+     "altimeter tape"
+    ],
+    "fig": {
+     "rate": "{fact4}",
+     "alt": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "climbed"
+    }
+   ]
+  },
+  {
+   "id": "ear",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So how could he not feel it? Turning moves fluid in tiny loops in your ear. In a steady turn, the fluid catches up.",
+   "events": {
+    "feel": {
+     "word": "feel"
+    },
+    "turning": {
+     "word": "Turning"
+    },
+    "fluid": {
+     "word": "fluid"
+    },
+    "loops": {
+     "word": "loops"
+    },
+    "ear": {
+     "word": "ear"
+    },
+    "steady": {
+     "word": "steady"
+    },
+    "catches": {
+     "word": "catches"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Ear",
+    "place": "a cut-away of the inner ear, a general principle diagram",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "loops",
+      "size": "close"
+     },
+     {
+      "at": "steady",
+      "size": "medium"
+     },
+     {
+      "at": "catches",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "feel",
+      "what": "a head outline in the cloud's grey, a turn arrow sweeping round it"
+     },
+     {
+      "at": "turning",
+      "what": "the head tilts with the turn arrow"
+     },
+     {
+      "at": "fluid",
+      "what": "blue fluid fills the three loops of the inner ear"
+     },
+     {
+      "at": "loops",
+      "what": "push in on the loops, the hair sensor drawn in one of them"
+     },
+     {
+      "at": "ear",
+      "what": "an INNER EAR label types on"
+     },
+     {
+      "at": "steady",
+      "what": "the turn arrow keeps sweeping at a steady rate"
+     },
+     {
+      "at": "catches",
+      "what": "the fluid moves with the loop, the sensor hairs stand straight, the TURN meter drains, FEELS LEVEL types on"
+     }
+    ],
+    "things": [
+     "head outline",
+     "inner ear loops",
+     "fluid",
+     "hair sensor",
+     "turn signal meter"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "catches"
+    }
+   ]
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "In the cloud, the helicopter was banking left and going down. He told the controller it was climbing.",
+   "events": {
+    "cloud": {
+     "word": "cloud"
+    },
+    "banking": {
+     "word": "banking"
+    },
+    "left": {
+     "word": "left"
+    },
+    "down": {
+     "word": "down"
+    },
+    "told": {
+     "word": "told"
+    },
+    "controller": {
+     "word": "controller"
+    },
+    "climbing": {
+     "word": "climbing"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Turn",
+    "place": [
+     "inside the cloud behind the helicopter",
+     "the radio transcript over the cockpit"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "left",
+      "size": "close"
+     },
+     {
+      "at": "told",
+      "size": "medium"
+     },
+     {
+      "at": "climbing",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "cloud",
+      "what": "behind the Sikorsky in grey cloud, its horizon line drawn level"
+     },
+     {
+      "at": "banking",
+      "what": "the helicopter rolls left, the real horizon tilts against a dashed FELT line that stays level"
+     },
+     {
+      "at": "left",
+      "what": "a BANK LEFT tag in amber"
+     },
+     {
+      "at": "down",
+      "what": "the altimeter tape starts rolling down in red"
+     },
+     {
+      "at": "told",
+      "what": "the transcript line from the report types on as text, as reported"
+     },
+     {
+      "at": "controller",
+      "what": "the ATC label lights"
+     },
+     {
+      "at": "climbing",
+      "what": "the word CLIMBING in the transcript is struck through by the falling altimeter"
+     }
+    ],
+    "things": [
+     "helicopter",
+     "cloud",
+     "horizon line",
+     "felt line",
+     "altimeter tape",
+     "radio transcript"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "down"
+    }
+   ]
+  },
+  {
+   "id": "impact",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "",
+   "events": {
+    "near": {
+     "sec": 0.25
+    },
+    "hit": {
+     "sec": 1.0
+    },
+    "wide": {
+     "sec": 1.7
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Impact",
+    "place": "at the hillside, the helicopter coming out of the cloud base, time slowed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "near",
+      "what": "silence: the hillside's scrub fills the frame, the helicopter's nose appears out of the cloud above it"
+     },
+     {
+      "at": "hit",
+      "what": "the sub-boom: a flash of dust and debris at the slope, the frame dips to the dust before anything else"
+     },
+     {
+      "at": "wide",
+      "what": "wide: dust and smoke rising from the hillside into the cloud"
+     }
+    ],
+    "things": [
+     "hillside",
+     "scrub",
+     "helicopter",
+     "dust",
+     "cloud base"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "hit"
+    }
+   ],
+   "min_sec": 2.4
+  },
+  {
+   "id": "toll",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "It hit a hillside {fact5} minutes after the climb began. All {fact2} people aboard died.",
+   "events": {
+    "hit": {
+     "word": "hit"
+    },
+    "hillside": {
+     "word": "hillside"
+    },
+    "climb": {
+     "word": "climb"
+    },
+    "began": {
+     "word": "began"
+    },
+    "people": {
+     "word": "people"
+    },
+    "aboard": {
+     "word": "aboard"
+    },
+    "died": {
+     "word": "died"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Toll",
+    "place": "the fog-covered hillside at dawn light, rescuers arriving with lamps",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "hillside",
+      "size": "medium"
+     },
+     {
+      "at": "aboard",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hit",
+      "what": "smoke rising from the fog-covered slope"
+     },
+     {
+      "at": "hillside",
+      "what": "pull along the slope, a clock face on the trail marker"
+     },
+     {
+      "at": "climb",
+      "what": "the clock runs to the figure"
+     },
+     {
+      "at": "began",
+      "what": "the climb path draws over the hills"
+     },
+     {
+      "at": "people",
+      "what": "rescuers walk in with head lamps through the fog"
+     },
+     {
+      "at": "aboard",
+      "what": "a memorial plaque on the trail shows the figure"
+     },
+     {
+      "at": "died",
+      "what": "the light dims, the plaque stays"
+     }
+    ],
+    "things": [
+     "hillside",
+     "clock marker",
+     "rescuers",
+     "memorial plaque",
+     "smoke",
+     "fog"
+    ],
+    "fig": {
+     "minutes": "{fact5}",
+     "aboard": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "report",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The NTSB named spatial disorientation, and made {fact6} recommendations.",
+   "events": {
+    "ntsb": {
+     "word": "NTSB"
+    },
+    "named": {
+     "word": "named"
+    },
+    "spatial": {
+     "word": "spatial"
+    },
+    "disorientation": {
+     "word": "disorientation"
+    },
+    "made": {
+     "word": "made"
+    },
+    "recommendations": {
+     "word": "recommendations"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Report",
+    "place": "the investigators' desk, the NTSB final report open under a lamp",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "disorientation",
+      "size": "close"
+     },
+     {
+      "at": "recommendations",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ntsb",
+      "what": "the report page slides under the lamp, the NTSB final report title at the top"
+     },
+     {
+      "at": "named",
+      "what": "the highlighter runs across the probable cause line"
+     },
+     {
+      "at": "disorientation",
+      "what": "push in: SPATIAL DISORIENTATION highlighted in amber"
+     },
+     {
+      "at": "made",
+      "what": "a stack of recommendation cards slides out and fans across the desk"
+     },
+     {
+      "at": "recommendations",
+      "what": "the counter tab on the stack lands on the figure"
+     }
+    ],
+    "things": [
+     "report page",
+     "highlighter",
+     "desk lamp",
+     "recommendation cards",
+     "counter tab"
+    ],
+    "fig": {
+     "recs": "{fact6}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "recommendations"
+    }
+   ]
+  },
+  {
+   "id": "choice",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Your body or the instruments: which would you trust in cloud?",
+   "events": {
+    "body": {
+     "word": "body"
+    },
+    "instruments": {
+     "word": "instruments"
+    },
+    "which": {
+     "word": "which"
+    },
+    "trust": {
+     "word": "trust"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Choice",
+    "place": "inside the helicopter's cockpit in cloud: grey windscreen above, the instrument panel below",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "instruments",
+      "size": "close"
+     },
+     {
+      "at": "trust",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "body",
+      "what": "the left panel screen lights: a head with a level arrow, FEELS LEVEL"
+     },
+     {
+      "at": "instruments",
+      "what": "the right panel screen lights: the attitude indicator banked left"
+     },
+     {
+      "at": "which",
+      "what": "a question mark drops between them on the panel"
+     },
+     {
+      "at": "trust",
+      "what": "both screens pulse, the cloud slides past the windscreen"
+     }
+    ],
+    "things": [
+     "cockpit windscreen",
+     "instrument panel",
+     "body screen",
+     "attitude indicator",
+     "question mark"
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "In that cloud, he said he was climbing.",
+   "events": {
+    "that": {
+     "word": "that"
+    },
+    "cloud": {
+     "word": "cloud"
+    },
+    "climbing": {
+     "word": "climbing"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Loop",
+    "place": "back inside the grey cloud beside the helicopter",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "climbing",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "that",
+      "what": "the camera glides through the cloud toward the Sikorsky"
+     },
+     {
+      "at": "cloud",
+      "what": "the rotor blur shows through the grey"
+     },
+     {
+      "at": "climbing",
+      "what": "the frame settles on the hook's first picture"
+     }
+    ],
+    "things": [
+     "helicopter",
+     "cloud",
+     "rotor"
+    ]
+   }
+  }
+ ]
+}
