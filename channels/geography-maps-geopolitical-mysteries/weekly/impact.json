@@ -1,15 +1,31 @@
 {
  "note": "Written by python -m generator.impact (improver, nightly). weeks: Shorts by IST publish week; stayedToWatch = engaged views / views (did not swipe away); changes: Shorts 14 days before vs after each landed change (sameWeek = other changes within 3 days, so effects mix).",
- "updatedAt": "2026-11-22T17:15:14+00:00",
+ "updatedAt": "2026-11-23T16:56:54+00:00",
  "weeks": [
   {
    "week": "2026-11-16",
-   "n": 1,
-   "medianViews48h": 12,
-   "avgViewPct": 55,
-   "stayedToWatch": 0.583,
-   "avgViewSec": 33.0,
+   "n": 3,
+   "medianViews48h": 737,
+   "avgViewPct": 62.8,
+   "stayedToWatch": 0.592,
+   "avgViewSec": 38.6,
    "videos": [
+    {
+     "id": "v-20261119-03",
+     "title": "The Sahara used to be green. Why?",
+     "day": "2026-11-19",
+     "views48h": 890,
+     "avgViewPct": 58.7,
+     "stayedToWatch": 0.584
+    },
+    {
+     "id": "v-20261119-02",
+     "title": "Greenland belongs to Denmark. Why?",
+     "day": "2026-11-19",
+     "views48h": 737,
+     "avgViewPct": 74.6,
+     "stayedToWatch": 0.61
+    },
     {
      "id": "v-20261118-01",
      "title": "What if the Suez Canal closed for a year?",
@@ -36,14 +52,31 @@
     "avgViewSec": 33.0
    },
    "after": {
-    "n": 0,
-    "medianViews48h": null,
-    "avgViewPct": null,
-    "stayedToWatch": null,
-    "avgViewSec": null
+    "n": 2,
+    "medianViews48h": 813.5,
+    "avgViewPct": 66.7,
+    "stayedToWatch": 0.597,
+    "avgViewSec": 41.3
    },
-   "afterVideos": [],
-   "viewsRatio": null,
+   "afterVideos": [
+    {
+     "id": "v-20261119-03",
+     "title": "The Sahara used to be green. Why?",
+     "day": "2026-11-19",
+     "views48h": 890,
+     "avgViewPct": 58.7,
+     "stayedToWatch": 0.584
+    },
+    {
+     "id": "v-20261119-02",
+     "title": "Greenland belongs to Denmark. Why?",
+     "day": "2026-11-19",
+     "views48h": 737,
+     "avgViewPct": 74.6,
+     "stayedToWatch": 0.61
+    }
+   ],
+   "viewsRatio": 67.79,
    "sameWeek": 1
   },
   {
@@ -60,14 +93,31 @@
     "avgViewSec": 33.0
    },
    "after": {
-    "n": 0,
-    "medianViews48h": null,
-    "avgViewPct": null,
-    "stayedToWatch": null,
-    "avgViewSec": null
+    "n": 2,
+    "medianViews48h": 813.5,
+    "avgViewPct": 66.7,
+    "stayedToWatch": 0.597,
+    "avgViewSec": 41.3
    },
-   "afterVideos": [],
-   "viewsRatio": null,
+   "afterVideos": [
+    {
+     "id": "v-20261119-03",
+     "title": "The Sahara used to be green. Why?",
+     "day": "2026-11-19",
+     "views48h": 890,
+     "avgViewPct": 58.7,
+     "stayedToWatch": 0.584
+    },
+    {
+     "id": "v-20261119-02",
+     "title": "Greenland belongs to Denmark. Why?",
+     "day": "2026-11-19",
+     "views48h": 737,
+     "avgViewPct": 74.6,
+     "stayedToWatch": 0.61
+    }
+   ],
+   "viewsRatio": 67.79,
    "sameWeek": 1
   }
  ]
