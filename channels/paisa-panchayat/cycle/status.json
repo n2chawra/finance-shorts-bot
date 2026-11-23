@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T00:45:12.582693+00:00",
+  "generatedAt": "2026-11-23T04:30:24.941410+00:00",
   "cycle": 2,
   "running": "promise-stays-in-hook-place",
   "thresholds": {
@@ -7,7 +7,7 @@
     "revertPoints": -5,
     "confidence": 0.8
   },
-  "channelStayed14d": 0.388,
+  "channelStayed14d": 0.397,
   "cycleVideos": {
     "real-subject-first-frame": [
       {
@@ -15,8 +15,8 @@
         "title": "Squid Game cost Netflix $21.4M. What was it really worth? 🦑",
         "side": "on",
         "publishAt": "2026-11-19T13:37:00.000Z",
-        "counted": false,
-        "value": 0.448,
+        "counted": true,
+        "value": 0.452,
         "views": 814
       },
       {
@@ -24,8 +24,8 @@
         "title": "Elon Musk and every billionaire, shared with you: how much each? 💸",
         "side": "off",
         "publishAt": "2026-11-19T01:37:00.000Z",
-        "counted": false,
-        "value": 0.266,
+        "counted": true,
+        "value": 0.308,
         "views": 565
       },
       {
@@ -34,7 +34,7 @@
         "side": "off",
         "publishAt": "2026-11-18T01:37:00.000Z",
         "counted": true,
-        "value": 0.455,
+        "value": 0.457,
         "views": 116
       },
       {
@@ -52,7 +52,7 @@
         "side": "on",
         "publishAt": "2026-11-17T07:07:00.000Z",
         "counted": true,
-        "value": 0.4,
+        "value": 0.401,
         "views": 986
       },
       {
@@ -61,7 +61,7 @@
         "side": "on",
         "publishAt": "2026-11-17T01:37:00.000Z",
         "counted": true,
-        "value": 0.384,
+        "value": 0.383,
         "views": 450
       },
       {
@@ -79,7 +79,7 @@
         "side": "on",
         "publishAt": "2026-11-16T07:07:00.000Z",
         "counted": true,
-        "value": 0.437,
+        "value": 0.433,
         "views": 216
       },
       {
@@ -149,6 +149,15 @@
     "own-motif-bed": [],
     "promise-stays-in-hook-place": [
       {
+        "id": "v-20261123-01",
+        "title": "Airlines fly 5.1B people a year. What do they keep per seat? ✈️",
+        "side": "off",
+        "publishAt": "2026-11-23T01:37:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 0
+      },
+      {
         "id": "v-20261122-03",
         "title": "Laszlo Hanyecz paid bitcoin for two pizzas. What did they cost him? 🍕",
         "side": "on",
@@ -182,7 +191,7 @@
     "extended": false,
     "published": {
       "on": 1,
-      "off": 1
+      "off": 2
     },
     "counted": {
       "on": 0,
@@ -198,6 +207,15 @@
     "verdict": "revert",
     "why": "QA/fact failures 25% with the change vs 0% without",
     "videos": [
+      {
+        "id": "v-20261123-01",
+        "title": "Airlines fly 5.1B people a year. What do they keep per seat? ✈️",
+        "side": "off",
+        "publishAt": "2026-11-23T01:37:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 0
+      },
       {
         "id": "v-20261122-03",
         "title": "Laszlo Hanyecz paid bitcoin for two pizzas. What did they cost him? 🍕",
