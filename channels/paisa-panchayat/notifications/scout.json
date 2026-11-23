@@ -1,18 +1,25 @@
 {
   "notifications": [
     {
+      "key": "long-not-uploaded",
+      "severity": "warning",
+      "title": "The last long video (L-20261111-01) never reached YouTube",
+      "detail": "'What does $1 billion actually look like?' shipped on 11 Nov with its mp4 release and was meant for Saturday 14 Nov. On 22-23 Nov it is not in the long queue (long backlog 0), the data audit has no upload row for it, and it has no stats. The last long video on the channel is L-20261104-01 (4 Nov), so there has been no long video for 19 days. Note that it runs 380 s against your 180-240 s rule.",
+      "fix": "1. Open the dashboard Videos page and find L-20261111-01. 2. If you marked it stale, nothing to do: Studio's next video (topic feed has 9) fills Saturday 28 Nov. 3. If it is queued or failed without a reason, check the Publish workflow log for it (a 221 MB file), then either let it upload or mark it stale so the queue doesn't wait on it."
+    },
+    {
+      "key": "long-settings-stale",
+      "severity": "warning",
+      "title": "Long-video max length still says 900 s (rule: 240 s)",
+      "detail": "config/settings.json (synced from the dashboard) has longLengthMaxSec 900. Your rule since 12 Nov, confirmed 20 Nov, is 180-240 s. Because of this the 380 s L-20261111-01 passed the length check. longPerWeek 1 is now right (you confirmed one a week on 20 Nov).",
+      "fix": "1. Open the dashboard Settings page. 2. Set longLengthMaxSec to 240 (longLengthMinSec stays 180). 3. The next ingest writes it to config/settings.json."
+    },
+    {
       "key": "long-end-screen",
       "severity": "info",
       "title": "Set one end screen on each long video",
       "detail": "Guides rate a single, specific next video as the best ending for session watch time. End screens can only be set in YouTube Studio, at upload.",
       "fix": "1. When uploading a long video, open Editor → End screen. 2. Add one 'Video' element pointing to our closest long video in subject. 3. Add the Subscribe element. Nothing else."
-    },
-    {
-      "key": "long-settings-stale",
-      "severity": "warning",
-      "title": "Long-video settings still say 1 a week and up to 900 s",
-      "detail": "config/settings.json (synced from the dashboard) has longPerWeek 1 and longLengthMaxSec 900. Your rules are two long videos a week, Wed and Fri (16 Nov), at 180-240 s (12 Nov). Because of this, Studio targets one a week, and a 380 s video (L-20261111-01) passed the length check.",
-      "fix": "1. Open the dashboard Settings page. 2. Set longPerWeek to 2 and longLengthMaxSec to 240 (longLengthMinSec stays 180). 3. Check that longUploadDays is Wednesday and Friday. 4. The next ingest writes them to config/settings.json."
     }
   ]
 }

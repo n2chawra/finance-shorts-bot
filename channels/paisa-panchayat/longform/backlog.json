@@ -2,6 +2,39 @@
   "note": "Long-form craft findings and bugs, ranked. Written by Scout; the improver applies recipe, scene and design items, Studio follows script items.",
   "items": [
     {
+      "id": "2026-11-23-first-directed-long",
+      "kind": "craft",
+      "title": "The next long video is our first directed one: build it at 3-4 minutes, not 6",
+      "detail": "L-20261111-01 (the last one we made) had 0 directed beats: 22 board, 13 build, 9 shot, 6 chapter of 63 beats, 380 s. Since 13 Nov every long beat must be 'directed' (long_story README). The only directed long video on the platform so far is on another channel (disasters L-20261121-42: 74 directed beats, 514 s, also over 240 s). For Paisa Panchayat's first: 3-4 chapters of about 50 s, about 36-45 directed beats, at least one new place per chapter, a figure on a thing in that place per chapter. How we know: render.json duration 180-240 s and craft_problems empty on the first render.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-23-long-run-55-attempts",
+      "kind": "bug",
+      "title": "A long video took 54 checks and renders to ship; most failures were the length, not the craft",
+      "detail": "L-20261111-01's run.json: 7 number-check, 9 render, 3 QA and 1 fact-review failures in 65 minutes. 5 of the 9 render failures were 'stills mostly empty background' at 50-180 s, from 63 beats spread over 380 s. A 3-4 minute script halves the beats each check has to pass. How we know: the next long video's run.json has under 25 entries.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "2026-11-23-chapter-titles-are-labels",
+      "kind": "craft",
+      "title": "Chapter titles in render.json are labels ('Spend it', 'Earn it'), not the viewer's questions",
+      "detail": "YouTube shows chapter titles under the progress bar; a question ('Where does your $12.73 go?') gives a reason to keep watching, a label doesn't. Already tested as 2026-11-19-chapters-are-the-shorts-questions for the cards; extend the same arm to the description's chapter list so both match. How we know: the arm's chapter hold (2026-10-20-chapter-hold-metric) once impressions and retention exist for long videos.",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
       "id": "2026-11-19-readme-three-four-chapters",
       "kind": "craft",
       "title": "long_story README still asks for 6-9 chapters and 4+ levels in a 3-4 minute video",
@@ -38,7 +71,7 @@
       "id": "2026-11-19-long-settings-out-of-date",
       "kind": "bug",
       "title": "Settings still say 1 long video a week, up to 900 s",
-      "detail": "config/settings.json (synced from the dashboard) has longPerWeek 1 and longLengthMaxSec 900, but the owner set two long videos a week (Wed and Fri, 16 Nov) at 180-240 s (12 Nov). state --format long therefore targets 1 a week, and a 380 s video passes the length check. Only the owner changes settings: see notifications/scout.json.",
+      "detail": "config/settings.json (synced from the dashboard) has longPerWeek 1 and longLengthMaxSec 900, but the owner set two long videos a week (Wed and Fri, 16 Nov) at 180-240 s (12 Nov). state --format long therefore targets 1 a week, and a 380 s video passes the length check. Only the owner changes settings: see notifications/scout.json. Update 2026-11-23: the owner confirmed one long video a week on 20 Nov, so longPerWeek 1 is right; only longLengthMaxSec (900, rule 240) is still out of date.",
       "where": "script",
       "route": "owner",
       "priority": "high",
