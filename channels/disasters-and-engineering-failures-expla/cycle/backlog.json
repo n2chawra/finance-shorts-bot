@@ -26,6 +26,15 @@
       "from": "research 2026-11-20"
     },
     {
+      "id": "dd-pause-before-reveal",
+      "kind": "look",
+      "area": "sound",
+      "metric": "heldAfterHook",
+      "from": "research 2026-11-24",
+      "test": "varied silences in the Short's narration: about 0.3 s between lines that run on, about 1.2 s before the line that turns the story (the cause or the payoff), the 2.6 s failure silence kept, against the champion's even ~0.65 s gap after every line",
+      "why": "Our three Shorts (v-20261121-42, v-20261122-41, v-20261123-41, render.json voice timings) leave the same 0.58-0.68 s after every line except one 2.6 s failure silence, so the voice runs at one rhythm. The references measured in research/sound.md vary theirs: Athena's 7.4M Short 0.4-1.7 s, Plainly Difficult 0.5-0.9 s, Major Disasters 0.8 s with a 6.7 s card. Unsure: a longer pause can also lose a swiper, so it is a test on held after the hook, not a default. Built in renderer/timeline/build.py beat gaps, behind a flag"
+    },
+    {
       "id": "dd-silent-card",
       "kind": "first-second",
       "test": "a 3-4 s silent date/warning card before the cold open against straight into the 3D cold open",

@@ -1,0 +1,56 @@
+{
+  "agent": "research",
+  "channel": "disasters-and-engineering-failures-expla",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-23T19:58:03Z",
+  "finishedAt": "2026-11-23T20:05:29Z",
+  "summary": "Sound and voice night for Disaster Desk. I added 3 non-air Short topics (Tacoma Narrows, the Fire Ball ride, I-35W), because air, rail and ship are blocked for the next Short. I also added one sound challenger (varied pauses) and a title study for your note on long-video titles.",
+  "decision": "acted",
+  "why": "4 of the 6 open Short topics were blocked by the category rule (the last three Shorts were rail, ship and air). Tacoma (77x) and Fire Ball (7.8x) are breakouts with official sources. Our three Shorts leave the same 0.65 s after every line, while the references vary theirs from 0.4 to 1.7 s.",
+  "findings": [
+    {
+      "title": "Tacoma Narrows Short breakout: 1.1M on a 14.3K channel",
+      "detail": "A bridge with no human deaths, the most ad-safe structure story; WSDOT gives 42 mph, 38 mph, the 600-ft section.",
+      "link": "https://www.youtube.com/shorts/AKCt2aJhgsI"
+    },
+    {
+      "title": "Fire Ball ride: CPSC's own investigation",
+      "detail": "Corrosion inside the gondola beam thinned its wall; 1 killed, 7 injured; ride built 1999. Coaster College's video 1.23M on 157K.",
+      "link": "https://www.cpsc.gov/s3fs-public/Letter-to-ASTM-Amusment-Ride-Committee-9-25-17-final.pdf"
+    },
+    {
+      "title": "Our narration runs at one rhythm",
+      "detail": "0.58-0.68 s after every line in all three Shorts; Athena's 7.4M Short varies 0.4-1.7 s. Challenger dd-pause-before-reveal.",
+      "link": "channels/disasters-and-engineering-failures-expla/research/sound.md"
+    },
+    {
+      "title": "Breakout titles say what happened, never a riddle about a part",
+      "detail": "'What actually happened during Kobe Bryant's final flight' (10.8M), 'The Bridge That Twisted Like Rubber' (1.1M), 'What Really Happened on Fireball' (1.23M). For Studio's long titles.",
+      "link": "https://www.youtube.com/watch?v=mKPO7QpA_38"
+    },
+    {
+      "title": "Apollo 13 oxygen tank is a crowded lane",
+      "detail": "20+ Shorts, none above 3.6K views; skipped.",
+      "link": "https://www.youtube.com/results?search_query=apollo+13+oxygen+tank+explained+%23shorts"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 Short topics added to the feed",
+      "detail": "Tacoma Narrows (8.44), Fire Ball (8.34), I-35W (7.49); each with 4 sourced facts.",
+      "branch": "agent/research/2026-11-24/disasters-and-engineering-failures-expla"
+    },
+    {
+      "title": "Challenger dd-pause-before-reveal",
+      "detail": "Look kind, sound, judged on held after the hook: varied pauses against the even 0.65 s gap.",
+      "branch": "agent/research/2026-11-24/disasters-and-engineering-failures-expla"
+    }
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/disasters-and-engineering-failures-expla/research/2026-11-24.md"
+    }
+  ]
+}
