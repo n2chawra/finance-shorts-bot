@@ -1,7 +1,26 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 2,
   "notes": [
+    {
+      "id": "cmwstm4180001jv0917t7gywr",
+      "kind": "improve",
+      "area": null,
+      "text": "Where is the flag of russia?? Should have put it as the area was keep growing it would have been looked better than this .",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-23T05:23:58.317Z",
+      "video": {
+        "id": "v-20261123-11",
+        "title": "Russia once ended at the Urals. Then what?",
+        "format": "short",
+        "status": "published",
+        "story": "why_shaped",
+        "shape": "the-relay",
+        "hookStyle": "question",
+        "hook": "Russia once ended at the Ural Mountains. So how did it reach the Pacific?"
+      }
+    },
     {
       "id": "cmwlu7uww0001kz09ua9f25hp",
       "kind": "stale",
