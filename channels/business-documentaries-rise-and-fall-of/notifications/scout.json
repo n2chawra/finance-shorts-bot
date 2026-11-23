@@ -1,0 +1,11 @@
+{
+  "notifications": [
+    {
+      "key": "bizdoc-no-studio-routine",
+      "severity": "warning",
+      "title": "Craze & Crash has no long videos: Studio has never run for this channel",
+      "detail": "The channel is long-first (two films a week, out Tuesday and Friday at 21:17 IST), but its long backlog is 0 and there is no Studio activity for it in improvement/activity (only the 71 s Crocs sample from setup). Tomorrow's (24 Nov) long slot will be empty. The topic feed is ready: 11 usable long topics, the top 5 now outlined by Scout.",
+      "fix": "1. In Claude Code routines, create a Studio routine for this channel with the prompt: 'Read agents/policy.md, then agents/studio.md, and make a long video for the channel business-documentaries-rise-and-fall-of' (CHANNEL exported, --channel on every generator.run command), like the disasters channel's Studio routine. 2. Schedule it twice a week ahead of the Tuesday and Friday slots (e.g. Monday and Thursday). 3. Or, if you'd rather not run 15-25 min films yet, set longPerWeek to 0 for this channel so the empty slots stop counting."
+    }
+  ]
+}
