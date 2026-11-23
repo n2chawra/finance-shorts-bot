@@ -1,0 +1,135 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38417,
+  "duration_sec": 60,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "atlas",
+    "key": "G",
+    "bpm": 92,
+    "look": {
+      "stage": "night",
+      "header": "strip",
+      "holder": "receipt",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The Strait of Malacca closes overnight. Which way do the oil tankers go now?",
+        "start": 0.3,
+        "seconds": 3.48,
+        "window": 4.17,
+        "fill": 0.835
+      },
+      {
+        "scene": "narrow",
+        "text": "It's only a thought experiment, but look how thin this lane is: between Malaysia and the island of Sumatra, just 2.8 km wide at its narrowest.",
+        "start": 4.47,
+        "seconds": 7.04,
+        "window": 7.7,
+        "fill": 0.914
+      },
+      {
+        "scene": "oil",
+        "text": "And yet every day about 23.2M barrels of oil squeeze through it, 29% of all the oil that moves by sea.",
+        "start": 12.17,
+        "seconds": 6.11,
+        "window": 6.77,
+        "fill": 0.903
+      },
+      {
+        "scene": "length",
+        "text": "It runs 900 km from end to end, the short cut from the oil fields of the Gulf to the factories of China, Japan and Korea.",
+        "start": 18.93,
+        "seconds": 6.24,
+        "window": 6.9,
+        "fill": 0.904
+      },
+      {
+        "scene": "erase",
+        "text": "Now rub it out. A tanker sailing east from India meets a wall of land, with Sumatra on one side and Malaysia on the other.",
+        "start": 25.83,
+        "seconds": 5.74,
+        "window": 6.4,
+        "fill": 0.897
+      },
+      {
+        "scene": "sunda",
+        "text": "So where's the next door? The Sunda Strait, a gap between Sumatra and Java, far to the south.",
+        "start": 32.23,
+        "seconds": 3.96,
+        "window": 4.6,
+        "fill": 0.861
+      },
+      {
+        "scene": "lombok",
+        "text": "Other tankers sail further still, through the Lombok Strait, east of Bali, and then north past Borneo.",
+        "start": 36.83,
+        "seconds": 4.41,
+        "window": 5.07,
+        "fill": 0.87
+      },
+      {
+        "scene": "singapore",
+        "text": "Stranger still, Singapore, a port city at the narrow end of the lane, suddenly sits beside a blocked lane with no way through.",
+        "start": 41.9,
+        "seconds": 5.36,
+        "window": 6.03,
+        "fill": 0.889
+      },
+      {
+        "scene": "payoff",
+        "text": "Because this one lane carries about 25% of all the goods the world trades, every one of those ships now takes the long way round.",
+        "start": 47.93,
+        "seconds": 6.02,
+        "window": 6.67,
+        "fill": 0.903
+      },
+      {
+        "scene": "loop",
+        "text": "Malacca or Hormuz: which closure would hurt the world more? Tell me below. Now picture it once more:",
+        "start": 54.6,
+        "seconds": 4.29,
+        "window": 4.97,
+        "fill": 0.863
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -15.0,
+    "music_under_voice_db": 30.8
+  },
+  "craft_problems": [
+    "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 4.35,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
