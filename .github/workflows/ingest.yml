@@ -33,7 +33,7 @@ concurrency:
 jobs:
   ingest:
     runs-on: ubuntu-24.04   # pinned 2026-11-03: ubuntu-latest became 26.04, which Playwright 1.56 cannot install on
-    timeout-minutes: 10
+    timeout-minutes: 15   # a quiet run takes ~1–2 min since 2026-11-23 (only changed docs are written); room for a big change set
     defaults:
       run:
         working-directory: workers
