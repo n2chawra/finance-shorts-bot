@@ -1,0 +1,210 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-22T23:20:27.082459+00:00",
+    "finishedAt": "2026-11-22T23:20:27.082459+00:00",
+    "notes": [
+      "the description's first two lines must name the subject 'Russia' (\"Elon Musk's record pay deal...\"): YouTube reads it to know who the video is about, even when the title keeps the name back"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:20:31.130460+00:00",
+    "finishedAt": "2026-11-22T23:20:31.130460+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T23:22:28.981100+00:00",
+    "finishedAt": "2026-11-22T23:22:28.981100+00:00",
+    "notes": [
+      "beat 'yermak'.say contains a typed number; use a placeholder: 'Around 1581, a Cossack chief called Yermak crossed the mountains by river boat, with just {fact4} men.'",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the payoff 'pacific' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T23:22:39.857826+00:00",
+    "finishedAt": "2026-11-22T23:22:39.857826+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-22T23:22:44.164853+00:00",
+    "finishedAt": "2026-11-22T23:22:44.164853+00:00",
+    "notes": [
+      "the source line 'Data: World Bank, surface area (AG.SRF.TOTL.K2) · Wikipedia, Russian conquest of Siberia · Nov 2026' is too wide for the frame (2462 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'World Bank'), one name per publisher"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:22:51.980753+00:00",
+    "finishedAt": "2026-11-22T23:22:51.980753+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:22:52.890209+00:00",
+    "finishedAt": "2026-11-22T23:22:52.890209+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:23:35.531544+00:00",
+    "finishedAt": "2026-11-22T23:23:35.531544+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:23:36.811444+00:00",
+    "finishedAt": "2026-11-22T23:23:36.811444+00:00",
+    "notes": [
+      "1 figures computed from inputs; 1 cross-checked against closed-form formulas.",
+      "note: the payoff 'pacific' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:23:41.766489+00:00",
+    "finishedAt": "2026-11-22T23:23:41.766489+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T23:24:56.502904+00:00",
+    "finishedAt": "2026-11-22T23:24:56.502904+00:00",
+    "notes": [
+      "Beat 'yermak': 'A Cossack chief called Yermak crossed them first' is false. Novgorod traders worked beyond the Northern Urals and reached the lower Ob from the 12th-13th centuries, and Moscow's 1483 campaign (Kurbsky and Saltykov-Travin) and its 1499 campaign crossed the Urals to the Tobol, Irtysh and Ob a century before Yermak. Drop 'first' (e.g. 'A Cossack chief called Yermak crossed them, ...') or say his crossing began the conquest.",
+      "Hook/title 'Russia once ended at the Ural Mountains': because of those earlier trans-Ural tribute campaigns this is a simplification. It is acceptable only if the 'first' claim goes; better wording is 'Russia's lands once stopped at the Urals'. Not a reason to fail on its own.",
+      "Confirmed: 540 Cossacks under Yermak, July 1581 (en.wikipedia.org Russian conquest of Siberia, fetched); Qashliq, the Sibir capital, taken Oct 1582; ostrogs built to collect yasak fur tribute (Tyumen 1586, Tobolsk 1587); Ob, Yenisei (1605/1619) and Lena (1623/1632) sequence; Pacific reached 1639 (58 years, so 'one lifetime' holds); atrocities against and resistance by native peoples (article); Stroganov sponsorship (Britannica, Yermak Timofeyevich); fur shown as the main but not the only motive ('most of why'), which matches the verify item. Disclaimer present."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:26:32.379194+00:00",
+    "finishedAt": "2026-11-22T23:26:32.379194+00:00",
+    "notes": [
+      "1 figures computed from inputs; 1 cross-checked against closed-form formulas.",
+      "note: the payoff 'pacific' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:26:47.527016+00:00",
+    "finishedAt": "2026-11-22T23:26:47.527016+00:00",
+    "notes": [
+      "Re-review: beat 'yermak' no longer says 'first' ('Then a Cossack chief called Yermak crossed them... 540 men'), so it no longer claims nobody crossed before him. 540 Cossacks in July 1581 confirmed on en.wikipedia.org/wiki/Russian_conquest_of_Siberia. Also confirmed: Stroganov funding (Britannica), Qashliq taken 1582, yasak forts, the Ob/Yenisei/Lena order, the Pacific in 1639, the treatment of native peoples, and fur as the main motive. Disclaimer present. Style note: the hook 'Russia once ended at the Ural Mountains' simplifies away earlier trans-Ural tribute campaigns (1483/1499); acceptable."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-22T23:32:36.380492+00:00",
+    "finishedAt": "2026-11-22T23:34:58.428387+00:00",
+    "notes": [
+      "text 'URAL MOUNTAINS' at 2.7 s runs outside the frame",
+      "text 'STROGANOVS' at 18.1 s runs outside the frame",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'pacific' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:35:54.115505+00:00",
+    "finishedAt": "2026-11-22T23:37:41.024365+00:00",
+    "notes": [
+      "61 s, forest/explorer (preview only)",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'pacific' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:37:55.356451+00:00",
+    "finishedAt": "2026-11-22T23:39:40.101850+00:00",
+    "notes": [
+      "61 s, forest/explorer (preview only)",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'pacific' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-22T23:42:45.061294+00:00",
+    "finishedAt": "2026-11-22T23:42:45.061294+00:00",
+    "notes": [
+      "[scene] Biggest.tsx (beat 'biggest', payoff, ~51-54 s; still 52.5 s): Russia loses all its red at the payoff. RedLand east=150+40*lerp(ru) reaches 190 deg, past the antimeridian; proj([190,60]) wraps to the far left so the mask hides the whole fill, leaving a beige Russia under BIGGEST COUNTRY. Cap east at 180 (or skip the mask once the fill is complete) so the payoff shows the whole country red.",
+      "[scene] Biggest.tsx (still 52.5 s): the BIGGEST COUNTRY Tag (w=500, size=56, rot -3) overflows its own sign: the B and the Y spill past the yellow board's edges. Widen the tag (about 600) or set size about 48.",
+      "[scene] Loop.tsx (beat 'loop', 55-58 s; stills 55.0 and 57.5 s): HookMap is drawn with label=1 while the camera is still at center 100/scale 560, so URAL MOUNTAINS reads 'IOUNTAINS' and RUSSIA reads 'SIA', both cut off at the left edge, with the boat drawn over 'SIA'. Fade the labels and boat in with 'home' (label={home}) so they only appear once the camera is back at the Urals."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:42:58.908397+00:00",
+    "finishedAt": "2026-11-22T23:44:44.161311+00:00",
+    "notes": [
+      "61 s, forest/explorer (preview only)",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'pacific' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:47:31.723366+00:00",
+    "finishedAt": "2026-11-22T23:47:31.723366+00:00",
+    "notes": [
+      "Re-review after fixes: payoff (52.5 s) shows all of Russia red with a traced border under a BIGGEST COUNTRY sign that now fits its board; loop (55-58 s) no longer shows cut-off URAL MOUNTAINS/RUSSIA labels, which return in full at the Urals (60 s) and loop to the first frame; all beats directed on the map, hook names Russia and the Urals, pick-one ending, description has the disclaimer, 61 s, no layout problems."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-22T23:44:50.231643+00:00",
+    "finishedAt": "2026-11-23T00:12:13.403358+00:00",
+    "notes": [
+      "61 s, forest/explorer, peak -1.0 dB, mean -16.0 dB",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'pacific' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-23T00:12:24.836925+00:00",
+    "finishedAt": "2026-11-23T00:12:24.836925+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
