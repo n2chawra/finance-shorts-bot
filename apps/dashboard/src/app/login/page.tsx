@@ -3,7 +3,7 @@
 import { ArrowRight, Eye, EyeOff, LayoutGrid, Loader2, Lock, ShieldCheck } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 
 import billionSwitches from "@/assets/channels/a-billion-switches.png";
@@ -30,7 +30,6 @@ const readCookie = (name: string) => document.cookie.split("; ").find((c) => c.s
 const ALL_CHANNELS = "/portfolio";
 
 function Login() {
-  const router = useRouter();
   const next = useSearchParams().get("next");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -54,8 +53,9 @@ function Login() {
         if (first !== "all") document.cookie = `${CHANNEL_COOKIE}=${encodeURIComponent(first)}; path=/; max-age=${YEAR}; samesite=lax`;
         // only same-site paths, never an absolute URL from the query string; the default landing follows the pick
         const asked = next && next.startsWith("/") && !next.startsWith("//") ? next : ALL_CHANNELS;
-        router.replace(asked === ALL_CHANNELS && first !== "all" ? "/" : asked);
-        router.refresh();
+        // a full page load, not router.replace: the in-app data cache (60 s fresh) still held the channel open before
+        // sign-in, so the dashboard showed the old channel until a manual refresh (owner, 2026-11-23)
+        window.location.replace(asked === ALL_CHANNELS && first !== "all" ? "/" : asked);
         return;
       }
       const body = await res.json().catch(() => null);
