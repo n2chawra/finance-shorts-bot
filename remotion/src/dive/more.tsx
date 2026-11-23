@@ -8,6 +8,7 @@
  *   hall     a pillared hall (a flood tank, a cistern, a crypt): `count` pillars, light shafts, mist, a walker
  *   passage  a passage: walk (people with lamps in a line) | water (a rushing channel) | sewer
  *   pumps    a pump room: impellers spinning, pipes carrying water up
+ *   dig      a station still being built: shored box, turning cutterhead, workers, a swinging crane hook
  *   pour     water pouring in from the left into a churning pool (a flood arriving)
  *   surface  more presets: town | field | sea | mountain | pyramid | dome | arena, each with a readable name plate
  *
@@ -547,4 +548,41 @@ export const SurfaceMore: React.FC<PieceProps> = (props) => {
   );
 };
 
-export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well };
+
+// ------------------------------------------------------------------ dig (2026-11-23, for v-20261123-51)
+
+/** A station still being built: a dug box with shoring, a tunnel-boring machine's cutterhead turning in the end
+ *  wall, workers in hard hats walking the floor, a crane hook swinging down the shaft, sparks from a welder. */
+export const Dig: React.FC<PieceProps> = ({ L, w, g }) => {
+  const s = L.spec, look = w.look;
+  const x0 = 60, x1 = 1020, yb = w.Y(L.ft) + 150, top = yb - 560;
+  const wall = s.color ?? "#5b5f6b";
+  const spin = loopU(w, g, Math.max(1, Math.round(w.total / 30 * 8))) * 360;
+  const walk = (i: number) => loopU(w, g, 1, i * 0.41);
+  return (
+    <g>
+      <rect x={x0 - 16} y={top - 16} width={x1 - x0 + 32} height={yb - top + 48} rx={40} fill={shade(look.deep, 0.05)} />
+      <rect x={x0} y={top} width={x1 - x0} height={yb - top + 20} rx={30} fill={wall} stroke={INK} strokeWidth={STROKE} />
+      {/* shoring struts across the box */}
+      {[0, 1, 2].map((i) => <Block key={i} x={x0 + 10} y={top + 90 + i * 130} w={x1 - x0 - 20} h={22} fill="#e0a23a" shadow="bottom" sw={4} />)}
+      {[0, 1, 2, 3].map((i) => <Glow key={`l${i}`} x={180 + i * 240} y={top + 60} r={150} color={s.light ?? "#ffe0a0"} o={0.45} />)}
+      {/* the cutterhead in the right wall */}
+      <g transform={`rotate(${spin} 900 ${yb - 200})`}>
+        <Ball x={900} y={yb - 200} r={170} fill="#c9ced8" />
+        {[0, 60, 120].map((a) => <line key={a} x1={900 + 160 * Math.cos(a * Math.PI / 180)} y1={yb - 200 + 160 * Math.sin(a * Math.PI / 180)} x2={900 - 160 * Math.cos(a * Math.PI / 180)} y2={yb - 200 - 160 * Math.sin(a * Math.PI / 180)} stroke={INK} strokeWidth={10} />)}
+        <circle cx={900} cy={yb - 200} r={40} fill="#e8432f" stroke={INK} strokeWidth={5} />
+      </g>
+      {/* the crane hook swinging */}
+      {(() => { const sw = loopSin(w, g, 0.5) * 60; return <g><line x1={420} y1={top} x2={420 + sw} y2={top + 260} stroke={INK} strokeWidth={6} /><Block x={390 + sw} y={top + 260} w={60} h={50} fill="#ffc43d" r={8} shadow={false} sw={4} /></g>; })()}
+      {/* sparks from a welder at the left wall */}
+      <Glow x={150} y={yb - 140} r={80 * (0.7 + 0.3 * Math.abs(loopSin(w, g, 3)))} color="#fff2a8" o={0.8} />
+      <Person x={190} y={yb - 6} i={1} pose="kneel" s={0.9} />
+      {[0, 1, 2].map((i) => { const u = walk(i); const dir = i % 2 ? -1 : 1; return <Person key={i} x={260 + (dir === 1 ? u : 1 - u) * 420} y={yb - 6} i={i + 3} step={u * 12} dir={dir} s={0.9} />; })}
+      {/* hard hats */}
+      <rect x={x0} y={yb - 6} width={x1 - x0} height={26} fill={shade(wall, -0.3)} />
+      <Sign x={240} y={top - 130} text={s.label?.toUpperCase() ?? ""} depth={depthLabel(L, w)} bullets={s.bullets} accent={look.accent} k={ramp(g, L.land - 16, L.land) * outro(w, g)} />
+    </g>
+  );
+};
+
+export const MORE_PIECES: Record<string, React.FC<PieceProps>> = { surface: SurfaceMore, room: Room, hall: Hall, passage: Passage, pumps: Pumps, pour: Pour, well: Well, dig: Dig };
