@@ -27,6 +27,7 @@ import { CHANNEL_KEYS } from "./lib/channel-auth.ts";
 import { syncSetups } from "./lib/setup-sync.ts";
 import { scopedPrisma } from "./lib/scoped.ts";
 import { syncHealth } from "./lib/health-sync.ts";
+import { newPrisma } from "./lib/db.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -261,7 +262,7 @@ export async function buildRoutineSettings(prisma: PrismaClient, root = ROOT): P
 async function main(): Promise<void> {
   const checkRelease = !process.argv.includes("--no-release-check");
   const repo = checkRelease ? repoSlug(ROOT) : null;
-  const prisma = new PrismaClient();
+  const prisma = newPrisma();
   // how long each phase took, in the log: ingest has a 10-minute limit and every query crosses to Singapore
   let mark = Date.now();
   const lap = (phase: string) => { console.log(`[${((Date.now() - mark) / 1000).toFixed(1)} s] ${phase}`); mark = Date.now(); };

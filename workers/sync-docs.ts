@@ -4,11 +4,11 @@
  * so the Growth loop page shows them in the same run instead of six hours later.
  */
 import path from "node:path";
-import { PrismaClient } from "@prisma/client";
+import { newPrisma } from "./lib/db.ts";
 import { snapshotDocs } from "./lib/agents-sync.ts";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
-const prisma = new PrismaClient();
+const prisma = newPrisma();
 try {
   await snapshotDocs(prisma, ROOT);
   console.log("agent docs synced");
