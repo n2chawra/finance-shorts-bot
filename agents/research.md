@@ -125,6 +125,22 @@ millions in the channel's niche (`profile.md`). News is not a source of ideas on
 4. **News only when it is a trend people are already talking about**, told in one of the formats,
    never as a bulletin: `"kind": "trend", "priority": "trending"`, `expires` in 2-4 days, with the
    source URLs. Routine releases and announcements are not video ideas on their own.
+   **A recent event as a long video** (owner, 2026-11-23: "if a disaster happened today, its 3D
+   recreation might be searched way more than a popular known one… but not every time, only when the
+   opportunity is worth it"). Every night, for each long-video channel, look for one event in its lane from
+   the last 14 days: Disaster Desk a crash, collapse, derailment, fire or failure; How Tech Works a launch,
+   a new chip or device, an outage, a breakthrough; Business docs a bankruptcy, collapse, takeover or
+   comeback. Search YouTube for it and judge it the way `generator/topics.py` `event_problems` does: it is
+   **worth it** only when a video on it from the last 7 days has 100K+ views, or 2+ have views at least 3x
+   their channel's subscribers, **and** official or reputable sources already give 3+ figures to build a
+   true video on. Then add a long topic with `"format": "long"`, `"kind": "trend"`, `"priority":
+   "trending"`, `expires` 10 days out, and `"opportunity": {"event_date", "evidence": [{"url", "title",
+   "views", "age_days", "channelSubs"}], "verdict": "worth it", "why"}`: Studio makes it next, ahead of the
+   owner's pins. Otherwise write one line in your report (what you found, its numbers, why not) and add
+   nothing. Most nights there is nothing worth it; that is fine. Tell it in the channel's long format, never
+   as a bulletin: what happened, step by step, and why. A disaster: only what the investigators and
+   reputable outlets have said (a preliminary report, official statements), no blame before they give it,
+   roles not private names, and the toll stated plainly once.
 5. **Learn from our own numbers:** each night, compare our 3 best and 3 worst Shorts by
    `avgViewPct` with their format's reference video (first 2 seconds, number of characters, beat
    count, length, title) and write one concrete change as a proposal.

@@ -45,7 +45,7 @@ python -m generator.run state --format long --channel <channel>
 `mode` tells you: `paused` or `idle` → write the activity file saying why, push, and stop. `video` →
 make one, using `next_id` as the id for the whole run.
 
-`topic_feed` lists Scout's topics, best first (topics the owner pinned, `"pin": 1, 2…`, lead in that order). Take the first one marked `usable_now`; after the pins, prefer
+`topic_feed` lists Scout's topics, best first (a proven recent-event topic, `priority: trending` with no `event_problems`, leads; then the owner's pins, `"pin": 1, 2…`, in that order). Take the first one marked `usable_now`; after the pins, prefer
 `priority: high`. If the feed is empty, stop with an activity entry saying so and raise an `info`
 notification for the owner — do not invent a topic, Scout's research is what makes these good.
 

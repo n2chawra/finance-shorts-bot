@@ -263,3 +263,27 @@ def test_owner_pins_lead_the_feed_in_pin_order(root: Path) -> None:
          {**topic("first", "normal", category="c"), "pin": 1}, topic("news", "breaking", category="d"))
     ids = [t["id"] for t in topics.for_state([], TODAY, [], TEMPLATES, root)["topics"]]
     assert ids == ["news", "first", "second", "top"]
+
+
+def _event(**o):
+    base = {"event_date": "2026-10-15", "verdict": "worth it",
+            "evidence": [{"url": "https://youtube.com/watch?v=x", "views": 250_000, "age_days": 2, "channelSubs": 900_000}]}
+    return {**base, **o}
+
+
+def test_a_long_event_topic_jumps_only_with_proof(root: Path) -> None:
+    # owner, 2026-11-23: a fresh disaster's recreation can beat a famous old one, but only when it's worth it
+    facts = [{"label": f"f{i}", "value": i} for i in range(3)]
+    proven = {**topic("event", "trending", category="a"), "format": "long", "facts": facts, "opportunity": _event()}
+    weak = {**topic("weak", "trending", category="b"), "format": "long", "facts": facts,
+            "opportunity": _event(evidence=[{"url": "https://youtube.com/watch?v=y", "views": 4_000, "age_days": 1, "channelSubs": 50_000}])}
+    feed(root, {**topic("pinned", "normal", category="c"), "format": "long", "pin": 1}, weak, proven)
+    shown = topics.for_state([], TODAY, [], TEMPLATES, root, fmt="long")
+    # the proven event leads, the owner's pin next, the unproven "trend" is an ordinary topic
+    assert [t["id"] for t in shown["topics"]] == ["event", "pinned", "weak"]
+    assert topics.event_problems(proven, TODAY) == []
+    assert any("no proof of demand" in p for p in topics.event_problems(weak, TODAY))
+    assert any("days old" in p for p in topics.event_problems({**proven, "opportunity": _event(event_date="2026-09-01")}, TODAY))
+    assert any("sourced facts" in p for p in topics.event_problems({**proven, "facts": []}, TODAY))
+    # a Shorts trend keeps its own rules
+    assert topics.event_problems(topic("s", "trending"), TODAY) == []

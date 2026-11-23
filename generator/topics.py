@@ -179,6 +179,8 @@ def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, f
     if (tr := traction(topic.get("demand"))) > 0:
         parts["traction"] = tr
     parts["priority"] = {"breaking": 2.0, "trending": 2.0, "high": 0.4}.get(topic.get("priority") or "", 0.0)
+    if event_problems(topic, today):   # an unproven event long topic ranks as an ordinary one
+        parts["priority"] = 0.0
     parts["global"] = 0.6 if topic.get("reach") == "global" else 0.0
     story = _story(topic)
     # big money first (owner, 2026-10-30): every 1K+ Short and every subscriber came from a core format
@@ -342,6 +344,50 @@ def of_format(topics: list[dict], fmt: str) -> list[dict]:
     return [t for t in topics if t.get("format", "short") in (fmt, "any")]
 
 
+# A recent event as a long video (owner, 2026-11-23: "if a disaster happened today, its 3D recreation is searched
+# far more than a known one... but not every time, only when the opportunity is worth it"). A long topic marked
+# `trending` jumps the queue only with `opportunity` proof that people are watching this event right now.
+EVENT_DAYS = 14            # the event itself happened at most this long ago
+EVENT_PROOF_DAYS = 7       # proof: videos on it uploaded within this many days...
+EVENT_PROOF_VIEWS = 100_000   # ...one with at least this many views, or
+EVENT_PROOF_BREAKOUTS = 2     # ...this many with views >= 3x their channel's subscribers
+EVENT_MIN_FACTS = 3        # an official or reputable source for the figures, so the video can be true
+
+
+def event_problems(topic: dict, today: str) -> list[str]:
+    """Why a `trending` long topic is not (yet) worth a long video; empty when it is. Shorts keep their trend rules."""
+    if topic.get("format", "short") not in ("long", "any") or topic.get("priority") not in URGENT:
+        return []
+    o = topic.get("opportunity")
+    if not isinstance(o, dict):
+        return ["no `opportunity` proof (event_date, evidence, verdict)"]
+    out = []
+    try:
+        age = (date.fromisoformat(today) - date.fromisoformat(str(o.get("event_date")))).days
+        if not 0 <= age <= EVENT_DAYS:
+            out.append(f"the event is {age} days old (at most {EVENT_DAYS})")
+    except ValueError:
+        out.append("opportunity.event_date is not a date")
+    fresh = [e for e in (o.get("evidence") or []) if isinstance(e, dict) and isinstance(e.get("views"), (int, float))
+             and isinstance(e.get("age_days"), (int, float)) and e["age_days"] <= EVENT_PROOF_DAYS
+             and str(e.get("url", "")).startswith("http")]
+    big = any(e["views"] >= EVENT_PROOF_VIEWS for e in fresh)
+    breakouts = sum(1 for e in fresh if isinstance(e.get("channelSubs"), (int, float)) and e["views"] >= 3 * max(1, e["channelSubs"]))
+    if not big and breakouts < EVENT_PROOF_BREAKOUTS:
+        out.append(f"no proof of demand: a video on it from the last {EVENT_PROOF_DAYS} days with {EVENT_PROOF_VIEWS:,}+ views, "
+                   f"or {EVENT_PROOF_BREAKOUTS} with views at least 3x their channel's subscribers")
+    if len(topic.get("facts") or []) < EVENT_MIN_FACTS:
+        out.append(f"fewer than {EVENT_MIN_FACTS} sourced facts: wait until official figures are out")
+    if o.get("verdict") != "worth it":
+        out.append('opportunity.verdict is not "worth it"')
+    return out
+
+
+def is_urgent(topic: dict, today: str) -> bool:
+    """Offered first and jumps the upload queue: a trend, and for a long topic only a proven event opportunity."""
+    return topic.get("priority") in URGENT and not event_problems(topic, today)
+
+
 def pin_of(topic: dict) -> float:
     """The owner's place for a topic in the queue (`"pin": 1` goes first); unpinned topics keep their score order."""
     p = topic.get("pin")
@@ -358,19 +404,19 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     # every unused topic competes, old or new: best score first (urgent ones still lead)
     open_.sort(key=lambda t: score(t, today, ctx), reverse=True)
     # urgent ones still lead; then the owner's running order (2026-11-23: "start with a bang"): `pin` 1, 2, 3… lead, after urgent ones only
-    open_.sort(key=lambda t: (0 if t.get("priority") in URGENT else 1, pin_of(t)))
+    open_.sort(key=lambda t: (0 if is_urgent(t, today) else 1, pin_of(t)))
     usable = [t for t in open_ if t.get("category") not in blocked and fits(t, allowed) and blocked_reason(t, today, fmt, root) is None]
     # offered first, and it still earns one extra video that day, but no plan is forced to take it
-    urgent = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p), None)
+    urgent = next((t["id"] for p in URGENT for t in usable if t.get("priority") == p and is_urgent(t, today)), None)
     # usable topics first, so blocked ones never push them past the SHOWN cut
     shown = [t for t in open_ if t in usable][:SHOWN]
     shown += [t for t in open_ if t not in usable][:SHOWN - len(shown)]
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
             "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths",
-            "from_short", "pin")   # a long topic names the Short it expands (Scout, 2026-11-05)
+            "from_short", "pin", "opportunity")   # a long topic names the Short it expands (Scout, 2026-11-05)
     return {
         "topics": [{**{k: t.get(k) for k in keys}, "score": score(t, today, ctx), "why_score": score_parts(t, today, ctx),
-                    "found": t.get("found"), "usable_now": t in usable, "blocked_by": blocked_reason(t, today, fmt, root)} for t in shown],
+                    "found": t.get("found"), "usable_now": t in usable, "blocked_by": blocked_reason(t, today, fmt, root), "event_problems": event_problems(t, today) or None} for t in shown],
         "open_total": len(open_),
         "required": None,   # nothing is forced since the reset (see the module doc)
         "urgent": urgent,
@@ -419,7 +465,7 @@ def urgency(plan: dict, root: Path = ROOT) -> dict | None:
     topic = plan.get("topic") or {}
     if topic.get("feed_id"):
         t = get(topic["feed_id"], root)
-        if t and t.get("priority") in URGENT:
+        if t and is_urgent(t, date.today().isoformat()):
             return {"level": t["priority"], "until": t.get("expires") or ""}
     elif topic.get("trend"):
         return {"level": "trending", "until": topic["trend"].get("expires", "")}

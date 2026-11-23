@@ -47,7 +47,11 @@ views, and Studio runs stopped with nothing to make. Now:
 ## 1. How long-form is different (owner reset, 2026-10-21)
 "Search the same for long videos and plan accordingly. That's where the money is." Long videos people
 watch in the millions are big promises in a list, an "explained" or a documentary shape; a topic is
-never a news bulletin. The channel's long formats, references and recipe win over this page
+never a news bulletin. One exception is worth taking: a **recent event** in the channel's lane (a disaster,
+a launch, a collapse from the last 14 days) that people are watching right now. Judge it and add it exactly as
+`agents/research.md` section 2, item 4 says ("A recent event as a long video": the `opportunity` proof,
+`priority: trending`); the code ranks it first only when the proof holds (`generator/topics.py`
+`event_problems`, shown per topic in `state`). The channel's long formats, references and recipe win over this page
 (`channels/<channel>/research/formats.json`, `prompts/recipe.md`, `profile.md`).
 
 - **Every topic is one of the long formats in `channels/<channel>/research/formats.json`** (`format:
