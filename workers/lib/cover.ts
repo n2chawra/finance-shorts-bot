@@ -33,3 +33,16 @@ export function syncThumbs(style: Record<string, unknown>, thumbs: ThumbEntry[] 
   if (owner && !thumbs.some((t) => t.file === owner)) delete next.thumbPick;
   return next;
 }
+
+/** Whether an upload of the last COVER_DAYS days still needs our cover on YouTube (owner, 2026-11-22: "it is costing
+ * me views"): never set, and tried under COVER_TRIES times. The publisher sets a few a run (COVERS_PER_RUN). The
+ * default channel's older uploads carry no mark but did get their cover (the 22 Nov path bug only hit the other
+ * channels), so only a marked one is retried there. */
+export const COVER_DAYS = 21, COVER_TRIES = 3, COVERS_PER_RUN = 4;
+export function needsCover(style: unknown, isDefaultChannel: boolean): boolean {
+  const s = (style && typeof style === "object" ? style : {}) as { coverSetAt?: unknown; coverTries?: unknown };
+  if (s.coverSetAt) return false;
+  const tries = Number(s.coverTries ?? 0) || 0;
+  if (tries >= COVER_TRIES) return false;
+  return !isDefaultChannel || s.coverTries !== undefined;
+}

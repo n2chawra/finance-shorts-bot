@@ -31,8 +31,8 @@ import { loadSettings, type Settings } from "./lib/settings.ts";
 import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
 import { TOKEN_FIX, notify, resolve } from "./lib/notify.ts";
 import { TokenError, UPLOAD_CATEGORY, accessToken, categoryOf, setThumbnail, uploadVideo } from "./lib/youtube.ts";
-import { coverFile } from "./lib/cover.ts";
-import { channelPack, cpath, layout } from "./lib/channels.ts";
+import { COVERS_PER_RUN, COVER_DAYS, coverFile, needsCover } from "./lib/cover.ts";
+import { channelPack, layout, videoFile } from "./lib/channels.ts";
 import { activeChannels, channelSettings, tokenOf, type ChannelToken } from "./lib/channel-auth.ts";
 import { COST, QuotaKeeper } from "./lib/quota.ts";
 
@@ -44,22 +44,53 @@ type Format = "short" | "long";
 type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string; category: string };
 
 /** Our designed cover instead of the frame YouTube picks (owner, 2026-11-03: "the thumbnail is wrong").
- * The video is already uploaded, so a refused cover is reported, never a failed upload. */
-async function applyCover(prisma: PrismaClient, run: Run, token: string, videoId: string, youtubeId: string, style: unknown): Promise<void> {
-  const dir = path.join(cpath(ROOT, "videos"), videoId);
+ * The video is already uploaded, so a refused cover is reported, never a failed upload. The result is kept in
+ * the video's style (`coverSetAt`, or `coverTries`) so repairCovers can retry a cover that didn't go up. */
+async function applyCover(prisma: PrismaClient, run: Run, token: string, videoId: string, youtubeId: string, style: unknown): Promise<boolean> {
+  // the video's own channel folder: cpath alone is the default channel's, which left every other channel's
+  // videos with YouTube's frame (Disaster Desk's Hyatt long video, 22 Nov)
+  const dir = path.dirname(videoFile(ROOT, run.channelId, videoId, "manifest.json"));
   const file = coverFile(dir, style);   // the owner's pick, else Studio's (long videos have three; lib/cover.ts)
-  if (!file) return void console.log(`${videoId}: no cover in the repo; YouTube picks a frame`);
-  if (!run.quota.take("thumbnail", COST.thumbnail)) return void console.log(`${videoId}: no quota left for the cover today; YouTube picks a frame`);
+  const mark = async (data: Record<string, unknown>) => {
+    const base = (style && typeof style === "object" ? style : {}) as Record<string, unknown>;
+    const next = { ...base, ...data } as Prisma.InputJsonObject;
+    await prisma.video.update({ where: { id: videoId }, data: { style: next } }).catch((e) => console.log(`${videoId}: couldn't record the cover: ${e}`));
+  };
+  const tries = Number(((style ?? {}) as { coverTries?: unknown }).coverTries ?? 0) || 0;
+  if (!file) {
+    console.log(`::warning::${videoId}: no cover in ${path.relative(ROOT, dir)}; YouTube picks a frame`);
+    await mark({ coverTries: tries + 1 });
+    return false;
+  }
+  if (!run.quota.take("thumbnail", COST.thumbnail)) { console.log(`${videoId}: no quota left for the cover today; retried on a later run`); return false; }
   try {
     await setThumbnail(token, youtubeId, file);
     console.log(`${videoId}: cover set from ${path.basename(file)}`);
+    await mark({ coverSetAt: new Date().toISOString(), coverFile: path.basename(file) });
     await resolve(prisma, run.key("cover-refused"));
+    return true;
   } catch (e) {
     const why = e instanceof Error ? e.message : String(e);
     console.log(`${videoId}: ${why}`);
+    await mark({ coverTries: tries + 1 });
     await notify(prisma, { key: run.key("cover-refused"), channelId: run.channelId, source: "publish", severity: "warning", title: "YouTube didn't take our cover",
       detail: `${videoId} (${youtubeId}) went up with YouTube's own frame as its cover: ${why}`,
       fix: "If it says the account can't set custom thumbnails: verify the channel (youtube.com/verify, a phone number) and features such as custom thumbnails turn on. Then set this cover by hand in YouTube Studio, or ask Claude to re-apply it." });
+    return false;
+  }
+}
+
+/** Recent uploads that still show YouTube's frame get our cover, a few a run (lib/cover.ts needsCover). */
+async function repairCovers(prisma: PrismaClient, run: Run, token: string): Promise<void> {
+  const since = new Date(Date.now() - COVER_DAYS * 86_400_000);
+  const ups = await prisma.upload.findMany({
+    where: { youtubeId: { not: null }, publishAt: { gte: since }, state: { in: ["scheduled", "uploaded", "published"] }, video: { deletedAt: null, channelId: run.channelId } },
+    orderBy: { publishAt: "desc" }, select: { youtubeId: true, video: { select: { id: true, style: true } } },
+  });
+  const todo = ups.filter((u) => needsCover(u.video.style, run.channelId === layout().default)).slice(0, COVERS_PER_RUN);
+  for (const u of todo) {
+    console.log(`${u.video.id}: no cover of ours on YouTube yet; setting it`);
+    await applyCover(prisma, run, token, u.video.id, u.youtubeId!, u.video.style);
   }
 }
 
@@ -118,6 +149,7 @@ async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: Chan
     }
     const refreshed = await refreshPublished(prisma, token, new Date(), channelId);
     if (refreshed.published.length || refreshed.stillPrivate.length || refreshed.missing.length) console.log("status check:", refreshed);
+    await repairCovers(prisma, run, token);   // before the pause check: a cover is never held back by paused uploads
 
     if (settings.uploadsPaused) return void console.log("Uploads are paused in settings. Nothing uploaded.");
 

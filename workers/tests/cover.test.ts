@@ -34,3 +34,26 @@ test("a queued video's thumbnails follow its manifest; the owner's pick stays wh
   const dropped = syncThumbs({ thumbs, thumbPick: { file: "thumbnail-c.png" } }, one)!;
   assert.equal(dropped.thumbPick, undefined);
 });
+
+test("needsCover: a recent upload without our cover is retried, at most 3 times (2026-11-22)", async () => {
+  const { needsCover } = await import("../lib/cover.ts");
+  // another channel: the path bug left its covers unset with no mark at all
+  assert.equal(needsCover({}, false), true);
+  assert.equal(needsCover({ coverTries: 2 }, false), true);
+  assert.equal(needsCover({ coverTries: 3 }, false), false);
+  assert.equal(needsCover({ coverSetAt: "2026-11-23T00:00:00Z" }, false), false);
+  // the default channel: unmarked older uploads did get their cover; only a marked miss is retried
+  assert.equal(needsCover({}, true), false);
+  assert.equal(needsCover({ coverTries: 1 }, true), true);
+  assert.equal(needsCover(null, false), true);
+});
+
+test("the publisher reads covers from the video's own channel folder (Disaster Desk, 22 Nov)", async () => {
+  const { videoFile } = await import("../lib/channels.ts");
+  const path = await import("node:path");
+  const { existsSync } = await import("node:fs");
+  const root = path.resolve(import.meta.dirname, "../..");
+  const dir = path.dirname(videoFile(root, "disasters-and-engineering-failures-expla", "L-20261121-42", "manifest.json"));
+  assert.match(dir, /channels\/disasters-and-engineering-failures-expla\/videos\/L-20261121-42$/);
+  assert.ok(existsSync(path.join(dir, "thumbnail.png")), "the Hyatt long video's cover is in its folder");
+});
