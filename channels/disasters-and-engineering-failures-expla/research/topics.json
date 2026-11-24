@@ -2439,7 +2439,7 @@
    "expires": "2027-02-21",
    "status": "new",
    "id": "2026-11-23-hudson-1549-turn-back",
-   "category": "aviation",
+   "category": "air",
    "priority": "normal",
    "title": "US Airways 1549: could the A320 have glided back to LaGuardia after both engines took in geese? (NTSB AAR-10/03)",
    "demand": {
@@ -2500,7 +2500,8 @@
     "https://www.ntsb.gov/investigations/Pages/DCA09MA026.aspx",
     "https://www.faa.gov/sites/faa.gov/files/2025-04/usairways1549_findings.pdf",
     "https://www.faa.gov/sites/faa.gov/files/2025-04/usair_a320.pdf"
-   ]
+   ],
+   "note": "category set to air on 2026-11-25 (research): \"aviation\" slipped past the air block in blocked_categories"
   },
   {
    "templates": [
@@ -2930,6 +2931,188 @@
     "https://ntsb.gov/investigations/Pages/HWY07MH024.aspx",
     "https://www.dot.mn.gov/i35wbridge/pdf/ntsb-report.pdf"
    ]
+  },
+  {
+   "id": "2026-11-25-deepwater-horizon-bent-pipe",
+   "title": "Deepwater Horizon, 2010: the blowout preventer's blade could not seal the well because the pipe inside it had buckled (CSB Macondo report)",
+   "category": "offshore",
+   "kind": "evergreen",
+   "priority": "normal",
+   "format": "short",
+   "stories": [
+    "promo_how_it_works"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "The Deepwater Horizon Disaster | A Catastrophic Blowout #DeepwaterHorizon #OilSpill #disaster",
+    "views": 338000,
+    "url": "https://www.youtube.com/shorts/0oT_LptLXDo",
+    "channel": "Never Mind",
+    "channelSubs": 1970,
+    "outlier": 171.6
+   },
+   "hook": "This oil well had one last guard: a blade that cuts the pipe and seals it shut. It closed, and it couldn't cut.",
+   "templates": [
+    "any"
+   ],
+   "angle": "How does the last safety device on an oil well fail when it actually fires? The CSB found the emergency system most likely worked, but the drillpipe had buckled off-centre inside the blowout preventer, so the blind shear ram could not fully close; a test of the cement barrier had been misread first, and one solenoid was miswired.",
+   "why_now": "Breakouts on Shorts: 338K on a 1.97K channel (172x) and 276K on a 6.78K channel (41x); the CSB's own animation has 2M. Offshore breaks the air/bridge/ship block, and the safety system that should have stopped it is the promo_how_it_works format we have not told yet.",
+   "facts": [
+    {
+     "label": "Year of the blowout",
+     "value": 2010,
+     "unit": "year",
+     "as_of": "2010-04-20",
+     "source": "U.S. Chemical Safety Board, Macondo report executive summary",
+     "url": "https://www.csb.gov/file.aspx?DocumentId=5997",
+     "fixed": true
+    },
+    {
+     "label": "Workers killed",
+     "value": 11,
+     "unit": "count",
+     "as_of": "2016-04-12",
+     "source": "U.S. Chemical Safety Board, Macondo report executive summary",
+     "url": "https://www.csb.gov/file.aspx?DocumentId=5997",
+     "fixed": true
+    },
+    {
+     "label": "People seriously injured",
+     "value": 17,
+     "unit": "count",
+     "as_of": "2016-04-12",
+     "source": "U.S. Chemical Safety Board, Macondo report executive summary",
+     "url": "https://www.csb.gov/file.aspx?DocumentId=5997",
+     "fixed": true
+    },
+    {
+     "label": "People evacuated from the rig",
+     "value": 115,
+     "unit": "count",
+     "as_of": "2016-04-12",
+     "source": "U.S. Chemical Safety Board, Macondo report executive summary",
+     "url": "https://www.csb.gov/file.aspx?DocumentId=5997",
+     "fixed": true
+    },
+    {
+     "label": "Barrels of oil and gas reported released",
+     "value": 4,
+     "unit": "count_million",
+     "as_of": "2016-04-12",
+     "source": "U.S. Chemical Safety Board, Macondo report executive summary",
+     "url": "https://www.csb.gov/file.aspx?DocumentId=5997",
+     "fixed": true
+    },
+    {
+     "label": "Miles off the coast of Louisiana",
+     "value": 50,
+     "unit": "count",
+     "as_of": "2016-04-12",
+     "source": "U.S. Chemical Safety Board, Macondo report executive summary",
+     "url": "https://www.csb.gov/file.aspx?DocumentId=5997",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "CSB key finding 4: the AMF/deadman most likely functioned but buckled off-centre drillpipe kept the blind shear ram from fully closing",
+    "Finding 5: the pipe buckled by 'effective compression' (pressure difference inside vs outside the pipe)",
+    "The misread test is the negative pressure test; say 'misinterpreted', the report's word, and blame no named person",
+    "The 4 million barrels is 'reported' (CSB cites the court's finding); say reported",
+    "Deaths stated once, plainly; no names of the 11"
+   ],
+   "sources": [
+    "https://www.csb.gov/file.aspx?DocumentId=5997",
+    "https://www.csb.gov/macondo-blowout-and-explosion/"
+   ],
+   "found": "2026-11-25",
+   "expires": "2027-02-23",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-25-taum-sauk-overfilled",
+   "title": "Taum Sauk, Missouri, 2005: a mountaintop reservoir kept being pumped full because its level gauges had slipped, and a 680-ft section of wall washed out",
+   "category": "dam",
+   "kind": "evergreen",
+   "priority": "normal",
+   "format": "short",
+   "stories": [
+    "promo_why_it_failed"
+   ],
+   "currency": "USD",
+   "reach": "global",
+   "demand": {
+    "title": "The collapse of Taum Sauk Dam Failure",
+    "views": 340000,
+    "url": "https://www.youtube.com/shorts/Sg3zWbDFsrk",
+    "channel": "Civil Engineering Easy",
+    "channelSubs": 151000,
+    "outlier": 2.3
+   },
+   "hook": "A lake on top of a mountain emptied in minutes. Its gauges said it wasn't full yet.",
+   "angle": "How does a reservoir overflow when its controls are watching the level? The level probes' supports had failed (found in October 2005, not repaired), so they read low; the backup overflow sensors sat inches below the crest instead of the 2 feet designed; the pumps kept filling until water poured over the parapet and the rock-fill wall gave way.",
+   "why_now": "340K Short on a 151K channel (2.3x) and Practical Engineering's long video at 11.5M on 4.85M (2.4x). A dam with no deaths is ad-safe, and dam breaks the air/bridge/ship block.",
+   "facts": [
+    {
+     "label": "Year of the breach",
+     "value": 2005,
+     "unit": "year",
+     "as_of": "2005-12-14",
+     "source": "U.S. Geological Survey SIR 2009-5111",
+     "url": "https://pubs.usgs.gov/sir/2009/5111",
+     "fixed": true
+    },
+    {
+     "label": "Width of the failed embankment section in feet",
+     "value": 680,
+     "unit": "count",
+     "as_of": "2009-01-01",
+     "source": "U.S. Geological Survey SIR 2009-5111",
+     "url": "https://pubs.usgs.gov/sir/2009/5111",
+     "fixed": true
+    },
+    {
+     "label": "Gallons of water released",
+     "value": 1.5,
+     "unit": "count_billion",
+     "as_of": "2009-01-01",
+     "source": "U.S. Geological Survey SIR 2009-5111",
+     "url": "https://pubs.usgs.gov/sir/2009/5111",
+     "fixed": true
+    },
+    {
+     "label": "Acre-feet of water released",
+     "value": 4300,
+     "unit": "count",
+     "as_of": "2006-04-14",
+     "source": "Renewable Energy World, on the Rizzo Associates report",
+     "url": "https://www.renewableenergyworld.com/?p=728931622",
+     "fixed": true
+    },
+    {
+     "label": "Inches below the crest of the higher overflow sensor",
+     "value": 7,
+     "unit": "count",
+     "as_of": "2006-04-14",
+     "source": "Renewable Energy World, on the Rizzo Associates report",
+     "url": "https://www.renewableenergyworld.com/?p=728931622",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "The cause chain from FERC's Independent Panel of Consultants report (24 May 2006) if reachable; otherwise the Rizzo report as reported, named as the owner-commissioned review",
+    "Overflow sensors 7 and 4 inches below the parapet crest against 2 feet in the design",
+    "Nobody died; three children of the park superintendent were injured (roles only, no names)",
+    "Overtopping began 10-13 minutes before the failure (Rizzo, as reported); use only if confirmed"
+   ],
+   "sources": [
+    "https://pubs.usgs.gov/sir/2009/5111",
+    "https://www.renewableenergyworld.com/?p=728931622",
+    "https://ferc.gov/dam-safety-and-inspections/taum-sauk-pumped-storage-project-p-2277-dam-breach-incident"
+   ],
+   "found": "2026-11-25",
+   "expires": "2027-02-23",
+   "status": "new"
   }
  ]
 }
