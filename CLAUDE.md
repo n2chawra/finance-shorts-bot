@@ -21,6 +21,7 @@ from the `Channel` table; `status` setup, review, active, paused or deleting). C
 | `how-tech-and-ai-actually-work-chips-ai-p` | How Tech Works | 3D studio explainer (`look.engine: three`, `remotion/src/three/`) |
 | `business-documentaries-rise-and-fall-of` | Craze & Crash | hybrid documentary (`look.engine: doc`, `remotion/src/doc/`) |
 | `disasters-and-engineering-failures-expla` | Disaster Desk | investigative reconstruction (`look.kits`: three, flat, doc; `remotion/src/disaster/`) |
+| `india-maps` | Naksha Bharat (Hindi) | India's official map with states made on screen (`remotion/src/flat/india.tsx`) |
 
 What belongs to one channel is in its folder, not in this file:
 
