@@ -57,10 +57,9 @@ export type SuspensionBridgeProps = Group & {
 /** Deck height and roll at s (0..1) along the main span. */
 export function deckPose(s: number, o: { deckY?: number; twist?: number; bounce?: number; waves?: number; phase?: number } = {}) {
   const { deckY = 1.95, twist = 0, bounce = 0, waves = 2, phase = 0 } = o;
-  const env = Math.sin(Math.PI * s);
   return {
     y: deckY + bounce * Math.sin(Math.PI * s * waves) * Math.cos(phase),
-    roll: twist * Math.sin(2 * Math.PI * s) * Math.sin(phase) * (0.35 + 0.65 * env),
+    roll: twist * Math.sin(2 * Math.PI * s) * Math.sin(phase),
   };
 }
 
