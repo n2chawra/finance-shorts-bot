@@ -27,7 +27,8 @@ const Panel: React.FC<{ s: Side; k: number; lose: number; figK: number; w: numbe
         </AbsoluteFill>
       ) : null}
       <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(5,7,12,0) 45%, rgba(5,7,12,0.92) 88%)" }} />
-      <div style={{ position: "absolute", left: 0, right: 0, bottom: ph * 0.07, textAlign: "center" }}>
+      {/* in a Short the lower panel's name sits at its top, clear of the captions and the bottom zone (QA, v-20261124-32) */}
+      <div style={{ position: "absolute", left: 0, right: 0, ...(h > w && !left ? { top: ph * 0.07 } : { bottom: ph * 0.07 }), textAlign: "center" }}>
         <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: fs(w, h, 56), color: DOC.text, letterSpacing: -0.5 }}>{s.name}</div>
         {s.fig ? <div style={{ fontFamily: SANS, fontWeight: 900, fontSize: fs(w, h, 92), lineHeight: 1.05, color: lose > 0.5 ? DOC.muted : DOC.gold, opacity: clamp01(figK * 3) }}>{countText(s.fig, figK)}</div> : null}
         {s.sub ? <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: fs(w, h, 30), color: DOC.muted, marginTop: 4 * u }}>{s.sub}</div> : null}
