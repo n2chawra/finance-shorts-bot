@@ -1,0 +1,20 @@
+{
+  "agent": "studio",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-24T04:51:02Z",
+  "finishedAt": "2026-11-24T06:11:33Z",
+  "summary": "Disaster Desk: made the Titan submersible implosion long video (L-20261124-41, 558 s, 79 directed beats) from the owner's first pinned topic. Fact review passed on rewrite 1 and every render gate passed, but QA failed twice, so by the two-round limit it was marked failed and not uploaded. The work is saved for the next run.",
+  "decision": "blocked",
+  "why": "agents/studio.md section 6 allows two QA rounds. Round 2 still listed 6 picture notes: an overlay over a cause tag, no chapter beats, a boxy parking lot, two flat stretches over 30 s, and two thumbnail wording issues. A video ships only after QA passes.",
+  "findings": [
+    {"title": "The NTSB final report (MIR-25-36) is out and is the best source", "detail": "Fetched from ntsb.gov (public domain) and read in full. 30 sourced facts were added to the feed topic 2026-11-20-titan-submersible, each with its source URL, so the next run can use them as they are."},
+    {"title": "The cross-section look's white sheet counts as an empty frame", "detail": "44 of 111 stills failed the empty-frame gate until a strong drafting grid was added (96 px, #cddae6). Sent to the improver as backlog item 2026-11-24-cross-section-empty."},
+    {"title": "render.json builds chapters only from 'chapter' scene beats", "detail": "A video made only of directed beats gets just 'Intro'. The next long video needs a chapter beat at each chapter start."}
+  ],
+  "changes": [
+    {"title": "Titan video L-20261124-41 saved on a branch (failed, not shipped)", "detail": "The script (fact-reviewed), plan, beat code (Sea 3D world, Section, Screen, Log, Report, Board, Title, 3 thumbnails) and the backlog item 2026-11-24-titan-resume.", "branch": "claude/disaster-studio-c91jy3"},
+    {"title": "Answered both of the owner's 23 Nov notes", "detail": "Title: 'The Titan Submersible Implosion: What Really Happened'. Thumbnails: the sub itself at the moment, in the topic's hits' patterns (pick C, 'They heard a bang').", "branch": "agent/studio/2026-11-24/disasters-and-engineering-failures-expla"}
+  ],
+  "nextCheck": "2026-11-25",
+  "links": [{"label": "Longform backlog", "url": "channels/disasters-and-engineering-failures-expla/longform/backlog.json"}]
+}

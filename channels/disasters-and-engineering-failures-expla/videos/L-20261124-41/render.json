@@ -1,0 +1,671 @@
+{
+  "template": "long_story",
+  "renderer": "remotion",
+  "seed": 24141,
+  "duration_sec": 558,
+  "tempo": 1.25,
+  "style": {
+    "palette": "ocean",
+    "genre": "brace",
+    "key": "D",
+    "bpm": 68
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.15,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The submersible Titan dived with a hull that was likely damaged on an earlier dive. All 5 people aboard died.",
+        "start": 0.27,
+        "seconds": 6.95,
+        "window": 7.47,
+        "fill": 0.93
+      },
+      {
+        "scene": "hook-depth",
+        "text": "June 18, 2023. On its support ship, a screen tracks it sinking toward the wreck of the Titanic.",
+        "start": 7.73,
+        "seconds": 7.05,
+        "window": 7.5,
+        "fill": 0.94
+      },
+      {
+        "scene": "hook-msg",
+        "text": "At 3,363 metres, it sends a text: it has dropped two weights. The ship answers. Nothing comes back.",
+        "start": 15.23,
+        "seconds": 7.88,
+        "window": 8.33,
+        "fill": 0.946
+      },
+      {
+        "scene": "hook-gone",
+        "text": "7 seconds after that message, the hull gave way. What broke it was there long before that morning.",
+        "start": 23.57,
+        "seconds": 5.96,
+        "window": 6.47,
+        "fill": 0.921
+      },
+      {
+        "scene": "promise",
+        "text": "Not one mistake, but a chain of them: a hull nobody certified, a bang on dive 80, and warnings that were waved away.",
+        "start": 30.03,
+        "seconds": 7.59,
+        "window": 8.13,
+        "fill": 0.934
+      },
+      {
+        "scene": "promise2",
+        "text": "This story has seven parts: the trip, the pressure, the hull, the warnings, the last dive, the findings, and what changed.",
+        "start": 38.17,
+        "seconds": 7.05,
+        "window": 7.57,
+        "fill": 0.931
+      },
+      {
+        "scene": "t-what",
+        "text": "What was Titan? A small submersible built by a company called OceanGate, to carry paying guests to the Titanic.",
+        "start": 45.73,
+        "seconds": 7.16,
+        "window": 7.57,
+        "fill": 0.946
+      },
+      {
+        "scene": "t-map",
+        "text": "The wreck lies in the North Atlantic, about 370 nautical miles southeast of St. John's, Newfoundland.",
+        "start": 53.3,
+        "seconds": 7.26,
+        "window": 7.73,
+        "fill": 0.939
+      },
+      {
+        "scene": "t-depth",
+        "text": "It rests 3,880 metres down, on the ocean floor, in total darkness. How do you get people there and back?",
+        "start": 61.03,
+        "seconds": 7.9,
+        "window": 8.27,
+        "fill": 0.955
+      },
+      {
+        "scene": "t-price",
+        "text": "OceanGate typically charged $250,000 for a seat. A dive to the wreck was meant to last about eight hours.",
+        "start": 69.3,
+        "seconds": 7.87,
+        "window": 8.4,
+        "fill": 0.937
+      },
+      {
+        "scene": "t-board",
+        "text": "On the morning of the dive, five people climbed in: the pilot, who ran the company, a Titanic expert, and three paying guests.",
+        "start": 77.7,
+        "seconds": 7.59,
+        "window": 8.17,
+        "fill": 0.929
+      },
+      {
+        "scene": "t-bolts",
+        "text": "Then the crew bolted the front dome shut, with 18 bolts. Only the crew outside could open it again.",
+        "start": 85.87,
+        "seconds": 6.12,
+        "window": 6.6,
+        "fill": 0.927
+      },
+      {
+        "scene": "t-sink",
+        "text": "At about 9 in the morning, Titan let go of its platform and began to sink. How fast? About 30 metres every minute.",
+        "start": 92.47,
+        "seconds": 7.39,
+        "window": 7.77,
+        "fill": 0.951
+      },
+      {
+        "scene": "t-tease",
+        "text": "The trip down was meant to take about two and a half hours. And the whole way, something was squeezing the hull harder and harder.",
+        "start": 100.23,
+        "seconds": 6.88,
+        "window": 7.47,
+        "fill": 0.921
+      },
+      {
+        "scene": "p-sea",
+        "text": "What is squeezing it? At sea level, the air presses on every square inch with about 14.7 pounds.",
+        "start": 107.7,
+        "seconds": 6.57,
+        "window": 7.07,
+        "fill": 0.929
+      },
+      {
+        "scene": "p-deep",
+        "text": "At the Titanic, the water presses with 5,554.5 pounds on every square inch.",
+        "start": 114.77,
+        "seconds": 6.74,
+        "window": 7.4,
+        "fill": 0.911
+      },
+      {
+        "scene": "p-car",
+        "text": "That is more than the weight of a family car, on every square inch of the hull.",
+        "start": 122.17,
+        "seconds": 4.37,
+        "window": 4.8,
+        "fill": 0.91
+      },
+      {
+        "scene": "p-how",
+        "text": "How does anything survive that? A pressure hull keeps the people inside at normal air pressure, and takes the whole load itself.",
+        "start": 126.97,
+        "seconds": 7.5,
+        "window": 7.97,
+        "fill": 0.941
+      },
+      {
+        "scene": "p-tube",
+        "text": "Titan's hull was a tube of carbon fibre, 5 inches thick, capped at each end with a titanium dome.",
+        "start": 134.93,
+        "seconds": 6.52,
+        "window": 7.07,
+        "fill": 0.922
+      },
+      {
+        "scene": "p-domes",
+        "text": "The carbon tube was glued into two titanium rings, and the domes were bolted onto the rings.",
+        "start": 142.0,
+        "seconds": 5.63,
+        "window": 6.27,
+        "fill": 0.898
+      },
+      {
+        "scene": "p-why",
+        "text": "Why carbon fibre? It is light. The company's chief believed it was better at being squeezed than stretched.",
+        "start": 148.27,
+        "seconds": 6.42,
+        "window": 6.93,
+        "fill": 0.926
+      },
+      {
+        "scene": "p-tease",
+        "text": "But what happens to that tube when it is squeezed and released, dive after dive? OceanGate never properly tested it.",
+        "start": 155.2,
+        "seconds": 7.03,
+        "window": 7.57,
+        "fill": 0.929
+      },
+      {
+        "scene": "u-model",
+        "text": "Were there early warnings? In 2016, a one-third scale model of the hull imploded in a test, at about 4,200 metres.",
+        "start": 162.77,
+        "seconds": 9.14,
+        "window": 9.63,
+        "fill": 0.949
+      },
+      {
+        "scene": "u-first",
+        "text": "The first full-size hull was built in 2018. On deep test dives, people inside heard cracking sounds.",
+        "start": 172.4,
+        "seconds": 7.2,
+        "window": 7.8,
+        "fill": 0.923
+      },
+      {
+        "scene": "u-crack",
+        "text": "In 2019, a worker spotted a hairline crack. It started at a delamination, where layers inside the carbon had come apart.",
+        "start": 180.2,
+        "seconds": 8.21,
+        "window": 8.7,
+        "fill": 0.944
+      },
+      {
+        "scene": "u-done",
+        "text": "The director of engineering said that hull was done, and would not sign off on the next trip. He was let go soon after.",
+        "start": 188.9,
+        "seconds": 7.28,
+        "window": 7.67,
+        "fill": 0.949
+      },
+      {
+        "scene": "u-second",
+        "text": "So a second hull was built: five bonded layers of carbon fibre, about 5 inches thick in all.",
+        "start": 196.57,
+        "seconds": 6.35,
+        "window": 6.73,
+        "fill": 0.944
+      },
+      {
+        "scene": "u-test",
+        "text": "How was the new hull proven? It was pressure tested once, in 2021, to a simulated 4,200 metres. Then it went to work.",
+        "start": 203.3,
+        "seconds": 9.26,
+        "window": 9.7,
+        "fill": 0.955
+      },
+      {
+        "scene": "u-model2",
+        "text": "Its own test models failed too. One, wrinkled inside, imploded at 2,800 metres, shallower than the Titanic.",
+        "start": 213.0,
+        "seconds": 8.05,
+        "window": 8.57,
+        "fill": 0.939
+      },
+      {
+        "scene": "u-window",
+        "text": "And the window in the front dome? Its maker certified it to just 1,000 metres. The wreck lies at 3,880.",
+        "start": 221.57,
+        "seconds": 8.26,
+        "window": 8.83,
+        "fill": 0.935
+      },
+      {
+        "scene": "u-reuse",
+        "text": "Its domes, its rings and its window were not new. They came off the first hull, and were used again.",
+        "start": 230.4,
+        "seconds": 5.69,
+        "window": 6.2,
+        "fill": 0.918
+      },
+      {
+        "scene": "u-letter",
+        "text": "In 2018, dozens of submarine experts signed a draft letter of concern. It warned the experimental approach could end in catastrophe.",
+        "start": 236.6,
+        "seconds": 8.99,
+        "window": 9.53,
+        "fill": 0.943
+      },
+      {
+        "scene": "u-class",
+        "text": "Was Titan ever certified by a classification society, the bodies that check ships? No. OceanGate dropped the idea.",
+        "start": 246.13,
+        "seconds": 7.76,
+        "window": 8.3,
+        "fill": 0.935
+      },
+      {
+        "scene": "u-tease",
+        "text": "So Titan went to sea without it. And one day, on the way up from the Titanic, everyone heard a bang.",
+        "start": 254.43,
+        "seconds": 5.89,
+        "window": 6.33,
+        "fill": 0.93
+      },
+      {
+        "scene": "w-dives",
+        "text": "In 2021 and 2022, Titan reached the wreck 13 times.",
+        "start": 260.77,
+        "seconds": 4.82,
+        "window": 5.37,
+        "fill": 0.898
+      },
+      {
+        "scene": "w-night",
+        "text": "On one dive in 2022, its batteries died before it could land back on its platform. The guests spent the night inside, on the surface.",
+        "start": 266.13,
+        "seconds": 8.8,
+        "window": 9.43,
+        "fill": 0.933
+      },
+      {
+        "scene": "w-bang",
+        "text": "On dive 80, in July 2022, as Titan climbed back up, the guests inside and a boat crew on the surface heard a loud bang.",
+        "start": 275.57,
+        "seconds": 8.9,
+        "window": 9.4,
+        "fill": 0.947
+      },
+      {
+        "scene": "w-told",
+        "text": "What was it? The guests were told the hull had shifted in its cradle.",
+        "start": 284.97,
+        "seconds": 3.79,
+        "window": 4.23,
+        "fill": 0.896
+      },
+      {
+        "scene": "w-sensors",
+        "text": "Titan carried sensors that listened for cracking in the hull. On dive 80, they showed a burst of noise, and a sudden jump in strain.",
+        "start": 289.2,
+        "seconds": 8.21,
+        "window": 8.57,
+        "fill": 0.958
+      },
+      {
+        "scene": "w-again",
+        "text": "The chief looked at the data, and wanted to keep diving. Titan went down three more times that summer.",
+        "start": 297.77,
+        "seconds": 6.05,
+        "window": 6.5,
+        "fill": 0.931
+      },
+      {
+        "scene": "w-damage",
+        "text": "Investigators later found the hull was likely damaged after dive 80, with layers coming apart inside the wall.",
+        "start": 304.27,
+        "seconds": 7.31,
+        "window": 7.83,
+        "fill": 0.934
+      },
+      {
+        "scene": "w-lot",
+        "text": "After that summer, Titan was left outside in a parking lot in St. John's, uncovered, as winter came.",
+        "start": 312.1,
+        "seconds": 6.54,
+        "window": 7.03,
+        "fill": 0.93
+      },
+      {
+        "scene": "w-tow",
+        "text": "In 2023, it no longer rode on a ship's deck. It was towed behind the ship, on its platform, through the open sea.",
+        "start": 319.13,
+        "seconds": 7.6,
+        "window": 8.03,
+        "fill": 0.946
+      },
+      {
+        "scene": "w-fairing",
+        "text": "On one trip, in high seas, it lost part of its outer shell. Divers had to make repairs.",
+        "start": 327.17,
+        "seconds": 5.66,
+        "window": 6.13,
+        "fill": 0.923
+      },
+      {
+        "scene": "w-tease",
+        "text": "Cold, towing, time. OceanGate never tested what they did to the hull. Dive 88 would show it.",
+        "start": 333.3,
+        "seconds": 6.42,
+        "window": 6.93,
+        "fill": 0.926
+      },
+      {
+        "scene": "l-arrive",
+        "text": "June 18. The support ship Polar Prince reaches the dive site early in the morning.",
+        "start": 340.23,
+        "seconds": 5.07,
+        "window": 5.6,
+        "fill": 0.905
+      },
+      {
+        "scene": "l-pause",
+        "text": "Five people climb inside. Then everyone, on the sub and the ship, takes a few silent minutes to check the plan.",
+        "start": 345.83,
+        "seconds": 6.94,
+        "window": 7.4,
+        "fill": 0.938
+      },
+      {
+        "scene": "l-go",
+        "text": "Divers sink the platform. Titan lets go, and starts down. It is the first dive this year deeper than 10 metres.",
+        "start": 353.23,
+        "seconds": 7.33,
+        "window": 7.9,
+        "fill": 0.928
+      },
+      {
+        "scene": "l-plan",
+        "text": "The plan: two and a half hours down, three hours at the wreck, and two and a half hours back up.",
+        "start": 361.13,
+        "seconds": 5.49,
+        "window": 5.87,
+        "fill": 0.935
+      },
+      {
+        "scene": "l-comms",
+        "text": "How does the ship keep track? A screen shows its depth, and every ten to fifteen minutes, ship and sub trade text messages.",
+        "start": 367.0,
+        "seconds": 7.32,
+        "window": 7.7,
+        "fill": 0.951
+      },
+      {
+        "scene": "l-down",
+        "text": "Down it goes, past where any sunlight reaches, into total darkness, with only its own lamps for light.",
+        "start": 374.7,
+        "seconds": 6.62,
+        "window": 7.13,
+        "fill": 0.928
+      },
+      {
+        "scene": "l-last",
+        "text": "At 3,363 metres, Titan sends a message: it has dropped two weights, a normal step to slow down near the bottom.",
+        "start": 381.83,
+        "seconds": 8.58,
+        "window": 9.1,
+        "fill": 0.943
+      },
+      {
+        "scene": "l-reply",
+        "text": "A minute later, the ship replies. No answer. They send again, and again. Silence.",
+        "start": 390.93,
+        "seconds": 5.26,
+        "window": 5.77,
+        "fill": 0.912
+      },
+      {
+        "scene": "l-tease",
+        "text": "What happened in those seconds, more than three kilometres down?",
+        "start": 396.7,
+        "seconds": 3.44,
+        "window": 3.87,
+        "fill": 0.889
+      },
+      {
+        "scene": "f-buckle",
+        "text": "The weakened wall gave way in one spot. Investigators call it a local buckling failure.",
+        "start": 400.57,
+        "seconds": 5.53,
+        "window": 6.13,
+        "fill": 0.902
+      },
+      {
+        "scene": "f-implode",
+        "text": "7 seconds after its last message, the hull imploded.",
+        "start": 406.7,
+        "seconds": 3.58,
+        "window": 4.03,
+        "fill": 0.888
+      },
+      {
+        "scene": "f-toll",
+        "text": "The youngest aboard, Suleman Dawood, was 19. He had come along with his father.",
+        "start": 410.73,
+        "seconds": 5.21,
+        "window": 5.6,
+        "fill": 0.93
+      },
+      {
+        "scene": "f-ship",
+        "text": "Up on the ship, they believed the acoustic link had dropped, and kept sending messages for hours.",
+        "start": 416.33,
+        "seconds": 5.63,
+        "window": 6.2,
+        "fill": 0.908
+      },
+      {
+        "scene": "f-plan",
+        "text": "OceanGate's own plan said Titan must head back up an hour after losing contact. It never came up.",
+        "start": 422.53,
+        "seconds": 6.32,
+        "window": 6.7,
+        "fill": 0.943
+      },
+      {
+        "scene": "f-search",
+        "text": "The world watched a countdown of 96 hours of oxygen. Ships and planes searched the surface, but Titan was already gone.",
+        "start": 429.23,
+        "seconds": 7.79,
+        "window": 8.3,
+        "fill": 0.939
+      },
+      {
+        "scene": "f-rov",
+        "text": "Only a few robots in the world could reach that depth. One was flown in by a military cargo plane.",
+        "start": 437.53,
+        "seconds": 6.03,
+        "window": 6.57,
+        "fill": 0.918
+      },
+      {
+        "scene": "f-found",
+        "text": "After a 4 day search, a robot found the tail cone and both domes on the seabed, about 500 metres from the Titanic's bow.",
+        "start": 444.1,
+        "seconds": 8.42,
+        "window": 9.0,
+        "fill": 0.936
+      },
+      {
+        "scene": "r-cg",
+        "text": "Two investigations followed. The U.S. Coast Guard's board called the loss of five lives preventable.",
+        "start": 453.1,
+        "seconds": 6.54,
+        "window": 7.0,
+        "fill": 0.934
+      },
+      {
+        "scene": "r-ntsb",
+        "text": "The National Transportation Safety Board named the probable cause: OceanGate's inadequate engineering process.",
+        "start": 460.1,
+        "seconds": 7.03,
+        "window": 7.67,
+        "fill": 0.917
+      },
+      {
+        "scene": "r-strength",
+        "text": "It never established how strong and durable the hull really was.",
+        "start": 467.77,
+        "seconds": 3.68,
+        "window": 4.1,
+        "fill": 0.898
+      },
+      {
+        "scene": "r-sensors",
+        "text": "Its reading of the sensor data was flawed, so it never saw that Titan was damaged after dive 80.",
+        "start": 471.87,
+        "seconds": 6.02,
+        "window": 6.57,
+        "fill": 0.916
+      },
+      {
+        "scene": "r-tow",
+        "text": "It never understood what being stored outdoors, and towed through rough seas, could do to the hull.",
+        "start": 478.43,
+        "seconds": 5.65,
+        "window": 6.17,
+        "fill": 0.916
+      },
+      {
+        "scene": "r-rules",
+        "text": "And the rules for passenger submersibles were too weak to make it follow industry standards.",
+        "start": 484.6,
+        "seconds": 5.19,
+        "window": 5.77,
+        "fill": 0.899
+      },
+      {
+        "scene": "r-culture",
+        "text": "The Coast Guard's board also pointed to a toxic workplace culture, and said OceanGate used intimidation to dodge scrutiny.",
+        "start": 490.37,
+        "seconds": 7.95,
+        "window": 8.5,
+        "fill": 0.935
+      },
+      {
+        "scene": "r-response",
+        "text": "With a proper emergency plan, the safety board said, rescue help would likely have been standing by. A rescue was not possible this time.",
+        "start": 498.87,
+        "seconds": 8.21,
+        "window": 8.7,
+        "fill": 0.944
+      },
+      {
+        "scene": "r-tease",
+        "text": "Two boards, the same answer. So what has changed since?",
+        "start": 507.57,
+        "seconds": 3.19,
+        "window": 3.73,
+        "fill": 0.855
+      },
+      {
+        "scene": "c-recs",
+        "text": "The safety board made 4 recommendations to the Coast Guard. First, study how passenger submersibles are run today.",
+        "start": 511.3,
+        "seconds": 7.14,
+        "window": 7.77,
+        "fill": 0.919
+      },
+      {
+        "scene": "c-rules",
+        "text": "Then write U.S. rules for pressure vessels that carry people.",
+        "start": 519.07,
+        "seconds": 4.27,
+        "window": 4.67,
+        "fill": 0.914
+      },
+      {
+        "scene": "c-world",
+        "text": "And push for the world's standard for these vessels to become mandatory, not optional.",
+        "start": 523.73,
+        "seconds": 4.77,
+        "window": 5.23,
+        "fill": 0.912
+      },
+      {
+        "scene": "c-cg",
+        "text": "The Coast Guard's own board added 17 recommendations. Today, those are proposals. Whether they become law is still to come.",
+        "start": 528.97,
+        "seconds": 8.44,
+        "window": 8.97,
+        "fill": 0.941
+      },
+      {
+        "scene": "payoff",
+        "text": "The bang came on dive 80. Titan kept diving. The hull failed on dive 88.",
+        "start": 537.93,
+        "seconds": 5.23,
+        "window": 5.73,
+        "fill": 0.913
+      },
+      {
+        "scene": "score",
+        "text": "An uncertified hull. A window rated far short of the depth. A bang explained away. A hull left out in the cold.",
+        "start": 543.67,
+        "seconds": 7.45,
+        "window": 8.03,
+        "fill": 0.928
+      },
+      {
+        "scene": "loop",
+        "text": "Which warning should have stopped Titan? Tell us in the comments.",
+        "start": 551.7,
+        "seconds": 3.16,
+        "window": 3.63,
+        "fill": 0.871
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.0,
+    "music_under_voice_db": 33.8
+  },
+  "craft_problems": [
+    "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+    "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+    "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+    "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+    "note: directed 4 times in a row: change the device"
+  ]
+}
