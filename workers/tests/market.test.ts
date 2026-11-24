@@ -80,3 +80,20 @@ test("breakouts: views far past the channel's subscribers rank first (owner, 202
   assert.equal(r.shorts.find((x) => x.id === "new")!.outlier, 2.5);                  // floor of 1,000 subscribers
   assert.deepEqual(outlierOf(10, undefined, 3), {});
 });
+
+test("every active channel gets its own scan; a pack's queries-only market.json is enough (2026-11-24)", async () => {
+  const { channelMarket, marketChannels, planSearches, searchCost } = await import("../lib/market.ts");
+  // the map channel's file names only its queries: US, and the language from channel.json ("en-gb" → "en")
+  const geo = channelMarket({ queries: ["weird borders explained", "what if countries"] }, "en-gb");
+  assert.equal(geo.regionCode, "US");
+  assert.equal(geo.relevanceLanguage, "en");
+  assert.equal(channelMarket({ queries: ["x1"], relevanceLanguage: "hi" }, "en-us").relevanceLanguage, "hi");   // the file wins
+  assert.throws(() => channelMarket({ note: "no queries" }, "en"));
+  assert.equal(searchCost(channelMarket({ queries: ["a1", "b1"], regionCode: "US", regions: ["IN", "US"] })), 4);
+  // active and paused channels still in the repo; a deleting one or one whose folder is gone is not searched
+  assert.deepEqual(marketChannels({ a: { status: "active" }, b: { status: "paused" }, c: { status: "deleting" }, d: { status: "setup" }, e: { status: "active" } }, ["a", "b", "c", "d"]), ["a", "b"]);
+  // searches left after the thumbnail reserve decide who is scanned; a big channel skipped doesn't block a small one
+  const q = (n: number) => channelMarket({ queries: Array.from({ length: n }, (_, i) => `query ${i}`) });
+  assert.deepEqual(planSearches([["a", q(5)], ["b", q(8)], ["c", q(3)]], 20, 10), { scan: ["a", "c"], skipped: ["b"] });
+  assert.deepEqual(planSearches([["a", q(5)]], Number.POSITIVE_INFINITY, 10), { scan: ["a"], skipped: [] });
+});

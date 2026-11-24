@@ -13,12 +13,15 @@ export const ThumbRefsConfig = z.object({
 }).default({ perDay: 4, refreshDays: 7, keep: 8, minViews: 100_000 });
 export type ThumbRefsConfig = z.infer<typeof ThumbRefsConfig>;
 
-/** The channel's market: what to search and where (config/market.json; one file per channel). */
+/** The channel's market: what to search and where (channels/<slug>/market.json; one file per channel). A pack
+ * usually names only its `queries`: the region defaults to the US and the language to the channel's own
+ * (`channelMarket`), so a new channel's market.json never stops the scan (2026-11-24: channel #1's full file was
+ * the only one, and deleting it would have crashed every later run). */
 export const MarketConfig = z.object({
-  regionCode: z.string().length(2),
+  regionCode: z.string().length(2).default("US"),
   // extra regions searched with the same queries (the channel splits Shorts between India and the US)
   regions: z.array(z.string().length(2)).max(2).default([]),
-  relevanceLanguage: z.string().min(2),
+  relevanceLanguage: z.string().min(2).default("en"),
   queries: z.array(z.string().min(2)).min(1).max(8),
   days: z.number().int().min(1).max(30).default(7),
   shortMaxSec: z.number().int().default(180),
@@ -29,6 +32,42 @@ export const MarketConfig = z.object({
   thumbRefs: ThumbRefsConfig,
 });
 export type MarketConfig = z.infer<typeof MarketConfig>;
+
+/** Reference thumbnails are searched for every channel's long topics in one pass (owner, 2026-11-23: 10 a run, the
+ * schema's most; market runs Mon and Thu, so 20 topics a week; the live search at render covers the rest). */
+export const THUMB_REFS: ThumbRefsConfig = ThumbRefsConfig.parse({ perDay: 10, refreshDays: 7, keep: 8, minViews: 100_000 });
+
+/** A channel's market config from its market.json, its search language from its channel.json `language`
+ * ("en-gb" searches "en") unless the file names one. Throws when the file is unusable (no queries). */
+export function channelMarket(raw: unknown, language?: string | null): MarketConfig {
+  const lang = language?.split("-")[0]?.toLowerCase();
+  const obj = raw && typeof raw === "object" ? (raw as Record<string, unknown>) : {};
+  return MarketConfig.parse({ ...(lang && lang.length >= 2 ? { relevanceLanguage: lang } : {}), ...obj });
+}
+
+/** Searches one channel's scan costs: every query in every region. */
+export function searchCost(cfg: MarketConfig): number {
+  return cfg.queries.length * new Set([cfg.regionCode, ...cfg.regions]).size;
+}
+
+/** Channels the market scan covers (config/channels.json `channels`): active or paused, and still in the repo. */
+export function marketChannels(entries: Record<string, { status?: string }>, inRepo: string[]): string[] {
+  const live = new Set(Object.entries(entries).filter(([, c]) => c.status === "active" || c.status === "paused").map(([id]) => id));
+  return inRepo.filter((s) => live.has(s));
+}
+
+/** Which channels fit in the day's searches left, in order; the rest keep their last scan. `reserve` is held
+ * back for the thumbnail-reference searches that follow. A channel too big for what's left is skipped, and a
+ * smaller one after it can still go. */
+export function planSearches(cfgs: [string, MarketConfig][], left: number, reserve = 0): { scan: string[]; skipped: string[] } {
+  let budget = Math.max(0, left - reserve);
+  const scan: string[] = [], skipped: string[] = [];
+  for (const [slug, cfg] of cfgs) {
+    const cost = searchCost(cfg);
+    if (cost <= budget) { scan.push(slug); budget -= cost; } else skipped.push(slug);
+  }
+  return { scan, skipped };
+}
 
 export const SearchList = z.object({ items: z.array(z.object({ id: z.object({ videoId: z.string() }) })) });
 export const VideoDetails = z.object({
