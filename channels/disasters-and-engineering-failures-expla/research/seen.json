@@ -1,11 +1,12 @@
 {
   "claudeCode": {
-    "latest": "2.1.330",
-    "checked": "2026-11-24",
+    "latest": "2.1.331",
+    "checked": "2026-11-25",
     "notes": [
       "2.1.330: WebFetch no longer freezes or returns empty on some pages; built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline (read by tonight's geography research run, not fetched again to keep the run lean).",
       "2026-11-23: still 2.1.330 (30-day scheduled tasks, subagent and WebFetch fixes); nothing for the pipeline.",
-      "2026-11-24: still 2.1.330 (raw CHANGELOG.md read); nothing for the pipeline."
+      "2026-11-24: still 2.1.330 (raw CHANGELOG.md read); nothing for the pipeline.",
+      "2026-11-25: 2.1.331 retries a turn or subagent that went silent while thinking in cloud sessions (fewer failed routine runs) and fixes PushNotification in scheduled runs; nothing to change in the pipeline."
     ]
   },
   "sources": {
@@ -46,12 +47,14 @@
     ]
   },
   "watch": {
-    "ERA27MA026": "Learjet 60 N722BD, Greenacres FL, 1 Nov 2026: NTSB preliminary report due about 1 Dec; the follow-up Short/long when it lands; checked 2026-11-23: no preliminary yet (last NTSB update 9 Nov); 2026-11-24: not re-checked (due ~1 Dec)",
-    "DCA27MM003": "Atlantic Asphalt / American Heritage, New Orleans, 13 Nov 2026: preliminary report due",
+    "ERA27MA026": "Learjet 60 N722BD, Greenacres FL, 1 Nov 2026: checked 2026-11-25: still no preliminary (last NTSB update 9 Nov, CVR at the lab). This week's 'Look outside' Shorts (CauseFrame 470K on 2.8K, khoj 171K and 146K on 486) quote the crew's radio, not an NTSB finding; event is 24 days old, outside the 14-day fast lane. Make the follow-up when the preliminary lands (~1 Dec).",
+    "DCA27MM003": "Atlantic Asphalt / American Heritage, New Orleans, 13 Nov 2026: preliminary report due; 2026-11-25: one Short at 15K (Cutaway, 49 subs), no 100K video; our Short v-20261122-41 is out; not worth a long video",
     "urda-2026-10-28": "Spain Urda collision: open court case and CIAF probe, minister's red-signal claim only; wait for the CIAF preliminary",
     "faa-ground-stop-2026-11-13": "Nationwide FAA ground stop, 13 Nov 2026: telecommunications failure at en-route centres, cause not officially found (Duffy: routers overloaded; Mullin: checking the new AI routing system). A Short only after an official finding"
   },
   "crowded": {
-    "apollo-13-oxygen-tank": "2026-11-24: 20+ Shorts on the tank and its 28 V switch, none above 3.6K views: crowded, skip"
+    "apollo-13-oxygen-tank": "2026-11-24: 20+ Shorts on the tank and its 28 V switch, none above 3.6K views: crowded, skip",
+    "challenger-o-ring": "2026-11-25: 15+ Shorts on the O-ring, none above 2.3K views: crowded, skip",
+    "st-francis-dam": "2026-11-25: Shorts top out at 84K, most under 16K: weak, skip"
   }
 }
