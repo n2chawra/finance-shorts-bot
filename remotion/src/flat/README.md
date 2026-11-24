@@ -44,6 +44,8 @@ India outline. Inside a `Stage`/`View` (or a bare SVG):
 |---|---|
 | `IndiaMap` | the map: `focus` (state names or "India") framed with `pad`; the world outside India dimmed (`dim`), India a paper sheet (`sheet`) with white state lines; `states` ({ Telangana: { fill, k, draw, paint, from, lift, trace } }) makes a state on screen like `WorldMap`'s colours; painted states stay painted (an every-state fill-up); `names` writes unpainted states' Devanagari names faintly; `neighbourNames` the neighbours' |
 | `StateTag` | a pill pinned to a state (its Devanagari name by default, or `text`), popping in with `k`; kept inside the frame, its stem pointing at the state |
+| `frameOf(focus, w, h, pad)`, `lerpFrame(a, b, k)` | a framing as `{center, scale}` and the camera move between two; pass it as `IndiaMap frame` |
+| `Plate` | an Indian number plate (white, ink border, blue IND strip, the state's letters) pinned to a state, dropping in with `k`, ringed by `glow`; letters only |
 | `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
 | `INDIA_STATES`, `stateHi(name)` | the 36 names (English) and each one's Devanagari name |
 

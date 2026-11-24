@@ -93,10 +93,27 @@ const mixHex = (a: string, b: string, k: number) => {
   return `#${pa.map((v, i) => Math.round(v + (pb[i]! - v) * k).toString(16).padStart(2, "0")).join("")}`;
 };
 
+/** The framing that shows these states (or "India") with `pad` pixels round them, as a centre and a scale, so a
+ * beat can move the camera between two framings: `lerpFrame(frameOf(["India"]), frameOf(["Kerala"]), k)`. */
+export function frameOf(focus: string[], w = 1080, h = 1920, pad = 90): { center: [number, number]; scale: number } {
+  const p = geoEquirectangular();
+  const framed = focus.flatMap((n) => (n.toLowerCase() === "india" ? [DATA.outline] : [byName(n)].filter((s): s is Shape => !!s)));
+  p.fitExtent([[pad, pad], [w - pad, h - pad]], { type: "FeatureCollection", features: framed.length ? framed : [DATA.outline] });
+  return { center: p.invert!([w / 2, h / 2]) as [number, number], scale: p.scale() };
+}
+/** Between two framings; the scale moves on a log curve so a push-in feels even. */
+export const lerpFrame = (a: { center: [number, number]; scale: number }, b: { center: [number, number]; scale: number }, k: number) => {
+  const q = Math.max(0, Math.min(1, k));
+  return { center: [a.center[0] + (b.center[0] - a.center[0]) * q, a.center[1] + (b.center[1] - a.center[1]) * q] as [number, number],
+    scale: Math.exp(Math.log(a.scale) + (Math.log(b.scale) - Math.log(a.scale)) * q) };
+};
+
 export const IndiaMap: React.FC<{
   w: number; h: number;
   /** frame these states (English names) or "India" with `pad` pixels round them */
   focus?: string[]; pad?: number;
+  /** or the camera itself (from `frameOf` / `lerpFrame`): wins over `focus` */
+  frame?: { center: [number, number]; scale: number };
   /** paint states, made on screen */
   states?: Record<string, StateFx>;
   /** the sheet colour of unpainted India and how dark the world outside India sits (0 none .. 1 black) */
@@ -106,15 +123,16 @@ export const IndiaMap: React.FC<{
   /** neighbours' Devanagari names (पाकिस्तान, चीन …) on the dimmed land */
   neighbourNames?: boolean;
   children?: React.ReactNode;
-}> = ({ w, h, focus = ["India"], pad = 90, states = {}, sheet = "#f3ead6", dim = 0.42, names = false, neighbourNames = false, children }) => {
+}> = ({ w, h, focus = ["India"], pad = 90, frame, states = {}, sheet = "#f3ead6", dim = 0.42, names = false, neighbourNames = false, children }) => {
   const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
   useLoaded(staticFile(RELIEF.file));
   const proj = useMemo(() => {
     const p = geoEquirectangular();
+    if (frame) return p.scale(frame.scale).center(frame.center).translate([w / 2, h / 2]);
     const framed = focus.flatMap((n) => (n.toLowerCase() === "india" ? [DATA.outline] : [byName(n)].filter((s): s is Shape => !!s)));
     p.fitExtent([[pad, pad], [w - pad, h - pad]], { type: "FeatureCollection", features: framed.length ? framed : [DATA.outline] });
     return p;
-  }, [focus.join("|"), pad, w, h]);   // eslint-disable-line react-hooks/exhaustive-deps
+  }, [focus.join("|"), pad, w, h, frame?.center[0], frame?.center[1], frame?.scale]);   // eslint-disable-line react-hooks/exhaustive-deps
   const path = useMemo(() => geoPath(proj), [proj]);
   const [rx0, ry0] = proj([RELIEF.lon0, RELIEF.lat1]) as [number, number];
   const [rx1, ry1] = proj([RELIEF.lon1, RELIEF.lat0]) as [number, number];
@@ -221,6 +239,34 @@ export const StateTag: React.FC<{ state: string; text?: string; at?: [number, nu
       <rect x={-wBox / 2 + 6} y={-hBox / 2 + 8} width={wBox} height={hBox} rx={hBox / 2} fill={INK} opacity={0.35} />
       <rect x={-wBox / 2} y={-hBox / 2} width={wBox} height={hBox} rx={hBox / 2} fill={bg} stroke={INK} strokeWidth={STROKE * 0.8} />
       <text x={0} y={2} fontFamily="Poppins" fontWeight={800} fontSize={size} textAnchor="middle" dominantBaseline="middle" fill={fg}>{label}</text>
+    </g>
+  );
+};
+
+/** An Indian vehicle number plate pinned to a state (the India Maps channel's every-state plates, 2026-11-24): a white
+ * plate with an ink border and the blue "IND" strip on the left, the state's letters big; `k` drops it in with a
+ * bounce, `glow` rings it while it is spoken. Letters only: a plate's numbers are never drawn (figures come from code). */
+export const Plate: React.FC<{ state?: string; at?: [number, number]; text: string; k?: number; size?: number; dy?: number; glow?: number; tone?: string }> = ({
+  state, at, text, k = 1, size = 1, dy = 0, glow = 0, tone = "#ffffff",
+}) => {
+  const ctx = React.useContext(MapCtx);
+  const frame = React.useContext(FrameSize);
+  if (!ctx || k <= 0) return null;
+  const s = state ? byName(state) : undefined;
+  const xy = at ? ctx.proj(at) : s ? ctx.path.centroid(s) : null;
+  if (!xy || !isFinite(xy[0])) return null;
+  const W = 190 * size, H = 82 * size, strip = 34 * size;
+  const x = Math.min(Math.max(xy[0], W / 2 + 20), frame.w - W / 2 - 20);
+  const drop = (1 - Math.min(1, k * 1.3)) * -60 * size, sq = k < 0.85 ? 1 : 1 + 0.08 * Math.sin((k - 0.85) / 0.15 * Math.PI);
+  const y = xy[1] + dy + drop;
+  return (
+    <g transform={`translate(${x} ${y}) scale(${sq} ${1 / sq})`} opacity={Math.min(1, k * 2.2)}>
+      {glow > 0 ? <rect x={-W / 2 - 14} y={-H / 2 - 14} width={W + 28} height={H + 28} rx={16 * size} fill="#ffd84a" opacity={0.45 * glow} data-probe="skip" /> : null}
+      <rect x={-W / 2 + 6} y={-H / 2 + 8} width={W} height={H} rx={10 * size} fill={INK} opacity={0.4} />
+      <rect x={-W / 2} y={-H / 2} width={W} height={H} rx={10 * size} fill={tone} stroke={INK} strokeWidth={5 * size} />
+      <rect x={-W / 2 + 7 * size} y={-H / 2 + 7 * size} width={strip} height={H - 14 * size} rx={5 * size} fill="#2a4fb0" />
+      <text x={-W / 2 + 7 * size + strip / 2} y={H / 2 - 16 * size} fontFamily="Poppins" fontWeight={700} fontSize={13 * size} textAnchor="middle" fill="#ffffff" data-probe="skip">IND</text>
+      <text x={strip / 2 + 4 * size} y={3 * size} fontFamily="Poppins" fontWeight={900} fontSize={54 * size} letterSpacing={3 * size} textAnchor="middle" dominantBaseline="middle" fill={INK}>{text}</text>
     </g>
   );
 };

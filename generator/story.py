@@ -510,6 +510,10 @@ def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
     names = [w for w in formats.NAME_IN_TITLE.findall(first) if w.lower() not in formats.COMMON_WORDS]
     opener = (first.split() or [""])[0]
     named = bool(names) or (opener[:1].isupper() and opener.lower().strip(".,!?'’s") not in formats.COMMON_STARTS)
+    # a script with no capital letters (Devanagari, the India Maps channel, 2026-11-24) can't be read for names
+    # by case: the fact review and the hook judge check that its hook names the subject
+    if not re.search(r"[A-Za-z]", first):
+        named = True
     if not (formats.MONEY_IN_TITLE.search(first) or named):
         out.append(f"the hook's first sentence names no famous person or company and no figure (got {first!r}): the subject, "
                    f"or the price the viewer pays, is said first, as in {example}")
