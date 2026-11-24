@@ -1,0 +1,8010 @@
+{
+ "template": "long_story",
+ "format": "long",
+ "seed": 61307,
+ "story": "inside_when_you",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "datahall",
+  "key": "F",
+  "bpm": 63
+ },
+ "hook_style": "question",
+ "cta": "What should we open up next? Tell us in the comments",
+ "feed_id": "2026-11-18-euv-prints-a-chip",
+ "title": "How Does ASML's EUV Machine Print a Chip With Light?",
+ "facts": [
+  {
+   "label": "Wavelength of EUV light, in nanometres",
+   "value": 13.5,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "ASML",
+   "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+   "fixed": true
+  },
+  {
+   "label": "Times every second a tin droplet is hit and turned into light-making plasma",
+   "value": 50000,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "ASML",
+   "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+   "fixed": true
+  },
+  {
+   "label": "Diameter of each molten tin droplet, in microns (about)",
+   "value": 25,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "ASML",
+   "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+   "fixed": true
+  },
+  {
+   "label": "Speed the droplets leave the generator, in metres per second",
+   "value": 70,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "ASML",
+   "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+   "fixed": true
+  },
+  {
+   "label": "Smallest feature a standard (0.33 NA) EUV machine prints, in nanometres",
+   "value": 13,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "ASML (EUV lithography systems)",
+   "url": "https://www.asml.com/en/products/euv-lithography-systems",
+   "fixed": true
+  },
+  {
+   "label": "Smallest feature a High-NA (0.55 NA) EUV machine prints, in nanometres",
+   "value": 8,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "ASML (EUV lithography systems)",
+   "url": "https://www.asml.com/en/products/euv-lithography-systems",
+   "fixed": true
+  }
+ ],
+ "maths": [
+  {
+   "name": "na",
+   "kind": "rate",
+   "part": 8,
+   "whole": 13,
+   "facts": {
+    "part": 6,
+    "whole": 5
+   }
+  },
+  {
+   "name": "finer",
+   "kind": "compare",
+   "a": "na.whole",
+   "b": "na.part"
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "transition": "cut",
+   "say": "The chip in a modern phone holds billions of tiny switches, and its finest lines were printed with light made by blowing up drops of molten tin.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "switches": {
+     "word": "switches"
+    },
+    "finest": {
+     "word": "finest"
+    },
+    "printed": {
+     "word": "printed"
+    },
+    "blowing": {
+     "word": "blowing"
+    },
+    "molten": {
+     "word": "molten"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "billions": {
+     "word": "billions"
+    },
+    "lines": {
+     "word": "lines"
+    },
+    "light": {
+     "word": "light"
+    },
+    "drops": {
+     "word": "drops"
+    },
+    "tin": {
+     "word": "tin"
+    },
+    "cam_modern": {
+     "word": "modern"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "inside the light source of an EUV machine: falling drops of molten tin flash into violet plasma in the dark",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "switches",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "finest",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "printed",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "blowing",
+      "size": "extreme",
+      "on": "drop"
+     },
+     {
+      "at": "molten",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "cam_modern",
+      "size": "close",
+      "on": "drop"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "drops",
+      "what": "drops of molten tin already falling through the dark chamber"
+     },
+     {
+      "at": "chip",
+      "do": "main",
+      "what": "a drop bursts into a violet-white flash"
+     },
+     {
+      "at": "billions",
+      "do": "glow",
+      "what": "the flash swells into a glowing ball of plasma"
+     },
+     {
+      "at": "lines",
+      "do": "collector",
+      "what": "the big curved mirror behind it lights up"
+     },
+     {
+      "at": "light",
+      "do": "flash",
+      "what": "another drop flashes"
+     },
+     {
+      "at": "drops",
+      "do": "repeat",
+      "what": "drop after drop flashes in a fast rhythm"
+     },
+     {
+      "at": "tin",
+      "do": "counter",
+      "what": "a counter on the chamber wall starts counting"
+     }
+    ],
+    "things": [
+     "tin drops",
+     "violet plasma flash",
+     "collector mirror",
+     "chamber wall counter"
+    ],
+    "labels": [
+     {
+      "at": "tin",
+      "text": "molten tin",
+      "on": "nozzle"
+     }
+    ],
+    "fig": {
+     "rate": "{fact2}"
+    },
+    "tag": "illustration"
+   },
+   "sfx": [
+    {
+     "kind": "glass",
+     "at": "chip"
+    }
+   ]
+  },
+  {
+   "id": "hook2",
+   "scene": "directed",
+   "role": "hook",
+   "transition": "cut",
+   "say": "The machine that does it, built by ASML, is about the size of a bus, and it blasts {fact2} drops of tin every second. So how does exploding metal end up as a chip?",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "size": {
+     "word": "size"
+    },
+    "blasts": {
+     "word": "blasts"
+    },
+    "every": {
+     "word": "every"
+    },
+    "exploding": {
+     "word": "exploding"
+    },
+    "metal": {
+     "word": "metal"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "bus": {
+     "word": "bus"
+    },
+    "second": {
+     "word": "second"
+    },
+    "how": {
+     "word": "how"
+    },
+    "cam_by": {
+     "word": "by"
+    },
+    "cam_drops": {
+     "word": "drops"
+    },
+    "cam_as": {
+     "word": "as"
+    },
+    "cam_about": {
+     "word": "about"
+    }
+   },
+   "params": {
+    "component": "Fab",
+    "place": "a yellow-lit chip factory bay: the EUV machine as a long white enclosure, a bus outline beside it for size",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "machine",
+      "size": "medium",
+      "on": "machine"
+     },
+     {
+      "at": "size",
+      "size": "wide",
+      "on": "bus"
+     },
+     {
+      "at": "blasts",
+      "size": "close",
+      "on": "screen"
+     },
+     {
+      "at": "every",
+      "size": "medium",
+      "on": "screen"
+     },
+     {
+      "at": "exploding",
+      "size": "medium",
+      "on": "machine"
+     },
+     {
+      "at": "metal",
+      "size": "close",
+      "on": "door"
+     },
+     {
+      "at": "chip",
+      "size": "medium",
+      "on": "door"
+     },
+     {
+      "at": "cam_by",
+      "size": "close",
+      "on": "machine"
+     },
+     {
+      "at": "cam_drops",
+      "size": "medium",
+      "on": "machine"
+     },
+     {
+      "at": "cam_as",
+      "size": "close",
+      "on": "machine"
+     },
+     {
+      "at": "cam_about",
+      "size": "medium",
+      "on": "machine"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "machine",
+      "what": "the long white machine hums in the yellow light, its status lights blinking"
+     },
+     {
+      "at": "bus",
+      "do": "bus",
+      "what": "the outline of a city bus draws itself beside the machine"
+     },
+     {
+      "at": "blasts",
+      "do": "counter",
+      "what": "the screen on the machine counts up the drops"
+     },
+     {
+      "at": "second",
+      "do": "flash",
+      "what": "violet light pulses in its window"
+     },
+     {
+      "at": "how",
+      "do": "question",
+      "what": "a question mark lights over the machine"
+     },
+     {
+      "at": "exploding",
+      "do": "open",
+      "what": "a side panel slides open, violet light spilling out"
+     },
+     {
+      "at": "chip",
+      "do": "wafer",
+      "what": "a silicon wafer glides out of the loading port"
+     }
+    ],
+    "things": [
+     "EUV machine",
+     "bus outline",
+     "drop counter screen",
+     "wafer port"
+    ],
+    "labels": [
+     {
+      "at": "bus",
+      "text": "a city bus",
+      "on": "bus"
+     }
+    ],
+    "fig": {
+     "rate": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "blasts"
+    }
+   ]
+  },
+  {
+   "id": "route",
+   "scene": "directed",
+   "role": "promise",
+   "transition": "cut",
+   "say": "Follow the light through it. Tin becomes light, mirrors carry it, a mask gives it a pattern, and a silicon wafer takes the print.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "light": {
+     "word": "light"
+    },
+    "tin": {
+     "word": "Tin"
+    },
+    "mirrors": {
+     "word": "mirrors"
+    },
+    "mask": {
+     "word": "mask"
+    },
+    "pattern": {
+     "word": "pattern"
+    },
+    "wafer": {
+     "word": "wafer"
+    },
+    "print": {
+     "word": "print"
+    },
+    "follow": {
+     "word": "Follow"
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "the machine cut open, its light path from the tin source to the wafer stage laid out",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "light",
+      "size": "medium",
+      "on": "source"
+     },
+     {
+      "at": "tin",
+      "size": "close",
+      "on": "source"
+     },
+     {
+      "at": "mirrors",
+      "size": "medium",
+      "on": "mirrors"
+     },
+     {
+      "at": "mask",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "pattern",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "wafer",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "print",
+      "size": "wide",
+      "on": "all"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "cutaway",
+      "what": "the machine's walls turn to glass, every stop dark inside"
+     },
+     {
+      "at": "follow",
+      "do": "path",
+      "what": "a dotted light path draws through the machine"
+     },
+     {
+      "at": "tin",
+      "do": "tin",
+      "what": "the tin source at the start glows violet"
+     },
+     {
+      "at": "mirrors",
+      "do": "mirrors",
+      "what": "the chain of mirrors lights one by one"
+     },
+     {
+      "at": "mask",
+      "do": "mask",
+      "what": "the mask at the top lights"
+     },
+     {
+      "at": "pattern",
+      "do": "pattern",
+      "what": "a pattern flickers onto the mask"
+     },
+     {
+      "at": "wafer",
+      "do": "wafer",
+      "what": "the wafer at the bottom lights"
+     },
+     {
+      "at": "print",
+      "do": "pulse",
+      "what": "a pulse of light runs the whole path"
+     }
+    ],
+    "things": [
+     "cutaway machine",
+     "light path",
+     "tin source",
+     "mirror chain",
+     "mask",
+     "wafer stage"
+    ],
+    "labels": [
+     {
+      "at": "tin",
+      "text": "tin",
+      "on": "source"
+     },
+     {
+      "at": "mirrors",
+      "text": "mirrors",
+      "on": "mirrors"
+     },
+     {
+      "at": "mask",
+      "text": "mask",
+      "on": "mask"
+     },
+     {
+      "at": "wafer",
+      "text": "wafer",
+      "on": "wafer"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "print"
+    }
+   ]
+  },
+  {
+   "id": "route2",
+   "scene": "directed",
+   "role": "promise",
+   "transition": "cut",
+   "say": "Along the way, we'll see why no lens can do this job, how the newest machine prints even finer, and how one print becomes a working switch.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "lens": {
+     "word": "lens"
+    },
+    "job": {
+     "word": "job"
+    },
+    "newest": {
+     "word": "newest"
+    },
+    "finer": {
+     "word": "finer"
+    },
+    "print": {
+     "word": "print"
+    },
+    "switch": {
+     "word": "switch"
+    },
+    "working": {
+     "word": "working"
+    },
+    "cam_well": {
+     "word": "we'll"
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "the same cutaway, its stops turning into chapter signs",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "lens",
+      "size": "medium",
+      "on": "mirrors"
+     },
+     {
+      "at": "job",
+      "size": "close",
+      "on": "mirrors"
+     },
+     {
+      "at": "newest",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "finer",
+      "size": "close",
+      "on": "wafer"
+     },
+     {
+      "at": "print",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "switch",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "cam_well",
+      "size": "medium",
+      "on": "all"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "path",
+      "what": "the lit path from the last shot, the camera drifting along it"
+     },
+     {
+      "at": "lens",
+      "do": "lens",
+      "what": "a glass lens appears on the path and is crossed out"
+     },
+     {
+      "at": "job",
+      "do": "mirrors",
+      "what": "the mirrors brighten in its place"
+     },
+     {
+      "at": "newest",
+      "do": "finer",
+      "what": "the wafer's lines sharpen and narrow"
+     },
+     {
+      "at": "print",
+      "do": "switch",
+      "what": "a tiny switch rises out of the wafer"
+     },
+     {
+      "at": "working",
+      "do": "pulse",
+      "what": "current flickers through it"
+     },
+     {
+      "at": "switch",
+      "do": "recap",
+      "what": "every stop glows at once"
+     }
+    ],
+    "things": [
+     "crossed-out lens",
+     "finer lines",
+     "tiny switch"
+    ]
+   }
+  },
+  {
+   "id": "melt",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "It starts with tin, a soft silvery metal, heated until it melts and flows like water.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "tin": {
+     "word": "tin"
+    },
+    "silvery": {
+     "word": "silvery"
+    },
+    "heated": {
+     "word": "heated"
+    },
+    "flows": {
+     "word": "flows"
+    },
+    "melts": {
+     "word": "melts"
+    },
+    "starts": {
+     "word": "starts"
+    }
+   },
+   "params": {
+    "component": "Droplet",
+    "place": "the droplet generator: a small heated tin reservoir glowing orange behind a steel nozzle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "pot"
+     },
+     {
+      "at": "tin",
+      "size": "close",
+      "on": "pot"
+     },
+     {
+      "at": "silvery",
+      "size": "medium",
+      "on": "pot"
+     },
+     {
+      "at": "heated",
+      "size": "close",
+      "on": "pot"
+     },
+     {
+      "at": "flows",
+      "size": "medium",
+      "on": "nozzle"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "pot",
+      "what": "the reservoir of tin sits on its heater, the nozzle below it"
+     },
+     {
+      "at": "tin",
+      "do": "solid",
+      "what": "a bar of silvery tin drops into the reservoir"
+     },
+     {
+      "at": "heated",
+      "do": "heat",
+      "what": "the heater glows orange, the tin bar softening"
+     },
+     {
+      "at": "melts",
+      "do": "melt",
+      "what": "the tin slumps into a shining liquid"
+     },
+     {
+      "at": "flows",
+      "do": "flow",
+      "what": "liquid tin runs down toward the nozzle"
+     }
+    ],
+    "things": [
+     "tin reservoir",
+     "heater coils",
+     "steel nozzle",
+     "tin bar"
+    ],
+    "labels": [
+     {
+      "at": "tin",
+      "text": "tin",
+      "on": "pot"
+     }
+    ],
+    "sign": {
+     "text": "the tin drop",
+     "at": "starts",
+     "on": "pot"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "tin"
+    }
+   ]
+  },
+  {
+   "id": "drops",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "A nozzle squeezes it out as a stream of tiny drops, each about {fact3} microns across, narrower than a human hair.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "squeezes": {
+     "word": "squeezes"
+    },
+    "stream": {
+     "word": "stream"
+    },
+    "drops": {
+     "word": "drops"
+    },
+    "across": {
+     "word": "across"
+    },
+    "hair": {
+     "word": "hair"
+    },
+    "tiny": {
+     "word": "tiny"
+    },
+    "narrower": {
+     "word": "narrower"
+    },
+    "cam_as": {
+     "word": "as"
+    },
+    "cam_about": {
+     "word": "about"
+    }
+   },
+   "params": {
+    "component": "Droplet",
+    "place": "the nozzle tip in close-up, a line of shining tin drops leaving it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "nozzle"
+     },
+     {
+      "at": "squeezes",
+      "size": "close",
+      "on": "nozzle"
+     },
+     {
+      "at": "stream",
+      "size": "medium",
+      "on": "stream"
+     },
+     {
+      "at": "drops",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "across",
+      "size": "extreme",
+      "on": "drop"
+     },
+     {
+      "at": "hair",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "cam_as",
+      "size": "medium",
+      "on": "nozzle"
+     },
+     {
+      "at": "cam_about",
+      "size": "close",
+      "on": "nozzle"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "stream",
+      "what": "the nozzle holds a bead of tin at its tip"
+     },
+     {
+      "at": "squeezes",
+      "do": "squeeze",
+      "what": "the nozzle pulses and the bead breaks off"
+     },
+     {
+      "at": "stream",
+      "do": "streamon",
+      "what": "a long line of drops runs out of the nozzle"
+     },
+     {
+      "at": "tiny",
+      "do": "size",
+      "what": "a ring and a scale bar lock round one drop"
+     },
+     {
+      "at": "narrower",
+      "do": "hair",
+      "what": "a human hair slides in beside the drop, much thicker"
+     }
+    ],
+    "things": [
+     "nozzle tip",
+     "tin drop stream",
+     "scale ring",
+     "human hair"
+    ],
+    "labels": [
+     {
+      "at": "narrower",
+      "text": "a human hair",
+      "on": "hair"
+     }
+    ],
+    "fig": {
+     "size": "{fact3} microns"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "squeezes"
+    }
+   ]
+  },
+  {
+   "id": "speed",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Each one leaves the nozzle at about {fact4} metres a second, and they never stop coming.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "leaves": {
+     "word": "leaves"
+    },
+    "second": {
+     "word": "second"
+    },
+    "never": {
+     "word": "never"
+    },
+    "coming": {
+     "word": "coming"
+    },
+    "metres": {
+     "word": "metres"
+    },
+    "cam_at": {
+     "word": "at"
+    }
+   },
+   "params": {
+    "component": "Droplet",
+    "place": "the stream of drops rushing away from the nozzle in streaks",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "nozzle"
+     },
+     {
+      "at": "leaves",
+      "size": "medium",
+      "on": "stream"
+     },
+     {
+      "at": "second",
+      "size": "wide",
+      "on": "stream"
+     },
+     {
+      "at": "never",
+      "size": "medium",
+      "on": "stream"
+     },
+     {
+      "at": "coming",
+      "size": "close",
+      "on": "nozzle"
+     },
+     {
+      "at": "cam_at",
+      "size": "close",
+      "on": "stream"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "streamon",
+      "what": "drops stream out of the nozzle"
+     },
+     {
+      "at": "leaves",
+      "do": "speed",
+      "what": "the drops stretch into speed streaks"
+     },
+     {
+      "at": "metres",
+      "do": "speedtag",
+      "what": "a speed tag rides along beside one drop"
+     },
+     {
+      "at": "never",
+      "do": "endless",
+      "what": "the stream doubles in density"
+     },
+     {
+      "at": "coming",
+      "do": "squeeze",
+      "what": "the nozzle pulses again"
+     }
+    ],
+    "things": [
+     "speed streaks",
+     "speed tag",
+     "endless stream"
+    ],
+    "fig": {
+     "speed": "{fact4} m/s"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "leaves"
+    }
+   ]
+  },
+  {
+   "id": "motorway",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "That's faster than a car on a motorway, and the nozzle aims every one of them at the same tiny spot.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "faster": {
+     "word": "faster"
+    },
+    "car": {
+     "word": "car"
+    },
+    "nozzle": {
+     "word": "nozzle"
+    },
+    "aims": {
+     "word": "aims"
+    },
+    "spot": {
+     "word": "spot"
+    },
+    "tiny": {
+     "word": "tiny"
+    },
+    "cam_motorway": {
+     "word": "motorway"
+    },
+    "cam_them": {
+     "word": "them"
+    }
+   },
+   "params": {
+    "component": "Droplet",
+    "place": "the stream of drops racing toward the target spot",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "stream"
+     },
+     {
+      "at": "faster",
+      "size": "medium",
+      "on": "stream"
+     },
+     {
+      "at": "car",
+      "size": "close",
+      "on": "stream"
+     },
+     {
+      "at": "nozzle",
+      "size": "close",
+      "on": "nozzle"
+     },
+     {
+      "at": "aims",
+      "size": "medium",
+      "on": "stream"
+     },
+     {
+      "at": "spot",
+      "size": "close",
+      "on": "spot"
+     },
+     {
+      "at": "cam_motorway",
+      "size": "medium",
+      "on": "stream"
+     },
+     {
+      "at": "cam_them",
+      "size": "close",
+      "on": "stream"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "streamon",
+      "what": "drops race out of the nozzle"
+     },
+     {
+      "at": "faster",
+      "do": "speed",
+      "what": "they stretch into streaks"
+     },
+     {
+      "at": "car",
+      "do": "car",
+      "what": "a car outline races beside the stream, falling behind"
+     },
+     {
+      "at": "nozzle",
+      "do": "squeeze",
+      "what": "the nozzle pulses"
+     },
+     {
+      "at": "aims",
+      "do": "spot",
+      "what": "a ring marks the target spot"
+     },
+     {
+      "at": "tiny",
+      "do": "flash",
+      "what": "a drop crosses it exactly"
+     }
+    ],
+    "things": [
+     "drop stream",
+     "car outline",
+     "target ring"
+    ]
+   }
+  },
+  {
+   "id": "count",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "How many? {fact2} drops every second, falling one after another through the very same spot.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "how": {
+     "word": "How"
+    },
+    "drops": {
+     "word": "drops"
+    },
+    "falling": {
+     "word": "falling"
+    },
+    "same": {
+     "word": "same"
+    },
+    "cam_through": {
+     "word": "through"
+    }
+   },
+   "params": {
+    "component": "Droplet",
+    "place": "the chamber wall beside the stream, a counter screen bolted to it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "screen"
+     },
+     {
+      "at": "how",
+      "size": "medium",
+      "on": "screen"
+     },
+     {
+      "at": "drops",
+      "size": "medium",
+      "on": "stream"
+     },
+     {
+      "at": "falling",
+      "size": "close",
+      "on": "spot"
+     },
+     {
+      "at": "same",
+      "size": "extreme",
+      "on": "spot"
+     },
+     {
+      "at": "cam_through",
+      "size": "medium",
+      "on": "spot"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "streamon",
+      "what": "the stream falls past the screen"
+     },
+     {
+      "at": "how",
+      "do": "counter",
+      "what": "the counter screen counts up to the rate"
+     },
+     {
+      "at": "drops",
+      "do": "endless",
+      "what": "the stream thickens"
+     },
+     {
+      "at": "falling",
+      "do": "spot",
+      "what": "a ring marks the one spot where every drop passes"
+     },
+     {
+      "at": "same",
+      "do": "flash",
+      "what": "the spot blinks with each passing drop"
+     }
+    ],
+    "things": [
+     "counter screen",
+     "drop stream",
+     "target ring"
+    ],
+    "labels": [
+     {
+      "at": "falling",
+      "text": "the target spot",
+      "on": "spot"
+     }
+    ],
+    "fig": {
+     "rate": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "how"
+    }
+   ]
+  },
+  {
+   "id": "why_many",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Why so many? Because every drop will become one short flash of light, and the machine needs a nonstop stream of flashes.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "many": {
+     "word": "many"
+    },
+    "drop": {
+     "word": "drop"
+    },
+    "flash": {
+     "word": "flash"
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "nonstop": {
+     "word": "nonstop"
+    },
+    "flashes": {
+     "word": "flashes"
+    },
+    "light": {
+     "word": "light"
+    },
+    "cam_one": {
+     "word": "one"
+    }
+   },
+   "params": {
+    "component": "Droplet",
+    "place": "the target spot, the drops about to be lit",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "spot"
+     },
+     {
+      "at": "many",
+      "size": "close",
+      "on": "spot"
+     },
+     {
+      "at": "drop",
+      "size": "extreme",
+      "on": "spot"
+     },
+     {
+      "at": "flash",
+      "size": "close",
+      "on": "spot"
+     },
+     {
+      "at": "machine",
+      "size": "medium",
+      "on": "stream"
+     },
+     {
+      "at": "nonstop",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "flashes",
+      "size": "medium",
+      "on": "spot"
+     },
+     {
+      "at": "cam_one",
+      "size": "close",
+      "on": "spot"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "spot",
+      "what": "the target spot glows faintly"
+     },
+     {
+      "at": "many",
+      "do": "streamon",
+      "what": "drops keep falling through it"
+     },
+     {
+      "at": "drop",
+      "do": "flash",
+      "what": "one drop flashes violet as it crosses"
+     },
+     {
+      "at": "light",
+      "do": "flashnext",
+      "what": "the next flashes too"
+     },
+     {
+      "at": "machine",
+      "do": "endless",
+      "what": "the whole stream is visible"
+     },
+     {
+      "at": "nonstop",
+      "do": "flashes",
+      "what": "flash after flash in a steady rhythm"
+     }
+    ],
+    "things": [
+     "target spot",
+     "violet flashes"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "glass",
+     "at": "flash"
+    }
+   ]
+  },
+  {
+   "id": "vacuum",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "And it all happens in a vacuum. This kind of light is swallowed by almost everything, even the air.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "vacuum": {
+     "word": "vacuum"
+    },
+    "light": {
+     "word": "light"
+    },
+    "swallowed": {
+     "word": "swallowed"
+    },
+    "everything": {
+     "word": "everything"
+    },
+    "air": {
+     "word": "air"
+    },
+    "cam_happens": {
+     "word": "happens"
+    }
+   },
+   "params": {
+    "component": "Droplet",
+    "place": "the sealed chamber, pumps drawing the air out",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "vacuum",
+      "size": "medium",
+      "on": "pump"
+     },
+     {
+      "at": "light",
+      "size": "medium",
+      "on": "spot"
+     },
+     {
+      "at": "swallowed",
+      "size": "close",
+      "on": "spot"
+     },
+     {
+      "at": "everything",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "air",
+      "size": "close",
+      "on": "spot"
+     },
+     {
+      "at": "cam_happens",
+      "size": "medium",
+      "on": "all"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "air",
+      "what": "specks of air drift through the chamber"
+     },
+     {
+      "at": "vacuum",
+      "do": "pump",
+      "what": "the pump starts and the specks stream out"
+     },
+     {
+      "at": "light",
+      "do": "beam",
+      "what": "a violet ray leaves the spot"
+     },
+     {
+      "at": "swallowed",
+      "do": "absorb",
+      "what": "where air specks remain, the ray fades to nothing"
+     },
+     {
+      "at": "air",
+      "do": "clear",
+      "what": "the last specks are pumped out and the chamber is clear"
+     }
+    ],
+    "things": [
+     "vacuum pump",
+     "air specks",
+     "fading violet ray"
+    ],
+    "labels": [
+     {
+      "at": "vacuum",
+      "text": "vacuum",
+      "on": "pump"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "vacuum"
+    }
+   ]
+  },
+  {
+   "id": "tease1",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "But a drop of tin doesn't glow on its own. So what turns it into light?",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "glow": {
+     "word": "glow"
+    },
+    "own": {
+     "word": "own"
+    },
+    "turns": {
+     "word": "turns"
+    },
+    "light": {
+     "word": "light"
+    },
+    "cam_of": {
+     "word": "of"
+    }
+   },
+   "params": {
+    "component": "Droplet",
+    "place": "the empty target spot, a drop falling into it unlit",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "spot"
+     },
+     {
+      "at": "glow",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "own",
+      "size": "medium",
+      "on": "spot"
+     },
+     {
+      "at": "turns",
+      "size": "close",
+      "on": "spot"
+     },
+     {
+      "at": "light",
+      "size": "extreme",
+      "on": "spot"
+     },
+     {
+      "at": "cam_of",
+      "size": "close",
+      "on": "spot"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "streamon",
+      "what": "drops fall through the spot, dull and silver"
+     },
+     {
+      "at": "glow",
+      "do": "dull",
+      "what": "one drop is stopped in close-up, grey and dark"
+     },
+     {
+      "at": "own",
+      "do": "question",
+      "what": "a question mark rises beside it"
+     },
+     {
+      "at": "turns",
+      "do": "window",
+      "what": "a window in the chamber wall lights red"
+     },
+     {
+      "at": "light",
+      "do": "hint",
+      "what": "a thin red line reaches toward the spot"
+     }
+    ],
+    "things": [
+     "dull tin drop",
+     "chamber window",
+     "red laser hint"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "turns"
+    }
+   ]
+  },
+  {
+   "id": "pre",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "A laser. As each drop falls, a first, weaker pulse hits it and squashes it flat, like a tiny pancake.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "laser": {
+     "word": "laser"
+    },
+    "falls": {
+     "word": "falls"
+    },
+    "pulse": {
+     "word": "pulse"
+    },
+    "squashes": {
+     "word": "squashes"
+    },
+    "pancake": {
+     "word": "pancake"
+    },
+    "cam_like": {
+     "word": "like"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the light source chamber: a laser window on one side, the target spot in the middle, the big curved mirror behind",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "laser",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "falls",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "pulse",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "squashes",
+      "size": "extreme",
+      "on": "drop"
+     },
+     {
+      "at": "pancake",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "cam_like",
+      "size": "close",
+      "on": "drop"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "drops",
+      "what": "drops fall through the chamber"
+     },
+     {
+      "at": "laser",
+      "do": "laserwin",
+      "what": "the laser window glows"
+     },
+     {
+      "at": "falls",
+      "do": "freeze",
+      "what": "time slows on one falling drop"
+     },
+     {
+      "at": "pulse",
+      "do": "pre",
+      "what": "a thin red pulse hits the drop"
+     },
+     {
+      "at": "squashes",
+      "do": "flatten",
+      "what": "the drop squashes into a flat disc"
+     },
+     {
+      "at": "pancake",
+      "do": "pancake",
+      "what": "the disc spreads into a wide, thin pancake"
+     }
+    ],
+    "things": [
+     "laser window",
+     "falling drop",
+     "red pre-pulse",
+     "tin pancake"
+    ],
+    "labels": [
+     {
+      "at": "pulse",
+      "text": "first pulse",
+      "on": "drop"
+     }
+    ],
+    "sign": {
+     "text": "two laser hits",
+     "at": "laser",
+     "on": "wall"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "pulse"
+    }
+   ]
+  },
+  {
+   "id": "why_flat",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Why flatten it? A wide, flat target catches far more of the next pulse, the big one.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "flatten": {
+     "word": "flatten"
+    },
+    "target": {
+     "word": "target"
+    },
+    "catches": {
+     "word": "catches"
+    },
+    "next": {
+     "word": "next"
+    },
+    "big": {
+     "word": "big"
+    },
+    "cam_wide": {
+     "word": "wide"
+    },
+    "cam_of": {
+     "word": "of"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the same chamber, the tin pancake hanging in the dark",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "flatten",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "target",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "catches",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "next",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "big",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "cam_wide",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "cam_of",
+      "size": "medium",
+      "on": "drop"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "pancake",
+      "what": "the pancake drifts in slow motion"
+     },
+     {
+      "at": "flatten",
+      "do": "compare",
+      "what": "a round drop appears beside it, much smaller"
+     },
+     {
+      "at": "target",
+      "do": "target",
+      "what": "a target ring circles the pancake"
+     },
+     {
+      "at": "catches",
+      "do": "catch",
+      "what": "a wide beam front washes over the pancake"
+     },
+     {
+      "at": "next",
+      "do": "laserwin",
+      "what": "the laser window charges up"
+     },
+     {
+      "at": "big",
+      "do": "charge",
+      "what": "a thick beam gathers in the window"
+     }
+    ],
+    "things": [
+     "tin pancake",
+     "round drop",
+     "wide beam front"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "big"
+    }
+   ]
+  },
+  {
+   "id": "main",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "That main pulse is far more powerful, and it hits the pancake so hard that the tin becomes plasma, a gas so hot its atoms lose some of their electrons.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "powerful": {
+     "word": "powerful"
+    },
+    "hits": {
+     "word": "hits"
+    },
+    "hard": {
+     "word": "hard"
+    },
+    "plasma": {
+     "word": "plasma"
+    },
+    "gas": {
+     "word": "gas"
+    },
+    "electrons": {
+     "word": "electrons"
+    },
+    "cam_is": {
+     "word": "is"
+    },
+    "cam_tin": {
+     "word": "tin"
+    },
+    "cam_lose": {
+     "word": "lose"
+    },
+    "cam_its": {
+     "word": "its"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the target spot at the instant of the main pulse",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "powerful",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "hits",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "hard",
+      "size": "extreme",
+      "on": "drop"
+     },
+     {
+      "at": "plasma",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "gas",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "electrons",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "cam_is",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "cam_tin",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "cam_lose",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "cam_its",
+      "size": "close",
+      "on": "drop"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "pancake",
+      "what": "the pancake waits at the spot"
+     },
+     {
+      "at": "powerful",
+      "do": "laserwin",
+      "what": "the window blazes"
+     },
+     {
+      "at": "hits",
+      "do": "main",
+      "what": "a thick beam slams into the pancake"
+     },
+     {
+      "at": "hard",
+      "do": "flash",
+      "what": "a white flash fills the chamber"
+     },
+     {
+      "at": "plasma",
+      "do": "glow",
+      "what": "a ball of glowing violet plasma swells"
+     },
+     {
+      "at": "gas",
+      "do": "hot",
+      "what": "rings of heat ripple out from it"
+     },
+     {
+      "at": "electrons",
+      "do": "ions",
+      "what": "sparks fly out of the ball"
+     }
+    ],
+    "things": [
+     "main laser pulse",
+     "plasma ball",
+     "heat rings",
+     "sparks"
+    ],
+    "labels": [
+     {
+      "at": "hits",
+      "text": "main pulse",
+      "on": "drop"
+     },
+     {
+      "at": "plasma",
+      "text": "plasma",
+      "on": "drop"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "glass",
+     "at": "hits"
+    }
+   ]
+  },
+  {
+   "id": "euv",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "And that plasma glows. Not with light you could see, but with extreme ultraviolet light, at a wavelength of {fact1} nanometres.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "glows": {
+     "word": "glows"
+    },
+    "see": {
+     "word": "see"
+    },
+    "extreme": {
+     "word": "extreme"
+    },
+    "ultraviolet": {
+     "word": "ultraviolet"
+    },
+    "wavelength": {
+     "word": "wavelength"
+    },
+    "cam_you": {
+     "word": "you"
+    },
+    "cam_nanometres": {
+     "word": "nanometres"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the glowing plasma ball, waves of light leaving it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "glows",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "see",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "extreme",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "ultraviolet",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "wavelength",
+      "size": "close",
+      "on": "wave"
+     },
+     {
+      "at": "cam_you",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "cam_nanometres",
+      "size": "medium",
+      "on": "drop"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "glow",
+      "what": "the plasma ball glows"
+     },
+     {
+      "at": "glows",
+      "do": "rays",
+      "what": "violet rays spread out of it"
+     },
+     {
+      "at": "see",
+      "do": "invisible",
+      "what": "the rays fade to a faint shimmer"
+     },
+     {
+      "at": "extreme",
+      "do": "waves",
+      "what": "tight wave rings run out from the ball"
+     },
+     {
+      "at": "ultraviolet",
+      "do": "collector",
+      "what": "the curved mirror behind catches them"
+     },
+     {
+      "at": "wavelength",
+      "do": "wave",
+      "what": "one wave is drawn out on a ruler beside the ball"
+     }
+    ],
+    "things": [
+     "plasma ball",
+     "violet rays",
+     "wave rings",
+     "wave ruler"
+    ],
+    "labels": [
+     {
+      "at": "extreme",
+      "text": "EUV light",
+      "on": "drop"
+     }
+    ],
+    "fig": {
+     "wl": "{fact1} nm"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "extreme"
+    }
+   ]
+  },
+  {
+   "id": "short_wave",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "What does that mean? The light our eyes see has waves many times longer. A shorter wave draws a finer line, like a sharp pencil next to a thick marker.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "mean": {
+     "word": "mean"
+    },
+    "eyes": {
+     "word": "eyes"
+    },
+    "longer": {
+     "word": "longer"
+    },
+    "shorter": {
+     "word": "shorter"
+    },
+    "finer": {
+     "word": "finer"
+    },
+    "pencil": {
+     "word": "pencil"
+    },
+    "marker": {
+     "word": "marker"
+    },
+    "cam_waves": {
+     "word": "waves"
+    },
+    "cam_like": {
+     "word": "like"
+    },
+    "cam_to": {
+     "word": "to"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "beside the plasma, two waves on a ruler and two lines drawn under them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "wave"
+     },
+     {
+      "at": "mean",
+      "size": "close",
+      "on": "wave"
+     },
+     {
+      "at": "eyes",
+      "size": "medium",
+      "on": "wave"
+     },
+     {
+      "at": "longer",
+      "size": "wide",
+      "on": "wave"
+     },
+     {
+      "at": "shorter",
+      "size": "close",
+      "on": "wave"
+     },
+     {
+      "at": "finer",
+      "size": "medium",
+      "on": "wave"
+     },
+     {
+      "at": "pencil",
+      "size": "close",
+      "on": "lines"
+     },
+     {
+      "at": "marker",
+      "size": "medium",
+      "on": "lines"
+     },
+     {
+      "at": "cam_waves",
+      "size": "close",
+      "on": "wave"
+     },
+     {
+      "at": "cam_like",
+      "size": "medium",
+      "on": "wave"
+     },
+     {
+      "at": "cam_to",
+      "size": "close",
+      "on": "wave"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "wave",
+      "what": "the short violet wave on its ruler"
+     },
+     {
+      "at": "eyes",
+      "do": "longwave",
+      "what": "a long red-to-green visible wave draws above it"
+     },
+     {
+      "at": "longer",
+      "do": "stretch",
+      "what": "the visible wave stretches far past the violet one"
+     },
+     {
+      "at": "shorter",
+      "do": "shortpulse",
+      "what": "the violet wave tightens"
+     },
+     {
+      "at": "finer",
+      "do": "lines",
+      "what": "under each wave a line is drawn: a fat one and a thin one"
+     },
+     {
+      "at": "pencil",
+      "do": "pencil",
+      "what": "a sharp pencil tip draws the thin line"
+     },
+     {
+      "at": "marker",
+      "do": "marker",
+      "what": "a thick marker smears the fat one"
+     }
+    ],
+    "things": [
+     "visible wave",
+     "violet wave",
+     "pencil line",
+     "marker line"
+    ]
+   }
+  },
+  {
+   "id": "repeat",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Then it all repeats. Drop, flatten, flash, {fact2} times a second.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "repeats": {
+     "word": "repeats"
+    },
+    "drop": {
+     "word": "Drop"
+    },
+    "flatten": {
+     "word": "flatten"
+    },
+    "flash": {
+     "word": "flash"
+    },
+    "times": {
+     "word": "times"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the chamber in a steady rhythm of flashes",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "repeats",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "drop",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "flatten",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "flash",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "times",
+      "size": "medium",
+      "on": "wall"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "glow",
+      "what": "the plasma fades"
+     },
+     {
+      "at": "repeats",
+      "do": "drops",
+      "what": "the next drop falls in"
+     },
+     {
+      "at": "drop",
+      "do": "freeze",
+      "what": "it slows at the spot"
+     },
+     {
+      "at": "flatten",
+      "do": "pre",
+      "what": "the first pulse flattens it"
+     },
+     {
+      "at": "flash",
+      "do": "main",
+      "what": "the main pulse turns it to plasma"
+     },
+     {
+      "at": "times",
+      "do": "counter",
+      "what": "the wall counter races"
+     }
+    ],
+    "things": [
+     "drop",
+     "pancake",
+     "flash",
+     "wall counter"
+    ],
+    "fig": {
+     "rate": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "drop"
+    }
+   ]
+  },
+  {
+   "id": "collect",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Behind every flash, a big curved mirror gathers the light and focuses it to one bright point at the far end of the chamber.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "flash": {
+     "word": "flash"
+    },
+    "curved": {
+     "word": "curved"
+    },
+    "gathers": {
+     "word": "gathers"
+    },
+    "focuses": {
+     "word": "focuses"
+    },
+    "bright": {
+     "word": "bright"
+    },
+    "chamber": {
+     "word": "chamber"
+    },
+    "cam_far": {
+     "word": "far"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the collector mirror, a wide bowl behind the plasma, its light converging",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "flash",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "curved",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "gathers",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "focuses",
+      "size": "medium",
+      "on": "focus"
+     },
+     {
+      "at": "bright",
+      "size": "close",
+      "on": "focus"
+     },
+     {
+      "at": "chamber",
+      "size": "medium",
+      "on": "focus"
+     },
+     {
+      "at": "cam_far",
+      "size": "medium",
+      "on": "focus"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "glow",
+      "what": "a flash glows in front of the bowl"
+     },
+     {
+      "at": "curved",
+      "do": "collector",
+      "what": "the bowl mirror lights from inside"
+     },
+     {
+      "at": "gathers",
+      "do": "cone",
+      "what": "a cone of light gathers off the mirror"
+     },
+     {
+      "at": "focuses",
+      "do": "converge",
+      "what": "the cone narrows toward one point"
+     },
+     {
+      "at": "bright",
+      "do": "focus",
+      "what": "the point blazes at the end of the chamber"
+     },
+     {
+      "at": "chamber",
+      "do": "exit",
+      "what": "light streams out through the exit"
+     }
+    ],
+    "things": [
+     "collector mirror",
+     "light cone",
+     "focus point"
+    ],
+    "labels": [
+     {
+      "at": "curved",
+      "text": "collector mirror",
+      "on": "mirror"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "focuses"
+    }
+   ]
+  },
+  {
+   "id": "why_tin",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Why tin, of all things? Tin plasma happens to glow brightly at just this wavelength, so more of each flash is light the machine can use.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "tin": {
+     "word": "tin"
+    },
+    "glow": {
+     "word": "glow"
+    },
+    "wavelength": {
+     "word": "wavelength"
+    },
+    "flash": {
+     "word": "flash"
+    },
+    "use": {
+     "word": "use"
+    },
+    "why": {
+     "word": "Why"
+    },
+    "plasma": {
+     "word": "plasma"
+    },
+    "brightly": {
+     "word": "brightly"
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "cam_things": {
+     "word": "things"
+    },
+    "cam_more": {
+     "word": "more"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the plasma ball in close-up, its glow measured",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "tin",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "glow",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "wavelength",
+      "size": "medium",
+      "on": "wave"
+     },
+     {
+      "at": "flash",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "use",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "cam_things",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "cam_more",
+      "size": "medium",
+      "on": "drop"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "glow",
+      "what": "the plasma ball glows"
+     },
+     {
+      "at": "why",
+      "do": "drops",
+      "what": "the next drops fall in"
+     },
+     {
+      "at": "plasma",
+      "do": "main",
+      "what": "one bursts into plasma"
+     },
+     {
+      "at": "brightly",
+      "do": "rays",
+      "what": "violet rays pour off it"
+     },
+     {
+      "at": "wavelength",
+      "do": "wave",
+      "what": "the short wave writes on beside it"
+     },
+     {
+      "at": "flash",
+      "do": "flash",
+      "what": "another flash"
+     },
+     {
+      "at": "machine",
+      "do": "collector",
+      "what": "the mirror behind takes the light"
+     }
+    ],
+    "things": [
+     "plasma ball",
+     "violet rays",
+     "wave ruler"
+    ],
+    "fig": {
+     "wl": "{fact1} nm"
+    }
+   }
+  },
+  {
+   "id": "tease2",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "So far: a drop, a flash, and light at {fact1} nanometres. Now it has to cross the machine, and this is where ordinary optics fail.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "drop": {
+     "word": "drop"
+    },
+    "flash": {
+     "word": "flash"
+    },
+    "cross": {
+     "word": "cross"
+    },
+    "ordinary": {
+     "word": "ordinary"
+    },
+    "fail": {
+     "word": "fail"
+    },
+    "cam_nanometres": {
+     "word": "nanometres"
+    },
+    "cam_this": {
+     "word": "this"
+    },
+    "cam_at": {
+     "word": "at"
+    },
+    "cam_has": {
+     "word": "has"
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "the cutaway machine, only the tin source lit",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "source"
+     },
+     {
+      "at": "drop",
+      "size": "close",
+      "on": "source"
+     },
+     {
+      "at": "flash",
+      "size": "medium",
+      "on": "source"
+     },
+     {
+      "at": "cross",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "ordinary",
+      "size": "medium",
+      "on": "mirrors"
+     },
+     {
+      "at": "fail",
+      "size": "close",
+      "on": "mirrors"
+     },
+     {
+      "at": "cam_nanometres",
+      "size": "close",
+      "on": "source"
+     },
+     {
+      "at": "cam_this",
+      "size": "medium",
+      "on": "source"
+     },
+     {
+      "at": "cam_at",
+      "size": "close",
+      "on": "source"
+     },
+     {
+      "at": "cam_has",
+      "size": "medium",
+      "on": "source"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "tin",
+      "what": "the tin source glows"
+     },
+     {
+      "at": "drop",
+      "do": "drip",
+      "what": "a drop falls in the source"
+     },
+     {
+      "at": "flash",
+      "do": "pulse",
+      "what": "it flashes"
+     },
+     {
+      "at": "cross",
+      "do": "path",
+      "what": "the light path ahead lights faintly"
+     },
+     {
+      "at": "ordinary",
+      "do": "lens",
+      "what": "a glass lens slides onto the path"
+     },
+     {
+      "at": "fail",
+      "do": "blocked",
+      "what": "the light hits the lens and dies"
+     }
+    ],
+    "things": [
+     "tin source",
+     "light path",
+     "glass lens"
+    ],
+    "fig": {
+     "wl": "{fact1} nm"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "fail"
+    }
+   ]
+  },
+  {
+   "id": "lens",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Why not a lens? A camera or a microscope bends light through glass. Try that here, and the glass simply swallows it.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "lens": {
+     "word": "lens"
+    },
+    "camera": {
+     "word": "camera"
+    },
+    "bends": {
+     "word": "bends"
+    },
+    "try": {
+     "word": "Try"
+    },
+    "swallows": {
+     "word": "swallows"
+    },
+    "cam_the": {
+     "word": "the"
+    }
+   },
+   "params": {
+    "component": "Mirrors",
+    "place": "a dark vacuum tunnel: a glass lens on a stand, a violet beam heading into it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "lens"
+     },
+     {
+      "at": "lens",
+      "size": "close",
+      "on": "lens"
+     },
+     {
+      "at": "camera",
+      "size": "medium",
+      "on": "lens"
+     },
+     {
+      "at": "bends",
+      "size": "close",
+      "on": "lens"
+     },
+     {
+      "at": "try",
+      "size": "medium",
+      "on": "lens"
+     },
+     {
+      "at": "swallows",
+      "size": "close",
+      "on": "lens"
+     },
+     {
+      "at": "cam_the",
+      "size": "close",
+      "on": "lens"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "beam",
+      "what": "a violet beam runs down the tunnel"
+     },
+     {
+      "at": "lens",
+      "do": "lens",
+      "what": "a glass lens rises onto the beam's path"
+     },
+     {
+      "at": "camera",
+      "do": "camera",
+      "what": "a camera lens and a microscope lens ghost in beside it"
+     },
+     {
+      "at": "bends",
+      "do": "bend",
+      "what": "a visible beam bends cleanly through the glass"
+     },
+     {
+      "at": "try",
+      "do": "euvin",
+      "what": "the violet beam reaches the glass"
+     },
+     {
+      "at": "swallows",
+      "do": "swallow",
+      "what": "it dies inside the glass, which warms orange"
+     }
+    ],
+    "things": [
+     "glass lens",
+     "violet beam",
+     "camera lens",
+     "microscope lens"
+    ],
+    "labels": [
+     {
+      "at": "camera",
+      "text": "camera",
+      "on": "lens"
+     },
+     {
+      "at": "swallows",
+      "text": "absorbed",
+      "on": "lens"
+     }
+    ],
+    "sign": {
+     "text": "mirrors, not lenses",
+     "at": "lens",
+     "on": "lens"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "swallows"
+    }
+   ]
+  },
+  {
+   "id": "no_lens",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "So the light's path has no lenses at all. The machine steers it with mirrors instead.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "lenses": {
+     "word": "lenses"
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "steers": {
+     "word": "steers"
+    },
+    "mirrors": {
+     "word": "mirrors"
+    },
+    "cam_path": {
+     "word": "path"
+    }
+   },
+   "params": {
+    "component": "Mirrors",
+    "place": "the tunnel opening out onto a chain of mirrors",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "chain"
+     },
+     {
+      "at": "lenses",
+      "size": "medium",
+      "on": "chain"
+     },
+     {
+      "at": "machine",
+      "size": "wide",
+      "on": "chain"
+     },
+     {
+      "at": "steers",
+      "size": "medium",
+      "on": "chain"
+     },
+     {
+      "at": "mirrors",
+      "size": "close",
+      "on": "mirror"
+     },
+     {
+      "at": "cam_path",
+      "size": "medium",
+      "on": "chain"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "mirror",
+      "what": "a chain of mirrors rises along the tunnel"
+     },
+     {
+      "at": "lenses",
+      "do": "beam",
+      "what": "a violet beam enters the tunnel"
+     },
+     {
+      "at": "machine",
+      "do": "faint",
+      "what": "it reaches the first mirror"
+     },
+     {
+      "at": "steers",
+      "do": "bounce",
+      "what": "the beam bounces from mirror to mirror"
+     },
+     {
+      "at": "mirrors",
+      "do": "bright",
+      "what": "each mirror flashes as the beam lands"
+     }
+    ],
+    "things": [
+     "mirror chain",
+     "bouncing beam"
+    ],
+    "labels": [
+     {
+      "at": "mirrors",
+      "text": "mirrors",
+      "on": "mirror"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "steers"
+    }
+   ]
+  },
+  {
+   "id": "layers",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Not ordinary mirrors, though. Each one is made of many very thin layers, two materials stacked one on top of the other.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "ordinary": {
+     "word": "ordinary"
+    },
+    "each": {
+     "word": "Each"
+    },
+    "thin": {
+     "word": "thin"
+    },
+    "materials": {
+     "word": "materials"
+    },
+    "stacked": {
+     "word": "stacked"
+    },
+    "cam_made": {
+     "word": "made"
+    },
+    "cam_the": {
+     "word": "the"
+    },
+    "cam_top": {
+     "word": "top"
+    }
+   },
+   "params": {
+    "component": "Mirrors",
+    "place": "one mirror cut open in close-up, its stack of layers showing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "ordinary",
+      "size": "close",
+      "on": "mirror"
+     },
+     {
+      "at": "each",
+      "size": "close",
+      "on": "layers"
+     },
+     {
+      "at": "thin",
+      "size": "extreme",
+      "on": "layers"
+     },
+     {
+      "at": "materials",
+      "size": "close",
+      "on": "layers"
+     },
+     {
+      "at": "stacked",
+      "size": "medium",
+      "on": "layers"
+     },
+     {
+      "at": "cam_made",
+      "size": "medium",
+      "on": "layers"
+     },
+     {
+      "at": "cam_the",
+      "size": "close",
+      "on": "layers"
+     },
+     {
+      "at": "cam_top",
+      "size": "close",
+      "on": "layers"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "bounce",
+      "what": "the beam lands on one mirror"
+     },
+     {
+      "at": "ordinary",
+      "do": "cut",
+      "what": "a wedge of the mirror lifts away"
+     },
+     {
+      "at": "each",
+      "do": "layers",
+      "what": "under its face, a stack of thin layers"
+     },
+     {
+      "at": "thin",
+      "do": "split",
+      "what": "the layers fan apart"
+     },
+     {
+      "at": "materials",
+      "do": "two",
+      "what": "alternate layers light in two colours"
+     },
+     {
+      "at": "stacked",
+      "do": "restack",
+      "what": "they settle back into one stack"
+     }
+    ],
+    "things": [
+     "mirror cutaway",
+     "layer stack",
+     "two materials"
+    ],
+    "labels": [
+     {
+      "at": "materials",
+      "text": "two materials",
+      "on": "layers"
+     }
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "add_up",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Each layer reflects back a little of the light, and all those small reflections line up into one strong bounce.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "layer": {
+     "word": "layer"
+    },
+    "little": {
+     "word": "little"
+    },
+    "small": {
+     "word": "small"
+    },
+    "strong": {
+     "word": "strong"
+    },
+    "bounce": {
+     "word": "bounce"
+    },
+    "cam_and": {
+     "word": "and"
+    },
+    "cam_up": {
+     "word": "up"
+    }
+   },
+   "params": {
+    "component": "Mirrors",
+    "place": "the layer stack, a beam coming down onto it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "layers"
+     },
+     {
+      "at": "layer",
+      "size": "extreme",
+      "on": "layers"
+     },
+     {
+      "at": "little",
+      "size": "close",
+      "on": "layers"
+     },
+     {
+      "at": "small",
+      "size": "medium",
+      "on": "layers"
+     },
+     {
+      "at": "strong",
+      "size": "close",
+      "on": "mirror"
+     },
+     {
+      "at": "bounce",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "cam_and",
+      "size": "medium",
+      "on": "layers"
+     },
+     {
+      "at": "cam_up",
+      "size": "close",
+      "on": "layers"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "restack",
+      "what": "the stack under its mirror face"
+     },
+     {
+      "at": "layer",
+      "do": "incoming",
+      "what": "a violet beam comes down into the stack"
+     },
+     {
+      "at": "little",
+      "do": "reflect",
+      "what": "a faint reflection leaves every layer"
+     },
+     {
+      "at": "small",
+      "do": "align",
+      "what": "the faint reflections line up side by side"
+     },
+     {
+      "at": "strong",
+      "do": "strong",
+      "what": "they merge into one bright beam"
+     },
+     {
+      "at": "bounce",
+      "do": "bright",
+      "what": "the mirror flashes"
+     }
+    ],
+    "things": [
+     "layer stack",
+     "faint reflections",
+     "strong beam"
+    ],
+    "tag": "notToScale"
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "strong"
+    }
+   ]
+  },
+  {
+   "id": "loss",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Why does that matter? Even the best mirror loses part of the light on every bounce, and the light bounces many times on its way down.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "matter": {
+     "word": "matter"
+    },
+    "best": {
+     "word": "best"
+    },
+    "loses": {
+     "word": "loses"
+    },
+    "bounce": {
+     "word": "bounce"
+    },
+    "times": {
+     "word": "times"
+    },
+    "down": {
+     "word": "down"
+    },
+    "cam_of": {
+     "word": "of"
+    },
+    "cam_bounces": {
+     "word": "bounces"
+    }
+   },
+   "params": {
+    "component": "Mirrors",
+    "place": "the mirror chain from the side, the beam dimming at each mirror",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "chain"
+     },
+     {
+      "at": "matter",
+      "size": "close",
+      "on": "mirror"
+     },
+     {
+      "at": "best",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "loses",
+      "size": "close",
+      "on": "mirror"
+     },
+     {
+      "at": "bounce",
+      "size": "medium",
+      "on": "chain"
+     },
+     {
+      "at": "times",
+      "size": "wide",
+      "on": "chain"
+     },
+     {
+      "at": "down",
+      "size": "medium",
+      "on": "chain"
+     },
+     {
+      "at": "cam_of",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "cam_bounces",
+      "size": "close",
+      "on": "mirror"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "bounce",
+      "what": "the beam runs the chain"
+     },
+     {
+      "at": "best",
+      "do": "bright",
+      "what": "the first mirror shines"
+     },
+     {
+      "at": "loses",
+      "do": "lossbar",
+      "what": "a glow bar beside it drops a step"
+     },
+     {
+      "at": "bounce",
+      "do": "dim",
+      "what": "each mirror the beam leaves dimmer"
+     },
+     {
+      "at": "times",
+      "do": "bars",
+      "what": "a row of glow bars steps down along the chain"
+     },
+     {
+      "at": "down",
+      "do": "faint",
+      "what": "the beam at the end is thin and faint"
+     }
+    ],
+    "things": [
+     "mirror chain",
+     "glow bars",
+     "dimming beam"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "loses"
+    }
+   ]
+  },
+  {
+   "id": "bright",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "It is the reason the source must be so bright, and why these mirrors are polished to some of the smoothest surfaces ever made.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "source": {
+     "word": "source"
+    },
+    "bright": {
+     "word": "bright"
+    },
+    "mirrors": {
+     "word": "mirrors"
+    },
+    "polished": {
+     "word": "polished"
+    },
+    "smoothest": {
+     "word": "smoothest"
+    },
+    "cam_reason": {
+     "word": "reason"
+    },
+    "cam_of": {
+     "word": "of"
+    },
+    "cam_made": {
+     "word": "made"
+    }
+   },
+   "params": {
+    "component": "Mirrors",
+    "place": "a single mirror under a sweep of light",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "chain"
+     },
+     {
+      "at": "source",
+      "size": "medium",
+      "on": "chain"
+     },
+     {
+      "at": "bright",
+      "size": "close",
+      "on": "chain"
+     },
+     {
+      "at": "mirrors",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "polished",
+      "size": "close",
+      "on": "mirror"
+     },
+     {
+      "at": "smoothest",
+      "size": "extreme",
+      "on": "mirror"
+     },
+     {
+      "at": "cam_reason",
+      "size": "medium",
+      "on": "chain"
+     },
+     {
+      "at": "cam_of",
+      "size": "close",
+      "on": "chain"
+     },
+     {
+      "at": "cam_made",
+      "size": "medium",
+      "on": "chain"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "faint",
+      "what": "the faint beam at the end of the chain"
+     },
+     {
+      "at": "source",
+      "do": "boost",
+      "what": "the beam brightens all along the chain"
+     },
+     {
+      "at": "bright",
+      "do": "strong",
+      "what": "the end of the chain glows strong"
+     },
+     {
+      "at": "mirrors",
+      "do": "bright",
+      "what": "one mirror fills the frame"
+     },
+     {
+      "at": "polished",
+      "do": "polish",
+      "what": "a sweep of light glides across its face"
+     },
+     {
+      "at": "smoothest",
+      "do": "mirrorface",
+      "what": "the reflection on it is perfectly sharp"
+     }
+    ],
+    "things": [
+     "bright beam",
+     "polished mirror face"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "polished"
+    }
+   ]
+  },
+  {
+   "id": "tease3",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "So the light arrives clean and bright. But it carries no picture yet. Where does the pattern of a chip come from?",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "arrives": {
+     "word": "arrives"
+    },
+    "picture": {
+     "word": "picture"
+    },
+    "pattern": {
+     "word": "pattern"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "cam_but": {
+     "word": "But"
+    },
+    "cam_does": {
+     "word": "does"
+    }
+   },
+   "params": {
+    "component": "Mirrors",
+    "place": "the end of the mirror chain, a plain bright beam heading up",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "chain"
+     },
+     {
+      "at": "arrives",
+      "size": "close",
+      "on": "mirror"
+     },
+     {
+      "at": "picture",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "pattern",
+      "size": "close",
+      "on": "up"
+     },
+     {
+      "at": "chip",
+      "size": "wide",
+      "on": "chain"
+     },
+     {
+      "at": "cam_but",
+      "size": "medium",
+      "on": "mirror"
+     },
+     {
+      "at": "cam_does",
+      "size": "close",
+      "on": "mirror"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "boost",
+      "what": "a bright beam leaves the last mirror"
+     },
+     {
+      "at": "arrives",
+      "do": "strong",
+      "what": "it lands clean"
+     },
+     {
+      "at": "picture",
+      "do": "blank",
+      "what": "its spot of light is blank, no pattern in it"
+     },
+     {
+      "at": "pattern",
+      "do": "question",
+      "what": "a question mark rises over the spot"
+     },
+     {
+      "at": "chip",
+      "do": "up",
+      "what": "the beam turns upward, out of the tunnel"
+     }
+    ],
+    "things": [
+     "blank spot of light",
+     "beam turning up"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "pattern"
+    }
+   ]
+  },
+  {
+   "id": "mask",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "From the mask: a plate carrying the pattern of one layer of the chip, like a stencil.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "mask": {
+     "word": "mask"
+    },
+    "plate": {
+     "word": "plate"
+    },
+    "pattern": {
+     "word": "pattern"
+    },
+    "layer": {
+     "word": "layer"
+    },
+    "stencil": {
+     "word": "stencil"
+    },
+    "cam_chip": {
+     "word": "chip"
+    }
+   },
+   "params": {
+    "component": "Mask",
+    "place": "the mask stage at the top of the machine: a square plate held face down, its pattern glinting",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "mask",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "plate",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "pattern",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "layer",
+      "size": "extreme",
+      "on": "mask"
+     },
+     {
+      "at": "stencil",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "cam_chip",
+      "size": "close",
+      "on": "mask"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "plate",
+      "what": "the mask glides into its stage"
+     },
+     {
+      "at": "mask",
+      "do": "turn",
+      "what": "it turns so its face shows"
+     },
+     {
+      "at": "pattern",
+      "do": "stencil",
+      "what": "the chip's pattern draws on across its face"
+     },
+     {
+      "at": "layer",
+      "do": "grid",
+      "what": "one layer's lines glow"
+     },
+     {
+      "at": "stencil",
+      "do": "stencilcut",
+      "what": "a stencil and paint ghost in beside it"
+     }
+    ],
+    "things": [
+     "mask plate",
+     "chip pattern",
+     "stencil"
+    ],
+    "sign": {
+     "text": "the mask",
+     "at": "mask",
+     "on": "mask"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "pattern"
+    }
+   ]
+  },
+  {
+   "id": "reflective",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "And even the mask is a mirror. The light bounces off its pattern instead of shining through it.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "mask": {
+     "word": "mask"
+    },
+    "mirror": {
+     "word": "mirror"
+    },
+    "bounces": {
+     "word": "bounces"
+    },
+    "shining": {
+     "word": "shining"
+    },
+    "cam_pattern": {
+     "word": "pattern"
+    }
+   },
+   "params": {
+    "component": "Mask",
+    "place": "the mask face down, a beam coming up to it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "mask",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "mirror",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "bounces",
+      "size": "medium",
+      "on": "beam"
+     },
+     {
+      "at": "shining",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "cam_pattern",
+      "size": "close",
+      "on": "beam"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "plate",
+      "what": "the mask over the dark stage"
+     },
+     {
+      "at": "mask",
+      "do": "incoming",
+      "what": "a beam rises at an angle to the mask"
+     },
+     {
+      "at": "mirror",
+      "do": "mirrorface",
+      "what": "the mask's face shines like a mirror"
+     },
+     {
+      "at": "bounces",
+      "do": "reflect",
+      "what": "the beam bounces off and heads down"
+     },
+     {
+      "at": "shining",
+      "do": "nothrough",
+      "what": "no light comes through the back of the plate"
+     }
+    ],
+    "things": [
+     "mask plate",
+     "incoming beam",
+     "reflected beam"
+    ]
+   }
+  },
+  {
+   "id": "dark_bright",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Dark parts of it swallow the light, bright parts bounce it back, so the bounce carries the shape of the pattern.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "dark": {
+     "word": "Dark"
+    },
+    "bright": {
+     "word": "bright"
+    },
+    "bounce": {
+     "word": "bounce"
+    },
+    "shape": {
+     "word": "shape"
+    },
+    "pattern": {
+     "word": "pattern"
+    },
+    "cam_swallow": {
+     "word": "swallow"
+    },
+    "cam_so": {
+     "word": "so"
+    },
+    "cam_carries": {
+     "word": "carries"
+    }
+   },
+   "params": {
+    "component": "Mask",
+    "place": "the mask's face in close-up, light landing on its lines",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "dark",
+      "size": "extreme",
+      "on": "mask"
+     },
+     {
+      "at": "bright",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "bounce",
+      "size": "medium",
+      "on": "beam"
+     },
+     {
+      "at": "shape",
+      "size": "close",
+      "on": "beam"
+     },
+     {
+      "at": "pattern",
+      "size": "medium",
+      "on": "beam"
+     },
+     {
+      "at": "cam_swallow",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "cam_so",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "cam_carries",
+      "size": "close",
+      "on": "mask"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "reflect",
+      "what": "light on the mask"
+     },
+     {
+      "at": "dark",
+      "do": "dark",
+      "what": "the dark lines stay black"
+     },
+     {
+      "at": "bright",
+      "do": "bright",
+      "what": "the gaps between them shine"
+     },
+     {
+      "at": "bounce",
+      "do": "reflect",
+      "what": "the bounced light leaves"
+     },
+     {
+      "at": "shape",
+      "do": "shape",
+      "what": "the pattern is now printed into the beam itself"
+     },
+     {
+      "at": "pattern",
+      "do": "shapebeam",
+      "what": "the patterned beam heads down"
+     }
+    ],
+    "things": [
+     "dark lines",
+     "bright gaps",
+     "patterned beam"
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "dust",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "That's also why the mask must stay perfectly clean. A single speck of dust on it would be printed onto every chip, again and again.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "clean": {
+     "word": "clean"
+    },
+    "speck": {
+     "word": "speck"
+    },
+    "dust": {
+     "word": "dust"
+    },
+    "printed": {
+     "word": "printed"
+    },
+    "every": {
+     "word": "every"
+    },
+    "again": {
+     "word": "again"
+    },
+    "cam_mask": {
+     "word": "mask"
+    },
+    "cam_would": {
+     "word": "would"
+    },
+    "cam_why": {
+     "word": "why"
+    }
+   },
+   "params": {
+    "component": "Mask",
+    "place": "the mask face in close-up, one speck drifting toward it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "clean",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "speck",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "dust",
+      "size": "extreme",
+      "on": "mask"
+     },
+     {
+      "at": "printed",
+      "size": "medium",
+      "on": "down"
+     },
+     {
+      "at": "every",
+      "size": "close",
+      "on": "down"
+     },
+     {
+      "at": "again",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "cam_mask",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "cam_would",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "cam_why",
+      "size": "medium",
+      "on": "mask"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "plate",
+      "what": "the mask under its light"
+     },
+     {
+      "at": "clean",
+      "do": "mirrorface",
+      "what": "its face gleams"
+     },
+     {
+      "at": "speck",
+      "do": "speck",
+      "what": "a speck of dust drifts toward it"
+     },
+     {
+      "at": "dust",
+      "do": "specklands",
+      "what": "it lands on the pattern"
+     },
+     {
+      "at": "printed",
+      "do": "shapebeam",
+      "what": "the patterned light heads down"
+     },
+     {
+      "at": "every",
+      "do": "speckprint",
+      "what": "the speck's shadow lands on the wafer print"
+     },
+     {
+      "at": "again",
+      "do": "repeatprint",
+      "what": "and on the next print, and the next"
+     }
+    ],
+    "things": [
+     "mask face",
+     "dust speck",
+     "repeated flaw"
+    ]
+   }
+  },
+  {
+   "id": "masks",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "And each of the chip's finest layers gets its own mask. Swap the mask, and the same machine prints a different layer.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "finest": {
+     "word": "finest"
+    },
+    "own": {
+     "word": "own"
+    },
+    "swap": {
+     "word": "Swap"
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "different": {
+     "word": "different"
+    },
+    "cam_of": {
+     "word": "of"
+    },
+    "cam_and": {
+     "word": "and"
+    }
+   },
+   "params": {
+    "component": "Mask",
+    "place": "the mask stage, one plate sliding out and another sliding in",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "finest",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "own",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "swap",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "machine",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "different",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "cam_of",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "cam_and",
+      "size": "medium",
+      "on": "mask"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "plate",
+      "what": "the mask in its stage"
+     },
+     {
+      "at": "finest",
+      "do": "grid",
+      "what": "its lines glow"
+     },
+     {
+      "at": "own",
+      "do": "rack",
+      "what": "a rack of other masks lights beside the stage"
+     },
+     {
+      "at": "swap",
+      "do": "swap",
+      "what": "the mask slides out and another slides in"
+     },
+     {
+      "at": "machine",
+      "do": "stencil",
+      "what": "the new pattern draws on"
+     },
+     {
+      "at": "different",
+      "do": "bright",
+      "what": "its different lines shine"
+     }
+    ],
+    "things": [
+     "mask rack",
+     "second mask",
+     "new pattern"
+    ]
+   }
+  },
+  {
+   "id": "shrink",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Then more mirrors shrink that picture down and aim it at the wafer below, far smaller than the mask itself.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "mirrors": {
+     "word": "mirrors"
+    },
+    "shrink": {
+     "word": "shrink"
+    },
+    "aim": {
+     "word": "aim"
+    },
+    "wafer": {
+     "word": "wafer"
+    },
+    "smaller": {
+     "word": "smaller"
+    },
+    "cam_down": {
+     "word": "down"
+    },
+    "cam_mask": {
+     "word": "mask"
+    }
+   },
+   "params": {
+    "component": "Mask",
+    "place": "the patterned beam dropping through mirrors toward the wafer",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "beam"
+     },
+     {
+      "at": "mirrors",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "shrink",
+      "size": "medium",
+      "on": "down"
+     },
+     {
+      "at": "aim",
+      "size": "close",
+      "on": "down"
+     },
+     {
+      "at": "wafer",
+      "size": "medium",
+      "on": "down"
+     },
+     {
+      "at": "smaller",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "cam_down",
+      "size": "close",
+      "on": "down"
+     },
+     {
+      "at": "cam_mask",
+      "size": "medium",
+      "on": "down"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "shapebeam",
+      "what": "the patterned beam heads down"
+     },
+     {
+      "at": "mirrors",
+      "do": "projmirrors",
+      "what": "a second set of mirrors lights below"
+     },
+     {
+      "at": "shrink",
+      "do": "shrink",
+      "what": "the pattern shrinks as it passes them"
+     },
+     {
+      "at": "aim",
+      "do": "aim",
+      "what": "the beam narrows onto one spot"
+     },
+     {
+      "at": "wafer",
+      "do": "wafer",
+      "what": "the wafer's surface glows where it lands"
+     },
+     {
+      "at": "smaller",
+      "do": "compare",
+      "what": "the big pattern on the mask and the tiny print below light together"
+     }
+    ],
+    "things": [
+     "projection mirrors",
+     "shrinking pattern",
+     "wafer below"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "shrink"
+    }
+   ]
+  },
+  {
+   "id": "bigger_mask",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Drawing the mask bigger than the print it makes keeps its pattern easier to make accurately.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "drawing": {
+     "word": "Drawing"
+    },
+    "bigger": {
+     "word": "bigger"
+    },
+    "print": {
+     "word": "print"
+    },
+    "pattern": {
+     "word": "pattern"
+    },
+    "accurately": {
+     "word": "accurately"
+    },
+    "cam_keeps": {
+     "word": "keeps"
+    }
+   },
+   "params": {
+    "component": "Mask",
+    "place": "the big mask above and its small print below, lit together",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "drawing",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "bigger",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "print",
+      "size": "medium",
+      "on": "down"
+     },
+     {
+      "at": "pattern",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "accurately",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "cam_keeps",
+      "size": "close",
+      "on": "down"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "aim",
+      "what": "the beam lands below"
+     },
+     {
+      "at": "drawing",
+      "do": "stencil",
+      "what": "the mask's pattern redraws"
+     },
+     {
+      "at": "bigger",
+      "do": "compare",
+      "what": "outlines mark the big mask and the small print"
+     },
+     {
+      "at": "print",
+      "do": "wafer",
+      "what": "the print glows"
+     },
+     {
+      "at": "pattern",
+      "do": "grid",
+      "what": "the mask's lines shine"
+     },
+     {
+      "at": "accurately",
+      "do": "bright",
+      "what": "its gaps light evenly"
+     }
+    ],
+    "things": [
+     "big mask",
+     "small print"
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "tease4",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "And what is all that light printing onto?",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "printing": {
+     "word": "printing"
+    },
+    "onto": {
+     "word": "onto"
+    },
+    "what": {
+     "word": "what"
+    },
+    "cam_that": {
+     "word": "that"
+    }
+   },
+   "params": {
+    "component": "Mask",
+    "place": "the small bright print landing below",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "down"
+     },
+     {
+      "at": "printing",
+      "size": "close",
+      "on": "down"
+     },
+     {
+      "at": "onto",
+      "size": "extreme",
+      "on": "down"
+     },
+     {
+      "at": "cam_that",
+      "size": "close",
+      "on": "down"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "aim",
+      "what": "the beam lands on the wafer"
+     },
+     {
+      "at": "what",
+      "do": "question",
+      "what": "a question mark lights beside the spot"
+     },
+     {
+      "at": "printing",
+      "do": "wafer",
+      "what": "the wafer's surface glints"
+     },
+     {
+      "at": "onto",
+      "do": "dive",
+      "what": "the camera dives at the spot"
+     }
+    ],
+    "things": [
+     "landing beam",
+     "wafer surface"
+    ]
+   }
+  },
+  {
+   "id": "wafer",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "A wafer: a thin, polished disc of silicon, coated with a film called a resist, which changes wherever the light lands.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "wafer": {
+     "word": "wafer"
+    },
+    "disc": {
+     "word": "disc"
+    },
+    "resist": {
+     "word": "resist"
+    },
+    "changes": {
+     "word": "changes"
+    },
+    "lands": {
+     "word": "lands"
+    },
+    "polished": {
+     "word": "polished"
+    },
+    "coated": {
+     "word": "coated"
+    },
+    "silicon": {
+     "word": "silicon"
+    },
+    "cam_film": {
+     "word": "film"
+    }
+   },
+   "params": {
+    "component": "Wafer",
+    "place": "the wafer stage: a shining silicon disc on a black chuck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "wafer",
+      "size": "close",
+      "on": "wafer"
+     },
+     {
+      "at": "disc",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "resist",
+      "size": "close",
+      "on": "wafer"
+     },
+     {
+      "at": "changes",
+      "size": "extreme",
+      "on": "field"
+     },
+     {
+      "at": "lands",
+      "size": "close",
+      "on": "field"
+     },
+     {
+      "at": "cam_film",
+      "size": "close",
+      "on": "wafer"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "wafer",
+      "what": "the silicon disc rests on its chuck"
+     },
+     {
+      "at": "polished",
+      "do": "shine",
+      "what": "a highlight sweeps across it"
+     },
+     {
+      "at": "disc",
+      "do": "lift",
+      "what": "the disc tilts toward us"
+     },
+     {
+      "at": "coated",
+      "do": "resist",
+      "what": "a thin amber film spreads over it"
+     },
+     {
+      "at": "changes",
+      "do": "expose",
+      "what": "a small square of the film changes colour under the light"
+     },
+     {
+      "at": "lands",
+      "do": "exposeglow",
+      "what": "the changed square glows"
+     }
+    ],
+    "things": [
+     "silicon wafer",
+     "chuck",
+     "resist film",
+     "exposed square"
+    ],
+    "labels": [
+     {
+      "at": "silicon",
+      "text": "silicon wafer",
+      "on": "wafer"
+     },
+     {
+      "at": "resist",
+      "text": "resist",
+      "on": "wafer"
+     }
+    ],
+    "sign": {
+     "text": "the wafer",
+     "at": "wafer",
+     "on": "wafer"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "glass",
+     "at": "polished"
+    }
+   ]
+  },
+  {
+   "id": "scan",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "It sits on a stage that races back and forth under the light, printing the pattern again and again, chip after chip, across the whole disc.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "stage": {
+     "word": "stage"
+    },
+    "races": {
+     "word": "races"
+    },
+    "printing": {
+     "word": "printing"
+    },
+    "again": {
+     "word": "again"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "cam_on": {
+     "word": "on"
+    },
+    "cam_under": {
+     "word": "under"
+    },
+    "cam_across": {
+     "word": "across"
+    }
+   },
+   "params": {
+    "component": "Wafer",
+    "place": "the wafer stage in motion under the slit of light",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "stage",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "races",
+      "size": "medium",
+      "on": "slit"
+     },
+     {
+      "at": "printing",
+      "size": "close",
+      "on": "field"
+     },
+     {
+      "at": "again",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "chip",
+      "size": "close",
+      "on": "field"
+     },
+     {
+      "at": "whole",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "cam_on",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "cam_under",
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "cam_across",
+      "size": "medium",
+      "on": "all"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "slit",
+      "what": "a thin slit of light hangs over the wafer"
+     },
+     {
+      "at": "stage",
+      "do": "stage",
+      "what": "the stage under the wafer lights its rails"
+     },
+     {
+      "at": "races",
+      "do": "scan",
+      "what": "the wafer slides fast under the slit"
+     },
+     {
+      "at": "printing",
+      "do": "fields",
+      "what": "one square after another fills with the pattern"
+     },
+     {
+      "at": "chip",
+      "do": "rowsfill",
+      "what": "row after row of squares fill"
+     },
+     {
+      "at": "whole",
+      "do": "done",
+      "what": "the whole disc is covered in squares"
+     }
+    ],
+    "things": [
+     "wafer stage rails",
+     "slit of light",
+     "printed squares"
+    ],
+    "labels": [
+     {
+      "at": "stage",
+      "text": "wafer stage",
+      "on": "wafer"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "races"
+    }
+   ]
+  },
+  {
+   "id": "step",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "When one chip is done, the stage jumps to the next spot, and the next sweep begins, until every spot on the disc is printed.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "jumps": {
+     "word": "jumps"
+    },
+    "sweep": {
+     "word": "sweep"
+    },
+    "every": {
+     "word": "every"
+    },
+    "disc": {
+     "word": "disc"
+    },
+    "done": {
+     "word": "done"
+    },
+    "next": {
+     "word": "next"
+    },
+    "cam_and": {
+     "word": "and"
+    }
+   },
+   "params": {
+    "component": "Wafer",
+    "place": "the wafer stage stepping from square to square",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "chip",
+      "size": "close",
+      "on": "field"
+     },
+     {
+      "at": "jumps",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "sweep",
+      "size": "close",
+      "on": "slit"
+     },
+     {
+      "at": "every",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "disc",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "cam_and",
+      "size": "close",
+      "on": "wafer"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "slit",
+      "what": "the slit over a finished square"
+     },
+     {
+      "at": "done",
+      "do": "exposeglow",
+      "what": "the square glows done"
+     },
+     {
+      "at": "jumps",
+      "do": "scan",
+      "what": "the stage jumps over"
+     },
+     {
+      "at": "next",
+      "do": "fields",
+      "what": "the next square starts to fill"
+     },
+     {
+      "at": "sweep",
+      "do": "slitglow",
+      "what": "the slit brightens again"
+     },
+     {
+      "at": "disc",
+      "do": "rowsfill",
+      "what": "squares fill across the disc"
+     }
+    ],
+    "things": [
+     "stepping stage",
+     "slit",
+     "squares filling"
+    ]
+   }
+  },
+  {
+   "id": "sync",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Above it, the mask moves too, in perfect step, so every line lands exactly where it should.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "mask": {
+     "word": "mask"
+    },
+    "step": {
+     "word": "step"
+    },
+    "line": {
+     "word": "line"
+    },
+    "exactly": {
+     "word": "exactly"
+    },
+    "cam_in": {
+     "word": "in"
+    },
+    "cam_should": {
+     "word": "should"
+    }
+   },
+   "params": {
+    "component": "Wafer",
+    "place": "the mask overhead and the wafer below, gliding together",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "mask",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "step",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "line",
+      "size": "close",
+      "on": "field"
+     },
+     {
+      "at": "exactly",
+      "size": "extreme",
+      "on": "field"
+     },
+     {
+      "at": "cam_in",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "cam_should",
+      "size": "medium",
+      "on": "mask"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "scan",
+      "what": "the wafer slides under the slit"
+     },
+     {
+      "at": "mask",
+      "do": "mask",
+      "what": "the mask above lights, sliding the other way"
+     },
+     {
+      "at": "step",
+      "do": "sync",
+      "what": "glowing links tie the two motions together"
+     },
+     {
+      "at": "line",
+      "do": "line",
+      "what": "close on one square, a line lands"
+     },
+     {
+      "at": "exactly",
+      "do": "lock",
+      "what": "a crosshair locks on it"
+     }
+    ],
+    "things": [
+     "mask overhead",
+     "sync links",
+     "crosshair"
+    ],
+    "labels": [
+     {
+      "at": "mask",
+      "text": "mask",
+      "on": "mask"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "exactly"
+    }
+   ]
+  },
+  {
+   "id": "slit",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "How does the light print a whole chip at once? It doesn't. A thin slit of light sweeps across each one, like a scanner copying a page.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "doesnt": {
+     "word": "doesn't"
+    },
+    "slit": {
+     "word": "slit"
+    },
+    "sweeps": {
+     "word": "sweeps"
+    },
+    "scanner": {
+     "word": "scanner"
+    },
+    "page": {
+     "word": "page"
+    },
+    "once": {
+     "word": "once"
+    },
+    "cam_the": {
+     "word": "the"
+    },
+    "cam_one": {
+     "word": "one"
+    }
+   },
+   "params": {
+    "component": "Wafer",
+    "place": "one chip-sized square in close-up, the slit sweeping over it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "field"
+     },
+     {
+      "at": "whole",
+      "size": "close",
+      "on": "field"
+     },
+     {
+      "at": "doesnt",
+      "size": "medium",
+      "on": "field"
+     },
+     {
+      "at": "slit",
+      "size": "close",
+      "on": "slit"
+     },
+     {
+      "at": "sweeps",
+      "size": "medium",
+      "on": "field"
+     },
+     {
+      "at": "scanner",
+      "size": "medium",
+      "on": "scanner"
+     },
+     {
+      "at": "page",
+      "size": "close",
+      "on": "scanner"
+     },
+     {
+      "at": "cam_the",
+      "size": "close",
+      "on": "field"
+     },
+     {
+      "at": "cam_one",
+      "size": "medium",
+      "on": "field"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "slit",
+      "what": "the slit over the wafer"
+     },
+     {
+      "at": "once",
+      "do": "whole",
+      "what": "the whole square flashes, then fades: not like that"
+     },
+     {
+      "at": "doesnt",
+      "do": "dim",
+      "what": "the square goes dark"
+     },
+     {
+      "at": "slit",
+      "do": "slitglow",
+      "what": "a thin bar of light appears at its edge"
+     },
+     {
+      "at": "sweeps",
+      "do": "sweep",
+      "what": "it sweeps across, leaving the pattern behind"
+     },
+     {
+      "at": "scanner",
+      "do": "scanner",
+      "what": "a page scanner's light bar ghosts in beside it"
+     },
+     {
+      "at": "page",
+      "do": "page",
+      "what": "it copies a page the same way"
+     }
+    ],
+    "things": [
+     "slit of light",
+     "chip square",
+     "page scanner"
+    ],
+    "labels": [
+     {
+      "at": "scanner",
+      "text": "scanner",
+      "on": "scanner"
+     }
+    ]
+   }
+  },
+  {
+   "id": "copies",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "When the disc is done, it holds rows of identical chips, every one a copy of the same layer.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "disc": {
+     "word": "disc"
+    },
+    "rows": {
+     "word": "rows"
+    },
+    "identical": {
+     "word": "identical"
+    },
+    "copy": {
+     "word": "copy"
+    },
+    "layer": {
+     "word": "layer"
+    },
+    "cam_it": {
+     "word": "it"
+    },
+    "cam_one": {
+     "word": "one"
+    }
+   },
+   "params": {
+    "component": "Wafer",
+    "place": "the finished wafer, its squares in rows",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "wafer"
+     },
+     {
+      "at": "disc",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "rows",
+      "size": "close",
+      "on": "wafer"
+     },
+     {
+      "at": "identical",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "copy",
+      "size": "close",
+      "on": "field"
+     },
+     {
+      "at": "layer",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "cam_it",
+      "size": "close",
+      "on": "wafer"
+     },
+     {
+      "at": "cam_one",
+      "size": "medium",
+      "on": "wafer"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "done",
+      "what": "the printed wafer"
+     },
+     {
+      "at": "disc",
+      "do": "lift",
+      "what": "it tilts up to us"
+     },
+     {
+      "at": "rows",
+      "do": "rows",
+      "what": "rows of squares light in order"
+     },
+     {
+      "at": "identical",
+      "do": "twinkle",
+      "what": "each one glints the same"
+     },
+     {
+      "at": "copy",
+      "do": "match",
+      "what": "two squares light side by side, the same"
+     },
+     {
+      "at": "layer",
+      "do": "shine",
+      "what": "light sweeps the whole disc"
+     }
+    ],
+    "things": [
+     "printed wafer",
+     "rows of chips"
+    ]
+   }
+  },
+  {
+   "id": "width",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "And the finest lines a standard EUV machine prints are about {fact5} nanometres wide.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "finest": {
+     "word": "finest"
+    },
+    "standard": {
+     "word": "standard"
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "wide": {
+     "word": "wide"
+    },
+    "prints": {
+     "word": "prints"
+    },
+    "cam_about": {
+     "word": "about"
+    }
+   },
+   "params": {
+    "component": "Wafer",
+    "place": "one square magnified to its finest lines",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "field"
+     },
+     {
+      "at": "finest",
+      "size": "close",
+      "on": "line"
+     },
+     {
+      "at": "standard",
+      "size": "close",
+      "on": "line"
+     },
+     {
+      "at": "machine",
+      "size": "medium",
+      "on": "line"
+     },
+     {
+      "at": "wide",
+      "size": "close",
+      "on": "line"
+     },
+     {
+      "at": "cam_about",
+      "size": "close",
+      "on": "line"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "match",
+      "what": "a square in close-up"
+     },
+     {
+      "at": "finest",
+      "do": "dive",
+      "what": "the camera dives into its lines"
+     },
+     {
+      "at": "standard",
+      "do": "lines",
+      "what": "thin parallel lines fill the frame"
+     },
+     {
+      "at": "prints",
+      "do": "measure",
+      "what": "a measuring bar spans one line"
+     },
+     {
+      "at": "wide",
+      "do": "linewidth",
+      "what": "the width is written on the bar"
+     }
+    ],
+    "things": [
+     "fine lines",
+     "measuring bar"
+    ],
+    "fig": {
+     "w": "{fact5} nm"
+    },
+    "tag": "notToScale"
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "wide"
+    }
+   ]
+  },
+  {
+   "id": "recap",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "So far: tin becomes light, mirrors carry it, the mask shapes it, and the wafer takes the print. And the newest machine goes further.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "tin": {
+     "word": "tin"
+    },
+    "mirrors": {
+     "word": "mirrors"
+    },
+    "mask": {
+     "word": "mask"
+    },
+    "wafer": {
+     "word": "wafer"
+    },
+    "newest": {
+     "word": "newest"
+    },
+    "further": {
+     "word": "further"
+    },
+    "cam_and": {
+     "word": "and"
+    },
+    "cam_print": {
+     "word": "print"
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "the whole cutaway machine, every stop lit in turn",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "tin",
+      "size": "close",
+      "on": "source"
+     },
+     {
+      "at": "mirrors",
+      "size": "medium",
+      "on": "mirrors"
+     },
+     {
+      "at": "mask",
+      "size": "close",
+      "on": "mask"
+     },
+     {
+      "at": "wafer",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "newest",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "further",
+      "size": "close",
+      "on": "wafer"
+     },
+     {
+      "at": "cam_and",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "cam_print",
+      "size": "close",
+      "on": "mask"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "path",
+      "what": "the light path through the cutaway"
+     },
+     {
+      "at": "tin",
+      "do": "tin",
+      "what": "the tin source flashes"
+     },
+     {
+      "at": "mirrors",
+      "do": "mirrors",
+      "what": "the mirrors light"
+     },
+     {
+      "at": "mask",
+      "do": "mask",
+      "what": "the mask lights"
+     },
+     {
+      "at": "wafer",
+      "do": "wafer",
+      "what": "the wafer lights"
+     },
+     {
+      "at": "newest",
+      "do": "pulse",
+      "what": "a pulse runs the whole path"
+     },
+     {
+      "at": "further",
+      "do": "finer",
+      "what": "the lines on the wafer sharpen further"
+     }
+    ],
+    "things": [
+     "cutaway machine",
+     "lit stops",
+     "sharper lines"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "newest"
+    }
+   ]
+  },
+  {
+   "id": "hna",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "It's called High-NA. Its mirrors are much bigger, and they catch the light at wider angles.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "called": {
+     "word": "called"
+    },
+    "mirrors": {
+     "word": "mirrors"
+    },
+    "bigger": {
+     "word": "bigger"
+    },
+    "catch": {
+     "word": "catch"
+    },
+    "angles": {
+     "word": "angles"
+    },
+    "wider": {
+     "word": "wider"
+    }
+   },
+   "params": {
+    "component": "Ruler",
+    "place": "two optics benches side by side on a dark floor: a standard mirror on the left, a far bigger High-NA mirror on the right",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "called",
+      "size": "medium",
+      "on": "right"
+     },
+     {
+      "at": "mirrors",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "bigger",
+      "size": "close",
+      "on": "right"
+     },
+     {
+      "at": "catch",
+      "size": "medium",
+      "on": "right"
+     },
+     {
+      "at": "angles",
+      "size": "close",
+      "on": "spots"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "mirrors",
+      "what": "two mirrors on their benches"
+     },
+     {
+      "at": "called",
+      "do": "name",
+      "what": "a sign lights over the right bench"
+     },
+     {
+      "at": "bigger",
+      "do": "big",
+      "what": "the right mirror grows much larger"
+     },
+     {
+      "at": "catch",
+      "do": "cones",
+      "what": "a cone of light comes off each mirror"
+     },
+     {
+      "at": "wider",
+      "do": "wide",
+      "what": "the right cone opens far wider"
+     },
+     {
+      "at": "angles",
+      "do": "angle",
+      "what": "arcs mark the two angles"
+     }
+    ],
+    "things": [
+     "standard mirror",
+     "High-NA mirror",
+     "light cones",
+     "angle arcs"
+    ],
+    "labels": [
+     {
+      "at": "called",
+      "text": "High-NA",
+      "on": "right"
+     }
+    ],
+    "sign": {
+     "text": "even finer",
+     "at": "called",
+     "on": "right"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "bigger"
+    }
+   ]
+  },
+  {
+   "id": "why_wide",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Why does a wider angle help? Light arriving from more directions can be focused to a tighter point, and a tighter point draws a finer line.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "angle": {
+     "word": "angle"
+    },
+    "arriving": {
+     "word": "arriving"
+    },
+    "directions": {
+     "word": "directions"
+    },
+    "focused": {
+     "word": "focused"
+    },
+    "tighter": {
+     "word": "tighter"
+    },
+    "line": {
+     "word": "line"
+    },
+    "cam_does": {
+     "word": "does"
+    },
+    "cam_draws": {
+     "word": "draws"
+    },
+    "cam_and": {
+     "word": "and"
+    }
+   },
+   "params": {
+    "component": "Ruler",
+    "place": "the two light cones meeting their focus points",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "angle",
+      "size": "medium",
+      "on": "spots"
+     },
+     {
+      "at": "arriving",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "directions",
+      "size": "medium",
+      "on": "spots"
+     },
+     {
+      "at": "focused",
+      "size": "close",
+      "on": "spots"
+     },
+     {
+      "at": "tighter",
+      "size": "close",
+      "on": "spots"
+     },
+     {
+      "at": "line",
+      "size": "medium",
+      "on": "lines"
+     },
+     {
+      "at": "cam_does",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "cam_draws",
+      "size": "close",
+      "on": "all"
+     },
+     {
+      "at": "cam_and",
+      "size": "close",
+      "on": "all"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "cones",
+      "what": "two cones of light"
+     },
+     {
+      "at": "angle",
+      "do": "angle",
+      "what": "the angle arcs light"
+     },
+     {
+      "at": "arriving",
+      "do": "rays",
+      "what": "rays pour in from every side of the wide cone"
+     },
+     {
+      "at": "focused",
+      "do": "spot",
+      "what": "each cone ends in a bright spot"
+     },
+     {
+      "at": "tighter",
+      "do": "spotsmall",
+      "what": "the right spot shrinks far smaller"
+     },
+     {
+      "at": "line",
+      "do": "lines",
+      "what": "each spot draws a line: the right one thinner"
+     }
+    ],
+    "things": [
+     "rays",
+     "focus spots",
+     "drawn lines"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "tighter"
+    }
+   ]
+  },
+  {
+   "id": "result",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "The result: lines about {fact6} nanometres wide, where the standard machine draws {fact5}.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "result": {
+     "word": "result"
+    },
+    "lines": {
+     "word": "lines"
+    },
+    "wide": {
+     "word": "wide"
+    },
+    "standard": {
+     "word": "standard"
+    },
+    "cam_draws": {
+     "word": "draws"
+    }
+   },
+   "params": {
+    "component": "Ruler",
+    "place": "the two printed lines side by side under measuring bars",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "lines"
+     },
+     {
+      "at": "result",
+      "size": "medium",
+      "on": "lines"
+     },
+     {
+      "at": "lines",
+      "size": "close",
+      "on": "lines"
+     },
+     {
+      "at": "wide",
+      "size": "medium",
+      "on": "lines"
+     },
+     {
+      "at": "standard",
+      "size": "medium",
+      "on": "lines"
+     },
+     {
+      "at": "cam_draws",
+      "size": "close",
+      "on": "lines"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "lines",
+      "what": "two lines drawn side by side"
+     },
+     {
+      "at": "result",
+      "do": "measure",
+      "what": "measuring bars drop over both"
+     },
+     {
+      "at": "lines",
+      "do": "figR",
+      "what": "the right line's width writes on"
+     },
+     {
+      "at": "wide",
+      "do": "flash",
+      "what": "the right line flashes"
+     },
+     {
+      "at": "standard",
+      "do": "figL",
+      "what": "the left line's width writes on"
+     }
+    ],
+    "things": [
+     "two lines",
+     "measuring bars"
+    ],
+    "fig": {
+     "hi": "{fact6} nm",
+     "std": "{fact5} nm"
+    },
+    "tag": "notToScale"
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "result"
+    }
+   ]
+  },
+  {
+   "id": "ratio",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "That's lines about {finer_ratio} finer, so more switches fit on the same patch of silicon.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "finer": {
+     "word": "finer"
+    },
+    "switches": {
+     "word": "switches"
+    },
+    "fit": {
+     "word": "fit"
+    },
+    "silicon": {
+     "word": "silicon"
+    },
+    "cam_about": {
+     "word": "about"
+    },
+    "cam_same": {
+     "word": "same"
+    }
+   },
+   "params": {
+    "component": "Ruler",
+    "place": "a square patch of silicon, switches packing into it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "lines"
+     },
+     {
+      "at": "finer",
+      "size": "medium",
+      "on": "lines"
+     },
+     {
+      "at": "switches",
+      "size": "medium",
+      "on": "patch"
+     },
+     {
+      "at": "fit",
+      "size": "close",
+      "on": "patch"
+     },
+     {
+      "at": "silicon",
+      "size": "medium",
+      "on": "patch"
+     },
+     {
+      "at": "cam_about",
+      "size": "close",
+      "on": "lines"
+     },
+     {
+      "at": "cam_same",
+      "size": "medium",
+      "on": "lines"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "lines",
+      "what": "the two lines"
+     },
+     {
+      "at": "finer",
+      "do": "ratio",
+      "what": "a tag shows how much finer"
+     },
+     {
+      "at": "switches",
+      "do": "patch",
+      "what": "two equal patches of silicon light below the lines"
+     },
+     {
+      "at": "fit",
+      "do": "pack",
+      "what": "tiny switches pack into each: the right patch holds more"
+     },
+     {
+      "at": "silicon",
+      "do": "twinkle",
+      "what": "the switches glint"
+     }
+    ],
+    "things": [
+     "silicon patches",
+     "packed switches",
+     "ratio tag"
+    ],
+    "fig": {
+     "ratio": "{finer_ratio}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fit"
+    }
+   ]
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "transition": "cut",
+   "say": "Yet one pass under this light never makes a chip. A single pass prints just one layer, and a chip needs dozens of them.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "pass": {
+     "word": "pass"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "single": {
+     "word": "single"
+    },
+    "layer": {
+     "word": "layer"
+    },
+    "dozens": {
+     "word": "dozens"
+    },
+    "never": {
+     "word": "never"
+    },
+    "cam_just": {
+     "word": "just"
+    }
+   },
+   "params": {
+    "component": "Ruler",
+    "place": "one thin glowing layer lifting off the patch, an empty stack frame above it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "patch"
+     },
+     {
+      "at": "pass",
+      "size": "close",
+      "on": "patch"
+     },
+     {
+      "at": "chip",
+      "size": "medium",
+      "on": "patch"
+     },
+     {
+      "at": "single",
+      "size": "close",
+      "on": "layer"
+     },
+     {
+      "at": "layer",
+      "size": "medium",
+      "on": "layer"
+     },
+     {
+      "at": "dozens",
+      "size": "wide",
+      "on": "stack"
+     },
+     {
+      "at": "cam_just",
+      "size": "medium",
+      "on": "layer"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "patch",
+      "what": "the patch of switches"
+     },
+     {
+      "at": "pass",
+      "do": "layer",
+      "what": "one thin layer of it lifts and glows"
+     },
+     {
+      "at": "never",
+      "do": "dim",
+      "what": "the rest of the patch goes dark"
+     },
+     {
+      "at": "single",
+      "do": "one",
+      "what": "the single layer hangs alone"
+     },
+     {
+      "at": "dozens",
+      "do": "stack",
+      "what": "a tall frame of empty layers rises above it"
+     }
+    ],
+    "things": [
+     "single layer",
+     "empty layer stack"
+    ]
+   }
+  },
+  {
+   "id": "develop",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "What happens after the print? The wafer leaves the machine, and the resist is washed away where the light changed it, leaving a stencil.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "print": {
+     "word": "print"
+    },
+    "wafer": {
+     "word": "wafer"
+    },
+    "resist": {
+     "word": "resist"
+    },
+    "washed": {
+     "word": "washed"
+    },
+    "stencil": {
+     "word": "stencil"
+    },
+    "leaves": {
+     "word": "leaves"
+    },
+    "happens": {
+     "word": "happens"
+    },
+    "cam_after": {
+     "word": "after"
+    },
+    "cam_and": {
+     "word": "and"
+    },
+    "cam_changed": {
+     "word": "changed"
+    },
+    "cam_where": {
+     "word": "where"
+    }
+   },
+   "params": {
+    "component": "Layers",
+    "place": "a slice through the wafer's surface in close-up: silicon, then the resist film on top",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "block"
+     },
+     {
+      "at": "print",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "wafer",
+      "size": "medium",
+      "on": "block"
+     },
+     {
+      "at": "resist",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "washed",
+      "size": "medium",
+      "on": "top"
+     },
+     {
+      "at": "stencil",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "cam_after",
+      "size": "close",
+      "on": "block"
+     },
+     {
+      "at": "cam_and",
+      "size": "medium",
+      "on": "block"
+     },
+     {
+      "at": "cam_changed",
+      "size": "close",
+      "on": "block"
+     },
+     {
+      "at": "cam_where",
+      "size": "close",
+      "on": "block"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "block",
+      "what": "the slice of wafer, resist on top"
+     },
+     {
+      "at": "print",
+      "do": "exposed",
+      "what": "stripes of the resist are the exposed ones"
+     },
+     {
+      "at": "leaves",
+      "do": "slide",
+      "what": "the block slides out of the machine's light"
+     },
+     {
+      "at": "resist",
+      "do": "rinse",
+      "what": "a rinse flows over the top"
+     },
+     {
+      "at": "washed",
+      "do": "develop",
+      "what": "the exposed stripes wash away"
+     },
+     {
+      "at": "stencil",
+      "do": "stencil",
+      "what": "the remaining resist stands as a stencil"
+     }
+    ],
+    "things": [
+     "wafer slice",
+     "resist film",
+     "developer rinse",
+     "stencil"
+    ],
+    "sign": {
+     "text": "layer after layer",
+     "at": "happens",
+     "on": "block"
+    },
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "etch",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Then the gaps in that stencil are etched into the surface, or filled with metal.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "gaps": {
+     "word": "gaps"
+    },
+    "etched": {
+     "word": "etched"
+    },
+    "surface": {
+     "word": "surface"
+    },
+    "metal": {
+     "word": "metal"
+    },
+    "filled": {
+     "word": "filled"
+    },
+    "cam_stencil": {
+     "word": "stencil"
+    }
+   },
+   "params": {
+    "component": "Layers",
+    "place": "the stencil on the surface, trenches cutting down through its gaps",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "gaps",
+      "size": "extreme",
+      "on": "top"
+     },
+     {
+      "at": "etched",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "surface",
+      "size": "medium",
+      "on": "block"
+     },
+     {
+      "at": "metal",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "cam_stencil",
+      "size": "close",
+      "on": "top"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "stencil",
+      "what": "the stencil on top"
+     },
+     {
+      "at": "gaps",
+      "do": "gaps",
+      "what": "its gaps glow"
+     },
+     {
+      "at": "etched",
+      "do": "etch",
+      "what": "trenches cut down through the gaps"
+     },
+     {
+      "at": "surface",
+      "do": "trench",
+      "what": "the trenches deepen into the surface"
+     },
+     {
+      "at": "filled",
+      "do": "fill",
+      "what": "copper pours into the trenches"
+     },
+     {
+      "at": "metal",
+      "do": "metal",
+      "what": "the metal shines"
+     }
+    ],
+    "things": [
+     "trenches",
+     "copper fill"
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "strip",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "The leftover resist is stripped off, a fresh layer goes on top, and the wafer goes back for the next print.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "resist": {
+     "word": "resist"
+    },
+    "stripped": {
+     "word": "stripped"
+    },
+    "fresh": {
+     "word": "fresh"
+    },
+    "back": {
+     "word": "back"
+    },
+    "print": {
+     "word": "print"
+    },
+    "leftover": {
+     "word": "leftover"
+    },
+    "goes": {
+     "word": "goes"
+    },
+    "next": {
+     "word": "next"
+    },
+    "cam_and": {
+     "word": "and"
+    }
+   },
+   "params": {
+    "component": "Layers",
+    "place": "the surface cleaned, a new film spreading over it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "resist",
+      "size": "medium",
+      "on": "top"
+     },
+     {
+      "at": "stripped",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "fresh",
+      "size": "medium",
+      "on": "block"
+     },
+     {
+      "at": "back",
+      "size": "wide",
+      "on": "block"
+     },
+     {
+      "at": "print",
+      "size": "medium",
+      "on": "top"
+     },
+     {
+      "at": "cam_and",
+      "size": "close",
+      "on": "block"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "metal",
+      "what": "the filled trenches"
+     },
+     {
+      "at": "leftover",
+      "do": "strip",
+      "what": "the leftover resist lifts away"
+     },
+     {
+      "at": "fresh",
+      "do": "coat",
+      "what": "a fresh layer spreads over the top"
+     },
+     {
+      "at": "goes",
+      "do": "recoat",
+      "what": "new resist coats it"
+     },
+     {
+      "at": "back",
+      "do": "slide",
+      "what": "the block slides back toward the light"
+     },
+     {
+      "at": "next",
+      "do": "exposed",
+      "what": "the next stripes are lit"
+     }
+    ],
+    "things": [
+     "fresh layer",
+     "new resist"
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "loop_layers",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Print, wash, etch, fill: the same loop runs again for every layer, each one lined up exactly on the one below.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "print": {
+     "word": "Print"
+    },
+    "wash": {
+     "word": "wash"
+    },
+    "etch": {
+     "word": "etch"
+    },
+    "fill": {
+     "word": "fill"
+    },
+    "loop": {
+     "word": "loop"
+    },
+    "lined": {
+     "word": "lined"
+    },
+    "below": {
+     "word": "below"
+    },
+    "cam_every": {
+     "word": "every"
+    },
+    "cam_on": {
+     "word": "on"
+    }
+   },
+   "params": {
+    "component": "Layers",
+    "place": "the slice of wafer cycling through the steps",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "block"
+     },
+     {
+      "at": "print",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "wash",
+      "size": "medium",
+      "on": "top"
+     },
+     {
+      "at": "etch",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "fill",
+      "size": "medium",
+      "on": "top"
+     },
+     {
+      "at": "loop",
+      "size": "wide",
+      "on": "block"
+     },
+     {
+      "at": "lined",
+      "size": "close",
+      "on": "top"
+     },
+     {
+      "at": "below",
+      "size": "medium",
+      "on": "block"
+     },
+     {
+      "at": "cam_every",
+      "size": "medium",
+      "on": "block"
+     },
+     {
+      "at": "cam_on",
+      "size": "close",
+      "on": "block"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "stencil",
+      "what": "the stencil on top"
+     },
+     {
+      "at": "print",
+      "do": "exposed",
+      "what": "stripes light under the print"
+     },
+     {
+      "at": "wash",
+      "do": "rinse",
+      "what": "a rinse sweeps over"
+     },
+     {
+      "at": "etch",
+      "do": "etch",
+      "what": "trenches cut down"
+     },
+     {
+      "at": "fill",
+      "do": "fill",
+      "what": "copper fills them"
+     },
+     {
+      "at": "loop",
+      "do": "metal",
+      "what": "the copper shines"
+     },
+     {
+      "at": "lined",
+      "do": "align",
+      "what": "a crosshair lines the next layer up on this one"
+     }
+    ],
+    "things": [
+     "stencil",
+     "trenches",
+     "copper",
+     "alignment crosshair"
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "transistors",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "At the very bottom, the first layers build the switches themselves: transistors, each a tiny gate that lets current through or blocks it.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "bottom": {
+     "word": "bottom"
+    },
+    "switches": {
+     "word": "switches"
+    },
+    "transistors": {
+     "word": "transistors"
+    },
+    "gate": {
+     "word": "gate"
+    },
+    "current": {
+     "word": "current"
+    },
+    "blocks": {
+     "word": "blocks"
+    },
+    "first": {
+     "word": "first"
+    }
+   },
+   "params": {
+    "component": "Layers",
+    "place": "the bottom of the chip's layer stack: rows of transistors on the silicon",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "bottom"
+     },
+     {
+      "at": "bottom",
+      "size": "close",
+      "on": "bottom"
+     },
+     {
+      "at": "switches",
+      "size": "medium",
+      "on": "bottom"
+     },
+     {
+      "at": "transistors",
+      "size": "close",
+      "on": "bottom"
+     },
+     {
+      "at": "gate",
+      "size": "extreme",
+      "on": "bottom"
+     },
+     {
+      "at": "current",
+      "size": "close",
+      "on": "bottom"
+     },
+     {
+      "at": "blocks",
+      "size": "medium",
+      "on": "bottom"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "transistors",
+      "what": "rows of transistors on the silicon"
+     },
+     {
+      "at": "first",
+      "do": "glowlow",
+      "what": "the lowest layers light"
+     },
+     {
+      "at": "switches",
+      "do": "fins",
+      "what": "the transistors' fins rise"
+     },
+     {
+      "at": "gate",
+      "do": "gate",
+      "what": "one gate glows pink"
+     },
+     {
+      "at": "current",
+      "do": "on",
+      "what": "current flows through under it"
+     },
+     {
+      "at": "blocks",
+      "do": "off",
+      "what": "the gate dims and the current stops"
+     }
+    ],
+    "things": [
+     "transistor rows",
+     "gate",
+     "current"
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "wires",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "What joins them up? Above them, layer after layer of copper wiring connects billions of those switches together.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "joins": {
+     "word": "joins"
+    },
+    "above": {
+     "word": "Above"
+    },
+    "copper": {
+     "word": "copper"
+    },
+    "connects": {
+     "word": "connects"
+    },
+    "together": {
+     "word": "together"
+    },
+    "cam_after": {
+     "word": "after"
+    },
+    "cam_those": {
+     "word": "those"
+    }
+   },
+   "params": {
+    "component": "Layers",
+    "place": "the layer stack rising: copper wiring layers above the transistors",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "bottom"
+     },
+     {
+      "at": "joins",
+      "size": "medium",
+      "on": "bottom"
+     },
+     {
+      "at": "above",
+      "size": "medium",
+      "on": "wires"
+     },
+     {
+      "at": "copper",
+      "size": "close",
+      "on": "wires"
+     },
+     {
+      "at": "connects",
+      "size": "medium",
+      "on": "wires"
+     },
+     {
+      "at": "together",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "cam_after",
+      "size": "close",
+      "on": "wires"
+     },
+     {
+      "at": "cam_those",
+      "size": "medium",
+      "on": "wires"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "transistors",
+      "what": "the transistors"
+     },
+     {
+      "at": "joins",
+      "do": "question",
+      "what": "a question mark rises over them"
+     },
+     {
+      "at": "above",
+      "do": "wires",
+      "what": "a first layer of copper wiring lands on top"
+     },
+     {
+      "at": "copper",
+      "do": "stack",
+      "what": "layer after layer of wiring stacks up"
+     },
+     {
+      "at": "connects",
+      "do": "signals",
+      "what": "signals race along the wires"
+     },
+     {
+      "at": "together",
+      "do": "tower",
+      "what": "the whole stack stands tall"
+     }
+    ],
+    "things": [
+     "copper wiring layers",
+     "racing signals",
+     "layer tower"
+    ],
+    "labels": [
+     {
+      "at": "copper",
+      "text": "copper wiring",
+      "on": "wires"
+     }
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "coarse",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "And not every layer needs EUV. The bigger, coarser layers go to older machines that use longer-wave light, which costs less.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "euv": {
+     "word": "EUV"
+    },
+    "coarser": {
+     "word": "coarser"
+    },
+    "older": {
+     "word": "older"
+    },
+    "light": {
+     "word": "light"
+    },
+    "less": {
+     "word": "less"
+    },
+    "cam_every": {
+     "word": "every"
+    },
+    "cam_use": {
+     "word": "use"
+    }
+   },
+   "params": {
+    "component": "Layers",
+    "place": "the layer tower, its upper layers changing colour",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "euv",
+      "size": "medium",
+      "on": "wires"
+     },
+     {
+      "at": "coarser",
+      "size": "close",
+      "on": "wires"
+     },
+     {
+      "at": "older",
+      "size": "medium",
+      "on": "wires"
+     },
+     {
+      "at": "light",
+      "size": "close",
+      "on": "wires"
+     },
+     {
+      "at": "less",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "cam_every",
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "cam_use",
+      "size": "close",
+      "on": "all"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "tower",
+      "what": "the layer tower"
+     },
+     {
+      "at": "euv",
+      "do": "fine",
+      "what": "the finest bottom layers glow violet"
+     },
+     {
+      "at": "coarser",
+      "do": "coarse",
+      "what": "the upper, wider layers light amber"
+     },
+     {
+      "at": "older",
+      "do": "older",
+      "what": "a wider, warmer beam lights the upper layers"
+     },
+     {
+      "at": "light",
+      "do": "longwave",
+      "what": "longer waves ripple down that beam"
+     },
+     {
+      "at": "less",
+      "do": "settle",
+      "what": "the tower settles in two colours"
+     }
+    ],
+    "things": [
+     "layer tower",
+     "violet fine layers",
+     "amber coarse layers"
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "finest",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Only the finest layers, the ones packed tightest, take the trip through the tin and the mirrors.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "finest": {
+     "word": "finest"
+    },
+    "packed": {
+     "word": "packed"
+    },
+    "trip": {
+     "word": "trip"
+    },
+    "tin": {
+     "word": "tin"
+    },
+    "mirrors": {
+     "word": "mirrors"
+    }
+   },
+   "params": {
+    "component": "Layers",
+    "place": "the violet bottom layers in close-up",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "finest",
+      "size": "close",
+      "on": "bottom"
+     },
+     {
+      "at": "packed",
+      "size": "extreme",
+      "on": "bottom"
+     },
+     {
+      "at": "trip",
+      "size": "medium",
+      "on": "bottom"
+     },
+     {
+      "at": "tin",
+      "size": "close",
+      "on": "bottom"
+     },
+     {
+      "at": "mirrors",
+      "size": "medium",
+      "on": "all"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "settle",
+      "what": "the two-colour tower"
+     },
+     {
+      "at": "finest",
+      "do": "fine",
+      "what": "the violet layers flare"
+     },
+     {
+      "at": "packed",
+      "do": "dense",
+      "what": "their lines pack tight"
+     },
+     {
+      "at": "trip",
+      "do": "trip",
+      "what": "a violet beam drops down onto them"
+     },
+     {
+      "at": "tin",
+      "do": "flash",
+      "what": "a small flash at the beam's top"
+     },
+     {
+      "at": "mirrors",
+      "do": "glint",
+      "what": "mirror glints along the beam"
+     }
+    ],
+    "things": [
+     "violet layers",
+     "dense lines",
+     "violet beam"
+    ],
+    "tag": "notToScale"
+   }
+  },
+  {
+   "id": "cut",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "After weeks of this, the finished wafer is sliced into separate chips.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "weeks": {
+     "word": "weeks"
+    },
+    "finished": {
+     "word": "finished"
+    },
+    "sliced": {
+     "word": "sliced"
+    },
+    "chips": {
+     "word": "chips"
+    }
+   },
+   "params": {
+    "component": "Wafer",
+    "place": "the finished wafer on the stage, a saw line running across it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "weeks",
+      "size": "wide",
+      "on": "wafer"
+     },
+     {
+      "at": "finished",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "sliced",
+      "size": "close",
+      "on": "wafer"
+     },
+     {
+      "at": "chips",
+      "size": "medium",
+      "on": "chip"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "done",
+      "what": "the patterned wafer"
+     },
+     {
+      "at": "weeks",
+      "do": "shine",
+      "what": "light sweeps it"
+     },
+     {
+      "at": "finished",
+      "do": "rows",
+      "what": "its chips glint in rows"
+     },
+     {
+      "at": "sliced",
+      "do": "cut",
+      "what": "saw lines run across it in a grid"
+     },
+     {
+      "at": "chips",
+      "do": "chip",
+      "what": "one chip lifts free"
+     }
+    ],
+    "things": [
+     "finished wafer",
+     "saw lines",
+     "single chip"
+    ]
+   }
+  },
+  {
+   "id": "phone_in",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "One of them is packaged, tested, and soldered onto the board inside a phone like yours.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "packaged": {
+     "word": "packaged"
+    },
+    "tested": {
+     "word": "tested"
+    },
+    "soldered": {
+     "word": "soldered"
+    },
+    "board": {
+     "word": "board"
+    },
+    "phone": {
+     "word": "phone"
+    },
+    "cam_them": {
+     "word": "them"
+    }
+   },
+   "params": {
+    "component": "Phone",
+    "place": "the inside of a phone: its board, the chip dropping onto it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "chip"
+     },
+     {
+      "at": "packaged",
+      "size": "close",
+      "on": "chip"
+     },
+     {
+      "at": "tested",
+      "size": "medium",
+      "on": "chip"
+     },
+     {
+      "at": "soldered",
+      "size": "medium",
+      "on": "chip"
+     },
+     {
+      "at": "board",
+      "size": "medium",
+      "on": "board"
+     },
+     {
+      "at": "phone",
+      "size": "wide",
+      "on": "phone"
+     },
+     {
+      "at": "cam_them",
+      "size": "close",
+      "on": "chip"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "chip",
+      "what": "a bare chip floats over a board"
+     },
+     {
+      "at": "packaged",
+      "do": "package",
+      "what": "it is sealed into a package"
+     },
+     {
+      "at": "tested",
+      "do": "test",
+      "what": "test probes touch it and it lights green"
+     },
+     {
+      "at": "soldered",
+      "do": "solder",
+      "what": "it drops onto the board, solder glinting"
+     },
+     {
+      "at": "phone",
+      "do": "close",
+      "what": "the phone closes up around the board"
+     }
+    ],
+    "things": [
+     "chip package",
+     "test probes",
+     "phone board",
+     "phone"
+    ]
+   }
+  },
+  {
+   "id": "back",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "So follow that chip back one last time. Its switches were printed by light, the light was steered by mirrors, and the mirrors were lit by a flash.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "switches": {
+     "word": "switches"
+    },
+    "light": {
+     "word": "light"
+    },
+    "steered": {
+     "word": "steered"
+    },
+    "mirrors": {
+     "word": "mirrors"
+    },
+    "flash": {
+     "word": "flash"
+    },
+    "printed": {
+     "word": "printed"
+    },
+    "lit": {
+     "word": "lit"
+    },
+    "cam_last": {
+     "word": "last"
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "the cutaway machine once more, the path lit backwards from the wafer to the source",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "chip",
+      "size": "medium",
+      "on": "wafer"
+     },
+     {
+      "at": "switches",
+      "size": "close",
+      "on": "wafer"
+     },
+     {
+      "at": "light",
+      "size": "medium",
+      "on": "mask"
+     },
+     {
+      "at": "steered",
+      "size": "medium",
+      "on": "mirrors"
+     },
+     {
+      "at": "mirrors",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "flash",
+      "size": "medium",
+      "on": "source"
+     },
+     {
+      "at": "cam_last",
+      "size": "close",
+      "on": "wafer"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "cutaway",
+      "what": "the cutaway machine"
+     },
+     {
+      "at": "chip",
+      "do": "wafer",
+      "what": "the wafer lights"
+     },
+     {
+      "at": "printed",
+      "do": "switch",
+      "what": "a tiny switch rises from it"
+     },
+     {
+      "at": "light",
+      "do": "mask",
+      "what": "the light lights up the mask"
+     },
+     {
+      "at": "steered",
+      "do": "mirrors",
+      "what": "the mirrors light"
+     },
+     {
+      "at": "lit",
+      "do": "path",
+      "what": "the path glows back toward the start"
+     },
+     {
+      "at": "flash",
+      "do": "tin",
+      "what": "the tin source flashes"
+     }
+    ],
+    "things": [
+     "cutaway machine",
+     "path lit backwards"
+    ]
+   }
+  },
+  {
+   "id": "everywhere",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "The most advanced chips in phones, laptops and data centres all depend on a machine like this one.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "advanced": {
+     "word": "advanced"
+    },
+    "phones": {
+     "word": "phones"
+    },
+    "laptops": {
+     "word": "laptops"
+    },
+    "centres": {
+     "word": "centres"
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "cam_on": {
+     "word": "on"
+    },
+    "cam_one": {
+     "word": "one"
+    }
+   },
+   "params": {
+    "component": "Fab",
+    "place": "the factory bay again, a row of EUV machines down the hall",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "advanced",
+      "size": "medium",
+      "on": "machine"
+     },
+     {
+      "at": "phones",
+      "size": "close",
+      "on": "door"
+     },
+     {
+      "at": "laptops",
+      "size": "medium",
+      "on": "machine"
+     },
+     {
+      "at": "centres",
+      "size": "wide",
+      "on": "bus"
+     },
+     {
+      "at": "machine",
+      "size": "medium",
+      "on": "machine"
+     },
+     {
+      "at": "cam_on",
+      "size": "medium",
+      "on": "bus"
+     },
+     {
+      "at": "cam_one",
+      "size": "close",
+      "on": "bus"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "machine",
+      "what": "the machine hums in the yellow light"
+     },
+     {
+      "at": "advanced",
+      "do": "row",
+      "what": "more machines light down the hall"
+     },
+     {
+      "at": "phones",
+      "do": "phones",
+      "what": "a phone glows on the port"
+     },
+     {
+      "at": "laptops",
+      "do": "laptops",
+      "what": "a laptop lights beside it"
+     },
+     {
+      "at": "centres",
+      "do": "racks",
+      "what": "server racks glow at the far end"
+     },
+     {
+      "at": "machine",
+      "do": "flash",
+      "what": "violet light pulses in every window"
+     }
+    ],
+    "things": [
+     "row of EUV machines",
+     "phone",
+     "laptop",
+     "server racks"
+    ]
+   }
+  },
+  {
+   "id": "back2",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "A flash from one drop of tin, flattened, then blasted by a laser, one of {fact2} every second.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "drop": {
+     "word": "drop"
+    },
+    "flattened": {
+     "word": "flattened"
+    },
+    "blasted": {
+     "word": "blasted"
+    },
+    "laser": {
+     "word": "laser"
+    },
+    "every": {
+     "word": "every"
+    },
+    "cam_from": {
+     "word": "from"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the light source chamber, one drop in slow motion",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "drop",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "flattened",
+      "size": "extreme",
+      "on": "drop"
+     },
+     {
+      "at": "blasted",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "laser",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "every",
+      "size": "medium",
+      "on": "wall"
+     },
+     {
+      "at": "cam_from",
+      "size": "close",
+      "on": "drop"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "drops",
+      "what": "drops falling"
+     },
+     {
+      "at": "drop",
+      "do": "freeze",
+      "what": "one slows at the spot"
+     },
+     {
+      "at": "flattened",
+      "do": "pre",
+      "what": "the first pulse flattens it"
+     },
+     {
+      "at": "blasted",
+      "do": "main",
+      "what": "the main pulse strikes"
+     },
+     {
+      "at": "laser",
+      "do": "glow",
+      "what": "the plasma blooms"
+     },
+     {
+      "at": "every",
+      "do": "counter",
+      "what": "the wall counter races"
+     }
+    ],
+    "things": [
+     "tin drop",
+     "pancake",
+     "plasma"
+    ],
+    "fig": {
+     "rate": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "transition": "cut",
+   "say": "All so the phone in your hand can carry billions of switches on a chip smaller than a fingernail.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "hand": {
+     "word": "hand"
+    },
+    "billions": {
+     "word": "billions"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "fingernail": {
+     "word": "fingernail"
+    },
+    "phone": {
+     "word": "phone"
+    },
+    "switches": {
+     "word": "switches"
+    }
+   },
+   "params": {
+    "component": "Phone",
+    "place": "the phone in a hand, opening into its board and the glowing chip, a fingertip beside it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "phone"
+     },
+     {
+      "at": "hand",
+      "size": "medium",
+      "on": "phone"
+     },
+     {
+      "at": "billions",
+      "size": "medium",
+      "on": "phone"
+     },
+     {
+      "at": "chip",
+      "size": "close",
+      "on": "chip"
+     },
+     {
+      "at": "fingernail",
+      "size": "medium",
+      "on": "finger"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "phone",
+      "what": "the phone glows in the hand"
+     },
+     {
+      "at": "phone",
+      "do": "open",
+      "what": "it opens up in layers"
+     },
+     {
+      "at": "billions",
+      "do": "chip",
+      "what": "the chip in the board lights"
+     },
+     {
+      "at": "switches",
+      "do": "switches",
+      "what": "its surface twinkles with switches"
+     },
+     {
+      "at": "chip",
+      "do": "zoom",
+      "what": "the chip lifts toward us"
+     },
+     {
+      "at": "fingernail",
+      "do": "nail",
+      "what": "a fingertip comes in beside it, bigger than the chip"
+     }
+    ],
+    "things": [
+     "phone in hand",
+     "glowing chip",
+     "fingertip"
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "transition": "cut",
+   "say": "What should we open up next? Tell us. Somewhere right now, another drop of tin is about to become light.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "open": {
+     "word": "open"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "somewhere": {
+     "word": "Somewhere"
+    },
+    "tin": {
+     "word": "tin"
+    },
+    "light": {
+     "word": "light"
+    },
+    "next": {
+     "word": "next"
+    },
+    "cam_another": {
+     "word": "another"
+    },
+    "cam_to": {
+     "word": "to"
+    }
+   },
+   "params": {
+    "component": "Plasma",
+    "place": "the light source chamber, as at the start, a drop falling toward the spot",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "all"
+     },
+     {
+      "at": "open",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "tell",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "somewhere",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "tin",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "light",
+      "size": "medium",
+      "on": "drop"
+     },
+     {
+      "at": "cam_another",
+      "size": "close",
+      "on": "drop"
+     },
+     {
+      "at": "cam_to",
+      "size": "medium",
+      "on": "drop"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "glow",
+      "what": "the chamber glows"
+     },
+     {
+      "at": "next",
+      "do": "drops",
+      "what": "drops fall again"
+     },
+     {
+      "at": "tell",
+      "do": "counter",
+      "what": "the wall counter counts"
+     },
+     {
+      "at": "somewhere",
+      "do": "freeze",
+      "what": "one drop slows"
+     },
+     {
+      "at": "tin",
+      "do": "pre",
+      "what": "the first pulse flattens it"
+     },
+     {
+      "at": "light",
+      "do": "main",
+      "what": "it bursts into light"
+     }
+    ],
+    "things": [
+     "tin drop",
+     "flash"
+    ]
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "params": {
+    "cta": "What should we open up next?",
+    "follow": "Subscribe for the next teardown"
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "custom",
+  "engine": "3d",
+  "component": "ThumbInside",
+  "pattern_id": "P1",
+  "words": "No *lenses*",
+  "things": [
+   "EUV machine cut open",
+   "violet beam on mirrors"
+  ],
+  "pattern": "the machine itself cut open in 3D, its insides lit violet, the light path visible, two heavy words",
+  "references": [
+   {
+    "id": "B2482h_TNwg",
+    "views": 2444925,
+    "what": "the EUV machine in 3D, its insides lit purple, a loupe on the light"
+   },
+   {
+    "id": "iSVHp6CAyQ8",
+    "views": 4263678,
+    "what": "the real machine with its panels off, the inside showing"
+   },
+   {
+    "id": "1JkzrR-hznE",
+    "views": 3798393,
+    "what": "the High-NA machine opened up behind a presenter"
+   }
+  ],
+  "score": 8,
+  "why": "1,2,4,5,6,7,8,10 = 8; missed 3 (at 168 px the cut-open shell reads as a bench, not a machine) and 9 (the wafer disc sits in the bottom-right corner). The lit zigzag of mirrors poses the 'no lenses' question beside Branch's 2.4M cutaway without copying it"
+ },
+ "thumbnails": [
+  {
+   "layout": "custom",
+   "engine": "3d",
+   "component": "ThumbWafer",
+   "pattern_id": "P2",
+   "words": "Printed by *plasma*",
+   "things": [
+    "glowing silicon wafer",
+    "violet beam"
+   ],
+   "pattern": "one silicon wafer big in the frame, its grid of chips lit, a short verdict",
+   "references": [
+    {
+     "id": "52GoRYP1les",
+     "views": 1517256,
+     "what": "a wafer filling the frame, its chips lit in colours"
+    },
+    {
+     "id": "IS5ycm7VfXg",
+     "views": 2518132,
+     "what": "the chip itself as the hero on a plain ground, a few words"
+    },
+    {
+     "id": "B2482h_TNwg",
+     "views": 2444925,
+     "what": "violet light striking the wafer inside the machine"
+    }
+   ],
+   "score": 9,
+   "why": "1,2,3,4,5,6,7,8,10 = 9; missed 9 (the wafer's edge runs into the bottom-right corner). One glowing wafer struck by a beam reads instantly at phone size, 'printed by plasma' adds the surprise the title doesn't say, and it differs from Xprocess's probes-on-wafer 1.5M"
+  },
+  {
+   "layout": "custom",
+   "engine": "3d",
+   "component": "ThumbTinChip",
+   "pattern_id": "P5",
+   "words": "Tin to *chip*",
+   "things": [
+    "exploding tin drop",
+    "glowing chip"
+   ],
+   "pattern": "the raw thing on the left becoming the finished chip on the right, two words naming the change",
+   "references": [
+    {
+     "id": "lvcAvPjZwxo",
+     "views": 2313928,
+     "what": "sand on the left, a glowing chip on the right, 'sand to chip'"
+    },
+    {
+     "id": "52GoRYP1les",
+     "views": 1517256,
+     "what": "made from sand: the raw material against the finished wafer"
+    },
+    {
+     "id": "IS5ycm7VfXg",
+     "views": 2518132,
+     "what": "two chips side by side, before and after"
+    }
+   ],
+   "score": 8,
+   "why": "1,2,4,5,6,7,8,10 = 8; missed 3 (at 168 px the tin drop reads as a violet ball, not metal) and 9 (the chip sits in the bottom-right corner). The tin-to-chip split follows PROCESS BHARAT's 2.3M sand-to-chip but in our 3D look"
+  }
+ ],
+ "thumbnail_pick": "b",
+ "narrator": "af_heart"
+}

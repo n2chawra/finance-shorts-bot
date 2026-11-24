@@ -1,0 +1,275 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T03:23:52.486817+00:00",
+    "finishedAt": "2026-11-24T03:23:52.486817+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T03:29:00.504038+00:00",
+    "finishedAt": "2026-11-24T03:29:00.504038+00:00",
+    "notes": [
+      "beat 'route'.params.place contains a typed number; use a placeholder: 'the machine cut open in 3D, its light path from the tin source to the wafer stage laid out'",
+      "note: beat 'bright' opens like a line in one of the last scripts (\"that's why the\"): new words",
+      "note: beat 'tease4' opens like a line in one of the last scripts ('so what is'): new words",
+      "note: beat 'develop' opens like a line in one of the last scripts ('so what happens'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T03:29:05.443786+00:00",
+    "finishedAt": "2026-11-24T03:29:05.443786+00:00",
+    "notes": [
+      "beat 'drops'.params.moments[2].do contains a typed number; use a placeholder: 'stream2'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T03:29:09.889635+00:00",
+    "finishedAt": "2026-11-24T03:29:09.889635+00:00",
+    "notes": [
+      "beat 'strip'.params.moments[3].do contains a typed number; use a placeholder: 'resist2'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T03:29:14.342880+00:00",
+    "finishedAt": "2026-11-24T03:29:14.342880+00:00",
+    "notes": [
+      "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T03:30:36.921962+00:00",
+    "finishedAt": "2026-11-24T03:30:36.921962+00:00",
+    "notes": [
+      "Beat 'main': 'That main pulse comes from a far more powerful laser' implies a second, separate laser. ASML says 'a more powerful laser pulse'; TRUMPF (the drive-laser maker) says one CO2 laser amplifier fires both the pre-pulse and the main pulse. Rewrite it as one laser firing a much stronger second pulse, e.g. 'That main pulse is far more powerful, and it hits the pancake so hard that the tin becomes plasma...'",
+      "Beat 'main': 'a gas so hot its atoms lose their electrons' says every electron goes, which is wrong: EUV-emitting tin plasma is made of ions that have lost some electrons (around Sn8+ to Sn14+). Change it to 'lose some of their electrons'."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T03:32:01.356592+00:00",
+    "finishedAt": "2026-11-24T03:32:01.356592+00:00",
+    "notes": [
+      "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T03:32:23.651436+00:00",
+    "finishedAt": "2026-11-24T03:32:23.651436+00:00",
+    "notes": [
+      "Re-review: beat 'main' now matches ASML/TRUMPF (one laser, stronger main pulse; ions lose some electrons); hook says 'a modern phone'; all six ASML facts (13.5 nm, 50,000/s, 25 µm, 70 m/s, 13 nm, 8 nm) confirmed on the cited ASML pages; verify list met; disclaimer ends the description."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T03:41:24.543847+00:00",
+    "finishedAt": "2026-11-24T03:41:24.543847+00:00",
+    "notes": [
+      "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T03:42:18.731056+00:00",
+    "finishedAt": "2026-11-24T03:42:18.731056+00:00",
+    "notes": [
+      "Re-review after 5 added beats (why_tin, dust, masks, step, everywhere): all accurate (tin plasma emits strongly near 13.5 nm; mask defects print on every exposure; one mask per layer; step-and-scan); figures and six ASML facts unchanged and confirmed; earlier main/hook fixes intact; disclaimer present. Note: 'everywhere' 'begin with' could read 'depend on'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T03:45:56.043454+00:00",
+    "finishedAt": "2026-11-24T03:59:28.543743+00:00",
+    "notes": [
+      "34 of 82 stills are mostly empty background (at 10 s, 20 s, 25 s, 30 s, 45 s, 80 s): fill the frame (a set, the cast big, money as a thing)",
+      "length 408 s is outside 420–480 s: add about 36 spoken words",
+      "thumbnail.png is empty at phone size (edges 0.075, 0.15-0.5): fill it with the story",
+      "the cover looks like L-20261123-21's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+      "note: four shots in a row open medium (from 'masks'): vary the shot size",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 61 of 61 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:02:25.688604+00:00",
+    "finishedAt": "2026-11-24T04:02:25.688604+00:00",
+    "notes": [
+      "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:02:46.110380+00:00",
+    "finishedAt": "2026-11-24T04:02:46.110380+00:00",
+    "notes": [
+      "Re-review after 3 added beats: motorway (70 m/s = 252 km/h, faster than motorway traffic), bigger_mask (EUV masks are drawn 4x larger, easier to make accurately), loop_layers (repeat patterning loop with overlay alignment) all accurate; figures and six ASML facts unchanged; earlier fixes intact; everywhere now 'depend on'; disclaimer present."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:02:26.526168+00:00",
+    "finishedAt": "2026-11-24T04:15:09.691411+00:00",
+    "notes": [
+      "426 s, ember/datahall (preview only)",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T04:17:51.811583+00:00",
+    "finishedAt": "2026-11-24T04:17:51.811583+00:00",
+    "notes": [
+      "[scene] Labels collide in the top-left corner over the channel bug and the NOT TO SCALE badge (labels whose anchor is off-screen seem clamped there): 30s 'no lenses' (route2), 115-120s 'visible light' and 'EUV light' on top of each other and under the wave (short_wave), 200s 'mask' (mask), 300s 'standard' (hna), 335s 'resist' and 340s 'metal' (develop/etch), 360s 'transistor' (transistors), 375s 'older machines' (coarse). Fix the 3D label kit: keep labels out of the logo/badge box and hide a label whose anchor is off-screen instead of pinning it to the corner; stack two labels instead of overlapping.",
+      "[scene] 100s (Plasma, beat main): 'plasma' label drawn on top of the 'pulse' label, reads 'plasmalse'. Remove the earlier label when the next one enters, or offset them.",
+      "[script] 60s (Droplet, beat count): the 50,000 counter screen, the beat's figure, is cut off by the top edge. Set the camera on the counter at that word (camera on: counter, size medium) so the whole screen is in frame.",
+      "[script] 160s (Mirrors, beat no_lens): empty frame, only wall and floor while the line says the machine steers light with mirrors. Aim the camera at the mirror chain (on: mirrors) and light the beam on 'mirrors'. 150s and 175s are nearly empty too (a blurred disc at the edge, a purple disc cropped under the captions, no beam): frame the lens and the bouncing beam.",
+      "[script] 285-325s (Wafer width, Ruler result/ratio/turn): flat pale slabs fill the frame; the 13 nm and 8 nm figures are not visible in the 285s or 310s stills (only '1.6x finer' at 320s), and the captions at 285s and 325s are white-on-near-white and hard to read. Put each width on a measuring bar next to its printed line on the word, pull back to a medium shot with dark background behind the caption zone.",
+      "[script] 415s payoff (Phone) is the same picture as 390s phone_in: a chip over a board, no phone and no hand, while the line is about the phone in your hand. Show the phone in a hand opening onto the board for the payoff, a different shot size from 390s."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:19:25.732679+00:00",
+    "finishedAt": "2026-11-24T04:19:25.732679+00:00",
+    "notes": [
+      "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:19:44.067708+00:00",
+    "finishedAt": "2026-11-24T04:19:44.067708+00:00",
+    "notes": [
+      "Re-review after QA: hook2 'built by ASML' is accurate (ASML is the only maker of EUV lithography machines), 50,000/s still from the sourced fact; loop_layers now after strip, text unchanged; figures and six ASML facts unchanged; disclaimer present."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T04:19:52.028497+00:00",
+    "finishedAt": "2026-11-24T04:32:33.160339+00:00",
+    "notes": [
+      "14 of 86 stills are mostly empty background (at 10 s, 15 s, 85 s, 140 s, 145 s, 150 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: four shots in a row open medium (from 'why_wide'): vary the shot size",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:33:45.608636+00:00",
+    "finishedAt": "2026-11-24T04:46:29.711617+00:00",
+    "notes": [
+      "428 s, ember/datahall (preview only)",
+      "note: four shots in a row open medium (from 'why_wide'): vary the shot size",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T04:47:43.551453+00:00",
+    "finishedAt": "2026-11-24T04:47:43.551453+00:00",
+    "notes": [
+      "[script] Round 2: frames that are almost only background during camera moves. 305s (Ruler, beat why_wide, on 'angle help?'): dotted wall, floor and the blurred edge of a pole, neither mirror in frame. 400s (Route, beat back, on 'lit by a flash'): grey wall with two purple mirror discs cropped at the corners, no source or beam. 390s (Phone, beat phone_in, on 'soldered onto the'): an empty teal board with the chip cut off by the top edge and no phone. Fix: keep the camera on the subject through these moves (why_wide: wide on both benches and their light cones; back: medium on the lit tin source and the beam leaving it; phone_in: medium on the chip landing on the board inside an open phone)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:49:06.519620+00:00",
+    "finishedAt": "2026-11-24T05:01:20.605162+00:00",
+    "notes": [
+      "428 s, ember/datahall (preview only)",
+      "note: four shots in a row open medium (from 'result'): vary the shot size",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:02:09.556827+00:00",
+    "finishedAt": "2026-11-24T05:14:11.211027+00:00",
+    "notes": [
+      "428 s, ember/datahall (preview only)",
+      "note: four shots in a row open medium (from 'result'): vary the shot size",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:14:39.513738+00:00",
+    "finishedAt": "2026-11-24T05:14:39.513738+00:00",
+    "notes": [
+      "Round 3: 305s why_wide shows both benches and cones, 390s chip lands on the board in frame, 400s wide cutaway with the lit source; no overlaps, cut-offs or empty frames left; 428s, layout clean, peak -1.0/mean -16.3 dB; thumbnails readable, pick B agreed. Minor: counters mid-count at 15s/60s, 'ASML · ASML' source chip, empty CHAPTERS heading."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:15:31.286531+00:00",
+    "finishedAt": "2026-11-24T05:15:31.286531+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:15:21.896403+00:00",
+    "finishedAt": "2026-11-24T11:42:32.681462+00:00",
+    "notes": [
+      "428 s, ember/datahall, peak -1.0 dB, mean -16.3 dB",
+      "note: four shots in a row open medium (from 'result'): vary the shot size",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-24T11:42:50.733621+00:00",
+    "finishedAt": "2026-11-24T11:42:50.733621+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

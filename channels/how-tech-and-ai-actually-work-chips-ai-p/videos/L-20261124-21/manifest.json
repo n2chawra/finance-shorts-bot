@@ -1,0 +1,915 @@
+{
+  "id": "L-20261124-21",
+  "createdAt": "2026-11-24T11:42:50.733367+00:00",
+  "status": "qa_passed",
+  "format": "long",
+  "template": "long_story",
+  "topic": {
+    "title": "How a Chip Factory Prints Billions of Switches With Light",
+    "category": "chips",
+    "feed_id": "2026-11-18-euv-prints-a-chip",
+    "reach": "global"
+  },
+  "title": "How Does ASML's EUV Machine Print a Chip With Light?",
+  "description": "How does a machine print the chip in your phone with light, line by line, finer than anything a lens can focus?\nWe follow the light through ASML's EUV machine in 3D: molten tin drops hit twice by a laser, a glowing plasma, a row of mirrors in a vacuum, a patterned mask, and the silicon wafer below it.\nThen the newest High-NA machine that prints even finer lines, and how the switches of a chip are built up, layer after layer.\n\n0:00 A machine that blasts tin\n0:35 The tin drop\n1:22 Two laser hits\n2:31 Mirrors, not lenses\n3:17 The mask\n4:02 The wafer\n4:57 High-NA: even finer\n5:29 Layer after layer\n6:23 Back to your phone\n\nSources: ASML (Nov 2026).\nAnimations are simplified illustrations, not exact to scale.",
+  "hashtags": [
+    "#ASML",
+    "#EUV",
+    "#Semiconductors",
+    "#HowItWorks",
+    "#Chips"
+  ],
+  "hookStyle": "question",
+  "cta": "What should we open up next? Tell us in the comments",
+  "seed": 61307,
+  "style": {
+    "palette": "ember",
+    "genre": "datahall",
+    "key": "F",
+    "bpm": 63,
+    "voice": "af_heart"
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.15,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The chip in a modern phone holds billions of tiny switches, and its finest lines were printed with light made by blowing up drops of molten tin.",
+        "start": 0.27,
+        "seconds": 8.12,
+        "window": 8.77,
+        "fill": 0.926
+      },
+      {
+        "scene": "hook2",
+        "text": "The machine that does it, built by ASML, is about the size of a bus, and it blasts 50,000 drops of tin every second. So how does exploding metal end up as a chip?",
+        "start": 9.03,
+        "seconds": 9.93,
+        "window": 10.57,
+        "fill": 0.939
+      },
+      {
+        "scene": "route",
+        "text": "Follow the light through it. Tin becomes light, mirrors carry it, a mask gives it a pattern, and a silicon wafer takes the print.",
+        "start": 19.6,
+        "seconds": 6.9,
+        "window": 7.53,
+        "fill": 0.916
+      },
+      {
+        "scene": "route2",
+        "text": "Along the way, we'll see why no lens can do this job, how the newest machine prints even finer, and how one print becomes a working switch.",
+        "start": 27.13,
+        "seconds": 7.74,
+        "window": 8.4,
+        "fill": 0.921
+      },
+      {
+        "scene": "melt",
+        "text": "It starts with tin, a soft silvery metal, heated until it melts and flows like water.",
+        "start": 35.53,
+        "seconds": 4.73,
+        "window": 5.33,
+        "fill": 0.887
+      },
+      {
+        "scene": "drops",
+        "text": "A nozzle squeezes it out as a stream of tiny drops, each about 25 microns across, narrower than a human hair.",
+        "start": 40.87,
+        "seconds": 6.55,
+        "window": 7.17,
+        "fill": 0.914
+      },
+      {
+        "scene": "speed",
+        "text": "Each one leaves the nozzle at about 70 metres a second, and they never stop coming.",
+        "start": 48.03,
+        "seconds": 4.41,
+        "window": 5.03,
+        "fill": 0.877
+      },
+      {
+        "scene": "motorway",
+        "text": "That's faster than a car on a motorway, and the nozzle aims every one of them at the same tiny spot.",
+        "start": 53.07,
+        "seconds": 5.32,
+        "window": 5.97,
+        "fill": 0.891
+      },
+      {
+        "scene": "count",
+        "text": "How many? 50,000 drops every second, falling one after another through the very same spot.",
+        "start": 59.03,
+        "seconds": 5.26,
+        "window": 5.9,
+        "fill": 0.892
+      },
+      {
+        "scene": "why_many",
+        "text": "Why so many? Because every drop will become one short flash of light, and the machine needs a nonstop stream of flashes.",
+        "start": 64.93,
+        "seconds": 6.66,
+        "window": 7.3,
+        "fill": 0.912
+      },
+      {
+        "scene": "vacuum",
+        "text": "And it all happens in a vacuum. This kind of light is swallowed by almost everything, even the air.",
+        "start": 72.23,
+        "seconds": 5.35,
+        "window": 5.97,
+        "fill": 0.896
+      },
+      {
+        "scene": "tease1",
+        "text": "But a drop of tin doesn't glow on its own. So what turns it into light?",
+        "start": 78.2,
+        "seconds": 3.75,
+        "window": 4.37,
+        "fill": 0.858
+      },
+      {
+        "scene": "pre",
+        "text": "A laser. As each drop falls, a first, weaker pulse hits it and squashes it flat, like a tiny pancake.",
+        "start": 82.57,
+        "seconds": 6.18,
+        "window": 6.8,
+        "fill": 0.909
+      },
+      {
+        "scene": "why_flat",
+        "text": "Why flatten it? A wide, flat target catches far more of the next pulse, the big one.",
+        "start": 89.37,
+        "seconds": 4.59,
+        "window": 5.23,
+        "fill": 0.878
+      },
+      {
+        "scene": "main",
+        "text": "That main pulse is far more powerful, and it hits the pancake so hard that the tin becomes plasma, a gas so hot its atoms lose some of their electrons.",
+        "start": 94.6,
+        "seconds": 9.16,
+        "window": 9.8,
+        "fill": 0.935
+      },
+      {
+        "scene": "euv",
+        "text": "And that plasma glows. Not with light you could see, but with extreme ultraviolet light, at a wavelength of 13.5 nanometres.",
+        "start": 104.4,
+        "seconds": 7.85,
+        "window": 8.5,
+        "fill": 0.924
+      },
+      {
+        "scene": "short_wave",
+        "text": "What does that mean? The light our eyes see has waves many times longer. A shorter wave draws a finer line, like a sharp pencil next to a thick marker.",
+        "start": 112.9,
+        "seconds": 8.42,
+        "window": 9.07,
+        "fill": 0.928
+      },
+      {
+        "scene": "repeat",
+        "text": "Then it all repeats. Drop, flatten, flash, 50,000 times a second.",
+        "start": 121.97,
+        "seconds": 4.36,
+        "window": 5.0,
+        "fill": 0.872
+      },
+      {
+        "scene": "collect",
+        "text": "Behind every flash, a big curved mirror gathers the light and focuses it to one bright point at the far end of the chamber.",
+        "start": 126.97,
+        "seconds": 6.74,
+        "window": 7.37,
+        "fill": 0.915
+      },
+      {
+        "scene": "why_tin",
+        "text": "Why tin, of all things? Tin plasma happens to glow brightly at just this wavelength, so more of each flash is light the machine can use.",
+        "start": 134.33,
+        "seconds": 7.53,
+        "window": 8.17,
+        "fill": 0.922
+      },
+      {
+        "scene": "tease2",
+        "text": "So far: a drop, a flash, and light at 13.5 nanometres. Now it has to cross the machine, and this is where ordinary optics fail.",
+        "start": 142.5,
+        "seconds": 8.69,
+        "window": 9.33,
+        "fill": 0.931
+      },
+      {
+        "scene": "lens",
+        "text": "Why not a lens? A camera or a microscope bends light through glass. Try that here, and the glass simply swallows it.",
+        "start": 151.83,
+        "seconds": 6.52,
+        "window": 7.13,
+        "fill": 0.914
+      },
+      {
+        "scene": "no_lens",
+        "text": "So the light's path has no lenses at all. The machine steers it with mirrors instead.",
+        "start": 158.97,
+        "seconds": 4.19,
+        "window": 4.83,
+        "fill": 0.867
+      },
+      {
+        "scene": "layers",
+        "text": "Not ordinary mirrors, though. Each one is made of many very thin layers, two materials stacked one on top of the other.",
+        "start": 163.8,
+        "seconds": 6.56,
+        "window": 7.17,
+        "fill": 0.915
+      },
+      {
+        "scene": "add_up",
+        "text": "Each layer reflects back a little of the light, and all those small reflections line up into one strong bounce.",
+        "start": 170.97,
+        "seconds": 5.62,
+        "window": 6.27,
+        "fill": 0.896
+      },
+      {
+        "scene": "loss",
+        "text": "Why does that matter? Even the best mirror loses part of the light on every bounce, and the light bounces many times on its way down.",
+        "start": 177.23,
+        "seconds": 6.88,
+        "window": 7.5,
+        "fill": 0.917
+      },
+      {
+        "scene": "bright",
+        "text": "It is the reason the source must be so bright, and why these mirrors are polished to some of the smoothest surfaces ever made.",
+        "start": 184.73,
+        "seconds": 6.3,
+        "window": 6.93,
+        "fill": 0.909
+      },
+      {
+        "scene": "tease3",
+        "text": "So the light arrives clean and bright. But it carries no picture yet. Where does the pattern of a chip come from?",
+        "start": 191.67,
+        "seconds": 5.87,
+        "window": 6.5,
+        "fill": 0.903
+      },
+      {
+        "scene": "mask",
+        "text": "From the mask: a plate carrying the pattern of one layer of the chip, like a stencil.",
+        "start": 198.17,
+        "seconds": 4.41,
+        "window": 5.07,
+        "fill": 0.87
+      },
+      {
+        "scene": "reflective",
+        "text": "And even the mask is a mirror. The light bounces off its pattern instead of shining through it.",
+        "start": 203.23,
+        "seconds": 4.64,
+        "window": 5.3,
+        "fill": 0.875
+      },
+      {
+        "scene": "dark_bright",
+        "text": "Dark parts of it swallow the light, bright parts bounce it back, so the bounce carries the shape of the pattern.",
+        "start": 208.53,
+        "seconds": 5.58,
+        "window": 6.2,
+        "fill": 0.9
+      },
+      {
+        "scene": "dust",
+        "text": "That's also why the mask must stay perfectly clean. A single speck of dust on it would be printed onto every chip, again and again.",
+        "start": 214.73,
+        "seconds": 7.22,
+        "window": 7.83,
+        "fill": 0.922
+      },
+      {
+        "scene": "masks",
+        "text": "And each of the chip's finest layers gets its own mask. Swap the mask, and the same machine prints a different layer.",
+        "start": 222.57,
+        "seconds": 6.23,
+        "window": 6.87,
+        "fill": 0.907
+      },
+      {
+        "scene": "shrink",
+        "text": "Then more mirrors shrink that picture down and aim it at the wafer below, far smaller than the mask itself.",
+        "start": 229.43,
+        "seconds": 5.47,
+        "window": 6.1,
+        "fill": 0.897
+      },
+      {
+        "scene": "bigger_mask",
+        "text": "Drawing the mask bigger than the print it makes keeps its pattern easier to make accurately.",
+        "start": 235.53,
+        "seconds": 4.29,
+        "window": 4.9,
+        "fill": 0.876
+      },
+      {
+        "scene": "tease4",
+        "text": "And what is all that light printing onto?",
+        "start": 240.43,
+        "seconds": 1.88,
+        "window": 2.43,
+        "fill": 0.774
+      },
+      {
+        "scene": "wafer",
+        "text": "A wafer: a thin, polished disc of silicon, coated with a film called a resist, which changes wherever the light lands.",
+        "start": 242.87,
+        "seconds": 6.69,
+        "window": 7.33,
+        "fill": 0.913
+      },
+      {
+        "scene": "scan",
+        "text": "It sits on a stage that races back and forth under the light, printing the pattern again and again, chip after chip, across the whole disc.",
+        "start": 250.2,
+        "seconds": 7.23,
+        "window": 7.87,
+        "fill": 0.919
+      },
+      {
+        "scene": "step",
+        "text": "When one chip is done, the stage jumps to the next spot, and the next sweep begins, until every spot on the disc is printed.",
+        "start": 258.07,
+        "seconds": 6.74,
+        "window": 7.37,
+        "fill": 0.915
+      },
+      {
+        "scene": "sync",
+        "text": "Above it, the mask moves too, in perfect step, so every line lands exactly where it should.",
+        "start": 265.43,
+        "seconds": 5.0,
+        "window": 5.6,
+        "fill": 0.893
+      },
+      {
+        "scene": "slit",
+        "text": "How does the light print a whole chip at once? It doesn't. A thin slit of light sweeps across each one, like a scanner copying a page.",
+        "start": 271.03,
+        "seconds": 7.02,
+        "window": 7.67,
+        "fill": 0.915
+      },
+      {
+        "scene": "copies",
+        "text": "When the disc is done, it holds rows of identical chips, every one a copy of the same layer.",
+        "start": 278.7,
+        "seconds": 5.06,
+        "window": 5.7,
+        "fill": 0.888
+      },
+      {
+        "scene": "width",
+        "text": "And the finest lines a standard EUV machine prints are about 13 nanometres wide.",
+        "start": 284.4,
+        "seconds": 5.07,
+        "window": 5.7,
+        "fill": 0.889
+      },
+      {
+        "scene": "recap",
+        "text": "So far: tin becomes light, mirrors carry it, the mask shapes it, and the wafer takes the print. And the newest machine goes further.",
+        "start": 290.1,
+        "seconds": 7.13,
+        "window": 7.77,
+        "fill": 0.918
+      },
+      {
+        "scene": "hna",
+        "text": "It's called High-NA. Its mirrors are much bigger, and they catch the light at wider angles.",
+        "start": 297.87,
+        "seconds": 4.67,
+        "window": 5.33,
+        "fill": 0.876
+      },
+      {
+        "scene": "why_wide",
+        "text": "Why does a wider angle help? Light arriving from more directions can be focused to a tighter point, and a tighter point draws a finer line.",
+        "start": 303.2,
+        "seconds": 7.28,
+        "window": 7.9,
+        "fill": 0.922
+      },
+      {
+        "scene": "result",
+        "text": "The result: lines about 8 nanometres wide, where the standard machine draws 13.",
+        "start": 311.1,
+        "seconds": 4.67,
+        "window": 5.3,
+        "fill": 0.881
+      },
+      {
+        "scene": "ratio",
+        "text": "That's lines about 1.6× finer, so more switches fit on the same patch of silicon.",
+        "start": 316.4,
+        "seconds": 5.28,
+        "window": 5.9,
+        "fill": 0.895
+      },
+      {
+        "scene": "turn",
+        "text": "Yet one pass under this light never makes a chip. A single pass prints just one layer, and a chip needs dozens of them.",
+        "start": 322.3,
+        "seconds": 6.62,
+        "window": 7.27,
+        "fill": 0.911
+      },
+      {
+        "scene": "develop",
+        "text": "What happens after the print? The wafer leaves the machine, and the resist is washed away where the light changed it, leaving a stencil.",
+        "start": 329.57,
+        "seconds": 7.12,
+        "window": 7.77,
+        "fill": 0.916
+      },
+      {
+        "scene": "etch",
+        "text": "Then the gaps in that stencil are etched into the surface, or filled with metal.",
+        "start": 337.33,
+        "seconds": 3.85,
+        "window": 4.5,
+        "fill": 0.856
+      },
+      {
+        "scene": "strip",
+        "text": "The leftover resist is stripped off, a fresh layer goes on top, and the wafer goes back for the next print.",
+        "start": 341.83,
+        "seconds": 5.8,
+        "window": 6.43,
+        "fill": 0.902
+      },
+      {
+        "scene": "loop_layers",
+        "text": "Print, wash, etch, fill: the same loop runs again for every layer, each one lined up exactly on the one below.",
+        "start": 348.27,
+        "seconds": 6.47,
+        "window": 7.1,
+        "fill": 0.911
+      },
+      {
+        "scene": "transistors",
+        "text": "At the very bottom, the first layers build the switches themselves: transistors, each a tiny gate that lets current through or blocks it.",
+        "start": 355.37,
+        "seconds": 7.4,
+        "window": 7.97,
+        "fill": 0.928
+      },
+      {
+        "scene": "wires",
+        "text": "What joins them up? Above them, layer after layer of copper wiring connects billions of those switches together.",
+        "start": 363.33,
+        "seconds": 6.1,
+        "window": 6.73,
+        "fill": 0.906
+      },
+      {
+        "scene": "coarse",
+        "text": "And not every layer needs EUV. The bigger, coarser layers go to older machines that use longer-wave light, which costs less.",
+        "start": 370.07,
+        "seconds": 7.21,
+        "window": 7.87,
+        "fill": 0.916
+      },
+      {
+        "scene": "finest",
+        "text": "Only the finest layers, the ones packed tightest, take the trip through the tin and the mirrors.",
+        "start": 377.93,
+        "seconds": 4.74,
+        "window": 5.37,
+        "fill": 0.883
+      },
+      {
+        "scene": "cut",
+        "text": "After weeks of this, the finished wafer is sliced into separate chips.",
+        "start": 383.3,
+        "seconds": 3.58,
+        "window": 4.23,
+        "fill": 0.846
+      },
+      {
+        "scene": "phone_in",
+        "text": "One of them is packaged, tested, and soldered onto the board inside a phone like yours.",
+        "start": 387.53,
+        "seconds": 4.72,
+        "window": 5.37,
+        "fill": 0.879
+      },
+      {
+        "scene": "back",
+        "text": "So follow that chip back one last time. Its switches were printed by light, the light was steered by mirrors, and the mirrors were lit by a flash.",
+        "start": 392.9,
+        "seconds": 7.84,
+        "window": 8.47,
+        "fill": 0.926
+      },
+      {
+        "scene": "everywhere",
+        "text": "The most advanced chips in phones, laptops and data centres all depend on a machine like this one.",
+        "start": 401.37,
+        "seconds": 5.46,
+        "window": 6.1,
+        "fill": 0.895
+      },
+      {
+        "scene": "back2",
+        "text": "A flash from one drop of tin, flattened, then blasted by a laser, one of 50,000 every second.",
+        "start": 407.47,
+        "seconds": 6.04,
+        "window": 6.67,
+        "fill": 0.906
+      },
+      {
+        "scene": "payoff",
+        "text": "All so the phone in your hand can carry billions of switches on a chip smaller than a fingernail.",
+        "start": 414.13,
+        "seconds": 4.75,
+        "window": 5.37,
+        "fill": 0.885
+      },
+      {
+        "scene": "loop",
+        "text": "What should we open up next? Tell us. Somewhere right now, another drop of tin is about to become light.",
+        "start": 419.5,
+        "seconds": 5.44,
+        "window": 6.07,
+        "fill": 0.896
+      }
+    ]
+  },
+  "durationSec": 428,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.1,
+    "music_under_voice_db": 26.6
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "af_heart",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after QA: hook2 'built by ASML' is accurate (ASML is the only maker of EUV lithography machines), 50,000/s still from the sourced fact; loop_layers now after strip, text unchanged; figures and six ASML facts unchanged; disclaimer present."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: 305s why_wide shows both benches and cones, 390s chip lands on the board in frame, 400s wide cutaway with the lit source; no overlaps, cut-offs or empty frames left; 428s, layout clean, peak -1.0/mean -16.3 dB; thumbnails readable, pick B agreed. Minor: counters mid-count at 15s/60s, 'ASML · ASML' source chip, empty CHAPTERS heading."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-24T03:23:52.486817+00:00",
+      "finishedAt": "2026-11-24T03:23:52.486817+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T03:29:00.504038+00:00",
+      "finishedAt": "2026-11-24T03:29:00.504038+00:00",
+      "notes": [
+        "beat 'route'.params.place contains a typed number; use a placeholder: 'the machine cut open in 3D, its light path from the tin source to the wafer stage laid out'",
+        "note: beat 'bright' opens like a line in one of the last scripts (\"that's why the\"): new words",
+        "note: beat 'tease4' opens like a line in one of the last scripts ('so what is'): new words",
+        "note: beat 'develop' opens like a line in one of the last scripts ('so what happens'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T03:29:05.443786+00:00",
+      "finishedAt": "2026-11-24T03:29:05.443786+00:00",
+      "notes": [
+        "beat 'drops'.params.moments[2].do contains a typed number; use a placeholder: 'stream2'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T03:29:09.889635+00:00",
+      "finishedAt": "2026-11-24T03:29:09.889635+00:00",
+      "notes": [
+        "beat 'strip'.params.moments[3].do contains a typed number; use a placeholder: 'resist2'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T03:29:14.342880+00:00",
+      "finishedAt": "2026-11-24T03:29:14.342880+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T03:30:36.921962+00:00",
+      "finishedAt": "2026-11-24T03:30:36.921962+00:00",
+      "notes": [
+        "Beat 'main': 'That main pulse comes from a far more powerful laser' implies a second, separate laser. ASML says 'a more powerful laser pulse'; TRUMPF (the drive-laser maker) says one CO2 laser amplifier fires both the pre-pulse and the main pulse. Rewrite it as one laser firing a much stronger second pulse, e.g. 'That main pulse is far more powerful, and it hits the pancake so hard that the tin becomes plasma...'",
+        "Beat 'main': 'a gas so hot its atoms lose their electrons' says every electron goes, which is wrong: EUV-emitting tin plasma is made of ions that have lost some electrons (around Sn8+ to Sn14+). Change it to 'lose some of their electrons'."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T03:32:01.356592+00:00",
+      "finishedAt": "2026-11-24T03:32:01.356592+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T03:32:23.651436+00:00",
+      "finishedAt": "2026-11-24T03:32:23.651436+00:00",
+      "notes": [
+        "Re-review: beat 'main' now matches ASML/TRUMPF (one laser, stronger main pulse; ions lose some electrons); hook says 'a modern phone'; all six ASML facts (13.5 nm, 50,000/s, 25 µm, 70 m/s, 13 nm, 8 nm) confirmed on the cited ASML pages; verify list met; disclaimer ends the description."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T03:41:24.543847+00:00",
+      "finishedAt": "2026-11-24T03:41:24.543847+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T03:42:18.731056+00:00",
+      "finishedAt": "2026-11-24T03:42:18.731056+00:00",
+      "notes": [
+        "Re-review after 5 added beats (why_tin, dust, masks, step, everywhere): all accurate (tin plasma emits strongly near 13.5 nm; mask defects print on every exposure; one mask per layer; step-and-scan); figures and six ASML facts unchanged and confirmed; earlier main/hook fixes intact; disclaimer present. Note: 'everywhere' 'begin with' could read 'depend on'."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T03:45:56.043454+00:00",
+      "finishedAt": "2026-11-24T03:59:28.543743+00:00",
+      "notes": [
+        "34 of 82 stills are mostly empty background (at 10 s, 20 s, 25 s, 30 s, 45 s, 80 s): fill the frame (a set, the cast big, money as a thing)",
+        "length 408 s is outside 420–480 s: add about 36 spoken words",
+        "thumbnail.png is empty at phone size (edges 0.075, 0.15-0.5): fill it with the story",
+        "the cover looks like L-20261123-21's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+        "note: four shots in a row open medium (from 'masks'): vary the shot size",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 61 of 61 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:02:25.688604+00:00",
+      "finishedAt": "2026-11-24T04:02:25.688604+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:02:46.110380+00:00",
+      "finishedAt": "2026-11-24T04:02:46.110380+00:00",
+      "notes": [
+        "Re-review after 3 added beats: motorway (70 m/s = 252 km/h, faster than motorway traffic), bigger_mask (EUV masks are drawn 4x larger, easier to make accurately), loop_layers (repeat patterning loop with overlay alignment) all accurate; figures and six ASML facts unchanged; earlier fixes intact; everywhere now 'depend on'; disclaimer present."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:02:26.526168+00:00",
+      "finishedAt": "2026-11-24T04:15:09.691411+00:00",
+      "notes": [
+        "426 s, ember/datahall (preview only)",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T04:17:51.811583+00:00",
+      "finishedAt": "2026-11-24T04:17:51.811583+00:00",
+      "notes": [
+        "[scene] Labels collide in the top-left corner over the channel bug and the NOT TO SCALE badge (labels whose anchor is off-screen seem clamped there): 30s 'no lenses' (route2), 115-120s 'visible light' and 'EUV light' on top of each other and under the wave (short_wave), 200s 'mask' (mask), 300s 'standard' (hna), 335s 'resist' and 340s 'metal' (develop/etch), 360s 'transistor' (transistors), 375s 'older machines' (coarse). Fix the 3D label kit: keep labels out of the logo/badge box and hide a label whose anchor is off-screen instead of pinning it to the corner; stack two labels instead of overlapping.",
+        "[scene] 100s (Plasma, beat main): 'plasma' label drawn on top of the 'pulse' label, reads 'plasmalse'. Remove the earlier label when the next one enters, or offset them.",
+        "[script] 60s (Droplet, beat count): the 50,000 counter screen, the beat's figure, is cut off by the top edge. Set the camera on the counter at that word (camera on: counter, size medium) so the whole screen is in frame.",
+        "[script] 160s (Mirrors, beat no_lens): empty frame, only wall and floor while the line says the machine steers light with mirrors. Aim the camera at the mirror chain (on: mirrors) and light the beam on 'mirrors'. 150s and 175s are nearly empty too (a blurred disc at the edge, a purple disc cropped under the captions, no beam): frame the lens and the bouncing beam.",
+        "[script] 285-325s (Wafer width, Ruler result/ratio/turn): flat pale slabs fill the frame; the 13 nm and 8 nm figures are not visible in the 285s or 310s stills (only '1.6x finer' at 320s), and the captions at 285s and 325s are white-on-near-white and hard to read. Put each width on a measuring bar next to its printed line on the word, pull back to a medium shot with dark background behind the caption zone.",
+        "[script] 415s payoff (Phone) is the same picture as 390s phone_in: a chip over a board, no phone and no hand, while the line is about the phone in your hand. Show the phone in a hand opening onto the board for the payoff, a different shot size from 390s."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:19:25.732679+00:00",
+      "finishedAt": "2026-11-24T04:19:25.732679+00:00",
+      "notes": [
+        "14 figures computed from inputs; 14 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:19:44.067708+00:00",
+      "finishedAt": "2026-11-24T04:19:44.067708+00:00",
+      "notes": [
+        "Re-review after QA: hook2 'built by ASML' is accurate (ASML is the only maker of EUV lithography machines), 50,000/s still from the sourced fact; loop_layers now after strip, text unchanged; figures and six ASML facts unchanged; disclaimer present."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T04:19:52.028497+00:00",
+      "finishedAt": "2026-11-24T04:32:33.160339+00:00",
+      "notes": [
+        "14 of 86 stills are mostly empty background (at 10 s, 15 s, 85 s, 140 s, 145 s, 150 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: four shots in a row open medium (from 'why_wide'): vary the shot size",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:33:45.608636+00:00",
+      "finishedAt": "2026-11-24T04:46:29.711617+00:00",
+      "notes": [
+        "428 s, ember/datahall (preview only)",
+        "note: four shots in a row open medium (from 'why_wide'): vary the shot size",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T04:47:43.551453+00:00",
+      "finishedAt": "2026-11-24T04:47:43.551453+00:00",
+      "notes": [
+        "[script] Round 2: frames that are almost only background during camera moves. 305s (Ruler, beat why_wide, on 'angle help?'): dotted wall, floor and the blurred edge of a pole, neither mirror in frame. 400s (Route, beat back, on 'lit by a flash'): grey wall with two purple mirror discs cropped at the corners, no source or beam. 390s (Phone, beat phone_in, on 'soldered onto the'): an empty teal board with the chip cut off by the top edge and no phone. Fix: keep the camera on the subject through these moves (why_wide: wide on both benches and their light cones; back: medium on the lit tin source and the beam leaving it; phone_in: medium on the chip landing on the board inside an open phone)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:49:06.519620+00:00",
+      "finishedAt": "2026-11-24T05:01:20.605162+00:00",
+      "notes": [
+        "428 s, ember/datahall (preview only)",
+        "note: four shots in a row open medium (from 'result'): vary the shot size",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:02:09.556827+00:00",
+      "finishedAt": "2026-11-24T05:14:11.211027+00:00",
+      "notes": [
+        "428 s, ember/datahall (preview only)",
+        "note: four shots in a row open medium (from 'result'): vary the shot size",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:14:39.513738+00:00",
+      "finishedAt": "2026-11-24T05:14:39.513738+00:00",
+      "notes": [
+        "Round 3: 305s why_wide shows both benches and cones, 390s chip lands on the board in frame, 400s wide cutaway with the lit source; no overlaps, cut-offs or empty frames left; 428s, layout clean, peak -1.0/mean -16.3 dB; thumbnails readable, pick B agreed. Minor: counters mid-count at 15s/60s, 'ASML · ASML' source chip, empty CHAPTERS heading."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:15:31.286531+00:00",
+      "finishedAt": "2026-11-24T05:15:31.286531+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:15:21.896403+00:00",
+      "finishedAt": "2026-11-24T11:42:32.681462+00:00",
+      "notes": [
+        "428 s, ember/datahall, peak -1.0 dB, mean -16.3 dB",
+        "note: four shots in a row open medium (from 'result'): vary the shot size",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-24T11:42:50.733621+00:00",
+      "finishedAt": "2026-11-24T11:42:50.733621+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-L-20261124-21",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/L-20261124-21"
+  },
+  "thumbnails": [
+    {
+      "file": "thumbnail.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the machine itself cut open in 3D, its insides lit violet, the light path visible, two heavy words",
+      "score": 8,
+      "why": "1,2,4,5,6,7,8,10 = 8; missed 3 (at 168 px the cut-open shell reads as a bench, not a machine) and 9 (the wafer disc sits in the bottom-right corner). The lit zigzag of mirrors poses the 'no lenses' question beside Branch's 2.4M cutaway without copying it",
+      "picked": false
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "one silicon wafer big in the frame, its grid of chips lit, a short verdict",
+      "score": 9,
+      "why": "1,2,3,4,5,6,7,8,10 = 9; missed 9 (the wafer's edge runs into the bottom-right corner). One glowing wafer struck by a beam reads instantly at phone size, 'printed by plasma' adds the surprise the title doesn't say, and it differs from Xprocess's probes-on-wafer 1.5M",
+      "picked": true
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the raw thing on the left becoming the finished chip on the right, two words naming the change",
+      "score": 8,
+      "why": "1,2,4,5,6,7,8,10 = 8; missed 3 (at 168 px the tin drop reads as a violet ball, not metal) and 9 (the chip sits in the bottom-right corner). The tin-to-chip split follows PROCESS BHARAT's 2.3M sand-to-chip but in our 3D look",
+      "picked": false
+    }
+  ],
+  "thumbnailModel": {
+    "pattern": "the machine itself cut open in 3D, its insides lit violet, the light path visible, two heavy words",
+    "references": [
+      "B2482h_TNwg",
+      "iSVHp6CAyQ8",
+      "1JkzrR-hznE"
+    ]
+  }
+}
