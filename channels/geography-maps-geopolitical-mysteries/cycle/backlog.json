@@ -80,6 +80,15 @@
       "from": "research 2026-11-24",
       "test": "the explorer/atlas bed about 20 dB under the voice instead of about 31 dB, ducking unchanged, effects unchanged",
       "why": "Our last 8 Shorts sit 30.4-31.7 dB music-under-voice (render.json audio), so the bed is close to inaudible on a phone. The two measured references split: Map & Myth's Chile (10.6M) at 16 dB, WorldShift's One Country (2.95M) at 39 dB (style-study/2026-11-18-references.md). Weak evidence, so last among the look tests."
+    },
+    {
+      "id": "geo-loop-no-question",
+      "kind": "look",
+      "area": "ending",
+      "metric": "heldAfterHook",
+      "from": "reviewer 2026-11-24",
+      "test": "the loop beat goes straight from the payoff back into the first line, with no 'X or Y: which should we map next? Tell me in the comments' question, against the champion's comment question before the loop",
+      "why": "Every Short with drop points loses viewers on the comment question in its last beat: 21.0% at 62.4 s (One passport), 13.2% + 5.7% (Sahara), 6.1% + 8.4% (English cities), 9.3% (Tristan), 9.1% (Hormuz), 7.9% (Greenland), 5.9% (Dinorwig). Some of that is the natural end, so it is a test, not a lesson: the reference Shorts loop without asking."
     }
   ],
   "running": null,
