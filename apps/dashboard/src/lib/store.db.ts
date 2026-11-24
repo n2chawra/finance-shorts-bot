@@ -15,7 +15,7 @@ import { EditorNoteSchema, SettingsSchema, mostLoved } from "./schemas";
 import { picksToClear } from "./queue-order";
 import { runEndMs } from "./run-span";
 import { feedIndex, originOf, snapshotOf } from "./origin";
-import { fillFromLive, meanViewPct, totals, windowStart, type DayRow } from "./totals";
+import { fillFromLive, meanViewPct, totals, windowCount, windowStart, type DayRow } from "./totals";
 import { manualState, relinked } from "./youtube-link";
 import { missReason, type HandUpload } from "./hand-uploads";
 import type { Analytics, Feedback, FeedbackCreate, ManualUpload, Overview, Run, Settings, Template, Video, VideoAction, VideoDetail, VideoEdit } from "./schemas";
@@ -409,13 +409,14 @@ export async function getOverview(): Promise<Overview> {
   await liveCounters(); // fresh YouTube counters first, so this response is current
   const settingsP = getSettings(); // in parallel with the queries below, not before them
   const today = istDay(new Date());
-  const since = new Date(`${windowStart(today, 7)}T00:00:00Z`); // 7 days, today included
+  const sinceDay = windowStart(today, 7); // 7 days, today included
+  const since = new Date(`${sinceDay}T00:00:00Z`);
   const [groups, next, failures, recent, stats, uploads7, templates, templateRunsToday, lastRun] = await Promise.all([
     prisma.video.groupBy({ by: ["status"], where: live, _count: true }),
     prisma.video.findFirst({ where: { ...live, status: "scheduled", upload: { isNot: null } }, include: withRelations, orderBy: { upload: { publishAt: "asc" } } }),
     prisma.video.findMany({ where: { ...live, status: "failed" }, orderBy: { createdAt: "desc" }, take: 5 }),
     prisma.video.findMany({ where: { ...live, status: "published" }, include: withRelations, orderBy: { upload: { publishAt: "desc" } } }),
-    prisma.videoStat.aggregate({ where: { day: { gte: since }, upload: { video: live } }, _sum: { views: true, subsGained: true, likes: true, comments: true } }),
+    prisma.videoStat.aggregate({ where: { day: { gte: since }, upload: { video: live } }, _sum: { subsGained: true } }),
     prisma.upload.count({ where: { state: "published", publishAt: { gte: new Date(Date.now() - 7 * DAY_MS) }, video: live } }),
     prisma.template.count(),
     prisma.agentRun.count({ where: { agent: "template_builder", startedAt: { gte: new Date(`${today}T00:00:00${IST_OFFSET}`) } } }),
@@ -426,10 +427,9 @@ export async function getOverview(): Promise<Overview> {
   // all-time views: live counters where they are ahead of Analytics, so this only ever goes up
   const lifetime = recent.map((v) => ({ v, t: totals(v.upload?.stats ?? [], v.upload) }));
   const allViews = lifetime.reduce((a, x) => a + (x.t?.views ?? 0), 0);
-  // views Analytics hasn't counted yet (its last day or two) are all recent: add them to the 7 days
-  const notYet = (k: "views" | "likes" | "comments") =>
-    lifetime.reduce((a, x) => a + Math.max(0, (x.t?.[k] ?? 0) - (x.v.upload?.stats ?? []).reduce((b, s) => b + s[k], 0)), 0);
-  const notYetInAnalytics = notYet("views");
+  // the 7 days per published video, never above its all-time count (views Analytics hasn't counted yet are all recent)
+  const days = lifetime.map((x) => ({ t: x.t, stats: (x.v.upload?.stats ?? []).map((s) => ({ ...s, day: s.day.toISOString().slice(0, 10) })) }));
+  const last7 = (k: "views" | "likes" | "comments") => days.reduce((a, x) => a + windowCount(x.stats, x.t, sinceDay, k), 0);
   const liveAts = lifetime.map((x) => x.t?.liveAt).filter((d): d is string => !!d).sort();
   const backlog = counts.queued ?? 0;
   const tw = settings.templateWork;
@@ -446,8 +446,8 @@ export async function getOverview(): Promise<Overview> {
     nextUpload: next?.upload ? { videoId: next.id, title: next.title, publishAt: next.upload.publishAt.toISOString(), thumbnailUrl: `/api/media/${next.id}/thumbnail` } : null,
     recentFailures: failures.map((v) => ({ videoId: v.id, title: v.title, reason: v.failReason ?? "Unknown", at: v.createdAt.toISOString() })),
     last7: {
-      views: (stats._sum.views ?? 0) + notYetInAnalytics, subsGained: stats._sum.subsGained ?? 0, uploads: uploads7,
-      likes: (stats._sum.likes ?? 0) + notYet("likes"), comments: (stats._sum.comments ?? 0) + notYet("comments"),
+      views: last7("views"), subsGained: stats._sum.subsGained ?? 0, uploads: uploads7,
+      likes: last7("likes"), comments: last7("comments"),
     },
     allTime: {
       views: allViews, likes: lifetime.reduce((a, x) => a + (x.t?.likes ?? 0), 0), comments: lifetime.reduce((a, x) => a + (x.t?.comments ?? 0), 0),
