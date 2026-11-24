@@ -1,14 +1,14 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-23T20:22:07.660Z",
+  "generatedAt": "2026-11-24T19:34:40.014Z",
   "channel": "business-documentaries-rise-and-fall-of",
   "youtubeChecked": true,
   "summary": {
-    "videos": 14,
-    "checked": 8,
+    "videos": 16,
+    "checked": 11,
     "error": 0,
     "warning": 0,
-    "info": 5,
+    "info": 1,
     "owner": 0,
     "persistentErrors": 0
   },
@@ -16,50 +16,99 @@
     {
       "kind": "behind_youtube_stale",
       "severity": "info",
-      "videoId": "v-20261123-32",
-      "youtubeId": "6EgZHwg7-ak",
-      "detail": "Dashboard shows 0 views, YouTube 25; live counts last refreshed never (they refresh while the dashboard is open)."
-    },
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261123-31",
-      "youtubeId": "jCr0JjiRSdw",
-      "detail": "Dashboard shows 960 views, YouTube 1408; live counts last refreshed 272 min ago (they refresh while the dashboard is open)."
-    },
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261122-32",
-      "youtubeId": "20YVbsWTfbg",
-      "detail": "Dashboard shows 1059 views, YouTube 1178; live counts last refreshed 272 min ago (they refresh while the dashboard is open)."
-    },
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261121-06",
-      "youtubeId": "-3HETTrafYA",
-      "detail": "Dashboard shows 53 views, YouTube 61; live counts last refreshed 272 min ago (they refresh while the dashboard is open)."
-    },
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261121-05",
-      "youtubeId": "V00suWwIJCE",
-      "detail": "Dashboard shows 576 views, YouTube 692; live counts last refreshed 272 min ago (they refresh while the dashboard is open)."
+      "videoId": "v-20261124-31",
+      "youtubeId": "oULAk0UjZn4",
+      "detail": "Dashboard shows 28 views, YouTube 45; live counts last refreshed 152 min ago (they refresh while the dashboard is open)."
     }
   ],
   "videos": [
+    {
+      "id": "v-20261124-31",
+      "title": "Juicero's $699 Juicer Only Squeezed Its Own Packs",
+      "youtubeId": "oULAk0UjZn4",
+      "state": "published",
+      "publishAt": "2026-11-24T16:47:00.000Z",
+      "dashboard": {
+        "views": 28,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-11-24T17:02:47.648Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 45,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "L-20261123-31",
+      "title": "Why Everyone Stopped Buying Crocs (and Then Didn't)",
+      "youtubeId": "2f9oCScgMcI",
+      "state": "published",
+      "publishAt": "2026-11-24T15:47:00.000Z",
+      "dashboard": {
+        "views": 1,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-11-24T17:02:47.648Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261124-32",
+      "title": "Marvel Put Captain America Up as Collateral",
+      "youtubeId": "fCtjkkASrG8",
+      "state": "published",
+      "publishAt": "2026-11-24T12:17:00.000Z",
+      "dashboard": {
+        "views": 180,
+        "likes": 4,
+        "comments": 0,
+        "liveAt": "2026-11-24T17:02:47.648Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 185,
+        "likes": 4,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261123-32",
       "title": "She Started Spanx With $5,000",
       "youtubeId": "6EgZHwg7-ak",
       "state": "published",
       "publishAt": "2026-11-23T16:47:00.000Z",
-      "dashboard": null,
+      "dashboard": {
+        "views": 63,
+        "likes": 2,
+        "comments": 0,
+        "liveAt": "2026-11-24T17:02:47.648Z"
+      },
       "youtube": {
         "privacy": "public",
-        "views": 25,
+        "views": 62,
         "likes": 2,
         "comments": 0
       },
@@ -76,15 +125,15 @@
       "state": "published",
       "publishAt": "2026-11-23T12:17:00.000Z",
       "dashboard": {
-        "views": 960,
-        "likes": 32,
+        "views": 1494,
+        "likes": 34,
         "comments": 0,
-        "liveAt": "2026-11-23T15:50:10.358Z"
+        "liveAt": "2026-11-24T17:02:47.648Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1408,
-        "likes": 31,
+        "views": 1495,
+        "likes": 34,
         "comments": 0
       },
       "analytics": {
@@ -100,15 +149,15 @@
       "state": "published",
       "publishAt": "2026-11-22T16:47:00.000Z",
       "dashboard": {
-        "views": 1059,
-        "likes": 15,
+        "views": 1218,
+        "likes": 16,
         "comments": 0,
-        "liveAt": "2026-11-23T15:50:10.358Z"
+        "liveAt": "2026-11-24T17:02:47.648Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1178,
-        "likes": 15,
+        "views": 1220,
+        "likes": 16,
         "comments": 0
       },
       "analytics": {
@@ -124,15 +173,15 @@
       "state": "published",
       "publishAt": "2026-11-22T12:17:00.000Z",
       "dashboard": {
-        "views": 1322,
-        "likes": 28,
+        "views": 1382,
+        "likes": 29,
         "comments": 0,
-        "liveAt": "2026-11-23T15:50:10.358Z"
+        "liveAt": "2026-11-24T17:02:47.648Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1335,
-        "likes": 28,
+        "views": 1386,
+        "likes": 29,
         "comments": 0
       },
       "analytics": {
@@ -148,21 +197,21 @@
       "state": "published",
       "publishAt": "2026-11-21T16:47:00.000Z",
       "dashboard": {
-        "views": 53,
+        "views": 62,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-23T15:50:10.358Z"
+        "liveAt": "2026-11-24T17:02:47.648Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 61,
+        "views": 62,
         "likes": 1,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 35,
+        "days": 1,
+        "lastDay": "2026-11-21"
       }
     },
     {
@@ -172,21 +221,21 @@
       "state": "published",
       "publishAt": "2026-11-21T12:17:00.000Z",
       "dashboard": {
-        "views": 576,
+        "views": 700,
         "likes": 8,
         "comments": 0,
-        "liveAt": "2026-11-23T15:50:10.358Z"
+        "liveAt": "2026-11-24T17:02:47.648Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 692,
-        "likes": 8,
+        "views": 699,
+        "likes": 7,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 46,
+        "days": 1,
+        "lastDay": "2026-11-21"
       }
     },
     {
@@ -199,7 +248,7 @@
         "views": 12,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-23T15:50:10.358Z"
+        "liveAt": "2026-11-24T17:02:47.648Z"
       },
       "youtube": {
         "privacy": "public",
@@ -208,9 +257,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 8,
-        "days": 1,
-        "lastDay": "2026-11-20"
+        "views": 12,
+        "days": 2,
+        "lastDay": "2026-11-21"
       }
     },
     {
@@ -223,7 +272,7 @@
         "views": 1139,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-23T15:50:10.358Z"
+        "liveAt": "2026-11-24T17:02:47.648Z"
       },
       "youtube": {
         "privacy": "public",
@@ -232,9 +281,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 1012,
-        "days": 1,
-        "lastDay": "2026-11-20"
+        "views": 1139,
+        "days": 2,
+        "lastDay": "2026-11-21"
       }
     }
   ]
