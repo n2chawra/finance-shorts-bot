@@ -43,6 +43,15 @@
       "why": "All five reference Shorts speak slower than our slowest: 150, 174, 185, 189 and 194 wpm (median 185; Louisiana 18.7M, Chile 10.6M, One Country 2.95M, Roll Down a Hill 2.77M, Caspian 2.09M; research/sheets word counts over their length). Our last 8 Shorts: 203-226 wpm, median about 217 (render.json words over duration_sec), about 17% faster, while the recipe itself says about 185. If the challenger loses, the recipe's pace line should be corrected to what the champion actually speaks."
     },
     {
+      "id": "geo-shape-morph",
+      "kind": "look",
+      "area": "motion",
+      "metric": "heldAfterHook",
+      "from": "research 2026-11-25",
+      "test": "when a beat's change is a map changing (pieces joining, a border moving, a place moving or growing), the shapes morph or slide from the old state into the new one on the spoken word, as one continuous move, instead of a cut or match to a new shot; at least two such morph beats per Short, against the champion's cut/match transitions",
+      "why": "Our last three Shorts (v-20261123-11, v-20261124-11, v-20261124-12) use 18 cuts and 17 match transitions and no morphs; their pace already matches the references (5.4-6.0 s a beat against 4.3-7.9 s, median 5.9, in the five sheets), so the gap is in how the picture changes, not how often. Two of the five reference sheets morph shapes (BmNSUb8HxCA twice, 7iZflr3qD-4 once), and this week's biggest outlier in the scan is built on it: Geo Cartovia's 'How Italy Became One Country, From 7 Pieces to 1' (232K views on 782 subscribers, 297x) and its Spain version (95K, 121x), whose pieces snap together on screen. Lower confidence than geo-pace-185: two sheets and one channel."
+    },
+    {
       "id": "geo-countdown",
       "kind": "look",
       "test": "a DAY 1...7 counter on screen for what-if stories",

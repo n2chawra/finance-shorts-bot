@@ -1,0 +1,62 @@
+{
+  "agent": "research",
+  "channel": "geography-maps-geopolitical-mysteries",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-24T18:42:43Z",
+  "finishedAt": "2026-11-24T18:48:58Z",
+  "summary": "Pacing and motion night for the geography channel: added 6 topics (3 what-ifs, Italy's unification, the half-the-world circle, Everest), one look challenger (shape morphs) and one trial shape; rejected the stale Qatar topic.",
+  "decision": "acted",
+  "why": "The feed had 1 open what_if_world topic against 15 why_shaped, and the now-fixed market scan showed six breakouts at 23-768x their channels. Our beats already change as often as the references' shots (5.4-6.0 s against a 5.9 s median), but none of our last 35 transitions morph the map, while 2 of 5 reference sheets and the 297x Italy breakout do.",
+  "findings": [
+    {
+      "title": "Geo Cartovia: Italy from 7 pieces to 1, 232K views on 782 subs",
+      "detail": "The pieces join on screen. Became the Italy topic, the-assembly shape and the geo-shape-morph challenger.",
+      "link": "https://youtube.com/shorts/nxDPo6F6vx0"
+    },
+    {
+      "title": "SpaceGlitch: What if Africa split in two, 300K on 4.34K subs",
+      "detail": "Became a what_if_world topic with Bristol and Wikipedia rift facts.",
+      "link": "https://youtube.com/shorts/z_tiqHEIx3w"
+    },
+    {
+      "title": "Our pace matches the references; our transitions don't",
+      "detail": "5.4-6.0 s a beat against 4.3-7.9 s a shot; 18 cuts and 17 matches, no morphs, in our last three Shorts.",
+      "link": "channels/geography-maps-geopolitical-mysteries/research/2026-11-25.md"
+    },
+    {
+      "title": "The market scan now searches geography",
+      "detail": "market.json from 24 Nov uses this channel's queries; the stale-scan notification is resolved.",
+      "link": "channels/geography-maps-geopolitical-mysteries/market.json"
+    },
+    {
+      "title": "Claude Code 2.1.331",
+      "detail": "Silent cloud turns are retried once; PushNotification fixed for headless runs. Nothing to change.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "6 topics in the feed",
+      "detail": "Africa split, Mexico-Spain swap, Alps vanish, Italy unification, half-the-world circle, Everest not tallest; Qatar rejected",
+      "branch": "agent/research/2026-11-25/geography-maps-geopolitical-mysteries"
+    },
+    {
+      "title": "Challenger geo-shape-morph",
+      "detail": "look/motion, held after the hook; queued after geo-pace-185",
+      "branch": "agent/research/2026-11-25/geography-maps-geopolitical-mysteries",
+      "experiment": "geo-shape-morph"
+    },
+    {
+      "title": "Trial shape the-assembly",
+      "detail": "pieces joining in the order history did",
+      "branch": "agent/research/2026-11-25/geography-maps-geopolitical-mysteries"
+    }
+  ],
+  "nextCheck": "2026-11-26",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/geography-maps-geopolitical-mysteries/research/2026-11-25.md"
+    }
+  ]
+}
