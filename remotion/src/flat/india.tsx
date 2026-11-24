@@ -246,8 +246,8 @@ export const StateTag: React.FC<{ state: string; text?: string; at?: [number, nu
 /** An Indian vehicle number plate pinned to a state (the India Maps channel's every-state plates, 2026-11-24): a white
  * plate with an ink border and the blue "IND" strip on the left, the state's letters big; `k` drops it in with a
  * bounce, `glow` rings it while it is spoken. Letters only: a plate's numbers are never drawn (figures come from code). */
-export const Plate: React.FC<{ state?: string; at?: [number, number]; text: string; k?: number; size?: number; dy?: number; glow?: number; tone?: string }> = ({
-  state, at, text, k = 1, size = 1, dy = 0, glow = 0, tone = "#ffffff",
+export const Plate: React.FC<{ state?: string; at?: [number, number]; text: string; k?: number; size?: number; dy?: number; glow?: number; tone?: string; maxY?: number }> = ({
+  state, at, text, k = 1, size = 1, dy = 0, glow = 0, tone = "#ffffff", maxY,
 }) => {
   const ctx = React.useContext(MapCtx);
   const frame = React.useContext(FrameSize);
@@ -259,8 +259,11 @@ export const Plate: React.FC<{ state?: string; at?: [number, number]; text: stri
   const x = Math.min(Math.max(xy[0], W / 2 + 20), frame.w - W / 2 - 20);
   const drop = (1 - Math.min(1, k * 1.3)) * -60 * size, sq = k < 0.85 ? 1 : 1 + 0.08 * Math.sin((k - 0.85) / 0.15 * Math.PI);
   const y = xy[1] + dy + drop;
+  // `maxY`: a plate that would sit lower than this (in the captions' band) fades out instead of hiding under them
+  const keep = maxY === undefined ? 1 : Math.max(0, Math.min(1, (maxY + 60 - y) / 60));
+  if (keep <= 0) return null;
   return (
-    <g transform={`translate(${x} ${y}) scale(${sq} ${1 / sq})`} opacity={Math.min(1, k * 2.2)}>
+    <g transform={`translate(${x} ${y}) scale(${sq} ${1 / sq})`} opacity={Math.min(1, k * 2.2) * keep}>
       {glow > 0 ? <rect x={-W / 2 - 14} y={-H / 2 - 14} width={W + 28} height={H + 28} rx={16 * size} fill="#ffd84a" opacity={0.45 * glow} data-probe="skip" /> : null}
       <rect x={-W / 2 + 6} y={-H / 2 + 8} width={W} height={H} rx={10 * size} fill={INK} opacity={0.4} />
       <rect x={-W / 2} y={-H / 2} width={W} height={H} rx={10 * size} fill={tone} stroke={INK} strokeWidth={5 * size} />
