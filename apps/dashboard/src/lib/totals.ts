@@ -99,3 +99,17 @@ export function weekOverWeek(daily: WeekDay[], key: "views" | "subsGained" | "li
   const prev = days.slice(-14, -7).reduce((x, y) => x + y, 0);
   return { spark: days.slice(-14), delta: prev > 0 ? ((last - prev) / prev) * 100 : null };
 }
+
+/**
+ * One video's views, likes or comments in the window that starts on `since` (YYYY-MM-DD): its
+ * Analytics rows from that day on, plus what its live counter has beyond all its Analytics rows
+ * (the last day or two Analytics hasn't counted yet, all recent). Never more than its lifetime
+ * total `t`: when YouTube removes invalid views the live counter drops below the Analytics rows, and
+ * the Overview then showed more views in 7 days than ever (data audit 2026-11-23: 3,190 vs 3,187).
+ */
+export function windowCount(stats: (StatRow & { day: string })[], t: Totals | null, since: string, k: "views" | "likes" | "comments"): number {
+  if (!t) return 0;
+  const all = stats.reduce((a, s) => a + s[k], 0);
+  const inWindow = stats.reduce((a, s) => a + (s.day >= since ? s[k] : 0), 0);
+  return Math.max(0, Math.min(t[k], inWindow + Math.max(0, t[k] - all)));
+}

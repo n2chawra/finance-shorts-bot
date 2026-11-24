@@ -1055,6 +1055,20 @@
       "severity": "medium",
       "found": "2026-11-24",
       "status": "fixed"
+    },
+    {
+      "id": "dd-013",
+      "kind": "data",
+      "title": "Overview 7-day views could exceed all-time views",
+      "detail": "getOverview summed every VideoStat row of the last 7 days (any video status) plus each published video's live-counter excess, while all-time views are the live counters. When YouTube removed invalid views (v-20261120-01: Analytics 118, YouTube 114) the 7 days kept the higher Analytics count; data audit 2026-11-23 on How Tech Works: 3,190 in 7 days vs 3,187 all time. Now each published video adds windowCount() (lib/totals.ts): its Analytics rows in the window plus its uncounted live views, never above its all-time count. Subscribers still come from the Analytics aggregate. Test workers/tests/dashboard-last7.test.ts.",
+      "files": [
+        "apps/dashboard/src/lib/store.db.ts",
+        "apps/dashboard/src/lib/totals.ts"
+      ],
+      "severity": "medium",
+      "found": "2026-11-25",
+      "status": "fixed",
+      "fixed": "2026-11-25"
     }
   ]
 }
