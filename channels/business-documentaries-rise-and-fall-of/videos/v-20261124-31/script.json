@@ -1,0 +1,1115 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61734,
+ "story": "product_craze_short",
+ "shape": "reveal",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "ledger",
+  "key": "C",
+  "bpm": 76
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "secret",
+ "cta": "The machine or the packs: which one sank Juicero? Comment",
+ "feed_id": "2026-11-19-juicero",
+ "facts": [
+  {
+   "label": "Juicero Press launch price",
+   "value": 699,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2016-03-31",
+   "source": "Fortune",
+   "url": "https://fortune.com/2017/09/01/juicero-is-shutting-down/",
+   "fixed": true
+  },
+  {
+   "label": "Price after the cut",
+   "value": 399,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2017-07-31",
+   "source": "Fortune",
+   "url": "https://fortune.com/2017/09/01/juicero-is-shutting-down/",
+   "fixed": true
+  },
+  {
+   "label": "Low end of the price of one juice pack",
+   "value": 5,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2017-09-01",
+   "source": "Fortune",
+   "url": "https://fortune.com/2017/09/01/juicero-is-shutting-down/",
+   "fixed": true
+  },
+  {
+   "label": "High end of the price of one juice pack",
+   "value": 7,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2017-09-01",
+   "source": "Fortune",
+   "url": "https://fortune.com/2017/09/01/juicero-is-shutting-down/",
+   "fixed": true
+  },
+  {
+   "label": "Funding Juicero raised, about",
+   "value": 120,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2017-09-01",
+   "source": "CBS News",
+   "url": "https://www.cbsnews.com/philadelphia/news/400-juicer-shuts-down",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 1.6,
+  "words": "A *juicer* for {fact1}",
+  "angle": "story",
+  "unique": "Juicero covers in the niche show the press itself; ours shows the press taken apart under the price"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Juicero sold a {fact1} juicer that only pressed its own packs.",
+   "events": {
+    "juicero": {
+     "word": "Juicero"
+    },
+    "juicer": {
+     "word": "juicer"
+    },
+    "only": {
+     "word": "only"
+    },
+    "own": {
+     "word": "own"
+    },
+    "packs": {
+     "word": "packs"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "juicer"
+    },
+    {
+     "kind": "boom",
+     "at": "packs"
+    }
+   ],
+   "params": {
+    "place": [
+     "the Juicero Press laid out part by part",
+     "a tray of chopped fruit and vegetables"
+    ],
+    "things": [
+     "Juicero logo",
+     "Juicero Press",
+     "juice packs"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "juicer",
+      "size": "wide"
+     },
+     {
+      "at": "own",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "juicero",
+      "what": "the Juicero logo sticker drops in"
+     },
+     {
+      "at": "juicer",
+      "what": "a label: the price"
+     },
+     {
+      "at": "only",
+      "what": "the press keeps pushing in"
+     },
+     {
+      "at": "own",
+      "what": "cut to the chopped produce"
+     },
+     {
+      "at": "packs",
+      "what": "a stamp: OWN PACKS ONLY"
+     }
+    ],
+    "fig": {
+     "price": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-peering-into-the-black-box-revisited-44738147682-ed576838.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc",
+      "out": "own"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-juicero-logo-56815e3d.png",
+      "aspect": 4.21,
+      "pos": [
+       0.5,
+       0.22
+      ],
+      "size": 0.62,
+      "tilt": -4,
+      "out": "own",
+      "enter": "cut"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-a-tray-of-freshly-chopped-vegetables-52f73f6c.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "warm",
+      "at": "own"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "sub": "the Juicero Press",
+      "at": "juicer",
+      "out": "own"
+     },
+     {
+      "kind": "stamp",
+      "text": "Own packs only",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": -6,
+      "at": "packs"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "packs",
+   "role": "promise",
+   "say": "Each pack held chopped fruit and vegetables, sold for {fact3} to {fact4}, one glass at a time. So why buy the machine?",
+   "events": {
+    "pack": {
+     "word": "pack"
+    },
+    "chopped": {
+     "word": "chopped"
+    },
+    "vegetables": {
+     "word": "vegetables"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "glass": {
+     "word": "glass"
+    },
+    "so": {
+     "word": "So"
+    },
+    "machine": {
+     "word": "machine"
+    }
+   },
+   "params": {
+    "place": [
+     "a chopping board of cut vegetables"
+    ],
+    "things": [
+     "chopped vegetables",
+     "pack price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "sold",
+      "size": "medium"
+     },
+     {
+      "at": "glass",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "chopped",
+      "what": "the produce pushes in"
+     },
+     {
+      "at": "sold",
+      "what": "a label: the pack price"
+     },
+     {
+      "at": "glass",
+      "what": "a stamp: ONE GLASS"
+     },
+     {
+      "at": "machine",
+      "what": "a stamp: WHY?"
+     }
+    ],
+    "fig": {
+     "low": "{fact3}",
+     "high": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-chopped-vegetables-f4095ffe.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-left",
+      "amount": 0.12,
+      "grade": "warm"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact3} to {fact4}",
+      "sub": "one juice pack",
+      "at": "sold",
+      "out": "glass"
+     },
+     {
+      "kind": "stamp",
+      "text": "One glass",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": 5,
+      "at": "glass",
+      "out": "so"
+     },
+     {
+      "kind": "stamp",
+      "text": "Why?",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.18
+      ],
+      "tilt": -4,
+      "at": "machine"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "launch",
+   "role": "build",
+   "say": "It launched in San Francisco, backed by Google's venture arm and Kleiner Perkins.",
+   "events": {
+    "launched": {
+     "word": "launched"
+    },
+    "san": {
+     "word": "San"
+    },
+    "backed": {
+     "word": "backed"
+    },
+    "google's": {
+     "word": "Google's"
+    },
+    "kleiner": {
+     "word": "Kleiner"
+    },
+    "perkins": {
+     "word": "Perkins"
+    }
+   },
+   "params": {
+    "place": [
+     "Market Street, San Francisco",
+     "Kleiner Perkins' sign in Menlo Park"
+    ],
+    "things": [
+     "San Francisco street",
+     "Sand Hill Road",
+     "Kleiner Perkins sign"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "backed",
+      "size": "medium"
+     },
+     {
+      "at": "kleiner",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "launched",
+      "what": "the date slams in"
+     },
+     {
+      "at": "san",
+      "what": "a place label: San Francisco"
+     },
+     {
+      "at": "backed",
+      "what": "a print of Sand Hill Road lands on the pile"
+     },
+     {
+      "at": "kleiner",
+      "what": "the Kleiner Perkins print lands, a lower third"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "stack",
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crosswalk-of-market-at-third-san-francisco-cbae94d5.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "caption": "San Francisco"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sand-hill-road-eastbound-view-8d95adec.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "caption": "Sand Hill Road",
+        "at": "backed"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-svb-kleiner-perkins-menlo-park-april-2023-879caffa.jpg",
+        "focus": [
+         0.3,
+         0.45
+        ],
+        "caption": "Kleiner Perkins",
+        "at": "kleiner"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2016-03-31",
+      "sub": "the Juicero Press launches",
+      "pos": "top",
+      "at": "launched",
+      "out": "backed"
+     },
+     {
+      "kind": "label",
+      "text": "San Francisco",
+      "sub": "where Juicero began",
+      "at": "san",
+      "out": "backed"
+     },
+     {
+      "kind": "lowerThird",
+      "name": "Kleiner Perkins",
+      "role": "venture firm, Menlo Park",
+      "at": "kleiner"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "cut",
+   "role": "build",
+   "say": "In January, Juicero cut the press from {fact1} to {fact2}.",
+   "events": {
+    "january": {
+     "word": "January"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "press": {
+     "word": "press"
+    },
+    "to": {
+     "word": "to"
+    }
+   },
+   "params": {
+    "place": [
+     "a kitchen counter where the press sat"
+    ],
+    "things": [
+     "kitchen counter",
+     "price bar"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "cut",
+      "size": "wide"
+     },
+     {
+      "at": "to",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "january",
+      "what": "the price bar rises"
+     },
+     {
+      "at": "to",
+      "what": "the price bar sinks"
+     }
+    ],
+    "fig": {
+     "was": "{fact1}",
+     "now": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-kitchen-stone-countertops-fca75cad.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "dim": 0.55
+     },
+     {
+      "kind": "sink",
+      "plate": false,
+      "name": "Juicero Press",
+      "values": [
+       699,
+       399
+      ],
+      "figs": [
+       "was",
+       "now"
+      ],
+      "title": "The press price",
+      "drawAt": "january",
+      "sinkAt": "to"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Price cut",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -5,
+      "at": "to"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "test",
+   "role": "build",
+   "say": "Then in April, Bloomberg reporters skipped the press and squeezed the packs with their bare hands.",
+   "events": {
+    "april": {
+     "word": "April"
+    },
+    "bloomberg": {
+     "word": "Bloomberg"
+    },
+    "skipped": {
+     "word": "skipped"
+    },
+    "squeezed": {
+     "word": "squeezed"
+    },
+    "bare": {
+     "word": "bare"
+    },
+    "hands": {
+     "word": "hands"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "squeezed"
+    }
+   ],
+   "params": {
+    "place": [
+     "a kitchen counter where hands squeeze fruit"
+    ],
+    "things": [
+     "bare hands",
+     "fruit"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "squeezed",
+      "size": "close"
+     },
+     {
+      "at": "hands",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "april",
+      "what": "the date slams in"
+     },
+     {
+      "at": "bloomberg",
+      "what": "a source chip: Bloomberg"
+     },
+     {
+      "at": "squeezed",
+      "what": "push in on the squeeze"
+     },
+     {
+      "at": "hands",
+      "what": "a stamp: BARE HANDS"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-hand-squeezed-orange-juice-121006-a-qf214-316-81988619.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2017-04-19",
+      "sub": "Bloomberg's test",
+      "pos": "top",
+      "at": "april",
+      "out": "squeezed"
+     },
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "Bloomberg",
+      "at": "bloomberg",
+      "out": "hands"
+     },
+     {
+      "kind": "stamp",
+      "text": "Bare hands",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": -6,
+      "at": "hands"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "result",
+   "role": "turn",
+   "say": "Their hands got nearly as much juice out, and faster. So who still needed the machine?",
+   "events": {
+    "hands": {
+     "word": "hands"
+    },
+    "nearly": {
+     "word": "nearly"
+    },
+    "juice": {
+     "word": "juice"
+    },
+    "faster": {
+     "word": "faster"
+    },
+    "needed": {
+     "word": "needed"
+    }
+   },
+   "params": {
+    "place": [
+     "a hand squeezing a lemon over a blender cup"
+    ],
+    "things": [
+     "lemon",
+     "juice"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "juice",
+      "size": "medium"
+     },
+     {
+      "at": "faster",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hands",
+      "what": "the squeeze pushes in"
+     },
+     {
+      "at": "juice",
+      "what": "a label: nearly the same juice"
+     },
+     {
+      "at": "faster",
+      "what": "a stamp: FASTER"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-squeezing-fresh-lemon-juice-for-a-healthy-smooth-232fdb9c.jpg",
+      "focus": [
+       0.5,
+       0.35
+      ],
+      "move": "rise",
+      "amount": 0.12,
+      "grade": "warm"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Nearly the same",
+      "sub": "juice, by hand",
+      "at": "juice",
+      "out": "faster"
+     },
+     {
+      "kind": "stamp",
+      "text": "Faster",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.28
+      ],
+      "tilt": 5,
+      "at": "faster"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "shut",
+   "role": "build",
+   "say": "That September, Juicero shut down for good.",
+   "events": {
+    "september": {
+     "word": "September"
+    },
+    "juicero": {
+     "word": "Juicero"
+    },
+    "shut": {
+     "word": "shut"
+    },
+    "good": {
+     "word": "good"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "shut"
+    }
+   ],
+   "params": {
+    "place": [
+     "the Fortune report",
+     "a shop door with a closed sign"
+    ],
+    "things": [
+     "Fortune headline",
+     "closed sign",
+     "empty office"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "shut",
+      "size": "close"
+     },
+     {
+      "at": "good",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "september",
+      "what": "the Fortune headline lands"
+     },
+     {
+      "at": "shut",
+      "what": "cut to the closed sign"
+     },
+     {
+      "at": "good",
+      "what": "cut to an empty office, a stamp: SHUT DOWN"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "Fortune",
+        "date": "2017-09-01",
+        "title": "Juicero Is Shutting Down",
+        "style": "web",
+        "hi": "Shutting Down"
+       }
+      ],
+      "on": [
+       "september"
+      ],
+      "out": "shut"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-close-up-of-a-closed-sign-hanging-on-a-store-doo-256a8d78.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "cold",
+      "at": "shut",
+      "out": "good"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-empty-room-of-office-2ca7dcb2.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-right",
+      "amount": 0.12,
+      "grade": "cold",
+      "at": "good"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Shut down",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "good"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "By then, investors had put about {fact5} into a juicer that two bare hands could match.",
+   "events": {
+    "by": {
+     "word": "By"
+    },
+    "investors": {
+     "word": "investors"
+    },
+    "put": {
+     "word": "put"
+    },
+    "juicer": {
+     "word": "juicer"
+    },
+    "two": {
+     "word": "two"
+    },
+    "match": {
+     "word": "match"
+    }
+   },
+   "params": {
+    "place": [
+     "the poster over a glass of fresh juice"
+    ],
+    "things": [
+     "fresh juice",
+     "the money raised"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "juicer",
+      "size": "wide"
+     },
+     {
+      "at": "match",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "by",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "investors",
+      "what": "the figure settles"
+     },
+     {
+      "at": "juicer",
+      "what": "the subline settles"
+     },
+     {
+      "at": "match",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "raised": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-measuring-a-green-apple-beside-fresh-juice-in-a-fbfd67d6.jpg",
+      "focus": [
+       0.6,
+       0.5
+      ],
+      "date": "2017-09-01",
+      "title": "Juicero",
+      "figure": "raised",
+      "sub": "raised from investors",
+      "enter": "cut"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "The machine or the packs: which one sank Juicero? Next time you squeeze a lemon, remember,",
+   "events": {
+    "machine": {
+     "word": "machine"
+    },
+    "packs": {
+     "word": "packs"
+    },
+    "sank": {
+     "word": "sank"
+    },
+    "squeeze": {
+     "word": "squeeze"
+    },
+    "remember": {
+     "word": "remember"
+    }
+   },
+   "params": {
+    "place": [
+     "a lemon press over a sink",
+     "the Juicero Press from the first frame"
+    ],
+    "things": [
+     "lemon press",
+     "Juicero Press"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "squeeze",
+      "size": "close"
+     },
+     {
+      "at": "remember",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "machine",
+      "what": "a stamp: MACHINE?"
+     },
+     {
+      "at": "packs",
+      "what": "a stamp: PACKS?"
+     },
+     {
+      "at": "squeeze",
+      "what": "push in on the lemon press"
+     },
+     {
+      "at": "remember",
+      "what": "back to the Juicero Press from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lemon-squeezing-928a4a86.jpg",
+      "focus": [
+       0.45,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "remember"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-peering-into-the-black-box-revisited-44738147682-ed576838.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "remember"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Machine?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.18
+      ],
+      "tilt": -4,
+      "at": "machine",
+      "out": "packs"
+     },
+     {
+      "kind": "stamp",
+      "text": "Packs?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.18
+      ],
+      "tilt": 4,
+      "at": "packs",
+      "out": "squeeze"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}
