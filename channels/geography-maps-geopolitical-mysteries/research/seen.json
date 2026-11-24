@@ -1,13 +1,14 @@
 {
   "claudeCode": {
-    "latest": "2.1.330",
-    "checked": "2026-11-24",
+    "latest": "2.1.331",
+    "checked": "2026-11-25",
     "notes": [
       "2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow",
       "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline.",
       "2.1.329: /tasks lists scheduled tasks and wakeups; MCP octet-stream files saved properly; fixes only. Nothing for the pipeline.",
       "2.1.330: WebFetch no longer freezes or returns empty on some pages (helps research reads); built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline.",
-      "2026-11-24: 2.1.330 still the newest; its changelog also says scheduled tasks and /loop now run up to 30 days instead of 7. Nothing to change in the pipeline."
+      "2026-11-24: 2.1.330 still the newest; its changelog also says scheduled tasks and /loop now run up to 30 days instead of 7. Nothing to change in the pipeline.",
+      "2.1.331: cloud turns that go silent while thinking are retried once (fewer failed routine runs); PushNotification fixed for headless scheduled runs; fixes otherwise. Nothing to change in the pipeline."
     ]
   },
   "sources": {
@@ -18,7 +19,11 @@
     "mpa-singapore": "mpa.gov.sg media releases carry the yearly port figures (2025: 44.66M TEU), seen 2026-11-23",
     "nature-com": "article pages redirect to a sign-in to fetch; cite the study through a reputable outlet that names it, seen 2026-11-24",
     "snopes": "402 Payment Required to fetch, seen 2026-11-24",
-    "canada-eccc": "canada.ca 'Water sources: lakes' fetches fine (563 lakes over 100 km2), seen 2026-11-24"
+    "canada-eccc": "canada.ca 'Water sources: lakes' fetches fine (563 lakes over 100 km2), seen 2026-11-24",
+    "noaa-oceanservice": "oceanservice.noaa.gov/facts pages fetch fine and carry a Last updated date (highestpoint: 09/23/26), seen 2026-11-25",
+    "eea-europa": "eea.europa.eu old theme pages return 410 Gone, seen 2026-11-25",
+    "eia-international": "eia.gov/international country pages give no national reserves figure for Qatar (only the North Field claim), seen 2026-11-25",
+    "market-data-geo": "market-data branch now scans this channel's own queries (generatedAt 2026-11-24, 30 Shorts, 30 breakouts), seen 2026-11-25"
   },
   "references": [
     "oTTBp0g4eXw",
