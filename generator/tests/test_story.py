@@ -340,8 +340,10 @@ def test_the_payoff_figure_is_held_back_from_the_hook_and_the_promise():
     assert story.reveal_problems({**told, "format": "long"}) == []
 
 
-def test_the_title_asks_and_never_states_the_payoff_or_two_figures():
+def test_the_title_asks_and_never_states_the_payoff_or_two_figures(monkeypatch):
+    from generator import pack
     from renderer import advice
+    monkeypatch.setattr(pack, "load", lambda *a, **k: {"numbers": "finance"})   # the question note is a money channel's
     s = {"format": "short", "beats": [beat("hook", "hook", "x"), beat("payoff", "payoff", "The card pays {share} of it.")]}
     payoff = story.title_reveal_problems(s, "Costco's profit was {profit}. The card paid {share} of it")
     assert any("payoff's figure {share}" in p for p in payoff) and any("2 figures" in p for p in payoff)
@@ -380,3 +382,13 @@ def test_people_problems_want_people_in_the_place():
     assert any("blood" in p for p in people_problems(gore))
     money = {"beats": [beat("hook", "Why does this coffee hurt your wallet?", things=["a cup"])]}
     assert people_problems(money) == []
+
+
+def test_the_money_question_title_note_is_for_money_channels_only(monkeypatch):
+    # 2026-11-24: the note's evidence is money Shorts; Craze & Crash's recipe asks for a claim title
+    from generator import pack
+    script = {"format": "short", "beats": [{"id": "payoff", "role": "payoff", "say": "It worked."}]}
+    monkeypatch.setattr(pack, "load", lambda *a, **k: {"numbers": "simple"})
+    assert not any("is a statement" in p for p in story.title_reveal_problems(script, "Marvel Put Captain America Up as Collateral"))
+    monkeypatch.setattr(pack, "load", lambda *a, **k: {"numbers": "finance"})
+    assert any("is a statement" in p for p in story.title_reveal_problems(script, "Costco sells a hot dog at a loss"))

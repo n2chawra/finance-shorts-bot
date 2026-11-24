@@ -558,6 +558,16 @@ def reveal_problems(script: dict) -> list[str]:
     return out
 
 
+def _money_channel() -> bool:
+    """The question-title note's evidence is from money Shorts: only a `numbers: finance` channel gets it (a
+    channel's own recipe sets its title form; Craze & Crash's says a claim, 2026-11-24)."""
+    try:
+        from generator import pack
+        return pack.load().get("numbers") == "finance"
+    except Exception:
+        return False
+
+
 def title_reveal_problems(script: dict, title: str | None) -> list[str]:
     """A Short's title names the subject and asks; it never states the payoff's figure, and at most one figure."""
     t = (title or "").strip()
@@ -572,7 +582,7 @@ def title_reveal_problems(script: dict, title: str | None) -> list[str]:
     if len(figures) > 1:
         out.append(f"the title {t!r} states {len(figures)} figures and so tells the whole story: keep one, the price or "
                    f"amount the viewer can picture, and ask about it")
-    if not QUESTION_TITLE.search(t):
+    if not QUESTION_TITLE.search(t) and _money_channel():
         out.append(note(f"the title {t!r} is a statement: 13 of 20 money Shorts at 160K+ views asked a question "
                         f"(\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, "
                         f"name-and-figure statements 456"))
