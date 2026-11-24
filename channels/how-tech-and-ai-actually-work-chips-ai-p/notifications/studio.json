@@ -1,11 +1,11 @@
 {
   "notifications": [
     {
-      "key": "tech-L-20261123-21-test-compare",
+      "key": "tech-L-20261124-21-test-compare",
       "severity": "info",
-      "title": "Starlink long video: three thumbnails ready for Test & Compare",
-      "detail": "L-20261123-21 'How Does Starlink's Flat Dish Aim Without Moving?' ships with thumbnail A ('No motor', the dish taken apart, 9/10) and has B ('Bent beams', 8/10) and C ('It never turns', 8/10). YouTube's Test & Compare has no API, so only you can run it.",
-      "fix": "1. After it is published, open the video in YouTube Studio. 2. Details -> Thumbnail -> Test & compare. 3. Upload thumbnail.png, thumbnail-b.png and thumbnail-c.png from channels/how-tech-and-ai-actually-work-chips-ai-p/videos/L-20261123-21/."
+      "title": "EUV long video: three thumbnails ready for Test & Compare",
+      "detail": "L-20261124-21 'How Does ASML's EUV Machine Print a Chip With Light?' ships with thumbnail B ('Printed by plasma', the glowing wafer struck by a beam, 9/10) as the pick, plus A ('No lenses', the machine cut open, 8/10) and C ('Tin to chip', 8/10). QA would click C, then B. YouTube's Test & Compare has no API, so only you can run it.",
+      "fix": "1. After it is published, open the video in YouTube Studio. 2. Details -> Thumbnail -> Test & compare. 3. Upload thumbnail-b.png, thumbnail.png and thumbnail-c.png from channels/how-tech-and-ai-actually-work-chips-ai-p/videos/L-20261124-21/."
     }
   ]
 }

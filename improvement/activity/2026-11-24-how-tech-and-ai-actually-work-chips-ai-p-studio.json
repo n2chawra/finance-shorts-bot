@@ -1,0 +1,41 @@
+{
+  "agent": "studio",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-24T03:20:38Z",
+  "finishedAt": "2026-11-24T11:45:15Z",
+  "summary": "How Tech Works: made and shipped the long video L-20261124-21 'How Does ASML's EUV Machine Print a Chip With Light?' (428 s, 64 directed 3D beats in 10 places), from the owner's first pinned topic (EUV lithography).",
+  "decision": "acted",
+  "why": "state --format long said video (1 of 3 long videos this week). The fact review passed after one rewrite: the main pulse comes from the same laser, and plasma atoms lose some of their electrons, not all. QA passed on its third look: round 1 had 6 blocking items, round 2 had 1 (three camera moves that looked at nothing), and all were fixed. Every render gate passed.",
+  "findings": [
+    {
+      "title": "Thumbnails",
+      "detail": "Pick B 'Printed by plasma' (9/10); A 'No lenses' (8/10); C 'Tin to chip' (8/10). QA would click C, then B. Run Test & Compare with all three."
+    },
+    {
+      "title": "Length needed about 1,330 words",
+      "detail": "The estimated voice runs ~14% short. 1,154 words gave 408 s, under the 420 s minimum, so 8 beats were added (all fact-checked) to reach 428 s."
+    },
+    {
+      "title": "QA notes left open (not blocking)",
+      "detail": "The source chip reads 'ASML \u00b7 ASML (EUV lithography systems)' because the two feed facts name the source differently. There is no ASML logo on the machine. 125 s / 135 s and 250 s / 265 s look alike. The audio mean is -16.3 dB, against a -18 dB target."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Shipped L-20261124-21",
+      "detail": "Manifest on main (02b2aa2); the mp4 went up on media/L-20261124-21 for the release workflow. The full render took about 6.5 h (11 chunks)."
+    },
+    {
+      "title": "Long-video backlog: 3 items",
+      "detail": "tech-long-camera-gap-keys, tech-long-3d-labels-corner (Label3D pins off-screen labels to the top-left corner), tech-long-estimate-short.",
+      "branch": "agent/studio/2026-11-24/how-tech-and-ai-actually-work-chips-ai-p"
+    }
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [
+    {
+      "label": "Manifest",
+      "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/videos/L-20261124-21/manifest.json"
+    }
+  ]
+}
