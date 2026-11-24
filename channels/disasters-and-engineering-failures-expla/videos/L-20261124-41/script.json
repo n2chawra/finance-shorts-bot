@@ -687,7 +687,7 @@
           },
           {
             "at": "bang",
-            "what": "cause two tags on with the dive number, a sound ring leaves the hull"
+            "what": "cause two tags on with the dive number, a red band lights around the hull"
           },
           {
             "at": "warnings",
@@ -711,7 +711,7 @@
         "phase": "cutaway",
         "cutAt": "chain",
         "stressAt": "hull",
-        "soundAt": "bang",
+        "ringAt": "bang",
         "causeTags": [
           {
             "at": "hull",
@@ -2262,8 +2262,8 @@
         }
       },
       "params": {
-        "component": "Section",
-        "place": "a cutaway of the second hull's wall",
+        "component": "Sea",
+        "place": "Titan with its fairing cut away, in a studio of dark water",
         "camera": [
           {
             "sec": 0,
@@ -2281,31 +2281,42 @@
         "moments": [
           {
             "at": "second",
-            "what": "a new cylinder outline draws on"
+            "what": "a new black cylinder turns in the light, fairing cut away"
           },
           {
             "at": "bonded",
-            "what": "layer one wraps on"
+            "what": "a caption types on: five bonded layers"
           },
           {
             "at": "layers",
-            "what": "layers two to five wrap on, each glued to the last"
+            "what": "the camera pushes in on the carbon wall"
           },
           {
             "at": "thick",
-            "what": "a dimension line spans the wall with its figure"
+            "what": "the thickness tag counts up"
           }
         ],
         "things": [
-          "cylinder",
-          "five layers",
-          "glue lines",
-          "dimension line"
+          "carbon cylinder",
+          "titanium rings",
+          "layer caption",
+          "thickness tag"
         ],
         "fig": {
           "thick": "{fact7}"
         },
-        "mode": "layers"
+        "shot": "joint",
+        "phase": "cutaway",
+        "cutAt": "second",
+        "note": {
+          "at": "bonded",
+          "text": "FIVE BONDED LAYERS"
+        },
+        "tag": {
+          "at": "thick",
+          "fig": "thick",
+          "label": "WALL · INCHES"
+        }
       }
     },
     {
@@ -2461,8 +2472,8 @@
         }
       },
       "params": {
-        "component": "Section",
-        "place": "the ocean cut beside the front dome",
+        "component": "Sea",
+        "place": "in front of Titan's window, deep water",
         "camera": [
           {
             "sec": 0,
@@ -2470,7 +2481,7 @@
           },
           {
             "at": "window",
-            "size": "close"
+            "size": "extreme"
           },
           {
             "at": "wreck",
@@ -2480,32 +2491,43 @@
         "moments": [
           {
             "at": "window",
-            "what": "the front dome draws with its window"
+            "what": "the camera swings round to the front dome, its window glowing"
           },
           {
             "at": "maker",
-            "what": "a certificate tag hangs from the window"
+            "what": "a certificate tag pins to the window"
           },
           {
             "at": "certified",
-            "what": "a rating line drops to its depth on the ocean cut"
+            "what": "the rating plate counts up"
           },
           {
             "at": "wreck",
-            "what": "the sub's line keeps going, far deeper, red"
+            "what": "the camera pulls back; far below, the wreck's depth plate lights red"
           }
         ],
         "things": [
           "front dome",
           "window",
-          "certificate tag",
-          "depth lines"
+          "rating plate",
+          "wreck depth plate"
         ],
         "fig": {
           "rated": "{fact9}",
           "wreck": "{fact4}"
         },
-        "mode": "window"
+        "shot": "domeside",
+        "phase": "descent",
+        "tag": {
+          "at": "certified",
+          "fig": "rated",
+          "label": "WINDOW CERTIFIED · METRES"
+        },
+        "tag2": {
+          "at": "wreck",
+          "fig": "wreck",
+          "label": "THE WRECK LIES AT · METRES"
+        }
       }
     },
     {
@@ -5579,8 +5601,8 @@
         }
       },
       "params": {
-        "component": "Section",
-        "place": "the drafting sheet with a globe",
+        "component": "Sea",
+        "place": "the open North Atlantic, ships of many countries",
         "camera": [
           {
             "sec": 0,
@@ -5598,27 +5620,38 @@
         "moments": [
           {
             "at": "push",
-            "what": "a globe outline draws on"
+            "what": "ships from many countries ride the swell under a clear sky"
           },
           {
             "at": "standard",
-            "what": "a rule book lands on it"
+            "what": "a caption types on: the world standard for submersibles"
           },
           {
             "at": "mandatory",
-            "what": "the book's tag flips from optional to mandatory"
+            "what": "a stamp lands: mandatory"
           },
           {
             "at": "optional",
-            "what": "the old tag falls away"
+            "what": "the camera drifts on along the line of ships"
           }
         ],
         "things": [
-          "globe",
-          "rule book",
-          "tags"
+          "ships of many countries",
+          "open sea",
+          "caption",
+          "stamp"
         ],
-        "mode": "world"
+        "shot": "fleet",
+        "phase": "search",
+        "fleet": true,
+        "note": {
+          "at": "standard",
+          "text": "WORLD STANDARD"
+        },
+        "stamp": {
+          "at": "mandatory",
+          "text": "MANDATORY"
+        }
       }
     },
     {

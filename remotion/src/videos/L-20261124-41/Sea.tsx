@@ -30,6 +30,7 @@ const SHOTS: Record<string, Shot> = {
   orbit: { a: [7, 1.5, 5], la: [0, 0, 0], b: [2, 1, 8], lb: [0, 0, 0], fov: 42 },
   fail: { a: [4.2, 1, 5.2], la: [0, 0, 0], b: [9, 2.5, 13], lb: [0, 1, 0], fov: 44 },
   far: { a: [26, -4, 30], la: [0, 2, 0], b: [24, 4, 28], lb: [0, 6, 0], fov: 40 },
+  fleet: { a: [36, 10, 40], la: [0, 3, -20], b: [28, 8, 34], lb: [-6, 3, -22], fov: 44 },
   search: { a: [40, 22, 40], la: [0, 2, 0], b: [34, 18, 34], lb: [0, 3, 0], fov: 44 },
   seabed: { a: [-14, 5, 14], la: [0, 0.5, 0], b: [-11, 4, 11], lb: [1, 0.5, 0], fov: 46 },
   seabedclose: { a: [-7, 3, 7], la: [0, 0.5, 0.5], b: [-6, 6, 8], lb: [0, 1.5, 0.5], fov: 44 },
@@ -37,8 +38,8 @@ const SHOTS: Record<string, Shot> = {
   domeside: { a: [4.2, 0.9, 2.6], la: [2.1, 0, 0], b: [3.6, 0.7, 2.0], lb: [2.2, 0, 0], fov: 40 },
   float: { a: [12, 4, 13], la: [0, 1.2, 0], b: [10, 3, 11], lb: [0, 1.2, 0], fov: 42 },
   plane: { a: [30, 12, 34], la: [0, 20, 0], b: [26, 10, 30], lb: [10, 18, 0], fov: 46 },
-  lot: { a: [15, 8, 15], la: [0, 1, 0], b: [11, 6, 12], lb: [0, 1, 0], fov: 42 },
-  lotclose: { a: [7, 3.5, 6], la: [0, 1.2, 0], b: [5.5, 2.8, 5], lb: [0, 1.2, 0], fov: 42 },
+  lot: { a: [10, 7, 18], la: [0, 1, -6], b: [8, 5.5, 15], lb: [0, 1, -6], fov: 46 },
+  lotclose: { a: [5.5, 3.2, 8], la: [-0.5, 1.4, -2], b: [4.5, 2.6, 7], lb: [-0.5, 1.4, -2], fov: 46 },
   loop: { a: [6, 1.5, 7], la: [0.5, 0, 0], b: [4.6, 1.2, 4.2], lb: [1.2, 0, 0], fov: 44 },
 };
 
@@ -50,6 +51,7 @@ type Params = {
   fairingOffAt?: string; divers?: string; boat?: boolean; robot?: boolean; lamps?: number; lampsOutAt?: string; sinkAt?: string; riseAt?: string;
   cycleAt?: string; grid?: string; carAt?: string; fade?: boolean; rough?: boolean; slow?: boolean;
   causeTags?: { at: string; text?: string; fig?: string; prefix?: string; red?: boolean }[]; finding?: { at: string; text: string; verdict: string };
+  note?: { at: string; text: string }; tag2?: Tag; fleet?: boolean;
   reuseAt?: string; night?: string; noPlatformAt?: string; batteriesAt?: string; planeBig?: boolean;
 };
 
@@ -90,8 +92,8 @@ const Sea: React.FC<SceneProps> = (p) => {
   const domeOpen = P.people ? 1 - cue(t, e(P.closeAt), 20) : 0;
   const bolts = P.boltsAt ? Math.min(18, Math.max(0, (t - e(P.boltsAt)) * 0.5)) : P.people ? 0 : 18;
   const nightK = P.night && P.phase !== "lot" ? cue(t, e(P.night), 30) : 0;
-  const bg = lot ? { top: "#8e9aa6", bottom: "#d9dee3" } : phase === "search" ? { top: "#3d4b59", bottom: "#7d8a97" } : nightK > 0 ? { top: "#0a1424", bottom: "#24364a" } : surface ? { top: phase === "search" ? "#7b8794" : "#9fb3c6", bottom: "#d5dde5" } : phase === "debris" ? DEEPBG : deep ? DEEPBG : UNDER;
-  const fog = lot ? { color: "#b9c2cb", near: 25, far: 90 } : surface ? { color: phase === "search" ? "#8994a0" : "#b5c3d0", near: 30, far: 140 } : phase === "debris" ? { color: "#01050b", near: 10, far: 55 } : { color: deep ? "#020a14" : "#0b2c47", near: 8, far: deep ? 40 : 60 };
+  const bg = lot ? { top: "#8e9aa6", bottom: "#d9dee3" } : P.fleet ? { top: "#6fa3d0", bottom: "#d5e4ef" } : phase === "search" ? { top: "#3d4b59", bottom: "#7d8a97" } : nightK > 0 ? { top: "#0a1424", bottom: "#24364a" } : surface ? { top: phase === "search" ? "#7b8794" : "#9fb3c6", bottom: "#d5dde5" } : phase === "debris" ? DEEPBG : deep ? DEEPBG : UNDER;
+  const fog = lot ? { color: "#b9c2cb", near: 25, far: 90 } : surface ? { color: P.fleet ? "#bcd3e4" : phase === "search" ? "#8994a0" : "#b5c3d0", near: 40, far: 170 } : phase === "debris" ? { color: "#01050b", near: 10, far: 55 } : { color: deep ? "#020a14" : "#0b2c47", near: 8, far: deep ? 40 : 60 };
   const dim = P.dimAt ? cue(t, e(P.dimAt), 14) : 0;
   const fadeDark = P.sinkAt ? cue(t, e(P.sinkAt), 20) : P.fade ? cue(t, 0, end, (x) => x) * 0.4 : 0;
   const lampsOut = P.lampsOutAt ? e(P.lampsOutAt) : 1e9;
@@ -108,6 +110,8 @@ const Sea: React.FC<SceneProps> = (p) => {
         <Overlay text={phase === "debris" ? "3D reconstruction · the debris as found" : undefined}>
           {P.caption === "date" && <MonoCaption t={t} at={P.shot === "loop" ? e("comments") - 10 : -80} text={`JUNE ${fig("day")}, ${fig("year")} · NORTH ATLANTIC`} size={34} />}
           {P.caption === "date" && <MonoCaption t={t} at={P.shot === "loop" ? e("comments") : 10} text="TITAN · BOUND FOR THE TITANIC" top={164} size={30} color={ICE} />}
+          {P.note && <MonoCaption t={t} at={e(P.note.at)} text={P.note.text} top={170} left={150} size={40} color="#ffd27a" />}
+          {P.tag2 && <Readout x={1180} y={420} label={P.tag2.label} k={cue(t, e(P.tag2.at), 12)} value={countText(fig(P.tag2.fig), cue(t, e(P.tag2.at), 20))} />}
           {P.tag && <Readout x={1180} y={150} label={P.tag.label} k={cue(t, e(P.tag.at), 12)} value={countText(fig(P.tag.fig), cue(t, e(P.tag.at), 20))} />}
           {P.chapter && <ChapterCard t={t} text={P.chapter} />}
           {P.stamp && <StampHtml t={t} at={e(P.stamp.at)} text={P.stamp.text} x={1180} y={220} />}
@@ -154,7 +158,13 @@ const Sea: React.FC<SceneProps> = (p) => {
       {P.crew && surface && Array.from({ length: 6 }, (_, i) => <Folk key={i} position={[-20 + i * 1.3, 3.2, -43.6]} h={1.7} color={i % 2 ? "#e8b21c" : "#c84a2a"} />)}
       {P.divers && surface && [0, 1].map((i) => <Diver key={i} position={[-2 + i * 4, -0.7, 2.4 - i * 4.6]} frame={t + i * 17} yaw={i * 3.1} />)}
       {phase === "search" && <group scale={P.planeBig ? 1.8 : 1}><Plane position={[P.planeBig ? -20 + t * 0.12 : -60 + t * 0.35, P.planeBig ? 11 : 26, -10]} /></group>}
-      {phase === "search" && [[-40, -60], [30, -70], [70, -30], [-70, 20]].map(([x, z], i) => <Ship key={i} position={[x!, 0.2, z!]} frame={t + i * 30} scale={0.8} />)}
+      {phase === "search" && !P.fleet && [[-40, -60], [30, -70], [70, -30], [-70, 20]].map(([x, z], i) => <Ship key={i} position={[x!, 0.2, z!]} frame={t + i * 30} scale={0.8} />)}
+      {P.fleet && [[-40, -30], [-12, -26], [16, -30], [44, -24], [-26, -55], [4, -58], [32, -54]].map(([x, z], i) => (
+        <group key={i}>
+          <Ship position={[x!, 0.2, z!]} frame={t + i * 30} scale={0.7} />
+          <mesh position={[x! + 3.6, 11.5, z!]}><boxGeometry args={[2.4, 1.5, 0.08]} /><meshStandardMaterial color={["#d52b1e", "#1f6fd1", "#ffffff", "#f2c500", "#2f8f4e", "#e8702a", "#7a2a8c"][i]} /></mesh>
+        </group>
+      ))}
       {/* under the surface */}
       {phase === "release" && <SurfaceFromBelow y={2} frame={t} />}
       {phase === "release" && <Platform position={[0, -3.6 - 2 * cue(t, 0, 40), 0]} />}
@@ -199,21 +209,38 @@ const Sea: React.FC<SceneProps> = (p) => {
 const LotWorld: React.FC<{ t: number; snowK: number }> = ({ t, snowK }) => (
   <group>
     <mesh rotation-x={-Math.PI / 2} receiveShadow><planeGeometry args={[120, 120]} /><meshStandardMaterial color="#4a4f55" roughness={1} /></mesh>
-    <mesh rotation-x={-Math.PI / 2} position={[0, 0.01, 0]}><planeGeometry args={[120, 120]} /><meshStandardMaterial color="#ffffff" transparent opacity={0.55 * snowK} /></mesh>
-    {Array.from({ length: 12 }, (_, i) => <mesh key={i} position={[-16 + i * 3, 0.02, 6]} rotation-x={-Math.PI / 2}><planeGeometry args={[0.15, 5]} /><meshBasicMaterial color="#e8e8e8" /></mesh>)}
-    {Array.from({ length: 12 }, (_, i) => <mesh key={i} position={[-16 + i * 3, 0.02, -6]} rotation-x={-Math.PI / 2}><planeGeometry args={[0.15, 5]} /><meshBasicMaterial color="#e8e8e8" /></mesh>)}
+    <mesh rotation-x={-Math.PI / 2} position={[0, 0.01, 0]}><planeGeometry args={[120, 120]} /><meshStandardMaterial color="#ffffff" transparent opacity={0.45 * snowK} /></mesh>
+    {Array.from({ length: 12 }, (_, i) => <mesh key={i} position={[-16 + i * 3, 0.02, 7]} rotation-x={-Math.PI / 2}><planeGeometry args={[0.15, 5]} /><meshBasicMaterial color="#e8e8e8" /></mesh>)}
     <Titan position={[0, 1.15, 0]} frame={0} lights={0} />
-    <mesh position={[-0.4, 2.05, 0]} scale={[1, 0.25, 1]}><sphereGeometry args={[2.6 * snowK + 0.01, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2]} /><meshStandardMaterial color="#ffffff" roughness={1} /></mesh>
-    <mesh position={[-7, 1.3, -1]} castShadow><boxGeometry args={[6, 2.6, 2.4]} /><meshStandardMaterial color="#a2241d" roughness={0.8} /></mesh>
-    <mesh position={[7, 1.3, -1]} castShadow><boxGeometry args={[6, 2.6, 2.4]} /><meshStandardMaterial color="#1f6fd1" roughness={0.8} /></mesh>
-    {[[-13, 6, "#d9d9d9"], [-10, 6, "#2f3f55"], [10, 6, "#8a1c1c"], [13, -6, "#cfcfcf"], [-13, -6, "#3c3c3c"]].map(([x, z, c], i) => (
-      <group key={i} position={[x as number, 0, z as number]}>
-        <mesh position={[0, 0.55, 0]} castShadow><boxGeometry args={[1.8, 0.7, 4]} /><meshStandardMaterial color={c as string} /></mesh>
-        <mesh position={[0, 1.1, -0.2]} castShadow><boxGeometry args={[1.6, 0.5, 2.2]} /><meshStandardMaterial color={c as string} /></mesh>
+    {/* a thin layer of snow along the top of the fairing */}
+    <mesh position={[-0.6, 2.2, 0]}><boxGeometry args={[5.2, 0.08 + 0.1 * snowK, 1.1]} /><meshStandardMaterial color="#ffffff" roughness={1} transparent opacity={Math.min(1, snowK * 1.5)} /></mesh>
+    {/* two shipping containers with ribs and doors */}
+    {[[-7.5, "#a2241d"], [7.5, "#1f6fd1"]].map(([x, c], k) => (
+      <group key={k} position={[x as number, 0, -1]}>
+        <mesh position={[0, 1.3, 0]} castShadow><boxGeometry args={[6, 2.6, 2.4]} /><meshStandardMaterial color={c as string} roughness={0.75} /></mesh>
+        {Array.from({ length: 11 }, (_, i) => <mesh key={i} position={[-2.75 + i * 0.55, 1.3, 1.22]}><boxGeometry args={[0.12, 2.5, 0.06]} /><meshStandardMaterial color={c as string} roughness={0.5} /></mesh>)}
+        <mesh position={[3.02, 1.3, 0]}><boxGeometry args={[0.06, 2.5, 2.3]} /><meshStandardMaterial color="#2b2b2b" /></mesh>
+        {[-0.5, 0.5].map((z) => <mesh key={z} position={[3.06, 1.3, z]}><boxGeometry args={[0.05, 2.3, 0.06]} /><meshStandardMaterial color="#c9c9c9" /></mesh>)}
+        <mesh position={[0, 2.63, 0]}><boxGeometry args={[6, 0.06 + 0.08 * snowK, 2.4]} /><meshStandardMaterial color="#ffffff" transparent opacity={snowK} /></mesh>
       </group>
     ))}
-    <mesh rotation-x={-Math.PI / 2} position={[0, -0.3, -40]}><planeGeometry args={[160, 40]} /><meshStandardMaterial color="#2f5f80" roughness={0.3} /></mesh>
-    {Array.from({ length: 160 }, (_, i) => {
+    {/* parked cars: body, cabin with windows, wheels */}
+    {[[-13, 7, "#d9d9d9"], [-10, 7, "#2f3f55"], [10, 7, "#8a1c1c"], [13, 7, "#cfcfcf"]].map(([x, z, c], i) => (
+      <group key={i} position={[x as number, 0, z as number]}>
+        <mesh position={[0, 0.55, 0]} castShadow><boxGeometry args={[1.8, 0.55, 4.2]} /><meshStandardMaterial color={c as string} roughness={0.4} metalness={0.3} /></mesh>
+        <mesh position={[0, 1.05, -0.2]} castShadow><boxGeometry args={[1.6, 0.5, 2.1]} /><meshStandardMaterial color={c as string} roughness={0.4} metalness={0.3} /></mesh>
+        <mesh position={[0, 1.05, -0.2]}><boxGeometry args={[1.64, 0.36, 1.9]} /><meshStandardMaterial color="#1c2733" roughness={0.1} /></mesh>
+        {[[-0.85, 1.3], [0.85, 1.3], [-0.85, -1.3], [0.85, -1.3]].map(([wx, wz], j) => <mesh key={j} position={[wx!, 0.33, wz!]} rotation-z={Math.PI / 2}><cylinderGeometry args={[0.33, 0.33, 0.25, 16]} /><meshStandardMaterial color="#111" /></mesh>)}
+        <mesh position={[0, 1.32, -0.2]}><boxGeometry args={[1.6, 0.05 * snowK + 0.01, 2.1]} /><meshStandardMaterial color="#ffffff" transparent opacity={snowK} /></mesh>
+      </group>
+    ))}
+    {/* the quay and the harbour behind */}
+    <mesh position={[0, 0.3, -9]}><boxGeometry args={[80, 0.6, 0.6]} /><meshStandardMaterial color="#8d949b" /></mesh>
+    {Array.from({ length: 8 }, (_, i) => <mesh key={i} position={[-28 + i * 8, 0.8, -9]}><cylinderGeometry args={[0.25, 0.3, 0.6, 10]} /><meshStandardMaterial color="#2b2b2b" /></mesh>)}
+    <mesh rotation-x={-Math.PI / 2} position={[0, -0.6, -40]}><planeGeometry args={[200, 62]} /><meshStandardMaterial color="#2f5f80" roughness={0.25} metalness={0.2} /></mesh>
+    <mesh position={[0, 6, -75]}><boxGeometry args={[200, 14, 4]} /><meshStandardMaterial color="#5b6670" /></mesh>
+    <Ship position={[-18, 0, -26]} frame={t} scale={0.9} />
+    {Array.from({ length: 140 }, (_, i) => {
       const x = ((i * 7.3) % 40) - 20, z = ((i * 3.7) % 30) - 15;
       const y = 14 - (((t * 0.08) + i * 0.37) % 14);
       return <mesh key={i} position={[x + Math.sin(t * 0.03 + i) * 0.3, y, z]}><sphereGeometry args={[0.06, 5, 4]} /><meshBasicMaterial color="#ffffff" transparent opacity={0.9 * snowK} /></mesh>;

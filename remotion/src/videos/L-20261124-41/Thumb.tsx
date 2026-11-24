@@ -13,10 +13,11 @@ export default function Thumb({ th, w, h }: ThumbProps) {
         <path d={`M ${w * 0.05} ${h} L ${w * 0.08} ${h * 0.8} L ${w * 0.62} ${h * 0.76} L ${w * 0.78} ${h * 0.9} L ${w * 0.8} ${h} Z`} fill="#2a1a12" stroke="#000" strokeWidth={6} />
         <rect x={w * 0.2} y={h * 0.7} width={w * 0.08} height={h * 0.08} fill="#1d120c" />
         <line x1={w * 0.55} y1={h * 0.77} x2={w * 0.6} y2={h * 0.6} stroke="#1d120c" strokeWidth={12} />
-        <BigSub x={w * 0.66} y={h * 0.4} L={w * 0.5} crack tilt={28} />
-        <circle cx={w * 0.645} cy={h * 0.4} r={h * 0.13} fill="none" stroke="#ff2d2d" strokeWidth={h * 0.014} />
+        {Array.from({ length: 6 }, (_, i) => <path key={i} d={`M ${w * (0.3 + i * 0.12)} 0 L ${w * (0.36 + i * 0.12)} 0 L ${w * (0.5 + i * 0.1)} ${h} L ${w * (0.4 + i * 0.1)} ${h} Z`} fill="#bfe8ff" opacity={0.07} />)}
+        <BigSub x={w * 0.68} y={h * 0.47} L={w * 0.56} crack tilt={24} />
+        <circle cx={w * 0.665} cy={h * 0.47} r={h * 0.15} fill="none" stroke="#ff2d2d" strokeWidth={h * 0.014} />
       </svg>
-      <Words text={th.words ?? ""} x={w * 0.04} y={h * 0.05} width={w * 0.5} size={150} align="left" />
+      <Words text={th.words ?? ""} x={w * 0.04} y={h * 0.05} width={w * 0.44} size={140} align="left" />
     </AbsoluteFill>
   );
 }
