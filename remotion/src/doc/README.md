@@ -65,6 +65,7 @@ and checks the params with `renderer/timeline/build.py` `doc_problems`. `DocBeat
 | `products` | `ProductStage` | `mode` stage/pallet/wall, `items` [{src (transparent PNG), aspect, label, at}], `backdrop` charcoal/paper; pallet/wall: `count` (a `params.fig` key; at most 240 units drawn, the full figure lands after), `countLabel`, `fillAt`, `fillLen` |
 
 | `montage` | `Montage` | `items` [{src, focus, caption, at}] (at least 3, each a different picture), `mode` punch (hook: a zoom punch + flash per picture) / stack (prints thrown onto a desk) / grid (an evidence wall), `every` (frames), `grade` |
+| `logo` | `LogoSticker` | a company's transparent logo PNG on an off-white die-cut plate over the layer under it (dark logos stay readable): `src`, `aspect`, `pos` [x,y], `size` (plate width share, default 0.62), `tilt`; drops in on `at`. Only to identify the company the line is about. |
 | `depth` | `Depth` | 2.5D: `src` (the photo, greyed and blurred behind), `cut` (its cut-out PNG from `python -m generator.media cutout`, in front), `title` + `sub` between the layers on `titleAt`, `side`, `tone`, `bgTreatment` bw/archive/none, `particles` |
 
 Overlays: `lowerThird` {name, role}, `source` {form?, text, date?, pos}, `label` {text, sub, tone white/red},

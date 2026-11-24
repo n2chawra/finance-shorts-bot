@@ -30,8 +30,9 @@ import { autoEnter, EnterFx, isEnter, LightLeak } from "./Transitions";
 import { ArrowMark, DateSlam, slamShake, StampMark } from "./Annotate";
 import { isMontageMode, Montage } from "./Montage";
 import { Depth } from "./Depth";
+import { LogoSticker } from "./LogoSticker";
 
-export const LAYER_KINDS = ["footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "montage", "depth", ...FIGURE_KINDS] as const;
+export const LAYER_KINDS = ["footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "montage", "depth", "logo", ...FIGURE_KINDS] as const;
 export const OVERLAY_KINDS = ["lowerThird", "source", "chapter", "label", "arrow", "stamp", "date"] as const;
 
 type Any = Record<string, unknown>;
@@ -135,6 +136,8 @@ const Layer: React.FC<{ c: Ctx; l: Any }> = ({ c, l }) => {
         titleAt={ev(l.titleAt, 8)} tone={l.tone === "white" || l.tone === "red" ? l.tone : "gold"} bgTreatment={l.bgTreatment === "archive" || l.bgTreatment === "none" ? l.bgTreatment : "bw"}
         grade={isGrade(l.grade) ? l.grade : "doc"} focus={Array.isArray(l.focus) ? pair(l.focus, [0.5, 0.45]) : undefined} side={l.side === "right" ? "right" : "left"}
         particles={l.particles === true} t={t} end={end} w={w} h={h} />;
+    case "logo":
+      return <LogoSticker src={s(l.src)} aspect={n(l.aspect, 3)} pos={pair(l.pos, [0.5, 0.3])} size={n(l.size, 0.62)} tilt={n(l.tilt, -4)} t={t} end={end} w={w} h={h} />;
     default:
       return isFigureKind(l.kind) ? <FigureLayer l={l} fig={fig} t={t} end={end} w={w} h={h} ev={ev} /> : null;
   }

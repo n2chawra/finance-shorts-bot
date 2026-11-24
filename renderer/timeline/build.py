@@ -642,7 +642,7 @@ def directed_problems(b: "Beat", where: str) -> list[str]:
     return out
 
 
-DOC_LAYERS = ("footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "count", "listing", "ticker", "sink", "donut", "poster", "montage", "depth")
+DOC_LAYERS = ("footage", "photo", "document", "headline", "chart", "timeline", "split", "map", "chapter", "polaroids", "products", "count", "listing", "ticker", "sink", "donut", "poster", "montage", "depth", "logo")
 # no "circle": the hand-drawn red ring was dropped (owner, 2026-11-20: "not looking good")
 DOC_OVERLAYS = ("lowerThird", "source", "chapter", "label", "arrow", "stamp", "date")
 DOC_ENTERS = ("cut", "fade", "flash", "whip-left", "whip-right", "zoom", "focus", "shutter", "glitch", "drop", "iris", "slide-up")
