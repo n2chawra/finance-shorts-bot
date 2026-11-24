@@ -1,0 +1,47 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-24T16:10:20Z",
+  "finishedAt": "2026-11-24T16:12:50Z",
+  "summary": "Watched 6 Geography Shorts (plus 2 for their drops) now that retention has arrived; added one lesson, raised one and queued one ending test.",
+  "decision": "acted",
+  "why": "Every Short loses most at its second beat (5.4-6.0 s); the steepest falls were a setup line or two figures over an empty frame (Dinorwig -32.4%, English cities -19.1%, Tristan -17.7%), and the two worst Shorts sit 10-11 points under the channel's 59.2% median stayed to watch.",
+  "findings": [
+    {
+      "title": "Second beat is where viewers leave",
+      "detail": "All 7 Shorts with drop points fall 15-32% at 5.4-6.0 s. Worst: Dinorwig 32.4% (unknown names, a cave off the map), English cities 19.1% (a tease with no fact), Tristan 17.7% (two distances over an empty sea)."
+    },
+    {
+      "title": "Generic first frame cost English cities",
+      "detail": "Opened on a made-up 'old English city' diagram with no real place named; stayed 48.9% against a 59.2% median."
+    },
+    {
+      "title": "Comment question at the end loses 6-21%",
+      "detail": "One passport -21.0% at 62.4 s, Sahara -13.2%; queued as challenger geo-loop-no-question."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Lesson added: the second line delivers a thing you can see",
+      "detail": "channels/geography-maps-geopolitical-mysteries/prompts/lessons.md #1",
+      "branch": "agent/reviewer/2026-11-24/geography-maps-geopolitical-mysteries"
+    },
+    {
+      "title": "Lesson raised: the first frame names the subject",
+      "detail": "now #2, with English cities as the case",
+      "branch": "agent/reviewer/2026-11-24/geography-maps-geopolitical-mysteries"
+    },
+    {
+      "title": "Challenger queued: geo-loop-no-question",
+      "detail": "cycle/backlog.json",
+      "branch": "agent/reviewer/2026-11-24/geography-maps-geopolitical-mysteries"
+    }
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [
+    {
+      "label": "Review",
+      "url": "channels/geography-maps-geopolitical-mysteries/review/2026-11-24.md"
+    }
+  ]
+}
