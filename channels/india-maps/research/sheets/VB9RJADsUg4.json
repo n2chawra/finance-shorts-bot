@@ -1,0 +1,102 @@
+{
+ "_source": "Watched in the built-in browser 2026-11-24: frames at 0, ~2, then every 5-15 s, audio probe on two. Our own descriptions; shots approximate; words not counted (no transcript), so words are 0.",
+ "durationSec": 24,
+ "artStyle": "3D animation",
+ "language": "hi",
+ "narrator": {
+  "kind": "AI voice",
+  "pace": "fast"
+ },
+ "captions": {
+  "style": "sentence",
+  "position": "bottom"
+ },
+ "music": {
+  "present": true,
+  "energy": "medium"
+ },
+ "sfxPerMinute": 0,
+ "hook": {
+  "firstFrame": "India in tricolour stripes rising off a satellite map",
+  "firstLine": "",
+  "question": false,
+  "subjectNamedAtSec": 1,
+  "figureShownAtSec": 3,
+  "figureSpokenAtSec": 3
+ },
+ "shots": [
+  {
+   "start": 0,
+   "end": 3,
+   "picture": "India in flag colours lifts off the map",
+   "kind": "map",
+   "characters": 0,
+   "camera": "push in",
+   "transition": "none",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 3,
+   "end": 8,
+   "picture": "a 500 rupee note sticker on the India shape",
+   "kind": "object",
+   "characters": 0,
+   "camera": "static",
+   "transition": "cut",
+   "onScreenText": "500",
+   "figureOnScreen": true,
+   "motion": 1
+  },
+  {
+   "start": 8,
+   "end": 16,
+   "picture": "neighbour country shape in its flag, the things 500 buys there stacked as stickers",
+   "kind": "object",
+   "characters": 0,
+   "camera": "static",
+   "transition": "morph",
+   "onScreenText": "",
+   "figureOnScreen": true,
+   "motion": 2
+  },
+  {
+   "start": 16,
+   "end": 24,
+   "picture": "next country, more stickers piled on the shape",
+   "kind": "object",
+   "characters": 0,
+   "camera": "static",
+   "transition": "morph",
+   "onScreenText": "",
+   "figureOnScreen": true,
+   "motion": 2
+  }
+ ],
+ "lines": [
+  {
+   "start": 0,
+   "end": 3,
+   "words": 0,
+   "job": "hook",
+   "gist": "what Indian 500 rupees buys in other countries"
+  },
+  {
+   "start": 3,
+   "end": 24,
+   "words": 0,
+   "job": "reveal",
+   "gist": "country by country, the things it buys"
+  }
+ ],
+ "ending": {
+  "loops": false,
+  "cta": null,
+  "lastFrame": "a country shape covered in stickers"
+ },
+ "whyItWorks": [
+  "one figure everyone knows, compared country by country",
+  "the answer is a pile of familiar things, not a number"
+ ]
+}

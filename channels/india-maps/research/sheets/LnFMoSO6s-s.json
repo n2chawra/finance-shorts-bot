@@ -1,0 +1,160 @@
+{
+ "_source": "Watched in the built-in browser 2026-11-24: frames at 0, ~2, then every 5-15 s, audio probe on two. Our own descriptions; shots approximate; words not counted (no transcript), so words are 0.",
+ "durationSec": 28,
+ "artStyle": "flat vector animation",
+ "language": "hi",
+ "narrator": {
+  "kind": "AI voice",
+  "pace": "fast"
+ },
+ "captions": {
+  "style": "sentence",
+  "position": "bottom"
+ },
+ "music": {
+  "present": true,
+  "energy": "low"
+ },
+ "sfxPerMinute": 15,
+ "hook": {
+  "firstFrame": "relief map of South Asia with India painted one flat ochre colour",
+  "firstLine": "",
+  "question": true,
+  "subjectNamedAtSec": 1,
+  "figureShownAtSec": 12,
+  "figureSpokenAtSec": null
+ },
+ "shots": [
+  {
+   "start": 0,
+   "end": 1.5,
+   "picture": "India in one flat colour on a relief base map",
+   "kind": "map",
+   "characters": 0,
+   "camera": "push in",
+   "transition": "none",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 1.5,
+   "end": 4,
+   "picture": "camera pushes into Punjab, painted orange with a white uppercase label",
+   "kind": "map",
+   "characters": 0,
+   "camera": "push in",
+   "transition": "zoom",
+   "onScreenText": "PUNJAB",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 4,
+   "end": 8,
+   "picture": "old undivided province painted crimson over the region",
+   "kind": "map",
+   "characters": 0,
+   "camera": "pull out",
+   "transition": "morph",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 8,
+   "end": 13,
+   "picture": "partition line splits the province; small figures pin the moving people",
+   "kind": "map",
+   "characters": 6,
+   "camera": "static",
+   "transition": "morph",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 13,
+   "end": 18,
+   "picture": "Indian side repainted, big year label and a round flag sticker",
+   "kind": "map",
+   "characters": 0,
+   "camera": "push in",
+   "transition": "morph",
+   "onScreenText": "1948",
+   "figureOnScreen": true,
+   "motion": 2
+  },
+  {
+   "start": 18,
+   "end": 22,
+   "picture": "black-and-white archive photo of crowds",
+   "kind": "photo",
+   "characters": 0,
+   "camera": "static",
+   "transition": "cut",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 1
+  },
+  {
+   "start": 22,
+   "end": 28,
+   "picture": "three new states painted in three colours with labels and the flag sticker",
+   "kind": "map",
+   "characters": 0,
+   "camera": "pull out",
+   "transition": "morph",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 2
+  }
+ ],
+ "lines": [
+  {
+   "start": 0,
+   "end": 2,
+   "words": 0,
+   "job": "hook",
+   "gist": "asks whether you know Punjab was once much bigger"
+  },
+  {
+   "start": 2,
+   "end": 8,
+   "words": 0,
+   "job": "context",
+   "gist": "the old province before 1947"
+  },
+  {
+   "start": 8,
+   "end": 13,
+   "words": 0,
+   "job": "turn",
+   "gist": "the partition line cuts it in two"
+  },
+  {
+   "start": 13,
+   "end": 22,
+   "words": 0,
+   "job": "reveal",
+   "gist": "the Indian half is split again in 1966"
+  },
+  {
+   "start": 22,
+   "end": 28,
+   "words": 0,
+   "job": "payoff",
+   "gist": "three states come out of one; which is yours"
+  }
+ ],
+ "ending": {
+  "loops": false,
+  "cta": null,
+  "lastFrame": "the region with three newly coloured states"
+ },
+ "whyItWorks": [
+  "the map itself changes on every sentence: paint, split, repaint",
+  "a big year label lands on the key date",
+  "a sensitive story told as dates and lines, not blame"
+ ]
+}
