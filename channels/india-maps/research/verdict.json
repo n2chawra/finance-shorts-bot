@@ -1,0 +1,42 @@
+{
+  "call": "go-with-conditions",
+  "reason": "India-map Shorts have strong demand that small channels break into (7 of 7 small channels had a 5x hit, on-niche median 25,365 views in 90 days), and the hits are flat map animations our kit can draw; Indian views pay little, so it is a volume play on Shorts.",
+  "conditions": [
+    "Build an India map layer on India's official boundary (all of Jammu & Kashmir, Ladakh and Arunachal) with state and district shapes from an openly licensed source (DataMeet or Survey of India; licence confirmed in the build) instead of Natural Earth's India",
+    "Hindi pipeline: Kokoro Hindi narrator at 1.5x picked by ear, numbers spoken as Hindi words by code, Devanagari captions from the voice timings (Poppins has Devanagari), checked on sample 1",
+    "Profile rules: no religion-vs-religion, no Kashmir opinions, no party politics or leaders' 'dreams', no 'invaders changed India's map' framing; Partition, divisions and borders only as sourced history",
+    "Shorts first (2-3 a day, 20-50 s); long videos only after a Short passes 500K views",
+    "The full research drops the off-niche channels the searches pulled in (news, exam prep, The Lallantop)"
+  ],
+  "for": [
+    "7 of 7 small channels (under 10K subscribers) had a Short at 5x their median or more: study Rk (8,880 subs) 5,250,538 views; QuickShot Maps (6,050 subs) 1,642,317; MIND SPARK YT (892 subs) 897,768",
+    "On-niche Shorts (26 channels, 1,412 in 90 days): median 25,365 views, 14% hits; map channels' own medians: Mihul Rawat 379,092, Gyano Trick 334,507, SuperSpy 319,197, QuickShot Maps 192,066",
+    "The top Shorts are 'every Indian state's ___' map fills and India stories on a map: singers from every state 7,206,549; temples across Indian states 4,851,939; 'The Biggest Empires of Every Indian State' 2,195,736"
+  ],
+  "against": [
+    "Indian views pay very little (Shorts RPM an estimated $0.01-0.03 per 1,000), so money needs hundreds of thousands of views a day",
+    "Crowded and steady, not rising: all 26 on-niche channels posted in the last 30 days; direction 1.08 for Shorts, 0.66 for long",
+    "Sensitive ground: the wrong map of India is illegal there, and many niche hits lean on religion or communal framing ('Akhand Bharat', 'invaders'), which we won't make"
+  ],
+  "earnings": {
+    "m6": { "low": 0, "likely": 20, "high": 200 },
+    "m12": { "low": 5, "likely": 80, "high": 600 },
+    "assumptions": "Estimates, not sourced figures: 2-3 Shorts a day; median 5-30K views a Short once the channel is found; Shorts RPM about $0.01-0.03 per 1,000 views for an Indian Hindi audience (creator reports; varies widely); the partner programme by the 10M-Shorts-views-in-90-days path around month 3-6 if one Short breaks out (about 110K views a day); high case = 100K+ medians like the top map channels plus a few long videos at $0.3-1 RPM in months 7-12"
+  },
+  "demand": {
+    "shortsMedianViews90d": 25365,
+    "smallChannelsWithHit": "7/7",
+    "shortsHitRate": 0.142,
+    "direction": 1.08,
+    "longMedianViews90d": 35632,
+    "longSmallChannelsWithHit": "1/3",
+    "activeChannels30d": "26/26",
+    "rawScan": { "shortsMedianViews90d": 9382, "longMedianViews90d": 17106, "channels": 45, "note": "includes news and exam-prep channels" }
+  },
+  "doable": {
+    "look": "yes, with an official-boundary India map layer (states, districts, neighbours): the hits are flat map fills, icons, flags and small figures, no footage or faces; our flat kit and directed shots outclass most of them",
+    "voice": "yes, with checks: Kokoro Hindi (hf_alpha, hf_beta, hm_omega, hm_psi) is its weaker language; Hindi number words and Devanagari captions are build items",
+    "policy": "care: India's official map law and communal topics; drawn maps need no AI-content label; not kids content"
+  },
+  "writtenAt": "2026-11-24T11:40:00+05:30"
+}
