@@ -2462,6 +2462,97 @@
     "https://www.energy.gov/ne/articles/5-fast-facts-about-nuclear-energy",
     "https://www.energy.gov/sites/prod/files/2018/04/f50/2017-NuclearByTheNumbers.pdf"
    ]
+  },
+  {
+   "id": "2026-11-25-nvidia-first-chip-nv1",
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "normal",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-25",
+   "expires": "2027-02-23",
+   "status": "new",
+   "title": "NVIDIA's First Chip Drew 3D Without Triangles, and Nobody Used It",
+   "category": "chips",
+   "stories": [
+    "invention_story"
+   ],
+   "demand": {
+    "title": "NVIDIA's First Chip",
+    "views": 1784885,
+    "url": "https://youtube.com/shorts/f13XH7gvEK8",
+    "channel": "True Campside Stories",
+    "channelSubs": 29800,
+    "outlier": 59.9
+   },
+   "hook": "NVIDIA's first chip drew 3D with curves instead of triangles. Almost no game used it.",
+   "angle": "Open on the NV1 board (Diamond Edge 3D, 1995: graphics, sound and Sega Saturn controller ports on one card). Inside the chip: a curved patch bent into a 3D shape (quadratic texture mapping) next to the triangle mesh everyone else used. Microsoft's DirectX (Sept 1995) is built around triangles; developers don't write for curves; NVIDIA is struggling to stay in business. The pivot: NV3, the RIVA 128 (1997), triangles, 3.5 million transistors, made in 350 nm. Payoff by code: NVIDIA's newest GPU, Rubin, has 336 billion transistors, about 1.3 million times the NV1's 250 thousand. Loop back to the curved patch. Say 'about 250 thousand' (the source says approximately). No 'nearly bankrupt' or 'thirty days' line: the sources say only 'struggling to stay in business' with 'greatly reduced staff'.",
+   "why_now": "True Campside Stories' 'NVIDIA's First Chip' Short has 1.78M views on a 29.8K channel (60x), the biggest on-profile breakout in this week's market scan (+12K views an hour). Chip history, our core lane, and no chip-history Short in the feed.",
+   "facts": [
+    {
+     "label": "Transistors in NVIDIA's first chip, the NV1 (approximately)",
+     "value": 250,
+     "unit": "count_thousand",
+     "as_of": "2021-06-22",
+     "source": "Jon Peddie Research via Electronic Design",
+     "url": "https://www.electronicdesign.com/technologies/embedded-revolution/article/21167684/jon-peddie-research-nvidias-quadratic-processor-the-nv1",
+     "fixed": true
+    },
+    {
+     "label": "Year NVIDIA was founded",
+     "value": 1993,
+     "unit": "year",
+     "as_of": "2021-06-22",
+     "source": "Jon Peddie Research via Electronic Design",
+     "url": "https://www.electronicdesign.com/technologies/embedded-revolution/article/21167684/jon-peddie-research-nvidias-quadratic-processor-the-nv1",
+     "fixed": true
+    },
+    {
+     "label": "Price of an NV1 add-in board with 2 MB of DRAM",
+     "value": 250,
+     "unit": "money",
+     "currency": "USD",
+     "as_of": "1995-07-01",
+     "source": "Jon Peddie Research via Electronic Design",
+     "url": "https://www.electronicdesign.com/technologies/embedded-revolution/article/21131077/nvidias-riva-128",
+     "fixed": true
+    },
+    {
+     "label": "Transistors in the RIVA 128 (1997)",
+     "value": 3.5,
+     "unit": "count_million",
+     "as_of": "1997-04-01",
+     "source": "Jon Peddie Research via Electronic Design",
+     "url": "https://www.electronicdesign.com/technologies/embedded-revolution/article/21131077/nvidias-riva-128",
+     "fixed": true
+    },
+    {
+     "label": "Transistors in NVIDIA's Rubin GPU",
+     "value": 336,
+     "unit": "count_billion",
+     "as_of": "2026-01-05",
+     "source": "SiliconANGLE (NVIDIA CES 2026)",
+     "url": "https://siliconangle.com/2026/01/05/nvidia-debuts-rubin-chip-336b-transistors-50-petaflops-ai-performance/",
+     "latest": true,
+     "checked": "2026-11-25"
+    }
+   ],
+   "verify": [
+    "NV1 rendered with quadratic texture mapping (curved patches), not triangles",
+    "NV1 board carried 2D, 3D, sound and Sega Saturn controller ports (Diamond Edge 3D)",
+    "DirectX first released September 1995",
+    "Rubin's 336 billion transistors on NVIDIA's own page (newsroom or technical blog); if NVIDIA states a different count, use NVIDIA's"
+   ],
+   "sources": [
+    "https://www.electronicdesign.com/technologies/embedded-revolution/article/21167684/jon-peddie-research-nvidias-quadratic-processor-the-nv1",
+    "https://www.electronicdesign.com/technologies/embedded-revolution/article/21131077/nvidias-riva-128",
+    "https://siliconangle.com/2026/01/05/nvidia-debuts-rubin-chip-336b-transistors-50-petaflops-ai-performance/",
+    "https://www.techpowerup.com/350947/"
+   ]
   }
  ]
 }

@@ -1,0 +1,55 @@
+{
+ "agent": "research",
+ "day": "2026-11-25",
+ "startedAt": "2026-11-24T19:07:59Z",
+ "finishedAt": "2026-11-24T19:13:09Z",
+ "summary": "Pacing and motion night: our Shorts change shot size about every 2 seconds and place every beat, while the reference Shorts hold one move per 4-6 s shot, so I added the numbers to the owner's calm-camera test. Added one topic: NVIDIA's first chip, a 1.78M-view breakout.",
+ "decision": "acted",
+ "why": "In each of our last five Shorts, every ~6 s beat has 3 camera keys and 3 shot sizes, against 46% static and 33% push-in shots of 4-6 s in 13 reference Shorts. Crossrail, the one-machine Short, kept 0.73 of its post-hook viewers to the end, against 0.11-0.32 for the others. True Campside Stories' NVIDIA's First Chip has 1.78M views on 29.8K subscribers (60x).",
+ "findings": [
+  {
+   "title": "We cut the camera about three times as often as the reference Shorts",
+   "detail": "Ours: 3 shot sizes in every 6 s beat and a new place every beat. Branch Education, Professor Of AI and Inside Decoded: one move or none in a 4-6 s shot. Added to the tech-calm-camera challenger.",
+   "link": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/sheets/"
+  },
+  {
+   "title": "The one-machine Short keeps people to the end",
+   "detail": "Crossrail end hold 0.73, against microwave 0.11, dam 0.15 and transistor 0.32. Added to tech-one-machine-one-place.",
+   "link": "channels/how-tech-and-ai-actually-work-chips-ai-p/metrics/analytics.json"
+  },
+  {
+   "title": "NVIDIA's First Chip: 1.78M views on 29.8K subscribers",
+   "detail": "A chip-history breakout, added as an invention_story topic with JPR and SiliconANGLE figures (NV1 about 250 thousand transistors, Rubin 336 billion).",
+   "link": "https://youtube.com/shorts/f13XH7gvEK8"
+  },
+  {
+   "title": "Microsoft 365 outage: figures yes, demand no",
+   "detail": "The preliminary report gives the causes, but there is no 100K+ explainer this week, so there is no long video for it.",
+   "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-blames-massive-microsoft-365-outage-on-maintenance-bug/"
+  },
+  {
+   "title": "Claude Code 2.1.331",
+   "detail": "Cloud turns and subagents retry once instead of failing when a reply goes silent mid-thinking. That should mean fewer failed routine runs, with nothing to change.",
+   "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+  }
+ ],
+ "changes": [
+  {
+   "title": "Topic: NVIDIA's first chip",
+   "detail": "invention_story, score 8.73",
+   "branch": "agent/research/2026-11-25/how-tech-and-ai-actually-work-chips-ai-p"
+  },
+  {
+   "title": "Evidence for two look challengers",
+   "detail": "tech-calm-camera and tech-one-machine-one-place in cycle/backlog.json",
+   "branch": "agent/research/2026-11-25/how-tech-and-ai-actually-work-chips-ai-p"
+  }
+ ],
+ "nextCheck": "2026-11-26",
+ "links": [
+  {
+   "label": "Report",
+   "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-25.md"
+  }
+ ]
+}

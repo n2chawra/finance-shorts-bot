@@ -8,7 +8,7 @@
    "metric": "heldAfterHook",
    "from": "owner note cmwur7eyr0001l309janyxc2w (2026-11-24, on L-20261124-21)",
    "test": "Shorts whose camera holds one shot size per idea and drifts, pans or orbits inside it, changing size only on the word that reveals something (about one change every 4 s, never a push in and straight back out), against the champion's size change on nearly every word",
-   "why": "The owner on the long video L-20261124-21: 'too many zoom in and zoom outs it was very difficult to actually keep an eye on whats happening'. That video changed size every 1.3 s; long videos now have a gate (renderer/craft.py camera_problems). Shorts change only through the loop, so this is the next look test."
+   "why": "The owner on the long video L-20261124-21: 'too many zoom in and zoom outs it was very difficult to actually keep an eye on whats happening'. That video changed size every 1.3 s; long videos now have a gate (renderer/craft.py camera_problems). Shorts change only through the loop, so this is the next look test. Research 2026-11-25 (pacing night): our last five Shorts give every 6 s beat 3 camera keys and 3 shot sizes (a size change about every 2 s) and a new place every beat (8-10 places a minute); the 13 reference Shorts under 100 s in research/sheets/ (Branch Education, Professor Of AI, Inside Decoded, AI Tech 3.7) hold a shot 4-6 s with one move or none (46% static, 33% push in), motion 1.5-1.9 of 3."
   },
   {
    "id": "tech-mechanism-by-6s",
@@ -104,7 +104,7 @@
    "metric": "heldAfterHook",
    "from": "reviewer 2026-11-24",
    "test": "Shorts that keep one machine in one cut-open place for the whole explanation, the camera moving along and into it (Crossrail: the tunnel boring machine from wheel to chamber to conveyor to ring), against the champion, where beats may jump to a new place each line (microwave: kitchen, lab, tube, inside the tube, a popcorn kernel, a workshop, a showroom).",
-   "why": "Held after the hook: Crossrail, which stayed on one machine in one place, 46.5%; the transistor (bench, then chip, then oscilloscope, then graphics card) 26.4%; Hoover Dam (dam, intake, powerhouse, turbine pit, generator, control room) 13.1%; microwave (seven places) 10.7%. Four Shorts and different topics, so no lesson yet: a look test."
+   "why": "Held after the hook: Crossrail, which stayed on one machine in one place, 46.5%; the transistor (bench, then chip, then oscilloscope, then graphics card) 26.4%; Hoover Dam (dam, intake, powerhouse, turbine pit, generator, control room) 13.1%; microwave (seven places) 10.7%. Four Shorts and different topics, so no lesson yet: a look test. Research 2026-11-25: Crossrail, the one-machine Short, held 0.73 of its post-hook audience to the end (endHold) against 0.11, 0.15 and 0.32 for the microwave, dam and transistor Shorts that change place every beat (metrics/analytics.json); four Shorts only, so a test, not a rule."
   }
  ],
  "running": null,
