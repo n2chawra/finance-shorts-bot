@@ -1,0 +1,359 @@
+{
+  "id": "v-20261124-61",
+  "createdAt": "2026-11-24T07:20:41.339976+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Every Indian state's number-plate code on one map, and the state that changed its code",
+    "category": "every-state",
+    "reach": "local",
+    "reach_reason": {
+      "kind": "demand"
+    },
+    "feed_id": "2026-11-24-number-plate-codes"
+  },
+  "title": "Telangana ki gaadiyon ka code kyun badla? 🚗 Har state ka code",
+  "description": "Telangana ki nayi gaadiyon par TS ki jagah TG kyun? Aur aapke state ka code kya hai?\nSources: Wikipedia, Telangana Today (Nov 2026).\nनक्शे सरल किए गए हैं; भारत की सीमाएँ भारत के आधिकारिक नक्शे के अनुसार। Maps simplified; India's borders as on India's official map. Facts from the sources named in the description.",
+  "hashtags": [
+    "#Shorts",
+    "#IndiaMap",
+    "#NumberPlate",
+    "#IndianStates",
+    "#Telangana"
+  ],
+  "hookStyle": "question",
+  "cta": "Aapki gaadi ka code kaunsa hai? Comment",
+  "seed": 31761,
+  "style": {
+    "palette": "ocean",
+    "genre": "tanpura",
+    "key": "D",
+    "bpm": 106,
+    "look": {
+      "stage": "street",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "drop"
+    },
+    "voice": "hm_omega",
+    "arms": {
+      "length": "25-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "तेलंगाना की नई गाड़ियों पर टी एस की जगह टी जी क्यों लिखा जाता है?",
+        "start": 0.3,
+        "seconds": 3.49,
+        "window": 4.1,
+        "fill": 0.851
+      },
+      {
+        "scene": "promise",
+        "text": "पहले देखिए, हर राज्य और केंद्र शासित प्रदेश की गाड़ी पर उसका अपना कोड होता है, कुल 36।",
+        "start": 4.4,
+        "seconds": 4.62,
+        "window": 5.27,
+        "fill": 0.877
+      },
+      {
+        "scene": "north",
+        "text": "दिल्ली डी एल, पंजाब पी बी, उत्तर प्रदेश यू पी, बिहार बी आर।",
+        "start": 9.67,
+        "seconds": 2.94,
+        "window": 3.6,
+        "fill": 0.817
+      },
+      {
+        "scene": "west",
+        "text": "महाराष्ट्र एम एच, गुजरात जी जे, कर्नाटक के ए, केरल के एल।",
+        "start": 13.27,
+        "seconds": 3.07,
+        "window": 3.73,
+        "fill": 0.823
+      },
+      {
+        "scene": "odd",
+        "text": "कुछ कोड पहेली हैं: उत्तराखंड यू के, छत्तीसगढ़ सी जी, लद्दाख एल ए।",
+        "start": 17.0,
+        "seconds": 3.56,
+        "window": 4.23,
+        "fill": 0.842
+      },
+      {
+        "scene": "turn",
+        "text": "और तेलंगाना? बनने के बाद उसकी गाड़ियों पर टी एस लिखा गया।",
+        "start": 21.23,
+        "seconds": 3.11,
+        "window": 3.77,
+        "fill": 0.825
+      },
+      {
+        "scene": "payoff",
+        "text": "पर आंदोलन के दिनों में लोग अपनी गाड़ियों पर टी जी लिखते थे। इसलिए 2024 में नई गाड़ियों का कोड बन गया टी जी।",
+        "start": 25.0,
+        "seconds": 6.09,
+        "window": 6.73,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "पुरानी गाड़ियाँ आज भी टी एस हैं। आपकी गाड़ी पर कौन-सा कोड है? और",
+        "start": 31.73,
+        "seconds": 3.9,
+        "window": 4.57,
+        "fill": 0.853
+      }
+    ]
+  },
+  "durationSec": 37,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.0,
+    "music_under_voice_db": 32.6
+  },
+  "experiments": {},
+  "sample": true,
+  "heard": {
+    "hookVoice": "hm_omega",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Telangana ki gaadiyon ka code kyun badla? 🚗 Har state ka code' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of the loop beat: the line now ends at 'और', with 'तेलंगाना की' cut. It adds no claim, and 'old vehicles still carry TS' is still confirmed (Telangana Today, 6 Feb 2024). Earlier checks stand: promise says states + UTs = 36, and facts[3] 2024 is confirmed."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-checked after fixes: loop ends on 'और' into the hook; Odd (20 s) caption clear of plates; Payoff (30 s, thumbnail) TS plate lifted clear of the car, readable, 2024 calendar and TS plate on the map; hook names Telangana without the answer, payoff is the movement fact, layout/craft clean, 37 s, peak -1 dB (mean -16.2, slightly hot). Minor: the lifted TS plate sits just over Maharashtra's edge, its glow still ties it to Telangana."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-24T06:42:45.387200+00:00",
+      "finishedAt": "2026-11-24T06:42:45.387200+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T06:45:45.171499+00:00",
+      "finishedAt": "2026-11-24T06:45:45.171499+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "the hook's first sentence names no famous person or company and no figure (got 'तेलंगाना की नई गाड़ियों पर टी एस की जगह टी जी क्यों लिखा जाता है?'): the subject, or the price the viewer pays, is said first, as in \"Costco sells you a hot dog for {price}. So how does it make any money?\"",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Telangana ki gaadiyon ka code kyun badla? 🚗 Har state ka code' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T06:46:00.625629+00:00",
+      "finishedAt": "2026-11-24T06:46:00.625629+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Telangana ki gaadiyon ka code kyun badla? 🚗 Har state ka code' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T06:48:47.949447+00:00",
+      "finishedAt": "2026-11-24T06:48:47.949447+00:00",
+      "notes": [
+        "Beat 'promise': 'हर राज्य की गाड़ी पर उसका अपना कोड होता है, कुल {fact3}' says India has 36 states. The source (Wikipedia, citing Know India) gives 28 states and 8 union territories, 36 in all. Say 'हर राज्य और केंद्र शासित प्रदेश...' (or 'हर स्टेट और यूटी'), and make the sign say states + UTs. Viewers of this channel know the count is 28 and will correct it in the comments.",
+        "Fact 4 (2024, TS to TG): its url (States_and_union_territories_of_India) doesn't show the change. Confirmed by search: Siasat, Deccan Chronicle, Telangana Today and ThePrint all report MoRTH notifying TG in place of TS in 2024, for new registrations only, with old TS plates staying valid. ThePrint also confirms TG was painted on plates during the statehood agitation and TS was used from 2014. Repoint facts[3].url to one of these, e.g. https://telanganatoday.com/only-new-vehicles-to-have-tg-number-plates-in-telangana. Facts 1-3 (28, 8, 36) are confirmed on the Wikipedia page. The codes DL, PB, UP, BR, MH, GJ, KA, KL, UK, CG and LA are correct."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T06:49:13.840698+00:00",
+      "finishedAt": "2026-11-24T06:49:13.840698+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Telangana ki gaadiyon ka code kyun badla? 🚗 Har state ka code' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T06:49:40.580261+00:00",
+      "finishedAt": "2026-11-24T06:49:40.580261+00:00",
+      "notes": [
+        "Re-review: beat 'promise' now says states and UTs, 36 (Wikipedia: 28 + 8 = 36). facts[3] (2024) is confirmed. Its new Telangana Today page (6 Feb 2024) reports the TS-to-TG change for new vehicles only, with TS plates continuing. Search found Siasat, Deccan Chronicle and ThePrint confirming MoRTH made TG official in 2024. Note: as_of 2024-03-13 doesn't match the source; the formal notice was May 2024. Codes, story, tone and disclaimer are OK."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T06:56:35.101868+00:00",
+      "finishedAt": "2026-11-24T06:59:32.167222+00:00",
+      "notes": [
+        "text 'UP' at 15.6 s is 41.5 px, below the 44 px minimum",
+        "text 'UP' at 15.6 s runs outside the frame",
+        "text 'BR' at 15.6 s is 41.5 px, below the 44 px minimum",
+        "text 'TG' at 35.0 s is 41.1 px, below the 44 px minimum",
+        "2.0 s with nothing new on screen in beat 'loop' (at most 1.8 s): add an action on the phrase being said there",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T07:01:07.202186+00:00",
+      "finishedAt": "2026-11-24T07:03:31.116817+00:00",
+      "notes": [
+        "37 s, ocean/tanpura (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T07:04:37.647901+00:00",
+      "finishedAt": "2026-11-24T07:04:37.647901+00:00",
+      "notes": [
+        "[script] loop beat (31.7-37 s): the last line ends 'और तेलंगाना की' and the first line starts 'तेलंगाना की नई गाड़ियों…', so the loop plays 'तेलंगाना की तेलंगाना की' and does not run straight back into the hook; end the line on 'और' (or rewrite so it flows into 'तेलंगाना की नई गाड़ियों…' without repeating)",
+        "[scene] odd beat, 20.0 s still: the caption 'लद्दाख एल ए' sits right over Karnataka's KA plate (the plate is half hidden, the caption's first letters merge into it); the Odd component leaves earlier beats' plates in the caption band, so keep plates out of the caption zone or fade the off-subject ones",
+        "[scene] payoff beat, 30.0 s still: the red car is placed over Karnataka's KA plate and hides it; move the car inside Telangana or lift the plate above it"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T07:05:18.300576+00:00",
+      "finishedAt": "2026-11-24T07:05:18.300576+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title 'Telangana ki gaadiyon ka code kyun badla? 🚗 Har state ka code' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T07:06:17.271987+00:00",
+      "finishedAt": "2026-11-24T07:06:17.271987+00:00",
+      "notes": [
+        "Re-review of the loop beat: the line now ends at 'और', with 'तेलंगाना की' cut. It adds no claim, and 'old vehicles still carry TS' is still confirmed (Telangana Today, 6 Feb 2024). Earlier checks stand: promise says states + UTs = 36, and facts[3] 2024 is confirmed."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T07:06:03.015377+00:00",
+      "finishedAt": "2026-11-24T07:08:33.975825+00:00",
+      "notes": [
+        "text 'आपका कोड?' at 34.6 s is 31.8 px, below the 44 px minimum",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T07:08:50.300435+00:00",
+      "finishedAt": "2026-11-24T07:10:48.243010+00:00",
+      "notes": [
+        "37 s, ocean/tanpura (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T07:11:20.376798+00:00",
+      "finishedAt": "2026-11-24T07:11:20.376798+00:00",
+      "notes": [
+        "[scene] Payoff beat, car moved to y 1060: it now rolls into the TS plate. At 30.0 s the car's roof already clips the plate's IND corner, and in the thumbnail frame (payoff sec 7, about 31.7 s, right at the TS-to-TG flip on 'बन') the roof covers the bottom of the TS letters. Park the car below the plate (Telangana's south half, e.g. y ~1250) or lift the plate, so the plate's flip, the video's payoff picture, stays fully clear. Re-checked and fixed: loop line now ends on 'और'; Odd at 20 s has no plate under the caption; car off the KA plate."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T07:11:41.246730+00:00",
+      "finishedAt": "2026-11-24T07:13:33.951154+00:00",
+      "notes": [
+        "37 s, ocean/tanpura (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T07:13:53.680996+00:00",
+      "finishedAt": "2026-11-24T07:13:53.680996+00:00",
+      "notes": [
+        "Re-checked after fixes: loop ends on 'और' into the hook; Odd (20 s) caption clear of plates; Payoff (30 s, thumbnail) TS plate lifted clear of the car, readable, 2024 calendar and TS plate on the map; hook names Telangana without the answer, payoff is the movement fact, layout/craft clean, 37 s, peak -1 dB (mean -16.2, slightly hot). Minor: the lifted TS plate sits just over Maharashtra's edge, its glow still ties it to Telangana."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T07:14:10.543652+00:00",
+      "finishedAt": "2026-11-24T07:20:20.288525+00:00",
+      "notes": [
+        "37 s, ocean/tanpura, peak -1.0 dB, mean -16.2 dB",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-24T07:20:41.340976+00:00",
+      "finishedAt": "2026-11-24T07:20:41.340976+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261124-61",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261124-61"
+  }
+}
