@@ -46,6 +46,21 @@
       "description": "Fact review confirms CIA World Factbook figures on the archived editions (2022-2025), the statistics office or Britannica; a facts[].url on the retired live pages fails (generator/prompts/fact_reviewer.md)",
       "evidence": "research 2026-11-19: the live country pages show only the retirement notice",
       "guard": "qa_failures"
+    },
+    {
+      "id": "geo-claim-hook",
+      "area": "hook",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-24",
+      "templates": [
+        "short_story"
+      ],
+      "guard": "qa_failures",
+      "minPerArm": 8,
+      "maxDays": 7,
+      "hypothesis": "A claim that withholds its explanation keeps more viewers past the first second than a 'Why...?' question: the claim-led reference (2.7M) and our own contradiction opener (74.7% viewed) beat our plain question openers (48-55%).",
+      "cycle": 2
     }
   ]
 }

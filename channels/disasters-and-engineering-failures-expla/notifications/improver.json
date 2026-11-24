@@ -6,6 +6,13 @@
       "title": "Disaster Desk recipe forbids a death toll in titles; your example title uses one",
       "detail": "Your 23 Nov note suggests titles like '15 Dead in One Night: The Texas City Refinery Explosion'. The channel's recipe (prompts/recipe.md, 'Titles and thumbnails') says 'No death toll, no horror, no clickbait about victims', and no agent may edit it. Tonight long titles must name the event as people search it ('Inside the Texas City Refinery Explosion'), and event thumbnails must show the event, not a gauge. The 22 Nov hook item is resolved (the recipe now states the toll in the hook).",
       "fix": "Only if you want the toll in titles: 1. Open channels/disasters-and-engineering-failures-expla/prompts/recipe.md. 2. Under 'Titles and thumbnails', change 'No death toll, no \"horror\"' to 'The toll may lead when it names the event (\"15 Dead in One Night: The Texas City Refinery Explosion\"); no \"horror\"'. Otherwise nothing to do."
+    },
+    {
+      "key": "one-short-a-day-loop",
+      "severity": "info",
+      "title": "At 1 Short a day the weekly loop can't reach a verdict",
+      "detail": "A test needs 8 Shorts a side (16 Shorts) within 7 days, extended once to 14; at 1 Short a day it ends with 7 a side and no verdict. No Shorts with 48 h data yet either, so no test is started.",
+      "fix": "1. Dashboard → Channels → Disaster Desk → Settings. 2. Set Shorts a day to 2 when the usage allows (61% of the daily usage now, so maybe not yet). Or leave it and the loop waits."
     }
   ]
 }

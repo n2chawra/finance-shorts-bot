@@ -11,6 +11,19 @@
       "action": "fixed",
       "note": "The topic feed now ranks a topic whose reference video is rising this month higher (by its views a day, up to +1 point; references over 90 days old add nothing), so the planner takes what is gaining traction first.",
       "commit": "7d101e8"
+    },
+    {
+      "id": "cmwur7eyr0001l309janyxc2w",
+      "action": "fixed",
+      "commit": "43e5d9f",
+      "note": "Long videos now zoom only when the line needs it: that video changed shot size every 1.3 s, so lint and the render fail a long video changing size more than once every 5 s on average or zooming in and straight back out more than 3 times (renderer/craft.py, director.md). For Shorts it is the next look test on this channel's weekly loop (tech-calm-camera, top of the look list)."
+    },
+    {
+      "id": "cmwurayl10001l8097slpczis",
+      "action": "partly",
+      "to": "studio",
+      "commit": "43e5d9f",
+      "note": "The long_story README and the checklist now say a long hook shows the everyday thing first (the phone, then its chip, then the machine), each on its word; Studio writes the next hooks that way."
     }
   ]
 }

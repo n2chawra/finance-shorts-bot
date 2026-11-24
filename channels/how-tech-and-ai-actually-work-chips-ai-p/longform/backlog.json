@@ -109,7 +109,8 @@
       "route": "adopt",
       "priority": "normal",
       "found": "2026-11-24",
-      "status": "open"
+      "status": "adopted",
+      "reason": "director.md: extra keys for the picture gap go at the same size (a pan or orbit) or as moments, never a size change, and no close shot on another anchor within ~1 s of the last move; the new camera gate (renderer/craft.py camera_problems) enforces the size side. 2026-11-24"
     },
     {
       "id": "tech-long-3d-labels-corner",
@@ -120,7 +121,8 @@
       "route": "adopt",
       "priority": "normal",
       "found": "2026-11-24",
-      "status": "open"
+      "status": "done",
+      "reason": "remotion/src/three/Label3D.tsx: a label whose point is off screen hides instead of being clamped into the corner. 2026-11-24"
     },
     {
       "id": "tech-long-estimate-short",

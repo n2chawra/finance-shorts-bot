@@ -1,30 +1,46 @@
 {
  "note": "Written by python -m generator.impact (improver, nightly). weeks: Shorts by IST publish week; stayedToWatch = engaged views / views (did not swipe away); changes: Shorts 14 days before vs after each landed change (sameWeek = other changes within 3 days, so effects mix).",
- "updatedAt": "2026-11-23T16:56:54+00:00",
+ "updatedAt": "2026-11-24T16:57:38+00:00",
  "weeks": [
   {
    "week": "2026-11-16",
-   "n": 3,
-   "medianViews48h": 737,
-   "avgViewPct": 62.8,
-   "stayedToWatch": 0.592,
-   "avgViewSec": 38.6,
+   "n": 5,
+   "medianViews48h": 735,
+   "avgViewPct": 66.1,
+   "stayedToWatch": 0.599,
+   "avgViewSec": 40.8,
    "videos": [
+    {
+     "id": "v-20261120-05",
+     "title": "One passport for every UN country?",
+     "day": "2026-11-20",
+     "views48h": 1041,
+     "avgViewPct": 61.2,
+     "stayedToWatch": 0.598
+    },
     {
      "id": "v-20261119-03",
      "title": "The Sahara used to be green. Why?",
      "day": "2026-11-19",
-     "views48h": 890,
-     "avgViewPct": 58.7,
-     "stayedToWatch": 0.584
+     "views48h": 889,
+     "avgViewPct": 56.7,
+     "stayedToWatch": 0.585
     },
     {
      "id": "v-20261119-02",
      "title": "Greenland belongs to Denmark. Why?",
      "day": "2026-11-19",
-     "views48h": 737,
-     "avgViewPct": 74.6,
-     "stayedToWatch": 0.61
+     "views48h": 735,
+     "avgViewPct": 74.5,
+     "stayedToWatch": 0.608
+    },
+    {
+     "id": "v-20261120-04",
+     "title": "Why did Britain hide a power station inside a mountain?",
+     "day": "2026-11-20",
+     "views48h": 121,
+     "avgViewPct": 83,
+     "stayedToWatch": 0.622
     },
     {
      "id": "v-20261118-01",
@@ -39,6 +55,30 @@
  ],
  "changes": [
   {
+   "id": "2026-11-23-factbook-archived",
+   "area": "pipeline",
+   "status": "adopted",
+   "day": "2026-11-23",
+   "description": "Fact review confirms CIA World Factbook figures on the archived editions (2022-2025), the statistics office or Britannica; a facts[].url on the retired live pages fails (generator/prompts/fact_reviewer.md)",
+   "before": {
+    "n": 5,
+    "medianViews48h": 735,
+    "avgViewPct": 66.1,
+    "stayedToWatch": 0.599,
+    "avgViewSec": 40.8
+   },
+   "after": {
+    "n": 0,
+    "medianViews48h": null,
+    "avgViewPct": null,
+    "stayedToWatch": null,
+    "avgViewSec": null
+   },
+   "afterVideos": [],
+   "viewsRatio": null,
+   "sameWeek": 0
+  },
+  {
    "id": "geo-flag-fill",
    "area": "colour",
    "status": "adopted",
@@ -52,31 +92,47 @@
     "avgViewSec": 33.0
    },
    "after": {
-    "n": 2,
-    "medianViews48h": 813.5,
-    "avgViewPct": 66.7,
-    "stayedToWatch": 0.597,
-    "avgViewSec": 41.3
+    "n": 4,
+    "medianViews48h": 812.0,
+    "avgViewPct": 68.8,
+    "stayedToWatch": 0.603,
+    "avgViewSec": 42.8
    },
    "afterVideos": [
+    {
+     "id": "v-20261120-05",
+     "title": "One passport for every UN country?",
+     "day": "2026-11-20",
+     "views48h": 1041,
+     "avgViewPct": 61.2,
+     "stayedToWatch": 0.598
+    },
     {
      "id": "v-20261119-03",
      "title": "The Sahara used to be green. Why?",
      "day": "2026-11-19",
-     "views48h": 890,
-     "avgViewPct": 58.7,
-     "stayedToWatch": 0.584
+     "views48h": 889,
+     "avgViewPct": 56.7,
+     "stayedToWatch": 0.585
     },
     {
      "id": "v-20261119-02",
      "title": "Greenland belongs to Denmark. Why?",
      "day": "2026-11-19",
-     "views48h": 737,
-     "avgViewPct": 74.6,
-     "stayedToWatch": 0.61
+     "views48h": 735,
+     "avgViewPct": 74.5,
+     "stayedToWatch": 0.608
+    },
+    {
+     "id": "v-20261120-04",
+     "title": "Why did Britain hide a power station inside a mountain?",
+     "day": "2026-11-20",
+     "views48h": 121,
+     "avgViewPct": 83,
+     "stayedToWatch": 0.622
     }
    ],
-   "viewsRatio": 67.79,
+   "viewsRatio": 67.67,
    "sameWeek": 1
   },
   {
@@ -93,31 +149,47 @@
     "avgViewSec": 33.0
    },
    "after": {
-    "n": 2,
-    "medianViews48h": 813.5,
-    "avgViewPct": 66.7,
-    "stayedToWatch": 0.597,
-    "avgViewSec": 41.3
+    "n": 4,
+    "medianViews48h": 812.0,
+    "avgViewPct": 68.8,
+    "stayedToWatch": 0.603,
+    "avgViewSec": 42.8
    },
    "afterVideos": [
+    {
+     "id": "v-20261120-05",
+     "title": "One passport for every UN country?",
+     "day": "2026-11-20",
+     "views48h": 1041,
+     "avgViewPct": 61.2,
+     "stayedToWatch": 0.598
+    },
     {
      "id": "v-20261119-03",
      "title": "The Sahara used to be green. Why?",
      "day": "2026-11-19",
-     "views48h": 890,
-     "avgViewPct": 58.7,
-     "stayedToWatch": 0.584
+     "views48h": 889,
+     "avgViewPct": 56.7,
+     "stayedToWatch": 0.585
     },
     {
      "id": "v-20261119-02",
      "title": "Greenland belongs to Denmark. Why?",
      "day": "2026-11-19",
-     "views48h": 737,
-     "avgViewPct": 74.6,
-     "stayedToWatch": 0.61
+     "views48h": 735,
+     "avgViewPct": 74.5,
+     "stayedToWatch": 0.608
+    },
+    {
+     "id": "v-20261120-04",
+     "title": "Why did Britain hide a power station inside a mountain?",
+     "day": "2026-11-20",
+     "views48h": 121,
+     "avgViewPct": 83,
+     "stayedToWatch": 0.622
     }
    ],
-   "viewsRatio": 67.79,
+   "viewsRatio": 67.67,
    "sameWeek": 1
   }
  ]
