@@ -730,3 +730,22 @@ test("scorecard keeps the on-target ring beside its reading, with no stray separ
     expect((await count.innerText()).trim().startsWith("·")).toBe(false);
   }
 });
+
+test("scorecard says last week's Shorts are still waiting instead of 'no Shorts last week'", async ({ page }) => {
+  await signIn(page);
+  await page.route("**/api/scorecard", async (route) => {
+    const res = await route.fetch();
+    const body = await res.json();
+    const week = 7 * 86_400_000, now = Date.now();
+    // last week's Shorts exist but have no YouTube numbers yet; this week's keep theirs
+    for (const s of body.shorts) {
+      const t = Date.parse(s.publishAt);
+      if (t < now - week && t >= now - 2 * week) { s.stayed = null; s.lostAt5 = null; s.endHold = null; s.relative = null; }
+    }
+    await route.fulfill({ response: res, json: body });
+  });
+  await page.goto("/scorecard");
+  await expect(page.getByRole("heading", { name: "This week vs last week" })).toBeVisible();
+  await expect(page.getByText("last week's still waiting").first()).toBeVisible();
+  await expect(page.getByText("no Shorts last week")).toHaveCount(0);
+});

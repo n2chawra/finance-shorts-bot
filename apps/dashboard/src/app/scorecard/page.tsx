@@ -56,7 +56,7 @@ function MoveArrow({ now, prev, move }: { now: number; prev: number; move: Move 
 }
 
 /** This week's medians against last week's, each with its arrow: progress first. */
-function WeekLine({ now, prev }: { now: Record<MetricKey, number | null>; prev: Record<MetricKey, number | null> }) {
+function WeekLine({ now, prev, prevCount }: { now: Record<MetricKey, number | null>; prev: Record<MetricKey, number | null>; prevCount: number }) {
   return (
     <ul className="grid grid-cols-2 gap-x-5 gap-y-3 lg:grid-cols-4">
       {METRICS.map((m: MetricDef) => {
@@ -73,7 +73,7 @@ function WeekLine({ now, prev }: { now: Record<MetricKey, number | null>; prev: 
                 ? <span className={`inline-flex items-center gap-0.5 whitespace-nowrap text-[12.5px] font-medium ${MOVE_TEXT[move]}`}>
                     <MoveArrow now={a} prev={b} move={move} />{move === "same" ? "same as" : "from"}&nbsp;<span className="tabular-nums">{m.format(b)}</span>
                   </span>
-                : <span className="text-[12px] text-muted">{a == null ? "waiting for numbers" : "no Shorts last week"}</span>}
+                : <span className="text-[12px] text-muted">{a == null ? "waiting for numbers" : prevCount ? "last week's still waiting" : "no Shorts last week"}</span>}
             </div>
           </li>
         );
@@ -162,7 +162,7 @@ export default function ScorecardPage() {
           <h2 className="text-[15px] font-semibold tracking-[-0.01em]">This week vs last week</h2>
           <span className="text-[12px] text-muted">medians of the Shorts of the last 7 days against the 7 before · green moved the right way, red the wrong way</span>
         </div>
-        <WeekLine now={s7.now.medians} prev={lastWeek} />
+        <WeekLine now={s7.now.medians} prev={lastWeek} prevCount={prevShorts.length} />
         <div className="mt-5 flex flex-col gap-3 border-t border-line pt-4 sm:flex-row sm:items-center">
           {/* the ring stays beside its reading on a phone too, so it never sits alone on a row */}
           <div data-testid="scorecard-verdict" className="flex min-w-0 flex-1 items-center gap-3">
