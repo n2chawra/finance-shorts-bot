@@ -1,0 +1,12 @@
+{
+ "claudeCode": {"latest": "2.1.331", "checked": "2026-11-25",
+  "notes": ["2.1.331 is the newest (checked tonight by the geography channel's research run): cloud turns that go silent while thinking are retried once, PushNotification fixed for headless scheduled runs. Nothing to change in the pipeline."]},
+ "sources": {
+  "market-data": "origin/market-data has no india-maps folder yet (index.json scans 4 other channels, generatedAt 2026-11-24); used research/scan.json top IDs instead, seen 2026-11-25",
+  "youtube-oembed": "youtube.com/oembed gives title and channel for a Short id; the watch page gives views until it throttles after ~5 requests, seen 2026-11-25",
+  "wikipedia-api": "en.wikipedia.org/w/api.php extracts work for ~5 pages, then 'too many requests'; WebFetch of the article still works, seen 2026-11-25",
+  "mha-gov-in": "403 to fetch; use the Lok Sabha answers on eparlib.sansad.in, seen 2026-11-25"
+ },
+ "videos": ["mHcAxUG_iGA", "ZZu9XrsHoxI", "8zRLN0xOtTU", "fcvJHOWzcgI", "nHGwpVrDbXs", "TGbXY4gk_hc"],
+ "news": ["Kerala renamed Keralam, Aug 2026"]
+}
