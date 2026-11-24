@@ -1,0 +1,23 @@
+{
+  "agent": "research",
+  "channel": "india-maps",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-24T19:58:13Z",
+  "finishedAt": "2026-11-24T20:06:06Z",
+  "summary": "First research night for India Maps: added 5 topics (Keralam and every renamed state, three states of November 2000, Bombay's 1960 split, Nagaland Statehood Day, the Vivek Express route), upgraded the straight-line topic to a 14.3M breakout, and filed two fixes for the improver.",
+  "decision": "acted",
+  "why": "The feed had 17 open setup topics with no breakout references; the niche scan's top outliers (3,964x, 256x, 18.7x) pointed at routes and neighbours. Kerala was renamed Keralam in Aug 2026, but our map still says Kerala. And generator/reach.py caps local Shorts at 1 a day and 4 in 11, which blocks a channel that is all-India at 2 a day.",
+  "findings": [
+    {"title": "Reach rule blocks India Maps' second Short a day", "detail": "reach.py: 1 local Short a day, 4 local in 11, global needs USD. India Maps is all local: proposal im-reach-india-channel (adopt, high).", "link": "channels/india-maps/research/proposals.json"},
+    {"title": "Kerala is officially Keralam (Aug 2026)", "detail": "Parliament 11-12 Aug, assent 18 Aug 2026. Map label fix proposed; the every-renamed-state topic ends on it.", "link": "https://newsonair.gov.in/bill-altering-name-of-state-of-kerala-to-keralam-gets-nod-from-parliament/"},
+    {"title": "GeoByJames: walk from India, 14.3M on 55.7K subs", "detail": "Now the demand for our true straight-line east-from-Mumbai topic (priority high).", "link": "https://youtube.com/shorts/ZZu9XrsHoxI"},
+    {"title": "States and neighbours map, 548K on ~140 subs", "detail": "Neighbours coloured around India: a future look challenger.", "link": "https://youtube.com/shorts/mHcAxUG_iGA"},
+    {"title": "Vivek Express route, 337K on 18K", "detail": "Became the route topic (4,155 km, 9 states).", "link": "https://youtube.com/shorts/8zRLN0xOtTU"}
+  ],
+  "changes": [
+    {"title": "5 topics added, 1 upgraded", "detail": "channels/india-maps/research/topics.json", "branch": "agent/research/2026-11-25/india-maps"},
+    {"title": "2 adopt proposals", "detail": "im-reach-india-channel, im-keralam-label", "branch": "agent/research/2026-11-25/india-maps"}
+  ],
+  "nextCheck": "2026-11-26",
+  "links": [{"label": "Report", "url": "channels/india-maps/research/2026-11-25.md"}]
+}
