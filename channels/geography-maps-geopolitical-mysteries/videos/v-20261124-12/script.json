@@ -1,0 +1,1120 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 42236,
+ "story": "what_if_world",
+ "shape": "the-drain",
+ "currency": "USD",
+ "style": {
+  "palette": "paper",
+  "genre": "atlas",
+  "key": "C",
+  "bpm": 88,
+  "look": {
+   "stage": "desert",
+   "header": "sticky",
+   "holder": "box",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "Rain or ships: which does Panama need more? Comment",
+ "feed_id": "2026-11-17-what-if-panama-dried-up",
+ "facts": [
+  {
+   "label": "Panama Canal daily transits under normal conditions",
+   "value": 36,
+   "unit": "count",
+   "as_of": "2023-12-01",
+   "source": "MAX Security",
+   "url": "https://www.max-security.com/resources/intel-reports/panama-canal-disruptions/",
+   "latest": true,
+   "checked": "2026-11-19"
+  },
+  {
+   "label": "Daily transit cap during the 2023 drought",
+   "value": 22,
+   "unit": "count",
+   "as_of": "2023-12-01",
+   "source": "MAX Security",
+   "url": "https://www.max-security.com/resources/intel-reports/panama-canal-disruptions/",
+   "latest": true,
+   "checked": "2026-11-19"
+  },
+  {
+   "label": "Share of global maritime trade through the Panama Canal (about)",
+   "value": 5,
+   "unit": "percent",
+   "as_of": "2023-11-15",
+   "source": "IMF",
+   "url": "https://www.imf.org/en/Blogs/Articles/2023/11/15/climate-change-is-disrupting-global-trade",
+   "latest": true,
+   "checked": "2026-11-19"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "nearly",
+  "sec": 5.0,
+  "words": "No rain, no *canal*?",
+  "tag": "Panama",
+  "angle": "question",
+  "unique": "no other covers fetched this run; our own frame of the lake drying round the canal"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Without rain, the Panama Canal stops.",
+   "events": {
+    "rain": {
+     "word": "rain"
+    },
+    "panama": {
+     "word": "Panama"
+    },
+    "canal": {
+     "word": "Canal"
+    },
+    "stops": {
+     "word": "stops"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the Panama Canal across the isthmus, the lake in its middle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "canal",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rain",
+      "what": "a rain cloud over the lake thins out"
+     },
+     {
+      "at": "panama",
+      "what": "Panama's border traces and its flag fills it"
+     },
+     {
+      "at": "canal",
+      "what": "the canal line glows from sea to sea"
+     },
+     {
+      "at": "stops",
+      "what": "a ship in the canal halts and a STOP sign stamps beside it"
+     }
+    ],
+    "things": [
+     "panama",
+     "rain cloud",
+     "canal",
+     "ship",
+     "stop sign"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "stops"
+    }
+   ]
+  },
+  {
+   "id": "question",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "So what if it never rained there again?",
+   "events": {
+    "what": {
+     "word": "what"
+    },
+    "never": {
+     "word": "never"
+    },
+    "rained": {
+     "word": "rained"
+    },
+    "again": {
+     "word": "again"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Question",
+    "place": "on the map: close over Gatun Lake",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "rained",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "what",
+      "what": "a question mark drops over the lake"
+     },
+     {
+      "at": "never",
+      "what": "the last raindrops stop"
+     },
+     {
+      "at": "rained",
+      "what": "the camera pushes in on the lake"
+     },
+     {
+      "at": "again",
+      "what": "the lake's edge flickers"
+     }
+    ],
+    "things": [
+     "question mark",
+     "rain cloud",
+     "gatun lake"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "what"
+    }
+   ]
+  },
+  {
+   "id": "nearly",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "It nearly happened. In a drought, the canal cut the ships crossing each day from {fact1} to just {fact2}.",
+   "events": {
+    "nearly": {
+     "word": "nearly"
+    },
+    "drought": {
+     "word": "drought"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "ships": {
+     "word": "ships"
+    },
+    "day": {
+     "word": "day"
+    },
+    "just": {
+     "word": "just"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Nearly",
+    "place": "on the map: the canal's Atlantic entrance at Colon, a board of ships a day",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "cut",
+      "size": "close"
+     },
+     {
+      "at": "just",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nearly",
+      "what": "a sun blazes over the lake"
+     },
+     {
+      "at": "drought",
+      "what": "the lake's blue pales and the land browns"
+     },
+     {
+      "at": "cut",
+      "what": "a board at the entrance shows ships a day"
+     },
+     {
+      "at": "ships",
+      "what": "ships line up at the entrance"
+     },
+     {
+      "at": "day",
+      "what": "the board's figure starts to drop"
+     },
+     {
+      "at": "just",
+      "what": "the board lands on the lower figure and half the ships stop"
+     }
+    ],
+    "things": [
+     "sun",
+     "pale lake",
+     "ships a day board",
+     "queued ships"
+    ],
+    "fig": {
+     "normal": "{fact1}",
+     "cap": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "cut"
+    },
+    {
+     "kind": "thud",
+     "at": "just"
+    }
+   ]
+  },
+  {
+   "id": "lake",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Why would a canal need rain? It isn't a flat ditch from sea to sea. Ships climb up into a lake in the middle of Panama, Gatun Lake, then step back down to the other ocean.",
+   "events": {
+    "rain": {
+     "word": "rain"
+    },
+    "ditch": {
+     "word": "ditch"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "climb": {
+     "word": "climb"
+    },
+    "lake": {
+     "word": "lake"
+    },
+    "middle": {
+     "word": "middle"
+    },
+    "gatun": {
+     "word": "Gatun"
+    },
+    "step": {
+     "word": "step"
+    },
+    "ocean": {
+     "word": "ocean"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Lake",
+    "place": "on the map: the canal from Colon over Gatun Lake to Panama City",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "climb",
+      "size": "medium"
+     },
+     {
+      "at": "gatun",
+      "size": "close"
+     },
+     {
+      "at": "ocean",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rain",
+      "what": "a raindrop icon pulses over the lake"
+     },
+     {
+      "at": "ditch",
+      "what": "a straight flat ditch draws across and is crossed out"
+     },
+     {
+      "at": "sea",
+      "what": "both seas glow at the ends"
+     },
+     {
+      "at": "climb",
+      "what": "a ship rises up the steps at the Atlantic end"
+     },
+     {
+      "at": "lake",
+      "what": "the lake glows blue"
+     },
+     {
+      "at": "middle",
+      "what": "the ship sails across the lake"
+     },
+     {
+      "at": "gatun",
+      "what": "GATUN LAKE writes over it"
+     },
+     {
+      "at": "step",
+      "what": "the ship steps down at the Pacific end"
+     },
+     {
+      "at": "ocean",
+      "what": "it reaches the Pacific and PACIFIC writes on the sea"
+     }
+    ],
+    "things": [
+     "crossed-out ditch",
+     "lock steps",
+     "ship",
+     "gatun lake",
+     "pacific"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "ditch"
+    },
+    {
+     "kind": "pin",
+     "at": "gatun"
+    }
+   ]
+  },
+  {
+   "id": "spill",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "And where does the water go? Every ship that crosses lets a huge gulp of the lake's fresh water run out into the sea.",
+   "events": {
+    "water": {
+     "word": "water"
+    },
+    "every": {
+     "word": "Every"
+    },
+    "crosses": {
+     "word": "crosses"
+    },
+    "huge": {
+     "word": "huge"
+    },
+    "gulp": {
+     "word": "gulp"
+    },
+    "fresh": {
+     "word": "fresh"
+    },
+    "run": {
+     "word": "run"
+    },
+    "sea": {
+     "word": "sea"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Spill",
+    "place": [
+     "on the map: close on the Gatun locks at the Caribbean end",
+     "on the map: close on the Pacific locks"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "gulp",
+      "size": "extreme"
+     },
+     {
+      "at": "run",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "water",
+      "what": "the lake shimmers"
+     },
+     {
+      "at": "every",
+      "what": "ships pass the locks one after another"
+     },
+     {
+      "at": "crosses",
+      "what": "the first ship goes through the lock"
+     },
+     {
+      "at": "huge",
+      "what": "a wave of blue gushes out of the lock"
+     },
+     {
+      "at": "gulp",
+      "what": "the gush pours into the sea"
+     },
+     {
+      "at": "fresh",
+      "what": "the lake's edge pulls back a little"
+     },
+     {
+      "at": "run",
+      "what": "streams run out at the other end too"
+     },
+     {
+      "at": "sea",
+      "what": "the sea at both ends swells with lake water"
+     }
+    ],
+    "things": [
+     "ships",
+     "locks",
+     "water gushing",
+     "lake edge"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "gulp"
+    }
+   ]
+  },
+  {
+   "id": "rain",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The only thing that fills it back up is rain, falling on the forest all around it.",
+   "events": {
+    "only": {
+     "word": "only"
+    },
+    "fills": {
+     "word": "fills"
+    },
+    "rain": {
+     "word": "rain"
+    },
+    "falling": {
+     "word": "falling"
+    },
+    "forest": {
+     "word": "forest"
+    },
+    "around": {
+     "word": "around"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Rain",
+    "place": "on the map: the rainforest hills round Gatun Lake",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "rain",
+      "size": "medium"
+     },
+     {
+      "at": "forest",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "only",
+      "what": "the camera pulls back over the hills"
+     },
+     {
+      "at": "fills",
+      "what": "rivers draw into the lake"
+     },
+     {
+      "at": "rain",
+      "what": "clouds roll in and rain falls"
+     },
+     {
+      "at": "falling",
+      "what": "the lake grows back"
+     },
+     {
+      "at": "forest",
+      "what": "trees pop up round the lake"
+     },
+     {
+      "at": "around",
+      "what": "the forest rings the lake"
+     }
+    ],
+    "things": [
+     "rain clouds",
+     "rivers",
+     "rainforest",
+     "gatun lake"
+    ]
+   }
+  },
+  {
+   "id": "drain",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So if the rain stops for good, the lake sinks a little with every ship, the locks run short, and fewer and fewer ships get through.",
+   "events": {
+    "stops": {
+     "word": "stops"
+    },
+    "good": {
+     "word": "good"
+    },
+    "sinks": {
+     "word": "sinks"
+    },
+    "every": {
+     "word": "every"
+    },
+    "locks": {
+     "word": "locks"
+    },
+    "short": {
+     "word": "short"
+    },
+    "fewer": {
+     "word": "fewer"
+    },
+    "through": {
+     "word": "through"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Drain",
+    "place": "on the map: Gatun Lake shrinking, the canal running dry",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sinks",
+      "size": "close"
+     },
+     {
+      "at": "fewer",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stops",
+      "what": "the clouds vanish and the sun comes out"
+     },
+     {
+      "at": "good",
+      "what": "the trees turn brown"
+     },
+     {
+      "at": "sinks",
+      "what": "the lake shrinks one step"
+     },
+     {
+      "at": "every",
+      "what": "it shrinks again as each ship passes"
+     },
+     {
+      "at": "locks",
+      "what": "the lock marks turn red"
+     },
+     {
+      "at": "short",
+      "what": "dry mud cracks open at the lake's edge"
+     },
+     {
+      "at": "fewer",
+      "what": "the ships on the canal thin out"
+     },
+     {
+      "at": "through",
+      "what": "the last ship crawls across"
+     }
+    ],
+    "things": [
+     "sun",
+     "brown forest",
+     "shrinking lake",
+     "red locks",
+     "cracked mud"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "short"
+    }
+   ]
+  },
+  {
+   "id": "queue",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "At both ends, the line of waiting ships grows longer every day, each one loaded with cargo that someone, somewhere, is waiting for.",
+   "events": {
+    "both": {
+     "word": "both"
+    },
+    "ends": {
+     "word": "ends"
+    },
+    "waiting": {
+     "word": "waiting"
+    },
+    "grows": {
+     "word": "grows"
+    },
+    "longer": {
+     "word": "longer"
+    },
+    "day": {
+     "word": "day"
+    },
+    "cargo": {
+     "word": "cargo"
+    },
+    "somewhere": {
+     "word": "somewhere"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Queue",
+    "place": "on the map: the anchorages off Colon and Panama City",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "waiting",
+      "size": "medium"
+     },
+     {
+      "at": "day",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "both",
+      "what": "the camera rises to show both ends"
+     },
+     {
+      "at": "ends",
+      "what": "the two ends flash"
+     },
+     {
+      "at": "waiting",
+      "what": "ships anchor off each end"
+     },
+     {
+      "at": "grows",
+      "what": "more ships join both lines"
+     },
+     {
+      "at": "longer",
+      "what": "the lines stretch out to sea"
+     },
+     {
+      "at": "day",
+      "what": "a day counter ticks up over the queues"
+     },
+     {
+      "at": "cargo",
+      "what": "the ships' containers glow"
+     },
+     {
+      "at": "somewhere",
+      "what": "dotted lines run from the queues off to the edges of the map"
+     }
+    ],
+    "things": [
+     "ships at anchor",
+     "colon",
+     "panama city",
+     "day counter"
+    ]
+   }
+  },
+  {
+   "id": "detour",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Until the only way left is the long way round: all the way down South America, round stormy Cape Horn, and back up the other side. Weeks at sea, instead of about half a day going straight through the canal.",
+   "events": {
+    "way": {
+     "word": "way"
+    },
+    "long": {
+     "word": "long"
+    },
+    "round": {
+     "word": "round"
+    },
+    "south": {
+     "word": "South"
+    },
+    "america": {
+     "word": "America"
+    },
+    "stormy": {
+     "word": "stormy"
+    },
+    "cape": {
+     "word": "Cape"
+    },
+    "horn": {
+     "word": "Horn"
+    },
+    "back": {
+     "word": "back"
+    },
+    "side": {
+     "word": "side"
+    },
+    "weeks": {
+     "word": "Weeks"
+    },
+    "half": {
+     "word": "half"
+    },
+    "straight": {
+     "word": "straight"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Detour",
+    "place": "on the map: the whole of South America, the route round Cape Horn",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "long",
+      "size": "wide"
+     },
+     {
+      "at": "horn",
+      "size": "close"
+     },
+     {
+      "at": "side",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "way",
+      "what": "the camera pulls back from Panama"
+     },
+     {
+      "at": "long",
+      "what": "South America fills the map"
+     },
+     {
+      "at": "round",
+      "what": "a ship sets off east along the coast"
+     },
+     {
+      "at": "south",
+      "what": "the route draws down the Atlantic coast"
+     },
+     {
+      "at": "america",
+      "what": "SOUTH AMERICA writes across it"
+     },
+     {
+      "at": "stormy",
+      "what": "storm clouds swirl at the tip"
+     },
+     {
+      "at": "cape",
+      "what": "the ship rounds the tip"
+     },
+     {
+      "at": "horn",
+      "what": "CAPE HORN labels it"
+     },
+     {
+      "at": "back",
+      "what": "the route climbs the Pacific coast"
+     },
+     {
+      "at": "side",
+      "what": "the route reaches Panama again"
+     },
+     {
+      "at": "weeks",
+      "what": "a calendar over the route flips through weeks"
+     },
+     {
+      "at": "half",
+      "what": "the short canal pulses"
+     },
+     {
+      "at": "straight",
+      "what": "the short canal glows at the top of the map"
+     }
+    ],
+    "things": [
+     "south america",
+     "route",
+     "ship",
+     "storm clouds",
+     "cape horn"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "horn"
+    }
+   ]
+  },
+  {
+   "id": "trade",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "And about {fact3} of all the world's trade by sea goes through this one canal: cars, grain and fuel. All of it riding on the rain.",
+   "events": {
+    "about": {
+     "word": "about"
+    },
+    "world's": {
+     "word": "world's"
+    },
+    "trade": {
+     "word": "trade"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "canal": {
+     "word": "canal"
+    },
+    "cars": {
+     "word": "cars"
+    },
+    "grain": {
+     "word": "grain"
+    },
+    "fuel": {
+     "word": "fuel"
+    },
+    "riding": {
+     "word": "riding"
+    },
+    "rain": {
+     "word": "rain"
+    },
+    "share": {
+     "sec": 1.6
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Trade",
+    "place": "on the map: the Caribbean and the Pacific, the world's routes meeting at the canal",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "canal",
+      "size": "medium"
+     },
+     {
+      "at": "rain",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "about",
+      "what": "the canal pulses"
+     },
+     {
+      "at": "share",
+      "what": "the share sign starts to rise"
+     },
+     {
+      "at": "world's",
+      "what": "shipping routes light up toward Panama"
+     },
+     {
+      "at": "trade",
+      "what": "container ships ride the routes"
+     },
+     {
+      "at": "sea",
+      "what": "the routes meet at the canal"
+     },
+     {
+      "at": "canal",
+      "what": "a sign at the canal shows the share of world sea trade"
+     },
+     {
+      "at": "cars",
+      "what": "a car carrier sails in"
+     },
+     {
+      "at": "grain",
+      "what": "a grain ship sails in"
+     },
+     {
+      "at": "fuel",
+      "what": "a tanker sails in"
+     },
+     {
+      "at": "riding",
+      "what": "a rain cloud rolls over the canal"
+     },
+     {
+      "at": "rain",
+      "what": "rain falls on the lake and the canal glows"
+     }
+    ],
+    "things": [
+     "shipping routes",
+     "container ships",
+     "share sign",
+     "rain cloud"
+    ],
+    "fig": {
+     "share": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "canal"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Rain or ships: which does Panama need more? Tell me. Because without rain,",
+   "events": {
+    "rain": {
+     "word": "Rain"
+    },
+    "ships": {
+     "word": "ships"
+    },
+    "panama": {
+     "word": "Panama"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "because": {
+     "word": "Because"
+    },
+    "without": {
+     "word": "without"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: back over the Panama Canal",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tell",
+      "size": "close"
+     },
+     {
+      "at": "without",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rain",
+      "what": "a rain cloud pops on the left"
+     },
+     {
+      "at": "ships",
+      "what": "a container ship pops on the right"
+     },
+     {
+      "at": "panama",
+      "what": "both glow over Panama"
+     },
+     {
+      "at": "tell",
+      "what": "a comment bubble pops between them"
+     },
+     {
+      "at": "because",
+      "what": "the camera pulls back over the canal"
+     },
+     {
+      "at": "without",
+      "what": "the cloud thins over the lake"
+     }
+    ],
+    "things": [
+     "rain cloud",
+     "container ship",
+     "comment bubble",
+     "canal"
+    ]
+   }
+  }
+ ]
+}

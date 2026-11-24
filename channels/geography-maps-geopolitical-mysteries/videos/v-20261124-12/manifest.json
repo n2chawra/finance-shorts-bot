@@ -1,0 +1,444 @@
+{
+  "id": "v-20261124-12",
+  "createdAt": "2026-11-24T00:22:13.482041+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "What if the Panama Canal ran out of water?",
+    "category": "trade",
+    "reach": "global",
+    "feed_id": "2026-11-17-what-if-panama-dried-up",
+    "map_answer": "the lake in the middle of the isthmus that every ship crosses, shrinking on the map as the rain stops, and the long detour route drawn round the bottom of South America when it can no longer be crossed"
+  },
+  "title": "Why can't the Panama Canal work without rain?",
+  "description": "The Panama Canal, the shortcut between two oceans, depends on a lake, and the lake depends on rain.\nWhat happens to the world's ships if the rain stops, on the map.\nSources: MAX Security, IMF (Dec 2023). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#PanamaCanal",
+    "#Panama",
+    "#Geography",
+    "#Maps"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Rain or ships: which does Panama need more? Comment",
+  "seed": 42236,
+  "style": {
+    "palette": "paper",
+    "genre": "atlas",
+    "key": "C",
+    "bpm": 88,
+    "look": {
+      "stage": "desert",
+      "header": "sticky",
+      "holder": "box",
+      "entrance": "stamp"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Without rain, the Panama Canal stops.",
+        "start": 0.3,
+        "seconds": 1.84,
+        "window": 2.5,
+        "fill": 0.736
+      },
+      {
+        "scene": "question",
+        "text": "So what if it never rained there again?",
+        "start": 2.8,
+        "seconds": 1.79,
+        "window": 2.43,
+        "fill": 0.737
+      },
+      {
+        "scene": "nearly",
+        "text": "It nearly happened. In a drought, the canal cut the ships crossing each day from 36 to just 22.",
+        "start": 5.23,
+        "seconds": 4.51,
+        "window": 5.2,
+        "fill": 0.867
+      },
+      {
+        "scene": "lake",
+        "text": "Why would a canal need rain? It isn't a flat ditch from sea to sea. Ships climb up into a lake in the middle of Panama, Gatun Lake, then step back down to the other ocean.",
+        "start": 10.43,
+        "seconds": 7.26,
+        "window": 7.9,
+        "fill": 0.919
+      },
+      {
+        "scene": "spill",
+        "text": "And where does the water go? Every ship that crosses lets a huge gulp of the lake's fresh water run out into the sea.",
+        "start": 18.33,
+        "seconds": 5.07,
+        "window": 5.73,
+        "fill": 0.885
+      },
+      {
+        "scene": "rain",
+        "text": "The only thing that fills it back up is rain, falling on the forest all around it.",
+        "start": 24.07,
+        "seconds": 3.35,
+        "window": 4.0,
+        "fill": 0.838
+      },
+      {
+        "scene": "drain",
+        "text": "So if the rain stops for good, the lake sinks a little with every ship, the locks run short, and fewer and fewer ships get through.",
+        "start": 28.07,
+        "seconds": 4.92,
+        "window": 5.57,
+        "fill": 0.883
+      },
+      {
+        "scene": "queue",
+        "text": "At both ends, the line of waiting ships grows longer every day, each one loaded with cargo that someone, somewhere, is waiting for.",
+        "start": 33.63,
+        "seconds": 5.48,
+        "window": 6.13,
+        "fill": 0.894
+      },
+      {
+        "scene": "detour",
+        "text": "Until the only way left is the long way round: all the way down South America, round stormy Cape Horn, and back up the other side. Weeks at sea, instead of about half a day going straight through the canal.",
+        "start": 39.77,
+        "seconds": 8.67,
+        "window": 9.33,
+        "fill": 0.929
+      },
+      {
+        "scene": "trade",
+        "text": "And about 5% of all the world's trade by sea goes through this one canal: cars, grain and fuel. All of it riding on the rain.",
+        "start": 49.1,
+        "seconds": 5.82,
+        "window": 6.47,
+        "fill": 0.9
+      },
+      {
+        "scene": "loop",
+        "text": "Rain or ships: which does Panama need more? Tell me. Because without rain,",
+        "start": 55.57,
+        "seconds": 3.39,
+        "window": 4.03,
+        "fill": 0.841
+      }
+    ]
+  },
+  "durationSec": 60,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.4,
+    "lufs": -14.0,
+    "music_under_voice_db": 30.9
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-check of the revised detour line 'Weeks at sea, instead of about half a day going straight through the canal.': correct. A crossing takes about 8-10 hours (Panama Canal Authority), which is about half a day, and the Cape Horn detour adds roughly 8,000 nautical miles, which is weeks."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes (stills every 2 s): shot sizes now vary per beat - close on the lake with a ? (4 s), mid lake/locks (12-18 s), close lake (20-22 s), wide hills with rain clouds (26 s), pulled out to both anchorages with a day counter (34-38 s), South America detour (42-48 s), Central America to world routes into the 5% sign (50-54 s), loop back to the flag frame; Panama flag shown, no overlaps or cut-off text, first frame names Panama, loop and pick-one ending fine, disclaimer in description, cover (nearly beat, 22 ships a day sign) clean; layout/craft problems empty, 60 s in 60-80, audio -1.0/-15.4 dB in line with reference Shorts."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-23T23:52:56.501193+00:00",
+      "finishedAt": "2026-11-23T23:52:56.501193+00:00",
+      "notes": [
+        "the description's first two lines must name the subject 'Panama Canal' (\"Elon Musk's record pay deal...\"): YouTube reads it to know who the video is about, even when the title keeps the name back"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-23T23:52:59.234474+00:00",
+      "finishedAt": "2026-11-23T23:52:59.234474+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T23:53:51.032456+00:00",
+      "finishedAt": "2026-11-23T23:53:51.032456+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: \"level\" is said 1 times in a 'the-drain' video: the word is for the levels shape",
+        "note: 2 questions in about 70 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T23:53:58.162359+00:00",
+      "finishedAt": "2026-11-23T23:53:58.162359+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T23:55:07.265633+00:00",
+      "finishedAt": "2026-11-23T23:55:07.265633+00:00",
+      "notes": [
+        "Facts confirmed: 5% of global maritime trade on the IMF page (15 Nov 2023); 22/day 2023-24 drought cap on the MAX Security page (late 2023), also gCaptain (Nov 2026) and Reuters (Aug 2026); 36/day normal confirmed by search (Reuters 'down from 36 ships in normal conditions', AP '36 to 38'), because the MAX page words it inconsistently ('36 vessels... in a month'). Story is still current: the 2026 El Nino cuts went only to 32 and were raised to 34 on 9 Nov 2026, so 22 is still the low. Lock and lake mechanics, freshwater lost per transit and rain refilling Gatun are correct. Description ends with the disclaimer. Notes: 'It nearly happened' slightly overstates a cut to 22 a day, and the Cape Horn detour simplifies (real 2023 diversions also used Suez/Good Hope or the Strait of Magellan); both acceptable in a what-if."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-23T23:57:55.878165+00:00",
+      "finishedAt": "2026-11-23T23:57:55.878165+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-23T23:58:39.151078+00:00",
+      "finishedAt": "2026-11-23T23:58:39.151078+00:00",
+      "notes": [
+        "Re-check of the two changed lines. queue: 'each one loaded with cargo that someone, somewhere, is waiting for' is a fair general statement inside the what-if and makes no figure or claim to check. trade: '{fact3} ... cars, grain and fuel' is fine: Panama Canal Authority (pancanal.com) and trade press list vehicle carriers, dry bulk/grain (US Gulf to Asia) and LPG/LNG and petroleum product tankers among the canal's main segments. The 5% stays an IMF sourced fact."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-23T23:58:24.119543+00:00",
+      "finishedAt": "2026-11-23T23:59:26.228517+00:00",
+      "notes": [
+        "text 'PANAMA' at 1.7 s is 28.8 px, below the 44 px minimum",
+        "text 'PANAMA' at 1.7 s reaches 1839 px, inside the bottom 120 px",
+        "text 'SOUTH AMERICA' at 43.9 s is 32.4 px, below the 44 px minimum",
+        "10 of 13 stills are mostly empty background (at 0 s, 5 s, 10 s, 15 s, 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+        "length 57 s is outside 60–80 s: add about 9 spoken words",
+        "the Short runs 56.9 s but its assigned length (arms.length) is 60-80 s: cut or add a beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:00:18.222554+00:00",
+      "finishedAt": "2026-11-24T00:00:18.222554+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:00:46.062572+00:00",
+      "finishedAt": "2026-11-24T00:00:46.062572+00:00",
+      "notes": [
+        "Re-check of the added detour line 'Weeks at sea, instead of a few hours through the canal.': it holds. The crossing itself takes about 8-10 hours (Panama Canal Authority). Going round Cape Horn adds roughly 8,000 nautical miles, which is weeks at normal speeds. Note: 'a few hours' is on the short side for 8-10 hours, and closer to a day with waiting; 'about half a day' would be more exact. It is a style point, not grounds to fail."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T00:00:42.231648+00:00",
+      "finishedAt": "2026-11-24T00:01:31.535486+00:00",
+      "notes": [
+        "text 'PANAMA' at 45.5 s runs outside the frame",
+        "text 'WORLD SEA TRADE' at 52.6 s runs outside the frame",
+        "4 of 13 stills are mostly empty background (at 0 s, 40 s, 50 s, 59 s): fill the frame (a set, the cast big, money as a thing)",
+        "length 59 s is outside 60–80 s: add about 3 spoken words",
+        "the Short runs 59.2 s but its assigned length (arms.length) is 60-80 s: cut or add a beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:02:07.650158+00:00",
+      "finishedAt": "2026-11-24T00:02:07.650158+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:02:33.110796+00:00",
+      "finishedAt": "2026-11-24T00:02:33.110796+00:00",
+      "notes": [
+        "Re-check of the revised detour line 'Weeks at sea, instead of about half a day going straight through the canal.': correct. A crossing takes about 8-10 hours (Panama Canal Authority), which is about half a day, and the Cape Horn detour adds roughly 8,000 nautical miles, which is weeks."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:02:34.743294+00:00",
+      "finishedAt": "2026-11-24T00:02:34.743294+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T00:02:56.625107+00:00",
+      "finishedAt": "2026-11-24T00:03:45.432167+00:00",
+      "notes": [
+        "text 'WORLD SEA TRADE' at 53.3 s runs outside the frame",
+        "text 'PANAMA' at 46.0 s runs outside the frame",
+        "1.9 s with nothing new on screen in beat 'detour' (at most 1.8 s): add an action on the phrase being said there",
+        "4 of 13 stills are mostly empty background (at 0 s, 40 s, 50 s, 60 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:04:10.747453+00:00",
+      "finishedAt": "2026-11-24T00:04:10.747453+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T00:04:35.910351+00:00",
+      "finishedAt": "2026-11-24T00:05:22.535681+00:00",
+      "notes": [
+        "4 of 13 stills are mostly empty background (at 0 s, 40 s, 50 s, 60 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T00:06:09.368135+00:00",
+      "finishedAt": "2026-11-24T00:06:55.532651+00:00",
+      "notes": [
+        "4 of 13 stills are mostly empty background (at 0 s, 40 s, 50 s, 60 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:07:38.953461+00:00",
+      "finishedAt": "2026-11-24T00:08:24.581510+00:00",
+      "notes": [
+        "60 s, paper/atlas (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T00:09:25.183445+00:00",
+      "finishedAt": "2026-11-24T00:09:25.183445+00:00",
+      "notes": [
+        "[script] D/11 same picture: 15.0s (beat 'lake') and 20.0s (beat 'spill') are the same isthmus close-up at the same size and angle (lake, canal, one ship at the north lock) - two beats in a row look like one picture. Give 'spill' its own shot: push in close on a lock at the canal's end so the gush of lake water pouring into the sea fills the frame.",
+        "[script] D/6b one shot size for most of the video: 5.0s, 15.0s, 20.0s, 25.0s, 30.0s, 40.0s and 50.0s all frame the same stretch of isthmus at about the same zoom, so beats question/lake/spill/rain/drain/queue/trade read as one place for ~45 s; the best Short (v-20261120-05) changes object and framing every still. Vary params.camera/place: 'rain' wide over the rainforest hills with clouds and rain on screen, 'queue' pulled out to sea over the two anchorages, 'trade' pulled out to the world-routes view earlier in the beat."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:10:06.014091+00:00",
+      "finishedAt": "2026-11-24T00:10:06.014091+00:00",
+      "notes": [
+        "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T00:10:27.866686+00:00",
+      "finishedAt": "2026-11-24T00:11:14.117669+00:00",
+      "notes": [
+        "the cover looks like v-20261123-12's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:11:18.173924+00:00",
+      "finishedAt": "2026-11-24T00:12:00.463857+00:00",
+      "notes": [
+        "60 s, paper/atlas (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:13:16.160263+00:00",
+      "finishedAt": "2026-11-24T00:13:16.160263+00:00",
+      "notes": [
+        "Re-review after fixes (stills every 2 s): shot sizes now vary per beat - close on the lake with a ? (4 s), mid lake/locks (12-18 s), close lake (20-22 s), wide hills with rain clouds (26 s), pulled out to both anchorages with a day counter (34-38 s), South America detour (42-48 s), Central America to world routes into the 5% sign (50-54 s), loop back to the flag frame; Panama flag shown, no overlaps or cut-off text, first frame names Panama, loop and pick-one ending fine, disclaimer in description, cover (nearly beat, 22 ships a day sign) clean; layout/craft problems empty, 60 s in 60-80, audio -1.0/-15.4 dB in line with reference Shorts."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:18:24.381395+00:00",
+      "finishedAt": "2026-11-24T00:22:02.154371+00:00",
+      "notes": [
+        "60 s, paper/atlas, peak -1.0 dB, mean -15.4 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-24T00:22:13.482450+00:00",
+      "finishedAt": "2026-11-24T00:22:13.482450+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261124-12",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261124-12"
+  }
+}
