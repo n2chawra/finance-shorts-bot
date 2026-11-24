@@ -290,6 +290,36 @@ const FLAGS: Record<string, Draw> = {
       {star(x + (w * 3) / 4, y + (hh * 3) / 4, hh * 0.13, "#da121a")}
     </g>
   ),
+  // Ethiopia (for v-20261125-12): green, yellow, red, the blue disc with a yellow star in the middle
+  Ethiopia: both(h(["#078930", "#fcdd09", "#da121a"]), ({ x, y, w, h: hh }) => (
+    <g>
+      <circle cx={x + w / 2} cy={y + hh / 2} r={hh * 0.26} fill="#0f47af" />
+      {star(x + w / 2, y + hh / 2, hh * 0.17, "#fcdd09")}
+    </g>
+  )),
+  // Somalia: light blue with a white star
+  Somalia: ({ x, y, w, h: hh }) => (
+    <g>
+      <rect x={x} y={y} width={w} height={hh} fill="#4189dd" />
+      {star(x + w / 2, y + hh / 2, hh * 0.24, W)}
+    </g>
+  ),
+  // Kenya: black, red, green with white edges and a red-and-black shield (simplified)
+  Kenya: both(h([K, W, "#bb0000", W, "#006600"], [6, 1, 6, 1, 6]), ({ x, y, w, h: hh }) => (
+    <g>
+      <ellipse cx={x + w / 2} cy={y + hh / 2} rx={hh * 0.13} ry={hh * 0.36} fill="#bb0000" stroke={K} strokeWidth={Math.max(1, hh * 0.03)} />
+      <ellipse cx={x + w / 2} cy={y + hh / 2} rx={hh * 0.04} ry={hh * 0.2} fill={W} />
+    </g>
+  )),
+  // Tanzania: green over blue split by a yellow-edged black band from bottom-left to top-right
+  Tanzania: ({ x, y, w, h: hh }) => (
+    <g>
+      <polygon points={`${x},${y} ${x + w},${y} ${x},${y + hh}`} fill="#1eb53a" />
+      <polygon points={`${x + w},${y} ${x + w},${y + hh} ${x},${y + hh}`} fill="#00a3dd" />
+      <line x1={x} y1={y + hh} x2={x + w} y2={y} stroke="#fcd116" strokeWidth={hh * 0.42} />
+      <line x1={x} y1={y + hh} x2={x + w} y2={y} stroke={K} strokeWidth={hh * 0.3} />
+    </g>
+  ),
   Chile: ({ x, y, w, h: hh }) => (
     <g>
       <rect x={x} y={y} width={w} height={hh / 2} fill={W} />
