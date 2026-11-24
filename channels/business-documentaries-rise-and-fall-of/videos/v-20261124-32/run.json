@@ -1,0 +1,207 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:04:49.888598+00:00",
+    "finishedAt": "2026-11-24T01:04:49.888598+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T01:07:12.900273+00:00",
+    "finishedAt": "2026-11-24T01:07:12.900273+00:00",
+    "notes": [
+      "beat 'list': params.camera key at 'first' is not one of this beat's events; beat 'list': moment at 'first' is not one of this beat's events (name the word in `events` first); beat 'list': params.overlays[0].at 'first' is not one of this beat's events (name the word in `events` first)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'Marvel Put Captain America Up as Collateral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T01:07:18.614072+00:00",
+    "finishedAt": "2026-11-24T01:07:18.614072+00:00",
+    "notes": [
+      "the source line 'Data: Marvel Entertainment 10-K, FY2005 · The Walt Disney Company · Aug 2009' is too wide for the frame (1956 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'Marvel Entertainment'), one name per publisher",
+      "note: the title 'Marvel Put Captain America Up as Collateral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:07:31.011738+00:00",
+    "finishedAt": "2026-11-24T01:07:31.011738+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Marvel Put Captain America Up as Collateral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:07:39.832418+00:00",
+    "finishedAt": "2026-11-24T01:07:39.832418+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Marvel Put Captain America Up as Collateral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T01:07:48.365386+00:00",
+    "finishedAt": "2026-11-24T01:08:22.585831+00:00",
+    "notes": [
+      "text 'Chapter eleven' at 5.3 s runs outside the frame",
+      "text 'film rights at Fox' at 10.4 s reaches 1851 px, inside the bottom 120 px",
+      "4 of 11 stills are mostly empty background (at 5 s, 10 s, 25 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: the first figure appears at 12.2 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T01:09:05.684182+00:00",
+    "finishedAt": "2026-11-24T01:09:05.684182+00:00",
+    "notes": [
+      "Beat 'ironman' (and the ending's 'Iron Man or the bank loan'): says Iron Man was 'a hero who was not on that list', framing Iron Man as separate from the loan. Marvel's FY2008 10-K (sec.gov .../000136231009002976/c81637e10vk.htm) lists Iron Man and The Incredible Hulk among the characters whose theatrical film rights are pledged as collateral, and says 'Borrowings have been used to fund direct production costs of our Iron Man and The Incredible Hulk feature films' from the $525 million facility. True of the 2005 list only; as told it misleads (rule 3). Fix: say Iron Man was added to the pledge later / was paid for with that same loan, and recast the ending's either/or (e.g. the loan paid for Iron Man).",
+      "All six sourced facts confirmed: $525M, $465M senior (+$60M mezzanine) and ten pledged characters incl. Captain America, Avengers, Black Panther, Doctor Strange on the FY2005 10-K page; ~$4B, $30/share cash plus stock, more than 5,000 characters, 31 Aug 2009 on the Disney press release. Merrill Lynch as arranger is not in the 10-K but is in Marvel's own 8-K (Sept 2005, 'arranged by Merrill Lynch Commercial Finance Corp.'). Bankruptcy 1996 (MEG) and Iron Man 2 May 2008 OK; disclaimer present."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:09:28.082197+00:00",
+    "finishedAt": "2026-11-24T01:09:28.082197+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:09:29.047789+00:00",
+    "finishedAt": "2026-11-24T01:09:29.047789+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Marvel Put Captain America Up as Collateral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T01:10:36.626518+00:00",
+    "finishedAt": "2026-11-24T01:10:36.626518+00:00",
+    "notes": [
+      "doc video: the video uses 2 device kinds (document, split); use at least 3 of document, headline, chart, timeline, split, map, polaroids, products, listing, ticker, sink, donut, montage, depth: photos, count-ups and the poster alone read as a slideshow",
+      "note: the title 'Marvel Put Captain America Up as Collateral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:10:46.934290+00:00",
+    "finishedAt": "2026-11-24T01:10:46.934290+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Marvel Put Captain America Up as Collateral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T01:10:56.648089+00:00",
+    "finishedAt": "2026-11-24T01:11:22.152244+00:00",
+    "notes": [
+      "text 'X-Men at Fox' at 10.4 s reaches 1850 px, inside the bottom 120 px"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:11:28.554328+00:00",
+    "finishedAt": "2026-11-24T01:11:28.554328+00:00",
+    "notes": [
+      "Re-review after rewrite: ironman line ('that same loan paid for it') matches Marvel FY2008 10-K (Iron Man pledged and 'financed primarily with our $525 million film facility'); ending is a question, not a claim; broke beat's MEG FY1996 10-K filed 1997-04-15, chapter 11 on 27 Dec 1996, highlighter box sits on the chapter 11 line; Disney release title 'Disney To Acquire Marvel Entertainment', 31 Aug 2009 confirmed; all six facts confirmed earlier (10-K FY2005, Disney release), Merrill Lynch via Marvel 8-K Sept 2005; disclaimer present. Note: 10-K says 'financed primarily', so 'paid for it' is slightly rounded; Captain America's own film came after the Disney deal."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:11:54.152124+00:00",
+    "finishedAt": "2026-11-24T01:12:19.253805+00:00",
+    "notes": [
+      "47 s, night/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T01:13:09.741148+00:00",
+    "finishedAt": "2026-11-24T01:13:09.741148+00:00",
+    "notes": [
+      "[scene] 5.0s (beat broke, doc document layer + date overlay pos top): the date's sub-line 'Marvel files for bankruptcy' is drawn over the 10-K page's own text, half-faded and cut to 'MARVEL FILES FOR BA', unreadable text on text; give the date overlay a solid backing or place it clear of the document",
+      "[script] thumbnail.png (thumbnail at hook, sec 1.0): the words 'Captain America as collateral' sit over the cosplayer's head, so the face is hidden and the blurred Marvel logo behind the words is lost; pick a later sec or a framing (focus lower / the shield shot) where the words land on background, not the face"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:13:26.023383+00:00",
+    "finishedAt": "2026-11-24T01:13:26.023383+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: the title 'Marvel Put Captain America Up as Collateral' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T01:13:29.369196+00:00",
+    "finishedAt": "2026-11-24T01:13:47.242339+00:00",
+    "notes": [
+      "text 'Bankrupt' at 5.3 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:13:56.686785+00:00",
+    "finishedAt": "2026-11-24T01:14:15.003414+00:00",
+    "notes": [
+      "47 s, night/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:14:29.071002+00:00",
+    "finishedAt": "2026-11-24T01:14:29.071002+00:00",
+    "notes": [
+      "Re-review after fixes: 5s filing now clean (no date sub-line over the page), thumbnail words sit on the Merrill tower clear of any face; 10 directed places, figures on things, hook names Marvel/Captain America, $4B payoff, pick-one loop, disclaimer present, code checks clean. Note: thumbnail shows a building under 'Captain America as collateral' (weaker match than a Cap frame with the face clear)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:14:39.480912+00:00",
+    "finishedAt": "2026-11-24T01:18:05.755298+00:00",
+    "notes": [
+      "47 s, night/dossier, peak -1.0 dB, mean -18.4 dB",
+      "warning: integrated loudness -16.4 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "warning: the music sits only 17.4 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-24T01:18:11.966229+00:00",
+    "finishedAt": "2026-11-24T01:18:11.966229+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

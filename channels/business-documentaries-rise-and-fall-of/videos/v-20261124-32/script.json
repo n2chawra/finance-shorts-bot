@@ -1,0 +1,1258 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52917,
+ "story": "founder_bet",
+ "shape": "the-overnight-bet",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "dossier",
+  "key": "D",
+  "bpm": 80
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "conflict",
+ "cta": "Iron Man or Captain America: which hero saved Marvel? Comment",
+ "feed_id": "2026-11-24-marvel-525m-heroes-short",
+ "facts": [
+  {
+   "label": "Marvel's film slate credit facility",
+   "value": 525,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2005-12-31",
+   "source": "Marvel Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/933730/000111667906000702/marv10k.htm",
+   "fixed": true
+  },
+  {
+   "label": "Senior bank debt inside the facility",
+   "value": 465,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2005-12-31",
+   "source": "Marvel Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/933730/000111667906000702/marv10k.htm",
+   "fixed": true
+  },
+  {
+   "label": "Characters or titles whose film rights were pledged as collateral",
+   "value": 10,
+   "unit": "count",
+   "as_of": "2005-12-31",
+   "source": "Marvel Entertainment",
+   "url": "https://www.sec.gov/Archives/edgar/data/933730/000111667906000702/marv10k.htm",
+   "fixed": true
+  },
+  {
+   "label": "Disney's price for Marvel",
+   "value": 4,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2009-08-31",
+   "source": "The Walt Disney Company",
+   "url": "https://thewaltdisneycompany.com/press-releases/disney-to-acquire-marvel-entertainment/",
+   "fixed": true
+  },
+  {
+   "label": "Cash per Marvel share in Disney's offer",
+   "value": 30,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2009-08-31",
+   "source": "The Walt Disney Company",
+   "url": "https://thewaltdisneycompany.com/press-releases/disney-to-acquire-marvel-entertainment/",
+   "fixed": true
+  },
+  {
+   "label": "Marvel characters in the deal (more than)",
+   "value": 5000,
+   "unit": "count",
+   "as_of": "2009-08-31",
+   "source": "The Walt Disney Company",
+   "url": "https://thewaltdisneycompany.com/press-releases/disney-to-acquire-marvel-entertainment/",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "loan",
+  "sec": 1.0,
+  "words": "Captain America as *collateral*",
+  "angle": "story",
+  "unique": "the reference Marvel Short's cover shows a hero; ours puts the word collateral over the bank tower that arranged the loan"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Marvel borrowed to make its own movies, and the security was Captain America.",
+   "events": {
+    "marvel": {
+     "word": "Marvel"
+    },
+    "borrowed": {
+     "word": "borrowed"
+    },
+    "movies": {
+     "word": "movies"
+    },
+    "security": {
+     "word": "security"
+    },
+    "captain": {
+     "word": "Captain"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "security"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Captain America costume at a fan convention",
+     "Captain America's shield"
+    ],
+    "things": [
+     "Marvel logo",
+     "Captain America",
+     "the shield"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "security",
+      "size": "close"
+     },
+     {
+      "at": "captain",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "marvel",
+      "what": "the Marvel logo sticker sits over Captain America"
+     },
+     {
+      "at": "security",
+      "what": "a stamp: COLLATERAL"
+     },
+     {
+      "at": "captain",
+      "what": "cut to the shield"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-cosplay-of-captain-america-at-galaxycon-richmond-d5b67db2.jpg",
+      "focus": [
+       0.5,
+       0.35
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "captain"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-marvel-logo-2000-2012-9f6fc683.png",
+      "aspect": 2.2,
+      "pos": [
+       0.5,
+       0.12
+      ],
+      "size": 0.56,
+      "tilt": -4,
+      "out": "security",
+      "enter": "cut"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-cap-s-shield-movie-replica-14234176472-0eb5ab87.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc",
+      "at": "captain"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Collateral",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.22
+      ],
+      "tilt": -6,
+      "at": "security"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "broke",
+   "role": "promise",
+   "say": "The decade before, Marvel had gone bankrupt.",
+   "events": {
+    "decade": {
+     "word": "decade"
+    },
+    "marvel": {
+     "word": "Marvel"
+    },
+    "bankrupt": {
+     "word": "bankrupt"
+    }
+   },
+   "params": {
+    "place": [
+     "Marvel's bankruptcy filing"
+    ],
+    "things": [
+     "the filing",
+     "chapter eleven line"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "marvel",
+      "size": "medium"
+     },
+     {
+      "at": "bankrupt",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "decade",
+      "what": "the filing lands"
+     },
+     {
+      "at": "marvel",
+      "what": "the page pushes to the line"
+     },
+     {
+      "at": "bankrupt",
+      "what": "the highlighter swipes chapter eleven, a stamp"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "document",
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-874808-0000950136-97-000461-p003.png",
+      "box": [
+       0.04,
+       0.755,
+       0.9,
+       0.016
+      ],
+      "pushAt": "marvel",
+      "markAt": "bankrupt",
+      "source": {
+       "form": "Form 10-K",
+       "text": "Marvel Entertainment Group",
+       "date": "1997-04-15"
+      }
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Broke",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -4,
+      "at": "bankrupt"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "rights",
+   "role": "build",
+   "say": "Its biggest heroes were out on licence: Spider-Man at Sony, the X-Men at Fox. So how could it make its own films?",
+   "events": {
+    "heroes": {
+     "word": "heroes"
+    },
+    "licence": {
+     "word": "licence"
+    },
+    "spider-man": {
+     "word": "Spider-Man"
+    },
+    "sony": {
+     "word": "Sony"
+    },
+    "x-men": {
+     "word": "X-Men"
+    },
+    "fox": {
+     "word": "Fox."
+    },
+    "films": {
+     "word": "films?"
+    }
+   },
+   "params": {
+    "place": [
+     "two studios split down the middle"
+    ],
+    "things": [
+     "Spider-Man at Sony",
+     "X-Men at Fox"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "spider-man",
+      "size": "close"
+     },
+     {
+      "at": "x-men",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "licence",
+      "what": "a label: licensed out"
+     },
+     {
+      "at": "spider-man",
+      "what": "the left side: Spider-Man, Sony"
+     },
+     {
+      "at": "x-men",
+      "what": "the right side: X-Men, Fox"
+     },
+     {
+      "at": "films",
+      "what": "a stamp: ITS OWN FILMS?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "split",
+      "left": {
+       "name": "Spider-Man at Sony",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sony-pictures-studios-motor-gate-dd560ccc.jpg",
+       "color": "#8a1c24"
+      },
+      "right": {
+       "name": "X-Men at Fox",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-twentieth-century-fox-8400ce69.jpg",
+       "color": "#1c3a6e"
+      },
+      "leftAt": "spider-man",
+      "rightAt": "x-men"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Licensed out",
+      "sub": "to other studios",
+      "at": "licence",
+      "out": "spider-man"
+     },
+     {
+      "kind": "stamp",
+      "text": "Its own films?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.16
+      ],
+      "tilt": -4,
+      "at": "films"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "loan",
+   "role": "build",
+   "say": "So Marvel took a {fact1} credit line, arranged by Merrill Lynch.",
+   "events": {
+    "marvel": {
+     "word": "Marvel"
+    },
+    "credit": {
+     "word": "credit"
+    },
+    "arranged": {
+     "word": "arranged"
+    },
+    "merrill": {
+     "word": "Merrill"
+    },
+    "lynch": {
+     "word": "Lynch."
+    }
+   },
+   "params": {
+    "place": [
+     "Merrill Lynch's tower in New York"
+    ],
+    "things": [
+     "Merrill Lynch tower",
+     "the credit line"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "credit",
+      "size": "medium"
+     },
+     {
+      "at": "merrill",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "credit",
+      "what": "a label: the credit line"
+     },
+     {
+      "at": "merrill",
+      "what": "a lower third: Merrill Lynch"
+     }
+    ],
+    "fig": {
+     "loan": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-four-world-financial-center-ef7cadc9.jpg",
+      "aspect": 0.56,
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "move": "rise",
+      "amount": 0.12,
+      "grade": "cold"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "sub": "Marvel's film credit line",
+      "at": "credit",
+      "out": "merrill"
+     },
+     {
+      "kind": "lowerThird",
+      "name": "Merrill Lynch",
+      "role": "arranged the loan, New York",
+      "at": "merrill"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "filing",
+   "role": "build",
+   "say": "Its filing says the film rights to {fact3} characters were pledged as collateral, Captain America and the Avengers among them.",
+   "events": {
+    "filing": {
+     "word": "filing"
+    },
+    "rights": {
+     "word": "rights"
+    },
+    "pledged": {
+     "word": "pledged"
+    },
+    "collateral": {
+     "word": "collateral"
+    },
+    "captain": {
+     "word": "Captain"
+    },
+    "avengers": {
+     "word": "Avengers"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "filing"
+    }
+   ],
+   "params": {
+    "place": [
+     "Marvel's annual report, the film facility page"
+    ],
+    "things": [
+     "the filing",
+     "the list of characters"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "pledged",
+      "size": "medium"
+     },
+     {
+      "at": "captain",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "filing",
+      "what": "the filing page lands"
+     },
+     {
+      "at": "pledged",
+      "what": "the highlighter swipes the line"
+     },
+     {
+      "at": "collateral",
+      "what": "the page pushes to the line"
+     },
+     {
+      "at": "captain",
+      "what": "an arrow to Captain America on the list"
+     },
+     {
+      "at": "avengers",
+      "what": "the arrow moves to the Avengers"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "document",
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-933730-0001116679-06-000702-p008.png",
+      "box": [
+       0.04,
+       0.085,
+       0.6,
+       0.022
+      ],
+      "pushAt": "collateral",
+      "markAt": "pledged",
+      "source": {
+       "form": "Form 10-K",
+       "text": "Marvel Entertainment",
+       "date": "2006-03-16"
+      }
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "arrow",
+      "from": [
+       0.78,
+       0.62
+      ],
+      "to": [
+       0.55,
+       0.52
+      ],
+      "label": "Captain America",
+      "at": "captain",
+      "out": "avengers"
+     },
+     {
+      "kind": "arrow",
+      "from": [
+       0.78,
+       0.62
+      ],
+      "to": [
+       0.55,
+       0.56
+      ],
+      "label": "The Avengers",
+      "at": "avengers"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "list",
+   "role": "build",
+   "say": "Black Panther and Doctor Strange were on the list too. So what would Marvel film first?",
+   "events": {
+    "black": {
+     "word": "Black"
+    },
+    "panther": {
+     "word": "Panther"
+    },
+    "doctor": {
+     "word": "Doctor"
+    },
+    "strange": {
+     "word": "Strange"
+    },
+    "list": {
+     "word": "list"
+    },
+    "first": {
+     "word": "first?"
+    }
+   },
+   "params": {
+    "place": [
+     "Black Panther at a convention",
+     "Doctor Strange at a comic con"
+    ],
+    "things": [
+     "Black Panther",
+     "Doctor Strange"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "doctor",
+      "size": "close"
+     },
+     {
+      "at": "first",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "black",
+      "what": "Black Panther pushes in"
+     },
+     {
+      "at": "doctor",
+      "what": "cut to Doctor Strange"
+     },
+     {
+      "at": "first",
+      "what": "a stamp: WHICH ONE?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-black-panther-cosplay-afe04276.jpg",
+      "focus": [
+       0.5,
+       0.35
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "night",
+      "out": "doctor"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-cosplay-of-doctor-strange-at-brussels-comic-con-38092675.jpg",
+      "focus": [
+       0.5,
+       0.3
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "doctor"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Which one?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.16
+      ],
+      "tilt": -5,
+      "at": "first"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ironman",
+   "role": "turn",
+   "say": "Its first film was Iron Man, starring Robert Downey Junior, and that same loan paid for it.",
+   "events": {
+    "first": {
+     "word": "first"
+    },
+    "iron": {
+     "word": "Iron"
+    },
+    "robert": {
+     "word": "Robert"
+    },
+    "downey": {
+     "word": "Downey"
+    },
+    "same": {
+     "word": "same"
+    },
+    "loan": {
+     "word": "loan"
+    },
+    "paid": {
+     "word": "paid"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "iron"
+    }
+   ],
+   "params": {
+    "place": [
+     "an Iron Man suit at a convention",
+     "Robert Downey Jr.",
+     "a cinema screen"
+    ],
+    "things": [
+     "Iron Man",
+     "Robert Downey Jr.",
+     "cinema"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "iron",
+      "size": "medium"
+     },
+     {
+      "at": "robert",
+      "size": "close"
+     },
+     {
+      "at": "loan",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "first",
+      "what": "the cinema screen glows"
+     },
+     {
+      "at": "iron",
+      "what": "cut to the Iron Man suit, the date slams in"
+     },
+     {
+      "at": "robert",
+      "what": "cut to Robert Downey Jr., a lower third"
+     },
+     {
+      "at": "paid",
+      "what": "a stamp: PAID BY THE LOAN"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-piccadilly-cinema-screen-perth-62b93865.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "night",
+      "out": "iron"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-day-4-at-nycc-2015-cosplay-of-iron-man-deadpool-b18d274f.jpg",
+      "focus": [
+       0.5,
+       0.35
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "iron",
+      "out": "robert"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-robert-downey-jr-avp-iron-man-3-paris-a6460f3c.jpg",
+      "focus": [
+       0.5,
+       0.35
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "robert"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2008-05-02",
+      "sub": "Iron Man opens",
+      "pos": "top",
+      "at": "iron",
+      "out": "robert"
+     },
+     {
+      "kind": "lowerThird",
+      "name": "Robert Downey Jr.",
+      "role": "played Iron Man",
+      "at": "robert",
+      "out": "loan"
+     },
+     {
+      "kind": "stamp",
+      "text": "Paid by the loan",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -5,
+      "at": "paid"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "disney",
+   "role": "build",
+   "say": "Then Disney came, offering {fact5} a share in cash, plus stock, for more than {fact6} characters.",
+   "events": {
+    "disney": {
+     "word": "Disney"
+    },
+    "offering": {
+     "word": "offering"
+    },
+    "cash": {
+     "word": "cash"
+    },
+    "stock": {
+     "word": "stock"
+    },
+    "characters": {
+     "word": "characters."
+    }
+   },
+   "params": {
+    "place": [
+     "the Walt Disney Studios gate in Burbank",
+     "Bob Iger"
+    ],
+    "things": [
+     "Disney press release",
+     "Disney studio gate",
+     "Bob Iger"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "cash",
+      "size": "medium"
+     },
+     {
+      "at": "characters",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "disney",
+      "what": "Disney's press release lands"
+     },
+     {
+      "at": "offering",
+      "what": "cut to the Disney studio gate, the date slams in"
+     },
+     {
+      "at": "cash",
+      "what": "a label: cash per share"
+     },
+     {
+      "at": "stock",
+      "what": "cut to Bob Iger, a lower third"
+     },
+     {
+      "at": "characters",
+      "what": "a label: the characters"
+     }
+    ],
+    "fig": {
+     "share": "{fact5}",
+     "chars": "{fact6}"
+    },
+    "layers": [
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "The Walt Disney Company",
+        "date": "2009-08-31",
+        "title": "Disney to Acquire Marvel Entertainment",
+        "style": "web",
+        "hi": "Acquire Marvel"
+       }
+      ],
+      "on": [
+       "disney"
+      ],
+      "out": "offering"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-walt-disney-studios-alameda-entrance-284fe125.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "move": "drift-left",
+      "amount": 0.12,
+      "grade": "warm",
+      "at": "offering",
+      "out": "stock"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-bob-iger-crop-0fabc83e.jpg",
+      "aspect": 0.53,
+      "focus": [
+       0.5,
+       0.3
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "stock"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2009-08-31",
+      "sub": "Disney's offer",
+      "pos": "top",
+      "at": "offering",
+      "out": "cash"
+     },
+     {
+      "kind": "label",
+      "text": "{fact5}",
+      "sub": "a share, in cash",
+      "at": "cash",
+      "out": "stock"
+     },
+     {
+      "kind": "lowerThird",
+      "name": "Bob Iger",
+      "role": "Disney's chief executive",
+      "at": "stock",
+      "out": "characters"
+     },
+     {
+      "kind": "label",
+      "text": "{fact6}+",
+      "sub": "Marvel characters",
+      "at": "characters"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "In all, Disney agreed to pay about {fact4} for the company that had pledged its own heroes.",
+   "events": {
+    "all": {
+     "word": "all"
+    },
+    "disney": {
+     "word": "Disney"
+    },
+    "agreed": {
+     "word": "agreed"
+    },
+    "company": {
+     "word": "company"
+    },
+    "heroes": {
+     "word": "heroes."
+    }
+   },
+   "params": {
+    "place": [
+     "the poster over the Avengers"
+    ],
+    "things": [
+     "the Avengers",
+     "the price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "agreed",
+      "size": "wide"
+     },
+     {
+      "at": "heroes",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "all",
+      "what": "the gold poster is up"
+     },
+     {
+      "at": "agreed",
+      "what": "the figure settles"
+     },
+     {
+      "at": "company",
+      "what": "a stamp: SOLD"
+     },
+     {
+      "at": "heroes",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "price": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-avengers-cosplay-at-the-2019-new-york-comic-con-7564686c.jpg",
+      "focus": [
+       0.5,
+       0.4
+      ],
+      "date": "2009-08-31",
+      "title": "Marvel",
+      "figure": "price",
+      "sub": "Disney's price for Marvel",
+      "enter": "cut"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Sold",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.17
+      ],
+      "tilt": -4,
+      "at": "company"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Iron Man or Captain America: which hero saved Marvel? Next time you see the Avengers, remember,",
+   "events": {
+    "iron": {
+     "word": "Iron"
+    },
+    "captain": {
+     "word": "Captain"
+    },
+    "saved": {
+     "word": "saved"
+    },
+    "avengers": {
+     "word": "Avengers"
+    },
+    "remember": {
+     "word": "remember,"
+    }
+   },
+   "params": {
+    "place": [
+     "stacks of comics at a fan expo",
+     "Captain America from the first frame"
+    ],
+    "things": [
+     "comic stacks",
+     "Marvel logo",
+     "Captain America"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "saved",
+      "size": "close"
+     },
+     {
+      "at": "remember",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "iron",
+      "what": "a stamp: IRON MAN?"
+     },
+     {
+      "at": "captain",
+      "what": "a stamp: CAPTAIN?"
+     },
+     {
+      "at": "avengers",
+      "what": "the Marvel logo lands"
+     },
+     {
+      "at": "remember",
+      "what": "back to Captain America from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-fan-expo-2014-stacks-9669608946-635dc9f8.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-right",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "remember"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-marvel-logo-2000-2012-9f6fc683.png",
+      "aspect": 2.2,
+      "pos": [
+       0.5,
+       0.36
+      ],
+      "size": 0.6,
+      "tilt": 3,
+      "at": "avengers",
+      "out": "remember"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-cosplay-of-captain-america-at-galaxycon-richmond-d5b67db2.jpg",
+      "focus": [
+       0.5,
+       0.35
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "remember"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Iron Man?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -4,
+      "at": "iron",
+      "out": "captain"
+     },
+     {
+      "kind": "stamp",
+      "text": "Captain?",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": 4,
+      "at": "saved",
+      "out": "avengers"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}
