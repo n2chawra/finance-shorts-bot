@@ -141,6 +141,50 @@ def shot_problems(tl: dict) -> list[str]:
     return out
 
 
+# ---------------- a calm camera in long videos (owner, 2026-11-24) ----------------
+# On How Tech Works' L-20261124-21: "too many zoom in and zoom outs it was very difficult to actually keep
+# an eye on whats happening. so keep it low only when actually its needed". That video changed shot size
+# every 1.3 s and went close-medium-close inside 4 s 116 times. A long video changes size only when the
+# line needs it; between changes the camera drifts, pans or orbits at the same size.
+CALM_EVERY = 5.0          # seconds of directed beats per shot-size change, on average (long videos)
+PINGPONG_SEC = 4.0        # A -> B -> A inside this many seconds is a zoom in and straight back out
+PINGPONG_MAX = 3
+
+
+def camera_problems(tl: dict) -> list[str]:
+    """Shot-size churn in a long video's directed beats (params.camera: size on a word or a second)."""
+    if tl.get("format") != "long":
+        return []
+    fps = tl["fps"]
+    changes, secs, quick = 0, 0.0, []
+    for b in tl["beats"]:
+        if b.get("scene") not in PLACED:
+            continue
+        ev = b.get("events") or {}
+        keys = []
+        for c in (b.get("params") or {}).get("camera") or []:
+            if not isinstance(c, dict):
+                continue
+            f = ev.get(c["at"]) if isinstance(c.get("at"), str) else None
+            keys.append(((f if isinstance(f, (int, float)) else float(c.get("sec") or 0) * fps) / fps, c.get("size", "medium")))
+        keys.sort(key=lambda k: k[0])
+        sizes = [k[1] for k in keys]
+        changes += sum(1 for a, z in zip(sizes, sizes[1:]) if a != z)
+        quick += [b["id"] for i in range(2, len(keys))
+                  if keys[i][1] == keys[i - 2][1] != keys[i - 1][1] and keys[i][0] - keys[i - 2][0] < PINGPONG_SEC]
+        secs += b.get("frames", 0) / fps
+    out = []
+    if changes and secs / changes < CALM_EVERY:
+        out.append(f"the camera changes shot size every {secs / changes:.1f} s ({changes} changes in {secs:.0f} s of shots); "
+                   f"a long video changes size at most once every {CALM_EVERY:.0f} s on average: keep one size per idea and "
+                   f"let it drift, pan or orbit (a same-size key or a moment still counts for the picture gap), and zoom only on the word that needs it (owner: too many zoom in and outs)")
+    if len(quick) > PINGPONG_MAX:
+        seen = list(dict.fromkeys(quick))
+        out.append(f"{len(quick)} zooms in and straight back out within {PINGPONG_SEC:.0f} s (beats {', '.join(seen[:6])}); "
+                   f"at most {PINGPONG_MAX}: hold the closer size until the idea is done, or don't push in")
+    return out
+
+
 # approved directed videos kept as teaching examples (videos/<id>/script.json of the current channel). Empty since
 # 2026-11-23: the first one (v-directed-netflix) went with its channel.
 REFERENCES: tuple[str, ...] = ()

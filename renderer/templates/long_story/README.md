@@ -36,6 +36,11 @@ The same upgrade as the Shorts (`../short_story/README.md` "The story spine", `.
 build scene"), at long-video scale. `generator/story.py` checks it:
 
 1. **Hook** (`role: hook`, 15 s or less): a coded `Hook.tsx`, the whole story's stakes in one picture.
+   When the subject sits behind something the viewer owns or uses (the chip in their phone, the power
+   in their socket, the app on their screen), the hook **shows that everyday thing first**, then goes
+   behind it to the machine or system: phone, then its chip, then the machine that printed it (owner,
+   2026-11-24, on L-20261124-21: the hook only said it; "wow ok so my phone's small chips are made from
+   this system"). Name the thing in the line and put it on screen on its word.
 2. **Promise** by 30 s (`role: promise`): every chapter named at once, each thing entering on its word.
    `"structure": {"levels": [chapter names]}`, 4 or more; the level tracker shows them all video long.
 3. **A figure on screen** by 45 s.

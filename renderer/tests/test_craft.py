@@ -167,3 +167,22 @@ def test_stage_problems_passes_one_big_hero():
     # a long video's build beat keeps its own sizes; a glow still fails it
     assert craft.stage_problems(_stage_tl([{"id": "a", "size": 0.1}] * 5, [], "long")) == []
     assert craft.stage_problems(_stage_tl([{"id": "a"}], [{"do": "glow", "target": "a"}], "long"))
+
+
+def _dir_beat(i: int, sizes: list[str], seconds: float) -> dict:
+    """A directed beat whose camera changes size on words spread evenly over `seconds`."""
+    step = seconds / max(1, len(sizes))
+    cam = [{"sec": 0, "size": sizes[0]}] + [{"at": f"w{k}", "size": s} for k, s in enumerate(sizes[1:], 1)]
+    return {"id": f"b{i}", "scene": "directed", "frames": int(seconds * 30), "params": {"camera": cam},
+            "events": {f"w{k}": int(k * step * 30) for k in range(1, len(sizes))}}
+
+
+def test_a_long_video_zooming_in_and_out_all_the_time_fails():
+    # owner 2026-11-24 on How Tech Works' L-20261124-21: "too many zoom in and zoom outs"
+    churn = tl([_dir_beat(i, ["medium", "close", "medium", "close", "extreme", "medium"], 6) for i in range(10)], "long", 60)
+    probs = " | ".join(craft.camera_problems(churn))
+    assert "every 1.2 s" in probs and "straight back out" in probs
+    calm = tl([_dir_beat(i, ["wide", "close"] if i % 2 else ["medium"], 8) for i in range(10)], "long", 80)
+    assert craft.camera_problems(calm) == []
+    # Shorts are the weekly loop's to change; this gate reads long videos only
+    assert craft.camera_problems({**churn, "format": "short"}) == []
