@@ -1,5 +1,3 @@
-{"notifications": [
- {"key": "titan-long-unfinished", "severity": "info", "title": "Titan long video stopped one QA round short; the full work is saved",
-  "detail": "Studio made the Titan submersible implosion video (L-20261124-41, 9 min 18 s, 79 beats). Fact review passed and every render gate passed, but QA round 2 still listed 6 picture fixes, and Studio allows only two QA rounds, so it was marked failed and not uploaded. The script, code and report pages are on branch claude/disaster-studio-c91jy3, and the longform backlog tells the next Studio run to finish it from there.",
-  "fix": "1. Nothing is needed unless you want it sooner: the next Studio run picks it up from the backlog item 2026-11-24-titan-resume. 2. To allow a third QA round on long videos, change agents/studio.md section 6 ('Two rounds at most'); the Shorts routine already allows three."}
-]}
+{
+ "notifications": []
+}
