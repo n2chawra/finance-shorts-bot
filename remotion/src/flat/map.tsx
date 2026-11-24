@@ -53,7 +53,8 @@ export function country(name: string, detail: "110m" | "50m" = "50m"): Country |
 }
 
 type Ctx = { proj: GeoProjection; path: ReturnType<typeof geoPath> };
-const MapCtx = createContext<Ctx | null>(null);
+/** Shared with india.tsx, so MapLabel, MapPin and MapRoute work on the India map too. */
+export const MapCtx = createContext<Ctx | null>(null);
 /** The map's projection, for drawing anything else at a longitude/latitude (characters, signs). */
 export const useMap = (): Ctx => {
   const c = useContext(MapCtx);

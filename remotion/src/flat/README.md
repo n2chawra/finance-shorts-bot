@@ -32,6 +32,24 @@ reference videos (its approved samples) are its bar.
 | `SourceLine` | the "Data: … · month" line, once a video, on the beat `showsSource` picks |
 | `shade(hex, amt)` | darker / lighter tones of a colour |
 
+## `india.tsx` (India's official map, 2026-11-24, the India Maps channel)
+
+India with its 28 states and 8 UTs on **India's official outline** (`data/india.json`, built by
+`scripts/build_india_map.py` from Natural Earth's public-domain India's-view outline and admin-1 states; the parts
+Natural Earth leaves out are assigned as the Survey of India map shows them), over a shaded-relief base
+(`public/maps/south-asia-relief.jpg`, Natural Earth, public domain). The India Maps channel never draws another
+India outline. Inside a `Stage`/`View` (or a bare SVG):
+
+| Piece | What it draws |
+|---|---|
+| `IndiaMap` | the map: `focus` (state names or "India") framed with `pad`; the world outside India dimmed (`dim`), India a paper sheet (`sheet`) with white state lines; `states` ({ Telangana: { fill, k, draw, paint, from, lift, trace } }) makes a state on screen like `WorldMap`'s colours; painted states stay painted (an every-state fill-up); `names` writes unpainted states' Devanagari names faintly; `neighbourNames` the neighbours' |
+| `StateTag` | a pill pinned to a state (its Devanagari name by default, or `text`), popping in with `k`; kept inside the frame, its stem pointing at the state |
+| `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
+| `INDIA_STATES`, `stateHi(name)` | the 36 names (English) and each one's Devanagari name |
+
+`MapLabel`, `MapPin` and `MapRoute` work inside `IndiaMap` too. `IndiaSheet` (Root) is a test reel:
+`npx remotion still src/index.ts IndiaSheet out.png --frame=100`.
+
 ## `map.tsx` (maps, 2026-11-17)
 
 Natural Earth country outlines (public domain, `world-atlas`) drawn in the house style. Inside a `Stage`/`View`:
