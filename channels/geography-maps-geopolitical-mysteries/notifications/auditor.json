@@ -4,7 +4,7 @@
       "key": "data-audit-late",
       "severity": "info",
       "title": "The daily data audit lands after the auditor starts, so tonight's numbers went unchecked",
-      "detail": "data-audit.yml is scheduled at 08:23 UTC (13:53 IST), but GitHub has started it between 16:13 and 17:27 UTC (21:43 to 22:57 IST) on each of the last four days. The workflow itself succeeds every time (runs 38 to 41). Tonight's auditor started at 16:33 UTC (22:03 IST), when the newest audit was 24 hours old (22 Nov 16:27 UTC), so the dashboard-vs-YouTube check was skipped. Last night it landed six minutes before the auditor and was checked.",
+      "detail": "data-audit.yml is scheduled at 08:23 UTC (13:53 IST), but GitHub starts it many hours late: the newest audit on main was written 23 Nov 20:22 UTC (01:52 IST). Tonight's auditor started at 16:33 UTC (22:03 IST), when that audit was 20 hours old, so the dashboard-vs-YouTube check was skipped for the second night running (its one error, 7-day views above all-time views on How Tech Works, was still fixed in code).",
       "fix": "Optional. 1. In .github/workflows/data-audit.yml move the cron earlier, e.g. \"23 2 * * *\" (07:53 IST), so even an 8-hour delay lands before the 22:00 to 23:00 IST auditor run; or 2. start the auditor routine later (after 23:30 IST). Workflows and routine times are owner-only."
     },
     {
