@@ -18,7 +18,7 @@
     },
     {
       "day": "2026-11-24",
-      "shipped": 1,
+      "shipped": 2,
       "failed": 0
     }
   ],
@@ -62,6 +62,13 @@
       "id": "L-20261124-41",
       "day": "2026-11-24",
       "template": "long_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261124-41",
+      "day": "2026-11-24",
+      "template": "short_story",
       "status": "shipped",
       "reason": null
     }
