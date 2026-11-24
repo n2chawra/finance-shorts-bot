@@ -1,0 +1,631 @@
+{
+ "note": "Topic families from Claude's labels, ranked by the scan's numbers (workers/niche-research.ts). Tiers: core ≥1.5× or ≥20% hits, avoid <0.7×, unknown under 5 scored videos. gap: core and posted by ≤3 channels in 30 days.",
+ "rankedAt": "2026-11-24T05:46:30.485Z",
+ "labelled": 2310,
+ "of": 5797,
+ "families": [
+  {
+   "family": "projects-rivers",
+   "kind": "long",
+   "n": 8,
+   "medianOutlier": 3.66,
+   "hitRate": 0.5,
+   "medianViews": 12927,
+   "tier": "core",
+   "examples": [
+    "rHFWiY1AsPI",
+    "JJLf_S5PVPU",
+    "02aIiMuZTDU"
+   ],
+   "recent30": 0,
+   "crowding30": 0,
+   "direction": null,
+   "gap": true
+  },
+  {
+   "family": "borders-neighbours",
+   "kind": "long",
+   "n": 6,
+   "medianOutlier": 3.23,
+   "hitRate": 0.33,
+   "medianViews": 87997,
+   "tier": "core",
+   "examples": [
+    "225S-BDl2Ao",
+    "0_9eX1MUlTE",
+    "BI4QsYxSW_s"
+   ],
+   "recent30": 0,
+   "crowding30": 0,
+   "direction": null,
+   "gap": true
+  },
+  {
+   "family": "map-basics",
+   "kind": "long",
+   "n": 11,
+   "medianOutlier": 3.07,
+   "hitRate": 0.36,
+   "medianViews": 37454,
+   "tier": "core",
+   "examples": [
+    "xoqNoGvMMUA",
+    "Ndg1NsvKTSc",
+    "VwPbfU5eCRU"
+   ],
+   "recent30": 3,
+   "crowding30": 2,
+   "direction": 0.29,
+   "gap": true
+  },
+  {
+   "family": "india-and-world",
+   "kind": "short",
+   "n": 18,
+   "medianOutlier": 2.45,
+   "hitRate": 0.27,
+   "medianViews": 184742,
+   "tier": "core",
+   "examples": [
+    "ZZu9XrsHoxI",
+    "ZQB04liv6EA",
+    "sYtxI_AZqQE"
+   ],
+   "recent30": 4,
+   "crowding30": 2,
+   "direction": 4.39,
+   "gap": true
+  },
+  {
+   "family": "cricket-celebs",
+   "kind": "short",
+   "n": 21,
+   "medianOutlier": 2.04,
+   "hitRate": 0.27,
+   "medianViews": 158772,
+   "tier": "core",
+   "examples": [
+    "O-DSUeawFL0",
+    "G-UVmY32WWs",
+    "QCfsk3jwoqg"
+   ],
+   "recent30": 3,
+   "crowding30": 2,
+   "direction": 19.94,
+   "gap": true
+  },
+  {
+   "family": "every-state",
+   "kind": "short",
+   "n": 350,
+   "medianOutlier": 1.63,
+   "hitRate": 0.26,
+   "medianViews": 93755,
+   "tier": "core",
+   "examples": [
+    "MDBbLMF96-0",
+    "TGbXY4gk_hc",
+    "3Ze3gsrgIDc"
+   ],
+   "recent30": 84,
+   "crowding30": 17,
+   "direction": 2.7,
+   "gap": false
+  },
+  {
+   "family": "physical-climate",
+   "kind": "long",
+   "n": 11,
+   "medianOutlier": 1.13,
+   "hitRate": 0.33,
+   "medianViews": 49680,
+   "tier": "core",
+   "examples": [
+    "Bavo3fmDD44",
+    "aAIq4MfyZwo",
+    "r72RmIcHjgY"
+   ],
+   "recent30": 2,
+   "crowding30": 1,
+   "direction": null,
+   "gap": true
+  },
+  {
+   "family": "physical-climate",
+   "kind": "short",
+   "n": 23,
+   "medianOutlier": 0.87,
+   "hitRate": 0.2,
+   "medianViews": 13807,
+   "tier": "core",
+   "examples": [
+    "0RdPybNh7ho",
+    "Nq8k2DvZ4kk",
+    "Y_t7YouiGEo"
+   ],
+   "recent30": 8,
+   "crowding30": 4,
+   "direction": 1.81,
+   "gap": false
+  },
+  {
+   "family": "india-through-time",
+   "kind": "short",
+   "n": 12,
+   "medianOutlier": 1.37,
+   "hitRate": 0.17,
+   "medianViews": 350112,
+   "tier": "low",
+   "examples": [
+    "n9Tb6NPTroo",
+    "1no_Z-UJbXE",
+    "lhwW0Vk0_gM"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "state-vs-country",
+   "kind": "short",
+   "n": 62,
+   "medianOutlier": 1.25,
+   "hitRate": 0.16,
+   "medianViews": 38377,
+   "tier": "low",
+   "examples": [
+    "GXAj0RYTMRc",
+    "5L1VdcX0Ooc",
+    "ia0DV2V2en8"
+   ],
+   "recent30": 5,
+   "crowding30": 5,
+   "direction": 4.73,
+   "gap": false
+  },
+  {
+   "family": "history-on-map",
+   "kind": "long",
+   "n": 9,
+   "medianOutlier": 1.22,
+   "hitRate": 0.13,
+   "medianViews": 16457,
+   "tier": "low",
+   "examples": [
+    "EKBaiUNFsdw",
+    "7wsJoloa93c",
+    "0mQumQYKCbk"
+   ],
+   "recent30": 2,
+   "crowding30": 2,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "religion-communal",
+   "kind": "short",
+   "n": 73,
+   "medianOutlier": 1.2,
+   "hitRate": 0.16,
+   "medianViews": 107137,
+   "tier": "low",
+   "examples": [
+    "13OAO44Bf2g",
+    "4tn_oM80E4c",
+    "C5T_trghokE"
+   ],
+   "recent30": 19,
+   "crowding30": 8,
+   "direction": 2.31,
+   "gap": false
+  },
+  {
+   "family": "state-formation",
+   "kind": "short",
+   "n": 65,
+   "medianOutlier": 1.13,
+   "hitRate": 0.16,
+   "medianViews": 138597,
+   "tier": "low",
+   "examples": [
+    "6XB45dZeda0",
+    "22Pd_389gKk",
+    "k5y106oKBDg"
+   ],
+   "recent30": 5,
+   "crowding30": 4,
+   "direction": 1.42,
+   "gap": false
+  },
+  {
+   "family": "what-if",
+   "kind": "short",
+   "n": 153,
+   "medianOutlier": 1.1,
+   "hitRate": 0.09,
+   "medianViews": 32546,
+   "tier": "low",
+   "examples": [
+    "dBo0LFXdek8",
+    "hA3EXf7UxaI",
+    "1jGLsM3wk7s"
+   ],
+   "recent30": 77,
+   "crowding30": 5,
+   "direction": 3.86,
+   "gap": false
+  },
+  {
+   "family": "other",
+   "kind": "long",
+   "n": 14,
+   "medianOutlier": 1.01,
+   "hitRate": 0.08,
+   "medianViews": 2720,
+   "tier": "low",
+   "examples": [
+    "7aFNR95S2zQ",
+    "44dnilvKplM",
+    "Ym80Ub1bAR0"
+   ],
+   "recent30": 5,
+   "crowding30": 3,
+   "direction": 1.54,
+   "gap": false
+  },
+  {
+   "family": "every-state",
+   "kind": "long",
+   "n": 9,
+   "medianOutlier": 1,
+   "hitRate": 0.13,
+   "medianViews": 2098,
+   "tier": "low",
+   "examples": [
+    "bnshXafIe5g",
+    "Lu-x4ZWKupM",
+    "nFNum4tgME0"
+   ],
+   "recent30": 0,
+   "crowding30": 0,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "off-niche",
+   "kind": "short",
+   "n": 604,
+   "medianOutlier": 0.96,
+   "hitRate": 0.14,
+   "medianViews": 1400,
+   "tier": "low",
+   "examples": [
+    "wjAAF98uRSo",
+    "F6ZcMLXY7sQ",
+    "9Vej-Ti1RFw"
+   ],
+   "recent30": 169,
+   "crowding30": 13,
+   "direction": 1.04,
+   "gap": false
+  },
+  {
+   "family": "world-geography",
+   "kind": "short",
+   "n": 125,
+   "medianOutlier": 0.95,
+   "hitRate": 0.05,
+   "medianViews": 44956,
+   "tier": "low",
+   "examples": [
+    "w2KhgqPvLUs",
+    "0_ZqdKqVOcg",
+    "4HUKyo1_3kQ"
+   ],
+   "recent30": 44,
+   "crowding30": 10,
+   "direction": 20.41,
+   "gap": false
+  },
+  {
+   "family": "off-niche",
+   "kind": "long",
+   "n": 77,
+   "medianOutlier": 0.94,
+   "hitRate": 0.03,
+   "medianViews": 54375,
+   "tier": "low",
+   "examples": [
+    "AOXQ-67brNE",
+    "BPmNBu0x01o",
+    "R8ogllfvoOs"
+   ],
+   "recent30": 11,
+   "crowding30": 3,
+   "direction": 9.01,
+   "gap": false
+  },
+  {
+   "family": "state-explainer",
+   "kind": "short",
+   "n": 49,
+   "medianOutlier": 0.93,
+   "hitRate": 0.09,
+   "medianViews": 27022,
+   "tier": "low",
+   "examples": [
+    "dIkZsOpfvx8",
+    "-l0XzKmxWsk",
+    "a0zvF89apuM"
+   ],
+   "recent30": 14,
+   "crowding30": 8,
+   "direction": 5.36,
+   "gap": false
+  },
+  {
+   "family": "borders-neighbours",
+   "kind": "short",
+   "n": 118,
+   "medianOutlier": 0.91,
+   "hitRate": 0.13,
+   "medianViews": 40409,
+   "tier": "low",
+   "examples": [
+    "mHcAxUG_iGA",
+    "7I-UQBuQ6Nk",
+    "mC8KwJU1_58"
+   ],
+   "recent30": 18,
+   "crowding30": 9,
+   "direction": 14.95,
+   "gap": false
+  },
+  {
+   "family": "world-geography",
+   "kind": "long",
+   "n": 9,
+   "medianOutlier": 0.9,
+   "hitRate": 0,
+   "medianViews": 3120,
+   "tier": "low",
+   "examples": [
+    "V4_4uqkPQAY",
+    "z25srLBQ-_Q",
+    "aoxTdlgrV-c"
+   ],
+   "recent30": 3,
+   "crowding30": 1,
+   "direction": 3.08,
+   "gap": false
+  },
+  {
+   "family": "politics",
+   "kind": "short",
+   "n": 11,
+   "medianOutlier": 0.86,
+   "hitRate": 0.18,
+   "medianViews": 139715,
+   "tier": "low",
+   "examples": [
+    "D29I9fvlcT4",
+    "l_SAqF1Sw70",
+    "1B7sg5aXi8U"
+   ],
+   "recent30": 3,
+   "crowding30": 3,
+   "direction": 122.12,
+   "gap": false
+  },
+  {
+   "family": "india-facts-rankings",
+   "kind": "long",
+   "n": 10,
+   "medianOutlier": 0.85,
+   "hitRate": 0.08,
+   "medianViews": 2272,
+   "tier": "low",
+   "examples": [
+    "WqNHFeCm_Co",
+    "o91dkTyvZes",
+    "aVKJVLQbxM4"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "history-on-map",
+   "kind": "short",
+   "n": 116,
+   "medianOutlier": 0.83,
+   "hitRate": 0.11,
+   "medianViews": 95965,
+   "tier": "low",
+   "examples": [
+    "CoivsJU7EQo",
+    "LG5uFR-xPdY",
+    "tSLjxVqUiCI"
+   ],
+   "recent30": 29,
+   "crowding30": 9,
+   "direction": 17.43,
+   "gap": false
+  },
+  {
+   "family": "india-facts-rankings",
+   "kind": "short",
+   "n": 141,
+   "medianOutlier": 0.73,
+   "hitRate": 0.05,
+   "medianViews": 17170,
+   "tier": "low",
+   "examples": [
+    "3r9nuTR1QVs",
+    "7_StAe3sQ6w",
+    "gv2OEjPDg7I"
+   ],
+   "recent30": 21,
+   "crowding30": 9,
+   "direction": 12.22,
+   "gap": false
+  },
+  {
+   "family": "state-vs-country",
+   "kind": "long",
+   "n": 1,
+   "medianOutlier": 32.01,
+   "hitRate": 1,
+   "medianViews": 31054,
+   "tier": "unknown",
+   "examples": [
+    "n-XgTHOxdxU"
+   ],
+   "recent30": 0,
+   "crowding30": 0,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "state-formation",
+   "kind": "long",
+   "n": 2,
+   "medianOutlier": 5.57,
+   "hitRate": 1,
+   "medianViews": 258388,
+   "tier": "unknown",
+   "examples": [
+    "qisVwnCCVGI",
+    "JVK1iiQmBJE"
+   ],
+   "recent30": 0,
+   "crowding30": 0,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "what-if",
+   "kind": "long",
+   "n": 2,
+   "medianOutlier": 4.8,
+   "hitRate": 0,
+   "medianViews": 128332,
+   "tier": "unknown",
+   "examples": [
+    "6IwT4O229i0",
+    "SOC2z9bIWwI"
+   ],
+   "recent30": 0,
+   "crowding30": 0,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "state-explainer",
+   "kind": "long",
+   "n": 4,
+   "medianOutlier": 0.58,
+   "hitRate": 0,
+   "medianViews": 826,
+   "tier": "unknown",
+   "examples": [
+    "HI9HZ48Vvsw",
+    "Gpb8nPWjVjI",
+    "BaERSsQ3FRQ"
+   ],
+   "recent30": 3,
+   "crowding30": 2,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "religion-communal",
+   "kind": "long",
+   "n": 2,
+   "medianOutlier": 0.52,
+   "hitRate": 0,
+   "medianViews": 80597,
+   "tier": "unknown",
+   "examples": [
+    "2PQMYkAEWQs",
+    "l-bAFvQTcR0"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "india-and-world",
+   "kind": "long",
+   "n": 1,
+   "medianOutlier": 0.03,
+   "hitRate": 0,
+   "medianViews": 1129,
+   "tier": "unknown",
+   "examples": [
+    "vJDy5APmobk"
+   ],
+   "recent30": 1,
+   "crowding30": 1,
+   "direction": null,
+   "gap": false
+  },
+  {
+   "family": "projects-rivers",
+   "kind": "short",
+   "n": 43,
+   "medianOutlier": 0.69,
+   "hitRate": 0.12,
+   "medianViews": 23609,
+   "tier": "avoid",
+   "examples": [
+    "xZeoLllytn0",
+    "q8gQ6eN3ttg",
+    "HaNdJfYylSQ"
+   ],
+   "recent30": 4,
+   "crowding30": 3,
+   "direction": 15.39,
+   "gap": false
+  },
+  {
+   "family": "map-basics",
+   "kind": "short",
+   "n": 27,
+   "medianOutlier": 0.5,
+   "hitRate": 0.12,
+   "medianViews": 8578,
+   "tier": "avoid",
+   "examples": [
+    "qsgwJUbL8qI",
+    "Jc7Cify8b4k",
+    "8IMKuvOjmw0"
+   ],
+   "recent30": 7,
+   "crowding30": 5,
+   "direction": 1.1,
+   "gap": false
+  },
+  {
+   "family": "other",
+   "kind": "short",
+   "n": 123,
+   "medianOutlier": 0.44,
+   "hitRate": 0.03,
+   "medianViews": 15867,
+   "tier": "avoid",
+   "examples": [
+    "bHEF2_EXH9E",
+    "XVHS7BDsXs8",
+    "tgR75wht5yU"
+   ],
+   "recent30": 14,
+   "crowding30": 8,
+   "direction": 9.35,
+   "gap": false
+  }
+ ]
+}
