@@ -164,13 +164,16 @@ export default function ScorecardPage() {
         </div>
         <WeekLine now={s7.now.medians} prev={lastWeek} />
         <div className="mt-5 flex flex-col gap-3 border-t border-line pt-4 sm:flex-row sm:items-center">
-          <Ring on={v.onTarget} of={v.measured || 4} color={VERDICT_RING[v.tone]} />
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[12.5px] font-medium text-ink2">{v.measured ? `${v.onTarget} of ${v.measured} on target` : "Waiting for numbers"}</span>
-              <span className="text-[12px] text-muted">· {s.recent.length} Shorts in the last {range} days, {s.measured} with YouTube&apos;s numbers</span>
+          {/* the ring stays beside its reading on a phone too, so it never sits alone on a row */}
+          <div data-testid="scorecard-verdict" className="flex min-w-0 flex-1 items-center gap-3">
+            <Ring on={v.onTarget} of={v.measured || 4} color={VERDICT_RING[v.tone]} />
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                <span className="text-[12.5px] font-medium text-ink2">{v.measured ? `${v.onTarget} of ${v.measured} on target` : "Waiting for numbers"}</span>
+                <span className="text-[12px] text-muted"><span aria-hidden className="hidden sm:inline">· </span>{s.recent.length} Shorts in the last {range} days, {s.measured} with YouTube&apos;s numbers</span>
+              </div>
+              <p className="mt-1 text-[13.5px] leading-snug text-ink2">{v.line}</p>
             </div>
-            <p className="mt-1 text-[13.5px] leading-snug text-ink2">{v.line}</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {s.ladder.map((l) => (

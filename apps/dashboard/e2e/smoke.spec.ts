@@ -713,3 +713,20 @@ test("calendar day chips show whole times and counts, or marks when the day is t
     expect(chips, `overflowing calendar chips at ${width}px`).toEqual([]);
   }
 });
+
+test("scorecard keeps the on-target ring beside its reading, with no stray separator on a phone", async ({ page, isMobile }) => {
+  await signIn(page);
+  await page.goto("/scorecard");
+  const ring = page.getByRole("img", { name: /numbers on target/ });
+  const reading = page.getByText(/^(\d+ of \d+ on target|Waiting for numbers)$/);
+  await expect(ring).toBeVisible();
+  await expect(reading).toBeVisible();
+  const a = (await ring.boundingBox())!, b = (await reading.boundingBox())!;
+  // same row: the reading starts right of the ring and overlaps it vertically
+  expect(b.x).toBeGreaterThanOrEqual(a.x + a.width - 1);
+  expect(b.y).toBeLessThan(a.y + a.height);
+  if (isMobile) {
+    const count = page.getByText(/Shorts in the last \d+ days/);
+    expect((await count.innerText()).trim().startsWith("·")).toBe(false);
+  }
+});
