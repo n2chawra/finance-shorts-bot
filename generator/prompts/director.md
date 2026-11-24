@@ -71,6 +71,16 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 5. **The camera tells it.** A close-up push on a face, a pull-back that reveals the ship, a dive from
    the city into one window, a follow along a route. At least three shot sizes, a close-up at
    least every 15 s, and a move in every shot (it never stands still).
+   **Zoom only when the line needs it** (owner, 2026-11-24, on How Tech Works' long video L-20261124-21:
+   "too many zoom in and zoom outs it was very difficult to actually keep an eye on whats happening").
+   A shot size holds for the whole idea; between size changes the camera drifts, pans, orbits or
+   follows at the same size. Push in on the word that reveals something, and don't pull straight back
+   out. Long videos: at most one size change every 5 s on average and no more than 3 in-and-back-out
+   zooms inside 4 s in the whole video (`renderer/craft.py` `camera_problems`, in `lint` and the render).
+   The picture-gap rule (`motion.maxGapSec`) counts every camera key and moment, so when a channel's
+   gap needs more keys than the line has ideas, add **moments** or keys **at the same size** (a pan to
+   another part of the same thing, an orbit around it), never a size change; and no close shot on a
+   different anchor less than ~1 s after the last move (it lands mid-move, on a wall).
    **Everything in the picture, whole** (owner, 2026-11-16, on the GTA Short: "Camera kinda looks zoom
    in. Zoom out a little bit so that all things comes in picture"). The camera stops at `MAX_ZOOM` (1.3,
    `remotion/src/flat/camera.ts`; `View` clamps anything closer), so a close-up is the face or the thing

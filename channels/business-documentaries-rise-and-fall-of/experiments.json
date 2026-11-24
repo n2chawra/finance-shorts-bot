@@ -1,3 +1,23 @@
 {
-  "experiments": []
+  "experiments": [
+    {
+      "id": "doc-document-first",
+      "area": "hook",
+      "metric": "stayed",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-24",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "Frame 1 (weekly loop, cycle 1, doc-document-first, on): the first frame is the document: a report table, filing, price list or receipt with the story's sourced figure already highlighted (from params.fig, shown with its Data line), the subject named by 1 s; the object the viewer knows enters after it. Everything else as the recipe says.",
+        "off": "Frame 1 (weekly loop, cycle 1, doc-document-first, off): the champion: the first frame is the object the viewer knows (the toy at an auction, the cup going into a car), the subject named by 1 s; no document in the first shot. Everything else as the recipe says."
+      },
+      "proposal": "cycle/backlog.json doc-document-first",
+      "description": "Craze & Crash Shorts: frame 1 is the document with the figure highlighted, against the object-first frame (judged on stayed to watch)",
+      "cycle": 1
+    }
+  ]
 }

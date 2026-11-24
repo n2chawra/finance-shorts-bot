@@ -174,3 +174,5 @@ fix any beat near a limit as well.
   the event's common name ("bp texas city refinery explosion"); the title says it, the event by its noun
   ("Inside the Texas City Refinery Explosion"), then the curiosity; an event's thumbnail shows the event (the
   fireball, the collapse), never a gauge or screen as the subject. check-plan and the thumbnail spec check fail both.
+- **A long video's camera zooms only when the line needs it** (owner, 2026-11-24, L-20261124-21: "too many zoom in and zoom outs"). That video changed shot size every 1.3 s; `lint` and the render now fail a long video under one size change per 5 s on average or with more than 3 zooms in and straight back out inside 4 s. Hold a size for the idea and drift, pan or orbit inside it.
+- **A long hook shows the everyday thing before the machine** (owner, 2026-11-24, same video): the phone, then its chip, then the system that made it, each on its word (`long_story` README, Hook).

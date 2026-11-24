@@ -116,6 +116,11 @@ export const Label3D: React.FC<Label3DProps> = ({ at, offset = [0.6, 0.6, 0], te
     const W = size3.width, H = size3.height;
     const hp = (px * size.h) / fontPx, wp = (size.w / size.h) * hp;
     const ndc = tmp.clone().project(cam);
+    // a label whose point is off screen (or behind the camera) hides instead of sliding into a corner,
+    // where it piled up over the logo on close shots (L-20261124-21, adopt tech-long-3d-labels-corner)
+    const onScreen = ndc.z < 1 && Math.abs(ndc.x) <= 1.05 && Math.abs(ndc.y) <= 1.05;
+    m.visible = onScreen;
+    if (!onScreen) return;
     const cx = (ndc.x * 0.5 + 0.5) * W + anchorX * hp, cy = (-ndc.y * 0.5 + 0.5) * H;
     const [dx, dy] = clampShift(cx, cy, wp, hp, W, H);
     m.position.set(anchorX + dx / hp, -dy / hp, 0);
