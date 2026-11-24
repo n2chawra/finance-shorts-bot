@@ -1,0 +1,148 @@
+{
+ "_source": "Watched in the built-in browser 2026-11-24: frames at 0, ~2, then every 5-15 s, audio probe on two. Our own descriptions; shots approximate; words not counted (no transcript), so words are 0.",
+ "durationSec": 86,
+ "artStyle": "flat vector animation",
+ "language": "hi",
+ "narrator": {
+  "kind": "AI voice",
+  "pace": "normal"
+ },
+ "captions": {
+  "style": "sentence",
+  "position": "bottom"
+ },
+ "music": {
+  "present": true,
+  "energy": "low"
+ },
+ "sfxPerMinute": 6,
+ "hook": {
+  "firstFrame": "dark relief map with a gold Devanagari title and a painting card of a battle",
+  "firstLine": "",
+  "question": true,
+  "subjectNamedAtSec": 0,
+  "figureShownAtSec": null,
+  "figureSpokenAtSec": null
+ },
+ "shots": [
+  {
+   "start": 0,
+   "end": 2,
+   "picture": "title in large gold Devanagari over a dark relief map, a battle painting inset",
+   "kind": "mixed",
+   "characters": 0,
+   "camera": "static",
+   "transition": "none",
+   "onScreenText": "title",
+   "figureOnScreen": false,
+   "motion": 1
+  },
+  {
+   "start": 2,
+   "end": 12,
+   "picture": "an empire painted blue grows across the map with a red outline, chapter title on top",
+   "kind": "map",
+   "characters": 0,
+   "camera": "pull out",
+   "transition": "morph",
+   "onScreenText": "chapter title",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 12,
+   "end": 35,
+   "picture": "red arrows draw the march route city by city",
+   "kind": "map",
+   "characters": 0,
+   "camera": "follow",
+   "transition": "none",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 35,
+   "end": 60,
+   "picture": "battle sites marked by orange shapes joined by arrows, chapter titles change",
+   "kind": "map",
+   "characters": 0,
+   "camera": "push in",
+   "transition": "morph",
+   "onScreenText": "chapter title",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 60,
+   "end": 80,
+   "picture": "return route drawn across a desert band labelled on the map",
+   "kind": "map",
+   "characters": 0,
+   "camera": "pan",
+   "transition": "none",
+   "onScreenText": "place labels",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 80,
+   "end": 86,
+   "picture": "dark card: 'what if' question with two numbered answers and a comment button",
+   "kind": "text card",
+   "characters": 0,
+   "camera": "static",
+   "transition": "cut",
+   "onScreenText": "poll",
+   "figureOnScreen": false,
+   "motion": 0
+  }
+ ],
+ "lines": [
+  {
+   "start": 0,
+   "end": 5,
+   "words": 0,
+   "job": "hook",
+   "gist": "why did the man who won half the world turn back"
+  },
+  {
+   "start": 5,
+   "end": 35,
+   "words": 0,
+   "job": "context",
+   "gist": "the march from Greece to the Indus"
+  },
+  {
+   "start": 35,
+   "end": 60,
+   "words": 0,
+   "job": "stakes",
+   "gist": "a hard battle in monsoon rain"
+  },
+  {
+   "start": 60,
+   "end": 80,
+   "words": 0,
+   "job": "reveal",
+   "gist": "his army refused to go further"
+  },
+  {
+   "start": 80,
+   "end": 86,
+   "words": 0,
+   "job": "cta",
+   "gist": "asks viewers to pick what would have happened"
+  }
+ ],
+ "ending": {
+  "loops": false,
+  "cta": "comment 1 or 2",
+  "lastFrame": "poll card with two options"
+ },
+ "whyItWorks": [
+  "Devanagari chapter titles keep a long Short in parts",
+  "the route is drawn as the narrator speaks",
+  "a two-option comment poll at the end"
+ ]
+}
