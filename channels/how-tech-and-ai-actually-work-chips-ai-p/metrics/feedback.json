@@ -1,6 +1,6 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 2,
+  "open": 1,
   "notes": [
     {
       "id": "cmwurayl10001l8097slpczis",
@@ -8,7 +8,7 @@
       "area": "hook",
       "text": "in the hook you could also have shown chips and mobile then the system that makes it work. this way the hook could have been much better like \"wow ok so my phone's small chips are made from this system\"\n\nright now it only speaks not shows phones and chips in the hook which makes an ordinary viewer leave the video.",
       "status": "open",
-      "response": "reviewer handed → studio: This is about the long video's hook (show the phone and its chip before the machine), which Studio writes. · waiting for studio",
+      "response": "improver partly → studio: The long_story README and the checklist now say a long hook shows the everyday thing first (the phone, then its chip, then the machine), each on its word; Studio writes the next hooks that way. (43e5d9f) · reviewer handed → studio: This is about the long video's hook (show the phone and its chip before the machine), which Studio writes. · waiting for studio",
       "at": "2026-11-24T13:54:51.157Z",
       "video": {
         "id": "L-20261124-21",
@@ -26,8 +26,8 @@
       "kind": "improve",
       "area": "animation",
       "text": "too many zoom in and zoom outs it was very difficult to actually keep an eye on whats happening. so keep it low only when actually its needed. so that user concentration dont get broken because of it.",
-      "status": "open",
-      "response": "reviewer handed → improver: Too many zooms is about how videos move (camera in remotion/src and the director's rules), which is the improver's lane. · waiting for improver",
+      "status": "addressed",
+      "response": "improver fixed: Long videos now zoom only when the line needs it: that video changed shot size every 1.3 s, so lint and the render fail a long video changing size more than once every 5 s on average or zooming in and straight back out more than 3 times (renderer/craft.py, director.md). For Shorts it is the next look test on this channel's weekly loop (tech-calm-camera, top of the look list). (43e5d9f) · reviewer handed → improver: Too many zooms is about how videos move (camera in remotion/src and the director's rules), which is the improver's lane.",
       "at": "2026-11-24T13:52:05.764Z",
       "video": {
         "id": "L-20261124-21",
