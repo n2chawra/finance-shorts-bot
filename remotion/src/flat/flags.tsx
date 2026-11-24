@@ -280,6 +280,16 @@ const FLAGS: Record<string, Draw> = {
       </g>
     );
   }),
+  // Panama (for v-20261124-12): quartered, white with a blue star, red; blue, white with a red star
+  Panama: ({ x, y, w, h: hh }) => (
+    <g>
+      <rect x={x} y={y} width={w} height={hh} fill={W} />
+      <rect x={x + w / 2} y={y} width={w / 2} height={hh / 2} fill="#da121a" />
+      <rect x={x} y={y + hh / 2} width={w / 2} height={hh / 2} fill="#072357" />
+      {star(x + w / 4, y + hh / 4, hh * 0.13, "#072357")}
+      {star(x + (w * 3) / 4, y + (hh * 3) / 4, hh * 0.13, "#da121a")}
+    </g>
+  ),
   Chile: ({ x, y, w, h: hh }) => (
     <g>
       <rect x={x} y={y} width={w} height={hh / 2} fill={W} />
