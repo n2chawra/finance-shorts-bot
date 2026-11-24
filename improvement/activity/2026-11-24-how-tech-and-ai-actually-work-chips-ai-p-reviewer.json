@@ -1,0 +1,20 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-24T16:38:31Z",
+  "finishedAt": "2026-11-24T16:41:00Z",
+  "summary": "How Tech Works: watched 4 published Shorts and the newest one. Added one lesson (the second line answers, it never asks again) and queued one look test.",
+  "decision": "acted",
+  "why": "All four Shorts with a curve lose the most at 5-8 s, on the line after the hook. In three of them that line asked the question again: transistor -23 points at 6.2 s, Hoover Dam -18.5 at 7.5 s (stayed 47.4%, 10.5 under the 57.9% median), Crossrail -15.4 at 5.6 s.",
+  "findings": [
+    {"title": "The second beat is where viewers leave", "detail": "Microwave -29.6 points at 7.5 s ('In 1945, radar engineer Percy Spencer...'), transistor -23 at 6.2 s ('What did the very first one look like?'), Hoover Dam -18.5 at 7.5 s ('So how does water make power?'), Crossrail -15.4 at 5.6 s."},
+    {"title": "One machine in one place held best", "detail": "Crossrail held 46.5% after the hook, staying on one tunnel machine; the Shorts that cut between six or seven places held 10.7-26.4%."},
+    {"title": "Newest Short repeats the pattern", "detail": "v-20261123-21 (Motorola brick) opens its second line on backstory ('Its engineers had just 6 weeks...'); its curve gets checked Friday."}
+  ],
+  "changes": [
+    {"title": "Lesson added: the second line answers, it never asks again", "detail": "channels/how-tech-and-ai-actually-work-chips-ai-p/prompts/lessons.md #1", "branch": "agent/reviewer/2026-11-24/how-tech-and-ai-actually-work-chips-ai-p"},
+    {"title": "Challenger queued: tech-one-machine-one-place", "detail": "Look test judged on held after the hook; also added Crossrail's curve to research's tech-mechanism-by-6s.", "branch": "agent/reviewer/2026-11-24/how-tech-and-ai-actually-work-chips-ai-p"}
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [{"label": "Report", "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/review/2026-11-24.md"}]
+}
