@@ -1,0 +1,323 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-24T04:53:32.161446+00:00",
+    "finishedAt": "2026-11-24T04:53:32.161446+00:00",
+    "notes": [
+      "style.bpm must be 52–58 for undertow",
+      "music genre 'undertow' was used by the previous video"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:53:39.184275+00:00",
+    "finishedAt": "2026-11-24T04:53:39.184275+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T04:54:06.427953+00:00",
+    "finishedAt": "2026-11-24T04:54:06.427953+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:02:16.280166+00:00",
+    "finishedAt": "2026-11-24T05:02:16.280166+00:00",
+    "notes": [
+      "beat 'p-sea'.params.mode contains a typed number; use a placeholder: 'psi1'",
+      "note: 13 questions in about 423 s of speech; at least 14 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'promise' opens like a line in one of the last scripts (\"it wasn't one\"): new words",
+      "note: beat 'promise2' opens like a line in one of the last scripts ('here is the'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:02:24.582336+00:00",
+    "finishedAt": "2026-11-24T05:02:24.582336+00:00",
+    "notes": [
+      "beat 'u-model'.params.mode contains a typed number; use a placeholder: 'model1'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:02:28.059327+00:00",
+    "finishedAt": "2026-11-24T05:02:28.059327+00:00",
+    "notes": [
+      "beat 'l-last'.params.mode contains a typed number; use a placeholder: 'lastmsg2'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:02:31.242151+00:00",
+    "finishedAt": "2026-11-24T05:02:31.242151+00:00",
+    "notes": [
+      "beat 'f-search'.params.tag.fig contains a typed number; use a placeholder: 'o2'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:02:34.575357+00:00",
+    "finishedAt": "2026-11-24T05:02:34.575357+00:00",
+    "notes": [
+      "beat 'outro'.params.assumption contains a typed number; use a placeholder: \"From the NTSB's final report (MIR-25-36) and the U.S. Coast Guard's investigation. The scenes are reconstructions, not actual footage.\""
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:02:37.776801+00:00",
+    "finishedAt": "2026-11-24T05:02:37.776801+00:00",
+    "notes": [
+      "facts[0] (2023 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[1] (18 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[2] (5 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[3] (3880 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[4] (3363 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[5] (7 count, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+      "facts[6] (5 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[7] (4000 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[8] (1000 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (4200 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (2800 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (13 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (80 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (88 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (250000 money, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (30 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (96 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (500 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (4 count, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (14.7 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (5554.5 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (2016 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (2018 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[23] (2019 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[24] (18 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[25] (2022 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[26] (9 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[27] (10 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[28] (370 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[29] (19 count, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+      "facts[30] (4 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[31] (17 count, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+      "facts[32] (2021 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:02:51.698111+00:00",
+    "finishedAt": "2026-11-24T05:02:51.698111+00:00",
+    "notes": [
+      "33 figures computed from inputs; 33 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:18:11.853274+00:00",
+    "finishedAt": "2026-11-24T05:18:11.853274+00:00",
+    "notes": [
+      "hook: 'a hull already damaged on an earlier dive' states as certain what the NTSB says was likely (MIR-25-36: 'likely sustained damage after... dive 80'). Fix: 'with a hull that was likely damaged on an earlier dive'.",
+      "hook + f-toll: the deaths are stated twice ('All 5 people aboard died' in both); the channel's field rule is deaths stated plainly, once. Fix: keep one (e.g. hook), and make f-toll 'The youngest aboard, Suleman Dawood, was 19. He had come along with his father.'",
+      "t-tease: 'The trip down took about two and a half hours' is false for this dive (released ~0900, imploded 1047 at 3,363 m); 2.5 h was the plan (NTSB). Fix: 'The trip down was meant to take about two and a half hours.'",
+      "u-window: 'Titan would dive to 3,880' - 3,880 m is the wreck site depth; NTSB logs Titan's dives to the wreck at 3,840 m. Fix: 'The wreck lies at 3,880.' (or 'Titan dove to the Titanic, nearly four times deeper.')",
+      "w-sensors: 'On that dive' follows w-night (the battery dive, dive 73, June 2022), so it points at the wrong dive; NTSB ties the acoustic burst and strain jump to dive 80. Fix: 'On dive 80, they showed a burst of noise, and a sudden jump in strain.' (Optionally move w-night before w-bang and say 'Earlier that summer'.)",
+      "f-ship: 'believed the radio link had dropped' - Titan's link was an acoustic system (NTSB 1.1, 1.3.5), not radio. Fix: 'they believed the acoustic link had dropped' or 'the link had dropped'.",
+      "r-response: follows r-culture ('The Coast Guard's board'), so 'the board said' attributes to the Coast Guard a finding that is the NTSB's (had OceanGate followed NVIC 05-93, assets likely standing by). Fix: 'With a proper emergency plan, the safety board said, rescue help would likely have been standing by.'"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:25:58.850376+00:00",
+    "finishedAt": "2026-11-24T05:25:58.850376+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:26:00.035138+00:00",
+    "finishedAt": "2026-11-24T05:26:00.035138+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:27:02.052254+00:00",
+    "finishedAt": "2026-11-24T05:27:02.052254+00:00",
+    "notes": [
+      "Rewrite 1: all 7 items fixed (likely-damaged hook, toll once, planned descent, wreck depth 3,880, dive 80 sensors with dive 73 battery night in 2022, acoustic link, NTSB attribution); every line rechecked against NTSB MIR-25-36 and cited USCG news pages (7 s, $250,000, Dawood 19, 4-day search, 17 recs); verify list done; description names both reports and ends with the disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:15:57.480411+00:00",
+    "finishedAt": "2026-11-24T05:27:09.352172+00:00",
+    "notes": [
+      "text 'PRESSURE TEST TANK' at 168.2 s runs outside the frame",
+      "text 'SURFACE' at 226.8 s runs outside the frame",
+      "text 'WINDOW RATED' at 226.8 s runs outside the frame",
+      "text 'TOWING' at 335.8 s runs outside the frame",
+      "text 'EFFECT ON HULL · UNTESTED' at 335.8 s runs outside the frame",
+      "text 'PENDING' at 534.1 s is 27.3 px, below the 30 px minimum",
+      "4.0 s with nothing new on screen in beat 'p-deep' (at most 4.0 s): add an action on the phrase being said there",
+      "44 of 111 stills are mostly empty background (at 25 s, 30 s, 35 s, 40 s, 45 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:29:19.267864+00:00",
+    "finishedAt": "2026-11-24T05:38:21.760396+00:00",
+    "notes": [
+      "text 'FULL-SIZE HULL · 2021' at 209.8 s runs outside the frame",
+      "text 'EFFECT ON HULL · UNTESTED' at 337.9 s runs outside the frame",
+      "text 'PENDING' at 535.0 s runs outside the frame",
+      "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:38:30.845877+00:00",
+    "finishedAt": "2026-11-24T05:47:07.015684+00:00",
+    "notes": [
+      "text 'PENDING' at 535.0 s runs outside the frame",
+      "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:47:14.854906+00:00",
+    "finishedAt": "2026-11-24T05:55:52.364383+00:00",
+    "notes": [
+      "558 s, ocean/brace (preview only)",
+      "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T05:57:09.903472+00:00",
+    "finishedAt": "2026-11-24T05:57:09.903472+00:00",
+    "notes": [
+      "[script] 30.0s promise: empty frame, grid paper only; 35s same beat is two text chips on blank grid, and the chips collide (UNCERTIFIED HULL runs out of its box into BANG ON DIVE 80, 'UN' outside left edge of box). Give 'promise' a place (the 3D hull with the three causes tagged on it) and size the chips to their text.",
+      "[scene] Every still: the channel badge (I medallion, top-left) sits on the first letter of the place tag ('3D reconstruction' reads 'ID reconstruction', 'AS REPORTED', 'GENERAL PRINCIPLE'). Move the tag right of the badge or drop the badge (disaster kit overlay).",
+      "[script] 285s w-told: an empty cradle outline on blank grid, no Titan, no guests, no ship deck; the line's place (support ship deck) is missing. Show Titan sitting in its cradle on deck with the guests.",
+      "[script] 315s w-lot: the parking lot is a grey rectangle with a red box, a blue box and a white pill (lesson 5: box-like, no subject); a ghosted 'ST. JOHN'S FROM ABOVE' label overlaps the 'a reconstruction of what the report describes' tag. Build the lot in 3D: Titan on its platform under snow, cars, the harbour.",
+      "[scene] 410s f-toll: the five figures icon is drawn over the 'SULEMAN DAWOOD · AGE' tag, cutting the name ('DAWOO_ · _GI'). Move the figures off the tag. Picture otherwise near-empty dark frame.",
+      "[script] 455-550s (r-*, c-*, payoff, score): about 95 s of flat drawing-sheet cards (report pages, 'What the safety board found' rows, globe, card grid) with only one 3D cut at 510s; lesson 6 caps one look at ~30 s and asks half the runtime in lit 3D. 465-490 and 540-550 are text rows on blank grid (headline cards, rule D). Put the findings on things in 3D places (the hull wreckage on the seabed, the ops room screen, the cradle) and cut back to the 3D every 3-6 s.",
+      "[script] 160-250s (u-* chapter): ~70 s mostly flat diagrams (tanks, gauges, letters, certificate) on the same grid sheet; same lesson 6 problem. Bring u-first, u-reuse, u-tease into lit 3D and alternate.",
+      "[script] 525s c-world: a bare wireframe globe on grid, nothing happening, no figure on a thing; 530/535 a grid of blank cards. Show the standard as a document stamped MANDATORY on a desk, the 17 recommendations as a stack being signed.",
+      "[script] 430-440s f-search/f-rov: washed-out grey haze, the aircraft is a grey tube with plank wings, ship small at the bottom (lesson 5: pale, box-like). Darker overcast with a key light, the plane bigger and recognisable.",
+      "[script] Chapters: render.json has only 'Intro' at 0:00 although promise2 announces seven parts; the description's CHAPTERS lists one entry (YouTube needs 3+). Add chapter starts (the trip ~45s, pressure ~108s, hull ~163s, warnings ~261s, last dive ~340s, findings ~401s/453s, what changed ~511s).",
+      "[script] Thumbnails: B copies the 3.7M Coast Guard hit's picture almost exactly (ocean cut, ship, dashed line to red X); A and C are the same picture (same sub, same ringed crack) with different words. C is the one I would click and agrees with Studio's pick; keep C, redraw B with its own picture (e.g. the ops-room screen with the last text) and give A a different angle."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T05:59:51.554719+00:00",
+    "finishedAt": "2026-11-24T06:09:40.525934+00:00",
+    "notes": [
+      "558 s, ocean/brace (preview only)",
+      "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T06:10:28.134580+00:00",
+    "finishedAt": "2026-11-24T06:10:28.134580+00:00",
+    "notes": [
+      "[scene] 35s promise: a stray big gold 'BANG' word sits on top of tag 2 ('2 BANG ON DIVE 80'), covering its bottom edge, and a gold arc line runs through both tags. Remove the extra BANG (or put it on the hull, below the tags) and keep the arc off the tags.",
+      "[script] Chapters still missing: render.json chapters is only 'Intro' at 0:00 because the script has no scene 'chapter' beats (renderer/remotion.py builds chapters only from those), so ship has no chapter starts to write. Add chapter beats (or chapter markers the renderer reads) at about 45s, 108s, 163s, 261s, 340s, 401s/453s and 511s, and re-render so render.json lists them.",
+      "[script] 315s w-lot and 480s r-tow: the lot is still plain coloured boxes (a red and a blue block for containers, stacked slabs for cars, no harbour in view, flat light); at 480s the snow on Titan is a big white blob hiding the hull. Lesson 5 (never grey boxes): give the containers ribs and doors, cars a car shape, show the harbour, and lay the snow as a thin layer on the hull.",
+      "[script] 515-550s (c-recs, c-rules, c-world, c-cg, payoff, score): about 36 s of flat drawing-sheet cards with no 3D cut (lesson 6: about 30 s at most); c-world at 525s is still a bare wireframe globe with nothing happening and no figure on a thing (rule D), and 530-535s is a grid of blank cards. Change at least c-world or c-cg to a 3D place (the dive log on the ship, the seabed debris) and give the globe beat a stamped document.",
+      "[script] 180-230s (u-crack to u-window): about 50 s of flat diagrams on the grid sheet without a 3D cut (lesson 6). Make one of u-done, u-test or u-window a 3D shot (the front dome's window up close at depth fits u-window).",
+      "[scene] Thumbnail A: 'DAMAGED' runs into the sub's nose (the D touches the hull); move the words clear. Thumbnail B no longer copies the hit (good), but 'DROPPED TWO WTS' is an abbreviation a stranger won't read; spell WEIGHTS or shorten. C is still the one I'd click and agrees with Studio's pick."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T06:14:03.108984+00:00",
+    "finishedAt": "2026-11-24T06:14:03.108984+00:00",
+    "notes": [
+      "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T06:14:51.340420+00:00",
+    "finishedAt": "2026-11-24T06:25:17.315618+00:00",
+    "notes": [
+      "thumbnail.png is empty at phone size (edges 0.134, 0.15-0.5): fill it with the story",
+      "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T06:26:10.098294+00:00",
+    "finishedAt": "2026-11-24T06:26:10.098294+00:00",
+    "notes": [
+      "Round 3: promise tags clean (red band on hull, no stray BANG); tags clear of badge; lot/r-tow 3D with ribbed containers, cars, quay, ship; c-world, u-second, u-window now 3D, no flat run over ~30 s; f-toll tag clear; thumbs A/B/C readable, C picked and agrees with Studio. Chapters: render.json still only Intro, Studio must write the 8 chapter timestamps into the description at ship (check there)."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T06:45:57.268684+00:00",
+    "finishedAt": "2026-11-24T06:45:57.268684+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  }
+]
