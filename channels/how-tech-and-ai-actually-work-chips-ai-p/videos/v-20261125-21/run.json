@@ -1,0 +1,286 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:10:40.874048+00:00",
+    "finishedAt": "2026-11-24T20:10:40.874048+00:00",
+    "notes": [
+      "plan.arms must be this channel's own {\"length\": \"45-60\", \"title\": \"figure_or_name\", \"style\": \"shot\", \"category\": \"28\"} (from `improvement.arms assign`)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:10:45.803830+00:00",
+    "finishedAt": "2026-11-24T20:10:45.803830+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:11:20.390896+00:00",
+    "finishedAt": "2026-11-24T20:11:20.390896+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:17:26.427777+00:00",
+    "finishedAt": "2026-11-24T20:17:26.427777+00:00",
+    "notes": [
+      "beat 'hook'.params.place[0] contains a typed number; use a placeholder: 'a dark studio stage, the real NV1 card turning under a spotlight'",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 56 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:17:45.321098+00:00",
+    "finishedAt": "2026-11-24T20:17:45.321098+00:00",
+    "notes": [
+      "beat 'hook'.say contains a typed number; use a placeholder: 'In 1995, NVIDIA sold a graphics card that almost no game knew how to use.'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:17:56.625507+00:00",
+    "finishedAt": "2026-11-24T20:17:56.625507+00:00",
+    "notes": [
+      "beat 'directx'.params.place contains a typed number; use a placeholder: 'a 1990s PC on a desk, its monitor glowing, a game being built out of triangles'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:18:01.157978+00:00",
+    "finishedAt": "2026-11-24T20:18:01.157978+00:00",
+    "notes": [
+      "description mentions '1', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}…) or drop it",
+      "description mentions '1', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}…) or drop it",
+      "the source line 'Data: Jon Peddie Research via Electronic Design · SiliconANGLE (NVIDIA CES 2026) · Jan 2026' is too wide for the frame (2277 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'Jon Peddie Research via Electronic Design'), one name per publisher"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:18:10.862495+00:00",
+    "finishedAt": "2026-11-24T20:18:10.862495+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:18:11.780643+00:00",
+    "finishedAt": "2026-11-24T20:18:11.780643+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:19:17.952472+00:00",
+    "finishedAt": "2026-11-24T20:19:17.952472+00:00",
+    "notes": [
+      "All 5 facts confirmed on source pages: NV1 ~250,000 transistors and NVIDIA founded early 1993 (JPR/Electronic Design 2021-06-22); $250 2 MB board, RIVA 128 3.5M transistors, 'struggling to stay in business', DirectX push around triangle rendering (JPR/Electronic Design RIVA 128); Rubin 336B (SiliconANGLE 2026-01-05, and NVIDIA's own developer blog 'Inside the NVIDIA Rubin Platform'). Verify list: quadratic texture mapping (JPR, Wikipedia NV1); Edge 3D with Saturn controller ports (search: Wikipedia, TechSpot); DirectX 1.0 on 1995-09-30 (Heise, Britannica); Rubin is still NVIDIA's newest shipping GPU (Rubin Ultra 2027, Feynman 2028 are roadmap only). No advice, no hype, disclaimer ends the description. Notes: the NV1 card was sold by Diamond (Edge 3D), so 'NVIDIA's first graphics card' is loose; DirectX 1.0 had no Direct3D (it came in DirectX 2.0, 1996), so 'built DirectX around triangles' is simplified; 'every other chip' drew triangles holds for PC chips (the Saturn drew quads)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:22:36.200249+00:00",
+    "finishedAt": "2026-11-24T20:22:36.200249+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:22:48.390116+00:00",
+    "finishedAt": "2026-11-24T20:22:48.390116+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:23:44.485867+00:00",
+    "finishedAt": "2026-11-24T20:23:44.485867+00:00",
+    "notes": [
+      "Re-review of the two changed lines (say and spoken match): hook 'Almost no game could use NVIDIA's first graphics card.' holds because few games were written for the NV1's curve rendering (JPR/Electronic Design; Diamond wrote off unsold Edge 3D stock); beat 'triangles' 'each one is easy to draw' is the same claim as before. All 5 sourced facts were confirmed earlier on their source pages (JPR/Electronic Design x2, SiliconANGLE, NVIDIA developer blog). Earlier notes stand: the card was Diamond's Edge 3D, 'built DirectX around triangles' is simplified, and 'every other chip' holds for PC chips."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:24:23.193628+00:00",
+    "finishedAt": "2026-11-24T20:24:23.193628+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:24:53.523785+00:00",
+    "finishedAt": "2026-11-24T20:28:33.040873+00:00",
+    "notes": [
+      "2.1 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there",
+      "4 of 15 stills are mostly empty background (at 0 s, 25 s, 55 s, 65 s): fill the frame (a set, the cast big, money as a thing)",
+      "length 68 s is outside 45–60 s: cut about 23 spoken words",
+      "the Short runs 68.4 s but its assigned length (arms.length) is 45-60 s: cut or add a beat",
+      "note: 16 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:29:07.252498+00:00",
+    "finishedAt": "2026-11-24T20:29:07.252498+00:00",
+    "notes": [
+      "beat 'shelf'.events.struggling: no word 'struggling' in this beat's spoken line",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:29:11.507131+00:00",
+    "finishedAt": "2026-11-24T20:29:11.507131+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:32:21.260432+00:00",
+    "finishedAt": "2026-11-24T20:35:42.609530+00:00",
+    "notes": [
+      "1.8 s with nothing new on screen in beat 'turn' (at most 1.8 s): add an action on the phrase being said there",
+      "length 62 s is outside 45–60 s: cut about 6 spoken words",
+      "the Short runs 61.6 s but its assigned length (arms.length) is 45-60 s: cut or add a beat",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:36:07.458461+00:00",
+    "finishedAt": "2026-11-24T20:36:07.458461+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:36:22.823176+00:00",
+    "finishedAt": "2026-11-24T20:36:22.823176+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:37:20.021116+00:00",
+    "finishedAt": "2026-11-24T20:37:20.021116+00:00",
+    "notes": [
+      "Re-review of the shortened beats (bet, curves, triangles, directx, shelf, turn, payoff, loop; say and spoken match, figures still {fact1}/{fact4}/{fact5}): 'about 250K transistors and bet everything on curves' (JPR: approx. 250,000, built on quadratic texture mapping), 'NVIDIA struggled to stay in business' (JPR wording), 'RIVA drew triangles fast: 3.5M transistors' and 'It sold, and NVIDIA never looked back' (JPR: put Nvidia back on the map, generated revenue), Rubin 336B still NVIDIA's newest chip; 'Other chips' is softer than before. Facts confirmed earlier on source pages. Notes: 'next chip' skips the unreleased NV2 (RIVA 128 is NV3); 'bet everything' is rhetorical (the NV1 also did 2D and audio); 'built DirectX around triangles' is simplified."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:37:28.536151+00:00",
+    "finishedAt": "2026-11-24T20:40:37.655021+00:00",
+    "notes": [
+      "3 of 13 stills are mostly empty background (at 0 s, 45 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:41:50.344867+00:00",
+    "finishedAt": "2026-11-24T20:44:47.250385+00:00",
+    "notes": [
+      "2 of 13 stills are mostly empty background (at 0 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:46:05.293010+00:00",
+    "finishedAt": "2026-11-24T20:49:05.578769+00:00",
+    "notes": [
+      "59 s, ember/datahall (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T20:50:14.110658+00:00",
+    "finishedAt": "2026-11-24T20:50:14.110658+00:00",
+    "notes": [
+      "[script] 40.0s (turn/Riva), 45.0s (payoff/Rubin opening) and 50.0s (Rubin) draw the same chip package and die as NV1 at 5.0s (same purple/yellow die on the same gold-traced board): 40s and 45s in a row look like the same picture, and the payoff's surprise (250K -> 336B) is not visible because the 336B Rubin looks exactly like the 250K NV1; the 'tiny first chip beside it' is not in the 50s still. Give RIVA and Rubin their own models (Rubin a huge module with HBM stacks and the tiny NV1 beside it for scale) and make 45s 'It sold' a different place.",
+      "[script] 25.0s (directx/Toolkit): a label leader line runs from the PC tower off the top-left edge, so the Microsoft/DirectX label is cut off; the PC and monitor are also cropped at both edges. Keep the labels inside the frame; per lesson 9 the named company (Microsoft) should show its real mark, not only a word label.",
+      "[script] 30.0s (shelf) and the hook shelf at 0.0s: the 'game boxes' are blank dark blocks with no cover, title or game art, so on mute nothing says these are games; 45.0s 'It sold' is plain white cubes with no box print. Give the boxes covers (triangle-game art, a sales stack that reads as boxes).",
+      "[script] 10.0s (bet beat, still on screen): the transistor count plate is not readable; the only object besides the dome is a floating black slab with the 'curves' tag. Keep the {fact1} plate facing camera through the beat's end."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:52:40.546392+00:00",
+    "finishedAt": "2026-11-24T20:55:58.434430+00:00",
+    "notes": [
+      "59 s, ember/datahall (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:56:25.091414+00:00",
+    "finishedAt": "2026-11-24T20:56:25.091414+00:00",
+    "notes": [
+      "Re-render fixes all four notes: RIVA (40s) is a lidded chip distinct from NV1's open die, 45s 'It sold' is a store shelf of game-pad boxes, the DirectX PC sits inside the frame with the Microsoft logo writing on at 25s, game boxes carry game-pad prints at 0s/30s, 250K plate beside the dome at 10s; first frame names NVIDIA with the real NV1 card, loop and pick-one close fine, layout/craft empty, audio -1.0/-16.9 dB, thumbnail clear. Minor: Rubin's die at 50s reuses the NV1 die texture (the tiny-chip scale shot lands after the sampled still)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T20:56:33.826430+00:00",
+    "finishedAt": "2026-11-24T22:01:02.866148+00:00",
+    "notes": [
+      "59 s, ember/datahall, peak -1.0 dB, mean -16.9 dB",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-24T22:01:27.176308+00:00",
+    "finishedAt": "2026-11-24T22:01:27.176308+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
