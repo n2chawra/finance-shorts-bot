@@ -1,25 +1,5 @@
-{
-  "notifications": [
-    {
-      "key": "render-needs-live-session",
-      "severity": "warning",
-      "title": "Disaster Desk long renders take ~7 h and die when the cloud session goes idle",
-      "detail": "L-20261122-42's full render (8 min, heavy 3D) ran at ~35 min per 40 s chunk on the 4-core container. The container was reclaimed twice mid-render when the session had no running task; finished chunks survived and the render resumed, but a scheduled Studio run that ends its turn will lose the render.",
-      "fix": "1. Either keep long Disaster Desk videos lighter on 3D (the renderer's cost is the 3D beats), or 2. have Studio keep a background session task alive for the whole render (re-armed every 2 h), or 3. move long renders to a GitHub Actions job."
-    },
-    {
-      "key": "directed-chapters-gap",
-      "severity": "info",
-      "title": "Chapters for directed long videos must be written by hand",
-      "detail": "renderer/remotion.py (render.json 'chapters') only reads beats with scene 'chapter'; directed long videos mark chapters in params.chapter, so YouTube chapters come out as only 'Intro' unless written into the description (done by hand for L-20261122-42).",
-      "fix": "1. Add a feedback note for the auditor or improver: collect params.chapter beats as chapters in renderer/remotion.py, with a test."
-    },
-    {
-      "key": "hyatt-title-disputed-call",
-      "severity": "info",
-      "title": "Hyatt long video title states a disputed phone call as fact",
-      "detail": "L-20261121-42 is titled 'The Hyatt Walkway Collapse: One Phone Call Doubled the Load'. Studio's fact reviewer failed this same wording on 22 Nov: the engineering firm disputed receiving the call, and the federal report says the rod change (not a call) doubled the load. Suggested: 'One Rod Change Doubled the Load on This Walkway'.",
-      "fix": "1. On the dashboard, edit the title of L-20261121-42 before it publishes (or in YouTube Studio after)."
-    }
-  ]
-}
+{"notifications": [
+ {"key": "titan-long-unfinished", "severity": "info", "title": "Titan long video stopped one QA round short; the full work is saved",
+  "detail": "Studio made the Titan submersible implosion video (L-20261124-41, 9 min 18 s, 79 beats). Fact review passed and every render gate passed, but QA round 2 still listed 6 picture fixes, and Studio allows only two QA rounds, so it was marked failed and not uploaded. The script, code and report pages are on branch claude/disaster-studio-c91jy3, and the longform backlog tells the next Studio run to finish it from there.",
+  "fix": "1. Nothing is needed unless you want it sooner: the next Studio run picks it up from the backlog item 2026-11-24-titan-resume. 2. To allow a third QA round on long videos, change agents/studio.md section 6 ('Two rounds at most'); the Shorts routine already allows three."}
+]}
