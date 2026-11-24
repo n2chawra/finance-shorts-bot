@@ -629,6 +629,28 @@
       "subsGained": 0,
       "subsLost": 0,
       "shares": 0
+    },
+    {
+      "day": "2026-11-21",
+      "format": "all",
+      "views": 149,
+      "engagedViews": 64,
+      "watchMinutes": 32,
+      "avgViewPct": 57.52,
+      "subsGained": 0,
+      "subsLost": 0,
+      "shares": 0
+    },
+    {
+      "day": "2026-11-21",
+      "format": "short",
+      "views": 149,
+      "engagedViews": 64,
+      "watchMinutes": 32,
+      "avgViewPct": 57.52,
+      "subsGained": 0,
+      "subsLost": 0,
+      "shares": 0
     }
   ],
   "videos": [
@@ -638,18 +660,49 @@
       "title": "How Did a Train With No One Aboard Reach Lac-Mégantic?",
       "publishAt": "2026-11-21T17:47:00.000Z",
       "durationSec": 49,
-      "views": 0,
-      "engagedRatio": null,
-      "watchHours": 0,
+      "views": 149,
+      "engagedRatio": 0.43,
+      "watchHours": 0.5,
       "shares": 0,
       "subsGained": 0,
       "subsLost": 0,
       "impressions": null,
       "ctr": null,
-      "hookHold": null,
-      "endHold": null,
-      "vsSimilarLength": null,
-      "drops": [],
+      "hookHold": 1.078,
+      "endHold": 0.25,
+      "vsSimilarLength": 0.47,
+      "drops": [
+        {
+          "at": 1.47,
+          "to": 1.109,
+          "beat": "hook",
+          "drop": 0.156,
+          "from": 1.266,
+          "line": "A train with no one aboard reached Lac-Mégantic. How?",
+          "near": "A train with no one aboard reached",
+          "scene": "directed"
+        },
+        {
+          "at": 5.39,
+          "to": 0.938,
+          "beat": "speed",
+          "drop": 0.125,
+          "from": 1.063,
+          "line": "It was doing 65 miles an hour.",
+          "near": "It was doing 65 miles an hour.",
+          "scene": "directed"
+        },
+        {
+          "at": 11.27,
+          "to": 0.672,
+          "beat": "brakes",
+          "drop": 0.109,
+          "from": 0.781,
+          "line": "He set the hand brakes. Too few.",
+          "near": "He set the hand",
+          "scene": "directed"
+        }
+      ],
       "traffic": [],
       "countries": [],
       "searches": [],
