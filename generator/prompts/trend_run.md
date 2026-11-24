@@ -43,7 +43,7 @@ anyone can relate to) is best: `topic.reach: "global"`. A one-country trend is `
 comments, not a news bulletin (a routine data release or an official announcement nobody discusses is not a trend):
 - A viral conversation in the niche, as `channels/<channel>/profile.md` describes it (who the viewers are and
   what they care about).
-- What the niche's Shorts are blowing up right now (`market-data` / `niche-data`).
+- What the niche's Shorts are blowing up right now (`git show origin/market-data:<channel>/market.json` / `niche-data`).
 - Google Trends for the niche's terms.
 
 It is worth a video only if **all** of these hold:
