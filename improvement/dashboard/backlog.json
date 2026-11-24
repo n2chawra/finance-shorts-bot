@@ -802,6 +802,34 @@
    "page": "channels",
    "found": "2026-11-23",
    "status": "open"
+  },
+  {
+   "id": "scorecard-ring-alone-phone",
+   "kind": "bug",
+   "title": "Scorecard: on a phone the on-target ring sat alone on its row and the count began with a stray '·'",
+   "detail": "The verdict row stacked (flex-col) below 640 px, so the 64 px ring took a row by itself and the wrapped '· 7 Shorts in the last 7 days' line started with its separator. The ring now stays beside its reading at every width; the separator shows only from sm up. Smoke test added.",
+   "page": "scorecard",
+   "found": "2026-11-24",
+   "status": "done",
+   "done": "2026-11-24",
+   "lastTouched": {
+    "apps/dashboard/src/app/scorecard/page.tsx": "2026-11-24",
+    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-24"
+   }
+  },
+  {
+   "id": "scorecard-no-shorts-last-week",
+   "kind": "bug",
+   "title": "Scorecard: 'no Shorts last week' shown when last week's Shorts were only waiting for numbers",
+   "detail": "WeekLine said 'no Shorts last week' whenever last week's median was empty, even with Shorts published that week whose YouTube numbers hadn't arrived. It now says \"last week's still waiting\" when there were Shorts. Smoke test added.",
+   "page": "scorecard",
+   "found": "2026-11-24",
+   "status": "done",
+   "done": "2026-11-24",
+   "lastTouched": {
+    "apps/dashboard/src/app/scorecard/page.tsx": "2026-11-24",
+    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-24"
+   }
   }
  ]
 }
