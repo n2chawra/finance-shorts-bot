@@ -53,6 +53,14 @@ export function postingPlan(format: Format, queue: Video[], posted: Video[], set
     ...posted.filter((v) => v.format === "long" && v.upload).map((v) => [v.id, Date.parse(v.upload!.publishAt)] as const),
     ...postingPlan("long", queue, posted, settings, now).filter((p) => p.video).map((p) => [p.video!.id, p.at] as const),
   ]);
+  // an upload fills only the slot nearest it, within three hours: two slots under three hours apart
+  // (India Maps' 18:17 and 20:07, 25 Nov 2026) each need their own video, as the upload job sees it
+  const slotsNear = (p: number) => [-1, 0, 1].flatMap((d) => {
+    const day = istDayOf(p + d * DAY);
+    return sorted.map((t) => Date.parse(`${day}T${t}:00+05:30`)).filter((at) => !days || days.includes(istWeekday(at)));
+  });
+  const fills = (p: number, at: number) => Math.abs(p - at) <= FILLED_WITHIN
+    && slotsNear(p).every((o) => Math.abs(p - o) >= Math.abs(p - at));
   const out: PlanSlot[] = [];
   let empty = 0;
   // one Short every N days (the 48-hour test): the days after a posted or planned Short rest
@@ -70,7 +78,7 @@ export function postingPlan(format: Format, queue: Video[], posted: Video[], set
       const at = Date.parse(`${day}T${t}:00+05:30`);
       const isTrend = trendTimes.has(t);
       if (days && !days.includes(istWeekday(at))) continue;
-      if (postedAt.some((p) => Math.abs(p - at) <= FILLED_WITHIN)) continue;
+      if (postedAt.some((p) => fills(p, at))) continue;
       if (at < now - LATE_UNTIL) {
         if (day === today && !isTrend) out.push({ at, format, state: "missed", video: null, stale: false, trend: false });
         continue;
