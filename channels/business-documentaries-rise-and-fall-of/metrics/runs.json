@@ -30,6 +30,11 @@
       "day": "2026-11-24",
       "shipped": 2,
       "failed": 0
+    },
+    {
+      "day": "2026-11-25",
+      "shipped": 0,
+      "failed": 1
     }
   ],
   "videos": [
@@ -144,6 +149,13 @@
       "template": "short_story",
       "status": "shipped",
       "reason": null
+    },
+    {
+      "id": "v-20261125-31",
+      "day": "2026-11-25",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA review failed after three rounds: the payoff poster's gold figure sat over the Pizza Hut roof sign on the Hillsboro photo (text over text); earlier rounds fixed the share chart (doc kit) and the poster's place"
     }
   ]
 }
