@@ -34,7 +34,7 @@
     {
       "day": "2026-11-25",
       "shipped": 1,
-      "failed": 1
+      "failed": 2
     }
   ],
   "videos": [
@@ -163,6 +163,13 @@
       "template": "short_story",
       "status": "shipped",
       "reason": null
+    },
+    {
+      "id": "v-20261125-33",
+      "day": "2026-11-25",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA review failed after three rounds: the cover's Airbnb logo sat in the thumbnail's blurred title band (hook logo at y 0.2); earlier rounds fixed repeated bowls, the box-name beat, the frame-0 flash (doc kit) and the loop"
     }
   ]
 }
