@@ -51,7 +51,7 @@ India outline. Inside a `Stage`/`View` (or a bare SVG):
 | `Neighbour` | a neighbouring country (China, Pakistan, Nepal, Bhutan, Bangladesh, Myanmar…) filled outside India's official outline, its whole `flag` fitted and clipped inside it (`k`, `flagK`, `lift`) (v-20261125-62) |
 | `BorderLine` | India's land border with a neighbour, a bright line drawn on as `k` goes 0 → 1, only where it runs along India's outline (v-20261125-62) |
 | `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
-| `INDIA_STATES`, `stateHi(name)` | the 36 names (English) and each one's Devanagari name |
+| `INDIA_STATES`, `stateHi(name)`, `stateNow(name)` | the 36 names (English, the data keys) and each one's Devanagari name; Kerala shows as केरलम / Keralam, its official name since 25 Aug 2026 ("Keralam" also works as a key) |
 
 `MapLabel`, `MapPin` and `MapRoute` work inside `IndiaMap` too. `IndiaSheet` (Root) is a test reel:
 `npx remotion still src/index.ts IndiaSheet out.png --frame=100`.
