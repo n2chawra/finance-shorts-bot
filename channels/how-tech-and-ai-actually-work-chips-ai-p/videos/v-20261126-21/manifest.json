@@ -1,0 +1,441 @@
+{
+  "id": "v-20261126-21",
+  "createdAt": "2026-11-25T22:12:18.410512+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why the school answer for how a wing lifts a plane is wrong, and how an A380's wing really holds it up",
+    "category": "machines",
+    "reach": "global",
+    "feed_id": "2026-11-22-how-wings-lift"
+  },
+  "title": "Why Does This Wing Lift Airbus's Superjumbo?",
+  "description": "Why does a wing actually lift Airbus's double-decker superjumbo off the ground?\nWe follow two puffs of air over an Airbus superjumbo wing in 3D, show why the top one does not wait for the bottom one, and what really pushes the wing up.\nSources: Airbus (Feb 2022), NASA Glenn Research Center.\nAnimations are simplified illustrations, not exact to scale.",
+  "hashtags": [
+    "#Shorts",
+    "#Airbus",
+    "#Superjumbo",
+    "#HowPlanesFly",
+    "#HowItWorks"
+  ],
+  "hookStyle": "myth",
+  "cta": "Equal time or turning air: which one were you taught? Comment",
+  "seed": 61473,
+  "style": {
+    "palette": "sky",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 70,
+    "look": {
+      "stage": "field",
+      "header": "sticky",
+      "holder": "sign",
+      "entrance": "draw"
+    },
+    "voice": "am_michael",
+    "arms": {
+      "length": "45-60",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "28"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why does this wing lift Airbus's superjumbo?",
+        "start": 0.3,
+        "seconds": 3.06,
+        "window": 3.5,
+        "fill": 0.874
+      },
+      {
+        "scene": "myth",
+        "text": "It isn't the reason you learned. Its wings span 79.8 metres. At school we learn air over the curved top must hurry to meet the air underneath.",
+        "start": 3.8,
+        "seconds": 10.7,
+        "window": 11.27,
+        "fill": 0.949
+      },
+      {
+        "scene": "bust",
+        "text": "Now follow two puffs of air through a wind tunnel. The top one reaches the back first. They never meet again.",
+        "start": 15.07,
+        "seconds": 7.49,
+        "window": 7.87,
+        "fill": 0.952
+      },
+      {
+        "scene": "paper",
+        "text": "And a flat paper plane, with no curved top at all, still flies. So what is a wing really doing?",
+        "start": 22.93,
+        "seconds": 6.38,
+        "window": 6.73,
+        "fill": 0.948
+      },
+      {
+        "scene": "angle",
+        "text": "It meets the air tilted up a little, and it turns the whole stream of air downward behind it.",
+        "start": 29.67,
+        "seconds": 5.76,
+        "window": 6.13,
+        "fill": 0.94
+      },
+      {
+        "scene": "pressure",
+        "text": "Air speeding over the top drops in pressure, the air below presses harder, and the wing is pushed up.",
+        "start": 35.8,
+        "seconds": 6.58,
+        "window": 7.03,
+        "fill": 0.936
+      },
+      {
+        "scene": "newton",
+        "text": "Push air down, and the air pushes the wing back up.",
+        "start": 42.83,
+        "seconds": 3.33,
+        "window": 3.67,
+        "fill": 0.907
+      },
+      {
+        "scene": "payoff",
+        "text": "At its heaviest take-off, that push holds up 575 tonnes, all hanging on air thrown down by its two wings.",
+        "start": 46.5,
+        "seconds": 8.53,
+        "window": 9.2,
+        "fill": 0.927
+      }
+    ]
+  },
+  "durationSec": 56,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -14.9,
+    "music_under_voice_db": 26.8
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after hook trim: hook now 'Why does this wing lift Airbus's superjumbo?' (cut 'double-decker', 'off the ground'); still a true, non-misleading question matching the title; other spoken lines unchanged from the passed version. Facts unchanged, confirmed on the Airbus A380 Facts and Figures PDF (Feb 2022: 575 t, 845 m2, 79.8 m, 853) and NASA Glenn foilw1; description sources and disclaimer intact."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: 'the textbook answer' now sits on the blackboard clear of the source chip (11.5-14 s), AIRBUS painted on the fuselage from frame 0 and in the payoff (lesson 9), paper-plane label inside the frame; every beat a distinct directed place with action, figures on things (79.8 m on bracket, 575 t tag counting up), hook names the subject without the answer, loop ending, layout empty, audio -1.0/-16.8 dB, 56 s, disclaimer in description.",
+        "fingerprint: b2a43d770da54ede.91e6b0a3fe3498db"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:10:37.762296+00:00",
+      "finishedAt": "2026-11-25T20:10:37.762296+00:00",
+      "notes": [
+        "plan.arms must be this channel's own {\"length\": \"45-60\", \"title\": \"figure_or_name\", \"style\": \"shot\", \"category\": \"28\"} (from `improvement.arms assign`)"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:10:42.256972+00:00",
+      "finishedAt": "2026-11-25T20:10:42.256972+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:11:17.978636+00:00",
+      "finishedAt": "2026-11-25T20:11:17.978636+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:14:27.809441+00:00",
+      "finishedAt": "2026-11-25T20:14:27.809441+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:15:05.513850+00:00",
+      "finishedAt": "2026-11-25T20:15:05.513850+00:00",
+      "notes": [
+        "beat 'hook'.params.place[0] contains a typed number; use a placeholder: 'an Airbus A380 rolling down a runway at dusk, seen along its left wing'",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:15:13.225628+00:00",
+      "finishedAt": "2026-11-25T20:15:13.225628+00:00",
+      "notes": [
+        "beat 'hook'.say contains a typed number; use a placeholder: \"Why does this wing lift an Airbus A380 off the ground? It isn't the reason you learned.\"",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:15:26.317687+00:00",
+      "finishedAt": "2026-11-25T20:15:26.317687+00:00",
+      "notes": [
+        "beat 'hook'.events.airbus: no word 'Airbus' in this beat's spoken line",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:15:31.914162+00:00",
+      "finishedAt": "2026-11-25T20:15:31.914162+00:00",
+      "notes": [
+        "title mentions '380', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "description mentions '380', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "description mentions '380', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "hashtags mentions '380', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:15:41.649082+00:00",
+      "finishedAt": "2026-11-25T20:15:41.649082+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:15:42.706330+00:00",
+      "finishedAt": "2026-11-25T20:15:42.706330+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:16:46.916858+00:00",
+      "finishedAt": "2026-11-25T20:16:46.916858+00:00",
+      "notes": [
+        "payoff beat: 'that push holds up {fact1} tonnes, all hanging on air thrown down by this wing' (and its last camera settling on the single left wing) says one wing carries the full 575 t; the A380's two wings together (with some help from the fuselage) carry it, each roughly half. This channel's expert audience will correct it. Fix the line to 'these wings' / 'its two wings' (the hook's 'this wing' as the type of wing is fine). Facts otherwise confirmed: 575 t MTOW, 845 m2 reference wing area, 79.8 m wingspan, 853 max seats all shown in the Airbus A380 Facts and Figures PDF (Feb 2022, fetched); NASA Glenn foilw1 page confirms equal transit is wrong, the top flow reaches the trailing edge first, and flat-plate paper planes and symmetric airfoils lift.",
+        "note for the director (verify list): tag the wind-tunnel and blackboard streamline drawings 'illustration' on screen; description 'Sources: Airbus, NASA Glenn Research Center (Feb 2022)' attaches the Feb 2022 date to NASA too, better 'Airbus (Feb 2022), NASA Glenn Research Center'."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:18:07.290594+00:00",
+      "finishedAt": "2026-11-25T20:18:07.290594+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:18:08.259234+00:00",
+      "finishedAt": "2026-11-25T20:18:08.259234+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:18:24.197742+00:00",
+      "finishedAt": "2026-11-25T20:18:24.197742+00:00",
+      "notes": [
+        "Re-review: payoff now 'all hanging on air thrown down by its two wings' (fixes the one-wing overstatement); sources line 'Airbus (Feb 2022), NASA Glenn Research Center.'; disclaimer ends description. Facts unchanged and confirmed on the Airbus A380 Facts and Figures PDF (575 t MTOW, 845 m2, 79.8 m, 853 seats); NASA Glenn foilw1 confirms the equal-transit bust, top flow first, flat plates lift. Note: director must put the on-screen 'illustration' tag on the airflow drawings (verify list)."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:27:04.680088+00:00",
+      "finishedAt": "2026-11-25T20:27:04.680088+00:00",
+      "notes": [
+        "Re-review after length fix: 'It isn't the reason you learned.' moved from hook to the start of myth; meaning unchanged, still a correct myth framing. Payoff 'its two wings', sources line and disclaimer as passed before. Beat code: 'illustration' label on Bust and Angle airflow drawings (verify list met); on-screen labels (first, no meeting, lower/higher pressure, air turned down, tilted up, flat wing no curve, metres tip to tip, TONNES) are accurate; figures come from params.fig only. Facts unchanged, confirmed on the Airbus A380 Facts and Figures PDF (Feb 2022) and NASA Glenn foilw1."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:26:40.136762+00:00",
+      "finishedAt": "2026-11-25T20:30:02.384796+00:00",
+      "notes": [
+        "fingerprint: d604a7733e8dc946.7d1622cf8ad0c26a",
+        "2.1 s with nothing new on screen in beat 'hook' (at most 1.8 s): add an action on the phrase being said there",
+        "5 of 13 stills are mostly empty background (at 10 s, 25 s, 30 s, 45 s, 50 s): fill the frame (a set, the cast big, money as a thing)",
+        "the hook runs 5.5 s; keep it to 4 s or less",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:32:32.547244+00:00",
+      "finishedAt": "2026-11-25T20:35:21.053252+00:00",
+      "notes": [
+        "fingerprint: 541427cf94be59c4.29c7bc253ef8d4fd",
+        "1.9 s with nothing new on screen in beat 'myth' (at most 1.8 s): add an action on the phrase being said there",
+        "2 of 13 stills are mostly empty background (at 10 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:36:59.145599+00:00",
+      "finishedAt": "2026-11-25T20:39:41.496057+00:00",
+      "notes": [
+        "fingerprint: b2a43d770da54ede.2321b3c176b52171",
+        "56 s, sky/circuit (preview only)",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T20:41:51.323671+00:00",
+      "finishedAt": "2026-11-25T20:41:51.323671+00:00",
+      "notes": [
+        "[script] 12.5 s (myth beat, blackboard after 'learn'): the 'the textbook answer' Label3D in Myth.tsx (at [-0.4, BY+0.6, 0.05], offset [0,0.7,0]) sits at the very top of the board, right under the 'Data: Airbus · Feb 2022' source chip, which covers 'book answer' (text over text). Move the label down onto the chalk board (e.g. beside the chalk wing, y well below ~300 px) or end the source chip before the cut to the blackboard.",
+        "[script] lesson 9 (a named company shows its real mark): Airbus is named in the hook, title and payoff, but no still shows the Airbus logo or wordmark (0 s runway wing, 3 s side view, 50 s fuselage with the 575 tonnes tag, tail fins plain blue). Fetch a freely licensed Airbus wordmark from Wikimedia Commons (python -m generator.images fetch) and put it on the fuselage or tail in the hook and/or payoff."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:41:58.596105+00:00",
+      "finishedAt": "2026-11-25T20:41:58.596105+00:00",
+      "notes": [
+        "Re-review after hook trim: hook now 'Why does this wing lift Airbus's superjumbo?' (cut 'double-decker', 'off the ground'); still a true, non-misleading question matching the title; other spoken lines unchanged from the passed version. Facts unchanged, confirmed on the Airbus A380 Facts and Figures PDF (Feb 2022: 575 t, 845 m2, 79.8 m, 853) and NASA Glenn foilw1; description sources and disclaimer intact."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T20:59:59.563659+00:00",
+      "finishedAt": "2026-11-25T21:02:34.001311+00:00",
+      "notes": [
+        "fingerprint: b2a43d770da54ede.2147f9729438cbd2",
+        "56 s, sky/circuit (preview only)",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T21:03:15.601461+00:00",
+      "finishedAt": "2026-11-25T21:05:48.675448+00:00",
+      "notes": [
+        "fingerprint: b2a43d770da54ede.91e6b0a3fe3498db",
+        "56 s, sky/circuit (preview only)",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T21:07:01.065407+00:00",
+      "finishedAt": "2026-11-25T21:07:01.065407+00:00",
+      "notes": [
+        "Re-review after fixes: 'the textbook answer' now sits on the blackboard clear of the source chip (11.5-14 s), AIRBUS painted on the fuselage from frame 0 and in the payoff (lesson 9), paper-plane label inside the frame; every beat a distinct directed place with action, figures on things (79.8 m on bracket, 575 t tag counting up), hook names the subject without the answer, loop ending, layout empty, audio -1.0/-16.8 dB, 56 s, disclaimer in description.",
+        "fingerprint: b2a43d770da54ede.91e6b0a3fe3498db"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T21:55:37.144282+00:00",
+      "finishedAt": "2026-11-25T22:12:10.103354+00:00",
+      "notes": [
+        "56 s, sky/circuit, peak -1.0 dB, mean -16.8 dB",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-25T22:12:18.410829+00:00",
+      "finishedAt": "2026-11-25T22:12:18.410829+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261126-21",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261126-21"
+  }
+}
