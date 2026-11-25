@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, ChevronLeft, ChevronRight, Eye, Heart, Trophy, Upload } from "lucide-react";
+import { CalendarDays, ChevronLeft, ChevronRight, Eye, Heart, Trophy, Upload, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
@@ -91,14 +91,19 @@ export default function CalendarPage() {
   const published = (k: string) => (byDay.map.get(k) ?? []).filter((e) => e.kind === "published");
   const dayViews = (k: string) => published(k).reduce((a, e) => a + (e.video.totals?.views ?? 0), 0);
   const dayLikes = (k: string) => published(k).reduce((a, e) => a + (e.video.totals?.likes ?? 0), 0);
+  // subscribers YouTube Analytics credits to the videos published on a day (Analytics runs 2–3 days behind)
+  const daySubs = (k: string) => published(k).reduce((a, e) => a + (e.video.totals?.subsGained ?? 0), 0);
+  const plus = (n: number) => `${n > 0 ? "+" : ""}${fmtCompact(n)}`;
   const monthDays = Array.from({ length: days }, (_, i) => key(ym.y, ym.m, i + 1));
   const monthViews = monthDays.reduce((a, k) => a + dayViews(k), 0);
+  const monthLikes = monthDays.reduce((a, k) => a + dayLikes(k), 0);
+  const monthSubs = monthDays.reduce((a, k) => a + daySubs(k), 0);
   const monthVideos = monthDays.reduce((a, k) => a + published(k).length, 0);
   const bestDay = monthDays.reduce<string | null>((b, k) => (dayViews(k) > (b ? dayViews(b) : 0) ? k : b), null);
   const weeks = Array.from({ length: cells.length / 7 }, (_, w) => cells.slice(w * 7, w * 7 + 7));
   const dayTip = (k: string) => {
     const n = published(k).length, v = dayViews(k);
-    return n ? `${fmtNum(v)} views and ${fmtNum(dayLikes(k))} likes from ${n} video${n === 1 ? "" : "s"} published this day` : "No video published this day";
+    return n ? `${fmtNum(v)} views, ${fmtNum(dayLikes(k))} likes and ${plus(daySubs(k))} subscribers from ${n} video${n === 1 ? "" : "s"} published this day` : "No video published this day";
   };
 
   return (
@@ -112,8 +117,9 @@ export default function CalendarPage() {
         </div>
       </PageHeader>
 
-      <div data-testid="month-views" className="mb-5 grid gap-4 sm:grid-cols-3">
-        <Stat label={`Views · ${monthName}`} icon={Eye} accent="sky" value={fmtNum(monthViews)} sub="lifetime views of the videos published this month" />
+      <div data-testid="month-views" className="mb-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <Stat label={`Views · ${monthName}`} icon={Eye} accent="sky" value={fmtNum(monthViews)} sub={`${fmtNum(monthLikes)} likes · lifetime, videos published this month`} />
+        <Stat label={`Subscribers · ${monthName}`} icon={UserPlus} accent="grape" value={plus(monthSubs)} sub="gained from this month's videos (Analytics, 2–3 days behind)" />
         <Stat label="Videos published" icon={Upload} accent="mint" value={String(monthVideos)} sub={monthVideos ? `${fmtCompact(monthViews / monthVideos)} views each on average` : "none yet this month"} />
         <Stat label="Best day" icon={Trophy} accent="sun" value={bestDay ? fmtCompact(dayViews(bestDay)) : "—"}
           sub={bestDay ? new Intl.DateTimeFormat("en-IN", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }).format(new Date(`${bestDay}T00:00:00Z`)) : "no views yet"} />
@@ -179,11 +185,13 @@ export default function CalendarPage() {
             }), (() => {
               const total = row.reduce<number>((a, d) => a + (d === null ? 0 : dayViews(key(ym.y, ym.m, d))), 0);
               const likes = row.reduce<number>((a, d) => a + (d === null ? 0 : dayLikes(key(ym.y, ym.m, d))), 0);
+              const subs = row.reduce<number>((a, d) => a + (d === null ? 0 : daySubs(key(ym.y, ym.m, d))), 0);
               const n = row.reduce<number>((a, d) => a + (d === null ? 0 : published(key(ym.y, ym.m, d)).length), 0);
               return (
                 <div key={`w${w}`} data-testid="week-views" className={`flex flex-col items-center justify-center gap-0.5 bg-surface-2 px-1 text-center ${w < weeks.length - 1 ? "border-b border-line" : ""}`}>
                   <span className="text-[13px] font-semibold tabular-nums text-ink md:text-[15px]">{total ? fmtCompact(total) : "—"}</span>
                   {n > 0 && <span data-testid="week-likes" className="flex items-center gap-0.5 text-[11px] font-medium tabular-nums text-ink2 md:text-[12px]"><Heart aria-label="likes" className="size-3 text-critical" />{fmtCompact(likes)}</span>}
+                  {n > 0 && <span data-testid="week-subs" title="subscribers gained from this week's videos" className="flex items-center gap-0.5 text-[11px] font-medium tabular-nums text-ink2 md:text-[12px]"><UserPlus aria-label="subscribers" className="size-3 text-info-text" />{plus(subs)}</span>}
                 </div>
               );
             })()])}
