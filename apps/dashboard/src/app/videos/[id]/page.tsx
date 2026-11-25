@@ -16,6 +16,7 @@ import { useQueue, useSettings, useThumbWinner, useVideo, useVideoAction, useVid
 import type { VideoAction, VideoDetail } from "@/lib/schemas";
 
 import { EditDetails, MarkUploaded, YouTubeDetails } from "./publish-tools";
+import { ScriptView } from "./script-view";
 import { EditorBadge, EditorNote, FeedbackPanel, ReasonDialog } from "@/components/feedback";
 import { OriginCard } from "@/components/origin";
 import { VideoAnalytics } from "@/components/video-analytics";
@@ -31,18 +32,6 @@ function voiceLabel(voice: string): string {
   const gender = code[1] === "f" ? "female" : code[1] === "m" ? "male" : null;
   const parts = [VOICE_ACCENTS[code[0]!], gender].filter(Boolean);
   return parts.length ? `${titleCase(name)} (${parts.join(", ")})` : titleCase(name);
-}
-
-/** Split a script into its numeric/setup inputs and its on-screen text lines. */
-function scriptParts(script: unknown): { inputs: [string, string][]; lines: [string, string][] } {
-  if (!script || typeof script !== "object") return { inputs: [], lines: [] };
-  const { text, template: _t, ...rest } = script as Record<string, unknown>;
-  void _t;
-  const show = (v: unknown) => (typeof v === "object" ? JSON.stringify(v) : String(v));
-  return {
-    inputs: Object.entries(rest).map(([k, v]) => [titleCase(k), show(v)]),
-    lines: text && typeof text === "object" ? Object.entries(text as Record<string, unknown>).map(([k, v]) => [k, String(v)]) : [],
-  };
 }
 
 const THUMB_KIND: Record<string, string> = { "thumbnail.png": "thumbnail", "thumbnail-b.png": "thumbnail-b", "thumbnail-c.png": "thumbnail-c" };
@@ -116,7 +105,6 @@ export default function VideoPage() {
       onError: (e) => toast(e.message, "error"),
     });
   };
-  const { inputs, lines } = scriptParts(v.script);
   const total = v.steps.reduce((a, s) => a + s.durationSec, 0);
   const long = v.format === "long";
   const planned = v.status === "queued" && queue.data && settings.data
@@ -276,26 +264,7 @@ export default function VideoPage() {
           </Tabs.Content>
 
           <Tabs.Content value="script" className="outline-none">
-            <Card>
-              {inputs.length === 0 && lines.length === 0 ? <Empty>No script stored.</Empty> : (
-                <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
-                  <div>
-                    <h3 className="eyebrow inline-block bg-tint-brand px-2 py-0.5 text-ink rounded-md">Inputs · the code computes every number from these</h3>
-                    <dl className="mt-2">{inputs.map(([k, val]) => <Row key={k} k={k}><span className="break-words font-mono text-xs">{val}</span></Row>)}</dl>
-                  </div>
-                  <div>
-                    <h3 className="eyebrow inline-block bg-tint-pink px-2 py-0.5 text-ink rounded-md">On-screen text, in order</h3>
-                    <ol className="mt-2">
-                      {lines.map(([k, line]) => (
-                        <li key={k} className="flex flex-wrap items-baseline justify-between gap-x-3 border-b border-line py-2 text-[13.5px] font-medium last:border-0">
-                          <span>{line}</span><span className="text-xs font-medium text-muted">{k}</span>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-              )}
-            </Card>
+            <Card><ScriptView script={v.script} /></Card>
           </Tabs.Content>
         </Tabs.Root>
       </div>
