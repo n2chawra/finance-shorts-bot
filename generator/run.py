@@ -37,7 +37,7 @@ from renderer.engine.formatting import CURRENCIES
 from improvement import arms
 from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, event_gaps
 
-from . import editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
+from . import credits, editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
 from . import channels, crosschannel, pack, planrules, promo
@@ -90,6 +90,14 @@ def media_problems(script: dict, vid: str, root: Path = ROOT, stage: bool = True
     except (MediaError, OSError) as e:
         return [f"licence: {p}" for p in str(e).splitlines() if p.strip()]
     return []
+
+
+def media_credit_lines(script: dict, vid: str, root: Path = ROOT) -> list[str]:
+    """The credit lines of the licensed media the video uses (none: empty)."""
+    from .media import library
+    if not library.script_assets(script, vid, root):
+        return []
+    return library.credit_lines(channels.current(), script, vid, root)
 
 
 def media_credits(description: str, script: dict, vid: str, root: Path = ROOT) -> str:
@@ -712,8 +720,10 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     d = _dir(vid, root)
     plan, script, report = _read(d / "plan.json"), _read(d / "script.json"), _read(d / "render.json")
     plan = numbers.fill_plan(plan, script)     # {placeholders} in the title and description become Python's figures
-    plan["description"] = images.with_credits(plan["description"], script, vid, root)   # real photos are credited (CC BY/BY-SA)
-    plan["description"] = media_credits(plan["description"], script, vid, root)   # licensed footage, photos and filings too
+    # real photos (CC BY/BY-SA), licensed footage, photos and filings are credited, fitted to YouTube's 5000 bytes
+    base = plan["description"]
+    lines = images.credit_lines(script, vid, root) + media_credit_lines(script, vid, root)
+    plan["description"] = credits.fit(base, list(dict.fromkeys(lines)))
     steps = json.loads((d / "run.json").read_text(encoding="utf-8"))
     checks = _latest_checks(steps)
     blockers = [f"{c} has not passed" for c in CHECKERS if checks.get(c, {}).get("status") != "ok"]

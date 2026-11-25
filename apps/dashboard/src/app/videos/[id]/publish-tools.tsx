@@ -43,7 +43,7 @@ function Field({ icon: Icon, label, count, max, actions, children }: {
 }) {
   const over = count !== undefined && max !== undefined && count > max;
   return (
-    <div className="border border-line bg-surface-2 p-3">
+    <div className="min-w-0 border border-line bg-surface-2 p-3">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
         <span className="flex items-center gap-1.5 text-xs font-semibold text-ink2">
           <Icon aria-hidden className="size-3.5" />{label}
@@ -70,13 +70,13 @@ export function YouTubeDetails({ v }: { v: Video }) {
     <Card title="Copy into YouTube Studio" icon={MonitorPlay} description="Title, description and tags, ready to paste when you upload by hand">
       <div className="flex flex-col gap-3">
         <Field icon={Type} label="Title" count={v.title.length} max={100} actions={<CopyButton text={v.title} />}>
-          <p className="text-base font-semibold leading-snug">{v.title}</p>
+          <p className="text-base font-semibold leading-snug [overflow-wrap:anywhere]">{v.title}</p>
         </Field>
         <Field icon={AlignLeft} label="Description" count={description.length} max={5000} actions={<CopyButton text={description} />}>
-          <p className="whitespace-pre-wrap text-sm leading-relaxed text-ink">{v.description}</p>
+          <p className="whitespace-pre-wrap text-sm leading-relaxed text-ink [overflow-wrap:anywhere]">{v.description}</p>
           {missing && (
             <>
-              <p className="mt-2 text-sm text-ink font-semibold">{missing}</p>
+              <p className="mt-2 text-sm text-ink font-semibold [overflow-wrap:anywhere]">{missing}</p>
               <p className="mt-2 text-[11px] text-muted">Copy includes the hashtags at the end.</p>
             </>
           )}

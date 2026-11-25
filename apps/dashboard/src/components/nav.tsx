@@ -339,7 +339,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <BellLink />
           </div>
         </header>
-        <main className="mx-auto w-full max-w-[1360px] flex-1 px-4 pb-24 pt-7 md:px-8 md:pb-14 md:pt-8">{children}</main>
+        <main className="mx-auto w-full min-w-0 max-w-[1360px] flex-1 overflow-x-clip px-4 pb-24 pt-7 md:px-8 md:pb-14 md:pt-8">{children}</main>
       </div>
 
       <BottomBar onMore={() => setDrawer(true)} />
