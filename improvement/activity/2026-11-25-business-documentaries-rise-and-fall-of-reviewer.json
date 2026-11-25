@@ -1,0 +1,19 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-25T15:38:34Z",
+  "finishedAt": "2026-11-25T15:41:15Z",
+  "summary": "Watched 4 Craze & Crash Shorts with retention plus the newest one; added one lesson about the second beat.",
+  "decision": "acted",
+  "why": "Every Short loses the most at its second beat (19-32% at 5.3-5.5 s). The worst were Tamagotchi (-32%, a head-office photo and a launch date) and Stanley (-19%, a black-and-white museum case and a walk-back line; stayed 29.2% against a 51.4% median).",
+  "findings": [
+    {"title": "Second beat is where viewers leave", "detail": "Tamagotchi -32% at 5.4 s, Toyota -23.5% at 5.5 s, Nokia -22.2% at 5.3 s, Stanley -19% at 5.5 s; no later drop passes 10.5%."},
+    {"title": "Stanley holds worst", "detail": "Stayed 29.2% against the 51.4% median; beat 2 swapped the viral cup for old black-and-white flasks while saying it barely sold."},
+    {"title": "Juicero repeats the mistake", "detail": "Beat 2 holds one stock photo of chopped vegetables for about 6 s; no retention yet, check Friday."}
+  ],
+  "changes": [
+    {"title": "Lesson added: the second beat stays on the thing from frame 1", "detail": "channels/business-documentaries-rise-and-fall-of/prompts/lessons.md #1", "branch": "agent/reviewer/2026-11-25/business-documentaries-rise-and-fall-of"}
+  ],
+  "nextCheck": "2026-11-28",
+  "links": [{"label": "Report", "url": "channels/business-documentaries-rise-and-fall-of/review/2026-11-25.md"}]
+}
