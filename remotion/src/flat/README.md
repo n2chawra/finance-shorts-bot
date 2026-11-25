@@ -46,6 +46,8 @@ India outline. Inside a `Stage`/`View` (or a bare SVG):
 | `StateTag` | a pill pinned to a state (its Devanagari name by default, or `text`), popping in with `k`; kept inside the frame, its stem pointing at the state |
 | `frameOf(focus, w, h, pad)`, `lerpFrame(a, b, k)` | a framing as `{center, scale}` and the camera move between two; pass it as `IndiaMap frame` |
 | `Plate` | an Indian number plate (white, ink border, blue IND strip, the state's letters) pinned to a state, dropping in with `k`, ringed by `glow`; letters only; `maxY` fades one that would fall in the captions' band |
+| `StateUnion` | several states drawn as one, the map before a split (`names`, one `fill`, no line inside, an ink outline round the outside; `k`, `lift`, `trace`); a child of `IndiaMap` (v-20261125-61) |
+| `CutLine` | the border a split draws: only the stretch `state` shares with `parent`, a dashed red line running on as `k` goes 0 → 1 (v-20261125-61) |
 | `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
 | `INDIA_STATES`, `stateHi(name)` | the 36 names (English) and each one's Devanagari name |
 

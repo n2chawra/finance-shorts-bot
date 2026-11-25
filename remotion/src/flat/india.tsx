@@ -273,3 +273,67 @@ export const Plate: React.FC<{ state?: string; at?: [number, number]; text: stri
     </g>
   );
 };
+
+/** Several states drawn as one, the way the map looked before a split (2026-11-25, for v-20261125-61: Madhya Pradesh
+ * with Chhattisgarh, Uttar Pradesh with Uttaranchal, Bihar with Jharkhand before November 2000): one fill with no line
+ * inside, an ink outline round the outside only; `k` fades it in, `lift` raises it off the sheet, `trace` runs a bright
+ * line round its outer border. Put it as a child of `IndiaMap` (it draws over the states). */
+export const StateUnion: React.FC<{ names: string[]; fill: string; k?: number; lift?: number; trace?: number; traceColor?: string }> = ({
+  names, fill, k = 1, lift = 0, trace = 0, traceColor = "#ffd84a",
+}) => {
+  const ctx = React.useContext(MapCtx);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  if (!ctx || k <= 0) return null;
+  const ds = names.map(byName).filter((s): s is Shape => !!s).map((s) => ctx.path(s) ?? "");
+  const scale = ctx.proj.scale() / 1500;
+  const sw = Math.max(3, STROKE * 0.6 * Math.min(1.4, scale));
+  const up = clamp(lift, 0) * 16, tr = clamp(trace, 0), tw = STROKE * 1.8;
+  return (
+    <g opacity={clamp(k)}>
+      <defs>
+        <mask id={`u${uid}`}>
+          <rect x={-5000} y={-5000} width={10000} height={10000} fill="#fff" />
+          {ds.map((d, i) => <path key={i} d={d} fill="#000" />)}
+        </mask>
+      </defs>
+      {up > 0 ? <g opacity={0.32 * clamp(lift, 0)} transform={`translate(${7 * clamp(lift, 0)} ${9 + up * 0.4})`}>{ds.map((d, i) => <path key={i} d={d} fill={INK} />)}</g> : null}
+      <g transform={`translate(0 ${-up})`}>
+        {ds.map((d, i) => <path key={`f${i}`} d={d} fill={fill} stroke={fill} strokeWidth={sw * 1.6} strokeLinejoin="round" />)}
+        <g mask={`url(#u${uid})`}>
+          {ds.map((d, i) => <path key={`o${i}`} d={d} fill="none" stroke={INK} strokeWidth={sw * 2} strokeLinejoin="round" />)}
+          {tr > 0 ? (
+            <g data-probe="skip">
+              {ds.map((d, i) => <path key={`t${i}`} d={d} fill="none" stroke={traceColor} strokeWidth={tw * 2.4} strokeLinejoin="round" strokeLinecap="round"
+                pathLength={1} strokeDasharray={tr < 1 ? `${tr} 1` : undefined} />)}
+            </g>
+          ) : null}
+        </g>
+      </g>
+    </g>
+  );
+};
+
+/** The line a split draws: the border between `state` and `parent` (only the stretch they share), as a dashed
+ * line that runs on as `k` goes 0 -> 1, like a cut being marked on paper (2026-11-25, for v-20261125-61). */
+export const CutLine: React.FC<{ state: string; parent: string; k: number; color?: string; width?: number }> = ({
+  state, parent, k, color = "#e8453c", width = 14,
+}) => {
+  const ctx = React.useContext(MapCtx);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  const s = byName(state), par = byName(parent);
+  if (!ctx || !s || !par || k <= 0) return null;
+  const d = ctx.path(s) ?? "", dp = ctx.path(par) ?? "";
+  const q = clamp(k);
+  return (
+    <g data-probe="skip">
+      <defs>
+        <clipPath id={`c${uid}`}><path d={dp} /></clipPath>
+        <mask id={`m${uid}`}><path d={d} fill="none" stroke="#fff" strokeWidth={width * 4} pathLength={1} strokeDasharray={q < 1 ? `${q} 1` : undefined} /></mask>
+      </defs>
+      <g clipPath={`url(#c${uid})`} mask={`url(#m${uid})`}>
+        <path d={d} fill="none" stroke="#ffffff" strokeWidth={width * 2 + 6} strokeLinejoin="round" opacity={0.9} />
+        <path d={d} fill="none" stroke={color} strokeWidth={width * 2} strokeLinejoin="round" strokeDasharray={`${width * 1.6} ${width * 1.1}`} />
+      </g>
+    </g>
+  );
+};
