@@ -1,0 +1,1176 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 40817,
+ "story": "business_war_short",
+ "shape": "versus",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "ledger",
+  "key": "G",
+  "bpm": 78
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "myth",
+ "cta": "The red roof or the app: which one do you order from? Comment",
+ "feed_id": "2026-11-20-dominos-passed-pizza-hut-short",
+ "facts": [
+  {
+   "label": "Pizza Hut's share of the US pizza market in 2015",
+   "value": 16.9,
+   "unit": "percent",
+   "as_of": "2015-12-31",
+   "source": "Restaurant Dive",
+   "url": "https://restaurantdive.com/news/yum-brands-sells-pizza-hut-27-billion/807829/",
+   "latest": true,
+   "checked": "2026-11-20"
+  },
+  {
+   "label": "Pizza Hut's share of the US pizza market, first three quarters of 2025",
+   "value": 12.1,
+   "unit": "percent",
+   "as_of": "2025-09-30",
+   "source": "Restaurant Dive",
+   "url": "https://restaurantdive.com/news/yum-brands-sells-pizza-hut-27-billion/807829/",
+   "latest": true,
+   "checked": "2026-11-20"
+  },
+  {
+   "label": "Domino's share of the US pizza market in 2015",
+   "value": 14.2,
+   "unit": "percent",
+   "as_of": "2015-12-31",
+   "source": "Restaurant Dive",
+   "url": "https://restaurantdive.com/news/yum-brands-sells-pizza-hut-27-billion/807829/",
+   "latest": true,
+   "checked": "2026-11-20"
+  },
+  {
+   "label": "Domino's share of the US pizza market, first three quarters of 2025",
+   "value": 23.4,
+   "unit": "percent",
+   "as_of": "2025-09-30",
+   "source": "Restaurant Dive",
+   "url": "https://restaurantdive.com/news/yum-brands-sells-pizza-hut-27-billion/807829/",
+   "latest": true,
+   "checked": "2026-11-20"
+  },
+  {
+   "label": "What Yum Brands sold all of Pizza Hut for, in two deals",
+   "value": 2.7,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-06-16",
+   "source": "Restaurant Dive",
+   "url": "https://restaurantdive.com/news/yum-brands-sells-pizza-hut-27-billion/807829/",
+   "latest": true,
+   "checked": "2026-11-20"
+  },
+  {
+   "label": "Underperforming US Pizza Hut restaurants Yum decided to close",
+   "value": 250,
+   "unit": "count",
+   "as_of": "2026-02-04",
+   "source": "Restaurant Dive",
+   "url": "https://restaurantdive.com/news/yum-brands-sells-pizza-hut-27-billion/807829/",
+   "latest": true,
+   "checked": "2026-11-20"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 1.2,
+  "words": "Pizza Hut *dethroned*",
+  "angle": "story",
+  "unique": "Pizza Hut vs Domino's covers in the niche show the two logos facing off; ours shows the Pizza Hut box under the share it held"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "In twenty fifteen, Pizza Hut sold {fact1} of America's pizza.",
+   "events": {
+    "pizza": {
+     "word": "Pizza"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "americas": {
+     "word": "America's"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Pizza Hut box on a kitchen counter"
+    ],
+    "things": [
+     "Pizza Hut box",
+     "Pizza Hut logo"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sold",
+      "size": "close"
+     },
+     {
+      "at": "americas",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pizza",
+      "what": "the Pizza Hut logo drops in"
+     },
+     {
+      "at": "sold",
+      "what": "a label: the share"
+     },
+     {
+      "at": "americas",
+      "what": "the box keeps pushing in"
+     }
+    ],
+    "fig": {
+     "share": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2019-02-26-22-49-25-a-box-containing-a-pizza-hut-450afe45.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "warm"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pizza-hut-1998-f99f4143.png",
+      "aspect": 1.27,
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "size": 0.5,
+      "tilt": -4,
+      "at": "pizza"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "sub": "of US pizza sales",
+      "at": "sold"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "swap",
+   "role": "promise",
+   "say": "Domino's sold less. Ten years later, the two have traded places, and it isn't close. So how did the leader lose?",
+   "events": {
+    "ten": {
+     "word": "Ten"
+    },
+    "later": {
+     "word": "later"
+    },
+    "traded": {
+     "word": "traded"
+    },
+    "places": {
+     "word": "places"
+    },
+    "close": {
+     "word": "close"
+    },
+    "leader": {
+     "word": "leader"
+    },
+    "lose": {
+     "word": "lose"
+    },
+    "dominos": {
+     "word": "Domino's"
+    },
+    "less": {
+     "word": "less"
+    }
+   },
+   "params": {
+    "place": [
+     "a Domino's box on a wooden table",
+     "Pizza Hut and Domino's side by side"
+    ],
+    "things": [
+     "Domino's box",
+     "Pizza Hut restaurant",
+     "Domino's store"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "ten",
+      "size": "wide"
+     },
+     {
+      "at": "traded",
+      "size": "medium"
+     },
+     {
+      "at": "leader",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "less",
+      "what": "a stamp: NUMBER TWO on the Domino's box"
+     },
+     {
+      "at": "ten",
+      "what": "Pizza Hut's side slides in"
+     },
+     {
+      "at": "later",
+      "what": "Domino's side slides in"
+     },
+     {
+      "at": "traded",
+      "what": "Domino's wins the split"
+     },
+     {
+      "at": "lose",
+      "what": "a stamp: HOW?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2019-02-07-19-47-41-a-box-containing-a-small-dom-624de47f.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "ten",
+      "enter": "cut"
+     },
+     {
+      "kind": "split",
+      "left": {
+       "name": "Pizza Hut",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pizza-hut-athens-oh-usa-61457106.jpg",
+       "fit": "cover",
+       "sub": "the leader"
+      },
+      "right": {
+       "name": "Domino's",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-domino-s-andersons-bay-9-dec-2025-2bb2c8e4.jpg",
+       "fit": "cover",
+       "sub": "number two"
+      },
+      "leftAt": "ten",
+      "rightAt": "later",
+      "win": "right",
+      "winAt": "traded",
+      "at": "ten"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Number two",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 5,
+      "at": "less",
+      "out": "ten"
+     },
+     {
+      "kind": "stamp",
+      "text": "How?",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.22
+      ],
+      "tilt": -5,
+      "at": "lose"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "roofs",
+   "role": "build",
+   "say": "Pizza Hut built its name on red-roof restaurants, where families sat down to eat.",
+   "events": {
+    "built": {
+     "word": "built"
+    },
+    "red-roof": {
+     "word": "red-roof"
+    },
+    "restaurants": {
+     "word": "restaurants"
+    },
+    "families": {
+     "word": "families"
+    },
+    "sat": {
+     "word": "sat"
+    },
+    "eat": {
+     "word": "eat"
+    }
+   },
+   "params": {
+    "place": [
+     "a red-roof Pizza Hut on a small-town road",
+     "inside a Pizza Hut dining room"
+    ],
+    "things": [
+     "red roof",
+     "dining booths"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "restaurants",
+      "size": "medium"
+     },
+     {
+      "at": "sat",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "red-roof",
+      "what": "an arrow points at the red roof"
+     },
+     {
+      "at": "families",
+      "what": "cut inside the dining room"
+     },
+     {
+      "at": "sat",
+      "what": "a stamp: DINE IN"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pizza-hut-winnfield-1daaf7ac.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.16,
+      "grade": "doc",
+      "out": "families"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-interior-of-pizza-hut-in-central-helsinki-8ab73814.jpg",
+      "focus": [
+       0.65,
+       0.6
+      ],
+      "move": "drift-left",
+      "amount": 0.12,
+      "grade": "warm",
+      "at": "families"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "arrow",
+      "from": [
+       0.25,
+       0.25
+      ],
+      "to": [
+       0.45,
+       0.42
+      ],
+      "label": "The red roof",
+      "at": "red-roof",
+      "out": "families"
+     },
+     {
+      "kind": "stamp",
+      "text": "Dine in",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.22
+      ],
+      "tilt": -4,
+      "at": "sat"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "doorstep",
+   "role": "build",
+   "say": "Domino's built for the doorstep instead: small shops, fast cars, delivery bikes.",
+   "events": {
+    "doorstep": {
+     "word": "doorstep"
+    },
+    "instead": {
+     "word": "instead"
+    },
+    "shops": {
+     "word": "shops"
+    },
+    "cars": {
+     "word": "cars"
+    },
+    "bikes": {
+     "word": "bikes"
+    }
+   },
+   "params": {
+    "place": [
+     "a Domino's shop front",
+     "a Domino's car on a Berlin street",
+     "Domino's delivery bikes in Bristol"
+    ],
+    "things": [
+     "Domino's shop",
+     "delivery car",
+     "delivery bikes"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "cars",
+      "size": "close"
+     },
+     {
+      "at": "bikes",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "doorstep",
+      "what": "the Domino's logo drops in"
+     },
+     {
+      "at": "shops",
+      "what": "the shop print lands"
+     },
+     {
+      "at": "cars",
+      "what": "the car print lands"
+     },
+     {
+      "at": "bikes",
+      "what": "the bikes print lands"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-domino-s-pizza-on-capital-circle-ne-tallahassee-32a8e640.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "caption": "Small shops"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-berlin-domino-s-pizza-smart-548e566b.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "caption": "Fast cars",
+        "at": "cars"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-domino-s-delivery-bikes-on-marsh-street-bristol-2bed62b6.jpg",
+        "focus": [
+         0.4,
+         0.5
+        ],
+        "caption": "Delivery bikes",
+        "at": "bikes"
+       }
+      ]
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-domino-s-pizza-logo-aedf4d5e.png",
+      "aspect": 1.0,
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "size": 0.34,
+      "tilt": 4,
+      "at": "doorstep",
+      "out": "shops"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Built for delivery",
+      "sub": "Domino's",
+      "at": "instead",
+      "out": "cars"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "passed",
+   "role": "build",
+   "say": "In twenty seventeen, Domino's passed Pizza Hut to become America's biggest pizza chain.",
+   "events": {
+    "passed": {
+     "word": "passed"
+    },
+    "pizza": {
+     "word": "Pizza"
+    },
+    "become": {
+     "word": "become"
+    },
+    "biggest": {
+     "word": "biggest"
+    },
+    "chain": {
+     "word": "chain"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "passed"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Domino's store at night"
+    ],
+    "things": [
+     "Domino's store",
+     "date"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "passed",
+      "size": "medium"
+     },
+     {
+      "at": "biggest",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pizza",
+      "what": "the store pushes in"
+     },
+     {
+      "at": "passed",
+      "what": "the year slams in"
+     },
+     {
+      "at": "biggest",
+      "what": "a stamp: ON TOP"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-domino-s-pizza-45867145952-25215513.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.16,
+      "grade": "night"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2017-06-30",
+      "sub": "Domino's takes the lead",
+      "pos": "top",
+      "at": "passed"
+     },
+     {
+      "kind": "stamp",
+      "text": "On top",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.42
+      ],
+      "tilt": -6,
+      "at": "biggest"
+     },
+     {
+      "kind": "source",
+      "form": "REPORT",
+      "text": "Restaurant Dive",
+      "at": "become"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "shares",
+   "role": "build",
+   "say": "By twenty twenty-five, Domino's sold {fact4} of America's pizza. Pizza Hut was down to {fact2}.",
+   "events": {
+    "by": {
+     "word": "By"
+    },
+    "dominos": {
+     "word": "Domino's"
+    },
+    "americas": {
+     "word": "America's"
+    },
+    "pizza": {
+     "word": "Pizza"
+    },
+    "down": {
+     "word": "down"
+    }
+   },
+   "params": {
+    "place": [
+     "the US pizza market"
+    ],
+    "things": [
+     "a Pizza Hut in Lake Park",
+     "Pizza Hut's share bar",
+     "Domino's share bar"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pizza",
+      "size": "wide"
+     },
+     {
+      "at": "down",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "by",
+      "what": "the bars grow"
+     },
+     {
+      "at": "dominos",
+      "what": "Domino's bar towers"
+     },
+     {
+      "at": "down",
+      "what": "Pizza Hut's bar sinks, leaving a ghost"
+     }
+    ],
+    "fig": {
+     "was": "{fact1}",
+     "now": "{fact2}",
+     "dom": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pizza-hut-lake-park-6d4ac32a.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-left",
+      "amount": 0.1,
+      "grade": "cold",
+      "dim": 0.75
+     },
+     {
+      "kind": "sink",
+      "name": "Pizza Hut",
+      "values": [
+       16.9,
+       12.1
+      ],
+      "figs": [
+       "was",
+       "now"
+      ],
+      "tag": "Down",
+      "title": "Share of US pizza sales",
+      "sub": "then and now",
+      "others": [
+       {
+        "name": "Domino's",
+        "value": 23.4,
+        "figure": "dom"
+       }
+      ],
+      "drawAt": "by",
+      "sinkAt": "down",
+      "plate": false
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "closing",
+   "role": "turn",
+   "say": "This February, its owner, Yum Brands, said it would close {fact6} of its weakest American restaurants. So what was the rest worth?",
+   "events": {
+    "february": {
+     "word": "February"
+    },
+    "owner": {
+     "word": "owner"
+    },
+    "yum": {
+     "word": "Yum"
+    },
+    "close": {
+     "word": "close"
+    },
+    "weakest": {
+     "word": "weakest"
+    },
+    "restaurants": {
+     "word": "restaurants"
+    },
+    "worth": {
+     "word": "worth"
+    }
+   },
+   "params": {
+    "place": [
+     "a Pizza Hut by a highway",
+     "the Restaurant Dive report on Pizza Hut",
+     "an old Pizza Hut building in Florida, now something else"
+    ],
+    "things": [
+     "Pizza Hut sign",
+     "report page",
+     "former Pizza Hut"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "close",
+      "size": "medium"
+     },
+     {
+      "at": "restaurants",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "february",
+      "what": "the date slams in"
+     },
+     {
+      "at": "owner",
+      "what": "a lower third: Yum Brands"
+     },
+     {
+      "at": "close",
+      "what": "cut to the report page, pushing in"
+     },
+     {
+      "at": "weakest",
+      "what": "the highlighter swipes the line"
+     },
+     {
+      "at": "restaurants",
+      "what": "cut to an old Pizza Hut, a stamp: CLOSING"
+     },
+     {
+      "at": "worth",
+      "what": "the picture keeps drifting"
+     }
+    ],
+    "fig": {
+     "shut": "{fact6}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pizza-hut-9359015664-9025c2b5.jpg",
+      "focus": [
+       0.3,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "cold",
+      "out": "close"
+     },
+     {
+      "kind": "document",
+      "header": {
+       "form": "Report",
+       "company": "Restaurant Dive",
+       "title": "Yum Brands and Pizza Hut"
+      },
+      "lines": [
+       "Pizza Hut's owner, Yum Brands,",
+       "decided to close underperforming",
+       "U.S. Pizza Hut restaurants,",
+       "the company said in February."
+      ],
+      "hi": 1,
+      "phrase": "decided to close underperforming",
+      "pushAt": "close",
+      "markAt": "weakest",
+      "source": {
+       "form": "REPORT",
+       "text": "Restaurant Dive",
+       "date": "2026-02-04"
+      },
+      "out": "restaurants",
+      "push": 2.0,
+      "tilt": 4,
+      "stamp": "Closing",
+      "at": "close"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-former-pizza-hut-lakeland-florida-c41dbf93.jpg",
+      "focus": [
+       0.45,
+       0.55
+      ],
+      "move": "drift-right",
+      "amount": 0.12,
+      "grade": "cold",
+      "at": "restaurants"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2026-02-04",
+      "sub": "Yum Brands' plan",
+      "pos": "top",
+      "at": "february",
+      "out": "yum"
+     },
+     {
+      "kind": "lowerThird",
+      "name": "Yum Brands",
+      "role": "owner of Pizza Hut",
+      "at": "yum",
+      "out": "close"
+     },
+     {
+      "kind": "stamp",
+      "text": "Closing",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.16
+      ],
+      "tilt": -6,
+      "at": "restaurants"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "sold",
+   "role": "payoff",
+   "say": "Then Yum agreed to sell all of Pizza Hut, the chain that once led America, in two deals, for {fact5}.",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "agreed": {
+     "word": "agreed"
+    },
+    "sell": {
+     "word": "sell"
+    },
+    "chain": {
+     "word": "chain"
+    },
+    "led": {
+     "word": "led"
+    },
+    "deals": {
+     "word": "deals"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "agreed"
+    }
+   ],
+   "params": {
+    "place": [
+     "the poster over a red-roof Pizza Hut in Hillsboro, Oregon"
+    ],
+    "things": [
+     "Pizza Hut in Hillsboro",
+     "the sale price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "chain",
+      "size": "wide"
+     },
+     {
+      "at": "deals",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "then",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "sell",
+      "what": "the figure settles"
+     },
+     {
+      "at": "led",
+      "what": "the subline settles"
+     },
+     {
+      "at": "deals",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "price": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pizza-hut-hillsboro-oregon-3a3c0cbd.jpg",
+      "focus": [
+       0.56,
+       0.42
+      ],
+      "date": "2026-06-16",
+      "title": "Pizza Hut",
+      "figure": "price",
+      "sub": "the whole chain, in two deals",
+      "enter": "cut"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Red roof or doorstep: which one do you order from? Because not long ago,",
+   "events": {
+    "red": {
+     "word": "Red"
+    },
+    "doorstep": {
+     "word": "doorstep"
+    },
+    "order": {
+     "word": "order"
+    },
+    "because": {
+     "word": "because"
+    },
+    "ago": {
+     "word": "ago"
+    }
+   },
+   "params": {
+    "place": [
+     "a closed red-roof Pizza Hut in Indiana",
+     "the Pizza Hut box from the first frame"
+    ],
+    "things": [
+     "closed red-roof Pizza Hut",
+     "Pizza Hut box"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "order",
+      "size": "close"
+     },
+     {
+      "at": "ago",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "red",
+      "what": "a stamp: RED ROOF?"
+     },
+     {
+      "at": "doorstep",
+      "what": "a stamp: DOORSTEP?"
+     },
+     {
+      "at": "order",
+      "what": "push in on the closed red roof"
+     },
+     {
+      "at": "ago",
+      "what": "back to the Pizza Hut box from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-closed-old-style-pizza-hut-elkhart-indiana-117b1aa4.jpg",
+      "focus": [
+       0.55,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "ago"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2019-02-26-22-49-25-a-box-containing-a-pizza-hut-450afe45.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "warm",
+      "at": "ago"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Red roof?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.2
+      ],
+      "tilt": -4,
+      "at": "red",
+      "out": "doorstep"
+     },
+     {
+      "kind": "stamp",
+      "text": "Doorstep?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.2
+      ],
+      "tilt": 4,
+      "at": "doorstep",
+      "out": "order"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}
