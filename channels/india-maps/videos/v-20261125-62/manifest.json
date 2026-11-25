@@ -1,0 +1,306 @@
+{
+  "id": "v-20261125-62",
+  "createdAt": "2026-11-25T04:14:29.315017+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Which neighbour shares India's longest land border",
+    "category": "india-and-world",
+    "reach": "local",
+    "reach_reason": {
+      "kind": "demand"
+    },
+    "feed_id": "2026-11-24-longest-border",
+    "map_answer": "India's land borders traced one by one on the map, the longest running round Bangladesh on three sides"
+  },
+  "title": "China ya Pakistan? India ki sabse lambi border kiske saath? 🇮🇳",
+  "description": "India ki sabse lambi zameeni seema kis padosi desh se lagti hai? China? Pakistan? Jawab map par.\nSources: Lok Sabha answer, Ministry of Home Affairs (Nov 2026).\nनक्शे सरल किए गए हैं; भारत की सीमाएँ भारत के आधिकारिक नक्शे के अनुसार। Maps simplified; India's borders as on India's official map. Facts from the sources named in the description.",
+  "hashtags": [
+    "#Shorts",
+    "#IndiaMap",
+    "#China",
+    "#Pakistan",
+    "#Border"
+  ],
+  "hookStyle": "question",
+  "cta": "Aapke state se kaunsa desh laga hai? Comment",
+  "seed": 70413,
+  "style": {
+    "palette": "forest",
+    "genre": "tanpura",
+    "key": "E",
+    "bpm": 100,
+    "look": {
+      "stage": "night",
+      "header": "neon",
+      "holder": "sign",
+      "entrance": "pop"
+    },
+    "voice": "hm_omega",
+    "arms": {
+      "length": "25-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "चीन या पाकिस्तान, भारत की सबसे लंबी सीमा किसके साथ है?",
+        "start": 0.3,
+        "seconds": 2.98,
+        "window": 3.63,
+        "fill": 0.821
+      },
+      {
+        "scene": "promise",
+        "text": "जवाब, इन दोनों में से कोई नहीं।",
+        "start": 3.93,
+        "seconds": 1.56,
+        "window": 2.23,
+        "fill": 0.7
+      },
+      {
+        "scene": "total",
+        "text": "भारत की पूरी ज़मीनी सीमा है 15,106.7 km। पर सबसे लंबा हिस्सा किसका?",
+        "start": 6.17,
+        "seconds": 5.67,
+        "window": 6.33,
+        "fill": 0.896
+      },
+      {
+        "scene": "bhutan",
+        "text": "भूटान के साथ 699 km।",
+        "start": 12.5,
+        "seconds": 2.36,
+        "window": 3.03,
+        "fill": 0.779
+      },
+      {
+        "scene": "two",
+        "text": "म्यांमार से 1,643 km, और नेपाल के साथ 1,751 km।",
+        "start": 15.53,
+        "seconds": 5.29,
+        "window": 5.93,
+        "fill": 0.892
+      },
+      {
+        "scene": "turn",
+        "text": "इसका जवाब वो देश है, जिसे भारत तीन तरफ़ से घेरे हुए है।",
+        "start": 21.47,
+        "seconds": 2.88,
+        "window": 3.53,
+        "fill": 0.816
+      },
+      {
+        "scene": "payoff",
+        "text": "बांग्लादेश, पूरे 4,096.7 km।",
+        "start": 25.0,
+        "seconds": 3.01,
+        "window": 3.67,
+        "fill": 0.82
+      },
+      {
+        "scene": "loop",
+        "text": "आपके स्टेट से कौन-सा देश लगता है? कमेंट कीजिए। और बताइए,",
+        "start": 28.67,
+        "seconds": 3.19,
+        "window": 3.87,
+        "fill": 0.824
+      }
+    ]
+  },
+  "durationSec": 33,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.1,
+    "music_under_voice_db": 32.9
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "hm_omega",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "All 5 sourced facts (total 15,106.7 km; Bangladesh 4,096.7; Nepal 1,751; Myanmar 1,643; Bhutan 699 km) confirmed by web search on the official Lok Sabha/MHA answer itself (eparlib.sansad.in PDF returned 503 to fetch; search result from that source shows all figures, with China 3,488 and Pakistan 3,323 summing to the total); Bangladesh 4,096.7 km reaffirmed in a 2025 Lok Sabha reply (newsonair.gov.in, deshgujarat), so still current. Bangladesh longest, neither China nor Pakistan, India surrounding Bangladesh on three sides: all true. No verify list on the topic. Map rules, tone, field rules OK; disclaimer ends the description. Note: description's '(Nov 2026)' is the access month; the Lok Sabha answer itself dates from 2011."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Directed map Short, 7 places (India/China-Pak, whole border, Bhutan, Myanmar, Nepal, blank Bay-of-Bengal country ringed by 3 arrows, Bangladesh), every neighbour in its flag with a length tag on its border, total on a road sign, 4,096.7 km sign at payoff; reads on mute, hook names subject and holds answer, loops into 'China ya Pakistan', disclaimer in description, 33 s, peak -1 dB; as full as v-20261125-61"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-25T03:54:49.538236+00:00",
+      "finishedAt": "2026-11-25T03:54:49.538236+00:00",
+      "notes": [
+        "music genre 'tanpura' was used by the previous video",
+        "hook style 'question' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T03:55:49.058511+00:00",
+      "finishedAt": "2026-11-25T03:55:49.058511+00:00",
+      "notes": [
+        "beat 'payoff'.events.bd: no word 'बांग्लादेश:' in this beat's spoken line",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:55:56.657952+00:00",
+      "finishedAt": "2026-11-25T03:55:56.657952+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:56:04.072727+00:00",
+      "finishedAt": "2026-11-25T03:56:04.072727+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:57:01.690252+00:00",
+      "finishedAt": "2026-11-25T03:57:01.690252+00:00",
+      "notes": [
+        "All 5 sourced facts (total 15,106.7 km; Bangladesh 4,096.7; Nepal 1,751; Myanmar 1,643; Bhutan 699 km) confirmed by web search on the official Lok Sabha/MHA answer itself (eparlib.sansad.in PDF returned 503 to fetch; search result from that source shows all figures, with China 3,488 and Pakistan 3,323 summing to the total); Bangladesh 4,096.7 km reaffirmed in a 2025 Lok Sabha reply (newsonair.gov.in, deshgujarat), so still current. Bangladesh longest, neither China nor Pakistan, India surrounding Bangladesh on three sides: all true. No verify list on the topic. Map rules, tone, field rules OK; disclaimer ends the description. Note: description's '(Nov 2026)' is the access month; the Lok Sabha answer itself dates from 2011."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:57:48.341714+00:00",
+      "finishedAt": "2026-11-25T03:57:48.341714+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T04:04:24.950652+00:00",
+      "finishedAt": "2026-11-25T04:05:20.383371+00:00",
+      "notes": [
+        "text 'नेपाल' at 19.4 s is 41.9 px, below the 44 px minimum",
+        "2.6 s with nothing new on screen in beat 'total' (at most 1.8 s): add an action on the phrase being said there",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "warning: beat 'total' runs 6.3 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T04:05:56.514250+00:00",
+      "finishedAt": "2026-11-25T04:06:41.533193+00:00",
+      "notes": [
+        "2.3 s with nothing new on screen in beat 'bhutan' (at most 1.8 s): add an action on the phrase being said there",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "warning: beat 'total' runs 6.3 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T04:07:14.033118+00:00",
+      "finishedAt": "2026-11-25T04:07:59.293866+00:00",
+      "notes": [
+        "33 s, forest/tanpura (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "warning: beat 'total' runs 6.3 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T04:08:42.044049+00:00",
+      "finishedAt": "2026-11-25T04:09:27.972111+00:00",
+      "notes": [
+        "33 s, forest/tanpura (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "warning: beat 'total' runs 6.3 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T04:10:44.949341+00:00",
+      "finishedAt": "2026-11-25T04:10:44.949341+00:00",
+      "notes": [
+        "Directed map Short, 7 places (India/China-Pak, whole border, Bhutan, Myanmar, Nepal, blank Bay-of-Bengal country ringed by 3 arrows, Bangladesh), every neighbour in its flag with a length tag on its border, total on a road sign, 4,096.7 km sign at payoff; reads on mute, hook names subject and holds answer, loops into 'China ya Pakistan', disclaimer in description, 33 s, peak -1 dB; as full as v-20261125-61"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T04:10:56.830494+00:00",
+      "finishedAt": "2026-11-25T04:14:25.514944+00:00",
+      "notes": [
+        "33 s, forest/tanpura, peak -1.0 dB, mean -16.3 dB",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "warning: beat 'total' runs 6.3 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-25T04:14:29.315422+00:00",
+      "finishedAt": "2026-11-25T04:14:29.315422+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261125-62",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261125-62"
+  }
+}

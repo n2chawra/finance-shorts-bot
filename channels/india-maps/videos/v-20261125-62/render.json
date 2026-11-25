@@ -1,0 +1,117 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 70413,
+  "duration_sec": 33,
+  "tempo": 1.2,
+  "style": {
+    "palette": "forest",
+    "genre": "tanpura",
+    "key": "E",
+    "bpm": 100,
+    "look": {
+      "stage": "night",
+      "header": "neon",
+      "holder": "sign",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "चीन या पाकिस्तान, भारत की सबसे लंबी सीमा किसके साथ है?",
+        "start": 0.3,
+        "seconds": 2.98,
+        "window": 3.63,
+        "fill": 0.821
+      },
+      {
+        "scene": "promise",
+        "text": "जवाब, इन दोनों में से कोई नहीं।",
+        "start": 3.93,
+        "seconds": 1.56,
+        "window": 2.23,
+        "fill": 0.7
+      },
+      {
+        "scene": "total",
+        "text": "भारत की पूरी ज़मीनी सीमा है 15,106.7 km। पर सबसे लंबा हिस्सा किसका?",
+        "start": 6.17,
+        "seconds": 5.67,
+        "window": 6.33,
+        "fill": 0.896
+      },
+      {
+        "scene": "bhutan",
+        "text": "भूटान के साथ 699 km।",
+        "start": 12.5,
+        "seconds": 2.36,
+        "window": 3.03,
+        "fill": 0.779
+      },
+      {
+        "scene": "two",
+        "text": "म्यांमार से 1,643 km, और नेपाल के साथ 1,751 km।",
+        "start": 15.53,
+        "seconds": 5.29,
+        "window": 5.93,
+        "fill": 0.892
+      },
+      {
+        "scene": "turn",
+        "text": "इसका जवाब वो देश है, जिसे भारत तीन तरफ़ से घेरे हुए है।",
+        "start": 21.47,
+        "seconds": 2.88,
+        "window": 3.53,
+        "fill": 0.816
+      },
+      {
+        "scene": "payoff",
+        "text": "बांग्लादेश, पूरे 4,096.7 km।",
+        "start": 25.0,
+        "seconds": 3.01,
+        "window": 3.67,
+        "fill": 0.82
+      },
+      {
+        "scene": "loop",
+        "text": "आपके स्टेट से कौन-सा देश लगता है? कमेंट कीजिए। और बताइए,",
+        "start": 28.67,
+        "seconds": 3.19,
+        "window": 3.87,
+        "fill": 0.824
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.1,
+    "music_under_voice_db": 32.9
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 5.041,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
