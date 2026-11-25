@@ -15,7 +15,7 @@ groups the last two weeks' failed checks with the fix for each. Avoid every item
 seconds. It builds the timeline on an estimated voice and runs every check that needs no pixels: the
 story spine, the picture following the words, gaps, shot sizes, devices, props against recent
 videos, the thumbnail spec, length and your own code (`tsc`). Fix until it prints `ok`, and only then
-spend a minute on `render --preview` and a QA round. Timing findings are on the estimated voice, so
+spend a minute on `render --preview` and a QA round; the full render comes only after QA passes those stills (it refuses before). Timing findings are on the estimated voice, so
 fix any beat near a limit as well.
 
 ## Numbers and words (number check)

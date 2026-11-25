@@ -273,9 +273,10 @@ def test_long_story_renders_with_remotion_and_fails_a_frozen_picture(root: Path,
     plan = make_plan(template="long_story")
     put(root, "plan.json", plan)
     put(root, "script.json", {"template": "long_story", "format": "long", "seed": 1, "beats": []})
-    problems = run.render(VID, root=root)
+    assert run.render(VID, root=root)[0].startswith("full render refused: QA has not passed")   # stills and QA first
+    problems = run.render(VID, root=root, force=True)
     assert seen["template"] == "long_story"
-    assert problems == ["12 s with nothing moving (limit 4 s)"]
+    assert problems == ["liveliness: 12 s with nothing moving (limit 4 s)"]
 
 
 def test_fail_writes_manifest_but_not_history(root: Path) -> None:

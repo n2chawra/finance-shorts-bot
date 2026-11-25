@@ -203,8 +203,10 @@ Rendering the video is the slow part, so QA looks at the stills **before** it is
    nohup python -m generator.run render <id> --channel <channel> > /tmp/render-<id>.log 2>&1 &
    ```
    A Short takes 2–5 minutes; check `tail -3 /tmp/render-<id>.log` every minute or two. It must
-   print `ok`. A `FAIL:` here is the motion gate (`liveliness`): fix the beat it names and render
-   again. A re-render that only changed the sound reuses the picture already drawn, and the
+   print `ok`. A `FAIL:` here is the motion gate (`liveliness:`): fix the beat it names and render
+   again.
+
+   **The full render refuses to start until QA has passed the stills of exactly this script and beat code** (owner, 2026-11-25; `generator/run.py` `full_render_problems`). After any fix, whether from QA, the fact reviewer or a `FAIL:` line, render the stills again and have QA pass them before the full render. The one exception is a fix to the beat code alone after a full render failed only on the motion gate (`liveliness:` lines): render again straight away. `ship` refuses a video whose script or plan changed after QA passed. A re-render that only changed the sound reuses the picture already drawn, and the
    Remotion bundle is built once per run.
 
 ## 6. QA review (a subagent with fresh context)

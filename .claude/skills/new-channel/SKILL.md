@@ -194,7 +194,7 @@ Made last, by the channel's real pipeline, so they are exactly what the channel 
 stage `python -m generator.run state --channel <slug>` answers `"sample": true` and asks for sample N of
 2 Shorts (owner, 2026-11-18: two are enough; and 1 long video when `research/counts.json` advises long videos); in any other setup stage it
 answers `paused`. Run the normal generation routine (`generator/prompts/routine.md`) with `--channel <slug>`
-on every command: plan → script → number check → fact review → director → render → QA → ship. Ship marks
+on every command: plan → script → number check → fact review → director → stills → QA on the stills → full render → ship (the full render refuses before QA passes the stills). Ship marks
 the manifest `sample: true`; ingest queues it, and the publisher never uploads for a channel that isn't
 active, so nothing goes out before Launch.
 
@@ -213,7 +213,7 @@ python -m generator.likeness <video id> --channel <slug>
 
 writes `videos/<id>/likeness.json`: shot length, shots in the first 3 s, words a minute, the first
 figure and the length against the references' `style.json`, each within 25% or not. Shot length and
-pace must pass; if they don't, fix the beats (the director) and re-render before review. When every
+pace must pass; if they don't, fix the beats (the director), render the stills, QA them, then render the video again before review. When every
 sample is made and measured: `setup.json` → `{"stage": "review", "note": "Samples ready for your review"}`,
 commit and push. Ingest puts the samples, their likeness, `advice.md` and `counts.json` on the
 Channels page's Launch review.

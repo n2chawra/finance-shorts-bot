@@ -295,10 +295,12 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
 5. **Fact review (separate agent, fresh context)**: checks every claim and sourced fact, the field's
    rules, tone and disclaimer.
 5b. **Director (agent)**: every beat becomes a directed shot on the channel's kit, then `lint`.
-6. **Render (code)**: `python -m generator.run render <id>` → voice + timeline, Remotion render, mp4 +
-   thumbnail + preview contact sheet, gates.
-7. **QA review (separate agent)**: contact sheet + audio levels + lessons. Rejects overlaps, cut-off or
-   tiny text, empty scenes, unreadable contrast, a repeated lesson, length outside the settings.
+6. **Stills (code)**: `python -m generator.run render <id> --preview` → voice + timeline, contact sheet,
+   thumbnail, layout and length gates.
+7. **QA review (separate agent)** on the stills: contact sheet + audio levels + lessons. Rejects overlaps, cut-off or
+   tiny text, empty scenes, unreadable contrast, a repeated lesson, length outside the settings. Every fix goes
+   back to step 6. **Then the full render** (`render <id>`, mp4 + motion gate): it refuses until QA has passed the
+   stills of exactly this script and beat code (owner, 2026-11-25), and ship refuses a script changed after QA.
 8. **Ship**: manifest (title, description with the disclaimer and photo credits, hashtags, style,
    template, topic), history, commit to `main`, mp4 as a Release asset. Every step is logged as an
    AgentRun entry in the manifest.

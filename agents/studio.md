@@ -187,6 +187,8 @@ first long video was rendered three times, twice for problems the stills already
    `FAIL:` here is the motion gate (a beat with no visible movement): fix that beat and render
    again; a re-render that only changed the sound reuses the picture.
 
+   **The full render refuses to start until QA has passed the stills of exactly this script and beat code** (owner, 2026-11-25; `generator/run.py` `full_render_problems`). After any fix, whether from QA, the fact reviewer or a `FAIL:` line, render the stills again and have QA pass them before the full render. The one exception is a fix to the beat code alone after a full render failed only on the motion gate (`liveliness:` lines): render again straight away. `ship` refuses a video whose script or plan changed after QA passed.
+
 ## 6. QA review (a subagent with fresh context)
 Spawn a second subagent: the video id, and the instruction to read `generator/prompts/qa_reviewer.md`
 and follow it exactly, on the stills from step 5.1. For a long video it must also look at
