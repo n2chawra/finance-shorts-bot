@@ -676,50 +676,6 @@
       ]
     },
     {
-      "id": "2026-11-17-qatar-desert-rich",
-      "format": "short",
-      "title": "Why is Qatar, a small desert country, so rich?",
-      "category": "resources",
-      "kind": "evergreen",
-      "priority": "normal",
-      "stories": [
-        "place_resources"
-      ],
-      "currency": "USD",
-      "reach": "global",
-      "demand": {
-        "title": "Why Singapore Is One of the Richest Countries on Earth",
-        "views": 0,
-        "url": ""
-      },
-      "hook": "Why is one of the smallest countries in the desert one of the richest?",
-      "templates": [
-        "any"
-      ],
-      "angle": "Qatar sits on one gas field holding about an eighth of the world's natural gas.",
-      "why_now": "First topics for the channel, from the setup research (families.json: the two core kinds).",
-      "facts": [
-        {
-          "label": "Qatar's share of the world's proven natural gas reserves",
-          "value": 12.4,
-          "unit": "percent",
-          "as_of": "2025-01-01",
-          "source": "US EIA (citing BP)",
-          "url": "https://measuredworld.com/countries/qatar/resources/natural-gas-reserves"
-        },
-        {
-          "label": "Qatar's proven natural gas reserves, trillion cubic metres",
-          "value": 24.7,
-          "unit": "count",
-          "as_of": "2025-01-01",
-          "source": "US EIA (citing BP)",
-          "url": "https://measuredworld.com/countries/qatar/resources/natural-gas-reserves"
-        }
-      ],
-      "status": "rejected",
-      "reason": "research 2026-11-25: its two facts come from an aggregator (measuredworld.com) and are over a year old; EIA's Qatar page gives no national reserves figure, and Singapore already holds the place_resources slot"
-    },
-    {
       "format": "short",
       "kind": "evergreen",
       "currency": "USD",
@@ -2766,6 +2722,271 @@
       ],
       "sources": [
         "https://oceanservice.noaa.gov/facts/highestpoint.html"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-26",
+      "expires": "2027-02-24",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-26-what-if-mediterranean-dried-up",
+      "priority": "high",
+      "title": "What if the Mediterranean dried up? It already did once",
+      "category": "seas",
+      "stories": [
+        "what_if_world"
+      ],
+      "demand": {
+        "title": "What If Mediterranean Sea Becomes Lake??",
+        "views": 6900000,
+        "url": "https://youtube.com/shorts/yOcOkexajMk",
+        "channel": "World Ji Ke",
+        "channelSubs": 92100,
+        "outlier": 74.9
+      },
+      "hook": "Close one gap of water at Gibraltar, and the whole Mediterranean drains away. It has happened before.",
+      "angle": "About 5.96 million years ago the gap at Gibraltar closed; the sea lost about 3,300 cubic km a year to evaporation and its 3.7 million cubic km could empty in about a thousand years, leaving a basin kilometres deep. It refilled 5.33 million years ago, in a flood of about 100 million cubic metres a second. Today the strait is 14.2 km across at its narrowest.",
+      "why_now": "The what-if with the biggest demand I found tonight: 6.9M views on a 92.1K channel (75x), and 136K/110K/72K on others; ours adds the twist that it really happened. Feed has only 3 open what_if_world topics against 11 why_shaped.",
+      "map_answer": "the Mediterranean on the map with Gibraltar pinched shut, the blue draining down to a white salt floor between Spain and Morocco, the coasts of Italy, Greece and Egypt left on cliffs above it, then the Atlantic pouring back through the gap",
+      "facts": [
+        {
+          "label": "Millions of years ago the gap at Gibraltar closed and the Mediterranean began to dry",
+          "value": 5.96,
+          "unit": "count_million",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Messinian salinity crisis",
+          "url": "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+          "fixed": true
+        },
+        {
+          "label": "Millions of years ago the Atlantic broke back in and the crisis ended",
+          "value": 5.33,
+          "unit": "count_million",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Messinian salinity crisis",
+          "url": "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+          "fixed": true
+        },
+        {
+          "label": "Cubic kilometres of water lost to evaporation each year once the sea was cut off",
+          "value": 3300,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Messinian salinity crisis",
+          "url": "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+          "fixed": true
+        },
+        {
+          "label": "Cubic kilometres of water in the Mediterranean basin, millions",
+          "value": 3.7,
+          "unit": "count_million",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Messinian salinity crisis",
+          "url": "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+          "fixed": true
+        },
+        {
+          "label": "Width of the Strait of Gibraltar at its narrowest, in kilometres",
+          "value": 14.2,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Strait of Gibraltar",
+          "url": "https://en.wikipedia.org/wiki/Strait_of_Gibraltar",
+          "fixed": true
+        },
+        {
+          "label": "Peak flow of the Zanclean flood, in millions of cubic metres a second",
+          "value": 100,
+          "unit": "count_million",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Zanclean flood",
+          "url": "https://en.wikipedia.org/wiki/Zanclean_flood",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "How fully the basin dried is debated (the page says so): say 'nearly dried out'",
+        "The Zanclean flood is a theory with estimated, modelled flow rates: attribute it as an estimate",
+        "Months-to-two-years refill time is an estimate",
+        "Say the what-if is a thought experiment; the drying is real history"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+        "https://en.wikipedia.org/wiki/Zanclean_flood",
+        "https://en.wikipedia.org/wiki/Strait_of_Gibraltar",
+        "https://www.nationalgeographic.com/science/article/mediterranean-nearly-dried-up-cataclysmic-flood-revived-it"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-26",
+      "expires": "2027-02-24",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-26-what-if-pangaea-came-back",
+      "priority": "high",
+      "title": "What if every continent joined back into Pangaea?",
+      "category": "supercontinents",
+      "stories": [
+        "what_if_world"
+      ],
+      "demand": {
+        "title": "What If Pangea Came Back? 🌍",
+        "views": 12000000,
+        "url": "https://youtube.com/shorts/ovyoQMhGsYU",
+        "channel": "Geo All Day",
+        "channelSubs": 392000,
+        "outlier": 30.6
+      },
+      "hook": "Every country on this map once sat in one piece of land. What if it all slid back together?",
+      "angle": "Pangaea formed about 335 million years ago and began breaking apart about 175 million years ago. Geologists' models say a new supercontinent, Pangaea Proxima, could form within the next 250 million years, the Atlantic stopping its widening in about 125 million. Which of today's countries would end up neighbours, and which would be thousands of km from any sea?",
+      "why_now": "12M views on a 392K channel (31x), plus 4.5M and 3.4M (Vector_Fox, 83.4K subs, 41x) on the same idea: the strongest what_if_world demand in the niche. A new category (supercontinents).",
+      "map_answer": "today's political map with country borders kept, the continents sliding on the spoken words until they lock into one landmass; then a pin on a country now locked deep inland",
+      "facts": [
+        {
+          "label": "Millions of years ago Pangaea came together",
+          "value": 335,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Pangaea",
+          "url": "https://en.wikipedia.org/wiki/Pangaea",
+          "fixed": true
+        },
+        {
+          "label": "Millions of years ago Pangaea began to break apart",
+          "value": 175,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Pangaea",
+          "url": "https://en.wikipedia.org/wiki/Pangaea",
+          "fixed": true
+        },
+        {
+          "label": "Millions of years within which Pangaea Proxima could form",
+          "value": 250,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Pangaea Proxima",
+          "url": "https://en.wikipedia.org/wiki/Pangaea_Proxima",
+          "fixed": true
+        },
+        {
+          "label": "Millions of years from now the Atlantic is predicted to stop widening",
+          "value": 125,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Pangaea Proxima",
+          "url": "https://en.wikipedia.org/wiki/Pangaea_Proxima",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "Pangaea Proxima is one hypothesis (Christopher Scotese's); other models exist (Amasia, Novopangaea): say 'one model'",
+        "Which modern countries end up neighbours must follow the model's map, or be framed as 'roughly'",
+        "Thought experiment framing; tectonic dates are approximate"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Pangaea",
+        "https://en.wikipedia.org/wiki/Pangaea_Proxima"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-26",
+      "expires": "2027-02-24",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-26-what-if-bering-bridge",
+      "priority": "normal",
+      "title": "What if a bridge joined Russia and America?",
+      "category": "bridges",
+      "stories": [
+        "what_if_world"
+      ],
+      "demand": {
+        "title": "Bridge between Russia and America across the Bering Strait/ArchieMC #shorts",
+        "views": 2900000,
+        "url": "https://youtube.com/shorts/D7IknygWHKs",
+        "channel": "ArchieMC",
+        "channelSubs": 534000,
+        "outlier": 5.4
+      },
+      "hook": "Russia and America are neighbours. Here, you could almost see one from the other.",
+      "angle": "The Bering Strait is 82 km wide and only 30 to 50 m deep; the two Diomede islands in the middle are 3.8 km apart, one Russian and one American, on either side of the date line. A 103 km tunnel was proposed in 2011 at about 65 billion dollars. What would the drive from London to New York look like?",
+      "why_now": "2.9M views on a 534K channel (5.4x), 138K and 106K on 'why no bridge' angles. A what_if_world on a bridges category the feed doesn't have, and it balances the feed (3 what-ifs open against 11 why_shaped).",
+      "map_answer": "the globe turned to the top, Alaska and Chukotka close, the two Diomede islands with a date-line label between them, then a bridge drawing itself across and a car route running from Europe to America",
+      "facts": [
+        {
+          "label": "Width of the Bering Strait at its narrowest, in kilometres",
+          "value": 82,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Bering Strait",
+          "url": "https://en.wikipedia.org/wiki/Bering_Strait",
+          "fixed": true
+        },
+        {
+          "label": "Greatest depth of the Bering Strait, in metres",
+          "value": 90,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Bering Strait",
+          "url": "https://en.wikipedia.org/wiki/Bering_Strait",
+          "fixed": true
+        },
+        {
+          "label": "Distance between the two Diomede islands at their closest, in kilometres",
+          "value": 3.8,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Diomede Islands",
+          "url": "https://en.wikipedia.org/wiki/Diomede_Islands",
+          "fixed": true
+        },
+        {
+          "label": "Length of the proposed TKM-World Link tunnel, in kilometres",
+          "value": 103,
+          "unit": "count",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Bering Strait",
+          "url": "https://en.wikipedia.org/wiki/Bering_Strait",
+          "fixed": true
+        },
+        {
+          "label": "Estimated cost of the TKM-World Link tunnel project",
+          "value": 65,
+          "unit": "money_billion",
+          "as_of": "2026-11-26",
+          "source": "Wikipedia, Bering Strait",
+          "url": "https://en.wikipedia.org/wiki/Bering_Strait",
+          "fixed": true,
+          "currency": "USD"
+        }
+      ],
+      "verify": [
+        "The 2011 tunnel was a proposal, never approved: say so",
+        "Big Diomede is Russian, Little Diomede American; the International Date Line runs between them",
+        "No side-taking on Russia–US relations; it is a what-if about the map"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Bering_Strait",
+        "https://en.wikipedia.org/wiki/Diomede_Islands"
       ]
     }
   ]
