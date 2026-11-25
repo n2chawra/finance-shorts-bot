@@ -1,0 +1,319 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:03:11.111100+00:00",
+    "finishedAt": "2026-11-25T01:03:11.111100+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:07:44.239765+00:00",
+    "finishedAt": "2026-11-25T01:07:44.239765+00:00",
+    "notes": [
+      "description opens with 'how did a', already used by v-20261120-07"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:07:45.248425+00:00",
+    "finishedAt": "2026-11-25T01:07:45.248425+00:00",
+    "notes": [
+      "beat 'peak'.params.things[0] contains a typed number; use a placeholder: '10-K store table'",
+      "0 dated steps; a true-history dates at least 2 moments (facts with unit \"year\")",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: beat 'peak' opens like a line in one of the last scripts ('by the end'): new words",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:07:58.493537+00:00",
+    "finishedAt": "2026-11-25T01:07:58.493537+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:07:59.460762+00:00",
+    "finishedAt": "2026-11-25T01:07:59.460762+00:00",
+    "notes": [
+      "doc video: the video uses 1 device kinds (document); use at least 3 of document, headline, chart, timeline, split, map, polaroids, products, listing, ticker, sink, donut, montage, depth: photos, count-ups and the poster alone read as a slideshow",
+      "note: beat 'peak' opens like a line in one of the last scripts ('four years later'): new words",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:08:11.674248+00:00",
+    "finishedAt": "2026-11-25T01:08:11.674248+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "beat 'offer' lists Netflix's founders, Reed Hastings, Marc Randolph: show each on its word (an event and a moment for Netflix's founders, Reed Hastings, Marc Randolph): a listed word is a picture, not just a caption",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:08:17.808825+00:00",
+    "finishedAt": "2026-11-25T01:08:17.808825+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:08:30.911946+00:00",
+    "finishedAt": "2026-11-25T01:08:30.911946+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:08:36.687599+00:00",
+    "finishedAt": "2026-11-25T01:09:11.901363+00:00",
+    "notes": [
+      "2 of 9 stills are mostly empty background (at 5 s, 10 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:09:20.397274+00:00",
+    "finishedAt": "2026-11-25T01:09:20.397274+00:00",
+    "notes": [
+      "All 4 facts confirmed: $50M 2000 ask by Hastings+Randolph (Fortune page, 'tried to sell their startup to Blockbuster for $50 million', matches verify wording); 2004 revenues $6,053.2M and 9,094 stores (7,265 company + 1,829 franchised) on the SEC 10-K page; 1 store left (Fortune page) in Bend, Oregon, still the last in late 2025 (KATU, Fox4, La Nacion Dec 2025); bankruptcy 2010-09-23 and streaming claims correct; no advice, no motives, journalistic tone, disclaimer ends description. Note: last beat poster dated 2023-04-14 under 'Today'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:10:10.765273+00:00",
+    "finishedAt": "2026-11-25T01:10:32.914769+00:00",
+    "notes": [
+      "2 of 9 stills are mostly empty background (at 5 s, 10 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:11:11.054602+00:00",
+    "finishedAt": "2026-11-25T01:11:35.083926+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:12:55.199522+00:00",
+    "finishedAt": "2026-11-25T01:12:55.199522+00:00",
+    "notes": [
+      "[script] 30.0s (beat last, the payoff): the poster's BLOCKBUSTER title and gold '1' are laid over the photo's own giant 'KBUS' sign letters, so text sits on text and the '1' lands inside the beige 'B' (gold on beige); the video's most surprising figure is small and hard to read, clearly weaker than our best Shorts' payoff posters (450, 100M, $7.6B on a dark ground). Move the poster layer's focus so the sky or doors sit behind the title (e.g. focus [0.45, 0.8]) or use a photo without lettering behind it.",
+      "[script] 15.0s and 20.0s (beat peak): the figure the line says, 9,094 stores, is never readable on the 10-K page: the highlighter box [0.03,0.765,0.94,0.045] spans the whole row, so the push of 1.7 crops it and the total columns (1,829 and 9,094) run off the right edge; the figure lives only in the caption. At 20.0s the 'WHO NEEDS NETFLIX?' stamp also covers the table's header rows. Narrow the box to the total column (or lower push) so 9,094 is highlighted on screen, and move the stamp clear of the table (e.g. pos [0.5, 0.75] over the page's prose)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:14:25.119293+00:00",
+    "finishedAt": "2026-11-25T01:14:47.401910+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:15:07.771598+00:00",
+    "finishedAt": "2026-11-25T01:15:07.771598+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:15:15.197014+00:00",
+    "finishedAt": "2026-11-25T01:15:32.705508+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:15:44.999588+00:00",
+    "finishedAt": "2026-11-25T01:16:02.027641+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:16:16.555958+00:00",
+    "finishedAt": "2026-11-25T01:16:16.555958+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:16:17.442268+00:00",
+    "finishedAt": "2026-11-25T01:16:35.352969+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:16:48.559636+00:00",
+    "finishedAt": "2026-11-25T01:16:48.559636+00:00",
+    "notes": [
+      "beat 'peak'.params.layers[0].items[0].outlet contains a typed number; use a placeholder: 'Blockbuster Inc., Form 10-K'",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:16:50.422780+00:00",
+    "finishedAt": "2026-11-25T01:16:50.460774+00:00",
+    "notes": [
+      "beat 'peak'.params.layers[0].items[0].outlet contains a typed number; use a placeholder: 'Blockbuster Inc., Form 10-K'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:16:56.751188+00:00",
+    "finishedAt": "2026-11-25T01:16:56.751188+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:16:59.849749+00:00",
+    "finishedAt": "2026-11-25T01:17:16.640404+00:00",
+    "notes": [
+      "2 of 9 stills are mostly empty background (at 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:17:28.564033+00:00",
+    "finishedAt": "2026-11-25T01:17:50.168645+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:18:04.605695+00:00",
+    "finishedAt": "2026-11-25T01:18:21.209173+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:19:47.612258+00:00",
+    "finishedAt": "2026-11-25T01:19:47.612258+00:00",
+    "notes": [
+      "[script] 18.0s and 19.5s (beat peak): the '$6,053.2M taken in during the year' label lands on the annual-report card and covers its 'end of the year: 9,094' line, so text sits on text and the highlighted 9,094 is half hidden. Give the label a pos clear of the card (e.g. lower, over the storefront below the card).",
+      "[script] 21.0s and 22.5s (beat online): 21.0s is a completely empty dark frame and at 22.5s the bottom half is still empty, because the split's left side waits for 'mailing' and the right for 'online'. Meanwhile the line 'Netflix kept mailing discs' shows a Blockbuster storefront, with no disc or envelope. Show a picture from the beat's first frame (leftAt at the first word, or a mailed-disc picture first) and bring the Netflix side in on 'mailing'.",
+      "[scene] 24.0s (beat online, doc split layer): the right side's 'Netflix' name and 'one monthly fee' sub are drawn in white straight over the bright Netflix HQ photo with no scrim, and the 'vs' badge overlaps the name, so 'one monthly fee' is unreadable (the left side's labels sit on a dark gradient and read fine). The split should give the right side the same dark gradient behind its labels."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:20:50.104421+00:00",
+    "finishedAt": "2026-11-25T01:20:50.104421+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Blockbuster Had {fact3} Stores. Netflix Had an Envelope' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:21:00.607068+00:00",
+    "finishedAt": "2026-11-25T01:21:25.687482+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:22:11.758704+00:00",
+    "finishedAt": "2026-11-25T01:22:29.052399+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:23:49.024356+00:00",
+    "finishedAt": "2026-11-25T01:24:12.416514+00:00",
+    "notes": [
+      "38 s, ember/ledger (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:25:37.822538+00:00",
+    "finishedAt": "2026-11-25T01:25:37.822538+00:00",
+    "notes": [
+      "Re-checked on my own 1.5 s stills: 9,094 highlighted on the uncovered 10-K card (15-19.5s); online split shows Netflix HQ from the cut with readable scrimmed labels (22.5-24s); payoff 1 reads over roof and glass (28.5-33s); hook names Blockbuster/Netflix, loops back to the first frame; layout/craft empty, audio -1.0/-18.5 dB, 38 s. Minor: TURNED DOWN stamp still clips the pole sign's lower edge at 12-13.5s, both readable."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:25:48.257197+00:00",
+    "finishedAt": "2026-11-25T01:28:16.213567+00:00",
+    "notes": [
+      "38 s, ember/ledger, peak -1.0 dB, mean -18.5 dB",
+      "warning: integrated loudness -16.6 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "warning: the music sits only 17.7 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:28:20.736105+00:00",
+    "finishedAt": "2026-11-25T01:28:20.736105+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

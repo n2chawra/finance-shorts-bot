@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52093,
+  "duration_sec": 38,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "ledger",
+    "key": "A",
+    "bpm": 76
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Blockbuster had 9,094 stores. Netflix was a red envelope.",
+        "start": 0.3,
+        "seconds": 3.53,
+        "window": 4.2,
+        "fill": 0.84
+      },
+      {
+        "scene": "offer",
+        "text": "Reed Hastings and Marc Randolph, who started Netflix, had once offered to sell it to Blockbuster for $50M. So what happened?",
+        "start": 4.5,
+        "seconds": 5.99,
+        "window": 6.63,
+        "fill": 0.903
+      },
+      {
+        "scene": "no",
+        "text": "Blockbuster turned it down, and kept building video stores.",
+        "start": 11.13,
+        "seconds": 2.11,
+        "window": 2.8,
+        "fill": 0.754
+      },
+      {
+        "scene": "peak",
+        "text": "In two thousand four, it ran 9,094 stores and took in $6,053.2M in a year. So who needed Netflix?",
+        "start": 13.93,
+        "seconds": 6.62,
+        "window": 7.3,
+        "fill": 0.907
+      },
+      {
+        "scene": "online",
+        "text": "Netflix kept mailing discs, then put its films online, for a monthly fee.",
+        "start": 21.23,
+        "seconds": 3.01,
+        "window": 3.67,
+        "fill": 0.82
+      },
+      {
+        "scene": "bust",
+        "text": "In two thousand ten, Blockbuster went bankrupt, and its stores went dark.",
+        "start": 24.9,
+        "seconds": 2.93,
+        "window": 3.57,
+        "fill": 0.821
+      },
+      {
+        "scene": "last",
+        "text": "Today, out of all those thousands of stores, just 1 is still open: one Blockbuster in Bend, Oregon.",
+        "start": 28.47,
+        "seconds": 4.75,
+        "window": 5.37,
+        "fill": 0.885
+      },
+      {
+        "scene": "ending",
+        "text": "Late fees or the red envelope: which one sank Blockbuster? Because once,",
+        "start": 33.83,
+        "seconds": 3.09,
+        "window": 3.77,
+        "fill": 0.82
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "doc-document-first": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.5,
+    "lufs": -16.6,
+    "music_under_voice_db": 17.7
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 9.398,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
