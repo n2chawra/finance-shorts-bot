@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T15:56:44.240754+00:00",
+  "generatedAt": "2026-11-25T16:13:58.495467+00:00",
   "cycle": 1,
   "running": "doc-document-first",
   "thresholds": {
@@ -9,7 +9,17 @@
   },
   "channelStayed14d": 0.462,
   "cycleVideos": {
-    "doc-document-first": []
+    "doc-document-first": [
+      {
+        "id": "v-20261125-34",
+        "title": "FedEx Was Down to $5,000. Its Founder Went to Las Vegas",
+        "side": "on",
+        "publishAt": "2026-11-25T12:17:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 0
+      }
+    ]
   },
   "experiment": {
     "id": "doc-document-first",
@@ -24,7 +34,7 @@
     "maxDays": 7,
     "extended": false,
     "published": {
-      "on": 0,
+      "on": 1,
       "off": 0
     },
     "counted": {
@@ -40,6 +50,16 @@
     "days": 1,
     "verdict": "wait",
     "why": "0 of 8 Shorts a side have two days of data; day 1 of 7",
-    "videos": []
+    "videos": [
+      {
+        "id": "v-20261125-34",
+        "title": "FedEx Was Down to $5,000. Its Founder Went to Las Vegas",
+        "side": "on",
+        "publishAt": "2026-11-25T12:17:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 0
+      }
+    ]
   }
 }
