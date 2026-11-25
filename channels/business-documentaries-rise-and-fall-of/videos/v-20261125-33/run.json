@@ -1,0 +1,206 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:29:16.297281+00:00",
+    "finishedAt": "2026-11-25T01:29:16.297281+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:30:58.349615+00:00",
+    "finishedAt": "2026-11-25T01:30:58.349615+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:30:59.289010+00:00",
+    "finishedAt": "2026-11-25T01:30:59.289010+00:00",
+    "notes": [
+      "doc video: the video uses 2 device kinds (headline, montage); use at least 3 of document, headline, chart, timeline, split, map, polaroids, products, listing, ticker, sink, donut, montage, depth: photos, count-ups and the poster alone read as a slideshow",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'Airbnb Was Kept Alive by Election Cereal' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:31:15.921735+00:00",
+    "finishedAt": "2026-11-25T01:31:15.921735+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title 'Airbnb Was Kept Alive by Election Cereal' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:31:26.930243+00:00",
+    "finishedAt": "2026-11-25T01:32:01.856420+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:32:25.426095+00:00",
+    "finishedAt": "2026-11-25T01:32:25.426095+00:00",
+    "notes": [
+      "All 5 facts confirmed on the CNBC page (18 Apr 2023): $40 a box, more than 1,000 boxes, $30,000 for the company (Chesky), YC $20,000 for 6% (Crunchbase via CNBC); $40/$30,000/$20,000/6% also in Fortune 19 Apr 2023; investor rejections in both; 2008 election timing in Fortune. Verify list met: count attributed to Chesky in description and the won beat, no current Airbnb figure, Obama/McCain only as box names (no photos). Disclaimer ends description. Notes: 'Brian Chesky's company' simplifies three co-founders; other outlets give 500/800 boxes."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:32:46.661547+00:00",
+    "finishedAt": "2026-11-25T01:33:07.180088+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:33:55.061297+00:00",
+    "finishedAt": "2026-11-25T01:33:55.061297+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title 'Airbnb Was Kept Alive by Election Cereal' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:33:58.994273+00:00",
+    "finishedAt": "2026-11-25T01:34:19.012312+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:35:03.693186+00:00",
+    "finishedAt": "2026-11-25T01:35:22.711804+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:36:20.010285+00:00",
+    "finishedAt": "2026-11-25T01:36:20.010285+00:00",
+    "notes": [
+      "[script] 15.0s (boxes) and 20.0s (sold): two beats in a row are close-ups of a cereal bowl in milk (Golden Grahams, then Quaker Life) and read as the same picture (check D). Put the count on a different place (e.g. the boxes on a shipping table, a listing or a document).",
+      "[script] 15.0s (boxes): the Obama O's / Cap'n McCain's boxes are text stamps over a generic Golden Grahams bowl; a text chip stands in for the real thing (check 6). Show the actual boxes (a freely licensed Commons photo of the Obama O's / Cap'n McCain's boxes, or a polaroid/product layer of them), not a stamp on someone else's cereal.",
+      "[script] 5.0s (price): the $40 for one box label sits on a Tesco shelf of Kellogg's boxes with visible GBP 3 price tags, so the label contradicts the price on screen and implies a supermarket Kellogg's box cost $40 (checks 5 and 11). The cereal was sold online by the founders; use a picture of their boxes or a listing/document for the price.",
+      "[script] 0.0s (hook): the first frame is a washed-out, blurred white ballot with a small Airbnb logo chip; it is far emptier than the channel's best (v-20261122-32, v-20261122-33, v-20261121-05 open on the real product full-frame) and shows neither the cereal nor a readable place (checks 6 and 6b). Open on the election cereal boxes or a sharp, legible 2008 scene with the Airbnb mark.",
+      "[script] 25.0s (yc): Airbnb's side of the split carries its figure only as the tiny sub 'gave up 6%' next to the large $20,000, so the share is hard to read (check 3); give the right side figure {fact5} at the same size. Also three layers use enter: cut (hook logo, yc split, payoff poster) against lesson 5 ('leave enter out so every layer arrives with motion').",
+      "[script] thumbnail.png (hook at 3.0s): the Airbnb logo is blurred mid-focus and the frame is a Raisin Bran box and a Quaker nutrition panel, unrelated brands rather than Airbnb's election cereal (check 9). Pick a frame with the logo sharp over the real boxes.",
+      "[script] description: 'Sources: CNBC (Jan 2009)' misdates the source; the CNBC article cited is from Apr 2023 (2023-04-18). Disclaimer is present."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:38:08.216633+00:00",
+    "finishedAt": "2026-11-25T01:38:08.216633+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:38:09.146514+00:00",
+    "finishedAt": "2026-11-25T01:38:09.146514+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title 'Airbnb Was Kept Alive by Election Cereal' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:38:39.080504+00:00",
+    "finishedAt": "2026-11-25T01:38:39.080504+00:00",
+    "notes": [
+      "Re-check after QA: yc beat $20,000 / 6% of the company confirmed on CNBC (18 Apr 2023) and Fortune; boxes split correct (DNC 25-28 Aug 2008, Pepsi Center Denver; RNC 1-4 Sep 2008, Xcel Energy Center St. Paul; Fortune ties the boxes to the 2008 conventions; date card 2008-08-25 = DNC opening); source line 'CNBC (Apr 2023)' matches the article date; disclaimer still ends the description. Note: 'as America voted' is loose for convention season."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:38:21.300185+00:00",
+    "finishedAt": "2026-11-25T01:38:49.656387+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:40:11.603919+00:00",
+    "finishedAt": "2026-11-25T01:40:41.194636+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:41:34.910297+00:00",
+    "finishedAt": "2026-11-25T01:41:55.531067+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:42:22.258735+00:00",
+    "finishedAt": "2026-11-25T01:42:22.258735+00:00",
+    "notes": [
+      "[script] 0.0s (hook): the first still is a bare bowl of cereal in milk with no Airbnb mark visible (the logo arrives later and is not in frame 0). On mute a stranger cannot name the subject (check 6, lesson 8). The logo must be on screen and sharp at frame 0.",
+      "[script] 0.0s (hook) and 5.0s (price): two beats in a row are again close-ups of a cereal bowl in milk (Golden Grahams, then Quaker Life with the $40 label). They read as the same picture (check D); the earlier neighbour problem moved from boxes/sold to hook/price. Give the price beat a different place.",
+      "[script] 15.0s (boxes): the caption 'OBAMA O'S AND' sits on top of the split's right-hand text ('Cap'n McCain's / Republican convention, St. Paul'), so the sub-label is unreadable (check 1). Move the right side's name and sub clear of the caption band (higher in its half) or swap the halves' text position.",
+      "[script] 37.5s (ending) vs 0.0s: the last picture is the 2008 ballot but the first frame is now the cereal bowl, so the end no longer loops into the first frame (check 6a). End on the hook's opening bowl with the Airbnb logo, or open on the ballot again.",
+      "[script] thumbnail.png (0.8s): the Airbnb logo is still blurred/out of focus behind the words, so the subject can't be read at small size (check 9). Pick a moment when the logo is sharp."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:42:53.909233+00:00",
+    "finishedAt": "2026-11-25T01:43:14.223113+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:44:27.932278+00:00",
+    "finishedAt": "2026-11-25T01:44:53.407678+00:00",
+    "notes": [
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:45:57.676104+00:00",
+    "finishedAt": "2026-11-25T01:45:57.676104+00:00",
+    "notes": [
+      "[script] thumbnail.png (hook at 1.4s): the Airbnb logo is still unreadable. It is sharp in the scene, but the hook's logo layer sits at pos y 0.2, inside the thumbnail's title band, which Thumbnail.tsx blurs and darkens (backdrop blur 14px, brightness 0.55). The cover reads only 'Saved by cereal' over an anonymous bowl, so the subject can't be named (check 9). Move the hook logo below the band (pos y about 0.38-0.42, still above the caption line) or pick a thumbnail beat whose subject mark sits below the band. Everything else passes: frame 0 shows the logo on the bowl, no cereal bowls are neighbours, the split names are clear of the caption, the ending loops into the opening bowl, each picture is used once, and the code checks and audio are fine."
+    ]
+  }
+]

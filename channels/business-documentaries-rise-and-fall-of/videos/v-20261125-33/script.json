@@ -1,0 +1,997 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 71264,
+ "story": "founder_bet",
+ "shape": "underdog-reversal",
+ "currency": "USD",
+ "style": {
+  "palette": "ocean",
+  "genre": "dossier",
+  "key": "E",
+  "bpm": 82
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "secret",
+ "cta": "Cereal or the air mattress: which one really saved Airbnb? Comment",
+ "feed_id": "2026-11-25-airbnb-cereal-40-short",
+ "facts": [
+  {
+   "label": "Price of one box of Airbnb's election cereal",
+   "value": 40,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2008-11-04",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/04/18/airbnb-ceo-says-he-wooed-first-investors-with-boxes-of-cereal.html",
+   "fixed": true
+  },
+  {
+   "label": "Cereal boxes sold (more than)",
+   "value": 1000,
+   "unit": "count",
+   "as_of": "2008-11-04",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/04/18/airbnb-ceo-says-he-wooed-first-investors-with-boxes-of-cereal.html",
+   "fixed": true
+  },
+  {
+   "label": "What the cereal made for the company",
+   "value": 30000,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2008-11-04",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/04/18/airbnb-ceo-says-he-wooed-first-investors-with-boxes-of-cereal.html",
+   "fixed": true
+  },
+  {
+   "label": "Y Combinator's investment in Airbnb",
+   "value": 20000,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2009-01-31",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/04/18/airbnb-ceo-says-he-wooed-first-investors-with-boxes-of-cereal.html",
+   "fixed": true
+  },
+  {
+   "label": "Share of Airbnb Y Combinator got for it",
+   "value": 6,
+   "unit": "percent",
+   "as_of": "2009-01-31",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2023/04/18/airbnb-ceo-says-he-wooed-first-investors-with-boxes-of-cereal.html",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 1.4,
+  "words": "Saved by *cereal*",
+  "angle": "story",
+  "unique": "Airbnb cereal covers in the niche show the founders; ours shows a cereal bowl under the Airbnb logo"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Airbnb stayed alive in two thousand eight by selling election cereal.",
+   "events": {
+    "airbnb": {
+     "word": "Airbnb"
+    },
+    "alive": {
+     "word": "alive"
+    },
+    "eight": {
+     "word": "eight"
+    },
+    "selling": {
+     "word": "selling"
+    },
+    "election": {
+     "word": "election"
+    },
+    "cereal": {
+     "word": "cereal"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "selling"
+    },
+    {
+     "kind": "boom",
+     "at": "cereal"
+    }
+   ],
+   "params": {
+    "place": [
+     "a bowl of breakfast cereal",
+     "a US ballot from two thousand eight",
+     "cereal boxes on a kitchen fridge"
+    ],
+    "things": [
+     "cereal bowl",
+     "Airbnb logo",
+     "ballot",
+     "cereal boxes"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "election",
+      "size": "medium"
+     },
+     {
+      "at": "cereal",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "airbnb",
+      "what": "the Airbnb logo sits over the cereal bowl from the first frame"
+     },
+     {
+      "at": "election",
+      "what": "punch to the ballot"
+     },
+     {
+      "at": "cereal",
+      "what": "punch to the cereal boxes"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-golden-grahams-cereal-with-milk-b8f97f9b.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-2008-us-election-ballot-ma-80422a7e.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "election"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-three-boxes-of-breakfast-cereal-atop-fridge-ebf9f12b.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "cereal"
+       }
+      ]
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-airbnb-logo-b-lo-ba729677.png",
+      "aspect": 3.2,
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "size": 0.62,
+      "tilt": -4,
+      "enter": "cut"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "price",
+   "role": "promise",
+   "say": "Each box sold for {fact1}, after investors had turned the start-up down. So how did cereal save it?",
+   "events": {
+    "box": {
+     "word": "box"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "investors": {
+     "word": "investors"
+    },
+    "down": {
+     "word": "down"
+    },
+    "cereal": {
+     "word": "cereal"
+    },
+    "save": {
+     "word": "save"
+    }
+   },
+   "params": {
+    "place": [
+     "Airbnb co-founder Brian Chesky at a lectern"
+    ],
+    "things": [
+     "Brian Chesky",
+     "the box price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "sold",
+      "size": "medium"
+     },
+     {
+      "at": "down",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sold",
+      "what": "a label: the price of one box"
+     },
+     {
+      "at": "down",
+      "what": "a stamp: TURNED DOWN"
+     },
+     {
+      "at": "save",
+      "what": "the aisle keeps drifting"
+     }
+    ],
+    "fig": {
+     "price": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-brian-chesky-2016-cropped-143a63e2.jpg",
+      "focus": [
+       0.5,
+       0.35
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "cold"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "sub": "for one box",
+      "at": "sold",
+      "out": "investors"
+     },
+     {
+      "kind": "stamp",
+      "text": "Turned down",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "down"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "mattress",
+   "role": "build",
+   "say": "Back then, Airbnb meant an air mattress on a stranger's floor.",
+   "events": {
+    "back": {
+     "word": "Back"
+    },
+    "meant": {
+     "word": "meant"
+    },
+    "air": {
+     "word": "air"
+    },
+    "mattress": {
+     "word": "mattress"
+    },
+    "floor": {
+     "word": "floor"
+    }
+   },
+   "params": {
+    "place": [
+     "an air mattress on a living-room floor"
+    ],
+    "things": [
+     "air mattress"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "mattress",
+      "size": "close"
+     },
+     {
+      "at": "floor",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "air",
+      "what": "push in on the mattress"
+     },
+     {
+      "at": "mattress",
+      "what": "an arrow points at it"
+     },
+     {
+      "at": "floor",
+      "what": "a label: AirBed and Breakfast"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-air-mattress-or-extra-bed-with-internal-air-pump-41369ac5.jpg",
+      "focus": [
+       0.45,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.16,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "arrow",
+      "from": [
+       0.3,
+       0.2
+      ],
+      "to": [
+       0.45,
+       0.4
+      ],
+      "label": "The air bed",
+      "at": "mattress",
+      "out": "floor"
+     },
+     {
+      "kind": "label",
+      "text": "AirBed and Breakfast",
+      "sub": "the first name",
+      "at": "floor"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "boxes",
+   "role": "build",
+   "say": "So as America voted, the founders made their own boxes: Obama O's and Cap'n McCain's.",
+   "events": {
+    "america": {
+     "word": "America"
+    },
+    "voted": {
+     "word": "voted"
+    },
+    "founders": {
+     "word": "founders"
+    },
+    "boxes": {
+     "word": "boxes"
+    },
+    "obama": {
+     "word": "Obama"
+    },
+    "mccains": {
+     "word": "McCain's"
+    }
+   },
+   "params": {
+    "place": [
+     "the Democrats' convention arena in Denver",
+     "the Republicans' convention arena in St. Paul"
+    ],
+    "things": [
+     "Denver arena",
+     "St. Paul arena",
+     "the two box names"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "obama",
+      "size": "medium"
+     },
+     {
+      "at": "mccains",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "voted",
+      "what": "the date slams in"
+     },
+     {
+      "at": "founders",
+      "what": "Cap'n McCain's side slides in under Obama O's"
+     },
+     {
+      "at": "obama",
+      "what": "the push holds on Obama O's name"
+     },
+     {
+      "at": "mccains",
+      "what": "the push holds on Cap'n McCain's name"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "split",
+      "left": {
+       "name": "Obama O's",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pepsi-center-dnc-2008-c70a1772.jpg",
+       "fit": "cover"
+      },
+      "right": {
+       "name": "Cap'n McCain's",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-xcel-energy-center-rnc-f0e4aee8.jpg",
+       "fit": "cover"
+      },
+      "rightAt": "founders"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2008-08-25",
+      "sub": "convention season",
+      "pos": "top",
+      "at": "voted",
+      "out": "obama"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "sold",
+   "role": "build",
+   "say": "They sold more than {fact2} of them. But could cereal win over an investor?",
+   "events": {
+    "they": {
+     "word": "They"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "more": {
+     "word": "more"
+    },
+    "them": {
+     "word": "them"
+    },
+    "investor": {
+     "word": "investor"
+    }
+   },
+   "params": {
+    "place": [
+     "Airbnb's headquarters, the count over it"
+    ],
+    "things": [
+     "Airbnb headquarters",
+     "boxes sold"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "more",
+      "size": "medium"
+     },
+     {
+      "at": "them",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sold",
+      "what": "the count rolls up"
+     },
+     {
+      "at": "them",
+      "what": "the unit line settles"
+     },
+     {
+      "at": "investor",
+      "what": "the count holds as the bowl pushes"
+     }
+    ],
+    "fig": {
+     "n": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-airbnb-hq-39902444911-20d74a25.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc"
+     },
+     {
+      "kind": "count",
+      "figure": "n",
+      "unit": "boxes sold",
+      "eyebrow": "more than",
+      "countAt": "sold",
+      "tone": "gold"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "won",
+   "role": "turn",
+   "say": "Co-founder Brian Chesky says the boxes won over their first investors.",
+   "events": {
+    "brian": {
+     "word": "Brian"
+    },
+    "chesky": {
+     "word": "Chesky"
+    },
+    "boxes": {
+     "word": "boxes"
+    },
+    "won": {
+     "word": "won"
+    },
+    "investors": {
+     "word": "investors"
+    }
+   },
+   "params": {
+    "place": [
+     "Brian Chesky on stage",
+     "the CNBC report"
+    ],
+    "things": [
+     "Brian Chesky",
+     "CNBC headline"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "boxes",
+      "size": "wide"
+     },
+     {
+      "at": "investors",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "brian",
+      "what": "Chesky's photo pushes in, a lower third"
+     },
+     {
+      "at": "boxes",
+      "what": "the CNBC headline lands"
+     },
+     {
+      "at": "investors",
+      "what": "the highlighter swipes the line"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-brian-chesky-techcrunch-7793b16c.jpg",
+      "focus": [
+       0.5,
+       0.3
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc"
+     },
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "CNBC",
+        "date": "2023-04-18",
+        "title": "Airbnb CEO says he wooed first investors with boxes of cereal",
+        "style": "web",
+        "hi": "boxes of cereal"
+       }
+      ],
+      "on": [
+       "boxes"
+      ],
+      "markAt": "investors",
+      "at": "boxes",
+      "plate": false
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Brian Chesky",
+      "sub": "Airbnb co-founder",
+      "at": "brian",
+      "out": "boxes"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "yc",
+   "role": "build",
+   "say": "Y Combinator put in {fact4}, and took {fact5} of the company.",
+   "events": {
+    "combinator": {
+     "word": "Combinator"
+    },
+    "put": {
+     "word": "put"
+    },
+    "took": {
+     "word": "took"
+    },
+    "company": {
+     "word": "company"
+    }
+   },
+   "params": {
+    "place": [
+     "a Y Combinator demo day in San Francisco"
+    ],
+    "things": [
+     "Y Combinator logo",
+     "start-up class",
+     "the stake"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "put",
+      "size": "medium"
+     },
+     {
+      "at": "company",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "combinator",
+      "what": "the Y Combinator logo drops in"
+     },
+     {
+      "at": "put",
+      "what": "a label: the investment"
+     },
+     {
+      "at": "took",
+      "what": "a label: the share"
+     },
+     {
+      "at": "company",
+      "what": "the class keeps drifting"
+     }
+    ],
+    "fig": {
+     "cash": "{fact4}",
+     "share": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-paul-graham-talking-about-prototype-day-at-y-com-501ea9eb.jpg",
+      "focus": [
+       0.6,
+       0.5
+      ],
+      "move": "drift-left",
+      "amount": 0.12,
+      "grade": "warm"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-y-combinator-logo-c7b74582.png",
+      "aspect": 1.0,
+      "pos": [
+       0.5,
+       0.18
+      ],
+      "size": 0.3,
+      "tilt": 4,
+      "at": "combinator"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact4}",
+      "sub": "Y Combinator put in",
+      "at": "put",
+      "out": "took"
+     },
+     {
+      "kind": "label",
+      "text": "{fact5}",
+      "sub": "of Airbnb in return",
+      "at": "took"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "But first, those cereal boxes brought in {fact3}, enough to keep Airbnb going.",
+   "events": {
+    "first": {
+     "word": "first"
+    },
+    "cereal": {
+     "word": "cereal"
+    },
+    "brought": {
+     "word": "brought"
+    },
+    "enough": {
+     "word": "enough"
+    },
+    "going": {
+     "word": "going"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "brought"
+    }
+   ],
+   "params": {
+    "place": [
+     "the poster over the atrium of Airbnb's headquarters"
+    ],
+    "things": [
+     "Airbnb headquarters",
+     "the cereal money"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "brought",
+      "size": "wide"
+     },
+     {
+      "at": "going",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "first",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "brought",
+      "what": "the figure settles"
+     },
+     {
+      "at": "going",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "cash": "{fact3}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-atrium-of-airbnb-headquarters-at-888-brannan-st-a9eef76c.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "title": "Airbnb",
+      "figure": "cash",
+      "sub": "from election cereal"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Cereal or the air mattress: which one really saved Airbnb? Because once upon a time,",
+   "events": {
+    "cereal": {
+     "word": "Cereal"
+    },
+    "mattress": {
+     "word": "mattress"
+    },
+    "saved": {
+     "word": "saved"
+    },
+    "because": {
+     "word": "Because"
+    },
+    "time": {
+     "word": "time"
+    }
+   },
+   "params": {
+    "place": [
+     "a cereal aisle",
+     "the cereal bowl from the first frame"
+    ],
+    "things": [
+     "cereal aisle",
+     "cereal bowl"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "saved",
+      "size": "medium"
+     },
+     {
+      "at": "time",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "cereal",
+      "what": "a stamp: CEREAL?"
+     },
+     {
+      "at": "mattress",
+      "what": "a stamp: AIR MATTRESS?"
+     },
+     {
+      "at": "saved",
+      "what": "push into the atrium"
+     },
+     {
+      "at": "time",
+      "what": "back to the cereal bowl from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tesco-supermarket-cereal-716326f7.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "time",
+      "dim": 0.35
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-golden-grahams-cereal-with-milk-b8f97f9b.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "time"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Cereal?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.2
+      ],
+      "tilt": -4,
+      "at": "cereal",
+      "out": "mattress"
+     },
+     {
+      "kind": "stamp",
+      "text": "Air mattress?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.2
+      ],
+      "tilt": 4,
+      "at": "mattress",
+      "out": "saved"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}
