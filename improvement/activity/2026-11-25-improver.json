@@ -1,0 +1,56 @@
+{
+  "agent": "improver",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-25T16:52:27Z",
+  "finishedAt": "2026-11-25T17:01:25Z",
+  "summary": "Answered the owner's flood note on geography: a new map piece, MapWater, makes floods and seas roll in as waves with foam, ripples and a lapping shore, and the director must use it. The India map now shows Kerala as केरलम (Keralam), its official name since August 2026.",
+  "decision": "acted",
+  "why": "Owner notes come first (one open: v-20261125-12's flood was 'a shape and line'). im-keralam-label was a high-priority adopt item, confirmed by several outlets (the Act notified 25 Aug 2026). Both running tests (geo-claim-hook, doc-document-first) are on day 1 with 0 of 8 Shorts a side; tech, Disaster Desk and India Maps can't run a test at 1 Short a day or have no data.",
+  "findings": [
+    {
+      "title": "main's tests are red",
+      "detail": "test_the_library_photos_are_cut_out fails: photo 'nv1board' (a graphics card) has no head cut-out. It blocked the auditor last night and will block this branch; the fix is in remotion/public/real/credits.json, which only the owner can edit (notification on How Tech Works)."
+    },
+    {
+      "title": "Evaluator",
+      "detail": "Geography: 10 Shorts with 48 h data, why_shaped 67.5% viewed vs what_if_world 59.0%; geo-claim-hook day 1, 0 of 8 a side. Craze & Crash: 6, doc-document-first day 1; recurring 'QA failed after three rounds' (2x). Tech 5, Disaster Desk 3, India Maps 0."
+    },
+    {
+      "title": "Impact, week of 16 Nov",
+      "detail": "Geography n=7: 735 median 48 h views, 64.1% viewed, 58% stayed to watch. Craze & Crash n=4: 127.5 views, 48.9% viewed, 30.7% stayed. Tech n=3: 8 views, 46.1% viewed, 55.1% stayed. Disaster Desk n=1: 254 views, 64.8% viewed, 41.7% stayed."
+    },
+    {
+      "title": "im-reach-india-channel was already done",
+      "detail": "homeCountry IN in channel.json and generator/reach.py (owner, today) already let India Maps make both daily Shorts."
+    },
+    {
+      "title": "All five queues are still empty (health red)",
+      "detail": "0 Shorts ready on every channel: the video runs' problem, not the improver's."
+    }
+  ],
+  "changes": [
+    {
+      "title": "MapWater: floods roll in as waves (owner note, geography; every map channel)",
+      "detail": "remotion/src/flat/water.tsx: a wavy front with a rolling foam line and spray, a shallow band, ripples on deep water, waves lapping the new shore; director.md and checklist rules; MapSheet test reel and vitest tests. Published videos unchanged.",
+      "branch": "agent/improver/2026-11-25",
+      "experiment": "geo-map-water"
+    },
+    {
+      "title": "India map: Kerala shows as केरलम (adopt im-keralam-label)",
+      "detail": "remotion/src/flat/india.tsx (Keralam also works as a key; older videos still resolve), india.json, checklist.",
+      "branch": "agent/improver/2026-11-25",
+      "experiment": "im-keralam-label"
+    },
+    {
+      "title": "Proposal market-queries-on-niche rejected",
+      "detail": "market.json is outside the improver's files; research or the owner edits it."
+    }
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [
+    {
+      "label": "MapWater",
+      "url": "remotion/src/flat/water.tsx"
+    }
+  ]
+}
