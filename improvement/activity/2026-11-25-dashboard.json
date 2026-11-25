@@ -1,0 +1,20 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-25T17:32:04Z",
+  "finishedAt": "2026-11-25T17:44:40Z",
+  "summary": "Fixed the Calendar smoke test, which today's subscribers change broke and which would have blocked merges. Fixed Notifications: switching channel there now marks that channel's items read.",
+  "decision": "acted",
+  "why": "Smoke tests on main failed 2 of 127 (the Calendar tooltip wording changed). A code review of Notifications found a bug: the bell kept counting after a channel switch. Each fix has a smoke test. tsc, lint and build pass; smoke tests 129 passed, 5 skipped.",
+  "findings": [
+    {"title": "Calendar smoke test out of date", "detail": "The day tooltip now says 'views, likes and subscribers'; the test expected 'views and likes', so it failed on desktop and phone."},
+    {"title": "Notifications stayed unread after a channel switch", "detail": "The page marked items seen once per visit; switching channel refetched without reloading, so the new channel's items were never marked."},
+    {"title": "Calendar month cards stack on a phone", "detail": "Four cards one per row push the calendar below the first screen; added as an idea (2x2 on phones)."}
+  ],
+  "changes": [
+    {"title": "Calendar smoke test follows the subscribers wording", "detail": "Also checks the month's Subscribers card and each week's subscribers line.", "branch": "agent/dashboard/2026-11-25"},
+    {"title": "Notifications: switched-to channel's items marked read", "detail": "Marked items are remembered by id instead of once per visit; new smoke test.", "branch": "agent/dashboard/2026-11-25"}
+  ],
+  "nextCheck": "2026-11-26",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-25.md"}]
+}
