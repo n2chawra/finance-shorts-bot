@@ -1,7 +1,26 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 1,
   "notes": [
+    {
+      "id": "cmwvnu9lg0001ic09oaajhjty",
+      "kind": "improve",
+      "area": "animation",
+      "text": "Floods and water moving could have been animated much better kinda showing growing like waves or something. Right now ita a shape and line which is very bad animated.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-25T05:05:39.604Z",
+      "video": {
+        "id": "v-20261125-12",
+        "title": "What if Africa split in two?",
+        "format": "short",
+        "status": "queued",
+        "story": "what_if_world",
+        "shape": "the-crack",
+        "hookStyle": "challenge",
+        "hook": "What if Africa split in two?"
+      }
+    },
     {
       "id": "cmwstm4180001jv0917t7gywr",
       "kind": "improve",
