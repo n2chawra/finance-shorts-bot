@@ -1,0 +1,138 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 60817,
+  "duration_sec": 61,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "atlas",
+    "key": "A",
+    "bpm": 92,
+    "look": {
+      "stage": "space",
+      "header": "neon",
+      "holder": "box",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "What if Africa split in two?",
+        "start": 0.3,
+        "seconds": 1.42,
+        "window": 2.07,
+        "fill": 0.686
+      },
+      {
+        "scene": "afar",
+        "text": "It already is: Africa's two plates pull apart by 8 to 9 millimetres a year.",
+        "start": 2.37,
+        "seconds": 3.42,
+        "window": 4.1,
+        "fill": 0.834
+      },
+      {
+        "scene": "line",
+        "text": "It starts in Ethiopia's Afar desert and runs south as one long line, the East African Rift, past Lake Turkana, through Kenya and into Tanzania.",
+        "start": 6.47,
+        "seconds": 6.83,
+        "window": 7.5,
+        "fill": 0.911
+      },
+      {
+        "scene": "question",
+        "text": "That's slow, far too slow to feel. So what happens if it never stops?",
+        "start": 13.97,
+        "seconds": 3.04,
+        "window": 3.7,
+        "fill": 0.822
+      },
+      {
+        "scene": "sea",
+        "text": "First, the sea breaks in through the Red Sea's southern end and floods the Afar, which already lies lower than the sea in places.",
+        "start": 17.67,
+        "seconds": 5.29,
+        "window": 5.97,
+        "fill": 0.886
+      },
+      {
+        "scene": "south",
+        "text": "Then where does the water go? It follows the crack south, through Ethiopia and Kenya, and a brand-new coastline is drawn on both sides.",
+        "start": 23.63,
+        "seconds": 5.78,
+        "window": 6.47,
+        "fill": 0.893
+      },
+      {
+        "scene": "island",
+        "text": "On this simplified map, everything to the east, Somalia, eastern Ethiopia and Kenya, and Tanzania's coast, breaks off as one giant island, drifting out into the Indian Ocean.",
+        "start": 30.1,
+        "seconds": 8.34,
+        "window": 9.0,
+        "fill": 0.927
+      },
+      {
+        "scene": "coast",
+        "text": "And here is the twist: Ethiopia, a country with no sea today, wakes up with a coast and a harbour of its own, on a sea that does not exist yet.",
+        "start": 39.1,
+        "seconds": 6.36,
+        "window": 7.0,
+        "fill": 0.909
+      },
+      {
+        "scene": "payoff",
+        "text": "How long would it take? Tens of millions of years. But one crack opened fast: in 2005, 60 kilometres of the Afar tore open in a matter of days, some cracks more than a metre wide.",
+        "start": 46.1,
+        "seconds": 8.89,
+        "window": 9.53,
+        "fill": 0.933
+      },
+      {
+        "scene": "loop",
+        "text": "New island or new coast: which side would you pick? Tell us below. Because one day, Africa may split in two.",
+        "start": 55.63,
+        "seconds": 4.7,
+        "window": 5.37,
+        "fill": 0.875
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "geo-claim-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -14.9,
+    "music_under_voice_db": 30.6
+  },
+  "craft_problems": [
+    "note: four shots in a row open medium (from 'afar'): vary the shot size",
+    "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 5.787,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

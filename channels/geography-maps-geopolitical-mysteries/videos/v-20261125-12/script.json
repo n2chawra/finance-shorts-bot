@@ -1,0 +1,1016 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 60817,
+ "story": "what_if_world",
+ "shape": "the-crack",
+ "currency": "USD",
+ "style": {
+  "palette": "sky",
+  "genre": "atlas",
+  "key": "A",
+  "bpm": 92,
+  "look": {
+   "stage": "space",
+   "header": "neon",
+   "holder": "box",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "New island or new coast: which side would you rather live on? Comment",
+ "feed_id": "2026-11-25-what-if-africa-split",
+ "facts": [
+  {
+   "label": "Length of the 2005 rift section that split open in the Afar, in kilometres",
+   "value": 60,
+   "unit": "count",
+   "as_of": "2008-10-30",
+   "source": "University of Bristol",
+   "url": "https://bristol.ac.uk/news/2008/5960.html",
+   "fixed": true
+  },
+  {
+   "label": "Year the Dabbahu rift opened in the Afar",
+   "value": 2005,
+   "unit": "year",
+   "as_of": "2005-12-31",
+   "source": "University of Bristol",
+   "url": "https://bristol.ac.uk/news/2008/5960.html",
+   "fixed": true
+  },
+  {
+   "label": "Rate the African plate is splitting, in millimetres a year, lower bound",
+   "value": 8,
+   "unit": "count",
+   "as_of": "2026-11-25",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/East_African_Rift",
+   "latest": true,
+   "checked": "2026-11-25"
+  },
+  {
+   "label": "Rate the African plate is splitting, in millimetres a year, upper bound",
+   "value": 9,
+   "unit": "count",
+   "as_of": "2026-11-25",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/East_African_Rift",
+   "latest": true,
+   "checked": "2026-11-25"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "island",
+  "sec": 4.5,
+  "words": "Africa *splits* in two?",
+  "tag": "Africa",
+  "angle": "question",
+  "figure": "{fact1}",
+  "who": "narrator",
+  "references": [
+   {
+    "id": "z_tiqHEIx3w",
+    "views": 299533,
+    "what": "the demand Short: the map of Africa with a crack down the east and the Horn pulled away"
+   }
+  ],
+  "pattern": "the whole of Africa with the eastern piece breaking away; ours takes the island sliding off on our vintage map"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "What if Africa split in two?",
+   "events": {
+    "what": {
+     "word": "What"
+    },
+    "africa": {
+     "word": "Africa"
+    },
+    "split": {
+     "word": "split"
+    },
+    "two": {
+     "word": "two"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the whole of Africa, a crack glowing down its east side",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "two",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "what",
+      "what": "the crack in the east glows"
+     },
+     {
+      "at": "africa",
+      "what": "Africa's coast traces round in light"
+     },
+     {
+      "at": "split",
+      "what": "the crack zigzags south down the map"
+     },
+     {
+      "at": "two",
+      "what": "the two sides tint apart in two colours"
+     }
+    ],
+    "things": [
+     "map of africa",
+     "the glowing crack",
+     "two tinted sides"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "split"
+    }
+   ]
+  },
+  {
+   "id": "afar",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It already is: Africa's two plates pull apart by {fact3} to {fact4} millimetres a year.",
+   "events": {
+    "already": {
+     "word": "already"
+    },
+    "africa's": {
+     "word": "Africa's"
+    },
+    "plates": {
+     "word": "plates"
+    },
+    "pull": {
+     "word": "pull"
+    },
+    "millimetres": {
+     "word": "millimetres"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Afar",
+    "place": "on the map: the Horn of Africa, closing on Ethiopia",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "plates",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "already",
+      "what": "the camera dives to the Horn of Africa"
+     },
+     {
+      "at": "africa's",
+      "what": "Ethiopia's border traces and its flag fills it"
+     },
+     {
+      "at": "plates",
+      "what": "cracks open in the sand"
+     },
+     {
+      "at": "pull",
+      "what": "the two sides slide apart with arrows"
+     },
+     {
+      "at": "millimetres",
+      "what": "a ruler sign shows the rate"
+     },
+     {
+      "at": "year",
+      "what": "the arrows push again"
+     }
+    ],
+    "things": [
+     "ethiopia flag",
+     "cracks",
+     "arrows",
+     "ruler sign"
+    ],
+    "fig": {
+     "lo": "{fact3}",
+     "hi": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "pulls"
+    }
+   ]
+  },
+  {
+   "id": "line",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "It starts in Ethiopia's Afar desert and runs south as one long line, the East African Rift, past Lake Turkana, through Kenya and into Tanzania.",
+   "events": {
+    "starts": {
+     "word": "starts"
+    },
+    "afar": {
+     "word": "Afar"
+    },
+    "south": {
+     "word": "south"
+    },
+    "line": {
+     "word": "line"
+    },
+    "rift": {
+     "word": "Rift"
+    },
+    "turkana": {
+     "word": "Turkana"
+    },
+    "kenya": {
+     "word": "Kenya"
+    },
+    "tanzania": {
+     "word": "Tanzania"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Line",
+    "place": "on the map: the East African Rift from Ethiopia down through Kenya to Tanzania",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "line",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "starts",
+      "what": "a pin marks the top of the line"
+     },
+     {
+      "at": "afar",
+      "what": "AFAR writes on and the crack pulses"
+     },
+     {
+      "at": "south",
+      "what": "the camera pulls back as the rift line draws south"
+     },
+     {
+      "at": "line",
+      "what": "the line glows"
+     },
+     {
+      "at": "rift",
+      "what": "EAST AFRICAN RIFT writes along it"
+     },
+     {
+      "at": "turkana",
+      "what": "LAKE TURKANA writes on beside the line"
+     },
+     {
+      "at": "kenya",
+      "what": "Kenya traces with its flag"
+     },
+     {
+      "at": "tanzania",
+      "what": "Tanzania traces with its flag"
+     }
+    ],
+    "things": [
+     "the rift line",
+     "pin",
+     "afar label",
+     "rift label",
+     "kenya flag",
+     "tanzania flag"
+    ]
+   }
+  },
+  {
+   "id": "question",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "That's slow, far too slow to feel. So what happens if it never stops?",
+   "events": {
+    "slow": {
+     "word": "slow"
+    },
+    "feel": {
+     "word": "feel"
+    },
+    "what": {
+     "word": "what"
+    },
+    "never": {
+     "word": "never"
+    },
+    "stops": {
+     "word": "stops"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Question",
+    "place": "on the map: a clock dial standing on the rift in Kenya",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "never",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "slow",
+      "what": "a snail crawls along the rift line"
+     },
+     {
+      "at": "feel",
+      "what": "the snail's feelers twitch"
+     },
+     {
+      "at": "what",
+      "what": "a clock dial pops up on the map"
+     },
+     {
+      "at": "never",
+      "what": "its hands start to spin"
+     },
+     {
+      "at": "stops",
+      "what": "the hands blur and the map shivers"
+     }
+    ],
+    "things": [
+     "snail",
+     "clock dial",
+     "the rift line"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "never"
+    }
+   ]
+  },
+  {
+   "id": "sea",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "First, the sea breaks in through the Red Sea's southern end and floods the Afar, which already lies lower than the sea in places.",
+   "events": {
+    "first": {
+     "word": "First"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "breaks": {
+     "word": "breaks"
+    },
+    "southern": {
+     "word": "southern"
+    },
+    "floods": {
+     "word": "floods"
+    },
+    "afar": {
+     "word": "Afar"
+    },
+    "lower": {
+     "word": "lower"
+    },
+    "places": {
+     "word": "places"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Sea",
+    "place": "on the map: the mouth of the Red Sea and the Afar lowland behind it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "floods",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "first",
+      "what": "the camera settles on the strait"
+     },
+     {
+      "at": "sea",
+      "what": "waves gather at the mouth of the Red Sea"
+     },
+     {
+      "at": "breaks",
+      "what": "the coastline is rubbed out where the sea breaks in"
+     },
+     {
+      "at": "southern",
+      "what": "the mouth of the Red Sea flashes"
+     },
+     {
+      "at": "floods",
+      "what": "water pours inland across the Afar"
+     },
+     {
+      "at": "afar",
+      "what": "AFAR's label sinks under the water"
+     },
+     {
+      "at": "lower",
+      "what": "a depth gauge sign drops below its zero line"
+     },
+     {
+      "at": "places",
+      "what": "bubbles rise from the new sea"
+     }
+    ],
+    "things": [
+     "waves",
+     "erased coastline",
+     "flood water",
+     "depth gauge"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "breaks"
+    }
+   ]
+  },
+  {
+   "id": "south",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then where does the water go? It follows the crack south, through Ethiopia and Kenya, and a brand-new coastline is drawn on both sides.",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "water": {
+     "word": "water"
+    },
+    "follows": {
+     "word": "follows"
+    },
+    "south": {
+     "word": "south"
+    },
+    "ethiopia": {
+     "word": "Ethiopia"
+    },
+    "kenya": {
+     "word": "Kenya"
+    },
+    "brand-new": {
+     "word": "brand-new"
+    },
+    "drawn": {
+     "word": "drawn"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "South",
+    "place": "on the map: the rift through Ethiopia and Kenya filling with sea",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "brand-new",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "then",
+      "what": "the camera turns to follow the water"
+     },
+     {
+      "at": "water",
+      "what": "a question mark pops over the water"
+     },
+     {
+      "at": "follows",
+      "what": "the sea runs into the crack"
+     },
+     {
+      "at": "south",
+      "what": "the water races south down the line"
+     },
+     {
+      "at": "ethiopia",
+      "what": "it cuts through Ethiopia"
+     },
+     {
+      "at": "kenya",
+      "what": "it cuts through Kenya"
+     },
+     {
+      "at": "brand-new",
+      "what": "a pen draws the new coastline on both banks"
+     },
+     {
+      "at": "drawn",
+      "what": "the pen lifts and the coast settles"
+     }
+    ],
+    "things": [
+     "new sea",
+     "pen",
+     "new coastline",
+     "question mark"
+    ]
+   }
+  },
+  {
+   "id": "island",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "On this simplified map, everything to the east, Somalia, eastern Ethiopia and Kenya, and Tanzania's coast, breaks off as one giant island, drifting out into the Indian Ocean.",
+   "events": {
+    "simplified": {
+     "word": "simplified"
+    },
+    "east": {
+     "word": "east"
+    },
+    "somalia": {
+     "word": "Somalia"
+    },
+    "eastern": {
+     "word": "eastern"
+    },
+    "ethiopia": {
+     "word": "Ethiopia"
+    },
+    "kenya": {
+     "word": "Kenya"
+    },
+    "tanzania's": {
+     "word": "Tanzania's"
+    },
+    "breaks": {
+     "word": "breaks"
+    },
+    "island": {
+     "word": "island"
+    },
+    "drifting": {
+     "word": "drifting"
+    },
+    "indian": {
+     "word": "Indian"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Island",
+    "place": "on the map: the Horn of Africa breaking away into the Indian Ocean",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "breaks",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "simplified",
+      "what": "the camera pulls back over the Horn"
+     },
+     {
+      "at": "east",
+      "what": "the land east of the crack lights up"
+     },
+     {
+      "at": "somalia",
+      "what": "Somalia traces with its flag"
+     },
+     {
+      "at": "eastern",
+      "what": "the camera eases along the crack"
+     },
+     {
+      "at": "ethiopia",
+      "what": "eastern Ethiopia lights up with its flag"
+     },
+     {
+      "at": "kenya",
+      "what": "eastern Kenya lights up with its flag"
+     },
+     {
+      "at": "tanzania's",
+      "what": "Tanzania's coast lights up"
+     },
+     {
+      "at": "breaks",
+      "what": "the whole piece slides away east into the ocean"
+     },
+     {
+      "at": "island",
+      "what": "ISLAND writes on it"
+     },
+     {
+      "at": "drifting",
+      "what": "the island keeps sliding east"
+     },
+     {
+      "at": "indian",
+      "what": "waves ripple round it in the open ocean"
+     }
+    ],
+    "things": [
+     "somalia flag",
+     "the breaking piece",
+     "new ocean",
+     "label"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "breaks"
+    }
+   ]
+  },
+  {
+   "id": "coast",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "And here is the twist: Ethiopia, a country with no sea today, wakes up with a coast and a harbour of its own, on a sea that does not exist yet.",
+   "events": {
+    "twist": {
+     "word": "twist"
+    },
+    "ethiopia": {
+     "word": "Ethiopia"
+    },
+    "country": {
+     "word": "country"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "today": {
+     "word": "today"
+    },
+    "coast": {
+     "word": "coast"
+    },
+    "harbour": {
+     "word": "harbour"
+    },
+    "own": {
+     "word": "own"
+    },
+    "does": {
+     "word": "does"
+    },
+    "exist": {
+     "word": "exist"
+    }
+   },
+   "transition": "whip",
+   "params": {
+    "component": "Coast",
+    "place": "on the map: western Ethiopia on the shore of the new sea",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "coast",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "twist",
+      "what": "the camera swings to the west bank"
+     },
+     {
+      "at": "ethiopia",
+      "what": "Ethiopia's western half traces with its flag"
+     },
+     {
+      "at": "country",
+      "what": "a NO SEA sign stands on the land"
+     },
+     {
+      "at": "sea",
+      "what": "the NO SEA sign is crossed out"
+     },
+     {
+      "at": "today",
+      "what": "a palm tree pops on the new shore"
+     },
+     {
+      "at": "coast",
+      "what": "a little harbour with a boat appears on the coast"
+     },
+     {
+      "at": "harbour",
+      "what": "the boat sails out of the harbour"
+     },
+     {
+      "at": "own",
+      "what": "a flag goes up on the harbour"
+     },
+     {
+      "at": "does",
+      "what": "the new sea shimmers"
+     },
+     {
+      "at": "exist",
+      "what": "a gull circles over the new sea"
+     }
+    ],
+    "things": [
+     "ethiopia flag",
+     "crossed-out sign",
+     "palm tree",
+     "harbour",
+     "boat"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "coast"
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "How long would it take? Tens of millions of years. But one crack opened fast: in {fact2}, {fact1} kilometres of the Afar tore open in a matter of days, some cracks more than a metre wide.",
+   "events": {
+    "how": {
+     "word": "How"
+    },
+    "long": {
+     "word": "long"
+    },
+    "tens": {
+     "word": "Tens"
+    },
+    "years": {
+     "word": "years"
+    },
+    "crack": {
+     "word": "crack"
+    },
+    "fast": {
+     "word": "fast"
+    },
+    "kilometres": {
+     "word": "kilometres"
+    },
+    "afar": {
+     "word": "Afar"
+    },
+    "tore": {
+     "word": "tore"
+    },
+    "days": {
+     "word": "days"
+    },
+    "metre": {
+     "word": "metre"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: the Afar crack of the Dabbahu rift, close",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tore",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "how",
+      "what": "an hourglass stands on the map"
+     },
+     {
+      "at": "long",
+      "what": "its sand starts to run"
+     },
+     {
+      "at": "tens",
+      "what": "the hourglass spins faster"
+     },
+     {
+      "at": "years",
+      "what": "the map fades back to today"
+     },
+     {
+      "at": "crack",
+      "what": "a pin drops on the Afar"
+     },
+     {
+      "at": "fast",
+      "what": "the camera dives to the pin"
+     },
+     {
+      "at": "kilometres",
+      "what": "the pin on the Afar pulses"
+     },
+     {
+      "at": "afar",
+      "what": "a date sign stands by the crack"
+     },
+     {
+      "at": "tore",
+      "what": "the crack rips open along a ruler"
+     },
+     {
+      "at": "days",
+      "what": "a calendar flips its days"
+     },
+     {
+      "at": "metre",
+      "what": "the crack gapes wider"
+     }
+    ],
+    "things": [
+     "hourglass",
+     "pin",
+     "date sign",
+     "the crack",
+     "ruler",
+     "calendar"
+    ],
+    "fig": {
+     "year": "{fact2}",
+     "len": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "tore"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "New island or new coast: which side would you pick? Tell us below. Because one day, Africa may split in two.",
+   "events": {
+    "new": {
+     "word": "New"
+    },
+    "coast": {
+     "word": "coast"
+    },
+    "pick": {
+     "word": "pick"
+    },
+    "below": {
+     "word": "below"
+    },
+    "day": {
+     "word": "day"
+    },
+    "africa": {
+     "word": "Africa"
+    },
+    "split": {
+     "word": "split"
+    },
+    "two": {
+     "word": "two"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the whole of Africa again, the crack glowing down its east side",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "day",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "new",
+      "what": "the island side pulses"
+     },
+     {
+      "at": "coast",
+      "what": "the coast side pulses"
+     },
+     {
+      "at": "pick",
+      "what": "a pointer swings between them"
+     },
+     {
+      "at": "below",
+      "what": "the pointer bobs"
+     },
+     {
+      "at": "day",
+      "what": "the camera pulls back to the whole of Africa"
+     },
+     {
+      "at": "africa",
+      "what": "Africa's coast traces in light"
+     },
+     {
+      "at": "split",
+      "what": "the crack glows"
+     },
+     {
+      "at": "two",
+      "what": "the frame settles on the hook's map"
+     }
+    ],
+    "things": [
+     "map of africa",
+     "pointer",
+     "the glowing crack"
+    ]
+   }
+  }
+ ]
+}
