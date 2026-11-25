@@ -1,0 +1,49 @@
+{
+  "agent": "studio",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-25T04:06:31Z",
+  "finishedAt": "2026-11-25T09:21:41Z",
+  "summary": "Made Craze & Crash's long video L-20261125-31, 'Pizza Hut Was the King. How Domino's Took the Crown' (16:47, 8 chapters, business war), told from Domino's, Yum and Yum China 10-Ks plus Restaurant Dive, Fox Business, TIME and the Deseret News, and shipped it for the next long slot.",
+  "decision": "acted",
+  "why": "state --format long said video (1 of 3 long videos this week). Scout's feed led with the owner's pin 1, 2026-11-20-pizza-hut-dominos (usable now); its ending, Yum's $2.7B sale, closed on 7 Aug and 1 Sep 2026.",
+  "findings": [
+    {
+      "title": "Fact review: failed twice, passed on round three",
+      "detail": "Round one named 9 problems: Patrick Doyle was head of Domino's US business, not yet CEO, in the 2009 ads; the sign said Pizza Hut, not the Carneys' name; 1997 was not sourced as the peak; a box-tracker line had no source; a misleading worldwide 'gap'; 'from both companies' own filings' overstated the sourcing; 'Domino's copied it' and a 'STOLEN CROWN' stamp implied wrongdoing; Papa John's share claim; a wrong source chip. Round two: a 'the peak' count label and a CEO paraphrase shown as a quote. All fixed. 61 sourced facts, all confirmed; the 55 new ones are added to the topic in research/topics.json (historical counts marked fixed).",
+      "link": "https://restaurantdive.com/news/yum-brands-sells-pizza-hut-27-billion/807829/"
+    },
+    {
+      "title": "QA: two rounds on the stills, then one wasted full re-render",
+      "detail": "Round one (12 items) and round two (8 items) on the stills were all fixed. Studio then added two tags to clear the motion gate without checking them on a still, and a QA look at the finished mp4 found them stacked wrongly (deal-split read 'Yum China Capital'), which cost a second ~90-minute render. Owner, 25 Nov: QA happens on stills only, the video is rendered once everything is correct, and it ships as soon as it renders. Studio followed that for the ship; the rule belongs in agents/studio.md (protected, owner only)."
+    },
+    {
+      "title": "For the improver: doc chapters never reach render.json",
+      "detail": "renderer/remotion.py counts only scene=='chapter' beats as chapters, so a doc long video's 8 chapter beats (beat key `chapter`) give render.json just 'Intro'. Studio wrote the chapter times into the description by hand from timeline.json. Fix: also count doc beats carrying `chapter`."
+    },
+    {
+      "title": "For the improver: the doc motion gate counts the time after the last event",
+      "detail": "Long spoken figures ('nineteen thousand nine hundred and seventy-four') open 3+ s gaps between words; Studio needed four full renders to clear the 3 s gate. A helper that adds a moment on a word inside each gap (from the voice timings) before the render would save a render each time."
+    },
+    {
+      "title": "No footage again",
+      "detail": "Pexels/Pixabay keys are still missing; the film is photos (Commons, about 120 different ones), 22 real 10-K pages with the line highlighted, typeset filings, headlines, count-ups, splits, maps and timelines."
+    }
+  ],
+  "changes": [
+    {
+      "title": "L-20261125-31 shipped",
+      "detail": "Thumbnails A (picked, 8/10: P5 versus, the cracked Pizza Hut pan pizza against the Domino's mark, 'Pizza war'), B (7/10: P1 crash line, 'Sold off', $2.7B) and C (8/10: P4 share then 17% -> now 12%, 'What happened?'). Chapters in the description. Video commit 88cf6c4 on main; the mp4 goes up via media/L-20261125-31."
+    },
+    {
+      "title": "Feed topic facts",
+      "detail": "channels/business-documentaries-rise-and-fall-of/research/topics.json, topic 2026-11-20-pizza-hut-dominos: 55 sourced facts added with their URLs (from 6), shipped with the video commit."
+    }
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [
+    {
+      "label": "Video folder",
+      "url": "channels/business-documentaries-rise-and-fall-of/videos/L-20261125-31/"
+    }
+  ]
+}
