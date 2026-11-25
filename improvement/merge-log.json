@@ -5532,6 +5532,49 @@
       ],
       "commit": "",
       "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45656416990"
+    },
+    {
+      "at": "2026-11-25T17:03:20+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "improver",
+      "branch": "agent/improver/2026-11-25",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/journal.md",
+        "channels/business-documentaries-rise-and-fall-of/research/proposals.json",
+        "channels/business-documentaries-rise-and-fall-of/weekly/impact.json",
+        "channels/disasters-and-engineering-failures-expla/journal.md",
+        "channels/disasters-and-engineering-failures-expla/weekly/impact.json",
+        "channels/geography-maps-geopolitical-mysteries/changes.json",
+        "channels/geography-maps-geopolitical-mysteries/experiment-log.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/improver.json",
+        "channels/geography-maps-geopolitical-mysteries/journal.md",
+        "channels/geography-maps-geopolitical-mysteries/weekly/impact.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/journal.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/notifications/improver.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/weekly/impact.json",
+        "channels/india-maps/changes.json",
+        "channels/india-maps/experiment-log.json",
+        "channels/india-maps/journal.md",
+        "channels/india-maps/research/proposals.json",
+        "channels/india-maps/weekly/impact.json",
+        "generator/prompts/checklist.md",
+        "generator/prompts/director.md",
+        "improvement/activity/2026-11-25-improver.json",
+        "remotion/src/Root.tsx",
+        "remotion/src/flat/README.md",
+        "remotion/src/flat/data/india.json",
+        "remotion/src/flat/india.tsx",
+        "remotion/src/flat/water.tsx",
+        "remotion/src/flat/waterGeo.ts",
+        "remotion/src/sheets/MapSheet.tsx",
+        "remotion/test/water.test.ts"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45660257262"
     }
   ]
 }
