@@ -54,8 +54,10 @@
   },
   "cadence": {
     "_why": "owner, 20 Nov: one long video every 48 hours plus one promo Short per long video (counts.json suggested 2 long a week and 3 Shorts a day; the owner's numbers win)",
+    "_owner": "owner, 25 Nov: 'shorts only the promo of the long video', option B: two promo Shorts per long video (4 long videos a week, about 7 Shorts: one a day). After 4 days the 2 long videos had 9 and 15 views while 89% of the channel's views came from the Shorts feed, and no Short pointed to a long video. generator/promo.py: every Short names its long video (plan.promo_of); the publisher sends it once the long is on YouTube, with the long's link",
     "longEveryHours": 48,
-    "promoShortPerLong": 1
+    "promoOnly": true,
+    "promoShortPerLong": 2
   },
   "samples": {
     "_why": "owner's research-once rule; long-first channel: the long sample and its promo Short",

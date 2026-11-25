@@ -6,6 +6,13 @@
       "title": "Faster voice is on; channel.json still says 0.92",
       "detail": "Your pace note is applied to every tech Short from tonight: the voice speaks at 1.0 (about 164 words a minute). Agents can't edit channel.json, so the new speed lives in generator/pack.py (OWNER_PACE) and overrides the 0.92 there.",
       "fix": "Optional: set voiceSpeed.short to 1.0 in channels/how-tech-and-ai-actually-work-chips-ai-p/channel.json so the file matches. Nothing breaks if you leave it."
+    },
+    {
+      "key": "one-short-a-day-loop",
+      "severity": "info",
+      "title": "At 1 Short a day the weekly loop can't reach a verdict",
+      "detail": "A test needs 8 Shorts a side (16 Shorts) within 7 days, extended once to 14. This channel makes 1 Short a day, so a test would end after 14 days with 7 a side and no verdict. No Shorts test is started here until it can finish; the next ones are queued (tech-mechanism-by-6s, then your calm-camera note as tech-calm-camera).",
+      "fix": "1. Dashboard → Channels → How Tech Works → Settings. 2. Set Shorts a day to 2 (the daily usage share is 27% now). Or leave it at 1 and the loop waits."
     }
   ]
 }

@@ -1,0 +1,88 @@
+{
+ "_source": "Watched in the built-in browser 2026-11-24: frames at 0, ~2, then every 5-15 s, audio probe on two. Our own descriptions; shots approximate; words not counted (no transcript), so words are 0.",
+ "durationSec": 77,
+ "artStyle": "cut-out photos",
+ "language": "hi",
+ "narrator": {
+  "kind": "none",
+  "pace": "normal"
+ },
+ "captions": {
+  "style": "none",
+  "position": "none"
+ },
+ "music": {
+  "present": true,
+  "energy": "high"
+ },
+ "sfxPerMinute": 0,
+ "hook": {
+  "firstFrame": "satellite relief India from above, no text",
+  "firstLine": "",
+  "question": true,
+  "subjectNamedAtSec": 2,
+  "figureShownAtSec": null,
+  "figureSpokenAtSec": null
+ },
+ "shots": [
+  {
+   "start": 0,
+   "end": 2,
+   "picture": "satellite India from above",
+   "kind": "map",
+   "characters": 0,
+   "camera": "push in",
+   "transition": "none",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 2
+  },
+  {
+   "start": 2,
+   "end": 6,
+   "picture": "camera lands on one state, it lights up; a die-cut photo of a singer stands on it with a name tag",
+   "kind": "map",
+   "characters": 1,
+   "camera": "follow",
+   "transition": "zoom",
+   "onScreenText": "name tag",
+   "figureOnScreen": false,
+   "motion": 3
+  },
+  {
+   "start": 6,
+   "end": 74,
+   "picture": "the same move repeats state by state: fly, light up, cut-out photo, name tag",
+   "kind": "map",
+   "characters": 1,
+   "camera": "follow",
+   "transition": "zoom",
+   "onScreenText": "state and name tags",
+   "figureOnScreen": false,
+   "motion": 3
+  },
+  {
+   "start": 74,
+   "end": 77,
+   "picture": "pull back to all of India with every visited state coloured",
+   "kind": "map",
+   "characters": 0,
+   "camera": "pull out",
+   "transition": "zoom",
+   "onScreenText": "",
+   "figureOnScreen": false,
+   "motion": 2
+  }
+ ],
+ "lines": [],
+ "ending": {
+  "loops": true,
+  "cta": "which state is your favourite singer from (title)",
+  "lastFrame": "whole India with states coloured"
+ },
+ "whyItWorks": [
+  "every viewer waits for their own state",
+  "one repeated move makes a long Short easy to follow",
+  "the coloured-in map at the end rewards watching to the end"
+ ]
+}

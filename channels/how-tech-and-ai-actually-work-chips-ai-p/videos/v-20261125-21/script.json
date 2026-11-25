@@ -1,0 +1,1123 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52817,
+  "story": "invention_story",
+  "shape": "versus",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "datahall",
+    "key": "E",
+    "bpm": 64,
+    "look": {
+      "stage": "studio",
+      "header": "strip",
+      "holder": "box",
+      "entrance": "drop"
+    }
+  },
+  "arms": {
+    "length": "45-60",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "28"
+  },
+  "hook_style": "secret",
+  "cta": "Curves or triangles: which would you have bet on? Comment",
+  "feed_id": "2026-11-25-nvidia-first-chip-nv1",
+  "facts": [
+    {
+      "label": "Transistors in NVIDIA's first chip, the NV1 (approximately)",
+      "value": 250,
+      "unit": "count_thousand",
+      "as_of": "2021-06-22",
+      "source": "Jon Peddie Research",
+      "url": "https://www.electronicdesign.com/technologies/embedded-revolution/article/21167684/jon-peddie-research-nvidias-quadratic-processor-the-nv1",
+      "fixed": true
+    },
+    {
+      "label": "Year NVIDIA was founded",
+      "value": 1993,
+      "unit": "year",
+      "as_of": "2021-06-22",
+      "source": "Jon Peddie Research",
+      "url": "https://www.electronicdesign.com/technologies/embedded-revolution/article/21167684/jon-peddie-research-nvidias-quadratic-processor-the-nv1",
+      "fixed": true
+    },
+    {
+      "label": "Price of an NV1 add-in board with 2 MB of DRAM",
+      "value": 250,
+      "unit": "money",
+      "currency": "USD",
+      "as_of": "1995-07-01",
+      "source": "Jon Peddie Research",
+      "url": "https://www.electronicdesign.com/technologies/embedded-revolution/article/21131077/nvidias-riva-128",
+      "fixed": true
+    },
+    {
+      "label": "Transistors in the RIVA 128 (1997)",
+      "value": 3.5,
+      "unit": "count_million",
+      "as_of": "1997-04-01",
+      "source": "Jon Peddie Research",
+      "url": "https://www.electronicdesign.com/technologies/embedded-revolution/article/21131077/nvidias-riva-128",
+      "fixed": true
+    },
+    {
+      "label": "Transistors in NVIDIA's Rubin GPU",
+      "value": 336,
+      "unit": "count_billion",
+      "as_of": "2026-01-05",
+      "source": "SiliconANGLE",
+      "url": "https://siliconangle.com/2026/01/05/nvidia-debuts-rubin-chip-336b-transistors-50-petaflops-ai-performance/",
+      "latest": true,
+      "checked": "2026-11-25"
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 1.6,
+    "words": "NVIDIA's *first* chip",
+    "tag": "Where it started",
+    "angle": "question",
+    "references": [
+      {
+        "id": "f13XH7gvEK8",
+        "views": 1784885,
+        "what": "the demand Short: the first NVIDIA card shown big and real, a few words about NVIDIA's first chip"
+      }
+    ],
+    "pattern": "the topic's hit sells the old card itself, big, with NVIDIA named; ours shows the real first NVIDIA card under a spotlight in our dark 3D studio with three words"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Almost no game could use NVIDIA's first graphics card.",
+      "events": {
+        "almost": {
+          "word": "Almost"
+        },
+        "game": {
+          "word": "game"
+        },
+        "could": {
+          "word": "could"
+        },
+        "use": {
+          "word": "use"
+        },
+        "nvidia's": {
+          "word": "NVIDIA's"
+        },
+        "first": {
+          "word": "first"
+        },
+        "graphics": {
+          "word": "graphics"
+        },
+        "card": {
+          "word": "card"
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Hook",
+        "place": [
+          "a dark studio stage, the real first NVIDIA card turning under a spotlight",
+          "a game shelf beside it, its boxes dark"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "use",
+            "size": "medium"
+          },
+          {
+            "at": "card",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "almost",
+            "what": "the real card swings into the spotlight, already turning, a dark game shelf beside it"
+          },
+          {
+            "at": "game",
+            "what": "the shelf's game boxes stay dark, one after another"
+          },
+          {
+            "at": "could",
+            "what": "a single box flickers on, then off"
+          },
+          {
+            "at": "use",
+            "what": "the spotlight flares on the card"
+          },
+          {
+            "at": "nvidia's",
+            "what": "the old NVIDIA wordmark writes on above the card"
+          },
+          {
+            "at": "first",
+            "what": "a label writes on: first NVIDIA card"
+          },
+          {
+            "at": "graphics",
+            "what": "a cyan scan line sweeps over the board"
+          },
+          {
+            "at": "card",
+            "what": "the camera pushes in on the card's big chip"
+          }
+        ],
+        "things": [
+          "real first-card photo",
+          "old NVIDIA wordmark",
+          "game shelf",
+          "dark game boxes",
+          "spotlight"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "nvidia's"
+        }
+      ]
+    },
+    {
+      "id": "bet",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "Its chip packed about {fact1} transistors and bet everything on curves.",
+      "events": {
+        "its": {
+          "word": "Its"
+        },
+        "chip": {
+          "word": "chip"
+        },
+        "packed": {
+          "word": "packed"
+        },
+        "about": {
+          "word": "about"
+        },
+        "transistors": {
+          "word": "transistors"
+        },
+        "bet": {
+          "word": "bet"
+        },
+        "everything": {
+          "word": "everything"
+        },
+        "curves": {
+          "word": "curves"
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Bet",
+        "place": "on top of NVIDIA's first chip package, its lid lifted, the die glowing",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "transistors",
+            "size": "extreme"
+          },
+          {
+            "at": "bet",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "its",
+            "what": "the first chip's package sits on the stage, its lid lifting off"
+          },
+          {
+            "at": "chip",
+            "what": "the die underneath lights up"
+          },
+          {
+            "at": "about",
+            "what": "the camera glides across the die"
+          },
+          {
+            "at": "packed",
+            "what": "the die's grid of cells glows in a wave"
+          },
+          {
+            "at": "transistors",
+            "what": "the count rolls up on a plate on the die's edge"
+          },
+          {
+            "at": "bet",
+            "what": "the camera rises off the die as a glowing smooth dome grows out of it"
+          },
+          {
+            "at": "everything",
+            "what": "the dome swells and ripples, a ring draws round it on the stage"
+          },
+          {
+            "at": "curves",
+            "what": "the curved surface shines, a label writes on: curves"
+          }
+        ],
+        "things": [
+          "first NVIDIA chip package",
+          "glowing die",
+          "transistor count plate",
+          "curved dome"
+        ],
+        "fig": {
+          "transistors": "{fact1}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "transistors"
+        }
+      ]
+    },
+    {
+      "id": "curves",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Bend one flat sheet into a smooth dome: a single patch, round edges.",
+      "events": {
+        "bend": {
+          "word": "Bend"
+        },
+        "flat": {
+          "word": "flat"
+        },
+        "sheet": {
+          "word": "sheet"
+        },
+        "smooth": {
+          "word": "smooth"
+        },
+        "dome": {
+          "word": "dome"
+        },
+        "single": {
+          "word": "single"
+        },
+        "patch": {
+          "word": "patch"
+        },
+        "round": {
+          "word": "round"
+        },
+        "edges": {
+          "word": "edges"
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Curves",
+        "place": "a drafting table of light: one glowing sheet bending into a dome",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "patch",
+            "size": "close"
+          },
+          {
+            "at": "round",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "bend",
+            "what": "a flat glowing sheet lies on a lit table"
+          },
+          {
+            "at": "flat",
+            "what": "its grid lines shine"
+          },
+          {
+            "at": "sheet",
+            "what": "its four corners lift and it bends up into a curve"
+          },
+          {
+            "at": "smooth",
+            "what": "the curve keeps rising"
+          },
+          {
+            "at": "dome",
+            "what": "it closes into a smooth dome, light running over it"
+          },
+          {
+            "at": "single",
+            "what": "the camera slides round the dome, a plate on the table edge lights: one piece"
+          },
+          {
+            "at": "patch",
+            "what": "its edges glow amber: one patch"
+          },
+          {
+            "at": "round",
+            "what": "its rim glows"
+          },
+          {
+            "at": "edges",
+            "what": "the light slides down its round edge"
+          }
+        ],
+        "things": [
+          "glowing table",
+          "flat sheet",
+          "bent curved patch",
+          "smooth dome",
+          "piece counter"
+        ]
+      }
+    },
+    {
+      "id": "triangles",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Other chips cut that dome into flat triangles. More pieces, each easy to draw.",
+      "events": {
+        "other": {
+          "word": "Other"
+        },
+        "chips": {
+          "word": "chips"
+        },
+        "cut": {
+          "word": "cut"
+        },
+        "dome": {
+          "word": "dome"
+        },
+        "flat": {
+          "word": "flat"
+        },
+        "triangles": {
+          "word": "triangles"
+        },
+        "more": {
+          "word": "More"
+        },
+        "pieces": {
+          "word": "pieces"
+        },
+        "each": {
+          "word": "each"
+        },
+        "easy": {
+          "word": "easy"
+        },
+        "draw": {
+          "word": "draw"
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Triangles",
+        "place": "the same dome beside it on the table, sliced into a triangle mesh",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "triangles",
+            "size": "close"
+          },
+          {
+            "at": "each",
+            "size": "extreme"
+          },
+          {
+            "at": "draw",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "other",
+            "what": "a second dome slides in beside the smooth one"
+          },
+          {
+            "at": "chips",
+            "what": "a rival chip lights up under it"
+          },
+          {
+            "at": "cut",
+            "what": "lines slice across the second dome"
+          },
+          {
+            "at": "dome",
+            "what": "it breaks into facets"
+          },
+          {
+            "at": "flat",
+            "what": "every facet turns flat"
+          },
+          {
+            "at": "triangles",
+            "what": "the mesh glows cyan, triangle by triangle"
+          },
+          {
+            "at": "more",
+            "what": "the triangles multiply"
+          },
+          {
+            "at": "pieces",
+            "what": "the mesh fills in denser"
+          },
+          {
+            "at": "each",
+            "what": "the camera dives onto one triangle"
+          },
+          {
+            "at": "easy",
+            "what": "its three corners light up and it fills in one sweep"
+          },
+          {
+            "at": "draw",
+            "what": "the camera pulls back: the faceted dome next to the smooth one"
+          }
+        ],
+        "things": [
+          "smooth dome",
+          "triangle mesh dome",
+          "rival chip",
+          "one lit triangle"
+        ]
+      }
+    },
+    {
+      "id": "directx",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Which would games use? Microsoft built DirectX, the Windows games toolkit, around triangles.",
+      "events": {
+        "which": {
+          "word": "Which"
+        },
+        "use": {
+          "word": "use"
+        },
+        "microsoft": {
+          "word": "Microsoft"
+        },
+        "built": {
+          "word": "built"
+        },
+        "directx": {
+          "word": "DirectX"
+        },
+        "windows": {
+          "word": "Windows"
+        },
+        "toolkit": {
+          "word": "toolkit"
+        },
+        "around": {
+          "word": "around"
+        },
+        "triangles": {
+          "word": "triangles"
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Toolkit",
+        "place": "an old beige PC on a desk, its monitor glowing, a game being built out of triangles",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "toolkit",
+            "size": "medium"
+          },
+          {
+            "at": "triangles",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "which",
+            "what": "a beige PC tower and monitor light up on a dark desk, the monitor flickering on"
+          },
+          {
+            "at": "use",
+            "what": "a game cartridge-style box slides toward the PC"
+          },
+          {
+            "at": "microsoft",
+            "what": "a label writes on: Microsoft"
+          },
+          {
+            "at": "built",
+            "what": "the monitor fills with a grid"
+          },
+          {
+            "at": "directx",
+            "what": "a label writes on: DirectX"
+          },
+          {
+            "at": "windows",
+            "what": "a race car shape builds on the monitor, triangle by triangle"
+          },
+          {
+            "at": "toolkit",
+            "what": "a stack of glowing layers rises from the PC"
+          },
+          {
+            "at": "around",
+            "what": "the camera pushes in on the screen"
+          },
+          {
+            "at": "triangles",
+            "what": "the car's triangle mesh flashes cyan"
+          }
+        ],
+        "things": [
+          "beige PC tower",
+          "CRT monitor",
+          "DirectX layers",
+          "triangle race car"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "directx"
+        }
+      ]
+    },
+    {
+      "id": "shelf",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Game makers chose triangles, and NVIDIA struggled to stay in business.",
+      "events": {
+        "game": {
+          "word": "Game"
+        },
+        "makers": {
+          "word": "makers"
+        },
+        "chose": {
+          "word": "chose"
+        },
+        "triangles": {
+          "word": "triangles"
+        },
+        "nvidia": {
+          "word": "NVIDIA"
+        },
+        "struggled": {
+          "word": "struggled"
+        },
+        "stay": {
+          "word": "stay"
+        },
+        "business": {
+          "word": "business"
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Shelf",
+        "place": [
+          "the game shelf again, triangle games lighting up",
+          "the first NVIDIA card alone, its light fading"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "triangles",
+            "size": "medium"
+          },
+          {
+            "at": "nvidia",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "game",
+            "what": "the shelf of game boxes from the start"
+          },
+          {
+            "at": "makers",
+            "what": "the boxes light up cyan, one after another"
+          },
+          {
+            "at": "chose",
+            "what": "a triangle badge stamps on each lit box"
+          },
+          {
+            "at": "triangles",
+            "what": "the whole shelf glows cyan"
+          },
+          {
+            "at": "nvidia",
+            "what": "the first NVIDIA card under one lamp"
+          },
+          {
+            "at": "struggled",
+            "what": "the lamp dims"
+          },
+          {
+            "at": "stay",
+            "what": "the card's chip fades to grey"
+          },
+          {
+            "at": "business",
+            "what": "the lamp gutters out to one dim pool"
+          }
+        ],
+        "things": [
+          "game shelf",
+          "triangle badges",
+          "first NVIDIA card",
+          "fading lamp"
+        ]
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "business"
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "NVIDIA threw the curves away. Its next chip, RIVA, drew triangles fast: {fact4} transistors.",
+      "events": {
+        "nvidia": {
+          "word": "NVIDIA"
+        },
+        "threw": {
+          "word": "threw"
+        },
+        "curves": {
+          "word": "curves"
+        },
+        "away": {
+          "word": "away"
+        },
+        "next": {
+          "word": "next"
+        },
+        "riva": {
+          "word": "RIVA"
+        },
+        "drew": {
+          "word": "drew"
+        },
+        "triangles": {
+          "word": "triangles"
+        },
+        "fast": {
+          "word": "fast"
+        },
+        "transistors": {
+          "word": "transistors"
+        },
+        "fig1": {
+          "sec": 7.2
+        },
+        "fig2": {
+          "sec": 8.2
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Riva",
+        "place": "the stage relit: the curved dome shatters, a new chip rises in its place",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "riva",
+            "size": "close"
+          },
+          {
+            "at": "fig1",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "nvidia",
+            "what": "the lights snap back on the stage"
+          },
+          {
+            "at": "threw",
+            "what": "the curved dome lifts off the table"
+          },
+          {
+            "at": "curves",
+            "what": "it cracks"
+          },
+          {
+            "at": "away",
+            "what": "it shatters into sparks and falls away"
+          },
+          {
+            "at": "next",
+            "what": "a new chip starts rising from the table"
+          },
+          {
+            "at": "riva",
+            "what": "the new chip rises from the table, a label writes on: RIVA"
+          },
+          {
+            "at": "drew",
+            "what": "triangles stream out of the chip"
+          },
+          {
+            "at": "triangles",
+            "what": "they snap together into a mesh"
+          },
+          {
+            "at": "fast",
+            "what": "the mesh spins fast, streaks behind it"
+          },
+          {
+            "at": "fig1",
+            "what": "the camera drops onto the chip's top"
+          },
+          {
+            "at": "fig2",
+            "what": "the count plate pulses as it climbs"
+          },
+          {
+            "at": "transistors",
+            "what": "its count rolls up on a plate beside the die"
+          }
+        ],
+        "things": [
+          "shattering curved dome",
+          "RIVA chip",
+          "streaming triangles",
+          "transistor count plate"
+        ],
+        "fig": {
+          "transistors": "{fact4}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "glass",
+          "at": "away"
+        },
+        {
+          "kind": "swell",
+          "at": "riva"
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "It sold, and NVIDIA never looked back. Today its newest chip, Rubin, packs {fact5} transistors.",
+      "events": {
+        "it": {
+          "word": "It"
+        },
+        "sold": {
+          "word": "sold"
+        },
+        "and": {
+          "word": "and"
+        },
+        "nvidia": {
+          "word": "NVIDIA"
+        },
+        "never": {
+          "word": "never"
+        },
+        "looked": {
+          "word": "looked"
+        },
+        "back": {
+          "word": "back"
+        },
+        "today": {
+          "word": "Today"
+        },
+        "newest": {
+          "word": "newest"
+        },
+        "chip": {
+          "word": "chip"
+        },
+        "rubin": {
+          "word": "Rubin"
+        },
+        "packs": {
+          "word": "packs"
+        },
+        "transistors": {
+          "word": "transistors"
+        },
+        "count": {
+          "sec": 6.8
+        },
+        "count2": {
+          "sec": 7.8
+        },
+        "count3": {
+          "sec": 8.8
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Rubin",
+        "place": "a data hall: a huge modern GPU module rising beside the tiny first chip",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "today",
+            "size": "wide"
+          },
+          {
+            "at": "rubin",
+            "size": "close"
+          },
+          {
+            "at": "transistors",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "it",
+            "what": "the RIVA chip glows, boxes stacking up behind it"
+          },
+          {
+            "at": "sold",
+            "what": "the boxes stack higher"
+          },
+          {
+            "at": "and",
+            "what": "a second row of boxes lands"
+          },
+          {
+            "at": "nvidia",
+            "what": "the chips line up, each bigger than the last"
+          },
+          {
+            "at": "never",
+            "what": "the line runs on into the dark"
+          },
+          {
+            "at": "looked",
+            "what": "each chip lights as the camera passes"
+          },
+          {
+            "at": "back",
+            "what": "the camera follows it"
+          },
+          {
+            "at": "today",
+            "what": "a server hall lights up around a huge modern GPU module"
+          },
+          {
+            "at": "newest",
+            "what": "its board glows"
+          },
+          {
+            "at": "chip",
+            "what": "the camera rises over its chip"
+          },
+          {
+            "at": "rubin",
+            "what": "a label writes on: Rubin"
+          },
+          {
+            "at": "packs",
+            "what": "the die's cells light in a wave"
+          },
+          {
+            "at": "count",
+            "what": "the plate's count starts rolling up"
+          },
+          {
+            "at": "count2",
+            "what": "the die's wave sweeps back, brighter"
+          },
+          {
+            "at": "count3",
+            "what": "the module's memory stacks flash green"
+          },
+          {
+            "at": "transistors",
+            "what": "the count rolls up on its plate; the tiny first chip shows beside it"
+          }
+        ],
+        "things": [
+          "RIVA chip",
+          "row of growing chips",
+          "server hall",
+          "Rubin GPU module",
+          "transistor count plate",
+          "tiny first chip"
+        ],
+        "fig": {
+          "transistors": "{fact5}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "transistors"
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "say": "Curves or triangles: which would you pick? NVIDIA learned the hard way.",
+      "events": {
+        "curves": {
+          "word": "Curves"
+        },
+        "triangles": {
+          "word": "triangles"
+        },
+        "which": {
+          "word": "which"
+        },
+        "would": {
+          "word": "would"
+        },
+        "pick": {
+          "word": "pick"
+        },
+        "nvidia": {
+          "word": "NVIDIA"
+        },
+        "learned": {
+          "word": "learned"
+        },
+        "hard": {
+          "word": "hard"
+        },
+        "way": {
+          "word": "way"
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Loop",
+        "place": [
+          "the drafting table: the smooth dome and the triangle dome side by side",
+          "the dark studio, the first NVIDIA card turning again"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "nvidia",
+            "size": "medium"
+          },
+          {
+            "at": "way",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "curves",
+            "what": "the smooth dome glows amber"
+          },
+          {
+            "at": "triangles",
+            "what": "the triangle dome glows cyan"
+          },
+          {
+            "at": "which",
+            "what": "both turn slowly"
+          },
+          {
+            "at": "would",
+            "what": "a balance tips between them"
+          },
+          {
+            "at": "pick",
+            "what": "it tips toward the triangles"
+          },
+          {
+            "at": "nvidia",
+            "what": "cut to the dark studio, the first NVIDIA card swinging in"
+          },
+          {
+            "at": "learned",
+            "what": "the spotlight comes up on it"
+          },
+          {
+            "at": "hard",
+            "what": "its chip flickers"
+          },
+          {
+            "at": "way",
+            "what": "the card settles into the opening shot"
+          }
+        ],
+        "things": [
+          "smooth dome",
+          "triangle dome",
+          "balance",
+          "real first-card photo",
+          "spotlight"
+        ]
+      }
+    }
+  ],
+  "narrator": "am_michael"
+}

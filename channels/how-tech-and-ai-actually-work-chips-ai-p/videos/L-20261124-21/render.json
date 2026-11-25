@@ -1,0 +1,564 @@
+{
+  "template": "long_story",
+  "renderer": "remotion",
+  "seed": 61307,
+  "duration_sec": 428,
+  "tempo": 1.25,
+  "style": {
+    "palette": "ember",
+    "genre": "datahall",
+    "key": "F",
+    "bpm": 63
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.15,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The chip in a modern phone holds billions of tiny switches, and its finest lines were printed with light made by blowing up drops of molten tin.",
+        "start": 0.27,
+        "seconds": 8.12,
+        "window": 8.77,
+        "fill": 0.926
+      },
+      {
+        "scene": "hook2",
+        "text": "The machine that does it, built by ASML, is about the size of a bus, and it blasts 50,000 drops of tin every second. So how does exploding metal end up as a chip?",
+        "start": 9.03,
+        "seconds": 9.93,
+        "window": 10.57,
+        "fill": 0.939
+      },
+      {
+        "scene": "route",
+        "text": "Follow the light through it. Tin becomes light, mirrors carry it, a mask gives it a pattern, and a silicon wafer takes the print.",
+        "start": 19.6,
+        "seconds": 6.9,
+        "window": 7.53,
+        "fill": 0.916
+      },
+      {
+        "scene": "route2",
+        "text": "Along the way, we'll see why no lens can do this job, how the newest machine prints even finer, and how one print becomes a working switch.",
+        "start": 27.13,
+        "seconds": 7.74,
+        "window": 8.4,
+        "fill": 0.921
+      },
+      {
+        "scene": "melt",
+        "text": "It starts with tin, a soft silvery metal, heated until it melts and flows like water.",
+        "start": 35.53,
+        "seconds": 4.73,
+        "window": 5.33,
+        "fill": 0.887
+      },
+      {
+        "scene": "drops",
+        "text": "A nozzle squeezes it out as a stream of tiny drops, each about 25 microns across, narrower than a human hair.",
+        "start": 40.87,
+        "seconds": 6.55,
+        "window": 7.17,
+        "fill": 0.914
+      },
+      {
+        "scene": "speed",
+        "text": "Each one leaves the nozzle at about 70 metres a second, and they never stop coming.",
+        "start": 48.03,
+        "seconds": 4.41,
+        "window": 5.03,
+        "fill": 0.877
+      },
+      {
+        "scene": "motorway",
+        "text": "That's faster than a car on a motorway, and the nozzle aims every one of them at the same tiny spot.",
+        "start": 53.07,
+        "seconds": 5.32,
+        "window": 5.97,
+        "fill": 0.891
+      },
+      {
+        "scene": "count",
+        "text": "How many? 50,000 drops every second, falling one after another through the very same spot.",
+        "start": 59.03,
+        "seconds": 5.26,
+        "window": 5.9,
+        "fill": 0.892
+      },
+      {
+        "scene": "why_many",
+        "text": "Why so many? Because every drop will become one short flash of light, and the machine needs a nonstop stream of flashes.",
+        "start": 64.93,
+        "seconds": 6.66,
+        "window": 7.3,
+        "fill": 0.912
+      },
+      {
+        "scene": "vacuum",
+        "text": "And it all happens in a vacuum. This kind of light is swallowed by almost everything, even the air.",
+        "start": 72.23,
+        "seconds": 5.35,
+        "window": 5.97,
+        "fill": 0.896
+      },
+      {
+        "scene": "tease1",
+        "text": "But a drop of tin doesn't glow on its own. So what turns it into light?",
+        "start": 78.2,
+        "seconds": 3.75,
+        "window": 4.37,
+        "fill": 0.858
+      },
+      {
+        "scene": "pre",
+        "text": "A laser. As each drop falls, a first, weaker pulse hits it and squashes it flat, like a tiny pancake.",
+        "start": 82.57,
+        "seconds": 6.18,
+        "window": 6.8,
+        "fill": 0.909
+      },
+      {
+        "scene": "why_flat",
+        "text": "Why flatten it? A wide, flat target catches far more of the next pulse, the big one.",
+        "start": 89.37,
+        "seconds": 4.59,
+        "window": 5.23,
+        "fill": 0.878
+      },
+      {
+        "scene": "main",
+        "text": "That main pulse is far more powerful, and it hits the pancake so hard that the tin becomes plasma, a gas so hot its atoms lose some of their electrons.",
+        "start": 94.6,
+        "seconds": 9.16,
+        "window": 9.8,
+        "fill": 0.935
+      },
+      {
+        "scene": "euv",
+        "text": "And that plasma glows. Not with light you could see, but with extreme ultraviolet light, at a wavelength of 13.5 nanometres.",
+        "start": 104.4,
+        "seconds": 7.85,
+        "window": 8.5,
+        "fill": 0.924
+      },
+      {
+        "scene": "short_wave",
+        "text": "What does that mean? The light our eyes see has waves many times longer. A shorter wave draws a finer line, like a sharp pencil next to a thick marker.",
+        "start": 112.9,
+        "seconds": 8.42,
+        "window": 9.07,
+        "fill": 0.928
+      },
+      {
+        "scene": "repeat",
+        "text": "Then it all repeats. Drop, flatten, flash, 50,000 times a second.",
+        "start": 121.97,
+        "seconds": 4.36,
+        "window": 5.0,
+        "fill": 0.872
+      },
+      {
+        "scene": "collect",
+        "text": "Behind every flash, a big curved mirror gathers the light and focuses it to one bright point at the far end of the chamber.",
+        "start": 126.97,
+        "seconds": 6.74,
+        "window": 7.37,
+        "fill": 0.915
+      },
+      {
+        "scene": "why_tin",
+        "text": "Why tin, of all things? Tin plasma happens to glow brightly at just this wavelength, so more of each flash is light the machine can use.",
+        "start": 134.33,
+        "seconds": 7.53,
+        "window": 8.17,
+        "fill": 0.922
+      },
+      {
+        "scene": "tease2",
+        "text": "So far: a drop, a flash, and light at 13.5 nanometres. Now it has to cross the machine, and this is where ordinary optics fail.",
+        "start": 142.5,
+        "seconds": 8.69,
+        "window": 9.33,
+        "fill": 0.931
+      },
+      {
+        "scene": "lens",
+        "text": "Why not a lens? A camera or a microscope bends light through glass. Try that here, and the glass simply swallows it.",
+        "start": 151.83,
+        "seconds": 6.52,
+        "window": 7.13,
+        "fill": 0.914
+      },
+      {
+        "scene": "no_lens",
+        "text": "So the light's path has no lenses at all. The machine steers it with mirrors instead.",
+        "start": 158.97,
+        "seconds": 4.19,
+        "window": 4.83,
+        "fill": 0.867
+      },
+      {
+        "scene": "layers",
+        "text": "Not ordinary mirrors, though. Each one is made of many very thin layers, two materials stacked one on top of the other.",
+        "start": 163.8,
+        "seconds": 6.56,
+        "window": 7.17,
+        "fill": 0.915
+      },
+      {
+        "scene": "add_up",
+        "text": "Each layer reflects back a little of the light, and all those small reflections line up into one strong bounce.",
+        "start": 170.97,
+        "seconds": 5.62,
+        "window": 6.27,
+        "fill": 0.896
+      },
+      {
+        "scene": "loss",
+        "text": "Why does that matter? Even the best mirror loses part of the light on every bounce, and the light bounces many times on its way down.",
+        "start": 177.23,
+        "seconds": 6.88,
+        "window": 7.5,
+        "fill": 0.917
+      },
+      {
+        "scene": "bright",
+        "text": "It is the reason the source must be so bright, and why these mirrors are polished to some of the smoothest surfaces ever made.",
+        "start": 184.73,
+        "seconds": 6.3,
+        "window": 6.93,
+        "fill": 0.909
+      },
+      {
+        "scene": "tease3",
+        "text": "So the light arrives clean and bright. But it carries no picture yet. Where does the pattern of a chip come from?",
+        "start": 191.67,
+        "seconds": 5.87,
+        "window": 6.5,
+        "fill": 0.903
+      },
+      {
+        "scene": "mask",
+        "text": "From the mask: a plate carrying the pattern of one layer of the chip, like a stencil.",
+        "start": 198.17,
+        "seconds": 4.41,
+        "window": 5.07,
+        "fill": 0.87
+      },
+      {
+        "scene": "reflective",
+        "text": "And even the mask is a mirror. The light bounces off its pattern instead of shining through it.",
+        "start": 203.23,
+        "seconds": 4.64,
+        "window": 5.3,
+        "fill": 0.875
+      },
+      {
+        "scene": "dark_bright",
+        "text": "Dark parts of it swallow the light, bright parts bounce it back, so the bounce carries the shape of the pattern.",
+        "start": 208.53,
+        "seconds": 5.58,
+        "window": 6.2,
+        "fill": 0.9
+      },
+      {
+        "scene": "dust",
+        "text": "That's also why the mask must stay perfectly clean. A single speck of dust on it would be printed onto every chip, again and again.",
+        "start": 214.73,
+        "seconds": 7.22,
+        "window": 7.83,
+        "fill": 0.922
+      },
+      {
+        "scene": "masks",
+        "text": "And each of the chip's finest layers gets its own mask. Swap the mask, and the same machine prints a different layer.",
+        "start": 222.57,
+        "seconds": 6.23,
+        "window": 6.87,
+        "fill": 0.907
+      },
+      {
+        "scene": "shrink",
+        "text": "Then more mirrors shrink that picture down and aim it at the wafer below, far smaller than the mask itself.",
+        "start": 229.43,
+        "seconds": 5.47,
+        "window": 6.1,
+        "fill": 0.897
+      },
+      {
+        "scene": "bigger_mask",
+        "text": "Drawing the mask bigger than the print it makes keeps its pattern easier to make accurately.",
+        "start": 235.53,
+        "seconds": 4.29,
+        "window": 4.9,
+        "fill": 0.876
+      },
+      {
+        "scene": "tease4",
+        "text": "And what is all that light printing onto?",
+        "start": 240.43,
+        "seconds": 1.88,
+        "window": 2.43,
+        "fill": 0.774
+      },
+      {
+        "scene": "wafer",
+        "text": "A wafer: a thin, polished disc of silicon, coated with a film called a resist, which changes wherever the light lands.",
+        "start": 242.87,
+        "seconds": 6.69,
+        "window": 7.33,
+        "fill": 0.913
+      },
+      {
+        "scene": "scan",
+        "text": "It sits on a stage that races back and forth under the light, printing the pattern again and again, chip after chip, across the whole disc.",
+        "start": 250.2,
+        "seconds": 7.23,
+        "window": 7.87,
+        "fill": 0.919
+      },
+      {
+        "scene": "step",
+        "text": "When one chip is done, the stage jumps to the next spot, and the next sweep begins, until every spot on the disc is printed.",
+        "start": 258.07,
+        "seconds": 6.74,
+        "window": 7.37,
+        "fill": 0.915
+      },
+      {
+        "scene": "sync",
+        "text": "Above it, the mask moves too, in perfect step, so every line lands exactly where it should.",
+        "start": 265.43,
+        "seconds": 5.0,
+        "window": 5.6,
+        "fill": 0.893
+      },
+      {
+        "scene": "slit",
+        "text": "How does the light print a whole chip at once? It doesn't. A thin slit of light sweeps across each one, like a scanner copying a page.",
+        "start": 271.03,
+        "seconds": 7.02,
+        "window": 7.67,
+        "fill": 0.915
+      },
+      {
+        "scene": "copies",
+        "text": "When the disc is done, it holds rows of identical chips, every one a copy of the same layer.",
+        "start": 278.7,
+        "seconds": 5.06,
+        "window": 5.7,
+        "fill": 0.888
+      },
+      {
+        "scene": "width",
+        "text": "And the finest lines a standard EUV machine prints are about 13 nanometres wide.",
+        "start": 284.4,
+        "seconds": 5.07,
+        "window": 5.7,
+        "fill": 0.889
+      },
+      {
+        "scene": "recap",
+        "text": "So far: tin becomes light, mirrors carry it, the mask shapes it, and the wafer takes the print. And the newest machine goes further.",
+        "start": 290.1,
+        "seconds": 7.13,
+        "window": 7.77,
+        "fill": 0.918
+      },
+      {
+        "scene": "hna",
+        "text": "It's called High-NA. Its mirrors are much bigger, and they catch the light at wider angles.",
+        "start": 297.87,
+        "seconds": 4.67,
+        "window": 5.33,
+        "fill": 0.876
+      },
+      {
+        "scene": "why_wide",
+        "text": "Why does a wider angle help? Light arriving from more directions can be focused to a tighter point, and a tighter point draws a finer line.",
+        "start": 303.2,
+        "seconds": 7.28,
+        "window": 7.9,
+        "fill": 0.922
+      },
+      {
+        "scene": "result",
+        "text": "The result: lines about 8 nanometres wide, where the standard machine draws 13.",
+        "start": 311.1,
+        "seconds": 4.67,
+        "window": 5.3,
+        "fill": 0.881
+      },
+      {
+        "scene": "ratio",
+        "text": "That's lines about 1.6× finer, so more switches fit on the same patch of silicon.",
+        "start": 316.4,
+        "seconds": 5.28,
+        "window": 5.9,
+        "fill": 0.895
+      },
+      {
+        "scene": "turn",
+        "text": "Yet one pass under this light never makes a chip. A single pass prints just one layer, and a chip needs dozens of them.",
+        "start": 322.3,
+        "seconds": 6.62,
+        "window": 7.27,
+        "fill": 0.911
+      },
+      {
+        "scene": "develop",
+        "text": "What happens after the print? The wafer leaves the machine, and the resist is washed away where the light changed it, leaving a stencil.",
+        "start": 329.57,
+        "seconds": 7.12,
+        "window": 7.77,
+        "fill": 0.916
+      },
+      {
+        "scene": "etch",
+        "text": "Then the gaps in that stencil are etched into the surface, or filled with metal.",
+        "start": 337.33,
+        "seconds": 3.85,
+        "window": 4.5,
+        "fill": 0.856
+      },
+      {
+        "scene": "strip",
+        "text": "The leftover resist is stripped off, a fresh layer goes on top, and the wafer goes back for the next print.",
+        "start": 341.83,
+        "seconds": 5.8,
+        "window": 6.43,
+        "fill": 0.902
+      },
+      {
+        "scene": "loop_layers",
+        "text": "Print, wash, etch, fill: the same loop runs again for every layer, each one lined up exactly on the one below.",
+        "start": 348.27,
+        "seconds": 6.47,
+        "window": 7.1,
+        "fill": 0.911
+      },
+      {
+        "scene": "transistors",
+        "text": "At the very bottom, the first layers build the switches themselves: transistors, each a tiny gate that lets current through or blocks it.",
+        "start": 355.37,
+        "seconds": 7.4,
+        "window": 7.97,
+        "fill": 0.928
+      },
+      {
+        "scene": "wires",
+        "text": "What joins them up? Above them, layer after layer of copper wiring connects billions of those switches together.",
+        "start": 363.33,
+        "seconds": 6.1,
+        "window": 6.73,
+        "fill": 0.906
+      },
+      {
+        "scene": "coarse",
+        "text": "And not every layer needs EUV. The bigger, coarser layers go to older machines that use longer-wave light, which costs less.",
+        "start": 370.07,
+        "seconds": 7.21,
+        "window": 7.87,
+        "fill": 0.916
+      },
+      {
+        "scene": "finest",
+        "text": "Only the finest layers, the ones packed tightest, take the trip through the tin and the mirrors.",
+        "start": 377.93,
+        "seconds": 4.74,
+        "window": 5.37,
+        "fill": 0.883
+      },
+      {
+        "scene": "cut",
+        "text": "After weeks of this, the finished wafer is sliced into separate chips.",
+        "start": 383.3,
+        "seconds": 3.58,
+        "window": 4.23,
+        "fill": 0.846
+      },
+      {
+        "scene": "phone_in",
+        "text": "One of them is packaged, tested, and soldered onto the board inside a phone like yours.",
+        "start": 387.53,
+        "seconds": 4.72,
+        "window": 5.37,
+        "fill": 0.879
+      },
+      {
+        "scene": "back",
+        "text": "So follow that chip back one last time. Its switches were printed by light, the light was steered by mirrors, and the mirrors were lit by a flash.",
+        "start": 392.9,
+        "seconds": 7.84,
+        "window": 8.47,
+        "fill": 0.926
+      },
+      {
+        "scene": "everywhere",
+        "text": "The most advanced chips in phones, laptops and data centres all depend on a machine like this one.",
+        "start": 401.37,
+        "seconds": 5.46,
+        "window": 6.1,
+        "fill": 0.895
+      },
+      {
+        "scene": "back2",
+        "text": "A flash from one drop of tin, flattened, then blasted by a laser, one of 50,000 every second.",
+        "start": 407.47,
+        "seconds": 6.04,
+        "window": 6.67,
+        "fill": 0.906
+      },
+      {
+        "scene": "payoff",
+        "text": "All so the phone in your hand can carry billions of switches on a chip smaller than a fingernail.",
+        "start": 414.13,
+        "seconds": 4.75,
+        "window": 5.37,
+        "fill": 0.885
+      },
+      {
+        "scene": "loop",
+        "text": "What should we open up next? Tell us. Somewhere right now, another drop of tin is about to become light.",
+        "start": 419.5,
+        "seconds": 5.44,
+        "window": 6.07,
+        "fill": 0.896
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.1,
+    "music_under_voice_db": 26.6
+  },
+  "craft_problems": [
+    "note: four shots in a row open medium (from 'result'): vary the shot size",
+    "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+    "note: directed is 64 of 64 composed beats (at most 40%): vary how each idea is shown",
+    "note: directed 4 times in a row: change the device"
+  ],
+  "liveliness": {
+    "median": 22.029,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

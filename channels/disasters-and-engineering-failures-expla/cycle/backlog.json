@@ -35,6 +35,15 @@
       "why": "Our three Shorts (v-20261121-42, v-20261122-41, v-20261123-41, render.json voice timings) leave the same 0.58-0.68 s after every line except one 2.6 s failure silence, so the voice runs at one rhythm. The references measured in research/sound.md vary theirs: Athena's 7.4M Short 0.4-1.7 s, Plainly Difficult 0.5-0.9 s, Major Disasters 0.8 s with a 6.7 s card. Unsure: a longer pause can also lose a swiper, so it is a test on held after the hook, not a default. Built in renderer/timeline/build.py beat gaps, behind a flag"
     },
     {
+      "id": "dd-hold-after-hook",
+      "kind": "look",
+      "area": "motion",
+      "metric": "heldAfterHook",
+      "from": "research 2026-11-25",
+      "test": "fast hook, then held shots: keep the champion's shot change about every 1-1.5 s for the first ~8 s, then hold each explanation shot 4-6 s (one shot size with a slow push or orbit, things still moving inside it and one live instrument such as altitude, water level or pressure ticking on a thing in the place), against the champion's even change about every 1.6 s for the whole Short",
+      "why": "Our four Shorts change shot size at one even rhythm from start to end: v-20261121-42 33 sizes in 49 s, v-20261122-41 28 in 48 s, v-20261123-41 27 in 47 s, v-20261124-41 27 in 46 s (params.camera), about one every 1.6 s, 6-7 in the first 10 s. The references speed up the hook and then hold: Athena's 7.4M Short about ten cuts in the first 10 s, then 5-7 s 3D shots; Inside Decoded's 1.9M Learjet Short holds 7-20 s shots with a telemetry panel; World explained's 2.5M keeps one vertical-speed meter through every shot (research/sheets, sampled, so their cut counts are lower bounds). Lac-Megantic, our only Short with retention, holds 43% stayed but only 23% after the hook. Unsure: a held shot can also feel slow, so it is a test on held after the hook; the liveliness gate (no 4 s stretch with nothing moving) and three shot sizes per video still apply. Built in the director prompt's camera plan behind a flag"
+    },
+    {
       "id": "dd-silent-card",
       "kind": "first-second",
       "test": "a 3-4 s silent date/warning card before the cold open against straight into the 3D cold open",

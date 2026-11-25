@@ -85,6 +85,7 @@ For `channels/disasters-and-engineering-failures-expla/` (build spec: its
   `Dam` (gravity / arch, `level` of the reservoir; a seeded valley terrain that frames a 9:16 shot
   from downstream; above 1 a streaming sheet pours over the crest and down the face, spray at the toe), `Building` (floors, bays,
   skin frame / glass / atrium, hung `walkways`), `Ride` (arm or coaster segment), `Member` (a strut a→b).
+- **SuspensionBridge** (`Suspension.tsx`, 2026-11-24, for v-20261124-41 Tacoma Narrows): two lattice-braced steel towers, parabolic main cables, hangers per deck segment, anchorages and side spans; the main span is `segments` deck pieces whose height and roll follow `deckPose(s, {twist, bounce, waves, phase})` (the one-node torsional twist, the galloping wave), `girder` "plate" (solid side plates) or "truss" (open stiffening truss), `hot` paints the rolling parts along the ramp, `gap` + `fall` drop a stretch of deck (its hangers go), `sway` swings the stubs, `cars` puts cars on the deck. `DeckSection` is one slice of deck for close shots.
 - **Every hero has `wrap` hooks** on the part that fails (`wrap.tailplane`, `wrapSpan[1]`,
   `wrapWalkway[4]`, `wrapArm`, `wrap[i]` per carriage…): put a `Failure3D` there.
 - **Failure3D** (`Failure3D.tsx`): `stress` 0–1 recolours the part along the ramp (all of it, or a `hot`

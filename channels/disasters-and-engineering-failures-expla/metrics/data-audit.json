@@ -1,39 +1,55 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-23T20:22:07.660Z",
+  "generatedAt": "2026-11-24T19:34:40.014Z",
   "channel": "disasters-and-engineering-failures-expla",
   "youtubeChecked": true,
   "summary": {
-    "videos": 5,
-    "checked": 5,
+    "videos": 7,
+    "checked": 6,
     "error": 0,
     "warning": 0,
-    "info": 1,
+    "info": 0,
     "owner": 0,
     "persistentErrors": 0
   },
-  "issues": [
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261123-41",
-      "youtubeId": "gl_scxu3_qQ",
-      "detail": "Dashboard shows 0 views, YouTube 135; live counts last refreshed never (they refresh while the dashboard is open)."
-    }
-  ],
+  "issues": [],
   "videos": [
+    {
+      "id": "v-20261124-41",
+      "title": "Why Did the Tacoma Narrows Bridge Twist Itself Apart?",
+      "youtubeId": "vDu93JQQFwg",
+      "state": "published",
+      "publishAt": "2026-11-24T17:47:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "public",
+        "views": 4,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261123-41",
       "title": "Kobe Bryant's Helicopter: Why Did the Pilot Think He Was Climbing?",
       "youtubeId": "gl_scxu3_qQ",
       "state": "published",
       "publishAt": "2026-11-23T17:47:00.000Z",
-      "dashboard": null,
+      "dashboard": {
+        "views": 447,
+        "likes": 4,
+        "comments": 1,
+        "liveAt": "2026-11-24T17:03:19.362Z"
+      },
       "youtube": {
         "privacy": "public",
-        "views": 135,
-        "likes": 3,
-        "comments": 0
+        "views": 451,
+        "likes": 4,
+        "comments": 1
       },
       "analytics": {
         "views": 0,
@@ -47,11 +63,16 @@
       "youtubeId": "55V_o42yLOc",
       "state": "published",
       "publishAt": "2026-11-23T17:17:00.000Z",
-      "dashboard": null,
+      "dashboard": {
+        "views": 15,
+        "likes": 1,
+        "comments": 0,
+        "liveAt": "2026-11-24T17:03:19.362Z"
+      },
       "youtube": {
         "privacy": "public",
-        "views": 0,
-        "likes": 0,
+        "views": 15,
+        "likes": 1,
         "comments": 0
       },
       "analytics": {
@@ -67,14 +88,14 @@
       "state": "published",
       "publishAt": "2026-11-22T17:47:00.000Z",
       "dashboard": {
-        "views": 1135,
+        "views": 1168,
         "likes": 10,
         "comments": 0,
-        "liveAt": "2026-11-23T16:35:10.101Z"
+        "liveAt": "2026-11-24T17:03:19.362Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1139,
+        "views": 1170,
         "likes": 10,
         "comments": 0
       },
@@ -91,14 +112,14 @@
       "state": "published",
       "publishAt": "2026-11-22T17:17:00.000Z",
       "dashboard": {
-        "views": 6,
+        "views": 9,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-11-23T16:35:10.101Z"
+        "liveAt": "2026-11-24T17:03:19.362Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 6,
+        "views": 9,
         "likes": 0,
         "comments": 0
       },
@@ -115,21 +136,21 @@
       "state": "published",
       "publishAt": "2026-11-21T17:47:00.000Z",
       "dashboard": {
-        "views": 435,
+        "views": 450,
         "likes": 11,
         "comments": 1,
-        "liveAt": "2026-11-23T16:35:10.101Z"
+        "liveAt": "2026-11-24T17:03:19.362Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 436,
+        "views": 450,
         "likes": 10,
         "comments": 1
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 149,
+        "days": 1,
+        "lastDay": "2026-11-21"
       }
     }
   ]

@@ -1,0 +1,117 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52207,
+  "duration_sec": 36,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "monsoon",
+    "key": "A",
+    "bpm": 92,
+    "look": {
+      "stage": "field",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "मध्य प्रदेश, उत्तर प्रदेश और बिहार, तीनों एक ही महीने में क्यों कटे?",
+        "start": 0.3,
+        "seconds": 3.35,
+        "window": 4.03,
+        "fill": 0.831
+      },
+      {
+        "scene": "promise",
+        "text": "नवंबर, सन दो हज़ार। हर एक के अंदर से एक नया स्टेट कटकर निकला। पर कैसे?",
+        "start": 4.33,
+        "seconds": 4.28,
+        "window": 4.93,
+        "fill": 0.868
+      },
+      {
+        "scene": "cg",
+        "text": "1 नवंबर को मध्य प्रदेश का दक्षिण-पूर्वी हिस्सा अलग होकर बना छत्तीसगढ़।",
+        "start": 9.27,
+        "seconds": 4.23,
+        "window": 4.7,
+        "fill": 0.9
+      },
+      {
+        "scene": "uk",
+        "text": "9 नवंबर को उत्तर प्रदेश के पहाड़ अलग हुए, और बना देश का स्टेट नंबर 27।",
+        "start": 13.97,
+        "seconds": 4.2,
+        "window": 4.87,
+        "fill": 0.862
+      },
+      {
+        "scene": "jh",
+        "text": "और 15 नवंबर को बिहार का दक्षिणी हिस्सा बना झारखंड।",
+        "start": 18.83,
+        "seconds": 2.96,
+        "window": 3.6,
+        "fill": 0.822
+      },
+      {
+        "scene": "turn",
+        "text": "इन इलाकों के लोग बरसों से अपना अलग स्टेट माँग रहे थे। पर स्टेट नंबर 27 का नाम कुछ और था।",
+        "start": 22.43,
+        "seconds": 5.14,
+        "window": 5.8,
+        "fill": 0.886
+      },
+      {
+        "scene": "payoff",
+        "text": "उसका नाम था उत्तरांचल। उत्तराखंड वो बना 2007 में।",
+        "start": 28.23,
+        "seconds": 3.07,
+        "window": 3.73,
+        "fill": 0.823
+      },
+      {
+        "scene": "loop",
+        "text": "आपका स्टेट कब बना? कमेंट कीजिए। और सोचिए, नक्शे पर",
+        "start": 31.97,
+        "seconds": 2.97,
+        "window": 3.63,
+        "fill": 0.818
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0,
+    "lufs": -13.8,
+    "music_under_voice_db": 33.0
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 10.122,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

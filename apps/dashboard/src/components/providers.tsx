@@ -12,7 +12,7 @@ import { ToastProvider } from "./toast";
 /**
  * Every query on screen re-fetches this often while the tab is visible. Was 30 s: an open dashboard then
  * re-read the same pages ~120 times an hour and alone used ~300 MB of Supabase egress a day (free plan:
- * 5 GB a month; 2026-11-23). The data behind it changes every 20 min (publish) to 3 h (stats) anyway.
+ * 5 GB a month; 2026-11-23). The data behind it changes hourly (publish) to every 3 h (stats) anyway.
  */
 export const LIVE_MS = 5 * 60_000;
 

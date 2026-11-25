@@ -1,0 +1,17 @@
+[
+  {
+    "id": "doc-document-first",
+    "area": "hook",
+    "format": "short",
+    "status": "running",
+    "startedAt": "2026-11-24",
+    "templates": [
+      "short_story"
+    ],
+    "guard": "qa_failures",
+    "minPerArm": 8,
+    "maxDays": 7,
+    "hypothesis": "A highlighted figure on a real document in frame 1 (KFC, 591K) holds viewers past the first second at least as well as the object (Labubu, Stanley); our first Shorts lean object-first, so this tests the champion.",
+    "cycle": 1
+  }
+]

@@ -1,0 +1,455 @@
+{
+  "id": "v-20261124-41",
+  "createdAt": "2026-11-24T16:31:13.195181+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Tacoma Narrows, 1940: a new suspension bridge twisted itself apart in a 42 mph wind, four months after it opened",
+    "category": "bridge",
+    "reach": "global",
+    "feed_id": "2026-11-24-tacoma-narrows-twist"
+  },
+  "title": "Why Did the Tacoma Narrows Bridge Twist Itself Apart?",
+  "description": "The Tacoma Narrows Bridge tore itself apart in a steady wind, just months after it opened. How does wind do that to steel?\nWe rebuild Galloping Gertie in 3D from Washington State's history of the bridge: the solid side plates, the twist that fed itself, the piece of deck that fell into the Narrows, and the wind-tunnel testing that followed.\nSources: WSDOT, Tacoma Narrows Bridge history (Nov 1940).\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.",
+  "hashtags": [
+    "#Shorts",
+    "#TacomaNarrows",
+    "#Engineering",
+    "#BridgeCollapse",
+    "#GallopingGertie"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Solid plates or an open truss: which would you drive across? Comment",
+  "seed": 51940,
+  "style": {
+    "palette": "paper",
+    "genre": "undertow",
+    "key": "E",
+    "bpm": 56,
+    "voice": "bm_lewis",
+    "arms": {
+      "length": "30-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Wind tore the Tacoma Narrows Bridge apart. How?",
+        "start": 0.3,
+        "seconds": 3.27,
+        "window": 3.93,
+        "fill": 0.832
+      },
+      {
+        "scene": "gertie",
+        "text": "It was four months old, and its builders called it Galloping Gertie.",
+        "start": 4.23,
+        "seconds": 3.94,
+        "window": 4.57,
+        "fill": 0.862
+      },
+      {
+        "scene": "flaw",
+        "text": "The flaw: solid steel plates down its sides, like a wall. The wind couldn't pass through.",
+        "start": 8.8,
+        "seconds": 5.54,
+        "window": 6.2,
+        "fill": 0.894
+      },
+      {
+        "scene": "twist",
+        "text": "That morning, the bouncing stopped. The deck began to twist. Why was that worse?",
+        "start": 15.0,
+        "seconds": 4.92,
+        "window": 5.57,
+        "fill": 0.883
+      },
+      {
+        "scene": "feed",
+        "text": "Each twist tipped an edge up, and the wind pushed it further. It fed itself.",
+        "start": 20.57,
+        "seconds": 4.88,
+        "window": 5.47,
+        "fill": 0.892
+      },
+      {
+        "scene": "payoff",
+        "text": "A 600-foot piece of deck fell into the water. No person died.",
+        "start": 28.2,
+        "seconds": 4.57,
+        "window": 5.23,
+        "fill": 0.874
+      },
+      {
+        "scene": "change",
+        "text": "Since then, long bridges are tested in wind tunnels first. Its replacement got an open truss.",
+        "start": 33.43,
+        "seconds": 6.54,
+        "window": 7.23,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "Plates or truss: which would you drive across? Gertie had the plates.",
+        "start": 40.67,
+        "seconds": 4.1,
+        "window": 4.77,
+        "fill": 0.86
+      }
+    ]
+  },
+  "durationSec": 46,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.6,
+    "lufs": -16.4,
+    "music_under_voice_db": 22.1
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_lewis",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of hook and gertie: 'Wind tore the Tacoma Narrows Bridge apart' true (WSDOT collapse.htm), 42 mph readout from fact2 and year from fact1 confirmed there; 'four months old, its builders called it Galloping Gertie' matches WSDOT stories-1940-bridge.htm; rest unchanged from previous pass; disclaimer ends description."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Directed 3D throughout. The hook shows the deck mid-twist with 42 mph on a gauge. The scenes are dark and lit, the feed loop labels are clean, and the payoff (30s) shows the tower, cables and both stubs with 600 FT on a dimension line across the gap. Captions are clear of every figure, the disclaimer is in the description, the ending loops with a pick-one, and the thumbnail shows the twisting deck."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-24T14:50:14.819861+00:00",
+      "finishedAt": "2026-11-24T14:50:14.819861+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T14:51:13.326916+00:00",
+      "finishedAt": "2026-11-24T14:51:13.326916+00:00",
+      "notes": [
+        "beat 'change'.params.moments[3].what contains a typed number; use a placeholder: 'cut to the new bridge, an open steel truss under the deck, caption 1950'",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T14:51:20.103675+00:00",
+      "finishedAt": "2026-11-24T14:51:20.103675+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T14:52:18.198305+00:00",
+      "finishedAt": "2026-11-24T14:52:18.198305+00:00",
+      "notes": [
+        "Beat 'gertie': 'drivers already called it Galloping Gertie' attributes the nickname to drivers, but WSDOT (stories-1940-bridge.htm) says one of the construction workers ('boomers') dubbed the bouncing span Galloping Gertie, and no reliable source says drivers coined or used it; say 'it was already called Galloping Gertie' or 'the men who built it called it Galloping Gertie'. Everything else checked: facts 1940/42/38/600 confirmed on wsdot.wa.gov/tnbhistory/collapse.htm (Nov 7 1940; 38 mph at 7:30, 42 mph near east end; 600-ft section fell 11:02); four months confirmed (stories-1940-bridge.htm, opened July 1 1940); vertical bounce then twisting at 10:03 (collapse.htm); solid plate girders as cause per Farquharson (collapse.htm, bridges-failure.htm), no 'resonance' claim; no human deaths (Wikipedia, WSDOT); wind-tunnel testing now commonplace (bridges-failure.htm); 1950 replacement used an open stiffening truss wind passes through (WSDOT tale-of-three-bridges-1950, Wikipedia); disclaimer ends the description."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T14:52:35.600456+00:00",
+      "finishedAt": "2026-11-24T14:52:35.600456+00:00",
+      "notes": [
+        "beat 'gertie': params.camera key at 'drivers' is not one of this beat's events"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T14:52:39.470844+00:00",
+      "finishedAt": "2026-11-24T14:52:39.470844+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T14:52:43.676770+00:00",
+      "finishedAt": "2026-11-24T14:52:43.676770+00:00",
+      "notes": [
+        "Re-review after fix: beat 'gertie' now credits the nickname to the men who built it, matching WSDOT stories-1940-bridge.htm (a 'boomer' dubbed the span Galloping Gertie); picture (workers on tower crossbeam, July->November card) fits. All facts confirmed on wsdot.wa.gov/tnbhistory/collapse.htm (1940, 38/42 mph, 600 ft); four months, twist at 10:03, solid plate girders cause, no human deaths, wind-tunnel testing, 1950 open truss confirmed; verify list satisfied; disclaimer ends description."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T14:58:01.497920+00:00",
+      "finishedAt": "2026-11-24T14:58:01.497920+00:00",
+      "notes": [
+        "beat 'change'.params.moments[3].what contains a typed number; use a placeholder: 'cut to the replacement bridge in 3D, an open steel truss under its deck, THE REPLACEMENT'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T14:58:05.585771+00:00",
+      "finishedAt": "2026-11-24T14:58:05.585771+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T14:58:50.285473+00:00",
+      "finishedAt": "2026-11-24T14:58:50.285473+00:00",
+      "notes": [
+        "Re-review of shortened lines: hook 42 mph (WSDOT collapse.htm), 'its builders called it Galloping Gertie' (WSDOT stories-1940-bridge.htm: a boomer dubbed it), solid plate sides as the flaw (Farquharson, collapse.htm), bounce then twist (10:03, collapse.htm), self-feeding twist (no resonance claim), 600-ft section and no human deaths unchanged, wind-tunnel testing now commonplace (bridges-failure.htm), 1950 replacement's open truss (WSDOT 1950 page); verify list met; disclaimer ends description. Note: some params anchors may no longer match the new words (e.g. gertie 'men', hook 'how')."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T14:58:41.127561+00:00",
+      "finishedAt": "2026-11-24T15:01:55.970951+00:00",
+      "notes": [
+        "the hook runs 5.0 s; keep it to 4 s or less",
+        "note: the turn starts at 46% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:02:24.990475+00:00",
+      "finishedAt": "2026-11-24T15:02:24.990475+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:03:10.295778+00:00",
+      "finishedAt": "2026-11-24T15:03:10.295778+00:00",
+      "notes": [
+        "Re-review of hook and gertie: 'Wind tore the Tacoma Narrows Bridge apart' true (WSDOT collapse.htm), 42 mph readout from fact2 and year from fact1 confirmed there; 'four months old, its builders called it Galloping Gertie' matches WSDOT stories-1940-bridge.htm; rest unchanged from previous pass; disclaimer ends description."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T15:03:03.493763+00:00",
+      "finishedAt": "2026-11-24T15:06:03.710240+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 10 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T15:06:57.049638+00:00",
+      "finishedAt": "2026-11-24T15:09:49.935639+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 10 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T15:10:41.553830+00:00",
+      "finishedAt": "2026-11-24T15:13:23.462501+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 10 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:14:14.507782+00:00",
+      "finishedAt": "2026-11-24T15:16:52.073816+00:00",
+      "notes": [
+        "46 s, paper/undertow (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T15:17:49.380499+00:00",
+      "finishedAt": "2026-11-24T15:17:49.380499+00:00",
+      "notes": [
+        "[scene] Story/lesson 7: the bridge is never seen twisting. 0.0s (hook 'Wind tore... apart'), 15.0s and 20.0s ('NOW IT TWISTS', 'The deck began to twist') and 25.0s ('Each twist tipped an edge up') all show a straight, level deck. The twist is the whole story and isn't in the picture. The hook's first frame should be the deck mid-twist, already amber (lesson 7). Beats hook, twist, feed in remotion/src/videos/v-20261124-41/.",
+        "[scene] Lesson 5 / 6b: the 3D is washed-out pale grey fog with flat low-poly water and no key light or dark background in 0.0s, 5.0s, 15.0s, 20.0s, 30.0s, 40.0s and 45.0s, and the lower half of 0.0s, 30.0s and 40.0s is empty water. Clearly emptier and paler than the reference v-20261121-42, which has lit night scenes with the subject big in frame.",
+        "[script] Rule D: 30.0s payoff, '600 FT OF DECK, GONE' is a floating headline card in the sky, not on a thing in the place. Put the figure on something in the scene (a tag on the torn deck end, a marker on the gap) and show the gap big in frame. The hook's wind figure (fig.wind 42 on the east-tower gauge, per params.place) doesn't appear in the 0.0s still.",
+        "[scene] Overlap/contrast: at 25.0s (feed beat) the dashed orange loop runs through the 'WIND PUSH' label and behind 'TWIST', and 'WIND PUSH' is drawn faint grey on dark, so it's hard to read.",
+        "[scene] Thumbnail: the plan promises the deck mid-twist, but it shows a straight yellow deck. The bottom ~55% is empty water, ghosted blurred label boxes sit behind the headline, and '42 MPH WIND' is a floating card, not on a gauge."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:20:08.604186+00:00",
+      "finishedAt": "2026-11-24T15:23:00.148413+00:00",
+      "notes": [
+        "46 s, paper/undertow (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T15:23:24.866309+00:00",
+      "finishedAt": "2026-11-24T15:23:24.866309+00:00",
+      "notes": [
+        "[scene] Rule D (payoff, 30.0s; 1.8 s into the beat, so settled): '600 FT OF DECK, GONE' is still a translucent card floating over open water at lower left, not on a thing in the place. Only a thin orange line with one tick runs along the horizon toward the gap, and nothing ties the card to it. The gap itself is small and far off at the right, and the lower ~60% of the frame is empty water. Put the figure on the bracket spanning the gap and push the camera in so the missing deck and the stub fill the frame."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:23:44.639169+00:00",
+      "finishedAt": "2026-11-24T15:26:38.912825+00:00",
+      "notes": [
+        "46 s, paper/undertow (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:28:05.883735+00:00",
+      "finishedAt": "2026-11-24T15:30:47.232352+00:00",
+      "notes": [
+        "46 s, paper/undertow (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:30:58.200392+00:00",
+      "finishedAt": "2026-11-24T15:33:33.629086+00:00",
+      "notes": [
+        "46 s, paper/undertow (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:33:47.355134+00:00",
+      "finishedAt": "2026-11-24T15:36:19.817552+00:00",
+      "notes": [
+        "46 s, paper/undertow (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T15:36:41.701802+00:00",
+      "finishedAt": "2026-11-24T15:36:41.701802+00:00",
+      "notes": [
+        "[scene] Payoff, 30.0s (f00900): the figure now sits on a dimension line, which is right, but the shot has lost the bridge. The two deck stubs are thin slivers at the far edges (the left one is cut by the frame edge at x≈0), there are no towers or hangers, and the cables are faint hairlines. About 85% of the frame is lit water and grey sky, so with the sound off this reads as '600 FT' over an empty sea, not a hole in a bridge (checks D, 4 and 11, mostly flat background). Pull the camera back or lower it so both towers, the sagging cables and both stubs (with hangers) are in frame and clearly big, keep the bracket between the stub ends, and keep both stubs inside the frame."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:36:58.271226+00:00",
+      "finishedAt": "2026-11-24T15:39:28.448718+00:00",
+      "notes": [
+        "46 s, paper/undertow (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:39:43.109633+00:00",
+      "finishedAt": "2026-11-24T15:39:43.109633+00:00",
+      "notes": [
+        "Directed 3D throughout. The hook shows the deck mid-twist with 42 mph on a gauge. The scenes are dark and lit, the feed loop labels are clean, and the payoff (30s) shows the tower, cables and both stubs with 600 FT on a dimension line across the gap. Captions are clear of every figure, the disclaimer is in the description, the ending loops with a pick-one, and the thumbnail shows the twisting deck."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T15:39:53.517532+00:00",
+      "finishedAt": "2026-11-24T16:31:04.538573+00:00",
+      "notes": [
+        "46 s, paper/undertow, peak -1.0 dB, mean -18.6 dB",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 44% of the video; between 50% and 85%",
+        "warning: integrated loudness -16.4 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-24T16:31:13.195471+00:00",
+      "finishedAt": "2026-11-24T16:31:13.195471+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261124-41",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261124-41"
+  }
+}

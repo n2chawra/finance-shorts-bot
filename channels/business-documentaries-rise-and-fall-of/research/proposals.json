@@ -39,6 +39,24 @@
       "status": "new",
       "route": "experiment",
       "priority": "normal"
+    },
+    {
+      "id": "market-queries-on-niche",
+      "date": "2026-11-25",
+      "area": "pipeline",
+      "title": "Narrow the market scan's searches to business stories",
+      "change": "In channels/business-documentaries-rise-and-fall-of/market.json replace the bare 'what happened to' query with business-specific ones ('what happened to the company', 'why did this brand disappear', 'founder story short') so market.yml's breakouts are on-niche",
+      "evidence": [
+        "origin/market-data business-documentaries-rise-and-fall-of/market.json (2026-11-24): of the 25 Shorts breakouts, 24 come from 'what happened to' and are off-niche (football, Roblox, K-pop, horror); the only business one is a French comedy sketch"
+      ],
+      "expectedEffect": "the nightly craft pass and demand scan get real business-Short breakouts instead of falling back to the 19 Nov niche scan",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "fewer results overall; keep 'rise and fall of a company' and the others",
+      "metric": "qa_failures",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
     }
   ]
 }

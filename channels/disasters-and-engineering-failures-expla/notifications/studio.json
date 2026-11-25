@@ -1,25 +1,3 @@
 {
-  "notifications": [
-    {
-      "key": "render-needs-live-session",
-      "severity": "warning",
-      "title": "Disaster Desk long renders take ~7 h and die when the cloud session goes idle",
-      "detail": "L-20261122-42's full render (8 min, heavy 3D) ran at ~35 min per 40 s chunk on the 4-core container. The container was reclaimed twice mid-render when the session had no running task; finished chunks survived and the render resumed, but a scheduled Studio run that ends its turn will lose the render.",
-      "fix": "1. Either keep long Disaster Desk videos lighter on 3D (the renderer's cost is the 3D beats), or 2. have Studio keep a background session task alive for the whole render (re-armed every 2 h), or 3. move long renders to a GitHub Actions job."
-    },
-    {
-      "key": "directed-chapters-gap",
-      "severity": "info",
-      "title": "Chapters for directed long videos must be written by hand",
-      "detail": "renderer/remotion.py (render.json 'chapters') only reads beats with scene 'chapter'; directed long videos mark chapters in params.chapter, so YouTube chapters come out as only 'Intro' unless written into the description (done by hand for L-20261122-42).",
-      "fix": "1. Add a feedback note for the auditor or improver: collect params.chapter beats as chapters in renderer/remotion.py, with a test."
-    },
-    {
-      "key": "hyatt-title-disputed-call",
-      "severity": "info",
-      "title": "Hyatt long video title states a disputed phone call as fact",
-      "detail": "L-20261121-42 is titled 'The Hyatt Walkway Collapse: One Phone Call Doubled the Load'. Studio's fact reviewer failed this same wording on 22 Nov: the engineering firm disputed receiving the call, and the federal report says the rod change (not a call) doubled the load. Suggested: 'One Rod Change Doubled the Load on This Walkway'.",
-      "fix": "1. On the dashboard, edit the title of L-20261121-42 before it publishes (or in YouTube Studio after)."
-    }
-  ]
+ "notifications": []
 }

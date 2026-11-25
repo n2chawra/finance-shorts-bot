@@ -28,12 +28,12 @@
         }
       },
       "health": {
-        "at": "2026-11-24T02:18:33.967Z",
+        "at": "2026-11-25T08:45:32.412Z",
         "color": "red",
-        "reason": "Geography, maps & geopolitical mysteries: The upload queue is empty; 1 Short ready: under a day",
-        "stayed": 0.5593561368209256,
+        "reason": "1 Short ready: under a day",
+        "stayed": 0.5643380343281951,
         "bufferDays": 0.5,
-        "usageShare": 0.04,
+        "usageShare": 0.03,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
@@ -77,19 +77,19 @@
         }
       },
       "health": {
-        "at": "2026-11-24T02:18:33.967Z",
+        "at": "2026-11-25T08:45:32.412Z",
         "color": "red",
         "reason": "How tech and AI actually work: chips, AI, phones, the internet and gadgets explained: under a day of Shorts ready; 0 Shorts ready: under a day",
-        "stayed": 0.5779976717112922,
+        "stayed": 0.536144578313253,
         "bufferDays": 0,
-        "usageShare": 0.2,
+        "usageShare": 0.28,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
-      "backlog": 0,
+      "backlog": 1,
       "backlogByFormat": {
         "short": 0,
-        "long": 0
+        "long": 1
       }
     },
     "business-documentaries-rise-and-fall-of": {
@@ -122,19 +122,19 @@
         }
       },
       "health": {
-        "at": "2026-11-24T02:18:33.967Z",
+        "at": "2026-11-25T08:45:32.412Z",
         "color": "red",
-        "reason": "Craze & Crash: The upload queue is empty",
-        "stayed": 0.2922077922077922,
-        "bufferDays": 1,
-        "usageShare": 0.07,
+        "reason": "Craze & Crash: under a day of Shorts ready; 1 Short ready: under a day",
+        "stayed": 0.4616013071895425,
+        "bufferDays": 0.5,
+        "usageShare": 0.06,
         "stayedBefore": null,
-        "weeksUnderFloor": 1
+        "weeksUnderFloor": 0
       },
-      "backlog": 3,
+      "backlog": 1,
       "backlogByFormat": {
-        "short": 2,
-        "long": 1
+        "short": 1,
+        "long": 0
       }
     },
     "disasters-and-engineering-failures-expla": {
@@ -167,18 +167,55 @@
         }
       },
       "health": {
-        "at": "2026-11-24T02:18:33.967Z",
+        "at": "2026-11-25T08:45:32.412Z",
         "color": "red",
         "reason": "Disasters and engineering failures explained: under a day of Shorts ready; 0 Shorts ready: under a day",
-        "stayed": null,
+        "stayed": 0.4700704225352113,
         "bufferDays": 0,
-        "usageShare": 0.66,
+        "usageShare": 0.6,
         "stayedBefore": null,
         "weeksUnderFloor": 0
       },
-      "backlog": 0,
+      "backlog": 1,
       "backlogByFormat": {
         "short": 0,
+        "long": 1
+      }
+    },
+    "india-maps": {
+      "name": "India Maps",
+      "status": "active",
+      "settings": {
+        "longPerWeek": 0,
+        "uploadTimes": [
+          "18:17",
+          "20:07"
+        ],
+        "uploadsPaused": false,
+        "dailyVideoTarget": 2,
+        "generationPaused": false,
+        "trendUploadTimes": []
+      },
+      "setup": {
+        "stage": "launched",
+        "decision": {
+          "at": "2026-11-24T05:49:25.068Z",
+          "choice": "continue"
+        }
+      },
+      "health": {
+        "at": "2026-11-25T08:45:32.412Z",
+        "color": "red",
+        "reason": "India Maps: The upload queue is empty; 1 Short ready: under a day",
+        "stayed": null,
+        "bufferDays": 0.5,
+        "usageShare": 0,
+        "stayedBefore": null,
+        "weeksUnderFloor": 0
+      },
+      "backlog": 1,
+      "backlogByFormat": {
+        "short": 1,
         "long": 0
       }
     }

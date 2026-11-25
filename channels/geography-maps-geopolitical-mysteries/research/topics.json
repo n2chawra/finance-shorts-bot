@@ -715,7 +715,9 @@
           "source": "US EIA (citing BP)",
           "url": "https://measuredworld.com/countries/qatar/resources/natural-gas-reserves"
         }
-      ]
+      ],
+      "status": "rejected",
+      "reason": "research 2026-11-25: its two facts come from an aggregator (measuredworld.com) and are over a year old; EIA's Qatar page gives no national reserves figure, and Singapore already holds the place_resources slot"
     },
     {
       "format": "short",
@@ -2291,6 +2293,480 @@
       "found": "2026-11-24",
       "expires": "2027-02-22",
       "status": "new"
+    },
+    {
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-25",
+      "expires": "2027-02-23",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-25-what-if-africa-split",
+      "title": "What if Africa split in two along the East African Rift?",
+      "category": "tectonics",
+      "stories": [
+        "what_if_world"
+      ],
+      "demand": {
+        "title": "What If Africa SPLIT in Two? 🤯😱 #countries #geography #maps",
+        "views": 299533,
+        "url": "https://youtube.com/shorts/z_tiqHEIx3w",
+        "channel": "SpaceGlitch",
+        "channelSubs": 4340,
+        "outlier": 69.0
+      },
+      "hook": "In 2005 the ground in Ethiopia split open along sixty kilometres in a matter of days. Africa is tearing in two. What happens when it finishes?",
+      "angle": "The African plate is pulling apart into the Nubian and Somali plates along the East African Rift. Run it forward: sea floods the Afar, a new coastline runs through Ethiopia and Kenya, and Somalia, half of Ethiopia and Kenya, and Tanzania's east become an island continent. When? Tens of millions of years.",
+      "why_now": "69x its channel (300K on 4.34K subs) this week; a what_if_world (core) with real science under it, and a tectonics category the feed doesn't have. Only one what_if_world topic is open against 15 why_shaped.",
+      "map_answer": "the rift line cracking down East Africa from the Afar to Mozambique, the sea pouring in, and the eastern piece drifting off as its own landmass",
+      "facts": [
+        {
+          "label": "Length of the 2005 rift section that split open in the Afar, in kilometres",
+          "value": 60,
+          "unit": "count",
+          "as_of": "2008-10-30",
+          "source": "University of Bristol",
+          "url": "https://bristol.ac.uk/news/2008/5960.html",
+          "fixed": true
+        },
+        {
+          "label": "Year the Dabbahu rift opened in the Afar",
+          "value": 2005,
+          "unit": "year",
+          "as_of": "2005-12-31",
+          "source": "University of Bristol",
+          "url": "https://bristol.ac.uk/news/2008/5960.html",
+          "fixed": true
+        },
+        {
+          "label": "Rate the African plate is splitting, in millimetres a year, lower bound",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2026-11-25",
+          "source": "Wikipedia, East African Rift",
+          "url": "https://en.wikipedia.org/wiki/East_African_Rift",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "Rate the African plate is splitting, in millimetres a year, upper bound",
+          "value": 9,
+          "unit": "count",
+          "as_of": "2026-11-25",
+          "source": "Wikipedia, East African Rift",
+          "url": "https://en.wikipedia.org/wiki/East_African_Rift",
+          "latest": true,
+          "checked": "2026-11-25"
+        }
+      ],
+      "verify": [
+        "The 2005 Dabbahu event: a 60 km section, some cracks over a metre wide (University of Bristol, 2008)",
+        "Say a new ocean would take millions (tens of millions) of years; never a date",
+        "The split is between the Nubian and Somali plates; which countries end up east is shown simplified and said to be simplified",
+        "The 8-9 mm a year rate is attributed; if the reviewer can't confirm it, drop it rather than guess"
+      ],
+      "sources": [
+        "https://bristol.ac.uk/news/2008/5960.html",
+        "https://en.wikipedia.org/wiki/East_African_Rift"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-25",
+      "expires": "2027-02-23",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-25-what-if-mexico-spain-swapped",
+      "title": "What if Mexico and Spain swapped places?",
+      "category": "size",
+      "stories": [
+        "what_if_world"
+      ],
+      "demand": {
+        "title": "What If Spain and Mexico Swapped Places? 🇪🇸🇲🇽     #WhatIf #Spain #Mexico #Geography #MapScenario",
+        "views": 173987,
+        "url": "https://youtube.com/shorts/-h_vvjNX-rY",
+        "channel": "World Geo",
+        "channelSubs": 494,
+        "outlier": 352.2
+      },
+      "hook": "Pick Mexico up and drop it where Spain is. It doesn't fit. Which countries is it sitting on now?",
+      "angle": "Moved onto Europe at the same size, Mexico covers Spain, Portugal and most of France; Spain dropped into Mexico's place is a small patch in the middle. Real areas and populations from the World Bank; code computes the ratios (Mexico is about 3.9 times Spain's area, 2.7 times its people).",
+      "why_now": "352x its channel (174K on 494 subs) this week; 'X moved to Y' what-ifs are breaking out across the scan (Brazil to Africa 268K, Indonesia to Europe 843K). A size category the feed lacks; the map answer is a true-scale overlay.",
+      "map_answer": "Mexico's outline sliding across the Atlantic and landing on Iberia at true scale, spilling over into France, then Spain's outline landing small inside Mexico",
+      "facts": [
+        {
+          "label": "Mexico's surface area in square kilometres",
+          "value": 1957193.9,
+          "unit": "count",
+          "as_of": "2024-12-31",
+          "source": "World Bank (AG.SRF.TOTL.K2)",
+          "url": "https://api.worldbank.org/v2/country/MEX/indicator/AG.SRF.TOTL.K2?format=json&mrv=1",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "Spain's surface area in square kilometres",
+          "value": 505981.25,
+          "unit": "count",
+          "as_of": "2024-12-31",
+          "source": "World Bank (AG.SRF.TOTL.K2)",
+          "url": "https://api.worldbank.org/v2/country/ESP/indicator/AG.SRF.TOTL.K2?format=json&mrv=1",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "Mexico's population",
+          "value": 131946900,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "World Bank (SP.POP.TOTL)",
+          "url": "https://api.worldbank.org/v2/country/MEX/indicator/SP.POP.TOTL?format=json&mrv=1",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "Spain's population",
+          "value": 49355143,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "World Bank (SP.POP.TOTL)",
+          "url": "https://api.worldbank.org/v2/country/ESP/indicator/SP.POP.TOTL?format=json&mrv=1",
+          "latest": true,
+          "checked": "2026-11-25"
+        }
+      ],
+      "verify": [
+        "Every ratio is computed in code from the four facts",
+        "Overlays are drawn at true scale (equal-area), and the video says maps are simplified",
+        "Which countries the moved outline covers is read off the overlay, not claimed in words beyond what it shows",
+        "Say it is a thought experiment"
+      ],
+      "sources": [
+        "https://api.worldbank.org/v2/country/MEX/indicator/AG.SRF.TOTL.K2?format=json&mrv=1",
+        "https://api.worldbank.org/v2/country/ESP/indicator/AG.SRF.TOTL.K2?format=json&mrv=1"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-25",
+      "expires": "2027-02-23",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-25-what-if-alps-vanished",
+      "title": "What if the Alps disappeared?",
+      "category": "mountains",
+      "stories": [
+        "what_if_world"
+      ],
+      "demand": {
+        "title": "We deleted every country the Alps touch… how many survive? 🏔️✂️",
+        "views": 144343,
+        "url": "https://youtube.com/shorts/FJQQLP0TOQw",
+        "channel": "What If Atlas",
+        "channelSubs": 188,
+        "outlier": 767.8
+      },
+      "hook": "Delete the Alps from the map. Eight countries change overnight. Which one loses the most?",
+      "angle": "The Alps run 1,200 km through eight states and hold about 14.8 million people. Flatten them and the rivers that start there (Rhine, Rhone, Po) lose their source, Switzerland and Austria lose their shape, and the wall between Italy and the north is gone.",
+      "why_now": "768x its channel (144K on 188 subs) this week; a what_if_world (core) on a mountains category the feed doesn't have.",
+      "map_answer": "the Alpine arc lifting off the map from Nice to Vienna, the eight countries it touched lighting up one by one, the rivers it fed draining from their source",
+      "facts": [
+        {
+          "label": "Length of the Alps as the Alpine Convention defines them, in kilometres",
+          "value": 1200,
+          "unit": "count",
+          "as_of": "2026-11-25",
+          "source": "Wikipedia, Alpine Convention",
+          "url": "https://en.wikipedia.org/wiki/Alpine_Convention",
+          "fixed": true
+        },
+        {
+          "label": "Area covered by the Alpine Convention, in square kilometres",
+          "value": 190717,
+          "unit": "count",
+          "as_of": "2026-11-25",
+          "source": "Wikipedia, Alpine Convention",
+          "url": "https://en.wikipedia.org/wiki/Alpine_Convention",
+          "fixed": true
+        },
+        {
+          "label": "Countries the Alps span",
+          "value": 8,
+          "unit": "count",
+          "as_of": "2026-11-25",
+          "source": "Alpine Convention",
+          "url": "https://www.alpconv.org/en/home/",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "People living in the Alps",
+          "value": 14.8,
+          "unit": "count_million",
+          "as_of": "2026-11-25",
+          "source": "Alpine Convention",
+          "url": "https://www.alpconv.org/en/home/",
+          "latest": true,
+          "checked": "2026-11-25"
+        }
+      ],
+      "verify": [
+        "The eight states: Austria, France, Germany, Italy, Liechtenstein, Monaco, Slovenia, Switzerland",
+        "Rhine, Rhone and Po rising in the Alps needs a source page (Britannica); any climate effect is attributed or left out",
+        "Say it is a thought experiment"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Alpine_Convention",
+        "https://www.alpconv.org/en/home/"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-25",
+      "expires": "2027-02-23",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-25-italy-seven-pieces-one-country",
+      "title": "How did seven states become one Italy?",
+      "category": "unification",
+      "stories": [
+        "why_shaped"
+      ],
+      "demand": {
+        "title": "How Italy Became One Country, From 7 Pieces to 1 Kingdom 🤯  #geography #animation #history #shorts",
+        "views": 232358,
+        "url": "https://youtube.com/shorts/nxDPo6F6vx0",
+        "channel": "Geo Cartovia",
+        "channelSubs": 782,
+        "outlier": 297.1
+      },
+      "hook": "Italy is younger than the United States. In 1859 the boot was cut into pieces. Two years later it was one kingdom. How?",
+      "angle": "Before 1859 the peninsula was Piedmont-Sardinia, Austrian Lombardy-Venetia, Parma, Modena, Tuscany, the Papal States and the Two Sicilies. Piece by piece they joined Piedmont: by early 1860 five states were left, the Kingdom of Italy was proclaimed on 17 March 1861, Rome was taken in 1870 and made capital in 1871.",
+      "why_now": "297x its channel (232K on 782 subs) this week, and the same channel's Spain version did 95K: 'how a country was assembled' breaks out. A why_shaped answer drawn as pieces snapping together.",
+      "map_answer": "the boot cut into seven coloured pieces that merge into one colour in order, with the capital pin hopping Turin, Florence, Rome",
+      "facts": [
+        {
+          "label": "Year the Kingdom of Italy was proclaimed",
+          "value": 1861,
+          "unit": "year",
+          "as_of": "1861-03-17",
+          "source": "Wikipedia, Unification of Italy",
+          "url": "https://en.wikipedia.org/wiki/Unification_of_Italy",
+          "fixed": true
+        },
+        {
+          "label": "States left on the peninsula by early 1860",
+          "value": 5,
+          "unit": "count",
+          "as_of": "1860-03-31",
+          "source": "Wikipedia, Unification of Italy",
+          "url": "https://en.wikipedia.org/wiki/Unification_of_Italy",
+          "fixed": true
+        },
+        {
+          "label": "Year Rome was captured",
+          "value": 1870,
+          "unit": "year",
+          "as_of": "1870-12-31",
+          "source": "Wikipedia, Unification of Italy",
+          "url": "https://en.wikipedia.org/wiki/Unification_of_Italy",
+          "fixed": true
+        },
+        {
+          "label": "Year Rome was made capital of Italy",
+          "value": 1871,
+          "unit": "year",
+          "as_of": "1871-12-31",
+          "source": "Wikipedia, Unification of Italy",
+          "url": "https://en.wikipedia.org/wiki/Unification_of_Italy",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "The list of states before 1859 and the 'seven' count (San Marino stayed independent; say so or leave it out)",
+        "Venetia joining in 1866 needs a source before it is said",
+        "'Younger than the United States' (1776 vs 1861) is computed or dropped",
+        "Told as historians agree; no sides"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Unification_of_Italy",
+        "https://www.britannica.com/place/Rome/Capital-of-a-united-Italy"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-25",
+      "expires": "2027-02-23",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-25-half-the-world-in-one-circle",
+      "title": "Why do more than half the world's people live inside one circle?",
+      "category": "population",
+      "stories": [
+        "why_shaped"
+      ],
+      "demand": {
+        "title": "Did you know half the world lives here? 🌏 #geography #population #map",
+        "views": 37165,
+        "url": "https://youtube.com/shorts/-rbahnmNXdI",
+        "channel": "Mapstory",
+        "channelSubs": 74,
+        "outlier": 502.2
+      },
+      "hook": "Draw one circle on the map of Asia. More people live inside it than in the whole rest of the world. Where is it?",
+      "angle": "An LSE economist found the smallest circle holding a majority of humanity is centred near Mong Khet, Myanmar, with a 3,300 km radius (2015 data); the earlier Reddit-famous circle was about 4,000 km. Why there: monsoon rice plains of the Ganges, the Yangtze and Java.",
+      "why_now": "502x its channel (37K on 74 subs) this week; an evergreen map oddity whose answer is a circle drawn on the map.",
+      "map_answer": "a circle drawn from Myanmar out to India, China, Japan and Indonesia, the world outside it fading while a counter of people inside rises past half",
+      "facts": [
+        {
+          "label": "Radius of the smallest circle holding a majority of the world's people, in kilometres",
+          "value": 3300,
+          "unit": "count",
+          "as_of": "2015-12-16",
+          "source": "LSE (Danny Quah)",
+          "url": "https://blogs.lse.ac.uk/maths/2015/12/16/the-worlds-tightest-cluster-of-people/",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "Radius of the earlier, larger circle, in kilometres",
+          "value": 4000,
+          "unit": "count",
+          "as_of": "2015-12-16",
+          "source": "LSE (Danny Quah)",
+          "url": "https://blogs.lse.ac.uk/maths/2015/12/16/the-worlds-tightest-cluster-of-people/",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "World population",
+          "value": 8215424893,
+          "unit": "count",
+          "as_of": "2025-12-31",
+          "source": "World Bank (SP.POP.TOTL)",
+          "url": "https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?format=json&mrv=1",
+          "latest": true,
+          "checked": "2026-11-22"
+        }
+      ],
+      "verify": [
+        "The circle is from 2015 population data; say so (populations have shifted since)",
+        "Centre near Mong Khet, Myanmar (LSE)",
+        "Why the rice plains are so crowded needs a source or is left as a question"
+      ],
+      "sources": [
+        "https://blogs.lse.ac.uk/maths/2015/12/16/the-worlds-tightest-cluster-of-people/"
+      ]
+    },
+    {
+      "kind": "evergreen",
+      "priority": "normal",
+      "templates": [
+        "any"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "found": "2026-11-25",
+      "expires": "2027-02-23",
+      "status": "new",
+      "format": "short",
+      "id": "2026-11-25-everest-not-tallest",
+      "title": "Is Everest really the tallest mountain on Earth?",
+      "category": "mountains_rank",
+      "stories": [
+        "ranking_map"
+      ],
+      "demand": {
+        "title": "The Tallest Mountain On Earth Isn't Everest",
+        "views": 20444,
+        "url": "https://youtube.com/shorts/jcZ4KSIUIes",
+        "channel": "Geo Scope",
+        "channelSubs": 898,
+        "outlier": 22.8
+      },
+      "hook": "Everest is the highest mountain on Earth. It isn't the tallest, and it isn't the closest to space. Which one is?",
+      "angle": "NOAA: Everest's summit is 8,848 m above sea level, Mauna Kea is more than 10,210 m from its sea-floor base to peak, and Ecuador's Chimborazo (6,268 m) sits over 2,072 m farther from Earth's centre than Everest because the planet bulges at the equator. Three winners, three rulers.",
+      "why_now": "23x its channel this week, and Thoughty2/RealLifeLore long videos on it hold about a million each; an official NOAA page gives every figure. A ranking_map (low tier) test with a map answer: the three peaks on the globe.",
+      "map_answer": "a globe with its equator bulge exaggerated, three pins (Nepal, Hawaii, Ecuador) and three rulers measuring from sea level, from the sea floor and from Earth's centre",
+      "facts": [
+        {
+          "label": "Height of Everest's summit above sea level in metres",
+          "value": 8848,
+          "unit": "count",
+          "as_of": "2026-09-23",
+          "source": "NOAA",
+          "url": "https://oceanservice.noaa.gov/facts/highestpoint.html",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "Height of Mauna Kea from base to peak in metres (more than)",
+          "value": 10210,
+          "unit": "count",
+          "as_of": "2026-09-23",
+          "source": "NOAA",
+          "url": "https://oceanservice.noaa.gov/facts/highestpoint.html",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "Height of Chimborazo's summit above sea level in metres",
+          "value": 6268,
+          "unit": "count",
+          "as_of": "2026-09-23",
+          "source": "NOAA",
+          "url": "https://oceanservice.noaa.gov/facts/highestpoint.html",
+          "latest": true,
+          "checked": "2026-11-25"
+        },
+        {
+          "label": "How much farther Chimborazo's summit is from Earth's centre than Everest's, in metres (over)",
+          "value": 2072,
+          "unit": "count",
+          "as_of": "2026-09-23",
+          "source": "NOAA",
+          "url": "https://oceanservice.noaa.gov/facts/highestpoint.html",
+          "latest": true,
+          "checked": "2026-11-25"
+        }
+      ],
+      "verify": [
+        "Say 'more than' for Mauna Kea and 'over' for Chimborazo's distance, as NOAA does",
+        "Everest's newer survey figure (8,848.86 m, 2020) differs; use NOAA's as published and don't mix them"
+      ],
+      "sources": [
+        "https://oceanservice.noaa.gov/facts/highestpoint.html"
+      ]
     }
   ]
 }

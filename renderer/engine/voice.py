@@ -22,6 +22,7 @@ import numpy as np
 from scipy.signal import resample_poly
 
 from .audio import SR
+from .hindi_numbers import spoken_hindi
 
 # Owner-picked by ear on 2026-10-16: the Indian female voice (the other Indian
 # ones sounded bad) and five American ones.
@@ -35,15 +36,18 @@ _SCALES = {"K": "thousand", "M": "million", "B": "billion", "T": "trillion",
            "thousand": "thousand", "million": "million", "billion": "billion", "trillion": "trillion"}
 
 
-def spoken(display: str, currency: str = "INR") -> str:
+def spoken(display: str, currency: str = "INR", lang: str = "en-us") -> str:
     """An on-screen figure as it should be read aloud, in the script's currency.
 
     '₹12.4 L' → 'twelve point four lakh rupees', '₹15,00,000' → 'fifteen lakh rupees',
     '$1.2M' → 'one point two million dollars', '£12,500' → 'twelve thousand five hundred pounds',
     '12%' → 'twelve percent', '2.4×' → 'two point four times'. Plain numbers are read the Indian
     way (lakh, crore) only in a rupee story. Numbers are written out in words: the voice model reads
-    digit strings badly ("ten zero zero zero zero" for 10,000).
+    digit strings badly ("ten zero zero zero zero" for 10,000). A Hindi channel (`lang` "hi") reads
+    them in Hindi words instead (renderer/engine/hindi_numbers.py); every other language is unchanged.
     """
+    if lang.split("-")[0] == "hi":
+        return spoken_hindi(display)
     s = display.strip()
     if re.fullmatch(r"(1[89]|20)\d\d", s):      # a year fact: "2018" → "twenty eighteen"
         return year_words(int(s))
@@ -148,21 +152,21 @@ def _trim(num: str) -> str:
 
 
 def fill_lines(lines: dict[str, str], scenes: list[str], figures: dict[str, str], max_line: int = MAX_LINE,
-               currency: str = "INR") -> dict[str, str]:
+               currency: str = "INR", lang: str = "en-us") -> dict[str, str]:
     """Validate the script's voice lines and put spoken figures into their placeholders."""
     if not isinstance(lines, dict) or not lines:
         raise ValueError("voice must be an object of {scene: line}")
     unknown = sorted(set(lines) - set(scenes))
     if unknown:
         raise ValueError(f"voice has lines for unknown scenes {unknown}; scenes are: {', '.join(scenes)}")
-    words = {k: spoken(v, currency) for k, v in figures.items()}
+    words = {k: spoken(v, currency, lang) for k, v in figures.items()}
     out = {}
     for scene, raw in lines.items():
         if not isinstance(raw, str) or not raw.strip():
             raise ValueError(f"voice.{scene} must be a non-empty line")
         if len(raw) > max_line:
             raise ValueError(f"voice.{scene} is {len(raw)} characters; keep it under {max_line}")
-        if re.search(r"[0-9₹$£€]", re.sub(r"\{[a-z][a-z0-9_]*\}", "", raw)):   # names may hold digits
+        if re.search(r"[0-9०-९₹$£€]", re.sub(r"\{[a-z][a-z0-9_]*\}", "", raw)):   # names may hold digits
             raise ValueError(f"voice.{scene} contains a typed number; use a placeholder: {raw!r}")
         try:
             out[scene] = raw.format_map(words)
@@ -207,10 +211,10 @@ class Timed:
 _PUNCT = set(",.!?;:—–-…\"'()")
 
 
-def words_from_phonemes(text: str, phonemes: list[tuple[str, float, float]]) -> list[tuple[str, float, float]]:
-    """Group a phoneme stream into the text's words. Kokoro separates words with " " phonemes, so
-    the groups line up with `text.split()`; if a word was phonemized as two (or two as one), the
-    words are spread over the groups proportionally instead, which is close enough for captions."""
+_STOPS = set("?!.।")
+
+
+def _word_groups(phonemes: list[tuple[str, float, float]], split_on_stops: bool) -> list[tuple[float, float]]:
     groups: list[tuple[float, float]] = []
     start = end = None
     for p, a, b in phonemes:
@@ -218,15 +222,33 @@ def words_from_phonemes(text: str, phonemes: list[tuple[str, float, float]]) -> 
             if start is not None:
                 groups.append((start, end))
             start = end = None
-        elif p in _PUNCT or p in "ˈˌː":
+        elif p in _PUNCT or p in "ˈˌː" or (split_on_stops and p in _STOPS):
             if start is not None:
                 end = b if p in "ˈˌː" else end
+            if split_on_stops and p in _STOPS and start is not None:   # a sentence ends the word, space or not
+                groups.append((start, end))
+                start = end = None
         else:
             start = a if start is None else start
             end = b
     if start is not None:
         groups.append((start, end))
+    return groups
+
+
+def words_from_phonemes(text: str, phonemes: list[tuple[str, float, float]], lang: str = "en-us") -> list[tuple[str, float, float]]:
+    """Group a phoneme stream into the text's words. Kokoro separates words with " " phonemes, so
+    the groups line up with `text.split()`; if a word was phonemized as two (or two as one), the
+    words are spread over the groups proportionally instead, which is close enough for captions.
+
+    Hindi (India Maps, 2026-11-24): Kokoro speaks a long line in batches, and where one batch ends on
+    "?" or "!" the next word follows with no " " phoneme ("hɛː?sˈaːl" for "है? साल"), so two words
+    became one group and the whole line fell back to even spreading. For "hi", a sentence stop also
+    ends a word. English keeps its grouping exactly."""
+    groups = _word_groups(phonemes, False)
     words = text.split()
+    if lang.split("-")[0] == "hi" and len(groups) != len(words):
+        groups = _word_groups(phonemes, True)
     if not words or not groups:
         return []
     if len(groups) == len(words):
@@ -242,13 +264,13 @@ def speak_timed(text: str, voice: str, speed: float, lang: str = "en-us") -> Tim
     line is cached by (model, voice, speed, text): rebuilding a timeline after a picture-only
     change re-speaks nothing. `lang` is the channel's language (generator/pack.py), not the voice's: channel
     #1's Indian voice speaks English. The cache key only grows a language for a non-English channel."""
-    lang_key = "" if lang == "en-us" else f"|{lang}"
+    lang_key = "" if lang == "en-us" else f"|{lang}" + ("|runs2" if lang.split("-")[0] == "hi" else "")   # Hindi: spoken in runs
     key = hashlib.sha256(f"{MODEL}|{voice}|{speed:.4f}{lang_key}|{text}".encode()).hexdigest()[:24]
     cached = model_dir()/"lines"/f"{key}.npz"
     if cached.is_file():
         z = np.load(cached)
         phon = [(p, float(a), float(e)) for p, a, e in json.loads(str(z["phonemes"]))]
-        return Timed(text, voice, speed, z["samples"].astype(np.float64), phon, words_from_phonemes(text, phon))
+        return Timed(text, voice, speed, z["samples"].astype(np.float64), phon, words_from_phonemes(text, phon, lang))
     t = _speak_timed(text, voice, speed, lang)
     cached.parent.mkdir(parents=True, exist_ok=True)
     tmp = cached.with_suffix(".tmp.npz")
@@ -257,11 +279,53 @@ def speak_timed(text: str, voice: str, speed: float, lang: str = "en-us") -> Tim
     return t
 
 
+HINDI_CHUNK = 160      # characters of Devanagari Kokoro speaks in one go (well under its 510-phoneme batch)
+
+
+@dataclass(frozen=True)
+class _Mark:
+    phoneme: str
+    start: float
+    end: float
+
+
+def hindi_chunks(text: str, limit: int = HINDI_CHUNK) -> list[str]:
+    """A Hindi line split after its sentence stops (। ? !) into runs of at most `limit` characters."""
+    sentences = [x for x in re.split(r"(?<=[।?!])\s+", text.strip()) if x]
+    out: list[str] = []
+    for x in sentences:
+        if out and len(out[-1]) + 1 + len(x) <= limit:
+            out[-1] += " " + x
+        else:
+            out.append(x)
+    return out
+
+
+def _create_timed_hindi(engine, text: str, voice: str, speed: float):
+    """Hindi (India Maps, 2026-11-24): Devanagari phonemizes long, so a long line fills Kokoro's
+    510-phoneme batch to the brim, and in such a full batch the speech is rushed, the timings run late
+    and the last words collapse to zero length past the audio's end. Each run of sentences is spoken
+    on its own instead, with a word break between runs. The phonemizer drops the danda, so a "।" is
+    read as a full stop (the model then pauses after it, as after "?")."""
+    parts, marks, offset, sr = [], [], 0.0, 24000
+    for i, chunk in enumerate(hindi_chunks(text)):
+        samples, sr, timings = engine.create_timed(chunk.replace("।", "."), voice=voice, speed=speed, lang="hi")
+        if i:
+            marks.append(_Mark(" ", offset, offset))
+        marks += [_Mark(t.phoneme, t.start + offset, t.end + offset) for t in timings]
+        parts.append(np.asarray(samples, dtype=np.float32))
+        offset += len(samples)/sr
+    return np.concatenate(parts), sr, marks
+
+
 def _speak_timed(text: str, voice: str, speed: float, lang: str = "en-us") -> Timed:
     engine = _engine()
     if not getattr(engine, "has_timings", False):
         raise RuntimeError("this voice model has no timing output; run: bash scripts/setup-voice.sh")
-    samples, sr, timings = engine.create_timed(text, voice=voice, speed=speed, lang=lang)
+    if lang.split("-")[0] == "hi":
+        samples, sr, timings = _create_timed_hindi(engine, text, voice, speed)
+    else:
+        samples, sr, timings = engine.create_timed(text, voice=voice, speed=speed, lang=lang)
     x = np.asarray(samples, dtype=np.float64)
     loud = np.flatnonzero(np.abs(x) > 0.01)
     lead = max(0, loud[0] - int(0.02*sr)) if loud.size else 0
@@ -270,4 +334,4 @@ def _speak_timed(text: str, voice: str, speed: float, lang: str = "en-us") -> Ti
     shift = lead/sr
     phon = [(t.phoneme, max(0.0, t.start - shift), max(0.0, t.end - shift)) for t in timings]
     y = resample_poly(x, SR, sr) if sr != SR else x
-    return Timed(text, voice, speed, y, phon, words_from_phonemes(text, phon))
+    return Timed(text, voice, speed, y, phon, words_from_phonemes(text, phon, lang))

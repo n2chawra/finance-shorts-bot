@@ -1,0 +1,1098 @@
+{
+  "id": "L-20261124-41",
+  "createdAt": "2026-11-24T12:21:41.847994+00:00",
+  "status": "qa_passed",
+  "format": "long",
+  "template": "long_story",
+  "topic": {
+    "title": "The Titan Submersible Implosion",
+    "category": "deep-sea tourism",
+    "feed_id": "2026-11-20-titan-submersible",
+    "reach": "global"
+  },
+  "title": "The Titan Submersible Implosion: What Really Happened",
+  "description": "A carbon-fibre submersible dived toward the wreck of the Titanic with five people aboard and never came back up.\nWe rebuild Titan in 3D and follow the two investigations, the NTSB's and the U.S. Coast Guard Marine Board's: a hull nobody certified, a loud bang on an earlier dive, warnings that were set aside, and the last minutes of the dive.\nThen what both boards found, and what they asked to change.\n\nCHAPTERS\n0:00 Intro\n0:45 The Trip\n1:47 The Pressure\n2:42 The Hull\n4:20 The Warnings\n5:39 The Last Dive\n7:32 The Findings\n8:31 What Changed\n\nSources: US National Transportation Safety Board, Hull Failure and Implosion of Submersible Titan (final report, October 2025); U.S. Coast Guard Marine Board of Investigation report (August 2025).\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.\n\nReport: US National Transportation Safety Board, MIR2536, page 73 of 87, Public domain (US government work) (https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf)\nReport: US National Transportation Safety Board, MIR2536, page 74 of 87, Public domain (US government work) (https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf)\nReport: US National Transportation Safety Board, MIR2536, page 75 of 87, Public domain (US government work) (https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf)",
+  "hashtags": [
+    "#Titan",
+    "#OceanGate",
+    "#Titanic",
+    "#Engineering",
+    "#DisasterDesk"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Which warning should have stopped Titan? Tell us in the comments",
+  "seed": 24141,
+  "style": {
+    "palette": "ocean",
+    "genre": "brace",
+    "key": "D",
+    "bpm": 68,
+    "voice": "am_michael"
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.15,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "The submersible Titan dived with a hull that was likely damaged on an earlier dive. All 5 people aboard died.",
+        "start": 0.27,
+        "seconds": 6.95,
+        "window": 7.47,
+        "fill": 0.93
+      },
+      {
+        "scene": "hook-depth",
+        "text": "June 18, 2023. On its support ship, a screen tracks it sinking toward the wreck of the Titanic.",
+        "start": 7.73,
+        "seconds": 7.05,
+        "window": 7.5,
+        "fill": 0.94
+      },
+      {
+        "scene": "hook-msg",
+        "text": "At 3,363 metres, it sends a text: it has dropped two weights. The ship answers. Nothing comes back.",
+        "start": 15.23,
+        "seconds": 7.88,
+        "window": 8.33,
+        "fill": 0.946
+      },
+      {
+        "scene": "hook-gone",
+        "text": "7 seconds after that message, the hull gave way. What broke it was there long before that morning.",
+        "start": 23.57,
+        "seconds": 5.96,
+        "window": 6.47,
+        "fill": 0.921
+      },
+      {
+        "scene": "promise",
+        "text": "Not one mistake, but a chain of them: a hull nobody certified, a bang on dive 80, and warnings that were waved away.",
+        "start": 30.03,
+        "seconds": 7.59,
+        "window": 8.13,
+        "fill": 0.934
+      },
+      {
+        "scene": "promise2",
+        "text": "This story has seven parts: the trip, the pressure, the hull, the warnings, the last dive, the findings, and what changed.",
+        "start": 38.17,
+        "seconds": 7.05,
+        "window": 7.57,
+        "fill": 0.931
+      },
+      {
+        "scene": "t-what",
+        "text": "What was Titan? A small submersible built by a company called OceanGate, to carry paying guests to the Titanic.",
+        "start": 45.73,
+        "seconds": 7.16,
+        "window": 7.57,
+        "fill": 0.946
+      },
+      {
+        "scene": "t-map",
+        "text": "The wreck lies in the North Atlantic, about 370 nautical miles southeast of St. John's, Newfoundland.",
+        "start": 53.3,
+        "seconds": 7.26,
+        "window": 7.73,
+        "fill": 0.939
+      },
+      {
+        "scene": "t-depth",
+        "text": "It rests 3,880 metres down, on the ocean floor, in total darkness. How do you get people there and back?",
+        "start": 61.03,
+        "seconds": 7.9,
+        "window": 8.27,
+        "fill": 0.955
+      },
+      {
+        "scene": "t-price",
+        "text": "OceanGate typically charged $250,000 for a seat. A dive to the wreck was meant to last about eight hours.",
+        "start": 69.3,
+        "seconds": 7.87,
+        "window": 8.4,
+        "fill": 0.937
+      },
+      {
+        "scene": "t-board",
+        "text": "On the morning of the dive, five people climbed in: the pilot, who ran the company, a Titanic expert, and three paying guests.",
+        "start": 77.7,
+        "seconds": 7.59,
+        "window": 8.17,
+        "fill": 0.929
+      },
+      {
+        "scene": "t-bolts",
+        "text": "Then the crew bolted the front dome shut, with 18 bolts. Only the crew outside could open it again.",
+        "start": 85.87,
+        "seconds": 6.12,
+        "window": 6.6,
+        "fill": 0.927
+      },
+      {
+        "scene": "t-sink",
+        "text": "At about 9 in the morning, Titan let go of its platform and began to sink. How fast? About 30 metres every minute.",
+        "start": 92.47,
+        "seconds": 7.39,
+        "window": 7.77,
+        "fill": 0.951
+      },
+      {
+        "scene": "t-tease",
+        "text": "The trip down was meant to take about two and a half hours. And the whole way, something was squeezing the hull harder and harder.",
+        "start": 100.23,
+        "seconds": 6.88,
+        "window": 7.47,
+        "fill": 0.921
+      },
+      {
+        "scene": "p-sea",
+        "text": "What is squeezing it? At sea level, the air presses on every square inch with about 14.7 pounds.",
+        "start": 107.7,
+        "seconds": 6.57,
+        "window": 7.07,
+        "fill": 0.929
+      },
+      {
+        "scene": "p-deep",
+        "text": "At the Titanic, the water presses with 5,554.5 pounds on every square inch.",
+        "start": 114.77,
+        "seconds": 6.74,
+        "window": 7.4,
+        "fill": 0.911
+      },
+      {
+        "scene": "p-car",
+        "text": "That is more than the weight of a family car, on every square inch of the hull.",
+        "start": 122.17,
+        "seconds": 4.37,
+        "window": 4.8,
+        "fill": 0.91
+      },
+      {
+        "scene": "p-how",
+        "text": "How does anything survive that? A pressure hull keeps the people inside at normal air pressure, and takes the whole load itself.",
+        "start": 126.97,
+        "seconds": 7.5,
+        "window": 7.97,
+        "fill": 0.941
+      },
+      {
+        "scene": "p-tube",
+        "text": "Titan's hull was a tube of carbon fibre, 5 inches thick, capped at each end with a titanium dome.",
+        "start": 134.93,
+        "seconds": 6.52,
+        "window": 7.07,
+        "fill": 0.922
+      },
+      {
+        "scene": "p-domes",
+        "text": "The carbon tube was glued into two titanium rings, and the domes were bolted onto the rings.",
+        "start": 142.0,
+        "seconds": 5.63,
+        "window": 6.27,
+        "fill": 0.898
+      },
+      {
+        "scene": "p-why",
+        "text": "Why carbon fibre? It is light. The company's chief believed it was better at being squeezed than stretched.",
+        "start": 148.27,
+        "seconds": 6.42,
+        "window": 6.93,
+        "fill": 0.926
+      },
+      {
+        "scene": "p-tease",
+        "text": "But what happens to that tube when it is squeezed and released, dive after dive? OceanGate never properly tested it.",
+        "start": 155.2,
+        "seconds": 7.03,
+        "window": 7.57,
+        "fill": 0.929
+      },
+      {
+        "scene": "u-model",
+        "text": "Were there early warnings? In 2016, a one-third scale model of the hull imploded in a test, at about 4,200 metres.",
+        "start": 162.77,
+        "seconds": 9.14,
+        "window": 9.63,
+        "fill": 0.949
+      },
+      {
+        "scene": "u-first",
+        "text": "The first full-size hull was built in 2018. On deep test dives, people inside heard cracking sounds.",
+        "start": 172.4,
+        "seconds": 7.2,
+        "window": 7.8,
+        "fill": 0.923
+      },
+      {
+        "scene": "u-crack",
+        "text": "In 2019, a worker spotted a hairline crack. It started at a delamination, where layers inside the carbon had come apart.",
+        "start": 180.2,
+        "seconds": 8.21,
+        "window": 8.7,
+        "fill": 0.944
+      },
+      {
+        "scene": "u-done",
+        "text": "The director of engineering said that hull was done, and would not sign off on the next trip. He was let go soon after.",
+        "start": 188.9,
+        "seconds": 7.28,
+        "window": 7.67,
+        "fill": 0.949
+      },
+      {
+        "scene": "u-second",
+        "text": "So a second hull was built: five bonded layers of carbon fibre, about 5 inches thick in all.",
+        "start": 196.57,
+        "seconds": 6.35,
+        "window": 6.73,
+        "fill": 0.944
+      },
+      {
+        "scene": "u-test",
+        "text": "How was the new hull proven? It was pressure tested once, in 2021, to a simulated 4,200 metres. Then it went to work.",
+        "start": 203.3,
+        "seconds": 9.26,
+        "window": 9.7,
+        "fill": 0.955
+      },
+      {
+        "scene": "u-model2",
+        "text": "Its own test models failed too. One, wrinkled inside, imploded at 2,800 metres, shallower than the Titanic.",
+        "start": 213.0,
+        "seconds": 8.05,
+        "window": 8.57,
+        "fill": 0.939
+      },
+      {
+        "scene": "u-window",
+        "text": "And the window in the front dome? Its maker certified it to just 1,000 metres. The wreck lies at 3,880.",
+        "start": 221.57,
+        "seconds": 8.26,
+        "window": 8.83,
+        "fill": 0.935
+      },
+      {
+        "scene": "u-reuse",
+        "text": "Its domes, its rings and its window were not new. They came off the first hull, and were used again.",
+        "start": 230.4,
+        "seconds": 5.69,
+        "window": 6.2,
+        "fill": 0.918
+      },
+      {
+        "scene": "u-letter",
+        "text": "In 2018, dozens of submarine experts signed a draft letter of concern. It warned the experimental approach could end in catastrophe.",
+        "start": 236.6,
+        "seconds": 8.99,
+        "window": 9.53,
+        "fill": 0.943
+      },
+      {
+        "scene": "u-class",
+        "text": "Was Titan ever certified by a classification society, the bodies that check ships? No. OceanGate dropped the idea.",
+        "start": 246.13,
+        "seconds": 7.76,
+        "window": 8.3,
+        "fill": 0.935
+      },
+      {
+        "scene": "u-tease",
+        "text": "So Titan went to sea without it. And one day, on the way up from the Titanic, everyone heard a bang.",
+        "start": 254.43,
+        "seconds": 5.89,
+        "window": 6.33,
+        "fill": 0.93
+      },
+      {
+        "scene": "w-dives",
+        "text": "In 2021 and 2022, Titan reached the wreck 13 times.",
+        "start": 260.77,
+        "seconds": 4.82,
+        "window": 5.37,
+        "fill": 0.898
+      },
+      {
+        "scene": "w-night",
+        "text": "On one dive in 2022, its batteries died before it could land back on its platform. The guests spent the night inside, on the surface.",
+        "start": 266.13,
+        "seconds": 8.8,
+        "window": 9.43,
+        "fill": 0.933
+      },
+      {
+        "scene": "w-bang",
+        "text": "On dive 80, in July 2022, as Titan climbed back up, the guests inside and a boat crew on the surface heard a loud bang.",
+        "start": 275.57,
+        "seconds": 8.9,
+        "window": 9.4,
+        "fill": 0.947
+      },
+      {
+        "scene": "w-told",
+        "text": "What was it? The guests were told the hull had shifted in its cradle.",
+        "start": 284.97,
+        "seconds": 3.79,
+        "window": 4.23,
+        "fill": 0.896
+      },
+      {
+        "scene": "w-sensors",
+        "text": "Titan carried sensors that listened for cracking in the hull. On dive 80, they showed a burst of noise, and a sudden jump in strain.",
+        "start": 289.2,
+        "seconds": 8.21,
+        "window": 8.57,
+        "fill": 0.958
+      },
+      {
+        "scene": "w-again",
+        "text": "The chief looked at the data, and wanted to keep diving. Titan went down three more times that summer.",
+        "start": 297.77,
+        "seconds": 6.05,
+        "window": 6.5,
+        "fill": 0.931
+      },
+      {
+        "scene": "w-damage",
+        "text": "Investigators later found the hull was likely damaged after dive 80, with layers coming apart inside the wall.",
+        "start": 304.27,
+        "seconds": 7.31,
+        "window": 7.83,
+        "fill": 0.934
+      },
+      {
+        "scene": "w-lot",
+        "text": "After that summer, Titan was left outside in a parking lot in St. John's, uncovered, as winter came.",
+        "start": 312.1,
+        "seconds": 6.54,
+        "window": 7.03,
+        "fill": 0.93
+      },
+      {
+        "scene": "w-tow",
+        "text": "In 2023, it no longer rode on a ship's deck. It was towed behind the ship, on its platform, through the open sea.",
+        "start": 319.13,
+        "seconds": 7.6,
+        "window": 8.03,
+        "fill": 0.946
+      },
+      {
+        "scene": "w-fairing",
+        "text": "On one trip, in high seas, it lost part of its outer shell. Divers had to make repairs.",
+        "start": 327.17,
+        "seconds": 5.66,
+        "window": 6.13,
+        "fill": 0.923
+      },
+      {
+        "scene": "w-tease",
+        "text": "Cold, towing, time. OceanGate never tested what they did to the hull. Dive 88 would show it.",
+        "start": 333.3,
+        "seconds": 6.42,
+        "window": 6.93,
+        "fill": 0.926
+      },
+      {
+        "scene": "l-arrive",
+        "text": "June 18. The support ship Polar Prince reaches the dive site early in the morning.",
+        "start": 340.23,
+        "seconds": 5.07,
+        "window": 5.6,
+        "fill": 0.905
+      },
+      {
+        "scene": "l-pause",
+        "text": "Five people climb inside. Then everyone, on the sub and the ship, takes a few silent minutes to check the plan.",
+        "start": 345.83,
+        "seconds": 6.94,
+        "window": 7.4,
+        "fill": 0.938
+      },
+      {
+        "scene": "l-go",
+        "text": "Divers sink the platform. Titan lets go, and starts down. It is the first dive this year deeper than 10 metres.",
+        "start": 353.23,
+        "seconds": 7.33,
+        "window": 7.9,
+        "fill": 0.928
+      },
+      {
+        "scene": "l-plan",
+        "text": "The plan: two and a half hours down, three hours at the wreck, and two and a half hours back up.",
+        "start": 361.13,
+        "seconds": 5.49,
+        "window": 5.87,
+        "fill": 0.935
+      },
+      {
+        "scene": "l-comms",
+        "text": "How does the ship keep track? A screen shows its depth, and every ten to fifteen minutes, ship and sub trade text messages.",
+        "start": 367.0,
+        "seconds": 7.32,
+        "window": 7.7,
+        "fill": 0.951
+      },
+      {
+        "scene": "l-down",
+        "text": "Down it goes, past where any sunlight reaches, into total darkness, with only its own lamps for light.",
+        "start": 374.7,
+        "seconds": 6.62,
+        "window": 7.13,
+        "fill": 0.928
+      },
+      {
+        "scene": "l-last",
+        "text": "At 3,363 metres, Titan sends a message: it has dropped two weights, a normal step to slow down near the bottom.",
+        "start": 381.83,
+        "seconds": 8.58,
+        "window": 9.1,
+        "fill": 0.943
+      },
+      {
+        "scene": "l-reply",
+        "text": "A minute later, the ship replies. No answer. They send again, and again. Silence.",
+        "start": 390.93,
+        "seconds": 5.26,
+        "window": 5.77,
+        "fill": 0.912
+      },
+      {
+        "scene": "l-tease",
+        "text": "What happened in those seconds, more than three kilometres down?",
+        "start": 396.7,
+        "seconds": 3.44,
+        "window": 3.87,
+        "fill": 0.889
+      },
+      {
+        "scene": "f-buckle",
+        "text": "The weakened wall gave way in one spot. Investigators call it a local buckling failure.",
+        "start": 400.57,
+        "seconds": 5.53,
+        "window": 6.13,
+        "fill": 0.902
+      },
+      {
+        "scene": "f-implode",
+        "text": "7 seconds after its last message, the hull imploded.",
+        "start": 406.7,
+        "seconds": 3.58,
+        "window": 4.03,
+        "fill": 0.888
+      },
+      {
+        "scene": "f-toll",
+        "text": "The youngest aboard, Suleman Dawood, was 19. He had come along with his father.",
+        "start": 410.73,
+        "seconds": 5.21,
+        "window": 5.6,
+        "fill": 0.93
+      },
+      {
+        "scene": "f-ship",
+        "text": "Up on the ship, they believed the acoustic link had dropped, and kept sending messages for hours.",
+        "start": 416.33,
+        "seconds": 5.63,
+        "window": 6.2,
+        "fill": 0.908
+      },
+      {
+        "scene": "f-plan",
+        "text": "OceanGate's own plan said Titan must head back up an hour after losing contact. It never came up.",
+        "start": 422.53,
+        "seconds": 6.32,
+        "window": 6.7,
+        "fill": 0.943
+      },
+      {
+        "scene": "f-search",
+        "text": "The world watched a countdown of 96 hours of oxygen. Ships and planes searched the surface, but Titan was already gone.",
+        "start": 429.23,
+        "seconds": 7.79,
+        "window": 8.3,
+        "fill": 0.939
+      },
+      {
+        "scene": "f-rov",
+        "text": "Only a few robots in the world could reach that depth. One was flown in by a military cargo plane.",
+        "start": 437.53,
+        "seconds": 6.03,
+        "window": 6.57,
+        "fill": 0.918
+      },
+      {
+        "scene": "f-found",
+        "text": "After a 4 day search, a robot found the tail cone and both domes on the seabed, about 500 metres from the Titanic's bow.",
+        "start": 444.1,
+        "seconds": 8.42,
+        "window": 9.0,
+        "fill": 0.936
+      },
+      {
+        "scene": "r-cg",
+        "text": "Two investigations followed. The U.S. Coast Guard's board called the loss of five lives preventable.",
+        "start": 453.1,
+        "seconds": 6.54,
+        "window": 7.0,
+        "fill": 0.934
+      },
+      {
+        "scene": "r-ntsb",
+        "text": "The National Transportation Safety Board named the probable cause: OceanGate's inadequate engineering process.",
+        "start": 460.1,
+        "seconds": 7.03,
+        "window": 7.67,
+        "fill": 0.917
+      },
+      {
+        "scene": "r-strength",
+        "text": "It never established how strong and durable the hull really was.",
+        "start": 467.77,
+        "seconds": 3.68,
+        "window": 4.1,
+        "fill": 0.898
+      },
+      {
+        "scene": "r-sensors",
+        "text": "Its reading of the sensor data was flawed, so it never saw that Titan was damaged after dive 80.",
+        "start": 471.87,
+        "seconds": 6.02,
+        "window": 6.57,
+        "fill": 0.916
+      },
+      {
+        "scene": "r-tow",
+        "text": "It never understood what being stored outdoors, and towed through rough seas, could do to the hull.",
+        "start": 478.43,
+        "seconds": 5.65,
+        "window": 6.17,
+        "fill": 0.916
+      },
+      {
+        "scene": "r-rules",
+        "text": "And the rules for passenger submersibles were too weak to make it follow industry standards.",
+        "start": 484.6,
+        "seconds": 5.19,
+        "window": 5.77,
+        "fill": 0.899
+      },
+      {
+        "scene": "r-culture",
+        "text": "The Coast Guard's board also pointed to a toxic workplace culture, and said OceanGate used intimidation to dodge scrutiny.",
+        "start": 490.37,
+        "seconds": 7.95,
+        "window": 8.5,
+        "fill": 0.935
+      },
+      {
+        "scene": "r-response",
+        "text": "With a proper emergency plan, the safety board said, rescue help would likely have been standing by. A rescue was not possible this time.",
+        "start": 498.87,
+        "seconds": 8.21,
+        "window": 8.7,
+        "fill": 0.944
+      },
+      {
+        "scene": "r-tease",
+        "text": "Two boards, the same answer. So what has changed since?",
+        "start": 507.57,
+        "seconds": 3.19,
+        "window": 3.73,
+        "fill": 0.855
+      },
+      {
+        "scene": "c-recs",
+        "text": "The safety board made 4 recommendations to the Coast Guard. First, study how passenger submersibles are run today.",
+        "start": 511.3,
+        "seconds": 7.14,
+        "window": 7.77,
+        "fill": 0.919
+      },
+      {
+        "scene": "c-rules",
+        "text": "Then write U.S. rules for pressure vessels that carry people.",
+        "start": 519.07,
+        "seconds": 4.27,
+        "window": 4.67,
+        "fill": 0.914
+      },
+      {
+        "scene": "c-world",
+        "text": "And push for the world's standard for these vessels to become mandatory, not optional.",
+        "start": 523.73,
+        "seconds": 4.77,
+        "window": 5.23,
+        "fill": 0.912
+      },
+      {
+        "scene": "c-cg",
+        "text": "The Coast Guard's own board added 17 recommendations. Today, those are proposals. Whether they become law is still to come.",
+        "start": 528.97,
+        "seconds": 8.44,
+        "window": 8.97,
+        "fill": 0.941
+      },
+      {
+        "scene": "payoff",
+        "text": "The bang came on dive 80. Titan kept diving. The hull failed on dive 88.",
+        "start": 537.93,
+        "seconds": 5.23,
+        "window": 5.73,
+        "fill": 0.913
+      },
+      {
+        "scene": "score",
+        "text": "An uncertified hull. A window rated far short of the depth. A bang explained away. A hull left out in the cold.",
+        "start": 543.67,
+        "seconds": 7.45,
+        "window": 8.03,
+        "fill": 0.928
+      },
+      {
+        "scene": "loop",
+        "text": "Which warning should have stopped Titan? Tell us in the comments.",
+        "start": 551.7,
+        "seconds": 3.16,
+        "window": 3.63,
+        "fill": 0.871
+      }
+    ]
+  },
+  "durationSec": 558,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.8,
+    "lufs": -15.0,
+    "music_under_voice_db": 33.8
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "am_michael",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Rewrite 1: all 7 items fixed (likely-damaged hook, toll once, planned descent, wreck depth 3,880, dive 80 sensors with dive 73 battery night in 2022, acoustic link, NTSB attribution); every line rechecked against NTSB MIR-25-36 and cited USCG news pages (7 s, $250,000, Dawood 19, 4-day search, 17 recs); verify list done; description names both reports and ends with the disclaimer."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: promise tags clean (red band on hull, no stray BANG); tags clear of badge; lot/r-tow 3D with ribbed containers, cars, quay, ship; c-world, u-second, u-window now 3D, no flat run over ~30 s; f-toll tag clear; thumbs A/B/C readable, C picked and agrees with Studio. Chapters: render.json still only Intro, Studio must write the 8 chapter timestamps into the description at ship (check there)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-24T04:53:32.161446+00:00",
+      "finishedAt": "2026-11-24T04:53:32.161446+00:00",
+      "notes": [
+        "style.bpm must be 52–58 for undertow",
+        "music genre 'undertow' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:53:39.184275+00:00",
+      "finishedAt": "2026-11-24T04:53:39.184275+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-24T04:54:06.427953+00:00",
+      "finishedAt": "2026-11-24T04:54:06.427953+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:02:16.280166+00:00",
+      "finishedAt": "2026-11-24T05:02:16.280166+00:00",
+      "notes": [
+        "beat 'p-sea'.params.mode contains a typed number; use a placeholder: 'psi1'",
+        "note: 13 questions in about 423 s of speech; at least 14 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: beat 'promise' opens like a line in one of the last scripts (\"it wasn't one\"): new words",
+        "note: beat 'promise2' opens like a line in one of the last scripts ('here is the'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:02:24.582336+00:00",
+      "finishedAt": "2026-11-24T05:02:24.582336+00:00",
+      "notes": [
+        "beat 'u-model'.params.mode contains a typed number; use a placeholder: 'model1'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:02:28.059327+00:00",
+      "finishedAt": "2026-11-24T05:02:28.059327+00:00",
+      "notes": [
+        "beat 'l-last'.params.mode contains a typed number; use a placeholder: 'lastmsg2'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:02:31.242151+00:00",
+      "finishedAt": "2026-11-24T05:02:31.242151+00:00",
+      "notes": [
+        "beat 'f-search'.params.tag.fig contains a typed number; use a placeholder: 'o2'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:02:34.575357+00:00",
+      "finishedAt": "2026-11-24T05:02:34.575357+00:00",
+      "notes": [
+        "beat 'outro'.params.assumption contains a typed number; use a placeholder: \"From the NTSB's final report (MIR-25-36) and the U.S. Coast Guard's investigation. The scenes are reconstructions, not actual footage.\""
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:02:37.776801+00:00",
+      "finishedAt": "2026-11-24T05:02:37.776801+00:00",
+      "notes": [
+        "facts[0] (2023 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[1] (18 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[2] (5 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[3] (3880 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[4] (3363 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[5] (7 count, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+        "facts[6] (5 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[7] (4000 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[8] (1000 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[9] (4200 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[10] (2800 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[11] (13 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[12] (80 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[13] (88 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[14] (250000 money, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+        "facts[15] (30 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[16] (96 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[17] (500 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[18] (4 count, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+        "facts[19] (14.7 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[20] (5554.5 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[21] (2016 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[22] (2018 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[23] (2019 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[24] (18 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[25] (2022 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[26] (9 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[27] (10 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[28] (370 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[29] (19 count, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+        "facts[30] (4 count, 2025-10-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[31] (17 count, 2025-08-05) is not one of the feed topic's facts; copy them exactly",
+        "facts[32] (2021 year, 2025-10-02) is not one of the feed topic's facts; copy them exactly"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:02:51.698111+00:00",
+      "finishedAt": "2026-11-24T05:02:51.698111+00:00",
+      "notes": [
+        "33 figures computed from inputs; 33 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:18:11.853274+00:00",
+      "finishedAt": "2026-11-24T05:18:11.853274+00:00",
+      "notes": [
+        "hook: 'a hull already damaged on an earlier dive' states as certain what the NTSB says was likely (MIR-25-36: 'likely sustained damage after... dive 80'). Fix: 'with a hull that was likely damaged on an earlier dive'.",
+        "hook + f-toll: the deaths are stated twice ('All 5 people aboard died' in both); the channel's field rule is deaths stated plainly, once. Fix: keep one (e.g. hook), and make f-toll 'The youngest aboard, Suleman Dawood, was 19. He had come along with his father.'",
+        "t-tease: 'The trip down took about two and a half hours' is false for this dive (released ~0900, imploded 1047 at 3,363 m); 2.5 h was the plan (NTSB). Fix: 'The trip down was meant to take about two and a half hours.'",
+        "u-window: 'Titan would dive to 3,880' - 3,880 m is the wreck site depth; NTSB logs Titan's dives to the wreck at 3,840 m. Fix: 'The wreck lies at 3,880.' (or 'Titan dove to the Titanic, nearly four times deeper.')",
+        "w-sensors: 'On that dive' follows w-night (the battery dive, dive 73, June 2022), so it points at the wrong dive; NTSB ties the acoustic burst and strain jump to dive 80. Fix: 'On dive 80, they showed a burst of noise, and a sudden jump in strain.' (Optionally move w-night before w-bang and say 'Earlier that summer'.)",
+        "f-ship: 'believed the radio link had dropped' - Titan's link was an acoustic system (NTSB 1.1, 1.3.5), not radio. Fix: 'they believed the acoustic link had dropped' or 'the link had dropped'.",
+        "r-response: follows r-culture ('The Coast Guard's board'), so 'the board said' attributes to the Coast Guard a finding that is the NTSB's (had OceanGate followed NVIC 05-93, assets likely standing by). Fix: 'With a proper emergency plan, the safety board said, rescue help would likely have been standing by.'"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:25:58.850376+00:00",
+      "finishedAt": "2026-11-24T05:25:58.850376+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:26:00.035138+00:00",
+      "finishedAt": "2026-11-24T05:26:00.035138+00:00",
+      "notes": [
+        "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:27:02.052254+00:00",
+      "finishedAt": "2026-11-24T05:27:02.052254+00:00",
+      "notes": [
+        "Rewrite 1: all 7 items fixed (likely-damaged hook, toll once, planned descent, wreck depth 3,880, dive 80 sensors with dive 73 battery night in 2022, acoustic link, NTSB attribution); every line rechecked against NTSB MIR-25-36 and cited USCG news pages (7 s, $250,000, Dawood 19, 4-day search, 17 recs); verify list done; description names both reports and ends with the disclaimer."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:15:57.480411+00:00",
+      "finishedAt": "2026-11-24T05:27:09.352172+00:00",
+      "notes": [
+        "text 'PRESSURE TEST TANK' at 168.2 s runs outside the frame",
+        "text 'SURFACE' at 226.8 s runs outside the frame",
+        "text 'WINDOW RATED' at 226.8 s runs outside the frame",
+        "text 'TOWING' at 335.8 s runs outside the frame",
+        "text 'EFFECT ON HULL · UNTESTED' at 335.8 s runs outside the frame",
+        "text 'PENDING' at 534.1 s is 27.3 px, below the 30 px minimum",
+        "4.0 s with nothing new on screen in beat 'p-deep' (at most 4.0 s): add an action on the phrase being said there",
+        "44 of 111 stills are mostly empty background (at 25 s, 30 s, 35 s, 40 s, 45 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+        "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:29:19.267864+00:00",
+      "finishedAt": "2026-11-24T05:38:21.760396+00:00",
+      "notes": [
+        "text 'FULL-SIZE HULL · 2021' at 209.8 s runs outside the frame",
+        "text 'EFFECT ON HULL · UNTESTED' at 337.9 s runs outside the frame",
+        "text 'PENDING' at 535.0 s runs outside the frame",
+        "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+        "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:38:30.845877+00:00",
+      "finishedAt": "2026-11-24T05:47:07.015684+00:00",
+      "notes": [
+        "text 'PENDING' at 535.0 s runs outside the frame",
+        "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+        "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:47:14.854906+00:00",
+      "finishedAt": "2026-11-24T05:55:52.364383+00:00",
+      "notes": [
+        "558 s, ocean/brace (preview only)",
+        "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+        "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T05:57:09.903472+00:00",
+      "finishedAt": "2026-11-24T05:57:09.903472+00:00",
+      "notes": [
+        "[script] 30.0s promise: empty frame, grid paper only; 35s same beat is two text chips on blank grid, and the chips collide (UNCERTIFIED HULL runs out of its box into BANG ON DIVE 80, 'UN' outside left edge of box). Give 'promise' a place (the 3D hull with the three causes tagged on it) and size the chips to their text.",
+        "[scene] Every still: the channel badge (I medallion, top-left) sits on the first letter of the place tag ('3D reconstruction' reads 'ID reconstruction', 'AS REPORTED', 'GENERAL PRINCIPLE'). Move the tag right of the badge or drop the badge (disaster kit overlay).",
+        "[script] 285s w-told: an empty cradle outline on blank grid, no Titan, no guests, no ship deck; the line's place (support ship deck) is missing. Show Titan sitting in its cradle on deck with the guests.",
+        "[script] 315s w-lot: the parking lot is a grey rectangle with a red box, a blue box and a white pill (lesson 5: box-like, no subject); a ghosted 'ST. JOHN'S FROM ABOVE' label overlaps the 'a reconstruction of what the report describes' tag. Build the lot in 3D: Titan on its platform under snow, cars, the harbour.",
+        "[scene] 410s f-toll: the five figures icon is drawn over the 'SULEMAN DAWOOD · AGE' tag, cutting the name ('DAWOO_ · _GI'). Move the figures off the tag. Picture otherwise near-empty dark frame.",
+        "[script] 455-550s (r-*, c-*, payoff, score): about 95 s of flat drawing-sheet cards (report pages, 'What the safety board found' rows, globe, card grid) with only one 3D cut at 510s; lesson 6 caps one look at ~30 s and asks half the runtime in lit 3D. 465-490 and 540-550 are text rows on blank grid (headline cards, rule D). Put the findings on things in 3D places (the hull wreckage on the seabed, the ops room screen, the cradle) and cut back to the 3D every 3-6 s.",
+        "[script] 160-250s (u-* chapter): ~70 s mostly flat diagrams (tanks, gauges, letters, certificate) on the same grid sheet; same lesson 6 problem. Bring u-first, u-reuse, u-tease into lit 3D and alternate.",
+        "[script] 525s c-world: a bare wireframe globe on grid, nothing happening, no figure on a thing; 530/535 a grid of blank cards. Show the standard as a document stamped MANDATORY on a desk, the 17 recommendations as a stack being signed.",
+        "[script] 430-440s f-search/f-rov: washed-out grey haze, the aircraft is a grey tube with plank wings, ship small at the bottom (lesson 5: pale, box-like). Darker overcast with a key light, the plane bigger and recognisable.",
+        "[script] Chapters: render.json has only 'Intro' at 0:00 although promise2 announces seven parts; the description's CHAPTERS lists one entry (YouTube needs 3+). Add chapter starts (the trip ~45s, pressure ~108s, hull ~163s, warnings ~261s, last dive ~340s, findings ~401s/453s, what changed ~511s).",
+        "[script] Thumbnails: B copies the 3.7M Coast Guard hit's picture almost exactly (ocean cut, ship, dashed line to red X); A and C are the same picture (same sub, same ringed crack) with different words. C is the one I would click and agrees with Studio's pick; keep C, redraw B with its own picture (e.g. the ops-room screen with the last text) and give A a different angle."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T05:59:51.554719+00:00",
+      "finishedAt": "2026-11-24T06:09:40.525934+00:00",
+      "notes": [
+        "558 s, ocean/brace (preview only)",
+        "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+        "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T06:10:28.134580+00:00",
+      "finishedAt": "2026-11-24T06:10:28.134580+00:00",
+      "notes": [
+        "[scene] 35s promise: a stray big gold 'BANG' word sits on top of tag 2 ('2 BANG ON DIVE 80'), covering its bottom edge, and a gold arc line runs through both tags. Remove the extra BANG (or put it on the hull, below the tags) and keep the arc off the tags.",
+        "[script] Chapters still missing: render.json chapters is only 'Intro' at 0:00 because the script has no scene 'chapter' beats (renderer/remotion.py builds chapters only from those), so ship has no chapter starts to write. Add chapter beats (or chapter markers the renderer reads) at about 45s, 108s, 163s, 261s, 340s, 401s/453s and 511s, and re-render so render.json lists them.",
+        "[script] 315s w-lot and 480s r-tow: the lot is still plain coloured boxes (a red and a blue block for containers, stacked slabs for cars, no harbour in view, flat light); at 480s the snow on Titan is a big white blob hiding the hull. Lesson 5 (never grey boxes): give the containers ribs and doors, cars a car shape, show the harbour, and lay the snow as a thin layer on the hull.",
+        "[script] 515-550s (c-recs, c-rules, c-world, c-cg, payoff, score): about 36 s of flat drawing-sheet cards with no 3D cut (lesson 6: about 30 s at most); c-world at 525s is still a bare wireframe globe with nothing happening and no figure on a thing (rule D), and 530-535s is a grid of blank cards. Change at least c-world or c-cg to a 3D place (the dive log on the ship, the seabed debris) and give the globe beat a stamped document.",
+        "[script] 180-230s (u-crack to u-window): about 50 s of flat diagrams on the grid sheet without a 3D cut (lesson 6). Make one of u-done, u-test or u-window a 3D shot (the front dome's window up close at depth fits u-window).",
+        "[scene] Thumbnail A: 'DAMAGED' runs into the sub's nose (the D touches the hull); move the words clear. Thumbnail B no longer copies the hit (good), but 'DROPPED TWO WTS' is an abbreviation a stranger won't read; spell WEIGHTS or shorten. C is still the one I'd click and agrees with Studio's pick."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T06:14:03.108984+00:00",
+      "finishedAt": "2026-11-24T06:14:03.108984+00:00",
+      "notes": [
+        "34 figures computed from inputs; 34 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-24T06:14:51.340420+00:00",
+      "finishedAt": "2026-11-24T06:25:17.315618+00:00",
+      "notes": [
+        "thumbnail.png is empty at phone size (edges 0.134, 0.15-0.5): fill it with the story",
+        "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+        "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T06:26:10.098294+00:00",
+      "finishedAt": "2026-11-24T06:26:10.098294+00:00",
+      "notes": [
+        "Round 3: promise tags clean (red band on hull, no stray BANG); tags clear of badge; lot/r-tow 3D with ribbed containers, cars, quay, ship; c-world, u-second, u-window now 3D, no flat run over ~30 s; f-toll tag clear; thumbs A/B/C readable, C picked and agrees with Studio. Chapters: render.json still only Intro, Studio must write the 8 chapter timestamps into the description at ship (check there)."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-24T06:45:57.268684+00:00",
+      "finishedAt": "2026-11-24T06:45:57.268684+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-24T06:26:19.835379+00:00",
+      "finishedAt": "2026-11-24T12:21:04.642652+00:00",
+      "notes": [
+        "558 s, ocean/brace, peak -1.0 dB, mean -16.8 dB",
+        "note: four shots in a row open medium (from 'r-strength'): vary the shot size",
+        "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 78 of 78 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-24T12:21:41.848488+00:00",
+      "finishedAt": "2026-11-24T12:21:41.848488+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-L-20261124-41",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/L-20261124-41"
+  },
+  "thumbnails": [
+    {
+      "file": "thumbnail.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the submersible itself huge in deep blue water, one bold phrase in yellow and white",
+      "score": 7,
+      "why": "Reads at phone size and sits right in the hits' main pattern (the sub huge in blue); the ringed crack gives a reason to click, but it is flatter than the 3D hits beside it and the words lean on a finding the report calls likely.",
+      "picked": false
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the ocean cut open, the ship on the surface, a dashed path down to a red X near the wreck",
+      "score": 6,
+      "why": "Clear and true to the 3.7M hit's layout, but almost the same picture as that hit, so it adds little; the wreck is a vague brown slab at phone size.",
+      "picked": false
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the damaged hull with a red ring on the damage and a short spoken-sounding phrase",
+      "score": 7,
+      "why": "The strongest curiosity for a stranger (a bang heard on an earlier dive) and a plain fact the video delivers; the sub fills the frame with the damage ringed. Picked over A because its words are certain, not a hedged finding.",
+      "picked": true
+    }
+  ],
+  "thumbnailModel": {
+    "pattern": "the submersible itself huge in deep blue water, one bold phrase in yellow and white",
+    "references": [
+      "fhiBnQ0Ar4E",
+      "CfUcNPr2T8A",
+      "6LcGrLnzYuU"
+    ]
+  }
+}

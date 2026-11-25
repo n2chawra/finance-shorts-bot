@@ -21,6 +21,7 @@ from the `Channel` table; `status` setup, review, active, paused or deleting). C
 | `how-tech-and-ai-actually-work-chips-ai-p` | How Tech Works | 3D studio explainer (`look.engine: three`, `remotion/src/three/`) |
 | `business-documentaries-rise-and-fall-of` | Craze & Crash | hybrid documentary (`look.engine: doc`, `remotion/src/doc/`) |
 | `disasters-and-engineering-failures-expla` | Disaster Desk | investigative reconstruction (`look.kits`: three, flat, doc; `remotion/src/disaster/`) |
+| `india-maps` | Naksha Bharat (Hindi) | India's official map with states made on screen (`remotion/src/flat/india.tsx`) |
 
 What belongs to one channel is in its folder, not in this file:
 
@@ -151,7 +152,7 @@ GitHub repo (handoff point; sessions never hold DB or YouTube credentials)
         ▼
 GitHub Actions (cron)
   ├─ ingest.yml   on push/release + every 6h   new manifests → Postgres (status: queued)
-  ├─ publish.yml  every 20 min  fills each channel's slots from its queue → YouTube (private + publishAt)
+  ├─ publish.yml  hourly       fills each channel's slots from its queue → YouTube (private + publishAt)
   ├─ stats.yml    every 3h YouTube Analytics → VideoStat, ChannelDay, retention + drop points
   ├─ stats-deep.yml daily  traffic, searches, countries, demographics, devices, impressions/CTR, comments
   ├─ watchdog.yml hourly   public-counter snapshot → LiveSnapshot, alerts
@@ -224,6 +225,12 @@ to, and the camera. `renderer/timeline/build.py` computes the `maths`, speaks ea
 | Ids | `v-YYYYMMDD-NN` (blocks per channel, `config/id-blocks.json`) | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state --channel <slug>` | `... state --format long --channel <slug>` |
 
+**Promo Shorts** (owner, 2026-11-25; Disaster Desk): a channel with `channel.json` `cadence.promoOnly` makes every
+Short a promo of one of its long videos (`cadence.promoShortPerLong`, 2 there): `state.promo.targets`, the plan's
+`promo_of` and the long's `topic.feed_id` (`generator/promo.py`, checked by check-plan); the publisher sends a promo
+only once its long is on YouTube, newest long first, with the long's link in the description, and asks the owner to
+set the related video in Studio (`workers/lib/publishing.ts` `pickPromo`).
+
 Three gates fail the render: **layout** (every visible text box, measured in the rendered stills by
 `remotion/src/fx/probe.tsx`: at least the format's minimum size, clear of the bottom zone, inside the
 frame), a long beat whose narration fills under 55% of its length, and **liveliness**
@@ -288,10 +295,12 @@ Any step can go to `failed` (with reason). `failed` videos are never uploaded.
 5. **Fact review (separate agent, fresh context)**: checks every claim and sourced fact, the field's
    rules, tone and disclaimer.
 5b. **Director (agent)**: every beat becomes a directed shot on the channel's kit, then `lint`.
-6. **Render (code)**: `python -m generator.run render <id>` → voice + timeline, Remotion render, mp4 +
-   thumbnail + preview contact sheet, gates.
-7. **QA review (separate agent)**: contact sheet + audio levels + lessons. Rejects overlaps, cut-off or
-   tiny text, empty scenes, unreadable contrast, a repeated lesson, length outside the settings.
+6. **Stills (code)**: `python -m generator.run render <id> --preview` → voice + timeline, contact sheet,
+   thumbnail, layout and length gates.
+7. **QA review (separate agent)** on the stills: contact sheet + audio levels + lessons. Rejects overlaps, cut-off or
+   tiny text, empty scenes, unreadable contrast, a repeated lesson, length outside the settings. Every fix goes
+   back to step 6. **Then the full render** (`render <id>`, mp4 + motion gate): it refuses until QA has passed the
+   stills of exactly this script and beat code (owner, 2026-11-25), and ship refuses a script changed after QA.
 8. **Ship**: manifest (title, description with the disclaimer and photo credits, hashtags, style,
    template, topic), history, commit to `main`, mp4 as a Release asset. Every step is logged as an
    AgentRun entry in the manifest.
@@ -337,7 +346,7 @@ agent steps follow `generator/prompts/*.md`.
 vars live in Netlify: `DATABASE_URL`, `DIRECT_URL`, `DASHBOARD_PASSWORD`, `SESSION_SECRET`,
 `GITHUB_TOKEN` (read-only), `GITHUB_REPOSITORY`, `YT_API_KEY`, `GITHUB_ACTIONS_TOKEN` (Actions read and
 write: starts Publish on "Upload now" and from `apps/dashboard/netlify/functions/publish-heartbeat.mts`
-when Publish hasn't run for 15 minutes, because GitHub's cron drops runs on busy days). The Google OAuth
+when Publish hasn't run for 65 minutes, because GitHub's cron drops runs on busy days). The Google OAuth
 consent screen must be in **Production** status, otherwise refresh tokens expire after 7 days.
 
 ## YouTube API facts

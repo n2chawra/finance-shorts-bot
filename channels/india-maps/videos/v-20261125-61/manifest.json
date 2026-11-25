@@ -1,0 +1,259 @@
+{
+  "id": "v-20261125-61",
+  "createdAt": "2026-11-25T03:57:32.564054+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Three new states in one month: Chhattisgarh, Uttaranchal and Jharkhand, November 2000",
+    "category": "state-formation",
+    "reach": "local",
+    "reach_reason": {
+      "kind": "demand"
+    },
+    "feed_id": "2026-11-25-three-states-nov-2000",
+    "map_answer": "three split lines drawn on the map: Chhattisgarh cut out of Madhya Pradesh, Uttaranchal out of Uttar Pradesh, Jharkhand out of Bihar"
+  },
+  "title": "Madhya Pradesh, UP aur Bihar ek hi mahine mein kyun kate? 🗺️",
+  "description": "Madhya Pradesh, Uttar Pradesh aur Bihar, teeno ek hi mahine mein kyun kate? November 2000 ki kahani.\nSources: Wikipedia (Nov 2026).\nनक्शे सरल किए गए हैं; भारत की सीमाएँ भारत के आधिकारिक नक्शे के अनुसार। Maps simplified; India's borders as on India's official map. Facts from the sources named in the description.",
+  "hashtags": [
+    "#Shorts",
+    "#IndiaMap",
+    "#MadhyaPradesh",
+    "#Bihar",
+    "#Uttarakhand"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Aapka state kab bana? Comment",
+  "seed": 52207,
+  "style": {
+    "palette": "ember",
+    "genre": "monsoon",
+    "key": "A",
+    "bpm": 92,
+    "look": {
+      "stage": "field",
+      "header": "chalk",
+      "holder": "blackboard",
+      "entrance": "draw"
+    },
+    "voice": "hm_omega",
+    "arms": {
+      "length": "25-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "मध्य प्रदेश, उत्तर प्रदेश और बिहार, तीनों एक ही महीने में क्यों कटे?",
+        "start": 0.3,
+        "seconds": 3.35,
+        "window": 4.03,
+        "fill": 0.831
+      },
+      {
+        "scene": "promise",
+        "text": "नवंबर, सन दो हज़ार। हर एक के अंदर से एक नया स्टेट कटकर निकला। पर कैसे?",
+        "start": 4.33,
+        "seconds": 4.28,
+        "window": 4.93,
+        "fill": 0.868
+      },
+      {
+        "scene": "cg",
+        "text": "1 नवंबर को मध्य प्रदेश का दक्षिण-पूर्वी हिस्सा अलग होकर बना छत्तीसगढ़।",
+        "start": 9.27,
+        "seconds": 4.23,
+        "window": 4.7,
+        "fill": 0.9
+      },
+      {
+        "scene": "uk",
+        "text": "9 नवंबर को उत्तर प्रदेश के पहाड़ अलग हुए, और बना देश का स्टेट नंबर 27।",
+        "start": 13.97,
+        "seconds": 4.2,
+        "window": 4.87,
+        "fill": 0.862
+      },
+      {
+        "scene": "jh",
+        "text": "और 15 नवंबर को बिहार का दक्षिणी हिस्सा बना झारखंड।",
+        "start": 18.83,
+        "seconds": 2.96,
+        "window": 3.6,
+        "fill": 0.822
+      },
+      {
+        "scene": "turn",
+        "text": "इन इलाकों के लोग बरसों से अपना अलग स्टेट माँग रहे थे। पर स्टेट नंबर 27 का नाम कुछ और था।",
+        "start": 22.43,
+        "seconds": 5.14,
+        "window": 5.8,
+        "fill": 0.886
+      },
+      {
+        "scene": "payoff",
+        "text": "उसका नाम था उत्तरांचल। उत्तराखंड वो बना 2007 में।",
+        "start": 28.23,
+        "seconds": 3.07,
+        "window": 3.73,
+        "fill": 0.823
+      },
+      {
+        "scene": "loop",
+        "text": "आपका स्टेट कब बना? कमेंट कीजिए। और सोचिए, नक्शे पर",
+        "start": 31.97,
+        "seconds": 2.97,
+        "window": 3.63,
+        "fill": 0.818
+      }
+    ]
+  },
+  "durationSec": 36,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0,
+    "lufs": -13.8,
+    "music_under_voice_db": 33.0
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "hm_omega",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "All 5 facts confirmed on their cited pages: Chhattisgarh 1 Nov 2000 (en.wikipedia Chhattisgarh: 'granted statehood on 1 November 2000'); Uttaranchal 9 Nov 2000 as 27th state (UP Reorganisation Act page: 'came into force on 9 November 2000, when Uttaranchal was established as the 27th state of India'); Jharkhand 15 Nov 2000 from southern Bihar (Bihar Reorganisation Act page); renamed Uttarakhand effective 1 Jan 2007 (List of renamed places in India). 'South-east of MP' matches Britannica (eastern MP) and encyclopedia.com (SE Madhya Pradesh). Topic verify item met; history, not superseded. The 'why' is answered as long-standing local demand, a sourced, neutral framing. No party or leader named, no ranking of states, official map. Disclaimer present at end of description. Note: the source line says only 'Wikipedia'; naming the Reorganisation Acts (India Code) would be stronger."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Directed map Short, 36 s: 1.5 s state tags name MP/UP/Bihar, date pins 1/9/15 Nov land on each cut, cut lines run and Chhattisgarh/Uttarakhand(?)/Jharkhand get tags, marchers with placards on all three, payoff board writes उत्तरांचल then is repainted उत्तराखंड with 2007 tag, loop returns to the hook framing; no overlaps or cut-offs, layout/craft problems empty, audio -1/-16 dB like the published Short, description carries the disclaimer, thumbnail is the welcome board mid-repaint."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:42:17.322357+00:00",
+      "finishedAt": "2026-11-25T03:42:17.322357+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:43:42.898927+00:00",
+      "finishedAt": "2026-11-25T03:43:42.898927+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T03:44:22.705022+00:00",
+      "finishedAt": "2026-11-25T03:44:22.705022+00:00",
+      "notes": [
+        "beat 'hook'.params.things[0] contains a typed number; use a placeholder: 'madhya pradesh before 2000'",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:44:30.483193+00:00",
+      "finishedAt": "2026-11-25T03:44:30.483193+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:45:19.535089+00:00",
+      "finishedAt": "2026-11-25T03:45:19.535089+00:00",
+      "notes": [
+        "All 5 facts confirmed on their cited pages: Chhattisgarh 1 Nov 2000 (en.wikipedia Chhattisgarh: 'granted statehood on 1 November 2000'); Uttaranchal 9 Nov 2000 as 27th state (UP Reorganisation Act page: 'came into force on 9 November 2000, when Uttaranchal was established as the 27th state of India'); Jharkhand 15 Nov 2000 from southern Bihar (Bihar Reorganisation Act page); renamed Uttarakhand effective 1 Jan 2007 (List of renamed places in India). 'South-east of MP' matches Britannica (eastern MP) and encyclopedia.com (SE Madhya Pradesh). Topic verify item met; history, not superseded. The 'why' is answered as long-standing local demand, a sourced, neutral framing. No party or leader named, no ranking of states, official map. Disclaimer present at end of description. Note: the source line says only 'Wikipedia'; naming the Reorganisation Acts (India Code) would be stronger."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:48:58.771336+00:00",
+      "finishedAt": "2026-11-25T03:50:11.729394+00:00",
+      "notes": [
+        "36 s, ember/monsoon (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:52:45.467436+00:00",
+      "finishedAt": "2026-11-25T03:52:45.467436+00:00",
+      "notes": [
+        "Directed map Short, 36 s: 1.5 s state tags name MP/UP/Bihar, date pins 1/9/15 Nov land on each cut, cut lines run and Chhattisgarh/Uttarakhand(?)/Jharkhand get tags, marchers with placards on all three, payoff board writes उत्तरांचल then is repainted उत्तराखंड with 2007 tag, loop returns to the hook framing; no overlaps or cut-offs, layout/craft problems empty, audio -1/-16 dB like the published Short, description carries the disclaimer, thumbnail is the welcome board mid-repaint."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:53:01.416313+00:00",
+      "finishedAt": "2026-11-25T03:56:11.729766+00:00",
+      "notes": [
+        "36 s, ember/monsoon, peak -1.0 dB, mean -16.0 dB",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-25T03:57:32.564304+00:00",
+      "finishedAt": "2026-11-25T03:57:32.564304+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261125-61",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261125-61"
+  }
+}

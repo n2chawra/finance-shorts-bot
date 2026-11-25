@@ -1,0 +1,56 @@
+{
+  "agent": "research",
+  "channel": "disasters-and-engineering-failures-expla",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-24T19:57:55Z",
+  "finishedAt": "2026-11-24T20:05:20Z",
+  "summary": "Pacing night for Disaster Desk. I added two Short topics that break the air/bridge/ship block (Deepwater Horizon, now the top usable topic, and the Taum Sauk reservoir). I also added one motion challenger: fast hook, then held shots with a live instrument.",
+  "decision": "acted",
+  "why": "Air, bridge and ship are blocked for the next Shorts. Deepwater Horizon Shorts break out at 172x and 41x their channels' size, and the CSB report gives 6 figures. Taum Sauk has a 340K Short (2.3x) and an 11.5M long video, and nobody died. Our Shorts change shot size every ~1.6 s all the way through, while the 1.9M-7.4M references cut fast in the hook and then hold 5-25 s shots.",
+  "findings": [
+    {
+      "title": "Deepwater Horizon Short breakout: 338K on a 1.97K channel",
+      "detail": "The CSB found that buckled pipe kept the blowout preventer's blade from sealing the well. Figures: 11 killed, 17 injured, 115 evacuated, a reported 4M barrels.",
+      "link": "https://www.youtube.com/shorts/0oT_LptLXDo"
+    },
+    {
+      "title": "Taum Sauk: a mountaintop reservoir overfilled, nobody died",
+      "detail": "USGS gives 1.5 billion gallons and a 680-ft breach. A 340K Short on 151K subs; Practical Engineering's long video has 11.5M.",
+      "link": "https://pubs.usgs.gov/sir/2009/5111"
+    },
+    {
+      "title": "Our Shorts cut at one even rhythm",
+      "detail": "27-33 shot-size changes in 46-49 s, about one every 1.6 s. Athena (7.4M) cuts ~10 times in 10 s, then holds 5-7 s; Inside Decoded and World explained hold long shots with a live instrument. Challenger dd-hold-after-hook.",
+      "link": "channels/disasters-and-engineering-failures-expla/research/sheets/V0CGuxCbeIk.json"
+    },
+    {
+      "title": "Learjet: still no NTSB preliminary report",
+      "detail": "The event is 24 days old, outside the fast lane. This week's 470K 'Look outside' Shorts quote the crew's radio, not a finding. Waiting for the report (~1 Dec).",
+      "link": "https://www.ntsb.gov/investigations/Pages/ERA27MA026.aspx"
+    },
+    {
+      "title": "Challenger O-ring is a crowded lane",
+      "detail": "15+ Shorts, none above 2.3K views; skipped.",
+      "link": "https://www.youtube.com/results?search_query=challenger+o-ring+explained+%23shorts"
+    }
+  ],
+  "changes": [
+    {
+      "title": "2 Short topics added, 1 category fixed",
+      "detail": "Deepwater Horizon (8.43, top usable) and Taum Sauk (6.93). The Hudson topic is set to air so the category block catches it.",
+      "branch": "agent/research/2026-11-25/disasters-and-engineering-failures-expla"
+    },
+    {
+      "title": "Challenger dd-hold-after-hook",
+      "detail": "Look kind, motion, judged on held after the hook: fast hook, then 4-6 s held shots with a ticking instrument.",
+      "branch": "agent/research/2026-11-25/disasters-and-engineering-failures-expla"
+    }
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/disasters-and-engineering-failures-expla/research/2026-11-25.md"
+    }
+  ]
+}

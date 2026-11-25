@@ -25,7 +25,7 @@ import { PrismaClient, type Prisma } from "@prisma/client";
 
 import { downloadReleaseAsset, repoSlug } from "./lib/github.ts";
 import {
-  MIN_LEAD_MINUTES, UPLOAD_LOOKAHEAD_HOURS, dueSoon, isQuotaMiss, isUrgent, istDay, istSlot, istTime, missedSlots, nextSlot, quotaError, slotKey, soonSlot, youtubeMeta,
+  MIN_LEAD_MINUTES, UPLOAD_LOOKAHEAD_HOURS, dueSoon, isQuotaMiss, isUrgent, istDay, istSlot, istTime, missedSlots, nextSlot, pickPromo, promoOf, quotaError, slotKey, soonSlot, withPromoLink, youtubeMeta,
 } from "./lib/publishing.ts";
 import { loadSettings, type Settings } from "./lib/settings.ts";
 import { refreshPublished, youtubeClientConfigured } from "./lib/uploads.ts";
@@ -41,7 +41,7 @@ const MAX_ATTEMPTS = 3;
 type Format = "short" | "long";
 
 /** One channel's run: its id, its settings and the shared quota. Channel #1's notification keys keep their old names. */
-type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string; category: string };
+type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string; category: string; promoOnly: boolean };
 
 /** Our designed cover instead of the frame YouTube picks (owner, 2026-11-03: "the thumbnail is wrong").
  * The video is already uploaded, so a refused cover is reported, never a failed upload. The result is kept in
@@ -114,7 +114,9 @@ async function main(): Promise<void> {
       const run: Run = { channelId: ch.id, settings: channelSettings(base, ch.settings), quota,
         key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: `,
         // the channel's own upload category (its pack; "22" without one)
-        category: channelPack(ch.id).uploadCategory };
+        category: channelPack(ch.id).uploadCategory,
+        // Shorts that only promote the channel's long videos go out after their long (lib/publishing.ts pickPromo)
+        promoOnly: channelPack(ch.id).promoOnly };
       console.log(`== ${ch.name} (${ch.id})`);
       try {
         await publishChannel(prisma, run, tokenOf(ch));
@@ -176,11 +178,11 @@ async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: Chan
       return true;
     };
     // "Upload now" from the dashboard, then the owner's manual count from the workflow input
-    for (const format of ["short", "long"] as const) while (await sendSoon(format, true));
+    for (const format of ["long", "short"] as const) while (await sendSoon(format, true));
     const manual = Math.max(0, Math.min(5, Number(process.env.UPLOAD_NOW) || 0));
     for (let i = 0; i < manual; i++) if (!(await sendSoon("short"))) break;
     // slots that passed (or are too close) without an upload: catch up instead of losing them
-    for (const format of ["short", "long"] as const) {
+    for (const format of ["long", "short"] as const) {
       const times = format === "long" ? settings.longUploadTimes : settings.uploadTimes;
       const days = format === "long" ? settings.longUploadDays : undefined;
       if (days?.length && !days.includes(new Date(`${istDay(now)}T00:00:00Z`).getUTCDay())) continue;
@@ -199,7 +201,7 @@ async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: Chan
       perDay[f].set(day, (perDay[f].get(day) ?? 0) + 1);
     }
 
-    for (const format of ["short", "long"] as const) {
+    for (const format of ["long", "short"] as const) {
       const times = format === "long" ? settings.longUploadTimes : settings.uploadTimes;
       const days = format === "long" ? settings.longUploadDays : undefined;
       if (!times.length || (format === "long" && !days?.length)) continue;
@@ -241,6 +243,16 @@ async function publishChannel(prisma: PrismaClient, run: Run, refreshToken: Chan
   }
 }
 
+/** The next promo Short for `slot` (lib/publishing.ts pickPromo): one whose long video is already up. */
+async function nextPromo(prisma: PrismaClient, channelId: string, slot: Date, order: Prisma.VideoOrderByWithRelationInput[]) {
+  const queued = await prisma.video.findMany({ where: { status: "queued", deletedAt: null, channelId, format: "short" }, orderBy: order, omit: { script: true } });
+  const ids = [...new Set(queued.map((v) => promoOf(v.style)).filter((x): x is string => !!x))];
+  const ups = ids.length ? await prisma.upload.findMany({ where: { videoId: { in: ids } }, select: { videoId: true, youtubeId: true, publishAt: true, state: true } }) : [];
+  const video = pickPromo(queued, new Map(ups.map((u) => [u.videoId, u])), slot);
+  if (!video && queued.length) console.log(`short: ${queued.length} promo Short(s) queued, none whose long video is up by ${slot.toISOString()}; a later run sends one once it is.`);
+  return video;
+}
+
 /** Upload the next `format` video for `slot` (only a breaking or trending one for "urgent"; only an
  * "Upload now" click or a due retry for "pending-now").
  * False when there is nothing to upload; throws on failure. */
@@ -251,7 +263,7 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
   // queue order: the editor's ranking, or the owner's own order where they dragged it
   const order = [{ pickedAt: { sort: "asc" as const, nulls: "last" as const } }, { queuePosition: "asc" as const }, { createdAt: "asc" as const }];
   const channelId = run.channelId;
-  // no `script` (13-17 KB a video, never read here): this runs every 20 min per channel and format (Supabase egress, 2026-11-20)
+  // no `script` (13-17 KB a video, never read here): this runs hourly per channel and format (Supabase egress, 2026-11-20)
   let pending = null, video = null;
   if (pick === "pending-now") {
     // only "Upload now" clicks and retries whose time has come; a retry for a slot still ahead waits for it
@@ -265,8 +277,10 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
   } else {
     // a video sent with "Upload now", or a retry of a failed attempt, goes first; then the queue
     pending = await prisma.upload.findFirst({ where: { state: "pending", video: { deletedAt: null, channelId, format, status: { in: ["queued", "scheduled"] } } }, orderBy: { publishAt: "asc" }, include: { video: { omit: { script: true } } } });
-    video = pending?.video ?? await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, channelId, format }, orderBy: order, omit: { script: true } });
-    if (!video) { console.log(`::warning::No ${format} video is queued. Nothing to upload for ${slot.toISOString()}.`); return false; }
+    video = pending?.video ?? (run.promoOnly && format === "short"
+      ? await nextPromo(prisma, channelId, slot, order)
+      : await prisma.video.findFirst({ where: { status: "queued", deletedAt: null, channelId, format }, orderBy: order, omit: { script: true } }));
+    if (!video) { console.log(`::warning::No ${format} video ${run.promoOnly && format === "short" ? "whose long video is up " : ""}is queued. Nothing to upload for ${slot.toISOString()}.`); return false; }
   }
 
   const attempts = (pending?.attempts ?? 0) + 1;
@@ -283,6 +297,9 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
     const file = path.join(dir, "video.mp4");
     await downloadReleaseAsset(repoSlug(ROOT), `video-${video.id}`, "video.mp4", file);
     const meta = youtubeMeta(video, disclaimer, format);
+    const parentId = format === "short" ? promoOf(video.style) : null;
+    const parent = parentId ? await prisma.upload.findUnique({ where: { videoId: parentId }, select: { youtubeId: true } }) : null;
+    if (parent?.youtubeId) meta.description = withPromoLink(meta.description, parent.youtubeId);
     const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: run.category });
     await prisma.$transaction([
       prisma.upload.upsert({
@@ -295,6 +312,12 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
     await renumberQueue(prisma, channelId);
     console.log(JSON.stringify({ uploaded: video.id, youtubeId, publishAt: slot.toISOString(), attempts }, null, 2));
     await applyCover(prisma, run, token, video.id, youtubeId, video.style);
+    if (parent?.youtubeId) {
+      // YouTube's API can't set a Short's related video: the owner does it in Studio (owner, 2026-11-25)
+      await notify(prisma, { key: `related-video:${video.id}`, channelId, source: "publish", severity: "info", title: `${run.label}Set the related video of ${video.id}`,
+        detail: `${video.id} (https://youtube.com/shorts/${youtubeId}) promotes ${parentId} (https://youtu.be/${parent.youtubeId}). Its description links the long video, but only the related video shows as a tap-through on the Short.`,
+        fix: `YouTube Studio → https://studio.youtube.com/video/${youtubeId}/edit → Related video → pick ${parentId}. Then dismiss this.` });
+    }
     return true;
   } catch (e) {
     const error = e instanceof Error ? e.message : String(e);

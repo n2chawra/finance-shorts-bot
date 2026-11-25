@@ -1,0 +1,117 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 31761,
+  "duration_sec": 37,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "tanpura",
+    "key": "D",
+    "bpm": 106,
+    "look": {
+      "stage": "street",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "drop"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "तेलंगाना की नई गाड़ियों पर टी एस की जगह टी जी क्यों लिखा जाता है?",
+        "start": 0.3,
+        "seconds": 3.49,
+        "window": 4.1,
+        "fill": 0.851
+      },
+      {
+        "scene": "promise",
+        "text": "पहले देखिए, हर राज्य और केंद्र शासित प्रदेश की गाड़ी पर उसका अपना कोड होता है, कुल 36।",
+        "start": 4.4,
+        "seconds": 4.62,
+        "window": 5.27,
+        "fill": 0.877
+      },
+      {
+        "scene": "north",
+        "text": "दिल्ली डी एल, पंजाब पी बी, उत्तर प्रदेश यू पी, बिहार बी आर।",
+        "start": 9.67,
+        "seconds": 2.94,
+        "window": 3.6,
+        "fill": 0.817
+      },
+      {
+        "scene": "west",
+        "text": "महाराष्ट्र एम एच, गुजरात जी जे, कर्नाटक के ए, केरल के एल।",
+        "start": 13.27,
+        "seconds": 3.07,
+        "window": 3.73,
+        "fill": 0.823
+      },
+      {
+        "scene": "odd",
+        "text": "कुछ कोड पहेली हैं: उत्तराखंड यू के, छत्तीसगढ़ सी जी, लद्दाख एल ए।",
+        "start": 17.0,
+        "seconds": 3.56,
+        "window": 4.23,
+        "fill": 0.842
+      },
+      {
+        "scene": "turn",
+        "text": "और तेलंगाना? बनने के बाद उसकी गाड़ियों पर टी एस लिखा गया।",
+        "start": 21.23,
+        "seconds": 3.11,
+        "window": 3.77,
+        "fill": 0.825
+      },
+      {
+        "scene": "payoff",
+        "text": "पर आंदोलन के दिनों में लोग अपनी गाड़ियों पर टी जी लिखते थे। इसलिए 2024 में नई गाड़ियों का कोड बन गया टी जी।",
+        "start": 25.0,
+        "seconds": 6.09,
+        "window": 6.73,
+        "fill": 0.905
+      },
+      {
+        "scene": "loop",
+        "text": "पुरानी गाड़ियाँ आज भी टी एस हैं। आपकी गाड़ी पर कौन-सा कोड है? और",
+        "start": 31.73,
+        "seconds": 3.9,
+        "window": 4.57,
+        "fill": 0.853
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.0,
+    "music_under_voice_db": 32.6
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.158,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

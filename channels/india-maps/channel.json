@@ -1,0 +1,76 @@
+{
+  "name": "India Maps",
+  "language": "hi",
+  "voices": {
+    "shortsNarrator": "hm_omega",
+    "longNarrators": [
+      "hm_omega"
+    ],
+    "_why": "owner's pick by ear, 24 Nov 2026, from samples/voice (hf_alpha, hf_beta, hm_omega, hm_psi) at 1.5x"
+  },
+  "currency": "INR",
+  "currencies": [
+    "INR"
+  ],
+  "homeCountry": "IN",
+  "_homeCountryWhy": "owner, 2026-11-25: an all-India channel; generator/reach.py lets it make every daily Short about India (no local quota)",
+  "numbers": "simple",
+  "disclaimer": "नक्शे सरल किए गए हैं; भारत की सीमाएँ भारत के आधिकारिक नक्शे के अनुसार। Maps simplified; India's borders as on India's official map. Facts from the sources named in the description.",
+  "stories": "true",
+  "look": {
+    "cast": "none",
+    "palettes": null,
+    "kits": [
+      "flat"
+    ],
+    "style": "India's official map on a shaded-relief base; states made on screen (drawn, painted, lifted), every-state fill-ups, Devanagari tags",
+    "map": "remotion/src/flat/india.tsx"
+  },
+  "uploadCategory": "27",
+  "note": "Written by the /new-channel build phase from research/advice.md (2026-11-24). generator/pack.py reads it.",
+  "length": {
+    "short": [
+      25,
+      50
+    ]
+  },
+  "sound": {
+    "_why": "measured on the references 2026-11-24 (research/sound.md): dark low beds 20-37 dB under the voice, whooshes on map moves, low hits on key dates",
+    "genres": [
+      "tanpura",
+      "monsoon"
+    ],
+    "bedLevel": 0.16,
+    "duck": 0.85,
+    "sfx": [
+      "whoosh",
+      "scribble",
+      "pin",
+      "pin-high",
+      "thud",
+      "boom",
+      "chime"
+    ],
+    "transitionSfx": "whoosh",
+    "sfxPerMinute": {
+      "short": 12,
+      "long": 8
+    },
+    "preRevealDrop": {
+      "db": -18,
+      "sec": 0.5,
+      "shortSec": 0.5
+    }
+  },
+  "motion": {
+    "_why": "the references never hold the map still; every sentence changes it",
+    "maxGapSec": 1.8
+  },
+  "captions": {
+    "script": "devanagari"
+  },
+  "voiceSpeed": {
+    "short": 1.5,
+    "long": 1.35
+  }
+}

@@ -1,0 +1,1010 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 33851,
+ "story": "founder_bet",
+ "shape": "underdog-reversal",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "dossier",
+  "key": "C",
+  "bpm": 80
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "conflict",
+ "cta": "Luck or nerve: which one saved FedEx? Comment",
+ "feed_id": "2026-11-25-fedex-blackjack-27000-short",
+ "facts": [
+  {
+   "label": "Cash FedEx had left when Smith went to Las Vegas",
+   "value": 5000,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "1973-12-31",
+   "source": "Fox Business",
+   "url": "https://foxbusiness.com/money/fred-smith-fedex-blackjack-winning-formula",
+   "fixed": true
+  },
+  {
+   "label": "What Smith won at blackjack",
+   "value": 27000,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "1973-12-31",
+   "source": "Fox Business",
+   "url": "https://foxbusiness.com/money/fred-smith-fedex-blackjack-winning-formula",
+   "fixed": true
+  },
+  {
+   "label": "Loans and equity Smith had raised by the end of 1972",
+   "value": 80,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "1972-12-31",
+   "source": "Fox Business",
+   "url": "https://foxbusiness.com/money/fred-smith-fedex-blackjack-winning-formula",
+   "fixed": true
+  },
+  {
+   "label": "What Smith raised after the blackjack win",
+   "value": 11,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "1974-12-31",
+   "source": "Fox Business",
+   "url": "https://foxbusiness.com/money/fred-smith-fedex-blackjack-winning-formula",
+   "fixed": true
+  },
+  {
+   "label": "FedEx revenue, fiscal 2026",
+   "value": 94.7,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2026-05-31",
+   "source": "FedEx",
+   "url": "https://investors.fedex.com/news-and-events/investor-news/investor-news-details/2026/FedEx-Reports-Strong-Fourth-Quarter-and-Full-Year-Results/",
+   "latest": true,
+   "checked": "2026-11-25"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.6,
+  "words": "FedEx's last *gamble*",
+  "angle": "story",
+  "unique": "FedEx blackjack covers in the niche show cards and chips; ours shows the FedEx envelope with its last cash"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "FedEx was down to {fact1}. Its founder flew to Vegas.",
+   "events": {
+    "fedex": {
+     "word": "FedEx"
+    },
+    "down": {
+     "word": "down"
+    },
+    "founder": {
+     "word": "founder"
+    },
+    "flew": {
+     "word": "flew"
+    },
+    "vegas": {
+     "word": "Vegas"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "down"
+    },
+    {
+     "kind": "boom",
+     "at": "vegas"
+    }
+   ],
+   "params": {
+    "place": [
+     "a FedEx envelope on a desk",
+     "a FedEx jet taking off",
+     "the Las Vegas Strip at night"
+    ],
+    "things": [
+     "FedEx envelope",
+     "FedEx jet",
+     "Las Vegas Strip"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "flew",
+      "size": "medium"
+     },
+     {
+      "at": "vegas",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fedex",
+      "what": "the envelope's FedEx mark pushes in"
+     },
+     {
+      "at": "down",
+      "what": "a label: the cash left"
+     },
+     {
+      "at": "flew",
+      "what": "punch to a FedEx jet taking off"
+     },
+     {
+      "at": "vegas",
+      "what": "punch to the Las Vegas Strip"
+     }
+    ],
+    "fig": {
+     "left": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-newone-fedex-tyvek-envelope-990a91ce.jpg",
+        "focus": [
+         0.72,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-fedex-plane-taking-off-reno-intl-airport-4c0c71f2.jpg",
+        "focus": [
+         0.55,
+         0.4
+        ],
+        "at": "flew"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-las-vegas-nevada-usa-the-strip-2012-6232-6edf73e6.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "vegas"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "at": "down",
+      "out": "flew"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "jets",
+   "role": "promise",
+   "say": "Fred Smith's Federal Express flew parcels overnight in its own jets. So why was it nearly broke?",
+   "events": {
+    "fred": {
+     "word": "Fred"
+    },
+    "smiths": {
+     "word": "Smith's"
+    },
+    "parcels": {
+     "word": "parcels"
+    },
+    "overnight": {
+     "word": "overnight"
+    },
+    "jets": {
+     "word": "jets"
+    },
+    "broke": {
+     "word": "broke"
+    }
+   },
+   "params": {
+    "place": [
+     "Federal Express's first delivery van, now in a museum",
+     "a FedEx jet at its Memphis hub"
+    ],
+    "things": [
+     "first Federal Express van",
+     "FedEx jet"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "overnight",
+      "size": "medium"
+     },
+     {
+      "at": "broke",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fred",
+      "what": "a lower third: Fred Smith, founder"
+     },
+     {
+      "at": "parcels",
+      "what": "the van pushes in"
+     },
+     {
+      "at": "jets",
+      "what": "cut to a FedEx jet"
+     },
+     {
+      "at": "broke",
+      "what": "a stamp: NEARLY BROKE"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-first-fedex-van-memphis-tn-2013-05-17-002-738e8310.jpg",
+      "focus": [
+       0.55,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "warm",
+      "out": "jets"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-fedex-plane-memphis-tn-2012-04-21-008-f621e5a8.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "jets"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "lowerThird",
+      "name": "Fred Smith",
+      "role": "founder, Federal Express",
+      "at": "fred",
+      "out": "jets"
+     },
+     {
+      "kind": "stamp",
+      "text": "Nearly broke",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "broke"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "fuel",
+   "role": "build",
+   "say": "In late nineteen seventy-two, Smith had raised {fact3}, and the fuel bills still ran ahead of it.",
+   "events": {
+    "raised": {
+     "word": "raised"
+    },
+    "fuel": {
+     "word": "fuel"
+    },
+    "bills": {
+     "word": "bills"
+    },
+    "ahead": {
+     "word": "ahead"
+    },
+    "late": {
+     "word": "late"
+    }
+   },
+   "params": {
+    "place": [
+     "one of Federal Express's first jets, in a museum hangar"
+    ],
+    "things": [
+     "Falcon jet",
+     "the money raised"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "raised",
+      "size": "medium"
+     },
+     {
+      "at": "fuel",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "late",
+      "what": "the date slams in"
+     },
+     {
+      "at": "raised",
+      "what": "a label: the money raised"
+     },
+     {
+      "at": "fuel",
+      "what": "push in on the jet"
+     },
+     {
+      "at": "ahead",
+      "what": "a stamp: FUEL BILLS"
+     }
+    ],
+    "fig": {
+     "raised": "{fact3}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dassault-falcon-20dc-n8fe-wendy-51267422129-f0f85fa0.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "1972-12-31",
+      "sub": "Federal Express",
+      "pos": "top",
+      "at": "late",
+      "out": "raised"
+     },
+     {
+      "kind": "label",
+      "text": "{fact3}",
+      "sub": "raised by Smith",
+      "at": "raised",
+      "out": "ahead"
+     },
+     {
+      "kind": "stamp",
+      "text": "Fuel bills",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 5,
+      "at": "ahead"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "table",
+   "role": "build",
+   "say": "When General Dynamics' board refused to put in more, Smith sat down at a blackjack table.",
+   "events": {
+    "general": {
+     "word": "General"
+    },
+    "board": {
+     "word": "board"
+    },
+    "refused": {
+     "word": "refused"
+    },
+    "sat": {
+     "word": "sat"
+    },
+    "blackjack": {
+     "word": "blackjack"
+    },
+    "table": {
+     "word": "table"
+    }
+   },
+   "params": {
+    "place": [
+     "a blackjack table in Las Vegas"
+    ],
+    "things": [
+     "blackjack table",
+     "cards",
+     "chips"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "refused",
+      "size": "close"
+     },
+     {
+      "at": "blackjack",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "general",
+      "what": "a label: General Dynamics"
+     },
+     {
+      "at": "refused",
+      "what": "a stamp: REFUSED"
+     },
+     {
+      "at": "blackjack",
+      "what": "the table drifts across the cards"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-blackjack-game-2-5ad1c892.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-left",
+      "amount": 0.14,
+      "grade": "night"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "General Dynamics",
+      "sub": "its board said no",
+      "at": "general",
+      "out": "refused"
+     },
+     {
+      "kind": "stamp",
+      "text": "Refused",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -6,
+      "at": "refused",
+      "out": "sat"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "won",
+   "role": "turn",
+   "say": "He came back with {fact2}. So did a card game save FedEx?",
+   "events": {
+    "came": {
+     "word": "came"
+    },
+    "back": {
+     "word": "back"
+    },
+    "card": {
+     "word": "card"
+    },
+    "save": {
+     "word": "save"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "came"
+    }
+   ],
+   "params": {
+    "place": [
+     "a winning blackjack hand, the cash board over it"
+    ],
+    "things": [
+     "winning hand",
+     "split-flap board"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "back",
+      "size": "medium"
+     },
+     {
+      "at": "save",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "came",
+      "what": "the split-flap board rolls from the cash left to the winnings"
+     },
+     {
+      "at": "card",
+      "what": "the tape types on"
+     },
+     {
+      "at": "save",
+      "what": "the hand keeps pushing"
+     }
+    ],
+    "fig": {
+     "was": "{fact1}",
+     "now": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-winning-blackjack-hand-5857826966-9cdaf44c.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "dim": 0.4
+     },
+     {
+      "kind": "ticker",
+      "label": "FEDEX CASH",
+      "from": "was",
+      "to": "now",
+      "flipAt": "came",
+      "tape": "after one night",
+      "tapeAt": "card",
+      "plate": false
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "omen",
+   "role": "build",
+   "say": "Smith called the win an omen, not the thing that saved it.",
+   "events": {
+    "smith": {
+     "word": "Smith"
+    },
+    "called": {
+     "word": "called"
+    },
+    "omen": {
+     "word": "omen"
+    },
+    "saved": {
+     "word": "saved"
+    }
+   },
+   "params": {
+    "place": [
+     "a FedEx truck on a suburban street, Smith's words over it"
+    ],
+    "things": [
+     "FedEx truck",
+     "Smith's quote"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "omen",
+      "size": "close"
+     },
+     {
+      "at": "saved",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "smith",
+      "what": "the quote card lands over the truck"
+     },
+     {
+      "at": "omen",
+      "what": "the highlighter swipes 'an omen'"
+     },
+     {
+      "at": "saved",
+      "what": "the truck keeps drifting"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-fed-ex-truck-939173eb.jpg",
+      "focus": [
+       0.45,
+       0.45
+      ],
+      "move": "drift-right",
+      "amount": 0.12,
+      "grade": "doc",
+      "dim": 0.45
+     },
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "Fred Smith, FedEx founder",
+        "title": "“The {fact2} wasn't decisive, but it was an omen that things would get better.”",
+        "style": "paper",
+        "hi": "it was an omen"
+       }
+      ],
+      "on": [
+       "smith"
+      ],
+      "markAt": "omen",
+      "plate": false
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "raise",
+   "role": "build",
+   "say": "With time bought, he raised another {fact4}, and the jets kept flying.",
+   "events": {
+    "time": {
+     "word": "time"
+    },
+    "raised": {
+     "word": "raised"
+    },
+    "another": {
+     "word": "another"
+    },
+    "jets": {
+     "word": "jets"
+    },
+    "flying": {
+     "word": "flying"
+    }
+   },
+   "params": {
+    "place": [
+     "a FedEx jet on the ramp in Memphis"
+    ],
+    "things": [
+     "FedEx jet",
+     "the new money"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "raised",
+      "size": "close"
+     },
+     {
+      "at": "flying",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "time",
+      "what": "the jet pushes in"
+     },
+     {
+      "at": "raised",
+      "what": "a label: the new money"
+     },
+     {
+      "at": "flying",
+      "what": "a stamp: STILL FLYING"
+     }
+    ],
+    "fig": {
+     "more": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-fedex-plane-memphis-tn-001-9b9e7823.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact4}",
+      "sub": "raised after Las Vegas",
+      "at": "raised",
+      "out": "flying"
+     },
+     {
+      "kind": "stamp",
+      "text": "Still flying",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 5,
+      "at": "flying"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "In the year to May, the company that nearly went under at a blackjack table took in {fact5}.",
+   "events": {
+    "year": {
+     "word": "year"
+    },
+    "company": {
+     "word": "company"
+    },
+    "blackjack": {
+     "word": "blackjack"
+    },
+    "took": {
+     "word": "took"
+    },
+    "under": {
+     "word": "under"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "took"
+    }
+   ],
+   "params": {
+    "place": [
+     "the poster over FedEx's Memphis hub from the air"
+    ],
+    "things": [
+     "FedEx hub",
+     "a year's takings"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "under",
+      "size": "wide"
+     },
+     {
+      "at": "took",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "year",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "under",
+      "what": "the figure settles"
+     },
+     {
+      "at": "took",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "rev": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-fedex-super-hub-02-26b5fba4.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "title": "FedEx",
+      "figure": "rev",
+      "sub": "taken in during one year"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Luck or nerve: which one saved FedEx? Remember,",
+   "events": {
+    "luck": {
+     "word": "Luck"
+    },
+    "nerve": {
+     "word": "nerve"
+    },
+    "saved": {
+     "word": "saved"
+    },
+    "remember": {
+     "word": "Remember"
+    }
+   },
+   "params": {
+    "place": [
+     "FedEx's Memphis hub at ground level",
+     "the FedEx envelope from the first frame"
+    ],
+    "things": [
+     "FedEx hub",
+     "FedEx envelope"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "saved",
+      "size": "medium"
+     },
+     {
+      "at": "remember",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "luck",
+      "what": "a stamp: LUCK?"
+     },
+     {
+      "at": "nerve",
+      "what": "a stamp: NERVE?"
+     },
+     {
+      "at": "saved",
+      "what": "push in on the hub"
+     },
+     {
+      "at": "remember",
+      "what": "back to the FedEx envelope from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-fedex-super-hub-01-1043633d.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "remember"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-newone-fedex-tyvek-envelope-990a91ce.jpg",
+      "focus": [
+       0.72,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "remember"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Luck?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.2
+      ],
+      "tilt": -4,
+      "at": "luck",
+      "out": "nerve"
+     },
+     {
+      "kind": "stamp",
+      "text": "Nerve?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.2
+      ],
+      "tilt": 4,
+      "at": "nerve",
+      "out": "saved"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}

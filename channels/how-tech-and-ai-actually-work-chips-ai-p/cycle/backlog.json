@@ -2,13 +2,22 @@
  "note": "The weekly loop's first challengers, from the research (18 Nov 2026): what the research was unsure of, ranked, alternating first-second and look tests.",
  "candidates": [
   {
+   "id": "tech-calm-camera",
+   "kind": "look",
+   "area": "camera",
+   "metric": "heldAfterHook",
+   "from": "owner note cmwur7eyr0001l309janyxc2w (2026-11-24, on L-20261124-21)",
+   "test": "Shorts whose camera holds one shot size per idea and drifts, pans or orbits inside it, changing size only on the word that reveals something (about one change every 4 s, never a push in and straight back out), against the champion's size change on nearly every word",
+   "why": "The owner on the long video L-20261124-21: 'too many zoom in and zoom outs it was very difficult to actually keep an eye on whats happening'. That video changed size every 1.3 s; long videos now have a gate (renderer/craft.py camera_problems). Shorts change only through the loop, so this is the next look test. Research 2026-11-25 (pacing night): our last five Shorts give every 6 s beat 3 camera keys and 3 shot sizes (a size change about every 2 s) and a new place every beat (8-10 places a minute); the 13 reference Shorts under 100 s in research/sheets/ (Branch Education, Professor Of AI, Inside Decoded, AI Tech 3.7) hold a shot 4-6 s with one move or none (46% static, 33% push in), motion 1.5-1.9 of 3."
+  },
+  {
    "id": "tech-mechanism-by-6s",
    "kind": "first-second",
    "area": "story",
    "metric": "stayed",
    "from": "research 2026-11-23",
    "test": "Shorts whose second and third lines go straight into the machine working (the 'how' answered with a moving part by 6 s: 'How? Its machines were 150 metres long and built the tunnel as they dug'), with no year, inventor backstory or historical figure before 10 s, against the champion, where the line after the question may open on a date or a record ('In 1945, radar engineer Percy Spencer...', 'Historically, it made up to 2,074 megawatts')",
-   "why": "Our own retention: both Shorts with a curve lost their biggest share at 7.5 s, exactly on the line that turned to backstory: the microwave fell from 81% to 52% on 'In 1945, radar engineer Percy Spencer felt the chocolate...', Hoover Dam from 100% to 81% on 'Historically, it made up to 2,074 megawatts'. The Crossrail Short, whose second line was the machine itself, has 1,362 views in its first day, 5x our next best (284). References agree: 'How a Dam Generates Electricity' (AI Tech 3.7, 8.7M views on 11K subscribers, 41 s) is inside the intake at 0 s with no history; Inside Decoded's 'This computer had no chips' gives the twist at 2.4 s and the date only at 5-12 s. Two curves only, so medium confidence; placed first among first-second tests because it comes from our own drop points. Update research 2026-11-24: the transistor Short's curve is in and shows the same shape: its biggest drop, 24.5 points, is at 6.2 s on the second line 'The transistor. What did the very first one look like?', a re-asked question with no machine moving. Three curves of three now lose most at 6-8 s on a line that isn't the mechanism."
+   "why": "Our own retention: both Shorts with a curve lost their biggest share at 7.5 s, exactly on the line that turned to backstory: the microwave fell from 81% to 52% on 'In 1945, radar engineer Percy Spencer felt the chocolate...', Hoover Dam from 100% to 81% on 'Historically, it made up to 2,074 megawatts'. The Crossrail Short, whose second line was the machine itself, has 1,362 views in its first day, 5x our next best (284). References agree: 'How a Dam Generates Electricity' (AI Tech 3.7, 8.7M views on 11K subscribers, 41 s) is inside the intake at 0 s with no history; Inside Decoded's 'This computer had no chips' gives the twist at 2.4 s and the date only at 5-12 s. Two curves only, so medium confidence; placed first among first-second tests because it comes from our own drop points. Update research 2026-11-24: the transistor Short's curve is in and shows the same shape: its biggest drop, 24.5 points, is at 6.2 s on the second line 'The transistor. What did the very first one look like?', a re-asked question with no machine moving. Three curves of three now lose most at 6-8 s on a line that isn't the mechanism. Reviewer 2026-11-24: Crossrail's curve is in too: even it lost 15.4 points at 5.6 s on 'How? Its machines were 150 metres long', so four of four lose most at 5-8 s; a re-asked question there is now a lesson (lessons.md #1), the backstory half stays this test."
   },
   {
    "id": "tech-figure-first",
@@ -87,6 +96,15 @@
    "from": "research 2026-11-24",
    "test": "Shorts with about 20 machine sound effects a minute (channel.json sound.sfxPerMinute.short 20 on the test side; a tick, thud, glass or whoosh on every part that moves, clicks, lights or snaps, from the channel's own synthesized set) against the champion's cap of 12",
    "why": "The two AI-voiced 3D Shorts with the biggest outliers in our shot sheets run far denser sound than we do: AI Tech 3.7's 'How a Dam Generates Electricity' (8.6M views on 11K subscribers) about 20 effects a minute, Inside Decoded's Shorts 30-32 a minute; Branch Education (2.8M subscribers) 8-12, Professor Of AI about 10. Our cap is 12 and our five Shorts mix effects at -29 to -31 dB mean, 12 dB under the voice. Our held-after-hook is low (end hold 11-30%). Sound counts were estimated by eye in the built-in browser, and the dam sheet's sound probe was cut short, so confidence is low; placed after the light and morph look tests."
+  },
+  {
+   "id": "tech-one-machine-one-place",
+   "kind": "look",
+   "area": "look",
+   "metric": "heldAfterHook",
+   "from": "reviewer 2026-11-24",
+   "test": "Shorts that keep one machine in one cut-open place for the whole explanation, the camera moving along and into it (Crossrail: the tunnel boring machine from wheel to chamber to conveyor to ring), against the champion, where beats may jump to a new place each line (microwave: kitchen, lab, tube, inside the tube, a popcorn kernel, a workshop, a showroom).",
+   "why": "Held after the hook: Crossrail, which stayed on one machine in one place, 46.5%; the transistor (bench, then chip, then oscilloscope, then graphics card) 26.4%; Hoover Dam (dam, intake, powerhouse, turbine pit, generator, control room) 13.1%; microwave (seven places) 10.7%. Four Shorts and different topics, so no lesson yet: a look test. Research 2026-11-25: Crossrail, the one-machine Short, held 0.73 of its post-hook audience to the end (endHold) against 0.11, 0.15 and 0.32 for the microwave, dam and transistor Shorts that change place every beat (metrics/analytics.json); four Shorts only, so a test, not a rule."
   }
  ],
  "running": null,

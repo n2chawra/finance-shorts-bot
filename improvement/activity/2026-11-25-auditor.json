@@ -1,0 +1,41 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-24T16:32:59Z",
+  "finishedAt": "2026-11-24T16:37:52Z",
+  "summary": "Fixed the Overview's 7-day views so they can never exceed all-time views (YouTube removing invalid views made them), and wrote 5 video verdicts and The Why Atlas's first channel review. The data audit was 20 hours old, so the dashboard-vs-YouTube check was skipped again.",
+  "decision": "acted",
+  "why": "The last data audit (23 Nov) showed How Tech Works at 3,190 views in 7 days against 3,187 all time: the 7 days kept Analytics' 118 views for a Short YouTube now counts at 114. Fixed per video with a test that fails on the old code.",
+  "findings": [
+    {
+      "title": "Data audit 20 h old at 16:33 UTC",
+      "detail": "Newest audit 23 Nov 20:22 UTC; GitHub starts the 08:23 UTC cron many hours late. Owner notification data-audit-late updated."
+    },
+    {
+      "title": "Every channel red: 0 Shorts ready",
+      "detail": "Real, not a data bug: health counts queued Shorts and publish fills slots only 4.5 h ahead, so nothing is waiting beyond the next slots."
+    },
+    {
+      "title": "How Tech Works: Crossrail is the breakout",
+      "detail": "1,405 views vs a 117 median, 95% viewed, 46.5% held after the hook vs 13.1% (How Tech Works)."
+    },
+    {
+      "title": "The Why Atlas: second beat again",
+      "detail": "English cities lost 19.1 points at 5.4 s on its second beat; challenge hooks average 59.6% stayed vs 54.9% for questions (3 and 4 Shorts)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Overview 7 days never above all time",
+      "detail": "apps/dashboard/src/lib/store.db.ts uses windowCount() from lib/totals.ts per published video (dd-013); test workers/tests/dashboard-last7.test.ts.",
+      "branch": "agent/auditor/2026-11-25"
+    }
+  ],
+  "nextCheck": "2026-11-26",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-25.md"
+    }
+  ]
+}

@@ -1,0 +1,657 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 31761,
+ "story": "every_state",
+ "shape": "fill-the-map",
+ "currency": "INR",
+ "language": "hi",
+ "style": {
+  "palette": "ocean",
+  "genre": "tanpura",
+  "key": "D",
+  "bpm": 106,
+  "look": {
+   "stage": "street",
+   "header": "strip",
+   "holder": "sign",
+   "entrance": "drop"
+  }
+ },
+ "arms": {
+  "length": "25-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Aapki gaadi ka code kaunsa hai? Comment",
+ "feed_id": "2026-11-24-number-plate-codes",
+ "facts": [
+  {
+   "label": "States of India",
+   "value": 28,
+   "unit": "count",
+   "as_of": "2026-11-24",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/States_and_union_territories_of_India",
+   "fixed": true
+  },
+  {
+   "label": "Union territories of India",
+   "value": 8,
+   "unit": "count",
+   "as_of": "2026-11-24",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/States_and_union_territories_of_India",
+   "fixed": true
+  },
+  {
+   "label": "States and union territories together",
+   "value": 36,
+   "unit": "count",
+   "as_of": "2026-11-24",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/States_and_union_territories_of_India",
+   "fixed": true
+  },
+  {
+   "label": "Year Telangana's number-plate code changed from TS to TG",
+   "value": 2024,
+   "unit": "year",
+   "as_of": "2024-03-13",
+   "source": "Telangana Today",
+   "url": "https://telanganatoday.com/only-new-vehicles-to-have-tg-number-plates-in-telangana",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "payoff",
+  "sec": 7.0,
+  "words": "TS se *TG* kyun?",
+  "figure": "{fact4}",
+  "tag": "Telangana",
+  "angle": "question",
+  "who": "narrator",
+  "unique": "no other covers fetched for this setup sample; our own frame of Telangana's plate flipping from TS to TG"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "तेलंगाना की नई गाड़ियों पर टी एस की जगह टी जी क्यों लिखा जाता है?",
+   "events": {
+    "telangana": {
+     "word": "तेलंगाना"
+    },
+    "gaadi": {
+     "word": "गाड़ियों"
+    },
+    "ts": {
+     "word": "एस"
+    },
+    "jagah": {
+     "word": "जगह"
+    },
+    "kyon": {
+     "word": "क्यों"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": "on the map: Telangana lit in the middle of the south, India pale round it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "jagah",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "telangana",
+      "what": "Telangana traces round its border and glows yellow"
+     },
+     {
+      "at": "gaadi",
+      "what": "a number plate drops onto Telangana"
+     },
+     {
+      "at": "ts",
+      "what": "the plate's letters TS pulse"
+     },
+     {
+      "at": "jagah",
+      "what": "a second plate with TG slides in beside it"
+     },
+     {
+      "at": "kyon",
+      "what": "a big question mark stamps between the plates"
+     }
+    ],
+    "things": [
+     "telangana",
+     "number plate TS",
+     "number plate TG",
+     "question mark"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "gaadi"
+    },
+    {
+     "kind": "thud",
+     "at": "kyon"
+    }
+   ]
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "पहले देखिए, हर राज्य और केंद्र शासित प्रदेश की गाड़ी पर उसका अपना कोड होता है, कुल {fact3}।",
+   "events": {
+    "dekhiye": {
+     "word": "देखिए"
+    },
+    "rajya": {
+     "word": "राज्य"
+    },
+    "code": {
+     "word": "कोड"
+    },
+    "kul": {
+     "word": "कुल"
+    },
+    "pradesh": {
+     "word": "प्रदेश"
+    },
+    "apna": {
+     "word": "अपना"
+    }
+   },
+   "params": {
+    "component": "Promise",
+    "place": "on the map: all of India from above, a highway sign standing in the Arabian Sea",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "dekhiye",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "dekhiye",
+      "what": "the camera pulls back from Telangana to all of India"
+     },
+     {
+      "at": "rajya",
+      "what": "every state's border flashes white once"
+     },
+     {
+      "at": "pradesh",
+      "what": "the union territories (Ladakh, Jammu and Kashmir, Delhi, the islands) light up teal"
+     },
+     {
+      "at": "apna",
+      "what": "a stack of plates fans out over the map"
+     },
+     {
+      "at": "code",
+      "what": "a blank plate drops onto the middle of India"
+     },
+     {
+      "at": "kul",
+      "what": "a green highway sign rises in the sea with the count of codes"
+     }
+    ],
+    "things": [
+     "all india",
+     "blank plate",
+     "highway sign"
+    ],
+    "fig": {
+     "count": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "north",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "दिल्ली डी एल, पंजाब पी बी, उत्तर प्रदेश यू पी, बिहार बी आर।",
+   "events": {
+    "delhi": {
+     "word": "दिल्ली"
+    },
+    "punjab": {
+     "word": "पंजाब"
+    },
+    "up": {
+     "word": "उत्तर"
+    },
+    "bihar": {
+     "word": "बिहार"
+    }
+   },
+   "params": {
+    "component": "North",
+    "place": "on the map: the north, from Punjab across the Ganga plain to Bihar",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "delhi",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "delhi",
+      "what": "Delhi paints in and its DL plate drops"
+     },
+     {
+      "at": "punjab",
+      "what": "Punjab paints in, PB plate drops"
+     },
+     {
+      "at": "up",
+      "what": "Uttar Pradesh paints in, UP plate drops"
+     },
+     {
+      "at": "bihar",
+      "what": "Bihar paints in, BR plate drops, the camera drifts east"
+     }
+    ],
+    "things": [
+     "delhi",
+     "punjab",
+     "uttar pradesh",
+     "bihar",
+     "plates"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "west",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "महाराष्ट्र एम एच, गुजरात जी जे, कर्नाटक के ए, केरल के एल।",
+   "events": {
+    "mh": {
+     "word": "महाराष्ट्र"
+    },
+    "gj": {
+     "word": "गुजरात"
+    },
+    "ka": {
+     "word": "कर्नाटक"
+    },
+    "kl": {
+     "word": "केरल"
+    }
+   },
+   "params": {
+    "component": "West",
+    "place": "on the map: the west coast, Gujarat down to Kerala",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "ka",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mh",
+      "what": "Maharashtra paints in, MH plate drops"
+     },
+     {
+      "at": "gj",
+      "what": "Gujarat paints in, GJ plate drops"
+     },
+     {
+      "at": "ka",
+      "what": "the camera slides down the coast as Karnataka paints in, KA plate"
+     },
+     {
+      "at": "kl",
+      "what": "Kerala paints in, KL plate drops"
+     }
+    ],
+    "things": [
+     "maharashtra",
+     "gujarat",
+     "karnataka",
+     "kerala",
+     "plates"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "odd",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "कुछ कोड पहेली हैं: उत्तराखंड यू के, छत्तीसगढ़ सी जी, लद्दाख एल ए।",
+   "events": {
+    "paheli": {
+     "word": "पहेली"
+    },
+    "uk": {
+     "word": "उत्तराखंड"
+    },
+    "cg": {
+     "word": "छत्तीसगढ़"
+    },
+    "la": {
+     "word": "लद्दाख"
+    }
+   },
+   "params": {
+    "component": "Odd",
+    "place": "on the map: the hills of Uttarakhand, the forests of Chhattisgarh and the high desert of Ladakh",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "la",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "paheli",
+      "what": "three blank plates wobble over three pale states"
+     },
+     {
+      "at": "uk",
+      "what": "Uttarakhand paints in, its plate flips to UK"
+     },
+     {
+      "at": "cg",
+      "what": "Chhattisgarh paints in, plate flips to CG"
+     },
+     {
+      "at": "la",
+      "what": "the camera rises north to Ladakh, it paints in, plate flips to LA"
+     }
+    ],
+    "things": [
+     "uttarakhand",
+     "chhattisgarh",
+     "ladakh",
+     "puzzle plates"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "और तेलंगाना? बनने के बाद उसकी गाड़ियों पर टी एस लिखा गया।",
+   "events": {
+    "telangana": {
+     "word": "तेलंगाना?"
+    },
+    "banne": {
+     "word": "बनने"
+    },
+    "gaadi": {
+     "word": "गाड़ियों"
+    },
+    "likha": {
+     "word": "लिखा"
+    }
+   },
+   "params": {
+    "component": "Turn",
+    "place": "on the map: Telangana as a new state, cut out of Andhra Pradesh",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "telangana",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "telangana",
+      "what": "the camera dives down to Telangana, the light drops to dusk"
+     },
+     {
+      "at": "banne",
+      "what": "Telangana's border draws itself and it lifts out of Andhra Pradesh"
+     },
+     {
+      "at": "gaadi",
+      "what": "a row of small cars rolls across the state"
+     },
+     {
+      "at": "likha",
+      "what": "a TS plate stamps onto Telangana"
+     }
+    ],
+    "things": [
+     "telangana",
+     "andhra pradesh",
+     "cars",
+     "plate TS"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "पर आंदोलन के दिनों में लोग अपनी गाड़ियों पर टी जी लिखते थे। इसलिए {fact4} में नई गाड़ियों का कोड बन गया टी जी।",
+   "events": {
+    "andolan": {
+     "word": "आंदोलन"
+    },
+    "log": {
+     "word": "लोग"
+    },
+    "likhte": {
+     "word": "लिखते"
+    },
+    "isliye": {
+     "word": "इसलिए"
+    },
+    "nayi": {
+     "word": "नई"
+    },
+    "ban": {
+     "word": "बन"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": [
+     "on the map: Telangana in the movement years, small cars with hand-painted TG on them",
+     "on the map: Telangana today, a new car's plate"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "isliye",
+      "size": "medium"
+     },
+     {
+      "at": "ban",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "andolan",
+      "what": "the map turns to old paper, flags of the movement wave over Telangana"
+     },
+     {
+      "at": "log",
+      "what": "tiny people stand along the roads"
+     },
+     {
+      "at": "likhte",
+      "what": "TG is brushed by hand onto the cars' plates"
+     },
+     {
+      "at": "isliye",
+      "what": "a calendar sign with the year drops onto the map"
+     },
+     {
+      "at": "nayi",
+      "what": "the map returns to today, a new car rolls in"
+     },
+     {
+      "at": "ban",
+      "what": "the TS plate flips over to TG with a bang"
+     }
+    ],
+    "things": [
+     "movement flags",
+     "painted cars",
+     "people",
+     "year sign",
+     "new car",
+     "plate TG"
+    ],
+    "fig": {
+     "year": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "ban"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "पुरानी गाड़ियाँ आज भी टी एस हैं। आपकी गाड़ी पर कौन-सा कोड है? और",
+   "events": {
+    "purani": {
+     "word": "पुरानी"
+    },
+    "aaj": {
+     "word": "आज"
+    },
+    "aapki": {
+     "word": "आपकी"
+    },
+    "kaun": {
+     "word": "कौन-सा"
+    },
+    "aur": {
+     "word": "और"
+    },
+    "hain": {
+     "word": "हैं।"
+    },
+    "kod": {
+     "word": "कोड"
+    }
+   },
+   "params": {
+    "component": "Loop",
+    "place": "on the map: all of India, every state painted with its plate, then back to Telangana",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "aapki",
+      "size": "wide"
+     },
+     {
+      "at": "aur",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "purani",
+      "what": "an old car with a TS plate stays beside the new TG car"
+     },
+     {
+      "at": "aapki",
+      "what": "the camera pulls back as every other state paints in with its plate"
+     },
+     {
+      "at": "hain",
+      "what": "the camera bumps in on the old TS plate"
+     },
+     {
+      "at": "kaun",
+      "what": "a comment bubble pops over the full map"
+     },
+     {
+      "at": "kod",
+      "what": "the comment bubble bounces"
+     },
+     {
+      "at": "aur",
+      "what": "the camera glides back to Telangana as the hook began"
+     }
+    ],
+    "things": [
+     "old car TS",
+     "all plates",
+     "comment bubble",
+     "telangana"
+    ],
+    "fig": {}
+   }
+  }
+ ],
+ "narrator": "hm_omega"
+}

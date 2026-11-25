@@ -40,7 +40,7 @@ from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, 
 from . import editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
-from . import channels, crosschannel, pack, planrules
+from . import channels, crosschannel, pack, planrules, promo
 from .channels import cpath
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
@@ -234,6 +234,14 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     allowed = variety.allowed_templates(entries, enabled)
     blocked = variety.blocked_categories(entries)
     feed = topics.for_state(entries, today, blocked, allowed, root, fmt)
+    # a channel whose Shorts only promote its long videos (generator/promo.py; owner, 2026-11-25): no Shorts feed,
+    # the long videos that still need a promo instead, and nothing to make when none does
+    promos = promo.for_state(everything, history.now(), root) if fmt == "short" and not sample else None
+    if promos is not None:
+        feed = {"topics": [], "open_total": 0, "required": None, "urgent": None,
+                "note": "this channel's Shorts are promos of its long videos: see promo.targets"}
+        if mode == "video" and not promos["targets"]:
+            mode, why = "idle", "no long video needs a promo Short (every recent one has its promos)"
     if fmt == "short" and mode == "idle" and feed["urgent"] and made_today < target + TREND_EXTRA_PER_DAY:
         level = (topics.get(feed["urgent"], root, fmt) or {}).get("priority", "breaking")
         mode, why = "video", f"{why}, but a {level} topic is waiting: one extra video for it"
@@ -258,8 +266,9 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "recent_stories": [variety.story_of(e) for e in entries[-variety.STORY_WINDOW:]],
         "blocked_categories": blocked,
         "topic_feed": feed,
+        **({"promo": promos} if promos is not None else {}),
         # global first (owner, 2026-10-23): about two in three videos anyone in the world can relate to
-        "reach": reach.for_state(entries, today, fmt),
+        "reach": reach.for_state(entries, today, fmt, pack.load(root=root).get("homeCountry")),
         # what to make: formats people already watch in the millions (improvement/research/formats.json)
         "formats": formats.for_state(root, fmt),
         # big money first (owner, 2026-10-30): core formats fill at least 2 of every 3 Shorts
@@ -343,7 +352,8 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         problems += formats.mix_problems(plan, entries, root, fmt)
         if fmt == "short" and plan.get("template") == "short_story":
             problems += shapes.check_plan(plan, entries, root)
-        problems += reach.check_plan(plan, entries, history.ist_day(history.now().isoformat()), fmt)
+        problems += reach.check_plan(plan, entries, history.ist_day(history.now().isoformat()), fmt,
+                                     pack.load(root=root).get("homeCountry"))
         problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
         if not 20 <= len(plan["title"]) <= 90:
@@ -367,6 +377,8 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         problems += crosschannel.problems(plan, root)
         # the channel's own plan rules (cycle/plan-rules.json; geography: the answer is on the map)
         problems += planrules.check_plan(plan, root)
+        # a promo channel's Short names the long video it promotes (generator/promo.py)
+        problems += promo.check_plan(plan, history.load(root), history.now(), fmt, root)
         # a Short has no end card any more, so the description always carries the channel's disclaimer
         if ch["disclaimer"] not in plan["description"]:
             problems.append(f"description must include the disclaimer: {ch['disclaimer']}")
@@ -414,7 +426,75 @@ def record(vid: str, agent: str, passed: bool, notes: list[str], root: Path = RO
     if agent not in AGENTS:
         raise ValueError(f"agent must be one of {', '.join(AGENTS)}")
     _read(_dir(vid, root) / "plan.json")
+    if agent == "qa_review" and passed:
+        # QA passes the stills it saw, of this exact script and beat code (owner, 2026-11-25): the full render
+        # and ship check the video still matches them
+        stills = _stills_fp(vid, root)
+        if stills is None:
+            raise ValueError(f"QA can't pass {vid} before its stills: run `python -m generator.run render {vid} --preview` first")
+        if stills != fingerprint(vid, root):
+            raise ValueError(f"the script or beat code of {vid} changed after its stills: render the stills again, then QA them")
+        notes = [*notes, f"{FP_NOTE}{stills}"]
     log_step(vid, agent, passed, notes, root)
+
+
+# ---------------- QA before the full render (owner, 2026-11-25) ----------------
+# "QA should always run on the stills, and only after it passes should the full render happen, so time doesn't get
+# wasted on full re-renders." It was only ever written in the prompts, and some prompts said render-then-QA. Now:
+# a passing stills render logs the video's fingerprint, QA can only pass those stills, the full render refuses
+# unless QA passed this exact fingerprint, and ship refuses a video whose script changed after QA.
+FP_NOTE = "fingerprint: "
+_FP_SKIP = ("narrator", "experiments")   # render writes these itself
+
+
+def fingerprint(vid: str, root: Path = ROOT) -> str:
+    """'<words>.<code>': a hash of the script and plan (what is said and shown), and of the video's own beat code."""
+    import hashlib
+    d = _dir(vid, root)
+    script = {k: v for k, v in (_read(d / "script.json") if (d / "script.json").is_file() else {}).items() if k not in _FP_SKIP}
+    plan = _read(d / "plan.json") if (d / "plan.json").is_file() else {}
+    words = hashlib.sha256(json.dumps([script, plan], sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:16]
+    code = hashlib.sha256()
+    src = root / "remotion" / "src" / "videos" / vid
+    for f in sorted(src.rglob("*")) if src.is_dir() else []:
+        if f.is_file():
+            code.update(f.relative_to(src).as_posix().encode() + b"/" + f.read_bytes())
+    return f"{words}.{code.hexdigest()[:16]}"
+
+
+def _steps(vid: str, root: Path) -> list[dict]:
+    f = _dir(vid, root) / "run.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.is_file() else []
+
+
+def _fp_of(step: dict | None) -> str | None:
+    return next((n[len(FP_NOTE):] for n in (step or {}).get("notes") or [] if isinstance(n, str) and n.startswith(FP_NOTE)), None)
+
+
+def _stills_fp(vid: str, root: Path) -> str | None:
+    """The fingerprint of the latest stills render (only stills renders log one)."""
+    return next((fp for s in reversed(_steps(vid, root)) if s["agent"] == "render" and (fp := _fp_of(s))), None)
+
+
+def full_render_problems(vid: str, root: Path = ROOT) -> list[str]:
+    """Why the full render must not start yet (empty: go). It needs a QA pass on the stills of exactly this script
+    and beat code. One exception: after a full render failed only on the motion gate (liveliness, which only the
+    full video can measure), a fix to the beat code alone may be rendered again without another QA round."""
+    steps = _steps(vid, root)
+    qa = next((s for s in reversed(steps) if s["agent"] == "qa_review"), None)
+    howto = f"render the stills (`python -m generator.run render {vid} --preview`), have QA pass them, then the full render"
+    if qa is None or qa["status"] != "ok":
+        return [f"full render refused: QA has not passed the stills yet; {howto}"]
+    passed, now = _fp_of(qa), fingerprint(vid, root)
+    if passed is None or passed == now:
+        return []   # (a QA pass from before fingerprints: trusted)
+    after = steps[steps.index(qa) + 1:]
+    fulls = [s for s in after if s["agent"] == "render" and _fp_of(s) is None]
+    motion_only = bool(fulls) and fulls[-1]["status"] == "failed" and all(n.startswith(("liveliness:", "note:", "warning:"))
+                                                                         for n in fulls[-1]["notes"] if isinstance(n, str))
+    if motion_only and passed.split(".")[0] == now.split(".")[0]:
+        return []
+    return [f"full render refused: the script, plan or beat code changed after QA passed the stills; {howto}"]
 
 
 LIVELY_BAR = {"short": 3.0, "long": 2.0}   # the shot system moves far more than the old layouts (gates.py floor: 1.2)
@@ -490,7 +570,7 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
             tl = build_timeline(script, Path(tmp), voice="estimate")
     except (ValueError, RuntimeError) as e:
         return [str(e)]
-    problems = craft.shot_problems(tl) + [f"{p} (on the estimated voice)" for p in craft.picture_problems(tl)] + craft.mark_problems(tl) + craft.stage_problems(tl) + craft.device_problems(tl)
+    problems = craft.shot_problems(tl) + craft.camera_problems(tl) + [f"{p} (on the estimated voice)" for p in craft.picture_problems(tl)] + craft.mark_problems(tl) + craft.stage_problems(tl) + craft.device_problems(tl)
 
     def _tl(e: dict) -> dict:
         f = cpath(root, "videos") / e["id"] / "timeline.json"
@@ -519,11 +599,14 @@ def lint(vid: str, root: Path = ROOT) -> list[str]:
     return problems
 
 
-def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
+def render(vid: str, preview: bool = False, root: Path = ROOT, force: bool = False) -> list[str]:
     """Render into videos/<id>/ and apply the mechanical QA gates (layout, length, audio levels)."""
     d = _dir(vid, root)
     settings = load_settings(root)
     started = history.now().isoformat()
+    if not preview and not force and (blocked := full_render_problems(vid, root)):
+        log_step(vid, "render", False, blocked, root, started)
+        return blocked
     try:
         script = _read(d / "script.json")
         if script.get("template") not in TEMPLATES:
@@ -566,7 +649,7 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     except (ValueError, RuntimeError) as e:
         log_step(vid, "render", False, [str(e)], root, started)
         return [str(e)]
-    problems = (list(report["layout_problems"]) + list(report.get("craft_problems", [])) + list(report.get("liveliness_problems", []))
+    problems = (list(report["layout_problems"]) + list(report.get("craft_problems", [])) + [f"liveliness: {x}" for x in report.get("liveliness_problems", [])]
                 + gate_problems(report, settings, plan_format(script)))
     # a Short's cover is designed, never a frame grabbed from the middle of the video (owner, 2026-10-21:
     # the first two new-style Shorts got a half-cut caption as their cover)
@@ -613,7 +696,8 @@ def render(vid: str, preview: bool = False, root: Path = ROOT) -> list[str]:
     problems, advice_ = advice.split(problems)     # notes are logged and shown, and never fail the render
     for n in advice_:
         print(n.upper()[:5] + n[5:])
-    log_step(vid, "render", not problems, (problems or [ok_note]) + advice_ + warnings, root, started)
+    fp = [f"{FP_NOTE}{fingerprint(vid, root)}"] if preview else []   # the stills QA looks at (record)
+    log_step(vid, "render", not problems, fp + (problems or [ok_note]) + advice_ + warnings + (["note: full render forced (--force)"] if force else []), root, started)
     return problems
 
 
@@ -633,6 +717,9 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
     steps = json.loads((d / "run.json").read_text(encoding="utf-8"))
     checks = _latest_checks(steps)
     blockers = [f"{c} has not passed" for c in CHECKERS if checks.get(c, {}).get("status") != "ok"]
+    # the video QA passed is the one shipped: no script or plan change after it (owner, 2026-11-25)
+    if (qa_fp := _fp_of(checks.get("qa_review"))) and qa_fp.split(".")[0] != fingerprint(vid, root).split(".")[0]:
+        blockers.append("the script or plan changed after QA passed: render the stills, QA them, then render the video again")
     if not (d / "video.mp4").is_file():
         blockers.append("video.mp4 is missing (render without --preview)")
     if (d / "manifest.json").is_file():
@@ -672,6 +759,8 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         manifest["release"]["mediaBranch"] = f"media/{vid}"
     if (urgent := topics.urgency(plan, root)) is not None:
         manifest["priority"] = urgent   # ingest puts it at the front of the upload queue
+    if promo.kin(plan):
+        manifest["promoOf"] = plan["promo_of"]   # the publisher sends it once its long video is up (generator/promo.py)
     if (th := script.get("thumbnail")) and fmt == "long":   # three thumbnails, Studio's scores and pick (owner, 2026-11-11)
         manifest["thumbnails"] = thumbs.manifest_entries(script)
         manifest["thumbnailModel"] = {"pattern": th.get("pattern"), "references": [r.get("id") for r in th.get("references") or [] if isinstance(r, dict)]}
@@ -680,6 +769,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
         "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": style, "format": fmt,
         "story": plan.get("story"), "shape": shapes.shape_id(plan.get("shape")),
+        **({"promo_of": plan["promo_of"]} if promo.kin(plan) else {}),
     }, root)
 
     if release:
@@ -903,6 +993,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("render")
     p.add_argument("id")
     p.add_argument("--preview", action="store_true")
+    p.add_argument("--force", action="store_true", help="full render without a QA pass on these stills (owner only: an old video's re-render)")
     p = sub.add_parser("ship")
     p.add_argument("id")
     p.add_argument("--commit", action="store_true")
@@ -1001,7 +1092,7 @@ def main(argv: list[str] | None = None) -> int:
         if a.cmd == "template-work":
             print(json.dumps(history.append_template_work(a.template, a.action, a.enabled)))
             return 0
-        problems = {"check-plan": check_plan, "number-check": run_number_check, "lint": lint}[a.cmd](a.id) if a.cmd != "render" else render(a.id, a.preview)
+        problems = {"check-plan": check_plan, "number-check": run_number_check, "lint": lint}[a.cmd](a.id) if a.cmd != "render" else render(a.id, a.preview, force=a.force)
     except (ValueError, subprocess.CalledProcessError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1

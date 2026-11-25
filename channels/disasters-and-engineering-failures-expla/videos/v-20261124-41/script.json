@@ -1,0 +1,805 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 51940,
+ "story": "promo_why_it_failed",
+ "shape": "the-wall-in-the-wind",
+ "currency": "USD",
+ "style": {
+  "recipe": "archive-rebuild",
+  "palette": "paper",
+  "genre": "undertow",
+  "key": "E",
+  "bpm": 56
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "shock_number",
+ "cta": "Solid plates or an open truss: which would you drive across? Comment",
+ "feed_id": "2026-11-24-tacoma-narrows-twist",
+ "facts": [
+  {
+   "label": "Year of the collapse",
+   "value": 1940,
+   "unit": "year",
+   "as_of": "1940-11-07",
+   "source": "WSDOT",
+   "url": "https://wsdot.wa.gov/tnbhistory/collapse.htm",
+   "fixed": true
+  },
+  {
+   "label": "Wind speed engineers clocked near the east end, miles per hour",
+   "value": 42,
+   "unit": "count",
+   "as_of": "1940-11-07",
+   "source": "WSDOT",
+   "url": "https://wsdot.wa.gov/tnbhistory/collapse.htm",
+   "fixed": true
+  },
+  {
+   "label": "Wind speed at 7:30 a.m., miles per hour",
+   "value": 38,
+   "unit": "count",
+   "as_of": "1940-11-07",
+   "source": "WSDOT",
+   "url": "https://wsdot.wa.gov/tnbhistory/collapse.htm",
+   "fixed": true
+  },
+  {
+   "label": "Length of the first deck section that broke free, feet",
+   "value": 600,
+   "unit": "count",
+   "as_of": "1940-11-07",
+   "source": "WSDOT",
+   "url": "https://wsdot.wa.gov/tnbhistory/collapse.htm",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.0,
+  "words": "Torn apart by *wind*",
+  "tag": "Tacoma Narrows",
+  "angle": "question",
+  "references": [
+   {
+    "id": "AKCt2aJhgsI",
+    "views": 1100000,
+    "what": "the bridge's deck mid-twist, seen from the side, big caption on top"
+   }
+  ],
+  "pattern": "the hits show the bridge itself mid-twist as the whole cover with a few big words; ours shows our 3D deck mid-twist with three words on top"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Wind tore the Tacoma Narrows Bridge apart. How?",
+   "events": {
+    "wind": {
+     "word": "Wind"
+    },
+    "tore": {
+     "word": "tore"
+    },
+    "tacoma": {
+     "word": "Tacoma"
+    },
+    "bridge": {
+     "word": "Bridge"
+    },
+    "apart": {
+     "word": "apart"
+    },
+    "how": {
+     "word": "How"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": [
+     "over the grey water of the Narrows beside the twisting suspension bridge",
+     "the wind gauge on the east tower"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "wind",
+      "size": "close"
+     },
+     {
+      "at": "bridge",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "wind",
+      "what": "the green suspension bridge over grey water, its deck already rolling, quarter-span amber, date caption on; wind streaks cross the frame and a readout swings to the figure"
+     },
+     {
+      "at": "tore",
+      "what": "the twist deepens, the stress climbs to amber-red"
+     },
+     {
+      "at": "tacoma",
+      "what": "push in on the rolling deck, the bridge's name tag on"
+     },
+     {
+      "at": "bridge",
+      "what": "pull wide along the whole span rolling between its towers"
+     }
+    ],
+    "things": [
+     "suspension bridge",
+     "towers",
+     "main cables",
+     "hangers",
+     "twisting deck",
+     "grey water",
+     "wind gauge",
+     "date caption"
+    ],
+    "fig": {
+     "wind": "{fact2}",
+     "year": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "tore"
+    }
+   ]
+  },
+  {
+   "id": "gertie",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It was four months old, and its builders called it Galloping Gertie.",
+   "events": {
+    "four": {
+     "word": "four"
+    },
+    "months": {
+     "word": "months"
+    },
+    "builders": {
+     "word": "builders"
+    },
+    "called": {
+     "word": "called"
+    },
+    "galloping": {
+     "word": "Galloping"
+    },
+    "gertie": {
+     "word": "Gertie"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Gertie",
+    "place": "on the deck of the bridge in summer, a car driving over the rolling road",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "builders",
+      "size": "medium"
+     },
+     {
+      "at": "galloping",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "four",
+      "what": "a car drives onto the deck in summer light, a calendar card flips JULY to NOVEMBER"
+     },
+     {
+      "at": "builders",
+      "what": "workers in hard hats on the tower top, THE MEN WHO BUILT IT"
+     },
+     {
+      "at": "called",
+      "what": "back on the deck: the road ahead rises and falls in a slow wave under the car"
+     },
+     {
+      "at": "galloping",
+      "what": "GALLOPING GERTIE types on"
+     },
+     {
+      "at": "gertie",
+      "what": "the camera drops below the deck edge to its solid steel side"
+     }
+    ],
+    "things": [
+     "deck road",
+     "car",
+     "rolling wave in the deck",
+     "tower portal",
+     "nickname sign",
+     "calendar card",
+     "workers on the tower"
+    ]
+   }
+  },
+  {
+   "id": "flaw",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The flaw: solid steel plates down its sides, like a wall. The wind couldn't pass through.",
+   "events": {
+    "flaw": {
+     "word": "flaw"
+    },
+    "solid": {
+     "word": "solid"
+    },
+    "steel": {
+     "word": "steel"
+    },
+    "plates": {
+     "word": "plates"
+    },
+    "wall": {
+     "word": "wall"
+    },
+    "wind": {
+     "word": "wind"
+    },
+    "through": {
+     "word": "through"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Flaw",
+    "place": "a cut-away cross-section of the deck, a general principle diagram",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "plates",
+      "size": "close"
+     },
+     {
+      "at": "wind",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "flaw",
+      "what": "the deck cut through on an archive paper sheet, roadway on top"
+     },
+     {
+      "at": "solid",
+      "what": "both side plates light amber"
+     },
+     {
+      "at": "plates",
+      "what": "the solid plate girder draws on, SOLID PLATE GIRDER"
+     },
+     {
+      "at": "wall",
+      "what": "a red brick-wall hatch flashes over each plate, = A WALL"
+     },
+     {
+      "at": "wind",
+      "what": "wind streamlines arrive from the left and pile against the plate"
+     },
+     {
+      "at": "through",
+      "what": "the streamlines are forced over and under the deck, swirls peeling off behind it"
+     }
+    ],
+    "things": [
+     "deck cross-section",
+     "solid plate girder",
+     "roadway",
+     "wind streamlines",
+     "swirls"
+    ]
+   }
+  },
+  {
+   "id": "twist",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "That morning, the bouncing stopped. The deck began to twist. Why was that worse?",
+   "events": {
+    "morning": {
+     "word": "morning"
+    },
+    "bouncing": {
+     "word": "bouncing"
+    },
+    "stopped": {
+     "word": "stopped"
+    },
+    "deck": {
+     "word": "deck"
+    },
+    "twist": {
+     "word": "twist"
+    },
+    "worse": {
+     "word": "worse"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Twist",
+    "place": "along the deck from beside the west tower, the hangers and the cable above",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "stopped",
+      "size": "close"
+     },
+     {
+      "at": "twist",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "morning",
+      "what": "grey morning light along the deck from beside the west tower, THAT MORNING types on"
+     },
+     {
+      "at": "bouncing",
+      "what": "the deck rides up and down evenly"
+     },
+     {
+      "at": "stopped",
+      "what": "low under the deck edge, the bouncing dies away, BOUNCE STOPS"
+     },
+     {
+      "at": "twist",
+      "what": "wide: the deck rolls, one edge up, one down, NOW IT TWISTS"
+     },
+     {
+      "at": "worse",
+      "what": "the rolling edges flash amber"
+     }
+    ],
+    "things": [
+     "deck",
+     "hangers",
+     "main cable",
+     "west tower",
+     "grey water"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "creak",
+     "at": "twist"
+    }
+   ]
+  },
+  {
+   "id": "feed",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Each twist tipped an edge up, and the wind pushed it further. It fed itself.",
+   "events": {
+    "each": {
+     "word": "Each"
+    },
+    "tipped": {
+     "word": "tipped"
+    },
+    "edge": {
+     "word": "edge"
+    },
+    "wind": {
+     "word": "wind"
+    },
+    "pushed": {
+     "word": "pushed"
+    },
+    "further": {
+     "word": "further"
+    },
+    "fed": {
+     "word": "fed"
+    },
+    "itself": {
+     "word": "itself"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Feed",
+    "place": [
+     "end-on view down the deck with force arrows",
+     "the loop diagram of twist and wind"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pushed",
+      "size": "close"
+     },
+     {
+      "at": "fed",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "each",
+      "what": "looking down the deck end-on, it rolls to one side"
+     },
+     {
+      "at": "tipped",
+      "what": "EDGE TIPS UP types on"
+     },
+     {
+      "at": "wind",
+      "what": "a wind arrow hits the raised edge"
+     },
+     {
+      "at": "pushed",
+      "what": "the arrow turns red and the deck rolls further"
+     },
+     {
+      "at": "further",
+      "what": "a tilt gauge swings wider"
+     },
+     {
+      "at": "fed",
+      "what": "the loop diagram draws over the darkened shot: TWIST, WIND PUSH, BIGGER TWIST"
+     },
+     {
+      "at": "itself",
+      "what": "the loop spins faster and goes red"
+     }
+    ],
+    "things": [
+     "deck end-on",
+     "wind arrow",
+     "tilt gauge",
+     "feedback loop"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "pushed"
+    }
+   ]
+  },
+  {
+   "id": "fail",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "",
+   "events": {
+    "near": {
+     "sec": 0.25
+    },
+    "snap": {
+     "sec": 1.0
+    },
+    "wide": {
+     "sec": 1.8
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Fail",
+    "place": "at the mid-span, the deck tearing away and falling into the Narrows, time slowed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "near",
+      "what": "silence: the twisted mid-span deck fills the frame, the hangers red"
+     },
+     {
+      "at": "snap",
+      "what": "the sub-boom: hangers snap in a ripple, the deck section tears free with sparks"
+     },
+     {
+      "at": "wide",
+      "what": "wide: the section drops into the grey water, a white splash"
+     }
+    ],
+    "things": [
+     "mid-span deck",
+     "snapping hangers",
+     "sparks",
+     "grey water",
+     "splash"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "snap"
+    }
+   ],
+   "min_sec": 2.6
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "A {fact4}-foot piece of deck fell into the water. No person died.",
+   "events": {
+    "piece": {
+     "word": "piece"
+    },
+    "deck": {
+     "word": "deck"
+    },
+    "fell": {
+     "word": "fell"
+    },
+    "water": {
+     "word": "water"
+    },
+    "person": {
+     "word": "person"
+    },
+    "died": {
+     "word": "died"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Gap",
+    "place": "from the shore: the bridge with its middle gone, cables sagging, a lone car left on the stub",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "fell",
+      "size": "medium"
+     },
+     {
+      "at": "person",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "piece",
+      "what": "a bracket spans the gap in the deck with the figure"
+     },
+     {
+      "at": "fell",
+      "what": "the splash rings spread on the water under the gap"
+     },
+     {
+      "at": "water",
+      "what": "the sagging cables sway"
+     },
+     {
+      "at": "person",
+      "what": "on the shore, onlookers stand behind a rope looking up"
+     },
+     {
+      "at": "died",
+      "what": "the light turns flat grey, the stub of the deck still swinging"
+     }
+    ],
+    "things": [
+     "broken bridge",
+     "gap bracket",
+     "sagging cables",
+     "splash rings",
+     "onlookers on the shore"
+    ],
+    "fig": {
+     "gap": "{fact4}"
+    }
+   }
+  },
+  {
+   "id": "change",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Since then, long bridges are tested in wind tunnels first. Its replacement got an open truss.",
+   "events": {
+    "since": {
+     "word": "Since"
+    },
+    "tested": {
+     "word": "tested"
+    },
+    "wind": {
+     "word": "wind"
+    },
+    "tunnels": {
+     "word": "tunnels"
+    },
+    "replacement": {
+     "word": "replacement"
+    },
+    "open": {
+     "word": "open"
+    },
+    "truss": {
+     "word": "truss"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Tunnel",
+    "place": [
+     "a wind tunnel lab with a bridge model",
+     "the replacement bridge's open truss deck"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tunnels",
+      "size": "close"
+     },
+     {
+      "at": "replacement",
+      "size": "wide"
+     },
+     {
+      "at": "truss",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "since",
+      "what": "a wind tunnel with a section model of a bridge deck on springs, smoke lines streaming"
+     },
+     {
+      "at": "tested",
+      "what": "the smoke lines flow smoothly over the model, a gauge needle steady"
+     },
+     {
+      "at": "tunnels",
+      "what": "push in, WIND TUNNEL TEST"
+     },
+     {
+      "at": "replacement",
+      "what": "cut to the replacement bridge, an open steel truss under its deck, THE REPLACEMENT"
+     },
+     {
+      "at": "open",
+      "what": "wind streaks pass through the truss"
+     },
+     {
+      "at": "truss",
+      "what": "the truss lights amber, OPEN TRUSS"
+     }
+    ],
+    "things": [
+     "wind tunnel",
+     "section model",
+     "smoke lines",
+     "open truss",
+     "new bridge"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "open"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Plates or truss: which would you drive across? Gertie had the plates.",
+   "events": {
+    "plates": {
+     "word": "Plates"
+    },
+    "truss": {
+     "word": "truss"
+    },
+    "drive": {
+     "word": "drive"
+    },
+    "gertie": {
+     "word": "Gertie"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Loop",
+    "place": "the two decks side by side over the water, then back to the twisting bridge",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "drive",
+      "size": "wide"
+     },
+     {
+      "at": "gertie",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "plates",
+      "what": "the solid-plate deck section on the left in amber, SOLID PLATES"
+     },
+     {
+      "at": "truss",
+      "what": "the open-truss deck on the right lights teal, wind passing through it"
+     },
+     {
+      "at": "drive",
+      "what": "cars on each deck, WHICH WOULD YOU CROSS?"
+     },
+     {
+      "at": "gertie",
+      "what": "cut back to the green bridge, its deck starting to twist as in the first frame"
+     }
+    ],
+    "things": [
+     "solid plate deck",
+     "open truss deck",
+     "cars",
+     "wind streaks",
+     "twisting bridge"
+    ]
+   }
+  }
+ ]
+}

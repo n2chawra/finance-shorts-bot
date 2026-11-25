@@ -16,13 +16,6 @@
       "from": "research 2026-11-17"
     },
     {
-      "id": "geo-claim-hook",
-      "kind": "first-second",
-      "test": "a claim whose answer waits for the end, instead of the question as the first line",
-      "why": "'Only one country here rolls like a real wheel' (2.7M) opened on a claim | research 2026-11-23, our own first lines: the one Short that opens on a contradiction you can see on the map ('Greenland sits next to Canada, not Europe, yet it belongs to Denmark. Why?') has the best average viewed (74.7%, 1,224 views); plain 'Why did…' / 'What if…' openers sit at 48% (Dinorwig) and 55% (Suez). Three Shorts with Analytics only, so the order is unchanged.",
-      "from": "research 2026-11-17"
-    },
-    {
       "id": "geo-title-names-the-oddity",
       "kind": "first-second",
       "area": "title",
@@ -48,6 +41,15 @@
       "from": "research 2026-11-24",
       "test": "narration at the recipe's stated pace, about 185 words a minute (bm_george's speed lowered for the challenger side so a 60-80 s Short carries about 185-245 words), against the champion as rendered now, 203-226 words a minute",
       "why": "All five reference Shorts speak slower than our slowest: 150, 174, 185, 189 and 194 wpm (median 185; Louisiana 18.7M, Chile 10.6M, One Country 2.95M, Roll Down a Hill 2.77M, Caspian 2.09M; research/sheets word counts over their length). Our last 8 Shorts: 203-226 wpm, median about 217 (render.json words over duration_sec), about 17% faster, while the recipe itself says about 185. If the challenger loses, the recipe's pace line should be corrected to what the champion actually speaks."
+    },
+    {
+      "id": "geo-shape-morph",
+      "kind": "look",
+      "area": "motion",
+      "metric": "heldAfterHook",
+      "from": "research 2026-11-25",
+      "test": "when a beat's change is a map changing (pieces joining, a border moving, a place moving or growing), the shapes morph or slide from the old state into the new one on the spoken word, as one continuous move, instead of a cut or match to a new shot; at least two such morph beats per Short, against the champion's cut/match transitions",
+      "why": "Our last three Shorts (v-20261123-11, v-20261124-11, v-20261124-12) use 18 cuts and 17 match transitions and no morphs; their pace already matches the references (5.4-6.0 s a beat against 4.3-7.9 s, median 5.9, in the five sheets), so the gap is in how the picture changes, not how often. Two of the five reference sheets morph shapes (BmNSUb8HxCA twice, 7iZflr3qD-4 once), and this week's biggest outlier in the scan is built on it: Geo Cartovia's 'How Italy Became One Country, From 7 Pieces to 1' (232K views on 782 subscribers, 297x) and its Spain version (95K, 121x), whose pieces snap together on screen. Lower confidence than geo-pace-185: two sheets and one channel."
     },
     {
       "id": "geo-countdown",
@@ -80,10 +82,19 @@
       "from": "research 2026-11-24",
       "test": "the explorer/atlas bed about 20 dB under the voice instead of about 31 dB, ducking unchanged, effects unchanged",
       "why": "Our last 8 Shorts sit 30.4-31.7 dB music-under-voice (render.json audio), so the bed is close to inaudible on a phone. The two measured references split: Map & Myth's Chile (10.6M) at 16 dB, WorldShift's One Country (2.95M) at 39 dB (style-study/2026-11-18-references.md). Weak evidence, so last among the look tests."
+    },
+    {
+      "id": "geo-loop-no-question",
+      "kind": "look",
+      "area": "ending",
+      "metric": "heldAfterHook",
+      "from": "reviewer 2026-11-24",
+      "test": "the loop beat goes straight from the payoff back into the first line, with no 'X or Y: which should we map next? Tell me in the comments' question, against the champion's comment question before the loop",
+      "why": "Every Short with drop points loses viewers on the comment question in its last beat: 21.0% at 62.4 s (One passport), 13.2% + 5.7% (Sahara), 6.1% + 8.4% (English cities), 9.3% (Tristan), 9.1% (Hormuz), 7.9% (Greenland), 5.9% (Dinorwig). Some of that is the natural end, so it is a test, not a lesson: the reference Shorts loop without asking."
     }
   ],
-  "running": null,
-  "cycle": 1,
+  "running": "geo-claim-hook",
+  "cycle": 2,
   "history": [
     {
       "cycle": 1,
@@ -93,6 +104,17 @@
       "verdict": "adopted by the owner",
       "from": "owner note 19 Nov on v-20261119-02: 'test both' (flag vs colour)",
       "ended": "2026-11-19"
+    },
+    {
+      "id": "geo-claim-hook",
+      "kind": "first-second",
+      "test": "a claim whose answer waits for the end, instead of the question as the first line",
+      "why": "'Only one country here rolls like a real wheel' (2.7M) opened on a claim | research 2026-11-23, our own first lines: the one Short that opens on a contradiction you can see on the map ('Greenland sits next to Canada, not Europe, yet it belongs to Denmark. Why?') has the best average viewed (74.7%, 1,224 views); plain 'Why did…' / 'What if…' openers sit at 48% (Dinorwig) and 55% (Suez). Three Shorts with Analytics only, so the order is unchanged.",
+      "from": "research 2026-11-17",
+      "cycle": 2,
+      "started": "2026-11-24",
+      "verdict": null,
+      "note": "geo-length-45 is above it on the list but needs Shorts under the owner's 60-80 s length setting, so it waits for the owner."
     }
   ],
   "stayedByCycle": []

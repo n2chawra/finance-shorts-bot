@@ -84,6 +84,11 @@ the flat kit; section 3c): the video run grows that kit itself when a topic need
 
 Follow `generator/prompts/planner.md`. Use the id from `next_id` for the whole run.
 
+**A promo channel** (`state` has a `promo` block; owner, 2026-11-25): every Short promotes one of the channel's long
+videos (the planner's "A promo channel" section and the channel's recipe). Read that long video's `script.json` and its
+beat code in `remotion/src/videos/<L-id>/` before writing: the facts, places and vehicle are the long video's, cut to
+9:16 and 30–50 s. `mode` is `idle` when every recent long video already has its promos: report it and stop.
+
 ## 2b. Three openings, one picked by a fresh reviewer (Shorts; owner, 2026-11-12)
 
 Most viewers decide in the first second. Before writing the script, draft **three different
@@ -198,8 +203,10 @@ Rendering the video is the slow part, so QA looks at the stills **before** it is
    nohup python -m generator.run render <id> --channel <channel> > /tmp/render-<id>.log 2>&1 &
    ```
    A Short takes 2–5 minutes; check `tail -3 /tmp/render-<id>.log` every minute or two. It must
-   print `ok`. A `FAIL:` here is the motion gate (`liveliness`): fix the beat it names and render
-   again. A re-render that only changed the sound reuses the picture already drawn, and the
+   print `ok`. A `FAIL:` here is the motion gate (`liveliness:`): fix the beat it names and render
+   again.
+
+   **The full render refuses to start until QA has passed the stills of exactly this script and beat code** (owner, 2026-11-25; `generator/run.py` `full_render_problems`). After any fix, whether from QA, the fact reviewer or a `FAIL:` line, render the stills again and have QA pass them before the full render. The one exception is a fix to the beat code alone after a full render failed only on the motion gate (`liveliness:` lines): render again straight away. `ship` refuses a video whose script or plan changed after QA passed. A re-render that only changed the sound reuses the picture already drawn, and the
    Remotion bundle is built once per run.
 
 ## 6. QA review (a subagent with fresh context)

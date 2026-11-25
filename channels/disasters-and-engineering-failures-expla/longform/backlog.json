@@ -42,6 +42,31 @@
       "status": "open",
       "title": "In cause-chain videos, name roles (the assistant bosun, the captain), never living individuals",
       "detail": "Herald, Colgan and Lac-Mégantic all turn on one person's action. The profile's defamation rule is 'the report's words only'; the safe way is roles in narration and real people's words only as on-screen transcript text. Each enriched topic's `verify` says which names to leave out."
+    },
+    {
+      "id": "2026-11-24-titan-resume",
+      "found": "2026-11-24",
+      "kind": "craft",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "status": "done",
+      "title": "Finish the Titan long video (L-20261124-41) from its saved branch instead of starting over",
+      "detail": "Studio 2026-11-24 made the Titan submersible video in full: 79 beats, 558 s, 34 sourced facts (NTSB MIR-25-36 read in full, now in the feed topic), fact review PASS, number check and every render gate ok. It stopped only because QA round 2 still had 6 picture notes and Studio allows two rounds. Everything (script.json, plan.json, remotion/src/videos/L-20261124-41/, staged NTSB pages) is on branch claude/disaster-studio-c91jy3. Next Studio run: copy those files under a new id, fix the 6 notes listed in the failed manifest's failReason, and add one beat with scene 'chapter' at each chapter start so render.json has chapters. Then go straight to stills and QA. Lessons for every long video on this channel: (a) the cross-section look's white paper reads as empty to the craft gate unless the drafting grid is strong (96 px, #cddae6); (b) keep each flat stretch under about 30 s, cutting to a 3D beat between; (c) render.json only builds chapters from 'chapter' scene beats; (d) keep honesty tags and chapter cards right of the top-left badge (x 150).",
+      "source": "improvement/activity/2026-11-24-studio.json",
+      "outcome": "Resumed the same day on the owner's word ('Fix and resume'): the 6 QA notes fixed, QA passed on round 3, rendered (558 s) and shipped as L-20261124-41."
+    },
+    {
+      "id": "2026-11-24-cross-section-empty",
+      "found": "2026-11-24",
+      "kind": "craft",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "status": "open",
+      "title": "Improver: the cross-section look's flat backgrounds fail the empty-frame gate",
+      "detail": "With the kit's LookBackground for cross-section (white to #eef1f4) and the default faint grid, 44 of 111 stills of L-20261124-41 counted as mostly empty background (renderer/craft.py EMPTY_TILE_STD 7). The video's own code fixed it with a 96 px, 5 px #cddae6 grid. Worth making that the recipe's own sheet texture in remotion/src/disaster (Texture 'hatch' at 0.12 is too faint to register).",
+      "source": "improvement/activity/2026-11-24-studio.json"
     }
   ]
 }

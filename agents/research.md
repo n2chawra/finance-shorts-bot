@@ -174,6 +174,10 @@ source that shows it, told in a format; expires in 2–4 days; at most a few a w
 format whose reference video has 5M+ views), `normal`. `breaking` is not used any more. Nothing is
 forced on a video: `trending` topics are offered first and jump the upload queue when taken.
 
+**A promo channel** (`channel.json` `cadence.promoOnly`, owner 2026-11-25: Disaster Desk) makes no Short from the feed:
+every Short promotes one of its long videos. Add only long topics there (`"format": "long"`) or to Scout's feed;
+Short-only ideas go nowhere.
+
 **Topic feed** `channels/<channel>/research/topics.json` (`{"topics": [...]}`). **First run
 `python -m generator.run prune-feed --channel <channel>`**: it drops unused topics that expired, were rejected, waited
 over three weeks, or fall below the best 30 by score, and keeps every topic a video used (owner,

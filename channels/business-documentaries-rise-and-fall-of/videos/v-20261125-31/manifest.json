@@ -1,0 +1,273 @@
+{
+  "id": "v-20261125-31",
+  "createdAt": "2026-11-25T01:00:34.815186+00:00",
+  "status": "failed",
+  "failReason": "QA review failed after three rounds: the payoff poster's gold figure sat over the Pizza Hut roof sign on the Hillsboro photo (text over text); earlier rounds fixed the share chart (doc kit) and the poster's place",
+  "template": "short_story",
+  "topic": {
+    "title": "Pizza Hut Built Restaurants, Domino's Built for the Doorstep",
+    "category": "restaurants",
+    "reach": "global",
+    "feed_id": "2026-11-20-dominos-passed-pizza-hut-short"
+  },
+  "title": "Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:39:34.171792+00:00",
+      "finishedAt": "2026-11-25T00:39:34.171792+00:00",
+      "notes": [
+        "story 'founder_bet' was told in the last 1 videos",
+        "plan.arms must be this channel's own {\"length\": \"30-55\", \"title\": \"figure_or_name\", \"style\": \"shot\", \"category\": \"27\"} (from `improvement.arms assign`)"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:39:53.965276+00:00",
+      "finishedAt": "2026-11-25T00:39:53.965276+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:41:12.613237+00:00",
+      "finishedAt": "2026-11-25T00:41:12.613237+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:46:28.513248+00:00",
+      "finishedAt": "2026-11-25T00:46:28.513248+00:00",
+      "notes": [
+        "beat 'hook'.params.overlays[0].sub contains a typed number; use a placeholder: 'of US pizza sales, 2015'",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:46:34.655482+00:00",
+      "finishedAt": "2026-11-25T00:46:34.655482+00:00",
+      "notes": [
+        "beat 'hook'.say contains a typed number; use a placeholder: \"In 2015, Pizza Hut sold {fact1} of America's pizza, more than Domino's.\"",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:46:39.399483+00:00",
+      "finishedAt": "2026-11-25T00:46:39.399483+00:00",
+      "notes": [
+        "beat 'passed'.params.moments[0].what contains a typed number; use a placeholder: 'the 2015 mark lights: Pizza Hut leads'",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:46:44.033326+00:00",
+      "finishedAt": "2026-11-25T00:46:44.033326+00:00",
+      "notes": [
+        "beat 'shares'.params.layers[0].sub contains a typed number; use a placeholder: '2015 to 2025'",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:46:47.558225+00:00",
+      "finishedAt": "2026-11-25T00:46:47.558225+00:00",
+      "notes": [
+        "doc video: commons-photo-domino-s-andersons-bay-9-dec-2025-2bb2c8e4.jpg is shown 2 times: a Short shows each picture once (the last beat may repeat the opening picture for the loop); fetch another; no document or headline: the channel's signature is the page that holds the figure, highlighted on the word",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:47:26.758193+00:00",
+      "finishedAt": "2026-11-25T00:47:26.758193+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:47:30.104877+00:00",
+      "finishedAt": "2026-11-25T00:47:30.104877+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:47:51.490221+00:00",
+      "finishedAt": "2026-11-25T00:47:51.490221+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:48:19.699050+00:00",
+      "finishedAt": "2026-11-25T00:48:19.699050+00:00",
+      "notes": [
+        "All 6 facts confirmed on the cited Restaurant Dive page (Jun 16 2026): Pizza Hut 16.9% (2015) -> 12.1% (Q1-Q3 2025), Domino's 14.2% -> 23.4%, Domino's leader from 2017, $2.7B aggregate ($1.5B LongRange ex-China + $1.2B Yum China), ~250 underperforming US stores to close (Feb). Verify list: both deals have since closed (Aug/Sep 2026, NRN, QSR Magazine, Chain Store Age), so 'agreed to sell' stays true; 1,500-closures item not used on screen. Disclaimer ends the description; no advice, accusations or motives. Notes: source says 'about 250' closures; title's 'Then Domino's Came' is loose (Domino's already existed)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:47:57.255121+00:00",
+      "finishedAt": "2026-11-25T00:48:53.378189+00:00",
+      "notes": [
+        "text 'Number one' at 21.2 s runs outside the frame",
+        "5 of 11 stills are mostly empty background (at 5 s, 15 s, 20 s, 25 s, 30 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:49:18.185802+00:00",
+      "finishedAt": "2026-11-25T00:49:18.185802+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:49:21.550848+00:00",
+      "finishedAt": "2026-11-25T00:49:45.116135+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 5 s, 30 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:49:58.603276+00:00",
+      "finishedAt": "2026-11-25T00:50:18.146735+00:00",
+      "notes": [
+        "46 s, ember/ledger (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:51:11.348105+00:00",
+      "finishedAt": "2026-11-25T00:51:11.348105+00:00",
+      "notes": [
+        "[scene] 25.0s, beat 'shares' (doc bar chart over the roadside Pizza Hut photo): the chart's baseline and bar-name labels sit at caption height, so the caption '23.4% OF' covers the bottom of both bars and runs into the 'Pizza Hut' / 'Domino's' labels; 'Domino's' is grey on the grey bar and photo and nearly unreadable, and the 'then and now' subline is invisible. On mute you can't tell which bar is which. Lift the chart's baseline and labels well above the caption band and give the labels and Domino's value real contrast.",
+        "[script] 40.0s, beat 'sold': the $2.7B deal is shown on a Pizza Hut in Shenzhen (必胜客 signage). Pizza Hut's China restaurants belong to Yum China, not to Yum Brands, so they weren't part of the sale. The picture doesn't match the line. Use a US Pizza Hut (or the deal report or document) for the poster's place."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:52:13.831110+00:00",
+      "finishedAt": "2026-11-25T00:52:39.775978+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 30 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:53:10.731972+00:00",
+      "finishedAt": "2026-11-25T00:53:35.051249+00:00",
+      "notes": [
+        "46 s, ember/ledger (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:54:01.131995+00:00",
+      "finishedAt": "2026-11-25T00:54:01.131995+00:00",
+      "notes": [
+        "[script] 40.0s, beat 'sold' (the payoff): the new Hereford photo is a dim, mostly blank gable wall. The only sign that this is a Pizza Hut, the red roof logo, is cut off by the left edge and sits behind the poster's darkening, so a viewer sees the $2.7B over an anonymous wall. This is a flat-background still with the subject's mark cut off (checks 2 and 11, and lesson 8), and it is clearly emptier than the payoff stills in v-20261122-32 (450 over the first Lexus) and the Shenzhen storefront it replaced. Frame the photo on the whole Pizza Hut sign (focus or crop on the logo, less dimming), or use a lit Pizza Hut storefront outside China where the sign is whole and recognisable."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:55:26.780824+00:00",
+      "finishedAt": "2026-11-25T00:55:51.015367+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 30 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:56:11.027356+00:00",
+      "finishedAt": "2026-11-25T00:56:30.864972+00:00",
+      "notes": [
+        "2 of 11 stills are mostly empty background (at 30 s, 40 s): fill the frame (a set, the cast big, money as a thing)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:56:51.124260+00:00",
+      "finishedAt": "2026-11-25T00:57:15.369699+00:00",
+      "notes": [
+        "text 'US restaurants to close' at 33.8 s is 34.4 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:57:26.644935+00:00",
+      "finishedAt": "2026-11-25T00:57:45.962510+00:00",
+      "notes": [
+        "text 'restaurants to close' at 33.8 s is 33.1 px, below the 44 px minimum"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:57:52.596162+00:00",
+      "finishedAt": "2026-11-25T00:57:52.596162+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+        "note: the title \"Pizza Hut Had {fact1} of America's Pizza. Then Domino's Came\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:57:56.057783+00:00",
+      "finishedAt": "2026-11-25T00:58:15.354923+00:00",
+      "notes": [
+        "46 s, ember/ledger (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:58:42.215718+00:00",
+      "finishedAt": "2026-11-25T00:58:42.215718+00:00",
+      "notes": [
+        "[script] 40.0s, beat 'sold' (Hillsboro photo, the poster): the gold '$2.7B' lands exactly on the restaurant's own 'Pizza Hut' roof sign. The sign's letters show through between the figure's '2' and '7' ('zza Hut'), so the payoff figure reads muddy and the real mark is turned into noise (check 1, text over text). The top 40% of the frame is empty dark sky. Frame the photo lower, or move the poster up into the sky, so the figure sits clear above the roof and the 'Pizza Hut' sign stays whole and readable under it."
+      ]
+    }
+  ]
+}

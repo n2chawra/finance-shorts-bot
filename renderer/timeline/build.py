@@ -243,7 +243,8 @@ def _event_time(spec, words: list[tuple[str, float, float]], speech_start: float
 _PUNCT_ONLY = re.compile(r"^[^\w₹$£€]+$")
 
 
-def _captions(say: str, figures: dict[str, str], words: list[tuple[str, float, float]], currency: str = LEGACY_CURRENCY) -> list[dict]:
+def _captions(say: str, figures: dict[str, str], words: list[tuple[str, float, float]], currency: str = LEGACY_CURRENCY,
+              lang: str = "en-us") -> list[dict]:
     """Caption tokens as written, timed by the spoken words: a figure shows as on screen
     ("₹60,000") across the words that speak it ("sixty thousand rupees"). Falls back to the spoken
     words if the two ever disagree on length."""
@@ -253,7 +254,7 @@ def _captions(say: str, figures: dict[str, str], words: list[tuple[str, float, f
         if not part:
             continue
         if PLACEHOLDER.fullmatch(part):
-            n = len(tts.spoken(figures[part[1:-1]], currency).split())
+            n = len(tts.spoken(figures[part[1:-1]], currency, lang).split())
             tokens.append([figures[part[1:-1]], i, i + n - 1])
             i += n
             continue
@@ -775,6 +776,11 @@ def doc_video_problems(script: dict) -> list[str]:
     return out
 
 
+def script_language(script: dict, pack: dict | None = None) -> str:
+    """The language a script is spoken in: its own `language`, else its channel's (generator/pack.py)."""
+    return str(script.get("language") or (pack or channel_pack.load())["language"])
+
+
 def check_script(script: dict) -> dict:
     """Everything a build would reject, without speaking or mixing anything: maths inputs, typed
     numbers, placeholders, @references, scene names, sound kinds, ids and event words. Returns
@@ -788,6 +794,7 @@ def check_script(script: dict) -> dict:
     results = maths.compute(script.get("maths", []), fm)
     fact_figures, sources = _facts(script)
     figures = {**maths.placeholders(results), **fact_figures}
+    lang = script_language(script)   # a Hindi channel's figures are spoken in Hindi (renderer/engine/hindi_numbers.py)
     beats = [Beat(**b) for b in script.get("beats", [])]
     if not beats:
         raise ValueError("a story needs beats")
@@ -813,7 +820,7 @@ def check_script(script: dict) -> dict:
             raise ValueError("; ".join(bad))
         _one_string(b.params, _resolve(b.params, figures, results, f"{where}.params"), f"{where}.params", fm)
         text = _fill(b.say, figures, f"{where}.say") if b.say else ""
-        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000, fm.currency)["x"] if b.say else ""
+        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000, fm.currency, lang)["x"] if b.say else ""
         words = {w.lower().strip(".,!?;:\"'") for w in spoken.split()}
         for name, spec in b.events.items():
             w = spec.get("word") if isinstance(spec, dict) else None
@@ -854,7 +861,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
     # the channel's language and disclaimer (generator/pack.py; channel #1's values when it has no pack)
     pack = channel_pack.load()
     own_sound = pack.get("sound") or {}     # a channel's own sound (multi-channel, 2026-11-18): bed, mix and effects
-    lang, disclaimer = pack["language"], (pack["disclaimer"] or DISCLAIMER)
+    lang, disclaimer = script_language(script, pack), (pack["disclaimer"] or DISCLAIMER)
     tempo = float(script.get("tempo", TEMPOS[fmt]))
     speed = voice_speed(script, fmt, tempo)        # the voice, at the video's pace
     pad = beat_pad(fmt)
@@ -875,7 +882,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
         params = _resolve(b.params, figures, results, f"{where}.params")
         _one_string(b.params, params, f"{where}.params", fm)
         text = _fill(b.say, figures, f"{where}.say") if b.say else ""
-        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000, fm.currency)["x"] if b.say else ""
+        spoken = tts.fill_lines({"x": b.say}, ["x"], figures, 2000, fm.currency, lang)["x"] if b.say else ""
         if spoken:
             who = CAST_VOICES.get(b.speaker, narrator) if b.speaker != "narrator" else narrator
             line = _estimate(spoken, speed) if voice == "estimate" else tts.speak_timed(spoken, who, speed, lang)
@@ -898,7 +905,7 @@ def build(script: dict, out: Path, voice: str = "kokoro") -> dict:
             "voice": None if line is None else {
                 "start": round(lead*FPS), "speaker": b.speaker,
                 "words": [{"w": w, "s": round(a, 3), "e": round(e, 3)} for w, a, e in words],
-                "captions": _captions(b.say, figures, words, fm.currency),
+                "captions": _captions(b.say, figures, words, fm.currency, lang),
                 "phonemes": [{"p": p, "s": round(a, 3), "e": round(e, 3)} for p, a, e in line.phonemes],
             },
         })

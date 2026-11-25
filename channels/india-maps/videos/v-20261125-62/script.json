@@ -1,0 +1,660 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 70413,
+ "story": "india_and_world",
+ "shape": "countdown",
+ "currency": "INR",
+ "language": "hi",
+ "style": {
+  "palette": "forest",
+  "genre": "tanpura",
+  "key": "E",
+  "bpm": 100,
+  "look": {
+   "stage": "night",
+   "header": "neon",
+   "holder": "sign",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "25-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Aapke state se kaunsa desh laga hai? Comment",
+ "feed_id": "2026-11-24-longest-border",
+ "facts": [
+  {
+   "label": "India's total land border (Ministry of Home Affairs)",
+   "value": 15106.7,
+   "unit": "km",
+   "as_of": "2026-11-24",
+   "source": "Lok Sabha answer",
+   "url": "https://eparlib.sansad.in/bitstream/123456789/604061/1/106598.pdf",
+   "fixed": true
+  },
+  {
+   "label": "India-Bangladesh border",
+   "value": 4096.7,
+   "unit": "km",
+   "as_of": "2026-11-24",
+   "source": "Lok Sabha answer",
+   "url": "https://eparlib.sansad.in/bitstream/123456789/604061/1/106598.pdf",
+   "fixed": true
+  },
+  {
+   "label": "India-Nepal border",
+   "value": 1751,
+   "unit": "km",
+   "as_of": "2026-11-24",
+   "source": "Lok Sabha answer",
+   "url": "https://eparlib.sansad.in/bitstream/123456789/604061/1/106598.pdf",
+   "fixed": true
+  },
+  {
+   "label": "India-Myanmar border",
+   "value": 1643,
+   "unit": "km",
+   "as_of": "2026-11-24",
+   "source": "Lok Sabha answer",
+   "url": "https://eparlib.sansad.in/bitstream/123456789/604061/1/106598.pdf",
+   "fixed": true
+  },
+  {
+   "label": "India-Bhutan border",
+   "value": 699,
+   "unit": "km",
+   "as_of": "2026-11-24",
+   "source": "Lok Sabha answer",
+   "url": "https://eparlib.sansad.in/bitstream/123456789/604061/1/106598.pdf",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "China ya *Pakistan*?",
+  "figure": "{fact2}",
+  "tag": "Sabse lambi border",
+  "angle": "question",
+  "who": "narrator",
+  "unique": "no covers of this topic fetched in this run (no browser); our own frame of China and Pakistan in their flags with the question mark"
+ },
+ "beats": [
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "hook",
+   "role": "hook",
+   "transition": "cut",
+   "say": "चीन या पाकिस्तान, भारत की सबसे लंबी सीमा किसके साथ है?",
+   "events": {
+    "china": {
+     "word": "चीन"
+    },
+    "pak": {
+     "word": "पाकिस्तान,"
+    },
+    "bharat": {
+     "word": "भारत"
+    },
+    "lambi": {
+     "word": "लंबी"
+    },
+    "kiske": {
+     "word": "किसके"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": "on the map: India between China and Pakistan, both filled with their flags",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "lambi",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "china",
+      "what": "China's flag fills its land and its name tag pops"
+     },
+     {
+      "at": "pak",
+      "what": "Pakistan's flag fills its land and its name tag pops"
+     },
+     {
+      "at": "bharat",
+      "what": "India's outline traces bright"
+     },
+     {
+      "at": "lambi",
+      "what": "a measuring tape unrolls along India's border as the camera pushes in"
+     },
+     {
+      "at": "kiske",
+      "what": "a big question mark stamps between the two flags"
+     }
+    ],
+    "things": [
+     "china with its flag",
+     "pakistan with its flag",
+     "india's border",
+     "measuring tape",
+     "question mark"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "kiske"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "promise",
+   "role": "promise",
+   "transition": "match",
+   "say": "जवाब, इन दोनों में से कोई नहीं।",
+   "events": {
+    "jawab": {
+     "word": "जवाब,"
+    },
+    "donon": {
+     "word": "दोनों"
+    },
+    "koi": {
+     "word": "कोई"
+    },
+    "nahin": {
+     "word": "नहीं।"
+    }
+   },
+   "params": {
+    "component": "Promise",
+    "place": "the same map, the two big neighbours crossed out",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "nahin",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "jawab",
+      "what": "the question mark spins away"
+     },
+     {
+      "at": "donon",
+      "what": "both flags pulse"
+     },
+     {
+      "at": "koi",
+      "what": "a red cross stamps on China"
+     },
+     {
+      "at": "nahin",
+      "what": "a red cross stamps on Pakistan as the camera punches in"
+     }
+    ],
+    "things": [
+     "china flag",
+     "pakistan flag",
+     "two red crosses"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "total",
+   "role": "build",
+   "transition": "match",
+   "say": "भारत की पूरी ज़मीनी सीमा है {fact1}। पर सबसे लंबा हिस्सा किसका?",
+   "events": {
+    "bharat": {
+     "word": "भारत"
+    },
+    "poori": {
+     "word": "पूरी"
+    },
+    "zameeni": {
+     "word": "ज़मीनी"
+    },
+    "hai": {
+     "word": "है"
+    },
+    "kiska": {
+     "word": "किसका?"
+    },
+    "sabse": {
+     "word": "सबसे"
+    },
+    "hissa": {
+     "word": "हिस्सा"
+    }
+   },
+   "params": {
+    "component": "Total",
+    "place": "all of India's land border, from Gujarat round the north to Mizoram",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "hai",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bharat",
+      "what": "the camera pulls back to all of India"
+     },
+     {
+      "at": "poori",
+      "what": "a bright line starts running along every land border"
+     },
+     {
+      "at": "zameeni",
+      "what": "little border posts pop up along it"
+     },
+     {
+      "at": "hai",
+      "what": "a road sign with the total length rises over the north"
+     },
+     {
+      "sec": 2.4,
+      "what": "the border posts flash one after another"
+     },
+     {
+      "sec": 3.6,
+      "what": "the road sign's number flashes"
+     },
+     {
+      "at": "sabse",
+      "what": "the whole border line flashes brighter"
+     },
+     {
+      "at": "hissa",
+      "what": "the road sign bounces"
+     },
+     {
+      "at": "kiska",
+      "what": "a question mark pops beside the sign"
+     }
+    ],
+    "things": [
+     "india's land border",
+     "border posts",
+     "road sign"
+    ],
+    "fig": {
+     "total": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "poori"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "bhutan",
+   "role": "build",
+   "transition": "match",
+   "say": "भूटान के साथ {fact5}।",
+   "events": {
+    "bhutan": {
+     "word": "भूटान"
+    },
+    "saath": {
+     "word": "साथ"
+    }
+   },
+   "params": {
+    "component": "Bhutan",
+    "place": "the small kingdom of Bhutan above Assam",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bhutan",
+      "what": "Bhutan fills with its flag and its border with India glows"
+     },
+     {
+      "at": "saath",
+      "what": "a length tag drops onto the border"
+     },
+     {
+      "sec": 1.8,
+      "what": "Bhutan's flag sign waves"
+     },
+     {
+      "sec": 2.6,
+      "what": "the length tag pulses"
+     }
+    ],
+    "things": [
+     "bhutan with its flag",
+     "the bhutan border",
+     "length tag"
+    ],
+    "fig": {
+     "len": "{fact5}"
+    }
+   },
+   "sfx": []
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "two",
+   "role": "build",
+   "transition": "match",
+   "say": "म्यांमार से {fact4}, और नेपाल के साथ {fact3}।",
+   "events": {
+    "myanmar": {
+     "word": "म्यांमार"
+    },
+    "saath": {
+     "word": "से"
+    },
+    "aur": {
+     "word": "और"
+    },
+    "nepal": {
+     "word": "नेपाल"
+    },
+    "nsaath": {
+     "word": "साथ"
+    }
+   },
+   "params": {
+    "component": "Two",
+    "place": "east to the Myanmar hills, then west along the Himalaya to Nepal",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "nepal",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "myanmar",
+      "what": "Myanmar fills with its flag and its border glows"
+     },
+     {
+      "at": "saath",
+      "what": "a length tag drops on the Myanmar border"
+     },
+     {
+      "sec": 1.5,
+      "what": "Myanmar's length tag pulses"
+     },
+     {
+      "at": "aur",
+      "what": "the camera pans west along the mountains"
+     },
+     {
+      "at": "nepal",
+      "what": "Nepal fills with its flag and its border glows"
+     },
+     {
+      "at": "nsaath",
+      "what": "Nepal's length tag drops onto its border"
+     },
+     {
+      "sec": 4.6,
+      "what": "Nepal lifts a little higher, its tag pulsing"
+     },
+     {
+      "sec": 3.0,
+      "what": "the camera passes Bhutan's flag on the way west"
+     },
+     {
+      "sec": 5.4,
+      "what": "Nepal's flag sign waves"
+     }
+    ],
+    "things": [
+     "myanmar with its flag",
+     "nepal with its flag",
+     "two borders",
+     "two length tags"
+    ],
+    "fig": {
+     "mm": "{fact4}",
+     "np": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "nepal"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "turn",
+   "role": "turn",
+   "transition": "match",
+   "say": "इसका जवाब वो देश है, जिसे भारत तीन तरफ़ से घेरे हुए है।",
+   "events": {
+    "par": {
+     "word": "इसका"
+    },
+    "lambi": {
+     "word": "जवाब"
+    },
+    "desh": {
+     "word": "देश"
+    },
+    "teen": {
+     "word": "तीन"
+    },
+    "ghere": {
+     "word": "घेरे"
+    }
+   },
+   "params": {
+    "component": "Turn",
+    "place": "the land round the Bay of Bengal, a country still blank in India's arms",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "desh",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "par",
+      "what": "the camera swings east"
+     },
+     {
+      "at": "lambi",
+      "what": "the borders traced so far (Bhutan, Myanmar, Nepal) glow white"
+     },
+     {
+      "at": "desh",
+      "what": "a blank country between West Bengal and the north-east pulses, a question mark on it"
+     },
+     {
+      "at": "teen",
+      "what": "three arrows from India point at it, west, north and east"
+     },
+     {
+      "at": "ghere",
+      "what": "India's states round it light up"
+     }
+    ],
+    "things": [
+     "blank country",
+     "question mark",
+     "three arrows",
+     "traced borders",
+     "west bengal and the north-east"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "payoff",
+   "role": "payoff",
+   "transition": "match",
+   "say": "बांग्लादेश, पूरे {fact2}।",
+   "events": {
+    "bd": {
+     "word": "बांग्लादेश,"
+    },
+    "poore": {
+     "word": "पूरे"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": "Bangladesh up close, its whole border with India blazing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bd",
+      "what": "Bangladesh fills with its flag and lifts"
+     },
+     {
+      "at": "poore",
+      "what": "its long border runs bright all the way round and a big length sign stamps on with a low hit"
+     },
+     {
+      "sec": 1.8,
+      "what": "the length tag pulses as the border's glow flares"
+     },
+     {
+      "sec": 2.8,
+      "what": "Bangladesh lifts once more under its flag sign"
+     }
+    ],
+    "things": [
+     "bangladesh with its flag",
+     "the bangladesh border",
+     "big length sign"
+    ],
+    "fig": {
+     "len": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "poore"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "loop",
+   "role": "loop",
+   "transition": "match",
+   "say": "आपके स्टेट से कौन-सा देश लगता है? कमेंट कीजिए। और बताइए,",
+   "events": {
+    "aapke": {
+     "word": "आपके"
+    },
+    "kaun": {
+     "word": "कौन-सा"
+    },
+    "comment": {
+     "word": "कमेंट"
+    },
+    "bataiye": {
+     "word": "बताइए,"
+    }
+   },
+   "params": {
+    "component": "Loop",
+    "place": "all of India with every neighbour, then back to China and Pakistan",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "aapke",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "aapke",
+      "what": "the camera pulls back, the border states of India glow"
+     },
+     {
+      "at": "kaun",
+      "what": "a comment bubble pops"
+     },
+     {
+      "at": "comment",
+      "what": "the bubble bounces"
+     },
+     {
+      "at": "bataiye",
+      "what": "the other neighbours fade and China and Pakistan stay filled, as the hook opens"
+     }
+    ],
+    "things": [
+     "all neighbours",
+     "comment bubble",
+     "china and pakistan"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  }
+ ],
+ "narrator": "hm_omega"
+}

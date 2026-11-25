@@ -1,0 +1,19 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-24",
+  "startedAt": "2026-11-24T17:31:52Z",
+  "finishedAt": "2026-11-24T17:47:25Z",
+  "summary": "Bug hunt on all five live channels. Two Scorecard fixes: the on-target ring now stays beside its reading on a phone, and last week no longer reads 'no Shorts' when its Shorts are only waiting for numbers.",
+  "decision": "acted",
+  "why": "Code review of the Scorecard page (never reviewed before) found two bugs the owner sees daily. Each fix has a smoke test that failed before and passes after. tsc, lint and build pass; smoke tests 127 passed, 5 skipped.",
+  "findings": [
+    {"title": "Scorecard ring alone on a phone", "detail": "The verdict row stacked below 640 px. The ring took a row by itself, and the Shorts count began with a stray '·'."},
+    {"title": "Scorecard said 'no Shorts last week' wrongly", "detail": "It showed this when last week had Shorts that were still waiting for YouTube's numbers."}
+  ],
+  "changes": [
+    {"title": "Scorecard: ring beside its reading on a phone", "detail": "The ring and the on-target reading share a row at every width; the separator dot shows only on wider screens.", "branch": "agent/dashboard/2026-11-24"},
+    {"title": "Scorecard: last week's Shorts still waiting", "detail": "It says \"last week's still waiting\" when last week had Shorts without numbers yet.", "branch": "agent/dashboard/2026-11-24"}
+  ],
+  "nextCheck": "2026-11-25",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-24.md"}]
+}

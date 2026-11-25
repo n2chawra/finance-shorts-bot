@@ -15,7 +15,7 @@ groups the last two weeks' failed checks with the fix for each. Avoid every item
 seconds. It builds the timeline on an estimated voice and runs every check that needs no pixels: the
 story spine, the picture following the words, gaps, shot sizes, devices, props against recent
 videos, the thumbnail spec, length and your own code (`tsc`). Fix until it prints `ok`, and only then
-spend a minute on `render --preview` and a QA round. Timing findings are on the estimated voice, so
+spend a minute on `render --preview` and a QA round; the full render comes only after QA passes those stills (it refuses before). Timing findings are on the estimated voice, so
 fix any beat near a limit as well.
 
 ## Numbers and words (number check)
@@ -174,3 +174,5 @@ fix any beat near a limit as well.
   the event's common name ("bp texas city refinery explosion"); the title says it, the event by its noun
   ("Inside the Texas City Refinery Explosion"), then the curiosity; an event's thumbnail shows the event (the
   fireball, the collapse), never a gauge or screen as the subject. check-plan and the thumbnail spec check fail both.
+- **A long video's camera zooms only when the line needs it** (owner, 2026-11-24, L-20261124-21: "too many zoom in and zoom outs"). That video changed shot size every 1.3 s; `lint` and the render now fail a long video under one size change per 5 s on average or with more than 3 zooms in and straight back out inside 4 s. Hold a size for the idea and drift, pan or orbit inside it.
+- **A long hook shows the everyday thing before the machine** (owner, 2026-11-24, same video): the phone, then its chip, then the system that made it, each on its word (`long_story` README, Hook).

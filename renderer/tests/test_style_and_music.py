@@ -130,6 +130,20 @@ def test_the_doc_beds_are_dark_slow_and_keep_their_tempo(genre: str, centroid: t
     assert _beat(make_bed(np.random.default_rng(3), 30, genre, "C#", bpm)) == pytest.approx(bpm, rel=0.02)
 
 
+@pytest.mark.parametrize("genre", ["tanpura", "monsoon"])
+def test_the_india_maps_beds_are_dark_and_low(genre: str) -> None:
+    """The India maps channel's beds (channels/india-maps/research/sound.md: 327-388 Hz, 23-25% bass, ~110
+    BPM felt): dark and low in every key; the tanpura's plucked drone is felt on every beat."""
+    lo, hi = CHANNEL_GENRES[genre]
+    rows = [_timbre(make_bed(np.random.default_rng(i), 24, genre, key, (lo + hi)//2)) for i, key in enumerate(("C", "D#", "G", "A#"))]
+    c, b = np.median(np.array(rows), axis=0)
+    assert 320 <= c <= 400 and 0.18 <= b <= 0.3
+    explorer = _timbre(make_bed(np.random.default_rng(0), 24, "explorer", "D#", 76))
+    assert c < explorer[0] and b > explorer[1]
+    if genre == "tanpura":
+        assert _beat(make_bed(np.random.default_rng(3), 30, genre, "C#", 106)) == pytest.approx(106, rel=0.02)
+
+
 def test_the_machine_sounds_are_clean() -> None:
     swell, glass = sfx_swell(np.random.default_rng(1)), sfx_glass()
     for x in (swell, glass):

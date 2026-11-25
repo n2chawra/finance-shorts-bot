@@ -1,0 +1,925 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52093,
+ "story": "rise_fall_short",
+ "shape": "before-after",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "ledger",
+  "key": "A",
+  "bpm": 76
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "shock_number",
+ "cta": "Late fees or the red envelope: which one killed Blockbuster? Comment",
+ "feed_id": "2026-11-19-netflix-50m",
+ "facts": [
+  {
+   "label": "What Netflix's founders asked Blockbuster for in 2000",
+   "value": 50,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2000-01-01",
+   "source": "Fortune",
+   "url": "https://fortune.com/2023/04/14/netflix-cofounder-marc-randolph-recalls-blockbuster-rejecting-chance-to-buy-it/",
+   "fixed": true
+  },
+  {
+   "label": "Blockbuster's total revenues in 2004",
+   "value": 6053.2,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2004-12-31",
+   "source": "Blockbuster",
+   "url": "https://www.sec.gov/Archives/edgar/data/1085734/000119312505063510/d10k.htm",
+   "fixed": true
+  },
+  {
+   "label": "Blockbuster stores at the end of 2004",
+   "value": 9094,
+   "unit": "count",
+   "as_of": "2004-12-31",
+   "source": "Blockbuster",
+   "url": "https://www.sec.gov/Archives/edgar/data/1085734/000119312505063510/d10k.htm",
+   "fixed": true
+  },
+  {
+   "label": "Blockbuster stores left",
+   "value": 1,
+   "unit": "count",
+   "as_of": "2023-04-14",
+   "source": "Fortune",
+   "url": "https://fortune.com/2023/04/14/netflix-cofounder-marc-randolph-recalls-blockbuster-rejecting-chance-to-buy-it/",
+   "latest": true,
+   "checked": "2026-11-19"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 1.0,
+  "words": "Blockbuster *passed*",
+  "angle": "story",
+  "unique": "Blockbuster vs Netflix covers in the niche show the two logos; ours shows the Blockbuster store under its store count"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Blockbuster had {fact3} stores. Netflix was a red envelope.",
+   "events": {
+    "blockbuster": {
+     "word": "Blockbuster"
+    },
+    "stores": {
+     "word": "stores"
+    },
+    "netflix": {
+     "word": "Netflix"
+    },
+    "red": {
+     "word": "red"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "stores"
+    },
+    {
+     "kind": "boom",
+     "at": "netflix"
+    }
+   ],
+   "params": {
+    "place": [
+     "inside a Blockbuster video store",
+     "a Netflix envelope on a bedsheet"
+    ],
+    "things": [
+     "Blockbuster store",
+     "Blockbuster sign",
+     "Netflix envelope"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "stores",
+      "size": "wide"
+     },
+     {
+      "at": "netflix",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "blockbuster",
+      "what": "the store pushes in"
+     },
+     {
+      "at": "stores",
+      "what": "a label: the store count"
+     },
+     {
+      "at": "netflix",
+      "what": "cut to the Netflix envelope print"
+     },
+     {
+      "at": "red",
+      "what": "an arrow points at the envelope"
+     }
+    ],
+    "fig": {
+     "stores": "{fact3}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-blockbuster-6176-b79c276c.jpg",
+      "focus": [
+       0.35,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc",
+      "out": "netflix"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-netflixenvelope-6c0a9d1a.jpg",
+      "frame": "polaroid",
+      "surface": "desk",
+      "tilt": -4,
+      "landAt": "netflix",
+      "at": "netflix"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact3}",
+      "sub": "Blockbuster stores",
+      "at": "stores",
+      "out": "netflix"
+     },
+     {
+      "kind": "arrow",
+      "from": [
+       0.25,
+       0.18
+      ],
+      "to": [
+       0.45,
+       0.36
+      ],
+      "label": "Netflix",
+      "at": "red"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "offer",
+   "role": "promise",
+   "say": "Reed Hastings and Marc Randolph, who started Netflix, had once offered to sell it to Blockbuster for {fact1}. So what happened?",
+   "events": {
+    "reed": {
+     "word": "Reed"
+    },
+    "marc": {
+     "word": "Marc"
+    },
+    "offered": {
+     "word": "offered"
+    },
+    "sell": {
+     "word": "sell"
+    },
+    "happened": {
+     "word": "happened"
+    },
+    "started": {
+     "word": "started"
+    }
+   },
+   "params": {
+    "place": [
+     "Netflix's co-founders, side by side"
+    ],
+    "things": [
+     "Reed Hastings' photo",
+     "Marc Randolph's photo",
+     "the asking price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "marc",
+      "size": "medium"
+     },
+     {
+      "at": "sell",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "reed",
+      "what": "Hastings' print lifts"
+     },
+     {
+      "at": "marc",
+      "what": "Randolph's print lifts"
+     },
+     {
+      "at": "started",
+      "what": "a second print of Hastings lifts"
+     },
+     {
+      "at": "offered",
+      "what": "a second print of Randolph lifts"
+     },
+     {
+      "at": "sell",
+      "what": "a label: the price"
+     },
+     {
+      "at": "happened",
+      "what": "a stamp: FOR SALE"
+     }
+    ],
+    "fig": {
+     "ask": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "polaroids",
+      "bw": true,
+      "surface": "desk",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-reed-hastings-2008-a-fd329c4f.jpg",
+        "caption": "Reed Hastings",
+        "at": "reed"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-marc-randolph-by-gage-skidmore-42246232.jpg",
+        "caption": "Marc Randolph",
+        "at": "marc"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-reed-hastings-2010-a-3ec94ab4.jpg",
+        "caption": "Netflix co-founder",
+        "at": "started"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-marc-randolph-34127210976-3e00f347.jpg",
+        "caption": "Netflix co-founder",
+        "at": "offered"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "sub": "the asking price",
+      "at": "sell",
+      "out": "happened"
+     },
+     {
+      "kind": "stamp",
+      "text": "For sale",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -6,
+      "at": "happened"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "no",
+   "role": "build",
+   "say": "Blockbuster turned it down, and kept building video stores.",
+   "events": {
+    "turned": {
+     "word": "turned"
+    },
+    "down": {
+     "word": "down"
+    },
+    "kept": {
+     "word": "kept"
+    },
+    "building": {
+     "word": "building"
+    },
+    "stores": {
+     "word": "stores"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "down"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Blockbuster pole sign over a car park in Anchorage"
+    ],
+    "things": [
+     "Blockbuster pole sign",
+     "Blockbuster logo"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "down",
+      "size": "close"
+     },
+     {
+      "at": "stores",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "turned",
+      "what": "the Blockbuster logo drops in"
+     },
+     {
+      "at": "down",
+      "what": "a stamp: TURNED DOWN"
+     },
+     {
+      "at": "building",
+      "what": "the sign keeps rising"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-anchorage-blockbuster-video-store-sign-412198857-288522d4.jpg",
+      "focus": [
+       0.62,
+       0.4
+      ],
+      "move": "rise",
+      "amount": 0.14,
+      "grade": "doc"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-blockbuster-logo-478062dc.png",
+      "aspect": 1.67,
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "size": 0.55,
+      "tilt": -4,
+      "at": "turned",
+      "out": "building"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Turned down",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.5
+      ],
+      "tilt": -6,
+      "at": "down"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "peak",
+   "role": "build",
+   "say": "In two thousand four, it ran {fact3} stores and took in {fact2} in a year. So who needed Netflix?",
+   "events": {
+    "four": {
+     "word": "four"
+    },
+    "stores": {
+     "word": "stores"
+    },
+    "took": {
+     "word": "took"
+    },
+    "year": {
+     "word": "year"
+    },
+    "needed": {
+     "word": "needed"
+    },
+    "ran": {
+     "word": "ran"
+    }
+   },
+   "params": {
+    "place": [
+     "Blockbuster's annual report, retold as a card"
+    ],
+    "things": [
+     "a Blockbuster store in Anchorage",
+     "annual report store table",
+     "highlighter"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "stores",
+      "size": "close"
+     },
+     {
+      "at": "year",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "four",
+      "what": "the annual report card lands"
+     },
+     {
+      "at": "stores",
+      "what": "the highlighter swipes the store total"
+     },
+     {
+      "at": "needed",
+      "what": "the page keeps pushing"
+     },
+     {
+      "at": "took",
+      "what": "the highlighted total holds as the storefront pushes"
+     }
+    ],
+    "fig": {},
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-anchorage-blockbuster-video-store-41894010352-089e9cda.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "dim": 0.45
+     },
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "Blockbuster annual report",
+        "date": "2004-12-31",
+        "title": "Total stores at the end of the year: {fact3}",
+        "style": "paper",
+        "hi": "{fact3}"
+       }
+      ],
+      "on": [
+       "four"
+      ],
+      "markAt": "stores",
+      "plate": false
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "online",
+   "role": "build",
+   "say": "Netflix kept mailing discs, then put its films online, for a monthly fee.",
+   "events": {
+    "netflix": {
+     "word": "Netflix"
+    },
+    "mailing": {
+     "word": "mailing"
+    },
+    "discs": {
+     "word": "discs"
+    },
+    "online": {
+     "word": "online"
+    },
+    "monthly": {
+     "word": "monthly"
+    },
+    "fee": {
+     "word": "fee"
+    }
+   },
+   "params": {
+    "place": [
+     "Netflix's headquarters against a Blockbuster store"
+    ],
+    "things": [
+     "Netflix headquarters",
+     "Blockbuster store"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "online",
+      "size": "medium"
+     },
+     {
+      "at": "fee",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "netflix",
+      "what": "Netflix's side is already sliding in, pushing"
+     },
+     {
+      "at": "discs",
+      "what": "Blockbuster's side slides in"
+     },
+     {
+      "at": "online",
+      "what": "the VS seal lands"
+     },
+     {
+      "at": "monthly",
+      "what": "Netflix wins the split, Blockbuster greys"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "split",
+      "left": {
+       "name": "Netflix",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-netflix-headquarters-562002d5.jpg",
+       "fit": "cover",
+       "sub": "discs by mail, then online"
+      },
+      "right": {
+       "name": "Blockbuster",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-anchorage-blockbuster-video-store-41938257471-8edd5be2.jpg",
+       "fit": "cover",
+       "sub": "drive to the store"
+      },
+      "rightAt": "discs",
+      "win": "left",
+      "winAt": "monthly",
+      "enter": "cut"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "bust",
+   "role": "turn",
+   "say": "In two thousand ten, Blockbuster went bankrupt, and its stores went dark.",
+   "events": {
+    "ten": {
+     "word": "ten"
+    },
+    "blockbuster": {
+     "word": "Blockbuster"
+    },
+    "bankrupt": {
+     "word": "bankrupt"
+    },
+    "stores": {
+     "word": "stores"
+    },
+    "dark": {
+     "word": "dark"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "bankrupt"
+    }
+   ],
+   "params": {
+    "place": [
+     "an empty former Blockbuster store"
+    ],
+    "things": [
+     "empty Blockbuster store"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "bankrupt",
+      "size": "close"
+     },
+     {
+      "at": "dark",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ten",
+      "what": "the date slams in"
+     },
+     {
+      "at": "bankrupt",
+      "what": "a stamp: BANKRUPT"
+     },
+     {
+      "at": "dark",
+      "what": "the store dims"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-closed-blockbuster-chain-store-in-america-91641ff4.jpg",
+      "focus": [
+       0.4,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "cold"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "date",
+      "date": "2010-09-23",
+      "sub": "Blockbuster files for bankruptcy",
+      "pos": "top",
+      "at": "ten",
+      "out": "bankrupt"
+     },
+     {
+      "kind": "stamp",
+      "text": "Bankrupt",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "bankrupt"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "last",
+   "role": "payoff",
+   "say": "Today, out of all those thousands of stores, just {fact4} is still open: one Blockbuster in Bend, Oregon.",
+   "events": {
+    "today": {
+     "word": "Today"
+    },
+    "thousands": {
+     "word": "thousands"
+    },
+    "still": {
+     "word": "still"
+    },
+    "open": {
+     "word": "open"
+    },
+    "bend": {
+     "word": "Bend"
+    },
+    "oregon": {
+     "word": "Oregon"
+    }
+   },
+   "params": {
+    "place": [
+     "the last Blockbuster, Bend, Oregon"
+    ],
+    "things": [
+     "the last Blockbuster",
+     "the stores left"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "still",
+      "size": "wide"
+     },
+     {
+      "at": "bend",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "today",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "still",
+      "what": "the figure settles"
+     },
+     {
+      "at": "bend",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "left": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-blockbuster-6178-ab04bc56.jpg",
+      "focus": [
+       1.0,
+       0.5
+      ],
+      "title": "Blockbuster",
+      "figure": "left",
+      "sub": "store still open · Bend, Oregon",
+      "enter": "cut"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Late fees or the red envelope: which one sank Blockbuster? Because once,",
+   "events": {
+    "late": {
+     "word": "Late"
+    },
+    "envelope": {
+     "word": "envelope"
+    },
+    "because": {
+     "word": "Because"
+    },
+    "once": {
+     "word": "once"
+    },
+    "sank": {
+     "word": "sank"
+    }
+   },
+   "params": {
+    "place": [
+     "a Blockbuster membership card",
+     "inside the Blockbuster store from the first frame"
+    ],
+    "things": [
+     "membership card",
+     "Blockbuster store"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "sank",
+      "size": "medium"
+     },
+     {
+      "at": "once",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "late",
+      "what": "a stamp: LATE FEES?"
+     },
+     {
+      "at": "envelope",
+      "what": "a stamp: ENVELOPE?"
+     },
+     {
+      "at": "sank",
+      "what": "push in on the card"
+     },
+     {
+      "at": "once",
+      "what": "back to the store from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-blockbuster-membership-card-2c7b06ce.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "once"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-blockbuster-6176-b79c276c.jpg",
+      "focus": [
+       0.35,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "at": "once"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Late fees?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.2
+      ],
+      "tilt": -4,
+      "at": "late",
+      "out": "envelope"
+     },
+     {
+      "kind": "stamp",
+      "text": "Envelope?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.2
+      ],
+      "tilt": 4,
+      "at": "envelope",
+      "out": "sank"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}

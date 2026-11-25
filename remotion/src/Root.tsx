@@ -11,6 +11,8 @@ import { Promo, type PromoProps } from "./promo/Promo";
 import { PromoThumb } from "./promo/Thumb";
 import { ChannelAvatar as GlobalAvatar, ChannelBanner as GlobalBanner } from "./promo/Channel";
 import { MapSheet } from "./sheets/MapSheet";
+import { IndiaSheet } from "./sheets/IndiaSheet";
+import { IndiaAvatar, IndiaBanner } from "./sheets/IndiaBrand";
 import { FlagSheet } from "./sheets/FlagSheet";
 import { GeoAvatar, GeoBanner } from "./sheets/GeoBrand";
 import { TechFlatDemos } from "./flat/tech/Demo";
@@ -46,6 +48,9 @@ export const Root: React.FC = () => (
     <Still id="CharacterSheet" component={CharacterSheet} width={1920} height={1080} />
     <Composition id="ActingTest" component={ActingTest} durationInFrames={300} fps={30} width={1920} height={1080} />
     <Composition id="MapSheet" component={MapSheet} durationInFrames={270} fps={30} width={1080} height={1920} />
+    <Composition id="IndiaSheet" component={IndiaSheet} durationInFrames={240} fps={30} width={1080} height={1920} />
+    <Still id="IndiaAvatar" component={IndiaAvatar} width={800} height={800} />
+    <Still id="IndiaBanner" component={IndiaBanner} width={2560} height={1440} />
     <Composition id="FlagSheet" component={FlagSheet} durationInFrames={60} fps={30} width={1080} height={1920} />
     <Still id="GeoAvatar" component={GeoAvatar} width={800} height={800} />
     <Still id="GeoBanner" component={GeoBanner} width={2560} height={1440} />

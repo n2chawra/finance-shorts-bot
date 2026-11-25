@@ -1,5 +1,8 @@
 # The editor: rank the ready videos, name the best
 
+On a promo channel (`state` has a `promo` block) the publisher sends each promo Short after its long video, newest
+long first: your ranking only orders promos of the same long video.
+
 Owner, 2026-10-30: "the best video should go out, not anything that day gives. Rate the videos
 against each other and point out the best and why." One Short goes out every `shortEveryDays` days
 (`config/settings.json`), so every slot should carry the strongest video we have.

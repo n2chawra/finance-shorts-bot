@@ -164,6 +164,31 @@ const FLAGS: Record<string, Draw> = {
   Canada: both(v(["#d80621", W, "#d80621"], [1, 2, 1]), ({ x, y, w, h: hh }) => leaf(x + w / 2, y + hh / 2, hh * 0.62, "#d80621")),
   Japan: disc(W, "#bc002d"),
   Bangladesh: disc("#006a4e", "#f42a41", 0.05),
+  // Nepal, Bhutan and Myanmar added for v-20261125-62 (India's land borders), simplified like the rest
+  Nepal: ({ x, y, w, h: hh }) => {
+    const sw = hh * 0.06;
+    const d = `M ${x + sw} ${y + sw} L ${x + w * 0.78} ${y + hh * 0.47} L ${x + w * 0.34} ${y + hh * 0.47} L ${x + w * 0.82} ${y + hh - sw} L ${x + sw} ${y + hh - sw} Z`;
+    return (
+      <g>
+        <path d={d} fill="#dc143c" stroke="#003893" strokeWidth={sw} strokeLinejoin="miter" />
+        <path d={`M ${x + w * 0.1} ${y + hh * 0.3} A ${hh * 0.11} ${hh * 0.11} 0 0 0 ${x + w * 0.32} ${y + hh * 0.3} A ${hh * 0.09} ${hh * 0.07} 0 0 1 ${x + w * 0.1} ${y + hh * 0.3} Z`} fill={W} />
+        <circle cx={x + w * 0.21} cy={y + hh * 0.36} r={hh * 0.045} fill={W} />
+        {star(x + w * 0.22, y + hh * 0.74, hh * 0.11, W, "np")}
+        <circle cx={x + w * 0.22} cy={y + hh * 0.74} r={hh * 0.065} fill={W} />
+      </g>
+    );
+  },
+  Bhutan: ({ x, y, w, h: hh }) => (
+    <g>
+      <path d={`M ${x} ${y} L ${x + w} ${y} L ${x} ${y + hh} Z`} fill="#ffd520" />
+      <path d={`M ${x + w} ${y} L ${x + w} ${y + hh} L ${x} ${y + hh} Z`} fill="#ff4e12" />
+      <path d={`M ${x + w * 0.2} ${y + hh * 0.78} C ${x + w * 0.35} ${y + hh * 0.5}, ${x + w * 0.45} ${y + hh * 0.75}, ${x + w * 0.55} ${y + hh * 0.48} S ${x + w * 0.72} ${y + hh * 0.3}, ${x + w * 0.8} ${y + hh * 0.24}`}
+        fill="none" stroke={W} strokeWidth={hh * 0.13} strokeLinecap="round" />
+      <circle cx={x + w * 0.8} cy={y + hh * 0.24} r={hh * 0.09} fill={W} />
+      {[0.32, 0.47, 0.62].map((k, i) => <circle key={i} cx={x + w * k} cy={y + hh * (0.62 - (k - 0.32) * 0.9) + hh * 0.1} r={hh * 0.05} fill={W} />)}
+    </g>
+  ),
+  Myanmar: both(h(["#fecb00", "#34b233", "#ea2839"]), ({ x, y, w, h: hh }) => star(x + w / 2, y + hh * 0.55, hh * 0.42, W, "mm")),
   India: both(h(["#ff9933", W, "#138808"]), ({ x, y, w, h: hh }) => {
     const cx = x + w / 2, cy = y + hh / 2, r = hh * 0.13, sw = Math.max(1.5, hh * 0.018);
     return (
@@ -288,6 +313,36 @@ const FLAGS: Record<string, Draw> = {
       <rect x={x} y={y + hh / 2} width={w / 2} height={hh / 2} fill="#072357" />
       {star(x + w / 4, y + hh / 4, hh * 0.13, "#072357")}
       {star(x + (w * 3) / 4, y + (hh * 3) / 4, hh * 0.13, "#da121a")}
+    </g>
+  ),
+  // Ethiopia (for v-20261125-12): green, yellow, red, the blue disc with a yellow star in the middle
+  Ethiopia: both(h(["#078930", "#fcdd09", "#da121a"]), ({ x, y, w, h: hh }) => (
+    <g>
+      <circle cx={x + w / 2} cy={y + hh / 2} r={hh * 0.26} fill="#0f47af" />
+      {star(x + w / 2, y + hh / 2, hh * 0.17, "#fcdd09")}
+    </g>
+  )),
+  // Somalia: light blue with a white star
+  Somalia: ({ x, y, w, h: hh }) => (
+    <g>
+      <rect x={x} y={y} width={w} height={hh} fill="#4189dd" />
+      {star(x + w / 2, y + hh / 2, hh * 0.24, W)}
+    </g>
+  ),
+  // Kenya: black, red, green with white edges and a red-and-black shield (simplified)
+  Kenya: both(h([K, W, "#bb0000", W, "#006600"], [6, 1, 6, 1, 6]), ({ x, y, w, h: hh }) => (
+    <g>
+      <ellipse cx={x + w / 2} cy={y + hh / 2} rx={hh * 0.13} ry={hh * 0.36} fill="#bb0000" stroke={K} strokeWidth={Math.max(1, hh * 0.03)} />
+      <ellipse cx={x + w / 2} cy={y + hh / 2} rx={hh * 0.04} ry={hh * 0.2} fill={W} />
+    </g>
+  )),
+  // Tanzania: green over blue split by a yellow-edged black band from bottom-left to top-right
+  Tanzania: ({ x, y, w, h: hh }) => (
+    <g>
+      <polygon points={`${x},${y} ${x + w},${y} ${x},${y + hh}`} fill="#1eb53a" />
+      <polygon points={`${x + w},${y} ${x + w},${y + hh} ${x},${y + hh}`} fill="#00a3dd" />
+      <line x1={x} y1={y + hh} x2={x + w} y2={y} stroke="#fcd116" strokeWidth={hh * 0.42} />
+      <line x1={x} y1={y + hh} x2={x + w} y2={y} stroke={K} strokeWidth={hh * 0.3} />
     </g>
   ),
   Chile: ({ x, y, w, h: hh }) => (

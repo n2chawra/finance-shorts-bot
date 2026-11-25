@@ -35,6 +35,9 @@ PROGRESSIONS: dict[str, list[list[tuple[int, tuple[int, int, int]]]]] = {
     # the disasters channel's own beds (CHANNEL_GENRES): low, still, a structure under load
     "undertow": [[(0, MIN), (8, MAJ), (5, MIN), (0, MIN)], [(0, MIN), (3, MAJ), (8, MAJ), (7, MIN)]],
     "brace": [[(0, MIN), (0, MIN), (1, MAJ), (0, MIN)], [(0, MIN), (8, MAJ), (7, MIN), (7, MIN)]],
+    # the India maps channel's own beds (CHANNEL_GENRES): dark, low, a drone under a map of India
+    "tanpura": [[(0, MIN), (8, MAJ), (5, MIN), (7, MIN)], [(0, MIN), (10, MAJ), (8, MAJ), (0, MIN)]],
+    "monsoon": [[(0, MIN), (8, MAJ), (10, MAJ), (0, MIN)], [(0, MIN), (5, MIN), (8, MAJ), (7, MIN)]],
 }
 ARPS: list[tuple[int, ...]] = [(0, 1, 2, 1, 0, 2, 1, 2), (0, 2, 1, 2, 0, 2, 1, 2), (2, 1, 0, 1, 2, 1, 0, 1)]
 CUTOFF: dict[str, dict[str, float]] = {
@@ -50,6 +53,8 @@ CUTOFF: dict[str, dict[str, float]] = {
     "dossier": {"pad": 1400, "bass": 180, "lead": 1300},
     "undertow": {"pad": 420, "bass": 150, "lead": 700},
     "brace": {"pad": 900, "bass": 170, "lead": 1100},
+    "tanpura": {"pad": 1100, "bass": 160, "lead": 1300},
+    "monsoon": {"pad": 800, "bass": 180, "drums": 900},
 }
 
 
@@ -441,10 +446,68 @@ def _brace(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
         bed.add("lead", _voice("tri", note(low + 12), beat*0.25, 0.003, 0.08, 6.0), st + 3*beat, 0.05)
 
 
+@lru_cache(maxsize=256)
+def _drone_pluck(freq: float, dur: float) -> np.ndarray:
+    """One tanpura-like string of our own: a sine and a soft triangle an octave up, a gently detuned
+    twin, a fast attack and a long exponential ring. Do not mutate."""
+    t = tarr(dur)
+    s = sum(np.sin(2*np.pi*freq*d*t) + 0.25*np.sin(2*np.pi*2*freq*d*t)*np.exp(-t*1.5) for d in (1.0, 1.0025))/2
+    return s*np.minimum(1, t/0.006)*np.exp(-t*1.1)*np.clip((dur - t)/0.1, 0, 1)
+
+
+def _dha(dur: float = 0.45) -> np.ndarray:
+    """A low pitched-down tabla-like "dha": a sine whose pitch falls fast from ~190 to ~75 Hz."""
+    t = tarr(dur)
+    return np.sin(2*np.pi*np.cumsum(75 + 115*np.exp(-t*28))/SR)*np.exp(-t*7)*np.minimum(1, t/0.002)
+
+
+def _tanpura(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The India maps channel's Shorts bed (2026-11-24, research/sound.md: dark cinematic beds, 327-388 Hz,
+    23-25% bass, ~110 BPM felt, no steady drums): a drone of our own plucked in quarters every bar on the
+    key's fifth, octave, octave and low root (the tanpura's Pa Sa Sa Sa), each string's body felt low,
+    over a dark minor pad held two bars a chord, a held sub and a soft felt sub on beat 1. No kick, no
+    hats, nothing bright."""
+    beat = bed.beat
+    tonic = chords[0][0]
+    low = tonic - 12 if tonic >= 48 else tonic     # the sub always under 150 Hz, whatever the key
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[(b//2) % len(chords)]
+        for q, m in enumerate((tonic + 19, tonic + 24, tonic + 24, tonic + 12)):
+            bed.add("lead", _drone_pluck(note(m), 3*beat), st + q*beat, 0.1 if q == 3 else (0.09 if q == 0 else 0.085))
+            bed.add("bass", _voice("sine", note(low), beat*0.8, 0.006, 0.3, 5.0), st + q*beat, 0.04)
+        if b % 2 == 0:
+            for m in ch:
+                for det in (1.0, 1.004):
+                    bed.add("pad", _voice("saw", note(m + 12)*det, 2*bed.bar, 0.9, 0.8), st, 0.03)
+                bed.add("pad", _voice("tri", note(m + 24), 2*bed.bar, 1.2, 0.8), st, 0.05)
+        if b % 4 == 0:
+            bed.add("bass", _voice("sine", note(low), 4*bed.bar, 1.0, 1.0), st, 0.05)
+        bed.add("bass", _voice("sine", note(low), beat*1.6, 0.01, 0.6, 2.2), st, 0.1)
+
+
+def _monsoon(bed: _Bed, rng: np.random.Generator, chords: Chords) -> None:
+    """The India maps channel's tension bed (92-104 BPM): the tanpura's dark pad a chord a bar, a low
+    pitched-down tabla-like "dha" on beat 1 and on the "and" of 2, a muted low tom on 4. No hats: the
+    whooshes and low hits are the script's own effects."""
+    beat, dha, tom = bed.beat, _dha(), _tom()
+    for b in range(bed.bars):
+        st, ch = b*bed.bar, chords[b % len(chords)]
+        low = ch[0] - 12 if ch[0] >= 48 else ch[0]
+        for m in ch:
+            for det in (1.0, 1.005):
+                bed.add("pad", _voice("saw", note(m + 12)*det, bed.bar, 0.5, 0.5), st, 0.028)
+            bed.add("pad", _voice("tri", note(m + 24), bed.bar, 0.6, 0.5), st, 0.04)
+        bed.add("bass", _voice("sine", note(low), bed.bar*0.95, 0.3, 0.5), st, 0.035)
+        bed.add("drums", dha, st, 0.17)
+        bed.add("drums", dha, st + 1.5*beat, 0.12)
+        bed.add("drums", tom, st + 3*beat, 0.08)
+
+
 _BUILDERS: dict[str, Callable[[_Bed, np.random.Generator, Chords], None]] = {
     "pop": _pop, "cinematic": _cinematic, "synthwave": _synthwave, "acoustic": _acoustic,
     "explorer": _explorer, "atlas": _atlas, "circuit": _circuit, "datahall": _datahall,
-    "ledger": _ledger, "dossier": _dossier, "undertow": _undertow, "brace": _brace}
+    "ledger": _ledger, "dossier": _dossier, "undertow": _undertow, "brace": _brace,
+    "tanpura": _tanpura, "monsoon": _monsoon}
 
 
 def make_bed(rng: np.random.Generator, dur: float, genre: str, key: str, bpm: float, pulse: bool = False) -> np.ndarray:

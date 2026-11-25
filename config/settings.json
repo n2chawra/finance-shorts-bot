@@ -1,10 +1,10 @@
 {
-  "backlog": 4,
+  "backlog": 5,
   "backlogByFormat": {
     "short": 3,
-    "long": 1
+    "long": 2
   },
-  "ingestedAt": "2026-11-24T01:18:11.965964+00:00",
+  "ingestedAt": "2026-11-25T04:14:29.315017+00:00",
   "backlogCap": 30,
   "generationPaused": true,
   "uploadsPaused": false,
@@ -22,7 +22,7 @@
   ],
   "queue": [
     {
-      "id": "L-20261123-31",
+      "id": "L-20261124-21",
       "format": "long",
       "position": 1,
       "locked": false,
@@ -30,7 +30,15 @@
       "editorRank": null
     },
     {
-      "id": "v-20261124-12",
+      "id": "L-20261124-41",
+      "format": "long",
+      "position": 1,
+      "locked": false,
+      "picked": false,
+      "editorRank": null
+    },
+    {
+      "id": "v-20261125-12",
       "format": "short",
       "position": 1,
       "locked": false,
@@ -38,17 +46,17 @@
       "editorRank": 1
     },
     {
-      "id": "v-20261124-32",
+      "id": "v-20261125-32",
       "format": "short",
       "position": 1,
       "locked": false,
       "picked": false,
-      "editorRank": 1
+      "editorRank": 2
     },
     {
-      "id": "v-20261124-31",
+      "id": "v-20261125-61",
       "format": "short",
-      "position": 2,
+      "position": 1,
       "locked": false,
       "picked": false,
       "editorRank": 2

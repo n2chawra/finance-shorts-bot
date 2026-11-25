@@ -429,15 +429,22 @@ def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], 
     (A news script's sourced facts are traced to the feed by the number check.)"""
     out = []
     feed_id = (plan.get("topic") or {}).get("feed_id")
+    # a promo Short tells its long video's topic (generator/promo.py): that topic lives in the long feed, and the
+    # long video and its other promos have already used it on purpose
+    promo_of = plan.get("promo_of") if isinstance(plan.get("promo_of"), str) else None
+    if promo_of:
+        entries = [e for e in entries if e.get("id") != promo_of and e.get("promo_of") != promo_of]
+    everything = [e for e in _all_entries(root) if not (promo_of and (e.get("id") == promo_of or e.get("promo_of") == promo_of))]
     if feed_id:
-        topic = get(feed_id, root, fmt)
+        topic = get(feed_id, root, None if promo_of else fmt)
         if topic is None:
             out.append(f"topic.feed_id {feed_id!r} is not in {rel(root, FILES[fmt])}")
         elif (why := why_unavailable(topic, entries, today)) is not None:
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
-        elif (dup := too_close(topic, _all_entries(root), today)) is not None:
+        elif (dup := too_close(topic, everything, today)) is not None:
             out.append(f"feed topic {feed_id!r} tells the same idea as {dup} (a Short or long video within the duplicate window)")
-        elif (why := blocked_reason(topic, today, fmt, root)) is not None:
+        elif not promo_of and (why := blocked_reason(topic, today, fmt, root)) is not None:
+            # (a promo's facts were checked when its long video was made, days ago)
             out.append(f"feed topic {feed_id!r} can't be used: {why}")
     elif (trend := (plan.get("topic") or {}).get("trend")) is not None:
         out += check_trend(trend, today)

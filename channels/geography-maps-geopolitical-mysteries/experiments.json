@@ -20,6 +20,25 @@
       "description": "Geography Shorts: the country a line is about covered by its flag, against a flat colour (owner: 'test both'; judged on held after the hook)",
       "adoptedAt": "2026-11-19",
       "note": "Made the default without a verdict (owner, 2026-11-19: 'The feedback I have goes straight away, don't add it as a test')."
+    },
+    {
+      "id": "geo-claim-hook",
+      "area": "hook",
+      "metric": "stayed",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-24",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "First second (weekly loop, cycle 2, geo-claim-hook, on): the first spoken line is a claim about the map whose explanation waits for the payoff ('Only one country here rolls like a real wheel'), said over the map it's about with the place named in it; not a question. The title states the same claim, with no question mark. The payoff gives the answer. Everything else as the recipe says.",
+        "off": "First second (weekly loop, cycle 2, geo-claim-hook, off): the champion: the title's question ('Why does ...?') is the first spoken line, over the map it's about, the place named in it. Everything else as the recipe says."
+      },
+      "proposal": "cycle/backlog.json geo-claim-hook",
+      "description": "Geography Shorts: a claim whose answer waits for the end as the first line, against the title's question (judged on stayed to watch)",
+      "cycle": 2
     }
   ]
 }

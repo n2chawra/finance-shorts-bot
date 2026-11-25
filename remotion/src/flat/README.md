@@ -32,6 +32,30 @@ reference videos (its approved samples) are its bar.
 | `SourceLine` | the "Data: … · month" line, once a video, on the beat `showsSource` picks |
 | `shade(hex, amt)` | darker / lighter tones of a colour |
 
+## `india.tsx` (India's official map, 2026-11-24, the India Maps channel)
+
+India with its 28 states and 8 UTs on **India's official outline** (`data/india.json`, built by
+`scripts/build_india_map.py` from Natural Earth's public-domain India's-view outline and admin-1 states; the parts
+Natural Earth leaves out are assigned as the Survey of India map shows them), over a shaded-relief base
+(`public/maps/south-asia-relief.jpg`, Natural Earth, public domain). The India Maps channel never draws another
+India outline. Inside a `Stage`/`View` (or a bare SVG):
+
+| Piece | What it draws |
+|---|---|
+| `IndiaMap` | the map: `focus` (state names or "India") framed with `pad`; the world outside India dimmed (`dim`), India a paper sheet (`sheet`) with white state lines; `states` ({ Telangana: { fill, k, draw, paint, from, lift, trace } }) makes a state on screen like `WorldMap`'s colours; painted states stay painted (an every-state fill-up); `names` writes unpainted states' Devanagari names faintly; `neighbourNames` the neighbours' |
+| `StateTag` | a pill pinned to a state (its Devanagari name by default, or `text`), popping in with `k`; kept inside the frame, its stem pointing at the state |
+| `frameOf(focus, w, h, pad)`, `lerpFrame(a, b, k)` | a framing as `{center, scale}` and the camera move between two; pass it as `IndiaMap frame` |
+| `Plate` | an Indian number plate (white, ink border, blue IND strip, the state's letters) pinned to a state, dropping in with `k`, ringed by `glow`; letters only; `maxY` fades one that would fall in the captions' band |
+| `StateUnion` | several states drawn as one, the map before a split (`names`, one `fill`, no line inside, an ink outline round the outside; `k`, `lift`, `trace`); a child of `IndiaMap` (v-20261125-61) |
+| `CutLine` | the border a split draws: only the stretch `state` shares with `parent`, a dashed red line running on as `k` goes 0 → 1 (v-20261125-61) |
+| `Neighbour` | a neighbouring country (China, Pakistan, Nepal, Bhutan, Bangladesh, Myanmar…) filled outside India's official outline, its whole `flag` fitted and clipped inside it (`k`, `flagK`, `lift`) (v-20261125-62) |
+| `BorderLine` | India's land border with a neighbour, a bright line drawn on as `k` goes 0 → 1, only where it runs along India's outline (v-20261125-62) |
+| `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
+| `INDIA_STATES`, `stateHi(name)` | the 36 names (English) and each one's Devanagari name |
+
+`MapLabel`, `MapPin` and `MapRoute` work inside `IndiaMap` too. `IndiaSheet` (Root) is a test reel:
+`npx remotion still src/index.ts IndiaSheet out.png --frame=100`.
+
 ## `map.tsx` (maps, 2026-11-17)
 
 Natural Earth country outlines (public domain, `world-atlas`) drawn in the house style. Inside a `Stage`/`View`:
@@ -39,7 +63,7 @@ Natural Earth country outlines (public domain, `world-atlas`) drawn in the house
 | Piece | What it draws |
 |---|---|
 | `WorldMap` | the map: `fit` (country names to frame) or `center` + `scale`; `kind` "world" (Natural Earth projection) or "flat" (Mercator, a region); `colors` ({ Chile: { fill, k } }, `k` fades a recolour in on a word; `draw` outlines it, `paint` brushes the colour in, `lift` raises it; `trace` (0 → 1) runs a bright line with a glowing head round its border until it closes, `traceColor` sets it; `flag: "<name>"` puts the whole flag, true to its 3:2 shape, inside the country as big as fits, over its colour, kept in frame; a flag the table lacks: just `fill`); `hide` (a disputed region a video can't show) |
-| `FlagArt` (`flags.tsx`) | a country's flag in a box (South Africa and Lesotho added for v-20261124-11, Panama for v-20261124-12) (`name`, `x`, `y`, `w`, `h`): stripes, crosses, discs, stars, simplified; `cover` fills a country's box at 3:2; `hasFlag(name)`, `FLAG_NAMES` (a planted flag, a sign; `FlagSheet` in Root shows them all) |
+| `FlagArt` (`flags.tsx`) | a country's flag in a box (South Africa and Lesotho added for v-20261124-11, Panama for v-20261124-12, Ethiopia, Somalia, Kenya and Tanzania for v-20261125-12, Nepal, Bhutan and Myanmar for v-20261125-62) (`name`, `x`, `y`, `w`, `h`): stripes, crosses, discs, stars, simplified; `cover` fills a country's box at 3:2; `hasFlag(name)`, `FLAG_NAMES` (a planted flag, a sign; `FlagSheet` in Root shows them all) |
 | `MapLabel` | a place name at [lon, lat] with an ink halo |
 | `MapPin` | a pin that drops onto [lon, lat] |
 | `MapRoute` | a great-circle route through stops, drawn as `k` goes 0 → 1; `mover` rides its tip (a ship, a plane) |

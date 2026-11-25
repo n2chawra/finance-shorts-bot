@@ -64,6 +64,18 @@ rich off the court".
   no "Watch this.".
 - A `note:` from a check is advice, never a reason to plan again: only a `FAIL:` is.
 
+## A promo channel: every Short promotes a long video (owner, 2026-11-25)
+
+When `state` has a `promo` block (the channel's `channel.json` `cadence.promoOnly`; Disaster Desk), the Short is a
+promo of one of the channel's long videos and the topic feed is empty on purpose:
+- Take the first entry of `promo.targets` (another one only if the first can't pass the variety rules). Set
+  `"promo_of": "<its id>"` and `topic.feed_id` to its `feed_id`, `topic.category` to its `category`. Its facts are
+  the long video's feed topic's (`python -m generator.run state --format long --channel <channel>` is not needed:
+  read `channels/<channel>/videos/<id>/script.json` of the long video for the story and its `facts`).
+- Pick a moment of the long video no promo has told yet (`promoted_moments`), and a promo format from `formats`.
+- Everything else below still applies (story, demand, shape, hook, look, title rules); the variety rules treat the
+  long video and its other promo as the same story, so the category and the topic may repeat.
+
 ## Step 0 for a Short: take the variant system's options
 Run `python -m improvement.arms assign --video <id>` and copy its JSON into the plan as `"arms"`
 (`check-plan` fails a plan without it or with options changed). While the variant system is off it returns the

@@ -272,7 +272,9 @@ export const SinkBar: React.FC<{
   const v = h > w;
   const u = unit(w, h);
   const max = Math.max(before, after, ...others.map((o) => o.value), 1e-9);
-  const areaH = v ? h * 0.36 : h * 0.5;
+  // vertical: the chart ends above a Short's caption band (64% height; QA v-20261125-31)
+  const areaH = v ? h * 0.3 : h * 0.5;
+  const areaTop = v ? h * 0.2 : h * 0.22;
   const barW = v ? Math.min(220, (w * 0.8) / (others.length + 1) - 40) : Math.min(220, (w * 0.5) / (others.length + 1) - 50);
   const gk = outCubic((t - drawAt) / 24);
   const sk = t < sinkAt ? 0 : (() => { const x = clamp01((t - sinkAt) / 26); return 1 - Math.pow(1 - x, 3) + Math.sin(x * Math.PI) * 0.06; })();
@@ -291,12 +293,12 @@ export const SinkBar: React.FC<{
       {plate ? <Plate t={t} light={[0.5, 0.5]} /> : null}
       <AbsoluteFill style={{ transform: `scale(${drift})` }}>
         {title ? (
-          <div style={{ position: "absolute", left: v ? 70 : w * 0.08, top: v ? h * 0.13 : h * 0.1, right: v ? 150 : w * 0.08 }}>
+          <div style={{ position: "absolute", left: v ? 70 : w * 0.08, top: v ? h * 0.09 : h * 0.1, right: v ? 150 : w * 0.08 }}>
             <div style={{ fontFamily: SANS, fontWeight: 800, fontSize: fs(w, h, v ? 60 : 56), color: DOC.text, lineHeight: 1.1 }}>{title}</div>
             {sub ? <div style={{ fontFamily: SERIF, fontStyle: "italic", fontSize: fs(w, h, v ? 44 : 38), color: DOC.muted, marginTop: 8 * u }}>{sub}</div> : null}
           </div>
         ) : null}
-        <div style={{ position: "absolute", left: 0, right: 0, top: (v ? h * 0.26 : h * 0.22) + areaH * 0.12, height: areaH, display: "flex", justifyContent: "center", alignItems: "flex-end",
+        <div style={{ position: "absolute", left: 0, right: 0, top: areaTop + areaH * 0.12, height: areaH, display: "flex", justifyContent: "center", alignItems: "flex-end",
           gap: v ? 60 * u : 90 * u }}>
           <div style={{ position: "relative", width: barW, height: areaH }}>
             {/* the ghost: a dashed outline where the bar used to reach */}
@@ -316,23 +318,23 @@ export const SinkBar: React.FC<{
                 whiteSpace: "nowrap", boxShadow: `0 ${10 * u}px ${24 * u}px rgba(0,0,0,0.45)` }}>{tag}</div>
             ) : null}
             <div style={{ position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", marginTop: 18 * u, fontFamily: SANS, fontWeight: 700, fontSize: fs(w, h, v ? 44 : 38),
-              color: DOC.text, whiteSpace: "nowrap" }}>{name}</div>
+              color: DOC.text, textShadow: "0 3px 12px rgba(0,0,0,0.7)", whiteSpace: "nowrap" }}>{name}</div>
           </div>
           {others.map((o, i) => {
             const ok = outCubic((t - drawAt - 6 - i * 5) / 22);
             return (
               <div key={i} style={{ position: "relative", width: barW, height: areaH }}>
                 <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: (o.value / max) * areaH * ok, background: "linear-gradient(180deg, #5d636e, #3a3f48)", borderRadius: `${8 * u}px ${8 * u}px 0 0` }}>
-                  {o.fig ? label(o.fig, DOC.muted, clamp01((t - drawAt - 16) / 8)) : null}
+                  {o.fig ? label(o.fig, DOC.text, clamp01((t - drawAt - 16) / 8)) : null}
                 </div>
-                <div style={{ position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", marginTop: 18 * u, fontFamily: SANS, fontWeight: 600, fontSize: fs(w, h, v ? 44 : 38),
-                  color: DOC.muted, whiteSpace: "nowrap" }}>{o.name}</div>
+                <div style={{ position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", marginTop: 18 * u, fontFamily: SANS, fontWeight: 700, fontSize: fs(w, h, v ? 44 : 38),
+                  color: DOC.text, textShadow: "0 3px 12px rgba(0,0,0,0.7)", whiteSpace: "nowrap" }}>{o.name}</div>
               </div>
             );
           })}
         </div>
         {/* the baseline */}
-        <div style={{ position: "absolute", left: v ? 70 : w * 0.2, right: v ? 70 : w * 0.2, top: (v ? h * 0.26 : h * 0.22) + areaH * 1.12, height: 3 * u, background: "rgba(243,239,230,0.35)" }} />
+        <div style={{ position: "absolute", left: v ? 70 : w * 0.2, right: v ? 70 : w * 0.2, top: areaTop + areaH * 1.12, height: 3 * u, background: "rgba(243,239,230,0.35)" }} />
       </AbsoluteFill>
     </AbsoluteFill>
   );

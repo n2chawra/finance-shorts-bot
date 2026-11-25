@@ -2,62 +2,466 @@
   "note": "Studio-grade YouTube numbers for the auditor's AI analysis (agents/auditor.md step 3b). Written by the ingest workflow; replaced daily.",
   "channel": {
     "all:28": {
-      "traffic": [],
-      "search": [],
-      "suggested": [],
-      "external": [],
-      "country": [],
-      "ageGender": [],
-      "device": [],
+      "traffic": [
+        {
+          "key": "SHORTS",
+          "views": 509,
+          "share": 0.887
+        },
+        {
+          "key": "YT_SEARCH",
+          "views": 56,
+          "share": 0.098
+        },
+        {
+          "key": "YT_OTHER_PAGE",
+          "views": 4,
+          "share": 0.007
+        },
+        {
+          "key": "SUBSCRIBER",
+          "views": 2,
+          "share": 0.003
+        },
+        {
+          "key": "NO_LINK_OTHER",
+          "views": 1,
+          "share": 0.002
+        },
+        {
+          "key": "RELATED_VIDEO",
+          "views": 1,
+          "share": 0.002
+        },
+        {
+          "key": "EXT_URL",
+          "views": 1,
+          "share": 0.002
+        }
+      ],
+      "search": [
+        {
+          "key": "lac megantic train derailment",
+          "views": 6,
+          "share": 0.429
+        },
+        {
+          "key": "derailment",
+          "views": 3,
+          "share": 0.214
+        },
+        {
+          "key": "lac megantic",
+          "views": 3,
+          "share": 0.214
+        },
+        {
+          "key": "montparnasse train crash",
+          "views": 1,
+          "share": 0.071
+        },
+        {
+          "key": "train wreck",
+          "views": 1,
+          "share": 0.071
+        }
+      ],
+      "suggested": [
+        {
+          "key": "L1kBpRRe1QE",
+          "views": 1,
+          "share": 1
+        }
+      ],
+      "external": [
+        {
+          "key": "Yahoo Search",
+          "views": 1,
+          "share": 1
+        }
+      ],
+      "country": [
+        {
+          "key": "US",
+          "views": 294,
+          "share": 0.867,
+          "avgViewPct": 63.1
+        },
+        {
+          "key": "GB",
+          "views": 25,
+          "share": 0.074,
+          "avgViewPct": 56.22000000000001
+        },
+        {
+          "key": "PH",
+          "views": 20,
+          "share": 0.059,
+          "avgViewPct": 47.05
+        }
+      ],
+      "ageGender": [
+        {
+          "key": "age65-|male",
+          "views": 69.4,
+          "share": 0.694
+        },
+        {
+          "key": "age55-64|male",
+          "views": 30.6,
+          "share": 0.306
+        }
+      ],
+      "device": [
+        {
+          "key": "MOBILE",
+          "views": 471,
+          "share": 0.822
+        },
+        {
+          "key": "TABLET",
+          "views": 65,
+          "share": 0.113
+        },
+        {
+          "key": "DESKTOP",
+          "views": 35,
+          "share": 0.061
+        },
+        {
+          "key": "TV",
+          "views": 2,
+          "share": 0.003
+        }
+      ],
       "subscribed": [],
-      "sharing": []
+      "sharing": [
+        {
+          "key": "COPY_PASTE",
+          "views": 1,
+          "share": 1
+        }
+      ]
     },
     "short:28": {
-      "traffic": [],
-      "search": [],
+      "traffic": [
+        {
+          "key": "SHORTS",
+          "views": 509,
+          "share": 0.896
+        },
+        {
+          "key": "YT_SEARCH",
+          "views": 55,
+          "share": 0.097
+        },
+        {
+          "key": "YT_OTHER_PAGE",
+          "views": 4,
+          "share": 0.007
+        }
+      ],
+      "search": [
+        {
+          "key": "lac megantic train derailment",
+          "views": 6,
+          "share": 0.429
+        },
+        {
+          "key": "derailment",
+          "views": 3,
+          "share": 0.214
+        },
+        {
+          "key": "lac megantic",
+          "views": 3,
+          "share": 0.214
+        },
+        {
+          "key": "montparnasse train crash",
+          "views": 1,
+          "share": 0.071
+        },
+        {
+          "key": "train wreck",
+          "views": 1,
+          "share": 0.071
+        }
+      ],
       "suggested": [],
       "external": [],
-      "country": [],
-      "ageGender": [],
-      "device": [],
+      "country": [
+        {
+          "key": "US",
+          "views": 294,
+          "share": 0.867,
+          "avgViewPct": 63.1
+        },
+        {
+          "key": "GB",
+          "views": 25,
+          "share": 0.074,
+          "avgViewPct": 56.22000000000001
+        },
+        {
+          "key": "PH",
+          "views": 20,
+          "share": 0.059,
+          "avgViewPct": 47.05
+        }
+      ],
+      "ageGender": [
+        {
+          "key": "age65-|male",
+          "views": 69.4,
+          "share": 0.694
+        },
+        {
+          "key": "age55-64|male",
+          "views": 30.6,
+          "share": 0.306
+        }
+      ],
+      "device": [
+        {
+          "key": "MOBILE",
+          "views": 470,
+          "share": 0.829
+        },
+        {
+          "key": "TABLET",
+          "views": 64,
+          "share": 0.113
+        },
+        {
+          "key": "DESKTOP",
+          "views": 31,
+          "share": 0.055
+        },
+        {
+          "key": "TV",
+          "views": 2,
+          "share": 0.004
+        }
+      ],
       "subscribed": [],
-      "sharing": []
+      "sharing": [
+        {
+          "key": "COPY_PASTE",
+          "views": 1,
+          "share": 1
+        }
+      ]
     },
     "long:28": {
-      "traffic": [],
+      "traffic": [
+        {
+          "key": "SUBSCRIBER",
+          "views": 2,
+          "share": 0.333
+        },
+        {
+          "key": "NO_LINK_OTHER",
+          "views": 1,
+          "share": 0.167
+        },
+        {
+          "key": "YT_SEARCH",
+          "views": 1,
+          "share": 0.167
+        },
+        {
+          "key": "RELATED_VIDEO",
+          "views": 1,
+          "share": 0.167
+        },
+        {
+          "key": "EXT_URL",
+          "views": 1,
+          "share": 0.167
+        }
+      ],
       "search": [],
-      "suggested": [],
-      "external": [],
+      "suggested": [
+        {
+          "key": "L1kBpRRe1QE",
+          "views": 1,
+          "share": 1
+        }
+      ],
+      "external": [
+        {
+          "key": "Yahoo Search",
+          "views": 1,
+          "share": 1
+        }
+      ],
       "country": [],
       "ageGender": [],
-      "device": [],
+      "device": [
+        {
+          "key": "DESKTOP",
+          "views": 4,
+          "share": 0.667
+        },
+        {
+          "key": "MOBILE",
+          "views": 1,
+          "share": 0.167
+        },
+        {
+          "key": "TABLET",
+          "views": 1,
+          "share": 0.167
+        }
+      ],
       "subscribed": [],
       "sharing": []
     },
     "all:90": {
-      "traffic": [],
-      "search": [],
-      "suggested": [],
-      "external": [],
-      "country": [],
-      "ageGender": [],
-      "device": [],
+      "traffic": [
+        {
+          "key": "SHORTS",
+          "views": 509,
+          "share": 0.887
+        },
+        {
+          "key": "YT_SEARCH",
+          "views": 56,
+          "share": 0.098
+        },
+        {
+          "key": "YT_OTHER_PAGE",
+          "views": 4,
+          "share": 0.007
+        },
+        {
+          "key": "SUBSCRIBER",
+          "views": 2,
+          "share": 0.003
+        },
+        {
+          "key": "NO_LINK_OTHER",
+          "views": 1,
+          "share": 0.002
+        },
+        {
+          "key": "RELATED_VIDEO",
+          "views": 1,
+          "share": 0.002
+        },
+        {
+          "key": "EXT_URL",
+          "views": 1,
+          "share": 0.002
+        }
+      ],
+      "search": [
+        {
+          "key": "lac megantic train derailment",
+          "views": 6,
+          "share": 0.429
+        },
+        {
+          "key": "derailment",
+          "views": 3,
+          "share": 0.214
+        },
+        {
+          "key": "lac megantic",
+          "views": 3,
+          "share": 0.214
+        },
+        {
+          "key": "montparnasse train crash",
+          "views": 1,
+          "share": 0.071
+        },
+        {
+          "key": "train wreck",
+          "views": 1,
+          "share": 0.071
+        }
+      ],
+      "suggested": [
+        {
+          "key": "L1kBpRRe1QE",
+          "views": 1,
+          "share": 1
+        }
+      ],
+      "external": [
+        {
+          "key": "Yahoo Search",
+          "views": 1,
+          "share": 1
+        }
+      ],
+      "country": [
+        {
+          "key": "US",
+          "views": 294,
+          "share": 0.867,
+          "avgViewPct": 63.1
+        },
+        {
+          "key": "GB",
+          "views": 25,
+          "share": 0.074,
+          "avgViewPct": 56.22000000000001
+        },
+        {
+          "key": "PH",
+          "views": 20,
+          "share": 0.059,
+          "avgViewPct": 47.05
+        }
+      ],
+      "ageGender": [
+        {
+          "key": "age65-|male",
+          "views": 69.4,
+          "share": 0.694
+        },
+        {
+          "key": "age55-64|male",
+          "views": 30.6,
+          "share": 0.306
+        }
+      ],
+      "device": [
+        {
+          "key": "MOBILE",
+          "views": 471,
+          "share": 0.822
+        },
+        {
+          "key": "TABLET",
+          "views": 65,
+          "share": 0.113
+        },
+        {
+          "key": "DESKTOP",
+          "views": 35,
+          "share": 0.061
+        },
+        {
+          "key": "TV",
+          "views": 2,
+          "share": 0.003
+        }
+      ],
       "subscribed": [],
-      "sharing": []
+      "sharing": [
+        {
+          "key": "COPY_PASTE",
+          "views": 1,
+          "share": 1
+        }
+      ]
     }
   },
   "channelDays": [
-    {
-      "day": "2026-09-29",
-      "format": "all",
-      "views": 0,
-      "engagedViews": 0,
-      "watchMinutes": 0,
-      "avgViewPct": 0,
-      "subsGained": 0,
-      "subsLost": 0,
-      "shares": 0
-    },
     {
       "day": "2026-09-30",
       "format": "all",
@@ -651,6 +1055,39 @@
       "subsGained": 0,
       "subsLost": 0,
       "shares": 0
+    },
+    {
+      "day": "2026-11-22",
+      "format": "all",
+      "views": 425,
+      "engagedViews": 206,
+      "watchMinutes": 116,
+      "avgViewPct": 58.74,
+      "subsGained": 1,
+      "subsLost": 0,
+      "shares": 1
+    },
+    {
+      "day": "2026-11-22",
+      "format": "long",
+      "views": 6,
+      "engagedViews": 3,
+      "watchMinutes": 4,
+      "avgViewPct": 17.14,
+      "subsGained": 0,
+      "subsLost": 0,
+      "shares": 0
+    },
+    {
+      "day": "2026-11-22",
+      "format": "short",
+      "views": 419,
+      "engagedViews": 203,
+      "watchMinutes": 111,
+      "avgViewPct": 65.29,
+      "subsGained": 1,
+      "subsLost": 0,
+      "shares": 1
     }
   ],
   "videos": [
@@ -660,53 +1097,118 @@
       "title": "How Did a Train With No One Aboard Reach Lac-Mégantic?",
       "publishAt": "2026-11-21T17:47:00.000Z",
       "durationSec": 49,
-      "views": 149,
-      "engagedRatio": 0.43,
-      "watchHours": 0.5,
+      "views": 254,
+      "engagedRatio": 0.417,
+      "watchHours": 1,
       "shares": 0,
       "subsGained": 0,
       "subsLost": 0,
       "impressions": null,
       "ctr": null,
-      "hookHold": 1.078,
-      "endHold": 0.25,
-      "vsSimilarLength": 0.47,
+      "hookHold": 1.151,
+      "endHold": 0.3113,
+      "vsSimilarLength": 0.54,
       "drops": [
         {
           "at": 1.47,
-          "to": 1.109,
+          "to": 1.17,
           "beat": "hook",
-          "drop": 0.156,
-          "from": 1.266,
+          "drop": 0.132,
+          "from": 1.302,
           "line": "A train with no one aboard reached Lac-Mégantic. How?",
           "near": "A train with no one aboard reached",
           "scene": "directed"
         },
         {
           "at": 5.39,
-          "to": 0.938,
+          "to": 0.991,
           "beat": "speed",
-          "drop": 0.125,
-          "from": 1.063,
+          "drop": 0.113,
+          "from": 1.104,
           "line": "It was doing 65 miles an hour.",
           "near": "It was doing 65 miles an hour.",
           "scene": "directed"
         },
         {
           "at": 11.27,
-          "to": 0.672,
+          "to": 0.783,
           "beat": "brakes",
-          "drop": 0.109,
-          "from": 0.781,
+          "drop": 0.066,
+          "from": 0.849,
           "line": "He set the hand brakes. Too few.",
           "near": "He set the hand",
           "scene": "directed"
         }
       ],
-      "traffic": [],
-      "countries": [],
-      "searches": [],
-      "devices": [],
+      "traffic": [
+        {
+          "key": "SHORTS",
+          "views": 200,
+          "share": 0.787
+        },
+        {
+          "key": "YT_SEARCH",
+          "views": 50,
+          "share": 0.197
+        },
+        {
+          "key": "YT_OTHER_PAGE",
+          "views": 4,
+          "share": 0.016
+        }
+      ],
+      "countries": [
+        {
+          "key": "US",
+          "views": 128,
+          "share": 1,
+          "avgViewPct": 57.66
+        }
+      ],
+      "searches": [
+        {
+          "key": "lac megantic train derailment",
+          "views": 6,
+          "share": 0.429
+        },
+        {
+          "key": "derailment",
+          "views": 3,
+          "share": 0.214
+        },
+        {
+          "key": "lac megantic",
+          "views": 3,
+          "share": 0.214
+        },
+        {
+          "key": "montparnasse train crash",
+          "views": 1,
+          "share": 0.071
+        },
+        {
+          "key": "train wreck",
+          "views": 1,
+          "share": 0.071
+        }
+      ],
+      "devices": [
+        {
+          "key": "MOBILE",
+          "views": 201,
+          "share": 0.794
+        },
+        {
+          "key": "TABLET",
+          "views": 28,
+          "share": 0.111
+        },
+        {
+          "key": "DESKTOP",
+          "views": 22,
+          "share": 0.087
+        }
+      ],
       "subscribed": [],
       "comments": []
     },
@@ -716,9 +1218,9 @@
       "title": "The Hyatt Walkway Collapse: One Phone Call Doubled the Load",
       "publishAt": "2026-11-22T17:17:00.000Z",
       "durationSec": 514,
-      "views": 0,
-      "engagedRatio": null,
-      "watchHours": 0,
+      "views": 6,
+      "engagedRatio": 0.5,
+      "watchHours": 0.1,
       "shares": 0,
       "subsGained": 0,
       "subsLost": 0,
@@ -728,10 +1230,52 @@
       "endHold": null,
       "vsSimilarLength": null,
       "drops": [],
-      "traffic": [],
+      "traffic": [
+        {
+          "key": "SUBSCRIBER",
+          "views": 2,
+          "share": 0.333
+        },
+        {
+          "key": "NO_LINK_OTHER",
+          "views": 1,
+          "share": 0.167
+        },
+        {
+          "key": "YT_SEARCH",
+          "views": 1,
+          "share": 0.167
+        },
+        {
+          "key": "RELATED_VIDEO",
+          "views": 1,
+          "share": 0.167
+        },
+        {
+          "key": "EXT_URL",
+          "views": 1,
+          "share": 0.167
+        }
+      ],
       "countries": [],
       "searches": [],
-      "devices": [],
+      "devices": [
+        {
+          "key": "DESKTOP",
+          "views": 4,
+          "share": 0.667
+        },
+        {
+          "key": "MOBILE",
+          "views": 1,
+          "share": 0.167
+        },
+        {
+          "key": "TABLET",
+          "views": 1,
+          "share": 0.167
+        }
+      ],
       "subscribed": [],
       "comments": []
     },
@@ -741,22 +1285,93 @@
       "title": "Why Couldn't This Mississippi Tanker Stop?",
       "publishAt": "2026-11-22T17:47:00.000Z",
       "durationSec": 48,
-      "views": 0,
-      "engagedRatio": null,
-      "watchHours": 0,
-      "shares": 0,
-      "subsGained": 0,
+      "views": 314,
+      "engagedRatio": 0.513,
+      "watchHours": 1.4,
+      "shares": 1,
+      "subsGained": 1,
       "subsLost": 0,
       "impressions": null,
       "ctr": null,
-      "hookHold": null,
-      "endHold": null,
-      "vsSimilarLength": null,
-      "drops": [],
-      "traffic": [],
-      "countries": [],
+      "hookHold": 1.16,
+      "endHold": 0.2484,
+      "vsSimilarLength": 0.38,
+      "drops": [
+        {
+          "at": 5.28,
+          "to": 0.969,
+          "beat": "rudder",
+          "drop": 0.155,
+          "from": 1.124,
+          "line": "Its rudder had stuck to starboard. From then, it had 2 minutes.",
+          "near": "stuck to starboard. From then, it had",
+          "scene": "directed"
+        },
+        {
+          "at": 9.12,
+          "to": 0.795,
+          "beat": "steer",
+          "drop": 0.068,
+          "from": 0.863,
+          "line": "A rudder throws the propeller's water to one side. So what does a stuck one do?",
+          "near": "A rudder throws the propeller's water to",
+          "scene": "directed"
+        },
+        {
+          "at": 26.4,
+          "to": 0.54,
+          "beat": "hit",
+          "drop": 0.068,
+          "from": 0.609,
+          "line": "2 minutes after the rudder stuck, it hit a docked riverboat with 190 people aboard.",
+          "near": "2 minutes after the rudder",
+          "scene": "directed"
+        }
+      ],
+      "traffic": [
+        {
+          "key": "SHORTS",
+          "views": 309,
+          "share": 0.984
+        },
+        {
+          "key": "YT_SEARCH",
+          "views": 5,
+          "share": 0.016
+        }
+      ],
+      "countries": [
+        {
+          "key": "US",
+          "views": 148,
+          "share": 0.886,
+          "avgViewPct": 68.94
+        },
+        {
+          "key": "GB",
+          "views": 19,
+          "share": 0.114,
+          "avgViewPct": 47.18
+        }
+      ],
       "searches": [],
-      "devices": [],
+      "devices": [
+        {
+          "key": "MOBILE",
+          "views": 269,
+          "share": 0.857
+        },
+        {
+          "key": "TABLET",
+          "views": 36,
+          "share": 0.115
+        },
+        {
+          "key": "DESKTOP",
+          "views": 9,
+          "share": 0.029
+        }
+      ],
       "subscribed": [],
       "comments": []
     },
@@ -791,6 +1406,31 @@
       "title": "Kobe Bryant's Helicopter: Why Did the Pilot Think He Was Climbing?",
       "publishAt": "2026-11-23T17:47:00.000Z",
       "durationSec": 47,
+      "views": 0,
+      "engagedRatio": null,
+      "watchHours": 0,
+      "shares": 0,
+      "subsGained": 0,
+      "subsLost": 0,
+      "impressions": null,
+      "ctr": null,
+      "hookHold": null,
+      "endHold": null,
+      "vsSimilarLength": null,
+      "drops": [],
+      "traffic": [],
+      "countries": [],
+      "searches": [],
+      "devices": [],
+      "subscribed": [],
+      "comments": []
+    },
+    {
+      "id": "v-20261124-41",
+      "format": "short",
+      "title": "Why Did the Tacoma Narrows Bridge Twist Itself Apart?",
+      "publishAt": "2026-11-24T17:47:00.000Z",
+      "durationSec": 46,
       "views": 0,
       "engagedRatio": null,
       "watchHours": 0,

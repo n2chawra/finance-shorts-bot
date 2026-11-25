@@ -1,0 +1,125 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52817,
+  "duration_sec": 59,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "datahall",
+    "key": "E",
+    "bpm": 64,
+    "look": {
+      "stage": "studio",
+      "header": "strip",
+      "holder": "box",
+      "entrance": "drop"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Almost no game could use NVIDIA's first graphics card.",
+        "start": 0.3,
+        "seconds": 3.7,
+        "window": 4.13,
+        "fill": 0.896
+      },
+      {
+        "scene": "bet",
+        "text": "Its chip packed about 250K transistors and bet everything on curves.",
+        "start": 4.43,
+        "seconds": 5.74,
+        "window": 6.3,
+        "fill": 0.911
+      },
+      {
+        "scene": "curves",
+        "text": "Bend one flat sheet into a smooth dome: a single patch, round edges.",
+        "start": 10.73,
+        "seconds": 5.08,
+        "window": 5.6,
+        "fill": 0.907
+      },
+      {
+        "scene": "triangles",
+        "text": "Other chips cut that dome into flat triangles. More pieces, each easy to draw.",
+        "start": 16.33,
+        "seconds": 5.8,
+        "window": 6.33,
+        "fill": 0.916
+      },
+      {
+        "scene": "directx",
+        "text": "Which would games use? Microsoft built DirectX, the Windows games toolkit, around triangles.",
+        "start": 22.67,
+        "seconds": 6.87,
+        "window": 7.4,
+        "fill": 0.928
+      },
+      {
+        "scene": "shelf",
+        "text": "Game makers chose triangles, and NVIDIA struggled to stay in business.",
+        "start": 30.07,
+        "seconds": 4.92,
+        "window": 5.47,
+        "fill": 0.899
+      },
+      {
+        "scene": "turn",
+        "text": "NVIDIA threw the curves away. Its next chip, RIVA, drew triangles fast: 3.5M transistors.",
+        "start": 35.53,
+        "seconds": 8.12,
+        "window": 8.7,
+        "fill": 0.933
+      },
+      {
+        "scene": "payoff",
+        "text": "It sold, and NVIDIA never looked back. Today its newest chip, Rubin, packs 336B transistors.",
+        "start": 44.23,
+        "seconds": 8.25,
+        "window": 8.9,
+        "fill": 0.927
+      },
+      {
+        "scene": "loop",
+        "text": "Curves or triangles: which would you pick? NVIDIA learned the hard way.",
+        "start": 53.13,
+        "seconds": 4.85,
+        "window": 5.27,
+        "fill": 0.92
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.9,
+    "lufs": -14.9,
+    "music_under_voice_db": 26.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 11.935,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

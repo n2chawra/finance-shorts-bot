@@ -150,3 +150,24 @@ test("missed slots are caught up for two hours, once", async () => {
   assert.equal(soonSlot(at("2026-11-09T15:05:30Z")).toISOString(), "2026-11-09T15:21:00.000Z");
   assert.equal(soonSlot(at("2026-11-09T15:05:00Z"), 1).toISOString(), "2026-11-09T15:25:00.000Z");
 });
+
+test("promo Shorts go out only after their long video, newest long first (owner, 2026-11-25)", async () => {
+  const { pickPromo, withPromoLink } = await import("../lib/publishing.ts");
+  const slot = at("2026-11-25T17:47:00Z");
+  const v = (id: string, promoOf?: string, pickedAt: Date | null = null) => ({ id, style: promoOf ? { promoOf } : {}, pickedAt });
+  const up = (publishAt: string, youtubeId: string | null = "yt") => ({ youtubeId, publishAt: at(publishAt), state: "scheduled" });
+  const parents = new Map([
+    ["L-20261122-41", up("2026-11-23T17:17:00Z")],          // went out two days ago
+    ["L-20261124-41", up("2026-11-25T17:17:00Z")],          // goes out half an hour before the slot
+    ["L-20261126-41", up("2026-11-27T17:17:00Z")],          // not public until Friday
+    ["L-20261101-41", up("2026-11-02T17:17:00Z")],          // over a week ago
+  ]);
+  const queue = [v("old", "L-20261122-41"), v("future", "L-20261126-41"), v("today", "L-20261124-41"), v("stale", "L-20261101-41")];
+  assert.equal(pickPromo(queue, parents, slot)?.id, "today");
+  assert.equal(pickPromo([v("future", "L-20261126-41"), v("stale", "L-20261101-41")], parents, slot), null);
+  assert.equal(pickPromo([v("nolong", "L-20261199-41")], parents, slot), null);           // its long is not uploaded yet
+  assert.equal(pickPromo([v("old", "L-20261122-41"), v("mine", "L-20261122-41", at("2026-11-25T01:00:00Z")), v("today", "L-20261124-41")], parents, slot)?.id, "mine");
+  // a channel without promos keeps the queue order
+  assert.equal(pickPromo([v("a"), v("b")], new Map(), slot)?.id, "a");
+  assert.match(withPromoLink("Hook line", "abc123"), /^Full story: https:\/\/youtu\.be\/abc123\n\nHook line$/);
+});

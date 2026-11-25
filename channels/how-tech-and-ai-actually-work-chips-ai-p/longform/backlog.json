@@ -99,6 +99,41 @@
       "priority": "normal",
       "found": "2026-11-23",
       "status": "open"
+    },
+    {
+      "id": "tech-long-camera-gap-keys",
+      "kind": "craft",
+      "title": "Directed 3D beats need a camera key every ~1.5 s, and fast anchor hops leave empty frames",
+      "detail": "L-20261124-21: the 1.8 s picture-gap rule (channel motion.maxGapSec) meant ~100 extra camera keys, added on spoken words with the estimated voice. QA then caught three stills where the camera was mid-move between far anchors (benches, cutaway, phone), looking at a wall. Keep the filler keys on the same anchor, and avoid close shots on a different anchor less than ~1 s after the last move. The improver could build the filler into a lint helper.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-24",
+      "status": "adopted",
+      "reason": "director.md: extra keys for the picture gap go at the same size (a pan or orbit) or as moments, never a size change, and no close shot on another anchor within ~1 s of the last move; the new camera gate (renderer/craft.py camera_problems) enforces the size side. 2026-11-24"
+    },
+    {
+      "id": "tech-long-3d-labels-corner",
+      "kind": "bug",
+      "title": "Label3D pins a label whose anchor is off screen to the top-left corner, over the logo",
+      "detail": "L-20261124-21 QA round 1: eight labels piled into the top-left corner on close shots, on the logo and the NOT TO SCALE badge. Studio worked around it (labels end after 48 frames, the worst labels dropped). The improver could hide a Label3D when its point is outside the frame instead of clamping it (remotion/src/three/Label3D.tsx, clampShift).",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-24",
+      "status": "done",
+      "reason": "remotion/src/three/Label3D.tsx: a label whose point is off screen hides instead of being clamped into the corner. 2026-11-24"
+    },
+    {
+      "id": "tech-long-estimate-short",
+      "kind": "craft",
+      "title": "The estimated voice runs ~14% short of Kokoro on this channel's long videos",
+      "detail": "Starlink: 373 s estimated, 426 s real. EUV: 375 s estimated at 1,154 words; the first real render came out at 408 s and needed ~170 more words to reach 428 s. Write about 1,300 words for a 7-minute video, not 1,150.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-24",
+      "status": "open"
     }
   ]
 }

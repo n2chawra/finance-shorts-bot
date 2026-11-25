@@ -72,7 +72,7 @@ Follow `routine.md` sections 2–7 for **one** video, with these changes to the 
 - `check-plan` checks the trend's sources and expiry; `ship` marks the video `trending` so it goes
   to the front of the upload queue.
 
-Everything else is the normal run: number check, fact review, render, QA review, ship. If the
+Everything else is the normal run: number check, fact review, stills, QA review on the stills, then the full render, ship. If the
 video can't pass, mark it failed (routine.md's failure path) and stop — don't try a second one.
 
 ## Report

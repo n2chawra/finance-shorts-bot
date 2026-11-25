@@ -1,13 +1,45 @@
 {
-  "generatedAt": "2026-11-24T02:18:47.095750+00:00",
-  "cycle": null,
-  "running": null,
+  "generatedAt": "2026-11-25T08:45:46.969355+00:00",
+  "cycle": 1,
+  "running": "doc-document-first",
   "thresholds": {
     "keepPoints": 5,
     "revertPoints": -5,
     "confidence": 0.8
   },
-  "channelStayed14d": 0.292,
-  "cycleVideos": {},
-  "experiment": null
+  "channelStayed14d": 0.462,
+  "cycleVideos": {
+    "doc-document-first": []
+  },
+  "experiment": {
+    "id": "doc-document-first",
+    "kind": "first-second",
+    "area": "hook",
+    "description": "Craze & Crash Shorts: frame 1 is the document with the figure highlighted, against the object-first frame (judged on stayed to watch)",
+    "on": "Frame 1 (weekly loop, cycle 1, doc-document-first, on): the first frame is the document: a report table, filing, price list or receipt with the story's sourced figure already highlighted (from params.fig, shown with its Data line), the subject named by 1 s; the object the viewer knows enters after it. Everything else as the recipe says.",
+    "off": "Frame 1 (weekly loop, cycle 1, doc-document-first, off): the champion: the first frame is the object the viewer knows (the toy at an auction, the cup going into a car), the subject named by 1 s; no document in the first shot. Everything else as the recipe says.",
+    "startedAt": "2026-11-24",
+    "metric": "stayed",
+    "minPerArm": 8,
+    "maxDays": 7,
+    "extended": false,
+    "published": {
+      "on": 0,
+      "off": 0
+    },
+    "counted": {
+      "on": 0,
+      "off": 0
+    },
+    "value": {
+      "on": null,
+      "off": null
+    },
+    "points": null,
+    "pOnBetter": 0.5,
+    "days": 1,
+    "verdict": "wait",
+    "why": "0 of 8 Shorts a side have two days of data; day 1 of 7",
+    "videos": []
+  }
 }

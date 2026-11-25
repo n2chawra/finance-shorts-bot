@@ -45,6 +45,8 @@ export const ShippedManifest = z.object({
    * upload queue while `until` (an IST day) has not passed, because news loses half its first-day
    * views in about seven hours. */
   priority: z.object({ level: z.enum(["breaking", "trending"]), until: z.string() }).optional(),
+  /** A promo Short: the long video it promotes (generator/promo.py). The publisher sends it once that long is up. */
+  promoOf: z.string().regex(/^L-\d{8}-\d{2,}$/).optional(),
   /** Three thumbnails for YouTube's Test & Compare (long videos), each with the angle it leads with. */
   // and since 2026-10-26 its type (grid, ladder, extremes, face, scene: renderer/thumbs.py), so wins are tracked per type
   // since 2026-11-11 three for the owner to pick from, each with its pattern, Studio's score and why, and Studio's pick

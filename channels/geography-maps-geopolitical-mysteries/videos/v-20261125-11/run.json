@@ -1,0 +1,265 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:18:34.155852+00:00",
+    "finishedAt": "2026-11-24T23:18:34.155852+00:00",
+    "notes": [
+      "title has the same shape as v-20261124-11 ('Why does South Africa have a hole in it?' → 'why does in'); frame it differently",
+      "style.bpm must be 72–80 for explorer",
+      "style.look.stage 'desert' was used by the previous video (v-20261124-12)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:18:40.850071+00:00",
+    "finishedAt": "2026-11-24T23:18:40.850071+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:21:57.035542+00:00",
+    "finishedAt": "2026-11-24T23:21:57.035542+00:00",
+    "notes": [
+      "beat 'built'.say contains a typed number; use a placeholder: 'So from 1880, farmers put the wire up, post by post, to keep the dingo out.'",
+      "the picture shows figures the voice never says (built {fact3}): say each one where it appears, with what it means (\"he gets {x} now, and {y} waits ten years\"), or take it off the picture; viewers can't follow numbers nobody explains"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:22:01.516709+00:00",
+    "finishedAt": "2026-11-24T23:22:01.516709+00:00",
+    "notes": [
+      "thumbnail.words: four words at most, it is read at a glance"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:22:06.420064+00:00",
+    "finishedAt": "2026-11-24T23:22:06.420064+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:22:18.353578+00:00",
+    "finishedAt": "2026-11-24T23:22:18.353578+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:22:26.319008+00:00",
+    "finishedAt": "2026-11-24T23:22:26.319008+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:23:44.981879+00:00",
+    "finishedAt": "2026-11-24T23:23:44.981879+00:00",
+    "notes": [
+      "Beat 'built' (\"So from the eighteen-eighties, the wire went up ... to keep the dingo out\"): wrong. Wikipedia's History section (the cited url) says the 1884 fence was a rabbit-proof fence that failed against rabbits; it was heightened and expanded to keep dingoes out later (repurposed around 1914 per other sources; the statewide dingo barrier scheme came after 1948). Fix: e.g. 'In the 1880s it began as a fence against rabbits; as sheep farms spread, it was raised and joined into one wire to keep the dingo out.'",
+      "Beats 'loss' -> 'dingo' -> 'built' (fact5, 20,000 sheep a year): misleading chronology and unattributed. The figure is a single PIRSA (South Australian government) spokesperson's estimate of recent losses in South Australia (around 2018, before the modern rebuild closed gaps), not the 1880s motive; the script uses it as the reason the fence was built ('Lost to what? ... So from the eighteen-eighties, the wire went up'). Also 'farmers there' points at the south-east, but the figure is South Australia's. Profile requires a single-source claim to be attributed on screen: say e.g. 'South Australia's government says that before recent gaps were sealed, about 20,000 sheep a year were lost' and place it after the history, or drop it.",
+      "Confirmed on https://en.wikipedia.org/wiki/Dingo_Fence (WebFetch): 5,614 km; 'previous length of over 8000 km' (script says 'over', ok); built 1880-85; 180 cm mesh (mostly); states SA, NSW, Qld; ends at Jimbour (Darling Downs) and on Nullarbor cliffs above the Great Australian Bight; dingoes on the north-western side. Disclaimer ends the description. Style notes: 'cuts the whole continent in two' is a simplification (the fence ends inland at Jimbour); 'The characters are not advisers.' in the description is unneeded on this channel."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:24:44.629628+00:00",
+    "finishedAt": "2026-11-24T23:24:44.629628+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:25:11.059128+00:00",
+    "finishedAt": "2026-11-24T23:25:11.059128+00:00",
+    "notes": [
+      "Re-review after rewrite: 5,614 km, over 8,000 km, 180 cm, 1880s start, three states and end points confirmed on en.wikipedia.org/wiki/Dingo_Fence (WebFetch); new 'rabbits' line matches its History (1884 rabbit-proof fence, failed against rabbits), 'built' line matches 'heightened and expanded to keep out dingoes'; unattributed 20,000-sheep line removed; disclaimer ends the description. Notes: fact5 (20,000) is still listed in script facts though no beat uses it, drop it; 'The characters are not advisers.' in the description is unneeded."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:25:23.821638+00:00",
+    "finishedAt": "2026-11-24T23:25:23.821638+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:28:56.520815+00:00",
+    "finishedAt": "2026-11-24T23:28:56.520815+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:31:03.685506+00:00",
+    "finishedAt": "2026-11-24T23:31:03.685506+00:00",
+    "notes": [
+      "Re-review of changed lines: fact5 removed (facts now 5614, 8000, 1880, 180, all confirmed on en.wikipedia.org/wiki/Dingo_Fence). 'east': Wikipedia confirms the fence passes Cameron Corner, where the three states meet, and swerves north into Queensland there (simplified order, fine for a simplified map). 'north': salt pans and dunes confirmed by PIRSA Dog Fence Board reports (Lake Frome section, saline soils, sand build-up and dunes in the Frome area). 'split' and 'payoff' wording adds no claim. Disclaimer ends the description. Note: 'The characters are not advisers.' in the description is unneeded."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:30:19.870001+00:00",
+    "finishedAt": "2026-11-24T23:31:28.942537+00:00",
+    "notes": [
+      "2.0 s with nothing new on screen in beat 'hook' (at most 1.8 s): add an action on the phrase being said there",
+      "6 of 14 stills are mostly empty background (at 20 s, 25 s, 30 s, 40 s, 45 s, 50 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:33:24.448891+00:00",
+    "finishedAt": "2026-11-24T23:34:10.720216+00:00",
+    "notes": [
+      "text 'THREE STATES' at 17.8 s runs outside the frame",
+      "text 'TASMAN SEA' at 3.0 s runs outside the frame",
+      "text 'INDIAN OCEAN' at 26.3 s runs outside the frame"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:34:19.813496+00:00",
+    "finishedAt": "2026-11-24T23:35:12.045103+00:00",
+    "notes": [
+      "60 s, ember/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:36:58.411135+00:00",
+    "finishedAt": "2026-11-24T23:36:58.411135+00:00",
+    "notes": [
+      "[script] 42.5s (beat dingo): the yellow WILD DOG tag is drawn on top of the DINGO COUNTRY label, which reads 'DINGO COUN', and it covers the back dingo's head. This is text over text. Put the tag on the big front dingo and move the region label clear of it, in remotion/src/videos/v-20261125-11 (dingo beat).",
+      "[script] 0.0s, 2.5s and the 60.0s loop frame (beats hook and loop): the Australian flag sits in the middle of the continent and covers the western half of the fence line, the subject of the hook question. Move the flag north-west, clear of the fence's route, so the whole wire reads in the first frame.",
+      "[script] 15.0s-20.0s (beats east and farms): the camera is so close that the frame is plain sand texture with a dashed line. 'The corner where three states meet' shows only a THREE STATES sign on blank ground, with no SA/NSW/QLD borders meeting at the post. Draw the three state borders converging at the corner post (and the NSW/QLD border the truck crosses), or pull back to region size so the place is readable."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:38:24.064363+00:00",
+    "finishedAt": "2026-11-24T23:39:12.438265+00:00",
+    "notes": [
+      "text 'QUEENSLAND' at 21.8 s runs outside the frame",
+      "the cover looks like v-20261124-11's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:39:16.751548+00:00",
+    "finishedAt": "2026-11-24T23:40:03.643113+00:00",
+    "notes": [
+      "60 s, ember/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:40:43.021440+00:00",
+    "finishedAt": "2026-11-24T23:42:05.491321+00:00",
+    "notes": [
+      "60 s, ember/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:42:44.808606+00:00",
+    "finishedAt": "2026-11-24T23:43:45.883276+00:00",
+    "notes": [
+      "the cover looks like v-20261122-11's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:43:52.969377+00:00",
+    "finishedAt": "2026-11-24T23:44:50.356107+00:00",
+    "notes": [
+      "the cover looks like v-20261122-11's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:44:54.980140+00:00",
+    "finishedAt": "2026-11-24T23:45:46.576533+00:00",
+    "notes": [
+      "60 s, ember/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-24T23:46:47.019237+00:00",
+    "finishedAt": "2026-11-24T23:46:47.019237+00:00",
+    "notes": [
+      "[script] 42.5s (beat dingo): the DINGO COUNTRY label now runs off the left edge and reads 'NGO COUNTRY' (moving it to the far north-west pushed it out of frame). Move it right or down so it sits fully inside the frame, clear of the dingoes and the WILD DOG tag. The earlier overlap is fixed. The flag (0s/60s) and the state borders at the three-states corner (15-20s) are fixed and read well."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:47:25.814785+00:00",
+    "finishedAt": "2026-11-24T23:48:26.378364+00:00",
+    "notes": [
+      "60 s, ember/explorer (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:49:45.632999+00:00",
+    "finishedAt": "2026-11-24T23:49:45.632999+00:00",
+    "notes": [
+      "Re-review: DINGO COUNTRY is fully in frame at 42.5s and clear of the WILD DOG tag. The flag is planted clear of the fence and the state borders read at the three-states corner. Every beat is a directed map place, the hook names Australia and the fence, the loop returns to frame 1, layout and craft checks are empty, and audio is on target."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-24T23:50:36.002626+00:00",
+    "finishedAt": "2026-11-25T00:00:27.084023+00:00",
+    "notes": [
+      "60 s, ember/explorer, peak -1.0 dB, mean -16.0 dB"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-25T00:00:33.464044+00:00",
+    "finishedAt": "2026-11-25T00:00:33.464044+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -510,6 +510,10 @@ def hook_problems(script: dict, earlier: list[dict] | None = None) -> list[str]:
     names = [w for w in formats.NAME_IN_TITLE.findall(first) if w.lower() not in formats.COMMON_WORDS]
     opener = (first.split() or [""])[0]
     named = bool(names) or (opener[:1].isupper() and opener.lower().strip(".,!?'’s") not in formats.COMMON_STARTS)
+    # a script with no capital letters (Devanagari, the India Maps channel, 2026-11-24) can't be read for names
+    # by case: the fact review and the hook judge check that its hook names the subject
+    if not re.search(r"[A-Za-z]", first):
+        named = True
     if not (formats.MONEY_IN_TITLE.search(first) or named):
         out.append(f"the hook's first sentence names no famous person or company and no figure (got {first!r}): the subject, "
                    f"or the price the viewer pays, is said first, as in {example}")
@@ -554,6 +558,16 @@ def reveal_problems(script: dict) -> list[str]:
     return out
 
 
+def _money_channel() -> bool:
+    """The question-title note's evidence is from money Shorts: only a `numbers: finance` channel gets it (a
+    channel's own recipe sets its title form; Craze & Crash's says a claim, 2026-11-24)."""
+    try:
+        from generator import pack
+        return pack.load().get("numbers") == "finance"
+    except Exception:
+        return False
+
+
 def title_reveal_problems(script: dict, title: str | None) -> list[str]:
     """A Short's title names the subject and asks; it never states the payoff's figure, and at most one figure."""
     t = (title or "").strip()
@@ -568,7 +582,7 @@ def title_reveal_problems(script: dict, title: str | None) -> list[str]:
     if len(figures) > 1:
         out.append(f"the title {t!r} states {len(figures)} figures and so tells the whole story: keep one, the price or "
                    f"amount the viewer can picture, and ask about it")
-    if not QUESTION_TITLE.search(t):
+    if not QUESTION_TITLE.search(t) and _money_channel():
         out.append(note(f"the title {t!r} is a statement: 13 of 20 money Shorts at 160K+ views asked a question "
                         f"(\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, "
                         f"name-and-figure statements 456"))

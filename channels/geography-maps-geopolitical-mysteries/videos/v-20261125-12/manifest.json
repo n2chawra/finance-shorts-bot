@@ -1,0 +1,402 @@
+{
+  "id": "v-20261125-12",
+  "createdAt": "2026-11-25T00:18:53.665257+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "What if Africa split in two along the East African Rift?",
+    "category": "tectonics",
+    "reach": "global",
+    "feed_id": "2026-11-25-what-if-africa-split",
+    "map_answer": "the East African Rift itself: a line down the map from the Afar through Ethiopia, Kenya and Tanzania; flood it with sea and everything east of the line becomes an island, everything west gets a new coast"
+  },
+  "title": "What if Africa split in two?",
+  "description": "Africa is already cracking open in Ethiopia. What happens if it never stops?\nThe East African Rift on the map: the sea breaks in, a new coast is drawn and the Horn of Africa sails off as an island.\nSources: University of Bristol, Wikipedia (Nov 2026). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#Africa",
+    "#EastAfricanRift",
+    "#Geography",
+    "#Maps"
+  ],
+  "hookStyle": "challenge",
+  "cta": "New island or new coast: which side would you rather live on? Comment",
+  "seed": 60817,
+  "style": {
+    "palette": "sky",
+    "genre": "atlas",
+    "key": "A",
+    "bpm": 92,
+    "look": {
+      "stage": "space",
+      "header": "neon",
+      "holder": "box",
+      "entrance": "slide"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "What if Africa split in two?",
+        "start": 0.3,
+        "seconds": 1.42,
+        "window": 2.07,
+        "fill": 0.686
+      },
+      {
+        "scene": "afar",
+        "text": "It already is: Africa's two plates pull apart by 8 to 9 millimetres a year.",
+        "start": 2.37,
+        "seconds": 3.42,
+        "window": 4.1,
+        "fill": 0.834
+      },
+      {
+        "scene": "line",
+        "text": "It starts in Ethiopia's Afar desert and runs south as one long line, the East African Rift, past Lake Turkana, through Kenya and into Tanzania.",
+        "start": 6.47,
+        "seconds": 6.83,
+        "window": 7.5,
+        "fill": 0.911
+      },
+      {
+        "scene": "question",
+        "text": "That's slow, far too slow to feel. So what happens if it never stops?",
+        "start": 13.97,
+        "seconds": 3.04,
+        "window": 3.7,
+        "fill": 0.822
+      },
+      {
+        "scene": "sea",
+        "text": "First, the sea breaks in through the Red Sea's southern end and floods the Afar, which already lies lower than the sea in places.",
+        "start": 17.67,
+        "seconds": 5.29,
+        "window": 5.97,
+        "fill": 0.886
+      },
+      {
+        "scene": "south",
+        "text": "Then where does the water go? It follows the crack south, through Ethiopia and Kenya, and a brand-new coastline is drawn on both sides.",
+        "start": 23.63,
+        "seconds": 5.78,
+        "window": 6.47,
+        "fill": 0.893
+      },
+      {
+        "scene": "island",
+        "text": "On this simplified map, everything to the east, Somalia, eastern Ethiopia and Kenya, and Tanzania's coast, breaks off as one giant island, drifting out into the Indian Ocean.",
+        "start": 30.1,
+        "seconds": 8.34,
+        "window": 9.0,
+        "fill": 0.927
+      },
+      {
+        "scene": "coast",
+        "text": "And here is the twist: Ethiopia, a country with no sea today, wakes up with a coast and a harbour of its own, on a sea that does not exist yet.",
+        "start": 39.1,
+        "seconds": 6.36,
+        "window": 7.0,
+        "fill": 0.909
+      },
+      {
+        "scene": "payoff",
+        "text": "How long would it take? Tens of millions of years. But one crack opened fast: in 2005, 60 kilometres of the Afar tore open in a matter of days, some cracks more than a metre wide.",
+        "start": 46.1,
+        "seconds": 8.89,
+        "window": 9.53,
+        "fill": 0.933
+      },
+      {
+        "scene": "loop",
+        "text": "New island or new coast: which side would you pick? Tell us below. Because one day, Africa may split in two.",
+        "start": 55.63,
+        "seconds": 4.7,
+        "window": 5.37,
+        "fill": 0.875
+      }
+    ]
+  },
+  "durationSec": 61,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -14.9,
+    "music_under_voice_db": 30.6
+  },
+  "experiments": {
+    "geo-claim-hook": "on"
+  },
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of post-QA lines: afar 'Africa's two plates pull apart by 8 to 9 mm a year' matches en.wikipedia.org/wiki/East_African_Rift; line 'starts in the Afar... past Lake Turkana, through Kenya into Tanzania' correct; island 'drifting out into the Indian Ocean' fine as what-if; payoff 'some cracks more than a metre wide' on bristol.ac.uk/news/2008/5960.html. Rest unchanged and confirmed earlier. Note: afar's picture fills Ethiopia's flag at 'Africa's' and shows the ruler on Ethiopia; better to show the whole rift line so the rate isn't read as Ethiopia's own. Wikipedia weaker than profile's sources."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: payoff 53-55 s now reads YEAR 2005 sign clear of the ruler and '60 KM' whole; 'afar' is one 3.4 s line with the 8-9 MM sign on 'millimetres'; FIRST/THEN/FINALLY chips gone. Every beat a moving place on the map with flags, loop lands on the hook's map, layout clean, 61 s, peak -1.0/mean -16.1 dB. Minor: the calendar's 'DAYS' page is faint grey on white mid-flip (decorative, 53-55 s)."
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-24T23:46:02.687461+00:00",
+      "finishedAt": "2026-11-24T23:46:02.687461+00:00",
+      "notes": [
+        "story 'what_if_world' was told in the last 1 videos",
+        "music genre 'atlas' was used by the previous video",
+        "hook style 'challenge' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T23:49:00.443600+00:00",
+      "finishedAt": "2026-11-24T23:49:00.443600+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "beat 'island' lists Somalia, eastern Ethiopia, Kenya: show each on its word (an event and a moment for eastern Ethiopia, Kenya): a listed word is a picture, not just a caption",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: \"level\" is said 1 times in a 'the-crack' video: the word is for the levels shape"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T23:49:14.061558+00:00",
+      "finishedAt": "2026-11-24T23:49:14.061558+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-24T23:50:15.010897+00:00",
+      "finishedAt": "2026-11-24T23:50:15.010897+00:00",
+      "notes": [
+        "Beat 'afar' (facts fact3/fact4, 8-9 mm a year): the line puts the rate on 'the ground in Ethiopia's Afar desert', but the cited page (en.wikipedia.org/wiki/East_African_Rift) gives 8-9 mm/yr as the rate the African plate splits into the Nubian and Somali plates across the whole rift, with no Afar figure. Published Afar rates differ: the Dabbahu-Manda-Hararo rift opens about 20 mm/yr (Nubia-Arabia), and Nubia-Somalia is about 6 mm/yr in the north (search: Afar triple junction, McClusky 2010, Southampton 2025). Fix: attribute it to the whole rift ('Africa's two plates pull apart by 8 to 9 mm a year', Data: Wikipedia), or drop the figure as the topic's verify list says.",
+        "Beat 'payoff': 'the first big crack opened fast' reads as if 2005 was the rift's first crack; the rift is millions of years old. Say 'one crack opened fast' or 'in 2005 a crack opened fast'. The rest is confirmed: 60 km and September 2005 on bristol.ac.uk/news/2008/5960.html; 'in a matter of days' (that page says only 'suddenly') by Wright et al. 2006, Nature 442:291: most of the dyke intrusion in under a week."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-24T23:50:36.052567+00:00",
+      "finishedAt": "2026-11-24T23:50:36.052567+00:00",
+      "notes": [
+        "beat 'afar'.events.pulls: no word 'pulls' in this beat's spoken line"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T23:50:42.070185+00:00",
+      "finishedAt": "2026-11-24T23:50:42.070185+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-24T23:50:51.725416+00:00",
+      "finishedAt": "2026-11-24T23:50:51.725416+00:00",
+      "notes": [
+        "Re-review after fixes: afar now gives 8-9 mm/yr to the whole rift's two plates (matches en.wikipedia.org/wiki/East_African_Rift); payoff 'one crack opened fast' with 60 km, 2005 (bristol.ac.uk/news/2008/5960.html) and 'days' (Wright et al. 2006, Nature: under a week); island says simplified map; tens of millions of years matches source; disclaimer in description. Note: Wikipedia is weaker than profile's listed sources for the rate."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-24T23:54:24.264663+00:00",
+      "finishedAt": "2026-11-24T23:54:24.264663+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:00:01.739838+00:00",
+      "finishedAt": "2026-11-25T00:00:01.739838+00:00",
+      "notes": [
+        "Beat 'loop': 'Because one day, Africa will split in two' states as certain what the cited source calls a 'potential event' (Wikipedia, East African Rift: the rift 'could eventually separate' eastern Africa; rifts can also stop). Say 'one day, Africa may split in two' or 'could'. (Missed in my previous pass; the line itself is unchanged.) Changed lines checked and fine: line 'past Lake Turkana' (Turkana sits in the rift's eastern branch), question 'far too slow to feel', coast 'a sea that does not exist yet', loop 'Tell us below'."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:01:03.057247+00:00",
+      "finishedAt": "2026-11-25T00:01:03.057247+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:01:04.082932+00:00",
+      "finishedAt": "2026-11-25T00:01:04.082932+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:01:18.258152+00:00",
+      "finishedAt": "2026-11-25T00:01:18.258152+00:00",
+      "notes": [
+        "Final re-review: loop now 'may split in two' (matches source's 'could eventually'); all lines rechecked: 60 km and 2005 (bristol.ac.uk/news/2008/5960.html), 'days' (Wright et al. 2006, Nature: under a week), 8-9 mm/yr for the whole rift (en.wikipedia.org/wiki/East_African_Rift), Lake Turkana in the eastern branch, simplified map said, tens of millions of years, disclaimer in description. Note: Wikipedia is weaker than profile's listed sources for the rate."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:01:10.661534+00:00",
+      "finishedAt": "2026-11-25T00:02:38.917725+00:00",
+      "notes": [
+        "60 s, sky/atlas (preview only)",
+        "note: four shots in a row open medium (from 'afar'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:02:50.278014+00:00",
+      "finishedAt": "2026-11-25T00:03:55.581911+00:00",
+      "notes": [
+        "60 s, sky/atlas (preview only)",
+        "note: four shots in a row open medium (from 'afar'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:05:33.423977+00:00",
+      "finishedAt": "2026-11-25T00:05:33.423977+00:00",
+      "notes": [
+        "[scene] Payoff beat (remotion/src/videos/v-20261125-12, component Payoff), 52-54 s: the YEAR 2005 sign is drawn over the left end of the ruler's length label, so the payoff's figure reads '0 KM' / '6 KM' instead of '60 KM' - the story's most surprising fact is broken on screen. Move the date sign clear of the ruler label (e.g. above the crack or right of the ruler).",
+        "[script] Repeats lesson 1 (second line one short sentence, ~15 words, under 5 s, one fact): beat 'afar' (2.4-8.3 s) is 'It already is. Along a line that starts in Ethiopia's Afar desert, Africa's two plates pull apart by 8 to 9 millimetres a year.' - about 24 words, 5.9 s, the rate sign only appears at ~7.5 s. Cut to one short line about the crack already on screen (e.g. 'It already is: Ethiopia's Afar desert is tearing apart.') and move the mm-a-year figure to the next beat.",
+        "[script] Check 7b announced structure: step chips 'FIRST' (20-25 s), 'THEN' (30 s), 'FINALLY' (35-39 s) sit as headline cards at the top of the frame, and 'FINALLY' shows while the line says 'On this simplified map...'. Drop the step sign (the redraws themselves carry the order) or put the step on a thing in the place."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T00:06:08.186800+00:00",
+      "finishedAt": "2026-11-25T00:06:08.186800+00:00",
+      "notes": [
+        "beat 'afar': params.camera key at 'afar' is not one of this beat's events"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:07:45.329557+00:00",
+      "finishedAt": "2026-11-25T00:07:45.329557+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:08:37.837194+00:00",
+      "finishedAt": "2026-11-25T00:08:37.837194+00:00",
+      "notes": [
+        "Re-review of post-QA lines: afar 'Africa's two plates pull apart by 8 to 9 mm a year' matches en.wikipedia.org/wiki/East_African_Rift; line 'starts in the Afar... past Lake Turkana, through Kenya into Tanzania' correct; island 'drifting out into the Indian Ocean' fine as what-if; payoff 'some cracks more than a metre wide' on bristol.ac.uk/news/2008/5960.html. Rest unchanged and confirmed earlier. Note: afar's picture fills Ethiopia's flag at 'Africa's' and shows the ruler on Ethiopia; better to show the whole rift line so the rate isn't read as Ethiopia's own. Wikipedia weaker than profile's sources."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:08:17.390630+00:00",
+      "finishedAt": "2026-11-25T00:09:21.220386+00:00",
+      "notes": [
+        "61 s, sky/atlas (preview only)",
+        "note: four shots in a row open medium (from 'afar'): vary the shot size",
+        "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:10:15.025774+00:00",
+      "finishedAt": "2026-11-25T00:10:15.025774+00:00",
+      "notes": [
+        "Re-review after fixes: payoff 53-55 s now reads YEAR 2005 sign clear of the ruler and '60 KM' whole; 'afar' is one 3.4 s line with the 8-9 MM sign on 'millimetres'; FIRST/THEN/FINALLY chips gone. Every beat a moving place on the map with flags, loop lands on the hook's map, layout clean, 61 s, peak -1.0/mean -16.1 dB. Minor: the calendar's 'DAYS' page is faint grey on white mid-flip (decorative, 53-55 s)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:10:25.195057+00:00",
+      "finishedAt": "2026-11-25T00:18:49.429711+00:00",
+      "notes": [
+        "61 s, sky/atlas, peak -1.0 dB, mean -16.1 dB",
+        "note: four shots in a row open medium (from 'afar'): vary the shot size",
+        "note: 21 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-25T00:18:53.665516+00:00",
+      "finishedAt": "2026-11-25T00:18:53.665516+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261125-12",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261125-12"
+  }
+}

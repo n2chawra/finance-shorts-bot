@@ -1,0 +1,92 @@
+{
+ "note": "India Maps formats, tiers from research/families.json (24 Nov 2026). examples: the niche hits each rests on.",
+ "seen": [],
+ "formats": [
+  {
+   "id": "every_state",
+   "format": "short",
+   "markets": [
+    "india"
+   ],
+   "name": "Every state's ___ on one map",
+   "tier": "core",
+   "emotion": "find my state: every viewer waits for their own",
+   "hook": "Ask the question over all of India with nothing coloured yet: 'Har state ka official animal kya hai?'",
+   "beats": "the question over a blank India -> state 1 lights up with its label, then the next, a new state every 1-2 s, in a route across the map (north to south or a loop) -> one surprise state gets a longer beat (the odd one out) -> the last state -> pull back to the whole map filled in -> 'aapka state?' and loop",
+   "examples": [
+    {
+     "title": "Which Indian State Is Your Favourite Singer From?",
+     "views": 7206549,
+     "url": "https://youtube.com/watch?v=M1w5mnFCgRg"
+    },
+    {
+     "title": "The Biggest Empires of Every Indian State",
+     "views": 2195736,
+     "url": "https://youtube.com/watch?v=nMLFp0z4r1s"
+    }
+   ]
+  },
+  {
+   "id": "india_and_world",
+   "format": "short",
+   "markets": [
+    "india"
+   ],
+   "name": "India and the world",
+   "tier": "core",
+   "emotion": "pride and surprise: India against the world",
+   "hook": "One comparison everyone can feel, India on screen at frame 0: 'India se seedha east chalein toh kahan pahunchenge?'",
+   "beats": "India and the question -> the first country or step -> two more, each bigger or stranger -> the twist -> the payoff fact -> loop",
+   "examples": [
+    {
+     "title": "Indian ₹500 vs Pakistan vs USA vs Japan vs Nepal",
+     "views": 2609376,
+     "url": "https://youtube.com/watch?v=VB9RJADsUg4"
+    }
+   ]
+  },
+  {
+   "id": "state_formation",
+   "format": "short",
+   "markets": [
+    "india"
+   ],
+   "name": "How a state was formed or joined",
+   "tier": "core",
+   "emotion": "the satisfaction of a map line finally making sense",
+   "hook": "Name the state and ask why or how, the state lit on the map: 'Telangana Bharat ka sabse naya rajya kaise bana?'",
+   "beats": "the state and the question -> the old map before it (one region, one colour) -> the cause, dated -> the line that draws and splits it, or the region that joins -> the year label lands -> the new map, the payoff fact -> loop or 'aapka state kab bana?'",
+   "examples": [
+    {
+     "title": "How Punjab was Divided",
+     "views": 4129163,
+     "url": "https://youtube.com/watch?v=LnFMoSO6s-s"
+    },
+    {
+     "title": "All Lost Territories of India",
+     "views": 4200109,
+     "url": "https://youtube.com/watch?v=FbtpyMYSjQA"
+    }
+   ]
+  },
+  {
+   "id": "state_vs_country",
+   "format": "short",
+   "markets": [
+    "india"
+   ],
+   "name": "A state against a country",
+   "tier": "low",
+   "emotion": "scale you can feel",
+   "hook": "A state and a country side by side at frame 0: 'Uttar Pradesh mein Brazil se zyada log?'",
+   "beats": "the claim -> the state lifted and laid next to the country at the same scale -> the figures on labels, computed -> two more countries it beats -> the payoff -> loop",
+   "examples": [
+    {
+     "title": "India's state's comparison other countries",
+     "views": 512236,
+     "url": "https://youtube.com/watch?v=GXAj0RYTMRc"
+    }
+   ]
+  }
+ ]
+}

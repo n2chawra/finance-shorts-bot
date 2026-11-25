@@ -34,6 +34,7 @@ function Origin({ v }: { v: Video }) {
   return (
     <span className="inline-flex flex-wrap items-center gap-1">
       <Badge>{madeBy(v)}</Badge>
+      {v.style.promoOf && <Badge tone="brand">Promo of {v.style.promoOf}</Badge>}
       {s?.urgent ? <Badge tone="critical" icon={Flame}>{titleCase(s.urgent.level)}{/^\d{4}-\d{2}-\d{2}/.test(s.urgent.until) ? ` · post by ${fmtDayKey(s.urgent.until.slice(0, 10))}` : ""}</Badge>
         : s?.feedId ? <Badge tone="info">{s.kind ? `${titleCase(s.kind)} topic` : "Feed topic"}</Badge>
         : <Badge tone="neutral">Evergreen pick</Badge>}

@@ -50,7 +50,8 @@ export const Montage: React.FC<Props> = ({ items, mode, every = 10, grade = "doc
     // the punch: 1.18 → 1.04 over 6 frames, then a slow push (faster on short clips, gentler on the held last one)
     const punch = 1.18 - 0.14 * outCubic(lt / 6);
     const push = (last ? 0.06 : 0.035) * smooth(lt / span);
-    const flash = lt < 2 ? (lt < 1 ? 0.85 : 0.4) : 0;
+    // no flash on the opening picture at the layer's first frame: a Short's frame 0 is what the feed shows (QA, v-20261125-33)
+    const flash = (i > 0 || st(0) > 0) && lt < 2 ? (lt < 1 ? 0.85 : 0.4) : 0;
     const r = rng(`punch-${it.src}`);
     const dx = (r() - 0.5) * 2.4, dy = (r() - 0.5) * 2.4;   // each clip leans a different way
     return (

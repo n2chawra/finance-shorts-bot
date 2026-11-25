@@ -39,11 +39,13 @@ the viewer, computed in `maths` (an EMI before and after, an FD rate), then the 
 what is known, nothing about what markets will do next.
 
 ## 3. Check, render, review, ship
-`number-check`, the fact reviewer subagent (it confirms the figure on the release page), render in
-the background, the QA reviewer subagent, then ship with `--commit --release --push`. The manifest
+`number-check`, the fact reviewer subagent (it confirms the figure on the release page), the stills
+(`render <id> --preview`), the QA reviewer subagent on those stills, and only once QA passes the full render in
+the background, then ship with `--commit --release --push` (routine.md section 5: the full render refuses
+before QA has passed the stills). The manifest
 gets `priority` from the breaking topic, so the upload queue puts it first.
 
-Same limits as the routine: two rewrites, two re-renders. A wrong number is far worse than a
+Same limits as the routine: two rewrites, two QA rounds on the stills. A wrong number is far worse than a
 missed slot: if anything fails, mark the video failed and report.
 
 ## 4. Finish
