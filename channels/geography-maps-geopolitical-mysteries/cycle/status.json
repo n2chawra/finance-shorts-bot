@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T07:59:58.651605+00:00",
+  "generatedAt": "2026-11-25T08:43:02.496434+00:00",
   "cycle": 2,
   "running": "geo-claim-hook",
   "thresholds": {
@@ -10,7 +10,17 @@
   "channelStayed14d": 0.564,
   "cycleVideos": {
     "geo-flag-fill": [],
-    "geo-claim-hook": []
+    "geo-claim-hook": [
+      {
+        "id": "v-20261125-11",
+        "title": "What is Australia's 5,614 km fence keeping out?",
+        "side": "off",
+        "publishAt": "2026-11-25T04:07:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 1058
+      }
+    ]
   },
   "experiment": {
     "id": "geo-claim-hook",
@@ -26,7 +36,7 @@
     "extended": false,
     "published": {
       "on": 0,
-      "off": 0
+      "off": 1
     },
     "counted": {
       "on": 0,
@@ -41,6 +51,16 @@
     "days": 1,
     "verdict": "wait",
     "why": "0 of 8 Shorts a side have two days of data; day 1 of 7",
-    "videos": []
+    "videos": [
+      {
+        "id": "v-20261125-11",
+        "title": "What is Australia's 5,614 km fence keeping out?",
+        "side": "off",
+        "publishAt": "2026-11-25T04:07:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 1058
+      }
+    ]
   }
 }
