@@ -3,6 +3,16 @@
 Each lesson is a mistake that cost viewers, written by the reviewer (agents/reviewer.md) from where viewers
 left. The writer follows them and QA enforces them. A new channel starts with channel #1's general ones.
 
+## 0. The second beat stays on the whole thing, in plain words (reviewer, 2026-11-25)
+Seen in: v-20261122-41 (Mississippi tanker), −15.5% at 5.3 s, the channel's biggest drop: the "rudder" beat
+(3.1–7.7 s) cut from the tanker on the night river to a glowing orange slab on murky green, no hull, water or
+river in frame, over "Its rudder had stuck to starboard". A stranger can't tell what the slab is, and "starboard"
+is a sailor's word. Also v-20261121-42 (Lac-Mégantic), −11.3% at 5.4 s, the "speed" beat: the dial read 3 while
+the voice said 65, so the figure arrived after the word. In both, the second beat is the first big drop after the hook.
+Fix: in the 3–8 s beat keep the subject from frame 1 whole and recognisable in its place (pull in on the tanker's
+stern above the water, then show the stuck rudder on it; never a cutaway with no ship around it), say it in
+everyday words ("jammed hard right", not "to starboard"), and land any figure on screen on the word that says it.
+
 ## 1. The first frame names the subject (general)
 Seen in: channel #1's first month, 55–76% swiped away when the title and first second held the subject back.
 Fix: the title and the first spoken sentence name who or what the video is about.
