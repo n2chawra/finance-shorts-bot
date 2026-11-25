@@ -1,0 +1,735 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52207,
+ "story": "state_formation",
+ "shape": "timeline",
+ "currency": "INR",
+ "language": "hi",
+ "style": {
+  "palette": "ember",
+  "genre": "monsoon",
+  "key": "A",
+  "bpm": 92,
+  "look": {
+   "stage": "field",
+   "header": "chalk",
+   "holder": "blackboard",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "25-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "Aapka state kab bana? Comment",
+ "feed_id": "2026-11-25-three-states-nov-2000",
+ "facts": [
+  {
+   "label": "Day of November 2000 Chhattisgarh was formed",
+   "value": 1,
+   "unit": "count",
+   "as_of": "2026-11-25",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Chhattisgarh",
+   "fixed": true
+  },
+  {
+   "label": "Day of November 2000 Uttaranchal was formed",
+   "value": 9,
+   "unit": "count",
+   "as_of": "2026-11-25",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Uttar_Pradesh_Reorganisation_Act,_2000",
+   "fixed": true
+  },
+  {
+   "label": "Uttaranchal's place among India's states",
+   "value": 27,
+   "unit": "count",
+   "as_of": "2026-11-25",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Uttar_Pradesh_Reorganisation_Act,_2000",
+   "fixed": true
+  },
+  {
+   "label": "Day of November 2000 Jharkhand was formed",
+   "value": 15,
+   "unit": "count",
+   "as_of": "2026-11-25",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Bihar_Reorganisation_Act,_2000",
+   "fixed": true
+  },
+  {
+   "label": "Year Uttaranchal became Uttarakhand",
+   "value": 2007,
+   "unit": "year",
+   "as_of": "2026-11-25",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/List_of_renamed_places_in_India",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "payoff",
+  "sec": 2.6,
+  "words": "Naam *kuch aur* tha",
+  "figure": "{fact5}",
+  "tag": "Uttarakhand",
+  "angle": "question",
+  "who": "narrator",
+  "unique": "no covers of this topic fetched in this run (no browser); our own frame of the hills' welcome board being repainted"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "मध्य प्रदेश, उत्तर प्रदेश और बिहार, तीनों एक ही महीने में क्यों कटे?",
+   "events": {
+    "mp": {
+     "word": "मध्य"
+    },
+    "up": {
+     "word": "उत्तर"
+    },
+    "bihar": {
+     "word": "बिहार,"
+    },
+    "mahine": {
+     "word": "महीने"
+    },
+    "kate": {
+     "word": "कटे?"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the old heart of India, Madhya Pradesh, Uttar Pradesh and Bihar each one big colour",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "kate",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mp",
+      "what": "Madhya Pradesh, still one with Chhattisgarh, traces round its border and lifts"
+     },
+     {
+      "at": "up",
+      "what": "Uttar Pradesh, still one with the hills, traces and lifts"
+     },
+     {
+      "at": "bihar",
+      "what": "Bihar, still one with its south, traces and lifts"
+     },
+     {
+      "at": "mahine",
+      "what": "a torn calendar page reading नवंबर drops onto the map"
+     },
+     {
+      "at": "kate",
+      "what": "a red dashed cut line starts running across Madhya Pradesh as the camera pushes in"
+     }
+    ],
+    "things": [
+     "old madhya pradesh",
+     "old uttar pradesh",
+     "old bihar",
+     "calendar page",
+     "cut line"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "kate"
+    }
+   ]
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "नवंबर, सन दो हज़ार। हर एक के अंदर से एक नया स्टेट कटकर निकला। पर कैसे?",
+   "events": {
+    "navambar": {
+     "word": "नवंबर,"
+    },
+    "san": {
+     "word": "सन"
+    },
+    "har": {
+     "word": "हर"
+    },
+    "andar": {
+     "word": "अंदर"
+    },
+    "naya": {
+     "word": "नया"
+    },
+    "nikla": {
+     "word": "निकला।"
+    },
+    "kaise": {
+     "word": "कैसे?"
+    }
+   },
+   "params": {
+    "component": "Promise",
+    "place": "all of India from above, the three old states with a cut mark inside each",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "har",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "navambar",
+      "what": "the calendar page flips to show नवंबर big"
+     },
+     {
+      "at": "san",
+      "what": "the camera starts pulling back to all of India"
+     },
+     {
+      "at": "har",
+      "what": "three red dashed cut lines start drawing, one inside each old state"
+     },
+     {
+      "at": "naya",
+      "what": "the three cut-out pieces glow white"
+     },
+     {
+      "at": "nikla",
+      "what": "the three pieces lift off their old states together"
+     },
+     {
+      "at": "kaise",
+      "what": "a question mark pops over each lifted piece"
+     }
+    ],
+    "things": [
+     "calendar page",
+     "three cut lines",
+     "three lifted pieces",
+     "india map"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  },
+  {
+   "id": "cg",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "{fact1} नवंबर को मध्य प्रदेश का दक्षिण-पूर्वी हिस्सा अलग होकर बना छत्तीसगढ़।",
+   "events": {
+    "navambar": {
+     "word": "नवंबर"
+    },
+    "mp": {
+     "word": "मध्य"
+    },
+    "dakshin": {
+     "word": "दक्षिण-पूर्वी"
+    },
+    "alag": {
+     "word": "अलग"
+    },
+    "bana": {
+     "word": "बना"
+    },
+    "cg": {
+     "word": "छत्तीसगढ़।"
+    }
+   },
+   "params": {
+    "component": "Chhattisgarh",
+    "place": "Madhya Pradesh up close, its south-east corner",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "alag",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "navambar",
+      "what": "a date pin with the day and नवंबर drops onto the south-east"
+     },
+     {
+      "at": "mp",
+      "what": "Madhya Pradesh, still whole, pulses"
+     },
+     {
+      "at": "dakshin",
+      "what": "the red cut line runs along the border inside Madhya Pradesh"
+     },
+     {
+      "at": "alag",
+      "what": "the south-east piece lifts off as the camera pushes in"
+     },
+     {
+      "at": "bana",
+      "what": "a new green brushes into the piece from its middle"
+     },
+     {
+      "at": "cg",
+      "what": "the tag छत्तीसगढ़ pops on it"
+     }
+    ],
+    "things": [
+     "madhya pradesh",
+     "chhattisgarh",
+     "cut line",
+     "date pin",
+     "name tag"
+    ],
+    "fig": {
+     "day": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "alag"
+    }
+   ]
+  },
+  {
+   "id": "uk",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "{fact2} नवंबर को उत्तर प्रदेश के पहाड़ अलग हुए, और बना देश का स्टेट नंबर {fact3}।",
+   "events": {
+    "navambar": {
+     "word": "नवंबर"
+    },
+    "up": {
+     "word": "उत्तर"
+    },
+    "pahad": {
+     "word": "पहाड़"
+    },
+    "alag": {
+     "word": "अलग"
+    },
+    "desh": {
+     "word": "देश"
+    },
+    "number": {
+     "word": "नंबर"
+    }
+   },
+   "params": {
+    "component": "Hills",
+    "place": "north over Uttar Pradesh, the Himalayan hills at its top",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pahad",
+      "size": "close"
+     },
+     {
+      "at": "desh",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "navambar",
+      "what": "a date pin with the day and नवंबर drops onto the hills"
+     },
+     {
+      "at": "up",
+      "what": "Uttar Pradesh, still with the hills, pulses"
+     },
+     {
+      "at": "pahad",
+      "what": "little snow peaks rise along the hills as the camera pushes in"
+     },
+     {
+      "at": "alag",
+      "what": "the cut line runs and the hills lift off in a new blue"
+     },
+     {
+      "at": "desh",
+      "what": "the camera eases back"
+     },
+     {
+      "at": "number",
+      "what": "a big badge with the state's number stamps on the hills, its name still a question mark"
+     }
+    ],
+    "things": [
+     "uttar pradesh",
+     "the hills",
+     "snow peaks",
+     "date pin",
+     "number badge",
+     "question mark tag"
+    ],
+    "fig": {
+     "day": "{fact2}",
+     "rank": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "number"
+    }
+   ]
+  },
+  {
+   "id": "jh",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "और {fact4} नवंबर को बिहार का दक्षिणी हिस्सा बना झारखंड।",
+   "events": {
+    "aur": {
+     "word": "और"
+    },
+    "navambar": {
+     "word": "नवंबर"
+    },
+    "bihar": {
+     "word": "बिहार"
+    },
+    "dakshini": {
+     "word": "दक्षिणी"
+    },
+    "bana": {
+     "word": "बना"
+    },
+    "jh": {
+     "word": "झारखंड।"
+    }
+   },
+   "params": {
+    "component": "Jharkhand",
+    "place": "east to Bihar, its forested south",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "dakshini",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "aur",
+      "what": "the camera glides east to Bihar"
+     },
+     {
+      "at": "navambar",
+      "what": "a date pin with the day and नवंबर drops onto the south"
+     },
+     {
+      "at": "bihar",
+      "what": "Bihar, still whole, pulses"
+     },
+     {
+      "at": "dakshini",
+      "what": "the cut line runs and small trees pop up across the south"
+     },
+     {
+      "at": "bana",
+      "what": "the south lifts off in orange"
+     },
+     {
+      "at": "jh",
+      "what": "the tag झारखंड pops on it"
+     }
+    ],
+    "things": [
+     "bihar",
+     "jharkhand",
+     "forest trees",
+     "date pin",
+     "name tag"
+    ],
+    "fig": {
+     "day": "{fact4}"
+    }
+   },
+   "sfx": []
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "इन इलाकों के लोग बरसों से अपना अलग स्टेट माँग रहे थे। पर स्टेट नंबर {fact3} का नाम कुछ और था।",
+   "events": {
+    "ilakon": {
+     "word": "इलाकों"
+    },
+    "log": {
+     "word": "लोग"
+    },
+    "barson": {
+     "word": "बरसों"
+    },
+    "maang": {
+     "word": "माँग"
+    },
+    "par": {
+     "word": "पर"
+    },
+    "naam": {
+     "word": "नाम"
+    },
+    "aur": {
+     "word": "और"
+    }
+   },
+   "params": {
+    "component": "Turn",
+    "place": "the three new states side by side, people with placards standing on them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "par",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ilakon",
+      "what": "the three new states glow together"
+     },
+     {
+      "at": "log",
+      "what": "small people with placards pop up on each of the three"
+     },
+     {
+      "at": "barson",
+      "what": "the placards wave"
+     },
+     {
+      "at": "maang",
+      "what": "each placard flips to a blank new-state map"
+     },
+     {
+      "at": "par",
+      "what": "the camera dives to the hills, the others dim"
+     },
+     {
+      "at": "naam",
+      "what": "the number badge pulses on the hills"
+     },
+     {
+      "at": "aur",
+      "what": "a big red question mark stamps on the name tag"
+     }
+    ],
+    "things": [
+     "three new states",
+     "people with placards",
+     "number badge",
+     "question mark"
+    ],
+    "fig": {
+     "rank": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "log"
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "उसका नाम था उत्तरांचल। उत्तराखंड वो बना {fact5} में।",
+   "events": {
+    "naam": {
+     "word": "नाम"
+    },
+    "uttaranchal": {
+     "word": "उत्तरांचल।"
+    },
+    "uttarakhand": {
+     "word": "उत्तराखंड"
+    },
+    "bana": {
+     "word": "बना"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": "the hills up close, a road welcome board standing on them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "uttarakhand",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "naam",
+      "what": "a green road welcome board rises out of the hills"
+     },
+     {
+      "at": "uttaranchal",
+      "what": "the board's name writes on: उत्तरांचल"
+     },
+     {
+      "at": "uttarakhand",
+      "what": "a brush paints उत्तराखंड over the old name"
+     },
+     {
+      "at": "bana",
+      "what": "a big year tag stamps under the board with a low hit"
+     }
+    ],
+    "things": [
+     "welcome board",
+     "old name",
+     "new name",
+     "year tag"
+    ],
+    "fig": {
+     "year": "{fact5}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "bana"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "आपका स्टेट कब बना? कमेंट कीजिए। और सोचिए, नक्शे पर",
+   "events": {
+    "aapka": {
+     "word": "आपका"
+    },
+    "kab": {
+     "word": "कब"
+    },
+    "comment": {
+     "word": "कमेंट"
+    },
+    "sochiye": {
+     "word": "सोचिए,"
+    },
+    "nakshe": {
+     "word": "नक्शे"
+    }
+   },
+   "params": {
+    "component": "Loop",
+    "place": "all of India again, the three new states painted, then back to the old map",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "aapka",
+      "size": "wide"
+     },
+     {
+      "at": "nakshe",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "aapka",
+      "what": "the camera pulls back to all of India, every state softly painted"
+     },
+     {
+      "at": "kab",
+      "what": "a comment bubble pops over the map"
+     },
+     {
+      "at": "comment",
+      "what": "the bubble bounces"
+     },
+     {
+      "at": "sochiye",
+      "what": "the three new states fade back into their old states"
+     },
+     {
+      "at": "nakshe",
+      "what": "the camera glides back to the hook's framing"
+     }
+    ],
+    "things": [
+     "all of india",
+     "comment bubble",
+     "three old states"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "kab"
+    }
+   ]
+  }
+ ],
+ "narrator": "hm_omega"
+}

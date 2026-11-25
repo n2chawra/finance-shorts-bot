@@ -1,0 +1,87 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T03:42:17.322357+00:00",
+    "finishedAt": "2026-11-25T03:42:17.322357+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T03:43:42.898927+00:00",
+    "finishedAt": "2026-11-25T03:43:42.898927+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-25T03:44:22.705022+00:00",
+    "finishedAt": "2026-11-25T03:44:22.705022+00:00",
+    "notes": [
+      "beat 'hook'.params.things[0] contains a typed number; use a placeholder: 'madhya pradesh before 2000'",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T03:44:30.483193+00:00",
+    "finishedAt": "2026-11-25T03:44:30.483193+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T03:45:19.535089+00:00",
+    "finishedAt": "2026-11-25T03:45:19.535089+00:00",
+    "notes": [
+      "All 5 facts confirmed on their cited pages: Chhattisgarh 1 Nov 2000 (en.wikipedia Chhattisgarh: 'granted statehood on 1 November 2000'); Uttaranchal 9 Nov 2000 as 27th state (UP Reorganisation Act page: 'came into force on 9 November 2000, when Uttaranchal was established as the 27th state of India'); Jharkhand 15 Nov 2000 from southern Bihar (Bihar Reorganisation Act page); renamed Uttarakhand effective 1 Jan 2007 (List of renamed places in India). 'South-east of MP' matches Britannica (eastern MP) and encyclopedia.com (SE Madhya Pradesh). Topic verify item met; history, not superseded. The 'why' is answered as long-standing local demand, a sourced, neutral framing. No party or leader named, no ranking of states, official map. Disclaimer present at end of description. Note: the source line says only 'Wikipedia'; naming the Reorganisation Acts (India Code) would be stronger."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T03:48:58.771336+00:00",
+    "finishedAt": "2026-11-25T03:50:11.729394+00:00",
+    "notes": [
+      "36 s, ember/monsoon (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T03:52:45.467436+00:00",
+    "finishedAt": "2026-11-25T03:52:45.467436+00:00",
+    "notes": [
+      "Directed map Short, 36 s: 1.5 s state tags name MP/UP/Bihar, date pins 1/9/15 Nov land on each cut, cut lines run and Chhattisgarh/Uttarakhand(?)/Jharkhand get tags, marchers with placards on all three, payoff board writes उत्तरांचल then is repainted उत्तराखंड with 2007 tag, loop returns to the hook framing; no overlaps or cut-offs, layout/craft problems empty, audio -1/-16 dB like the published Short, description carries the disclaimer, thumbnail is the welcome board mid-repaint."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T03:53:01.416313+00:00",
+    "finishedAt": "2026-11-25T03:56:11.729766+00:00",
+    "notes": [
+      "36 s, ember/monsoon, peak -1.0 dB, mean -16.0 dB",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-25T03:57:32.564304+00:00",
+    "finishedAt": "2026-11-25T03:57:32.564304+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
