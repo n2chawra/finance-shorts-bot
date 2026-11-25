@@ -8,8 +8,8 @@ length, the flat cast). The hard rules do not change:
 - no real person's words in the voice.
 
 Sources: `research/advice.md`, `research/report.md`, `research/style.json`, `research/sound.md`, `research/comments.md`
-and `style-study/2026-11-20-references.md` (the build spec). Long-first: the long video is the channel, and each Short
-promotes one.
+and `style-study/2026-11-20-references.md` (the build spec). Long-first: the long video is the channel, and every Short
+promotes one (two Shorts per long video; owner, 25 Nov).
 
 The references are a starting point, not a template (owner, 20 Nov): keep what works and beat them on the picture and
 the sound.
@@ -76,12 +76,29 @@ the sound.
 - A new thing on screen at least every 4 s: a label typing on, a figure, a stress colour step, an instrument tick.
 - A cut or major camera move every 10–15 s. One 3D move runs about 11 s.
 
-## Promo Short (30–50 s, one per long video)
+## Promo Short (30–50 s, two per long video)
+
+Owner, 25 Nov: "shorts only the promo of the long video". Every Short promotes one of the channel's long videos
+(`generator/promo.py`): `state.promo.targets` lists the long videos that still need one, first promos before second
+ones, newest first. Two per long video, about one Short a day:
+
+- **The plan:** `promo_of` = the long video's id, `topic.feed_id` = its `feed_id` (the long video's sourced facts are the
+  promo's; copy them exactly), `topic.category` its category. `check-plan` fails a Short without them.
+- **Read the long video first:** its `channels/<channel>/videos/<L-id>/script.json` (the facts, the cause chain, the
+  moment of failure) and its beat code in `remotion/src/videos/<L-id>/`. The promo may reuse the long video's places,
+  vehicle and look: it is the same story on purpose. It is still drawn 9:16 in its own `remotion/src/videos/<id>/`.
+- **Two different moments:** promo 1 is the moment of failure (`promo_failure_moment`); promo 2 is the one cause
+  (`promo_why_it_failed`) or the safety system that should have stopped it (`promo_how_it_works`). Never the same
+  moment or title shape as the promo already made (`promoted_moments` in the target).
+- **The end:** the question the long video answers, said and shown ("The full minute-by-minute is on the channel").
+  Never the answer itself: the payoff is the long video's.
+- **The title** names the event as people search it, like the long video's (the publisher puts the long video's link
+  first in the description; the owner sets it as the related video in Studio).
 
 - **Frame 1:** the vehicle or structure a second before it fails, in 3D, with the caption and the tag. Named by 2 s, a
   figure by 3 s.
 - **The beats:** the one cause on a flat diagram, then silence, the failure in cutaway and the sub-boom, then one
-  question the long video answers. The long video is set as the Short's related video.
+  question the long video answers. The long video is linked in the description and set as the related video.
 - **Pace:** voice speed 1.0. A cut every 2–3 s in the first 10 s, then every 4–5 s.
 
 ## The look

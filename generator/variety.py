@@ -190,6 +190,10 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
     at = at or utc_now()
     out: list[str] = []
     last = history[-1] if history else None
+    # a promo Short (generator/promo.py) and its long video, or two promos of one long video, are one story told
+    # twice on purpose (owner, 2026-11-25): no category or duplicate-topic clash between them; every other rule holds
+    promo_of = plan.get("promo_of") if isinstance(plan.get("promo_of"), str) else None
+    others = [e for e in history if not (promo_of and (e.get("id") == promo_of or e.get("promo_of") == promo_of))]
 
     template = plan["template"]
     if template not in enabled:
@@ -202,7 +206,7 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
             out.append(f"template {template!r} would exceed {share_limit(rotation_size(enabled)):.0%} of the last {SHARE_WINDOW} videos")
 
     category = plan["topic"]["category"]
-    if category in blocked_categories(history):
+    if category in blocked_categories(others):
         out.append(f"topic category {category!r} was used in the last {CATEGORY_WINDOW} videos")
 
     story = plan.get("story")
@@ -215,7 +219,7 @@ def check_plan(plan: dict, history: list[dict], enabled: list[str], at: datetime
     out += shape_problems(plan, history)
 
     cutoff = (at - timedelta(days=DUPLICATE_DAYS)).isoformat()
-    for e in history:
+    for e in others:
         if e["created_at"] >= cutoff:
             s = similarity(plan["topic"]["title"], e["topic"]["title"])
             if s > DUPLICATE_SIMILARITY:

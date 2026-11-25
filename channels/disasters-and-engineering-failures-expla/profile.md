@@ -8,8 +8,9 @@ the physics themselves, or point out that safety rules are "written in blood". T
 **What it covers:** true stories of failures that have an official investigation behind them. Each one is told minute by
 minute as a cause chain: how the thing was meant to work, the corners cut or small decisions that added up, the moment
 it failed (reconstructed, with the failing part shown), and what changed afterwards. That might be the rule, the standard
-or the design fix. Long videos are 8–10 min, one every 48 hours. Each has one promo Short cut from its moment of
-failure. A recent major crash takes the next slot through the fast lane, labelled preliminary, with a follow-up when
+or the design fix. Long videos are 8–10 min, about four a week. **Every Short is a promo of a long video** (owner, 25 Nov): two per long
+video, each a different moment of it (the moment of failure, the one cause, the safety system that should have
+stopped it), and no Short on any other topic. A recent major crash takes the next slot through the fast lane, labelled preliminary, with a follow-up when
 the preliminary report lands.
 
 **What it never covers:** gore, bodies, injuries or victims' close-ups; "horror" framing; blame beyond what the official

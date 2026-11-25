@@ -145,3 +145,40 @@ export const QUOTA_ERROR = "quota:";
 export const quotaError = (used: number | string): string =>
   `${QUOTA_ERROR} the day's YouTube API quota ran out (${typeof used === "string" ? used : `${used.toLocaleString("en-US")} units`} used); it resets at midnight Pacific`;
 export const isQuotaMiss = (error: string | null | undefined): boolean => !!error?.startsWith(QUOTA_ERROR);
+
+/** The long video a promo Short belongs to (ingest copies the manifest's `promoOf` into the style; generator/promo.py). */
+export function promoOf(style: unknown): string | null {
+  const p = (style as { promoOf?: unknown } | null)?.promoOf;
+  return typeof p === "string" && p.startsWith("L-") ? p : null;
+}
+
+/** A promo stops going out this long after its long video went public: the funnel is the first week. */
+export const PROMO_DAYS = 7;
+export type PromoParent = { youtubeId: string | null; publishAt: Date; state: string };
+
+/**
+ * Which queued Short goes out at `slot` on a channel whose Shorts promote its long videos (owner, 2026-11-25):
+ * only one whose long video is already on YouTube and public by the slot (so the Short can point to it), and
+ * not one whose long went public over PROMO_DAYS ago. The newest long video first, so the day a long goes out
+ * its first promo goes with it and the next day its second; the owner's pick and the queue order break ties.
+ * Shorts without a long (other channels) keep the queue order. `queued` is in queue order already.
+ */
+export function pickPromo<T extends { style: unknown; pickedAt?: Date | null }>(queued: T[], parents: Map<string, PromoParent>, slot: Date): T | null {
+  const plain = queued.filter((v) => !promoOf(v.style));
+  if (plain.length === queued.length) return queued[0] ?? null;
+  const ok = (v: T) => {
+    const p = parents.get(promoOf(v.style)!);
+    return !!p && !!p.youtubeId && ["scheduled", "uploaded", "published"].includes(p.state)
+      && p.publishAt.getTime() <= slot.getTime() && slot.getTime() - p.publishAt.getTime() <= PROMO_DAYS * DAY_MS;
+  };
+  const ready = queued.map((v, i) => ({ v, i })).filter(({ v }) => !promoOf(v.style) || ok(v));
+  const at = (v: T) => (promoOf(v.style) ? parents.get(promoOf(v.style)!)!.publishAt.getTime() : -Infinity);
+  ready.sort((a, b) => (b.v.pickedAt ? 1 : 0) - (a.v.pickedAt ? 1 : 0) || at(b.v) - at(a.v) || a.i - b.i);
+  return ready[0]?.v ?? null;
+}
+
+/** The promo's first description line: the long video it is cut from (Shorts show it under "related" only once the
+ * owner sets it in Studio; the API can't). */
+export function withPromoLink(description: string, longYoutubeId: string): string {
+  return `Full story: https://youtu.be/${longYoutubeId}\n\n${description}`;
+}

@@ -84,6 +84,11 @@ the flat kit; section 3c): the video run grows that kit itself when a topic need
 
 Follow `generator/prompts/planner.md`. Use the id from `next_id` for the whole run.
 
+**A promo channel** (`state` has a `promo` block; owner, 2026-11-25): every Short promotes one of the channel's long
+videos (the planner's "A promo channel" section and the channel's recipe). Read that long video's `script.json` and its
+beat code in `remotion/src/videos/<L-id>/` before writing: the facts, places and vehicle are the long video's, cut to
+9:16 and 30–50 s. `mode` is `idle` when every recent long video already has its promos: report it and stop.
+
 ## 2b. Three openings, one picked by a fresh reviewer (Shorts; owner, 2026-11-12)
 
 Most viewers decide in the first second. Before writing the script, draft **three different

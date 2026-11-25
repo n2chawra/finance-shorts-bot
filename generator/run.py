@@ -40,7 +40,7 @@ from renderer.timeline.build import CAST_VOICES, NARRATOR_VOICES, check_script, 
 from . import editor, experiments, failures, feedback, formats, history, images, looks, numbers, reach, shapes, story, topics, variety
 from .numbers import number_check
 from .settings import ROOT, load as load_settings
-from . import channels, crosschannel, pack, planrules
+from . import channels, crosschannel, pack, planrules, promo
 from .channels import cpath
 
 CHECKERS = ("number_check", "fact_review", "qa_review")
@@ -234,6 +234,14 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
     allowed = variety.allowed_templates(entries, enabled)
     blocked = variety.blocked_categories(entries)
     feed = topics.for_state(entries, today, blocked, allowed, root, fmt)
+    # a channel whose Shorts only promote its long videos (generator/promo.py; owner, 2026-11-25): no Shorts feed,
+    # the long videos that still need a promo instead, and nothing to make when none does
+    promos = promo.for_state(everything, history.now(), root) if fmt == "short" and not sample else None
+    if promos is not None:
+        feed = {"topics": [], "open_total": 0, "required": None, "urgent": None,
+                "note": "this channel's Shorts are promos of its long videos: see promo.targets"}
+        if mode == "video" and not promos["targets"]:
+            mode, why = "idle", "no long video needs a promo Short (every recent one has its promos)"
     if fmt == "short" and mode == "idle" and feed["urgent"] and made_today < target + TREND_EXTRA_PER_DAY:
         level = (topics.get(feed["urgent"], root, fmt) or {}).get("priority", "breaking")
         mode, why = "video", f"{why}, but a {level} topic is waiting: one extra video for it"
@@ -258,6 +266,7 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "recent_stories": [variety.story_of(e) for e in entries[-variety.STORY_WINDOW:]],
         "blocked_categories": blocked,
         "topic_feed": feed,
+        **({"promo": promos} if promos is not None else {}),
         # global first (owner, 2026-10-23): about two in three videos anyone in the world can relate to
         "reach": reach.for_state(entries, today, fmt, pack.load(root=root).get("homeCountry")),
         # what to make: formats people already watch in the millions (improvement/research/formats.json)
@@ -368,6 +377,8 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         problems += crosschannel.problems(plan, root)
         # the channel's own plan rules (cycle/plan-rules.json; geography: the answer is on the map)
         problems += planrules.check_plan(plan, root)
+        # a promo channel's Short names the long video it promotes (generator/promo.py)
+        problems += promo.check_plan(plan, history.load(root), history.now(), fmt, root)
         # a Short has no end card any more, so the description always carries the channel's disclaimer
         if ch["disclaimer"] not in plan["description"]:
             problems.append(f"description must include the disclaimer: {ch['disclaimer']}")
@@ -673,6 +684,8 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         manifest["release"]["mediaBranch"] = f"media/{vid}"
     if (urgent := topics.urgency(plan, root)) is not None:
         manifest["priority"] = urgent   # ingest puts it at the front of the upload queue
+    if promo.kin(plan):
+        manifest["promoOf"] = plan["promo_of"]   # the publisher sends it once its long video is up (generator/promo.py)
     if (th := script.get("thumbnail")) and fmt == "long":   # three thumbnails, Studio's scores and pick (owner, 2026-11-11)
         manifest["thumbnails"] = thumbs.manifest_entries(script)
         manifest["thumbnailModel"] = {"pattern": th.get("pattern"), "references": [r.get("id") for r in th.get("references") or [] if isinstance(r, dict)]}
@@ -681,6 +694,7 @@ def ship(vid: str, commit: bool = False, release: bool = False, root: Path = ROO
         "id": vid, "created_at": created, "template": plan["template"], "topic": plan["topic"], "title": plan["title"],
         "description": plan["description"], "hook_style": plan["hook_style"], "cta": plan["cta"], "style": style, "format": fmt,
         "story": plan.get("story"), "shape": shapes.shape_id(plan.get("shape")),
+        **({"promo_of": plan["promo_of"]} if promo.kin(plan) else {}),
     }, root)
 
     if release:

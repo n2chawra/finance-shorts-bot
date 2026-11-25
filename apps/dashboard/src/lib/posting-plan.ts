@@ -6,7 +6,8 @@
  * `longUploadTimes` on `longUploadDays`, one video per slot, each format from its own queue in queue
  * order. While uploads are paused the owner posts by hand, so a slot counts as filled once a video
  * of that format was posted within three hours of it, and a slot that passed today without one is
- * missed.
+ * missed. A promo Short (style.promoOf; owner, 2026-11-25) takes a slot only once its long video is out by then,
+ * newest long first, as workers/lib/publishing.ts pickPromo does.
  */
 import type { Settings, Video } from "./schemas";
 
@@ -46,6 +47,12 @@ export function postingPlan(format: Format, queue: Video[], posted: Video[], set
   const remaining = queue.filter((v) => v.format === format);
   const postedAt = posted.filter((v) => v.format === format && v.upload).map((v) => Date.parse(v.upload!.publishAt));
   const today = istDayOf(now);
+  // a promo Short waits for its long video: when each long goes (or went) out, from its upload or the long plan
+  let longs: Map<string, number> | null = null;
+  const longAt = () => longs ??= new Map([
+    ...posted.filter((v) => v.format === "long" && v.upload).map((v) => [v.id, Date.parse(v.upload!.publishAt)] as const),
+    ...postingPlan("long", queue, posted, settings, now).filter((p) => p.video).map((p) => [p.video!.id, p.at] as const),
+  ]);
   const out: PlanSlot[] = [];
   let empty = 0;
   // one Short every N days (the 48-hour test): the days after a posted or planned Short rest
@@ -76,6 +83,10 @@ export function postingPlan(format: Format, queue: Video[], posted: Video[], set
         else if (urgentToday > trendUsed && remaining.length) video = remaining.shift()!;
         else continue;
         trendUsed++;
+      } else if (format === "short" && remaining.some((v) => v.style.promoOf)) {
+        const i = promoPick(remaining, longAt(), at);
+        video = i >= 0 ? remaining.splice(i, 1)[0] : null;
+        if (!video && ++empty > 1) break;
       } else {
         video = remaining.shift() ?? null;
         if (video && urgentOn(video, day)) urgentToday++;
@@ -87,6 +98,20 @@ export function postingPlan(format: Format, queue: Video[], posted: Video[], set
     }
   }
   return out;
+}
+
+const PROMO_DAYS = 7;   // workers/lib/publishing.ts PROMO_DAYS
+/** The queued Short that takes a slot at `at` on a promo channel: its long out by then and under a week old, newest
+ * long first, else a Short with no long; -1 when none can go. */
+function promoPick(queue: Video[], longs: Map<string, number>, at: number): number {
+  let best = -1, bestAt = -Infinity;
+  queue.forEach((v, i) => {
+    const p = v.style.promoOf;
+    const when = p ? longs.get(p) : -Infinity;
+    if (when === undefined || (p && (when > at || at - when > PROMO_DAYS * DAY))) return;
+    if (best < 0 || when > bestAt) { best = i; bestAt = when; }
+  });
+  return best;
 }
 
 /** Which routine made a video, from when it was made (IST): the runs' schedule in CLAUDE.md. */

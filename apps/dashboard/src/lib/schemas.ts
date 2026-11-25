@@ -24,6 +24,8 @@ export const StyleSchema = z.object({
   thumbPick: z.object({ file: z.string(), at: z.string() }).nullish(),
   /** the thumbnail YouTube's test picked, logged by the owner */
   thumbTest: z.object({ winner: z.string(), at: z.string() }).nullish(),
+  /** a promo Short: the long video it promotes (generator/promo.py); it goes out once that long is up */
+  promoOf: z.string().nullish(),
 });
 
 export const QaCheckSchema = z.object({

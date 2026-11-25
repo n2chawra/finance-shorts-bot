@@ -114,7 +114,7 @@ async function ingestOne(prisma: PrismaClient, file: string, repo: string | null
     const topic = await tx.topic.create({ data: { title: m.topic.title, category: m.topic.category, channelId } });
     await tx.video.create({
       data: {
-        id: m.id, channelId, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {}, source: sourceWithTopic(m, feeds) as unknown as Prisma.InputJsonObject, ...(m.thumbnails ? { thumbs: m.thumbnails } : {}) }, fileUrl,
+        id: m.id, channelId, templateId: m.template, topicId: topic.id, status: "queued", format: m.format, script, style: { ...m.style, experiments: m.experiments ?? {}, source: sourceWithTopic(m, feeds) as unknown as Prisma.InputJsonObject, ...(m.thumbnails ? { thumbs: m.thumbnails } : {}), ...(m.promoOf ? { promoOf: m.promoOf } : {}) }, fileUrl,
         thumbnailUrl: `${path.relative(ROOT, dir).replace(/\\/g, "/")}/thumbnail.png`, durationSec: m.durationSec, title: m.title, description: m.description,
         tags: m.hashtags.map((h) => h.replace(/^#/, "")), hookStyle: m.hookStyle, cta: m.cta,
         queuePosition, createdAt,

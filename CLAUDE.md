@@ -225,6 +225,12 @@ to, and the camera. `renderer/timeline/build.py` computes the `maths`, speaks ea
 | Ids | `v-YYYYMMDD-NN` (blocks per channel, `config/id-blocks.json`) | `L-YYYYMMDD-NN` |
 | State | `python -m generator.run state --channel <slug>` | `... state --format long --channel <slug>` |
 
+**Promo Shorts** (owner, 2026-11-25; Disaster Desk): a channel with `channel.json` `cadence.promoOnly` makes every
+Short a promo of one of its long videos (`cadence.promoShortPerLong`, 2 there): `state.promo.targets`, the plan's
+`promo_of` and the long's `topic.feed_id` (`generator/promo.py`, checked by check-plan); the publisher sends a promo
+only once its long is on YouTube, newest long first, with the long's link in the description, and asks the owner to
+set the related video in Studio (`workers/lib/publishing.ts` `pickPromo`).
+
 Three gates fail the render: **layout** (every visible text box, measured in the rendered stills by
 `remotion/src/fx/probe.tsx`: at least the format's minimum size, clear of the bottom zone, inside the
 frame), a long beat whose narration fills under 55% of its length, and **liveliness**
