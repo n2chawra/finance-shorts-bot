@@ -171,3 +171,18 @@ test("promo Shorts go out only after their long video, newest long first (owner,
   assert.equal(pickPromo([v("a"), v("b")], new Map(), slot)?.id, "a");
   assert.match(withPromoLink("Hook line", "abc123"), /^Full story: https:\/\/youtu\.be\/abc123\n\nHook line$/);
 });
+
+// India Maps, 25 Nov 2026: slots 18:17 and 20:07 IST are under 3 h apart; the 18:17 upload must not fill 20:07
+test("two slots under three hours apart each need their own upload", async () => {
+  const { missedSlots } = await import("../lib/publishing.ts");
+  const { postingPlan } = await import("../../apps/dashboard/src/lib/posting-plan.ts");
+  const T = ["18:17", "20:07"];
+  // 18:17 (12:47Z) missed, 20:07 (14:37Z) already scheduled: 18:17 is still caught up
+  assert.deepEqual(missedSlots(at("2026-11-25T13:30:00Z"), T, [at("2026-11-25T14:37:00Z")]).map((d) => d.toISOString()), ["2026-11-25T12:47:00.000Z"]);
+  // 18:17 uploaded, 20:07 missed: 20:07 is caught up
+  assert.deepEqual(missedSlots(at("2026-11-25T14:50:00Z"), T, [at("2026-11-25T12:47:00Z")]).map((d) => d.toISOString()), ["2026-11-25T14:37:00.000Z"]);
+  const video = (id: string, publishAt?: string) => ({ id, format: "short", style: {}, ...(publishAt ? { upload: { publishAt } } : {}) }) as never;
+  const plan = postingPlan("short", [video("next")], [video("sent", "2026-11-25T12:47:00.000Z")],
+    { uploadTimes: T, trendUploadTimes: [], longUploadTimes: [], longUploadDays: [] }, Date.parse("2026-11-25T09:00:00Z"));
+  assert.equal(plan.find((p) => p.video)?.at, Date.parse("2026-11-25T14:37:00Z"));   // today 20:07, not tomorrow
+});
