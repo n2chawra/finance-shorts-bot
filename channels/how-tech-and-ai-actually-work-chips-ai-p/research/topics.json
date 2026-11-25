@@ -2553,6 +2553,97 @@
     "https://siliconangle.com/2026/01/05/nvidia-debuts-rubin-chip-336b-transistors-50-petaflops-ai-performance/",
     "https://www.techpowerup.com/350947/"
    ]
+  },
+  {
+   "id": "2026-11-26-chatbot-one-word-maths",
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "normal",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-26",
+   "expires": "2027-02-24",
+   "status": "new",
+   "title": "What a chatbot does to write one word: chop the text into tokens, then run every token through all 70 billion numbers",
+   "category": "ai",
+   "stories": [
+    "zoom_inside"
+   ],
+   "demand": {
+    "title": "What Happens Inside an AI Chip When You Ask a Question",
+    "views": 1024094,
+    "url": "https://youtube.com/watch?v=oBKrR3i6jWM",
+    "channel": "Silicon Up Close",
+    "channelSubs": 12700,
+    "outlier": 80.6
+   },
+   "hook": "Before a chatbot writes one word, it does billions of multiplications. Here is every step.",
+   "angle": "Zoom in from a typed question on a phone screen: the sentence is cut into tokens (about 4 characters each, about three quarters of a word; OpenAI), each token becomes a row in a 128K-entry vocabulary (Meta Llama 3), then a list of numbers. Zoom into the model: the token's numbers pass through every layer, each of the 70 billion parameters does one multiply-and-add (2 operations per parameter, Kaplan et al. 2020), out comes a score for every token in the vocabulary, one is picked, appended, and the whole pass runs again for the next token. Payoff by code: 2 x 70 billion = about 140 billion operations for one token; a 75-word answer is about 100 tokens (OpenAI), so about 14 trillion operations. Loop back to the next word appearing on the phone. Name the model as Meta's Llama 3 70B (an open model with published figures), never 'ChatGPT's size' (OpenAI doesn't publish it). Tag the layers 'illustration'.",
+   "why_now": "How AI works and how the internet works are core lanes in profile.md, but both formats are long-only and the Shorts feed had no AI topic at all (19 open: chips, machines, history, power). zoom_inside is the Short format that can tell it; its reference (1.02M views on a 12.7K channel, 80.6x) is this exact idea: what the hardware does when you ask a question.",
+   "facts": [
+    {
+     "label": "Characters in one token of English text, approximately",
+     "value": 4,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "OpenAI Help Center",
+     "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+     "latest": true,
+     "checked": "2026-11-26"
+    },
+    {
+     "label": "Words in 100 tokens of English text, approximately",
+     "value": 75,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "OpenAI Help Center",
+     "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+     "latest": true,
+     "checked": "2026-11-26"
+    },
+    {
+     "label": "Tokens in the Llama 3 tokenizer's vocabulary, in thousands",
+     "value": 128,
+     "unit": "count_thousand",
+     "as_of": "2024-04-18",
+     "source": "Meta AI",
+     "url": "https://ai.meta.com/blog/meta-llama-3/",
+     "fixed": true
+    },
+    {
+     "label": "Parameters in Meta's larger Llama 3 model, in billions",
+     "value": 70,
+     "unit": "count_billion",
+     "as_of": "2024-04-18",
+     "source": "Meta AI",
+     "url": "https://ai.meta.com/blog/meta-llama-3/",
+     "fixed": true
+    },
+    {
+     "label": "Operations per parameter for one token in a transformer's forward pass (one multiply and one add), approximately",
+     "value": 2,
+     "unit": "count",
+     "as_of": "2020-01-23",
+     "source": "Kaplan et al., Scaling Laws for Neural Language Models, section 2.1",
+     "url": "https://arxiv.org/html/2001.08361v1",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "OpenAI Help Center: 1 token is approximately 4 characters, approximately three quarters of a word; 100 tokens are approximately 75 words (English)",
+    "Meta, 18 Apr 2024: Llama 3 uses a tokenizer with a vocabulary of 128K tokens; 8B and 70B models",
+    "Kaplan et al. 2020, section 2.1, eq. 2.2: forward pass roughly 2N add-multiply operations per token, N = non-embedding parameters; say 'about' since 70B counts all parameters",
+    "Operations per token (about 140 billion) and per 75-word answer (about 14 trillion) are computed by code, never typed",
+    "Each new token needs a new pass through the model (autoregressive generation); caching of earlier tokens' work exists, so say each new token runs all the parameters once, not that the whole text is recomputed"
+   ],
+   "sources": [
+    "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+    "https://ai.meta.com/blog/meta-llama-3/",
+    "https://arxiv.org/html/2001.08361v1"
+   ]
   }
  ]
 }
