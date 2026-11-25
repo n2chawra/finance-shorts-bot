@@ -6,17 +6,18 @@
 # Filling late lets a trending video made at midday take an evening slot.
 # GitHub drops scheduled runs under load, not only delays them: on 12 Nov 2026 every run after
 # 09:16 IST was dropped (the 19:07 Short and an "Upload now" waited for a run that never came).
-# So the job runs every 20 minutes, at odd minutes away from the busy hour marks. A run with
-# nothing due only checks the database and stops (no YouTube quota); the repo is public, so the
-# minutes are free. With ~70 chances a day, one dropped run costs 20 minutes, not a slot.
+# So the job runs every hour, at an odd minute away from the busy hour marks. A run with nothing
+# due only checks the database and stops (no YouTube quota). Hourly, not every 20 minutes (owner,
+# 2026-11-25: Supabase egress): a slot can be filled by any run in the 4.5 h before it, so each slot
+# still gets 4+ chances, and a missed one is caught up for 2 h.
 # Two triggers that don't depend on GitHub's scheduler back it up: every finished Ingest, and the
 # dashboard's Netlify function (apps/dashboard/netlify/functions/publish-heartbeat.mts), which
-# dispatches this workflow whenever it hasn't started for 15 minutes, and at once on "Upload now".
+# dispatches this workflow whenever it hasn't started for 65 minutes, and at once on "Upload now".
 name: Publish
 
 on:
   schedule:
-    - cron: "11,31,51 * * * *"
+    - cron: "11 * * * *"
   # right after Ingest: the morning routine's new Shorts get their slots the moment they land
   workflow_run:
     workflows: ["Ingest"]

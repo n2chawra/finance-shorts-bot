@@ -54,7 +54,7 @@ export function migrate(u: z.infer<typeof Usage>): Usage {
 }
 
 /**
- * Several workers keep a QuotaKeeper at once (publish every 20 min, the data audit, stats-deep, the
+ * Several workers keep a QuotaKeeper at once (publish hourly, the data audit, stats-deep, the
  * market scan), each loaded at its start. Saving a run's whole tally would undo what the others saved
  * meanwhile, so save() adds only what this run spent since it loaded (`current` minus `base`) to the
  * row as it is now (`stored`). A stored row of an older quota day is replaced; null means "don't write"

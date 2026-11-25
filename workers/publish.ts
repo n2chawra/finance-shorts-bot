@@ -251,7 +251,7 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
   // queue order: the editor's ranking, or the owner's own order where they dragged it
   const order = [{ pickedAt: { sort: "asc" as const, nulls: "last" as const } }, { queuePosition: "asc" as const }, { createdAt: "asc" as const }];
   const channelId = run.channelId;
-  // no `script` (13-17 KB a video, never read here): this runs every 20 min per channel and format (Supabase egress, 2026-11-20)
+  // no `script` (13-17 KB a video, never read here): this runs hourly per channel and format (Supabase egress, 2026-11-20)
   let pending = null, video = null;
   if (pick === "pending-now") {
     // only "Upload now" clicks and retries whose time has come; a retry for a slot still ahead waits for it

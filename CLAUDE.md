@@ -152,7 +152,7 @@ GitHub repo (handoff point; sessions never hold DB or YouTube credentials)
         ▼
 GitHub Actions (cron)
   ├─ ingest.yml   on push/release + every 6h   new manifests → Postgres (status: queued)
-  ├─ publish.yml  every 20 min  fills each channel's slots from its queue → YouTube (private + publishAt)
+  ├─ publish.yml  hourly       fills each channel's slots from its queue → YouTube (private + publishAt)
   ├─ stats.yml    every 3h YouTube Analytics → VideoStat, ChannelDay, retention + drop points
   ├─ stats-deep.yml daily  traffic, searches, countries, demographics, devices, impressions/CTR, comments
   ├─ watchdog.yml hourly   public-counter snapshot → LiveSnapshot, alerts
@@ -338,7 +338,7 @@ agent steps follow `generator/prompts/*.md`.
 vars live in Netlify: `DATABASE_URL`, `DIRECT_URL`, `DASHBOARD_PASSWORD`, `SESSION_SECRET`,
 `GITHUB_TOKEN` (read-only), `GITHUB_REPOSITORY`, `YT_API_KEY`, `GITHUB_ACTIONS_TOKEN` (Actions read and
 write: starts Publish on "Upload now" and from `apps/dashboard/netlify/functions/publish-heartbeat.mts`
-when Publish hasn't run for 15 minutes, because GitHub's cron drops runs on busy days). The Google OAuth
+when Publish hasn't run for 65 minutes, because GitHub's cron drops runs on busy days). The Google OAuth
 consent screen must be in **Production** status, otherwise refresh tokens expire after 7 days.
 
 ## YouTube API facts
