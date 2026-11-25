@@ -1,0 +1,1092 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 51873,
+ "story": "why_shaped",
+ "shape": "the-patrol",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "explorer",
+  "key": "D",
+  "bpm": 76,
+  "look": {
+   "stage": "field",
+   "header": "strip",
+   "holder": "sign",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Dingoes or sheep: whose side of the fence would you live on? Comment",
+ "feed_id": "2026-11-24-dingo-fence-across-australia",
+ "facts": [
+  {
+   "label": "Length of the Dingo Fence in kilometres",
+   "value": 5614,
+   "unit": "count",
+   "as_of": "2025-12-31",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Dingo_Fence",
+   "latest": true,
+   "checked": "2026-11-24"
+  },
+  {
+   "label": "Its former length in kilometres, before it was shortened (over this)",
+   "value": 8000,
+   "unit": "count",
+   "as_of": "2025-12-31",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Dingo_Fence",
+   "fixed": true
+  },
+  {
+   "label": "Year building of the fence began",
+   "value": 1880,
+   "unit": "count",
+   "as_of": "1880-01-01",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Dingo_Fence",
+   "fixed": true
+  },
+  {
+   "label": "Height of most of the wire mesh in centimetres",
+   "value": 180,
+   "unit": "count",
+   "as_of": "2025-12-31",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Dingo_Fence",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "rabbits",
+  "sec": 3.2,
+  "words": "What is it *stopping*?",
+  "tag": "Australia",
+  "angle": "question",
+  "figure": "{fact1}",
+  "who": "narrator",
+  "references": [
+   {
+    "id": "iZS0b9U9UPs",
+    "views": 3481373,
+    "what": "the plan's demand Short: Australia's map with the fence line drawn across it"
+   }
+  ],
+  "pattern": "the fence line across the whole map of Australia with a short question; ours takes the full map split by the line, our own vintage look"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "What is Australia's {fact1} kilometre fence keeping out?",
+   "events": {
+    "australia's": {
+     "word": "Australia's"
+    },
+    "kilometre": {
+     "word": "kilometre"
+    },
+    "fence": {
+     "word": "fence"
+    },
+    "keeping": {
+     "word": "keeping"
+    },
+    "out": {
+     "word": "out"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the whole of Australia, the fence line across it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "sec": 1.3,
+      "size": "wide"
+     },
+     {
+      "at": "keeping",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "australia's",
+      "what": "Australia's border traces round and its flag fills it"
+     },
+     {
+      "at": "kilometre",
+      "what": "a light runs along the fence line from the coast"
+     },
+     {
+      "at": "fence",
+      "what": "a fence-post sign pops up with the length on it"
+     },
+     {
+      "at": "keeping",
+      "what": "the camera pushes in on the line"
+     },
+     {
+      "at": "out",
+      "what": "question marks pop on both sides of the line"
+     }
+    ],
+    "things": [
+     "map of australia",
+     "australian flag",
+     "the fence line",
+     "fence-post sign",
+     "question marks"
+    ],
+    "fig": {
+     "length": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "fence"
+    }
+   ]
+  },
+  {
+   "id": "cliffs",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It starts on the cliffs of the south coast: wire {fact4} centimetres high, taller than you.",
+   "events": {
+    "starts": {
+     "word": "starts"
+    },
+    "cliffs": {
+     "word": "cliffs"
+    },
+    "coast": {
+     "word": "coast"
+    },
+    "wire": {
+     "word": "wire"
+    },
+    "high": {
+     "word": "high"
+    },
+    "taller": {
+     "word": "taller"
+    },
+    "you": {
+     "word": "you"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Cliffs",
+    "place": "on the map: the fence's first post on the cliffs of the Great Australian Bight",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "wire",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "starts",
+      "what": "the camera arrives at the south end of the line"
+     },
+     {
+      "at": "cliffs",
+      "what": "cliffs rise along the coast and waves break below"
+     },
+     {
+      "at": "wire",
+      "what": "the first panel of wire mesh stands up"
+     },
+     {
+      "at": "high",
+      "what": "a height marker climbs the post to the figure"
+     },
+     {
+      "at": "taller",
+      "what": "a small figure walks up beside the wire"
+     },
+     {
+      "at": "you",
+      "what": "the figure looks up at the top wire"
+     }
+    ],
+    "things": [
+     "sea cliffs",
+     "waves",
+     "fence post",
+     "wire mesh",
+     "height marker",
+     "a small walker"
+    ],
+    "fig": {
+     "height": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "wire"
+    }
+   ]
+  },
+  {
+   "id": "north",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "From there it runs north, across the red dunes and salt pans of the South Australian desert.",
+   "events": {
+    "there": {
+     "word": "there"
+    },
+    "north": {
+     "word": "north"
+    },
+    "red": {
+     "word": "red"
+    },
+    "salt": {
+     "word": "salt"
+    },
+    "desert": {
+     "word": "desert"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "North",
+    "place": "on the map: the fence across the desert of South Australia",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "north",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "there",
+      "what": "a patrol truck sets off along the fence and the odometer appears"
+     },
+     {
+      "at": "north",
+      "what": "the truck drives north, the camera following"
+     },
+     {
+      "at": "red",
+      "what": "the land around the line warms to desert red"
+     },
+     {
+      "at": "salt",
+      "what": "a salt pan opens beside the truck"
+     },
+     {
+      "at": "desert",
+      "what": "SOUTH AUSTRALIA writes on beside the line"
+     }
+    ],
+    "things": [
+     "patrol truck",
+     "odometer",
+     "desert dunes",
+     "salt lake",
+     "state label"
+    ],
+    "fig": {
+     "length": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "east",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then it swings east to the corner where three states meet, crosses into New South Wales, and climbs north through Queensland,",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "east": {
+     "word": "east"
+    },
+    "corner": {
+     "word": "corner"
+    },
+    "crosses": {
+     "word": "crosses"
+    },
+    "wales": {
+     "word": "Wales"
+    },
+    "climbs": {
+     "word": "climbs"
+    },
+    "queensland": {
+     "word": "Queensland"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "East",
+    "place": "on the map: the corner where South Australia, New South Wales and Queensland meet",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "climbs",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "then",
+      "what": "the truck reaches the bend"
+     },
+     {
+      "at": "east",
+      "what": "the truck turns east along the line"
+     },
+     {
+      "at": "corner",
+      "what": "a corner post marks the three states"
+     },
+     {
+      "at": "crosses",
+      "what": "the truck rolls past the post"
+     },
+     {
+      "at": "wales",
+      "what": "NEW SOUTH WALES writes on below the line"
+     },
+     {
+      "at": "climbs",
+      "what": "the camera pulls back as the line climbs north"
+     },
+     {
+      "at": "queensland",
+      "what": "QUEENSLAND writes on above the line"
+     }
+    ],
+    "things": [
+     "patrol truck",
+     "odometer",
+     "corner post",
+     "state labels"
+    ],
+    "fig": {
+     "length": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "farms",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "until it finally stops among the farms of the Darling Downs.",
+   "events": {
+    "finally": {
+     "word": "finally"
+    },
+    "stops": {
+     "word": "stops"
+    },
+    "farms": {
+     "word": "farms"
+    },
+    "darling": {
+     "word": "Darling"
+    },
+    "downs": {
+     "word": "Downs"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Farms",
+    "place": "on the map: the fence's last post among the farms of the Darling Downs",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "stops",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "finally",
+      "what": "the odometer rolls to the full length"
+     },
+     {
+      "at": "stops",
+      "what": "the truck pulls up at the last post"
+     },
+     {
+      "at": "farms",
+      "what": "green paddocks and a farmhouse appear around the end"
+     },
+     {
+      "at": "darling",
+      "what": "a windmill turns by the farmhouse"
+     },
+     {
+      "at": "downs",
+      "what": "DARLING DOWNS writes on"
+     }
+    ],
+    "things": [
+     "last fence post",
+     "patrol truck",
+     "odometer",
+     "farmhouse",
+     "paddocks",
+     "windmill"
+    ],
+    "fig": {
+     "length": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "stops"
+    }
+   ]
+  },
+  {
+   "id": "split",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Now look at the map again. One wire splits the land into two sides. So what lives on each side of it?",
+   "events": {
+    "look": {
+     "word": "look"
+    },
+    "map": {
+     "word": "map"
+    },
+    "wire": {
+     "word": "wire"
+    },
+    "land": {
+     "word": "land"
+    },
+    "two": {
+     "word": "two"
+    },
+    "lives": {
+     "word": "lives"
+    },
+    "side": {
+     "word": "side"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Split",
+    "place": "on the map: the whole continent, split by the line",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "side",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "look",
+      "what": "the camera pulls back to the whole continent"
+     },
+     {
+      "at": "wire",
+      "what": "the fence line flashes bright"
+     },
+     {
+      "at": "land",
+      "what": "Australia's outline glows"
+     },
+     {
+      "at": "two",
+      "what": "the land on the two sides tints in two colours"
+     },
+     {
+      "at": "lives",
+      "what": "a question mark drops on the north-west side"
+     },
+     {
+      "at": "side",
+      "what": "a question mark drops on the south-east side"
+     }
+    ],
+    "things": [
+     "map of australia",
+     "the fence line",
+     "two tinted halves",
+     "question marks"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "two"
+    }
+   ]
+  },
+  {
+   "id": "sheep",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "To the south and east is sheep country: flock after flock, grazing on open grass.",
+   "events": {
+    "south": {
+     "word": "south"
+    },
+    "east": {
+     "word": "east"
+    },
+    "sheep": {
+     "word": "sheep"
+    },
+    "flock": {
+     "word": "flock"
+    },
+    "after": {
+     "word": "after"
+    },
+    "grazing": {
+     "word": "grazing"
+    },
+    "grass": {
+     "word": "grass"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Sheep",
+    "place": "on the map: sheep country in the south-east, inside the fence",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "flock",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "south",
+      "what": "the camera slides to the south-east"
+     },
+     {
+      "at": "sheep",
+      "what": "SHEEP COUNTRY writes on"
+     },
+     {
+      "at": "flock",
+      "what": "a first flock of sheep pops onto the grass"
+     },
+     {
+      "at": "after",
+      "what": "more flocks pop up across the land"
+     },
+     {
+      "at": "grazing",
+      "what": "the sheep put their heads down to graze"
+     },
+     {
+      "at": "grass",
+      "what": "tufts of grass sway"
+     }
+    ],
+    "things": [
+     "sheep country",
+     "flocks of sheep",
+     "grass tufts",
+     "the fence line"
+    ]
+   }
+  },
+  {
+   "id": "rabbits",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "It began in the eighteen-eighties as a fence against rabbits, and against rabbits it failed. So why keep it?",
+   "events": {
+    "began": {
+     "word": "began"
+    },
+    "eighteen-eighties": {
+     "word": "eighteen-eighties"
+    },
+    "fence": {
+     "word": "fence"
+    },
+    "rabbits": {
+     "word": "rabbits"
+    },
+    "failed": {
+     "word": "failed"
+    },
+    "why": {
+     "word": "why"
+    },
+    "keep": {
+     "word": "keep"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Rabbits",
+    "place": "on the map: a stretch of the early wire in the outback, rabbits running at it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "rabbits",
+      "size": "close"
+     },
+     {
+      "at": "why",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "began",
+      "what": "an old stretch of wire stands on the line"
+     },
+     {
+      "at": "eighteen-eighties",
+      "what": "the wire turns sepia like an old photograph"
+     },
+     {
+      "at": "fence",
+      "what": "workers' posts stand along it"
+     },
+     {
+      "at": "rabbits",
+      "what": "rabbits pour across the land towards it"
+     },
+     {
+      "at": "failed",
+      "what": "rabbits slip under and through and a red cross stamps on the wire"
+     },
+     {
+      "at": "why",
+      "what": "the camera pulls back"
+     },
+     {
+      "at": "keep",
+      "what": "a question mark pops over the line"
+     }
+    ],
+    "things": [
+     "old wire",
+     "rabbits",
+     "red cross",
+     "question mark"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "failed"
+    }
+   ]
+  },
+  {
+   "id": "dingo",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Because on the other side lives the hunter of sheep: the dingo, Australia's wild dog, roaming the north and west.",
+   "events": {
+    "hunter": {
+     "word": "hunter"
+    },
+    "other": {
+     "word": "other"
+    },
+    "dingo": {
+     "word": "dingo"
+    },
+    "wild": {
+     "word": "wild"
+    },
+    "roaming": {
+     "word": "roaming"
+    },
+    "north": {
+     "word": "north"
+    },
+    "west": {
+     "word": "west"
+    }
+   },
+   "transition": "whip",
+   "params": {
+    "component": "Dingo",
+    "place": "on the map: dingo country in the outback, north and west of the fence",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "dingo",
+      "size": "close"
+     },
+     {
+      "at": "roaming",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hunter",
+      "what": "the camera crosses the wire to the other side"
+     },
+     {
+      "at": "other",
+      "what": "the outback side lights up orange"
+     },
+     {
+      "at": "dingo",
+      "what": "a dingo trots up to the wire, big"
+     },
+     {
+      "at": "wild",
+      "what": "WILD DOG writes on its tag"
+     },
+     {
+      "at": "roaming",
+      "what": "more dingoes roam across the outback"
+     },
+     {
+      "at": "north",
+      "what": "DINGO COUNTRY writes on to the north"
+     },
+     {
+      "at": "west",
+      "what": "paw prints run off to the west"
+     }
+    ],
+    "things": [
+     "dingo",
+     "the fence line",
+     "outback",
+     "more dingoes",
+     "paw prints",
+     "label"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "dingo"
+    }
+   ]
+  },
+  {
+   "id": "built",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So the wire was raised and joined into one fence, post by post, kilometre after kilometre, to keep the dingo out.",
+   "events": {
+    "so": {
+     "word": "So"
+    },
+    "raised": {
+     "word": "raised"
+    },
+    "joined": {
+     "word": "joined"
+    },
+    "post": {
+     "word": "post"
+    },
+    "by": {
+     "word": "by"
+    },
+    "kilometre": {
+     "word": "kilometre"
+    },
+    "keep": {
+     "word": "keep"
+    },
+    "out": {
+     "word": "out"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Built",
+    "place": "on the map: the fence line being built, close, with workers on it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "keep",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "so",
+      "what": "the camera drops close onto the line"
+     },
+     {
+      "at": "raised",
+      "what": "two workers in old hats lift the wire higher"
+     },
+     {
+      "at": "joined",
+      "what": "a roll of wire unrolls along the line, joining two stretches"
+     },
+     {
+      "at": "post",
+      "what": "a post drops into the ground"
+     },
+     {
+      "at": "by",
+      "what": "another post drops in"
+     },
+     {
+      "at": "kilometre",
+      "what": "posts march off along the line"
+     },
+     {
+      "at": "keep",
+      "what": "the dingo on the far side stops at the wire"
+     },
+     {
+      "at": "out",
+      "what": "the dingo turns away"
+     }
+    ],
+    "things": [
+     "workers in old hats",
+     "wire roll",
+     "fence posts",
+     "dingo"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "And it used to be even longer: over {fact2} kilometres of wire, all to stop one hungry wild dog.",
+   "events": {
+    "used": {
+     "word": "used"
+    },
+    "longer": {
+     "word": "longer"
+    },
+    "over": {
+     "word": "over"
+    },
+    "kilometres": {
+     "word": "kilometres"
+    },
+    "stop": {
+     "word": "stop"
+    },
+    "one": {
+     "word": "one"
+    },
+    "dog": {
+     "word": "dog"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: two lengths of wire stretched out over the continent",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "dog",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "used",
+      "what": "a ribbon of wire stretches across the map with today's length"
+     },
+     {
+      "at": "longer",
+      "what": "a second ribbon stretches out far past it"
+     },
+     {
+      "at": "over",
+      "what": "the second ribbon's length counts up"
+     },
+     {
+      "at": "kilometres",
+      "what": "both ribbons pulse"
+     },
+     {
+      "at": "stop",
+      "what": "a dingo stands at the end of the long ribbon"
+     },
+     {
+      "at": "dog",
+      "what": "the camera pushes in on the one dingo"
+     }
+    ],
+    "things": [
+     "wire ribbons",
+     "length tags",
+     "dingo"
+    ],
+    "fig": {
+     "today": "{fact1}",
+     "once": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "longer"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Sheep side or dingo side: which would you pick? Now you know what one wire across Australia is keeping out.",
+   "events": {
+    "sheep": {
+     "word": "Sheep"
+    },
+    "dingo": {
+     "word": "dingo"
+    },
+    "pick": {
+     "word": "pick"
+    },
+    "know": {
+     "word": "know"
+    },
+    "wire": {
+     "word": "wire"
+    },
+    "australia": {
+     "word": "Australia"
+    },
+    "keeping": {
+     "word": "keeping"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the whole of Australia again, the fence line across it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "know",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sheep",
+      "what": "a sheep pops on the south-east side"
+     },
+     {
+      "at": "dingo",
+      "what": "a dingo pops on the north-west side"
+     },
+     {
+      "at": "pick",
+      "what": "a pointer swings between them"
+     },
+     {
+      "at": "know",
+      "what": "the camera pulls back to the whole continent"
+     },
+     {
+      "at": "wire",
+      "what": "a light runs along the fence line"
+     },
+     {
+      "at": "australia",
+      "what": "Australia's border lights up"
+     },
+     {
+      "at": "keeping",
+      "what": "the frame settles on the hook's map"
+     }
+    ],
+    "things": [
+     "map of australia",
+     "sheep",
+     "dingo",
+     "pointer",
+     "the fence line"
+    ]
+   }
+  }
+ ]
+}
