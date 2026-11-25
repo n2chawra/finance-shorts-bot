@@ -37,6 +37,15 @@
       "test": "the hook's first frame shows the thing the question is about (on the TS-to-TG Short: the TS plate flipping to TG on lit Telangana) against the champion's lit state alone",
       "why": "v-20261124-61's frame 0 shows a yellow Telangana with no plate, so with the sound off the puzzle is invisible; its thumbnail (TS plate + car + 'TS SE TG KYUN?') shows it. No retention yet to make it a lesson.",
       "from": "reviewer 2026-11-25"
+    },
+    {
+      "id": "im-title-search-tail",
+      "kind": "first-second",
+      "area": "title",
+      "metric": "stayed",
+      "test": "the title keeps the Hinglish question and adds a Devanagari search tail ('... ? | भारत का नक्शा'), against the champion's question alone",
+      "why": "In the niche scan's top 30 Shorts (research/scan.json topIds), every on-lane hit names the search phrase in the title (MIND SPARK 'India Political Map | All States & Union Territories', Study Buddy 'भारत का मानचित्र हिंदी में | सभी राज्य...', the 3,964x Study Spark breakout 'भारत का मानचित्र | राज्य और पड़ोसी देश'); 3 of the 6 on-lane titles carry Devanagari, none of our 3 do. The scan's title split backs keeping the question (median 25.8K views with a question vs 10.8K without) and a name (17.9K vs 3.6K). Low confidence: views tell reach, and stayed may not move.",
+      "from": "research 2026-11-26"
     }
   ]
 }

@@ -3261,7 +3261,574 @@
    "found": "2026-11-25",
    "expires": "2027-02-23",
    "status": "new",
-   "note": "The reference has under 1M views, so check-plan refuses it as a local video until reach.py lets an India-only channel tell India topics (proposal im-reach-india-channel)."
+   "note": "reach.py now lets an India-only channel tell India topics (im-reach-india-channel, done 2026-11-25)."
+  },
+  {
+   "id": "2026-11-26-coastline-11098",
+   "format": "short",
+   "title": "Every Indian state on the sea, and the coastline that grew to 11,098 km",
+   "category": "coastline",
+   "kind": "evergreen",
+   "priority": "high",
+   "stories": [
+    "every_state"
+   ],
+   "currency": "INR",
+   "reach": "local",
+   "reach_reason": {
+    "kind": "demand"
+   },
+   "demand": {
+    "title": "Which Indian State Is Your Favourite Singer From?",
+    "views": 7206549,
+    "url": "https://youtube.com/watch?v=M1w5mnFCgRg",
+    "channel": "Bharat Animatrix"
+   },
+   "hook": "भारत का समुद्र तट अचानक इतना लंबा कैसे हो गया?",
+   "templates": [
+    "any"
+   ],
+   "angle": "The map lights the 9 coastal states and 4 coastal UTs one by one along the coast, Gujarat to West Bengal, then the islands; the payoff: India's official coastline was re-measured from 7,516.6 km to 11,098.81 km (bays, creeks and estuaries now counted), and Gujarat alone is 2,340.62 km.",
+   "why_now": "The re-measured coastline (MHA, accepted 2024; told to Parliament Dec 2025) is still news to most viewers; the every-state fill is our core format (7.2M reference).",
+   "facts": [
+    {
+     "label": "India's coastline, re-measured",
+     "value": 11098.81,
+     "unit": "km",
+     "as_of": "2024-12-31",
+     "source": "Ministry of Home Affairs (via Wikipedia, Coastal India)",
+     "url": "https://en.wikipedia.org/wiki/Coastal_India",
+     "latest": true,
+     "checked": "2026-11-26"
+    },
+    {
+     "label": "India's coastline, old figure",
+     "value": 7516.6,
+     "unit": "km",
+     "as_of": "2025-05-01",
+     "source": "Mongabay India, citing the government circular",
+     "url": "https://india.mongabay.com/2025/05/indias-coastline-is-longer-than-previously-thought/",
+     "fixed": true
+    },
+    {
+     "label": "Gujarat's coastline, re-measured",
+     "value": 2340.62,
+     "unit": "km",
+     "as_of": "2025-05-05",
+     "source": "DeshGujarat, citing the revised official figure",
+     "url": "https://deshgujarat.com/2025/05/05/its-official-gujarats-coastline-is-no-longer-1600-km-its-revised-to-2340-62-km-now/",
+     "latest": true,
+     "checked": "2026-11-26"
+    },
+    {
+     "label": "Tamil Nadu's coastline, re-measured",
+     "value": 1068,
+     "unit": "km",
+     "as_of": "2024-12-31",
+     "source": "Ministry of Home Affairs (via Wikipedia, Coastal India)",
+     "url": "https://en.wikipedia.org/wiki/Coastal_India",
+     "latest": true,
+     "checked": "2026-11-26"
+    },
+    {
+     "label": "Andhra Pradesh's coastline, re-measured",
+     "value": 1053,
+     "unit": "km",
+     "as_of": "2024-12-31",
+     "source": "Ministry of Home Affairs (via Wikipedia, Coastal India)",
+     "url": "https://en.wikipedia.org/wiki/Coastal_India",
+     "latest": true,
+     "checked": "2026-11-26"
+    },
+    {
+     "label": "Coastal states",
+     "value": 9,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Coastal India",
+     "url": "https://en.wikipedia.org/wiki/Coastal_India",
+     "fixed": true
+    }
+   ],
+   "items": [
+    {
+     "state": "Gujarat",
+     "label": "2,340.62 km",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Maharashtra",
+     "label": "समुद्र तट",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Goa",
+     "label": "समुद्र तट",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Karnataka",
+     "label": "समुद्र तट",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Kerala",
+     "label": "समुद्र तट",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Tamil Nadu",
+     "label": "1,068 km",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Andhra Pradesh",
+     "label": "1,053 km",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Odisha",
+     "label": "समुद्र तट",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "West Bengal",
+     "label": "721 km",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Dadra and Nagar Haveli and Daman and Diu",
+     "label": "UT",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Puducherry",
+     "label": "UT",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Lakshadweep",
+     "label": "UT",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+     "state": "Andaman and Nicobar Islands",
+     "label": "UT",
+     "source_url": "https://en.wikipedia.org/wiki/Coastal_India"
+    }
+   ],
+   "verify": [
+    "11,098.81 km total and the per-state figures in the MHA annual report 2023-24 or the MoES Lok Sabha/Rajya Sabha answer of Dec 2025 (the 2019 committee figure 11,084.50 km is a different, earlier number: do not mix them)",
+    "Gujarat 2,340.62 km",
+    "West Bengal 721 km",
+    "9 coastal states and 4 UTs"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Coastal_India",
+    "https://deshgujarat.com/2025/05/05/its-official-gujarats-coastline-is-no-longer-1600-km-its-revised-to-2340-62-km-now/",
+    "https://india.mongabay.com/2025/05/indias-coastline-is-longer-than-previously-thought/",
+    "https://newsable.asianetnews.com/india/from-7-516-kms-to-11-098-kms-india-s-coastline-expands-by-47-6-in-over-50-years-reveals-mha-report-snt-spjql2"
+   ],
+   "found": "2026-11-26",
+   "expires": "2027-02-24",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-26-punjab-haryana-1966",
+   "format": "short",
+   "title": "How Punjab became three: Haryana, Himachal's hills and Chandigarh, 1 November 1966",
+   "category": "state-formation",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "state_formation"
+   ],
+   "currency": "INR",
+   "reach": "local",
+   "reach_reason": {
+    "kind": "demand"
+   },
+   "demand": {
+    "title": "How Punjab was Divided",
+    "views": 4129163,
+    "url": "https://youtube.com/watch?v=LnFMoSO6s-s"
+   },
+   "hook": "एक दिन में पंजाब तीन हिस्सों में कैसे बँटा?",
+   "templates": [
+    "any"
+   ],
+   "angle": "Composite Punjab lights up; on 1 Nov 1966 the Punjab Reorganisation Act cuts it: the Hindi-speaking south becomes Haryana, Kangra, Simla and Lahaul-Spiti go to Himachal Pradesh, and Chandigarh becomes a Union Territory that is the capital of both Punjab and Haryana. Dated history only, no sides.",
+   "why_now": "The reference itself is this story (4.1M views); our formation lane's most-watched idea, not yet in the feed.",
+   "facts": [
+    {
+     "label": "Year Haryana was formed",
+     "value": 1966,
+     "unit": "year",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Punjab Reorganisation Act 1966",
+     "url": "https://en.wikipedia.org/wiki/Punjab_Reorganisation_Act,_1966",
+     "fixed": true
+    },
+    {
+     "label": "Year the Punjab Reorganisation Act was passed",
+     "value": 1966,
+     "unit": "year",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Punjab Reorganisation Act 1966",
+     "url": "https://en.wikipedia.org/wiki/Punjab_Reorganisation_Act,_1966",
+     "fixed": true
+    },
+    {
+     "label": "Villages transferred to Himachal Pradesh with Una town",
+     "value": 290,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Punjab Reorganisation Act 1966",
+     "url": "https://en.wikipedia.org/wiki/Punjab_Reorganisation_Act,_1966",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Haryana formed 1 November 1966",
+    "Act passed by Parliament 18 September 1966",
+    "Kangra, Simla, Lahaul and Spiti districts to Himachal Pradesh",
+    "Chandigarh a Union Territory and capital of both states"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Punjab_Reorganisation_Act,_1966"
+   ],
+   "found": "2026-11-26",
+   "expires": "2027-02-24",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-26-three-states-1972",
+   "format": "short",
+   "title": "Manipur, Meghalaya and Tripura: three states on one day, 21 January 1972",
+   "category": "state-formation",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "state_formation"
+   ],
+   "currency": "INR",
+   "reach": "local",
+   "reach_reason": {
+    "kind": "demand"
+   },
+   "demand": {
+    "title": "How Punjab was Divided",
+    "views": 4129163,
+    "url": "https://youtube.com/watch?v=LnFMoSO6s-s"
+   },
+   "hook": "एक ही दिन तीन नए स्टेट?",
+   "templates": [
+    "any"
+   ],
+   "angle": "The north-east lights as it was in 1971 (Assam, two Union Territories, NEFA); the North-Eastern Areas (Reorganisation) Act, enacted 30 Dec 1971, makes Manipur, Tripura and Meghalaya full states on 21 Jan 1972, and NEFA and the Mizo Hills Union Territories (later Arunachal Pradesh and Mizoram, states in 1987).",
+   "why_now": "Evergreen formation story; Statehood Day is 21 Jan, so it can return as a seasonal topic then.",
+   "facts": [
+    {
+     "label": "Year Manipur, Meghalaya and Tripura became states",
+     "value": 1972,
+     "unit": "year",
+     "as_of": "2026-11-26",
+     "source": "Drishti IAS, Statehood Day (citing PIB)",
+     "url": "https://www.drishtiias.com/daily-updates/daily-news-analysis/statehood-day-of-manipur-meghalaya-and-tripura-2/print_manually",
+     "fixed": true
+    },
+    {
+     "label": "Year the North-Eastern Areas (Reorganisation) Act was enacted",
+     "value": 1971,
+     "unit": "year",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/North-Eastern_Areas_(Reorganisation)_Act,_1971",
+     "fixed": true
+    },
+    {
+     "label": "Year Mizoram and Arunachal Pradesh became states",
+     "value": 1987,
+     "unit": "year",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/North-Eastern_Areas_(Reorganisation)_Act,_1971",
+     "fixed": true
+    },
+    {
+     "label": "States made on 21 January 1972",
+     "value": 3,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Drishti IAS, Statehood Day",
+     "url": "https://www.drishtiias.com/daily-updates/daily-news-analysis/statehood-day-of-manipur-meghalaya-and-tripura-2/print_manually",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "21 January 1972 statehood for all three, on a PIB or state government page",
+    "Act enacted 30 December 1971",
+    "Meghalaya was an autonomous state within Assam from 1970"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/North-Eastern_Areas_(Reorganisation)_Act,_1971",
+    "https://www.drishtiias.com/daily-updates/daily-news-analysis/statehood-day-of-manipur-meghalaya-and-tripura-2/print_manually",
+    "https://www.outlookindia.com/national/foundation-day-of-manipur-meghalaya-and-tripuraknow-the-history"
+   ],
+   "found": "2026-11-26",
+   "expires": "2027-02-24",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-26-up-most-neighbours",
+   "format": "short",
+   "title": "Which state touches the most other states? Uttar Pradesh and its ring of neighbours",
+   "category": "state-neighbours",
+   "kind": "evergreen",
+   "priority": "high",
+   "stories": [
+    "every_state"
+   ],
+   "currency": "INR",
+   "reach": "local",
+   "reach_reason": {
+    "kind": "demand"
+   },
+   "demand": {
+    "title": "Which Indian State Is Your Favourite Singer From?",
+    "views": 7206549,
+    "url": "https://youtube.com/watch?v=M1w5mnFCgRg",
+    "channel": "Bharat Animatrix"
+   },
+   "hook": "किस स्टेट के सबसे ज़्यादा पड़ोसी हैं?",
+   "templates": [
+    "any"
+   ],
+   "angle": "Uttar Pradesh lifts off the sheet, then each neighbour lights round it on its own word: Uttarakhand, Himachal Pradesh, Haryana, Delhi, Rajasthan, Madhya Pradesh, Chhattisgarh, Jharkhand, Bihar, and Nepal across the border; the count is made by code from the lit states. Ask: aapke state ke kitne padosi?",
+   "why_now": "A find-my-state question on the every-state fill (7.2M reference); answerable for every viewer in the comments.",
+   "facts": [
+    {
+     "label": "Indian states bordering Uttar Pradesh",
+     "value": 8,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Uttar Pradesh (its list of neighbours)",
+     "url": "https://en.wikipedia.org/wiki/Uttar_Pradesh",
+     "fixed": true
+    },
+    {
+     "label": "Union territories bordering Uttar Pradesh",
+     "value": 1,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Uttar Pradesh",
+     "url": "https://en.wikipedia.org/wiki/Uttar_Pradesh",
+     "fixed": true
+    }
+   ],
+   "items": [
+    {
+     "state": "Uttarakhand",
+     "label": "Uttarakhand",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+     "state": "Himachal Pradesh",
+     "label": "Himachal Pradesh",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+     "state": "Haryana",
+     "label": "Haryana",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+     "state": "Delhi",
+     "label": "Delhi",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+     "state": "Rajasthan",
+     "label": "Rajasthan",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+     "state": "Madhya Pradesh",
+     "label": "Madhya Pradesh",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+     "state": "Chhattisgarh",
+     "label": "Chhattisgarh",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+     "state": "Jharkhand",
+     "label": "Jharkhand",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+     "state": "Bihar",
+     "label": "Bihar",
+     "source_url": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    }
+   ],
+   "verify": [
+    "Wikipedia's lead says 'nine other states and one union territory' but its own list names eight states plus Delhi: count the states from the list (and the kit's map), never the lead sentence",
+    "UP touches Himachal Pradesh (a short stretch near the Yamuna)"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+   ],
+   "found": "2026-11-26",
+   "expires": "2027-02-24",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-26-indira-point-south",
+   "format": "short",
+   "title": "India's southern tip is not Kanyakumari: Indira Point, Great Nicobar",
+   "category": "india-extremes",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "india_and_world"
+   ],
+   "currency": "INR",
+   "reach": "local",
+   "reach_reason": {
+    "kind": "demand"
+   },
+   "demand": {
+    "title": "भारत का मानचित्र | राज्य और पड़ोसी देश",
+    "views": 547995,
+    "url": "https://youtube.com/shorts/mHcAxUG_iGA",
+    "channel": "Study Spark",
+    "channelSubs": 140,
+    "outlier": 3914.3
+   },
+   "hook": "भारत का सबसे दक्षिणी कोना कन्याकुमारी नहीं है?",
+   "templates": [
+    "any"
+   ],
+   "angle": "The camera starts on Kanyakumari (where school maps end), then pans south-east over the sea to Great Nicobar and Indira Point; code computes how far south of Kanyakumari it lies (latitude difference in km) and its distance from Chennai, from the two coordinates. Ends on all of India pulling back with the islands lit.",
+   "why_now": "'Map surprises about my own country' are the 3,964x breakout's lane; true and checkable from fixed coordinates.",
+   "facts": [
+    {
+     "label": "Indira Point latitude, degrees north",
+     "value": 6.74678,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Extreme points of India",
+     "url": "https://en.wikipedia.org/wiki/Extreme_points_of_India",
+     "fixed": true
+    },
+    {
+     "label": "Indira Point longitude, degrees east",
+     "value": 93.8426,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Extreme points of India",
+     "url": "https://en.wikipedia.org/wiki/Extreme_points_of_India",
+     "fixed": true
+    },
+    {
+     "label": "Cape Comorin latitude, degrees north",
+     "value": 8.0689,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Extreme points of India",
+     "url": "https://en.wikipedia.org/wiki/Extreme_points_of_India",
+     "fixed": true
+    },
+    {
+     "label": "Cape Comorin longitude, degrees east",
+     "value": 77.5523,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Extreme points of India",
+     "url": "https://en.wikipedia.org/wiki/Extreme_points_of_India",
+     "fixed": true
+    }
+   ],
+   "maths": {
+    "distance": "great-circle km between the two points, and the north-south km from the latitude difference (111.2 km a degree), by code"
+   },
+   "verify": [
+    "Indira Point is the southernmost point of India, on Great Nicobar",
+    "the coordinates"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Extreme_points_of_India"
+   ],
+   "found": "2026-11-26",
+   "expires": "2027-02-24",
+   "status": "new"
+  },
+  {
+   "id": "2026-11-26-sun-east-west",
+   "format": "short",
+   "title": "One clock, two suns: the sun rises about two hours earlier in Arunachal than in Kutch",
+   "category": "time-zone",
+   "kind": "evergreen",
+   "priority": "normal",
+   "stories": [
+    "india_and_world"
+   ],
+   "currency": "INR",
+   "reach": "local",
+   "reach_reason": {
+    "kind": "demand"
+   },
+   "demand": {
+    "title": "भारत का मानचित्र | राज्य और पड़ोसी देश",
+    "views": 547995,
+    "url": "https://youtube.com/shorts/mHcAxUG_iGA",
+    "channel": "Study Spark",
+    "channelSubs": 140,
+    "outlier": 3914.3
+   },
+   "hook": "भारत में सूरज एक साथ क्यों नहीं उगता?",
+   "templates": [
+    "any"
+   ],
+   "angle": "The sun's line sweeps across India east to west: Dong in Arunachal Pradesh first, Kutch in Gujarat last; code turns the longitude gap of India's easternmost and westernmost points into minutes of sun time (4 minutes a degree), while every clock shows the same IST.",
+   "why_now": "Dong's Sunrise Festival (29 Dec to 2 Jan) makes it a strong seasonal topic later; evergreen now.",
+   "facts": [
+    {
+     "label": "India's easternmost point longitude, degrees east",
+     "value": 97.39564,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Extreme points of India",
+     "url": "https://en.wikipedia.org/wiki/Extreme_points_of_India",
+     "fixed": true
+    },
+    {
+     "label": "India's westernmost point longitude, degrees east",
+     "value": 68.1941,
+     "unit": "count",
+     "as_of": "2026-11-26",
+     "source": "Wikipedia, Extreme points of India",
+     "url": "https://en.wikipedia.org/wiki/Extreme_points_of_India",
+     "fixed": true
+    }
+   ],
+   "maths": {
+    "sun_minutes": "(east - west longitude) x 4 minutes, by code (about 117 minutes); never typed"
+   },
+   "verify": [
+    "Dong, Anjaw district, sees India's first sunrise",
+    "IST is one time zone, UTC+5:30",
+    "sun-time gap is solar-time, not an exact sunrise gap on a given day (latitude changes it): say 'about two hours' only from code"
+   ],
+   "sources": [
+    "https://en.wikipedia.org/wiki/Extreme_points_of_India",
+    "https://www.outlooktraveller.com/News/dong-in-arunachal-pradesh-to-host-first-ever-sun-rise-festival-this-new-year"
+   ],
+   "found": "2026-11-26",
+   "expires": "2027-02-24",
+   "status": "new"
   }
  ]
 }
