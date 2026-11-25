@@ -1,14 +1,14 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-24T19:34:40.014Z",
+  "generatedAt": "2026-11-25T18:43:10.348Z",
   "channel": "business-documentaries-rise-and-fall-of",
   "youtubeChecked": true,
   "summary": {
-    "videos": 16,
-    "checked": 11,
+    "videos": 21,
+    "checked": 13,
     "error": 0,
     "warning": 0,
-    "info": 1,
+    "info": 3,
     "owner": 0,
     "persistentErrors": 0
   },
@@ -16,12 +16,64 @@
     {
       "kind": "behind_youtube_stale",
       "severity": "info",
-      "videoId": "v-20261124-31",
-      "youtubeId": "oULAk0UjZn4",
-      "detail": "Dashboard shows 28 views, YouTube 45; live counts last refreshed 152 min ago (they refresh while the dashboard is open)."
+      "videoId": "v-20261125-32",
+      "youtubeId": "kqsfzF-bYq0",
+      "detail": "Dashboard shows 0 views, YouTube 124; live counts last refreshed never (they refresh while the dashboard is open)."
+    },
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
+      "videoId": "v-20261125-34",
+      "youtubeId": "f5mZZ1HaxY8",
+      "detail": "Dashboard shows 0 views, YouTube 16; live counts last refreshed never (they refresh while the dashboard is open)."
+    },
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
+      "videoId": "v-20261124-32",
+      "youtubeId": "fCtjkkASrG8",
+      "detail": "Dashboard shows 204 views, YouTube 219; live counts last refreshed 546 min ago (they refresh while the dashboard is open)."
     }
   ],
   "videos": [
+    {
+      "id": "v-20261125-32",
+      "title": "Blockbuster Had 9,094 Stores. Netflix Had an Envelope",
+      "youtubeId": "kqsfzF-bYq0",
+      "state": "published",
+      "publishAt": "2026-11-25T16:47:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "public",
+        "views": 124,
+        "likes": 2,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261125-34",
+      "title": "FedEx Was Down to $5,000. Its Founder Went to Las Vegas",
+      "youtubeId": "f5mZZ1HaxY8",
+      "state": "published",
+      "publishAt": "2026-11-25T12:17:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "public",
+        "views": 16,
+        "likes": 1,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261124-31",
       "title": "Juicero's $699 Juicer Only Squeezed Its Own Packs",
@@ -29,14 +81,14 @@
       "state": "published",
       "publishAt": "2026-11-24T16:47:00.000Z",
       "dashboard": {
-        "views": 28,
+        "views": 60,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 45,
+        "views": 63,
         "likes": 0,
         "comments": 0
       },
@@ -53,14 +105,14 @@
       "state": "published",
       "publishAt": "2026-11-24T15:47:00.000Z",
       "dashboard": {
-        "views": 1,
+        "views": 9,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1,
+        "views": 11,
         "likes": 0,
         "comments": 0
       },
@@ -77,15 +129,15 @@
       "state": "published",
       "publishAt": "2026-11-24T12:17:00.000Z",
       "dashboard": {
-        "views": 180,
-        "likes": 4,
+        "views": 204,
+        "likes": 5,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 185,
-        "likes": 4,
+        "views": 219,
+        "likes": 5,
         "comments": 0
       },
       "analytics": {
@@ -101,14 +153,14 @@
       "state": "published",
       "publishAt": "2026-11-23T16:47:00.000Z",
       "dashboard": {
-        "views": 63,
+        "views": 69,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 62,
+        "views": 73,
         "likes": 2,
         "comments": 0
       },
@@ -125,14 +177,14 @@
       "state": "published",
       "publishAt": "2026-11-23T12:17:00.000Z",
       "dashboard": {
-        "views": 1494,
+        "views": 1528,
         "likes": 34,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1495,
+        "views": 1529,
         "likes": 34,
         "comments": 0
       },
@@ -149,21 +201,21 @@
       "state": "published",
       "publishAt": "2026-11-22T16:47:00.000Z",
       "dashboard": {
-        "views": 1218,
+        "views": 1246,
         "likes": 16,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1220,
+        "views": 1259,
         "likes": 16,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 965,
+        "days": 1,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -173,21 +225,21 @@
       "state": "published",
       "publishAt": "2026-11-22T12:17:00.000Z",
       "dashboard": {
-        "views": 1382,
-        "likes": 29,
+        "views": 1417,
+        "likes": 30,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1386,
-        "likes": 29,
+        "views": 1426,
+        "likes": 30,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1299,
+        "days": 1,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -200,7 +252,7 @@
         "views": 62,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
@@ -209,9 +261,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 35,
-        "days": 1,
-        "lastDay": "2026-11-21"
+        "views": 51,
+        "days": 2,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -224,18 +276,18 @@
         "views": 700,
         "likes": 8,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 699,
+        "views": 700,
         "likes": 7,
         "comments": 0
       },
       "analytics": {
-        "views": 46,
-        "days": 1,
-        "lastDay": "2026-11-21"
+        "views": 204,
+        "days": 2,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -248,7 +300,7 @@
         "views": 12,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
@@ -258,8 +310,8 @@
       },
       "analytics": {
         "views": 12,
-        "days": 2,
-        "lastDay": "2026-11-21"
+        "days": 3,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -272,7 +324,7 @@
         "views": 1139,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-25T09:37:24.221Z"
       },
       "youtube": {
         "privacy": "public",
@@ -281,9 +333,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 1139,
-        "days": 2,
-        "lastDay": "2026-11-21"
+        "views": 1141,
+        "days": 3,
+        "lastDay": "2026-11-22"
       }
     }
   ]

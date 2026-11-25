@@ -1,19 +1,70 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-24T19:34:40.014Z",
+  "generatedAt": "2026-11-25T18:43:10.348Z",
   "channel": "how-tech-and-ai-actually-work-chips-ai-p",
   "youtubeChecked": true,
   "summary": {
-    "videos": 8,
-    "checked": 7,
+    "videos": 9,
+    "checked": 9,
     "error": 0,
     "warning": 0,
-    "info": 0,
+    "info": 1,
     "owner": 0,
     "persistentErrors": 0
   },
-  "issues": [],
+  "issues": [
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
+      "videoId": "v-20261125-21",
+      "youtubeId": "EvV9FWi56vM",
+      "detail": "Dashboard shows 1339 views, YouTube 1417; live counts last refreshed 573 min ago (they refresh while the dashboard is open)."
+    }
+  ],
   "videos": [
+    {
+      "id": "L-20261124-21",
+      "title": "How Does ASML's EUV Machine Print a Chip With Light?",
+      "youtubeId": "ws89ucZtpeY",
+      "state": "published",
+      "publishAt": "2026-11-25T14:07:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "public",
+        "views": 0,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261125-21",
+      "title": "What Was Wrong With NVIDIA's First Chip?",
+      "youtubeId": "EvV9FWi56vM",
+      "state": "published",
+      "publishAt": "2026-11-25T00:37:00.000Z",
+      "dashboard": {
+        "views": 1339,
+        "likes": 27,
+        "comments": 2,
+        "liveAt": "2026-11-25T09:10:02.789Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1417,
+        "likes": 29,
+        "comments": 2
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261124-21",
       "title": "Why Does the Paris Metro Run on Rubber Tyres?",
@@ -21,14 +72,14 @@
       "state": "published",
       "publishAt": "2026-11-24T00:37:00.000Z",
       "dashboard": {
-        "views": 1588,
+        "views": 1615,
         "likes": 41,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:15.452Z"
+        "liveAt": "2026-11-25T09:10:02.789Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1597,
+        "views": 1625,
         "likes": 41,
         "comments": 0
       },
@@ -45,14 +96,14 @@
       "state": "published",
       "publishAt": "2026-11-23T14:51:00.000Z",
       "dashboard": {
-        "views": 3,
+        "views": 7,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:15.452Z"
+        "liveAt": "2026-11-25T09:10:02.789Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 3,
+        "views": 7,
         "likes": 0,
         "comments": 0
       },
@@ -69,21 +120,21 @@
       "state": "published",
       "publishAt": "2026-11-23T00:37:00.000Z",
       "dashboard": {
-        "views": 1404,
+        "views": 1407,
         "likes": 34,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:15.452Z"
+        "liveAt": "2026-11-25T09:10:02.789Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1404,
+        "views": 1408,
         "likes": 33,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1314,
+        "days": 1,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -93,21 +144,21 @@
       "state": "published",
       "publishAt": "2026-11-22T00:37:00.000Z",
       "dashboard": {
-        "views": 1405,
+        "views": 1417,
         "likes": 34,
         "comments": 1,
-        "liveAt": "2026-11-24T17:02:15.452Z"
+        "liveAt": "2026-11-25T09:10:02.789Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1412,
+        "views": 1424,
         "likes": 34,
         "comments": 1
       },
       "analytics": {
-        "views": 1276,
-        "days": 1,
-        "lastDay": "2026-11-21"
+        "views": 1391,
+        "days": 2,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -117,21 +168,21 @@
       "state": "published",
       "publishAt": "2026-11-21T02:37:00.000Z",
       "dashboard": {
-        "views": 292,
+        "views": 293,
         "likes": 3,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:15.452Z"
+        "liveAt": "2026-11-25T09:10:02.789Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 292,
+        "views": 297,
         "likes": 3,
         "comments": 0
       },
       "analytics": {
-        "views": 283,
-        "days": 2,
-        "lastDay": "2026-11-21"
+        "views": 290,
+        "days": 3,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -144,7 +195,7 @@
         "views": 117,
         "likes": 4,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:15.452Z"
+        "liveAt": "2026-11-25T09:10:02.789Z"
       },
       "youtube": {
         "privacy": "public",
@@ -154,8 +205,8 @@
       },
       "analytics": {
         "views": 114,
-        "days": 3,
-        "lastDay": "2026-11-21"
+        "days": 4,
+        "lastDay": "2026-11-22"
       }
     },
     {
@@ -168,7 +219,7 @@
         "views": 49,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:15.452Z"
+        "liveAt": "2026-11-25T09:10:02.789Z"
       },
       "youtube": {
         "privacy": "public",
@@ -178,8 +229,8 @@
       },
       "analytics": {
         "views": 45,
-        "days": 4,
-        "lastDay": "2026-11-21"
+        "days": 5,
+        "lastDay": "2026-11-22"
       }
     }
   ]
