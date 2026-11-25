@@ -1,0 +1,121 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 33851,
+  "duration_sec": 38,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "dossier",
+    "key": "C",
+    "bpm": 80
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "FedEx was down to $5,000. Its founder flew to Vegas.",
+        "start": 0.3,
+        "seconds": 2.93,
+        "window": 3.6,
+        "fill": 0.814
+      },
+      {
+        "scene": "jets",
+        "text": "Fred Smith's Federal Express flew parcels overnight in its own jets. So why was it nearly broke?",
+        "start": 3.9,
+        "seconds": 4.3,
+        "window": 4.93,
+        "fill": 0.872
+      },
+      {
+        "scene": "fuel",
+        "text": "In late nineteen seventy-two, Smith had raised $80M, and the fuel bills still ran ahead of it.",
+        "start": 8.83,
+        "seconds": 4.5,
+        "window": 5.13,
+        "fill": 0.877
+      },
+      {
+        "scene": "table",
+        "text": "When General Dynamics' board refused to put in more, Smith sat down at a blackjack table.",
+        "start": 13.97,
+        "seconds": 3.74,
+        "window": 4.4,
+        "fill": 0.85
+      },
+      {
+        "scene": "won",
+        "text": "He came back with $27,000. So did a card game save FedEx?",
+        "start": 18.37,
+        "seconds": 3.59,
+        "window": 4.27,
+        "fill": 0.841
+      },
+      {
+        "scene": "omen",
+        "text": "Smith called the win an omen, not the thing that saved it.",
+        "start": 22.63,
+        "seconds": 2.04,
+        "window": 2.67,
+        "fill": 0.764
+      },
+      {
+        "scene": "raise",
+        "text": "With time bought, he raised another $11M, and the jets kept flying.",
+        "start": 25.3,
+        "seconds": 3.15,
+        "window": 3.8,
+        "fill": 0.829
+      },
+      {
+        "scene": "payoff",
+        "text": "In the year to May, the company that nearly went under at a blackjack table took in $94.7B.",
+        "start": 29.1,
+        "seconds": 4.86,
+        "window": 5.53,
+        "fill": 0.879
+      },
+      {
+        "scene": "ending",
+        "text": "Luck or nerve: which one saved FedEx? Remember,",
+        "start": 34.63,
+        "seconds": 2.19,
+        "window": 2.87,
+        "fill": 0.763
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "doc-document-first": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.8,
+    "lufs": -15.7,
+    "music_under_voice_db": 18.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 8.934,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,138 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:48:19.415567+00:00",
+    "finishedAt": "2026-11-25T01:48:19.415567+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:50:38.676364+00:00",
+    "finishedAt": "2026-11-25T01:50:38.676364+00:00",
+    "notes": [
+      "doc video: 11 different pictures for 9 beats; a Short needs at least 12 (about one per cut)",
+      "note: beat 'fuel' opens like a line in one of the last scripts ('by the end'): new words",
+      "note: the title 'FedEx Was Down to {fact1}. Its Founder Went to Las Vegas' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:50:50.166069+00:00",
+    "finishedAt": "2026-11-25T01:50:50.166069+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title 'FedEx Was Down to {fact1}. Its Founder Went to Las Vegas' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:51:05.379369+00:00",
+    "finishedAt": "2026-11-25T01:51:05.379369+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title 'FedEx Was Down to {fact1}. Its Founder Went to Las Vegas' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-25T01:51:12.736067+00:00",
+    "finishedAt": "2026-11-25T01:51:47.908363+00:00",
+    "notes": [
+      "text 'left in the bank' at 2.5 s is 41.2 px, below the 44 px minimum",
+      "note: the turn starts at 48% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:51:48.863061+00:00",
+    "finishedAt": "2026-11-25T01:51:48.863061+00:00",
+    "notes": [
+      "All 5 facts confirmed on their source pages: Fox Business (fox​business.com/money/fred-smith-fedex-blackjack-winning-formula) shows last $5,000, won $27,000 at blackjack, $80M loans+equity by end of 1972, General Dynamics board refused, another $11M raised after, Smith's 'wasn't decisive, but it was an omen' quote (via Entrepreneur), rising fuel costs; FedEx IR release (23 Jun 2026) shows FY2026 revenue $94.7B, year ended 31 May. Verify list met: no payroll/fuel-bill claim for the $27,000 (says time bought), quote shown as text only, FY2026 still the latest year. No advice, journalistic tone, description ends with disclaimer. Notes: fuel line puts 'late 1972' next to fuel bills though fuel costs hit after April-1973 operations (date overlay sits on the raise, acceptable); source says 'detour to Las Vegas', 'flew' is the common telling."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:52:33.195144+00:00",
+    "finishedAt": "2026-11-25T01:52:33.195144+00:00",
+    "notes": [
+      "Re-review after timing edits: hook 'FedEx was down to $5,000. Its founder flew to Vegas.' and payoff '...nearly went under at a blackjack table took in $94.7B.' make the same claims as before; facts still confirmed: Fox Business ($5,000 left, $27,000 won, $80M by end-1972, GD board refused, $11M after, omen quote via Entrepreneur) and FedEx IR release 23 Jun 2026 (FY2026 revenue $94.7B, year to 31 May). Verify list met, no advice, disclaimer ends description. Notes: 'late 1972' sits beside fuel bills that came after April-1973 operations (date overlay is on the raise); source says 'detour to Las Vegas'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:52:23.894936+00:00",
+    "finishedAt": "2026-11-25T01:52:42.544002+00:00",
+    "notes": [
+      "38 s, night/dossier (preview only)",
+      "note: the turn starts at 48% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:53:24.958086+00:00",
+    "finishedAt": "2026-11-25T01:53:42.467559+00:00",
+    "notes": [
+      "38 s, night/dossier (preview only)",
+      "note: the turn starts at 48% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:54:05.716133+00:00",
+    "finishedAt": "2026-11-25T01:54:23.255176+00:00",
+    "notes": [
+      "38 s, night/dossier (preview only)",
+      "note: the turn starts at 48% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:54:35.160425+00:00",
+    "finishedAt": "2026-11-25T01:54:52.876263+00:00",
+    "notes": [
+      "38 s, night/dossier (preview only)",
+      "note: the turn starts at 48% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:55:24.913449+00:00",
+    "finishedAt": "2026-11-25T01:55:24.913449+00:00",
+    "notes": [
+      "Directed doc beats in 8 distinct places (envelope, first van, Falcon jet, blackjack table, winning hand + cash board, Memphis jet, hub poster, hub/envelope loop), figures on things, no overlaps or cut-offs, first frame names FedEx and holds the Vegas twist, loops to the envelope, pick-one ending, disclaimer in description, on par with v-20261122-32/33 and v-20261121-05; 25.0s still is a mid-whip blur at the raise cut only"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:55:37.378578+00:00",
+    "finishedAt": "2026-11-25T01:58:06.485203+00:00",
+    "notes": [
+      "38 s, night/dossier, peak -1.0 dB, mean -17.8 dB",
+      "note: the turn starts at 48% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-25T01:58:11.216120+00:00",
+    "finishedAt": "2026-11-25T01:58:11.216120+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
