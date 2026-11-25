@@ -1,1 +1,11 @@
-{"notifications": []}
+{
+  "notifications": [
+    {
+      "key": "market-query-what-happened-to",
+      "severity": "info",
+      "title": "The market scan's 'what happened to' search brings back off-niche Shorts",
+      "detail": "In the 24 Nov market feed, 24 of the 25 Shorts breakouts came from the bare 'what happened to' search: football, Roblox, K-pop and horror. The improver can't change the channel's market.json (outside every agent's files in scripts/guard.py), so the change is yours.",
+      "fix": "1. Open channels/business-documentaries-rise-and-fall-of/market.json. 2. Replace \"what happened to\" in queries with \"what happened to the brand\" and \"what happened to the company\". 3. Commit to main; the next market.yml run uses them."
+    }
+  ]
+}

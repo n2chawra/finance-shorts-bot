@@ -1,0 +1,59 @@
+{
+  "agent": "research",
+  "channel": "business-documentaries-rise-and-fall-of",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-25T19:33:13Z",
+  "finishedAt": "2026-11-25T19:38:00Z",
+  "summary": "Thursday titles night for Craze & Crash: added a Nutella brand-backlash Short (4.6M-view breakout) and an Adidas vs Puma business-war Short to the feed, one title challenger and one currency proposal.",
+  "decision": "acted",
+  "why": "The core brand_backlash lane had no open topic; our 3 figure-free titles held 48-57% stayed to watch against 12-33% for the 3 figure-led ones (n=3 a side, so a test).",
+  "findings": [
+    {
+      "title": "On-niche breakout: 'What happened to Nutella?'",
+      "detail": "4.64M views on 1.05M subscribers (4.4x), the only business Short among the market feed's 25 breakouts.",
+      "link": "https://youtube.com/shorts/jh3ur-wFvDU"
+    },
+    {
+      "title": "Titles without a money figure hold better (so far)",
+      "detail": "Nokia 48.5%, Tamagotchi 54.3%, Toyota vs Mercedes 56.8% stayed to watch vs Stanley 29.2%, Swoosh 33.3%, Dollar Shave Club 11.8%.",
+      "link": "channels/business-documentaries-rise-and-fall-of/metrics/videos.json"
+    },
+    {
+      "title": "Puma's 2025: sales down 13.1%, net loss EUR 645.5M; adidas a record EUR 24.8B",
+      "detail": "The payoff for the Dassler-brothers business war.",
+      "link": "https://annual-report.puma.com/2025/en/combined-management-report/economic-report/results-of-operations/index.html"
+    },
+    {
+      "title": "YouTube's title A/B test is still long-form only",
+      "detail": "Not available for Shorts per YouTube's help page.",
+      "link": "https://support.google.com/youtube/answer/16391400"
+    },
+    {
+      "title": "Claude Code 2.1.332",
+      "detail": "MCP-served skills (beta), PreSkillShellCommand hook, freeze fixes; nothing to change.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "2 topics in the feed",
+      "detail": "2026-11-26-nutella-lighter-recipe-short (brand_backlash, score 8.37), 2026-11-26-adidas-puma-brothers-short (business_war_short, 7.01)"
+    },
+    {
+      "title": "Challenger doc-title-no-figure",
+      "detail": "first-second, judged on stayed to watch",
+      "branch": "agent/research/2026-11-26/business-documentaries-rise-and-fall-of"
+    },
+    {
+      "title": "Proposal money-dkk-sek-chf (adopt)",
+      "detail": "add DKK/SEK/NOK/CHF to the money formatters so LEGO and other European figures can be shown as published"
+    }
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/business-documentaries-rise-and-fall-of/research/2026-11-26.md"
+    }
+  ]
+}
