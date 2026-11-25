@@ -830,6 +830,42 @@
     "apps/dashboard/src/app/scorecard/page.tsx": "2026-11-24",
     "apps/dashboard/e2e/smoke.spec.ts": "2026-11-24"
    }
+  },
+  {
+   "id": "calendar-smoke-subscribers",
+   "kind": "bug",
+   "title": "Calendar smoke test failed after the subscribers change",
+   "detail": "Today's Calendar change (subscribers in the day tooltip, month and week) didn't update the smoke test's tooltip wording, so both projects failed and every branch that runs the smoke tests would be blocked at merge. The test now expects the new wording and also checks the month's Subscribers card and a subscribers line under each week's likes.",
+   "page": "calendar",
+   "found": "2026-11-25",
+   "status": "done",
+   "done": "2026-11-25",
+   "lastTouched": {
+    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-25"
+   }
+  },
+  {
+   "id": "notif-seen-after-channel-switch",
+   "kind": "bug",
+   "title": "Notifications: a switched-to channel's items stayed unread",
+   "detail": "The page marked items seen once per visit (a boolean ref). Switching channel in the sidebar resets the queries without remounting the page, so the new channel's items were never marked seen and the bell kept counting them. It now tracks marked items by id.",
+   "page": "notifications",
+   "found": "2026-11-25",
+   "status": "done",
+   "done": "2026-11-25",
+   "lastTouched": {
+    "apps/dashboard/src/app/notifications/page.tsx": "2026-11-25",
+    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-25"
+   }
+  },
+  {
+   "id": "calendar-phone-stats-2x2",
+   "kind": "idea",
+   "title": "Calendar: show the four month cards 2x2 on a phone",
+   "detail": "Since today's subscribers card, the four month cards stack one per row on a phone (about 650 px), so the calendar itself starts below the first screen. A compact 2x2 grid on phones keeps the month at a glance and the calendar in view. Mobile dashboard guides say the same: phones get a reworked layout, not a stacked desktop one (Toptal, setproduct.com 'Dashboard UI design'). Calendar page was touched on 11-22, so after 11-29 unless the owner asks.",
+   "page": "calendar",
+   "found": "2026-11-25",
+   "status": "open"
   }
  ]
 }
