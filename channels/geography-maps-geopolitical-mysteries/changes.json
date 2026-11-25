@@ -1,21 +1,29 @@
 {
-  "note": "Each default change on this channel, one at a time (multi-channel step 4).",
-  "changes": [
-    {
-      "at": "2026-11-19T17:20:00Z",
-      "what": "maps: the country a line is about is traced round its border, coloured, with its whole flag inside",
-      "from": "countries drawn, painted or recoloured on their word, the border in plain ink",
-      "to": "a bright line with a glowing head runs round the border and closes on the word that names it, then stays lit; the country takes a colour and its uncut 3:2 flag sits inside it as big as fits (flat/map.tsx trace and flag; flat/flags.tsx, about 60 flags; director.md)",
-      "why": "owner notes 2026-11-19 on v-20261119-03 (animated border) and v-20261119-02 (flag rather than colour); owner: feedback goes straight away, not as a test; on the stills the owner asked for the flag fitted inside a coloured country rather than covering it",
-      "by": "improver"
-    },
-    {
-      "at": "2026-11-21T17:45:00Z",
-      "what": "sound and voice: effects on moments and camera moves; Shorts rotate six British voices",
-      "from": "only the effects the script named",
-      "to": "up to 2 a beat, 0.8 s apart, from the channel's own effects list, picked by what the moment does (pop/pin on things appearing, a swish on moves, a thud on stamps, a tick on counters, a scribble on lines; renderer/timeline/build.py directed_cues); the channel's per-minute cap still applies; Shorts rotate bm_george, bf_emma, bm_lewis, bf_isabella, bm_fable, bf_alice, the one used longest ago first (cycle/voices.json)",
-      "why": "owner notes 2026-11-20 on v-20261120-05 (cmwoj49a: sounds for small things; cmwoj53c: more voice types to compare)",
-      "by": "improver"
-    }
-  ]
+ "note": "Each default change on this channel, one at a time (multi-channel step 4).",
+ "changes": [
+  {
+   "at": "2026-11-19T17:20:00Z",
+   "what": "maps: the country a line is about is traced round its border, coloured, with its whole flag inside",
+   "from": "countries drawn, painted or recoloured on their word, the border in plain ink",
+   "to": "a bright line with a glowing head runs round the border and closes on the word that names it, then stays lit; the country takes a colour and its uncut 3:2 flag sits inside it as big as fits (flat/map.tsx trace and flag; flat/flags.tsx, about 60 flags; director.md)",
+   "why": "owner notes 2026-11-19 on v-20261119-03 (animated border) and v-20261119-02 (flag rather than colour); owner: feedback goes straight away, not as a test; on the stills the owner asked for the flag fitted inside a coloured country rather than covering it",
+   "by": "improver"
+  },
+  {
+   "at": "2026-11-21T17:45:00Z",
+   "what": "sound and voice: effects on moments and camera moves; Shorts rotate six British voices",
+   "from": "only the effects the script named",
+   "to": "up to 2 a beat, 0.8 s apart, from the channel's own effects list, picked by what the moment does (pop/pin on things appearing, a swish on moves, a thud on stamps, a tick on counters, a scribble on lines; renderer/timeline/build.py directed_cues); the channel's per-minute cap still applies; Shorts rotate bm_george, bf_emma, bm_lewis, bf_isabella, bm_fable, bf_alice, the one used longest ago first (cycle/voices.json)",
+   "why": "owner notes 2026-11-20 on v-20261120-05 (cmwoj49a: sounds for small things; cmwoj53c: more voice types to compare)",
+   "by": "improver"
+  },
+  {
+   "at": "2026-11-25T17:10:00Z",
+   "what": "look: floods and seas are drawn with MapWater",
+   "from": "a flat sea-coloured shape scaled up from a point, a plain stroked line",
+   "to": "a wavy front with a rolling foam line and spray, a shallow band, drifting ripples and waves lapping the new shore (remotion/src/flat/water.tsx; director.md rule)",
+   "why": "owner note cmwvnu9lg on v-20261125-12 (2026-11-25): water should grow like waves",
+   "by": "improver"
+  }
+ ]
 }

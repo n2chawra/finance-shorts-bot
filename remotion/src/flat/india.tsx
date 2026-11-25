@@ -34,11 +34,20 @@ import data from "./data/india.json";
 type Props = { name: string; hi: string; kind?: "state" | "ut"; code?: string };
 type Shape = Feature<Geometry, Props>;
 const DATA = data as unknown as { outline: Shape; states: Shape[]; neighbours: Shape[]; adjacent: Record<string, string[]> };
+// Kerala is officially Keralam since 25 Aug 2026 (The Kerala (Alteration of Name) Act, 2026): set here too, so
+// rebuilding data/india.json from Natural Earth (scripts/build_india_map.py) never brings the old name back.
+for (const st of DATA.states) if (st.properties.name === "Kerala") (st.properties as { hi: string }).hi = "केरलम";
 
 /** Every state and UT by its English name ("Uttar Pradesh", "Ladakh", "Dadra and Nagar Haveli and Daman and Diu"). */
 export const INDIA_STATES: readonly string[] = DATA.states.map((s) => s.properties.name);
-/** A state's or UT's name in Devanagari (Natural Earth's `name_hi`). */
-export const stateHi = (name: string): string => DATA.states.find((s) => s.properties.name === name)?.properties.hi ?? name;
+/** A state's new official name, for code that names it in English (owner research, 2026-11-25: Kerala is
+ * officially Keralam since 25 Aug 2026). The data keeps the old key so older videos still resolve. */
+export const STATE_ALIASES: Readonly<Record<string, string>> = { keralam: "Kerala" };
+const keyOf = (name: string): string => STATE_ALIASES[name.toLowerCase()] ?? name;
+/** The name a state goes by today, in English ("Kerala" -> "Keralam"). */
+export const stateNow = (name: string): string => Object.entries(STATE_ALIASES).find(([, k]) => k === name)?.[0].replace(/^./, (c) => c.toUpperCase()) ?? name;
+/** A state's or UT's name in Devanagari (Natural Earth's `name_hi`; Kerala as केरलम, its name since 2026). */
+export const stateHi = (name: string): string => DATA.states.find((s) => s.properties.name === keyOf(name))?.properties.hi ?? name;
 /** A colour for each state from `palette`, never the same as a state it touches (greedy, biggest
  * neighbourhoods first; deterministic). `offset` rotates the palette so videos don't all look alike. */
 export function stateColours(palette: string[], names: readonly string[] = INDIA_STATES, offset = 0): Record<string, string> {
@@ -55,7 +64,7 @@ export function stateColours(palette: string[], names: readonly string[] = INDIA
   }
   return out;
 }
-const byName = (name: string) => DATA.states.find((s) => s.properties.name.toLowerCase() === name.toLowerCase());
+const byName = (name: string) => DATA.states.find((s) => s.properties.name.toLowerCase() === keyOf(name).toLowerCase());
 
 /** The relief image's extent (degrees): 60 px a degree. */
 const RELIEF = { lon0: 50, lon1: 115, lat0: -15, lat1: 54, file: "maps/south-asia-relief.jpg" };
@@ -140,7 +149,7 @@ export const IndiaMap: React.FC<{
   const outline = path(DATA.outline) ?? undefined;
   const scale = proj.scale() / 1500;              // line weights grow a little as the camera closes in
   const sw = Math.max(1.5, Math.min(4, 2.2 * scale));
-  const fxOf = (name: string) => states[name];
+  const fxOf = (name: string) => states[name] ?? states[stateNow(name)];
   const painted = DATA.states.filter((s) => fxOf(s.properties.name));
   return (
     <MapCtx.Provider value={{ proj, path }}><FrameSize.Provider value={{ w, h }}>

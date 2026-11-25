@@ -51,7 +51,7 @@ India outline. Inside a `Stage`/`View` (or a bare SVG):
 | `Neighbour` | a neighbouring country (China, Pakistan, Nepal, Bhutan, Bangladesh, Myanmar…) filled outside India's official outline, its whole `flag` fitted and clipped inside it (`k`, `flagK`, `lift`) (v-20261125-62) |
 | `BorderLine` | India's land border with a neighbour, a bright line drawn on as `k` goes 0 → 1, only where it runs along India's outline (v-20261125-62) |
 | `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
-| `INDIA_STATES`, `stateHi(name)` | the 36 names (English) and each one's Devanagari name |
+| `INDIA_STATES`, `stateHi(name)`, `stateNow(name)` | the 36 names (English, the data keys) and each one's Devanagari name; Kerala shows as केरलम / Keralam, its official name since 25 Aug 2026 ("Keralam" also works as a key) |
 
 `MapLabel`, `MapPin` and `MapRoute` work inside `IndiaMap` too. `IndiaSheet` (Root) is a test reel:
 `npx remotion still src/index.ts IndiaSheet out.png --frame=100`.
@@ -69,10 +69,11 @@ Natural Earth country outlines (public domain, `world-atlas`) drawn in the house
 | `MapRoute` | a great-circle route through stops, drawn as `k` goes 0 → 1; `mover` rides its tip (a ship, a plane) |
 | `Lift` | a country's own shape laid over another place at true scale (Chile over India), sliding as `k` goes 0 → 1 |
 | `useAt()` | [lon, lat] → [x, y] on the current map, to stand a character or a sign on a place |
+| `MapWater` (`water.tsx`) | water that moves (owner, 2026-11-25): a sea, flood or lake spreading over `area` ([lon, lat] ring) or a country `name` from `from` as `k` goes 0 → 1: a wavy front with a rolling foam line and spray, a shallow band, ripples drifting on deep water, waves lapping the new shore once full; pass `t` (`m.t`). Works inside `WorldMap` and `IndiaMap` |
 
 Country names are Natural Earth's ("Chile", "Gambia", "Bosnia and Herz."). Borders are as controlled; a
 video about a disputed border follows that country's official map or uses `hide`. `MapSheet` (Root) is a
-test reel: `npx remotion still src/index.ts MapSheet out.png --frame=105`.
+test reel: `npx remotion still src/index.ts MapSheet out.png --frame=105` (`--frame=320` for `MapWater`).
 
 ## `cast.tsx`
 

@@ -1,18 +1,45 @@
 {
  "proposals": [
-  {"id": "im-reach-india-channel", "date": "2026-11-25", "area": "pipeline",
+  {
+   "id": "im-reach-india-channel",
+   "date": "2026-11-25",
+   "area": "pipeline",
    "title": "Let an India-only channel tell India topics without the global/local quota",
    "change": "generator/reach.py applies the English channels' rule to every channel: at most 1 local Short a day and 4 local in the last 11, and a global video must be in USD. India Maps (Hindi, INR, India's map only) has no global videos by design, so from tomorrow its second daily Short fails check-plan, and after 4 videos every Short does. Give a channel whose audience is one country a pack setting (e.g. channel.json \"audience\": \"IN\" / reach mode \"home\") under which reach.check_plan treats its home-country topics as its 'global' (no USD rule, no local quota, no 1M-views reason) and for_state reports local_allowed true; keep the rule unchanged for every other channel. Add tests in generator/tests/test_reach.py for both cases (tests only grow).",
-   "evidence": ["generator/reach.py LOCAL_PER_DAY / LOCAL_MAX / check_plan", "config/channels.json india-maps dailyVideoTarget 2", "channels/india-maps/channel.json currency INR, language hi"],
+   "evidence": [
+    "generator/reach.py LOCAL_PER_DAY / LOCAL_MAX / check_plan",
+    "config/channels.json india-maps dailyVideoTarget 2",
+    "channels/india-maps/channel.json currency INR, language hi"
+   ],
    "expectedEffect": "India Maps can make its 2 Shorts a day; without it the channel ships 1 a day, then none after its 4th video.",
-   "confidence": "high", "effort": "S", "risk": "Must not loosen the rule for the English channels: scope it to the channel setting.",
-   "metric": "qa_failures", "status": "new", "route": "adopt", "priority": "high"},
-  {"id": "im-keralam-label", "date": "2026-11-25", "area": "text",
+   "confidence": "high",
+   "effort": "S",
+   "risk": "Must not loosen the rule for the English channels: scope it to the channel setting.",
+   "metric": "qa_failures",
+   "status": "done",
+   "route": "adopt",
+   "priority": "high",
+   "reason": "already on main: channel.json homeCountry IN and generator/reach.py skip the quota and USD rule for a one-country channel (owner, 2026-11-25)"
+  },
+  {
+   "id": "im-keralam-label",
+   "date": "2026-11-25",
+   "area": "text",
    "title": "Kerala is officially Keralam since August 2026: update the map label",
    "change": "The Kerala (Alteration of Name) Bill 2026 passed Lok Sabha 11 Aug and Rajya Sabha 12 Aug 2026 and got the President's assent 18 Aug 2026. remotion/src/flat/data/india.json still labels it name 'Kerala', hi 'केरल'. In scripts/build_india_map.py set the display names to 'Keralam' / 'केरलम' (keep 'Kerala' as an accepted alias so old videos and the topic feed's items still resolve), regenerate india.json, and teach the writer prompt/recipe to say केरलम for the state today (केरल only for history before 2026).",
-   "evidence": ["https://newsonair.gov.in/bill-altering-name-of-state-of-kerala-to-keralam-gets-nod-from-parliament/", "https://www.onmanorama.com/kerala/top-news/2026/08/18/president-murmu-gives-assent-to-bill-renaming-kerala-as-keralam.html", "https://prsindia.org/files/bills_acts/bills_parliament/2026/Kerala_(Alteration_of_Name)_Bill_2026.pdf"],
+   "evidence": [
+    "https://newsonair.gov.in/bill-altering-name-of-state-of-kerala-to-keralam-gets-nod-from-parliament/",
+    "https://www.onmanorama.com/kerala/top-news/2026/08/18/president-murmu-gives-assent-to-bill-renaming-kerala-as-keralam.html",
+    "https://prsindia.org/files/bills_acts/bills_parliament/2026/Kerala_(Alteration_of_Name)_Bill_2026.pdf"
+   ],
    "expectedEffect": "No outdated state name on an India-map channel whose viewers correct the map in comments.",
-   "confidence": "high", "effort": "S", "risk": "Old videos re-render with the new label unless the alias keeps them; that is fine.",
-   "metric": "qa_failures", "status": "new", "route": "adopt", "priority": "high"}
+   "confidence": "high",
+   "effort": "S",
+   "risk": "Old videos re-render with the new label unless the alias keeps them; that is fine.",
+   "metric": "qa_failures",
+   "status": "adopted",
+   "route": "adopt",
+   "priority": "high"
+  }
  ]
 }
