@@ -1,13 +1,6 @@
 {
   "notifications": [
     {
-      "key": "tests-red-nv1board",
-      "severity": "critical",
-      "title": "main's tests fail, so no agent branch can merge",
-      "detail": "generator/tests/test_images.py::test_the_library_photos_are_cut_out fails on main: the photo 'nv1board' (a graphics card, File:Diamond Edge 3D 3400.jpg) in remotion/public/real/credits.json is not a logo and has no face cut-out, and every non-logo photo must have one. A tech video run added it. The auditor's branch was blocked last night for this and tonight's improver branch will be too. No agent may edit remotion/public/real.",
-      "fix": "1. In remotion/public/real/credits.json set \"logo\": true on the \"nv1board\" entry (an object is shown as a die-cut sticker, like a logo). 2. Commit to main. 3. Re-run the Agent merge workflow for agent/improver/2026-11-25 (or it merges with tomorrow's branch)."
-    },
-    {
       "key": "pace-in-channel-json",
       "severity": "info",
       "title": "Faster voice is on; channel.json still says 0.92",
