@@ -15,6 +15,11 @@ at most LOCAL_MAX of the last WINDOW videos plus this one (about two in three gl
 Shorts at most one local a day.
 
 History written before this rule has no `reach`; only entries that carry one are counted.
+
+A one-country channel (owner, 2026-11-25: "video generation makes 2 videos, not 1") names its country in
+`channel.json` → `homeCountry` (India Maps: "IN"). Its whole audience lives there, so a video about that
+country is its everyday video, not a local exception: no quota, no daily cap, no reason needed, and no USD
+rule (it is told in the channel's own currency). Every other channel keeps the rule above.
 """
 from __future__ import annotations
 
@@ -55,9 +60,13 @@ def locals_today(entries: list[dict], today: str) -> int:
     return sum(1 for e in entries if reach_of(e) == "local" and history.ist_day(e["created_at"]) == today)
 
 
-def for_state(entries: list[dict], today: str, fmt: str) -> dict:
-    """What the planner may pick next."""
+def for_state(entries: list[dict], today: str, fmt: str, home: str | None = None) -> dict:
+    """What the planner may pick next. `home`: the channel's `homeCountry` (a one-country channel)."""
     window = counted(entries, fmt)
+    if home:
+        return {"local_allowed": True, "recent": [reach_of(e) for e in window],
+                "rule": f"a one-country channel ({home}): every video is for its home audience; use topic.reach "
+                        f"\"local\" in the channel's currency, no reason or quota needed"}
     n_local = sum(1 for e in window if reach_of(e) == "local")
     room = LOCAL_MAX[fmt] - n_local
     if fmt in LOCAL_PER_DAY:
@@ -69,11 +78,13 @@ def for_state(entries: list[dict], today: str, fmt: str) -> dict:
                     + (", at most one local Short a day" if fmt in LOCAL_PER_DAY else "")}
 
 
-def check_plan(plan: dict, entries: list[dict], today: str, fmt: str) -> list[str]:
+def check_plan(plan: dict, entries: list[dict], today: str, fmt: str, home: str | None = None) -> list[str]:
     topic = plan.get("topic") or {}
     reach = topic.get("reach")
     if reach not in REACHES:
         return ["topic.reach must be 'global' (anyone in the world can relate: the default) or 'local' (one country)"]
+    if home:
+        return []   # a one-country channel: its home-country videos are its everyday videos (docstring)
     out: list[str] = []
     if reach == "global":
         if plan.get("currency") != "USD":

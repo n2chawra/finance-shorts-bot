@@ -71,3 +71,16 @@ def test_a_one_country_brand_is_not_global():
     assert any("one country" in x for x in reach.check_plan(p, [], TODAY, "short"))
     assert reach.check_plan(plan("global") | {"subject": "McDonald's"}, [], TODAY, "short") == []
     assert reach.check_plan(plan("global") | {"subject": "Target audience"}, [], TODAY, "short") == []
+
+
+def test_one_country_channel_has_no_local_quota():
+    # owner, 2026-11-25: India Maps (homeCountry IN) makes 2 Shorts a day, all about India
+    today = [entry(0, "local", TODAY)]
+    window = [entry(i, "local") for i in range(10)]
+    p = plan("local", "INR")
+    assert reach.check_plan(p, today + window, TODAY, "short", home="IN") == []
+    assert reach.for_state(today + window, TODAY, "short", home="IN")["local_allowed"]
+    assert reach.check_plan({"topic": {}, "currency": "INR"}, [], TODAY, "short", home="IN")   # reach still required
+    # every other channel keeps the rule
+    assert reach.check_plan(p, today, TODAY, "short")
+    assert not reach.for_state(today, TODAY, "short")["local_allowed"]

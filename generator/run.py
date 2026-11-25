@@ -259,7 +259,7 @@ def state(root: Path = ROOT, fmt: str = "short") -> dict:
         "blocked_categories": blocked,
         "topic_feed": feed,
         # global first (owner, 2026-10-23): about two in three videos anyone in the world can relate to
-        "reach": reach.for_state(entries, today, fmt),
+        "reach": reach.for_state(entries, today, fmt, pack.load(root=root).get("homeCountry")),
         # what to make: formats people already watch in the millions (improvement/research/formats.json)
         "formats": formats.for_state(root, fmt),
         # big money first (owner, 2026-10-30): core formats fill at least 2 of every 3 Shorts
@@ -343,7 +343,8 @@ def check_plan(vid: str, root: Path = ROOT) -> list[str]:
         problems += formats.mix_problems(plan, entries, root, fmt)
         if fmt == "short" and plan.get("template") == "short_story":
             problems += shapes.check_plan(plan, entries, root)
-        problems += reach.check_plan(plan, entries, history.ist_day(history.now().isoformat()), fmt)
+        problems += reach.check_plan(plan, entries, history.ist_day(history.now().isoformat()), fmt,
+                                     pack.load(root=root).get("homeCountry"))
         problems += topics.check_plan(plan, entries, history.ist_day(history.now().isoformat()),
                                       variety.blocked_categories(entries), variety.allowed_templates(entries, enabled), root, fmt)
         if not 20 <= len(plan["title"]) <= 90:
