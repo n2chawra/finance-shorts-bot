@@ -2,13 +2,14 @@
  * A test reel for the map component (src/flat/map.tsx), 1080×1920, 6 s: the world map with Chile
  * recoloured, a route from Shanghai to Rotterdam drawing through Suez, Chile lifted onto India for
  * scale, Gambia framed inside Senegal, and (from 6 s) Greenland traced round its border with Greenland and
- * Denmark under their flags. For checking the look in stills; not part of any video.
+ * Denmark under their flags, and (from 9 s) the sea flooding the Afar with MapWater. For checking the look in stills; not part of any video.
  */
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 
 import { INK } from "../flat/kit";
 import { Lift, MapLabel, MapPin, MapRoute, WorldMap } from "../flat/map";
+import { MapWater } from "../flat/water";
 
 const W = 1080, H = 1920;
 const k = (f: number, a: number, b: number) => interpolate(f, [a, b], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -28,6 +29,12 @@ export const MapSheet: React.FC = () => {
         ) : f < 120 ? (
           <WorldMap w={W} h={H} fit={["India", "Pakistan", "Bangladesh", "Nepal"]} pad={120} kind="flat" colors={{ India: { fill: "#ffc43d" } }}>
             <Lift name="Chile" to={[78, 22]} k={k(f, 60, 100)} rot={0} label={f > 100 ? "Chile" : undefined} />
+          </WorldMap>
+        ) : f >= 270 ? (
+          <WorldMap w={W} h={H} center={[41.5, 12.4]} scale={4200} kind="flat" political={0.5} colors={{ Ethiopia: { fill: "#e9c46a" } }}>
+            <MapWater from={[43.3, 12.6]} k={k(f, 275, 345)} t={f}
+              area={[[39.8, 14.6], [41.0, 14.8], [42.4, 13.6], [43.3, 12.6], [42.8, 11.4], [41.6, 10.6], [40.4, 10.8], [39.8, 12.0]]} />
+            <MapLabel at={[41.2, 12.6]} text="AFAR" k={k(f, 280, 290)} />
           </WorldMap>
         ) : f >= 180 ? (
             <WorldMap w={W} h={H} center={[-25, 66]} scale={1100} kind="flat" look="vintage" political={0.55}

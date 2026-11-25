@@ -33,6 +33,11 @@ every video look the same: one skyline, floating cards, a header of text. Never 
 - **The hook shows the real subject** (owner, 2026-11-19, every channel with true stories): the person's
   freely licensed photo head or the company's logo, big and named, from frame 0 (writer.md, "The first
   frame"). Never a show's or film's poster, logo or frames: they are copyrighted.
+- **Water moves like water** (owner, 2026-11-25, v-20261125-12: "floods and water moving could have been
+  animated much better… growing like waves; right now it's a shape and line"). A sea breaking in, a flood, a
+  dam burst, a rising lake or a tide is drawn with `MapWater` (`remotion/src/flat/water.tsx`): a wavy front with
+  foam rolling out from where the water comes in on its word, a shallow band, ripples drifting on the deep water
+  and waves lapping the new shore. Never a flat polygon that scales up or a plain stroked line for water.
 - **Every listed word is a picture, and something always moves** (owner, 2026-11-18: "small words spoken
   can be animation or shown, like the oil, cloth… keep animating things on screen as much as you can so
   users don't leave"). When a line names things in a row ("phones, clothes, cars and oil"), each one

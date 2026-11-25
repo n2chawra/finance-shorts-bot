@@ -69,10 +69,11 @@ Natural Earth country outlines (public domain, `world-atlas`) drawn in the house
 | `MapRoute` | a great-circle route through stops, drawn as `k` goes 0 → 1; `mover` rides its tip (a ship, a plane) |
 | `Lift` | a country's own shape laid over another place at true scale (Chile over India), sliding as `k` goes 0 → 1 |
 | `useAt()` | [lon, lat] → [x, y] on the current map, to stand a character or a sign on a place |
+| `MapWater` (`water.tsx`) | water that moves (owner, 2026-11-25): a sea, flood or lake spreading over `area` ([lon, lat] ring) or a country `name` from `from` as `k` goes 0 → 1: a wavy front with a rolling foam line and spray, a shallow band, ripples drifting on deep water, waves lapping the new shore once full; pass `t` (`m.t`). Works inside `WorldMap` and `IndiaMap` |
 
 Country names are Natural Earth's ("Chile", "Gambia", "Bosnia and Herz."). Borders are as controlled; a
 video about a disputed border follows that country's official map or uses `hide`. `MapSheet` (Root) is a
-test reel: `npx remotion still src/index.ts MapSheet out.png --frame=105`.
+test reel: `npx remotion still src/index.ts MapSheet out.png --frame=105` (`--frame=320` for `MapWater`).
 
 ## `cast.tsx`
 
