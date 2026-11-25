@@ -40,6 +40,26 @@
       "priority": "high",
       "adoptedAt": "2026-11-21",
       "note": "generator/planrules.py, cycle/plan-rules.json mapAnswer; planner.md"
+    },
+    {
+      "id": "geo-cover-names-the-place",
+      "date": "2026-11-26",
+      "area": "title",
+      "title": "Covers that say 'it' or 'here' should also show the place's name",
+      "change": "On a scene-layout cover (script.thumbnail, layout 'scene'), when the big words don't name the place (5 of our last 8 covers: 'Why is it Danish?', 'Who lives here?', 'How did it grow?', 'What is it stopping?', 'Why the hole?'), draw thumbnail.tag (already filled in every script: 'Australia', 'Lesotho', 'Russia') as a large label under the words. Today Thumbnail.tsx draws tag only inside the figure card, so a scene cover without a figure shows no name (the Dingo Fence and Africa covers have none). Behind a flag on half the Shorts.",
+      "evidence": [
+        "channels/geography-maps-geopolitical-mysteries/videos/*/thumbnail.png (last 8)",
+        "metrics/analytics.json: cover CTR 0-7.1% on 22-363 impressions; 96% of views come from the Shorts feed, where the cover isn't shown",
+        "market.json breakouts: 30 of 30 titles name the place or subject ('What If Africa SPLIT in Two?', 'How Italy Became One Country')"
+      ],
+      "expectedEffect": "More taps from search and the channel page (about 4% of our views); no effect on the feed.",
+      "confidence": "low",
+      "effort": "S",
+      "risk": "Small: a cover-only change; the cover must keep its top third clear.",
+      "metric": "ctr (impressions click-through, analytics.json) with avgViewPct alongside",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }

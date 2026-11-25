@@ -1,0 +1,53 @@
+{
+  "agent": "research",
+  "channel": "geography-maps-geopolitical-mysteries",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-25T18:42:58Z",
+  "finishedAt": "2026-11-25T18:49:24Z",
+  "summary": "Thursday (titles, covers, first frame) for the geography channel: added 3 what-if topics with millions-view references (Pangaea 12M, Mediterranean 6.9M, Bering bridge 2.9M) and one small cover proposal.",
+  "decision": "acted",
+  "why": "The feed had 3 open what_if_world topics against 11 why_shaped, and the planner alternates formats. 96% of our views come from the Shorts feed, so the title barely matters for discovery; covers that say 'it' instead of the place are a cheap fix for search and channel-page taps.",
+  "findings": [
+    {
+      "title": "96% of views come from the Shorts feed, 2.8% from search",
+      "detail": "Cover click-through 0-7.1% on 22-363 impressions; the first frame is what decides, and ours already shows the place, flag and source.",
+      "link": "channels/geography-maps-geopolitical-mysteries/metrics/analytics.json"
+    },
+    {
+      "title": "5 of our last 8 covers say 'it' or 'here' instead of the place",
+      "detail": "thumbnail.tag holds the name but Thumbnail.tsx only draws it inside a figure card; proposal geo-cover-names-the-place.",
+      "link": "channels/geography-maps-geopolitical-mysteries/research/2026-11-26.md"
+    },
+    {
+      "title": "What If Pangea Came Back? 12M views on a 392K channel",
+      "detail": "The strongest what-if demand in the niche; added as a high-priority topic.",
+      "link": "https://youtube.com/shorts/ovyoQMhGsYU"
+    },
+    {
+      "title": "What If Mediterranean Sea Becomes Lake?? 6.9M on 92.1K subs (75x)",
+      "detail": "It really happened 5.96 million years ago; added with six sourced figures.",
+      "link": "https://youtube.com/shorts/yOcOkexajMk"
+    },
+    {
+      "title": "Emoji, caps and hashtags in breakout titles: no clear effect",
+      "detail": "Median views with vs without differ little (217K vs 174K emoji, 168K vs 215K hashtags); no title test queued."
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 topics added to the feed",
+      "detail": "Pangaea, Mediterranean dried up, Bering Strait bridge (all what_if_world)."
+    },
+    {
+      "title": "Proposal geo-cover-names-the-place",
+      "detail": "Draw the place name on scene covers whose words don't name it, behind a flag."
+    }
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/geography-maps-geopolitical-mysteries/research/2026-11-26.md"
+    }
+  ]
+}
