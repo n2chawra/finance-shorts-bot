@@ -5504,6 +5504,34 @@
       ],
       "commit": "afde1cf4b83bf8da1886c5311a55c072fcc8d95e",
       "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45651629125"
+    },
+    {
+      "at": "2026-11-25T16:45:52+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "auditor",
+      "branch": "agent/auditor/2026-11-26",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "apps/dashboard/src/lib/posting-plan.ts",
+        "channels/business-documentaries-rise-and-fall-of/analysis/videos.json",
+        "channels/disasters-and-engineering-failures-expla/analysis/videos.json",
+        "channels/geography-maps-geopolitical-mysteries/analysis/videos.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/auditor.json",
+        "channels/geography-maps-geopolitical-mysteries/notifications/auditor.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/analysis/videos.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/feedback-acks/auditor.json",
+        "channels/india-maps/notifications/auditor.json",
+        "generator/tests/test_images.py",
+        "improvement/activity/2026-11-26-auditor.json",
+        "improvement/auditor/2026-11-26.md",
+        "improvement/auditor/backlog.json",
+        "improvement/auditor/state.json"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45656416990"
     }
   ]
 }
