@@ -156,6 +156,35 @@ test("unread notifications are announced to screen readers", async ({ page }) =>
   await expect(page.getByRole("img", { name: "Unread" }).first()).toBeAttached();
 });
 
+test("switching channel on the Notifications page marks that channel's items read too", async ({ page }) => {
+  await signIn(page);
+  // the page marked items seen once per visit; switching channel refetches without remounting, so the
+  // new channel's items stayed unread. Serve one unread item per channel (its id names the channel).
+  const seen: string[][] = [];
+  await page.route("**/api/notifications", async (route) => {
+    if (route.request().method() === "PATCH") {
+      const body = route.request().postDataJSON();
+      if (body.action === "seen") seen.push(body.ids);
+      return route.fulfill({ json: { ok: true } });
+    }
+    const res = await route.fetch();
+    const body = await res.json();
+    const ch = /(?:^|;\s*)channel=([^;]+)/.exec(route.request().headers()["cookie"] ?? "")?.[1] ?? "default";
+    body.open[0].seenAt = null;
+    body.open[0].id = `${body.open[0].id}-${ch}`;
+    await route.fulfill({ response: res, json: body });
+  });
+  await page.goto("/notifications");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toHaveText(/Notifications/, { timeout: 30_000 });
+  await expect.poll(() => seen.length).toBe(1);
+  const trigger = page.getByRole("button", { name: /Switch channel/ }).filter({ visible: true }).first();
+  await trigger.click();
+  await // the current channel comes first in the sample list; pick the last one
+  await page.getByRole("menuitem").filter({ hasNotText: "Manage channels" }).last().click();
+  await expect.poll(() => seen.length, { timeout: 15_000 }).toBe(2);
+  expect(seen[1][0]).not.toBe(seen[0][0]);
+});
+
 test("queue rows never clip their text sideways", async ({ page }) => {
   await signIn(page);
   await page.goto("/queue");
