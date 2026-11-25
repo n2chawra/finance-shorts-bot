@@ -61,6 +61,27 @@
       "priority": "normal",
       "reason": "A note for three particular topics belongs on those topics in the feed (research adds it to their `verify`/notes, which the writer and fact reviewer read); the profile's cause-not-gore rule and the title rule already cover it, and a general writer change would be a recipe change for the weekly loop.",
       "decidedAt": "2026-11-23"
+    },
+    {
+      "id": "dd-long-title-event-3d",
+      "date": "2026-11-26",
+      "area": "title",
+      "title": "Long videos: name the event plus one concrete stake in the title, and cut the thumbnail from the 3D reconstruction",
+      "change": "For long videos only (Studio's title and thumbnail step), test on alternate long videos: (A) title = '<stake with one sourced figure or moment> | <Event name> <year>' or '<Event name>: <question>', always naming the event as people search it (e.g. 'The Last Text Before 25 People Died | Chatsworth Train Crash'); add 'in 3D' / 'Rebuilt in 3D' when the video has the three-kit reconstruction. (B) thumbnail = a frame of the type-accurate 3D shot of the actual vehicle or structure at the moment of failure with the failing part ringed in red and at most 3 words, instead of the flat cartoon. The 3D label rule still applies on screen. Measure impressions CTR and views7d per long video on each side.",
+      "evidence": [
+        "https://youtube.com/watch?v=m32ujraLWos",
+        "https://youtube.com/watch?v=5pSCOWkX8Fk",
+        "https://youtube.com/watch?v=wgYuDNM9Ric",
+        "https://youtube.com/watch?v=_OvEgQlP4v0"
+      ],
+      "expectedEffect": "More search and browse clicks on long videos, which are at 0-15 views after 1-4 days. Small-channel breakouts in this week's scan all name the event and most promise 3D: Fatal Chain Chatsworth 9.6K on 606 subs (15.8x), Last Altitude 'Every Clue Rebuilt in 3D' 31K on 1.68K (18x), Time of Impact Germanwings 'Final 10 Minutes' 17.8K on 397 (45x).",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "Event names can read as news-bait; keep the report's words and no gore or victim imagery in the thumbnail (limited ads).",
+      "metric": "views7d",
+      "status": "new",
+      "route": "experiment",
+      "priority": "normal"
     }
   ]
 }
