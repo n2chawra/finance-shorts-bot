@@ -164,6 +164,31 @@ const FLAGS: Record<string, Draw> = {
   Canada: both(v(["#d80621", W, "#d80621"], [1, 2, 1]), ({ x, y, w, h: hh }) => leaf(x + w / 2, y + hh / 2, hh * 0.62, "#d80621")),
   Japan: disc(W, "#bc002d"),
   Bangladesh: disc("#006a4e", "#f42a41", 0.05),
+  // Nepal, Bhutan and Myanmar added for v-20261125-62 (India's land borders), simplified like the rest
+  Nepal: ({ x, y, w, h: hh }) => {
+    const sw = hh * 0.06;
+    const d = `M ${x + sw} ${y + sw} L ${x + w * 0.78} ${y + hh * 0.47} L ${x + w * 0.34} ${y + hh * 0.47} L ${x + w * 0.82} ${y + hh - sw} L ${x + sw} ${y + hh - sw} Z`;
+    return (
+      <g>
+        <path d={d} fill="#dc143c" stroke="#003893" strokeWidth={sw} strokeLinejoin="miter" />
+        <path d={`M ${x + w * 0.1} ${y + hh * 0.3} A ${hh * 0.11} ${hh * 0.11} 0 0 0 ${x + w * 0.32} ${y + hh * 0.3} A ${hh * 0.09} ${hh * 0.07} 0 0 1 ${x + w * 0.1} ${y + hh * 0.3} Z`} fill={W} />
+        <circle cx={x + w * 0.21} cy={y + hh * 0.36} r={hh * 0.045} fill={W} />
+        {star(x + w * 0.22, y + hh * 0.74, hh * 0.11, W, "np")}
+        <circle cx={x + w * 0.22} cy={y + hh * 0.74} r={hh * 0.065} fill={W} />
+      </g>
+    );
+  },
+  Bhutan: ({ x, y, w, h: hh }) => (
+    <g>
+      <path d={`M ${x} ${y} L ${x + w} ${y} L ${x} ${y + hh} Z`} fill="#ffd520" />
+      <path d={`M ${x + w} ${y} L ${x + w} ${y + hh} L ${x} ${y + hh} Z`} fill="#ff4e12" />
+      <path d={`M ${x + w * 0.2} ${y + hh * 0.78} C ${x + w * 0.35} ${y + hh * 0.5}, ${x + w * 0.45} ${y + hh * 0.75}, ${x + w * 0.55} ${y + hh * 0.48} S ${x + w * 0.72} ${y + hh * 0.3}, ${x + w * 0.8} ${y + hh * 0.24}`}
+        fill="none" stroke={W} strokeWidth={hh * 0.13} strokeLinecap="round" />
+      <circle cx={x + w * 0.8} cy={y + hh * 0.24} r={hh * 0.09} fill={W} />
+      {[0.32, 0.47, 0.62].map((k, i) => <circle key={i} cx={x + w * k} cy={y + hh * (0.62 - (k - 0.32) * 0.9) + hh * 0.1} r={hh * 0.05} fill={W} />)}
+    </g>
+  ),
+  Myanmar: both(h(["#fecb00", "#34b233", "#ea2839"]), ({ x, y, w, h: hh }) => star(x + w / 2, y + hh * 0.55, hh * 0.42, W, "mm")),
   India: both(h(["#ff9933", W, "#138808"]), ({ x, y, w, h: hh }) => {
     const cx = x + w / 2, cy = y + hh / 2, r = hh * 0.13, sw = Math.max(1.5, hh * 0.018);
     return (

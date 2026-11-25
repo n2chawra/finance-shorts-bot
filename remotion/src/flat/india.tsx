@@ -28,6 +28,7 @@ import type { Feature, Geometry } from "geojson";
 
 import { INK, STROKE, shade } from "./kit";
 import { MapCtx } from "./map";
+import { FlagArt } from "./flags";
 import data from "./data/india.json";
 
 type Props = { name: string; hi: string; kind?: "state" | "ut"; code?: string };
@@ -333,6 +334,67 @@ export const CutLine: React.FC<{ state: string; parent: string; k: number; color
       <g clipPath={`url(#c${uid})`} mask={`url(#m${uid})`}>
         <path d={d} fill="none" stroke="#ffffff" strokeWidth={width * 2 + 6} strokeLinejoin="round" opacity={0.9} />
         <path d={d} fill="none" stroke={color} strokeWidth={width * 2} strokeLinejoin="round" strokeDasharray={`${width * 1.6} ${width * 1.1}`} />
+      </g>
+    </g>
+  );
+};
+
+/** A neighbouring country on India's map (2026-11-25, for v-20261125-62): its land outside India's official outline
+ * filled with `fill`, its whole flag (`flag`, a name `flags.tsx` has) fitted over its box and clipped to its shape,
+ * an ink outline; `k` fades it in, `flagK` the flag. Names: China, Bhutan, Myanmar, Bangladesh, Afghanistan, Nepal,
+ * Pakistan, Sri Lanka, Maldives. A child of `IndiaMap`; never covers India (masked to outside its outline). */
+export const Neighbour: React.FC<{ name: string; fill?: string; flag?: string; k?: number; flagK?: number; lift?: number }> = ({
+  name, fill = "#d8cdb6", flag, k = 1, flagK = 1, lift = 0,
+}) => {
+  const ctx = React.useContext(MapCtx);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  const n = DATA.neighbours.find((c) => c.properties.name === name);
+  if (!ctx || !n || k <= 0) return null;
+  const d = ctx.path(n) ?? "", outline = ctx.path(DATA.outline) ?? "";
+  const [[x0, y0], [x1, y1]] = ctx.path.bounds(n);
+  const up = clamp(lift, 0) * 14;
+  return (
+    <g opacity={clamp(k)}>
+      <defs>
+        <mask id={`o${uid}`}><rect x={-5000} y={-5000} width={10000} height={10000} fill="#fff" /><path d={outline} fill="#000" /></mask>
+        <clipPath id={`c${uid}`}><path d={d} /></clipPath>
+      </defs>
+      <g mask={`url(#o${uid})`}>
+        {up > 0 ? <path d={d} fill={INK} opacity={0.3 * clamp(lift, 0)} transform={`translate(6 ${8 + up * 0.4})`} /> : null}
+        <g transform={`translate(0 ${-up})`}>
+          <g clipPath={`url(#c${uid})`}>
+            <path d={d} fill={fill} />
+            {flag && flagK > 0 ? <FlagArt name={flag} x={x0} y={y0} w={x1 - x0} h={y1 - y0} cover opacity={clamp(flagK)} /> : null}
+          </g>
+          <path d={d} fill="none" stroke={INK} strokeWidth={Math.max(3, STROKE * 0.6)} strokeLinejoin="round" />
+        </g>
+      </g>
+    </g>
+  );
+};
+
+/** The land border India shares with a neighbour, drawn on as `k` goes 0 -> 1 (a bright line with a soft glow): only
+ * the stretch of the neighbour's outline that runs along India's official outline (2026-11-25, for v-20261125-62). */
+export const BorderLine: React.FC<{ name: string; k: number; color?: string; width?: number }> = ({ name, k, color = "#ffd84a", width = 12 }) => {
+  const ctx = React.useContext(MapCtx);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  const n = DATA.neighbours.find((c) => c.properties.name === name);
+  if (!ctx || !n || k <= 0) return null;
+  const d = ctx.path(n) ?? "", outline = ctx.path(DATA.outline) ?? "";
+  const q = clamp(k);
+  return (
+    <g data-probe="skip">
+      <defs>
+        <mask id={`b${uid}`}>
+          <path d={outline} fill="none" stroke="#fff" strokeWidth={width * 3} strokeLinejoin="round" />
+        </mask>
+        <mask id={`p${uid}`}><path d={d} fill="none" stroke="#fff" strokeWidth={width * 6} pathLength={1} strokeDasharray={q < 1 ? `${q} 1` : undefined} /></mask>
+      </defs>
+      <g mask={`url(#b${uid})`}>
+        <g mask={`url(#p${uid})`}>
+          <path d={d} fill="none" stroke={color} strokeOpacity={0.4} strokeWidth={width * 2.6} strokeLinejoin="round" strokeLinecap="round" />
+          <path d={d} fill="none" stroke={color} strokeWidth={width} strokeLinejoin="round" strokeLinecap="round" />
+        </g>
       </g>
     </g>
   );

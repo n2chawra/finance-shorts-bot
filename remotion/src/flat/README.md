@@ -48,6 +48,8 @@ India outline. Inside a `Stage`/`View` (or a bare SVG):
 | `Plate` | an Indian number plate (white, ink border, blue IND strip, the state's letters) pinned to a state, dropping in with `k`, ringed by `glow`; letters only; `maxY` fades one that would fall in the captions' band |
 | `StateUnion` | several states drawn as one, the map before a split (`names`, one `fill`, no line inside, an ink outline round the outside; `k`, `lift`, `trace`); a child of `IndiaMap` (v-20261125-61) |
 | `CutLine` | the border a split draws: only the stretch `state` shares with `parent`, a dashed red line running on as `k` goes 0 → 1 (v-20261125-61) |
+| `Neighbour` | a neighbouring country (China, Pakistan, Nepal, Bhutan, Bangladesh, Myanmar…) filled outside India's official outline, its whole `flag` fitted and clipped inside it (`k`, `flagK`, `lift`) (v-20261125-62) |
+| `BorderLine` | India's land border with a neighbour, a bright line drawn on as `k` goes 0 → 1, only where it runs along India's outline (v-20261125-62) |
 | `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
 | `INDIA_STATES`, `stateHi(name)` | the 36 names (English) and each one's Devanagari name |
 
@@ -61,7 +63,7 @@ Natural Earth country outlines (public domain, `world-atlas`) drawn in the house
 | Piece | What it draws |
 |---|---|
 | `WorldMap` | the map: `fit` (country names to frame) or `center` + `scale`; `kind` "world" (Natural Earth projection) or "flat" (Mercator, a region); `colors` ({ Chile: { fill, k } }, `k` fades a recolour in on a word; `draw` outlines it, `paint` brushes the colour in, `lift` raises it; `trace` (0 → 1) runs a bright line with a glowing head round its border until it closes, `traceColor` sets it; `flag: "<name>"` puts the whole flag, true to its 3:2 shape, inside the country as big as fits, over its colour, kept in frame; a flag the table lacks: just `fill`); `hide` (a disputed region a video can't show) |
-| `FlagArt` (`flags.tsx`) | a country's flag in a box (South Africa and Lesotho added for v-20261124-11, Panama for v-20261124-12, Ethiopia, Somalia, Kenya and Tanzania for v-20261125-12) (`name`, `x`, `y`, `w`, `h`): stripes, crosses, discs, stars, simplified; `cover` fills a country's box at 3:2; `hasFlag(name)`, `FLAG_NAMES` (a planted flag, a sign; `FlagSheet` in Root shows them all) |
+| `FlagArt` (`flags.tsx`) | a country's flag in a box (South Africa and Lesotho added for v-20261124-11, Panama for v-20261124-12, Ethiopia, Somalia, Kenya and Tanzania for v-20261125-12, Nepal, Bhutan and Myanmar for v-20261125-62) (`name`, `x`, `y`, `w`, `h`): stripes, crosses, discs, stars, simplified; `cover` fills a country's box at 3:2; `hasFlag(name)`, `FLAG_NAMES` (a planted flag, a sign; `FlagSheet` in Root shows them all) |
 | `MapLabel` | a place name at [lon, lat] with an ink halo |
 | `MapPin` | a pin that drops onto [lon, lat] |
 | `MapRoute` | a great-circle route through stops, drawn as `k` goes 0 → 1; `mover` rides its tip (a ship, a plane) |
