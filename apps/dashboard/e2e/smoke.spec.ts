@@ -389,7 +389,10 @@ test("calendar totals the month's, each week's and each day's views", async ({ p
   expect(await page.getByTestId("week-views").count()).toBeGreaterThanOrEqual(4);
   const day = page.locator("button[aria-pressed]").first();
   await day.hover();
-  await expect(page.getByRole("tooltip")).toContainText(/views and [\d,]+ likes from \d+ videos? published this day|No video published this day/);
+  await expect(page.getByRole("tooltip")).toContainText(/[\d,]+ views, [\d,]+ likes and [+-]?[\d.,]+[KMB]? subscribers from \d+ videos? published this day|No video published this day/);
+  // owner, 2026-11-25: the month's subscribers next to its views, and each week's subscribers under its likes
+  await expect(page.getByTestId("month-views")).toContainText(/Subscribers · \w+ \d{4}/);
+  expect(await page.getByTestId("week-subs").count()).toBe(await page.getByTestId("week-likes").count());
 });
 
 test("removed pages send old links somewhere useful", async ({ page }) => {
