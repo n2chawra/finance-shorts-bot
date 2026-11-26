@@ -804,3 +804,19 @@ test("agents experiments say what each test was judged on, not always views", as
   await expect(results.nth(1)).toHaveText("-10% held after the hook · 90% sure");
   await expect(page.getByText("Adopted", { exact: true })).toBeVisible();
 });
+
+test("agents topic feed's empty state names no single niche", async ({ page }) => {
+  await signIn(page);
+  await page.route("**/api/agents", async (route) => {
+    const res = await route.fetch();
+    const body = await res.json();
+    body.topics = [];
+    await route.fulfill({ response: res, json: body });
+  });
+  await page.goto("/agents");
+  await page.getByRole("tab", { name: /Topic feed/ }).click();
+  // every channel once read "Research reads the money news", left from the finance channel
+  await expect(page.getByText("No topics yet")).toBeVisible();
+  await expect(page.getByText(/money news/)).toHaveCount(0);
+  await expect(page.getByText(/this channel's niche/)).toBeVisible();
+});

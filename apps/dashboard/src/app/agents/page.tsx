@@ -300,7 +300,7 @@ const PRIORITY: Record<string, Tone> = { breaking: "critical", high: "warning", 
 
 /** Video ideas research found (news, trends, evergreen), and which video used each. */
 function TopicsTab({ data }: { data: Agents }) {
-  if (!data.topics.length) return <Card><Empty icon={Newspaper} title="No topics yet">Research reads the money news every night and lists ready video ideas here. Breaking stories go into the next morning&apos;s videos.</Empty></Card>;
+  if (!data.topics.length) return <Card><Empty icon={Newspaper} title="No topics yet">Research scans this channel&apos;s niche every night and lists ready video ideas here. A breaking topic goes into the next morning&apos;s videos.</Empty></Card>;
   return (
     <Card flush>
       <ul>
