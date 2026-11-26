@@ -98,6 +98,9 @@ export const WorldMap: React.FC<{
   fit?: string[]; pad?: number;
   /** or frame a point at a scale (pixels per radian) */
   center?: [number, number]; scale?: number;
+  /** the map's central meridian (default 0): a map centred across the date line (the Bering Strait, the Pacific)
+   * keeps Russia and Alaska whole; `center` stays in real [lon, lat] (v-20261127-12) */
+  lon0?: number;
   /** "world" (Natural Earth projection) or "flat" (Mercator, for a region) */
   kind?: "world" | "flat";
   look?: "flat" | "vintage";
@@ -114,7 +117,7 @@ export const WorldMap: React.FC<{
   only?: string[];
   detail?: "110m" | "50m";
   children?: React.ReactNode;
-}> = ({ w, h, fit, pad = 80, center, scale, kind = "world", look = "flat", political = 0, names = false, land: land0, sea: sea0, border, colors = {}, hide = [], only, detail, children }) => {
+}> = ({ w, h, fit, pad = 80, center, scale, lon0 = 0, kind = "world", look = "flat", political = 0, names = false, land: land0, sea: sea0, border, colors = {}, hide = [], only, detail, children }) => {
   const vintage = look === "vintage";
   const land = land0 ?? (vintage ? "#e8d4a2" : "#e9dcc1");
   const sea = sea0 ?? (vintage ? "#5f9fae" : "#8ec5e0");
@@ -124,12 +127,13 @@ export const WorldMap: React.FC<{
   const all = keep ? countries(det).filter((c) => keep.has(c.properties.name.toLowerCase())) : countries(det);
   const proj = useMemo(() => {
     const p = kind === "flat" ? geoMercator() : geoNaturalEarth1();
+    if (lon0) p.rotate([-lon0, 0]);
     const framed = fit?.map((n) => all.find((c) => c.properties.name.toLowerCase() === n.toLowerCase())).filter((c): c is Country => !!c);
     if (framed?.length) p.fitExtent([[pad, pad], [w - pad, h - pad]], { type: "FeatureCollection", features: framed });
-    else if (center) p.center(center).scale(scale ?? w / 6.2).translate([w / 2, h / 2]);
+    else if (center) p.center(lon0 ? [((center[0] - lon0 + 540) % 360) - 180, center[1]] : center).scale(scale ?? w / 6.2).translate([w / 2, h / 2]);
     else p.fitExtent([[pad, pad], [w - pad, h - pad]], { type: "Sphere" });
     return p;
-  }, [kind, fit?.join("|"), pad, center?.join(","), scale, w, h, det]);   // eslint-disable-line react-hooks/exhaustive-deps
+  }, [kind, fit?.join("|"), pad, center?.join(","), scale, lon0, w, h, det]);   // eslint-disable-line react-hooks/exhaustive-deps
   const path = useMemo(() => geoPath(proj), [proj]);
   const hidden = new Set(hide.map((n) => n.toLowerCase()));
   const ink = border ?? (vintage ? "#4a3218" : INK);
