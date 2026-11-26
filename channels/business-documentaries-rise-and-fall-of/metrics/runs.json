@@ -39,7 +39,7 @@
     {
       "day": "2026-11-26",
       "shipped": 1,
-      "failed": 0
+      "failed": 1
     }
   ],
   "videos": [
@@ -196,6 +196,13 @@
       "template": "short_story",
       "status": "shipped",
       "reason": null
+    },
+    {
+      "id": "v-20261126-32",
+      "day": "2026-11-26",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA review failed after three rounds: in beat 'won' the CNBC headline card covered a face (first Chesky's, then a speaker's in the stage photo behind it); earlier rounds fixed the branded hook boxes, the empty polaroid desk, the boxes line and the date sub"
     }
   ]
 }
