@@ -1,0 +1,21 @@
+{
+  "agent": "research",
+  "day": "2026-11-27",
+  "startedAt": "2026-11-26T19:58:23Z",
+  "finishedAt": "2026-11-26T20:06:00Z",
+  "summary": "Naksha Bharat demand night: added 3 topics (every state's bird, the 25 High Courts, the bullet-train route) and one format proposal (a range or river drawn across the map), and asked the owner whether that lane is in scope.",
+  "decision": "acted",
+  "why": "The queue is empty and the feed needed fresh every-state fills (the recipe's 1 in 2). Geo Study (858K subs) has 1.67M and 1.1M map Shorts this autumn in a lane the profile doesn't cover yet. No 48 h numbers yet, so the evaluator has no ranking.",
+  "findings": [
+    {"title": "Geo Study's Aravalli map Short: 1.67M views on 858K subs", "detail": "56 s, 22 Oct; Kalpasar dam map 1.1M. A range/project-across-the-map lane we don't make; owner asked.", "link": "https://www.youtube.com/watch?v=qIVCjSS4DWk"},
+    {"title": "Top Short in our niche scan: a bullet-train route map", "detail": "ACE IAS, 904x its channel's median Short; told in our India-and-world format from PIB figures.", "link": "https://www.youtube.com/shorts/0hFleAISfho"},
+    {"title": "PIB backgrounder on the Mumbai-Ahmedabad bullet train", "detail": "508 km, 12 stations, about 7 km undersea under Thane Creek, 320 km/h, Shinkansen.", "link": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/jun/doc2026612891201.pdf"},
+    {"title": "Market scan still has no India Maps folder", "detail": "Thursday's scheduled Market run hadn't started by 20:00 UTC (GitHub cron delay; last week's ran 6.5 h late). Re-check tomorrow."}
+  ],
+  "changes": [
+    {"title": "3 topics in the feed", "detail": "2026-11-27-state-birds, 2026-11-27-high-courts (every_state, high), 2026-11-27-bullet-train-route (india_and_world).", "branch": "agent/research/2026-11-27/india-maps"},
+    {"title": "Proposal im-format-nature-on-map", "detail": "A range, river or project drawn across the map; waits on the owner widening profile.md.", "branch": "agent/research/2026-11-27/india-maps"}
+  ],
+  "nextCheck": "2026-11-28",
+  "links": [{"label": "Report", "url": "channels/india-maps/research/2026-11-27.md"}]
+}
