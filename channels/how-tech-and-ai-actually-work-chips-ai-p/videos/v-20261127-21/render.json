@@ -1,0 +1,127 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 72619,
+  "duration_sec": 58,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "datahall",
+    "key": "F",
+    "bpm": 66,
+    "look": {
+      "stage": "night",
+      "header": "ribbon",
+      "holder": "phone",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "am_michael",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "am_michael",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "This internet cable is as wide as a garden hose.",
+        "start": 0.3,
+        "seconds": 3.69,
+        "window": 4.17,
+        "fill": 0.885
+      },
+      {
+        "scene": "ask",
+        "text": "How does the internet fit inside it?",
+        "start": 4.47,
+        "seconds": 2.3,
+        "window": 2.63,
+        "fill": 0.875
+      },
+      {
+        "scene": "open",
+        "text": "Slice it open. Past its protective layers sit glass fibres, each about as thin as a human hair.",
+        "start": 7.1,
+        "seconds": 6.84,
+        "window": 7.33,
+        "fill": 0.933
+      },
+      {
+        "scene": "light",
+        "text": "Your video races down one as flashes of light, bouncing off the glass walls from one continent to the next.",
+        "start": 14.43,
+        "seconds": 7.02,
+        "window": 7.63,
+        "fill": 0.92
+      },
+      {
+        "scene": "map",
+        "text": "And it is not alone. Over 1.5M kilometres of cable cross the seabed, with more than 600 cables working or planned.",
+        "start": 22.07,
+        "seconds": 9.3,
+        "window": 9.93,
+        "fill": 0.937
+      },
+      {
+        "scene": "danger",
+        "text": "But down here, what keeps breaking them? Mostly fishing gear and ship anchors dragged across the cable.",
+        "start": 32.0,
+        "seconds": 6.35,
+        "window": 6.93,
+        "fill": 0.916
+      },
+      {
+        "scene": "fix",
+        "text": "So a repair ship lifts the broken ends onto its deck and joins the glass back together.",
+        "start": 38.93,
+        "seconds": 5.82,
+        "window": 6.27,
+        "fill": 0.928
+      },
+      {
+        "scene": "payoff",
+        "text": "Roughly 200 times a year, a cable breaks somewhere. Yet your video keeps playing, because the data takes another cable.",
+        "start": 45.2,
+        "seconds": 8.02,
+        "window": 8.67,
+        "fill": 0.925
+      },
+      {
+        "scene": "loop",
+        "text": "Right now, your next video is racing through this cable.",
+        "start": 53.87,
+        "seconds": 3.39,
+        "window": 3.83,
+        "fill": 0.885
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -17.3,
+    "lufs": -15.6,
+    "music_under_voice_db": 25.3
+  },
+  "craft_problems": [
+    "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 11.134,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,1025 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 72619,
+ "story": "zoom_inside",
+ "shape": "dive-and-surface",
+ "currency": "USD",
+ "style": {
+  "palette": "ocean",
+  "genre": "datahall",
+  "key": "F",
+  "bpm": 66,
+  "look": {
+   "stage": "night",
+   "header": "ribbon",
+   "holder": "phone",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "45-60",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "28"
+ },
+ "hook_style": "question",
+ "cta": "Which hidden machine should we dive into next? Comment",
+ "feed_id": "2026-11-27-inside-hose-wide-cable",
+ "facts": [
+  {
+   "label": "Kilometres of submarine cable in service worldwide, in millions, over",
+   "value": 1.5,
+   "unit": "count_million",
+   "as_of": "2026-01-01",
+   "source": "TeleGeography",
+   "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions",
+   "latest": true,
+   "checked": "2026-11-27"
+  },
+  {
+   "label": "Active and planned submarine cables tracked, more than",
+   "value": 600,
+   "unit": "count",
+   "as_of": "2026-01-01",
+   "source": "TeleGeography",
+   "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions",
+   "latest": true,
+   "checked": "2026-11-27"
+  },
+  {
+   "label": "Submarine cable faults each year on average, roughly (International Cable Protection Committee data)",
+   "value": 200,
+   "unit": "count",
+   "as_of": "2026-01-01",
+   "source": "TeleGeography",
+   "url": "https://www2.telegeography.com/submarine-cable-faqs-frequently-asked-questions",
+   "latest": true,
+   "checked": "2026-11-27"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.9,
+  "words": "Internet in a *hose?*",
+  "tag": "Seabed cable",
+  "angle": "question",
+  "references": [
+   {
+    "id": "dsQQPVvpmXI",
+    "views": 3726670,
+    "what": "the seabed cable itself drawn big on dark water, a short line of words over it"
+   }
+  ],
+  "pattern": "the reference sells the cable on the seabed; ours keeps the cable big in 3D with the garden hose beside it and three words asking the question"
+ },
+ "narrator": "am_michael",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "This internet cable is as wide as a garden hose.",
+   "events": {
+    "this": {
+     "word": "This"
+    },
+    "internet": {
+     "word": "internet"
+    },
+    "cable": {
+     "word": "cable"
+    },
+    "wide": {
+     "word": "wide"
+    },
+    "garden": {
+     "word": "garden"
+    },
+    "hose": {
+     "word": "hose"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "this"
+    }
+   ],
+   "params": {
+    "component": "Hook",
+    "place": [
+     "the dark ocean floor, a lone black internet cable running across the sand",
+     "the cable beside a green garden hose"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "garden",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "this",
+      "what": "marine snow drifts down over the dark sand, the cable already lit"
+     },
+     {
+      "at": "internet",
+      "what": "the cable's label writes on"
+     },
+     {
+      "at": "cable",
+      "what": "pulses of light race along the cable's glowing seam"
+     },
+     {
+      "at": "wide",
+      "what": "a width bracket snaps across the cable"
+     },
+     {
+      "at": "garden",
+      "what": "a green garden hose slides in beside it, the same width"
+     },
+     {
+      "at": "hose",
+      "what": "a label writes on the hose"
+     }
+    ],
+    "things": [
+     "black seabed cable",
+     "sand and rocks",
+     "marine snow",
+     "green garden hose",
+     "width bracket",
+     "light pulses"
+    ]
+   }
+  },
+  {
+   "id": "ask",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "How does the internet fit inside it?",
+   "events": {
+    "internet": {
+     "word": "internet"
+    },
+    "fit": {
+     "word": "fit"
+    },
+    "inside": {
+     "word": "inside"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Ask",
+    "place": "the same seabed, the cable's cut end",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "fit",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "internet",
+      "what": "pulses of light stream faster along the cable, a label writes on"
+     },
+     {
+      "at": "fit",
+      "what": "the camera swings round to the cable's cut end"
+     },
+     {
+      "at": "inside",
+      "what": "light glows out of the cut end"
+     }
+    ],
+    "things": [
+     "seabed cable",
+     "garden hose",
+     "light pulses",
+     "cut end glowing"
+    ]
+   }
+  },
+  {
+   "id": "open",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Slice it open. Past its protective layers sit glass fibres, each about as thin as a human hair.",
+   "events": {
+    "slice": {
+     "word": "Slice"
+    },
+    "open": {
+     "word": "open"
+    },
+    "past": {
+     "word": "Past"
+    },
+    "protective": {
+     "word": "protective"
+    },
+    "layers": {
+     "word": "layers"
+    },
+    "glass": {
+     "word": "glass"
+    },
+    "fibres": {
+     "word": "fibres"
+    },
+    "thin": {
+     "word": "thin"
+    },
+    "human": {
+     "word": "human"
+    },
+    "hair": {
+     "word": "hair"
+    }
+   },
+   "transition": "zoom-through",
+   "sfx": [
+    {
+     "kind": "glass",
+     "at": "glass"
+    }
+   ],
+   "params": {
+    "component": "Slice",
+    "place": "the cable's cut end, sliced open in a cutaway",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "past",
+      "size": "close"
+     },
+     {
+      "at": "glass",
+      "size": "extreme"
+     },
+     {
+      "at": "hair",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "slice",
+      "what": "a glowing cut ring sweeps along the cable"
+     },
+     {
+      "at": "open",
+      "what": "the outer jacket peels back in a cutaway"
+     },
+     {
+      "at": "past",
+      "what": "the camera pushes in on the cut face as the layers light up one by one from the outside in"
+     },
+     {
+      "at": "protective",
+      "what": "the outer rings glow and fade"
+     },
+     {
+      "at": "layers",
+      "what": "the rings separate slightly, exploded"
+     },
+     {
+      "at": "glass",
+      "what": "a bundle of glass fibres at the centre lights up cyan"
+     },
+     {
+      "at": "fibres",
+      "what": "a label writes on: glass fibres"
+     },
+     {
+      "at": "thin",
+      "what": "one fibre slides forward out of the bundle"
+     },
+     {
+      "at": "human",
+      "what": "a strand of human hair slides in beside the fibre"
+     },
+     {
+      "at": "hair",
+      "what": "a label writes on the hair, the two match"
+     }
+    ],
+    "things": [
+     "cable cutaway",
+     "protective rings",
+     "glass fibre bundle",
+     "one fibre",
+     "human hair"
+    ]
+   }
+  },
+  {
+   "id": "light",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Your video races down one as flashes of light, bouncing off the glass walls from one continent to the next.",
+   "events": {
+    "video": {
+     "word": "video"
+    },
+    "races": {
+     "word": "races"
+    },
+    "flashes": {
+     "word": "flashes"
+    },
+    "light": {
+     "word": "light"
+    },
+    "bouncing": {
+     "word": "bouncing"
+    },
+    "walls": {
+     "word": "walls"
+    },
+    "glass": {
+     "word": "glass"
+    },
+    "continent": {
+     "word": "continent"
+    },
+    "next": {
+     "word": "next"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "races"
+    }
+   ],
+   "params": {
+    "component": "Light",
+    "place": "inside one glass fibre, a glowing tunnel of glass",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "bouncing",
+      "size": "medium"
+     },
+     {
+      "at": "continent",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "video",
+      "what": "a tiny phone screen frame turns into a pulse of light at the fibre's mouth"
+     },
+     {
+      "at": "races",
+      "what": "the pulse shoots into the glass tunnel"
+     },
+     {
+      "at": "flashes",
+      "what": "a train of flashes follows, on and off"
+     },
+     {
+      "at": "light",
+      "what": "the tunnel lights up cyan"
+     },
+     {
+      "at": "bouncing",
+      "what": "the light zigzags, bouncing off the glass walls"
+     },
+     {
+      "at": "walls",
+      "what": "the walls flash where the light hits them"
+     },
+     {
+      "at": "glass",
+      "what": "the camera rides along the fibre"
+     },
+     {
+      "at": "continent",
+      "what": "the camera pulls far out: the fibre is a thin glowing line on the seabed"
+     },
+     {
+      "at": "next",
+      "what": "the line reaches a far shore glowing in the distance"
+     }
+    ],
+    "things": [
+     "glass fibre tunnel",
+     "light pulses",
+     "zigzag path",
+     "glowing walls",
+     "far shore"
+    ]
+   }
+  },
+  {
+   "id": "map",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "And it is not alone. Over {fact1} kilometres of cable cross the seabed, with more than {fact2} cables working or planned.",
+   "events": {
+    "alone": {
+     "word": "alone"
+    },
+    "over": {
+     "word": "Over"
+    },
+    "kilometres": {
+     "word": "kilometres"
+    },
+    "cable": {
+     "word": "cable"
+    },
+    "cross": {
+     "word": "cross"
+    },
+    "seabed": {
+     "word": "seabed"
+    },
+    "with": {
+     "word": "with"
+    },
+    "more": {
+     "word": "more"
+    },
+    "cables": {
+     "word": "cables"
+    },
+    "working": {
+     "word": "working"
+    },
+    "planned": {
+     "word": "planned"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "kilometres"
+    }
+   ],
+   "params": {
+    "component": "Globe",
+    "place": "the Earth from space, its oceans laced with glowing cables",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "sec": 3.0,
+      "size": "wide"
+     },
+     {
+      "at": "kilometres",
+      "size": "medium"
+     },
+     {
+      "at": "more",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "alone",
+      "what": "the camera rises off the seabed to the whole planet, one cable glowing on it"
+     },
+     {
+      "at": "over",
+      "what": "more cables draw on across the Atlantic"
+     },
+     {
+      "at": "kilometres",
+      "what": "the kilometre counter beside the globe, counting since the line began, lands"
+     },
+     {
+      "at": "cable",
+      "what": "cables draw on across the Pacific"
+     },
+     {
+      "at": "cross",
+      "what": "the globe turns"
+     },
+     {
+      "at": "seabed",
+      "what": "landing points light up on the coasts"
+     },
+     {
+      "at": "with",
+      "what": "every landing point flashes"
+     },
+     {
+      "at": "more",
+      "what": "the second figure writes on a plate below the globe"
+     },
+     {
+      "at": "cables",
+      "what": "more cables draw on around Africa and Asia"
+     },
+     {
+      "at": "working",
+      "what": "the lit cables pulse"
+     },
+     {
+      "at": "planned",
+      "what": "dashed planned cables draw on"
+     }
+    ],
+    "things": [
+     "Earth globe",
+     "glowing cable lines",
+     "landing points",
+     "figure ring",
+     "dashed planned cables"
+    ],
+    "fig": {
+     "km": "{fact1}",
+     "cables": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "danger",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "But down here, what keeps breaking them? Mostly fishing gear and ship anchors dragged across the cable.",
+   "events": {
+    "but": {
+     "word": "But"
+    },
+    "down": {
+     "word": "down"
+    },
+    "here": {
+     "word": "here"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "breaking": {
+     "word": "breaking"
+    },
+    "mostly": {
+     "word": "Mostly"
+    },
+    "fishing": {
+     "word": "fishing"
+    },
+    "gear": {
+     "word": "gear"
+    },
+    "ship": {
+     "word": "ship"
+    },
+    "anchors": {
+     "word": "anchors"
+    },
+    "dragged": {
+     "word": "dragged"
+    },
+    "cable": {
+     "word": "cable"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "anchors"
+    }
+   ],
+   "params": {
+    "component": "Anchor",
+    "place": "the seabed in murky light, an anchor chain coming down",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "fishing",
+      "size": "medium"
+     },
+     {
+      "at": "anchors",
+      "size": "close"
+     },
+     {
+      "at": "cable",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "but",
+      "what": "murky green seabed: a trawl net's boards and mesh lie on the sand, a ship's hull shadow passes above"
+     },
+     {
+      "at": "down",
+      "what": "the camera drifts past the net toward the cable"
+     },
+     {
+      "at": "here",
+      "what": "sand swirls in a current"
+     },
+     {
+      "at": "keeps",
+      "what": "a crack mark flickers on the cable"
+     },
+     {
+      "at": "breaking",
+      "what": "the pulses stutter"
+     },
+     {
+      "at": "mostly",
+      "what": "the camera drifts along the cable"
+     },
+     {
+      "at": "fishing",
+      "what": "the trawl net in the distance sweeps in over the seabed"
+     },
+     {
+      "at": "gear",
+      "what": "the net's heavy doors scrape the sand"
+     },
+     {
+      "at": "ship",
+      "what": "a ship's hull passes far above"
+     },
+     {
+      "at": "anchors",
+      "what": "a huge anchor drops into the sand"
+     },
+     {
+      "at": "dragged",
+      "what": "the anchor drags toward the cable, sand flying"
+     },
+     {
+      "at": "cable",
+      "what": "the anchor snags the cable and it snaps, the light dies at the break"
+     }
+    ],
+    "things": [
+     "murky seabed",
+     "cable",
+     "trawl net",
+     "ship hull above",
+     "anchor and chain",
+     "the break"
+    ]
+   }
+  },
+  {
+   "id": "fix",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So a repair ship lifts the broken ends onto its deck and joins the glass back together.",
+   "events": {
+    "repair": {
+     "word": "repair"
+    },
+    "ship": {
+     "word": "ship"
+    },
+    "lifts": {
+     "word": "lifts"
+    },
+    "broken": {
+     "word": "broken"
+    },
+    "ends": {
+     "word": "ends"
+    },
+    "deck": {
+     "word": "deck"
+    },
+    "joins": {
+     "word": "joins"
+    },
+    "glass": {
+     "word": "glass"
+    },
+    "together": {
+     "word": "together"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "glass"
+    }
+   ],
+   "params": {
+    "component": "Repair",
+    "place": "the open ocean at dusk, a cable repair ship on the waves",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "lifts",
+      "size": "medium"
+     },
+     {
+      "at": "joins",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "repair",
+      "what": "a cable repair ship rides the swell"
+     },
+     {
+      "at": "ship",
+      "what": "its deck lights come on"
+     },
+     {
+      "at": "lifts",
+      "what": "a line from its bow winch hauls the cable up out of the water"
+     },
+     {
+      "at": "broken",
+      "what": "the broken end dangles, dark"
+     },
+     {
+      "at": "ends",
+      "what": "the second end comes up beside it"
+     },
+     {
+      "at": "deck",
+      "what": "both ends land on the lit deck"
+     },
+     {
+      "at": "joins",
+      "what": "the camera pushes in on a splice box where two fibres meet"
+     },
+     {
+      "at": "glass",
+      "what": "a spark flashes where the glass fuses"
+     },
+     {
+      "at": "together",
+      "what": "light runs through the joined fibre again"
+     }
+    ],
+    "things": [
+     "cable repair ship",
+     "ocean waves",
+     "bow winch and line",
+     "broken cable ends",
+     "splice box",
+     "fused fibre"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Roughly {fact3} times a year, a cable breaks somewhere. Yet your video keeps playing, because the data takes another cable.",
+   "events": {
+    "roughly": {
+     "word": "Roughly"
+    },
+    "year": {
+     "word": "year"
+    },
+    "cable": {
+     "word": "cable"
+    },
+    "breaks": {
+     "word": "breaks"
+    },
+    "somewhere": {
+     "word": "somewhere"
+    },
+    "yet": {
+     "word": "Yet"
+    },
+    "video": {
+     "word": "video"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "playing": {
+     "word": "playing"
+    },
+    "data": {
+     "word": "data"
+    },
+    "takes": {
+     "word": "takes"
+    },
+    "another": {
+     "word": "another"
+    }
+   },
+   "transition": "cut",
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "takes"
+    }
+   ],
+   "params": {
+    "component": "Reroute",
+    "place": "the globe again at night, one cable flashing red",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "yet",
+      "size": "wide"
+     },
+     {
+      "at": "takes",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "roughly",
+      "what": "a fault counter on the globe's ring starts ticking up"
+     },
+     {
+      "at": "year",
+      "what": "the counter lands on the figure"
+     },
+     {
+      "at": "cable",
+      "what": "one cable flashes red"
+     },
+     {
+      "at": "breaks",
+      "what": "a red break mark pulses on it"
+     },
+     {
+      "at": "somewhere",
+      "what": "red sparks flicker at breaks around the globe"
+     },
+     {
+      "at": "yet",
+      "what": "the camera pulls back to the whole planet"
+     },
+     {
+      "at": "video",
+      "what": "a pulse of light sets off from one coast"
+     },
+     {
+      "at": "keeps",
+      "what": "the pulse reaches the red break"
+     },
+     {
+      "at": "playing",
+      "what": "the pulse keeps glowing"
+     },
+     {
+      "at": "data",
+      "what": "the pulse turns off the broken cable"
+     },
+     {
+      "at": "takes",
+      "what": "it races along a different cable"
+     },
+     {
+      "at": "another",
+      "what": "it reaches the far coast, the new path glowing gold"
+     }
+    ],
+    "things": [
+     "Earth globe",
+     "red broken cable",
+     "fault counter ring",
+     "light pulse",
+     "new route"
+    ],
+    "fig": {
+     "faults": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Right now, your next video is racing through this cable.",
+   "events": {
+    "right": {
+     "word": "Right"
+    },
+    "now": {
+     "word": "now"
+    },
+    "next": {
+     "word": "next"
+    },
+    "video": {
+     "word": "video"
+    },
+    "racing": {
+     "word": "racing"
+    },
+    "through": {
+     "word": "through"
+    },
+    "this": {
+     "word": "this"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Loop",
+    "place": "high in the water over the seabed, then down to the cable on the ocean floor",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "through",
+      "size": "medium"
+     },
+     {
+      "at": "this",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "right",
+      "what": "high over the dark seabed, the cable and rocks below, the surface glowing above"
+     },
+     {
+      "at": "now",
+      "what": "a pulse of light drops from the surface into the water"
+     },
+     {
+      "at": "next",
+      "what": "the camera dives after it through the blue"
+     },
+     {
+      "at": "video",
+      "what": "marine snow streaks past"
+     },
+     {
+      "at": "racing",
+      "what": "the pulse streaks down as the seabed comes up out of the dark"
+     },
+     {
+      "at": "through",
+      "what": "the pulse enters the cable on the sand"
+     },
+     {
+      "at": "this",
+      "what": "the camera settles on the hook's first framing of the cable"
+     }
+    ],
+    "things": [
+     "sea surface",
+     "light pulse",
+     "blue water",
+     "marine snow",
+     "seabed cable"
+    ]
+   }
+  }
+ ]
+}
