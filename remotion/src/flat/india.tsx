@@ -408,3 +408,80 @@ export const BorderLine: React.FC<{ name: string; k: number; color?: string; wid
     </g>
   );
 };
+
+/** India's land neighbours: a coast is India's outline away from these. */
+const LAND_NEIGHBOURS = ["China", "Bhutan", "Myanmar", "Bangladesh", "Afghanistan", "Nepal", "Pakistan"];
+
+/** The sea coast of a state (or of all of "India"): the stretch of its border that runs along India's official outline
+ * and touches no land neighbour, as a bright line with a soft glow (2026-11-26, for v-20261126-61). `k` 0 -> 1 reveals
+ * it: with `pivot` ([lon, lat]) as a sweep round that point from screen angle `a0` to `a1` (degrees, 0 = east,
+ * 90 = south: Gujarat to Bengal round the peninsula is a0 190, a1 -15), else drawn on along the border. */
+export const CoastLine: React.FC<{ name?: string; k: number; color?: string; width?: number; pivot?: [number, number]; a0?: number; a1?: number }> = ({
+  name = "India", k, color = "#5fd3ff", width = 10, pivot, a0 = 190, a1 = -15,
+}) => {
+  const ctx = React.useContext(MapCtx);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  const shape = name.toLowerCase() === "india" ? DATA.outline : byName(name);
+  if (!ctx || !shape || k <= 0) return null;
+  const d = ctx.path(shape) ?? "", outline = ctx.path(DATA.outline) ?? "";
+  const land = DATA.neighbours.filter((n) => LAND_NEIGHBOURS.includes(n.properties.name));
+  const q = clamp(k);
+  const big = { x: -4000, y: -4000, width: 9000, height: 9000 };
+  let wedge = "";
+  if (pivot) {
+    const c = ctx.proj(pivot) as [number, number];
+    const R = 6000, steps = 48, a = (v: number) => (v * Math.PI) / 180;
+    const pts = Array.from({ length: steps + 1 }, (_, i) => a0 + ((a1 - a0) * q * i) / steps).map((v) => `${c[0] + R * Math.cos(a(v))} ${c[1] + R * Math.sin(a(v))}`);
+    wedge = `M ${c[0]} ${c[1]} L ${pts.join(" L ")} Z`;
+  }
+  return (
+    <g data-probe="skip">
+      <defs>
+        <mask id={`c${uid}`} maskUnits="userSpaceOnUse" {...big}>
+          <path d={outline} fill="none" stroke="#fff" strokeWidth={width * 3} strokeLinejoin="round" />
+          {land.map((n) => <path key={n.properties.name} d={ctx.path(n) ?? ""} fill="#000" stroke="#000" strokeWidth={width * 4} />)}
+        </mask>
+        {pivot ? <mask id={`r${uid}`} maskUnits="userSpaceOnUse" {...big}><path d={wedge} fill="#fff" /></mask> : null}
+      </defs>
+      <g mask={`url(#c${uid})`}>
+        <g mask={pivot && q < 1 ? `url(#r${uid})` : undefined}>
+          <path d={d} fill="none" stroke={color} strokeOpacity={0.4} strokeWidth={width * 2.6} strokeLinejoin="round" strokeLinecap="round"
+            pathLength={pivot ? undefined : 1} strokeDasharray={!pivot && q < 1 ? `${q} 1` : undefined} />
+          <path d={d} fill="none" stroke={color} strokeWidth={width} strokeLinejoin="round" strokeLinecap="round"
+            pathLength={pivot ? undefined : 1} strokeDasharray={!pivot && q < 1 ? `${q} 1` : undefined} />
+        </g>
+      </g>
+    </g>
+  );
+};
+
+/** Surf along India's sea coast (2026-11-26, for v-20261126-61): rings of foam that roll in from the sea onto the
+ * shore, only on the sea side and never along a land border. `t` is the story frame (`m.t`); `k` fades it in;
+ * `period` frames per wave; `reach` how far out (px) a wave starts. */
+export const CoastSurf: React.FC<{ t: number; k?: number; period?: number; reach?: number; color?: string }> = ({ t, k = 1, period = 54, reach = 70, color = "#e9f8ff" }) => {
+  const ctx = React.useContext(MapCtx);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  if (!ctx || k <= 0) return null;
+  const outline = ctx.path(DATA.outline) ?? "";
+  const land = DATA.neighbours.filter((n) => LAND_NEIGHBOURS.includes(n.properties.name));
+  const big = { x: -4000, y: -4000, width: 9000, height: 9000 };
+  return (
+    <g data-probe="skip" opacity={clamp(k)}>
+      <defs>
+        <mask id={`s${uid}`} maskUnits="userSpaceOnUse" {...big}>
+          <rect {...big} fill="#fff" />
+          <path d={outline} fill="#000" />
+          {land.map((n) => <path key={n.properties.name} d={ctx.path(n) ?? ""} fill="#000" stroke="#000" strokeWidth={reach * 2.4} />)}
+        </mask>
+      </defs>
+      <g mask={`url(#s${uid})`}>
+        {[0, 1, 2].map((i) => {
+          const f = (((t / period + i / 3) % 1) + 1) % 1;      // 0 far out -> 1 on the shore
+          const r = (1 - f) * reach * 2 + 6;
+          return <path key={i} d={outline} fill="none" stroke={color} strokeWidth={r} strokeOpacity={0.1 + 0.22 * f} strokeLinejoin="round" />;
+        })}
+        <path d={outline} fill="none" stroke={color} strokeWidth={9 + 3 * Math.sin(t / 9)} strokeOpacity={0.55} strokeLinejoin="round" />
+      </g>
+    </g>
+  );
+};

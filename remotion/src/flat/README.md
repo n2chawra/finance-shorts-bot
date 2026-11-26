@@ -50,6 +50,8 @@ India outline. Inside a `Stage`/`View` (or a bare SVG):
 | `CutLine` | the border a split draws: only the stretch `state` shares with `parent`, a dashed red line running on as `k` goes 0 → 1 (v-20261125-61) |
 | `Neighbour` | a neighbouring country (China, Pakistan, Nepal, Bhutan, Bangladesh, Myanmar…) filled outside India's official outline, its whole `flag` fitted and clipped inside it (`k`, `flagK`, `lift`) (v-20261125-62) |
 | `BorderLine` | India's land border with a neighbour, a bright line drawn on as `k` goes 0 → 1, only where it runs along India's outline (v-20261125-62) |
+| `CoastLine` | a state's (or all of `"India"`'s) sea coast: the part of its border on India's official outline that touches no land neighbour, a bright line drawn on as `k` goes 0 → 1, or swept round a `pivot` from angle `a0` to `a1` (Gujarat to Bengal: 190 → -15) (v-20261126-61) |
+| `CoastSurf` | rings of foam rolling in onto India's sea coast from the sea side only (`t` = `m.t`, `k`, `period`, `reach`) (v-20261126-61) |
 | `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
 | `INDIA_STATES`, `stateHi(name)`, `stateNow(name)` | the 36 names (English, the data keys) and each one's Devanagari name; Kerala shows as केरलम / Keralam, its official name since 25 Aug 2026 ("Keralam" also works as a key) |
 
