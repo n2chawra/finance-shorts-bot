@@ -1,0 +1,51 @@
+{
+  "agent": "research",
+  "day": "2026-11-27",
+  "channel": "disasters-and-engineering-failures-expla",
+  "startedAt": "2026-11-26T19:58:15Z",
+  "finishedAt": "2026-11-26T20:01:55Z",
+  "summary": "Disaster Desk demand night: no long topic added (the two stories with confirmed demand are in low-tier formats and no core topic had a confirmed reference); two big references added to formats.json and one proposal to re-check those tiers.",
+  "decision": "acted",
+  "why": "Taum Sauk (Practical Engineering, about 11.2M on 4.8M) and Asiana 214 (Mentour Pilot, about 4.6M on 2.5M) beat every core long reference, but the two-in-three core rule blocks adding them alone; no recent event passed the fast-lane test.",
+  "findings": [
+    {
+      "title": "Taum Sauk long video: about 11.2M views on about 4.8M subscribers",
+      "detail": "corner_cut_structure's new top example (third-party counts; title and channel confirmed by oEmbed).",
+      "link": "https://www.youtube.com/watch?v=zRM2AnwNY20"
+    },
+    {
+      "title": "Asiana 214 long video: about 4.6M views on about 2.5M subscribers",
+      "detail": "air_crash_rule's new top example.",
+      "link": "https://www.youtube.com/watch?v=0pLRMJyD9TY"
+    },
+    {
+      "title": "No recent event worth a fast-lane long video",
+      "detail": "Hamburg Piper (2 killed, no demand), Kansas UP derailment (no injuries), Arkhangelsk bridge (no figures), Adamuz (open investigation).",
+      "link": "https://www.wowt.com/2026/11/18/ntsb-releases-preliminary-report-deadly-plane-crash-near-hamburg/"
+    },
+    {
+      "title": "Our long videos still unfound: 10, 15 and 15 views",
+      "detail": "Shorts get 239-1,180 views; dd-long-title-3d is waiting for data.",
+      "link": "channels/disasters-and-engineering-failures-expla/metrics/videos.json"
+    }
+  ],
+  "changes": [
+    {
+      "title": "Proposal dd-long-retier-structure-air",
+      "detail": "Re-check two low-tier long formats against our own views7d.",
+      "branch": "agent/research/2026-11-27/disasters-and-engineering-failures-expla"
+    },
+    {
+      "title": "formats.json: 2 stronger examples",
+      "detail": "Taum Sauk to corner_cut_structure, Asiana 214 to air_crash_rule.",
+      "branch": "agent/research/2026-11-27/disasters-and-engineering-failures-expla"
+    }
+  ],
+  "nextCheck": "2026-11-28",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/disasters-and-engineering-failures-expla/research/2026-11-27.md"
+    }
+  ]
+}
