@@ -485,3 +485,38 @@ export const CoastSurf: React.FC<{ t: number; k?: number; period?: number; reach
     </g>
   );
 };
+
+/** Ripples on the open sea round India (2026-11-26, for v-20261126-61): small wave crests on a seeded grid across the
+ * frame, only outside India's outline, drifting and breathing with `t` (`m.t`), so the sea is never a flat sheet.
+ * `k` fades them in; `gap` is the grid step in px; `top` the highest y they reach. */
+export const SeaRipples: React.FC<{ t: number; k?: number; gap?: number; top?: number; color?: string }> = ({ t, k = 1, gap = 84, top = 0, color = "#cfeeff" }) => {
+  const ctx = React.useContext(MapCtx);
+  const frame = React.useContext(FrameSize);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  if (!ctx || k <= 0) return null;
+  const outline = ctx.path(DATA.outline) ?? "";
+  const land = DATA.neighbours.filter((n) => LAND_NEIGHBOURS.includes(n.properties.name) || n.properties.name === "Sri Lanka");
+  const crests: React.ReactNode[] = [];
+  let i = 0;
+  for (let y = top + gap / 2; y < frame.h + gap; y += gap) {
+    for (let x = gap / 2; x < frame.w + gap; x += gap) {
+      i += 1;
+      const j = Math.sin(i * 12.9898) * 43758.5453, r = j - Math.floor(j);            // a fixed jitter per crest
+      const cx = x + (r - 0.5) * gap * 0.6 + Math.sin((t + i * 7) / 40) * 8, cy = y + ((r * 7) % 1 - 0.5) * gap * 0.5;
+      const o = 0.22 + 0.18 * Math.sin((t + i * 11) / 22);
+      crests.push(<path key={i} d={`M ${cx - 26} ${cy} Q ${cx - 13} ${cy - 12} ${cx} ${cy} Q ${cx + 13} ${cy + 12} ${cx + 26} ${cy}`} fill="none" stroke={color} strokeWidth={5} strokeLinecap="round" opacity={o} />);
+    }
+  }
+  return (
+    <g data-probe="skip" opacity={clamp(k)}>
+      <defs>
+        <mask id={`r${uid}`} maskUnits="userSpaceOnUse" x={-200} y={-200} width={frame.w + 400} height={frame.h + 400}>
+          <rect x={-200} y={-200} width={frame.w + 400} height={frame.h + 400} fill="#fff" />
+          <path d={outline} fill="#000" stroke="#000" strokeWidth={30} />
+          {land.map((n) => <path key={n.properties.name} d={ctx.path(n) ?? ""} fill="#000" />)}
+        </mask>
+      </defs>
+      <g mask={`url(#r${uid})`}>{crests}</g>
+    </g>
+  );
+};
