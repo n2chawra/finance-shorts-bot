@@ -781,3 +781,42 @@ test("scorecard says last week's Shorts are still waiting instead of 'no Shorts 
   await expect(page.getByText("last week's still waiting").first()).toBeVisible();
   await expect(page.getByText("no Shorts last week")).toHaveCount(0);
 });
+
+test("agents experiments say what each test was judged on, not always views", async ({ page }) => {
+  await signIn(page);
+  await page.route("**/api/agents", async (route) => {
+    const res = await route.fetch();
+    const body = await res.json();
+    const day = new Date().toISOString().slice(0, 10);
+    // the weekly loop records a difference in points; this once showed nothing, and every ratio read "% views"
+    body.experiments = [
+      { id: "smoke-points", area: "hook", status: "kept", startedAt: day, description: "Points test", result: { metric: "stayed", points: 6.2, p_on_better: 0.84 } },
+      { id: "smoke-ratio", area: "look", metric: "heldAfterHook", status: "reverted", startedAt: day, description: "Ratio test", result: { ratio: 0.9, p_on_better: 0.1 } },
+      { id: "smoke-adopted", area: "colour", status: "adopted", startedAt: day, description: "Adopted test" },
+    ];
+    await route.fulfill({ response: res, json: body });
+  });
+  await page.goto("/agents");
+  await page.getByRole("tab", { name: /Experiments/ }).click();
+  const results = page.getByTestId("experiment-result");
+  await expect(results).toHaveCount(2);
+  await expect(results.nth(0)).toHaveText("+6.2 points stayed to watch · 84% sure");
+  await expect(results.nth(1)).toHaveText("-10% held after the hook · 90% sure");
+  await expect(page.getByText("Adopted", { exact: true })).toBeVisible();
+});
+
+test("agents topic feed's empty state names no single niche", async ({ page }) => {
+  await signIn(page);
+  await page.route("**/api/agents", async (route) => {
+    const res = await route.fetch();
+    const body = await res.json();
+    body.topics = [];
+    await route.fulfill({ response: res, json: body });
+  });
+  await page.goto("/agents");
+  await page.getByRole("tab", { name: /Topic feed/ }).click();
+  // every channel once read "Research reads the money news", left from the finance channel
+  await expect(page.getByText("No topics yet")).toBeVisible();
+  await expect(page.getByText(/money news/)).toHaveCount(0);
+  await expect(page.getByText(/this channel's niche/)).toBeVisible();
+});

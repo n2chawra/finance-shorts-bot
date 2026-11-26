@@ -139,6 +139,7 @@ export function getAgents(): Agents {
     videoRuns,
     experiments: [
       { id: "fast-hook", area: "hook", status: "running", startedAt: istDay(now - 5 * DAY_MS), description: "Show the answer number at 0.4 s instead of 1.2 s", hypothesis: "+15% views in 48 h", templates: ["all"] },
+      { id: "loop-first-word", area: "hook", metric: "stayed", status: "kept", startedAt: istDay(now - 1 * DAY_MS), description: "Open on the place's name as the first spoken word", result: { metric: "stayed", n_on: 8, n_off: 8, points: 6.2, p_on_better: 0.84 } },
       { id: "riser-reveal", area: "sound", status: "kept", startedAt: istDay(now - 20 * DAY_MS), description: "Riser into every reveal", result: { ratio: 1.18, confidence: 0.86, n: 9 } },
       { id: "bold-captions", area: "text", status: "reverted", startedAt: istDay(now - 30 * DAY_MS), description: "Heavier caption weight", result: { ratio: 0.88, confidence: 0.81, n: 8 } },
     ],
