@@ -1,0 +1,1213 @@
+{
+  "id": "L-20261126-41",
+  "createdAt": "2026-11-26T12:27:31.044517+00:00",
+  "status": "qa_passed",
+  "format": "long",
+  "template": "long_story",
+  "topic": {
+    "title": "Why Airline Pilots Now Need 1,500 Hours",
+    "category": "aviation",
+    "feed_id": "2026-11-20-colgan-3407",
+    "reach": "global"
+  },
+  "title": "The Colgan Air Crash: The Stall Warning That Rewrote Pilot Rules",
+  "description": "A turboprop airliner on a winter night approach to Buffalo got a stall warning, and the pilot pulled the wrong way.\nWe rebuild the Colgan Air crash of February 2009 in 3D and follow the NTSB's investigation link by link: a landing speed set too low for the ice, talk below ten thousand feet, a warning band nobody called, and the last half-minute of the flight.\nThen what the NTSB found, and the law that now asks every US airline first officer for 1,500 flight hours.\n\nCHAPTERS\n0:00 Intro\n0:49 The Flight\n2:00 The Wing\n2:59 The Ice\n3:54 The Cue\n5:02 The Last Half Minute\n6:26 The Findings\n7:34 The Law\n\nSources: US National Transportation Safety Board, Loss of Control on Approach, Colgan Air, Inc., Operating as Continental Connection (final report, February 2010); FAA Lessons Learned, Colgan Air accident.\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.\n\nReport: US National Transportation Safety Board, Loss of Control on Approach, Colgan Air Flight 3407 (AAR-10/01), page 98 of 299, Public domain (US government work) (https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf)\nReport: US National Transportation Safety Board, Loss of Control on Approach, Colgan Air Flight 3407 (AAR-10/01), page 169 of 299, Public domain (US government work) (https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf)\nReport: US National Transportation Safety Board, Loss of Control on Approach, Colgan Air Flight 3407 (AAR-10/01), page 170 of 299, Public domain (US government work) (https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf)",
+  "hashtags": [
+    "#ColganAir",
+    "#AirCrash",
+    "#Aviation",
+    "#NTSB",
+    "#DisasterDesk"
+  ],
+  "hookStyle": "conflict",
+  "cta": "Rule, reflex or rest: which would you have fixed first? Tell us in the comments",
+  "seed": 26112641,
+  "style": {
+    "palette": "night",
+    "genre": "undertow",
+    "key": "F",
+    "bpm": 54,
+    "voice": "bm_lewis"
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.15,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Colgan Air's flight to Buffalo got a stall warning. The captain pulled the wrong way, and 50 people died.",
+        "start": 0.27,
+        "seconds": 6.21,
+        "window": 6.83,
+        "fill": 0.909
+      },
+      {
+        "scene": "hook-speed",
+        "text": "February 12, 2009. The twin-propeller airliner was slowing for the runway, its airspeed sagging to 131 knots.",
+        "start": 7.1,
+        "seconds": 7.99,
+        "window": 8.63,
+        "fill": 0.926
+      },
+      {
+        "scene": "hook-shake",
+        "text": "The control column shook: the wings were close to a stall. The trained answer is to push forward. The captain pulled back.",
+        "start": 15.73,
+        "seconds": 6.86,
+        "window": 7.43,
+        "fill": 0.923
+      },
+      {
+        "scene": "hook-fall",
+        "text": "The nose rose, a wing dropped, and in under half a minute the airliner came down on a house, 5 nautical miles from the airport.",
+        "start": 23.17,
+        "seconds": 7.5,
+        "window": 8.13,
+        "fill": 0.923
+      },
+      {
+        "scene": "promise",
+        "text": "This crash had no single cause. It was a chain: an airspeed set too low for the ice, talk where there should be silence, a warning nobody called, and one wrong reflex.",
+        "start": 31.3,
+        "seconds": 10.03,
+        "window": 10.67,
+        "fill": 0.94
+      },
+      {
+        "scene": "promise2",
+        "text": "Here it is in seven parts: the flight, the wing, the ice, the cue, the last half minute, the findings, and the law that came after.",
+        "start": 41.97,
+        "seconds": 7.61,
+        "window": 8.27,
+        "fill": 0.92
+      },
+      {
+        "scene": "f-plane",
+        "text": "The plane was a Bombardier Q four hundred, a turboprop airliner, flown by Colgan Air as a Continental Connection flight.",
+        "start": 50.23,
+        "seconds": 7.42,
+        "window": 8.0,
+        "fill": 0.927
+      },
+      {
+        "scene": "f-route",
+        "text": "Where was it going? That evening, from Newark, near New York City, to Buffalo, in the far west of New York State.",
+        "start": 58.23,
+        "seconds": 6.44,
+        "window": 7.07,
+        "fill": 0.911
+      },
+      {
+        "scene": "f-late",
+        "text": "High winds had slowed flights at Newark all day. This one took off more than two hours behind schedule, into the dark, bound for Buffalo.",
+        "start": 65.3,
+        "seconds": 8.0,
+        "window": 8.6,
+        "fill": 0.93
+      },
+      {
+        "scene": "f-aboard",
+        "text": "Who was aboard? 49 people: the two pilots, two flight attendants, and the passengers, some of them going home.",
+        "start": 73.9,
+        "seconds": 6.79,
+        "window": 7.4,
+        "fill": 0.918
+      },
+      {
+        "scene": "f-commute",
+        "text": "And the crew? The first officer lived near Seattle. To reach work, she had flown overnight, across the country through Memphis, into Newark that morning.",
+        "start": 81.3,
+        "seconds": 8.54,
+        "window": 9.17,
+        "fill": 0.931
+      },
+      {
+        "scene": "f-climb",
+        "text": "Climbing out, the crew switched on the de-icing systems, which crack ice off the wings. The plane levelled at 16,000 feet.",
+        "start": 90.47,
+        "seconds": 7.44,
+        "window": 8.0,
+        "fill": 0.93
+      },
+      {
+        "scene": "f-talk",
+        "text": "Up there, the autopilot flew and the pilots talked almost the whole way. Was that allowed? At that height, yes.",
+        "start": 98.47,
+        "seconds": 6.48,
+        "window": 7.13,
+        "fill": 0.909
+      },
+      {
+        "scene": "f-weather",
+        "text": "Was the weather the problem? There was light snow and mist near Buffalo, with ice in the cloud: nothing unusual for a winter night there.",
+        "start": 105.6,
+        "seconds": 7.63,
+        "window": 8.27,
+        "fill": 0.923
+      },
+      {
+        "scene": "f-tease",
+        "text": "But near Buffalo, the cloud was full of ice. And ice changes the one thing that keeps a wing in the air.",
+        "start": 113.87,
+        "seconds": 5.87,
+        "window": 6.5,
+        "fill": 0.903
+      },
+      {
+        "scene": "w-flow",
+        "text": "What keeps a wing up? Air flows over its curved top and under it, and the wing turns that flow into lift.",
+        "start": 120.37,
+        "seconds": 5.93,
+        "window": 6.53,
+        "fill": 0.908
+      },
+      {
+        "scene": "w-aoa",
+        "text": "Tilt the wing up a little, and it makes more lift. That tilt against the oncoming air is called the angle of attack.",
+        "start": 126.9,
+        "seconds": 6.25,
+        "window": 6.87,
+        "fill": 0.91
+      },
+      {
+        "scene": "w-stall",
+        "text": "Past a certain angle, the air can't follow the top any more. It breaks away in swirls, and the lift collapses. That is a stall.",
+        "start": 133.77,
+        "seconds": 7.5,
+        "window": 8.1,
+        "fill": 0.926
+      },
+      {
+        "scene": "w-slow",
+        "text": "A slow plane needs a bigger angle to hold itself up. So as the airspeed bleeds away, the wing creeps toward that edge.",
+        "start": 141.87,
+        "seconds": 7.1,
+        "window": 7.73,
+        "fill": 0.918
+      },
+      {
+        "scene": "w-shaker",
+        "text": "What warns the crew? This plane has a stick shaker. Near the edge, it rattles both control columns and sounds a warning.",
+        "start": 149.6,
+        "seconds": 7.22,
+        "window": 7.83,
+        "fill": 0.922
+      },
+      {
+        "scene": "w-pusher",
+        "text": "If that isn't enough, a stick pusher shoves the column forward, to lower the nose and get the air flowing again.",
+        "start": 157.43,
+        "seconds": 6.18,
+        "window": 6.8,
+        "fill": 0.909
+      },
+      {
+        "scene": "w-recover",
+        "text": "Pilots are trained for this moment. Nose down to cut the angle, power up to get speed back, and the wing grips the air again.",
+        "start": 164.23,
+        "seconds": 7.03,
+        "window": 7.63,
+        "fill": 0.921
+      },
+      {
+        "scene": "w-tease",
+        "text": "Ice on the front of a wing can make it stall sooner, at a higher speed. That night, the airliner had ice. Did it matter?",
+        "start": 171.87,
+        "seconds": 6.87,
+        "window": 7.5,
+        "fill": 0.916
+      },
+      {
+        "scene": "i-see",
+        "text": "The pilots saw it. Ice was building on the windshield and on the front edges of the wings.",
+        "start": 179.37,
+        "seconds": 5.07,
+        "window": 5.73,
+        "fill": 0.885
+      },
+      {
+        "scene": "i-switch",
+        "text": "What do pilots do about ice? The plane has a switch called ref speeds. Set to increase, it makes the stall warning come sooner, to leave more margin.",
+        "start": 185.1,
+        "seconds": 8.9,
+        "window": 9.53,
+        "fill": 0.934
+      },
+      {
+        "scene": "i-band",
+        "text": "On the airspeed tape, a red and black band shows where the shaker will fire. With the switch on, the band sat about 15 knots higher.",
+        "start": 194.63,
+        "seconds": 7.69,
+        "window": 8.33,
+        "fill": 0.923
+      },
+      {
+        "scene": "i-brief",
+        "text": "The switch was on. So what speed did they plan? For landing, the crew briefed a speed of 118 knots, the speed for a wing with no ice.",
+        "start": 202.97,
+        "seconds": 8.25,
+        "window": 8.87,
+        "fill": 0.93
+      },
+      {
+        "scene": "i-gap",
+        "text": "So the warning would fire 13 knots above the speed they meant to land at. To slow down to it, they'd have to fly through the warning.",
+        "start": 211.83,
+        "seconds": 7.4,
+        "window": 8.0,
+        "fill": 0.925
+      },
+      {
+        "scene": "i-catch",
+        "text": "And the ice itself? The investigators found it barely hurt the wing. The aircraft could still fly normally. The danger was in the numbers.",
+        "start": 219.83,
+        "seconds": 7.95,
+        "window": 8.6,
+        "fill": 0.924
+      },
+      {
+        "scene": "i-tease",
+        "text": "Someone had to watch that speed closely. But below ten thousand feet, the flight deck was not quiet.",
+        "start": 228.43,
+        "seconds": 5.73,
+        "window": 6.37,
+        "fill": 0.9
+      },
+      {
+        "scene": "c-sterile",
+        "text": "What is the sterile cockpit? Below 10,000 feet, the rule allows only talk that is about flying the plane.",
+        "start": 234.8,
+        "seconds": 6.53,
+        "window": 7.1,
+        "fill": 0.92
+      },
+      {
+        "scene": "c-chat",
+        "text": "On this flight, the pilots kept up a conversation that had nothing to do with flying, down through the descent.",
+        "start": 241.9,
+        "seconds": 6.06,
+        "window": 6.7,
+        "fill": 0.904
+      },
+      {
+        "scene": "c-level",
+        "text": "At 2,300 feet, the autopilot held the height, and the captain pulled the power back to slow down for landing.",
+        "start": 248.6,
+        "seconds": 6.64,
+        "window": 7.23,
+        "fill": 0.918
+      },
+      {
+        "scene": "c-power",
+        "text": "Who controls the speed? This airliner had no autothrottle. Power was set by hand, and only the pilots could notice the speed falling short.",
+        "start": 255.83,
+        "seconds": 8.68,
+        "window": 9.3,
+        "fill": 0.933
+      },
+      {
+        "scene": "c-tasks",
+        "text": "The first officer was busy: the landing gear, a radio change, a chime to the cabin, then a check that the gear was down.",
+        "start": 265.13,
+        "seconds": 7.36,
+        "window": 7.97,
+        "fill": 0.923
+      },
+      {
+        "scene": "c-cue",
+        "text": "Was there a warning? Meanwhile, the red band climbed the airspeed tape toward the falling speed. It was there to see for 18 seconds.",
+        "start": 273.1,
+        "seconds": 7.73,
+        "window": 8.37,
+        "fill": 0.924
+      },
+      {
+        "scene": "c-nose",
+        "text": "The autopilot raised the nose to hold the height. The speed numbers turned red. Neither pilot said anything about it.",
+        "start": 281.47,
+        "seconds": 6.78,
+        "window": 7.37,
+        "fill": 0.92
+      },
+      {
+        "scene": "c-report",
+        "text": "The investigators wrote that the cues were on the instruments with enough time to act, but neither pilot responded.",
+        "start": 288.83,
+        "seconds": 6.32,
+        "window": 6.97,
+        "fill": 0.907
+      },
+      {
+        "scene": "c-tease",
+        "text": "Three small lapses so far: the speed, the talk, the cue. The fourth took less than half a second.",
+        "start": 295.8,
+        "seconds": 5.95,
+        "window": 6.57,
+        "fill": 0.906
+      },
+      {
+        "scene": "l-shaker",
+        "text": "Then the stick shaker fired, at 131 knots. The autopilot switched itself off, with a horn that kept sounding.",
+        "start": 302.37,
+        "seconds": 7.12,
+        "window": 7.77,
+        "fill": 0.916
+      },
+      {
+        "scene": "l-pull",
+        "text": "Less than half a second later, the captain pulled the column back. A second after that, he pushed the power up, but not to full.",
+        "start": 310.13,
+        "seconds": 7.14,
+        "window": 7.77,
+        "fill": 0.919
+      },
+      {
+        "scene": "l-angle",
+        "text": "Pulling back raised the angle of attack, the opposite of the trained answer. The wing was already near the edge. Now it went over.",
+        "start": 317.9,
+        "seconds": 7.35,
+        "window": 7.97,
+        "fill": 0.922
+      },
+      {
+        "scene": "l-roll",
+        "text": "The airliner pitched up, and rolled left to 45 degrees, then swung hard back to the right.",
+        "start": 325.87,
+        "seconds": 5.61,
+        "window": 6.17,
+        "fill": 0.909
+      },
+      {
+        "scene": "l-pusher",
+        "text": "The stick pusher fired and shoved the nose down. The captain pulled against it. It fired twice more.",
+        "start": 332.03,
+        "seconds": 5.77,
+        "window": 6.4,
+        "fill": 0.902
+      },
+      {
+        "scene": "l-flaps",
+        "text": "The first officer raised the flaps without being asked. That took away lift the wing badly needed. The speed fell to about 100 knots.",
+        "start": 338.43,
+        "seconds": 8.2,
+        "window": 8.83,
+        "fill": 0.929
+      },
+      {
+        "scene": "l-gear",
+        "text": "She then asked about raising the landing gear too. Neither move was in the company's stall recovery procedure, the board found.",
+        "start": 347.27,
+        "seconds": 7.23,
+        "window": 7.87,
+        "fill": 0.919
+      },
+      {
+        "scene": "l-over",
+        "text": "Then it rolled right, to 105 degrees, almost on its back. Then the nose dropped toward the ground.",
+        "start": 355.13,
+        "seconds": 6.19,
+        "window": 6.83,
+        "fill": 0.906
+      },
+      {
+        "scene": "l-crash",
+        "text": "Moments later, it came down on a house in Clarence Center, 5 nautical miles from the airport.",
+        "start": 361.97,
+        "seconds": 5.69,
+        "window": 6.33,
+        "fill": 0.899
+      },
+      {
+        "scene": "l-toll",
+        "text": "All 49 people aboard were killed, and 1 person in the house.",
+        "start": 368.3,
+        "seconds": 3.88,
+        "window": 4.53,
+        "fill": 0.857
+      },
+      {
+        "scene": "l-clock",
+        "text": "From the stick shaker to the end of the cockpit recording, the flight lasted less than half a minute.",
+        "start": 372.83,
+        "seconds": 5.33,
+        "window": 5.9,
+        "fill": 0.903
+      },
+      {
+        "scene": "l-tease",
+        "text": "The families of the people aboard wanted to know how a working airliner could fall out of the sky. So did the investigators.",
+        "start": 378.73,
+        "seconds": 7.0,
+        "window": 7.67,
+        "fill": 0.913
+      },
+      {
+        "scene": "r-cause",
+        "text": "A year later, the National Transportation Safety Board named the probable cause: the captain's inappropriate response to the stick shaker.",
+        "start": 386.4,
+        "seconds": 7.93,
+        "window": 8.57,
+        "fill": 0.925
+      },
+      {
+        "scene": "r-plane",
+        "text": "First, the plane itself. The investigators found no failure of the structure, the engines or any system, and nothing wrong with its ice protection.",
+        "start": 394.97,
+        "seconds": 8.55,
+        "window": 9.17,
+        "fill": 0.932
+      },
+      {
+        "scene": "r-factors",
+        "text": "It listed four contributing factors: speed not watched against the rising cue, the sterile cockpit not kept, the flight not managed, and Colgan's speed procedures for ice.",
+        "start": 404.13,
+        "seconds": 10.22,
+        "window": 10.87,
+        "fill": 0.94
+      },
+      {
+        "scene": "r-startle",
+        "text": "Why pull back? The board said his response should have been automatic, but looked like startle and confusion.",
+        "start": 415.0,
+        "seconds": 5.81,
+        "window": 6.43,
+        "fill": 0.904
+      },
+      {
+        "scene": "r-pusher",
+        "text": "And the stick pusher? He didn't recognise its push as part of the recovery, the board said, and overriding it made the situation worse.",
+        "start": 421.43,
+        "seconds": 7.74,
+        "window": 8.4,
+        "fill": 0.921
+      },
+      {
+        "scene": "r-training",
+        "text": "And airline stall training then practised only the warning, and how to fly out of it. Not a stall that had already happened.",
+        "start": 429.83,
+        "seconds": 6.88,
+        "window": 7.53,
+        "fill": 0.914
+      },
+      {
+        "scene": "r-fatigue",
+        "text": "Fatigue? The board found the pilots were likely impaired by it, but couldn't say how much. It is not in the probable cause.",
+        "start": 437.37,
+        "seconds": 6.86,
+        "window": 7.5,
+        "fill": 0.915
+      },
+      {
+        "scene": "r-recs",
+        "text": "The board made 25 safety recommendations to the Federal Aviation Administration.",
+        "start": 444.87,
+        "seconds": 5.07,
+        "window": 5.67,
+        "fill": 0.894
+      },
+      {
+        "scene": "r-tease",
+        "text": "But the families didn't wait for the regulators. They went to Washington.",
+        "start": 450.53,
+        "seconds": 3.76,
+        "window": 4.37,
+        "fill": 0.86
+      },
+      {
+        "scene": "x-act",
+        "text": "In the summer of 2010, Congress passed the Airline Safety and Federal Aviation Administration Extension Act, and the president signed it that August.",
+        "start": 454.9,
+        "seconds": 8.93,
+        "window": 9.53,
+        "fill": 0.937
+      },
+      {
+        "scene": "x-hours",
+        "text": "What does it ask? Under the rule that followed in 2013, a first officer must hold an airline transport pilot certificate, which normally takes 1,500 flight hours.",
+        "start": 464.43,
+        "seconds": 10.56,
+        "window": 11.2,
+        "fill": 0.943
+      },
+      {
+        "scene": "x-stall",
+        "text": "Airlines also had to train pilots to recover from real stalls, in simulators, by 2019. And new rest rules gave pilots longer breaks.",
+        "start": 475.63,
+        "seconds": 8.98,
+        "window": 9.63,
+        "fill": 0.933
+      },
+      {
+        "scene": "x-alarm",
+        "text": "The board also asked for warnings that are harder to miss: an amber band above the red one, and a low-speed alarm you can hear.",
+        "start": 485.27,
+        "seconds": 7.06,
+        "window": 7.67,
+        "fill": 0.92
+      },
+      {
+        "scene": "x-catch",
+        "text": "Would that have stopped this crash? That night, the captain had 3,379 flight hours. The first officer had 2,244. Both were already past the new minimum.",
+        "start": 492.93,
+        "seconds": 11.25,
+        "window": 11.87,
+        "fill": 0.948
+      },
+      {
+        "scene": "x-meaning",
+        "text": "So hours alone would not have saved this flight. The training and rest rules went after what failed: one reflex, and one watch on the speed.",
+        "start": 504.8,
+        "seconds": 8.04,
+        "window": 8.67,
+        "fill": 0.927
+      },
+      {
+        "scene": "score",
+        "text": "An airspeed set too low for the ice. Talk below ten thousand feet. A warning band nobody called. One pull the wrong way.",
+        "start": 513.47,
+        "seconds": 7.51,
+        "window": 8.13,
+        "fill": 0.924
+      },
+      {
+        "scene": "loop",
+        "text": "Rule, reflex or rest: which would you have fixed first? Tell us in the comments.",
+        "start": 521.6,
+        "seconds": 4.37,
+        "window": 5.0,
+        "fill": 0.874
+      }
+    ]
+  },
+  "durationSec": 529,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.6,
+    "lufs": -16.6,
+    "music_under_voice_db": 32.2
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_lewis",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after 7 fixes: all 29 facts confirmed on NTSB AAR-10/01 (PDF), faa.gov N200WQ and the Federal Register (78 FR 42324, 1,500 h); Act passed July 29-30 and signed Aug 1, 2010; weather, roll, power timing, distance unit and passengers lines now match the report; verify list met (no pilot names, fatigue not in probable cause, 2013 rule year on faa.gov, no Eckert); disclaimer ends the description."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 3: 3D world now ~51% (Sky + lit wind tunnel), x-catch logbooks drawn with counters, x-act bill fits its sheet, wing/flaps are metal with panel lines and ice crust; corkboard boards, close 3D pull, street-level toll and night-town thumbnails hold; no overlaps, cut text or empty frames in the 5 s stills; layout clean, audio -1.0/-18.6 dB; thumbnail A picked and readable small.",
+        "fingerprint: a6bc8d0992b4e8d3.f84de6022be3720b"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T04:54:20.616188+00:00",
+      "finishedAt": "2026-11-26T04:54:20.616188+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T04:59:50.578448+00:00",
+      "finishedAt": "2026-11-26T04:59:50.578448+00:00",
+      "notes": [
+        "beat 'hook'.params.moments[0].what contains a typed number; use a placeholder: 'the date and place caption types on over the Q400 in falling snow'",
+        "note: 6 questions in about 431 s of speech; at least 14 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: beat 'promise' opens like a line in one of the last scripts (\"it wasn't one\"): new words",
+        "note: beat 'w-flow' opens like a line in one of the last scripts ('how does a'): new words",
+        "note: beat 'c-report' opens like a line in one of the last scripts ('the safety board'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:00:18.215446+00:00",
+      "finishedAt": "2026-11-26T05:00:18.215446+00:00",
+      "notes": [
+        "beat 'outro'.params.assumption contains a typed number; use a placeholder: \"From the NTSB's report AAR-10/01 and the FAA's account of the rules that followed. The scenes are reconstructions, not actual footage.\"",
+        "note: beat 'promise' opens like a line in one of the last scripts (\"it wasn't one\"): new words",
+        "note: beat 'w-flow' opens like a line in one of the last scripts ('how does a'): new words",
+        "note: beat 'w-shaker' opens like a line in one of the last scripts ('how does the'): new words",
+        "note: beat 'c-report' opens like a line in one of the last scripts ('the safety board'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:00:25.128860+00:00",
+      "finishedAt": "2026-11-26T05:00:25.128860+00:00",
+      "notes": [
+        "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '01,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "hashtags mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "facts[0] (2009 year, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[1] (12 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[2] (49 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[3] (1 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[4] (5 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[5] (118 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[6] (131 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[7] (45 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[8] (25 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[9] (1500 count, 2025-01-01) is not one of the feed topic's facts; copy them exactly",
+        "facts[10] (16000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[11] (10000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[12] (2300 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[13] (18 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[14] (15 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[15] (7 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[16] (105 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[17] (100 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[18] (3379 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[19] (2244 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[20] (2010 year, 2025-01-01) is not one of the feed topic's facts; copy them exactly",
+        "facts[21] (2013 year, 2025-01-01) is not one of the feed topic's facts; copy them exactly",
+        "facts[22] (2019 year, 2025-01-01) is not one of the feed topic's facts; copy them exactly",
+        "facts[23] (50 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[24] (22 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[25] (16 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[26] (27 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[27] (54 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[28] (13 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:00:44.486474+00:00",
+      "finishedAt": "2026-11-26T05:00:44.486474+00:00",
+      "notes": [
+        "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '01,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "hashtags mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "facts[0] (2009 year, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[1] (12 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[2] (49 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[3] (1 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[4] (5 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[5] (118 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[6] (131 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[7] (45 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[8] (25 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[9] (1500 count, 2025-01-06) is not one of the feed topic's facts; copy them exactly",
+        "facts[10] (16000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[11] (10000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[12] (2300 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[13] (18 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[14] (15 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[15] (7 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[16] (105 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[17] (100 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[18] (3379 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[19] (2244 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[20] (2010 year, 2010-08-01) is not one of the feed topic's facts; copy them exactly",
+        "facts[21] (2013 year, 2013-07-15) is not one of the feed topic's facts; copy them exactly",
+        "facts[22] (2019 year, 2013-11-12) is not one of the feed topic's facts; copy them exactly",
+        "facts[23] (50 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[24] (22 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[25] (16 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[26] (27 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[27] (54 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[28] (13 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:01:04.423692+00:00",
+      "finishedAt": "2026-11-26T05:01:04.423692+00:00",
+      "notes": [
+        "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '01,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "hashtags mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "facts[0] (2009 year, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[1] (12 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[2] (49 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[3] (1 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[4] (5 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[5] (118 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[6] (131 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[7] (45 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[8] (25 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[9] (1500 count, 2025-01-06) is not one of the feed topic's facts; copy them exactly",
+        "facts[10] (16000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[11] (10000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[12] (2300 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[13] (18 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[14] (15 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[15] (7 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[16] (105 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[17] (100 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[18] (3379 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[19] (2244 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[20] (2010 year, 2010-08-01) is not one of the feed topic's facts; copy them exactly",
+        "facts[21] (2013 year, 2013-07-15) is not one of the feed topic's facts; copy them exactly",
+        "facts[22] (2019 year, 2013-11-12) is not one of the feed topic's facts; copy them exactly",
+        "facts[23] (50 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[24] (22 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[25] (16 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[26] (27 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[27] (54 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+        "facts[28] (13 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:01:22.497995+00:00",
+      "finishedAt": "2026-11-26T05:01:22.497995+00:00",
+      "notes": [
+        "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '01,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "hashtags mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:01:34.182959+00:00",
+      "finishedAt": "2026-11-26T05:01:34.182959+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:01:34.980712+00:00",
+      "finishedAt": "2026-11-26T05:01:34.980712+00:00",
+      "notes": [
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+        "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:01:40.241681+00:00",
+      "finishedAt": "2026-11-26T05:01:40.241681+00:00",
+      "notes": [
+        "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:17:31.127570+00:00",
+      "finishedAt": "2026-11-26T05:17:31.127570+00:00",
+      "notes": [
+        "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:22:17.808338+00:00",
+      "finishedAt": "2026-11-26T05:22:17.808338+00:00",
+      "notes": [
+        "x-act: 'In August 2010, Congress passed and the president signed' is wrong: the House passed H.R. 5900 on July 29 and the Senate on July 30, 2010; the president signed it on August 1, 2010 (faa.gov N200WQ page, Congressional Record). Say e.g. 'In the summer of 2010, Congress passed the Airline Safety and FAA Extension Act, and the president signed it that August.'",
+        "f-weather: 'the night was clear enough to see the lights on the ground' is not in the report and goes against it: AAR-10/01 says 'the night and poor visibility conditions at the time precluded the use of external visual cues for reliable attitude reference' (METAR: 3 miles visibility in light snow and mist, overcast at 2,100 ft agl). Keep 'light snow and mist' and replace the clause, e.g. 'nothing unusual for a winter night' (the report: icing conditions were not abnormal for wintertime operations).",
+        "f-climb: 'levelled at 16,000 feet, above the cloud' - 'above the cloud' is not in the report or the FAA page; drop it (the 16,000 ft cruise is confirmed).",
+        "hook-fall: voice says '5 miles' but the fact (fact5) and the on-screen tag are nautical miles (AAR-10/01: 'about 5 nautical miles northeast of the airport'); say '5 nautical miles' as l-crash does.",
+        "l-over: 'past 105 degrees ... with the nose pointing down' is wrong: the roll reached 105 deg right wing down (not past it), and at that moment pitch was -1 deg (AAR-10/01 p. 5); the 25 deg nose-down came later at about 100 deg right. Say e.g. 'Then it rolled right, to 105 degrees, almost on its back. Then the nose dropped.'",
+        "l-pull: the column came back 0.4 s after the shaker (2216:27.8), but the power levers went forward about 1 second after that (AAR-10/01 p. 5); the line puts both inside 'less than half a second'. Split it, e.g. 'Less than half a second later, the captain pulled the column back. A second after that, he pushed the power up, but not to full.'",
+        "f-aboard: 'many of them going home' is not in the report; outlets (AP via NBC) say 'several Buffalo-area residents' and some 'just trying to get home'. Say 'some of them going home' or drop it."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:22:49.803794+00:00",
+      "finishedAt": "2026-11-26T05:22:49.803794+00:00",
+      "notes": [
+        "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:23:52.919172+00:00",
+      "finishedAt": "2026-11-26T05:23:52.919172+00:00",
+      "notes": [
+        "Re-review after 7 fixes: all 29 facts confirmed on NTSB AAR-10/01 (PDF), faa.gov N200WQ and the Federal Register (78 FR 42324, 1,500 h); Act passed July 29-30 and signed Aug 1, 2010; weather, roll, power timing, distance unit and passengers lines now match the report; verify list met (no pilot names, fatigue not in probable cause, 2013 rule year on faa.gov, no Eckert); disclaimer ends the description."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:24:10.121803+00:00",
+      "finishedAt": "2026-11-26T05:29:11.348621+00:00",
+      "notes": [
+        "fingerprint: cf3d0c1d307af72e.7b39e7b28f81a029",
+        "text 'ALT' at 20.7 s is 26.9 px, below the 30 px minimum",
+        "text 'FIRST OFFICER' at 20.7 s runs outside the frame",
+        "text 'CAPTAIN' at 103.2 s reaches 1088 px, inside the bottom 36 px",
+        "text 'FIRST OFFICER' at 103.2 s reaches 1088 px, inside the bottom 36 px",
+        "text 'STICK PUSHER' at 161.9 s reaches 1114 px, inside the bottom 36 px",
+        "text 'INCREASE' at 191.5 s runs outside the frame",
+        "text 'REF SPEEDS: INCR' at 208.9 s runs outside the frame",
+        "text 'LANDING SPEED' at 208.9 s runs outside the frame",
+        "text '118 KT' at 208.9 s runs outside the frame",
+        "text 'STALL' at 246.3 s is 29 px, below the 30 px minimum",
+        "text 'ALT' at 239.5 s reaches 1060 px, inside the bottom 36 px",
+        "text 'CAPTAIN' at 270.4 s runs outside the frame",
+        "text 'RADIO' at 270.4 s runs outside the frame",
+        "text 'CHIME' at 270.4 s runs outside the frame",
+        "text 'STALL' at 307.5 s runs outside the frame",
+        "text 'EST · CVR' at 307.5 s runs outside the frame",
+        "text '22:16:27' at 307.5 s runs outside the frame",
+        "text 'FLAPS' at 344.4 s runs outside the frame",
+        "text 'STALL RECOVERY' at 352.5 s runs outside the frame",
+        "text '22:16:54' at 376.7 s runs outside the frame",
+        "text 'STALL ANGLE' at 419.2 s runs outside the frame",
+        "text 'AIRLINE SAFETY AND FAA' at 461.3 s is 29 px, below the 30 px minimum",
+        "text 'EXTENSION ACT' at 461.3 s is 29 px, below the 30 px minimum",
+        "32 of 106 stills are mostly empty background (at 30 s, 35 s, 40 s, 45 s, 60 s, 65 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:31:15.071980+00:00",
+      "finishedAt": "2026-11-26T05:36:11.205861+00:00",
+      "notes": [
+        "fingerprint: cf3d0c1d307af72e.383e006cac5f7acf",
+        "text 'CABIN CREW' at 78.8 s runs outside the frame",
+        "text 'CAPTAIN' at 239.5 s reaches 1072 px, inside the bottom 36 px",
+        "text 'FIRST OFFICER' at 239.5 s reaches 1072 px, inside the bottom 36 px",
+        "text 'EST · CVR' at 307.5 s is 29.1 px, below the 30 px minimum",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:36:23.705195+00:00",
+      "finishedAt": "2026-11-26T05:41:10.429513+00:00",
+      "notes": [
+        "fingerprint: cf3d0c1d307af72e.2463d4f15f735dad",
+        "text 'CABIN CREW' at 78.8 s runs outside the frame",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:42:08.098750+00:00",
+      "finishedAt": "2026-11-26T05:46:59.157538+00:00",
+      "notes": [
+        "fingerprint: cf3d0c1d307af72e.b5465f5dfc9d4d2a",
+        "529 s, night/undertow (preview only)",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:48:03.442175+00:00",
+      "finishedAt": "2026-11-26T05:52:48.897067+00:00",
+      "notes": [
+        "fingerprint: f69f37a24370fec9.b5465f5dfc9d4d2a",
+        "529 s, night/undertow (preview only)",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T05:54:56.862679+00:00",
+      "finishedAt": "2026-11-26T05:54:56.862679+00:00",
+      "notes": [
+        "[script] Lesson 6 repeated (reconstruction first): only ~122 s of 526 s (23%) is in the lit 3D world (Sky beats); the rest is the flat 2D flight deck (Cockpit/Panel, ~169 s), grid diagrams (Wing, Board, Law, ~175 s). Diagram beats run 7-12 s, not 3-6 s inserts, and one look runs past 30 s: Law 450-505 s (r-tease..x-meaning, 35 s); the flat flight deck holds 228-302 s (i-tease, c-sterile, c-chat, c-power, c-tasks, c-cue, c-nose) with only c-level in 3D. Move cockpit/approach beats into the 3D airliner (exterior, iced wing, the descent) and cut diagrams to short inserts.",
+        "[script] Lesson 7 repeated (failure moment is the hero shot): l-pull 310 s, the captain's pull, is the same medium flat cockpit as a dozen other beats with a small red arrow; l-pusher 335 s same. Make the pull a big close 3D shot (column hauled back, nose rising, wing dropping).",
+        "[script] Same picture held: flight-deck set with identical medium framing at 100, 150, 155, 160, 230, 235, 240, 245, 260, 265, 270, 310, 315, 335, 340, 345, 350 s (i-tease->c-sterile->c-chat three in a row, l-pusher->l-flaps->l-gear three in a row, w-shaker->w-pusher two in a row); camera close/extreme moments do not show in the stills (render craft note: 67 s without a close shot). Wing diagram w-flow..w-slow 125-145 s four beats in a row same composition.",
+        "[script] Not directed / slides: promise 35-40 s and c-tease 300 s are three small text chips (SPEED TOO LOW / TALK / NO CALLOUT) on a bare grid; promise2 45 s is a text list on a grid; r-factors 405 s ('Contributing factors' alone on an empty grid, then rows at 410 s), r-pusher 425 s (one text row on empty grid) and score 515-520 s are headline rows on a grid, not things in a place. Give each a real place (investigator's desk, wreck hangar, cockpit voice recorder, the 3D airliner).",
+        "[scene] Empty frames, Law component: x-catch 495 s shows only grid + brown floor + two tiny CAPTAIN/FIRST OFFICER labels (the logbooks never appear), 500 s is two plain bars instead of logbooks; x-meaning 505 s is an empty grid with a tiny red 'minimum' line; 510 s two chips at top right with STALL TRAINING touching the right edge.",
+        "[scene] Broken-looking number, Law logbook (x-hours): flight-hours counter reads '0' at 465 s and still '0' at 470 s ('hold an airline'), then 475 at 475 s; the counter must land on its figure on its word, not sit at 0 for ~8 s. The certificate card at 475 s has an empty grey placeholder square.",
+        "[scene] Overlap, Panel (i-band, 200 s): a red label under the attitude display ('...HERE') sits under the caption 'With the switch on,' and is unreadable; the orange 'REF SPEEDS: INCR' chip text runs into its border at 200-215 s.",
+        "[scene] Hidden/cut text, Cockpit: c-power 260 s the struck-out red 'AUTOTHROTTLE' chip (the point of the line) is half hidden behind the control column/first officer and overlapped by the caption; 'FIRST OF' label clipped at 265 s and 310 s; l-flaps 345 s the airspeed tag (the line's figure, about fact18 knots) runs off the left edge, faded and cut ('IRSPEED - KT').",
+        "[scene] Law Capitol (r-tease/x-act 455-460 s): an empty brown plank bottom right with nothing on it; the act sign at 460 s is cut ('AIRLINE SAFETY AND F...'). Simulator (r-training/x-stall 430, 435, 480 s) is a white box on stick legs on a grid, box-like (lesson 5); at 480 s it is cut by the left edge.",
+        "[script] Lesson 12: l-toll 370 s ('were killed') shows a burning roof in an empty snowy street, no fire engines or firefighters and no KILLED ABOARD tag visible; hook-fall 30 s ('came down on a house, 5 nautical miles') shows only cloud with a small tag, no house or glow. f-tease 120 s is an unreadable salmon slab over the wing (meant as the iced edge glow).",
+        "[script] Thumbnails: A ('Pulled the wrong way') is the one I'd click, readable small and matches the title; C ('Push or pull?', picked, score 7) is a flat plane on a plain dark gradient, losing the night-town picture language the hits share (pattern) and looking less like the 3D reconstruction the video is; B is fine but vague. Prefer A, or put C's plane over the night town."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:57:56.171664+00:00",
+      "finishedAt": "2026-11-26T05:57:56.171664+00:00",
+      "notes": [
+        "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T05:58:38.264279+00:00",
+      "finishedAt": "2026-11-26T06:04:36.759271+00:00",
+      "notes": [
+        "fingerprint: 2d4557b4760fbbc3.e558ac05243435e7",
+        "529 s, night/undertow (preview only)",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T06:05:27.673782+00:00",
+      "finishedAt": "2026-11-26T06:11:43.512085+00:00",
+      "notes": [
+        "fingerprint: 2d4557b4760fbbc3.c1c504b8ad73430e",
+        "529 s, night/undertow (preview only)",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T06:13:06.327415+00:00",
+      "finishedAt": "2026-11-26T06:13:06.327415+00:00",
+      "notes": [
+        "[script] Round 2, lesson 6 still repeated: the lit 3D world (Sky beats) is now about 189 s of 526 s (36%), better than 23% but under the lesson's half. Flat flight deck 71 s, Wing diagrams 60 s, Panel 55 s, Law 54 s, corkboard 45 s. Move about 75 s more into the 3D airliner, e.g. w-stall/w-slow/w-recover/l-angle as the 3D wing with airflow, i-see/i-catch on the 3D iced wing, and c-cue/l-shaker/l-clock as the 3D cockpit or the airliner from outside, so diagrams stay 3-6 s inserts.",
+        "[scene] Law x-catch 495 s ('That night,'): still an almost empty frame, a grid with a title and two small blue LOGBOOK nameplates on the floor. The logbooks never appear as logbooks; 500 s is plain bars standing on the nameplates. Draw the two open logbooks (as in x-hours at 470-475 s) with their counters, then the minimum line.",
+        "[scene] Law x-act 460 s: the bill's title runs off the sheet ('AIRLINE SAFETY AND FA...'); size the sheet to its text or wrap the line.",
+        "[scene] Lesson 5 (no pale, box-like 3D): f-tease 120 s, the close on the wing, is a flat white plank filling the frame with no material, light or detail; l-flaps 340-345 s, the close on the flaps, is pale yellow and salmon slabs. Give the wing a metal and paint material, a key light, rivet lines, de-icing boots and ice texture."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T06:19:30.474074+00:00",
+      "finishedAt": "2026-11-26T06:19:30.474074+00:00",
+      "notes": [
+        "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T06:20:24.637963+00:00",
+      "finishedAt": "2026-11-26T06:30:23.947566+00:00",
+      "notes": [
+        "fingerprint: a6bc8d0992b4e8d3.5779af6557dbbf1c",
+        "529 s, night/undertow (preview only)",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T06:30:45.885813+00:00",
+      "finishedAt": "2026-11-26T06:41:47.727470+00:00",
+      "notes": [
+        "fingerprint: a6bc8d0992b4e8d3.f84de6022be3720b",
+        "529 s, night/undertow (preview only)",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T06:42:29.359072+00:00",
+      "finishedAt": "2026-11-26T06:42:29.359072+00:00",
+      "notes": [
+        "Round 3: 3D world now ~51% (Sky + lit wind tunnel), x-catch logbooks drawn with counters, x-act bill fits its sheet, wing/flaps are metal with panel lines and ice crust; corkboard boards, close 3D pull, street-level toll and night-town thumbnails hold; no overlaps, cut text or empty frames in the 5 s stills; layout clean, audio -1.0/-18.6 dB; thumbnail A picked and readable small.",
+        "fingerprint: a6bc8d0992b4e8d3.f84de6022be3720b"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T06:42:40.304517+00:00",
+      "finishedAt": "2026-11-26T12:26:14.966111+00:00",
+      "notes": [
+        "529 s, night/undertow, peak -1.0 dB, mean -18.6 dB",
+        "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+        "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+        "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+        "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+        "note: directed 4 times in a row: change the device",
+        "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay",
+        "warning: integrated loudness -16.6 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T12:26:30.249487+00:00",
+      "finishedAt": "2026-11-26T12:26:30.249487+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T12:27:12.913560+00:00",
+      "finishedAt": "2026-11-26T12:27:12.913560+00:00",
+      "notes": [
+        "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-26T12:27:31.044904+00:00",
+      "finishedAt": "2026-11-26T12:27:31.044904+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-L-20261126-41",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/L-20261126-41"
+  },
+  "thumbnails": [
+    {
+      "file": "thumbnail.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the airliner huge in a steep bank over a night town, bold words top left",
+      "score": 7,
+      "why": "Reads at phone size and sits in the top hit's pattern (the turboprop big over a night town, bold words), but our flat drawing looks plainer than the 3D hits beside it; the words promise the reflex the video explains.",
+      "picked": true
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the snowy town at night from above, a glow among the houses, emergency lights, big words low",
+      "score": 5,
+      "why": "The town-from-above pattern of the 291K hit, but the plane is small and the glow weak, so it reads as a cartoon next to the hits; the words are the stakes.",
+      "picked": false
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the cockpit moment as a question: the control column and the choice, the airliner over the night town",
+      "score": 6,
+      "why": "A plain question to click for a stranger: a plain question (push or pull?) with the control column and the stalling plane, the 381K hit's cockpit-choice pattern; it promises exactly the turn the video delivers.",
+      "picked": false
+    }
+  ],
+  "thumbnailModel": {
+    "pattern": "the airliner huge in a steep bank over a night town, bold words top left",
+    "references": [
+      "o6c3ENr_CRM",
+      "DVhc1zl8QEM",
+      "_blF6L04Dfk"
+    ]
+  }
+}
