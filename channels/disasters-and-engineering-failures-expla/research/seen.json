@@ -1,13 +1,14 @@
 {
   "claudeCode": {
     "latest": "2.1.332",
-    "checked": "2026-11-26",
+    "checked": "2026-11-27",
     "notes": [
       "2.1.330: WebFetch no longer freezes or returns empty on some pages; built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline (read by tonight's geography research run, not fetched again to keep the run lean).",
       "2026-11-23: still 2.1.330 (30-day scheduled tasks, subagent and WebFetch fixes); nothing for the pipeline.",
       "2026-11-24: still 2.1.330 (raw CHANGELOG.md read); nothing for the pipeline.",
       "2026-11-25: 2.1.331 retries a turn or subagent that went silent while thinking in cloud sessions (fewer failed routine runs) and fixes PushNotification in scheduled runs; nothing to change in the pipeline.",
-      "2026-11-26: 2.1.332 (skills served by MCP servers, beta; a PreSkillShellCommand hook; scheduled tasks renamed 'cloud scheduled tasks' in the UI). Read by tonight's other research runs, not fetched again. Nothing for the pipeline."
+      "2026-11-26: 2.1.332 (skills served by MCP servers, beta; a PreSkillShellCommand hook; scheduled tasks renamed 'cloud scheduled tasks' in the UI). Read by tonight's other research runs, not fetched again. Nothing for the pipeline.",
+      "2026-11-27: still 2.1.332 (raw CHANGELOG.md read); nothing for the pipeline."
     ]
   },
   "sources": {
