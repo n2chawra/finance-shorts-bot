@@ -1,0 +1,24 @@
+{
+ "options": [
+  {
+   "key": "A",
+   "title": "Yahoo Said No to Microsoft's {fact1}",
+   "first_line": "Yahoo said no to {fact1} from Microsoft.",
+   "first_frame": "Microsoft's press release card, '{fact2} per share' highlighted in yellow, over an old Yahoo Mail inbox; then a cut to a giant Yahoo! billboard."
+  },
+  {
+   "key": "B",
+   "title": "Microsoft Offered to Buy Yahoo. Yahoo Turned It Down",
+   "first_line": "Microsoft offered to buy Yahoo, and Yahoo turned it down.",
+   "first_frame": "A typeset Microsoft press release with the per-share price highlighted, over a Yahoo Mail inbox; then the Yahoo! sign."
+  },
+  {
+   "key": "C",
+   "title": "Your Old Yahoo Mail Was Once Worth {fact2} a Share",
+   "first_line": "Your old Yahoo Mail once came with a company Microsoft offered {fact2} a share for.",
+   "first_frame": "A Yahoo Mail inbox under Microsoft's highlighted press release; then the Yahoo! billboard."
+  }
+ ],
+ "picked": "A",
+ "why": "Turning down a giant sum from Microsoft makes a stranger ask why anyone would say no and what happened next, and neither the title nor the first line gives that away, while B hides the figure and C's line is too convoluted to land in one second."
+}

@@ -1,0 +1,216 @@
+{
+  "id": "v-20261126-33",
+  "createdAt": "2026-11-26T01:40:35.286106+00:00",
+  "status": "failed",
+  "failReason": "QA review failed after three rounds: the 'years' depth shot of Jerry Yang pushed his eyes off the top edge and hid the middle of its sub-line behind his cut-out; earlier rounds fixed beat 2 (lesson 1), the split's dark face, the doubled poster title and a source chip over the billboard",
+  "template": "short_story",
+  "topic": {
+    "title": "Yahoo Turned Down Microsoft's Offer, Then Sold to Verizon",
+    "category": "tech",
+    "reach": "global",
+    "feed_id": "2026-11-21-yahoo-said-no"
+  },
+  "title": "Yahoo Said No to Microsoft's {fact1}",
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:31:13.474036+00:00",
+      "finishedAt": "2026-11-26T01:31:13.474036+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:31:48.060636+00:00",
+      "finishedAt": "2026-11-26T01:31:48.060636+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:31:49.192925+00:00",
+      "finishedAt": "2026-11-26T01:31:49.192925+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the title \"Yahoo Said No to Microsoft's {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:31:55.148373+00:00",
+      "finishedAt": "2026-11-26T01:31:55.148373+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: the title \"Yahoo Said No to Microsoft's {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:32:05.898478+00:00",
+      "finishedAt": "2026-11-26T01:32:05.898478+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: the title \"Yahoo Said No to Microsoft's {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:33:14.820586+00:00",
+      "finishedAt": "2026-11-26T01:33:14.820586+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: the title \"Yahoo Said No to Microsoft's {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:34:08.920607+00:00",
+      "finishedAt": "2026-11-26T01:34:08.920607+00:00",
+      "notes": [
+        "All 5 facts confirmed on source pages: Microsoft PR 2008-02-01 ($31/share, ~$44.6B equity value, 62% over Jan 31 2008 close); CNBC 2017-06-13 ($4.48B for Yahoo's core internet business, $350M less than ~$4.8B original offer, cut follows breach disclosure, not stated as caused). Verify list: board rejection confirmed on Yahoo 8-K exhibit 2008-02-11 (SEC) and Fortune/Search Engine Land; script says 'core business' and 'after the breaches came out'. Jerry Yang was Yahoo CEO in 2008; disclaimer ends description. Note: 10% compares the whole-company offer with the core-business price (Alibaba/Yahoo Japan stakes kept); 'core business' wording keeps it fair."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-26T01:34:21.304653+00:00",
+      "finishedAt": "2026-11-26T01:34:53.439702+00:00",
+      "notes": [
+        "fingerprint: f109bcf32ec86c8d.e3b0c44298fc1c14",
+        "2 of 9 stills are mostly empty background (at 15 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:35:10.070142+00:00",
+      "finishedAt": "2026-11-26T01:35:10.070142+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: the title \"Yahoo Said No to Microsoft's {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:35:13.043235+00:00",
+      "finishedAt": "2026-11-26T01:35:35.420238+00:00",
+      "notes": [
+        "fingerprint: 4b3ffe7e73632cdd.e3b0c44298fc1c14",
+        "36 s, night/dossier (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:36:07.569676+00:00",
+      "finishedAt": "2026-11-26T01:36:07.569676+00:00",
+      "notes": [
+        "Re-review after beat 'years' changed: the new depth layer's caption 'Yahoo's founders, Jerry Yang and David Filo' matches the Commons file page (File:Jerry_Yang_and_David_Filo.jpg: 'the founders of Yahoo!', 7 May 2007, CC BY 2.0, Mitchell Aidelbaum, logged in licences.json); title 'On its own' matches the spoken line and claims nothing new; the caption does not say which man is which. Earlier checks unchanged: Microsoft PR 2008-02-01 ($31/share, ~$44.6B, 62% over the Jan 31 close), CNBC 2017-06-13 ($4.48B core business, $350M cut after the breach disclosures), Yahoo 8-K 2008-02-11 board rejection, disclaimer present."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T01:36:38.348778+00:00",
+      "finishedAt": "2026-11-26T01:36:38.348778+00:00",
+      "notes": [
+        "[script] 5.0s beat 'premium' repeats lesson 1: the hook's object (the Yahoo Mail inbox / Yahoo billboard) leaves the screen for Yahoo's Sunnyvale head-office building as beat 2's main layer, which lessons.md says the director must not use. Keep the hook's object on screen in beat 2 (e.g. the billboard or the press release with the 62% label on it) and move the HQ building later or drop it.",
+        "[script] 15.0s beat 'years' (depth layer, Yang and Filo photo): the crop is so tight that David Filo's face is cut through by the right edge and only Jerry Yang is readable. Pull the focus or zoom back so both founders' faces are fully in frame.",
+        "[script] 10.0s beat 'sides' (split): the Yahoo half is a dark stage photo, and Jerry Yang's face is near-black and sits under the 'Yahoo' label and the VS badge, so you can't recognise him (rule 13). Use a brighter, closer Jerry Yang photo or move its focus so his face clears the divider.",
+        "[script] 25.0s and 30.0s beat 'payoff' (poster): the poster's serif 'YAHOO' title sits right on top of the building's own 'YAHOO!' sign in the photo, so the frame reads as doubled text on text. Shift the photo focus or drop the title, since the logo arrives at 'core' anyway."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:36:58.996312+00:00",
+      "finishedAt": "2026-11-26T01:36:58.996312+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: the title \"Yahoo Said No to Microsoft's {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:37:01.851704+00:00",
+      "finishedAt": "2026-11-26T01:37:23.557444+00:00",
+      "notes": [
+        "fingerprint: 94063b2dcf56ece4.e3b0c44298fc1c14",
+        "36 s, night/dossier (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:37:43.295109+00:00",
+      "finishedAt": "2026-11-26T01:38:00.134933+00:00",
+      "notes": [
+        "fingerprint: 2c2ea5b9cc1ba545.e3b0c44298fc1c14",
+        "36 s, night/dossier (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T01:38:46.312431+00:00",
+      "finishedAt": "2026-11-26T01:38:46.312431+00:00",
+      "notes": [
+        "[script] 5.0s beat 'premium' and the thumbnail (taken from 'premium'): the translucent 'SOURCE Press release, Microsoft · Feb 1, 2008' chip sits right on the billboard marquee's black letters 'F. SUMMER / GOOD ON YOU!', so it is text on text and the cover is cluttered. Shift the billboard focus so the marquee sits clear of the chip's band (e.g. focus lower, so the marquee is below it), or move the source overlay to the hook's press-release card. Take the thumbnail before the chip lands. The other three earlier fixes look right: the Yang/Filo split at 10s, the 'On its own' Jerry Yang depth shot at 15s with the title clear on the left, and the payoff poster with no doubled title."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:38:52.941205+00:00",
+      "finishedAt": "2026-11-26T01:38:52.941205+00:00",
+      "notes": [
+        "8 figures computed from inputs; 8 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: the title \"Yahoo Said No to Microsoft's {fact1}\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T01:38:55.868253+00:00",
+      "finishedAt": "2026-11-26T01:39:12.256823+00:00",
+      "notes": [
+        "fingerprint: 5f99c5ec8782df23.e3b0c44298fc1c14",
+        "36 s, night/dossier (preview only)",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T01:40:19.409296+00:00",
+      "finishedAt": "2026-11-26T01:40:19.409296+00:00",
+      "notes": [
+        "[script] 15.5-16.5s beat 'years' (depth layer, Jerry Yang cut-out): the sub line runs behind his cut-out body, so it reads 'JERRY YANG, Y… / FOUNDER' with the middle hidden. Shorten the sub (e.g. 'Co-founder Jerry Yang') or wrap it so it ends left of his body (x < ~480 px).",
+        "[script] 16.0s beat 'years': the push toward a close-up cuts through Jerry Yang's face at the top edge, so his eyes are off the frame and only his mouth shows. Lower the depth layer's focus or ease the zoom so his eyes stay in the frame. The source chip fix worked: 5s and the thumbnail are clean, and the ending (31-34s, the Microsoft campus with the 'Microsoft?' and 'Verizon?' stamps, then the inbox loop) is fine."
+      ]
+    }
+  ]
+}

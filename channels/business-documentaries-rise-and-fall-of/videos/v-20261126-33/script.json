@@ -1,0 +1,820 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 27794,
+ "story": "founder_bet",
+ "shape": "the-refusal",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "dossier",
+  "key": "D",
+  "bpm": 82
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "shock_number",
+ "cta": "Microsoft's money or Verizon's: which deal would you have taken? Comment",
+ "feed_id": "2026-11-21-yahoo-said-no",
+ "facts": [
+  {
+   "label": "Microsoft's offer for Yahoo, total equity value",
+   "value": 44.6,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2008-02-01",
+   "source": "Microsoft",
+   "url": "https://news.microsoft.com/2008/02/01/microsoft-proposes-acquisition-of-yahoo-for-31-per-share/",
+   "fixed": true
+  },
+  {
+   "label": "Microsoft's offer per Yahoo share",
+   "value": 31,
+   "unit": "money",
+   "currency": "USD",
+   "as_of": "2008-02-01",
+   "source": "Microsoft",
+   "url": "https://news.microsoft.com/2008/02/01/microsoft-proposes-acquisition-of-yahoo-for-31-per-share/",
+   "fixed": true
+  },
+  {
+   "label": "Premium over Yahoo's closing price the day before",
+   "value": 62,
+   "unit": "percent",
+   "as_of": "2008-02-01",
+   "source": "Microsoft",
+   "url": "https://news.microsoft.com/2008/02/01/microsoft-proposes-acquisition-of-yahoo-for-31-per-share/",
+   "fixed": true
+  },
+  {
+   "label": "Price Verizon paid for Yahoo's core business",
+   "value": 4.48,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2017-06-13",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2017/06/13/verizon-completes-yahoo-acquisition-marissa-mayer-resigns.html",
+   "fixed": true
+  },
+  {
+   "label": "Cut from Verizon's original offer",
+   "value": 350,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2017-06-13",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2017/06/13/verizon-completes-yahoo-acquisition-marissa-mayer-resigns.html",
+   "fixed": true
+  }
+ ],
+ "maths": [
+  {
+   "name": "gap",
+   "kind": "rate",
+   "part": 4480000000,
+   "whole": 44600000000,
+   "facts": {
+    "part": 4,
+    "whole": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "premium",
+  "sec": 1.0,
+  "words": "Yahoo said *no*",
+  "angle": "story",
+  "unique": "Yahoo-Microsoft covers show the two CEOs; ours shows Yahoo's own roadside billboard"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Yahoo said no to {fact1} from Microsoft.",
+   "events": {
+    "yahoo": {
+     "word": "Yahoo"
+    },
+    "said": {
+     "word": "said"
+    },
+    "no": {
+     "word": "no"
+    },
+    "microsoft": {
+     "word": "Microsoft"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "yahoo"
+    }
+   ],
+   "params": {
+    "place": [
+     "Microsoft's press release over a Yahoo Mail inbox"
+    ],
+    "things": [
+     "Yahoo Mail inbox",
+     "press release"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "no",
+      "size": "medium"
+     },
+     {
+      "at": "microsoft",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "yahoo",
+      "what": "the press release card drops in, the price highlighted"
+     },
+     {
+      "at": "no",
+      "what": "push in on the card"
+     },
+     {
+      "at": "microsoft",
+      "what": "the inbox keeps pushing"
+     }
+    ],
+    "fig": {
+     "share": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-yahoo-mail-2001-276a6928.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc"
+     },
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "Microsoft · Press release",
+        "date": "2008-02-01",
+        "title": "Microsoft Proposes Acquisition of Yahoo! for {fact2} per Share",
+        "style": "paper",
+        "hi": "{fact2} per Share"
+       }
+      ],
+      "on": [
+       "yahoo"
+      ],
+      "markAt": "yahoo",
+      "plate": false
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "premium",
+   "role": "promise",
+   "say": "That was {fact3} more than Yahoo was worth the day before. So what did Yahoo get instead?",
+   "events": {
+    "that": {
+     "word": "That"
+    },
+    "more": {
+     "word": "more"
+    },
+    "worth": {
+     "word": "worth"
+    },
+    "before": {
+     "word": "before"
+    },
+    "instead": {
+     "word": "instead"
+    }
+   },
+   "params": {
+    "place": [
+     "Yahoo's giant roadside billboard"
+    ],
+    "things": [
+     "Yahoo billboard",
+     "the premium"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "more",
+      "size": "medium"
+     },
+     {
+      "at": "instead",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "more",
+      "what": "a label: the premium"
+     },
+     {
+      "at": "before",
+      "what": "the sign keeps pushing"
+     },
+     {
+      "at": "instead",
+      "what": "push to the Yahoo billboard"
+     }
+    ],
+    "fig": {
+     "prem": "{fact3}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-yahoo-vacancy-0fd37dce.jpg",
+      "focus": [
+       0.45,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact3}",
+      "sub": "over the day before",
+      "at": "more",
+      "out": "instead"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "sides",
+   "role": "build",
+   "say": "Steve Ballmer's Microsoft wanted it. Yahoo's board, with co-founder Jerry Yang running the company, said no.",
+   "events": {
+    "ballmers": {
+     "word": "Ballmer's"
+    },
+    "wanted": {
+     "word": "wanted"
+    },
+    "board": {
+     "word": "board"
+    },
+    "jerry": {
+     "word": "Jerry"
+    },
+    "yang": {
+     "word": "Yang"
+    },
+    "no": {
+     "word": "no"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "no"
+    }
+   ],
+   "params": {
+    "place": [
+     "Steve Ballmer and Jerry Yang side by side"
+    ],
+    "things": [
+     "Steve Ballmer",
+     "Jerry Yang"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "board",
+      "size": "medium"
+     },
+     {
+      "at": "no",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ballmers",
+      "what": "Ballmer's side holds"
+     },
+     {
+      "at": "jerry",
+      "what": "Jerry Yang's side slides in"
+     },
+     {
+      "at": "no",
+      "what": "a stamp: TURNED DOWN"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "split",
+      "left": {
+       "name": "Microsoft",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-steve-ballmer-2007-outdoors2-c2334709.jpg",
+       "fit": "cover"
+      },
+      "right": {
+       "name": "Yahoo",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-jerry-yang-and-david-filo-8287aded.jpg",
+       "fit": "cover"
+      }
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Turned down",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.47
+      ],
+      "tilt": -6,
+      "at": "no"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "years",
+   "role": "build",
+   "say": "Yahoo stayed on its own. Then two huge data breaches at Yahoo came to light. Who would buy it now?",
+   "events": {
+    "stayed": {
+     "word": "stayed"
+    },
+    "own": {
+     "word": "own"
+    },
+    "then": {
+     "word": "Then"
+    },
+    "breaches": {
+     "word": "breaches"
+    },
+    "light": {
+     "word": "light"
+    },
+    "buy": {
+     "word": "buy"
+    }
+   },
+   "params": {
+    "place": [
+     "Jerry Yang, cut out against his photo",
+     "Yahoo's headquarters at night"
+    ],
+    "things": [
+     "Jerry Yang",
+     "Yahoo headquarters"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "breaches",
+      "size": "medium"
+     },
+     {
+      "at": "light",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stayed",
+      "what": "Jerry Yang stands out from his greyed photo, the words land between"
+     },
+     {
+      "at": "breaches",
+      "what": "cut to Yahoo's building, cold"
+     },
+     {
+      "at": "light",
+      "what": "a stamp: BREACHED"
+     },
+     {
+      "at": "buy",
+      "what": "the building keeps pushing"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "depth",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-jerry-yang-352582725-dbfb950b.jpg",
+      "cut": "media/business-documentaries-rise-and-fall-of/commons-photo-jerry-yang-352582725-dbfb950b-cut.png",
+      "title": "On its own",
+      "sub": "Jerry Yang, Yahoo co-founder",
+      "titleAt": "own",
+      "bgTreatment": "bw",
+      "out": "breaches",
+      "focus": [
+       0.3,
+       0.4
+      ]
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-entrance-to-yahoo-headquarters-2-379afb8d.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "cold",
+      "at": "breaches"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Breached",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": 5,
+      "at": "light"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "cut",
+   "role": "turn",
+   "say": "Verizon was already buying Yahoo. After the breaches came out, it cut {fact5} off its price.",
+   "events": {
+    "verizon": {
+     "word": "Verizon"
+    },
+    "buying": {
+     "word": "buying"
+    },
+    "breaches": {
+     "word": "breaches"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "price": {
+     "word": "price"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "cut"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Verizon store"
+    ],
+    "things": [
+     "Verizon store",
+     "Verizon logo",
+     "the price cut"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "cut",
+      "size": "medium"
+     },
+     {
+      "at": "price",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "verizon",
+      "what": "the Verizon logo drops in"
+     },
+     {
+      "at": "cut",
+      "what": "a red label: the cut"
+     },
+     {
+      "at": "price",
+      "what": "the store keeps pushing"
+     }
+    ],
+    "fig": {
+     "cut": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-a-modern-verizon-retail-store-in-burlington-verm-ac5b6104.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-verizon-logo-2015-e4181866.jpg",
+      "aspect": 1.0,
+      "pos": [
+       0.5,
+       0.22
+      ],
+      "size": 0.34,
+      "tilt": -4,
+      "at": "verizon",
+      "out": "cut"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact5}",
+      "sub": "cut from the price",
+      "tone": "red",
+      "at": "cut"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "In the end, Verizon paid {fact4} for Yahoo's core business: about {gap_pct} of Microsoft's offer.",
+   "events": {
+    "end": {
+     "word": "end"
+    },
+    "paid": {
+     "word": "paid"
+    },
+    "core": {
+     "word": "core"
+    },
+    "about": {
+     "word": "about"
+    },
+    "offer": {
+     "word": "offer"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "paid"
+    }
+   ],
+   "params": {
+    "place": [
+     "the poster over Yahoo's Sunnyvale campus"
+    ],
+    "things": [
+     "Yahoo campus",
+     "the final price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "paid",
+      "size": "wide"
+     },
+     {
+      "at": "offer",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "end",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "paid",
+      "what": "the figure settles"
+     },
+     {
+      "at": "core",
+      "what": "the Yahoo logo drops in"
+     },
+     {
+      "at": "about",
+      "what": "the source chip lands"
+     }
+    ],
+    "fig": {
+     "price": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-yahoo-sunnyvale-hq-2018-43714753101-776c72b7.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "date": "2017-06-13",
+      "figure": "price",
+      "sub": "{gap_pct} of Microsoft's offer"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-yahoo-2013-2019-307ee0b7.png",
+      "aspect": 4.2,
+      "pos": [
+       0.5,
+       0.16
+      ],
+      "size": 0.45,
+      "tilt": 3,
+      "at": "core"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "Report",
+      "text": "CNBC",
+      "date": "2017-06-13",
+      "at": "about"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Microsoft's money or Verizon's: which deal would you have taken? Because back then,",
+   "events": {
+    "microsofts": {
+     "word": "Microsoft's"
+    },
+    "verizons": {
+     "word": "Verizon's"
+    },
+    "deal": {
+     "word": "deal"
+    },
+    "taken": {
+     "word": "taken"
+    },
+    "because": {
+     "word": "Because"
+    },
+    "then": {
+     "word": "then"
+    }
+   },
+   "params": {
+    "place": [
+     "Microsoft's campus building",
+     "the Yahoo Mail inbox from the first frame"
+    ],
+    "things": [
+     "Microsoft building",
+     "Yahoo Mail inbox"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "deal",
+      "size": "medium"
+     },
+     {
+      "at": "then",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "microsofts",
+      "what": "a stamp: MICROSOFT?"
+     },
+     {
+      "at": "verizons",
+      "what": "a stamp: VERIZON?"
+     },
+     {
+      "at": "then",
+      "what": "back to the Yahoo Mail inbox from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-building92microsoft-8b433d9f.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "then"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-yahoo-mail-2001-276a6928.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "then"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Microsoft?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.25
+      ],
+      "tilt": -4,
+      "at": "microsofts",
+      "out": "verizons"
+     },
+     {
+      "kind": "stamp",
+      "text": "Verizon?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.25
+      ],
+      "tilt": 4,
+      "at": "verizons",
+      "out": "taken"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}

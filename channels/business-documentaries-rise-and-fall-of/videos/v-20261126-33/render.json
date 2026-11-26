@@ -1,0 +1,99 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 27794,
+  "duration_sec": 36,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "dossier",
+    "key": "D",
+    "bpm": 82
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Yahoo said no to $44.6B from Microsoft.",
+        "start": 0.3,
+        "seconds": 2.91,
+        "window": 3.57,
+        "fill": 0.815
+      },
+      {
+        "scene": "premium",
+        "text": "That was 62% more than Yahoo was worth the day before. So what did Yahoo get instead?",
+        "start": 3.87,
+        "seconds": 4.04,
+        "window": 4.7,
+        "fill": 0.86
+      },
+      {
+        "scene": "sides",
+        "text": "Steve Ballmer's Microsoft wanted it. Yahoo's board, with co-founder Jerry Yang running the company, said no.",
+        "start": 8.57,
+        "seconds": 4.82,
+        "window": 5.47,
+        "fill": 0.881
+      },
+      {
+        "scene": "years",
+        "text": "Yahoo stayed on its own. Then two huge data breaches at Yahoo came to light. Who would buy it now?",
+        "start": 14.03,
+        "seconds": 4.43,
+        "window": 5.07,
+        "fill": 0.874
+      },
+      {
+        "scene": "cut",
+        "text": "Verizon was already buying Yahoo. After the breaches came out, it cut $350M off its price.",
+        "start": 19.1,
+        "seconds": 5.15,
+        "window": 5.8,
+        "fill": 0.888
+      },
+      {
+        "scene": "payoff",
+        "text": "In the end, Verizon paid $4.48B for Yahoo's core business: about 10% of Microsoft's offer.",
+        "start": 24.9,
+        "seconds": 5.51,
+        "window": 6.17,
+        "fill": 0.893
+      },
+      {
+        "scene": "ending",
+        "text": "Microsoft's money or Verizon's: which deal would you have taken? Because back then,",
+        "start": 31.07,
+        "seconds": 3.49,
+        "window": 4.17,
+        "fill": 0.837
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "doc-document-first": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.4,
+    "lufs": -16.4,
+    "music_under_voice_db": 17.5
+  },
+  "craft_problems": []
+}
