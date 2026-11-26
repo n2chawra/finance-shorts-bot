@@ -1,0 +1,46 @@
+{
+  "agent": "scout",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-26T04:39:02Z",
+  "finishedAt": "2026-11-26T04:41:39Z",
+  "summary": "How Tech Works: reviewed our ASML long video frame by frame, rewrote the hook of all 10 feed outlines to show the viewer's phone or card first, and routed 4 fixes; no new topics (10 usable).",
+  "decision": "acted",
+  "why": "Thursday's focus after Script structure is our own output. The ASML video's hook shows abstract spheres while naming a phone (phone first on screen at 6:55), the owner flagged the same, and all 64 beats share one stage.",
+  "findings": [
+    {
+      "title": "The hook never shows the phone it names",
+      "detail": "L-20261124-21: 0-9 s are abstract spheres; the first phone is at 6:55."
+    },
+    {
+      "title": "One dark purple stage for the whole 7 minutes",
+      "detail": "The mirrors chapter is about 85 s of near-identical frames; motion is fine, the place never changes."
+    },
+    {
+      "title": "Long device-variety notes are blind to directed videos",
+      "detail": "renderer/craft.py judges by scene name, so every long video gets the same three notes."
+    },
+    {
+      "title": "No chapter marker on screen",
+      "detail": "9 chapters in the description, none in the picture."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Hook lines in 10 topic outlines say what to show first",
+      "detail": "channels/how-tech-and-ai-actually-work-chips-ai-p/longform/topics.json",
+      "branch": "agent/scout/2026-11-26/how-tech-and-ai-actually-work-chips-ai-p"
+    },
+    {
+      "title": "4 backlog items (2 adopt, 1 experiment, 1 template)",
+      "detail": "tech-long-hook-show-the-thing, tech-long-one-stage-whole-video, tech-long-device-note-blind, tech-long-no-progress-on-screen",
+      "branch": "agent/scout/2026-11-26/how-tech-and-ai-actually-work-chips-ai-p"
+    }
+  ],
+  "nextCheck": "2026-11-30",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/longform/2026-11-26.md"
+    }
+  ]
+}

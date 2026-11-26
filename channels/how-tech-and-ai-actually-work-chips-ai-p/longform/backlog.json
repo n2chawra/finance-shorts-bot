@@ -134,6 +134,50 @@
       "priority": "normal",
       "found": "2026-11-24",
       "status": "open"
+    },
+    {
+      "id": "tech-long-hook-show-the-thing",
+      "kind": "craft",
+      "title": "Long hooks show the everyday thing first: the phone, then its chip, then the machine",
+      "detail": "Our ASML long video (L-20261124-21) opens on abstract purple spheres for its first 9 s while the line says 'the chip in a modern phone'; the phone first appears at 6:55 (415 s, in the last chapter). The owner's note of 24 Nov says an ordinary viewer leaves because the hook only speaks of the phone and never shows it. Every topic outline in the feed now names, in its hook line, what to show first and in what order. Studio: the first beat shows the viewer's own object on its word (phone, card, game screen), the second zooms into the part, the third reveals the machine; the abstract stage comes after 10 s. Known it worked: the contact sheet's 0 s and 5 s frames show the object, and hook hold on the next long video beats the ASML and Starlink ones once they have 100+ views.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-26",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-one-stage-whole-video",
+      "kind": "craft",
+      "title": "Every chapter of a 3D long video sits on the same dark purple stage",
+      "detail": "In L-20261124-21 all 64 directed beats share one backdrop (dark grid wall, starfield, purple light), and the mirrors chapter (2:35-4:00, about 85 s) is 17 contact-sheet frames of near-identical purple beams bouncing off discs. The long_story README gives each chapter its own colour (`bg`), but the three kit's stage ignores it. Proposal: Stage3D takes a per-chapter tint (key-light colour and floor/wall tone from a 6-colour set) so each chapter looks like a new room, behind a long-video flag. Known it worked: adjacent chapters differ in the contact sheet, and average view % of the flag's long videos vs the rest (Long videos' own test).",
+      "where": "scene",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-device-note-blind",
+      "kind": "bug",
+      "title": "The long 'device variety' notes are always true and say nothing for directed videos",
+      "detail": "renderer/craft.py device_problems() judges a long video by beat scene name. Every beat is now 'directed' by owner rule (2026-11-13), so every long video gets the same three notes ('only 1 kinds of scene', 'directed is 64 of 64', 'directed 4 times in a row'), which ask for something the rules forbid and hide a real repeat like the 85 s mirror stretch above. Fix: as already done for 'doc' beats, judge a directed beat by its `params.component` (or component + place), and flag a run of the same component longer than ~60 s rather than 3 beats. Known it worked: the ASML timeline yields one note, on the Mirrors run, instead of three.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-no-progress-on-screen",
+      "kind": "craft",
+      "title": "Nothing on screen tells a long-video viewer where they are in the 7 minutes",
+      "detail": "The descriptions carry 9 chapter stamps, but in the video there is no chapter card, kicker or level tracker (render.json chapters: only 'Intro'), so a viewer at 3:00 can't see that the mask, wafer and 'back to your phone' are still coming. The README's promise beat ('structure.levels', a tracker shown all video long) isn't drawn on the three kit. Proposal: a small 3D-kit chapter tag (the chapter name entering on the first word of its first beat, top-left, then a 4-9 dot progress row) read from the script's chapter names, behind a long-video flag. Known it worked: render.json lists every chapter, and the 2:00-4:00 audience-retention slope flattens on flagged long videos.",
+      "where": "template",
+      "route": "template",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "open"
     }
   ]
 }
