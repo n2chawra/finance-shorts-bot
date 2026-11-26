@@ -2,10 +2,10 @@
   "agent": "studio",
   "day": "2026-11-26",
   "startedAt": "2026-11-26T04:51:13Z",
-  "finishedAt": "2026-11-26T06:14:02Z",
-  "summary": "Disaster Desk: built the Colgan Air crash long video (L-20261126-41, 69 directed beats, about 526 s, NTSB report AAR-10/01). Fact review passed after 1 rewrite, but QA failed both rounds, so the video is stopped at the round limit. It is not shipped and not marked failed, so it can be resumed.",
-  "decision": "blocked",
-  "why": "agents/studio.md allows two QA rounds. Round 1 failed on 11 notes; all were fixed. Round 2 failed on 4. The work is saved on branch claude/disaster-studio-1zszgc so a resume doesn't redo it.",
+  "finishedAt": "2026-11-26T12:33:23Z",
+  "summary": "Disaster Desk: shipped the Colgan Air crash long video (L-20261126-41, 529 s, 69 directed beats, NTSB report AAR-10/01). It first stopped at the two-round QA limit; the owner said 'Fix and start again', so the 4 notes were fixed and QA passed on round 3.",
+  "decision": "acted",
+  "why": "Owner's second pinned topic. Fact review passed after 1 rewrite. The number check, lint and all render gates passed: liveliness median 5.8, 1% still, audio peak −1.0 dB, mean −18.6 dB. QA passed on round 3, with the owner's go-ahead.",
   "findings": [
     {
       "title": "QA round 2's remaining items",
@@ -18,20 +18,28 @@
     {
       "title": "Both pilots already had more than the new 1,500-hour minimum",
       "detail": "Captain 3,379 hours and first officer 2,244 (NTSB). This is the video's payoff: the law's stall training and rest rules went after what failed, not the hours alone."
+    },
+    {
+      "title": "The full render took about 5.5 hours",
+      "detail": "14 chunks at 18-40 min each, with about half the runtime in 3D. Long videos with this much 3D need a 6-hour session."
+    },
+    {
+      "title": "Ship refuses chapter timestamps added after QA",
+      "detail": "studio.md step 7 puts chapters into the plan's description after the render, but ship's fingerprint check (owner, 2026-11-25) counts that as a plan change. This run kept the QA'd plan for ship and wrote the chapters into the manifest's description. The improver should exclude the description's CHAPTERS block from the fingerprint (backlog item 2026-11-26-chapters-fingerprint)."
     }
   ],
   "changes": [
     {
-      "title": "L-20261126-41: The Colgan Air Crash: The Stall Warning That Rewrote Pilot Rules (work in progress)",
-      "detail": "Plan, script, beat code (Sky 3D, Panel, Cockpit, Wing, Board, Law, Map, Cabin, Report, Title) and 3 thumbnails (pick A). Facts are added to the feed topic; three NTSB report pages are in the licence log.",
-      "branch": "claude/disaster-studio-1zszgc"
+      "title": "Shipped L-20261126-41: The Colgan Air Crash: The Stall Warning That Rewrote Pilot Rules",
+      "detail": "Thumbnail pick A ('Pulled the wrong way'); B and C are on the video page. Chapters are in the description. The mp4 went up on media/L-20261126-41 for the release workflow.",
+      "branch": "main"
     }
   ],
   "nextCheck": "2026-11-27",
   "links": [
     {
-      "label": "Work in progress",
-      "url": "https://github.com/n2chawra/finance-shorts-bot/tree/claude/disaster-studio-1zszgc"
+      "label": "Video folder",
+      "url": "channels/disasters-and-engineering-failures-expla/videos/L-20261126-41"
     }
   ]
 }
