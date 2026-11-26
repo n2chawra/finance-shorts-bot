@@ -1,0 +1,393 @@
+import json, re
+V = "L-20261126-41"
+NT = ("NTSB AAR-10/01", "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf", "2010-02-02")
+FA = ("FAA", "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N200WQ", "2025-01-01")
+AIN = ("AIN", "https://backend.ainonline.com/aviation-news/air-transport/2025-01-06/colgan-air-flight-3407-crash-and-its-enduring-impact", "2025-01-06")
+def F(label, value, unit, src):
+    return {"label": label, "value": value, "unit": unit, "as_of": src[2], "source": src[0], "url": src[1], "fixed": True}
+facts = [
+ F("Year of the crash (February 12, 2009)", 2009, "year", NT),                              #1
+ F("Day of February of the crash", 12, "count", NT),                                        #2
+ F("People aboard who were killed (2 pilots, 2 flight attendants, 45 passengers)", 49, "count", NT),  #3
+ F("People killed on the ground", 1, "count", NT),                                          #4
+ F("Distance of the crash site from the airport, nautical miles (about)", 5, "count", NT),  #5
+ F("Landing reference speed briefed for flaps 15, knots", 118, "count", NT),               #6
+ F("Airspeed when the stick shaker fired and the autopilot disengaged, knots", 131, "count", NT),  #7
+ F("Roll angle reached after the pull, degrees left wing down", 45, "count", NT),           #8
+ F("Safety recommendations to the FAA in the report (A-10-10 to A-10-34)", 25, "count", NT),#9
+ F("Flight hours now required for an airline first officer", 1500, "count", AIN), #10
+ F("Cruise altitude, feet", 16000, "count", NT),                                            #11
+ F("Altitude below which the sterile cockpit rule applies, feet", 10000, "count", NT),       #12
+ F("Altitude the flight levelled at for the approach, feet", 2300, "count", NT),            #13
+ F("Seconds the low-speed cue rose toward the airspeed before the stick shaker", 18, "count", NT),  #14
+ F("Knots the ref speeds switch (increase) raised the low-speed cue, about", 15, "count", NT),  #15
+ F("Knots the stick shaker airspeed was below the icing reference speed", 7, "count", NT),  #16
+ F("Roll angle reached to the right, degrees right wing down", 105, "count", NT),           #17
+ F("Airspeed when the flaps began to retract, knots (about)", 100, "count", NT),            #18
+ F("The captain's total flight hours", 3379, "count", NT),                                  #19
+ F("The first officer's total flight hours", 2244, "count", NT),                            #20
+ F("Year the Airline Safety and FAA Extension Act was signed (August 1, 2010)", 2010, "year", FA[:2] + ("2010-08-01",)),  #21
+ F("Year of the FAA's pilot certification rule (July 15, 2013)", 2013, "year", FA[:2] + ("2013-07-15",)),         #22
+ F("Year by which airline stall and upset training was required (March 12, 2019)", 2019, "year", FA[:2] + ("2013-11-12",)),  #23
+ F("Total people killed (49 aboard and 1 on the ground)", 50, "count", NT),                #24
+ F("Hour of the stick shaker, 24-hour clock, eastern standard time", 22, "count", NT),      #25
+ F("Minute of the stick shaker (2216)", 16, "count", NT),                                   #26
+ F("Second the stick shaker sounded (2216:27.4)", 27, "count", NT),                         #27
+ F("Second the cockpit recording ended (2216:54)", 54, "count", NT),                        #28
+ F("Knots the stick shaker fired above the reference speed the crew had set", 13, "count", NT),  #29
+]
+beats = []
+def B(id, role, comp, say, moments, camera, things, place, fig=None, **extra):
+    ev = {}
+    for w, _ in moments:
+        assert re.search(r"(?<![\w{])" + re.escape(w) + r"(?![\w}])", say), (id, w)
+        ev[w] = {"word": w}
+    cam = [{"sec": 0, "size": camera[0]}] + [{"at": a, "size": s} for a, s in camera[1:]]
+    for c in cam[1:]:
+        assert c["at"] in ev, (id, c)
+    P = {"component": comp, "place": place, "camera": cam, "moments": [{"at": w, "what": x} for w, x in moments], "things": things}
+    if fig: P["fig"] = fig
+    P.update(extra)
+    beats.append({"id": id, "scene": "directed", "role": role, "say": say, "events": ev, "params": P})
+
+GROUND = "the snowy street in Clarence Center at night"
+SKY = "the night sky over western New York, in snow and cloud"
+PFD = "the captain's airspeed display on the flight deck"
+DECK = "the airliner's flight deck at night, seen from behind the pilots"
+WING = "a wind-tunnel drawing of the airliner's wing"
+# ---------------------------------------------------------------- intro
+B("hook", "hook", "Sky", "Colgan Air's flight to Buffalo got a stall warning. The captain pulled the wrong way, and {fact24} people died.",
+  [("Colgan", "the date and place caption types on over the airliner in falling snow"), ("Buffalo", "the airliner's name tag lights"), ("warning", "the wings flash red, a STALL tag blinks"),
+   ("pulled", "the nose pitches up hard"), ("died", "the passengers' cabin windows flicker as the plane drops into the cloud and the frame dips dark")],
+  ["close", ("warning", "medium"), ("died", "wide")], ["airliner", "falling snow", "date caption", "stall tag", "passengers behind the lit cabin windows"], SKY,
+  {"year": "{fact1}", "day": "{fact2}", "toll": "{fact24}"}, shot="hook", phase="stall", caption="date", stallAt="warning", pitchAt="pulled", dropAt="died", tag={"at": "died", "fig": "toll", "label": "PEOPLE KILLED"})
+B("hook-speed", "level", "Sky", "February {fact2}, {fact1}. The twin-propeller airliner was slowing for the runway, its airspeed sagging to {fact7} knots.",
+  [("February", "the airliner glides out of the cloud, its landing lights on"), ("twin-propeller", "the two propellers blur in the lights"), ("slowing", "the landing gear swings down"), ("sagging", "the airspeed tag counts down and turns red")],
+  ["medium", ("slowing", "medium"), ("sagging", "close")], ["airliner", "propellers", "landing gear", "airspeed tag"], SKY,
+  {"year": "{fact1}", "day": "{fact2}", "speed": "{fact7}"}, shot="approach", phase="night", gearAt="slowing", tag={"at": "sagging", "fig": "speed", "label": "AIRSPEED · KNOTS"})
+B("hook-shake", "level", "Cockpit", "The control column shook: the wings were close to a stall. The trained answer is to push forward. The captain pulled back.",
+  [("shook", "both control columns judder, the STALL light flashes"), ("stall", "a red band lights on the airspeed tape"), ("push", "a green arrow points the column forward"), ("pulled", "the captain's column comes back, a red arrow")],
+  ["medium", ("push", "close"), ("pulled", "close")], ["control columns", "stall light", "green arrow", "red arrow", "two pilots"], DECK,
+  mode="hookshake")
+B("hook-fall", "level", "Sky", "The nose rose, a wing dropped, and in under half a minute the airliner came down on a house, {fact5} nautical miles from the airport.",
+  [("nose", "the airliner's nose rises"), ("wing", "the left wing drops, the plane rolls"), ("minute", "a clock tag runs"), ("house", "the plane is gone into cloud; far below, an orange glow among houses")],
+  ["medium", ("wing", "medium"), ("house", "wide")], ["airliner", "clock tag", "houses in snow", "orange glow"], SKY,
+  {"miles": "{fact5}"}, shot="roll", phase="stall", pitchAt="nose", rollAt="wing", dropAt="house", glowAt="house", tag={"at": "house", "fig": "miles", "label": "NAUTICAL MILES FROM THE AIRPORT"})
+B("promise", "promise", "Board", "This crash had no single cause. It was a chain: an airspeed set too low for the ice, talk where there should be silence, a warning nobody called, and one wrong reflex.",
+  [("chain", "the chain board lights"), ("airspeed", "link one writes on"), ("talk", "link two writes on"), ("warning", "link three writes on"), ("reflex", "the last link snaps red")],
+  ["wide", ("talk", "medium"), ("reflex", "close")], ["cause chain", "four links", "red break"], "the investigation board", mode="chain")
+B("promise2", "promise", "Title", "Here it is in seven parts: the flight, the wing, the ice, the cue, the last half minute, the findings, and the law that came after.",
+  [("flight", "lamp one lights"), ("wing", "lamp two lights"), ("ice", "lamp three lights"), ("cue", "lamp four lights"), ("last", "lamp five lights red"), ("findings", "lamp six lights"), ("law", "lamp seven lights and the title stamps on")],
+  ["medium", ("findings", "close"), ("law", "wide")], ["chapter index", "seven lamps", "title"], "the investigator's index sheet")
+# ---------------------------------------------------------------- 1 the flight
+B("f-plane", "level", "Sky", "The plane was a Bombardier Q four hundred, a turboprop airliner, flown by Colgan Air as a Continental Connection flight.",
+  [("Bombardier", "the chapter card types on; the camera finds the airliner at the gate"), ("turboprop", "a label pins on its propeller"), ("Colgan", "a tag names the airline"), ("Continental", "a second tag names the brand it flew for")],
+  ["wide", ("turboprop", "medium"), ("Continental", "medium")], ["airliner at the gate", "gate lights", "airline tags", "blowing snow"], "the ramp at Newark airport at night",
+  shot="gate", phase="gate", chapter="THE FLIGHT", labels=[{"at": "turboprop", "text": "BOMBARDIER", "sub": "TURBOPROP"}, {"at": "Colgan", "text": "COLGAN AIR"}, {"at": "Continental", "text": "CONTINENTAL CONNECTION"}])
+B("f-route", "level", "Map", "Where was it going? That evening, from Newark, near New York City, to Buffalo, in the far west of New York State.",
+  [("going", "the map of the north-east draws in"), ("Newark", "a pin drops on Newark"), ("York", "the city lights glow"), ("Buffalo", "the route line draws to Buffalo"), ("west", "Buffalo's pin pulses")],
+  ["wide", ("Newark", "medium"), ("Buffalo", "wide")], ["map of New York State", "two airport pins", "route line", "small plane"], "a map of the north-east United States", mode="route")
+B("f-late", "level", "Sky", "High winds had slowed flights at Newark all day. This one took off more than two hours behind schedule, into the dark, bound for Buffalo.",
+  [("winds", "snow streaks sideways past the gate lights"), ("slowed", "a line of waiting planes' lights"), ("took", "the airliner rolls and lifts off"), ("dark", "it climbs into the cloud")],
+  ["medium", ("took", "wide"), ("dark", "wide")], ["airliner", "blowing snow", "runway lights", "waiting planes"], "the runway at Newark at night", shot="takeoff", phase="gate", takeoffAt="took")
+B("f-aboard", "level", "Cabin", "Who was aboard? {fact3} people: the two pilots, two flight attendants, and the passengers, some of them going home.",
+  [("aboard", "the cabin cut-away draws in"), ("pilots", "two figures light in the flight deck"), ("attendants", "two figures light by the doors"), ("passengers", "the seat rows fill with small figures"), ("home", "the reading lights glow warm")],
+  ["wide", ("pilots", "medium"), ("home", "wide")], ["cabin cut-away", "passengers in their seats", "pilots and cabin crew", "count tag"], "a cut-away of the airliner's cabin",
+  {"aboard": "{fact3}"})
+B("f-commute", "level", "Map", "And the crew? The first officer lived near Seattle. To reach work, she had flown overnight, across the country through Memphis, into Newark that morning.",
+  [("Seattle", "a pin lights near Seattle"), ("overnight", "a moon rises over the map"), ("Memphis", "the line bends through Memphis"), ("Newark", "it ends at Newark at dawn")],
+  ["wide", ("overnight", "wide"), ("Newark", "medium")], ["map of the United States", "commute line", "moon", "three pins"], "a map of the United States at night", mode="commute")
+B("f-climb", "level", "Sky", "Climbing out, the crew switched on the de-icing systems, which crack ice off the wings. The plane levelled at {fact11} feet.",
+  [("Climbing", "the airliner climbs through cloud"), ("de-icing", "the black boots on the wings' front edges pulse"), ("levelled", "it levels off, an altitude tag types on")],
+  ["medium", ("de-icing", "close"), ("levelled", "wide")], ["airliner", "de-icing boots", "cloud tops", "altitude tag"], "above the cloud deck over Pennsylvania at night",
+  {"alt": "{fact11}"}, shot="cruise", phase="cruise", bootsAt="de-icing", tag={"at": "levelled", "fig": "alt", "label": "ALTITUDE · FEET"})
+B("f-talk", "level", "Cockpit", "Up there, the autopilot flew and the pilots talked almost the whole way. Was that allowed? At that height, yes.",
+  [("autopilot", "the AP light glows green"), ("talked", "speech marks bob between the two pilots"), ("height", "the altimeter reads the cruise height"), ("allowed", "a small tick stamps by it")],
+  ["medium", ("talked", "medium"), ("allowed", "close")], ["two pilots", "autopilot light", "speech marks", "altimeter"], DECK, {"alt": "{fact11}"}, mode="cruise")
+B("f-weather", "level", "Sky", "Was the weather the problem? There was light snow and mist near Buffalo, with ice in the cloud: nothing unusual for a winter night there.",
+  [("weather", "the airliner descends through thin cloud"), ("snow", "snow streaks thicken past the wing"), ("mist", "a grey haze drifts below"), ("winter", "the town's lights glow faintly far below")],
+  ["wide", ("snow", "wide"), ("winter", "wide")], ["airliner", "snow", "mist", "town lights far below"], SKY, shot="descent", phase="night")
+B("f-tease", "tease", "Sky", "But near Buffalo, the cloud was full of ice. And ice changes the one thing that keeps a wing in the air.",
+  [("Buffalo", "the airliner sinks into grey cloud"), ("ice", "white rime creeps along the wing's front edge"), ("changes", "the white crust thickens along the wing's front edge"), ("wing", "the camera slides along the iced wing")],
+  ["medium", ("ice", "close"), ("wing", "close")], ["airliner", "iced wing", "cloud"], SKY, shot="wing", phase="night", iceAt="ice")
+# ---------------------------------------------------------------- 2 the wing
+B("w-flow", "level", "Wing", "What keeps a wing up? Air flows over its curved top and under it, and the wing turns that flow into lift.",
+  [("wing", "the chapter card types on; the wing section draws"), ("flows", "streamlines run past it"), ("curved", "the top curve traces in blue"), ("lift", "a big lift arrow rises")],
+  ["wide", ("curved", "medium"), ("lift", "medium")], ["wing section", "streamlines", "lift arrow"], WING, mode="flow", chapter="THE WING")
+B("w-aoa", "level", "Wing", "Tilt the wing up a little, and it makes more lift. That tilt against the oncoming air is called the angle of attack.",
+  [("Tilt", "the wing tilts nose up"), ("more", "the lift arrow grows"), ("angle", "an angle arc draws between the wing and the air"), ("attack", "the label types on")],
+  ["medium", ("angle", "close"), ("attack", "close")], ["wing section", "angle arc", "lift arrow", "label"], WING, mode="aoa")
+B("w-stall", "level", "Wing", "Past a certain angle, the air can't follow the top any more. It breaks away in swirls, and the lift collapses. That is a stall.",
+  [("angle", "the wing tilts further"), ("breaks", "the streamlines peel off the top"), ("swirls", "swirls tumble behind the wing"), ("collapses", "the lift arrow shrinks and turns red"), ("stall", "a STALL stamp lands")],
+  ["medium", ("swirls", "medium"), ("stall", "close")], ["wing section", "torn airflow", "swirls", "stall stamp"], WING, mode="stall")
+B("w-slow", "level", "Wing", "A slow plane needs a bigger angle to hold itself up. So as the airspeed bleeds away, the wing creeps toward that edge.",
+  [("slow", "the speed dial falls"), ("bigger", "the wing tilts up to keep its lift"), ("bleeds", "the dial needle slides down"), ("edge", "a red line marks the stall angle; the wing's angle closes on it")],
+  ["medium", ("bigger", "medium"), ("edge", "close")], ["wing section", "speed dial", "red stall line"], WING, mode="slow")
+B("w-shaker", "level", "Cockpit", "What warns the crew? This plane has a stick shaker. Near the edge, it rattles both control columns and sounds a warning.",
+  [("crew", "the flight deck lights dim"), ("shaker", "the motor on each column is ringed"), ("rattles", "both columns judder"), ("warning", "the STALL light flashes red")],
+  ["medium", ("shaker", "close"), ("warning", "medium")], ["two control columns", "shaker motors", "stall light", "two pilots"], DECK, mode="shaker")
+B("w-pusher", "level", "Cockpit", "If that isn't enough, a stick pusher shoves the column forward, to lower the nose and get the air flowing again.",
+  [("enough", "the columns keep shaking"), ("pusher", "the pusher is ringed under the floor"), ("forward", "both columns slide forward with a green arrow"), ("flowing", "the nose on the horizon drops")],
+  ["medium", ("pusher", "close"), ("flowing", "medium")], ["control columns", "pusher", "green arrow", "horizon"], DECK, mode="pusher")
+B("w-recover", "level", "Wing", "Pilots are trained for this moment. Nose down to cut the angle, power up to get speed back, and the wing grips the air again.",
+  [("trained", "a training card pins on"), ("down", "the wing tilts down"), ("power", "a thrust arrow grows"), ("grips", "the streamlines reattach and glow green")],
+  ["wide", ("down", "medium"), ("grips", "medium")], ["wing section", "thrust arrow", "streamlines", "training card"], WING, mode="recover")
+B("w-tease", "tease", "Wing", "Ice on the front of a wing can make it stall sooner, at a higher speed. That night, the airliner had ice. Did it matter?",
+  [("Ice", "a rough white crust grows on the leading edge"), ("sooner", "the red stall line moves down to a smaller angle"), ("night", "the background darkens to night"), ("matter", "a question mark stamps")],
+  ["medium", ("Ice", "close"), ("matter", "medium")], ["wing section", "ice crust", "red stall line", "question mark"], WING, mode="ice")
+# ---------------------------------------------------------------- 3 the ice
+B("i-see", "level", "Sky", "The pilots saw it. Ice was building on the windshield and on the front edges of the wings.",
+  [("pilots", "the chapter card types on; the camera looks along the cockpit windows"), ("Ice", "rime spreads across the windshield"), ("windshield", "the first officer's words type on as text"), ("wings", "the camera slides out along the iced wing")],
+  ["close", ("windshield", "close"), ("wings", "medium")], ["airliner nose", "iced windshield", "iced wing", "transcript text"], "beside the airliner's flight deck windows in the cloud",
+  shot="nose", phase="night", iceAt="Ice", quote={"at": "windshield", "text": "“LOTS OF ICE.”", "who": "FIRST OFFICER · COCKPIT RECORDING"}, chapter="THE ICE")
+B("i-switch", "level", "Cockpit", "What do pilots do about ice? The plane has a switch called ref speeds. Set to increase, it makes the stall warning come sooner, to leave more margin.",
+  [("ice", "the overhead panel lights"), ("switch", "the camera finds the ref speeds switch"), ("increase", "the switch flips to INCREASE"), ("sooner", "the shaker's trigger slides earlier on a scale"), ("margin", "a margin bracket opens")],
+  ["medium", ("switch", "close"), ("margin", "close")], ["overhead panel", "ref speeds switch", "margin scale"], "the overhead panel above the captain's seat", mode="switch")
+B("i-band", "level", "Panel", "On the airspeed tape, a red and black band shows where the shaker will fire. With the switch on, the band sat about {fact15} knots higher.",
+  [("tape", "the airspeed tape scrolls"), ("band", "the red and black band glows at the bottom"), ("switch", "a small INCREASE label lights"), ("higher", "the band slides up the tape by the figure")],
+  ["medium", ("band", "close"), ("higher", "close")], ["airspeed tape", "red and black band", "knots tag"], PFD, {"up": "{fact15}"}, mode="band")
+B("i-brief", "level", "Panel", "The switch was on. So what speed did they plan? For landing, the crew briefed a speed of {fact6} knots, the speed for a wing with no ice.",
+  [("on", "the INCREASE label glows"), ("plan", "a question mark blinks by the speed bug"), ("landing", "the speed bug slides into place"), ("briefed", "a briefing card pins on"), ("wing", "a small wing icon draws on the card"), ("ice", "a NO ICE tag stamps on the card")],
+  ["medium", ("briefed", "close"), ("ice", "medium")], ["airspeed tape", "speed bug", "briefing card"], PFD, {"vref": "{fact6}"}, mode="brief")
+B("i-gap", "level", "Panel", "So the warning would fire {fact29} knots above the speed they meant to land at. To slow down to it, they'd have to fly through the warning.",
+  [("warning", "the band's top edge lights red"), ("above", "a bracket measures from the bug up to the band"), ("slow", "the tape starts to scroll down"), ("through", "the bug disappears under the red band")],
+  ["medium", ("above", "close"), ("through", "close")], ["airspeed tape", "speed bug", "red band", "gap bracket"], PFD, {"gap": "{fact29}", "vref": "{fact6}"}, mode="gap")
+B("i-catch", "level", "Wing", "And the ice itself? The investigators found it barely hurt the wing. The aircraft could still fly normally. The danger was in the numbers.",
+  [("ice", "the iced wing section returns"), ("barely", "the ice crust fades to a thin line"), ("normally", "the streamlines run smooth and green"), ("numbers", "the speed bug and the red band slide in beside the wing")],
+  ["medium", ("barely", "close"), ("numbers", "medium")], ["wing section", "thin ice", "speed bug", "red band"], WING, mode="icefind")
+B("i-tease", "tease", "Cockpit", "Someone had to watch that speed closely. But below ten thousand feet, the flight deck was not quiet.",
+  [("watch", "the camera pushes past the pilots to the airspeed display"), ("speed", "the airspeed numbers glow"), ("below", "the altimeter winds down"), ("quiet", "speech marks pop up between the pilots")],
+  ["medium", ("speed", "close"), ("quiet", "medium")], ["two pilots", "airspeed display", "altimeter", "speech marks"], DECK, mode="tease")
+# ---------------------------------------------------------------- 4 the cue
+B("c-sterile", "level", "Cockpit", "What is the sterile cockpit? Below {fact12} feet, the rule allows only talk that is about flying the plane.",
+  [("Below", "the chapter card types on; the altimeter winds past the mark"), ("sterile", "a STERILE COCKPIT sign lights over the windshield"), ("talk", "the speech marks shrink"), ("flying", "a checklist card pins on")],
+  ["medium", ("sterile", "close"), ("flying", "medium")], ["two pilots", "altimeter", "sterile cockpit sign", "checklist card"], DECK, {"alt": "{fact12}"}, mode="sterile", chapter="THE CUE")
+B("c-chat", "level", "Cockpit", "On this flight, the pilots kept up a conversation that had nothing to do with flying, down through the descent.",
+  [("pilots", "the sign keeps glowing"), ("conversation", "speech marks bob between the two pilots"), ("nothing", "the sign blinks red"), ("descent", "the altimeter keeps winding down")],
+  ["medium", ("conversation", "medium"), ("descent", "close")], ["two pilots", "speech marks", "sterile cockpit sign", "altimeter"], DECK, mode="chat")
+B("c-level", "level", "Sky", "At {fact13} feet, the autopilot held the height, and the captain pulled the power back to slow down for landing.",
+  [("feet", "the airliner levels off under the cloud, an altitude tag types on"), ("autopilot", "an AP tag lights"), ("power", "the propellers slow"), ("slow", "the plane eases back in the frame")],
+  ["wide", ("autopilot", "medium"), ("slow", "medium")], ["airliner", "propellers", "altitude tag", "snow"], SKY, {"alt": "{fact13}"}, shot="level", phase="night",
+  tag={"at": "feet", "fig": "alt", "label": "ALTITUDE · FEET"}, propSlowAt="power")
+B("c-power", "level", "Cockpit", "Who controls the speed? This airliner had no autothrottle. Power was set by hand, and only the pilots could notice the speed falling short.",
+  [("controls", "the camera finds the power levers"), ("autothrottle", "an AUTOTHROTTLE label is crossed out"), ("hand", "the captain's hand rests on the levers"), ("short", "a speed arrow on the screen points down")],
+  ["medium", ("hand", "close"), ("short", "close")], ["captain", "power levers", "crossed-out label", "speed arrow"], DECK, mode="power")
+B("c-tasks", "level", "Cockpit", "The first officer was busy: the landing gear, a radio change, a chime to the cabin, then a check that the gear was down.",
+  [("busy", "the first officer turns to the centre panel"), ("gear", "the gear lever drops, three lights"), ("radio", "the radio frequency flips"), ("chime", "a chime icon rings"), ("check", "three green gear lights tick")],
+  ["medium", ("gear", "close"), ("check", "medium")], ["first officer", "gear lever", "radio panel", "chime", "gear lights"], DECK, mode="tasks")
+B("c-cue", "level", "Panel", "Was there a warning? Meanwhile, the red band climbed the airspeed tape toward the falling speed. It was there to see for {fact14} seconds.",
+  [("Meanwhile", "the tape scrolls down"), ("band", "the red band rises from the bottom"), ("falling", "the speed box ticks down"), ("seconds", "a timer counts the figure")],
+  ["medium", ("band", "close"), ("seconds", "close")], ["airspeed tape", "red band", "speed box", "timer"], PFD, {"secs": "{fact14}", "speed": "{fact7}"}, mode="cue")
+B("c-nose", "level", "Panel", "The autopilot raised the nose to hold the height. The speed numbers turned red. Neither pilot said anything about it.",
+  [("nose", "the attitude marker creeps up"), ("height", "the altitude stays fixed"), ("red", "the speed digits turn red"), ("Neither", "two empty speech marks fade")],
+  ["medium", ("red", "close"), ("Neither", "medium")], ["attitude display", "airspeed tape", "red digits"], PFD, {"speed": "{fact7}"}, mode="nose")
+B("c-report", "level", "Report", "The investigators wrote that the cues were on the instruments with enough time to act, but neither pilot responded.",
+  [("investigators", "the report page settles on the desk"), ("cues", "the camera pushes in on the paragraph"), ("time", "the line highlights"), ("responded", "the line underlines")],
+  ["wide", ("cues", "medium"), ("responded", "close")], ["report page", "highlighter"], "an investigator's desk",
+  src="media/disasters-and-engineering-failures-expla/report-document-ac26d9b48956-p098.png", box=[0.115, 0.587, 0.77, 0.02], page=84, mode="cues")
+B("c-tease", "tease", "Board", "Three small lapses so far: the speed, the talk, the cue. The fourth took less than half a second.",
+  [("lapses", "the chain board returns"), ("speed", "link one stamps"), ("talk", "link two stamps"), ("cue", "link three stamps"), ("fourth", "the fourth box blinks red, empty")],
+  ["wide", ("talk", "medium"), ("fourth", "close")], ["cause chain", "three stamps", "empty red box"], "the investigation board", mode="recap")
+# ---------------------------------------------------------------- 5 the last half minute
+B("l-shaker", "level", "Panel", "Then the stick shaker fired, at {fact7} knots. The autopilot switched itself off, with a horn that kept sounding.",
+  [("Then", "the chapter card types on; the clock shows the minute"), ("shaker", "the whole display judders, STALL in red"), ("knots", "the speed box locks on the figure"), ("autopilot", "the AP light goes out"), ("horn", "a horn icon pulses")],
+  ["medium", ("shaker", "close"), ("horn", "medium")], ["airspeed tape", "stall flag", "flight clock", "autopilot light"], PFD,
+  {"speed": "{fact7}", "hh": "{fact25}", "mm": "{fact26}", "ss": "{fact27}", "end": "{fact28}"}, mode="shaker", chapter="THE LAST HALF MINUTE")
+B("l-pull", "level", "Cockpit", "Less than half a second later, the captain pulled the column back. A second after that, he pushed the power up, but not to full.",
+  [("later", "the columns judder"), ("pulled", "the captain's column comes back, a red arrow"), ("power", "the power levers slide forward"), ("full", "they stop short of the top mark")],
+  ["close", ("pulled", "close"), ("full", "medium")], ["captain", "control column", "power levers", "red arrow"], DECK, mode="pull")
+B("l-angle", "level", "Wing", "Pulling back raised the angle of attack, the opposite of the trained answer. The wing was already near the edge. Now it went over.",
+  [("Pulling", "the wing tilts up sharply"), ("opposite", "the green trained arrow flips to red"), ("edge", "the angle reaches the red line"), ("over", "the airflow tears off the top in swirls")],
+  ["medium", ("opposite", "close"), ("over", "medium")], ["wing section", "angle arc", "red line", "torn airflow"], WING, mode="pull")
+B("l-roll", "level", "Sky", "The airliner pitched up, and rolled left to {fact8} degrees, then swung hard back to the right.",
+  [("pitched", "the nose rises"), ("rolled", "the left wing drops"), ("degrees", "a bank tag shows the figure"), ("right", "the plane swings back right")],
+  ["medium", ("rolled", "medium"), ("right", "wide")], ["airliner", "bank tag", "cloud", "snow"], SKY, {"bank": "{fact8}"}, shot="stallside", phase="stall",
+  pitchAt="pitched", rollAt="rolled", rollBackAt="right", tag={"at": "degrees", "fig": "bank", "label": "BANK · DEGREES LEFT"})
+B("l-pusher", "level", "Cockpit", "The stick pusher fired and shoved the nose down. The captain pulled against it. It fired twice more.",
+  [("pusher", "both columns slam forward, green"), ("down", "the horizon line drops"), ("against", "the captain's column comes back, red"), ("twice", "two more pushes, counted on a tally")],
+  ["medium", ("pusher", "close"), ("twice", "medium")], ["control columns", "green and red arrows", "tally", "two pilots"], DECK, mode="fight")
+B("l-flaps", "level", "Cockpit", "The first officer raised the flaps without being asked. That took away lift the wing badly needed. The speed fell to about {fact18} knots.",
+  [("flaps", "her hand moves the flap lever up"), ("asked", "the flap gauge winds to zero"), ("lift", "a lift arrow shrinks"), ("fell", "the speed tag counts down")],
+  ["medium", ("flaps", "close"), ("fell", "medium")], ["first officer", "flap lever", "flap gauge", "speed tag"], DECK, {"speed": "{fact18}"}, mode="flaps")
+B("l-gear", "level", "Cockpit", "She then asked about raising the landing gear too. Neither move was in the company's stall recovery procedure, the board found.",
+  [("asked", "the first officer turns toward the captain"), ("gear", "the gear lever is ringed"), ("Neither", "a procedure card slides in"), ("procedure", "two red crosses stamp on it")],
+  ["medium", ("gear", "close"), ("procedure", "medium")], ["first officer", "captain", "gear lever", "procedure card"], DECK, mode="gearup")
+B("l-over", "level", "Sky", "Then it rolled right, to {fact17} degrees, almost on its back. Then the nose dropped toward the ground.",
+  [("rolled", "the airliner rolls right"), ("degrees", "the bank tag shows the figure in red"), ("back", "the wings pass vertical"), ("dropped", "the nose drops below the horizon")],
+  ["medium", ("degrees", "medium"), ("dropped", "wide")], ["airliner", "bank tag", "cloud"], SKY, {"bank": "{fact17}"}, shot="over", phase="stall",
+  rollRightAt="rolled", noseDownAt="dropped", tag={"at": "degrees", "fig": "bank", "label": "BANK · DEGREES RIGHT"})
+B("l-crash", "turn", "Sky", "Moments later, it came down on a house in Clarence Center, {fact5} nautical miles from the airport.",
+  [("Moments", "silence; the plane falls into the cloud and is gone"), ("house", "far away and below, a flash of orange among the snowy houses"), ("Center", "a place caption types on"), ("airport", "the runway lights far off on the horizon")],
+  ["wide", ("house", "wide"), ("airport", "wide")], ["snowy houses", "orange glow", "runway lights", "place caption"], GROUND,
+  {"miles": "{fact5}"}, shot="far", phase="ground", glowAt="house", silence=True, tag={"at": "airport", "fig": "miles", "label": "NAUTICAL MILES FROM THE AIRPORT"})
+B("l-toll", "level", "Sky", "All {fact3} people aboard were killed, and {fact4} person in the house.",
+  [("people", "fire engines' lights flash red and blue in the street"), ("aboard", "firefighters with lamps walk through the snow"), ("killed", "the memorial count types on"), ("house", "the camera holds on the lit street")],
+  ["wide", ("aboard", "medium"), ("house", "wide")], ["fire engines", "firefighters with lamps", "houses in snow", "memorial count"], GROUND,
+  {"aboard": "{fact3}", "ground": "{fact4}"}, shot="street", phase="ground", rescueAt="aboard", tag={"at": "killed", "fig": "aboard", "label": "KILLED ABOARD"}, tag2={"at": "house", "fig": "ground", "label": "KILLED ON THE GROUND"})
+B("l-clock", "level", "Panel", "From the stick shaker to the end of the cockpit recording, the flight lasted less than half a minute.",
+  [("shaker", "the flight clock runs from the shaker"), ("end", "the clock stops; the recorder line goes flat"), ("recording", "the display fades to black"), ("minute", "the time span bracket lights")],
+  ["medium", ("end", "close"), ("minute", "medium")], ["flight clock", "recorder line", "time bracket"], PFD, {"hh": "{fact25}", "mm": "{fact26}", "ss": "{fact27}", "end": "{fact28}"}, mode="clock")
+B("l-tease", "tease", "Sky", "The families of the people aboard wanted to know how a working airliner could fall out of the sky. So did the investigators.",
+  [("families", "candles flicker by a snowy memorial"), ("working", "the street's lights glow"), ("fall", "the camera rises over the town"), ("investigators", "an investigators' tag types on")],
+  ["medium", ("working", "wide"), ("investigators", "wide")], ["candles", "snowy street", "houses", "tag"], GROUND, shot="rise", phase="ground", candles=True, note={"at": "investigators", "text": "NTSB INVESTIGATION OPENS"})
+# ---------------------------------------------------------------- 6 the findings
+B("r-cause", "level", "Report", "A year later, the National Transportation Safety Board named the probable cause: the captain's inappropriate response to the stick shaker.",
+  [("year", "the chapter card types on; the report page settles"), ("probable", "the camera pushes in on the paragraph"), ("inappropriate", "the line highlights"), ("shaker", "the line underlines")],
+  ["wide", ("probable", "medium"), ("shaker", "close")], ["report page", "highlighter"], "an investigator's desk",
+  src="media/disasters-and-engineering-failures-expla/report-document-ac26d9b48956-p169.png", box=[0.115, 0.143, 0.77, 0.02], page=155, mode="cause", chapter="THE FINDINGS")
+B("r-plane", "level", "Sky", "First, the plane itself. The investigators found no failure of the structure, the engines or any system, and nothing wrong with its ice protection.",
+  [("plane", "the airliner turns slowly in the dark, whole"), ("structure", "a STRUCTURE tick types on"), ("engines", "an ENGINES tick types on"), ("system", "a SYSTEMS tick types on"), ("protection", "an ICE PROTECTION tick types on")],
+  ["wide", ("structure", "medium"), ("protection", "medium")], ["airliner", "four checks", "dark sky"], "a dark studio around the airliner, for the investigators' check", shot="orbit", phase="studio",
+  checks=[{"at": "structure", "text": "STRUCTURE: OK"}, {"at": "engines", "text": "ENGINES: OK"}, {"at": "system", "text": "SYSTEMS: OK"}, {"at": "protection", "text": "ICE PROTECTION: OK"}])
+B("r-factors", "level", "Board", "It listed four contributing factors: speed not watched against the rising cue, the sterile cockpit not kept, the flight not managed, and Colgan's speed procedures for ice.",
+  [("four", "the board lights"), ("speed", "factor one stamps"), ("sterile", "factor two stamps"), ("managed", "factor three stamps"), ("procedures", "factor four stamps")],
+  ["wide", ("sterile", "medium"), ("procedures", "medium")], ["cause board", "four factors", "stamps"], "the investigation board", mode="factors")
+B("r-startle", "level", "Wing", "Why pull back? The board said his response should have been automatic, but looked like startle and confusion.",
+  [("pull", "the wing section tilts up again"), ("automatic", "the green trained arrow lights"), ("startle", "a jolt shakes the drawing"), ("confusion", "arrows swirl around the wing")],
+  ["medium", ("automatic", "close"), ("confusion", "medium")], ["wing section", "green arrow", "swirl arrows"], WING, mode="startle")
+B("r-pusher", "level", "Board", "And the stick pusher? He didn't recognise its push as part of the recovery, the board said, and overriding it made the situation worse.",
+  [("pusher", "the board lights a new card"), ("recognise", "the first finding types on"), ("recovery", "it stamps"), ("worse", "the second finding stamps, red")],
+  ["wide", ("recognise", "medium"), ("worse", "medium")], ["finding cards", "stamps"], "the investigation board", mode="pusher")
+B("r-training", "level", "Law", "And airline stall training then practised only the warning, and how to fly out of it. Not a stall that had already happened.",
+  [("training", "a simulator room lights, a cockpit box on legs"), ("warning", "a WARNING card ticks green"), ("out", "a recover card ticks green"), ("happened", "a FULL STALL card stays blank, red")],
+  ["wide", ("warning", "medium"), ("happened", "close")], ["simulator", "training cards", "red blank card"], "a flight simulator hall", mode="sim")
+B("r-fatigue", "level", "Map", "Fatigue? The board found the pilots were likely impaired by it, but couldn't say how much. It is not in the probable cause.",
+  [("Fatigue", "the commute map returns with a moon"), ("likely", "a LIKELY tag pins on"), ("much", "a scale with a question mark"), ("probable", "a NOT IN THE PROBABLE CAUSE stamp lands")],
+  ["wide", ("likely", "medium"), ("probable", "close")], ["commute map", "moon", "tag", "stamp"], "a map of the United States at night", mode="fatigue")
+B("r-recs", "level", "Report", "The board made {fact9} safety recommendations to the Federal Aviation Administration.",
+  [("board", "the recommendations page settles"), ("safety", "the camera pushes in"), ("recommendations", "the count plate types on"), ("Administration", "the line highlights")],
+  ["wide", ("safety", "medium"), ("Administration", "close")], ["report page", "count plate", "highlighter"], "an investigator's desk",
+  {"recs": "{fact9}"}, src="media/disasters-and-engineering-failures-expla/report-document-ac26d9b48956-p170.png", box=[0.115, 0.243, 0.62, 0.02], page=156, mode="recs")
+B("r-tease", "tease", "Law", "But the families didn't wait for the regulators. They went to Washington.",
+  [("families", "a row of small figures with photos held up"), ("wait", "a clock ticks on the wall"), ("regulators", "a stack of papers"), ("Washington", "the Capitol dome draws on")],
+  ["wide", ("regulators", "medium"), ("Washington", "wide")], ["families", "Capitol dome", "clock"], "the steps of the US Capitol in Washington", mode="families")
+# ---------------------------------------------------------------- 7 the law
+B("x-act", "level", "Law", "In the summer of {fact21}, Congress passed the Airline Safety and Federal Aviation Administration Extension Act, and the president signed it that August.",
+  [("summer", "the chapter card types on; the Capitol glows at dusk"), ("Congress", "the dome lights"), ("signed", "a pen signs the bill on the desk"), ("Act", "the bill's title stamps")],
+  ["wide", ("signed", "close"), ("Act", "medium")], ["Capitol dome", "bill", "pen", "year plate"], "the steps of the US Capitol in Washington", {"year": "{fact21}"}, mode="act", chapter="THE LAW")
+B("x-hours", "level", "Law", "What does it ask? Under the rule that followed in {fact22}, a first officer must hold an airline transport pilot certificate, which normally takes {fact10} flight hours.",
+  [("rule", "a pilot's logbook opens"), ("officer", "a first officer's cap sits on it"), ("certificate", "the certificate card slides out"), ("hours", "the hours counter rolls up to the figure")],
+  ["medium", ("certificate", "close"), ("hours", "close")], ["logbook", "certificate", "hours counter"], "a pilot's logbook on a desk", {"year": "{fact22}", "hours": "{fact10}"}, mode="hours")
+B("x-stall", "level", "Law", "Airlines also had to train pilots to recover from real stalls, in simulators, by {fact23}. And new rest rules gave pilots longer breaks.",
+  [("train", "a simulator tilts nose up"), ("stalls", "a FULL STALL card ticks green"), ("simulators", "the year plate types on"), ("rest", "a bed and a clock appear"), ("breaks", "the clock's rest arc grows")],
+  ["wide", ("stalls", "medium"), ("breaks", "medium")], ["simulator", "training card", "bed", "clock"], "a flight simulator hall", {"year": "{fact23}"}, mode="stall")
+B("x-alarm", "level", "Panel", "The board also asked for warnings that are harder to miss: an amber band above the red one, and a low-speed alarm you can hear.",
+  [("warnings", "the airspeed display returns"), ("harder", "the red band glows"), ("amber", "an amber band paints above the red one"), ("alarm", "a horn icon pulses"), ("hear", "sound rings spread from it")],
+  ["medium", ("amber", "close"), ("hear", "medium")], ["airspeed tape", "red band", "amber band", "horn"], PFD, mode="alert")
+B("x-catch", "payoff", "Law", "Would that have stopped this crash? That night, the captain had {fact19} flight hours. The first officer had {fact20}. Both were already past the new minimum.",
+  [("stopped", "two logbooks slide in"), ("captain", "the left logbook's counter rolls"), ("officer", "the right logbook's counter rolls"), ("Both", "both bars glow"), ("minimum", "a red line at the minimum; both bars are above it")],
+  ["medium", ("captain", "medium"), ("minimum", "wide")], ["two logbooks", "hours bars", "red minimum line"], "a pilot's logbook on a desk",
+  {"cap": "{fact19}", "fo": "{fact20}", "min": "{fact10}"}, mode="catch")
+B("x-meaning", "level", "Law", "So hours alone would not have saved this flight. The training and rest rules went after what failed: one reflex, and one watch on the speed.",
+  [("hours", "the two logbooks dim"), ("training", "the simulator card lights"), ("rest", "the bed card lights"), ("reflex", "a column arrow points forward, green"), ("speed", "the speed band lights")],
+  ["wide", ("training", "medium"), ("speed", "medium")], ["logbooks", "training card", "rest card", "speed band"], "a pilot's logbook on a desk", mode="meaning")
+B("score", "level", "Board", "An airspeed set too low for the ice. Talk below ten thousand feet. A warning band nobody called. One pull the wrong way.",
+  [("airspeed", "link one stamps"), ("Talk", "link two stamps"), ("band", "link three stamps"), ("pull", "link four stamps, red")],
+  ["wide", ("Talk", "medium"), ("pull", "close")], ["cause scorecard", "four links", "stamps"], "the investigation board", mode="score")
+B("loop", "loop", "Sky", "Rule, reflex or rest: which would you have fixed first? Tell us in the comments.",
+  [("Rule", "the airliner flies on through the snow"), ("reflex", "its wings flicker red, as at the start"), ("rest", "the cockpit windows glow"), ("comments", "the date caption types on again")],
+  ["wide", ("reflex", "medium"), ("comments", "close")], ["airliner", "falling snow", "date caption"], SKY, {"year": "{fact1}", "day": "{fact2}"}, shot="loop", phase="night", caption="date", stallAt="reflex")
+
+OVR = {
+ "promise2": dict(component="Sky", place="a dark studio around the airliner, for the investigators' check", shot="orbit", phase="studio", chapters=True,
+   things=["airliner turning in the studio", "chapter index", "seven lamps"]),
+ "w-aoa": dict(component="Sky", place=SKY, shot="side", phase="night", pitchAt="Tilt", aoaLabel="angle",
+   things=["airliner pitching up", "angle-of-attack arc", "label"], moments_over={"Tilt": "the airliner's nose tilts up against the oncoming snow", "more": "the snow streaks bend under the wing", "angle": "an angle arc draws between the wing and the airflow", "attack": "the ANGLE OF ATTACK label types on"}),
+ "i-tease": dict(component="Sky", place=SKY, shot="descent", phase="night", note={"at": "below", "text": "BELOW TEN THOUSAND FEET"},
+   things=["airliner descending", "snow", "caption"], moments_over={"watch": "the airliner sinks through the cloud", "speed": "its landing lights flare", "below": "a caption types on: below ten thousand feet", "quiet": "speech marks blink over the lit cockpit windows"}, talkAt="quiet"),
+ "c-chat": dict(component="Sky", place="beside the airliner's lit cockpit windows in the snow", shot="window", phase="night", talkAt="conversation", sterileAt="nothing",
+   things=["cockpit windows", "two pilots' silhouettes", "speech marks", "sterile cockpit sign"], moments_over={"pilots": "the camera glides past the lit cockpit windows, two pilots inside", "conversation": "speech marks bob over the windows", "nothing": "a STERILE COCKPIT sign blinks red", "descent": "the airliner keeps sinking through the snow"}),
+ "c-nose": dict(component="Sky", place=SKY, shot="level", phase="night", noseCreepAt="nose", tag={"at": "red", "fig": "speed", "label": "AIRSPEED · KNOTS"},
+   things=["airliner nose creeping up", "airspeed tag", "snow"], moments_over={"nose": "the airliner's nose creeps up", "height": "an altitude-hold tag lights", "red": "the airspeed tag turns red", "Neither": "the cockpit windows stay quiet"}),
+ "l-pull": dict(component="Sky", place="close on the airliner's nose and cockpit windows in the snow", shot="pull", phase="stall", pitchAt="pulled", stallAt="later", pullCard=True,
+   things=["airliner nose pitching up", "red wing", "COLUMN BACK card", "power card"], moments_over={"later": "the wings flash red as the shaker fires", "pulled": "the nose heaves up, a big red COLUMN BACK card slams on", "power": "the propellers spin harder, a POWER UP card", "full": "a NOT FULL stamp lands on it"}),
+ "l-pusher": dict(component="Sky", place=SKY, shot="stallside", phase="stall", pusherAt="pusher", pullbackAt="against", againAt="twice", stallAt="pusher",
+   things=["airliner pitching down and up", "push tally", "cloud"], moments_over={"pusher": "the nose shoves down, a green PUSH tally mark", "down": "the airliner dips", "against": "the nose heaves back up, red", "twice": "two more pushes, two more tally marks"}),
+ "l-flaps": dict(component="Sky", place="along the airliner's wing, close on the flaps", shot="flaps", phase="stall", flapsAt="flaps", stallAt="flaps", tag={"at": "fell", "fig": "speed", "label": "AIRSPEED · KNOTS"},
+   things=["airliner wing", "flaps retracting", "airspeed tag"], moments_over={"flaps": "the flaps on the wing's back edge start to slide in", "asked": "they disappear into the wing", "lift": "the wing glows red", "fell": "the airspeed tag counts down"}),
+ "x-meaning": dict(component="Sky", place=SKY, shot="loop", phase="night", checks=[{"at": "training", "text": "STALL TRAINING"}, {"at": "rest", "text": "REST RULES"}, {"at": "reflex", "text": "THE REFLEX: PUSH"}, {"at": "speed", "text": "WATCH THE SPEED"}],
+   things=["airliner flying on through snow", "four checks"], moments_over={"hours": "the airliner flies calm through the snow", "training": "a STALL TRAINING tick types on", "rest": "a REST RULES tick types on", "reflex": "THE REFLEX: PUSH types on", "speed": "WATCH THE SPEED types on"}),
+ "l-toll": dict(shot="street"),
+}
+for b in beats:
+    o = OVR.get(b["id"])
+    if not o: continue
+    P = b["params"]
+    mo = o.pop("moments_over", None)
+    for k, v in o.items():
+        P[k] = v
+    if mo:
+        for mm in P["moments"]:
+            if mm["at"] in mo: mm["what"] = mo[mm["at"]]
+    for k in ("mode",):
+        if P["component"] == "Sky" and k in P: P.pop(k)
+
+EXTREME = {"hook-shake": "pulled", "c-cue": "seconds", "l-shaker": "shaker", "x-catch": "officer"}
+for b in beats:
+    cam = b["params"]["camera"]
+    if b["id"] == "hook":
+        continue
+    first = cam[0]["size"]
+    changes = [c for c in cam[1:] if c["size"] != first]
+    keep = changes[-1] if changes else None
+    cur = first
+    for c in cam[1:]:
+        if keep is not None and c is keep:
+            cur = c["size"]
+        else:
+            c["size"] = cur
+    if b["id"] in EXTREME:
+        for c in cam[1:]:
+            if c.get("at") == EXTREME[b["id"]]:
+                c["size"] = "extreme"
+beats.append({"id": "outro", "scene": "end", "transition": "fade", "params": {"cta": "Rule, reflex or rest: which would you have fixed first?", "follow": "Subscribe for the next investigation",
+  "assumption": "From the NTSB's final report on the crash and the FAA's account of the rules that followed. The scenes are reconstructions, not actual footage."}})
+
+script = {"template": "long_story", "format": "long", "id": V, "seed": 26112641, "title": "The Colgan Air Crash: The Stall Warning That Rewrote Pilot Rules",
+  "story": "air_crash_rule", "narrator": "bm_lewis", "currency": "USD", "style": {"palette": "night", "genre": "undertow", "key": "F", "bpm": 54, "recipe": "storm-weather"},
+  "feed_id": "2026-11-20-colgan-3407", "hook_style": "conflict", "cta": "Rule, reflex or rest: which would you have fixed first? Tell us in the comments",
+  "facts": facts, "maths": [], "shape": "the-chain", "beats": beats}
+import os
+out = f"/home/user/finance-shorts-bot/channels/disasters-and-engineering-failures-expla/videos/{V}/script.json"
+old = json.load(open(out)) if os.path.exists(out) else {}
+for k in ("thumbnail", "thumbnails", "thumbnail_pick"):
+    if k in old: script[k] = old[k]
+json.dump(script, open(out, "w"), indent=1, ensure_ascii=False)
+w = sum(len(b.get("say", "").split()) for b in beats)
+print("beats", len(beats), "words", w)
+
+# ---------------------------------------------------------------- thumbnails
+S = json.load(open(out))
+refs = {
+ "o6c3ENr_CRM": (2343673, "the turboprop huge, banking over a night town, bold yellow and white words top left"),
+ "DVhc1zl8QEM": (129349, "the airliner big in a steep bank over a night city, words across the bottom"),
+ "mcD6a2eDChw": (290899, "the snowy town from above at night, a glow and emergency lights among the houses, a red banner"),
+ "XtBFixOXR3I": (106711, "a night town from above with a glow among the roofs, big words over it"),
+ "HjPXBRgZgBI": (381112, "the cockpit moment: a hand on the control column, a question in a red banner"),
+ "_blF6L04Dfk": (2408180, "the scene from above with big serif words down the left"),
+}
+R = lambda *ids: [{"id": i, "views": refs[i][0], "what": refs[i][1]} for i in ids]
+S["thumbnail"] = {"layout": "custom", "component": "Thumb", "words": "Pulled the *wrong* way", "things": ["airliner banking with a red wing", "snowy night town"],
+  "pattern": "the airliner huge in a steep bank over a night town, bold words top left", "references": R("o6c3ENr_CRM", "DVhc1zl8QEM", "_blF6L04Dfk")}
+S["thumbnails"] = [
+ {"layout": "custom", "component": "ThumbB", "words": "Nobody *called* it", "things": ["airliner falling toward a snowy town", "glow among the houses", "emergency lights"],
+  "pattern": "the snowy town at night from above, a glow among the houses, emergency lights, big words low", "references": R("mcD6a2eDChw", "XtBFixOXR3I", "o6c3ENr_CRM")},
+ {"layout": "custom", "component": "ThumbC", "words": "Push or *pull*?", "things": ["airliner stalling with a red wing", "control column", "red arrow"],
+  "pattern": "the cockpit moment as a question: the control column and the choice, the airliner over the night town", "references": R("HjPXBRgZgBI", "o6c3ENr_CRM", "DVhc1zl8QEM")},
+]
+for k in ("thumbnail",):
+    pass
+old_pick = old.get("thumbnail_pick")
+if old.get("thumbnail", {}).get("score"):
+    S["thumbnail"]["score"] = old["thumbnail"]["score"]; S["thumbnail"]["why"] = old["thumbnail"]["why"]
+    for a, b in zip(S["thumbnails"], old.get("thumbnails", [])):
+        if b.get("score"): a["score"] = b["score"]; a["why"] = b["why"]
+if old_pick: S["thumbnail_pick"] = old_pick
+PRE = {"Thumb": (7, "Reads at phone size and sits in the top hit's pattern (the turboprop big over a night town, bold words), but our flat drawing looks plainer than the 3D hits beside it; the words promise the reflex the video explains."),
+ "ThumbB": (5, "The town-from-above pattern of the 291K hit, but the plane is small and the glow weak, so it reads as a cartoon next to the hits; the words are the stakes."),
+ "ThumbC": (6, "A plain question to click for a stranger: a plain question (push or pull?) with the control column and the stalling plane, the 381K hit's cockpit-choice pattern; it promises exactly the turn the video delivers.")}
+for th in [S["thumbnail"], *S["thumbnails"]]:
+    if "score" not in th: th["score"], th["why"] = PRE[th["component"]]
+S["thumbnail_pick"] = "a"
+json.dump(S, open(out, "w"), indent=1, ensure_ascii=False)
+print("thumbs ok")

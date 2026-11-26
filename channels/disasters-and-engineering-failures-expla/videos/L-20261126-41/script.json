@@ -1,0 +1,5092 @@
+{
+ "template": "long_story",
+ "format": "long",
+ "id": "L-20261126-41",
+ "seed": 26112641,
+ "title": "The Colgan Air Crash: The Stall Warning That Rewrote Pilot Rules",
+ "story": "air_crash_rule",
+ "narrator": "bm_lewis",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "undertow",
+  "key": "F",
+  "bpm": 54,
+  "recipe": "storm-weather"
+ },
+ "feed_id": "2026-11-20-colgan-3407",
+ "hook_style": "conflict",
+ "cta": "Rule, reflex or rest: which would you have fixed first? Tell us in the comments",
+ "facts": [
+  {
+   "label": "Year of the crash (February 12, 2009)",
+   "value": 2009,
+   "unit": "year",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Day of February of the crash",
+   "value": 12,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "People aboard who were killed (2 pilots, 2 flight attendants, 45 passengers)",
+   "value": 49,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "People killed on the ground",
+   "value": 1,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Distance of the crash site from the airport, nautical miles (about)",
+   "value": 5,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Landing reference speed briefed for flaps 15, knots",
+   "value": 118,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Airspeed when the stick shaker fired and the autopilot disengaged, knots",
+   "value": 131,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Roll angle reached after the pull, degrees left wing down",
+   "value": 45,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Safety recommendations to the FAA in the report (A-10-10 to A-10-34)",
+   "value": 25,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Flight hours now required for an airline first officer",
+   "value": 1500,
+   "unit": "count",
+   "as_of": "2025-01-06",
+   "source": "AIN",
+   "url": "https://backend.ainonline.com/aviation-news/air-transport/2025-01-06/colgan-air-flight-3407-crash-and-its-enduring-impact",
+   "fixed": true
+  },
+  {
+   "label": "Cruise altitude, feet",
+   "value": 16000,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Altitude below which the sterile cockpit rule applies, feet",
+   "value": 10000,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Altitude the flight levelled at for the approach, feet",
+   "value": 2300,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Seconds the low-speed cue rose toward the airspeed before the stick shaker",
+   "value": 18,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Knots the ref speeds switch (increase) raised the low-speed cue, about",
+   "value": 15,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Knots the stick shaker airspeed was below the icing reference speed",
+   "value": 7,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Roll angle reached to the right, degrees right wing down",
+   "value": 105,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Airspeed when the flaps began to retract, knots (about)",
+   "value": 100,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "The captain's total flight hours",
+   "value": 3379,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "The first officer's total flight hours",
+   "value": 2244,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Year the Airline Safety and FAA Extension Act was signed (August 1, 2010)",
+   "value": 2010,
+   "unit": "year",
+   "as_of": "2010-08-01",
+   "source": "FAA",
+   "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N200WQ",
+   "fixed": true
+  },
+  {
+   "label": "Year of the FAA's pilot certification rule (July 15, 2013)",
+   "value": 2013,
+   "unit": "year",
+   "as_of": "2013-07-15",
+   "source": "FAA",
+   "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N200WQ",
+   "fixed": true
+  },
+  {
+   "label": "Year by which airline stall and upset training was required (March 12, 2019)",
+   "value": 2019,
+   "unit": "year",
+   "as_of": "2013-11-12",
+   "source": "FAA",
+   "url": "https://www.faa.gov/lessons_learned/transport_airplane/accidents/N200WQ",
+   "fixed": true
+  },
+  {
+   "label": "Total people killed (49 aboard and 1 on the ground)",
+   "value": 50,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Hour of the stick shaker, 24-hour clock, eastern standard time",
+   "value": 22,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Minute of the stick shaker (2216)",
+   "value": 16,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Second the stick shaker sounded (2216:27.4)",
+   "value": 27,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Second the cockpit recording ended (2216:54)",
+   "value": 54,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Knots the stick shaker fired above the reference speed the crew had set",
+   "value": 13,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "shape": "the-chain",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "say": "Colgan Air's flight to Buffalo got a stall warning. The captain pulled the wrong way, and {fact24} people died.",
+   "events": {
+    "Colgan": {
+     "word": "Colgan"
+    },
+    "Buffalo": {
+     "word": "Buffalo"
+    },
+    "warning": {
+     "word": "warning"
+    },
+    "pulled": {
+     "word": "pulled"
+    },
+    "died": {
+     "word": "died"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "warning",
+      "size": "medium"
+     },
+     {
+      "at": "died",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Colgan",
+      "what": "the date and place caption types on over the airliner in falling snow"
+     },
+     {
+      "at": "Buffalo",
+      "what": "the airliner's name tag lights"
+     },
+     {
+      "at": "warning",
+      "what": "the wings flash red, a STALL tag blinks"
+     },
+     {
+      "at": "pulled",
+      "what": "the nose pitches up hard"
+     },
+     {
+      "at": "died",
+      "what": "the passengers' cabin windows flicker as the plane drops into the cloud and the frame dips dark"
+     }
+    ],
+    "things": [
+     "airliner",
+     "falling snow",
+     "date caption",
+     "stall tag",
+     "passengers behind the lit cabin windows"
+    ],
+    "fig": {
+     "year": "{fact1}",
+     "day": "{fact2}",
+     "toll": "{fact24}"
+    },
+    "shot": "hook",
+    "phase": "stall",
+    "caption": "date",
+    "stallAt": "warning",
+    "pitchAt": "pulled",
+    "dropAt": "died",
+    "tag": {
+     "at": "died",
+     "fig": "toll",
+     "label": "PEOPLE KILLED"
+    }
+   }
+  },
+  {
+   "id": "hook-speed",
+   "scene": "directed",
+   "role": "level",
+   "say": "February {fact2}, {fact1}. The twin-propeller airliner was slowing for the runway, its airspeed sagging to {fact7} knots.",
+   "events": {
+    "February": {
+     "word": "February"
+    },
+    "twin-propeller": {
+     "word": "twin-propeller"
+    },
+    "slowing": {
+     "word": "slowing"
+    },
+    "sagging": {
+     "word": "sagging"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "slowing",
+      "size": "medium"
+     },
+     {
+      "at": "sagging",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "February",
+      "what": "the airliner glides out of the cloud, its landing lights on"
+     },
+     {
+      "at": "twin-propeller",
+      "what": "the two propellers blur in the lights"
+     },
+     {
+      "at": "slowing",
+      "what": "the landing gear swings down"
+     },
+     {
+      "at": "sagging",
+      "what": "the airspeed tag counts down and turns red"
+     }
+    ],
+    "things": [
+     "airliner",
+     "propellers",
+     "landing gear",
+     "airspeed tag"
+    ],
+    "fig": {
+     "year": "{fact1}",
+     "day": "{fact2}",
+     "speed": "{fact7}"
+    },
+    "shot": "approach",
+    "phase": "night",
+    "gearAt": "slowing",
+    "tag": {
+     "at": "sagging",
+     "fig": "speed",
+     "label": "AIRSPEED · KNOTS"
+    }
+   }
+  },
+  {
+   "id": "hook-shake",
+   "scene": "directed",
+   "role": "level",
+   "say": "The control column shook: the wings were close to a stall. The trained answer is to push forward. The captain pulled back.",
+   "events": {
+    "shook": {
+     "word": "shook"
+    },
+    "stall": {
+     "word": "stall"
+    },
+    "push": {
+     "word": "push"
+    },
+    "pulled": {
+     "word": "pulled"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the airliner's flight deck at night, seen from behind the pilots",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "push",
+      "size": "medium"
+     },
+     {
+      "at": "pulled",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "shook",
+      "what": "both control columns judder, the STALL light flashes"
+     },
+     {
+      "at": "stall",
+      "what": "a red band lights on the airspeed tape"
+     },
+     {
+      "at": "push",
+      "what": "a green arrow points the column forward"
+     },
+     {
+      "at": "pulled",
+      "what": "the captain's column comes back, a red arrow"
+     }
+    ],
+    "things": [
+     "control columns",
+     "stall light",
+     "green arrow",
+     "red arrow",
+     "two pilots"
+    ],
+    "mode": "hookshake"
+   }
+  },
+  {
+   "id": "hook-fall",
+   "scene": "directed",
+   "role": "level",
+   "say": "The nose rose, a wing dropped, and in under half a minute the airliner came down on a house, {fact5} nautical miles from the airport.",
+   "events": {
+    "nose": {
+     "word": "nose"
+    },
+    "wing": {
+     "word": "wing"
+    },
+    "minute": {
+     "word": "minute"
+    },
+    "house": {
+     "word": "house"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "wing",
+      "size": "medium"
+     },
+     {
+      "at": "house",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nose",
+      "what": "the airliner's nose rises"
+     },
+     {
+      "at": "wing",
+      "what": "the left wing drops, the plane rolls"
+     },
+     {
+      "at": "minute",
+      "what": "a clock tag runs"
+     },
+     {
+      "at": "house",
+      "what": "the plane is gone into cloud; far below, an orange glow among houses"
+     }
+    ],
+    "things": [
+     "airliner",
+     "clock tag",
+     "houses in snow",
+     "orange glow"
+    ],
+    "fig": {
+     "miles": "{fact5}"
+    },
+    "shot": "roll",
+    "phase": "stall",
+    "pitchAt": "nose",
+    "rollAt": "wing",
+    "dropAt": "house",
+    "glowAt": "house",
+    "tag": {
+     "at": "house",
+     "fig": "miles",
+     "label": "NAUTICAL MILES FROM THE AIRPORT"
+    }
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "say": "This crash had no single cause. It was a chain: an airspeed set too low for the ice, talk where there should be silence, a warning nobody called, and one wrong reflex.",
+   "events": {
+    "chain": {
+     "word": "chain"
+    },
+    "airspeed": {
+     "word": "airspeed"
+    },
+    "talk": {
+     "word": "talk"
+    },
+    "warning": {
+     "word": "warning"
+    },
+    "reflex": {
+     "word": "reflex"
+    }
+   },
+   "params": {
+    "component": "Board",
+    "place": "the investigation board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "talk",
+      "size": "wide"
+     },
+     {
+      "at": "reflex",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "chain",
+      "what": "the chain board lights"
+     },
+     {
+      "at": "airspeed",
+      "what": "link one writes on"
+     },
+     {
+      "at": "talk",
+      "what": "link two writes on"
+     },
+     {
+      "at": "warning",
+      "what": "link three writes on"
+     },
+     {
+      "at": "reflex",
+      "what": "the last link snaps red"
+     }
+    ],
+    "things": [
+     "cause chain",
+     "four links",
+     "red break"
+    ],
+    "mode": "chain"
+   }
+  },
+  {
+   "id": "promise2",
+   "scene": "directed",
+   "role": "promise",
+   "say": "Here it is in seven parts: the flight, the wing, the ice, the cue, the last half minute, the findings, and the law that came after.",
+   "events": {
+    "flight": {
+     "word": "flight"
+    },
+    "wing": {
+     "word": "wing"
+    },
+    "ice": {
+     "word": "ice"
+    },
+    "cue": {
+     "word": "cue"
+    },
+    "last": {
+     "word": "last"
+    },
+    "findings": {
+     "word": "findings"
+    },
+    "law": {
+     "word": "law"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "a dark studio around the airliner, for the investigators' check",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "findings",
+      "size": "medium"
+     },
+     {
+      "at": "law",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "flight",
+      "what": "lamp one lights"
+     },
+     {
+      "at": "wing",
+      "what": "lamp two lights"
+     },
+     {
+      "at": "ice",
+      "what": "lamp three lights"
+     },
+     {
+      "at": "cue",
+      "what": "lamp four lights"
+     },
+     {
+      "at": "last",
+      "what": "lamp five lights red"
+     },
+     {
+      "at": "findings",
+      "what": "lamp six lights"
+     },
+     {
+      "at": "law",
+      "what": "lamp seven lights and the title stamps on"
+     }
+    ],
+    "things": [
+     "airliner turning in the studio",
+     "chapter index",
+     "seven lamps"
+    ],
+    "shot": "orbit",
+    "phase": "studio",
+    "chapters": true
+   }
+  },
+  {
+   "id": "f-plane",
+   "scene": "directed",
+   "role": "level",
+   "say": "The plane was a Bombardier Q four hundred, a turboprop airliner, flown by Colgan Air as a Continental Connection flight.",
+   "events": {
+    "Bombardier": {
+     "word": "Bombardier"
+    },
+    "turboprop": {
+     "word": "turboprop"
+    },
+    "Colgan": {
+     "word": "Colgan"
+    },
+    "Continental": {
+     "word": "Continental"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the ramp at Newark airport at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "turboprop",
+      "size": "wide"
+     },
+     {
+      "at": "Continental",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Bombardier",
+      "what": "the chapter card types on; the camera finds the airliner at the gate"
+     },
+     {
+      "at": "turboprop",
+      "what": "a label pins on its propeller"
+     },
+     {
+      "at": "Colgan",
+      "what": "a tag names the airline"
+     },
+     {
+      "at": "Continental",
+      "what": "a second tag names the brand it flew for"
+     }
+    ],
+    "things": [
+     "airliner at the gate",
+     "gate lights",
+     "airline tags",
+     "blowing snow"
+    ],
+    "shot": "gate",
+    "phase": "gate",
+    "chapter": "THE FLIGHT",
+    "labels": [
+     {
+      "at": "turboprop",
+      "text": "BOMBARDIER",
+      "sub": "TURBOPROP"
+     },
+     {
+      "at": "Colgan",
+      "text": "COLGAN AIR"
+     },
+     {
+      "at": "Continental",
+      "text": "CONTINENTAL CONNECTION"
+     }
+    ]
+   }
+  },
+  {
+   "id": "f-route",
+   "scene": "directed",
+   "role": "level",
+   "say": "Where was it going? That evening, from Newark, near New York City, to Buffalo, in the far west of New York State.",
+   "events": {
+    "going": {
+     "word": "going"
+    },
+    "Newark": {
+     "word": "Newark"
+    },
+    "York": {
+     "word": "York"
+    },
+    "Buffalo": {
+     "word": "Buffalo"
+    },
+    "west": {
+     "word": "west"
+    }
+   },
+   "params": {
+    "component": "Map",
+    "place": "a map of the north-east United States",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "Newark",
+      "size": "medium"
+     },
+     {
+      "at": "Buffalo",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "going",
+      "what": "the map of the north-east draws in"
+     },
+     {
+      "at": "Newark",
+      "what": "a pin drops on Newark"
+     },
+     {
+      "at": "York",
+      "what": "the city lights glow"
+     },
+     {
+      "at": "Buffalo",
+      "what": "the route line draws to Buffalo"
+     },
+     {
+      "at": "west",
+      "what": "Buffalo's pin pulses"
+     }
+    ],
+    "things": [
+     "map of New York State",
+     "two airport pins",
+     "route line",
+     "small plane"
+    ],
+    "mode": "route"
+   }
+  },
+  {
+   "id": "f-late",
+   "scene": "directed",
+   "role": "level",
+   "say": "High winds had slowed flights at Newark all day. This one took off more than two hours behind schedule, into the dark, bound for Buffalo.",
+   "events": {
+    "winds": {
+     "word": "winds"
+    },
+    "slowed": {
+     "word": "slowed"
+    },
+    "took": {
+     "word": "took"
+    },
+    "dark": {
+     "word": "dark"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the runway at Newark at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "took",
+      "size": "medium"
+     },
+     {
+      "at": "dark",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "winds",
+      "what": "snow streaks sideways past the gate lights"
+     },
+     {
+      "at": "slowed",
+      "what": "a line of waiting planes' lights"
+     },
+     {
+      "at": "took",
+      "what": "the airliner rolls and lifts off"
+     },
+     {
+      "at": "dark",
+      "what": "it climbs into the cloud"
+     }
+    ],
+    "things": [
+     "airliner",
+     "blowing snow",
+     "runway lights",
+     "waiting planes"
+    ],
+    "shot": "takeoff",
+    "phase": "gate",
+    "takeoffAt": "took"
+   }
+  },
+  {
+   "id": "f-aboard",
+   "scene": "directed",
+   "role": "level",
+   "say": "Who was aboard? {fact3} people: the two pilots, two flight attendants, and the passengers, some of them going home.",
+   "events": {
+    "aboard": {
+     "word": "aboard"
+    },
+    "pilots": {
+     "word": "pilots"
+    },
+    "attendants": {
+     "word": "attendants"
+    },
+    "passengers": {
+     "word": "passengers"
+    },
+    "home": {
+     "word": "home"
+    }
+   },
+   "params": {
+    "component": "Cabin",
+    "place": "a cut-away of the airliner's cabin",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "pilots",
+      "size": "medium"
+     },
+     {
+      "at": "home",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "aboard",
+      "what": "the cabin cut-away draws in"
+     },
+     {
+      "at": "pilots",
+      "what": "two figures light in the flight deck"
+     },
+     {
+      "at": "attendants",
+      "what": "two figures light by the doors"
+     },
+     {
+      "at": "passengers",
+      "what": "the seat rows fill with small figures"
+     },
+     {
+      "at": "home",
+      "what": "the reading lights glow warm"
+     }
+    ],
+    "things": [
+     "cabin cut-away",
+     "passengers in their seats",
+     "pilots and cabin crew",
+     "count tag"
+    ],
+    "fig": {
+     "aboard": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "f-commute",
+   "scene": "directed",
+   "role": "level",
+   "say": "And the crew? The first officer lived near Seattle. To reach work, she had flown overnight, across the country through Memphis, into Newark that morning.",
+   "events": {
+    "Seattle": {
+     "word": "Seattle"
+    },
+    "overnight": {
+     "word": "overnight"
+    },
+    "Memphis": {
+     "word": "Memphis"
+    },
+    "Newark": {
+     "word": "Newark"
+    }
+   },
+   "params": {
+    "component": "Map",
+    "place": "a map of the United States at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "overnight",
+      "size": "wide"
+     },
+     {
+      "at": "Newark",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Seattle",
+      "what": "a pin lights near Seattle"
+     },
+     {
+      "at": "overnight",
+      "what": "a moon rises over the map"
+     },
+     {
+      "at": "Memphis",
+      "what": "the line bends through Memphis"
+     },
+     {
+      "at": "Newark",
+      "what": "it ends at Newark at dawn"
+     }
+    ],
+    "things": [
+     "map of the United States",
+     "commute line",
+     "moon",
+     "three pins"
+    ],
+    "mode": "commute"
+   }
+  },
+  {
+   "id": "f-climb",
+   "scene": "directed",
+   "role": "level",
+   "say": "Climbing out, the crew switched on the de-icing systems, which crack ice off the wings. The plane levelled at {fact11} feet.",
+   "events": {
+    "Climbing": {
+     "word": "Climbing"
+    },
+    "de-icing": {
+     "word": "de-icing"
+    },
+    "levelled": {
+     "word": "levelled"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "above the cloud deck over Pennsylvania at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "de-icing",
+      "size": "medium"
+     },
+     {
+      "at": "levelled",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Climbing",
+      "what": "the airliner climbs through cloud"
+     },
+     {
+      "at": "de-icing",
+      "what": "the black boots on the wings' front edges pulse"
+     },
+     {
+      "at": "levelled",
+      "what": "it levels off, an altitude tag types on"
+     }
+    ],
+    "things": [
+     "airliner",
+     "de-icing boots",
+     "cloud tops",
+     "altitude tag"
+    ],
+    "fig": {
+     "alt": "{fact11}"
+    },
+    "shot": "cruise",
+    "phase": "cruise",
+    "bootsAt": "de-icing",
+    "tag": {
+     "at": "levelled",
+     "fig": "alt",
+     "label": "ALTITUDE · FEET"
+    }
+   }
+  },
+  {
+   "id": "f-talk",
+   "scene": "directed",
+   "role": "level",
+   "say": "Up there, the autopilot flew and the pilots talked almost the whole way. Was that allowed? At that height, yes.",
+   "events": {
+    "autopilot": {
+     "word": "autopilot"
+    },
+    "talked": {
+     "word": "talked"
+    },
+    "height": {
+     "word": "height"
+    },
+    "allowed": {
+     "word": "allowed"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the airliner's flight deck at night, seen from behind the pilots",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "talked",
+      "size": "medium"
+     },
+     {
+      "at": "allowed",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "autopilot",
+      "what": "the AP light glows green"
+     },
+     {
+      "at": "talked",
+      "what": "speech marks bob between the two pilots"
+     },
+     {
+      "at": "height",
+      "what": "the altimeter reads the cruise height"
+     },
+     {
+      "at": "allowed",
+      "what": "a small tick stamps by it"
+     }
+    ],
+    "things": [
+     "two pilots",
+     "autopilot light",
+     "speech marks",
+     "altimeter"
+    ],
+    "fig": {
+     "alt": "{fact11}"
+    },
+    "mode": "cruise"
+   }
+  },
+  {
+   "id": "f-weather",
+   "scene": "directed",
+   "role": "level",
+   "say": "Was the weather the problem? There was light snow and mist near Buffalo, with ice in the cloud: nothing unusual for a winter night there.",
+   "events": {
+    "weather": {
+     "word": "weather"
+    },
+    "snow": {
+     "word": "snow"
+    },
+    "mist": {
+     "word": "mist"
+    },
+    "winter": {
+     "word": "winter"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "snow",
+      "size": "wide"
+     },
+     {
+      "at": "winter",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "weather",
+      "what": "the airliner descends through thin cloud"
+     },
+     {
+      "at": "snow",
+      "what": "snow streaks thicken past the wing"
+     },
+     {
+      "at": "mist",
+      "what": "a grey haze drifts below"
+     },
+     {
+      "at": "winter",
+      "what": "the town's lights glow faintly far below"
+     }
+    ],
+    "things": [
+     "airliner",
+     "snow",
+     "mist",
+     "town lights far below"
+    ],
+    "shot": "descent",
+    "phase": "night"
+   }
+  },
+  {
+   "id": "f-tease",
+   "scene": "directed",
+   "role": "tease",
+   "say": "But near Buffalo, the cloud was full of ice. And ice changes the one thing that keeps a wing in the air.",
+   "events": {
+    "Buffalo": {
+     "word": "Buffalo"
+    },
+    "ice": {
+     "word": "ice"
+    },
+    "changes": {
+     "word": "changes"
+    },
+    "wing": {
+     "word": "wing"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "ice",
+      "size": "medium"
+     },
+     {
+      "at": "wing",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Buffalo",
+      "what": "the airliner sinks into grey cloud"
+     },
+     {
+      "at": "ice",
+      "what": "white rime creeps along the wing's front edge"
+     },
+     {
+      "at": "changes",
+      "what": "the white crust thickens along the wing's front edge"
+     },
+     {
+      "at": "wing",
+      "what": "the camera slides along the iced wing"
+     }
+    ],
+    "things": [
+     "airliner",
+     "iced wing",
+     "cloud"
+    ],
+    "shot": "wing",
+    "phase": "night",
+    "iceAt": "ice"
+   }
+  },
+  {
+   "id": "w-flow",
+   "scene": "directed",
+   "role": "level",
+   "say": "What keeps a wing up? Air flows over its curved top and under it, and the wing turns that flow into lift.",
+   "events": {
+    "wing": {
+     "word": "wing"
+    },
+    "flows": {
+     "word": "flows"
+    },
+    "curved": {
+     "word": "curved"
+    },
+    "lift": {
+     "word": "lift"
+    }
+   },
+   "params": {
+    "component": "Wing",
+    "place": "a wind-tunnel drawing of the airliner's wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "curved",
+      "size": "wide"
+     },
+     {
+      "at": "lift",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "wing",
+      "what": "the chapter card types on; the wing section draws"
+     },
+     {
+      "at": "flows",
+      "what": "streamlines run past it"
+     },
+     {
+      "at": "curved",
+      "what": "the top curve traces in blue"
+     },
+     {
+      "at": "lift",
+      "what": "a big lift arrow rises"
+     }
+    ],
+    "things": [
+     "wing section",
+     "streamlines",
+     "lift arrow"
+    ],
+    "mode": "flow",
+    "chapter": "THE WING"
+   }
+  },
+  {
+   "id": "w-aoa",
+   "scene": "directed",
+   "role": "level",
+   "say": "Tilt the wing up a little, and it makes more lift. That tilt against the oncoming air is called the angle of attack.",
+   "events": {
+    "Tilt": {
+     "word": "Tilt"
+    },
+    "more": {
+     "word": "more"
+    },
+    "angle": {
+     "word": "angle"
+    },
+    "attack": {
+     "word": "attack"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "angle",
+      "size": "medium"
+     },
+     {
+      "at": "attack",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Tilt",
+      "what": "the airliner's nose tilts up against the oncoming snow"
+     },
+     {
+      "at": "more",
+      "what": "the snow streaks bend under the wing"
+     },
+     {
+      "at": "angle",
+      "what": "an angle arc draws between the wing and the airflow"
+     },
+     {
+      "at": "attack",
+      "what": "the ANGLE OF ATTACK label types on"
+     }
+    ],
+    "things": [
+     "airliner pitching up",
+     "angle-of-attack arc",
+     "label"
+    ],
+    "shot": "side",
+    "phase": "night",
+    "pitchAt": "Tilt",
+    "aoaLabel": "angle"
+   }
+  },
+  {
+   "id": "w-stall",
+   "scene": "directed",
+   "role": "level",
+   "say": "Past a certain angle, the air can't follow the top any more. It breaks away in swirls, and the lift collapses. That is a stall.",
+   "events": {
+    "angle": {
+     "word": "angle"
+    },
+    "breaks": {
+     "word": "breaks"
+    },
+    "swirls": {
+     "word": "swirls"
+    },
+    "collapses": {
+     "word": "collapses"
+    },
+    "stall": {
+     "word": "stall"
+    }
+   },
+   "params": {
+    "component": "Wing",
+    "place": "a wind-tunnel drawing of the airliner's wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "swirls",
+      "size": "medium"
+     },
+     {
+      "at": "stall",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "angle",
+      "what": "the wing tilts further"
+     },
+     {
+      "at": "breaks",
+      "what": "the streamlines peel off the top"
+     },
+     {
+      "at": "swirls",
+      "what": "swirls tumble behind the wing"
+     },
+     {
+      "at": "collapses",
+      "what": "the lift arrow shrinks and turns red"
+     },
+     {
+      "at": "stall",
+      "what": "a STALL stamp lands"
+     }
+    ],
+    "things": [
+     "wing section",
+     "torn airflow",
+     "swirls",
+     "stall stamp"
+    ],
+    "mode": "stall"
+   }
+  },
+  {
+   "id": "w-slow",
+   "scene": "directed",
+   "role": "level",
+   "say": "A slow plane needs a bigger angle to hold itself up. So as the airspeed bleeds away, the wing creeps toward that edge.",
+   "events": {
+    "slow": {
+     "word": "slow"
+    },
+    "bigger": {
+     "word": "bigger"
+    },
+    "bleeds": {
+     "word": "bleeds"
+    },
+    "edge": {
+     "word": "edge"
+    }
+   },
+   "params": {
+    "component": "Wing",
+    "place": "a wind-tunnel drawing of the airliner's wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "bigger",
+      "size": "medium"
+     },
+     {
+      "at": "edge",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "slow",
+      "what": "the speed dial falls"
+     },
+     {
+      "at": "bigger",
+      "what": "the wing tilts up to keep its lift"
+     },
+     {
+      "at": "bleeds",
+      "what": "the dial needle slides down"
+     },
+     {
+      "at": "edge",
+      "what": "a red line marks the stall angle; the wing's angle closes on it"
+     }
+    ],
+    "things": [
+     "wing section",
+     "speed dial",
+     "red stall line"
+    ],
+    "mode": "slow"
+   }
+  },
+  {
+   "id": "w-shaker",
+   "scene": "directed",
+   "role": "level",
+   "say": "What warns the crew? This plane has a stick shaker. Near the edge, it rattles both control columns and sounds a warning.",
+   "events": {
+    "crew": {
+     "word": "crew"
+    },
+    "shaker": {
+     "word": "shaker"
+    },
+    "rattles": {
+     "word": "rattles"
+    },
+    "warning": {
+     "word": "warning"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the airliner's flight deck at night, seen from behind the pilots",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "shaker",
+      "size": "close"
+     },
+     {
+      "at": "warning",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "crew",
+      "what": "the flight deck lights dim"
+     },
+     {
+      "at": "shaker",
+      "what": "the motor on each column is ringed"
+     },
+     {
+      "at": "rattles",
+      "what": "both columns judder"
+     },
+     {
+      "at": "warning",
+      "what": "the STALL light flashes red"
+     }
+    ],
+    "things": [
+     "two control columns",
+     "shaker motors",
+     "stall light",
+     "two pilots"
+    ],
+    "mode": "shaker"
+   }
+  },
+  {
+   "id": "w-pusher",
+   "scene": "directed",
+   "role": "level",
+   "say": "If that isn't enough, a stick pusher shoves the column forward, to lower the nose and get the air flowing again.",
+   "events": {
+    "enough": {
+     "word": "enough"
+    },
+    "pusher": {
+     "word": "pusher"
+    },
+    "forward": {
+     "word": "forward"
+    },
+    "flowing": {
+     "word": "flowing"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the airliner's flight deck at night, seen from behind the pilots",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pusher",
+      "size": "close"
+     },
+     {
+      "at": "flowing",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "enough",
+      "what": "the columns keep shaking"
+     },
+     {
+      "at": "pusher",
+      "what": "the pusher is ringed under the floor"
+     },
+     {
+      "at": "forward",
+      "what": "both columns slide forward with a green arrow"
+     },
+     {
+      "at": "flowing",
+      "what": "the nose on the horizon drops"
+     }
+    ],
+    "things": [
+     "control columns",
+     "pusher",
+     "green arrow",
+     "horizon"
+    ],
+    "mode": "pusher"
+   }
+  },
+  {
+   "id": "w-recover",
+   "scene": "directed",
+   "role": "level",
+   "say": "Pilots are trained for this moment. Nose down to cut the angle, power up to get speed back, and the wing grips the air again.",
+   "events": {
+    "trained": {
+     "word": "trained"
+    },
+    "down": {
+     "word": "down"
+    },
+    "power": {
+     "word": "power"
+    },
+    "grips": {
+     "word": "grips"
+    }
+   },
+   "params": {
+    "component": "Wing",
+    "place": "a wind-tunnel drawing of the airliner's wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "down",
+      "size": "wide"
+     },
+     {
+      "at": "grips",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "trained",
+      "what": "a training card pins on"
+     },
+     {
+      "at": "down",
+      "what": "the wing tilts down"
+     },
+     {
+      "at": "power",
+      "what": "a thrust arrow grows"
+     },
+     {
+      "at": "grips",
+      "what": "the streamlines reattach and glow green"
+     }
+    ],
+    "things": [
+     "wing section",
+     "thrust arrow",
+     "streamlines",
+     "training card"
+    ],
+    "mode": "recover"
+   }
+  },
+  {
+   "id": "w-tease",
+   "scene": "directed",
+   "role": "tease",
+   "say": "Ice on the front of a wing can make it stall sooner, at a higher speed. That night, the airliner had ice. Did it matter?",
+   "events": {
+    "Ice": {
+     "word": "Ice"
+    },
+    "sooner": {
+     "word": "sooner"
+    },
+    "night": {
+     "word": "night"
+    },
+    "matter": {
+     "word": "matter"
+    }
+   },
+   "params": {
+    "component": "Wing",
+    "place": "a wind-tunnel drawing of the airliner's wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "Ice",
+      "size": "close"
+     },
+     {
+      "at": "matter",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Ice",
+      "what": "a rough white crust grows on the leading edge"
+     },
+     {
+      "at": "sooner",
+      "what": "the red stall line moves down to a smaller angle"
+     },
+     {
+      "at": "night",
+      "what": "the background darkens to night"
+     },
+     {
+      "at": "matter",
+      "what": "a question mark stamps"
+     }
+    ],
+    "things": [
+     "wing section",
+     "ice crust",
+     "red stall line",
+     "question mark"
+    ],
+    "mode": "ice"
+   }
+  },
+  {
+   "id": "i-see",
+   "scene": "directed",
+   "role": "level",
+   "say": "The pilots saw it. Ice was building on the windshield and on the front edges of the wings.",
+   "events": {
+    "pilots": {
+     "word": "pilots"
+    },
+    "Ice": {
+     "word": "Ice"
+    },
+    "windshield": {
+     "word": "windshield"
+    },
+    "wings": {
+     "word": "wings"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "beside the airliner's flight deck windows in the cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "windshield",
+      "size": "close"
+     },
+     {
+      "at": "wings",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pilots",
+      "what": "the chapter card types on; the camera looks along the cockpit windows"
+     },
+     {
+      "at": "Ice",
+      "what": "rime spreads across the windshield"
+     },
+     {
+      "at": "windshield",
+      "what": "the first officer's words type on as text"
+     },
+     {
+      "at": "wings",
+      "what": "the camera slides out along the iced wing"
+     }
+    ],
+    "things": [
+     "airliner nose",
+     "iced windshield",
+     "iced wing",
+     "transcript text"
+    ],
+    "shot": "nose",
+    "phase": "night",
+    "iceAt": "Ice",
+    "quote": {
+     "at": "windshield",
+     "text": "“LOTS OF ICE.”",
+     "who": "FIRST OFFICER · COCKPIT RECORDING"
+    },
+    "chapter": "THE ICE"
+   }
+  },
+  {
+   "id": "i-switch",
+   "scene": "directed",
+   "role": "level",
+   "say": "What do pilots do about ice? The plane has a switch called ref speeds. Set to increase, it makes the stall warning come sooner, to leave more margin.",
+   "events": {
+    "ice": {
+     "word": "ice"
+    },
+    "switch": {
+     "word": "switch"
+    },
+    "increase": {
+     "word": "increase"
+    },
+    "sooner": {
+     "word": "sooner"
+    },
+    "margin": {
+     "word": "margin"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the overhead panel above the captain's seat",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "switch",
+      "size": "medium"
+     },
+     {
+      "at": "margin",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ice",
+      "what": "the overhead panel lights"
+     },
+     {
+      "at": "switch",
+      "what": "the camera finds the ref speeds switch"
+     },
+     {
+      "at": "increase",
+      "what": "the switch flips to INCREASE"
+     },
+     {
+      "at": "sooner",
+      "what": "the shaker's trigger slides earlier on a scale"
+     },
+     {
+      "at": "margin",
+      "what": "a margin bracket opens"
+     }
+    ],
+    "things": [
+     "overhead panel",
+     "ref speeds switch",
+     "margin scale"
+    ],
+    "mode": "switch"
+   }
+  },
+  {
+   "id": "i-band",
+   "scene": "directed",
+   "role": "level",
+   "say": "On the airspeed tape, a red and black band shows where the shaker will fire. With the switch on, the band sat about {fact15} knots higher.",
+   "events": {
+    "tape": {
+     "word": "tape"
+    },
+    "band": {
+     "word": "band"
+    },
+    "switch": {
+     "word": "switch"
+    },
+    "higher": {
+     "word": "higher"
+    }
+   },
+   "params": {
+    "component": "Panel",
+    "place": "the captain's airspeed display on the flight deck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "band",
+      "size": "medium"
+     },
+     {
+      "at": "higher",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "tape",
+      "what": "the airspeed tape scrolls"
+     },
+     {
+      "at": "band",
+      "what": "the red and black band glows at the bottom"
+     },
+     {
+      "at": "switch",
+      "what": "a small INCREASE label lights"
+     },
+     {
+      "at": "higher",
+      "what": "the band slides up the tape by the figure"
+     }
+    ],
+    "things": [
+     "airspeed tape",
+     "red and black band",
+     "knots tag"
+    ],
+    "fig": {
+     "up": "{fact15}"
+    },
+    "mode": "band"
+   }
+  },
+  {
+   "id": "i-brief",
+   "scene": "directed",
+   "role": "level",
+   "say": "The switch was on. So what speed did they plan? For landing, the crew briefed a speed of {fact6} knots, the speed for a wing with no ice.",
+   "events": {
+    "on": {
+     "word": "on"
+    },
+    "plan": {
+     "word": "plan"
+    },
+    "landing": {
+     "word": "landing"
+    },
+    "briefed": {
+     "word": "briefed"
+    },
+    "wing": {
+     "word": "wing"
+    },
+    "ice": {
+     "word": "ice"
+    }
+   },
+   "params": {
+    "component": "Panel",
+    "place": "the captain's airspeed display on the flight deck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "briefed",
+      "size": "close"
+     },
+     {
+      "at": "ice",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "on",
+      "what": "the INCREASE label glows"
+     },
+     {
+      "at": "plan",
+      "what": "a question mark blinks by the speed bug"
+     },
+     {
+      "at": "landing",
+      "what": "the speed bug slides into place"
+     },
+     {
+      "at": "briefed",
+      "what": "a briefing card pins on"
+     },
+     {
+      "at": "wing",
+      "what": "a small wing icon draws on the card"
+     },
+     {
+      "at": "ice",
+      "what": "a NO ICE tag stamps on the card"
+     }
+    ],
+    "things": [
+     "airspeed tape",
+     "speed bug",
+     "briefing card"
+    ],
+    "fig": {
+     "vref": "{fact6}"
+    },
+    "mode": "brief"
+   }
+  },
+  {
+   "id": "i-gap",
+   "scene": "directed",
+   "role": "level",
+   "say": "So the warning would fire {fact29} knots above the speed they meant to land at. To slow down to it, they'd have to fly through the warning.",
+   "events": {
+    "warning": {
+     "word": "warning"
+    },
+    "above": {
+     "word": "above"
+    },
+    "slow": {
+     "word": "slow"
+    },
+    "through": {
+     "word": "through"
+    }
+   },
+   "params": {
+    "component": "Panel",
+    "place": "the captain's airspeed display on the flight deck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "above",
+      "size": "medium"
+     },
+     {
+      "at": "through",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "warning",
+      "what": "the band's top edge lights red"
+     },
+     {
+      "at": "above",
+      "what": "a bracket measures from the bug up to the band"
+     },
+     {
+      "at": "slow",
+      "what": "the tape starts to scroll down"
+     },
+     {
+      "at": "through",
+      "what": "the bug disappears under the red band"
+     }
+    ],
+    "things": [
+     "airspeed tape",
+     "speed bug",
+     "red band",
+     "gap bracket"
+    ],
+    "fig": {
+     "gap": "{fact29}",
+     "vref": "{fact6}"
+    },
+    "mode": "gap"
+   }
+  },
+  {
+   "id": "i-catch",
+   "scene": "directed",
+   "role": "level",
+   "say": "And the ice itself? The investigators found it barely hurt the wing. The aircraft could still fly normally. The danger was in the numbers.",
+   "events": {
+    "ice": {
+     "word": "ice"
+    },
+    "barely": {
+     "word": "barely"
+    },
+    "normally": {
+     "word": "normally"
+    },
+    "numbers": {
+     "word": "numbers"
+    }
+   },
+   "params": {
+    "component": "Wing",
+    "place": "a wind-tunnel drawing of the airliner's wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "barely",
+      "size": "close"
+     },
+     {
+      "at": "numbers",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ice",
+      "what": "the iced wing section returns"
+     },
+     {
+      "at": "barely",
+      "what": "the ice crust fades to a thin line"
+     },
+     {
+      "at": "normally",
+      "what": "the streamlines run smooth and green"
+     },
+     {
+      "at": "numbers",
+      "what": "the speed bug and the red band slide in beside the wing"
+     }
+    ],
+    "things": [
+     "wing section",
+     "thin ice",
+     "speed bug",
+     "red band"
+    ],
+    "mode": "icefind"
+   }
+  },
+  {
+   "id": "i-tease",
+   "scene": "directed",
+   "role": "tease",
+   "say": "Someone had to watch that speed closely. But below ten thousand feet, the flight deck was not quiet.",
+   "events": {
+    "watch": {
+     "word": "watch"
+    },
+    "speed": {
+     "word": "speed"
+    },
+    "below": {
+     "word": "below"
+    },
+    "quiet": {
+     "word": "quiet"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "speed",
+      "size": "close"
+     },
+     {
+      "at": "quiet",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "watch",
+      "what": "the airliner sinks through the cloud"
+     },
+     {
+      "at": "speed",
+      "what": "its landing lights flare"
+     },
+     {
+      "at": "below",
+      "what": "a caption types on: below ten thousand feet"
+     },
+     {
+      "at": "quiet",
+      "what": "speech marks blink over the lit cockpit windows"
+     }
+    ],
+    "things": [
+     "airliner descending",
+     "snow",
+     "caption"
+    ],
+    "shot": "descent",
+    "phase": "night",
+    "note": {
+     "at": "below",
+     "text": "BELOW TEN THOUSAND FEET"
+    },
+    "talkAt": "quiet"
+   }
+  },
+  {
+   "id": "c-sterile",
+   "scene": "directed",
+   "role": "level",
+   "say": "What is the sterile cockpit? Below {fact12} feet, the rule allows only talk that is about flying the plane.",
+   "events": {
+    "Below": {
+     "word": "Below"
+    },
+    "sterile": {
+     "word": "sterile"
+    },
+    "talk": {
+     "word": "talk"
+    },
+    "flying": {
+     "word": "flying"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the airliner's flight deck at night, seen from behind the pilots",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sterile",
+      "size": "close"
+     },
+     {
+      "at": "flying",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Below",
+      "what": "the chapter card types on; the altimeter winds past the mark"
+     },
+     {
+      "at": "sterile",
+      "what": "a STERILE COCKPIT sign lights over the windshield"
+     },
+     {
+      "at": "talk",
+      "what": "the speech marks shrink"
+     },
+     {
+      "at": "flying",
+      "what": "a checklist card pins on"
+     }
+    ],
+    "things": [
+     "two pilots",
+     "altimeter",
+     "sterile cockpit sign",
+     "checklist card"
+    ],
+    "fig": {
+     "alt": "{fact12}"
+    },
+    "mode": "sterile",
+    "chapter": "THE CUE"
+   }
+  },
+  {
+   "id": "c-chat",
+   "scene": "directed",
+   "role": "level",
+   "say": "On this flight, the pilots kept up a conversation that had nothing to do with flying, down through the descent.",
+   "events": {
+    "pilots": {
+     "word": "pilots"
+    },
+    "conversation": {
+     "word": "conversation"
+    },
+    "nothing": {
+     "word": "nothing"
+    },
+    "descent": {
+     "word": "descent"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "beside the airliner's lit cockpit windows in the snow",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "conversation",
+      "size": "medium"
+     },
+     {
+      "at": "descent",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pilots",
+      "what": "the camera glides past the lit cockpit windows, two pilots inside"
+     },
+     {
+      "at": "conversation",
+      "what": "speech marks bob over the windows"
+     },
+     {
+      "at": "nothing",
+      "what": "a STERILE COCKPIT sign blinks red"
+     },
+     {
+      "at": "descent",
+      "what": "the airliner keeps sinking through the snow"
+     }
+    ],
+    "things": [
+     "cockpit windows",
+     "two pilots' silhouettes",
+     "speech marks",
+     "sterile cockpit sign"
+    ],
+    "shot": "window",
+    "phase": "night",
+    "talkAt": "conversation",
+    "sterileAt": "nothing"
+   }
+  },
+  {
+   "id": "c-level",
+   "scene": "directed",
+   "role": "level",
+   "say": "At {fact13} feet, the autopilot held the height, and the captain pulled the power back to slow down for landing.",
+   "events": {
+    "feet": {
+     "word": "feet"
+    },
+    "autopilot": {
+     "word": "autopilot"
+    },
+    "power": {
+     "word": "power"
+    },
+    "slow": {
+     "word": "slow"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "autopilot",
+      "size": "wide"
+     },
+     {
+      "at": "slow",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "feet",
+      "what": "the airliner levels off under the cloud, an altitude tag types on"
+     },
+     {
+      "at": "autopilot",
+      "what": "an AP tag lights"
+     },
+     {
+      "at": "power",
+      "what": "the propellers slow"
+     },
+     {
+      "at": "slow",
+      "what": "the plane eases back in the frame"
+     }
+    ],
+    "things": [
+     "airliner",
+     "propellers",
+     "altitude tag",
+     "snow"
+    ],
+    "fig": {
+     "alt": "{fact13}"
+    },
+    "shot": "level",
+    "phase": "night",
+    "tag": {
+     "at": "feet",
+     "fig": "alt",
+     "label": "ALTITUDE · FEET"
+    },
+    "propSlowAt": "power"
+   }
+  },
+  {
+   "id": "c-power",
+   "scene": "directed",
+   "role": "level",
+   "say": "Who controls the speed? This airliner had no autothrottle. Power was set by hand, and only the pilots could notice the speed falling short.",
+   "events": {
+    "controls": {
+     "word": "controls"
+    },
+    "autothrottle": {
+     "word": "autothrottle"
+    },
+    "hand": {
+     "word": "hand"
+    },
+    "short": {
+     "word": "short"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the airliner's flight deck at night, seen from behind the pilots",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "hand",
+      "size": "medium"
+     },
+     {
+      "at": "short",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "controls",
+      "what": "the camera finds the power levers"
+     },
+     {
+      "at": "autothrottle",
+      "what": "an AUTOTHROTTLE label is crossed out"
+     },
+     {
+      "at": "hand",
+      "what": "the captain's hand rests on the levers"
+     },
+     {
+      "at": "short",
+      "what": "a speed arrow on the screen points down"
+     }
+    ],
+    "things": [
+     "captain",
+     "power levers",
+     "crossed-out label",
+     "speed arrow"
+    ],
+    "mode": "power"
+   }
+  },
+  {
+   "id": "c-tasks",
+   "scene": "directed",
+   "role": "level",
+   "say": "The first officer was busy: the landing gear, a radio change, a chime to the cabin, then a check that the gear was down.",
+   "events": {
+    "busy": {
+     "word": "busy"
+    },
+    "gear": {
+     "word": "gear"
+    },
+    "radio": {
+     "word": "radio"
+    },
+    "chime": {
+     "word": "chime"
+    },
+    "check": {
+     "word": "check"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the airliner's flight deck at night, seen from behind the pilots",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "gear",
+      "size": "close"
+     },
+     {
+      "at": "check",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "busy",
+      "what": "the first officer turns to the centre panel"
+     },
+     {
+      "at": "gear",
+      "what": "the gear lever drops, three lights"
+     },
+     {
+      "at": "radio",
+      "what": "the radio frequency flips"
+     },
+     {
+      "at": "chime",
+      "what": "a chime icon rings"
+     },
+     {
+      "at": "check",
+      "what": "three green gear lights tick"
+     }
+    ],
+    "things": [
+     "first officer",
+     "gear lever",
+     "radio panel",
+     "chime",
+     "gear lights"
+    ],
+    "mode": "tasks"
+   }
+  },
+  {
+   "id": "c-cue",
+   "scene": "directed",
+   "role": "level",
+   "say": "Was there a warning? Meanwhile, the red band climbed the airspeed tape toward the falling speed. It was there to see for {fact14} seconds.",
+   "events": {
+    "Meanwhile": {
+     "word": "Meanwhile"
+    },
+    "band": {
+     "word": "band"
+    },
+    "falling": {
+     "word": "falling"
+    },
+    "seconds": {
+     "word": "seconds"
+    }
+   },
+   "params": {
+    "component": "Panel",
+    "place": "the captain's airspeed display on the flight deck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "band",
+      "size": "medium"
+     },
+     {
+      "at": "seconds",
+      "size": "extreme"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Meanwhile",
+      "what": "the tape scrolls down"
+     },
+     {
+      "at": "band",
+      "what": "the red band rises from the bottom"
+     },
+     {
+      "at": "falling",
+      "what": "the speed box ticks down"
+     },
+     {
+      "at": "seconds",
+      "what": "a timer counts the figure"
+     }
+    ],
+    "things": [
+     "airspeed tape",
+     "red band",
+     "speed box",
+     "timer"
+    ],
+    "fig": {
+     "secs": "{fact14}",
+     "speed": "{fact7}"
+    },
+    "mode": "cue"
+   }
+  },
+  {
+   "id": "c-nose",
+   "scene": "directed",
+   "role": "level",
+   "say": "The autopilot raised the nose to hold the height. The speed numbers turned red. Neither pilot said anything about it.",
+   "events": {
+    "nose": {
+     "word": "nose"
+    },
+    "height": {
+     "word": "height"
+    },
+    "red": {
+     "word": "red"
+    },
+    "Neither": {
+     "word": "Neither"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "red",
+      "size": "close"
+     },
+     {
+      "at": "Neither",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nose",
+      "what": "the airliner's nose creeps up"
+     },
+     {
+      "at": "height",
+      "what": "an altitude-hold tag lights"
+     },
+     {
+      "at": "red",
+      "what": "the airspeed tag turns red"
+     },
+     {
+      "at": "Neither",
+      "what": "the cockpit windows stay quiet"
+     }
+    ],
+    "things": [
+     "airliner nose creeping up",
+     "airspeed tag",
+     "snow"
+    ],
+    "fig": {
+     "speed": "{fact7}"
+    },
+    "shot": "level",
+    "phase": "night",
+    "noseCreepAt": "nose",
+    "tag": {
+     "at": "red",
+     "fig": "speed",
+     "label": "AIRSPEED · KNOTS"
+    }
+   }
+  },
+  {
+   "id": "c-report",
+   "scene": "directed",
+   "role": "level",
+   "say": "The investigators wrote that the cues were on the instruments with enough time to act, but neither pilot responded.",
+   "events": {
+    "investigators": {
+     "word": "investigators"
+    },
+    "cues": {
+     "word": "cues"
+    },
+    "time": {
+     "word": "time"
+    },
+    "responded": {
+     "word": "responded"
+    }
+   },
+   "params": {
+    "component": "Report",
+    "place": "an investigator's desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "cues",
+      "size": "wide"
+     },
+     {
+      "at": "responded",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "investigators",
+      "what": "the report page settles on the desk"
+     },
+     {
+      "at": "cues",
+      "what": "the camera pushes in on the paragraph"
+     },
+     {
+      "at": "time",
+      "what": "the line highlights"
+     },
+     {
+      "at": "responded",
+      "what": "the line underlines"
+     }
+    ],
+    "things": [
+     "report page",
+     "highlighter"
+    ],
+    "src": "media/disasters-and-engineering-failures-expla/report-document-ac26d9b48956-p098.png",
+    "box": [
+     0.115,
+     0.587,
+     0.77,
+     0.02
+    ],
+    "page": 84,
+    "mode": "cues"
+   }
+  },
+  {
+   "id": "c-tease",
+   "scene": "directed",
+   "role": "tease",
+   "say": "Three small lapses so far: the speed, the talk, the cue. The fourth took less than half a second.",
+   "events": {
+    "lapses": {
+     "word": "lapses"
+    },
+    "speed": {
+     "word": "speed"
+    },
+    "talk": {
+     "word": "talk"
+    },
+    "cue": {
+     "word": "cue"
+    },
+    "fourth": {
+     "word": "fourth"
+    }
+   },
+   "params": {
+    "component": "Board",
+    "place": "the investigation board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "talk",
+      "size": "wide"
+     },
+     {
+      "at": "fourth",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lapses",
+      "what": "the chain board returns"
+     },
+     {
+      "at": "speed",
+      "what": "link one stamps"
+     },
+     {
+      "at": "talk",
+      "what": "link two stamps"
+     },
+     {
+      "at": "cue",
+      "what": "link three stamps"
+     },
+     {
+      "at": "fourth",
+      "what": "the fourth box blinks red, empty"
+     }
+    ],
+    "things": [
+     "cause chain",
+     "three stamps",
+     "empty red box"
+    ],
+    "mode": "recap"
+   }
+  },
+  {
+   "id": "l-shaker",
+   "scene": "directed",
+   "role": "level",
+   "say": "Then the stick shaker fired, at {fact7} knots. The autopilot switched itself off, with a horn that kept sounding.",
+   "events": {
+    "Then": {
+     "word": "Then"
+    },
+    "shaker": {
+     "word": "shaker"
+    },
+    "knots": {
+     "word": "knots"
+    },
+    "autopilot": {
+     "word": "autopilot"
+    },
+    "horn": {
+     "word": "horn"
+    }
+   },
+   "params": {
+    "component": "Panel",
+    "place": "the captain's airspeed display on the flight deck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "shaker",
+      "size": "extreme"
+     },
+     {
+      "at": "horn",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Then",
+      "what": "the chapter card types on; the clock shows the minute"
+     },
+     {
+      "at": "shaker",
+      "what": "the whole display judders, STALL in red"
+     },
+     {
+      "at": "knots",
+      "what": "the speed box locks on the figure"
+     },
+     {
+      "at": "autopilot",
+      "what": "the AP light goes out"
+     },
+     {
+      "at": "horn",
+      "what": "a horn icon pulses"
+     }
+    ],
+    "things": [
+     "airspeed tape",
+     "stall flag",
+     "flight clock",
+     "autopilot light"
+    ],
+    "fig": {
+     "speed": "{fact7}",
+     "hh": "{fact25}",
+     "mm": "{fact26}",
+     "ss": "{fact27}",
+     "end": "{fact28}"
+    },
+    "mode": "shaker",
+    "chapter": "THE LAST HALF MINUTE"
+   }
+  },
+  {
+   "id": "l-pull",
+   "scene": "directed",
+   "role": "level",
+   "say": "Less than half a second later, the captain pulled the column back. A second after that, he pushed the power up, but not to full.",
+   "events": {
+    "later": {
+     "word": "later"
+    },
+    "pulled": {
+     "word": "pulled"
+    },
+    "power": {
+     "word": "power"
+    },
+    "full": {
+     "word": "full"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "close on the airliner's nose and cockpit windows in the snow",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "pulled",
+      "size": "close"
+     },
+     {
+      "at": "full",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "later",
+      "what": "the wings flash red as the shaker fires"
+     },
+     {
+      "at": "pulled",
+      "what": "the nose heaves up, a big red COLUMN BACK card slams on"
+     },
+     {
+      "at": "power",
+      "what": "the propellers spin harder, a POWER UP card"
+     },
+     {
+      "at": "full",
+      "what": "a NOT FULL stamp lands on it"
+     }
+    ],
+    "things": [
+     "airliner nose pitching up",
+     "red wing",
+     "COLUMN BACK card",
+     "power card"
+    ],
+    "shot": "pull",
+    "phase": "stall",
+    "pitchAt": "pulled",
+    "stallAt": "later",
+    "pullCard": true
+   }
+  },
+  {
+   "id": "l-angle",
+   "scene": "directed",
+   "role": "level",
+   "say": "Pulling back raised the angle of attack, the opposite of the trained answer. The wing was already near the edge. Now it went over.",
+   "events": {
+    "Pulling": {
+     "word": "Pulling"
+    },
+    "opposite": {
+     "word": "opposite"
+    },
+    "edge": {
+     "word": "edge"
+    },
+    "over": {
+     "word": "over"
+    }
+   },
+   "params": {
+    "component": "Wing",
+    "place": "a wind-tunnel drawing of the airliner's wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "opposite",
+      "size": "close"
+     },
+     {
+      "at": "over",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Pulling",
+      "what": "the wing tilts up sharply"
+     },
+     {
+      "at": "opposite",
+      "what": "the green trained arrow flips to red"
+     },
+     {
+      "at": "edge",
+      "what": "the angle reaches the red line"
+     },
+     {
+      "at": "over",
+      "what": "the airflow tears off the top in swirls"
+     }
+    ],
+    "things": [
+     "wing section",
+     "angle arc",
+     "red line",
+     "torn airflow"
+    ],
+    "mode": "pull"
+   }
+  },
+  {
+   "id": "l-roll",
+   "scene": "directed",
+   "role": "level",
+   "say": "The airliner pitched up, and rolled left to {fact8} degrees, then swung hard back to the right.",
+   "events": {
+    "pitched": {
+     "word": "pitched"
+    },
+    "rolled": {
+     "word": "rolled"
+    },
+    "degrees": {
+     "word": "degrees"
+    },
+    "right": {
+     "word": "right"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "rolled",
+      "size": "medium"
+     },
+     {
+      "at": "right",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pitched",
+      "what": "the nose rises"
+     },
+     {
+      "at": "rolled",
+      "what": "the left wing drops"
+     },
+     {
+      "at": "degrees",
+      "what": "a bank tag shows the figure"
+     },
+     {
+      "at": "right",
+      "what": "the plane swings back right"
+     }
+    ],
+    "things": [
+     "airliner",
+     "bank tag",
+     "cloud",
+     "snow"
+    ],
+    "fig": {
+     "bank": "{fact8}"
+    },
+    "shot": "stallside",
+    "phase": "stall",
+    "pitchAt": "pitched",
+    "rollAt": "rolled",
+    "rollBackAt": "right",
+    "tag": {
+     "at": "degrees",
+     "fig": "bank",
+     "label": "BANK · DEGREES LEFT"
+    }
+   }
+  },
+  {
+   "id": "l-pusher",
+   "scene": "directed",
+   "role": "level",
+   "say": "The stick pusher fired and shoved the nose down. The captain pulled against it. It fired twice more.",
+   "events": {
+    "pusher": {
+     "word": "pusher"
+    },
+    "down": {
+     "word": "down"
+    },
+    "against": {
+     "word": "against"
+    },
+    "twice": {
+     "word": "twice"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pusher",
+      "size": "close"
+     },
+     {
+      "at": "twice",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pusher",
+      "what": "the nose shoves down, a green PUSH tally mark"
+     },
+     {
+      "at": "down",
+      "what": "the airliner dips"
+     },
+     {
+      "at": "against",
+      "what": "the nose heaves back up, red"
+     },
+     {
+      "at": "twice",
+      "what": "two more pushes, two more tally marks"
+     }
+    ],
+    "things": [
+     "airliner pitching down and up",
+     "push tally",
+     "cloud"
+    ],
+    "shot": "stallside",
+    "phase": "stall",
+    "pusherAt": "pusher",
+    "pullbackAt": "against",
+    "againAt": "twice",
+    "stallAt": "pusher"
+   }
+  },
+  {
+   "id": "l-flaps",
+   "scene": "directed",
+   "role": "level",
+   "say": "The first officer raised the flaps without being asked. That took away lift the wing badly needed. The speed fell to about {fact18} knots.",
+   "events": {
+    "flaps": {
+     "word": "flaps"
+    },
+    "asked": {
+     "word": "asked"
+    },
+    "lift": {
+     "word": "lift"
+    },
+    "fell": {
+     "word": "fell"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "along the airliner's wing, close on the flaps",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "flaps",
+      "size": "close"
+     },
+     {
+      "at": "fell",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "flaps",
+      "what": "the flaps on the wing's back edge start to slide in"
+     },
+     {
+      "at": "asked",
+      "what": "they disappear into the wing"
+     },
+     {
+      "at": "lift",
+      "what": "the wing glows red"
+     },
+     {
+      "at": "fell",
+      "what": "the airspeed tag counts down"
+     }
+    ],
+    "things": [
+     "airliner wing",
+     "flaps retracting",
+     "airspeed tag"
+    ],
+    "fig": {
+     "speed": "{fact18}"
+    },
+    "shot": "flaps",
+    "phase": "stall",
+    "flapsAt": "flaps",
+    "stallAt": "flaps",
+    "tag": {
+     "at": "fell",
+     "fig": "speed",
+     "label": "AIRSPEED · KNOTS"
+    }
+   }
+  },
+  {
+   "id": "l-gear",
+   "scene": "directed",
+   "role": "level",
+   "say": "She then asked about raising the landing gear too. Neither move was in the company's stall recovery procedure, the board found.",
+   "events": {
+    "asked": {
+     "word": "asked"
+    },
+    "gear": {
+     "word": "gear"
+    },
+    "Neither": {
+     "word": "Neither"
+    },
+    "procedure": {
+     "word": "procedure"
+    }
+   },
+   "params": {
+    "component": "Cockpit",
+    "place": "the airliner's flight deck at night, seen from behind the pilots",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "gear",
+      "size": "close"
+     },
+     {
+      "at": "procedure",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "asked",
+      "what": "the first officer turns toward the captain"
+     },
+     {
+      "at": "gear",
+      "what": "the gear lever is ringed"
+     },
+     {
+      "at": "Neither",
+      "what": "a procedure card slides in"
+     },
+     {
+      "at": "procedure",
+      "what": "two red crosses stamp on it"
+     }
+    ],
+    "things": [
+     "first officer",
+     "captain",
+     "gear lever",
+     "procedure card"
+    ],
+    "mode": "gearup"
+   }
+  },
+  {
+   "id": "l-over",
+   "scene": "directed",
+   "role": "level",
+   "say": "Then it rolled right, to {fact17} degrees, almost on its back. Then the nose dropped toward the ground.",
+   "events": {
+    "rolled": {
+     "word": "rolled"
+    },
+    "degrees": {
+     "word": "degrees"
+    },
+    "back": {
+     "word": "back"
+    },
+    "dropped": {
+     "word": "dropped"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "degrees",
+      "size": "medium"
+     },
+     {
+      "at": "dropped",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rolled",
+      "what": "the airliner rolls right"
+     },
+     {
+      "at": "degrees",
+      "what": "the bank tag shows the figure in red"
+     },
+     {
+      "at": "back",
+      "what": "the wings pass vertical"
+     },
+     {
+      "at": "dropped",
+      "what": "the nose drops below the horizon"
+     }
+    ],
+    "things": [
+     "airliner",
+     "bank tag",
+     "cloud"
+    ],
+    "fig": {
+     "bank": "{fact17}"
+    },
+    "shot": "over",
+    "phase": "stall",
+    "rollRightAt": "rolled",
+    "noseDownAt": "dropped",
+    "tag": {
+     "at": "degrees",
+     "fig": "bank",
+     "label": "BANK · DEGREES RIGHT"
+    }
+   }
+  },
+  {
+   "id": "l-crash",
+   "scene": "directed",
+   "role": "turn",
+   "say": "Moments later, it came down on a house in Clarence Center, {fact5} nautical miles from the airport.",
+   "events": {
+    "Moments": {
+     "word": "Moments"
+    },
+    "house": {
+     "word": "house"
+    },
+    "Center": {
+     "word": "Center"
+    },
+    "airport": {
+     "word": "airport"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the snowy street in Clarence Center at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "house",
+      "size": "wide"
+     },
+     {
+      "at": "airport",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Moments",
+      "what": "silence; the plane falls into the cloud and is gone"
+     },
+     {
+      "at": "house",
+      "what": "far away and below, a flash of orange among the snowy houses"
+     },
+     {
+      "at": "Center",
+      "what": "a place caption types on"
+     },
+     {
+      "at": "airport",
+      "what": "the runway lights far off on the horizon"
+     }
+    ],
+    "things": [
+     "snowy houses",
+     "orange glow",
+     "runway lights",
+     "place caption"
+    ],
+    "fig": {
+     "miles": "{fact5}"
+    },
+    "shot": "far",
+    "phase": "ground",
+    "glowAt": "house",
+    "silence": true,
+    "tag": {
+     "at": "airport",
+     "fig": "miles",
+     "label": "NAUTICAL MILES FROM THE AIRPORT"
+    }
+   }
+  },
+  {
+   "id": "l-toll",
+   "scene": "directed",
+   "role": "level",
+   "say": "All {fact3} people aboard were killed, and {fact4} person in the house.",
+   "events": {
+    "people": {
+     "word": "people"
+    },
+    "aboard": {
+     "word": "aboard"
+    },
+    "killed": {
+     "word": "killed"
+    },
+    "house": {
+     "word": "house"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the snowy street in Clarence Center at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "aboard",
+      "size": "medium"
+     },
+     {
+      "at": "house",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "people",
+      "what": "fire engines' lights flash red and blue in the street"
+     },
+     {
+      "at": "aboard",
+      "what": "firefighters with lamps walk through the snow"
+     },
+     {
+      "at": "killed",
+      "what": "the memorial count types on"
+     },
+     {
+      "at": "house",
+      "what": "the camera holds on the lit street"
+     }
+    ],
+    "things": [
+     "fire engines",
+     "firefighters with lamps",
+     "houses in snow",
+     "memorial count"
+    ],
+    "fig": {
+     "aboard": "{fact3}",
+     "ground": "{fact4}"
+    },
+    "shot": "street",
+    "phase": "ground",
+    "rescueAt": "aboard",
+    "tag": {
+     "at": "killed",
+     "fig": "aboard",
+     "label": "KILLED ABOARD"
+    },
+    "tag2": {
+     "at": "house",
+     "fig": "ground",
+     "label": "KILLED ON THE GROUND"
+    }
+   }
+  },
+  {
+   "id": "l-clock",
+   "scene": "directed",
+   "role": "level",
+   "say": "From the stick shaker to the end of the cockpit recording, the flight lasted less than half a minute.",
+   "events": {
+    "shaker": {
+     "word": "shaker"
+    },
+    "end": {
+     "word": "end"
+    },
+    "recording": {
+     "word": "recording"
+    },
+    "minute": {
+     "word": "minute"
+    }
+   },
+   "params": {
+    "component": "Panel",
+    "place": "the captain's airspeed display on the flight deck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "end",
+      "size": "close"
+     },
+     {
+      "at": "minute",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "shaker",
+      "what": "the flight clock runs from the shaker"
+     },
+     {
+      "at": "end",
+      "what": "the clock stops; the recorder line goes flat"
+     },
+     {
+      "at": "recording",
+      "what": "the display fades to black"
+     },
+     {
+      "at": "minute",
+      "what": "the time span bracket lights"
+     }
+    ],
+    "things": [
+     "flight clock",
+     "recorder line",
+     "time bracket"
+    ],
+    "fig": {
+     "hh": "{fact25}",
+     "mm": "{fact26}",
+     "ss": "{fact27}",
+     "end": "{fact28}"
+    },
+    "mode": "clock"
+   }
+  },
+  {
+   "id": "l-tease",
+   "scene": "directed",
+   "role": "tease",
+   "say": "The families of the people aboard wanted to know how a working airliner could fall out of the sky. So did the investigators.",
+   "events": {
+    "families": {
+     "word": "families"
+    },
+    "working": {
+     "word": "working"
+    },
+    "fall": {
+     "word": "fall"
+    },
+    "investigators": {
+     "word": "investigators"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the snowy street in Clarence Center at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "working",
+      "size": "medium"
+     },
+     {
+      "at": "investigators",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "families",
+      "what": "candles flicker by a snowy memorial"
+     },
+     {
+      "at": "working",
+      "what": "the street's lights glow"
+     },
+     {
+      "at": "fall",
+      "what": "the camera rises over the town"
+     },
+     {
+      "at": "investigators",
+      "what": "an investigators' tag types on"
+     }
+    ],
+    "things": [
+     "candles",
+     "snowy street",
+     "houses",
+     "tag"
+    ],
+    "shot": "rise",
+    "phase": "ground",
+    "candles": true,
+    "note": {
+     "at": "investigators",
+     "text": "NTSB INVESTIGATION OPENS"
+    }
+   }
+  },
+  {
+   "id": "r-cause",
+   "scene": "directed",
+   "role": "level",
+   "say": "A year later, the National Transportation Safety Board named the probable cause: the captain's inappropriate response to the stick shaker.",
+   "events": {
+    "year": {
+     "word": "year"
+    },
+    "probable": {
+     "word": "probable"
+    },
+    "inappropriate": {
+     "word": "inappropriate"
+    },
+    "shaker": {
+     "word": "shaker"
+    }
+   },
+   "params": {
+    "component": "Report",
+    "place": "an investigator's desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "probable",
+      "size": "wide"
+     },
+     {
+      "at": "shaker",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "year",
+      "what": "the chapter card types on; the report page settles"
+     },
+     {
+      "at": "probable",
+      "what": "the camera pushes in on the paragraph"
+     },
+     {
+      "at": "inappropriate",
+      "what": "the line highlights"
+     },
+     {
+      "at": "shaker",
+      "what": "the line underlines"
+     }
+    ],
+    "things": [
+     "report page",
+     "highlighter"
+    ],
+    "src": "media/disasters-and-engineering-failures-expla/report-document-ac26d9b48956-p169.png",
+    "box": [
+     0.115,
+     0.143,
+     0.77,
+     0.02
+    ],
+    "page": 155,
+    "mode": "cause",
+    "chapter": "THE FINDINGS"
+   }
+  },
+  {
+   "id": "r-plane",
+   "scene": "directed",
+   "role": "level",
+   "say": "First, the plane itself. The investigators found no failure of the structure, the engines or any system, and nothing wrong with its ice protection.",
+   "events": {
+    "plane": {
+     "word": "plane"
+    },
+    "structure": {
+     "word": "structure"
+    },
+    "engines": {
+     "word": "engines"
+    },
+    "system": {
+     "word": "system"
+    },
+    "protection": {
+     "word": "protection"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "a dark studio around the airliner, for the investigators' check",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "structure",
+      "size": "wide"
+     },
+     {
+      "at": "protection",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "plane",
+      "what": "the airliner turns slowly in the dark, whole"
+     },
+     {
+      "at": "structure",
+      "what": "a STRUCTURE tick types on"
+     },
+     {
+      "at": "engines",
+      "what": "an ENGINES tick types on"
+     },
+     {
+      "at": "system",
+      "what": "a SYSTEMS tick types on"
+     },
+     {
+      "at": "protection",
+      "what": "an ICE PROTECTION tick types on"
+     }
+    ],
+    "things": [
+     "airliner",
+     "four checks",
+     "dark sky"
+    ],
+    "shot": "orbit",
+    "phase": "studio",
+    "checks": [
+     {
+      "at": "structure",
+      "text": "STRUCTURE: OK"
+     },
+     {
+      "at": "engines",
+      "text": "ENGINES: OK"
+     },
+     {
+      "at": "system",
+      "text": "SYSTEMS: OK"
+     },
+     {
+      "at": "protection",
+      "text": "ICE PROTECTION: OK"
+     }
+    ]
+   }
+  },
+  {
+   "id": "r-factors",
+   "scene": "directed",
+   "role": "level",
+   "say": "It listed four contributing factors: speed not watched against the rising cue, the sterile cockpit not kept, the flight not managed, and Colgan's speed procedures for ice.",
+   "events": {
+    "four": {
+     "word": "four"
+    },
+    "speed": {
+     "word": "speed"
+    },
+    "sterile": {
+     "word": "sterile"
+    },
+    "managed": {
+     "word": "managed"
+    },
+    "procedures": {
+     "word": "procedures"
+    }
+   },
+   "params": {
+    "component": "Board",
+    "place": "the investigation board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "sterile",
+      "size": "wide"
+     },
+     {
+      "at": "procedures",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "four",
+      "what": "the board lights"
+     },
+     {
+      "at": "speed",
+      "what": "factor one stamps"
+     },
+     {
+      "at": "sterile",
+      "what": "factor two stamps"
+     },
+     {
+      "at": "managed",
+      "what": "factor three stamps"
+     },
+     {
+      "at": "procedures",
+      "what": "factor four stamps"
+     }
+    ],
+    "things": [
+     "cause board",
+     "four factors",
+     "stamps"
+    ],
+    "mode": "factors"
+   }
+  },
+  {
+   "id": "r-startle",
+   "scene": "directed",
+   "role": "level",
+   "say": "Why pull back? The board said his response should have been automatic, but looked like startle and confusion.",
+   "events": {
+    "pull": {
+     "word": "pull"
+    },
+    "automatic": {
+     "word": "automatic"
+    },
+    "startle": {
+     "word": "startle"
+    },
+    "confusion": {
+     "word": "confusion"
+    }
+   },
+   "params": {
+    "component": "Wing",
+    "place": "a wind-tunnel drawing of the airliner's wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "automatic",
+      "size": "close"
+     },
+     {
+      "at": "confusion",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pull",
+      "what": "the wing section tilts up again"
+     },
+     {
+      "at": "automatic",
+      "what": "the green trained arrow lights"
+     },
+     {
+      "at": "startle",
+      "what": "a jolt shakes the drawing"
+     },
+     {
+      "at": "confusion",
+      "what": "arrows swirl around the wing"
+     }
+    ],
+    "things": [
+     "wing section",
+     "green arrow",
+     "swirl arrows"
+    ],
+    "mode": "startle"
+   }
+  },
+  {
+   "id": "r-pusher",
+   "scene": "directed",
+   "role": "level",
+   "say": "And the stick pusher? He didn't recognise its push as part of the recovery, the board said, and overriding it made the situation worse.",
+   "events": {
+    "pusher": {
+     "word": "pusher"
+    },
+    "recognise": {
+     "word": "recognise"
+    },
+    "recovery": {
+     "word": "recovery"
+    },
+    "worse": {
+     "word": "worse"
+    }
+   },
+   "params": {
+    "component": "Board",
+    "place": "the investigation board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "recognise",
+      "size": "wide"
+     },
+     {
+      "at": "worse",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pusher",
+      "what": "the board lights a new card"
+     },
+     {
+      "at": "recognise",
+      "what": "the first finding types on"
+     },
+     {
+      "at": "recovery",
+      "what": "it stamps"
+     },
+     {
+      "at": "worse",
+      "what": "the second finding stamps, red"
+     }
+    ],
+    "things": [
+     "finding cards",
+     "stamps"
+    ],
+    "mode": "pusher"
+   }
+  },
+  {
+   "id": "r-training",
+   "scene": "directed",
+   "role": "level",
+   "say": "And airline stall training then practised only the warning, and how to fly out of it. Not a stall that had already happened.",
+   "events": {
+    "training": {
+     "word": "training"
+    },
+    "warning": {
+     "word": "warning"
+    },
+    "out": {
+     "word": "out"
+    },
+    "happened": {
+     "word": "happened"
+    }
+   },
+   "params": {
+    "component": "Law",
+    "place": "a flight simulator hall",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "warning",
+      "size": "wide"
+     },
+     {
+      "at": "happened",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "training",
+      "what": "a simulator room lights, a cockpit box on legs"
+     },
+     {
+      "at": "warning",
+      "what": "a WARNING card ticks green"
+     },
+     {
+      "at": "out",
+      "what": "a recover card ticks green"
+     },
+     {
+      "at": "happened",
+      "what": "a FULL STALL card stays blank, red"
+     }
+    ],
+    "things": [
+     "simulator",
+     "training cards",
+     "red blank card"
+    ],
+    "mode": "sim"
+   }
+  },
+  {
+   "id": "r-fatigue",
+   "scene": "directed",
+   "role": "level",
+   "say": "Fatigue? The board found the pilots were likely impaired by it, but couldn't say how much. It is not in the probable cause.",
+   "events": {
+    "Fatigue": {
+     "word": "Fatigue"
+    },
+    "likely": {
+     "word": "likely"
+    },
+    "much": {
+     "word": "much"
+    },
+    "probable": {
+     "word": "probable"
+    }
+   },
+   "params": {
+    "component": "Map",
+    "place": "a map of the United States at night",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "likely",
+      "size": "wide"
+     },
+     {
+      "at": "probable",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Fatigue",
+      "what": "the commute map returns with a moon"
+     },
+     {
+      "at": "likely",
+      "what": "a LIKELY tag pins on"
+     },
+     {
+      "at": "much",
+      "what": "a scale with a question mark"
+     },
+     {
+      "at": "probable",
+      "what": "a NOT IN THE PROBABLE CAUSE stamp lands"
+     }
+    ],
+    "things": [
+     "commute map",
+     "moon",
+     "tag",
+     "stamp"
+    ],
+    "mode": "fatigue"
+   }
+  },
+  {
+   "id": "r-recs",
+   "scene": "directed",
+   "role": "level",
+   "say": "The board made {fact9} safety recommendations to the Federal Aviation Administration.",
+   "events": {
+    "board": {
+     "word": "board"
+    },
+    "safety": {
+     "word": "safety"
+    },
+    "recommendations": {
+     "word": "recommendations"
+    },
+    "Administration": {
+     "word": "Administration"
+    }
+   },
+   "params": {
+    "component": "Report",
+    "place": "an investigator's desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "safety",
+      "size": "wide"
+     },
+     {
+      "at": "Administration",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "board",
+      "what": "the recommendations page settles"
+     },
+     {
+      "at": "safety",
+      "what": "the camera pushes in"
+     },
+     {
+      "at": "recommendations",
+      "what": "the count plate types on"
+     },
+     {
+      "at": "Administration",
+      "what": "the line highlights"
+     }
+    ],
+    "things": [
+     "report page",
+     "count plate",
+     "highlighter"
+    ],
+    "fig": {
+     "recs": "{fact9}"
+    },
+    "src": "media/disasters-and-engineering-failures-expla/report-document-ac26d9b48956-p170.png",
+    "box": [
+     0.115,
+     0.243,
+     0.62,
+     0.02
+    ],
+    "page": 156,
+    "mode": "recs"
+   }
+  },
+  {
+   "id": "r-tease",
+   "scene": "directed",
+   "role": "tease",
+   "say": "But the families didn't wait for the regulators. They went to Washington.",
+   "events": {
+    "families": {
+     "word": "families"
+    },
+    "wait": {
+     "word": "wait"
+    },
+    "regulators": {
+     "word": "regulators"
+    },
+    "Washington": {
+     "word": "Washington"
+    }
+   },
+   "params": {
+    "component": "Law",
+    "place": "the steps of the US Capitol in Washington",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "regulators",
+      "size": "medium"
+     },
+     {
+      "at": "Washington",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "families",
+      "what": "a row of small figures with photos held up"
+     },
+     {
+      "at": "wait",
+      "what": "a clock ticks on the wall"
+     },
+     {
+      "at": "regulators",
+      "what": "a stack of papers"
+     },
+     {
+      "at": "Washington",
+      "what": "the Capitol dome draws on"
+     }
+    ],
+    "things": [
+     "families",
+     "Capitol dome",
+     "clock"
+    ],
+    "mode": "families"
+   }
+  },
+  {
+   "id": "x-act",
+   "scene": "directed",
+   "role": "level",
+   "say": "In the summer of {fact21}, Congress passed the Airline Safety and Federal Aviation Administration Extension Act, and the president signed it that August.",
+   "events": {
+    "summer": {
+     "word": "summer"
+    },
+    "Congress": {
+     "word": "Congress"
+    },
+    "signed": {
+     "word": "signed"
+    },
+    "Act": {
+     "word": "Act"
+    }
+   },
+   "params": {
+    "component": "Law",
+    "place": "the steps of the US Capitol in Washington",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "signed",
+      "size": "wide"
+     },
+     {
+      "at": "Act",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "summer",
+      "what": "the chapter card types on; the Capitol glows at dusk"
+     },
+     {
+      "at": "Congress",
+      "what": "the dome lights"
+     },
+     {
+      "at": "signed",
+      "what": "a pen signs the bill on the desk"
+     },
+     {
+      "at": "Act",
+      "what": "the bill's title stamps"
+     }
+    ],
+    "things": [
+     "Capitol dome",
+     "bill",
+     "pen",
+     "year plate"
+    ],
+    "fig": {
+     "year": "{fact21}"
+    },
+    "mode": "act",
+    "chapter": "THE LAW"
+   }
+  },
+  {
+   "id": "x-hours",
+   "scene": "directed",
+   "role": "level",
+   "say": "What does it ask? Under the rule that followed in {fact22}, a first officer must hold an airline transport pilot certificate, which normally takes {fact10} flight hours.",
+   "events": {
+    "rule": {
+     "word": "rule"
+    },
+    "officer": {
+     "word": "officer"
+    },
+    "certificate": {
+     "word": "certificate"
+    },
+    "hours": {
+     "word": "hours"
+    }
+   },
+   "params": {
+    "component": "Law",
+    "place": "a pilot's logbook on a desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "certificate",
+      "size": "medium"
+     },
+     {
+      "at": "hours",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rule",
+      "what": "a pilot's logbook opens"
+     },
+     {
+      "at": "officer",
+      "what": "a first officer's cap sits on it"
+     },
+     {
+      "at": "certificate",
+      "what": "the certificate card slides out"
+     },
+     {
+      "at": "hours",
+      "what": "the hours counter rolls up to the figure"
+     }
+    ],
+    "things": [
+     "logbook",
+     "certificate",
+     "hours counter"
+    ],
+    "fig": {
+     "year": "{fact22}",
+     "hours": "{fact10}"
+    },
+    "mode": "hours"
+   }
+  },
+  {
+   "id": "x-stall",
+   "scene": "directed",
+   "role": "level",
+   "say": "Airlines also had to train pilots to recover from real stalls, in simulators, by {fact23}. And new rest rules gave pilots longer breaks.",
+   "events": {
+    "train": {
+     "word": "train"
+    },
+    "stalls": {
+     "word": "stalls"
+    },
+    "simulators": {
+     "word": "simulators"
+    },
+    "rest": {
+     "word": "rest"
+    },
+    "breaks": {
+     "word": "breaks"
+    }
+   },
+   "params": {
+    "component": "Law",
+    "place": "a flight simulator hall",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "stalls",
+      "size": "wide"
+     },
+     {
+      "at": "breaks",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "train",
+      "what": "a simulator tilts nose up"
+     },
+     {
+      "at": "stalls",
+      "what": "a FULL STALL card ticks green"
+     },
+     {
+      "at": "simulators",
+      "what": "the year plate types on"
+     },
+     {
+      "at": "rest",
+      "what": "a bed and a clock appear"
+     },
+     {
+      "at": "breaks",
+      "what": "the clock's rest arc grows"
+     }
+    ],
+    "things": [
+     "simulator",
+     "training card",
+     "bed",
+     "clock"
+    ],
+    "fig": {
+     "year": "{fact23}"
+    },
+    "mode": "stall"
+   }
+  },
+  {
+   "id": "x-alarm",
+   "scene": "directed",
+   "role": "level",
+   "say": "The board also asked for warnings that are harder to miss: an amber band above the red one, and a low-speed alarm you can hear.",
+   "events": {
+    "warnings": {
+     "word": "warnings"
+    },
+    "harder": {
+     "word": "harder"
+    },
+    "amber": {
+     "word": "amber"
+    },
+    "alarm": {
+     "word": "alarm"
+    },
+    "hear": {
+     "word": "hear"
+    }
+   },
+   "params": {
+    "component": "Panel",
+    "place": "the captain's airspeed display on the flight deck",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "amber",
+      "size": "close"
+     },
+     {
+      "at": "hear",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "warnings",
+      "what": "the airspeed display returns"
+     },
+     {
+      "at": "harder",
+      "what": "the red band glows"
+     },
+     {
+      "at": "amber",
+      "what": "an amber band paints above the red one"
+     },
+     {
+      "at": "alarm",
+      "what": "a horn icon pulses"
+     },
+     {
+      "at": "hear",
+      "what": "sound rings spread from it"
+     }
+    ],
+    "things": [
+     "airspeed tape",
+     "red band",
+     "amber band",
+     "horn"
+    ],
+    "mode": "alert"
+   }
+  },
+  {
+   "id": "x-catch",
+   "scene": "directed",
+   "role": "payoff",
+   "say": "Would that have stopped this crash? That night, the captain had {fact19} flight hours. The first officer had {fact20}. Both were already past the new minimum.",
+   "events": {
+    "stopped": {
+     "word": "stopped"
+    },
+    "captain": {
+     "word": "captain"
+    },
+    "officer": {
+     "word": "officer"
+    },
+    "Both": {
+     "word": "Both"
+    },
+    "minimum": {
+     "word": "minimum"
+    }
+   },
+   "params": {
+    "component": "Law",
+    "place": "a pilot's logbook on a desk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "captain",
+      "size": "medium"
+     },
+     {
+      "at": "minimum",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stopped",
+      "what": "two logbooks slide in"
+     },
+     {
+      "at": "captain",
+      "what": "the left logbook's counter rolls"
+     },
+     {
+      "at": "officer",
+      "what": "the right logbook's counter rolls"
+     },
+     {
+      "at": "Both",
+      "what": "both bars glow"
+     },
+     {
+      "at": "minimum",
+      "what": "a red line at the minimum; both bars are above it"
+     }
+    ],
+    "things": [
+     "two logbooks",
+     "hours bars",
+     "red minimum line"
+    ],
+    "fig": {
+     "cap": "{fact19}",
+     "fo": "{fact20}",
+     "min": "{fact10}"
+    },
+    "mode": "catch"
+   }
+  },
+  {
+   "id": "x-meaning",
+   "scene": "directed",
+   "role": "level",
+   "say": "So hours alone would not have saved this flight. The training and rest rules went after what failed: one reflex, and one watch on the speed.",
+   "events": {
+    "hours": {
+     "word": "hours"
+    },
+    "training": {
+     "word": "training"
+    },
+    "rest": {
+     "word": "rest"
+    },
+    "reflex": {
+     "word": "reflex"
+    },
+    "speed": {
+     "word": "speed"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "training",
+      "size": "wide"
+     },
+     {
+      "at": "speed",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hours",
+      "what": "the airliner flies calm through the snow"
+     },
+     {
+      "at": "training",
+      "what": "a STALL TRAINING tick types on"
+     },
+     {
+      "at": "rest",
+      "what": "a REST RULES tick types on"
+     },
+     {
+      "at": "reflex",
+      "what": "THE REFLEX: PUSH types on"
+     },
+     {
+      "at": "speed",
+      "what": "WATCH THE SPEED types on"
+     }
+    ],
+    "things": [
+     "airliner flying on through snow",
+     "four checks"
+    ],
+    "shot": "loop",
+    "phase": "night",
+    "checks": [
+     {
+      "at": "training",
+      "text": "STALL TRAINING"
+     },
+     {
+      "at": "rest",
+      "text": "REST RULES"
+     },
+     {
+      "at": "reflex",
+      "text": "THE REFLEX: PUSH"
+     },
+     {
+      "at": "speed",
+      "text": "WATCH THE SPEED"
+     }
+    ]
+   }
+  },
+  {
+   "id": "score",
+   "scene": "directed",
+   "role": "level",
+   "say": "An airspeed set too low for the ice. Talk below ten thousand feet. A warning band nobody called. One pull the wrong way.",
+   "events": {
+    "airspeed": {
+     "word": "airspeed"
+    },
+    "Talk": {
+     "word": "Talk"
+    },
+    "band": {
+     "word": "band"
+    },
+    "pull": {
+     "word": "pull"
+    }
+   },
+   "params": {
+    "component": "Board",
+    "place": "the investigation board",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "Talk",
+      "size": "wide"
+     },
+     {
+      "at": "pull",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "airspeed",
+      "what": "link one stamps"
+     },
+     {
+      "at": "Talk",
+      "what": "link two stamps"
+     },
+     {
+      "at": "band",
+      "what": "link three stamps"
+     },
+     {
+      "at": "pull",
+      "what": "link four stamps, red"
+     }
+    ],
+    "things": [
+     "cause scorecard",
+     "four links",
+     "stamps"
+    ],
+    "mode": "score"
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "say": "Rule, reflex or rest: which would you have fixed first? Tell us in the comments.",
+   "events": {
+    "Rule": {
+     "word": "Rule"
+    },
+    "reflex": {
+     "word": "reflex"
+    },
+    "rest": {
+     "word": "rest"
+    },
+    "comments": {
+     "word": "comments"
+    }
+   },
+   "params": {
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "reflex",
+      "size": "wide"
+     },
+     {
+      "at": "comments",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Rule",
+      "what": "the airliner flies on through the snow"
+     },
+     {
+      "at": "reflex",
+      "what": "its wings flicker red, as at the start"
+     },
+     {
+      "at": "rest",
+      "what": "the cockpit windows glow"
+     },
+     {
+      "at": "comments",
+      "what": "the date caption types on again"
+     }
+    ],
+    "things": [
+     "airliner",
+     "falling snow",
+     "date caption"
+    ],
+    "fig": {
+     "year": "{fact1}",
+     "day": "{fact2}"
+    },
+    "shot": "loop",
+    "phase": "night",
+    "caption": "date",
+    "stallAt": "reflex"
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "params": {
+    "cta": "Rule, reflex or rest: which would you have fixed first?",
+    "follow": "Subscribe for the next investigation",
+    "assumption": "From the NTSB's final report on the crash and the FAA's account of the rules that followed. The scenes are reconstructions, not actual footage."
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "custom",
+  "component": "Thumb",
+  "words": "Pulled the *wrong* way",
+  "things": [
+   "airliner banking with a red wing",
+   "snowy night town"
+  ],
+  "pattern": "the airliner huge in a steep bank over a night town, bold words top left",
+  "references": [
+   {
+    "id": "o6c3ENr_CRM",
+    "views": 2343673,
+    "what": "the turboprop huge, banking over a night town, bold yellow and white words top left"
+   },
+   {
+    "id": "DVhc1zl8QEM",
+    "views": 129349,
+    "what": "the airliner big in a steep bank over a night city, words across the bottom"
+   },
+   {
+    "id": "_blF6L04Dfk",
+    "views": 2408180,
+    "what": "the scene from above with big serif words down the left"
+   }
+  ],
+  "score": 7,
+  "why": "Reads at phone size and sits in the top hit's pattern (the turboprop big over a night town, bold words), but our flat drawing looks plainer than the 3D hits beside it; the words promise the reflex the video explains."
+ },
+ "thumbnails": [
+  {
+   "layout": "custom",
+   "component": "ThumbB",
+   "words": "Nobody *called* it",
+   "things": [
+    "airliner falling toward a snowy town",
+    "glow among the houses",
+    "emergency lights"
+   ],
+   "pattern": "the snowy town at night from above, a glow among the houses, emergency lights, big words low",
+   "references": [
+    {
+     "id": "mcD6a2eDChw",
+     "views": 290899,
+     "what": "the snowy town from above at night, a glow and emergency lights among the houses, a red banner"
+    },
+    {
+     "id": "XtBFixOXR3I",
+     "views": 106711,
+     "what": "a night town from above with a glow among the roofs, big words over it"
+    },
+    {
+     "id": "o6c3ENr_CRM",
+     "views": 2343673,
+     "what": "the turboprop huge, banking over a night town, bold yellow and white words top left"
+    }
+   ],
+   "score": 5,
+   "why": "The town-from-above pattern of the 291K hit, but the plane is small and the glow weak, so it reads as a cartoon next to the hits; the words are the stakes."
+  },
+  {
+   "layout": "custom",
+   "component": "ThumbC",
+   "words": "Push or *pull*?",
+   "things": [
+    "airliner stalling with a red wing",
+    "control column",
+    "red arrow"
+   ],
+   "pattern": "the cockpit moment as a question: the control column and the choice, the airliner over the night town",
+   "references": [
+    {
+     "id": "HjPXBRgZgBI",
+     "views": 381112,
+     "what": "the cockpit moment: a hand on the control column, a question in a red banner"
+    },
+    {
+     "id": "o6c3ENr_CRM",
+     "views": 2343673,
+     "what": "the turboprop huge, banking over a night town, bold yellow and white words top left"
+    },
+    {
+     "id": "DVhc1zl8QEM",
+     "views": 129349,
+     "what": "the airliner big in a steep bank over a night city, words across the bottom"
+    }
+   ],
+   "score": 6,
+   "why": "A plain question to click for a stranger: a plain question (push or pull?) with the control column and the stalling plane, the 381K hit's cockpit-choice pattern; it promises exactly the turn the video delivers."
+  }
+ ],
+ "thumbnail_pick": "a"
+}
