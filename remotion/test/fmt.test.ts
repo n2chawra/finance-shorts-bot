@@ -25,3 +25,10 @@ test("a count-up lands exactly on Python's figure", () => {
   expect(countUp(2.3e7, 0.5, "₹2.30 Cr")).toBe("₹1.15 Cr");
   expect(countUp(2.3e7, 0, "₹2.30 Cr")).toBe("₹0");
 });
+
+test("Danish, Swedish, Norwegian and Swiss money show their ISO code, like Python", () => {
+  expect(moneyShort(83.5e9, "DKK")).toBe("DKK 83.5B");
+  expect(moneyLong(236e9, "SEK")).toBe("SEK 236 billion");
+  expect(money(12_500, "NOK")).toBe("NOK 12,500");
+  expect(money(10e9, "CHF")).toBe("CHF 10 billion");
+});

@@ -108,7 +108,8 @@ export function times(ratio: number): string {
 
 // ---------------- dollars, pounds, euros (international grouping, K/M/B) ----------------
 
-export const CURRENCY_SYMBOL = { USD: "$", GBP: "£", EUR: "€", INR: "₹" } as const;
+// Danish, Swedish, Norwegian and Swiss money: the ISO code before the number ("DKK 83.5B"), as Python's CURRENCIES
+export const CURRENCY_SYMBOL = { USD: "$", GBP: "£", EUR: "€", INR: "₹", DKK: "DKK ", SEK: "SEK ", NOK: "NOK ", CHF: "CHF " } as const;
 export type Currency = keyof typeof CURRENCY_SYMBOL;
 
 /** 12345678 → "12,345,678". */

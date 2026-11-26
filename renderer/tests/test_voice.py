@@ -45,3 +45,11 @@ def test_a_negative_figure_is_read_as_minus() -> None:
     from renderer.engine.voice import spoken
     assert spoken("-$19,470", "USD") == "minus nineteen thousand four hundred seventy dollars"
     assert spoken("-₹15.0 L") == "minus fifteen lakh rupees"
+
+
+def test_nordic_and_swiss_money_is_read_with_its_name() -> None:
+    from renderer.engine.voice import spoken
+    assert spoken("DKK 83.5B", "DKK") == "eighty three point five billion Danish kroner"
+    assert spoken("SEK 1", "SEK") == "one Swedish krona"
+    assert spoken("CHF 12,500", "CHF") == "twelve thousand five hundred Swiss francs"
+    assert spoken("NOK 2 million", "NOK") == "two million Norwegian kroner"
