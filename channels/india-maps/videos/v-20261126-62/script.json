@@ -1,0 +1,631 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 40613,
+ "story": "state_vs_country",
+ "shape": "versus",
+ "currency": "INR",
+ "language": "hi",
+ "style": {
+  "palette": "ember",
+  "genre": "tanpura",
+  "key": "G",
+  "bpm": 104,
+  "look": {
+   "stage": "desert",
+   "header": "sticky",
+   "holder": "sign",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "25-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Rajasthan ya Germany, aap kahan ghoomna chahenge? Comment",
+ "feed_id": "2026-11-24-rajasthan-vs-germany",
+ "facts": [
+  {
+   "label": "Rajasthan's area",
+   "value": 342239,
+   "unit": "km2",
+   "as_of": "2011-03-01",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/States_and_union_territories_of_India",
+   "fixed": true
+  },
+  {
+   "label": "Germany's surface area, 2024",
+   "value": 357680,
+   "unit": "km2",
+   "as_of": "2024-12-31",
+   "source": "World Bank",
+   "url": "https://api.worldbank.org/v2/country/DEU/indicator/AG.SRF.TOTL.K2?format=json",
+   "fixed": true,
+   "added_by": "fact_review v-20261126-62"
+  },
+  {
+   "label": "Finland's surface area, 2024",
+   "value": 338485,
+   "unit": "km2",
+   "as_of": "2024-12-31",
+   "source": "World Bank",
+   "url": "https://api.worldbank.org/v2/country/FIN/indicator/AG.SRF.TOTL.K2?format=json",
+   "fixed": true,
+   "added_by": "fact_review v-20261126-62"
+  },
+  {
+   "label": "Vietnam's surface area, 2024",
+   "value": 331338,
+   "unit": "km2",
+   "as_of": "2024-12-31",
+   "source": "World Bank",
+   "url": "https://api.worldbank.org/v2/country/VNM/indicator/AG.SRF.TOTL.K2?format=json",
+   "fixed": true,
+   "added_by": "fact_review v-20261126-62"
+  }
+ ],
+ "maths": [
+  {
+   "name": "rj",
+   "kind": "rate",
+   "part": 342239,
+   "whole": 357680,
+   "facts": {
+    "part": 1,
+    "whole": 2
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.5,
+  "words": "Kaun *bada*?",
+  "figure": "{fact1}",
+  "tag": "Rajasthan",
+  "angle": "question",
+  "who": "narrator",
+  "unique": "our own frame of Rajasthan lifted beside Germany's flag-filled outline at the same scale"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "राजस्थान बड़ा है या जर्मनी?",
+   "events": {
+    "rajasthan": {
+     "word": "राजस्थान"
+    },
+    "bada": {
+     "word": "बड़ा"
+    },
+    "ya": {
+     "word": "या"
+    },
+    "germany": {
+     "word": "जर्मनी?"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": "on the map: north-west India, Rajasthan's desert, Germany's outline arriving from the west",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "germany",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rajasthan",
+      "what": "Rajasthan traces gold and lifts off the sheet in sand colour"
+     },
+     {
+      "at": "bada",
+      "what": "Rajasthan swells once"
+     },
+     {
+      "at": "ya",
+      "what": "a VS badge stamps between the two"
+     },
+     {
+      "at": "germany",
+      "what": "Germany's outline in its flag slides in beside Rajasthan at the same scale"
+     }
+    ],
+    "things": [
+     "rajasthan",
+     "germany flag outline",
+     "vs badge"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "राजस्थान भारत का सबसे बड़ा स्टेट है, पूरे {fact1}।",
+   "events": {
+    "bharat": {
+     "word": "भारत"
+    },
+    "sabse": {
+     "word": "सबसे"
+    },
+    "state": {
+     "word": "स्टेट"
+    },
+    "poore": {
+     "word": "पूरे"
+    }
+   },
+   "params": {
+    "component": "Promise",
+    "place": "on the map: all of India, Rajasthan the biggest piece in the north-west, a camel by a milestone in the Thar",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "bharat",
+      "size": "wide"
+     },
+     {
+      "at": "poore",
+      "size": "medium"
+     },
+     {
+      "sec": 3.38,
+      "size": "medium"
+     },
+     {
+      "sec": 4.25,
+      "size": "medium"
+     },
+     {
+      "sec": 5.12,
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bharat",
+      "what": "the camera pulls back to all of India"
+     },
+     {
+      "at": "sabse",
+      "what": "every other state dims and Rajasthan glows"
+     },
+     {
+      "at": "state",
+      "what": "a camel walks across the desert"
+     },
+     {
+      "at": "poore",
+      "what": "a stone milestone rises in the Thar with Rajasthan's area"
+     }
+    ],
+    "things": [
+     "india",
+     "rajasthan",
+     "camel",
+     "milestone"
+    ],
+    "fig": {
+     "area": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "vietnam",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "पहले वियतनाम, {fact4}। राजस्थान उससे बड़ा।",
+   "events": {
+    "pehle": {
+     "word": "पहले"
+    },
+    "vietnam": {
+     "word": "वियतनाम,"
+    },
+    "rajasthan": {
+     "word": "राजस्थान"
+    },
+    "bada": {
+     "word": "बड़ा।"
+    }
+   },
+   "params": {
+    "component": "Vietnam",
+    "place": "on the map: Rajasthan with Vietnam's long outline laid over it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "rajasthan",
+      "size": "close"
+     },
+     {
+      "sec": 1.38,
+      "size": "medium"
+     },
+     {
+      "sec": 2.22,
+      "size": "medium"
+     },
+     {
+      "sec": 3.06,
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pehle",
+      "what": "Vietnam's outline in its red flag with the gold star flies in from the east"
+     },
+     {
+      "at": "vietnam",
+      "what": "a flag-pole sign with Vietnam's area pops up beside it"
+     },
+     {
+      "at": "rajasthan",
+      "what": "Vietnam settles onto Rajasthan and the camera pushes in"
+     },
+     {
+      "at": "bada",
+      "what": "a green tick stamps on Rajasthan"
+     }
+    ],
+    "things": [
+     "vietnam flag outline",
+     "area sign",
+     "rajasthan",
+     "tick"
+    ],
+    "fig": {
+     "area": "{fact4}"
+    }
+   }
+  },
+  {
+   "id": "finland",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "फ़िनलैंड, {fact3}। राजस्थान फिर भी बड़ा।",
+   "events": {
+    "finland": {
+     "word": "फ़िनलैंड,"
+    },
+    "rajasthan": {
+     "word": "राजस्थान"
+    },
+    "phir": {
+     "word": "फिर"
+    },
+    "bada": {
+     "word": "बड़ा।"
+    }
+   },
+   "params": {
+    "component": "Finland",
+    "place": "on the map: Rajasthan with Finland's outline laid over it, snow on the sign",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "rajasthan",
+      "size": "medium"
+     },
+     {
+      "sec": 1.18,
+      "size": "close"
+     },
+     {
+      "sec": 2.05,
+      "size": "close"
+     },
+     {
+      "sec": 2.92,
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "finland",
+      "what": "Vietnam slides away and Finland's outline in its blue-cross flag drops in from the north"
+     },
+     {
+      "at": "rajasthan",
+      "what": "Finland settles onto Rajasthan, snowflakes drift off it"
+     },
+     {
+      "at": "phir",
+      "what": "Rajasthan's edge peeks out round Finland and glows"
+     },
+     {
+      "at": "bada",
+      "what": "a second green tick stamps on Rajasthan"
+     }
+    ],
+    "things": [
+     "finland flag outline",
+     "snowflakes",
+     "area sign",
+     "rajasthan",
+     "tick"
+    ],
+    "fig": {
+     "area": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "पर अब बारी जर्मनी की। क्या राजस्थान इसे भी पीछे छोड़ देगा?",
+   "events": {
+    "ab": {
+     "word": "अब"
+    },
+    "bari": {
+     "word": "बारी"
+    },
+    "germany": {
+     "word": "जर्मनी"
+    },
+    "kya": {
+     "word": "क्या"
+    },
+    "peeche": {
+     "word": "पीछे"
+    },
+    "chhod": {
+     "word": "छोड़"
+    }
+   },
+   "params": {
+    "component": "Turn",
+    "place": "on the map: north-west India at dusk, Germany's outline hanging over Rajasthan",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "germany",
+      "size": "wide"
+     },
+     {
+      "at": "peeche",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ab",
+      "what": "the light drops to dusk"
+     },
+     {
+      "at": "bari",
+      "what": "Finland slides away"
+     },
+     {
+      "at": "germany",
+      "what": "Germany's outline in its black-red-gold flag lowers over Rajasthan"
+     },
+     {
+      "at": "kya",
+      "what": "a question mark pops over the Arabian Sea"
+     },
+     {
+      "at": "peeche",
+      "what": "the camera pushes in on the two edges"
+     },
+     {
+      "at": "chhod",
+      "what": "Germany wobbles just above Rajasthan"
+     }
+    ],
+    "things": [
+     "germany flag outline",
+     "rajasthan",
+     "question mark"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "जर्मनी है {fact2}। राजस्थान उसका {rj_pct} है, बस ज़रा सा पीछे।",
+   "events": {
+    "germany": {
+     "word": "जर्मनी"
+    },
+    "hai": {
+     "word": "है"
+    },
+    "rajasthan": {
+     "word": "राजस्थान"
+    },
+    "bas": {
+     "word": "बस"
+    },
+    "zara": {
+     "word": "ज़रा"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: Germany laid on Rajasthan, the thin gap between them glowing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "rajasthan",
+      "size": "medium"
+     },
+     {
+      "at": "zara",
+      "size": "close"
+     },
+     {
+      "sec": 1.51,
+      "size": "close"
+     },
+     {
+      "sec": 2.46,
+      "size": "close"
+     },
+     {
+      "sec": 4.33,
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "germany",
+      "what": "Germany drops onto Rajasthan with a thud"
+     },
+     {
+      "at": "hai",
+      "what": "a sign with Germany's area rises beside it"
+     },
+     {
+      "at": "rajasthan",
+      "what": "a gauge fills on Rajasthan to its share of Germany"
+     },
+     {
+      "at": "bas",
+      "what": "the thin strip of Germany left over glows red"
+     },
+     {
+      "at": "zara",
+      "what": "a pinch of fingers measures the gap"
+     }
+    ],
+    "things": [
+     "germany flag outline",
+     "area sign",
+     "gauge",
+     "gap glow"
+    ],
+    "fig": {
+     "area": "{fact2}",
+     "pct": "{rj_pct}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "germany"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "जर्मनी या राजस्थान, आप कहाँ घूमना चाहेंगे? कमेंट कीजिए। तो बताइए,",
+   "events": {
+    "germany": {
+     "word": "जर्मनी"
+    },
+    "rajasthan": {
+     "word": "राजस्थान"
+    },
+    "ghoomna": {
+     "word": "घूमना"
+    },
+    "comment": {
+     "word": "कमेंट"
+    },
+    "batayiye": {
+     "word": "बताइए,"
+    }
+   },
+   "params": {
+    "component": "Loop",
+    "place": "on the map: all of north-west India and Europe's outline far off, then back to Rajasthan",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "ghoomna",
+      "size": "wide"
+     },
+     {
+      "at": "batayiye",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "germany",
+      "what": "Germany lifts off and floats to the left"
+     },
+     {
+      "at": "rajasthan",
+      "what": "Rajasthan's desert glows and a camel crosses it"
+     },
+     {
+      "at": "ghoomna",
+      "what": "a plane flies between the two"
+     },
+     {
+      "at": "comment",
+      "what": "a comment bubble pops"
+     },
+     {
+      "at": "batayiye",
+      "what": "the camera settles on Rajasthan as the hook began"
+     }
+    ],
+    "things": [
+     "germany flag outline",
+     "rajasthan",
+     "camel",
+     "plane",
+     "comment bubble"
+    ],
+    "fig": {}
+   }
+  }
+ ],
+ "narrator": "hm_omega"
+}

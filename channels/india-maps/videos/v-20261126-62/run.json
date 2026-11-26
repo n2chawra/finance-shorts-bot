@@ -1,0 +1,144 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:14:32.954459+00:00",
+    "finishedAt": "2026-11-26T04:14:32.954459+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:15:11.077946+00:00",
+    "finishedAt": "2026-11-26T04:15:11.077946+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T04:19:22.883846+00:00",
+    "finishedAt": "2026-11-26T04:19:22.883846+00:00",
+    "notes": [
+      "facts[Germany] 357,600 km2 (World Bank, 2022) is superseded: the World Bank API (AG.SRF.TOTL.K2, last updated 2026-11-11) now gives 357,680 for 2024 (and 2023). Use 357,680, as_of 2024-12-31; payoff line and sign follow; rj_pct stays 96% (342,239/357,680 = 95.7%).",
+      "facts[Finland] 338,470 km2 (2022) is superseded: World Bank 2024 value is 338,485. Update value and as_of (finland beat, fact3).",
+      "facts[Vietnam] 331,340 km2 (2022) is superseded: World Bank 2024 value is 331,338.31 (2023 same). Update to the 2024 figure (e.g. 331,338) and as_of (vietnam beat, fact4); Rajasthan still bigger.",
+      "Description source line 'World Bank (Dec 2022)' must change to the 2024 edition with the facts. Rajasthan 342,239 km2 confirmed on the cited Wikipedia page's state table (Census 2011 figure; infobox says 342,269, table matches the script); script source label could read 'Wikipedia (citing MoSPI)' as in the feed. Claims, tone, official-map rules and disclaimer otherwise fine."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T04:18:39.761982+00:00",
+    "finishedAt": "2026-11-26T04:19:45.771926+00:00",
+    "notes": [
+      "fingerprint: 03af74cdd2838111.821cb1ef92deaac4",
+      "2.4 s with nothing new on screen in beat 'finland' (at most 1.8 s): add an action on the phrase being said there",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "warning: beat 'promise' runs 6.0 s with 3.5 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'vietnam' runs 5.1 s with 3.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'finland' runs 5.1 s with 3.5 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:19:59.648204+00:00",
+    "finishedAt": "2026-11-26T04:19:59.648204+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:20:00.568376+00:00",
+    "finishedAt": "2026-11-26T04:20:00.568376+00:00",
+    "notes": [
+      "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:21:03.389377+00:00",
+    "finishedAt": "2026-11-26T04:21:03.389377+00:00",
+    "notes": [
+      "Re-check after fix: Germany 357,680, Finland 338,485, Vietnam 331,338 (331,338.31) km2 confirmed on the World Bank API AG.SRF.TOTL.K2 for 2024; Rajasthan 342,239 confirmed on the cited Wikipedia state table (Census 2011). Rajasthan > Vietnam, > Finland, 96% of Germany all hold; spoken lines match; description cites World Bank (Dec 2024) and ends with the disclaimer. Notes: topics.json still lists the superseded 2022 World Bank facts beside the new ones (retire them); script's Rajasthan source label could read 'Wikipedia (citing MoSPI)'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:20:48.707980+00:00",
+    "finishedAt": "2026-11-26T04:21:41.770540+00:00",
+    "notes": [
+      "fingerprint: 70026c41ae81b778.821cb1ef92deaac4",
+      "34 s, ember/tanpura (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "warning: beat 'promise' runs 6.0 s with 3.5 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'vietnam' runs 5.4 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'finland' runs 5.4 s with 3.8 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 6.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:22:31.878974+00:00",
+    "finishedAt": "2026-11-26T04:23:22.168539+00:00",
+    "notes": [
+      "fingerprint: 70026c41ae81b778.df63b878b6017162",
+      "34 s, ember/tanpura (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "warning: beat 'promise' runs 6.0 s with 3.5 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'vietnam' runs 5.4 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'finland' runs 5.4 s with 3.8 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 6.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:24:01.728504+00:00",
+    "finishedAt": "2026-11-26T04:24:01.728504+00:00",
+    "notes": [
+      "Stills read on mute: Rajasthan vs Germany named in first frame and line (no answer given), Vietnam/Finland/Germany each laid over Rajasthan in its flag with its area on a sign, Germany area sign at payoff, loop returns to Rajasthan+Germany; no overlaps, cut-offs or placeholders; layout/craft clean; audio peak -1.0 dB, mean -16.3 (channel norm); 34 s within 25-50; disclaimer in description; thumbnail clear and on-promise; level matches the channel's best-viewed Short v-20261125-62",
+      "fingerprint: 70026c41ae81b778.df63b878b6017162"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:24:14.308645+00:00",
+    "finishedAt": "2026-11-26T04:27:50.991499+00:00",
+    "notes": [
+      "34 s, ember/tanpura, peak -1.0 dB, mean -16.3 dB",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "warning: beat 'promise' runs 6.0 s with 3.5 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'vietnam' runs 5.4 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'finland' runs 5.4 s with 3.8 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 6.8 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:27:55.846827+00:00",
+    "finishedAt": "2026-11-26T04:27:55.846827+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
