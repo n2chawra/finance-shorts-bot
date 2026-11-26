@@ -1,0 +1,216 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-26T03:40:28.000101+00:00",
+    "finishedAt": "2026-11-26T03:40:28.000101+00:00",
+    "notes": [
+      "plan.arms must be this channel's own {\"length\": \"25-50\", \"title\": \"figure_or_name\", \"style\": \"shot\", \"category\": \"27\"} (from `improvement.arms assign`)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T03:40:32.672383+00:00",
+    "finishedAt": "2026-11-26T03:40:32.672383+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T03:42:16.371115+00:00",
+    "finishedAt": "2026-11-26T03:42:16.371115+00:00",
+    "notes": [
+      "the source line 'Data: Ministry of Home Affairs · Mongabay India, citing the government circular · DeshGujarat, citing the revised official figure · Wikipedia, Coastal India · Nov 2026' is too wide for the frame (3970 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'Ministry of Home Affairs'), one name per publisher",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T03:42:36.116766+00:00",
+    "finishedAt": "2026-11-26T03:42:36.116766+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T03:49:47.535625+00:00",
+    "finishedAt": "2026-11-26T03:51:14.798935+00:00",
+    "notes": [
+      "fingerprint: 07009161229d91e4.e9999ad04d637537",
+      "2.3 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there",
+      "6 of 10 stills are mostly empty background (at 0 s, 10 s, 15 s, 25 s, 30 s, 41 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "warning: beat 'turn' runs 6.9 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 7.8 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T03:51:22.038548+00:00",
+    "finishedAt": "2026-11-26T03:51:22.038548+00:00",
+    "notes": [
+      "payoff: 'अब हर खाड़ी, क्रीक और नदी का मुहाना गिना गया' misstates the method. The Survey of India ToR for the 11,098.81 km figure says the mouths of rivers, creeks, estuaries and backwaters were CLOSED at suitable places (the line crosses each mouth, it doesn't go up it). The government gives two reasons: a larger map scale (1:4,500,000 to 1:250,000, which catches bays, inlets and small bends) and offshore islands now added (MoES Parliament answer; Mongabay; Maritime Gateway). Rewrite it, e.g. 'ज़मीन नहीं बढ़ी, नाप बदली। अब बड़े मैप पर हर खाड़ी और मोड़ नापा गया, छोटे द्वीप भी जोड़े गए, और तट हो गया {fact1}।' Then change the picture to match: drop 'thin creeks light up branching inland', 'the wheel turns into the river mouth' and the Narmada-mouth moment, and show a coarse line refining into a detailed one, with islands added.",
+      "gujarat: 'सबसे लंबा तट गुजरात का' comes straight after the islands beat, but the Andaman and Nicobar Islands UT has 3,083.5 km of coast (DeshGujarat's table of the official revision), which is longer than Gujarat's 2,340.62 km. Gujarat is the longest among STATES only. Say 'स्टेट्स में सबसे लंबा तट गुजरात का, पूरे {fact3}।'",
+      "confirmed: fact1 11,098.81 km (MoES Parliament answer and Survey of India note via search, Maritime Gateway; Wikipedia page shows it citing TOI/MHA); fact2 7,516.6 km (Mongabay page); fact3 2,340.62 km (DeshGujarat page, MoES answer); fact4 9 states (Wikipedia page: 9 states + 4 UTs); verify list OK (West Bengal 721 km on Wikipedia + Asianet); Keralam OK (Parliament passed the Kerala (Alteration of Name) Bill, Aug 2026); disclaimer present in the description. Separately: 'generator.run figures' errors on the gujarat beat's sec-only moment (sec 2.6), a director/lint issue."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T03:52:14.778670+00:00",
+    "finishedAt": "2026-11-26T03:53:10.687769+00:00",
+    "notes": [
+      "fingerprint: 442ef6c793a9abf7.34da25c29a370cd2",
+      "2 of 10 stills are mostly empty background (at 30 s, 41 s): fill the frame (a set, the cast big, money as a thing)",
+      "the cover looks like v-20261125-62's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "warning: beat 'turn' runs 6.9 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 7.8 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T03:53:51.406365+00:00",
+    "finishedAt": "2026-11-26T03:53:51.406365+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T03:55:15.997680+00:00",
+    "finishedAt": "2026-11-26T03:55:15.997680+00:00",
+    "notes": [
+      "Re-review after fixes. gujarat now 'स्टेट्स में सबसे लंबा तट' (true: A&N UT is 3,083.5 km, so Gujarat's 2,340.62 km is longest only among states). payoff now names the official reasons, a larger map scale catching bays and bends plus offshore islands added (MoES Parliament answer, Survey of India ToR, Maritime Gateway), and its picture no longer shows creeks or river mouths. Facts unchanged and confirmed: 11,098.81 km (MoES/SoI via search, Maritime Gateway), 7,516.6 km (Mongabay page), 2,340.62 km (DeshGujarat page), 9 states (Wikipedia page). Keralam correct (renamed by Parliament, Aug 2026). Disclaimer in the description. figures runs clean."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T03:55:04.480395+00:00",
+    "finishedAt": "2026-11-26T03:56:07.681647+00:00",
+    "notes": [
+      "fingerprint: 17bee2da493ea5b1.78c24cfa122015fa",
+      "1.8 s with nothing new on screen in beat 'gujarat' (at most 1.8 s): add an action on the phrase being said there",
+      "3 of 10 stills are mostly empty background (at 25 s, 30 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+      "2 of 9 consecutive stills look the same (at 40 s, 43 s): change the set, the shot size or what is on screen",
+      "the cover looks like v-20261125-62's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "warning: beat 'gujarat' runs 5.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'turn' runs 6.9 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 9.1 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T03:56:57.763697+00:00",
+    "finishedAt": "2026-11-26T03:57:55.817317+00:00",
+    "notes": [
+      "fingerprint: 11d6ff49d29b5848.e90c1e62a88ef065",
+      "3 of 10 stills are mostly empty background (at 30 s, 35 s, 43 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "warning: beat 'gujarat' runs 5.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'turn' runs 6.9 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 9.1 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T03:59:23.669094+00:00",
+    "finishedAt": "2026-11-26T04:00:23.640540+00:00",
+    "notes": [
+      "fingerprint: 11d6ff49d29b5848.a70e6fa670422460",
+      "43 s, sky/monsoon (preview only)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "warning: beat 'gujarat' runs 5.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'turn' runs 6.9 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 9.1 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T04:01:54.788909+00:00",
+    "finishedAt": "2026-11-26T04:01:54.788909+00:00",
+    "notes": [
+      "[script] Loop beat (39.1-42.0s): the closing question 'आपका स्टेट समुद्र किनारे है? कमेंट कीजिए।' is a yes/no question; check 6a needs a pick-one between two concrete choices (e.g. which coast is longer to you, west or east / Gujarat or Andaman), still running back into the hook 'भारत का समुद्र तट…'.",
+      "[script] Two beats in a row look like the same picture: the payoff's end (36.0-38.7s: all of India wide, coastal states painted, white coast, island rings) and the loop's start (40.0-40.3s) are the same composition at the same wide size; only the sign leaves. Open the loop on a different shot (e.g. medium/close on waves lapping one coastal state with the comment bubble) before returning to the hook's India; this also breaks the 17 s with no close shot that craft noted.",
+      "[script] Promise beat (5.0-6.7s, Promise component): the lighthouse with the '9' board stands on the Maharashtra/Gujarat coast, not at Kanyakumari as params.place says, and at 6.7s the magnifying glass lands on top of the lighthouse lamp instead of sliding onto Gujarat's coast; move the lighthouse to the southern tip and the glass onto Gujarat so they don't overlap."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:02:33.091911+00:00",
+    "finishedAt": "2026-11-26T04:02:33.091911+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:03:17.976826+00:00",
+    "finishedAt": "2026-11-26T04:03:17.976826+00:00",
+    "notes": [
+      "Re-review of the changed loop line 'पश्चिमी तट या पूर्वी तट, आपका स्टेट किस पर है? कमेंट कीजिए। पर सोचिए,'. It makes no factual claim and is a neutral question with no state ranking. Its west/east split matches the west and east beats (5 west-coast states and 4 east-coast states per Wikipedia, Coastal India). All other lines and facts are unchanged from the earlier pass (11,098.81, 7,516.6, 2,340.62 km and 9 states, all confirmed). The disclaimer is in the description."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:03:06.919141+00:00",
+    "finishedAt": "2026-11-26T04:04:08.011212+00:00",
+    "notes": [
+      "fingerprint: ada4180d1f137133.cac980401e48b1c7",
+      "44 s, sky/monsoon (preview only)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "warning: beat 'gujarat' runs 5.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'turn' runs 6.9 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 9.1 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:04:48.508612+00:00",
+    "finishedAt": "2026-11-26T04:04:48.508612+00:00",
+    "notes": [
+      "Re-review after fixes: loop now asks west coast or east coast and opens close on the west coast (39.5s), then the peninsula with arrow and comment bubble (41.8s), before the hook's India (42.7s), no longer a repeat of the payoff's wide; lighthouse with the 9 board now at the southern tip; layout empty, 44s, audio -1.0/-16.3 dB, disclaimer in description. Minor: at 6.7s the magnifier sits at the left edge touching the 9 board rather than visibly on Gujarat (the 9 stays readable).",
+      "fingerprint: ada4180d1f137133.cac980401e48b1c7"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:05:00.002578+00:00",
+    "finishedAt": "2026-11-26T04:12:18.540286+00:00",
+    "notes": [
+      "44 s, sky/monsoon, peak -1.0 dB, mean -16.3 dB",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "warning: beat 'gujarat' runs 5.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'turn' runs 6.9 s with 3.1 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'payoff' runs 9.1 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:12:23.975572+00:00",
+    "finishedAt": "2026-11-26T04:12:23.975572+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

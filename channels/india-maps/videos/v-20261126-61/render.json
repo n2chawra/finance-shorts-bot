@@ -1,0 +1,127 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52817,
+  "duration_sec": 44,
+  "tempo": 1.2,
+  "style": {
+    "palette": "sky",
+    "genre": "monsoon",
+    "key": "D",
+    "bpm": 94,
+    "look": {
+      "stage": "studio",
+      "header": "ribbon",
+      "holder": "box",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "भारत का समुद्र तट अचानक इतना लंबा कैसे हो गया?",
+        "start": 0.3,
+        "seconds": 2.73,
+        "window": 3.37,
+        "fill": 0.81
+      },
+      {
+        "scene": "promise",
+        "text": "9 स्टेट समुद्र से लगे हैं। पर इनकी लकीर में छिपा राज़ क्या है?",
+        "start": 3.67,
+        "seconds": 3.07,
+        "window": 3.73,
+        "fill": 0.823
+      },
+      {
+        "scene": "west",
+        "text": "गुजरात, महाराष्ट्र, गोवा, कर्नाटक, केरलम।",
+        "start": 7.4,
+        "seconds": 2.31,
+        "window": 2.97,
+        "fill": 0.778
+      },
+      {
+        "scene": "east",
+        "text": "फिर तमिलनाडु, आंध्र प्रदेश, ओडिशा और पश्चिम बंगाल।",
+        "start": 10.37,
+        "seconds": 2.59,
+        "window": 3.27,
+        "fill": 0.792
+      },
+      {
+        "scene": "islands",
+        "text": "साथ में दमन दीव, पुडुचेरी, लक्षद्वीप और अंडमान निकोबार के द्वीप।",
+        "start": 13.63,
+        "seconds": 3.39,
+        "window": 4.03,
+        "fill": 0.841
+      },
+      {
+        "scene": "gujarat",
+        "text": "स्टेट्स में सबसे लंबा तट गुजरात का, पूरे 2,340.62 km।",
+        "start": 17.67,
+        "seconds": 4.76,
+        "window": 5.43,
+        "fill": 0.877
+      },
+      {
+        "scene": "turn",
+        "text": "पर पहले पूरे भारत का तट गिना जाता था बस 7,516.6 km। फिर इतना बढ़ा कैसे?",
+        "start": 23.1,
+        "seconds": 6.29,
+        "window": 6.93,
+        "fill": 0.908
+      },
+      {
+        "scene": "payoff",
+        "text": "ज़मीन नहीं बढ़ी, नाप बदली। अब बड़े मैप पर हर खाड़ी और मोड़ नापा गया, छोटे द्वीप भी जोड़े गए, और तट हो गया 11,098.81 km।",
+        "start": 30.03,
+        "seconds": 8.44,
+        "window": 9.1,
+        "fill": 0.927
+      },
+      {
+        "scene": "loop",
+        "text": "पश्चिमी तट या पूर्वी तट, आपका स्टेट किस पर है? कमेंट कीजिए। पर सोचिए,",
+        "start": 39.13,
+        "seconds": 3.55,
+        "window": 4.2,
+        "fill": 0.845
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.2,
+    "music_under_voice_db": 32.4
+  },
+  "craft_problems": [
+    "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 8.1,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
