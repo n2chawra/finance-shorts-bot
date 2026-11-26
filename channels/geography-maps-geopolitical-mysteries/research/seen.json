@@ -1,7 +1,7 @@
 {
   "claudeCode": {
     "latest": "2.1.332",
-    "checked": "2026-11-26",
+    "checked": "2026-11-27",
     "notes": [
       "2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow",
       "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline.",
@@ -9,7 +9,8 @@
       "2.1.330: WebFetch no longer freezes or returns empty on some pages (helps research reads); built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline.",
       "2026-11-24: 2.1.330 still the newest; its changelog also says scheduled tasks and /loop now run up to 30 days instead of 7. Nothing to change in the pipeline.",
       "2.1.331: cloud turns that go silent while thinking are retried once (fewer failed routine runs); PushNotification fixed for headless scheduled runs; fixes otherwise. Nothing to change in the pipeline.",
-      "2.1.332: skills from MCP servers (beta), a PreSkillShellCommand hook, compaction fixes for long turns (helps long video runs that hit the context limit), model-fallback fixes on Bedrock/Vertex/Foundry. Nothing to change in the pipeline."
+      "2.1.332: skills from MCP servers (beta), a PreSkillShellCommand hook, compaction fixes for long turns (helps long video runs that hit the context limit), model-fallback fixes on Bedrock/Vertex/Foundry. Nothing to change in the pipeline.",
+      "2026-11-27: 2.1.332 still the newest. Nothing to change in the pipeline."
     ]
   },
   "sources": {
