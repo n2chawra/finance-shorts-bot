@@ -1,0 +1,20 @@
+{
+  "agent": "scout",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-26T05:38:17Z",
+  "finishedAt": "2026-11-26T05:44:14Z",
+  "summary": "Disaster Desk: prepared three more long topics from the official reports (Carmont, Chatsworth, Air Canada 797), each with 9-10 sourced facts, a stakes-first hook and an outline with recap beats, and routed 3 retention fixes.",
+  "decision": "acted",
+  "why": "Retention-shape focus after Monday's hooks. In the reference videos the failure lands at 48-60% of the runtime, and one hero picture is revisited to hold the middle. Only 1 of our 3 long videos has a recap-and-tease beat. The feed has 15 usable topics; 7 are now fully prepared.",
+  "findings": [
+    {"title": "The reference videos put the failure at 48-60% of the runtime", "detail": "Kolkata 345/579 s, Learjet dive 362/608 s, Spain 413/854 s (research/sheets).", "link": "https://www.youtube.com/watch?v=dcfldWqanJc"},
+    {"title": "Only 1 of our 3 long videos has a recap-and-tease beat", "detail": "Hyatt has one; Texas City and Titan have none."},
+    {"title": "Air Canada 797's '15 minutes unseen' figure is not in the NTSB report", "detail": "Retitled to the rule that came out of it; the report's clock times and the 60-90 s to flashover are used instead.", "link": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR8602.pdf"}
+  ],
+  "changes": [
+    {"title": "3 long topics prepared from official reports", "detail": "carmont, chatsworth, air-canada-797 in longform/topics.json", "branch": "agent/scout/2026-11-26/disasters-and-engineering-failures-expla"},
+    {"title": "3 backlog items routed", "detail": "recap-tease beats (adopt), failure at 50-60% (adopt), hero picture revisited (experiment)", "branch": "agent/scout/2026-11-26/disasters-and-engineering-failures-expla"}
+  ],
+  "nextCheck": "2026-11-30",
+  "links": [{"label": "Report", "url": "channels/disasters-and-engineering-failures-expla/longform/2026-11-26.md"}]
+}
