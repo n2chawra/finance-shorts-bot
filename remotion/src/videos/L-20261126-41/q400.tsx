@@ -33,7 +33,7 @@ export const M = {
   ice: (k: number) => clay("#f4fbff", { emissive: "#bfe6ff", emissiveIntensity: 0.25, opacity: Math.round(k01(k) * 10) / 10 }),
   hot: (k: number) => {
     const q = Math.round(k01(k) * 10) / 10;
-    return clay(q < 0.5 ? "#e8a23a" : "#ff3b30", { emissive: q < 0.5 ? "#ff9d2e" : "#ff3b30", emissiveIntensity: 0.3 + 1.1 * q });
+    return clay(q < 0.5 ? "#9a5a14" : "#8e1a14", { emissive: q < 0.5 ? "#c46a10" : "#c8231a", emissiveIntensity: 0.25 + 0.6 * q });
   },
   window: (on: number) => clay("#ffd58a", { emissive: "#ffc46b", emissiveIntensity: 0.4 + 1.4 * k01(on) }),
 };
@@ -85,14 +85,19 @@ export const Q400: React.FC<Q400Props> = ({ position = [0, 0, 0], pitch = 0, rol
       ))}
       {/* the high wing, its de-icing boots and the ice on them */}
       <group position={[0.25, wingY, 0]}>
-        <mesh material={top} {...sh}><boxGeometry args={[chord, 0.07, span]} /></mesh>
+        {stall > 0.02 ? <mesh material={top} {...sh}><boxGeometry args={[chord, 0.07, span]} /></mesh>
+          : <mesh {...sh}><boxGeometry args={[chord, 0.07, span]} /><meshStandardMaterial color="#d3d9df" metalness={0.55} roughness={0.32} /></mesh>}
+        {Array.from({ length: 13 }, (_, i) => <mesh key={`pl${i}`} position={[0, 0.0365 + 0.015, -span / 2 + 0.2 + i * (span - 0.4) / 12]}><boxGeometry args={[chord * 0.98, 0.003, 0.008]} /><meshStandardMaterial color="#5c656e" /></mesh>)}
+        {[-0.12, 0.08].map((x) => <mesh key={`sp${x}`} position={[x, 0.0365 + 0.015, 0]}><boxGeometry args={[0.006, 0.003, span * 0.98]} /><meshStandardMaterial color="#5c656e" /></mesh>)}
+        {ice > 0.02 && Array.from({ length: 60 }, (_, i) => <mesh key={`ic${i}`} position={[chord / 2 + 0.03 + 0.03 * ice * ((i * 7) % 5) / 5, -0.025 + ((i * 3) % 7) * 0.008, -span / 2 + 0.05 + i * (span - 0.1) / 59]} rotation={[i * 0.7, i * 1.3, i * 0.4]}><boxGeometry args={[0.03 + 0.03 * ice, 0.025 + 0.02 * ice, 0.06]} /><meshStandardMaterial color="#f2fbff" emissive="#9fd3ff" emissiveIntensity={0.2} roughness={0.95} transparent opacity={Math.min(1, ice * 1.3)} /></mesh>)}
         <mesh position={[chord / 2 + 0.01, -0.005, 0]} material={bootK > 0 ? glow("#4a6074", 0.6 + 0.4 * bootK) : M.boot()}><boxGeometry args={[0.05, 0.065, span * 0.98]} /></mesh>
-        {ice > 0.02 && <mesh position={[chord / 2 + 0.035, 0, 0]} material={M.ice(ice)}><boxGeometry args={[0.04 + 0.03 * ice, 0.075, span * 0.97]} /></mesh>}
         <mesh position={[0, 0.045, 0]} scale={[1, 0.25, 1]} rotation-x={Math.PI / 2} material={top}><cylinderGeometry args={[chord / 2, chord / 2, span * 0.99, 18, 1, false, 0, Math.PI]} /></mesh>
         {[-1, 1].map((sd) => [0.45, 1.6].map((z0) => (
-          <mesh key={`${sd}${z0}`} position={[-chord / 2 - 0.09 * flaps, -0.02 - 0.05 * flaps, sd * z0]} rotation-z={0.5 * flaps} material={flaps > 0.05 ? M.grey() : top}>
-            <boxGeometry args={[0.16, 0.025, 0.85]} />
-          </mesh>
+          <group key={`${sd}${z0}`} position={[-chord / 2 - 0.09 * flaps, -0.02 - 0.05 * flaps, sd * z0]} rotation-z={0.5 * flaps}>
+            <mesh {...sh}><boxGeometry args={[0.16, 0.025, 0.85]} /><meshStandardMaterial color="#9aa3ad" metalness={0.6} roughness={0.35} /></mesh>
+            {[-0.3, 0, 0.3].map((z) => <mesh key={z} position={[0.02, 0.014, z]}><boxGeometry args={[0.1, 0.004, 0.01]} /><meshStandardMaterial color="#3a4148" /></mesh>)}
+            <mesh position={[-0.08, 0, 0]}><boxGeometry args={[0.006, 0.026, 0.85]} /><meshStandardMaterial color="#3a4148" /></mesh>
+          </group>
         )))}
         {/* nav lights: red left (−z), green right (+z) */}
         <mesh position={[0, 0, -span / 2]} material={glow("#ff3b30", 1)}><sphereGeometry args={[0.04, 8, 6]} /></mesh>

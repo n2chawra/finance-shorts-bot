@@ -1368,8 +1368,8 @@
     }
    },
    "params": {
-    "component": "Wing",
-    "place": "a wind-tunnel drawing of the airliner's wing",
+    "component": "Tunnel",
+    "place": "a wind tunnel of night air around the airliner's wing section",
     "camera": [
      {
       "sec": 0,
@@ -1499,8 +1499,8 @@
     }
    },
    "params": {
-    "component": "Wing",
-    "place": "a wind-tunnel drawing of the airliner's wing",
+    "component": "Tunnel",
+    "place": "a wind tunnel of night air around the airliner's wing section",
     "camera": [
      {
       "sec": 0,
@@ -1566,8 +1566,8 @@
     }
    },
    "params": {
-    "component": "Wing",
-    "place": "a wind-tunnel drawing of the airliner's wing",
+    "component": "Tunnel",
+    "place": "a wind tunnel of night air around the airliner's wing section",
     "camera": [
      {
       "sec": 0,
@@ -1754,8 +1754,8 @@
     }
    },
    "params": {
-    "component": "Wing",
-    "place": "a wind-tunnel drawing of the airliner's wing",
+    "component": "Tunnel",
+    "place": "a wind tunnel of night air around the airliner's wing section",
     "camera": [
      {
       "sec": 0,
@@ -1817,8 +1817,8 @@
     }
    },
    "params": {
-    "component": "Wing",
-    "place": "a wind-tunnel drawing of the airliner's wing",
+    "component": "Tunnel",
+    "place": "a wind tunnel of night air around the airliner's wing section",
     "camera": [
      {
       "sec": 0,
@@ -2231,8 +2231,8 @@
     }
    },
    "params": {
-    "component": "Wing",
-    "place": "a wind-tunnel drawing of the airliner's wing",
+    "component": "Tunnel",
+    "place": "a wind tunnel of night air around the airliner's wing section",
     "camera": [
      {
       "sec": 0,
@@ -2702,8 +2702,8 @@
     }
    },
    "params": {
-    "component": "Panel",
-    "place": "the captain's airspeed display on the flight deck",
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
     "camera": [
      {
       "sec": 0,
@@ -2737,16 +2737,18 @@
      }
     ],
     "things": [
-     "airspeed tape",
+     "airliner slowing in the snow",
+     "the captain's airspeed display",
      "red band",
-     "speed box",
      "timer"
     ],
     "fig": {
      "secs": "{fact14}",
      "speed": "{fact7}"
     },
-    "mode": "cue"
+    "shot": "level",
+    "phase": "night",
+    "inset": "cue"
    }
   },
   {
@@ -2982,8 +2984,8 @@
     }
    },
    "params": {
-    "component": "Panel",
-    "place": "the captain's airspeed display on the flight deck",
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
     "camera": [
      {
       "sec": 0,
@@ -3021,10 +3023,10 @@
      }
     ],
     "things": [
-     "airspeed tape",
-     "stall flag",
+     "airliner, its wings flashing red",
+     "the captain's airspeed display",
      "flight clock",
-     "autopilot light"
+     "stall flag"
     ],
     "fig": {
      "speed": "{fact7}",
@@ -3033,8 +3035,11 @@
      "ss": "{fact27}",
      "end": "{fact28}"
     },
-    "mode": "shaker",
-    "chapter": "THE LAST HALF MINUTE"
+    "chapter": "THE LAST HALF MINUTE",
+    "shot": "hook",
+    "phase": "stall",
+    "inset": "shaker",
+    "stallAt": "shaker"
    }
   },
   {
@@ -3124,8 +3129,8 @@
     }
    },
    "params": {
-    "component": "Wing",
-    "place": "a wind-tunnel drawing of the airliner's wing",
+    "component": "Tunnel",
+    "place": "a wind tunnel of night air around the airliner's wing section",
     "camera": [
      {
       "sec": 0,
@@ -3691,8 +3696,8 @@
     }
    },
    "params": {
-    "component": "Panel",
-    "place": "the captain's airspeed display on the flight deck",
+    "component": "Sky",
+    "place": "the night sky over western New York, in snow and cloud",
     "camera": [
      {
       "sec": 0,
@@ -3726,9 +3731,9 @@
      }
     ],
     "things": [
+     "airliner falling into cloud",
      "flight clock",
-     "recorder line",
-     "time bracket"
+     "recorder trace"
     ],
     "fig": {
      "hh": "{fact25}",
@@ -3736,7 +3741,10 @@
      "ss": "{fact27}",
      "end": "{fact28}"
     },
-    "mode": "clock"
+    "shot": "roll",
+    "phase": "stall",
+    "inset": "clock",
+    "dropAt": "end"
    }
   },
   {
@@ -4055,8 +4063,8 @@
     }
    },
    "params": {
-    "component": "Wing",
-    "place": "a wind-tunnel drawing of the airliner's wing",
+    "component": "Tunnel",
+    "place": "a wind tunnel of night air around the airliner's wing section",
     "camera": [
      {
       "sec": 0,

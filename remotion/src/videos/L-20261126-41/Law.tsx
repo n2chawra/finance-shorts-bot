@@ -103,8 +103,8 @@ const Law: React.FC<SceneProps> = (p) => {
           <rect x={0} y={0} width={680} height={60} fill="#5a3a24" />
           <g transform="translate(110 -230) rotate(-3)" opacity={ramp(t, e("Congress"), 10)}>
             <rect x={0} y={0} width={460} height={240} fill="#f4f1e8" stroke="#333" strokeWidth={4} />
-            <TypeText x={24} y={52} t={t} at={e("Congress")} text="AIRLINE SAFETY AND FAA" size={32} color="#111" />
-            <TypeText x={24} y={92} t={t} at={e("Congress") + 10} text="EXTENSION ACT" size={32} color="#111" />
+            <TypeText x={24} y={52} t={t} at={e("Congress")} text="AIRLINE SAFETY AND" size={32} color="#111" />
+            <TypeText x={24} y={92} t={t} at={e("Congress") + 10} text="FAA EXTENSION ACT" size={32} color="#111" />
             <path d={`M 40 200 q 40 -40 80 0 t 80 0 t 80 0`} stroke="#1f3b5c" strokeWidth={5} fill="none" strokeDasharray={400} strokeDashoffset={400 * (1 - ramp(t, e("signed"), 24))} />
             <g transform={`translate(${40 + 240 * ramp(t, e("signed"), 24)} ${170}) rotate(-35)`}><rect x={0} y={-6} width={110} height={12} rx={6} fill="#111" /></g>
           </g>
@@ -161,41 +161,23 @@ const Law: React.FC<SceneProps> = (p) => {
       </Sheet>
     );
   }
-  // catch and meaning: the two pilots' logbooks against the new minimum
-  const cap = numOf(p, "cap"), fo = numOf(p, "fo"), mn = numOf(p, "min");
-  const top = Math.max(cap, fo, mn, 1);
-  const barH = (v: number) => 400 * (v / top);
-  const dimBooks = mode === "meaning" ? 0.5 * ramp(t, e("hours"), 14) : 0;
-  const lineK = mode === "catch" ? ramp(t, e("minimum"), 14) : 1;
-  const z = mode === "catch" ? ramp(t, e("captain"), 18) * (1 - ramp(t, e("minimum"), 18)) : ramp(t, e("training"), 18) * (1 - ramp(t, e("speed"), 18) * 0.5);
+  // catch: the two pilots' own logbooks, open on the desk, their counters rolling, against the new minimum
+  const z = ramp(t, e("captain"), 18) * (1 - ramp(t, e("minimum"), 18));
+  const lineK = ramp(t, e("minimum"), 14);
   return (
-    <Sheet t={t} zoom={1.02 + 0.14 * z + 0.02 * (t / end)} cx={960 - 120 * z} cy={520} html={html}>
-      <rect x={-200} y={720} width={2400} height={600} fill="#4a3424" />
-      {/* two bars standing on the desk, one per logbook */}
-      {[["CAPTAIN", cap, fig("cap"), e("captain"), 430], ["FIRST OFFICER", fo, fig("fo"), e("officer"), 830]].map(([label, v, s, at, x]) => {
-        const k = mode === "catch" ? ramp(t, at as number, 30) : 1;
-        return (
-          <g key={label as string} opacity={1 - 0.6 * dimBooks}>
-            <rect x={(x as number) - 110} y={720 - barH(v as number) * k} width={220} height={barH(v as number) * k} rx={10} fill={ICE} opacity={0.85} />
-            <rect x={(x as number) - 150} y={720} width={300} height={70} rx={8} fill="#1f3b5c" stroke="#0e1216" strokeWidth={4} /><text x={x as number} y={765} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={30} fill="#d8b04a">LOGBOOK</text>
-            <text x={x as number} y={830} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={32} fill={INK}>{label as string}</text>
-            {k > 0 && <text x={x as number} y={700 - barH(v as number) * k} textAnchor="middle" fontFamily={ANTON} fontSize={64} fill={INK}>{countText(s as string, k)}</text>}
-          </g>
-        );
-      })}
-      {/* the new minimum */}
-      {lineK > 0 && <g opacity={lineK * (1 - 0.6 * dimBooks)}>
-        <line x1={240} y1={720 - barH(mn)} x2={240 + 820 * lineK} y2={720 - barH(mn)} stroke={RED} strokeWidth={8} strokeDasharray="22 14" />
-        <text x={1080} y={730 - barH(mn)} fontFamily={MONO} fontWeight={700} fontSize={34} fill={RED}>{`NEW MINIMUM · ${min}`}</text>
+    <Sheet t={t} zoom={1.02 + 0.1 * z + 0.02 * (t / end)} cx={960} cy={520} html={html}>
+      <rect x={-200} y={760} width={2400} height={600} fill="#4a3424" />
+      <TypeText x={150} y={170} t={t} at={0} text="THE CREW'S OWN LOGBOOKS" size={44} color={INK} />
+      <g opacity={ramp(t, e("stopped"), 12)}>
+        <Logbook x={130} y={300} label="CAPTAIN" value={fig("cap")} k={ramp(t, e("captain"), 30)} w={760} />
+        <Logbook x={1030} y={300} label="FIRST OFFICER" value={fig("fo")} k={ramp(t, e("officer"), 30)} w={760} />
+      </g>
+      {[0, 1].map((i) => t >= e("Both") && <rect key={i} x={130 + i * 900 - 10} y={290} width={780} height={420} rx={16} fill="none" stroke={GREEN} strokeWidth={8} opacity={ramp(t, e("Both"), 10)} />)}
+      {lineK > 0 && <g transform="translate(560 740)" opacity={lineK}>
+        <rect x={0} y={0} width={800} height={100} rx={12} fill="rgba(8,12,18,0.92)" stroke={RED} strokeWidth={6} />
+        <text x={400} y={66} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={42} fill={RED}>{`NEW MINIMUM · ${min}`}</text>
       </g>}
-      <TypeText x={240} y={170} t={t} at={0} text="THE CREW'S OWN FLIGHT HOURS" size={44} color={INK} />
-      {mode === "catch" && <Stamp x={1520} y={330} t={t} at={e("minimum") + 10} text="BOTH ABOVE IT" size={56} color={AMBER} />}
-      {mode === "meaning" && <>
-        <Card x={1280} y={180} text="STALL TRAINING" k={ramp(t, e("training") - 8, 10)} ok on={ramp(t, e("training"), 8)} />
-        <Card x={1280} y={300} text="REST RULES" k={ramp(t, e("rest") - 8, 10)} ok on={ramp(t, e("rest"), 8)} />
-        <g transform="translate(1340 520)" opacity={ramp(t, e("reflex"), 10)}><rect x={-20} y={-20} width={180} height={200} rx={10} fill="rgba(8,12,18,0.9)" stroke={GREEN} strokeWidth={4} /><ArrowSvg x1={70} y1={150} x2={70} y2={20} k={ramp(t, e("reflex"), 10)} color={GREEN} w={14} /><text x={70} y={230} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={28} fill={GREEN}>PUSH</text></g>
-        <g transform="translate(1580 500)" opacity={ramp(t, e("speed"), 10)}><rect x={0} y={0} width={90} height={260} fill="#1a2027" stroke="#8b96a1" strokeWidth={4} />{Array.from({ length: 6 }, (_, i) => <rect key={i} x={64} y={140 + i * 20} width={22} height={20} fill={i % 2 ? "#0b0b0b" : RED} />)}<text x={45} y={300} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={28} fill={AMBER}>WATCH</text></g>
-      </>}
+      <Stamp x={1560} y={220} t={t} at={e("minimum") + 10} text="BOTH ABOVE IT" size={50} color={AMBER} />
     </Sheet>
   );
 };

@@ -19,7 +19,7 @@ const SHOTS: Record<string, Shot> = {
   gate: { a: [10, 3.2, 9], la: [0, 1, -1], b: [7.5, 2.4, 7], lb: [0.4, 0.9, -1], fov: 42 },
   takeoff: { a: [-4, 1.6, 12], la: [2, 1, 0], b: [4, 2.6, 13], lb: [12, 3, 0], fov: 44 },
   cruise: { a: [6, 1.8, 6.5], la: [0, 0, 0], b: [4.6, 1.2, 5.2], lb: [0.3, 0, 0], fov: 42 },
-  wing: { a: [1.6, 1.05, 3.6], la: [0.6, 0.3, 1.4], b: [1.2, 0.85, 2.9], lb: [0.55, 0.3, 1.8], fov: 40 },
+  wing: { a: [2.6, 1.4, 4.8], la: [0.5, 0.3, 1.4], b: [2.1, 1.2, 4.1], lb: [0.5, 0.3, 1.6], fov: 40 },
   nose: { a: [3.4, 0.45, 1.2], la: [2.3, 0.1, 0], b: [1.8, 1.0, 2.8], lb: [0.6, 0.3, 1.4], fov: 40 },
   level: { a: [1.2, 0.7, 7.5], la: [0, 0, 0], b: [-0.4, 0.5, 6.4], lb: [0, 0, 0], fov: 40 },
   stallside: { a: [0.6, 0.8, 7.4], la: [0, 0, 0], b: [-0.6, 0.9, 8.6], lb: [0, -0.3, 0], fov: 42 },
@@ -43,6 +43,7 @@ type Params = {
   iceAt?: string; glowWingAt?: string; bootsAt?: string; takeoffAt?: string; propSlowAt?: string; glowAt?: string; rescueAt?: string;
   labels?: { at: string; text: string; sub?: string }[]; quote?: { at: string; text: string; who: string }; note?: { at: string; text: string };
   candles?: boolean; silence?: boolean; checks?: { at: string; text: string }[];
+  inset?: string;
   chapters?: boolean; aoaLabel?: string; talkAt?: string; sterileAt?: string; noseCreepAt?: string; pullCard?: boolean; pusherAt?: string; pullbackAt?: string; againAt?: string; flapsAt?: string;
 };
 
@@ -121,6 +122,7 @@ const Sky: React.FC<SceneProps> = (p) => {
           {P.quote && <Transcript t={t} at={e(P.quote.at)} text={P.quote.text} who={P.quote.who} x={1120} y={600} />}
           {P.note && <MonoCaption t={t} at={e(P.note.at)} text={P.note.text} top={170} left={1100} size={40} color="#ffd27a" />}
           {ground && P.shot === "far" && <MonoCaption t={t} at={e("Center")} text="CLARENCE CENTER, NEW YORK" top={170} left={246} size={38} color="#ffd27a" />}
+          {P.inset && <Inset t={t} e={e} mode={P.inset} speed={fig("speed")} secs={fig("secs")} hh={fig("hh")} mm={fig("mm")} ss={fig("ss")} endS={fig("end")} end={end} />}
           {P.chapters && <ChapterLamps t={t} e={e} />}
           {P.aoaLabel && t >= e(P.aoaLabel) && <MonoCaption t={t} at={e("attack")} text="ANGLE OF ATTACK" top={200} left={1150} size={44} color="#ffd27a" />}
           {P.aoaLabel && t >= e(P.aoaLabel) && <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}><path d={`M 1240 560 L 760 560 M 1240 560 L ${1240 - 480 * Math.cos(0.22 * pitchK)} ${560 - 480 * Math.sin(0.22 * pitchK)}`} stroke="#ffd27a" strokeWidth={6} strokeDasharray="18 12" fill="none" /><path d={`M 900 560 A 340 340 0 0 1 ${1240 - 340 * Math.cos(0.22 * pitchK)} ${560 - 340 * Math.sin(0.22 * pitchK)}`} stroke="#ffd27a" strokeWidth={9} fill="none" /></svg>}
@@ -184,6 +186,40 @@ const Sky: React.FC<SceneProps> = (p) => {
           text={l.text} sub={l.sub} start={K(e(l.at))} color="#ffffff" px={42} />
       ))}
     </DisasterStage>
+  );
+};
+
+/** The captain's airspeed display as an inset over the 3D: the tape with the red-and-black band (rising on
+ * its word), the speed box (the beat's figure), the STALL flag and the flight clock (from the figures). */
+const Inset: React.FC<{ t: number; e: (n?: string) => number; mode: string; speed: string; secs: string; hh: string; mm: string; ss: string; endS: string; end: number }> = ({ t, e, mode, speed, secs, hh, mm, ss, endS, end }) => {
+  const num = (s: string) => { const v = parseFloat(s.replace(/,/g, "")); return Number.isFinite(v) ? v : 0; };
+  const bandK = mode === "cue" ? cue(t, e("band"), Math.max(30, end - e("band") - 10)) : 1;
+  const bandY = 470 - 300 * bandK;
+  const stall = (mode === "shaker" && t >= e("shaker")) || mode === "clock";
+  const base = num(hh) * 3600 + num(mm) * 60;
+  const sec = mode === "clock" ? base + num(ss) + (num(endS) - num(ss)) * cue(t, e("shaker"), Math.max(10, e("end") - e("shaker")), (x) => x) : base + num(ss);
+  const stopped = mode === "clock" && t >= e("end");
+  const red = mode !== "cue" || t >= e("falling");
+  const shake = mode === "shaker" && t >= e("shaker") ? Math.sin(t * 3.1) * 5 : 0;
+  const clockText = (s: number) => { const v = Math.floor(s); return `${String(Math.floor(v / 3600) % 24).padStart(2, "0")}:${String(Math.floor(v / 60) % 60).padStart(2, "0")}:${String(v % 60).padStart(2, "0")}`; };
+  return (
+    <div style={{ position: "absolute", left: 1130 + shake, top: 150, width: 620, height: 560, background: "rgba(5,8,12,0.92)", border: "6px solid #59636d", borderRadius: 24 }}>
+      <svg width={608} height={548} style={{ position: "absolute", inset: 0 }}>
+        <text x={30} y={46} fontFamily="'Courier Prime', monospace" fontWeight={700} fontSize={30} fill="#d6dde3">CAPTAIN'S AIRSPEED</text>
+        <rect x={40} y={70} width={170} height={420} fill="#1a2027" stroke="#8b96a1" strokeWidth={4} />
+        {Array.from({ length: 12 }, (_, i) => { const y = 80 + ((i * 36 + t * (mode === "cue" ? -1.6 : -0.4)) % 432 + 432) % 432; return <line key={i} x1={150} y1={y} x2={208} y2={y} stroke="#e8edf2" strokeWidth={4} />; })}
+        {Array.from({ length: 14 }, (_, i) => bandY + i * 28 < 490 && <rect key={i} x={182} y={bandY + i * 28} width={24} height={Math.min(28, 490 - bandY - i * 28)} fill={i % 2 ? "#0b0b0b" : "#ff3b30"} />)}
+        <path d="M 30 240 L 200 240 L 226 280 L 200 320 L 30 320 Z" fill="#05080c" stroke={red ? "#ff3b30" : "#e8edf2"} strokeWidth={5} />
+        {speed && <text x={112} y={302} textAnchor="middle" fontFamily="Anton, Poppins, sans-serif" fontSize={64} fill={red ? "#ff3b30" : "#ffffff"}>{speed}</text>}
+        {stall && (Math.floor(t / 5) % 2 === 0 || mode === "clock") && <g><rect x={270} y={80} width={300} height={96} rx={8} fill="#ff3b30" /><text x={420} y={150} textAnchor="middle" fontFamily="Anton, Poppins, sans-serif" fontSize={70} fill="#fff">STALL</text></g>}
+        {mode === "cue" && t >= e("seconds") - 6 && <g><text x={270} y={240} fontFamily="'Courier Prime', monospace" fontWeight={700} fontSize={30} fill="#ff9d2e">BAND IN VIEW</text><text x={270} y={320} fontFamily="Anton, Poppins, sans-serif" fontSize={80} fill="#ffffff">{`${secs} S`}</text></g>}
+        {mode === "cue" && t >= e("band") && <path d={`M 250 ${bandY + 60} l 0 -70 m -22 22 l 22 -22 l 22 22`} stroke="#ff3b30" strokeWidth={9} fill="none" />}
+        {(mode === "shaker" || mode === "clock") && <g><text x={270} y={250} fontFamily="'Courier Prime', monospace" fontWeight={700} fontSize={30} fill="#d6dde3">EST · COCKPIT RECORDER</text><text x={270} y={330} fontFamily="'Courier Prime', monospace" fontWeight={700} fontSize={64} fill={stopped ? "#ff3b30" : "#ffffff"}>{clockText(sec)}</text></g>}
+        {mode === "shaker" && t >= e("autopilot") && <g><rect x={270} y={380} width={160} height={66} rx={8} fill="#1c1c1c" stroke="#555" strokeWidth={4} /><text x={350} y={426} textAnchor="middle" fontFamily="'Courier Prime', monospace" fontWeight={700} fontSize={38} fill="#666">AP OFF</text></g>}
+        {mode === "clock" && <path d={Array.from({ length: 50 }, (_, i) => `${i ? "L" : "M"} ${270 + i * 6} ${430 + (stopped ? 0 : Math.sin(i * 1.7 + t * 0.6) * 22)}`).join(" ")} stroke={stopped ? "#ff3b30" : "#9fd3ff"} strokeWidth={4} fill="none" />}
+        {mode === "clock" && t >= e("minute") && <text x={270} y={500} fontFamily="'Courier Prime', monospace" fontWeight={700} fontSize={32} fill="#ff9d2e">UNDER HALF A MINUTE</text>}
+      </svg>
+    </div>
   );
 };
 

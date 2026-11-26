@@ -309,6 +309,12 @@ OVR = {
    things=["airliner flying on through snow", "four checks"], moments_over={"hours": "the airliner flies calm through the snow", "training": "a STALL TRAINING tick types on", "rest": "a REST RULES tick types on", "reflex": "THE REFLEX: PUSH types on", "speed": "WATCH THE SPEED types on"}),
  "l-toll": dict(shot="street"),
 }
+TUN = "a wind tunnel of night air around the airliner's wing section"
+for bid in ("w-flow", "w-stall", "w-slow", "w-recover", "w-tease", "i-catch", "l-angle", "r-startle"):
+    OVR[bid] = dict(component="Tunnel", place=TUN)
+OVR["c-cue"] = dict(component="Sky", place=SKY, shot="level", phase="night", inset="cue", things=["airliner slowing in the snow", "the captain's airspeed display", "red band", "timer"])
+OVR["l-shaker"] = dict(component="Sky", place=SKY, shot="hook", phase="stall", inset="shaker", stallAt="shaker", things=["airliner, its wings flashing red", "the captain's airspeed display", "flight clock", "stall flag"])
+OVR["l-clock"] = dict(component="Sky", place=SKY, shot="roll", phase="stall", inset="clock", dropAt="end", things=["airliner falling into cloud", "flight clock", "recorder trace"])
 for b in beats:
     o = OVR.get(b["id"])
     if not o: continue
