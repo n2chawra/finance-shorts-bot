@@ -1,38 +1,54 @@
 {
  "note": "Written by python -m generator.impact (improver, nightly). weeks: Shorts by IST publish week; stayedToWatch = engaged views / views (did not swipe away); changes: Shorts 14 days before vs after each landed change (sameWeek = other changes within 3 days, so effects mix).",
- "updatedAt": "2026-11-25T16:59:07+00:00",
+ "updatedAt": "2026-11-26T17:01:52+00:00",
  "weeks": [
   {
    "week": "2026-11-16",
-   "n": 4,
-   "medianViews48h": 127.5,
-   "avgViewPct": 48.9,
-   "stayedToWatch": 0.307,
-   "avgViewSec": 20.0,
+   "n": 6,
+   "medianViews48h": 670.5,
+   "avgViewPct": 54.1,
+   "stayedToWatch": 0.404,
+   "avgViewSec": 22.1,
    "videos": [
+    {
+     "id": "v-20261122-33",
+     "title": "Why Did Kids Love Tamagotchi, a Toy That Could Die?",
+     "day": "2026-11-22",
+     "views48h": 1380,
+     "avgViewPct": 47.8,
+     "stayedToWatch": 0.544
+    },
+    {
+     "id": "v-20261122-32",
+     "title": "Toyota vs Mercedes: The Car Built to Steal Its Buyers",
+     "day": "2026-11-22",
+     "views48h": 1215,
+     "avgViewPct": 75.8,
+     "stayedToWatch": 0.578
+    },
     {
      "id": "v-20261120-09",
      "title": "Stanley Sold $73M a Year. Then One Cup Went Viral",
      "day": "2026-11-20",
-     "views48h": 1139,
+     "views48h": 1137,
      "avgViewPct": 43.1,
-     "stayedToWatch": 0.292
+     "stayedToWatch": 0.291
     },
     {
      "id": "v-20261121-05",
      "title": "Nokia Was in Every Pocket. Microsoft Bought It Anyway",
      "day": "2026-11-21",
      "views48h": 204,
-     "avgViewPct": 56.7,
-     "stayedToWatch": 0.485
+     "avgViewPct": 57.6,
+     "stayedToWatch": 0.55
     },
     {
      "id": "v-20261121-06",
      "title": "One $4,500 Video Built Dollar Shave Club",
      "day": "2026-11-21",
      "views48h": 51,
-     "avgViewPct": 43.7,
-     "stayedToWatch": 0.118
+     "avgViewPct": 48.1,
+     "stayedToWatch": 0.129
     },
     {
      "id": "v-20261120-10",
@@ -45,5 +61,30 @@
    ]
   }
  ],
- "changes": []
+ "changes": [
+  {
+   "id": "money-dkk-sek-chf",
+   "area": "pipeline",
+   "status": "adopted",
+   "day": "2026-11-26",
+   "description": "",
+   "before": {
+    "n": 6,
+    "medianViews48h": 670.5,
+    "avgViewPct": 54.1,
+    "stayedToWatch": 0.404,
+    "avgViewSec": 22.1
+   },
+   "after": {
+    "n": 0,
+    "medianViews48h": null,
+    "avgViewPct": null,
+    "stayedToWatch": null,
+    "avgViewSec": null
+   },
+   "afterVideos": [],
+   "viewsRatio": null,
+   "sameWeek": 0
+  }
+ ]
 }

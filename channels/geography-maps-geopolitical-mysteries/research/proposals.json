@@ -57,9 +57,10 @@
       "effort": "S",
       "risk": "Small: a cover-only change; the cover must keep its top third clear.",
       "metric": "ctr (impressions click-through, analytics.json) with avgViewPct alongside",
-      "status": "new",
+      "status": "testing",
       "route": "experiment",
-      "priority": "normal"
+      "priority": "normal",
+      "reason": "On the weekly loop's challenger list (cycle/backlog.json, kind first-second); it runs when its turn comes."
     }
   ]
 }

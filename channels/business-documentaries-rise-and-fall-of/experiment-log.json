@@ -13,5 +13,14 @@
     "maxDays": 7,
     "hypothesis": "A highlighted figure on a real document in frame 1 (KFC, 591K) holds viewers past the first second at least as well as the object (Labubu, Stanley); our first Shorts lean object-first, so this tests the champion.",
     "cycle": 1
+  },
+  {
+    "id": "money-dkk-sek-chf",
+    "area": "pipeline",
+    "format": "short",
+    "status": "adopted",
+    "startedAt": "2026-11-26",
+    "evidence": "DKK, SEK, NOK and CHF format as 'DKK 83.5B' in Python and Remotion, are read with their names, and the number check accepts them; channel.json's currencies must list them (owner).",
+    "proposal": "money-dkk-sek-chf"
   }
 ]

@@ -346,7 +346,7 @@ def allowed_numbers(script: dict, figures: Mapping[str, str]) -> set[str]:
     for n in _numbers_in(script):
         out |= {_norm(f"{n:g}"), _norm(f"{n:g}%"), _norm(group_indian(round(n))), _norm(group_western(round(n))),
                 _norm(fm.full(n)), _norm(fm.short(n)), _norm(fm.long(n))}
-    return out | {t.lstrip("₹$£€") for t in out}
+    return out | {re.sub(r"^(?:dkk|sek|nok|chf)", "", t.lstrip("₹$£€")) for t in out}   # 'DKK 83.5B' shows '83.5B'
 
 
 _CHAPTER = re.compile(r"^\s*(?:\d+:)?\d+:\d\d(?=\s)", re.MULTILINE)

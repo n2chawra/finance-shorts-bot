@@ -31,7 +31,9 @@ MODEL, VOICE_PACK = "kokoro-v1.0.onnx", "voices-v1.0.bin"
 MAX_LINE = 220               # characters per line
 
 _UNITS = {"L": "lakh", "Lakh": "lakh", "Cr": "crore", "Crore": "crore"}
-_MONEY = {"$": "dollars", "£": "pounds", "€": "euros"}
+_MONEY = {"$": "dollars", "£": "pounds", "€": "euros",
+          "DKK": "Danish kroner", "SEK": "Swedish kronor", "NOK": "Norwegian kroner", "CHF": "Swiss francs"}
+_ONE = {"DKK": "Danish krone", "SEK": "Swedish krona", "NOK": "Norwegian krone", "CHF": "Swiss franc"}
 _SCALES = {"K": "thousand", "M": "million", "B": "billion", "T": "trillion",
            "thousand": "thousand", "million": "million", "billion": "billion", "trillion": "trillion"}
 
@@ -71,10 +73,11 @@ def spoken(display: str, currency: str = "INR", lang: str = "en-us") -> str:
 def _western(s: str) -> str | None:
     """'$1.2M' → '1.2 million dollars', '€2.35 billion' → '2.35 billion euros', '$12,500' → '12500 dollars',
     '340M' → '340 million'; None when `s` is not a dollar, pound or euro amount or a K/M/B count."""
-    m = re.fullmatch(r"([$£€])\s*([\d.,]+)\s*(K|M|B|T|thousand|million|billion|trillion)?", s)
+    m = re.fullmatch(r"([$£€]|DKK|SEK|NOK|CHF)\s*([\d.,]+)\s*(K|M|B|T|thousand|million|billion|trillion)?", s)
     if m:
         sym, num, scale = m.groups()
-        unit = _MONEY[sym][:-1] if not scale and _trim(num.replace(",", "")) == "1" else _MONEY[sym]   # "one dollar"
+        one = not scale and _trim(num.replace(",", "")) == "1"
+        unit = (_ONE.get(sym) or _MONEY[sym][:-1]) if one else _MONEY[sym]   # "one dollar", "one Swiss franc"
         return f"{_trim(num.replace(',', ''))} {_SCALES[scale] + ' ' if scale else ''}{unit}"
     m = re.fullmatch(r"([\d.,]+)\s*(K|M|B|T)", s)   # a count such as '340M'
     if m:

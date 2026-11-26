@@ -73,6 +73,11 @@ Overlays: `lowerThird` {name, role}, `source` {form?, text, date?, pos}, `label`
 and shakes the picture; no digits), `date` {date (ISO), sub, pos top/center}. The red ring (`CircleMark`) is
 not a doc overlay: the owner dropped it on 20 Nov.
 
+**Text over a photo** (2026-11-26, from four Shorts that failed QA three rounds running): a photo has its own faces,
+signs and words. Every text layer that sits over one (`headline`, `source`, `poster` title and figure, a `depth` sub,
+labels) goes on plain ground: set the photo's `focus` so its faces and lettering sit away from where the text lands,
+or move the text with `pos`. A `depth` push keeps the eyes at least 15% below the top edge.
+
 Entrances (`Transitions.tsx`): a layer's `enter` is cut, fade, flash, whip-left, whip-right, zoom, focus, shutter,
 glitch, drop, iris or slide-up. Left out, the kit picks one by the layer's kind (full-frame pictures whip, zoom, focus,
 glitch or flash; framed things drop, slide or open; the poster flashes) and never the same twice in a row; the

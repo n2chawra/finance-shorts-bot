@@ -1,3 +1,24 @@
 {
-  "experiments": []
+  "experiments": [
+    {
+      "id": "dd-long-title-3d",
+      "area": "title",
+      "metric": "views7d",
+      "format": "long",
+      "status": "running",
+      "startedAt": "2026-11-26",
+      "templates": [
+        "long_story"
+      ],
+      "share": 0.5,
+      "minPerArm": 4,
+      "maxDays": 42,
+      "prompt": {
+        "on": "Long-video title (experiment dd-long-title-3d, on): name the event as people search it first (the 23 Nov rule), then say it is rebuilt in 3D, then the curiosity, e.g. 'The Colgan Air Crash, Rebuilt in 3D: The Stall Warning Nobody Called'. Only when the video's reconstruction is drawn in the 3D kit; a long video without 3D beats writes the off title.",
+        "off": "Long-video title (experiment dd-long-title-3d, off): the champion: the event's searched name, then the curiosity ('The Colgan Air Crash: The Stall Warning That Rewrote Pilot Rules'); never say '3D' in the title."
+      },
+      "proposal": "dd-long-title-event-3d",
+      "description": "Disaster Desk long videos: 'Rebuilt in 3D' after the event's name in the title, against the name-then-curiosity title (judged on views in 7 days)"
+    }
+  ]
 }

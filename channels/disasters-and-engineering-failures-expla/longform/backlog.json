@@ -28,9 +28,10 @@
       "route": "adopt",
       "priority": "high",
       "found": "2026-11-23",
-      "status": "open",
+      "status": "done",
       "title": "prompts/recipe.md 'The first 45 seconds' rule 4 ('without the toll') contradicts the owner's newer note",
-      "detail": "Improver: rewrite rule 4 to 'The whole arc in 45 s, and in the first sentence the small cause and its scale (the toll stated once, plainly)'. The owner's note of 22 Nov is newer and wins (agents/policy.md), and the improver already flagged the conflict on the Notifications page. Studio's check: its hook names cause + scale by 15 s."
+      "detail": "Improver: rewrite rule 4 to 'The whole arc in 45 s, and in the first sentence the small cause and its scale (the toll stated once, plainly)'. The owner's note of 22 Nov is newer and wins (agents/policy.md), and the improver already flagged the conflict on the Notifications page. Studio's check: its hook names cause + scale by 15 s.",
+      "reason": "Already on main: recipe.md 'The first 45 seconds' rule 4 now says the stakes first (the small cause and the toll it led to, one plain sentence); the owner edited it."
     },
     {
       "id": "2026-11-23-name-roles-not-people",
@@ -119,9 +120,10 @@
       "route": "adopt",
       "priority": "normal",
       "found": "2026-11-26",
-      "status": "open",
+      "status": "adopted",
       "title": "Leave the description's CHAPTERS block out of ship's after-QA fingerprint",
-      "detail": "studio.md step 7 adds chapter timestamps after the full render, but generator/run.py fingerprint() hashes the whole plan, so ship refuses with 'the script or plan changed after QA passed'. L-20261126-41 worked around it by putting the chapters into the manifest. Fix: strip the CHAPTERS lines from plan.description before hashing (improver's lane)."
+      "detail": "studio.md step 7 adds chapter timestamps after the full render, but generator/run.py fingerprint() hashes the whole plan, so ship refuses with 'the script or plan changed after QA passed'. L-20261126-41 worked around it by putting the chapters into the manifest. Fix: strip the CHAPTERS lines from plan.description before hashing (improver's lane).",
+      "reason": "Adopted: generator/run.py fingerprint() leaves the description's CHAPTERS block out, so ship no longer refuses a long video for the timestamps Studio adds after the full render (test in generator/tests/test_qa_gate.py)."
     }
   ]
 }

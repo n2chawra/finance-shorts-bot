@@ -11,12 +11,16 @@ const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const easeOut = (x: number) => 1 - Math.pow(1 - clamp(x), 3);
 const back = (x: number) => { const c = clamp(x), s = 1.6; return 1 + (s + 1) * Math.pow(c - 1, 3) + s * Math.pow(c - 1, 2); };
 
-export type Cur = "INR" | "USD" | "GBP" | "EUR";
+export type Cur = "INR" | "USD" | "GBP" | "EUR" | "DKK" | "SEK" | "NOK" | "CHF";
 const NOTE: Record<Cur, { body: string; band: string; ink: string; sign: string }> = {
   INR: { body: "#b9c79d", band: "#e9e2c3", ink: "#56704a", sign: "₹" },
   USD: { body: "#9dc79f", band: "#efe9c8", ink: "#3c6b44", sign: "$" },
   GBP: { body: "#c7a59d", band: "#efe2c8", ink: "#7a4a3c", sign: "£" },
   EUR: { body: "#9db7c7", band: "#e2e9ef", ink: "#3c5a6b", sign: "€" },
+  DKK: { body: "#c7b59d", band: "#efe6d2", ink: "#6b553c", sign: "kr" },
+  SEK: { body: "#a9b9d4", band: "#e6ebf3", ink: "#3c4f6b", sign: "kr" },
+  NOK: { body: "#c79dae", band: "#efdde4", ink: "#6b3c50", sign: "kr" },
+  CHF: { body: "#d4b06a", band: "#f3e8cc", ink: "#6b5222", sign: "Fr" },
 };
 
 /** One banknote, drawn at (0,0) centred, `nw` wide. */
@@ -26,7 +30,7 @@ export const Note: React.FC<{ cur: Cur; nw: number; rot?: number; x?: number; y?
     <g transform={`translate(${x},${y}) rotate(${rot})`} opacity={opacity}>
       <rect x={-nw / 2} y={-nh / 2} width={nw} height={nh} rx={nw * 0.04} fill={c.body} stroke={c.ink} strokeWidth={nw * 0.02} />
       <circle cx={nw * 0.18} cy={0} r={nh * 0.3} fill={c.band} />
-      <text data-probe="skip" x={nw * 0.18} y={nh * 0.13} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={nh * 0.42} fill={c.ink}>{c.sign}</text>
+      <text data-probe="skip" x={nw * 0.18} y={nh * 0.13} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={nh * (c.sign.length > 1 ? 0.3 : 0.42)} fill={c.ink}>{c.sign}</text>
       <rect x={-nw * 0.42} y={-nh * 0.3} width={nw * 0.34} height={nh * 0.12} rx={nh * 0.06} fill={c.ink} opacity={0.35} />
       <rect x={-nw * 0.42} y={nh * 0.12} width={nw * 0.24} height={nh * 0.1} rx={nh * 0.05} fill={c.ink} opacity={0.25} />
     </g>
