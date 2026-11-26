@@ -453,6 +453,16 @@ def record(vid: str, agent: str, passed: bool, notes: list[str], root: Path = RO
 # unless QA passed this exact fingerprint, and ship refuses a video whose script changed after QA.
 FP_NOTE = "fingerprint: "
 _FP_SKIP = ("narrator", "experiments")   # render writes these itself
+# A long video's chapter timestamps are only known after the full render, so Studio adds the description's
+# CHAPTERS block then (agents/studio.md step 7); it says nothing new and must not count as a change after QA.
+_CHAPTERS = re.compile(r"(?ims)^[ \t]*chapters[ \t]*:?[ \t]*\n(?:[ \t]*\d{1,2}(?::\d{2}){1,2}\b[^\n]*(?:\n|\Z))*")
+
+
+def _fp_plan(plan: dict) -> dict:
+    """The plan as the fingerprint sees it: the description without its chapter timestamps."""
+    if not isinstance(plan.get("description"), str):
+        return plan
+    return {**plan, "description": re.sub(r"\n{3,}", "\n\n", _CHAPTERS.sub("", plan["description"])).strip()}
 
 
 def fingerprint(vid: str, root: Path = ROOT) -> str:
@@ -460,7 +470,7 @@ def fingerprint(vid: str, root: Path = ROOT) -> str:
     import hashlib
     d = _dir(vid, root)
     script = {k: v for k, v in (_read(d / "script.json") if (d / "script.json").is_file() else {}).items() if k not in _FP_SKIP}
-    plan = _read(d / "plan.json") if (d / "plan.json").is_file() else {}
+    plan = _fp_plan(_read(d / "plan.json")) if (d / "plan.json").is_file() else {}
     words = hashlib.sha256(json.dumps([script, plan], sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:16]
     code = hashlib.sha256()
     src = root / "remotion" / "src" / "videos" / vid
