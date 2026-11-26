@@ -1,0 +1,1071 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52931,
+ "story": "business_war_short",
+ "shape": "versus",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "ledger",
+  "key": "A",
+  "bpm": 76
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "secret",
+ "cta": "Adidas or Puma: which side are your shoes on? Comment",
+ "feed_id": "2026-11-26-adidas-puma-brothers-short",
+ "facts": [
+  {
+   "label": "adidas revenue, full year 2025",
+   "value": 24811,
+   "unit": "money_million",
+   "currency": "EUR",
+   "as_of": "2025-12-31",
+   "source": "adidas",
+   "url": "https://www.adidas-group.com/en/media/press-releases/adidas-reports-record-revenues-in-2025-and-launches-share-buyback",
+   "latest": true,
+   "checked": "2026-11-26"
+  },
+  {
+   "label": "Puma sales, full year 2025",
+   "value": 7296.2,
+   "unit": "money_million",
+   "currency": "EUR",
+   "as_of": "2025-12-31",
+   "source": "PUMA",
+   "url": "https://annual-report.puma.com/2025/en/combined-management-report/economic-report/results-of-operations/index.html",
+   "latest": true,
+   "checked": "2026-11-26"
+  },
+  {
+   "label": "Fall in Puma's sales in 2025",
+   "value": 13.1,
+   "unit": "percent",
+   "as_of": "2025-12-31",
+   "source": "PUMA",
+   "url": "https://annual-report.puma.com/2025/en/combined-management-report/economic-report/results-of-operations/index.html",
+   "latest": true,
+   "checked": "2026-11-26"
+  },
+  {
+   "label": "Puma's net result, 2025 (a loss)",
+   "value": 645.5,
+   "unit": "money_million",
+   "currency": "EUR",
+   "as_of": "2025-12-31",
+   "source": "PUMA",
+   "url": "https://annual-report.puma.com/2025/en/combined-management-report/economic-report/results-of-operations/index.html",
+   "latest": true,
+   "checked": "2026-11-26"
+  }
+ ],
+ "maths": [
+  {
+   "name": "gap",
+   "kind": "rate",
+   "part": 7296200000,
+   "whole": 24811000000,
+   "facts": {
+    "part": 2,
+    "whole": 1
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.6,
+  "words": "One factory, *two* brands",
+  "angle": "story",
+  "unique": "Adidas vs Puma covers show the two brothers or logos; ours shows the two shoes split down the middle"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Adidas and Puma were one shoe company, run by two brothers.",
+   "events": {
+    "adidas": {
+     "word": "Adidas"
+    },
+    "puma": {
+     "word": "Puma"
+    },
+    "shoe": {
+     "word": "shoe"
+    },
+    "company": {
+     "word": "company"
+    },
+    "brothers": {
+     "word": "brothers"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "shoe"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Puma shoe on a table",
+     "an Adidas shoe and a Puma shoe side by side"
+    ],
+    "things": [
+     "Puma Clyde",
+     "Adidas Samba",
+     "Puma Suede"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "shoe",
+      "size": "medium"
+     },
+     {
+      "at": "brothers",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "adidas",
+      "what": "the Puma shoe pushes in"
+     },
+     {
+      "at": "shoe",
+      "what": "cut to the two shoes, Adidas left"
+     },
+     {
+      "at": "brothers",
+      "what": "the two shoes keep pushing"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-puma-clyde-leather-blue-eb16765e.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "shoe"
+     },
+     {
+      "kind": "split",
+      "at": "shoe",
+      "left": {
+       "name": "Adidas",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-adidas-samba-7f4c3f49.jpg",
+       "fit": "cover"
+      },
+      "right": {
+       "name": "Puma",
+       "src": "media/business-documentaries-rise-and-fall-of/commons-photo-puma-suede-ac6baaf7.jpg",
+       "fit": "cover"
+      }
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "brothers",
+   "role": "build",
+   "say": "Adi Dassler made the shoes. His brother Rudolf sold them, from one factory in a small German town.",
+   "events": {
+    "adi": {
+     "word": "Adi"
+    },
+    "dassler": {
+     "word": "Dassler"
+    },
+    "made": {
+     "word": "made"
+    },
+    "rudolf": {
+     "word": "Rudolf"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "factory": {
+     "word": "factory"
+    },
+    "german": {
+     "word": "German"
+    },
+    "town": {
+     "word": "town"
+    }
+   },
+   "params": {
+    "place": [
+     "an Adidas shoe on a workbench",
+     "the river in Herzogenaurach"
+    ],
+    "things": [
+     "Adidas shoe",
+     "Herzogenaurach"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "rudolf",
+      "size": "medium"
+     },
+     {
+      "at": "town",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "adi",
+      "what": "the shoe pushes in, Adi Dassler's name lands"
+     },
+     {
+      "at": "made",
+      "what": "the shoe keeps pushing"
+     },
+     {
+      "at": "german",
+      "what": "cut to the town's river"
+     },
+     {
+      "at": "town",
+      "what": "a label: Herzogenaurach"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-adidas-samba-black-8e1b8f13.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc",
+      "out": "german"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-herzogenaurach-mittlere-aurach-02-543e1a1c.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc",
+      "at": "german"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "lowerThird",
+      "name": "Adi Dassler",
+      "role": "made the shoes",
+      "at": "dassler",
+      "out": "rudolf"
+     },
+     {
+      "kind": "label",
+      "text": "Herzogenaurach",
+      "sub": "Bavaria, Germany",
+      "at": "town"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "fight",
+   "role": "promise",
+   "say": "Then the brothers fell out, and nobody ever settled why. So what happened to their factory?",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "fell": {
+     "word": "fell"
+    },
+    "nobody": {
+     "word": "nobody"
+    },
+    "settled": {
+     "word": "settled"
+    },
+    "happened": {
+     "word": "happened"
+    },
+    "factory": {
+     "word": "factory"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "fell"
+    }
+   ],
+   "params": {
+    "place": [
+     "the old main street of Herzogenaurach"
+    ],
+    "things": [
+     "the town's old street",
+     "the town tower"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "fell",
+      "size": "medium"
+     },
+     {
+      "at": "factory",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fell",
+      "what": "a stamp: FELL OUT"
+     },
+     {
+      "at": "settled",
+      "what": "the street keeps drifting"
+     },
+     {
+      "at": "factory",
+      "what": "push to the tower"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-herzogenaurach-hauptstra-e-fehnturm-3f5f7d99.jpg",
+      "focus": [
+       0.6,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "archive"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Fell out",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -6,
+      "at": "fell",
+      "out": "happened"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "adidas",
+   "role": "build",
+   "say": "They cut it in half. Adi named his side Adidas, after himself.",
+   "events": {
+    "cut": {
+     "word": "cut"
+    },
+    "half": {
+     "word": "half"
+    },
+    "named": {
+     "word": "named"
+    },
+    "adidas": {
+     "word": "Adidas"
+    },
+    "himself": {
+     "word": "himself"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "half"
+    }
+   ],
+   "params": {
+    "place": [
+     "an Adidas building"
+    ],
+    "things": [
+     "Adidas building",
+     "Adidas logo"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "adidas",
+      "size": "medium"
+     },
+     {
+      "at": "himself",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "half",
+      "what": "the campus pushes in"
+     },
+     {
+      "at": "adidas",
+      "what": "the Adidas logo drops in"
+     },
+     {
+      "at": "himself",
+      "what": "a label: Adi Dassler"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-adidas-store-soho-2041aaf4.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-adidas-logo-376d9d31.png",
+      "aspect": 1.45,
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "size": 0.5,
+      "tilt": -4,
+      "at": "adidas"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Adi + Dassler",
+      "sub": "the name",
+      "at": "himself"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "puma",
+   "role": "build",
+   "say": "Rudolf's side became Puma, across the little river that runs through town.",
+   "events": {
+    "rudolfs": {
+     "word": "Rudolf's"
+    },
+    "puma": {
+     "word": "Puma"
+    },
+    "across": {
+     "word": "across"
+    },
+    "river": {
+     "word": "river"
+    },
+    "town": {
+     "word": "town"
+    }
+   },
+   "params": {
+    "place": [
+     "Puma's headquarters in Herzogenaurach",
+     "the river Aurach"
+    ],
+    "things": [
+     "Puma headquarters",
+     "Puma logo",
+     "the river"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "river",
+      "size": "wide"
+     },
+     {
+      "at": "town",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "puma",
+      "what": "the Puma logo drops in"
+     },
+     {
+      "at": "river",
+      "what": "cut to the river"
+     },
+     {
+      "at": "town",
+      "what": "an arrow points at the far bank"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-daniel-cox-puma-headquarters-in-herzogenaurach-d-9833f3fb.jpg",
+      "focus": [
+       0.4,
+       0.5
+      ],
+      "move": "drift-left",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "river"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-puma-logo-text-effc77b4.png",
+      "aspect": 3.2,
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "size": 0.55,
+      "tilt": 4,
+      "at": "puma",
+      "out": "river"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-herzogenaurach-aurach-f6700024.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc",
+      "at": "river"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "arrow",
+      "from": [
+       0.3,
+       0.25
+      ],
+      "to": [
+       0.55,
+       0.42
+      ],
+      "label": "The Aurach",
+      "at": "town"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "town",
+   "role": "build",
+   "say": "The whole town took sides. People looked at your shoes before they talked to you. So which side won?",
+   "events": {
+    "whole": {
+     "word": "whole"
+    },
+    "sides": {
+     "word": "sides"
+    },
+    "people": {
+     "word": "People"
+    },
+    "shoes": {
+     "word": "shoes"
+    },
+    "talked": {
+     "word": "talked"
+    },
+    "won": {
+     "word": "won"
+    },
+    "looked": {
+     "word": "looked"
+    }
+   },
+   "params": {
+    "place": [
+     "Herzogenaurach from the air",
+     "a pair of feet in sneakers"
+    ],
+    "things": [
+     "the town",
+     "sneakers"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "shoes",
+      "size": "close"
+     },
+     {
+      "at": "talked",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sides",
+      "what": "the town drifts"
+     },
+     {
+      "at": "people",
+      "what": "punch to an Adidas shoe"
+     },
+     {
+      "at": "looked",
+      "what": "punch to a Puma shoe"
+     },
+     {
+      "at": "shoes",
+      "what": "punch down to the shoes on feet"
+     },
+     {
+      "at": "talked",
+      "what": "a label: which side?"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "grade": "doc",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-herzogenaurach-luftaufnahme-2020-19f98a6e.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-adidas-top-ten-062d99f3.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "people"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-puma-shoes-e2703886.jpg",
+        "focus": [
+         0.5,
+         0.5
+        ],
+        "at": "looked"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-sneakers-and-feet-ac32e641.jpg",
+        "focus": [
+         0.5,
+         0.45
+        ],
+        "at": "shoes"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Which side?",
+      "sub": "Adidas or Puma",
+      "at": "talked"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "turn",
+   "role": "turn",
+   "say": "Today, Puma is the one falling behind. Its sales fell {fact3} last year, and it lost {fact4}.",
+   "events": {
+    "today": {
+     "word": "Today"
+    },
+    "falling": {
+     "word": "falling"
+    },
+    "sales": {
+     "word": "sales"
+    },
+    "fell": {
+     "word": "fell"
+    },
+    "lost": {
+     "word": "lost"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "fell"
+    },
+    {
+     "kind": "pop",
+     "at": "lost"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Puma store in Osaka",
+     "PUMA's annual report card"
+    ],
+    "things": [
+     "Puma store",
+     "annual report",
+     "the loss"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "fell",
+      "size": "medium"
+     },
+     {
+      "at": "lost",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "falling",
+      "what": "the store pushes in, cold"
+     },
+     {
+      "at": "fell",
+      "what": "the annual report card drops in over the store"
+     },
+     {
+      "at": "lost",
+      "what": "the highlighter swipes the sales fall"
+     }
+    ],
+    "fig": {
+     "drop": "{fact3}",
+     "loss": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-puma-store-osaka-d2fd4986.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "cold"
+     },
+     {
+      "kind": "headline",
+      "at": "fell",
+      "items": [
+       {
+        "outlet": "PUMA · Annual report",
+        "date": "2025-12-31",
+        "title": "Sales fell {fact3} in one year",
+        "deck": "The year closed with a net loss of {fact4}.",
+        "style": "paper",
+        "hi": "{fact3}"
+       }
+      ],
+      "on": [
+       "fell"
+      ],
+      "markAt": "lost",
+      "plate": false
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "And Adidas, on the other bank? Last year Puma sold just {gap_pct} as much as Adidas did.",
+   "events": {
+    "adidas": {
+     "word": "Adidas"
+    },
+    "bank": {
+     "word": "bank"
+    },
+    "puma": {
+     "word": "Puma"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "did": {
+     "word": "did"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "place": [
+     "the poster over Adidas's campus in Herzogenaurach"
+    ],
+    "things": [
+     "Adidas campus",
+     "the sales gap"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sold",
+      "size": "wide"
+     },
+     {
+      "at": "did",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "adidas",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "sold",
+      "what": "the figure settles"
+     },
+     {
+      "at": "did",
+      "what": "the poster keeps pushing"
+     }
+    ],
+    "fig": {
+     "share": "{gap_pct}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-herzogenaurach-adidas-2016-d9917e2c.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "date": "2025-12-31",
+      "title": "Puma",
+      "figure": "share",
+      "sub": "of Adidas's sales, in one year",
+      "on": "adidas"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-adidas-2022-logo-bd7fa4ad.png",
+      "aspect": 1.69,
+      "pos": [
+       0.5,
+       0.16
+      ],
+      "size": 0.36,
+      "tilt": 3,
+      "at": "bank"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ending",
+   "role": "loop",
+   "say": "Adidas or Puma: which side are your shoes on? Because once upon a time,",
+   "events": {
+    "adidas": {
+     "word": "Adidas"
+    },
+    "puma": {
+     "word": "Puma"
+    },
+    "side": {
+     "word": "side"
+    },
+    "shoes": {
+     "word": "shoes"
+    },
+    "because": {
+     "word": "Because"
+    },
+    "time": {
+     "word": "time"
+    }
+   },
+   "params": {
+    "place": [
+     "sneakers on a city street",
+     "the Puma shoe from the first frame"
+    ],
+    "things": [
+     "sneakers",
+     "annual report"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "shoes",
+      "size": "medium"
+     },
+     {
+      "at": "time",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "adidas",
+      "what": "a stamp: ADIDAS?"
+     },
+     {
+      "at": "puma",
+      "what": "a stamp: PUMA?"
+     },
+     {
+      "at": "shoes",
+      "what": "push to the shoes"
+     },
+     {
+      "at": "time",
+      "what": "back to the Puma shoe from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-houston-sneakers-unsplash-928e7f2e.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-puma-clyde-leather-blue-eb16765e.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "time"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Adidas?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.25
+      ],
+      "tilt": -4,
+      "at": "adidas",
+      "out": "puma"
+     },
+     {
+      "kind": "stamp",
+      "text": "Puma?",
+      "tone": "white",
+      "pos": [
+       0.45,
+       0.25
+      ],
+      "tilt": 4,
+      "at": "puma",
+      "out": "shoes"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}
