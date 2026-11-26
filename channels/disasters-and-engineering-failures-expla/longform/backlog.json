@@ -111,6 +111,17 @@
       "status": "open",
       "title": "Air-crash long videos: plan at least half the runtime in the 3D world from the start",
       "detail": "The Colgan run (L-20261126-41) drew the flight deck, the airspeed tape and the wing diagrams in flat 2D (77% of the runtime). QA failed it on lesson 6 twice. Plan the cockpit moments and the wing physics as 3D shots (airflow over the 3D wing, the iced leading edge, the instruments seen in the lit cockpit), and keep flat diagrams to 3-6 s inserts."
+    },
+    {
+      "id": "2026-11-26-chapters-fingerprint",
+      "kind": "bug",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "open",
+      "title": "Leave the description's CHAPTERS block out of ship's after-QA fingerprint",
+      "detail": "studio.md step 7 adds chapter timestamps after the full render, but generator/run.py fingerprint() hashes the whole plan, so ship refuses with 'the script or plan changed after QA passed'. L-20261126-41 worked around it by putting the chapters into the manifest. Fix: strip the CHAPTERS lines from plan.description before hashing (improver's lane)."
     }
   ]
 }

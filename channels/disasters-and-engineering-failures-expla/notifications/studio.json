@@ -1,11 +1,3 @@
 {
- "notifications": [
-  {
-   "key": "studio-colgan-qa-limit",
-   "severity": "warning",
-   "title": "Colgan Air long video stopped at the QA round limit (not shipped)",
-   "detail": "L-20261126-41 has passed the fact review, the number check, lint and all stills gates. QA round 2 still asks for 4 things: more of the video in 3D (36% now, lesson 6 wants half), real logbooks in x-catch, the bill title fitting in x-act, and better wing and flap materials. The work is saved on branch claude/disaster-studio-1zszgc. This channel is at 2 of 4 long videos this week.",
-   "fix": "1. To finish it: reply 'Fix and resume' in the Studio session, or start a session on branch claude/disaster-studio-1zszgc and ask it to fix the 4 QA items, re-run QA, render and ship L-20261126-41. 2. Or leave it: the next Studio run takes a new topic."
-  }
- ]
+ "notifications": []
 }
