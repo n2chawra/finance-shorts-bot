@@ -1,0 +1,46 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-27",
+  "startedAt": "2026-11-26T16:33:10Z",
+  "finishedAt": "2026-11-26T16:40:22Z",
+  "summary": "Fixed half of main's red workers typecheck (posting-plan.ts) and raised the other half (owner-locked publishing.ts) as a critical notification; wrote 17 video analyses and Craze & Crash's first channel review.",
+  "decision": "acted",
+  "why": "Last night's branch was blocked by a smoke test that main has since fixed; main's workers typecheck fails on two files, which blocks every agent branch touching workers/. The data audit was 22 h old, so the dashboard-vs-YouTube check was skipped.",
+  "findings": [
+    {
+      "title": "Workers typecheck red on main",
+      "detail": "posting-plan.ts:90/96 (fixed tonight) and workers/lib/publishing.ts:99 (owner-locked; fix: slots[i + 1]!). Notification workers-typecheck-red."
+    },
+    {
+      "title": "Queue page's promo plan ignores the owner's pick (Disaster Desk)",
+      "detail": "posting-plan.ts promoPick sorts by newest long, Publish's pickPromo puts the picked Short first. Backlog dd-015, held until the typecheck is green."
+    },
+    {
+      "title": "Data audit stale again",
+      "detail": "Newest audit 25 Nov 18:43 UTC, 22 h old at the start; skipped."
+    },
+    {
+      "title": "Craze & Crash: founder-money hooks lose viewers",
+      "detail": "Shock-number founder hooks 26.7% stayed (3 Shorts) vs 50.8% for other hooks (5 Shorts)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "posting-plan.ts typechecks under the workers' strict settings",
+      "detail": "splice(i, 1)[0] ?? null at two places; no behaviour change.",
+      "branch": "agent/auditor/2026-11-27"
+    },
+    {
+      "title": "Analytics analysis",
+      "detail": "17 video entries across 5 channels; first channel review for Craze & Crash.",
+      "branch": "agent/auditor/2026-11-27"
+    }
+  ],
+  "nextCheck": "2026-11-28",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-27.md"
+    }
+  ]
+}
