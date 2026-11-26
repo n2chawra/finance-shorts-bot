@@ -87,13 +87,13 @@ export function postingPlan(format: Format, queue: Video[], posted: Video[], set
       if (isTrend) {
         // a trend slot opens for each breaking or trending video of the day; on a quiet day it doesn't appear
         const i = remaining.findIndex((v) => urgentOn(v, day));
-        if (i >= 0) { video = remaining.splice(i, 1)[0]; urgentToday++; }
+        if (i >= 0) { video = remaining.splice(i, 1)[0] ?? null; urgentToday++; }
         else if (urgentToday > trendUsed && remaining.length) video = remaining.shift()!;
         else continue;
         trendUsed++;
       } else if (format === "short" && remaining.some((v) => v.style.promoOf)) {
         const i = promoPick(remaining, longAt(), at);
-        video = i >= 0 ? remaining.splice(i, 1)[0] : null;
+        video = i >= 0 ? remaining.splice(i, 1)[0] ?? null : null;
         if (!video && ++empty > 1) break;
       } else {
         video = remaining.shift() ?? null;
