@@ -1,0 +1,369 @@
+{
+  "id": "v-20261126-12",
+  "createdAt": "2026-11-26T00:25:12.290257+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "What if the Mediterranean dried up? It already did once",
+    "category": "seas",
+    "reach": "global",
+    "feed_id": "2026-11-26-what-if-mediterranean-dried-up",
+    "map_answer": "one gap on the map, the Strait of Gibraltar: close it and the sea drains to a salt basin; open it and the Atlantic pours back in"
+  },
+  "title": "Why would the Mediterranean turn into a salt desert?",
+  "description": "Why would the Mediterranean Sea turn into a desert of salt? It already did, once.\nOne gap at Gibraltar closed, the sun drained the sea to a salt basin, and then the Atlantic broke back in, all on the map.\nSources: Wikipedia (Nov 2026). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#Mediterranean",
+    "#Gibraltar",
+    "#Geography",
+    "#Maps"
+  ],
+  "hookStyle": "question",
+  "cta": "Salt desert or blue sea: which Mediterranean would you visit? Comment",
+  "seed": 62903,
+  "style": {
+    "palette": "sky",
+    "genre": "atlas",
+    "key": "C",
+    "bpm": 90,
+    "look": {
+      "stage": "desert",
+      "header": "strip",
+      "holder": "receipt",
+      "entrance": "pop"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why would the Mediterranean Sea turn into a desert of salt?",
+        "start": 0.3,
+        "seconds": 2.52,
+        "window": 3.17,
+        "fill": 0.795
+      },
+      {
+        "scene": "gap",
+        "text": "It already did, once, and it all hangs on one gap at Gibraltar.",
+        "start": 3.47,
+        "seconds": 2.87,
+        "window": 3.53,
+        "fill": 0.813
+      },
+      {
+        "scene": "narrow",
+        "text": "That gap is just 14.2 kilometres wide, the sea's only door to the open Atlantic Ocean.",
+        "start": 7.0,
+        "seconds": 4.46,
+        "window": 5.13,
+        "fill": 0.869
+      },
+      {
+        "scene": "pour",
+        "text": "The sun takes more water from this sea than its rivers bring, so the Atlantic keeps pouring in. So what if that door closed?",
+        "start": 12.13,
+        "seconds": 5.08,
+        "window": 5.73,
+        "fill": 0.887
+      },
+      {
+        "scene": "shut",
+        "text": "About 5.96M years ago, that door slammed shut.",
+        "start": 17.87,
+        "seconds": 2.98,
+        "window": 3.63,
+        "fill": 0.821
+      },
+      {
+        "scene": "drain",
+        "text": "Cut off, the sun took 3,300 cubic kilometres of water a year, and almost nothing came in to replace it.",
+        "start": 21.5,
+        "seconds": 5.18,
+        "window": 5.8,
+        "fill": 0.893
+      },
+      {
+        "scene": "shrink",
+        "text": "Year after year, coast after coast, the water pulled back, leaving only salty lakes in the deepest basins.",
+        "start": 27.3,
+        "seconds": 4.76,
+        "window": 5.43,
+        "fill": 0.877
+      },
+      {
+        "scene": "canyon",
+        "text": "Rivers like the Nile chased the falling water, carving deep canyons down to the new floor.",
+        "start": 32.73,
+        "seconds": 3.82,
+        "window": 4.47,
+        "fill": 0.855
+      },
+      {
+        "scene": "desert",
+        "text": "Until most of its 3.7M cubic kilometres were gone, leaving a salt desert kilometres deep. So how did the sea ever come back?",
+        "start": 37.2,
+        "seconds": 6.3,
+        "window": 6.9,
+        "fill": 0.913
+      },
+      {
+        "scene": "break",
+        "text": "Then, about 5.33M years ago, the Atlantic broke back in at Gibraltar, spilling over the rock.",
+        "start": 44.1,
+        "seconds": 4.74,
+        "window": 5.3,
+        "fill": 0.894
+      },
+      {
+        "scene": "flood",
+        "text": "By one estimate it roared in at up to 100M cubic metres every second, filling the sea within two years.",
+        "start": 49.4,
+        "seconds": 5.46,
+        "window": 6.13,
+        "fill": 0.891
+      },
+      {
+        "scene": "loop",
+        "text": "Salt desert or blue sea: which would you visit? Because close that one gap again, and the sea starts to drain.",
+        "start": 55.53,
+        "seconds": 4.63,
+        "window": 5.27,
+        "fill": 0.879
+      }
+    ]
+  },
+  "durationSec": 61,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.8,
+    "music_under_voice_db": 30.0
+  },
+  "experiments": {
+    "geo-claim-hook": "off"
+  },
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after 3 line changes (drain, shrink, break); the other 9 lines and all 6 facts are unchanged and were confirmed earlier on their Wikipedia pages (Messinian salinity crisis, Strait of Gibraltar, Zanclean flood). drain: 'almost nothing came in to replace it' fits the source's 3,300 km3/yr being NET evaporative loss after inflows. shrink: 'only salty lakes in the deepest basins' matches the source ('three or four large brine lakes on the abyssal plains remained'). break: 'spilling over the rock' matches the Zanclean page: water refilled the basin through the modern Strait of Gibraltar, the most widely accepted version being a stream eroding through the sill until it captured the Atlantic. Note: rivers still flowed in during the drying (canyon beat), so drain's 'almost nothing' is acceptable only because 3,300 is the net figure; style only."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Directed on the map throughout, at least as full as the Greenland reference: whole sea (0s), ONCE stamp (5s), ruler+14.2 KM tag at the strait (10s), 5.96M tablet+closing bridge (20s), sun+steam+3,300 gauge (25s), Adriatic/Aegean drying (30s), Nile canyon (35s), empty 3.7M tank over the salt basin (40s), 5.33M tablet at the breach (45s), 100M flow gauge over the flood (50s), full sea and a clean loop (60-61s). No overlaps, cut-offs or placeholders; layout_problems empty; 61 s in the 60-80 range; audio -1.0/-16.2 dB as in the channel's shipped Shorts; disclaimer in the description; pick-one close and loop OK. Minor, not rejects: no MEDITERRANEAN label at 0.0s (it writes on about 1 s in), 15s is a bare strait mid-slide before the arrows, and the Shrink year counter shows a Roman 'V' that reads as a chevron.",
+        "fingerprint: c741e1ba8e294a9d.fb4c7534967c3639"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:02:31.718132+00:00",
+      "finishedAt": "2026-11-26T00:02:31.718132+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:03:38.273140+00:00",
+      "finishedAt": "2026-11-26T00:03:38.273140+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T00:03:39.097661+00:00",
+      "finishedAt": "2026-11-26T00:03:39.097661+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:03:54.086871+00:00",
+      "finishedAt": "2026-11-26T00:03:54.086871+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:05:04.237708+00:00",
+      "finishedAt": "2026-11-26T00:05:04.237708+00:00",
+      "notes": [
+        "All 6 facts confirmed on their Wikipedia pages via WebFetch: Messinian salinity crisis (start 5.96 +/- 0.02 Ma, 'precursor of the Strait of Gibraltar closed about 5.96 Ma'; ended with Gibraltar reopening 5.33 Ma; net evaporative loss ~3,300 km3/yr; 3.7 million km3 in the basin; no consensus on full drying, brine lakes remained -> script's 'most ... gone' and 'salty lakes' fit; Nile canyon cut ~2,500 m below sea level), Strait of Gibraltar infobox min width 14.2 km (body text says 14.3 km); evaporation exceeding river inflow confirmed; Zanclean flood: Garcia-Castellanos max ~100 million m3/s, 90% filled in months to two years, a modelled estimate attributed 'By one estimate'. Topic verify items met. Description ends with the channel disclaimer. Notes: at 5.96 Ma the connection was the strait's precursor / Betic-Rifian corridors (fine as a simplified map); 'slammed shut' is dramatic for a tectonic, repeated closure - style only."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:08:41.168675+00:00",
+      "finishedAt": "2026-11-26T00:08:41.168675+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:09:42.242622+00:00",
+      "finishedAt": "2026-11-26T00:09:42.242622+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:10:13.334884+00:00",
+      "finishedAt": "2026-11-26T00:10:13.334884+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:10:41.666288+00:00",
+      "finishedAt": "2026-11-26T00:10:41.666288+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:11:36.072590+00:00",
+      "finishedAt": "2026-11-26T00:11:36.072590+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:12:21.743622+00:00",
+      "finishedAt": "2026-11-26T00:12:21.743622+00:00",
+      "notes": [
+        "Re-review after 3 line changes (drain, shrink, break); the other 9 lines and all 6 facts are unchanged and were confirmed earlier on their Wikipedia pages (Messinian salinity crisis, Strait of Gibraltar, Zanclean flood). drain: 'almost nothing came in to replace it' fits the source's 3,300 km3/yr being NET evaporative loss after inflows. shrink: 'only salty lakes in the deepest basins' matches the source ('three or four large brine lakes on the abyssal plains remained'). break: 'spilling over the rock' matches the Zanclean page: water refilled the basin through the modern Strait of Gibraltar, the most widely accepted version being a stream eroding through the sill until it captured the Atlantic. Note: rivers still flowed in during the drying (canyon beat), so drain's 'almost nothing' is acceptable only because 3,300 is the net figure; style only."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-26T00:12:29.713269+00:00",
+      "finishedAt": "2026-11-26T00:13:31.233712+00:00",
+      "notes": [
+        "fingerprint: c741e1ba8e294a9d.cc04f32dafea80f3",
+        "text '14.2 KM' at 10.3 s runs outside the frame",
+        "text 'ADRIATIC' at 30.8 s is 34.4 px, below the 44 px minimum",
+        "text 'AEGEAN' at 30.8 s is 34.4 px, below the 44 px minimum",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:14:03.322333+00:00",
+      "finishedAt": "2026-11-26T00:14:51.691968+00:00",
+      "notes": [
+        "fingerprint: c741e1ba8e294a9d.37f6a408c3c2acbc",
+        "61 s, sky/atlas (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:16:13.362182+00:00",
+      "finishedAt": "2026-11-26T00:17:01.606458+00:00",
+      "notes": [
+        "fingerprint: c741e1ba8e294a9d.fb4c7534967c3639",
+        "61 s, sky/atlas (preview only)",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:18:20.569222+00:00",
+      "finishedAt": "2026-11-26T00:18:20.569222+00:00",
+      "notes": [
+        "Directed on the map throughout, at least as full as the Greenland reference: whole sea (0s), ONCE stamp (5s), ruler+14.2 KM tag at the strait (10s), 5.96M tablet+closing bridge (20s), sun+steam+3,300 gauge (25s), Adriatic/Aegean drying (30s), Nile canyon (35s), empty 3.7M tank over the salt basin (40s), 5.33M tablet at the breach (45s), 100M flow gauge over the flood (50s), full sea and a clean loop (60-61s). No overlaps, cut-offs or placeholders; layout_problems empty; 61 s in the 60-80 range; audio -1.0/-16.2 dB as in the channel's shipped Shorts; disclaimer in the description; pick-one close and loop OK. Minor, not rejects: no MEDITERRANEAN label at 0.0s (it writes on about 1 s in), 15s is a bare strait mid-slide before the arrows, and the Shrink year counter shows a Roman 'V' that reads as a chevron.",
+        "fingerprint: c741e1ba8e294a9d.fb4c7534967c3639"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:18:33.655929+00:00",
+      "finishedAt": "2026-11-26T00:25:03.867897+00:00",
+      "notes": [
+        "61 s, sky/atlas, peak -1.0 dB, mean -16.2 dB",
+        "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-26T00:25:12.290458+00:00",
+      "finishedAt": "2026-11-26T00:25:12.290458+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261126-12",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261126-12"
+  }
+}
