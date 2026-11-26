@@ -70,7 +70,7 @@ Natural Earth country outlines (public domain, `world-atlas`) drawn in the house
 | `MapLabel` | a place name at [lon, lat] with an ink halo |
 | `MapPin` | a pin that drops onto [lon, lat] |
 | `MapRoute` | a great-circle route through stops, drawn as `k` goes 0 → 1; `mover` rides its tip (a ship, a plane) |
-| `Lift` | a country's own shape laid over another place at true scale (Chile over India), sliding as `k` goes 0 → 1 |
+| `Lift` | a country's own shape laid over another place at true scale (Chile over India), sliding as `k` goes 0 → 1; `flag` (+ `flagK`) fills it with its whole flag clipped to its outline, `sx` stretches it east-west to match the map's projection (on `IndiaMap`, equirectangular: `1 / cos(lat)`) (v-20261126-62) |
 | `useAt()` | [lon, lat] → [x, y] on the current map, to stand a character or a sign on a place |
 | `MapWater` (`water.tsx`) | water that moves (owner, 2026-11-25): a sea, flood or lake spreading over `area` ([lon, lat] ring) or a country `name` from `from` as `k` goes 0 → 1: a wavy front with a rolling foam line and spray, a shallow band, ripples drifting on deep water, waves lapping the new shore once full; pass `t` (`m.t`). Works inside `WorldMap` and `IndiaMap` |
 
