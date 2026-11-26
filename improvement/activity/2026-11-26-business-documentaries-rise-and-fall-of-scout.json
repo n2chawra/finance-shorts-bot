@@ -1,0 +1,21 @@
+{
+  "agent": "scout",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-26T05:08:49Z",
+  "finishedAt": "2026-11-26T05:14:53Z",
+  "summary": "Craze & Crash: added two long topics (Nokia and Gap, each with 6-7 sourced facts and an outline) and studied the shape of our two films, where the first recap comes at 57-59%, far later than every 2-3 minutes.",
+  "decision": "acted",
+  "why": "Retention-shape focus (follows Monday's hooks run). Nokia has 2.66M and 1.20M long references and our Nokia Short held 55%; Gap has a 1.22M reference and a 147K-in-a-week video in this week's scan. Feed: 13 open long topics, none blocked.",
+  "findings": [
+    {"title": "First recap comes late in both films", "detail": "Crocs 8:40 of 15:07 (57%), Pizza Hut vs Domino's 9:59 of 16:47 (59%): 7.5-8.5 minutes with no recap or tease."},
+    {"title": "The ending is a separate chapter", "detail": "77 s (Crocs) and 100 s with a 'Chapter eight' card at 90% (Pizza Hut)."},
+    {"title": "YouTube: dips are leaving or skipping; spikes can mean confusion", "detail": "Key moments report; the chart doesn't say why.", "link": "https://support.google.com/youtube/answer/9314415"}
+  ],
+  "changes": [
+    {"title": "Topic: What Happened to Nokia, the Phone in Every Pocket?", "detail": "company_rise_fall, from_short v-20261121-05, 7 facts (Nokia 6-K, Microsoft, TechCrunch).", "branch": "agent/scout/2026-11-26/business-documentaries-rise-and-fall-of"},
+    {"title": "Topic: What Happened to Gap, the Store Everyone Shopped At?", "detail": "company_rise_fall, 6 facts (AP 2019, Gap Inc. FY2025 release); the 2010 logo dates left to the fact reviewer.", "branch": "agent/scout/2026-11-26/business-documentaries-rise-and-fall-of"},
+    {"title": "Backlog: long-recap-by-35pct (adopt), long-short-ending (experiment), long-chapter-dips (adopt)", "detail": "In longform/backlog.json.", "branch": "agent/scout/2026-11-26/business-documentaries-rise-and-fall-of"}
+  ],
+  "nextCheck": "2026-11-30",
+  "links": [{"label": "Report", "url": "channels/business-documentaries-rise-and-fall-of/longform/2026-11-26.md"}]
+}
