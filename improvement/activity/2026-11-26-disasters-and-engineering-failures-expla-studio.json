@@ -1,0 +1,37 @@
+{
+  "agent": "studio",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-26T04:51:13Z",
+  "finishedAt": "2026-11-26T06:14:02Z",
+  "summary": "Disaster Desk: built the Colgan Air crash long video (L-20261126-41, 69 directed beats, about 526 s, NTSB report AAR-10/01). Fact review passed after 1 rewrite, but QA failed both rounds, so the video is stopped at the round limit. It is not shipped and not marked failed, so it can be resumed.",
+  "decision": "blocked",
+  "why": "agents/studio.md allows two QA rounds. Round 1 failed on 11 notes; all were fixed. Round 2 failed on 4. The work is saved on branch claude/disaster-studio-1zszgc so a resume doesn't redo it.",
+  "findings": [
+    {
+      "title": "QA round 2's remaining items",
+      "detail": "(1) Only 36% of the runtime is in the lit 3D world (lesson 6 asks for at least half): move about 75 s of wing, ice and cockpit beats into 3D. (2) x-catch still shows bars, not open logbooks. (3) x-act: the bill's title runs off the sheet. (4) The close-ups of the wing in f-tease and the flaps in l-flaps look flat and pale (lesson 5): they need metal material, rivet lines and ice texture."
+    },
+    {
+      "title": "The ice barely hurt the wing that night",
+      "detail": "NTSB finding 7: the ice degraded the aircraft's performance only minimally. The danger was the landing speed briefed for a clean wing while the ref speeds switch was on. The script tells it this way."
+    },
+    {
+      "title": "Both pilots already had more than the new 1,500-hour minimum",
+      "detail": "Captain 3,379 hours and first officer 2,244 (NTSB). This is the video's payoff: the law's stall training and rest rules went after what failed, not the hours alone."
+    }
+  ],
+  "changes": [
+    {
+      "title": "L-20261126-41: The Colgan Air Crash: The Stall Warning That Rewrote Pilot Rules (work in progress)",
+      "detail": "Plan, script, beat code (Sky 3D, Panel, Cockpit, Wing, Board, Law, Map, Cabin, Report, Title) and 3 thumbnails (pick A). Facts are added to the feed topic; three NTSB report pages are in the licence log.",
+      "branch": "claude/disaster-studio-1zszgc"
+    }
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [
+    {
+      "label": "Work in progress",
+      "url": "https://github.com/n2chawra/finance-shorts-bot/tree/claude/disaster-studio-1zszgc"
+    }
+  ]
+}
