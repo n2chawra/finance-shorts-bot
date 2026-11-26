@@ -39,10 +39,10 @@ const Tunnel: React.FC<SceneProps> = (p) => {
     : mode === "ice" ? cue(t, e("Ice"), 20) : mode === "icefind" ? cue(t, e("barely"), 20) : mode === "pull" ? cue(t, e("opposite"), 20) : cue(t, e("automatic"), 20);
   const look: V3 = mode === "ice" || mode === "icefind" ? [-1.1, 0.2, 0] : mode === "stall" || mode === "pull" ? [0.8, 0.6, 0] : [0.2, 0.3, 0];
   const dist = 10.5 - 2.2 * push;
-  const yaw = 0.32 - 0.12 * (t / end);
+  const yaw = 0.16 - 0.08 * (t / end);
   const keys: CamKey[] = [
-    { f: 0, pos: [look[0] + Math.sin(yaw) * dist, look[1] + 1.4, Math.cos(yaw) * dist], look, fov: 40 },
-    { f: end + 10, pos: [look[0] + Math.sin(yaw - 0.1) * (dist - 0.4), look[1] + 1.2, Math.cos(yaw - 0.1) * (dist - 0.4)], look, fov: 40 },
+    { f: 0, pos: [look[0] + Math.sin(yaw) * dist, look[1] + 0.35, Math.cos(yaw) * dist + 2], look, fov: 40 },
+    { f: end + 10, pos: [look[0] + Math.sin(yaw - 0.06) * (dist - 0.4), look[1] + 0.3, Math.cos(yaw - 0.06) * (dist - 0.4) + 2], look, fov: 40 },
   ];
   const liftLen = 3.4 * lift;
   const liftCol = lift < 0.45 ? RED : GREEN;
@@ -76,7 +76,7 @@ const Tunnel: React.FC<SceneProps> = (p) => {
       {/* the tunnel: a ring of lamps and a floor grid far below, snow racing through */}
       {Array.from({ length: 10 }, (_, i) => <mesh key={i} position={[-12 + i * 2.8, 5.5, -6]} material={glow("#fff1d0", 0.6)}><boxGeometry args={[1.2, 0.08, 0.3]} /></mesh>)}
       {Array.from({ length: 22 }, (_, i) => <mesh key={`f${i}`} position={[-14 + i * 1.4, -4, 0]} rotation-x={-Math.PI / 2}><planeGeometry args={[0.05, 30]} /><meshBasicMaterial color="#3a4652" /></mesh>)}
-      <Rain frame={t} center={[0, 0.5, 1]} size={[24, 10, 10]} count={600} length={0.16} speed={0.14} wind={[0.9, 0]} color="#f2f6fa" opacity={0.6} seed="tunnel" />
+      <Rain frame={t} center={[0, 0.5, 1]} size={[24, 10, 10]} count={260} length={0.16} speed={0.14} wind={[0.9, 0]} color="#f2f6fa" opacity={0.6} seed="tunnel" />
       {/* the wing section with its boot, panel lines and ice */}
       <group position={[0, startleShake, 0]}>
         <Airfoil chord={C} thick={0.14} camber={0.04} span={4} aoa={rad} color="#c9d1d9" />
@@ -109,7 +109,7 @@ const Tunnel: React.FC<SceneProps> = (p) => {
         const tornHere = above && i <= 6 && torn > 0.05;
         const pts = ln.map(([x, y]) => [x, y + (tornHere && x > -0.3 ? Math.sin(x * 3 + t * 0.4 + i) * 0.25 * torn + 0.5 * torn * Math.min(1, (x + 0.3) / 2) : 0), 2.05] as V3);
         const col = tornHere && torn > 0.3 ? RED : mode === "recover" && t >= e("grips") ? GREEN : ICE;
-        return <GlowLine key={i} points={pts} color={col} width={3} k={flowK} dashed dash={0.5} gap={0.35} flow={t * 0.12} opacity={0.85} />;
+        return <GlowLine key={i} points={pts} color={col} width={5} k={flowK} dashed dash={0.5} gap={0.35} flow={t * 0.12} opacity={0.85} />;
       })}
       {lines.slice(2, 7).map((ln, i) => {
         const u = ((t * 0.006 + i * 0.21) % 1);
