@@ -166,7 +166,8 @@
       "route": "adopt",
       "priority": "normal",
       "found": "2026-11-26",
-      "status": "open"
+      "status": "adopted",
+      "reason": "Adopted: renderer/craft.py device_problems() judges a directed beat by its params.component and notes one component on screen over 60 s in a row, instead of 'only 1 kind, directed 4 times in a row' on every long video."
     },
     {
       "id": "tech-long-no-progress-on-screen",

@@ -114,6 +114,24 @@
    "from": "reviewer 2026-11-24",
    "test": "Shorts that keep one machine in one cut-open place for the whole explanation, the camera moving along and into it (Crossrail: the tunnel boring machine from wheel to chamber to conveyor to ring), against the champion, where beats may jump to a new place each line (microwave: kitchen, lab, tube, inside the tube, a popcorn kernel, a workshop, a showroom).",
    "why": "Held after the hook: Crossrail, which stayed on one machine in one place, 46.5%; the transistor (bench, then chip, then oscilloscope, then graphics card) 26.4%; Hoover Dam (dam, intake, powerhouse, turbine pit, generator, control room) 13.1%; microwave (seven places) 10.7%. Four Shorts and different topics, so no lesson yet: a look test. Research 2026-11-25: Crossrail, the one-machine Short, held 0.73 of its post-hook audience to the end (endHold) against 0.11, 0.15 and 0.32 for the microwave, dam and transistor Shorts that change place every beat (metrics/analytics.json); four Shorts only, so a test, not a rule."
+  },
+  {
+   "id": "tech-zoom-short-demand",
+   "kind": "format",
+   "area": "topic mix",
+   "metric": "stayed",
+   "from": "research 2026-11-19",
+   "test": "Keep zoom-inside Shorts at most 2 in 5 until one of ours proves the shape; their only Short references are Branch Education's (504K-1.0M views on 2.78M subscribers, 0.2-0.4x), which check-plan rejects as demand. Tonight's zoom topics now cite Silicon Up Close's 'What Happens Inside an AI Chip When You Ask a Question' (1.02M on 12.7K, 80.6x) and PROCESS BHARAT's chipmaking video (2.2M on 234K, 9.4x).",
+   "why": "plans built on zoom topics pass check-plan; the mix leans on invention Shorts, whose references are real breakouts"
+  },
+  {
+   "id": "tech-wpm-gap",
+   "kind": "look",
+   "area": "pacing",
+   "metric": "heldAfterHook",
+   "from": "research 2026-11-24",
+   "test": "Check why the owner's pace fix (voice speed 0.92 -> 1.0, 'about 164 words a minute', commit 8cae8f7) lands at 140-148 words a minute in the three Shorts made since (timeline.json words over duration: transistor 148, Crossrail 140, mobile phone 148; microwave at 0.92 was 130). The gap is likely the beat pads and pauses between beats (channel.json beatPad, TEMPOS short 1.2). If the owner's note meant the spoken pace, close it (shorter pads, not a faster voice); if a pace change beyond that is wanted, it is a weekly-loop test on TEMPOS.",
+   "why": "The owner's addressed pace note actually delivered; 5 of 16 reference Shorts in our sheets are 'fast' narrators"
   }
  ],
  "running": null,

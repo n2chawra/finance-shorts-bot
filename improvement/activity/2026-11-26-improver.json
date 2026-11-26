@@ -1,0 +1,73 @@
+{
+  "agent": "improver",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-26T16:52:33Z",
+  "finishedAt": "2026-11-26T17:02:40Z",
+  "summary": "Three adopted fixes (ship no longer refuses a long video for its chapter timestamps; long videos' device notes judge directed beats by component; Danish, Swedish, Norwegian and Swiss money), a checklist rule for Craze & Crash's recurring QA failure (text over a photo's faces and signs), and a long-video title test on Disaster Desk.",
+  "decision": "acted",
+  "why": "No owner notes. No experiment matured (geo-claim-hook and doc-document-first are on day 2 with 0 of 8 Shorts a side). The evaluator flagged Craze & Crash's 'QA review failed after three rounds' 4x; three adopt items were in the improver's lane; Disaster Desk had no long test running and makes about 4 long videos a week.",
+  "findings": [
+    {
+      "title": "Evaluator",
+      "detail": "Geography: 12 Shorts with 48 h data; why_shaped 66.1% viewed vs what_if_world 63.1%; geo-claim-hook day 2, 0 of 8 a side. Craze & Crash: 9; doc-document-first day 2; recurring 'QA failed after three rounds' (4x). Tech 7 (machine_works 68.9% viewed vs invention_story 50.2%), Disaster Desk 5, India Maps 1."
+    },
+    {
+      "title": "Craze & Crash: why QA failed three rounds, four times",
+      "detail": "v-20261125-31, v-20261125-33, v-20261126-32 and v-20261126-33 each fixed one round and the next round found another card, chip, poster figure or sub-line on a face or on the photo's own sign (a CNBC card over Chesky's face, the $2.7B over the Pizza Hut roof sign, Jerry Yang's eyes pushed off the top). Fixed at the source: a checklist rule and the doc kit README."
+    },
+    {
+      "title": "Impact, week of 16 Nov",
+      "detail": "Geography n=9: 735 median 48 h views, 63.0% viewed, 57.1% stayed. Craze & Crash n=6: 670.5 views, 54.1% viewed, 40.4% stayed. Tech n=4: 24 views, 58.0% viewed, 55.9% stayed. Disaster Desk n=2: 709.5 views, 68.0% viewed, 50.3% stayed."
+    },
+    {
+      "title": "main's tests are green again",
+      "detail": "715 pass with tonight's changes (710 on main); the nv1board cut-out is in credits.json."
+    },
+    {
+      "title": "All queues but Disaster Desk's are empty (health red)",
+      "detail": "0 Shorts ready on four channels: the video runs' problem, not the improver's."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Ship ignores a long video's CHAPTERS block in the after-QA fingerprint (Disaster Desk, every long channel)",
+      "detail": "generator/run.py fingerprint(): the timestamps Studio adds after the full render no longer count as a change after QA; anything else still does. Test in generator/tests/test_qa_gate.py.",
+      "branch": "agent/improver/2026-11-26",
+      "experiment": "2026-11-26-chapters-fingerprint"
+    },
+    {
+      "title": "Long videos' device notes judge a directed beat by its component (How Tech Works, every long channel)",
+      "detail": "renderer/craft.py device_problems(): 'directed:<component>' instead of 'directed', and one component on screen more than 60 s in a row gets a note. Doc beats unchanged.",
+      "branch": "agent/improver/2026-11-26",
+      "experiment": "tech-long-device-note-blind"
+    },
+    {
+      "title": "DKK, SEK, NOK and CHF money (Craze & Crash)",
+      "detail": "renderer/engine/formatting.py, remotion/src/fmt/inr.ts, voice.py ('Danish kroner'), studio/money.tsx banknotes, number check. Needs the owner to list them in channel.json.",
+      "branch": "agent/improver/2026-11-26",
+      "experiment": "money-dkk-sek-chf"
+    },
+    {
+      "title": "Text over a photo goes on plain ground (Craze & Crash QA failures)",
+      "detail": "generator/prompts/checklist.md and remotion/src/doc/README.md: never on a face or the photo's own sign; a depth push keeps the eyes 15% below the top; check every text layer in one pass before QA.",
+      "branch": "agent/improver/2026-11-26"
+    },
+    {
+      "title": "Long experiment dd-long-title-3d started (Disaster Desk)",
+      "detail": "Long titles say 'Rebuilt in 3D' after the event's name (on) against name-then-curiosity (off); judged on views in 7 days, 4 a side, up to 42 days. From proposal dd-long-title-event-3d (its stake-first half breaks the owner's 23 Nov rule).",
+      "branch": "agent/improver/2026-11-26",
+      "experiment": "dd-long-title-3d"
+    },
+    {
+      "title": "Challenger list",
+      "detail": "geo-cover-names-the-place (geography), tech-wpm-gap and tech-zoom-short-demand (tech) added to cycle/backlog.json. Long items 2026-11-24-cross-section-empty and tech-long-3d-empty-frames stay open (need stills on the 3D and disaster kits)."
+    }
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [
+    {
+      "label": "Checklist",
+      "url": "generator/prompts/checklist.md"
+    }
+  ]
+}
