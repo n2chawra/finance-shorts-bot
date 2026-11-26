@@ -40,6 +40,27 @@
    "status": "adopted",
    "route": "adopt",
    "priority": "high"
+  },
+  {
+   "id": "im-format-nature-on-map",
+   "date": "2026-11-27",
+   "area": "template",
+   "title": "A new format: a range, river or project drawn across the map",
+   "change": "Add a format 'nature_on_map' (a mountain range, a river or a big project drawn onto India or one state, and what it does to the map: the Aravalli splitting Rajasthan into desert and green, the Narmada crossing three states, a dam across the Gulf of Khambhat). The kit needs a line feature (a range ridge or a river drawn along sourced coordinates) on IndiaMap; the format needs the owner to widen profile.md's 'What it covers' first (see notifications/research.json).",
+   "evidence": [
+    "https://www.youtube.com/watch?v=qIVCjSS4DWk",
+    "https://www.youtube.com/watch?v=gnGAwSY_Q_w",
+    "https://www.youtube.com/watch?v=4fPA8WkEqCU",
+    "https://vidiq.com/youtube-stats/channel/@geostudygs/videos/"
+   ],
+   "expectedEffect": "A second demand lane beside every-state fills: Geo Study (858K subs) has 1.67M and 1.1M Shorts in it this autumn, both above its subscriber count.",
+   "confidence": "medium",
+   "effort": "M",
+   "risk": "Outside the profile's current coverage; river and range lines must come from an official or freely licensed source, never another map's drawing.",
+   "metric": "avgViewPct",
+   "status": "new",
+   "route": "template",
+   "priority": "normal"
   }
  ]
 }
