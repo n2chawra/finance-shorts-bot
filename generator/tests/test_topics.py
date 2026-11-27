@@ -287,3 +287,41 @@ def test_a_long_event_topic_jumps_only_with_proof(root: Path) -> None:
     assert any("sourced facts" in p for p in topics.event_problems({**proven, "facts": []}, TODAY))
     # a Shorts trend keeps its own rules
     assert topics.event_problems(topic("s", "trending"), TODAY) == []
+
+
+def _metrics(root: Path, *videos: dict) -> None:
+    (root / "metrics").mkdir(exist_ok=True)
+    (root / "metrics" / "videos.json").write_text(json.dumps({"videos": list(videos)}), encoding="utf-8")
+
+
+def test_own_results_score_categories_with_live_views_and_stayed(root: Path) -> None:
+    """Our own Shorts feed back (owner, 2026-11-27): a category that got more views and kept more viewers
+    lifts its topics, one that didn't sinks; the live 48 h counter stands in until Analytics has a figure."""
+    entries = [entry(i, category="borders" if i < 3 else "trade") for i in range(6)]
+    for e in entries:
+        e["story"] = "why_shaped"
+    _metrics(root,
+             *({"id": f"v-test-{i:02d}", "format": "short", "views48h": None, "views48hLive": 2000, "stayed": 0.62} for i in range(3)),
+             *({"id": f"v-test-{i:02d}", "format": "short", "views48h": 200, "stayed": 0.38} for i in range(3, 6)))
+    ctx = topics.context(entries, root)
+    assert ctx["categories"]["borders"]["n"] == 3 and ctx["categories"]["borders"]["relative"] > 1
+    assert ctx["categories"]["borders"]["stayed_vs_channel"] > 0 > ctx["categories"]["trade"]["stayed_vs_channel"]
+    up = topics.score_parts(topic("a", category="borders"), TODAY, ctx)
+    down = topics.score_parts(topic("b", category="trade"), TODAY, ctx)
+    assert up["ours_category"] > 0 > down["ours_category"]
+    summary = topics.own_summary(ctx)
+    assert "borders" in summary["winning"] and "trade" in summary["losing"]
+
+
+def test_one_short_moves_a_category_only_a_little(root: Path) -> None:
+    """A single lucky Short is shrunk: a third of the weight until three of a kind are measured."""
+    entries = [entry(i, category="islands" if i == 0 else "trade") for i in range(4)]
+    _metrics(root, *({"id": f"v-test-{i:02d}", "format": "short", "views48h": 5000 if i == 0 else 500} for i in range(4)))
+    part = topics.score_parts(topic("c", category="islands"), TODAY, topics.context(entries, root))["ours_category"]
+    assert 0 < part <= topics.CATEGORY_WEIGHT / 3 + 0.01
+
+
+def test_no_metrics_means_no_own_results(root: Path) -> None:
+    ctx = topics.context([entry(1)], root)
+    assert ctx["ours"] == {} and ctx["categories"] == {}
+    assert "ours_category" not in topics.score_parts(topic("d"), TODAY, ctx)

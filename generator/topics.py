@@ -88,6 +88,9 @@ def why_unavailable(topic: dict, entries: list[dict], today: str) -> str | None:
 
 DEMAND_CAP = 7.0      # log10 views: past 10M a reference proves nothing more (a 54M video must not win alone)
 OURS_WEIGHT = 0.5     # how much our own results in a format move its topics, per doubling vs our median
+CATEGORY_WEIGHT = 0.3 # the same for a topic category (borders, chips, fashion): categories are smaller groups
+MIN_VERDICT = 2      # Shorts measured before own_results calls a story or category winning or losing
+STAYED_SHARE = 0.6    # stayed to watch, per 10 points vs our average, counts this share of a weight
 EXPLORE = {0: 0.5, 1: 0.25}   # a format we told 0 or 1 times in the last RECENT Shorts: try it (owner, 2026-10-26)
 OVERUSED = (4, -0.25)         # told this many times or more in the last RECENT: give others a turn
 RECENT = 15
@@ -106,26 +109,74 @@ def _story(topic: dict) -> str | None:
     return s[0] if s else topic.get("story")
 
 
-def context(entries: list[dict], root: Path = ROOT) -> dict:
-    """What the channel itself knows about each format: our videos' 48 h views per story relative
-    to our median (metrics/videos.json + history), and how often each was told lately."""
+def _views48(v: dict):
+    """A Short's views at 48 h: YouTube Analytics' figure, else the public counter's (`views48hLive`), which
+    arrives days sooner (owner, 2026-11-27: India Maps had no Analytics figure yet, so it got no feedback)."""
+    for k in ("views48h", "views48hLive"):
+        if isinstance(v.get(k), (int, float)):
+            return v[k]
+    return None
+
+
+def _results(rows: list[tuple[str | None, float | None, float | None]]) -> dict[str, dict]:
+    """Per group: how many Shorts, their median 48 h views relative to the channel's median, and their
+    stayed to watch (engaged views ÷ views) minus the channel's, in points of 0-1 (None until one is measured)."""
     import statistics
+    views = [x for _, x, _ in rows if x is not None]
+    stays = [y for _, _, y in rows if y is not None]
+    overall = statistics.median(views) if views else 0
+    base = statistics.mean(stays) if stays else None
+    by: dict[str, tuple[list[float], list[float]]] = {}
+    for g, x, y in rows:
+        if not g:
+            continue
+        xs, ys = by.setdefault(g, ([], []))
+        if x is not None:
+            xs.append(x)
+        if y is not None:
+            ys.append(y)
+    out = {}
+    for g, (xs, ys) in by.items():
+        if not xs and not ys:
+            continue
+        out[g] = {"n": len(xs), "relative": round((statistics.median(xs) + 1) / (overall + 1), 2) if xs else 1.0,
+                  "stayed_n": len(ys),
+                  "stayed_vs_channel": round(statistics.mean(ys) - base, 3) if ys and base is not None else None}
+    return out
+
+
+def context(entries: list[dict], root: Path = ROOT) -> dict:
+    """What the channel itself knows about each format and each topic category (owner, 2026-11-27: "fix the
+    topic feedback"): our Shorts' 48 h views relative to our median and their stayed to watch against our
+    average (metrics/videos.json + history), per story and per category, and how often each story was told lately."""
     from .variety import story_of
     stories = {e["id"]: story_of(e) for e in entries if e.get("id")}
+    cats = {e["id"]: (e.get("topic") or {}).get("category") for e in entries if e.get("id")}
     recent: dict[str, int] = {}
     for e in entries[-RECENT:]:
         if (s := stories.get(e.get("id", ""))):
             recent[s] = recent.get(s, 0) + 1
     path = cpath(root, "metrics/videos.json")
     vids = json.loads(path.read_text(encoding="utf-8")).get("videos", []) if path.is_file() else []
-    scored = [(stories.get(v["id"]), v["views48h"]) for v in vids if v.get("views48h") is not None and v.get("format", "short") == "short"]
-    overall = statistics.median([x for _, x in scored]) if scored else 0
-    by: dict[str, list[float]] = {}
-    for s, x in scored:
-        if s:
-            by.setdefault(s, []).append(x)
-    ours = {s: {"n": len(xs), "relative": round((statistics.median(xs) + 1) / (overall + 1), 2)} for s, xs in by.items()}
-    return {"recent": recent, "ours": ours}
+    vids = [v for v in vids if v.get("format", "short") == "short" and v.get("id") in stories]
+    measured = [(v["id"], _views48(v), v.get("stayed") if isinstance(v.get("stayed"), (int, float)) else None) for v in vids]
+    return {"recent": recent,
+            "ours": _results([(stories.get(i), x, y) for i, x, y in measured]),
+            "categories": _results([(cats.get(i), x, y) for i, x, y in measured])}
+
+
+def own_part(o: dict | None, weight: float) -> float:
+    """A group's own results as a score: views per doubling vs our median, plus stayed to watch per 10 points
+    vs our average, each capped, shrunk toward 0 while we have few Shorts of it."""
+    import math
+    if not o:
+        return 0.0
+    part = 0.0
+    if o.get("n"):
+        part += max(-1.0, min(1.0, math.log2(o["relative"]))) * weight * min(1.0, o["n"] / 3)
+    if o.get("stayed_vs_channel") is not None and o.get("stayed_n"):
+        part += max(-1.0, min(1.0, o["stayed_vs_channel"] / 0.10)) * weight * STAYED_SHARE * min(1.0, o["stayed_n"] / 3)
+    return round(part, 2)
 
 
 def breakout_of(demand) -> float | None:
@@ -189,9 +240,11 @@ def score_parts(topic: dict, today: str, ctx: dict | None = None) -> dict[str, f
     if ctx and story:
         o = ctx["ours"].get(story)
         if o:   # shrunk toward 0 while we have few videos of it
-            parts["ours"] = round(max(-1.0, min(1.0, math.log2(o["relative"]))) * OURS_WEIGHT * min(1.0, o["n"] / 3), 2)
+            parts["ours"] = own_part(o, OURS_WEIGHT)
         told = ctx["recent"].get(story, 0)
         parts["explore"] = EXPLORE.get(told, OVERUSED[1] if told >= OVERUSED[0] else 0.0)
+    if ctx and (c := (ctx.get("categories") or {}).get(topic.get("category") or "")):
+        parts["ours_category"] = own_part(c, CATEGORY_WEIGHT)
     try:
         age = (date.fromisoformat(today) - date.fromisoformat(str(topic.get("found")))).days
     except ValueError:
@@ -420,7 +473,23 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
         "open_total": len(open_),
         "required": None,   # nothing is forced since the reset (see the module doc)
         "urgent": urgent,
+        # our own results (owner, 2026-11-27): which of our stories and categories got views and kept viewers
+        "own_results": own_summary(ctx),
     }
+
+
+def own_summary(ctx: dict) -> dict:
+    """The planner's view of our own results: each story and category with its Shorts, views vs our median
+    and stayed to watch vs our average, best first, and the ones doing clearly better or worse."""
+    def rows(groups: dict) -> list[dict]:
+        out = [{"name": g, **o, "score": own_part(o, 1.0)} for g, o in groups.items()]
+        return sorted(out, key=lambda r: r["score"], reverse=True)
+    stories, cats = rows(ctx.get("ours") or {}), rows(ctx.get("categories") or {})
+    return {"stories": stories, "categories": cats,
+            # a verdict needs two measured Shorts; one lucky or unlucky Short stays a hint in the lists above
+            "winning": [r["name"] for r in stories + cats if r["score"] >= 0.3 and max(r["n"], r["stayed_n"]) >= MIN_VERDICT],
+            "losing": [r["name"] for r in stories + cats if r["score"] <= -0.3 and max(r["n"], r["stayed_n"]) >= MIN_VERDICT],
+            "note": "relative = median 48 h views ÷ our median (1.0 = typical); stayed_vs_channel = stayed to watch minus our average"}
 
 
 def check_plan(plan: dict, entries: list[dict], today: str, blocked: list[str], allowed: list[str], root: Path = ROOT,

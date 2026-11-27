@@ -142,9 +142,14 @@ millions is curiosity, awe, envy and the fear of being cheated, in the shapes th
    Among feed topics of similar score, take the less obvious one.
 4. **Topic feed (`topic_feed`):** research's ideas, already tagged with a format: **every unused
    topic, old or new, best `score` first**. `why_score` shows the parts: proven demand (capped at
-   10M views), our own results with that format (`ours`), a bonus for a format we haven't told
-   lately (`explore`: test every kind of video, not only the most viewed), global, priority, and
-   age (`generator/topics.py`). Judge the whole list, not just
+   10M views), our own results with that format (`ours`) and with that topic category
+   (`ours_category`: views at 48 h against our median, and stayed to watch against our average), a
+   bonus for a format we haven't told lately (`explore`: test every kind of video, not only the most
+   viewed), global, priority, and age (`generator/topics.py`). `topic_feed.own_results` lists our
+   stories and categories best first, with `winning` and `losing`: **our own viewers outrank another
+   channel's reference video** (owner, 2026-11-27). Between topics of similar score, take the one in a
+   winning category; take a losing one only with a clearly different angle, and say why in the plan.
+   A group with one or two Shorts is a hint, not a verdict. Judge the whole list, not just
    the newest night's: an older topic with a stronger reference is often the better video. Pick the
    one with the biggest proven demand that fits today's rules (reach, category, format), put its id
    in `topic.feed_id`; none is forced. A `breaking` or `trending` topic is worth
