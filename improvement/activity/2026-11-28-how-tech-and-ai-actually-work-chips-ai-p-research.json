@@ -1,0 +1,55 @@
+{
+ "agent": "research",
+ "day": "2026-11-28",
+ "startedAt": "2026-11-27T19:08:52Z",
+ "finishedAt": "2026-11-27T19:14:30Z",
+ "summary": "How Tech Works, Saturday (policy): no new YouTube policy or algorithm change. Added one top-ranked topic (the car starter motor, backed by a 280M-view breakout) and, for the owner's 'static animation' note, a look challenger and a long-video proposal to show each mechanism working.",
+ "decision": "acted",
+ "why": "The week's biggest machine Shorts (280M on 260K, 50M on 121K, 6.8M on 61.9K) are cutaways where the parts visibly push each other, which is what the owner's 27 Nov note says ours lack. machine_works is our best story (1.00x vs invention 0.61x). Sand-to-chip was skipped as a crowded lane (about 20 Shorts in 4 weeks, nearly all under 5K).",
+ "findings": [
+  {
+   "title": "Starter-motor Shorts are huge breakouts",
+   "detail": "EVER WONDERED HOW A START MOTOR WORKS? 280.4M on 260K subscribers (1,078x); Science Scope's 50.0M on 121K (413x). Topic 2026-11-28-starter-motor-turn-key now tops the feed at 9.70.",
+   "link": "https://youtube.com/shorts/OGu9UeCO4Zo"
+  },
+  {
+   "title": "Top mechanism Shorts explain with the picture, not the words",
+   "detail": "6–15 s 3D cutaways where each step is one part pushing the next; our ChatGPT long video shows tiles and cards appearing instead.",
+   "link": "https://youtube.com/shorts/2VAAn60GeZ0"
+  },
+  {
+   "title": "'How sand becomes a chip' is crowded",
+   "detail": "About 20 Shorts with that title in 4 weeks, almost all under 5K views; not added.",
+   "link": "https://www.youtube.com/results?search_query=how+sand+becomes+a+computer+chip"
+  },
+  {
+   "title": "No new Shorts policy change in November",
+   "detail": "The latest are still the July inauthentic-content clarification and the 1 Feb 2027 Partner Program bar (notification kept).",
+   "link": "https://www.tubefilter.com/2026/07/13/youtube-inauthentic-content-monetization-policy-update/"
+  }
+ ],
+ "changes": [
+  {
+   "title": "Look challenger tech-show-the-mechanism",
+   "detail": "Top of the look challengers: every beat readable with the sound off, the line's verb acted out by parts in the scene.",
+   "branch": "agent/research/2026-11-28/how-tech-and-ai-actually-work-chips-ai-p"
+  },
+  {
+   "title": "Proposal tech-long-show-the-mechanism",
+   "detail": "The same for long videos via the director prompt; measured against L-20261127-21.",
+   "branch": "agent/research/2026-11-28/how-tech-and-ai-actually-work-chips-ai-p"
+  },
+  {
+   "title": "Topic: the car starter motor (machine_works, high)",
+   "detail": "Six sourced facts (Saab WIS Bosch starter spec, ETHW on Kettering and Cadillac); 280M reference added to machine_works examples.",
+   "branch": "agent/research/2026-11-28/how-tech-and-ai-actually-work-chips-ai-p"
+  }
+ ],
+ "nextCheck": "2026-11-29",
+ "links": [
+  {
+   "label": "Report",
+   "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-28.md"
+  }
+ ]
+}

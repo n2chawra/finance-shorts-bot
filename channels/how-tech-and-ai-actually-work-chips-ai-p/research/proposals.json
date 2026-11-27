@@ -64,6 +64,28 @@
    "route": "experiment",
    "priority": "normal",
    "reason": "On the weekly loop's challenger list (cycle/backlog.json, kind look); it runs when its turn comes."
+  },
+  {
+   "id": "tech-long-show-the-mechanism",
+   "date": "2026-11-28",
+   "area": "motion",
+   "title": "Long videos: show each operation happening, not its result appearing",
+   "change": "In the director's prompt for long videos (and the 3D kit's beat helpers), each beat whose line says something does something gets a visible cause->effect chain in its moments: the input object enters, the machine part acts on it on the verb, the output leaves (e.g. in the ChatGPT video: a token card slides into the weight grid, rows light as it multiplies, a column of scores rises, the top one lifts out as the next word). Tiles, bars or cards that just appear are allowed only as a recap. Test it on the next long video behind a flag and compare its held-after-hook with L-20261127-21.",
+   "evidence": [
+    "owner note cmwz7z7mz0001js09h999iw76 (2026-11-27)",
+    "channels/how-tech-and-ai-actually-work-chips-ai-p/videos/L-20261127-21/preview.png",
+    "https://youtube.com/shorts/OGu9UeCO4Zo",
+    "https://youtube.com/shorts/2VAAn60GeZ0",
+    "https://youtube.com/shorts/TLr10fAQeEM"
+   ],
+   "expectedEffect": "Viewers who watch with the sound low can follow; fewer drops in the middle chapters of long videos",
+   "confidence": "medium",
+   "effort": "M",
+   "risk": "More beat code per video; a wrong mechanism drawn is a factual error, so the fact reviewer must check the drawn steps",
+   "metric": "avgViewPct",
+   "status": "new",
+   "route": "experiment",
+   "priority": "high"
   }
  ]
 }
