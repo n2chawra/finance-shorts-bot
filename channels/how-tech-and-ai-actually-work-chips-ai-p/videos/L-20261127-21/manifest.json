@@ -1,0 +1,975 @@
+{
+  "id": "L-20261127-21",
+  "createdAt": "2026-11-27T16:34:58.180500+00:00",
+  "status": "qa_passed",
+  "format": "long",
+  "template": "long_story",
+  "topic": {
+    "title": "How an AI Turns Your Question Into an Answer, Every Step",
+    "category": "ai",
+    "feed_id": "2026-11-18-ai-question-to-answer",
+    "reach": "global"
+  },
+  "title": "How Does ChatGPT Turn Your Question Into an Answer?",
+  "description": "What actually happens between the moment you send a question to an AI chatbot and the moment its answer appears?\nWe follow your words in 3D: cut into tokens, turned into lists of numbers, pushed through dozens of layers, multiplied on the maths units of a data-centre chip, and turned into one next word, again and again.\nWith the real parameter count of GPT-3, from OpenAI's paper.\n\nChapters:\n0:00 Your question leaves your phone\n0:14 The whole trip\n0:41 Cutting words into tokens\n1:40 Tokens become numbers\n2:25 Through the layers\n3:22 The chip does the maths\n4:33 Picking the next token\n5:32 Why it can be wrong\n5:46 What it can see at once\n6:29 Back to your phone\n\nSources: Brown et al. (arXiv, May 2020); OpenAI Help Center (Nov 2026).\nAnimations are simplified illustrations, not exact to scale.",
+  "hashtags": [
+    "#ChatGPT",
+    "#AI",
+    "#HowItWorks",
+    "#LargeLanguageModels",
+    "#GPU"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Tell us which step you want taken apart next",
+  "seed": 71927,
+  "style": {
+    "palette": "night",
+    "genre": "circuit",
+    "key": "A",
+    "bpm": 72,
+    "voice": "af_bella"
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.15,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "A question you type into ChatGPT on your phone sets off billions of multiplications on a chip in a data centre, far from you.",
+        "start": 0.27,
+        "seconds": 7.72,
+        "window": 8.33,
+        "fill": 0.927
+      },
+      {
+        "scene": "hook2",
+        "text": "That chip sends the answer back in small pieces, and every single piece takes the whole trip through the model.",
+        "start": 8.6,
+        "seconds": 5.57,
+        "window": 6.23,
+        "fill": 0.894
+      },
+      {
+        "scene": "route",
+        "text": "Here is the whole trip. Your words get cut into tokens, the tokens turn into numbers, and the numbers climb through the model's layers.",
+        "start": 14.83,
+        "seconds": 7.45,
+        "window": 8.1,
+        "fill": 0.92
+      },
+      {
+        "scene": "route2",
+        "text": "A chip does the multiplying, one next word comes out, and then the whole trip starts again for the word after it.",
+        "start": 22.93,
+        "seconds": 5.98,
+        "window": 6.63,
+        "fill": 0.902
+      },
+      {
+        "scene": "gpt3",
+        "text": "We'll follow GPT-three, an earlier model that OpenAI described in a research paper, with 175B parameters. Newer chatbots are built on the same idea.",
+        "start": 29.57,
+        "seconds": 11.31,
+        "window": 11.97,
+        "fill": 0.945
+      },
+      {
+        "scene": "t_q",
+        "text": "First stop: what does the model actually read? Not letters, and not quite words either.",
+        "start": 41.53,
+        "seconds": 4.75,
+        "window": 5.37,
+        "fill": 0.885
+      },
+      {
+        "scene": "t_cut",
+        "text": "Your question is cut into tokens: common chunks of text, like a whole short word, or a piece of a longer one.",
+        "start": 46.9,
+        "seconds": 6.37,
+        "window": 7.03,
+        "fill": 0.906
+      },
+      {
+        "scene": "t_size",
+        "text": "In English, a token is about 4 characters long on average, according to OpenAI.",
+        "start": 53.93,
+        "seconds": 5.21,
+        "window": 5.83,
+        "fill": 0.894
+      },
+      {
+        "scene": "t_pct",
+        "text": "OpenAI also puts one token at roughly 75% of an English word, so a long answer can run to hundreds of tokens.",
+        "start": 59.77,
+        "seconds": 7.78,
+        "window": 8.47,
+        "fill": 0.919
+      },
+      {
+        "scene": "t_rare",
+        "text": "Why chunks, and not whole words? A common word is often a single token, while a rare word or a name gets cut into several pieces, so any word can still be built from pieces on the list.",
+        "start": 68.23,
+        "seconds": 10.42,
+        "window": 11.07,
+        "fill": 0.941
+      },
+      {
+        "scene": "t_list",
+        "text": "The cutting follows a fixed list of chunks that was settled before the model was trained, so the same text is always cut the same way.",
+        "start": 79.3,
+        "seconds": 7.19,
+        "window": 7.83,
+        "fill": 0.918
+      },
+      {
+        "scene": "t_ids",
+        "text": "Every chunk on that list has its own ID number, and that number is all the model is handed for each token.",
+        "start": 87.13,
+        "seconds": 6.04,
+        "window": 6.7,
+        "fill": 0.901
+      },
+      {
+        "scene": "tease1",
+        "text": "But an ID is only a label. It says nothing about what the word means. So how does a label become meaning?",
+        "start": 93.83,
+        "seconds": 5.87,
+        "window": 6.53,
+        "fill": 0.899
+      },
+      {
+        "scene": "v_lookup",
+        "text": "Next stop: the model looks each ID up in a giant table and pulls out a long list of numbers for that token.",
+        "start": 100.37,
+        "seconds": 6.29,
+        "window": 6.97,
+        "fill": 0.902
+      },
+      {
+        "scene": "v_learned",
+        "text": "So who chose those numbers? Nobody, by hand. Training set them, nudging each one a tiny bit at a time across enormous amounts of text.",
+        "start": 107.33,
+        "seconds": 8.27,
+        "window": 8.93,
+        "fill": 0.926
+      },
+      {
+        "scene": "v_map",
+        "text": "Each list works like a point in a space with thousands of directions, and tokens used in similar ways end up close together.",
+        "start": 116.27,
+        "seconds": 6.99,
+        "window": 7.63,
+        "fill": 0.916
+      },
+      {
+        "scene": "v_near",
+        "text": "Cat lands near dog. Paris lands near London. Nobody placed them there; training did.",
+        "start": 123.9,
+        "seconds": 5.04,
+        "window": 5.67,
+        "fill": 0.889
+      },
+      {
+        "scene": "v_order",
+        "text": "And how does it know which word came first? Each token also gets a second list added, marking its place in the sentence, because the order of words changes what they mean.",
+        "start": 129.57,
+        "seconds": 9.29,
+        "window": 9.93,
+        "fill": 0.936
+      },
+      {
+        "scene": "tease2",
+        "text": "Now your question is a row of number lists. What happens to them next is where almost all the work is done.",
+        "start": 139.5,
+        "seconds": 5.64,
+        "window": 6.3,
+        "fill": 0.895
+      },
+      {
+        "scene": "l_q",
+        "text": "Next stop, the layers. Why does a model need so many of them?",
+        "start": 145.8,
+        "seconds": 3.23,
+        "window": 3.87,
+        "fill": 0.835
+      },
+      {
+        "scene": "l_stack",
+        "text": "GPT-three stacks dozens of these layers, one on top of the next, and the row of number lists passes through every single one, in order.",
+        "start": 149.67,
+        "seconds": 7.6,
+        "window": 8.27,
+        "fill": 0.919
+      },
+      {
+        "scene": "l_attn",
+        "text": "On a single floor, what comes first? Every token looks back at the tokens before it, and takes in a little of what they carry.",
+        "start": 157.93,
+        "seconds": 6.94,
+        "window": 7.6,
+        "fill": 0.913
+      },
+      {
+        "scene": "l_attn2",
+        "text": "That is how blue in your question can take on the meaning of a colour, not a mood, from the words around it.",
+        "start": 165.53,
+        "seconds": 5.45,
+        "window": 5.97,
+        "fill": 0.913
+      },
+      {
+        "scene": "l_mlp",
+        "text": "Then each token's list goes through a block of multiplications on its own, and its numbers come out slightly changed.",
+        "start": 171.5,
+        "seconds": 6.19,
+        "window": 6.87,
+        "fill": 0.901
+      },
+      {
+        "scene": "l_climb",
+        "text": "Floor after floor, the lists change a little each time. By the top, a list no longer stands for one word. It carries what the whole sentence is about.",
+        "start": 178.37,
+        "seconds": 8.81,
+        "window": 9.33,
+        "fill": 0.944
+      },
+      {
+        "scene": "l_weights",
+        "text": "The multiplying on every floor uses numbers stored inside the model, called parameters. And that is where size comes in.",
+        "start": 187.7,
+        "seconds": 7.16,
+        "window": 7.83,
+        "fill": 0.914
+      },
+      {
+        "scene": "tease3",
+        "text": "Because those parameters have to be multiplied somewhere, by something you can touch. That is where the software meets the hardware.",
+        "start": 195.53,
+        "seconds": 6.75,
+        "window": 7.4,
+        "fill": 0.912
+      },
+      {
+        "scene": "c_q",
+        "text": "So where does all this multiplying actually happen? In a data centre, on racks of servers packed with graphics chips.",
+        "start": 202.93,
+        "seconds": 6.36,
+        "window": 7.0,
+        "fill": 0.909
+      },
+      {
+        "scene": "c_count",
+        "text": "GPT-three has 175B parameters, and every one of them is used in a multiplication for every single token it writes.",
+        "start": 209.93,
+        "seconds": 8.32,
+        "window": 9.0,
+        "fill": 0.924
+      },
+      {
+        "scene": "c_what",
+        "text": "Those numbers are the model. There is no list of facts inside it, only parameters, set during training.",
+        "start": 218.93,
+        "seconds": 5.7,
+        "window": 6.33,
+        "fill": 0.9
+      },
+      {
+        "scene": "c_units",
+        "text": "Inside the chip, what does the work? Thousands of tiny maths units. Each one multiplies two numbers and adds the result to a running total.",
+        "start": 225.27,
+        "seconds": 8.04,
+        "window": 8.7,
+        "fill": 0.924
+      },
+      {
+        "scene": "c_sweep",
+        "text": "They all work at once, so a whole grid of numbers is multiplied in one sweep, and a chip like this does hundreds of trillions of them every second.",
+        "start": 233.97,
+        "seconds": 7.98,
+        "window": 8.63,
+        "fill": 0.925
+      },
+      {
+        "scene": "c_memory",
+        "text": "Where do the parameters wait? In memory stacked right beside the chip, and they stream into those maths units over and over, token after token.",
+        "start": 242.6,
+        "seconds": 7.96,
+        "window": 8.6,
+        "fill": 0.926
+      },
+      {
+        "scene": "c_split",
+        "text": "A model this big is usually split across several chips, passing numbers back and forth between them over fast links.",
+        "start": 251.2,
+        "seconds": 6.23,
+        "window": 6.9,
+        "fill": 0.903
+      },
+      {
+        "scene": "c_heat",
+        "text": "All that switching turns into heat, which is why data centres need so much power, and so much cooling.",
+        "start": 258.1,
+        "seconds": 5.54,
+        "window": 6.17,
+        "fill": 0.898
+      },
+      {
+        "scene": "recap",
+        "text": "So far: words became tokens, tokens became numbers, the numbers climbed the layers, and a chip did the maths. And all of that makes just one token.",
+        "start": 264.27,
+        "seconds": 8.81,
+        "window": 9.47,
+        "fill": 0.93
+      },
+      {
+        "scene": "k_q",
+        "text": "One token? Out of everything it could say, how does it choose?",
+        "start": 273.73,
+        "seconds": 2.97,
+        "window": 3.63,
+        "fill": 0.818
+      },
+      {
+        "scene": "k_scores",
+        "text": "The top layer gives a score to every token on the list, tens of thousands of them, for how well each would fit next.",
+        "start": 277.37,
+        "seconds": 6.27,
+        "window": 6.9,
+        "fill": 0.909
+      },
+      {
+        "scene": "k_example",
+        "text": "For the first word of an answer about the blue sky, tokens like Sunlight or Because score high, and banana scores almost nothing.",
+        "start": 284.27,
+        "seconds": 7.2,
+        "window": 7.83,
+        "fill": 0.92
+      },
+      {
+        "scene": "k_pick",
+        "text": "Then one token is picked, usually one of the likely ones, with a little randomness, which is why the same question can get a different answer.",
+        "start": 292.1,
+        "seconds": 7.48,
+        "window": 8.13,
+        "fill": 0.92
+      },
+      {
+        "scene": "k_append",
+        "text": "That token is added to the end of the text, and the model reads your question plus the new token, and makes the whole trip again.",
+        "start": 300.23,
+        "seconds": 6.68,
+        "window": 7.33,
+        "fill": 0.911
+      },
+      {
+        "scene": "k_repeat",
+        "text": "Up through every layer, once more, just to pick the token after that. Then again. And again.",
+        "start": 307.57,
+        "seconds": 5.09,
+        "window": 5.73,
+        "fill": 0.888
+      },
+      {
+        "scene": "k_stream",
+        "text": "That is why you see the answer appear piece by piece. You are watching it being written, one token at a time.",
+        "start": 313.3,
+        "seconds": 5.59,
+        "window": 6.27,
+        "fill": 0.892
+      },
+      {
+        "scene": "k_cache",
+        "text": "Doesn't that waste time? To save it, the chip keeps notes about the earlier tokens in its memory, so it doesn't redo all of their maths from the beginning.",
+        "start": 319.57,
+        "seconds": 8.02,
+        "window": 8.67,
+        "fill": 0.925
+      },
+      {
+        "scene": "k_stop",
+        "text": "It ends when the token it picks is a special one that means stop.",
+        "start": 328.23,
+        "seconds": 3.65,
+        "window": 4.3,
+        "fill": 0.849
+      },
+      {
+        "scene": "turn",
+        "text": "So does it look your answer up? Not on its own. Unless the app gives it a search tool, it predicts each next token from patterns it learned.",
+        "start": 332.53,
+        "seconds": 7.39,
+        "window": 8.03,
+        "fill": 0.92
+      },
+      {
+        "scene": "turn2",
+        "text": "That is why it can sound sure and still be wrong. A likely-sounding token isn't always a true one.",
+        "start": 340.57,
+        "seconds": 5.44,
+        "window": 6.07,
+        "fill": 0.896
+      },
+      {
+        "scene": "tease4",
+        "text": "But there is a limit to how much text it can look back on while it writes. And GPT-three's limit was small.",
+        "start": 346.63,
+        "seconds": 5.51,
+        "window": 6.17,
+        "fill": 0.893
+      },
+      {
+        "scene": "w_size",
+        "text": "GPT-three could read only a limited number of tokens at once, called its window. It held your question, everything said before it, and the answer so far.",
+        "start": 352.8,
+        "seconds": 9.33,
+        "window": 10.0,
+        "fill": 0.933
+      },
+      {
+        "scene": "w_pages",
+        "text": "At about 4 characters a token, that window held only a few pages of text, not a whole book.",
+        "start": 362.8,
+        "seconds": 5.43,
+        "window": 6.07,
+        "fill": 0.895
+      },
+      {
+        "scene": "w_off",
+        "text": "And what happens to anything older? It drops out of the window. The model simply can't see it any more, as if it was never said.",
+        "start": 368.87,
+        "seconds": 6.72,
+        "window": 7.33,
+        "fill": 0.917
+      },
+      {
+        "scene": "w_memory",
+        "text": "It doesn't remember you between chats either, unless the app copies your earlier messages back into the window.",
+        "start": 376.2,
+        "seconds": 5.66,
+        "window": 6.3,
+        "fill": 0.898
+      },
+      {
+        "scene": "w_newer",
+        "text": "Newer models have far bigger windows, but the rule is the same: if it isn't in the window, the model doesn't see it.",
+        "start": 382.5,
+        "seconds": 6.34,
+        "window": 7.0,
+        "fill": 0.906
+      },
+      {
+        "scene": "back1",
+        "text": "Now follow it back out. The picked token leaves the chip, crosses the data centre, and travels the network to your phone.",
+        "start": 389.5,
+        "seconds": 6.56,
+        "window": 7.23,
+        "fill": 0.907
+      },
+      {
+        "scene": "back2",
+        "text": "On your screen it lands as a few letters. Then the next one arrives, and the next, faster than you can read.",
+        "start": 396.73,
+        "seconds": 5.84,
+        "window": 6.47,
+        "fill": 0.903
+      },
+      {
+        "scene": "payoff",
+        "text": "So in GPT-three, every token of an answer is a fresh vote among tens of thousands of tokens, cast by 175B numbers, multiplied on a chip.",
+        "start": 403.2,
+        "seconds": 10.65,
+        "window": 11.3,
+        "fill": 0.942
+      },
+      {
+        "scene": "loop",
+        "text": "Which step should we take apart next? Tell us. And next time you type a question, watch the first word arrive.",
+        "start": 414.5,
+        "seconds": 6.01,
+        "window": 6.67,
+        "fill": 0.901
+      }
+    ]
+  },
+  "durationSec": 423,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.9,
+    "lufs": -14.7,
+    "music_under_voice_db": 26.0
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "af_bella",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review: fact1 175B confirmed on arxiv.org/abs/2005.14165 (abstract, v1 28 May 2020); fact2 ~4 chars/token and fact3 ~75 words/100 tokens confirmed on the OpenAI Help Center page; payoff now scoped to GPT-three and says token; c_split hedged ('usually'); description no longer promises layers/window, sources dated, ends with disclaimer; all beats re-read voice and screen, no remaining factual, framing, advice or tone problems."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Third look: all earlier blockers fixed (token/picker labels read, tags inside frame, STOP tile, 175B plate fixed above captions at 215s and 410s, c_units clear of captions, t_rare medium and readable, hook shows ChatGPT + question by 5s; only frame 0 lacks the 3D label textures for 1/30 s). Non-blocking: thumbnail A's phone bubbles still blank.",
+        "fingerprint: b9f8685db9c6c43c.c0d32c00319fead2"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:24:35.687386+00:00",
+      "finishedAt": "2026-11-27T03:24:35.687386+00:00",
+      "notes": [
+        "story 'inside_when_you' was told in the last 1 videos",
+        "style.bpm must be 70–75 for circuit",
+        "palette 'ember' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:24:45.910709+00:00",
+      "finishedAt": "2026-11-27T03:24:45.910709+00:00",
+      "notes": [
+        "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky",
+        "story must be a long format with proven demand: one of inside_when_you, how_ai_works, how_network_works (channels/how-tech-and-ai-actually-work-chips-ai-p/research/formats.json)"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T03:25:20.829797+00:00",
+      "finishedAt": "2026-11-27T03:25:20.829797+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T03:25:29.047304+00:00",
+      "finishedAt": "2026-11-27T03:25:29.047304+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:29:59.801814+00:00",
+      "finishedAt": "2026-11-27T03:29:59.801814+00:00",
+      "notes": [
+        "beat 'route'.params.moments[1].do contains a typed number; use a placeholder: 's1'",
+        "note: 7 questions in about 394 s of speech; at least 13 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+        "note: beat 'v_map': a \"Picture…\" / \"Imagine…\" warm-up is a line the channel has used too often; say it a new way",
+        "note: beat 'loop' opens like a line in one of the last scripts ('which machine should'): new words"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T03:30:25.966269+00:00",
+      "finishedAt": "2026-11-27T03:30:25.966269+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:30:26.900087+00:00",
+      "finishedAt": "2026-11-27T03:30:26.900087+00:00",
+      "notes": [
+        "beat 'gpt3'.params.sign.text contains a typed number; use a placeholder: 'GPT-3'",
+        "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")",
+        "note: beat 'l_attn' opens like a line in one of the last scripts ('so what happens'): new words",
+        "note: beat 'c_units' opens like a line in one of the last scripts ('and what is'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:30:37.255222+00:00",
+      "finishedAt": "2026-11-27T03:30:37.255222+00:00",
+      "notes": [
+        "beat 'gpt3'.say contains a typed number; use a placeholder: \"We'll follow GPT-3, the model OpenAI described in a 2020 paper, because its real sizes are public. Newer chatbots are built on the same idea.\""
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:30:47.027664+00:00",
+      "finishedAt": "2026-11-27T03:30:47.027664+00:00",
+      "notes": [
+        "beat 'gpt3'.say contains a typed number; use a placeholder: \"We'll follow GPT-three, the model OpenAI described in a 2020 paper, because its real sizes are public. Newer chatbots are built on the same idea.\""
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:30:54.220102+00:00",
+      "finishedAt": "2026-11-27T03:30:54.220102+00:00",
+      "notes": [
+        "beat 'back2'.params.moments[4].do contains a typed number; use a placeholder: 'more2'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:31:02.283729+00:00",
+      "finishedAt": "2026-11-27T03:31:02.283729+00:00",
+      "notes": [
+        "beat 'outro'.params.assumption contains a typed number; use a placeholder: \"GPT-3's published sizes; newer chatbots are larger and their sizes are not all public.\""
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:31:10.430839+00:00",
+      "finishedAt": "2026-11-27T03:31:10.430839+00:00",
+      "notes": [
+        "facts[3] (96 count, 2020-05-28) is not one of the feed topic's facts; copy them exactly",
+        "facts[4] (2048 count, 2020-05-28) is not one of the feed topic's facts; copy them exactly",
+        "the source line 'Data: Brown et al., Language Models are Few-Shot Learners (arXiv) · OpenAI Help Center (What are tokens) · Brown et al., Language Models are Few-Shot Learners (arXiv), Table 2.1 · Nov 2026' is too wide for the frame (3212 of 1784 px at 30 px): shorten each facts[].source to the publisher (e.g. 'Brown et al.'), one name per publisher"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T03:32:38.839458+00:00",
+      "finishedAt": "2026-11-27T03:32:38.839458+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:37:12.213316+00:00",
+      "finishedAt": "2026-11-27T03:37:12.213316+00:00",
+      "notes": [
+        "plan.description: 'With the real figures for GPT-3 from OpenAI's paper: its parameters, its layers and how much text it could see at once' promises figures the video never shows (only 175B parameters is a fact; layers are 'dozens', the window is never quantified). Fix: drop 'its layers and how much text it could see at once', or add both as sourced facts from Brown et al. Table 2.1 (96 layers, 2048-token context) and show them in l_stack and w_size/tease4.",
+        "beat payoff: 'every word of an answer is a fresh vote ... cast by 175B numbers' generalises GPT-3's size to the viewer's ChatGPT answer under a ChatGPT title; ChatGPT never ran GPT-3 and current model sizes are undisclosed. Also a vote picks a token, not a word. Fix: 'So in GPT-three, every token of an answer is a fresh vote among tens of thousands of tokens, cast by {fact1} numbers, multiplied on a chip.'",
+        "beat c_split: 'A model this big doesn't fit on one chip' is not true in general today: at 8 bits a number GPT-3 (~175 GB) fits in one 192 GB B200 or MI300X. Fix: 'A model this big is usually split across several chips, passing numbers back and forth over fast links.'"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T03:38:02.848630+00:00",
+      "finishedAt": "2026-11-27T03:38:02.848630+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T03:38:03.737034+00:00",
+      "finishedAt": "2026-11-27T03:38:03.737034+00:00",
+      "notes": [
+        "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T03:38:25.014812+00:00",
+      "finishedAt": "2026-11-27T03:38:25.014812+00:00",
+      "notes": [
+        "Re-review: fact1 175B confirmed on arxiv.org/abs/2005.14165 (abstract, v1 28 May 2020); fact2 ~4 chars/token and fact3 ~75 words/100 tokens confirmed on the OpenAI Help Center page; payoff now scoped to GPT-three and says token; c_split hedged ('usually'); description no longer promises layers/window, sources dated, ends with disclaimer; all beats re-read voice and screen, no remaining factual, framing, advice or tone problems."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T03:45:31.236786+00:00",
+      "finishedAt": "2026-11-27T03:45:31.236786+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T03:45:08.841003+00:00",
+      "finishedAt": "2026-11-27T04:01:55.842430+00:00",
+      "notes": [
+        "thumbnail is 1920x1080; a long video's must be 1280x720"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T04:31:30.862452+00:00",
+      "finishedAt": "2026-11-27T04:46:10.926420+00:00",
+      "notes": [
+        "fingerprint: c712e0dcbc42d241.0f9e7784c9e7afb7",
+        "2.2 s with nothing new on screen in beat 'tease4' (at most 1.8 s): add an action on the phrase being said there",
+        "21 of 85 stills are mostly empty background (at 0 s, 5 s, 75 s, 120 s, 130 s, 135 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T04:53:13.370484+00:00",
+      "finishedAt": "2026-11-27T05:09:15.316396+00:00",
+      "notes": [
+        "fingerprint: 15cc3ba58260a2ad.0de04472bd709ea3",
+        "2.1 s with nothing new on screen in beat 'gpt3' (at most 1.8 s): add an action on the phrase being said there",
+        "the cover looks like L-20261123-21's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T05:13:44.679522+00:00",
+      "finishedAt": "2026-11-27T05:29:52.864013+00:00",
+      "notes": [
+        "fingerprint: 4a6407b542e9ef38.c1fca5ae182cc392",
+        "2.1 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T05:35:01.907868+00:00",
+      "finishedAt": "2026-11-27T05:51:39.408438+00:00",
+      "notes": [
+        "fingerprint: cc9145d265cdcd31.c1fca5ae182cc392",
+        "2.0 s with nothing new on screen in beat 'gpt3' (at most 1.8 s): add an action on the phrase being said there",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T05:55:44.713388+00:00",
+      "finishedAt": "2026-11-27T06:11:58.266318+00:00",
+      "notes": [
+        "fingerprint: f4743ca854f5b236.b492becbaeec3772",
+        "1.9 s with nothing new on screen in beat 'c_count' (at most 1.8 s): add an action on the phrase being said there",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T06:15:54.812004+00:00",
+      "finishedAt": "2026-11-27T06:32:34.515500+00:00",
+      "notes": [
+        "fingerprint: 5c389e8c59e3f680.b492becbaeec3772",
+        "423 s, night/circuit (preview only)",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T06:35:58.507915+00:00",
+      "finishedAt": "2026-11-27T06:52:57.728931+00:00",
+      "notes": [
+        "fingerprint: 5c389e8c59e3f680.3a7958498b665006",
+        "423 s, night/circuit (preview only)",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T06:59:05.314818+00:00",
+      "finishedAt": "2026-11-27T06:59:05.314818+00:00",
+      "notes": [
+        "[scene] Token tile labels unreadable (white text on pale pastel tiles): t_size 55.0s 'the', t_rare 70.0s 'sky', t_list 85.0s 'Why'/'the', tease1 100.0s 'is the sky blue' all washed out, v_order/tease2 130-145s labels under the number lists, l_attn/l_attn2/l_mlp 160-175s, k_append/k_repeat/k_stream 305-315s 'sky'/'is'. Fix: in the token tile code draw the word in dark ink (#14161c) on the pastel fill (or a saturated fill with white text), contrast >= 4.5:1, at every size.",
+        "[scene] k_example 285-300s and k_stop/turn/turn2 330-345s (Picker): 'Because' and 'banana' tags are white on light cyan/yellow and unreadable; the 'Sunlight' tag is cut off by the top edge at 290, 295, 330, 335, 345s and overlaps 'Because' at 290s; k_stop at 330s shows no visible 'stop' tile/label, only leftover Sunlight/Because tags. Fix: dark text on the tags, cap the tall stalks/camera so tags stay >= 60 px inside the top edge, offset Sunlight and Because so they never overlap, clear k_example's tags in k_stop and show the labelled 'stop' tile at the close shot.",
+        "[scene] t_rare 75.0s: the rare word tile ('Ray...') sits cut off at the bottom edge under the caption, its pieces and the 'one token'/'many tokens' labels are not visible, so the beat's point is lost; 70.0s is one pale tile on an empty bench. Fix: frame the bench medium-wide from above with the common word on one tile and the rare word split into its pieces mid-frame, labels readable above the caption band.",
+        "[scene] gpt3 35.0s: the 'the paper' sign runs off the top-left edge and into the 'Data: Brown et al. . OpenAI Help Center . Nov 2026' source line. Fix: place the sign on the paper/lectern inside the frame, below the source line.",
+        "[scene] c_count 215.0s: the '175B parameters' plate sits in the caption band; the caption 'them is used in' covers the figure. Fix: put the plate on the board's far edge or raise the camera so the plate is fully above the bottom 25% of the frame.",
+        "[scene] payoff 410.0s: the parameter-count plate is half off the bottom-left edge and under the caption 'cast by 175B numbers'. Fix: frame the plate fully inside the frame, above the caption band, on the 'by'/'numbers' moments.",
+        "[scene] c_units 230.0s: a big white glowing bead passes right behind the caption 'Each one multiplies two', making it unreadable. Fix: keep the bead path above the caption band or dim it under the captions.",
+        "[scene] v_near 125.0s: the 'cat' label leader runs off the top edge (label not visible); only 'dog' reads. Fix: keep both labels of each pair (cat/dog, Paris/London) inside the frame.",
+        "[scene] Near-empty frames: t_cut 50.0s (two poles and a bare wall, the tile cut off in the corner, the cut not shown), w_off 375.0s (a bare belt, no tiles dropping off, nothing else in frame), tease3 200.0s (an empty glass stack). Fix: aim each camera at the action of its moments (t_cut: the blade slicing the strip with tiles in frame; w_off: old tiles sliding off the window's back edge and falling; tease3: the stack with the chip rising into view).",
+        "[script] hook 0.0s (lessons 2 and 9): the first frame is a blank phone, no 'ChatGPT' app name and no question on screen; the subject is only in the voice. Fix: show the chat app header 'ChatGPT' and the 'Why is the sky blue?' bubble from frame 0 (labels.chatgpt at sec 0, question already typed on the start moment); the loop beat at 415s then returns into it."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T07:02:38.030845+00:00",
+      "finishedAt": "2026-11-27T07:20:18.360430+00:00",
+      "notes": [
+        "fingerprint: 656dde3a2557ce96.f7cd05c2166c282e",
+        "1.9 s with nothing new on screen in beat 'c_count' (at most 1.8 s): add an action on the phrase being said there",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T07:23:20.979163+00:00",
+      "finishedAt": "2026-11-27T07:40:07.987802+00:00",
+      "notes": [
+        "fingerprint: 5e53b47fd641c6da.f7cd05c2166c282e",
+        "423 s, night/circuit (preview only)",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T07:45:00.546245+00:00",
+      "finishedAt": "2026-11-27T08:02:25.152044+00:00",
+      "notes": [
+        "fingerprint: b9f8685db9c6c43c.134533fd7aec8575",
+        "423 s, night/circuit (preview only)",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T08:06:18.458914+00:00",
+      "finishedAt": "2026-11-27T08:06:18.458914+00:00",
+      "notes": [
+        "[scene] hook 0.0s (lessons 2 and 9, still open): the first frame shows a blank glowing white bubble and no readable 'ChatGPT' header; the question only appears by 5.0s. Phone.tsx line 19 types the question from empty on the 'type' moment at the start. Fix: show the question fully typed at frame 0 (typed = question.length when the frame is before the send moment, or drop the start 'type' moment) and draw the ChatGPT header at full opacity from frame 0; same blank bubble at loop 415.0s, which must match.",
+        "[scene] payoff 410.0s: the plate reads '31B parameters' (count-up still running) while the caption says 'cast by 175B numbers': label and spoken value disagree. Fix: finish the count before the 'by' word (or show the final {fact1} value without a count-up in the payoff), and keep the plate clear of the ghost stalks at the top-right.",
+        "[scene] c_units 230.0s (still open): the big white bead sits right behind the caption 'Each one multiplies two' and washes it out. Fix: keep the bead path and the lit unit in the upper two-thirds of the frame (frame the unit higher), or dim the bead whenever it is in the bottom 25%.",
+        "[scene] t_rare 70.0-75.0s: the bench is now framed so wide that the tiles ('sky', 'Ray', 'leigh', the name tile) are tiny, about 20 px text at 1080p, and the third 'Ray/leigh' tile is blank (empty string in Cutter.tsx line 87). Fix: a medium shot on the bench so the tiles fill the middle third with text at least 44 px, and give the rare word only as many tiles as it has pieces (no blank tile).",
+        "[scene] k_repeat 310.0s: the 'Sunlight' tag is cut by the top edge again (half the word off-frame). Fix: cap the stalk or lower the camera in k_repeat/k_append as was done for k_example, tags at least 60 px inside the top edge."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T08:09:17.506084+00:00",
+      "finishedAt": "2026-11-27T08:27:16.208996+00:00",
+      "notes": [
+        "fingerprint: b9f8685db9c6c43c.c0d32c00319fead2",
+        "423 s, night/circuit (preview only)",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T08:30:02.559595+00:00",
+      "finishedAt": "2026-11-27T08:30:02.559595+00:00",
+      "notes": [
+        "Third look: all earlier blockers fixed (token/picker labels read, tags inside frame, STOP tile, 175B plate fixed above captions at 215s and 410s, c_units clear of captions, t_rare medium and readable, hook shows ChatGPT + question by 5s; only frame 0 lacks the 3D label textures for 1/30 s). Non-blocking: thumbnail A's phone bubbles still blank.",
+        "fingerprint: b9f8685db9c6c43c.c0d32c00319fead2"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T08:30:15.828437+00:00",
+      "finishedAt": "2026-11-27T16:34:03.398853+00:00",
+      "notes": [
+        "423 s, night/circuit, peak -1.0 dB, mean -16.9 dB",
+        "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+        "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T16:34:41.841082+00:00",
+      "finishedAt": "2026-11-27T16:34:41.841082+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-27T16:34:58.180888+00:00",
+      "finishedAt": "2026-11-27T16:34:58.180888+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-L-20261127-21",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/L-20261127-21"
+  },
+  "thumbnails": [
+    {
+      "file": "thumbnail.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "scale: one small phone in front of a long aisle of server racks, the light from it running into the hall",
+      "score": 9,
+      "why": "1,2,3,4,5,6,7,8,10 = 9; missed 9 (the phone sits on the bottom edge). One small phone in front of a long lit aisle of racks is the scale surprise; 'where it goes' adds the stakes the title doesn't say, and nothing in this topic's feed (tutorial faces, IBM's lightboard, ByteByteGo's diagram) looks like it",
+      "picked": true
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the everyday phone chat on the left turning into the chip's maths on the right, a stream of light between",
+      "score": 8,
+      "why": "1,3,4,5,6,7,8,10 = 8; missed 2 (the phone and the chip share the frame, neither fills 40%) and 9 (the chip's grid touches the bottom-right corner). Phone to chip with a line of light is the title's question as a picture, readable at feed size beside Website Learners' phone-and-chat 4.5M",
+      "picked": false
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the machine that does the work as the one hero object, glowing on a dark ground, two heavy words",
+      "score": 8,
+      "why": "1,2,3,4,5,6,7,8 = 8; missed 9 (a memory stack reaches the bottom-right corner) and 10 (a glowing grid on a dark board is close to our EUV wafer). In the feed it is the only dark, machine-first frame among bright face tutorials, and 'pure maths' answers no question the title asks",
+      "picked": false
+    }
+  ],
+  "thumbnailModel": {
+    "pattern": "scale: one small phone in front of a long aisle of server racks, the light from it running into the hall",
+    "references": [
+      "5sLYAQS9sWQ",
+      "bSvTVREwSNw",
+      "EsRyyJmO-u8"
+    ]
+  }
+}
