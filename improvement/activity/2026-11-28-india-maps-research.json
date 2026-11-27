@@ -1,0 +1,51 @@
+{
+ "agent": "research",
+ "day": "2026-11-28",
+ "channel": "india-maps",
+ "startedAt": "2026-11-27T19:58:11Z",
+ "finishedAt": "2026-11-27T20:03:18Z",
+ "summary": "Saturday policy check for Naksha Bharat: our animated Shorts need no AI label under YouTube's or India's rules, and the 2027 monetisation bar goes to the owner as info. The first market scan with India Maps gave 2 new topics (how many Goas fit in each state; Keralam vs Bhutan) and length evidence for a queued challenger.",
+ "decision": "acted",
+ "why": "The market scan now covers the channel: 30 breakouts, with size comparisons at 50x+ their subscribers. Policy reading found no change we must adopt.",
+ "findings": [
+  {
+   "title": "YouTube monetisation bar rises on 1 Feb 2027",
+   "detail": "New applicants need 20M Shorts views in 90 days, and members need 10M in 90 days for a Shorts ad share.",
+   "link": "https://www.tubefilter.com/2026/08/10/youtube-partner-program-ad-eligibility-requirements-shorts/"
+  },
+  {
+   "title": "No AI disclosure needed for fully animated maps",
+   "detail": "YouTube labels only realistic synthetic content, so containsSyntheticMedia:false is correct here. India's Feb 2026 IT Rules cover content that 'appears real'.",
+   "link": "https://support.google.com/youtube/answer/14328491"
+  },
+  {
+   "title": "Inauthentic-content policy names template-based videos",
+   "detail": "In force since July 2026. Every-state fills are our most template-like format; the variety rules and a different sourced payoff each time keep them apart.",
+   "link": "https://www.thedesk.net/2026/07/youtube-clamps-down-low-quality-ai-slop/"
+  },
+  {
+   "title": "Size-comparison Shorts are this week's breakouts",
+   "detail": "Geo Space: Sri Lanka fits Bhutan, 338K on 6.4K subs. MYSR GEO: kitne desh samaa sakte, 83K on 1.4K subs.",
+   "link": "https://youtube.com/shorts/2JrdODAmSAs"
+  }
+ ],
+ "changes": [
+  {
+   "title": "2 topics added to the feed",
+   "detail": "2026-11-28-how-many-goas (every_state) and 2026-11-28-kerala-vs-bhutan (state_vs_country), each with Census and World Bank areas.",
+   "branch": "agent/research/2026-11-28/india-maps"
+  },
+  {
+   "title": "im-length-60: more evidence",
+   "detail": "Every-state fills run 56-91 s and size comparisons 16-27 s in this week's market data.",
+   "branch": "agent/research/2026-11-28/india-maps"
+  }
+ ],
+ "nextCheck": "2026-11-29",
+ "links": [
+  {
+   "label": "Report",
+   "url": "channels/india-maps/research/2026-11-28.md"
+  }
+ ]
+}

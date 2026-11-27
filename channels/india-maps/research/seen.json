@@ -1,15 +1,16 @@
 {
  "claudeCode": {
   "latest": "2.1.332",
-  "checked": "2026-11-27",
+  "checked": "2026-11-28",
   "notes": [
+   "2.1.332 still the newest on 2026-11-28.",
    "2.1.332 still the newest on 2026-11-27.",
    "2.1.332: beta skills from MCP servers, a PreSkillShellCommand hook, an OpenTelemetry event for responses, freeze and memory fixes. Nothing for the pipeline (no MCP skills in use).",
    "2.1.331 is the newest (checked tonight by the geography channel's research run): cloud turns that go silent while thinking are retried once, PushNotification fixed for headless scheduled runs. Nothing to change in the pipeline."
   ]
  },
  "sources": {
-  "market-data": "origin/market-data still has no india-maps folder at 2026-11-26 20:00 UTC: Thursday's scheduled Market run (16:47 UTC) hadn't started yet (last Thursday's ran 6.5 h late); used scan.json + vidIQ channel listings, seen 2026-11-27",
+  "market-data": "origin/market-data has india-maps since the 27 Nov 00:49 UTC scan (30 Shorts, 29 long, 30 breakouts; comments.json empty: our Shorts had none yet), seen 2026-11-28",
   "youtube-oembed": "youtube.com/oembed gives title and channel for a Short id; the watch page gives views until it throttles after ~5 requests, seen 2026-11-25",
   "wikipedia-api": "en.wikipedia.org/w/api.php extracts work for ~5 pages, then 'too many requests'; WebFetch of the article still works, seen 2026-11-25",
   "mha-gov-in": "403 to fetch; use the Lok Sabha answers on eparlib.sansad.in, seen 2026-11-25",
@@ -17,7 +18,10 @@
   "coastline-official": "surveyofindia.gov.in PDF 503, moes.gov.in PDF 403, pmfias 403: the per-state revised coastline comes from Wikipedia Coastal India (citing MHA) and DeshGujarat, seen 2026-11-26",
   "vidiq-channel": "vidiq.com/youtube-stats/channel/@<handle>/videos/ gives a channel's subs and recent uploads with views, dates, lengths and ids (WebFetch works): the way round blocked watch pages, seen 2026-11-27",
   "pib-pdf": "static.pib.gov.in backgrounder PDFs: WebFetch can't read them, but the saved PDF extracts with pdftotext; nhsrcl.in answers 503, seen 2026-11-27",
-  "niche-outlier": "scan.json scores are views ÷ the channel's median Shorts views (workers/lib/niche.ts), not ÷ subscribers: not a demand.outlier, seen 2026-11-27"
+  "niche-outlier": "scan.json scores are views ÷ the channel's median Shorts views (workers/lib/niche.ts), not ÷ subscribers: not a demand.outlier, seen 2026-11-27",
+  "usgs-pubs": "pubs.usgs.gov answers 403 to fetch, seen 2026-11-28",
+  "worldbank-api": "api.worldbank.org v2 JSON answers from curl (AG.SRF.TOTL.K2 etc.), seen 2026-11-28",
+  "wikipedia-raw": "en.wikipedia.org/w/index.php?title=…&action=raw via curl gives the full wikitext table when WebFetch truncates, seen 2026-11-28"
  },
  "videos": [
   "8zRLN0xOtTU",
@@ -50,10 +54,28 @@
   "bHEF2_EXH9E",
   "qIVCjSS4DWk",
   "gnGAwSY_Q_w",
-  "4fPA8WkEqCU"
+  "4fPA8WkEqCU",
+  "VNEef6KCOW8",
+  "GWvoUReFZMY",
+  "H-UcpoyqTNY",
+  "sGiK3n8Lpg0",
+  "qcL9ojCrR5g",
+  "f5BJEHslPLg",
+  "K0Usx_QqrLc",
+  "wAWOSt9QOMU",
+  "jXjT5qgDPl4",
+  "-zXZ9TSORas",
+  "2JrdODAmSAs",
+  "s9qnxI4F5dQ",
+  "ZQDNkIczj0M",
+  "S5zZQBIk84A",
+  "DghoYgZr6yo",
+  "PO-ItB8GYag"
  ],
  "news": [
   "Kerala renamed Keralam, Aug 2026",
-  "India's coastline re-measured to 11,098.81 km (MHA 2024; MoES to Parliament Dec 2025)"
+  "India's coastline re-measured to 11,098.81 km (MHA 2024; MoES to Parliament Dec 2025)",
+  "YouTube: from 1 Feb 2027 new YPP applicants need 20M Shorts views/90 days (or 8,000 h), and every member needs 10M Shorts views/90 days for a Shorts ad share (Tubefilter, 10 Aug 2026)",
+  "India IT Rules amendment on synthetically generated information in force 20 Feb 2026 (labels for AI content that appears real)"
  ]
 }
