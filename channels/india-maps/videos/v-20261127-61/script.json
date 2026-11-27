@@ -1,0 +1,695 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 52817,
+  "story": "every_state",
+  "shape": "fill-the-map",
+  "currency": "INR",
+  "language": "hi",
+  "style": {
+    "palette": "forest",
+    "genre": "monsoon",
+    "key": "A",
+    "bpm": 96,
+    "look": {
+      "stage": "field",
+      "header": "chalk",
+      "holder": "sign",
+      "entrance": "pop"
+    }
+  },
+  "arms": {
+    "length": "25-50",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "27"
+  },
+  "hook_style": "challenge",
+  "cta": "Neelkanth ya Dhanesh, aapko kaunsa pasand? Comment",
+  "feed_id": "2026-11-27-state-birds",
+  "facts": [
+    {
+      "label": "States of India",
+      "value": 28,
+      "unit": "count",
+      "as_of": "2026-11-27",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/States_and_union_territories_of_India",
+      "fixed": true
+    },
+    {
+      "label": "Union territories of India",
+      "value": 8,
+      "unit": "count",
+      "as_of": "2026-11-27",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/States_and_union_territories_of_India",
+      "fixed": true
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "payoff",
+    "sec": 2.5,
+    "words": "Ek hi *pakshi* kyun?",
+    "tag": "Keralam + Arunachal",
+    "angle": "question",
+    "who": "narrator",
+    "unique": "our own frame: Keralam and Arunachal lit green at both ends of India with the hornbill between them"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "transition": "cut",
+      "say": "केरलम और अरुणाचल, भारत के दो सिरे, फिर भी पक्षी एक क्यों?",
+      "events": {
+        "keralam": {
+          "word": "केरलम"
+        },
+        "arunachal": {
+          "word": "अरुणाचल"
+        },
+        "bharat": {
+          "word": "भारत"
+        },
+        "sire": {
+          "word": "सिरे"
+        },
+        "pakshi": {
+          "word": "पक्षी"
+        },
+        "kyon": {
+          "word": "क्यों"
+        }
+      },
+      "params": {
+        "component": "Hook",
+        "place": "on the map: all of India, Keralam lit at the southern tip and Arunachal Pradesh at the north-east corner",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "kyon",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "keralam",
+            "what": "Keralam traces round its border and glows green"
+          },
+          {
+            "at": "arunachal",
+            "what": "Arunachal Pradesh traces and glows the same green"
+          },
+          {
+            "at": "sire",
+            "what": "a dotted arc draws from Keralam's tip to Arunachal's corner"
+          },
+          {
+            "at": "pakshi",
+            "what": "a bird silhouette flies along the arc"
+          },
+          {
+            "at": "kyon",
+            "what": "a big question mark stamps on the middle of India as the camera pushes in"
+          }
+        ],
+        "things": [
+          "all india",
+          "keralam",
+          "arunachal pradesh",
+          "dotted arc",
+          "bird silhouette",
+          "question mark"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "sire"
+        },
+        {
+          "kind": "thud",
+          "at": "kyon"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "{fact1} स्टेट्स, और हर स्टेट का अपना ऑफिशियल पक्षी। चलिए, उत्तर से।",
+      "events": {
+        "states": {
+          "word": "स्टेट्स"
+        },
+        "har": {
+          "word": "हर"
+        },
+        "official": {
+          "word": "ऑफिशियल"
+        },
+        "chaliye": {
+          "word": "चलिए"
+        },
+        "uttar": {
+          "word": "उत्तर"
+        }
+      },
+      "params": {
+        "component": "Promise",
+        "place": "on the map: a wooden signboard standing in the Bay of Bengal beside all of India",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "states",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "states",
+            "what": "the camera pulls back to all of India and a wooden signboard rises in the Bay of Bengal with the count"
+          },
+          {
+            "at": "har",
+            "what": "every state's border flashes white in a wave from west to east"
+          },
+          {
+            "at": "official",
+            "what": "a bird badge stamps onto the signboard"
+          },
+          {
+            "at": "uttar",
+            "what": "an arrow on the map swings up to point north"
+          }
+        ],
+        "things": [
+          "all india",
+          "wooden signboard",
+          "bird badge",
+          "arrow"
+        ],
+        "fig": {
+          "count": "{fact1}"
+        }
+      }
+    },
+    {
+      "id": "north",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "पंजाब का बाज़, हिमाचल जुजुराना, उत्तराखंड मोनाल, उत्तर प्रदेश सारस।",
+      "events": {
+        "punjab": {
+          "word": "पंजाब"
+        },
+        "himachal": {
+          "word": "हिमाचल"
+        },
+        "uttarakhand": {
+          "word": "उत्तराखंड"
+        },
+        "up": {
+          "word": "उत्तर"
+        }
+      },
+      "params": {
+        "component": "North",
+        "place": "on the map: the Himalayan north, from Punjab across the hills to the Ganga plain of Uttar Pradesh",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "punjab",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "punjab",
+            "what": "Punjab paints in and its tag बाज़ pops up"
+          },
+          {
+            "at": "himachal",
+            "what": "Himachal Pradesh paints in, tag जुजुराना"
+          },
+          {
+            "at": "uttarakhand",
+            "what": "Uttarakhand paints in, tag मोनाल"
+          },
+          {
+            "at": "up",
+            "what": "Uttar Pradesh paints in, tag सारस, the camera drifts south-east"
+          }
+        ],
+        "things": [
+          "punjab",
+          "himachal pradesh",
+          "uttarakhand",
+          "uttar pradesh",
+          "bird tags"
+        ],
+        "fig": {}
+      }
+    },
+    {
+      "id": "west",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "राजस्थान गोडावण, गुजरात फ्लेमिंगो, मध्य प्रदेश दूधराज, महाराष्ट्र हरियल।",
+      "events": {
+        "rajasthan": {
+          "word": "राजस्थान"
+        },
+        "gujarat": {
+          "word": "गुजरात"
+        },
+        "madhya": {
+          "word": "मध्य"
+        },
+        "maharashtra": {
+          "word": "महाराष्ट्र"
+        }
+      },
+      "params": {
+        "component": "West",
+        "place": "on the map: the west and the middle, the Thar desert of Rajasthan down to the Deccan of Maharashtra",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "maharashtra",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "rajasthan",
+            "what": "Rajasthan paints in, tag गोडावण"
+          },
+          {
+            "at": "gujarat",
+            "what": "Gujarat paints in, tag फ्लेमिंगो"
+          },
+          {
+            "at": "madhya",
+            "what": "Madhya Pradesh paints in, tag दूधराज"
+          },
+          {
+            "at": "maharashtra",
+            "what": "the camera pushes in as Maharashtra paints in, tag हरियल"
+          }
+        ],
+        "things": [
+          "rajasthan",
+          "gujarat",
+          "madhya pradesh",
+          "maharashtra",
+          "bird tags"
+        ],
+        "fig": {}
+      }
+    },
+    {
+      "id": "east",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "बिहार गौरैया, झारखंड कोयल, बंगाल किलकिला। पर दक्षिण में ये क्या?",
+      "events": {
+        "bihar": {
+          "word": "बिहार"
+        },
+        "jharkhand": {
+          "word": "झारखंड"
+        },
+        "bangal": {
+          "word": "बंगाल"
+        },
+        "dakshin": {
+          "word": "दक्षिण"
+        },
+        "kya": {
+          "word": "क्या"
+        }
+      },
+      "params": {
+        "component": "East",
+        "place": "on the map: the east, Bihar, Jharkhand and West Bengal down to the Bay of Bengal",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "dakshin",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "bihar",
+            "what": "Bihar paints in, tag गौरैया"
+          },
+          {
+            "at": "jharkhand",
+            "what": "Jharkhand paints in, tag कोयल"
+          },
+          {
+            "at": "bangal",
+            "what": "West Bengal paints in, tag किलकिला"
+          },
+          {
+            "at": "dakshin",
+            "what": "the camera swings south over the pale peninsula"
+          },
+          {
+            "at": "kya",
+            "what": "three pale southern states blink with question tags"
+          }
+        ],
+        "things": [
+          "bihar",
+          "jharkhand",
+          "west bengal",
+          "pale south",
+          "question tags"
+        ],
+        "fig": {}
+      }
+    },
+    {
+      "id": "turn",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "कर्नाटक नीलकंठ, तेलंगाना नीलकंठ, ओडिशा भी नीलकंठ! तो दो सिरों वाले स्टेट्स का?",
+      "events": {
+        "karnataka": {
+          "word": "कर्नाटक"
+        },
+        "telangana": {
+          "word": "तेलंगाना"
+        },
+        "odisha": {
+          "word": "ओडिशा"
+        },
+        "bhi": {
+          "word": "भी"
+        },
+        "sire": {
+          "word": "सिरों"
+        }
+      },
+      "params": {
+        "component": "Turn",
+        "place": "on the map: the Deccan, Karnataka to Telangana across to the Odisha coast",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "bhi",
+            "size": "close"
+          },
+          {
+            "at": "sire",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "karnataka",
+            "what": "Karnataka paints roller blue, tag नीलकंठ"
+          },
+          {
+            "at": "telangana",
+            "what": "Telangana paints the same blue, tag नीलकंठ"
+          },
+          {
+            "at": "odisha",
+            "what": "Odisha paints the same blue, tag नीलकंठ"
+          },
+          {
+            "at": "bhi",
+            "what": "the real Indian roller drops onto the three states as a die-cut sticker and the camera pushes in"
+          },
+          {
+            "at": "sire",
+            "what": "the camera pulls up and two pale question tags blink on Keralam and Arunachal"
+          }
+        ],
+        "things": [
+          "karnataka",
+          "telangana",
+          "odisha",
+          "indian roller photo",
+          "roller tags"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "pin-high",
+          "at": "bhi"
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "केरलम और अरुणाचल, दोनों का पक्षी है धनेश, ग्रेट हॉर्नबिल।",
+      "events": {
+        "keralam": {
+          "word": "केरलम"
+        },
+        "arunachal": {
+          "word": "अरुणाचल"
+        },
+        "donon": {
+          "word": "दोनों"
+        },
+        "dhanesh": {
+          "word": "धनेश"
+        },
+        "great": {
+          "word": "ग्रेट"
+        }
+      },
+      "params": {
+        "component": "Payoff",
+        "place": "on the map: both ends of India at once, the green tip of Keralam and the green corner of Arunachal",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "dhanesh",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "keralam",
+            "what": "Keralam lifts green with its tag"
+          },
+          {
+            "at": "arunachal",
+            "what": "Arunachal lifts green with its tag"
+          },
+          {
+            "at": "donon",
+            "what": "a bright arc joins the two states"
+          },
+          {
+            "at": "dhanesh",
+            "what": "the real great hornbill sticker drops onto the middle of India"
+          },
+          {
+            "at": "great",
+            "what": "both tags flip to धनेश"
+          }
+        ],
+        "things": [
+          "keralam",
+          "arunachal pradesh",
+          "arc",
+          "great hornbill photo",
+          "hornbill tags"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "boom",
+          "at": "dhanesh"
+        }
+      ]
+    },
+    {
+      "id": "forests",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "ये दोनों तरफ़ के घने जंगलों में रहता है, पश्चिमी घाट में भी, पूर्वोत्तर में भी।",
+      "events": {
+        "tarf": {
+          "word": "तरफ़"
+        },
+        "jungle": {
+          "word": "जंगलों"
+        },
+        "ghat": {
+          "word": "घाट"
+        },
+        "purvottar": {
+          "word": "पूर्वोत्तर"
+        }
+      },
+      "params": {
+        "component": "Forests",
+        "place": "on the map: the forests of the Western Ghats along the west coast, then the hills of the north-east",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "purvottar",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "tarf",
+            "what": "the green states glow"
+          },
+          {
+            "at": "jungle",
+            "what": "trees sprout along the map"
+          },
+          {
+            "at": "ghat",
+            "what": "a belt of forest grows down the Western Ghats with a tag पश्चिमी घाट"
+          },
+          {
+            "at": "purvottar",
+            "what": "forest spreads over the north-east hills, tag पूर्वोत्तर, a drawn hornbill flies between the two belts"
+          }
+        ],
+        "things": [
+          "western ghats forest",
+          "north-east forest",
+          "trees",
+          "flying hornbill",
+          "region tags"
+        ],
+        "fig": {}
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "speaker": "narrator",
+      "transition": "match",
+      "say": "नीलकंठ या धनेश, आपका पसंदीदा कौन-सा? और फिर से देखिए,",
+      "events": {
+        "neelkanth": {
+          "word": "नीलकंठ"
+        },
+        "dhanesh": {
+          "word": "धनेश"
+        },
+        "pasand": {
+          "word": "पसंदीदा"
+        },
+        "phir": {
+          "word": "फिर"
+        },
+        "dekhiye": {
+          "word": "देखिए"
+        }
+      },
+      "params": {
+        "component": "Loop",
+        "place": "on the map: the whole of India filled in, every state's colour",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "pasand",
+            "size": "wide"
+          },
+          {
+            "at": "dekhiye",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "neelkanth",
+            "what": "the three roller-blue states pulse with a नीलकंठ pill"
+          },
+          {
+            "at": "dhanesh",
+            "what": "the two hornbill-green states pulse with a धनेश pill"
+          },
+          {
+            "at": "pasand",
+            "what": "every remaining state paints in, the map fills"
+          },
+          {
+            "at": "phir",
+            "what": "the other states fade back to paper"
+          },
+          {
+            "at": "dekhiye",
+            "what": "only Keralam and Arunachal stay green, as in the first frame"
+          }
+        ],
+        "things": [
+          "all india filled",
+          "neelkanth pill",
+          "dhanesh pill",
+          "keralam",
+          "arunachal pradesh"
+        ],
+        "fig": {}
+      }
+    }
+  ],
+  "narrator": "hm_omega"
+}

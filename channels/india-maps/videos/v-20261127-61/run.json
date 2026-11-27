@@ -1,0 +1,115 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:43:51.373049+00:00",
+    "finishedAt": "2026-11-27T03:43:51.373049+00:00",
+    "notes": [
+      "style.bpm must be 100–112 for tanpura",
+      "music genre 'tanpura' was used by the previous video",
+      "shape 'fill-the-map' already exists: name it as a string, or give the new one another id"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:43:56.202141+00:00",
+    "finishedAt": "2026-11-27T03:43:56.202141+00:00",
+    "notes": [
+      "style.bpm must be 92–104 for monsoon"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:44:00.117805+00:00",
+    "finishedAt": "2026-11-27T03:44:00.117805+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:45:24.035231+00:00",
+    "finishedAt": "2026-11-27T03:45:24.035231+00:00",
+    "notes": [
+      "beat 'payoff'.events.hornbill: no word 'हॉर्नबिल' in this beat's spoken line",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:45:34.727952+00:00",
+    "finishedAt": "2026-11-27T03:45:34.727952+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:46:25.373808+00:00",
+    "finishedAt": "2026-11-27T03:46:25.373808+00:00",
+    "notes": [
+      "Facts 28 states / 8 UTs confirmed on the cited Wikipedia page (WebFetch). All 16 named state birds and their Hindi names match List_of_Indian_state_birds; Indian roller = Karnataka, Telangana, Odisha and great hornbill = Kerala + Arunachal confirmed; Keralam name official since 25 Aug 2026 (Kerala Alteration of Name Act 2026; Onmanorama, The News Minute, Deccan Chronicle); hornbill habitat Western Ghats + north-east true; verify items ok (DNHDD has no entry, keep grey in loop fill); description ends with disclaimer; no advice, tone fine. Note: the hook's 'why' is answered by shared forest habitat, which is true but not the official reason for each choice."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:49:53.915502+00:00",
+    "finishedAt": "2026-11-27T03:51:16.811638+00:00",
+    "notes": [
+      "fingerprint: bca7db4fca358c9a.373ff40080812f88",
+      "6 of 9 stills are mostly empty background (at 0 s, 5 s, 20 s, 30 s, 35 s, 38 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:52:15.549463+00:00",
+    "finishedAt": "2026-11-27T03:53:19.232573+00:00",
+    "notes": [
+      "fingerprint: bca7db4fca358c9a.9e9398e3f3281362",
+      "38 s, forest/monsoon (preview only)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:55:11.530214+00:00",
+    "finishedAt": "2026-11-27T03:55:11.530214+00:00",
+    "notes": [
+      "Stills at 1.5 s steps: every beat a directed map shot that matches its line (states paint in with bird tags, roller and hornbill stickers cut cleanly, Western Ghats/NE forests grow, loop returns to the opening frame); hook names Keralam+Arunachal without the answer, payoff is the surprise, pick-one loop question, disclaimer in description, no layout problems, audio -1/-16 dB, 38 s; minor: thumbnail's Arunachal end sits dim under the title gradient",
+      "fingerprint: bca7db4fca358c9a.9e9398e3f3281362"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:59:05.049321+00:00",
+    "finishedAt": "2026-11-27T04:05:26.418257+00:00",
+    "notes": [
+      "38 s, forest/monsoon, peak -1.0 dB, mean -16.2 dB",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-27T04:05:31.842813+00:00",
+    "finishedAt": "2026-11-27T04:05:31.842813+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

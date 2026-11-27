@@ -1,0 +1,127 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52817,
+  "duration_sec": 38,
+  "tempo": 1.2,
+  "style": {
+    "palette": "forest",
+    "genre": "monsoon",
+    "key": "A",
+    "bpm": 96,
+    "look": {
+      "stage": "field",
+      "header": "chalk",
+      "holder": "sign",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "केरलम और अरुणाचल, भारत के दो सिरे, फिर भी पक्षी एक क्यों?",
+        "start": 0.3,
+        "seconds": 3.01,
+        "window": 3.67,
+        "fill": 0.82
+      },
+      {
+        "scene": "promise",
+        "text": "28 स्टेट्स, और हर स्टेट का अपना ऑफिशियल पक्षी। चलिए, उत्तर से।",
+        "start": 3.97,
+        "seconds": 3.42,
+        "window": 4.1,
+        "fill": 0.834
+      },
+      {
+        "scene": "north",
+        "text": "पंजाब का बाज़, हिमाचल जुजुराना, उत्तराखंड मोनाल, उत्तर प्रदेश सारस।",
+        "start": 8.07,
+        "seconds": 3.44,
+        "window": 4.1,
+        "fill": 0.839
+      },
+      {
+        "scene": "west",
+        "text": "राजस्थान गोडावण, गुजरात फ्लेमिंगो, मध्य प्रदेश दूधराज, महाराष्ट्र हरियल।",
+        "start": 12.17,
+        "seconds": 3.84,
+        "window": 4.5,
+        "fill": 0.853
+      },
+      {
+        "scene": "east",
+        "text": "बिहार गौरैया, झारखंड कोयल, बंगाल किलकिला। पर दक्षिण में ये क्या?",
+        "start": 16.67,
+        "seconds": 3.4,
+        "window": 4.07,
+        "fill": 0.835
+      },
+      {
+        "scene": "turn",
+        "text": "कर्नाटक नीलकंठ, तेलंगाना नीलकंठ, ओडिशा भी नीलकंठ! तो दो सिरों वाले स्टेट्स का?",
+        "start": 20.73,
+        "seconds": 4.17,
+        "window": 4.83,
+        "fill": 0.863
+      },
+      {
+        "scene": "payoff",
+        "text": "केरलम और अरुणाचल, दोनों का पक्षी है धनेश, ग्रेट हॉर्नबिल।",
+        "start": 25.57,
+        "seconds": 2.88,
+        "window": 3.53,
+        "fill": 0.816
+      },
+      {
+        "scene": "forests",
+        "text": "ये दोनों तरफ़ के घने जंगलों में रहता है, पश्चिमी घाट में भी, पूर्वोत्तर में भी।",
+        "start": 29.1,
+        "seconds": 3.69,
+        "window": 4.33,
+        "fill": 0.852
+      },
+      {
+        "scene": "loop",
+        "text": "नीलकंठ या धनेश, आपका पसंदीदा कौन-सा? और फिर से देखिए,",
+        "start": 33.43,
+        "seconds": 3.15,
+        "window": 3.8,
+        "fill": 0.829
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.0,
+    "music_under_voice_db": 32.9
+  },
+  "craft_problems": [
+    "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 7.609,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
