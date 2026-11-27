@@ -1,0 +1,46 @@
+{
+  "agent": "research",
+  "channel": "business-documentaries-rise-and-fall-of",
+  "day": "2026-11-28",
+  "startedAt": "2026-11-27T19:34:01Z",
+  "finishedAt": "2026-11-27T19:39:10Z",
+  "summary": "Craze & Crash, Saturday policy night: found YouTube's YPP overhaul (from 1 Feb 2027) and told the owner, added 3 Short topics (Timberland founder story, the BowFlex home-gym boom and bust, Ronco's $56M to $6.5M fall), and flagged that upload slot, not story, explains most of the views gap.",
+  "decision": "acted",
+  "why": "core_needed was true (founder_bet): Timberland has 199K views on its own idea (10x). Nautilus and Ronco are tonight's only on-niche breakouts in the 27 Nov market feed (53.7K on 114 subs, 31.6K on 54 subs). 48 h views at 17:47 IST were 1,137/203/1,373/1,537 against 12/51/1,214/71 at 22:17 IST.",
+  "findings": [
+    {
+      "title": "YPP bar rises on 1 Feb 2027",
+      "detail": "New applicants: 8,000 watch hours in 365 days or 20M Shorts views in 90 days. Shorts revenue only with 10M Shorts views in 90 days. Long videos are this channel's route.",
+      "link": "https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/"
+    },
+    {
+      "title": "The 22:17 IST slot trails the 17:47 slot",
+      "detail": "4 Shorts a slot; founder_bet mostly went out at 22:17, so its 0.28x in evaluate is mixed up with the hour. Proposal slot-story-confound.",
+      "link": "channels/business-documentaries-rise-and-fall-of/research/proposals.json"
+    },
+    {
+      "title": "Nautilus sold $552.6M in 2020, BowFlex went for $37.5M in 2024",
+      "detail": "A home-gym craze in two figures, for product_craze_short.",
+      "link": "https://www.sec.gov/Archives/edgar/data/1078207/000107820721000021/ex99112312020.htm"
+    },
+    {
+      "title": "Ronco: about $56M in 2005, about $6.5M at auction in 2007",
+      "detail": "Chapter 11 listed $32.7M in debt.",
+      "link": "https://www.deseret.com/2007/8/6/20033413/marlin-equity-to-buy-ronco-for-6-5-million-after-bankruptcy-auction-fails-to-attract-bidders/"
+    }
+  ],
+  "changes": [
+    {
+      "title": "3 topics, 1 proposal, 2 owner notes",
+      "detail": "topics.json, proposals.json (slot-story-confound), notifications/research.json",
+      "branch": "agent/research/2026-11-28/business-documentaries-rise-and-fall-of"
+    }
+  ],
+  "nextCheck": "2026-11-29",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/business-documentaries-rise-and-fall-of/research/2026-11-28.md"
+    }
+  ]
+}

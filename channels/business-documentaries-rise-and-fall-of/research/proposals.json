@@ -76,6 +76,24 @@
       "status": "adopted",
       "route": "adopt",
       "priority": "normal"
+    },
+    {
+      "id": "slot-story-confound",
+      "date": "2026-11-28",
+      "area": "pipeline",
+      "title": "Stop founder_bet Shorts landing in the same upload slot, so story and hour can be told apart",
+      "change": "In the editor ranking (generator/prompts/editor.md / python -m generator.run rank) for this channel, when two Shorts of the same day go to the 17:47 and 22:17 IST slots, alternate which story takes the early slot so each core story appears in both slots over a week. No change to the slot times or counts (owner's).",
+      "evidence": [
+        "channels/business-documentaries-rise-and-fall-of/metrics/videos.json: 17:47 IST slot 48h views 1137, 203, 1373, 1537 (4 Shorts); 22:17 IST slot 12, 51, 1214, 71 (4 Shorts). 4 of the 5 founder_bet Shorts with data went out at 22:17, so evaluate's founder_bet 0.28x and dossier music 0.28x are the same 6 videos and can't be separated from the hour."
+      ],
+      "expectedEffect": "Lets improvement.evaluate separate the upload-hour effect from the founder_bet story; no direct effect on views.",
+      "confidence": "medium",
+      "effort": "S",
+      "risk": "None for viewers; the queue order only changes within a day.",
+      "metric": "views48h",
+      "status": "new",
+      "route": "adopt",
+      "priority": "normal"
     }
   ]
 }
