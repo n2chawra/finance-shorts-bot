@@ -1,0 +1,451 @@
+{
+  "id": "v-20261127-12",
+  "createdAt": "2026-11-27T00:43:38.336881+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "What if a bridge joined Russia and America?",
+    "category": "bridges",
+    "reach": "global",
+    "feed_id": "2026-11-26-what-if-bering-bridge",
+    "map_answer": "the Bering Strait between Russia's Chukotka and Alaska: about 82 km of sea with the two Diomede islands in the middle, 3.8 km apart, the International Date Line running between them"
+  },
+  "title": "What if you could drive from Russia to Alaska?",
+  "description": "Russia and Alaska sit across one narrow strait. What if a road crossed it?\nThe Bering Strait on the map: two islands in the middle, a bridge hopping between them, and a drive from London to New York.\nSources: Wikipedia, Bering Strait and Diomede Islands (Nov 2026). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#BeringStrait",
+    "#WhatIf",
+    "#Geography",
+    "#Maps"
+  ],
+  "hookStyle": "question",
+  "cta": "Bridge or tunnel: which would you build? Comment",
+  "seed": 72651,
+  "style": {
+    "palette": "sky",
+    "genre": "atlas",
+    "key": "G",
+    "bpm": 86,
+    "look": {
+      "stage": "space",
+      "header": "sticky",
+      "holder": "phone",
+      "entrance": "stamp"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "What if you could drive from Russia to Alaska, over the sea?",
+        "start": 0.3,
+        "seconds": 2.45,
+        "window": 3.1,
+        "fill": 0.79
+      },
+      {
+        "scene": "near",
+        "text": "Here at the Bering Strait, only 82 kilometres of sea separate them.",
+        "start": 3.4,
+        "seconds": 3.08,
+        "window": 3.73,
+        "fill": 0.826
+      },
+      {
+        "scene": "edges",
+        "text": "On a flat world map, they sit at opposite edges. Spin the map around the globe, and they nearly touch.",
+        "start": 7.13,
+        "seconds": 4.32,
+        "window": 5.0,
+        "fill": 0.864
+      },
+      {
+        "scene": "islands",
+        "text": "And right in the middle sit two islands: Big Diomede, which is Russian, and Little Diomede, which is American.",
+        "start": 12.13,
+        "seconds": 4.59,
+        "window": 5.27,
+        "fill": 0.871
+      },
+      {
+        "scene": "apart",
+        "text": "They're just 3.8 kilometres apart, and the sea around them is only 90 metres at its deepest. So why not a road?",
+        "start": 17.4,
+        "seconds": 5.5,
+        "window": 6.13,
+        "fill": 0.897
+      },
+      {
+        "scene": "build",
+        "text": "So build it: one span from Russia to Big Diomede, a short hop to Little Diomede, and one more to Alaska. Three spans, and two continents are joined.",
+        "start": 23.53,
+        "seconds": 6.74,
+        "window": 7.37,
+        "fill": 0.915
+      },
+      {
+        "scene": "drive",
+        "text": "Now drive it. How far would that take you? From London, east across Europe, all through Siberia, over the bridge, then down through Alaska and Canada to New York.",
+        "start": 30.9,
+        "seconds": 7.12,
+        "window": 7.67,
+        "fill": 0.928
+      },
+      {
+        "scene": "plan",
+        "text": "Has anyone tried? Russia backed a plan: a 103 kilometre tunnel under the strait, priced at about $65B. It was never built.",
+        "start": 38.57,
+        "seconds": 6.74,
+        "window": 7.4,
+        "fill": 0.911
+      },
+      {
+        "scene": "dateline",
+        "text": "And the strangest part: the International Date Line runs between the two islands. Drive east from Big Diomede, and you arrive in yesterday. A short drive apart, but almost a whole day apart in time.",
+        "start": 45.97,
+        "seconds": 8.77,
+        "window": 9.43,
+        "fill": 0.93
+      },
+      {
+        "scene": "loop",
+        "text": "Bridge or tunnel: which would you build? Either way, you could drive from Russia to Alaska.",
+        "start": 55.4,
+        "seconds": 3.76,
+        "window": 4.4,
+        "fill": 0.855
+      }
+    ]
+  },
+  "durationSec": 60,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.0,
+    "lufs": -14.6,
+    "music_under_voice_db": 31.5
+  },
+  "experiments": {
+    "geo-claim-hook": "on"
+  },
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fix: plan beat now 'Russia backed a plan: a 103 km tunnel... about $65B. It was never built.' with NEVER BUILT stamp and Russia's flag; matches Wikipedia Bering_Strait ('Russia green-lit a US$65-billion TKM-World Link tunnel project in August 2011', 103 km) and Bering_Strait_crossing (backed 2007, approved 2011, hypothetical/not built). All 5 facts confirmed on cited Wikipedia pages (82 km, 90 m, 3.8 km, 103 km, $65B); Diomede ownership and date line confirmed; disclaimer ends description; no side-taking. Note: topics.json verify item 'never approved' is wrong and should be corrected by research."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-render 3: every note fixed. RUSSIA/ALASKA named and flagged from frame 0, TO ALASKA fits its sign, Diomede labels clear of flags, NEVER BUILT solid and clear of the $65B tag, calendars in frame with SUNDAY|SATURDAY at 55s, thumbnail shows the date flip with the label whole; layout/craft empty, audio on target, loop and disclaimer ok.",
+        "fingerprint: e0589f842925b0a5.dfae0c9d00c66798"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:36:59.877989+00:00",
+      "finishedAt": "2026-11-26T23:36:59.877989+00:00",
+      "notes": [
+        "story 'what_if_world' was told in the last 1 videos",
+        "palette 'sky' was used by the previous video",
+        "music genre 'atlas' was used by the previous video",
+        "hook style 'question' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:38:27.762047+00:00",
+      "finishedAt": "2026-11-26T23:38:27.762047+00:00",
+      "notes": [
+        "beat 'plan'.say contains a typed number; use a placeholder: 'Someone did draw it up: in 2011, a {fact4} kilometre tunnel under the strait, priced at about {fact5}. It was never approved.'",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend",
+        "note: 2 questions in about 60 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:38:37.775845+00:00",
+      "finishedAt": "2026-11-26T23:38:37.775845+00:00",
+      "notes": [
+        "thumbnail.words: four words at most, it is read at a glance",
+        "note: 4 hedging words (could); at most 2: tell one concrete story with certainty (\"The dealer takes two thousand off.\", not \"some dealers can…\"); the disclaimer covers it",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:38:44.889785+00:00",
+      "finishedAt": "2026-11-26T23:38:44.889785+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:44:37.550218+00:00",
+      "finishedAt": "2026-11-26T23:44:37.550218+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:47:45.569697+00:00",
+      "finishedAt": "2026-11-26T23:47:45.569697+00:00",
+      "notes": [
+        "Beat 'plan' (and its NOT APPROVED stamp moment): 'It was never approved' is contradicted by the cited source. en.wikipedia.org/wiki/Bering_Strait says 'Russia green-lit a US$65-billion TKM-World Link tunnel project in August 2011'; Wikipedia 'Bering_Strait_crossing' says the Russian government backed it in 2007 and 'approved the construction' in 2011 (Autoblog/ZME Science 2011: 'Russia approves'). What is true: it was never built (no US agreement, no connecting rail on either side). Rewrite e.g. 'Russia backed one in 2011: a 103 kilometre tunnel priced at about $65B. It was never built.' and change the stamp to NEVER BUILT. The topic's verify item ('never approved: say so') is itself wrong on this point. Also name who drew it (Russia / a consortium) rather than 'Someone'. All five figures confirmed on the cited pages: 82 km min width, 90 m max depth, 3.8 km between the Diomedes (Diomede_Islands), 103 km and US$65B (Bering_Strait). Big Diomede Russian / Little Diomede American, date line between them, ~21 h apart: confirmed (Diomede_Islands). Disclaimer present at end of description; no side-taking."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:57:01.331815+00:00",
+      "finishedAt": "2026-11-26T23:57:01.331815+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:57:51.799911+00:00",
+      "finishedAt": "2026-11-26T23:57:51.799911+00:00",
+      "notes": [
+        "Re-review after fix: plan beat now 'Russia backed a plan: a 103 km tunnel... about $65B. It was never built.' with NEVER BUILT stamp and Russia's flag; matches Wikipedia Bering_Strait ('Russia green-lit a US$65-billion TKM-World Link tunnel project in August 2011', 103 km) and Bering_Strait_crossing (backed 2007, approved 2011, hypothetical/not built). All 5 facts confirmed on cited Wikipedia pages (82 km, 90 m, 3.8 km, 103 km, $65B); Diomede ownership and date line confirmed; disclaimer ends description; no side-taking. Note: topics.json verify item 'never approved' is wrong and should be corrected by research."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:10:32.323926+00:00",
+      "finishedAt": "2026-11-27T00:10:32.323926+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T00:10:35.362172+00:00",
+      "finishedAt": "2026-11-27T00:12:04.715590+00:00",
+      "notes": [
+        "fingerprint: 38d22b98f45f5e00.4c9bcf04ed27ba11",
+        "9 of 14 stills are mostly empty background (at 0 s, 5 s, 15 s, 20 s, 30 s, 50 s): fill the frame (a set, the cast big, money as a thing)",
+        "3 of 13 consecutive stills look the same (at 30 s, 55 s, 60 s): change the set, the shot size or what is on screen",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:13:40.072805+00:00",
+      "finishedAt": "2026-11-27T00:14:49.128366+00:00",
+      "notes": [
+        "fingerprint: 38d22b98f45f5e00.bde3e72c221561e4",
+        "60 s, sky/atlas (preview only)",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T00:15:31.338383+00:00",
+      "finishedAt": "2026-11-27T00:16:37.256009+00:00",
+      "notes": [
+        "fingerprint: 38d22b98f45f5e00.dec517c4357b8d5e",
+        "4 of 14 stills are mostly empty background (at 15 s, 20 s, 30 s, 50 s): fill the frame (a set, the cast big, money as a thing)",
+        "the cover looks like v-20261126-11's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:17:22.770654+00:00",
+      "finishedAt": "2026-11-27T00:18:29.232587+00:00",
+      "notes": [
+        "fingerprint: 1bbe9f067309991e.836befa7bf17dfcf",
+        "60 s, sky/atlas (preview only)",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:18:35.226969+00:00",
+      "finishedAt": "2026-11-27T00:19:33.816111+00:00",
+      "notes": [
+        "fingerprint: 3a989ff8b5082d16.836befa7bf17dfcf",
+        "60 s, sky/atlas (preview only)",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T00:20:52.842859+00:00",
+      "finishedAt": "2026-11-27T00:20:52.842859+00:00",
+      "notes": [
+        "[script] 0.0s hook (lessons 2 and 11): the first frame never names or flags Russia; the only label is an ALASKA sign standing on the left (Russian) coast, so a muted stranger reads the left land as Alaska. Both coasts are slivers at the frame edges and most of the frame is ice floes. At sec 0 put RUSSIA + flag on the left coast and ALASKA + US flag on the right, with the land filling more of the frame.",
+        "[script] 6b weaker than our best (v-20261123-12, v-20261119-02 fill the frame with labelled land): 0, 25, 30, 40, 45 and 60s are the same wide picture of open sea and ice floes, coasts cut to slivers at the edges, the Diomede islands two dots in the middle; RUSSIA and ALASKA are never written on the map and Little Diomede is never labelled in any still (15s shows only BIG DIOMEDE, 20s no island names). Use closer shot sizes on the coasts/islands, label both sides, thin the ice so land and labels lead.",
+        "[scene] 45.0s plan beat (Plan component): the NEVER BUILT stamp runs off the left frame edge (reads 'EVER BUILT'), is translucent red on the dark-blue blueprint with weak contrast, and crosses the TUNNEL PLAN title and tunnel curve. Keep the stamp inside the blueprint and opaque.",
+        "[scene] 55.0s dateline beat (DateLine component): SATURDAY fills its calendar edge to edge (S and Y touch the borders) and the vertical INTERNATIONAL DATE LINE label butts against that calendar; the car sits on top of both Diomede islands at the crossing so you cannot see it is between them. Size calendar text to fit, keep the label clear, keep the islands visible.",
+        "[scene] 20.0s apart beat (Apart component): the 'see-through water' is a flat dark rectangle floating behind the captions, reading as an empty box rather than a sea floor; the depth line and red buoy stop well above it, so the depth is not shown on a thing.",
+        "[script] thumbnail (dateline at 4.0s): both calendars read SUNDAY (before the flip), so it shows no date difference, the date line label is cut to 'INTERNATIONA' at the top, and the bottom half is empty sea. Take it after 'yesterday' (SUNDAY | SATURDAY) with the label whole and the islands larger."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T00:22:18.950740+00:00",
+      "finishedAt": "2026-11-27T00:23:26.265871+00:00",
+      "notes": [
+        "fingerprint: 787d6b77f0acfd60.e5972752ce1adc2c",
+        "text 'ALASKA' at 5.7 s runs outside the frame",
+        "5 of 14 stills are mostly empty background (at 15 s, 20 s, 30 s, 60 s, 60 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:24:15.353383+00:00",
+      "finishedAt": "2026-11-27T00:25:23.956068+00:00",
+      "notes": [
+        "fingerprint: 787d6b77f0acfd60.a5993866f84efe97",
+        "60 s, sky/atlas (preview only)",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:26:16.993454+00:00",
+      "finishedAt": "2026-11-27T00:27:25.652400+00:00",
+      "notes": [
+        "fingerprint: 787d6b77f0acfd60.471b5f71951cead7",
+        "60 s, sky/atlas (preview only)",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T00:27:59.003285+00:00",
+      "finishedAt": "2026-11-27T00:27:59.003285+00:00",
+      "notes": [
+        "[scene] thumbnail (dateline at 6.53s, re-rendered 00:27): still reads SUNDAY | SUNDAY although the car is already on Little Diomede past the line, so the picture says the opposite of the payoff; the INTERNATIONAL DATE LINE label is not in it at all; the left calendar runs off the left edge. The calendar flip does not appear at this time in the thumbnail render: take a frame where SATURDAY shows (the 55.0s still has it), with the label and both calendars whole.",
+        "[scene] 45.0s plan beat (Plan component), last frame of the beat: the NEVER BUILT stamp is still a faint translucent grey-red on the blueprint (not solid white), and the moved $65B price tag now sits on top of it, covering BUILT. Keep tag and stamp apart and make the stamp opaque.",
+        "[scene] 20.0s apart beat (Apart component): the US flag is planted over the LITTLE DIOMEDE label (reads 'LITTL[flag]MEDE'), and BIG DIOMEDE sits under the island running into the red buoy. Move the labels clear of the flags and buoy.",
+        "[scene] 50.0s dateline beat (DateLine component): the left SUNDAY calendar runs off the left frame edge. Keep both calendars inside the frame.",
+        "[scene] 0.0s and 60.0s hook/loop: 'TO ALASKA' overflows its road sign (the T hangs off the sign's left end); the Russian flag covers the car. Fit the text on the sign and set the flag beside the car. (RUSSIA / ALASKA labels now present, fine.)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:29:25.753278+00:00",
+      "finishedAt": "2026-11-27T00:30:32.608507+00:00",
+      "notes": [
+        "fingerprint: e0589f842925b0a5.90ea4cd94ed4b89e",
+        "60 s, sky/atlas (preview only)",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:31:14.625976+00:00",
+      "finishedAt": "2026-11-27T00:32:22.513864+00:00",
+      "notes": [
+        "fingerprint: e0589f842925b0a5.dfae0c9d00c66798",
+        "60 s, sky/atlas (preview only)",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:32:44.716452+00:00",
+      "finishedAt": "2026-11-27T00:32:44.716452+00:00",
+      "notes": [
+        "Re-render 3: every note fixed. RUSSIA/ALASKA named and flagged from frame 0, TO ALASKA fits its sign, Diomede labels clear of flags, NEVER BUILT solid and clear of the $65B tag, calendars in frame with SUNDAY|SATURDAY at 55s, thumbnail shows the date flip with the label whole; layout/craft empty, audio on target, loop and disclaimer ok.",
+        "fingerprint: e0589f842925b0a5.dfae0c9d00c66798"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:32:53.878800+00:00",
+      "finishedAt": "2026-11-27T00:43:32.213128+00:00",
+      "notes": [
+        "60 s, sky/atlas, peak -1.0 dB, mean -16.0 dB",
+        "note: the payoff 'dateline' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:43:38.337231+00:00",
+      "finishedAt": "2026-11-27T00:43:38.337231+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261127-12",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261127-12"
+  }
+}
