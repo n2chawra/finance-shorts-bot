@@ -1,0 +1,559 @@
+{
+  "id": "v-20261127-41",
+  "createdAt": "2026-11-27T18:19:35.859012+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "BP Texas City, March 2005: the board said the splitter tower was nearly empty while it filled almost to the top, overflowed through its relief valves into a vent stack with no flare, and the vapour cloud ignited by the contractors' trailers",
+    "category": "industrial",
+    "reach": "global",
+    "feed_id": "2026-11-20-texas-city-refinery-long"
+  },
+  "title": "BP Texas City: The Gauge Said the Tower Was Nearly Empty",
+  "description": "BP's Texas City gauge said the tower was nearly empty. What was really inside it?\nWe rebuild the moment of failure in 3D from the U.S. Chemical Safety Board's report: the overfilled tower, the relief valves, the vent stack with no flare and the vapour cloud that reached the trailers.\nThe full minute-by-minute story is on the channel.\nSources: CSB (Mar 2007).\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.",
+  "hashtags": [
+    "#Shorts",
+    "#TexasCity",
+    "#BP",
+    "#IndustrialDisaster",
+    "#CSB"
+  ],
+  "hookStyle": "conflict",
+  "cta": "Gauge or trailers: which should have stopped it? Comment",
+  "seed": 51207,
+  "style": {
+    "palette": "sky",
+    "genre": "brace",
+    "key": "C",
+    "bpm": 70,
+    "voice": "bm_lewis",
+    "arms": {
+      "length": "30-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "At BP's Texas City, this gauge says it's draining.",
+        "start": 0.3,
+        "seconds": 3.69,
+        "window": 4.33,
+        "fill": 0.852
+      },
+      {
+        "scene": "inside",
+        "text": "Inside, it's 158 feet high, in a tower 170 feet tall. Where does it go?",
+        "start": 4.63,
+        "seconds": 6.69,
+        "window": 7.37,
+        "fill": 0.908
+      },
+      {
+        "scene": "blind",
+        "text": "Why can't the board see it? Its gauge reads only the bottom 9 feet.",
+        "start": 12.0,
+        "seconds": 4.48,
+        "window": 5.13,
+        "fill": 0.873
+      },
+      {
+        "scene": "valves",
+        "text": "It overflows, down a pipe, through relief valves, for 6 minutes.",
+        "start": 17.13,
+        "seconds": 4.16,
+        "window": 4.83,
+        "fill": 0.861
+      },
+      {
+        "scene": "stack",
+        "text": "They feed an old vent stack with no flare. It erupts like a geyser.",
+        "start": 21.97,
+        "seconds": 4.47,
+        "window": 5.13,
+        "fill": 0.871
+      },
+      {
+        "scene": "cloud",
+        "text": "Vapour drifts toward the contractors' trailers, and a pickup truck idling nearby.",
+        "start": 27.1,
+        "seconds": 4.95,
+        "window": 5.6,
+        "fill": 0.884
+      },
+      {
+        "scene": "ignite",
+        "text": "At 20 past 1, it finds a spark.",
+        "start": 32.7,
+        "seconds": 2.84,
+        "window": 3.47,
+        "fill": 0.818
+      },
+      {
+        "scene": "payoff",
+        "text": "15 people died, all in or near those trailers.",
+        "start": 38.17,
+        "seconds": 3.31,
+        "window": 3.97,
+        "fill": 0.834
+      },
+      {
+        "scene": "loop",
+        "text": "Gauge or trailers: which should have stopped it? Full story on our channel. It happened",
+        "start": 42.13,
+        "seconds": 5.04,
+        "window": 5.7,
+        "fill": 0.884
+      }
+    ]
+  },
+  "durationSec": 48,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.6,
+    "lufs": -16.4,
+    "music_under_voice_db": 22.0
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_lewis",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-check after rewrite 1: hook 'At BP's Texas City, this gauge says it's draining.' matches the CSB final report (the level transmitter 'indicated that the liquid level in the splitter tower was gradually declining, although it was actually rising'); hook plate THE GAUGE SAYS / FALLING with a down arrow, no LOW and no percent, matches; cover 'The gauge was wrong' matches the report ('the transmitter's reading was inaccurate'); title/description 'nearly empty' stands on Fig 6 (board showed 7.9 ft of liquid in the 170-ft tower at 1:04 p.m.). Other beats unchanged and previously confirmed."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Round 5: at 10s REAL LEVEL is pinned at the liquid surface by the tower top, and the LIQUID 158 / TOWER 170 plates sit lower, clear of the surface and above the captions. The orbiting 3D shots, Gauge diagram, VENT STACK pin and the cover at hook 3.85s all hold. layout/craft problems are empty, 48 s, audio -1.0/-18.6 dB.",
+        "fingerprint: 2d4fe6ab527ae33a.a9281dd7c6211005"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-27T14:51:48.667049+00:00",
+      "finishedAt": "2026-11-27T14:51:48.667049+00:00",
+      "notes": [
+        "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T14:51:54.146930+00:00",
+      "finishedAt": "2026-11-27T14:51:54.146930+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T14:56:15.371153+00:00",
+      "finishedAt": "2026-11-27T14:56:15.371153+00:00",
+      "notes": [
+        "beat 'hook'.events.BP: no word 'BP' in this beat's spoken line"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T14:56:21.227876+00:00",
+      "finishedAt": "2026-11-27T14:56:21.227876+00:00",
+      "notes": [
+        "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T14:57:18.478761+00:00",
+      "finishedAt": "2026-11-27T14:57:18.478761+00:00",
+      "notes": [
+        "beat 'inside': moment at 'where' is not one of this beat's events (name the word in `events` first)"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T14:57:58.212360+00:00",
+      "finishedAt": "2026-11-27T14:57:58.212360+00:00",
+      "notes": [
+        "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T14:59:46.589984+00:00",
+      "finishedAt": "2026-11-27T14:59:46.589984+00:00",
+      "notes": [
+        "All 9 facts confirmed on the CSB final report PDF (opened, csb.gov) and CSB 2007 release page: 23 Mar 2005 1:20 p.m. (sec 1.1, timeline 1:20:04), 170-ft tower and 158 ft actual level at 1:04 p.m. (Fig 6, p56), transmitter span within bottom 9 ft (p.1608/2286 lines), relief valves open six minutes, 1950s stack never tied to a flare, geyser, idling diesel pickup ~25 ft from drum (most likely ignition), 15 killed all in or near trailers (contractors). Disclaimer at end of description; deaths stated once, no gore; verify items (Eva Rowe, API RP 753) not used. Note: 'nearly empty' rests on Fig 6 (board indicated 7.9 ft of liquid in a 170-ft tower) while the transmitter itself read 78% of its 5-ft span, so never show a percent on the LOW readout; the truck spark is the report's 'most likely' source."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T14:58:38.865777+00:00",
+      "finishedAt": "2026-11-27T15:02:09.479588+00:00",
+      "notes": [
+        "fingerprint: 534a853018dd4080.6a54d6a242471f7a",
+        "text '3D reconstruction · cutaway' at 10.3 s is 32 px, below the 44 px minimum",
+        "text '3D reconstruction · not actual footage' at 21.1 s is 32 px, below the 44 px minimum",
+        "text 'REAL LEVEL' at 16.1 s is 42.6 px, below the 44 px minimum",
+        "text 'MARCH 23, 2005 · TEXAS CITY' at 3.6 s is 40 px, below the 44 px minimum",
+        "text '3D reconstruction · after the explosion' at 41.5 s is 32 px, below the 44 px minimum",
+        "2 of 11 stills are mostly empty background (at 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+        "the hook runs 5.2 s; keep it to 4 s or less",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:02:54.680837+00:00",
+      "finishedAt": "2026-11-27T15:02:54.680837+00:00",
+      "notes": [
+        "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:03:49.960480+00:00",
+      "finishedAt": "2026-11-27T15:03:49.960480+00:00",
+      "notes": [
+        "Re-check of the shortened hook 'At BP's Texas City, this gauge reads nearly empty.': same claim as before, confirmed on the CSB final report Fig 6 (the level transmitter at the tower base showed 7.9 ft of liquid in the 170-ft tower at 1:04 p.m. while the real level was 158 ft); the loop 'It happened' still reads into 'At BP's Texas City'. Other beats unchanged and previously confirmed. Note stands: no percent on the LOW readout (the transmitter read 78% of its 5-ft span)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T15:03:34.075074+00:00",
+      "finishedAt": "2026-11-27T15:06:42.512172+00:00",
+      "notes": [
+        "fingerprint: 082850050a111277.90b64026b4e3ab64",
+        "the hook runs 4.5 s; keep it to 4 s or less",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:06:55.522208+00:00",
+      "finishedAt": "2026-11-27T15:06:55.522208+00:00",
+      "notes": [
+        "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T15:07:50.570993+00:00",
+      "finishedAt": "2026-11-27T15:07:50.570993+00:00",
+      "notes": [
+        "hook: 'this gauge reads low' is wrong on the gauge's own scale. CSB final report: at 1:04 p.m. the level transmitter read 78 percent (7.9 ft), above its 72 percent high-level alarm set point, which had already sounded at 3:09 a.m. (timeline; footnotes at the 72%/78% alarms). The gauge read HIGH in its range, not low; what it got wrong was the trend and the height (report: it 'indicated that the liquid level in the splitter tower was gradually declining, although it was actually rising'). Fix: say what the report says, e.g. 'At BP's Texas City, this gauge says the level is falling.' (or 'says it's draining'), and change the hook's LOW readout / 'THE GAUGE SAYS LOW' plate to match (e.g. a falling-level arrow), never a low reading or a percent."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:07:33.433763+00:00",
+      "finishedAt": "2026-11-27T15:10:33.017216+00:00",
+      "notes": [
+        "fingerprint: 3a0ce56626a8c2f2.90b64026b4e3ab64",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T15:10:45.244072+00:00",
+      "finishedAt": "2026-11-27T15:10:45.244072+00:00",
+      "notes": [
+        "beat 'hook'.events.tower: no word 'reads' in this beat's spoken line"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:10:49.851918+00:00",
+      "finishedAt": "2026-11-27T15:10:49.851918+00:00",
+      "notes": [
+        "9 figures computed from inputs; 9 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:11:38.226309+00:00",
+      "finishedAt": "2026-11-27T15:11:38.226309+00:00",
+      "notes": [
+        "Re-check after rewrite 1: hook 'At BP's Texas City, this gauge says it's draining.' matches the CSB final report (the level transmitter 'indicated that the liquid level in the splitter tower was gradually declining, although it was actually rising'); hook plate THE GAUGE SAYS / FALLING with a down arrow, no LOW and no percent, matches; cover 'The gauge was wrong' matches the report ('the transmitter's reading was inaccurate'); title/description 'nearly empty' stands on Fig 6 (board showed 7.9 ft of liquid in the 170-ft tower at 1:04 p.m.). Other beats unchanged and previously confirmed."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:11:29.553341+00:00",
+      "finishedAt": "2026-11-27T15:14:38.454292+00:00",
+      "notes": [
+        "fingerprint: 5999e7639134312f.546a72c492a5f4a4",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:15:32.025817+00:00",
+      "finishedAt": "2026-11-27T15:18:37.167851+00:00",
+      "notes": [
+        "fingerprint: 5999e7639134312f.69fd3693ee3d0a91",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T15:19:36.313965+00:00",
+      "finishedAt": "2026-11-27T15:19:36.313965+00:00",
+      "notes": [
+        "[scene] 10.0s, beat 'inside' (Tower, mode inside): the red LIQUID · FEET 158 plate sits on top of the REAL LEVEL pin label riding the liquid surface; 'FEET' and 'LEVEL' collide, text over text. Keep the pin clear of the top-left plate stack (offset the pin to the right of the shell or move the plates).",
+        "[scene] 25.0s, beat 'stack' (Plant), and the thumbnail: the vent stack is drawn in front of its own VENT STACK pin, the brown pole cuts through the label between VENT and STACK. The pin must render above the 3D, or sit beside the stack.",
+        "[script] Thumbnail: thumbnail.at stack, sec 3.0 lands at 25.0s, half a second before 'erupts' (25.5s), so it shows a bare brown pole in an empty dark sky, no geyser, no tower, no gauge, under the words THE GAUGE WAS WRONG; the picture does not match the words and is mostly empty. Move sec to the geyser (about 4.3, after 'geyser' at 26.3s) or put the cover on the hook's tower with the green FALLING gauge."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:20:33.098021+00:00",
+      "finishedAt": "2026-11-27T15:23:42.297650+00:00",
+      "notes": [
+        "fingerprint: 962d633a4e538992.fcd114a081932423",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:23:51.148699+00:00",
+      "finishedAt": "2026-11-27T15:26:53.731310+00:00",
+      "notes": [
+        "fingerprint: 8b8584062fee2d32.fcd114a081932423",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T15:27:11.518605+00:00",
+      "finishedAt": "2026-11-27T15:27:11.518605+00:00",
+      "notes": [
+        "[script] Thumbnail (round 2, hook at sec 3.6): the frame is mid-move. 3.6s is frame 108, just after 'empty' (frame 104) starts the push up, so the green plate is motion-blurred and dim, its THE GAUGE SAYS line has faded out, and only a murky FALLING shows half under the title words. The camera is also past the liquid surface, so the full tower never appears next to the gauge. Set sec to about 2.9 (frame ~87: after 'gauge' at 78 lands the plate, before the push), or pick a frame where the green plate is sharp and the amber surface near the top is in view. Stills fixes 1 and 2 verified: at 10.0s REAL LEVEL now clears the plates; at 25.0s the VENT STACK pin sits in front of the stack."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:27:24.537425+00:00",
+      "finishedAt": "2026-11-27T15:30:17.030759+00:00",
+      "notes": [
+        "fingerprint: eda17c3efd9cf33d.fcd114a081932423",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:31:01.111622+00:00",
+      "finishedAt": "2026-11-27T15:34:05.748238+00:00",
+      "notes": [
+        "fingerprint: eda17c3efd9cf33d.6d492b48080c3491",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:34:14.816771+00:00",
+      "finishedAt": "2026-11-27T15:37:12.723221+00:00",
+      "notes": [
+        "fingerprint: d3ce791161f704a2.6d492b48080c3491",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:37:18.748683+00:00",
+      "finishedAt": "2026-11-27T15:40:18.186856+00:00",
+      "notes": [
+        "fingerprint: 2d4fe6ab527ae33a.6d492b48080c3491",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T15:40:30.484756+00:00",
+      "finishedAt": "2026-11-27T15:40:30.484756+00:00",
+      "notes": [
+        "Round 3: cover at hook 3.85s is sharp: an amber-filled cutaway tower with a readable green THE GAUGE SAYS FALLING plate clear of the title, and LEVEL GAUGE pinned at the base, so it matches THE GAUGE WAS WRONG; earlier fixes (REAL LEVEL clear of plates at 10s, VENT STACK pin in front at 25s) hold; directed 3D places throughout, hook names BP Texas City, payoff 15 at trailers, pick-one loop, disclaimer present, layout/audio in range.",
+        "fingerprint: 2d4fe6ab527ae33a.6d492b48080c3491"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T16:05:47.461826+00:00",
+      "finishedAt": "2026-11-27T17:05:47.676433+00:00",
+      "notes": [
+        "motion median 2.32 is under 3.0 for a short video in the shot system: more camera moves, money in motion, set changes (the showcase scored 9.3)",
+        "warning: integrated loudness -16.4 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T17:06:49.904963+00:00",
+      "finishedAt": "2026-11-27T17:06:49.906592+00:00",
+      "notes": [
+        "full render refused: the script, plan or beat code changed after QA passed the stills; render the stills (`python -m generator.run render v-20261127-41 --preview`), have QA pass them, then the full render"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T17:06:58.110350+00:00",
+      "finishedAt": "2026-11-27T17:10:09.522917+00:00",
+      "notes": [
+        "fingerprint: 2d4fe6ab527ae33a.a8f433fec44dd6ed",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T17:10:54.541256+00:00",
+      "finishedAt": "2026-11-27T17:13:53.374596+00:00",
+      "notes": [
+        "fingerprint: 2d4fe6ab527ae33a.f96c6e1f674f0866",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T17:14:35.906892+00:00",
+      "finishedAt": "2026-11-27T17:17:38.053155+00:00",
+      "notes": [
+        "fingerprint: 2d4fe6ab527ae33a.a1a3a43713692c61",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T17:18:00.656316+00:00",
+      "finishedAt": "2026-11-27T17:18:00.656316+00:00",
+      "notes": [
+        "[scene] 10.0s, beat 'inside' (Tower.tsx, mode inside, with the new orbit): the REAL LEVEL pin now sits at about mid-height on the tower, far below the liquid surface, which is at the top. A viewer reads 'real level' as halfway, so the label doesn't match the 158 of 170 it stands for. The orbit has also swung the tower top under the LIQUID 158 / TOWER 170 plates, so they cover the very surface the beat is about. Keep the pin on the surface: frame the orbit so the tower sits right of the plates (or move the plates to the right side for this beat) and put the pin at the surface beside the shell. Everything else in round 4 is fine: the 3D orbits read well, the Gauge diagram at 15s is clean, the VENT STACK pin is in front of the stack at 25s, and the cover at 3.85s is sharp and readable."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T17:18:48.738466+00:00",
+      "finishedAt": "2026-11-27T17:21:54.907058+00:00",
+      "notes": [
+        "fingerprint: 2d4fe6ab527ae33a.a9281dd7c6211005",
+        "48 s, sky/brace (preview only)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T17:22:09.738713+00:00",
+      "finishedAt": "2026-11-27T17:22:09.738713+00:00",
+      "notes": [
+        "Round 5: at 10s REAL LEVEL is pinned at the liquid surface by the tower top, and the LIQUID 158 / TOWER 170 plates sit lower, clear of the surface and above the captions. The orbiting 3D shots, Gauge diagram, VENT STACK pin and the cover at hook 3.85s all hold. layout/craft problems are empty, 48 s, audio -1.0/-18.6 dB.",
+        "fingerprint: 2d4fe6ab527ae33a.a9281dd7c6211005"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T17:22:16.620322+00:00",
+      "finishedAt": "2026-11-27T18:19:27.658743+00:00",
+      "notes": [
+        "48 s, sky/brace, peak -1.0 dB, mean -18.6 dB",
+        "warning: integrated loudness -16.4 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video V0CGuxCbeIk is one: {\"id\": \"V0CGuxCbeIk\", \"views\": 7454183, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-27T18:19:35.859339+00:00",
+      "finishedAt": "2026-11-27T18:19:35.859339+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261127-41",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261127-41"
+  },
+  "promoOf": "L-20261122-42"
+}

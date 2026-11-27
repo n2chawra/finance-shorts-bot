@@ -1,0 +1,874 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 51207,
+ "story": "promo_failure_moment",
+ "shape": "the-blind-gauge",
+ "currency": "USD",
+ "style": {
+  "recipe": "cross-section",
+  "palette": "sky",
+  "genre": "brace",
+  "key": "C",
+  "bpm": 70
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "conflict",
+ "cta": "Gauge or trailers: which should have stopped it? Comment",
+ "feed_id": "2026-11-20-texas-city-refinery-long",
+ "promo_of": "L-20261122-42",
+ "facts": [
+  {
+   "label": "Year of the explosion",
+   "value": 2005,
+   "unit": "year",
+   "as_of": "2005-03-23",
+   "source": "CSB",
+   "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+   "fixed": true
+  },
+  {
+   "label": "Day of March 2005 of the explosion",
+   "value": 23,
+   "unit": "count",
+   "as_of": "2007-03-20",
+   "source": "CSB",
+   "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+   "fixed": true
+  },
+  {
+   "label": "Height of the raffinate splitter tower, feet (170-foot tall tower)",
+   "value": 170,
+   "unit": "count",
+   "as_of": "2007-03-20",
+   "source": "CSB",
+   "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+   "fixed": true
+  },
+  {
+   "label": "The level transmitter measured only within the bottom this many feet of the tower",
+   "value": 9,
+   "unit": "count",
+   "as_of": "2007-03-20",
+   "source": "CSB",
+   "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+   "fixed": true
+  },
+  {
+   "label": "Actual liquid level in the tower at 1:04 p.m., feet",
+   "value": 158,
+   "unit": "count",
+   "as_of": "2007-03-20",
+   "source": "CSB",
+   "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+   "fixed": true
+  },
+  {
+   "label": "Minutes the three pressure relief valves stayed open",
+   "value": 6,
+   "unit": "count",
+   "as_of": "2007-03-20",
+   "source": "CSB",
+   "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+   "fixed": true
+  },
+  {
+   "label": "Hour of the explosion (p.m.), 1:20 p.m.",
+   "value": 1,
+   "unit": "count",
+   "as_of": "2007-03-20",
+   "source": "CSB",
+   "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+   "fixed": true
+  },
+  {
+   "label": "Minutes past the hour of the explosion (1:20 p.m.)",
+   "value": 20,
+   "unit": "count",
+   "as_of": "2007-03-20",
+   "source": "CSB",
+   "url": "https://www.csb.gov/assets/1/20/CSBFinalReportBP.pdf?13841",
+   "fixed": true
+  },
+  {
+   "label": "People killed",
+   "value": 15,
+   "unit": "count",
+   "as_of": "2005-03-23",
+   "source": "CSB",
+   "url": "https://www.csb.gov/u-s-chemical-safety-board-concludes-organizational-and-safety-deficiencies-at-all-levels-of-the-bp-corporation-caused-march-2005-texas-city-disaster-that-killed-15-injured-180/",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.85,
+  "words": "The gauge was *wrong*",
+  "tag": "BP Texas City",
+  "angle": "contradiction",
+  "pattern": "the niche's industrial-disaster covers show the plant at its moment of failure big with a few bold words; ours shows our 3D tower in cutaway with its liquid near the top beside the green gauge plate saying FALLING, under four words"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "At BP's Texas City, this gauge says it's draining.",
+   "events": {
+    "BP": {
+     "word": "BP's"
+    },
+    "refinery": {
+     "word": "City"
+    },
+    "gauge": {
+     "word": "gauge"
+    },
+    "tower": {
+     "word": "says"
+    },
+    "empty": {
+     "word": "draining"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "mode": "hook",
+    "place": "beside BP's raffinate splitter tower at the Texas City refinery under a grey sky, its shell cut away to glass",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "gauge",
+      "size": "medium"
+     },
+     {
+      "at": "empty",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "BP",
+      "what": "the tall tower in cutaway, amber liquid already near its top and rippling, the date caption and the reconstruction tag; BP REFINERY types on"
+     },
+     {
+      "at": "refinery",
+      "what": "the camera drifts in over the unit, pipe racks and trailers behind"
+     },
+     {
+      "at": "gauge",
+      "what": "down to the level gauge at the tower's base glowing green, LEVEL GAUGE pinned to it; THE GAUGE SAYS FALLING lands in green with a down arrow"
+     },
+     {
+      "at": "tower",
+      "what": "the FALLING readout's arrow blinks while the amber liquid shimmers above it"
+     },
+     {
+      "at": "empty",
+      "what": "push up to the liquid surface near the top; an amber INSIDE ? plate lands under it"
+     }
+    ],
+    "things": [
+     "splitter tower in glass cutaway",
+     "amber liquid near the top",
+     "level gauge at the base",
+     "FALLING readout",
+     "date caption",
+     "pipe racks",
+     "contractor trailers"
+    ],
+    "fig": {
+     "day": "{fact2}",
+     "year": "{fact1}"
+    }
+   },
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "inside",
+   "role": "promise",
+   "say": "Inside, it's {fact5} feet high, in a tower {fact3} feet tall. Where does it go?",
+   "events": {
+    "Inside": {
+     "word": "Inside"
+    },
+    "high": {
+     "word": "high"
+    },
+    "tower": {
+     "word": "tower"
+    },
+    "tall": {
+     "word": "tall"
+    },
+    "Where": {
+     "word": "Where"
+    },
+    "go": {
+     "word": "go"
+    },
+    "liquid": {
+     "word": "it's"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "mode": "inside",
+    "place": "the same tower, the camera riding up its glass shell to the liquid's surface",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "liquid",
+      "size": "close"
+     },
+     {
+      "at": "tall",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Inside",
+      "what": "medium on the tower's lower half, the liquid level climbing past the trays"
+     },
+     {
+      "at": "liquid",
+      "what": "ride up the shell with the rising surface, REAL LEVEL pinned on it; the red LIQUID FEET plate lands"
+     },
+     {
+      "at": "high",
+      "what": "the red plate counts up to the real level"
+     },
+     {
+      "at": "tower",
+      "what": "the TOWER FEET plate lands beside it"
+     },
+     {
+      "at": "tall",
+      "what": "pull back wide to the whole tower, the liquid almost at its top, the plate counts the tower's height"
+     },
+     {
+      "at": "Where",
+      "what": "the surface laps at the very top, just under the overhead pipe"
+     },
+     {
+      "at": "go",
+      "what": "the camera settles wide on the tower and its pipe"
+     }
+    ],
+    "things": [
+     "splitter tower in glass cutaway",
+     "rising amber liquid",
+     "trays",
+     "overhead pipe",
+     "LIQUID FEET plate",
+     "TOWER FEET plate"
+    ],
+    "fig": {
+     "actual": "{fact5}",
+     "tower": "{fact3}"
+    }
+   },
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "blind",
+   "role": "build",
+   "say": "Why can't the board see it? Its gauge reads only the bottom {fact4} feet.",
+   "events": {
+    "Why": {
+     "word": "Why"
+    },
+    "board": {
+     "word": "board"
+    },
+    "gauge": {
+     "word": "gauge"
+    },
+    "reads": {
+     "word": "reads"
+    },
+    "bottom": {
+     "word": "bottom"
+    },
+    "feet": {
+     "word": "feet"
+    }
+   },
+   "params": {
+    "component": "Gauge",
+    "place": "an engineer's cross-section of the tower on white drafting paper",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "bottom",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Why",
+      "what": "the tower's elevation draws on in black line, liquid shaded to its real level, REAL LEVEL marked"
+     },
+     {
+      "at": "board",
+      "what": "a blue arrow points to the gauge at the base, GAUGE"
+     },
+     {
+      "at": "gauge",
+      "what": "everything above the base is hatched red, NOT MEASURED types on"
+     },
+     {
+      "at": "reads",
+      "what": "a blue bracket draws on over the short span at the bottom"
+     },
+     {
+      "at": "bottom",
+      "what": "push in on the base of the tower and the bracket"
+     },
+     {
+      "at": "feet",
+      "what": "the span's height in feet is pinned beside the bracket"
+     }
+    ],
+    "things": [
+     "tower elevation",
+     "shaded liquid",
+     "level gauge",
+     "blue span bracket",
+     "red hatching",
+     "dimension lines",
+     "overhead pipe"
+    ],
+    "fig": {
+     "span": "{fact4}",
+     "tower": "{fact3}",
+     "actual": "{fact5}"
+    }
+   },
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "valves",
+   "role": "build",
+   "say": "It overflows, down a pipe, through relief valves, for {fact6} minutes.",
+   "events": {
+    "overflows": {
+     "word": "overflows"
+    },
+    "pipe": {
+     "word": "pipe"
+    },
+    "relief": {
+     "word": "relief"
+    },
+    "valves": {
+     "word": "valves"
+    },
+    "minutes": {
+     "word": "minutes"
+    }
+   },
+   "params": {
+    "component": "Plant",
+    "shot": "valves",
+    "place": "high on the tower top, then down the overhead pipe to the three red relief valves near the ground",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "relief",
+      "size": "medium"
+     },
+     {
+      "at": "valves",
+      "size": "close"
+     },
+     {
+      "at": "minutes",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "overflows",
+      "what": "at the tower's top, the pipe begins to glow amber as liquid spills into it"
+     },
+     {
+      "at": "pipe",
+      "what": "the amber runs down the pipe along the tower's side"
+     },
+     {
+      "at": "relief",
+      "what": "the camera follows it down the pipe"
+     },
+     {
+      "at": "valves",
+      "what": "close on the three red relief valves popping open, RELIEF VALVES pinned; the VALVES OPEN MINUTES plate lands"
+     },
+     {
+      "at": "minutes",
+      "what": "pull out as the outlet line glows toward the drum, the plate counts the minutes"
+     }
+    ],
+    "things": [
+     "tower top",
+     "overhead pipe glowing amber",
+     "three red relief valves",
+     "outlet line",
+     "VALVES OPEN plate"
+    ],
+    "fig": {
+     "minutes": "{fact6}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "creak",
+     "at": "valves"
+    }
+   ],
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "stack",
+   "role": "build",
+   "say": "They feed an old vent stack with no flare. It erupts like a geyser.",
+   "events": {
+    "feed": {
+     "word": "feed"
+    },
+    "old": {
+     "word": "old"
+    },
+    "stack": {
+     "word": "stack"
+    },
+    "flare": {
+     "word": "flare"
+    },
+    "erupts": {
+     "word": "erupts"
+    },
+    "geyser": {
+     "word": "geyser"
+    }
+   },
+   "params": {
+    "component": "Plant",
+    "shot": "stack",
+    "place": "the rusted blowdown drum and its tall open vent stack beside the unit",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "erupts",
+      "size": "close"
+     },
+     {
+      "at": "geyser",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "feed",
+      "what": "wide on the rusted drum, glowing amber as it fills"
+     },
+     {
+      "at": "old",
+      "what": "the camera drifts up the old stack"
+     },
+     {
+      "at": "stack",
+      "what": "VENT STACK pinned near its top"
+     },
+     {
+      "at": "flare",
+      "what": "a red NO FLARE tag types on"
+     },
+     {
+      "at": "erupts",
+      "what": "push in on the stack top: liquid shoots up out of it"
+     },
+     {
+      "at": "geyser",
+      "what": "pull back as the geyser rains down round the drum as mist"
+     }
+    ],
+    "things": [
+     "blowdown drum",
+     "open vent stack",
+     "liquid geyser",
+     "falling mist",
+     "NO FLARE tag"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "erupts"
+    }
+   ],
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "cloud",
+   "role": "build",
+   "say": "Vapour drifts toward the contractors' trailers, and a pickup truck idling nearby.",
+   "events": {
+    "Vapour": {
+     "word": "Vapour"
+    },
+    "drifts": {
+     "word": "drifts"
+    },
+    "trailers": {
+     "word": "trailers"
+    },
+    "pickup": {
+     "word": "pickup"
+    },
+    "idling": {
+     "word": "idling"
+    }
+   },
+   "params": {
+    "component": "Plant",
+    "shot": "cloud",
+    "place": "high over the unit, then down at the row of contractor trailers and the idling pickup",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "trailers",
+      "size": "medium"
+     },
+     {
+      "at": "pickup",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Vapour",
+      "what": "from high above, a pale vapour cloud spreads over the ground from the drum; FLAMMABLE VAPOUR types on"
+     },
+     {
+      "at": "drifts",
+      "what": "the cloud creeps wider across the gravel"
+     },
+     {
+      "at": "trailers",
+      "what": "down to the trailers, small figures of workers standing by their doors, TRAILERS pinned"
+     },
+     {
+      "at": "pickup",
+      "what": "close on the red pickup truck, exhaust puffing, IDLING TRUCK pinned"
+     },
+     {
+      "at": "idling",
+      "what": "the vapour thins around its wheels"
+     }
+    ],
+    "things": [
+     "vapour cloud",
+     "contractor trailers",
+     "workers by the trailers",
+     "idling pickup truck",
+     "exhaust",
+     "blowdown drum",
+     "geyser"
+    ]
+   },
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "ignite",
+   "role": "turn",
+   "say": "At {fact8} past {fact7}, it finds a spark.",
+   "events": {
+    "At": {
+     "word": "At"
+    },
+    "past": {
+     "word": "past"
+    },
+    "finds": {
+     "word": "finds"
+    },
+    "spark": {
+     "word": "spark"
+    }
+   },
+   "params": {
+    "component": "Plant",
+    "shot": "ignite",
+    "place": "low beside the idling pickup inside the vapour cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "spark",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "At",
+      "what": "the TIME plate lands with the clock time"
+     },
+     {
+      "at": "past",
+      "what": "the vapour swirls round the truck, the workers' trailers behind"
+     },
+     {
+      "at": "finds",
+      "what": "the exhaust flickers"
+     },
+     {
+      "at": "spark",
+      "what": "push in: a spark flashes at the engine"
+     }
+    ],
+    "things": [
+     "pickup truck",
+     "vapour cloud",
+     "spark at the engine",
+     "TIME plate",
+     "trailers behind"
+    ],
+    "fig": {
+     "hour": "{fact7}",
+     "minute": "{fact8}"
+    }
+   },
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "blast",
+   "role": "turn",
+   "say": "",
+   "events": {
+    "near": {
+     "sec": 0.2
+    },
+    "give": {
+     "sec": 1.0
+    },
+    "wide": {
+     "sec": 1.7
+    }
+   },
+   "params": {
+    "component": "Plant",
+    "shot": "blast",
+    "place": "the unit as the cloud ignites, then far back",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "near",
+      "what": "silence: the spark glowing at the engine in the cloud"
+     },
+     {
+      "at": "give",
+      "what": "the sub-boom: the whole cloud ignites, a white flash and a fireball"
+     },
+     {
+      "at": "wide",
+      "what": "wide: the fireball and pressure ring roll over the trailers, debris flying"
+     }
+    ],
+    "things": [
+     "fireball",
+     "pressure ring",
+     "debris",
+     "trailers",
+     "refinery unit"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "give"
+    }
+   ],
+   "min_sec": 2.4,
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "{fact9} people died, all in or near those trailers.",
+   "events": {
+    "died": {
+     "word": "died"
+    },
+    "trailers": {
+     "word": "trailers"
+    }
+   },
+   "params": {
+    "component": "Plant",
+    "shot": "after",
+    "place": "the trailer area after the explosion, firefighters walking in",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "trailers",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "died",
+      "what": "the crushed trailers burning under smoke, firefighters with lamps walking in; the PEOPLE DIED plate lands"
+     },
+     {
+      "at": "trailers",
+      "what": "closer on the trailers, more firefighters arriving, IN OR NEAR THE TRAILERS types on"
+     }
+    ],
+    "things": [
+     "crushed trailers",
+     "fires and smoke",
+     "firefighters with lamps",
+     "toll plate"
+    ],
+    "fig": {
+     "died": "{fact9}"
+    }
+   },
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  },
+  {
+   "id": "loop",
+   "role": "loop",
+   "say": "Gauge or trailers: which should have stopped it? Full story on our channel. It happened",
+   "events": {
+    "Gauge": {
+     "word": "Gauge"
+    },
+    "trailers": {
+     "word": "trailers"
+    },
+    "stopped": {
+     "word": "stopped"
+    },
+    "story": {
+     "word": "story"
+    },
+    "channel": {
+     "word": "channel"
+    },
+    "happened": {
+     "word": "happened"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "mode": "loop",
+    "place": "back at the tower in the grey light, its liquid near the top again",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "story",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Gauge",
+      "what": "close on the amber surface near the top, THE GAUGE? types on in green"
+     },
+     {
+      "at": "trailers",
+      "what": "OR THE TRAILERS? types on in red"
+     },
+     {
+      "at": "stopped",
+      "what": "the liquid shimmers under the pipe"
+     },
+     {
+      "at": "story",
+      "what": "pull back wide to the whole tower, FULL STORY ON THE CHANNEL"
+     },
+     {
+      "at": "happened",
+      "what": "the wide tower again, the same framing the video opens on"
+     }
+    ],
+    "things": [
+     "splitter tower in glass cutaway",
+     "amber liquid",
+     "question tags",
+     "overhead pipe"
+    ],
+    "fig": {
+     "actual": "{fact5}",
+     "tower": "{fact3}"
+    }
+   },
+   "scene": "directed",
+   "speaker": "narrator",
+   "transition": "cut"
+  }
+ ]
+}
