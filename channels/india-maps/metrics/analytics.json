@@ -543,17 +543,6 @@
   },
   "channelDays": [
     {
-      "day": "2026-10-01",
-      "format": "all",
-      "views": 0,
-      "engagedViews": 0,
-      "watchMinutes": 0,
-      "avgViewPct": 0,
-      "subsGained": 0,
-      "subsLost": 0,
-      "shares": 0
-    },
-    {
       "day": "2026-10-02",
       "format": "all",
       "views": 0,
@@ -1128,7 +1117,7 @@
     {
       "day": "2026-11-22",
       "format": "all",
-      "views": 1171,
+      "views": 1160,
       "engagedViews": 383,
       "watchMinutes": 115,
       "avgViewPct": 62.11,
@@ -1168,6 +1157,28 @@
       "subsGained": 0,
       "subsLost": 0,
       "shares": 0
+    },
+    {
+      "day": "2026-11-24",
+      "format": "all",
+      "views": 278,
+      "engagedViews": 99,
+      "watchMinutes": 38,
+      "avgViewPct": 54.11,
+      "subsGained": 0,
+      "subsLost": 0,
+      "shares": 0
+    },
+    {
+      "day": "2026-11-24",
+      "format": "short",
+      "views": 278,
+      "engagedViews": 99,
+      "watchMinutes": 38,
+      "avgViewPct": 54.11,
+      "subsGained": 0,
+      "subsLost": 0,
+      "shares": 0
     }
   ],
   "videos": [
@@ -1177,18 +1188,49 @@
       "title": "Telangana ki gaadiyon ka code kyun badla? 🚗 Har state ka code",
       "publishAt": "2026-11-24T12:47:00.000Z",
       "durationSec": 37,
-      "views": 0,
-      "engagedRatio": null,
-      "watchHours": 0,
+      "views": 278,
+      "engagedRatio": 0.356,
+      "watchHours": 0.6,
       "shares": 0,
       "subsGained": 0,
       "subsLost": 0,
-      "impressions": null,
-      "ctr": null,
-      "hookHold": null,
-      "endHold": null,
-      "vsSimilarLength": null,
-      "drops": [],
+      "impressions": 16,
+      "ctr": 0,
+      "hookHold": 1.039,
+      "endHold": 0.2121,
+      "vsSimilarLength": 0.3,
+      "drops": [
+        {
+          "at": 6.475,
+          "to": 0.697,
+          "beat": "promise",
+          "drop": 0.202,
+          "from": 0.899,
+          "line": "पहले देखिए, हर राज्य और केंद्र शासित प्रदेश की गाड़ी पर उसका अपना कोड होता है, कुल 36।",
+          "near": "और केंद्र शासित प्रदेश की गाड़ी पर",
+          "scene": "directed"
+        },
+        {
+          "at": 11.655,
+          "to": 0.535,
+          "beat": "north",
+          "drop": 0.091,
+          "from": 0.626,
+          "line": "दिल्ली डी एल, पंजाब पी बी, उत्तर प्रदेश यू पी, बिहार बी आर।",
+          "near": "उत्तर प्रदेश यू पी, बिहार बी आर।",
+          "scene": "directed"
+        },
+        {
+          "at": 35.335,
+          "to": 0.212,
+          "beat": "loop",
+          "drop": 0.121,
+          "from": 0.333,
+          "line": "पुरानी गाड़ियाँ आज भी टी एस हैं। आपकी गाड़ी पर कौन-सा कोड है? और",
+          "near": "कौन-सा कोड है? और",
+          "scene": "directed"
+        }
+      ],
       "traffic": [],
       "countries": [],
       "searches": [],
