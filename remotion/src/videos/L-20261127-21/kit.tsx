@@ -6,7 +6,7 @@ import React from "react";
 import { Easing, Freeze } from "remotion";
 import type { SceneProps } from "../../scenes/kit";
 import { motion, SourceLine } from "../../flat/kit";
-import { Block, Board, Camera3D, cue, FigLabel3D, glow, glowTexture, Label3D, mat, rnd, Stage3D, TECH, type CamKey, type V3 } from "../../three/index";
+import { Block, Board, Camera3D, cue, useFontReady, FigLabel3D, glow, glowTexture, Label3D, mat, rnd, Stage3D, TECH, type CamKey, type V3 } from "../../three/index";
 
 type Group = React.JSX.IntrinsicElements["group"];
 
@@ -141,7 +141,11 @@ export const Dust: React.FC<{ f: number; spec: DustSpec }> = ({ f, spec }) => {
 };
 
 export const Shot: React.FC<{ p: SceneProps; b: BeatCtx; anchors: Record<string, Anchor>; children: React.ReactNode; backdrop?: typeof BACK; floor?: boolean | "reflect";
-  fog?: { color?: string; near: number; far: number }; bloom?: number; fov?: number; seed: string; shadowBox?: number; light?: number; dust?: DustSpec }> = ({ p, b, anchors, children, backdrop = BACK, floor = "reflect", fog, bloom = 1.1, fov = 38, seed, shadowBox = 10, light, dust }) => (
+  fog?: { color?: string; near: number; far: number }; bloom?: number; fov?: number; seed: string; shadowBox?: number; light?: number; dust?: DustSpec }> = ({ p, b, anchors, children, backdrop = BACK, floor = "reflect", fog, bloom = 1.1, fov = 38, seed, shadowBox = 10, light, dust }) => {
+  // hold the shot until the label fonts are loaded, so painted words show from a render tab's first frame
+  const f6 = useFontReady(600), f7 = useFontReady(700), f8 = useFontReady(800);
+  if (!(f6 && f7 && f8)) return null;
+  return (
   <Freeze frame={b.f}>
     <Stage3D backdrop={backdrop} floor={floor} bloom={bloom} dof={0} blur={0.6} shadowBox={shadowBox} fog={fog} light={light}
       overlay={<>{b.prm.tag ? <HonestTag kind={b.prm.tag} /> : null}<SourceLine p={p} y={120} /></>}>
@@ -150,7 +154,8 @@ export const Shot: React.FC<{ p: SceneProps; b: BeatCtx; anchors: Record<string,
       {children}
     </Stage3D>
   </Freeze>
-);
+  );
+};
 
 // ------------------------------------------------------------------ light things
 /** A glowing rod from a to b. */

@@ -37,9 +37,9 @@ const Picker: React.FC<SceneProps> = (p) => {
     bars: { look: [0, 1.9, -0.5], dir: [0.15, 0.3, 1], d: 9.5 },
     winner: { look: [0, 2.4, 0], dir: [0.1, 0.2, 1], d: 6.2 },
     banana: { look: [3.6, 0.6, -1.2], dir: [0.2, 0.3, 1], d: 4.4 },
-    text: { look: [-1.2, STRIP_Y + 0.4, STRIP_Z], dir: [0, 0.35, 1], d: 7.5 },
+    text: { look: [-1.2, STRIP_Y + 1.0, STRIP_Z], dir: [0, 0.35, 1], d: 9 },
   };
-  const H: Record<string, number> = { the: 2.4, sun: 2.6, because: 2.0 };
+  const H: Record<string, number> = { the: 2.0, sun: 2.1, because: 1.7 };
   const pos = (on: string): V3 => on === "sun" ? [0.4, 3.0, 0] : on === "because" ? [-2.4, 2.5, 0] : on === "banana" ? [3.6, 1.2, -1.2] : on === "winner" ? [1.6, 3.2, 0] : on === "text" ? [-4, STRIP_Y + 1.4, STRIP_Z] : [-4.5, 3.4, -1];
   return (
     <Shot p={p} b={b} anchors={anchors} seed="picker" backdrop={NIGHT} floor="reflect" bloom={1.2} light={0.85} dust={{ c: [0, 2, 0], r0: 8, r1: 20, size: 0.35, color: "#b0c8ff" }}>

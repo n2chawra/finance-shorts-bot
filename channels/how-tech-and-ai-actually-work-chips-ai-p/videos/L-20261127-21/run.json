@@ -322,5 +322,30 @@
       "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
       "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
     ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T08:06:18.458914+00:00",
+    "finishedAt": "2026-11-27T08:06:18.458914+00:00",
+    "notes": [
+      "[scene] hook 0.0s (lessons 2 and 9, still open): the first frame shows a blank glowing white bubble and no readable 'ChatGPT' header; the question only appears by 5.0s. Phone.tsx line 19 types the question from empty on the 'type' moment at the start. Fix: show the question fully typed at frame 0 (typed = question.length when the frame is before the send moment, or drop the start 'type' moment) and draw the ChatGPT header at full opacity from frame 0; same blank bubble at loop 415.0s, which must match.",
+      "[scene] payoff 410.0s: the plate reads '31B parameters' (count-up still running) while the caption says 'cast by 175B numbers': label and spoken value disagree. Fix: finish the count before the 'by' word (or show the final {fact1} value without a count-up in the payoff), and keep the plate clear of the ghost stalks at the top-right.",
+      "[scene] c_units 230.0s (still open): the big white bead sits right behind the caption 'Each one multiplies two' and washes it out. Fix: keep the bead path and the lit unit in the upper two-thirds of the frame (frame the unit higher), or dim the bead whenever it is in the bottom 25%.",
+      "[scene] t_rare 70.0-75.0s: the bench is now framed so wide that the tiles ('sky', 'Ray', 'leigh', the name tile) are tiny, about 20 px text at 1080p, and the third 'Ray/leigh' tile is blank (empty string in Cutter.tsx line 87). Fix: a medium shot on the bench so the tiles fill the middle third with text at least 44 px, and give the rare word only as many tiles as it has pieces (no blank tile).",
+      "[scene] k_repeat 310.0s: the 'Sunlight' tag is cut by the top edge again (half the word off-frame). Fix: cap the stalk or lower the camera in k_repeat/k_append as was done for k_example, tags at least 60 px inside the top edge."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T08:09:17.506084+00:00",
+    "finishedAt": "2026-11-27T08:27:16.208996+00:00",
+    "notes": [
+      "fingerprint: b9f8685db9c6c43c.c0d32c00319fead2",
+      "423 s, night/circuit (preview only)",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
   }
 ]
