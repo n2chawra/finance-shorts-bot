@@ -65,6 +65,39 @@
       "priority": "normal",
       "found": "2026-11-26",
       "status": "open"
+    },
+    {
+      "id": "doc-event-nth-word",
+      "kind": "bug",
+      "title": "Doc beats: an event can only name a word's first occurrence",
+      "detail": "In L-20261127-31 two cuts landed on the wrong word because the word appeared earlier in the line ('So why toys? ... came back for toys' cut on the first 'toys'; 'So was it Amazon ... and Amazon' put the Amazon label on the Walmart photo). QA caught both on the stills. Fix (improver): let an event name its occurrence ({\"word\": \"toys\", \"nth\": 2}) in renderer/timeline/build.py, and have lint warn when an event's word occurs more than once in the line.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-27",
+      "status": "open"
+    },
+    {
+      "id": "doc-overlay-hold",
+      "kind": "craft",
+      "title": "Doc overlays: a minimum time on screen, and leave before the next overlay",
+      "detail": "QA on L-20261127-31 took four rounds mostly on overlay timing: labels left on after a cut, then (once given outs) labels on screen under 0.8 s, and stamps landing on the figure they were meant to sell. Fix (improver): in DocBeat/lint, hold every label, stamp and date at least 1.5 s, end it before the next overlay in the same corner lands, and never let a stamp cover a count-up or a highlighted document line.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-27",
+      "status": "open"
+    },
+    {
+      "id": "doc-split-caption-band",
+      "kind": "bug",
+      "title": "The split layer draws its names and figures inside the long video's caption band",
+      "detail": "In L-20261127-31 (payoff, what-if) the captions landed between the split's two figures. Studio replaced both splits with count-ups and a chart. Fix (improver): the split's names and figures sit above the caption zone in a 1920x1080 doc beat.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-27",
+      "status": "open"
     }
   ]
 }

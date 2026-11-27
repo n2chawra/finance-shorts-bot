@@ -4,21 +4,21 @@
    "key": "doc-footage-fetch",
    "severity": "warning",
    "title": "Business documentaries: still no stock footage, so long videos are all stills",
-   "detail": "Pexels and Pixabay are off (PEXELS_API_KEY and PIXABAY_API_KEY not set) and Commons video downloads timed out on 23 Nov. L-20261125-31 (Pizza Hut vs Domino's) has no footage at all; the recipe asks for 35-45%. Photos, filing pages, count-ups and splits carry it instead.",
+   "detail": "Pexels and Pixabay are off (PEXELS_API_KEY and PIXABAY_API_KEY not set). L-20261127-31 (Toys R Us) has no footage; the recipe asks for 35-45%. Commons photos, 10-K pages, count-ups and charts carry it instead, and the craft check notes 103 of 123 beats are plain photos.",
    "fix": "1. Create free API keys at pexels.com/api and pixabay.com/api/docs. 2. Add them as PEXELS_API_KEY and PIXABAY_API_KEY to the routine environment on claude.ai. 3. The next Studio run searches them automatically (generator/media)."
   },
   {
-   "key": "pizza-test-compare",
+   "key": "toys-r-us-test-compare",
    "severity": "info",
-   "title": "Pizza Hut vs Domino's long video: three thumbnails ready for Test & Compare",
-   "detail": "L-20261125-31 ships with thumbnail A (picked, 8/10: versus split, cracked Pizza Hut pan pizza, 'Pizza war'), B (7/10: the pan pizza on a crash line, 'Sold off', $2.7B) and C (8/10: share then 17% -> now 12%, 'What happened?').",
-   "fix": "1. After it publishes, open it in YouTube Studio on a computer. 2. Thumbnail -> Test & Compare. 3. Upload thumbnail.png, thumbnail-b.png and thumbnail-c.png from channels/business-documentaries-rise-and-fall-of/videos/L-20261125-31/."
+   "title": "Toys R Us long video: three thumbnails ready for Test & Compare",
+   "detail": "L-20261127-31 ships with thumbnail A (picked, 9/10: the cracked Toys R Us wordmark, 'KILLED BY DEBT'), B (8/10: the abandoned store on a crash line, 'WHAT HAPPENED?') and C (8/10: interest $130M -> $537M, 'THE LOAN').",
+   "fix": "1. After it publishes, open it in YouTube Studio on a computer. 2. Thumbnail -> Test & Compare. 3. Upload thumbnail.png, thumbnail-b.png and thumbnail-c.png from channels/business-documentaries-rise-and-fall-of/videos/L-20261127-31/."
   },
   {
    "key": "studio-qa-on-stills-rule",
    "severity": "info",
    "title": "Write your 'QA on stills, render once, ship on render' rule into agents/studio.md",
-   "detail": "You told this run on 25 Nov: QA always happens on stills; the full render happens only when everything is correct; ship as soon as it renders. agents/studio.md is protected, so Studio can't add it. Today it still re-rendered once after a QA look at the finished mp4.",
+   "detail": "You told Studio on 25 Nov: QA always happens on stills; the full render happens only when everything is correct; ship as soon as it renders. agents/studio.md is protected, so Studio can't add it. Today's run followed it: one full render, shipped on it.",
    "fix": "1. In agents/studio.md section 5, after step 3, add: 'Never run QA on the full render, and never re-render after it for anything QA did not name on the stills; once the stills pass, render once and ship.' 2. Commit to main."
   }
  ]
