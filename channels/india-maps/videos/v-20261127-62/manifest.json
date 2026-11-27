@@ -1,0 +1,376 @@
+{
+  "id": "v-20261127-62",
+  "createdAt": "2026-11-27T04:35:28.183163+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "How the kingdom of Sikkim became an Indian state",
+    "category": "state-formation",
+    "reach": "local",
+    "reach_reason": {
+      "kind": "demand"
+    },
+    "feed_id": "2026-11-24-sikkim-1975",
+    "map_answer": "Sikkim, the small kingdom between Nepal and Bhutan, wearing its old flag on India's map, then joining India's states as its flag gives way to India's colours"
+  },
+  "title": "Sikkim ka apna raja tha? Phir yeh India ka state kaise bana? 👑",
+  "description": "Sikkim ka kabhi apna raja aur apna jhanda tha. Phir yeh Bharat ka state kaise bana?\nSources: Wikipedia (Apr 1975).\nनक्शे सरल किए गए हैं; भारत की सीमाएँ भारत के आधिकारिक नक्शे के अनुसार। Maps simplified; India's borders as on India's official map. Facts from the sources named in the description.\n\nPhoto: Alice S. Kandell, Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Palden_Thondup_Namgyal.jpg)\nLogo: UnknownUnknown (flag design), first version of SVG file uploaded by Nichalp, subsequent edits by User:Goran_tek-en and AnonMoos, CC BY-SA 2.5, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Flag_of_Sikkim_(1967-1975).svg)",
+  "hashtags": [
+    "#Shorts",
+    "#IndiaMap",
+    "#Sikkim",
+    "#IndianStates",
+    "#History"
+  ],
+  "hookStyle": "question",
+  "cta": "Sikkim ghoome hain ya jaana hai? Comment",
+  "seed": 61975,
+  "style": {
+    "palette": "ember",
+    "genre": "tanpura",
+    "key": "E",
+    "bpm": 104,
+    "look": {
+      "stage": "studio",
+      "header": "ribbon",
+      "holder": "blackboard",
+      "entrance": "stamp"
+    },
+    "voice": "hm_omega",
+    "arms": {
+      "length": "25-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "सिक्किम का कभी अपना राजा था। फिर ये भारत का स्टेट कैसे बना?",
+        "start": 0.3,
+        "seconds": 2.95,
+        "window": 3.63,
+        "fill": 0.813
+      },
+      {
+        "scene": "promise",
+        "text": "नेपाल और भूटान के बीच, यहाँ के राजा को चोग्याल कहते थे, और इसका अपना झंडा था।",
+        "start": 3.93,
+        "seconds": 4.26,
+        "window": 4.93,
+        "fill": 0.864
+      },
+      {
+        "scene": "vote",
+        "text": "फिर 1975 में, लोगों से पूछा गया: राजा का राज ख़त्म हो, और सिक्किम भारत का हिस्सा बने?",
+        "start": 8.87,
+        "seconds": 5.01,
+        "window": 5.67,
+        "fill": 0.884
+      },
+      {
+        "scene": "count",
+        "text": "गिनती शुरू हुई। पहले देखिए, ना कहने वाले कितने थे?",
+        "start": 14.53,
+        "seconds": 2.84,
+        "window": 3.5,
+        "fill": 0.811
+      },
+      {
+        "scene": "turn",
+        "text": "ना में पड़े सिर्फ़ 1,496 वोट। और हाँ में?",
+        "start": 18.03,
+        "seconds": 2.96,
+        "window": 3.6,
+        "fill": 0.822
+      },
+      {
+        "scene": "payoff",
+        "text": "हाँ में पड़े 59,637 वोट, यानी 97.55%, लगभग सारे वोट।",
+        "start": 21.63,
+        "seconds": 5.81,
+        "window": 6.47,
+        "fill": 0.898
+      },
+      {
+        "scene": "join",
+        "text": "और उसी साल, सिक्किम भारत का नया स्टेट बन गया।",
+        "start": 28.1,
+        "seconds": 2.26,
+        "window": 2.9,
+        "fill": 0.779
+      },
+      {
+        "scene": "loop",
+        "text": "तो अगली बार नक्शे पर ये छोटा सा स्टेट देखें, तो याद रखिए,",
+        "start": 31.0,
+        "seconds": 2.95,
+        "window": 3.6,
+        "fill": 0.819
+      }
+    ]
+  },
+  "durationSec": 35,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -13.9,
+    "music_under_voice_db": 32.8
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "hm_omega",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after payoff reorder ('हाँ में पड़े {fact2} वोट, यानी {fact4}, लगभग सारे वोट।'): same claims, 59,637 yes = 97.55% of votes cast, confirmed on the cited Wikipedia page (results sourced to sudd.ch); spoken form correct; all other facts, framing and disclaimer unchanged from the earlier pass."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review: Chogyal re-cut is clean (head and chest, white sticker rim), the old kingdom flag now lands on Sikkim (8 s) and folds away on Sikkim in the join beat (28 s), thumbnail is the settled promise frame with the king, flag, Nepal and Bhutan; layout/craft empty, 35 s, peak -1.0 dB; hook names Sikkim, payoff 97.55% on board and bar, loops to the crown.",
+        "fingerprint: 797ec831eeb8c0e8.24693732bbba78f5"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:06:21.745596+00:00",
+      "finishedAt": "2026-11-27T04:06:21.745596+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T04:07:05.847746+00:00",
+      "finishedAt": "2026-11-27T04:07:05.847746+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "1 dated steps; a true-history dates at least 2 moments (facts with unit \"year\")"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:07:10.011071+00:00",
+      "finishedAt": "2026-11-27T04:07:10.011071+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:07:10.954399+00:00",
+      "finishedAt": "2026-11-27T04:07:10.954399+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:07:44.842360+00:00",
+      "finishedAt": "2026-11-27T04:07:44.842360+00:00",
+      "notes": [
+        "All 4 facts confirmed on the cited Wikipedia page (results table sourced to sudd.ch Direct Democracy): referendum 14 Apr 1975, Yes 59,637 (97.55% of votes cast), No 1,496; statehood ratified 15-16 May 1975 (same year). Chogyal, own flag, Sikkim between Nepal and Bhutan correct; question framing (end monarchy + join India) matches; neutral dated history, no sides; disclaimer ends description. Note: 97.55% is of votes cast (turnout ~63%), as the line says."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:10:22.925678+00:00",
+      "finishedAt": "2026-11-27T04:10:22.925678+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:11:48.619683+00:00",
+      "finishedAt": "2026-11-27T04:11:48.619683+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:12:35.356400+00:00",
+      "finishedAt": "2026-11-27T04:12:35.356400+00:00",
+      "notes": [
+        "Re-review after payoff reorder ('हाँ में पड़े {fact2} वोट, यानी {fact4}, लगभग सारे वोट।'): same claims, 59,637 yes = 97.55% of votes cast, confirmed on the cited Wikipedia page (results sourced to sudd.ch); spoken form correct; all other facts, framing and disclaimer unchanged from the earlier pass."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T04:12:26.367635+00:00",
+      "finishedAt": "2026-11-27T04:13:35.444153+00:00",
+      "notes": [
+        "fingerprint: 328160d138d414d4.e1b1149fe0c19374",
+        "2.3 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T04:14:26.061155+00:00",
+      "finishedAt": "2026-11-27T04:15:24.038077+00:00",
+      "notes": [
+        "fingerprint: 44ce47199afc2512.e7b414ba361828ae",
+        "2.1 s with nothing new on screen in beat 'turn' (at most 1.8 s): add an action on the phrase being said there"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:16:07.445924+00:00",
+      "finishedAt": "2026-11-27T04:17:05.115870+00:00",
+      "notes": [
+        "fingerprint: 80e4c802132590d1.a0a50571e016ff19",
+        "35 s, ember/tanpura (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:17:55.746004+00:00",
+      "finishedAt": "2026-11-27T04:18:54.004044+00:00",
+      "notes": [
+        "fingerprint: 80e4c802132590d1.96548225c714450b",
+        "35 s, ember/tanpura (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T04:20:33.183104+00:00",
+      "finishedAt": "2026-11-27T04:20:33.183104+00:00",
+      "notes": [
+        "[script] 6.8s and 8.5s (promise beat, Kingdom.tsx, photo:chogyal): the Chogyal's cut-out is bad: ragged leftover white background around his hands and a torn white blob hanging below the body, no clean sticker edge. Re-cut with python -m generator.images cut chogyal --face ... (or a tighter head-and-shoulders crop).",
+        "[script] 8.5s (promise beat, on 'झंडा'): the old Sikkim kingdom flag lands on Nepal's red area, not on Sikkim, so it reads as Nepal's flag. Put it on/next to Sikkim (the gold state) clear of Nepal and Bhutan, which also lets the join beat's 'flag on Sikkim folds away' actually show.",
+        "[script] thumbnail.png (promise sec 3.0): mid-transition frame, the Nepal tag is a blurred smear, Sikkim is a small yellow sliver and no king is in it although the words say 'SIKKIM KA RAJA?'. Pick the settled promise frame with the (re-cut) Chogyal sticker and the kingdom flag on Sikkim (~sec 4.5 of the beat)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:21:43.447383+00:00",
+      "finishedAt": "2026-11-27T04:22:46.480065+00:00",
+      "notes": [
+        "fingerprint: 880cf10c34457e16.882dd5ccbb17c8b3",
+        "35 s, ember/tanpura (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:23:00.910243+00:00",
+      "finishedAt": "2026-11-27T04:23:56.740313+00:00",
+      "notes": [
+        "fingerprint: a53849b2a2695df7.882dd5ccbb17c8b3",
+        "35 s, ember/tanpura (preview only)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T04:24:05.349351+00:00",
+      "finishedAt": "2026-11-27T04:25:05.181356+00:00",
+      "notes": [
+        "fingerprint: fb87cdb30b313c0f.882dd5ccbb17c8b3",
+        "the cover looks like v-20261127-61's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-27T04:25:59.709932+00:00",
+      "finishedAt": "2026-11-27T04:27:01.163075+00:00",
+      "notes": [
+        "fingerprint: 019bc8b9a0f8401b.24693732bbba78f5",
+        "the cover looks like v-20261127-61's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:27:16.784655+00:00",
+      "finishedAt": "2026-11-27T04:28:10.140871+00:00",
+      "notes": [
+        "fingerprint: 797ec831eeb8c0e8.24693732bbba78f5",
+        "35 s, ember/tanpura (preview only)"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:29:15.916837+00:00",
+      "finishedAt": "2026-11-27T04:29:15.916837+00:00",
+      "notes": [
+        "Re-review: Chogyal re-cut is clean (head and chest, white sticker rim), the old kingdom flag now lands on Sikkim (8 s) and folds away on Sikkim in the join beat (28 s), thumbnail is the settled promise frame with the king, flag, Nepal and Bhutan; layout/craft empty, 35 s, peak -1.0 dB; hook names Sikkim, payoff 97.55% on board and bar, loops to the crown.",
+        "fingerprint: 797ec831eeb8c0e8.24693732bbba78f5"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:29:26.347519+00:00",
+      "finishedAt": "2026-11-27T04:35:23.484445+00:00",
+      "notes": [
+        "35 s, ember/tanpura, peak -1.0 dB, mean -16.1 dB"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-27T04:35:28.183431+00:00",
+      "finishedAt": "2026-11-27T04:35:28.183431+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261127-62",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261127-62"
+  }
+}
