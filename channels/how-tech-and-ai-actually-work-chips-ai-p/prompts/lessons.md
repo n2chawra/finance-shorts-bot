@@ -3,16 +3,21 @@
 Each lesson is a mistake that cost viewers, written by the reviewer (agents/reviewer.md) from where viewers
 left. The writer follows them and QA enforces them. A new channel starts with channel #1's general ones.
 
-## 1. The second line answers; it never asks again (How Tech Works)
-Seen in: all four Shorts with a curve lost their biggest share at 5–8 s; in three, that line asked the question
-again instead of showing the answer. Transistor v-20261121-21, 6.2 s: "The transistor. What did the very
-first one look like?" over rows of generic purple blocks, 106% → 83% (−23 points). Hoover Dam v-20261120-01: "Why does
-the height of a lake matter?" at 3.5 s, then "...So how does water make power?" at 7.5 s, 102% → 83% (−18.5 points);
-stayed to watch 47.4%, 10.5 points under the channel's 57.9% median. Even Crossrail v-20261122-21 lost 15.4 points at
-5.6 s on "How?" before the machine.
-Fix: the hook asks the one question; the next line starts showing its answer with the real thing moving on screen
-(the intake, the contacts on the germanium, the cutting wheel). No second question, no "So how…?", no "What did…?",
-before 10 s; at most one bare word ("How?") said in the same breath as the answer.
+## 1. The second line shows the machine: no second question, no date or backstory first (How Tech Works)
+Seen in: six of seven Shorts with a curve lost their biggest share at 5–8 s, on the line after the hook, whenever
+that line was not the thing working. Re-asked question: transistor v-20261121-21, 6.2 s, "The transistor. What did
+the very first one look like?" over generic purple blocks, −23 points; Hoover Dam v-20261120-01, 7.5 s, "...So how does
+water make power?", −18.5 points (stayed 47.4%). Date or backstory (added 27 Nov): microwave v-20261119-01, 7.5 s,
+"In 1945, radar engineer Percy Spencer...", −29.6 points; Motorola brick v-20261123-21, 5.5 s, "Its engineers had just
+6 weeks to build one, to show America's phone regulators." over an empty pegboard and a blank calendar, −19 points,
+stayed 47.2% (10.4 under the 57.6% median); Paris Metro v-20261124-21, 6.1 s, "Paris first tried it in 1951. So what
+keeps it on the track?" over a "1951" board on the platform, −20.9 points (a date and a re-asked question). NVIDIA
+v-20261125-21 (made after this lesson) opened line 2 on a count, "Its chip packed about 250K transistors...", −13.9 points.
+Even Crossrail v-20261122-21 lost 15.4 points at 5.6 s on "How?" before the machine.
+Fix: the hook asks the one question or states the surprise; the next line, by about 6 s, shows its answer with the
+real thing moving on screen (the intake, the contacts on the germanium, the cutting wheel, the tyre on its track).
+Before 10 s: no second question ("So how…?", "What did…?", "So what keeps…?"), no year, deadline, inventor backstory,
+record or count; those come after the mechanism. At most one bare word ("How?") said in the same breath as the answer.
 
 ## 2. The first frame names the subject (general)
 Seen in: channel #1's first month, 55–76% swiped away when the title and first second held the subject back.

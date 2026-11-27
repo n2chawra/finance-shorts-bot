@@ -1,0 +1,21 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-27",
+  "startedAt": "2026-11-27T16:38:28Z",
+  "finishedAt": "2026-11-27T16:41:12Z",
+  "summary": "How Tech Works: watched 3 Shorts with new numbers (Motorola brick, Paris Metro, NVIDIA) and the 2 newest. Widened lesson #1 so the second line can't open on a date or backstory either, and added evidence to two challengers.",
+  "decision": "acted",
+  "why": "The second line still loses the most viewers whenever it isn't the machine working: brick -19 points at 5.5 s on backstory (stayed 47.2%, 10.4 under the 57.6% median), Paris -20.9 at 6.1 s on a date plus a re-asked question, microwave -29.6 at 7.5 s. That is three Shorts over the 15-point bar.",
+  "findings": [
+    {"title": "A date or backstory as the second line costs 19-30 points", "detail": "Brick 5.5 s 'Its engineers had just 6 weeks...' -19; Paris 6.1 s 'Paris first tried it in 1951. So what keeps it...' -20.9; microwave 7.5 s 'In 1945...' -29.6. NVIDIA, made after the lesson, opened line 2 on a count and lost 13.9."},
+    {"title": "Payoff figures still counting while the voice says them", "detail": "NVIDIA shows 297B while saying 336B, the wing 528 while saying 575 tonnes, the transistor 45B while saying 76B. This is a fix for the improver."},
+    {"title": "Logo clipped at the frame edge", "detail": "NVIDIA v-20261125-21 at 25 s: the Microsoft logo is cut off at the right edge. The layout gate checks text only."},
+    {"title": "Fewer places, better hold after the hook", "detail": "Crossrail 45.5%, Paris 35.4%, NVIDIA 31.5%, brick 29.8% (seven places). Added to the tech-one-machine-one-place test."}
+  ],
+  "changes": [
+    {"title": "Lesson #1 widened: no second question, date or backstory before the machine", "detail": "channels/how-tech-and-ai-actually-work-chips-ai-p/prompts/lessons.md #1", "branch": "agent/reviewer/2026-11-27/how-tech-and-ai-actually-work-chips-ai-p"},
+    {"title": "Challenger evidence added", "detail": "tech-mechanism-by-6s (now partly covered by lesson #1) and tech-one-machine-one-place.", "branch": "agent/reviewer/2026-11-27/how-tech-and-ai-actually-work-chips-ai-p"}
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [{"label": "Report", "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/review/2026-11-27.md"}]
+}
