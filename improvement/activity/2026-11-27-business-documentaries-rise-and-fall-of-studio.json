@@ -1,0 +1,45 @@
+{
+  "agent": "studio",
+  "day": "2026-11-27",
+  "startedAt": "2026-11-27T04:06:16Z",
+  "finishedAt": "2026-11-27T07:55:00Z",
+  "summary": "Made Craze & Crash's long video L-20261127-31, 'How Toys R Us Lost to Its Own Loan, Not to Amazon' (15:06, 8 chapters, company rise and fall), told from seven Toys R Us 10-Ks plus Reuters, UPI and CNBC, and shipped it for the next long slot.",
+  "decision": "acted",
+  "why": "state --format long said video (2 of 3 long videos this week). Scout's feed led with the owner's pin 2, 2026-11-19-toys-r-us (usable now). The payoff is from the last 10-K: in fiscal 2016 the stores earned $460M and interest took $457M (99%), against 43% before the 2005 buyout.",
+  "findings": [
+    {
+      "title": "Fact review: failed twice, passed on round three",
+      "detail": "Round one: Reuters' own article dates Kmart's bankruptcy to 2004 (it was 2002), so the year fact was dropped and the line attributed to Reuters; the Canada line overclaimed what UPI supports. Round two: Toys R Us Canada filed for creditor protection itself in Feb 2026, so 'still trading there today' was out of date; the line now says the stores kept trading for years until the Canadian chain ran into debt trouble of its own. 55 sourced facts, all confirmed; 50 new ones added to the topic (both feeds), marked fixed as closed history.",
+      "link": "https://www.sec.gov/Archives/edgar/data/1005414/000100541417000011/tru201610k.htm"
+    },
+    {
+      "title": "QA: four rounds on the stills, then one full render",
+      "detail": "Round one named 20 items (labels left on after cuts, two cuts on the wrong occurrence of a word, unreadable charts over photos, repeated pictures, a split's figures in the caption band). Rounds two to four were overlay timing and a few stamps covering figures. All fixed on stills; the full render passed the motion gate first time and shipped on it. Three code fixes for the improver are in longform/backlog.json (doc-event-nth-word, doc-overlay-hold, doc-split-caption-band)."
+    },
+    {
+      "title": "Thumbnail references were mostly kids' toy-haul videos",
+      "detail": "The topic's market search returns Ryan's World-style videos (20-244M views); the one on-topic hit is Company Man's 'The Decline of Toys R Us... What Happened?' (2.8M). The topic's search is now 'why did toys r us go bankrupt'."
+    },
+    {
+      "title": "No footage again",
+      "detail": "Pexels/Pixabay keys are still missing; the film is about 130 Commons photos, 4 rendered 10-K pages with the line highlighted, typeset filings, count-ups, charts, a donut, maps and logos."
+    }
+  ],
+  "changes": [
+    {
+      "title": "L-20261127-31 shipped",
+      "detail": "Thumbnails A (picked, 9/10: P2 cracked wordmark, 'KILLED BY DEBT'), B (8/10: P1 abandoned store on a crash line, 'WHAT HAPPENED?') and C (8/10: P4 interest $130M -> $537M, 'THE LOAN'). Chapters in the description. Video commit on main; the mp4 goes up via media/L-20261127-31."
+    },
+    {
+      "title": "Feed topic facts",
+      "detail": "Topic 2026-11-19-toys-r-us in longform/topics.json and research/topics.json: 50 sourced facts added with their URLs, all marked fixed (closed history)."
+    }
+  ],
+  "nextCheck": "2026-11-28",
+  "links": [
+    {
+      "label": "Script",
+      "url": "channels/business-documentaries-rise-and-fall-of/videos/L-20261127-31/script.json"
+    }
+  ]
+}
