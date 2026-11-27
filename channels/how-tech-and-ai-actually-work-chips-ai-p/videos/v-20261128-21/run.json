@@ -1,0 +1,388 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:10:51.423644+00:00",
+    "finishedAt": "2026-11-27T20:10:51.423644+00:00",
+    "notes": [
+      "shape 'reveal' is 2 of the last 9 videos: at most 25%"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:10:58.928927+00:00",
+    "finishedAt": "2026-11-27T20:10:58.928927+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:11:28.928242+00:00",
+    "finishedAt": "2026-11-27T20:11:28.928242+00:00",
+    "notes": [
+      "title opens with 'how does a', already used by v-20261127-21"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:11:32.845979+00:00",
+    "finishedAt": "2026-11-27T20:11:32.845979+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:14:04.379246+00:00",
+    "finishedAt": "2026-11-27T20:14:04.379246+00:00",
+    "notes": [
+      "beat 'teeth'.params.moments[2].what contains a typed number; use a placeholder: \"the starter's tag writes on: the 1995 Saab 900 V6 starter, made by Bosch\"",
+      "the payoff comes after the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 77 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:14:36.192379+00:00",
+    "finishedAt": "2026-11-27T20:14:36.192379+00:00",
+    "notes": [
+      "beat 'history'.say contains a typed number; use a placeholder: \"Cadillac ordered {fact4} of Kettering's electric starters in 1911. Before, you cranked engines by hand.\"",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 61 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:14:47.836810+00:00",
+    "finishedAt": "2026-11-27T20:14:47.836810+00:00",
+    "notes": [
+      "19 figures computed from inputs; 19 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 60 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:21:39.639879+00:00",
+    "finishedAt": "2026-11-27T20:21:39.639879+00:00",
+    "notes": [
+      "19 figures computed from inputs; 19 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 56 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:25:43.502302+00:00",
+    "finishedAt": "2026-11-27T20:25:43.502302+00:00",
+    "notes": [
+      "payoff: 'So the motor spins 15.0x for each turn of the engine' is wrong for this starter. The Saab WIS gives a Bosch DW 12V 0 001 108 080, and DW is Bosch's permanent-magnet starter with a planetary reduction gear (see the Bosch starter poster; MAHLE's brochure also says most modern starters drive through a reduction gear). So the armature turns several times per pinion turn. 135/9 = 15 is the pinion's turns per engine turn, not the motor's. Say 'the pinion spins 15 times for each turn of the engine' (or 'the motor at least 15 times; a gear inside multiplies it again'), and make the payoff picture's turn counter sit on the pinion, not the motor case. The topic's verify list also asks for it to be this starter's ratio, not every car's.",
+      "release (minor, fix in the same rewrite): the line runs 'once the engine fires... a spring pulls it back'. MAHLE says the return spring pulls the plunger and pinion back when the ignition switch stops feeding the solenoid, i.e. when the key is let go, not because the engine fired. Suggested: '...lets the pinion spin free; let go of the key, and a spring pulls it back.'",
+      "style: {gear_ratio} renders '15.0x' and is spoken 'fifteen point zero times'. Use a whole-number placeholder so it reads 'fifteen times'."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:26:12.414167+00:00",
+    "finishedAt": "2026-11-27T20:26:12.414167+00:00",
+    "notes": [
+      "19 figures computed from inputs; 19 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 58 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:27:33.204098+00:00",
+    "finishedAt": "2026-11-27T20:27:33.204098+00:00",
+    "notes": [
+      "Re-review after fixes: payoff now credits the 135/9 ratio to the pinion (counter beside the pinion, caption 'pinion turns per engine turn'), which is right for the planetary-gear Bosch DW; release now has the spring pull the pinion back on letting go of the key (MAHLE). Facts 9/135 confirmed on the Saab WIS page and 12,000 (Cadillac, Nov 1911, 1912 model) on ethw.org Kettering; mechanism confirmed in the MAHLE brochure; disclaimer present. Style note: '15.0x' is spoken 'fifteen point zero times' (shared times() format), left as is."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:27:25.839321+00:00",
+    "finishedAt": "2026-11-27T20:29:46.494246+00:00",
+    "notes": [
+      "fingerprint: 3370a8c81a92fd85.c1f9d69236933a73",
+      "text 'ILLUSTRATION' at 7.5 s is 26 px, below the 44 px minimum",
+      "2.0 s with nothing new on screen in beat 'history' (at most 1.8 s): add an action on the phrase being said there",
+      "5 of 14 stills are mostly empty background (at 5 s, 10 s, 40 s, 50 s, 55 s): fill the frame (a set, the cast big, money as a thing)",
+      "length 64 s is outside 45–60 s: cut about 12 spoken words",
+      "the Short runs 64.0 s but its assigned length (arms.length) is 45-60 s: cut or add a beat",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 58 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 21.9 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:30:55.815469+00:00",
+    "finishedAt": "2026-11-27T20:30:55.815469+00:00",
+    "notes": [
+      "19 figures computed from inputs; 19 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:31:44.092816+00:00",
+    "finishedAt": "2026-11-27T20:31:44.092816+00:00",
+    "notes": [
+      "Re-review after word trims (shove, contacts, teeth, payoff, release, history, loop): no new claims, meaning unchanged. Pinion ratio still credited to the pinion; the spring still returns the pinion when the key is let go; 9/135 (Saab WIS) and 12,000 (ethw.org) unchanged; the on-screen 'Bosch starter / from a Saab' tag keeps the figures tied to this starter. Notes: Teeth.tsx still keys the tag on a 'bosch' event the line no longer has (falls back to m.at default; director should re-time it); '15.0x' still spoken 'fifteen point zero times' (shared times() format)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:31:30.442525+00:00",
+    "finishedAt": "2026-11-27T20:34:02.521371+00:00",
+    "notes": [
+      "fingerprint: d9d08fc5f93286b3.f724c305c8fcdffa",
+      "2 of 13 stills are mostly empty background (at 10 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:34:49.890344+00:00",
+    "finishedAt": "2026-11-27T20:37:02.471344+00:00",
+    "notes": [
+      "fingerprint: d9d08fc5f93286b3.4d6d2bfadd9b418a",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:38:00.875595+00:00",
+    "finishedAt": "2026-11-27T20:38:00.875595+00:00",
+    "notes": [
+      "[script] 0.0s (hook, first frame): the starter motor cutaway has no name on it yet and the engine block is only a pale blue box, so a stranger on mute cannot tell what the object is or that it starts an engine. Put a 'Starter motor' tag on the motor from frame 0 and make the engine block recognisable (cylinders/pistons) in the first still.",
+      "[script] 5.0s (key beat): the ignition reads as abstract shapes (a grey disc with a slot, two pale rings, loose dots, yellow bars) on black; no recognisable key, dashboard or label, so the place and action do not read. Show a real key in a labelled ignition on a dashboard, closer and clearer.",
+      "[script] 40.0s (release beat): the one-way clutch is floating grey shapes (pentagon, rollers, ring) on black with no place and no label; its orange leader line runs off the top edge, so the 'rollers' label is cut off. Frame the clutch inside the pinion beside the flywheel with the label inside the frame.",
+      "[script] 35.0s (payoff) and 50.0s (history): the figures 15.0x and 12,000 are headline cards pinned top-left, not on a thing in the place (the planned turn counter beside the pinion, the order slip on the running board). Put each figure on its object.",
+      "[script] 35.0s payoff: the ratio shows as '15.0x' and is spoken 'fifteen point zero times'; a whole-number ratio should read and be said '15x' (format the gear figure with no decimal).",
+      "[scene] 25.0s (Teeth beat): the 'pinion teeth' count tag sits directly over the pinion gear it counts, hiding it; and the Data line reads 'Saab WIS · IEEE Engineering and Technology History Wiki · Jan 1995' though the 9 and 135 come only from Saab WIS (the IEEE source belongs to the 1911 facts). Offset the tag from the gear and build the source line from the facts shown in that beat."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:39:32.140624+00:00",
+    "finishedAt": "2026-11-27T20:41:50.112415+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.5372d4dd1017217c",
+      "2 of 13 stills are mostly empty background (at 10 s, 50 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:42:30.444361+00:00",
+    "finishedAt": "2026-11-27T20:44:46.884441+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.9cbd5930542fa541",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:44:57.132459+00:00",
+    "finishedAt": "2026-11-27T20:47:13.937229+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.134cfa07f651ba5e",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:47:52.104064+00:00",
+    "finishedAt": "2026-11-27T20:50:06.012271+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.201c380e841ca83a",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:50:16.483059+00:00",
+    "finishedAt": "2026-11-27T20:52:31.568889+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.7657bb4027a0dddb",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:52:38.826671+00:00",
+    "finishedAt": "2026-11-27T20:54:49.318175+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.0d9caca6415505d2",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:54:56.774097+00:00",
+    "finishedAt": "2026-11-27T20:57:10.729883+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.96bbce1feec16193",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T20:57:40.448108+00:00",
+    "finishedAt": "2026-11-27T20:57:40.448108+00:00",
+    "notes": [
+      "[script] 35.0s (payoff): the new '15.0x' counter panel runs off the right edge of the frame, and its line 'pinion turns per engine turn' ends against the edge (the 'n' of 'turn' is clipped). Move or shrink the panel so the panel and its text sit fully inside the frame, clear of the right-hand buttons.",
+      "[script] 50.0s (history): the order slip's second line under '12,000' is pale grey on the white slip and can barely be seen; the slip's top-left corner also sits under the channel badge. Give the sub-label a dark ink colour and bring the slip inside the frame, away from the badge."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T20:58:27.941735+00:00",
+    "finishedAt": "2026-11-27T21:00:42.094313+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.f0a6ba6757ebdba8",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T21:00:48.936403+00:00",
+    "finishedAt": "2026-11-27T21:02:56.842488+00:00",
+    "notes": [
+      "fingerprint: f733bb4905b70269.836be1bc118b84d9",
+      "60 s, ember/circuit (preview only)",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T21:03:13.447378+00:00",
+    "finishedAt": "2026-11-27T21:03:13.447378+00:00",
+    "notes": [
+      "Starter-motor cutaway reads on mute: labelled motor at 0s, labelled key/dashboard, solenoid, pinion, contacts, tooth counts, 15.0x counter panel inside frame, dark 12,000 order slip over the 1912 car, labelled clutch and spring, engine loop back to first frame; layout/craft clean, audio -1/-16.7 dB, 60s, disclaimer in description. Known owner-routed: times() prints '15.0x', single SourceLine lists both sources.",
+      "fingerprint: f733bb4905b70269.836be1bc118b84d9"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T21:03:22.309379+00:00",
+    "finishedAt": "2026-11-27T21:42:25.034457+00:00",
+    "notes": [
+      "60 s, ember/circuit, peak -1.0 dB, mean -16.7 dB",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 54 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: the first figure appears at 20.5 s; one by 9 s",
+      "note: the turn starts at 34% of the video; between 50% and 85%",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video OGu9UeCO4Zo is one: {\"id\": \"OGu9UeCO4Zo\", \"views\": 280387465, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits",
+      "note: cover: the cover's `pattern`: say in a sentence what those covers share (the picture, the words, the colours) and what ours takes from it"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-27T21:42:32.858556+00:00",
+    "finishedAt": "2026-11-27T21:42:32.858556+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

@@ -1,0 +1,1063 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 51837,
+  "story": "machine_works",
+  "shape": "chain-reaction",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 70,
+    "look": {
+      "stage": "desert",
+      "header": "chalk",
+      "holder": "sign",
+      "entrance": "stamp"
+    }
+  },
+  "arms": {
+    "length": "45-60",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "28"
+  },
+  "hook_style": "secret",
+  "cta": "Tell us the machine you want cut open next",
+  "feed_id": "2026-11-28-starter-motor-turn-key",
+  "facts": [
+    {
+      "label": "Teeth on the pinion gear of the Bosch starter fitted to the 1995 Saab 900 V6",
+      "value": 9,
+      "unit": "count",
+      "as_of": "1995-01-01",
+      "source": "Saab WIS",
+      "url": "https://saabwisonline.com/900/1995/3-electrical-system/starting-system/technical-data/starter-motor-v6-engine"
+    },
+    {
+      "label": "Teeth on the flywheel ring gear that pinion meshes with (1995 Saab 900 V6)",
+      "value": 135,
+      "unit": "count",
+      "as_of": "1995-01-01",
+      "source": "Saab WIS",
+      "url": "https://saabwisonline.com/900/1995/3-electrical-system/starting-system/technical-data/starter-motor-v6-engine"
+    },
+    {
+      "label": "Starter motor speed with no load at 12 volts, revolutions a minute (Bosch starter, 1995 Saab 900 V6)",
+      "value": 3300,
+      "unit": "count",
+      "as_of": "1995-01-01",
+      "source": "Saab WIS",
+      "url": "https://saabwisonline.com/900/1995/3-electrical-system/starting-system/technical-data/starter-motor-v6-engine"
+    },
+    {
+      "label": "Electric starting systems Cadillac ordered from Kettering in November 1911",
+      "value": 12000,
+      "unit": "count",
+      "as_of": "1911-11-01",
+      "source": "IEEE Engineering and Technology History Wiki",
+      "url": "https://ethw.org/Charles_F._Kettering"
+    },
+    {
+      "label": "Model year Cadillac introduced the electric self-starter",
+      "value": 1912,
+      "unit": "count",
+      "as_of": "1911-11-01",
+      "source": "IEEE Engineering and Technology History Wiki",
+      "url": "https://ethw.org/Charles_F._Kettering"
+    },
+    {
+      "label": "Year Ford began offering the electric starter on the Model T",
+      "value": 1919,
+      "unit": "count",
+      "as_of": "1919-01-01",
+      "source": "IEEE Engineering and Technology History Wiki",
+      "url": "https://ethw.org/Charles_F._Kettering"
+    }
+  ],
+  "maths": [
+    {
+      "name": "ring",
+      "kind": "share",
+      "total": 135,
+      "parts": 1,
+      "facts": {
+        "total": 2
+      }
+    },
+    {
+      "name": "pinion",
+      "kind": "share",
+      "total": 9,
+      "parts": 1,
+      "facts": {
+        "total": 1
+      }
+    },
+    {
+      "name": "gear",
+      "kind": "compare",
+      "a": "ring.total",
+      "b": "pinion.total"
+    }
+  ],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 2.0,
+    "words": "This *small?*",
+    "tag": "Starter motor",
+    "angle": "question"
+  },
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "transition": "cut",
+      "say": "This hand-sized motor starts a whole car engine.",
+      "events": {
+        "motor": {
+          "word": "motor"
+        },
+        "hand-sized": {
+          "word": "hand-sized"
+        },
+        "starts": {
+          "word": "starts"
+        },
+        "whole": {
+          "word": "whole"
+        },
+        "engine": {
+          "word": "engine"
+        }
+      },
+      "params": {
+        "component": "Hook",
+        "place": [
+          "a dark studio stage, a cut-open car engine block towering over a hand-sized starter motor bolted at its base"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "whole",
+            "size": "wide"
+          },
+          {
+            "at": "engine",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "motor",
+            "what": "the starter motor's armature already spinning inside its cut-open case, its name labelled"
+          },
+          {
+            "at": "hand-sized",
+            "what": "a second line on its label says it fits in your hand"
+          },
+          {
+            "at": "starts",
+            "what": "the ring gear's teeth light as the pinion turns it"
+          },
+          {
+            "at": "whole",
+            "what": "the camera pulls back to the whole engine block towering over it, pistons rising and falling"
+          },
+          {
+            "at": "engine",
+            "what": "the cylinders flash amber as the engine catches"
+          }
+        ],
+        "things": [
+          "starter motor cutaway",
+          "engine block cutaway",
+          "flywheel ring gear",
+          "pistons"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "motor"
+        }
+      ]
+    },
+    {
+      "id": "key",
+      "scene": "directed",
+      "role": "promise",
+      "transition": "cut",
+      "say": "Turn the key, and the solenoid, an electromagnet, snaps its plunger in.",
+      "events": {
+        "turn": {
+          "word": "Turn"
+        },
+        "key": {
+          "word": "key"
+        },
+        "solenoid": {
+          "word": "solenoid"
+        },
+        "electromagnet": {
+          "word": "electromagnet"
+        },
+        "snaps": {
+          "word": "snaps"
+        },
+        "plunger": {
+          "word": "plunger"
+        }
+      },
+      "params": {
+        "component": "Key",
+        "place": [
+          "the ignition slot on a dark dashboard",
+          "inside the solenoid, cut in half"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "solenoid",
+            "size": "medium"
+          },
+          {
+            "at": "snaps",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "turn",
+            "what": "the car key turns in the ignition slot"
+          },
+          {
+            "at": "key",
+            "what": "a glowing current runs from the key along a wire"
+          },
+          {
+            "at": "solenoid",
+            "what": "cut to the solenoid on the motor's back, sliced open, its label writing on"
+          },
+          {
+            "at": "electromagnet",
+            "what": "its copper coil glows as the current arrives"
+          },
+          {
+            "at": "snaps",
+            "what": "the steel plunger slams into the coil"
+          },
+          {
+            "at": "plunger",
+            "what": "a label writes on the plunger"
+          }
+        ],
+        "things": [
+          "car key",
+          "ignition slot",
+          "wire",
+          "solenoid cutaway",
+          "copper coil",
+          "plunger"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "key"
+        },
+        {
+          "kind": "thud",
+          "at": "snaps"
+        }
+      ]
+    },
+    {
+      "id": "shove",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "That pulls a lever, shoving the pinion gear into the toothed ring on the flywheel.",
+      "events": {
+        "pulls": {
+          "word": "pulls"
+        },
+        "lever": {
+          "word": "lever"
+        },
+        "shoving": {
+          "word": "shoving"
+        },
+        "pinion": {
+          "word": "pinion"
+        },
+        "ring": {
+          "word": "ring"
+        },
+        "flywheel": {
+          "word": "flywheel"
+        },
+        "toothed": {
+          "word": "toothed"
+        }
+      },
+      "params": {
+        "component": "Shove",
+        "place": [
+          "the starter's nose, cut away, beside the flywheel's edge"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "pinion",
+            "size": "close"
+          },
+          {
+            "at": "ring",
+            "size": "medium"
+          },
+          {
+            "at": "flywheel",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "pulls",
+            "what": "the plunger pulls the top of the fork lever back"
+          },
+          {
+            "at": "lever",
+            "what": "the lever pivots, its label writing on"
+          },
+          {
+            "at": "shoving",
+            "what": "the lever's foot pushes the pinion along the shaft"
+          },
+          {
+            "at": "pinion",
+            "what": "close on the small pinion gear, labelled"
+          },
+          {
+            "at": "toothed",
+            "what": "the pinion's teeth slide in between the ring gear's teeth, which light amber"
+          },
+          {
+            "at": "flywheel",
+            "what": "the camera pulls back to the whole flywheel with the pinion meshed at its rim"
+          }
+        ],
+        "things": [
+          "fork lever",
+          "pinion gear",
+          "drive shaft",
+          "flywheel",
+          "ring gear teeth"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "pop",
+          "at": "toothed"
+        }
+      ]
+    },
+    {
+      "id": "contacts",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "The plunger then bridges two copper contacts, and battery current floods the motor.",
+      "events": {
+        "plunger": {
+          "word": "plunger"
+        },
+        "bridges": {
+          "word": "bridges"
+        },
+        "copper": {
+          "word": "copper"
+        },
+        "contacts": {
+          "word": "contacts"
+        },
+        "current": {
+          "word": "current"
+        },
+        "floods": {
+          "word": "floods"
+        },
+        "motor": {
+          "word": "motor"
+        },
+        "battery": {
+          "word": "battery"
+        }
+      },
+      "params": {
+        "component": "Contacts",
+        "place": [
+          "the solenoid's back end, its contact cap cut open",
+          "the car battery and the motor's thick cable"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "bridges",
+            "size": "close"
+          },
+          {
+            "at": "battery",
+            "size": "medium"
+          },
+          {
+            "at": "floods",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "plunger",
+            "what": "the plunger slides the last few millimetres"
+          },
+          {
+            "at": "bridges",
+            "what": "its copper disc slams across the two contact posts with a spark"
+          },
+          {
+            "at": "contacts",
+            "what": "the contacts are labelled"
+          },
+          {
+            "at": "battery",
+            "what": "the battery's terminals light up"
+          },
+          {
+            "at": "current",
+            "what": "a thick glowing current rushes along the heavy cable"
+          },
+          {
+            "at": "floods",
+            "what": "the current pours into the motor's windings"
+          },
+          {
+            "at": "motor",
+            "what": "the armature starts to spin hard"
+          }
+        ],
+        "things": [
+          "contact cap",
+          "copper disc",
+          "contact posts",
+          "car battery",
+          "heavy cable",
+          "armature"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "glass",
+          "at": "bridges"
+        },
+        {
+          "kind": "swell",
+          "at": "floods"
+        }
+      ]
+    },
+    {
+      "id": "teeth",
+      "scene": "directed",
+      "role": "turn",
+      "transition": "cut",
+      "say": "But a motor this small can't turn an engine head-on. This pinion has {fact1} teeth. The ring has {fact2}.",
+      "events": {
+        "but": {
+          "word": "But"
+        },
+        "small": {
+          "word": "small"
+        },
+        "head-on": {
+          "word": "head-on"
+        },
+        "pinion": {
+          "word": "pinion"
+        },
+        "teeth": {
+          "word": "teeth"
+        },
+        "ring": {
+          "word": "ring"
+        },
+        "can't": {
+          "word": "can't"
+        },
+        "turn": {
+          "word": "turn"
+        },
+        "engine": {
+          "word": "engine"
+        },
+        "last": {
+          "word": -1
+        }
+      },
+      "params": {
+        "component": "Teeth",
+        "place": [
+          "a dark workbench under a lamp, the pinion and the ring gear side by side at their true sizes"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "pinion",
+            "size": "close"
+          },
+          {
+            "at": "ring",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "but",
+            "what": "the motor strains against a still ring gear, nothing moves"
+          },
+          {
+            "at": "can't",
+            "what": "the starter's case glows warning red as it strains"
+          },
+          {
+            "at": "turn",
+            "what": "the ring gear shudders but does not turn"
+          },
+          {
+            "at": "engine",
+            "what": "the stuck gear teeth flash red"
+          },
+          {
+            "at": "head-on",
+            "what": "a red stop bar flashes across the stuck gears"
+          },
+          {
+            "at": "pinion",
+            "what": "close on the pinion, its teeth lighting one by one, the count on a tag"
+          },
+          {
+            "at": "teeth",
+            "what": "the last tooth lights"
+          },
+          {
+            "at": "ring",
+            "what": "the camera pulls back across the huge ring gear, its teeth lighting round the rim, its count on a tag"
+          },
+          {
+            "at": "last",
+            "what": "the lit wave of teeth closes the circle round the ring"
+          }
+        ],
+        "things": [
+          "pinion gear",
+          "ring gear",
+          "tooth counters",
+          "workbench lamp",
+          "starter tag"
+        ],
+        "fig": {
+          "pinion": "{fact1}",
+          "ring": "{fact2}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "pinion"
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "transition": "cut",
+      "say": "So the pinion spins {gear_ratio} for each turn of the engine, trading speed for force to drag the pistons round.",
+      "events": {
+        "so": {
+          "word": "So"
+        },
+        "each": {
+          "word": "each"
+        },
+        "turn": {
+          "word": "turn"
+        },
+        "engine": {
+          "word": "engine"
+        },
+        "trading": {
+          "word": "trading"
+        },
+        "speed": {
+          "word": "speed"
+        },
+        "force": {
+          "word": "force"
+        },
+        "drag": {
+          "word": "drag"
+        },
+        "pistons": {
+          "word": "pistons"
+        },
+        "round": {
+          "word": "round"
+        },
+        "spins": {
+          "word": "spins"
+        },
+        "for": {
+          "word": "for"
+        },
+        "pinion": {
+          "word": "pinion"
+        }
+      },
+      "params": {
+        "component": "Payoff",
+        "place": [
+          "the engine's crankshaft and pistons, cut open, the starter meshed below them"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "turn",
+            "size": "close"
+          },
+          {
+            "at": "force",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "so",
+            "what": "the starter and flywheel turn together in mesh"
+          },
+          {
+            "at": "pinion",
+            "what": "the pinion whirls at the flywheel's rim, the motor's windings glowing"
+          },
+          {
+            "at": "spins",
+            "what": "a turn counter beside the pinion starts counting"
+          },
+          {
+            "at": "for",
+            "what": "the flywheel's glowing marker appears on its rim"
+          },
+          {
+            "at": "each",
+            "what": "the marker creeps round with the flywheel"
+          },
+          {
+            "at": "engine",
+            "what": "the flywheel's marker completes one full turn while the counter lands on the figure"
+          },
+          {
+            "at": "trading",
+            "what": "a speed arrow on the pinion shrinks as a force arrow on the flywheel grows"
+          },
+          {
+            "at": "force",
+            "what": "the camera pulls back as the crankshaft turns and the pistons slide up and down"
+          },
+          {
+            "at": "pistons",
+            "what": "the pistons are labelled"
+          },
+          {
+            "at": "round",
+            "what": "the crank throws swing round in a glowing arc"
+          }
+        ],
+        "things": [
+          "pinion turn counter",
+          "flywheel marker",
+          "speed arrow",
+          "force arrow",
+          "crankshaft",
+          "pistons"
+        ],
+        "fig": {
+          "ratio": "{gear_ratio}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "engine"
+        }
+      ]
+    },
+    {
+      "id": "release",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Once the engine fires, a one-way clutch lets the pinion spin free. Let go of the key, and a spring pulls it back.",
+      "events": {
+        "once": {
+          "word": "Once"
+        },
+        "engine": {
+          "word": "engine"
+        },
+        "fires": {
+          "word": "fires"
+        },
+        "one-way": {
+          "word": "one-way"
+        },
+        "clutch": {
+          "word": "clutch"
+        },
+        "pinion": {
+          "word": "pinion"
+        },
+        "free": {
+          "word": "free"
+        },
+        "spring": {
+          "word": "spring"
+        },
+        "back": {
+          "word": "back"
+        },
+        "let": {
+          "word": "Let"
+        },
+        "key": {
+          "word": "key"
+        }
+      },
+      "params": {
+        "component": "Release",
+        "place": [
+          "inside a cylinder at the moment of the spark",
+          "the pinion's one-way clutch, sliced open, in front of the spinning flywheel"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "clutch",
+            "size": "close"
+          },
+          {
+            "at": "let",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "fires",
+            "what": "the spark plug fires inside the cylinder in an amber flash and the piston slams down"
+          },
+          {
+            "at": "one-way",
+            "what": "cut to the clutch inside the pinion, its rollers labelled"
+          },
+          {
+            "at": "clutch",
+            "what": "the rollers slip back in their ramps"
+          },
+          {
+            "at": "pinion",
+            "what": "the pinion's outer ring starts to outrun the hub"
+          },
+          {
+            "at": "free",
+            "what": "the pinion spins free while the shaft behind it slows, the red fades"
+          },
+          {
+            "at": "let",
+            "what": "cut to the starter's nose, the solenoid's coil going dark as the key is let go"
+          },
+          {
+            "at": "key",
+            "what": "the plunger starts to slide back out of the dark coil"
+          },
+          {
+            "at": "spring",
+            "what": "the return spring stretches out, labelled"
+          },
+          {
+            "at": "back",
+            "what": "the pinion slides back out of the ring gear, a clear gap opening"
+          }
+        ],
+        "things": [
+          "spark plug",
+          "cylinder",
+          "piston",
+          "flywheel",
+          "one-way clutch rollers",
+          "pinion",
+          "return spring"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "fires"
+        },
+        {
+          "kind": "whoosh",
+          "at": "back"
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "scene": "directed",
+      "role": "build",
+      "transition": "cut",
+      "say": "Cadillac ordered {fact4} of Kettering's electric starters. Before, you cranked engines by hand.",
+      "events": {
+        "cadillac": {
+          "word": "Cadillac"
+        },
+        "ordered": {
+          "word": "ordered"
+        },
+        "kettering's": {
+          "word": "Kettering's"
+        },
+        "electric": {
+          "word": "electric"
+        },
+        "starters": {
+          "word": "starters"
+        },
+        "before": {
+          "word": "Before"
+        },
+        "cranked": {
+          "word": "cranked"
+        },
+        "engines": {
+          "word": "engines"
+        },
+        "hand": {
+          "word": "hand"
+        },
+        "of": {
+          "word": "of"
+        }
+      },
+      "params": {
+        "component": "History",
+        "place": [
+          "an early motor car's front in a dim old garage",
+          "the crank handle at the radiator"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "starters",
+            "size": "medium"
+          },
+          {
+            "at": "cranked",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "cadillac",
+            "what": "an old open car with brass lamps rolls into a pool of light"
+          },
+          {
+            "at": "ordered",
+            "what": "an order slip stands up on the running board, the count written on it counting up"
+          },
+          {
+            "at": "of",
+            "what": "the order plate's count lands"
+          },
+          {
+            "at": "electric",
+            "what": "a glowing starter motor appears under the car's bonnet"
+          },
+          {
+            "at": "before",
+            "what": "the light turns sepia"
+          },
+          {
+            "at": "cranked",
+            "what": "close on the crank handle at the radiator, swinging round"
+          },
+          {
+            "at": "hand",
+            "what": "the handle swings round once more"
+          }
+        ],
+        "things": [
+          "early motor car",
+          "brass lamps",
+          "order slip",
+          "crank handle",
+          "radiator"
+        ],
+        "fig": {
+          "order": "{fact4}"
+        }
+      },
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "ordered"
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "transition": "cut",
+      "say": "Jet engine or wind turbine next? When you turn the key, think of this motor.",
+      "events": {
+        "jet": {
+          "word": "Jet"
+        },
+        "wind": {
+          "word": "wind"
+        },
+        "turbine": {
+          "word": "turbine"
+        },
+        "next": {
+          "word": "next"
+        },
+        "turn": {
+          "word": "turn"
+        },
+        "key": {
+          "word": "key"
+        },
+        "think": {
+          "word": "think"
+        },
+        "motor": {
+          "word": "motor"
+        },
+        "engine": {
+          "word": "engine"
+        },
+        "when": {
+          "word": "When"
+        }
+      },
+      "params": {
+        "component": "Loop",
+        "place": [
+          "the dark studio stage, the starter motor at the base of the engine block"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "key",
+            "size": "medium"
+          },
+          {
+            "at": "motor",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "jet",
+            "what": "a jet engine's fan glows in the dark to the left"
+          },
+          {
+            "at": "engine",
+            "what": "the jet engine's fan spins up"
+          },
+          {
+            "at": "turbine",
+            "what": "a wind turbine's blades turn on the right"
+          },
+          {
+            "at": "next",
+            "what": "both fade as the camera glides back to the engine block"
+          },
+          {
+            "at": "when",
+            "what": "the engine block's cylinders light as the camera nears"
+          },
+          {
+            "at": "key",
+            "what": "the starter's pinion shoots forward again"
+          },
+          {
+            "at": "think",
+            "what": "the camera settles on the starter motor, framed as at the start"
+          },
+          {
+            "at": "motor",
+            "what": "its armature spins, as in the first frame"
+          }
+        ],
+        "things": [
+          "jet engine fan",
+          "wind turbine",
+          "engine block",
+          "starter motor"
+        ],
+        "fig": {}
+      },
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "next"
+        }
+      ]
+    }
+  ],
+  "narrator": "am_michael"
+}
