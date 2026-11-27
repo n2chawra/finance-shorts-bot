@@ -280,6 +280,25 @@ const FLAGS: Record<string, Draw> = {
       {star(x + w * 0.75, y + hh * 0.8, hh * 0.06, W)}
     </g>
   )),
+  // New Zealand (for v-20261128-11): the blue ensign with the Union Jack canton and four red stars edged white
+  "New Zealand": both(h(["#012169"]), ({ x, y, w, h: hh }) => union({ x, y, w: w / 2, h: hh / 2 }), ({ x, y, w, h: hh }) => (
+    <g>
+      {([[0.75, 0.22, 0.075], [0.65, 0.48, 0.065], [0.87, 0.42, 0.065], [0.75, 0.8, 0.08]] as [number, number, number][]).map(([sx, sy, r], i) => (
+        <g key={i}>
+          {star(x + w * sx, y + hh * sy, hh * r * 1.35, W, `w${i}`)}
+          {star(x + w * sx, y + hh * sy, hh * r, R, `r${i}`)}
+        </g>
+      ))}
+    </g>
+  )),
+  // the Soviet Union (for v-20261128-11, a 1959 signer): red field, the gold star and a simplified hammer and sickle
+  "Soviet Union": both(h(["#cc0000"]), ({ x, y, w, h: hh }) => (
+    <g>
+      {star(x + w * 0.17, y + hh * 0.13, hh * 0.07, "#ffd700", "s")}
+      <path d={`M ${x + w * 0.1} ${y + hh * 0.42} L ${x + w * 0.24} ${y + hh * 0.26}`} stroke="#ffd700" strokeWidth={hh * 0.05} strokeLinecap="round" />
+      <path d={`M ${x + w * 0.11} ${y + hh * 0.3} A ${hh * 0.12} ${hh * 0.12} 0 1 0 ${x + w * 0.25} ${y + hh * 0.36}`} fill="none" stroke="#ffd700" strokeWidth={hh * 0.045} strokeLinecap="round" />
+    </g>
+  )),
   Mexico: both(v(["#006847", W, "#ce1126"]), ({ x, y, w, h: hh }) => <circle cx={x + w / 2} cy={y + hh / 2} r={hh * 0.1} fill="#8c5a2b" />),
   Argentina: both(h(["#74acdf", W, "#74acdf"]), ({ x, y, w, h: hh }) => <circle cx={x + w / 2} cy={y + hh / 2} r={hh * 0.09} fill="#f6b40e" />),
   // South Africa (for v-20261124-11): red over blue, the white-edged green Y from the hoist, the yellow-edged

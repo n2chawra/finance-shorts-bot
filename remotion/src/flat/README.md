@@ -110,3 +110,17 @@ its moments as frames (`m.at("word")`); sizes follow the frame (`useUnit`), so t
 | `Icon` | line icons: chip, gpu, server, bolt, home, car, phone, bulb, cloud, doc, water, plane, city, brain |
 
 Test reel: `TechFlatDemo` / `TechFlatDemoLong` (`tech/Demo.tsx`).
+
+## `polar.tsx` (the South Pole, 2026-11-28, v-20261128-11)
+
+On `WorldMap kind="polar"` (azimuthal equal-area looking down on the South Pole; `lon0` is the meridian pointing up,
+`center` + `scale` frame it, the sea fills the frame):
+
+| Piece | What it draws |
+|---|---|
+| `ClaimSlice` | a claim wedge from the pole out to `edge` (60°S) between meridians `from` → `to` (east, may pass 180), swept open with `k`, clipped to Antarctica's ice (`land`), `stripes` (an angle) so overlapping claims show each other, `glow`, `lift` |
+| `LatRing` | a ring along a latitude (the treaty's 60°S line), drawn on with `k`, dashed |
+| `PlantedFlag` | a flag on its pole at [lon, lat], dropping in with `k`, the cloth fluttering with `t` |
+| `Station` | a research station hut on stilts with a dish and a blinking lamp, popping in with `k` |
+
+Flags added for it: New Zealand, Soviet Union (a 1959 signer).

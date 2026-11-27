@@ -101,8 +101,10 @@ export const WorldMap: React.FC<{
   /** the map's central meridian (default 0): a map centred across the date line (the Bering Strait, the Pacific)
    * keeps Russia and Alaska whole; `center` stays in real [lon, lat] (v-20261127-12) */
   lon0?: number;
-  /** "world" (Natural Earth projection) or "flat" (Mercator, for a region) */
-  kind?: "world" | "flat";
+  /** "world" (Natural Earth projection), "flat" (Mercator, for a region) or "polar" (azimuthal equal-area
+   * looking straight down on the South Pole, the sea filling the frame; `lon0` is the meridian pointing up;
+   * Antarctica's claim slices, v-20261128-11) */
+  kind?: "world" | "flat" | "polar";
   look?: "flat" | "vintage";
   /** a political map (the references, 2026-11-18: "include border lines, country colour wherever
    * required"): every country its own muted tone at this strength (0 plain land .. 1 full), dark ink
@@ -126,6 +128,17 @@ export const WorldMap: React.FC<{
   const keep = only ? new Set(only.map((n) => n.toLowerCase())) : null;
   const all = keep ? countries(det).filter((c) => keep.has(c.properties.name.toLowerCase())) : countries(det);
   const proj = useMemo(() => {
+    if (kind === "polar") {
+      // the South Pole in the middle, meridian `lon0` pointing up; `center` is framed by moving the map under it
+      const q = geoAzimuthalEqualArea().rotate([-lon0, 90, 0]).clipAngle(75).scale(scale ?? w * 1.2).translate([w / 2, h / 2]);
+      const framed = fit?.map((n) => all.find((c) => c.properties.name.toLowerCase() === n.toLowerCase())).filter((c): c is Country => !!c);
+      if (framed?.length) q.fitExtent([[pad, pad], [w - pad, h - pad]], { type: "FeatureCollection", features: framed });
+      else if (center) {
+        const c = q(center);
+        if (c) q.translate([w - c[0], h - c[1]]);
+      }
+      return q;
+    }
     const p = kind === "flat" ? geoMercator() : geoNaturalEarth1();
     if (lon0) p.rotate([-lon0, 0]);
     const framed = fit?.map((n) => all.find((c) => c.properties.name.toLowerCase() === n.toLowerCase())).filter((c): c is Country => !!c);
