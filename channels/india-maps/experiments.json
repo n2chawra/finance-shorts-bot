@@ -1,3 +1,23 @@
 {
-  "experiments": []
+  "experiments": [
+    {
+      "id": "im-claim-hook",
+      "area": "hook",
+      "metric": "stayed",
+      "format": "short",
+      "status": "running",
+      "startedAt": "2026-11-27",
+      "templates": [
+        "short_story"
+      ],
+      "share": 0.5,
+      "prompt": {
+        "on": "First second (weekly loop, cycle 1, im-claim-hook, on): the first spoken line is a claim about the map whose explanation waits for the payoff, said over the lit state it's about with the state named within 1 s, under 12 words, in Hindi, with no figure (e.g. 'भारत का एक राज्य कभी अलग देश था, उसका अपना राजा था।'); not a question. The title keeps its question; the title's question may be the second line. The payoff gives the answer. Everything else as the recipe says.",
+        "off": "First second (weekly loop, cycle 1, im-claim-hook, off): the champion: the first spoken line is the title's question, under 12 words, in Hindi, over the lit state it's about, the state or subject named within 1 s. Everything else as the recipe says."
+      },
+      "proposal": "cycle/backlog.json im-claim-hook",
+      "description": "India Maps Shorts: a claim on the lit map whose answer waits for the payoff as the first line, against the title's question (judged on stayed to watch)",
+      "cycle": 1
+    }
+  ]
 }

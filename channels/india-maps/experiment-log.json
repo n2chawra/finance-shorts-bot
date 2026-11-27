@@ -13,6 +13,21 @@
    "proposal": "im-keralam-label",
    "evidence": "Kerala (Alteration of Name) Act, 2026, notified 25 Aug 2026 (newsonair, PRS, Onmanorama, The News Minute)",
    "hypothesis": "No outdated state name on the India map."
+  },
+  {
+   "id": "im-claim-hook",
+   "area": "hook",
+   "format": "short",
+   "status": "running",
+   "startedAt": "2026-11-27",
+   "templates": [
+    "short_story"
+   ],
+   "guard": "qa_failures",
+   "minPerArm": 8,
+   "maxDays": 7,
+   "hypothesis": "A claim that withholds its explanation keeps more viewers past the first second than the title's question: 3 of 4 references open on a question, and the geography channel's best Short opened on a contradiction you can see.",
+   "cycle": 1
   }
  ]
 }
