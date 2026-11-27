@@ -101,6 +101,17 @@ test("settings show an unsaved-changes bar that can be discarded", async ({ page
   await expect(page.getByText("Unsaved changes")).toBeHidden();
 });
 
+test("clicking a settings row's text with several controls changes nothing", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/settings");
+  // the row was a <label>, so a click on "Trend slots" pressed its first control: "Add a trend slot"
+  const before = await page.getByLabel(/^Trend slot \d/).count();
+  await page.getByText("Trend slots", { exact: true }).click();
+  await page.getByText("Length range", { exact: true }).first().click();
+  await expect(page.getByLabel(/^Trend slot \d/)).toHaveCount(before);
+  await expect(page.getByText("Unsaved changes")).toBeHidden();
+});
+
 test("notifications explain how to fix each problem", async ({ page }) => {
   await signIn(page);
   await page.goto("/notifications");

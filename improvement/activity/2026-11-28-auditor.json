@@ -1,0 +1,46 @@
+{
+  "agent": "auditor",
+  "day": "2026-11-28",
+  "startedAt": "2026-11-27T16:33:31Z",
+  "finishedAt": "2026-11-27T16:42:44Z",
+  "summary": "Fixed a Settings bug (clicking a row's text pressed its first button), raised main's new red Python test as a critical owner notification, and wrote 9 new and 4 refreshed video analyses.",
+  "decision": "acted",
+  "why": "main's pytest is red on a photo without a head (chogyal, from today's India Maps video), which the auditor can't fix from its paths, and the workers typecheck is still red; so tonight's fix stayed in dashboard pages. The data audit was 22 h old, so the dashboard-vs-YouTube check was skipped.",
+  "findings": [
+    {
+      "title": "India Maps: main's Python tests fail on the Chogyal photo",
+      "detail": "No face found, so no head cut-out; test_the_library_photos_are_cut_out fails and blocks every agent branch with a Python file. Notification pytest-red-chogyal-head; backlog gen-010."
+    },
+    {
+      "title": "Workers typecheck still red",
+      "detail": "workers/lib/publishing.ts:99, owner-locked. Notification workers-typecheck-red."
+    },
+    {
+      "title": "Data audit stale again",
+      "detail": "Written 26 Nov 18:31 UTC, 22 h old at the start; skipped (fourth night in five)."
+    },
+    {
+      "title": "Why Atlas: the second beat keeps losing viewers",
+      "detail": "Dingo fence: 13.9-point fall at 5.7 s, the second beat, as on Malacca, Urals and Panama."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Settings rows with several controls no longer press their first button",
+      "detail": "Trend slots and both Length range rows are groups, not labels; new smoke test.",
+      "branch": "agent/auditor/2026-11-28"
+    },
+    {
+      "title": "Video analyses",
+      "detail": "9 new, 4 refreshed across the five channels.",
+      "branch": "agent/auditor/2026-11-28"
+    }
+  ],
+  "nextCheck": "2026-11-29",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/auditor/2026-11-28.md"
+    }
+  ]
+}

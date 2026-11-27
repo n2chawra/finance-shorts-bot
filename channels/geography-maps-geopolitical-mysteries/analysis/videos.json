@@ -298,22 +298,82 @@
     {
       "videoId": "v-20261124-12",
       "verdict": "miss",
-      "headline": "Panama Canal has 178 views so far and no watch data yet.",
+      "headline": "Panama's canal held viewers (90.6% viewed) but only 185 people saw it.",
       "why": [
         {
-          "text": "178 views against the Shorts median of 889 in 48 hours.",
-          "metric": "178 views",
+          "text": "185 views against the Shorts median of 735 in 48 hours.",
+          "metric": "185 views",
           "tab": "overview"
         },
         {
-          "text": "No Analytics rows yet, so % viewed and where viewers left are not known.",
+          "text": "90.6% viewed against the median 61.1%, and held after the hook 40.6%.",
+          "metric": "90.6% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "Stayed to watch 49.4% against the median 59.4%: half swiped away in the first seconds.",
+          "metric": "49.4% stayed",
+          "tab": "engagement"
+        },
+        {
+          "text": "Its falls are small (at most 9.1 points, at 1.5 s and 9.9 s).",
+          "metric": "-9.1 pts at 1.5 s",
+          "tab": "engagement"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Its body works; the first second loses the feed. Open on the empty lock, not the question.",
+      "writtenAt": "2026-11-27T17:10:00Z"
+    },
+    {
+      "videoId": "v-20261125-11",
+      "verdict": "okay",
+      "headline": "Australia's dingo fence kept viewers well (67.8% viewed) but lost the most of them on the second beat.",
+      "why": [
+        {
+          "text": "67.8% viewed against the Shorts median of 61.1%.",
+          "metric": "67.8% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "1,130 views against the 48-hour median of 735; 97.3% of views came from the Shorts feed.",
+          "metric": "1,130 views",
+          "tab": "reach"
+        },
+        {
+          "text": "Stayed to watch 48.8% against the median 59.4%, and held after the hook only 22.9%.",
+          "metric": "48.8% stayed",
+          "tab": "engagement"
+        },
+        {
+          "text": "The steepest fall, 13.9 points at 5.7 s, is on the cliffs line \"on the cliffs of the south coast\": the second beat again.",
+          "metric": "-13.9 pts at 5.7 s",
+          "tab": "engagement"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Make the second beat show the fence's payoff (sheep on one side, dingoes on the other) instead of where the fence starts.",
+      "writtenAt": "2026-11-27T17:10:00Z"
+    },
+    {
+      "videoId": "v-20261125-12",
+      "verdict": "okay",
+      "headline": "Africa splitting in two has 1,066 views and no watch data yet.",
+      "why": [
+        {
+          "text": "1,066 views against the Shorts median of 735 in 48 hours.",
+          "metric": "1,066 views",
+          "tab": "overview"
+        },
+        {
+          "text": "No Analytics rows yet, so % viewed and drops are not known.",
           "metric": "no Analytics",
           "tab": "engagement"
         }
       ],
       "viewersSaid": [],
-      "next": "Too little data for a change: check its stayed to watch when Analytics lands.",
-      "writtenAt": "2026-11-26T17:05:00Z"
+      "next": "Too early: check its stayed to watch when Analytics lands (it carries the claim-hook challenger).",
+      "writtenAt": "2026-11-27T17:10:00Z"
     }
   ]
 }

@@ -10,12 +10,16 @@ import { useToast } from "@/components/toast";
 import { useChannels, usePatchSettings, useSettings } from "@/lib/queries";
 import type { Settings } from "@/lib/schemas";
 
-function Row({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
+/** One setting. A row with several controls (`group`) is a group, not a <label>: a label passes a click on
+ *  its text to its first control, so clicking "Trend slots" added a slot. */
+function Row({ label, hint, group, children }: { label: string; hint?: string; group?: boolean; children: React.ReactNode }) {
+  const Tag = group ? "div" : "label";
   return (
-    <label className="flex flex-col gap-2.5 border-b border-line py-4 first:pt-0 last:border-0 last:pb-0 md:flex-row md:items-center md:justify-between md:gap-8">
+    <Tag role={group ? "group" : undefined} aria-label={group ? label : undefined}
+      className="flex flex-col gap-2.5 border-b border-line py-4 first:pt-0 last:border-0 last:pb-0 md:flex-row md:items-center md:justify-between md:gap-8">
       <span className="text-[13px]"><span className="text-[13.5px] font-medium">{label}</span>{hint && <span className="mt-1 block text-[12.5px] leading-relaxed text-muted">{hint}</span>}</span>
       <span className="md:flex md:w-60 md:shrink-0 md:justify-end">{children}</span>
-    </label>
+    </Tag>
   );
 }
 
@@ -102,7 +106,7 @@ export default function SettingsPage() {
                 <Toggle label="Pause all uploads" checked={form.uploadsPaused} onChange={(uploadsPaused) => set({ uploadsPaused })} />
               </Row>
               <Row label="Upload times" hint="IST. One video goes public at each time."><PerChannel href={channelHref} /></Row>
-              <Row label="Trend slots" hint="IST. Extra Short slots that open only on a day with a breaking or trending video, one per such video. Quiet days leave them empty.">
+              <Row group label="Trend slots" hint="IST. Extra Short slots that open only on a day with a breaking or trending video, one per such video. Quiet days leave them empty.">
                 <span className="flex w-full flex-col gap-2">
                   {form.trendUploadTimes.map((t, i) => (
                     <span key={i} className="flex items-center gap-2">
@@ -123,7 +127,7 @@ export default function SettingsPage() {
           <section id="longform" className="scroll-mt-20">
             <Card accent="tang" icon={Clapperboard} title="Long videos" description="The 8-11 minute explainers the Studio agent makes">
               <Row label="Long videos a week, days and time" hint="How many Studio makes per IST week, and the weekdays and time they go out."><PerChannel href={channelHref} /></Row>
-              <Row label="Length range" hint="Seconds. A long video outside this range fails QA.">
+              <Row group label="Length range" hint="Seconds. A long video outside this range fails QA.">
                 <span className="flex w-full items-center gap-2">
                   <input type="number" min={60} max={3600} required aria-label="Minimum long length in seconds" className={fieldClass}
                     value={form.longLengthMinSec} onChange={(e) => set({ longLengthMinSec: int(e.target.value) })} />
@@ -141,7 +145,7 @@ export default function SettingsPage() {
 
           <section id="videos" className="scroll-mt-20">
             <Card accent="pink" icon={Film} title="Videos" description="Rules every render must meet">
-              <Row label="Length range" hint="Seconds. QA rejects videos outside it.">
+              <Row group label="Length range" hint="Seconds. QA rejects videos outside it.">
                 <span className="flex w-full items-center gap-2">
                   <input type="number" min={15} max={180} required aria-label="Minimum length in seconds" className={fieldClass} value={form.lengthMinSec} onChange={(e) => set({ lengthMinSec: int(e.target.value) })} />
                   <span className="text-xs text-muted">to</span>
