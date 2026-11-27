@@ -59,7 +59,7 @@ export function categoryOf(_style: unknown): string {
   return UPLOAD_CATEGORY;
 }
 
-export type VideoMeta = { title: string; description: string; tags: string[]; publishAt: Date; categoryId?: string };
+export type VideoMeta = { title: string; description: string; tags: string[]; publishAt: Date; categoryId?: string; language?: string };
 
 const Inserted = z.object({ id: z.string(), status: z.object({ uploadStatus: z.string().optional(), privacyStatus: z.string().optional() }).passthrough().optional() }).passthrough();
 
@@ -73,7 +73,7 @@ export async function uploadVideo(token: string, file: string, meta: VideoMeta):
       "x-upload-content-length": String(size), "x-upload-content-type": "video/mp4",
     },
     body: JSON.stringify({
-      snippet: { title: meta.title, description: meta.description, tags: meta.tags, categoryId: meta.categoryId ?? UPLOAD_CATEGORY, defaultLanguage: "en" },
+      snippet: { title: meta.title, description: meta.description, tags: meta.tags, categoryId: meta.categoryId ?? UPLOAD_CATEGORY, defaultLanguage: meta.language ?? "en", defaultAudioLanguage: meta.language ?? "en" },
       status: { privacyStatus: "private", publishAt: meta.publishAt.toISOString(), selfDeclaredMadeForKids: false, containsSyntheticMedia: false, embeddable: true },
     }),
   });

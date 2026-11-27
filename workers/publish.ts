@@ -41,7 +41,7 @@ const MAX_ATTEMPTS = 3;
 type Format = "short" | "long";
 
 /** One channel's run: its id, its settings and the shared quota. Channel #1's notification keys keep their old names. */
-type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string; category: string; promoOnly: boolean };
+type Run = { channelId: string; settings: Settings; quota: QuotaKeeper; key: (k: string) => string; label: string; category: string; promoOnly: boolean; language: string };
 
 /** Our designed cover instead of the frame YouTube picks (owner, 2026-11-03: "the thumbnail is wrong").
  * The video is already uploaded, so a refused cover is reported, never a failed upload. The result is kept in
@@ -115,6 +115,7 @@ async function main(): Promise<void> {
         key: (k) => (first ? k : `${k}:${ch.id}`), label: first ? "" : `${ch.name}: `,
         // the channel's own upload category (its pack; "22" without one)
         category: channelPack(ch.id).uploadCategory,
+        language: channelPack(ch.id).language,
         // Shorts that only promote the channel's long videos go out after their long (lib/publishing.ts pickPromo)
         promoOnly: channelPack(ch.id).promoOnly };
       console.log(`== ${ch.name} (${ch.id})`);
@@ -300,7 +301,7 @@ async function uploadOne(prisma: PrismaClient, run: Run, token: string, disclaim
     const parentId = format === "short" ? promoOf(video.style) : null;
     const parent = parentId ? await prisma.upload.findUnique({ where: { videoId: parentId }, select: { youtubeId: true } }) : null;
     if (parent?.youtubeId) meta.description = withPromoLink(meta.description, parent.youtubeId);
-    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: run.category });
+    const youtubeId = await uploadVideo(token, file, { ...meta, publishAt: slot, categoryId: run.category, language: run.language });
     await prisma.$transaction([
       prisma.upload.upsert({
         where: { videoId: video.id },
