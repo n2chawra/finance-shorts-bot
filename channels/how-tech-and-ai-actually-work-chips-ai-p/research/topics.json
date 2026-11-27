@@ -2847,6 +2847,110 @@
     "https://youtube.com/shorts/8F494-0-iYE",
     "https://youtube.com/shorts/kaooebGrdk0"
    ]
+  },
+  {
+   "id": "2026-11-28-starter-motor-turn-key",
+   "format": "short",
+   "kind": "evergreen",
+   "priority": "high",
+   "currency": "USD",
+   "reach": "global",
+   "templates": [
+    "any"
+   ],
+   "found": "2026-11-28",
+   "expires": "2027-02-26",
+   "status": "new",
+   "title": "What happens inside your car's engine in the second you turn the key: the starter motor",
+   "category": "cars",
+   "stories": [
+    "machine_works"
+   ],
+   "demand": {
+    "title": "EVER WONDERED HOW A START MOTOR WORKS?",
+    "views": 280387465,
+    "url": "https://youtube.com/shorts/OGu9UeCO4Zo",
+    "channel": "Daily Dose of Cars",
+    "channelSubs": 260000,
+    "outlier": 1078.4
+   },
+   "hook": "Turn the key, and a tiny gear shoots out and grabs your engine.",
+   "angle": "Frame 0: a key turning, the engine already cut open. The solenoid snaps a 9-tooth pinion forward into the flywheel's 135-tooth ring gear (a real Bosch starter's spec, the 1995 Saab 900 V6); the small motor spins, the big gear turns, the pistons start moving, the spark catches, and a one-way clutch lets the pinion go before the engine can spin it to pieces. Payoff by code: 135 / 9 = the motor turns 15 times for every single turn of the engine, the reason a motor that fits in your hand can crank a whole engine. Then where it came from: Charles Kettering's electric starter, which Cadillac ordered 12,000 of in November 1911 and put in its 1912 cars; before it, you cranked the engine by hand. Loop back to the key. Every step shown as parts physically moving and pushing each other (the owner's 27 Nov note: understand it by seeing it).",
+   "why_now": "The strongest Short breakouts found this week in the machines lane: 'EVER WONDERED HOW A START MOTOR WORKS?' 280M views on 260K subscribers (1,078x); 'What Happens When You Turn the Key? The Starter Motor' (Science Scope) 50.0M on 121K (413x); the kick-start relatives 'Kick Start Mechanism' (Fixed iT) 6.84M on 61.9K (110x) and Mevix lab's '3D Cutaway' 767K on 385 subscribers in 4 days. machine_works is our best story on our own numbers (1.00x vs invention 0.61x). Category cars is new to the channel.",
+   "facts": [
+    {
+     "label": "Teeth on the pinion gear of the Bosch starter fitted to the 1995 Saab 900 V6",
+     "value": 9,
+     "unit": "count",
+     "as_of": "1995-01-01",
+     "source": "Saab WIS (service manual), starter motor technical data",
+     "url": "https://saabwisonline.com/900/1995/3-electrical-system/starting-system/technical-data/starter-motor-v6-engine",
+     "fixed": true
+    },
+    {
+     "label": "Teeth on the flywheel ring gear that pinion meshes with (1995 Saab 900 V6)",
+     "value": 135,
+     "unit": "count",
+     "as_of": "1995-01-01",
+     "source": "Saab WIS (service manual), starter motor technical data",
+     "url": "https://saabwisonline.com/900/1995/3-electrical-system/starting-system/technical-data/starter-motor-v6-engine",
+     "fixed": true
+    },
+    {
+     "label": "Starter motor speed with no load at 12 volts, revolutions a minute (Bosch starter, 1995 Saab 900 V6)",
+     "value": 3300,
+     "unit": "count",
+     "as_of": "1995-01-01",
+     "source": "Saab WIS (service manual), starter motor technical data",
+     "url": "https://saabwisonline.com/900/1995/3-electrical-system/starting-system/technical-data/starter-motor-v6-engine",
+     "fixed": true
+    },
+    {
+     "label": "Electric starting systems Cadillac ordered from Kettering in November 1911",
+     "value": 12000,
+     "unit": "count",
+     "as_of": "1911-11-01",
+     "source": "IEEE Engineering and Technology History Wiki",
+     "url": "https://ethw.org/Charles_F._Kettering",
+     "fixed": true
+    },
+    {
+     "label": "Model year Cadillac introduced the electric self-starter",
+     "value": 1912,
+     "unit": "count",
+     "as_of": "1911-11-01",
+     "source": "IEEE Engineering and Technology History Wiki",
+     "url": "https://ethw.org/Charles_F._Kettering",
+     "fixed": true
+    },
+    {
+     "label": "Year Ford began offering the electric starter on the Model T",
+     "value": 1919,
+     "unit": "count",
+     "as_of": "1919-01-01",
+     "source": "IEEE Engineering and Technology History Wiki",
+     "url": "https://ethw.org/Charles_F._Kettering",
+     "fixed": true
+    }
+   ],
+   "verify": [
+    "Saab WIS, 1995 Saab 900 starter motor (V6): Bosch DW 12V 0 001 108 080, pinion 9 teeth, ring gear 135 teeth, 1.4 kW, idling 12 V 80 A 3300 rpm",
+    "The 15-to-1 ratio (135 / 9) is computed by code; say it is this starter's ratio, not every car's",
+    "ETHW: Kettering installed the system in a Cadillac in 1911; Cadillac ordered 12,000 systems in November; Cadillac introduced the self-starter in its 1912 model; Henry Ford offered it on the Model T in 1919",
+    "The overrunning (one-way) clutch and the solenoid pushing the pinion: confirm on a manufacturer's page (e.g. the Bosch starter poster or the MAHLE starter brochure) before naming them on screen",
+    "Don't claim the starter 'let women drive' or that a friend of Leland's died: sources disagree on the year and evidence; leave both out",
+    "Cutaway tagged 'illustration, not to scale'; never a real car brand's logo"
+   ],
+   "sources": [
+    "https://saabwisonline.com/900/1995/3-electrical-system/starting-system/technical-data/starter-motor-v6-engine",
+    "https://ethw.org/Charles_F._Kettering",
+    "https://www.boschaftermarket.com/xrm/media/images/parts/starters_and_alternators/pdf_43/en/poster_bosch_starter.pdf",
+    "https://www.mahle-aftermarket.com/media/local-media-north-america/pdfs-&-thumbnails/rotating-electric/starters_alternators-design-&-function-brochure-re-1-326.pdf",
+    "https://youtube.com/shorts/OGu9UeCO4Zo",
+    "https://youtube.com/shorts/2VAAn60GeZ0",
+    "https://youtube.com/shorts/TLr10fAQeEM",
+    "https://youtube.com/shorts/A11PbPta3Yk"
+   ]
   }
  ]
 }
