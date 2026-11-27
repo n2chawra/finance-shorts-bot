@@ -1,7 +1,26 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 1,
   "notes": [
+    {
+      "id": "cmwz7z7mz0001js09h999iw76",
+      "kind": "improve",
+      "area": "animation",
+      "text": "The script was great but the animation/ presentation was very static like I could clearly see what is being talked about but the video/animation lacks showcasing it in a presentable way correctly. Right now the animation is like 3d process appear and little animation in between but the presentation or actual making things work in ui to explain what is being spoken is clearly very weak. I have to hear things properly to understand rather than seeing and understand u know what I mean. Fix this for both long video and shorts.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-27T16:52:41.195Z",
+      "video": {
+        "id": "L-20261127-21",
+        "title": "How Does ChatGPT Turn Your Question Into an Answer?",
+        "format": "long",
+        "status": "queued",
+        "story": "how_ai_works",
+        "shape": null,
+        "hookStyle": "challenge",
+        "hook": "A question you type into ChatGPT on your phone sets off billions of multiplications on a chip in a data centre, far from you."
+      }
+    },
     {
       "id": "cmwurayl10001l8097slpczis",
       "kind": "improve",

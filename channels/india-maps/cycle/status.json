@@ -1,13 +1,45 @@
 {
-  "generatedAt": "2026-11-27T16:50:57.483812+00:00",
-  "cycle": null,
-  "running": null,
+  "generatedAt": "2026-11-27T16:58:36.715820+00:00",
+  "cycle": 1,
+  "running": "im-claim-hook",
   "thresholds": {
     "keepPoints": 5,
     "revertPoints": -5,
     "confidence": 0.8
   },
   "channelStayed14d": 0.356,
-  "cycleVideos": {},
-  "experiment": null
+  "cycleVideos": {
+    "im-claim-hook": []
+  },
+  "experiment": {
+    "id": "im-claim-hook",
+    "kind": "first-second",
+    "area": "hook",
+    "description": "India Maps Shorts: a claim on the lit map whose answer waits for the payoff as the first line, against the title's question (judged on stayed to watch)",
+    "on": "First second (weekly loop, cycle 1, im-claim-hook, on): the first spoken line is a claim about the map whose explanation waits for the payoff, said over the lit state it's about with the state named within 1 s, under 12 words, in Hindi, with no figure (e.g. 'भारत का एक राज्य कभी अलग देश था, उसका अपना राजा था।'); not a question. The title keeps its question; the title's question may be the second line. The payoff gives the answer. Everything else as the recipe says.",
+    "off": "First second (weekly loop, cycle 1, im-claim-hook, off): the champion: the first spoken line is the title's question, under 12 words, in Hindi, over the lit state it's about, the state or subject named within 1 s. Everything else as the recipe says.",
+    "startedAt": "2026-11-27",
+    "metric": "stayed",
+    "minPerArm": 8,
+    "maxDays": 7,
+    "extended": false,
+    "published": {
+      "on": 0,
+      "off": 0
+    },
+    "counted": {
+      "on": 0,
+      "off": 0
+    },
+    "value": {
+      "on": null,
+      "off": null
+    },
+    "points": null,
+    "pOnBetter": 0.5,
+    "days": 0,
+    "verdict": "wait",
+    "why": "0 of 8 Shorts a side have two days of data; day 0 of 7",
+    "videos": []
+  }
 }
