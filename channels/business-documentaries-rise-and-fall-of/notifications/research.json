@@ -6,6 +6,20 @@
       "title": "The market scan's 'what happened to' search brings back off-niche Shorts",
       "detail": "In the 24 Nov market feed, 24 of the 25 Shorts breakouts came from the bare 'what happened to' search: football, Roblox, K-pop and horror. The improver can't change the channel's market.json (outside every agent's files in scripts/guard.py), so the change is yours.",
       "fix": "1. Open channels/business-documentaries-rise-and-fall-of/market.json. 2. Replace \"what happened to\" in queries with \"what happened to the brand\" and \"what happened to the company\". 3. Commit to main; the next market.yml run uses them."
+    },
+    {
+      "key": "ypp-2027-thresholds",
+      "severity": "info",
+      "title": "YouTube raises the Partner Program bar on 1 Feb 2027",
+      "detail": "YouTube's 10 Aug 2026 post: from 1 Feb 2027 new applicants need 8,000 watch hours in 365 days or 20M Shorts views in 90 days (today 1,000 subscribers plus 4,000 hours or 10M Shorts views). Channels already in YPP keep membership, but earn Shorts ad revenue only in 90 days with 10M+ Shorts views; long videos keep earning. For this long-first channel the realistic route is watch hours from the long films. Nothing in the pipeline changes. Source: https://blog.youtube/news-and-events/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/",
+      "fix": "1. No action needed now. 2. If the channel reaches 1,000 subscribers and 4,000 watch hours before 1 Feb 2027, apply in YouTube Studio > Earn before that date to join under today's bar. 3. Otherwise plan on 8,000 watch hours from long videos."
+    },
+    {
+      "key": "upload-slot-gap",
+      "severity": "info",
+      "title": "Shorts at 17:47 IST get far more views than Shorts at 22:17 IST",
+      "detail": "48 h views: the 17:47 IST slot had 1,137, 203, 1,373 and 1,537 (4 Shorts); the 22:17 IST slot had 12, 51, 1,214 and 71 (4 Shorts). It's a small sample and mixed with story (most founder Shorts went out at 22:17); research asked the improver to alternate stories across slots so the next week can tell them apart. Upload times are yours to set.",
+      "fix": "1. Nothing yet; wait about a week of alternated slots. 2. If the 22:17 slot still trails, try moving it earlier on the Channels page (Craze & Crash > settings > upload times)."
     }
   ]
 }
