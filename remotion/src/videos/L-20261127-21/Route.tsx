@@ -82,7 +82,7 @@ const Route: React.FC<SceneProps> = (p) => {
         {has("table") && b.fig.params && <FigLabel3D fig={b.fig.params} caption="parameters" at={[0.9, 2.3, 0.4]} start={at("table")} count={20} px={96} />}
         <pointLight position={[0.5, 2.6, 0.8]} intensity={4 + 3 * k("paper", 12) + 4 * k("glow", 10) + 3 * k("lamp", 8)} distance={5} color="#ffd9a0" />
       </group>
-      <Words b={b} pos={pos} signAt={() => [PAPER[0] - 1.2, 2.5, PAPER[2] + 0.3]} signH={0.3} />
+      <Words b={b} pos={pos} signAt={() => [PAPER[0], 0.75, PAPER[2] + 0.25]} signH={0.22} />
     </Shot>
   );
 };

@@ -22,7 +22,7 @@ const Window: React.FC<SceneProps> = (p) => {
   const anchors: Record<string, Anchor> = {
     belt: { look: [0, 0.8, 0], dir: [0.45, 0.45, 1], d: 16 },
     frame: { look: [0, 1, 0], dir: [0.2, 0.35, 1], d: 10 },
-    off: { look: [-halfW - 1.5, 0.2, 0], dir: [0.3, 0.4, 1], d: 5.5 },
+    off: { look: [-halfW - 0.6, 0.4, 0], dir: [0.3, 0.4, 1], d: 7 },
     book: { look: [halfW + 2.6, 1, 2.2], dir: [0.25, 0.35, 1], d: 5.5 },
     arrow: { look: [0, 2.6, 2.4], dir: [0.15, 0.35, 1], d: 6 },
   };
@@ -46,8 +46,8 @@ const Window: React.FC<SceneProps> = (p) => {
         const shown = zone === "q" ? k("q", 12) : zone === "e" ? k("earlier", 12) : k("answer", 12);
         const lit = inside ? 0.2 + 0.6 * fill * (has("q") ? shown : 1) : 0.05 * (1 - k("dark", 14));
         // old tiles at the back edge drop off into the dark
-        const dropping = has("drop") && x < -halfW && x > -halfW - 3 ? k("drop", 20) : 0;
-        const gone = has("gone") && x < -halfW ? 1 - k("gone", 14) : 1;
+        const dropping = has("drop") && x < -halfW ? Math.min(1, (-halfW - x) / 2.5) * k("drop", 20) : 0;
+        const gone = has("gone") && x < -halfW - 2 ? 1 - k("gone", 14) : 1;
         if (gone <= 0.02) return null;
         return <Tile key={i} text="" color={col} w={0.9} position={[x, 0.55 - 3 * dropping, 0.1]} rotation-z={dropping * 0.8} scale={0.8 * gone} lit={lit * (has("dim") && x < -halfW ? 1 - k("dim", 12) : 1)} />;
       })}

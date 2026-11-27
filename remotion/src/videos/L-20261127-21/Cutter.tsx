@@ -26,13 +26,14 @@ const Cutter: React.FC<SceneProps> = (p) => {
   const anchors: Record<string, Anchor> = {
     bench: { look: [0, 1.1, 0], dir: [0.2, 0.7, 1], d: 10 },
     strip: { look: [0, 1.1, 0.3], dir: [0.1, 0.6, 1], d: 7.5 },
-    blade: { look: [0, 1.8, 0.3], dir: [0.35, 0.3, 1], d: 6 },
+    blade: { look: [0.4, 1.3, 0.6], dir: [0.3, 0.45, 1], d: 7 },
+    rare: { look: [0, 1.4, 0.6], dir: [0, 0.8, 1], d: 7 },
     tiles: { look: [0, 1.1, 0.6], dir: [0.2, 0.55, 1], d: 6.5 },
     list: { look: [0, 3, -2.5], dir: [0.15, 0.3, 1], d: 10 },
     chute: { look: [5.2, 0.8, 0.5], dir: [0.4, 0.5, 1], d: 6 },
     tag: { look: [0, 1.8, 0.6], dir: [0.1, 0.3, 1], d: 4 },
   };
-  const pos = (on: string): V3 => on === "list" ? [-3, 5, -2.4] : on === "blade" ? [1.2, 3, 0.4] : on === "chute" ? [5.4, 2.2, 0.6] : [-2.6, 2.3, 0.6];
+  const pos = (on: string): V3 => on === "list" ? [-3, 5, -2.4] : on === "blade" ? [-0.4, 2.6, 0.6] : on === "chute" ? [5.4, 2.2, 0.6] : [-2.6, 2.3, 0.6];
   const tokens = Q_TOKENS;
   const rare = has("rare") || has("common");
   return (
@@ -82,10 +83,10 @@ const Cutter: React.FC<SceneProps> = (p) => {
       {has("scan") && <mesh position={[TX(0) - 0.6 + 8 * ((f - at("scan")) / 40 % 1), 1.1, 0.75]} material={glow(TECH.white, 0.7)}><boxGeometry args={[0.05, 0.8, 0.02]} /></mesh>}
       {/* a rare word next to a common one */}
       {rare && <>
-        <Tile text="sky" color={TOK[2]!} w={1.2} position={[-3, 1.1, 0.6]} scale={q(k("common", 12))} lit={0.6 + 0.4 * k("one", 10)} />
-        {[0, 1, 2].map((i) => <Tile key={i} text={["Ray", "leigh", ""][i]!} color={TOK[i + 3]!} w={1.1} position={[0.2 + i * (1.2 + 0.5 * k("chop", 14)), 1.1, 0.6]} scale={q(k("rare", 12))} lit={0.6} />)}
-        <Tile text="Kokoro" color={TOK[0]!} w={1.6} position={[3.6, 1.1 + 0.6 * (1 - k("chop", 14)), 0.6]} scale={q(k("name", 12) * (1 - k("chop", 14)))} />
-        {has("chop") && ["Ko", "kor", "o"].map((t, i) => <Tile key={i} text={t} color={TOK[(i + 1) % 6]!} w={0.8} position={[3.0 + i * 1.0, 1.1, 0.6]} scale={q(k("chop", 14))} />)}
+        <Tile text="sky" color={TOK[2]!} w={1.2} position={[-3.6, 1.6, 0.6]} scale={q(k("common", 12))} lit={0.6 + 0.4 * k("one", 10)} />
+        {[0, 1, 2].map((i) => <Tile key={i} text={["Ray", "leigh", ""][i]!} color={TOK[i + 3]!} w={1.1} position={[-1.4 + i * (1.2 + 0.5 * k("chop", 14)), 1.6, 0.6]} scale={q(k("rare", 12))} lit={0.6} />)}
+        <Tile text="Kokoro" color={TOK[0]!} w={1.6} position={[3.0, 1.6 + 0.6 * (1 - k("chop", 14)), 0.6]} scale={q(k("name", 12) * (1 - k("chop", 14)))} />
+        {has("chop") && ["Ko", "kor", "o"].map((t, i) => <Tile key={i} text={t} color={TOK[(i + 1) % 6]!} w={0.8} position={[2.2 + i * 1.0, 1.6, 0.6]} scale={q(k("chop", 14))} />)}
       </>}
       {/* the ruler for one token */}
       {has("ruler") && <group position={[TX(3), 1.55, 0.75]} scale={q(k("ruler", 12))}>

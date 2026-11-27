@@ -3,7 +3,7 @@
 // light running from the phone into the hall.
 import React from "react";
 import type { ThumbProps } from "../../studio/thumb";
-import { Phone as PhoneModel, ServerRack, TECH, ThumbCamera } from "../../three/index";
+import { glow, Phone as PhoneModel, ServerRack, TECH, ThumbCamera } from "../../three/index";
 import { Beads, Dust } from "./kit";
 
 export default function ThumbHall(_: ThumbProps) {
@@ -16,6 +16,8 @@ export default function ThumbHall(_: ThumbProps) {
       )))}
       <group position={[0.5, 1.3, 2.2]} rotation-x={1.1} scale={0.55}>
         <PhoneModel glowScreen={1} />
+        <mesh position={[0.05, 0.23, -0.5]} rotation-x={-Math.PI / 2} material={glow("#cfe0ff", 0.95)}><planeGeometry args={[1.2, 0.4]} /></mesh>
+        <mesh position={[-0.05, 0.23, 0.3]} rotation-x={-Math.PI / 2} material={glow(TECH.cyan, 0.85)}><planeGeometry args={[1.2, 0.9]} /></mesh>
       </group>
       <Beads a={[0.5, 1.4, 1.9]} b={[0, 0.3, -14]} t={3} n={16} color={TECH.amber} r={0.09} spread={0.05} />
       <pointLight position={[0, 3, -3]} intensity={10} distance={14} color={TECH.cyan} />

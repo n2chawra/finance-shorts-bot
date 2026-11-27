@@ -92,9 +92,6 @@
     "cam_your": {
      "word": "your"
     },
-    "chatgpt": {
-     "word": "ChatGPT"
-    },
     "type": {
      "word": "type"
     }
@@ -109,7 +106,7 @@
      {
       "sec": 0,
       "size": "medium",
-      "on": "phone"
+      "on": "screen"
      },
      {
       "at": "chip",
@@ -125,13 +122,13 @@
      {
       "at": "cam_type",
       "size": "medium",
-      "on": "phone",
+      "on": "screen",
       "move": "orbit"
      },
      {
       "at": "cam_your",
       "size": "medium",
-      "on": "phone",
+      "on": "screen",
       "move": "orbit"
      }
     ],
@@ -186,7 +183,7 @@
     ],
     "labels": [
      {
-      "at": "chatgpt",
+      "at": "start",
       "text": "ChatGPT",
       "on": "screen"
      }
@@ -880,18 +877,18 @@
      },
      {
       "at": "cut",
-      "size": "extreme",
+      "size": "close",
       "on": "blade"
      },
      {
       "at": "cam_text",
-      "size": "extreme",
+      "size": "close",
       "on": "blade",
       "move": "orbit"
      },
      {
       "at": "cam_longer",
-      "size": "extreme",
+      "size": "close",
       "on": "blade",
       "move": "orbit"
      }
@@ -1206,60 +1203,60 @@
     "camera": [
      {
       "sec": 0,
-      "size": "medium",
-      "on": "tiles"
+      "size": "wide",
+      "on": "rare"
      },
      {
-      "at": "rare",
-      "size": "close",
-      "on": "blade"
+      "at": "several",
+      "size": "medium",
+      "on": "rare"
      },
      {
       "at": "cam_and",
-      "size": "medium",
-      "on": "tiles",
+      "size": "wide",
+      "on": "rare",
       "move": "orbit"
      },
      {
       "at": "cam_words",
-      "size": "medium",
-      "on": "tiles",
+      "size": "wide",
+      "on": "rare",
       "move": "orbit"
      },
      {
       "at": "cam_often",
-      "size": "medium",
-      "on": "tiles",
+      "size": "wide",
+      "on": "rare",
       "move": "orbit"
      },
      {
       "at": "cam_into",
-      "size": "close",
-      "on": "blade",
+      "size": "wide",
+      "on": "rare",
       "move": "orbit"
      },
      {
       "at": "cam_any",
-      "size": "close",
-      "on": "blade",
+      "size": "medium",
+      "on": "rare",
       "move": "orbit"
      },
      {
       "at": "cam_still",
-      "size": "close",
-      "on": "blade",
+      "size": "medium",
+      "on": "rare",
       "move": "orbit"
      },
      {
       "at": "cam_from",
-      "size": "close",
-      "on": "blade",
+      "size": "medium",
+      "on": "rare",
       "move": "orbit"
      },
      {
       "at": "cam_the",
-      "size": "close",
-      "on": "blade",
+      "size": "medium",
+      "on": "rare",
       "move": "orbit"
      }
     ],
@@ -1723,6 +1720,9 @@
     "cam_for": {
      "word": "for"
     },
+    "g4_08": {
+     "sec": 4.08
+    },
     "next": {
      "word": "Next"
     }
@@ -1769,6 +1769,12 @@
       "at": "token",
       "size": "close",
       "on": "column"
+     },
+     {
+      "at": "g4_08",
+      "size": "wide",
+      "on": "table",
+      "move": "orbit"
      }
     ],
     "moments": [
@@ -4786,23 +4792,6 @@
      "Sunlight tile",
      "Because tile",
      "banana tile"
-    ],
-    "labels": [
-     {
-      "at": "sunlight",
-      "text": "Sunlight",
-      "on": "sun"
-     },
-     {
-      "at": "because",
-      "text": "Because",
-      "on": "because"
-     },
-     {
-      "at": "banana",
-      "text": "banana",
-      "on": "banana"
-     }
     ]
    }
   },
@@ -5699,13 +5688,6 @@
      "tall stalks",
      "red tile",
      "green tick"
-    ],
-    "labels": [
-     {
-      "at": "wrong",
-      "text": "likely",
-      "on": "winner"
-     }
     ]
    },
    "sfx": [
@@ -5749,6 +5731,9 @@
     "cam_look": {
      "word": "look"
     },
+    "g5_25": {
+     "sec": 5.25
+    },
     "but": {
      "word": "But"
     }
@@ -5775,6 +5760,12 @@
      },
      {
       "at": "cam_look",
+      "size": "wide",
+      "on": "belt",
+      "move": "orbit"
+     },
+     {
+      "at": "g5_25",
       "size": "wide",
       "on": "belt",
       "move": "orbit"

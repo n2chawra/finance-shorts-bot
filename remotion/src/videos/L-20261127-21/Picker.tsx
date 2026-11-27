@@ -34,13 +34,13 @@ const Picker: React.FC<SceneProps> = (p) => {
   const back = k("back", 30);
   const anchors: Record<string, Anchor> = {
     field: { look: [0, 1.2, -3], dir: [0.2, 0.55, 1], d: 14 },
-    bars: { look: [0, 2, -0.5], dir: [0.15, 0.3, 1], d: 8 },
-    winner: { look: [0, 2.6, 0], dir: [0.1, 0.2, 1], d: 4.6 },
+    bars: { look: [0, 1.9, -0.5], dir: [0.15, 0.3, 1], d: 9.5 },
+    winner: { look: [0, 2.4, 0], dir: [0.1, 0.2, 1], d: 6.2 },
     banana: { look: [3.6, 0.6, -1.2], dir: [0.2, 0.3, 1], d: 4.4 },
     text: { look: [-1.2, STRIP_Y + 0.4, STRIP_Z], dir: [0, 0.35, 1], d: 7.5 },
   };
-  const H: Record<string, number> = { the: 3.4, sun: 3.9, because: 3.2 };
-  const pos = (on: string): V3 => on === "sun" ? [0, 4.6, 0] : on === "because" ? [-1.4, 4.0, 0] : on === "banana" ? [3.6, 1.6, -1.2] : on === "winner" ? [0.9, 4.4, 0] : on === "text" ? [-4, STRIP_Y + 1.4, STRIP_Z] : [-4.5, 3.4, -1];
+  const H: Record<string, number> = { the: 2.4, sun: 2.6, because: 2.0 };
+  const pos = (on: string): V3 => on === "sun" ? [0.4, 3.0, 0] : on === "because" ? [-2.4, 2.5, 0] : on === "banana" ? [3.6, 1.2, -1.2] : on === "winner" ? [1.6, 3.2, 0] : on === "text" ? [-4, STRIP_Y + 1.4, STRIP_Z] : [-4.5, 3.4, -1];
   return (
     <Shot p={p} b={b} anchors={anchors} seed="picker" backdrop={NIGHT} floor="reflect" bloom={1.2} light={0.85} dust={{ c: [0, 2, 0], r0: 8, r1: 20, size: 0.35, color: "#b0c8ff" }}>
       <DotGrid x0={-14} x1={14} y0={0.01} y1={0.02} z={-8} gap={0.6} size={0.05} color="#1a2550" glowing />
@@ -62,7 +62,7 @@ const Picker: React.FC<SceneProps> = (p) => {
         );
       })}
       {/* the tall ones and banana */}
-      {[["sun", 0, "Sunlight", TECH.amber], ["because", -1.0 * (1 + 0.4 * spread), "Because", TECH.cyan]].map(([name, x, t, c]) => {
+      {!has("stop") && [["sun", 0, "Sunlight", TECH.amber], ["because", -2.0 * (1 + 0.4 * spread), "Because", TECH.cyan]].map(([name, x, t, c]) => {
         const hh = (H[name as string] ?? 3) * rise * (has("sun") ? (name === "sun" ? k("sun", 16) : k("because", 16)) || 0.05 : 1);
         const red = name === "because" && has("red") ? k("red", 12) : 0;
         return (
@@ -78,16 +78,16 @@ const Picker: React.FC<SceneProps> = (p) => {
       </group>
       {/* the stop tile */}
       {has("stop") && <group position={[1.2, 0, 0]}>
-        <mesh position={[0, 2.2 * k("stop", 20), 0]} material={glow("#ff5a5a", q(0.5 + 0.5 * k("flash", 8)))}><boxGeometry args={[0.14, 4.4 * k("stop", 20) + 0.01, 0.14]} /></mesh>
-        <Block size={[1.3, 0.6, 0.14]} radius={0.06} material={mat("glossy", "#300", { emissive: "#ff3030", emissiveIntensity: q(0.4 + 0.6 * k("flash", 8)) })} position={[0, 4.4 * k("stop", 20) + 0.45, 0]} />
+        <mesh position={[0, 1.3 * k("stop", 20), 0]} material={glow("#ff5a5a", q(0.5 + 0.5 * k("flash", 8)))}><boxGeometry args={[0.14, 2.6 * k("stop", 20) + 0.01, 0.14]} /></mesh>
+        <Tile text="STOP" color="#ff5a5a" w={1.6} position={[0, 2.6 * k("stop", 20) + 0.45, 0]} lit={0.5 + 0.5 * k("flash", 8)} />
       </group>}
       {/* the pointer */}
-      {pointer && <group position={[has("stop") ? 1.2 : 0, 5.6, 0.2]} rotation-z={ang + (has("jitter") && !landed ? 0.4 * Math.sin(f * 0.5) : 0)}>
+      {pointer && <group position={[has("stop") ? 1.2 : 0, 4.1, 0.2]} rotation-z={ang + (has("jitter") && !landed ? 0.4 * Math.sin(f * 0.5) : 0)}>
         <mesh position={[0, -0.4, 0]} rotation-z={Math.PI} material={glow(TECH.white, 0.95)}><coneGeometry args={[0.18, 0.6, 4]} /></mesh>
         <mesh material={glow(TECH.amber, 0.9)}><torusGeometry args={[0.3, 0.04, 6, 24]} /></mesh>
       </group>}
-      {has("again") && <mesh position={[-1.0, 5.2, 0.2]} rotation-z={Math.PI} material={glow(TECH.cyan, q(0.4 * k("again", 12)))}><coneGeometry args={[0.18, 0.6, 4]} /></mesh>}
-      {has("tick") && <mesh position={[0.9, 4.9, 0.2]} material={glow(TECH.lime, q(k("tick", 10)))}><torusGeometry args={[0.32, 0.06, 6, 24]} /></mesh>}
+      {has("again") && <mesh position={[-2.0, 3.7, 0.2]} rotation-z={Math.PI} material={glow(TECH.cyan, q(0.4 * k("again", 12)))}><coneGeometry args={[0.18, 0.6, 4]} /></mesh>}
+      {has("tick") && <mesh position={[0, 3.6, 0.6]} material={glow(TECH.lime, q(k("tick", 10)))}><torusGeometry args={[0.32, 0.06, 6, 24]} /></mesh>}
       {/* the sentence strip: the question, then the answer so far */}
       {strip && <group position={[0, 0, STRIP_Z + 2 * back]}>
         {[...Q_TOKENS.slice(0, 4), ...A_TOKENS.slice(0, Math.max(nAns, fly > 0.95 ? 1 : 0))].map((t, i) => (

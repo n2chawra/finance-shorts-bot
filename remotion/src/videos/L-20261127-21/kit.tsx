@@ -264,8 +264,8 @@ export const A_TOKENS = ["Sun", "light", " scatters", " off", " the", " air", ",
 export const Tile: React.FC<Group & { text: string; color?: string; w?: number; lit?: number; o?: number; textH?: number; start?: number }> = ({ text, color = TECH.cyan, w = 1, lit = 0.6, o = 1, textH = 0.34, start = 0, ...g }) => (
   <group {...g}>
     <Block size={[w, 0.62, 0.14]} radius={0.06} material={mat("glossy", "#141a2c", { roughness: 0.3 })} />
-    <mesh position={[0, 0, 0.072]} material={glow(color, q(0.18 + 0.5 * lit) * o)}><planeGeometry args={[w * 0.94, 0.56]} /></mesh>
-    {text.trim().length > 0 && <FigLabel3D fig={text.trim()} at={[0, 0, 0.09]} start={start} count={0} face="front" height={textH} color={TECH.white} plate={false} />}
+    <mesh position={[0, 0, 0.072]} material={mat("clay", color, { emissive: color, emissiveIntensity: q(0.15 + 0.35 * lit), transparent: o < 1, opacity: q(o) })}><planeGeometry args={[w * 0.94, 0.56]} /></mesh>
+    {text.trim().length > 0 && o > 0.3 && <FigLabel3D fig={text.trim()} at={[0, 0, 0.09]} start={start} count={0} face="front" height={textH} color="#14161c" plate={false} />}
   </group>
 );
 

@@ -87,7 +87,7 @@ const Tower: React.FC<SceneProps> = (p) => {
       ))}
       {has("top") && <mesh position={[0, (FLOORS - 1) * FH + 0.4, 0]} material={glow(TECH.white, q(0.2 + 0.5 * k("glow", 16)))}><boxGeometry args={[W * 0.9, 0.06, DP * 0.9]} /></mesh>}
       {/* the chip at the foot */}
-      {has("chip") && <ChipPackage position={[6.5, 0.05, 2]} scale={2.4 * q(k("chip", 14))} lid={false} lit={0.3 + 0.7 * Math.max(k("light", 14), drop)} seed="tw-chip" />}
+      {has("chip") && <ChipPackage position={[0, 0.05, 2.6]} scale={2.4 * q(k("chip", 14))} lid={false} lit={0.3 + 0.7 * Math.max(k("light", 14), drop)} seed="tw-chip" />}
       <Ask b={b} at={[0, 5, 2]} px={150} />
       <Words b={b} pos={pos} signAt={() => [-3, 1, DP / 2 + 0.3]} signH={0.55} />
     </Shot>

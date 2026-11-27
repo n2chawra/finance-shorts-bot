@@ -24,7 +24,7 @@ const Chip: React.FC<SceneProps> = (p) => {
   const anchors: Record<string, Anchor> = {
     board: { look: [0, 0.3, 0], dir: [0.3, 1.0, 1], d: 8 },
     die: { look: [0, 0.1, 0], dir: [0.15, 1.3, 0.8], d: 5 },
-    unit: { look: UNIT, dir: [0.2, 0.9, 1], d: 3 },
+    unit: { look: [UNIT[0], UNIT[1] - 0.1, UNIT[2] + 0.35], dir: [0.1, 1.5, 1], d: 3.6 },
     mem: { look: [2.05, 0.4, 0], dir: [0.6, 0.8, 1], d: 5 },
     links: { look: [6, 0.3, 0], dir: [0.15, 0.9, 1], d: 12 },
     text: { look: [0, 1.6, 2.6], dir: [0, 0.4, 1], d: 7 },
@@ -39,9 +39,9 @@ const Chip: React.FC<SceneProps> = (p) => {
       <DotGrid x0={-16} x1={26} y0={-1} y1={8} z={-6} gap={0.5} size={0.08} color="#2a6a80" glowing />
       <BigChip f={f} grid={grid} wave={wave} lit={lit} mem={memLit} hot={has("unit") || has("two") ? 7 * 14 + 9 : -1} />
       {/* the parameter count on a plate by the chip */}
-      {(has("plate") || has("fig") || has("count")) && <group position={[0, 0.05, 2.3]}>
-        <Block size={[3.4, 0.06, 0.9]} radius={0.03} preset="brushed" />
-        {b.fig.params && <FigLabel3D fig={b.fig.params} caption="parameters" at={[0, 0.06, 0]} start={at("fig", at("count", 0))} count={20} face="up" height={0.5} color={TECH.amber} plate={false} />}
+      {(has("plate") || has("fig") || has("count")) && <group position={[0, 0.05, -2.7]}>
+        <Block size={[3.4, 0.9, 0.12]} radius={0.03} preset="brushed" position={[0, 0.45, 0]} />
+        {b.fig.params && <FigLabel3D fig={b.fig.params} caption="parameters" at={[0, 1.4, 0.2]} start={at("fig", at("count", 0))} count={20} px={100} />}
       </group>}
       {/* parameter beads streaming from memory into the chip */}
       {(has("beads") || has("stream")) && f >= Math.min(at("beads"), at("stream")) && <>
@@ -57,7 +57,7 @@ const Chip: React.FC<SceneProps> = (p) => {
       </group>}
       {/* one maths unit in close-up: two numbers in, the sum bar grows */}
       {has("two") && <group position={UNIT}>
-        {[-1, 1].map((s) => <mesh key={s} position={[s * 0.6 * (1 - join), 0.35 * (1 - two) + 0.12, 0]} material={glow(s < 0 ? TECH.cyan : TECH.lime, 1)}><sphereGeometry args={[0.05, 12, 8]} /></mesh>)}
+        {[-1, 1].map((s) => <mesh key={s} position={[s * 0.25 * (1 - join), 0.3 * (1 - two) + 0.12, -0.1]} material={glow(s < 0 ? TECH.cyan : TECH.lime, 1)}><sphereGeometry args={[0.05, 12, 8]} /></mesh>)}
         {has("add") && <mesh position={[0, 0.1, 0]} material={glow(TECH.white, q(Math.max(0, 1 - (f - at("add")) / 14)))}><sphereGeometry args={[0.14, 12, 8]} /></mesh>}
         {has("total") && <mesh position={[0.32, 0.03 + 0.15 * k("total", 20), 0]} material={glow(TECH.amber, 0.9)}><boxGeometry args={[0.05, 0.3 * k("total", 20) + 0.01, 0.05]} /></mesh>}
       </group>}

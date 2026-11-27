@@ -268,5 +268,59 @@
       "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
       "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
     ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T06:59:05.314818+00:00",
+    "finishedAt": "2026-11-27T06:59:05.314818+00:00",
+    "notes": [
+      "[scene] Token tile labels unreadable (white text on pale pastel tiles): t_size 55.0s 'the', t_rare 70.0s 'sky', t_list 85.0s 'Why'/'the', tease1 100.0s 'is the sky blue' all washed out, v_order/tease2 130-145s labels under the number lists, l_attn/l_attn2/l_mlp 160-175s, k_append/k_repeat/k_stream 305-315s 'sky'/'is'. Fix: in the token tile code draw the word in dark ink (#14161c) on the pastel fill (or a saturated fill with white text), contrast >= 4.5:1, at every size.",
+      "[scene] k_example 285-300s and k_stop/turn/turn2 330-345s (Picker): 'Because' and 'banana' tags are white on light cyan/yellow and unreadable; the 'Sunlight' tag is cut off by the top edge at 290, 295, 330, 335, 345s and overlaps 'Because' at 290s; k_stop at 330s shows no visible 'stop' tile/label, only leftover Sunlight/Because tags. Fix: dark text on the tags, cap the tall stalks/camera so tags stay >= 60 px inside the top edge, offset Sunlight and Because so they never overlap, clear k_example's tags in k_stop and show the labelled 'stop' tile at the close shot.",
+      "[scene] t_rare 75.0s: the rare word tile ('Ray...') sits cut off at the bottom edge under the caption, its pieces and the 'one token'/'many tokens' labels are not visible, so the beat's point is lost; 70.0s is one pale tile on an empty bench. Fix: frame the bench medium-wide from above with the common word on one tile and the rare word split into its pieces mid-frame, labels readable above the caption band.",
+      "[scene] gpt3 35.0s: the 'the paper' sign runs off the top-left edge and into the 'Data: Brown et al. . OpenAI Help Center . Nov 2026' source line. Fix: place the sign on the paper/lectern inside the frame, below the source line.",
+      "[scene] c_count 215.0s: the '175B parameters' plate sits in the caption band; the caption 'them is used in' covers the figure. Fix: put the plate on the board's far edge or raise the camera so the plate is fully above the bottom 25% of the frame.",
+      "[scene] payoff 410.0s: the parameter-count plate is half off the bottom-left edge and under the caption 'cast by 175B numbers'. Fix: frame the plate fully inside the frame, above the caption band, on the 'by'/'numbers' moments.",
+      "[scene] c_units 230.0s: a big white glowing bead passes right behind the caption 'Each one multiplies two', making it unreadable. Fix: keep the bead path above the caption band or dim it under the captions.",
+      "[scene] v_near 125.0s: the 'cat' label leader runs off the top edge (label not visible); only 'dog' reads. Fix: keep both labels of each pair (cat/dog, Paris/London) inside the frame.",
+      "[scene] Near-empty frames: t_cut 50.0s (two poles and a bare wall, the tile cut off in the corner, the cut not shown), w_off 375.0s (a bare belt, no tiles dropping off, nothing else in frame), tease3 200.0s (an empty glass stack). Fix: aim each camera at the action of its moments (t_cut: the blade slicing the strip with tiles in frame; w_off: old tiles sliding off the window's back edge and falling; tease3: the stack with the chip rising into view).",
+      "[script] hook 0.0s (lessons 2 and 9): the first frame is a blank phone, no 'ChatGPT' app name and no question on screen; the subject is only in the voice. Fix: show the chat app header 'ChatGPT' and the 'Why is the sky blue?' bubble from frame 0 (labels.chatgpt at sec 0, question already typed on the start moment); the loop beat at 415s then returns into it."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T07:02:38.030845+00:00",
+    "finishedAt": "2026-11-27T07:20:18.360430+00:00",
+    "notes": [
+      "fingerprint: 656dde3a2557ce96.f7cd05c2166c282e",
+      "1.9 s with nothing new on screen in beat 'c_count' (at most 1.8 s): add an action on the phrase being said there",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T07:23:20.979163+00:00",
+    "finishedAt": "2026-11-27T07:40:07.987802+00:00",
+    "notes": [
+      "fingerprint: 5e53b47fd641c6da.f7cd05c2166c282e",
+      "423 s, night/circuit (preview only)",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T07:45:00.546245+00:00",
+    "finishedAt": "2026-11-27T08:02:25.152044+00:00",
+    "notes": [
+      "fingerprint: b9f8685db9c6c43c.134533fd7aec8575",
+      "423 s, night/circuit (preview only)",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
   }
 ]

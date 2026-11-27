@@ -52,8 +52,9 @@ const Phone: React.FC<SceneProps> = (p) => {
         <mesh position={[0, 0.216, 0]} rotation-x={-Math.PI / 2} material={mat("screen", "#060a14", { emissive: "#0d1a33", emissiveIntensity: 0.9 })}><planeGeometry args={[1.32, 2.86]} /></mesh>
         {/* the chat: a header, the question bubble, the answer bubble */}
         <mesh position={[0, 0.219, -1.25]} rotation-x={-Math.PI / 2} material={glow("#1d3b6e", 0.9)}><planeGeometry args={[1.32, 0.3]} /></mesh>
+        <group position={[0, 0.222, -1.25]} rotation-x={-Math.PI / 2}><FigLabel3D fig="ChatGPT" at={[0, 0, 0.01]} start={0} count={0} face="front" height={0.12} color={TECH.white} plate={false} /></group>
         <group position={[0.12, 0.222, -0.55 - 0.25 * sent]} rotation-x={-Math.PI / 2}>
-          <mesh material={glow(sent > 0.5 ? TECH.cyan : "#2f4c7a", q(0.55 + 0.35 * sent))}><planeGeometry args={[1.25, 0.34]} /></mesh>
+          <mesh material={mat("clay", sent > 0.5 ? "#7fdcff" : "#dfe8ff", { emissive: "#6f8fc0", emissiveIntensity: 0.25 })}><planeGeometry args={[1.25, 0.34]} /></mesh>
           <FigLabel3D fig={tx(question.slice(0, typed))} at={[0, 0, 0.01]} start={0} count={0} face="front" height={0.11} color={TECH.ink} plate={false} />
         </group>
         {shownA.length > 0 && (

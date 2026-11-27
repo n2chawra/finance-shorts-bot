@@ -49,8 +49,8 @@ const Vectors: React.FC<SceneProps> = (p) => {
     table: { look: [0, 1, -4], dir: [0.3, 0.6, 1], d: 12 },
     column: { look: [0, 2, 1.5], dir: [0.3, 0.25, 1], d: 6 },
     space: { look: [0, 2.6, 0], dir: [0.3, 0.3, 1], d: 12 },
-    pair: { look: [-1.15, 2.25, 1.1], dir: [0.1, 0.15, 1], d: 4.2 },
-    pair2: { look: [1.65, 2.95, 0.5], dir: [0.1, 0.15, 1], d: 4.2 },
+    pair: { look: [-1.0, 2.6, 1.1], dir: [0.1, 0.15, 1], d: 6 },
+    pair2: { look: [1.8, 3.3, 0.5], dir: [0.1, 0.15, 1], d: 6 },
     row: { look: [0, 1.8 + 2 * lift, 1.5], dir: [0.2, 0.3, 1], d: 9 },
   };
   const pos = (on: string): V3 => PAIRS[on] ?? (on === "column" ? [0.6, 3.5, 1.5] : on === "row" ? [-3, 3.2, 1.5] : [0, 3, -2]);
