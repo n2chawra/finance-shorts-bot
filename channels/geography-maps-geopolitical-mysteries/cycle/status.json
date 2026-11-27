@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-27T21:48:00.538994+00:00",
+  "generatedAt": "2026-11-27T23:35:47.509262+00:00",
   "cycle": 2,
   "running": "geo-claim-hook",
   "thresholds": {
@@ -7,7 +7,7 @@
     "revertPoints": -5,
     "confidence": 0.8
   },
-  "channelStayed14d": 0.563,
+  "channelStayed14d": 0.575,
   "cycleVideos": {
     "geo-flag-fill": [],
     "geo-claim-hook": [
@@ -44,7 +44,7 @@
         "side": "on",
         "publishAt": "2026-11-26T04:07:00.000Z",
         "counted": false,
-        "value": null,
+        "value": 0.633,
         "views": 1130
       },
       {
@@ -53,7 +53,7 @@
         "side": "on",
         "publishAt": "2026-11-25T15:07:00.000Z",
         "counted": false,
-        "value": null,
+        "value": 0.649,
         "views": 1068
       },
       {
@@ -62,7 +62,7 @@
         "side": "off",
         "publishAt": "2026-11-25T04:07:00.000Z",
         "counted": false,
-        "value": 0.488,
+        "value": 0.493,
         "views": 1135
       }
     ]
@@ -84,18 +84,18 @@
       "off": 3
     },
     "counted": {
-      "on": 0,
+      "on": 1,
       "off": 1
     },
     "value": {
-      "on": null,
-      "off": 0.488
+      "on": 0.649,
+      "off": 0.493
     },
-    "points": null,
-    "pOnBetter": 0.5,
+    "points": 15.6,
+    "pOnBetter": 1.0,
     "days": 3,
     "verdict": "wait",
-    "why": "0 of 8 Shorts a side have two days of data; day 3 of 7",
+    "why": "1 of 8 Shorts a side have two days of data; day 3 of 7",
     "videos": [
       {
         "id": "v-20261127-12",
@@ -130,7 +130,7 @@
         "side": "on",
         "publishAt": "2026-11-26T04:07:00.000Z",
         "counted": false,
-        "value": null,
+        "value": 0.633,
         "views": 1130
       },
       {
@@ -139,7 +139,7 @@
         "side": "on",
         "publishAt": "2026-11-25T15:07:00.000Z",
         "counted": false,
-        "value": null,
+        "value": 0.649,
         "views": 1068
       },
       {
@@ -148,7 +148,7 @@
         "side": "off",
         "publishAt": "2026-11-25T04:07:00.000Z",
         "counted": false,
-        "value": 0.488,
+        "value": 0.493,
         "views": 1135
       }
     ]
