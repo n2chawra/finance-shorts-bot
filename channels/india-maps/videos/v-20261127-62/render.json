@@ -1,0 +1,117 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 61975,
+  "duration_sec": 35,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "tanpura",
+    "key": "E",
+    "bpm": 104,
+    "look": {
+      "stage": "studio",
+      "header": "ribbon",
+      "holder": "blackboard",
+      "entrance": "stamp"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "सिक्किम का कभी अपना राजा था। फिर ये भारत का स्टेट कैसे बना?",
+        "start": 0.3,
+        "seconds": 2.95,
+        "window": 3.63,
+        "fill": 0.813
+      },
+      {
+        "scene": "promise",
+        "text": "नेपाल और भूटान के बीच, यहाँ के राजा को चोग्याल कहते थे, और इसका अपना झंडा था।",
+        "start": 3.93,
+        "seconds": 4.26,
+        "window": 4.93,
+        "fill": 0.864
+      },
+      {
+        "scene": "vote",
+        "text": "फिर 1975 में, लोगों से पूछा गया: राजा का राज ख़त्म हो, और सिक्किम भारत का हिस्सा बने?",
+        "start": 8.87,
+        "seconds": 5.01,
+        "window": 5.67,
+        "fill": 0.884
+      },
+      {
+        "scene": "count",
+        "text": "गिनती शुरू हुई। पहले देखिए, ना कहने वाले कितने थे?",
+        "start": 14.53,
+        "seconds": 2.84,
+        "window": 3.5,
+        "fill": 0.811
+      },
+      {
+        "scene": "turn",
+        "text": "ना में पड़े सिर्फ़ 1,496 वोट। और हाँ में?",
+        "start": 18.03,
+        "seconds": 2.96,
+        "window": 3.6,
+        "fill": 0.822
+      },
+      {
+        "scene": "payoff",
+        "text": "हाँ में पड़े 59,637 वोट, यानी 97.55%, लगभग सारे वोट।",
+        "start": 21.63,
+        "seconds": 5.81,
+        "window": 6.47,
+        "fill": 0.898
+      },
+      {
+        "scene": "join",
+        "text": "और उसी साल, सिक्किम भारत का नया स्टेट बन गया।",
+        "start": 28.1,
+        "seconds": 2.26,
+        "window": 2.9,
+        "fill": 0.779
+      },
+      {
+        "scene": "loop",
+        "text": "तो अगली बार नक्शे पर ये छोटा सा स्टेट देखें, तो याद रखिए,",
+        "start": 31.0,
+        "seconds": 2.95,
+        "window": 3.6,
+        "fill": 0.819
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.1,
+    "lufs": -13.9,
+    "music_under_voice_db": 32.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.233,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

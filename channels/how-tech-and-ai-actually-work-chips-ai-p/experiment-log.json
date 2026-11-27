@@ -17,6 +17,15 @@
       "proposal": "owner note cmwn0wo5y0001ju09tfzrmzi1",
       "adoptedAt": "2026-11-19",
       "note": "Made the default without a verdict (owner, 2026-11-19: 'The feedback I have goes straight away, don't add it as a test')."
+    },
+    {
+      "id": "tech-long-device-note-blind",
+      "area": "pipeline",
+      "format": "long",
+      "status": "adopted",
+      "startedAt": "2026-11-26",
+      "evidence": "renderer/craft.py device_problems() judges a directed beat by its params.component and notes one component on screen over 60 s in a row.",
+      "proposal": "tech-long-device-note-blind"
     }
   ]
 }

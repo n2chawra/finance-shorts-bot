@@ -130,6 +130,19 @@ def test_long_videos_mix_their_devices():
     assert any("composed beats" in p for p in craft.device_problems(tl(["type", "build", "type", "case", "type", "build", "type", "stats"])))
 
 
+def test_directed_long_videos_are_judged_by_component():
+    """Every beat is directed (owner, 2026-11-13): the scene name said 'only 1 kind, 4 in a row' on every long
+    video (proposal tech-long-device-note-blind). A component is the device; only a long run of one repeats."""
+    def tl(comps, secs=8):
+        return {"format": "long", "fps": 30, "beats": [{"id": f"b{i}", "scene": "directed", "frames": secs * 30,
+                                                        "params": {"component": c}} for i, c in enumerate(comps)]}
+    varied = ["Fab", "Plasma", "Plasma", "Plasma", "Plasma", "Mirrors", "Mask", "Wafer", "Route", "Fab"]
+    assert craft.device_problems(tl(varied)) == []   # four Plasma beats (32 s) in a row are not a repeat
+    long_run = craft.device_problems(tl(["Fab", "Route"] + ["Mirrors"] * 9 + ["Mask", "Wafer", "Route", "Fab"]))
+    assert any("Mirrors draws 72 s in a row" in p for p in long_run)
+    assert any("composed beats" in p for p in craft.device_problems(tl(["Sky"] * 5 + ["Sea", "Fab", "Mask"], secs=4)))
+
+
 def _board_tl(dos_per_beat: list[list[str]]) -> dict:
     return {"fps": 30, "beats": [{"id": f"b{i}", "scene": "board", "params": {"actions": [{"do": d} for d in dos]}}
                                  for i, dos in enumerate(dos_per_beat)]}

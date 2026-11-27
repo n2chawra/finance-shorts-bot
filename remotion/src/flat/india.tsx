@@ -34,11 +34,20 @@ import data from "./data/india.json";
 type Props = { name: string; hi: string; kind?: "state" | "ut"; code?: string };
 type Shape = Feature<Geometry, Props>;
 const DATA = data as unknown as { outline: Shape; states: Shape[]; neighbours: Shape[]; adjacent: Record<string, string[]> };
+// Kerala is officially Keralam since 25 Aug 2026 (The Kerala (Alteration of Name) Act, 2026): set here too, so
+// rebuilding data/india.json from Natural Earth (scripts/build_india_map.py) never brings the old name back.
+for (const st of DATA.states) if (st.properties.name === "Kerala") (st.properties as { hi: string }).hi = "केरलम";
 
 /** Every state and UT by its English name ("Uttar Pradesh", "Ladakh", "Dadra and Nagar Haveli and Daman and Diu"). */
 export const INDIA_STATES: readonly string[] = DATA.states.map((s) => s.properties.name);
-/** A state's or UT's name in Devanagari (Natural Earth's `name_hi`). */
-export const stateHi = (name: string): string => DATA.states.find((s) => s.properties.name === name)?.properties.hi ?? name;
+/** A state's new official name, for code that names it in English (owner research, 2026-11-25: Kerala is
+ * officially Keralam since 25 Aug 2026). The data keeps the old key so older videos still resolve. */
+export const STATE_ALIASES: Readonly<Record<string, string>> = { keralam: "Kerala" };
+const keyOf = (name: string): string => STATE_ALIASES[name.toLowerCase()] ?? name;
+/** The name a state goes by today, in English ("Kerala" -> "Keralam"). */
+export const stateNow = (name: string): string => Object.entries(STATE_ALIASES).find(([, k]) => k === name)?.[0].replace(/^./, (c) => c.toUpperCase()) ?? name;
+/** A state's or UT's name in Devanagari (Natural Earth's `name_hi`; Kerala as केरलम, its name since 2026). */
+export const stateHi = (name: string): string => DATA.states.find((s) => s.properties.name === keyOf(name))?.properties.hi ?? name;
 /** A colour for each state from `palette`, never the same as a state it touches (greedy, biggest
  * neighbourhoods first; deterministic). `offset` rotates the palette so videos don't all look alike. */
 export function stateColours(palette: string[], names: readonly string[] = INDIA_STATES, offset = 0): Record<string, string> {
@@ -55,7 +64,7 @@ export function stateColours(palette: string[], names: readonly string[] = INDIA
   }
   return out;
 }
-const byName = (name: string) => DATA.states.find((s) => s.properties.name.toLowerCase() === name.toLowerCase());
+const byName = (name: string) => DATA.states.find((s) => s.properties.name.toLowerCase() === keyOf(name).toLowerCase());
 
 /** The relief image's extent (degrees): 60 px a degree. */
 const RELIEF = { lon0: 50, lon1: 115, lat0: -15, lat1: 54, file: "maps/south-asia-relief.jpg" };
@@ -140,7 +149,7 @@ export const IndiaMap: React.FC<{
   const outline = path(DATA.outline) ?? undefined;
   const scale = proj.scale() / 1500;              // line weights grow a little as the camera closes in
   const sw = Math.max(1.5, Math.min(4, 2.2 * scale));
-  const fxOf = (name: string) => states[name];
+  const fxOf = (name: string) => states[name] ?? states[stateNow(name)];
   const painted = DATA.states.filter((s) => fxOf(s.properties.name));
   return (
     <MapCtx.Provider value={{ proj, path }}><FrameSize.Provider value={{ w, h }}>
@@ -396,6 +405,118 @@ export const BorderLine: React.FC<{ name: string; k: number; color?: string; wid
           <path d={d} fill="none" stroke={color} strokeWidth={width} strokeLinejoin="round" strokeLinecap="round" />
         </g>
       </g>
+    </g>
+  );
+};
+
+/** India's land neighbours: a coast is India's outline away from these. */
+const LAND_NEIGHBOURS = ["China", "Bhutan", "Myanmar", "Bangladesh", "Afghanistan", "Nepal", "Pakistan"];
+
+/** The sea coast of a state (or of all of "India"): the stretch of its border that runs along India's official outline
+ * and touches no land neighbour, as a bright line with a soft glow (2026-11-26, for v-20261126-61). `k` 0 -> 1 reveals
+ * it: with `pivot` ([lon, lat]) as a sweep round that point from screen angle `a0` to `a1` (degrees, 0 = east,
+ * 90 = south: Gujarat to Bengal round the peninsula is a0 190, a1 -15), else drawn on along the border. */
+export const CoastLine: React.FC<{ name?: string; k: number; color?: string; width?: number; pivot?: [number, number]; a0?: number; a1?: number }> = ({
+  name = "India", k, color = "#5fd3ff", width = 10, pivot, a0 = 190, a1 = -15,
+}) => {
+  const ctx = React.useContext(MapCtx);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  const shape = name.toLowerCase() === "india" ? DATA.outline : byName(name);
+  if (!ctx || !shape || k <= 0) return null;
+  const d = ctx.path(shape) ?? "", outline = ctx.path(DATA.outline) ?? "";
+  const land = DATA.neighbours.filter((n) => LAND_NEIGHBOURS.includes(n.properties.name));
+  const q = clamp(k);
+  const big = { x: -4000, y: -4000, width: 9000, height: 9000 };
+  let wedge = "";
+  if (pivot) {
+    const c = ctx.proj(pivot) as [number, number];
+    const R = 6000, steps = 48, a = (v: number) => (v * Math.PI) / 180;
+    const pts = Array.from({ length: steps + 1 }, (_, i) => a0 + ((a1 - a0) * q * i) / steps).map((v) => `${c[0] + R * Math.cos(a(v))} ${c[1] + R * Math.sin(a(v))}`);
+    wedge = `M ${c[0]} ${c[1]} L ${pts.join(" L ")} Z`;
+  }
+  return (
+    <g data-probe="skip">
+      <defs>
+        <mask id={`c${uid}`} maskUnits="userSpaceOnUse" {...big}>
+          <path d={outline} fill="none" stroke="#fff" strokeWidth={width * 3} strokeLinejoin="round" />
+          {land.map((n) => <path key={n.properties.name} d={ctx.path(n) ?? ""} fill="#000" stroke="#000" strokeWidth={width * 4} />)}
+        </mask>
+        {pivot ? <mask id={`r${uid}`} maskUnits="userSpaceOnUse" {...big}><path d={wedge} fill="#fff" /></mask> : null}
+      </defs>
+      <g mask={`url(#c${uid})`}>
+        <g mask={pivot && q < 1 ? `url(#r${uid})` : undefined}>
+          <path d={d} fill="none" stroke={color} strokeOpacity={0.4} strokeWidth={width * 2.6} strokeLinejoin="round" strokeLinecap="round"
+            pathLength={pivot ? undefined : 1} strokeDasharray={!pivot && q < 1 ? `${q} 1` : undefined} />
+          <path d={d} fill="none" stroke={color} strokeWidth={width} strokeLinejoin="round" strokeLinecap="round"
+            pathLength={pivot ? undefined : 1} strokeDasharray={!pivot && q < 1 ? `${q} 1` : undefined} />
+        </g>
+      </g>
+    </g>
+  );
+};
+
+/** Surf along India's sea coast (2026-11-26, for v-20261126-61): rings of foam that roll in from the sea onto the
+ * shore, only on the sea side and never along a land border. `t` is the story frame (`m.t`); `k` fades it in;
+ * `period` frames per wave; `reach` how far out (px) a wave starts. */
+export const CoastSurf: React.FC<{ t: number; k?: number; period?: number; reach?: number; color?: string }> = ({ t, k = 1, period = 54, reach = 70, color = "#e9f8ff" }) => {
+  const ctx = React.useContext(MapCtx);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  if (!ctx || k <= 0) return null;
+  const outline = ctx.path(DATA.outline) ?? "";
+  const land = DATA.neighbours.filter((n) => LAND_NEIGHBOURS.includes(n.properties.name));
+  const big = { x: -4000, y: -4000, width: 9000, height: 9000 };
+  return (
+    <g data-probe="skip" opacity={clamp(k)}>
+      <defs>
+        <mask id={`s${uid}`} maskUnits="userSpaceOnUse" {...big}>
+          <rect {...big} fill="#fff" />
+          <path d={outline} fill="#000" />
+          {land.map((n) => <path key={n.properties.name} d={ctx.path(n) ?? ""} fill="#000" stroke="#000" strokeWidth={reach * 2.4} />)}
+        </mask>
+      </defs>
+      <g mask={`url(#s${uid})`}>
+        {[0, 1, 2].map((i) => {
+          const f = (((t / period + i / 3) % 1) + 1) % 1;      // 0 far out -> 1 on the shore
+          const r = (1 - f) * reach * 2 + 6;
+          return <path key={i} d={outline} fill="none" stroke={color} strokeWidth={r} strokeOpacity={0.1 + 0.22 * f} strokeLinejoin="round" />;
+        })}
+        <path d={outline} fill="none" stroke={color} strokeWidth={9 + 3 * Math.sin(t / 9)} strokeOpacity={0.55} strokeLinejoin="round" />
+      </g>
+    </g>
+  );
+};
+
+/** Ripples on the open sea round India (2026-11-26, for v-20261126-61): small wave crests on a seeded grid across the
+ * frame, only outside India's outline, drifting and breathing with `t` (`m.t`), so the sea is never a flat sheet.
+ * `k` fades them in; `gap` is the grid step in px; `top` the highest y they reach. */
+export const SeaRipples: React.FC<{ t: number; k?: number; gap?: number; top?: number; color?: string }> = ({ t, k = 1, gap = 84, top = 0, color = "#cfeeff" }) => {
+  const ctx = React.useContext(MapCtx);
+  const frame = React.useContext(FrameSize);
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  if (!ctx || k <= 0) return null;
+  const outline = ctx.path(DATA.outline) ?? "";
+  const land = DATA.neighbours.filter((n) => LAND_NEIGHBOURS.includes(n.properties.name) || n.properties.name === "Sri Lanka");
+  const crests: React.ReactNode[] = [];
+  let i = 0;
+  for (let y = top + gap / 2; y < frame.h + gap; y += gap) {
+    for (let x = gap / 2; x < frame.w + gap; x += gap) {
+      i += 1;
+      const j = Math.sin(i * 12.9898) * 43758.5453, r = j - Math.floor(j);            // a fixed jitter per crest
+      const cx = x + (r - 0.5) * gap * 0.6 + Math.sin((t + i * 7) / 40) * 8, cy = y + ((r * 7) % 1 - 0.5) * gap * 0.5;
+      const o = 0.22 + 0.18 * Math.sin((t + i * 11) / 22);
+      crests.push(<path key={i} d={`M ${cx - 26} ${cy} Q ${cx - 13} ${cy - 12} ${cx} ${cy} Q ${cx + 13} ${cy + 12} ${cx + 26} ${cy}`} fill="none" stroke={color} strokeWidth={5} strokeLinecap="round" opacity={o} />);
+    }
+  }
+  return (
+    <g data-probe="skip" opacity={clamp(k)}>
+      <defs>
+        <mask id={`r${uid}`} maskUnits="userSpaceOnUse" x={-200} y={-200} width={frame.w + 400} height={frame.h + 400}>
+          <rect x={-200} y={-200} width={frame.w + 400} height={frame.h + 400} fill="#fff" />
+          <path d={outline} fill="#000" stroke="#000" strokeWidth={30} />
+          {land.map((n) => <path key={n.properties.name} d={ctx.path(n) ?? ""} fill="#000" />)}
+        </mask>
+      </defs>
+      <g mask={`url(#r${uid})`}>{crests}</g>
     </g>
   );
 };

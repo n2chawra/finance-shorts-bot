@@ -1,0 +1,111 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 33631,
+  "duration_sec": 50,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "brace",
+    "key": "D",
+    "bpm": 66
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Titan's last message was routine. Then it went silent.",
+        "start": 0.3,
+        "seconds": 3.76,
+        "window": 4.4,
+        "fill": 0.855
+      },
+      {
+        "scene": "deep",
+        "text": "It was 3,363 metres down, near the Titanic. So what happened?",
+        "start": 4.7,
+        "seconds": 5.73,
+        "window": 6.4,
+        "fill": 0.895
+      },
+      {
+        "scene": "ship",
+        "text": "On the ship, the crew typed a reply. Then another. No answer.",
+        "start": 11.1,
+        "seconds": 4.08,
+        "window": 4.73,
+        "fill": 0.863
+      },
+      {
+        "scene": "inch",
+        "text": "At the Titanic's depth, the sea presses 5,554.5 pounds on every square inch.",
+        "start": 15.83,
+        "seconds": 7.21,
+        "window": 7.87,
+        "fill": 0.916
+      },
+      {
+        "scene": "hull",
+        "text": "Holding it back: a carbon fibre tube, 5 inches thick.",
+        "start": 23.7,
+        "seconds": 3.89,
+        "window": 4.53,
+        "fill": 0.859
+      },
+      {
+        "scene": "wall",
+        "text": "But investigators found that wall was likely already damaged, its layers coming apart.",
+        "start": 28.23,
+        "seconds": 5.57,
+        "window": 6.23,
+        "fill": 0.894
+      },
+      {
+        "scene": "payoff",
+        "text": "7 seconds after that message, the hull imploded. All 5 aboard died.",
+        "start": 36.8,
+        "seconds": 4.97,
+        "window": 5.63,
+        "fill": 0.883
+      },
+      {
+        "scene": "loop",
+        "text": "The company or the rules: who should have stopped Titan? Full story on our channel, from its last message.",
+        "start": 42.43,
+        "seconds": 6.36,
+        "window": 7.0,
+        "fill": 0.909
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.4,
+    "lufs": -16.2,
+    "music_under_voice_db": 22.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 6.517,
+    "still_share": 0.04,
+    "longest_still_sec": 2.0
+  },
+  "liveliness_problems": []
+}

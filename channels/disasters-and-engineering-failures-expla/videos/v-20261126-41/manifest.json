@@ -1,0 +1,344 @@
+{
+  "id": "v-20261126-41",
+  "createdAt": "2026-11-26T15:46:43.736127+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Colgan Air near Buffalo, February 2009: the stall warning shook the control column, the captain pulled back instead of pushing, and the airliner rolled over in under half a minute",
+    "category": "aviation",
+    "reach": "global",
+    "feed_id": "2026-11-20-colgan-3407"
+  },
+  "title": "Colgan Air: What Happened After the Stall Warning?",
+  "description": "Colgan Air's control column shook near Buffalo. What did the captain do next?\nWe rebuild the last half minute of the flight in 3D from the NTSB's final report: the stick shaker, the trained answer, the pull the other way, and the roll that followed.\nThe full minute-by-minute story is on the channel.\nSources: NTSB (Feb 2010).\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.",
+  "hashtags": [
+    "#Shorts",
+    "#ColganAir",
+    "#AirCrash",
+    "#Aviation",
+    "#NTSB"
+  ],
+  "hookStyle": "shock_number",
+  "cta": "Push or pull: what would your hands have done? Comment",
+  "seed": 34071,
+  "style": {
+    "palette": "night",
+    "genre": "undertow",
+    "key": "A",
+    "bpm": 56,
+    "voice": "bm_lewis",
+    "arms": {
+      "length": "30-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Colgan Air's column shook at 131 knots.",
+        "start": 0.3,
+        "seconds": 3.4,
+        "window": 4.07,
+        "fill": 0.835
+      },
+      {
+        "scene": "wing",
+        "text": "Near Buffalo, that shaking was the stall warning. It fires before a wing stalls. So what should a pilot do?",
+        "start": 4.37,
+        "seconds": 7.12,
+        "window": 7.77,
+        "fill": 0.916
+      },
+      {
+        "scene": "answer",
+        "text": "Raise a wing's nose too steeply, and the air tears off its top. The trained answer: push the nose down.",
+        "start": 12.13,
+        "seconds": 6.89,
+        "window": 7.53,
+        "fill": 0.915
+      },
+      {
+        "scene": "pull",
+        "text": "The captain pulled his column back.",
+        "start": 19.67,
+        "seconds": 1.92,
+        "window": 2.57,
+        "fill": 0.747
+      },
+      {
+        "scene": "roll",
+        "text": "The nose rose, and the left wing dropped to 45 degrees. Then it whipped right, to 105.",
+        "start": 24.57,
+        "seconds": 6.74,
+        "window": 7.33,
+        "fill": 0.92
+      },
+      {
+        "scene": "payoff",
+        "text": "In under half a minute, it came down on a house. All 49 people aboard were killed, and 1 on the ground.",
+        "start": 31.9,
+        "seconds": 6.92,
+        "window": 7.57,
+        "fill": 0.914
+      },
+      {
+        "scene": "loop",
+        "text": "Startle or training: why did he pull? Full story on our channel. It started when",
+        "start": 39.47,
+        "seconds": 5.2,
+        "window": 5.87,
+        "fill": 0.886
+      }
+    ]
+  },
+  "durationSec": 46,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.2,
+    "lufs": -16.0,
+    "music_under_voice_db": 22.6
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_lewis",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: 'wing' now says the shaker fires before a wing stalls, with the wing flying normally and no ice or lift loss shown, which matches NTSB AAR-10/01 ('not close to stalling', minimal icing effect). 'answer' now describes angle of attack. All 7 facts confirmed on the NTSB AAR-10/01 PDF (131 kt, 45 deg L / 105 deg R, 49 aboard + 1 on the ground, 2216:27 to 2216:54, a house in Clarence Center). Disclaimer is in the description."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after the scene fixes, 1.5 s stills: the pull beat shows 131 in the airspeed box, TRAINED: PUSH is on its own chip and struck, and PULLED is clear of both STALL lights. The payoff has fire engines and a firefighter in the darker street with the glow. COLGAN AIR is pinned on the plane at 6 s. layout_problems are empty, audio is -1.0/-18.2 dB, it runs 46 s and the loop works.",
+        "fingerprint: 57dffb3a679f95e7.1f87620326518f8a"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-26T14:50:40.362312+00:00",
+      "finishedAt": "2026-11-26T14:50:40.362312+00:00",
+      "notes": [
+        "story 'promo_failure_moment' was told in the last 1 videos",
+        "music genre 'brace' was used by the previous video"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T14:50:45.750452+00:00",
+      "finishedAt": "2026-11-26T14:50:45.750452+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T14:55:27.941773+00:00",
+      "finishedAt": "2026-11-26T14:55:27.941773+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T14:58:02.402095+00:00",
+      "finishedAt": "2026-11-26T14:58:02.402095+00:00",
+      "notes": [
+        "Beat 'wing': 'that shaking was the stall warning: the wings were losing their lift' is contradicted by NTSB AAR-10/01, which says that when the shaker fired at 131 kt 'The airplane was not close to stalling at the time' (the ref-speeds switch had raised the warning ~15 kt). The wing stalled only after the captain's pull (probable cause: 'the captain's inappropriate response to the activation of the stick shaker, which led to an aerodynamic stall'). Rewrite, e.g. 'that shaking was the stall warning: it fires before a wing stalls.' Note the payoff of the Short depends on this: the pull caused the stall.",
+        "Beat 'wing' picture: 'the wing's top skin glows amber, ice crusting its front edge' with LIFT RUNNING OUT implies ice was stalling the wing. NTSB concludes the ice caused 'minimal aircraft performance degradation' that 'did not affect the flight crew's ability to fly and control the airplane'. Drop the ice crust and the lift-running-out glow/tag from this beat (keep the red stall glow for the 'stall' beat after the pull).",
+        "Verified, OK: all 7 facts confirmed on the NTSB AAR-10/01 PDF (ntsb.gov, opened and text-extracted): Feb 12 2009; shaker at 131 kt; 45 deg left wing down then 105 deg right wing down; 2 pilots + 2 FAs + 45 passengers killed (49) and one on the ground; struck a single-family home in Clarence Center; shaker 2216:27, CVR end 2216:54 (under half a minute). Disclaimer present in description. Topic verify item (Beverly Eckert) is not used in this Short. Minor: 'Tilt a wing too steeply' reads like bank; 'Raise a wing's nose too steeply' matches the AoA diagram better."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-26T14:57:19.521601+00:00",
+      "finishedAt": "2026-11-26T14:59:39.620156+00:00",
+      "notes": [
+        "fingerprint: 016ed482eb71eb4d.b6df80b6762ba17d",
+        "text 'AIR' at 17.1 s runs outside the frame",
+        "text 'ANGLE OF ATTACK' at 17.1 s runs outside the frame",
+        "text 'STALL' at 21.0 s runs outside the frame",
+        "text 'TRAINED: PUSH' at 21.0 s runs outside the frame",
+        "the hook runs 4.6 s; keep it to 4 s or less",
+        "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 42% of the video; between 50% and 85%",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:00:06.478872+00:00",
+      "finishedAt": "2026-11-26T15:00:06.478872+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:00:51.890925+00:00",
+      "finishedAt": "2026-11-26T15:00:51.890925+00:00",
+      "notes": [
+        "Re-review after fixes: 'wing' now says the shaker fires before a wing stalls, with the wing flying normally and no ice or lift loss shown, which matches NTSB AAR-10/01 ('not close to stalling', minimal icing effect). 'answer' now describes angle of attack. All 7 facts confirmed on the NTSB AAR-10/01 PDF (131 kt, 45 deg L / 105 deg R, 49 aboard + 1 on the ground, 2216:27 to 2216:54, a house in Clarence Center). Disclaimer is in the description."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:00:43.356572+00:00",
+      "finishedAt": "2026-11-26T15:02:31.168553+00:00",
+      "notes": [
+        "fingerprint: 883d428913913494.c308d49c463da943",
+        "46 s, night/undertow (preview only)",
+        "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 42% of the video; between 50% and 85%",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:03:18.605507+00:00",
+      "finishedAt": "2026-11-26T15:05:00.449278+00:00",
+      "notes": [
+        "fingerprint: 694330a88a65d2ba.df370085d576904e",
+        "46 s, night/undertow (preview only)",
+        "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 42% of the video; between 50% and 85%",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T15:08:37.079663+00:00",
+      "finishedAt": "2026-11-26T15:08:37.079663+00:00",
+      "notes": [
+        "[scene] Cockpit pull mode, beat 'pull' (19.5-22 s): the airspeed box under KNOTS is an empty black box with a red outline. The figure (131, shown in the hook) is gone, so the label has no value. Keep {speed} drawn in the box (red) while it flashes.",
+        "[scene] Cockpit pull mode, beat 'pull' (19.5-21 s): the TRAINED: PUSH tag is drawn across the attitude display and runs onto the right gauge panel, the red strike line goes through its letters (the P is hidden), and the PULLED stamp covers the right STALL light (reads 'ALL'). Put the tag and stamp on clear dash space above the instruments and strike only the green arrow.",
+        "[scene] payoff beat (33-39 s, 3D town): the moments promise the street with fire engines' lights and firefighters walking toward the glow (lesson 12), but no still shows any. At 37.5-39 s the lower half is one flat, unlit grey box house, and the crash is a flat orange disc behind it. At 33-34.5 s the town is tiny cubes on a white plane. This breaks lesson 5 (realistic 3D, never grey boxes) and is weaker than the best Short v-20261122-41's lit riverfront. Show the street, the engines and the glow between real-looking houses.",
+        "[script] lesson 14 (a named company shows its real mark): Colgan Air is named in the hook and title, but no frame shows its logo or livery. The airliner is a generic white and blue plane. Fetch a freely licensed Colgan Air or Continental Connection mark (python -m generator.images fetch) for the hook or the tail, or paint the name on the fuselage."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:09:51.967156+00:00",
+      "finishedAt": "2026-11-26T15:11:36.118675+00:00",
+      "notes": [
+        "fingerprint: 57dffb3a679f95e7.d4f058841e3a6e62",
+        "46 s, night/undertow (preview only)",
+        "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 42% of the video; between 50% and 85%",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:12:02.361175+00:00",
+      "finishedAt": "2026-11-26T15:13:49.102047+00:00",
+      "notes": [
+        "fingerprint: 57dffb3a679f95e7.1f87620326518f8a",
+        "46 s, night/undertow (preview only)",
+        "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 42% of the video; between 50% and 85%",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:16:39.314181+00:00",
+      "finishedAt": "2026-11-26T15:16:39.314181+00:00",
+      "notes": [
+        "Re-review after the scene fixes, 1.5 s stills: the pull beat shows 131 in the airspeed box, TRAINED: PUSH is on its own chip and struck, and PULLED is clear of both STALL lights. The payoff has fire engines and a firefighter in the darker street with the glow. COLGAN AIR is pinned on the plane at 6 s. layout_problems are empty, audio is -1.0/-18.2 dB, it runs 46 s and the loop works.",
+        "fingerprint: 57dffb3a679f95e7.1f87620326518f8a"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:16:49.281954+00:00",
+      "finishedAt": "2026-11-26T15:46:32.982193+00:00",
+      "notes": [
+        "46 s, night/undertow, peak -1.0 dB, mean -18.2 dB",
+        "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the turn starts at 42% of the video; between 50% and 85%",
+        "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video mKPO7QpA_38 is one: {\"id\": \"mKPO7QpA_38\", \"views\": 10798785, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-26T15:46:43.736381+00:00",
+      "finishedAt": "2026-11-26T15:46:43.736381+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261126-41",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261126-41"
+  },
+  "promoOf": "L-20261126-41"
+}

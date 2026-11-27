@@ -1,0 +1,945 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 60418,
+ "story": "product_craze_short",
+ "shape": "timeline",
+ "currency": "USD",
+ "style": {
+  "palette": "ocean",
+  "genre": "ledger",
+  "key": "C",
+  "bpm": 78
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "secret",
+ "cta": "Ugly or genius: which one is the clog in your closet? Comment",
+ "feed_id": "2026-11-21-crocs-185m-short",
+ "facts": [
+  {
+   "label": "Crocs' revenue in 2007",
+   "value": 847.4,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2007-12-31",
+   "source": "Crocs",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001334036/000104746909002818/a2190961z10-k.htm"
+  },
+  {
+   "label": "Crocs' revenue in 2008",
+   "value": 721.6,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2008-12-31",
+   "source": "Crocs",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001334036/000104746909002818/a2190961z10-k.htm"
+  },
+  {
+   "label": "Crocs' loss in 2008",
+   "value": 185.1,
+   "unit": "money_million",
+   "currency": "USD",
+   "as_of": "2008-12-31",
+   "source": "Crocs",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001334036/000104746909002818/a2190961z10-k.htm"
+  },
+  {
+   "label": "Crocs employees at the end of 2008",
+   "value": 3700,
+   "unit": "count",
+   "as_of": "2008-12-31",
+   "source": "Crocs",
+   "url": "https://www.sec.gov/Archives/edgar/data/0001334036/000104746909002818/a2190961z10-k.htm"
+  },
+  {
+   "label": "Crocs Inc.'s revenue in 2025 (Crocs and HeyDude brands), more than",
+   "value": 4,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Crocs Inc.",
+   "url": "https://investors.crocs.com/news-and-events/press-releases/press-release-details/2026/Crocs-Inc--Reports-Fourth-Quarter-and-Full-Year-2025-Results-Issues-First-Quarter-and-Full-Year-2026-Outlook/"
+  },
+  {
+   "label": "Crocs brand revenue in 2025",
+   "value": 3.33,
+   "unit": "money_billion",
+   "currency": "USD",
+   "as_of": "2025-12-31",
+   "source": "Crocs Inc.",
+   "url": "https://investors.crocs.com/news-and-events/press-releases/press-release-details/2026/Crocs-Inc--Reports-Fourth-Quarter-and-Full-Year-2025-Results-Issues-First-Quarter-and-Full-Year-2026-Outlook/"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "stores",
+  "sec": 0.8,
+  "words": "Crocs *came back*",
+  "angle": "story",
+  "unique": "Crocs covers show one clog; ours shows a shop shelf of them"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Crocs' own auditors once doubted the company would survive.",
+   "events": {
+    "auditors": {
+     "word": "auditors"
+    },
+    "doubted": {
+     "word": "doubted"
+    },
+    "company": {
+     "word": "company"
+    },
+    "survive": {
+     "word": "survive"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "auditors"
+    },
+    {
+     "kind": "paper",
+     "at": "doubted"
+    }
+   ],
+   "params": {
+    "place": [
+     "a pair of Crocs on a beach",
+     "Crocs' annual filing for the crash year"
+    ],
+    "things": [
+     "annual filing page",
+     "Crocs clogs"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "doubted",
+      "size": "wide"
+     },
+     {
+      "at": "company",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "auditors",
+      "what": "the Crocs in the sand, a source chip lands"
+     },
+     {
+      "at": "doubted",
+      "what": "cut to the filing page"
+     },
+     {
+      "at": "company",
+      "what": "the highlighter swipes the going-concern line"
+     },
+     {
+      "at": "survive",
+      "what": "a stamp: doubt"
+     }
+    ],
+    "fig": {},
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-shoes-on-sandy-point-beach-9717478835-5a1c4991.jpg",
+      "focus": [
+       0.55,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "doubted"
+     },
+     {
+      "kind": "document",
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p015.png",
+      "box": [
+       0.04,
+       0.38,
+       0.5,
+       0.026
+      ],
+      "pushAt": "doubted",
+      "markAt": "company",
+      "source": {
+       "form": "Form 10-K",
+       "text": "Crocs, Inc.",
+       "date": "2009-03-17"
+      },
+      "at": "doubted"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "Form 10-K",
+      "text": "Crocs, Inc.",
+      "date": "2009-03-17",
+      "at": "auditors",
+      "out": "doubted"
+     },
+     {
+      "kind": "stamp",
+      "text": "Doubt",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -5,
+      "at": "survive"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "doubt",
+   "role": "promise",
+   "say": "It had just lost {fact3} in one year, right after the clog craze. So how is this clog still on so many feet?",
+   "events": {
+    "lost": {
+     "word": "lost"
+    },
+    "year": {
+     "word": "year"
+    },
+    "craze": {
+     "word": "craze"
+    },
+    "clog": {
+     "word": "clog"
+    },
+    "feet": {
+     "word": "feet"
+    },
+    "how": {
+     "word": "how"
+    },
+    "it": {
+     "word": "It"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "lost"
+    }
+   ],
+   "params": {
+    "place": [
+     "a pair of black Crocs on a wooden floor",
+     "a pair of orange Crocs"
+    ],
+    "things": [
+     "black Crocs",
+     "orange Crocs"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "lost",
+      "size": "close"
+     },
+     {
+      "at": "feet",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "it",
+      "what": "the black clogs, the camera starts pushing"
+     },
+     {
+      "at": "lost",
+      "what": "a red label: the loss"
+     },
+     {
+      "at": "year",
+      "what": "the source chip lands"
+     },
+     {
+      "at": "craze",
+      "what": "a stamp: after the craze"
+     },
+     {
+      "at": "how",
+      "what": "push in on the clogs"
+     },
+     {
+      "at": "clog",
+      "what": "cut to a pair of orange Crocs"
+     },
+     {
+      "at": "feet",
+      "what": "push on the orange clogs"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-synthetic-clogs-712e2467.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "clog",
+      "pushAt": "how"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-paar-oranje-jackson-pollock-crocs-objectnr-91281-00b83510.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.18,
+      "grade": "doc",
+      "at": "clog"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact3}",
+      "sub": "lost in one year",
+      "tone": "red",
+      "at": "lost",
+      "out": "clog"
+     },
+     {
+      "kind": "source",
+      "form": "Form 10-K",
+      "text": "Crocs, Inc.",
+      "date": "2009-03-17",
+      "at": "year",
+      "out": "clog"
+     },
+     {
+      "kind": "stamp",
+      "text": "Crash",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": 5,
+      "at": "craze",
+      "out": "clog"
+     }
+    ],
+    "fig": {
+     "loss": "{fact3}"
+    }
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "sales",
+   "role": "build",
+   "say": "At the height of the craze, Crocs sold {fact1} worth of shoes in a year. The next year, that fell to {fact2}.",
+   "events": {
+    "sold": {
+     "word": "sold"
+    },
+    "shoes": {
+     "word": "shoes"
+    },
+    "fell": {
+     "word": "fell"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "place": [
+     "Crocs' sales bar over a pile of colourful clogs"
+    ],
+    "things": [
+     "sales bar",
+     "the drop"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "shoes",
+      "size": "medium"
+     },
+     {
+      "at": "fell",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sold",
+      "what": "the bar grows to the old sales"
+     },
+     {
+      "at": "fell",
+      "what": "the bar sinks and leaves a ghost"
+     }
+    ],
+    "fig": {
+     "then": "{fact1}",
+     "after": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-hk-fashion-plastic-clogs-n-shoes-n-colourful-cro-b1473da3.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "night"
+     },
+     {
+      "kind": "sink",
+      "name": "Crocs sales",
+      "values": [
+       847.4,
+       721.6
+      ],
+      "figs": [
+       "then",
+       "after"
+      ],
+      "title": "Crocs sales",
+      "sub": "a year of shoes",
+      "drawAt": "sold",
+      "sinkAt": "fell",
+      "plate": false
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "copies",
+   "role": "build",
+   "say": "Its own filing warned of new rivals selling imitations, and it cut its staff to about {fact4}.",
+   "events": {
+    "filing": {
+     "word": "filing"
+    },
+    "rivals": {
+     "word": "rivals"
+    },
+    "imitations": {
+     "word": "imitations"
+    },
+    "staff": {
+     "word": "staff"
+    },
+    "about": {
+     "word": "about"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "filing"
+    }
+   ],
+   "params": {
+    "place": [
+     "Crocs' filing on copycats",
+     "a table of look-alike clogs"
+    ],
+    "things": [
+     "annual filing page",
+     "imitation clogs"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "rivals",
+      "size": "close"
+     },
+     {
+      "at": "imitations",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "filing",
+      "what": "the filing page drops in"
+     },
+     {
+      "at": "rivals",
+      "what": "the highlighter swipes 'imitation products'"
+     },
+     {
+      "at": "imitations",
+      "what": "cut to the look-alike clogs"
+     },
+     {
+      "at": "staff",
+      "what": "a red label: staff left"
+     }
+    ],
+    "fig": {
+     "staff": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "document",
+      "src": "media/business-documentaries-rise-and-fall-of/edgar-1334036-0001047469-09-002818-p014.png",
+      "box": [
+       0.46,
+       0.155,
+       0.4,
+       0.024
+      ],
+      "pushAt": "filing",
+      "markAt": "rivals",
+      "source": {
+       "form": "Form 10-K",
+       "text": "Crocs, Inc.",
+       "date": "2009-03-17"
+      },
+      "out": "imitations"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-imitation-crocs-sandals-5ab50c5b.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "cold",
+      "at": "imitations"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact4}",
+      "sub": "staff left",
+      "tone": "red",
+      "at": "staff"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "stores",
+   "role": "turn",
+   "say": "But Crocs never dropped the clog. Today its shops sell it from Toronto to Suzhou to Miami.",
+   "events": {
+    "never": {
+     "word": "never"
+    },
+    "clog": {
+     "word": "clog"
+    },
+    "today": {
+     "word": "Today"
+    },
+    "toronto": {
+     "word": "Toronto"
+    },
+    "suzhou": {
+     "word": "Suzhou"
+    },
+    "miami": {
+     "word": "Miami"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "toronto"
+    },
+    {
+     "kind": "pop",
+     "at": "suzhou"
+    },
+    {
+     "kind": "pop",
+     "at": "miami"
+    }
+   ],
+   "params": {
+    "place": [
+     "a Crocs shelf",
+     "Crocs shops in Toronto, Suzhou and Miami"
+    ],
+    "things": [
+     "Crocs shelf",
+     "Crocs store fronts"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "toronto",
+      "size": "wide"
+     },
+     {
+      "at": "miami",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "never",
+      "what": "the clog shelf"
+     },
+     {
+      "at": "toronto",
+      "what": "the Toronto shop punches in"
+     },
+     {
+      "at": "suzhou",
+      "what": "the Suzhou shop"
+     },
+     {
+      "at": "miami",
+      "what": "the Miami shop"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-philippines-shoesb-1e65ee88.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "toronto"
+     },
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "at": "toronto",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-in-toronto-8fabf48d.jpg",
+        "focus": [
+         0.5,
+         0.4
+        ],
+        "caption": "Toronto",
+        "at": "toronto"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-at-suzhou-center-20220709-c38bd5d0.jpg",
+        "focus": [
+         0.5,
+         0.4
+        ],
+        "caption": "Suzhou",
+        "at": "suzhou"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-store-dadeland-mall-miami-fl-1-december-20-02c05e2c.jpg",
+        "focus": [
+         0.5,
+         0.35
+        ],
+        "caption": "Miami",
+        "at": "miami"
+       }
+      ]
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Kept",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.3
+      ],
+      "tilt": -4,
+      "at": "never",
+      "out": "toronto"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "comeback",
+   "role": "payoff",
+   "say": "Last year, the company sold more than {fact5} worth, and the Crocs brand alone {fact6}.",
+   "events": {
+    "company": {
+     "word": "company"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "worth": {
+     "word": "worth"
+    },
+    "brand": {
+     "word": "brand"
+    },
+    "alone": {
+     "word": "alone"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "place": [
+     "the gold poster over a pile of charm-covered clogs"
+    ],
+    "things": [
+     "charm clogs",
+     "Crocs logo",
+     "the sales"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sold",
+      "size": "wide"
+     },
+     {
+      "at": "alone",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "company",
+      "what": "the gold poster cuts in"
+     },
+     {
+      "at": "sold",
+      "what": "the figure settles"
+     },
+     {
+      "at": "brand",
+      "what": "the Crocs wordmark drops in"
+     },
+     {
+      "at": "alone",
+      "what": "the source chip lands"
+     }
+    ],
+    "fig": {
+     "total": "{fact5}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-dfc-4366-a-colorful-pile-of-cartoon-decorated-cl-0b3889c6.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "date": "2025-12-31",
+      "title": "Crocs Inc. sales",
+      "figure": "total",
+      "sub": "{fact6} from the Crocs brand alone",
+      "enter": "zoom"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-wordmark-9491c396-cut.png",
+      "aspect": 4.6,
+      "pos": [
+       0.5,
+       0.14
+      ],
+      "size": 0.5,
+      "tilt": -3,
+      "at": "brand"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "Results",
+      "text": "Crocs Inc.",
+      "at": "alone"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "loop",
+   "role": "loop",
+   "say": "Ugly or genius: which one is the clog in your closet? Because not long ago,",
+   "events": {
+    "ugly": {
+     "word": "Ugly"
+    },
+    "genius": {
+     "word": "genius"
+    },
+    "closet": {
+     "word": "closet"
+    },
+    "because": {
+     "word": "Because"
+    },
+    "ago": {
+     "word": "ago"
+    }
+   },
+   "params": {
+    "place": [
+     "black Crocs with charms on a pavement",
+     "the Crocs on the beach from the first frame"
+    ],
+    "things": [
+     "charms",
+     "Crocs clogs"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "closet",
+      "size": "medium"
+     },
+     {
+      "at": "because",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ugly",
+      "what": "a stamp: ugly?"
+     },
+     {
+      "at": "genius",
+      "what": "a stamp: genius?"
+     },
+     {
+      "at": "because",
+      "what": "back to the Crocs on the beach"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-sandals-2303aee6.jpg",
+      "focus": [
+       0.4,
+       0.32
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "because",
+      "enter": "zoom"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-crocs-shoes-on-sandy-point-beach-9717478835-5a1c4991.jpg",
+      "focus": [
+       0.55,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "because"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Ugly?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -4,
+      "at": "ugly",
+      "out": "genius"
+     },
+     {
+      "kind": "stamp",
+      "text": "Genius?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 4,
+      "at": "genius",
+      "out": "closet"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}

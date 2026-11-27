@@ -1,0 +1,22 @@
+{
+ "agent": "research",
+ "day": "2026-11-27",
+ "startedAt": "2026-11-26T19:09:16Z",
+ "finishedAt": "2026-11-26T19:15:02Z",
+ "summary": "Friday demand pass for How Tech Works: subsea internet cables are a proven Short lane (5.78M, 3.73M and 2.93M views, two of them breakouts at 22-28x their channel), so I added two cable topics: TAT-8, the first cable to carry light across an ocean, and inside the hose-wide seabed cable. The 'how AI works' Shorts are crowded and none reach 1M, so there is no AI Short format.",
+ "decision": "acted",
+ "why": "The internet is a core lane in profile.md and the Shorts feed had no internet topic. The references are real breakouts (The Rundown AI 5.78M on 203K, Cernab 3.73M on 168K), and the new topics score 9.31 and 9.47, the top of the feed. 22 history-year facts lacked a fixed flag and would have gone stale.",
+ "findings": [
+  {"title": "Subsea-cable Shorts are a breakout lane", "detail": "TAT-8 Short 5.78M on 203K subscribers (28.5x); '$8 Billion Cable' 3.73M on 168K (22.2x); anchors-and-sharks Short 2.93M.", "link": "https://youtube.com/shorts/q8zBmStejAw"},
+  {"title": "AI explainer Shorts are crowded", "detail": "Most 'how AI / ChatGPT works' Shorts from the last 3 months have under 30K views; the best is 197K (32x). None reaches 1M, so there's no new format.", "link": "https://youtube.com/shorts/XPfmajHFW1Y"},
+  {"title": "First Short breakout for zoom_inside", "detail": "Cernab's cable Short (3.73M, 22.2x) is now zoom_inside's top example, and it weakens the 'no breakout reference' premise of tech-zoom-short-demand.", "link": "https://youtube.com/shorts/dsQQPVvpmXI"},
+  {"title": "Claude Code still 2.1.332", "detail": "No new release or model since last night.", "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"}
+ ],
+ "changes": [
+  {"title": "Topic: TAT-8, the first cable to carry light across an ocean", "detail": "invention_story, high, 6 sourced facts (IEEE, Google), score 9.31.", "branch": "agent/research/2026-11-27/how-tech-and-ai-actually-work-chips-ai-p"},
+  {"title": "Topic: inside the garden-hose-wide seabed cable", "detail": "zoom_inside, 4 TeleGeography facts, score 9.47.", "branch": "agent/research/2026-11-27/how-tech-and-ai-actually-work-chips-ai-p"},
+  {"title": "22 history-year facts marked fixed", "detail": "Past years (QWERTY 1868, transistor 1947, Face ID 2017...) never change, so they no longer go stale.", "branch": "agent/research/2026-11-27/how-tech-and-ai-actually-work-chips-ai-p"}
+ ],
+ "nextCheck": "2026-11-28",
+ "links": [{"label": "Report", "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-27.md"}]
+}

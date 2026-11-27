@@ -1,0 +1,637 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 61975,
+ "story": "state_formation",
+ "shape": "reveal",
+ "currency": "INR",
+ "language": "hi",
+ "style": {
+  "palette": "ember",
+  "genre": "tanpura",
+  "key": "E",
+  "bpm": 104,
+  "look": {
+   "stage": "studio",
+   "header": "ribbon",
+   "holder": "blackboard",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "25-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Sikkim ghoome hain ya jaana hai? Comment",
+ "feed_id": "2026-11-24-sikkim-1975",
+ "facts": [
+  {
+   "label": "Year Sikkim voted in its referendum and joined India as a state",
+   "value": 1975,
+   "unit": "year",
+   "as_of": "1975-04-14",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/1975_Sikkimese_monarchy_referendum",
+   "fixed": true
+  },
+  {
+   "label": "Votes for ending the monarchy",
+   "value": 59637,
+   "unit": "count",
+   "as_of": "1975-04-14",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/1975_Sikkimese_monarchy_referendum",
+   "fixed": true
+  },
+  {
+   "label": "Votes against",
+   "value": 1496,
+   "unit": "count",
+   "as_of": "1975-04-14",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/1975_Sikkimese_monarchy_referendum",
+   "fixed": true
+  },
+  {
+   "label": "Share of voters who approved",
+   "value": 97.55,
+   "unit": "percent",
+   "as_of": "1975-04-14",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/1975_Sikkimese_monarchy_referendum",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "promise",
+  "sec": 7.3,
+  "words": "*Raja* wala Sikkim?",
+  "tag": "Sikkim",
+  "angle": "question",
+  "who": "narrator",
+  "unique": "our own frame: the Chogyal standing on Sikkim with the kingdom's old flag, Nepal and Bhutan in their flags round it"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "transition": "cut",
+   "say": "सिक्किम का कभी अपना राजा था। फिर ये भारत का स्टेट कैसे बना?",
+   "events": {
+    "sikkim": {
+     "word": "सिक्किम"
+    },
+    "raja": {
+     "word": "राजा"
+    },
+    "bharat": {
+     "word": "भारत"
+    },
+    "kaise": {
+     "word": "कैसे"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": "on the map: Sikkim up close in the Himalaya, lit gold between the snow peaks",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "bharat",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sikkim",
+      "what": "Sikkim traces round its border and glows gold"
+     },
+     {
+      "at": "raja",
+      "what": "a golden crown drops onto Sikkim"
+     },
+     {
+      "at": "bharat",
+      "what": "the camera pulls back and India's states flash white round it"
+     },
+     {
+      "at": "kaise",
+      "what": "a big question mark stamps beside Sikkim"
+     }
+    ],
+    "things": [
+     "sikkim",
+     "golden crown",
+     "question mark",
+     "himalaya"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "raja"
+    },
+    {
+     "kind": "thud",
+     "at": "kaise"
+    }
+   ]
+  },
+  {
+   "id": "promise",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "नेपाल और भूटान के बीच, यहाँ के राजा को चोग्याल कहते थे, और इसका अपना झंडा था।",
+   "events": {
+    "nepal": {
+     "word": "नेपाल"
+    },
+    "bhutan": {
+     "word": "भूटान"
+    },
+    "beech": {
+     "word": "बीच"
+    },
+    "chogyal": {
+     "word": "चोग्याल"
+    },
+    "jhanda": {
+     "word": "झंडा"
+    }
+   },
+   "params": {
+    "component": "Kingdom",
+    "place": "on the map: the eastern Himalaya, Nepal to the west, Bhutan to the east, Sikkim between them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "chogyal",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nepal",
+      "what": "Nepal fills with its flag"
+     },
+     {
+      "at": "bhutan",
+      "what": "Bhutan fills with its flag"
+     },
+     {
+      "at": "beech",
+      "what": "Sikkim lifts between them"
+     },
+     {
+      "at": "chogyal",
+      "what": "the Chogyal's photo stands on Sikkim as a die-cut sticker with a name tag"
+     },
+     {
+      "at": "jhanda",
+      "what": "the kingdom's old flag drops onto Sikkim beside him"
+     }
+    ],
+    "things": [
+     "nepal flag",
+     "bhutan flag",
+     "sikkim",
+     "chogyal photo",
+     "sikkim kingdom flag"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "vote",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "फिर {fact1} में, लोगों से पूछा गया: राजा का राज ख़त्म हो, और सिक्किम भारत का हिस्सा बने?",
+   "events": {
+    "phir": {
+     "word": "फिर"
+    },
+    "logon": {
+     "word": "लोगों"
+    },
+    "raj": {
+     "word": "राज"
+    },
+    "hissa": {
+     "word": "हिस्सा"
+    }
+   },
+   "params": {
+    "component": "Vote",
+    "place": "on the map: Gangtok, Sikkim's capital, with a ballot box on the hillside",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "hissa",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "phir",
+      "what": "a blackboard drops in with the year chalked on it"
+     },
+     {
+      "at": "logon",
+      "what": "small voters line up on the hill"
+     },
+     {
+      "at": "raj",
+      "what": "the crown over Sikkim tilts and dims"
+     },
+     {
+      "at": "hissa",
+      "what": "a ballot box lands and the first slip drops in"
+     }
+    ],
+    "things": [
+     "blackboard with year",
+     "voters",
+     "ballot box",
+     "crown",
+     "gangtok"
+    ],
+    "fig": {
+     "year": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "hissa"
+    }
+   ]
+  },
+  {
+   "id": "count",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "गिनती शुरू हुई। पहले देखिए, ना कहने वाले कितने थे?",
+   "events": {
+    "ginti": {
+     "word": "गिनती"
+    },
+    "pehle": {
+     "word": "पहले"
+    },
+    "na": {
+     "word": "ना"
+    },
+    "kitne": {
+     "word": "कितने"
+    }
+   },
+   "params": {
+    "component": "Count",
+    "place": "on the map: a counting table set up over Sikkim, slips piling in two trays",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "na",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ginti",
+      "what": "the ballot box tips and slips pour onto a counting table"
+     },
+     {
+      "at": "pehle",
+      "what": "two trays slide out, red for no and green for yes"
+     },
+     {
+      "at": "na",
+      "what": "the red tray glows"
+     },
+     {
+      "at": "kitne",
+      "what": "a question tag pops over the red tray"
+     }
+    ],
+    "things": [
+     "counting table",
+     "ballot slips",
+     "red tray",
+     "green tray"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "ना में पड़े सिर्फ़ {fact3} वोट। और हाँ में?",
+   "events": {
+    "na": {
+     "word": "ना"
+    },
+    "sirf": {
+     "word": "सिर्फ़"
+    },
+    "haan": {
+     "word": "हाँ"
+    },
+    "aur": {
+     "word": "और"
+    }
+   },
+   "params": {
+    "component": "Turn",
+    "place": "on the map: a chalk tally board standing in the plains below Sikkim",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "haan",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "na",
+      "what": "the red tray's slips stack into a short pile"
+     },
+     {
+      "at": "sirf",
+      "what": "the chalk board writes the no count"
+     },
+     {
+      "sec": 1.8,
+      "what": "the red pile's last slip lands and the no count gets a chalk circle"
+     },
+     {
+      "at": "aur",
+      "what": "the green tray starts to glow at the edge of the frame"
+     },
+     {
+      "at": "haan",
+      "what": "the camera swings to the green tray, slips still pouring"
+     }
+    ],
+    "things": [
+     "tally board",
+     "red pile",
+     "green tray"
+    ],
+    "fig": {
+     "no": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "हाँ में पड़े {fact2} वोट, यानी {fact4}, लगभग सारे वोट।",
+   "events": {
+    "haan": {
+     "word": "हाँ"
+    },
+    "yani": {
+     "word": "यानी"
+    },
+    "lagbhag": {
+     "word": "लगभग"
+    },
+    "saare": {
+     "word": "सारे"
+    },
+    "pade": {
+     "word": "पड़े"
+    },
+    "vote": {
+     "word": "वोट"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: the tally board towering over Sikkim, a tall green pile beside a tiny red one",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "lagbhag",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "haan",
+      "what": "the green pile shoots up past the board"
+     },
+     {
+      "at": "pade",
+      "what": "the green pile keeps climbing and the board shakes as it passes"
+     },
+     {
+      "sec": 1.6,
+      "what": "the no line on the board gets a chalk underline, tiny beside the green pile"
+     },
+     {
+      "at": "vote",
+      "what": "a burst of slips flies up off the green pile"
+     },
+     {
+      "at": "yani",
+      "what": "the board writes the yes count, a share bar fills almost all the way green and the share stamps on"
+     },
+     {
+      "sec": 4.2,
+      "what": "the green bar's end glows and a tick chalks onto the board"
+     },
+     {
+      "at": "lagbhag",
+      "what": "the camera pulls back to the whole valley"
+     },
+     {
+      "at": "saare",
+      "what": "the share tag punches with a low hit and Sikkim lifts"
+     }
+    ],
+    "things": [
+     "tally board",
+     "green pile",
+     "red pile",
+     "share bar"
+    ],
+    "fig": {
+     "yes": "{fact2}",
+     "no": "{fact3}",
+     "share": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "saare"
+    }
+   ]
+  },
+  {
+   "id": "join",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "और उसी साल, सिक्किम भारत का नया स्टेट बन गया।",
+   "events": {
+    "usi": {
+     "word": "उसी"
+    },
+    "sikkim": {
+     "word": "सिक्किम"
+    },
+    "naya": {
+     "word": "नया"
+    },
+    "ban": {
+     "word": "बन"
+    }
+   },
+   "params": {
+    "component": "Join",
+    "place": "on the map: all of India from above, Sikkim the newest piece in the north-east",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "naya",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "usi",
+      "what": "the kingdom flag on Sikkim folds away"
+     },
+     {
+      "at": "sikkim",
+      "what": "Sikkim paints in India's state colour and traces"
+     },
+     {
+      "at": "naya",
+      "what": "the camera pulls back to all of India and Sikkim lifts into place"
+     },
+     {
+      "at": "ban",
+      "what": "a नया स्टेट tag stamps on Sikkim"
+     }
+    ],
+    "things": [
+     "all india",
+     "sikkim",
+     "folding flag",
+     "new state tag"
+    ],
+    "fig": {}
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "transition": "match",
+   "say": "तो अगली बार नक्शे पर ये छोटा सा स्टेट देखें, तो याद रखिए,",
+   "events": {
+    "agli": {
+     "word": "अगली"
+    },
+    "naksha": {
+     "word": "नक्शे"
+    },
+    "chhota": {
+     "word": "छोटा"
+    },
+    "yaad": {
+     "word": "याद"
+    }
+   },
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the push back in from all of India to Sikkim among the snow peaks",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "chhota",
+      "size": "medium"
+     },
+     {
+      "at": "yaad",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "agli",
+      "what": "the camera starts pushing in from all of India"
+     },
+     {
+      "at": "naksha",
+      "what": "India's state lines glint"
+     },
+     {
+      "at": "chhota",
+      "what": "Sikkim pulses gold"
+     },
+     {
+      "at": "yaad",
+      "what": "the golden crown fades back in over Sikkim, as in the first frame"
+     }
+    ],
+    "things": [
+     "all india",
+     "sikkim",
+     "golden crown"
+    ],
+    "fig": {}
+   }
+  }
+ ],
+ "narrator": "hm_omega"
+}

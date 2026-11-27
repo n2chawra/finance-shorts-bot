@@ -1,0 +1,180 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-25T23:21:04.353298+00:00",
+    "finishedAt": "2026-11-25T23:21:04.353298+00:00",
+    "notes": [
+      "style.bpm must be 72–80 for explorer"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:21:08.215943+00:00",
+    "finishedAt": "2026-11-25T23:21:08.215943+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:23:17.952602+00:00",
+    "finishedAt": "2026-11-25T23:23:17.952602+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 2 questions in about 65 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:23:26.909733+00:00",
+    "finishedAt": "2026-11-25T23:23:26.909733+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:24:38.811687+00:00",
+    "finishedAt": "2026-11-25T23:24:38.811687+00:00",
+    "notes": [
+      "Facts: population 1,029,966 (census 1 Oct 2021) confirmed on the cited citypopulation.de oblast page (2025 estimate 1,032,904, so 'still live' holds); area 15,100 km2 not on the cited page but confirmed on citypopulation.de/php/russia-kaliningrad.php?cityid=27711000001 and by Britannica (5,830 sq mi / 15,100 sq km) in search. Half of Belgium (30,689 km2) holds. History checked: East Prussia German in 1926, capital Koenigsberg; Potsdam 1945 split it, Poland south and USSR north; renamed 1946; Germans expelled by 1948 and Soviet settlers moved in; ice-free Baltic port; Lithuania, Latvia and Belarus Soviet until 1991. Moscow-Kaliningrad trains still cross Lithuania and Belarus (AFP Oct 2025, LRT Feb 2026). The topic has no verify list. No advice, tone is fine, and the description ends with the disclaimer. Note: the area fact's url could point to the page that shows the area."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:29:11.292280+00:00",
+    "finishedAt": "2026-11-25T23:29:11.292280+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:30:27.577848+00:00",
+    "finishedAt": "2026-11-25T23:30:27.577848+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:31:19.239239+00:00",
+    "finishedAt": "2026-11-25T23:31:19.239239+00:00",
+    "notes": [
+      "Re-review of the changed beats. hook: true, Kaliningrad has no land border with the rest of Russia. size: 15,100 km2 still confirmed (citypopulation.de oblast page; Britannica 15,100 sq km); forests, farms and the sandy beaches of the Curonian and Vistula spits are accurate, and half of Belgium holds. stranded: 'overnight' is rhetorical (Lithuania was recognised in Sept 1991, the USSR dissolved in Dec 1991) and acceptable as a style point. fleet (new): the Baltic Fleet is headquartered in Kaliningrad with its main base at Baltiysk (GlobalSecurity, FAS); a second base is at Kronstadt, so 'keeps its Baltic Fleet there' is broadly true. payoff: 1,029,966 at the 2021 census confirmed (2025 estimate 1,032,904). No advice, the tone is fine, and the description ends with the disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-25T23:30:58.574409+00:00",
+    "finishedAt": "2026-11-25T23:32:44.332477+00:00",
+    "notes": [
+      "fingerprint: 55c56d548fe2bf79.1140479981be74e1",
+      "text 'BALTIC SEA' at 2.4 s runs outside the frame",
+      "text 'LITHUANIA' at 6.5 s runs outside the frame",
+      "text 'KALININGRAD' at 50.6 s is 35 px, below the 44 px minimum",
+      "text 'KALININGRAD' at 50.6 s runs outside the frame",
+      "note: four shots in a row open medium (from 'hook'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-25T23:33:23.076775+00:00",
+    "finishedAt": "2026-11-25T23:34:40.023549+00:00",
+    "notes": [
+      "fingerprint: 55c56d548fe2bf79.a6d49ebdb24ef934",
+      "text 'BALTIC SEA' at 2.4 s runs outside the frame",
+      "note: four shots in a row open medium (from 'hook'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:34:45.810983+00:00",
+    "finishedAt": "2026-11-25T23:36:04.184500+00:00",
+    "notes": [
+      "fingerprint: 55c56d548fe2bf79.d8a42f8c718312f3",
+      "67 s, paper/explorer (preview only)",
+      "note: four shots in a row open medium (from 'hook'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:37:01.234494+00:00",
+    "finishedAt": "2026-11-25T23:38:16.708231+00:00",
+    "notes": [
+      "fingerprint: 55c56d548fe2bf79.b3afe4f2eb06c35b",
+      "67 s, paper/explorer (preview only)",
+      "note: four shots in a row open medium (from 'hook'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-25T23:41:16.653839+00:00",
+    "finishedAt": "2026-11-25T23:41:16.653839+00:00",
+    "notes": [
+      "[script] 64.0s (loop, Loop.tsx): Poland's flag is a giant card running off the left edge and sitting under the captions; the caption 'Because for now,' is white on its white half and can't be read; Lithuania's giant card runs off the right edge too, and both flags appear twice (pole flags plus cards). Use the pole flags only (or fill the countries with their flags), kept inside the frame and above the caption band.",
+      "[script] 6.0s (between, Between.tsx): the same giant flag cards: Poland's runs off the left edge and down under the caption 'and Lithuania.', Lithuania's runs off the right edge with its LITHUANIA label half on it. Keep the flags inside the frame, clear of the captions.",
+      "[script] 14.0s (size, Size.tsx): the line says Kaliningrad is about half the size of Belgium, but Belgium lands beside the piece, covering part of it, drawn no bigger than the piece, and the label 'HALF OF BELGIUM' sits under the whole Belgium outline, so the picture and label say the opposite. Lay Belgium over the piece at true scale so the piece visibly fills about half of it, and put the half label on the piece."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:42:50.193090+00:00",
+    "finishedAt": "2026-11-25T23:44:02.356367+00:00",
+    "notes": [
+      "fingerprint: 55c56d548fe2bf79.7b8d5b5435a2563a",
+      "67 s, paper/explorer (preview only)",
+      "note: four shots in a row open medium (from 'hook'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:45:41.853268+00:00",
+    "finishedAt": "2026-11-25T23:45:41.853268+00:00",
+    "notes": [
+      "Re-review after fixes: 6 s and 64 s now show small pole flags inside the frame and clear of the captions; 14 s lays Belgium over the piece at true scale with the piece about half of it and HALF OF BELGIUM on the piece; all 14 beats on the map, flags shown, hook names the subject, loop closes; layout empty, 67 s, audio in line with the channel.",
+      "fingerprint: 55c56d548fe2bf79.7b8d5b5435a2563a"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-25T23:45:52.386983+00:00",
+    "finishedAt": "2026-11-26T00:01:16.665461+00:00",
+    "notes": [
+      "67 s, paper/explorer, peak -1.0 dB, mean -16.2 dB",
+      "note: four shots in a row open medium (from 'hook'): vary the shot size",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-26T00:01:21.890089+00:00",
+    "finishedAt": "2026-11-26T00:01:21.890089+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

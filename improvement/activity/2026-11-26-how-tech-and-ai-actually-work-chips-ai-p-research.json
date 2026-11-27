@@ -1,0 +1,50 @@
+{
+ "agent": "research",
+ "day": "2026-11-26",
+ "startedAt": "2026-11-25T19:08:44Z",
+ "finishedAt": "2026-11-25T19:14:07Z",
+ "summary": "Thursday titles pass for How Tech Works: 16 of the 19 reference videos at 500K+ views state their title ('How X Works') while all 8 of ours ask a question, so a statement-title challenger is now on the weekly loop's list. I also added the feed's first AI topic: what a chatbot does to write one word.",
+ "decision": "acted",
+ "why": "Statement titles have a median of 4.6M views against 2.1M for question titles among the references, and our question titles come from a rule built on money Shorts. The Shorts feed had no AI topic although AI is a core lane in the profile, and the new topic scores 8.91 (the feed's lowest is 7.34).",
+ "findings": [
+  {
+   "title": "Reference titles state, ours ask",
+   "detail": "16 of 19 references at 500K+ views use a statement ('How Electrical Outlets Work' 77.3M, 'How Starlink Actually Works' 4.6M); the week's top on-profile breakout is 'NVIDIA's First Chip' (1.78M on 29.8K subscribers). All 8 of our Shorts use a question title.",
+   "link": "https://youtube.com/shorts/f13XH7gvEK8"
+  },
+  {
+   "title": "No AI topic in the Shorts feed",
+   "detail": "The how-AI and how-internet formats are long-only, so tonight's AI topic is told as a zoom_inside Short. Its reference has 1.02M views on 12.7K subscribers (80.6x).",
+   "link": "https://youtube.com/watch?v=oBKrR3i6jWM"
+  },
+  {
+   "title": "Facts for the chatbot topic",
+   "detail": "OpenAI: a token is about 4 characters, and 100 tokens are about 75 words. Meta: Llama 3 has a 128K-token vocabulary and a 70B model. Kaplan 2020: about 2 operations per parameter per token. Code computes about 140 billion operations per token.",
+   "link": "https://arxiv.org/html/2001.08361v1"
+  },
+  {
+   "title": "Claude Code 2.1.332",
+   "detail": "Routines are renamed 'cloud scheduled tasks' in the UI, skills can come from MCP servers (beta), and headless Agent calls are no longer reported finished too early. No action needed.",
+   "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+  }
+ ],
+ "changes": [
+  {
+   "title": "Topic: what a chatbot does to write one word",
+   "detail": "zoom_inside, global, 5 sourced facts, score 8.91.",
+   "branch": "agent/research/2026-11-26/how-tech-and-ai-actually-work-chips-ai-p"
+  },
+  {
+   "title": "Challenger: tech-title-how-it-works",
+   "detail": "First-second test of statement titles against question titles, judged on stayed to watch.",
+   "branch": "agent/research/2026-11-26/how-tech-and-ai-actually-work-chips-ai-p"
+  }
+ ],
+ "nextCheck": "2026-11-27",
+ "links": [
+  {
+   "label": "Report",
+   "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-26.md"
+  }
+ ]
+}

@@ -1,0 +1,1211 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38417,
+ "story": "why_shaped",
+ "shape": "the-stranded-piece",
+ "currency": "USD",
+ "style": {
+  "palette": "paper",
+  "genre": "explorer",
+  "key": "G",
+  "bpm": 80,
+  "look": {
+   "stage": "night",
+   "header": "chalk",
+   "holder": "sign",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "secret",
+ "cta": "Stay Russian or join the neighbours: what would you choose? Comment",
+ "feed_id": "2026-11-17-kaliningrad-russia-in-europe",
+ "facts": [
+  {
+   "label": "Kaliningrad Oblast, area",
+   "value": 15100,
+   "unit": "km2",
+   "as_of": "2021-10-01",
+   "source": "City Population",
+   "url": "https://www.citypopulation.de/en/russia/admin/severo_zapadnyj_federaln/27__kaliningrad_oblast/",
+   "fixed": true
+  },
+  {
+   "label": "Kaliningrad Oblast, population at the 2021 census",
+   "value": 1029966,
+   "unit": "count",
+   "as_of": "2021-10-01",
+   "source": "City Population",
+   "url": "https://www.citypopulation.de/en/russia/admin/severo_zapadnyj_federaln/27__kaliningrad_oblast/",
+   "latest": true,
+   "checked": "2026-11-19"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "between",
+  "sec": 2.0,
+  "words": "Russia's *lonely* piece",
+  "tag": "Kaliningrad",
+  "angle": "claim",
+  "figure": "{fact1}",
+  "who": "narrator",
+  "references": [
+   {
+    "id": "7iZflr3qD-4",
+    "views": 10605551,
+    "what": "the plan's demand video: a country's strange shape highlighted on the map"
+   }
+  ],
+  "pattern": "the odd-shaped piece of land lit on a plain map with a few big words; ours lights Kaliningrad in Russia's flag between its two neighbours in our vintage look"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "This piece of Russia, on the Baltic, doesn't touch Russia at all.",
+   "events": {
+    "piece": {
+     "word": "piece"
+    },
+    "russia": {
+     "word": "Russia"
+    },
+    "baltic": {
+     "word": "Baltic"
+    },
+    "touch": {
+     "word": "touch"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the small piece of Russia alone on the Baltic coast, the rest of Russia far to the east",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "touch",
+      "size": "wide"
+     },
+     {
+      "at": "all",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "piece",
+      "what": "the piece's border traces round and Russia's flag fills it"
+     },
+     {
+      "at": "russia",
+      "what": "RUSSIA writes on over the piece"
+     },
+     {
+      "at": "baltic",
+      "what": "the Baltic Sea's waves ripple and BALTIC SEA writes on"
+     },
+     {
+      "at": "touch",
+      "what": "the camera pulls back to the rest of Russia in its flag, a dashed line reaching east from the piece and stopping short"
+     },
+     {
+      "at": "all",
+      "what": "a gap flashes between the piece and Russia"
+     }
+    ],
+    "things": [
+     "map of the baltic",
+     "russian flag",
+     "the piece's border",
+     "dashed gap line",
+     "sea waves"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "piece"
+    }
+   ]
+  },
+  {
+   "id": "between",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It's Kaliningrad, squeezed between Poland and Lithuania. So how did Russia get here?",
+   "events": {
+    "kaliningrad": {
+     "word": "Kaliningrad"
+    },
+    "squeezed": {
+     "word": "squeezed"
+    },
+    "poland": {
+     "word": "Poland"
+    },
+    "lithuania": {
+     "word": "Lithuania"
+    },
+    "how": {
+     "word": "how"
+    },
+    "here": {
+     "word": "here"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Between",
+    "place": "on the map: Kaliningrad's coast and its two neighbours",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "squeezed",
+      "size": "close"
+     },
+     {
+      "at": "how",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "kaliningrad",
+      "what": "a pin drops on the city and KALININGRAD writes on"
+     },
+     {
+      "at": "squeezed",
+      "what": "the camera pushes in as the neighbours press in on both sides"
+     },
+     {
+      "at": "poland",
+      "what": "Poland fills with its flag to the south"
+     },
+     {
+      "at": "lithuania",
+      "what": "Lithuania fills with its flag to the east"
+     },
+     {
+      "at": "how",
+      "what": "a question mark pops over the piece"
+     },
+     {
+      "at": "here",
+      "what": "the question mark bounces"
+     }
+    ],
+    "things": [
+     "kaliningrad pin",
+     "polish flag",
+     "lithuanian flag",
+     "question mark"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "kaliningrad"
+    }
+   ]
+  },
+  {
+   "id": "size",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "It covers {fact1} of forest, farms and long sandy beaches, about half the size of Belgium.",
+   "events": {
+    "covers": {
+     "word": "covers"
+    },
+    "forest": {
+     "word": "forest"
+    },
+    "farms": {
+     "word": "farms"
+    },
+    "beaches": {
+     "word": "beaches"
+    },
+    "half": {
+     "word": "half"
+    },
+    "belgium": {
+     "word": "Belgium"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Size",
+    "place": "on the map: Kaliningrad with Belgium's outline laid over it at true scale",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "sec": 1.2,
+      "size": "medium"
+     },
+     {
+      "at": "belgium",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "covers",
+      "what": "the piece's land shades in and its area sign stamps onto the land"
+     },
+     {
+      "at": "forest",
+      "what": "trees pop up across the land"
+     },
+     {
+      "at": "farms",
+      "what": "fields stripe the land"
+     },
+     {
+      "at": "beaches",
+      "what": "a sandy beach line glows along the coast"
+     },
+     {
+      "at": "half",
+      "what": "Belgium's outline slides in from the west"
+     },
+     {
+      "at": "belgium",
+      "what": "Belgium's outline lands over the piece with its flag, the piece showing twice as small"
+     }
+    ],
+    "things": [
+     "area sign",
+     "belgium's outline",
+     "belgian flag"
+    ],
+    "fig": {
+     "area": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "covers"
+    }
+   ]
+  },
+  {
+   "id": "germany",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Turn the dial back a century, and this land was Germany: East Prussia, with its capital, Koenigsberg.",
+   "events": {
+    "turn": {
+     "word": "Turn"
+    },
+    "century": {
+     "word": "century"
+    },
+    "germany": {
+     "word": "Germany"
+    },
+    "east": {
+     "word": "East"
+    },
+    "capital": {
+     "word": "capital"
+    },
+    "koenigsberg": {
+     "word": "Koenigsberg"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Germany",
+    "place": "on the map: East Prussia a century ago, the era dial turned back",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "germany",
+      "size": "wide"
+     },
+     {
+      "at": "koenigsberg",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "turn",
+      "what": "the era dial appears at the top of the map"
+     },
+     {
+      "at": "century",
+      "what": "the dial's pointer swings back to GERMANY and the map turns sepia"
+     },
+     {
+      "at": "germany",
+      "what": "the old East Prussia paints in with Germany's flag"
+     },
+     {
+      "at": "east",
+      "what": "EAST PRUSSIA writes across it"
+     },
+     {
+      "at": "capital",
+      "what": "a castle stands up on the city's spot"
+     },
+     {
+      "at": "koenigsberg",
+      "what": "KOENIGSBERG writes on under the castle"
+     }
+    ],
+    "things": [
+     "era dial",
+     "east prussia",
+     "german flag",
+     "castle",
+     "city label"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "turn"
+    }
+   ]
+  },
+  {
+   "id": "line",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then the Second World War ended, and the winners drew a line straight across East Prussia.",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "war": {
+     "word": "War"
+    },
+    "ended": {
+     "word": "ended"
+    },
+    "winners": {
+     "word": "winners"
+    },
+    "line": {
+     "word": "line"
+    },
+    "across": {
+     "word": "across"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Line",
+    "place": "on the map: the treaty pen drawing the new line across East Prussia",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "line",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "then",
+      "what": "the dial's pointer moves on a notch"
+     },
+     {
+      "at": "war",
+      "what": "smoke drifts over the land"
+     },
+     {
+      "at": "ended",
+      "what": "the smoke clears and the German colour fades"
+     },
+     {
+      "at": "winners",
+      "what": "a treaty paper unrolls at the top"
+     },
+     {
+      "at": "line",
+      "what": "a giant pen draws a line straight across the land"
+     },
+     {
+      "at": "across",
+      "what": "the line glows from end to end"
+     }
+    ],
+    "things": [
+     "era dial",
+     "smoke",
+     "treaty paper",
+     "giant pen",
+     "the new line"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "scribble",
+     "at": "line"
+    }
+   ]
+  },
+  {
+   "id": "halves",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Poland got the south. The Soviet Union took the north, with its ice-free port.",
+   "events": {
+    "poland": {
+     "word": "Poland"
+    },
+    "soviet": {
+     "word": "Soviet"
+    },
+    "north": {
+     "word": "north"
+    },
+    "ice-free": {
+     "word": "ice-free"
+    },
+    "port": {
+     "word": "port"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Halves",
+    "place": "on the map: the two halves of East Prussia, Poland's flag in the south, Soviet red in the north",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "port",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "poland",
+      "what": "the south half paints in with Poland's flag"
+     },
+     {
+      "at": "soviet",
+      "what": "the north half paints in Soviet red"
+     },
+     {
+      "at": "north",
+      "what": "a red star stamps on the north half"
+     },
+     {
+      "at": "ice-free",
+      "what": "the coast's water stays blue while ice creeps along the shore elsewhere"
+     },
+     {
+      "at": "port",
+      "what": "a warship and a cargo ship sail into the port"
+     }
+    ],
+    "things": [
+     "polish flag",
+     "soviet red",
+     "red star",
+     "sea ice",
+     "warship",
+     "cargo ship"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "north"
+    }
+   ]
+  },
+  {
+   "id": "renamed",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Koenigsberg was renamed Kaliningrad, its Germans were sent west, and Soviet families moved in.",
+   "events": {
+    "renamed": {
+     "word": "renamed"
+    },
+    "kaliningrad": {
+     "word": "Kaliningrad"
+    },
+    "germans": {
+     "word": "Germans"
+    },
+    "west": {
+     "word": "west"
+    },
+    "families": {
+     "word": "families"
+    },
+    "moved": {
+     "word": "moved"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Renamed",
+    "place": "on the map: the city's spot, its name sign changed, people leaving west and arriving from the east",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "germans",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "renamed",
+      "what": "a red line strikes out the old name on the city sign"
+     },
+     {
+      "at": "kaliningrad",
+      "what": "KALININGRAD is stamped on the sign"
+     },
+     {
+      "at": "germans",
+      "what": "a line of small people with bundles walks off to the west"
+     },
+     {
+      "at": "west",
+      "what": "an arrow draws west along them"
+     },
+     {
+      "at": "families",
+      "what": "small families arrive from the east with suitcases"
+     },
+     {
+      "at": "moved",
+      "what": "windows light in the city"
+     }
+    ],
+    "things": [
+     "city sign",
+     "red strike",
+     "people with bundles",
+     "arrow",
+     "families with suitcases"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "kaliningrad"
+    }
+   ]
+  },
+  {
+   "id": "joined",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Back then, nobody minded: Lithuania, Latvia and Belarus were Soviet too, so the land ran unbroken to Moscow.",
+   "events": {
+    "back": {
+     "word": "Back"
+    },
+    "lithuania": {
+     "word": "Lithuania"
+    },
+    "latvia": {
+     "word": "Latvia"
+    },
+    "belarus": {
+     "word": "Belarus"
+    },
+    "soviet": {
+     "word": "Soviet"
+    },
+    "unbroken": {
+     "word": "unbroken"
+    },
+    "moscow": {
+     "word": "Moscow"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Joined",
+    "place": "on the map: the Soviet Union in one red sweep from the Baltic to Moscow",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "unbroken",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "back",
+      "what": "the camera slides east"
+     },
+     {
+      "at": "lithuania",
+      "what": "Lithuania fills Soviet red"
+     },
+     {
+      "at": "latvia",
+      "what": "Latvia fills Soviet red"
+     },
+     {
+      "at": "belarus",
+      "what": "Belarus fills Soviet red"
+     },
+     {
+      "at": "soviet",
+      "what": "SOVIET UNION writes across the red land"
+     },
+     {
+      "at": "unbroken",
+      "what": "a road draws on from the piece all the way east"
+     },
+     {
+      "at": "moscow",
+      "what": "a star pin drops on Moscow"
+     }
+    ],
+    "things": [
+     "soviet red",
+     "the road east",
+     "moscow pin",
+     "era dial"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "moscow"
+    }
+   ]
+  },
+  {
+   "id": "breakup",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "So what changed? In nineteen ninety-one, the Soviet Union fell apart.",
+   "events": {
+    "changed": {
+     "word": "changed"
+    },
+    "nineteen": {
+     "word": "nineteen"
+    },
+    "soviet": {
+     "word": "Soviet"
+    },
+    "fell": {
+     "word": "fell"
+    },
+    "apart": {
+     "word": "apart"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Breakup",
+    "place": "on the map: the red Soviet land cracking along its inner borders",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "apart",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "changed",
+      "what": "the dial's pointer swings to TODAY"
+     },
+     {
+      "at": "nineteen",
+      "what": "the red land shakes"
+     },
+     {
+      "at": "soviet",
+      "what": "cracks run along the inner borders"
+     },
+     {
+      "at": "fell",
+      "what": "the pieces drift a little apart"
+     },
+     {
+      "at": "apart",
+      "what": "the red drains out of the pieces"
+     }
+    ],
+    "things": [
+     "era dial",
+     "cracks",
+     "soviet red draining"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "fell"
+    }
+   ]
+  },
+  {
+   "id": "stranded",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Lithuania and Belarus became countries of their own, and overnight, Kaliningrad was stranded.",
+   "events": {
+    "lithuania": {
+     "word": "Lithuania"
+    },
+    "belarus": {
+     "word": "Belarus"
+    },
+    "countries": {
+     "word": "countries"
+    },
+    "kaliningrad": {
+     "word": "Kaliningrad"
+    },
+    "stranded": {
+     "word": "stranded"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Stranded",
+    "place": "on the map: Lithuania and Belarus in their own colours between the piece and Russia",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "stranded",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lithuania",
+      "what": "Lithuania fills with its flag"
+     },
+     {
+      "at": "belarus",
+      "what": "Belarus fills in its own colour"
+     },
+     {
+      "at": "countries",
+      "what": "a border line traces round each of them"
+     },
+     {
+      "at": "kaliningrad",
+      "what": "the camera turns back to the piece"
+     },
+     {
+      "at": "stranded",
+      "what": "the road east breaks and a gap opens between the piece and Russia"
+     }
+    ],
+    "things": [
+     "lithuanian flag",
+     "belarus",
+     "broken road",
+     "the piece"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "stranded"
+    }
+   ]
+  },
+  {
+   "id": "train",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Now, to reach Moscow by land, a train from here crosses two other countries first.",
+   "events": {
+    "reach": {
+     "word": "reach"
+    },
+    "moscow": {
+     "word": "Moscow"
+    },
+    "land": {
+     "word": "land"
+    },
+    "train": {
+     "word": "train"
+    },
+    "crosses": {
+     "word": "crosses"
+    },
+    "two": {
+     "word": "two"
+    },
+    "first": {
+     "word": "first"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Train",
+    "place": "on the map: the railway from Kaliningrad through Lithuania and Belarus to Moscow",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "two",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "reach",
+      "what": "a train leaves Kaliningrad station"
+     },
+     {
+      "at": "moscow",
+      "what": "MOSCOW lights up at the far end"
+     },
+     {
+      "at": "land",
+      "what": "the rails draw on ahead of the train"
+     },
+     {
+      "at": "train",
+      "what": "the train rolls east"
+     },
+     {
+      "at": "crosses",
+      "what": "a border gate lifts as the train crosses into Lithuania"
+     },
+     {
+      "at": "two",
+      "what": "a second gate lifts at Belarus"
+     },
+     {
+      "at": "first",
+      "what": "the train reaches Russia"
+     }
+    ],
+    "things": [
+     "train",
+     "rails",
+     "border gates",
+     "moscow pin"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "two"
+    }
+   ]
+  },
+  {
+   "id": "fleet",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Russia even keeps its Baltic Fleet there, in the port of Baltiysk.",
+   "events": {
+    "russia": {
+     "word": "Russia"
+    },
+    "keeps": {
+     "word": "keeps"
+    },
+    "baltic": {
+     "word": "Baltic"
+    },
+    "fleet": {
+     "word": "Fleet"
+    },
+    "port": {
+     "word": "port"
+    },
+    "baltiysk": {
+     "word": "Baltiysk"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Fleet",
+    "place": "on the map: the naval port of Baltiysk at the mouth of the lagoon, warships lined up",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "port",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "russia",
+      "what": "a Russian naval flag rises over the harbour"
+     },
+     {
+      "at": "keeps",
+      "what": "a first warship slides into its berth"
+     },
+     {
+      "at": "baltic",
+      "what": "more warships line up along the quay"
+     },
+     {
+      "at": "fleet",
+      "what": "BALTIC FLEET writes on over the ships"
+     },
+     {
+      "at": "port",
+      "what": "the camera pulls back to the harbour mouth"
+     },
+     {
+      "at": "baltiysk",
+      "what": "BALTIYSK writes on beside the port"
+     }
+    ],
+    "things": [
+     "warships",
+     "harbour quay",
+     "naval flag",
+     "lagoon mouth",
+     "port label"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "keeps"
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "And {fact2} people still live on this lonely piece of Russia, cut off from home.",
+   "events": {
+    "and": {
+     "word": "And"
+    },
+    "people": {
+     "word": "people"
+    },
+    "still": {
+     "word": "still"
+    },
+    "live": {
+     "word": "live"
+    },
+    "lonely": {
+     "word": "lonely"
+    },
+    "russia": {
+     "word": "Russia"
+    },
+    "home": {
+     "word": "home"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: the piece of Russia filled with tiny people and lit windows",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "sec": 1.4,
+      "size": "medium"
+     },
+     {
+      "at": "lonely",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "and",
+      "what": "the city's board drops in over the piece"
+     },
+     {
+      "at": "people",
+      "what": "tiny people fill the piece as the board finishes counting"
+     },
+     {
+      "at": "still",
+      "what": "more people walk onto the land"
+     },
+     {
+      "at": "live",
+      "what": "windows light up across the land"
+     },
+     {
+      "at": "lonely",
+      "what": "the camera pushes in as the neighbours dim"
+     },
+     {
+      "at": "russia",
+      "what": "the piece's border lights up in Russia's flag"
+     },
+     {
+      "at": "home",
+      "what": "a dashed line reaches east towards Russia and fades"
+     }
+    ],
+    "things": [
+     "people counter",
+     "tiny people",
+     "lit windows",
+     "russian flag"
+    ],
+    "fig": {
+     "people": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "people"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Stay Russian, or join the neighbours: which would you pick? Because for now, this piece of Russia is on its own.",
+   "events": {
+    "stay": {
+     "word": "Stay"
+    },
+    "join": {
+     "word": "join"
+    },
+    "pick": {
+     "word": "pick"
+    },
+    "because": {
+     "word": "Because"
+    },
+    "piece": {
+     "word": "piece"
+    },
+    "own": {
+     "word": "own"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the piece alone on the Baltic again, as the hook opens",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "because",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stay",
+      "what": "a Russian flag pops on the piece"
+     },
+     {
+      "at": "join",
+      "what": "Poland's and Lithuania's flags pop beside it"
+     },
+     {
+      "at": "pick",
+      "what": "a pointer swings between them"
+     },
+     {
+      "at": "because",
+      "what": "the camera settles back on the hook's framing"
+     },
+     {
+      "at": "piece",
+      "what": "the piece's border traces round"
+     },
+     {
+      "at": "own",
+      "what": "the gap east flashes"
+     }
+    ],
+    "things": [
+     "russian flag",
+     "polish flag",
+     "lithuanian flag",
+     "pointer",
+     "the piece"
+    ]
+   }
+  }
+ ]
+}

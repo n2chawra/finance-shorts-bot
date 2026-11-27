@@ -35,6 +35,16 @@
       "day": "2026-11-25",
       "shipped": 3,
       "failed": 2
+    },
+    {
+      "day": "2026-11-26",
+      "shipped": 1,
+      "failed": 2
+    },
+    {
+      "day": "2026-11-27",
+      "shipped": 3,
+      "failed": 0
     }
   ],
   "videos": [
@@ -181,6 +191,48 @@
     {
       "id": "L-20261125-31",
       "day": "2026-11-25",
+      "template": "long_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261126-31",
+      "day": "2026-11-26",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261126-32",
+      "day": "2026-11-26",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA review failed after three rounds: in beat 'won' the CNBC headline card covered a face (first Chesky's, then a speaker's in the stage photo behind it); earlier rounds fixed the branded hook boxes, the empty polaroid desk, the boxes line and the date sub"
+    },
+    {
+      "id": "v-20261126-33",
+      "day": "2026-11-26",
+      "template": "short_story",
+      "status": "failed",
+      "reason": "QA review failed after three rounds: the 'years' depth shot of Jerry Yang pushed his eyes off the top edge and hid the middle of its sub-line behind his cut-out; earlier rounds fixed beat 2 (lesson 1), the split's dark face, the doubled poster title and a source chip over the billboard"
+    },
+    {
+      "id": "v-20261127-31",
+      "day": "2026-11-27",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "v-20261127-32",
+      "day": "2026-11-27",
+      "template": "short_story",
+      "status": "shipped",
+      "reason": null
+    },
+    {
+      "id": "L-20261127-31",
+      "day": "2026-11-27",
       "template": "long_story",
       "status": "shipped",
       "reason": null

@@ -1069,6 +1069,31 @@
       "found": "2026-11-25",
       "status": "fixed",
       "fixed": "2026-11-25"
+    },
+    {
+      "id": "dd-014",
+      "kind": "bug",
+      "title": "Workers typecheck red on main (posting-plan.ts, publishing.ts)",
+      "detail": "Under noUncheckedIndexedAccess, posting-plan.ts lines 90/96 assign splice(i,1)[0] (Video | undefined) to Video | null, and workers/lib/publishing.ts:99 reads slots[i + 1].getTime(). No runtime effect, but the merge workflow fails any branch touching workers/. posting-plan.ts fixed tonight (?? null); publishing.ts is owner-locked: notification workers-typecheck-red.",
+      "files": [
+        "apps/dashboard/src/lib/posting-plan.ts",
+        "workers/lib/publishing.ts"
+      ],
+      "severity": "high",
+      "found": "2026-11-27",
+      "status": "partly fixed (posting-plan.ts); publishing.ts owner"
+    },
+    {
+      "id": "dd-015",
+      "kind": "bug",
+      "title": "Queue page's promo plan ignores the owner's pick",
+      "detail": "On a promo channel (Disaster Desk), posting-plan.ts promoPick takes the Short whose long went out most recently, but workers/lib/publishing.ts pickPromo sorts the owner's pick (pickedAt) first. So when the owner picks a promo Short, the Queue and Calendar show a different Short in the next slot than Publish will send. Fix: in promoPick, prefer an eligible v.pickedAt before the newest long. Held until the workers typecheck is green (its test belongs in workers/tests/publishing.test.ts next to the existing promo test, and any workers/ change fails the merge until publishing.ts:99 is fixed).",
+      "files": [
+        "apps/dashboard/src/lib/posting-plan.ts"
+      ],
+      "severity": "low",
+      "found": "2026-11-27",
+      "status": "open"
     }
   ]
 }

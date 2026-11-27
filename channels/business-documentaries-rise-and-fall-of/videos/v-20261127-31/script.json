@@ -1,0 +1,973 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 51873,
+ "story": "founder_bet",
+ "shape": "true-history",
+ "currency": "USD",
+ "style": {
+  "palette": "forest",
+  "genre": "dossier",
+  "key": "E",
+  "bpm": 80
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "myth",
+ "cta": "His own gardens or the brokers: which one filled your cup? Comment",
+ "feed_id": "2026-11-27-lipton-own-estates-short",
+ "facts": [
+  {
+   "label": "The year Thomas Lipton opened his first shop in Glasgow",
+   "value": 1871,
+   "unit": "year",
+   "as_of": "1871-05-31",
+   "source": "Grace's Guide",
+   "url": "https://gracesguide.co.uk/Thomas_Lipton_(1848-1931)"
+  },
+  {
+   "label": "The year Lipton bought tea gardens in Ceylon",
+   "value": 1890,
+   "unit": "year",
+   "as_of": "1890-12-31",
+   "source": "NPR",
+   "url": "https://www.npr.org/sections/thesalt/2016/10/25/498863411/-from-tea-garden-to-teapot-how-lipton-became-an-empire"
+  },
+  {
+   "label": "Brands in the tea business Unilever sold to CVC",
+   "value": 34,
+   "unit": "count",
+   "as_of": "2021-11-18",
+   "source": "The Grocer",
+   "url": "https://thegrocer.co.uk/news/unilever-offloads-global-tea-business-to-cvc-in-45bn-deal/662039.article"
+  },
+  {
+   "label": "Price CVC agreed for Unilever's tea business, cash-free and debt-free",
+   "value": 4.5,
+   "unit": "money_billion",
+   "currency": "EUR",
+   "as_of": "2021-11-18",
+   "source": "Unilever / The Grocer",
+   "url": "https://thegrocer.co.uk/news/unilever-offloads-global-tea-business-to-cvc-in-45bn-deal/662039.article"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "estate",
+  "sec": 2.5,
+  "words": "A grocer's *tea gardens*",
+  "angle": "story",
+  "unique": "Lipton covers show his portrait; ours shows the Lipton factory on its Ceylon estate"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "Your Lipton tea bag is named after a shopkeeper from Glasgow.",
+   "events": {
+    "lipton": {
+     "word": "Lipton"
+    },
+    "bag": {
+     "word": "bag"
+    },
+    "named": {
+     "word": "named"
+    },
+    "shopkeeper": {
+     "word": "shopkeeper"
+    },
+    "glasgow": {
+     "word": "Glasgow"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "lipton"
+    },
+    {
+     "kind": "boom",
+     "at": "shopkeeper"
+    }
+   ],
+   "params": {
+    "place": [
+     "Grace's Guide record of Lipton's first shop",
+     "a box of Lipton Yellow Label tea"
+    ],
+    "things": [
+     "record card",
+     "Lipton tea box"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "shopkeeper",
+      "size": "medium"
+     },
+     {
+      "at": "glasgow",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lipton",
+      "what": "the highlighter swipes the year of the first shop"
+     },
+     {
+      "at": "shopkeeper",
+      "what": "cut to the yellow Lipton box"
+     },
+     {
+      "at": "glasgow",
+      "what": "a label: Glasgow"
+     }
+    ],
+    "fig": {
+     "year": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "document",
+      "header": {
+       "form": "Record",
+       "company": "Grace's Guide",
+       "title": "Thomas Lipton"
+      },
+      "lines": [
+       "Thomas Lipton, grocer and tea merchant, worked for some years in",
+       "America before he came home to Glasgow. There he opened his first",
+       "shop, Lipton's Market, in Stobcross Street, Glasgow, in {fact1}.",
+       "His shops spread across Britain, and he later bought tea estates",
+       "in Ceylon to sell tea from his own gardens."
+      ],
+      "hi": 2,
+      "phrase": "Stobcross Street, Glasgow, in {fact1}",
+      "markAt": "lipton",
+      "pushAt": "lipton",
+      "source": {
+       "form": "RECORD",
+       "text": "Grace's Guide"
+      },
+      "tilt": 8,
+      "out": "shopkeeper",
+      "push": 1.8
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lipton-tea-bag-e59f0b72.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "shopkeeper"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Glasgow",
+      "sub": "a grocer's name",
+      "at": "glasgow"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "gardens",
+   "role": "promise",
+   "say": "That shopkeeper, Thomas Lipton, ended up owning tea gardens on the other side of the world. So how does a grocer get tea gardens?",
+   "events": {
+    "shopkeeper": {
+     "word": "shopkeeper"
+    },
+    "thomas": {
+     "word": "Thomas"
+    },
+    "owning": {
+     "word": "owning"
+    },
+    "gardens": {
+     "word": "gardens"
+    },
+    "world": {
+     "word": "world"
+    },
+    "grocer": {
+     "word": "grocer"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "thomas"
+    }
+   ],
+   "params": {
+    "place": [
+     "a glass mug with a Lipton tea bag steeping",
+     "a Lipton Ice Tea glass in a Dutch shop"
+    ],
+    "things": [
+     "Lipton mug",
+     "tea bag",
+     "Lipton Ice Tea glass"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "owning",
+      "size": "close"
+     },
+     {
+      "at": "grocer",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "thomas",
+      "what": "a lower third: Thomas Lipton"
+     },
+     {
+      "at": "gardens",
+      "what": "a label: tea gardens"
+     },
+     {
+      "at": "world",
+      "what": "cut to a Lipton Ice Tea glass"
+     },
+     {
+      "at": "grocer",
+      "what": "the glass keeps pushing"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lipton-mug-tea-f1817f85.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "warm",
+      "out": "world"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lipton-ice-tea-glass-winschoten-2018-01-0b946a2f.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "world"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "lowerThird",
+      "name": "Thomas Lipton",
+      "role": "Glasgow grocer",
+      "at": "thomas",
+      "out": "gardens"
+     },
+     {
+      "kind": "label",
+      "text": "Tea gardens",
+      "sub": "a world away",
+      "at": "gardens",
+      "out": "grocer"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "start",
+   "role": "build",
+   "say": "He opened his first Glasgow shop in {fact1}, and he wanted no middlemen between him and his customers.",
+   "events": {
+    "opened": {
+     "word": "opened"
+    },
+    "shop": {
+     "word": "shop"
+    },
+    "wanted": {
+     "word": "wanted"
+    },
+    "middlemen": {
+     "word": "middlemen"
+    },
+    "customers": {
+     "word": "customers"
+    }
+   },
+   "params": {
+    "place": [
+     "the old Glasgow quays",
+     "Thomas Lipton cut out against his portrait"
+    ],
+    "things": [
+     "Glasgow harbour",
+     "Thomas Lipton"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "middlemen",
+      "size": "medium"
+     },
+     {
+      "at": "customers",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "opened",
+      "what": "old Glasgow harbour, a label with the year"
+     },
+     {
+      "at": "wanted",
+      "what": "cut: Lipton stands out from his greyed portrait"
+     },
+     {
+      "at": "middlemen",
+      "what": "a label: no middlemen"
+     },
+     {
+      "at": "customers",
+      "what": "push in"
+     }
+    ],
+    "fig": {
+     "year": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-glasgow-8766920566-c62e3897.jpg",
+      "focus": [
+       0.22,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "archive",
+      "out": "wanted"
+     },
+     {
+      "kind": "depth",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-thomas-johnstone-lipton-c599968d.jpg",
+      "cut": "media/business-documentaries-rise-and-fall-of/commons-photo-thomas-johnstone-lipton-c599968d-cut.png",
+      "bgTreatment": "bw",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "at": "wanted"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "sub": "first shop, Glasgow",
+      "at": "shop",
+      "out": "middlemen"
+     },
+     {
+      "kind": "label",
+      "text": "No middlemen",
+      "sub": "Thomas Lipton, grocer",
+      "at": "middlemen"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "ceylon",
+   "role": "build",
+   "say": "So in {fact2} he went to Ceylon, now Sri Lanka, and bought tea estates of his own.",
+   "events": {
+    "went": {
+     "word": "went"
+    },
+    "ceylon": {
+     "word": "Ceylon"
+    },
+    "sri": {
+     "word": "Sri"
+    },
+    "bought": {
+     "word": "bought"
+    },
+    "estates": {
+     "word": "estates"
+    },
+    "own": {
+     "word": "own"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "bought"
+    }
+   ],
+   "params": {
+    "place": [
+     "an old Ceylon tea estate"
+    ],
+    "things": [
+     "tea estate",
+     "estate bungalow"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "bought",
+      "size": "medium"
+     },
+     {
+      "at": "own",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ceylon",
+      "what": "a label: the year and Ceylon"
+     },
+     {
+      "at": "bought",
+      "what": "push on the estate"
+     },
+     {
+      "at": "own",
+      "what": "a stamp: his own"
+     }
+    ],
+    "fig": {
+     "year": "{fact2}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-ceylon-tea-estate-albumen-print-c-1880-b9879bb6.jpg",
+      "focus": [
+       0.4,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "archive"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact2}",
+      "sub": "Ceylon, now Sri Lanka",
+      "at": "sri",
+      "out": "own"
+     },
+     {
+      "kind": "stamp",
+      "text": "His own",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -5,
+      "at": "own"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "estate",
+   "role": "build",
+   "say": "His packs promised tea straight from his gardens, and his name went up over the factory.",
+   "events": {
+    "packs": {
+     "word": "packs"
+    },
+    "promised": {
+     "word": "promised"
+    },
+    "straight": {
+     "word": "straight"
+    },
+    "name": {
+     "word": "name"
+    },
+    "factory": {
+     "word": "factory"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "packs"
+    }
+   ],
+   "params": {
+    "place": [
+     "NPR's story card",
+     "the Lipton tea factory on Bunyan Estate, Ceylon"
+    ],
+    "things": [
+     "NPR headline",
+     "Lipton factory sign"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "name",
+      "size": "wide"
+     },
+     {
+      "at": "factory",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "packs",
+      "what": "NPR's card drops in"
+     },
+     {
+      "at": "straight",
+      "what": "the highlighter swipes the slogan"
+     },
+     {
+      "at": "name",
+      "what": "the card lifts off the factory with LIPTON on its roof"
+     },
+     {
+      "at": "factory",
+      "what": "a label: Bunyan Estate"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tea-factory-bunyan-estate-ceylon-nypl-hades-2359-013445e9.jpg",
+      "focus": [
+       0.62,
+       0.4
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "archive"
+     },
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "NPR",
+        "date": "2016-10-25",
+        "title": "From Tea Garden To Teapot: How Lipton Became An Empire",
+        "style": "paper",
+        "hi": "From Tea Garden To Teapot"
+       }
+      ],
+      "on": [
+       "packs"
+      ],
+      "markAt": "straight",
+      "out": "name",
+      "plate": false
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "Bunyan Estate",
+      "sub": "Ceylon",
+      "at": "factory"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "brokers",
+   "role": "turn",
+   "say": "But his gardens could never fill every pack. NPR found he bought from brokers too, and only a small part came from his own estates.",
+   "events": {
+    "never": {
+     "word": "never"
+    },
+    "pack": {
+     "word": "pack"
+    },
+    "npr": {
+     "word": "NPR"
+    },
+    "brokers": {
+     "word": "brokers"
+    },
+    "small": {
+     "word": "small"
+    },
+    "estates": {
+     "word": "estates"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "brokers"
+    }
+   ],
+   "params": {
+    "place": [
+     "tea pickers on a Ceylon estate"
+    ],
+    "things": [
+     "tea pickers",
+     "tea bushes"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "brokers",
+      "size": "medium"
+     },
+     {
+      "at": "small",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "npr",
+      "what": "the source chip lands"
+     },
+     {
+      "at": "brokers",
+      "what": "a stamp: brokers too"
+     },
+     {
+      "at": "small",
+      "what": "push in on the pickers"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-tea-estate-with-pluckers-nypl-hades-2359839-4044-c9b3f6fa.jpg",
+      "focus": [
+       0.5,
+       0.6
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "archive"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "Report",
+      "text": "NPR",
+      "date": "2016-10-25",
+      "at": "npr",
+      "out": "small"
+     },
+     {
+      "kind": "stamp",
+      "text": "Brokers too",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 6,
+      "at": "brokers"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "sale",
+   "role": "payoff",
+   "say": "The name stuck anyway. In the end, Unilever sold the tea business that held Lipton, {fact3} brands in all, for {fact4}.",
+   "events": {
+    "stuck": {
+     "word": "stuck"
+    },
+    "end": {
+     "word": "end"
+    },
+    "unilever": {
+     "word": "Unilever"
+    },
+    "held": {
+     "word": "held"
+    },
+    "brands": {
+     "word": "brands"
+    },
+    "for": {
+     "word": "for"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "unilever"
+    }
+   ],
+   "params": {
+    "place": [
+     "the gold poster over Unilever's Rotterdam office"
+    ],
+    "things": [
+     "Unilever office",
+     "Lipton logo",
+     "the sale price"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "unilever",
+      "size": "wide"
+     },
+     {
+      "at": "for",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "stuck",
+      "what": "the gold poster over Unilever's office"
+     },
+     {
+      "at": "unilever",
+      "what": "the figure settles"
+     },
+     {
+      "at": "held",
+      "what": "the Lipton logo drops in"
+     },
+     {
+      "at": "brands",
+      "what": "the source chip lands"
+     }
+    ],
+    "fig": {
+     "price": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-rotterdam-unilever-adfebb9a.jpg",
+      "focus": [
+       0.5,
+       0.45
+      ],
+      "date": "2021-11-18",
+      "title": "Unilever's tea business",
+      "figure": "price",
+      "sub": "{fact3} brands, Lipton among them",
+      "enter": "zoom"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lipton-logo-870665d4-cut.png",
+      "aspect": 2.2,
+      "pos": [
+       0.5,
+       0.14
+      ],
+      "size": 0.42,
+      "tilt": -3,
+      "at": "held"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "source",
+      "form": "Report",
+      "text": "The Grocer",
+      "date": "2021-11-18",
+      "at": "brands"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "loop",
+   "role": "loop",
+   "say": "His own gardens or the brokers: which one filled your cup? Either way, look closely, because",
+   "events": {
+    "own": {
+     "word": "own"
+    },
+    "brokers": {
+     "word": "brokers"
+    },
+    "filled": {
+     "word": "filled"
+    },
+    "cup": {
+     "word": "cup"
+    },
+    "closely": {
+     "word": "closely"
+    },
+    "because": {
+     "word": "because"
+    }
+   },
+   "params": {
+    "place": [
+     "Thomas Lipton at the wheel",
+     "the box of Lipton tea from the first frame"
+    ],
+    "things": [
+     "Thomas Lipton",
+     "Lipton tea box"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "cup",
+      "size": "medium"
+     },
+     {
+      "at": "because",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "own",
+      "what": "a stamp: own gardens?"
+     },
+     {
+      "at": "brokers",
+      "what": "a stamp: brokers?"
+     },
+     {
+      "at": "closely",
+      "what": "cut back to the Lipton box from the first frame"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-thomas-lipton-by-devred-18bd9489.jpg",
+      "frame": "full",
+      "out": "closely",
+      "move": "push",
+      "amount": 0.06,
+      "grade": "archive",
+      "focus": [
+       0.42,
+       0.5
+      ]
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lipton-tea-bag-e59f0b72.jpg",
+      "focus": [
+       0.45,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc",
+      "at": "closely"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Own gardens?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": -4,
+      "at": "own",
+      "out": "brokers"
+     },
+     {
+      "kind": "stamp",
+      "text": "Brokers?",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.25
+      ],
+      "tilt": 4,
+      "at": "brokers",
+      "out": "cup"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}

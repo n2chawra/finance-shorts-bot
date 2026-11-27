@@ -1,1 +1,11 @@
-{"notifications": []}
+{
+ "notifications": [
+  {
+   "key": "currencies-dkk-sek-chf",
+   "severity": "info",
+   "title": "Craze & Crash can now show Danish, Swedish, Norwegian and Swiss money; channel.json must allow them",
+   "detail": "Research left a LEGO story out because its sourced figures are in Danish kroner. Tonight the pipeline learned DKK, SEK, NOK and CHF: shown as 'DKK 83.5B', read aloud as 'eighty three point five billion Danish kroner', accepted by the number check. check-plan still only allows the currencies listed in the channel's channel.json (USD, GBP, EUR, INR), and agents may not edit that file.",
+   "fix": "Only if you want LEGO, Novo Nordisk, IKEA, H&M, Spotify or Nestle stories told in their own currency: 1. Open channels/business-documentaries-rise-and-fall-of/channel.json. 2. Add \"DKK\", \"SEK\", \"NOK\", \"CHF\" to the `currencies` list. 3. Commit to main. Otherwise nothing to do: those stories stay out of the feed."
+  }
+ ]
+}

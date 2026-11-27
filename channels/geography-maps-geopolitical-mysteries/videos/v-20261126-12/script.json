@@ -1,0 +1,1115 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 62903,
+ "story": "what_if_world",
+ "shape": "the-plug",
+ "currency": "USD",
+ "style": {
+  "palette": "sky",
+  "genre": "atlas",
+  "key": "C",
+  "bpm": 90,
+  "look": {
+   "stage": "desert",
+   "header": "strip",
+   "holder": "receipt",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Salt desert or blue sea: which Mediterranean would you visit? Comment",
+ "feed_id": "2026-11-26-what-if-mediterranean-dried-up",
+ "facts": [
+  {
+   "label": "Millions of years ago the gap at Gibraltar closed and the Mediterranean began to dry",
+   "value": 5.96,
+   "unit": "count_million",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+   "fixed": true
+  },
+  {
+   "label": "Millions of years ago the Atlantic broke back in and the crisis ended",
+   "value": 5.33,
+   "unit": "count_million",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+   "fixed": true
+  },
+  {
+   "label": "Cubic kilometres of water lost to evaporation each year once the sea was cut off",
+   "value": 3300,
+   "unit": "count",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+   "fixed": true
+  },
+  {
+   "label": "Cubic kilometres of water in the Mediterranean basin, millions",
+   "value": 3.7,
+   "unit": "count_million",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Messinian_salinity_crisis",
+   "fixed": true
+  },
+  {
+   "label": "Width of the Strait of Gibraltar at its narrowest, in kilometres",
+   "value": 14.2,
+   "unit": "count",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Strait_of_Gibraltar",
+   "fixed": true
+  },
+  {
+   "label": "Peak flow of the Zanclean flood, in millions of cubic metres a second",
+   "value": 100,
+   "unit": "count_million",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Zanclean_flood",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "desert",
+  "sec": 3.0,
+  "words": "Sea turned to *salt*",
+  "tag": "Mediterranean",
+  "angle": "question",
+  "figure": "{fact4}",
+  "who": "narrator",
+  "references": [
+   {
+    "id": "yOcOkexajMk",
+    "views": 6900000,
+    "what": "the plan's demand Short: the Mediterranean on a map with Gibraltar closed and the sea turned into a lake"
+   }
+  ],
+  "pattern": "the whole Mediterranean on the map with the change to it shown big; ours shows the dried salt basin with a last lake, our vintage look"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Why would the Mediterranean Sea turn into a desert of salt?",
+   "events": {
+    "mediterranean": {
+     "word": "Mediterranean"
+    },
+    "sea": {
+     "word": "Sea"
+    },
+    "desert": {
+     "word": "desert"
+    },
+    "salt": {
+     "word": "salt"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the whole Mediterranean, half of it already dry salt flats, a last blue lake shrinking in the middle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "desert",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mediterranean",
+      "what": "MEDITERRANEAN SEA writes across the water"
+     },
+     {
+      "at": "sea",
+      "what": "the waterline slips back from the coasts"
+     },
+     {
+      "at": "desert",
+      "what": "the camera pushes in on the dry floor"
+     },
+     {
+      "at": "salt",
+      "what": "salt crystals glitter across the flats"
+     }
+    ],
+    "things": [
+     "map of the mediterranean",
+     "salt flats",
+     "shrinking water",
+     "salt crystals"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "salt"
+    }
+   ]
+  },
+  {
+   "id": "gap",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It already did, once, and it all hangs on one gap at Gibraltar.",
+   "events": {
+    "already": {
+     "word": "already"
+    },
+    "once": {
+     "word": "once"
+    },
+    "hangs": {
+     "word": "hangs"
+    },
+    "gap": {
+     "word": "gap"
+    },
+    "gibraltar": {
+     "word": "Gibraltar"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Gap",
+    "place": "on the map: the whole sea full again, the camera on its western end",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "gibraltar",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "already",
+      "what": "the sea floods back to full"
+     },
+     {
+      "at": "once",
+      "what": "a stamp ONCE drops on the sea"
+     },
+     {
+      "at": "hangs",
+      "what": "the camera slides west"
+     },
+     {
+      "at": "gap",
+      "what": "the gap between Europe and Africa glows"
+     },
+     {
+      "at": "gibraltar",
+      "what": "GIBRALTAR writes on beside the gap"
+     }
+    ],
+    "things": [
+     "full sea",
+     "stamp",
+     "glowing gap",
+     "label"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "gap"
+    }
+   ]
+  },
+  {
+   "id": "narrow",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "That gap is just {fact5} kilometres wide, the sea's only door to the open Atlantic Ocean.",
+   "events": {
+    "that": {
+     "word": "That"
+    },
+    "wide": {
+     "word": "wide"
+    },
+    "door": {
+     "word": "door"
+    },
+    "atlantic": {
+     "word": "Atlantic"
+    },
+    "ocean": {
+     "word": "Ocean"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Narrow",
+    "place": "on the map: the Strait of Gibraltar close, Spain above, Morocco below, a ruler across the gap",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "sec": 1.3,
+      "size": "close"
+     },
+     {
+      "at": "atlantic",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "that",
+      "what": "a ruler swings across the strait"
+     },
+     {
+      "at": "wide",
+      "what": "the width tag stamps on the ruler"
+     },
+     {
+      "at": "door",
+      "what": "two door posts stand on either shore"
+     },
+     {
+      "at": "atlantic",
+      "what": "ATLANTIC writes on to the west"
+     },
+     {
+      "at": "ocean",
+      "what": "waves roll on the ocean side"
+     }
+    ],
+    "things": [
+     "ruler",
+     "width tag",
+     "door posts",
+     "atlantic label"
+    ],
+    "fig": {
+     "width": "{fact5}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "wide"
+    }
+   ]
+  },
+  {
+   "id": "pour",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The sun takes more water from this sea than its rivers bring, so the Atlantic keeps pouring in. So what if that door closed?",
+   "events": {
+    "sun": {
+     "word": "sun"
+    },
+    "takes": {
+     "word": "takes"
+    },
+    "water": {
+     "word": "water"
+    },
+    "rivers": {
+     "word": "rivers"
+    },
+    "bring": {
+     "word": "bring"
+    },
+    "atlantic": {
+     "word": "Atlantic"
+    },
+    "pouring": {
+     "word": "pouring"
+    },
+    "closed": {
+     "word": "closed"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Pour",
+    "place": "on the map: the sea under a hot sun, rivers flowing in, the Atlantic current pouring through the strait",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "atlantic",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "sun",
+      "what": "a hot sun rises over the sea"
+     },
+     {
+      "at": "takes",
+      "what": "steam curls up off the water"
+     },
+     {
+      "at": "water",
+      "what": "the steam drifts away"
+     },
+     {
+      "at": "rivers",
+      "what": "the Nile and the Rhone flow in, small"
+     },
+     {
+      "at": "bring",
+      "what": "their water trickles into the sea"
+     },
+     {
+      "at": "atlantic",
+      "what": "the camera slides to the strait"
+     },
+     {
+      "at": "pouring",
+      "what": "arrows of Atlantic water pour through the gap"
+     },
+     {
+      "at": "closed",
+      "what": "the gap flashes red"
+     }
+    ],
+    "things": [
+     "sun",
+     "steam",
+     "rivers",
+     "current arrows"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "pouring"
+    }
+   ]
+  },
+  {
+   "id": "shut",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "About {fact1} years ago, that door slammed shut.",
+   "events": {
+    "about": {
+     "word": "About"
+    },
+    "years": {
+     "word": "years"
+    },
+    "door": {
+     "word": "door"
+    },
+    "slammed": {
+     "word": "slammed"
+    },
+    "shut": {
+     "word": "shut"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Shut",
+    "place": "on the map: the strait, a dam of land rising across it, a year counter on a rock",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "slammed",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "about",
+      "what": "a stone tablet with the years rises on the shore"
+     },
+     {
+      "at": "years",
+      "what": "the map turns old and sepia"
+     },
+     {
+      "at": "door",
+      "what": "the land on both sides creeps together"
+     },
+     {
+      "at": "slammed",
+      "what": "the land closes the gap with a thud and dust"
+     },
+     {
+      "at": "shut",
+      "what": "the Atlantic arrows stop"
+     }
+    ],
+    "things": [
+     "stone tablet",
+     "land bridge",
+     "dust",
+     "stopped arrows"
+    ],
+    "fig": {
+     "ago": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "slammed"
+    }
+   ]
+  },
+  {
+   "id": "drain",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Cut off, the sun took {fact3} cubic kilometres of water a year, and almost nothing came in to replace it.",
+   "events": {
+    "cut": {
+     "word": "Cut"
+    },
+    "sun": {
+     "word": "sun"
+    },
+    "cubic": {
+     "word": "cubic"
+    },
+    "water": {
+     "word": "water"
+    },
+    "year": {
+     "word": "year"
+    },
+    "nothing": {
+     "word": "nothing"
+    },
+    "replace": {
+     "word": "replace"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Drain",
+    "place": "on the map: the whole sea under a blazing sun, the water level dropping",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "sec": 1.4,
+      "size": "wide"
+     },
+     {
+      "at": "year",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "cut",
+      "what": "a lock stamps on the closed strait"
+     },
+     {
+      "at": "sun",
+      "what": "the sun blazes bigger"
+     },
+     {
+      "at": "cubic",
+      "what": "a gauge on the shore shows the yearly loss"
+     },
+     {
+      "at": "water",
+      "what": "steam pours off the whole sea"
+     },
+     {
+      "at": "year",
+      "what": "the waterline drops a step"
+     },
+     {
+      "at": "nothing",
+      "what": "the dry riverbeds shrink to trickles"
+     },
+     {
+      "at": "replace",
+      "what": "the waterline drops another step"
+     }
+    ],
+    "things": [
+     "lock",
+     "blazing sun",
+     "gauge",
+     "steam",
+     "waterline"
+    ],
+    "fig": {
+     "loss": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "cubic"
+    }
+   ]
+  },
+  {
+   "id": "shrink",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Year after year, coast after coast, the water pulled back, leaving only salty lakes in the deepest basins.",
+   "events": {
+    "year": {
+     "word": "Year"
+    },
+    "after": {
+     "word": "after"
+    },
+    "coast": {
+     "word": "coast"
+    },
+    "pulled": {
+     "word": "pulled"
+    },
+    "salty": {
+     "word": "salty"
+    },
+    "leaving": {
+     "word": "leaving"
+    },
+    "lakes": {
+     "word": "lakes"
+    },
+    "deepest": {
+     "word": "deepest"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Shrink",
+    "place": "on the map: the coasts of the sea drying one after another, lakes left in the deep basins",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "lakes",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "year",
+      "what": "a year counter flips"
+     },
+     {
+      "at": "after",
+      "what": "it flips again"
+     },
+     {
+      "at": "coast",
+      "what": "the Adriatic dries"
+     },
+     {
+      "at": "pulled",
+      "what": "the Aegean dries"
+     },
+     {
+      "at": "salty",
+      "what": "salt crusts spread over the floor"
+     },
+     {
+      "at": "leaving",
+      "what": "salt crusts thicken along the old coasts"
+     },
+     {
+      "at": "lakes",
+      "what": "the camera pulls back on a few blue lakes left"
+     },
+     {
+      "at": "deepest",
+      "what": "SALT LAKES writes on over the deep basins"
+     }
+    ],
+    "things": [
+     "year counter",
+     "drying coasts",
+     "salt crust",
+     "salty lakes"
+    ]
+   }
+  },
+  {
+   "id": "canyon",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Rivers like the Nile chased the falling water, carving deep canyons down to the new floor.",
+   "events": {
+    "rivers": {
+     "word": "Rivers"
+    },
+    "nile": {
+     "word": "Nile"
+    },
+    "chased": {
+     "word": "chased"
+    },
+    "carving": {
+     "word": "carving"
+    },
+    "canyons": {
+     "word": "canyons"
+    },
+    "floor": {
+     "word": "floor"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Canyon",
+    "place": "on the map: the Nile's mouth in Egypt, the river cutting a canyon north across the dry floor",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "canyons",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rivers",
+      "what": "the Nile glints as it flows north"
+     },
+     {
+      "at": "nile",
+      "what": "NILE writes on beside it"
+     },
+     {
+      "at": "chased",
+      "what": "the river's end runs north after the waterline"
+     },
+     {
+      "at": "carving",
+      "what": "a canyon cuts open along its path"
+     },
+     {
+      "at": "canyons",
+      "what": "the camera pushes into the canyon walls"
+     },
+     {
+      "at": "floor",
+      "what": "the river spills onto the salt floor"
+     }
+    ],
+    "things": [
+     "nile",
+     "canyon",
+     "salt floor",
+     "river label"
+    ]
+   }
+  },
+  {
+   "id": "desert",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Until most of its {fact4} cubic kilometres were gone, leaving a salt desert kilometres deep. So how did the sea ever come back?",
+   "events": {
+    "until": {
+     "word": "Until"
+    },
+    "most": {
+     "word": "most"
+    },
+    "gone": {
+     "word": "gone"
+    },
+    "leaving": {
+     "word": "leaving"
+    },
+    "salt": {
+     "word": "salt"
+    },
+    "deep": {
+     "word": "deep"
+    },
+    "how": {
+     "word": "how"
+    },
+    "back": {
+     "word": "back"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Desert",
+    "place": "on the map: the empty basin, salt flats far below the old shoreline, a cut-away edge showing the depth",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "sec": 2.1,
+      "size": "wide"
+     },
+     {
+      "at": "salt",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "until",
+      "what": "the last lakes shrink"
+     },
+     {
+      "at": "most",
+      "what": "the volume tank starts draining"
+     },
+     {
+      "at": "gone",
+      "what": "the volume tank on the shore empties"
+     },
+     {
+      "at": "leaving",
+      "what": "the old shoreline glows as a dashed line"
+     },
+     {
+      "at": "salt",
+      "what": "salt crystals glitter on the floor"
+     },
+     {
+      "at": "deep",
+      "what": "a depth line drops from the shore to the floor"
+     },
+     {
+      "at": "how",
+      "what": "the camera eases back over the basin"
+     },
+     {
+      "at": "back",
+      "what": "a question mark pops over the basin"
+     }
+    ],
+    "things": [
+     "empty basin",
+     "volume tank",
+     "old shoreline",
+     "salt crystals",
+     "depth line"
+    ],
+    "fig": {
+     "volume": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "salt"
+    }
+   ]
+  },
+  {
+   "id": "break",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then, about {fact2} years ago, the Atlantic broke back in at Gibraltar, spilling over the rock.",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "atlantic": {
+     "word": "Atlantic"
+    },
+    "broke": {
+     "word": "broke"
+    },
+    "gibraltar": {
+     "word": "Gibraltar"
+    },
+    "spilling": {
+     "word": "spilling"
+    },
+    "rock": {
+     "word": "rock"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Break",
+    "place": "on the map: the land bridge at Gibraltar cracking, the Atlantic spilling over it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "sec": 1.3,
+      "size": "medium"
+     },
+     {
+      "at": "broke",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "then",
+      "what": "the stone tablet turns to the new date"
+     },
+     {
+      "at": "atlantic",
+      "what": "the Atlantic rises against the land bridge"
+     },
+     {
+      "at": "broke",
+      "what": "the bridge cracks and water bursts through"
+     },
+     {
+      "at": "gibraltar",
+      "what": "a waterfall foams down into the basin"
+     },
+     {
+      "at": "spilling",
+      "what": "the water runs over the rock"
+     },
+     {
+      "at": "rock",
+      "what": "the flood starts spreading east"
+     }
+    ],
+    "things": [
+     "stone tablet",
+     "land bridge",
+     "crack",
+     "waterfall"
+    ],
+    "fig": {
+     "ago": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "broke"
+    }
+   ]
+  },
+  {
+   "id": "flood",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "By one estimate it roared in at up to {fact6} cubic metres every second, filling the sea within two years.",
+   "events": {
+    "estimate": {
+     "word": "estimate"
+    },
+    "roared": {
+     "word": "roared"
+    },
+    "cubic": {
+     "word": "cubic"
+    },
+    "second": {
+     "word": "second"
+    },
+    "filling": {
+     "word": "filling"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "two": {
+     "word": "two"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Flood",
+    "place": "on the map: the whole basin, the flood racing east from Gibraltar",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "sec": 1.5,
+      "size": "medium"
+     },
+     {
+      "at": "filling",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "estimate",
+      "what": "a flow gauge pops up at the strait"
+     },
+     {
+      "at": "roared",
+      "what": "the water front races east"
+     },
+     {
+      "at": "cubic",
+      "what": "the flow figure lands on the gauge"
+     },
+     {
+      "at": "second",
+      "what": "the gauge needle hits the top"
+     },
+     {
+      "at": "filling",
+      "what": "the camera pulls back as the front sweeps across the basin"
+     },
+     {
+      "at": "sea",
+      "what": "the water reaches the far coasts"
+     },
+     {
+      "at": "two",
+      "what": "the whole sea is blue again"
+     }
+    ],
+    "things": [
+     "flow gauge",
+     "flood front",
+     "foam",
+     "full sea"
+    ],
+    "fig": {
+     "flow": "{fact6}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "two"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Salt desert or blue sea: which would you visit? Because close that one gap again, and the sea starts to drain.",
+   "events": {
+    "salt": {
+     "word": "Salt"
+    },
+    "blue": {
+     "word": "blue"
+    },
+    "visit": {
+     "word": "visit"
+    },
+    "close": {
+     "word": "close"
+    },
+    "gap": {
+     "word": "gap"
+    },
+    "drain": {
+     "word": "drain"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the whole Mediterranean, full, the gap at Gibraltar closing and the waterline slipping back as the hook opens",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "gap",
+      "size": "medium"
+     },
+     {
+      "at": "drain",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "salt",
+      "what": "one half of the sea turns to salt"
+     },
+     {
+      "at": "blue",
+      "what": "the other half glows blue"
+     },
+     {
+      "at": "visit",
+      "what": "a pointer swings between them"
+     },
+     {
+      "at": "close",
+      "what": "the camera turns to Gibraltar"
+     },
+     {
+      "at": "gap",
+      "what": "the land closes the gap"
+     },
+     {
+      "at": "drain",
+      "what": "the waterline starts slipping back from the coasts"
+     }
+    ],
+    "things": [
+     "salt half",
+     "blue half",
+     "pointer",
+     "closing gap",
+     "waterline"
+    ]
+   }
+  }
+ ]
+}

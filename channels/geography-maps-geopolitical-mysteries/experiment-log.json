@@ -1,66 +1,80 @@
 {
-  "experiments": [
-    {
-      "id": "geo-flag-fill",
-      "area": "colour",
-      "format": "short",
-      "status": "adopted",
-      "startedAt": "2026-11-19",
-      "templates": [
-        "short_story"
-      ],
-      "cycle": 1,
-      "metric": "heldAfterHook",
-      "guard": "qa_failures",
-      "minPerArm": 8,
-      "maxDays": 7,
-      "hypothesis": "A country covered by its own flag is recognised faster than a flat colour, so more viewers stay past the hook (owner, 19 Nov: 'test both if one video works better do then and drop other').",
-      "proposal": "owner note cmwn0jklx0001ib092if21wgj",
-      "adoptedAt": "2026-11-19",
-      "note": "Made the default without a verdict (owner, 2026-11-19: 'The feedback I have goes straight away, don't add it as a test')."
-    },
-    {
-      "id": "2026-11-19-border-trace",
-      "area": "look",
-      "format": "short",
-      "status": "adopted",
-      "startedAt": "2026-11-19",
-      "templates": [
-        "short_story",
-        "long_story"
-      ],
-      "description": "Map channels: the country a line is about gets a bright line with a glowing head running round its border until it closes (remotion/src/flat/map.tsx Fill.trace; director.md)",
-      "evidence": "owner note cmwn0p9tz0001jv09zeeqqwpd (19 Nov, on v-20261119-03): 'should be highlighted in animated way like lines rounding and completing over the corners'"
-    },
-    {
-      "id": "2026-11-23-factbook-archived",
-      "area": "pipeline",
-      "format": "short",
-      "status": "adopted",
-      "startedAt": "2026-11-23",
-      "templates": [
-        "short_story",
-        "long_story"
-      ],
-      "proposal": "factbook-retired",
-      "description": "Fact review confirms CIA World Factbook figures on the archived editions (2022-2025), the statistics office or Britannica; a facts[].url on the retired live pages fails (generator/prompts/fact_reviewer.md)",
-      "evidence": "research 2026-11-19: the live country pages show only the retirement notice",
-      "guard": "qa_failures"
-    },
-    {
-      "id": "geo-claim-hook",
-      "area": "hook",
-      "format": "short",
-      "status": "running",
-      "startedAt": "2026-11-24",
-      "templates": [
-        "short_story"
-      ],
-      "guard": "qa_failures",
-      "minPerArm": 8,
-      "maxDays": 7,
-      "hypothesis": "A claim that withholds its explanation keeps more viewers past the first second than a 'Why...?' question: the claim-led reference (2.7M) and our own contradiction opener (74.7% viewed) beat our plain question openers (48-55%).",
-      "cycle": 2
-    }
-  ]
+ "experiments": [
+  {
+   "id": "geo-flag-fill",
+   "area": "colour",
+   "format": "short",
+   "status": "adopted",
+   "startedAt": "2026-11-19",
+   "templates": [
+    "short_story"
+   ],
+   "cycle": 1,
+   "metric": "heldAfterHook",
+   "guard": "qa_failures",
+   "minPerArm": 8,
+   "maxDays": 7,
+   "hypothesis": "A country covered by its own flag is recognised faster than a flat colour, so more viewers stay past the hook (owner, 19 Nov: 'test both if one video works better do then and drop other').",
+   "proposal": "owner note cmwn0jklx0001ib092if21wgj",
+   "adoptedAt": "2026-11-19",
+   "note": "Made the default without a verdict (owner, 2026-11-19: 'The feedback I have goes straight away, don't add it as a test')."
+  },
+  {
+   "id": "2026-11-19-border-trace",
+   "area": "look",
+   "format": "short",
+   "status": "adopted",
+   "startedAt": "2026-11-19",
+   "templates": [
+    "short_story",
+    "long_story"
+   ],
+   "description": "Map channels: the country a line is about gets a bright line with a glowing head running round its border until it closes (remotion/src/flat/map.tsx Fill.trace; director.md)",
+   "evidence": "owner note cmwn0p9tz0001jv09zeeqqwpd (19 Nov, on v-20261119-03): 'should be highlighted in animated way like lines rounding and completing over the corners'"
+  },
+  {
+   "id": "2026-11-23-factbook-archived",
+   "area": "pipeline",
+   "format": "short",
+   "status": "adopted",
+   "startedAt": "2026-11-23",
+   "templates": [
+    "short_story",
+    "long_story"
+   ],
+   "proposal": "factbook-retired",
+   "description": "Fact review confirms CIA World Factbook figures on the archived editions (2022-2025), the statistics office or Britannica; a facts[].url on the retired live pages fails (generator/prompts/fact_reviewer.md)",
+   "evidence": "research 2026-11-19: the live country pages show only the retirement notice",
+   "guard": "qa_failures"
+  },
+  {
+   "id": "geo-claim-hook",
+   "area": "hook",
+   "format": "short",
+   "status": "running",
+   "startedAt": "2026-11-24",
+   "templates": [
+    "short_story"
+   ],
+   "guard": "qa_failures",
+   "minPerArm": 8,
+   "maxDays": 7,
+   "hypothesis": "A claim that withholds its explanation keeps more viewers past the first second than a 'Why...?' question: the claim-led reference (2.7M) and our own contradiction opener (74.7% viewed) beat our plain question openers (48-55%).",
+   "cycle": 2
+  },
+  {
+   "id": "geo-map-water",
+   "area": "motion",
+   "format": "short",
+   "status": "adopted",
+   "startedAt": "2026-11-25",
+   "adoptedAt": "2026-11-25",
+   "templates": [
+    "short_story"
+   ],
+   "proposal": "owner note cmwvnu9lg0001ic09oaajhjty",
+   "evidence": "owner note on v-20261125-12: the flood was a flat shape and a line",
+   "hypothesis": "Water that rolls in as waves holds viewers through flood beats."
+  }
+ ]
 }

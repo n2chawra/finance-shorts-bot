@@ -32,6 +32,72 @@
       "priority": "normal",
       "found": "2026-11-23",
       "status": "open"
+    },
+    {
+      "id": "long-recap-by-35pct",
+      "kind": "craft",
+      "title": "First recap-and-tease before the payoff, then one every 2-3 minutes",
+      "detail": "Both films so far had their first recap at 57-59% (Crocs 8:40 of 15:07, Pizza Hut vs Domino's 9:59 of 16:47), so viewers went 7.5-8.5 minutes with no 'so far' and no stated reason to stay. The scout spec and recipe ask for a recap-and-tease every 2-3 minutes. Studio: put a one-sentence 'so far … but' line at about 25-35% (just before the payoff chapter), and one more every 2-3 minutes after; keep each to one or two sentences (a long recap is itself a skip point). Check: in the script, no 3-minute stretch between chapter 1 and the ending without a recap or tease line; later, audience retention between 30% and 60% once the films have views.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-26",
+      "status": "open"
+    },
+    {
+      "id": "long-short-ending",
+      "kind": "idea",
+      "title": "Answer the question in under 40 s, without a separate 'what happened' chapter",
+      "detail": "The endings run 77 s (Crocs, from 13:50) and 100 s (Pizza Hut, its own 'Chapter eight' card at 90%). Audiences leave as soon as a story resolves, and a chapter card that promises a lesson reads as the end. Test: no chapter card for the ending; the mechanism in one or two lines straight after the last fact, then the comment question and end screen, all in 40 s or less. Judge on end hold / average view percentage of the long videos with and without it (long videos' own test).",
+      "where": "script",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "open"
+    },
+    {
+      "id": "long-chapter-dips",
+      "kind": "craft",
+      "title": "Record where long viewers leave, chapter by chapter",
+      "detail": "YouTube's key moments report marks dips (viewers leaving or skipping) and spikes (rewatching, which can also mean confusion). For each long video, store the retention curve's biggest dips and spikes with the beat on screen (like analysis/pictures.json for Shorts), so the next scout Tuesday-focus run can say which chapter starts lose people. Where: the stats worker and metrics/videos.json for format long (auditor lane). Done when L-20261123-31 has a dips list once it has enough views.",
+      "where": "metrics",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "open"
+    },
+    {
+      "id": "doc-event-nth-word",
+      "kind": "bug",
+      "title": "Doc beats: an event can only name a word's first occurrence",
+      "detail": "In L-20261127-31 two cuts landed on the wrong word because the word appeared earlier in the line ('So why toys? ... came back for toys' cut on the first 'toys'; 'So was it Amazon ... and Amazon' put the Amazon label on the Walmart photo). QA caught both on the stills. Fix (improver): let an event name its occurrence ({\"word\": \"toys\", \"nth\": 2}) in renderer/timeline/build.py, and have lint warn when an event's word occurs more than once in the line.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-27",
+      "status": "open"
+    },
+    {
+      "id": "doc-overlay-hold",
+      "kind": "craft",
+      "title": "Doc overlays: a minimum time on screen, and leave before the next overlay",
+      "detail": "QA on L-20261127-31 took four rounds mostly on overlay timing: labels left on after a cut, then (once given outs) labels on screen under 0.8 s, and stamps landing on the figure they were meant to sell. Fix (improver): in DocBeat/lint, hold every label, stamp and date at least 1.5 s, end it before the next overlay in the same corner lands, and never let a stamp cover a count-up or a highlighted document line.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-27",
+      "status": "open"
+    },
+    {
+      "id": "doc-split-caption-band",
+      "kind": "bug",
+      "title": "The split layer draws its names and figures inside the long video's caption band",
+      "detail": "In L-20261127-31 (payoff, what-if) the captions landed between the split's two figures. Studio replaced both splits with count-ups and a chart. Fix (improver): the split's names and figures sit above the caption zone in a 1920x1080 doc beat.",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-27",
+      "status": "open"
     }
   ]
 }

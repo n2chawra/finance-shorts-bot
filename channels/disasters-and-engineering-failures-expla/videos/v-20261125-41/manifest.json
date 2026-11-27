@@ -1,0 +1,429 @@
+{
+  "id": "v-20261125-41",
+  "createdAt": "2026-11-25T15:51:06.958174+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Titan, June 2023: the sub's last routine message at 3,363 metres, then silence, then the hull gave way seven seconds later",
+    "category": "deep-sea tourism",
+    "reach": "global",
+    "feed_id": "2026-11-20-titan-submersible"
+  },
+  "title": "Titan's Last Message Was Routine. Then the Sub Went Silent.",
+  "description": "The Titan submersible sent an ordinary message on its way down to the Titanic. Why did it never send another?\nWe rebuild Titan's last dive in 3D from the NTSB's final report: the routine message, the replies that got no answer, the water pressing on the carbon-fibre hull, and the moment it gave way.\nThe full minute-by-minute story is on the channel.\nSources: NTSB, ABC News (Oct 2025).\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.",
+  "hashtags": [
+    "#Shorts",
+    "#Titan",
+    "#OceanGate",
+    "#Titanic",
+    "#Engineering"
+  ],
+  "hookStyle": "question",
+  "cta": "The company or the rules: who should have stopped Titan? Comment",
+  "seed": 33631,
+  "style": {
+    "palette": "ocean",
+    "genre": "brace",
+    "key": "D",
+    "bpm": 66,
+    "voice": "bm_lewis",
+    "arms": {
+      "length": "30-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Titan's last message was routine. Then it went silent.",
+        "start": 0.3,
+        "seconds": 3.76,
+        "window": 4.4,
+        "fill": 0.855
+      },
+      {
+        "scene": "deep",
+        "text": "It was 3,363 metres down, near the Titanic. So what happened?",
+        "start": 4.7,
+        "seconds": 5.73,
+        "window": 6.4,
+        "fill": 0.895
+      },
+      {
+        "scene": "ship",
+        "text": "On the ship, the crew typed a reply. Then another. No answer.",
+        "start": 11.1,
+        "seconds": 4.08,
+        "window": 4.73,
+        "fill": 0.863
+      },
+      {
+        "scene": "inch",
+        "text": "At the Titanic's depth, the sea presses 5,554.5 pounds on every square inch.",
+        "start": 15.83,
+        "seconds": 7.21,
+        "window": 7.87,
+        "fill": 0.916
+      },
+      {
+        "scene": "hull",
+        "text": "Holding it back: a carbon fibre tube, 5 inches thick.",
+        "start": 23.7,
+        "seconds": 3.89,
+        "window": 4.53,
+        "fill": 0.859
+      },
+      {
+        "scene": "wall",
+        "text": "But investigators found that wall was likely already damaged, its layers coming apart.",
+        "start": 28.23,
+        "seconds": 5.57,
+        "window": 6.23,
+        "fill": 0.894
+      },
+      {
+        "scene": "payoff",
+        "text": "7 seconds after that message, the hull imploded. All 5 aboard died.",
+        "start": 36.8,
+        "seconds": 4.97,
+        "window": 5.63,
+        "fill": 0.883
+      },
+      {
+        "scene": "loop",
+        "text": "The company or the rules: who should have stopped Titan? Full story on our channel, from its last message.",
+        "start": 42.43,
+        "seconds": 6.36,
+        "window": 7.0,
+        "fill": 0.909
+      }
+    ]
+  },
+  "durationSec": 50,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.4,
+    "lufs": -16.2,
+    "music_under_voice_db": 22.3
+  },
+  "experiments": {},
+  "heard": {
+    "hookVoice": "bm_lewis",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of the changed loop line and cta ('The company or the rules: who should have stopped Titan?', on screen THE COMPANY / OR THE RULES?): blame stays within the reports. The NTSB MIR-25-36 probable cause is OceanGate's inadequate engineering process, and its contributing factors are insufficient voluntary guidance and US small passenger vessel regulations. The USCG report likewise faults OceanGate and calls for oversight and closing regulatory gaps. The line asks a question, names no individual and says no 'illegal'. The fail beat changed timing only, with no words or figures. Earlier fact confirmations stand and the disclaimer ends the description. Note: description says 'ABC News (Oct 2025)'; the article is Aug 2025."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "All 7 earlier notes fixed: the fail shot is lit red on black, the cover is Titan big and whole at 0.5 s, NO SIGNAL sits in the depth bar, the deep beat's '?' is inside the frame below the dot, the loop is a pick-one that leads back into the first line, the ship is distant and the gauge reads 5,554.5. Layout, craft and audio are clean and the length is 50 s, within 30-50.",
+        "fingerprint: 6128f94ce36e201a.84eaab0ea804ac95"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T14:49:56.245080+00:00",
+      "finishedAt": "2026-11-25T14:49:56.245080+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T14:51:53.231093+00:00",
+      "finishedAt": "2026-11-25T14:51:53.231093+00:00",
+      "notes": [
+        "beat 'hook'.params.moments[0].what contains a typed number; use a placeholder: 'Titan in 3D sinking through black water, lamps on, snow drifting up past it; date caption and the reconstruction tag; TITAN label types on'"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-25T14:52:00.052551+00:00",
+      "finishedAt": "2026-11-25T14:52:00.052551+00:00",
+      "notes": [
+        "beat 'ship': sfx kind must be one of pop, pop-high, whoosh, clink, ding, boom, fail, tick, beep, riser, kaching, scribble, paper, pin, pin-high, thud, chime, swell, glass, groan, creak, rivet, squelch, clatter, rush, subboom"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T14:52:03.244261+00:00",
+      "finishedAt": "2026-11-25T14:52:03.244261+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "warning: beat 'deep' runs 7.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'inch' runs 8.4 s with 4.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T14:56:33.151122+00:00",
+      "finishedAt": "2026-11-25T14:56:33.151122+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "warning: beat 'deep' runs 6.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'inch' runs 8.4 s with 4.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T14:58:25.505725+00:00",
+      "finishedAt": "2026-11-25T14:58:25.505725+00:00",
+      "notes": [
+        "Confirmed on NTSB MIR-25-36 (PDF read): 18 Jun 2023, all 5 aboard died, last msg 'dropping two weights' at 3,363 m, ship's ack at 1048 + 'lost tracking' 1049 unanswered, 5,554.5 psi at the Titanic wreck depth, cylinder nominally 5 in thick with titanium domes, likely delaminations after dive 80 + later damage; 7 s (USCG report) confirmed on the cited ABC/Yahoo page. Verify list: NTSB final report now published (Oct 2025) so citing it is current; Dawood's age not used. Disclaimer ends the description. Notes: the second ship bubble 'SHIP: STATUS?' could read 'LOST TRACKING' to match the report; description's 'ABC News (Oct 2025)' is Aug 2025; 5,554.5 psi is the wreck-site figure (sub was at 3,363 m), line says 'At the Titanic's depth' so it stands."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T14:57:42.578852+00:00",
+      "finishedAt": "2026-11-25T15:00:18.843209+00:00",
+      "notes": [
+        "fingerprint: 4fecebd7621a1c54.bde4faa5646b9b75",
+        "text 'SAFETY BOARD FINDING' at 35.7 s runs outside the frame",
+        "text 'OUTSIDE · THE SEA' at 35.7 s runs outside the frame",
+        "text 'INSIDE · THE CABIN' at 35.7 s runs outside the frame",
+        "4 of 12 stills are mostly empty background (at 5 s, 10 s, 20 s, 40 s): fill the frame (a set, the cast big, money as a thing)",
+        "length 53 s is outside 30–50 s: cut about 9 spoken words",
+        "the Short runs 53.2 s but its assigned length (arms.length) is 30-50 s: cut or add a beat",
+        "the hook runs 4.7 s; keep it to 4 s or less",
+        "warning: beat 'deep' runs 6.8 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'inch' runs 8.4 s with 4.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:01:18.858934+00:00",
+      "finishedAt": "2026-11-25T15:01:18.858934+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas.",
+        "warning: beat 'deep' runs 6.0 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: beat 'inch' runs 7.4 s with 4.0 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T15:01:52.773007+00:00",
+      "finishedAt": "2026-11-25T15:04:01.903800+00:00",
+      "notes": [
+        "fingerprint: 061062221a11d64d.8856db1911a67ec6",
+        "4.4 s with nothing new on screen in beat 'inch' (at most 4.0 s): add an action on the phrase being said there",
+        "4 of 11 stills are mostly empty background (at 5 s, 10 s, 20 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+        "warning: beat 'inch' runs 7.9 s with 4.4 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:04:35.094068+00:00",
+      "finishedAt": "2026-11-25T15:04:35.094068+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T15:05:07.000509+00:00",
+      "finishedAt": "2026-11-25T15:06:59.205498+00:00",
+      "notes": [
+        "fingerprint: c432f009c405769c.f016a1b7052e9604",
+        "2 of 11 stills are mostly empty background (at 5 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+        "warning: beat 'inch' runs 7.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-25T15:07:42.017129+00:00",
+      "finishedAt": "2026-11-25T15:09:31.906179+00:00",
+      "notes": [
+        "fingerprint: c432f009c405769c.e83d1a7ff58583ab",
+        "2 of 11 stills are mostly empty background (at 5 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+        "warning: beat 'inch' runs 7.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:10:28.989157+00:00",
+      "finishedAt": "2026-11-25T15:12:18.754358+00:00",
+      "notes": [
+        "fingerprint: c432f009c405769c.a44623f96638b88e",
+        "47 s, ocean/brace (preview only)",
+        "warning: beat 'inch' runs 7.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:12:37.412524+00:00",
+      "finishedAt": "2026-11-25T15:12:37.412524+00:00",
+      "notes": [
+        "Re-review after length cuts: the shortened hook, deep, ship, inch, hull, payoff and loop lines make no new claims and use the same 7 sourced facts, all confirmed earlier on NTSB MIR-25-36 (18 Jun 2023; all 5 aboard died; last msg at 3,363 m; ack + 'lost tracking' unanswered; 5,554.5 psi at wreck depth; 5 in cylinder) and on the ABC/Yahoo page (7 s, USCG). Ship's second bubble now LOST TRACKING, matching the NTSB. New SUNLIGHT ENDS / TOTAL DARKNESS ruler bands are general ocean zones with no figures. Disclaimer ends the description. Note: description still says 'ABC News (Oct 2025)'; the article is Aug 2025."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T15:13:14.627670+00:00",
+      "finishedAt": "2026-11-25T15:13:14.627670+00:00",
+      "notes": [
+        "[scene] 35.0s, beat 'fail' (Deep mode=fail, remotion/src/videos/v-20261125-41): the failure hero shot is a pale salmon-pink tube on a flat light-grey background. It is not black water, the wall does not glow red, there is no key light or depth, and it is far weaker than the lit 3D in v-20261122-41 and v-20261121-42. This repeats lessons 5 and 7. Make it a dark sea with the carbon wall going amber to red, lit and shadowed.",
+        "[script] thumbnail.png (thumbnail.sec 1.6 in the hook): the depth readout is caught mid-count at '628' when the true figure is 3,363 m, and the blurred chips behind it are mid-transition. Move thumbnail.sec to after the readout has settled on 3,363, or drop the readout from the cover.",
+        "[scene] 15.0s, beat 'ship' (Room): the red NO SIGNAL stamp sits on top of the 'SHIP' sender label of the LOST TRACKING bubble, so that label cannot be read. The script puts the stamp over the depth bar. Move it there or clear of the message log.",
+        "[script] loop beat, 42-47s: 'What should have kept Titan on the surface?' is an open question, not a pick-one between two concrete choices. 'The full story is on our channel.' does not run straight back into 'Titan's last message was routine.' Rewrite the last line so its words lead into the first line, with a two-option question.",
+        "[scene] 10.0s, beat 'deep' (Column): the TITAN label collides with the red '?' marker and the depth-tag pill, and the wreck's mast line cuts through the 'TITANIC' label. Give the labels clear space.",
+        "[scene] 45.0s, beat 'loop' (Deep mode=loop): the support ship is a flat red slab with a white block behind it, a box-like prop that breaks lesson 5. Give it a hull shape, a superstructure and a crane.",
+        "[scene] 20.0s, beat 'inch' (Inch): the gauge readout shows '5554.5' without grouping while the caption says '5,554.5'. Format it with the shared number formatter."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:14:16.697346+00:00",
+      "finishedAt": "2026-11-25T15:14:16.697346+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:14:17.817897+00:00",
+      "finishedAt": "2026-11-25T15:14:17.817897+00:00",
+      "notes": [
+        "7 figures computed from inputs; 7 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:14:49.284265+00:00",
+      "finishedAt": "2026-11-25T15:16:40.528765+00:00",
+      "notes": [
+        "fingerprint: 37e1f3def91fc65c.2ca03351b8d4cc11",
+        "50 s, ocean/brace (preview only)",
+        "warning: beat 'inch' runs 7.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:17:01.689292+00:00",
+      "finishedAt": "2026-11-25T15:17:01.689292+00:00",
+      "notes": [
+        "Re-review of the changed loop line and cta ('The company or the rules: who should have stopped Titan?', on screen THE COMPANY / OR THE RULES?): blame stays within the reports. The NTSB MIR-25-36 probable cause is OceanGate's inadequate engineering process, and its contributing factors are insufficient voluntary guidance and US small passenger vessel regulations. The USCG report likewise faults OceanGate and calls for oversight and closing regulatory gaps. The line asks a question, names no individual and says no 'illegal'. The fail beat changed timing only, with no words or figures. Earlier fact confirmations stand and the disclaimer ends the description. Note: description says 'ABC News (Oct 2025)'; the article is Aug 2025."
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-25T15:17:19.001897+00:00",
+      "finishedAt": "2026-11-25T15:17:19.001897+00:00",
+      "notes": [
+        "[scene] 10.0s, beat 'deep' (Column): the red '?' beside the sub dot was moved left with the labels and is now half off the frame's left edge. That '?' is the beat's 'happened' moment. Put it back inside the frame, for example above or to the right of the dot, clear of the TITAN label. The other six fixes check out: the fail shot is lit red on black, the thumbnail shows 3,363, NO SIGNAL sits in the depth bar, the loop is a pick-one that leads back into the first line, the ship is distant, and the gauge reads 5,554.5."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:18:02.146165+00:00",
+      "finishedAt": "2026-11-25T15:19:43.311368+00:00",
+      "notes": [
+        "fingerprint: 5eb6edb111251d6e.84eaab0ea804ac95",
+        "50 s, ocean/brace (preview only)",
+        "warning: beat 'inch' runs 7.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:19:51.266073+00:00",
+      "finishedAt": "2026-11-25T15:21:32.097989+00:00",
+      "notes": [
+        "fingerprint: 6128f94ce36e201a.84eaab0ea804ac95",
+        "50 s, ocean/brace (preview only)",
+        "warning: beat 'inch' runs 7.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:21:47.712732+00:00",
+      "finishedAt": "2026-11-25T15:21:47.712732+00:00",
+      "notes": [
+        "All 7 earlier notes fixed: the fail shot is lit red on black, the cover is Titan big and whole at 0.5 s, NO SIGNAL sits in the depth bar, the deep beat's '?' is inside the frame below the dot, the loop is a pick-one that leads back into the first line, the ship is distant and the gauge reads 5,554.5. Layout, craft and audio are clean and the length is 50 s, within 30-50.",
+        "fingerprint: 6128f94ce36e201a.84eaab0ea804ac95"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:21:54.614629+00:00",
+      "finishedAt": "2026-11-25T15:50:46.593886+00:00",
+      "notes": [
+        "50 s, ocean/brace, peak -1.0 dB, mean -18.4 dB",
+        "warning: beat 'inch' runs 7.9 s with 3.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+        "warning: integrated loudness -16.2 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-25T15:51:06.958559+00:00",
+      "finishedAt": "2026-11-25T15:51:06.958559+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261125-41",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261125-41"
+  },
+  "promoOf": "L-20261124-41"
+}

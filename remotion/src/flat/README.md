@@ -50,8 +50,11 @@ India outline. Inside a `Stage`/`View` (or a bare SVG):
 | `CutLine` | the border a split draws: only the stretch `state` shares with `parent`, a dashed red line running on as `k` goes 0 → 1 (v-20261125-61) |
 | `Neighbour` | a neighbouring country (China, Pakistan, Nepal, Bhutan, Bangladesh, Myanmar…) filled outside India's official outline, its whole `flag` fitted and clipped inside it (`k`, `flagK`, `lift`) (v-20261125-62) |
 | `BorderLine` | India's land border with a neighbour, a bright line drawn on as `k` goes 0 → 1, only where it runs along India's outline (v-20261125-62) |
+| `CoastLine` | a state's (or all of `"India"`'s) sea coast: the part of its border on India's official outline that touches no land neighbour, a bright line drawn on as `k` goes 0 → 1, or swept round a `pivot` from angle `a0` to `a1` (Gujarat to Bengal: 190 → -15) (v-20261126-61) |
+| `CoastSurf` | rings of foam rolling in onto India's sea coast from the sea side only (`t` = `m.t`, `k`, `period`, `reach`) (v-20261126-61) |
+| `SeaRipples` | small wave crests drifting on the open sea round India (outside the official outline and the land neighbours), so the sea never reads as a flat sheet (`t`, `k`, `gap`, `top`) (v-20261126-61) |
 | `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
-| `INDIA_STATES`, `stateHi(name)` | the 36 names (English) and each one's Devanagari name |
+| `INDIA_STATES`, `stateHi(name)`, `stateNow(name)` | the 36 names (English, the data keys) and each one's Devanagari name; Kerala shows as केरलम / Keralam, its official name since 25 Aug 2026 ("Keralam" also works as a key) |
 
 `MapLabel`, `MapPin` and `MapRoute` work inside `IndiaMap` too. `IndiaSheet` (Root) is a test reel:
 `npx remotion still src/index.ts IndiaSheet out.png --frame=100`.
@@ -62,17 +65,18 @@ Natural Earth country outlines (public domain, `world-atlas`) drawn in the house
 
 | Piece | What it draws |
 |---|---|
-| `WorldMap` | the map: `fit` (country names to frame) or `center` + `scale`; `kind` "world" (Natural Earth projection) or "flat" (Mercator, a region); `colors` ({ Chile: { fill, k } }, `k` fades a recolour in on a word; `draw` outlines it, `paint` brushes the colour in, `lift` raises it; `trace` (0 → 1) runs a bright line with a glowing head round its border until it closes, `traceColor` sets it; `flag: "<name>"` puts the whole flag, true to its 3:2 shape, inside the country as big as fits, over its colour, kept in frame; a flag the table lacks: just `fill`); `hide` (a disputed region a video can't show) |
+| `WorldMap` | the map: `fit` (country names to frame) or `center` + `scale`; `kind` "world" (Natural Earth projection) or "flat" (Mercator, a region); `colors` ({ Chile: { fill, k } }, `k` fades a recolour in on a word; `draw` outlines it, `paint` brushes the colour in, `lift` raises it; `trace` (0 → 1) runs a bright line with a glowing head round its border until it closes, `traceColor` sets it; `flag: "<name>"` puts the whole flag, true to its 3:2 shape, inside the country as big as fits, over its colour, kept in frame; a flag the table lacks: just `fill`); `hide` (a disputed region a video can't show); `lon0` the central meridian (a map centred across the date line keeps Russia and Alaska whole; v-20261127-12) |
 | `FlagArt` (`flags.tsx`) | a country's flag in a box (South Africa and Lesotho added for v-20261124-11, Panama for v-20261124-12, Ethiopia, Somalia, Kenya and Tanzania for v-20261125-12, Nepal, Bhutan and Myanmar for v-20261125-62) (`name`, `x`, `y`, `w`, `h`): stripes, crosses, discs, stars, simplified; `cover` fills a country's box at 3:2; `hasFlag(name)`, `FLAG_NAMES` (a planted flag, a sign; `FlagSheet` in Root shows them all) |
 | `MapLabel` | a place name at [lon, lat] with an ink halo |
 | `MapPin` | a pin that drops onto [lon, lat] |
 | `MapRoute` | a great-circle route through stops, drawn as `k` goes 0 → 1; `mover` rides its tip (a ship, a plane) |
-| `Lift` | a country's own shape laid over another place at true scale (Chile over India), sliding as `k` goes 0 → 1 |
+| `Lift` | a country's own shape laid over another place at true scale (Chile over India), sliding as `k` goes 0 → 1; `flag` (+ `flagK`) fills it with its whole flag clipped to its outline, `sx` stretches it east-west to match the map's projection (on `IndiaMap`, equirectangular: `1 / cos(lat)`) (v-20261126-62) |
 | `useAt()` | [lon, lat] → [x, y] on the current map, to stand a character or a sign on a place |
+| `MapWater` (`water.tsx`) | water that moves (owner, 2026-11-25): a sea, flood or lake spreading over `area` ([lon, lat] ring) or a country `name` from `from` as `k` goes 0 → 1: a wavy front with a rolling foam line and spray, a shallow band, ripples drifting on deep water, waves lapping the new shore once full; pass `t` (`m.t`). Works inside `WorldMap` and `IndiaMap` |
 
 Country names are Natural Earth's ("Chile", "Gambia", "Bosnia and Herz."). Borders are as controlled; a
 video about a disputed border follows that country's official map or uses `hide`. `MapSheet` (Root) is a
-test reel: `npx remotion still src/index.ts MapSheet out.png --frame=105`.
+test reel: `npx remotion still src/index.ts MapSheet out.png --frame=105` (`--frame=320` for `MapWater`).
 
 ## `cast.tsx`
 

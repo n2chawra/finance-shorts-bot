@@ -1,0 +1,121 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52931,
+  "duration_sec": 41,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "ledger",
+    "key": "A",
+    "bpm": 76
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Adidas and Puma were one shoe company, run by two brothers.",
+        "start": 0.3,
+        "seconds": 2.42,
+        "window": 3.1,
+        "fill": 0.781
+      },
+      {
+        "scene": "brothers",
+        "text": "Adi Dassler made the shoes. His brother Rudolf sold them, from one factory in a small German town.",
+        "start": 3.4,
+        "seconds": 4.33,
+        "window": 5.0,
+        "fill": 0.866
+      },
+      {
+        "scene": "fight",
+        "text": "Then the brothers fell out, and nobody ever settled why. So what happened to their factory?",
+        "start": 8.4,
+        "seconds": 3.64,
+        "window": 4.3,
+        "fill": 0.847
+      },
+      {
+        "scene": "adidas",
+        "text": "They cut it in half. Adi named his side Adidas, after himself.",
+        "start": 12.7,
+        "seconds": 2.64,
+        "window": 3.27,
+        "fill": 0.807
+      },
+      {
+        "scene": "puma",
+        "text": "Rudolf's side became Puma, across the little river that runs through town.",
+        "start": 15.97,
+        "seconds": 3.04,
+        "window": 3.7,
+        "fill": 0.822
+      },
+      {
+        "scene": "town",
+        "text": "The whole town took sides. People looked at your shoes before they talked to you. So which side won?",
+        "start": 19.67,
+        "seconds": 3.93,
+        "window": 4.6,
+        "fill": 0.854
+      },
+      {
+        "scene": "turn",
+        "text": "Today, Puma is the one falling behind. Its sales fell 13.1% last year, and it lost €645.5M.",
+        "start": 24.27,
+        "seconds": 6.98,
+        "window": 7.63,
+        "fill": 0.915
+      },
+      {
+        "scene": "payoff",
+        "text": "And Adidas, on the other bank? Last year Puma sold just 29% as much as Adidas did.",
+        "start": 31.9,
+        "seconds": 4.37,
+        "window": 5.03,
+        "fill": 0.869
+      },
+      {
+        "scene": "ending",
+        "text": "Adidas or Puma: which side are your shoes on? Because once upon a time,",
+        "start": 36.93,
+        "seconds": 3.19,
+        "window": 3.87,
+        "fill": 0.824
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "doc-document-first": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.0,
+    "lufs": -15.9,
+    "music_under_voice_db": 17.9
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 10.405,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

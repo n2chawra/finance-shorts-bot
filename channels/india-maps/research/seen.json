@@ -1,12 +1,59 @@
 {
- "claudeCode": {"latest": "2.1.331", "checked": "2026-11-25",
-  "notes": ["2.1.331 is the newest (checked tonight by the geography channel's research run): cloud turns that go silent while thinking are retried once, PushNotification fixed for headless scheduled runs. Nothing to change in the pipeline."]},
+ "claudeCode": {
+  "latest": "2.1.332",
+  "checked": "2026-11-27",
+  "notes": [
+   "2.1.332 still the newest on 2026-11-27.",
+   "2.1.332: beta skills from MCP servers, a PreSkillShellCommand hook, an OpenTelemetry event for responses, freeze and memory fixes. Nothing for the pipeline (no MCP skills in use).",
+   "2.1.331 is the newest (checked tonight by the geography channel's research run): cloud turns that go silent while thinking are retried once, PushNotification fixed for headless scheduled runs. Nothing to change in the pipeline."
+  ]
+ },
  "sources": {
-  "market-data": "origin/market-data has no india-maps folder yet (index.json scans 4 other channels, generatedAt 2026-11-24); used research/scan.json top IDs instead, seen 2026-11-25",
+  "market-data": "origin/market-data still has no india-maps folder at 2026-11-26 20:00 UTC: Thursday's scheduled Market run (16:47 UTC) hadn't started yet (last Thursday's ran 6.5 h late); used scan.json + vidIQ channel listings, seen 2026-11-27",
   "youtube-oembed": "youtube.com/oembed gives title and channel for a Short id; the watch page gives views until it throttles after ~5 requests, seen 2026-11-25",
   "wikipedia-api": "en.wikipedia.org/w/api.php extracts work for ~5 pages, then 'too many requests'; WebFetch of the article still works, seen 2026-11-25",
-  "mha-gov-in": "403 to fetch; use the Lok Sabha answers on eparlib.sansad.in, seen 2026-11-25"
+  "mha-gov-in": "403 to fetch; use the Lok Sabha answers on eparlib.sansad.in, seen 2026-11-25",
+  "youtube-watch": "watch pages answer 302 to google.com/sorry from the cloud container (throttled before the first request), and WebFetch of a Shorts page returns only the footer: use oEmbed for titles and the scan's numbers, seen 2026-11-26",
+  "coastline-official": "surveyofindia.gov.in PDF 503, moes.gov.in PDF 403, pmfias 403: the per-state revised coastline comes from Wikipedia Coastal India (citing MHA) and DeshGujarat, seen 2026-11-26",
+  "vidiq-channel": "vidiq.com/youtube-stats/channel/@<handle>/videos/ gives a channel's subs and recent uploads with views, dates, lengths and ids (WebFetch works): the way round blocked watch pages, seen 2026-11-27",
+  "pib-pdf": "static.pib.gov.in backgrounder PDFs: WebFetch can't read them, but the saved PDF extracts with pdftotext; nhsrcl.in answers 503, seen 2026-11-27",
+  "niche-outlier": "scan.json scores are views ÷ the channel's median Shorts views (workers/lib/niche.ts), not ÷ subscribers: not a demand.outlier, seen 2026-11-27"
  },
- "videos": ["mHcAxUG_iGA", "ZZu9XrsHoxI", "8zRLN0xOtTU", "fcvJHOWzcgI", "nHGwpVrDbXs", "TGbXY4gk_hc"],
- "news": ["Kerala renamed Keralam, Aug 2026"]
+ "videos": [
+  "8zRLN0xOtTU",
+  "TGbXY4gk_hc",
+  "ZZu9XrsHoxI",
+  "fcvJHOWzcgI",
+  "mHcAxUG_iGA",
+  "nHGwpVrDbXs",
+  "3Ze3gsrgIDc",
+  "CoivsJU7EQo",
+  "FbbfWxJjulY",
+  "I9MSenJH_90",
+  "MDBbLMF96-0",
+  "TmA7A8uwbQc",
+  "Ue2yLPDqxsc",
+  "dBo0LFXdek8",
+  "0hFleAISfho",
+  "YljzwNM27ag",
+  "DCNsoKMXBTE",
+  "n9Tb6NPTroo",
+  "AiYMCTOM7qY",
+  "LuksU3OlPAA",
+  "67FJIiUHtc4",
+  "6E5YbxA_lYw",
+  "YXz5hS6n8VA",
+  "QZWRn408xYc",
+  "MwAS8dPQ93I",
+  "yDLkDAwDuFg",
+  "wlvmQtl7zS4",
+  "bHEF2_EXH9E",
+  "qIVCjSS4DWk",
+  "gnGAwSY_Q_w",
+  "4fPA8WkEqCU"
+ ],
+ "news": [
+  "Kerala renamed Keralam, Aug 2026",
+  "India's coastline re-measured to 11,098.81 km (MHA 2024; MoES to Parliament Dec 2025)"
+ ]
 }

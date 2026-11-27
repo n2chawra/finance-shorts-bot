@@ -85,6 +85,13 @@ fix any beat near a limit as well.
 - **Keep clear** of a Short's bottom 560 px (captions and YouTube's buttons), its right-hand 150 px and the
   top-left logo for anything the viewer must see.
 - **The first frame** shows the subject with something moving; **the last** leads back into the first.
+- **A photo already has faces and lettering** (Craze & Crash: four Shorts failed QA after three rounds on
+  25-26 Nov, each round finding the next card on a face or a sign). Before any text layer goes over a photo (a
+  headline card, a source chip, a poster's title and figure, a depth layer's sub, a label), look at the photo and
+  set its `focus` (or the layer's `pos`) so the text lands on plain ground: sky, a blank wall, the darkened edge.
+  Never on a face, never on the photo's own sign, logo or words. A push-in or depth close-up keeps the eyes at
+  least 15% below the top edge and every named face inside the frame. Check each such layer on its still before
+  QA, all of them in one pass: QA fails text on text and a covered face every time.
 
 ## Pictures (the old shot, build and board beats: re-renders of old videos only)
 - **Something new at least every 2.5 s:** an action on every phrase, each on the word that names it
@@ -176,3 +183,5 @@ fix any beat near a limit as well.
   fireball, the collapse), never a gauge or screen as the subject. check-plan and the thumbnail spec check fail both.
 - **A long video's camera zooms only when the line needs it** (owner, 2026-11-24, L-20261124-21: "too many zoom in and zoom outs"). That video changed shot size every 1.3 s; `lint` and the render now fail a long video under one size change per 5 s on average or with more than 3 zooms in and straight back out inside 4 s. Hold a size for the idea and drift, pan or orbit inside it.
 - **A long hook shows the everyday thing before the machine** (owner, 2026-11-24, same video): the phone, then its chip, then the system that made it, each on its word (`long_story` README, Hook).
+- **Water moves like water** (owner, 2026-11-25, v-20261125-12): a flood, sea or rising water is `MapWater` (wavy front, foam, ripples, lapping shore), never a flat shape that scales up (`generator/prompts/director.md`).
+- **Kerala is Keralam** (since 25 Aug 2026, The Kerala (Alteration of Name) Act, 2026): say and show Keralam / केरलम for the state today; Kerala / केरल only for its history before then. The India map draws केरलम (`stateHi`, `stateNow` in `remotion/src/flat/india.tsx`).

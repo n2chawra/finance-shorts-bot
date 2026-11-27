@@ -90,13 +90,14 @@ export default function NotificationsPage() {
   const { data, error, isLoading } = useNotifications();
   const act = useNotificationAction();
   const toast = useToast();
-  const marked = useRef(false);
+  const marked = useRef(new Set<string>());
 
-  // opening the page counts as reading what's on it
+  // opening the page counts as reading what's on it. Kept per item, not once per visit: switching channel
+  // in the sidebar refetches this page's data without remounting it, and that channel's items count as read too.
   useEffect(() => {
-    if (!data || marked.current) return;
-    const unseen = data.open.filter((n) => !n.seenAt).map((n) => n.id);
-    marked.current = true;
+    if (!data) return;
+    const unseen = data.open.filter((n) => !n.seenAt && !marked.current.has(n.id)).map((n) => n.id);
+    unseen.forEach((id) => marked.current.add(id));
     if (unseen.length) act.mutate({ ids: unseen, action: "seen" });
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 

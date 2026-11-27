@@ -1,27 +1,115 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-24T19:34:40.014Z",
+  "generatedAt": "2026-11-26T18:31:11.211Z",
   "channel": "business-documentaries-rise-and-fall-of",
   "youtubeChecked": true,
   "summary": {
-    "videos": 16,
-    "checked": 11,
+    "videos": 24,
+    "checked": 15,
     "error": 0,
     "warning": 0,
-    "info": 1,
+    "info": 0,
     "owner": 0,
     "persistentErrors": 0
   },
-  "issues": [
-    {
-      "kind": "behind_youtube_stale",
-      "severity": "info",
-      "videoId": "v-20261124-31",
-      "youtubeId": "oULAk0UjZn4",
-      "detail": "Dashboard shows 28 views, YouTube 45; live counts last refreshed 152 min ago (they refresh while the dashboard is open)."
-    }
-  ],
+  "issues": [],
   "videos": [
+    {
+      "id": "L-20261125-31",
+      "title": "Pizza Hut Was the King. How Domino's Took the Crown",
+      "youtubeId": "yEKHRKygjdw",
+      "state": "published",
+      "publishAt": "2026-11-26T15:47:00.000Z",
+      "dashboard": {
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:11:31.770Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261126-31",
+      "title": "Adidas and Puma Were One Shoe Company, Run by Two Brothers",
+      "youtubeId": "cVs_2r65XIg",
+      "state": "published",
+      "publishAt": "2026-11-26T12:17:00.000Z",
+      "dashboard": {
+        "views": 4,
+        "likes": 1,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:11:31.770Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 5,
+        "likes": 1,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261125-32",
+      "title": "Blockbuster Had 9,094 Stores. Netflix Had an Envelope",
+      "youtubeId": "kqsfzF-bYq0",
+      "state": "published",
+      "publishAt": "2026-11-25T16:47:00.000Z",
+      "dashboard": {
+        "views": 325,
+        "likes": 8,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:11:31.770Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 326,
+        "likes": 8,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261125-34",
+      "title": "FedEx Was Down to $5,000. Its Founder Went to Las Vegas",
+      "youtubeId": "f5mZZ1HaxY8",
+      "state": "published",
+      "publishAt": "2026-11-25T12:17:00.000Z",
+      "dashboard": {
+        "views": 19,
+        "likes": 1,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:11:31.770Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 19,
+        "likes": 1,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261124-31",
       "title": "Juicero's $699 Juicer Only Squeezed Its Own Packs",
@@ -29,14 +117,14 @@
       "state": "published",
       "publishAt": "2026-11-24T16:47:00.000Z",
       "dashboard": {
-        "views": 28,
+        "views": 70,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 45,
+        "views": 70,
         "likes": 0,
         "comments": 0
       },
@@ -53,14 +141,14 @@
       "state": "published",
       "publishAt": "2026-11-24T15:47:00.000Z",
       "dashboard": {
-        "views": 1,
+        "views": 25,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1,
+        "views": 25,
         "likes": 0,
         "comments": 0
       },
@@ -77,15 +165,15 @@
       "state": "published",
       "publishAt": "2026-11-24T12:17:00.000Z",
       "dashboard": {
-        "views": 180,
-        "likes": 4,
+        "views": 232,
+        "likes": 5,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 185,
-        "likes": 4,
+        "views": 232,
+        "likes": 5,
         "comments": 0
       },
       "analytics": {
@@ -101,21 +189,21 @@
       "state": "published",
       "publishAt": "2026-11-23T16:47:00.000Z",
       "dashboard": {
-        "views": 63,
+        "views": 74,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 62,
+        "views": 74,
         "likes": 2,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 62,
+        "days": 1,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -125,21 +213,21 @@
       "state": "published",
       "publishAt": "2026-11-23T12:17:00.000Z",
       "dashboard": {
-        "views": 1494,
+        "views": 1537,
         "likes": 34,
-        "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "comments": 1,
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1495,
+        "views": 1538,
         "likes": 34,
-        "comments": 0
+        "comments": 1
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1482,
+        "days": 1,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -149,21 +237,21 @@
       "state": "published",
       "publishAt": "2026-11-22T16:47:00.000Z",
       "dashboard": {
-        "views": 1218,
+        "views": 1278,
         "likes": 16,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1220,
+        "views": 1278,
         "likes": 16,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1215,
+        "days": 2,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -173,21 +261,21 @@
       "state": "published",
       "publishAt": "2026-11-22T12:17:00.000Z",
       "dashboard": {
-        "views": 1382,
-        "likes": 29,
+        "views": 1487,
+        "likes": 31,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1386,
-        "likes": 29,
+        "views": 1491,
+        "likes": 31,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1380,
+        "days": 2,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -200,7 +288,7 @@
         "views": 62,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
@@ -209,9 +297,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 35,
-        "days": 1,
-        "lastDay": "2026-11-21"
+        "views": 62,
+        "days": 3,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -224,7 +312,7 @@
         "views": 700,
         "likes": 8,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
@@ -233,9 +321,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 46,
-        "days": 1,
-        "lastDay": "2026-11-21"
+        "views": 700,
+        "days": 3,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -248,7 +336,7 @@
         "views": 12,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
@@ -258,8 +346,8 @@
       },
       "analytics": {
         "views": 12,
-        "days": 2,
-        "lastDay": "2026-11-21"
+        "days": 4,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -269,21 +357,21 @@
       "state": "published",
       "publishAt": "2026-11-20T12:17:00.000Z",
       "dashboard": {
-        "views": 1139,
+        "views": 1140,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-24T17:02:47.648Z"
+        "liveAt": "2026-11-26T17:11:31.770Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1139,
+        "views": 1140,
         "likes": 2,
         "comments": 0
       },
       "analytics": {
         "views": 1139,
-        "days": 2,
-        "lastDay": "2026-11-21"
+        "days": 4,
+        "lastDay": "2026-11-23"
       }
     }
   ]

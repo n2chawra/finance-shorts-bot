@@ -1,0 +1,667 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T04:14:44.828600+00:00",
+    "finishedAt": "2026-11-27T04:14:44.828600+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:30:07.777187+00:00",
+    "finishedAt": "2026-11-27T04:30:07.777187+00:00",
+    "notes": [
+      "beat 'bill-open'.params.overlays[0].text contains a typed number; use a placeholder: 'Form 10-K'",
+      "the payoff comes after the turn",
+      "note: 6 questions in about 729 s of speech; at least 24 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'promise' opens like a line in one of the last scripts ('this is how'): new words",
+      "note: beat 'ch1' opens like a line in one of the last scripts ('chapter one the'): new words",
+      "note: beat 'ch2' opens like a line in one of the last scripts ('chapter two the'): new words",
+      "note: beat 'dotcom' opens like a line in one of the last scripts ('by the late'): new words",
+      "note: beat 'ch3' opens like a line in one of the last scripts ('chapter three the'): new words",
+      "note: beat 'recap1' opens like a line in one of the last scripts ('so far a'): new words",
+      "note: beat 'ch4' opens like a line in one of the last scripts ('chapter four the'): new words",
+      "note: beat 'ch5' opens like a line in one of the last scripts ('chapter five the'): new words",
+      "note: beat 'tease5' opens like a line in one of the last scripts ('so far a'): new words",
+      "note: beat 'tease7' opens like a line in one of the last scripts ('so what really'): new words",
+      "note: beat 'ch8' opens like a line in one of the last scripts ('chapter eight what'): new words",
+      "note: beat 'ask' opens like a line in one of the last scripts ('now we want'): new words",
+      "note: beat 'outro' opens like a line in one of the last scripts ('thanks for watching'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:31:07.820574+00:00",
+    "finishedAt": "2026-11-27T04:31:07.820574+00:00",
+    "notes": [
+      "beat 'kids-r-us'.params.layers[1].figure contains a typed number; use a placeholder: 'k146'",
+      "note: beat 'recap1': a \"Here's the game\" / \"Let's…\" warm-up is a line the channel has used too often; say it a new way",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:31:18.458850+00:00",
+    "finishedAt": "2026-11-27T04:31:18.458850+00:00",
+    "notes": [
+      "beat 'ch11'.params.overlays[0].sub contains a typed number; use a placeholder: 'Chapter 11'",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:31:23.857316+00:00",
+    "finishedAt": "2026-11-27T04:31:23.857316+00:00",
+    "notes": [
+      "doc video: edgar-1005414-0001005414-17-000011-p054.png is in beats [5, 64, 67]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-vintage-toys-r-us-boardman-ohio-d94b823f.jpg is in beats [7, 19, 113]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-new-york-stock-exchange-august-2017-02-3b232148.jpg is in beats [7, 39, 44, 51]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-1-dollar-bill-c52d6664.jpg is in beats [7, 43, 62]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-richmond-virginia-skyline-from-shockoe-bottom-3574e864.jpg is in beats [7, 74, 85]: a long video shows a picture at most twice, never in neighbouring beats; edgar-1005414-0001005414-17-000011-p004.png is in beats [9, 15, 42]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-toy-car-parking-lot-rows-of-colorful-model-cars-aefb635b.jpg is in beats [13, 29, 115]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-toys-r-us-south-miami-fl-83f727fa.jpg is in beats [14, 55, 65]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-amazon-box-d25f4daf.jpg is in beats [25, 28, 35, 71]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-toys-r-us-headquarters-terrace-5-img-5946-41aac615.jpg is in beats [27, 41, 49]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-sign-of-the-new-york-stock-exchange-broad-street-f2e4f8de.jpg is in beats [38, 42, 76]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-1907-series-united-states-five-dollar-bill-obver-61339d06.jpg is in beats [46, 65, 117]: a long video shows a picture at most twice, never in neighbouring beats; commons-photo-hp-35-calculator-2cd75a7a.jpg is in beats [53, 72, 108]: a long video shows a picture at most twice, never in neighbouring beats",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:34:03.585508+00:00",
+    "finishedAt": "2026-11-27T04:34:03.585508+00:00",
+    "notes": [
+      "facts[6] (1948 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[7] (1957 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[8] (1978 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (1994 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (1000 count, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (17 count, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (1996 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (2000 year, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (2010 year, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (2004 year, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (2006 year, 2007-02-03) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (2005 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (130 money_million, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (394 money_million, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (537 money_million, 2007-02-03) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (503 money_million, 2009-01-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (419 money_million, 2009-01-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[23] (447 money_million, 2012-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[24] (521 money_million, 2012-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[25] (442 money_million, 2012-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[26] (480 money_million, 2014-02-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[27] (524 money_million, 2014-02-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[28] (451 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[29] (429 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[30] (457 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[31] (460 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[32] (304 money_million, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[33] (5 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[34] (11.54 money_billion, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[35] (11.1 money_billion, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[36] (1691 count, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[37] (1.2 percent, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[38] (3.5 percent, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[39] (98 percent, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[40] (17 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[41] (6 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[42] (2010 year, 2012-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[43] (200 money_million, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[44] (2017 year, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[45] (2004 year, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[46] (2 money_billion, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[47] (2018 year, 2018-03-15) is not one of the feed topic's facts; copy them exactly",
+      "facts[48] (70 count, 2018-03-15) is not one of the feed topic's facts; copy them exactly",
+      "facts[49] (82 count, 2018-03-15) is not one of the feed topic's facts; copy them exactly",
+      "facts[50] (146 count, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[51] (1998 year, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[52] (120 count_million, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[53] (1 money_billion, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[54] (105 count, 2018-02-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[55] (3000 count, 2018-02-28) is not one of the feed topic's facts; copy them exactly",
+      "maths 'take16'.part is 457 but fact 31 is 4.57e+08 (457 money_million): use the fact's value",
+      "maths 'take16'.whole is 460 but fact 32 is 4.6e+08 (460 money_million): use the fact's value",
+      "maths 'take04'.part is 130 but fact 19 is 1.3e+08 (130 money_million): use the fact's value",
+      "maths 'take04'.whole is 304 but fact 33 is 3.04e+08 (304 money_million): use the fact's value",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:34:23.495439+00:00",
+    "finishedAt": "2026-11-27T04:34:23.495439+00:00",
+    "notes": [
+      "facts[6] (1948 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[7] (1957 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[8] (1978 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (1994 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (1000 count, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (17 count, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (1996 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (2000 year, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (2010 year, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (2004 year, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (2006 year, 2007-02-03) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (2005 year, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (130 money_million, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (394 money_million, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (537 money_million, 2007-02-03) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (503 money_million, 2009-01-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (419 money_million, 2009-01-31) is not one of the feed topic's facts; copy them exactly",
+      "facts[23] (447 money_million, 2012-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[24] (521 money_million, 2012-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[25] (442 money_million, 2012-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[26] (480 money_million, 2014-02-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[27] (524 money_million, 2014-02-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[28] (451 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[29] (429 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[30] (457 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[31] (460 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[32] (304 money_million, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[33] (5 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[34] (11.54 money_billion, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[35] (11.1 money_billion, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[36] (1691 count, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[37] (1.2 percent, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[38] (3.5 percent, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[39] (98 percent, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[40] (17 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[41] (6 money_million, 2017-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[42] (2010 year, 2012-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[43] (200 money_million, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[44] (2017 year, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[45] (2004 year, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[46] (2 money_billion, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[47] (2018 year, 2018-03-15) is not one of the feed topic's facts; copy them exactly",
+      "facts[48] (70 count, 2018-03-15) is not one of the feed topic's facts; copy them exactly",
+      "facts[49] (82 count, 2018-03-15) is not one of the feed topic's facts; copy them exactly",
+      "facts[50] (146 count, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[51] (1998 year, 2005-01-29) is not one of the feed topic's facts; copy them exactly",
+      "facts[52] (120 count_million, 2006-01-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[53] (1 money_billion, 2017-09-20) is not one of the feed topic's facts; copy them exactly",
+      "facts[54] (105 count, 2018-02-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[55] (3000 count, 2018-02-28) is not one of the feed topic's facts; copy them exactly",
+      "maths 'take16'.part is 457 but fact 31 is 4.57e+08 (457 money_million): use the fact's value",
+      "maths 'take16'.whole is 460 but fact 32 is 4.6e+08 (460 money_million): use the fact's value",
+      "maths 'take04'.part is 130 but fact 19 is 1.3e+08 (130 money_million): use the fact's value",
+      "maths 'take04'.whole is 304 but fact 33 is 3.04e+08 (304 money_million): use the fact's value",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:34:36.155518+00:00",
+    "finishedAt": "2026-11-27T04:34:36.155518+00:00",
+    "notes": [
+      "maths 'take16'.part is 457 but fact 31 is 4.57e+08 (457 money_million): use the fact's value",
+      "maths 'take16'.whole is 460 but fact 32 is 4.6e+08 (460 money_million): use the fact's value",
+      "maths 'take04'.part is 130 but fact 19 is 1.3e+08 (130 money_million): use the fact's value",
+      "maths 'take04'.whole is 304 but fact 33 is 3.04e+08 (304 money_million): use the fact's value",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T04:34:40.692618+00:00",
+    "finishedAt": "2026-11-27T04:34:40.692618+00:00",
+    "notes": [
+      "66 figures computed from inputs; 66 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:36:05.493940+00:00",
+    "finishedAt": "2026-11-27T04:36:05.493940+00:00",
+    "notes": [
+      "doc video: commons-photo-toy-car-parking-lot-rows-of-colorful-model-cars-aefb635b.jpg is in beats [13, 34, 119]: a long video shows a picture at most twice, never in neighbouring beats",
+      "note: 27 questions in about 840 s of speech; at least 28 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T04:37:01.772553+00:00",
+    "finishedAt": "2026-11-27T04:37:01.772553+00:00",
+    "notes": [
+      "66 figures computed from inputs; 66 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T04:40:11.843154+00:00",
+    "finishedAt": "2026-11-27T04:40:11.843154+00:00",
+    "notes": [
+      "62 figures computed from inputs; 62 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:46:27.634055+00:00",
+    "finishedAt": "2026-11-27T04:46:27.634055+00:00",
+    "notes": [
+      "beat 'kmart' + facts[45] (2004, 'The year of Kmart's bankruptcy'): wrong. Kmart filed for Chapter 11 in January 2002, not 2004 (the Reuters/investing.com article has the error; Axios/S&P Global and Bangor Daily News/BankruptcyData both put Kmart's filing in 2002). Change the fact to 2002, re-sourced to an outlet that states it (e.g. Axios 2017-12-15 'where Toys R Us ranks among retail bankruptcies'), and the line to '...since Kmart, in two thousand two'; the 'Kmart' label and Reuters source overlay must match the new source.",
+      "(minor, fix while there) beat 'canada': the UPI source shown only reports a bid for the 82-store Canadian arm; the line says the stores were sold and stayed open (true: Fairfax Financial bought it in 2018) - cite a source for the sale or say 'a buyer bid for its 82 Canadian stores' to match UPI."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T04:47:26.409508+00:00",
+    "finishedAt": "2026-11-27T04:47:26.409508+00:00",
+    "notes": [
+      "61 figures computed from inputs; 61 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:50:23.718649+00:00",
+    "finishedAt": "2026-11-27T04:50:23.718649+00:00",
+    "notes": [
+      "beat 'canada' ('it went differently... Toys R Us shops are still trading there today', label sub 'still trading'): superseded/misleading. Toys R Us Canada itself entered creditor protection on 2026-02-03 (Global News, CTV, BNN Bloomberg), shrank from about 100 stores to about 15, and in June 2026 the court split it among three buyers (Putman: 10 leases; trademarks to another firm; Vaughan Mills lease to Fox Group). The name now trades on a Putman licence to 2027-01-25 and a Staples shop-in-shop pilot (Nov 2026). Implying Canada escaped is no longer true. Say the 82 stores drew a bidder and kept trading for years, until the Canadian chain ran into debt trouble of its own (add a sourced fact if a year is spoken), and change the label sub to match."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:49:34.605726+00:00",
+    "finishedAt": "2026-11-27T04:58:02.541898+00:00",
+    "notes": [
+      "fingerprint: 445f466b672242ca.ed88fa19ea39a4fa",
+      "text 'Hove' at 764.1 s is 28.8 px, below the 30 px minimum",
+      "text 'after the closures' at 764.1 s is 13.9 px, below the 30 px minimum",
+      "3.1 s with nothing new on screen in beat 'jump' (at most 3.0 s): add an action on the phrase being said there",
+      "27 of 176 stills are mostly empty background (at 35 s, 45 s, 125 s, 170 s, 180 s, 240 s): fill the frame (a set, the cast big, money as a thing)",
+      "length 884 s is outside 900–1500 s: add about 48 spoken words",
+      "thumbnail-b.png is empty at phone size (edges 0.142, 0.15-0.5): fill it with the story",
+      "note: 27 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 98 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:00:03.014159+00:00",
+    "finishedAt": "2026-11-27T05:00:03.014159+00:00",
+    "notes": [
+      "61 figures computed from inputs; 61 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:01:04.246189+00:00",
+    "finishedAt": "2026-11-27T05:01:04.246189+00:00",
+    "notes": [
+      "61 figures computed from inputs; 61 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:02:28.479340+00:00",
+    "finishedAt": "2026-11-27T05:02:28.479340+00:00",
+    "notes": [
+      "Re-review after rewrite: all 55 facts confirmed (7 SEC 10-Ks read directly; Reuters/investing.com, UPI, CNBC fetched). The Kmart line is attributed to Reuters and correct (2002, more than a decade before 2017). The canada line now matches the record (82 stores drew a bidder per UPI; the Canadian chain filed for creditor protection Feb 2026). leak 'more than all of it' is true for FY2014/15. The new lines in catch, buildings, lesson2, lesson3, ask and ch8 are general or hedged. Disclaimer present. Notes: the kmart beat's Levittown 'Big Kmart liquidation' photo is a later store closing, not the 2002 filing (illustrative only); the description lists only one chapter."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:02:05.631435+00:00",
+    "finishedAt": "2026-11-27T05:06:50.616596+00:00",
+    "notes": [
+      "fingerprint: 7b5f9b07ebc224cc.7ee3654e15aabd63",
+      "text 'a shop inside' at 805.8 s is 23.3 px, below the 30 px minimum",
+      "3.1 s with nothing new on screen in beat 'sales04' (at most 3.0 s): add an action on the phrase being said there",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 102 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:07:08.362199+00:00",
+    "finishedAt": "2026-11-27T05:07:08.362199+00:00",
+    "notes": [
+      "61 figures computed from inputs; 61 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:08:09.762593+00:00",
+    "finishedAt": "2026-11-27T05:12:26.630012+00:00",
+    "notes": [
+      "fingerprint: 45b61b9f6fbbc060.7ee3654e15aabd63",
+      "905 s, night/ledger (preview only)",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 102 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:13:47.307035+00:00",
+    "finishedAt": "2026-11-27T05:17:58.965086+00:00",
+    "notes": [
+      "fingerprint: 47f0d8d85d69602b.7ee3654e15aabd63",
+      "905 s, night/ledger (preview only)",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 102 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:22:40.804906+00:00",
+    "finishedAt": "2026-11-27T05:22:40.804906+00:00",
+    "notes": [
+      "[script] 15s decades: the 'Toys R Us / Times Square, New York' label stays on after the cut to the taped-off closing store. Fix: label out at 'closing'.",
+      "[script] 55s left-open: 'Out of a year of sales / Toys R Us' label lands on a Kaplan College building (former-toys-r-us-independence-hwy photo), and the sales figure never shows. Fix: label out at 'weather', show the sales figure, and swap the photo for one where Toys R Us can be recognised (the same Kaplan photo comes back at 815s in tease7: swap it there too).",
+      "[script] 85-95s crib: event 'toys' resolves to the first word ('So why toys?', frame 21), so the crib photo is on for 0.7s and the 'A crib / bought once' label lands on a teddy bear (90s). Fix: cut to the teddy on a later word (e.g. 'came') so the crib shows under 'Parents bought a crib once'.",
+      "[script] 145s geoffrey: the 'Geoffrey / the mascot' label stays over the Times Square Ferris wheel after the cut. Fix: label out on the cut word.",
+      "[script] 45s bill-open: the bar labels 'Stores earned' and 'Interest bill' are tiny, with dark text on the dark bar over a busy store-sign photo, so they can't be read. Fix: plate true (or dim/blur the photo) and light labels.",
+      "[script] 310s three-firms: the white date card 'JUL 21, 2005 / TOYS R US GOES PRIVATE' sits on the white Bain Capital (and KKR) logo sticker, so neither can be read. Fix: show the date before the logos or after they leave, or move the logos below it.",
+      "[script] 390s control: the donut title 'Who controlled Toys R Us' is white over bright windows, and 'voting shares held by the owners' is small italic over the white sofa; neither can be read. Fix: plate true or a darker dim/grade.",
+      "[script] 445s jump: the 'A year later / still climbing' label covers the 'Before $130M' bar and its axis label, the 'jumped' mark sits on '$394M', and the bars sit over the calculator's LCD digits. Fix: drop or move the label (the marks already say it) and use plate true or blur the backdrop.",
+      "[script] 505-510s payoff: in the split's figure row the caption 'And then the interest' wedges between '$266M' and '$264M', and at 510s the GONE stamp lands right on the 99% payoff figure, which can't be read. Fix: drop the stamp or move it off the figure (the unit 'gone to interest' already says it), and keep the split figures clear of the caption band.",
+      "[script] 490-495s still-selling: 'And the stores kept selling' plays over a GOING OUT OF BUSINESS store (the picture contradicts the line), and the 'SALES IN ITS LAST FULL YEAR' eyebrow sits on the sign lettering. Fix: use a busy, trading store photo.",
+      "[script] 690s no-rescue: the date card 'MAR 15, 2018 / EVERYTHING MUST GO' stacks right on the count's 'AMERICAN STORES / 735' over the store sign: text on text. Fix: date out before the count lands, or separate their positions.",
+      "[scene] 715s everything: a blank greige frame, because the montage stack draws nothing until its first item at 'shelves'. Fix: montage shows its first item at beat start (or [script] first item at 'start').",
+      "[script] 740-745s buildings: the 'Still empty' label lands on top of the 'Former Toys R Us / Ohio' label (leaving 's R Us' showing), and the Ohio label sits on the Douglaston, NY photo. Fix: Ohio label at beat start, out at 'taken'; give each label an out.",
+      "[script] 815s canada-map: the dark Canada map is almost empty, and the tiny Toronto/Montreal pins sit at the bottom under the captions (the Toronto label is covered). Fix: fit tightly on Ontario/Quebec so the pins sit mid-frame above the captions.",
+      "[script] 820s ch8: the chapter card sits over a fridge and mattress dumped on a British terraced street (forlorn-forsaken-forgotten photo), unrelated to Toys R Us. Fix: use a former Toys R Us photo.",
+      "[script] 822-831s weather: event 'amazon' resolves to the first word ('So was it Amazon', frame 22), so the Walmart and Target photos never show; at 825-830s the 'Walmart / a rival' label lands on top of 'The weather' over an Amazon warehouse photo. Fix: cut to Amazon on 'online', and give the labels outs.",
+      "[script] 845s one-line: the 'A LOAN CAN'T BE OUTSOLD' stamp lands across the $11.54B figure and its eyebrow. Fix: stamp out before the count at 'sold', or move it clear of the figure.",
+      "[script] 850-855s what-if: the caption 'its stores earned $460M.' runs into the split's '$460M' and '$130M' figures, and the right pane is a Japanese barcode price checker, unrelated to 'interest before the buyout'. Fix: keep the figures above the caption band and use a relevant photo or document.",
+      "[script] 885-890s whole-story (and 240s ten-years timeline): half the frame is dark and empty while the grid fills. Fix: mode stack or fewer, larger cells; give the timeline a place behind it.",
+      "[script] Repeated pictures: doc:photo is 102 of 123 beats (craft note, at most 40%), and photos repeat: Kaplan 55/815s, five-dollar bill 480/515s, camping tents 605-610/670s, Times Square star 10/60/145/425/860s, calculator 420/555/560s. Fix: swap the repeats for documents, charts, timelines, polaroids or maps (lesson 6)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:25:14.231994+00:00",
+    "finishedAt": "2026-11-27T05:25:14.231994+00:00",
+    "notes": [
+      "61 figures computed from inputs; 61 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:27:13.727972+00:00",
+    "finishedAt": "2026-11-27T05:32:00.067291+00:00",
+    "notes": [
+      "fingerprint: 2e2fcf45171fc354.7ee3654e15aabd63",
+      "text 'Toys' at 91.8 s is 28.8 px, below the 30 px minimum",
+      "text 'bought again' at 91.8 s is 13.9 px, below the 30 px minimum",
+      "text 'on the house itself' at 349.5 s is 16.4 px, below the 30 px minimum",
+      "text 'the plan to sell shares' at 407.3 s is 16.4 px, below the 30 px minimum",
+      "text 'no deal' at 599.4 s is 16.4 px, below the 30 px minimum",
+      "text 'across the country' at 706.1 s is 28 px, below the 30 px minimum",
+      "text 'inside other stores' at 806.3 s is 23 px, below the 30 px minimum",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 102 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:33:34.236251+00:00",
+    "finishedAt": "2026-11-27T05:38:08.089574+00:00",
+    "notes": [
+      "fingerprint: 19763f2158fbdae8.7ee3654e15aabd63",
+      "text 'Toys' at 91.8 s is 28.8 px, below the 30 px minimum",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 102 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:39:15.895371+00:00",
+    "finishedAt": "2026-11-27T05:43:47.426204+00:00",
+    "notes": [
+      "fingerprint: 423f5d0f74ea7bde.7ee3654e15aabd63",
+      "text 'AGAIN AND AGAIN' at 91.8 s runs outside the frame",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 102 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:44:53.740265+00:00",
+    "finishedAt": "2026-11-27T05:49:15.401576+00:00",
+    "notes": [
+      "fingerprint: f95dd50dac057190.7ee3654e15aabd63",
+      "905 s, night/ledger (preview only)",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 102 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:50:30.286099+00:00",
+    "finishedAt": "2026-11-27T05:50:30.286099+00:00",
+    "notes": [
+      "[script] Overlays now flash too briefly to read, because each one leaves when the next layer lands. At 15s the decades date card 'MAR 15, 2018' (at began, out closing) is on screen 0.33s and is gone from the still. Also under 0.8s with an explicit out: the-claim EXCLUSIVE? 0.43s, asia-why 'Outside America' 0.47s, alone 'On its own' 0.5s, hope 'A last chance' 0.5s, asia 'Japan' 0.5s, uk-closed 'Hull' 0.53s, weather 'Walmart' 0.57s, intl 'Swindon' 0.6s, suppliers SHIPMENTS CURBED 0.6s, keep-open 'Open as usual' 0.67s, games 'Nintendo' 0.73s, one-line stamp 0.73s. Fix: hold every label, stamp and date at least ~1.5s (an earlier at, a later out, or drop it).",
+      "[script] 822-825s weather: the 'Amazon / online' label's at:'amazon' resolves to the first word ('So was it Amazon', frame 22), so it sits on the Walmart photo for 3s (825s); that Walmart photo is mostly trees and a parking lot. Fix: Amazon label at 'online', and a Walmart photo where the store can be seen.",
+      "[scene] 505s payoff and 850-855s what-if: the split layer puts its names and figures in the caption band, so the caption lands between them and touches them ('$266M And then the interest $264M'; '$460M its stores earned $460M. $130M'). Fix: the split component draws its names and figures above the caption zone (or the script drops split for these beats).",
+      "[script] 730s and 745s: the same liquidation aisle photo appears in ch11-vs-7 and everything, 15s apart. Fix: swap one."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:52:59.144632+00:00",
+    "finishedAt": "2026-11-27T05:52:59.144632+00:00",
+    "notes": [
+      "61 figures computed from inputs; 61 cross-checked against closed-form formulas.",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:54:06.399509+00:00",
+    "finishedAt": "2026-11-27T05:58:37.266125+00:00",
+    "notes": [
+      "fingerprint: 69b434988c07bb51.7ee3654e15aabd63",
+      "905 s, night/ledger (preview only)",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 103 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T05:59:55.142498+00:00",
+    "finishedAt": "2026-11-27T06:04:31.118388+00:00",
+    "notes": [
+      "fingerprint: 4d043b9b08515f62.7ee3654e15aabd63",
+      "905 s, night/ledger (preview only)",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 103 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:05:38.435772+00:00",
+    "finishedAt": "2026-11-27T06:10:20.524245+00:00",
+    "notes": [
+      "fingerprint: eebffe11f09a9e40.7ee3654e15aabd63",
+      "905 s, night/ledger (preview only)",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 103 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T06:11:10.310592+00:00",
+    "finishedAt": "2026-11-27T06:11:10.310592+00:00",
+    "notes": [
+      "[script] 845s one-line: the 'A LOAN CAN'T BE OUTSOLD' stamp lies right across the $11.54B figure and its eyebrow, so neither can be read (it stays on now). Fix: stamp out at 'sold' before the count lands, or move it clear of the figure, or drop it.",
+      "[script] 830s weather: the 'Amazon / online' label lands at 'more', over the Target store photo, before the cut to Amazon at 'online'. Fix: label at 'online' (or cut the Amazon photo at 'more').",
+      "[script] 400s conflicts: the 'CONFLICTS OF INTEREST' stamp covers the highlighted 10-K sentence it quotes ('The Sponsors control us…'). Fix: put the stamp below the quoted lines or drop it.",
+      "[script] 520s left: the 'ALMOST NOTHING' stamp covers the highlighted 'Earnings (loss) before income taxes' row and its $5 figure, the line the beat is about. Fix: put the stamp below the table rows or drop it.",
+      "[script] 848-853s what-if: the chart plate is empty except for the axis labels until drawAt 'earned' (about 5s into the beat). Fix: draw the chart at the start of the beat, or open on a photo and cut to the chart at 'earned'."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:11:31.753540+00:00",
+    "finishedAt": "2026-11-27T06:11:31.753540+00:00",
+    "notes": [
+      "61 figures computed from inputs; 61 cross-checked against closed-form formulas.",
+      "note: 28 questions in about 870 s of speech; at least 29 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:12:41.778783+00:00",
+    "finishedAt": "2026-11-27T06:17:29.028660+00:00",
+    "notes": [
+      "fingerprint: cd9100bd713e6d6f.7ee3654e15aabd63",
+      "906 s, night/ledger (preview only)",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 103 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: 28 questions in about 870 s of speech; at least 29 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T06:18:07.703756+00:00",
+    "finishedAt": "2026-11-27T06:18:07.703756+00:00",
+    "notes": [
+      "[script] 830s weather: the 'Walmart / a rival' label (at walmart, no out) stays to the end of the beat, so it sits on the Target photo and then on the Amazon warehouse photo (830s). Fix: label out at 'target'.",
+      "[script] 850-855s what-if: the bar labels 'Stores earned, last full year' and 'Interest before the buyout' wrap to three lines and run into the caption band; the caption 'its stores earned $460M.' covers 'full year' and 'buyout'. Fix: one-line labels ('Stores earned', 'Old interest bill') so they sit above the captions.",
+      "[script] 520s left: the 'Out of a year of sales / fiscal year' label lands at 'tax', while the line and screen give $5M left before tax, so the label doesn't match the figure shown. Fix: label 'Left before tax' at 'tax' (and 'Out of a year of sales' only at 'sales'), or drop the label."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:18:24.432784+00:00",
+    "finishedAt": "2026-11-27T06:18:24.432784+00:00",
+    "notes": [
+      "61 figures computed from inputs; 61 cross-checked against closed-form formulas.",
+      "note: 28 questions in about 870 s of speech; at least 29 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:19:34.468975+00:00",
+    "finishedAt": "2026-11-27T06:24:34.873251+00:00",
+    "notes": [
+      "fingerprint: 615bc10cef37b2b0.7ee3654e15aabd63",
+      "906 s, night/ledger (preview only)",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 103 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: 28 questions in about 870 s of speech; at least 29 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:25:01.319601+00:00",
+    "finishedAt": "2026-11-27T06:25:01.319601+00:00",
+    "notes": [
+      "Stills (every 5s, 0-906s) are clean after 4 fix rounds: no text overlaps, no cut-off or tiny text, no empty frames; labels match their pictures and figures; charts on plates; thumbnails A/B/C read at small size, pick A (KILLED BY DEBT) matches the title; layout_problems empty, 906s within 900-1500, audio peak -1.0 mean -16.2.",
+      "fingerprint: 615bc10cef37b2b0.7ee3654e15aabd63"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:25:11.813696+00:00",
+    "finishedAt": "2026-11-27T07:43:59.105524+00:00",
+    "notes": [
+      "906 s, night/ledger, peak -1.0 dB, mean -16.2 dB",
+      "note: 33 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: doc:photo is 103 of 123 composed beats (at most 40%): vary how each idea is shown",
+      "note: doc:photo 4 times in a row: change the device",
+      "note: 28 questions in about 870 s of speech; at least 29 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'dc' opens like a line in one of the last scripts ('where did it'): new words"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T07:44:34.743627+00:00",
+    "finishedAt": "2026-11-27T07:44:34.743627+00:00",
+    "notes": [
+      "feed topic '2026-11-19-toys-r-us' can't be used: facts may be out of date (research must confirm the latest release): Stores operated or licensed when Lazarus retired (over) (as of 2017-01-28); Countries and jurisdictions with stores when Lazarus retired (as of 2017-01-28); Interest expense, fiscal 2004 (as of 2006-01-28)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T07:44:43.565562+00:00",
+    "finishedAt": "2026-11-27T07:44:43.565562+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-27T07:44:51.707509+00:00",
+    "finishedAt": "2026-11-27T07:44:51.707509+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

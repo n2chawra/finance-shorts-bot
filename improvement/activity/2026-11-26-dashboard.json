@@ -1,0 +1,20 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-26T17:32:14Z",
+  "finishedAt": "2026-11-26T17:44:42Z",
+  "summary": "Bug hunt across all five channels: tsc, lint, build and 133 smoke tests pass. Fixed two bugs on the Agents page: experiment results were always called views, and the topic feed's empty state talked about money news.",
+  "decision": "acted",
+  "why": "The weekly loop judges tests on points of stayed to watch, not views (policy.md); the Experiments tab showed no result for a loop test and mislabelled the rest. Both are bugs the owner sees on a page used daily.",
+  "findings": [
+    {"title": "Experiment results mislabelled", "detail": "Every result read '% views'; a weekly-loop result (points, p_on_better) showed nothing."},
+    {"title": "Finance-era copy", "detail": "Topic feed's empty state said 'Research reads the money news' on every channel."},
+    {"title": "Live site up", "detail": "/api/health answered: us-east-2, database 3.2 s."}
+  ],
+  "changes": [
+    {"title": "Agents: experiment results in the words they were judged on", "detail": "'+6.2 points stayed to watch · 84% sure', or a ratio with its own metric; 'adopted' gets a green badge. Smoke test added.", "branch": "agent/dashboard/2026-11-26"},
+    {"title": "Agents: topic feed empty state fits every channel", "detail": "Speaks about the selected channel's niche. Smoke test added.", "branch": "agent/dashboard/2026-11-26"}
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-26.md"}]
+}

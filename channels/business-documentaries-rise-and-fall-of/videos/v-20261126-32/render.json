@@ -1,0 +1,115 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 38517,
+  "duration_sec": 38,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "dossier",
+    "key": "F",
+    "bpm": 81
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Airbnb's founders sold cereal at $40 a box to keep their company alive.",
+        "start": 0.3,
+        "seconds": 3.33,
+        "window": 3.93,
+        "fill": 0.847
+      },
+      {
+        "scene": "price",
+        "text": "Investors had turned the young start-up down. So how could cereal keep it going?",
+        "start": 4.23,
+        "seconds": 3.31,
+        "window": 3.97,
+        "fill": 0.834
+      },
+      {
+        "scene": "mattress",
+        "text": "Back then, Airbnb meant an air mattress on a stranger's floor.",
+        "start": 8.2,
+        "seconds": 2.32,
+        "window": 3.0,
+        "fill": 0.773
+      },
+      {
+        "scene": "boxes",
+        "text": "So after both parties' conventions, the founders made election cereal: Obama O's and Cap'n McCain's.",
+        "start": 11.2,
+        "seconds": 4.72,
+        "window": 5.4,
+        "fill": 0.874
+      },
+      {
+        "scene": "sold",
+        "text": "They sold more than 1,000 of them. But could cereal win over an investor?",
+        "start": 16.6,
+        "seconds": 3.31,
+        "window": 3.97,
+        "fill": 0.834
+      },
+      {
+        "scene": "won",
+        "text": "Co-founder Brian Chesky says the boxes won over their first investors.",
+        "start": 20.57,
+        "seconds": 3.07,
+        "window": 3.73,
+        "fill": 0.823
+      },
+      {
+        "scene": "yc",
+        "text": "Y Combinator put in $20,000, and took 6% of the company.",
+        "start": 24.3,
+        "seconds": 3.36,
+        "window": 4.03,
+        "fill": 0.834
+      },
+      {
+        "scene": "payoff",
+        "text": "But first, those cereal boxes brought in $30,000, enough to keep Airbnb going.",
+        "start": 28.33,
+        "seconds": 3.83,
+        "window": 4.47,
+        "fill": 0.857
+      },
+      {
+        "scene": "ending",
+        "text": "Cereal or the air mattress: which one really saved Airbnb? Because once upon a time,",
+        "start": 32.8,
+        "seconds": 3.86,
+        "window": 4.53,
+        "fill": 0.852
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "doc-document-first": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.6,
+    "lufs": -16.6,
+    "music_under_voice_db": 17.4
+  },
+  "craft_problems": []
+}

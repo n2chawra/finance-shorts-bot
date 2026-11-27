@@ -1,0 +1,1126 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 38214,
+ "story": "why_shaped",
+ "shape": "the-missing-link",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "explorer",
+  "key": "E",
+  "bpm": 78,
+  "look": {
+   "stage": "street",
+   "header": "ribbon",
+   "holder": "sign",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "Finish the road or keep the gap? Comment",
+ "feed_id": "2026-11-27-darien-gap-no-road",
+ "facts": [
+  {
+   "label": "Length of the Pan-American Highway road system, in kilometres",
+   "value": 30000,
+   "unit": "count",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Darién_Gap",
+   "fixed": true
+  },
+  {
+   "label": "Distance between the highway's ends at Yaviza and Turbo, in kilometres",
+   "value": 106,
+   "unit": "count",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Darién_Gap",
+   "fixed": true
+  },
+  {
+   "label": "Width of the Atrato marshland on the Colombian side, in kilometres",
+   "value": 80,
+   "unit": "count",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Darién_Gap",
+   "fixed": true
+  },
+  {
+   "label": "Area of Darién National Park, in square kilometres",
+   "value": 5790,
+   "unit": "count",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Darién_Gap",
+   "fixed": true
+  },
+  {
+   "label": "Year Darién National Park was established",
+   "value": 1980,
+   "unit": "year",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Darién_Gap",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "gap",
+  "sec": 4.2,
+  "words": "The road *stops* here",
+  "tag": "Darién Gap",
+  "angle": "question",
+  "figure": "{fact2}",
+  "who": "narrator",
+  "references": [
+   {
+    "id": "tT-BzWbyqkw",
+    "views": 9700000,
+    "what": "the plan's demand Short: the map of Panama and Colombia with the gap in the road marked"
+   }
+  ],
+  "pattern": "the break in the road between Panama and Colombia marked on the map with a short question; ours takes the gap with its sign on our vintage map"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Why does the road from Alaska to Argentina stop in Panama?",
+   "events": {
+    "road": {
+     "word": "road"
+    },
+    "alaska": {
+     "word": "Alaska"
+    },
+    "argentina": {
+     "word": "Argentina"
+    },
+    "stop": {
+     "word": "stop"
+    },
+    "panama": {
+     "word": "Panama"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the Americas from Alaska to Argentina, one highway line down them with a break in Panama",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "panama",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "road",
+      "what": "a car rolls down the highway line and the line flashes"
+     },
+     {
+      "at": "alaska",
+      "what": "ALASKA writes on at the top with a pin"
+     },
+     {
+      "at": "argentina",
+      "what": "ARGENTINA writes on at the bottom with a pin"
+     },
+     {
+      "at": "stop",
+      "what": "a road-closed barrier drops onto the break"
+     },
+     {
+      "at": "panama",
+      "what": "Panama's border traces round, its flag fills it and the camera pushes in"
+     }
+    ],
+    "things": [
+     "map of the americas",
+     "highway line",
+     "car",
+     "red break",
+     "road-closed barrier",
+     "panama flag"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "stop"
+    }
+   ]
+  },
+  {
+   "id": "highway",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It's the Pan-American Highway: about {fact1} kilometres of road, one line drawn down two whole continents.",
+   "events": {
+    "pan-american": {
+     "word": "Pan-American"
+    },
+    "highway": {
+     "word": "Highway"
+    },
+    "road": {
+     "word": "road"
+    },
+    "line": {
+     "word": "line"
+    },
+    "two": {
+     "word": "two"
+    },
+    "continents": {
+     "word": "continents"
+    },
+    "about": {
+     "word": "about"
+    },
+    "kilometres": {
+     "word": "kilometres"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Highway",
+    "place": "on the map: a highway sign on the line in Mexico, then the whole road",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "line",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "pan-american",
+      "what": "a highway sign rises on a post beside the line"
+     },
+     {
+      "at": "highway",
+      "what": "the sign's name writes on"
+     },
+     {
+      "at": "road",
+      "what": "the length lands on the sign and the sign bounces"
+     },
+     {
+      "at": "line",
+      "what": "a light runs down the whole line from top to bottom"
+     },
+     {
+      "at": "two",
+      "what": "NORTH AMERICA writes on"
+     },
+     {
+      "at": "continents",
+      "what": "SOUTH AMERICA writes on"
+     },
+     {
+      "at": "about",
+      "what": "the length starts counting up on the sign"
+     },
+     {
+      "at": "kilometres",
+      "what": "KM stamps on after the figure"
+     }
+    ],
+    "things": [
+     "highway sign",
+     "highway line",
+     "light running along it",
+     "continent labels"
+    ],
+    "fig": {
+     "length": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "highway"
+    }
+   ]
+  },
+  {
+   "id": "north",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Start in Alaska and drive south: through Canada, the United States, Mexico, and down the thin neck of Central America.",
+   "events": {
+    "start": {
+     "word": "Start"
+    },
+    "alaska": {
+     "word": "Alaska"
+    },
+    "south": {
+     "word": "south"
+    },
+    "canada": {
+     "word": "Canada"
+    },
+    "united": {
+     "word": "United"
+    },
+    "mexico": {
+     "word": "Mexico"
+    },
+    "neck": {
+     "word": "neck"
+    },
+    "central": {
+     "word": "Central"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "North",
+    "place": "on the map: the road from Alaska down through Canada, the United States and Mexico",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "south",
+      "size": "medium"
+     },
+     {
+      "at": "neck",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "what": "a car sits at the top of the road in Alaska and a pin drops on it"
+     },
+     {
+      "at": "alaska",
+      "what": "Alaska fills with the American flag"
+     },
+     {
+      "at": "south",
+      "what": "the car drives south, the camera following"
+     },
+     {
+      "at": "canada",
+      "what": "Canada fills with its flag"
+     },
+     {
+      "at": "united",
+      "what": "the United States fills with its flag"
+     },
+     {
+      "at": "mexico",
+      "what": "Mexico fills with its flag"
+     },
+     {
+      "at": "neck",
+      "what": "the camera pulls back to the narrow land"
+     },
+     {
+      "at": "central",
+      "what": "CENTRAL AMERICA writes on"
+     }
+    ],
+    "things": [
+     "car",
+     "start pin",
+     "canadian flag",
+     "american flag",
+     "mexican flag",
+     "central america label"
+    ]
+   }
+  },
+  {
+   "id": "yaviza",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then at Yaviza, a small town in the jungle of eastern Panama, the tarmac simply ends.",
+   "events": {
+    "then": {
+     "word": "Then"
+    },
+    "yaviza": {
+     "word": "Yaviza"
+    },
+    "town": {
+     "word": "town"
+    },
+    "jungle": {
+     "word": "jungle"
+    },
+    "panama": {
+     "word": "Panama"
+    },
+    "tarmac": {
+     "word": "tarmac"
+    },
+    "ends": {
+     "word": "ends"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Yaviza",
+    "place": "on the map: the last stretch of road in eastern Panama and the town of Yaviza",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "ends",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "then",
+      "what": "the car drives in along the road"
+     },
+     {
+      "at": "yaviza",
+      "what": "a pin drops on Yaviza and its name writes on"
+     },
+     {
+      "at": "town",
+      "what": "little houses pop up round the pin"
+     },
+     {
+      "at": "jungle",
+      "what": "trees sprout round the town"
+     },
+     {
+      "at": "panama",
+      "what": "Panama's flag fills its land"
+     },
+     {
+      "at": "tarmac",
+      "what": "the road under the car glows"
+     },
+     {
+      "at": "ends",
+      "what": "an END OF ROAD sign drops in and the car stops with a jolt"
+     }
+    ],
+    "things": [
+     "car",
+     "yaviza pin",
+     "houses",
+     "trees",
+     "panama flag",
+     "end of road sign"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "ends"
+    }
+   ]
+  },
+  {
+   "id": "gap",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The road only starts again at Turbo, in Colombia, about {fact2} kilometres away. That gap has a name: the Darién Gap.",
+   "events": {
+    "starts": {
+     "word": "starts"
+    },
+    "turbo": {
+     "word": "Turbo"
+    },
+    "colombia": {
+     "word": "Colombia"
+    },
+    "away": {
+     "word": "away"
+    },
+    "gap": {
+     "word": "gap"
+    },
+    "name": {
+     "word": "name"
+    },
+    "darién": {
+     "word": "Darién"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Gap",
+    "place": "on the map: the jungle between Yaviza in Panama and Turbo in Colombia",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "gap",
+      "size": "wide"
+     },
+     {
+      "at": "darién",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "starts",
+      "what": "the camera pans east and the road reappears"
+     },
+     {
+      "at": "turbo",
+      "what": "a pin drops on Turbo and its name writes on"
+     },
+     {
+      "at": "colombia",
+      "what": "Colombia's border traces round and its flag fills it"
+     },
+     {
+      "at": "away",
+      "what": "a measuring line stretches from Yaviza to Turbo with the distance on its tag"
+     },
+     {
+      "at": "gap",
+      "what": "the empty stretch between the two pins flashes red"
+     },
+     {
+      "at": "name",
+      "what": "a sign starts to rise in the middle of the gap"
+     },
+     {
+      "at": "darién",
+      "what": "DARIÉN GAP writes on the sign"
+     }
+    ],
+    "things": [
+     "turbo pin",
+     "colombian flag",
+     "measuring line",
+     "distance tag",
+     "darién gap sign"
+    ],
+    "fig": {
+     "distance": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "turbo"
+    }
+   ]
+  },
+  {
+   "id": "jungle",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So what fills it? Steep mountains, thick rainforest, and on the Colombian side, a marsh {fact3} kilometres wide.",
+   "events": {
+    "fills": {
+     "word": "fills"
+    },
+    "steep": {
+     "word": "Steep"
+    },
+    "mountains": {
+     "word": "mountains"
+    },
+    "rainforest": {
+     "word": "rainforest"
+    },
+    "colombian": {
+     "word": "Colombian"
+    },
+    "marsh": {
+     "word": "marsh"
+    },
+    "wide": {
+     "word": "wide"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Jungle",
+    "place": "on the map: inside the Darién Gap, the mountains on the border and the Atrato marsh",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "mountains",
+      "size": "medium"
+     },
+     {
+      "at": "marsh",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "fills",
+      "what": "the camera pushes into the gap"
+     },
+     {
+      "at": "steep",
+      "what": "the land darkens along the border"
+     },
+     {
+      "at": "mountains",
+      "what": "a ridge of peaks rises along the border"
+     },
+     {
+      "at": "rainforest",
+      "what": "rainforest trees sprout across the gap"
+     },
+     {
+      "at": "colombian",
+      "what": "the Colombian side lights up"
+     },
+     {
+      "at": "marsh",
+      "what": "water spreads across the marsh, reeds pop up"
+     },
+     {
+      "at": "wide",
+      "what": "a width bar spans the marsh with the figure on its tag"
+     }
+    ],
+    "things": [
+     "mountain ridge",
+     "rainforest",
+     "atrato marsh",
+     "reeds",
+     "width tag"
+    ],
+    "fig": {
+     "width": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "ship",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Drivers can't cross it. Instead they put their cars on a ship on Panama's Caribbean coast and sail around the gap to Colombia.",
+   "events": {
+    "drivers": {
+     "word": "Drivers"
+    },
+    "cross": {
+     "word": "cross"
+    },
+    "cars": {
+     "word": "cars"
+    },
+    "ship": {
+     "word": "ship"
+    },
+    "sail": {
+     "word": "sail"
+    },
+    "around": {
+     "word": "around"
+    },
+    "colombia": {
+     "word": "Colombia"
+    },
+    "put": {
+     "word": "put"
+    },
+    "caribbean": {
+     "word": "Caribbean"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Ship",
+    "place": "on the map: the Caribbean coast of Panama and Colombia, a car ship sailing round the gap",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sail",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "drivers",
+      "what": "cars queue at the end of the road"
+     },
+     {
+      "at": "cross",
+      "what": "a red cross stamps over the gap"
+     },
+     {
+      "at": "cars",
+      "what": "more cars stack onto the deck"
+     },
+     {
+      "at": "ship",
+      "what": "the ship's horn puffs"
+     },
+     {
+      "at": "sail",
+      "what": "the ship sails out along the Caribbean coast"
+     },
+     {
+      "at": "around",
+      "what": "a dotted route draws round the gap to Colombia"
+     },
+     {
+      "at": "colombia",
+      "what": "Colombia's border traces round as the ship arrives"
+     },
+     {
+      "at": "put",
+      "what": "the first car rolls onto a ship at the Caribbean port"
+     },
+     {
+      "at": "caribbean",
+      "what": "the Caribbean coast lights with a pin at the port"
+     }
+    ],
+    "things": [
+     "queued cars",
+     "red cross",
+     "car ship",
+     "sea route"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "paper",
+     "at": "sail"
+    }
+   ]
+  },
+  {
+   "id": "tries",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Road builders have drawn plans to close it for decades. So why is the gap still open?",
+   "events": {
+    "builders": {
+     "word": "builders"
+    },
+    "plans": {
+     "word": "plans"
+    },
+    "close": {
+     "word": "close"
+    },
+    "decades": {
+     "word": "decades"
+    },
+    "why": {
+     "word": "why"
+    },
+    "still": {
+     "word": "still"
+    },
+    "open": {
+     "word": "open"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Tries",
+    "place": "on the map: the end of the road at Yaviza, builders and their plans at the jungle's edge",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "why",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "builders",
+      "what": "two builders in hard hats stand at the end of the road"
+     },
+     {
+      "at": "plans",
+      "what": "a rolled plan unrolls with a dashed road on it"
+     },
+     {
+      "at": "close",
+      "what": "the dashed road draws across the gap"
+     },
+     {
+      "at": "decades",
+      "what": "more plans pile up, each crossed out"
+     },
+     {
+      "at": "why",
+      "what": "a question mark pops over the gap"
+     },
+     {
+      "at": "still",
+      "what": "the camera pulls back"
+     },
+     {
+      "at": "open",
+      "what": "the gap pulses"
+     }
+    ],
+    "things": [
+     "builders",
+     "road plans",
+     "dashed road",
+     "crosses",
+     "question mark"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "why"
+    }
+   ]
+  },
+  {
+   "id": "park",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Because the gap is kept on purpose. In {fact5}, Panama made the jungle a national park: {fact4} square kilometres of protected forest.",
+   "events": {
+    "because": {
+     "word": "Because"
+    },
+    "purpose": {
+     "word": "purpose"
+    },
+    "panama": {
+     "word": "Panama"
+    },
+    "park": {
+     "word": "park"
+    },
+    "square": {
+     "word": "square"
+    },
+    "protected": {
+     "word": "protected"
+    },
+    "forest": {
+     "word": "forest"
+    },
+    "jungle": {
+     "word": "jungle"
+    },
+    "kilometres": {
+     "word": "kilometres"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Park",
+    "place": "on the map: Darién National Park drawn along the border, a ranger at its gate",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "park",
+      "size": "wide"
+     },
+     {
+      "at": "protected",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "because",
+      "what": "the light warms to bright green"
+     },
+     {
+      "at": "purpose",
+      "what": "a gate with a padlock drops onto the end of the road"
+     },
+     {
+      "at": "panama",
+      "what": "Panama's flag lights up"
+     },
+     {
+      "at": "park",
+      "what": "the park's border draws itself and fills green, its sign with the year rising"
+     },
+     {
+      "at": "square",
+      "what": "the area figure stamps on the park"
+     },
+     {
+      "at": "protected",
+      "what": "a ranger walks to the gate"
+     },
+     {
+      "at": "forest",
+      "what": "trees grow thick across the park"
+     },
+     {
+      "at": "jungle",
+      "what": "a green glow runs along the frontier jungle"
+     },
+     {
+      "at": "kilometres",
+      "what": "the area tag bounces"
+     }
+    ],
+    "things": [
+     "park border",
+     "park sign",
+     "area tag",
+     "gate",
+     "padlock",
+     "ranger",
+     "trees"
+    ],
+    "fig": {
+     "year": "{fact5}",
+     "area": "{fact4}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "park"
+    }
+   ]
+  },
+  {
+   "id": "cattle",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "And the jungle works as a wall against a cattle disease, foot-and-mouth, keeping it from walking north out of South America to the herds beyond.",
+   "events": {
+    "jungle": {
+     "word": "jungle"
+    },
+    "wall": {
+     "word": "wall"
+    },
+    "cattle": {
+     "word": "cattle"
+    },
+    "disease": {
+     "word": "disease"
+    },
+    "foot-and-mouth": {
+     "word": "foot-and-mouth"
+    },
+    "walking": {
+     "word": "walking"
+    },
+    "north": {
+     "word": "north"
+    },
+    "south": {
+     "word": "South"
+    },
+    "herds": {
+     "word": "herds"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Cattle",
+    "place": "on the map: the gap as a green wall, cattle in Colombia to the south",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "foot-and-mouth",
+      "size": "close"
+     },
+     {
+      "at": "north",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "jungle",
+      "what": "the jungle in the gap pulses"
+     },
+     {
+      "at": "wall",
+      "what": "a green wall rises along the gap"
+     },
+     {
+      "at": "cattle",
+      "what": "cows pop up on the Colombian side"
+     },
+     {
+      "at": "disease",
+      "what": "red germs bloom among the cows"
+     },
+     {
+      "at": "foot-and-mouth",
+      "what": "a FOOT-AND-MOUTH tag stamps on"
+     },
+     {
+      "at": "walking",
+      "what": "the germs march north to the wall"
+     },
+     {
+      "at": "north",
+      "what": "they bounce off the wall and fade"
+     },
+     {
+      "at": "south",
+      "what": "SOUTH AMERICA writes on under the cows"
+     },
+     {
+      "at": "herds",
+      "what": "safe herds pop up on the Panama side beyond the wall"
+     }
+    ],
+    "things": [
+     "green wall",
+     "cows",
+     "red germs",
+     "disease tag",
+     "safe herds"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "north"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Finish the road or keep the jungle: which would you pick? That's why the road from Alaska to Argentina stops in Panama.",
+   "events": {
+    "finish": {
+     "word": "Finish"
+    },
+    "keep": {
+     "word": "keep"
+    },
+    "pick": {
+     "word": "pick"
+    },
+    "why": {
+     "word": "why"
+    },
+    "alaska": {
+     "word": "Alaska"
+    },
+    "argentina": {
+     "word": "Argentina"
+    },
+    "panama": {
+     "word": "Panama"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the gap, then the whole Americas again with the break in Panama",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "why",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "finish",
+      "what": "a dashed road draws across the gap"
+     },
+     {
+      "at": "keep",
+      "what": "trees cover the dashed road"
+     },
+     {
+      "at": "pick",
+      "what": "a question mark swings between them"
+     },
+     {
+      "at": "why",
+      "what": "the camera pulls back to the whole Americas"
+     },
+     {
+      "at": "alaska",
+      "what": "the line lights from Alaska"
+     },
+     {
+      "at": "argentina",
+      "what": "down to Argentina"
+     },
+     {
+      "at": "panama",
+      "what": "the break in Panama flashes and the frame settles on the hook's map"
+     }
+    ],
+    "things": [
+     "dashed road",
+     "trees",
+     "question mark",
+     "map of the americas",
+     "highway line"
+    ]
+   }
+  }
+ ]
+}

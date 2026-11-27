@@ -1,0 +1,56 @@
+{
+  "agent": "research",
+  "channel": "india-maps",
+  "day": "2026-11-26",
+  "startedAt": "2026-11-25T19:57:40Z",
+  "finishedAt": "2026-11-25T20:04:27Z",
+  "summary": "Thursday titles pass for India Maps: added 6 topics in core formats (re-measured 11,098 km coastline, Uttar Pradesh's ring of neighbours, Punjab's 1966 split, three north-east states on 21 Jan 1972, Indira Point, the two-hour sun gap) and queued one title challenger (a Devanagari search tail).",
+  "decision": "acted",
+  "why": "The upload queue is empty and no video has 48 h numbers yet, so fresh, sourced topics are the most useful work. In the niche scan's top 30, the on-lane hits name the search phrase in their titles (half in Devanagari), and ours don't. The scan backs keeping our question titles (median 25.8K views vs 10.8K).",
+  "findings": [
+    {
+      "title": "India's coastline re-measured: 11,098.81 km, Gujarat 2,340.62 km",
+      "detail": "Became the every-state coastline topic (priority high).",
+      "link": "https://en.wikipedia.org/wiki/Coastal_India"
+    },
+    {
+      "title": "Top on-lane titles name the search phrase, half in Devanagari",
+      "detail": "'भारत का मानचित्र | राज्य और पड़ोसी देश' (548K, 3,964x); 'India Political Map | All States & Union Territories'. Queued as challenger im-title-search-tail.",
+      "link": "https://youtube.com/shorts/mHcAxUG_iGA"
+    },
+    {
+      "title": "Scan title split: questions and names win, figures don't",
+      "detail": "Question 25.8K vs 10.8K median views; named place 17.9K vs 3.6K; figure 10.5K vs 15.9K (3,363 Shorts).",
+      "link": "channels/india-maps/research/scan.json"
+    },
+    {
+      "title": "Wikipedia's Uttar Pradesh lead says nine neighbouring states, its list names eight",
+      "detail": "The UP topic counts the states by code from the list, and the fact reviewer is warned.",
+      "link": "https://en.wikipedia.org/wiki/Uttar_Pradesh"
+    },
+    {
+      "title": "Claude Code 2.1.332",
+      "detail": "MCP-served skills (beta), a PreSkillShellCommand hook: nothing for the pipeline.",
+      "link": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
+    }
+  ],
+  "changes": [
+    {
+      "title": "6 topics added",
+      "detail": "channels/india-maps/research/topics.json",
+      "branch": "agent/research/2026-11-26/india-maps"
+    },
+    {
+      "title": "1 challenger queued",
+      "detail": "im-title-search-tail in channels/india-maps/cycle/backlog.json",
+      "branch": "agent/research/2026-11-26/india-maps"
+    }
+  ],
+  "nextCheck": "2026-11-27",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/india-maps/research/2026-11-26.md"
+    }
+  ]
+}

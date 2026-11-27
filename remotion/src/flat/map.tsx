@@ -98,6 +98,9 @@ export const WorldMap: React.FC<{
   fit?: string[]; pad?: number;
   /** or frame a point at a scale (pixels per radian) */
   center?: [number, number]; scale?: number;
+  /** the map's central meridian (default 0): a map centred across the date line (the Bering Strait, the Pacific)
+   * keeps Russia and Alaska whole; `center` stays in real [lon, lat] (v-20261127-12) */
+  lon0?: number;
   /** "world" (Natural Earth projection) or "flat" (Mercator, for a region) */
   kind?: "world" | "flat";
   look?: "flat" | "vintage";
@@ -114,7 +117,7 @@ export const WorldMap: React.FC<{
   only?: string[];
   detail?: "110m" | "50m";
   children?: React.ReactNode;
-}> = ({ w, h, fit, pad = 80, center, scale, kind = "world", look = "flat", political = 0, names = false, land: land0, sea: sea0, border, colors = {}, hide = [], only, detail, children }) => {
+}> = ({ w, h, fit, pad = 80, center, scale, lon0 = 0, kind = "world", look = "flat", political = 0, names = false, land: land0, sea: sea0, border, colors = {}, hide = [], only, detail, children }) => {
   const vintage = look === "vintage";
   const land = land0 ?? (vintage ? "#e8d4a2" : "#e9dcc1");
   const sea = sea0 ?? (vintage ? "#5f9fae" : "#8ec5e0");
@@ -124,12 +127,13 @@ export const WorldMap: React.FC<{
   const all = keep ? countries(det).filter((c) => keep.has(c.properties.name.toLowerCase())) : countries(det);
   const proj = useMemo(() => {
     const p = kind === "flat" ? geoMercator() : geoNaturalEarth1();
+    if (lon0) p.rotate([-lon0, 0]);
     const framed = fit?.map((n) => all.find((c) => c.properties.name.toLowerCase() === n.toLowerCase())).filter((c): c is Country => !!c);
     if (framed?.length) p.fitExtent([[pad, pad], [w - pad, h - pad]], { type: "FeatureCollection", features: framed });
-    else if (center) p.center(center).scale(scale ?? w / 6.2).translate([w / 2, h / 2]);
+    else if (center) p.center(lon0 ? [((center[0] - lon0 + 540) % 360) - 180, center[1]] : center).scale(scale ?? w / 6.2).translate([w / 2, h / 2]);
     else p.fitExtent([[pad, pad], [w - pad, h - pad]], { type: "Sphere" });
     return p;
-  }, [kind, fit?.join("|"), pad, center?.join(","), scale, w, h, det]);   // eslint-disable-line react-hooks/exhaustive-deps
+  }, [kind, fit?.join("|"), pad, center?.join(","), scale, lon0, w, h, det]);   // eslint-disable-line react-hooks/exhaustive-deps
   const path = useMemo(() => geoPath(proj), [proj]);
   const hidden = new Set(hide.map((n) => n.toLowerCase()));
   const ink = border ?? (vintage ? "#4a3218" : INK);
@@ -346,7 +350,7 @@ export const MapRoute: React.FC<{ via: [number, number][]; k?: number; color?: s
  * projection centred on the country, drawn at the map's scale): the Chile-over-India comparison.
  * `k` slides it from its home (0) to `to` (1).
  */
-export const Lift: React.FC<{ name: string; to: [number, number]; k?: number; fill?: string; rot?: number; label?: string }> = ({ name, to, k = 1, fill = "#e8453c", rot = 0, label }) => {
+export const Lift: React.FC<{ name: string; to: [number, number]; k?: number; fill?: string; rot?: number; label?: string; flag?: string; flagK?: number; sx?: number }> = ({ name, to, k = 1, fill = "#e8453c", rot = 0, label, flag, flagK = 1, sx = 1 }) => {
   const { proj } = useMap();
   const c = country(name);
   if (!c) return null;
@@ -358,10 +362,28 @@ export const Lift: React.FC<{ name: string; to: [number, number]; k?: number; fi
   const own = geoAzimuthalEqualArea().rotate([-home[0], -home[1]]).scale(proj.scale()).translate([0, 0]);
   const d = geoPath(own)(c) ?? undefined;
   return (
-    <g transform={`translate(${xy[0]},${xy[1]}) rotate(${rot})`}>
+    <g transform={`translate(${xy[0]},${xy[1]}) rotate(${rot}) scale(${sx},1)`}>
       <path d={d} fill={shade(fill, -0.35)} transform="translate(8,10)" opacity={0.5} />
       <path d={d} fill={fill} stroke={INK} strokeWidth={STROKE * 0.8} strokeLinejoin="round" />
+      {flag && flagK > 0 ? <LiftFlag d={d} flag={flag} k={flagK} /> : null}
       {label ? <text x={0} y={0} fontFamily="Poppins" fontWeight={800} fontSize={44} textAnchor="middle" fill="#ffffff" stroke={INK} strokeWidth={7} paintOrder="stroke">{label}</text> : null}
+    </g>
+  );
+};
+
+/** A lifted country's whole flag, covering its outline and clipped to it (`flag` on `Lift`, 2026-11-26, v-20261126-62). */
+const LiftFlag: React.FC<{ d?: string; flag: string; k: number }> = ({ d, flag, k }) => {
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
+  if (!d) return null;
+  const nums = (d.match(/-?\d+(?:\.\d+)?/g) ?? []).map(Number);
+  const xs = nums.filter((_, i) => i % 2 === 0), ys = nums.filter((_, i) => i % 2 === 1);
+  if (!xs.length) return null;
+  const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  return (
+    <g opacity={Math.max(0, Math.min(1, k))}>
+      <defs><clipPath id={`lf${uid}`}><path d={d} /></clipPath></defs>
+      <g clipPath={`url(#lf${uid})`}><FlagArt name={flag} x={x0} y={y0} w={x1 - x0} h={y1 - y0} cover /></g>
+      <path d={d} fill="none" stroke={INK} strokeWidth={STROKE * 0.8} strokeLinejoin="round" />
     </g>
   );
 };

@@ -47,7 +47,7 @@ export const Root: React.FC = () => (
     {/* approval sheets */}
     <Still id="CharacterSheet" component={CharacterSheet} width={1920} height={1080} />
     <Composition id="ActingTest" component={ActingTest} durationInFrames={300} fps={30} width={1920} height={1080} />
-    <Composition id="MapSheet" component={MapSheet} durationInFrames={270} fps={30} width={1080} height={1920} />
+    <Composition id="MapSheet" component={MapSheet} durationInFrames={360} fps={30} width={1080} height={1920} />
     <Composition id="IndiaSheet" component={IndiaSheet} durationInFrames={240} fps={30} width={1080} height={1920} />
     <Still id="IndiaAvatar" component={IndiaAvatar} width={800} height={800} />
     <Still id="IndiaBanner" component={IndiaBanner} width={2560} height={1440} />

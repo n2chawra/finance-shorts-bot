@@ -54,6 +54,25 @@
       "effort": "S",
       "risk": "fewer results overall; keep 'rise and fall of a company' and the others",
       "metric": "qa_failures",
+      "status": "rejected",
+      "route": "adopt",
+      "priority": "normal",
+      "reason": "market.json is outside the improver's files (guard); research or the owner edits the channel's market queries"
+    },
+    {
+      "id": "money-dkk-sek-chf",
+      "date": "2026-11-26",
+      "area": "pipeline",
+      "title": "Format Danish, Swedish and Swiss money so European companies' sourced figures can be shown as published",
+      "change": "Add DKK, SEK, NOK and CHF to CURRENCIES in renderer/engine/formatting.py (and the matching formatter in remotion/src/fmt), with the ISO code or 'kr' shown after the number and the usual K/M/B grouping; add a test per currency. check-plan/number check should then accept a fact whose currency is one of them.",
+      "evidence": [
+        "https://www.lego.com/en-us/aboutus/news/2026/march/the-lego-group-delivers-record-results-in-2025-driven-by-strong-brand-and-innovative-portfolio"
+      ],
+      "expectedEffect": "Lets the feed carry LEGO (DKK 83.5B revenue 2025), Novo Nordisk, IKEA, H&M, Spotify and Nestle stories in the currency their filings use, without converting a sourced figure (which would make it a computed, not sourced, number). Tonight's LEGO topic was left out for this reason.",
+      "confidence": "high",
+      "effort": "S",
+      "risk": "Low: additive; existing currencies unchanged.",
+      "metric": "qa_failures",
       "status": "new",
       "route": "adopt",
       "priority": "normal"

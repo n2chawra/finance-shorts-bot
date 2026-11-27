@@ -1,0 +1,330 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:10:15.670963+00:00",
+    "finishedAt": "2026-11-26T20:10:15.670963+00:00",
+    "notes": [
+      "description opens with 'how does a', already used by v-20261124-21",
+      "title must be 20–90 characters",
+      "plan.arms must be this channel's own {\"length\": \"45-60\", \"title\": \"figure_or_name\", \"style\": \"shot\", \"category\": \"28\"} (from `improvement.arms assign`)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:10:21.644139+00:00",
+    "finishedAt": "2026-11-26T20:10:21.644139+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:10:53.988509+00:00",
+    "finishedAt": "2026-11-26T20:10:53.988509+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:13:11.581788+00:00",
+    "finishedAt": "2026-11-26T20:13:11.581788+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "no `promise` beat: every video has a promise early, a turn about two thirds in, and a payoff that answers the hook",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: 1 questions in about 60 s of speech; at least 2 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:13:22.173942+00:00",
+    "finishedAt": "2026-11-26T20:13:22.173942+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:14:04.659633+00:00",
+    "finishedAt": "2026-11-26T20:14:04.659633+00:00",
+    "notes": [
+      "All 3 facts confirmed on the TeleGeography FAQ page (WebFetch): over 1.5M km in service as of early 2026, more than 600 active and planned cables, roughly 200 faults a year (ICPC). The verify list also holds on the same page: about two thirds of faults come from fishing and dragged anchors, a cable is typically garden-hose wide, the fibres are about hair-thin, and capacity spread over several cables keeps traffic moving. No traffic-share claim. Layers are generic, not named. Description ends with the disclaimer. Notes: 'bouncing off the glass walls' is a simplification of guiding at the core-cladding boundary. The repair-ship splice is not on the TeleGeography page but is standard practice."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:18:24.419496+00:00",
+    "finishedAt": "2026-11-26T20:18:24.419496+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:19:35.858974+00:00",
+    "finishedAt": "2026-11-26T20:19:35.858974+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:20:21.226302+00:00",
+    "finishedAt": "2026-11-26T20:20:21.226302+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:21:03.082518+00:00",
+    "finishedAt": "2026-11-26T20:21:03.082518+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:22:01.444994+00:00",
+    "finishedAt": "2026-11-26T20:22:01.444994+00:00",
+    "notes": [
+      "Re-check after the hook split. hook 'This internet cable is as wide as a garden hose.': TeleGeography FAQ (WebFetch) says a cable is 'typically as wide as a garden hose' for most of its ocean journey. The picture is the seabed run with the labels 'internet cable' and 'garden hose', so the claim matches the source. The new 'ask' beat makes no claim. The other beats, facts 1.5M/600/200 and the disclaimer are unchanged and confirmed earlier. Note: dropping 'about' makes it slightly absolute; shore-end armoured sections are thicker; 'about as wide' would be safer if timing allows."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:21:44.170437+00:00",
+    "finishedAt": "2026-11-26T20:24:47.146344+00:00",
+    "notes": [
+      "fingerprint: c1260cc35fe63269.695d527e662be41c",
+      "text 'ILLUSTRATION' at 12.9 s is 26 px, below the 44 px minimum",
+      "text 'NOT TO SCALE' at 30.4 s is 26 px, below the 44 px minimum",
+      "1.9 s with nothing new on screen in beat 'map' (at most 1.8 s): add an action on the phrase being said there",
+      "3 of 14 stills are mostly empty background (at 15 s, 20 s, 45 s): fill the frame (a set, the cast big, money as a thing)",
+      "length 62 s is outside 45–60 s: cut about 6 spoken words",
+      "the Short runs 62.1 s but its assigned length (arms.length) is 45-60 s: cut or add a beat",
+      "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 23.1 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:25:35.515654+00:00",
+    "finishedAt": "2026-11-26T20:25:35.515654+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:26:25.913703+00:00",
+    "finishedAt": "2026-11-26T20:26:25.913703+00:00",
+    "notes": [
+      "Re-check after the length cut (words removed only). open: hair-thin fibres inside protective layers, per the TeleGeography FAQ; no layer is named. map: over 1.5M km (in service, early 2026) and more than 600 active and planned cables, both on the TeleGeography FAQ, figures from {fact1}/{fact2} placeholders. fix: a repair ship lifting the ends and splicing the fibre is standard practice; it is simplified, has no figure and claims nothing false. loop: no claim. The hook/ask/danger/payoff lines, fact3 (about 200 faults a year) and the disclaimer at the end of the description are unchanged. Earlier note stands: 'as wide as a garden hose' would be safer as 'about as wide'."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:26:14.431310+00:00",
+    "finishedAt": "2026-11-26T20:28:38.262268+00:00",
+    "notes": [
+      "fingerprint: 18fcdbcfdb5311e3.cc8ba83cef14e2dd",
+      "1.9 s with nothing new on screen in beat 'map' (at most 1.8 s): add an action on the phrase being said there",
+      "5 of 13 stills are mostly empty background (at 15 s, 20 s, 35 s, 55 s, 58 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:29:23.347128+00:00",
+    "finishedAt": "2026-11-26T20:29:23.347128+00:00",
+    "notes": [
+      "beat 'map': moment at None is not one of this beat's events (name the word in `events` first)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:29:56.840374+00:00",
+    "finishedAt": "2026-11-26T20:32:24.542907+00:00",
+    "notes": [
+      "fingerprint: cef02570c498ddff.045ef8874aac13fb",
+      "2 of 13 stills are mostly empty background (at 15 s, 20 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:32:33.244431+00:00",
+    "finishedAt": "2026-11-26T20:32:33.244431+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:33:37.149186+00:00",
+    "finishedAt": "2026-11-26T20:36:03.524712+00:00",
+    "notes": [
+      "fingerprint: 66bba7bcd935456f.22c63fefada45402",
+      "58 s, ocean/datahall (preview only)",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:36:49.872743+00:00",
+    "finishedAt": "2026-11-26T20:39:23.173275+00:00",
+    "notes": [
+      "fingerprint: 66bba7bcd935456f.d8a27627f09d67e2",
+      "4 of 13 stills are mostly empty background (at 0 s, 15 s, 55 s, 58 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:40:01.667575+00:00",
+    "finishedAt": "2026-11-26T20:42:28.876592+00:00",
+    "notes": [
+      "fingerprint: 66bba7bcd935456f.2f97e3c18e8d3bbb",
+      "58 s, ocean/datahall (preview only)",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:47:05.795937+00:00",
+    "finishedAt": "2026-11-26T20:47:05.795937+00:00",
+    "notes": [
+      "[scene] Hook 4.0s (beat hook, moment 'hose'): the garden hose's label leader runs off the top edge of the frame at the close shot, so the label is cut off and the hose is never named on screen; keep the label inside the frame (anchor it below the top bar).",
+      "[script] Hook 0.0s first frame: a black tube on dark sand with no label (the 'internet cable' tag only writes on at 'internet', seen by 2.0s); the first frame must name the subject: put the cable's label on from sec 0 / the word 'This'.",
+      "[script] Danger 32.0-35.0s: the same seabed-and-cable picture as the hook (only greener) with nothing visibly happening (no crack mark or stuttering pulses seen); lesson 8 lets only the loop repeat the first picture. Open the beat on the trawl net or the ship hull above, a new place/angle, from 'But'.",
+      "[scene] Danger 38.0s (Anchor): the anchor reads as a pink block on a chain, not an anchor, and the snag on the cable sits under the caption 'across the cable.'; give it a recognisable anchor shape (shank, curved flukes, dark metal) and frame the snag in the upper half.",
+      "[script] Loop 54.0s: a plain blue gradient with two white streaks, no place a viewer can name (rule D/4); show the sea surface with waves/moonlight or the cable already coming up out of the dark.",
+      "[script] Thumbnail (sec 3.0): the words promise a hose but no hose is in the frame, and the bottom half is empty floor; take it after 'garden' with the hose beside the cable and both labels in.",
+      "[script] Description says 'We dive from the beach to the seabed' but the video never shows a beach; reword to what is shown."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:47:46.287613+00:00",
+    "finishedAt": "2026-11-26T20:47:46.287613+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:47:47.371078+00:00",
+    "finishedAt": "2026-11-26T20:47:47.371078+00:00",
+    "notes": [
+      "3 figures computed from inputs; 3 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:48:21.377640+00:00",
+    "finishedAt": "2026-11-26T20:50:47.549644+00:00",
+    "notes": [
+      "fingerprint: d4f1e42abda967e6.6ca467b62de44c7a",
+      "58 s, ocean/datahall (preview only)",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:51:43.195551+00:00",
+    "finishedAt": "2026-11-26T20:54:19.180204+00:00",
+    "notes": [
+      "fingerprint: d4f1e42abda967e6.cf5ac6cd7d7d7681",
+      "58 s, ocean/datahall (preview only)",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T20:58:05.559970+00:00",
+    "finishedAt": "2026-11-26T20:58:05.559970+00:00",
+    "notes": [
+      "[scene] Hook 4.0s (Hook.tsx, Label3D 'garden hose' at [0.8, R*2, HZ] offset [-0.7, 0.28, 0.35]): in the close shot the label's leader still runs off the LEFT edge of the frame, so the 'garden hose' tag is outside the picture for the rest of the beat (hook ends 4.47s) and the hose is never named on screen; anchor the label inside the close framing (e.g. offset to the right/up over the hose, x > 0) and confirm it in a still at ~4.0s. Everything else from the last review is fixed: cable label on from frame 0, danger opens on the labelled trawl net, anchor snag above the captions, loop opens on the seabed with rocks and cable, thumbnail has the hose, description matches."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T20:58:59.470652+00:00",
+    "finishedAt": "2026-11-26T21:01:19.440721+00:00",
+    "notes": [
+      "fingerprint: d4f1e42abda967e6.7847648254e30fb0",
+      "58 s, ocean/datahall (preview only)",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T21:10:50.083827+00:00",
+    "finishedAt": "2026-11-26T21:10:50.083827+00:00",
+    "notes": [
+      "Directed 3D seabed explainer, 9 places, cable named from frame 0, 'garden hose' label inside the close frame at 3.5-4.0s, labelled trawl net and anchor snag above captions, sourced figures credited, loop back to the seabed cable; layout clean, audio -1.0/-17.3 dB, 58 s; on par with the channel's best Shorts.",
+      "fingerprint: d4f1e42abda967e6.7847648254e30fb0"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T21:10:59.111539+00:00",
+    "finishedAt": "2026-11-26T21:58:38.670674+00:00",
+    "notes": [
+      "58 s, ocean/datahall, peak -1.0 dB, mean -17.3 dB",
+      "note: 19 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 21.8 s; one by 9 s"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-26T21:58:52.716232+00:00",
+    "finishedAt": "2026-11-26T21:58:52.716232+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

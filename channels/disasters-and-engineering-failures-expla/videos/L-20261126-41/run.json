@@ -1,0 +1,540 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T04:54:20.616188+00:00",
+    "finishedAt": "2026-11-26T04:54:20.616188+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T04:59:50.578448+00:00",
+    "finishedAt": "2026-11-26T04:59:50.578448+00:00",
+    "notes": [
+      "beat 'hook'.params.moments[0].what contains a typed number; use a placeholder: 'the date and place caption types on over the Q400 in falling snow'",
+      "note: 6 questions in about 431 s of speech; at least 14 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'promise' opens like a line in one of the last scripts (\"it wasn't one\"): new words",
+      "note: beat 'w-flow' opens like a line in one of the last scripts ('how does a'): new words",
+      "note: beat 'c-report' opens like a line in one of the last scripts ('the safety board'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:00:18.215446+00:00",
+    "finishedAt": "2026-11-26T05:00:18.215446+00:00",
+    "notes": [
+      "beat 'outro'.params.assumption contains a typed number; use a placeholder: \"From the NTSB's report AAR-10/01 and the FAA's account of the rules that followed. The scenes are reconstructions, not actual footage.\"",
+      "note: beat 'promise' opens like a line in one of the last scripts (\"it wasn't one\"): new words",
+      "note: beat 'w-flow' opens like a line in one of the last scripts ('how does a'): new words",
+      "note: beat 'w-shaker' opens like a line in one of the last scripts ('how does the'): new words",
+      "note: beat 'c-report' opens like a line in one of the last scripts ('the safety board'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:00:25.128860+00:00",
+    "finishedAt": "2026-11-26T05:00:25.128860+00:00",
+    "notes": [
+      "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '01,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "hashtags mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "facts[0] (2009 year, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[1] (12 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[2] (49 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[3] (1 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[4] (5 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[5] (118 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[6] (131 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[7] (45 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[8] (25 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (1500 count, 2025-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (16000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (10000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (2300 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (18 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (15 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (7 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (105 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (100 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (3379 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (2244 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (2010 year, 2025-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (2013 year, 2025-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (2019 year, 2025-01-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[23] (50 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[24] (22 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[25] (16 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[26] (27 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[27] (54 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[28] (13 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:00:44.486474+00:00",
+    "finishedAt": "2026-11-26T05:00:44.486474+00:00",
+    "notes": [
+      "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '01,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "hashtags mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "facts[0] (2009 year, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[1] (12 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[2] (49 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[3] (1 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[4] (5 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[5] (118 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[6] (131 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[7] (45 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[8] (25 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (1500 count, 2025-01-06) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (16000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (10000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (2300 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (18 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (15 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (7 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (105 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (100 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (3379 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (2244 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (2010 year, 2010-08-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (2013 year, 2013-07-15) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (2019 year, 2013-11-12) is not one of the feed topic's facts; copy them exactly",
+      "facts[23] (50 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[24] (22 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[25] (16 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[26] (27 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[27] (54 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[28] (13 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:01:04.423692+00:00",
+    "finishedAt": "2026-11-26T05:01:04.423692+00:00",
+    "notes": [
+      "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '01,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "hashtags mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "facts[0] (2009 year, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[1] (12 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[2] (49 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[3] (1 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[4] (5 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[5] (118 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[6] (131 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[7] (45 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[8] (25 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[9] (1500 count, 2025-01-06) is not one of the feed topic's facts; copy them exactly",
+      "facts[10] (16000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[11] (10000 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[12] (2300 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[13] (18 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[14] (15 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[15] (7 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[16] (105 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[17] (100 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[18] (3379 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[19] (2244 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[20] (2010 year, 2010-08-01) is not one of the feed topic's facts; copy them exactly",
+      "facts[21] (2013 year, 2013-07-15) is not one of the feed topic's facts; copy them exactly",
+      "facts[22] (2019 year, 2013-11-12) is not one of the feed topic's facts; copy them exactly",
+      "facts[23] (50 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[24] (22 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[25] (16 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[26] (27 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[27] (54 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly",
+      "facts[28] (13 count, 2010-02-02) is not one of the feed topic's facts; copy them exactly"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:01:22.497995+00:00",
+    "finishedAt": "2026-11-26T05:01:22.497995+00:00",
+    "notes": [
+      "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '400', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '10', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '01,', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "hashtags mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:01:34.182959+00:00",
+    "finishedAt": "2026-11-26T05:01:34.182959+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:01:34.980712+00:00",
+    "finishedAt": "2026-11-26T05:01:34.980712+00:00",
+    "notes": [
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it",
+      "description mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact10}, {fact11}, {fact12}, {fact13}, {fact14}…) or drop it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:01:40.241681+00:00",
+    "finishedAt": "2026-11-26T05:01:40.241681+00:00",
+    "notes": [
+      "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:17:31.127570+00:00",
+    "finishedAt": "2026-11-26T05:17:31.127570+00:00",
+    "notes": [
+      "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:22:17.808338+00:00",
+    "finishedAt": "2026-11-26T05:22:17.808338+00:00",
+    "notes": [
+      "x-act: 'In August 2010, Congress passed and the president signed' is wrong: the House passed H.R. 5900 on July 29 and the Senate on July 30, 2010; the president signed it on August 1, 2010 (faa.gov N200WQ page, Congressional Record). Say e.g. 'In the summer of 2010, Congress passed the Airline Safety and FAA Extension Act, and the president signed it that August.'",
+      "f-weather: 'the night was clear enough to see the lights on the ground' is not in the report and goes against it: AAR-10/01 says 'the night and poor visibility conditions at the time precluded the use of external visual cues for reliable attitude reference' (METAR: 3 miles visibility in light snow and mist, overcast at 2,100 ft agl). Keep 'light snow and mist' and replace the clause, e.g. 'nothing unusual for a winter night' (the report: icing conditions were not abnormal for wintertime operations).",
+      "f-climb: 'levelled at 16,000 feet, above the cloud' - 'above the cloud' is not in the report or the FAA page; drop it (the 16,000 ft cruise is confirmed).",
+      "hook-fall: voice says '5 miles' but the fact (fact5) and the on-screen tag are nautical miles (AAR-10/01: 'about 5 nautical miles northeast of the airport'); say '5 nautical miles' as l-crash does.",
+      "l-over: 'past 105 degrees ... with the nose pointing down' is wrong: the roll reached 105 deg right wing down (not past it), and at that moment pitch was -1 deg (AAR-10/01 p. 5); the 25 deg nose-down came later at about 100 deg right. Say e.g. 'Then it rolled right, to 105 degrees, almost on its back. Then the nose dropped.'",
+      "l-pull: the column came back 0.4 s after the shaker (2216:27.8), but the power levers went forward about 1 second after that (AAR-10/01 p. 5); the line puts both inside 'less than half a second'. Split it, e.g. 'Less than half a second later, the captain pulled the column back. A second after that, he pushed the power up, but not to full.'",
+      "f-aboard: 'many of them going home' is not in the report; outlets (AP via NBC) say 'several Buffalo-area residents' and some 'just trying to get home'. Say 'some of them going home' or drop it."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:22:49.803794+00:00",
+    "finishedAt": "2026-11-26T05:22:49.803794+00:00",
+    "notes": [
+      "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:23:52.919172+00:00",
+    "finishedAt": "2026-11-26T05:23:52.919172+00:00",
+    "notes": [
+      "Re-review after 7 fixes: all 29 facts confirmed on NTSB AAR-10/01 (PDF), faa.gov N200WQ and the Federal Register (78 FR 42324, 1,500 h); Act passed July 29-30 and signed Aug 1, 2010; weather, roll, power timing, distance unit and passengers lines now match the report; verify list met (no pilot names, fatigue not in probable cause, 2013 rule year on faa.gov, no Eckert); disclaimer ends the description."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:24:10.121803+00:00",
+    "finishedAt": "2026-11-26T05:29:11.348621+00:00",
+    "notes": [
+      "fingerprint: cf3d0c1d307af72e.7b39e7b28f81a029",
+      "text 'ALT' at 20.7 s is 26.9 px, below the 30 px minimum",
+      "text 'FIRST OFFICER' at 20.7 s runs outside the frame",
+      "text 'CAPTAIN' at 103.2 s reaches 1088 px, inside the bottom 36 px",
+      "text 'FIRST OFFICER' at 103.2 s reaches 1088 px, inside the bottom 36 px",
+      "text 'STICK PUSHER' at 161.9 s reaches 1114 px, inside the bottom 36 px",
+      "text 'INCREASE' at 191.5 s runs outside the frame",
+      "text 'REF SPEEDS: INCR' at 208.9 s runs outside the frame",
+      "text 'LANDING SPEED' at 208.9 s runs outside the frame",
+      "text '118 KT' at 208.9 s runs outside the frame",
+      "text 'STALL' at 246.3 s is 29 px, below the 30 px minimum",
+      "text 'ALT' at 239.5 s reaches 1060 px, inside the bottom 36 px",
+      "text 'CAPTAIN' at 270.4 s runs outside the frame",
+      "text 'RADIO' at 270.4 s runs outside the frame",
+      "text 'CHIME' at 270.4 s runs outside the frame",
+      "text 'STALL' at 307.5 s runs outside the frame",
+      "text 'EST · CVR' at 307.5 s runs outside the frame",
+      "text '22:16:27' at 307.5 s runs outside the frame",
+      "text 'FLAPS' at 344.4 s runs outside the frame",
+      "text 'STALL RECOVERY' at 352.5 s runs outside the frame",
+      "text '22:16:54' at 376.7 s runs outside the frame",
+      "text 'STALL ANGLE' at 419.2 s runs outside the frame",
+      "text 'AIRLINE SAFETY AND FAA' at 461.3 s is 29 px, below the 30 px minimum",
+      "text 'EXTENSION ACT' at 461.3 s is 29 px, below the 30 px minimum",
+      "32 of 106 stills are mostly empty background (at 30 s, 35 s, 40 s, 45 s, 60 s, 65 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:31:15.071980+00:00",
+    "finishedAt": "2026-11-26T05:36:11.205861+00:00",
+    "notes": [
+      "fingerprint: cf3d0c1d307af72e.383e006cac5f7acf",
+      "text 'CABIN CREW' at 78.8 s runs outside the frame",
+      "text 'CAPTAIN' at 239.5 s reaches 1072 px, inside the bottom 36 px",
+      "text 'FIRST OFFICER' at 239.5 s reaches 1072 px, inside the bottom 36 px",
+      "text 'EST · CVR' at 307.5 s is 29.1 px, below the 30 px minimum",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:36:23.705195+00:00",
+    "finishedAt": "2026-11-26T05:41:10.429513+00:00",
+    "notes": [
+      "fingerprint: cf3d0c1d307af72e.2463d4f15f735dad",
+      "text 'CABIN CREW' at 78.8 s runs outside the frame",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:42:08.098750+00:00",
+    "finishedAt": "2026-11-26T05:46:59.157538+00:00",
+    "notes": [
+      "fingerprint: cf3d0c1d307af72e.b5465f5dfc9d4d2a",
+      "529 s, night/undertow (preview only)",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:48:03.442175+00:00",
+    "finishedAt": "2026-11-26T05:52:48.897067+00:00",
+    "notes": [
+      "fingerprint: f69f37a24370fec9.b5465f5dfc9d4d2a",
+      "529 s, night/undertow (preview only)",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"a wind-tunnel drawing of the airliner's wing\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T05:54:56.862679+00:00",
+    "finishedAt": "2026-11-26T05:54:56.862679+00:00",
+    "notes": [
+      "[script] Lesson 6 repeated (reconstruction first): only ~122 s of 526 s (23%) is in the lit 3D world (Sky beats); the rest is the flat 2D flight deck (Cockpit/Panel, ~169 s), grid diagrams (Wing, Board, Law, ~175 s). Diagram beats run 7-12 s, not 3-6 s inserts, and one look runs past 30 s: Law 450-505 s (r-tease..x-meaning, 35 s); the flat flight deck holds 228-302 s (i-tease, c-sterile, c-chat, c-power, c-tasks, c-cue, c-nose) with only c-level in 3D. Move cockpit/approach beats into the 3D airliner (exterior, iced wing, the descent) and cut diagrams to short inserts.",
+      "[script] Lesson 7 repeated (failure moment is the hero shot): l-pull 310 s, the captain's pull, is the same medium flat cockpit as a dozen other beats with a small red arrow; l-pusher 335 s same. Make the pull a big close 3D shot (column hauled back, nose rising, wing dropping).",
+      "[script] Same picture held: flight-deck set with identical medium framing at 100, 150, 155, 160, 230, 235, 240, 245, 260, 265, 270, 310, 315, 335, 340, 345, 350 s (i-tease->c-sterile->c-chat three in a row, l-pusher->l-flaps->l-gear three in a row, w-shaker->w-pusher two in a row); camera close/extreme moments do not show in the stills (render craft note: 67 s without a close shot). Wing diagram w-flow..w-slow 125-145 s four beats in a row same composition.",
+      "[script] Not directed / slides: promise 35-40 s and c-tease 300 s are three small text chips (SPEED TOO LOW / TALK / NO CALLOUT) on a bare grid; promise2 45 s is a text list on a grid; r-factors 405 s ('Contributing factors' alone on an empty grid, then rows at 410 s), r-pusher 425 s (one text row on empty grid) and score 515-520 s are headline rows on a grid, not things in a place. Give each a real place (investigator's desk, wreck hangar, cockpit voice recorder, the 3D airliner).",
+      "[scene] Empty frames, Law component: x-catch 495 s shows only grid + brown floor + two tiny CAPTAIN/FIRST OFFICER labels (the logbooks never appear), 500 s is two plain bars instead of logbooks; x-meaning 505 s is an empty grid with a tiny red 'minimum' line; 510 s two chips at top right with STALL TRAINING touching the right edge.",
+      "[scene] Broken-looking number, Law logbook (x-hours): flight-hours counter reads '0' at 465 s and still '0' at 470 s ('hold an airline'), then 475 at 475 s; the counter must land on its figure on its word, not sit at 0 for ~8 s. The certificate card at 475 s has an empty grey placeholder square.",
+      "[scene] Overlap, Panel (i-band, 200 s): a red label under the attitude display ('...HERE') sits under the caption 'With the switch on,' and is unreadable; the orange 'REF SPEEDS: INCR' chip text runs into its border at 200-215 s.",
+      "[scene] Hidden/cut text, Cockpit: c-power 260 s the struck-out red 'AUTOTHROTTLE' chip (the point of the line) is half hidden behind the control column/first officer and overlapped by the caption; 'FIRST OF' label clipped at 265 s and 310 s; l-flaps 345 s the airspeed tag (the line's figure, about fact18 knots) runs off the left edge, faded and cut ('IRSPEED - KT').",
+      "[scene] Law Capitol (r-tease/x-act 455-460 s): an empty brown plank bottom right with nothing on it; the act sign at 460 s is cut ('AIRLINE SAFETY AND F...'). Simulator (r-training/x-stall 430, 435, 480 s) is a white box on stick legs on a grid, box-like (lesson 5); at 480 s it is cut by the left edge.",
+      "[script] Lesson 12: l-toll 370 s ('were killed') shows a burning roof in an empty snowy street, no fire engines or firefighters and no KILLED ABOARD tag visible; hook-fall 30 s ('came down on a house, 5 nautical miles') shows only cloud with a small tag, no house or glow. f-tease 120 s is an unreadable salmon slab over the wing (meant as the iced edge glow).",
+      "[script] Thumbnails: A ('Pulled the wrong way') is the one I'd click, readable small and matches the title; C ('Push or pull?', picked, score 7) is a flat plane on a plain dark gradient, losing the night-town picture language the hits share (pattern) and looking less like the 3D reconstruction the video is; B is fine but vague. Prefer A, or put C's plane over the night town."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:57:56.171664+00:00",
+    "finishedAt": "2026-11-26T05:57:56.171664+00:00",
+    "notes": [
+      "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T05:58:38.264279+00:00",
+    "finishedAt": "2026-11-26T06:04:36.759271+00:00",
+    "notes": [
+      "fingerprint: 2d4557b4760fbbc3.e558ac05243435e7",
+      "529 s, night/undertow (preview only)",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T06:05:27.673782+00:00",
+    "finishedAt": "2026-11-26T06:11:43.512085+00:00",
+    "notes": [
+      "fingerprint: 2d4557b4760fbbc3.c1c504b8ad73430e",
+      "529 s, night/undertow (preview only)",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T06:13:06.327415+00:00",
+    "finishedAt": "2026-11-26T06:13:06.327415+00:00",
+    "notes": [
+      "[script] Round 2, lesson 6 still repeated: the lit 3D world (Sky beats) is now about 189 s of 526 s (36%), better than 23% but under the lesson's half. Flat flight deck 71 s, Wing diagrams 60 s, Panel 55 s, Law 54 s, corkboard 45 s. Move about 75 s more into the 3D airliner, e.g. w-stall/w-slow/w-recover/l-angle as the 3D wing with airflow, i-see/i-catch on the 3D iced wing, and c-cue/l-shaker/l-clock as the 3D cockpit or the airliner from outside, so diagrams stay 3-6 s inserts.",
+      "[scene] Law x-catch 495 s ('That night,'): still an almost empty frame, a grid with a title and two small blue LOGBOOK nameplates on the floor. The logbooks never appear as logbooks; 500 s is plain bars standing on the nameplates. Draw the two open logbooks (as in x-hours at 470-475 s) with their counters, then the minimum line.",
+      "[scene] Law x-act 460 s: the bill's title runs off the sheet ('AIRLINE SAFETY AND FA...'); size the sheet to its text or wrap the line.",
+      "[scene] Lesson 5 (no pale, box-like 3D): f-tease 120 s, the close on the wing, is a flat white plank filling the frame with no material, light or detail; l-flaps 340-345 s, the close on the flaps, is pale yellow and salmon slabs. Give the wing a metal and paint material, a key light, rivet lines, de-icing boots and ice texture."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T06:19:30.474074+00:00",
+    "finishedAt": "2026-11-26T06:19:30.474074+00:00",
+    "notes": [
+      "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T06:20:24.637963+00:00",
+    "finishedAt": "2026-11-26T06:30:23.947566+00:00",
+    "notes": [
+      "fingerprint: a6bc8d0992b4e8d3.5779af6557dbbf1c",
+      "529 s, night/undertow (preview only)",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T06:30:45.885813+00:00",
+    "finishedAt": "2026-11-26T06:41:47.727470+00:00",
+    "notes": [
+      "fingerprint: a6bc8d0992b4e8d3.f84de6022be3720b",
+      "529 s, night/undertow (preview only)",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T06:42:29.359072+00:00",
+    "finishedAt": "2026-11-26T06:42:29.359072+00:00",
+    "notes": [
+      "Round 3: 3D world now ~51% (Sky + lit wind tunnel), x-catch logbooks drawn with counters, x-act bill fits its sheet, wing/flaps are metal with panel lines and ice crust; corkboard boards, close 3D pull, street-level toll and night-town thumbnails hold; no overlaps, cut text or empty frames in the 5 s stills; layout clean, audio -1.0/-18.6 dB; thumbnail A picked and readable small.",
+      "fingerprint: a6bc8d0992b4e8d3.f84de6022be3720b"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T06:42:40.304517+00:00",
+    "finishedAt": "2026-11-26T12:26:14.966111+00:00",
+    "notes": [
+      "529 s, night/undertow, peak -1.0 dB, mean -18.6 dB",
+      "note: four shots in a row open medium (from 'w-aoa'): vary the shot size",
+      "note: 67 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: set \"the captain's airspeed display on the flight deck\" in 3 shots in a row: move the story somewhere else",
+      "note: only 1 kinds of scene (directed); a long video mixes 5+ (build, framework, type, journey, stats, case, custom...) so it never settles into one look",
+      "note: directed is 68 of 68 composed beats (at most 40%): vary how each idea is shown",
+      "note: directed 4 times in a row: change the device",
+      "note: the promise starts at 31.0 s; by 30 s, or viewers leave before they know why to stay",
+      "warning: integrated loudness -16.6 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T12:26:30.249487+00:00",
+    "finishedAt": "2026-11-26T12:26:30.249487+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T12:27:12.913560+00:00",
+    "finishedAt": "2026-11-26T12:27:12.913560+00:00",
+    "notes": [
+      "29 figures computed from inputs; 29 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-26T12:27:31.044904+00:00",
+    "finishedAt": "2026-11-26T12:27:31.044904+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

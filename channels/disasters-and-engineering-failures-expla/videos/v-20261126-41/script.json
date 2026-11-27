@@ -1,0 +1,710 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 34071,
+ "story": "promo_why_it_failed",
+ "shape": "the-wrong-reflex",
+ "currency": "USD",
+ "style": {
+  "recipe": "night-grid",
+  "palette": "night",
+  "genre": "undertow",
+  "key": "A",
+  "bpm": 56
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "shock_number",
+ "cta": "Push or pull: what would your hands have done? Comment",
+ "feed_id": "2026-11-20-colgan-3407",
+ "promo_of": "L-20261126-41",
+ "facts": [
+  {
+   "label": "Year of the crash (February 12, 2009)",
+   "value": 2009,
+   "unit": "year",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Day of February of the crash",
+   "value": 12,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Airspeed when the stick shaker fired and the autopilot disengaged, knots",
+   "value": 131,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Roll angle reached after the pull, degrees left wing down",
+   "value": 45,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Roll angle reached to the right, degrees right wing down",
+   "value": 105,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "People aboard who were killed (2 pilots, 2 flight attendants, 45 passengers)",
+   "value": 49,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "People killed on the ground",
+   "value": 1,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "roll",
+  "sec": 3.2,
+  "words": "Push or *pull*?",
+  "tag": "Colgan Air",
+  "angle": "question",
+  "pattern": "the niche's air-crash covers show the airliner itself big at the moment it goes wrong with a few bold words; ours shows our 3D airliner rolling in the snowy cloud with its wing glowing red, two words on top"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Colgan Air's column shook at {fact3} knots.",
+   "events": {
+    "Colgan": {
+     "word": "Colgan"
+    },
+    "column": {
+     "word": "column"
+    },
+    "shook": {
+     "word": "shook"
+    },
+    "knots": {
+     "word": "knots"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Cockpit",
+    "mode": "hook",
+    "place": "the flight deck of the twin-propeller airliner at night, seen from behind the two pilots, snow streaking at the windshield",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "shook",
+      "size": "close"
+     },
+     {
+      "at": "knots",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Colgan",
+      "what": "the flight deck at night, snow streaking at the windshield, the date caption and the reconstruction tag; COLGAN AIR types on"
+     },
+     {
+      "at": "column",
+      "what": "the two control columns and yokes in front of the pilots, the airspeed box glowing amber"
+     },
+     {
+      "at": "shook",
+      "what": "push in: both control columns rattle, the two STALL lights flash red, the airspeed box turns red"
+     },
+     {
+      "at": "knots",
+      "what": "a STICK SHAKER stamp slams on over the windshield"
+     }
+    ],
+    "things": [
+     "flight deck",
+     "two control columns",
+     "STALL warning lights",
+     "airspeed box",
+     "pilots from behind",
+     "windshield with snow",
+     "approach lights"
+    ],
+    "fig": {
+     "speed": "{fact3}",
+     "year": "{fact1}",
+     "day": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "shaking"
+    }
+   ]
+  },
+  {
+   "id": "wing",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Near Buffalo, that shaking was the stall warning. It fires before a wing stalls. So what should a pilot do?",
+   "events": {
+    "Buffalo": {
+     "word": "Buffalo"
+    },
+    "shaking": {
+     "word": "shaking"
+    },
+    "warning": {
+     "word": "warning"
+    },
+    "fires": {
+     "word": "fires"
+    },
+    "before": {
+     "word": "before"
+    },
+    "stalls": {
+     "word": "stalls"
+    },
+    "pilot": {
+     "word": "pilot"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "wing",
+    "place": "outside the airliner in the snowy night cloud on the approach, close beside its high wing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "fires",
+      "size": "close"
+     },
+     {
+      "at": "pilot",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Buffalo",
+      "what": "the whole airliner in the falling snow, gear down, landing lights on; COLGAN AIR pinned on its fuselage, NEAR BUFFALO types on"
+     },
+     {
+      "at": "warning",
+      "what": "STALL WARNING types on in amber"
+     },
+     {
+      "at": "fires",
+      "what": "the camera pushes in along the fuselage to the high wing, still flying normally"
+     },
+     {
+      "at": "before",
+      "what": "WARNS BEFORE A STALL types on beside the wing"
+     },
+     {
+      "at": "pilot",
+      "what": "close on the wing in the snow, the propeller blurring beside it"
+     }
+    ],
+    "things": [
+     "airliner",
+     "high wing",
+     "propellers",
+     "landing gear",
+     "falling snow",
+     "cloud",
+     "approach lights"
+    ]
+   }
+  },
+  {
+   "id": "answer",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Raise a wing's nose too steeply, and the air tears off its top. The trained answer: push the nose down.",
+   "events": {
+    "Raise": {
+     "word": "Raise"
+    },
+    "steeply": {
+     "word": "steeply"
+    },
+    "tears": {
+     "word": "tears"
+    },
+    "top": {
+     "word": "top"
+    },
+    "trained": {
+     "word": "trained"
+    },
+    "push": {
+     "word": "push"
+    },
+    "down": {
+     "word": "down"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Wing",
+    "place": "the wing's cross-section on a night drafting grid, the oncoming air drawn as streamlines",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "tears",
+      "size": "close"
+     },
+     {
+      "at": "push",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Raise",
+      "what": "the wing section rotates nose-up into the dashed streamlines"
+     },
+     {
+      "at": "steeply",
+      "what": "the angle-of-attack arc draws on in amber, ANGLE OF ATTACK"
+     },
+     {
+      "at": "tears",
+      "what": "push in: the flow over the top breaks into red swirls, the lift arrow collapses red"
+     },
+     {
+      "at": "top",
+      "what": "FLOW BREAKS AWAY types on over the swirls"
+     },
+     {
+      "at": "push",
+      "what": "a green arrow tips the nose down, PUSH: NOSE DOWN, the section rotates back"
+     },
+     {
+      "at": "down",
+      "what": "the streamlines hug the top again, the lift arrow grows back green"
+     }
+    ],
+    "things": [
+     "wing cross-section",
+     "streamlines",
+     "red swirls",
+     "lift arrow",
+     "angle-of-attack arc",
+     "push arrow"
+    ]
+   }
+  },
+  {
+   "id": "pull",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "The captain pulled his column back.",
+   "events": {
+    "captain": {
+     "word": "captain"
+    },
+    "pulled": {
+     "word": "pulled"
+    },
+    "back": {
+     "word": "back"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Cockpit",
+    "mode": "pull",
+    "place": "back on the flight deck, close on the captain's control column",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "back",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "captain",
+      "what": "push in on the captain's rattling column, a green arrow above it and TRAINED: PUSH on a tag"
+     },
+     {
+      "at": "pulled",
+      "what": "the column slams back toward us, the green arrow is struck through in red, PULLED stamps on with a red flash"
+     },
+     {
+      "at": "back",
+      "what": "pull wide: the horizon drops out of the windshield as the nose rises, NOSE UP"
+     }
+    ],
+    "things": [
+     "captain's control column",
+     "yoke",
+     "trained push arrow",
+     "red strike",
+     "windshield horizon",
+     "attitude screen"
+    ],
+    "fig": {
+     "speed": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "clatter",
+     "at": "pulled"
+    }
+   ]
+  },
+  {
+   "id": "stall",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "",
+   "events": {
+    "near": {
+     "sec": 0.2
+    },
+    "give": {
+     "sec": 1.3
+    },
+    "wide": {
+     "sec": 2.0
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "stall",
+    "place": "right against the wing's top in the cloud, time slowed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "near",
+      "what": "silence: the wing's top fills the frame glowing red, snow streaking over it, the wing shuddering"
+     },
+     {
+      "at": "give",
+      "what": "the sub-boom: the wing stalls and drops away, THE WING STALLS"
+     },
+     {
+      "at": "wide",
+      "what": "wide: the airliner rolls in the cloud"
+     }
+    ],
+    "things": [
+     "wing top",
+     "red stall glow",
+     "snow",
+     "airliner rolling"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "give"
+    }
+   ],
+   "min_sec": 2.8
+  },
+  {
+   "id": "roll",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "The nose rose, and the left wing dropped to {fact4} degrees. Then it whipped right, to {fact5}.",
+   "events": {
+    "nose": {
+     "word": "nose"
+    },
+    "rose": {
+     "word": "rose"
+    },
+    "left": {
+     "word": "left"
+    },
+    "dropped": {
+     "word": "dropped"
+    },
+    "whipped": {
+     "word": "whipped"
+    },
+    "right": {
+     "word": "right"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "roll",
+    "place": "behind and beside the airliner as it rolls in the cloud over the dark town",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "dropped",
+      "size": "wide"
+     },
+     {
+      "at": "right",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rose",
+      "what": "side-on in the snow, the airliner's nose pitches up, the wing glowing red"
+     },
+     {
+      "at": "dropped",
+      "what": "the left wing drops, the roll plate counts up in amber"
+     },
+     {
+      "at": "whipped",
+      "what": "the airliner whips over to the right, the second plate counts up in red"
+     },
+     {
+      "at": "right",
+      "what": "almost on its back, the nose drops into the cloud and the frame dims"
+     }
+    ],
+    "things": [
+     "airliner",
+     "roll angle plates",
+     "cloud",
+     "town lights below",
+     "falling snow"
+    ],
+    "fig": {
+     "left": "{fact4}",
+     "right": "{fact5}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "whipped"
+    }
+   ]
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "In under half a minute, it came down on a house. All {fact6} people aboard were killed, and {fact7} on the ground.",
+   "events": {
+    "half": {
+     "word": "half"
+    },
+    "house": {
+     "word": "house"
+    },
+    "aboard": {
+     "word": "aboard"
+    },
+    "killed": {
+     "word": "killed"
+    },
+    "ground": {
+     "word": "ground"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "crash",
+    "place": [
+     "high above the snowy streets of Clarence Center at night",
+     "down in the street, where fire engines and firefighters arrive"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "killed",
+      "size": "medium"
+     },
+     {
+      "at": "ground",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "half",
+      "what": "far above the snowy town at night, UNDER HALF A MINUTE types on"
+     },
+     {
+      "at": "house",
+      "what": "an orange glow rises between the houses down the street, smoke drifting, CLARENCE CENTER"
+     },
+     {
+      "at": "aboard",
+      "what": "the toll plate for the people aboard lands"
+     },
+     {
+      "at": "killed",
+      "what": "down into the street: fire engines' lights flash, firefighters with lamps walk toward the glow"
+     },
+     {
+      "at": "ground",
+      "what": "the second plate, for the one person on the ground, lands below it"
+     }
+    ],
+    "things": [
+     "snowy town",
+     "houses with lit windows",
+     "orange glow and smoke",
+     "fire engines",
+     "firefighters with lamps",
+     "toll plates"
+    ],
+    "fig": {
+     "aboard": "{fact6}",
+     "ground": "{fact7}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Startle or training: why did he pull? Full story on our channel. It started when",
+   "events": {
+    "Startle": {
+     "word": "Startle"
+    },
+    "training": {
+     "word": "training"
+    },
+    "pull": {
+     "word": "pull"
+    },
+    "story": {
+     "word": "story"
+    },
+    "channel": {
+     "word": "channel"
+    },
+    "started": {
+     "word": "started"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Cockpit",
+    "mode": "loop",
+    "place": "back on the flight deck in the snow, quiet again before the warning",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "story",
+      "size": "medium"
+     },
+     {
+      "at": "started",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Startle",
+      "what": "the quiet flight deck, snow streaking past, STARTLE types on"
+     },
+     {
+      "at": "training",
+      "what": "OR TRAINING? types on beside it"
+     },
+     {
+      "at": "channel",
+      "what": "FULL STORY ON THE CHANNEL types on, the camera drifts toward the columns"
+     },
+     {
+      "at": "started",
+      "what": "the columns begin to rattle and the STALL lights flicker, back to the first frame"
+     }
+    ],
+    "things": [
+     "flight deck",
+     "control columns",
+     "STALL lights",
+     "question tags",
+     "windshield with snow"
+    ],
+    "fig": {
+     "speed": "{fact3}"
+    }
+   }
+  }
+ ]
+}

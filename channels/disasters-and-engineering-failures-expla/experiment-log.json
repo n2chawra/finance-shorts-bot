@@ -1,0 +1,28 @@
+{
+ "experiments": [
+  {
+   "id": "dd-long-title-3d",
+   "area": "title",
+   "format": "long",
+   "status": "running",
+   "startedAt": "2026-11-26",
+   "templates": [
+    "long_story"
+   ],
+   "guard": "qa_failures",
+   "minPerArm": 4,
+   "maxDays": 42,
+   "metric": "views7d",
+   "hypothesis": "Small disaster channels' breakouts this week promise a 3D rebuild in the title (Last Altitude 'Every Clue Rebuilt in 3D', 31K on 1.68K subscribers, 18x); our long videos are at 0-15 views after 1-4 days. Saying 'Rebuilt in 3D' after the event's name should earn more search and browse clicks without breaking the owner's name-first rule. The proposal's stake-first title and 3D thumbnail are left out: the first breaks the 23 Nov rule, the second would be a second change."
+  },
+  {
+   "id": "2026-11-26-chapters-fingerprint",
+   "area": "pipeline",
+   "format": "long",
+   "status": "adopted",
+   "startedAt": "2026-11-26",
+   "evidence": "Adopted: generator/run.py fingerprint() leaves the description's CHAPTERS block out, so ship no longer refuses a long video for the timestamps Studio adds after the full render (test in generator/tests/test_qa_gate.py).",
+   "proposal": "2026-11-26-chapters-fingerprint"
+  }
+ ]
+}

@@ -1,14 +1,14 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-24T19:34:40.014Z",
+  "generatedAt": "2026-11-26T18:31:11.211Z",
   "channel": "india-maps",
   "youtubeChecked": true,
   "summary": {
-    "videos": 1,
-    "checked": 1,
+    "videos": 5,
+    "checked": 5,
     "error": 0,
     "warning": 0,
-    "info": 1,
+    "info": 2,
     "owner": 0,
     "persistentErrors": 0
   },
@@ -16,12 +16,115 @@
     {
       "kind": "behind_youtube_stale",
       "severity": "info",
-      "videoId": "v-20261124-61",
-      "youtubeId": "5sQ_aqR5i-w",
-      "detail": "Dashboard shows 189 views, YouTube 230; live counts last refreshed 149 min ago (they refresh while the dashboard is open)."
+      "videoId": "v-20261126-62",
+      "youtubeId": "A_nA7uLrFUE",
+      "detail": "Dashboard shows 94 views, YouTube 110; live counts last refreshed 79 min ago (they refresh while the dashboard is open)."
+    },
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
+      "videoId": "v-20261126-61",
+      "youtubeId": "5hewiSOzYGk",
+      "detail": "Dashboard shows 304 views, YouTube 356; live counts last refreshed 79 min ago (they refresh while the dashboard is open)."
     }
   ],
   "videos": [
+    {
+      "id": "v-20261126-62",
+      "title": "Rajasthan vs Germany: kaun bada? 🏜️",
+      "youtubeId": "A_nA7uLrFUE",
+      "state": "published",
+      "publishAt": "2026-11-26T12:47:00.000Z",
+      "dashboard": {
+        "views": 94,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:12:07.312Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 110,
+        "likes": 2,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261126-61",
+      "title": "Bharat ka samudra tat achanak itna lamba kaise ho gaya? 🌊",
+      "youtubeId": "5hewiSOzYGk",
+      "state": "published",
+      "publishAt": "2026-11-26T06:37:00.000Z",
+      "dashboard": {
+        "views": 304,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:12:07.312Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 356,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261125-61",
+      "title": "Madhya Pradesh, UP aur Bihar ek hi mahine mein kyun kate? 🗺️",
+      "youtubeId": "5E9uJ1HdBcU",
+      "state": "published",
+      "publishAt": "2026-11-25T14:37:00.000Z",
+      "dashboard": {
+        "views": 652,
+        "likes": 2,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:12:07.312Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 672,
+        "likes": 2,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261125-62",
+      "title": "China ya Pakistan? India ki sabse lambi border kiske saath? 🇮🇳",
+      "youtubeId": "pKENleonsac",
+      "state": "published",
+      "publishAt": "2026-11-25T12:47:00.000Z",
+      "dashboard": {
+        "views": 1151,
+        "likes": 12,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:12:07.312Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1154,
+        "likes": 12,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261124-61",
       "title": "Telangana ki gaadiyon ka code kyun badla? 🚗 Har state ka code",
@@ -29,15 +132,15 @@
       "state": "published",
       "publishAt": "2026-11-24T12:47:00.000Z",
       "dashboard": {
-        "views": 189,
-        "likes": 5,
+        "views": 467,
+        "likes": 7,
         "comments": 0,
-        "liveAt": "2026-11-24T17:05:58.180Z"
+        "liveAt": "2026-11-26T17:12:07.312Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 230,
-        "likes": 5,
+        "views": 467,
+        "likes": 7,
         "comments": 0
       },
       "analytics": {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T09:27:16.540284+00:00",
+  "generatedAt": "2026-11-27T08:45:33.908915+00:00",
   "cycle": 1,
   "running": "doc-document-first",
   "thresholds": {
@@ -7,9 +7,37 @@
     "revertPoints": -5,
     "confidence": 0.8
   },
-  "channelStayed14d": 0.462,
+  "channelStayed14d": 0.506,
   "cycleVideos": {
-    "doc-document-first": []
+    "doc-document-first": [
+      {
+        "id": "v-20261126-31",
+        "title": "Adidas and Puma Were One Shoe Company, Run by Two Brothers",
+        "side": "on",
+        "publishAt": "2026-11-26T12:17:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 5
+      },
+      {
+        "id": "v-20261125-32",
+        "title": "Blockbuster Had 9,094 Stores. Netflix Had an Envelope",
+        "side": "on",
+        "publishAt": "2026-11-25T16:47:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 330
+      },
+      {
+        "id": "v-20261125-34",
+        "title": "FedEx Was Down to $5,000. Its Founder Went to Las Vegas",
+        "side": "on",
+        "publishAt": "2026-11-25T12:17:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 19
+      }
+    ]
   },
   "experiment": {
     "id": "doc-document-first",
@@ -24,7 +52,7 @@
     "maxDays": 7,
     "extended": false,
     "published": {
-      "on": 0,
+      "on": 3,
       "off": 0
     },
     "counted": {
@@ -37,9 +65,37 @@
     },
     "points": null,
     "pOnBetter": 0.5,
-    "days": 1,
+    "days": 3,
     "verdict": "wait",
-    "why": "0 of 8 Shorts a side have two days of data; day 1 of 7",
-    "videos": []
+    "why": "0 of 8 Shorts a side have two days of data; day 3 of 7",
+    "videos": [
+      {
+        "id": "v-20261126-31",
+        "title": "Adidas and Puma Were One Shoe Company, Run by Two Brothers",
+        "side": "on",
+        "publishAt": "2026-11-26T12:17:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 5
+      },
+      {
+        "id": "v-20261125-32",
+        "title": "Blockbuster Had 9,094 Stores. Netflix Had an Envelope",
+        "side": "on",
+        "publishAt": "2026-11-25T16:47:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 330
+      },
+      {
+        "id": "v-20261125-34",
+        "title": "FedEx Was Down to $5,000. Its Founder Went to Las Vegas",
+        "side": "on",
+        "publishAt": "2026-11-25T12:17:00.000Z",
+        "counted": false,
+        "value": null,
+        "views": 19
+      }
+    ]
   }
 }

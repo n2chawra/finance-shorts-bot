@@ -75,3 +75,17 @@ def test_a_motion_gate_fix_may_render_again_without_another_qa(root: Path, video
 def test_old_qa_passes_without_a_fingerprint_are_trusted(root: Path, video: Path) -> None:
     run.log_step(VID, "qa_review", True, ["ok"], root)
     assert run.full_render_problems(VID, root) == []
+
+
+def test_chapter_timestamps_added_after_the_full_render_are_not_a_change(root: Path, video: Path) -> None:
+    """Studio writes a long video's CHAPTERS only once the full render has its timings (agents/studio.md step 7);
+    ship refused L-20261126-41 for it (proposal 2026-11-26-chapters-fingerprint)."""
+    body = "What the video covers.\n\nSources: NTSB final report.\nDisclaimer."
+    (video / "plan.json").write_text(json.dumps({"title": "A plan", "description": body}))
+    stills(root)
+    run.record(VID, "qa_review", True, ["ok"], root)
+    chaptered = "What the video covers.\n\nCHAPTERS\n0:00 Intro\n0:49 The Flight\n1:02:03 The Law\n\nSources: NTSB final report.\nDisclaimer."
+    (video / "plan.json").write_text(json.dumps({"title": "A plan", "description": chaptered}))
+    assert run.full_render_problems(VID, root) == []
+    (video / "plan.json").write_text(json.dumps({"title": "A plan", "description": chaptered.replace("Disclaimer.", "New words.")}))
+    assert "changed after QA" in run.full_render_problems(VID, root)[0]   # anything else still counts

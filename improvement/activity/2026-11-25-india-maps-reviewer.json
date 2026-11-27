@@ -1,0 +1,18 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-25T16:08:30Z",
+  "finishedAt": "2026-11-25T16:09:42Z",
+  "summary": "Naksha Bharat's first review: watched its only published Short (TS to TG plates); no retention yet, so no lesson; added one first-second challenger.",
+  "decision": "waited",
+  "why": "v-20261124-61 went out on 24 Nov (264 views) and YouTube Analytics has no stayed, hold or drop data for it yet; a lesson needs a number.",
+  "findings": [
+    {"title": "First frame shows the state, not the plates", "detail": "At 0 s Telangana is lit with no TS/TG plate; the thumbnail shows the puzzle better. Queued as challenger im-plate-first-frame."},
+    {"title": "Channel-level analytics are not this channel's Shorts", "detail": "all:28 shows 1,567 views, 82% US, searches like 'underground train'; the only Short has 264 views. Likely older videos on the YouTube channel."}
+  ],
+  "changes": [
+    {"title": "Challenger added: im-plate-first-frame", "detail": "channels/india-maps/cycle/backlog.json", "branch": "agent/reviewer/2026-11-25/india-maps"}
+  ],
+  "nextCheck": "2026-11-28",
+  "links": [{"label": "Report", "url": "channels/india-maps/review/2026-11-25.md"}]
+}

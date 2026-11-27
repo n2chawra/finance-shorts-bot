@@ -1,0 +1,20 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-25",
+  "startedAt": "2026-11-25T16:09:30Z",
+  "finishedAt": "2026-11-25T16:11:01Z",
+  "summary": "Watched Disaster Desk's two Shorts with retention plus the two newest; added one lesson about the second beat and one challenger about the ending.",
+  "decision": "acted",
+  "why": "The tanker Short lost 15.5% at 5.3 s when beat 2 cut to an unrecognisable orange rudder cutaway over 'stuck to starboard'; Lac-Megantic lost 11.3% at 5.4 s with its speed dial reading 3 while the voice said 65.",
+  "findings": [
+    {"title": "Second beat is the biggest drop", "detail": "v-20261122-41 -15.5% at 5.3 s (rudder cutaway, 'starboard'); v-20261121-42 -11.3% at 5.4 s (dial behind the spoken 65)."},
+    {"title": "Weak endings", "detail": "Both end on a comment-question board; end hold 31% and 25%, held after the hook 27% and 21%."},
+    {"title": "Tacoma repeats the risk", "detail": "v-20261124-41's beat 2 is backstory over a calendar card; no retention yet, check Friday."}
+  ],
+  "changes": [
+    {"title": "Lesson added: the second beat stays on the whole thing, in plain words", "detail": "channels/disasters-and-engineering-failures-expla/prompts/lessons.md #0", "branch": "agent/reviewer/2026-11-25/disasters-and-engineering-failures-expla"},
+    {"title": "Challenger added: end on the fact, not a question board", "detail": "cycle/backlog.json dd-end-on-fact", "branch": "agent/reviewer/2026-11-25/disasters-and-engineering-failures-expla"}
+  ],
+  "nextCheck": "2026-11-28",
+  "links": [{"label": "Report", "url": "channels/disasters-and-engineering-failures-expla/review/2026-11-25.md"}]
+}

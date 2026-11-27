@@ -1,11 +1,11 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-24T19:34:40.014Z",
+  "generatedAt": "2026-11-26T18:31:11.211Z",
   "channel": "disasters-and-engineering-failures-expla",
   "youtubeChecked": true,
   "summary": {
-    "videos": 7,
-    "checked": 6,
+    "videos": 10,
+    "checked": 8,
     "error": 0,
     "warning": 0,
     "info": 0,
@@ -15,16 +15,69 @@
   "issues": [],
   "videos": [
     {
+      "id": "v-20261125-41",
+      "title": "Titan's Last Message Was Routine. Then the Sub Went Silent.",
+      "youtubeId": "XYBxb183UwA",
+      "state": "published",
+      "publishAt": "2026-11-25T17:25:00.000Z",
+      "dashboard": {
+        "views": 239,
+        "likes": 6,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:09:18.255Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 241,
+        "likes": 6,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "L-20261124-41",
+      "title": "The Titan Submersible Implosion: What Really Happened",
+      "youtubeId": "nKTUe0GhLfM",
+      "state": "published",
+      "publishAt": "2026-11-25T17:17:00.000Z",
+      "dashboard": {
+        "views": 15,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:09:18.255Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 15,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
       "id": "v-20261124-41",
       "title": "Why Did the Tacoma Narrows Bridge Twist Itself Apart?",
       "youtubeId": "vDu93JQQFwg",
       "state": "published",
       "publishAt": "2026-11-24T17:47:00.000Z",
-      "dashboard": null,
+      "dashboard": {
+        "views": 43,
+        "likes": 1,
+        "comments": 0,
+        "liveAt": "2026-11-26T17:09:18.255Z"
+      },
       "youtube": {
         "privacy": "public",
-        "views": 4,
-        "likes": 0,
+        "views": 43,
+        "likes": 1,
         "comments": 0
       },
       "analytics": {
@@ -40,21 +93,21 @@
       "state": "published",
       "publishAt": "2026-11-23T17:47:00.000Z",
       "dashboard": {
-        "views": 447,
-        "likes": 4,
+        "views": 481,
+        "likes": 6,
         "comments": 1,
-        "liveAt": "2026-11-24T17:03:19.362Z"
+        "liveAt": "2026-11-26T17:09:18.255Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 451,
-        "likes": 4,
+        "views": 481,
+        "likes": 5,
         "comments": 1
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 438,
+        "days": 1,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -67,7 +120,7 @@
         "views": 15,
         "likes": 1,
         "comments": 0,
-        "liveAt": "2026-11-24T17:03:19.362Z"
+        "liveAt": "2026-11-26T17:09:18.255Z"
       },
       "youtube": {
         "privacy": "public",
@@ -76,9 +129,9 @@
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 15,
+        "days": 1,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -88,21 +141,21 @@
       "state": "published",
       "publishAt": "2026-11-22T17:47:00.000Z",
       "dashboard": {
-        "views": 1168,
+        "views": 1180,
         "likes": 10,
         "comments": 0,
-        "liveAt": "2026-11-24T17:03:19.362Z"
+        "liveAt": "2026-11-26T17:09:18.255Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1170,
+        "views": 1179,
         "likes": 10,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1166,
+        "days": 2,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -112,21 +165,21 @@
       "state": "published",
       "publishAt": "2026-11-22T17:17:00.000Z",
       "dashboard": {
-        "views": 9,
+        "views": 10,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-11-24T17:03:19.362Z"
+        "liveAt": "2026-11-26T17:09:18.255Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 9,
+        "views": 10,
         "likes": 0,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 9,
+        "days": 2,
+        "lastDay": "2026-11-23"
       }
     },
     {
@@ -136,21 +189,21 @@
       "state": "published",
       "publishAt": "2026-11-21T17:47:00.000Z",
       "dashboard": {
-        "views": 450,
+        "views": 461,
         "likes": 11,
         "comments": 1,
-        "liveAt": "2026-11-24T17:03:19.362Z"
+        "liveAt": "2026-11-26T17:09:18.255Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 450,
-        "likes": 10,
+        "views": 462,
+        "likes": 11,
         "comments": 1
       },
       "analytics": {
-        "views": 149,
-        "days": 1,
-        "lastDay": "2026-11-21"
+        "views": 449,
+        "days": 3,
+        "lastDay": "2026-11-23"
       }
     }
   ]

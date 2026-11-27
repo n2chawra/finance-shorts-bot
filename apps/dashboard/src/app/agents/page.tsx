@@ -32,7 +32,7 @@ const DECISION: Record<Activity["decision"], { label: string; tone: Tone }> = {
   blocked: { label: "Blocked", tone: "critical" },
   nothing: { label: "Nothing to do", tone: "neutral" },
 };
-const STATUS: Record<string, Tone> = { running: "info", testing: "info", kept: "good", reverted: "critical", abandoned: "neutral", new: "brand", rejected: "neutral", done: "good", open: "brand" };
+const STATUS: Record<string, Tone> = { running: "info", testing: "info", kept: "good", adopted: "good", reverted: "critical", abandoned: "neutral", new: "brand", rejected: "neutral", done: "good", open: "brand" };
 
 const repoLink = (url: string) => (/^https?:/.test(url) ? url : `https://github.com/n2chawra/finance-shorts-bot/blob/main/${url}`);
 
@@ -183,13 +183,39 @@ function ActivityTab({ data }: { data: Agents }) {
   );
 }
 
+/** What each test is judged on (improvement/evaluate.py): the weekly loop's two, or views for the older tests. */
+const METRIC: Record<string, string> = { stayed: "stayed to watch", heldAfterHook: "held after the hook", views48h: "views", views7d: "views" };
+
+/**
+ * An experiment's result in the words it was judged on. The weekly loop records a difference in points
+ * (`points`, `p_on_better`); older tests a ratio of views. Every result once read "% views", so a kept
+ * stayed-to-watch test showed nothing, and a ratio on another metric was called views.
+ */
+function resultLine(e: Agents["experiments"][number]): { text: string; up: boolean } | null {
+  const r = (e.result && typeof e.result === "object" ? e.result : {}) as { ratio?: number | null; points?: number | null; confidence?: number; p_on_better?: number; metric?: string };
+  const metric = METRIC[r.metric ?? String((e as { metric?: unknown }).metric ?? "")] ?? "views";
+  const sure = (up: boolean) => {
+    const c = r.confidence ?? (r.p_on_better !== undefined ? (up ? r.p_on_better : 1 - r.p_on_better) : undefined);
+    return c ? ` · ${Math.round(c * 100)}% sure` : "";
+  };
+  if (typeof r.points === "number") {
+    const up = r.points >= 0;
+    return { up, text: `${up ? "+" : ""}${r.points.toFixed(1)} points ${metric}${sure(up)}` };
+  }
+  if (typeof r.ratio === "number") {
+    const up = r.ratio >= 1;
+    return { up, text: `${up ? "+" : ""}${Math.round((r.ratio - 1) * 100)}% ${metric}${sure(up)}` };
+  }
+  return null;
+}
+
 function ExperimentsTab({ data }: { data: Agents }) {
   if (!data.experiments.length) return <Card><Empty icon={FlaskConical} title="No experiments yet">The improver tests each change on half the new videos and keeps it only if the numbers say so.</Empty></Card>;
   return (
     <Card flush>
       <ul>
         {data.experiments.map((e) => {
-          const result = e.result as { ratio?: number; confidence?: number; n?: number } | undefined;
+          const verdict = resultLine(e);
           return (
             <li key={e.id} className="flex flex-wrap items-start gap-3 border-b border-line px-4 py-3 last:border-0 md:px-5">
               <div className="min-w-0 flex-1">
@@ -203,11 +229,7 @@ function ExperimentsTab({ data }: { data: Agents }) {
               </div>
               <div className="text-right text-xs text-muted">
                 {e.startedAt && <div>started {fmtDayKey(e.startedAt.slice(0, 10))}</div>}
-                {result?.ratio !== undefined && (
-                  <div className={`mt-0.5 text-[13px] font-semibold ${result.ratio >= 1 ? "text-good-text" : "text-critical-text"}`}>
-                    {result.ratio >= 1 ? "+" : ""}{Math.round((result.ratio - 1) * 100)}% views{result.confidence ? ` · ${Math.round(result.confidence * 100)}% sure` : ""}
-                  </div>
-                )}
+                {verdict && <div data-testid="experiment-result" className={`mt-0.5 text-[13px] font-semibold ${verdict.up ? "text-good-text" : "text-critical-text"}`}>{verdict.text}</div>}
               </div>
             </li>
           );
@@ -278,7 +300,7 @@ const PRIORITY: Record<string, Tone> = { breaking: "critical", high: "warning", 
 
 /** Video ideas research found (news, trends, evergreen), and which video used each. */
 function TopicsTab({ data }: { data: Agents }) {
-  if (!data.topics.length) return <Card><Empty icon={Newspaper} title="No topics yet">Research reads the money news every night and lists ready video ideas here. Breaking stories go into the next morning&apos;s videos.</Empty></Card>;
+  if (!data.topics.length) return <Card><Empty icon={Newspaper} title="No topics yet">Research scans this channel&apos;s niche every night and lists ready video ideas here. A breaking topic goes into the next morning&apos;s videos.</Empty></Card>;
   return (
     <Card flush>
       <ul>

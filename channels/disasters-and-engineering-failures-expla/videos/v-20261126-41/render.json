@@ -1,0 +1,105 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 34071,
+  "duration_sec": 46,
+  "tempo": 1.2,
+  "style": {
+    "palette": "night",
+    "genre": "undertow",
+    "key": "A",
+    "bpm": 56
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Colgan Air's column shook at 131 knots.",
+        "start": 0.3,
+        "seconds": 3.4,
+        "window": 4.07,
+        "fill": 0.835
+      },
+      {
+        "scene": "wing",
+        "text": "Near Buffalo, that shaking was the stall warning. It fires before a wing stalls. So what should a pilot do?",
+        "start": 4.37,
+        "seconds": 7.12,
+        "window": 7.77,
+        "fill": 0.916
+      },
+      {
+        "scene": "answer",
+        "text": "Raise a wing's nose too steeply, and the air tears off its top. The trained answer: push the nose down.",
+        "start": 12.13,
+        "seconds": 6.89,
+        "window": 7.53,
+        "fill": 0.915
+      },
+      {
+        "scene": "pull",
+        "text": "The captain pulled his column back.",
+        "start": 19.67,
+        "seconds": 1.92,
+        "window": 2.57,
+        "fill": 0.747
+      },
+      {
+        "scene": "roll",
+        "text": "The nose rose, and the left wing dropped to 45 degrees. Then it whipped right, to 105.",
+        "start": 24.57,
+        "seconds": 6.74,
+        "window": 7.33,
+        "fill": 0.92
+      },
+      {
+        "scene": "payoff",
+        "text": "In under half a minute, it came down on a house. All 49 people aboard were killed, and 1 on the ground.",
+        "start": 31.9,
+        "seconds": 6.92,
+        "window": 7.57,
+        "fill": 0.914
+      },
+      {
+        "scene": "loop",
+        "text": "Startle or training: why did he pull? Full story on our channel. It started when",
+        "start": 39.47,
+        "seconds": 5.2,
+        "window": 5.87,
+        "fill": 0.886
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.2,
+    "lufs": -16.0,
+    "music_under_voice_db": 22.6
+  },
+  "craft_problems": [
+    "note: 24 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 10.601,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

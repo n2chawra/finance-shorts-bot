@@ -1,0 +1,1073 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 72651,
+ "story": "what_if_world",
+ "shape": "the-crossing",
+ "currency": "USD",
+ "style": {
+  "palette": "sky",
+  "genre": "atlas",
+  "key": "G",
+  "bpm": 86,
+  "look": {
+   "stage": "space",
+   "header": "sticky",
+   "holder": "phone",
+   "entrance": "stamp"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Bridge or tunnel: which would you build? Comment",
+ "feed_id": "2026-11-26-what-if-bering-bridge",
+ "facts": [
+  {
+   "label": "Width of the Bering Strait at its narrowest, in kilometres",
+   "value": 82,
+   "unit": "count",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Bering_Strait",
+   "fixed": true
+  },
+  {
+   "label": "Greatest depth of the Bering Strait, in metres",
+   "value": 90,
+   "unit": "count",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Bering_Strait",
+   "fixed": true
+  },
+  {
+   "label": "Distance between the two Diomede islands at their closest, in kilometres",
+   "value": 3.8,
+   "unit": "count",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Diomede_Islands",
+   "fixed": true
+  },
+  {
+   "label": "Length of the proposed TKM-World Link tunnel, in kilometres",
+   "value": 103,
+   "unit": "count",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Bering_Strait",
+   "fixed": true
+  },
+  {
+   "label": "Estimated cost of the TKM-World Link tunnel project",
+   "value": 65,
+   "unit": "money_billion",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Bering_Strait",
+   "fixed": true,
+   "currency": "USD"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "dateline",
+  "sec": 8.6,
+  "words": "Drive to *Alaska*?",
+  "tag": "Bering Strait",
+  "angle": "question",
+  "figure": "{fact1}",
+  "who": "narrator",
+  "references": [
+   {
+    "id": "D7IknygWHKs",
+    "views": 2900000,
+    "what": "the plan's demand Short: the Bering Strait map with a bridge drawn from Russia to Alaska"
+   }
+  ],
+  "pattern": "the strait with the crossing drawn over it and a short question; ours takes the bridge over the date line between the two islands on our vintage map"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "What if you could drive from Russia to Alaska, over the sea?",
+   "events": {
+    "drive": {
+     "word": "drive"
+    },
+    "russia": {
+     "word": "Russia"
+    },
+    "alaska": {
+     "word": "Alaska"
+    },
+    "over": {
+     "word": "over"
+    },
+    "sea": {
+     "word": "sea"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the tip of Russia facing Alaska across the Bering Strait",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sea",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "drive",
+      "what": "a car rolls up to the tip of Russia, a road sign beside it pointing across the water"
+     },
+     {
+      "at": "russia",
+      "what": "Russia's flag plants on its shore"
+     },
+     {
+      "at": "alaska",
+      "what": "the American flag plants on Alaska's shore and the sign's arrow lights"
+     },
+     {
+      "at": "over",
+      "what": "a dotted line arcs over the water"
+     },
+     {
+      "at": "sea",
+      "what": "the camera pushes in on the waves between them"
+     }
+    ],
+    "things": [
+     "car",
+     "road sign to alaska",
+     "russian flag",
+     "american flag",
+     "dotted arc",
+     "waves"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "alaska"
+    }
+   ]
+  },
+  {
+   "id": "near",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Here at the Bering Strait, only {fact1} kilometres of sea separate them.",
+   "events": {
+    "here": {
+     "word": "Here"
+    },
+    "bering": {
+     "word": "Bering"
+    },
+    "strait": {
+     "word": "Strait"
+    },
+    "only": {
+     "word": "only"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "separate": {
+     "word": "separate"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Near",
+    "place": "on the map: the Bering Strait, a ruler across its narrowest point",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "separate",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "here",
+      "what": "the camera pulls up over the strait"
+     },
+     {
+      "at": "bering",
+      "what": "BERING STRAIT writes on in the water"
+     },
+     {
+      "at": "strait",
+      "what": "the two coasts light up"
+     },
+     {
+      "at": "only",
+      "what": "a ruler stretches from coast to coast"
+     },
+     {
+      "at": "sea",
+      "what": "the width lands on the ruler's tag"
+     },
+     {
+      "at": "separate",
+      "what": "the camera eases back to show both coasts whole"
+     }
+    ],
+    "things": [
+     "bering strait label",
+     "coasts",
+     "ruler",
+     "width tag"
+    ],
+    "fig": {
+     "width": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "edges",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "On a flat world map, they sit at opposite edges. Spin the map around the globe, and they nearly touch.",
+   "events": {
+    "flat": {
+     "word": "flat"
+    },
+    "world": {
+     "word": "world"
+    },
+    "opposite": {
+     "word": "opposite"
+    },
+    "edges": {
+     "word": "edges"
+    },
+    "spin": {
+     "word": "Spin"
+    },
+    "globe": {
+     "word": "globe"
+    },
+    "nearly": {
+     "word": "nearly"
+    },
+    "touch": {
+     "word": "touch"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Edges",
+    "place": "on the map: the whole world from space, spinning until Russia and Alaska meet in the middle",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "touch",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "flat",
+      "what": "the camera pulls out to the whole flat world map"
+     },
+     {
+      "at": "world",
+      "what": "the map's edges outline"
+     },
+     {
+      "at": "opposite",
+      "what": "Russia lights on the right edge"
+     },
+     {
+      "at": "edges",
+      "what": "Alaska lights on the left edge"
+     },
+     {
+      "at": "spin",
+      "what": "the world spins east to west"
+     },
+     {
+      "at": "globe",
+      "what": "the map keeps turning, oceans sliding past"
+     },
+     {
+      "at": "nearly",
+      "what": "Russia and Alaska slide together in the middle"
+     },
+     {
+      "at": "touch",
+      "what": "the camera pushes in on the strait between them"
+     }
+    ],
+    "things": [
+     "world map",
+     "russia",
+     "alaska",
+     "map edges",
+     "strait"
+    ]
+   }
+  },
+  {
+   "id": "islands",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "And right in the middle sit two islands: Big Diomede, which is Russian, and Little Diomede, which is American.",
+   "events": {
+    "middle": {
+     "word": "middle"
+    },
+    "two": {
+     "word": "two"
+    },
+    "islands": {
+     "word": "islands"
+    },
+    "big": {
+     "word": "Big"
+    },
+    "russian": {
+     "word": "Russian"
+    },
+    "little": {
+     "word": "Little"
+    },
+    "american": {
+     "word": "American"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Islands",
+    "place": "on the map: the two Diomede islands in the middle of the strait",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "big",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "middle",
+      "what": "the camera drifts to the middle of the strait"
+     },
+     {
+      "at": "two",
+      "what": "two islands pop up out of the sea"
+     },
+     {
+      "at": "islands",
+      "what": "rings of surf circle them"
+     },
+     {
+      "at": "big",
+      "what": "BIG DIOMEDE writes on the larger island"
+     },
+     {
+      "at": "russian",
+      "what": "a Russian flag plants on it"
+     },
+     {
+      "at": "little",
+      "what": "LITTLE DIOMEDE writes on the smaller island"
+     },
+     {
+      "at": "american",
+      "what": "an American flag plants on it"
+     }
+    ],
+    "things": [
+     "big diomede",
+     "little diomede",
+     "surf",
+     "russian flag",
+     "american flag",
+     "island labels"
+    ]
+   }
+  },
+  {
+   "id": "apart",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "They're just {fact3} kilometres apart, and the sea around them is only {fact2} metres at its deepest. So why not a road?",
+   "events": {
+    "just": {
+     "word": "just"
+    },
+    "apart": {
+     "word": "apart"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "around": {
+     "word": "around"
+    },
+    "deepest": {
+     "word": "deepest"
+    },
+    "road": {
+     "word": "road"
+    },
+    "why": {
+     "word": "why"
+    },
+    "only": {
+     "word": "only"
+    },
+    "metres": {
+     "word": "metres"
+    },
+    "kilometres": {
+     "word": "kilometres"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Apart",
+    "place": "on the map: the narrow channel between the two islands, its depth marked",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "sea",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "just",
+      "what": "a ruler stretches between the islands"
+     },
+     {
+      "at": "apart",
+      "what": "the distance lands on its tag"
+     },
+     {
+      "at": "sea",
+      "what": "the water turns see-through, showing the sea floor close below"
+     },
+     {
+      "at": "around",
+      "what": "a depth line drops into the water"
+     },
+     {
+      "at": "deepest",
+      "what": "the depth lands on a buoy's tag"
+     },
+     {
+      "at": "why",
+      "what": "a question mark pops over the channel"
+     },
+     {
+      "at": "road",
+      "what": "a dotted road line arcs from island to island"
+     },
+     {
+      "at": "only",
+      "what": "a red buoy bobs up in the channel"
+     },
+     {
+      "at": "metres",
+      "what": "the depth line reaches the sea floor"
+     },
+     {
+      "at": "kilometres",
+      "what": "the ruler's ends tick"
+     }
+    ],
+    "things": [
+     "ruler",
+     "distance tag",
+     "depth line",
+     "buoy",
+     "sea floor"
+    ],
+    "fig": {
+     "gap": "{fact3}",
+     "depth": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "build",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So build it: one span from Russia to Big Diomede, a short hop to Little Diomede, and one more to Alaska. Three spans, and two continents are joined.",
+   "events": {
+    "build": {
+     "word": "build"
+    },
+    "span": {
+     "word": "span"
+    },
+    "russia": {
+     "word": "Russia"
+    },
+    "big": {
+     "word": "Big"
+    },
+    "hop": {
+     "word": "hop"
+    },
+    "little": {
+     "word": "Little"
+    },
+    "more": {
+     "word": "more"
+    },
+    "alaska": {
+     "word": "Alaska"
+    },
+    "three": {
+     "word": "Three"
+    },
+    "joined": {
+     "word": "joined"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Build",
+    "place": "on the map: a bridge drawing itself across the strait, island to island",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "hop",
+      "size": "close"
+     },
+     {
+      "at": "alaska",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "build",
+      "what": "a crane swings up on Russia's shore"
+     },
+     {
+      "at": "span",
+      "what": "the first span starts out over the water"
+     },
+     {
+      "at": "russia",
+      "what": "it leaves Russia's coast"
+     },
+     {
+      "at": "big",
+      "what": "it lands on Big Diomede"
+     },
+     {
+      "at": "hop",
+      "what": "a short span hops across the channel"
+     },
+     {
+      "at": "little",
+      "what": "it lands on Little Diomede"
+     },
+     {
+      "at": "more",
+      "what": "the last span runs east"
+     },
+     {
+      "at": "alaska",
+      "what": "it reaches Alaska and the whole bridge lights up"
+     },
+     {
+      "at": "three",
+      "what": "the three spans flash one after another"
+     },
+     {
+      "at": "joined",
+      "what": "the two coasts light up together"
+     }
+    ],
+    "things": [
+     "crane",
+     "bridge spans",
+     "piers",
+     "islands",
+     "bridge lights"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "big"
+    }
+   ]
+  },
+  {
+   "id": "drive",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Now drive it. How far would that take you? From London, east across Europe, all through Siberia, over the bridge, then down through Alaska and Canada to New York.",
+   "events": {
+    "drive": {
+     "word": "drive"
+    },
+    "london": {
+     "word": "London"
+    },
+    "europe": {
+     "word": "Europe"
+    },
+    "siberia": {
+     "word": "Siberia"
+    },
+    "bridge": {
+     "word": "bridge"
+    },
+    "alaska": {
+     "word": "Alaska"
+    },
+    "canada": {
+     "word": "Canada"
+    },
+    "york": {
+     "word": "York"
+    },
+    "far": {
+     "word": "far"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Drive",
+    "place": "on the map: a road from London across Europe and Siberia, over the bridge to Alaska, Canada and New York",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "bridge",
+      "size": "close"
+     },
+     {
+      "at": "canada",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "drive",
+      "what": "the camera pulls far back over the top of the world"
+     },
+     {
+      "at": "london",
+      "what": "a car sets off from a pin on London"
+     },
+     {
+      "at": "europe",
+      "what": "the road runs east across Europe"
+     },
+     {
+      "at": "siberia",
+      "what": "it runs on across Siberia, SIBERIA writing on"
+     },
+     {
+      "at": "bridge",
+      "what": "the car crosses the glowing bridge"
+     },
+     {
+      "at": "alaska",
+      "what": "it lands in Alaska"
+     },
+     {
+      "at": "canada",
+      "what": "Canada fills with its flag as the road runs south-east"
+     },
+     {
+      "at": "york",
+      "what": "a pin drops on New York at the end of the road"
+     },
+     {
+      "at": "far",
+      "what": "a distance dial spins at the top"
+     }
+    ],
+    "things": [
+     "car",
+     "london pin",
+     "road line",
+     "siberia label",
+     "bridge",
+     "canadian flag",
+     "new york pin"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "chime",
+     "at": "york"
+    }
+   ]
+  },
+  {
+   "id": "plan",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "Has anyone tried? Russia backed a plan: a {fact4} kilometre tunnel under the strait, priced at about {fact5}. It was never built.",
+   "events": {
+    "tunnel": {
+     "word": "tunnel"
+    },
+    "strait": {
+     "word": "strait"
+    },
+    "priced": {
+     "word": "priced"
+    },
+    "never": {
+     "word": "never"
+    },
+    "tried": {
+     "word": "tried"
+    },
+    "under": {
+     "word": "under"
+    },
+    "about": {
+     "word": "about"
+    },
+    "kilometre": {
+     "word": "kilometre"
+    },
+    "it": {
+     "word": "It"
+    },
+    "russia": {
+     "word": "Russia"
+    },
+    "backed": {
+     "word": "backed"
+    },
+    "built": {
+     "word": "built"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Plan",
+    "place": "on the map: the strait again, a planned tunnel drawn under the water",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "tunnel",
+      "size": "medium"
+     },
+     {
+      "at": "built",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "russia",
+      "what": "a blueprint sheet with Russia's flag slides into the sky above the strait"
+     },
+     {
+      "at": "backed",
+      "what": "a dashed tunnel line draws on the blueprint"
+     },
+     {
+      "at": "tunnel",
+      "what": "the tunnel's dashed line drops under the water between the coasts"
+     },
+     {
+      "at": "strait",
+      "what": "the tunnel's length lands on its tag"
+     },
+     {
+      "at": "priced",
+      "what": "a price tag swings onto the plan"
+     },
+     {
+      "at": "never",
+      "what": "a red NEVER BUILT stamp hits the plan as the tunnel fades"
+     },
+     {
+      "at": "built",
+      "what": "the camera jolts closer on the stamped plan"
+     },
+     {
+      "at": "tried",
+      "what": "a question mark pops over the strait"
+     },
+     {
+      "at": "under",
+      "what": "the tunnel line dips under the sea floor"
+     },
+     {
+      "at": "about",
+      "what": "the plan's paper flutters as the price is said"
+     },
+     {
+      "at": "kilometre",
+      "what": "the blueprint's tunnel line pulses"
+     },
+     {
+      "at": "it",
+      "what": "the plan starts to grey"
+     }
+    ],
+    "things": [
+     "blueprint",
+     "russian flag",
+     "dashed tunnel",
+     "length tag",
+     "price tag",
+     "red stamp"
+    ],
+    "fig": {
+     "length": "{fact4}",
+     "cost": "{fact5}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "built"
+    }
+   ]
+  },
+  {
+   "id": "dateline",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "And the strangest part: the International Date Line runs between the two islands. Drive east from Big Diomede, and you arrive in yesterday. A short drive apart, but almost a whole day apart in time.",
+   "events": {
+    "strangest": {
+     "word": "strangest"
+    },
+    "date": {
+     "word": "Date"
+    },
+    "line": {
+     "word": "Line"
+    },
+    "between": {
+     "word": "between"
+    },
+    "east": {
+     "word": "east"
+    },
+    "arrive": {
+     "word": "arrive"
+    },
+    "yesterday": {
+     "word": "yesterday"
+    },
+    "short": {
+     "word": "short"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "time": {
+     "word": "time"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "DateLine",
+    "place": "on the map: the date line running down the channel between the two islands",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "east",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "strangest",
+      "what": "the camera settles on the two islands"
+     },
+     {
+      "at": "date",
+      "what": "a dashed line draws down the sea from north to south"
+     },
+     {
+      "at": "line",
+      "what": "INTERNATIONAL DATE LINE writes on along it"
+     },
+     {
+      "at": "between",
+      "what": "calendar signs stand on both islands"
+     },
+     {
+      "at": "east",
+      "what": "a car rolls east across the bridge"
+     },
+     {
+      "at": "arrive",
+      "what": "the car crosses the line"
+     },
+     {
+      "at": "yesterday",
+      "what": "the calendar on Little Diomede flips back a day"
+     },
+     {
+      "at": "short",
+      "what": "the camera eases back to show both islands"
+     },
+     {
+      "at": "whole",
+      "what": "a clock on each calendar spins"
+     },
+     {
+      "at": "time",
+      "what": "both calendars pulse side by side"
+     }
+    ],
+    "things": [
+     "date line",
+     "calendar signs",
+     "bridge",
+     "car"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "yesterday"
+    }
+   ]
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Bridge or tunnel: which would you build? Either way, you could drive from Russia to Alaska.",
+   "events": {
+    "bridge": {
+     "word": "Bridge"
+    },
+    "tunnel": {
+     "word": "tunnel"
+    },
+    "build": {
+     "word": "build"
+    },
+    "either": {
+     "word": "Either"
+    },
+    "drive": {
+     "word": "drive"
+    },
+    "russia": {
+     "word": "Russia"
+    },
+    "alaska": {
+     "word": "Alaska"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the strait with the bridge and the tunnel, then the tip of Russia facing Alaska again",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "drive",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bridge",
+      "what": "the bridge lights up across the strait"
+     },
+     {
+      "at": "tunnel",
+      "what": "the dashed tunnel glows under the water"
+     },
+     {
+      "at": "build",
+      "what": "a question mark swings between them"
+     },
+     {
+      "at": "either",
+      "what": "both fade back"
+     },
+     {
+      "at": "drive",
+      "what": "the car rolls up to the tip of Russia"
+     },
+     {
+      "at": "russia",
+      "what": "Russia's coast lights"
+     },
+     {
+      "at": "alaska",
+      "what": "Alaska's coast lights as the frame settles on the hook's view"
+     }
+    ],
+    "things": [
+     "bridge",
+     "tunnel",
+     "question mark",
+     "car",
+     "road sign"
+    ]
+   }
+  }
+ ]
+}

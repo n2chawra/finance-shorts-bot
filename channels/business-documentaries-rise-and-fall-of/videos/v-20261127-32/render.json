@@ -1,0 +1,105 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 60418,
+  "duration_sec": 40,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "ledger",
+    "key": "C",
+    "bpm": 78
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Crocs' own auditors once doubted the company would survive.",
+        "start": 0.3,
+        "seconds": 2.15,
+        "window": 2.8,
+        "fill": 0.768
+      },
+      {
+        "scene": "doubt",
+        "text": "It had just lost $185.1M in one year, right after the clog craze. So how is this clog still on so many feet?",
+        "start": 3.1,
+        "seconds": 6.63,
+        "window": 7.27,
+        "fill": 0.912
+      },
+      {
+        "scene": "sales",
+        "text": "At the height of the craze, Crocs sold $847.4M worth of shoes in a year. The next year, that fell to $721.6M.",
+        "start": 10.37,
+        "seconds": 7.96,
+        "window": 8.47,
+        "fill": 0.94
+      },
+      {
+        "scene": "copies",
+        "text": "Its own filing warned of new rivals selling imitations, and it cut its staff to about 3,700.",
+        "start": 18.83,
+        "seconds": 4.94,
+        "window": 5.57,
+        "fill": 0.887
+      },
+      {
+        "scene": "stores",
+        "text": "But Crocs never dropped the clog. Today its shops sell it from Toronto to Suzhou to Miami.",
+        "start": 24.4,
+        "seconds": 4.07,
+        "window": 4.73,
+        "fill": 0.86
+      },
+      {
+        "scene": "comeback",
+        "text": "Last year, the company sold more than $4B worth, and the Crocs brand alone $3.33B.",
+        "start": 29.13,
+        "seconds": 5.4,
+        "window": 6.1,
+        "fill": 0.885
+      },
+      {
+        "scene": "loop",
+        "text": "Ugly or genius: which one is the clog in your closet? Because not long ago,",
+        "start": 35.23,
+        "seconds": 3.33,
+        "window": 4.0,
+        "fill": 0.833
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "doc-document-first": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.0,
+    "lufs": -16.0,
+    "music_under_voice_db": 17.7
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 10.877,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

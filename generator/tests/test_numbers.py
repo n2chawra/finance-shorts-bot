@@ -258,3 +258,10 @@ def test_a_link_to_the_short_is_not_a_claim() -> None:
     ok = {"description": "The 30-second version: https://youtube.com/shorts/ssxStI7t_5w\nIllustrative only."}
     assert check_claims(ok, script, figures) == []
     assert check_claims({"description": "https://youtube.com/shorts/ab3 then 45% returns"}, script, figures)
+
+
+def test_a_nordic_figure_in_free_text_matches_its_input() -> None:
+    """'DKK 83.5B' in a description is the script's own input, with or without the code (proposal money-dkk-sek-chf)."""
+    from generator import numbers
+    ok = numbers.allowed_numbers({"currency": "DKK", "inputs": {"revenue": 83.5e9}}, {})
+    assert {"83.5b", "dkk83.5b"} <= ok

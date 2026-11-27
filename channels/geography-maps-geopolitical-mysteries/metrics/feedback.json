@@ -1,20 +1,20 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 1,
+  "open": 0,
   "notes": [
     {
       "id": "cmwvnu9lg0001ic09oaajhjty",
       "kind": "improve",
       "area": "animation",
       "text": "Floods and water moving could have been animated much better kinda showing growing like waves or something. Right now ita a shape and line which is very bad animated.",
-      "status": "open",
-      "response": null,
+      "status": "addressed",
+      "response": "improver fixed: New map piece MapWater: a flood now rolls in from where the water enters as a wavy front with a moving foam line and spray, a lighter shallow band, ripples drifting on the deep water and waves lapping the new shore; the director must use it for any flood or sea and never a flat shape that scales up. (989b4a9)",
       "at": "2026-11-25T05:05:39.604Z",
       "video": {
         "id": "v-20261125-12",
         "title": "What if Africa split in two?",
         "format": "short",
-        "status": "queued",
+        "status": "published",
         "story": "what_if_world",
         "shape": "the-crack",
         "hookStyle": "challenge",

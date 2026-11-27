@@ -5457,6 +5457,563 @@
       ],
       "commit": "0f4901fc031841a54e30bc96d811f3549401ecbb",
       "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45584664047"
+    },
+    {
+      "at": "2026-11-25T15:41:52+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "reviewer",
+      "branch": "agent/reviewer/2026-11-25/business-documentaries-rise-and-fall-of",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/prompts/lessons.md",
+        "channels/business-documentaries-rise-and-fall-of/review/2026-11-25.md",
+        "improvement/activity/2026-11-25-business-documentaries-rise-and-fall-of-reviewer.json"
+      ],
+      "commit": "fd289f31363b7e940e536939d3ec3f6644875b22",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45647991241"
+    },
+    {
+      "at": "2026-11-25T16:10:09+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "reviewer",
+      "branch": "agent/reviewer/2026-11-25/india-maps",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/india-maps/cycle/backlog.json",
+        "channels/india-maps/notifications/reviewer.json",
+        "channels/india-maps/review/2026-11-25.md",
+        "improvement/activity/2026-11-25-india-maps-reviewer.json"
+      ],
+      "commit": "eb241fe7de706be278350c69bf71f9f061d4a22e",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45651469384"
+    },
+    {
+      "at": "2026-11-25T16:11:37+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "reviewer",
+      "branch": "agent/reviewer/2026-11-25/disasters-and-engineering-failures-expla",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/disasters-and-engineering-failures-expla/cycle/backlog.json",
+        "channels/disasters-and-engineering-failures-expla/prompts/lessons.md",
+        "channels/disasters-and-engineering-failures-expla/review/2026-11-25.md",
+        "improvement/activity/2026-11-25-disasters-and-engineering-failures-expla-reviewer.json"
+      ],
+      "commit": "afde1cf4b83bf8da1886c5311a55c072fcc8d95e",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45651629125"
+    },
+    {
+      "at": "2026-11-25T16:45:52+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "auditor",
+      "branch": "agent/auditor/2026-11-26",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "apps/dashboard/src/lib/posting-plan.ts",
+        "channels/business-documentaries-rise-and-fall-of/analysis/videos.json",
+        "channels/disasters-and-engineering-failures-expla/analysis/videos.json",
+        "channels/geography-maps-geopolitical-mysteries/analysis/videos.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/auditor.json",
+        "channels/geography-maps-geopolitical-mysteries/notifications/auditor.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/analysis/videos.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/feedback-acks/auditor.json",
+        "channels/india-maps/notifications/auditor.json",
+        "generator/tests/test_images.py",
+        "improvement/activity/2026-11-26-auditor.json",
+        "improvement/auditor/2026-11-26.md",
+        "improvement/auditor/backlog.json",
+        "improvement/auditor/state.json"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45656416990"
+    },
+    {
+      "at": "2026-11-25T17:03:20+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "improver",
+      "branch": "agent/improver/2026-11-25",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/journal.md",
+        "channels/business-documentaries-rise-and-fall-of/research/proposals.json",
+        "channels/business-documentaries-rise-and-fall-of/weekly/impact.json",
+        "channels/disasters-and-engineering-failures-expla/journal.md",
+        "channels/disasters-and-engineering-failures-expla/weekly/impact.json",
+        "channels/geography-maps-geopolitical-mysteries/changes.json",
+        "channels/geography-maps-geopolitical-mysteries/experiment-log.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/improver.json",
+        "channels/geography-maps-geopolitical-mysteries/journal.md",
+        "channels/geography-maps-geopolitical-mysteries/weekly/impact.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/journal.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/notifications/improver.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/weekly/impact.json",
+        "channels/india-maps/changes.json",
+        "channels/india-maps/experiment-log.json",
+        "channels/india-maps/journal.md",
+        "channels/india-maps/research/proposals.json",
+        "channels/india-maps/weekly/impact.json",
+        "generator/prompts/checklist.md",
+        "generator/prompts/director.md",
+        "improvement/activity/2026-11-25-improver.json",
+        "remotion/src/Root.tsx",
+        "remotion/src/flat/README.md",
+        "remotion/src/flat/data/india.json",
+        "remotion/src/flat/india.tsx",
+        "remotion/src/flat/water.tsx",
+        "remotion/src/flat/waterGeo.ts",
+        "remotion/src/sheets/MapSheet.tsx",
+        "remotion/test/water.test.ts"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45660257262"
+    },
+    {
+      "at": "2026-11-25T17:07:24+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "improver",
+      "branch": "agent/improver/2026-11-25",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/journal.md",
+        "channels/business-documentaries-rise-and-fall-of/research/proposals.json",
+        "channels/business-documentaries-rise-and-fall-of/weekly/impact.json",
+        "channels/disasters-and-engineering-failures-expla/journal.md",
+        "channels/disasters-and-engineering-failures-expla/weekly/impact.json",
+        "channels/geography-maps-geopolitical-mysteries/changes.json",
+        "channels/geography-maps-geopolitical-mysteries/experiment-log.json",
+        "channels/geography-maps-geopolitical-mysteries/feedback-acks/improver.json",
+        "channels/geography-maps-geopolitical-mysteries/journal.md",
+        "channels/geography-maps-geopolitical-mysteries/weekly/impact.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/journal.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/notifications/improver.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/weekly/impact.json",
+        "channels/india-maps/changes.json",
+        "channels/india-maps/experiment-log.json",
+        "channels/india-maps/journal.md",
+        "channels/india-maps/research/proposals.json",
+        "channels/india-maps/weekly/impact.json",
+        "generator/prompts/checklist.md",
+        "generator/prompts/director.md",
+        "improvement/activity/2026-11-25-improver.json",
+        "remotion/src/Root.tsx",
+        "remotion/src/flat/README.md",
+        "remotion/src/flat/data/india.json",
+        "remotion/src/flat/india.tsx",
+        "remotion/src/flat/water.tsx",
+        "remotion/src/flat/waterGeo.ts",
+        "remotion/src/sheets/MapSheet.tsx",
+        "remotion/test/water.test.ts"
+      ],
+      "commit": "5d18c6ca98b848abfffeba785eec190fabb7c37c",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45660257262"
+    },
+    {
+      "at": "2026-11-25T17:08:11+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "improver",
+      "branch": "agent/improver/2026-11-25-2",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/notifications/improver.json"
+      ],
+      "commit": "d8caf684af4141bc502f7569861cdd7afea1a72d",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45661413045"
+    },
+    {
+      "at": "2026-11-25T17:51:05+00:00",
+      "dayIst": "2026-11-25",
+      "agent": "dashboard",
+      "branch": "agent/dashboard/2026-11-25",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "apps/dashboard/e2e/smoke.spec.ts",
+        "apps/dashboard/src/app/notifications/page.tsx",
+        "improvement/activity/2026-11-25-dashboard.json",
+        "improvement/dashboard/2026-11-25.md",
+        "improvement/dashboard/backlog.json"
+      ],
+      "commit": "fa0912906a10980066a1ab8da28643092635bc23",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45667965844"
+    },
+    {
+      "at": "2026-11-25T18:50:15+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "research",
+      "branch": "agent/research/2026-11-26/geography-maps-geopolitical-mysteries",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/geography-maps-geopolitical-mysteries/research/2026-11-26.md",
+        "channels/geography-maps-geopolitical-mysteries/research/formats.json",
+        "channels/geography-maps-geopolitical-mysteries/research/proposals.json",
+        "channels/geography-maps-geopolitical-mysteries/research/seen.json",
+        "channels/geography-maps-geopolitical-mysteries/research/topics.json",
+        "improvement/activity/2026-11-26-geography-maps-geopolitical-mysteries-research.json"
+      ],
+      "commit": "5a9a20939b915d9d8ebc6ef11ea58752c54f0196",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45679106818"
+    },
+    {
+      "at": "2026-11-25T19:14:51+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "research",
+      "branch": "agent/research/2026-11-26/how-tech-and-ai-actually-work-chips-ai-p",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/cycle/backlog.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/feedback-acks/research.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-26.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/seen.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/topics.json",
+        "improvement/activity/2026-11-26-how-tech-and-ai-actually-work-chips-ai-p-research.json"
+      ],
+      "commit": "0bb70972572cc2c5fbc6064d04a305f85c7c2fc6",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45683199895"
+    },
+    {
+      "at": "2026-11-25T19:38:38+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "research",
+      "branch": "agent/research/2026-11-26/business-documentaries-rise-and-fall-of",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/cycle/backlog.json",
+        "channels/business-documentaries-rise-and-fall-of/notifications/research.json",
+        "channels/business-documentaries-rise-and-fall-of/research/2026-11-26.md",
+        "channels/business-documentaries-rise-and-fall-of/research/formats.json",
+        "channels/business-documentaries-rise-and-fall-of/research/proposals.json",
+        "channels/business-documentaries-rise-and-fall-of/research/seen.json",
+        "channels/business-documentaries-rise-and-fall-of/research/topics.json",
+        "improvement/activity/2026-11-26-business-documentaries-rise-and-fall-of-research.json"
+      ],
+      "commit": "807413a23d96e19144779f3fcc5e7039f0573a0e",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45687144823"
+    },
+    {
+      "at": "2026-11-25T20:03:52+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "research",
+      "branch": "agent/research/2026-11-26/disasters-and-engineering-failures-expla",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/disasters-and-engineering-failures-expla/research/2026-11-26.md",
+        "channels/disasters-and-engineering-failures-expla/research/proposals.json",
+        "channels/disasters-and-engineering-failures-expla/research/seen.json",
+        "channels/disasters-and-engineering-failures-expla/research/topics.json",
+        "improvement/activity/2026-11-26-disasters-and-engineering-failures-expla-research.json"
+      ],
+      "commit": "797022f746abd47e6d08719d0767eb7116c3adae",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45691155152"
+    },
+    {
+      "at": "2026-11-25T20:05:10+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "research",
+      "branch": "agent/research/2026-11-26/india-maps",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/india-maps/cycle/backlog.json",
+        "channels/india-maps/research/2026-11-26.md",
+        "channels/india-maps/research/seen.json",
+        "channels/india-maps/research/topics.json",
+        "improvement/activity/2026-11-26-india-maps-research.json"
+      ],
+      "commit": "e62f44a2dfd2bfad8bb4a84f573651bc7811e354",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45691414744"
+    },
+    {
+      "at": "2026-11-26T04:42:27+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "scout",
+      "branch": "agent/scout/2026-11-26/how-tech-and-ai-actually-work-chips-ai-p",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/feedback-acks/scout.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/longform/2026-11-26.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/longform/backlog.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/longform/topics.json",
+        "improvement/activity/2026-11-26-scout.json"
+      ],
+      "commit": "e73e698d4bf26c4c32348b8ef55d5ade37eb76f5",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45756849509"
+    },
+    {
+      "at": "2026-11-26T05:15:41+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "scout",
+      "branch": "agent/scout/2026-11-26/business-documentaries-rise-and-fall-of",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/longform/2026-11-26.md",
+        "channels/business-documentaries-rise-and-fall-of/longform/backlog.json",
+        "channels/business-documentaries-rise-and-fall-of/longform/topics.json",
+        "channels/business-documentaries-rise-and-fall-of/notifications/scout.json",
+        "improvement/activity/2026-11-26-business-documentaries-rise-and-fall-of-scout.json"
+      ],
+      "commit": "502f03b44e1e76189c27cf0a676edaec0e59beba",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45760358415"
+    },
+    {
+      "at": "2026-11-26T05:44:55+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "scout",
+      "branch": "agent/scout/2026-11-26/disasters-and-engineering-failures-expla",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/disasters-and-engineering-failures-expla/longform/2026-11-26.md",
+        "channels/disasters-and-engineering-failures-expla/longform/backlog.json",
+        "channels/disasters-and-engineering-failures-expla/longform/topics.json",
+        "improvement/activity/2026-11-26-disasters-and-engineering-failures-expla-scout.json"
+      ],
+      "commit": "813e9e2058b7b9b083b4a6aecb7f7301a9011714",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45763542392"
+    },
+    {
+      "at": "2026-11-26T06:14:42+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "studio",
+      "branch": "agent/studio/2026-11-26/disasters-and-engineering-failures-expla",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/disasters-and-engineering-failures-expla/longform/backlog.json",
+        "channels/disasters-and-engineering-failures-expla/notifications/studio.json",
+        "improvement/activity/2026-11-26-disasters-and-engineering-failures-expla-studio.json"
+      ],
+      "commit": "be44559af3ce094f559243d4a08a6ea85e8056f6",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45766779747"
+    },
+    {
+      "at": "2026-11-26T12:34:06+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "studio",
+      "branch": "agent/studio/2026-11-26-2/disasters-and-engineering-failures-expla",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/disasters-and-engineering-failures-expla/longform/backlog.json",
+        "channels/disasters-and-engineering-failures-expla/notifications/studio.json",
+        "improvement/activity/2026-11-26-disasters-and-engineering-failures-expla-studio.json"
+      ],
+      "commit": "bd891ea4594f0a3f8694ecd45b4bcc82b3157ee7",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45820756286"
+    },
+    {
+      "at": "2026-11-26T16:45:09+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "auditor",
+      "branch": "agent/auditor/2026-11-27",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "apps/dashboard/src/lib/posting-plan.ts",
+        "channels/business-documentaries-rise-and-fall-of/analysis/channel.json",
+        "channels/business-documentaries-rise-and-fall-of/analysis/videos.json",
+        "channels/disasters-and-engineering-failures-expla/analysis/videos.json",
+        "channels/geography-maps-geopolitical-mysteries/analysis/videos.json",
+        "channels/geography-maps-geopolitical-mysteries/notifications/auditor.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/analysis/videos.json",
+        "channels/india-maps/analysis/videos.json",
+        "channels/india-maps/notifications/auditor.json",
+        "improvement/activity/2026-11-27-auditor.json",
+        "improvement/auditor/2026-11-27.md",
+        "improvement/auditor/backlog.json",
+        "improvement/auditor/state.json"
+      ],
+      "commit": "d4ad33e26bf883cad332eff97acff534674260c1",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45860948110"
+    },
+    {
+      "at": "2026-11-26T17:04:45+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "improver",
+      "branch": "agent/improver/2026-11-26",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/experiment-log.json",
+        "channels/business-documentaries-rise-and-fall-of/journal.md",
+        "channels/business-documentaries-rise-and-fall-of/notifications/improver.json",
+        "channels/business-documentaries-rise-and-fall-of/weekly/impact.json",
+        "channels/disasters-and-engineering-failures-expla/experiment-log.json",
+        "channels/disasters-and-engineering-failures-expla/experiments.json",
+        "channels/disasters-and-engineering-failures-expla/journal.md",
+        "channels/disasters-and-engineering-failures-expla/longform/backlog.json",
+        "channels/disasters-and-engineering-failures-expla/research/proposals.json",
+        "channels/disasters-and-engineering-failures-expla/weekly/impact.json",
+        "channels/geography-maps-geopolitical-mysteries/cycle/backlog.json",
+        "channels/geography-maps-geopolitical-mysteries/journal.md",
+        "channels/geography-maps-geopolitical-mysteries/research/proposals.json",
+        "channels/geography-maps-geopolitical-mysteries/weekly/impact.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/cycle/backlog.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/experiment-log.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/journal.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/longform/backlog.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/proposals.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/weekly/impact.json",
+        "channels/india-maps/journal.md",
+        "channels/india-maps/weekly/impact.json",
+        "generator/numbers.py",
+        "generator/prompts/checklist.md",
+        "generator/run.py",
+        "generator/tests/test_numbers.py",
+        "generator/tests/test_qa_gate.py",
+        "improvement/activity/2026-11-26-improver.json",
+        "remotion/src/doc/README.md",
+        "remotion/src/fmt/inr.ts",
+        "remotion/src/studio/money.tsx",
+        "remotion/test/fmt.test.ts",
+        "renderer/craft.py",
+        "renderer/engine/formatting.py",
+        "renderer/engine/voice.py",
+        "renderer/tests/test_craft.py",
+        "renderer/tests/test_formatting.py",
+        "renderer/tests/test_voice.py"
+      ],
+      "commit": "10a6c5fddac9f983c1014023ee9b6d842306d59a",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45864283189"
+    },
+    {
+      "at": "2026-11-26T17:49:15+00:00",
+      "dayIst": "2026-11-26",
+      "agent": "dashboard",
+      "branch": "agent/dashboard/2026-11-26",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "apps/dashboard/e2e/smoke.spec.ts",
+        "apps/dashboard/src/app/agents/page.tsx",
+        "apps/dashboard/src/lib/autopilot.sample.ts",
+        "improvement/activity/2026-11-26-dashboard.json",
+        "improvement/dashboard/2026-11-26.md",
+        "improvement/dashboard/backlog.json"
+      ],
+      "commit": "915c16d0d6f5d58a4230e08031bcd8d521925f79",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45870324789"
+    },
+    {
+      "at": "2026-11-26T18:50:08+00:00",
+      "dayIst": "2026-11-27",
+      "agent": "research",
+      "branch": "agent/research/2026-11-27/geography-maps-geopolitical-mysteries",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/geography-maps-geopolitical-mysteries/research/2026-11-27.md",
+        "channels/geography-maps-geopolitical-mysteries/research/formats.json",
+        "channels/geography-maps-geopolitical-mysteries/research/seen.json",
+        "channels/geography-maps-geopolitical-mysteries/research/topics.json",
+        "improvement/activity/2026-11-27-geography-maps-geopolitical-mysteries-research.json"
+      ],
+      "commit": "202eb5e5a659b0474f2fc838851629ecfacbe882",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45878915587"
+    },
+    {
+      "at": "2026-11-26T19:15:39+00:00",
+      "dayIst": "2026-11-27",
+      "agent": "research",
+      "branch": "agent/research/2026-11-27/how-tech-and-ai-actually-work-chips-ai-p",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/2026-11-27.md",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/formats.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/proposals.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/seen.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/research/topics.json",
+        "improvement/activity/2026-11-27-how-tech-and-ai-actually-work-chips-ai-p-research.json"
+      ],
+      "commit": "7a6804aeee3d86ccb8ba2105f72ff6b9e875af16",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45882236876"
+    },
+    {
+      "at": "2026-11-26T19:39:11+00:00",
+      "dayIst": "2026-11-27",
+      "agent": "research",
+      "branch": "agent/research/2026-11-27/business-documentaries-rise-and-fall-of",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/cycle/backlog.json",
+        "channels/business-documentaries-rise-and-fall-of/research/2026-11-27.md",
+        "channels/business-documentaries-rise-and-fall-of/research/formats.json",
+        "channels/business-documentaries-rise-and-fall-of/research/seen.json",
+        "channels/business-documentaries-rise-and-fall-of/research/topics.json",
+        "improvement/activity/2026-11-27-business-documentaries-rise-and-fall-of-research.json"
+      ],
+      "commit": "ab21cb4b6959ae483c6625e382bbae7a82dc2025",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45885172928"
+    },
+    {
+      "at": "2026-11-26T20:02:35+00:00",
+      "dayIst": "2026-11-27",
+      "agent": "research",
+      "branch": "agent/research/2026-11-27/disasters-and-engineering-failures-expla",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/disasters-and-engineering-failures-expla/research/2026-11-27.md",
+        "channels/disasters-and-engineering-failures-expla/research/formats.json",
+        "channels/disasters-and-engineering-failures-expla/research/proposals.json",
+        "channels/disasters-and-engineering-failures-expla/research/seen.json",
+        "channels/disasters-and-engineering-failures-expla/research/topics.json",
+        "improvement/activity/2026-11-27-disasters-and-engineering-failures-expla-research.json"
+      ],
+      "commit": "9998698b5438f0db245acbe2c5bfd4bc97e84582",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45888039480"
+    },
+    {
+      "at": "2026-11-26T20:06:06+00:00",
+      "dayIst": "2026-11-27",
+      "agent": "research",
+      "branch": "agent/research/2026-11-27/india-maps",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/india-maps/cycle/backlog.json",
+        "channels/india-maps/notifications/research.json",
+        "channels/india-maps/research/2026-11-27.md",
+        "channels/india-maps/research/proposals.json",
+        "channels/india-maps/research/seen.json",
+        "channels/india-maps/research/topics.json",
+        "improvement/activity/2026-11-27-india-maps-research.json"
+      ],
+      "commit": "ba44ae50e1c1e67a63e5fa0560023c1922ec2203",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45888481436"
+    },
+    {
+      "at": "2026-11-27T07:52:45+00:00",
+      "dayIst": "2026-11-27",
+      "agent": "studio",
+      "branch": "agent/studio/2026-11-27/business-documentaries-rise-and-fall-of",
+      "result": "merged",
+      "reasons": [],
+      "files": [
+        "channels/business-documentaries-rise-and-fall-of/longform/backlog.json",
+        "channels/business-documentaries-rise-and-fall-of/notifications/studio.json",
+        "improvement/activity/2026-11-27-business-documentaries-rise-and-fall-of-studio.json"
+      ],
+      "commit": "32ce621dea7fe4058ef36e4d1c1bdd813ddff6a7",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/45961428460"
     }
   ]
 }

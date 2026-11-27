@@ -1,0 +1,168 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:14:00.930083+00:00",
+    "finishedAt": "2026-11-26T01:14:00.930083+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:14:02.056339+00:00",
+    "finishedAt": "2026-11-26T01:14:02.056339+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title \"Airbnb's Founders Sold Cereal at {fact1} a Box\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:18:06.083923+00:00",
+    "finishedAt": "2026-11-26T01:18:06.083923+00:00",
+    "notes": [
+      "All 5 CNBC facts confirmed on the CNBC page (18 Apr 2023): $40 a box, more than 1,000 boxes, $30,000 for the company, YC $20,000 for 6%; 'Chesky says the boxes won over their first investors' matches CNBC's headline; Obama O's/Cap'n McCain's names confirmed by TechCrunch, Inc and Benzinga; no Obama/McCain photos; no current market-cap figure used; disclaimer ends the description; settled history, no advice. Note: the 1,000 count varies by outlet (500/800), shown as 'more than' from CNBC."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:18:16.015350+00:00",
+    "finishedAt": "2026-11-26T01:18:49.530246+00:00",
+    "notes": [
+      "fingerprint: d6d1aa93ec6ae0b4.e3b0c44298fc1c14",
+      "37 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:19:03.314507+00:00",
+    "finishedAt": "2026-11-26T01:19:21.316652+00:00",
+    "notes": [
+      "fingerprint: 136cc1ef41526493.e3b0c44298fc1c14",
+      "37 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T01:20:17.498589+00:00",
+    "finishedAt": "2026-11-26T01:20:17.498589+00:00",
+    "notes": [
+      "[script] 20.0s (beat 'won', polaroids on desk): the frame is mostly empty dark-brown desk with two small polaroids in the middle, both Chesky photos soft/blurred and too small to recognise; clearly emptier than the bar (v-20261122-32 Toyota fills every frame with the subject). The big caption CO-FOUNDER also sits right over the polaroid captions 'Brian Chesky' / 'Airbnb co-founder' so they are hard to read. Use one large, sharp Chesky photo (or the CNBC headline) filling the frame, with the photos clear of the caption band.",
+      "[script] 15.0s (beat 'boxes', split): the line says the founders made their own boxes, but the picture is two convention arenas (Pepsi Center, Xcel Energy Center) with small 'Obama O's' / 'Cap''n McCain''s' text chips standing in for the boxes. The labels do not match what is shown (an arena is not a cereal box) and on mute the beat does not say cereal. Show the boxes themselves (e.g. a cereal box with each name on its front as a die-cut/label on the thing) or keep the arenas only as backdrop to a box.",
+      "[script] 0.0s / thumbnail (beat 'hook'): the cereal on screen is Post Raisin Bran and Life with an Airbnb logo stuck over it, so a stranger reads 'Airbnb sold Raisin Bran'. The hook's object is not the real thing the line names; frame the boxes so no other brand name dominates (crop/focus off the Raisin Bran lettering) or use a plain/unbranded box with the Obama O's name on it. Minor, same fix: 35.0s Tesco aisle shows GBP 3 price tags in a USD story."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:23:40.691523+00:00",
+    "finishedAt": "2026-11-26T01:23:40.691523+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title \"Airbnb's Founders Sold Cereal at {fact1} a Box\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:23:51.435798+00:00",
+    "finishedAt": "2026-11-26T01:24:18.189998+00:00",
+    "notes": [
+      "fingerprint: a869e207dba709df.e3b0c44298fc1c14",
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T01:24:26.208113+00:00",
+    "finishedAt": "2026-11-26T01:24:26.208113+00:00",
+    "notes": [
+      "Beat 'boxes': 'as both parties met for their conventions, the founders made election cereal' gets the timing wrong. The 2008 conventions ran Aug 25-Sep 4. Inc (NPR/Gebbia) says the cereals were made shortly after the DNC, and TechCrunch got the boxes on 9 Oct 2008 (it says 'today', promoting get-out-the-vote stays), so they were made and sold in the election run-up, not during the conventions. Fix the line, e.g. 'So after both parties' conventions, the founders made election cereal: Obama O's and Cap'n McCain's.' (or 'ahead of the election'), and change the date overlay from 2008-08-25 'convention season' to fit (e.g. Oct 2008, or drop the date). The arena photos and subs (Pepsi Center Denver = DNC, Xcel Energy Center St. Paul = RNC) are correct and can stay if the line says the conventions came first; the earlier pass still covers every other fact."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:24:31.717001+00:00",
+    "finishedAt": "2026-11-26T01:24:49.478762+00:00",
+    "notes": [
+      "fingerprint: c216b8570bf5c7f2.e3b0c44298fc1c14",
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:24:59.405893+00:00",
+    "finishedAt": "2026-11-26T01:24:59.405893+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title \"Airbnb's Founders Sold Cereal at {fact1} a Box\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:25:12.628974+00:00",
+    "finishedAt": "2026-11-26T01:25:12.628974+00:00",
+    "notes": [
+      "Re-checked beat 'boxes' after the fix: 'after both parties' conventions, the founders made election cereal: Obama O's and Cap'n McCain's' matches Inc (made shortly after the DNC) and TechCrunch (boxes received 9 Oct 2008); date overlay Oct 9, 2008 'election cereal, after the conventions' is consistent; arena photos (Pepsi Center DNC, Xcel Energy Center RNC) are correct and carry only the box names, no candidate photos. All 5 CNBC facts and every other line stay confirmed from the earlier review ($40/box, more than 1,000 boxes, $30,000, YC $20,000 for 6%); disclaimer ends the description. Note: Oct 9 is when TechCrunch received the boxes, not their exact making date."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:25:04.841344+00:00",
+    "finishedAt": "2026-11-26T01:25:33.225759+00:00",
+    "notes": [
+      "fingerprint: e8b4ecae00bf5317.e3b0c44298fc1c14",
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T01:26:24.223194+00:00",
+    "finishedAt": "2026-11-26T01:26:24.223194+00:00",
+    "notes": [
+      "[script] 22.5s-24.3s (beat 'won', depth + headline): the CNBC headline card drops in over the middle of Brian Chesky's face (it covers his eyes and nose from 'boxes' to the end of the beat), so the person the line names disappears behind text. Put the card beside or below his face (or shrink/shift the depth photo so the face stays clear), above the caption band.",
+      "[script] 14.0s (beat 'boxes', date overlay): the date's sub-line 'election cereal, after the conventions' runs off the left edge (reads 'ECTION CEREAL, AFTER THE CONVENTION'). Shorten the sub (e.g. 'election cereal') or centre it so it fits inside the frame. Also at 12.0s the bottom half of the split is plain dark navy until 'founders'; bring Cap'n McCain's side in earlier or start the split full."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:26:44.580847+00:00",
+    "finishedAt": "2026-11-26T01:26:44.580847+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title \"Airbnb's Founders Sold Cereal at {fact1} a Box\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T01:26:47.524413+00:00",
+    "finishedAt": "2026-11-26T01:27:10.123612+00:00",
+    "notes": [
+      "fingerprint: 148cf6130ec92780.e3b0c44298fc1c14",
+      "38 s, ocean/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T01:27:51.361708+00:00",
+    "finishedAt": "2026-11-26T01:27:51.361708+00:00",
+    "notes": [
+      "[script] 23.0s (beat 'won', from 'boxes' to the end): the new TechCrunch Disrupt Berlin 2013 stage photo is pushed in on a speaker's face, and the CNBC card sits right over that face (it covers his eyes and nose; only his mouth and chin show under the card). A face behind the headline again. Fix: set the photo's focus on the stage sign or the room, away from the person (e.g. focus about [0.8, 0.35], or less push), or use a stage photo with no face where the card lands. Everything else passes: 12-15.5s split is full from the first frame and the date sub 'election cereal' fits; 21.0s Chesky depth shot is sharp and clear."
+    ]
+  }
+]

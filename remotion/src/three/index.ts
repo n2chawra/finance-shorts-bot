@@ -20,3 +20,4 @@ export * from "./Overlays";
 export * from "./LookMorph";
 export * from "./Thumb3D";
 export * from "./disaster";
+export * from "./Aero";

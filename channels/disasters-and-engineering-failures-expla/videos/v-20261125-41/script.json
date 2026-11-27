@@ -1,0 +1,828 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 33631,
+ "story": "promo_failure_moment",
+ "shape": "the-last-message",
+ "currency": "USD",
+ "style": {
+  "recipe": "instrument-panel",
+  "palette": "ocean",
+  "genre": "brace",
+  "key": "D",
+  "bpm": 66
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "The company or the rules: who should have stopped Titan? Comment",
+ "feed_id": "2026-11-20-titan-submersible",
+ "promo_of": "L-20261124-41",
+ "facts": [
+  {
+   "label": "Year of the implosion (June 18, 2023)",
+   "value": 2023,
+   "unit": "year",
+   "as_of": "2025-10-02",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Day of June of the implosion",
+   "value": 18,
+   "unit": "count",
+   "as_of": "2025-10-02",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf",
+   "fixed": true
+  },
+  {
+   "label": "People on board, all of whom died",
+   "value": 5,
+   "unit": "count",
+   "as_of": "2025-10-02",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Depth of Titan when its last message (dropping two weights) was received, metres",
+   "value": 3363,
+   "unit": "count",
+   "as_of": "2025-10-02",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Seconds between Titan's final message and the implosion (Coast Guard report)",
+   "value": 7,
+   "unit": "count",
+   "as_of": "2025-08-05",
+   "source": "ABC News",
+   "url": "https://www.yahoo.com/news/articles/coast-guard-releases-final-report-121424630.html",
+   "fixed": true
+  },
+  {
+   "label": "Water pressure at the depth of the Titanic wreck site, pounds per square inch",
+   "value": 5554.5,
+   "unit": "count",
+   "as_of": "2025-10-02",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Nominal thickness of the carbon fibre cylinder, inches",
+   "value": 5,
+   "unit": "count",
+   "as_of": "2025-10-02",
+   "source": "NTSB",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/MIR2536.pdf",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 0.5,
+  "words": "Then *silence*",
+  "tag": "Titan",
+  "angle": "question",
+  "references": [
+   {
+    "id": "6LcGrLnzYuU",
+    "views": 4946816,
+    "what": "Titan big in blue water with a yellow arrow and a two-line question"
+   }
+  ],
+  "pattern": "the Titan hits show the submersible itself big in dark blue water with a few bold words; ours shows our 3D Titan sinking with its lamps on and the last message bubble beside it, two words on top"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Titan's last message was routine. Then it went silent.",
+   "events": {
+    "titan": {
+     "word": "Titan's"
+    },
+    "last": {
+     "word": "last"
+    },
+    "message": {
+     "word": "message"
+    },
+    "routine": {
+     "word": "routine"
+    },
+    "silent": {
+     "word": "silent"
+    },
+    "went": {
+     "word": "went"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Deep",
+    "mode": "hook",
+    "place": [
+     "black water above the Titanic wreck, Titan sinking with its lamps on",
+     "the text link on the sub's own console"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "routine",
+      "size": "close"
+     },
+     {
+      "at": "silent",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "titan",
+      "what": "Titan sinking through black water, lamps on, snow drifting up past it; date caption and the reconstruction tag; TITAN label types on"
+     },
+     {
+      "at": "message",
+      "what": "a green text bubble rises from the sub: DROPPED TWO WTS, the depth readout beside it"
+     },
+     {
+      "at": "routine",
+      "what": "push in: a green tick stamps ROUTINE on the bubble as two steel weights fall away from the frame into the dark"
+     },
+     {
+      "at": "went",
+      "what": "the weights' trail of bubbles streams up past the lamps"
+     },
+     {
+      "at": "silent",
+      "what": "pull wide: the sound ring around the sub stops, the bubble's cursor blinks red, NO REPLY"
+     }
+    ],
+    "things": [
+     "Titan submersible",
+     "its lamps",
+     "steel drop weights",
+     "marine snow",
+     "text bubble",
+     "depth readout",
+     "date caption"
+    ],
+    "fig": {
+     "depth": "{fact4}",
+     "year": "{fact1}",
+     "day": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "clatter",
+     "at": "routine"
+    }
+   ]
+  },
+  {
+   "id": "deep",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "It was {fact4} metres down, near the Titanic. So what happened?",
+   "events": {
+    "down": {
+     "word": "down"
+    },
+    "near": {
+     "word": "near"
+    },
+    "titanic": {
+     "word": "Titanic"
+    },
+    "happened": {
+     "word": "happened"
+    },
+    "metres": {
+     "word": "metres"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Column",
+    "place": "a cut-through of the North Atlantic, from the ship on the surface down to the seabed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "titanic",
+      "size": "medium"
+     },
+     {
+      "at": "happened",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "down",
+      "what": "the depth ruler draws down the sea, the sub's green dot slides down it to its depth tag, a dashed trail behind it"
+     },
+     {
+      "at": "metres",
+      "what": "the depth tag lands beside the dot, the sea bands SUNLIGHT ENDS and TOTAL DARKNESS light up on the ruler"
+     },
+     {
+      "at": "near",
+      "what": "the camera drops toward the seabed, the gap bracket between the dot and the bottom pulses"
+     },
+     {
+      "at": "titanic",
+      "what": "the broken bow of the Titanic draws on in green line, TITANIC"
+     },
+     {
+      "at": "happened",
+      "what": "push in on the dot: it turns grey, a question mark blinks beside it"
+     }
+    ],
+    "things": [
+     "support ship",
+     "depth ruler",
+     "sub marker",
+     "dashed path",
+     "Titanic bow wreck",
+     "seabed"
+    ],
+    "fig": {
+     "depth": "{fact4}"
+    }
+   }
+  },
+  {
+   "id": "ship",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "On the ship, the crew typed a reply. Then another. No answer.",
+   "events": {
+    "ship": {
+     "word": "ship"
+    },
+    "crew": {
+     "word": "crew"
+    },
+    "typed": {
+     "word": "typed"
+    },
+    "reply": {
+     "word": "reply"
+    },
+    "another": {
+     "word": "another"
+    },
+    "answer": {
+     "word": "answer"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Room",
+    "place": "the operations room on the support ship, the tracking screen glowing in the dark",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "reply",
+      "size": "close"
+     },
+     {
+      "at": "answer",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "ship",
+      "what": "the operations room: a crew member at the console under the big tracking screen, OPERATIONS · SUPPORT SHIP"
+     },
+     {
+      "at": "crew",
+      "what": "the crew member leans in to the keyboard"
+     },
+     {
+      "at": "typed",
+      "what": "keys flash, a reply bubble types on: SHIP: ACK"
+     },
+     {
+      "at": "another",
+      "what": "a second bubble types on: SHIP: LOST TRACKING"
+     },
+     {
+      "at": "answer",
+      "what": "the sub's side stays empty, a red cursor blinks, NO SIGNAL stamps over the depth bar"
+     }
+    ],
+    "things": [
+     "console",
+     "crew member",
+     "tracking screen",
+     "depth bar",
+     "message log",
+     "wall clock"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "typed"
+    }
+   ]
+  },
+  {
+   "id": "inch",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "At the Titanic's depth, the sea presses {fact6} pounds on every square inch.",
+   "events": {
+    "depth": {
+     "word": "depth"
+    },
+    "sea": {
+     "word": "sea"
+    },
+    "presses": {
+     "word": "presses"
+    },
+    "square": {
+     "word": "square"
+    },
+    "inch": {
+     "word": "inch"
+    },
+    "pounds": {
+     "word": "pounds"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Inch",
+    "place": "close on the hull's carbon skin, one square inch drawn on it, the water pressing in",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "square",
+      "size": "close"
+     },
+     {
+      "at": "inch",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "depth",
+      "what": "the curved black carbon skin of the hull fills the frame, dark water above it"
+     },
+     {
+      "at": "sea",
+      "what": "water arrows close in from every side"
+     },
+     {
+      "at": "presses",
+      "what": "the pressure gauge's needle swings to the figure, its readout counts up"
+     },
+     {
+      "at": "pounds",
+      "what": "the readout flashes, the water arrows press in harder on the hull"
+     },
+     {
+      "at": "square",
+      "what": "a one-inch square outlines in amber on the skin, ONE SQUARE INCH"
+     },
+     {
+      "at": "inch",
+      "what": "a stack of arrows presses down on that one square, then the camera pulls back: the whole hull ringed by arrows"
+     }
+    ],
+    "things": [
+     "carbon hull skin",
+     "one square inch outline",
+     "pressure gauge",
+     "water arrows"
+    ],
+    "fig": {
+     "psi": "{fact6}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "groan",
+     "at": "pressed"
+    }
+   ]
+  },
+  {
+   "id": "hull",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Holding it back: a carbon fibre tube, {fact7} inches thick.",
+   "events": {
+    "holding": {
+     "word": "Holding"
+    },
+    "carbon": {
+     "word": "carbon"
+    },
+    "fibre": {
+     "word": "fibre"
+    },
+    "tube": {
+     "word": "tube"
+    },
+    "thick": {
+     "word": "thick"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Deep",
+    "mode": "hull",
+    "place": "beside Titan in the dark, its white fairing cut away to show the pressure hull",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "carbon",
+      "size": "close"
+     },
+     {
+      "at": "thick",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "holding",
+      "what": "Titan in the dark, the camera circling it"
+     },
+     {
+      "at": "carbon",
+      "what": "the white fairing cuts away to show the black carbon cylinder inside, CARBON FIBRE types on"
+     },
+     {
+      "at": "tube",
+      "what": "push along the tube's black wall"
+     },
+     {
+      "at": "thick",
+      "what": "a readout plate with the wall's thickness slides on as the camera pulls back past the titanium domes"
+     }
+    ],
+    "things": [
+     "Titan cutaway",
+     "carbon fibre cylinder",
+     "titanium domes",
+     "thickness readout"
+    ],
+    "fig": {
+     "thick": "{fact7}"
+    }
+   }
+  },
+  {
+   "id": "wall",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "But investigators found that wall was likely already damaged, its layers coming apart.",
+   "events": {
+    "investigators": {
+     "word": "investigators"
+    },
+    "wall": {
+     "word": "wall"
+    },
+    "damaged": {
+     "word": "damaged"
+    },
+    "layers": {
+     "word": "layers"
+    },
+    "coming": {
+     "word": "coming"
+    },
+    "apart": {
+     "word": "apart"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Wall",
+    "place": "inside the hull's wall, a cross-section of the carbon layers on a green instrument screen",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "damaged",
+      "size": "close"
+     },
+     {
+      "at": "apart",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "investigators",
+      "what": "a cross-section of the wall draws on: five stacked carbon layers, SAFETY BOARD FINDING"
+     },
+     {
+      "at": "wall",
+      "what": "a scan line sweeps across the layers"
+     },
+     {
+      "at": "damaged",
+      "what": "one patch turns amber, LIKELY DAMAGED stamps on"
+     },
+     {
+      "at": "layers",
+      "what": "a gap opens between two layers"
+     },
+     {
+      "at": "coming",
+      "what": "the gap spreads along the wall and turns red"
+     },
+     {
+      "at": "apart",
+      "what": "the layers peel apart at the edge, the pressure arrows push into the gap"
+     }
+    ],
+    "things": [
+     "carbon wall cross-section",
+     "five layers",
+     "scan line",
+     "delamination gap",
+     "pressure arrows"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "creak",
+     "at": "apart"
+    }
+   ]
+  },
+  {
+   "id": "fail",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "",
+   "events": {
+    "near": {
+     "sec": 0.2
+    },
+    "give": {
+     "sec": 1.3
+    },
+    "wide": {
+     "sec": 2.0
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Deep",
+    "mode": "fail",
+    "place": "at Titan's flank in the black water, time slowed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "near",
+      "what": "silence: the carbon hull fills the frame in the black water, its wall glowing amber to red under the lamps"
+     },
+     {
+      "at": "give",
+      "what": "the sub-boom: the wall buckles in one spot and the hull collapses inward in a white flash"
+     },
+     {
+      "at": "wide",
+      "what": "wide: a cloud of debris and bubbles spreads in the dark, the lamps gone"
+     }
+    ],
+    "things": [
+     "carbon hull",
+     "red stress",
+     "flash",
+     "debris cloud",
+     "bubbles"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "give"
+    }
+   ],
+   "min_sec": 2.8
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "{fact5} seconds after that message, the hull imploded. All {fact3} aboard died.",
+   "events": {
+    "seconds": {
+     "word": "seconds"
+    },
+    "message": {
+     "word": "message"
+    },
+    "imploded": {
+     "word": "imploded"
+    },
+    "aboard": {
+     "word": "aboard"
+    },
+    "died": {
+     "word": "died"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Deep",
+    "mode": "after",
+    "place": "far out in the dark water where Titan was, the debris settling toward the seabed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "imploded",
+      "size": "medium"
+     },
+     {
+      "at": "aboard",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "seconds",
+      "what": "a clock readout counts the seconds from the message"
+     },
+     {
+      "at": "message",
+      "what": "the last message bubble DROPPED TWO WTS floats beside it, greyed"
+     },
+     {
+      "at": "imploded",
+      "what": "the debris cloud drifts slowly down in the dark"
+     },
+     {
+      "at": "aboard",
+      "what": "five small lit figures, one for each person aboard, stand in a row"
+     },
+     {
+      "at": "died",
+      "what": "the five figures' lights go out one by one, only the snow drifting"
+     }
+    ],
+    "things": [
+     "debris cloud",
+     "seconds readout",
+     "greyed message bubble",
+     "five lit figures",
+     "marine snow"
+    ],
+    "fig": {
+     "secs": "{fact5}",
+     "people": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "The company or the rules: who should have stopped Titan? Full story on our channel, from its last message.",
+   "events": {
+    "company": {
+     "word": "company"
+    },
+    "rules": {
+     "word": "rules"
+    },
+    "stopped": {
+     "word": "stopped"
+    },
+    "titan": {
+     "word": "Titan"
+    },
+    "story": {
+     "word": "story"
+    },
+    "channel": {
+     "word": "channel"
+    },
+    "last": {
+     "word": "last"
+    },
+    "message": {
+     "word": "message"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Deep",
+    "mode": "loop",
+    "place": [
+     "on the surface by the support ship at dawn, Titan on its launch platform",
+     "back down in the black water as the first frame"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "titan",
+      "size": "medium"
+     },
+     {
+      "at": "last",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "company",
+      "what": "dawn on the grey North Atlantic: Titan on its platform, the support ship far off; THE COMPANY chip types on"
+     },
+     {
+      "at": "rules",
+      "what": "OR THE RULES? types on beside it"
+     },
+     {
+      "at": "titan",
+      "what": "the platform sinks and Titan slips under the surface"
+     },
+     {
+      "at": "channel",
+      "what": "FULL STORY ON THE CHANNEL types on"
+     },
+     {
+      "at": "last",
+      "what": "back to the first frame: Titan sinking in the black with its lamps on"
+     }
+    ],
+    "things": [
+     "support ship",
+     "launch platform",
+     "Titan",
+     "grey sea at dawn",
+     "question tag",
+     "black water"
+    ]
+   }
+  }
+ ]
+}

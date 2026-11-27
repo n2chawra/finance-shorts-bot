@@ -1,835 +1,900 @@
 {
- "items": [
-  {
-   "id": "notif-phone-layout",
-   "kind": "bug",
-   "title": "Notifications: ambiguous 'Resolved' button squeezed the fix steps on phones",
-   "detail": "Open items showed a button labelled 'Resolved' in a right-hand column, leaving the How-to-fix box narrow at phone width. Button renamed 'Mark resolved' and moved below the card on phones.",
-   "page": "notifications",
-   "found": "2026-10-16",
-   "status": "done",
-   "done": "2026-10-16",
-   "lastTouched": {
-    "apps/dashboard/src/app/notifications/page.tsx": "2026-10-16"
-   }
-  },
-  {
-   "id": "queue-phone-clip",
-   "kind": "bug",
-   "title": "Queue: publish time cut off on phones",
-   "detail": "The meta line (template · category · publish time) was truncated at phone width, hiding the time. It now wraps and the time stays whole.",
-   "page": "queue",
-   "found": "2026-10-17",
-   "status": "done",
-   "done": "2026-10-17",
-   "lastTouched": {
-    "apps/dashboard/src/app/queue/page.tsx": "2026-10-17"
-   }
-  },
-  {
-   "id": "sample-thumbs-404",
-   "kind": "bug",
-   "title": "Sample data: thumbnails for the new story templates 404, 12 smoke tests red",
-   "detail": "cf14172 switched the sample templates to short_story/long_story but public/sample/ only holds the retired templates' art, so every page with a thumbnail logged a 404 console error. The sample store now borrows a retired template's art for short_story and gives long_story no sample art (as the DB store does). New smoke test: no broken images on Overview, Queue, Videos, Templates.",
-   "page": "overview, queue, videos, templates",
-   "found": "2026-10-18",
-   "status": "done",
-   "done": "2026-10-18",
-   "lastTouched": {
-    "apps/dashboard/src/lib/store.sample.ts": "2026-10-18"
-   }
-  },
-  {
-   "id": "templates-long-card-phone",
-   "kind": "bug",
-   "title": "Templates: on phones the Long story card's 16:9 player squeezes the text column",
-   "detail": "At 390 px the landscape poster takes about half the card width, so the id line wraps ('long videos') and the description is cut off. Stack the player above the text on phones for landscape templates.",
-   "page": "templates",
-   "found": "2026-10-18",
-   "status": "done",
-   "done": "2026-10-21",
-   "lastTouched": {
-    "apps/dashboard/src/app/templates/page.tsx": "2026-10-21"
-   }
-  },
-  {
-   "id": "voice-label-gender",
-   "kind": "bug",
-   "title": "Video page: 5 of the 6 narrator voices shown as '(voice)'",
-   "detail": "The Voiceover row only recognised Hindi-coded Kokoro ids (hf_/hm_), so every American voice the improver now rotates in (af_heart, af_bella, am_michael, am_fenrir, am_puck) read e.g. 'On · Bella (voice)'. It now reads accent and gender from the id: 'On · Bella (American, female)'. Sample data uses American voices too; new smoke test.",
-   "page": "videos/[id]",
-   "found": "2026-10-19",
-   "status": "done",
-   "done": "2026-10-19",
-   "lastTouched": {
-    "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-19",
-    "apps/dashboard/src/lib/store.sample.ts": "2026-10-19"
-   }
-  },
-  {
-   "id": "overview-since-last-visit",
-   "kind": "idea",
-   "title": "Overview: 'Since you last looked' line",
-   "detail": "Remember the last visit per browser and show one line at the top: new videos queued, uploads scheduled, failures and new notifications since then. The owner checks twice a day; this answers 'what changed?' without scanning every card. Glanceable change summaries are the common thread in current ops-dashboard guidance (Cloudscape service dashboards, DesignRush 2026).",
-   "page": "overview",
-   "found": "2026-10-19",
-   "status": "open"
-  },
-  {
-   "id": "overview-phone-orphan-card",
-   "kind": "idea",
-   "title": "Overview on phones: 'Made today' card sits alone in a half-empty row",
-   "detail": "At 390 px the five stat cards wrap 2-2-1, leaving the last card next to empty space. Let the last odd card span the full row (or fold 'Made today' into the Backlog card) so the top of the page is one tidy block.",
-   "page": "overview",
-   "found": "2026-10-19",
-   "status": "done",
-   "done": "2026-10-22",
-   "lastTouched": {
-    "apps/dashboard/src/app/page.tsx": "2026-10-22"
-   }
-  },
-  {
-   "id": "calendar-plan-formats",
-   "kind": "bug",
-   "title": "Calendar: queued long videos planned into Short slots",
-   "detail": "Planned entries used only the daily Short times and both formats' queues together, so the sample's two long videos showed at 07:07/12:37/19:07 instead of 20:07 on Tue/Thu/Sat, and trend slots never appeared. Calendar now uses the Queue page's posting plan per format.",
-   "page": "calendar",
-   "found": "2026-10-21",
-   "status": "done",
-   "done": "2026-10-21",
-   "lastTouched": {
-    "apps/dashboard/src/app/calendar/page.tsx": "2026-10-21"
-   }
-  },
-  {
-   "id": "calendar-format-marker",
-   "kind": "idea",
-   "title": "Calendar: tell long videos from Shorts at a glance",
-   "detail": "Content calendars colour or label entries by channel/format. A small 'Long' tag (text, not colour alone) on long entries lets the owner see the week's two long uploads without opening each day. Done: a 'Long' tag in the day list and beside the time on wide screens, a dash instead of a dot on phones, and a legend entry.",
-   "page": "calendar",
-   "found": "2026-10-21",
-   "status": "done",
-   "done": "2026-10-28",
-   "lastTouched": {
-    "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
-   }
-  },
-  {
-   "id": "calendar-empty-slots",
-   "kind": "idea",
-   "title": "Calendar: show slots nothing is ready for",
-   "detail": "The posting plan already knows the first empty slot. Showing it as a dashed 'Nothing ready' entry makes a running-dry backlog visible on the calendar, not just on the Queue page. Content-planner calendars also make an empty slot a link to act on (here: to the Queue page). Done: the posting plan's first empty Short and long-video slots show as a dashed amber \"Nothing ready\" entry; the day panel says which slot and links to the Queue; the legend explains it. Smoke test.",
-   "page": "calendar",
-   "found": "2026-10-21",
-   "status": "done",
-   "done": "2026-11-04",
-   "lastTouched": {
-    "apps/dashboard/src/app/calendar/page.tsx": "2026-11-04"
-   }
-  },
-  {
-   "id": "video-due-slot-label",
-   "kind": "bug",
-   "title": "Video page: a due slot read as 'minutes ago'",
-   "detail": "The queue's first Short showed '34m ago, if the queue order holds' while the Queue page said it was uploading now. It now reads 'Due now: this slot is open', the same posting plan state the Queue page uses.",
-   "page": "video",
-   "found": "2026-10-22",
-   "status": "done",
-   "done": "2026-10-22",
-   "lastTouched": {
-    "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-22"
-   }
-  },
-  {
-   "id": "overview-backlog-days-counts-long",
-   "kind": "bug",
-   "title": "Overview: Backlog card's 'days of uploads' counts long videos as Shorts",
-   "detail": "The card divides every queued video (long ones too) by the daily Short slots, so 10 Shorts + 2 long videos show '≈ 4 days' while the Queue page says about 3 days of Shorts. The fix is one line, but that line names a guarded schedule setting, so the guard blocks the dashboard agent from changing it. Left for the auditor or the owner: use the Queue page's runway('short', …) on that card.",
-   "page": "overview",
-   "found": "2026-10-22",
-   "status": "open"
-  },
-  {
-   "id": "tabs-wrap-clipped",
-   "kind": "bug",
-   "title": "Agents and video page: tab labels wrapped and were clipped on phones",
-   "detail": "On phones 'Experiments (1)', 'Topic feed (1)' and 'Merge log' wrapped to two lines inside the fixed-height tab bar, cutting off '(1)' and 'log'. Tabs now stay on one line and the row scrolls sideways. Smoke test 'section tabs keep their labels on one line'.",
-   "page": "agents",
-   "found": "2026-10-23",
-   "status": "done",
-   "done": "2026-10-23",
-   "lastTouched": {
-    "apps/dashboard/src/app/agents/page.tsx": "2026-10-23",
-    "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-23"
-   }
-  },
-  {
-   "id": "audit-badge-plural",
-   "kind": "bug",
-   "title": "Agents: data audit badge read '1 warnings'",
-   "detail": "The badge now counts in the right number ('0 errors · 1 warning'). Smoke test 'data audit badge counts in the right number'.",
-   "page": "agents",
-   "found": "2026-10-23",
-   "status": "done",
-   "done": "2026-10-23",
-   "lastTouched": {
-    "apps/dashboard/src/app/agents/page.tsx": "2026-10-23"
-   }
-  },
-  {
-   "id": "resolve-all-proposals",
-   "kind": "bug",
-   "title": "Notifications: Resolve all closed setting proposals without a decision",
-   "detail": "A proposal has no 'Mark resolved' button because it needs Approve or Decline, but 'Resolve all' swept it into Resolved undecided, where it could no longer be approved. Resolve all now skips proposals. Smoke test 'resolve all leaves setting proposals for a decision'.",
-   "page": "notifications",
-   "found": "2026-10-23",
-   "status": "done",
-   "done": "2026-10-23",
-   "lastTouched": {
-    "apps/dashboard/src/app/notifications/page.tsx": "2026-10-23"
-   }
-  },
-  {
-   "id": "tabs-overflow-cue",
-   "kind": "idea",
-   "title": "Agents and video page: show that the tab row scrolls on phones",
-   "detail": "The tab rows now scroll sideways on phones with no scrollbar. A soft fade on the edge with more tabs (design-system guides recommend it where browsers hide scrollbars) tells the owner there is a 'Merge log' tab off-screen. Done: a `scroll-fade-x` class (globals.css) fades the edge that has more tabs, driven by the row's own scroll position, so a row that fits shows no fade. On the Agents, video page and Videos status tabs. Smoke test on phone.",
-   "page": "agents",
-   "found": "2026-10-23",
-   "status": "done",
-   "done": "2026-11-04",
-   "lastTouched": {
-    "apps/dashboard/src/app/globals.css": "2026-11-04",
-    "apps/dashboard/src/app/agents/page.tsx": "2026-11-04",
-    "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-11-04"
-   }
-  },
-  {
-   "id": "notifications-resolve-undo",
-   "kind": "idea",
-   "title": "Notifications: Undo on the 'Resolve all' toast",
-   "detail": "Notification-centre guides agree a mark-all action must be predictable and easy to undo. An Undo button in the toast that reopens exactly the items just resolved saves a trip to 'recently resolved' after a mis-tap on the phone.",
-   "page": "notifications",
-   "found": "2026-10-23",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/src/app/notifications/page.tsx": "2026-11-03",
-    "apps/dashboard/src/components/toast.tsx": "2026-11-03"
-   }
-  },
-  {
-   "id": "stat-cards-ragged-height",
-   "kind": "bug",
-   "title": "Stat cards in one row had different heights",
-   "detail": "The card inside each grid cell didn't fill the cell, so a card with a wrapped label ('Subscribers · 7 days') or a longer line stood taller than its neighbours on Overview (desktop and phone) and on Analytics, Runs, Agents and the video page. Cards now fill the row; smoke test 'stat cards in a row share one height'.",
-   "page": "overview",
-   "found": "2026-10-26",
-   "status": "done",
-   "done": "2026-10-26",
-   "lastTouched": {
-    "apps/dashboard/src/components/ui.tsx": "2026-10-26"
-   }
-  },
-  {
-   "id": "videos-topic-filter-fixed-list",
-   "kind": "bug",
-   "title": "Videos: Topic filter missed most newer categories",
-   "detail": "The Topic list was a fixed list of 17 categories; history now has 27 (savings, loans, investing, salary, wealth, net_worth, debt, car…), so 12 categories could not be filtered and a link with one of them showed an empty filter. Options now come from the videos themselves; smoke test.",
-   "page": "videos",
-   "found": "2026-10-26",
-   "status": "done",
-   "done": "2026-10-26",
-   "lastTouched": {
-    "apps/dashboard/src/app/videos/page.tsx": "2026-10-26"
-   }
-  },
-  {
-   "id": "videos-search-stale-box",
-   "kind": "bug",
-   "title": "Videos: search box kept old text after the URL changed",
-   "detail": "The box read ?q= once on load. Following the sidebar's Videos link (or Back) changed the list but left the old text in the box. It now follows the URL; smoke test, checked to fail without the fix.",
-   "page": "videos",
-   "found": "2026-10-26",
-   "status": "done",
-   "done": "2026-10-26",
-   "lastTouched": {
-    "apps/dashboard/src/app/videos/page.tsx": "2026-10-26"
-   }
-  },
-  {
-   "id": "videos-topic-counts",
-   "kind": "idea",
-   "title": "Videos: show how many videos each Topic option has",
-   "detail": "Faceted-filter guides agree: a count beside each option sets expectations and avoids empty results. 'Credit card (4)' tells the owner at a glance which money topics the channel leans on, with no extra page. Done: each Topic option reads e.g. \"Credit card (4)\", counted from the same video list the options come from. Smoke test.",
-   "page": "videos",
-   "found": "2026-10-26",
-   "status": "done",
-   "done": "2026-11-04",
-   "lastTouched": {
-    "apps/dashboard/src/app/videos/page.tsx": "2026-11-04"
-   }
-  },
-  {
-   "id": "queue-trend-badge-date",
-   "kind": "bug",
-   "title": "Queue: trend badge read 'post by 10-28', or 'post by ' with nothing after it",
-   "detail": "The badge cut the ISO date to '10-28', and a trend topic without an expiry (generator/topics.py writes until \"\") left 'Trending · post by ' dangling. It now says 'post by 28 Oct', or just 'Trending' when there is no date.",
-   "page": "queue",
-   "found": "2026-10-27",
-   "status": "done",
-   "done": "2026-10-27",
-   "lastTouched": {
-    "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
-   }
-  },
-  {
-   "id": "queue-scheduled-time-phone",
-   "kind": "bug",
-   "title": "Queue: 'Already scheduled on YouTube' card showed no time on phones",
-   "detail": "The publish time sat in a column hidden below 640 px, so on a phone the card named the video but not when it goes out. It now shows the time under the title on phones.",
-   "page": "queue",
-   "found": "2026-10-27",
-   "status": "done",
-   "done": "2026-10-27",
-   "lastTouched": {
-    "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
-   }
-  },
-  {
-   "id": "queue-section-meta-column",
-   "kind": "bug",
-   "title": "Queue: section details squeezed into a narrow column on phones",
-   "detail": "'· 10 ready · posts daily at …' sat beside 'Shorts' and wrapped into a column four lines tall. It now wraps under the name at full width.",
-   "page": "queue",
-   "found": "2026-10-27",
-   "status": "done",
-   "done": "2026-10-27",
-   "lastTouched": {
-    "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
-   }
-  },
-  {
-   "id": "calendar-subtitle-long",
-   "kind": "bug",
-   "title": "Calendar: heading line spoke only of Shorts",
-   "detail": "'3 uploads a day at 07:07, 12:37 and 19:07 IST' while the grid also plans long videos at 20:07 on Tue/Thu/Sat. It now reads '3 Shorts a day at … · long videos Tue/Thu/Sat at 20:07 IST'.",
-   "page": "calendar",
-   "found": "2026-10-28",
-   "status": "done",
-   "done": "2026-10-28",
-   "lastTouched": {
-    "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
-   }
-  },
-  {
-   "id": "calendar-long-thumbs",
-   "kind": "bug",
-   "title": "Calendar: long-video thumbnails squashed into portrait",
-   "detail": "Every thumbnail in the grid and the day list was drawn 9:16, so a 16:9 long-video thumbnail became a sliver. Long ones are now drawn landscape.",
-   "page": "calendar",
-   "found": "2026-10-28",
-   "status": "done",
-   "done": "2026-10-28",
-   "lastTouched": {
-    "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
-   }
-  },
-  {
-   "id": "stats-freshness",
-   "kind": "idea",
-   "title": "Overview and Analytics: say how old the YouTube numbers are",
-   "detail": "Views and subscriber cards come from stats.yml, which stops when YouTube sign-in fails (as now in the notifications). A small 'YouTube stats as of 27 Oct' line that turns amber after 36 h and red after 3 days would stop the owner trusting frozen numbers. Data-freshness guides agree: show the age of the newest data point, not the last job run, with warn/error steps (dbt source freshness, basedash). Shipped 2026-10-29 with thresholds fitted to Analytics' normal lag (a few days): 'YouTube Analytics through <day>' on the Overview Subscribers card and the Analytics heading, amber from 4 days old, red from 7.",
-   "page": "overview",
-   "found": "2026-10-28",
-   "status": "done",
-   "done": "2026-10-29",
-   "lastTouched": {
-    "apps/dashboard/src/app/page.tsx": "2026-10-29",
-    "apps/dashboard/src/app/analytics/page.tsx": "2026-10-29",
-    "apps/dashboard/src/lib/stats-age.ts": "2026-10-29"
-   }
-  },
-  {
-   "id": "overview-made-today-counts-long",
-   "kind": "bug",
-   "title": "Overview: long videos counted toward the 3-Shorts daily target",
-   "detail": "'Made today' and 'Daily output' counted every video run, Studio's long videos too, so a day with 2 Shorts and 1 long video showed 3/3 'target met' (sample data: 21 instead of 19 over 14 days). Runs now carry the video's format and only Shorts count.",
-   "page": "overview",
-   "found": "2026-10-29",
-   "status": "done",
-   "done": "2026-10-29",
-   "lastTouched": {
-    "apps/dashboard/src/app/page.tsx": "2026-10-29",
-    "apps/dashboard/src/lib/store.db.ts": "2026-10-29",
-    "apps/dashboard/src/lib/store.sample.ts": "2026-10-29",
-    "apps/dashboard/src/lib/schemas.ts": "2026-10-29"
-   }
-  },
-  {
-   "id": "overview-agents-last-night-split",
-   "kind": "bug",
-   "title": "Overview: 'Agents last night' shows only the first agents after 23:00",
-   "detail": "The card shows the newest activity day only. The auditor (23:00) and research (23:47) already write the next day's date, so from 23:00 until the improver's 06:17 run the card shows those two and 'no report' for everyone else, hiding the previous night's improver and dashboard reports. Fix: show each agent's latest report from the last ~24 h instead of one day's set.",
-   "page": "overview",
-   "found": "2026-10-29",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/src/app/page.tsx": "2026-11-03",
-    "apps/dashboard/src/lib/last-night.ts": "2026-11-03",
-    "apps/dashboard/src/lib/autopilot.sample.ts": "2026-11-03"
-   }
-  },
-  {
-   "id": "merge-check-playwright-ubuntu-2604",
-   "kind": "bug",
-   "title": "Agent merge: Playwright 1.56.1 can't install Chromium on the Ubuntu 26.04 runner",
-   "detail": "The 2026-11-02 dashboard branch was blocked with 'tests or build failed' although build and lint passed: `playwright install --with-deps` stopped with 'Cannot install dependencies for ubuntu26.04-x64 with Playwright 1.56.1' after ubuntu-latest moved to 26.04. The branch was deleted, so its work (Resolve-all Undo, agents card) was redone tonight. Bumped @playwright/test to 1.64.1, which knows ubuntu26.04-x64.",
-   "page": "all",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/package.json": "2026-11-03",
-    "apps/dashboard/package-lock.json": "2026-11-03"
-   }
-  },
-  {
-   "id": "video-edit-tags-hash",
-   "kind": "bug",
-   "title": "Video page: Edit details saved '#money' as a tag, so 'Copy hashtags' gave '##money'",
-   "detail": "The Tags box split on commas only. Tags typed as hashtags kept the #, and repeats (money, Money) were kept. Now a leading # is dropped and repeats are removed, case-insensitively.",
-   "page": "video",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/src/app/videos/[id]/publish-tools.tsx": "2026-11-03"
-   }
-  },
-  {
-   "id": "dashboard-settings-defaults-drift",
-   "kind": "bug",
-   "title": "Dashboard fallback settings disagree with the publisher's",
-   "detail": "store.db.ts DEFAULT_SETTINGS (used for any setting with no database row) and the sample settings still say 3 Short slots 07:07/12:37/19:07, trend slots 16:07/22:07, dailyVideoTarget 2, Shorts 30-45 s, long videos Tue/Thu/Sat, 2 a week, 300-900 s. workers/lib/settings.ts says 12:37/19:07, no trend slots, 3 a day, 60-90 s, Saturday only, 1 a week, 180-900 s. If a setting has no row, the Overview target, Queue, Calendar and Settings page show the old plan. That line names the upload-schedule settings, so the guard (rightly) blocks agents: owner fix, see notifications. Fixed by the owner in 69013de (2026-11-03 12:25 IST); two smoke tests still expected the old plan and were updated the same night.",
-   "page": "overview",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-03"
-  },
-  {
-   "id": "smoke-stat-cards-flaky",
-   "kind": "bug",
-   "title": "Smoke test 'stat cards in a row share one height' flaked once on phone-dark",
-   "detail": "Failed once in a full run under load, then passed 8 of 8 alone. It waits a fixed 1.2 s for entrance animations; waiting until the card heights stop changing would remove the flake. CI retries once, so it doesn't block merges yet.",
-   "page": "overview",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-03"
-   }
-  },
-  {
-   "id": "smoke-tests-old-schedule",
-   "kind": "bug",
-   "title": "Smoke tests still expected the old upload plan",
-   "detail": "After the owner's fallback-settings fix, 'video page calls a due slot due' waited for a 07:07 slot and 'calendar heading names the long-video days' for Tue/Thu/Sat, so main's smoke suite was red and would have blocked every dashboard branch. Now 12:50 IST for the 12:37 slot and 'long videos Sat'.",
-   "page": "queue",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-03"
-   }
-  },
-  {
-   "id": "analytics-stats-age-lost",
-   "kind": "bug",
-   "title": "Analytics: the new page lost the stale-stats warning",
-   "detail": "The Studio-grade rewrite (f0af6e0) replaced the coloured 'YouTube Analytics through <day>' line with plain 'Through <day>', so a stopped stats job no longer showed amber/red there and its smoke test failed. Restored inside the new Freshness line.",
-   "page": "analytics",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/src/app/analytics/page.tsx": "2026-11-03"
-   }
-  },
-  {
-   "id": "studio-through-yesterday",
-   "kind": "bug",
-   "title": "Analytics: no data said 'through yesterday'",
-   "detail": "getStudio (studio.db.ts) fell back to yesterday for refreshed.through when there were no ChannelDay or VideoStat rows, so a channel whose stats never ran looked up to date. Now null, which reads 'No YouTube Analytics in 28 days' in red. DB path only; no smoke test can reach it.",
-   "page": "analytics",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/src/lib/studio.db.ts": "2026-11-03"
-   }
-  },
-  {
-   "id": "card-header-action-overlap",
-   "kind": "bug",
-   "title": "Cards: a wide header action covered the title on phones",
-   "detail": "Analytics 'Over time': the five-way metric switch sat on 'Over time' and squeezed the description to one word a line. Card headers now wrap, and Segmented scrolls sideways (no scrollbar) instead of wrapping its labels. Smoke test.",
-   "page": "analytics",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-03",
-   "lastTouched": {
-    "apps/dashboard/src/components/ui.tsx": "2026-11-03"
-   }
-  },
-  {
-   "id": "smoke-load-flakes",
-   "kind": "bug",
-   "title": "Two more smoke tests flake under full-run load",
-   "detail": "'settings show an unsaved-changes bar' and 'undo on the resolve-all toast' each failed once in a full local run (different runs), then passed 12/12 alone. Likely a click before hydration, or two workers sharing the in-memory sample store. CI retries once. Next: capture the error on a failing run before changing anything. Cause found 2026-11-08: three route handlers recorded the PATCH before answering it, so a test could end (and close the page) while route.fulfill was still in flight, which throws 'Fetch response has been disposed'. They now record after fulfilling; 30/30 repeats and two full runs green.",
-   "page": "settings",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-08",
-   "lastTouched": {
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-08"
-   }
-  },
-  {
-   "id": "analytics-hash-nav",
-   "kind": "idea",
-   "title": "Analytics: switching tabs by link within the page",
-   "detail": "The tab is read from the URL hash only on first load, so a link to /analytics#reach while already on /analytics keeps the old tab. Listen for hashchange. Small; helps 'More →' style links and the browser back button.",
-   "page": "analytics",
-   "found": "2026-11-03",
-   "status": "done",
-   "done": "2026-11-10",
-   "lastTouched": {
-    "apps/dashboard/src/app/analytics/page.tsx": "2026-11-10",
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
-   }
-  },
-  {
-   "id": "feedback-kind-blank",
-   "kind": "bug",
-   "title": "Feedback: the Kind field looked empty for the default kind",
-   "detail": "FeedbackPanel passed its first kind by name to SelectField, which uses that kind as its 'all' option (value ''), so no option matched and the field showed nothing: 'General' on the Feedback page, 'Improve' on every video page, also after picking it again. Now passed as no value. Also: a failed feedback load said 'No feedback yet'; it now shows the error, and a skeleton while loading. Smoke test, checked to fail without the fix.",
-   "page": "feedback",
-   "found": "2026-11-04",
-   "status": "done",
-   "done": "2026-11-04",
-   "lastTouched": {
-    "apps/dashboard/src/components/feedback.tsx": "2026-11-04"
-   }
-  },
-  {
-   "id": "calendar-phone-dot-shape",
-   "kind": "idea",
-   "title": "Calendar on phones: tell scheduled from planned by shape, not colour alone",
-   "detail": "At phone width a day cell shows only dots, and Scheduled (blue) vs Planned (grey) differ by colour only. Ops-dashboard guidance pairs status colour with a shape or text for colour-blind readers: a filled dot for scheduled, a hollow one for planned (the 'Nothing ready' gap is already dashed). Helps the owner read the week on the phone at a glance.",
-   "page": "calendar",
-   "found": "2026-11-04",
-   "status": "done",
-   "done": "2026-11-10",
-   "lastTouched": {
-    "apps/dashboard/src/app/calendar/page.tsx": "2026-11-10",
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
-   }
-  },
-  {
-   "id": "overview-needs-you",
-   "kind": "idea",
-   "title": "Overview: one 'Needs you' list at the top",
-   "detail": "Exception-first layout: the sign-in alert, today's missed slots, a backlog running dry ('Nothing ready' from the posting plan) and open critical notifications, gathered in one short list above the stat cards, and nothing at all on a healthy day. The owner checks twice a day; today these sit in four places (banner, Queue, Calendar, bell).",
-   "page": "overview",
-   "found": "2026-11-04",
-   "status": "open"
-  },
-  {
-   "id": "runs-kind-and-empty-filter",
-   "kind": "bug",
-   "title": "Runs: long videos read as 'Video', and an empty Failed filter read as 'no runs at all'",
-   "detail": "Code review of runs/page.tsx. Long-video runs had the same 'Video' badge as Shorts (and the badge is hidden on phones, so template work wasn't named either); 'Failed' with no failures showed 'No runs here: runs appear about a minute after a routine commits'. Now the badge says Short / Long video / Template (named in the line on phones), Videos shipped splits Shorts and long, and each filter has its own empty message. Smoke test checked to fail without the fix.",
-   "page": "runs",
-   "found": "2026-11-08",
-   "status": "done",
-   "done": "2026-11-08",
-   "lastTouched": {
-    "apps/dashboard/src/app/runs/page.tsx": "2026-11-08"
-   }
-  },
-  {
-   "id": "smoke-stat-cards-load",
-   "kind": "bug",
-   "title": "'stat cards in a row share one height' failed once on phone under full-run load",
-   "detail": "Failed once in a full local run on 2026-11-08, passed 8/8 alone and in the next two full runs. It already polls for 10 s; if it fails again, capture the ragged heights it reports before changing anything. 2026-11-15: passed in two full runs (desktop and phone).",
-   "page": "overview",
-   "found": "2026-11-08",
-   "status": "open"
-  },
-  {
-   "id": "notif-inline-steps",
-   "kind": "bug",
-   "title": "Notifications: one-line '1. … 2. …' fixes read as one paragraph",
-   "detail": "policy.md tells agents to write fix as '1. … 2. …' on one line, and every real notification does, but Steps only numbered lines split by newlines. Now parsed into an intro plus numbered steps (src/lib/steps.ts); smoke test fails without the fix.",
-   "page": "notifications",
-   "found": "2026-11-09",
-   "status": "done",
-   "done": "2026-11-09",
-   "lastTouched": {
-    "apps/dashboard/src/app/notifications/page.tsx": "2026-11-09",
-    "apps/dashboard/src/lib/steps.ts": "2026-11-09",
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-09"
-   }
-  },
-  {
-   "id": "notif-unread-dot-a11y",
-   "kind": "bug",
-   "title": "Notifications: unread dot invisible to screen readers",
-   "detail": "A bare span with aria-label is skipped by screen readers. Now role=img with a tooltip; smoke test added.",
-   "page": "notifications",
-   "found": "2026-11-09",
-   "status": "done",
-   "done": "2026-11-09",
-   "lastTouched": {
-    "apps/dashboard/src/app/notifications/page.tsx": "2026-11-09",
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-09"
-   }
-  },
-  {
-   "id": "notif-info-fold",
-   "kind": "idea",
-   "title": "Notifications: fold 'For your information' items under the ones that need you",
-   "detail": "Most open notifications are info-level proposals from research, the improver and Scout (about a dozen today), so a critical one like the YouTube sign-in can be the only red card in a long list. Sort critical → warning → info, and put info items in a 'For your information (N)' fold that stays open if it's the only group. Notification-centre guidance (Carbon, saasui.design 2026): ruthless prioritisation and fewer, actionable alerts. Helps the owner act on what matters in a twice-a-day check.",
-   "page": "notifications",
-   "found": "2026-11-09",
-   "status": "done",
-   "done": "2026-11-20",
-   "lastTouched": {
-    "apps/dashboard/src/app/notifications/page.tsx": "2026-11-20",
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-20"
-   }
-  },
-  {
-   "id": "video-48h-mark",
-   "kind": "idea",
-   "title": "Video page: show the 48-hour views the variant system judges on",
-   "detail": "Since 2026-11-04 every option is judged on public views 48 hours after publishing (hourly snapshots). On a published Short's page, show '48 h: N views' (or 'judged in 13 h') next to the variant options it tried. Creator-analytics guides stress that early numbers are noisy and that the dashboard should say how settled a number is; this ties the page to the one number that decides defaults. 2026-11-20: declined, the variant system is frozen (config/arms.json) and the weekly loop judges on stayed-to-watch, not 48-hour views.",
-   "page": "video",
-   "found": "2026-11-09",
-   "status": "declined"
-  },
-  {
-   "id": "smoke-route-after-test",
-   "kind": "bug",
-   "title": "Smoke tests: a mocked route still fetching after its test ended failed the next test",
-   "detail": "'queue rows never clip their text sideways' failed with route.fetch: Test ended, thrown by the previous test's /api/notifications mock (a refetch in flight). An afterEach now runs page.unrouteAll({behavior: 'ignoreErrors'}). Full suite passed twice after.",
-   "page": "tests",
-   "found": "2026-11-10",
-   "status": "done",
-   "done": "2026-11-10",
-   "lastTouched": {
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
-   }
-  },
-  {
-   "id": "video-why-from-owner-note",
-   "kind": "idea",
-   "title": "Videos: show why each video was made, what inspired it and that video's views (owner note)",
-   "detail": "Owner note cmwbukoke0001jy09t4pfhr38. Read from the research feed topic in RepoDoc (topicFeed / longTopicFeed): the reason, the angle, the reference video with its views, the sources. A 'Why this video' card on the video page and an 'Inspired by … · N views' line under each title in the list.",
-   "page": "videos",
-   "found": "2026-11-11",
-   "status": "done",
-   "done": "2026-11-11",
-   "lastTouched": {
-    "component": "videos/[id] OriginCard, videos list row",
-    "day": "2026-11-11"
-   }
-  },
-  {
-   "id": "analytics-change-markers",
-   "kind": "idea",
-   "title": "Analytics: mark landed changes and variant verdicts on the channel views chart",
-   "detail": "Mixpanel (Jan 2026) and Grafana draw events in a row aligned with the time chart, grouped by type, details on hover. Our merge log and arms log already have dates: a thin marker row under the daily views chart would show the owner which change came before a rise or fall (he asked on 11-11 why the last 3 days didn't take off), without opening the Impact page.",
-   "page": "analytics",
-   "found": "2026-11-11",
-   "status": "open"
-  },
-  {
-   "id": "videos-sort-by-demand",
-   "kind": "idea",
-   "title": "Videos: sort or filter the queue by the reference video's views",
-   "detail": "Now that each video carries its reference video's views, a 'Most proven demand' sort on the Videos list would let the owner pick the next upload by demand in one tap. Small: client-side sort on origin.demand.views.",
-   "page": "videos",
-   "found": "2026-11-11",
-   "status": "open"
-  },
-  {
-   "id": "study-thumb-link-nameless",
-   "kind": "bug",
-   "title": "Study: thumbnail link had no accessible name",
-   "detail": "Each study card's thumbnail was a second link to the same YouTube page with only an empty-alt image inside, so keyboard and screen-reader users reached a link announced with no name. It now stays out of the tab order and screen readers (the title link next to it is the named one); the smoke test checks every reachable link on the page has a name.",
-   "page": "study",
-   "found": "2026-11-15",
-   "status": "done",
-   "done": "2026-11-15",
-   "lastTouched": {
-    "study/page.tsx": "2026-11-15"
-   }
-  },
-  {
-   "id": "channels-sample-preview-broken",
-   "kind": "bug",
-   "title": "Channels: a sample's contact sheet showed as a broken image when it couldn't load",
-   "detail": "The Launch review drew /api/media/<id>/preview with no fallback, so a sample whose preview isn't committed yet (or a rejected GitHub token) showed a broken-image icon. It now shows 'Contact sheet not available yet'. The Channels and Scorecard pages were also missing from the smoke test's page list; both are in it now, with a test for the fallback.",
-   "page": "channels",
-   "found": "2026-11-18",
-   "status": "done",
-   "done": "2026-11-18",
-   "lastTouched": {
-    "channels/page.tsx": "2026-11-18"
-   }
-  },
-  {
-   "id": "portfolio-tile-labels-cut",
-   "kind": "bug",
-   "title": "All channels: stat tile labels cut off ('Vi…' for Views 7d)",
-   "detail": "In the three-column channel cards at desktop width the change badge shared the label's row, so 'Views 7d' showed as 'Vi…' and 'Stayed to watch' as 'Stayed to wa…', and subtitles were cut to one line. The label now has the full width and may wrap, the badge sits beside the number, and subtitles may take two lines. /portfolio (new on 11-18) was missing from the smoke test's page list; it is in it now, with a test that no tile label is cut off.",
-   "page": "portfolio",
-   "found": "2026-11-19",
-   "status": "done",
-   "done": "2026-11-19",
-   "lastTouched": {
-    "portfolio/page.tsx": "2026-11-19"
-   }
-  },
-  {
-   "id": "tsc-before-build",
-   "kind": "bug",
-   "title": "tsc fails on a fresh clone until next build has run once",
-   "detail": "next-env.d.ts (gitignored) declares the image module types; without it tsc reports 'Cannot find module @/assets/channels/*.png'. Build passes, and tsc passes after it. Harmless for Netlify and the merge workflow if they build first; worth a src/types/images.d.ts if a tsc-first check ever trips on it. 2026-11-20: fixed upstream by src/types/static-images.d.ts; tsc passes with next-env.d.ts removed.",
-   "page": "all",
-   "found": "2026-11-19",
-   "status": "done",
-   "done": "2026-11-20"
-  },
-  {
-   "id": "notif-snooze",
-   "kind": "idea",
-   "title": "Notifications: snooze an item until a day",
-   "detail": "Exception queues work when each item has a state (fixed, dismissed, deferred), not just open/resolved (Buteau, 'From monitoring to exception workflows'). A 'Remind me Monday' on a warning the owner can't act on yet would keep the list to what needs him today. Needs a snoozedUntil field, so the auditor's lane for the schema part.",
-   "page": "notifications",
-   "found": "2026-11-20",
-   "status": "open"
-  },
-  {
-   "id": "video-retention-drop-picture",
-   "kind": "idea",
-   "title": "Video page: name the picture on screen at each retention drop",
-   "detail": "Retention guides point at the steepest slope as the place to start. The auditor already ties each drop to its picture in analysis/pictures.json; showing 'lost 18% at 5.2 s: the price tag close-up' under the retention chart turns the curve into a fix the owner can read in one look.",
-   "page": "video",
-   "found": "2026-11-20",
-   "status": "open"
-  },
-  {
-   "id": "tabs-arrow-keys",
-   "kind": "bug",
-   "title": "Feedback, Videos, Analytics: tab rows ignored the arrow keys",
-   "detail": "Hand-made role=tab rows put every tab in the Tab order and did nothing on Left/Right/Home/End (WAI-ARIA tabs pattern). Fixed with lib/tab-keys.ts (roving tabindex + arrow keys); smoke test 'tab rows move with the arrow keys'.",
-   "page": "feedback, videos, analytics",
-   "found": "2026-11-21",
-   "status": "done",
-   "done": "2026-11-21",
-   "lastTouched": {
-    "apps/dashboard/src/app/feedback/page.tsx": "2026-11-21",
-    "apps/dashboard/src/app/videos/page.tsx": "2026-11-21",
-    "apps/dashboard/src/components/studio-parts.tsx": "2026-11-21",
-    "apps/dashboard/src/lib/tab-keys.ts": "2026-11-21",
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-21"
-   }
-  },
-  {
-   "id": "smoke-study-load",
-   "kind": "bug",
-   "title": "'study page takes a link' failed once on phone under full-run load",
-   "detail": "Failed once in a full local run on 2026-11-21 (phone-dark), passed 3/3 alone and in the next full run. Same pattern as smoke-stat-cards-load: if it fails again, capture which assertion timed out before changing anything.",
-   "page": "study",
-   "found": "2026-11-21",
-   "status": "open"
-  },
-  {
-   "id": "calendar-chips-clipped",
-   "kind": "bug",
-   "title": "Calendar: day chips clipped their likes and times",
-   "detail": "At 1440 px a published chip needed 86-93 px in an 81 px day, so likes read '12.1K ♡62…'; a planned long video read '2… LONG'; at 1024-1280 px (side panel open) every chip was squeezed to 21-58 px. Fixed: tighter chips, whole times, long videos marked with the legend's dash, 'Long'/'empty' only when they fit, and days too narrow for chips show the phone's marks (container query). Smoke test added.",
-   "page": "calendar",
-   "found": "2026-11-22",
-   "status": "done",
-   "done": "2026-11-22",
-   "lastTouched": {
-    "apps/dashboard/src/app/calendar/page.tsx": "2026-11-22"
-   },
-   "commit": "423ffc3"
-  },
-  {
-   "id": "smoke-contact-sheet-lazy",
-   "kind": "bug",
-   "title": "Smoke test 'contact sheet can't load' failed on main in both projects",
-   "detail": "The Delete-channel controls (owner, 2026-11-23) made each channel card taller, so the sample Launch review's contact sheets sit below the fold. They load lazily, so the mocked 404 never fired and the test saw 1–2 unfailed images. That would have blocked every dashboard branch at merge. The test now scrolls each sheet into view before checking; same assertions.",
-   "page": "channels",
-   "found": "2026-11-23",
-   "status": "done",
-   "done": "2026-11-23",
-   "lastTouched": {
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-23"
-   }
-  },
-  {
-   "id": "channels-collapse-live-cards",
-   "kind": "idea",
-   "title": "Channels: collapse each live channel's settings behind one summary row",
-   "detail": "At 1440 px the Channels page is about 4,200 px tall in sample data, and with four live channels each card repeats YouTube, Shorts a day, upload times and long-video days. Showing a one-line summary (status, ready, published, views 7 d, Shorts a day) with the settings opening on tap would keep a channel waiting for a Launch review or a deletion in view. Pattern guides on multi-tenant admin screens recommend the same: put orientation first and keep admin actions apart (saasui.design workspace-switcher patterns).",
-   "page": "channels",
-   "found": "2026-11-23",
-   "status": "open"
-  },
-  {
-   "id": "delete-channel-counts",
-   "kind": "idea",
-   "title": "Delete channel: say how many videos, queued uploads and Shorts ready go",
-   "detail": "Guides on confirming destructive actions recommend stating the count ('Delete 50 contacts?') next to type-to-confirm. The dialog lists what is removed but not how much. Adding '64 videos, 6 ready, 2 scheduled uploads' from the card's existing numbers costs nothing and catches choosing the wrong channel (saasui.design, destructive-action confirmation patterns).",
-   "page": "channels",
-   "found": "2026-11-23",
-   "status": "open"
-  },
-  {
-   "id": "scorecard-ring-alone-phone",
-   "kind": "bug",
-   "title": "Scorecard: on a phone the on-target ring sat alone on its row and the count began with a stray '·'",
-   "detail": "The verdict row stacked (flex-col) below 640 px, so the 64 px ring took a row by itself and the wrapped '· 7 Shorts in the last 7 days' line started with its separator. The ring now stays beside its reading at every width; the separator shows only from sm up. Smoke test added.",
-   "page": "scorecard",
-   "found": "2026-11-24",
-   "status": "done",
-   "done": "2026-11-24",
-   "lastTouched": {
-    "apps/dashboard/src/app/scorecard/page.tsx": "2026-11-24",
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-24"
-   }
-  },
-  {
-   "id": "scorecard-no-shorts-last-week",
-   "kind": "bug",
-   "title": "Scorecard: 'no Shorts last week' shown when last week's Shorts were only waiting for numbers",
-   "detail": "WeekLine said 'no Shorts last week' whenever last week's median was empty, even with Shorts published that week whose YouTube numbers hadn't arrived. It now says \"last week's still waiting\" when there were Shorts. Smoke test added.",
-   "page": "scorecard",
-   "found": "2026-11-24",
-   "status": "done",
-   "done": "2026-11-24",
-   "lastTouched": {
-    "apps/dashboard/src/app/scorecard/page.tsx": "2026-11-24",
-    "apps/dashboard/e2e/smoke.spec.ts": "2026-11-24"
-   }
-  }
- ]
+  "items": [
+    {
+      "id": "notif-phone-layout",
+      "kind": "bug",
+      "title": "Notifications: ambiguous 'Resolved' button squeezed the fix steps on phones",
+      "detail": "Open items showed a button labelled 'Resolved' in a right-hand column, leaving the How-to-fix box narrow at phone width. Button renamed 'Mark resolved' and moved below the card on phones.",
+      "page": "notifications",
+      "found": "2026-10-16",
+      "status": "done",
+      "done": "2026-10-16",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-10-16"
+      }
+    },
+    {
+      "id": "queue-phone-clip",
+      "kind": "bug",
+      "title": "Queue: publish time cut off on phones",
+      "detail": "The meta line (template · category · publish time) was truncated at phone width, hiding the time. It now wraps and the time stays whole.",
+      "page": "queue",
+      "found": "2026-10-17",
+      "status": "done",
+      "done": "2026-10-17",
+      "lastTouched": {
+        "apps/dashboard/src/app/queue/page.tsx": "2026-10-17"
+      }
+    },
+    {
+      "id": "sample-thumbs-404",
+      "kind": "bug",
+      "title": "Sample data: thumbnails for the new story templates 404, 12 smoke tests red",
+      "detail": "cf14172 switched the sample templates to short_story/long_story but public/sample/ only holds the retired templates' art, so every page with a thumbnail logged a 404 console error. The sample store now borrows a retired template's art for short_story and gives long_story no sample art (as the DB store does). New smoke test: no broken images on Overview, Queue, Videos, Templates.",
+      "page": "overview, queue, videos, templates",
+      "found": "2026-10-18",
+      "status": "done",
+      "done": "2026-10-18",
+      "lastTouched": {
+        "apps/dashboard/src/lib/store.sample.ts": "2026-10-18"
+      }
+    },
+    {
+      "id": "templates-long-card-phone",
+      "kind": "bug",
+      "title": "Templates: on phones the Long story card's 16:9 player squeezes the text column",
+      "detail": "At 390 px the landscape poster takes about half the card width, so the id line wraps ('long videos') and the description is cut off. Stack the player above the text on phones for landscape templates.",
+      "page": "templates",
+      "found": "2026-10-18",
+      "status": "done",
+      "done": "2026-10-21",
+      "lastTouched": {
+        "apps/dashboard/src/app/templates/page.tsx": "2026-10-21"
+      }
+    },
+    {
+      "id": "voice-label-gender",
+      "kind": "bug",
+      "title": "Video page: 5 of the 6 narrator voices shown as '(voice)'",
+      "detail": "The Voiceover row only recognised Hindi-coded Kokoro ids (hf_/hm_), so every American voice the improver now rotates in (af_heart, af_bella, am_michael, am_fenrir, am_puck) read e.g. 'On · Bella (voice)'. It now reads accent and gender from the id: 'On · Bella (American, female)'. Sample data uses American voices too; new smoke test.",
+      "page": "videos/[id]",
+      "found": "2026-10-19",
+      "status": "done",
+      "done": "2026-10-19",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-19",
+        "apps/dashboard/src/lib/store.sample.ts": "2026-10-19"
+      }
+    },
+    {
+      "id": "overview-since-last-visit",
+      "kind": "idea",
+      "title": "Overview: 'Since you last looked' line",
+      "detail": "Remember the last visit per browser and show one line at the top: new videos queued, uploads scheduled, failures and new notifications since then. The owner checks twice a day; this answers 'what changed?' without scanning every card. Glanceable change summaries are the common thread in current ops-dashboard guidance (Cloudscape service dashboards, DesignRush 2026).",
+      "page": "overview",
+      "found": "2026-10-19",
+      "status": "open"
+    },
+    {
+      "id": "overview-phone-orphan-card",
+      "kind": "idea",
+      "title": "Overview on phones: 'Made today' card sits alone in a half-empty row",
+      "detail": "At 390 px the five stat cards wrap 2-2-1, leaving the last card next to empty space. Let the last odd card span the full row (or fold 'Made today' into the Backlog card) so the top of the page is one tidy block.",
+      "page": "overview",
+      "found": "2026-10-19",
+      "status": "done",
+      "done": "2026-10-22",
+      "lastTouched": {
+        "apps/dashboard/src/app/page.tsx": "2026-10-22"
+      }
+    },
+    {
+      "id": "calendar-plan-formats",
+      "kind": "bug",
+      "title": "Calendar: queued long videos planned into Short slots",
+      "detail": "Planned entries used only the daily Short times and both formats' queues together, so the sample's two long videos showed at 07:07/12:37/19:07 instead of 20:07 on Tue/Thu/Sat, and trend slots never appeared. Calendar now uses the Queue page's posting plan per format.",
+      "page": "calendar",
+      "found": "2026-10-21",
+      "status": "done",
+      "done": "2026-10-21",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-10-21"
+      }
+    },
+    {
+      "id": "calendar-format-marker",
+      "kind": "idea",
+      "title": "Calendar: tell long videos from Shorts at a glance",
+      "detail": "Content calendars colour or label entries by channel/format. A small 'Long' tag (text, not colour alone) on long entries lets the owner see the week's two long uploads without opening each day. Done: a 'Long' tag in the day list and beside the time on wide screens, a dash instead of a dot on phones, and a legend entry.",
+      "page": "calendar",
+      "found": "2026-10-21",
+      "status": "done",
+      "done": "2026-10-28",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
+      }
+    },
+    {
+      "id": "calendar-empty-slots",
+      "kind": "idea",
+      "title": "Calendar: show slots nothing is ready for",
+      "detail": "The posting plan already knows the first empty slot. Showing it as a dashed 'Nothing ready' entry makes a running-dry backlog visible on the calendar, not just on the Queue page. Content-planner calendars also make an empty slot a link to act on (here: to the Queue page). Done: the posting plan's first empty Short and long-video slots show as a dashed amber \"Nothing ready\" entry; the day panel says which slot and links to the Queue; the legend explains it. Smoke test.",
+      "page": "calendar",
+      "found": "2026-10-21",
+      "status": "done",
+      "done": "2026-11-04",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-11-04"
+      }
+    },
+    {
+      "id": "video-due-slot-label",
+      "kind": "bug",
+      "title": "Video page: a due slot read as 'minutes ago'",
+      "detail": "The queue's first Short showed '34m ago, if the queue order holds' while the Queue page said it was uploading now. It now reads 'Due now: this slot is open', the same posting plan state the Queue page uses.",
+      "page": "video",
+      "found": "2026-10-22",
+      "status": "done",
+      "done": "2026-10-22",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-22"
+      }
+    },
+    {
+      "id": "overview-backlog-days-counts-long",
+      "kind": "bug",
+      "title": "Overview: Backlog card's 'days of uploads' counts long videos as Shorts",
+      "detail": "The card divides every queued video (long ones too) by the daily Short slots, so 10 Shorts + 2 long videos show '≈ 4 days' while the Queue page says about 3 days of Shorts. The fix is one line, but that line names a guarded schedule setting, so the guard blocks the dashboard agent from changing it. Left for the auditor or the owner: use the Queue page's runway('short', …) on that card.",
+      "page": "overview",
+      "found": "2026-10-22",
+      "status": "open"
+    },
+    {
+      "id": "tabs-wrap-clipped",
+      "kind": "bug",
+      "title": "Agents and video page: tab labels wrapped and were clipped on phones",
+      "detail": "On phones 'Experiments (1)', 'Topic feed (1)' and 'Merge log' wrapped to two lines inside the fixed-height tab bar, cutting off '(1)' and 'log'. Tabs now stay on one line and the row scrolls sideways. Smoke test 'section tabs keep their labels on one line'.",
+      "page": "agents",
+      "found": "2026-10-23",
+      "status": "done",
+      "done": "2026-10-23",
+      "lastTouched": {
+        "apps/dashboard/src/app/agents/page.tsx": "2026-10-23",
+        "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-10-23"
+      }
+    },
+    {
+      "id": "audit-badge-plural",
+      "kind": "bug",
+      "title": "Agents: data audit badge read '1 warnings'",
+      "detail": "The badge now counts in the right number ('0 errors · 1 warning'). Smoke test 'data audit badge counts in the right number'.",
+      "page": "agents",
+      "found": "2026-10-23",
+      "status": "done",
+      "done": "2026-10-23",
+      "lastTouched": {
+        "apps/dashboard/src/app/agents/page.tsx": "2026-10-23"
+      }
+    },
+    {
+      "id": "resolve-all-proposals",
+      "kind": "bug",
+      "title": "Notifications: Resolve all closed setting proposals without a decision",
+      "detail": "A proposal has no 'Mark resolved' button because it needs Approve or Decline, but 'Resolve all' swept it into Resolved undecided, where it could no longer be approved. Resolve all now skips proposals. Smoke test 'resolve all leaves setting proposals for a decision'.",
+      "page": "notifications",
+      "found": "2026-10-23",
+      "status": "done",
+      "done": "2026-10-23",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-10-23"
+      }
+    },
+    {
+      "id": "tabs-overflow-cue",
+      "kind": "idea",
+      "title": "Agents and video page: show that the tab row scrolls on phones",
+      "detail": "The tab rows now scroll sideways on phones with no scrollbar. A soft fade on the edge with more tabs (design-system guides recommend it where browsers hide scrollbars) tells the owner there is a 'Merge log' tab off-screen. Done: a `scroll-fade-x` class (globals.css) fades the edge that has more tabs, driven by the row's own scroll position, so a row that fits shows no fade. On the Agents, video page and Videos status tabs. Smoke test on phone.",
+      "page": "agents",
+      "found": "2026-10-23",
+      "status": "done",
+      "done": "2026-11-04",
+      "lastTouched": {
+        "apps/dashboard/src/app/globals.css": "2026-11-04",
+        "apps/dashboard/src/app/agents/page.tsx": "2026-11-04",
+        "apps/dashboard/src/app/videos/[id]/page.tsx": "2026-11-04"
+      }
+    },
+    {
+      "id": "notifications-resolve-undo",
+      "kind": "idea",
+      "title": "Notifications: Undo on the 'Resolve all' toast",
+      "detail": "Notification-centre guides agree a mark-all action must be predictable and easy to undo. An Undo button in the toast that reopens exactly the items just resolved saves a trip to 'recently resolved' after a mis-tap on the phone.",
+      "page": "notifications",
+      "found": "2026-10-23",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-11-03",
+        "apps/dashboard/src/components/toast.tsx": "2026-11-03"
+      }
+    },
+    {
+      "id": "stat-cards-ragged-height",
+      "kind": "bug",
+      "title": "Stat cards in one row had different heights",
+      "detail": "The card inside each grid cell didn't fill the cell, so a card with a wrapped label ('Subscribers · 7 days') or a longer line stood taller than its neighbours on Overview (desktop and phone) and on Analytics, Runs, Agents and the video page. Cards now fill the row; smoke test 'stat cards in a row share one height'.",
+      "page": "overview",
+      "found": "2026-10-26",
+      "status": "done",
+      "done": "2026-10-26",
+      "lastTouched": {
+        "apps/dashboard/src/components/ui.tsx": "2026-10-26"
+      }
+    },
+    {
+      "id": "videos-topic-filter-fixed-list",
+      "kind": "bug",
+      "title": "Videos: Topic filter missed most newer categories",
+      "detail": "The Topic list was a fixed list of 17 categories; history now has 27 (savings, loans, investing, salary, wealth, net_worth, debt, car…), so 12 categories could not be filtered and a link with one of them showed an empty filter. Options now come from the videos themselves; smoke test.",
+      "page": "videos",
+      "found": "2026-10-26",
+      "status": "done",
+      "done": "2026-10-26",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/page.tsx": "2026-10-26"
+      }
+    },
+    {
+      "id": "videos-search-stale-box",
+      "kind": "bug",
+      "title": "Videos: search box kept old text after the URL changed",
+      "detail": "The box read ?q= once on load. Following the sidebar's Videos link (or Back) changed the list but left the old text in the box. It now follows the URL; smoke test, checked to fail without the fix.",
+      "page": "videos",
+      "found": "2026-10-26",
+      "status": "done",
+      "done": "2026-10-26",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/page.tsx": "2026-10-26"
+      }
+    },
+    {
+      "id": "videos-topic-counts",
+      "kind": "idea",
+      "title": "Videos: show how many videos each Topic option has",
+      "detail": "Faceted-filter guides agree: a count beside each option sets expectations and avoids empty results. 'Credit card (4)' tells the owner at a glance which money topics the channel leans on, with no extra page. Done: each Topic option reads e.g. \"Credit card (4)\", counted from the same video list the options come from. Smoke test.",
+      "page": "videos",
+      "found": "2026-10-26",
+      "status": "done",
+      "done": "2026-11-04",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/page.tsx": "2026-11-04"
+      }
+    },
+    {
+      "id": "queue-trend-badge-date",
+      "kind": "bug",
+      "title": "Queue: trend badge read 'post by 10-28', or 'post by ' with nothing after it",
+      "detail": "The badge cut the ISO date to '10-28', and a trend topic without an expiry (generator/topics.py writes until \"\") left 'Trending · post by ' dangling. It now says 'post by 28 Oct', or just 'Trending' when there is no date.",
+      "page": "queue",
+      "found": "2026-10-27",
+      "status": "done",
+      "done": "2026-10-27",
+      "lastTouched": {
+        "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
+      }
+    },
+    {
+      "id": "queue-scheduled-time-phone",
+      "kind": "bug",
+      "title": "Queue: 'Already scheduled on YouTube' card showed no time on phones",
+      "detail": "The publish time sat in a column hidden below 640 px, so on a phone the card named the video but not when it goes out. It now shows the time under the title on phones.",
+      "page": "queue",
+      "found": "2026-10-27",
+      "status": "done",
+      "done": "2026-10-27",
+      "lastTouched": {
+        "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
+      }
+    },
+    {
+      "id": "queue-section-meta-column",
+      "kind": "bug",
+      "title": "Queue: section details squeezed into a narrow column on phones",
+      "detail": "'· 10 ready · posts daily at …' sat beside 'Shorts' and wrapped into a column four lines tall. It now wraps under the name at full width.",
+      "page": "queue",
+      "found": "2026-10-27",
+      "status": "done",
+      "done": "2026-10-27",
+      "lastTouched": {
+        "apps/dashboard/src/app/queue/page.tsx": "2026-10-27"
+      }
+    },
+    {
+      "id": "calendar-subtitle-long",
+      "kind": "bug",
+      "title": "Calendar: heading line spoke only of Shorts",
+      "detail": "'3 uploads a day at 07:07, 12:37 and 19:07 IST' while the grid also plans long videos at 20:07 on Tue/Thu/Sat. It now reads '3 Shorts a day at … · long videos Tue/Thu/Sat at 20:07 IST'.",
+      "page": "calendar",
+      "found": "2026-10-28",
+      "status": "done",
+      "done": "2026-10-28",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
+      }
+    },
+    {
+      "id": "calendar-long-thumbs",
+      "kind": "bug",
+      "title": "Calendar: long-video thumbnails squashed into portrait",
+      "detail": "Every thumbnail in the grid and the day list was drawn 9:16, so a 16:9 long-video thumbnail became a sliver. Long ones are now drawn landscape.",
+      "page": "calendar",
+      "found": "2026-10-28",
+      "status": "done",
+      "done": "2026-10-28",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-10-28"
+      }
+    },
+    {
+      "id": "stats-freshness",
+      "kind": "idea",
+      "title": "Overview and Analytics: say how old the YouTube numbers are",
+      "detail": "Views and subscriber cards come from stats.yml, which stops when YouTube sign-in fails (as now in the notifications). A small 'YouTube stats as of 27 Oct' line that turns amber after 36 h and red after 3 days would stop the owner trusting frozen numbers. Data-freshness guides agree: show the age of the newest data point, not the last job run, with warn/error steps (dbt source freshness, basedash). Shipped 2026-10-29 with thresholds fitted to Analytics' normal lag (a few days): 'YouTube Analytics through <day>' on the Overview Subscribers card and the Analytics heading, amber from 4 days old, red from 7.",
+      "page": "overview",
+      "found": "2026-10-28",
+      "status": "done",
+      "done": "2026-10-29",
+      "lastTouched": {
+        "apps/dashboard/src/app/page.tsx": "2026-10-29",
+        "apps/dashboard/src/app/analytics/page.tsx": "2026-10-29",
+        "apps/dashboard/src/lib/stats-age.ts": "2026-10-29"
+      }
+    },
+    {
+      "id": "overview-made-today-counts-long",
+      "kind": "bug",
+      "title": "Overview: long videos counted toward the 3-Shorts daily target",
+      "detail": "'Made today' and 'Daily output' counted every video run, Studio's long videos too, so a day with 2 Shorts and 1 long video showed 3/3 'target met' (sample data: 21 instead of 19 over 14 days). Runs now carry the video's format and only Shorts count.",
+      "page": "overview",
+      "found": "2026-10-29",
+      "status": "done",
+      "done": "2026-10-29",
+      "lastTouched": {
+        "apps/dashboard/src/app/page.tsx": "2026-10-29",
+        "apps/dashboard/src/lib/store.db.ts": "2026-10-29",
+        "apps/dashboard/src/lib/store.sample.ts": "2026-10-29",
+        "apps/dashboard/src/lib/schemas.ts": "2026-10-29"
+      }
+    },
+    {
+      "id": "overview-agents-last-night-split",
+      "kind": "bug",
+      "title": "Overview: 'Agents last night' shows only the first agents after 23:00",
+      "detail": "The card shows the newest activity day only. The auditor (23:00) and research (23:47) already write the next day's date, so from 23:00 until the improver's 06:17 run the card shows those two and 'no report' for everyone else, hiding the previous night's improver and dashboard reports. Fix: show each agent's latest report from the last ~24 h instead of one day's set.",
+      "page": "overview",
+      "found": "2026-10-29",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/app/page.tsx": "2026-11-03",
+        "apps/dashboard/src/lib/last-night.ts": "2026-11-03",
+        "apps/dashboard/src/lib/autopilot.sample.ts": "2026-11-03"
+      }
+    },
+    {
+      "id": "merge-check-playwright-ubuntu-2604",
+      "kind": "bug",
+      "title": "Agent merge: Playwright 1.56.1 can't install Chromium on the Ubuntu 26.04 runner",
+      "detail": "The 2026-11-02 dashboard branch was blocked with 'tests or build failed' although build and lint passed: `playwright install --with-deps` stopped with 'Cannot install dependencies for ubuntu26.04-x64 with Playwright 1.56.1' after ubuntu-latest moved to 26.04. The branch was deleted, so its work (Resolve-all Undo, agents card) was redone tonight. Bumped @playwright/test to 1.64.1, which knows ubuntu26.04-x64.",
+      "page": "all",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/package.json": "2026-11-03",
+        "apps/dashboard/package-lock.json": "2026-11-03"
+      }
+    },
+    {
+      "id": "video-edit-tags-hash",
+      "kind": "bug",
+      "title": "Video page: Edit details saved '#money' as a tag, so 'Copy hashtags' gave '##money'",
+      "detail": "The Tags box split on commas only. Tags typed as hashtags kept the #, and repeats (money, Money) were kept. Now a leading # is dropped and repeats are removed, case-insensitively.",
+      "page": "video",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/[id]/publish-tools.tsx": "2026-11-03"
+      }
+    },
+    {
+      "id": "dashboard-settings-defaults-drift",
+      "kind": "bug",
+      "title": "Dashboard fallback settings disagree with the publisher's",
+      "detail": "store.db.ts DEFAULT_SETTINGS (used for any setting with no database row) and the sample settings still say 3 Short slots 07:07/12:37/19:07, trend slots 16:07/22:07, dailyVideoTarget 2, Shorts 30-45 s, long videos Tue/Thu/Sat, 2 a week, 300-900 s. workers/lib/settings.ts says 12:37/19:07, no trend slots, 3 a day, 60-90 s, Saturday only, 1 a week, 180-900 s. If a setting has no row, the Overview target, Queue, Calendar and Settings page show the old plan. That line names the upload-schedule settings, so the guard (rightly) blocks agents: owner fix, see notifications. Fixed by the owner in 69013de (2026-11-03 12:25 IST); two smoke tests still expected the old plan and were updated the same night.",
+      "page": "overview",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03"
+    },
+    {
+      "id": "smoke-stat-cards-flaky",
+      "kind": "bug",
+      "title": "Smoke test 'stat cards in a row share one height' flaked once on phone-dark",
+      "detail": "Failed once in a full run under load, then passed 8 of 8 alone. It waits a fixed 1.2 s for entrance animations; waiting until the card heights stop changing would remove the flake. CI retries once, so it doesn't block merges yet.",
+      "page": "overview",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-03"
+      }
+    },
+    {
+      "id": "smoke-tests-old-schedule",
+      "kind": "bug",
+      "title": "Smoke tests still expected the old upload plan",
+      "detail": "After the owner's fallback-settings fix, 'video page calls a due slot due' waited for a 07:07 slot and 'calendar heading names the long-video days' for Tue/Thu/Sat, so main's smoke suite was red and would have blocked every dashboard branch. Now 12:50 IST for the 12:37 slot and 'long videos Sat'.",
+      "page": "queue",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-03"
+      }
+    },
+    {
+      "id": "analytics-stats-age-lost",
+      "kind": "bug",
+      "title": "Analytics: the new page lost the stale-stats warning",
+      "detail": "The Studio-grade rewrite (f0af6e0) replaced the coloured 'YouTube Analytics through <day>' line with plain 'Through <day>', so a stopped stats job no longer showed amber/red there and its smoke test failed. Restored inside the new Freshness line.",
+      "page": "analytics",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/app/analytics/page.tsx": "2026-11-03"
+      }
+    },
+    {
+      "id": "studio-through-yesterday",
+      "kind": "bug",
+      "title": "Analytics: no data said 'through yesterday'",
+      "detail": "getStudio (studio.db.ts) fell back to yesterday for refreshed.through when there were no ChannelDay or VideoStat rows, so a channel whose stats never ran looked up to date. Now null, which reads 'No YouTube Analytics in 28 days' in red. DB path only; no smoke test can reach it.",
+      "page": "analytics",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/lib/studio.db.ts": "2026-11-03"
+      }
+    },
+    {
+      "id": "card-header-action-overlap",
+      "kind": "bug",
+      "title": "Cards: a wide header action covered the title on phones",
+      "detail": "Analytics 'Over time': the five-way metric switch sat on 'Over time' and squeezed the description to one word a line. Card headers now wrap, and Segmented scrolls sideways (no scrollbar) instead of wrapping its labels. Smoke test.",
+      "page": "analytics",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-03",
+      "lastTouched": {
+        "apps/dashboard/src/components/ui.tsx": "2026-11-03"
+      }
+    },
+    {
+      "id": "smoke-load-flakes",
+      "kind": "bug",
+      "title": "Two more smoke tests flake under full-run load",
+      "detail": "'settings show an unsaved-changes bar' and 'undo on the resolve-all toast' each failed once in a full local run (different runs), then passed 12/12 alone. Likely a click before hydration, or two workers sharing the in-memory sample store. CI retries once. Next: capture the error on a failing run before changing anything. Cause found 2026-11-08: three route handlers recorded the PATCH before answering it, so a test could end (and close the page) while route.fulfill was still in flight, which throws 'Fetch response has been disposed'. They now record after fulfilling; 30/30 repeats and two full runs green.",
+      "page": "settings",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-08",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-08"
+      }
+    },
+    {
+      "id": "analytics-hash-nav",
+      "kind": "idea",
+      "title": "Analytics: switching tabs by link within the page",
+      "detail": "The tab is read from the URL hash only on first load, so a link to /analytics#reach while already on /analytics keeps the old tab. Listen for hashchange. Small; helps 'More →' style links and the browser back button.",
+      "page": "analytics",
+      "found": "2026-11-03",
+      "status": "done",
+      "done": "2026-11-10",
+      "lastTouched": {
+        "apps/dashboard/src/app/analytics/page.tsx": "2026-11-10",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
+      }
+    },
+    {
+      "id": "feedback-kind-blank",
+      "kind": "bug",
+      "title": "Feedback: the Kind field looked empty for the default kind",
+      "detail": "FeedbackPanel passed its first kind by name to SelectField, which uses that kind as its 'all' option (value ''), so no option matched and the field showed nothing: 'General' on the Feedback page, 'Improve' on every video page, also after picking it again. Now passed as no value. Also: a failed feedback load said 'No feedback yet'; it now shows the error, and a skeleton while loading. Smoke test, checked to fail without the fix.",
+      "page": "feedback",
+      "found": "2026-11-04",
+      "status": "done",
+      "done": "2026-11-04",
+      "lastTouched": {
+        "apps/dashboard/src/components/feedback.tsx": "2026-11-04"
+      }
+    },
+    {
+      "id": "calendar-phone-dot-shape",
+      "kind": "idea",
+      "title": "Calendar on phones: tell scheduled from planned by shape, not colour alone",
+      "detail": "At phone width a day cell shows only dots, and Scheduled (blue) vs Planned (grey) differ by colour only. Ops-dashboard guidance pairs status colour with a shape or text for colour-blind readers: a filled dot for scheduled, a hollow one for planned (the 'Nothing ready' gap is already dashed). Helps the owner read the week on the phone at a glance.",
+      "page": "calendar",
+      "found": "2026-11-04",
+      "status": "done",
+      "done": "2026-11-10",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-11-10",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
+      }
+    },
+    {
+      "id": "overview-needs-you",
+      "kind": "idea",
+      "title": "Overview: one 'Needs you' list at the top",
+      "detail": "Exception-first layout: the sign-in alert, today's missed slots, a backlog running dry ('Nothing ready' from the posting plan) and open critical notifications, gathered in one short list above the stat cards, and nothing at all on a healthy day. The owner checks twice a day; today these sit in four places (banner, Queue, Calendar, bell).",
+      "page": "overview",
+      "found": "2026-11-04",
+      "status": "open"
+    },
+    {
+      "id": "runs-kind-and-empty-filter",
+      "kind": "bug",
+      "title": "Runs: long videos read as 'Video', and an empty Failed filter read as 'no runs at all'",
+      "detail": "Code review of runs/page.tsx. Long-video runs had the same 'Video' badge as Shorts (and the badge is hidden on phones, so template work wasn't named either); 'Failed' with no failures showed 'No runs here: runs appear about a minute after a routine commits'. Now the badge says Short / Long video / Template (named in the line on phones), Videos shipped splits Shorts and long, and each filter has its own empty message. Smoke test checked to fail without the fix.",
+      "page": "runs",
+      "found": "2026-11-08",
+      "status": "done",
+      "done": "2026-11-08",
+      "lastTouched": {
+        "apps/dashboard/src/app/runs/page.tsx": "2026-11-08"
+      }
+    },
+    {
+      "id": "smoke-stat-cards-load",
+      "kind": "bug",
+      "title": "'stat cards in a row share one height' failed once on phone under full-run load",
+      "detail": "Failed once in a full local run on 2026-11-08, passed 8/8 alone and in the next two full runs. It already polls for 10 s; if it fails again, capture the ragged heights it reports before changing anything. 2026-11-15: passed in two full runs (desktop and phone).",
+      "page": "overview",
+      "found": "2026-11-08",
+      "status": "open"
+    },
+    {
+      "id": "notif-inline-steps",
+      "kind": "bug",
+      "title": "Notifications: one-line '1. … 2. …' fixes read as one paragraph",
+      "detail": "policy.md tells agents to write fix as '1. … 2. …' on one line, and every real notification does, but Steps only numbered lines split by newlines. Now parsed into an intro plus numbered steps (src/lib/steps.ts); smoke test fails without the fix.",
+      "page": "notifications",
+      "found": "2026-11-09",
+      "status": "done",
+      "done": "2026-11-09",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-11-09",
+        "apps/dashboard/src/lib/steps.ts": "2026-11-09",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-09"
+      }
+    },
+    {
+      "id": "notif-unread-dot-a11y",
+      "kind": "bug",
+      "title": "Notifications: unread dot invisible to screen readers",
+      "detail": "A bare span with aria-label is skipped by screen readers. Now role=img with a tooltip; smoke test added.",
+      "page": "notifications",
+      "found": "2026-11-09",
+      "status": "done",
+      "done": "2026-11-09",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-11-09",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-09"
+      }
+    },
+    {
+      "id": "notif-info-fold",
+      "kind": "idea",
+      "title": "Notifications: fold 'For your information' items under the ones that need you",
+      "detail": "Most open notifications are info-level proposals from research, the improver and Scout (about a dozen today), so a critical one like the YouTube sign-in can be the only red card in a long list. Sort critical → warning → info, and put info items in a 'For your information (N)' fold that stays open if it's the only group. Notification-centre guidance (Carbon, saasui.design 2026): ruthless prioritisation and fewer, actionable alerts. Helps the owner act on what matters in a twice-a-day check.",
+      "page": "notifications",
+      "found": "2026-11-09",
+      "status": "done",
+      "done": "2026-11-20",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-11-20",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-20"
+      }
+    },
+    {
+      "id": "video-48h-mark",
+      "kind": "idea",
+      "title": "Video page: show the 48-hour views the variant system judges on",
+      "detail": "Since 2026-11-04 every option is judged on public views 48 hours after publishing (hourly snapshots). On a published Short's page, show '48 h: N views' (or 'judged in 13 h') next to the variant options it tried. Creator-analytics guides stress that early numbers are noisy and that the dashboard should say how settled a number is; this ties the page to the one number that decides defaults. 2026-11-20: declined, the variant system is frozen (config/arms.json) and the weekly loop judges on stayed-to-watch, not 48-hour views.",
+      "page": "video",
+      "found": "2026-11-09",
+      "status": "declined"
+    },
+    {
+      "id": "smoke-route-after-test",
+      "kind": "bug",
+      "title": "Smoke tests: a mocked route still fetching after its test ended failed the next test",
+      "detail": "'queue rows never clip their text sideways' failed with route.fetch: Test ended, thrown by the previous test's /api/notifications mock (a refetch in flight). An afterEach now runs page.unrouteAll({behavior: 'ignoreErrors'}). Full suite passed twice after.",
+      "page": "tests",
+      "found": "2026-11-10",
+      "status": "done",
+      "done": "2026-11-10",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-10"
+      }
+    },
+    {
+      "id": "video-why-from-owner-note",
+      "kind": "idea",
+      "title": "Videos: show why each video was made, what inspired it and that video's views (owner note)",
+      "detail": "Owner note cmwbukoke0001jy09t4pfhr38. Read from the research feed topic in RepoDoc (topicFeed / longTopicFeed): the reason, the angle, the reference video with its views, the sources. A 'Why this video' card on the video page and an 'Inspired by … · N views' line under each title in the list.",
+      "page": "videos",
+      "found": "2026-11-11",
+      "status": "done",
+      "done": "2026-11-11",
+      "lastTouched": {
+        "component": "videos/[id] OriginCard, videos list row",
+        "day": "2026-11-11"
+      }
+    },
+    {
+      "id": "analytics-change-markers",
+      "kind": "idea",
+      "title": "Analytics: mark landed changes and variant verdicts on the channel views chart",
+      "detail": "Mixpanel (Jan 2026) and Grafana draw events in a row aligned with the time chart, grouped by type, details on hover. Our merge log and arms log already have dates: a thin marker row under the daily views chart would show the owner which change came before a rise or fall (he asked on 11-11 why the last 3 days didn't take off), without opening the Impact page.",
+      "page": "analytics",
+      "found": "2026-11-11",
+      "status": "open"
+    },
+    {
+      "id": "videos-sort-by-demand",
+      "kind": "idea",
+      "title": "Videos: sort or filter the queue by the reference video's views",
+      "detail": "Now that each video carries its reference video's views, a 'Most proven demand' sort on the Videos list would let the owner pick the next upload by demand in one tap. Small: client-side sort on origin.demand.views.",
+      "page": "videos",
+      "found": "2026-11-11",
+      "status": "open"
+    },
+    {
+      "id": "study-thumb-link-nameless",
+      "kind": "bug",
+      "title": "Study: thumbnail link had no accessible name",
+      "detail": "Each study card's thumbnail was a second link to the same YouTube page with only an empty-alt image inside, so keyboard and screen-reader users reached a link announced with no name. It now stays out of the tab order and screen readers (the title link next to it is the named one); the smoke test checks every reachable link on the page has a name.",
+      "page": "study",
+      "found": "2026-11-15",
+      "status": "done",
+      "done": "2026-11-15",
+      "lastTouched": {
+        "study/page.tsx": "2026-11-15"
+      }
+    },
+    {
+      "id": "channels-sample-preview-broken",
+      "kind": "bug",
+      "title": "Channels: a sample's contact sheet showed as a broken image when it couldn't load",
+      "detail": "The Launch review drew /api/media/<id>/preview with no fallback, so a sample whose preview isn't committed yet (or a rejected GitHub token) showed a broken-image icon. It now shows 'Contact sheet not available yet'. The Channels and Scorecard pages were also missing from the smoke test's page list; both are in it now, with a test for the fallback.",
+      "page": "channels",
+      "found": "2026-11-18",
+      "status": "done",
+      "done": "2026-11-18",
+      "lastTouched": {
+        "channels/page.tsx": "2026-11-18"
+      }
+    },
+    {
+      "id": "portfolio-tile-labels-cut",
+      "kind": "bug",
+      "title": "All channels: stat tile labels cut off ('Vi…' for Views 7d)",
+      "detail": "In the three-column channel cards at desktop width the change badge shared the label's row, so 'Views 7d' showed as 'Vi…' and 'Stayed to watch' as 'Stayed to wa…', and subtitles were cut to one line. The label now has the full width and may wrap, the badge sits beside the number, and subtitles may take two lines. /portfolio (new on 11-18) was missing from the smoke test's page list; it is in it now, with a test that no tile label is cut off.",
+      "page": "portfolio",
+      "found": "2026-11-19",
+      "status": "done",
+      "done": "2026-11-19",
+      "lastTouched": {
+        "portfolio/page.tsx": "2026-11-19"
+      }
+    },
+    {
+      "id": "tsc-before-build",
+      "kind": "bug",
+      "title": "tsc fails on a fresh clone until next build has run once",
+      "detail": "next-env.d.ts (gitignored) declares the image module types; without it tsc reports 'Cannot find module @/assets/channels/*.png'. Build passes, and tsc passes after it. Harmless for Netlify and the merge workflow if they build first; worth a src/types/images.d.ts if a tsc-first check ever trips on it. 2026-11-20: fixed upstream by src/types/static-images.d.ts; tsc passes with next-env.d.ts removed.",
+      "page": "all",
+      "found": "2026-11-19",
+      "status": "done",
+      "done": "2026-11-20"
+    },
+    {
+      "id": "notif-snooze",
+      "kind": "idea",
+      "title": "Notifications: snooze an item until a day",
+      "detail": "Exception queues work when each item has a state (fixed, dismissed, deferred), not just open/resolved (Buteau, 'From monitoring to exception workflows'). A 'Remind me Monday' on a warning the owner can't act on yet would keep the list to what needs him today. Needs a snoozedUntil field, so the auditor's lane for the schema part.",
+      "page": "notifications",
+      "found": "2026-11-20",
+      "status": "open"
+    },
+    {
+      "id": "video-retention-drop-picture",
+      "kind": "idea",
+      "title": "Video page: name the picture on screen at each retention drop",
+      "detail": "Retention guides point at the steepest slope as the place to start. The auditor already ties each drop to its picture in analysis/pictures.json; showing 'lost 18% at 5.2 s: the price tag close-up' under the retention chart turns the curve into a fix the owner can read in one look.",
+      "page": "video",
+      "found": "2026-11-20",
+      "status": "open"
+    },
+    {
+      "id": "tabs-arrow-keys",
+      "kind": "bug",
+      "title": "Feedback, Videos, Analytics: tab rows ignored the arrow keys",
+      "detail": "Hand-made role=tab rows put every tab in the Tab order and did nothing on Left/Right/Home/End (WAI-ARIA tabs pattern). Fixed with lib/tab-keys.ts (roving tabindex + arrow keys); smoke test 'tab rows move with the arrow keys'.",
+      "page": "feedback, videos, analytics",
+      "found": "2026-11-21",
+      "status": "done",
+      "done": "2026-11-21",
+      "lastTouched": {
+        "apps/dashboard/src/app/feedback/page.tsx": "2026-11-21",
+        "apps/dashboard/src/app/videos/page.tsx": "2026-11-21",
+        "apps/dashboard/src/components/studio-parts.tsx": "2026-11-21",
+        "apps/dashboard/src/lib/tab-keys.ts": "2026-11-21",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-21"
+      }
+    },
+    {
+      "id": "smoke-study-load",
+      "kind": "bug",
+      "title": "'study page takes a link' failed once on phone under full-run load",
+      "detail": "Failed once in a full local run on 2026-11-21 (phone-dark), passed 3/3 alone and in the next full run. Same pattern as smoke-stat-cards-load: if it fails again, capture which assertion timed out before changing anything.",
+      "page": "study",
+      "found": "2026-11-21",
+      "status": "open"
+    },
+    {
+      "id": "calendar-chips-clipped",
+      "kind": "bug",
+      "title": "Calendar: day chips clipped their likes and times",
+      "detail": "At 1440 px a published chip needed 86-93 px in an 81 px day, so likes read '12.1K ♡62…'; a planned long video read '2… LONG'; at 1024-1280 px (side panel open) every chip was squeezed to 21-58 px. Fixed: tighter chips, whole times, long videos marked with the legend's dash, 'Long'/'empty' only when they fit, and days too narrow for chips show the phone's marks (container query). Smoke test added.",
+      "page": "calendar",
+      "found": "2026-11-22",
+      "status": "done",
+      "done": "2026-11-22",
+      "lastTouched": {
+        "apps/dashboard/src/app/calendar/page.tsx": "2026-11-22"
+      },
+      "commit": "423ffc3"
+    },
+    {
+      "id": "smoke-contact-sheet-lazy",
+      "kind": "bug",
+      "title": "Smoke test 'contact sheet can't load' failed on main in both projects",
+      "detail": "The Delete-channel controls (owner, 2026-11-23) made each channel card taller, so the sample Launch review's contact sheets sit below the fold. They load lazily, so the mocked 404 never fired and the test saw 1–2 unfailed images. That would have blocked every dashboard branch at merge. The test now scrolls each sheet into view before checking; same assertions.",
+      "page": "channels",
+      "found": "2026-11-23",
+      "status": "done",
+      "done": "2026-11-23",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-23"
+      }
+    },
+    {
+      "id": "channels-collapse-live-cards",
+      "kind": "idea",
+      "title": "Channels: collapse each live channel's settings behind one summary row",
+      "detail": "At 1440 px the Channels page is about 4,200 px tall in sample data, and with four live channels each card repeats YouTube, Shorts a day, upload times and long-video days. Showing a one-line summary (status, ready, published, views 7 d, Shorts a day) with the settings opening on tap would keep a channel waiting for a Launch review or a deletion in view. Pattern guides on multi-tenant admin screens recommend the same: put orientation first and keep admin actions apart (saasui.design workspace-switcher patterns).",
+      "page": "channels",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "delete-channel-counts",
+      "kind": "idea",
+      "title": "Delete channel: say how many videos, queued uploads and Shorts ready go",
+      "detail": "Guides on confirming destructive actions recommend stating the count ('Delete 50 contacts?') next to type-to-confirm. The dialog lists what is removed but not how much. Adding '64 videos, 6 ready, 2 scheduled uploads' from the card's existing numbers costs nothing and catches choosing the wrong channel (saasui.design, destructive-action confirmation patterns).",
+      "page": "channels",
+      "found": "2026-11-23",
+      "status": "open"
+    },
+    {
+      "id": "scorecard-ring-alone-phone",
+      "kind": "bug",
+      "title": "Scorecard: on a phone the on-target ring sat alone on its row and the count began with a stray '·'",
+      "detail": "The verdict row stacked (flex-col) below 640 px, so the 64 px ring took a row by itself and the wrapped '· 7 Shorts in the last 7 days' line started with its separator. The ring now stays beside its reading at every width; the separator shows only from sm up. Smoke test added.",
+      "page": "scorecard",
+      "found": "2026-11-24",
+      "status": "done",
+      "done": "2026-11-24",
+      "lastTouched": {
+        "apps/dashboard/src/app/scorecard/page.tsx": "2026-11-24",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-24"
+      }
+    },
+    {
+      "id": "scorecard-no-shorts-last-week",
+      "kind": "bug",
+      "title": "Scorecard: 'no Shorts last week' shown when last week's Shorts were only waiting for numbers",
+      "detail": "WeekLine said 'no Shorts last week' whenever last week's median was empty, even with Shorts published that week whose YouTube numbers hadn't arrived. It now says \"last week's still waiting\" when there were Shorts. Smoke test added.",
+      "page": "scorecard",
+      "found": "2026-11-24",
+      "status": "done",
+      "done": "2026-11-24",
+      "lastTouched": {
+        "apps/dashboard/src/app/scorecard/page.tsx": "2026-11-24",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-24"
+      }
+    },
+    {
+      "id": "calendar-smoke-subscribers",
+      "kind": "bug",
+      "title": "Calendar smoke test failed after the subscribers change",
+      "detail": "Today's Calendar change (subscribers in the day tooltip, month and week) didn't update the smoke test's tooltip wording, so both projects failed and every branch that runs the smoke tests would be blocked at merge. The test now expects the new wording and also checks the month's Subscribers card and a subscribers line under each week's likes.",
+      "page": "calendar",
+      "found": "2026-11-25",
+      "status": "done",
+      "done": "2026-11-25",
+      "lastTouched": {
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-25"
+      }
+    },
+    {
+      "id": "notif-seen-after-channel-switch",
+      "kind": "bug",
+      "title": "Notifications: a switched-to channel's items stayed unread",
+      "detail": "The page marked items seen once per visit (a boolean ref). Switching channel in the sidebar resets the queries without remounting the page, so the new channel's items were never marked seen and the bell kept counting them. It now tracks marked items by id.",
+      "page": "notifications",
+      "found": "2026-11-25",
+      "status": "done",
+      "done": "2026-11-25",
+      "lastTouched": {
+        "apps/dashboard/src/app/notifications/page.tsx": "2026-11-25",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-25"
+      }
+    },
+    {
+      "id": "calendar-phone-stats-2x2",
+      "kind": "idea",
+      "title": "Calendar: show the four month cards 2x2 on a phone",
+      "detail": "Since today's subscribers card, the four month cards stack one per row on a phone (about 650 px), so the calendar itself starts below the first screen. A compact 2x2 grid on phones keeps the month at a glance and the calendar in view. Mobile dashboard guides say the same: phones get a reworked layout, not a stacked desktop one (Toptal, setproduct.com 'Dashboard UI design'). Calendar page was touched on 11-22, so after 11-29 unless the owner asks.",
+      "page": "calendar",
+      "found": "2026-11-25",
+      "status": "open"
+    },
+    {
+      "id": "agents-experiment-result-views",
+      "kind": "bug",
+      "title": "Agents: every experiment result read '% views', and a weekly-loop result showed nothing",
+      "detail": "The Experiments tab only read result.ratio and always labelled it 'views'. The weekly loop records a difference in points of stayed to watch or held after the hook (improvement/evaluate.py: points, p_on_better), so a kept loop test showed no result, and a ratio on another metric was called views. It now shows '+6.2 points stayed to watch · 84% sure' or a ratio with its own metric; 'adopted' (the commonest status now) gets the green badge.",
+      "page": "agents",
+      "found": "2026-11-26",
+      "status": "done",
+      "done": "2026-11-26",
+      "lastTouched": {
+        "apps/dashboard/src/app/agents/page.tsx": "2026-11-26",
+        "apps/dashboard/src/lib/autopilot.sample.ts": "2026-11-26",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-26"
+      }
+    },
+    {
+      "id": "agents-topics-money-news",
+      "kind": "bug",
+      "title": "Agents: Topic feed's empty state said 'money news' on every channel",
+      "detail": "Left over from the finance channel. Now says research scans this channel's niche.",
+      "page": "agents",
+      "found": "2026-11-26",
+      "status": "done",
+      "done": "2026-11-26",
+      "lastTouched": {
+        "apps/dashboard/src/app/agents/page.tsx": "2026-11-26",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-26"
+      }
+    }
+  ]
 }

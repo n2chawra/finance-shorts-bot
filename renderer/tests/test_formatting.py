@@ -143,3 +143,13 @@ def test_a_fact_dated_by_its_year_alone():
     from renderer.engine.formatting import month_year
     assert month_year("2025") == "2025"
     assert month_year("2026-11-21") == "Nov 2026"
+
+
+def test_nordic_and_swiss_money_keeps_its_published_currency() -> None:
+    """LEGO reports in DKK, H&M in SEK, Equinor in NOK, Nestle in CHF (proposal money-dkk-sek-chf, 2026-11-26)."""
+    from renderer.engine.formatting import Money
+    assert Money("DKK").short(83.5e9) == "DKK 83.5B"
+    assert Money("SEK").long(236e9) == "SEK 236 billion"
+    assert Money("NOK").full(12_500) == "NOK 12,500"
+    assert Money("CHF").full(10e9) == "CHF 10 billion"
+    assert Money("CHF").short(-1.5e6) == "-CHF 1.5M"

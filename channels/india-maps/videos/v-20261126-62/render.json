@@ -1,0 +1,109 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 40613,
+  "duration_sec": 34,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "tanpura",
+    "key": "G",
+    "bpm": 104,
+    "look": {
+      "stage": "desert",
+      "header": "sticky",
+      "holder": "sign",
+      "entrance": "stamp"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "राजस्थान बड़ा है या जर्मनी?",
+        "start": 0.3,
+        "seconds": 1.47,
+        "window": 2.13,
+        "fill": 0.69
+      },
+      {
+        "scene": "promise",
+        "text": "राजस्थान भारत का सबसे बड़ा स्टेट है, पूरे 3,42,239 km²।",
+        "start": 2.43,
+        "seconds": 5.34,
+        "window": 6.0,
+        "fill": 0.89
+      },
+      {
+        "scene": "vietnam",
+        "text": "पहले वियतनाम, 3,31,338 km²। राजस्थान उससे बड़ा।",
+        "start": 8.43,
+        "seconds": 4.91,
+        "window": 5.4,
+        "fill": 0.909
+      },
+      {
+        "scene": "finland",
+        "text": "फ़िनलैंड, 3,38,485 km²। राजस्थान फिर भी बड़ा।",
+        "start": 13.83,
+        "seconds": 4.87,
+        "window": 5.37,
+        "fill": 0.907
+      },
+      {
+        "scene": "turn",
+        "text": "पर अब बारी जर्मनी की। क्या राजस्थान इसे भी पीछे छोड़ देगा?",
+        "start": 19.2,
+        "seconds": 3.03,
+        "window": 3.7,
+        "fill": 0.819
+      },
+      {
+        "scene": "payoff",
+        "text": "जर्मनी है 3,57,680 km²। राजस्थान उसका 96% है, बस ज़रा सा पीछे।",
+        "start": 22.9,
+        "seconds": 6.16,
+        "window": 6.83,
+        "fill": 0.902
+      },
+      {
+        "scene": "loop",
+        "text": "जर्मनी या राजस्थान, आप कहाँ घूमना चाहेंगे? कमेंट कीजिए। तो बताइए,",
+        "start": 29.73,
+        "seconds": 3.8,
+        "window": 4.43,
+        "fill": 0.858
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.2,
+    "music_under_voice_db": 32.3
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.932,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

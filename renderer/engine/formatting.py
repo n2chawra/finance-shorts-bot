@@ -11,7 +11,11 @@ import math
 from dataclasses import dataclass
 from functools import wraps
 
-CURRENCIES = {"USD": "$", "GBP": "£", "EUR": "€", "INR": "₹"}
+CURRENCIES = {"USD": "$", "GBP": "£", "EUR": "€", "INR": "₹",
+              # the Nordic and Swiss companies' filings (LEGO, Novo Nordisk, IKEA, H&M, Spotify, Nestlé; proposal
+              # money-dkk-sek-chf, 2026-11-26): the ISO code before the number, as the financial press writes it
+              # ('DKK 83.5B'), so a sourced figure is shown in the currency it was published in, never converted
+              "DKK": "DKK ", "SEK": "SEK ", "NOK": "NOK ", "CHF": "CHF "}
 LEGACY_CURRENCY = "INR"       # a script without a `currency` field
 
 

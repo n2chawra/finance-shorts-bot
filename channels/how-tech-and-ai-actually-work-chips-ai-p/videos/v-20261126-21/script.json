@@ -1,0 +1,955 @@
+{
+  "template": "short_story",
+  "format": "short",
+  "seed": 61473,
+  "story": "machine_works",
+  "shape": "follow-the-flow",
+  "currency": "USD",
+  "style": {
+    "palette": "sky",
+    "genre": "circuit",
+    "key": "D",
+    "bpm": 70,
+    "look": {
+      "stage": "field",
+      "header": "sticky",
+      "holder": "sign",
+      "entrance": "draw"
+    }
+  },
+  "arms": {
+    "length": "45-60",
+    "title": "figure_or_name",
+    "style": "shot",
+    "category": "28"
+  },
+  "hook_style": "myth",
+  "cta": "Equal time or turning air: which one were you taught? Comment",
+  "feed_id": "2026-11-22-how-wings-lift",
+  "facts": [
+    {
+      "label": "Maximum take-off weight of the Airbus A380, in tonnes",
+      "value": 575,
+      "unit": "count",
+      "as_of": "2022-02-01",
+      "source": "Airbus",
+      "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+      "fixed": true
+    },
+    {
+      "label": "Reference wing area of the A380, in square metres",
+      "value": 845,
+      "unit": "count",
+      "as_of": "2022-02-01",
+      "source": "Airbus",
+      "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+      "fixed": true
+    },
+    {
+      "label": "Wingspan of the A380, in metres",
+      "value": 79.8,
+      "unit": "count",
+      "as_of": "2022-02-01",
+      "source": "Airbus",
+      "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+      "fixed": true
+    },
+    {
+      "label": "Maximum certified seating of the A380",
+      "value": 853,
+      "unit": "count",
+      "as_of": "2022-02-01",
+      "source": "Airbus",
+      "url": "https://www.airbus.com/sites/default/files/2022-02/Airbus-A380-Facts-and-Figures-February-2022.pdf",
+      "fixed": true
+    }
+  ],
+  "maths": [],
+  "thumbnail": {
+    "layout": "scene",
+    "at": "hook",
+    "sec": 1.2,
+    "words": "Why does it *lift?*",
+    "tag": "Airbus superjumbo",
+    "angle": "question",
+    "references": [
+      {
+        "id": "Vz7ejvMGBXk",
+        "views": 3489716,
+        "what": "a clean 3D airliner in flight over a blue sky with glowing air lines, a few big words"
+      }
+    ],
+    "pattern": "the reference sells the airliner itself in clean 3D; ours keeps the superjumbo wing big on its runway with glowing air lines over it and three words asking the question"
+  },
+  "narrator": "am_michael",
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "speaker": "narrator",
+      "say": "Why does this wing lift Airbus's superjumbo?",
+      "events": {
+        "why": {
+          "word": "Why"
+        },
+        "wing": {
+          "word": "wing"
+        },
+        "lift": {
+          "word": "lift"
+        },
+        "superjumbo": {
+          "word": "superjumbo"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "lift"
+        }
+      ],
+      "params": {
+        "component": "Hook",
+        "place": [
+          "an Airbus superjumbo rolling down a runway at dusk, seen along its left wing",
+          "under the wing as the wheels leave the runway"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "superjumbo",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "why",
+            "what": "glowing air lines start streaming back over the wing"
+          },
+          {
+            "at": "wing",
+            "what": "the wing's edge lights catch"
+          },
+          {
+            "at": "lift",
+            "what": "the nose rotates up and the main wheels leave the runway"
+          },
+          {
+            "at": "superjumbo",
+            "what": "the camera pulls out to the whole superjumbo, a label writes on"
+          }
+        ],
+        "things": [
+          "superjumbo airliner",
+          "runway lights",
+          "wing",
+          "landing gear",
+          "glowing air lines"
+        ]
+      }
+    },
+    {
+      "id": "myth",
+      "scene": "directed",
+      "role": "promise",
+      "speaker": "narrator",
+      "say": "It isn't the reason you learned. Its wings span {fact3} metres. At school we learn air over the curved top must hurry to meet the air underneath.",
+      "events": {
+        "reason": {
+          "word": "reason"
+        },
+        "learned": {
+          "word": "learned"
+        },
+        "wings": {
+          "word": "wings"
+        },
+        "span": {
+          "word": "span"
+        },
+        "metres": {
+          "word": "metres"
+        },
+        "school": {
+          "word": "school"
+        },
+        "learn": {
+          "word": "learn"
+        },
+        "air": {
+          "word": "air"
+        },
+        "curved": {
+          "word": "curved"
+        },
+        "top": {
+          "word": "top"
+        },
+        "hurry": {
+          "word": "hurry"
+        },
+        "meet": {
+          "word": "meet"
+        },
+        "underneath": {
+          "word": "underneath"
+        },
+        "lands": {
+          "sec": 3.85
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "tick",
+          "at": "span"
+        }
+      ],
+      "params": {
+        "component": "Myth",
+        "place": [
+          "the superjumbo seen from above on the apron, a tape bracket from wingtip to wingtip",
+          "a classroom blackboard with the textbook wing drawn in chalk"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "school",
+            "size": "medium"
+          },
+          {
+            "at": "meet",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "reason",
+            "what": "two chalk-white arrows sketch over the left wing from above"
+          },
+          {
+            "at": "learned",
+            "what": "the chalk arrows flicker and crack away"
+          },
+          {
+            "at": "wings",
+            "what": "the camera glides over the superjumbo from above, its wings lit"
+          },
+          {
+            "at": "span",
+            "what": "a bracket stretches from wingtip to wingtip"
+          },
+          {
+            "at": "lands",
+            "what": "the bracket's ends flash at the wingtips"
+          },
+          {
+            "at": "metres",
+            "what": "the wingspan figure lands on the bracket"
+          },
+          {
+            "at": "school",
+            "what": "cut to a blackboard: a wing section drawn in chalk"
+          },
+          {
+            "at": "learn",
+            "what": "a chalk label writes on over the board"
+          },
+          {
+            "at": "air",
+            "what": "two chalk dots appear at the wing's front edge"
+          },
+          {
+            "at": "curved",
+            "what": "the curved top of the chalk wing glows"
+          },
+          {
+            "at": "top",
+            "what": "a chalk dot starts over the top"
+          },
+          {
+            "at": "hurry",
+            "what": "the top dot speeds up, chalk streaks behind it"
+          },
+          {
+            "at": "meet",
+            "what": "both dots meet at the back edge, a chalk circle round them"
+          },
+          {
+            "at": "underneath",
+            "what": "the bottom dot's path glows under the wing"
+          }
+        ],
+        "things": [
+          "superjumbo from above",
+          "wingspan bracket",
+          "blackboard",
+          "chalk wing section",
+          "two chalk dots"
+        ],
+        "fig": {
+          "span": "{fact3}"
+        }
+      }
+    },
+    {
+      "id": "bust",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Now follow two puffs of air through a wind tunnel. The top one reaches the back first. They never meet again.",
+      "events": {
+        "now": {
+          "word": "Now"
+        },
+        "follow": {
+          "word": "follow"
+        },
+        "two": {
+          "word": "two"
+        },
+        "puffs": {
+          "word": "puffs"
+        },
+        "air": {
+          "word": "air"
+        },
+        "tunnel": {
+          "word": "tunnel"
+        },
+        "top": {
+          "word": "top"
+        },
+        "reaches": {
+          "word": "reaches"
+        },
+        "back": {
+          "word": "back"
+        },
+        "first": {
+          "word": "first"
+        },
+        "never": {
+          "word": "never"
+        },
+        "meet": {
+          "word": "meet"
+        },
+        "again": {
+          "word": "again"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "puffs"
+        },
+        {
+          "kind": "pop",
+          "at": "first"
+        }
+      ],
+      "params": {
+        "component": "Bust",
+        "place": "a dark wind tunnel test section, a wing slice on its mount, glowing streamlines",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "top",
+            "size": "medium"
+          },
+          {
+            "at": "never",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "now",
+            "what": "the tunnel's lamps flicker on"
+          },
+          {
+            "at": "follow",
+            "what": "glowing streamlines flow past the wing slice"
+          },
+          {
+            "at": "two",
+            "what": "two bright puffs sit side by side ahead of the wing"
+          },
+          {
+            "at": "puffs",
+            "what": "the puffs split at the front edge, one over, one under"
+          },
+          {
+            "at": "air",
+            "what": "the streamlines brighten as the air speeds up"
+          },
+          {
+            "at": "tunnel",
+            "what": "the tunnel's ribs and fan glow behind"
+          },
+          {
+            "at": "top",
+            "what": "the camera tracks the top puff racing over the wing"
+          },
+          {
+            "at": "reaches",
+            "what": "the top puff shoots past the back edge"
+          },
+          {
+            "at": "first",
+            "what": "a flash at the back edge, a 'first' tag on the top puff"
+          },
+          {
+            "at": "never",
+            "what": "the bottom puff is still under the wing, far behind"
+          },
+          {
+            "at": "meet",
+            "what": "a red cross on the meeting point at the back edge"
+          },
+          {
+            "at": "again",
+            "what": "the cross pulses and a 'no meeting' label writes on"
+          }
+        ],
+        "things": [
+          "wind tunnel",
+          "wing slice",
+          "streamlines",
+          "two air puffs",
+          "red cross"
+        ]
+      }
+    },
+    {
+      "id": "paper",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "And a flat paper plane, with no curved top at all, still flies. So what is a wing really doing?",
+      "events": {
+        "flat": {
+          "word": "flat"
+        },
+        "paper": {
+          "word": "paper"
+        },
+        "plane": {
+          "word": "plane"
+        },
+        "curved": {
+          "word": "curved"
+        },
+        "still": {
+          "word": "still"
+        },
+        "flies": {
+          "word": "flies"
+        },
+        "wing": {
+          "word": "wing"
+        },
+        "really": {
+          "word": "really"
+        },
+        "doing": {
+          "word": "doing"
+        }
+      },
+      "transition": "cut",
+      "params": {
+        "component": "Paper",
+        "place": "an office at night, a paper plane gliding over the desks",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "curved",
+            "size": "close"
+          },
+          {
+            "at": "flies",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "flat",
+            "what": "a flat sheet folds itself into a paper plane on a desk"
+          },
+          {
+            "at": "paper",
+            "what": "the paper plane launches off the desk"
+          },
+          {
+            "at": "plane",
+            "what": "it glides out over the office"
+          },
+          {
+            "at": "curved",
+            "what": "close side view: its wing is a dead-flat sheet, a label writes on"
+          },
+          {
+            "at": "still",
+            "what": "the plane holds its glide"
+          },
+          {
+            "at": "flies",
+            "what": "the camera pulls back as it sails across the room"
+          },
+          {
+            "at": "wing",
+            "what": "the plane's wing tilts up a little and glows"
+          },
+          {
+            "at": "really",
+            "what": "a few air lines bend down off its back edge"
+          },
+          {
+            "at": "doing",
+            "what": "the camera follows it on"
+          }
+        ],
+        "things": [
+          "office desks",
+          "paper sheet",
+          "paper plane",
+          "flat wing label",
+          "air lines"
+        ]
+      }
+    },
+    {
+      "id": "angle",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "It meets the air tilted up a little, and it turns the whole stream of air downward behind it.",
+      "events": {
+        "meets": {
+          "word": "meets"
+        },
+        "air": {
+          "word": "air"
+        },
+        "tilted": {
+          "word": "tilted"
+        },
+        "little": {
+          "word": "little"
+        },
+        "turns": {
+          "word": "turns"
+        },
+        "whole": {
+          "word": "whole"
+        },
+        "stream": {
+          "word": "stream"
+        },
+        "downward": {
+          "word": "downward"
+        },
+        "behind": {
+          "word": "behind"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "turns"
+        }
+      ],
+      "params": {
+        "component": "Angle",
+        "place": "back in the wind tunnel, the wing slice tilting on its mount",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "turns",
+            "size": "wide"
+          },
+          {
+            "at": "behind",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "meets",
+            "what": "the streamlines run flat into the level wing"
+          },
+          {
+            "at": "tilted",
+            "what": "the wing slice tilts nose-up on its mount, an angle arc draws on"
+          },
+          {
+            "at": "little",
+            "what": "the angle arc glows"
+          },
+          {
+            "at": "turns",
+            "what": "the streamlines bend: up ahead of the wing, down behind it"
+          },
+          {
+            "at": "whole",
+            "what": "lines far above and below bend too"
+          },
+          {
+            "at": "stream",
+            "what": "the flow glows brighter along every line"
+          },
+          {
+            "at": "downward",
+            "what": "a big amber arrow points down out of the back edge"
+          },
+          {
+            "at": "behind",
+            "what": "close on the air pouring down off the back edge"
+          }
+        ],
+        "things": [
+          "wind tunnel",
+          "tilted wing slice",
+          "angle arc",
+          "bending streamlines",
+          "downwash arrow"
+        ]
+      }
+    },
+    {
+      "id": "pressure",
+      "scene": "directed",
+      "role": "build",
+      "speaker": "narrator",
+      "say": "Air speeding over the top drops in pressure, the air below presses harder, and the wing is pushed up.",
+      "events": {
+        "speeding": {
+          "word": "speeding"
+        },
+        "top": {
+          "word": "top"
+        },
+        "drops": {
+          "word": "drops"
+        },
+        "pressure": {
+          "word": "pressure"
+        },
+        "below": {
+          "word": "below"
+        },
+        "presses": {
+          "word": "presses"
+        },
+        "harder": {
+          "word": "harder"
+        },
+        "wing": {
+          "word": "wing"
+        },
+        "pushed": {
+          "word": "pushed"
+        },
+        "up": {
+          "word": "up"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "thud",
+          "at": "pushed"
+        }
+      ],
+      "params": {
+        "component": "Pressure",
+        "place": "the superjumbo flying above the clouds, its wing cut open to show the slice",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "drops",
+            "size": "medium"
+          },
+          {
+            "at": "pushed",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "speeding",
+            "what": "the superjumbo cruises over the clouds, its wing cut open at a slice"
+          },
+          {
+            "at": "top",
+            "what": "fast air lines race over the slice's top"
+          },
+          {
+            "at": "drops",
+            "what": "a blue low-pressure glow spreads over the top, a label writes on"
+          },
+          {
+            "at": "pressure",
+            "what": "the blue glow pulses"
+          },
+          {
+            "at": "below",
+            "what": "an amber glow fills under the slice"
+          },
+          {
+            "at": "presses",
+            "what": "amber arrows press up on the wing's underside"
+          },
+          {
+            "at": "harder",
+            "what": "the arrows grow"
+          },
+          {
+            "at": "pushed",
+            "what": "a big upward arrow rises out of the wing"
+          },
+          {
+            "at": "up",
+            "what": "the whole plane lifts a little in the frame"
+          }
+        ],
+        "things": [
+          "superjumbo in flight",
+          "cloud deck",
+          "wing slice",
+          "low pressure glow",
+          "high pressure arrows",
+          "lift arrow"
+        ]
+      }
+    },
+    {
+      "id": "newton",
+      "scene": "directed",
+      "role": "turn",
+      "speaker": "narrator",
+      "say": "Push air down, and the air pushes the wing back up.",
+      "events": {
+        "push": {
+          "word": "Push"
+        },
+        "down": {
+          "word": "down"
+        },
+        "air": {
+          "word": "air"
+        },
+        "pushes": {
+          "word": "pushes"
+        },
+        "back": {
+          "word": "back"
+        },
+        "up": {
+          "word": "up"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "whoosh",
+          "at": "push"
+        }
+      ],
+      "params": {
+        "component": "Newton",
+        "place": "low beside the runway as the superjumbo lifts off, the air below it blasting down",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "pushes",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "push",
+            "what": "a sheet of air rushes down off the wing onto the runway"
+          },
+          {
+            "at": "down",
+            "what": "grass beside the runway flattens in a wave"
+          },
+          {
+            "at": "air",
+            "what": "runway dust sprays out sideways"
+          },
+          {
+            "at": "pushes",
+            "what": "a big arrow up from the wing answers the arrow down"
+          },
+          {
+            "at": "back",
+            "what": "the superjumbo climbs away"
+          },
+          {
+            "at": "up",
+            "what": "the up arrow glows amber"
+          }
+        ],
+        "things": [
+          "superjumbo lifting off",
+          "downwash sheet",
+          "grass",
+          "runway dust",
+          "down arrow",
+          "up arrow"
+        ]
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "speaker": "narrator",
+      "say": "At its heaviest take-off, that push holds up {fact1} tonnes, all hanging on air thrown down by its two wings.",
+      "events": {
+        "heaviest": {
+          "word": "heaviest"
+        },
+        "take-off": {
+          "word": "take-off"
+        },
+        "push": {
+          "word": "push"
+        },
+        "holds": {
+          "word": "holds"
+        },
+        "up": {
+          "word": "up"
+        },
+        "tonnes": {
+          "word": "tonnes"
+        },
+        "hanging": {
+          "word": "hanging"
+        },
+        "thrown": {
+          "word": "thrown"
+        },
+        "down": {
+          "word": "down"
+        },
+        "wings": {
+          "word": "wings"
+        }
+      },
+      "transition": "cut",
+      "sfx": [
+        {
+          "kind": "swell",
+          "at": "holds"
+        }
+      ],
+      "params": {
+        "component": "Payoff",
+        "place": [
+          "the superjumbo climbing out at dusk, seen from the side",
+          "along the left wing on the runway, as the video began"
+        ],
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "tonnes",
+            "size": "medium"
+          },
+          {
+            "at": "thrown",
+            "size": "medium"
+          },
+          {
+            "at": "wings",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "heaviest",
+            "what": "the superjumbo climbs at dusk, gear tucking up"
+          },
+          {
+            "at": "take-off",
+            "what": "its fuselage lights up from nose to tail"
+          },
+          {
+            "at": "push",
+            "what": "air lines stream down behind the wing"
+          },
+          {
+            "at": "holds",
+            "what": "the figure writes onto the fuselage side"
+          },
+          {
+            "at": "up",
+            "what": "the figure counts up beside the fuselage"
+          },
+          {
+            "at": "tonnes",
+            "what": "the figure lands and pulses amber"
+          },
+          {
+            "at": "hanging",
+            "what": "the plane rides on the glowing downwash"
+          },
+          {
+            "at": "thrown",
+            "what": "cut to along the left wing: air lines pour down off it"
+          },
+          {
+            "at": "down",
+            "what": "the downwash glows"
+          },
+          {
+            "at": "wings",
+            "what": "the camera settles on the hook's first frame: the wing on the runway"
+          }
+        ],
+        "things": [
+          "superjumbo climbing",
+          "fuselage weight figure",
+          "downwash lines",
+          "left wing",
+          "runway lights"
+        ],
+        "fig": {
+          "weight": "{fact1}"
+        }
+      }
+    }
+  ]
+}

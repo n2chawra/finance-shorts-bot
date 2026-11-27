@@ -75,7 +75,7 @@
       ],
       "search": "what happens inside a gpu",
       "outline": [
-        "hook: a game frame drawn from nothing in thousandths of a second; the card on a dark stage",
+        "hook (show first, each on its word: a game on a screen -> the graphics card behind it -> the chip on the card): a game frame drawn from nothing in thousandths of a second",
         "route map: game -> CPU -> card -> die -> one core -> screen",
         "ch1 the order: the CPU sends a list of triangles across the slot",
         "ch2 corners moved into place: the scene's points turned to the camera's view",
@@ -166,7 +166,7 @@
       ],
       "search": "how does face id work",
       "outline": [
-        "hook: your phone fires 30,000+ invisible dots at your face",
+        "hook (show first: your phone held up to a face, the lock icon opening -> then the hidden projector above the screen): your phone fires 30,000+ invisible dots at your face",
         "route map: dots -> camera -> depth map -> neural engine -> secure check -> screen",
         "ch1 the flood light and the dot projector, drawn as a cutaway of the notch",
         "ch2 the infrared camera reads the bent pattern",
@@ -381,7 +381,7 @@
       ],
       "search": "how does an ssd store data",
       "outline": [
-        "hook: your files are electrons trapped in a cage too small to see",
+        "hook (show first: a photo saved on a laptop -> the SSD inside it -> one memory cell): your files are electrons trapped in a cage too small to see",
         "route map: file -> controller -> one cell -> the stack -> back",
         "ch1 one NAND cell: charge in, a 0 or a 1",
         "ch2 reading it without letting the charge out",
@@ -480,7 +480,7 @@
       ],
       "search": "how does chatgpt work step by step",
       "outline": [
-        "hook: you type a question; words appear; every step between, down to the chip",
+        "hook (show first: a phone with a chat app, a question typed, words appearing -> then the data-centre chip doing the work): you type a question; words appear; every step between, down to the chip",
         "route map: words -> tokens -> numbers -> 96 layers -> the chip -> one word -> repeat",
         "ch1 cutting text into tokens (about 4 characters each; 100 tokens about 75 words)",
         "ch2 tokens become lists of numbers",
@@ -589,7 +589,7 @@
       ],
       "search": "how much energy does one ai question use",
       "outline": [
-        "hook: one AI question uses about five drops of water; so why are data centres short of power?",
+        "hook (show first: a phone asking an AI one question -> a glass with five drops of water beside it -> the data centre): one AI question uses about five drops of water; so why are data centres short of power?",
         "route map: your prompt -> data centre -> chip -> cooling -> water",
         "ch1 the prompt arriving at a data hall",
         "ch2 the chip's power: 0.24 Wh for Google's median prompt",
@@ -684,7 +684,7 @@
       ],
       "search": "how does the internet cross the ocean",
       "outline": [
-        "hook: your message to London went along the bottom of the Atlantic, not to space",
+        "hook (show first: a phone sending a message to London -> the message dropping to the sea floor -> the cable): your message to London went along the bottom of the Atlantic, not to space",
         "route map: phone -> tower -> landing station -> cable -> Bilbao -> screen",
         "ch1 the landing station on the beach",
         "ch2 slice the cable: the fibre pairs inside (MAREA has 8)",
@@ -841,7 +841,7 @@
       "angle": "Inside one Raptor in the first second: methane and oxygen pumped in, burned in a full-flow staged cycle, thrust out; then why 33 of them, with 13 in the middle steering, beat one giant engine.",
       "why_now": "Traction: 'The Real Reason Starship Has 33 Engines' is at 2.09M in 32 days (66K a day) and 'How Starlink Actually Works' 4.6M; rockets are a core machine family in our profile, and the owner asked for topics gaining traction (note 2026-11-19).",
       "outline": [
-        "hook: 33 engines light under one booster; why not one big one?",
+        "hook (show first: the whole rocket on the pad -> tilt under the booster to the ring of 33 engines): 33 engines light under one booster; why not one big one?",
         "route map: tanks -> pumps -> chamber -> nozzle -> the ring of 33",
         "ch1 the booster on the pad: 71 m tall, 9 m wide, 3,650 t of propellant",
         "ch2 the two tanks: 2,860 t of liquid oxygen, 790 t of methane (3.6 to 1 by mass)",
@@ -971,7 +971,7 @@
       "angle": "Zoom into an NVIDIA Blackwell GPU: two reticle-sized dies, the 10 TB/s link that makes them act as one, 208 billion transistors on TSMC's 4NP process, then out to 72 GPUs wired as one machine. NVIDIA's figures only; no stock or politics.",
       "why_now": "Traction: Silicon Up Close (12.7K subs) got 1.02M on its AI-chip video (42.8x its median) and its new 'Why Is Nvidia's AI Chip So Hard to Copy?' took 24K views in its first day; the owner asked for topics gaining traction (note 2026-11-19).",
       "outline": [
-        "hook: 208 billion switches, two chips acting as one",
+        "hook (show first: a chatbot answering on a phone -> the server rack it runs on -> the NVIDIA chip lifted out): 208 billion switches, two chips acting as one",
         "route map: the server rack -> one board -> the package -> two dies -> one switch",
         "ch1 why one die can't get bigger: the reticle limit, drawn as the printing window",
         "ch2 two dies side by side on one package",
@@ -1080,7 +1080,7 @@
       "angle": "Walk a Crossrail tunnel boring machine front to back (cutterhead, pressure chamber, screw and conveyor, segment erector, thrust rams), then show how it was steered between the Tube's tunnels without moving the buildings above. Arup and Crossrail figures only; the cost story stays a footnote.",
       "why_now": "Our own breakout: the Crossrail Short (v-20261122-21) has 1,362 views, nearly 5x our next best (284). Tunnel explainers hold demand for years (Practical Engineering 887K in 9 months, The B1M 796K, LifeAda 545K).",
       "outline": [
-        "hook: a train tunnel threaded 700 mm above the Northern line, under 17,000 buildings that must not move",
+        "hook (show first: a London street with a Tube sign -> cut below it to the Northern line tunnel -> the new tunnel passing just above): a train tunnel threaded 700 mm above the Northern line, under 17,000 buildings that must not move",
         "route map: walk the 150 m machine from the spinning wheel at the front to the rams at the back",
         "ch1 the cutterhead: a 7.1 m steel wheel chewing London clay (picture: the wheel face, cutters lit)",
         "ch2 why the ground doesn't cave in: the sealed chamber of dug clay that pushes back (the causal step; draw the pressure arrows)",
@@ -1210,7 +1210,7 @@
       "angle": "Follow one tap: the reader's 13.56 MHz field powers the card's coil by induction, the chip wakes, the two talk at 106 kbit/s, the chip signs a one-time code, the network approves. Technology only: no buying advice, no security bypass.",
       "why_now": "Everyone does this daily and Visa says more than 80% of its face-to-face payments worldwide are now taps; Branch Education's version has 769K in two months. Pairs with the Face ID topic as a second everyday gadget video.",
       "outline": [
-        "hook: no battery, 4 cm, a blink",
+        "hook (show first: a hand tapping a card on a shop terminal, the beep -> the card turned see-through, its coil and chip): no battery, 4 cm, a blink",
         "route map: the reader -> the field -> the coil in the card -> the chip -> the one-time code -> the network",
         "ch1 the reader's field: 13.56 MHz, drawn as the field lines around two coils (the picture the video hangs on)",
         "ch2 why it needs 4 cm: induction falls away fast with distance (the causal step)",

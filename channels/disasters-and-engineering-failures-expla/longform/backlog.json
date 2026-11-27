@@ -28,9 +28,10 @@
       "route": "adopt",
       "priority": "high",
       "found": "2026-11-23",
-      "status": "open",
+      "status": "done",
       "title": "prompts/recipe.md 'The first 45 seconds' rule 4 ('without the toll') contradicts the owner's newer note",
-      "detail": "Improver: rewrite rule 4 to 'The whole arc in 45 s, and in the first sentence the small cause and its scale (the toll stated once, plainly)'. The owner's note of 22 Nov is newer and wins (agents/policy.md), and the improver already flagged the conflict on the Notifications page. Studio's check: its hook names cause + scale by 15 s."
+      "detail": "Improver: rewrite rule 4 to 'The whole arc in 45 s, and in the first sentence the small cause and its scale (the toll stated once, plainly)'. The owner's note of 22 Nov is newer and wins (agents/policy.md), and the improver already flagged the conflict on the Notifications page. Studio's check: its hook names cause + scale by 15 s.",
+      "reason": "Already on main: recipe.md 'The first 45 seconds' rule 4 now says the stakes first (the small cause and the toll it led to, one plain sentence); the owner edited it."
     },
     {
       "id": "2026-11-23-name-roles-not-people",
@@ -67,6 +68,62 @@
       "title": "Improver: the cross-section look's flat backgrounds fail the empty-frame gate",
       "detail": "With the kit's LookBackground for cross-section (white to #eef1f4) and the default faint grid, 44 of 111 stills of L-20261124-41 counted as mostly empty background (renderer/craft.py EMPTY_TILE_STD 7). The video's own code fixed it with a 96 px, 5 px #cddae6 grid. Worth making that the recipe's own sheet texture in remotion/src/disaster (Texture 'hatch' at 0.12 is too faint to register).",
       "source": "improvement/activity/2026-11-24-studio.json"
+    },
+    {
+      "id": "2026-11-26-recap-tease-beats",
+      "kind": "craft",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-26",
+      "status": "open",
+      "title": "Two recap-and-tease beats in every long video, at about 30% and 65% of the runtime",
+      "detail": "agents/scout.md asks for a recap-and-tease every 2-3 minutes, but only one of our three long videos has one. Hyatt (L-20261121-42) has one ('So far: a joint that was already weak... What was still missing? A crowd.'). Texas City (L-20261122-42) and Titan (L-20261124-41) have none. Studio: in each long script, add one beat of 8-12 s after the chain is set up (~30%) and one after the failure (~65%). Each beat names the links so far in one line and asks the question the next chapter answers. The topic outlines from 2026-11-26 (Carmont, Chatsworth, Air Canada 797) mark both. How we will know: once a long video passes about 100 views, its retention curve (stats drops) shows no step-down in the minute after each recap."
+    },
+    {
+      "id": "2026-11-26-failure-at-60pct",
+      "kind": "craft",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "open",
+      "title": "Hold the moment of failure to 50-60% of the runtime; it is the video's midpoint payoff, not its opening act",
+      "detail": "The reference shot sheets (research/sheets/) put the failure late in the video. Kolkata flyover (Plainly Difficult, 628K): real collapse at 345 of 579 s (60%). Florida Learjet (Fault Lines, 1.94M): the dive at 362 of 608 s (60%). Spain train (Major Disasters, 186K): impact at 413 of 854 s (48%). Before it, the cause chain builds; after it come the findings, a general-principle physics chapter and the rule. The hook states the outcome (owner's note), but the full reconstruction is the reward for staying. Studio: put chapter 5 (the failure) at 50-60% of the length and keep the hook's 3D failure shot short (one beat). How we will know: average view percentage above 37.4%, our current best (Texas City)."
+    },
+    {
+      "id": "2026-11-26-hero-picture-revisited",
+      "kind": "idea",
+      "where": "scene",
+      "route": "experiment",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "open",
+      "title": "Long videos: one hero picture revisited from a new angle in every chapter",
+      "detail": "Fault Lines' Learjet video (1.94M views on 11K subs) keeps coming back to one 3D flight-path ribbon over a grid, with mono callouts at each event, seen from a new camera angle each time (0-30 s, 160 s, 350 s). The viewer always knows where they are in the story. Ours change place every chapter. Proposal for the improver: a long-video flag `hero_revisit`. With it on, the director gives each chapter's first beat the same hero place (the slope cross-section, track diagram or cabin cutaway named in the topic's outline) with a new camera and the next event marked. Half the long videos get it. Judge on average view percentage once both sides have 4 or more long videos with 100+ views."
+    },
+    {
+      "id": "2026-11-26-3d-share-air-crash",
+      "kind": "craft",
+      "where": "script",
+      "route": "adopt",
+      "priority": "high",
+      "found": "2026-11-26",
+      "status": "open",
+      "title": "Air-crash long videos: plan at least half the runtime in the 3D world from the start",
+      "detail": "The Colgan run (L-20261126-41) drew the flight deck, the airspeed tape and the wing diagrams in flat 2D (77% of the runtime). QA failed it on lesson 6 twice. Plan the cockpit moments and the wing physics as 3D shots (airflow over the 3D wing, the iced leading edge, the instruments seen in the lit cockpit), and keep flat diagrams to 3-6 s inserts."
+    },
+    {
+      "id": "2026-11-26-chapters-fingerprint",
+      "kind": "bug",
+      "where": "code",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-26",
+      "status": "adopted",
+      "title": "Leave the description's CHAPTERS block out of ship's after-QA fingerprint",
+      "detail": "studio.md step 7 adds chapter timestamps after the full render, but generator/run.py fingerprint() hashes the whole plan, so ship refuses with 'the script or plan changed after QA passed'. L-20261126-41 worked around it by putting the chapters into the manifest. Fix: strip the CHAPTERS lines from plan.description before hashing (improver's lane).",
+      "reason": "Adopted: generator/run.py fingerprint() leaves the description's CHAPTERS block out, so ship no longer refuses a long video for the timestamps Studio adds after the full render (test in generator/tests/test_qa_gate.py)."
     }
   ]
 }

@@ -1,0 +1,254 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:09:38.844708+00:00",
+    "finishedAt": "2026-11-27T01:09:38.844708+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:10:16.652259+00:00",
+    "finishedAt": "2026-11-27T01:10:16.652259+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:10:17.769795+00:00",
+    "finishedAt": "2026-11-27T01:10:17.769795+00:00",
+    "notes": [
+      "beat 'hook'.params.place[0] contains a typed number; use a placeholder: \"Crocs' 2008 annual filing\"",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:10:22.061454+00:00",
+    "finishedAt": "2026-11-27T01:10:22.061454+00:00",
+    "notes": [
+      "beat 'hook'.params.things[0] contains a typed number; use a placeholder: 'Form 10-K page'",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:10:26.513236+00:00",
+    "finishedAt": "2026-11-27T01:10:26.513236+00:00",
+    "notes": [
+      "beat 'hook'.events.crocs: no word \"Crocs'\" in this beat's spoken line",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:10:32.659230+00:00",
+    "finishedAt": "2026-11-27T01:10:32.659230+00:00",
+    "notes": [
+      "beat 'sales'.params.layers[0].figs[0] contains a typed number; use a placeholder: 'y07'",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:10:37.279563+00:00",
+    "finishedAt": "2026-11-27T01:10:37.279563+00:00",
+    "notes": [
+      "beat 'sales'.say contains a typed number; use a placeholder: 'In 2007, Crocs sold {fact1} worth of shoes. In 2008, that fell to {fact2}.'",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:10:44.008654+00:00",
+    "finishedAt": "2026-11-27T01:10:44.008654+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:10:57.592785+00:00",
+    "finishedAt": "2026-11-27T01:10:57.592785+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:11:14.177152+00:00",
+    "finishedAt": "2026-11-27T01:11:53.980377+00:00",
+    "notes": [
+      "fingerprint: fb863f17fca3ff32.e3b0c44298fc1c14",
+      "text 'Survive?' at 2.0 s runs outside the frame",
+      "2 of 9 stills are mostly empty background (at 15 s, 35 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:12:24.344913+00:00",
+    "finishedAt": "2026-11-27T01:12:24.344913+00:00",
+    "notes": [
+      "All 6 facts confirmed on source pages: Crocs 2008 10-K (SEC EDGAR) shows going-concern doubt risk factor, 2008 loss $185.1M, revenue $847.4M (2007) to $721.6M (2008), ~3,700 staff (from 5,300), imitation products; Crocs Inc FY2025 release shows revenue $4,041M ('exceeded $4 billion', said as 'the company') and Crocs brand $3,326M. Both topic verify items met; document highlight boxes land on the cited lines; description ends with disclaimer; no advice. Note: 'named the copycats' rests on Item 3 naming the ITC/court respondents (accused, not on screen) plus the 'imitation products' line."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:12:11.172142+00:00",
+    "finishedAt": "2026-11-27T01:12:36.217741+00:00",
+    "notes": [
+      "fingerprint: 385bf04ff4b3b79d.e3b0c44298fc1c14",
+      "40 s, ocean/ledger (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:12:46.389505+00:00",
+    "finishedAt": "2026-11-27T01:12:46.389505+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:12:50.276586+00:00",
+    "finishedAt": "2026-11-27T01:13:11.618954+00:00",
+    "notes": [
+      "fingerprint: 15f63a435a3bcc18.e3b0c44298fc1c14",
+      "40 s, ocean/ledger (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:13:26.115001+00:00",
+    "finishedAt": "2026-11-27T01:13:26.115001+00:00",
+    "notes": [
+      "Re-review after edits: 'copies' now 'Its own filing warned of new rivals selling imitations' matches the 2008 10-K Competition text ('new players in the market with imitation products that are similar to ours'), staff ~3,700 confirmed; stamps Doubt/Crash/Kept carry no claims and fit the 10-K going-concern doubt, the 2008 loss and the clog still sold; clogs photo under the sales bar is illustrative only. All 6 facts still match the 10-K and FY2025 release; figures unchanged; disclaimer present."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:14:00.988033+00:00",
+    "finishedAt": "2026-11-27T01:14:00.988033+00:00",
+    "notes": [
+      "[script] 0.0s (hook): the first frame is a plain 10-K page with unreadable small text, no Crocs clog, logo or source chip; with the sound off you cannot name the subject (check 6, lesson 9). This video is on the doc-document-first OFF (champion) side (render.json experiments), which requires the first frame to be the object the viewer knows and NO document in the first shot; opening on the filing breaks the weekly-loop test. Open on the Crocs on the beach (or a clog with the Crocs mark) and move the going-concern filing later (e.g. on 'auditors' after the clog, or into beat 2 as an overlay).",
+      "[script] 10.0s (doubt, pink Crocs on metro): the clog is small in the bottom-right corner, under the right-hand buttons zone, while legs and floor fill the frame; reframe (focus lower/right, closer size) so the pink clog is big and clear of the buttons.",
+      "[script] 35.0s (loop, Jibbitz photo): the photo is badly out of focus, clearly softer than every other still and than the reference Shorts; use a sharp charms picture."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:14:31.269030+00:00",
+    "finishedAt": "2026-11-27T01:14:31.269030+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:14:34.632798+00:00",
+    "finishedAt": "2026-11-27T01:14:57.249140+00:00",
+    "notes": [
+      "fingerprint: ba74e4a9b155a4cb.e3b0c44298fc1c14",
+      "40 s, ocean/ledger (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:15:55.144950+00:00",
+    "finishedAt": "2026-11-27T01:15:55.144950+00:00",
+    "notes": [
+      "[script] 16.5-18.3s (beat 'sales', overlay kind date pos top at 'fell'): the big 'DEC 31, 2008 / THE YEAR IT FELL' date stamp lands on top of the sink's own text: it covers the 'a year of shoes' subtitle, the ghost '$847.4M' label and the '$721.6M' figure ('THE YEAR IT FELL' is printed through '$721.6M'), so the date and the figure are both hard to read at the moment the drop is spoken. Move the date out of the sink's top band (e.g. pos bottom/mid clear of the captions) or drop it; the hook, beat-2 and loop fixes from the last review are good."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:16:07.522059+00:00",
+    "finishedAt": "2026-11-27T01:16:07.522059+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas.",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: the title \"Crocs' Own Auditors Doubted It Would Survive\" is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:16:11.016993+00:00",
+    "finishedAt": "2026-11-27T01:16:28.619714+00:00",
+    "notes": [
+      "fingerprint: b0bf3e11b18966a4.e3b0c44298fc1c14",
+      "40 s, ocean/ledger (preview only)",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:17:14.328673+00:00",
+    "finishedAt": "2026-11-27T01:17:14.328673+00:00",
+    "notes": [
+      "Round 3, dense stills every 1.5s: opens on Crocs (mark visible) on the beach, filing+source on 'doubted', big clogs in beat 2, sink bar reads cleanly with no overlay over it ($847.4M ghost above $721.6M), store montage, $4B poster with logo+source, sharp charms loop back to the beach; no overlaps, layout/craft empty, audio -1/-18 dB, 40s.",
+      "fingerprint: b0bf3e11b18966a4.e3b0c44298fc1c14"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:17:23.905878+00:00",
+    "finishedAt": "2026-11-27T01:19:56.318436+00:00",
+    "notes": [
+      "40 s, ocean/ledger, peak -1.0 dB, mean -18.0 dB",
+      "note: 2 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "warning: the music sits only 17.7 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:20:00.683657+00:00",
+    "finishedAt": "2026-11-27T01:20:00.683657+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

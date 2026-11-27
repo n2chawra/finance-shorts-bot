@@ -163,6 +163,10 @@ only the live beat is mounted, so every beat can sit at the origin and keep cris
    `TopPill` (Shorts), `Tag` (`recreation` "3D RECREATION", `illustration`, `notToScale`).
    **Every figure is a string from `p.beat.params.fig`** (Python formats it); the kit only counts it
    up (`countText`). `renderer/remotion.py` fails a beat file with a typed figure.
+8b. **Air** — `Aero.tsx` (2026-11-26): `Airfoil` (a NACA 4-digit wing section extruded along z, flow
+   toward +x, `aoa` tilts it nose-up), `foilSurface`, `streamlines(ys, {aoa, lift})` (flow lines that follow the
+   section, rise ahead and bend down behind it with the tilt; an illustration, tag it so), `alongLine`/`lineU`
+   (a parcel riding a line), `GlowLine` (a polyline that draws on, dashed and flowing), `PaperPlane`.
 9. **The cast** — `Character3D` "Byte" (poses `idle | point | pointLeft | shrug | surprised | wave |
    think`, faces, seeded blinks, `talk` ranges).
 

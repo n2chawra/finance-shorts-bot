@@ -394,6 +394,7 @@ def prop_problems(tl: dict, earlier: list[tuple[str, dict]]) -> list[str]:
 DEVICES_MIN = {"short": 2, "long": 5}   # different composed scenes a video uses
 DEVICE_SHARE = 0.4                      # no one scene in more than this share of a long video's composed beats
 DEVICE_RUN = 3                          # nor more than this many beats in a row
+DIRECTED_RUN_SEC = 60                   # directed beats: one component on screen at most this long in a row
 
 
 def device_problems(tl: dict) -> list[str]:
@@ -404,7 +405,11 @@ def device_problems(tl: dict) -> list[str]:
     out = []
     # a doc beat's device is its main layer (footage, document, chart...): a documentary is all `doc` beats
     # by design (look.engine "doc"), so its variety is judged on what each beat shows
+    # A directed beat (every beat since 2026-11-13, owner) is judged by the component that draws it: the scene
+    # name alone said "only 1 kind, directed 4 times in a row" on every long video and hid the real repeats.
     def kind(b: dict) -> str:
+        if b["scene"] == "directed":
+            return f"directed:{(b.get('params') or {}).get('component') or b['id']}"
         if b["scene"] != "doc":
             return b["scene"]
         layers = (b.get("params") or {}).get("layers") or [{}]
@@ -416,8 +421,21 @@ def device_problems(tl: dict) -> list[str]:
     top = max(set(kinds), key=kinds.count)
     if kinds.count(top) / len(kinds) > DEVICE_SHARE:
         out.append(note(f"{top} is {kinds.count(top)} of {len(kinds)} composed beats (at most {DEVICE_SHARE:.0%}): vary how each idea is shown"))
+    # a directed component gets new places and moments each beat: only a long stretch of one repeats a look
+    fps, start = tl.get("fps", 30), 0
+    for i in range(1, len(kinds) + 1):
+        if i < len(kinds) and kinds[i] == kinds[start]:
+            continue
+        secs = sum(b.get("frames", 0) for b in beats[start:i]) / fps
+        if kinds[start].startswith("directed:") and secs > DIRECTED_RUN_SEC:
+            out.append(note(f"{kinds[start].split(':', 1)[1]} draws {secs:.0f} s in a row (at most {DIRECTED_RUN_SEC} s): "
+                            f"cut to another component, place or device"))
+            break
+        start = i
     run = 1
     for a, b in zip(kinds, kinds[1:]):
+        if a.startswith("directed:"):
+            continue
         run = run + 1 if a == b and a != "build" else 1   # build worlds change every phrase; the others repeat a look
         if run > DEVICE_RUN:
             out.append(note(f"{a} {run} times in a row: change the device"))

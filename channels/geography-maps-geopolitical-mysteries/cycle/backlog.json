@@ -91,6 +91,15 @@
       "from": "reviewer 2026-11-24",
       "test": "the loop beat goes straight from the payoff back into the first line, with no 'X or Y: which should we map next? Tell me in the comments' question, against the champion's comment question before the loop",
       "why": "Every Short with drop points loses viewers on the comment question in its last beat: 21.0% at 62.4 s (One passport), 13.2% + 5.7% (Sahara), 6.1% + 8.4% (English cities), 9.3% (Tristan), 9.1% (Hormuz), 7.9% (Greenland), 5.9% (Dinorwig). Some of that is the natural end, so it is a test, not a lesson: the reference Shorts loop without asking."
+    },
+    {
+      "id": "geo-cover-names-the-place",
+      "kind": "first-second",
+      "area": "cover",
+      "metric": "stayed",
+      "from": "research 2026-11-26",
+      "test": "On a scene-layout cover (script.thumbnail, layout 'scene'), when the big words don't name the place (5 of our last 8 covers: 'Why is it Danish?', 'Who lives here?', 'How did it grow?', 'What is it stopping?', 'Why the hole?'), draw thumbnail.tag (already filled in every script: 'Australia', 'Lesotho', 'Russia') as a large label under the words. Today Thumbnail.tsx draws tag only inside the figure card, so a scene cover without a figure shows no name (the Dingo Fence and Africa covers have none). Behind a flag on half the Shorts.",
+      "why": "More taps from search and the channel page (about 4% of our views); no effect on the feed."
     }
   ],
   "running": "geo-claim-hook",
