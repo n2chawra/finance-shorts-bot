@@ -1,20 +1,6 @@
 {
   "notifications": [
     {
-      "key": "workers-typecheck-red",
-      "severity": "critical",
-      "title": "The workers typecheck fails on main, so every agent branch that touches workers/ is blocked",
-      "detail": "`cd workers && npm run typecheck` still fails on main: workers/lib/publishing.ts line 99, `slots[i + 1].getTime()` ('Object is possibly undefined') inside missedSlots, under noUncheckedIndexedAccess. The file is owner-locked, so no agent can fix it. Until it is fixed, the merge workflow's 'Worker typecheck and tests' step fails for any branch with a file under workers/, so data-bug fixes with worker tests can't land (the auditor is holding dd-015: promo Shorts on the Queue page ignore the owner's pick). The posting-plan.ts half was fixed on 27 Nov.",
-      "fix": "1. In workers/lib/publishing.ts line 99, change `u.getTime() < slots[i + 1].getTime()` to `u.getTime() < slots[i + 1]!.getTime()` (the `i + 1 >= slots.length ||` before it already guards it). 2. Run `cd workers && npm run typecheck && npm test`. 3. Commit to main."
-    },
-    {
-      "key": "data-audit-late",
-      "severity": "info",
-      "title": "The daily data audit lands after the auditor starts, so tonight's numbers went unchecked",
-      "detail": "data-audit.yml is scheduled at 08:23 UTC (13:53 IST), but GitHub starts it many hours late: the newest audit on main was written 26 Nov 18:31 UTC (00:01 IST). Tonight's auditor started at 16:33 UTC (22:03 IST), when it was 22 hours old, so the dashboard-vs-YouTube check was skipped again (fourth night in five).",
-      "fix": "Optional. 1. In .github/workflows/data-audit.yml move the cron earlier, e.g. \"23 2 * * *\" (07:53 IST), so even an 8-hour delay lands before the 22:00 to 23:00 IST auditor run; or 2. start the auditor routine later (after 23:30 IST). Workflows and routine times are owner-only."
-    },
-    {
       "key": "renderer-network",
       "severity": "warning",
       "title": "renderer/thumbs.py downloads from YouTube, against the no-network rule",

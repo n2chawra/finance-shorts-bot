@@ -1,12 +1,13 @@
-# Daily data audit, 13:53 IST, well before the 23:00 auditor agent: GitHub starts this cron job about
-# 5 h late (the old 18:37 IST slot landed around 23:26 IST, after the auditor, on 20-22 Oct): compares what the dashboard
+# Daily data audit, 07:53 IST, well before the 22:00-23:00 IST auditor agent: GitHub starts this cron job 5-10 h
+# late (the old 18:37 IST slot landed around 23:26 IST on 20-22 Oct; the 13:53 IST slot landed around 00:00 IST on
+# 25-27 Nov, after the auditor, four nights in five; moved 2026-11-27 with the owner's approval): compares what the dashboard
 # shows with YouTube and the database (workers/data-audit.ts), commits each channel's metrics/data-audit.json for
 # the agent, and raises owner notifications for what only the owner can fix.
 name: Data audit
 
 on:
   schedule:
-    - cron: "23 8 * * *" # 13:53 IST; lands around 19:00 IST
+    - cron: "23 2 * * *" # 07:53 IST; lands by about 18:00 IST even 10 h late
   workflow_dispatch:
 
 permissions:

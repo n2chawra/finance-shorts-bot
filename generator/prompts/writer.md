@@ -284,7 +284,7 @@ $50 million salary").
   of fruit and Google as a vault "is wrong… use the real company, not fake things"). **Use the real
   face or logo** (owner, 2026-11-11: real images approved): `python -m generator.images search "Warren
   Buffett"` lists Commons files with their licences (OK = free: public domain, CC0, CC BY, CC BY-SA),
-  `python -m generator.images fetch buffett "File:<the OK file>"` (add `--logo` for a logo) saves it and
+  `python -m generator.images fetch buffett "File:<the OK file>"` (add `--logo` for a logo, `--thing` for a photo of no person: an animal, a banknote, a building) saves it and
   cuts it out of its background (`pip install -r generator/requirements-images.txt` once). Pick a
   file where the face is big, sharp and looking roughly at the camera; then **look at**
   `remotion/public/real/<name>-head.png` (here `buffett-head.png`): if the face is cut wrongly, re-cut with

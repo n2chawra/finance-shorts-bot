@@ -70,7 +70,17 @@
     "licenseUrl": "",
     "source": "https://commons.wikimedia.org/wiki/File:Palden_Thondup_Namgyal.jpg",
     "cut": "chogyal-cut.png",
-    "cutAspect": 1.039
+    "cutAspect": 1.039,
+    "head": "chogyal-head.png",
+    "headAspect": 0.886,
+    "face": [
+      165,
+      150,
+      125,
+      125
+    ],
+    "skin": "#a25242",
+    "top": "#d9a67f"
   },
   "cocacola": {
     "file": "cocacola.png",
@@ -130,7 +140,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Great_Hornbill_(Buceros_bicornis).jpg",
     "cut": "hornbill-cut.png",
-    "cutAspect": 0.909
+    "cutAspect": 0.909,
+    "thing": true
   },
   "jordan": {
     "file": "jordan.jpg",
@@ -387,7 +398,8 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Indian_roller_in_Bandhavgarh_National_Park_02.jpg",
     "cut": "roller-cut.png",
-    "cutAspect": 1.124
+    "cutAspect": 1.124,
+    "thing": true
   },
   "ronaldo": {
     "file": "ronaldo.jpg",

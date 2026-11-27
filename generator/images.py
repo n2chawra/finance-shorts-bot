@@ -110,8 +110,9 @@ def load() -> dict:
     return json.loads(CREDITS.read_text(encoding="utf-8")) if CREDITS.is_file() else {}
 
 
-def fetch(name: str, title: str, logo: bool = False) -> dict:
-    """Download a freely licensed Commons file as `photo:<name>`, cut it out, and record its credit."""
+def fetch(name: str, title: str, logo: bool = False, thing: bool = False) -> dict:
+    """Download a freely licensed Commons file as `photo:<name>`, cut it out, and record its credit. `logo` is a
+    logo or drawing; `thing` is a photo of no person (an animal, a banknote, a building): no head is cut."""
     from PIL import Image
     if not NAME.match(name):
         raise ValueError(f"name {name!r}: lowercase letters, digits and hyphens (e.g. 'ronaldo', 'apple-logo')")
@@ -135,6 +136,8 @@ def fetch(name: str, title: str, logo: bool = False) -> dict:
         img.convert("RGB").save(out, quality=85, optimize=True)
     entry = {"file": out.name, "aspect": round(img.width / img.height, 3), "logo": logo, "title": i["title"],
              "author": i["author"], "license": i["license"], "licenseUrl": i["licenseUrl"], "source": i["page"]}
+    if thing:
+        entry["thing"] = True
     if i["restrictions"]:
         entry["restrictions"] = i["restrictions"]
     credits = load()
@@ -230,7 +233,7 @@ def cut(name: str, face: tuple[int, int, int, int] | None = None, model: str = M
     c["cut"] = f"{name}-cut.png"
     c["cutAspect"] = round(st.width / st.height, 3)
     c.pop("head", None)
-    if not c.get("logo"):
+    if is_person(c):
         f = face or _face(subject)
         if f:
             x, y, w, h = f
@@ -250,7 +253,17 @@ def cut(name: str, face: tuple[int, int, int, int] | None = None, model: str = M
             c["top"] = _median(subject, (x, min(subject.height - 2, y + int(2.2 * h)), x + w, min(subject.height - 1, y + int(2.6 * h))))
     credits[name] = c
     _save(credits)
+    if is_person(c) and not c.get("head"):
+        # a person with no head breaks the library test on main (chogyal, 2026-11-27): fix it here, before ship
+        raise ValueError(f"photo:{name}: no face found for its head. Look at remotion/public/real/{c['cut']} and run "
+                         f"python -m generator.images cut {name} --face x,y,w,h (the face box in that file), "
+                         f"or, if it shows no person, python -m generator.images cut {name} --thing")
     return c
+
+
+def is_person(c: dict) -> bool:
+    """A library photo of a person (it gets a head for a bobblehead): not a logo and not a `thing`."""
+    return not c.get("logo") and not c.get("thing")
 
 
 def used(node) -> set[str]:
@@ -327,8 +340,10 @@ def main(argv: list[str] | None = None) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("search"); s.add_argument("query"); s.add_argument("--limit", type=int, default=10)
     f = sub.add_parser("fetch"); f.add_argument("name"); f.add_argument("title"); f.add_argument("--logo", action="store_true")
+    f.add_argument("--thing", action="store_true", help="a photo of no person (an animal, a banknote, a building): no head")
     c = sub.add_parser("credits"); c.add_argument("id")
     k = sub.add_parser("cut"); k.add_argument("name"); k.add_argument("--face", help="x,y,w,h of the face in the cut-out, when detection misses")
+    k.add_argument("--thing", action="store_true", help="mark it a photo of no person, so it needs no head")
     k.add_argument("--model", default=MODEL)
     sub.add_parser("list")
     a = ap.parse_args(argv)
@@ -338,13 +353,21 @@ def main(argv: list[str] | None = None) -> int:
                   + (f"  ({r['restrictions']})" if r["restrictions"] else ""))
     elif a.cmd == "fetch":
         try:
-            print(json.dumps(fetch(a.name, a.title, a.logo), indent=2, ensure_ascii=False))
+            print(json.dumps(fetch(a.name, a.title, a.logo, a.thing), indent=2, ensure_ascii=False))
         except ValueError as e:
             print(e, file=sys.stderr)
             return 1
     elif a.cmd == "cut":
         f = tuple(int(v) for v in a.face.split(",")) if a.face else None
-        print(json.dumps(cut(a.name, f, a.model), indent=2, ensure_ascii=False))
+        if a.thing:
+            credits = load()
+            credits[a.name]["thing"] = True
+            _save(credits)
+        try:
+            print(json.dumps(cut(a.name, f, a.model), indent=2, ensure_ascii=False))
+        except ValueError as e:
+            print(e, file=sys.stderr)
+            return 1
     elif a.cmd == "credits":
         d = cpath(ROOT, "videos") / a.id
         print("\n".join(credit_lines(json.loads((d / "script.json").read_text(encoding="utf-8")), a.id)) or "(no photos)")

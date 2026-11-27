@@ -6,12 +6,12 @@
 
 | Time (IST) | What | Source |
 |---|---|---|
-| 18:37 | Data audit: dashboard numbers vs YouTube vs database | `data-audit.yml`, cron `7 13 * * *` UTC |
 | 23:00 | **Auditor agent**: data bugs, code bugs, one refactor | Claude routine, cron `30 17 * * *` UTC |
 | 23:47 | **Research agent**: top Shorts, trends, Claude updates → proposals | Claude routine, cron `17 18 * * *` UTC |
 | **04:07** | Main routine run: makes all 3 of the day's videos in one session (fresh usage window) | Claude routine, cron `37 22 * * *` UTC |
 | 06:17 | **Improver agent**: judge experiments, start one or wait, manage templates | Claude routine, cron `47 0 * * *` UTC |
 | 07:37 | **Dashboard agent**: bug hunt, one fix or improvement | Claude routine, cron `7 2 * * *` UTC |
+| 07:53 | Data audit: dashboard numbers vs YouTube vs database (GitHub starts it 5-10 h late) | `data-audit.yml`, cron `23 2 * * *` UTC |
 | 09:07 | Spare video run: makes up any missing videos (fresh usage window) | Claude routine, cron `37 3 * * *` UTC |
 | 09:37 (Mon/Thu) | **Scout agent**: finds long-video topics, studies long-form craft | Claude routine, cron `7 4 * * 1,4` UTC |
 | 11:30 | **Midday trend run**: a few searches for a money trend people are talking about today; at most one extra Short, which jumps the queue for 19:07 (`generator/prompts/trend_run.md`) | Claude routine, cron `0 6 * * *` UTC |

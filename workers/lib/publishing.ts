@@ -96,7 +96,7 @@ export function missedSlots(now: Date, times: string[], uploads: Date[], leadMin
   // an upload counts for the latest slot at or before it: with slots under three hours apart (India Maps'
   // 18:17 and 20:07), the 20:07 upload must not hide a missed 18:17
   const filled = (slot: Date, i: number) => uploads.some((u) => u.getTime() >= slot.getTime()
-    && u.getTime() - slot.getTime() <= FILLED_WITHIN_HOURS * 3_600_000 && (i + 1 >= slots.length || u.getTime() < slots[i + 1].getTime()));
+    && u.getTime() - slot.getTime() <= FILLED_WITHIN_HOURS * 3_600_000 && (i + 1 >= slots.length || u.getTime() < slots[i + 1]!.getTime()));
   return slots.filter((slot, i) => {
     const ahead = slot.getTime() - now.getTime();
     return ahead < leadMinutes * 60_000 && ahead >= -catchUpHours * 3_600_000 && !filled(slot, i);

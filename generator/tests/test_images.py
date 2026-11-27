@@ -1,6 +1,8 @@
 """Real photos: free licences only, credited, and every photo a script uses is in the library."""
 import json
 
+import pytest
+
 from generator import images
 
 
@@ -62,5 +64,29 @@ def test_a_photo_is_never_a_rectangle_and_a_real_person_never_speaks(tmp_path):
 def test_the_library_photos_are_cut_out():
     for name, c in images.load().items():
         assert c.get("cut") and (images.REAL / c["cut"]).is_file(), name
-        if not c.get("logo"):
+        if images.is_person(c):
             assert c.get("head") and (images.REAL / c["head"]).is_file(), name
+
+
+def test_a_person_whose_face_is_not_found_stops_the_cut(tmp_path, monkeypatch):
+    # chogyal (2026-11-27) shipped with no head and broke main's tests: the cut must stop the run instead
+    import sys
+    import types
+    from PIL import Image
+    Image.new("RGB", (200, 300), (120, 90, 60)).save(tmp_path / "x.jpg")
+    fake = types.ModuleType("rembg")
+    fake.new_session = lambda model: None
+    fake.remove = lambda im, session=None: im.convert("RGBA")
+    monkeypatch.setitem(sys.modules, "rembg", fake)
+    monkeypatch.setattr(images, "REAL", tmp_path)
+    monkeypatch.setattr(images, "_face", lambda rgb: None)
+    store = {"x": {"file": "x.jpg", "logo": False}}
+    monkeypatch.setattr(images, "load", lambda: store)
+    monkeypatch.setattr(images, "_save", lambda credits: None)
+    with pytest.raises(ValueError, match="--face x,y,w,h"):
+        images.cut("x")
+    assert (tmp_path / "x-cut.png").is_file()   # the cut-out is kept; only the head is missing
+    store["x"]["thing"] = True   # a bird, a banknote, a building: no head needed
+    assert "head" not in images.cut("x")
+    store["x"]["thing"] = False   # a person whose face the owner or the run marks by hand
+    assert images.cut("x", face=(40, 40, 60, 60))["head"] == "x-head.png"

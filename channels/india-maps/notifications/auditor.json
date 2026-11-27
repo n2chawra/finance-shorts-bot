@@ -1,11 +1,3 @@
 {
-  "notifications": [
-    {
-      "key": "pytest-red-chogyal-head",
-      "severity": "critical",
-      "title": "main's Python tests fail: the Chogyal photo has no head cut-out, so every agent branch touching Python code is blocked",
-      "detail": "Today's video v-20261127-62 (Sikkim's king) added remotion/public/real/chogyal.jpg to the photo library. OpenCV found no face in it (he looks to the side), so generator.images cut made chogyal-cut.png but no chogyal-head.png. generator/tests/test_images.py::test_the_library_photos_are_cut_out requires a head for every photo of a person, so `python -m pytest renderer generator improvement scripts` fails on main (408 passed, this one failed). The merge workflow runs that suite for any agent branch with a Python file, so the improver's and auditor's Python fixes can't land until it is fixed. The video itself is fine: it uses the photo as a sticker, not as a speaking head. remotion/public/real is outside every agent's allowed paths, so no agent can add the file.",
-      "fix": "1. In a Claude Code session on main: python3 -m pip install -r generator/requirements-images.txt opencv-python-headless. 2. Run python -m generator.images cut chogyal --face 150,110,140,150 (x,y,w,h of his face in the cut-out's own pixels, measured by eye; open remotion/public/real/chogyal-head.png and adjust if the crop is off). 3. Run python -m pytest generator/tests/test_images.py -q and commit remotion/public/real/chogyal-head.png and credits.json to main."
-    }
-  ]
+  "notifications": []
 }
