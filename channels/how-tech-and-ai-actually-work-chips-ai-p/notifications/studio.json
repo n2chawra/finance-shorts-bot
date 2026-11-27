@@ -1,11 +1,18 @@
 {
   "notifications": [
     {
-      "key": "tech-L-20261124-21-test-compare",
+      "key": "tech-L-20261127-21-test-compare",
       "severity": "info",
-      "title": "EUV long video: three thumbnails ready for Test & Compare",
-      "detail": "L-20261124-21 'How Does ASML's EUV Machine Print a Chip With Light?' ships with thumbnail B ('Printed by plasma', the glowing wafer struck by a beam, 9/10) as the pick, plus A ('No lenses', the machine cut open, 8/10) and C ('Tin to chip', 8/10). QA would click C, then B. YouTube's Test & Compare has no API, so only you can run it.",
-      "fix": "1. After it is published, open the video in YouTube Studio. 2. Details -> Thumbnail -> Test & compare. 3. Upload thumbnail-b.png, thumbnail.png and thumbnail-c.png from channels/how-tech-and-ai-actually-work-chips-ai-p/videos/L-20261124-21/."
+      "title": "ChatGPT long video: three thumbnails ready for Test & Compare",
+      "detail": "L-20261127-21 'How Does ChatGPT Turn Your Question Into an Answer?' ships with thumbnail A ('Where it goes', a small phone in front of a data-centre aisle, 9/10) as the pick, plus B ('Words to numbers', phone to chip, 8/10) and C ('Pure maths', the glowing chip, 8/10). QA would also click A. YouTube's Test & Compare has no API, so only you can run it.",
+      "fix": "1. After it is published, open the video in YouTube Studio. 2. Details -> Thumbnail -> Test & compare. 3. Upload thumbnail.png, thumbnail-b.png and thumbnail-c.png from channels/how-tech-and-ai-actually-work-chips-ai-p/videos/L-20261127-21/."
+    },
+    {
+      "key": "tech-rocket-pin-waits",
+      "severity": "info",
+      "title": "Your pinned rocket topic waits one run",
+      "detail": "'Why Does SpaceX's Biggest Rocket Need 33 Engines?' (pin 2) can only be told as 'What happens inside X when you Y', and the variety rule refuses the same long format twice in a row; the last long video (EUV) used it. So this run made the next usable topic (how AI answers a question). The rocket can be made at the next long run.",
+      "fix": "Nothing needed. If you want it next run regardless, keep it pinned; the next run's last format is how_ai_works, so inside_when_you is allowed again."
     }
   ]
 }

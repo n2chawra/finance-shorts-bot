@@ -1,0 +1,21 @@
+{
+  "agent": "studio",
+  "day": "2026-11-27",
+  "startedAt": "2026-11-27T03:21:33Z",
+  "finishedAt": "2026-11-27T16:37:07Z",
+  "summary": "How Tech Works: made and shipped the long video L-20261127-21 'How Does ChatGPT Turn Your Question Into an Answer?' (423 s, 58 directed 3D beats in 9 places), from Scout's topic 2026-11-18-ai-question-to-answer.",
+  "decision": "acted",
+  "why": "state --format long said video (2 of 3 long videos this week). The owner's pin 2 (Starship's 33 engines) was blocked by the variety rule: its only format, inside_when_you, was the last long video's. The fact review passed after one rewrite (the payoff scoped to GPT-3 and said token; 'usually split across several chips'; the description promised only what the video shows). QA passed on its third look: round 1 had 10 blocking items, round 2 had 5, all fixed. Every render gate passed.",
+  "findings": [
+    {"title": "Thumbnails", "detail": "Pick A 'Where it goes' (9/10); B 'Words to numbers' (8/10); C 'Pure maths' (8/10). Run Test & Compare with all three."},
+    {"title": "Owner note on long hooks answered", "detail": "The hook opens on the phone with the ChatGPT chat and the typed question, then cuts to the data-centre chip on the word 'chip'."},
+    {"title": "Two layers of facts were dropped", "detail": "The long topic's GPT-3 facts (96 layers, 2,048-token window) failed the number check because the same topic id sits in the Shorts feed with 3 facts and generator/topics.py reads that copy first. The script says 'dozens of layers' and 'a limited number of tokens' instead. Filed for the auditor (tech-long-feed-id-shadowed)."},
+    {"title": "Render time", "detail": "Full render 08:31-16:34 UTC (11 chunks of 1,200 frames, swangle), about 8 hours."}
+  ],
+  "changes": [
+    {"title": "Shipped L-20261127-21", "detail": "Manifest on main (8401143); the mp4 went up on media/L-20261127-21 for the release workflow."},
+    {"title": "Long-video backlog: 3 items", "detail": "tech-long-feed-id-shadowed, tech-long-3d-label-first-frame, tech-long-pin-blocked-by-variety.", "branch": "agent/studio/2026-11-27/how-tech-and-ai-actually-work-chips-ai-p"}
+  ],
+  "nextCheck": "2026-11-29",
+  "links": [{"label": "Manifest", "url": "channels/how-tech-and-ai-actually-work-chips-ai-p/videos/L-20261127-21/manifest.json"}]
+}

@@ -381,5 +381,30 @@
     "format": "short",
     "story": "zoom_inside",
     "shape": "dive-and-surface"
+  },
+  {
+    "id": "L-20261127-21",
+    "created_at": "2026-11-27T16:34:58.180500+00:00",
+    "template": "long_story",
+    "topic": {
+      "title": "How an AI Turns Your Question Into an Answer, Every Step",
+      "category": "ai",
+      "feed_id": "2026-11-18-ai-question-to-answer",
+      "reach": "global"
+    },
+    "title": "How Does ChatGPT Turn Your Question Into an Answer?",
+    "description": "What actually happens between the moment you send a question to an AI chatbot and the moment its answer appears?\nWe follow your words in 3D: cut into tokens, turned into lists of numbers, pushed through dozens of layers, multiplied on the maths units of a data-centre chip, and turned into one next word, again and again.\nWith the real parameter count of GPT-3, from OpenAI's paper.\n\nChapters:\n0:00 Your question leaves your phone\n0:14 The whole trip\n0:41 Cutting words into tokens\n1:40 Tokens become numbers\n2:25 Through the layers\n3:22 The chip does the maths\n4:33 Picking the next token\n5:32 Why it can be wrong\n5:46 What it can see at once\n6:29 Back to your phone\n\nSources: Brown et al. (arXiv, May 2020); OpenAI Help Center (Nov 2026).\nAnimations are simplified illustrations, not exact to scale.",
+    "hook_style": "challenge",
+    "cta": "Tell us which step you want taken apart next",
+    "style": {
+      "palette": "night",
+      "genre": "circuit",
+      "key": "A",
+      "bpm": 72,
+      "voice": "af_bella"
+    },
+    "format": "long",
+    "story": "how_ai_works",
+    "shape": null
   }
 ]

@@ -1,0 +1,506 @@
+{
+  "template": "long_story",
+  "renderer": "remotion",
+  "seed": 71927,
+  "duration_sec": 423,
+  "tempo": 1.25,
+  "style": {
+    "palette": "night",
+    "genre": "circuit",
+    "key": "A",
+    "bpm": 72
+  },
+  "voice": {
+    "name": "af_bella",
+    "base_speed": 1.15,
+    "cast": {
+      "narrator": "af_bella",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "A question you type into ChatGPT on your phone sets off billions of multiplications on a chip in a data centre, far from you.",
+        "start": 0.27,
+        "seconds": 7.72,
+        "window": 8.33,
+        "fill": 0.927
+      },
+      {
+        "scene": "hook2",
+        "text": "That chip sends the answer back in small pieces, and every single piece takes the whole trip through the model.",
+        "start": 8.6,
+        "seconds": 5.57,
+        "window": 6.23,
+        "fill": 0.894
+      },
+      {
+        "scene": "route",
+        "text": "Here is the whole trip. Your words get cut into tokens, the tokens turn into numbers, and the numbers climb through the model's layers.",
+        "start": 14.83,
+        "seconds": 7.45,
+        "window": 8.1,
+        "fill": 0.92
+      },
+      {
+        "scene": "route2",
+        "text": "A chip does the multiplying, one next word comes out, and then the whole trip starts again for the word after it.",
+        "start": 22.93,
+        "seconds": 5.98,
+        "window": 6.63,
+        "fill": 0.902
+      },
+      {
+        "scene": "gpt3",
+        "text": "We'll follow GPT-three, an earlier model that OpenAI described in a research paper, with 175B parameters. Newer chatbots are built on the same idea.",
+        "start": 29.57,
+        "seconds": 11.31,
+        "window": 11.97,
+        "fill": 0.945
+      },
+      {
+        "scene": "t_q",
+        "text": "First stop: what does the model actually read? Not letters, and not quite words either.",
+        "start": 41.53,
+        "seconds": 4.75,
+        "window": 5.37,
+        "fill": 0.885
+      },
+      {
+        "scene": "t_cut",
+        "text": "Your question is cut into tokens: common chunks of text, like a whole short word, or a piece of a longer one.",
+        "start": 46.9,
+        "seconds": 6.37,
+        "window": 7.03,
+        "fill": 0.906
+      },
+      {
+        "scene": "t_size",
+        "text": "In English, a token is about 4 characters long on average, according to OpenAI.",
+        "start": 53.93,
+        "seconds": 5.21,
+        "window": 5.83,
+        "fill": 0.894
+      },
+      {
+        "scene": "t_pct",
+        "text": "OpenAI also puts one token at roughly 75% of an English word, so a long answer can run to hundreds of tokens.",
+        "start": 59.77,
+        "seconds": 7.78,
+        "window": 8.47,
+        "fill": 0.919
+      },
+      {
+        "scene": "t_rare",
+        "text": "Why chunks, and not whole words? A common word is often a single token, while a rare word or a name gets cut into several pieces, so any word can still be built from pieces on the list.",
+        "start": 68.23,
+        "seconds": 10.42,
+        "window": 11.07,
+        "fill": 0.941
+      },
+      {
+        "scene": "t_list",
+        "text": "The cutting follows a fixed list of chunks that was settled before the model was trained, so the same text is always cut the same way.",
+        "start": 79.3,
+        "seconds": 7.19,
+        "window": 7.83,
+        "fill": 0.918
+      },
+      {
+        "scene": "t_ids",
+        "text": "Every chunk on that list has its own ID number, and that number is all the model is handed for each token.",
+        "start": 87.13,
+        "seconds": 6.04,
+        "window": 6.7,
+        "fill": 0.901
+      },
+      {
+        "scene": "tease1",
+        "text": "But an ID is only a label. It says nothing about what the word means. So how does a label become meaning?",
+        "start": 93.83,
+        "seconds": 5.87,
+        "window": 6.53,
+        "fill": 0.899
+      },
+      {
+        "scene": "v_lookup",
+        "text": "Next stop: the model looks each ID up in a giant table and pulls out a long list of numbers for that token.",
+        "start": 100.37,
+        "seconds": 6.29,
+        "window": 6.97,
+        "fill": 0.902
+      },
+      {
+        "scene": "v_learned",
+        "text": "So who chose those numbers? Nobody, by hand. Training set them, nudging each one a tiny bit at a time across enormous amounts of text.",
+        "start": 107.33,
+        "seconds": 8.27,
+        "window": 8.93,
+        "fill": 0.926
+      },
+      {
+        "scene": "v_map",
+        "text": "Each list works like a point in a space with thousands of directions, and tokens used in similar ways end up close together.",
+        "start": 116.27,
+        "seconds": 6.99,
+        "window": 7.63,
+        "fill": 0.916
+      },
+      {
+        "scene": "v_near",
+        "text": "Cat lands near dog. Paris lands near London. Nobody placed them there; training did.",
+        "start": 123.9,
+        "seconds": 5.04,
+        "window": 5.67,
+        "fill": 0.889
+      },
+      {
+        "scene": "v_order",
+        "text": "And how does it know which word came first? Each token also gets a second list added, marking its place in the sentence, because the order of words changes what they mean.",
+        "start": 129.57,
+        "seconds": 9.29,
+        "window": 9.93,
+        "fill": 0.936
+      },
+      {
+        "scene": "tease2",
+        "text": "Now your question is a row of number lists. What happens to them next is where almost all the work is done.",
+        "start": 139.5,
+        "seconds": 5.64,
+        "window": 6.3,
+        "fill": 0.895
+      },
+      {
+        "scene": "l_q",
+        "text": "Next stop, the layers. Why does a model need so many of them?",
+        "start": 145.8,
+        "seconds": 3.23,
+        "window": 3.87,
+        "fill": 0.835
+      },
+      {
+        "scene": "l_stack",
+        "text": "GPT-three stacks dozens of these layers, one on top of the next, and the row of number lists passes through every single one, in order.",
+        "start": 149.67,
+        "seconds": 7.6,
+        "window": 8.27,
+        "fill": 0.919
+      },
+      {
+        "scene": "l_attn",
+        "text": "On a single floor, what comes first? Every token looks back at the tokens before it, and takes in a little of what they carry.",
+        "start": 157.93,
+        "seconds": 6.94,
+        "window": 7.6,
+        "fill": 0.913
+      },
+      {
+        "scene": "l_attn2",
+        "text": "That is how blue in your question can take on the meaning of a colour, not a mood, from the words around it.",
+        "start": 165.53,
+        "seconds": 5.45,
+        "window": 5.97,
+        "fill": 0.913
+      },
+      {
+        "scene": "l_mlp",
+        "text": "Then each token's list goes through a block of multiplications on its own, and its numbers come out slightly changed.",
+        "start": 171.5,
+        "seconds": 6.19,
+        "window": 6.87,
+        "fill": 0.901
+      },
+      {
+        "scene": "l_climb",
+        "text": "Floor after floor, the lists change a little each time. By the top, a list no longer stands for one word. It carries what the whole sentence is about.",
+        "start": 178.37,
+        "seconds": 8.81,
+        "window": 9.33,
+        "fill": 0.944
+      },
+      {
+        "scene": "l_weights",
+        "text": "The multiplying on every floor uses numbers stored inside the model, called parameters. And that is where size comes in.",
+        "start": 187.7,
+        "seconds": 7.16,
+        "window": 7.83,
+        "fill": 0.914
+      },
+      {
+        "scene": "tease3",
+        "text": "Because those parameters have to be multiplied somewhere, by something you can touch. That is where the software meets the hardware.",
+        "start": 195.53,
+        "seconds": 6.75,
+        "window": 7.4,
+        "fill": 0.912
+      },
+      {
+        "scene": "c_q",
+        "text": "So where does all this multiplying actually happen? In a data centre, on racks of servers packed with graphics chips.",
+        "start": 202.93,
+        "seconds": 6.36,
+        "window": 7.0,
+        "fill": 0.909
+      },
+      {
+        "scene": "c_count",
+        "text": "GPT-three has 175B parameters, and every one of them is used in a multiplication for every single token it writes.",
+        "start": 209.93,
+        "seconds": 8.32,
+        "window": 9.0,
+        "fill": 0.924
+      },
+      {
+        "scene": "c_what",
+        "text": "Those numbers are the model. There is no list of facts inside it, only parameters, set during training.",
+        "start": 218.93,
+        "seconds": 5.7,
+        "window": 6.33,
+        "fill": 0.9
+      },
+      {
+        "scene": "c_units",
+        "text": "Inside the chip, what does the work? Thousands of tiny maths units. Each one multiplies two numbers and adds the result to a running total.",
+        "start": 225.27,
+        "seconds": 8.04,
+        "window": 8.7,
+        "fill": 0.924
+      },
+      {
+        "scene": "c_sweep",
+        "text": "They all work at once, so a whole grid of numbers is multiplied in one sweep, and a chip like this does hundreds of trillions of them every second.",
+        "start": 233.97,
+        "seconds": 7.98,
+        "window": 8.63,
+        "fill": 0.925
+      },
+      {
+        "scene": "c_memory",
+        "text": "Where do the parameters wait? In memory stacked right beside the chip, and they stream into those maths units over and over, token after token.",
+        "start": 242.6,
+        "seconds": 7.96,
+        "window": 8.6,
+        "fill": 0.926
+      },
+      {
+        "scene": "c_split",
+        "text": "A model this big is usually split across several chips, passing numbers back and forth between them over fast links.",
+        "start": 251.2,
+        "seconds": 6.23,
+        "window": 6.9,
+        "fill": 0.903
+      },
+      {
+        "scene": "c_heat",
+        "text": "All that switching turns into heat, which is why data centres need so much power, and so much cooling.",
+        "start": 258.1,
+        "seconds": 5.54,
+        "window": 6.17,
+        "fill": 0.898
+      },
+      {
+        "scene": "recap",
+        "text": "So far: words became tokens, tokens became numbers, the numbers climbed the layers, and a chip did the maths. And all of that makes just one token.",
+        "start": 264.27,
+        "seconds": 8.81,
+        "window": 9.47,
+        "fill": 0.93
+      },
+      {
+        "scene": "k_q",
+        "text": "One token? Out of everything it could say, how does it choose?",
+        "start": 273.73,
+        "seconds": 2.97,
+        "window": 3.63,
+        "fill": 0.818
+      },
+      {
+        "scene": "k_scores",
+        "text": "The top layer gives a score to every token on the list, tens of thousands of them, for how well each would fit next.",
+        "start": 277.37,
+        "seconds": 6.27,
+        "window": 6.9,
+        "fill": 0.909
+      },
+      {
+        "scene": "k_example",
+        "text": "For the first word of an answer about the blue sky, tokens like Sunlight or Because score high, and banana scores almost nothing.",
+        "start": 284.27,
+        "seconds": 7.2,
+        "window": 7.83,
+        "fill": 0.92
+      },
+      {
+        "scene": "k_pick",
+        "text": "Then one token is picked, usually one of the likely ones, with a little randomness, which is why the same question can get a different answer.",
+        "start": 292.1,
+        "seconds": 7.48,
+        "window": 8.13,
+        "fill": 0.92
+      },
+      {
+        "scene": "k_append",
+        "text": "That token is added to the end of the text, and the model reads your question plus the new token, and makes the whole trip again.",
+        "start": 300.23,
+        "seconds": 6.68,
+        "window": 7.33,
+        "fill": 0.911
+      },
+      {
+        "scene": "k_repeat",
+        "text": "Up through every layer, once more, just to pick the token after that. Then again. And again.",
+        "start": 307.57,
+        "seconds": 5.09,
+        "window": 5.73,
+        "fill": 0.888
+      },
+      {
+        "scene": "k_stream",
+        "text": "That is why you see the answer appear piece by piece. You are watching it being written, one token at a time.",
+        "start": 313.3,
+        "seconds": 5.59,
+        "window": 6.27,
+        "fill": 0.892
+      },
+      {
+        "scene": "k_cache",
+        "text": "Doesn't that waste time? To save it, the chip keeps notes about the earlier tokens in its memory, so it doesn't redo all of their maths from the beginning.",
+        "start": 319.57,
+        "seconds": 8.02,
+        "window": 8.67,
+        "fill": 0.925
+      },
+      {
+        "scene": "k_stop",
+        "text": "It ends when the token it picks is a special one that means stop.",
+        "start": 328.23,
+        "seconds": 3.65,
+        "window": 4.3,
+        "fill": 0.849
+      },
+      {
+        "scene": "turn",
+        "text": "So does it look your answer up? Not on its own. Unless the app gives it a search tool, it predicts each next token from patterns it learned.",
+        "start": 332.53,
+        "seconds": 7.39,
+        "window": 8.03,
+        "fill": 0.92
+      },
+      {
+        "scene": "turn2",
+        "text": "That is why it can sound sure and still be wrong. A likely-sounding token isn't always a true one.",
+        "start": 340.57,
+        "seconds": 5.44,
+        "window": 6.07,
+        "fill": 0.896
+      },
+      {
+        "scene": "tease4",
+        "text": "But there is a limit to how much text it can look back on while it writes. And GPT-three's limit was small.",
+        "start": 346.63,
+        "seconds": 5.51,
+        "window": 6.17,
+        "fill": 0.893
+      },
+      {
+        "scene": "w_size",
+        "text": "GPT-three could read only a limited number of tokens at once, called its window. It held your question, everything said before it, and the answer so far.",
+        "start": 352.8,
+        "seconds": 9.33,
+        "window": 10.0,
+        "fill": 0.933
+      },
+      {
+        "scene": "w_pages",
+        "text": "At about 4 characters a token, that window held only a few pages of text, not a whole book.",
+        "start": 362.8,
+        "seconds": 5.43,
+        "window": 6.07,
+        "fill": 0.895
+      },
+      {
+        "scene": "w_off",
+        "text": "And what happens to anything older? It drops out of the window. The model simply can't see it any more, as if it was never said.",
+        "start": 368.87,
+        "seconds": 6.72,
+        "window": 7.33,
+        "fill": 0.917
+      },
+      {
+        "scene": "w_memory",
+        "text": "It doesn't remember you between chats either, unless the app copies your earlier messages back into the window.",
+        "start": 376.2,
+        "seconds": 5.66,
+        "window": 6.3,
+        "fill": 0.898
+      },
+      {
+        "scene": "w_newer",
+        "text": "Newer models have far bigger windows, but the rule is the same: if it isn't in the window, the model doesn't see it.",
+        "start": 382.5,
+        "seconds": 6.34,
+        "window": 7.0,
+        "fill": 0.906
+      },
+      {
+        "scene": "back1",
+        "text": "Now follow it back out. The picked token leaves the chip, crosses the data centre, and travels the network to your phone.",
+        "start": 389.5,
+        "seconds": 6.56,
+        "window": 7.23,
+        "fill": 0.907
+      },
+      {
+        "scene": "back2",
+        "text": "On your screen it lands as a few letters. Then the next one arrives, and the next, faster than you can read.",
+        "start": 396.73,
+        "seconds": 5.84,
+        "window": 6.47,
+        "fill": 0.903
+      },
+      {
+        "scene": "payoff",
+        "text": "So in GPT-three, every token of an answer is a fresh vote among tens of thousands of tokens, cast by 175B numbers, multiplied on a chip.",
+        "start": 403.2,
+        "seconds": 10.65,
+        "window": 11.3,
+        "fill": 0.942
+      },
+      {
+        "scene": "loop",
+        "text": "Which step should we take apart next? Tell us. And next time you type a question, watch the first word arrive.",
+        "start": 414.5,
+        "seconds": 6.01,
+        "window": 6.67,
+        "fill": 0.901
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.9,
+    "lufs": -14.7,
+    "music_under_voice_db": 26.0
+  },
+  "craft_problems": [
+    "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+    "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 13.288,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
