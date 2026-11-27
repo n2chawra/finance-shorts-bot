@@ -1,14 +1,15 @@
 {
   "claudeCode": {
     "latest": "2.1.332",
-    "checked": "2026-11-27",
+    "checked": "2026-11-28",
     "notes": [
       "2.1.330: WebFetch no longer freezes or returns empty on some pages; built-in chart mod; Enterprise sign-in. Nothing to change in the pipeline (read by tonight's geography research run, not fetched again to keep the run lean).",
       "2026-11-23: still 2.1.330 (30-day scheduled tasks, subagent and WebFetch fixes); nothing for the pipeline.",
       "2026-11-24: still 2.1.330 (raw CHANGELOG.md read); nothing for the pipeline.",
       "2026-11-25: 2.1.331 retries a turn or subagent that went silent while thinking in cloud sessions (fewer failed routine runs) and fixes PushNotification in scheduled runs; nothing to change in the pipeline.",
       "2026-11-26: 2.1.332 (skills served by MCP servers, beta; a PreSkillShellCommand hook; scheduled tasks renamed 'cloud scheduled tasks' in the UI). Read by tonight's other research runs, not fetched again. Nothing for the pipeline.",
-      "2026-11-27: still 2.1.332 (raw CHANGELOG.md read); nothing for the pipeline."
+      "2026-11-27: still 2.1.332 (raw CHANGELOG.md read); nothing for the pipeline.",
+      "2026-11-28: still 2.1.332 (raw CHANGELOG.md read); nothing for the pipeline."
     ]
   },
   "sources": {
@@ -18,7 +19,11 @@
     "ntsb-press": "www-s.ntsb.gov press releases fetch fine with the figures; the UNT web archive of old NTSB summaries comes back empty, seen 2026-11-23",
     "yt-watch": "youtube.com/watch pages redirect to a captcha after a few fetches; the results page (ytInitialData), oembed (channel) and the channel page (subscribers) still work, seen 2026-11-24",
     "cpsc-pdf": "cpsc.gov letter PDFs come back as binary in WebFetch; pdftotext on the saved file reads them, seen 2026-11-24",
-    "wsdot-tnb": "wsdot.wa.gov/tnbhistory pages fetch fine (the old connections3.htm path is 404), seen 2026-11-24"
+    "wsdot-tnb": "wsdot.wa.gov/tnbhistory pages fetch fine (the old connections3.htm path is 404), seen 2026-11-24",
+    "youtube-watch": "youtube.com watch pages still return a bare footer to fetch (no title, views or subscribers), seen 2026-11-28",
+    "yt-repost-update": "1 Oct 2026 TeamYouTube post 'Prioritizing original content on Shorts': less reach for channels re-uploading others' videos; self-cut promos of own long videos not addressed (ppc.land), seen 2026-11-28",
+    "yt-ai-labels": "May 2026: one AI label for photorealistic synthetic content, shown as an overlay bottom-left on Shorts; auto-applied when undisclosed; no effect on reach or monetisation (blog.youtube), seen 2026-11-28",
+    "ypp-2027": "From 1 Feb 2027 new YPP applicants need 8,000 watch hours or a higher Shorts-views bar (outlets differ: 10M vs 20M in 90 days); existing partners unaffected (tubefilter, metricool), seen 2026-11-28"
   },
   "references": [
     "4kkNl2yl1Lw",
