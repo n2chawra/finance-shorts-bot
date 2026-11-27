@@ -831,3 +831,20 @@ test("agents topic feed's empty state names no single niche", async ({ page }) =
   await expect(page.getByText(/money news/)).toHaveCount(0);
   await expect(page.getByText(/this channel's niche/)).toBeVisible();
 });
+
+test("video page names the channel's own YouTube category, not always Education", async ({ page }) => {
+  await signIn(page);
+  // each channel's pack names its category: How Tech Works uploads in 28 Science & Technology, the hint once said Education for all
+  const tech = await (await page.request.get("/api/channels/how-tech-and-ai-actually-work-chips-ai-p/pack")).json();
+  expect(tech.categoryName).toBe("Science & Technology");
+  const geo = await (await page.request.get("/api/channels/geography-maps-geopolitical-mysteries/pack")).json();
+  expect(geo.categoryName).toBe("Education");
+  await page.goto("/videos/v030");
+  await page.getByRole("tab", { name: "YouTube details" }).click();
+  await expect(page.getByTestId("upload-category")).toHaveText("Education");
+  // the page shows whatever the selected channel's pack says
+  await page.route("**/api/channels/*/pack", (route) => route.fulfill({ json: tech }));
+  await page.reload();
+  await page.getByRole("tab", { name: "YouTube details" }).click();
+  await expect(page.getByTestId("upload-category")).toHaveText("Science & Technology");
+});

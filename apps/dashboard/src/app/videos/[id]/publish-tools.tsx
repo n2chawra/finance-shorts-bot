@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { Button, Card, buttonClass } from "@/components/ui";
 import { useToast } from "@/components/toast";
-import { useEditVideo, useManualUpload } from "@/lib/queries";
+import { useChannelPack, useChannels, useEditVideo, useManualUpload } from "@/lib/queries";
 import type { Video } from "@/lib/schemas";
 import { youtubeIdFrom } from "@/lib/youtube-link";
 
@@ -66,6 +66,10 @@ export function uploadText(v: Pick<Video, "description" | "tags">) {
 /** Title, description and tags laid out the way YouTube Studio asks for them, each one click to copy. */
 export function YouTubeDetails({ v }: { v: Video }) {
   const { hashtags, missing, description } = uploadText(v);
+  // the page is scoped to the selected channel, so its pack names this video's category
+  const channels = useChannels();
+  const pack = useChannelPack(channels.data?.current);
+  const category = pack.data?.categoryName;
   return (
     <Card title="Copy into YouTube Studio" icon={MonitorPlay} description="Title, description and tags, ready to paste when you upload by hand">
       <div className="flex flex-col gap-3">
@@ -89,7 +93,8 @@ export function YouTubeDetails({ v }: { v: Video }) {
           ) : <p className="text-sm text-muted">No tags.</p>}
         </Field>
         <div className="bg-tint-brand px-3 py-2.5 text-xs leading-relaxed text-ink2">
-          <strong className="text-ink">In YouTube Studio pick:</strong> Audience → No, it&apos;s not made for kids · Category → Education ·
+          <strong className="text-ink">In YouTube Studio pick:</strong> Audience → No, it&apos;s not made for kids ·{" "}
+          {category ? <>Category → <span data-testid="upload-category">{category}</span> · </> : pack.isLoading ? null : <>Category → the channel&apos;s usual one · </>}
           Altered or synthetic content → No · Visibility → Public
         </div>
       </div>

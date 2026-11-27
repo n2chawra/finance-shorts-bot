@@ -1,0 +1,37 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-27",
+  "startedAt": "2026-11-27T17:32:06Z",
+  "finishedAt": "2026-11-27T17:45:36Z",
+  "summary": "Bug hunt on all pages (137 smoke tests pass). Fixed the video page's YouTube Studio hint, which told you to pick Category → Education on every channel; it now names each channel's own category.",
+  "decision": "acted",
+  "why": "How Tech Works uploads in 28 Science & Technology (its channel.json), so a hand upload that followed the hint went into the wrong category.",
+  "findings": [
+    {
+      "title": "Upload category hint was the same for every channel",
+      "detail": "publish-tools.tsx hard-coded Education."
+    },
+    {
+      "title": "Media route fallback list misses india-maps",
+      "detail": "Low impact; only without a database. In the backlog."
+    },
+    {
+      "title": "Owner note on How Tech Works animation handed to the improver",
+      "detail": "About how the videos animate; not a dashboard change."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Video page names the channel's YouTube category",
+      "detail": "New /api/channels/[id]/pack reads uploadCategory from the channel's pack; smoke test added (c65876f).",
+      "branch": "agent/dashboard/2026-11-27"
+    }
+  ],
+  "nextCheck": "2026-11-28",
+  "links": [
+    {
+      "label": "Report",
+      "url": "improvement/dashboard/2026-11-27.md"
+    }
+  ]
+}

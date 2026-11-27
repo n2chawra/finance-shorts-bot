@@ -895,6 +895,39 @@
         "apps/dashboard/src/app/agents/page.tsx": "2026-11-26",
         "apps/dashboard/e2e/smoke.spec.ts": "2026-11-26"
       }
+    },
+    {
+      "id": "video-upload-category",
+      "kind": "bug",
+      "title": "Video page: YouTube Studio hint said Category → Education for every channel",
+      "detail": "How Tech Works uploads in 28 Science & Technology (its channel.json). The hint now reads the selected channel's pack via /api/channels/[id]/pack.",
+      "page": "video",
+      "found": "2026-11-27",
+      "status": "done",
+      "done": "2026-11-27",
+      "lastTouched": {
+        "apps/dashboard/src/app/videos/[id]/publish-tools.tsx": "2026-11-27",
+        "apps/dashboard/src/lib/channel-pack.ts": "2026-11-27",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-27"
+      }
+    },
+    {
+      "id": "media-channel-dirs-india",
+      "kind": "bug",
+      "title": "Media route: fallback channel list leaves out india-maps",
+      "detail": "api/media/[id]/[kind] CHANNEL_DIRS is a hard-coded list of four channels; when the database doesn't name a video's channel (sample data, local dev) an india-maps thumbnail isn't found. Read the list from config/channels.json instead. Low impact: the deployed path uses the video's own channelId first.",
+      "page": "video",
+      "found": "2026-11-27",
+      "status": "open"
+    },
+    {
+      "id": "queue-postnext-copy-checklist",
+      "kind": "idea",
+      "title": "Queue: tick each copy step on the 'Post next' card",
+      "detail": "When posting by hand, show title, description, tags and thumbnail as a small checklist that ticks as each is copied or downloaded, with Mark as uploaded as the last step. The owner can see at a glance what's left after switching to YouTube Studio and back (copy-to-clipboard pattern guides: label the target, tie copying to the next step).",
+      "page": "queue",
+      "found": "2026-11-27",
+      "status": "open"
     }
   ]
 }
