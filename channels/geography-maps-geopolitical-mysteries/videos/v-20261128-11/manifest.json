@@ -1,0 +1,438 @@
+{
+  "id": "v-20261128-11",
+  "createdAt": "2026-11-27T23:46:42.661908+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why does no country own Antarctica?",
+    "category": "treaties",
+    "reach": "global",
+    "feed_id": "2026-11-27-who-owns-antarctica",
+    "map_answer": "the slices seven countries drew on Antarctica, three of them overlapping on the peninsula, frozen by the 1959 treaty line south of 60 degrees, with one slice of the continent claimed by nobody"
+  },
+  "title": "Britain, Chile and Argentina all claim the same ice",
+  "description": "Antarctica is cut into slices on the map, so why does no country own it?\nThe claims drawn year by year, the overlap on the peninsula, and the treaty that froze every line.\nSources: Wikipedia, Antarctic Treaty System; Antarctic Treaty Secretariat (Nov 2026). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#Antarctica",
+    "#Geography",
+    "#Maps",
+    "#Geopolitics"
+  ],
+  "hookStyle": "conflict",
+  "cta": "Should Antarctica stay nobody's? Comment",
+  "seed": 31947,
+  "style": {
+    "palette": "paper",
+    "genre": "explorer",
+    "key": "D",
+    "bpm": 76,
+    "look": {
+      "stage": "studio",
+      "header": "ribbon",
+      "holder": "blackboard",
+      "entrance": "draw"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Britain, Chile and Argentina all claim one piece of Antarctica. None can have it.",
+        "start": 0.3,
+        "seconds": 3.68,
+        "window": 4.33,
+        "fill": 0.85
+      },
+      {
+        "scene": "slices",
+        "text": "7 countries have cut this ice into slices, like a cake, from the South Pole.",
+        "start": 4.63,
+        "seconds": 3.63,
+        "window": 4.3,
+        "fill": 0.844
+      },
+      {
+        "scene": "britain",
+        "text": "Britain draws the first line, back in its empire days, a slice down from the tip of South America.",
+        "start": 8.93,
+        "seconds": 4.29,
+        "window": 4.97,
+        "fill": 0.863
+      },
+      {
+        "scene": "race",
+        "text": "New Zealand follows, then France, then Australia, which takes the biggest slice of all.",
+        "start": 13.9,
+        "seconds": 3.74,
+        "window": 4.4,
+        "fill": 0.85
+      },
+      {
+        "scene": "norway",
+        "text": "Norway takes the slice facing Africa, just months before the Second World War.",
+        "start": 18.3,
+        "seconds": 3.55,
+        "window": 4.2,
+        "fill": 0.845
+      },
+      {
+        "scene": "overlap",
+        "text": "Then Chile and Argentina draw theirs right across Britain's, and three flags land on one peninsula.",
+        "start": 22.5,
+        "seconds": 4.5,
+        "window": 5.17,
+        "fill": 0.87
+      },
+      {
+        "scene": "shots",
+        "text": "At Hope Bay, on the very tip, Argentine soldiers even fire shots over a British team's heads.",
+        "start": 27.67,
+        "seconds": 4.46,
+        "window": 5.13,
+        "fill": 0.869
+      },
+      {
+        "scene": "treaty",
+        "text": "So who wins? In 1959, 12 nations sign a treaty in Washington, and every line on this map freezes.",
+        "start": 32.8,
+        "seconds": 5.25,
+        "window": 5.9,
+        "fill": 0.89
+      },
+      {
+        "scene": "rules",
+        "text": "No country grows its slice, no army builds a base, and no bomb is tested on the ice.",
+        "start": 38.7,
+        "seconds": 3.93,
+        "window": 4.6,
+        "fill": 0.854
+      },
+      {
+        "scene": "parties",
+        "text": "Today, 58 countries are in the treaty, and bases from many of them sit inside other countries' slices.",
+        "start": 43.3,
+        "seconds": 4.74,
+        "window": 5.4,
+        "fill": 0.878
+      },
+      {
+        "scene": "review",
+        "text": "From 2048, the treaty's voting members can ask to rewrite the rules. But is every slice taken?",
+        "start": 48.7,
+        "seconds": 4.56,
+        "window": 5.23,
+        "fill": 0.872
+      },
+      {
+        "scene": "payoff",
+        "text": "No. One slice, Marie Byrd Land, has no flag at all: no country claims it.",
+        "start": 53.93,
+        "seconds": 3.5,
+        "window": 4.1,
+        "fill": 0.854
+      },
+      {
+        "scene": "loop",
+        "text": "Nobody's, or cut up for good: which should it be? Until then, three countries keep claiming one slice.",
+        "start": 58.03,
+        "seconds": 4.28,
+        "window": 4.93,
+        "fill": 0.868
+      }
+    ]
+  },
+  "durationSec": 63,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9,
+    "lufs": -14.4,
+    "music_under_voice_db": 30.5
+  },
+  "experiments": {
+    "geo-claim-hook": "on"
+  },
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Changed lines only: hook reworded, same claim, fine. New beat 'shots' (Hope Bay, Feb 1952): Wikipedia's Hope Bay incident page says an Argentine naval party fired a machine gun over a British FIDS landing party's heads; the UTAS archive holds the Falklands Government House report of shots fired over the British expedition landing at Hope Bay. Hope Bay is at the peninsula's northern tip. Note: the British base had burned down in 1948 and the team was landing from the John Biscoe, so the picture is better as a landing party on the shore or a burnt hut than a standing hut. 'Soldiers' for naval personnel is acceptable."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: 50.0s review beat is now its own close shot on the frozen East Antarctic slices with a RULES REVIEW / FROM 2048 scroll under the slider, distinct from 45.0s; stray scroll dot gone at 45.0s. Every still is a place on the map with flags, slider years and labels that read on mute; hook names Britain, Chile, Argentina; payoff Marie Byrd Land NO CLAIM; loops to the peninsula; layout clean, 63 s, audio at channel norm.",
+        "fingerprint: 5033e68b67447bf3.e464ea3febf5853e"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-27T23:18:51.686256+00:00",
+      "finishedAt": "2026-11-27T23:18:51.686256+00:00",
+      "notes": [
+        "style.bpm must be 72–80 for explorer"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:18:55.502373+00:00",
+      "finishedAt": "2026-11-27T23:18:55.502373+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:19:33.116477+00:00",
+      "finishedAt": "2026-11-27T23:19:33.116477+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T23:23:32.477184+00:00",
+      "finishedAt": "2026-11-27T23:23:32.477184+00:00",
+      "notes": [
+        "beat 'britain'.params.moments[3].at contains a typed number; use a placeholder: '1908'",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend",
+        "note: 1 questions in about 68 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T23:23:46.313977+00:00",
+      "finishedAt": "2026-11-27T23:23:46.313977+00:00",
+      "notes": [
+        "beat 'britain'.params.moments[3].what contains a typed number; use a placeholder: 'the slider lands on 1908'",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T23:23:53.167594+00:00",
+      "finishedAt": "2026-11-27T23:23:53.167594+00:00",
+      "notes": [
+        "beat 'britain'.say contains a typed number; use a placeholder: 'Britain draws the first line in 1908, a slice down from the tip of South America.'",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T23:24:03.861510+00:00",
+      "finishedAt": "2026-11-27T23:24:03.861510+00:00",
+      "notes": [
+        "the source line 'Data: Wikipedia, Antarctic Treaty System · Antarctic Treaty Secretariat (29 consultative + 29 non-consultative parties) · Nov 2026' is too wide for the frame (3228 of 930 px at 44 px): shorten each facts[].source to the publisher (e.g. 'Wikipedia'), one name per publisher",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:24:08.628228+00:00",
+      "finishedAt": "2026-11-27T23:24:08.628228+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-27T23:24:20.570308+00:00",
+      "finishedAt": "2026-11-27T23:24:20.570308+00:00",
+      "notes": [
+        "facts[0] (1959 year, 2026-11-27) is not one of the feed topic's facts; copy them exactly",
+        "facts[4] (2048 year, 2026-11-27) is not one of the feed topic's facts; copy them exactly",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:24:27.272018+00:00",
+      "finishedAt": "2026-11-27T23:24:27.272018+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T23:25:33.554885+00:00",
+      "finishedAt": "2026-11-27T23:25:33.554885+00:00",
+      "notes": [
+        "Beat 'parties': 'Since then, 58 countries have signed' is wrong. ats.aq lists 58 Parties in total (29 consultative + 29 non-consultative), and that total includes the 12 original 1959 signatories, so only 46 joined after 1959, mostly by accession rather than signing. Reword e.g. 'Today, 58 countries are in the treaty' (fact4 is still 58).",
+        "Beat 'review': 'From 2048, any of them can ask to look at the rules again' comes straight after the 58 and so says all 58 parties can ask. Wikipedia (the fact5 source) says only the consultative parties may request a revision from 2048, and changes need a three-quarters majority of them. Reword e.g. 'From 2048, the treaty's voting members can ask to rewrite the rules', and keep the verify point that 2048 is not when the treaty ends."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:26:10.601874+00:00",
+      "finishedAt": "2026-11-27T23:26:10.601874+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:26:23.621376+00:00",
+      "finishedAt": "2026-11-27T23:26:23.621376+00:00",
+      "notes": [
+        "Re-review after fixes: 'parties' now says 58 are in the treaty (ats.aq: 58 Parties, 29 consultative + 29 non-consultative); 'review' now limits the 2048 request to the voting (consultative) members, as Wikipedia says. 1959/Washington/12/7/2048 confirmed on Wikipedia; claims said to be frozen, overlap shown with no side taken, disclaimer present."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:30:04.154176+00:00",
+      "finishedAt": "2026-11-27T23:30:04.154176+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:31:19.579126+00:00",
+      "finishedAt": "2026-11-27T23:31:19.579126+00:00",
+      "notes": [
+        "Changed lines only: hook reworded, same claim, fine. New beat 'shots' (Hope Bay, Feb 1952): Wikipedia's Hope Bay incident page says an Argentine naval party fired a machine gun over a British FIDS landing party's heads; the UTAS archive holds the Falklands Government House report of shots fired over the British expedition landing at Hope Bay. Hope Bay is at the peninsula's northern tip. Note: the British base had burned down in 1948 and the team was landing from the John Biscoe, so the picture is better as a landing party on the shore or a burnt hut than a standing hut. 'Soldiers' for naval personnel is acceptable."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:30:47.405839+00:00",
+      "finishedAt": "2026-11-27T23:32:38.275108+00:00",
+      "notes": [
+        "fingerprint: e1e7168f16b882fc.63b4ac8824aeb5cc",
+        "63 s, paper/explorer (preview only)",
+        "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:33:56.852488+00:00",
+      "finishedAt": "2026-11-27T23:35:10.804076+00:00",
+      "notes": [
+        "fingerprint: e1e7168f16b882fc.1c08ba00775f452e",
+        "63 s, paper/explorer (preview only)",
+        "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-27T23:36:19.264626+00:00",
+      "finishedAt": "2026-11-27T23:36:19.264626+00:00",
+      "notes": [
+        "[script] 45.0s and 50.0s (beats parties then review) look like the same picture: the whole sliced continent at the same wide size, the same ring of small flags and a parchment scroll on top; with 35.0s (treaty) it is the third near-identical wide in four beats, and the craft note already flags 22 s without a close shot. Give review its own place and size: e.g. close on the treaty scroll's review clause with the 2048 slider and the magnifying glass, or close on one station's hand going up, so it reads as a new picture.",
+        "[scene] 50.0s (review, Review component): the ANTARCTIC TREATY scroll is a blank card (title only, a stray dot where text should be); 45.0s's TREATY MEMBERS 58 scroll has the same stray dot under the figure. Either put the beat's fig on the scroll (e.g. REVIEW FROM 2048) or drop the empty scroll; remove the stray dot from the scroll kit piece."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:37:25.663922+00:00",
+      "finishedAt": "2026-11-27T23:38:34.483623+00:00",
+      "notes": [
+        "fingerprint: 5033e68b67447bf3.e464ea3febf5853e",
+        "63 s, paper/explorer (preview only)",
+        "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:38:52.978990+00:00",
+      "finishedAt": "2026-11-27T23:38:52.978990+00:00",
+      "notes": [
+        "Re-review after fixes: 50.0s review beat is now its own close shot on the frozen East Antarctic slices with a RULES REVIEW / FROM 2048 scroll under the slider, distinct from 45.0s; stray scroll dot gone at 45.0s. Every still is a place on the map with flags, slider years and labels that read on mute; hook names Britain, Chile, Argentina; payoff Marie Byrd Land NO CLAIM; loops to the peninsula; layout clean, 63 s, audio at channel norm.",
+        "fingerprint: 5033e68b67447bf3.e464ea3febf5853e"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:39:12.310977+00:00",
+      "finishedAt": "2026-11-27T23:46:14.536361+00:00",
+      "notes": [
+        "63 s, paper/explorer, peak -1.0 dB, mean -15.9 dB",
+        "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+        "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-27T23:46:42.662165+00:00",
+      "finishedAt": "2026-11-27T23:46:42.662165+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261128-11",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261128-11"
+  }
+}

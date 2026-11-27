@@ -1,0 +1,161 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 31947,
+  "duration_sec": 63,
+  "tempo": 1.2,
+  "style": {
+    "palette": "paper",
+    "genre": "explorer",
+    "key": "D",
+    "bpm": 76,
+    "look": {
+      "stage": "studio",
+      "header": "ribbon",
+      "holder": "blackboard",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Britain, Chile and Argentina all claim one piece of Antarctica. None can have it.",
+        "start": 0.3,
+        "seconds": 3.68,
+        "window": 4.33,
+        "fill": 0.85
+      },
+      {
+        "scene": "slices",
+        "text": "7 countries have cut this ice into slices, like a cake, from the South Pole.",
+        "start": 4.63,
+        "seconds": 3.63,
+        "window": 4.3,
+        "fill": 0.844
+      },
+      {
+        "scene": "britain",
+        "text": "Britain draws the first line, back in its empire days, a slice down from the tip of South America.",
+        "start": 8.93,
+        "seconds": 4.29,
+        "window": 4.97,
+        "fill": 0.863
+      },
+      {
+        "scene": "race",
+        "text": "New Zealand follows, then France, then Australia, which takes the biggest slice of all.",
+        "start": 13.9,
+        "seconds": 3.74,
+        "window": 4.4,
+        "fill": 0.85
+      },
+      {
+        "scene": "norway",
+        "text": "Norway takes the slice facing Africa, just months before the Second World War.",
+        "start": 18.3,
+        "seconds": 3.55,
+        "window": 4.2,
+        "fill": 0.845
+      },
+      {
+        "scene": "overlap",
+        "text": "Then Chile and Argentina draw theirs right across Britain's, and three flags land on one peninsula.",
+        "start": 22.5,
+        "seconds": 4.5,
+        "window": 5.17,
+        "fill": 0.87
+      },
+      {
+        "scene": "shots",
+        "text": "At Hope Bay, on the very tip, Argentine soldiers even fire shots over a British team's heads.",
+        "start": 27.67,
+        "seconds": 4.46,
+        "window": 5.13,
+        "fill": 0.869
+      },
+      {
+        "scene": "treaty",
+        "text": "So who wins? In 1959, 12 nations sign a treaty in Washington, and every line on this map freezes.",
+        "start": 32.8,
+        "seconds": 5.25,
+        "window": 5.9,
+        "fill": 0.89
+      },
+      {
+        "scene": "rules",
+        "text": "No country grows its slice, no army builds a base, and no bomb is tested on the ice.",
+        "start": 38.7,
+        "seconds": 3.93,
+        "window": 4.6,
+        "fill": 0.854
+      },
+      {
+        "scene": "parties",
+        "text": "Today, 58 countries are in the treaty, and bases from many of them sit inside other countries' slices.",
+        "start": 43.3,
+        "seconds": 4.74,
+        "window": 5.4,
+        "fill": 0.878
+      },
+      {
+        "scene": "review",
+        "text": "From 2048, the treaty's voting members can ask to rewrite the rules. But is every slice taken?",
+        "start": 48.7,
+        "seconds": 4.56,
+        "window": 5.23,
+        "fill": 0.872
+      },
+      {
+        "scene": "payoff",
+        "text": "No. One slice, Marie Byrd Land, has no flag at all: no country claims it.",
+        "start": 53.93,
+        "seconds": 3.5,
+        "window": 4.1,
+        "fill": 0.854
+      },
+      {
+        "scene": "loop",
+        "text": "Nobody's, or cut up for good: which should it be? Until then, three countries keep claiming one slice.",
+        "start": 58.03,
+        "seconds": 4.28,
+        "window": 4.93,
+        "fill": 0.868
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "geo-claim-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9,
+    "lufs": -14.4,
+    "music_under_voice_db": 30.5
+  },
+  "craft_problems": [
+    "note: 22 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 4.889,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

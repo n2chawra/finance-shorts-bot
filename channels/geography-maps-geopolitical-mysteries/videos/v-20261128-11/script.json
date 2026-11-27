@@ -1,0 +1,1250 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 31947,
+ "story": "why_shaped",
+ "shape": "the-frozen-slices",
+ "currency": "USD",
+ "style": {
+  "palette": "paper",
+  "genre": "explorer",
+  "key": "D",
+  "bpm": 76,
+  "look": {
+   "stage": "studio",
+   "header": "ribbon",
+   "holder": "blackboard",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "conflict",
+ "cta": "Should Antarctica stay nobody's? Comment",
+ "feed_id": "2026-11-27-who-owns-antarctica",
+ "facts": [
+  {
+   "label": "Year the Antarctic Treaty was signed",
+   "value": 1959,
+   "unit": "year",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System",
+   "fixed": true
+  },
+  {
+   "label": "Nations that signed the Antarctic Treaty in the first place",
+   "value": 12,
+   "unit": "count",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System",
+   "fixed": true
+  },
+  {
+   "label": "Original signatories that claim part of the continent",
+   "value": 7,
+   "unit": "count",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System",
+   "fixed": true
+  },
+  {
+   "label": "Parties to the Antarctic Treaty",
+   "value": 58,
+   "unit": "count",
+   "as_of": "2026-11-27",
+   "source": "Antarctic Treaty Secretariat",
+   "url": "https://www.ats.aq/devAS/Parties?lang=e",
+   "latest": true,
+   "checked": "2026-11-27"
+  },
+  {
+   "label": "Year from which a party may ask to review the treaty system",
+   "value": 2048,
+   "unit": "year",
+   "as_of": "2026-11-27",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 3.0,
+  "words": "Three flags, *no owner*",
+  "tag": "Antarctica",
+  "angle": "claim",
+  "who": "narrator",
+  "references": [
+   {
+    "id": "KXvobbCxeRQ",
+    "views": 16000000,
+    "what": "the plan's demand Short: Antarctica with its claim slices"
+   }
+  ],
+  "pattern": "Antarctica's overlapping claims on the map with a short claim; ours shows the three striped slices and flags on our vintage map"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Britain, Chile and Argentina all claim one piece of Antarctica. None can have it.",
+   "events": {
+    "britain": {
+     "word": "Britain"
+    },
+    "chile": {
+     "word": "Chile"
+    },
+    "argentina": {
+     "word": "Argentina"
+    },
+    "claim": {
+     "word": "claim"
+    },
+    "antarctica": {
+     "word": "Antarctica"
+    },
+    "none": {
+     "word": "none"
+    },
+    "have": {
+     "word": "have"
+    },
+    "one": {
+     "word": "one"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the Antarctic Peninsula, the thin arm of ice reaching up toward South America",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "one",
+      "size": "close"
+     },
+     {
+      "at": "antarctica",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "britain",
+      "what": "a blue striped slice sweeps across the peninsula and a British flag plants on it"
+     },
+     {
+      "at": "chile",
+      "what": "a red striped slice sweeps over it and a Chilean flag plants beside"
+     },
+     {
+      "at": "argentina",
+      "what": "a sky-blue striped slice piles on and an Argentine flag lands"
+     },
+     {
+      "at": "claim",
+      "what": "the three flags wave against each other"
+     },
+     {
+      "at": "one",
+      "what": "the overlap where all three cross flashes"
+     },
+     {
+      "at": "antarctica",
+      "what": "ANTARCTICA writes along the ice"
+     },
+     {
+      "at": "none",
+      "what": "frost creeps over all three slices"
+     },
+     {
+      "at": "have",
+      "what": "the three flags freeze and stop waving"
+     }
+    ],
+    "things": [
+     "antarctic peninsula",
+     "three striped claim slices",
+     "british flag",
+     "chilean flag",
+     "argentine flag",
+     "antarctica label",
+     "frost"
+    ]
+   }
+  },
+  {
+   "id": "slices",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "{fact3} countries have cut this ice into slices, like a cake, from the South Pole.",
+   "events": {
+    "countries": {
+     "word": "countries"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "slices": {
+     "word": "slices"
+    },
+    "cake": {
+     "word": "cake"
+    },
+    "south": {
+     "word": "South"
+    },
+    "pole": {
+     "word": "Pole"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Slices",
+    "place": "on the map: the whole of Antarctica seen from above the South Pole, the Southern Ocean round it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "cut",
+      "size": "wide"
+     },
+     {
+      "at": "pole",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "countries",
+      "what": "a sign at the pole counts the claimants"
+     },
+     {
+      "at": "cut",
+      "what": "the camera pulls back to the whole continent and a cut line runs out from the pole"
+     },
+     {
+      "at": "slices",
+      "what": "seven coloured slices fan out round the continent one after another"
+     },
+     {
+      "at": "cake",
+      "what": "the slices lift apart a little like a cut cake"
+     },
+     {
+      "at": "south",
+      "what": "a pin drops on the South Pole"
+     },
+     {
+      "at": "pole",
+      "what": "the slices settle back and the pin pulses"
+     }
+    ],
+    "things": [
+     "whole antarctica",
+     "seven claim slices",
+     "south pole pin",
+     "claims sign",
+     "southern ocean"
+    ],
+    "fig": {
+     "claims": "{fact3}"
+    }
+   }
+  },
+  {
+   "id": "britain",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Britain draws the first line, back in its empire days, a slice down from the tip of South America.",
+   "events": {
+    "year": {
+     "word": "empire"
+    },
+    "britain": {
+     "word": "Britain"
+    },
+    "first": {
+     "word": "first"
+    },
+    "line": {
+     "word": "line"
+    },
+    "slice": {
+     "word": "slice"
+    },
+    "tip": {
+     "word": "tip"
+    },
+    "south": {
+     "word": "South"
+    },
+    "america": {
+     "word": "America"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Britain",
+    "place": "on the map: the year slider over Antarctica, the Falklands and the tip of South America at the top edge",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "tip",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "britain",
+      "what": "the British flag plants at the edge of the ice"
+     },
+     {
+      "at": "first",
+      "what": "the year slider appears at the top"
+     },
+     {
+      "at": "line",
+      "what": "a ruler draws a straight line out from the pole"
+     },
+     {
+      "at": "year",
+      "what": "the slider lands on the year"
+     },
+     {
+      "at": "slice",
+      "what": "the blue slice sweeps open between the two lines"
+     },
+     {
+      "at": "tip",
+      "what": "the camera pans up to the tip of South America"
+     },
+     {
+      "at": "america",
+      "what": "SOUTH AMERICA writes on the land at the top"
+     }
+    ],
+    "things": [
+     "year slider",
+     "ruler line",
+     "british slice",
+     "british flag",
+     "tip of south america",
+     "falkland islands"
+    ]
+   }
+  },
+  {
+   "id": "race",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "New Zealand follows, then France, then Australia, which takes the biggest slice of all.",
+   "events": {
+    "new": {
+     "word": "New"
+    },
+    "zealand": {
+     "word": "Zealand"
+    },
+    "follows": {
+     "word": "follows"
+    },
+    "france": {
+     "word": "France"
+    },
+    "australia": {
+     "word": "Australia"
+    },
+    "biggest": {
+     "word": "biggest"
+    },
+    "all": {
+     "word": "all"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Race",
+    "place": "on the map: the far side of Antarctica facing New Zealand and Australia, the year slider running",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "australia",
+      "size": "medium"
+     },
+     {
+      "at": "biggest",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "zealand",
+      "what": "the slider runs on and New Zealand's slice opens below the Ross Sea with its flag"
+     },
+     {
+      "at": "follows",
+      "what": "the slider ticks on"
+     },
+     {
+      "at": "france",
+      "what": "France's thin slice opens with its flag"
+     },
+     {
+      "at": "australia",
+      "what": "Australia's two slices open either side of France's"
+     },
+     {
+      "at": "biggest",
+      "what": "Australia's slices glow and lift, the biggest on the map"
+     },
+     {
+      "at": "all",
+      "what": "the camera pulls back to show them against the rest"
+     }
+    ],
+    "things": [
+     "year slider",
+     "new zealand slice",
+     "french slice",
+     "australian slices",
+     "three flags",
+     "ross sea"
+    ]
+   }
+  },
+  {
+   "id": "norway",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Norway takes the slice facing Africa, just months before the Second World War.",
+   "events": {
+    "year": {
+     "word": "Norway"
+    },
+    "norway": {
+     "word": "Norway"
+    },
+    "slice": {
+     "word": "slice"
+    },
+    "facing": {
+     "word": "facing"
+    },
+    "africa": {
+     "word": "Africa"
+    },
+    "months": {
+     "word": "months"
+    },
+    "war": {
+     "word": "war"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Norway",
+    "place": "on the map: the coast of Antarctica facing Africa, the tip of South Africa at the top",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "africa",
+      "size": "medium"
+     },
+     {
+      "at": "war",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "year",
+      "what": "the slider lands on the year and the Norwegian flag plants on the ice"
+     },
+     {
+      "at": "slice",
+      "what": "Norway's slice sweeps open"
+     },
+     {
+      "at": "facing",
+      "what": "the camera pans up toward Africa"
+     },
+     {
+      "at": "africa",
+      "what": "AFRICA writes on the land at the top"
+     },
+     {
+      "at": "months",
+      "what": "the slider's year flashes"
+     },
+     {
+      "at": "war",
+      "what": "the sky behind the slider darkens red and the map dims"
+     }
+    ],
+    "things": [
+     "year slider",
+     "norwegian slice",
+     "norwegian flag",
+     "tip of africa"
+    ]
+   }
+  },
+  {
+   "id": "overlap",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Then Chile and Argentina draw theirs right across Britain's, and three flags land on one peninsula.",
+   "events": {
+    "chile": {
+     "word": "Chile"
+    },
+    "argentina": {
+     "word": "Argentina"
+    },
+    "across": {
+     "word": "across"
+    },
+    "britains": {
+     "word": "Britain's"
+    },
+    "three": {
+     "word": "three"
+    },
+    "flags": {
+     "word": "flags"
+    },
+    "peninsula": {
+     "word": "peninsula"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Overlap",
+    "place": "on the map: back on the peninsula, the British slice already there",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "three",
+      "size": "close"
+     },
+     {
+      "at": "peninsula",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "chile",
+      "what": "Chile's red stripes sweep in over the British slice"
+     },
+     {
+      "at": "argentina",
+      "what": "Argentina's stripes sweep over both"
+     },
+     {
+      "at": "across",
+      "what": "the crossing edges flash red"
+     },
+     {
+      "at": "britains",
+      "what": "the British slice shakes under the other two"
+     },
+     {
+      "at": "three",
+      "what": "three flags drop onto the peninsula one by one"
+     },
+     {
+      "at": "flags",
+      "what": "they wave against each other"
+     },
+     {
+      "at": "peninsula",
+      "what": "PENINSULA writes along the ice"
+     }
+    ],
+    "things": [
+     "peninsula",
+     "three striped slices",
+     "three flags",
+     "year slider"
+    ]
+   }
+  },
+  {
+   "id": "shots",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "At Hope Bay, on the very tip, Argentine soldiers even fire shots over a British team's heads.",
+   "events": {
+    "hope": {
+     "word": "Hope"
+    },
+    "tip": {
+     "word": "tip"
+    },
+    "soldiers": {
+     "word": "soldiers"
+    },
+    "fire": {
+     "word": "fire"
+    },
+    "over": {
+     "word": "over"
+    },
+    "british": {
+     "word": "British"
+    },
+    "heads": {
+     "word": "heads"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Shots",
+    "place": "on the map: Hope Bay at the very tip of the Antarctic Peninsula, a British hut on the shore",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "tip",
+      "size": "close"
+     },
+     {
+      "at": "heads",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "hope",
+      "what": "a pin drops on Hope Bay and HOPE BAY writes on"
+     },
+     {
+      "at": "tip",
+      "what": "the camera pushes in on the tip"
+     },
+     {
+      "at": "soldiers",
+      "what": "two small Argentine soldiers and their flag rise up the slope"
+     },
+     {
+      "at": "fire",
+      "what": "muzzle flashes and tracer lines streak over the bay"
+     },
+     {
+      "at": "over",
+      "what": "the tracers pass high over the hut"
+     },
+     {
+      "at": "british",
+      "what": "the British team by the hut under their flag"
+     },
+     {
+      "at": "heads",
+      "what": "the team duck with their arms over their heads"
+     }
+    ],
+    "things": [
+     "hope bay",
+     "british hut",
+     "british team",
+     "argentine soldiers",
+     "tracer lines",
+     "two flags"
+    ]
+   }
+  },
+  {
+   "id": "treaty",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "So who wins? In {fact1}, {fact2} nations sign a treaty in Washington, and every line on this map freezes.",
+   "events": {
+    "who": {
+     "word": "who"
+    },
+    "wins": {
+     "word": "wins"
+    },
+    "year": {
+     "word": "In"
+    },
+    "nations": {
+     "word": "nations"
+    },
+    "sign": {
+     "word": "sign"
+    },
+    "treaty": {
+     "word": "treaty"
+    },
+    "washington": {
+     "word": "Washington"
+    },
+    "line": {
+     "word": "line"
+    },
+    "freezes": {
+     "word": "freezes"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Treaty",
+    "place": "on the map: the whole sliced continent, a treaty scroll laid over the Southern Ocean",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "treaty",
+      "size": "medium"
+     },
+     {
+      "at": "freezes",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "who",
+      "what": "the three flags on the peninsula tug at each other"
+     },
+     {
+      "at": "wins",
+      "what": "a question mark pops over the peninsula"
+     },
+     {
+      "at": "year",
+      "what": "the slider stops on the year"
+     },
+     {
+      "at": "nations",
+      "what": "a ring of small flags lines up round the continent"
+     },
+     {
+      "at": "sign",
+      "what": "a pen signs a treaty scroll at the bottom of the map"
+     },
+     {
+      "at": "treaty",
+      "what": "the scroll unrolls with its count on it"
+     },
+     {
+      "at": "washington",
+      "what": "a seal stamps on the scroll"
+     },
+     {
+      "at": "line",
+      "what": "every slice line lights up"
+     },
+     {
+      "at": "freezes",
+      "what": "frost and ice crystals sweep over every slice and the treaty line draws round the ice"
+     }
+    ],
+    "things": [
+     "treaty scroll",
+     "pen",
+     "twelve flags",
+     "seal",
+     "frozen slice lines",
+     "treaty line at sixty south"
+    ],
+    "fig": {
+     "nations": "{fact2}",
+     "year": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "rules",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "No country grows its slice, no army builds a base, and no bomb is tested on the ice.",
+   "events": {
+    "country": {
+     "word": "country"
+    },
+    "grows": {
+     "word": "grows"
+    },
+    "army": {
+     "word": "army"
+    },
+    "base": {
+     "word": "base"
+    },
+    "bomb": {
+     "word": "bomb"
+    },
+    "tested": {
+     "word": "tested"
+    },
+    "ice": {
+     "word": "ice"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Rules",
+    "place": "on the map: the frozen continent, close on the ice inside the slices",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "army",
+      "size": "close"
+     },
+     {
+      "at": "ice",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "country",
+      "what": "a slice edge tries to push outward"
+     },
+     {
+      "at": "grows",
+      "what": "it snaps back and a red cross stamps on it"
+     },
+     {
+      "at": "army",
+      "what": "a little fort rises on the ice"
+     },
+     {
+      "at": "base",
+      "what": "a red cross stamps over the fort"
+     },
+     {
+      "at": "bomb",
+      "what": "a bomb drops toward the ice"
+     },
+     {
+      "at": "tested",
+      "what": "a red cross stamps over the bomb"
+     },
+     {
+      "at": "ice",
+      "what": "the camera settles back on the white ice"
+     }
+    ],
+    "things": [
+     "slice edge",
+     "fort",
+     "bomb",
+     "three red crosses",
+     "ice"
+    ]
+   }
+  },
+  {
+   "id": "parties",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Today, {fact4} countries are in the treaty, and bases from many of them sit inside other countries' slices.",
+   "events": {
+    "today": {
+     "word": "Today"
+    },
+    "countries": {
+     "word": "countries"
+    },
+    "bases": {
+     "word": "bases"
+    },
+    "many": {
+     "word": "many"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "slices": {
+     "word": "slices"
+    },
+    "treaty": {
+     "word": "treaty"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Parties",
+    "place": "on the map: the whole continent with research stations dotted over the slices",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "bases",
+      "size": "medium"
+     },
+     {
+      "at": "slices",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "today",
+      "what": "the treaty scroll's counter climbs"
+     },
+     {
+      "at": "countries",
+      "what": "the count lands on the scroll"
+     },
+     {
+      "at": "treaty",
+      "what": "a ring of small flags fills round the ocean"
+     },
+     {
+      "at": "bases",
+      "what": "red station huts pop up over the slices one after another"
+     },
+     {
+      "at": "many",
+      "what": "more stations pop up"
+     },
+     {
+      "at": "inside",
+      "what": "a station blinks inside the New Zealand slice"
+     },
+     {
+      "at": "slices",
+      "what": "the stations' lamps blink across all the slices"
+     }
+    ],
+    "things": [
+     "treaty scroll counter",
+     "ring of flags",
+     "research stations",
+     "slices"
+    ],
+    "fig": {
+     "parties": "{fact4}"
+    }
+   }
+  },
+  {
+   "id": "review",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "From {fact5}, the treaty's voting members can ask to rewrite the rules. But is every slice taken?",
+   "events": {
+    "year": {
+     "word": "From"
+    },
+    "from": {
+     "word": "From"
+    },
+    "ask": {
+     "word": "ask"
+    },
+    "rules": {
+     "word": "rules"
+    },
+    "every": {
+     "word": "every"
+    },
+    "taken": {
+     "word": "taken"
+    },
+    "voting": {
+     "word": "voting"
+    },
+    "rewrite": {
+     "word": "rewrite"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Review",
+    "place": "on the map: close on the frozen East Antarctic slices, the treaty's rules-review scroll held up over them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "rewrite",
+      "size": "close"
+     },
+     {
+      "at": "every",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "year",
+      "what": "the slider lands on the year"
+     },
+     {
+      "at": "voting",
+      "what": "the ring of voting members' flags flickers"
+     },
+     {
+      "at": "ask",
+      "what": "a hand goes up from a station"
+     },
+     {
+      "at": "rewrite",
+      "what": "a magnifying glass slides over the treaty scroll"
+     },
+     {
+      "at": "rules",
+      "what": "the frost on the slices thins a little"
+     },
+     {
+      "at": "every",
+      "what": "every slice's edge lights in turn"
+     },
+     {
+      "at": "taken",
+      "what": "one gap between the slices flickers dark"
+     }
+    ],
+    "things": [
+     "year slider",
+     "rules review scroll",
+     "magnifying glass",
+     "raised hand",
+     "east antarctic slices",
+     "voting members' flags"
+    ],
+    "fig": {
+     "review": "{fact5}"
+    }
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "No. One slice, Marie Byrd Land, has no flag at all: no country claims it.",
+   "events": {
+    "no": {
+     "word": "No"
+    },
+    "one": {
+     "word": "one"
+    },
+    "slice": {
+     "word": "slice"
+    },
+    "marie": {
+     "word": "Marie"
+    },
+    "byrd": {
+     "word": "Byrd"
+    },
+    "land": {
+     "word": "Land"
+    },
+    "flag": {
+     "word": "flag"
+    },
+    "country": {
+     "word": "country"
+    },
+    "claims": {
+     "word": "claims"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Payoff",
+    "place": "on the map: Marie Byrd Land, the empty slice between New Zealand's and Chile's",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "marie",
+      "size": "medium"
+     },
+     {
+      "at": "claims",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "no",
+      "what": "the camera swings toward the gap"
+     },
+     {
+      "at": "one",
+      "what": "the empty white slice starts to outline itself"
+     },
+     {
+      "at": "slice",
+      "what": "an empty white slice outlines itself"
+     },
+     {
+      "at": "marie",
+      "what": "MARIE BYRD LAND writes across it"
+     },
+     {
+      "at": "land",
+      "what": "a pin drops in its middle"
+     },
+     {
+      "at": "flag",
+      "what": "an empty flagpole rises with no flag"
+     },
+     {
+      "at": "country",
+      "what": "the neighbouring flags turn to look"
+     },
+     {
+      "at": "claims",
+      "what": "a sign NO CLAIM stamps on the empty slice"
+     }
+    ],
+    "things": [
+     "marie byrd land",
+     "empty slice",
+     "empty flagpole",
+     "no claim sign",
+     "neighbouring flags"
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Nobody's, or cut up for good: which should it be? Until then, three countries keep claiming one slice.",
+   "events": {
+    "nobodys": {
+     "word": "Nobody's"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "which": {
+     "word": "which"
+    },
+    "until": {
+     "word": "Until"
+    },
+    "three": {
+     "word": "three"
+    },
+    "claiming": {
+     "word": "claiming"
+    },
+    "slice": {
+     "word": "slice"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: the whole continent, then back down onto the peninsula",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "three",
+      "size": "medium"
+     },
+     {
+      "at": "slice",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "nobodys",
+      "what": "the whole continent turns white"
+     },
+     {
+      "at": "cut",
+      "what": "the slices crack back into place"
+     },
+     {
+      "at": "which",
+      "what": "a question mark swings over the pole"
+     },
+     {
+      "at": "until",
+      "what": "the camera glides up toward the peninsula"
+     },
+     {
+      "at": "three",
+      "what": "three flags rise on the peninsula"
+     },
+     {
+      "at": "claiming",
+      "what": "the three stripes sweep over each other"
+     },
+     {
+      "at": "slice",
+      "what": "the frame settles on the hook's peninsula"
+     }
+    ],
+    "things": [
+     "whole continent",
+     "question mark",
+     "three flags",
+     "peninsula"
+    ]
+   }
+  }
+ ]
+}
