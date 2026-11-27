@@ -1,0 +1,223 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T00:41:16.616618+00:00",
+    "finishedAt": "2026-11-27T00:41:16.616618+00:00",
+    "notes": [
+      "description opens with 'how did a', already used by v-20261120-07",
+      "a global video is told in USD; rupees, pounds or euros make it local"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T00:41:23.079044+00:00",
+    "finishedAt": "2026-11-27T00:41:23.079044+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T00:41:27.734817+00:00",
+    "finishedAt": "2026-11-27T00:41:27.734817+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T00:52:30.427593+00:00",
+    "finishedAt": "2026-11-27T00:52:30.427593+00:00",
+    "notes": [
+      "beat 'sale'.params.layers[1].sub has a bad placeholder ('brands'); allowed: fact1, fact2, fact3, fact4",
+      "the picture shows figures the voice never says (sale {brands}): say each one where it appears, with what it means (\"he gets {x} now, and {y} waits ten years\"), or take it off the picture; viewers can't follow numbers nobody explains",
+      "note: the title 'Your Lipton Tea Bag Is Named After a Glasgow Shopkeeper' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T00:52:34.285085+00:00",
+    "finishedAt": "2026-11-27T00:52:34.285085+00:00",
+    "notes": [
+      "doc video: 10 different pictures for 8 beats; a Short needs at least 11 (about one per cut)",
+      "note: the title 'Your Lipton Tea Bag Is Named After a Glasgow Shopkeeper' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T00:52:42.208258+00:00",
+    "finishedAt": "2026-11-27T00:52:42.208258+00:00",
+    "notes": [
+      "beat 'start'.params.place[0] contains a typed number; use a placeholder: 'the Glasgow quays of the 1870s'",
+      "note: the title 'Your Lipton Tea Bag Is Named After a Glasgow Shopkeeper' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T00:52:45.288785+00:00",
+    "finishedAt": "2026-11-27T00:52:45.288785+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Your Lipton Tea Bag Is Named After a Glasgow Shopkeeper' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T00:54:27.710977+00:00",
+    "finishedAt": "2026-11-27T00:54:27.710977+00:00",
+    "notes": [
+      "4 facts confirmed (source URLs 503/405, so by page mirror/search): 1871 first shop = TheGlasgowStory ('first store in Stobcross Street opened in 1871') + Glasgow Live/Carluke Gazette + Undiscovered Scotland (TeaTime mag's 21st-birthday/1869 is an outlier); 1890 Ceylon = NPR story syndicated on KPBS ('arrived in Ceylon in June 1890', 'snapped up five estates'); 34 brands and EUR 4.5B cash-free/debt-free = Unilever 2021-11-18 release and CVC release in search results, plus Irish Times/Inside Retail. Verify list met: 'the tea business that held Lipton' (ekaterra, excl. India/Nepal/Indonesia and Pepsi Lipton RTD), brokers twist attributed to NPR ('only a small part of the tea came from his own estates'; slogan 'Direct from tea garden to tea pot'), no birth year. LIPTON-on-factory backed by the NYPL Lipton Series postcard of Bunyan Estate. Disclaimer ends description; no advice or accusations. Note: hook's 'Grace's Guide' record card is a paraphrase styled as a record."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T00:54:38.502432+00:00",
+    "finishedAt": "2026-11-27T00:55:44.350754+00:00",
+    "notes": [
+      "fingerprint: 3b18f17912bf5b3f.e3b0c44298fc1c14",
+      "text '1890' at 17.9 s is 1.7 px, below the 44 px minimum",
+      "text 'Ceylon, now Sri Lanka' at 17.9 s is 1.2 px, below the 44 px minimum",
+      "5 of 10 stills are mostly empty background (at 0 s, 5 s, 15 s, 20 s, 30 s): fill the frame (a set, the cast big, money as a thing)"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T00:56:28.894167+00:00",
+    "finishedAt": "2026-11-27T00:56:28.894167+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Your Lipton Tea Bag Is Named After a Glasgow Shopkeeper' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T00:56:32.656250+00:00",
+    "finishedAt": "2026-11-27T00:56:53.933756+00:00",
+    "notes": [
+      "fingerprint: 576c69da76bc4bb2.e3b0c44298fc1c14",
+      "42 s, forest/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T00:57:05.891202+00:00",
+    "finishedAt": "2026-11-27T00:57:26.040821+00:00",
+    "notes": [
+      "fingerprint: 07476c13325ed095.e3b0c44298fc1c14",
+      "42 s, forest/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T00:59:52.949687+00:00",
+    "finishedAt": "2026-11-27T00:59:52.949687+00:00",
+    "notes": [
+      "[scene] doc document layer, beat hook, 0.8-1.6s: the push (pushAt lipton, push 2.3) centres on the empty middle of the Grace's Guide page, so the highlighted fact line 'in Glasgow in 1871' and the lines above it run off the left edge; at 0.0s the page is ~75% blank paper with the text in a small top-left column, so on mute the first second shows a blank sheet, not a readable record. The push must land on the hi line (or the lines must fill the page)",
+      "[scene] doc depth layer, beat start, 12.8-14.4s: the title 'NO MIDDLEMEN' and sub 'Thomas Lipton, grocer' are drawn behind Lipton's cut-out head, reading 'NO MID...EN' / 'THOMAS' - text hidden by a face. Title must sit clear of the cut-out (or [script]: move focus/title so it isn't behind him)",
+      "[scene] beat sale entry, 29.6s: a full-frame plain grey/white frame with nothing on it between the pickers and the Unilever poster - empty scene (flash/whip or poster layer not yet drawn)",
+      "[script] beat gardens, 3.2-9.6s: one mug photo held ~6.3 s with only the lowerThird and label changing (4.8-8.8s are the same picture); the planned close/wide camera barely shows. Below the bar of the reference Shorts (Toyota, Krispy Kreme: a new picture every 3-5 s) - give the beat a second picture/device on 'gardens' or 'world' (e.g. a garden or map of Ceylon)",
+      "[script] beat brokers, 24.0-28.8s: the photo's printed caption 'C.W.S. MAHAVILLA GROUP OF TEA ESTA...' runs off the bottom/right edge; reframe (focus/amount) to crop it out"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:02:24.494035+00:00",
+    "finishedAt": "2026-11-27T01:02:24.494035+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Your Lipton Tea Bag Is Named After a Glasgow Shopkeeper' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:02:27.853041+00:00",
+    "finishedAt": "2026-11-27T01:02:53.612754+00:00",
+    "notes": [
+      "fingerprint: 394ac27f3036e074.e3b0c44298fc1c14",
+      "42 s, forest/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T01:03:44.246040+00:00",
+    "finishedAt": "2026-11-27T01:03:44.246040+00:00",
+    "notes": [
+      "Beat 'hook', params.layers[0].lines: the card is typeset as a Grace's Guide RECORD, so every line reads as that source's text, but the page can't be opened (503) and two claims are not confirmed. (a) 'selling ham, butter and eggs cheaply': sources tie ham, butter and eggs to his parents' Crown Street shop (Wikipedia, Undiscovered Scotland). For his own Stobcross Street shop only blogs and picture captions say hams and dairy, and no two reputable outlets agree. (b) 'was born in Glasgow to Irish parents': his birthplace and date are disputed (historian James MacKay doubts Lipton's own account; the topic's verify list keeps the birth details out), and the parents are recorded as Ulster-Scots from County Fermanagh. Fix: cut the card to lines the sources confirm, e.g. 'Thomas Lipton, grocer, opened his first shop, Lipton's Market, in Stobcross Street, Glasgow, in {fact1}' plus, if wanted, 'After some years in America...', 'His shops spread across Britain' and the Ceylon line, all confirmed. Or drop the Grace's Guide record styling. Everything else re-checked and confirmed: the 'No middlemen' label (start) matches the narration and NPR (he wanted to stop buying from brokers); the Lipton Ice Tea glass (gardens) and the NYPL 'Tea Estate with Pluckers' postcard (brokers) show no claim and fit their lines; all 4 sourced facts as in the earlier pass."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:04:10.746259+00:00",
+    "finishedAt": "2026-11-27T01:04:10.746259+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'Your Lipton Tea Bag Is Named After a Glasgow Shopkeeper' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:04:14.005741+00:00",
+    "finishedAt": "2026-11-27T01:04:34.236484+00:00",
+    "notes": [
+      "fingerprint: f24e49a168b82f08.e3b0c44298fc1c14",
+      "42 s, forest/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:04:46.342606+00:00",
+    "finishedAt": "2026-11-27T01:04:46.342606+00:00",
+    "notes": [
+      "Re-review after the hook card fix: every line on the Grace's Guide card is now confirmed. Some years in America, then home to Glasgow: Grace's Guide (search summary) and Undiscovered Scotland, 1865-1870. Lipton's Market, Stobcross Street, {fact1}=1871: TheGlasgowStory and Grace's Guide. Shops spread across Britain: Grace's Guide and Undiscovered Scotland (300 stores by 1888). Later bought Ceylon estates to sell tea from his own gardens: NPR (June 1890, 'Direct from tea garden to tea pot'). The disputed birth line and the ham/butter/eggs line are gone. Unchanged and confirmed: 'No middlemen' label, the Ice Tea glass and pluckers postcard images (no claims), all 4 sourced facts (1871, 1890, 34 brands, EUR 4.5B), and the disclaimer."
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:05:53.072859+00:00",
+    "finishedAt": "2026-11-27T01:05:53.072859+00:00",
+    "notes": [
+      "Re-review on 0.8s dense stills: record card push lands on the highlighted 'Stobcross Street, Glasgow, in 1871' line (only body-text edges cropped by the push); 'No middlemen' is now a label clear of Lipton's face; sale beat enters with a 10-frame zoom (29.6s is its first fade-in frame, not a held empty scene); gardens cuts mug -> Lipton Ice Tea glass on 'world'; brokers uses the NYPL pluckers photo with no printed caption; 8 places, layout/craft clean, audio -1.0/-18.2 dB, 42 s, disclaimer in description, loop and pick-one close OK.",
+      "fingerprint: f24e49a168b82f08.e3b0c44298fc1c14"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:06:03.660365+00:00",
+    "finishedAt": "2026-11-27T01:09:02.591380+00:00",
+    "notes": [
+      "42 s, forest/dossier, peak -1.0 dB, mean -18.2 dB",
+      "warning: integrated loudness -16.3 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "warning: the music sits only 17.6 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-27T01:09:07.390712+00:00",
+    "finishedAt": "2026-11-27T01:09:07.390712+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

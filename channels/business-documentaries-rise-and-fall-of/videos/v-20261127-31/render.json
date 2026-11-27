@@ -1,0 +1,113 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 51873,
+  "duration_sec": 42,
+  "tempo": 1.2,
+  "style": {
+    "palette": "forest",
+    "genre": "dossier",
+    "key": "E",
+    "bpm": 80
+  },
+  "voice": {
+    "name": "am_fenrir",
+    "base_speed": 1.35,
+    "cast": {
+      "narrator": "am_fenrir",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Your Lipton tea bag is named after a shopkeeper from Glasgow.",
+        "start": 0.3,
+        "seconds": 2.38,
+        "window": 3.03,
+        "fill": 0.785
+      },
+      {
+        "scene": "gardens",
+        "text": "That shopkeeper, Thomas Lipton, ended up owning tea gardens on the other side of the world. So how does a grocer get tea gardens?",
+        "start": 3.33,
+        "seconds": 5.59,
+        "window": 6.27,
+        "fill": 0.892
+      },
+      {
+        "scene": "start",
+        "text": "He opened his first Glasgow shop in 1871, and he wanted no middlemen between him and his customers.",
+        "start": 9.6,
+        "seconds": 4.87,
+        "window": 5.57,
+        "fill": 0.874
+      },
+      {
+        "scene": "ceylon",
+        "text": "So in 1890 he went to Ceylon, now Sri Lanka, and bought tea estates of his own.",
+        "start": 15.17,
+        "seconds": 3.71,
+        "window": 4.37,
+        "fill": 0.849
+      },
+      {
+        "scene": "estate",
+        "text": "His packs promised tea straight from his gardens, and his name went up over the factory.",
+        "start": 19.53,
+        "seconds": 3.32,
+        "window": 3.97,
+        "fill": 0.836
+      },
+      {
+        "scene": "brokers",
+        "text": "But his gardens could never fill every pack. NPR found he bought from brokers too, and only a small part came from his own estates.",
+        "start": 23.5,
+        "seconds": 5.75,
+        "window": 6.4,
+        "fill": 0.898
+      },
+      {
+        "scene": "sale",
+        "text": "The name stuck anyway. In the end, Unilever sold the tea business that held Lipton, 34 brands in all, for €4.5B.",
+        "start": 29.9,
+        "seconds": 6.78,
+        "window": 7.4,
+        "fill": 0.916
+      },
+      {
+        "scene": "loop",
+        "text": "His own gardens or the brokers: which one filled your cup? Either way, look closely, because",
+        "start": 37.3,
+        "seconds": 4.0,
+        "window": 4.67,
+        "fill": 0.857
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "doc-document-first": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.2,
+    "lufs": -16.3,
+    "music_under_voice_db": 17.6
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.891,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}
