@@ -2,13 +2,6 @@
   "note": "The weekly loop's first challengers, from the research (24 Nov 2026): what the research was unsure of, ranked, alternating first-second and look tests.",
   "candidates": [
     {
-      "id": "im-claim-hook",
-      "kind": "first-second",
-      "test": "a claim on the lit map as the first line ('Bharat ka sabse naya rajya sirf 12 saal purana hai') instead of a question",
-      "why": "3 of 4 references open on a question; the geography channel's best Short opened on a contradiction you can see",
-      "from": "research 2026-11-24"
-    },
-    {
       "id": "im-satellite-base",
       "kind": "look",
       "test": "a darker satellite-like base (more relief, less paper sheet) against the champion's spotlit paper India",
@@ -47,5 +40,20 @@
       "why": "In the niche scan's top 30 Shorts (research/scan.json topIds), every on-lane hit names the search phrase in the title (MIND SPARK 'India Political Map | All States & Union Territories', Study Buddy 'भारत का मानचित्र हिंदी में | सभी राज्य...', the 3,964x Study Spark breakout 'भारत का मानचित्र | राज्य और पड़ोसी देश'); 3 of the 6 on-lane titles carry Devanagari, none of our 3 do. The scan's title split backs keeping the question (median 25.8K views with a question vs 10.8K without) and a name (17.9K vs 3.6K). Low confidence: views tell reach, and stayed may not move. More evidence 2026-11-27: Geo Study's (858K subs) top Shorts this autumn carry a Devanagari question after the label (1.67M 'Aravalli Range & Rajasthan Climate | अरावली ने बांट दिया राजस्थान को दो हिस्सों में?'), and ACE IAS's best Shorts this week put the subject first and a pipe label after ('Western Ghats vs Eastern Ghats | 7 Major Differences', 326K on 19.5K subs).",
       "from": "research 2026-11-26"
     }
-  ]
+  ],
+  "history": [
+    {
+      "id": "im-claim-hook",
+      "kind": "first-second",
+      "test": "a claim on the lit map as the first line ('Bharat ka sabse naya rajya sirf 12 saal purana hai') instead of a question",
+      "why": "3 of 4 references open on a question; the geography channel's best Short opened on a contradiction you can see",
+      "from": "research 2026-11-24",
+      "cycle": 1,
+      "started": "2026-11-27",
+      "verdict": null
+    }
+  ],
+  "running": "im-claim-hook",
+  "cycle": 1,
+  "stayedByCycle": []
 }

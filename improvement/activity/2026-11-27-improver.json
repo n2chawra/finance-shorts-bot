@@ -1,0 +1,54 @@
+{
+  "agent": "improver",
+  "day": "2026-11-27",
+  "startedAt": "2026-11-27T16:52:23Z",
+  "finishedAt": "2026-11-27T16:55:30Z",
+  "summary": "Started India Maps' first weekly-loop test (im-claim-hook: a claim as the first line against the title's question). The other channels' tests are still waiting for data, and there were no owner notes.",
+  "decision": "acted",
+  "why": "India Maps makes 2 Shorts a day and had no challenger, so the top first-second entry on its list starts tonight. Geography (geo-claim-hook, day 3) and Craze & Crash (doc-document-first, day 3) each have 0 of 8 Shorts a side with data. How Tech and Disaster Desk make 1 Short a day (owner already told). main's pytest is red on the chogyal photo's missing head cut-out (outside every agent's files; auditor notification pytest-red-chogyal-head), so tonight's change stays in channel data files.",
+  "findings": [
+    {
+      "title": "Geography: geo-claim-hook waits",
+      "detail": "Day 3 of 7, 0 of 8 a side. Week of 23 Nov: n=2, 79.9% viewed, 0.613 stayed (week of 16 Nov: 61.9%, 0.571)."
+    },
+    {
+      "title": "Craze & Crash: doc-document-first waits",
+      "detail": "Day 3 of 7, 0 of 8 a side. Week of 23 Nov: n=2, 71.1% viewed, 0.456 stayed (0.404 the week before). 'QA failed after three rounds' (4x) are the text-over-photo Shorts fixed on 26 Nov."
+    },
+    {
+      "title": "How Tech Works: no challenger",
+      "detail": "1 Short a day. Week of 23 Nov: n=1, 58.1% viewed, 0.472 stayed."
+    },
+    {
+      "title": "Disaster Desk: dd-long-title-3d waits",
+      "detail": "0 of 4 long videos a side. Shorts week of 23 Nov: n=1, 62.5% viewed, 0.516 stayed."
+    },
+    {
+      "title": "India Maps: 1 Short with 48 h data",
+      "detail": "Channel stayed to watch over 14 days 35.6% (status.json). Cycle 1 starts tonight."
+    },
+    {
+      "title": "main's Python tests fail",
+      "detail": "generator/tests/test_images.py: the chogyal photo has no head cut-out (OpenCV found no face). 717 passed, 1 failed. A Python fix from any agent is blocked until the owner adds remotion/public/real/chogyal-head.png (steps in India Maps' auditor notification)."
+    }
+  ],
+  "changes": [
+    {
+      "title": "India Maps: weekly-loop cycle 1 started",
+      "detail": "im-claim-hook: on = the first spoken line is a claim about the lit state whose answer waits for the payoff; off = the champion's title question. Judged on stayed to watch, 8 Shorts a side within 7 days.",
+      "branch": "agent/improver/2026-11-27",
+      "experiment": "im-claim-hook"
+    },
+    {
+      "title": "Craze & Crash: proposal money-dkk-sek-chf marked adopted",
+      "detail": "The formatter landed on 26 Nov; only the status was missing.",
+      "branch": "agent/improver/2026-11-27"
+    },
+    {
+      "title": "How Tech Works: pace notification resolved",
+      "detail": "channel.json now has voiceSpeed.short 1.0.",
+      "branch": "agent/improver/2026-11-27"
+    }
+  ],
+  "nextCheck": "2026-11-28"
+}

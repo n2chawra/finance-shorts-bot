@@ -1,20 +1,20 @@
 {
  "note": "Written by python -m generator.impact (improver, nightly). weeks: Shorts by IST publish week; stayedToWatch = engaged views / views (did not swipe away); changes: Shorts 14 days before vs after each landed change (sameWeek = other changes within 3 days, so effects mix).",
- "updatedAt": "2026-11-26T17:01:52+00:00",
+ "updatedAt": "2026-11-27T16:54:58+00:00",
  "weeks": [
   {
    "week": "2026-11-16",
    "n": 9,
    "medianViews48h": 735,
-   "avgViewPct": 63.0,
+   "avgViewPct": 61.9,
    "stayedToWatch": 0.571,
-   "avgViewSec": 39.8,
+   "avgViewSec": 39.0,
    "videos": [
     {
      "id": "v-20261121-04",
      "title": "Hormuz shuts for a week. Who runs out first?",
      "day": "2026-11-21",
-     "views48h": 1217,
+     "views48h": 1214,
      "avgViewPct": 60.5,
      "stayedToWatch": 0.594
     },
@@ -24,15 +24,15 @@
      "day": "2026-11-20",
      "views48h": 1040,
      "avgViewPct": 61.1,
-     "stayedToWatch": 0.596
+     "stayedToWatch": 0.597
     },
     {
      "id": "v-20261122-12",
      "title": "Antarctica melts. Which countries vanish first?",
      "day": "2026-11-22",
-     "views48h": 1025,
-     "avgViewPct": 64.9,
-     "stayedToWatch": 0.574
+     "views48h": 1021,
+     "avgViewPct": 64.6,
+     "stayedToWatch": 0.572
     },
     {
      "id": "v-20261119-03",
@@ -54,17 +54,17 @@
      "id": "v-20261121-03",
      "title": "Who would settle Tristan da Cunha?",
      "day": "2026-11-21",
-     "views48h": 363,
-     "avgViewPct": 58.3,
-     "stayedToWatch": 0.481
+     "views48h": 362,
+     "avgViewPct": 48.7,
+     "stayedToWatch": 0.482
     },
     {
      "id": "v-20261122-11",
      "title": "Why are English cities poorer in the east?",
      "day": "2026-11-22",
-     "views48h": 258,
-     "avgViewPct": 54.1,
-     "stayedToWatch": 0.5
+     "views48h": 257,
+     "avgViewPct": 54,
+     "stayedToWatch": 0.499
     },
     {
      "id": "v-20261120-04",
@@ -73,6 +73,32 @@
      "views48h": 120,
      "avgViewPct": 82.3,
      "stayedToWatch": 0.618
+    }
+   ]
+  },
+  {
+   "week": "2026-11-23",
+   "n": 2,
+   "medianViews48h": 574.5,
+   "avgViewPct": 79.9,
+   "stayedToWatch": 0.613,
+   "avgViewSec": 48.3,
+   "videos": [
+    {
+     "id": "v-20261123-12",
+     "title": "The Strait of Malacca closes. Which way round?",
+     "day": "2026-11-23",
+     "views48h": 1033,
+     "avgViewPct": 93.8,
+     "stayedToWatch": 0.619
+    },
+    {
+     "id": "v-20261123-11",
+     "title": "Russia once ended at the Urals. Then what?",
+     "day": "2026-11-23",
+     "views48h": 116,
+     "avgViewPct": 66,
+     "stayedToWatch": 0.607
     }
    ]
   }
@@ -85,11 +111,11 @@
    "day": "2026-11-25",
    "description": "Water that rolls in as waves holds viewers through flood beats.",
    "before": {
-    "n": 9,
+    "n": 11,
     "medianViews48h": 735,
-    "avgViewPct": 63.0,
-    "stayedToWatch": 0.571,
-    "avgViewSec": 39.8
+    "avgViewPct": 65.2,
+    "stayedToWatch": 0.578,
+    "avgViewSec": 40.7
    },
    "after": {
     "n": 0,
@@ -111,19 +137,36 @@
    "before": {
     "n": 9,
     "medianViews48h": 735,
-    "avgViewPct": 63.0,
+    "avgViewPct": 61.9,
     "stayedToWatch": 0.571,
-    "avgViewSec": 39.8
+    "avgViewSec": 39.0
    },
    "after": {
-    "n": 0,
-    "medianViews48h": null,
-    "avgViewPct": null,
-    "stayedToWatch": null,
-    "avgViewSec": null
+    "n": 2,
+    "medianViews48h": 574.5,
+    "avgViewPct": 79.9,
+    "stayedToWatch": 0.613,
+    "avgViewSec": 48.3
    },
-   "afterVideos": [],
-   "viewsRatio": null,
+   "afterVideos": [
+    {
+     "id": "v-20261123-12",
+     "title": "The Strait of Malacca closes. Which way round?",
+     "day": "2026-11-23",
+     "views48h": 1033,
+     "avgViewPct": 93.8,
+     "stayedToWatch": 0.619
+    },
+    {
+     "id": "v-20261123-11",
+     "title": "Russia once ended at the Urals. Then what?",
+     "day": "2026-11-23",
+     "views48h": 116,
+     "avgViewPct": 66,
+     "stayedToWatch": 0.607
+    }
+   ],
+   "viewsRatio": 0.78,
    "sameWeek": 1
   },
   {
@@ -140,18 +183,18 @@
     "avgViewSec": 33.0
    },
    "after": {
-    "n": 8,
+    "n": 10,
     "medianViews48h": 812.0,
-    "avgViewPct": 64.0,
-    "stayedToWatch": 0.569,
-    "avgViewSec": 40.6
+    "avgViewPct": 66.2,
+    "stayedToWatch": 0.578,
+    "avgViewSec": 41.5
    },
    "afterVideos": [
     {
      "id": "v-20261121-04",
      "title": "Hormuz shuts for a week. Who runs out first?",
      "day": "2026-11-21",
-     "views48h": 1217,
+     "views48h": 1214,
      "avgViewPct": 60.5,
      "stayedToWatch": 0.594
     },
@@ -161,15 +204,23 @@
      "day": "2026-11-20",
      "views48h": 1040,
      "avgViewPct": 61.1,
-     "stayedToWatch": 0.596
+     "stayedToWatch": 0.597
+    },
+    {
+     "id": "v-20261123-12",
+     "title": "The Strait of Malacca closes. Which way round?",
+     "day": "2026-11-23",
+     "views48h": 1033,
+     "avgViewPct": 93.8,
+     "stayedToWatch": 0.619
     },
     {
      "id": "v-20261122-12",
      "title": "Antarctica melts. Which countries vanish first?",
      "day": "2026-11-22",
-     "views48h": 1025,
-     "avgViewPct": 64.9,
-     "stayedToWatch": 0.574
+     "views48h": 1021,
+     "avgViewPct": 64.6,
+     "stayedToWatch": 0.572
     },
     {
      "id": "v-20261119-03",
@@ -191,25 +242,17 @@
      "id": "v-20261121-03",
      "title": "Who would settle Tristan da Cunha?",
      "day": "2026-11-21",
-     "views48h": 363,
-     "avgViewPct": 58.3,
-     "stayedToWatch": 0.481
+     "views48h": 362,
+     "avgViewPct": 48.7,
+     "stayedToWatch": 0.482
     },
     {
      "id": "v-20261122-11",
      "title": "Why are English cities poorer in the east?",
      "day": "2026-11-22",
-     "views48h": 258,
-     "avgViewPct": 54.1,
-     "stayedToWatch": 0.5
-    },
-    {
-     "id": "v-20261120-04",
-     "title": "Why did Britain hide a power station inside a mountain?",
-     "day": "2026-11-20",
-     "views48h": 120,
-     "avgViewPct": 82.3,
-     "stayedToWatch": 0.618
+     "views48h": 257,
+     "avgViewPct": 54,
+     "stayedToWatch": 0.499
     }
    ],
    "viewsRatio": 67.67,
@@ -229,18 +272,18 @@
     "avgViewSec": 33.0
    },
    "after": {
-    "n": 8,
+    "n": 10,
     "medianViews48h": 812.0,
-    "avgViewPct": 64.0,
-    "stayedToWatch": 0.569,
-    "avgViewSec": 40.6
+    "avgViewPct": 66.2,
+    "stayedToWatch": 0.578,
+    "avgViewSec": 41.5
    },
    "afterVideos": [
     {
      "id": "v-20261121-04",
      "title": "Hormuz shuts for a week. Who runs out first?",
      "day": "2026-11-21",
-     "views48h": 1217,
+     "views48h": 1214,
      "avgViewPct": 60.5,
      "stayedToWatch": 0.594
     },
@@ -250,15 +293,23 @@
      "day": "2026-11-20",
      "views48h": 1040,
      "avgViewPct": 61.1,
-     "stayedToWatch": 0.596
+     "stayedToWatch": 0.597
+    },
+    {
+     "id": "v-20261123-12",
+     "title": "The Strait of Malacca closes. Which way round?",
+     "day": "2026-11-23",
+     "views48h": 1033,
+     "avgViewPct": 93.8,
+     "stayedToWatch": 0.619
     },
     {
      "id": "v-20261122-12",
      "title": "Antarctica melts. Which countries vanish first?",
      "day": "2026-11-22",
-     "views48h": 1025,
-     "avgViewPct": 64.9,
-     "stayedToWatch": 0.574
+     "views48h": 1021,
+     "avgViewPct": 64.6,
+     "stayedToWatch": 0.572
     },
     {
      "id": "v-20261119-03",
@@ -280,25 +331,17 @@
      "id": "v-20261121-03",
      "title": "Who would settle Tristan da Cunha?",
      "day": "2026-11-21",
-     "views48h": 363,
-     "avgViewPct": 58.3,
-     "stayedToWatch": 0.481
+     "views48h": 362,
+     "avgViewPct": 48.7,
+     "stayedToWatch": 0.482
     },
     {
      "id": "v-20261122-11",
      "title": "Why are English cities poorer in the east?",
      "day": "2026-11-22",
-     "views48h": 258,
-     "avgViewPct": 54.1,
-     "stayedToWatch": 0.5
-    },
-    {
-     "id": "v-20261120-04",
-     "title": "Why did Britain hide a power station inside a mountain?",
-     "day": "2026-11-20",
-     "views48h": 120,
-     "avgViewPct": 82.3,
-     "stayedToWatch": 0.618
+     "views48h": 257,
+     "avgViewPct": 54,
+     "stayedToWatch": 0.499
     }
    ],
    "viewsRatio": 67.67,
