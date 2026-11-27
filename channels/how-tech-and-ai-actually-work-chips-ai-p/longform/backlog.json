@@ -179,6 +179,39 @@
       "priority": "normal",
       "found": "2026-11-26",
       "status": "open"
+    },
+    {
+      "id": "tech-long-feed-id-shadowed",
+      "kind": "bug",
+      "title": "A long topic whose id is also in the Shorts feed loses its facts in the number check",
+      "detail": "2026-11-18-ai-question-to-answer exists in research/topics.json (3 facts) and longform/topics.json (5 facts). generator/topics.py get() searches the Shorts feed first, so check_facts rejected the long topic's GPT-3 facts for 96 layers and the 2,048-token window as 'not one of the feed topic's facts'. L-20261127-21 shipped without them ('dozens of layers', 'a limited number of tokens'). Auditor: look the long feed up first for a long script (get(..., fmt='long')), or make ids unique across feeds.",
+      "where": "script",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-27",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-3d-label-first-frame",
+      "kind": "craft",
+      "title": "3D painted labels are blank on a render tab's first frame",
+      "detail": "In L-20261127-21 every FigLabel3D text is missing in the 0.0 s still (f00000), even with the shot held until the label fonts load; by 5.0 s they read. Textures appear to upload one frame late. It costs one frame of the mp4 (1/30 s), but QA reads the 0.0 s still as the first frame. Improver: pre-draw plates on mount or delay the first frame of the 3D stage by one tick.",
+      "where": "scene",
+      "route": "adopt",
+      "priority": "low",
+      "found": "2026-11-27",
+      "status": "open"
+    },
+    {
+      "id": "tech-long-pin-blocked-by-variety",
+      "kind": "idea",
+      "title": "The owner's rocket pin can only be told as inside_when_you, which the last long video used",
+      "detail": "2026-11-19-rocket-33-engines (pin 2) lists only inside_when_you, and check-plan refuses the same format twice in a row, so Studio made the AI topic (how_ai_works) on 27 Nov. The rocket can go next run. Scout: give machine topics a second long format (see tech-long-format-how-its-built) so a pin isn't blocked by rotation.",
+      "where": "template",
+      "route": "adopt",
+      "priority": "normal",
+      "found": "2026-11-27",
+      "status": "open"
     }
   ]
 }
