@@ -132,13 +132,15 @@ export function liveInRepo<T extends { id: string }>(rows: T[], root: string = R
 }
 
 /** A channel's pack values the workers need (channels/<slug>/channel.json, generator/pack.py); channel #1's without one. */
-export function channelPack(slug: string, root: string = REPO): { name: string | null; uploadCategory: string; promoOnly: boolean } {
+export function channelPack(slug: string, root: string = REPO): { name: string | null; uploadCategory: string; promoOnly: boolean; language: string } {
   const file = path.join(root, "channels", slug, "channel.json");
   try {
-    const j = JSON.parse(readFileSync(file, "utf8")) as { name?: string; uploadCategory?: string; cadence?: { promoOnly?: unknown } };
+    const j = JSON.parse(readFileSync(file, "utf8")) as { name?: string; uploadCategory?: string; language?: string; cadence?: { promoOnly?: unknown } };
+    // the language the videos are spoken in: YouTube shows a video to viewers of its declared language
+    const language = /^[a-z]{2,3}(-[A-Za-z]{2,4})?$/.test(j.language ?? "") ? j.language! : "en";
     // promoOnly: its Shorts only promote its long videos (generator/promo.py; owner, 2026-11-25)
-    return { name: j.name ?? null, uploadCategory: /^\d+$/.test(j.uploadCategory ?? "") ? j.uploadCategory! : "22", promoOnly: j.cadence?.promoOnly === true };
+    return { name: j.name ?? null, uploadCategory: /^\d+$/.test(j.uploadCategory ?? "") ? j.uploadCategory! : "22", promoOnly: j.cadence?.promoOnly === true, language };
   } catch {
-    return { name: null, uploadCategory: "22", promoOnly: false };
+    return { name: null, uploadCategory: "22", promoOnly: false, language: "en" };
   }
 }
