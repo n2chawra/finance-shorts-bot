@@ -177,32 +177,92 @@
     },
     {
       "videoId": "L-20261123-31",
-      "verdict": "okay",
-      "headline": "The Crocs long video has 24 views and no watch data yet.",
+      "verdict": "miss",
+      "headline": "The Crocs long video has 49 views and a 2.5% click rate.",
       "why": [
         {
-          "text": "24 views; it is the channel's first long video, so there is nothing to compare with.",
-          "metric": "24 views",
-          "tab": "overview"
+          "text": "49 views; 77.8% came from related videos.",
+          "metric": "49 views",
+          "tab": "reach"
         },
         {
-          "text": "No Analytics rows yet, so % viewed is not known.",
-          "metric": "no Analytics",
+          "text": "2.54% CTR from 276 impressions.",
+          "metric": "2.54% CTR",
+          "tab": "reach"
+        },
+        {
+          "text": "32.2% viewed of a 15-minute video.",
+          "metric": "32.2% viewed",
           "tab": "engagement"
         }
       ],
       "viewersSaid": [],
-      "next": "Too early: check where viewers leave when Analytics lands.",
-      "writtenAt": "2026-11-26T17:05:00Z"
+      "next": "Test a thumbnail with the shoe itself and one number; the click rate, not the watch, is what holds it back.",
+      "writtenAt": "2026-11-27T17:10:00Z"
     },
     {
       "videoId": "v-20261124-32",
-      "verdict": "miss",
-      "headline": "Marvel's Captain America collateral Short has 231 views and no watch data yet.",
+      "verdict": "okay",
+      "headline": "Marvel's Captain America collateral kept viewers (54.5% stayed) but reached only 232.",
       "why": [
         {
-          "text": "231 views so far against the Shorts median of 670.5 in 48 hours.",
-          "metric": "231 views",
+          "text": "232 views against the Shorts median of 670 in 48 hours.",
+          "metric": "232 views",
+          "tab": "overview"
+        },
+        {
+          "text": "Stayed to watch 54.5% against the median 44.0%; 60.1% viewed against 54.9%.",
+          "metric": "54.5% stayed",
+          "tab": "engagement"
+        },
+        {
+          "text": "The biggest fall, 31.6 points at 5.6 s, is on \"Marvel had gone bankrupt.\".",
+          "metric": "-31.6 pts at 5.6 s",
+          "tab": "engagement"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Show what Marvel put up (the characters as collateral) before saying it went bankrupt.",
+      "writtenAt": "2026-11-27T17:10:00Z"
+    },
+    {
+      "videoId": "v-20261124-31",
+      "verdict": "miss",
+      "headline": "Juicero reached only 70 views and lost a fifth of viewers at the price of the packs.",
+      "why": [
+        {
+          "text": "70 views against the Shorts median of 670 in 48 hours.",
+          "metric": "70 views",
+          "tab": "overview"
+        },
+        {
+          "text": "53.1% viewed against the median 54.9%; held after the hook 13.8%.",
+          "metric": "53.1% viewed",
+          "tab": "engagement"
+        },
+        {
+          "text": "The biggest fall, 22.2 points at 8.2 s, is on \"$7, one glass at a time. So why buy the machine?\".",
+          "metric": "-22.2 pts at 8.2 s",
+          "tab": "engagement"
+        },
+        {
+          "text": "0 clicks from 34 impressions.",
+          "metric": "0% CTR",
+          "tab": "reach"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Show the hand-squeeze test (the story's most surprising fact) within the first 8 seconds instead of the pack prices.",
+      "writtenAt": "2026-11-27T17:10:00Z"
+    },
+    {
+      "videoId": "v-20261125-32",
+      "verdict": "okay",
+      "headline": "Blockbuster vs Netflix has 330 views and no watch data yet.",
+      "why": [
+        {
+          "text": "330 views against the Shorts median of 670 in 48 hours.",
+          "metric": "330 views",
           "tab": "overview"
         },
         {
@@ -212,8 +272,28 @@
         }
       ],
       "viewersSaid": [],
-      "next": "Too little data for a change: check its stayed to watch when Analytics lands.",
-      "writtenAt": "2026-11-26T17:05:00Z"
+      "next": "Too early: check its stayed to watch when Analytics lands (it carries the document-first challenger).",
+      "writtenAt": "2026-11-27T17:10:00Z"
+    },
+    {
+      "videoId": "v-20261125-34",
+      "verdict": "miss",
+      "headline": "FedEx's Las Vegas story has 19 views two days in.",
+      "why": [
+        {
+          "text": "19 views against the Shorts median of 670 in 48 hours.",
+          "metric": "19 views",
+          "tab": "overview"
+        },
+        {
+          "text": "No Analytics rows yet, so % viewed and drops are not known.",
+          "metric": "no Analytics",
+          "tab": "engagement"
+        }
+      ],
+      "viewersSaid": [],
+      "next": "Too little data for a change: check its reach when Analytics lands; a 19-view start points to the feed not testing it.",
+      "writtenAt": "2026-11-27T17:10:00Z"
     }
   ]
 }

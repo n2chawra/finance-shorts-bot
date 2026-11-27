@@ -231,7 +231,8 @@
       ],
       "severity": "medium",
       "found": "2026-10-23",
-      "status": "open"
+      "status": "fixed",
+      "fixed": "2026-11-28"
     },
     {
       "id": "dui-005",
@@ -1093,6 +1094,19 @@
       ],
       "severity": "low",
       "found": "2026-11-27",
+      "status": "open"
+    },
+    {
+      "id": "gen-010",
+      "kind": "bug",
+      "title": "A video run can add a person photo with no head, which breaks main's tests",
+      "detail": "generator.images cut leaves out the head when OpenCV finds no face (a face in profile), and script_problems only asks for a head when the photo is an actor, but test_the_library_photos_are_cut_out asks every person photo for one. v-20261127-62 shipped chogyal.jpg that way and main's pytest went red. Owner notification pytest-red-chogyal-head (india-maps). Fix later, once pytest is green: have cut() fail for a non-logo photo without a face unless --face is given or the entry is marked a prop-only sticker, so the run fixes it before ship instead of main breaking.",
+      "files": [
+        "generator/images.py",
+        "generator/tests/test_images.py"
+      ],
+      "severity": "high",
+      "found": "2026-11-28",
       "status": "open"
     }
   ]
