@@ -1,0 +1,347 @@
+{
+  "id": "v-20261127-11",
+  "createdAt": "2026-11-27T00:10:03.974168+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Why can't you drive from North to South America?",
+    "category": "roads",
+    "reach": "global",
+    "feed_id": "2026-11-27-darien-gap-no-road",
+    "map_answer": "the one gap in the highway's line: about 106 km between Yaviza in Panama and Turbo in Colombia, where the Darién rainforest and the Atrato marshes sit across the border"
+  },
+  "title": "Why does the road from Alaska to Argentina stop in Panama?",
+  "description": "One road runs from Alaska to Argentina. Why does it stop dead in Panama?\nThe Darién Gap, found on the map by driving the Pan-American Highway south until the tarmac runs out.\nSources: Wikipedia, Darién Gap (Nov 2026). The characters are not advisers.\nMaps simplified. Borders as recognised by the country each video is about.",
+  "hashtags": [
+    "#Shorts",
+    "#DarienGap",
+    "#PanAmericanHighway",
+    "#Geography",
+    "#Maps"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Finish the road or keep the gap? Comment",
+  "seed": 38214,
+  "style": {
+    "palette": "ember",
+    "genre": "explorer",
+    "key": "E",
+    "bpm": 78,
+    "look": {
+      "stage": "street",
+      "header": "ribbon",
+      "holder": "sign",
+      "entrance": "draw"
+    },
+    "voice": "bm_george",
+    "arms": {
+      "length": "60-80",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Why does the road from Alaska to Argentina stop in Panama?",
+        "start": 0.3,
+        "seconds": 2.86,
+        "window": 3.53,
+        "fill": 0.81
+      },
+      {
+        "scene": "highway",
+        "text": "It's the Pan-American Highway: about 30,000 kilometres of road, one line drawn down two whole continents.",
+        "start": 3.83,
+        "seconds": 4.95,
+        "window": 5.63,
+        "fill": 0.879
+      },
+      {
+        "scene": "north",
+        "text": "Start in Alaska and drive south: through Canada, the United States, Mexico, and down the thin neck of Central America.",
+        "start": 9.47,
+        "seconds": 5.39,
+        "window": 6.07,
+        "fill": 0.888
+      },
+      {
+        "scene": "yaviza",
+        "text": "Then at Yaviza, a small town in the jungle of eastern Panama, the tarmac simply ends.",
+        "start": 15.53,
+        "seconds": 4.03,
+        "window": 4.7,
+        "fill": 0.857
+      },
+      {
+        "scene": "gap",
+        "text": "The road only starts again at Turbo, in Colombia, about 106 kilometres away. That gap has a name: the Darién Gap.",
+        "start": 20.23,
+        "seconds": 5.9,
+        "window": 6.47,
+        "fill": 0.912
+      },
+      {
+        "scene": "jungle",
+        "text": "So what fills it? Steep mountains, thick rainforest, and on the Colombian side, a marsh 80 kilometres wide.",
+        "start": 26.7,
+        "seconds": 5.02,
+        "window": 5.67,
+        "fill": 0.885
+      },
+      {
+        "scene": "ship",
+        "text": "Drivers can't cross it. Instead they put their cars on a ship on Panama's Caribbean coast and sail around the gap to Colombia.",
+        "start": 32.37,
+        "seconds": 5.77,
+        "window": 6.43,
+        "fill": 0.897
+      },
+      {
+        "scene": "tries",
+        "text": "Road builders have drawn plans to close it for decades. So why is the gap still open?",
+        "start": 38.8,
+        "seconds": 3.97,
+        "window": 4.63,
+        "fill": 0.857
+      },
+      {
+        "scene": "park",
+        "text": "Because the gap is kept on purpose. In 1980, Panama made the jungle a national park: 5,790 square kilometres of protected forest.",
+        "start": 43.43,
+        "seconds": 7.38,
+        "window": 8.03,
+        "fill": 0.919
+      },
+      {
+        "scene": "cattle",
+        "text": "And the jungle works as a wall against a cattle disease, foot-and-mouth, keeping it from walking north out of South America to the herds beyond.",
+        "start": 51.47,
+        "seconds": 6.02,
+        "window": 6.67,
+        "fill": 0.903
+      },
+      {
+        "scene": "loop",
+        "text": "Finish the road or keep the jungle: which would you pick? That's why the road from Alaska to Argentina stops in Panama.",
+        "start": 58.13,
+        "seconds": 5.04,
+        "window": 5.73,
+        "fill": 0.88
+      }
+    ]
+  },
+  "durationSec": 64,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -15.9,
+    "lufs": -14.5,
+    "music_under_voice_db": 31.1
+  },
+  "experiments": {
+    "geo-claim-hook": "off"
+  },
+  "heard": {
+    "hookVoice": "bm_george",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after fixes: all 5 facts confirmed on en.wikipedia.org/wiki/Darién_Gap (about 30,000 km, roughly 106 km Yaviza-Turbo, marsh at least 80 km wide, park about 5,790 km2, established 1980); fact5 now unit year (shown 1980, spoken nineteen eighty); ship beat now loads cars on Panama's Caribbean coast (matches Colon-Cartagena container/RoRo shipping); verify items met, disclaimer present. Note: Wikipedia-only sourcing; a Britannica cross-check would strengthen it."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after the Yaviza fix: YAVIZA label now reads clearly above the pin from 16.5 to 23 s with the car stopping short and trees around (not over) it, one label through the yaviza->gap blend; every beat on the map in its own place with figures on signs/tags (highway sign, 106 KM bar, 80 KM marsh tag, park sign), flags shown, hook names the road and Panama without the answer, loop and pick-one close, disclaimer in description, layout/craft problems empty, audio -1.0/-15.9 dB, 64 s; level with the Malacca and Greenland references.",
+        "fingerprint: 930ca5d8aecab039.782017630d6f3077"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:19:37.350604+00:00",
+      "finishedAt": "2026-11-26T23:19:37.350604+00:00",
+      "notes": [
+        "style.bpm must be 72–80 for explorer"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:19:41.260023+00:00",
+      "finishedAt": "2026-11-26T23:19:41.260023+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:22:30.436526+00:00",
+      "finishedAt": "2026-11-26T23:22:30.436526+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:30:57.229158+00:00",
+      "finishedAt": "2026-11-26T23:30:57.229158+00:00",
+      "notes": [
+        "Beat 'park': the year fact5 (1980) has unit 'count', so it shows as '1,980' on the park sign and is spoken 'one thousand nine hundred eighty'. Set facts[4].unit to 'year' (renderer/engine/formatting.py prints 1980, voiced as a year). The value itself is confirmed: Wikipedia Darien Gap 'was established in 1980'.",
+        "Beat 'ship': 'At the end of the road they load their cars onto a ship' (and the moment 'the end of the road at Yaviza flashes') says cars are shipped from where the road ends at Yaviza. They are not: Yaviza is an inland river town; vehicles go by container/RoRo from Colon (Panama's Caribbean coast) to Cartagena (overlander shipping guides; Wikipedia notes past car ferries Colon-Cartagena were suspended). Reword, e.g. 'Drivers can't cross it. Instead they put their cars on a ship on Panama's Caribbean coast and sail around the gap to Colombia', and drop the Yaviza flash from that beat."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:31:16.863989+00:00",
+      "finishedAt": "2026-11-26T23:31:16.863989+00:00",
+      "notes": [
+        "facts[4] (1980 year, 2026-11-27) is not one of the feed topic's facts; copy them exactly",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:31:25.045756+00:00",
+      "finishedAt": "2026-11-26T23:31:25.045756+00:00",
+      "notes": [
+        "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:32:15.740418+00:00",
+      "finishedAt": "2026-11-26T23:32:15.740418+00:00",
+      "notes": [
+        "Re-review after fixes: all 5 facts confirmed on en.wikipedia.org/wiki/Darién_Gap (about 30,000 km, roughly 106 km Yaviza-Turbo, marsh at least 80 km wide, park about 5,790 km2, established 1980); fact5 now unit year (shown 1980, spoken nineteen eighty); ship beat now loads cars on Panama's Caribbean coast (matches Colon-Cartagena container/RoRo shipping); verify items met, disclaimer present. Note: Wikipedia-only sourcing; a Britannica cross-check would strengthen it."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:30:07.591648+00:00",
+      "finishedAt": "2026-11-26T23:32:35.892480+00:00",
+      "notes": [
+        "fingerprint: 1c1fd7ed192dbd04.4cb41a7bdbc9ca56",
+        "2.0 s with nothing new on screen in beat 'park' (at most 1.8 s): add an action on the phrase being said there",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:33:21.761908+00:00",
+      "finishedAt": "2026-11-26T23:35:16.132187+00:00",
+      "notes": [
+        "fingerprint: a46f7951dbd63dd9.db0f6211dc9891d6",
+        "2.0 s with nothing new on screen in beat 'highway' (at most 1.8 s): add an action on the phrase being said there",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:36:54.833054+00:00",
+      "finishedAt": "2026-11-26T23:38:43.622108+00:00",
+      "notes": [
+        "fingerprint: 930ca5d8aecab039.7b35c2be91aeaba7",
+        "64 s, ember/explorer (preview only)",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-26T23:41:00.863658+00:00",
+      "finishedAt": "2026-11-26T23:41:00.863658+00:00",
+      "notes": [
+        "[scene] Beat 'yaviza' (remotion/src/videos/v-20261127-11/Yaviza.tsx), 18.5-20.2 s: the car parks on the Yaviza pin and the trees and houses sprout over the YAVIZA label (line 52, placed just under the pin), so the town's name reads 'YA..A' / 'Y..A' on the beat's key moment ('the tarmac simply ends'); at 20.0 s it shows as two ghosted YAVIZA labels under the car. Stop the car short of the pin or move the label clear (above or left of the pin, outside the tree ring) so the name reads on every frame."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:41:57.429590+00:00",
+      "finishedAt": "2026-11-26T23:44:00.588611+00:00",
+      "notes": [
+        "fingerprint: 930ca5d8aecab039.782017630d6f3077",
+        "64 s, ember/explorer (preview only)",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:46:13.336592+00:00",
+      "finishedAt": "2026-11-26T23:46:13.336592+00:00",
+      "notes": [
+        "Re-review after the Yaviza fix: YAVIZA label now reads clearly above the pin from 16.5 to 23 s with the car stopping short and trees around (not over) it, one label through the yaviza->gap blend; every beat on the map in its own place with figures on signs/tags (highway sign, 106 KM bar, 80 KM marsh tag, park sign), flags shown, hook names the road and Panama without the answer, loop and pick-one close, disclaimer in description, layout/craft problems empty, audio -1.0/-15.9 dB, 64 s; level with the Malacca and Greenland references.",
+        "fingerprint: 930ca5d8aecab039.782017630d6f3077"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-26T23:46:44.336705+00:00",
+      "finishedAt": "2026-11-27T00:09:57.160645+00:00",
+      "notes": [
+        "64 s, ember/explorer, peak -1.0 dB, mean -15.9 dB",
+        "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-27T00:10:03.974459+00:00",
+      "finishedAt": "2026-11-27T00:10:03.974459+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261127-11",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261127-11"
+  }
+}

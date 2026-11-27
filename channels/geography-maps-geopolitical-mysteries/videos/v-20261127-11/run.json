@@ -1,0 +1,151 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-26T23:19:37.350604+00:00",
+    "finishedAt": "2026-11-26T23:19:37.350604+00:00",
+    "notes": [
+      "style.bpm must be 72–80 for explorer"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-26T23:19:41.260023+00:00",
+    "finishedAt": "2026-11-26T23:19:41.260023+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T23:22:30.436526+00:00",
+    "finishedAt": "2026-11-26T23:22:30.436526+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T23:30:57.229158+00:00",
+    "finishedAt": "2026-11-26T23:30:57.229158+00:00",
+    "notes": [
+      "Beat 'park': the year fact5 (1980) has unit 'count', so it shows as '1,980' on the park sign and is spoken 'one thousand nine hundred eighty'. Set facts[4].unit to 'year' (renderer/engine/formatting.py prints 1980, voiced as a year). The value itself is confirmed: Wikipedia Darien Gap 'was established in 1980'.",
+      "Beat 'ship': 'At the end of the road they load their cars onto a ship' (and the moment 'the end of the road at Yaviza flashes') says cars are shipped from where the road ends at Yaviza. They are not: Yaviza is an inland river town; vehicles go by container/RoRo from Colon (Panama's Caribbean coast) to Cartagena (overlander shipping guides; Wikipedia notes past car ferries Colon-Cartagena were suspended). Reword, e.g. 'Drivers can't cross it. Instead they put their cars on a ship on Panama's Caribbean coast and sail around the gap to Colombia', and drop the Yaviza flash from that beat."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-26T23:31:16.863989+00:00",
+    "finishedAt": "2026-11-26T23:31:16.863989+00:00",
+    "notes": [
+      "facts[4] (1980 year, 2026-11-27) is not one of the feed topic's facts; copy them exactly",
+      "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-26T23:31:25.045756+00:00",
+    "finishedAt": "2026-11-26T23:31:25.045756+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T23:32:15.740418+00:00",
+    "finishedAt": "2026-11-26T23:32:15.740418+00:00",
+    "notes": [
+      "Re-review after fixes: all 5 facts confirmed on en.wikipedia.org/wiki/Darién_Gap (about 30,000 km, roughly 106 km Yaviza-Turbo, marsh at least 80 km wide, park about 5,790 km2, established 1980); fact5 now unit year (shown 1980, spoken nineteen eighty); ship beat now loads cars on Panama's Caribbean coast (matches Colon-Cartagena container/RoRo shipping); verify items met, disclaimer present. Note: Wikipedia-only sourcing; a Britannica cross-check would strengthen it."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T23:30:07.591648+00:00",
+    "finishedAt": "2026-11-26T23:32:35.892480+00:00",
+    "notes": [
+      "fingerprint: 1c1fd7ed192dbd04.4cb41a7bdbc9ca56",
+      "2.0 s with nothing new on screen in beat 'park' (at most 1.8 s): add an action on the phrase being said there",
+      "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-26T23:33:21.761908+00:00",
+    "finishedAt": "2026-11-26T23:35:16.132187+00:00",
+    "notes": [
+      "fingerprint: a46f7951dbd63dd9.db0f6211dc9891d6",
+      "2.0 s with nothing new on screen in beat 'highway' (at most 1.8 s): add an action on the phrase being said there",
+      "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T23:36:54.833054+00:00",
+    "finishedAt": "2026-11-26T23:38:43.622108+00:00",
+    "notes": [
+      "fingerprint: 930ca5d8aecab039.7b35c2be91aeaba7",
+      "64 s, ember/explorer (preview only)",
+      "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-26T23:41:00.863658+00:00",
+    "finishedAt": "2026-11-26T23:41:00.863658+00:00",
+    "notes": [
+      "[scene] Beat 'yaviza' (remotion/src/videos/v-20261127-11/Yaviza.tsx), 18.5-20.2 s: the car parks on the Yaviza pin and the trees and houses sprout over the YAVIZA label (line 52, placed just under the pin), so the town's name reads 'YA..A' / 'Y..A' on the beat's key moment ('the tarmac simply ends'); at 20.0 s it shows as two ghosted YAVIZA labels under the car. Stop the car short of the pin or move the label clear (above or left of the pin, outside the tree ring) so the name reads on every frame."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T23:41:57.429590+00:00",
+    "finishedAt": "2026-11-26T23:44:00.588611+00:00",
+    "notes": [
+      "fingerprint: 930ca5d8aecab039.782017630d6f3077",
+      "64 s, ember/explorer (preview only)",
+      "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-26T23:46:13.336592+00:00",
+    "finishedAt": "2026-11-26T23:46:13.336592+00:00",
+    "notes": [
+      "Re-review after the Yaviza fix: YAVIZA label now reads clearly above the pin from 16.5 to 23 s with the car stopping short and trees around (not over) it, one label through the yaviza->gap blend; every beat on the map in its own place with figures on signs/tags (highway sign, 106 KM bar, 80 KM marsh tag, park sign), flags shown, hook names the road and Panama without the answer, loop and pick-one close, disclaimer in description, layout/craft problems empty, audio -1.0/-15.9 dB, 64 s; level with the Malacca and Greenland references.",
+      "fingerprint: 930ca5d8aecab039.782017630d6f3077"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-26T23:46:44.336705+00:00",
+    "finishedAt": "2026-11-27T00:09:57.160645+00:00",
+    "notes": [
+      "64 s, ember/explorer, peak -1.0 dB, mean -15.9 dB",
+      "note: the payoff 'cattle' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-27T00:10:03.974459+00:00",
+    "finishedAt": "2026-11-27T00:10:03.974459+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
