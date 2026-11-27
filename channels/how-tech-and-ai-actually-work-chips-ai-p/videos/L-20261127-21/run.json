@@ -1,0 +1,272 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:24:35.687386+00:00",
+    "finishedAt": "2026-11-27T03:24:35.687386+00:00",
+    "notes": [
+      "story 'inside_when_you' was told in the last 1 videos",
+      "style.bpm must be 70–75 for circuit",
+      "palette 'ember' was used by the previous video"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:24:45.910709+00:00",
+    "finishedAt": "2026-11-27T03:24:45.910709+00:00",
+    "notes": [
+      "style.palette must be one of ember, forest, mint, night, ocean, paper, plum, sky",
+      "story must be a long format with proven demand: one of inside_when_you, how_ai_works, how_network_works (channels/how-tech-and-ai-actually-work-chips-ai-p/research/formats.json)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:25:20.829797+00:00",
+    "finishedAt": "2026-11-27T03:25:20.829797+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:25:29.047304+00:00",
+    "finishedAt": "2026-11-27T03:25:29.047304+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:29:59.801814+00:00",
+    "finishedAt": "2026-11-27T03:29:59.801814+00:00",
+    "notes": [
+      "beat 'route'.params.moments[1].do contains a typed number; use a placeholder: 's1'",
+      "note: 7 questions in about 394 s of speech; at least 13 (one every 30 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it",
+      "note: beat 'v_map': a \"Picture…\" / \"Imagine…\" warm-up is a line the channel has used too often; say it a new way",
+      "note: beat 'loop' opens like a line in one of the last scripts ('which machine should'): new words"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:30:25.966269+00:00",
+    "finishedAt": "2026-11-27T03:30:25.966269+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:30:26.900087+00:00",
+    "finishedAt": "2026-11-27T03:30:26.900087+00:00",
+    "notes": [
+      "beat 'gpt3'.params.sign.text contains a typed number; use a placeholder: 'GPT-3'",
+      "note: the ending asks the viewer nothing: close on the lesson and a question to them (\"Which one are you?\")",
+      "note: beat 'l_attn' opens like a line in one of the last scripts ('so what happens'): new words",
+      "note: beat 'c_units' opens like a line in one of the last scripts ('and what is'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:30:37.255222+00:00",
+    "finishedAt": "2026-11-27T03:30:37.255222+00:00",
+    "notes": [
+      "beat 'gpt3'.say contains a typed number; use a placeholder: \"We'll follow GPT-3, the model OpenAI described in a 2020 paper, because its real sizes are public. Newer chatbots are built on the same idea.\""
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:30:47.027664+00:00",
+    "finishedAt": "2026-11-27T03:30:47.027664+00:00",
+    "notes": [
+      "beat 'gpt3'.say contains a typed number; use a placeholder: \"We'll follow GPT-three, the model OpenAI described in a 2020 paper, because its real sizes are public. Newer chatbots are built on the same idea.\""
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:30:54.220102+00:00",
+    "finishedAt": "2026-11-27T03:30:54.220102+00:00",
+    "notes": [
+      "beat 'back2'.params.moments[4].do contains a typed number; use a placeholder: 'more2'"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:31:02.283729+00:00",
+    "finishedAt": "2026-11-27T03:31:02.283729+00:00",
+    "notes": [
+      "beat 'outro'.params.assumption contains a typed number; use a placeholder: \"GPT-3's published sizes; newer chatbots are larger and their sizes are not all public.\""
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:31:10.430839+00:00",
+    "finishedAt": "2026-11-27T03:31:10.430839+00:00",
+    "notes": [
+      "facts[3] (96 count, 2020-05-28) is not one of the feed topic's facts; copy them exactly",
+      "facts[4] (2048 count, 2020-05-28) is not one of the feed topic's facts; copy them exactly",
+      "the source line 'Data: Brown et al., Language Models are Few-Shot Learners (arXiv) · OpenAI Help Center (What are tokens) · Brown et al., Language Models are Few-Shot Learners (arXiv), Table 2.1 · Nov 2026' is too wide for the frame (3212 of 1784 px at 30 px): shorten each facts[].source to the publisher (e.g. 'Brown et al.'), one name per publisher"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:32:38.839458+00:00",
+    "finishedAt": "2026-11-27T03:32:38.839458+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:37:12.213316+00:00",
+    "finishedAt": "2026-11-27T03:37:12.213316+00:00",
+    "notes": [
+      "plan.description: 'With the real figures for GPT-3 from OpenAI's paper: its parameters, its layers and how much text it could see at once' promises figures the video never shows (only 175B parameters is a fact; layers are 'dozens', the window is never quantified). Fix: drop 'its layers and how much text it could see at once', or add both as sourced facts from Brown et al. Table 2.1 (96 layers, 2048-token context) and show them in l_stack and w_size/tease4.",
+      "beat payoff: 'every word of an answer is a fresh vote ... cast by 175B numbers' generalises GPT-3's size to the viewer's ChatGPT answer under a ChatGPT title; ChatGPT never ran GPT-3 and current model sizes are undisclosed. Also a vote picks a token, not a word. Fix: 'So in GPT-three, every token of an answer is a fresh vote among tens of thousands of tokens, cast by {fact1} numbers, multiplied on a chip.'",
+      "beat c_split: 'A model this big doesn't fit on one chip' is not true in general today: at 8 bits a number GPT-3 (~175 GB) fits in one 192 GB B200 or MI300X. Fix: 'A model this big is usually split across several chips, passing numbers back and forth over fast links.'"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:38:02.848630+00:00",
+    "finishedAt": "2026-11-27T03:38:02.848630+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:38:03.737034+00:00",
+    "finishedAt": "2026-11-27T03:38:03.737034+00:00",
+    "notes": [
+      "6 figures computed from inputs; 6 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:38:25.014812+00:00",
+    "finishedAt": "2026-11-27T03:38:25.014812+00:00",
+    "notes": [
+      "Re-review: fact1 175B confirmed on arxiv.org/abs/2005.14165 (abstract, v1 28 May 2020); fact2 ~4 chars/token and fact3 ~75 words/100 tokens confirmed on the OpenAI Help Center page; payoff now scoped to GPT-three and says token; c_split hedged ('usually'); description no longer promises layers/window, sources dated, ends with disclaimer; all beats re-read voice and screen, no remaining factual, framing, advice or tone problems."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T03:45:31.236786+00:00",
+    "finishedAt": "2026-11-27T03:45:31.236786+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T03:45:08.841003+00:00",
+    "finishedAt": "2026-11-27T04:01:55.842430+00:00",
+    "notes": [
+      "thumbnail is 1920x1080; a long video's must be 1280x720"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:31:30.862452+00:00",
+    "finishedAt": "2026-11-27T04:46:10.926420+00:00",
+    "notes": [
+      "fingerprint: c712e0dcbc42d241.0f9e7784c9e7afb7",
+      "2.2 s with nothing new on screen in beat 'tease4' (at most 1.8 s): add an action on the phrase being said there",
+      "21 of 85 stills are mostly empty background (at 0 s, 5 s, 75 s, 120 s, 130 s, 135 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T04:53:13.370484+00:00",
+    "finishedAt": "2026-11-27T05:09:15.316396+00:00",
+    "notes": [
+      "fingerprint: 15cc3ba58260a2ad.0de04472bd709ea3",
+      "2.1 s with nothing new on screen in beat 'gpt3' (at most 1.8 s): add an action on the phrase being said there",
+      "the cover looks like L-20261123-21's: pick another frame (`thumbnail.at`) or layout, so the channel page doesn't show the same picture twice",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:13:44.679522+00:00",
+    "finishedAt": "2026-11-27T05:29:52.864013+00:00",
+    "notes": [
+      "fingerprint: 4a6407b542e9ef38.c1fca5ae182cc392",
+      "2.1 s with nothing new on screen in beat 'payoff' (at most 1.8 s): add an action on the phrase being said there",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:35:01.907868+00:00",
+    "finishedAt": "2026-11-27T05:51:39.408438+00:00",
+    "notes": [
+      "fingerprint: cc9145d265cdcd31.c1fca5ae182cc392",
+      "2.0 s with nothing new on screen in beat 'gpt3' (at most 1.8 s): add an action on the phrase being said there",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T05:55:44.713388+00:00",
+    "finishedAt": "2026-11-27T06:11:58.266318+00:00",
+    "notes": [
+      "fingerprint: f4743ca854f5b236.b492becbaeec3772",
+      "1.9 s with nothing new on screen in beat 'c_count' (at most 1.8 s): add an action on the phrase being said there",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:15:54.812004+00:00",
+    "finishedAt": "2026-11-27T06:32:34.515500+00:00",
+    "notes": [
+      "fingerprint: 5c389e8c59e3f680.b492becbaeec3772",
+      "423 s, night/circuit (preview only)",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T06:35:58.507915+00:00",
+    "finishedAt": "2026-11-27T06:52:57.728931+00:00",
+    "notes": [
+      "fingerprint: 5c389e8c59e3f680.3a7958498b665006",
+      "423 s, night/circuit (preview only)",
+      "note: four shots in a row open medium (from 'c_sweep'): vary the shot size",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  }
+]

@@ -1,0 +1,7002 @@
+{
+ "template": "long_story",
+ "format": "long",
+ "seed": 71927,
+ "story": "how_ai_works",
+ "currency": "USD",
+ "style": {
+  "palette": "night",
+  "genre": "circuit",
+  "key": "A",
+  "bpm": 72
+ },
+ "hook_style": "challenge",
+ "cta": "Tell us which step you want taken apart next",
+ "feed_id": "2026-11-18-ai-question-to-answer",
+ "title": "How Does ChatGPT Turn Your Question Into an Answer?",
+ "facts": [
+  {
+   "label": "Parameters (adjustable numbers) in GPT-3",
+   "value": 175,
+   "unit": "count_billion",
+   "as_of": "2020-05-28",
+   "source": "Brown et al.",
+   "url": "https://arxiv.org/abs/2005.14165",
+   "fixed": true
+  },
+  {
+   "label": "Characters of English text in one token, roughly",
+   "value": 4,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "OpenAI Help Center",
+   "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+   "fixed": true
+  },
+  {
+   "label": "Words in 100 tokens, roughly",
+   "value": 75,
+   "unit": "count",
+   "as_of": "2026-11-18",
+   "source": "OpenAI Help Center",
+   "url": "https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them",
+   "fixed": true
+  }
+ ],
+ "maths": [
+  {
+   "name": "tok",
+   "kind": "rate",
+   "part": 75,
+   "whole": 100,
+   "facts": {
+    "part": 3
+   }
+  }
+ ],
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "transition": "cut",
+   "say": "A question you type into ChatGPT on your phone sets off billions of multiplications on a chip in a data centre, far from you.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "phone": {
+     "word": "phone"
+    },
+    "sets": {
+     "word": "sets"
+    },
+    "billions": {
+     "word": "billions"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "data": {
+     "word": "data"
+    },
+    "centre": {
+     "word": "centre"
+    },
+    "far": {
+     "word": "far"
+    },
+    "cam_type": {
+     "word": "type"
+    },
+    "cam_your": {
+     "word": "your"
+    },
+    "chatgpt": {
+     "word": "ChatGPT"
+    },
+    "type": {
+     "word": "type"
+    }
+   },
+   "params": {
+    "component": "Phone",
+    "place": [
+     "a phone on a desk at night, a chat app open, a question being typed",
+     "a graphics chip on its board in a dark server, lighting up"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "phone"
+     },
+     {
+      "at": "chip",
+      "size": "medium",
+      "on": "gpu",
+      "move": "cut"
+     },
+     {
+      "at": "data",
+      "size": "close",
+      "on": "gpu"
+     },
+     {
+      "at": "cam_type",
+      "size": "medium",
+      "on": "phone",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_your",
+      "size": "medium",
+      "on": "phone",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "type",
+      "what": "a thumb types the question into the chat box, letters appearing"
+     },
+     {
+      "at": "phone",
+      "do": "send",
+      "what": "the send arrow lights and the question bubble jumps up"
+     },
+     {
+      "at": "sets",
+      "do": "pulse",
+      "what": "a pulse of light leaves the top of the phone"
+     },
+     {
+      "at": "billions",
+      "do": "sparks",
+      "what": "sparks race along the phone's edge"
+     },
+     {
+      "at": "chip",
+      "do": "gpu",
+      "what": "cut to a graphics chip on its board in the dark"
+     },
+     {
+      "at": "data",
+      "do": "grid",
+      "what": "its surface lights in a grid of tiny squares"
+     },
+     {
+      "at": "centre",
+      "do": "racks",
+      "what": "server racks glow behind it"
+     },
+     {
+      "at": "far",
+      "do": "fade",
+      "what": "the chip pulses brighter"
+     }
+    ],
+    "things": [
+     "phone in a hand",
+     "chat app",
+     "question bubble",
+     "graphics chip",
+     "server racks"
+    ],
+    "labels": [
+     {
+      "at": "chatgpt",
+      "text": "ChatGPT",
+      "on": "screen"
+     }
+    ],
+    "question": "Why is the sky blue?"
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "type"
+    },
+    {
+     "kind": "whoosh",
+     "at": "chip"
+    }
+   ]
+  },
+  {
+   "id": "hook2",
+   "scene": "directed",
+   "role": "hook",
+   "transition": "cut",
+   "say": "That chip sends the answer back in small pieces, and every single piece takes the whole trip through the model.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "answer": {
+     "word": "answer"
+    },
+    "pieces": {
+     "word": "pieces"
+    },
+    "single": {
+     "word": "single"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "model": {
+     "word": "model"
+    },
+    "cam_sends": {
+     "word": "sends"
+    },
+    "cam_small": {
+     "word": "small"
+    }
+   },
+   "params": {
+    "component": "Hall",
+    "place": "a data-centre hall: rows of server racks, light pulses running out along a cable to the phone",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "hall"
+     },
+     {
+      "at": "pieces",
+      "size": "medium",
+      "on": "cable"
+     },
+     {
+      "at": "cam_sends",
+      "size": "wide",
+      "on": "hall",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_small",
+      "size": "wide",
+      "on": "hall",
+      "move": "orbit"
+     },
+     {
+      "at": "whole",
+      "size": "close",
+      "on": "cable"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "racks",
+      "what": "rows of racks blink in a dark hall"
+     },
+     {
+      "at": "answer",
+      "do": "out",
+      "what": "a pulse runs out of a rack along a glowing cable"
+     },
+     {
+      "at": "pieces",
+      "do": "pieces",
+      "what": "small pulses follow one after another"
+     },
+     {
+      "at": "single",
+      "do": "loop",
+      "what": "one pulse loops back into the rack"
+     },
+     {
+      "at": "whole",
+      "do": "path",
+      "what": "a ring of light runs round the rack and out again"
+     },
+     {
+      "at": "model",
+      "do": "glow",
+      "what": "the racks flare together"
+     }
+    ],
+    "things": [
+     "server racks",
+     "glowing cable",
+     "light pulses"
+    ],
+    "labels": [
+     {
+      "at": "model",
+      "text": "the model",
+      "on": "rack"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "answer"
+    }
+   ]
+  },
+  {
+   "id": "route",
+   "scene": "directed",
+   "role": "promise",
+   "transition": "cut",
+   "say": "Here is the whole trip. Your words get cut into tokens, the tokens turn into numbers, and the numbers climb through the model's layers.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "words": {
+     "word": "words"
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "tokens": {
+     "word": "tokens"
+    },
+    "numbers": {
+     "word": "numbers"
+    },
+    "climb": {
+     "word": "climb"
+    },
+    "layers": {
+     "word": "layers"
+    },
+    "cam_whole": {
+     "word": "whole"
+    },
+    "cam_turn": {
+     "word": "turn"
+    },
+    "cam_models": {
+     "word": "model's"
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "a long dark table laid out like a map: six lit stations joined by a glowing track",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "words",
+      "size": "medium",
+      "on": "cut"
+     },
+     {
+      "at": "layers",
+      "size": "medium",
+      "on": "tower"
+     },
+     {
+      "at": "cam_whole",
+      "size": "wide",
+      "on": "all",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_turn",
+      "size": "medium",
+      "on": "cut",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_models",
+      "size": "medium",
+      "on": "cut",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "track",
+      "what": "a glowing track draws across the table"
+     },
+     {
+      "at": "words",
+      "do": "sphone",
+      "what": "the phone station lights"
+     },
+     {
+      "at": "cut",
+      "do": "sblade",
+      "what": "a little blade station lights"
+     },
+     {
+      "at": "tokens",
+      "do": "tiles",
+      "what": "small tiles slide out of it"
+     },
+     {
+      "at": "numbers",
+      "do": "snum",
+      "what": "a station of number bars lights"
+     },
+     {
+      "at": "climb",
+      "do": "stower",
+      "what": "a tower of layers lights"
+     },
+     {
+      "at": "layers",
+      "do": "rise",
+      "what": "a dot climbs the tower"
+     }
+    ],
+    "things": [
+     "map table",
+     "phone station",
+     "blade station",
+     "number bars",
+     "layer tower"
+    ],
+    "labels": [
+     {
+      "at": "tokens",
+      "text": "tokens",
+      "on": "cut"
+     },
+     {
+      "at": "numbers",
+      "text": "numbers",
+      "on": "num"
+     },
+     {
+      "at": "layers",
+      "text": "layers",
+      "on": "tower"
+     }
+    ]
+   }
+  },
+  {
+   "id": "route2",
+   "scene": "directed",
+   "role": "promise",
+   "transition": "cut",
+   "say": "A chip does the multiplying, one next word comes out, and then the whole trip starts again for the word after it.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "multiplying": {
+     "word": "multiplying"
+    },
+    "word": {
+     "word": "word"
+    },
+    "out": {
+     "word": "out"
+    },
+    "again": {
+     "word": "again"
+    },
+    "after": {
+     "word": "after"
+    },
+    "cam_whole": {
+     "word": "whole"
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "the same map table: the chip station, the picker, and the track looping back",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "tower"
+     },
+     {
+      "at": "chip",
+      "size": "medium",
+      "on": "chip"
+     },
+     {
+      "at": "again",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "cam_whole",
+      "size": "medium",
+      "on": "chip",
+      "move": "orbit"
+     },
+     {
+      "at": "after",
+      "size": "close",
+      "on": "all"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "track",
+      "what": "the track glows"
+     },
+     {
+      "at": "chip",
+      "do": "schip",
+      "what": "the chip station lights"
+     },
+     {
+      "at": "multiplying",
+      "do": "grid",
+      "what": "its grid twinkles"
+     },
+     {
+      "at": "word",
+      "do": "spick",
+      "what": "a picker station pops one tile up"
+     },
+     {
+      "at": "out",
+      "do": "tile",
+      "what": "the tile rides back along the track"
+     },
+     {
+      "at": "again",
+      "do": "loop",
+      "what": "the whole track lights as a loop"
+     },
+     {
+      "at": "after",
+      "do": "pulse",
+      "what": "a second tile starts round"
+     }
+    ],
+    "things": [
+     "map table",
+     "chip station",
+     "picker station",
+     "looping track"
+    ],
+    "labels": [
+     {
+      "at": "chip",
+      "text": "the chip",
+      "on": "chip"
+     },
+     {
+      "at": "word",
+      "text": "next word",
+      "on": "pick"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "again"
+    }
+   ]
+  },
+  {
+   "id": "gpt3",
+   "scene": "directed",
+   "role": "promise",
+   "transition": "cut",
+   "say": "We'll follow GPT-three, an earlier model that OpenAI described in a research paper, with {fact1} parameters. Newer chatbots are built on the same idea.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "earlier": {
+     "word": "earlier"
+    },
+    "openai": {
+     "word": "OpenAI"
+    },
+    "with": {
+     "word": "with"
+    },
+    "t8_2": {
+     "sec": 8.2
+    },
+    "paper": {
+     "word": "paper"
+    },
+    "parameters": {
+     "word": "parameters"
+    },
+    "newer": {
+     "word": "Newer"
+    },
+    "idea": {
+     "word": "idea"
+    },
+    "chatbots": {
+     "word": "chatbots"
+    },
+    "cam_gptthree": {
+     "word": "GPT-three"
+    },
+    "cam_research": {
+     "word": "research"
+    },
+    "cam_the": {
+     "word": "the"
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "a lectern at the head of the map table with the research paper open on it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "paper"
+     },
+     {
+      "at": "parameters",
+      "size": "close",
+      "on": "paper"
+     },
+     {
+      "at": "chatbots",
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "cam_gptthree",
+      "size": "medium",
+      "on": "paper",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_research",
+      "size": "medium",
+      "on": "paper",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_the",
+      "size": "wide",
+      "on": "all",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "paper",
+      "what": "the paper lies open under a lamp"
+     },
+     {
+      "at": "earlier",
+      "do": "lamp",
+      "what": "the lamp clicks on over it"
+     },
+     {
+      "at": "openai",
+      "do": "pages",
+      "what": "its pages turn"
+     },
+     {
+      "at": "with",
+      "do": "plate",
+      "what": "a plate on the cover lights"
+     },
+     {
+      "at": "t8_2",
+      "do": "glow",
+      "what": "the lamp over the paper brightens"
+     },
+     {
+      "at": "paper",
+      "do": "stamp",
+      "what": "a seal lights on its cover"
+     },
+     {
+      "at": "parameters",
+      "do": "table",
+      "what": "the parameter count glows on the page"
+     },
+     {
+      "at": "newer",
+      "do": "track",
+      "what": "the map table lights behind it"
+     },
+     {
+      "at": "idea",
+      "do": "pulse",
+      "what": "a pulse runs the track again"
+     }
+    ],
+    "things": [
+     "research paper",
+     "lectern",
+     "lamp",
+     "map table"
+    ],
+    "fig": {
+     "params": "{fact1}"
+    },
+    "sign": {
+     "text": "the paper",
+     "at": "paper",
+     "on": "paper"
+    }
+   }
+  },
+  {
+   "id": "t_q",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "First stop: what does the model actually read? Not letters, and not quite words either.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "read": {
+     "word": "read"
+    },
+    "letters": {
+     "word": "letters"
+    },
+    "quite": {
+     "word": "quite"
+    },
+    "words": {
+     "word": "words"
+    },
+    "cam_what": {
+     "word": "what"
+    },
+    "cam_model": {
+     "word": "model"
+    },
+    "first": {
+     "word": "First"
+    }
+   },
+   "params": {
+    "component": "Cutter",
+    "place": "a cutting bench: your question laid out as a glowing strip of letters under a hanging blade",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "bench"
+     },
+     {
+      "at": "letters",
+      "size": "close",
+      "on": "strip"
+     },
+     {
+      "at": "cam_what",
+      "size": "wide",
+      "on": "bench",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_model",
+      "size": "wide",
+      "on": "bench",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "strip",
+      "what": "the question lies on the bench as a glowing strip"
+     },
+     {
+      "at": "read",
+      "do": "scan",
+      "what": "a scan line runs along it"
+     },
+     {
+      "at": "letters",
+      "do": "letters",
+      "what": "the letters lift apart one by one"
+     },
+     {
+      "at": "quite",
+      "do": "back",
+      "what": "they fall back into place"
+     },
+     {
+      "at": "words",
+      "do": "words",
+      "what": "the words light in turn"
+     }
+    ],
+    "things": [
+     "cutting bench",
+     "glowing letter strip",
+     "hanging blade"
+    ],
+    "sign": {
+     "text": "tokens",
+     "at": "first",
+     "on": "bench"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "letters"
+    }
+   ]
+  },
+  {
+   "id": "t_cut",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Your question is cut into tokens: common chunks of text, like a whole short word, or a piece of a longer one.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "cut": {
+     "word": "cut"
+    },
+    "tokens": {
+     "word": "tokens"
+    },
+    "common": {
+     "word": "common"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "piece": {
+     "word": "piece"
+    },
+    "cam_text": {
+     "word": "text"
+    },
+    "cam_longer": {
+     "word": "longer"
+    }
+   },
+   "params": {
+    "component": "Cutter",
+    "place": "the cutting bench, the blade coming down between the chunks",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "strip"
+     },
+     {
+      "at": "cut",
+      "size": "extreme",
+      "on": "blade"
+     },
+     {
+      "at": "cam_text",
+      "size": "extreme",
+      "on": "blade",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_longer",
+      "size": "extreme",
+      "on": "blade",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "strip",
+      "what": "the strip slides under the blade"
+     },
+     {
+      "at": "cut",
+      "do": "cut",
+      "what": "the blade drops and slices the strip"
+     },
+     {
+      "at": "tokens",
+      "do": "tiles",
+      "what": "the pieces separate into tiles"
+     },
+     {
+      "at": "common",
+      "do": "glow",
+      "what": "each tile lights a new colour"
+     },
+     {
+      "at": "whole",
+      "do": "short",
+      "what": "a short word sits on one tile"
+     },
+     {
+      "at": "piece",
+      "do": "long",
+      "what": "a long word splits across two tiles"
+     }
+    ],
+    "things": [
+     "blade",
+     "token tiles",
+     "cutting bench"
+    ],
+    "labels": [
+     {
+      "at": "tokens",
+      "text": "tokens",
+      "on": "tiles"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "cut"
+    }
+   ]
+  },
+  {
+   "id": "t_size",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "In English, a token is about {fact2} characters long on average, according to OpenAI.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "english": {
+     "word": "English"
+    },
+    "characters": {
+     "word": "characters"
+    },
+    "average": {
+     "word": "average"
+    },
+    "openai": {
+     "word": "OpenAI"
+    },
+    "cam_about": {
+     "word": "about"
+    }
+   },
+   "params": {
+    "component": "Cutter",
+    "place": "the bench, one tile under a ruler marked in characters",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "tiles"
+     },
+     {
+      "at": "average",
+      "size": "medium",
+      "on": "tiles"
+     },
+     {
+      "at": "cam_about",
+      "size": "close",
+      "on": "tiles",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "ruler",
+      "what": "a ruler slides in beside one tile"
+     },
+     {
+      "at": "english",
+      "do": "measure",
+      "what": "its marks light one by one"
+     },
+     {
+      "at": "characters",
+      "do": "fig",
+      "what": "the figure lands on the ruler"
+     },
+     {
+      "at": "average",
+      "do": "row",
+      "what": "the other tiles line up under the ruler"
+     },
+     {
+      "at": "openai",
+      "do": "source",
+      "what": "the source line appears"
+     }
+    ],
+    "things": [
+     "token tile",
+     "ruler",
+     "token row"
+    ],
+    "fig": {
+     "chars": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "t_pct",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "OpenAI also puts one token at roughly {tok_pct} of an English word, so a long answer can run to hundreds of tokens.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "token": {
+     "word": "token"
+    },
+    "roughly": {
+     "word": "roughly"
+    },
+    "word": {
+     "word": "word"
+    },
+    "long": {
+     "word": "long"
+    },
+    "hundreds": {
+     "word": "hundreds"
+    },
+    "tokens": {
+     "word": "tokens"
+    },
+    "answer": {
+     "word": "answer"
+    },
+    "cam_puts": {
+     "word": "puts"
+    },
+    "cam_english": {
+     "word": "English"
+    },
+    "g4_23": {
+     "sec": 4.23
+    }
+   },
+   "params": {
+    "component": "Cutter",
+    "place": "the bench, a word tile and a token tile side by side, then a long row of tiles",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "tiles"
+     },
+     {
+      "at": "answer",
+      "size": "wide",
+      "on": "bench"
+     },
+     {
+      "at": "cam_puts",
+      "size": "close",
+      "on": "tiles",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_english",
+      "size": "close",
+      "on": "tiles",
+      "move": "orbit"
+     },
+     {
+      "at": "g4_23",
+      "size": "close",
+      "on": "tiles",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "pair",
+      "what": "a word tile and a smaller token tile side by side"
+     },
+     {
+      "at": "token",
+      "do": "fill",
+      "what": "the token tile fills part of the word tile"
+     },
+     {
+      "at": "roughly",
+      "do": "fig",
+      "what": "the share lands on the word tile"
+     },
+     {
+      "at": "word",
+      "do": "word",
+      "what": "the word tile glows"
+     },
+     {
+      "at": "long",
+      "do": "row",
+      "what": "tiles pour out along the bench"
+     },
+     {
+      "at": "hundreds",
+      "do": "flood",
+      "what": "the row runs off the end of the bench"
+     },
+     {
+      "at": "tokens",
+      "do": "glow",
+      "what": "the whole row lights"
+     }
+    ],
+    "things": [
+     "word tile",
+     "token tile",
+     "long tile row"
+    ],
+    "fig": {
+     "pct": "{tok_pct}"
+    }
+   }
+  },
+  {
+   "id": "t_rare",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Why chunks, and not whole words? A common word is often a single token, while a rare word or a name gets cut into several pieces, so any word can still be built from pieces on the list.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "single": {
+     "word": "single"
+    },
+    "rare": {
+     "word": "rare"
+    },
+    "name": {
+     "word": "name"
+    },
+    "several": {
+     "word": "several"
+    },
+    "cam_and": {
+     "word": "and"
+    },
+    "cam_words": {
+     "word": "words"
+    },
+    "cam_often": {
+     "word": "often"
+    },
+    "cam_into": {
+     "word": "into"
+    },
+    "cam_any": {
+     "word": "any"
+    },
+    "cam_still": {
+     "word": "still"
+    },
+    "cam_from": {
+     "word": "from"
+    },
+    "cam_the": {
+     "word": "the"
+    }
+   },
+   "params": {
+    "component": "Cutter",
+    "place": "the bench: one common word on one tile, a rare word chopped into three",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "tiles"
+     },
+     {
+      "at": "rare",
+      "size": "close",
+      "on": "blade"
+     },
+     {
+      "at": "cam_and",
+      "size": "medium",
+      "on": "tiles",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_words",
+      "size": "medium",
+      "on": "tiles",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_often",
+      "size": "medium",
+      "on": "tiles",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_into",
+      "size": "close",
+      "on": "blade",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_any",
+      "size": "close",
+      "on": "blade",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_still",
+      "size": "close",
+      "on": "blade",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_from",
+      "size": "close",
+      "on": "blade",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_the",
+      "size": "close",
+      "on": "blade",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "common",
+      "what": "a common word slides in on one tile"
+     },
+     {
+      "at": "single",
+      "do": "one",
+      "what": "it stays whole"
+     },
+     {
+      "at": "rare",
+      "do": "rare",
+      "what": "a long rare word slides under the blade"
+     },
+     {
+      "at": "name",
+      "do": "name",
+      "what": "a name follows it"
+     },
+     {
+      "at": "several",
+      "do": "chop",
+      "what": "the blade chops them into small pieces"
+     }
+    ],
+    "things": [
+     "single tile",
+     "rare word",
+     "blade",
+     "small pieces"
+    ],
+    "labels": [
+     {
+      "at": "single",
+      "text": "one token",
+      "on": "tiles"
+     },
+     {
+      "at": "several",
+      "text": "many tokens",
+      "on": "blade"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "several"
+    }
+   ]
+  },
+  {
+   "id": "t_list",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "The cutting follows a fixed list of chunks that was settled before the model was trained, so the same text is always cut the same way.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "fixed": {
+     "word": "fixed"
+    },
+    "chunks": {
+     "word": "chunks"
+    },
+    "trained": {
+     "word": "trained"
+    },
+    "same": {
+     "word": "same"
+    },
+    "always": {
+     "word": "always"
+    },
+    "way": {
+     "word": "way"
+    },
+    "cam_follows": {
+     "word": "follows"
+    },
+    "cam_settled": {
+     "word": "settled"
+    },
+    "cam_model": {
+     "word": "model"
+    },
+    "list": {
+     "word": "list"
+    }
+   },
+   "params": {
+    "component": "Cutter",
+    "place": "a wall of drawers behind the bench, each drawer holding one chunk",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "list"
+     },
+     {
+      "at": "same",
+      "size": "medium",
+      "on": "tiles"
+     },
+     {
+      "at": "cam_follows",
+      "size": "wide",
+      "on": "list",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_settled",
+      "size": "wide",
+      "on": "list",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_model",
+      "size": "wide",
+      "on": "list",
+      "move": "orbit"
+     },
+     {
+      "at": "way",
+      "size": "close",
+      "on": "tiles"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "drawers",
+      "what": "a wall of drawers lights behind the bench"
+     },
+     {
+      "at": "fixed",
+      "do": "lock",
+      "what": "a lock clicks across the wall"
+     },
+     {
+      "at": "chunks",
+      "do": "open",
+      "what": "drawers slide open one after another"
+     },
+     {
+      "at": "trained",
+      "do": "seal",
+      "what": "the wall glows steady"
+     },
+     {
+      "at": "same",
+      "do": "repeat",
+      "what": "the same strip slides in again"
+     },
+     {
+      "at": "always",
+      "do": "match",
+      "what": "it is cut at exactly the same places"
+     },
+     {
+      "at": "way",
+      "do": "check",
+      "what": "each cut lights green"
+     }
+    ],
+    "things": [
+     "wall of drawers",
+     "lock",
+     "strip",
+     "cuts"
+    ],
+    "labels": [
+     {
+      "at": "list",
+      "text": "the list",
+      "on": "list"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "fixed"
+    }
+   ]
+  },
+  {
+   "id": "t_ids",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Every chunk on that list has its own ID number, and that number is all the model is handed for each token.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "chunk": {
+     "word": "chunk"
+    },
+    "id": {
+     "word": "ID"
+    },
+    "number": {
+     "word": "number"
+    },
+    "handed": {
+     "word": "handed"
+    },
+    "token": {
+     "word": "token"
+    },
+    "cam_list": {
+     "word": "list"
+    },
+    "cam_own": {
+     "word": "own"
+    },
+    "cam_all": {
+     "word": "all"
+    }
+   },
+   "params": {
+    "component": "Cutter",
+    "place": "the tiles on the bench, a tag clipping onto each one, a chute carrying the tags away",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "tiles"
+     },
+     {
+      "at": "handed",
+      "size": "medium",
+      "on": "chute"
+     },
+     {
+      "at": "cam_list",
+      "size": "medium",
+      "on": "tiles",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_own",
+      "size": "medium",
+      "on": "tiles",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_all",
+      "size": "medium",
+      "on": "tiles",
+      "move": "orbit"
+     },
+     {
+      "at": "token",
+      "size": "close",
+      "on": "chute"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "tiles",
+      "what": "the tiles sit in a row"
+     },
+     {
+      "at": "chunk",
+      "do": "tags",
+      "what": "a tag clips onto each tile"
+     },
+     {
+      "at": "id",
+      "do": "barcode",
+      "what": "a bar code lights on each tag"
+     },
+     {
+      "at": "number",
+      "do": "words",
+      "what": "the words fade off the tiles, only tags left"
+     },
+     {
+      "at": "handed",
+      "do": "chute",
+      "what": "the tags drop into a chute"
+     },
+     {
+      "at": "token",
+      "do": "away",
+      "what": "they slide away down it"
+     }
+    ],
+    "things": [
+     "tiles",
+     "ID tags",
+     "chute"
+    ],
+    "labels": [
+     {
+      "at": "id",
+      "text": "ID",
+      "on": "tiles"
+     }
+    ]
+   }
+  },
+  {
+   "id": "tease1",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "But an ID is only a label. It says nothing about what the word means. So how does a label become meaning?",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "label": {
+     "word": "label"
+    },
+    "nothing": {
+     "word": "nothing"
+    },
+    "means": {
+     "word": "means"
+    },
+    "meaning": {
+     "word": "meaning"
+    },
+    "cam_only": {
+     "word": "only"
+    },
+    "cam_the": {
+     "word": "the"
+    },
+    "cam_does": {
+     "word": "does"
+    },
+    "cam_become": {
+     "word": "become"
+    }
+   },
+   "params": {
+    "component": "Cutter",
+    "place": "a single tag in close-up on the empty bench",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "tag"
+     },
+     {
+      "at": "meaning",
+      "size": "medium",
+      "on": "tag"
+     },
+     {
+      "at": "cam_only",
+      "size": "close",
+      "on": "tag",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_the",
+      "size": "close",
+      "on": "tag",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_does",
+      "size": "close",
+      "on": "tag",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_become",
+      "size": "close",
+      "on": "tag",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "tag",
+      "what": "one tag hangs alone over the bench"
+     },
+     {
+      "at": "label",
+      "do": "dim",
+      "what": "its bar code dims"
+     },
+     {
+      "at": "nothing",
+      "do": "empty",
+      "what": "the bench around it empties"
+     },
+     {
+      "at": "means",
+      "do": "question",
+      "what": "a question mark rises beside it"
+     },
+     {
+      "at": "meaning",
+      "do": "glow",
+      "what": "a soft glow waits at the end of the chute"
+     }
+    ],
+    "things": [
+     "ID tag",
+     "question mark",
+     "empty bench"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "meaning"
+    }
+   ]
+  },
+  {
+   "id": "v_lookup",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Next stop: the model looks each ID up in a giant table and pulls out a long list of numbers for that token.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "id": {
+     "word": "ID"
+    },
+    "giant": {
+     "word": "giant"
+    },
+    "pulls": {
+     "word": "pulls"
+    },
+    "list": {
+     "word": "list"
+    },
+    "token": {
+     "word": "token"
+    },
+    "cam_the": {
+     "word": "the"
+    },
+    "cam_each": {
+     "word": "each"
+    },
+    "cam_long": {
+     "word": "long"
+    },
+    "cam_for": {
+     "word": "for"
+    },
+    "next": {
+     "word": "Next"
+    }
+   },
+   "params": {
+    "component": "Vectors",
+    "place": "a vast lit table of glowing bars, like an archive, a tag arriving at one row",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "table"
+     },
+     {
+      "at": "list",
+      "size": "medium",
+      "on": "column"
+     },
+     {
+      "at": "cam_the",
+      "size": "wide",
+      "on": "table",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_each",
+      "size": "wide",
+      "on": "table",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_long",
+      "size": "wide",
+      "on": "table",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_for",
+      "size": "medium",
+      "on": "column",
+      "move": "orbit"
+     },
+     {
+      "at": "token",
+      "size": "close",
+      "on": "column"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "table",
+      "what": "a huge table of glowing rows stretches into the dark"
+     },
+     {
+      "at": "id",
+      "do": "tag",
+      "what": "a tag slides up to the table"
+     },
+     {
+      "at": "giant",
+      "do": "rows",
+      "what": "the rows light from near to far"
+     },
+     {
+      "at": "pulls",
+      "do": "pull",
+      "what": "one row slides out"
+     },
+     {
+      "at": "list",
+      "do": "column",
+      "what": "it stands up as a column of bars"
+     },
+     {
+      "at": "token",
+      "do": "settle",
+      "what": "the column settles above its tag"
+     }
+    ],
+    "things": [
+     "giant table",
+     "ID tag",
+     "column of bars"
+    ],
+    "labels": [
+     {
+      "at": "list",
+      "text": "a list of numbers",
+      "on": "column"
+     }
+    ],
+    "sign": {
+     "text": "numbers",
+     "at": "next",
+     "on": "table"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "pulls"
+    }
+   ]
+  },
+  {
+   "id": "v_learned",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "So who chose those numbers? Nobody, by hand. Training set them, nudging each one a tiny bit at a time across enormous amounts of text.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "hand": {
+     "word": "hand"
+    },
+    "training": {
+     "word": "Training"
+    },
+    "nudging": {
+     "word": "nudging"
+    },
+    "tiny": {
+     "word": "tiny"
+    },
+    "enormous": {
+     "word": "enormous"
+    },
+    "cam_chose": {
+     "word": "chose"
+    },
+    "cam_nobody": {
+     "word": "Nobody"
+    },
+    "cam_time": {
+     "word": "time"
+    },
+    "g10_1": {
+     "sec": 10.1
+    }
+   },
+   "params": {
+    "component": "Vectors",
+    "place": "the column of bars, pages of text streaming past it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "column"
+     },
+     {
+      "at": "enormous",
+      "size": "wide",
+      "on": "table"
+     },
+     {
+      "at": "cam_chose",
+      "size": "close",
+      "on": "column",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_nobody",
+      "size": "close",
+      "on": "column",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_time",
+      "size": "close",
+      "on": "column",
+      "move": "orbit"
+     },
+     {
+      "at": "g10_1",
+      "size": "close",
+      "on": "column",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "column",
+      "what": "the column of bars stands lit"
+     },
+     {
+      "at": "hand",
+      "do": "still",
+      "what": "a hand outline fades away"
+     },
+     {
+      "at": "training",
+      "do": "pages",
+      "what": "pages of text stream past"
+     },
+     {
+      "at": "nudging",
+      "do": "nudge",
+      "what": "the bars twitch up and down"
+     },
+     {
+      "at": "tiny",
+      "do": "fine",
+      "what": "a single bar shifts a hair"
+     },
+     {
+      "at": "enormous",
+      "do": "flood",
+      "what": "pages pour by in a blur"
+     }
+    ],
+    "things": [
+     "column of bars",
+     "streaming pages"
+    ],
+    "labels": [
+     {
+      "at": "training",
+      "text": "training",
+      "on": "column"
+     }
+    ]
+   }
+  },
+  {
+   "id": "v_map",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Each list works like a point in a space with thousands of directions, and tokens used in similar ways end up close together.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "point": {
+     "word": "point"
+    },
+    "space": {
+     "word": "space"
+    },
+    "directions": {
+     "word": "directions"
+    },
+    "similar": {
+     "word": "similar"
+    },
+    "close": {
+     "word": "close"
+    },
+    "together": {
+     "word": "together"
+    },
+    "cam_works": {
+     "word": "works"
+    },
+    "cam_used": {
+     "word": "used"
+    }
+   },
+   "params": {
+    "component": "Vectors",
+    "place": "a dark space full of glowing points, the column shrinking into one of them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "column"
+     },
+     {
+      "at": "space",
+      "size": "wide",
+      "on": "space"
+     },
+     {
+      "at": "together",
+      "size": "medium",
+      "on": "pair"
+     },
+     {
+      "at": "cam_works",
+      "size": "medium",
+      "on": "column",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_used",
+      "size": "wide",
+      "on": "space",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "shrink",
+      "what": "the column shrinks into a single point"
+     },
+     {
+      "at": "point",
+      "do": "point",
+      "what": "it glows as a dot"
+     },
+     {
+      "at": "space",
+      "do": "cloud",
+      "what": "thousands of dots fill the dark around it"
+     },
+     {
+      "at": "directions",
+      "do": "axes",
+      "what": "faint axes run off in many directions"
+     },
+     {
+      "at": "similar",
+      "do": "drift",
+      "what": "dots drift toward each other in clumps"
+     },
+     {
+      "at": "close",
+      "do": "clump",
+      "what": "the clumps tighten"
+     }
+    ],
+    "things": [
+     "glowing point",
+     "point cloud",
+     "axes",
+     "clumps"
+    ]
+   }
+  },
+  {
+   "id": "v_near",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Cat lands near dog. Paris lands near London. Nobody placed them there; training did.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "cat": {
+     "word": "Cat"
+    },
+    "dog": {
+     "word": "dog"
+    },
+    "paris": {
+     "word": "Paris"
+    },
+    "london": {
+     "word": "London"
+    },
+    "training": {
+     "word": "training"
+    },
+    "cam_them": {
+     "word": "them"
+    }
+   },
+   "params": {
+    "component": "Vectors",
+    "place": "inside the point cloud: two pairs of labelled points side by side",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "pair"
+     },
+     {
+      "at": "london",
+      "size": "close",
+      "on": "pair2"
+     },
+     {
+      "at": "cam_them",
+      "size": "close",
+      "on": "pair2",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "cloud",
+      "what": "dots drift in the dark"
+     },
+     {
+      "at": "cat",
+      "do": "cat",
+      "what": "a dot lights as cat"
+     },
+     {
+      "at": "dog",
+      "do": "dog",
+      "what": "a dot beside it lights as dog"
+     },
+     {
+      "at": "paris",
+      "do": "paris",
+      "what": "another dot lights as Paris"
+     },
+     {
+      "at": "london",
+      "do": "london",
+      "what": "London lights beside it"
+     },
+     {
+      "at": "training",
+      "do": "pulse",
+      "what": "a pulse joins each pair"
+     }
+    ],
+    "things": [
+     "cat dot",
+     "dog dot",
+     "Paris dot",
+     "London dot"
+    ],
+    "labels": [
+     {
+      "at": "cat",
+      "text": "cat",
+      "on": "cat"
+     },
+     {
+      "at": "dog",
+      "text": "dog",
+      "on": "dog"
+     },
+     {
+      "at": "paris",
+      "text": "Paris",
+      "on": "paris"
+     },
+     {
+      "at": "london",
+      "text": "London",
+      "on": "london"
+     }
+    ]
+   }
+  },
+  {
+   "id": "v_order",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "And how does it know which word came first? Each token also gets a second list added, marking its place in the sentence, because the order of words changes what they mean.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "second": {
+     "word": "second"
+    },
+    "added": {
+     "word": "added"
+    },
+    "place": {
+     "word": "place"
+    },
+    "order": {
+     "word": "order"
+    },
+    "changes": {
+     "word": "changes"
+    },
+    "cam_does": {
+     "word": "does"
+    },
+    "cam_which": {
+     "word": "which"
+    },
+    "cam_first": {
+     "word": "first"
+    },
+    "cam_also": {
+     "word": "also"
+    },
+    "cam_sentence": {
+     "word": "sentence"
+    }
+   },
+   "params": {
+    "component": "Vectors",
+    "place": "the row of columns back on the table, a numbered strip sliding under them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "row"
+     },
+     {
+      "at": "order",
+      "size": "close",
+      "on": "row"
+     },
+     {
+      "at": "cam_does",
+      "size": "wide",
+      "on": "row",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_which",
+      "size": "wide",
+      "on": "row",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_first",
+      "size": "wide",
+      "on": "row",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_also",
+      "size": "wide",
+      "on": "row",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_sentence",
+      "size": "wide",
+      "on": "row",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "row",
+      "what": "the token columns stand in a row"
+     },
+     {
+      "at": "second",
+      "do": "strip",
+      "what": "a second strip of bars slides under each"
+     },
+     {
+      "at": "added",
+      "do": "merge",
+      "what": "the two merge and the bars change height"
+     },
+     {
+      "at": "place",
+      "do": "slots",
+      "what": "slot marks light under the row"
+     },
+     {
+      "at": "order",
+      "do": "swap",
+      "what": "two columns swap places"
+     },
+     {
+      "at": "changes",
+      "do": "shift",
+      "what": "their bars shift as they move"
+     }
+    ],
+    "things": [
+     "token columns",
+     "position strip",
+     "slot marks"
+    ],
+    "labels": [
+     {
+      "at": "place",
+      "text": "position",
+      "on": "row"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "order"
+    }
+   ]
+  },
+  {
+   "id": "tease2",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "Now your question is a row of number lists. What happens to them next is where almost all the work is done.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "question": {
+     "word": "question"
+    },
+    "row": {
+     "word": "row"
+    },
+    "next": {
+     "word": "next"
+    },
+    "work": {
+     "word": "work"
+    },
+    "cam_lists": {
+     "word": "lists"
+    },
+    "cam_them": {
+     "word": "them"
+    },
+    "cam_almost": {
+     "word": "almost"
+    }
+   },
+   "params": {
+    "component": "Vectors",
+    "place": "the row of columns lifting off the table toward a tall dark shape",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "row"
+     },
+     {
+      "at": "work",
+      "size": "wide",
+      "on": "table"
+     },
+     {
+      "at": "cam_lists",
+      "size": "medium",
+      "on": "row",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_them",
+      "size": "medium",
+      "on": "row",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_almost",
+      "size": "medium",
+      "on": "row",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "row",
+      "what": "the row of columns glows"
+     },
+     {
+      "at": "question",
+      "do": "words",
+      "what": "the question appears above it"
+     },
+     {
+      "at": "row",
+      "do": "lift",
+      "what": "the row lifts off the table"
+     },
+     {
+      "at": "next",
+      "do": "tower",
+      "what": "a tall dark tower looms behind"
+     },
+     {
+      "at": "work",
+      "do": "glow",
+      "what": "its first floor lights"
+     }
+    ],
+    "things": [
+     "row of columns",
+     "dark tower"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "work"
+    }
+   ]
+  },
+  {
+   "id": "l_q",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Next stop, the layers. Why does a model need so many of them?",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "layers": {
+     "word": "layers"
+    },
+    "why": {
+     "word": "Why"
+    },
+    "many": {
+     "word": "many"
+    },
+    "cam_the": {
+     "word": "the"
+    },
+    "cam_model": {
+     "word": "model"
+    },
+    "next": {
+     "word": "Next"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "place": "the foot of a tall glass tower of thin floors, the row of columns at its base",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "tower"
+     },
+     {
+      "at": "many",
+      "size": "medium",
+      "on": "base"
+     },
+     {
+      "at": "cam_the",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_model",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "tower",
+      "what": "the glass tower stands dark"
+     },
+     {
+      "at": "layers",
+      "do": "floors",
+      "what": "its floors light one after another up the tower"
+     },
+     {
+      "at": "why",
+      "do": "question",
+      "what": "a question mark rises"
+     },
+     {
+      "at": "many",
+      "do": "count",
+      "what": "the floors keep lighting, out of sight"
+     }
+    ],
+    "things": [
+     "glass tower",
+     "floors",
+     "row of columns"
+    ],
+    "sign": {
+     "text": "layers",
+     "at": "next",
+     "on": "base"
+    }
+   }
+  },
+  {
+   "id": "l_stack",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "GPT-three stacks dozens of these layers, one on top of the next, and the row of number lists passes through every single one, in order.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "layers": {
+     "word": "layers"
+    },
+    "stacks": {
+     "word": "stacks"
+    },
+    "next": {
+     "word": "next"
+    },
+    "passes": {
+     "word": "passes"
+    },
+    "order": {
+     "word": "order"
+    },
+    "cam_these": {
+     "word": "these"
+    },
+    "cam_top": {
+     "word": "top"
+    },
+    "cam_row": {
+     "word": "row"
+    },
+    "cam_lists": {
+     "word": "lists"
+    },
+    "cam_single": {
+     "word": "single"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "place": "the glass tower from the side, the row of columns rising floor by floor",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "tower"
+     },
+     {
+      "at": "passes",
+      "size": "close",
+      "on": "floor"
+     },
+     {
+      "at": "cam_these",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_top",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_row",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_lists",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_single",
+      "size": "close",
+      "on": "floor",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "tower",
+      "what": "the tower stands lit"
+     },
+     {
+      "at": "layers",
+      "do": "fig",
+      "what": "a plate at its base lights with the model's name"
+     },
+     {
+      "at": "stacks",
+      "do": "stack",
+      "what": "the floors press together"
+     },
+     {
+      "at": "next",
+      "do": "base",
+      "what": "the row of columns enters the first floor"
+     },
+     {
+      "at": "passes",
+      "do": "rise",
+      "what": "the row rises through floor after floor"
+     },
+     {
+      "at": "order",
+      "do": "climb",
+      "what": "a glow climbs with it"
+     }
+    ],
+    "things": [
+     "glass tower",
+     "floor plate",
+     "row of columns"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "layers"
+    }
+   ]
+  },
+  {
+   "id": "l_attn",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "On a single floor, what comes first? Every token looks back at the tokens before it, and takes in a little of what they carry.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "token": {
+     "word": "token"
+    },
+    "looks": {
+     "word": "looks"
+    },
+    "before": {
+     "word": "before"
+    },
+    "takes": {
+     "word": "takes"
+    },
+    "carry": {
+     "word": "carry"
+    },
+    "back": {
+     "word": "back"
+    },
+    "cam_single": {
+     "word": "single"
+    },
+    "cam_comes": {
+     "word": "comes"
+    },
+    "cam_tokens": {
+     "word": "tokens"
+    },
+    "cam_little": {
+     "word": "little"
+    },
+    "cam_they": {
+     "word": "they"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "place": "one floor up close: the columns in a row, glowing threads reaching back from each to the earlier ones",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "floor"
+     },
+     {
+      "at": "back",
+      "size": "close",
+      "on": "floor"
+     },
+     {
+      "at": "cam_single",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_comes",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_tokens",
+      "size": "close",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_little",
+      "size": "close",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_they",
+      "size": "close",
+      "on": "floor",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "floor",
+      "what": "one floor, the columns in a row"
+     },
+     {
+      "at": "token",
+      "do": "last",
+      "what": "the last column lights"
+     },
+     {
+      "at": "looks",
+      "do": "threads",
+      "what": "threads reach back from it to the earlier columns"
+     },
+     {
+      "at": "before",
+      "do": "all",
+      "what": "every column reaches back the same way"
+     },
+     {
+      "at": "takes",
+      "do": "flow",
+      "what": "light flows along the threads"
+     },
+     {
+      "at": "carry",
+      "do": "tint",
+      "what": "each column takes on a tint from the others"
+     }
+    ],
+    "things": [
+     "token columns",
+     "attention threads"
+    ],
+    "labels": [
+     {
+      "at": "looks",
+      "text": "attention",
+      "on": "floor"
+     }
+    ]
+   }
+  },
+  {
+   "id": "l_attn2",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "That is how blue in your question can take on the meaning of a colour, not a mood, from the words around it.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "question": {
+     "word": "question"
+    },
+    "colour": {
+     "word": "colour"
+    },
+    "mood": {
+     "word": "mood"
+    },
+    "around": {
+     "word": "around"
+    },
+    "cam_how": {
+     "word": "how"
+    },
+    "cam_your": {
+     "word": "your"
+    },
+    "cam_meaning": {
+     "word": "meaning"
+    },
+    "cam_words": {
+     "word": "words"
+    },
+    "blue": {
+     "word": "blue"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "place": "the same floor: the column for blue between sky and the others, threads lighting to sky",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "blue"
+     },
+     {
+      "at": "around",
+      "size": "medium",
+      "on": "floor"
+     },
+     {
+      "at": "cam_how",
+      "size": "close",
+      "on": "blue",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_your",
+      "size": "close",
+      "on": "blue",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_meaning",
+      "size": "close",
+      "on": "blue",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_words",
+      "size": "close",
+      "on": "blue",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "blue",
+      "what": "the column for blue lights"
+     },
+     {
+      "at": "question",
+      "do": "words",
+      "what": "the question shows above the row"
+     },
+     {
+      "at": "colour",
+      "do": "sky",
+      "what": "a thick thread lights from sky to blue"
+     },
+     {
+      "at": "mood",
+      "do": "mood",
+      "what": "a faint thread to a mood fades out"
+     },
+     {
+      "at": "around",
+      "do": "tint",
+      "what": "the blue column turns sky blue"
+     }
+    ],
+    "things": [
+     "blue column",
+     "sky column",
+     "threads"
+    ],
+    "labels": [
+     {
+      "at": "blue",
+      "text": "blue",
+      "on": "blue"
+     },
+     {
+      "at": "colour",
+      "text": "colour",
+      "on": "sky"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "glass",
+     "at": "colour"
+    }
+   ]
+  },
+  {
+   "id": "l_mlp",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Then each token's list goes through a block of multiplications on its own, and its numbers come out slightly changed.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "block": {
+     "word": "block"
+    },
+    "multiplications": {
+     "word": "multiplications"
+    },
+    "own": {
+     "word": "own"
+    },
+    "numbers": {
+     "word": "numbers"
+    },
+    "changed": {
+     "word": "changed"
+    },
+    "cam_tokens": {
+     "word": "token's"
+    },
+    "cam_through": {
+     "word": "through"
+    },
+    "cam_slightly": {
+     "word": "slightly"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "place": "the floor: each column passing through a lit block of switches",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "floor"
+     },
+     {
+      "at": "changed",
+      "size": "close",
+      "on": "floor"
+     },
+     {
+      "at": "cam_tokens",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_through",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_slightly",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "floor",
+      "what": "the columns stand after the threads fade"
+     },
+     {
+      "at": "block",
+      "do": "blocks",
+      "what": "a lit block rises in front of each column"
+     },
+     {
+      "at": "multiplications",
+      "do": "through",
+      "what": "each column passes through its block"
+     },
+     {
+      "at": "own",
+      "do": "sparks",
+      "what": "sparks fly inside the blocks"
+     },
+     {
+      "at": "numbers",
+      "do": "bars",
+      "what": "the bars come out at new heights"
+     },
+     {
+      "at": "changed",
+      "do": "settle",
+      "what": "they settle"
+     }
+    ],
+    "things": [
+     "token columns",
+     "multiplying blocks"
+    ],
+    "labels": [
+     {
+      "at": "block",
+      "text": "multiplying",
+      "on": "floor"
+     }
+    ]
+   }
+  },
+  {
+   "id": "l_climb",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Floor after floor, the lists change a little each time. By the top, a list no longer stands for one word. It carries what the whole sentence is about.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "change": {
+     "word": "change"
+    },
+    "top": {
+     "word": "top"
+    },
+    "longer": {
+     "word": "longer"
+    },
+    "word": {
+     "word": "word"
+    },
+    "sentence": {
+     "word": "sentence"
+    },
+    "cam_lists": {
+     "word": "lists"
+    },
+    "cam_each": {
+     "word": "each"
+    },
+    "cam_one": {
+     "word": "one"
+    },
+    "cam_what": {
+     "word": "what"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "place": "the tower from below, the row climbing, glow brightening at the top",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "tower"
+     },
+     {
+      "at": "top",
+      "size": "medium",
+      "on": "top"
+     },
+     {
+      "at": "cam_lists",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_each",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_one",
+      "size": "medium",
+      "on": "top",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_what",
+      "size": "medium",
+      "on": "top",
+      "move": "orbit"
+     },
+     {
+      "at": "sentence",
+      "size": "close",
+      "on": "top"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "rise",
+      "what": "the row climbs floor after floor"
+     },
+     {
+      "at": "change",
+      "do": "shift",
+      "what": "the bars shift a little on each floor"
+     },
+     {
+      "at": "top",
+      "do": "top",
+      "what": "the row reaches the top floor"
+     },
+     {
+      "at": "longer",
+      "do": "fade",
+      "what": "the word on the last column fades"
+     },
+     {
+      "at": "word",
+      "do": "blend",
+      "what": "its bars blend with the others' colours"
+     },
+     {
+      "at": "sentence",
+      "do": "glow",
+      "what": "the top of the tower glows"
+     }
+    ],
+    "things": [
+     "glass tower",
+     "row of columns",
+     "top floor"
+    ]
+   }
+  },
+  {
+   "id": "l_weights",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "The multiplying on every floor uses numbers stored inside the model, called parameters. And that is where size comes in.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "numbers": {
+     "word": "numbers"
+    },
+    "stored": {
+     "word": "stored"
+    },
+    "parameters": {
+     "word": "parameters"
+    },
+    "size": {
+     "word": "size"
+    },
+    "cam_every": {
+     "word": "every"
+    },
+    "cam_model": {
+     "word": "model"
+    },
+    "cam_where": {
+     "word": "where"
+    },
+    "g6_81": {
+     "sec": 6.81
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "place": "the tower's walls opening to show shelves of tiny glowing beads behind every floor",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "floor"
+     },
+     {
+      "at": "size",
+      "size": "wide",
+      "on": "tower"
+     },
+     {
+      "at": "cam_every",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_model",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_where",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     },
+     {
+      "at": "g6_81",
+      "size": "medium",
+      "on": "floor",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "floor",
+      "what": "a floor with its blocks"
+     },
+     {
+      "at": "numbers",
+      "do": "beads",
+      "what": "the walls fill with tiny glowing beads"
+     },
+     {
+      "at": "stored",
+      "do": "shelves",
+      "what": "shelves of beads line every floor"
+     },
+     {
+      "at": "parameters",
+      "do": "label",
+      "what": "the beads pulse together"
+     },
+     {
+      "at": "size",
+      "do": "grow",
+      "what": "the beads spread up the whole tower"
+     }
+    ],
+    "things": [
+     "tower walls",
+     "parameter beads",
+     "shelves"
+    ],
+    "labels": [
+     {
+      "at": "parameters",
+      "text": "parameters",
+      "on": "wall"
+     }
+    ]
+   }
+  },
+  {
+   "id": "tease3",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "Because those parameters have to be multiplied somewhere, by something you can touch. That is where the software meets the hardware.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "multiplied": {
+     "word": "multiplied"
+    },
+    "somewhere": {
+     "word": "somewhere"
+    },
+    "touch": {
+     "word": "touch"
+    },
+    "hardware": {
+     "word": "hardware"
+    },
+    "cam_parameters": {
+     "word": "parameters"
+    },
+    "cam_you": {
+     "word": "you"
+    },
+    "cam_where": {
+     "word": "where"
+    },
+    "cam_meets": {
+     "word": "meets"
+    }
+   },
+   "params": {
+    "component": "Tower",
+    "place": "the tower fading to a glass outline, a real chip glowing at its foot",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "tower"
+     },
+     {
+      "at": "touch",
+      "size": "medium",
+      "on": "base"
+     },
+     {
+      "at": "cam_parameters",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_you",
+      "size": "wide",
+      "on": "tower",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_where",
+      "size": "medium",
+      "on": "base",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_meets",
+      "size": "medium",
+      "on": "base",
+      "move": "orbit"
+     },
+     {
+      "at": "hardware",
+      "size": "close",
+      "on": "base"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "tower",
+      "what": "the tower glows"
+     },
+     {
+      "at": "multiplied",
+      "do": "ghost",
+      "what": "it fades to a glass outline"
+     },
+     {
+      "at": "somewhere",
+      "do": "chip",
+      "what": "a chip appears glowing at its foot"
+     },
+     {
+      "at": "touch",
+      "do": "light",
+      "what": "the chip lights brighter"
+     },
+     {
+      "at": "hardware",
+      "do": "drop",
+      "what": "the tower sinks into the chip"
+     }
+    ],
+    "things": [
+     "glass tower outline",
+     "chip"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "hardware"
+    }
+   ]
+  },
+  {
+   "id": "c_q",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "So where does all this multiplying actually happen? In a data centre, on racks of servers packed with graphics chips.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "happen": {
+     "word": "happen"
+    },
+    "centre": {
+     "word": "centre"
+    },
+    "racks": {
+     "word": "racks"
+    },
+    "servers": {
+     "word": "servers"
+    },
+    "chips": {
+     "word": "chips"
+    },
+    "cam_does": {
+     "word": "does"
+    },
+    "cam_multiplying": {
+     "word": "multiplying"
+    },
+    "cam_data": {
+     "word": "data"
+    },
+    "cam_graphics": {
+     "word": "graphics"
+    },
+    "so": {
+     "word": "So"
+    }
+   },
+   "params": {
+    "component": "Hall",
+    "place": "the data-centre hall, a rack opening to show its boards of graphics chips",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "hall"
+     },
+     {
+      "at": "racks",
+      "size": "medium",
+      "on": "rack"
+     },
+     {
+      "at": "chips",
+      "size": "close",
+      "on": "board"
+     },
+     {
+      "at": "cam_does",
+      "size": "wide",
+      "on": "hall",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_multiplying",
+      "size": "wide",
+      "on": "hall",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_data",
+      "size": "wide",
+      "on": "hall",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_graphics",
+      "size": "medium",
+      "on": "rack",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "racks",
+      "what": "rows of racks hum in the hall"
+     },
+     {
+      "at": "happen",
+      "do": "question",
+      "what": "a question mark floats in the aisle"
+     },
+     {
+      "at": "centre",
+      "do": "lights",
+      "what": "aisle lights run down the hall"
+     },
+     {
+      "at": "racks",
+      "do": "open",
+      "what": "a rack slides open"
+     },
+     {
+      "at": "servers",
+      "do": "boards",
+      "what": "its boards glide out"
+     },
+     {
+      "at": "chips",
+      "do": "chips",
+      "what": "the graphics chips on them light up"
+     }
+    ],
+    "things": [
+     "server racks",
+     "server boards",
+     "graphics chips"
+    ],
+    "sign": {
+     "text": "the chip",
+     "at": "so",
+     "on": "rack"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "racks"
+    }
+   ]
+  },
+  {
+   "id": "c_count",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "GPT-three has {fact1} parameters, and every one of them is used in a multiplication for every single token it writes.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "has": {
+     "word": "has"
+    },
+    "parameters": {
+     "word": "parameters"
+    },
+    "every": {
+     "word": "every"
+    },
+    "multiplication": {
+     "word": "multiplication"
+    },
+    "single": {
+     "word": "single"
+    },
+    "writes": {
+     "word": "writes"
+    },
+    "cam_them": {
+     "word": "them"
+    },
+    "g3_0": {
+     "sec": 3.0
+    }
+   },
+   "params": {
+    "component": "Chip",
+    "place": "a graphics chip on its board, close, a counter on the board edge",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "board"
+     },
+     {
+      "at": "multiplication",
+      "size": "close",
+      "on": "die"
+     },
+     {
+      "at": "cam_them",
+      "size": "medium",
+      "on": "board",
+      "move": "orbit"
+     },
+     {
+      "at": "g3_0",
+      "size": "medium",
+      "on": "board",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "board",
+      "what": "the chip sits on its board, memory stacks beside it"
+     },
+     {
+      "at": "has",
+      "do": "plate",
+      "what": "a plate by the chip lights"
+     },
+     {
+      "at": "parameters",
+      "do": "fig",
+      "what": "the parameter count lands on a plate by the chip"
+     },
+     {
+      "at": "every",
+      "do": "beads",
+      "what": "a stream of beads pours into the chip"
+     },
+     {
+      "at": "multiplication",
+      "do": "grid",
+      "what": "the chip's surface lights in a grid"
+     },
+     {
+      "at": "single",
+      "do": "token",
+      "what": "one token tile lights at the side"
+     },
+     {
+      "at": "writes",
+      "do": "flash",
+      "what": "the chip flashes"
+     }
+    ],
+    "things": [
+     "graphics chip",
+     "memory stacks",
+     "parameter counter",
+     "token tile"
+    ],
+    "fig": {
+     "params": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "parameters"
+    }
+   ]
+  },
+  {
+   "id": "c_what",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Those numbers are the model. There is no list of facts inside it, only parameters, set during training.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "model": {
+     "word": "model"
+    },
+    "facts": {
+     "word": "facts"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "only": {
+     "word": "only"
+    },
+    "training": {
+     "word": "training"
+    },
+    "cam_are": {
+     "word": "are"
+    },
+    "cam_list": {
+     "word": "list"
+    },
+    "cam_during": {
+     "word": "during"
+    }
+   },
+   "params": {
+    "component": "Chip",
+    "place": "the chip's memory stacks lit, beads streaming, an empty shelf where a book would be",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "mem"
+     },
+     {
+      "at": "facts",
+      "size": "close",
+      "on": "mem"
+     },
+     {
+      "at": "cam_are",
+      "size": "medium",
+      "on": "mem",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_list",
+      "size": "medium",
+      "on": "mem",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_during",
+      "size": "close",
+      "on": "mem",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "mem",
+      "what": "the memory stacks glow"
+     },
+     {
+      "at": "model",
+      "do": "beads",
+      "what": "beads swirl above them"
+     },
+     {
+      "at": "facts",
+      "do": "book",
+      "what": "a book outline appears"
+     },
+     {
+      "at": "inside",
+      "do": "gone",
+      "what": "it dissolves into beads"
+     },
+     {
+      "at": "only",
+      "do": "grid",
+      "what": "the beads line up in a grid"
+     },
+     {
+      "at": "training",
+      "do": "settle",
+      "what": "they settle into the stacks"
+     }
+    ],
+    "things": [
+     "memory stacks",
+     "beads",
+     "book outline"
+    ]
+   }
+  },
+  {
+   "id": "c_units",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Inside the chip, what does the work? Thousands of tiny maths units. Each one multiplies two numbers and adds the result to a running total.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "thousands": {
+     "word": "Thousands"
+    },
+    "multiplies": {
+     "word": "multiplies"
+    },
+    "numbers": {
+     "word": "numbers"
+    },
+    "adds": {
+     "word": "adds"
+    },
+    "total": {
+     "word": "total"
+    },
+    "cam_chip": {
+     "word": "chip"
+    },
+    "cam_work": {
+     "word": "work"
+    },
+    "cam_maths": {
+     "word": "maths"
+    },
+    "cam_one": {
+     "word": "one"
+    },
+    "cam_running": {
+     "word": "running"
+    },
+    "units": {
+     "word": "units"
+    }
+   },
+   "params": {
+    "component": "Chip",
+    "place": "inside the chip: a grid of small maths units, one in close-up taking two numbers",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "die"
+     },
+     {
+      "at": "multiplies",
+      "size": "extreme",
+      "on": "unit"
+     },
+     {
+      "at": "cam_chip",
+      "size": "close",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_work",
+      "size": "close",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_maths",
+      "size": "close",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_one",
+      "size": "close",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_running",
+      "size": "extreme",
+      "on": "unit",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "die",
+      "what": "the chip's surface opens into a grid of tiny units"
+     },
+     {
+      "at": "thousands",
+      "do": "units",
+      "what": "the units light row by row"
+     },
+     {
+      "at": "multiplies",
+      "do": "two",
+      "what": "two beads fly into one unit"
+     },
+     {
+      "at": "numbers",
+      "do": "join",
+      "what": "they meet in the unit"
+     },
+     {
+      "at": "adds",
+      "do": "add",
+      "what": "the unit flashes"
+     },
+     {
+      "at": "total",
+      "do": "total",
+      "what": "its running total bar grows"
+     }
+    ],
+    "things": [
+     "maths units",
+     "two beads",
+     "running total bar"
+    ],
+    "labels": [
+     {
+      "at": "units",
+      "text": "maths units",
+      "on": "die"
+     }
+    ],
+    "tag": "illustration"
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "adds"
+    }
+   ]
+  },
+  {
+   "id": "c_sweep",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "They all work at once, so a whole grid of numbers is multiplied in one sweep, and a chip like this does hundreds of trillions of them every second.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "once": {
+     "word": "once"
+    },
+    "grid": {
+     "word": "grid"
+    },
+    "sweep": {
+     "word": "sweep"
+    },
+    "trillions": {
+     "word": "trillions"
+    },
+    "second": {
+     "word": "second"
+    },
+    "cam_work": {
+     "word": "work"
+    },
+    "cam_whole": {
+     "word": "whole"
+    },
+    "cam_multiplied": {
+     "word": "multiplied"
+    },
+    "cam_chip": {
+     "word": "chip"
+    },
+    "cam_does": {
+     "word": "does"
+    },
+    "cam_every": {
+     "word": "every"
+    }
+   },
+   "params": {
+    "component": "Chip",
+    "place": "the grid of maths units, a wave of light sweeping across it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "die"
+     },
+     {
+      "at": "trillions",
+      "size": "wide",
+      "on": "board"
+     },
+     {
+      "at": "cam_work",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_whole",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_multiplied",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_chip",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_does",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_every",
+      "size": "wide",
+      "on": "board",
+      "move": "orbit"
+     },
+     {
+      "at": "second",
+      "size": "close",
+      "on": "board"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "die",
+      "what": "the grid of units waits"
+     },
+     {
+      "at": "once",
+      "do": "all",
+      "what": "every unit lights together"
+     },
+     {
+      "at": "grid",
+      "do": "wave",
+      "what": "a wave sweeps across the grid"
+     },
+     {
+      "at": "sweep",
+      "do": "again",
+      "what": "another wave follows"
+     },
+     {
+      "at": "trillions",
+      "do": "blur",
+      "what": "waves run so fast they blur"
+     },
+     {
+      "at": "second",
+      "do": "glow",
+      "what": "the chip glows white"
+     }
+    ],
+    "things": [
+     "maths units",
+     "light wave"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "sweep"
+    }
+   ]
+  },
+  {
+   "id": "c_memory",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Where do the parameters wait? In memory stacked right beside the chip, and they stream into those maths units over and over, token after token.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "memory": {
+     "word": "memory"
+    },
+    "beside": {
+     "word": "beside"
+    },
+    "stream": {
+     "word": "stream"
+    },
+    "over": {
+     "word": "over"
+    },
+    "token": {
+     "word": "token"
+    },
+    "cam_parameters": {
+     "word": "parameters"
+    },
+    "cam_they": {
+     "word": "they"
+    },
+    "cam_maths": {
+     "word": "maths"
+    }
+   },
+   "params": {
+    "component": "Chip",
+    "place": "the board: tall memory stacks beside the chip, streams of beads running into it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "mem"
+     },
+     {
+      "at": "stream",
+      "size": "close",
+      "on": "mem"
+     },
+     {
+      "at": "cam_parameters",
+      "size": "medium",
+      "on": "mem",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_they",
+      "size": "medium",
+      "on": "mem",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_maths",
+      "size": "close",
+      "on": "mem",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "mem",
+      "what": "the memory stacks stand beside the chip"
+     },
+     {
+      "at": "memory",
+      "do": "stack",
+      "what": "their layers light"
+     },
+     {
+      "at": "beside",
+      "do": "link",
+      "what": "a bridge of wires lights between them and the chip"
+     },
+     {
+      "at": "stream",
+      "do": "stream",
+      "what": "beads stream across the bridge"
+     },
+     {
+      "at": "over",
+      "do": "again",
+      "what": "the stream repeats"
+     },
+     {
+      "at": "token",
+      "do": "token",
+      "what": "a token tile lights each time the stream passes"
+     }
+    ],
+    "things": [
+     "memory stacks",
+     "bead stream",
+     "wire bridge",
+     "token tile"
+    ],
+    "labels": [
+     {
+      "at": "memory",
+      "text": "memory",
+      "on": "mem"
+     }
+    ]
+   }
+  },
+  {
+   "id": "c_split",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "A model this big is usually split across several chips, passing numbers back and forth between them over fast links.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "big": {
+     "word": "big"
+    },
+    "split": {
+     "word": "split"
+    },
+    "several": {
+     "word": "several"
+    },
+    "passing": {
+     "word": "passing"
+    },
+    "links": {
+     "word": "links"
+    },
+    "cam_this": {
+     "word": "this"
+    },
+    "cam_and": {
+     "word": "and"
+    },
+    "cam_them": {
+     "word": "them"
+    }
+   },
+   "params": {
+    "component": "Chip",
+    "place": "several chips side by side on boards, glowing links between them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "board"
+     },
+     {
+      "at": "links",
+      "size": "wide",
+      "on": "links"
+     },
+     {
+      "at": "cam_this",
+      "size": "medium",
+      "on": "board",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_and",
+      "size": "medium",
+      "on": "board",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_them",
+      "size": "medium",
+      "on": "board",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "board",
+      "what": "one chip with its memory"
+     },
+     {
+      "at": "big",
+      "do": "full",
+      "what": "its memory overflows with beads"
+     },
+     {
+      "at": "split",
+      "do": "split",
+      "what": "the beads split off to more chips sliding in"
+     },
+     {
+      "at": "several",
+      "do": "row",
+      "what": "a row of chips lights"
+     },
+     {
+      "at": "passing",
+      "do": "pass",
+      "what": "pulses run between them"
+     },
+     {
+      "at": "links",
+      "do": "links",
+      "what": "the links glow"
+     }
+    ],
+    "things": [
+     "several chips",
+     "links",
+     "beads"
+    ],
+    "labels": [
+     {
+      "at": "links",
+      "text": "fast links",
+      "on": "links"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "split"
+    }
+   ]
+  },
+  {
+   "id": "c_heat",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "All that switching turns into heat, which is why data centres need so much power, and so much cooling.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "switching": {
+     "word": "switching"
+    },
+    "heat": {
+     "word": "heat"
+    },
+    "power": {
+     "word": "power"
+    },
+    "cooling": {
+     "word": "cooling"
+    },
+    "cam_why": {
+     "word": "why"
+    },
+    "cam_need": {
+     "word": "need"
+    }
+   },
+   "params": {
+    "component": "Hall",
+    "place": "the hall: hot air rising off the racks, cooling pipes and fans",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "rack"
+     },
+     {
+      "at": "heat",
+      "size": "close",
+      "on": "rack"
+     },
+     {
+      "at": "cam_why",
+      "size": "close",
+      "on": "rack",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_need",
+      "size": "close",
+      "on": "rack",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "racks",
+      "what": "the racks glow"
+     },
+     {
+      "at": "switching",
+      "do": "sparks",
+      "what": "sparks flicker inside"
+     },
+     {
+      "at": "heat",
+      "do": "heat",
+      "what": "the racks glow orange, heat shimmering above"
+     },
+     {
+      "at": "power",
+      "do": "power",
+      "what": "power lines light overhead"
+     },
+     {
+      "at": "cooling",
+      "do": "cool",
+      "what": "blue cooling pipes light and fans spin"
+     }
+    ],
+    "things": [
+     "server racks",
+     "heat shimmer",
+     "power lines",
+     "cooling pipes"
+    ]
+   }
+  },
+  {
+   "id": "recap",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "So far: words became tokens, tokens became numbers, the numbers climbed the layers, and a chip did the maths. And all of that makes just one token.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "words": {
+     "word": "words"
+    },
+    "tokens": {
+     "word": "tokens"
+    },
+    "numbers": {
+     "word": "numbers"
+    },
+    "climbed": {
+     "word": "climbed"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "makes": {
+     "word": "makes"
+    },
+    "token": {
+     "word": "token"
+    },
+    "cam_maths": {
+     "word": "maths"
+    },
+    "cam_that": {
+     "word": "that"
+    },
+    "g3_35": {
+     "sec": 3.35
+    }
+   },
+   "params": {
+    "component": "Route",
+    "place": "the map table again, the stations lighting in turn, then one tile at the end",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "all"
+     },
+     {
+      "at": "token",
+      "size": "close",
+      "on": "pick"
+     },
+     {
+      "at": "cam_maths",
+      "size": "wide",
+      "on": "all",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_that",
+      "size": "wide",
+      "on": "all",
+      "move": "orbit"
+     },
+     {
+      "at": "g3_35",
+      "size": "wide",
+      "on": "all",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "track",
+      "what": "the track glows"
+     },
+     {
+      "at": "words",
+      "do": "sphone",
+      "what": "the phone station lights"
+     },
+     {
+      "at": "tokens",
+      "do": "sblade",
+      "what": "the blade station lights"
+     },
+     {
+      "at": "numbers",
+      "do": "snum",
+      "what": "the number station lights"
+     },
+     {
+      "at": "climbed",
+      "do": "stower",
+      "what": "the tower lights"
+     },
+     {
+      "at": "chip",
+      "do": "schip",
+      "what": "the chip station lights"
+     },
+     {
+      "at": "makes",
+      "do": "tile",
+      "what": "one tile pops up at the end"
+     },
+     {
+      "at": "token",
+      "do": "pulse",
+      "what": "the tile glows alone"
+     }
+    ],
+    "things": [
+     "map table",
+     "stations",
+     "one tile"
+    ]
+   }
+  },
+  {
+   "id": "k_q",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "One token? Out of everything it could say, how does it choose?",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "everything": {
+     "word": "everything"
+    },
+    "how": {
+     "word": "how"
+    },
+    "choose": {
+     "word": "choose"
+    },
+    "cam_out": {
+     "word": "Out"
+    },
+    "cam_say": {
+     "word": "say"
+    },
+    "one": {
+     "word": "One"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "a dark stage full of token tiles on stalks, like a field of signs",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "field"
+     },
+     {
+      "at": "choose",
+      "size": "medium",
+      "on": "bars"
+     },
+     {
+      "at": "cam_out",
+      "size": "wide",
+      "on": "field",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_say",
+      "size": "wide",
+      "on": "field",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "field",
+      "what": "a field of token tiles on stalks lies dark"
+     },
+     {
+      "at": "everything",
+      "do": "light",
+      "what": "the tiles light up across the field"
+     },
+     {
+      "at": "how",
+      "do": "question",
+      "what": "a question mark rises"
+     },
+     {
+      "at": "choose",
+      "do": "bars",
+      "what": "the stalks start to grow"
+     }
+    ],
+    "things": [
+     "token tiles on stalks",
+     "field"
+    ],
+    "sign": {
+     "text": "the pick",
+     "at": "one",
+     "on": "field"
+    }
+   }
+  },
+  {
+   "id": "k_scores",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "The top layer gives a score to every token on the list, tens of thousands of them, for how well each would fit next.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "score": {
+     "word": "score"
+    },
+    "tens": {
+     "word": "tens"
+    },
+    "fit": {
+     "word": "fit"
+    },
+    "next": {
+     "word": "next"
+    },
+    "cam_layer": {
+     "word": "layer"
+    },
+    "cam_token": {
+     "word": "token"
+    },
+    "cam_list": {
+     "word": "list"
+    },
+    "cam_them": {
+     "word": "them"
+    },
+    "cam_well": {
+     "word": "well"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "the field of tile stalks, each stalk rising to its score",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "field"
+     },
+     {
+      "at": "fit",
+      "size": "medium",
+      "on": "bars"
+     },
+     {
+      "at": "cam_layer",
+      "size": "wide",
+      "on": "field",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_token",
+      "size": "wide",
+      "on": "field",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_list",
+      "size": "wide",
+      "on": "field",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_them",
+      "size": "wide",
+      "on": "field",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_well",
+      "size": "wide",
+      "on": "field",
+      "move": "orbit"
+     },
+     {
+      "at": "next",
+      "size": "close",
+      "on": "bars"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "field",
+      "what": "the tiles sit low"
+     },
+     {
+      "at": "score",
+      "do": "rise",
+      "what": "every stalk rises to its own height"
+     },
+     {
+      "at": "tens",
+      "do": "spread",
+      "what": "the field stretches far into the dark"
+     },
+     {
+      "at": "fit",
+      "do": "tall",
+      "what": "a few stalks rise far above the rest"
+     },
+     {
+      "at": "next",
+      "do": "glow",
+      "what": "the tallest glow"
+     }
+    ],
+    "things": [
+     "field of stalks",
+     "scores",
+     "tallest tiles"
+    ],
+    "labels": [
+     {
+      "at": "score",
+      "text": "scores",
+      "on": "bars"
+     }
+    ]
+   }
+  },
+  {
+   "id": "k_example",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "For the first word of an answer about the blue sky, tokens like Sunlight or Because score high, and banana scores almost nothing.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "sunlight": {
+     "word": "Sunlight"
+    },
+    "because": {
+     "word": "Because"
+    },
+    "high": {
+     "word": "high"
+    },
+    "banana": {
+     "word": "banana"
+    },
+    "nothing": {
+     "word": "nothing"
+    },
+    "cam_first": {
+     "word": "first"
+    },
+    "cam_answer": {
+     "word": "answer"
+    },
+    "cam_blue": {
+     "word": "blue"
+    },
+    "cam_like": {
+     "word": "like"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "close on the tallest stalks: The and Sunlight high, banana down in the dark",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "bars"
+     },
+     {
+      "at": "banana",
+      "size": "close",
+      "on": "banana"
+     },
+     {
+      "at": "cam_first",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_answer",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_blue",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_like",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "bars",
+      "what": "the tall stalks stand lit"
+     },
+     {
+      "at": "sunlight",
+      "do": "sun",
+      "what": "a stalk labelled Sunlight rises high"
+     },
+     {
+      "at": "because",
+      "do": "because",
+      "what": "Because rises beside it"
+     },
+     {
+      "at": "high",
+      "do": "glow",
+      "what": "they glow"
+     },
+     {
+      "at": "banana",
+      "do": "banana",
+      "what": "a banana tile sits low in the dark"
+     },
+     {
+      "at": "nothing",
+      "do": "dim",
+      "what": "it dims"
+     }
+    ],
+    "things": [
+     "Sunlight tile",
+     "Because tile",
+     "banana tile"
+    ],
+    "labels": [
+     {
+      "at": "sunlight",
+      "text": "Sunlight",
+      "on": "sun"
+     },
+     {
+      "at": "because",
+      "text": "Because",
+      "on": "because"
+     },
+     {
+      "at": "banana",
+      "text": "banana",
+      "on": "banana"
+     }
+    ]
+   }
+  },
+  {
+   "id": "k_pick",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Then one token is picked, usually one of the likely ones, with a little randomness, which is why the same question can get a different answer.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "picked": {
+     "word": "picked"
+    },
+    "likely": {
+     "word": "likely"
+    },
+    "randomness": {
+     "word": "randomness"
+    },
+    "same": {
+     "word": "same"
+    },
+    "different": {
+     "word": "different"
+    },
+    "cam_token": {
+     "word": "token"
+    },
+    "cam_little": {
+     "word": "little"
+    },
+    "cam_why": {
+     "word": "why"
+    },
+    "cam_get": {
+     "word": "get"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "a spinning pointer over the tall stalks, landing on one",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "bars"
+     },
+     {
+      "at": "same",
+      "size": "close",
+      "on": "winner"
+     },
+     {
+      "at": "cam_token",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_little",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_why",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_get",
+      "size": "close",
+      "on": "winner",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "bars",
+      "what": "the tall stalks"
+     },
+     {
+      "at": "picked",
+      "do": "spin",
+      "what": "a pointer spins over them"
+     },
+     {
+      "at": "likely",
+      "do": "slow",
+      "what": "it slows over the tallest"
+     },
+     {
+      "at": "randomness",
+      "do": "jitter",
+      "what": "it wobbles between two"
+     },
+     {
+      "at": "same",
+      "do": "land",
+      "what": "it lands on one"
+     },
+     {
+      "at": "different",
+      "do": "again",
+      "what": "a ghost pointer lands on the other"
+     }
+    ],
+    "things": [
+     "pointer",
+     "tall stalks",
+     "picked tile"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "picked"
+    },
+    {
+     "kind": "pop",
+     "at": "same"
+    }
+   ]
+  },
+  {
+   "id": "k_append",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "That token is added to the end of the text, and the model reads your question plus the new token, and makes the whole trip again.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "added": {
+     "word": "added"
+    },
+    "end": {
+     "word": "end"
+    },
+    "question": {
+     "word": "question"
+    },
+    "plus": {
+     "word": "plus"
+    },
+    "trip": {
+     "word": "trip"
+    },
+    "cam_text": {
+     "word": "text"
+    },
+    "cam_model": {
+     "word": "model"
+    },
+    "cam_makes": {
+     "word": "makes"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "the picked tile flying to the end of the sentence strip, the strip sliding back toward the tower",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "winner"
+     },
+     {
+      "at": "end",
+      "size": "close",
+      "on": "text"
+     },
+     {
+      "at": "trip",
+      "size": "wide",
+      "on": "text"
+     },
+     {
+      "at": "cam_text",
+      "size": "close",
+      "on": "text",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_model",
+      "size": "close",
+      "on": "text",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_makes",
+      "size": "close",
+      "on": "text",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "winner",
+      "what": "the picked tile glows"
+     },
+     {
+      "at": "added",
+      "do": "fly",
+      "what": "it flies to the end of the sentence strip"
+     },
+     {
+      "at": "end",
+      "do": "click",
+      "what": "it clicks into place"
+     },
+     {
+      "at": "question",
+      "do": "words",
+      "what": "the question glows on the strip"
+     },
+     {
+      "at": "plus",
+      "do": "new",
+      "what": "the new tile flashes"
+     },
+     {
+      "at": "trip",
+      "do": "back",
+      "what": "the strip slides back toward the tower"
+     }
+    ],
+    "things": [
+     "picked tile",
+     "sentence strip",
+     "tower"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "trip"
+    }
+   ]
+  },
+  {
+   "id": "k_repeat",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Up through every layer, once more, just to pick the token after that. Then again. And again.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "layer": {
+     "word": "layer"
+    },
+    "once": {
+     "word": "once"
+    },
+    "pick": {
+     "word": "pick"
+    },
+    "then": {
+     "word": "Then"
+    },
+    "again": {
+     "word": "again"
+    },
+    "cam_every": {
+     "word": "every"
+    },
+    "cam_after": {
+     "word": "after"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "the field and the strip, tiles flying in one after another, the stalks rising each time",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "text"
+     },
+     {
+      "at": "again",
+      "size": "wide",
+      "on": "field"
+     },
+     {
+      "at": "cam_every",
+      "size": "medium",
+      "on": "text",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_after",
+      "size": "medium",
+      "on": "text",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "rise",
+      "what": "the stalks rise again"
+     },
+     {
+      "at": "layer",
+      "do": "pulse",
+      "what": "a pulse runs up from the tower"
+     },
+     {
+      "at": "once",
+      "do": "grid",
+      "what": "the field flickers"
+     },
+     {
+      "at": "pick",
+      "do": "fly",
+      "what": "another tile flies to the strip"
+     },
+     {
+      "at": "then",
+      "do": "flyb",
+      "what": "another"
+     },
+     {
+      "at": "again",
+      "do": "flyc",
+      "what": "and another, faster"
+     }
+    ],
+    "things": [
+     "field",
+     "sentence strip",
+     "flying tiles"
+    ]
+   }
+  },
+  {
+   "id": "k_stream",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "That is why you see the answer appear piece by piece. You are watching it being written, one token at a time.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "answer": {
+     "word": "answer"
+    },
+    "piece": {
+     "word": "piece"
+    },
+    "watching": {
+     "word": "watching"
+    },
+    "written": {
+     "word": "written"
+    },
+    "time": {
+     "word": "time"
+    },
+    "cam_why": {
+     "word": "why"
+    },
+    "cam_the": {
+     "word": "the"
+    },
+    "cam_are": {
+     "word": "are"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "the strip of answer tiles growing, a phone screen frame around it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "text"
+     },
+     {
+      "at": "written",
+      "size": "close",
+      "on": "text"
+     },
+     {
+      "at": "cam_why",
+      "size": "medium",
+      "on": "text",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_the",
+      "size": "medium",
+      "on": "text",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_are",
+      "size": "medium",
+      "on": "text",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "strip",
+      "what": "the answer strip glows"
+     },
+     {
+      "at": "answer",
+      "do": "frame",
+      "what": "a phone screen frame forms around it"
+     },
+     {
+      "at": "piece",
+      "do": "grow",
+      "what": "tiles pop on one by one"
+     },
+     {
+      "at": "watching",
+      "do": "cursor",
+      "what": "a cursor blinks at the end"
+     },
+     {
+      "at": "written",
+      "do": "pop",
+      "what": "another tile pops on"
+     },
+     {
+      "at": "time",
+      "do": "popb",
+      "what": "and another"
+     }
+    ],
+    "things": [
+     "answer strip",
+     "phone frame",
+     "cursor"
+    ]
+   }
+  },
+  {
+   "id": "k_cache",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Doesn't that waste time? To save it, the chip keeps notes about the earlier tokens in its memory, so it doesn't redo all of their maths from the beginning.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "save": {
+     "word": "save"
+    },
+    "notes": {
+     "word": "notes"
+    },
+    "memory": {
+     "word": "memory"
+    },
+    "redo": {
+     "word": "redo"
+    },
+    "beginning": {
+     "word": "beginning"
+    },
+    "cam_waste": {
+     "word": "waste"
+    },
+    "cam_chip": {
+     "word": "chip"
+    },
+    "cam_earlier": {
+     "word": "earlier"
+    },
+    "cam_its": {
+     "word": "its"
+    },
+    "cam_their": {
+     "word": "their"
+    }
+   },
+   "params": {
+    "component": "Chip",
+    "place": "the strip of tiles, each old tile dropping a small glowing note into a tray below",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "mem"
+     },
+     {
+      "at": "memory",
+      "size": "close",
+      "on": "mem"
+     },
+     {
+      "at": "cam_waste",
+      "size": "medium",
+      "on": "mem",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_chip",
+      "size": "medium",
+      "on": "mem",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_earlier",
+      "size": "medium",
+      "on": "mem",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_its",
+      "size": "medium",
+      "on": "mem",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_their",
+      "size": "close",
+      "on": "mem",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "strip",
+      "what": "the tiles sit in the strip"
+     },
+     {
+      "at": "save",
+      "do": "clock",
+      "what": "a little clock spins"
+     },
+     {
+      "at": "notes",
+      "do": "notes",
+      "what": "each old tile drops a glowing note into a tray"
+     },
+     {
+      "at": "memory",
+      "do": "tray",
+      "what": "the tray lights"
+     },
+     {
+      "at": "redo",
+      "do": "skip",
+      "what": "the old tiles dim, already done"
+     },
+     {
+      "at": "beginning",
+      "do": "new",
+      "what": "only the newest tile lights"
+     }
+    ],
+    "things": [
+     "answer tiles",
+     "notes",
+     "memory tray"
+    ],
+    "labels": [
+     {
+      "at": "notes",
+      "text": "saved notes",
+      "on": "tray"
+     }
+    ]
+   }
+  },
+  {
+   "id": "k_stop",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "It ends when the token it picks is a special one that means stop.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "ends": {
+     "word": "ends"
+    },
+    "picks": {
+     "word": "picks"
+    },
+    "special": {
+     "word": "special"
+    },
+    "stop": {
+     "word": "stop"
+    },
+    "cam_token": {
+     "word": "token"
+    },
+    "cam_means": {
+     "word": "means"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "the field, one plain dark tile rising to the top, the strip closing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "bars"
+     },
+     {
+      "at": "stop",
+      "size": "close",
+      "on": "winner"
+     },
+     {
+      "at": "cam_token",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_means",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "bars",
+      "what": "the stalks rise"
+     },
+     {
+      "at": "ends",
+      "do": "stop",
+      "what": "a plain dark tile rises highest"
+     },
+     {
+      "at": "picks",
+      "do": "land",
+      "what": "the pointer lands on it"
+     },
+     {
+      "at": "special",
+      "do": "flash",
+      "what": "it flashes red"
+     },
+     {
+      "at": "stop",
+      "do": "close",
+      "what": "the strip closes with a click"
+     }
+    ],
+    "things": [
+     "stop tile",
+     "pointer",
+     "answer strip"
+    ],
+    "labels": [
+     {
+      "at": "stop",
+      "text": "stop",
+      "on": "winner"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "stop"
+    }
+   ]
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "transition": "cut",
+   "say": "So does it look your answer up? Not on its own. Unless the app gives it a search tool, it predicts each next token from patterns it learned.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "look": {
+     "word": "look"
+    },
+    "answer": {
+     "word": "answer"
+    },
+    "search": {
+     "word": "search"
+    },
+    "predicts": {
+     "word": "predicts"
+    },
+    "patterns": {
+     "word": "patterns"
+    },
+    "cam_its": {
+     "word": "its"
+    },
+    "cam_the": {
+     "word": "the"
+    },
+    "cam_token": {
+     "word": "token"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "the field of stalks with an empty, unlit bookshelf at its edge",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "bars"
+     },
+     {
+      "at": "patterns",
+      "size": "wide",
+      "on": "field"
+     },
+     {
+      "at": "cam_its",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_the",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_token",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "bars",
+      "what": "the stalks stand"
+     },
+     {
+      "at": "look",
+      "do": "shelf",
+      "what": "an empty bookshelf appears at the edge"
+     },
+     {
+      "at": "answer",
+      "do": "dark",
+      "what": "it stays dark"
+     },
+     {
+      "at": "search",
+      "do": "tool",
+      "what": "a magnifier tool slides in and out"
+     },
+     {
+      "at": "predicts",
+      "do": "rise",
+      "what": "the stalks rise again"
+     },
+     {
+      "at": "patterns",
+      "do": "glow",
+      "what": "the whole field glows"
+     }
+    ],
+    "things": [
+     "field of stalks",
+     "empty bookshelf",
+     "magnifier"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "predicts"
+    }
+   ]
+  },
+  {
+   "id": "turn2",
+   "scene": "directed",
+   "role": "turn",
+   "transition": "cut",
+   "say": "That is why it can sound sure and still be wrong. A likely-sounding token isn't always a true one.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "sure": {
+     "word": "sure"
+    },
+    "wrong": {
+     "word": "wrong"
+    },
+    "likelysounding": {
+     "word": "likely-sounding"
+    },
+    "true": {
+     "word": "true"
+    },
+    "cam_why": {
+     "word": "why"
+    },
+    "cam_sound": {
+     "word": "sound"
+    },
+    "cam_always": {
+     "word": "always"
+    }
+   },
+   "params": {
+    "component": "Picker",
+    "place": "close on two tall stalks: one green, one that turns red",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "bars"
+     },
+     {
+      "at": "true",
+      "size": "close",
+      "on": "winner"
+     },
+     {
+      "at": "cam_why",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_sound",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_always",
+      "size": "medium",
+      "on": "bars",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "bars",
+      "what": "two tall stalks side by side"
+     },
+     {
+      "at": "sure",
+      "do": "glow",
+      "what": "both glow bright"
+     },
+     {
+      "at": "wrong",
+      "do": "red",
+      "what": "one turns red"
+     },
+     {
+      "at": "likelysounding",
+      "do": "same",
+      "what": "they stay the same height"
+     },
+     {
+      "at": "true",
+      "do": "tick",
+      "what": "the other gets a green tick"
+     }
+    ],
+    "things": [
+     "tall stalks",
+     "red tile",
+     "green tick"
+    ],
+    "labels": [
+     {
+      "at": "wrong",
+      "text": "likely",
+      "on": "winner"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "wrong"
+    }
+   ]
+  },
+  {
+   "id": "tease4",
+   "scene": "directed",
+   "role": "tease",
+   "transition": "cut",
+   "say": "But there is a limit to how much text it can look back on while it writes. And GPT-three's limit was small.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "limit": {
+     "word": "limit"
+    },
+    "text": {
+     "word": "text"
+    },
+    "back": {
+     "word": "back"
+    },
+    "writes": {
+     "word": "writes"
+    },
+    "gptthrees": {
+     "word": "GPT-three's"
+    },
+    "small": {
+     "word": "small"
+    },
+    "cam_much": {
+     "word": "much"
+    },
+    "cam_look": {
+     "word": "look"
+    },
+    "but": {
+     "word": "But"
+    }
+   },
+   "params": {
+    "component": "Window",
+    "place": "a long conveyor of tiles running through a lit frame, the frame's edges glowing",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide",
+      "on": "belt"
+     },
+     {
+      "at": "small",
+      "size": "medium",
+      "on": "frame"
+     },
+     {
+      "at": "cam_much",
+      "size": "wide",
+      "on": "belt",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_look",
+      "size": "wide",
+      "on": "belt",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "belt",
+      "what": "a long belt of tiles runs into the dark"
+     },
+     {
+      "at": "limit",
+      "do": "frame",
+      "what": "a lit frame drops over part of it"
+     },
+     {
+      "at": "text",
+      "do": "fill",
+      "what": "tiles inside it light up"
+     },
+     {
+      "at": "back",
+      "do": "edges",
+      "what": "its edges glow"
+     },
+     {
+      "at": "writes",
+      "do": "move",
+      "what": "the belt moves under it"
+     },
+     {
+      "at": "gptthrees",
+      "do": "slots",
+      "what": "slot marks light along the frame"
+     },
+     {
+      "at": "small",
+      "do": "shrink",
+      "what": "the frame pulls in"
+     }
+    ],
+    "things": [
+     "conveyor of tiles",
+     "lit frame"
+    ],
+    "sign": {
+     "text": "the window",
+     "at": "but",
+     "on": "frame"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "small"
+    }
+   ]
+  },
+  {
+   "id": "w_size",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "GPT-three could read only a limited number of tokens at once, called its window. It held your question, everything said before it, and the answer so far.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "read": {
+     "word": "read"
+    },
+    "window": {
+     "word": "window"
+    },
+    "question": {
+     "word": "question"
+    },
+    "before": {
+     "word": "before"
+    },
+    "far": {
+     "word": "far"
+    },
+    "answer": {
+     "word": "answer"
+    },
+    "cam_limited": {
+     "word": "limited"
+    },
+    "cam_tokens": {
+     "word": "tokens"
+    },
+    "cam_called": {
+     "word": "called"
+    },
+    "cam_your": {
+     "word": "your"
+    },
+    "cam_the": {
+     "word": "the"
+    }
+   },
+   "params": {
+    "component": "Window",
+    "place": "the belt under the frame, the slot count on the frame, three coloured stretches of tiles inside it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "frame"
+     },
+     {
+      "at": "answer",
+      "size": "wide",
+      "on": "belt"
+     },
+     {
+      "at": "cam_limited",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_tokens",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_called",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_your",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_the",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "far",
+      "size": "close",
+      "on": "belt"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "frame",
+      "what": "the frame lights over the belt"
+     },
+     {
+      "at": "read",
+      "do": "slots",
+      "what": "slot marks light along the frame"
+     },
+     {
+      "at": "window",
+      "do": "fill",
+      "what": "tiles fill the frame"
+     },
+     {
+      "at": "question",
+      "do": "q",
+      "what": "the question stretch lights cyan"
+     },
+     {
+      "at": "before",
+      "do": "earlier",
+      "what": "the earlier chat lights amber"
+     },
+     {
+      "at": "far",
+      "do": "answer",
+      "what": "the answer so far lights white"
+     }
+    ],
+    "things": [
+     "frame",
+     "belt of tiles",
+     "question tiles",
+     "answer tiles"
+    ],
+    "labels": [
+     {
+      "at": "question",
+      "text": "question",
+      "on": "q"
+     },
+     {
+      "at": "before",
+      "text": "earlier chat",
+      "on": "earlier"
+     }
+    ]
+   }
+  },
+  {
+   "id": "w_pages",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "At about {fact2} characters a token, that window held only a few pages of text, not a whole book.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "characters": {
+     "word": "characters"
+    },
+    "pages": {
+     "word": "pages"
+    },
+    "whole": {
+     "word": "whole"
+    },
+    "book": {
+     "word": "book"
+    },
+    "cam_that": {
+     "word": "that"
+    },
+    "cam_only": {
+     "word": "only"
+    },
+    "cam_not": {
+     "word": "not"
+    }
+   },
+   "params": {
+    "component": "Window",
+    "place": "beside the frame: a few pages, and a thick book that doesn't fit",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "frame"
+     },
+     {
+      "at": "book",
+      "size": "close",
+      "on": "book"
+     },
+     {
+      "at": "cam_that",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_only",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_not",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "frame",
+      "what": "the frame of tiles"
+     },
+     {
+      "at": "characters",
+      "do": "chars",
+      "what": "the characters figure lands on a tile"
+     },
+     {
+      "at": "pages",
+      "do": "pages",
+      "what": "a few pages slide out of the frame"
+     },
+     {
+      "at": "whole",
+      "do": "book",
+      "what": "a thick book drops beside it"
+     },
+     {
+      "at": "book",
+      "do": "nofit",
+      "what": "the book glows red at the frame's edge"
+     }
+    ],
+    "things": [
+     "frame",
+     "a few pages",
+     "thick book"
+    ],
+    "fig": {
+     "chars": "{fact2}"
+    }
+   }
+  },
+  {
+   "id": "w_off",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "And what happens to anything older? It drops out of the window. The model simply can't see it any more, as if it was never said.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "older": {
+     "word": "older"
+    },
+    "drops": {
+     "word": "drops"
+    },
+    "simply": {
+     "word": "simply"
+    },
+    "see": {
+     "word": "see"
+    },
+    "never": {
+     "word": "never"
+    },
+    "cam_happens": {
+     "word": "happens"
+    },
+    "cam_window": {
+     "word": "window"
+    },
+    "cam_more": {
+     "word": "more"
+    },
+    "cam_was": {
+     "word": "was"
+    }
+   },
+   "params": {
+    "component": "Window",
+    "place": "the belt moving, old tiles sliding out of the frame's back edge and falling into the dark",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "frame"
+     },
+     {
+      "at": "drops",
+      "size": "close",
+      "on": "off"
+     },
+     {
+      "at": "cam_happens",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_window",
+      "size": "close",
+      "on": "off",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_more",
+      "size": "close",
+      "on": "off",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_was",
+      "size": "close",
+      "on": "off",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "move",
+      "what": "the belt moves forward"
+     },
+     {
+      "at": "older",
+      "do": "old",
+      "what": "the oldest tiles reach the frame's back edge"
+     },
+     {
+      "at": "drops",
+      "do": "drop",
+      "what": "they drop off into the dark"
+     },
+     {
+      "at": "simply",
+      "do": "dim",
+      "what": "they go grey"
+     },
+     {
+      "at": "see",
+      "do": "gone",
+      "what": "they vanish"
+     },
+     {
+      "at": "never",
+      "do": "gap",
+      "what": "the frame holds only the newest tiles"
+     }
+    ],
+    "things": [
+     "belt",
+     "falling old tiles",
+     "frame"
+    ]
+   }
+  },
+  {
+   "id": "w_memory",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "It doesn't remember you between chats either, unless the app copies your earlier messages back into the window.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "remember": {
+     "word": "remember"
+    },
+    "chats": {
+     "word": "chats"
+    },
+    "app": {
+     "word": "app"
+    },
+    "copies": {
+     "word": "copies"
+    },
+    "window": {
+     "word": "window"
+    },
+    "cam_messages": {
+     "word": "messages"
+    },
+    "g3_0": {
+     "sec": 3.0
+    }
+   },
+   "params": {
+    "component": "Window",
+    "place": "two chat bubbles on either side of the frame, a hand-off arrow carrying old messages back in",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "frame"
+     },
+     {
+      "at": "copies",
+      "size": "close",
+      "on": "arrow"
+     },
+     {
+      "at": "cam_messages",
+      "size": "close",
+      "on": "arrow",
+      "move": "orbit"
+     },
+     {
+      "at": "g3_0",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "frame",
+      "what": "the frame sits empty"
+     },
+     {
+      "at": "remember",
+      "do": "empty",
+      "what": "an empty chat bubble fades"
+     },
+     {
+      "at": "chats",
+      "do": "two",
+      "what": "a second chat bubble appears"
+     },
+     {
+      "at": "app",
+      "do": "arrow",
+      "what": "an arrow lights from the old chat"
+     },
+     {
+      "at": "copies",
+      "do": "copy",
+      "what": "old message tiles ride back along it"
+     },
+     {
+      "at": "window",
+      "do": "in",
+      "what": "they drop into the frame"
+     }
+    ],
+    "things": [
+     "frame",
+     "chat bubbles",
+     "copy arrow"
+    ],
+    "labels": [
+     {
+      "at": "app",
+      "text": "the app",
+      "on": "arrow"
+     }
+    ]
+   }
+  },
+  {
+   "id": "w_newer",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Newer models have far bigger windows, but the rule is the same: if it isn't in the window, the model doesn't see it.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "bigger": {
+     "word": "bigger"
+    },
+    "rule": {
+     "word": "rule"
+    },
+    "isnt": {
+     "word": "isn't"
+    },
+    "see": {
+     "word": "see"
+    },
+    "cam_have": {
+     "word": "have"
+    },
+    "cam_same": {
+     "word": "same"
+    },
+    "cam_window": {
+     "word": "window"
+    },
+    "cam_doesnt": {
+     "word": "doesn't"
+    }
+   },
+   "params": {
+    "component": "Window",
+    "place": "the frame stretching longer along the belt, tiles outside it still dark",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "frame"
+     },
+     {
+      "at": "rule",
+      "size": "wide",
+      "on": "belt"
+     },
+     {
+      "at": "cam_have",
+      "size": "medium",
+      "on": "frame",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_same",
+      "size": "wide",
+      "on": "belt",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_window",
+      "size": "wide",
+      "on": "belt",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_doesnt",
+      "size": "wide",
+      "on": "belt",
+      "move": "orbit"
+     },
+     {
+      "at": "see",
+      "size": "close",
+      "on": "belt"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "frame",
+      "what": "the frame over the belt"
+     },
+     {
+      "at": "bigger",
+      "do": "stretch",
+      "what": "the frame stretches far along the belt"
+     },
+     {
+      "at": "rule",
+      "do": "edge",
+      "what": "its far edge glows"
+     },
+     {
+      "at": "isnt",
+      "do": "outside",
+      "what": "tiles outside it stay dark"
+     },
+     {
+      "at": "see",
+      "do": "dark",
+      "what": "they fade further"
+     }
+    ],
+    "things": [
+     "stretched frame",
+     "belt",
+     "dark tiles"
+    ]
+   }
+  },
+  {
+   "id": "back1",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "Now follow it back out. The picked token leaves the chip, crosses the data centre, and travels the network to your phone.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "back": {
+     "word": "back"
+    },
+    "leaves": {
+     "word": "leaves"
+    },
+    "crosses": {
+     "word": "crosses"
+    },
+    "travels": {
+     "word": "travels"
+    },
+    "phone": {
+     "word": "phone"
+    },
+    "network": {
+     "word": "network"
+    },
+    "cam_picked": {
+     "word": "picked"
+    },
+    "cam_centre": {
+     "word": "centre"
+    }
+   },
+   "params": {
+    "component": "Hall",
+    "place": "the hall, a single light pulse leaving a rack and running down the cable out of the hall",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close",
+      "on": "rack"
+     },
+     {
+      "at": "crosses",
+      "size": "medium",
+      "on": "rack"
+     },
+     {
+      "at": "network",
+      "size": "wide",
+      "on": "hall"
+     },
+     {
+      "at": "cam_picked",
+      "size": "close",
+      "on": "rack",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_centre",
+      "size": "medium",
+      "on": "rack",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "racks",
+      "what": "the racks hum"
+     },
+     {
+      "at": "back",
+      "do": "pulse",
+      "what": "one pulse lights in a rack"
+     },
+     {
+      "at": "leaves",
+      "do": "out",
+      "what": "it leaves the rack"
+     },
+     {
+      "at": "crosses",
+      "do": "aisle",
+      "what": "it runs down the aisle"
+     },
+     {
+      "at": "travels",
+      "do": "cable",
+      "what": "it races along the cable"
+     },
+     {
+      "at": "phone",
+      "do": "far",
+      "what": "it disappears into the distance"
+     }
+    ],
+    "things": [
+     "server racks",
+     "light pulse",
+     "cable"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "travels"
+    }
+   ]
+  },
+  {
+   "id": "back2",
+   "scene": "directed",
+   "role": "build",
+   "transition": "cut",
+   "say": "On your screen it lands as a few letters. Then the next one arrives, and the next, faster than you can read.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "screen": {
+     "word": "screen"
+    },
+    "lands": {
+     "word": "lands"
+    },
+    "next": {
+     "word": "next"
+    },
+    "arrives": {
+     "word": "arrives"
+    },
+    "read": {
+     "word": "read"
+    },
+    "letters": {
+     "word": "letters"
+    },
+    "cam_few": {
+     "word": "few"
+    },
+    "cam_faster": {
+     "word": "faster"
+    },
+    "cam_can": {
+     "word": "can"
+    }
+   },
+   "params": {
+    "component": "Phone",
+    "place": "the phone on the desk again, the answer filling the chat bubble",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "phone"
+     },
+     {
+      "at": "letters",
+      "size": "close",
+      "on": "screen"
+     },
+     {
+      "at": "cam_few",
+      "size": "medium",
+      "on": "phone",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_faster",
+      "size": "close",
+      "on": "screen",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_can",
+      "size": "close",
+      "on": "screen",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "phone",
+      "what": "the phone glows on the desk"
+     },
+     {
+      "at": "screen",
+      "do": "arrive",
+      "what": "a pulse arrives at the phone"
+     },
+     {
+      "at": "lands",
+      "do": "letters",
+      "what": "a few letters appear in the bubble"
+     },
+     {
+      "at": "next",
+      "do": "more",
+      "what": "more letters follow"
+     },
+     {
+      "at": "arrives",
+      "do": "moreb",
+      "what": "and more"
+     },
+     {
+      "at": "read",
+      "do": "fill",
+      "what": "the bubble fills quickly"
+     }
+    ],
+    "things": [
+     "phone",
+     "answer bubble",
+     "pulse"
+    ],
+    "question": "Why is the sky blue?",
+    "answer": "Sunlight scatters off the air, and blue light scatters the most."
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "transition": "cut",
+   "say": "So in GPT-three, every token of an answer is a fresh vote among tens of thousands of tokens, cast by {fact1} numbers, multiplied on a chip.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "token": {
+     "word": "token"
+    },
+    "vote": {
+     "word": "vote"
+    },
+    "cast": {
+     "word": "cast"
+    },
+    "by": {
+     "word": "by"
+    },
+    "t10_1": {
+     "sec": 10.1
+    },
+    "numbers": {
+     "word": "numbers"
+    },
+    "multiplied": {
+     "word": "multiplied"
+    },
+    "chip": {
+     "word": "chip"
+    },
+    "cam_gptthree": {
+     "word": "GPT-three"
+    },
+    "cam_answer": {
+     "word": "answer"
+    },
+    "cam_fresh": {
+     "word": "fresh"
+    },
+    "cam_thousands": {
+     "word": "thousands"
+    }
+   },
+   "params": {
+    "component": "Chip",
+    "place": "the chip again, its grid lighting, the field of stalks ghosted above it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "die"
+     },
+     {
+      "at": "chip",
+      "size": "wide",
+      "on": "board"
+     },
+     {
+      "at": "cam_gptthree",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_answer",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_fresh",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_thousands",
+      "size": "medium",
+      "on": "die",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "die",
+      "what": "the chip's grid glows"
+     },
+     {
+      "at": "token",
+      "do": "token",
+      "what": "a token tile appears over it"
+     },
+     {
+      "at": "vote",
+      "do": "field",
+      "what": "a ghost field of stalks rises above the chip"
+     },
+     {
+      "at": "cast",
+      "do": "beads",
+      "what": "beads stream in"
+     },
+     {
+      "at": "by",
+      "do": "count",
+      "what": "the parameter count lights on the board"
+     },
+     {
+      "at": "t10_1",
+      "do": "flash",
+      "what": "the chip flashes"
+     },
+     {
+      "at": "numbers",
+      "do": "pulse",
+      "what": "the count pulses"
+     },
+     {
+      "at": "multiplied",
+      "do": "grid",
+      "what": "the grid flashes"
+     },
+     {
+      "at": "chip",
+      "do": "glow",
+      "what": "the chip glows white"
+     }
+    ],
+    "things": [
+     "chip",
+     "ghost field",
+     "token tile"
+    ],
+    "fig": {
+     "params": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "transition": "cut",
+   "say": "Which step should we take apart next? Tell us. And next time you type a question, watch the first word arrive.",
+   "events": {
+    "start": {
+     "sec": 0
+    },
+    "step": {
+     "word": "step"
+    },
+    "tell": {
+     "word": "Tell"
+    },
+    "type": {
+     "word": "type"
+    },
+    "question": {
+     "word": "question"
+    },
+    "arrive": {
+     "word": "arrive"
+    },
+    "cam_take": {
+     "word": "take"
+    },
+    "cam_time": {
+     "word": "time"
+    },
+    "cam_first": {
+     "word": "first"
+    }
+   },
+   "params": {
+    "component": "Phone",
+    "place": "the phone on the desk, a new question being typed, as at the start",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium",
+      "on": "phone"
+     },
+     {
+      "at": "question",
+      "size": "close",
+      "on": "screen"
+     },
+     {
+      "at": "cam_take",
+      "size": "medium",
+      "on": "phone",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_time",
+      "size": "medium",
+      "on": "phone",
+      "move": "orbit"
+     },
+     {
+      "at": "cam_first",
+      "size": "close",
+      "on": "screen",
+      "move": "orbit"
+     }
+    ],
+    "moments": [
+     {
+      "at": "start",
+      "do": "phone",
+      "what": "the phone on the desk"
+     },
+     {
+      "at": "step",
+      "do": "glow",
+      "what": "the screen glows"
+     },
+     {
+      "at": "tell",
+      "do": "bubble",
+      "what": "a comment bubble pops"
+     },
+     {
+      "at": "type",
+      "do": "type",
+      "what": "a thumb types a new question"
+     },
+     {
+      "at": "question",
+      "do": "send",
+      "what": "the send arrow lights"
+     },
+     {
+      "at": "arrive",
+      "do": "pulse",
+      "what": "a pulse leaves the phone"
+     }
+    ],
+    "things": [
+     "phone",
+     "chat app",
+     "question"
+    ],
+    "question": "Why is the sky blue?"
+   }
+  },
+  {
+   "id": "outro",
+   "scene": "end",
+   "transition": "fade",
+   "params": {
+    "cta": "Which step should we take apart next?",
+    "follow": "Subscribe for the next teardown",
+    "assumption": "Sizes are GPT-three's, as published by OpenAI; newer models are larger and most do not publish theirs."
+   }
+  }
+ ],
+ "thumbnail": {
+  "layout": "custom",
+  "engine": "3d",
+  "component": "ThumbHall",
+  "pattern_id": "P3",
+  "words": "Where it *goes*",
+  "things": [
+   "small phone",
+   "data-centre aisle"
+  ],
+  "pattern": "scale: one small phone in front of a long aisle of server racks, the light from it running into the hall",
+  "references": [
+   {
+    "id": "5sLYAQS9sWQ",
+    "views": 1765070,
+    "what": "the machinery of a language model drawn out (words, boxes, arrows), no product shot"
+   },
+   {
+    "id": "bSvTVREwSNw",
+    "views": 963391,
+    "what": "the chain from a question to an answer drawn as boxes and arrows"
+   },
+   {
+    "id": "EsRyyJmO-u8",
+    "views": 4482353,
+    "what": "a phone with a chat app open, big and lit, a few heavy words"
+   }
+  ],
+  "score": 9,
+  "why": "1,2,3,4,5,6,7,8,10 = 9; missed 9 (the phone sits on the bottom edge). One small phone in front of a long lit aisle of racks is the scale surprise; 'where it goes' adds the stakes the title doesn't say, and nothing in this topic's feed (tutorial faces, IBM's lightboard, ByteByteGo's diagram) looks like it"
+ },
+ "thumbnails": [
+  {
+   "layout": "custom",
+   "engine": "3d",
+   "component": "ThumbPhone",
+   "pattern_id": "P5",
+   "words": "Words to *numbers*",
+   "things": [
+    "phone with a chat",
+    "glowing graphics chip"
+   ],
+   "pattern": "the everyday phone chat on the left turning into the chip's maths on the right, a stream of light between",
+   "references": [
+    {
+     "id": "EsRyyJmO-u8",
+     "views": 4482353,
+     "what": "a phone with a chat app open, big and lit, a few heavy words"
+    },
+    {
+     "id": "bSvTVREwSNw",
+     "views": 963391,
+     "what": "the chain from a question to an answer drawn as boxes and arrows"
+    },
+    {
+     "id": "5sLYAQS9sWQ",
+     "views": 1765070,
+     "what": "the machinery of a language model drawn out (words, boxes, arrows), no product shot"
+    }
+   ],
+   "score": 8,
+   "why": "1,3,4,5,6,7,8,10 = 8; missed 2 (the phone and the chip share the frame, neither fills 40%) and 9 (the chip's grid touches the bottom-right corner). Phone to chip with a line of light is the title's question as a picture, readable at feed size beside Website Learners' phone-and-chat 4.5M"
+  },
+  {
+   "layout": "custom",
+   "engine": "3d",
+   "component": "ThumbChip",
+   "pattern_id": "P2",
+   "words": "Pure *maths*",
+   "things": [
+    "glowing graphics chip",
+    "parameter beads"
+   ],
+   "pattern": "the machine that does the work as the one hero object, glowing on a dark ground, two heavy words",
+   "references": [
+    {
+     "id": "5sLYAQS9sWQ",
+     "views": 1765070,
+     "what": "the machinery of a language model drawn out (words, boxes, arrows), no product shot"
+    },
+    {
+     "id": "bSvTVREwSNw",
+     "views": 963391,
+     "what": "the chain from a question to an answer drawn as boxes and arrows"
+    },
+    {
+     "id": "EsRyyJmO-u8",
+     "views": 4482353,
+     "what": "a phone with a chat app open, big and lit, a few heavy words"
+    }
+   ],
+   "score": 8,
+   "why": "1,2,3,4,5,6,7,8 = 8; missed 9 (a memory stack reaches the bottom-right corner) and 10 (a glowing grid on a dark board is close to our EUV wafer). In the feed it is the only dark, machine-first frame among bright face tutorials, and 'pure maths' answers no question the title asks"
+  }
+ ],
+ "thumbnail_pick": "a",
+ "narrator": "af_bella"
+}
