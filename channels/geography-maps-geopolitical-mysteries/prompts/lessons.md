@@ -15,12 +15,23 @@ steepest falls there were lines that made the viewer wait or work:
   beat: "Its nearest neighbour, Saint Helena, sits 2,430 km to the north, and South Africa is 2,816 km away to
   the east." (two figures in one 8-second sentence; at 5 s the frame is empty ocean, a dashed line and a dot,
   and Saint Helena and South Africa only appear by 10 s).
-The mildest second-beat falls were one thing shown on its word: Lesotho's hole (new, no data yet), Denmark laid
-over Greenland (v-20261119-02, 15.3%), the 193 flags coming down (v-20261120-05, 15.1%).
+- Repeated after this lesson was written (27 Nov): v-20261125-11 (Australia's dingo fence, made 24 Nov 23:18
+  UTC; stayed 48.8%, the channel's lowest, 9.5 points under the 58.3% median) 13.9% at 5.7 s: "It starts on the
+  cliffs of the south coast: wire 180 centimetres high, taller than you." The beat opens at 4.3 s on bare sand
+  and a dashed line; the cliffs only rise at 5.5 s and the wire and height marker at 6.7-7.8 s, after the drop.
+- v-20261124-12 (Panama, made before this lesson; stayed 49.4%, 8.9 points under): the second line is a pure
+  question, "So what if it never rained there again?", over an unlabelled blue lake; the first figure waits for
+  the third beat (9.1% more left on "36 to just 22" at 9.9 s).
+The mildest second-beat falls were one thing shown on its word: Lesotho's hole (v-20261124-11, "That hole is a
+country, Lesotho.": no top drop at the second beat; its steepest, 14.9% at 8.1 s, came on the next line, which
+stacks 30,355 km², Belgium and "every road out of it"), Denmark laid over Greenland (v-20261119-02, 15.3%), the
+193 flags coming down (v-20261120-05, 15.1%).
 Fix: the second line is one short sentence (about 15 words, under 5 s) with one fact or one figure, about a
 place already on screen, and the thing it names appears on the map on its word. No "the reason is..." tease,
-no second unfamiliar place name, no two figures in it. Director: the second beat opens with its thing in
-frame, never an empty sea or a bare country.
+no second unfamiliar place name, no two figures in it, and no stacking a figure, a comparison place and a
+second fact in the third line either. Director: the second beat opens with its thing already in frame (the
+wire, the cliff, the lane), drawn in on the beat's first word, never an empty sea, bare land or a dashed line
+waiting for its moment a second later.
 
 ## 2. The first frame names the subject (general; raised 24 Nov 2026)
 Seen in: channel #1's first month, 55-76% swiped away when the title and first second held the subject back.

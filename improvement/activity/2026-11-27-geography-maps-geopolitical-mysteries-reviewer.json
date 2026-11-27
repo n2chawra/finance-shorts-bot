@@ -1,0 +1,20 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-27",
+  "startedAt": "2026-11-27T16:09:52Z",
+  "finishedAt": "2026-11-27T16:13:07Z",
+  "summary": "Watched 6 Geography Shorts of 22-27 Nov (plus Lesotho's new drops); extended lesson 1 with its first repeat and added new numbers to the ending test. No new lesson.",
+  "decision": "acted",
+  "why": "Australia's fence (made after lesson 1) opened its second beat on bare sand: 13.9% left at 5.7 s before the cliffs and wire appeared, and it has the channel's lowest stayed to watch (48.8% vs a 58.3% median). Nothing else reached a 15% drop at a beat or 10 points under the median, except the comment question at the end (Antarctica 20.0%), which stays a test.",
+  "findings": [
+    {"title": "Lesson 1 repeated once", "detail": "v-20261125-11: second beat opens at 4.3 s on bare sand and a dashed line; cliffs at 5.5 s, wire at 6.7 s; 13.9% left at 5.7 s. Stayed 48.8%."},
+    {"title": "Ending question cost 20% on Antarctica", "detail": "61.1 s, 43% to 23% on 'which new coastline surprised you more? Tell me below'; Australia 14.1%. Added to challenger geo-loop-no-question."},
+    {"title": "Best two keep a labelled thing in every frame", "detail": "Malacca 61.9% (end hold 0.56) and Russia 60.7% lost 13.5% at the second beat and only 5-7% at the end."}
+  ],
+  "changes": [
+    {"title": "Lesson 1 extended", "detail": "Seen in: Australia's fence (repeat), Panama, Lesotho; Fix: the thing is in frame on the beat's first word, and the next line doesn't stack figures.", "branch": "agent/reviewer/2026-11-27/geography-maps-geopolitical-mysteries"},
+    {"title": "Challenger geo-loop-no-question: new evidence", "detail": "Antarctica -20.0%, Australia -14.1% on the comment question.", "branch": "agent/reviewer/2026-11-27/geography-maps-geopolitical-mysteries"}
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [{"label": "Review", "url": "channels/geography-maps-geopolitical-mysteries/review/2026-11-27.md"}]
+}
