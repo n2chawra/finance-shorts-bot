@@ -6,6 +6,13 @@
       "title": "Claude Code 2.1.325: scheduled runs now ask before skills with allowed-tools or hooks",
       "detail": "If a routine that uses a skill (motion-direction, remotion-best-practices) ever stops waiting for approval, this change is why. Nothing has stalled so far.",
       "fix": "1. Only if a routine stalls on a skill: add Skill(<name>) to permissions.allow in .claude/settings.json. 2. Re-run the routine."
+    },
+    {
+      "key": "ypp-threshold-feb-2027",
+      "severity": "info",
+      "title": "YouTube doubles the monetisation bar for new channels on 1 Feb 2027",
+      "detail": "Several outlets now report it (it was one source on 21 Nov): from 1 Feb 2027, a channel joining the Partner Program needs 8,000 watch hours in 12 months or 20M Shorts views in 90 days (today 4,000 hours or 10M Shorts views), plus 1,000 subscribers. Channels already in the programme are not affected. This channel has about 17K views in total, so it will not reach today's bar before February; it will have to reach the new one.",
+      "fix": "1. Nothing to do unless you want to plan around it. 2. In YouTube Studio > Earn, check the channel's eligibility and turn on 'Get notified when eligible'. 3. Decide whether the channel's targets (Shorts a day) still make sense against a 20M-views-in-90-days bar."
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "claudeCode": {
     "latest": "2.1.332",
-    "checked": "2026-11-27",
+    "checked": "2026-11-28",
     "notes": [
       "2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow",
       "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline.",
@@ -10,7 +10,8 @@
       "2026-11-24: 2.1.330 still the newest; its changelog also says scheduled tasks and /loop now run up to 30 days instead of 7. Nothing to change in the pipeline.",
       "2.1.331: cloud turns that go silent while thinking are retried once (fewer failed routine runs); PushNotification fixed for headless scheduled runs; fixes otherwise. Nothing to change in the pipeline.",
       "2.1.332: skills from MCP servers (beta), a PreSkillShellCommand hook, compaction fixes for long turns (helps long video runs that hit the context limit), model-fallback fixes on Bedrock/Vertex/Foundry. Nothing to change in the pipeline.",
-      "2026-11-27: 2.1.332 still the newest. Nothing to change in the pipeline."
+      "2026-11-27: 2.1.332 still the newest. Nothing to change in the pipeline.",
+      "2026-11-28: 2.1.332 still the newest. Nothing to change in the pipeline."
     ]
   },
   "sources": {
@@ -26,7 +27,10 @@
     "eea-europa": "eea.europa.eu old theme pages return 410 Gone, seen 2026-11-25",
     "eia-international": "eia.gov/international country pages give no national reserves figure for Qatar (only the North Field claim), seen 2026-11-25",
     "market-data-geo": "market-data branch now scans this channel's own queries (generatedAt 2026-11-24, 30 Shorts, 30 breakouts), seen 2026-11-25",
-    "youtube-search-curl": "youtube.com/results pages fetched with curl carry ytInitialData (titles, views, video ids; add sp=EgIYAQ%3D%3D for recent); oEmbed (youtube.com/oembed) gives a video's channel handle; a channel search (sp=EgIQAg%3D%3D) gives its subscribers. Watch pages redirect to a captcha. Seen 2026-11-26"
+    "youtube-search-curl": "youtube.com/results pages fetched with curl carry ytInitialData (titles, views, video ids; add sp=EgIYAQ%3D%3D for recent); oEmbed (youtube.com/oembed) gives a video's channel handle; a channel search (sp=EgIQAg%3D%3D) gives its subscribers. Watch pages redirect to a captcha. Seen 2026-11-26",
+    "ethnologue.com": "blocked by a Cloudflare challenge for curl, seen 2026-11-28; used its figure via Wikipedia (29th edition, 7,170)",
+    "youtube-watch-pages": "curl returned a 3 KB stub with no description or length, seen 2026-11-28",
+    "ypp-2027-thresholds": "From 1 Feb 2027 new YPP applicants need 8,000 watch hours in 12 months or 20M Shorts views in 90 days (TechRepublic, Metricool, NewscastStudio, Nation Thailand), seen 2026-11-28"
   },
   "references": [
     "oTTBp0g4eXw",
@@ -51,7 +55,12 @@
     "TjFt2IyudxU",
     "7cteyeo8d60",
     "iZS0b9U9UPs",
-    "D0AWufa4iv4"
+    "D0AWufa4iv4",
+    "https://youtube.com/shorts/Hr2VmGT-odc",
+    "https://youtube.com/shorts/HRoQEKENJLg",
+    "https://youtube.com/shorts/fKCf9C54qUk",
+    "https://youtube.com/shorts/AChdfTeQvJY",
+    "https://youtube.com/shorts/YG0l6YpX-6w"
   ],
   "teardowns": {
     "2026-11-22": [
