@@ -71,9 +71,22 @@ def targets(everything: list[dict], now: datetime, root: Path = ROOT) -> list[di
                     "promos_made": len(made), "promo_number": len(made) + 1,
                     "promoted_moments": [p.get("title") for p in made],
                     "script": f"channels/<channel>/videos/{e['id']}/script.json"})
+    # a long video whose story is crowded in the Shorts feed goes last (owner, 2026-11-28: Disaster Desk's promos of
+    # Titan, Colgan and Hyatt went up beside dozens of Shorts on the same stories); never dropped, so a day with only
+    # crowded targets still gets its Short (never a gap)
+    from . import saturation
+    day = now.date().isoformat()
+    for t in out:
+        t["crowded"] = saturation.crowded({"id": promo_key(t["feed_id"])}, day, root) if t["feed_id"] else None
     out.sort(key=lambda t: t["created_at"] or "", reverse=True)
     out.sort(key=lambda t: t["promos_made"])
+    out.sort(key=lambda t: t["crowded"] is not None)
     return out
+
+
+def promo_key(feed_id: str | None) -> str:
+    """The saturation.json key for the Shorts count of a long video's story (workers/saturation.ts)."""
+    return f"promo:{feed_id}"
 
 
 def for_state(everything: list[dict], now: datetime, root: Path = ROOT) -> dict | None:
@@ -84,7 +97,8 @@ def for_state(everything: list[dict], now: datetime, root: Path = ROOT) -> dict 
     return {"per_long": c["per_long"], "targets": targets(everything, now, root),
             "rule": "Every Short promotes one of these long videos (plan.promo_of = its id, topic.feed_id = its "
                     "feed_id): the first target unless it can't pass the variety rules. A different moment of the "
-                    "long video from any promo already made (promoted_moments)."}
+                    "long video from any promo already made (promoted_moments). A target with `crowded` set tells a "
+                    "story many other Shorts told lately: check-plan refuses it while an uncrowded target is open."}
 
 
 def check_plan(plan: dict, everything: list[dict], now: datetime, fmt: str, root: Path = ROOT) -> list[str]:
@@ -104,6 +118,11 @@ def check_plan(plan: dict, everything: list[dict], now: datetime, fmt: str, root
         out.append(f"{promo_of} already has {c['per_long']} promo Shorts; pick another from state.promo.targets")
     if long.get("created_at", "") < (now - timedelta(days=WINDOW_DAYS)).isoformat():
         out.append(f"{promo_of} is over {WINDOW_DAYS} days old; promote a newer long video")
+    open_ = targets(everything, now, root)
+    mine = next((t for t in open_ if t["id"] == promo_of), None)
+    if mine and mine["crowded"] and any(not t["crowded"] for t in open_):
+        free = ", ".join(t["id"] for t in open_ if not t["crowded"])
+        out.append(f"{promo_of}'s story is {mine['crowded']}; promote one that isn't ({free})")
     want = (long.get("topic") or {}).get("feed_id")
     got = (plan.get("topic") or {}).get("feed_id")
     if want and got != want:

@@ -74,3 +74,21 @@ test("a topic whose query changed is checked again at once", () => {
 test("searches are shared between channels in turns", () => {
   assert.deepEqual(roundRobin([["a1", "a2", "a3"], ["b1"], ["c1", "c2"]], 5), ["a1", "b1", "c1", "a2", "c2"]);
 });
+
+test("a promo channel's recent long videos get their story counted as Shorts", async () => {
+  const { promoTopics, queryOf: q, storyTerms: terms } = await import("../lib/saturation.ts");
+  const feed = new Map([["2026-11-20-titan-submersible", { id: "2026-11-20-titan-submersible", title: "The Submarine That Was Never Certified", search: "titan submersible implosion" }]]);
+  const history = [
+    { id: "L-1", format: "long", created_at: ago(3), topic: { feed_id: "2026-11-20-titan-submersible" } },
+    { id: "L-2", format: "long", created_at: ago(2), topic: { feed_id: "2026-11-20-hyatt-walkways", title: "One Phone Call Doubled the Load" } },
+    { id: "L-old", format: "long", created_at: ago(20), topic: { feed_id: "2026-11-01-old" } },
+    { id: "v-1", format: "short", created_at: ago(1), topic: { feed_id: "x" } },
+  ];
+  const got = promoTopics(history, feed, now);
+  assert.deepEqual(got.map((t) => t.id), ["promo:2026-11-20-titan-submersible", "promo:2026-11-20-hyatt-walkways"]);
+  assert.ok(got.every((t) => t.format === "short"));
+  assert.equal(q(got[0]!), "titan submersible implosion");
+  assert.equal(q(got[1]!), "hyatt walkways");
+  assert.deepEqual(terms(got[1]!).terms, ["hyatt", "walkways"]);
+  assert.ok(sameStory("The Hyatt Regency Walkway Collapse #shorts", terms(got[1]!)));
+});

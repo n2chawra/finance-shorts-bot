@@ -16,7 +16,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { QuotaKeeper } from "./lib/quota.ts";
 import { SearchList, VideoDetails, durationSec } from "./lib/market.ts";
-import { FeedTopic, MAX_SEARCHES, type Verdict, dueTopics, judge, queryOf, roundRobin } from "./lib/saturation.ts";
+import { FeedTopic, MAX_SEARCHES, type Verdict, dueTopics, judge, promoTopics, queryOf, roundRobin } from "./lib/saturation.ts";
 import { youtubeClientConfigured } from "./lib/uploads.ts";
 import { tokenOf } from "./lib/channel-auth.ts";
 import { accessToken } from "./lib/youtube.ts";
@@ -62,7 +62,9 @@ function feedOf(slug: string): { topics: FeedTopic[]; used: Set<string> } {
     const id = (e as { topic?: { feed_id?: unknown } })?.topic?.feed_id;
     if (typeof id === "string") used.add(id);
   }
-  return { topics: [...seen.values()], used };
+  const pack = readJson(`channels/${slug}/channel.json`) as { cadence?: { promoOnly?: boolean } } | null;
+  const promos = pack?.cadence?.promoOnly === true ? promoTopics(history, seen, new Date()) : [];
+  return { topics: [...seen.values(), ...promos], used };
 }
 
 async function readToken(): Promise<string | null> {

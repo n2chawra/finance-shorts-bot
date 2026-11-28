@@ -80,3 +80,21 @@ def test_variety_treats_a_promo_and_its_long_as_one_story() -> None:
 def test_old_promos_stay_in_the_window(chan: Path) -> None:
     a = long_entry(1, promo.WINDOW_DAYS - 1, "feed-a")
     assert promo.targets([a], NOW + timedelta(hours=1), chan)[0]["id"] == a["id"]
+
+
+def test_a_long_on_a_crowded_story_is_promoted_last_and_refused_while_another_is_open(chan: Path) -> None:
+    # owner, 2026-11-28: Disaster Desk's promos of Titan and Colgan went up beside dozens of Shorts on the same stories
+    a, b = long_entry(1, 1, "feed-crowded"), long_entry(2, 3, "feed-quiet")
+    sat = chan / "channels" / SLUG / "research"
+    sat.mkdir(parents=True)
+    (sat / "saturation.json").write_text(json.dumps({"topics": {
+        "promo:feed-crowded": {"checkedAt": NOW.isoformat(), "recent7": 20, "median30": 80, "crowded": True,
+                               "reason": "20 other Shorts told this story in the last 7 days"},
+        "promo:feed-quiet": {"checkedAt": NOW.isoformat(), "recent7": 1, "median30": 300, "crowded": False}}}))
+    got = promo.targets([a, b], NOW, chan)
+    assert [t["id"] for t in got] == [b["id"], a["id"]]            # newer, but crowded: last
+    assert got[1]["crowded"] and got[0]["crowded"] is None
+    crowded = make_plan(promo_of=a["id"], topic={"title": "x", "category": "rail", "feed_id": "feed-crowded"})
+    assert any("promote one that isn't" in p for p in promo.check_plan(crowded, [a, b], NOW, "short", chan))
+    # only crowded targets left: still allowed (never a gap)
+    assert promo.check_plan(crowded, [a], NOW, "short", chan) == []

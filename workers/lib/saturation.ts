@@ -42,7 +42,7 @@ const content = (s: string) => words(s).filter((w) => !STOP.has(w) && (w.length 
 /** The subject in a topic id: "2026-11-20-reno-galloping-ghost" -> "reno galloping ghost" (ids name the story; titles
  * often hide it behind the curiosity, "The Racing Plane Modified Past Its Limits"). */
 export function slugOf(id: string | undefined): string {
-  return (id ?? "").replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/-(short|long)$/, "").replace(/-/g, " ").trim();
+  return (id ?? "").replace(/^promo:/, "").replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/-(short|long)$/, "").replace(/-/g, " ").trim();
 }
 
 /** What to search for: the topic's search, else its subject, else its id's words, else its title. */
@@ -66,8 +66,9 @@ export function storyTerms(topic: Named): { terms: string[]; need: number } {
 /** Does a video's title tell the same story? (`need` of the story's terms appear in it) */
 export function sameStory(title: string, story: { terms: string[]; need: number }): boolean {
   if (!story.terms.length) return false;
-  const have = new Set(words(title));
-  return story.terms.filter((t) => have.has(t)).length >= story.need;
+  const stem = (w: string) => (w.length > 3 ? w.replace(/s$/, "") : w);   // "walkways" matches "walkway"
+  const have = new Set(words(title).map(stem));
+  return story.terms.filter((t) => have.has(stem(t))).length >= story.need;
 }
 
 export type Seen = { title: string; publishedAt: string; durationSec: number; views: number };
@@ -122,6 +123,23 @@ export function roundRobin<T>(lists: T[][], budget: number): T[] {
   const out: T[] = [];
   for (let i = 0; out.length < budget && lists.some((l) => i < l.length); i++) {
     for (const l of lists) if (i < l.length && out.length < budget) out.push(l[i]!);
+  }
+  return out;
+}
+
+/** Promo channels (channel.json cadence.promoOnly, Disaster Desk): each long video of the last `days` gets its story
+ * counted as Shorts, under "promo:<feed_id>", so its promo Shorts aren't made on a story the Shorts feed is full of
+ * (generator/promo.py `targets`). */
+export function promoTopics(history: unknown, feed: Map<string, FeedTopic>, now: Date, days = 10): FeedTopic[] {
+  const out: FeedTopic[] = [];
+  const cutoff = new Date(now.getTime() - days * DAY_MS).toISOString();
+  for (const e of Array.isArray(history) ? history : []) {
+    const h = e as { format?: string; created_at?: string; title?: string; topic?: { feed_id?: string; title?: string } };
+    const fid = h?.topic?.feed_id;
+    if (h?.format !== "long" || typeof fid !== "string" || String(h.created_at ?? "") < cutoff) continue;
+    const t = feed.get(fid);
+    out.push({ id: `promo:${fid}`, title: t?.title ?? h.topic?.title ?? h.title ?? fid, format: "short", found: h.created_at ?? null,
+      search: t?.search ?? null, subject: t?.subject ?? null });
   }
   return out;
 }
