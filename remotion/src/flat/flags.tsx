@@ -403,3 +403,7 @@ export const RATIO = 1.5;
 
 /** Every country the table can draw. */
 export const FLAG_NAMES: string[] = Object.keys(FLAGS);
+
+/** Flags of states that no longer exist, so not on the Natural Earth map (shown on a signer, a treaty, a
+ * history beat; never a map fill). The flag test checks every other name against the map. */
+export const HISTORIC_FLAGS: string[] = ["Soviet Union"];
