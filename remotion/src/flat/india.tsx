@@ -520,3 +520,25 @@ export const SeaRipples: React.FC<{ t: number; k?: number; gap?: number; top?: n
     </g>
   );
 };
+
+/** India's official outline (and its state lines) drawn on any map that gives the map context, e.g. a `WorldMap`
+ * with `hide={["India"]}` (or `only` without India): a paper sheet, white state lines, the ink outline, so a world
+ * or ocean-wide map still shows India only as the Survey of India map does (2026-11-28, for v-20261128-61).
+ * `fill` paints chosen states ({ Maharashtra: "#f2a33a" }); `k` fades it in. */
+export const IndiaOutline: React.FC<{ sheet?: string; fill?: Record<string, string>; k?: number; lines?: boolean }> = ({ sheet = "#f3ead6", fill = {}, k = 1, lines = true }) => {
+  const ctx = React.useContext(MapCtx);
+  if (!ctx || k <= 0) return null;
+  const outline = ctx.path(DATA.outline) ?? undefined;
+  const sw = Math.max(1, Math.min(3, ctx.proj.scale() / 1500 * 2.2));
+  return (
+    <g opacity={clamp(k)}>
+      <path d={outline} fill="#0b1724" opacity={0.3} transform="translate(5 7)" />
+      <path d={outline} fill={sheet} />
+      {DATA.states.filter((s) => fill[s.properties.name] ?? fill[stateNow(s.properties.name)]).map((s) => (
+        <path key={`f${s.properties.name}`} d={ctx.path(s) ?? undefined} fill={fill[s.properties.name] ?? fill[stateNow(s.properties.name)]} />
+      ))}
+      {lines ? DATA.states.map((s) => <path key={`l${s.properties.name}`} d={ctx.path(s) ?? undefined} fill="none" stroke="#ffffff" strokeWidth={sw} strokeLinejoin="round" opacity={0.85} />) : null}
+      <path d={outline} fill="none" stroke={INK} strokeWidth={Math.max(2.5, STROKE * 0.6)} strokeLinejoin="round" />
+    </g>
+  );
+};

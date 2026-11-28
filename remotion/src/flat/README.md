@@ -53,6 +53,7 @@ India outline. Inside a `Stage`/`View` (or a bare SVG):
 | `CoastLine` | a state's (or all of `"India"`'s) sea coast: the part of its border on India's official outline that touches no land neighbour, a bright line drawn on as `k` goes 0 → 1, or swept round a `pivot` from angle `a0` to `a1` (Gujarat to Bengal: 190 → -15) (v-20261126-61) |
 | `CoastSurf` | rings of foam rolling in onto India's sea coast from the sea side only (`t` = `m.t`, `k`, `period`, `reach`) (v-20261126-61) |
 | `SeaRipples` | small wave crests drifting on the open sea round India (outside the official outline and the land neighbours), so the sea never reads as a flat sheet (`t`, `k`, `gap`, `top`) (v-20261126-61) |
+| `IndiaOutline` | India's official outline (paper sheet, white state lines, ink border) on any map with the map context, e.g. a `WorldMap` with `hide={["India"]}` or an `only` list without India, so an ocean-wide map shows India only as the Survey of India map does; `fill` paints states, `k` fades it in (v-20261128-61) |
 | `stateColours(palette, names?, offset?)` | a colour per state, never the same as a state it touches |
 | `INDIA_STATES`, `stateHi(name)`, `stateNow(name)` | the 36 names (English, the data keys) and each one's Devanagari name; Kerala shows as केरलम / Keralam, its official name since 25 Aug 2026 ("Keralam" also works as a key) |
 
