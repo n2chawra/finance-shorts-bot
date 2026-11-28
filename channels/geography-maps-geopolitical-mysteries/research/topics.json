@@ -3513,7 +3513,8 @@
         "url": "https://youtube.com/shorts/Hr2VmGT-odc",
         "channel": "Geoforia",
         "channelSubs": 2820,
-        "outlier": 149.2
+        "outlier": 149.2,
+        "removed": "2026-11-29"
       },
       "hook": "Redraw every border on Earth by the language people speak, and one island ends up with more countries than Europe.",
       "angle": "Today there are 193 UN members but about 7,170 living languages. Redrawn by language, Spanish and English stretch across oceans as giant countries, while Papua New Guinea alone splits into hundreds of tiny ones.",
@@ -3560,7 +3561,8 @@
         "https://en.wikipedia.org/wiki/Ethnologue",
         "https://en.wikipedia.org/wiki/Languages_of_Papua_New_Guinea",
         "https://en.wikipedia.org/wiki/Member_states_of_the_United_Nations"
-      ]
+      ],
+      "demand_note": "Reference video removed: on 2026-11-29 YouTube answers 'Video unavailable' and Geoforia's Shorts tab is empty. Views were measured live on 2026-11-27 (market scan); the format's demand stands, but there is no live reference to watch."
     },
     {
       "kind": "evergreen",
@@ -3586,7 +3588,8 @@
         "url": "https://youtube.com/shorts/HRoQEKENJLg",
         "channel": "Geoforia",
         "channelSubs": 2820,
-        "outlier": 125.5
+        "outlier": 125.5,
+        "removed": "2026-11-29"
       },
       "hook": "Put every great empire on one map at the same moment, and they would need more land than Earth has.",
       "angle": "The British Empire at 35.5 million km², the Mongols at 24.0, the Russian Empire at 22.8 and Rome at 5.0 would all claim the same ground at once. Where do they collide, and who is left without land?",
@@ -3638,7 +3641,8 @@
       ],
       "sources": [
         "https://en.wikipedia.org/wiki/List_of_largest_empires"
-      ]
+      ],
+      "demand_note": "Reference video removed: on 2026-11-29 YouTube answers 'Video unavailable' and Geoforia's Shorts tab is empty. Views were measured live on 2026-11-27 (market scan); the format's demand stands, but there is no live reference to watch."
     },
     {
       "kind": "evergreen",
@@ -3804,6 +3808,109 @@
         "https://en.wikipedia.org/wiki/Catholic_Monarchs_of_Spain",
         "https://en.wikipedia.org/wiki/Spanish_conquest_of_Iberian_Navarre"
       ]
+    },
+    {
+      "id": "2026-11-29-what-if-borders-followed-biomes",
+      "title": "What if the world's borders followed its forests and deserts instead of countries?",
+      "category": "biomes",
+      "kind": "evergreen",
+      "priority": "normal",
+      "stories": [
+        "what_if_world"
+      ],
+      "currency": "USD",
+      "reach": "global",
+      "format": "short",
+      "subject": [
+        "biome",
+        "biomes"
+      ],
+      "demand": {
+        "title": "What If Earth Became Minecraft Biomes?",
+        "views": 231000,
+        "url": "https://youtube.com/shorts/FiEDeA-8GYs",
+        "channel": "Geoberry",
+        "channelSubs": 3720,
+        "outlier": 62.1
+      },
+      "hook": "Wipe every border off the map and redraw it by forest and desert, and the biggest country on Earth is a forest the size of Russia.",
+      "templates": [
+        "any"
+      ],
+      "angle": "A real biome map as a political map: the taiga becomes a country almost exactly Russia's size, the Sahara would be the world's fifth-biggest country, and the Amazon rainforest alone would out-size every country but seven.",
+      "why_now": "Geoberry's biome what-if did 231K on 3.72K subscribers (62x) this month, and the same channel's whole-world redraws keep breaking out (merge with a neighbour 986K, 265x). A YouTube search finds no Short this month that redraws the real world by its biomes.",
+      "map_answer": "the world map's borders fade and the land recolours by biome: a dark-green belt across Canada and Russia labelled with its area, a sand-coloured block over North Africa, then a push-in on the Amazon sitting over nine countries' borders",
+      "facts": [
+        {
+          "label": "Area of the taiga (boreal forest), the world's largest land biome, in square kilometres",
+          "value": 17000000,
+          "unit": "count",
+          "as_of": "2026-11-29",
+          "source": "Wikipedia (Taiga)",
+          "url": "https://en.wikipedia.org/wiki/Taiga",
+          "fixed": true
+        },
+        {
+          "label": "Share of Earth's land area covered by the taiga, in percent",
+          "value": 11.5,
+          "unit": "percent",
+          "as_of": "2026-11-29",
+          "source": "Wikipedia (Taiga)",
+          "url": "https://en.wikipedia.org/wiki/Taiga",
+          "fixed": true
+        },
+        {
+          "label": "Area of the Sahara in square kilometres",
+          "value": 9200000,
+          "unit": "count",
+          "as_of": "2026-11-29",
+          "source": "Wikipedia (Sahara)",
+          "url": "https://en.wikipedia.org/wiki/Sahara",
+          "fixed": true
+        },
+        {
+          "label": "Area covered by the Amazon rainforest in square kilometres",
+          "value": 6000000,
+          "unit": "count",
+          "as_of": "2026-11-29",
+          "source": "Wikipedia (Amazon rainforest)",
+          "url": "https://en.wikipedia.org/wiki/Amazon_rainforest",
+          "fixed": true
+        },
+        {
+          "label": "Total area of Russia in square kilometres (UN Statistics Division)",
+          "value": 17098246,
+          "unit": "count",
+          "as_of": "2026-11-29",
+          "source": "UN Statistics Division, via Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area",
+          "fixed": true
+        },
+        {
+          "label": "Total area of China in square kilometres (UN Statistics Division)",
+          "value": 9596960,
+          "unit": "count",
+          "as_of": "2026-11-29",
+          "source": "UN Statistics Division, via Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area",
+          "fixed": true
+        }
+      ],
+      "verify": [
+        "A thought experiment: say the biome map is simplified and biome edges are gradual, not lines",
+        "Sahara: do not state a country count and do not draw the Western Sahara / Morocco line; show the desert as one block with no internal borders",
+        "Any rank ('fifth-biggest', 'bigger than all but seven') must be computed by code from the country areas, not typed; add the other countries' areas from the same UN list if the script ranks against them",
+        "Amazon: 6 million km2 is the rainforest, 7 million km2 the basin; use the rainforest figure and say so"
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Taiga",
+        "https://en.wikipedia.org/wiki/Sahara",
+        "https://en.wikipedia.org/wiki/Amazon_rainforest",
+        "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area"
+      ],
+      "found": "2026-11-29",
+      "expires": "2027-02-27",
+      "status": "new"
     }
   ]
 }
