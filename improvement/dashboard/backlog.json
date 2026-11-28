@@ -928,6 +928,43 @@
       "page": "queue",
       "found": "2026-11-27",
       "status": "open"
+    },
+    {
+      "id": "growth-adopted-verdict",
+      "kind": "bug",
+      "title": "Growth loop: a cycle the owner adopted showed 'Running' and didn't count as kept",
+      "detail": "Geography and How Tech Works have cycle 1 with verdict 'adopted by the owner'. The page only knew keep/revert/abandon/extend, so it showed a Running badge on a finished cycle and '0 of 1 tests kept'. Now: Adopted (green), counted as kept; any other word is shown as written; extended cycles aren't counted as finished. Smoke test added.",
+      "page": "growth",
+      "found": "2026-11-28",
+      "status": "done",
+      "done": "2026-11-28",
+      "lastTouched": {
+        "apps/dashboard/src/app/growth/page.tsx": "2026-11-28",
+        "apps/dashboard/src/lib/autopilot.sample.ts": "2026-11-28",
+        "apps/dashboard/e2e/smoke.spec.ts": "2026-11-28"
+      }
+    },
+    {
+      "id": "growth-confidence-meter-empty",
+      "kind": "bug",
+      "title": "Growth loop: confidence meter half full while the reading says '—'",
+      "detail": "With no counted Shorts on a side the confidence is hidden ('—'), but the meter drew 50%. It is now empty until there is a reading. No smoke test: the sample test has data on both sides.",
+      "page": "growth",
+      "found": "2026-11-28",
+      "status": "done",
+      "done": "2026-11-28",
+      "lastTouched": {
+        "apps/dashboard/src/app/growth/page.tsx": "2026-11-28"
+      }
+    },
+    {
+      "id": "growth-cycle-chart-labels-line",
+      "kind": "bug",
+      "title": "Growth loop: cycle chart's value labels sit on the dashed 45% line",
+      "detail": "Bars near 45% put their percentage label right on the dashed line (seen at desktop width). Cosmetic; give labels a surface background or nudge them.",
+      "page": "growth",
+      "found": "2026-11-28",
+      "status": "open"
     }
   ]
 }
