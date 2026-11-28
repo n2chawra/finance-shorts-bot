@@ -1,7 +1,7 @@
 {
   "claudeCode": {
     "latest": "2.1.332",
-    "checked": "2026-11-28",
+    "checked": "2026-11-29",
     "notes": [
       "2.1.325: scheduled tasks ask before running a skill that declares allowed-tools or hooks unless Skill(name) is in permissions.allow",
       "2.1.328: auto mode on more cloud platforms; mcp_tool hooks can block on a failed call. Nothing for the pipeline.",
@@ -11,7 +11,8 @@
       "2.1.331: cloud turns that go silent while thinking are retried once (fewer failed routine runs); PushNotification fixed for headless scheduled runs; fixes otherwise. Nothing to change in the pipeline.",
       "2.1.332: skills from MCP servers (beta), a PreSkillShellCommand hook, compaction fixes for long turns (helps long video runs that hit the context limit), model-fallback fixes on Bedrock/Vertex/Foundry. Nothing to change in the pipeline.",
       "2026-11-27: 2.1.332 still the newest. Nothing to change in the pipeline.",
-      "2026-11-28: 2.1.332 still the newest. Nothing to change in the pipeline."
+      "2026-11-28: 2.1.332 still the newest. Nothing to change in the pipeline.",
+      "2026-11-29: 2.1.332 still the newest. Nothing to change in the pipeline."
     ]
   },
   "sources": {
@@ -30,7 +31,9 @@
     "youtube-search-curl": "youtube.com/results pages fetched with curl carry ytInitialData (titles, views, video ids; add sp=EgIYAQ%3D%3D for recent); oEmbed (youtube.com/oembed) gives a video's channel handle; a channel search (sp=EgIQAg%3D%3D) gives its subscribers. Watch pages redirect to a captcha. Seen 2026-11-26",
     "ethnologue.com": "blocked by a Cloudflare challenge for curl, seen 2026-11-28; used its figure via Wikipedia (29th edition, 7,170)",
     "youtube-watch-pages": "curl returned a 3 KB stub with no description or length, seen 2026-11-28",
-    "ypp-2027-thresholds": "From 1 Feb 2027 new YPP applicants need 8,000 watch hours in 12 months or 20M Shorts views in 90 days (TechRepublic, Metricool, NewscastStudio, Nation Thailand), seen 2026-11-28"
+    "ypp-2027-thresholds": "From 1 Feb 2027 new YPP applicants need 8,000 watch hours in 12 months or 20M Shorts views in 90 days (TechRepublic, Metricool, NewscastStudio, Nation Thailand), seen 2026-11-28",
+    "youtube-channel-shorts-curl": "youtube.com/@<handle>/shorts fetched with curl lists ~11-48 Shorts with views in accessibilityText; /shorts/<id> pages give playabilityStatus (removed videos say 'Video unavailable'), seen 2026-11-29",
+    "geoforia-removed": "Geoforia (@GeoWorld21-z2c, 2.85K subs): both breakout Shorts (Hr2VmGT-odc, HRoQEKENJLg) unavailable and Shorts tab empty, seen 2026-11-29"
   },
   "references": [
     "oTTBp0g4eXw",
@@ -60,12 +63,18 @@
     "https://youtube.com/shorts/HRoQEKENJLg",
     "https://youtube.com/shorts/fKCf9C54qUk",
     "https://youtube.com/shorts/AChdfTeQvJY",
-    "https://youtube.com/shorts/YG0l6YpX-6w"
+    "https://youtube.com/shorts/YG0l6YpX-6w",
+    "https://youtube.com/shorts/FiEDeA-8GYs",
+    "https://youtube.com/shorts/ihzovq3kRZ8"
   ],
   "teardowns": {
     "2026-11-22": [
       "Odd Atlas",
       "WorldShift"
+    ],
+    "2026-11-29": [
+      "Geoberry",
+      "60SecondClub"
     ]
   }
 }
