@@ -1,0 +1,367 @@
+{
+  "id": "v-20261128-61",
+  "createdAt": "2026-11-28T02:04:12.637044+00:00",
+  "status": "qa_passed",
+  "format": "short",
+  "template": "short_story",
+  "topic": {
+    "title": "Walk straight east from Mumbai and you reach Mexico City",
+    "category": "india-and-world",
+    "reach": "local",
+    "reach_reason": {
+      "kind": "demand"
+    },
+    "feed_id": "2026-11-24-east-from-mumbai",
+    "map_answer": "a straight line along 19 degrees north drawn east from Mumbai across India, the Bay of Bengal, Myanmar, Laos, Vietnam and the Pacific until it lands on Mexico City, almost on the same latitude"
+  },
+  "title": "Mumbai ki seedh mein duniya ka kaunsa bada shehar? 🌏",
+  "description": "Mumbai se ek seedhi line east kheencho, toh woh duniya ke kis bade shehar par rukegi?\nSources: Wikipedia (Nov 2026).\nनक्शे सरल किए गए हैं; भारत की सीमाएँ भारत के आधिकारिक नक्शे के अनुसार। Maps simplified; India's borders as on India's official map. Facts from the sources named in the description.",
+  "hashtags": [
+    "#Shorts",
+    "#IndiaMap",
+    "#Mumbai",
+    "#Geography",
+    "#WorldMap"
+  ],
+  "hookStyle": "challenge",
+  "cta": "Mumbai ki seedh mein aur kya aata hai? Comment",
+  "seed": 41926,
+  "style": {
+    "palette": "ocean",
+    "genre": "monsoon",
+    "key": "C",
+    "bpm": 96,
+    "look": {
+      "stage": "space",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "draw"
+    },
+    "voice": "hm_omega",
+    "arms": {
+      "length": "25-50",
+      "title": "figure_or_name",
+      "style": "shot",
+      "category": "27"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "मुंबई की सीध में दुनिया का कौन-सा बड़ा शहर है?",
+        "start": 0.3,
+        "seconds": 2.33,
+        "window": 3.0,
+        "fill": 0.777
+      },
+      {
+        "scene": "promise",
+        "text": "मुंबई है 19 डिग्री नॉर्थ पर। इसी लाइन पर सीधे पूरब चलते हैं।",
+        "start": 3.3,
+        "seconds": 3.21,
+        "window": 3.87,
+        "fill": 0.829
+      },
+      {
+        "scene": "india",
+        "text": "महाराष्ट्र, तेलंगाना, छत्तीसगढ़, ओडिशा, और फिर समंदर।",
+        "start": 7.17,
+        "seconds": 3.32,
+        "window": 3.97,
+        "fill": 0.836
+      },
+      {
+        "scene": "asia",
+        "text": "म्यांमार, थाईलैंड, लाओस, वियतनाम, सब इसी लाइन पर। पर शहर अभी दूर है।",
+        "start": 11.13,
+        "seconds": 3.95,
+        "window": 4.63,
+        "fill": 0.853
+      },
+      {
+        "scene": "pacific",
+        "text": "फिर चीन का हैनान द्वीप, और आगे खुला प्रशांत महासागर। लाइन रुकेगी कहाँ?",
+        "start": 15.77,
+        "seconds": 3.65,
+        "window": 4.3,
+        "fill": 0.849
+      },
+      {
+        "scene": "turn",
+        "text": "पर बीच समंदर में अचानक ज़मीन, अमेरिका का हवाई!",
+        "start": 20.07,
+        "seconds": 2.67,
+        "window": 3.33,
+        "fill": 0.802
+      },
+      {
+        "scene": "payoff",
+        "text": "और लाइन उतरती है मेक्सिको में। मेक्सिको सिटी, 19 डिग्री नॉर्थ, लगभग मुंबई की सीध में!",
+        "start": 23.4,
+        "seconds": 4.4,
+        "window": 5.07,
+        "fill": 0.868
+      },
+      {
+        "scene": "loop",
+        "text": "आपके शहर की सीध में कौन-सा देश है? कमेंट कीजिए। अब फिर से देखिए,",
+        "start": 28.47,
+        "seconds": 3.56,
+        "window": 4.2,
+        "fill": 0.848
+      }
+    ]
+  },
+  "durationSec": 33,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.0,
+    "music_under_voice_db": 31.8
+  },
+  "experiments": {
+    "im-claim-hook": "off"
+  },
+  "heard": {
+    "hookVoice": "hm_omega",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review of payoff line: 'लगभग मुंबई की सीध में' is accurate (Mexico City 19°26'N vs Mumbai 19°04'N, both on en.wikipedia.org, confirmed by WebFetch); its event word updated to लगभग; rest unchanged and previously passed (route along 19N true, disclaimer in description)."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after scene fixes (extra stills every 0.7s): 10.5s Bay of Bengal pill now out in the sea, Telangana/Odisha tags fully readable; payoff pull-back 27.7-28.4s shows the whole Mumbai-Mexico City line with both pins and pills inside the frame; directed throughout (India, Indochina, Hainan, Pacific, Hawaii, Mexico, world map), flags on every country, hook names Mumbai and holds the answer, loop runs back into the first frame, layout/craft empty, 33s, audio -1/-16.3 dB, disclaimer in description, #MexicoCity spoiler gone.",
+        "fingerprint: 941eb3f1b4536b2b.976399d7b320fe76"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-28T01:39:26.023546+00:00",
+      "finishedAt": "2026-11-28T01:39:26.023546+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-28T01:42:38.864927+00:00",
+      "finishedAt": "2026-11-28T01:42:38.864927+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-28T01:43:20.674909+00:00",
+      "finishedAt": "2026-11-28T01:43:20.674909+00:00",
+      "notes": [
+        "unknown fact unit 'degrees'; use one of year, rupees, rupees_lakh, rupees_crore, percent, count, count_lakh, count_crore, money, money_thousand, money_million, money_billion, money_trillion, count_thousand, count_million, count_billion, km, km2, m, ft, s, min, tonnes, tonnes_per_s, tonnes per second, m3_per_s",
+        "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-28T01:43:32.112335+00:00",
+      "finishedAt": "2026-11-28T01:43:32.112335+00:00",
+      "notes": [
+        "unknown fact unit 'minutes'; use one of year, rupees, rupees_lakh, rupees_crore, percent, count, count_lakh, count_crore, money, money_thousand, money_million, money_billion, money_trillion, count_thousand, count_million, count_billion, km, km2, m, ft, s, min, tonnes, tonnes_per_s, tonnes per second, m3_per_s",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-28T01:43:39.128159+00:00",
+      "finishedAt": "2026-11-28T01:43:39.128159+00:00",
+      "notes": [
+        "beat 'turn'.events.zameen: no word 'ज़मीन:' in this beat's spoken line",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-28T01:43:47.192122+00:00",
+      "finishedAt": "2026-11-28T01:43:47.192122+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-28T01:44:33.764993+00:00",
+      "finishedAt": "2026-11-28T01:44:33.764993+00:00",
+      "notes": [
+        "Facts confirmed on source pages (WebFetch): Mumbai 19°04'34\"N on en.wikipedia.org/wiki/Mumbai (fact1=19, fact2=4); Mexico City 19°26'N on en.wikipedia.org/wiki/Mexico_City (fact3=19, fact4=26). Route along ~19N checked: Maharashtra, Telangana, Chhattisgarh, Odisha, Myanmar, Thailand, Laos, Vietnam, Hainan (18.1-20.1N), Hawaii Big Island (18.9-20.3N), Mexico's Pacific coast - all true. No verify list on the feed topic; evergreen. Description ends with the disclaimer. Notes: 'ठीक मुंबई की सीध में' is a slight overstatement (22 arcminutes, ~40 km apart; both at 19 degrees); at 19.08N the line may touch a sliver of Andhra Pradesh's Srikakulam coast after Odisha - acceptable simplification."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-28T01:45:48.761692+00:00",
+      "finishedAt": "2026-11-28T01:45:48.761692+00:00",
+      "notes": [
+        "Re-review of payoff line: 'लगभग मुंबई की सीध में' is accurate (Mexico City 19°26'N vs Mumbai 19°04'N, both on en.wikipedia.org, confirmed by WebFetch); its event word updated to लगभग; rest unchanged and previously passed (route along 19N true, disclaimer in description)."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-28T01:49:17.408722+00:00",
+      "finishedAt": "2026-11-28T01:50:34.484002+00:00",
+      "notes": [
+        "fingerprint: e992d709b31d9be9.261f023402416638",
+        "4 of 8 stills are mostly empty background (at 0 s, 20 s, 25 s, 33 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-28T01:51:39.440612+00:00",
+      "finishedAt": "2026-11-28T01:52:35.285408+00:00",
+      "notes": [
+        "fingerprint: e992d709b31d9be9.8240a92c9ba86e2f",
+        "2 of 8 stills are mostly empty background (at 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-28T01:53:27.990698+00:00",
+      "finishedAt": "2026-11-28T01:54:20.037753+00:00",
+      "notes": [
+        "fingerprint: e992d709b31d9be9.19e8a583de05ec0b",
+        "2 of 8 stills are mostly empty background (at 20 s, 25 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T01:54:33.449702+00:00",
+      "finishedAt": "2026-11-28T01:55:23.316989+00:00",
+      "notes": [
+        "fingerprint: e992d709b31d9be9.e2de8394bf4ea5e9",
+        "33 s, ocean/monsoon (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-28T01:57:42.848041+00:00",
+      "finishedAt": "2026-11-28T01:57:42.848041+00:00",
+      "notes": [
+        "[scene] 10.5s, beat 'india' (Across.tsx): the 'बंगाल की खाड़ी' pill sits on top of the 'तेलंगाना' tag (reads 'तेलंगान') and crowds the 'ओडिशा' tag - text over text. Put the Bay of Bengal pill out in the sea to the east/south-east, clear of the state tags.",
+        "[scene] 28.0-28.4s, beat 'payoff' (Payoff.tsx), the 'मुंबई' moment: in the final pull-back frame(166.9, 21, 300, 200) Mexico City's pin is cut by the right edge and its 'मेक्सिको सिटी' pill hangs on a long leader away from it, so the climax (whole line Mumbai to Mexico City, both pins pulsing) loses one end. Widen or recentre the last frame (e.g. centre ~lon 170-175 or wider span) so both pins and both pills sit inside the frame and clear of the right-hand buttons. (27.0s mid-pull also shows ~0.5s of plain waves with the 19°N sign stranded top-left; a faster or recentred pull would fix both.)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T01:58:03.320958+00:00",
+      "finishedAt": "2026-11-28T01:58:57.538078+00:00",
+      "notes": [
+        "fingerprint: e992d709b31d9be9.976399d7b320fe76",
+        "33 s, ocean/monsoon (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-28T01:59:03.070410+00:00",
+      "finishedAt": "2026-11-28T01:59:03.070410+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T02:00:10.950189+00:00",
+      "finishedAt": "2026-11-28T02:00:59.160665+00:00",
+      "notes": [
+        "fingerprint: 941eb3f1b4536b2b.976399d7b320fe76",
+        "33 s, ocean/monsoon (preview only)",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-28T02:01:04.807971+00:00",
+      "finishedAt": "2026-11-28T02:01:04.807971+00:00",
+      "notes": [
+        "Re-review after scene fixes (extra stills every 0.7s): 10.5s Bay of Bengal pill now out in the sea, Telangana/Odisha tags fully readable; payoff pull-back 27.7-28.4s shows the whole Mumbai-Mexico City line with both pins and pills inside the frame; directed throughout (India, Indochina, Hainan, Pacific, Hawaii, Mexico, world map), flags on every country, hook names Mumbai and holds the answer, loop runs back into the first frame, layout/craft empty, 33s, audio -1/-16.3 dB, disclaimer in description, #MexicoCity spoiler gone.",
+        "fingerprint: 941eb3f1b4536b2b.976399d7b320fe76"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T02:01:09.501995+00:00",
+      "finishedAt": "2026-11-28T02:03:59.397940+00:00",
+      "notes": [
+        "33 s, ocean/monsoon, peak -1.0 dB, mean -16.3 dB",
+        "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-28T02:04:12.637297+00:00",
+      "finishedAt": "2026-11-28T02:04:12.637297+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-v-20261128-61",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/v-20261128-61"
+  }
+}

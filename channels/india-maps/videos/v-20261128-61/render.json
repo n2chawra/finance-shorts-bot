@@ -1,0 +1,119 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 41926,
+  "duration_sec": 33,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ocean",
+    "genre": "monsoon",
+    "key": "C",
+    "bpm": 96,
+    "look": {
+      "stage": "space",
+      "header": "strip",
+      "holder": "sign",
+      "entrance": "draw"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "मुंबई की सीध में दुनिया का कौन-सा बड़ा शहर है?",
+        "start": 0.3,
+        "seconds": 2.33,
+        "window": 3.0,
+        "fill": 0.777
+      },
+      {
+        "scene": "promise",
+        "text": "मुंबई है 19 डिग्री नॉर्थ पर। इसी लाइन पर सीधे पूरब चलते हैं।",
+        "start": 3.3,
+        "seconds": 3.21,
+        "window": 3.87,
+        "fill": 0.829
+      },
+      {
+        "scene": "india",
+        "text": "महाराष्ट्र, तेलंगाना, छत्तीसगढ़, ओडिशा, और फिर समंदर।",
+        "start": 7.17,
+        "seconds": 3.32,
+        "window": 3.97,
+        "fill": 0.836
+      },
+      {
+        "scene": "asia",
+        "text": "म्यांमार, थाईलैंड, लाओस, वियतनाम, सब इसी लाइन पर। पर शहर अभी दूर है।",
+        "start": 11.13,
+        "seconds": 3.95,
+        "window": 4.63,
+        "fill": 0.853
+      },
+      {
+        "scene": "pacific",
+        "text": "फिर चीन का हैनान द्वीप, और आगे खुला प्रशांत महासागर। लाइन रुकेगी कहाँ?",
+        "start": 15.77,
+        "seconds": 3.65,
+        "window": 4.3,
+        "fill": 0.849
+      },
+      {
+        "scene": "turn",
+        "text": "पर बीच समंदर में अचानक ज़मीन, अमेरिका का हवाई!",
+        "start": 20.07,
+        "seconds": 2.67,
+        "window": 3.33,
+        "fill": 0.802
+      },
+      {
+        "scene": "payoff",
+        "text": "और लाइन उतरती है मेक्सिको में। मेक्सिको सिटी, 19 डिग्री नॉर्थ, लगभग मुंबई की सीध में!",
+        "start": 23.4,
+        "seconds": 4.4,
+        "window": 5.07,
+        "fill": 0.868
+      },
+      {
+        "scene": "loop",
+        "text": "आपके शहर की सीध में कौन-सा देश है? कमेंट कीजिए। अब फिर से देखिए,",
+        "start": 28.47,
+        "seconds": 3.56,
+        "window": 4.2,
+        "fill": 0.848
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "im-claim-hook": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.0,
+    "music_under_voice_db": 31.8
+  },
+  "craft_problems": [],
+  "liveliness": {
+    "median": 7.462,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

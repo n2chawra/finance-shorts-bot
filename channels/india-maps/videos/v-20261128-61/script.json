@@ -1,0 +1,730 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 41926,
+ "story": "india_and_world",
+ "shape": "what-if",
+ "currency": "INR",
+ "language": "hi",
+ "style": {
+  "palette": "ocean",
+  "genre": "monsoon",
+  "key": "C",
+  "bpm": 96,
+  "look": {
+   "stage": "space",
+   "header": "strip",
+   "holder": "sign",
+   "entrance": "draw"
+  }
+ },
+ "arms": {
+  "length": "25-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "Mumbai ki seedh mein aur kya aata hai? Comment",
+ "feed_id": "2026-11-24-east-from-mumbai",
+ "facts": [
+  {
+   "label": "Mumbai's latitude, degrees north",
+   "value": 19,
+   "unit": "count",
+   "as_of": "2026-11-24",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Mumbai",
+   "fixed": true
+  },
+  {
+   "label": "Mumbai's latitude, minutes",
+   "value": 4,
+   "unit": "count",
+   "as_of": "2026-11-24",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Mumbai",
+   "fixed": true
+  },
+  {
+   "label": "Mexico City's latitude, degrees north",
+   "value": 19,
+   "unit": "count",
+   "as_of": "2026-11-24",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Mexico_City",
+   "fixed": true
+  },
+  {
+   "label": "Mexico City's latitude, minutes",
+   "value": 26,
+   "unit": "count",
+   "as_of": "2026-11-24",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Mexico_City",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "payoff",
+  "sec": 3.2,
+  "words": "Mumbai ki *seedh* mein?",
+  "figure": "{fact1}",
+  "tag": "Duniya ka kaunsa shehar",
+  "angle": "question",
+  "who": "narrator",
+  "unique": "our own frame: the line from Mumbai across the world with Mexico in its flag"
+ },
+ "beats": [
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "hook",
+   "role": "hook",
+   "transition": "cut",
+   "say": "मुंबई की सीध में दुनिया का कौन-सा बड़ा शहर है?",
+   "events": {
+    "mumbai": {
+     "word": "मुंबई"
+    },
+    "seedh": {
+     "word": "सीध"
+    },
+    "duniya": {
+     "word": "दुनिया"
+    },
+    "bada": {
+     "word": "बड़ा"
+    },
+    "shahar": {
+     "word": "शहर"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": "India's map, Maharashtra painted, a pin pulsing on Mumbai on the west coast",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "duniya",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mumbai",
+      "what": "Mumbai's pin drops and its name tag pops"
+     },
+     {
+      "at": "seedh",
+      "what": "a dotted line shoots east from the pin across India"
+     },
+     {
+      "at": "duniya",
+      "what": "the camera slides east following the line to the coast"
+     },
+     {
+      "at": "bada",
+      "what": "the line runs off over the Bay of Bengal"
+     },
+     {
+      "at": "shahar",
+      "what": "a big question mark stamps at the line's tip"
+     }
+    ],
+    "things": [
+     "india map",
+     "maharashtra",
+     "mumbai pin",
+     "dotted line east",
+     "question mark"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "shahar"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "promise",
+   "role": "promise",
+   "transition": "match",
+   "say": "मुंबई है {fact1} डिग्री नॉर्थ पर। इसी लाइन पर सीधे पूरब चलते हैं।",
+   "events": {
+    "mumbai": {
+     "word": "मुंबई"
+    },
+    "dg": {
+     "word": "डिग्री"
+    },
+    "isi": {
+     "word": "इसी"
+    },
+    "line": {
+     "word": "लाइन"
+    },
+    "poorab": {
+     "word": "पूरब"
+    },
+    "chalte": {
+     "word": "चलते"
+    }
+   },
+   "params": {
+    "component": "Promise",
+    "place": "Mumbai up close on the Konkan coast, a latitude signpost planted on the city",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "line",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mumbai",
+      "what": "the camera closes on Mumbai, the pin glows"
+     },
+     {
+      "at": "dg",
+      "what": "a signpost with the latitude rises on Mumbai"
+     },
+     {
+      "at": "isi",
+      "what": "the latitude line glows white along the map"
+     },
+     {
+      "at": "line",
+      "what": "the line starts drawing east from the signpost"
+     },
+     {
+      "at": "poorab",
+      "what": "an arrow on the line points east"
+     },
+     {
+      "at": "chalte",
+      "what": "a walking marker sets off along the line"
+     }
+    ],
+    "things": [
+     "mumbai",
+     "latitude signpost",
+     "latitude line",
+     "walking marker"
+    ],
+    "fig": {
+     "lat": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pin",
+     "at": "dg"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "india",
+   "role": "build",
+   "transition": "match",
+   "say": "महाराष्ट्र, तेलंगाना, छत्तीसगढ़, ओडिशा, और फिर समंदर।",
+   "events": {
+    "mh": {
+     "word": "महाराष्ट्र,"
+    },
+    "tg": {
+     "word": "तेलंगाना,"
+    },
+    "cg": {
+     "word": "छत्तीसगढ़,"
+    },
+    "od": {
+     "word": "ओडिशा,"
+    },
+    "phir": {
+     "word": "फिर"
+    },
+    "samandar": {
+     "word": "समंदर।"
+    }
+   },
+   "params": {
+    "component": "Across",
+    "place": "central India along the line, from the Deccan to the Odisha coast",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "samandar",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mh",
+      "what": "Maharashtra traces bright as the marker crosses it"
+     },
+     {
+      "at": "tg",
+      "what": "Telangana paints in and its tag pops"
+     },
+     {
+      "at": "cg",
+      "what": "Chhattisgarh paints in and its tag pops"
+     },
+     {
+      "at": "od",
+      "what": "Odisha paints in and its tag pops"
+     },
+     {
+      "at": "phir",
+      "what": "the marker reaches the coast"
+     },
+     {
+      "at": "samandar",
+      "what": "the line runs out over the Bay of Bengal as the camera pulls back"
+     }
+    ],
+    "things": [
+     "four states",
+     "state tags",
+     "line",
+     "walking marker",
+     "bay of bengal"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "asia",
+   "role": "build",
+   "transition": "match",
+   "say": "म्यांमार, थाईलैंड, लाओस, वियतनाम, सब इसी लाइन पर। पर शहर अभी दूर है।",
+   "events": {
+    "mm": {
+     "word": "म्यांमार,"
+    },
+    "th": {
+     "word": "थाईलैंड,"
+    },
+    "la": {
+     "word": "लाओस,"
+    },
+    "vn": {
+     "word": "वियतनाम,"
+    },
+    "sab": {
+     "word": "सब"
+    },
+    "line": {
+     "word": "लाइन"
+    },
+    "door": {
+     "word": "दूर"
+    }
+   },
+   "params": {
+    "component": "Asia",
+    "place": "South-East Asia east of the Bay of Bengal, the line crossing the Indochina peninsula",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "la",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mm",
+      "what": "Myanmar fills with its flag as the line lands on it"
+     },
+     {
+      "at": "th",
+      "what": "Thailand fills with its flag"
+     },
+     {
+      "at": "la",
+      "what": "Laos fills with its flag as the camera pans east"
+     },
+     {
+      "at": "vn",
+      "what": "Vietnam fills with its flag"
+     },
+     {
+      "at": "sab",
+      "what": "all four flags pulse together"
+     },
+     {
+      "at": "line",
+      "what": "the line glows bright through all four"
+     },
+     {
+      "at": "door",
+      "what": "the line's tip runs on east past Vietnam's coast"
+     }
+    ],
+    "things": [
+     "myanmar flag",
+     "thailand flag",
+     "laos flag",
+     "vietnam flag",
+     "line"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "pacific",
+   "role": "build",
+   "transition": "cut",
+   "say": "फिर चीन का हैनान द्वीप, और आगे खुला प्रशांत महासागर। लाइन रुकेगी कहाँ?",
+   "events": {
+    "phir": {
+     "word": "फिर"
+    },
+    "china": {
+     "word": "चीन"
+    },
+    "hainan": {
+     "word": "हैनान"
+    },
+    "aage": {
+     "word": "आगे"
+    },
+    "khula": {
+     "word": "खुला"
+    },
+    "prashant": {
+     "word": "प्रशांत"
+    },
+    "rukegi": {
+     "word": "रुकेगी"
+    }
+   },
+   "params": {
+    "component": "Pacific",
+    "place": "the South China Sea and Hainan, then the open Pacific on a world map",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "aage",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "china",
+      "what": "Hainan island fills with China's flag"
+     },
+     {
+      "at": "hainan",
+      "what": "Hainan's name tag pops"
+     },
+     {
+      "at": "aage",
+      "what": "the camera pulls back to the whole Pacific"
+     },
+     {
+      "at": "khula",
+      "what": "the line stretches far out over the blue ocean"
+     },
+     {
+      "at": "prashant",
+      "what": "waves ripple along the empty ocean under the line"
+     },
+     {
+      "at": "rukegi",
+      "what": "a question mark bobs at the line's tip far out on the ocean"
+     }
+    ],
+    "things": [
+     "hainan island",
+     "china flag",
+     "line",
+     "pacific ocean",
+     "waves"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "aage"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "turn",
+   "role": "turn",
+   "transition": "match",
+   "say": "पर बीच समंदर में अचानक ज़मीन, अमेरिका का हवाई!",
+   "events": {
+    "beech": {
+     "word": "बीच"
+    },
+    "achanak": {
+     "word": "अचानक"
+    },
+    "zameen": {
+     "word": "ज़मीन,"
+    },
+    "america": {
+     "word": "अमेरिका"
+    },
+    "hawaii": {
+     "word": "हवाई!"
+    }
+   },
+   "params": {
+    "component": "Hawaii",
+    "place": "the middle of the Pacific, the islands of Hawaii on the line",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "zameen",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "beech",
+      "what": "the marker slows over empty water"
+     },
+     {
+      "at": "achanak",
+      "what": "the camera punches in on a speck of land"
+     },
+     {
+      "at": "zameen",
+      "what": "Hawaii's big island rises out of the sea and traces bright"
+     },
+     {
+      "at": "america",
+      "what": "the island fills with the US flag"
+     },
+     {
+      "at": "hawaii",
+      "what": "a name tag pops on Hawaii"
+     }
+    ],
+    "things": [
+     "hawaii island",
+     "us flag",
+     "line",
+     "name tag"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "pin-high",
+     "at": "zameen"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "payoff",
+   "role": "payoff",
+   "transition": "match",
+   "say": "और लाइन उतरती है मेक्सिको में। मेक्सिको सिटी, {fact3} डिग्री नॉर्थ, लगभग मुंबई की सीध में!",
+   "events": {
+    "line": {
+     "word": "लाइन"
+    },
+    "utarti": {
+     "word": "उतरती"
+    },
+    "mexico": {
+     "word": "मेक्सिको"
+    },
+    "city": {
+     "word": "सिटी,"
+    },
+    "dg": {
+     "word": "डिग्री"
+    },
+    "theek": {
+     "word": "लगभग"
+    },
+    "mumbai": {
+     "word": "मुंबई"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": "Mexico's coast and Mexico City, then the whole line back to Mumbai",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "city",
+      "size": "close"
+     },
+     {
+      "at": "mumbai",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "line",
+      "what": "the line reaches Mexico's coast"
+     },
+     {
+      "at": "mexico",
+      "what": "Mexico fills with its flag"
+     },
+     {
+      "at": "city",
+      "what": "a pin drops on Mexico City and a big latitude sign stamps on with a low hit"
+     },
+     {
+      "at": "dg",
+      "what": "the sign pulses"
+     },
+     {
+      "at": "theek",
+      "what": "the camera pulls far back"
+     },
+     {
+      "at": "mumbai",
+      "what": "the whole line from Mumbai to Mexico City blazes, both pins pulsing"
+     }
+    ],
+    "things": [
+     "mexico flag",
+     "mexico city pin",
+     "latitude sign",
+     "whole line",
+     "india",
+     "mumbai pin"
+    ],
+    "fig": {
+     "lat": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "city"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "loop",
+   "role": "loop",
+   "transition": "match",
+   "say": "आपके शहर की सीध में कौन-सा देश है? कमेंट कीजिए। अब फिर से देखिए,",
+   "events": {
+    "aapke": {
+     "word": "आपके"
+    },
+    "shahar": {
+     "word": "शहर"
+    },
+    "desh": {
+     "word": "देश"
+    },
+    "comment": {
+     "word": "कमेंट"
+    },
+    "phir": {
+     "word": "फिर"
+    },
+    "dekhiye": {
+     "word": "देखिए,"
+    }
+   },
+   "params": {
+    "component": "Loop",
+    "place": "all of India with its big cities pinned, then back to Mumbai",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "phir",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "aapke",
+      "what": "pins drop on Delhi, Kolkata, Chennai and Bengaluru"
+     },
+     {
+      "at": "shahar",
+      "what": "short dotted lines run east from each pin"
+     },
+     {
+      "at": "desh",
+      "what": "a question mark pops at the east coast"
+     },
+     {
+      "at": "comment",
+      "what": "a comment bubble pops"
+     },
+     {
+      "at": "phir",
+      "what": "the other pins fade, Mumbai's stays"
+     },
+     {
+      "at": "dekhiye",
+      "what": "Maharashtra paints in as the hook opens"
+     }
+    ],
+    "things": [
+     "india map",
+     "city pins",
+     "comment bubble",
+     "mumbai pin",
+     "maharashtra"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  }
+ ],
+ "narrator": "hm_omega"
+}
