@@ -307,6 +307,15 @@
       "when": "the every-state format's hits end on a fully coloured map; every viewer waits for their own state",
       "beats": "the question over an unpainted India -> states light up one by one with their thing, a route across the map -> the odd ones out -> the one that changed -> pull back to the whole map filled -> loop to the question",
       "origin": "v-20261124-61"
+    },
+    {
+      "id": "the-ring",
+      "name": "The ring",
+      "status": "trial",
+      "levels": false,
+      "when": "a 'which one has the most' question answered on the map by rings of neighbours; every viewer checks their own state",
+      "beats": "hook: three candidate states lit, the question -> candidate one and its ring of neighbours -> candidate two and its ring -> the turn: the winner lifts -> its neighbours light one by one round it, a counter climbing -> payoff: the count, plus the country beyond -> loop: your state's ring?",
+      "origin": "v-20261128-62"
     }
   ]
 }

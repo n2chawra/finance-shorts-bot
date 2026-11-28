@@ -1,0 +1,121 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52819,
+  "duration_sec": 34,
+  "tempo": 1.2,
+  "style": {
+    "palette": "forest",
+    "genre": "tanpura",
+    "key": "D",
+    "bpm": 100,
+    "look": {
+      "stage": "city",
+      "header": "sticky",
+      "holder": "box",
+      "entrance": "pop"
+    }
+  },
+  "voice": {
+    "name": "hm_omega",
+    "base_speed": 1.5,
+    "cast": {
+      "narrator": "hm_omega",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "यूपी, महाराष्ट्र या असम, सबसे ज़्यादा पड़ोसी किसके हैं?",
+        "start": 0.3,
+        "seconds": 3.1,
+        "window": 3.77,
+        "fill": 0.822
+      },
+      {
+        "scene": "maha",
+        "text": "महाराष्ट्र को देखिए, गुजरात, मध्य प्रदेश, छत्तीसगढ़, तेलंगाना, कर्नाटक, गोवा। कई हैं, है ना?",
+        "start": 4.07,
+        "seconds": 5.04,
+        "window": 5.7,
+        "fill": 0.884
+      },
+      {
+        "scene": "assam",
+        "text": "और असम को अरुणाचल, नागालैंड, मणिपुर, मिज़ोरम, त्रिपुरा, मेघालय और बंगाल छूते हैं। पर सबसे आगे कौन?",
+        "start": 9.77,
+        "seconds": 5.57,
+        "window": 6.23,
+        "fill": 0.894
+      },
+      {
+        "scene": "turn",
+        "text": "पर एक स्टेट इन दोनों से आगे है, उत्तर प्रदेश!",
+        "start": 16.0,
+        "seconds": 2.22,
+        "window": 2.87,
+        "fill": 0.774
+      },
+      {
+        "scene": "ringa",
+        "text": "उत्तराखंड, हिमाचल, हरियाणा, दिल्ली, राजस्थान,",
+        "start": 18.87,
+        "seconds": 2.36,
+        "window": 3.0,
+        "fill": 0.787
+      },
+      {
+        "scene": "ringb",
+        "text": "मध्य प्रदेश, छत्तीसगढ़, झारखंड और बिहार।",
+        "start": 21.87,
+        "seconds": 2.29,
+        "window": 2.93,
+        "fill": 0.782
+      },
+      {
+        "scene": "payoff",
+        "text": "पूरे 8 स्टेट्स, और दिल्ली भी! ऊपर से नेपाल का बॉर्डर अलग। इतने स्टेट्स को कोई और स्टेट नहीं छूता।",
+        "start": 24.8,
+        "seconds": 4.75,
+        "window": 5.4,
+        "fill": 0.88
+      },
+      {
+        "scene": "loop",
+        "text": "अपने स्टेट के पड़ोसी गिनिए, और कमेंट कीजिए। फिर देखिए,",
+        "start": 30.2,
+        "seconds": 2.86,
+        "window": 3.5,
+        "fill": 0.817
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "im-claim-hook": "on"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.4,
+    "lufs": -14.2,
+    "music_under_voice_db": 32.0
+  },
+  "craft_problems": [
+    "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 9.606,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

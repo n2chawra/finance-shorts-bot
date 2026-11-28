@@ -1,0 +1,753 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52819,
+ "story": "every_state",
+ "shape": "the-ring",
+ "currency": "INR",
+ "language": "hi",
+ "style": {
+  "palette": "forest",
+  "genre": "tanpura",
+  "key": "D",
+  "bpm": 100,
+  "look": {
+   "stage": "city",
+   "header": "sticky",
+   "holder": "box",
+   "entrance": "pop"
+  }
+ },
+ "arms": {
+  "length": "25-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Aapke state ke kitne padosi? Comment",
+ "feed_id": "2026-11-26-up-most-neighbours",
+ "facts": [
+  {
+   "label": "Indian states bordering Uttar Pradesh",
+   "value": 8,
+   "unit": "count",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Uttar_Pradesh",
+   "fixed": true
+  },
+  {
+   "label": "Union territories bordering Uttar Pradesh",
+   "value": 1,
+   "unit": "count",
+   "as_of": "2026-11-26",
+   "source": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/Uttar_Pradesh",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 2.2,
+  "words": "Sabse zyada *padosi*?",
+  "tag": "UP, Maharashtra ya Assam?",
+  "angle": "question",
+  "who": "narrator",
+  "unique": "our own frame: the three candidate states lit on India's map with a question mark"
+ },
+ "beats": [
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "hook",
+   "role": "hook",
+   "transition": "cut",
+   "say": "यूपी, महाराष्ट्र या असम, सबसे ज़्यादा पड़ोसी किसके हैं?",
+   "events": {
+    "up": {
+     "word": "यूपी,"
+    },
+    "mh": {
+     "word": "महाराष्ट्र"
+    },
+    "as": {
+     "word": "असम,"
+    },
+    "sabse": {
+     "word": "सबसे"
+    },
+    "padosi": {
+     "word": "पड़ोसी"
+    },
+    "kiske": {
+     "word": "किसके"
+    }
+   },
+   "params": {
+    "component": "Hook",
+    "place": "all of India, three big states lit in their own colours",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "padosi",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "up",
+      "what": "Uttar Pradesh lifts and its tag pops"
+     },
+     {
+      "at": "mh",
+      "what": "Maharashtra lifts and its tag pops"
+     },
+     {
+      "at": "as",
+      "what": "Assam lifts and its tag pops"
+     },
+     {
+      "at": "sabse",
+      "what": "rings pulse round all three"
+     },
+     {
+      "at": "padosi",
+      "what": "the camera pushes in on the middle of India"
+     },
+     {
+      "at": "kiske",
+      "what": "a question mark stamps between them"
+     }
+    ],
+    "things": [
+     "india map",
+     "uttar pradesh",
+     "maharashtra",
+     "assam",
+     "question mark"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "kiske"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "maha",
+   "role": "promise",
+   "transition": "match",
+   "say": "महाराष्ट्र को देखिए, गुजरात, मध्य प्रदेश, छत्तीसगढ़, तेलंगाना, कर्नाटक, गोवा। कई हैं, है ना?",
+   "events": {
+    "mh": {
+     "word": "महाराष्ट्र"
+    },
+    "dekhiye": {
+     "word": "देखिए,"
+    },
+    "gj": {
+     "word": "गुजरात,"
+    },
+    "mp": {
+     "word": "मध्य"
+    },
+    "cg": {
+     "word": "छत्तीसगढ़,"
+    },
+    "tg": {
+     "word": "तेलंगाना,"
+    },
+    "ka": {
+     "word": "कर्नाटक,"
+    },
+    "goa": {
+     "word": "गोवा।"
+    },
+    "kai": {
+     "word": "कई"
+    }
+   },
+   "params": {
+    "component": "Maha",
+    "place": "western India round Maharashtra, its neighbours lighting in a ring",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "ka",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mh",
+      "what": "Maharashtra lifts in the middle, its border traces"
+     },
+     {
+      "at": "dekhiye",
+      "what": "the camera settles on Maharashtra"
+     },
+     {
+      "at": "gj",
+      "what": "Gujarat lights with its tag"
+     },
+     {
+      "at": "mp",
+      "what": "Madhya Pradesh lights with its tag"
+     },
+     {
+      "at": "cg",
+      "what": "Chhattisgarh lights with its tag"
+     },
+     {
+      "at": "tg",
+      "what": "Telangana lights with its tag"
+     },
+     {
+      "at": "ka",
+      "what": "Karnataka lights with its tag as the camera pushes south"
+     },
+     {
+      "at": "goa",
+      "what": "tiny Goa lights with its tag"
+     },
+     {
+      "at": "kai",
+      "what": "the ring round Maharashtra pulses"
+     }
+    ],
+    "things": [
+     "maharashtra",
+     "six neighbour states",
+     "state tags",
+     "ring"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "whoosh",
+     "at": "mh"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "assam",
+   "role": "build",
+   "transition": "match",
+   "say": "और असम को अरुणाचल, नागालैंड, मणिपुर, मिज़ोरम, त्रिपुरा, मेघालय और बंगाल छूते हैं। पर सबसे आगे कौन?",
+   "events": {
+    "aur": {
+     "word": "और"
+    },
+    "as": {
+     "word": "असम"
+    },
+    "ar": {
+     "word": "अरुणाचल,"
+    },
+    "nl": {
+     "word": "नागालैंड,"
+    },
+    "mn": {
+     "word": "मणिपुर,"
+    },
+    "mz": {
+     "word": "मिज़ोरम,"
+    },
+    "tr": {
+     "word": "त्रिपुरा,"
+    },
+    "ml": {
+     "word": "मेघालय"
+    },
+    "wb": {
+     "word": "बंगाल"
+    },
+    "chhoote": {
+     "word": "छूते"
+    },
+    "kaun": {
+     "word": "कौन?"
+    }
+   },
+   "params": {
+    "component": "Assam",
+    "place": "the north-east round Assam, the hills lighting one by one",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "mz",
+      "size": "close"
+     },
+     {
+      "at": "wb",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "aur",
+      "what": "the camera sweeps east to the north-east"
+     },
+     {
+      "at": "as",
+      "what": "Assam lifts, its border traces"
+     },
+     {
+      "at": "ar",
+      "what": "Arunachal Pradesh lights with its tag"
+     },
+     {
+      "at": "nl",
+      "what": "Nagaland lights"
+     },
+     {
+      "at": "mn",
+      "what": "Manipur lights"
+     },
+     {
+      "at": "mz",
+      "what": "Mizoram lights as the camera pushes in"
+     },
+     {
+      "at": "tr",
+      "what": "Tripura lights"
+     },
+     {
+      "at": "ml",
+      "what": "Meghalaya lights"
+     },
+     {
+      "at": "wb",
+      "what": "West Bengal lights as the camera pulls back"
+     },
+     {
+      "at": "chhoote",
+      "what": "the whole ring pulses round Assam"
+     },
+     {
+      "at": "kaun",
+      "what": "a question mark pops over the north of India"
+     }
+    ],
+    "things": [
+     "assam",
+     "seven neighbour states",
+     "state tags",
+     "ring"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "turn",
+   "role": "turn",
+   "transition": "match",
+   "say": "पर एक स्टेट इन दोनों से आगे है, उत्तर प्रदेश!",
+   "events": {
+    "par": {
+     "word": "पर"
+    },
+    "ek": {
+     "word": "एक"
+    },
+    "donon": {
+     "word": "दोनों"
+    },
+    "aage": {
+     "word": "आगे"
+    },
+    "uttar": {
+     "word": "उत्तर"
+    },
+    "pradesh": {
+     "word": "प्रदेश!"
+    }
+   },
+   "params": {
+    "component": "Turn",
+    "place": "the heart of north India, Uttar Pradesh rising off the sheet",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "uttar",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "par",
+      "what": "the camera swings back west over India"
+     },
+     {
+      "at": "ek",
+      "what": "a spotlight sweeps across the north"
+     },
+     {
+      "at": "donon",
+      "what": "Maharashtra and Assam dim"
+     },
+     {
+      "at": "aage",
+      "what": "a big question mark hovers over the north"
+     },
+     {
+      "at": "uttar",
+      "what": "Uttar Pradesh lifts off the map in bright gold as the camera pushes in"
+     },
+     {
+      "at": "pradesh",
+      "what": "its name tag stamps on with a low hit"
+     }
+    ],
+    "things": [
+     "uttar pradesh",
+     "spotlight",
+     "maharashtra and assam dimmed",
+     "name tag"
+    ],
+    "fig": {}
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "uttar"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "ringa",
+   "role": "build",
+   "transition": "match",
+   "say": "उत्तराखंड, हिमाचल, हरियाणा, दिल्ली, राजस्थान,",
+   "events": {
+    "uk": {
+     "word": "उत्तराखंड,"
+    },
+    "hp": {
+     "word": "हिमाचल,"
+    },
+    "hr": {
+     "word": "हरियाणा,"
+    },
+    "dl": {
+     "word": "दिल्ली,"
+    },
+    "rj": {
+     "word": "राजस्थान,"
+    }
+   },
+   "params": {
+    "component": "RingWest",
+    "place": "the north and west edge of Uttar Pradesh, the hills and Delhi",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "dl",
+      "size": "close"
+     },
+     {
+      "at": "rj",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "uk",
+      "what": "Uttarakhand lights and a link line joins it to UP, the counter ticks"
+     },
+     {
+      "at": "hp",
+      "what": "Himachal lights at the short stretch, the counter ticks"
+     },
+     {
+      "at": "hr",
+      "what": "Haryana lights, the counter ticks"
+     },
+     {
+      "at": "dl",
+      "what": "tiny Delhi lights as the camera pushes in"
+     },
+     {
+      "at": "rj",
+      "what": "Rajasthan lights, the counter ticks"
+     }
+    ],
+    "things": [
+     "uttar pradesh",
+     "five neighbours",
+     "link lines",
+     "neighbour counter"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "ringb",
+   "role": "build",
+   "transition": "match",
+   "say": "मध्य प्रदेश, छत्तीसगढ़, झारखंड और बिहार।",
+   "events": {
+    "mp": {
+     "word": "मध्य"
+    },
+    "cg": {
+     "word": "छत्तीसगढ़,"
+    },
+    "jh": {
+     "word": "झारखंड"
+    },
+    "aur": {
+     "word": "और"
+    },
+    "br": {
+     "word": "बिहार।"
+    }
+   },
+   "params": {
+    "component": "RingEast",
+    "place": "the south and east edge of Uttar Pradesh, down to the Ganga plains",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "br",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mp",
+      "what": "Madhya Pradesh lights, the counter ticks"
+     },
+     {
+      "at": "cg",
+      "what": "Chhattisgarh lights at its corner, the counter ticks"
+     },
+     {
+      "at": "jh",
+      "what": "Jharkhand lights, the counter ticks"
+     },
+     {
+      "at": "aur",
+      "what": "the camera pans east"
+     },
+     {
+      "at": "br",
+      "what": "Bihar lights and the ring closes round UP"
+     }
+    ],
+    "things": [
+     "uttar pradesh",
+     "four neighbours",
+     "link lines",
+     "neighbour counter"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "payoff",
+   "role": "payoff",
+   "transition": "match",
+   "say": "पूरे {fact1} स्टेट्स, और दिल्ली भी! ऊपर से नेपाल का बॉर्डर अलग। इतने स्टेट्स को कोई और स्टेट नहीं छूता।",
+   "events": {
+    "poore": {
+     "word": "पूरे"
+    },
+    "states": {
+     "word": "स्टेट्स,"
+    },
+    "delhi": {
+     "word": "दिल्ली"
+    },
+    "oopar": {
+     "word": "ऊपर"
+    },
+    "nepal": {
+     "word": "नेपाल"
+    },
+    "border": {
+     "word": "बॉर्डर"
+    },
+    "koi": {
+     "word": "कोई"
+    }
+   },
+   "params": {
+    "component": "Payoff",
+    "place": "Uttar Pradesh in its full ring, then Nepal across the northern border",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "oopar",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "poore",
+      "what": "the neighbour counter board stamps the states figure with a low hit"
+     },
+     {
+      "at": "states",
+      "what": "the whole ring of states pulses"
+     },
+     {
+      "at": "delhi",
+      "what": "Delhi flashes with a plus tag"
+     },
+     {
+      "at": "oopar",
+      "what": "the camera pulls back north"
+     },
+     {
+      "at": "nepal",
+      "what": "Nepal fills with its flag"
+     },
+     {
+      "at": "border",
+      "what": "the UP-Nepal border runs bright"
+     },
+     {
+      "at": "koi",
+      "what": "the camera settles back on UP as the whole ring glows"
+     }
+    ],
+    "things": [
+     "neighbour counter board",
+     "ring of states",
+     "delhi",
+     "nepal with its flag",
+     "border line"
+    ],
+    "fig": {
+     "n": "{fact1}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "poore"
+    }
+   ]
+  },
+  {
+   "scene": "directed",
+   "speaker": "narrator",
+   "id": "loop",
+   "role": "loop",
+   "transition": "match",
+   "say": "अपने स्टेट के पड़ोसी गिनिए, और कमेंट कीजिए। फिर देखिए,",
+   "events": {
+    "apne": {
+     "word": "अपने"
+    },
+    "padosi": {
+     "word": "पड़ोसी"
+    },
+    "ginie": {
+     "word": "गिनिए,"
+    },
+    "comment": {
+     "word": "कमेंट"
+    },
+    "phir": {
+     "word": "फिर"
+    },
+    "dekhiye": {
+     "word": "देखिए,"
+    }
+   },
+   "params": {
+    "component": "Loop",
+    "place": "all of India, every state ringed in white, then back to the three",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "phir",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "apne",
+      "what": "the camera pulls back to all of India"
+     },
+     {
+      "at": "padosi",
+      "what": "every state's border flashes white in a wave"
+     },
+     {
+      "at": "ginie",
+      "what": "small number dots pop on states one after another"
+     },
+     {
+      "at": "comment",
+      "what": "a comment bubble pops"
+     },
+     {
+      "at": "phir",
+      "what": "the dots fade"
+     },
+     {
+      "at": "dekhiye",
+      "what": "UP, Maharashtra and Assam light again as the hook opens"
+     }
+    ],
+    "things": [
+     "india map",
+     "border wave",
+     "comment bubble",
+     "three states"
+    ],
+    "fig": {}
+   },
+   "sfx": []
+  }
+ ],
+ "narrator": "hm_omega"
+}

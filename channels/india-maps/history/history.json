@@ -322,5 +322,46 @@
     "format": "short",
     "story": "india_and_world",
     "shape": "what-if"
+  },
+  {
+    "id": "v-20261128-62",
+    "created_at": "2026-11-28T02:19:15.686189+00:00",
+    "template": "short_story",
+    "topic": {
+      "title": "Which state touches the most other states? Uttar Pradesh and its ring of neighbours",
+      "category": "state-neighbours",
+      "reach": "local",
+      "reach_reason": {
+        "kind": "demand"
+      },
+      "feed_id": "2026-11-26-up-most-neighbours",
+      "map_answer": "Uttar Pradesh lifted in the middle of the map with a ring of neighbouring states lighting round it, more than round Maharashtra or Assam"
+    },
+    "title": "UP, Maharashtra ya Assam: sabse zyada padosi kiske? 🗺️",
+    "description": "Uttar Pradesh, Maharashtra ya Assam: kis state ke sabse zyada padosi states hain? Aur aapke state ke kitne?\nSources: Wikipedia (Nov 2026).\nनक्शे सरल किए गए हैं; भारत की सीमाएँ भारत के आधिकारिक नक्शे के अनुसार। Maps simplified; India's borders as on India's official map. Facts from the sources named in the description.",
+    "hook_style": "question",
+    "cta": "Aapke state ke kitne padosi? Comment",
+    "style": {
+      "palette": "forest",
+      "genre": "tanpura",
+      "key": "D",
+      "bpm": 100,
+      "look": {
+        "stage": "city",
+        "header": "sticky",
+        "holder": "box",
+        "entrance": "pop"
+      },
+      "voice": "hm_omega",
+      "arms": {
+        "length": "25-50",
+        "title": "figure_or_name",
+        "style": "shot",
+        "category": "27"
+      }
+    },
+    "format": "short",
+    "story": "every_state",
+    "shape": "the-ring"
   }
 ]

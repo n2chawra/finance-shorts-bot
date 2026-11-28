@@ -1,0 +1,181 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:04:49.063929+00:00",
+    "finishedAt": "2026-11-28T02:04:49.063929+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T02:05:33.136240+00:00",
+    "finishedAt": "2026-11-28T02:05:33.136240+00:00",
+    "notes": [
+      "beat 'maha'.events.dekhiye: no word 'देखिए:' in this beat's spoken line",
+      "no `promise` beat: every video has a promise early, a turn about two thirds in, and a payoff that answers the hook",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:05:38.987986+00:00",
+    "finishedAt": "2026-11-28T02:05:38.987986+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:06:17.891903+00:00",
+    "finishedAt": "2026-11-28T02:06:17.891903+00:00",
+    "notes": [
+      "fact1=8 states and fact2=1 UT confirmed on en.wikipedia.org/wiki/Uttar_Pradesh (neighbour list: Rajasthan, Haryana, Himachal Pradesh, Delhi, Uttarakhand, Nepal, Bihar, MP, Chhattisgarh, Jharkhand = 8 states + Delhi; lead's 'nine other states' ignored per verify). HP border confirmed. Maharashtra's 6 and Assam's 7 neighbour states correct; Nepal border correct; no ranking/communal/advice issues; disclaimer ends description. Note: Maharashtra also touches UT Dadra & Nagar Haveli and Daman & Diu, not needed since the line lists states."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:08:49.386498+00:00",
+    "finishedAt": "2026-11-28T02:08:49.386498+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:09:46.436316+00:00",
+    "finishedAt": "2026-11-28T02:09:46.436316+00:00",
+    "notes": [
+      "Re-review of changed lines: maha 'कई हैं, है ना?' is a rhetorical aside, no claim. payoff 'इतने स्टेट्स को कोई और स्टेट नहीं छूता' confirmed: the cited en.wikipedia.org/wiki/Uttar_Pradesh says 'Uttar Pradesh is the Indian state with the highest number of bordering states'; mapsofindia.com and gktoday.in agree; the next highest (Assam, Chhattisgarh) touch 7 states, fewer than UP's 8. Rest unchanged since the earlier pass (facts 8 states + 1 UT, neighbour lists, Nepal, disclaimer)."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-28T02:09:24.827415+00:00",
+    "finishedAt": "2026-11-28T02:10:28.079966+00:00",
+    "notes": [
+      "fingerprint: 81258223b57a0b3e.cb7e4ddebebb9051",
+      "text 'अरुणाचल' at 13.8 s is 41.6 px, below the 44 px minimum",
+      "text 'नागालैण्ड' at 13.8 s is 41.6 px, below the 44 px minimum",
+      "text 'मणिपुर' at 13.8 s is 41.6 px, below the 44 px minimum",
+      "text 'मिज़ोरम' at 13.8 s is 41.6 px, below the 44 px minimum",
+      "text 'त्रिपुरा' at 13.8 s is 41.6 px, below the 44 px minimum",
+      "text 'मेघालय' at 13.8 s is 41.6 px, below the 44 px minimum",
+      "text 'बंगाल' at 13.8 s is 41.6 px, below the 44 px minimum",
+      "2 of 8 stills are mostly empty background (at 0 s, 34 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 24.5 s; one by 9 s",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-28T02:10:36.696482+00:00",
+    "finishedAt": "2026-11-28T02:11:30.774623+00:00",
+    "notes": [
+      "fingerprint: 81258223b57a0b3e.39dc32d87af8ec46",
+      "2 of 8 stills are mostly empty background (at 0 s, 34 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 24.5 s; one by 9 s",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:12:25.862679+00:00",
+    "finishedAt": "2026-11-28T02:13:20.051225+00:00",
+    "notes": [
+      "fingerprint: 81258223b57a0b3e.eff5bee523f4d4a0",
+      "34 s, forest/tanpura (preview only)",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 24.5 s; one by 9 s",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:13:27.278156+00:00",
+    "finishedAt": "2026-11-28T02:14:19.873503+00:00",
+    "notes": [
+      "fingerprint: 81258223b57a0b3e.c7f00415c01043dc",
+      "34 s, forest/tanpura (preview only)",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 24.5 s; one by 9 s",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:15:00.334354+00:00",
+    "finishedAt": "2026-11-28T02:15:00.334354+00:00",
+    "notes": [
+      "Directed on 5 places (India of 3 candidates, Maharashtra ring, NE ring round Assam, UP ring with counter 2->8, Nepal border with flag), every state tagged so it reads on mute, counter matches the spoken count, loop frame matches 0s, no overlaps/cut-offs, layout_problems empty, peak -1.0/mean -16.4 dB, disclaimer in description; as full as v-20261125-61/62. Minor: 30s still is the payoff-to-loop crossfade, and the thumbnail shows UP=8 (the answer).",
+      "fingerprint: 81258223b57a0b3e.c7f00415c01043dc"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:15:11.589548+00:00",
+    "finishedAt": "2026-11-28T02:15:11.589548+00:00",
+    "notes": [
+      "2 figures computed from inputs; 2 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:15:12.649370+00:00",
+    "finishedAt": "2026-11-28T02:16:01.216555+00:00",
+    "notes": [
+      "fingerprint: ac5d786285d2cd72.c7f00415c01043dc",
+      "34 s, forest/tanpura (preview only)",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 24.5 s; one by 9 s",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:16:14.010685+00:00",
+    "finishedAt": "2026-11-28T02:16:14.010685+00:00",
+    "notes": [
+      "Re-review after thumbnail change: new thumbnail is the hook frame (UP, Maharashtra, Assam lit and tagged under 'SABSE ZYADA PADOSI?'), no answer given away, nothing cut off; beats unchanged, stills same as before (5 directed places, counter matches narration, loop returns to 0s frame), layout_problems empty, peak -1.0/mean -16.4 dB, disclaimer in description.",
+      "fingerprint: ac5d786285d2cd72.c7f00415c01043dc"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:16:19.464105+00:00",
+    "finishedAt": "2026-11-28T02:19:11.774856+00:00",
+    "notes": [
+      "34 s, forest/tanpura, peak -1.0 dB, mean -16.4 dB",
+      "note: 15 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the first figure appears at 24.5 s; one by 9 s",
+      "note: the turn starts at 46% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-28T02:19:15.686413+00:00",
+    "finishedAt": "2026-11-28T02:19:15.686413+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
