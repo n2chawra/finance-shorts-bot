@@ -1,0 +1,42 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-28",
+  "startedAt": "2026-11-28T16:09:10Z",
+  "finishedAt": "2026-11-28T16:11:55Z",
+  "summary": "Naksha Bharat: watched 3 Shorts with retention and the newest one; added 2 lessons (the second beat gives the first fact; the first frame shows the thing asked about).",
+  "decision": "acted",
+  "why": "All three Shorts with drop points lose 16.5-22.9% at the second beat on a setup line with no fact; the Telangana Short, whose first frame hid the plate, stayed 36.5% against the 53.1% median.",
+  "findings": [
+    {
+      "title": "Second-beat setup lines cost 16-23%",
+      "detail": "v-20261125-61 22.9% at 5.4 s ('...पर कैसे?'), v-20261124-61 20.3% at 6.5 s ('पहले देखिए...'), v-20261125-62 16.5% at 5.3 s ('इन दोनों में से कोई नहीं')."
+    },
+    {
+      "title": "First frame without the asked-about thing",
+      "detail": "v-20261124-61 opened on a yellow Telangana with no TS/TG plate; stayed 36.5%, 16.6 points under the median."
+    },
+    {
+      "title": "Comment-ask loop is the last drop everywhere",
+      "detail": "10.5-15.6% leave on the loop's comment ask; evidence added to challenger im-poll-end."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Lessons #1 and #2 added (india-maps)",
+      "detail": "channels/india-maps/prompts/lessons.md; the general lessons are now #3-#11.",
+      "branch": "agent/reviewer/2026-11-28/india-maps"
+    },
+    {
+      "title": "Backlog: im-plate-first-frame became a lesson; im-poll-end got evidence",
+      "detail": "channels/india-maps/cycle/backlog.json",
+      "branch": "agent/reviewer/2026-11-28/india-maps"
+    }
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/india-maps/review/2026-11-28.md"
+    }
+  ]
+}
