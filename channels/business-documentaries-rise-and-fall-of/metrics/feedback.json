@@ -1,7 +1,45 @@
 {
   "note": "The owner's feedback from the dashboard (choices, stale videos, notes on a video or the channel). Written by the ingest workflow. Read by generator.run state (owner_feedback), the editor, the improver and research. Every agent answers the notes in its lane in improvement/feedback-acks/<agent>.json (agents/policy.md).",
-  "open": 0,
+  "open": 2,
   "notes": [
+    {
+      "id": "cmx02jq3p0003ii097jqm0jmh",
+      "kind": "stale",
+      "area": null,
+      "text": "Crowded story: about 25 other videos on Airbnb's cereal boxes went up this week, nearly all under 1K views. Make less-told stories.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-28T07:08:26.516Z",
+      "video": {
+        "id": "v-20261128-31",
+        "title": "Airbnb Sold Cereal for $40 a Box",
+        "format": "short",
+        "status": "rejected",
+        "story": "founder_bet",
+        "shape": "underdog-reversal",
+        "hookStyle": "shock_number",
+        "hook": "Airbnb's founders once sold cereal at {fact1} a box, to stay afloat."
+      }
+    },
+    {
+      "id": "cmx02j7js0001ii09b91kmw9g",
+      "kind": "stale",
+      "area": null,
+      "text": "Crowded story: about 20 other videos on LEGO's 2003 near-bankruptcy went up this week, nearly all under 1K views. Make less-told stories.",
+      "status": "open",
+      "response": null,
+      "at": "2026-11-28T07:08:02.470Z",
+      "video": {
+        "id": "v-20261128-32",
+        "title": "LEGO Almost Went Broke, and Kids Still Loved the Brick",
+        "format": "short",
+        "status": "rejected",
+        "story": "rise_fall_short",
+        "shape": "before-after",
+        "hookStyle": "myth",
+        "hook": "LEGO almost went broke, while kids never stopped loving the brick."
+      }
+    },
     {
       "id": "cmwomfswj0001la094xyv1e8d",
       "kind": "stale",
