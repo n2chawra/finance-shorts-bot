@@ -129,6 +129,24 @@ every video look the same: one skyline, floating cards, a header of text. Never 
    face. `python -m generator.run lint --channel <channel>` fails a beat whose line speaks of people when its `params` (place,
    moments, things) show none.
 
+13. **Show it working, not its result appearing** (owner, 2026-11-27, on How Tech Works' long video
+   L-20261127-21: "the presentation or actual making things work ... is clearly very weak. I have to hear
+   things properly to understand rather than seeing"). When a line says one thing acts on another
+   (multiplies, picks, sends, pushes, cuts, turns into, stores, compares), the beat is a small machine
+   doing it, in one frame: **the input** (a token card, a number, a photon, a gear tooth) travels **into
+   the part that acts**, the part **acts on the verb** (presses, spins, multiplies row by row, lights the
+   chosen one and lifts it out), and **the output leaves** changed and stays in view next to where it came
+   from. Tiles, bars, cards or labels that just appear are a recap, never the explanation. Show the actual
+   working where it can be shown: a multiplication as two numbers meeting in a cell and the product
+   coming out; a choice as candidates on a scale with the winner lifted; gears that push each other in
+   order. Sound-off test: write `params.shows`, one sentence of what a viewer with the sound off sees
+   happen ("the token card slides into the weight grid, each row lights as it multiplies, a column of
+   scores rises out the far side"), and draw exactly that. On the 3D kit `Operation3D` (input → part →
+   output) and `GearTrain` (meshing gears) do the plumbing. `lint` fails a beat on the 3D kit whose line
+   says an operation without `shows` or without a moment that moves one thing on another
+   (`generator/story.py` `mechanism_problems`). Draw only steps the fact reviewer can check: a step you
+   can't show truthfully is left out, not invented.
+
 ## Step 1: the shot list (in `script.json`)
 
 Every beat becomes `"scene": "directed"` with these `params` (the build rejects a beat without them):
@@ -157,6 +175,8 @@ Every beat becomes `"scene": "directed"` with these `params` (the build rejects 
 - `moments`: what changes on screen and on which word (`at` names an event). One every 2.5 s or less.
 - `things`: what the shot draws, in a few words each; a video's things and places are compared with the
   last videos' so no two look alike.
+- `shows` (a line that says something acts on something, rule 13): one sentence of what a viewer with the
+  sound off sees happen, input → the part acting → output.
 - `fig`: every figure the shot shows, as placeholders. **The code never types a figure**: it reads
   `p.beat.params.fig.<name>` (the render fails a figure typed into code).
 - `events`: the writer named some; add the words your moments land on (each must be a word of the line;

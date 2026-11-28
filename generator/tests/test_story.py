@@ -392,3 +392,24 @@ def test_the_money_question_title_note_is_for_money_channels_only(monkeypatch):
     assert not any("is a statement" in p for p in story.title_reveal_problems(script, "Marvel Put Captain America Up as Collateral"))
     monkeypatch.setattr(pack, "load", lambda *a, **k: {"numbers": "finance"})
     assert any("is a statement" in p for p in story.title_reveal_problems(script, "Costco sells a hot dog at a loss"))
+
+
+def test_mechanism_problems_want_the_operation_shown():
+    # owner, 2026-11-27, on L-20261127-21: "I have to hear things properly to understand rather than seeing"
+    from generator.story import mechanism_problems
+    say = "Each one multiplies two numbers and adds the result."
+    appears = {"beats": [{"id": "units", "scene": "directed", "say": say,
+                          "params": {"moments": [{"at": "multiplies", "what": "a grid of tiles appears"},
+                                                 {"at": "adds", "what": "a label writes on"}]}}]}
+    assert any("shows" in p for p in mechanism_problems(appears))
+    no_motion = {"beats": [{**appears["beats"][0], "params": {**appears["beats"][0]["params"],
+                 "shows": "two number cards slide into one cell and the product drops out below"}}]}
+    assert any("only make things appear" in p for p in mechanism_problems(no_motion))
+    shown = {"beats": [{**no_motion["beats"][0], "params": {**no_motion["beats"][0]["params"], "moments": [
+        {"at": "multiplies", "what": "two number cards slide into the cell"},
+        {"at": "adds", "what": "the product drops into the running total"}]}}]}
+    assert mechanism_problems(shown) == []
+    # a line with no operation, and the end card, need nothing
+    assert mechanism_problems({"beats": [{"id": "q", "scene": "directed", "say": "Why is the sky blue?",
+                                          "params": {"moments": [{"at": "sky", "what": "a sky glows"}]}}]}) == []
+    assert mechanism_problems({"beats": [{"id": "end", "role": "end", "say": "Subscribe for more.", "params": {}}]}) == []

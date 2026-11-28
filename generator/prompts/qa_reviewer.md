@@ -28,6 +28,9 @@ D. **Not directed** (owner, 2026-11-13: every new video is directed shots, `gene
    - a figure appears as a headline or a slide instead of on a thing in the place (a slate, a counter,
      a billboard, a tag, a screen, a hull);
    - nobody does anything for a whole beat (a character standing beside a thing is not acting);
+   - a line says something acts on something (multiplies, picks, sends, pushes, turns into) and its stills,
+     with the captions covered, show only results appearing (tiles, bars, cards or labels on a stage), or
+     don't show what the beat's `params.shows` says (director.md rule 13; owner, 2026-11-27);
    - two beats in a row look like the same picture, or the video has fewer than four places (Shorts);
    - something important sits under the captions, off the edge, or under the right-hand buttons.
    The reference's level is the bar: as full, as alive, as clear.

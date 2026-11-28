@@ -21,3 +21,4 @@ export * from "./LookMorph";
 export * from "./Thumb3D";
 export * from "./disaster";
 export * from "./Aero";
+export * from "./Operation";
