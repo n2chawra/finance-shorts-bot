@@ -1,10 +1,11 @@
 "use client";
 
-import { Bot, CheckCircle2, CircleDot, Film, MessageSquarePlus, RotateCcw, Send, Tv } from "lucide-react";
+import { CheckCircle2, CircleDot, Film, MessageSquarePlus, RotateCcw, Send, Tv } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 import { KIND_LABEL, KIND_TONE } from "@/components/feedback";
+import { FeedbackThread } from "@/components/feedback-thread";
 import { useToast } from "@/components/toast";
 import { Badge, Button, Card, Empty, ErrorNote, IconTile, Loading, PageHeader, SelectField, Stagger, fieldClass } from "@/components/ui";
 import { fmtDateTime, fmtRelative, titleCase } from "@/lib/format";
@@ -76,16 +77,9 @@ function NoteCard({ f }: { f: Feedback }) {
         </div>
       </div>
       {(f.response || canClose) && (
-        <div className="flex items-start gap-3.5 rounded-b-[14px] border-t border-line bg-surface-2 px-5 py-4">
-          {f.response ? (
-            <>
-              <IconTile icon={Bot} accent="lime" size="sm" />
-              <div className="min-w-0 flex-1">
-                <div className="text-[12.5px] font-medium text-ink2">The system replied{f.addressedAt ? ` · ${fmtRelative(f.addressedAt)}` : ""}</div>
-                <p className="mt-1 whitespace-pre-wrap text-[13.5px] leading-relaxed text-ink2">{f.response}</p>
-              </div>
-            </>
-          ) : <p className="flex-1 text-[13px] text-muted">No reply yet: the agent whose job this is answers after its next run.</p>}
+        <div className="flex flex-wrap items-start gap-x-3.5 gap-y-3 rounded-b-[14px] border-t border-line bg-surface-2 px-5 py-4 sm:flex-nowrap">
+          {f.response ? <FeedbackThread response={f.response} at={f.addressedAt} />
+            : <p className="flex-1 text-[13px] text-muted">No reply yet: the agent whose job this is answers after its next run.</p>}
           {canClose && (
             <Button size="sm" tone="ghost" icon={answered ? RotateCcw : CheckCircle2} disabled={patch.isPending}
               onClick={() => patch.mutate({ id: f.id, status: answered ? "open" : "addressed" }, { onSuccess: () => toast(answered ? "Reopened" : "Marked done"), onError: (e) => toast(e.message, "error") })}>

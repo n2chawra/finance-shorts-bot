@@ -10,6 +10,7 @@ import { AlertDialog } from "radix-ui";
 import { useState } from "react";
 
 import { Badge, Button, Card, Empty, ErrorNote, Loading, SelectField, Tip, buttonClass, fieldClass } from "@/components/ui";
+import { FeedbackThread } from "@/components/feedback-thread";
 import { useToast } from "@/components/toast";
 import { fmtRelative, titleCase } from "@/lib/format";
 import { useAddFeedback, useFeedback, usePatchFeedback } from "@/lib/queries";
@@ -81,7 +82,7 @@ function Note({ f, showVideo }: { f: Feedback; showVideo?: boolean }) {
         {f.status === "addressed" ? <Badge tone="good" icon={CheckCircle2}>Answered</Badge> : f.response ? <Badge tone="info">In progress</Badge> : <Badge tone="brand">Open</Badge>}
       </div>
       <p className="mt-2 text-[14.5px] font-semibold leading-snug">“{f.text}”</p>
-      {f.response && <p className="mt-2.5 border-l-4 border-ring bg-tint-brand px-3 py-2 text-[13px] font-medium leading-snug text-ink2 rounded-md"><span className="font-semibold text-ink">The system: </span>{f.response}</p>}
+      {f.response && <div className="mt-2.5 rounded-xl bg-surface-2 p-3"><FeedbackThread response={f.response} at={f.addressedAt} /></div>}
       {(f.kind === "wrong" || f.kind === "improve" || f.kind === "general") && (
         <button type="button" disabled={patch.isPending} className="mt-1.5 text-xs font-semibold text-muted underline underline-offset-2 hover:text-ink"
           onClick={() => patch.mutate({ id: f.id, status: f.status === "open" ? "addressed" : "open" }, { onSuccess: () => toast(f.status === "open" ? "Marked done" : "Reopened"), onError: (e) => toast(e.message, "error") })}>
