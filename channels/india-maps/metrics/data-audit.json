@@ -1,14 +1,14 @@
 {
   "note": "Nightly data audit: dashboard vs YouTube vs database. Written by the data-audit workflow; read by the auditor agent (agents/auditor.md).",
-  "generatedAt": "2026-11-26T18:31:11.211Z",
+  "generatedAt": "2026-11-28T10:40:34.593Z",
   "channel": "india-maps",
   "youtubeChecked": true,
   "summary": {
-    "videos": 5,
-    "checked": 5,
+    "videos": 9,
+    "checked": 9,
     "error": 0,
     "warning": 0,
-    "info": 2,
+    "info": 3,
     "owner": 0,
     "persistentErrors": 0
   },
@@ -16,19 +16,117 @@
     {
       "kind": "behind_youtube_stale",
       "severity": "info",
-      "videoId": "v-20261126-62",
-      "youtubeId": "A_nA7uLrFUE",
-      "detail": "Dashboard shows 94 views, YouTube 110; live counts last refreshed 79 min ago (they refresh while the dashboard is open)."
+      "videoId": "v-20261128-61",
+      "youtubeId": "ehXe3BQqhKo",
+      "detail": "Dashboard shows 4 views, YouTube 799; live counts last refreshed 224 min ago (they refresh while the dashboard is open)."
     },
     {
       "kind": "behind_youtube_stale",
       "severity": "info",
-      "videoId": "v-20261126-61",
-      "youtubeId": "5hewiSOzYGk",
-      "detail": "Dashboard shows 304 views, YouTube 356; live counts last refreshed 79 min ago (they refresh while the dashboard is open)."
+      "videoId": "v-20261127-61",
+      "youtubeId": "nBqc6KFn9LY",
+      "detail": "Dashboard shows 492 views, YouTube 521; live counts last refreshed 224 min ago (they refresh while the dashboard is open)."
+    },
+    {
+      "kind": "behind_youtube_stale",
+      "severity": "info",
+      "videoId": "v-20261126-62",
+      "youtubeId": "A_nA7uLrFUE",
+      "detail": "Dashboard shows 444 views, YouTube 470; live counts last refreshed 224 min ago (they refresh while the dashboard is open)."
     }
   ],
   "videos": [
+    {
+      "id": "v-20261128-62",
+      "title": "UP, Maharashtra ya Assam: sabse zyada padosi kiske? 🗺️",
+      "youtubeId": "ZyGtVPk7nlc",
+      "state": "scheduled",
+      "publishAt": "2026-11-28T12:47:00.000Z",
+      "dashboard": null,
+      "youtube": {
+        "privacy": "private",
+        "views": 0,
+        "likes": 0,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261128-61",
+      "title": "Mumbai ki seedh mein duniya ka kaunsa bada shehar? 🌏",
+      "youtubeId": "ehXe3BQqhKo",
+      "state": "published",
+      "publishAt": "2026-11-28T06:37:00.000Z",
+      "dashboard": {
+        "views": 4,
+        "likes": 0,
+        "comments": 0,
+        "liveAt": "2026-11-28T06:56:55.510Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 799,
+        "likes": 10,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261127-62",
+      "title": "Sikkim ka apna raja tha? Phir yeh India ka state kaise bana? 👑",
+      "youtubeId": "_pZ2P0H8DnA",
+      "state": "published",
+      "publishAt": "2026-11-27T12:47:00.000Z",
+      "dashboard": {
+        "views": 1264,
+        "likes": 8,
+        "comments": 0,
+        "liveAt": "2026-11-28T06:56:55.510Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 1267,
+        "likes": 8,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
+    {
+      "id": "v-20261127-61",
+      "title": "Keralam aur Arunachal ka pakshi ek kyun? 🐦 Har state ka pakshi",
+      "youtubeId": "nBqc6KFn9LY",
+      "state": "published",
+      "publishAt": "2026-11-27T06:37:00.000Z",
+      "dashboard": {
+        "views": 492,
+        "likes": 4,
+        "comments": 0,
+        "liveAt": "2026-11-28T06:56:55.510Z"
+      },
+      "youtube": {
+        "privacy": "public",
+        "views": 521,
+        "likes": 5,
+        "comments": 0
+      },
+      "analytics": {
+        "views": 0,
+        "days": 0,
+        "lastDay": null
+      }
+    },
     {
       "id": "v-20261126-62",
       "title": "Rajasthan vs Germany: kaun bada? 🏜️",
@@ -36,15 +134,15 @@
       "state": "published",
       "publishAt": "2026-11-26T12:47:00.000Z",
       "dashboard": {
-        "views": 94,
-        "likes": 0,
+        "views": 444,
+        "likes": 6,
         "comments": 0,
-        "liveAt": "2026-11-26T17:12:07.312Z"
+        "liveAt": "2026-11-28T06:56:55.510Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 110,
-        "likes": 2,
+        "views": 470,
+        "likes": 6,
         "comments": 0
       },
       "analytics": {
@@ -60,21 +158,21 @@
       "state": "published",
       "publishAt": "2026-11-26T06:37:00.000Z",
       "dashboard": {
-        "views": 304,
+        "views": 410,
         "likes": 0,
         "comments": 0,
-        "liveAt": "2026-11-26T17:12:07.312Z"
+        "liveAt": "2026-11-28T06:56:55.510Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 356,
+        "views": 410,
         "likes": 0,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 15,
+        "days": 1,
+        "lastDay": "2026-11-25"
       }
     },
     {
@@ -84,21 +182,21 @@
       "state": "published",
       "publishAt": "2026-11-25T14:37:00.000Z",
       "dashboard": {
-        "views": 652,
+        "views": 791,
         "likes": 2,
         "comments": 0,
-        "liveAt": "2026-11-26T17:12:07.312Z"
+        "liveAt": "2026-11-28T06:56:55.510Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 672,
+        "views": 791,
         "likes": 2,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 354,
+        "days": 1,
+        "lastDay": "2026-11-25"
       }
     },
     {
@@ -108,21 +206,21 @@
       "state": "published",
       "publishAt": "2026-11-25T12:47:00.000Z",
       "dashboard": {
-        "views": 1151,
-        "likes": 12,
+        "views": 1261,
+        "likes": 13,
         "comments": 0,
-        "liveAt": "2026-11-26T17:12:07.312Z"
+        "liveAt": "2026-11-28T06:56:55.510Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 1154,
-        "likes": 12,
+        "views": 1264,
+        "likes": 13,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 1151,
+        "days": 1,
+        "lastDay": "2026-11-25"
       }
     },
     {
@@ -132,21 +230,21 @@
       "state": "published",
       "publishAt": "2026-11-24T12:47:00.000Z",
       "dashboard": {
-        "views": 467,
+        "views": 471,
         "likes": 7,
         "comments": 0,
-        "liveAt": "2026-11-26T17:12:07.312Z"
+        "liveAt": "2026-11-28T06:56:55.510Z"
       },
       "youtube": {
         "privacy": "public",
-        "views": 467,
+        "views": 471,
         "likes": 7,
         "comments": 0
       },
       "analytics": {
-        "views": 0,
-        "days": 0,
-        "lastDay": null
+        "views": 419,
+        "days": 2,
+        "lastDay": "2026-11-25"
       }
     }
   ]
