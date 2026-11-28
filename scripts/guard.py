@@ -59,6 +59,8 @@ FORBID = [
     "improvement/tests/*", "improvement/merge-log.json",   # were inside the comment above until 2026-11-13
     # the Study page's results are written by workers/study.ts, never by hand (owner, 2026-11-13)
     "improvement/study/*", "generator/prompts/studied.md",
+    # topic saturation counts come only from workers/saturation.ts; the crowded-topic gate with them (owner, 2026-11-28)
+    "improvement/research/saturation.json", "generator/saturation.py", "generator/tests/test_saturation.py",
     "generator/settings.py", "generator/variety.py", "generator/prompts/routine.md", "generator/tests/test_variety.py",
     "apps/dashboard/prisma/*", "apps/dashboard/src/lib/auth.ts", "apps/dashboard/src/middleware.ts",
     "apps/dashboard/src/app/api/login/*", "apps/dashboard/src/lib/prisma.ts", "apps/dashboard/src/lib/live-stats.ts",

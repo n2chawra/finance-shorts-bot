@@ -33,6 +33,13 @@ is **gone, on every channel**. It blocked every long topic on the new channels, 
 views, and Studio runs stopped with nothing to make. Now:
 - **Pick long topics on demand**: the niche's proven long formats and reference videos (below), the
   channel's research, and what our own viewers responded to.
+- **Never a crowded story** (owner, 2026-11-28). Disaster Desk's Colgan 3407 long went up the same week as 12 other
+  long videos on it, and every long video on Craze & Crash and Disaster Desk stayed under 50 views. Before adding a
+  topic, search YouTube for the story filtered to this month: 12+ long videos in 30 days (or 5+ this week) means
+  pick another story, or a less-told turn of it. `channels/<channel>/research/saturation.json` (nightly) has the
+  counts for topics already in the feed, and `check-plan` refuses one marked `crowded`. Give each topic a
+  `subject` (the 1-3 words that name the story in any title, e.g. `["Colgan", "3407"]`) so the count matches.
+  A big old reference video proves the format, not that the story is still open.
 - **A Short of ours is a bonus, never a gate.** When one of our Shorts tells the same story and held
   viewers well (`stayed` in `channels/<channel>/metrics/videos.json`), name it as `"from_short": "<id>"`
   so the long video opens on its hook and its description links it. Leave it out otherwise. Never hold

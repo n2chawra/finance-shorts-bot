@@ -110,8 +110,16 @@ millions in the channel's niche (`profile.md`). News is not a source of ideas on
    (the improver does that from our results).
 2c. **The channel's recipe decides the mix** (`channels/<channel>/prompts/recipe.md`: its topic kinds and
    their shares, `channels/<channel>/research/formats.json` tiers). At least two thirds of the topics
-   you add are in a `tier: core` format, each with its own curiosity question. **Skip crowded lanes**:
-   an angle that 5+ Shorts took this week with none above 5K views (in `market.json` and your searches).
+   you add are in a `tier: core` format, each with its own curiosity question. **Skip crowded stories**
+   (owner, 2026-11-28: Craze & Crash and Disaster Desk told the week's most-retold stories, FedEx's blackjack night,
+   Nike's $35 logo, Tacoma Narrows, Colgan 3407, and got 0-75 views while 15-30 other channels told the same ones).
+   Before adding a topic, search YouTube for the story itself filtered to this week and this month: if 5+ videos of its
+   format told it in the last 7 days, or 12+ in 30 days, don't add it; find a less-told turn of the same brand, place or
+   event instead. Big `demand` on an old video proves the *format*, not that the story is still open.
+   `channels/<channel>/research/saturation.json` (workers/saturation.ts, nightly) holds the counts for topics already
+   in the feed; a topic it marks `crowded` is blocked by `check-plan`, so don't re-add it under another id. Give every
+   new topic a `subject`: the 1-3 words that name its story in any title (`["Colgan", "3407"]`, `["Tamagotchi"]`), so
+   the count matches the right videos.
 3. **Write 6-10 topics into the feed** (section 4). Give each topic **the biggest video on its own
    idea** as `demand` (search the idea itself, not just the format), and spread them across formats, including ones we have not told yet: the feed is ranked
    by demand (capped at 10M), our own results per format, and a bonus for untried formats

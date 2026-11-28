@@ -116,7 +116,10 @@ next run. Two earlier channels were removed this way on 2026-11-23.
 - **Demand first**: every video tells a format people already watch in the millions in that niche
   (`channels/<slug>/research/formats.json`, `generator/formats.py`), named in the plan's `story` with a
   reference video in `demand`, arranged in a shape from `research/shapes.json` (`generator/shapes.py`).
-  News is never a reason to make a video on its own.
+  News is never a reason to make a video on its own. **Never a crowded story** (owner, 2026-11-28): demand proves the
+  format, not that the story is still open; `saturation.yml` (`workers/saturation.ts`, nightly 02:17 IST) counts
+  each open topic's same-story videos of the last 7 and 30 days into `channels/<slug>/research/saturation.json`,
+  and `check-plan` refuses a crowded one (`generator/saturation.py`).
 - **Never a gap.** Each channel makes its `dailyVideoTarget` Shorts a day and every ready one goes out
   in its upload slots; one long video per slot on its long days. Each format fills from its own queue,
   so a missing long video never costs a Short its slot. A long topic never needs one of our Shorts

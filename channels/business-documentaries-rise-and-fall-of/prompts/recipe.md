@@ -13,8 +13,17 @@ figures from code or a sourced `facts` entry; one narrator; no real person's wor
 - **Topic shares, long (per 8):** product boom and bust 3 (1.69×, 21% hits); brand backlash 2 (29% hits,
   one channel posting it: a gap); company rise and fall 2 (1.37×); business war 1 (205,163 median from
   only 15 videos).
-- **Topic shares, Shorts:** founder story about half (core, 21% hits); product boom and bust and company
-  rise and fall the rest. Every Short is a cut-down of a long video's best minute when one exists.
+- **Topic shares, Shorts (owner, 2026-11-28, from our own first 17 Shorts):** a thing the viewer owns or a
+  brand they know, in a boom and bust (Tamagotchi 1,500, Stanley 1,144), a rise and fall (Krispy Kreme 1,541,
+  Nokia 700) or a business war (Toyota vs Mercedes 1,282). Founder stories at most one Short in four: ours had a
+  median of 62 views (Nike, FedEx, Spanx, Dollar Shave Club, Lipton), because they are the stories every faceless
+  business channel retells every week. Every Short is a cut-down of a long video's best minute when one exists.
+- **Untold beats famous (owner, 2026-11-28).** Never the textbook version of a story (Nike's $35 logo, FedEx's
+  blackjack night, Airbnb's cereal, Adidas and Puma's brothers, Spanx's $5,000): dozens of channels tell those each
+  week and YouTube stops showing a new copy. Pick a famous brand's **less-told** turn (a recall, a price change, a
+  forgotten product, a deal that fell through) or a craze from TV and malls that few channels have done (Ronco,
+  BowFlex). `research/saturation.json` counts the same-story videos of the last 7 and 30 days; the planner refuses
+  a crowded topic.
 - **Avoid as the topic:** corporate scandal and fraud (0.86×; legal risk), finance deals and private
   equity (Shorts 0.59×, 0 hits in 51), how a business makes money (crowded, 0.87×). A scandal belongs
   inside a rise and fall.

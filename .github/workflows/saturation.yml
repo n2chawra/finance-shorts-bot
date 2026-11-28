@@ -1,0 +1,54 @@
+# How many other channels told each open topic's story in the last 7 and 30 days (workers/saturation.ts), so the
+# planner never picks a story the feed is already flooded with (owner, 2026-11-28: Craze & Crash and Disaster Desk
+# told the week's most-told stories and got 0-75 views). Runs after the nightly research (23:47 IST) and before the
+# video runs (04:07 IST). Writes only derived counts to channels/<slug>/research/saturation.json on main.
+name: Saturation
+
+on:
+  schedule:
+    - cron: "47 20 * * *" # 02:17 IST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saturation
+
+jobs:
+  saturation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.DIRECT_URL }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+      YT_WEB_CLIENT_ID: ${{ secrets.YT_WEB_CLIENT_ID }}
+      YT_WEB_CLIENT_SECRET: ${{ secrets.YT_WEB_CLIENT_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/package-lock.json
+      - run: npm ci
+        working-directory: workers
+      - run: npm run generate
+        working-directory: workers
+      - name: Count same-story videos for every open topic
+        working-directory: workers
+        shell: bash
+        run: npm run saturation | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Commit the counts
+        run: |
+          git add channels/*/research/saturation.json 2>/dev/null || true
+          if git diff --cached --quiet; then echo "nothing changed"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Topic saturation counts"
+          git pull -q --rebase origin main
+          git push -q origin HEAD:main

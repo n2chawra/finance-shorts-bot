@@ -383,6 +383,11 @@ def blocked_reason(topic: dict, today: str, fmt: str, root: Path = ROOT) -> str 
     scripts/guard.py refuses a branch that brings a views gate back."""
     if (old := stale_facts(topic, today)):
         return "facts may be out of date (research must confirm the latest release): " + "; ".join(old[:3])
+    # a story many other channels told this week or month (owner, 2026-11-28; generator/saturation.py). A proven event
+    # opportunity is exempt: there, many recent videos are the demand.
+    from . import saturation
+    if not is_urgent(topic, today) and (why := saturation.crowded(topic, today, root)):
+        return why
     return None
 
 
@@ -464,12 +469,15 @@ def for_state(entries: list[dict], today: str, blocked: list[str], allowed: list
     # usable topics first, so blocked ones never push them past the SHOWN cut
     shown = [t for t in open_ if t in usable][:SHOWN]
     shown += [t for t in open_ if t not in usable][:SHOWN - len(shown)]
+    from . import saturation
+    crowd = saturation.load(root)
     keys = ("id", "title", "category", "kind", "priority", "templates", "angle", "why_now", "facts", "verify",
             "expires", "format", "outline", "sources", "reach", "reach_reason", "stories", "currency", "demand", "hook", "maths",
             "from_short", "pin", "opportunity")   # a long topic names the Short it expands (Scout, 2026-11-05)
     return {
         "topics": [{**{k: t.get(k) for k in keys}, "score": score(t, today, ctx), "why_score": score_parts(t, today, ctx),
-                    "found": t.get("found"), "usable_now": t in usable, "blocked_by": blocked_reason(t, today, fmt, root), "event_problems": event_problems(t, today) or None} for t in shown],
+                    "found": t.get("found"), "usable_now": t in usable,
+                    "saturation": {k: crowd[t["id"]].get(k) for k in ("recent7", "recent30", "median30", "crowded", "checkedAt")} if t["id"] in crowd else None, "blocked_by": blocked_reason(t, today, fmt, root), "event_problems": event_problems(t, today) or None} for t in shown],
         "open_total": len(open_),
         "required": None,   # nothing is forced since the reset (see the module doc)
         "urgent": urgent,
