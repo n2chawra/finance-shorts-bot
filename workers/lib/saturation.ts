@@ -16,7 +16,7 @@ export const CROWDED = { days7: 5, days30: 12 } as const;
 /** A topic checked this recently isn't searched again. */
 export const RECHECK_DAYS = 4;
 /** Searches one run may spend (search.list has its own 100-a-day bucket that the market scan shares). */
-export const MAX_SEARCHES = 30;
+export const MAX_SEARCHES = 60;
 /** A Short is at most this long; anything longer counts against long topics. */
 export const SHORT_MAX_SEC = 180;
 
@@ -33,13 +33,31 @@ export function words(s: string): string[] {
     .replace(/(\d),(\d)/g, "$1$2").replace(/['’]s\b/g, "").split(/[^a-z0-9]+/).filter(Boolean);
 }
 
-/** The words that name a story: its subject terms when research gave them, else the title's and search's content words. */
-export function storyTerms(topic: { title: string; search?: string | null; subject?: string[] | null }): { terms: string[]; need: number } {
+type Named = { id?: string; title: string; search?: string | null; subject?: string[] | null };
+
+const content = (s: string) => words(s).filter((w) => !STOP.has(w) && (w.length > 2 || /\d/.test(w)));
+
+/** The subject in a topic id: "2026-11-20-reno-galloping-ghost" -> "reno galloping ghost" (ids name the story; titles
+ * often hide it behind the curiosity, "The Racing Plane Modified Past Its Limits"). */
+export function slugOf(id: string | undefined): string {
+  return (id ?? "").replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/-(short|long)$/, "").replace(/-/g, " ").trim();
+}
+
+/** What to search for: the topic's search, else its subject, else its id's words, else its title. */
+export function queryOf(t: Named): string {
+  const q = t.search?.trim() || t.subject?.join(" ").trim() || (content(slugOf(t.id)).length ? slugOf(t.id) : "") || t.title;
+  return q.slice(0, 120);
+}
+
+/** The words that name a story: its subject terms when research gave them (all must appear), else the id's and
+ * search's content words (two must appear, or the one there is), else the title's. */
+export function storyTerms(topic: Named): { terms: string[]; need: number } {
   if (topic.subject?.length) {
     const terms = [...new Set(topic.subject.flatMap(words).filter((w) => !STOP.has(w)))];
     return { terms, need: terms.length };
   }
-  const terms = [...new Set(words(`${topic.title} ${topic.search ?? ""}`).filter((w) => !STOP.has(w) && (w.length > 2 || /\d/.test(w))))];
+  let terms = [...new Set(content(`${slugOf(topic.id)} ${topic.search ?? ""}`))];
+  if (!terms.length) terms = [...new Set(content(topic.title))];
   return { terms, need: Math.min(2, terms.length) };
 }
 
@@ -58,7 +76,7 @@ export type Verdict = {
 };
 
 /** How crowded a story is, from the videos a search returned (only derived counts are kept, never titles or ids). */
-export function judge(videos: Seen[], topic: { title: string; search?: string | null; subject?: string[] | null; format?: string | null },
+export function judge(videos: Seen[], topic: Named & { format?: string | null },
   query: string, now: Date): Verdict {
   const format = topic.format === "long" ? "long" : "short";
   const story = storyTerms(topic);
@@ -92,7 +110,7 @@ export type FeedTopic = z.infer<typeof FeedTopic>;
 export function dueTopics(topics: FeedTopic[], used: Set<string>, prev: Record<string, Verdict>, now: Date): FeedTopic[] {
   const day = now.toISOString().slice(0, 10);
   const open = topics.filter((t) => (t.status ?? "new") === "new" && (!t.expires || t.expires >= day) && !used.has(t.id));
-  const due = open.filter((t) => !prev[t.id] || now.getTime() - Date.parse(prev[t.id]!.checkedAt) >= RECHECK_DAYS * DAY_MS);
+  const due = open.filter((t) => !prev[t.id] || prev[t.id]!.query !== queryOf(t) || now.getTime() - Date.parse(prev[t.id]!.checkedAt) >= RECHECK_DAYS * DAY_MS);
   return due.sort((a, b) => (prev[a.id] ? 1 : 0) - (prev[b.id] ? 1 : 0) || String(b.found ?? "").localeCompare(String(a.found ?? "")));
 }
 

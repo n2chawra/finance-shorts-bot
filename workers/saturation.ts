@@ -16,7 +16,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { QuotaKeeper } from "./lib/quota.ts";
 import { SearchList, VideoDetails, durationSec } from "./lib/market.ts";
-import { FeedTopic, MAX_SEARCHES, type Verdict, dueTopics, judge, roundRobin } from "./lib/saturation.ts";
+import { FeedTopic, MAX_SEARCHES, type Verdict, dueTopics, judge, queryOf, roundRobin } from "./lib/saturation.ts";
 import { youtubeClientConfigured } from "./lib/uploads.ts";
 import { tokenOf } from "./lib/channel-auth.ts";
 import { accessToken } from "./lib/youtube.ts";
@@ -80,7 +80,7 @@ async function readToken(): Promise<string | null> {
 }
 
 async function check(token: string, t: FeedTopic, language: string, now: Date): Promise<Verdict> {
-  const query = (t.search ?? t.title).slice(0, 120);
+  const query = queryOf(t);
   const params = new URLSearchParams({ part: "id", type: "video", order: "relevance", maxResults: "50", q: query,
     publishedAfter: new Date(now.getTime() - 30 * DAY_MS).toISOString(), relevanceLanguage: language });
   if (t.format !== "long") params.set("videoDuration", "short");
