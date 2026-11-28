@@ -247,7 +247,7 @@ leaves 2.5 s with nothing new, or shows things nobody is saying.
 
 ## A channel's own thumbnail playbook (owner, 2026-11-20: "long videos are the money machine, the thumbnail has to be the best, every time")
 
-When the channel's `channel.json` has a `thumbs` block (Craze & Crash, A Billion Switches), its playbook
+When the channel's `channel.json` has a `thumbs` block (Craze & Crash, A Billion Switches, Disaster Desk), its playbook
 (`thumbs.playbook`, the channel's `style-study/2026-11-20-thumbnails.md`) **replaces the cast-based thumbnail
 advice above**:
 - Read the playbook first: the ranked patterns (P1…P8), which story types each suits, the hard rules (words,
@@ -260,6 +260,11 @@ advice above**:
   line, a lit interior, a real person's licensed photo). Craze & Crash draws on the doc kit (`remotion/src/doc/`:
   cut-outs from `python -m generator.media cutout`, plates, crash lines, stamps); A Billion Switches on the 3D
   thumbnail path (`LongThumb3D`, `remotion/src/three/`, `thumbLook`).
+- **Disaster Desk** (owner, 2026-11-28; `style-study/2026-11-28-thumbnails.md`): the real vehicle or structure in
+  realistic 3D (`remotion/src/three/`, `disaster/`) or a licensed real photo (doc kit), its mark readable (the livery,
+  the logo on the hull, the building) and the event named or its human stakes shown. Never a flat drawing: our flat
+  Titan and Colgan covers got 16 and 0 views next to 3D hits with millions. Lint checks each thumbnail's kit imports
+  (`thumbs.kits`) and that each spec says its `mark`.
 - **Score each with the playbook's 10-point checklist** (section 5), writing the points in `why`
   ("1,2,3,5,6,7,8,10 = 8; missed 4: five words"), set `score`, and pick the highest. **Ship only at 8+**: below
   that, fix the weakest point and re-score once (lint fails a pick under the bar).

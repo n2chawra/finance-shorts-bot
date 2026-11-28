@@ -74,5 +74,26 @@
     "_why": "owner, 20 Nov: references are a reference, not a template; likeness checks pace and hook only. Long secPerShot from sampled sheets is unreliable (style.json ~57 s), so the measured cuts a minute are used: ~4 a minute → 15 s per shot at most",
     "wordsPerMin": {"short": 164, "long": 150},
     "secPerShot": {"long": 15}
+  },
+  "thumbs": {
+    "_why": "style-study/2026-11-28-thumbnails.md (the most viewed long videos on our own topics, 28 Nov): every 1M+ cover shows the real vehicle or structure in realistic 3D or a real photo, its mark readable, the event named or its human stakes shown; our flat-drawn covers got 0-16 views",
+    "playbook": "channels/disasters-and-engineering-failures-expla/style-study/2026-11-28-thumbnails.md",
+    "maxWords": 4,
+    "noFace": true,
+    "minScore": 8,
+    "kits": [
+      "three",
+      "disaster",
+      "doc"
+    ],
+    "requireMark": true,
+    "patterns": {
+      "P1": "THE REAL THING: the vehicle or structure in realistic 3D, its mark readable, a beat before the failure in its real setting",
+      "P2": "THE PEOPLE AT RISK: the structure with the people at true scale, an arrow to the failing part",
+      "P3": "INTENDED vs BUILT: a split of the one changed part, tick and cross",
+      "P4": "THE NAME AS TITLE: the event's name huge over its realistic place",
+      "P5": "THE PART THAT FAILED: a 3D cutaway of the failing part glowing red, one label",
+      "P6": "THE SCALE OF IT: the aftermath's size in 3D, no bodies"
+    }
   }
 }

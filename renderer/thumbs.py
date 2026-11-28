@@ -133,6 +133,45 @@ def channel_problems(spec_list: list[tuple[str, dict]], rules: dict | None, pick
     return out
 
 
+KIT_IMPORT = re.compile(r"""from\s+["']\.\./\.\./(\w+)""")
+LOCAL_IMPORT = re.compile(r"""from\s+["']\./([\w-]+)["']""")
+
+
+def kits_used(vid: str, th: dict, root: Path = ROOT) -> set[str]:
+    """The shared kits (remotion/src/<kit>) a thumbnail's code draws with: its own file and the video's local modules it
+    imports (`./world`, `./planedraw`), one level deep."""
+    d = root / "remotion" / "src" / "videos" / vid
+    f = d / f"{component(th)}.tsx"
+    if not f.is_file():
+        return set()
+    src = f.read_text(encoding="utf-8")
+    found = set(KIT_IMPORT.findall(src))
+    for local in LOCAL_IMPORT.findall(src):
+        for ext in (".tsx", ".ts"):
+            if (lf := d / f"{local}{ext}").is_file():
+                found |= set(KIT_IMPORT.findall(lf.read_text(encoding="utf-8")))
+    return found
+
+
+def realism_problems(vid: str, spec_list: list[tuple[str, dict]], rules: dict | None, root: Path = ROOT) -> list[str]:
+    """A channel whose hits are realistic (`thumbs.kits`, Disaster Desk 2026-11-28: every 1M+ disaster thumbnail is
+    realistic 3D or a real photo, and our flat-drawn Titan and Colgan covers got 16 and 0 views) draws each thumbnail
+    with one of those kits, and names what makes the real subject recognisable at phone size (`thumbs.requireMark`:
+    the livery, the logo on the hull, the building, the event's name in the words)."""
+    if not rules:
+        return []
+    out: list[str] = []
+    need = {str(k) for k in rules.get("kits") or []}
+    for k, th in spec_list:
+        if need and th.get("layout") == "custom" and not (kits_used(vid, th, root) & need):
+            out.append(f"{k.upper()}: drawn without the realistic kits ({', '.join(sorted(need))}); this channel's hits are "
+                       f"realistic 3D or real photos, never a flat drawing ({rules.get('playbook', 'its thumbnail playbook')})")
+        if rules.get("requireMark") and len(str(th.get("mark") or "").strip()) < 10:
+            out.append(f"{k.upper()}: say in `mark` what makes the real subject recognisable at phone size (its livery, the "
+                       f"logo on it, its shape, the event's name in the words)")
+    return out
+
+
 def component(th: dict) -> str:
     """The thumbnail's own file: `component`, else Thumb3D for a 3D thumbnail, else Thumb."""
     return str(th.get("component") or ("Thumb3D" if th.get("engine") == "3d" else "Thumb"))
