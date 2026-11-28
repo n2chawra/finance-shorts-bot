@@ -6331,6 +6331,46 @@
       ],
       "commit": "",
       "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/46167003534"
+    },
+    {
+      "at": "2026-11-28T16:49:40+00:00",
+      "dayIst": "2026-11-28",
+      "agent": "auditor",
+      "branch": "agent/auditor/2026-11-29",
+      "result": "blocked",
+      "reasons": [
+        "tests or build failed"
+      ],
+      "files": [
+        "apps/dashboard/src/lib/posting-plan.ts",
+        "apps/dashboard/src/lib/scorecard.db.ts",
+        "apps/dashboard/src/lib/studio-calc.ts",
+        "apps/dashboard/src/lib/studio.db.ts",
+        "channels/business-documentaries-rise-and-fall-of/analysis/pictures.json",
+        "channels/business-documentaries-rise-and-fall-of/analysis/videos.json",
+        "channels/disasters-and-engineering-failures-expla/analysis/pictures.json",
+        "channels/disasters-and-engineering-failures-expla/analysis/videos.json",
+        "channels/disasters-and-engineering-failures-expla/cycle/backlog.json",
+        "channels/geography-maps-geopolitical-mysteries/analysis/pictures.json",
+        "channels/geography-maps-geopolitical-mysteries/analysis/videos.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/analysis/channel.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/analysis/pictures.json",
+        "channels/how-tech-and-ai-actually-work-chips-ai-p/analysis/videos.json",
+        "channels/india-maps/analysis/pictures.json",
+        "channels/india-maps/analysis/videos.json",
+        "channels/india-maps/cycle/backlog.json",
+        "improvement/activity/2026-11-29-auditor.json",
+        "improvement/auditor/2026-11-29.md",
+        "improvement/auditor/backlog.json",
+        "improvement/auditor/state.json",
+        "workers/lib/agents-sync.ts",
+        "workers/lib/analytics.ts",
+        "workers/tests/analytics.test.ts",
+        "workers/tests/dashboard-views48.test.ts",
+        "workers/tests/publishing.test.ts"
+      ],
+      "commit": "",
+      "runUrl": "https://github.com/n2chawra/finance-shorts-bot/actions/runs/46167117057"
     }
   ]
 }
