@@ -1,0 +1,49 @@
+{
+  "agent": "studio",
+  "day": "2026-11-28",
+  "startedAt": "2026-11-28T04:51:57Z",
+  "finishedAt": "2026-11-28T16:32:34Z",
+  "summary": "Disaster Desk: made and shipped the long video L-20261128-41 'Ohio State Fair Fire Ball Accident: The Rust Nobody Saw' (491 s, 74 beats, about 60% in a lit 3D fairground and workshop), from Scout's topic 2026-11-26-fire-ball-long.",
+  "decision": "acted",
+  "why": "state --format long said video (3 of 4 long videos this week). The first usable feed topic was the Fire Ball (stunt_gone_wrong, 1.23M reference). The fact review failed once, on 8 points: the ride broke at about 7:20 PM in daylight, not at night; 'mid-swing'; the cause attributed to the maker; the toll stated once; exact quotes; and the Ohio law scoped to bigger rides. Its second review passed. QA failed once on 9 points: doc chips overlapping, the failure shown off the ride, a plain booth, captions on light sheets, and the thumbnail pick. It passed round 2, and twice more after render-speed changes. Every render gate passed: layout, length, motion (median 3.48, 2.8% still) and audio (peak -1.0 dB, mean -16.3 dB).",
+  "findings": [
+    {
+      "title": "Thumbnails",
+      "detail": "Picked B 'Rust inside' (8/10): it pairs with the title and stands apart from the topic's only hit. A 'Passed that day' (6) and C 'What broke it?' (6) are also available. Only one video on this topic exists, so every spec carries 'unique'."
+    },
+    {
+      "title": "Cloud render time",
+      "detail": "A 3D frame costs about 2.7 s in this container's software WebGL with depth of field on, and 1.6 s with it off. Studio turned DOF off (QA re-passed it), and the full render still took about 5 hours. Logged for the improver in longform/backlog.json."
+    },
+    {
+      "title": "Render crash between two 3D beats",
+      "detail": "Chunk 8 crashed on a Three.js 'reading visible' error where d-help (rescuers, emergency lights) hands over to d-shut. The cause is that both beats share one 3D component, so React updates the scene in place. Studio rendered that chunk in pieces split at the beat boundaries and joined them; the picture is unchanged. A key per beat on the shared 3D scene would avoid it in future videos."
+    },
+    {
+      "title": "Chapters",
+      "detail": "Directed long videos get only '0:00 Intro' from renderer/remotion.py, so Studio wrote the 7 chapters into the description by hand. Logged for the improver."
+    },
+    {
+      "title": "CPSC reports",
+      "detail": "generator/media/reports.py does not take cpsc.gov, so the CPSC letter and its investigation were drawn on the doc kit with their exact lines rather than as page images. Logged for the improver."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Long video L-20261128-41 shipped",
+      "detail": "The manifest is on main; the mp4 is on the media/L-20261128-41 branch, which the release workflow turns into a Release.",
+      "branch": "main"
+    },
+    {
+      "title": "Three improver items in the long-video backlog",
+      "detail": "Chapters from directed beats, cpsc.gov in the report fetcher, and a cloud 3D render path.",
+      "branch": "agent/studio/2026-11-28/disasters-and-engineering-failures-expla"
+    }
+  ],
+  "links": [
+    {
+      "label": "Video folder",
+      "url": "channels/disasters-and-engineering-failures-expla/videos/L-20261128-41/"
+    }
+  ]
+}
