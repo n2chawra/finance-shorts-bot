@@ -1,0 +1,22 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-28",
+  "startedAt": "2026-11-28T15:38:17Z",
+  "finishedAt": "2026-11-28T15:40:52Z",
+  "summary": "Craze & Crash: watched 6 Shorts (Krispy Kreme, Marvel, Blockbuster, Juicero, Spanx, Lipton) next to their drop points; raised the beat-2 lesson with four more cases and queued an ending test.",
+  "decision": "acted",
+  "why": "Eight of nine Shorts with drop points lose 19–34% at beat 2 when the picture leaves the hook's subject (Marvel −34.4% at 5.6 s on a 10-K page and 'the decade before'); Krispy Kreme stayed on its truck, lost 12.8%, and holds best (57.4% stayed).",
+  "findings": [
+    {"title": "Marvel −34.4% at 5.6 s", "detail": "Captain America cut to a small-type 1997 10-K while the line told the bankruptcy backstory."},
+    {"title": "Blockbuster −20.7% at 6.3 s, stayed 41.9%", "detail": "Black-and-white founder polaroids and 'So what happened?' replaced the store; 13 points under the 54.8% median."},
+    {"title": "Krispy Kreme is the model", "detail": "Beat 2 kept the brand on screen (truck + BROKE UP stamp): −12.8%, best stayed 57.4%, held after hook 37.2%."},
+    {"title": "The 3 Shorts made since the lesson comply", "detail": "Adidas, Crocs and Lipton keep the hook's thing in beat 2; numbers due next run."},
+    {"title": "Ending question costs 6–12%", "detail": "Every Short loses at the 'X or Y: which…?' ending; queued as a test."}
+  ],
+  "changes": [
+    {"title": "Lesson 1 raised", "detail": "Added Marvel, Blockbuster, Spanx, Juicero; fix now bans backstory lines and black-and-white/archive/document pages as beat 2's main layer.", "branch": "agent/reviewer/2026-11-28/business-documentaries-rise-and-fall-of"},
+    {"title": "Challenger doc-ending-no-question", "detail": "End on the payoff and loop, without the ending question.", "branch": "agent/reviewer/2026-11-28/business-documentaries-rise-and-fall-of", "experiment": "doc-ending-no-question"}
+  ],
+  "nextCheck": "2026-12-02",
+  "links": [{"label": "Report", "url": "channels/business-documentaries-rise-and-fall-of/review/2026-11-28.md"}]
+}
