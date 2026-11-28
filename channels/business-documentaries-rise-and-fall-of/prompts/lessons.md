@@ -3,18 +3,23 @@
 Each lesson is a mistake that cost viewers, written by the reviewer (agents/reviewer.md) from where viewers
 left. The writer follows them and QA enforces them. A new channel starts with channel #1's general ones.
 
-## 1. The second beat stays on the thing from frame 1 and adds a surprise (reviewer, 2026-11-25)
-Seen in: v-20261122-33 Tamagotchi, −32% at 5.4 s: the toy left the screen for Bandai's glass head office ("Bandai,
-the toy maker") while the line gave the launch month and year ("Bandai put it on sale in Japan in November 1996"),
-the channel's worst drop. v-20261120-09 Stanley, −19% at 5.5 s: the bright shelf of Quenchers cut to a black-and-white
-museum case of old flasks while the line walked the hook back ("Not a new cup… it barely sold"); stayed to watch
-29.2%, 22 points under the channel's 51.4% median. Every Short with drop points loses the most at its second beat
-(19–32% at 5.3–5.5 s; no later drop passes 10.5%); the smallest fall among the three that held best was Toyota's
-(−23.5%), whose second beat stayed on the luxury badges the hook named.
-Fix: beat 2 (about 3.5–9 s) keeps the hook's object on screen (the toy, the cup, the phone) and its line adds the next
-surprise about it (a figure, a turn); the maker, its head office, a launch date or a "not new / barely sold"
-walk-back go later or into an overlay. Director: no head-office building, no archive or black-and-white picture and no
-generic stock picture as beat 2's main layer.
+## 1. The second beat stays on the thing from frame 1 and adds a surprise (reviewer, 2026-11-25; raised 2026-11-28)
+Seen in: every Short with drop points loses the most at its second beat, and the more beat 2 leaves the hook's thing,
+the steeper the fall. v-20261124-32 Marvel, −34.4% at 5.6 s, the channel's worst drop: Captain America left the screen
+for a 1997 10-K page of small type while the line went back in time ("The decade before, Marvel had gone bankrupt").
+v-20261122-33 Tamagotchi, −31.2% at 5.4 s: Bandai's glass head office and a launch date ("Bandai put it on sale in Japan
+in November 1996"). v-20261125-32 Blockbuster, −20.7% at 6.3 s: the store and the envelope left for black-and-white
+polaroids of Netflix's two founders and "So what happened?"; stayed 41.9%, 13 points under the channel's 54.8% median.
+v-20261123-32 Spanx, −19.2% at 6.9 s: Sara Blakely left for a black-and-white stock photo of legs in pantyhose.
+v-20261120-09 Stanley, −19.0% at 5.5 s: a black-and-white museum case of old flasks and a walk-back ("it barely
+sold"); stayed 29.1%. v-20261124-31 Juicero, −18.8% at 8.2 s: one stock photo of chopped vegetables held about 6 s.
+The one that kept its subject lost least: v-20261123-31 Krispy Kreme, −12.8% at 7.8 s, the Krispy Kreme truck with a
+BROKE UP stamp; it has the channel's best stayed (57.4%) and held after hook (37.2%).
+Fix: beat 2 (about 3.5–9 s) keeps the hook's object or person on screen (the toy, the cup, the hero, the store) and
+its line adds the next surprise about it (a figure, a turn). No backstory in beat 2: no "the decade before", no
+launch date, no maker or head office, no "not new / barely sold" walk-back, no "So what happened?". Director: beat 2's
+main layer is never a document page of small type, a building, a black-and-white or archive photo, or a generic stock
+picture; a document may come in as an overlay on the hook's thing.
 
 ## 2. The first frame names the subject (general)
 Seen in: channel #1's first month, 55–76% swiped away when the title and first second held the subject back.
