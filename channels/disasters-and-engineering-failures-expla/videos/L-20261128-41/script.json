@@ -1,0 +1,4949 @@
+{
+  "template": "long_story",
+  "format": "long",
+  "id": "L-20261128-41",
+  "seed": 28141,
+  "title": "Ohio State Fair Fire Ball Accident: The Rust Nobody Saw",
+  "story": "stunt_gone_wrong",
+  "narrator": "af_heart",
+  "currency": "USD",
+  "style": {
+    "palette": "ember",
+    "genre": "brace",
+    "key": "A",
+    "bpm": 70,
+    "recipe": "investigators-desk"
+  },
+  "feed_id": "2026-11-26-fire-ball-long",
+  "hook_style": "secret",
+  "cta": "Which check should have caught the rust? Tell us in the comments",
+  "facts": [
+    {
+      "label": "Year of the incident",
+      "value": 2017,
+      "unit": "year",
+      "as_of": "2017-07-26",
+      "source": "CPSC letter to ASTM F24",
+      "url": "https://www.cpsc.gov/s3fs-public/Letter-to-ASTM-Amusment-Ride-Committee-9-25-17-final.pdf",
+      "fixed": true
+    },
+    {
+      "label": "Riders injured",
+      "value": 7,
+      "unit": "count",
+      "as_of": "2017-09-25",
+      "source": "CPSC letter to ASTM F24",
+      "url": "https://www.cpsc.gov/s3fs-public/Letter-to-ASTM-Amusment-Ride-Committee-9-25-17-final.pdf",
+      "fixed": true
+    },
+    {
+      "label": "Riders killed at the scene",
+      "value": 1,
+      "unit": "count",
+      "as_of": "2017-09-25",
+      "source": "CPSC letter to ASTM F24",
+      "url": "https://www.cpsc.gov/s3fs-public/Letter-to-ASTM-Amusment-Ride-Committee-9-25-17-final.pdf",
+      "fixed": true
+    },
+    {
+      "label": "Year the ride was manufactured",
+      "value": 1999,
+      "unit": "year",
+      "as_of": "2017-09-25",
+      "source": "CPSC In-Depth Investigation 170727CFE0001",
+      "url": "https://www.cpsc.gov/s3fs-public/Letter-to-ASTM-Amusment-Ride-Committee-9-25-17-final.pdf",
+      "fixed": true
+    }
+  ],
+  "maths": [],
+  "beats": [
+    {
+      "id": "hook",
+      "scene": "directed",
+      "role": "hook",
+      "say": "Rust hidden inside one steel arm, its maker later said, tore a gondola off a fair ride in Ohio. {fact3} rider was killed, and {fact2} more were hurt.",
+      "events": {
+        "Rust": {
+          "word": "Rust"
+        },
+        "steel": {
+          "word": "steel"
+        },
+        "gondola": {
+          "word": "gondola"
+        },
+        "Ohio": {
+          "word": "Ohio"
+        },
+        "killed": {
+          "word": "killed"
+        },
+        "hurt": {
+          "word": "hurt"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the Fire Ball on the midway in the early-evening sun, the fair lit around it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "steel",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Rust",
+            "what": "the date and place caption types on over the ride swinging high in the evening sun"
+          },
+          {
+            "at": "steel",
+            "what": "the camera closes on one arm, glowing amber at its end"
+          },
+          {
+            "at": "gondola",
+            "what": "the arm's end turns red"
+          },
+          {
+            "at": "Ohio",
+            "what": "the crowd at the rail below looks up"
+          },
+          {
+            "at": "killed",
+            "what": "the frame dips dark, the crowd below goes still"
+          },
+          {
+            "at": "hurt",
+            "what": "the ride stands still against the sky"
+          }
+        ],
+        "things": [
+          "the Fire Ball ride",
+          "the sweep arm",
+          "the crowd at the rail",
+          "the midway lights",
+          "date caption"
+        ],
+        "fig": {
+          "year": "{fact1}",
+          "killed": "{fact3}",
+          "hurt": "{fact2}"
+        },
+        "shot": "hook",
+        "phase": "evening",
+        "swing": "high",
+        "crowd": true,
+        "caption": "date",
+        "stressAt": "steel",
+        "redAt": "gondola",
+        "dimAt": "killed",
+        "tolls": {
+          "at": "killed",
+          "a": "killed",
+          "b": "hurt"
+        }
+      }
+    },
+    {
+      "id": "hook-name",
+      "scene": "directed",
+      "role": "level",
+      "say": "The ride was the Fire Ball, a giant swinging pendulum, on the first day of the Ohio State Fair in {fact1}.",
+      "events": {
+        "Fire": {
+          "word": "Fire"
+        },
+        "swinging": {
+          "word": "swinging"
+        },
+        "pendulum": {
+          "word": "pendulum"
+        },
+        "Ohio": {
+          "word": "Ohio"
+        },
+        "first": {
+          "word": "first"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the Fire Ball on the midway in the early-evening sun, the fair lit around it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "pendulum",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Fire",
+            "what": "the ride's name pins to the tower"
+          },
+          {
+            "at": "swinging",
+            "what": "the boom swings out across the sky"
+          },
+          {
+            "at": "pendulum",
+            "what": "the camera drifts round as it swings back"
+          },
+          {
+            "at": "Ohio",
+            "what": "a fair sign lights below"
+          },
+          {
+            "at": "first",
+            "what": "the crowd at the rail looks up"
+          }
+        ],
+        "things": [
+          "the Fire Ball",
+          "boom and wheel",
+          "the crowd at the rail",
+          "fair sign"
+        ],
+        "fig": {
+          "year": "{fact1}"
+        },
+        "shot": "orbit",
+        "phase": "evening",
+        "swing": "high",
+        "crowd": true,
+        "label": {
+          "at": "Fire",
+          "text": "FIRE BALL",
+          "sub": "OHIO STATE FAIR"
+        }
+      }
+    },
+    {
+      "id": "hook-pass",
+      "scene": "directed",
+      "role": "level",
+      "say": "That same day, state inspectors had passed it. The danger was inside the steel, where nobody could look.",
+      "events": {
+        "same": {
+          "word": "same"
+        },
+        "inspectors": {
+          "word": "inspectors"
+        },
+        "passed": {
+          "word": "passed"
+        },
+        "inside": {
+          "word": "inside"
+        },
+        "nobody": {
+          "word": "nobody"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the ride in daylight with an inspector at its base",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "inside",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "same",
+            "what": "the scene turns to daylight, the ride parked"
+          },
+          {
+            "at": "inspectors",
+            "what": "an inspector walks the base with a clipboard"
+          },
+          {
+            "at": "passed",
+            "what": "a PASSED sticker slaps onto the panel"
+          },
+          {
+            "at": "inside",
+            "what": "the arm turns see-through: rust inside the painted steel"
+          },
+          {
+            "at": "nobody",
+            "what": "the flashlight beam stops at the paint"
+          }
+        ],
+        "things": [
+          "inspector",
+          "clipboard",
+          "inspection sticker",
+          "see-through arm with rust inside"
+        ],
+        "shot": "inspect",
+        "phase": "day",
+        "inspector": true,
+        "stickerAt": "passed",
+        "xrayAt": "inside"
+      }
+    },
+    {
+      "id": "promise",
+      "scene": "directed",
+      "role": "promise",
+      "say": "So how does a ride pass its inspection and break on the same day? It took a chain: a hollow arm, water inside it, and checks that only saw the outside.",
+      "events": {
+        "how": {
+          "word": "how"
+        },
+        "pass": {
+          "word": "pass"
+        },
+        "break": {
+          "word": "break"
+        },
+        "chain": {
+          "word": "chain"
+        },
+        "hollow": {
+          "word": "hollow"
+        },
+        "water": {
+          "word": "water"
+        },
+        "inside": {
+          "word": "inside"
+        },
+        "checks": {
+          "word": "checks"
+        },
+        "only": {
+          "word": "only"
+        },
+        "outside": {
+          "word": "outside"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "one sweep arm of the ride, cut open under work lights",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "hollow",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "how",
+            "what": "the arm turns slowly under the work lights"
+          },
+          {
+            "at": "pass",
+            "what": "a PASSED sticker glints on the paint"
+          },
+          {
+            "at": "break",
+            "what": "a red crack line flickers at the joint"
+          },
+          {
+            "at": "chain",
+            "what": "the arm's near wall lifts away"
+          },
+          {
+            "at": "hollow",
+            "what": "link one tags on: a hollow arm"
+          },
+          {
+            "at": "water",
+            "what": "link two: water pools inside"
+          },
+          {
+            "at": "inside",
+            "what": "the water glints in the open tube"
+          },
+          {
+            "at": "checks",
+            "what": "link three: the outside-only checks"
+          },
+          {
+            "at": "only",
+            "what": "a flashlight beam stops at the paint"
+          },
+          {
+            "at": "outside",
+            "what": "the last tag turns red"
+          }
+        ],
+        "things": [
+          "sweep arm cut open",
+          "water inside",
+          "three cause tags"
+        ],
+        "shot": "cutwide",
+        "phase": "cut",
+        "cutAt": "chain",
+        "waterAt": "water",
+        "rust": 0.6,
+        "lightBeam": true,
+        "beamAt": "only",
+        "stickerOn": true,
+        "crackAt": "break",
+        "causeTags": [
+          {
+            "at": "hollow",
+            "text": "A HOLLOW ARM"
+          },
+          {
+            "at": "water",
+            "text": "WATER INSIDE"
+          },
+          {
+            "at": "checks",
+            "text": "OUTSIDE-ONLY CHECKS",
+            "red": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "promise2",
+      "scene": "directed",
+      "role": "level",
+      "say": "We'll follow it in seven steps: the ride, the swing, the hollow arm, the inspections, the last day, the findings, and what changed.",
+      "events": {
+        "ride": {
+          "word": "ride"
+        },
+        "swing": {
+          "word": "swing"
+        },
+        "hollow": {
+          "word": "hollow"
+        },
+        "inspections": {
+          "word": "inspections"
+        },
+        "last": {
+          "word": "last"
+        },
+        "findings": {
+          "word": "findings"
+        },
+        "changed": {
+          "word": "changed"
+        }
+      },
+      "params": {
+        "component": "Title",
+        "place": "the chapter index pinned on the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "changed",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "ride",
+            "what": "tab one lights"
+          },
+          {
+            "at": "swing",
+            "what": "tab two lights"
+          },
+          {
+            "at": "hollow",
+            "what": "tab three lights"
+          },
+          {
+            "at": "inspections",
+            "what": "tab four lights"
+          },
+          {
+            "at": "last",
+            "what": "tab five lights red"
+          },
+          {
+            "at": "findings",
+            "what": "tab six lights"
+          },
+          {
+            "at": "changed",
+            "what": "the title stamps on: Fire Ball"
+          }
+        ],
+        "things": [
+          "chapter index",
+          "seven tabs",
+          "title"
+        ]
+      }
+    },
+    {
+      "id": "r-what",
+      "scene": "directed",
+      "role": "level",
+      "say": "What was the Fire Ball? A thrill ride built by a Dutch company, KMG, in {fact4}.",
+      "events": {
+        "What": {
+          "word": "What"
+        },
+        "thrill": {
+          "word": "thrill"
+        },
+        "Dutch": {
+          "word": "Dutch"
+        },
+        "KMG": {
+          "word": "KMG"
+        },
+        "built": {
+          "word": "built"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the midway of the Ohio State Fair on a summer day",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "Dutch",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "What",
+            "what": "the chapter card types on: the ride"
+          },
+          {
+            "at": "thrill",
+            "what": "the ride swings slowly over the midway"
+          },
+          {
+            "at": "Dutch",
+            "what": "a maker's plate pins to the tower"
+          },
+          {
+            "at": "KMG",
+            "what": "the plate fills in: KMG"
+          },
+          {
+            "at": "built",
+            "what": "a year tag types on"
+          }
+        ],
+        "things": [
+          "the Fire Ball in daylight",
+          "maker's plate",
+          "build year tag",
+          "midway stalls"
+        ],
+        "fig": {
+          "built": "{fact4}"
+        },
+        "shot": "daywide",
+        "phase": "day",
+        "swing": "low",
+        "crowd": true,
+        "chapter": "THE RIDE",
+        "tag": {
+          "at": "built",
+          "fig": "built",
+          "label": "BUILT"
+        },
+        "plateAt": "Dutch"
+      }
+    },
+    {
+      "id": "r-move",
+      "scene": "directed",
+      "role": "level",
+      "say": "And moving a ride this big? It was portable. It rode on trailers from fair to fair, and was put together again at every stop.",
+      "events": {
+        "moving": {
+          "word": "moving"
+        },
+        "portable": {
+          "word": "portable"
+        },
+        "trailers": {
+          "word": "trailers"
+        },
+        "fair": {
+          "word": "fair"
+        },
+        "together": {
+          "word": "together"
+        }
+      },
+      "params": {
+        "component": "Road",
+        "place": "a highway at dawn, the ride folded on its trailer",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "portable",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "moving",
+            "what": "a truck pulls the folded ride along the highway"
+          },
+          {
+            "at": "portable",
+            "what": "the camera tracks beside the trailer"
+          },
+          {
+            "at": "trailers",
+            "what": "road lines stream past"
+          },
+          {
+            "at": "fair",
+            "what": "a road sign to the next fair passes"
+          },
+          {
+            "at": "together",
+            "what": "the scene jumps to the tower lifting upright at a new fairground"
+          }
+        ],
+        "things": [
+          "truck and trailer",
+          "folded tower",
+          "highway",
+          "road sign"
+        ],
+        "shot": "road",
+        "phase": "road",
+        "raiseAt": "together"
+      }
+    },
+    {
+      "id": "r-owner",
+      "scene": "directed",
+      "role": "level",
+      "say": "Its owner, a travelling ride company, bought it about a year after it was built, from the ride's first owner.",
+      "events": {
+        "owner": {
+          "word": "owner"
+        },
+        "travelling": {
+          "word": "travelling"
+        },
+        "bought": {
+          "word": "bought"
+        },
+        "first": {
+          "word": "first"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the ride's trailer parked at a fairground, its office door open",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "bought",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "owner",
+            "what": "the trailer's office lights up"
+          },
+          {
+            "at": "travelling",
+            "what": "a company flag flutters on the trailer"
+          },
+          {
+            "at": "bought",
+            "what": "a bill of sale slides onto the office desk"
+          },
+          {
+            "at": "first",
+            "what": "an old logo fades from the trailer side"
+          }
+        ],
+        "things": [
+          "ride trailer",
+          "office door",
+          "bill of sale",
+          "faded old logo"
+        ],
+        "shot": "trailer",
+        "phase": "day",
+        "swing": "parked",
+        "office": true
+      }
+    },
+    {
+      "id": "r-papers",
+      "scene": "directed",
+      "role": "level",
+      "say": "When investigators later asked for service records from the ride's first owner, the current owner could not provide any.",
+      "events": {
+        "investigators": {
+          "word": "investigators"
+        },
+        "service": {
+          "word": "service"
+        },
+        "current": {
+          "word": "current"
+        },
+        "provide": {
+          "word": "provide"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "provide",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "investigators",
+            "what": "a folder slides onto the desk"
+          },
+          {
+            "at": "service",
+            "what": "the folder's tab reads: service records, first owner"
+          },
+          {
+            "at": "current",
+            "what": "the folder opens"
+          },
+          {
+            "at": "provide",
+            "what": "a stamp lands: none provided"
+          }
+        ],
+        "things": [
+          "folder",
+          "empty file",
+          "stamp"
+        ],
+        "mode": "papers"
+      }
+    },
+    {
+      "id": "r-seats",
+      "scene": "directed",
+      "role": "level",
+      "say": "Riders sat in gondolas at the very end of those long arms, held in place by padded bars over their shoulders. There were no seatbelts.",
+      "events": {
+        "Riders": {
+          "word": "Riders"
+        },
+        "arms": {
+          "word": "arms"
+        },
+        "bars": {
+          "word": "bars"
+        },
+        "seatbelts": {
+          "word": "seatbelts"
+        }
+      },
+      "params": {
+        "component": "Gate",
+        "place": "beside one gondola on the loading platform",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "bars",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Riders",
+            "what": "riders wait at the gate as the gondola comes to the platform"
+          },
+          {
+            "at": "arms",
+            "what": "the camera rises along the arm"
+          },
+          {
+            "at": "bars",
+            "what": "the shoulder bars swing down"
+          },
+          {
+            "at": "seatbelts",
+            "what": "a seatbelt outline flashes and crosses out"
+          }
+        ],
+        "things": [
+          "gondola",
+          "riders at the gate",
+          "seats",
+          "shoulder bars",
+          "the arm above"
+        ],
+        "shot": "seat",
+        "phase": "day",
+        "swing": "parked",
+        "barsAt": "bars",
+        "noBeltAt": "seatbelts",
+        "queue": true
+      }
+    },
+    {
+      "id": "r-lights",
+      "scene": "directed",
+      "role": "level",
+      "say": "A green light above each seat lit once its bar was locked. Only then could the operator start the ride.",
+      "events": {
+        "green": {
+          "word": "green"
+        },
+        "locked": {
+          "word": "locked"
+        },
+        "operator": {
+          "word": "operator"
+        },
+        "start": {
+          "word": "start"
+        }
+      },
+      "params": {
+        "component": "Gate",
+        "place": "beside one gondola on the loading platform, its seat lamps above",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "operator",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "green",
+            "what": "the seat lights turn green one by one"
+          },
+          {
+            "at": "locked",
+            "what": "the last bar clicks down and its light goes green"
+          },
+          {
+            "at": "operator",
+            "what": "the operator's panel slides in beside the gondola"
+          },
+          {
+            "at": "start",
+            "what": "the start button glows green"
+          }
+        ],
+        "things": [
+          "green seat lights",
+          "gondola",
+          "shoulder bars",
+          "start button"
+        ],
+        "shot": "seat",
+        "phase": "day",
+        "swing": "parked",
+        "barsAt": "green",
+        "greenAt": "green",
+        "startPanelAt": "operator"
+      }
+    },
+    {
+      "id": "r-auto",
+      "scene": "directed",
+      "role": "level",
+      "say": "Who was steering it? Nobody, really. A computer ran each ride, and the operator could not change its speed or how long it lasted.",
+      "events": {
+        "steering": {
+          "word": "steering"
+        },
+        "computer": {
+          "word": "computer"
+        },
+        "speed": {
+          "word": "speed"
+        },
+        "lasted": {
+          "word": "lasted"
+        }
+      },
+      "params": {
+        "component": "Gate",
+        "place": "the operator's booth, the control screen lit",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "computer",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "steering",
+            "what": "the camera pushes past the operator to the panel"
+          },
+          {
+            "at": "computer",
+            "what": "the control screen fills with the ride program"
+          },
+          {
+            "at": "speed",
+            "what": "the speed setting locks"
+          },
+          {
+            "at": "lasted",
+            "what": "a timer bar fills and locks"
+          }
+        ],
+        "things": [
+          "control panel",
+          "ride program screen",
+          "locked settings"
+        ],
+        "shot": "panel",
+        "phase": "day",
+        "swing": "low",
+        "booth": true,
+        "screen": true,
+        "lockAt": "speed"
+      }
+    },
+    {
+      "id": "r-crew",
+      "scene": "directed",
+      "role": "level",
+      "say": "Its crew knew this machine. The foreman had worked on this very ride for many years, with two operators beside him.",
+      "events": {
+        "crew": {
+          "word": "crew"
+        },
+        "foreman": {
+          "word": "foreman"
+        },
+        "years": {
+          "word": "years"
+        },
+        "operators": {
+          "word": "operators"
+        }
+      },
+      "params": {
+        "component": "Gate",
+        "place": "the ride crew at the gate of the Fire Ball, morning",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "operators",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "crew",
+            "what": "three crew members walk the ride's gate"
+          },
+          {
+            "at": "foreman",
+            "what": "the foreman wipes down a gondola"
+          },
+          {
+            "at": "years",
+            "what": "he looks up along the arm"
+          },
+          {
+            "at": "operators",
+            "what": "two operators check the gate and the steps"
+          }
+        ],
+        "things": [
+          "ride crew",
+          "the gate",
+          "the foreman",
+          "a gondola"
+        ],
+        "shot": "crew",
+        "phase": "day",
+        "swing": "parked",
+        "crew": true
+      }
+    },
+    {
+      "id": "r-tease",
+      "scene": "directed",
+      "role": "tease",
+      "say": "Every ride ran the same program, all day long. So what made the last ride different? It starts with how the Fire Ball swings.",
+      "events": {
+        "program": {
+          "word": "program"
+        },
+        "day": {
+          "word": "day"
+        },
+        "different": {
+          "word": "different"
+        },
+        "swings": {
+          "word": "swings"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the midway of the Ohio State Fair on a summer day",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "swings",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "program",
+            "what": "the ride swings through a full cycle"
+          },
+          {
+            "at": "day",
+            "what": "the sun slides across the sky"
+          },
+          {
+            "at": "different",
+            "what": "one arm flashes amber for a frame"
+          },
+          {
+            "at": "swings",
+            "what": "the boom swings up and the camera follows it"
+          }
+        ],
+        "things": [
+          "the Fire Ball",
+          "the sun",
+          "one amber arm"
+        ],
+        "shot": "daywide",
+        "phase": "day",
+        "swing": "high",
+        "flashAt": "different",
+        "sunAt": "day"
+      }
+    },
+    {
+      "id": "s-swing",
+      "scene": "directed",
+      "role": "level",
+      "say": "The Fire Ball is a giant pendulum. A long boom hangs from the top of a tower, and at its foot sits a wheel of arms.",
+      "events": {
+        "pendulum": {
+          "word": "pendulum"
+        },
+        "boom": {
+          "word": "boom"
+        },
+        "tower": {
+          "word": "tower"
+        },
+        "wheel": {
+          "word": "wheel"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the ride alone against the evening sky",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "wheel",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "pendulum",
+            "what": "the chapter card types on: the swing"
+          },
+          {
+            "at": "boom",
+            "what": "the boom lights up, a label pins on"
+          },
+          {
+            "at": "tower",
+            "what": "the tower lights up"
+          },
+          {
+            "at": "wheel",
+            "what": "the wheel of arms lights up"
+          }
+        ],
+        "things": [
+          "tower",
+          "boom",
+          "wheel of arms",
+          "labels"
+        ],
+        "shot": "side",
+        "phase": "dusk",
+        "swing": "low",
+        "chapter": "THE SWING",
+        "parts": [
+          {
+            "at": "boom",
+            "text": "BOOM"
+          },
+          {
+            "at": "tower",
+            "text": "TOWER"
+          },
+          {
+            "at": "wheel",
+            "text": "WHEEL OF ARMS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s-high",
+      "scene": "directed",
+      "role": "level",
+      "say": "The boom swings higher and higher, until riders look down on the fair from far above it.",
+      "events": {
+        "higher": {
+          "word": "higher"
+        },
+        "riders": {
+          "word": "riders"
+        },
+        "down": {
+          "word": "down"
+        },
+        "above": {
+          "word": "above"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "high over the midway at dusk, beside the swinging wheel",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "down",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "higher",
+            "what": "each swing goes higher"
+          },
+          {
+            "at": "riders",
+            "what": "the camera rides up with a gondola of riders"
+          },
+          {
+            "at": "down",
+            "what": "the midway spreads out far below"
+          },
+          {
+            "at": "above",
+            "what": "the gondola hangs at the top for a moment"
+          }
+        ],
+        "things": [
+          "the swinging boom",
+          "a gondola with riders",
+          "the crowd on the midway below"
+        ],
+        "shot": "ride",
+        "phase": "dusk",
+        "swing": "high",
+        "crowd": true,
+        "ridersK": true
+      }
+    },
+    {
+      "id": "s-feel",
+      "scene": "directed",
+      "role": "level",
+      "say": "Down at the bottom of each swing, riders are pressed hard into their seats. Up at the top, they feel almost weightless.",
+      "events": {
+        "bottom": {
+          "word": "bottom"
+        },
+        "pressed": {
+          "word": "pressed"
+        },
+        "top": {
+          "word": "top"
+        },
+        "weightless": {
+          "word": "weightless"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "inside a gondola as it swings, the midway lights rushing past",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "top",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "bottom",
+            "what": "the gondola rushes through the bottom, the lights streak"
+          },
+          {
+            "at": "pressed",
+            "what": "a heavy arrow presses down on the seat"
+          },
+          {
+            "at": "top",
+            "what": "the gondola slows at the top over the midway"
+          },
+          {
+            "at": "weightless",
+            "what": "the arrow shrinks to almost nothing"
+          }
+        ],
+        "things": [
+          "gondola with riders",
+          "seat",
+          "force arrow",
+          "midway lights below"
+        ],
+        "shot": "side",
+        "phase": "dusk",
+        "swing": "high",
+        "ridersK": true,
+        "gArrow": true,
+        "principle": true
+      }
+    },
+    {
+      "id": "s-spin",
+      "scene": "directed",
+      "role": "level",
+      "say": "Near the top of each swing, the wheel spins too, so every gondola turns through the air.",
+      "events": {
+        "top": {
+          "word": "top"
+        },
+        "spins": {
+          "word": "spins"
+        },
+        "gondola": {
+          "word": "gondola"
+        },
+        "air": {
+          "word": "air"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "beside the wheel at the top of the swing",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "spins",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "top",
+            "what": "the boom slows at the top"
+          },
+          {
+            "at": "spins",
+            "what": "the wheel spins, gondolas sweeping past"
+          },
+          {
+            "at": "gondola",
+            "what": "a gondola passes close to the camera"
+          },
+          {
+            "at": "air",
+            "what": "light trails streak behind the seats"
+          }
+        ],
+        "things": [
+          "wheel",
+          "gondolas",
+          "light trails"
+        ],
+        "shot": "wheel",
+        "phase": "dusk",
+        "swing": "high",
+        "spin": true
+      }
+    },
+    {
+      "id": "s-why",
+      "scene": "directed",
+      "role": "level",
+      "say": "Why does that matter for the steel? Because of what happens at the bottom of every swing.",
+      "events": {
+        "matter": {
+          "word": "matter"
+        },
+        "steel": {
+          "word": "steel"
+        },
+        "bottom": {
+          "word": "bottom"
+        },
+        "every": {
+          "word": "every"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "below the ride, looking up as the wheel passes overhead",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "bottom",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "matter",
+            "what": "the wheel rushes down toward the camera"
+          },
+          {
+            "at": "steel",
+            "what": "the arms flash grey to amber as it passes"
+          },
+          {
+            "at": "bottom",
+            "what": "the swing slows into slow motion at the bottom"
+          },
+          {
+            "at": "every",
+            "what": "a time-paused tag appears"
+          }
+        ],
+        "things": [
+          "wheel overhead",
+          "arms",
+          "time paused tag"
+        ],
+        "shot": "under",
+        "phase": "dusk",
+        "swing": "high",
+        "slowAt": "bottom",
+        "stressPulse": true
+      }
+    },
+    {
+      "id": "s-force",
+      "scene": "directed",
+      "role": "level",
+      "say": "Down at the bottom, each arm holds its gondola's weight, plus the extra pull it takes to swing that gondola round the curve.",
+      "events": {
+        "bottom": {
+          "word": "bottom"
+        },
+        "weight": {
+          "word": "weight"
+        },
+        "extra": {
+          "word": "extra"
+        },
+        "pull": {
+          "word": "pull"
+        },
+        "curve": {
+          "word": "curve"
+        }
+      },
+      "params": {
+        "component": "Beam",
+        "place": "an engineer's force sheet on the desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "pull",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "bottom",
+            "what": "the pendulum draws on the sheet"
+          },
+          {
+            "at": "weight",
+            "what": "a weight arrow points down from the gondola"
+          },
+          {
+            "at": "extra",
+            "what": "a second arrow adds to it"
+          },
+          {
+            "at": "pull",
+            "what": "the arm's tension arrow grows long"
+          },
+          {
+            "at": "curve",
+            "what": "the swing arc draws through the gondola"
+          }
+        ],
+        "things": [
+          "pendulum drawing",
+          "weight arrow",
+          "pull arrow",
+          "swing arc"
+        ],
+        "mode": "force"
+      }
+    },
+    {
+      "id": "s-load",
+      "scene": "directed",
+      "role": "level",
+      "say": "So the load on each arm climbs and falls, again and again, on every swing of every ride.",
+      "events": {
+        "load": {
+          "word": "load"
+        },
+        "climbs": {
+          "word": "climbs"
+        },
+        "falls": {
+          "word": "falls"
+        },
+        "again": {
+          "word": "again"
+        },
+        "ride": {
+          "word": "ride"
+        }
+      },
+      "params": {
+        "component": "Beam",
+        "place": "a load gauge pinned beside the force sheet",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "again",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "load",
+            "what": "the load gauge needle climbs"
+          },
+          {
+            "at": "climbs",
+            "what": "the needle swings up"
+          },
+          {
+            "at": "falls",
+            "what": "it falls back"
+          },
+          {
+            "at": "again",
+            "what": "a load trace draws, peak after peak"
+          },
+          {
+            "at": "ride",
+            "what": "the trace runs off the edge of the sheet"
+          }
+        ],
+        "things": [
+          "load gauge",
+          "load trace",
+          "peaks"
+        ],
+        "mode": "load"
+      }
+    },
+    {
+      "id": "s-cycles",
+      "scene": "directed",
+      "role": "level",
+      "say": "Over a season, that is a huge number of loads. Steel takes it well, as long as the steel keeps its full thickness.",
+      "events": {
+        "season": {
+          "word": "season"
+        },
+        "loads": {
+          "word": "loads"
+        },
+        "Steel": {
+          "word": "Steel"
+        },
+        "thickness": {
+          "word": "thickness"
+        }
+      },
+      "params": {
+        "component": "Beam",
+        "place": "the force sheet, a section of the arm drawn on it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "thickness",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "season",
+            "what": "tally marks fill the margin, fair after fair"
+          },
+          {
+            "at": "loads",
+            "what": "the tally fills faster"
+          },
+          {
+            "at": "Steel",
+            "what": "a section of the arm's wall draws on"
+          },
+          {
+            "at": "thickness",
+            "what": "the wall's thickness is marked with a bracket"
+          }
+        ],
+        "things": [
+          "tally marks",
+          "wall section",
+          "thickness bracket"
+        ],
+        "mode": "cycles"
+      }
+    },
+    {
+      "id": "s-tease",
+      "scene": "directed",
+      "role": "tease",
+      "say": "Up to here: a ride on the road, the same swing all day, and arms loaded on every pass. But what if one arm's steel was getting thinner, where nobody could see?",
+      "events": {
+        "road": {
+          "word": "road"
+        },
+        "swing": {
+          "word": "swing"
+        },
+        "loaded": {
+          "word": "loaded"
+        },
+        "thinner": {
+          "word": "thinner"
+        },
+        "see": {
+          "word": "see"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "close on one sweep arm as the ride swings at dusk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "thinner",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "road",
+            "what": "the ride swings past, the camera holds on one arm"
+          },
+          {
+            "at": "swing",
+            "what": "the arm passes again"
+          },
+          {
+            "at": "loaded",
+            "what": "the arm flashes amber at the bottom"
+          },
+          {
+            "at": "thinner",
+            "what": "the arm turns see-through: its wall is thin inside"
+          },
+          {
+            "at": "see",
+            "what": "the paint closes over it again"
+          }
+        ],
+        "things": [
+          "one sweep arm",
+          "see-through wall",
+          "paint"
+        ],
+        "shot": "armclose",
+        "phase": "dusk",
+        "swing": "low",
+        "xrayAt": "thinner",
+        "xrayOffAt": "see"
+      }
+    },
+    {
+      "id": "h-hollow",
+      "scene": "directed",
+      "role": "level",
+      "say": "Each arm that carried a gondola was a hollow steel beam, like a long square tube.",
+      "events": {
+        "arm": {
+          "word": "arm"
+        },
+        "gondola": {
+          "word": "gondola"
+        },
+        "hollow": {
+          "word": "hollow"
+        },
+        "tube": {
+          "word": "tube"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "one sweep arm of the ride, cut open under work lights",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "tube",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "arm",
+            "what": "the chapter card types on: the hollow arm"
+          },
+          {
+            "at": "gondola",
+            "what": "the gondola mount at its end lights"
+          },
+          {
+            "at": "hollow",
+            "what": "the near wall lifts away"
+          },
+          {
+            "at": "tube",
+            "what": "the camera looks down the inside of the tube"
+          }
+        ],
+        "things": [
+          "sweep arm",
+          "gondola mount",
+          "inside of the tube"
+        ],
+        "shot": "cutwide",
+        "phase": "cut",
+        "cutAt": "hollow",
+        "rust": 0.0,
+        "chapter": "THE HOLLOW ARM",
+        "mountAt": "gondola"
+      }
+    },
+    {
+      "id": "h-light",
+      "scene": "directed",
+      "role": "level",
+      "say": "Hollow beams are light and strong. But a tube has an inside, and once the ride is built, that inside is out of sight.",
+      "events": {
+        "light": {
+          "word": "light"
+        },
+        "strong": {
+          "word": "strong"
+        },
+        "inside": {
+          "word": "inside"
+        },
+        "sight": {
+          "word": "sight"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "one sweep arm of the ride, cut open under work lights",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "sight",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "light",
+            "what": "the arm lifts easily on its crane hook"
+          },
+          {
+            "at": "strong",
+            "what": "the load arrows press on it, it holds"
+          },
+          {
+            "at": "inside",
+            "what": "the camera slides into the open end"
+          },
+          {
+            "at": "sight",
+            "what": "the end plate closes over the opening"
+          }
+        ],
+        "things": [
+          "sweep arm",
+          "crane hook",
+          "end plate"
+        ],
+        "shot": "cutend",
+        "phase": "cut",
+        "rust": 0.0,
+        "cutAt": "inside",
+        "closeAt": "sight"
+      }
+    },
+    {
+      "id": "h-water",
+      "scene": "directed",
+      "role": "level",
+      "say": "What gets in there? Water. Rain can seep into a beam and pool inside it.",
+      "events": {
+        "What": {
+          "word": "What"
+        },
+        "Water": {
+          "word": "Water"
+        },
+        "Rain": {
+          "word": "Rain"
+        },
+        "seep": {
+          "word": "seep"
+        },
+        "pool": {
+          "word": "pool"
+        }
+      },
+      "params": {
+        "component": "Beam",
+        "place": "a cross-section of the beam on the drafting sheet",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "pool",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "What",
+            "what": "the beam's cross-section draws on"
+          },
+          {
+            "at": "Water",
+            "what": "a drop falls toward a seam"
+          },
+          {
+            "at": "Rain",
+            "what": "rain streaks down the sheet"
+          },
+          {
+            "at": "seep",
+            "what": "drops find the seam and run in"
+          },
+          {
+            "at": "pool",
+            "what": "water pools at the low end inside"
+          }
+        ],
+        "things": [
+          "beam cross-section",
+          "rain",
+          "seam",
+          "pooled water"
+        ],
+        "mode": "water"
+      }
+    },
+    {
+      "id": "h-damp",
+      "scene": "directed",
+      "role": "level",
+      "say": "Even without rain, damp air inside can cool overnight and leave water on the inner walls.",
+      "events": {
+        "damp": {
+          "word": "damp"
+        },
+        "cool": {
+          "word": "cool"
+        },
+        "overnight": {
+          "word": "overnight"
+        },
+        "walls": {
+          "word": "walls"
+        }
+      },
+      "params": {
+        "component": "Beam",
+        "place": "the beam's cross-section at night on the sheet",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "walls",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "damp",
+            "what": "a haze of damp air fills the tube"
+          },
+          {
+            "at": "cool",
+            "what": "a thermometer arrow drops, the sheet turns blue"
+          },
+          {
+            "at": "overnight",
+            "what": "a moon slides over the corner"
+          },
+          {
+            "at": "walls",
+            "what": "beads of water form on the inner walls"
+          }
+        ],
+        "things": [
+          "damp air",
+          "cooling arrow",
+          "moon",
+          "water beads"
+        ],
+        "mode": "damp"
+      }
+    },
+    {
+      "id": "h-rust",
+      "scene": "directed",
+      "role": "level",
+      "say": "Wet steel rusts. And inside a closed tube, the water has nowhere to go, and no sun or wind to dry it out.",
+      "events": {
+        "Wet": {
+          "word": "Wet"
+        },
+        "rusts": {
+          "word": "rusts"
+        },
+        "closed": {
+          "word": "closed"
+        },
+        "nowhere": {
+          "word": "nowhere"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "inside the hollow arm, lit by a single work lamp",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "nowhere",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Wet",
+            "what": "water glistens along the floor of the tube"
+          },
+          {
+            "at": "rusts",
+            "what": "orange rust blooms across the inner wall"
+          },
+          {
+            "at": "closed",
+            "what": "the camera turns: both ends are shut"
+          },
+          {
+            "at": "nowhere",
+            "what": "the water sits still in its pool"
+          }
+        ],
+        "things": [
+          "inside of the tube",
+          "rust",
+          "pooled water",
+          "shut ends"
+        ],
+        "shot": "inside",
+        "phase": "cut",
+        "rust": 0.3,
+        "rustAt": "rusts",
+        "water": true
+      }
+    },
+    {
+      "id": "h-years",
+      "scene": "directed",
+      "role": "level",
+      "say": "And who would notice? Season after season, fair after fair, the rust can eat into the wall from the inside.",
+      "events": {
+        "notice": {
+          "word": "notice"
+        },
+        "Season": {
+          "word": "Season"
+        },
+        "fair": {
+          "word": "fair"
+        },
+        "rust": {
+          "word": "rust"
+        },
+        "inside": {
+          "word": "inside"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the Fire Ball standing in the rain at a night fair",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "inside",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "notice",
+            "what": "rain falls on the ride, crowds hurry past"
+          },
+          {
+            "at": "Season",
+            "what": "the sky flicks from night to day and back"
+          },
+          {
+            "at": "fair",
+            "what": "the fair around it changes"
+          },
+          {
+            "at": "rust",
+            "what": "one arm glows amber through the rain"
+          },
+          {
+            "at": "inside",
+            "what": "the camera pushes toward that arm"
+          }
+        ],
+        "things": [
+          "the Fire Ball in rain",
+          "crowd with umbrellas",
+          "amber arm"
+        ],
+        "shot": "rain",
+        "phase": "rain",
+        "swing": "parked",
+        "crowd": true,
+        "glowAt": "rust",
+        "seasonsAt": "Season"
+      }
+    },
+    {
+      "id": "h-thin",
+      "scene": "directed",
+      "role": "level",
+      "say": "The wall gets thinner. From outside, it can still look sound, and its paint can still look fine.",
+      "events": {
+        "wall": {
+          "word": "wall"
+        },
+        "thinner": {
+          "word": "thinner"
+        },
+        "outside": {
+          "word": "outside"
+        },
+        "paint": {
+          "word": "paint"
+        }
+      },
+      "params": {
+        "component": "Beam",
+        "place": "the wall section on the drafting sheet, new beside old",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "paint",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "wall",
+            "what": "two wall sections draw: new and after years"
+          },
+          {
+            "at": "thinner",
+            "what": "rust eats the inner face of the old one"
+          },
+          {
+            "at": "outside",
+            "what": "the outer faces stay the same"
+          },
+          {
+            "at": "paint",
+            "what": "the paint line stays bright on both"
+          }
+        ],
+        "things": [
+          "new wall section",
+          "rusted wall section",
+          "paint line"
+        ],
+        "mode": "thin"
+      }
+    },
+    {
+      "id": "h-strength",
+      "scene": "directed",
+      "role": "level",
+      "say": "Thinner steel still carries the same load. So with every swing, the same pull lands on less and less metal.",
+      "events": {
+        "Thinner": {
+          "word": "Thinner"
+        },
+        "same": {
+          "word": "same"
+        },
+        "swing": {
+          "word": "swing"
+        },
+        "less": {
+          "word": "less"
+        }
+      },
+      "params": {
+        "component": "Beam",
+        "place": "the wall sections on the drafting sheet, load arrows on both",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "less",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Thinner",
+            "what": "the two wall sections sit side by side"
+          },
+          {
+            "at": "same",
+            "what": "the same load arrow presses on both"
+          },
+          {
+            "at": "swing",
+            "what": "the arrow pulses with each swing"
+          },
+          {
+            "at": "less",
+            "what": "the thin section's stress colour climbs to red"
+          }
+        ],
+        "things": [
+          "two wall sections",
+          "load arrows",
+          "stress colour"
+        ],
+        "mode": "strength"
+      }
+    },
+    {
+      "id": "h-tease",
+      "scene": "directed",
+      "role": "tease",
+      "say": "So how would anyone find it? That's what the inspections were for.",
+      "events": {
+        "anyone": {
+          "word": "anyone"
+        },
+        "find": {
+          "word": "find"
+        },
+        "inspections": {
+          "word": "inspections"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the ride at morning, an inspector's flashlight on the arm",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "inspections",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "anyone",
+            "what": "a flashlight beam sweeps along the painted arm"
+          },
+          {
+            "at": "find",
+            "what": "the beam pauses on a bolt"
+          },
+          {
+            "at": "inspections",
+            "what": "a clipboard rises into frame"
+          }
+        ],
+        "things": [
+          "flashlight",
+          "painted arm",
+          "clipboard"
+        ],
+        "shot": "armlight",
+        "phase": "day",
+        "swing": "parked",
+        "inspector": true
+      }
+    },
+    {
+      "id": "i-daily",
+      "scene": "directed",
+      "role": "level",
+      "say": "A ride like this is checked again and again. Its crew kept daily inspection and maintenance reports.",
+      "events": {
+        "checked": {
+          "word": "checked"
+        },
+        "crew": {
+          "word": "crew"
+        },
+        "daily": {
+          "word": "daily"
+        },
+        "reports": {
+          "word": "reports"
+        }
+      },
+      "params": {
+        "component": "Gate",
+        "place": "the ride at morning, its crew with clipboards",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "reports",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "checked",
+            "what": "the chapter card types on: the inspections"
+          },
+          {
+            "at": "crew",
+            "what": "the crew walk round the base"
+          },
+          {
+            "at": "daily",
+            "what": "a daily check sheet fills with ticks"
+          },
+          {
+            "at": "reports",
+            "what": "the sheet goes on a stack of others"
+          }
+        ],
+        "things": [
+          "crew",
+          "clipboards",
+          "daily check sheet",
+          "stack of reports"
+        ],
+        "shot": "crew",
+        "phase": "day",
+        "swing": "parked",
+        "crew": true,
+        "chapter": "THE INSPECTIONS",
+        "sheetAt": "daily"
+      }
+    },
+    {
+      "id": "i-states",
+      "scene": "directed",
+      "role": "level",
+      "say": "Each state on its route had its own inspectors. Stickers from several of them were on the ride.",
+      "events": {
+        "state": {
+          "word": "state"
+        },
+        "route": {
+          "word": "route"
+        },
+        "Stickers": {
+          "word": "Stickers"
+        },
+        "ride": {
+          "word": "ride"
+        }
+      },
+      "params": {
+        "component": "Gate",
+        "place": "close on the ride's control panel, covered in stickers",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "Stickers",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "state",
+            "what": "the camera drifts across the booth's side"
+          },
+          {
+            "at": "route",
+            "what": "the first inspection sticker slaps on"
+          },
+          {
+            "at": "Stickers",
+            "what": "more state inspection stickers press on, one, then another"
+          },
+          {
+            "at": "ride",
+            "what": "the row of stickers fills"
+          }
+        ],
+        "things": [
+          "control panel",
+          "inspection stickers",
+          "route map"
+        ],
+        "shot": "stickers",
+        "phase": "day",
+        "swing": "parked",
+        "booth": true,
+        "stickersAt": "route"
+      }
+    },
+    {
+      "id": "i-ohio",
+      "scene": "directed",
+      "role": "level",
+      "say": "In Ohio, the Department of Agriculture inspects rides. Its inspectors checked the Fire Ball before the fair began.",
+      "events": {
+        "Ohio": {
+          "word": "Ohio"
+        },
+        "Agriculture": {
+          "word": "Agriculture"
+        },
+        "checked": {
+          "word": "checked"
+        },
+        "began": {
+          "word": "began"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the ride in morning light, two state inspectors at the base",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "checked",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Ohio",
+            "what": "the morning light comes up on the ride"
+          },
+          {
+            "at": "Agriculture",
+            "what": "the inspectors' badges catch the light"
+          },
+          {
+            "at": "checked",
+            "what": "they climb the platform"
+          },
+          {
+            "at": "began",
+            "what": "the empty fair waits behind them"
+          }
+        ],
+        "things": [
+          "the Fire Ball",
+          "two inspectors",
+          "empty fairground"
+        ],
+        "shot": "inspect",
+        "phase": "morning",
+        "swing": "parked",
+        "inspector": 2
+      }
+    },
+    {
+      "id": "i-passed",
+      "scene": "directed",
+      "role": "level",
+      "say": "Their standard inspection report is dated the first day of the fair. The ride passed, and was in full operation.",
+      "events": {
+        "standard": {
+          "word": "standard"
+        },
+        "dated": {
+          "word": "dated"
+        },
+        "passed": {
+          "word": "passed"
+        },
+        "operation": {
+          "word": "operation"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "passed",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "standard",
+            "what": "the inspection report slides onto the desk"
+          },
+          {
+            "at": "dated",
+            "what": "the date line highlights"
+          },
+          {
+            "at": "passed",
+            "what": "a PASSED stamp lands"
+          },
+          {
+            "at": "operation",
+            "what": "an in-operation tag clips on"
+          }
+        ],
+        "things": [
+          "inspection report",
+          "date line",
+          "passed stamp"
+        ],
+        "fig": {
+          "year": "{fact1}"
+        },
+        "mode": "passed"
+      }
+    },
+    {
+      "id": "i-what",
+      "scene": "directed",
+      "role": "level",
+      "say": "What does an inspection look at? What can be seen and tested: the bolts, the welds, the bars, and the controls.",
+      "events": {
+        "seen": {
+          "word": "seen"
+        },
+        "bolts": {
+          "word": "bolts"
+        },
+        "welds": {
+          "word": "welds"
+        },
+        "bars": {
+          "word": "bars"
+        },
+        "controls": {
+          "word": "controls"
+        }
+      },
+      "params": {
+        "component": "Gate",
+        "place": "close along the ride as an inspector works",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "controls",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "seen",
+            "what": "a flashlight beam lands on the arm"
+          },
+          {
+            "at": "bolts",
+            "what": "a bolt glints in the beam"
+          },
+          {
+            "at": "welds",
+            "what": "the beam runs along a weld"
+          },
+          {
+            "at": "bars",
+            "what": "a shoulder bar lifts and locks"
+          },
+          {
+            "at": "controls",
+            "what": "the panel lights blink"
+          }
+        ],
+        "things": [
+          "bolts",
+          "welds",
+          "shoulder bars",
+          "control panel"
+        ],
+        "shot": "detail",
+        "phase": "day",
+        "swing": "parked",
+        "inspector": true,
+        "listAt": [
+          "bolts",
+          "welds",
+          "bars",
+          "controls"
+        ]
+      }
+    },
+    {
+      "id": "i-blind",
+      "scene": "directed",
+      "role": "level",
+      "say": "But the inside wall of an arm, once the ride is put together, can't be seen at all.",
+      "events": {
+        "inside": {
+          "word": "inside"
+        },
+        "arm": {
+          "word": "arm"
+        },
+        "together": {
+          "word": "together"
+        },
+        "seen": {
+          "word": "seen"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the painted arm with the inspector's light on it, seen through the wall",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "seen",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "inside",
+            "what": "the arm turns see-through"
+          },
+          {
+            "at": "arm",
+            "what": "rust shows inside the paint"
+          },
+          {
+            "at": "together",
+            "what": "the flashlight beam stops dead at the paint"
+          },
+          {
+            "at": "seen",
+            "what": "the arm turns solid again"
+          }
+        ],
+        "things": [
+          "painted arm",
+          "flashlight beam",
+          "rust inside"
+        ],
+        "shot": "armlight",
+        "phase": "day",
+        "swing": "parked",
+        "inspector": true,
+        "xrayAt": "inside",
+        "xrayOffAt": "seen"
+      }
+    },
+    {
+      "id": "i-cpsc",
+      "scene": "directed",
+      "role": "level",
+      "say": "Federal safety staff later put it plainly. With no means to see inside the beam, a visual inspection after the ride is in place would not detect corrosion thinning of internal walls.",
+      "events": {
+        "Federal": {
+          "word": "Federal"
+        },
+        "plainly": {
+          "word": "plainly"
+        },
+        "visual": {
+          "word": "visual"
+        },
+        "detect": {
+          "word": "detect"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "detect",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Federal",
+            "what": "the commission's letter slides onto the desk"
+          },
+          {
+            "at": "plainly",
+            "what": "the camera pushes to the line"
+          },
+          {
+            "at": "visual",
+            "what": "the line highlights"
+          },
+          {
+            "at": "detect",
+            "what": "the quote types on"
+          }
+        ],
+        "things": [
+          "CPSC letter",
+          "highlighted line",
+          "quote"
+        ],
+        "mode": "cpsc"
+      }
+    },
+    {
+      "id": "i-tease",
+      "scene": "directed",
+      "role": "tease",
+      "say": "So the Fire Ball opened with a passed inspection, and an arm nobody could check. It took one evening.",
+      "events": {
+        "opened": {
+          "word": "opened"
+        },
+        "passed": {
+          "word": "passed"
+        },
+        "arm": {
+          "word": "arm"
+        },
+        "evening": {
+          "word": "evening"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the midway of the Ohio State Fair on a summer day",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "evening",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "opened",
+            "what": "the gates open, crowds flow in"
+          },
+          {
+            "at": "passed",
+            "what": "the sticker on the panel catches the sun"
+          },
+          {
+            "at": "arm",
+            "what": "one arm glints"
+          },
+          {
+            "at": "evening",
+            "what": "the sky starts to turn orange"
+          }
+        ],
+        "things": [
+          "the gates",
+          "crowds",
+          "the Fire Ball",
+          "orange sky"
+        ],
+        "shot": "gate",
+        "phase": "day",
+        "swing": "low",
+        "crowd": true,
+        "duskAt": "evening"
+      }
+    },
+    {
+      "id": "d-open",
+      "scene": "directed",
+      "role": "level",
+      "say": "It was the first day of the {fact1} Ohio State Fair. The rides opened in the morning.",
+      "events": {
+        "first": {
+          "word": "first"
+        },
+        "Fair": {
+          "word": "Fair"
+        },
+        "rides": {
+          "word": "rides"
+        },
+        "morning": {
+          "word": "morning"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the fair's main gate in morning light",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "rides",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "first",
+            "what": "the chapter card types on: the last day"
+          },
+          {
+            "at": "Fair",
+            "what": "the gate sign lights"
+          },
+          {
+            "at": "rides",
+            "what": "the rides start up behind the gate"
+          },
+          {
+            "at": "morning",
+            "what": "the first visitors walk through"
+          }
+        ],
+        "things": [
+          "main gate",
+          "gate sign",
+          "rides behind",
+          "visitors"
+        ],
+        "fig": {
+          "year": "{fact1}"
+        },
+        "shot": "gatewide",
+        "phase": "morning",
+        "swing": "low",
+        "crowd": true,
+        "chapter": "THE LAST DAY",
+        "caption": "day"
+      }
+    },
+    {
+      "id": "d-crowd",
+      "scene": "directed",
+      "role": "level",
+      "say": "Families came through the gates. Lines formed at the thrill rides, and the Fire Ball ran ride after ride.",
+      "events": {
+        "Families": {
+          "word": "Families"
+        },
+        "Lines": {
+          "word": "Lines"
+        },
+        "thrill": {
+          "word": "thrill"
+        },
+        "ride": {
+          "word": "ride"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the queue at the Fire Ball at midday",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "ride",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Families",
+            "what": "families walk the midway past food stands"
+          },
+          {
+            "at": "Lines",
+            "what": "a line snakes up to the ride's gate"
+          },
+          {
+            "at": "thrill",
+            "what": "the ride swings behind them"
+          },
+          {
+            "at": "ride",
+            "what": "the gondolas empty and fill again"
+          }
+        ],
+        "things": [
+          "families",
+          "food stands",
+          "queue",
+          "the Fire Ball"
+        ],
+        "shot": "queue",
+        "phase": "day",
+        "swing": "high",
+        "crowd": true
+      }
+    },
+    {
+      "id": "d-day",
+      "scene": "directed",
+      "role": "level",
+      "say": "All day, the arms took load after load. And from the ground, nothing looked any different.",
+      "events": {
+        "day": {
+          "word": "day"
+        },
+        "arms": {
+          "word": "arms"
+        },
+        "load": {
+          "word": "load"
+        },
+        "ground": {
+          "word": "ground"
+        },
+        "different": {
+          "word": "different"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the Fire Ball swinging over the afternoon crowd",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "ground",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "day",
+            "what": "the ride swings over the afternoon crowd"
+          },
+          {
+            "at": "arms",
+            "what": "the camera follows one arm through a swing"
+          },
+          {
+            "at": "load",
+            "what": "it flashes amber at the bottom, unseen"
+          },
+          {
+            "at": "ground",
+            "what": "from the crowd's eye level, the paint shines"
+          },
+          {
+            "at": "different",
+            "what": "a family walks past, eating"
+          }
+        ],
+        "things": [
+          "the Fire Ball",
+          "afternoon crowd",
+          "one arm",
+          "family"
+        ],
+        "shot": "queue",
+        "phase": "day",
+        "swing": "high",
+        "crowd": true,
+        "flashAt": "load"
+      }
+    },
+    {
+      "id": "d-dusk",
+      "scene": "directed",
+      "role": "level",
+      "say": "By early evening, the fair was still in full swing in the summer daylight. The lights along the midway glowed, and the crowds stayed.",
+      "events": {
+        "early": {
+          "word": "early"
+        },
+        "swing": {
+          "word": "swing"
+        },
+        "lights": {
+          "word": "lights"
+        },
+        "crowds": {
+          "word": "crowds"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the early-evening midway in summer daylight",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "lights",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "early",
+            "what": "the sun hangs low and gold behind the Ferris wheel"
+          },
+          {
+            "at": "swing",
+            "what": "the rides turn over the busy midway"
+          },
+          {
+            "at": "lights",
+            "what": "the strings of lights glow, row by row"
+          },
+          {
+            "at": "crowds",
+            "what": "the crowds keep walking past the Fire Ball"
+          }
+        ],
+        "things": [
+          "low evening sun",
+          "Ferris wheel",
+          "strings of lights",
+          "crowds",
+          "the Fire Ball"
+        ],
+        "shot": "dusk",
+        "phase": "evening",
+        "swing": "low",
+        "crowd": true,
+        "lightsAt": "lights"
+      }
+    },
+    {
+      "id": "d-inside",
+      "scene": "directed",
+      "role": "level",
+      "say": "Every swing loaded the arms again. Inside one of them, the rust was out of sight, and the wall was thin.",
+      "events": {
+        "Every": {
+          "word": "Every"
+        },
+        "loaded": {
+          "word": "loaded"
+        },
+        "rust": {
+          "word": "rust"
+        },
+        "thin": {
+          "word": "thin"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "one sweep arm of the ride, cut open under work lights",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "thin",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Every",
+            "what": "the cut-open arm flexes under the work lights"
+          },
+          {
+            "at": "loaded",
+            "what": "the stress colour pulses amber"
+          },
+          {
+            "at": "rust",
+            "what": "the rust inside darkens"
+          },
+          {
+            "at": "thin",
+            "what": "the cut edge shows a thin wall, red at the joint"
+          }
+        ],
+        "things": [
+          "cut-open arm",
+          "stress colour",
+          "rust",
+          "thin wall at the joint"
+        ],
+        "shot": "joint",
+        "phase": "cut",
+        "cutAt": "Every",
+        "rust": 1.0,
+        "pulseAt": "loaded",
+        "wallThin": true
+      }
+    },
+    {
+      "id": "d-riders",
+      "scene": "directed",
+      "role": "level",
+      "say": "Early that evening, riders climbed into the gondolas. Bars came down. Green lights came on.",
+      "events": {
+        "evening": {
+          "word": "evening"
+        },
+        "riders": {
+          "word": "riders"
+        },
+        "Bars": {
+          "word": "Bars"
+        },
+        "Green": {
+          "word": "Green"
+        }
+      },
+      "params": {
+        "component": "Gate",
+        "place": "the loading platform in the early-evening light",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "Green",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "evening",
+            "what": "low sun falls across the platform"
+          },
+          {
+            "at": "riders",
+            "what": "riders' shadows pass the gate"
+          },
+          {
+            "at": "Bars",
+            "what": "the shoulder bars swing down"
+          },
+          {
+            "at": "Green",
+            "what": "the seat lights go green, one by one"
+          }
+        ],
+        "things": [
+          "platform",
+          "gondola",
+          "shoulder bars",
+          "green lights"
+        ],
+        "shot": "seat",
+        "phase": "evening",
+        "swing": "parked",
+        "barsAt": "Bars",
+        "greenAt": "Green",
+        "ridersK": true
+      }
+    },
+    {
+      "id": "d-go",
+      "scene": "directed",
+      "role": "level",
+      "say": "The ride began to swing, higher with every pass.",
+      "events": {
+        "began": {
+          "word": "began"
+        },
+        "swing": {
+          "word": "swing"
+        },
+        "higher": {
+          "word": "higher"
+        },
+        "pass": {
+          "word": "pass"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the Fire Ball on the midway in the early-evening sun, the fair lit around it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "higher",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "began",
+            "what": "the boom swings out"
+          },
+          {
+            "at": "swing",
+            "what": "the crowd at the rail watches"
+          },
+          {
+            "at": "higher",
+            "what": "each pass goes higher"
+          },
+          {
+            "at": "pass",
+            "what": "the wheel starts to spin"
+          }
+        ],
+        "things": [
+          "the Fire Ball",
+          "crowd at the rail",
+          "spinning wheel"
+        ],
+        "shot": "orbit",
+        "phase": "evening",
+        "swing": "high",
+        "crowd": true,
+        "spin": true
+      }
+    },
+    {
+      "id": "d-fail",
+      "scene": "directed",
+      "role": "turn",
+      "say": "Then, in the middle of a swing, the arm gave way.",
+      "events": {
+        "Then": {
+          "word": "Then"
+        },
+        "middle": {
+          "word": "middle"
+        },
+        "arm": {
+          "word": "arm"
+        },
+        "way": {
+          "word": "way"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "close on the joint at the end of the arm, mid-swing in the early-evening sky",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "way",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Then",
+            "what": "silence: the arm's joint glows from amber to red as the ride swings"
+          },
+          {
+            "at": "middle",
+            "what": "the camera rides along with the arm mid-swing"
+          },
+          {
+            "at": "arm",
+            "what": "the joint flashes red"
+          },
+          {
+            "at": "way",
+            "what": "the joint tears apart, sparks and flakes of rust burst out, the frame dips to white"
+          }
+        ],
+        "things": [
+          "the Fire Ball mid-swing",
+          "joint",
+          "sparks",
+          "rust flakes"
+        ],
+        "shot": "jointclose",
+        "phase": "evening",
+        "swing": "low",
+        "stressAt": "Then",
+        "redAt": "arm",
+        "failAt": "way",
+        "silent": true
+      }
+    },
+    {
+      "id": "d-wide",
+      "scene": "directed",
+      "role": "level",
+      "say": "A gondola broke away from the end of its arm and came down on the ground beside the ride.",
+      "events": {
+        "gondola": {
+          "word": "gondola"
+        },
+        "broke": {
+          "word": "broke"
+        },
+        "arm": {
+          "word": "arm"
+        },
+        "ground": {
+          "word": "ground"
+        },
+        "ride": {
+          "word": "ride"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the fair in the evening light, seen from across the midway",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "ground",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "gondola",
+            "what": "from far away, the wheel swings on, one gondola missing"
+          },
+          {
+            "at": "broke",
+            "what": "dust rises beside the ride"
+          },
+          {
+            "at": "arm",
+            "what": "the bare arm end is red"
+          },
+          {
+            "at": "ground",
+            "what": "the crowd at the rail turns away"
+          },
+          {
+            "at": "ride",
+            "what": "the ride slows to a stop"
+          }
+        ],
+        "things": [
+          "the Fire Ball from afar",
+          "bare arm end",
+          "dust",
+          "crowd turning away"
+        ],
+        "shot": "fallen",
+        "phase": "evening",
+        "swing": "stop",
+        "crowd": true,
+        "broken": true,
+        "scatterAt": "ground",
+        "dustAt": "broke"
+      }
+    },
+    {
+      "id": "d-help",
+      "scene": "directed",
+      "role": "level",
+      "say": "Emergency crews arrived after calls for help. Investigators secured the ride, and the gondola was taken away as evidence.",
+      "events": {
+        "Emergency": {
+          "word": "Emergency"
+        },
+        "calls": {
+          "word": "calls"
+        },
+        "secured": {
+          "word": "secured"
+        },
+        "evidence": {
+          "word": "evidence"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the ride in the evening light, an evidence truck by the tape",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "evidence",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Emergency",
+            "what": "an ambulance and a fire truck pull up, lights pulsing"
+          },
+          {
+            "at": "calls",
+            "what": "rescuers with lamps hurry to the base"
+          },
+          {
+            "at": "secured",
+            "what": "tape stretches round the ride"
+          },
+          {
+            "at": "evidence",
+            "what": "a flatbed carries the gondola away under a tarp"
+          }
+        ],
+        "things": [
+          "ambulance",
+          "fire truck",
+          "rescuers",
+          "crowd held back",
+          "tape",
+          "flatbed with the gondola"
+        ],
+        "shot": "rescue",
+        "phase": "after",
+        "swing": "stop",
+        "broken": true,
+        "rescue": true,
+        "tape": true,
+        "truckAt": "evidence",
+        "crowd": true
+      }
+    },
+    {
+      "id": "d-shut",
+      "scene": "directed",
+      "role": "level",
+      "say": "The next day, every ride at the fair stayed shut. And the ride's maker ordered rides like it shut down around the world.",
+      "events": {
+        "next": {
+          "word": "next"
+        },
+        "shut": {
+          "word": "shut"
+        },
+        "maker": {
+          "word": "maker"
+        },
+        "world": {
+          "word": "world"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the midway in daylight, rides still, the Fire Ball taped off",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "world",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "next",
+            "what": "daylight on a silent midway"
+          },
+          {
+            "at": "shut",
+            "what": "a chain pulls across a ride gate"
+          },
+          {
+            "at": "maker",
+            "what": "a stop notice pins to the Fire Ball's fence"
+          },
+          {
+            "at": "world",
+            "what": "the camera rises over the still rides"
+          }
+        ],
+        "things": [
+          "silent midway",
+          "taped-off Fire Ball",
+          "stop notice",
+          "still rides"
+        ],
+        "shot": "shut",
+        "phase": "closed",
+        "swing": "stop",
+        "broken": true,
+        "tape": true,
+        "noticeAt": "maker"
+      }
+    },
+    {
+      "id": "d-tease",
+      "scene": "directed",
+      "role": "tease",
+      "say": "Add it up: a hollow arm, water inside it, rust out of sight, and an inspection that passed. What would investigators find inside the broken arm?",
+      "events": {
+        "hollow": {
+          "word": "hollow"
+        },
+        "water": {
+          "word": "water"
+        },
+        "rust": {
+          "word": "rust"
+        },
+        "passed": {
+          "word": "passed"
+        },
+        "broken": {
+          "word": "broken"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "close on the broken arm end, taped off in daylight",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "broken",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "hollow",
+            "what": "the camera drifts along the bare arm"
+          },
+          {
+            "at": "water",
+            "what": "a bead of water drips from its open end"
+          },
+          {
+            "at": "rust",
+            "what": "flakes of rust on the deck below"
+          },
+          {
+            "at": "passed",
+            "what": "the sticker on the panel behind"
+          },
+          {
+            "at": "broken",
+            "what": "the camera pushes into the open end"
+          }
+        ],
+        "things": [
+          "broken arm end",
+          "water drip",
+          "rust flakes",
+          "sticker"
+        ],
+        "shot": "brokenend",
+        "phase": "closed",
+        "swing": "stop",
+        "broken": true,
+        "tape": true,
+        "drip": true
+      }
+    },
+    {
+      "id": "f-cpsc",
+      "scene": "directed",
+      "role": "level",
+      "say": "Next came the Consumer Product Safety Commission. It sent an investigator, who reached the ride the next day.",
+      "events": {
+        "Next": {
+          "word": "Next"
+        },
+        "Commission": {
+          "word": "Commission"
+        },
+        "investigator": {
+          "word": "investigator"
+        },
+        "ride": {
+          "word": "ride"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the taped-off ride the morning after, an investigator arriving",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "investigator",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Next",
+            "what": "the chapter card types on: the findings"
+          },
+          {
+            "at": "Commission",
+            "what": "a car pulls up by the tape"
+          },
+          {
+            "at": "investigator",
+            "what": "the investigator ducks under the tape with a camera"
+          },
+          {
+            "at": "ride",
+            "what": "the camera flash fires at the base"
+          }
+        ],
+        "things": [
+          "taped-off ride",
+          "car",
+          "investigator with camera",
+          "camera flash"
+        ],
+        "shot": "shut",
+        "phase": "closed",
+        "swing": "stop",
+        "broken": true,
+        "tape": true,
+        "investigator": true,
+        "camFlashAt": "ride",
+        "chapter": "THE FINDINGS"
+      }
+    },
+    {
+      "id": "f-arm",
+      "scene": "directed",
+      "role": "level",
+      "say": "What was inside? The investigator looked at the arm the gondola broke from. Rust covered its entire inside.",
+      "events": {
+        "inside": {
+          "word": "inside"
+        },
+        "looked": {
+          "word": "looked"
+        },
+        "Rust": {
+          "word": "Rust"
+        },
+        "entire": {
+          "word": "entire"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "inside the broken arm, lit by the investigator's light",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "entire",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "inside",
+            "what": "a flashlight beam enters the open end"
+          },
+          {
+            "at": "looked",
+            "what": "the beam moves down the tube"
+          },
+          {
+            "at": "Rust",
+            "what": "rust lights up on every wall"
+          },
+          {
+            "at": "entire",
+            "what": "the camera travels the whole length: rust all the way"
+          }
+        ],
+        "things": [
+          "inside of the broken arm",
+          "flashlight beam",
+          "rust on every wall"
+        ],
+        "shot": "inside",
+        "phase": "cut",
+        "rust": 1.0,
+        "scopeLight": true,
+        "travelAt": "entire"
+      }
+    },
+    {
+      "id": "f-break",
+      "scene": "directed",
+      "role": "level",
+      "say": "Every side of the break looked covered in rust, too.",
+      "events": {
+        "Every": {
+          "word": "Every"
+        },
+        "side": {
+          "word": "side"
+        },
+        "break": {
+          "word": "break"
+        },
+        "rust": {
+          "word": "rust"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "the broken end of the arm under a work lamp",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "break",
+            "size": "extreme"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Every",
+            "what": "the camera circles the jagged end"
+          },
+          {
+            "at": "side",
+            "what": "one side of the break lights"
+          },
+          {
+            "at": "break",
+            "what": "then all sides light up"
+          },
+          {
+            "at": "rust",
+            "what": "the rust on the break face glows orange"
+          }
+        ],
+        "things": [
+          "broken end",
+          "break faces",
+          "rust"
+        ],
+        "shot": "breakface",
+        "phase": "cut",
+        "rust": 1.0,
+        "failed": true
+      }
+    },
+    {
+      "id": "f-gondola",
+      "scene": "directed",
+      "role": "level",
+      "say": "So did the gondola that broke away, kept in a secure evidence building: rust inside it, and round every side of the break.",
+      "events": {
+        "gondola": {
+          "word": "gondola"
+        },
+        "secure": {
+          "word": "secure"
+        },
+        "evidence": {
+          "word": "evidence"
+        },
+        "break": {
+          "word": "break"
+        }
+      },
+      "params": {
+        "component": "Shed",
+        "place": "a secure evidence building, the gondola on a pallet",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "break",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "gondola",
+            "what": "fluorescent lights flicker on over the gondola"
+          },
+          {
+            "at": "secure",
+            "what": "a roller door rolls down"
+          },
+          {
+            "at": "evidence",
+            "what": "an evidence tag hangs on the gondola"
+          },
+          {
+            "at": "break",
+            "what": "a lamp lights the gondola's broken mount"
+          }
+        ],
+        "things": [
+          "evidence building",
+          "gondola on a pallet",
+          "evidence tag",
+          "broken mount"
+        ],
+        "shot": "shed",
+        "phase": "shed",
+        "doorAt": "secure"
+      }
+    },
+    {
+      "id": "f-maker",
+      "scene": "directed",
+      "role": "level",
+      "say": "The maker's engineers came to see the ride too. The company said its tests showed corrosion had dangerously thinned the beam's wall.",
+      "events": {
+        "maker's": {
+          "word": "maker's"
+        },
+        "engineers": {
+          "word": "engineers"
+        },
+        "company": {
+          "word": "company"
+        },
+        "thinned": {
+          "word": "thinned"
+        },
+        "wall": {
+          "word": "wall"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the taped-off ride in daylight, engineers photographing the arm",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "wall",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "maker's",
+            "what": "two engineers walk to the tape"
+          },
+          {
+            "at": "engineers",
+            "what": "one kneels at the broken arm, a lamp on it"
+          },
+          {
+            "at": "company",
+            "what": "a camera flash fires at the arm end"
+          },
+          {
+            "at": "thinned",
+            "what": "an as-reported tag: corrosion thinned the wall"
+          },
+          {
+            "at": "wall",
+            "what": "the camera pushes on the thin bare edge"
+          }
+        ],
+        "things": [
+          "engineers",
+          "camera",
+          "broken arm",
+          "lamp"
+        ],
+        "shot": "brokenend",
+        "phase": "closed",
+        "swing": "stop",
+        "broken": true,
+        "tape": true,
+        "engineers": true,
+        "reported": true,
+        "camFlashAt": "company"
+      }
+    },
+    {
+      "id": "f-alert",
+      "scene": "directed",
+      "role": "level",
+      "say": "A safety alert about the ride went out to inspectors across the industry. Here is what it warned.",
+      "events": {
+        "safety": {
+          "word": "safety"
+        },
+        "inspectors": {
+          "word": "inspectors"
+        },
+        "industry": {
+          "word": "industry"
+        },
+        "warned": {
+          "word": "warned"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "warned",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "safety",
+            "what": "the alert sheet slides onto the desk"
+          },
+          {
+            "at": "inspectors",
+            "what": "a stack of inspector badges fans out"
+          },
+          {
+            "at": "industry",
+            "what": "a route map with pins slides behind"
+          },
+          {
+            "at": "warned",
+            "what": "the camera pushes in"
+          }
+        ],
+        "things": [
+          "safety alert sheet",
+          "badges",
+          "map pins"
+        ],
+        "mode": "alert"
+      }
+    },
+    {
+      "id": "f-quote",
+      "scene": "directed",
+      "role": "level",
+      "say": "Excessive corrosion inside the gondola support beam can lead to a hazardous wall thickness reduction of the beam and its adjacent joint, causing the beam to fail under normal operation.",
+      "events": {
+        "Excessive": {
+          "word": "Excessive"
+        },
+        "corrosion": {
+          "word": "corrosion"
+        },
+        "hazardous": {
+          "word": "hazardous"
+        },
+        "reduction": {
+          "word": "reduction"
+        },
+        "joint": {
+          "word": "joint"
+        },
+        "normal": {
+          "word": "normal"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "normal",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Excessive",
+            "what": "the alert's line highlights"
+          },
+          {
+            "at": "corrosion",
+            "what": "the word corrosion underlines red"
+          },
+          {
+            "at": "hazardous",
+            "what": "the quote types on"
+          },
+          {
+            "at": "reduction",
+            "what": "a wall-thickness bracket draws beside it"
+          },
+          {
+            "at": "joint",
+            "what": "the joint words highlight"
+          },
+          {
+            "at": "normal",
+            "what": "normal operation underlines"
+          }
+        ],
+        "things": [
+          "safety alert",
+          "highlighted line",
+          "quote"
+        ],
+        "mode": "quote"
+      }
+    },
+    {
+      "id": "f-joint",
+      "scene": "directed",
+      "role": "level",
+      "say": "Notice where it points: the beam, and the joint next to it, where the gondola hangs.",
+      "events": {
+        "Notice": {
+          "word": "Notice"
+        },
+        "beam": {
+          "word": "beam"
+        },
+        "joint": {
+          "word": "joint"
+        },
+        "hangs": {
+          "word": "hangs"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "one sweep arm of the ride, cut open under work lights",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "hangs",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Notice",
+            "what": "the cut-open arm turns under the lamps"
+          },
+          {
+            "at": "beam",
+            "what": "the beam's inner wall lights amber"
+          },
+          {
+            "at": "joint",
+            "what": "the joint at its end lights red"
+          },
+          {
+            "at": "hangs",
+            "what": "the gondola mount below it lights"
+          }
+        ],
+        "things": [
+          "cut-open arm",
+          "joint",
+          "gondola mount"
+        ],
+        "shot": "joint",
+        "phase": "cut",
+        "cutAt": "Notice",
+        "rust": 1.0,
+        "mountAt": "hangs",
+        "glowAt": "joint",
+        "wallThin": true
+      }
+    },
+    {
+      "id": "f-normal",
+      "scene": "directed",
+      "role": "level",
+      "say": "Normal operation. No storm, no misuse: a beam that thin could fail on an ordinary ride.",
+      "events": {
+        "Normal": {
+          "word": "Normal"
+        },
+        "storm": {
+          "word": "storm"
+        },
+        "misuse": {
+          "word": "misuse"
+        },
+        "ordinary": {
+          "word": "ordinary"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the Fire Ball on the midway in the early-evening sun, the fair lit around it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "ordinary",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Normal",
+            "what": "the ride swings in an ordinary evening loop"
+          },
+          {
+            "at": "storm",
+            "what": "a storm cloud tag crosses out"
+          },
+          {
+            "at": "misuse",
+            "what": "a misuse tag crosses out"
+          },
+          {
+            "at": "ordinary",
+            "what": "the same arm glows red on an ordinary pass"
+          }
+        ],
+        "things": [
+          "the Fire Ball",
+          "crossed-out tags",
+          "red arm"
+        ],
+        "shot": "side",
+        "phase": "evening",
+        "swing": "high",
+        "crowd": true,
+        "crossTags": [
+          {
+            "at": "storm",
+            "text": "STORM"
+          },
+          {
+            "at": "misuse",
+            "text": "MISUSE"
+          }
+        ],
+        "glowAt": "ordinary"
+      }
+    },
+    {
+      "id": "f-scope",
+      "scene": "directed",
+      "role": "level",
+      "say": "The alert called for beams to be sandblasted clean, and inspected inside with an endoscope or a video scope.",
+      "events": {
+        "sandblasted": {
+          "word": "sandblasted"
+        },
+        "inspected": {
+          "word": "inspected"
+        },
+        "endoscope": {
+          "word": "endoscope"
+        },
+        "scope": {
+          "word": "scope"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "inside the arm, an endoscope's light coming down it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "scope",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "sandblasted",
+            "what": "grit blasts the outside clean"
+          },
+          {
+            "at": "inspected",
+            "what": "a scope cable feeds into the open end"
+          },
+          {
+            "at": "endoscope",
+            "what": "its lit tip glides down the tube"
+          },
+          {
+            "at": "scope",
+            "what": "the scope's screen shows the rust"
+          }
+        ],
+        "things": [
+          "sandblaster",
+          "endoscope",
+          "lit tip",
+          "scope screen"
+        ],
+        "shot": "cutend",
+        "phase": "cut",
+        "rust": 1.0,
+        "scopeAt": "inspected",
+        "blastAt": "sandblasted",
+        "scopeScreenAt": "scope"
+      }
+    },
+    {
+      "id": "f-tease",
+      "scene": "directed",
+      "role": "tease",
+      "say": "So the rust could be found, with a camera inside the steel. What did the regulators ask for next?",
+      "events": {
+        "rust": {
+          "word": "rust"
+        },
+        "camera": {
+          "word": "camera"
+        },
+        "steel": {
+          "word": "steel"
+        },
+        "regulators": {
+          "word": "regulators"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "the scope's screen held beside the arm",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "close"
+          },
+          {
+            "at": "regulators",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "rust",
+            "what": "the scope screen glows orange with rust"
+          },
+          {
+            "at": "camera",
+            "what": "the tip light blinks inside the tube"
+          },
+          {
+            "at": "steel",
+            "what": "the camera pulls back out of the tube"
+          },
+          {
+            "at": "regulators",
+            "what": "a letter slides past the frame"
+          }
+        ],
+        "things": [
+          "scope screen",
+          "lit tip",
+          "arm"
+        ],
+        "shot": "cutend",
+        "phase": "cut",
+        "rust": 1.0,
+        "scopeAt": "rust",
+        "cutAt": "rust"
+      }
+    },
+    {
+      "id": "c-letter",
+      "scene": "directed",
+      "role": "level",
+      "say": "In September of {fact1}, the commission's safety staff wrote to the committee that writes the industry's ride standards at ASTM.",
+      "events": {
+        "September": {
+          "word": "September"
+        },
+        "staff": {
+          "word": "staff"
+        },
+        "committee": {
+          "word": "committee"
+        },
+        "standards": {
+          "word": "standards"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "standards",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "September",
+            "what": "the chapter card types on: what changed"
+          },
+          {
+            "at": "staff",
+            "what": "the letter slides onto the desk"
+          },
+          {
+            "at": "committee",
+            "what": "the address line highlights"
+          },
+          {
+            "at": "standards",
+            "what": "the standards committee's name underlines"
+          }
+        ],
+        "things": [
+          "letter",
+          "address line",
+          "committee name"
+        ],
+        "fig": {
+          "year": "{fact1}"
+        },
+        "mode": "letter",
+        "chapter": "WHAT CHANGED"
+      }
+    },
+    {
+      "id": "c-asks",
+      "scene": "directed",
+      "role": "level",
+      "say": "They asked for three things: designs that stop water pooling inside critical parts, a way to see inside structural beams, and rules for judging corrosion and what to do about it.",
+      "events": {
+        "asked": {
+          "word": "asked"
+        },
+        "water": {
+          "word": "water"
+        },
+        "see": {
+          "word": "see"
+        },
+        "corrosion": {
+          "word": "corrosion"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "corrosion",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "asked",
+            "what": "the request list appears on the letter"
+          },
+          {
+            "at": "water",
+            "what": "request one ticks: no pooling water"
+          },
+          {
+            "at": "see",
+            "what": "request two ticks: see inside the beam"
+          },
+          {
+            "at": "corrosion",
+            "what": "request three ticks: judge the corrosion"
+          }
+        ],
+        "things": [
+          "letter",
+          "three requests",
+          "ticks"
+        ],
+        "mode": "asks",
+        "listAt": [
+          "water",
+          "see",
+          "corrosion"
+        ]
+      }
+    },
+    {
+      "id": "c-world",
+      "scene": "directed",
+      "role": "level",
+      "say": "Owners of the same model around the world had to stop and check inside their beams before running again.",
+      "events": {
+        "Owners": {
+          "word": "Owners"
+        },
+        "world": {
+          "word": "world"
+        },
+        "stop": {
+          "word": "stop"
+        },
+        "inside": {
+          "word": "inside"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "a different fairground far away, a ride like the Fire Ball shut down",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "inside",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Owners",
+            "what": "a ride like the Fire Ball stands still at another fair"
+          },
+          {
+            "at": "world",
+            "what": "the sky over it is a different country's evening"
+          },
+          {
+            "at": "stop",
+            "what": "a stop notice pins to its fence"
+          },
+          {
+            "at": "inside",
+            "what": "a crew member feeds a scope into an arm"
+          }
+        ],
+        "things": [
+          "another fairground",
+          "a ride like the Fire Ball",
+          "stop notice",
+          "crew with a scope"
+        ],
+        "shot": "daywide",
+        "phase": "sunset",
+        "swing": "stop",
+        "tape": false,
+        "noticeAt": "stop",
+        "crew": true,
+        "scopeCrewAt": "inside",
+        "other": true
+      }
+    },
+    {
+      "id": "c-ohio",
+      "scene": "directed",
+      "role": "level",
+      "say": "Ohio changed its own law too. Its governor signed a new law, named after the young rider who was killed.",
+      "events": {
+        "Ohio": {
+          "word": "Ohio"
+        },
+        "law": {
+          "word": "law"
+        },
+        "signed": {
+          "word": "signed"
+        },
+        "rider": {
+          "word": "rider"
+        }
+      },
+      "params": {
+        "component": "Midway",
+        "place": "the state fair grounds in a later season, rides running again",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "law",
+            "size": "wide"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Ohio",
+            "what": "a new season: the fair's lights on again"
+          },
+          {
+            "at": "law",
+            "what": "a law document pins over the midway"
+          },
+          {
+            "at": "signed",
+            "what": "a pen signature draws across it"
+          },
+          {
+            "at": "rider",
+            "what": "fairgoers walk past the empty spot where the Fire Ball stood"
+          }
+        ],
+        "things": [
+          "fairground next season",
+          "fairgoers",
+          "law document",
+          "signature",
+          "empty spot"
+        ],
+        "shot": "daywide",
+        "phase": "morning",
+        "swing": "none",
+        "crowd": true,
+        "lawAt": "law",
+        "signAt": "signed"
+      }
+    },
+    {
+      "id": "c-law",
+      "scene": "directed",
+      "role": "level",
+      "say": "Owners of bigger rides must now have a yearly fatigue and corrosion review, every major repair must be photographed, and a professional engineer sits on the state's ride advisory board.",
+      "events": {
+        "Owners": {
+          "word": "Owners"
+        },
+        "corrosion": {
+          "word": "corrosion"
+        },
+        "photographed": {
+          "word": "photographed"
+        },
+        "engineer": {
+          "word": "engineer"
+        }
+      },
+      "params": {
+        "component": "Report",
+        "place": "the investigator's desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "engineer",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "Owners",
+            "what": "the law's page slides in"
+          },
+          {
+            "at": "corrosion",
+            "what": "fatigue and corrosion highlight"
+          },
+          {
+            "at": "photographed",
+            "what": "a camera snaps, a photo pins to the page"
+          },
+          {
+            "at": "engineer",
+            "what": "an engineer's seal stamps on"
+          }
+        ],
+        "things": [
+          "the law's page",
+          "highlight",
+          "repair photo",
+          "engineer's seal"
+        ],
+        "mode": "law",
+        "listAt": [
+          "corrosion",
+          "photographed",
+          "engineer"
+        ]
+      }
+    },
+    {
+      "id": "c-catch",
+      "scene": "directed",
+      "role": "level",
+      "say": "Is that enough? One ride operator said the new law still missed the point: rust inside a beam shows up only to tests that look through the steel.",
+      "events": {
+        "enough": {
+          "word": "enough"
+        },
+        "operator": {
+          "word": "operator"
+        },
+        "missed": {
+          "word": "missed"
+        },
+        "rust": {
+          "word": "rust"
+        },
+        "through": {
+          "word": "through"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "one sweep arm of the ride, cut open under work lights",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "through",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "enough",
+            "what": "the arm sits under the work lights, painted and whole"
+          },
+          {
+            "at": "operator",
+            "what": "an as-reported tag appears"
+          },
+          {
+            "at": "missed",
+            "what": "a flashlight beam stops at the paint"
+          },
+          {
+            "at": "rust",
+            "what": "the arm turns see-through: rust inside"
+          },
+          {
+            "at": "through",
+            "what": "a pulse of light passes through the wall"
+          }
+        ],
+        "things": [
+          "painted arm",
+          "flashlight beam",
+          "rust inside",
+          "pulse"
+        ],
+        "shot": "cutwide",
+        "phase": "cut",
+        "rust": 1.0,
+        "xrayAt": "rust",
+        "pulseAt": "through",
+        "reported": true,
+        "lightBeam": true
+      }
+    },
+    {
+      "id": "c-ultra",
+      "scene": "directed",
+      "role": "level",
+      "say": "One such test sends a pulse of sound into the wall. The echo off the inner face tells you how thick the steel really is.",
+      "events": {
+        "test": {
+          "word": "test"
+        },
+        "pulse": {
+          "word": "pulse"
+        },
+        "echo": {
+          "word": "echo"
+        },
+        "thick": {
+          "word": "thick"
+        }
+      },
+      "params": {
+        "component": "Beam",
+        "place": "the wall section on the drafting sheet, a probe on it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "thick",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "test",
+            "what": "a probe presses onto the painted wall"
+          },
+          {
+            "at": "pulse",
+            "what": "a sound pulse travels into the steel"
+          },
+          {
+            "at": "echo",
+            "what": "it bounces back off the rusted inner face"
+          },
+          {
+            "at": "thick",
+            "what": "the thickness bracket draws: thin, red"
+          }
+        ],
+        "things": [
+          "probe",
+          "sound pulse",
+          "echo",
+          "thickness bracket"
+        ],
+        "mode": "ultra"
+      }
+    },
+    {
+      "id": "payoff",
+      "scene": "directed",
+      "role": "payoff",
+      "say": "And that is the lesson of the Fire Ball. The paint looked fine. The sticker said passed. The danger was inside, where only the right test could see it.",
+      "events": {
+        "lesson": {
+          "word": "lesson"
+        },
+        "paint": {
+          "word": "paint"
+        },
+        "sticker": {
+          "word": "sticker"
+        },
+        "inside": {
+          "word": "inside"
+        },
+        "test": {
+          "word": "test"
+        }
+      },
+      "params": {
+        "component": "Arm",
+        "place": "the painted arm under the work lights, then seen through",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "medium"
+          },
+          {
+            "at": "inside",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "lesson",
+            "what": "the camera drifts along the painted arm"
+          },
+          {
+            "at": "paint",
+            "what": "the paint gleams under the lamp"
+          },
+          {
+            "at": "sticker",
+            "what": "a passed sticker on the arm catches the light"
+          },
+          {
+            "at": "inside",
+            "what": "the arm turns see-through, rust everywhere inside"
+          },
+          {
+            "at": "test",
+            "what": "a pulse runs through the wall and lights it red"
+          }
+        ],
+        "things": [
+          "painted arm",
+          "passed sticker",
+          "rust inside",
+          "pulse"
+        ],
+        "shot": "payoff",
+        "phase": "cut",
+        "rust": 1.0,
+        "xrayAt": "inside",
+        "pulseAt": "test",
+        "stickerOn": true
+      }
+    },
+    {
+      "id": "score",
+      "scene": "directed",
+      "role": "level",
+      "say": "A hollow arm. Water with nowhere to go. Rust working out of sight. And checks that could only see the outside.",
+      "events": {
+        "hollow": {
+          "word": "hollow"
+        },
+        "Water": {
+          "word": "Water"
+        },
+        "Rust": {
+          "word": "Rust"
+        },
+        "checks": {
+          "word": "checks"
+        }
+      },
+      "params": {
+        "component": "Board",
+        "place": "the investigation board on the desk",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "checks",
+            "size": "medium"
+          }
+        ],
+        "moments": [
+          {
+            "at": "hollow",
+            "what": "link one stamps"
+          },
+          {
+            "at": "Water",
+            "what": "link two stamps"
+          },
+          {
+            "at": "Rust",
+            "what": "link three stamps"
+          },
+          {
+            "at": "checks",
+            "what": "link four stamps, red"
+          }
+        ],
+        "things": [
+          "cause scorecard",
+          "four links",
+          "stamps"
+        ],
+        "mode": "score"
+      }
+    },
+    {
+      "id": "loop",
+      "scene": "directed",
+      "role": "loop",
+      "say": "Which check should have caught the rust? Tell us in the comments.",
+      "events": {
+        "check": {
+          "word": "check"
+        },
+        "rust": {
+          "word": "rust"
+        },
+        "comments": {
+          "word": "comments"
+        }
+      },
+      "params": {
+        "component": "Fair",
+        "place": "the Fire Ball on the midway in the early-evening sun, the fair lit around it",
+        "camera": [
+          {
+            "sec": 0,
+            "size": "wide"
+          },
+          {
+            "at": "comments",
+            "size": "close"
+          }
+        ],
+        "moments": [
+          {
+            "at": "check",
+            "what": "the ride swings high in the early-evening sun"
+          },
+          {
+            "at": "rust",
+            "what": "the arm's end glows amber"
+          },
+          {
+            "at": "comments",
+            "what": "the date caption types on again, as at the start"
+          }
+        ],
+        "things": [
+          "the Fire Ball",
+          "sweep arm",
+          "date caption"
+        ],
+        "fig": {
+          "year": "{fact1}"
+        },
+        "shot": "hook",
+        "phase": "evening",
+        "swing": "high",
+        "caption": "date",
+        "stressAt": "rust",
+        "captionAt": "comments"
+      }
+    },
+    {
+      "id": "outro",
+      "scene": "end",
+      "transition": "fade",
+      "params": {
+        "cta": "Which check should have caught the rust?",
+        "follow": "Subscribe for the next investigation",
+        "assumption": "From the CPSC's investigation and its letter to ASTM, the ride safety alert, and reporting on Ohio's law. The scenes are reconstructions, not actual footage."
+      }
+    }
+  ],
+  "thumbnail": {
+    "layout": "custom",
+    "component": "Thumb",
+    "words": "Passed *that day*",
+    "things": [
+      "the Fire Ball at the top of its swing",
+      "gondola tearing off a red arm",
+      "red ring"
+    ],
+    "pattern": "the ride itself huge against the sky, the failing part ringed, bold words top left",
+    "references": [
+      {
+        "id": "w6jYxL9ymd0",
+        "views": 1230803,
+        "what": "the Fire Ball huge against a blue sky, caution tape across, a red question top and bottom"
+      }
+    ],
+    "unique": "renderer.thumbs refs and the market search found one video on this topic (by Coaster College); no other hits to borrow from",
+    "score": 6,
+    "why": "Reframed so the whole wheel and the ringed arm sit in frame, but at feed size the flat ride reads less clearly than the hit's photo, and the words need the title to make sense."
+  },
+  "thumbnails": [
+    {
+      "layout": "custom",
+      "component": "ThumbB",
+      "words": "Rust *inside*",
+      "things": [
+        "the sweep arm cut open",
+        "rust inside the paint",
+        "red ring"
+      ],
+      "pattern": "the hidden cause big: the beam cut open, rust inside, ringed",
+      "references": [
+        {
+          "id": "w6jYxL9ymd0",
+          "views": 1230803,
+          "what": "the Fire Ball huge against a blue sky, caution tape across, a red question top and bottom"
+        }
+      ],
+      "unique": "renderer.thumbs refs and the market search found one video on this topic (by Coaster College); no other hits to borrow from",
+      "score": 8,
+      "why": "The one to click: rust eating a red-painted beam reads at phone size, pairs with the title The Rust Nobody Saw, and stands apart from the hit's caution-tape photo beside it."
+    },
+    {
+      "layout": "custom",
+      "component": "ThumbC",
+      "words": "What *broke* it?",
+      "things": [
+        "the Fire Ball swinging",
+        "caution tape",
+        "broken arm"
+      ],
+      "pattern": "the topic hit's own pattern: the ride against the sky, caution tape across, a question",
+      "references": [
+        {
+          "id": "w6jYxL9ymd0",
+          "views": 1230803,
+          "what": "the Fire Ball huge against a blue sky, caution tape across, a red question top and bottom"
+        }
+      ],
+      "unique": "renderer.thumbs refs and the market search found one video on this topic (by Coaster College); no other hits to borrow from",
+      "score": 6,
+      "why": "Close to the hit's own pattern, so it blends in beside it; the question is generic."
+    }
+  ],
+  "thumbnail_pick": "b"
+}

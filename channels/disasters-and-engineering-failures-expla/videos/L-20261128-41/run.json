@@ -1,0 +1,278 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-28T04:55:43.487165+00:00",
+    "finishedAt": "2026-11-28T04:55:43.487165+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T05:00:58.790214+00:00",
+    "finishedAt": "2026-11-28T05:00:58.790214+00:00",
+    "notes": [
+      "beat 'c-letter'.say contains a typed number; use a placeholder: \"In September of {fact1}, the commission's safety staff wrote to the committee that writes the industry's ride standards, ASTM F24.\"",
+      "note: beat 's-swing': a \"Picture…\" / \"Imagine…\" warm-up is a line the channel has used too often; say it a new way",
+      "note: beat 'r-move' opens like a line in one of the last scripts ('how do you'): new words",
+      "note: beat 's-force' opens like a line in one of the last scripts ('at the bottom'): new words",
+      "note: beat 's-tease' opens like a line in one of the last scripts ('so far a'): new words",
+      "note: beat 'd-tease' opens like a line in one of the last scripts ('so far a'): new words",
+      "note: beat 'f-cpsc' opens like a line in one of the last scripts ('the u s'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T05:01:12.753738+00:00",
+    "finishedAt": "2026-11-28T05:01:12.753738+00:00",
+    "notes": [
+      "description mentions '24', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+      "description mentions '17072', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+      "description mentions '0001', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+      "description mentions '24', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+      "description mentions '008', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-28T05:01:19.193086+00:00",
+    "finishedAt": "2026-11-28T05:01:19.193086+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T05:01:20.240146+00:00",
+    "finishedAt": "2026-11-28T05:01:20.240146+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T05:02:54.065862+00:00",
+    "finishedAt": "2026-11-28T05:02:54.065862+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: beat 'd-dusk' opens like a line in one of the last scripts ('late in the'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T05:03:17.976088+00:00",
+    "finishedAt": "2026-11-28T05:03:17.976088+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T05:06:37.599246+00:00",
+    "finishedAt": "2026-11-28T05:06:37.599246+00:00",
+    "notes": [
+      "d-dusk/d-riders/d-go/d-wide/d-help (and the night look of hook, hook-name, f-normal, loop): wrong time of day. The CPSC IDI puts emergency crews on scene at about 7:20 PM (news: 7:20-7:24 PM), and sunset in Columbus on 26 July is about 8:45 PM EDT, so the ride failed in daylight. Fix: d-dusk -> 'By early evening, the fair was still in full swing in the summer daylight, and the crowds stayed.' (no sunset, no lights coming on); d-riders 'That evening' -> 'At about twenty past seven that evening' or just 'Early that evening'; set phase to day/late afternoon, not night, on d-riders, d-go, d-wide, d-toll, d-help and the hook, hook-name, f-normal and loop places.",
+      "d-fail: 'near the bottom of a swing, the arm gave way' is not in any source (IDI: the gondola 'suddenly detached'; news: broke 'mid-swing', the ride 'swinging above its bottom platform'). Fix: 'Then, mid-swing, the arm gave way.' and drop the 'time slows at the bottom of the swing' moment.",
+      "Deaths stated more than once (profile: 'Deaths are stated plainly, once'): the toll is in hook ('1 rider was killed, and 7 more were hurt') and again in d-toll. Keep it once, at d-toll. Hook fix: 'Rust hidden inside one steel arm let a gondola tear off a fair ride in Ohio, with riders on board.' and remove the killed/hurt figs and the tolls/dimAt moment from hook.",
+      "hook: the cause is stated as the narrator's own finding; the topic's verify list says the cause only in the bulletin's words, and the CPSC drew no conclusion. Attribute it: '...one steel arm, the maker later said, let a gondola tear off...'. f-maker: add what it said, from NBC News: 'The company said tests on the metal showed corrosion had dangerously thinned the beam's wall.'; and its picture invents a gauge reading and a sealed sample bag, while the IDI says the 30 July visit with the maker was non-destructive, by photography and visual observation: show the engineers photographing and looking at the broken arm instead.",
+      "f-quote: 'Here is what it said' presents a paraphrase as the bulletin's words. The bulletin (quoted in the CPSC letter) says: 'excessive corrosion inside the gondola support beam . . . can lead to a hazardous wall thickness reduction of the beam and its adjacent joint, causing the beam to fail under normal operation.' Speak and show those exact words, or change f-alert to 'Here is what it warned.' and make f-quote a plain paraphrase with no quote marks. Any on-screen quote in i-cpsc must also be the letter's exact line: 'a visual inspection after the ride is in place would not detect corrosion thinning of internal walls.'",
+      "r-papers: 'there were none' goes beyond the report. The IDI says only that the current owner 'was unable to provide any literature, receipts or service records from the previous owner'. Fix: 'When investigators later asked for service records from the ride's first owner, the current owner could not provide any.' Change the 'folder opens: empty' moment to 'a stamp lands: none provided'.",
+      "r-crew: 'They had run it for years' and 'longer than anyone' are not sourced. The IDI says the foreman 'has worked on the incident ride for approximately thirteen years', assisted by two operators. Fix: 'Its foreman had worked on this very ride for many years, with two operators beside him.' (or add 13 as a sourced fact from the IDI and use the placeholder).",
+      "c-law: 'Ride owners must now inspect for fatigue and corrosion' is too broad. The rule (Ohio Adm. Code 901:9-1-04.1, under Tyler's Law) requires an annual visual fatigue and corrosion review for intermediate rides, towers and roller coasters, with mitigation as a registered professional engineer recommends. Fix: 'Owners of bigger rides must now have a yearly fatigue and corrosion review...' The photographed repairs and the engineer on the advisory board are confirmed by WOSU (signed by Gov. DeWine, 6 Nov 2019)."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T05:08:38.611609+00:00",
+    "finishedAt": "2026-11-28T05:08:38.611609+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T05:09:31.506541+00:00",
+    "finishedAt": "2026-11-28T05:09:31.506541+00:00",
+    "notes": [
+      "Re-review after rewrite: 4 facts (2017, 7 hurt, 1 killed, built 1999) confirmed on the CPSC letter+IDI PDF; daylight early-evening timing (~7:20 PM), mid-swing failure, maker-attributed cause (NBC), toll once in hook, exact bulletin and CPSC quotes, r-papers/r-crew per IDI, c-law per OAC 901:9-1-04.1 and WOSU, c-catch per Insurance Journal; disclaimer ends description. Notes: loop moment still says 'swings high at night' and d-dusk place says 'at sunset' (make both early-evening daylight); add Insurance Journal to the description's sources; fill the CHAPTERS list."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-28T05:18:59.498002+00:00",
+    "finishedAt": "2026-11-28T05:41:26.427485+00:00",
+    "notes": [
+      "fingerprint: 57c5139f028c0d35.8d691433fc7e11f1",
+      "text 'LOADS ADD UP' at 149.2 s runs outside the frame",
+      "text 'SAME LOAD · LESS STEEL' at 206.7 s runs outside the frame",
+      "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+      "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T05:43:41.691058+00:00",
+    "finishedAt": "2026-11-28T06:05:19.297722+00:00",
+    "notes": [
+      "fingerprint: 57c5139f028c0d35.bcc50ccae704f3cf",
+      "491 s, ember/brace (preview only)",
+      "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+      "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T06:07:54.970712+00:00",
+    "finishedAt": "2026-11-28T06:07:54.970712+00:00",
+    "notes": [
+      "[scene] 25-31 s, beat promise (Arm): the A HOLLOW ARM / WATER INSIDE chips are drawn on top of the PASSED sign, whose letters show through behind WATER INSIDE (text over text). Move the chips clear of the sign (left of it or below), or hide the sign once the chips type on.",
+      "[scene] Doc component, beats r-papers 65 s, i-passed 235 s, i-cpsc 250-260 s, f-alert/f-quote 375-388 s, c-letter/c-asks 415-430 s: the page header collides with the corner chips (U.S. CONSUMER PRODUCT SAFETY runs under THE REAL REPORT and P. 1; the title line 'Ohio State Fair ride incident' runs under P. 2/P. 3), the header is cropped by the top edge at 65, 235 and 255 s, the NONE PROVIDED (65 s) and PASSED (235 s) stamps sit on the title, and the NO POOLING WATER chip (425 s) covers 'committee'. Lay the chips in a band above the page or inset the page so header and title are fully inside the frame and clear of chips and stamps.",
+      "[scene] Doc pull-quote, i-cpsc 255 s and f-quote 385 s: the quote box covers the last lines of the page text (385 s: 'inspection by endoscope...' half-hidden behind it), its last line fades into the bottom vignette and the caption ('walls.', 'causing the beam to') sits right on the quote text. Raise the quote box above the caption band, put it over the page's empty lower half, not over text, and keep it out of the vignette. Same beats: the SOURCE line (U.S. Consumer Product Safety Commission · date) sits under the caption and the vignette at 65, 235, 250-260, 375-430 s; move it to a top chip so the source reads.",
+      "[script] 75-89 s, beats r-lights and r-auto: three stills in a row of the same plain white box with four coloured dots and a black, unlit screen. r-lights says 'A green light above each seat lit once its bar was locked' but shows the booth, not the seats: move r-lights to the Gate gondola close (bars down, green lamp over each seat lighting on 'lit'); in r-auto light the control screen with the RIDE PROGRAM · AUTO panel on the screen itself, and give the booth real detail (lesson 5: never grey boxes).",
+      "[script] 218-224 s, beat i-states: the still is mostly a blank white booth wall with an empty screen; the stickers from several states the line is about cannot be seen. Make it a close shot of the control panel with three or four readable state inspection stickers (state names on them) slapping on one by one.",
+      "[script] 307-316 s, beats d-fail and d-wide (the failure, lesson 7): d-fail shows the cut-open red beam resting on wooden blocks in an empty dark studio, not the arm on the swinging ride, and d-wide (315 s) is so far away that the ride is tiny and the gondola on the ground can't be seen (a red gate post cut by the right edge). Put d-fail on the ride at dusk: close on the arm-to-gondola joint mid-swing, amber to red, the tear with sparks; then d-wide at medium-wide where the fallen gondola beside the ride and the stopped wheel read clearly (no people shown hurt).",
+      "[scene] Diagram sheets 140-150 s, 175-180 s, 200-205 s: the white captions sit on near-white grid paper and are hard to read (140 s 'each arm climbs and', 150 s 'steel keeps its full'); at 175 s the caption touches the CROSS-SECTION label right above it. Give captions a dark backing or shadow plate on light sheets and keep labels at least 40 px above the caption band.",
+      "[script] Thumbnail A (Studio's thumbnail_pick 'a'): the ringed part, the wheel of gondolas at the arm's end, runs off the right edge, with half the red ring outside the frame. At feed size it reads as an A-frame with loose bricks, and 'Passed that day' doesn't say what passed. Pick B ('Rust inside': the cause is clear, it matches the title 'The Rust Nobody Saw', and it stands out from the hit's caution-tape photo); it's the one I would click. Or reframe A so the whole wheel and ring sit inside the frame. Studio's scores (A 7, B 6) don't match this.",
+      "[scene] render.json chapters and the description: only '0:00 Intro', because chapters are read only from 'chapter' scene beats (renderer/remotion.py ~line 425) and directed long videos have none. The promise names seven chapters, and every Disaster Desk long so far has the same problem. Derive chapters from the beats that open each part (r-what 0:40 The ride, s-swing 1:43 The swing, h-hollow 2:41 The hollow arm, i-daily 3:33 The inspections, d-open 4:27 The last day, f-cpsc 5:40 The findings, c-letter 6:52 What changed) and write them into the description."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-28T06:11:32.240013+00:00",
+    "finishedAt": "2026-11-28T06:32:38.193727+00:00",
+    "notes": [
+      "fingerprint: 0b4174a07e626471.4ca0a26027954a6d",
+      "text 'SOURCE' at 64.7 s is 25.2 px, below the 30 px minimum",
+      "text 'U.S. Consumer Product Safety Commission · Jul 27, 2017' at 64.7 s is 25.2 px, below the 30 px minimum",
+      "text 'P. 2' at 64.7 s is 27 px, below the 30 px minimum",
+      "text 'JUL 27, 2017' at 64.7 s is 27 px, below the 30 px minimum",
+      "text 'P. 3' at 236.1 s is 27 px, below the 30 px minimum",
+      "text 'U.S. Consumer Product Safety Commission · Sep 25, 2017' at 257.3 s is 25.2 px, below the 30 px minimum",
+      "text 'P. 1' at 257.3 s is 27 px, below the 30 px minimum",
+      "text 'SEP 25, 2017' at 257.3 s is 27 px, below the 30 px minimum",
+      "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+      "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T06:32:48.129625+00:00",
+    "finishedAt": "2026-11-28T06:54:37.216875+00:00",
+    "notes": [
+      "fingerprint: 0b4174a07e626471.93d76f1421eddfa0",
+      "491 s, ember/brace (preview only)",
+      "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+      "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T06:55:24.477577+00:00",
+    "finishedAt": "2026-11-28T06:55:24.477577+00:00",
+    "notes": [
+      "Re-review after fixes: all 9 notes resolved. The promise chips are clear of the PASSED sign; doc pages and headers sit fully in frame with source, stamps, quotes and request chips in a right column off the text; r-lights shows the gondolas with green lamps and the operator panel; i-states shows state stickers slapping on; d-fail tears on the ride mid-swing and d-wide shows the fallen gondola; the diagram captions sit on a dark plate; thumbnail_pick is B ('Rust inside', matches the title, whole picture in frame); layout_problems empty, 491 s, peak -1 dB. Chapters still need writing into the description at ship.",
+      "fingerprint: 0b4174a07e626471.93d76f1421eddfa0"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T07:37:36.886456+00:00",
+    "finishedAt": "2026-11-28T07:53:53.913295+00:00",
+    "notes": [
+      "fingerprint: 0b4174a07e626471.2c82d939693f5446",
+      "491 s, ember/brace (preview only)",
+      "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+      "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T07:54:24.013571+00:00",
+    "finishedAt": "2026-11-28T07:54:24.013571+00:00",
+    "notes": [
+      "Re-review after the performance-only beat-code change (fewer stall lights and crowd figures, no workshop shadow): stalls keep their lit signs and colour; the crowd still reads as a crowd at the rail and in the lines (0, 45, 275, 285-290, 320 s); the workshop and evidence-room shots (165, 360, 400 s) are still lit and readable; nothing got worse. All earlier fixes hold; layout_problems empty, 491 s, peak -1 dB. Chapters still need writing into the description at ship.",
+      "fingerprint: 0b4174a07e626471.2c82d939693f5446"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-28T08:54:28.765760+00:00",
+    "finishedAt": "2026-11-28T09:06:16.772964+00:00",
+    "notes": [
+      "fingerprint: 0b4174a07e626471.4ea9a6e0989be9f8",
+      "17 of 98 stills are mostly empty background (at 25 s, 135 s, 145 s, 165 s, 170 s, 270 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+      "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T09:06:40.922055+00:00",
+    "finishedAt": "2026-11-28T09:19:03.668373+00:00",
+    "notes": [
+      "fingerprint: 0b4174a07e626471.6ac5ba0068eabf96",
+      "491 s, ember/brace (preview only)",
+      "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+      "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T09:19:33.961204+00:00",
+    "finishedAt": "2026-11-28T09:19:33.961204+00:00",
+    "notes": [
+      "Re-review after the render-speed change (depth of field off, darker grid on the drafting sheets): backgrounds are now sharp but the subject still leads every 3D shot (5, 20, 80, 130, 310, 400 s), and the labels (PASSED sign, operator panel, BUILT 1999) read clearly over them; the drafting sheets read well with the darker grid and the captions on their dark plate (140, 175 s); nothing got worse. All earlier fixes hold; layout_problems empty, 491 s, peak -1 dB. Chapters still need writing into the description at ship.",
+      "fingerprint: 0b4174a07e626471.6ac5ba0068eabf96"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-28T09:19:40.586942+00:00",
+    "finishedAt": "2026-11-28T13:59:16.237728+00:00",
+    "notes": [
+      "render.ts video failed:\nMemory reported by /proc/meminfo MemAvailable: 14933.85 MB\nYou might have inadvertently set the --memory flag of `docker run` to a value that is higher than the global Docker memory limit.\nUsing the lower amount of memory for calculation.\nprogress 0.02\nprogress 0.04\nprogress 0.06\nprogress 0.08\n[Tab 1, node_modules/its-fine/dist/index.js:64] TypeError: Cannot read properties of undefined (reading 'visible')\n    at projectObject (http://localhost:3000/bundle.js:219696:28)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at WebGLRenderer.render (http://localhost:3000/bundle.js:219476:4)\n    at RenderPass.render (http://localhost:3000/bundle.js:47446:16)\n    at EffectComposer.render (http://localhost:3000/bundle.js:41863:12)\n    at Object.current (http://localhost:3000/bundle.js:57436:22)\n[Tab 1, node_modules/its-fine/dist/index.js:64] TypeError: Cannot read properties of undefined (reading 'visible')\n    at projectObject (http://localhost:3000/bundle.js:219696:28)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at WebGLRenderer.render (http://localhost:3000/bundle.js:219476:4)\n    at RenderPass.render (http://localhost:3000/bundle.js:47446:16)\n    at EffectComposer.render (http://localhost:3000/bundle.js:41863:12)\n    at Object.current (http://localhost:3000/bundle.js:57436:22)\nTypeError: Cannot read properties of undefined (reading 'visible')\n    at projectObject (http://localhost:3000/bundle.js:219696:28)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at WebGLRenderer.render (http://localhost:3000/bundle.js:219476:4)\n    at RenderPass.render (http://localhost:3000/bundle.js:47446:16)\n    at EffectComposer.render (http://localhost:3000/bundle.js:41863:12)\n    at Object.current (http://localhost:3000/bundle.js:57436:22)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T16:14:15.876428+00:00",
+    "finishedAt": "2026-11-28T16:29:24.830928+00:00",
+    "notes": [
+      "491 s, ember/brace, peak -1.0 dB, mean -16.3 dB",
+      "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+      "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-28T16:29:59.267556+00:00",
+    "finishedAt": "2026-11-28T16:29:59.267556+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

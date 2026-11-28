@@ -1,0 +1,991 @@
+{
+  "id": "L-20261128-41",
+  "createdAt": "2026-11-28T16:29:59.267130+00:00",
+  "status": "qa_passed",
+  "format": "long",
+  "template": "long_story",
+  "topic": {
+    "title": "The Ohio State Fair Fire Ball Accident",
+    "category": "amusement ride",
+    "feed_id": "2026-11-26-fire-ball-long",
+    "reach": "global"
+  },
+  "title": "Ohio State Fair Fire Ball Accident: The Rust Nobody Saw",
+  "description": "A fairground thrill ride passed its state inspection on opening day of the Ohio State Fair, and broke apart that evening.\nWe rebuild the Fire Ball in 3D and follow the U.S. Consumer Product Safety Commission's investigation: a hollow steel arm, water and rust working from the inside for years, and inspections that could only look at the outside.\nThen what the safety alert, the CPSC and the state of Ohio asked to change.\n\nCHAPTERS\n0:00 Intro\n0:40 The Ride\n1:42 The Swing\n2:40 The Hollow Arm\n3:32 The Inspections\n4:26 The Last Day\n5:39 The Findings\n6:51 What Changed\n\nSources: U.S. Consumer Product Safety Commission, staff letter to the ASTM amusement ride committee with its In-Depth Investigation (September 2017); the NAARSO safety alert on the ride; NBC News; WOSU Public Media; Insurance Journal.\nBased on official investigation reports and published sources. 3D scenes are reconstructions, not actual footage.",
+  "hashtags": [
+    "#FireBall",
+    "#OhioStateFair",
+    "#Engineering",
+    "#Corrosion",
+    "#DisasterDesk"
+  ],
+  "hookStyle": "secret",
+  "cta": "Which check should have caught the rust? Tell us in the comments",
+  "seed": 28141,
+  "style": {
+    "palette": "ember",
+    "genre": "brace",
+    "key": "A",
+    "bpm": 70,
+    "voice": "af_heart"
+  },
+  "voice": {
+    "name": "af_heart",
+    "base_speed": 1.15,
+    "cast": {
+      "narrator": "af_heart",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Rust hidden inside one steel arm, its maker later said, tore a gondola off a fair ride in Ohio. 1 rider was killed, and 7 more were hurt.",
+        "start": 0.27,
+        "seconds": 8.78,
+        "window": 9.43,
+        "fill": 0.931
+      },
+      {
+        "scene": "hook-name",
+        "text": "The ride was the Fire Ball, a giant swinging pendulum, on the first day of the Ohio State Fair in 2017.",
+        "start": 9.7,
+        "seconds": 6.71,
+        "window": 7.33,
+        "fill": 0.915
+      },
+      {
+        "scene": "hook-pass",
+        "text": "That same day, state inspectors had passed it. The danger was inside the steel, where nobody could look.",
+        "start": 17.03,
+        "seconds": 5.8,
+        "window": 6.43,
+        "fill": 0.902
+      },
+      {
+        "scene": "promise",
+        "text": "So how does a ride pass its inspection and break on the same day? It took a chain: a hollow arm, water inside it, and checks that only saw the outside.",
+        "start": 23.47,
+        "seconds": 8.78,
+        "window": 9.4,
+        "fill": 0.934
+      },
+      {
+        "scene": "promise2",
+        "text": "We'll follow it in seven steps: the ride, the swing, the hollow arm, the inspections, the last day, the findings, and what changed.",
+        "start": 32.87,
+        "seconds": 6.94,
+        "window": 7.6,
+        "fill": 0.913
+      },
+      {
+        "scene": "r-what",
+        "text": "What was the Fire Ball? A thrill ride built by a Dutch company, KMG, in 1999.",
+        "start": 40.47,
+        "seconds": 5.41,
+        "window": 6.03,
+        "fill": 0.897
+      },
+      {
+        "scene": "r-move",
+        "text": "And moving a ride this big? It was portable. It rode on trailers from fair to fair, and was put together again at every stop.",
+        "start": 46.5,
+        "seconds": 6.78,
+        "window": 7.4,
+        "fill": 0.916
+      },
+      {
+        "scene": "r-owner",
+        "text": "Its owner, a travelling ride company, bought it about a year after it was built, from the ride's first owner.",
+        "start": 53.9,
+        "seconds": 5.74,
+        "window": 6.37,
+        "fill": 0.901
+      },
+      {
+        "scene": "r-papers",
+        "text": "When investigators later asked for service records from the ride's first owner, the current owner could not provide any.",
+        "start": 60.27,
+        "seconds": 6.07,
+        "window": 6.7,
+        "fill": 0.906
+      },
+      {
+        "scene": "r-seats",
+        "text": "Riders sat in gondolas at the very end of those long arms, held in place by padded bars over their shoulders. There were no seatbelts.",
+        "start": 66.97,
+        "seconds": 7.47,
+        "window": 8.1,
+        "fill": 0.922
+      },
+      {
+        "scene": "r-lights",
+        "text": "A green light above each seat lit once its bar was locked. Only then could the operator start the ride.",
+        "start": 75.07,
+        "seconds": 5.42,
+        "window": 6.03,
+        "fill": 0.899
+      },
+      {
+        "scene": "r-auto",
+        "text": "Who was steering it? Nobody, really. A computer ran each ride, and the operator could not change its speed or how long it lasted.",
+        "start": 81.1,
+        "seconds": 7.02,
+        "window": 7.67,
+        "fill": 0.915
+      },
+      {
+        "scene": "r-crew",
+        "text": "Its crew knew this machine. The foreman had worked on this very ride for many years, with two operators beside him.",
+        "start": 88.77,
+        "seconds": 6.1,
+        "window": 6.73,
+        "fill": 0.906
+      },
+      {
+        "scene": "r-tease",
+        "text": "Every ride ran the same program, all day long. So what made the last ride different? It starts with how the Fire Ball swings.",
+        "start": 95.5,
+        "seconds": 7.0,
+        "window": 7.63,
+        "fill": 0.917
+      },
+      {
+        "scene": "s-swing",
+        "text": "The Fire Ball is a giant pendulum. A long boom hangs from the top of a tower, and at its foot sits a wheel of arms.",
+        "start": 103.13,
+        "seconds": 6.67,
+        "window": 7.33,
+        "fill": 0.91
+      },
+      {
+        "scene": "s-high",
+        "text": "The boom swings higher and higher, until riders look down on the fair from far above it.",
+        "start": 110.47,
+        "seconds": 4.5,
+        "window": 5.07,
+        "fill": 0.888
+      },
+      {
+        "scene": "s-feel",
+        "text": "Down at the bottom of each swing, riders are pressed hard into their seats. Up at the top, they feel almost weightless.",
+        "start": 115.53,
+        "seconds": 5.89,
+        "window": 6.53,
+        "fill": 0.902
+      },
+      {
+        "scene": "s-spin",
+        "text": "Near the top of each swing, the wheel spins too, so every gondola turns through the air.",
+        "start": 122.07,
+        "seconds": 4.47,
+        "window": 5.1,
+        "fill": 0.876
+      },
+      {
+        "scene": "s-why",
+        "text": "Why does that matter for the steel? Because of what happens at the bottom of every swing.",
+        "start": 127.17,
+        "seconds": 4.08,
+        "window": 4.7,
+        "fill": 0.868
+      },
+      {
+        "scene": "s-force",
+        "text": "Down at the bottom, each arm holds its gondola's weight, plus the extra pull it takes to swing that gondola round the curve.",
+        "start": 131.87,
+        "seconds": 6.59,
+        "window": 7.2,
+        "fill": 0.915
+      },
+      {
+        "scene": "s-load",
+        "text": "So the load on each arm climbs and falls, again and again, on every swing of every ride.",
+        "start": 139.07,
+        "seconds": 5.08,
+        "window": 5.7,
+        "fill": 0.891
+      },
+      {
+        "scene": "s-cycles",
+        "text": "Over a season, that is a huge number of loads. Steel takes it well, as long as the steel keeps its full thickness.",
+        "start": 144.77,
+        "seconds": 6.04,
+        "window": 6.7,
+        "fill": 0.901
+      },
+      {
+        "scene": "s-tease",
+        "text": "Up to here: a ride on the road, the same swing all day, and arms loaded on every pass. But what if one arm's steel was getting thinner, where nobody could see?",
+        "start": 151.47,
+        "seconds": 8.8,
+        "window": 9.43,
+        "fill": 0.933
+      },
+      {
+        "scene": "h-hollow",
+        "text": "Each arm that carried a gondola was a hollow steel beam, like a long square tube.",
+        "start": 160.9,
+        "seconds": 4.29,
+        "window": 4.93,
+        "fill": 0.87
+      },
+      {
+        "scene": "h-light",
+        "text": "Hollow beams are light and strong. But a tube has an inside, and once the ride is built, that inside is out of sight.",
+        "start": 165.83,
+        "seconds": 6.32,
+        "window": 6.97,
+        "fill": 0.907
+      },
+      {
+        "scene": "h-water",
+        "text": "What gets in there? Water. Rain can seep into a beam and pool inside it.",
+        "start": 172.8,
+        "seconds": 4.19,
+        "window": 4.83,
+        "fill": 0.867
+      },
+      {
+        "scene": "h-damp",
+        "text": "Even without rain, damp air inside can cool overnight and leave water on the inner walls.",
+        "start": 177.63,
+        "seconds": 5.01,
+        "window": 5.67,
+        "fill": 0.884
+      },
+      {
+        "scene": "h-rust",
+        "text": "Wet steel rusts. And inside a closed tube, the water has nowhere to go, and no sun or wind to dry it out.",
+        "start": 183.3,
+        "seconds": 6.38,
+        "window": 6.93,
+        "fill": 0.921
+      },
+      {
+        "scene": "h-years",
+        "text": "And who would notice? Season after season, fair after fair, the rust can eat into the wall from the inside.",
+        "start": 190.23,
+        "seconds": 5.94,
+        "window": 6.57,
+        "fill": 0.904
+      },
+      {
+        "scene": "h-thin",
+        "text": "The wall gets thinner. From outside, it can still look sound, and its paint can still look fine.",
+        "start": 196.8,
+        "seconds": 5.1,
+        "window": 5.73,
+        "fill": 0.89
+      },
+      {
+        "scene": "h-strength",
+        "text": "Thinner steel still carries the same load. So with every swing, the same pull lands on less and less metal.",
+        "start": 202.53,
+        "seconds": 5.67,
+        "window": 6.33,
+        "fill": 0.896
+      },
+      {
+        "scene": "h-tease",
+        "text": "So how would anyone find it? That's what the inspections were for.",
+        "start": 208.87,
+        "seconds": 3.12,
+        "window": 3.73,
+        "fill": 0.836
+      },
+      {
+        "scene": "i-daily",
+        "text": "A ride like this is checked again and again. Its crew kept daily inspection and maintenance reports.",
+        "start": 212.6,
+        "seconds": 5.48,
+        "window": 6.13,
+        "fill": 0.894
+      },
+      {
+        "scene": "i-states",
+        "text": "Each state on its route had its own inspectors. Stickers from several of them were on the ride.",
+        "start": 218.73,
+        "seconds": 4.94,
+        "window": 5.57,
+        "fill": 0.887
+      },
+      {
+        "scene": "i-ohio",
+        "text": "In Ohio, the Department of Agriculture inspects rides. Its inspectors checked the Fire Ball before the fair began.",
+        "start": 224.3,
+        "seconds": 6.66,
+        "window": 7.3,
+        "fill": 0.912
+      },
+      {
+        "scene": "i-passed",
+        "text": "Their standard inspection report is dated the first day of the fair. The ride passed, and was in full operation.",
+        "start": 231.6,
+        "seconds": 6.23,
+        "window": 6.87,
+        "fill": 0.907
+      },
+      {
+        "scene": "i-what",
+        "text": "What does an inspection look at? What can be seen and tested: the bolts, the welds, the bars, and the controls.",
+        "start": 238.47,
+        "seconds": 5.75,
+        "window": 6.4,
+        "fill": 0.898
+      },
+      {
+        "scene": "i-blind",
+        "text": "But the inside wall of an arm, once the ride is put together, can't be seen at all.",
+        "start": 244.87,
+        "seconds": 4.29,
+        "window": 4.9,
+        "fill": 0.876
+      },
+      {
+        "scene": "i-cpsc",
+        "text": "Federal safety staff later put it plainly. With no means to see inside the beam, a visual inspection after the ride is in place would not detect corrosion thinning of internal walls.",
+        "start": 249.77,
+        "seconds": 10.44,
+        "window": 11.1,
+        "fill": 0.941
+      },
+      {
+        "scene": "i-tease",
+        "text": "So the Fire Ball opened with a passed inspection, and an arm nobody could check. It took one evening.",
+        "start": 260.87,
+        "seconds": 5.52,
+        "window": 6.13,
+        "fill": 0.9
+      },
+      {
+        "scene": "d-open",
+        "text": "It was the first day of the 2017 Ohio State Fair. The rides opened in the morning.",
+        "start": 267.0,
+        "seconds": 4.99,
+        "window": 5.6,
+        "fill": 0.891
+      },
+      {
+        "scene": "d-crowd",
+        "text": "Families came through the gates. Lines formed at the thrill rides, and the Fire Ball ran ride after ride.",
+        "start": 272.6,
+        "seconds": 5.87,
+        "window": 6.5,
+        "fill": 0.903
+      },
+      {
+        "scene": "d-day",
+        "text": "All day, the arms took load after load. And from the ground, nothing looked any different.",
+        "start": 279.1,
+        "seconds": 4.64,
+        "window": 5.3,
+        "fill": 0.875
+      },
+      {
+        "scene": "d-dusk",
+        "text": "By early evening, the fair was still in full swing in the summer daylight. The lights along the midway glowed, and the crowds stayed.",
+        "start": 284.4,
+        "seconds": 6.93,
+        "window": 7.57,
+        "fill": 0.915
+      },
+      {
+        "scene": "d-inside",
+        "text": "Every swing loaded the arms again. Inside one of them, the rust was out of sight, and the wall was thin.",
+        "start": 291.97,
+        "seconds": 5.63,
+        "window": 6.27,
+        "fill": 0.898
+      },
+      {
+        "scene": "d-riders",
+        "text": "Early that evening, riders climbed into the gondolas. Bars came down. Green lights came on.",
+        "start": 298.23,
+        "seconds": 5.3,
+        "window": 5.93,
+        "fill": 0.894
+      },
+      {
+        "scene": "d-go",
+        "text": "The ride began to swing, higher with every pass.",
+        "start": 304.17,
+        "seconds": 2.6,
+        "window": 3.23,
+        "fill": 0.805
+      },
+      {
+        "scene": "d-fail",
+        "text": "Then, in the middle of a swing, the arm gave way.",
+        "start": 307.4,
+        "seconds": 2.46,
+        "window": 3.07,
+        "fill": 0.801
+      },
+      {
+        "scene": "d-wide",
+        "text": "A gondola broke away from the end of its arm and came down on the ground beside the ride.",
+        "start": 310.47,
+        "seconds": 4.58,
+        "window": 5.2,
+        "fill": 0.881
+      },
+      {
+        "scene": "d-help",
+        "text": "Emergency crews arrived after calls for help. Investigators secured the ride, and the gondola was taken away as evidence.",
+        "start": 315.67,
+        "seconds": 7.44,
+        "window": 8.1,
+        "fill": 0.919
+      },
+      {
+        "scene": "d-shut",
+        "text": "The next day, every ride at the fair stayed shut. And the ride's maker ordered rides like it shut down around the world.",
+        "start": 323.77,
+        "seconds": 6.21,
+        "window": 6.87,
+        "fill": 0.904
+      },
+      {
+        "scene": "d-tease",
+        "text": "Add it up: a hollow arm, water inside it, rust out of sight, and an inspection that passed. What would investigators find inside the broken arm?",
+        "start": 330.63,
+        "seconds": 8.22,
+        "window": 8.87,
+        "fill": 0.927
+      },
+      {
+        "scene": "f-cpsc",
+        "text": "Next came the Consumer Product Safety Commission. It sent an investigator, who reached the ride the next day.",
+        "start": 339.5,
+        "seconds": 5.78,
+        "window": 6.4,
+        "fill": 0.903
+      },
+      {
+        "scene": "f-arm",
+        "text": "What was inside? The investigator looked at the arm the gondola broke from. Rust covered its entire inside.",
+        "start": 345.9,
+        "seconds": 6.21,
+        "window": 6.83,
+        "fill": 0.909
+      },
+      {
+        "scene": "f-break",
+        "text": "Every side of the break looked covered in rust, too.",
+        "start": 352.73,
+        "seconds": 2.54,
+        "window": 3.13,
+        "fill": 0.812
+      },
+      {
+        "scene": "f-gondola",
+        "text": "So did the gondola that broke away, kept in a secure evidence building: rust inside it, and round every side of the break.",
+        "start": 355.87,
+        "seconds": 6.88,
+        "window": 7.53,
+        "fill": 0.914
+      },
+      {
+        "scene": "f-maker",
+        "text": "The maker's engineers came to see the ride too. The company said its tests showed corrosion had dangerously thinned the beam's wall.",
+        "start": 363.4,
+        "seconds": 7.27,
+        "window": 7.9,
+        "fill": 0.92
+      },
+      {
+        "scene": "f-alert",
+        "text": "A safety alert about the ride went out to inspectors across the industry. Here is what it warned.",
+        "start": 371.3,
+        "seconds": 5.09,
+        "window": 5.7,
+        "fill": 0.893
+      },
+      {
+        "scene": "f-quote",
+        "text": "Excessive corrosion inside the gondola support beam can lead to a hazardous wall thickness reduction of the beam and its adjacent joint, causing the beam to fail under normal operation.",
+        "start": 377.0,
+        "seconds": 10.71,
+        "window": 11.37,
+        "fill": 0.942
+      },
+      {
+        "scene": "f-joint",
+        "text": "Notice where it points: the beam, and the joint next to it, where the gondola hangs.",
+        "start": 388.37,
+        "seconds": 4.46,
+        "window": 5.1,
+        "fill": 0.875
+      },
+      {
+        "scene": "f-normal",
+        "text": "Normal operation. No storm, no misuse: a beam that thin could fail on an ordinary ride.",
+        "start": 393.47,
+        "seconds": 5.31,
+        "window": 5.93,
+        "fill": 0.895
+      },
+      {
+        "scene": "f-scope",
+        "text": "The alert called for beams to be sandblasted clean, and inspected inside with an endoscope or a video scope.",
+        "start": 399.4,
+        "seconds": 6.19,
+        "window": 6.83,
+        "fill": 0.906
+      },
+      {
+        "scene": "f-tease",
+        "text": "So the rust could be found, with a camera inside the steel. What did the regulators ask for next?",
+        "start": 406.23,
+        "seconds": 5.03,
+        "window": 5.67,
+        "fill": 0.887
+      },
+      {
+        "scene": "c-letter",
+        "text": "In September of 2017, the commission's safety staff wrote to the committee that writes the industry's ride standards at ASTM.",
+        "start": 411.9,
+        "seconds": 7.67,
+        "window": 8.33,
+        "fill": 0.921
+      },
+      {
+        "scene": "c-asks",
+        "text": "They asked for three things: designs that stop water pooling inside critical parts, a way to see inside structural beams, and rules for judging corrosion and what to do about it.",
+        "start": 420.23,
+        "seconds": 10.15,
+        "window": 10.73,
+        "fill": 0.946
+      },
+      {
+        "scene": "c-world",
+        "text": "Owners of the same model around the world had to stop and check inside their beams before running again.",
+        "start": 430.97,
+        "seconds": 5.39,
+        "window": 6.03,
+        "fill": 0.894
+      },
+      {
+        "scene": "c-ohio",
+        "text": "Ohio changed its own law too. Its governor signed a new law, named after the young rider who was killed.",
+        "start": 437.0,
+        "seconds": 5.78,
+        "window": 6.4,
+        "fill": 0.903
+      },
+      {
+        "scene": "c-law",
+        "text": "Owners of bigger rides must now have a yearly fatigue and corrosion review, every major repair must be photographed, and a professional engineer sits on the state's ride advisory board.",
+        "start": 443.4,
+        "seconds": 10.46,
+        "window": 11.1,
+        "fill": 0.942
+      },
+      {
+        "scene": "c-catch",
+        "text": "Is that enough? One ride operator said the new law still missed the point: rust inside a beam shows up only to tests that look through the steel.",
+        "start": 454.5,
+        "seconds": 7.72,
+        "window": 8.37,
+        "fill": 0.922
+      },
+      {
+        "scene": "c-ultra",
+        "text": "One such test sends a pulse of sound into the wall. The echo off the inner face tells you how thick the steel really is.",
+        "start": 462.87,
+        "seconds": 6.48,
+        "window": 7.13,
+        "fill": 0.909
+      },
+      {
+        "scene": "payoff",
+        "text": "And that is the lesson of the Fire Ball. The paint looked fine. The sticker said passed. The danger was inside, where only the right test could see it.",
+        "start": 470.0,
+        "seconds": 8.11,
+        "window": 8.77,
+        "fill": 0.925
+      },
+      {
+        "scene": "score",
+        "text": "A hollow arm. Water with nowhere to go. Rust working out of sight. And checks that could only see the outside.",
+        "start": 478.77,
+        "seconds": 6.12,
+        "window": 6.77,
+        "fill": 0.904
+      },
+      {
+        "scene": "loop",
+        "text": "Which check should have caught the rust? Tell us in the comments.",
+        "start": 485.53,
+        "seconds": 2.64,
+        "window": 3.27,
+        "fill": 0.807
+      }
+    ]
+  },
+  "durationSec": 491,
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.3,
+    "lufs": -14.1,
+    "music_under_voice_db": 34.5
+  },
+  "experiments": {
+    "dd-long-title-3d": "off"
+  },
+  "heard": {
+    "hookVoice": "af_heart",
+    "narratorShare": 100
+  },
+  "checks": [
+    {
+      "checker": "number_check",
+      "passed": true,
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "checker": "fact_review",
+      "passed": true,
+      "notes": [
+        "Re-review after rewrite: 4 facts (2017, 7 hurt, 1 killed, built 1999) confirmed on the CPSC letter+IDI PDF; daylight early-evening timing (~7:20 PM), mid-swing failure, maker-attributed cause (NBC), toll once in hook, exact bulletin and CPSC quotes, r-papers/r-crew per IDI, c-law per OAC 901:9-1-04.1 and WOSU, c-catch per Insurance Journal; disclaimer ends description. Notes: loop moment still says 'swings high at night' and d-dusk place says 'at sunset' (make both early-evening daylight); add Insurance Journal to the description's sources; fill the CHAPTERS list."
+      ]
+    },
+    {
+      "checker": "qa_review",
+      "passed": true,
+      "notes": [
+        "Re-review after the render-speed change (depth of field off, darker grid on the drafting sheets): backgrounds are now sharp but the subject still leads every 3D shot (5, 20, 80, 130, 310, 400 s), and the labels (PASSED sign, operator panel, BUILT 1999) read clearly over them; the drafting sheets read well with the darker grid and the captions on their dark plate (140, 175 s); nothing got worse. All earlier fixes hold; layout_problems empty, 491 s, peak -1 dB. Chapters still need writing into the description at ship.",
+        "fingerprint: 0b4174a07e626471.6ac5ba0068eabf96"
+      ]
+    }
+  ],
+  "agentRuns": [
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-28T04:55:43.487165+00:00",
+      "finishedAt": "2026-11-28T04:55:43.487165+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-28T05:00:58.790214+00:00",
+      "finishedAt": "2026-11-28T05:00:58.790214+00:00",
+      "notes": [
+        "beat 'c-letter'.say contains a typed number; use a placeholder: \"In September of {fact1}, the commission's safety staff wrote to the committee that writes the industry's ride standards, ASTM F24.\"",
+        "note: beat 's-swing': a \"Picture…\" / \"Imagine…\" warm-up is a line the channel has used too often; say it a new way",
+        "note: beat 'r-move' opens like a line in one of the last scripts ('how do you'): new words",
+        "note: beat 's-force' opens like a line in one of the last scripts ('at the bottom'): new words",
+        "note: beat 's-tease' opens like a line in one of the last scripts ('so far a'): new words",
+        "note: beat 'd-tease' opens like a line in one of the last scripts ('so far a'): new words",
+        "note: beat 'f-cpsc' opens like a line in one of the last scripts ('the u s'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "failed",
+      "startedAt": "2026-11-28T05:01:12.753738+00:00",
+      "finishedAt": "2026-11-28T05:01:12.753738+00:00",
+      "notes": [
+        "description mentions '24', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "description mentions '17072', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "description mentions '0001', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "description mentions '24', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it",
+        "description mentions '008', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}…) or drop it"
+      ]
+    },
+    {
+      "agent": "planner",
+      "status": "ok",
+      "startedAt": "2026-11-28T05:01:19.193086+00:00",
+      "finishedAt": "2026-11-28T05:01:19.193086+00:00",
+      "notes": [
+        "Plan passes the variety rules."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-28T05:01:20.240146+00:00",
+      "finishedAt": "2026-11-28T05:01:20.240146+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-28T05:02:54.065862+00:00",
+      "finishedAt": "2026-11-28T05:02:54.065862+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+        "note: beat 'd-dusk' opens like a line in one of the last scripts ('late in the'): new words"
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-28T05:03:17.976088+00:00",
+      "finishedAt": "2026-11-28T05:03:17.976088+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "failed",
+      "startedAt": "2026-11-28T05:06:37.599246+00:00",
+      "finishedAt": "2026-11-28T05:06:37.599246+00:00",
+      "notes": [
+        "d-dusk/d-riders/d-go/d-wide/d-help (and the night look of hook, hook-name, f-normal, loop): wrong time of day. The CPSC IDI puts emergency crews on scene at about 7:20 PM (news: 7:20-7:24 PM), and sunset in Columbus on 26 July is about 8:45 PM EDT, so the ride failed in daylight. Fix: d-dusk -> 'By early evening, the fair was still in full swing in the summer daylight, and the crowds stayed.' (no sunset, no lights coming on); d-riders 'That evening' -> 'At about twenty past seven that evening' or just 'Early that evening'; set phase to day/late afternoon, not night, on d-riders, d-go, d-wide, d-toll, d-help and the hook, hook-name, f-normal and loop places.",
+        "d-fail: 'near the bottom of a swing, the arm gave way' is not in any source (IDI: the gondola 'suddenly detached'; news: broke 'mid-swing', the ride 'swinging above its bottom platform'). Fix: 'Then, mid-swing, the arm gave way.' and drop the 'time slows at the bottom of the swing' moment.",
+        "Deaths stated more than once (profile: 'Deaths are stated plainly, once'): the toll is in hook ('1 rider was killed, and 7 more were hurt') and again in d-toll. Keep it once, at d-toll. Hook fix: 'Rust hidden inside one steel arm let a gondola tear off a fair ride in Ohio, with riders on board.' and remove the killed/hurt figs and the tolls/dimAt moment from hook.",
+        "hook: the cause is stated as the narrator's own finding; the topic's verify list says the cause only in the bulletin's words, and the CPSC drew no conclusion. Attribute it: '...one steel arm, the maker later said, let a gondola tear off...'. f-maker: add what it said, from NBC News: 'The company said tests on the metal showed corrosion had dangerously thinned the beam's wall.'; and its picture invents a gauge reading and a sealed sample bag, while the IDI says the 30 July visit with the maker was non-destructive, by photography and visual observation: show the engineers photographing and looking at the broken arm instead.",
+        "f-quote: 'Here is what it said' presents a paraphrase as the bulletin's words. The bulletin (quoted in the CPSC letter) says: 'excessive corrosion inside the gondola support beam . . . can lead to a hazardous wall thickness reduction of the beam and its adjacent joint, causing the beam to fail under normal operation.' Speak and show those exact words, or change f-alert to 'Here is what it warned.' and make f-quote a plain paraphrase with no quote marks. Any on-screen quote in i-cpsc must also be the letter's exact line: 'a visual inspection after the ride is in place would not detect corrosion thinning of internal walls.'",
+        "r-papers: 'there were none' goes beyond the report. The IDI says only that the current owner 'was unable to provide any literature, receipts or service records from the previous owner'. Fix: 'When investigators later asked for service records from the ride's first owner, the current owner could not provide any.' Change the 'folder opens: empty' moment to 'a stamp lands: none provided'.",
+        "r-crew: 'They had run it for years' and 'longer than anyone' are not sourced. The IDI says the foreman 'has worked on the incident ride for approximately thirteen years', assisted by two operators. Fix: 'Its foreman had worked on this very ride for many years, with two operators beside him.' (or add 13 as a sourced fact from the IDI and use the placeholder).",
+        "c-law: 'Ride owners must now inspect for fatigue and corrosion' is too broad. The rule (Ohio Adm. Code 901:9-1-04.1, under Tyler's Law) requires an annual visual fatigue and corrosion review for intermediate rides, towers and roller coasters, with mitigation as a registered professional engineer recommends. Fix: 'Owners of bigger rides must now have a yearly fatigue and corrosion review...' The photographed repairs and the engineer on the advisory board are confirmed by WOSU (signed by Gov. DeWine, 6 Nov 2019)."
+      ]
+    },
+    {
+      "agent": "number_check",
+      "status": "ok",
+      "startedAt": "2026-11-28T05:08:38.611609+00:00",
+      "finishedAt": "2026-11-28T05:08:38.611609+00:00",
+      "notes": [
+        "4 figures computed from inputs; 4 cross-checked against closed-form formulas."
+      ]
+    },
+    {
+      "agent": "fact_review",
+      "status": "ok",
+      "startedAt": "2026-11-28T05:09:31.506541+00:00",
+      "finishedAt": "2026-11-28T05:09:31.506541+00:00",
+      "notes": [
+        "Re-review after rewrite: 4 facts (2017, 7 hurt, 1 killed, built 1999) confirmed on the CPSC letter+IDI PDF; daylight early-evening timing (~7:20 PM), mid-swing failure, maker-attributed cause (NBC), toll once in hook, exact bulletin and CPSC quotes, r-papers/r-crew per IDI, c-law per OAC 901:9-1-04.1 and WOSU, c-catch per Insurance Journal; disclaimer ends description. Notes: loop moment still says 'swings high at night' and d-dusk place says 'at sunset' (make both early-evening daylight); add Insurance Journal to the description's sources; fill the CHAPTERS list."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-28T05:18:59.498002+00:00",
+      "finishedAt": "2026-11-28T05:41:26.427485+00:00",
+      "notes": [
+        "fingerprint: 57c5139f028c0d35.8d691433fc7e11f1",
+        "text 'LOADS ADD UP' at 149.2 s runs outside the frame",
+        "text 'SAME LOAD · LESS STEEL' at 206.7 s runs outside the frame",
+        "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+        "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T05:43:41.691058+00:00",
+      "finishedAt": "2026-11-28T06:05:19.297722+00:00",
+      "notes": [
+        "fingerprint: 57c5139f028c0d35.bcc50ccae704f3cf",
+        "491 s, ember/brace (preview only)",
+        "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+        "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "failed",
+      "startedAt": "2026-11-28T06:07:54.970712+00:00",
+      "finishedAt": "2026-11-28T06:07:54.970712+00:00",
+      "notes": [
+        "[scene] 25-31 s, beat promise (Arm): the A HOLLOW ARM / WATER INSIDE chips are drawn on top of the PASSED sign, whose letters show through behind WATER INSIDE (text over text). Move the chips clear of the sign (left of it or below), or hide the sign once the chips type on.",
+        "[scene] Doc component, beats r-papers 65 s, i-passed 235 s, i-cpsc 250-260 s, f-alert/f-quote 375-388 s, c-letter/c-asks 415-430 s: the page header collides with the corner chips (U.S. CONSUMER PRODUCT SAFETY runs under THE REAL REPORT and P. 1; the title line 'Ohio State Fair ride incident' runs under P. 2/P. 3), the header is cropped by the top edge at 65, 235 and 255 s, the NONE PROVIDED (65 s) and PASSED (235 s) stamps sit on the title, and the NO POOLING WATER chip (425 s) covers 'committee'. Lay the chips in a band above the page or inset the page so header and title are fully inside the frame and clear of chips and stamps.",
+        "[scene] Doc pull-quote, i-cpsc 255 s and f-quote 385 s: the quote box covers the last lines of the page text (385 s: 'inspection by endoscope...' half-hidden behind it), its last line fades into the bottom vignette and the caption ('walls.', 'causing the beam to') sits right on the quote text. Raise the quote box above the caption band, put it over the page's empty lower half, not over text, and keep it out of the vignette. Same beats: the SOURCE line (U.S. Consumer Product Safety Commission · date) sits under the caption and the vignette at 65, 235, 250-260, 375-430 s; move it to a top chip so the source reads.",
+        "[script] 75-89 s, beats r-lights and r-auto: three stills in a row of the same plain white box with four coloured dots and a black, unlit screen. r-lights says 'A green light above each seat lit once its bar was locked' but shows the booth, not the seats: move r-lights to the Gate gondola close (bars down, green lamp over each seat lighting on 'lit'); in r-auto light the control screen with the RIDE PROGRAM · AUTO panel on the screen itself, and give the booth real detail (lesson 5: never grey boxes).",
+        "[script] 218-224 s, beat i-states: the still is mostly a blank white booth wall with an empty screen; the stickers from several states the line is about cannot be seen. Make it a close shot of the control panel with three or four readable state inspection stickers (state names on them) slapping on one by one.",
+        "[script] 307-316 s, beats d-fail and d-wide (the failure, lesson 7): d-fail shows the cut-open red beam resting on wooden blocks in an empty dark studio, not the arm on the swinging ride, and d-wide (315 s) is so far away that the ride is tiny and the gondola on the ground can't be seen (a red gate post cut by the right edge). Put d-fail on the ride at dusk: close on the arm-to-gondola joint mid-swing, amber to red, the tear with sparks; then d-wide at medium-wide where the fallen gondola beside the ride and the stopped wheel read clearly (no people shown hurt).",
+        "[scene] Diagram sheets 140-150 s, 175-180 s, 200-205 s: the white captions sit on near-white grid paper and are hard to read (140 s 'each arm climbs and', 150 s 'steel keeps its full'); at 175 s the caption touches the CROSS-SECTION label right above it. Give captions a dark backing or shadow plate on light sheets and keep labels at least 40 px above the caption band.",
+        "[script] Thumbnail A (Studio's thumbnail_pick 'a'): the ringed part, the wheel of gondolas at the arm's end, runs off the right edge, with half the red ring outside the frame. At feed size it reads as an A-frame with loose bricks, and 'Passed that day' doesn't say what passed. Pick B ('Rust inside': the cause is clear, it matches the title 'The Rust Nobody Saw', and it stands out from the hit's caution-tape photo); it's the one I would click. Or reframe A so the whole wheel and ring sit inside the frame. Studio's scores (A 7, B 6) don't match this.",
+        "[scene] render.json chapters and the description: only '0:00 Intro', because chapters are read only from 'chapter' scene beats (renderer/remotion.py ~line 425) and directed long videos have none. The promise names seven chapters, and every Disaster Desk long so far has the same problem. Derive chapters from the beats that open each part (r-what 0:40 The ride, s-swing 1:43 The swing, h-hollow 2:41 The hollow arm, i-daily 3:33 The inspections, d-open 4:27 The last day, f-cpsc 5:40 The findings, c-letter 6:52 What changed) and write them into the description."
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-28T06:11:32.240013+00:00",
+      "finishedAt": "2026-11-28T06:32:38.193727+00:00",
+      "notes": [
+        "fingerprint: 0b4174a07e626471.4ca0a26027954a6d",
+        "text 'SOURCE' at 64.7 s is 25.2 px, below the 30 px minimum",
+        "text 'U.S. Consumer Product Safety Commission · Jul 27, 2017' at 64.7 s is 25.2 px, below the 30 px minimum",
+        "text 'P. 2' at 64.7 s is 27 px, below the 30 px minimum",
+        "text 'JUL 27, 2017' at 64.7 s is 27 px, below the 30 px minimum",
+        "text 'P. 3' at 236.1 s is 27 px, below the 30 px minimum",
+        "text 'U.S. Consumer Product Safety Commission · Sep 25, 2017' at 257.3 s is 25.2 px, below the 30 px minimum",
+        "text 'P. 1' at 257.3 s is 27 px, below the 30 px minimum",
+        "text 'SEP 25, 2017' at 257.3 s is 27 px, below the 30 px minimum",
+        "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+        "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T06:32:48.129625+00:00",
+      "finishedAt": "2026-11-28T06:54:37.216875+00:00",
+      "notes": [
+        "fingerprint: 0b4174a07e626471.93d76f1421eddfa0",
+        "491 s, ember/brace (preview only)",
+        "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+        "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-28T06:55:24.477577+00:00",
+      "finishedAt": "2026-11-28T06:55:24.477577+00:00",
+      "notes": [
+        "Re-review after fixes: all 9 notes resolved. The promise chips are clear of the PASSED sign; doc pages and headers sit fully in frame with source, stamps, quotes and request chips in a right column off the text; r-lights shows the gondolas with green lamps and the operator panel; i-states shows state stickers slapping on; d-fail tears on the ride mid-swing and d-wide shows the fallen gondola; the diagram captions sit on a dark plate; thumbnail_pick is B ('Rust inside', matches the title, whole picture in frame); layout_problems empty, 491 s, peak -1 dB. Chapters still need writing into the description at ship.",
+        "fingerprint: 0b4174a07e626471.93d76f1421eddfa0"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T07:37:36.886456+00:00",
+      "finishedAt": "2026-11-28T07:53:53.913295+00:00",
+      "notes": [
+        "fingerprint: 0b4174a07e626471.2c82d939693f5446",
+        "491 s, ember/brace (preview only)",
+        "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+        "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-28T07:54:24.013571+00:00",
+      "finishedAt": "2026-11-28T07:54:24.013571+00:00",
+      "notes": [
+        "Re-review after the performance-only beat-code change (fewer stall lights and crowd figures, no workshop shadow): stalls keep their lit signs and colour; the crowd still reads as a crowd at the rail and in the lines (0, 45, 275, 285-290, 320 s); the workshop and evidence-room shots (165, 360, 400 s) are still lit and readable; nothing got worse. All earlier fixes hold; layout_problems empty, 491 s, peak -1 dB. Chapters still need writing into the description at ship.",
+        "fingerprint: 0b4174a07e626471.2c82d939693f5446"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-28T08:54:28.765760+00:00",
+      "finishedAt": "2026-11-28T09:06:16.772964+00:00",
+      "notes": [
+        "fingerprint: 0b4174a07e626471.4ea9a6e0989be9f8",
+        "17 of 98 stills are mostly empty background (at 25 s, 135 s, 145 s, 165 s, 170 s, 270 s): fill the frame (a set, the cast big, money as a thing)",
+        "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+        "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T09:06:40.922055+00:00",
+      "finishedAt": "2026-11-28T09:19:03.668373+00:00",
+      "notes": [
+        "fingerprint: 0b4174a07e626471.6ac5ba0068eabf96",
+        "491 s, ember/brace (preview only)",
+        "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+        "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "qa_review",
+      "status": "ok",
+      "startedAt": "2026-11-28T09:19:33.961204+00:00",
+      "finishedAt": "2026-11-28T09:19:33.961204+00:00",
+      "notes": [
+        "Re-review after the render-speed change (depth of field off, darker grid on the drafting sheets): backgrounds are now sharp but the subject still leads every 3D shot (5, 20, 80, 130, 310, 400 s), and the labels (PASSED sign, operator panel, BUILT 1999) read clearly over them; the drafting sheets read well with the darker grid and the captions on their dark plate (140, 175 s); nothing got worse. All earlier fixes hold; layout_problems empty, 491 s, peak -1 dB. Chapters still need writing into the description at ship.",
+        "fingerprint: 0b4174a07e626471.6ac5ba0068eabf96"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "failed",
+      "startedAt": "2026-11-28T09:19:40.586942+00:00",
+      "finishedAt": "2026-11-28T13:59:16.237728+00:00",
+      "notes": [
+        "render.ts video failed:\nMemory reported by /proc/meminfo MemAvailable: 14933.85 MB\nYou might have inadvertently set the --memory flag of `docker run` to a value that is higher than the global Docker memory limit.\nUsing the lower amount of memory for calculation.\nprogress 0.02\nprogress 0.04\nprogress 0.06\nprogress 0.08\n[Tab 1, node_modules/its-fine/dist/index.js:64] TypeError: Cannot read properties of undefined (reading 'visible')\n    at projectObject (http://localhost:3000/bundle.js:219696:28)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at WebGLRenderer.render (http://localhost:3000/bundle.js:219476:4)\n    at RenderPass.render (http://localhost:3000/bundle.js:47446:16)\n    at EffectComposer.render (http://localhost:3000/bundle.js:41863:12)\n    at Object.current (http://localhost:3000/bundle.js:57436:22)\n[Tab 1, node_modules/its-fine/dist/index.js:64] TypeError: Cannot read properties of undefined (reading 'visible')\n    at projectObject (http://localhost:3000/bundle.js:219696:28)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at WebGLRenderer.render (http://localhost:3000/bundle.js:219476:4)\n    at RenderPass.render (http://localhost:3000/bundle.js:47446:16)\n    at EffectComposer.render (http://localhost:3000/bundle.js:41863:12)\n    at Object.current (http://localhost:3000/bundle.js:57436:22)\nTypeError: Cannot read properties of undefined (reading 'visible')\n    at projectObject (http://localhost:3000/bundle.js:219696:28)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at projectObject (http://localhost:3000/bundle.js:219712:5)\n    at WebGLRenderer.render (http://localhost:3000/bundle.js:219476:4)\n    at RenderPass.render (http://localhost:3000/bundle.js:47446:16)\n    at EffectComposer.render (http://localhost:3000/bundle.js:41863:12)\n    at Object.current (http://localhost:3000/bundle.js:57436:22)"
+      ]
+    },
+    {
+      "agent": "render",
+      "status": "ok",
+      "startedAt": "2026-11-28T16:14:15.876428+00:00",
+      "finishedAt": "2026-11-28T16:29:24.830928+00:00",
+      "notes": [
+        "491 s, ember/brace, peak -1.0 dB, mean -16.3 dB",
+        "note: four shots in a row open medium (from 'c-law'): vary the shot size",
+        "note: 37 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+      ]
+    },
+    {
+      "agent": "ship",
+      "status": "ok",
+      "startedAt": "2026-11-28T16:29:59.267556+00:00",
+      "finishedAt": "2026-11-28T16:29:59.267556+00:00",
+      "notes": [
+        "Manifest written; release asset not uploaded (dry run)."
+      ]
+    }
+  ],
+  "files": {
+    "thumbnail": "thumbnail.png",
+    "preview": "preview.png",
+    "script": "script.json"
+  },
+  "release": {
+    "tag": "video-L-20261128-41",
+    "asset": "video.mp4",
+    "uploaded": false,
+    "mediaBranch": "media/L-20261128-41"
+  },
+  "thumbnails": [
+    {
+      "file": "thumbnail.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the ride itself huge against the sky, the failing part ringed, bold words top left",
+      "score": 6,
+      "why": "Reframed so the whole wheel and the ringed arm sit in frame, but at feed size the flat ride reads less clearly than the hit's photo, and the words need the title to make sense.",
+      "picked": false
+    },
+    {
+      "file": "thumbnail-b.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the hidden cause big: the beam cut open, rust inside, ringed",
+      "score": 8,
+      "why": "The one to click: rust eating a red-painted beam reads at phone size, pairs with the title The Rust Nobody Saw, and stands apart from the hit's caution-tape photo beside it.",
+      "picked": true
+    },
+    {
+      "file": "thumbnail-c.png",
+      "angle": null,
+      "layout": "custom",
+      "pattern": "the topic hit's own pattern: the ride against the sky, caution tape across, a question",
+      "score": 6,
+      "why": "Close to the hit's own pattern, so it blends in beside it; the question is generic.",
+      "picked": false
+    }
+  ],
+  "thumbnailModel": {
+    "pattern": "the ride itself huge against the sky, the failing part ringed, bold words top left",
+    "references": [
+      "w6jYxL9ymd0"
+    ]
+  }
+}
