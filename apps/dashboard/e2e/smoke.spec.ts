@@ -848,3 +848,12 @@ test("video page names the channel's own YouTube category, not always Education"
   await page.getByRole("tab", { name: "YouTube details" }).click();
   await expect(page.getByTestId("upload-category")).toHaveText("Science & Technology");
 });
+
+test("growth loop shows a cycle the owner adopted as adopted and kept, not as running", async ({ page }) => {
+  await signIn(page);
+  await page.goto("/growth");
+  const row = page.locator("li", { hasText: "A darker look for every beat" });
+  await expect(row.getByText("Adopted", { exact: true })).toBeVisible({ timeout: 30_000 });
+  await expect(row.getByText("Running", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("2 of 3 tests kept")).toBeVisible();
+});
