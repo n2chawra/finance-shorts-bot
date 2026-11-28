@@ -16,6 +16,14 @@
       "to": "up to 2 a beat, 0.8 s apart, from the channel's own effects list, picked by what the moment does (pop/pin on things appearing, a swish on moves, a thud on stamps, a tick on counters, a scribble on lines; renderer/timeline/build.py directed_cues); the channel's per-minute cap still applies",
       "why": "geography owner note 2026-11-20 (cmwoj49a); directed beats had no automatic cues since 2026-11-13",
       "by": "improver"
+    },
+    {
+      "at": "2026-11-28T17:10:00Z",
+      "what": "direction: a line that says something acts on something is shown happening",
+      "from": "objects, tiles, bars and labels could appear on the stage while the narration carried the cause",
+      "to": "params.shows (what a viewer sees with the sound off: input -> the part acting on the verb -> output) and a moment moving one thing on another; lint fails a 3D-kit beat without them; QA rejects stills showing only results appearing; kit Operation3D, Press3D, GearTrain",
+      "why": "owner note cmwz7z7mz0001js09h999iw76 (27 Nov, on L-20261127-21), asked for Shorts and long videos",
+      "by": "improver"
     }
   ]
 }
