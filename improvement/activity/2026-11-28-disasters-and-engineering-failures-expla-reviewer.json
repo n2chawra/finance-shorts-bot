@@ -1,0 +1,42 @@
+{
+  "agent": "reviewer",
+  "day": "2026-11-28",
+  "startedAt": "2026-11-28T16:08:23Z",
+  "finishedAt": "2026-11-28T16:10:46Z",
+  "summary": "Disaster Desk: watched 4 Shorts (Titan, Kobe Bryant's helicopter, Tacoma Narrows, Colgan Air). The second beat (3–8 s) is the biggest drop in every measured Short, so lesson 0 is raised with three new videos and a sharper fix; one ending test added.",
+  "decision": "acted",
+  "why": "Beat-2 drops: Titan −21.1% at 7.0 s (sub replaced by a flat sonar diagram, 'So what happened?'), Kobe −16.6% at 5.2 s (helicopter a speck over desert hills, figures late), Tacoma −31.3% at 5.5 s (backstory, 39 views). Titan also lost 16.4% in its 7 s question-and-pointer ending, which is the champion recipe, so it goes to the loop as a test.",
+  "findings": [
+    {
+      "title": "Second beat is the biggest drop in 5 of 5 measured Shorts",
+      "detail": "Titan −21.1% at 7.0 s, Kobe −16.6% at 5.2 s, Tacoma −31.3% at 5.5 s, tanker −15.5% at 5.3 s, Lac-Mégantic −11.3% at 5.4 s."
+    },
+    {
+      "title": "Titan's 7 s ending lost 16.4%",
+      "detail": "'The company or the rules… Full story on our channel' at 48.5 s; end hold 15%."
+    },
+    {
+      "title": "Colgan Air (first Short after lesson 0) still ends beat 2 on a question",
+      "detail": "No retention yet; check its 5–10 s drop on Tuesday."
+    }
+  ],
+  "changes": [
+    {
+      "title": "Raised lesson 0 (second beat stays on the subject)",
+      "detail": "Added Titan, Kobe and Tacoma; the fix now bans pull-outs, early diagrams, stalling questions and backstory in the 3–8 s beat.",
+      "branch": "agent/reviewer/2026-11-28/disasters-and-engineering-failures-expla"
+    },
+    {
+      "title": "Challenger dd-short-promo-end",
+      "detail": "A 2 s closing pointer against the 5–7 s question-and-pointer loop beat.",
+      "branch": "agent/reviewer/2026-11-28/disasters-and-engineering-failures-expla"
+    }
+  ],
+  "nextCheck": "2026-12-01",
+  "links": [
+    {
+      "label": "Report",
+      "url": "channels/disasters-and-engineering-failures-expla/review/2026-11-28.md"
+    }
+  ]
+}
