@@ -1,0 +1,263 @@
+[
+  {
+    "agent": "planner",
+    "status": "failed",
+    "startedAt": "2026-11-27T23:40:44.572748+00:00",
+    "finishedAt": "2026-11-27T23:40:44.572748+00:00",
+    "notes": [
+      "story 'what_if_world' was told in the last 1 videos",
+      "music genre 'atlas' was used by the previous video"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-27T23:41:28.585208+00:00",
+    "finishedAt": "2026-11-27T23:41:28.585208+00:00",
+    "notes": [
+      "beat 'size'.params.fig.ratio has a bad placeholder ('area'); allowed: area_a, area_b, area_diff, area_pct, area_ratio, es_parts, es_per_part, es_total, es_total_long, esp_parts, esp_per_part, esp_total, esp_total_long, fact1, fact2, fact3, fact4, mx_parts, mx_per_part, mx_total, mx_total_long, mxp_parts, mxp_per_part, mxp_total, mxp_total_long, pop_a, pop_b, pop_diff, pop_pct, pop_ratio",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T23:41:34.439111+00:00",
+    "finishedAt": "2026-11-27T23:41:34.439111+00:00",
+    "notes": [
+      "30 figures computed from inputs; 30 cross-checked against closed-form formulas.",
+      "warning: beat 'spain' runs 5.2 s with 3.6 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'size' runs 7.1 s with 5.2 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "warning: beat 'people' runs 9.5 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T23:42:37.880483+00:00",
+    "finishedAt": "2026-11-27T23:42:37.880483+00:00",
+    "notes": [
+      "30 figures computed from inputs; 30 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend",
+      "note: 2 questions in about 63 s of speech; at least 3 (one every 20 s): say the viewer's next question out loud (\"Then how do they pay for anything?\") and answer it"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T23:42:46.466370+00:00",
+    "finishedAt": "2026-11-27T23:42:46.466370+00:00",
+    "notes": [
+      "30 figures computed from inputs; 30 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T23:45:46.070440+00:00",
+    "finishedAt": "2026-11-27T23:45:46.070440+00:00",
+    "notes": [
+      "All 4 World Bank facts confirmed on their API pages (MEX area 1,957,193.9 km2 2024; ESP 505,981.25 km2 2024; MEX pop 131,946,900 2025; ESP pop 49,355,143 2025; lastupdated 2026-11-11, current). Overlay claims checked at true scale on Natural Earth 50m (LAEA move): Mexico centred near 5W 40N covers ~92% of Spain, ~85% of Portugal, Baja lies over the Atlantic west of Portugal, the Yucatan/Chiapas tail reaches Morocco, Algeria and Tunisia; Spain moved into Mexico is ~95% inside. Density line (Spain ~98/km2 vs Mexico ~67/km2) and New Spain history true. Disclaimer ends the description. Notes: director must place Mexico about there (topic angle's 'France' is not claimed, keep it so); label the south pin 'Strait of Gibraltar' (Gibraltar is British, Spain's tip is Tarifa)."
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-27T23:47:13.092386+00:00",
+    "finishedAt": "2026-11-27T23:47:13.092386+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-27T23:48:16.795319+00:00",
+    "finishedAt": "2026-11-27T23:48:16.795319+00:00",
+    "notes": [
+      "30 figures computed from inputs; 30 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-27T23:49:07.681576+00:00",
+    "finishedAt": "2026-11-27T23:49:07.681576+00:00",
+    "notes": [
+      "Re-review of changed lines: new 'tongue' (Spanish is shared; it is Spain's official language and Mexico's de facto national language, spoken by nearly all Mexicans) true; 'cover', 'people', 'turn', 'payoff' rewordings make no new claim beyond the true-scale overlay already checked (Mexico near 5W 40N covers ~92% Spain, ~85% Portugal, tail onto Morocco/Algeria/Tunisia); Gibraltar pin now on Tarifa labelled STRAIT OF GIBRALTAR, note resolved. Facts and disclaimer unchanged."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T23:48:56.145407+00:00",
+    "finishedAt": "2026-11-27T23:51:00.175458+00:00",
+    "notes": [
+      "fingerprint: e03449976f5b7f49.ac4b1fef49ae54cf",
+      "text 'NEW SPAIN' at 12.5 s runs outside the frame",
+      "text 'MEXICO CITY' at 16.9 s runs outside the frame",
+      "text 'ALGERIA' at 54.1 s is 28.1 px, below the 44 px minimum",
+      "7 of 14 stills are mostly empty background (at 0 s, 5 s, 15 s, 35 s, 40 s, 60 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T23:53:18.090969+00:00",
+    "finishedAt": "2026-11-27T23:55:19.654690+00:00",
+    "notes": [
+      "fingerprint: 3773369439998c89.dc19b8ecb4c67ebb",
+      "6 of 14 stills are mostly empty background (at 0 s, 5 s, 15 s, 35 s, 40 s, 62 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-27T23:56:11.732692+00:00",
+    "finishedAt": "2026-11-27T23:58:12.453197+00:00",
+    "notes": [
+      "fingerprint: 3773369439998c89.97d9c4f21a7324ea",
+      "6 of 14 stills are mostly empty background (at 0 s, 5 s, 15 s, 35 s, 60 s, 62 s): fill the frame (a set, the cast big, money as a thing)",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-27T23:58:27.624523+00:00",
+    "finishedAt": "2026-11-28T00:00:24.866198+00:00",
+    "notes": [
+      "fingerprint: 3773369439998c89.de0151310eee82e8",
+      "62 s, ember/atlas (preview only)",
+      "note: 20 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T00:02:07.298233+00:00",
+    "finishedAt": "2026-11-28T00:02:07.298233+00:00",
+    "notes": [
+      "[script] Payoff given away 25 s early (lesson 6, check 11): the cover beat (25.0 s) and baja beat (30.0 s) frame Mexico's whole outline on Iberia with its red south-east tail already lying over Algeria/Tunisia, so on mute the answer is on screen while the line talks about Spain and Portugal; the turn beat (50.0 s) then asks 'where does it end up?' over the same visible tail. Director: in cover/baja keep the camera on Iberia and the Atlantic (tail off frame or not yet laid), and let the tail first reach Africa on the payoff's 'Mediterranean'/'Africa'.",
+      "[script] Same picture two beats in a row (check D): cover (25.0 s) and baja (30.0 s) are the same overlay at nearly the same framing, only a BAJA CALIFORNIA label added; turn (50.0 s) repeats it again. Give baja its own shot (close on the Baja arm over the sea off Portugal, waves under it) and turn a different angle.",
+      "[script] 10.0 s (size beat): the four stacked Spain shapes overlap each other and the Pacific edge of Mexico in a pile, so '3.9x' doesn't read as a count of Spains; lay them side by side (or inside Mexico) without overlap. Also the ratio sign rises on 'land', after '3.9x' is spoken (5.0 s still has no sign) - have it up on the figure's word; the line is 19 words / 5.1 s, over lesson 1's ~15 words / 5 s.",
+      "[script] 55.0 s (payoff): MEDITERRANEAN is written on the overlay over Spain's land, not on the sea, and Morocco's red highlight is the same red as Mexico's flag stripe beside it, so which shape is which is hard to read; put the label on open water and light Morocco/Algeria in a colour distinct from the flag."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:03:25.843616+00:00",
+    "finishedAt": "2026-11-28T00:03:25.843616+00:00",
+    "notes": [
+      "30 figures computed from inputs; 30 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:04:03.919723+00:00",
+    "finishedAt": "2026-11-28T00:04:03.919723+00:00",
+    "notes": [
+      "30 figures computed from inputs; 30 cross-checked against closed-form formulas.",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:06:04.566813+00:00",
+    "finishedAt": "2026-11-28T00:06:04.566813+00:00",
+    "notes": [
+      "Re-review after QA rewording: 'size' (3.9x from code; northern desert, southern jungle true), 'rule' (New Spain 1521-1821, ruled from across the Atlantic), 'inside' (Spain centred in Mexico ~95% inside, Madrid at Spain's centre so in Mexico's middle as drawn), 'crowd' (Spain ~98/km2 vs Mexico ~67/km2, comparison now explicit), 'loop' (CTA, no claim) all true; 'tongue' only swaps city order. Facts, overlay placement and disclaimer unchanged."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:05:53.103492+00:00",
+    "finishedAt": "2026-11-28T00:07:56.103244+00:00",
+    "notes": [
+      "fingerprint: dde646f2ea44b0ed.039626615a901533",
+      "62 s, ember/atlas (preview only)",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:08:40.413778+00:00",
+    "finishedAt": "2026-11-28T00:10:38.263423+00:00",
+    "notes": [
+      "fingerprint: dde646f2ea44b0ed.0c414c876e9d9169",
+      "62 s, ember/atlas (preview only)",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T00:11:14.505142+00:00",
+    "finishedAt": "2026-11-28T00:11:14.505142+00:00",
+    "notes": [
+      "[scene] Cover beat clip (25.0 s still and the thumbnail, which is taken from it): Mexico's outline is cut by a straight horizontal line along Spain's south coast, a visible ruler-edge slice through the flag fill, and the clip misses the Yucatan end of the tail: a detached red rectangle of it still floats over Sicily/Tunisia at the right edge, so part of the payoff still shows and reads as a glitch. Hide the tail with a mask that follows the outline, or keep the unrevealed part out of frame, so no fragment shows before the turn's 'end'.",
+      "[script] Tongue beat at 15.0 s ('from Mexico City to...'): the frame is almost all empty Atlantic and Greenland, with only a dashed arc and a small Spain at the right edge. Mexico City is named but not on screen, no bubble or pin is visible, and the still is clearly emptier than our best Shorts' frames (check 6b, 'mostly flat background'). Keep Mexico City's pin and bubble in frame while the line names it, and pull back only on 'ocean' so the arc runs between two visible ends.",
+      "[script] Rule beat at 10.0 s: very wide on the Atlantic with the galleon and Spain's flag tiny at mid-right, and most of the frame is ocean; NEW SPAIN and the route to Veracruz aren't readable at this size. Frame Spain and the galleon larger (medium) as the line starts."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:13:15.398328+00:00",
+    "finishedAt": "2026-11-28T00:15:13.939655+00:00",
+    "notes": [
+      "fingerprint: dde646f2ea44b0ed.29467f72b486fba6",
+      "62 s, ember/atlas (preview only)",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:15:29.671605+00:00",
+    "finishedAt": "2026-11-28T00:15:29.671605+00:00",
+    "notes": [
+      "Round 3: soft feathered mask hides Mexico's tail until the turn (25/30 s and thumbnail clean, nothing over Africa/Sicily); rule rides the galleon on Spain at medium; tongue holds Mexico with pin and HOLA; sign up at 5 s; baja own close shot; payoff readable (Morocco purple, MEDITERRANEAN on sea); layout empty, audio on target, disclaimer in description.",
+      "fingerprint: dde646f2ea44b0ed.29467f72b486fba6"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:15:37.994878+00:00",
+    "finishedAt": "2026-11-28T00:46:16.545229+00:00",
+    "notes": [
+      "62 s, ember/atlas, peak -1.0 dB, mean -16.2 dB",
+      "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: the payoff 'payoff' says no figure: end on the most surprising number in the story, the one a viewer would send to a friend"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:46:23.149102+00:00",
+    "finishedAt": "2026-11-28T00:46:23.149102+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

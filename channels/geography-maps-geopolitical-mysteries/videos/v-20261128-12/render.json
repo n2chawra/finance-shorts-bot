@@ -1,0 +1,161 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 58263,
+  "duration_sec": 62,
+  "tempo": 1.2,
+  "style": {
+    "palette": "ember",
+    "genre": "atlas",
+    "key": "A",
+    "bpm": 88,
+    "look": {
+      "stage": "office",
+      "header": "chalk",
+      "holder": "box",
+      "entrance": "slide"
+    }
+  },
+  "voice": {
+    "name": "bm_george",
+    "base_speed": 1.4,
+    "cast": {
+      "narrator": "bm_george",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Drop Mexico onto Spain at its real size, and it doesn't stop at Spain's coast.",
+        "start": 0.3,
+        "seconds": 3.65,
+        "window": 4.27,
+        "fill": 0.855
+      },
+      {
+        "scene": "size",
+        "text": "Mexico has 3.9× as much land as Spain, from northern desert to southern jungle.",
+        "start": 4.57,
+        "seconds": 4.36,
+        "window": 5.03,
+        "fill": 0.867
+      },
+      {
+        "scene": "rule",
+        "text": "Spain once ruled Mexico as New Spain, from a whole ocean away.",
+        "start": 9.6,
+        "seconds": 3.01,
+        "window": 3.67,
+        "fill": 0.82
+      },
+      {
+        "scene": "tongue",
+        "text": "Today the two still share a language, from Mexico City to Madrid, with an ocean in between.",
+        "start": 13.27,
+        "seconds": 4.08,
+        "window": 4.73,
+        "fill": 0.863
+      },
+      {
+        "scene": "spain",
+        "text": "Spain itself runs from the Pyrenees down to Gibraltar, with Portugal along its western side.",
+        "start": 18.0,
+        "seconds": 4.15,
+        "window": 4.77,
+        "fill": 0.87
+      },
+      {
+        "scene": "cover",
+        "text": "Lay Mexico on top, and it covers almost all of Spain, then most of Portugal next door.",
+        "start": 22.77,
+        "seconds": 3.99,
+        "window": 4.67,
+        "fill": 0.854
+      },
+      {
+        "scene": "baja",
+        "text": "Its north-west corner, Baja California, hangs out over the Atlantic beyond Portugal.",
+        "start": 27.43,
+        "seconds": 3.86,
+        "window": 4.53,
+        "fill": 0.852
+      },
+      {
+        "scene": "inside",
+        "text": "Turn it round: Spain dropped into Mexico sits almost wholly inside it, with Madrid right in the middle.",
+        "start": 31.97,
+        "seconds": 4.49,
+        "window": 5.13,
+        "fill": 0.875
+      },
+      {
+        "scene": "people",
+        "text": "And people? For all that extra land, Mexico has only 2.7× as many as Spain.",
+        "start": 37.1,
+        "seconds": 4.47,
+        "window": 5.13,
+        "fill": 0.871
+      },
+      {
+        "scene": "crowd",
+        "text": "So Spain is the more crowded one, with more people packed onto every bit of its land than Mexico.",
+        "start": 42.23,
+        "seconds": 4.07,
+        "window": 4.73,
+        "fill": 0.86
+      },
+      {
+        "scene": "turn",
+        "text": "But what about the rest of Mexico, laid on Spain: where does it end up?",
+        "start": 46.97,
+        "seconds": 3.0,
+        "window": 3.57,
+        "fill": 0.84
+      },
+      {
+        "scene": "payoff",
+        "text": "Across the Mediterranean Sea and onto another continent, Africa: over Morocco, Algeria and even Tunisia.",
+        "start": 50.53,
+        "seconds": 5.24,
+        "window": 5.9,
+        "fill": 0.888
+      },
+      {
+        "scene": "loop",
+        "text": "Bigger Spain or smaller Mexico: which map would you pick? Either way, drop Mexico on Spain and it just won't stop.",
+        "start": 56.43,
+        "seconds": 5.12,
+        "window": 5.73,
+        "fill": 0.894
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {
+    "geo-claim-hook": "off"
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -16.2,
+    "lufs": -14.8,
+    "music_under_voice_db": 30.3
+  },
+  "craft_problems": [
+    "note: 18 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 6.791,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

@@ -1,0 +1,1156 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 58263,
+ "story": "what_if_world",
+ "shape": "the-swap",
+ "currency": "USD",
+ "style": {
+  "palette": "ember",
+  "genre": "atlas",
+  "key": "A",
+  "bpm": 88,
+  "look": {
+   "stage": "office",
+   "header": "chalk",
+   "holder": "box",
+   "entrance": "slide"
+  }
+ },
+ "arms": {
+  "length": "60-80",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "challenge",
+ "cta": "Bigger Spain or smaller Mexico: which map would you pick? Comment",
+ "feed_id": "2026-11-25-what-if-mexico-spain-swapped",
+ "facts": [
+  {
+   "label": "Mexico's surface area in square kilometres",
+   "value": 1957193.9,
+   "unit": "count",
+   "as_of": "2024-12-31",
+   "source": "World Bank",
+   "url": "https://api.worldbank.org/v2/country/MEX/indicator/AG.SRF.TOTL.K2?format=json&mrv=1",
+   "latest": true,
+   "checked": "2026-11-25"
+  },
+  {
+   "label": "Spain's surface area in square kilometres",
+   "value": 505981.25,
+   "unit": "count",
+   "as_of": "2024-12-31",
+   "source": "World Bank",
+   "url": "https://api.worldbank.org/v2/country/ESP/indicator/AG.SRF.TOTL.K2?format=json&mrv=1",
+   "latest": true,
+   "checked": "2026-11-25"
+  },
+  {
+   "label": "Mexico's population",
+   "value": 131946900,
+   "unit": "count",
+   "as_of": "2025-12-31",
+   "source": "World Bank",
+   "url": "https://api.worldbank.org/v2/country/MEX/indicator/SP.POP.TOTL?format=json&mrv=1",
+   "latest": true,
+   "checked": "2026-11-25"
+  },
+  {
+   "label": "Spain's population",
+   "value": 49355143,
+   "unit": "count",
+   "as_of": "2025-12-31",
+   "source": "World Bank",
+   "url": "https://api.worldbank.org/v2/country/ESP/indicator/SP.POP.TOTL?format=json&mrv=1",
+   "latest": true,
+   "checked": "2026-11-25"
+  }
+ ],
+ "maths": [
+  {
+   "name": "mx",
+   "kind": "share",
+   "total": 1957193.9,
+   "parts": 1,
+   "facts": {
+    "total": 1
+   }
+  },
+  {
+   "name": "es",
+   "kind": "share",
+   "total": 505981.25,
+   "parts": 1,
+   "facts": {
+    "total": 2
+   }
+  },
+  {
+   "name": "area",
+   "kind": "compare",
+   "a": "mx.total",
+   "b": "es.total"
+  },
+  {
+   "name": "mxp",
+   "kind": "share",
+   "total": 131946900,
+   "parts": 1,
+   "facts": {
+    "total": 3
+   }
+  },
+  {
+   "name": "esp",
+   "kind": "share",
+   "total": 49355143,
+   "parts": 1,
+   "facts": {
+    "total": 4
+   }
+  },
+  {
+   "name": "pop",
+   "kind": "compare",
+   "a": "mxp.total",
+   "b": "esp.total"
+  }
+ ],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "cover",
+  "sec": 3.0,
+  "words": "It *doesn't fit*",
+  "tag": "Mexico on Spain",
+  "angle": "claim",
+  "who": "narrator",
+  "references": [
+   {
+    "id": "-h_vvjNX-rY",
+    "views": 173987,
+    "what": "the plan's demand Short: Mexico and Spain swapped on the map"
+   }
+  ],
+  "pattern": "Mexico's outline laid on Spain at true scale on our vintage map"
+ },
+ "narrator": "bm_george",
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Drop Mexico onto Spain at its real size, and it doesn't stop at Spain's coast.",
+   "events": {
+    "drop": {
+     "word": "Drop"
+    },
+    "mexico": {
+     "word": "Mexico"
+    },
+    "spain": {
+     "word": "Spain"
+    },
+    "real": {
+     "word": "real"
+    },
+    "stop": {
+     "word": "stop"
+    },
+    "coast": {
+     "word": "coast"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Hook",
+    "place": "on the map: the Atlantic between Mexico and Spain, Mexico's outline lifting off the Americas",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "spain",
+      "size": "medium"
+     },
+     {
+      "at": "coast",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "drop",
+      "what": "Mexico's flag-filled outline lifts off the Americas"
+     },
+     {
+      "at": "mexico",
+      "what": "MEXICO writes on the lifted outline"
+     },
+     {
+      "at": "spain",
+      "what": "Spain glows across the Atlantic with its label as the camera follows"
+     },
+     {
+      "at": "real",
+      "what": "the outline slides over the ocean at true scale"
+     },
+     {
+      "at": "stop",
+      "what": "it hangs over Spain, its edges past the coast"
+     },
+     {
+      "at": "coast",
+      "what": "Spain's coastline flashes under the outline's edge"
+     }
+    ],
+    "things": [
+     "mexico outline",
+     "spain",
+     "atlantic"
+    ]
+   }
+  },
+  {
+   "id": "size",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "Mexico has {area_ratio} as much land as Spain, from northern desert to southern jungle.",
+   "events": {
+    "mexico": {
+     "word": "Mexico"
+    },
+    "much": {
+     "word": "much"
+    },
+    "land": {
+     "word": "land"
+    },
+    "spain": {
+     "word": "Spain"
+    },
+    "northern": {
+     "word": "northern"
+    },
+    "desert": {
+     "word": "desert"
+    },
+    "southern": {
+     "word": "southern"
+    },
+    "jungle": {
+     "word": "jungle"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Size",
+    "place": "on the map: Mexico in its place with four Spain shapes laid across it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "spain",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mexico",
+      "what": "Mexico traces with its flag and a LAND sign rises over it with the ratio"
+     },
+     {
+      "at": "much",
+      "what": "the sign's figure pulses"
+     },
+     {
+      "at": "land",
+      "what": "Mexico's land glows"
+     },
+     {
+      "at": "spain",
+      "what": "Spain shapes land on Mexico one after another, four of them nearly filling it"
+     },
+     {
+      "at": "northern",
+      "what": "the north glows"
+     },
+     {
+      "at": "desert",
+      "what": "cacti spring up across the northern desert"
+     },
+     {
+      "at": "southern",
+      "what": "the south glows"
+     },
+     {
+      "at": "jungle",
+      "what": "trees spring up across the southern jungle"
+     }
+    ],
+    "things": [
+     "mexico",
+     "mexican flag",
+     "land sign",
+     "four spain shapes",
+     "cacti",
+     "jungle trees"
+    ],
+    "fig": {
+     "ratio": "{area_ratio}"
+    }
+   }
+  },
+  {
+   "id": "rule",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Spain once ruled Mexico as New Spain, from a whole ocean away.",
+   "events": {
+    "spain": {
+     "word": "Spain"
+    },
+    "ruled": {
+     "word": "ruled"
+    },
+    "mexico": {
+     "word": "Mexico"
+    },
+    "new": {
+     "word": "New"
+    },
+    "ocean": {
+     "word": "ocean"
+    },
+    "away": {
+     "word": "away"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Rule",
+    "place": "on the map: the Atlantic between Spain and Mexico, a galleon sailing the route",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "ocean",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "spain",
+      "what": "Spain glows with its flag"
+     },
+     {
+      "at": "ruled",
+      "what": "a galleon sets sail from Seville"
+     },
+     {
+      "at": "mexico",
+      "what": "the route draws to Veracruz"
+     },
+     {
+      "at": "new",
+      "what": "NEW SPAIN writes over Mexico"
+     },
+     {
+      "at": "ocean",
+      "what": "the camera pans along the ocean"
+     },
+     {
+      "at": "away",
+      "what": "the galleon arrives"
+     }
+    ],
+    "things": [
+     "galleon",
+     "sea route",
+     "spain",
+     "mexico",
+     "new spain label"
+    ]
+   }
+  },
+  {
+   "id": "tongue",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Today the two still share a language, from Mexico City to Madrid, with an ocean in between.",
+   "events": {
+    "today": {
+     "word": "Today"
+    },
+    "share": {
+     "word": "share"
+    },
+    "language": {
+     "word": "language"
+    },
+    "city": {
+     "word": "City"
+    },
+    "madrid": {
+     "word": "Madrid"
+    },
+    "ocean": {
+     "word": "ocean"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Tongue",
+    "place": "on the map: the Atlantic crossing from Mexico City to Madrid, a speech arc between them",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "ocean",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "today",
+      "what": "Mexico City's bubble area lights"
+     },
+     {
+      "at": "share",
+      "what": "a speech bubble pops up over Mexico"
+     },
+     {
+      "at": "language",
+      "what": "an arc runs out across the ocean and the camera follows it"
+     },
+     {
+      "at": "city",
+      "what": "MEXICO CITY writes on beside its pin"
+     },
+     {
+      "at": "madrid",
+      "what": "a pin drops on Madrid and a matching bubble pops over Spain"
+     },
+     {
+      "at": "ocean",
+      "what": "the camera pulls back and ATLANTIC writes on the sea"
+     }
+    ],
+    "things": [
+     "madrid pin",
+     "mexico city pin",
+     "speech bubbles",
+     "arc",
+     "atlantic"
+    ]
+   }
+  },
+  {
+   "id": "spain",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Spain itself runs from the Pyrenees down to Gibraltar, with Portugal along its western side.",
+   "events": {
+    "spain": {
+     "word": "Spain"
+    },
+    "pyrenees": {
+     "word": "Pyrenees"
+    },
+    "gibraltar": {
+     "word": "Gibraltar"
+    },
+    "portugal": {
+     "word": "Portugal"
+    },
+    "western": {
+     "word": "western"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Spain",
+    "place": "on the map: the Iberian peninsula, Spain traced with its flag",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "gibraltar",
+      "size": "close"
+     },
+     {
+      "at": "portugal",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "spain",
+      "what": "Spain traces round its border and fills with its flag"
+     },
+     {
+      "at": "pyrenees",
+      "what": "the Pyrenees peaks rise along the north border with a label"
+     },
+     {
+      "at": "gibraltar",
+      "what": "a pin drops on Tarifa at the south tip, STRAIT OF GIBRALTAR writes on"
+     },
+     {
+      "at": "portugal",
+      "what": "Portugal traces in with its own colour"
+     },
+     {
+      "at": "western",
+      "what": "PORTUGAL writes along the west coast"
+     }
+    ],
+    "things": [
+     "spain",
+     "spanish flag",
+     "pyrenees peaks",
+     "tarifa pin",
+     "portugal"
+    ]
+   }
+  },
+  {
+   "id": "cover",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Lay Mexico on top, and it covers almost all of Spain, then most of Portugal next door.",
+   "events": {
+    "lay": {
+     "word": "Lay"
+    },
+    "mexico": {
+     "word": "Mexico"
+    },
+    "covers": {
+     "word": "covers"
+    },
+    "spain": {
+     "word": "Spain"
+    },
+    "portugal": {
+     "word": "Portugal"
+    },
+    "door": {
+     "word": "door"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Cover",
+    "place": "on the map: Spain and Portugal with Mexico's outline laid on them at true scale",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "portugal",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lay",
+      "what": "Mexico's flag-filled outline slides in from the west"
+     },
+     {
+      "at": "mexico",
+      "what": "it drops onto Spain with a dust ring"
+     },
+     {
+      "at": "covers",
+      "what": "Spain's edge flashes under it"
+     },
+     {
+      "at": "spain",
+      "what": "SPAIN writes on the covered land"
+     },
+     {
+      "at": "portugal",
+      "what": "Portugal lights under the outline"
+     },
+     {
+      "at": "door",
+      "what": "Portugal's border flashes under the outline"
+     }
+    ],
+    "things": [
+     "mexico outline",
+     "spain",
+     "portugal",
+     "labels"
+    ]
+   }
+  },
+  {
+   "id": "baja",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Its north-west corner, Baja California, hangs out over the Atlantic beyond Portugal.",
+   "events": {
+    "corner": {
+     "word": "corner"
+    },
+    "baja": {
+     "word": "Baja"
+    },
+    "california": {
+     "word": "California"
+    },
+    "hangs": {
+     "word": "hangs"
+    },
+    "atlantic": {
+     "word": "Atlantic"
+    },
+    "portugal": {
+     "word": "Portugal"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Baja",
+    "place": "on the map: the Atlantic off Portugal, Mexico's Baja California arm lying over the sea",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "hangs",
+      "size": "close"
+     },
+     {
+      "at": "portugal",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "corner",
+      "what": "the camera slides to Mexico's north-west corner"
+     },
+     {
+      "at": "baja",
+      "what": "the Baja arm glows"
+     },
+     {
+      "at": "california",
+      "what": "BAJA CALIFORNIA writes along it"
+     },
+     {
+      "at": "hangs",
+      "what": "waves ripple under it in the ocean"
+     },
+     {
+      "at": "atlantic",
+      "what": "ATLANTIC writes on the sea"
+     },
+     {
+      "at": "portugal",
+      "what": "Portugal's coast flashes beside it"
+     }
+    ],
+    "things": [
+     "baja california arm",
+     "atlantic waves",
+     "portugal coast",
+     "labels"
+    ]
+   }
+  },
+  {
+   "id": "inside",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Turn it round: Spain dropped into Mexico sits almost wholly inside it, with Madrid right in the middle.",
+   "events": {
+    "turn": {
+     "word": "Turn"
+    },
+    "spain": {
+     "word": "Spain"
+    },
+    "dropped": {
+     "word": "dropped"
+    },
+    "inside": {
+     "word": "inside"
+    },
+    "madrid": {
+     "word": "Madrid"
+    },
+    "middle": {
+     "word": "middle"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Inside",
+    "place": "on the map: central Mexico with Spain's outline laid inside it",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "inside",
+      "size": "medium"
+     },
+     {
+      "at": "middle",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "turn",
+      "what": "the camera swings back across to Mexico"
+     },
+     {
+      "at": "spain",
+      "what": "Spain's flag-filled outline lifts off Europe"
+     },
+     {
+      "at": "dropped",
+      "what": "it drops into Mexico"
+     },
+     {
+      "at": "inside",
+      "what": "Mexico's border traces round it"
+     },
+     {
+      "at": "madrid",
+      "what": "a pin drops on Madrid"
+     },
+     {
+      "at": "middle",
+      "what": "the pin pulses in the middle of Mexico"
+     }
+    ],
+    "things": [
+     "spain outline",
+     "mexico",
+     "border trace",
+     "madrid pin"
+    ]
+   }
+  },
+  {
+   "id": "people",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "And people? For all that extra land, Mexico has only {pop_ratio} as many as Spain.",
+   "events": {
+    "people": {
+     "word": "people"
+    },
+    "land": {
+     "word": "land"
+    },
+    "mexico": {
+     "word": "Mexico"
+    },
+    "only": {
+     "word": "only"
+    },
+    "many": {
+     "word": "many"
+    },
+    "spain": {
+     "word": "Spain"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "People",
+    "place": "on the map: Spain with its crowd, then across to Mexico filling with figures",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "only",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "people",
+      "what": "small figures pop up across Spain"
+     },
+     {
+      "at": "land",
+      "what": "the camera crosses the ocean to Mexico's wide land"
+     },
+     {
+      "at": "mexico",
+      "what": "Mexico fills with figures"
+     },
+     {
+      "at": "only",
+      "what": "a sign stamps the ratio on Mexico"
+     },
+     {
+      "at": "many",
+      "what": "the figures bob"
+     },
+     {
+      "at": "spain",
+      "what": "the sign settles"
+     }
+    ],
+    "things": [
+     "spain",
+     "mexico",
+     "small figures",
+     "ratio sign"
+    ],
+    "fig": {
+     "ratio": "{pop_ratio}"
+    }
+   }
+  },
+  {
+   "id": "crowd",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "So Spain is the more crowded one, with more people packed onto every bit of its land than Mexico.",
+   "events": {
+    "spain": {
+     "word": "Spain"
+    },
+    "crowded": {
+     "word": "crowded"
+    },
+    "more": {
+     "word": "more"
+    },
+    "packed": {
+     "word": "packed"
+    },
+    "land": {
+     "word": "land"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Crowd",
+    "place": "on the map: close on Spain packed with small figures",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "packed",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "spain",
+      "what": "the camera pushes onto Spain"
+     },
+     {
+      "at": "crowded",
+      "what": "more figures squeeze in"
+     },
+     {
+      "at": "more",
+      "what": "Madrid and Barcelona glow as clusters"
+     },
+     {
+      "at": "packed",
+      "what": "the figures shuffle shoulder to shoulder"
+     },
+     {
+      "at": "land",
+      "what": "Spain's border pulses"
+     }
+    ],
+    "things": [
+     "spain",
+     "crowd of figures",
+     "madrid",
+     "barcelona"
+    ]
+   }
+  },
+  {
+   "id": "turn",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "But what about the rest of Mexico, laid on Spain: where does it end up?",
+   "events": {
+    "rest": {
+     "word": "rest"
+    },
+    "mexico": {
+     "word": "Mexico"
+    },
+    "laid": {
+     "word": "laid"
+    },
+    "spain": {
+     "word": "Spain"
+    },
+    "end": {
+     "word": "end"
+    },
+    "what": {
+     "word": "what"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Tail",
+    "place": "on the map: close on the Strait of Gibraltar, Mexico's outline cut off at Spain's south coast, then its tail revealed across the sea",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "end",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "what",
+      "what": "the outline shivers on Spain"
+     },
+     {
+      "at": "rest",
+      "what": "the outline's south-east tail glows"
+     },
+     {
+      "at": "mexico",
+      "what": "Mexico's outline drops back onto Spain"
+     },
+     {
+      "at": "laid",
+      "what": "Spain under it pulses"
+     },
+     {
+      "at": "spain",
+      "what": "a question mark pops over the tail"
+     },
+     {
+      "at": "end",
+      "what": "the hidden tail unrolls south-east across the sea as the camera follows"
+     }
+    ],
+    "things": [
+     "mexico outline",
+     "spain",
+     "question mark",
+     "mediterranean"
+    ]
+   }
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "Across the Mediterranean Sea and onto another continent, Africa: over Morocco, Algeria and even Tunisia.",
+   "events": {
+    "mediterranean": {
+     "word": "Mediterranean"
+    },
+    "africa": {
+     "word": "Africa"
+    },
+    "morocco": {
+     "word": "Morocco"
+    },
+    "algeria": {
+     "word": "Algeria"
+    },
+    "tunisia": {
+     "word": "Tunisia"
+    },
+    "continent": {
+     "word": "continent"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Africa",
+    "place": "on the map: the Mediterranean and North Africa under Mexico's south-east tail",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "africa",
+      "size": "medium"
+     },
+     {
+      "at": "tunisia",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "mediterranean",
+      "what": "the tail lies across the Mediterranean, waves under it"
+     },
+     {
+      "at": "continent",
+      "what": "the camera slides south over the sea"
+     },
+     {
+      "at": "africa",
+      "what": "AFRICA writes across the land"
+     },
+     {
+      "at": "morocco",
+      "what": "Morocco lights and its label writes"
+     },
+     {
+      "at": "algeria",
+      "what": "Algeria lights and its label writes"
+     },
+     {
+      "at": "tunisia",
+      "what": "Tunisia lights under the tail's tip"
+     }
+    ],
+    "things": [
+     "mexico outline",
+     "mediterranean",
+     "morocco",
+     "algeria",
+     "tunisia",
+     "africa label"
+    ]
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Bigger Spain or smaller Mexico: which map would you pick? Either way, drop Mexico on Spain and it just won't stop.",
+   "events": {
+    "bigger": {
+     "word": "Bigger"
+    },
+    "smaller": {
+     "word": "smaller"
+    },
+    "pick": {
+     "word": "pick"
+    },
+    "drop": {
+     "word": "drop"
+    },
+    "stop": {
+     "word": "stop"
+    },
+    "map": {
+     "word": "map"
+    },
+    "either": {
+     "word": "Either"
+    },
+    "just": {
+     "word": "just"
+    },
+    "way": {
+     "word": "way"
+    }
+   },
+   "transition": "match",
+   "params": {
+    "component": "Loop",
+    "place": "on the map: Europe and the Atlantic, Mexico lifting back off toward the Americas",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "drop",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "bigger",
+      "what": "Spain swells a little"
+     },
+     {
+      "at": "smaller",
+      "what": "Mexico shrinks a little"
+     },
+     {
+      "at": "map",
+      "what": "Spain lifts a little off the map"
+     },
+     {
+      "at": "pick",
+      "what": "a question mark swings between them"
+     },
+     {
+      "at": "either",
+      "what": "the question mark spins"
+     },
+     {
+      "at": "drop",
+      "what": "Mexico lifts and slides back toward the Atlantic"
+     },
+     {
+      "at": "way",
+      "what": "Spain's flag flutters"
+     },
+     {
+      "at": "just",
+      "what": "MEXICO writes back on the outline as it nears home"
+     },
+     {
+      "at": "stop",
+      "what": "the frame settles on the hook's map"
+     }
+    ],
+    "things": [
+     "mexico outline",
+     "spain",
+     "question mark",
+     "atlantic"
+    ]
+   }
+  }
+ ]
+}
