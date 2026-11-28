@@ -1,0 +1,97 @@
+{
+  "template": "short_story",
+  "renderer": "remotion",
+  "seed": 52917,
+  "duration_sec": 49,
+  "tempo": 1.2,
+  "style": {
+    "palette": "paper",
+    "genre": "undertow",
+    "key": "D",
+    "bpm": 58
+  },
+  "voice": {
+    "name": "bm_lewis",
+    "base_speed": 1.0,
+    "cast": {
+      "narrator": "bm_lewis",
+      "rohan": "am_puck",
+      "priya": "hf_alpha",
+      "sharma": "am_fenrir",
+      "sikka": "af_bella"
+    },
+    "lines": [
+      {
+        "scene": "hook",
+        "text": "Colgan Air's plane could push its own nose down.",
+        "start": 0.3,
+        "seconds": 3.21,
+        "window": 3.8,
+        "fill": 0.845
+      },
+      {
+        "scene": "how",
+        "text": "So why didn't it save the plane? The control column shakes first, as a warning. If the wing gets close to losing its lift, a machine shoves the column forward.",
+        "start": 4.1,
+        "seconds": 10.1,
+        "window": 10.77,
+        "fill": 0.938
+      },
+      {
+        "scene": "night",
+        "text": "Near Buffalo, in February 2009, the shaker fired at 131 knots. Then the pusher fired. So why did the nose come back up?",
+        "start": 14.87,
+        "seconds": 9.92,
+        "window": 10.6,
+        "fill": 0.936
+      },
+      {
+        "scene": "fight",
+        "text": "But the captain dragged the column back against it. It fired twice more, and he pulled back each time.",
+        "start": 25.47,
+        "seconds": 6.15,
+        "window": 6.8,
+        "fill": 0.904
+      },
+      {
+        "scene": "payoff",
+        "text": "The airliner rolled hard onto its right side, dived, and hit a house. All 49 aboard were killed, and 1 on the ground.",
+        "start": 34.6,
+        "seconds": 7.99,
+        "window": 8.63,
+        "fill": 0.926
+      },
+      {
+        "scene": "loop",
+        "text": "Machine or pilot: who gets the last word? Full story on our channel.",
+        "start": 43.23,
+        "seconds": 4.82,
+        "window": 5.47,
+        "fill": 0.881
+      }
+    ]
+  },
+  "layout_problems": [],
+  "experiments": {},
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0.0
+    }
+  ],
+  "audio": {
+    "peak_db": -1.0,
+    "mean_db": -18.4,
+    "lufs": -16.3,
+    "music_under_voice_db": 22.0
+  },
+  "craft_problems": [
+    "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups"
+  ],
+  "liveliness": {
+    "median": 13.171,
+    "still_share": 0.0,
+    "longest_still_sec": 0.0
+  },
+  "liveliness_problems": []
+}

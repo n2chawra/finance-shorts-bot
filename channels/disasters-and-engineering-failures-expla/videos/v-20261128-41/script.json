@@ -1,0 +1,654 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 52917,
+ "story": "promo_how_it_works",
+ "shape": "the-override",
+ "currency": "USD",
+ "style": {
+  "recipe": "blueprint",
+  "palette": "paper",
+  "genre": "undertow",
+  "key": "D",
+  "bpm": 58
+ },
+ "arms": {
+  "length": "30-50",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "question",
+ "cta": "Machine or pilot: who should get the last word? Comment",
+ "feed_id": "2026-11-20-colgan-3407",
+ "promo_of": "L-20261126-41",
+ "facts": [
+  {
+   "label": "Year of the crash (February 12, 2009)",
+   "value": 2009,
+   "unit": "year",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Day of February of the crash",
+   "value": 12,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "Airspeed when the stick shaker fired and the autopilot disengaged, knots",
+   "value": 131,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "People aboard who were killed (2 pilots, 2 flight attendants, 45 passengers)",
+   "value": 49,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  },
+  {
+   "label": "People killed on the ground",
+   "value": 1,
+   "unit": "count",
+   "as_of": "2010-02-02",
+   "source": "NTSB AAR-10/01",
+   "url": "https://www.ntsb.gov/investigations/AccidentReports/Reports/AAR1001.pdf",
+   "fixed": true
+  }
+ ],
+ "maths": [],
+ "narrator": "bm_lewis",
+ "thumbnail": {
+  "layout": "scene",
+  "at": "fight",
+  "sec": 1.0,
+  "words": "It pushed. He *pulled*.",
+  "tag": "Colgan Air",
+  "angle": "conflict",
+  "pattern": "the niche's air-crash covers show the airliner itself big at the moment it goes wrong with a few bold words; ours shows our blueprint cutaway of the nose with the column straining forward and the pusher glowing red under the floor"
+ },
+ "beats": [
+  {
+   "id": "hook",
+   "scene": "directed",
+   "role": "hook",
+   "speaker": "narrator",
+   "say": "Colgan Air's plane could push its own nose down.",
+   "events": {
+    "Colgan": {
+     "word": "Colgan"
+    },
+    "plane": {
+     "word": "plane"
+    },
+    "push": {
+     "word": "push"
+    },
+    "down": {
+     "word": "down"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "hook",
+    "place": "beside the twin-propeller airliner in the snowy night cloud near Buffalo, its wing already tinted amber",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "push",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Colgan",
+      "what": "the airliner side-on in the snow, gear down, wing tinted amber, date caption and reconstruction tag, COLGAN AIR types on, the airspeed plate"
+     },
+     {
+      "at": "plane",
+      "what": "the propellers blur, snow streaks past the wing"
+     },
+     {
+      "at": "push",
+      "what": "push in on the nose as it dips by itself, STICK PUSHER: NOSE DOWN types on in green"
+     },
+     {
+      "at": "down",
+      "what": "the nose comes back up a little"
+     }
+    ],
+    "things": [
+     "airliner",
+     "amber wing",
+     "propellers",
+     "landing gear",
+     "snowy cloud",
+     "airspeed plate"
+    ],
+    "fig": {
+     "speed": "{fact3}",
+     "year": "{fact1}",
+     "day": "{fact2}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "rush",
+     "at": "push"
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "scene": "directed",
+   "role": "promise",
+   "speaker": "narrator",
+   "say": "So why didn't it save the plane? The control column shakes first, as a warning. If the wing gets close to losing its lift, a machine shoves the column forward.",
+   "events": {
+    "save": {
+     "word": "save"
+    },
+    "plane": {
+     "word": "plane"
+    },
+    "column": {
+     "word": "column"
+    },
+    "shakes": {
+     "word": "shakes"
+    },
+    "warning": {
+     "word": "warning"
+    },
+    "wing": {
+     "word": "wing"
+    },
+    "lift": {
+     "word": "lift"
+    },
+    "machine": {
+     "word": "machine"
+    },
+    "forward": {
+     "word": "forward"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "how",
+    "place": "close along the airliner's fuselage past the lit cockpit windows to its high wing, in the snowy cloud",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "wing",
+      "size": "close"
+     },
+     {
+      "at": "forward",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "save",
+      "what": "close on the lit cockpit windows, WHY DIDN'T IT WORK? types on"
+     },
+     {
+      "at": "column",
+      "what": "the camera drifts along the nose past the cockpit"
+     },
+     {
+      "at": "shakes",
+      "what": "the airliner trembles, FIRST: COLUMN SHAKES types on in amber"
+     },
+     {
+      "at": "warning",
+      "what": "the amber tint on the wing deepens"
+     },
+     {
+      "at": "wing",
+      "what": "the camera slides out to the high wing, glowing amber toward red"
+     },
+     {
+      "at": "lift",
+      "what": "WING NEAR A STALL types on in red"
+     },
+     {
+      "at": "machine",
+      "what": "THEN: PUSHER types on in green, the trembling stops"
+     },
+     {
+      "at": "forward",
+      "what": "pull wide: the whole airliner lowers its nose, NOSE DOWN"
+     }
+    ],
+    "things": [
+     "cockpit windows",
+     "fuselage",
+     "high wing",
+     "stall glow",
+     "propellers",
+     "falling snow"
+    ]
+   }
+  },
+  {
+   "id": "night",
+   "scene": "directed",
+   "role": "build",
+   "speaker": "narrator",
+   "say": "Near Buffalo, in February {fact1}, the shaker fired at {fact3} knots. Then the pusher fired. So why did the nose come back up?",
+   "events": {
+    "Buffalo": {
+     "word": "Buffalo"
+    },
+    "February": {
+     "word": "February"
+    },
+    "shaker": {
+     "word": "shaker"
+    },
+    "knots": {
+     "word": "knots"
+    },
+    "Then": {
+     "word": "Then"
+    },
+    "pusher": {
+     "word": "pusher"
+    },
+    "nose": {
+     "word": "nose"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "approach",
+    "place": "below the approach path to Buffalo at night, looking up through the snow at the airliner passing over the runway's approach lights",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "shaker",
+      "size": "medium"
+     },
+     {
+      "at": "pusher",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Buffalo",
+      "what": "the approach lights in the snow, the airliner's landing lights above, NEAR BUFFALO types on"
+     },
+     {
+      "at": "February",
+      "what": "the date tag types on"
+     },
+     {
+      "at": "shaker",
+      "what": "the camera tilts up to the airliner, its data tag turns amber: SHAKER"
+     },
+     {
+      "at": "knots",
+      "what": "the airspeed on its data tag glows amber as the figure is said"
+     },
+     {
+      "at": "Then",
+      "what": "the airliner's nose wobbles, the wing tinting amber"
+     },
+     {
+      "at": "pusher",
+      "what": "push in: PUSHER FIRED: NOSE DOWN types on in green and the nose dips"
+     },
+     {
+      "at": "nose",
+      "what": "the nose rises again, a red question mark on the data tag"
+     }
+    ],
+    "things": [
+     "airliner overhead",
+     "approach lights",
+     "falling snow",
+     "radar data tag",
+     "landing lights",
+     "cloud"
+    ],
+    "fig": {
+     "speed": "{fact3}",
+     "year": "{fact1}"
+    }
+   }
+  },
+  {
+   "id": "fight",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "But the captain dragged the column back against it. It fired twice more, and he pulled back each time.",
+   "events": {
+    "captain": {
+     "word": "captain"
+    },
+    "dragged": {
+     "word": "dragged"
+    },
+    "against": {
+     "word": "against"
+    },
+    "twice": {
+     "word": "twice"
+    },
+    "each": {
+     "word": "each"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Cutaway",
+    "mode": "fight",
+    "place": "back in the cutaway, close on the captain's hands and the column, the pusher's rod under the floor",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "dragged",
+      "size": "close"
+     },
+     {
+      "at": "twice",
+      "size": "medium"
+     },
+     {
+      "at": "each",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "captain",
+      "what": "the column is shoved forward, a green PUSH arrow and the pusher lamp lit, CAPTAIN pinned to the hands on the yoke"
+     },
+     {
+      "at": "dragged",
+      "what": "the hands drag the column back, a red PULL arrow strikes the green one, a red flash"
+     },
+     {
+      "at": "against",
+      "what": "the pusher's rod strains under the floor, glowing red"
+     },
+     {
+      "at": "twice",
+      "what": "pull out: the pusher lamps light two more times, the column lunges"
+     },
+     {
+      "at": "each",
+      "what": "each time the hands drag it back, OVERRIDDEN stamps on"
+     }
+    ],
+    "things": [
+     "captain's hands",
+     "yoke and column",
+     "pusher rod",
+     "pusher lamps",
+     "push and pull arrows",
+     "floor cutaway"
+    ],
+    "fig": {
+     "speed": "{fact3}"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "clatter",
+     "at": "dragged"
+    }
+   ]
+  },
+  {
+   "id": "stall",
+   "scene": "directed",
+   "role": "turn",
+   "speaker": "narrator",
+   "say": "",
+   "events": {
+    "near": {
+     "sec": 0.2
+    },
+    "give": {
+     "sec": 1.3
+    },
+    "wide": {
+     "sec": 2.0
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "stall",
+    "place": "beneath the wing in the cloud, looking up at its underside, time slowed",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "extreme"
+     },
+     {
+      "at": "wide",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "near",
+      "what": "silence: the wing's underside fills the frame glowing red, snow streaking past"
+     },
+     {
+      "at": "give",
+      "what": "the sub-boom: the wing drops away, THE WING STALLS"
+     },
+     {
+      "at": "wide",
+      "what": "wide: the airliner rolls onto its side in the cloud"
+     }
+    ],
+    "things": [
+     "wing underside",
+     "red stall glow",
+     "propeller",
+     "snow",
+     "airliner rolling"
+    ]
+   },
+   "sfx": [
+    {
+     "kind": "subboom",
+     "at": "give"
+    }
+   ],
+   "min_sec": 2.8
+  },
+  {
+   "id": "payoff",
+   "scene": "directed",
+   "role": "payoff",
+   "speaker": "narrator",
+   "say": "The airliner rolled hard onto its right side, dived, and hit a house. All {fact4} aboard were killed, and {fact5} on the ground.",
+   "events": {
+    "rolled": {
+     "word": "rolled"
+    },
+    "side": {
+     "word": "side"
+    },
+    "dived": {
+     "word": "dived"
+    },
+    "house": {
+     "word": "house"
+    },
+    "aboard": {
+     "word": "aboard"
+    },
+    "killed": {
+     "word": "killed"
+    },
+    "ground": {
+     "word": "ground"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "crash",
+    "place": [
+     "side-on beside the airliner as it rolls onto its side and dives",
+     "over the snowy rooftops of Clarence Center at night",
+     "down on the snowy street where fire engines and firefighters arrive"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "killed",
+      "size": "medium"
+     },
+     {
+      "at": "ground",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "rolled",
+      "what": "side-on: the airliner rolls onto its right side, ONTO ITS SIDE, DIVING types on in red"
+     },
+     {
+      "at": "dived",
+      "what": "its nose drops into the cloud"
+     },
+     {
+      "at": "house",
+      "what": "cut far above the snowy town: an orange glow rises between the houses, CLARENCE CENTER"
+     },
+     {
+      "at": "aboard",
+      "what": "the toll plate for the people aboard lands"
+     },
+     {
+      "at": "killed",
+      "what": "down into the street: fire engines' lights flash, firefighters with lamps walk toward the glow"
+     },
+     {
+      "at": "ground",
+      "what": "the second plate, for the person on the ground, lands below"
+     }
+    ],
+    "things": [
+     "snowy town",
+     "houses with lit windows",
+     "orange glow",
+     "fire engines",
+     "firefighters with lamps",
+     "toll plates"
+    ],
+    "fig": {
+     "aboard": "{fact4}",
+     "ground": "{fact5}"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "scene": "directed",
+   "role": "loop",
+   "speaker": "narrator",
+   "say": "Machine or pilot: who gets the last word? Full story on our channel.",
+   "events": {
+    "Machine": {
+     "word": "Machine"
+    },
+    "pilot": {
+     "word": "pilot"
+    },
+    "last": {
+     "word": "last"
+    },
+    "story": {
+     "word": "story"
+    },
+    "channel": {
+     "word": "channel"
+    }
+   },
+   "transition": "cut",
+   "params": {
+    "component": "Sky",
+    "mode": "loop",
+    "place": "beside the airliner in the snowy cloud again, quiet before the warning",
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "channel",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "Machine",
+      "what": "the airliner flying level in the snow, MACHINE types on"
+     },
+     {
+      "at": "pilot",
+      "what": "OR PILOT? types on"
+     },
+     {
+      "at": "story",
+      "what": "the camera drifts in toward the airliner"
+     },
+     {
+      "at": "channel",
+      "what": "FULL STORY ON THE CHANNEL types on, the wing tints amber again, back to the first frame"
+     }
+    ],
+    "things": [
+     "airliner",
+     "snowy cloud",
+     "question tags",
+     "propellers"
+    ]
+   }
+  }
+ ]
+}

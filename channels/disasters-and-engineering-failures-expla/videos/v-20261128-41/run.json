@@ -1,0 +1,313 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-28T14:50:11.510965+00:00",
+    "finishedAt": "2026-11-28T14:50:11.510965+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T14:51:55.214263+00:00",
+    "finishedAt": "2026-11-28T14:51:55.214263+00:00",
+    "notes": [
+      "beat 'how'.params.moments[2].what contains a typed number; use a placeholder: 'a STEP 1 · WARN tag lights amber'",
+      "beat 'how': the line right after the hook is a setup or an explanation ('First,' in 'First, a stick shaker rattles the control column as a warning.'); 20 of 26 Shorts lost the most viewers here, at 4.5-7 s. Go on with the hook's own story: the next, bigger surprise about the same person or business (\"And it still kept {pro_total}.\")",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 0 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T14:52:07.897951+00:00",
+    "finishedAt": "2026-11-28T14:52:07.897951+00:00",
+    "notes": [
+      "title mentions '3407', which is neither a script input nor a computed figure: write the figure as a placeholder ({fact1}, {fact2}, {fact3}, {fact4}, {fact5}…) or drop it",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-28T14:52:13.864096+00:00",
+    "finishedAt": "2026-11-28T14:52:13.864096+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T14:52:14.590747+00:00",
+    "finishedAt": "2026-11-28T14:52:14.590747+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "warning: beat 'how' runs 11.7 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T14:52:22.061006+00:00",
+    "finishedAt": "2026-11-28T14:52:22.061006+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T14:55:48.939085+00:00",
+    "finishedAt": "2026-11-28T14:55:48.939085+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "beat 'how': the line right after the hook is a setup or an explanation ('First,' in 'First, a stick shaker rattles the column.'); 20 of 26 Shorts lost the most viewers here, at 4.5-7 s. Go on with the hook's own story: the next, bigger surprise about the same person or business (\"And it still kept {pro_total}.\")",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: beat 'fight' opens like a line in one of the last scripts ('the captain pulled'): new words"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T14:56:33.319022+00:00",
+    "finishedAt": "2026-11-28T14:56:33.319022+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "warning: beat 'how' runs 9.4 s with 3.3 s and no event: add an event (a line, a count-up, a pose, a camera punch) every 3 s, or split the beat",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T14:57:07.222969+00:00",
+    "finishedAt": "2026-11-28T14:57:07.222969+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T14:58:10.720820+00:00",
+    "finishedAt": "2026-11-28T14:58:10.720820+00:00",
+    "notes": [
+      "payoff beat: 'The airliner rolled almost onto its back' overstates the NTSB report (AAR-10/01 p.4-5, p.85: roll reached 105 deg then 100 deg right wing down, i.e. just past vertical, with 25 deg nose down; inverted is 180 deg, and no reputable source says nearly inverted). Say what the report says, e.g. 'The airliner rolled past ninety degrees onto its right side, dived and hit a house'; the payoff 'rolled' moment caption ALMOST ON ITS BACK and the stall beat's 'the airliner rolls over' moment must match (rolls onto its side), not show it inverted.",
+      "All 5 facts confirmed on the NTSB AAR-10/01 PDF at the cited URL: Feb 12 2009; 131 knots when the stick shaker fired and the autopilot disengaged; 2 pilots + 2 flight attendants + 45 passengers = 49 aboard killed; 1 on the ground; crashed into a residence in Clarence Center. Pusher fired 3 times (2216:34, :40, :50) with the captain pulling 41, 90 and 160 lb after each: the fight beat is accurate. Only the roll wording needs the fix."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-28T14:57:13.529005+00:00",
+    "finishedAt": "2026-11-28T14:58:54.351493+00:00",
+    "notes": [
+      "fingerprint: 540156ac5f58f341.458a82729ee9c42f",
+      "text 'STICK PUSHER' at 3.2 s runs outside the frame",
+      "3 of 11 stills are mostly empty background (at 5 s, 10 s, 15 s): fill the frame (a set, the cast big, money as a thing)",
+      "the hook runs 4.6 s; keep it to 4 s or less",
+      "note: 14 of its 38 props were in v-20261126-41 too (airliner rolling, approach lights, cloud, falling snow, fire engines, firefighters with lamps, houses with lit windows, question tags, red stall glow, snow, snowy town, toll plates, windshield horizon, yoke): at most 30%; the story's own things, not the last video's",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video iMcKJFuI2rQ is one: {\"id\": \"iMcKJFuI2rQ\", \"views\": 468120, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T15:00:09.288357+00:00",
+    "finishedAt": "2026-11-28T15:00:09.288357+00:00",
+    "notes": [
+      "beat 'payoff'.events.back: no word 'back' in this beat's spoken line",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:00:14.942220+00:00",
+    "finishedAt": "2026-11-28T15:00:14.942220+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:00:40.828137+00:00",
+    "finishedAt": "2026-11-28T15:02:01.487822+00:00",
+    "notes": [
+      "fingerprint: d090990793902053.456a98eb187dae71",
+      "48 s, paper/undertow (preview only)",
+      "note: 14 of its 38 props were in v-20261126-41 too (airliner rolling, approach lights, cloud, falling snow, fire engines, firefighters with lamps, houses with lit windows, question tags, red stall glow, snow, snowy town, toll plates, windshield horizon, yoke): at most 30%; the story's own things, not the last video's",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video iMcKJFuI2rQ is one: {\"id\": \"iMcKJFuI2rQ\", \"views\": 468120, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:02:17.953698+00:00",
+    "finishedAt": "2026-11-28T15:02:17.953698+00:00",
+    "notes": [
+      "Re-review after fix: payoff 'rolled hard onto its right side, dived, and hit a house' matches NTSB AAR-10/01 (105/100 deg right wing down, 25 deg nose down, steep descent, impact with a residence); stall and payoff captions match; all 5 facts (Feb 12 2009, 131 kt at stick shaker, 49 aboard, 1 on ground) confirmed on the cited NTSB PDF; pusher fired 3 times with captain pulling 41/90/160 lb; disclaimer ends the description; final report still current."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:02:44.212522+00:00",
+    "finishedAt": "2026-11-28T15:03:56.935327+00:00",
+    "notes": [
+      "fingerprint: d090990793902053.bd93be6398b49cab",
+      "48 s, paper/undertow (preview only)",
+      "note: 14 of its 38 props were in v-20261126-41 too (airliner rolling, approach lights, cloud, falling snow, fire engines, firefighters with lamps, houses with lit windows, question tags, red stall glow, snow, snowy town, toll plates, windshield horizon, yoke): at most 30%; the story's own things, not the last video's",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video iMcKJFuI2rQ is one: {\"id\": \"iMcKJFuI2rQ\", \"views\": 468120, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T15:05:06.577912+00:00",
+    "finishedAt": "2026-11-28T15:05:06.577912+00:00",
+    "notes": [
+      "[script] 0.0s: frame 1 is a flat blueprint cockpit with a stick-figure pilot, no airliner. The recipe's promo frame 1 and lesson 7 want the vehicle in 3D a second before the failure, with the pusher part already amber. All three reference Shorts (v-20261125-41, v-20261122-41, v-20261123-41) open on the vehicle big in lit 3D. Open on the 3D airliner (Sky kit) in the snow on approach, with a cutaway or callout to the column and pusher.",
+      "[script] 5.0s and 10.0s ('how' beat, 3.8-14 s): repeats lesson 0. The second beat cuts away from frame 1's cockpit to an abstract linkage on blue graph paper with a generic plane silhouette, and it uses jargon ('stall', 'stick shaker'). Keep the airliner from frame 1 whole in its place while you explain the shaker and the pusher, in everyday words.",
+      "[script] Lesson 6: only about 22 of 48 s are in 3D (night, stall, payoff). The first 14 s in a row are flat blueprint, and the cutaway returns at 24-31 s and 42-48 s. At least half the runtime must be in the lit 3D world, with diagrams as 3-6 s inserts.",
+      "[script] 35.0s ('payoff' beat): the voice says 'The airliner rolled hard onto its right side, dived' but the frame is only a town of rooftops, with no airliner anywhere. Show the airliner rolling and diving over Clarence Center on those words.",
+      "[scene] Sky kit, payoff crash mode, 35-40s: the Clarence Center houses are pale, flat-lit, untextured grey boxes under a flat grey ground. Lesson 5 fails box-like 3D. They need materials, roof and wall detail and a key light with shadows.",
+      "[scene] Cutaway component (hook, fight and loop beats, 0.0s, 25s, 45s, 48.2s): the 'PUSHER LAMPS' label runs into the pilot's helmet and face. Move the label clear of the figure."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:06:27.847095+00:00",
+    "finishedAt": "2026-11-28T15:06:27.847095+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:06:57.830480+00:00",
+    "finishedAt": "2026-11-28T15:08:49.120499+00:00",
+    "notes": [
+      "fingerprint: e3d7fde5612a96bc.ce533577eb3c1f57",
+      "49 s, paper/undertow (preview only)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 16 of its 34 props were in v-20261126-41 too (airliner, airliner rolling, approach lights, cloud, falling snow, fire engines, firefighters with lamps, high wing, houses with lit windows, landing gear, propellers, question tags, red stall glow, snow, snowy town, toll plates): at most 30%; the story's own things, not the last video's",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video iMcKJFuI2rQ is one: {\"id\": \"iMcKJFuI2rQ\", \"views\": 468120, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:09:36.680729+00:00",
+    "finishedAt": "2026-11-28T15:11:23.149053+00:00",
+    "notes": [
+      "fingerprint: e3d7fde5612a96bc.8622fac2171f891a",
+      "49 s, paper/undertow (preview only)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 16 of its 34 props were in v-20261126-41 too (airliner, airliner rolling, approach lights, cloud, falling snow, fire engines, firefighters with lamps, high wing, houses with lit windows, landing gear, propellers, question tags, red stall glow, snow, snowy town, toll plates): at most 30%; the story's own things, not the last video's",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video iMcKJFuI2rQ is one: {\"id\": \"iMcKJFuI2rQ\", \"views\": 468120, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:11:57.373552+00:00",
+    "finishedAt": "2026-11-28T15:13:41.924547+00:00",
+    "notes": [
+      "fingerprint: e3d7fde5612a96bc.d94b72fe2035de59",
+      "49 s, paper/undertow (preview only)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 16 of its 34 props were in v-20261126-41 too (airliner, airliner rolling, approach lights, cloud, falling snow, fire engines, firefighters with lamps, high wing, houses with lit windows, landing gear, propellers, question tags, red stall glow, snow, snowy town, toll plates): at most 30%; the story's own things, not the last video's",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video iMcKJFuI2rQ is one: {\"id\": \"iMcKJFuI2rQ\", \"views\": 468120, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T15:14:16.411443+00:00",
+    "finishedAt": "2026-11-28T15:14:16.411443+00:00",
+    "notes": [
+      "[script] 20.0s, night beat: the voice says '131 knots' (the caption shows 131) but the SHAKER · KNOTS tag reads 4, still counting up. This repeats lesson 0 (the figure arrives after its word). Land 131 on the word '131': start the count early enough to finish on that word, or set it with no count-up.",
+      "[script] 25.0s, night beat: the tag flips to 'PUSHER · KNOTS 131', which says the pusher fired at 131 knots. The sourced fact is the speed when the shaker fired, not the pusher. Drop the speed from the PUSHER tag (just PUSHER) or keep it labelled as the shaker speed.",
+      "[scene] Sky kit crash mode, payoff, 40.0s: on 'All 49 aboard' the ABOARD · KILLED plate is almost invisible. It is faded and sits behind the black smoke column, and its 49 can't be read. Draw the plate in front of the smoke, at full opacity by the word '49'."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:14:35.215263+00:00",
+    "finishedAt": "2026-11-28T15:14:35.215263+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:15:00.794383+00:00",
+    "finishedAt": "2026-11-28T15:16:45.583797+00:00",
+    "notes": [
+      "fingerprint: d5bdf655cf39521c.6a683eea90051859",
+      "49 s, paper/undertow (preview only)",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 16 of its 34 props were in v-20261126-41 too (airliner, airliner rolling, approach lights, cloud, falling snow, fire engines, firefighters with lamps, high wing, houses with lit windows, landing gear, propellers, question tags, red stall glow, snow, snowy town, toll plates): at most 30%; the story's own things, not the last video's",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video iMcKJFuI2rQ is one: {\"id\": \"iMcKJFuI2rQ\", \"views\": 468120, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:16:59.536361+00:00",
+    "finishedAt": "2026-11-28T15:16:59.536361+00:00",
+    "notes": [
+      "3D airliner from frame 1, with date, place and 131 on screen. The second beat stays on the whole plane in plain words. The tags now say SHAKER FIRED 131 (on its word) and PUSHER FIRED: NOSE DOWN (no figure). The roll and dive happen before the town, and the 49 plate is readable over the smoke. One blueprint insert for the fight, label clear of the pilot. The loop returns to the airliner. Layout is clean, audio -1/-18.4 dB, 49 s, disclaimer in the description.",
+      "fingerprint: d5bdf655cf39521c.6a683eea90051859"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T15:37:13.202646+00:00",
+    "finishedAt": "2026-11-28T16:14:31.447168+00:00",
+    "notes": [
+      "49 s, paper/undertow, peak -1.0 dB, mean -18.4 dB",
+      "note: 17 s without a close or extreme shot (at most 15 s): emotion lives in close-ups",
+      "note: 16 of its 34 props were in v-20261126-41 too (airliner, airliner rolling, approach lights, cloud, falling snow, fire engines, firefighters with lamps, high wing, houses with lit windows, landing gear, propellers, question tags, red stall glow, snow, snowy town, toll plates): at most 30%; the story's own things, not the last video's",
+      "note: 1 `build` beats; at least 3: the stakes rise step by step before the turn",
+      "warning: integrated loudness -16.3 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "note: cover: the cover's `references`: at least one video on this topic with 10K+ views, {id, views, what: what its cover shows}, studied before the cover is chosen (the plan's demand video iMcKJFuI2rQ is one: {\"id\": \"iMcKJFuI2rQ\", \"views\": 468120, \"what\": \"<what its cover shows>\"}), or `unique` when nothing comparable exists; python -m renderer.thumbs refs <id> lists the topic's hits"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-28T16:14:37.323868+00:00",
+    "finishedAt": "2026-11-28T16:14:37.323868+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
