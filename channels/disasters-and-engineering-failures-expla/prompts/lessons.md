@@ -3,15 +3,23 @@
 Each lesson is a mistake that cost viewers, written by the reviewer (agents/reviewer.md) from where viewers
 left. The writer follows them and QA enforces them. A new channel starts with channel #1's general ones.
 
-## 0. The second beat stays on the whole thing, in plain words (reviewer, 2026-11-25)
-Seen in: v-20261122-41 (Mississippi tanker), −15.5% at 5.3 s, the channel's biggest drop: the "rudder" beat
-(3.1–7.7 s) cut from the tanker on the night river to a glowing orange slab on murky green, no hull, water or
-river in frame, over "Its rudder had stuck to starboard". A stranger can't tell what the slab is, and "starboard"
-is a sailor's word. Also v-20261121-42 (Lac-Mégantic), −11.3% at 5.4 s, the "speed" beat: the dial read 3 while
-the voice said 65, so the figure arrived after the word. In both, the second beat is the first big drop after the hook.
-Fix: in the 3–8 s beat keep the subject from frame 1 whole and recognisable in its place (pull in on the tanker's
-stern above the water, then show the stuck rudder on it; never a cutaway with no ship around it), say it in
-everyday words ("jammed hard right", not "to starboard"), and land any figure on screen on the word that says it.
+## 0. The second beat stays on the whole thing, in plain words (reviewer, 2026-11-25; raised 2026-11-28)
+Seen in 5 of 5 measured Shorts: the 3–8 s beat is the channel's biggest drop every time.
+- v-20261122-41 (Mississippi tanker), −15.5% at 5.3 s: the `rudder` beat cut from the tanker to a glowing orange
+  slab with no hull or river in frame, over "Its rudder had stuck to starboard" (a sailor's word).
+- v-20261125-41 (Titan), −21.1% at 7.0 s: the `deep` beat (4.4–10.8 s) left the lit 3D sub for a flat green sonar
+  column where Titan is a dot, then stalled on "So what happened?".
+- v-20261123-41 (Kobe Bryant's helicopter), −16.6% at 5.2 s: the `climb` beat (3.7–10.8 s) pulled out of the cloud
+  to a speck of a helicopter over sunny desert hills; the 1,500 and 2,400 figures only came at 7.4 s. Its `toll`
+  counter still read 0 while the voice said "two minutes" (30 s).
+- v-20261124-41 (Tacoma Narrows; only 39 views, so support), −31.3% at 5.5 s: the `gertie` beat was backstory
+  ("It was four months old, and its builders called it Galloping Gertie") on a calm deck with a calendar sign.
+- v-20261121-42 (Lac-Mégantic), −11.3% at 5.4 s: the dial read 3 while the voice said 65.
+Fix: the 3–8 s beat keeps the subject from frame 1 big and whole in its place (push in on it; never a pull-out to a
+speck, a flat diagram or a cutaway with the vehicle gone; diagrams come after 10 s), moves the story forward with the
+next hard fact in everyday words (never a question like "So what happened?", never backstory such as its age or
+nickname, never a sailor's or pilot's term), and lands any figure on screen on the word that says it (a counter
+reaches its value by that word, never after).
 
 ## 1. The first frame names the subject (general)
 Seen in: channel #1's first month, 55–76% swiped away when the title and first second held the subject back.
