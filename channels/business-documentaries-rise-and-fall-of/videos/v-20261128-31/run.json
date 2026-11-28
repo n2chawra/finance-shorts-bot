@@ -1,0 +1,159 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:43:18.416563+00:00",
+    "finishedAt": "2026-11-28T00:43:18.416563+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T00:46:11.891759+00:00",
+    "finishedAt": "2026-11-28T00:46:11.891759+00:00",
+    "notes": [
+      "beat 'hook'.params.layers[0].lines[0] contains a typed number; use a placeholder: \"In 2008, Airbnb's founders designed their own cereal boxes\"",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'Airbnb Sold Cereal for {fact1} a Box' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T00:46:19.287059+00:00",
+    "finishedAt": "2026-11-28T00:46:19.287059+00:00",
+    "notes": [
+      "beat 'names'.params.place[1] contains a typed number; use a placeholder: 'a 2008 presidential ballot'",
+      "note: the title 'Airbnb Sold Cereal for {fact1} a Box' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "failed",
+    "startedAt": "2026-11-28T00:46:24.484701+00:00",
+    "finishedAt": "2026-11-28T00:46:24.484701+00:00",
+    "notes": [
+      "beat 'names'.say contains a typed number; use a placeholder: \"And not just any cereal: the boxes were Obama O's and Cap'n McCain's, made for the 2008 election. So why was a website for spare rooms selling breakfast?\"",
+      "note: the title 'Airbnb Sold Cereal for {fact1} a Box' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:46:28.833245+00:00",
+    "finishedAt": "2026-11-28T00:46:28.833245+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title 'Airbnb Sold Cereal for {fact1} a Box' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:46:38.710331+00:00",
+    "finishedAt": "2026-11-28T00:46:38.710331+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title 'Airbnb Sold Cereal for {fact1} a Box' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T00:47:31.819997+00:00",
+    "finishedAt": "2026-11-28T00:47:31.819997+00:00",
+    "notes": [
+      "plan.json description: 'Sources: CNBC (Jan 2009)' is wrong; the only source (cnbc.com, 'Airbnb CEO says he wooed first investors with boxes of cereal') was published 18 Apr 2023 and the script's own source tags say 2023-04-18. Change to 'Sources: CNBC (Apr 2023).' Everything else checks: all five facts ($40/box, more than 1,000 boxes, $30,000, YC $20,000 for 6%) confirmed on the CNBC page; Obama O's/Cap'n McCain's names confirmed by Business Insider and TechCrunch; verify list met (no current Airbnb figure, candidates only as box names); disclaimer present."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:46:52.652497+00:00",
+    "finishedAt": "2026-11-28T00:47:42.011240+00:00",
+    "notes": [
+      "fingerprint: 6f6481d0d8583c8d.e3b0c44298fc1c14",
+      "43 s, ember/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:47:47.870454+00:00",
+    "finishedAt": "2026-11-28T00:47:47.870454+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:47:48.764026+00:00",
+    "finishedAt": "2026-11-28T00:47:48.764026+00:00",
+    "notes": [
+      "5 figures computed from inputs; 5 cross-checked against closed-form formulas.",
+      "note: the title 'Airbnb Sold Cereal for {fact1} a Box' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:48:02.907766+00:00",
+    "finishedAt": "2026-11-28T00:48:02.907766+00:00",
+    "notes": [
+      "Re-review: description now 'Sources: CNBC (Apr 2023)' (matches the 18 Apr 2023 CNBC article); hook document line now attributes to Chesky. All five facts ($40/box, 1,000+ boxes, $30,000, YC $20,000 for 6%) confirmed on the CNBC page; Obama O's/Cap'n McCain's names confirmed by Business Insider and TechCrunch; verify list met; disclaimer present."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:47:56.955739+00:00",
+    "finishedAt": "2026-11-28T00:48:14.325147+00:00",
+    "notes": [
+      "fingerprint: 851437cef476f07c.e3b0c44298fc1c14",
+      "43 s, ember/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:48:28.743703+00:00",
+    "finishedAt": "2026-11-28T00:48:45.493436+00:00",
+    "notes": [
+      "fingerprint: 1f01e1ecbf14c4f6.e3b0c44298fc1c14",
+      "43 s, ember/dossier (preview only)"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:49:52.790020+00:00",
+    "finishedAt": "2026-11-28T00:49:52.790020+00:00",
+    "notes": [
+      "Directed doc Short at the bar of v-20261122-32: CNBC page first (doc-document-first challenger, same as v-20261127-31), cereal stays in beat 2, real 2008 Obama/McCain ballot, Chesky photo, laptop stamps, aisle count, YC room + logo, gold $30,000 poster payoff, living-room pick-one loop back to the bowl; layout/craft empty, 43 s, peak -1.0/mean -18.4 dB, disclaimer in description. Minor: the 'Brian Chesky' depth title sits mostly behind his head at 15 s (caption names him); red 'Mattresses' stamp is low contrast on the red sofa at 40 s.",
+      "fingerprint: 1f01e1ecbf14c4f6.e3b0c44298fc1c14"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:50:07.964598+00:00",
+    "finishedAt": "2026-11-28T00:52:57.136948+00:00",
+    "notes": [
+      "43 s, ember/dossier, peak -1.0 dB, mean -18.4 dB",
+      "warning: integrated loudness -16.4 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "warning: the music sits only 17.4 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-28T00:53:02.760079+00:00",
+    "finishedAt": "2026-11-28T00:53:02.760079+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]
