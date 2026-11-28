@@ -791,3 +791,51 @@ def json_text(v) -> str:
     if isinstance(v, (list, tuple)):
         return " ".join(json_text(x) for x in v)
     return ""
+
+
+# A line that says one thing acts on another is shown happening (owner, 2026-11-27, on How Tech Works'
+# L-20261127-21: "I have to hear things properly to understand rather than seeing"). Its moments must
+# put a part in motion on another (slides in, presses, spins, carries, splits, multiplies, lifts out),
+# not only make things appear, light up or get labelled. Only for an explainer kit (`look.engine: three`).
+_OPERATION = re.compile(
+    r"\b(multipl(?:y|ies|ied)|adds?|added|turns? (?:it |them |that |this )?into|picks?|picked|chooses|sends?|"
+    r"pushe?s|pulls?|shoves?|cuts?|splits?|spins?|compress(?:es|ed)?|converts?|compares?|stores?|reads?|"
+    r"flows?|travels?|carries|carry|bends?|lifts?|press(?:es)?|heats?|charges?|switch(?:es)?|flips?|"
+    r"encodes?|decodes?|predicts?|scores?|matches|looks? up|weighs?|pumps?|fires?|squeezes?|melts?|etch(?:es)?|"
+    r"grinds?|drives?|rotates?|bounces?|feeds?|sorts?|routes?)\b", re.I)
+_ACTS = re.compile(
+    r"\b(slid(?:e|es|ing)|push(?:es|ing)?|pull(?:s|ing)?|press(?:es|ing)?|turn(?:s|ing)|spin(?:s|ning)?|"
+    r"rotat\w*|whirl\w*|flow\w*|rac(?:e|es|ing)|run(?:s|ning)|stream\w*|travel\w*|carr(?:y|ies|ying)|"
+    r"shoot\w*|shot|lift\w*|drop\w*|slic\w*|cut(?:s|ting)?|split\w*|bend\w*|fold\w*|tilt\w*|pivot\w*|"
+    r"snap\w*|slam\w*|multipl\w*|merg\w*|feed\w*|enter\w*|leav\w*|exit\w*|mov(?:e|es|ing)|ris(?:e|es|ing)|"
+    r"sink\w*|fill\w*|drain\w*|pour\w*|stamp\w*|mesh\w*|bounc\w*|sweep\w*|march\w*|sort\w*|swap\w*|"
+    r"shrink\w*|grow\w*|stretch\w*|peel\w*|pump\w*|spark\w*|squeez\w*|crush\w*|melt\w*|etch\w*|"
+    r"rolls?|rolling|fl(?:y|ies|ying)|falls?|falling|shov\w*|knock\w*|hits?|strik\w*|pass(?:es|ing)|"
+    r"jump\w*|hop\w*|swing\w*|grab\w*|pick(?:s|ing)? up|plug\w*|sucks?|blows?|zip\w*|scroll\w*)\b", re.I)
+
+
+def mechanism_problems(script: dict) -> list[str]:
+    """A directed beat whose line says something acts on something (multiplies, picks, sends, pushes,
+    turns into…) is shown happening: its `params.shows` says in one sentence what a viewer with the sound
+    off sees (the input, the part that acts on it, what comes out), and at least one moment puts a part in
+    motion on another. Moments that only appear, light up, count or get labelled leave the viewer
+    listening for the cause (director.md rule 13)."""
+    out = []
+    for b in script.get("beats", []):
+        p = b.get("params")
+        if b.get("scene") not in ("directed", None) or not isinstance(p, dict) or b.get("role") == "end":
+            continue
+        say = b.get("say") or ""
+        if not (m := _OPERATION.search(say)):
+            continue
+        shows = p.get("shows") if isinstance(p.get("shows"), str) else ""
+        if len(shows.split()) < 6 or not _ACTS.search(shows):
+            out.append(f"beat '{b.get('id')}' says '{m.group(0)}': give it `params.shows`, one sentence of what a viewer "
+                       "with the sound off sees happen (the input, the part acting on it on the verb, what comes out), "
+                       "and draw that (director.md rule 13)")
+        elif not _ACTS.search(json_text(p.get("moments"))):
+            out.append(f"beat '{b.get('id')}' says '{m.group(0)}' but its moments only make things appear, light up or "
+                       "get labelled: show it happening (the input slides into the part, the part acts on the verb, "
+                       "the output leaves; `Operation3D` / `GearTrain` in the 3D kit), so a viewer with the sound "
+                       "off still sees the cause (director.md rule 13)")
+    return out

@@ -167,6 +167,14 @@ only the live beat is mounted, so every beat can sit at the origin and keep cris
    toward +x, `aoa` tilts it nose-up), `foilSurface`, `streamlines(ys, {aoa, lift})` (flow lines that follow the
    section, rise ahead and bend down behind it with the tilt; an illustration, tag it so), `alongLine`/`lineU`
    (a parcel riding a line), `GlowLine` (a polyline that draws on, dashed and flowing), `PaperPlane`.
+8c. **Show it working** — `Operation.tsx` (2026-11-28, owner note on L-20261127-21: "I have to hear things
+   properly to understand rather than seeing"; director.md rule 13): `Operation3D` (input → the part that acts
+   → output in one frame: `from`, `at`, `to`, frames `inAt` / `actAt` / `outAt`; the input travels in and is
+   swallowed, `machine(act)` draws the part with `act` 0→1→0 on the verb, the output springs out and stays, a
+   faint `ghost` of the input stays where it began, a track joins them), `Press3D` (a ready `machine`), and
+   `GearTrain` (gears that push each other in order: each `r` and the `angle` from the one before; the next
+   turns the other way at the teeth ratio, tooth in gap, `gearPoses` gives the same in JS; `hot` glows the one
+   the line names). Demo `Operation3DDemo`. Use them on every line that says something acts on something.
 9. **The cast** — `Character3D` "Byte" (poses `idle | point | pointLeft | shrug | surprised | wave |
    think`, faces, seeded blinks, `talk` ranges).
 

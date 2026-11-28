@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { feature } from "topojson-client";
 import world50 from "world-atlas/countries-50m.json";
-import { hasFlag } from "../src/flat/flags";
+import { HISTORIC_FLAGS, hasFlag } from "../src/flat/flags";
 
 const keys = [...readFileSync(new URL("../src/flat/flags.tsx", import.meta.url), "utf8").matchAll(/^ {2}(?:"([^"]+)"|([A-Za-z]+)): /gm)].map((m) => m[1] ?? m[2]!);
 
@@ -15,9 +15,11 @@ describe("flags", () => {
     const names = new Set((feature(topo, topo.objects.countries) as unknown as { features: { properties: { name: string } }[] }).features.map((c) => c.properties.name));
     expect(keys.length).toBeGreaterThan(40);
     for (const k of keys) {
-      expect(names.has(k), k).toBe(true);
+      // a historic state (the Soviet Union, for v-20261128-11's 1959 signers) is not on today's map
+      expect(names.has(k), k).toBe(!HISTORIC_FLAGS.includes(k));
       expect(hasFlag(k)).toBe(true);
     }
+    for (const k of HISTORIC_FLAGS) expect(keys.includes(k), k).toBe(true);
     expect(hasFlag("Atlantis")).toBe(false);
   });
 });

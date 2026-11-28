@@ -1,0 +1,23 @@
+{
+  "agent": "improver",
+  "day": "2026-11-28",
+  "startedAt": "2026-11-28T16:52:33Z",
+  "finishedAt": "2026-11-28T17:04:30Z",
+  "summary": "How Tech Works: your note that the animation doesn't show what is said is fixed for Shorts and long videos (a 'show it working' rule the director, lint and QA all enforce, plus new 3D kit pieces). Also made main's Remotion tests green again (a Soviet Union flag had broken them). Every running test is still collecting data.",
+  "decision": "acted",
+  "why": "Owner notes come first (note cmwz7z7mz on L-20261127-21, handed by dashboard and research). No weekly-loop verdict matured on any channel: geo-claim-hook 1 of 8 a side, doc-document-first 0 of 8, im-claim-hook day 1, dd-long-title-3d 0 of 4 long a side.",
+  "findings": [
+    {"title": "How Tech Works: L-20261127-21's contact sheet is tiles, bars and cards appearing on dark stages", "detail": "The operations the narration explains (a token multiplied, a word picked) were never shown happening. 2 of 14 earlier scripts would also fail the new check (L-20261124-21 'switches', v-20261126-21 'pushes')."},
+    {"title": "Main's Remotion tests were red", "detail": "remotion/test/flags.test.ts failed on 'Soviet Union' (added for v-20261128-11's 1959 signers; not on today's Natural Earth map). Agent branches that touch Remotion could not merge."},
+    {"title": "Geography (week of 23 Nov)", "detail": "4 Shorts, 48 h median 148.5 views, 76.5% viewed, 58.4% stayed to watch. geo-claim-hook: on 2, off 1 with data, day 4 of 7."},
+    {"title": "How Tech Works (week of 23 Nov)", "detail": "2 Shorts, 48 h median 182.5 views, 64.5% viewed, 52.8% stayed. No Shorts test: 1 Short a day."},
+    {"title": "Craze & Crash (week of 23 Nov)", "detail": "4 Shorts, 48 h median 150 views, 62.5% viewed, 48.2% stayed. doc-document-first: 0 of 8 a side. QA failed after three rounds 4x: the text-over-photo Shorts already fixed on 26 Nov."},
+    {"title": "Disaster Desk (week of 23 Nov)", "detail": "2 Shorts, 48 h median 252 views, 60.7% viewed, 46.4% stayed (50.7% the week before). Long test dd-long-title-3d: 0 of 4 a side."},
+    {"title": "Naksha Bharat (week of 23 Nov)", "detail": "1 Short, 419 views in 48 h, 52.2% viewed, 36.5% stayed. im-claim-hook on day 1."}
+  ],
+  "changes": [
+    {"title": "Show it working (owner note cmwz7z7mz, Shorts and long)", "detail": "director.md rule 13: a line that says one thing acts on another is drawn as input -> the part acting on the verb -> output in one frame, with params.shows (what a viewer sees with the sound off). lint fails a 3D-kit beat without it or with only appear/light/label moments (generator/story.py mechanism_problems); QA rejects result-only stills; checklist line. New 3D kit pieces: Operation3D, Press3D, GearTrain (meshing gears at the teeth ratio), demo Operation3DDemo. Adopted by the owner: tech-show-the-mechanism leaves the challenger list, proposal tech-long-show-the-mechanism adopted.", "branch": "agent/improver/2026-11-28", "experiment": "tech-show-the-mechanism"},
+    {"title": "Historic flags", "detail": "remotion/src/flat/flags.tsx HISTORIC_FLAGS (the Soviet Union); the flag test checks every other name against the map and that historic ones are not on it.", "branch": "agent/improver/2026-11-28"}
+  ],
+  "nextCheck": "2026-12-01"
+}

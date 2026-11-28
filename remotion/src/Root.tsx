@@ -20,6 +20,7 @@ import { TechAvatar, TechBanner } from "./sheets/TechBrand";
 import { TECH3D_DEMO, Tech3DDemo } from "./three/demo/Tech3DDemo";
 import { TECH3D_DEMO2, Tech3DDemo2 } from "./three/demo/Tech3DDemo2";
 import { DISASTER3D_DEMO, Disaster3DDemo } from "./three/demo/Disaster3DDemo";
+import { OPERATION3D_DEMO, Operation3DDemo } from "./three/demo/Operation3DDemo";
 import { calculateLongThumb3DMetadata, LONG_THUMB3D, LongThumb3D } from "./compositions/LongThumb3D";
 import { Thumb3DDemos } from "./three/demo/Thumb3DDemos";
 import { DocDemos } from "./doc/Demo";
@@ -75,6 +76,7 @@ export const Root: React.FC = () => (
     <Composition id="Tech3DDemo" component={Tech3DDemo} {...TECH3D_DEMO} />
     <Composition id="Tech3DDemo2" component={Tech3DDemo2} {...TECH3D_DEMO2} />
     <Composition id="Disaster3DDemo" component={Disaster3DDemo} {...DISASTER3D_DEMO} />
+    <Composition id="Operation3DDemo" component={Operation3DDemo} {...OPERATION3D_DEMO} />
     <Thumb3DDemos />
     {/* the owner's own explainer: how the channel's motion graphics are made with Claude + Remotion */}
     <Composition id="Promo" component={Promo} fps={30} width={1920} height={1080} durationInFrames={300}
