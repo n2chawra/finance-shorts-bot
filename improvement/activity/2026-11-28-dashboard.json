@@ -1,0 +1,19 @@
+{
+  "agent": "dashboard",
+  "day": "2026-11-28",
+  "startedAt": "2026-11-28T17:32:44Z",
+  "finishedAt": "2026-11-28T17:46:18Z",
+  "summary": "Bug hunt on all pages (139 smoke tests pass). Fixed the Growth loop page, which showed a cycle you adopted as still Running and didn't count it as kept.",
+  "decision": "acted",
+  "why": "Geography and How Tech Works record cycle 1 as 'adopted by the owner'; the page didn't know that verdict, so it showed Running on a finished cycle and '0 of 1 tests kept'.",
+  "findings": [
+    {"title": "Owner-adopted cycles shown as Running", "detail": "growth/page.tsx only knew keep, revert, abandon and extend."},
+    {"title": "Confidence meter half full with no data", "detail": "The reading said '—' but the meter drew 50%."},
+    {"title": "Cycle chart labels sit on the 45% line", "detail": "Cosmetic; in the backlog."}
+  ],
+  "changes": [
+    {"title": "Growth loop shows Adopted cycles and counts them as kept", "detail": "Unknown verdicts shown as written; extended tests not counted as finished; empty confidence meter until there's a reading. Smoke test added (5ee7c22).", "branch": "agent/dashboard/2026-11-28"}
+  ],
+  "nextCheck": "2026-11-29",
+  "links": [{"label": "Report", "url": "improvement/dashboard/2026-11-28.md"}]
+}

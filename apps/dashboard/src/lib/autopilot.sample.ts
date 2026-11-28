@@ -209,7 +209,7 @@ export function getGrowth(): Growth {
     history: [
       { cycle: 1, id: "name-in-title", kind: "first-second", started: istDay(now - 25 * DAY_MS), verdict: "keep", test: "The person's name and the figure in the title" },
       { cycle: 2, id: "slower-voice", kind: "look", started: istDay(now - 18 * DAY_MS), verdict: "revert", test: "The voice at 1.25 instead of 1.4" },
-      { cycle: 3, id: "three-openings", kind: "look", started: istDay(now - 11 * DAY_MS), verdict: "abandon", test: "A darker look for every beat" },
+      { cycle: 3, id: "three-openings", kind: "look", started: istDay(now - 11 * DAY_MS), verdict: "adopted by the owner", test: "A darker look for every beat" },
       { cycle: 4, id: "real-subject-first-frame", kind: "first-second", started, verdict: null, test: "The real person's photo or logo in the first frame" },
     ],
     stayedByCycle: [

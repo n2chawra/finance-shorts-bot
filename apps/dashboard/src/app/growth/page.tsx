@@ -23,7 +23,18 @@ const VERDICT: Record<string, { label: string; tone: Tone; icon: typeof Check }>
   extend: { label: "Extended", tone: "warning", icon: Repeat },
   wait: { label: "Running", tone: "info", icon: FlaskConical },
 };
-const verdictOf = (v: string | null | undefined) => VERDICT[v ?? "wait"] ?? VERDICT.wait;
+/** A cycle's verdict. The owner adopting a change ("adopted by the owner") ends a cycle as a keep does,
+ * and any other word the agents write is shown as written, never as "Running". */
+const verdictOf = (v: string | null | undefined) => {
+  if (!v) return VERDICT.wait;
+  if (VERDICT[v]) return VERDICT[v];
+  if (v.toLowerCase().startsWith("adopt")) return { label: "Adopted", tone: "good" as Tone, icon: Check };
+  return { label: v.charAt(0).toUpperCase() + v.slice(1), tone: "neutral" as Tone, icon: CircleSlash };
+};
+/** A cycle that has ended (a running or extended one has not). */
+const isFinished = (v: string | null | undefined) => !!v && v !== "wait" && v !== "extend";
+/** An ended cycle whose change joined the recipe: kept by the numbers, or adopted by the owner. */
+const isKept = (v: string | null | undefined) => v === "keep" || !!v?.toLowerCase().startsWith("adopt");
 
 /** What the scoreboard means right now, in one line. */
 function reading(e: NonNullable<NonNullable<Growth["status"]>["experiment"]>, keep: number, conf: number): { text: string; tone: Tone } {
@@ -151,8 +162,8 @@ export default function GrowthPage() {
   const due = e ? verdictDueDay(e.startedAt, e.maxDays) : null;
   const conf = e ? shownConfidence(e) : null;
   const r = e ? reading(e, t.keepPoints, t.confidence) : null;
-  const finished = data.history.filter((h) => h.verdict);
-  const kept = finished.filter((h) => h.verdict === "keep").length;
+  const finished = data.history.filter((h) => isFinished(h.verdict));
+  const kept = finished.filter((h) => isKept(h.verdict)).length;
 
   return (
     <Stagger>
@@ -232,7 +243,7 @@ export default function GrowthPage() {
                   <span className="font-medium text-ink2">Confidence the challenger is better</span>
                   <span className="font-semibold tabular-nums">{pct(conf)}</span>
                 </div>
-                <div className="mt-2"><Meter value={(conf ?? 0.5) * 100} max={100} label="Confidence" tone={(conf ?? 0) >= t.confidence ? "good" : "series"} /></div>
+                <div className="mt-2"><Meter value={(conf ?? 0) * 100} max={100} label="Confidence" tone={(conf ?? 0) >= t.confidence ? "good" : "series"} /></div>
                 <div className="mt-1.5 text-[11.5px] text-muted">Kept at +{t.keepPoints} points with {pct(t.confidence)} confidence; reverted at {t.revertPoints}.</div>
               </div>
             </div>
