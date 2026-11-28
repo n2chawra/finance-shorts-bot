@@ -31,6 +31,8 @@ test("a story six Shorts told this week is crowded; long videos only count again
   const long = judge(week, { ...nike, format: "long" }, "nike swoosh", now);
   assert.equal(long.recent30, 0);
   assert.ok(!long.crowded);
+  const hot = judge(Array.from({ length: 8 }, (_, i) => short(`Nike's logo cost $35 #${i}`, i, 26_000)), nike, "nike swoosh", now);
+  assert.ok(!hot.crowded, "copies that still get views: the story is hot, not crowded");
   const quiet = judge([short("Darien Gap: the road that stops", 3)], { title: "Why does the road from Alaska stop at the Darien Gap?" }, "darien gap", now);
   assert.ok(!quiet.crowded);
   assert.equal(quiet.median30, 50);

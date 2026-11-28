@@ -13,6 +13,8 @@ import { z } from "zod";
 
 /** At least this many same-story videos of the topic's format in the window make it crowded. */
 export const CROWDED = { days7: 5, days30: 12 } as const;
+/** ...unless their median views reach this: viewers still want the story (Domino's vs Pizza Hut, 21 Shorts, median 26K). */
+export const HOT_MEDIAN = 10_000;
 /** A topic checked this recently isn't searched again. */
 export const RECHECK_DAYS = 4;
 /** Searches one run may spend (search.list has its own 100-a-day bucket that the market scan shares). */
@@ -89,7 +91,8 @@ export function judge(videos: Seen[], topic: Named & { format?: string | null },
   const median30 = views.length ? views[Math.floor(views.length / 2)]! : null;
   const top30 = views.length ? views[views.length - 1]! : null;
   const kind = format === "short" ? "Shorts" : "long videos";
-  const reason = recent7 >= CROWDED.days7 ? `${recent7} other ${kind} told this story in the last 7 days`
+  const reason = median30 !== null && median30 >= HOT_MEDIAN ? null
+    : recent7 >= CROWDED.days7 ? `${recent7} other ${kind} told this story in the last 7 days`
     : in30.length >= CROWDED.days30 ? `${in30.length} other ${kind} told this story in the last 30 days` : null;
   return { checkedAt: now.toISOString(), format, query, recent7, recent30: in30.length, median30, top30, crowded: reason !== null, reason };
 }

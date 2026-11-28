@@ -15,6 +15,7 @@ from .channels import cpath
 
 FILE = Path("improvement") / "research" / "saturation.json"
 FRESH_DAYS = 10   # an older check no longer blocks (the workflow re-checks every 4 days)
+HOT_MEDIAN = 10_000   # crowded, but the copies still get this many views: viewers still want it (workers HOT_MEDIAN)
 
 
 def load(root: Path = ROOT) -> dict[str, dict]:
@@ -43,6 +44,8 @@ def crowded(topic: dict, today: str, root: Path = ROOT) -> str | None:
     """Why the topic's story is too crowded to tell now, or None (never checked, check too old, or not crowded)."""
     v = of(topic.get("id") or "", root)
     if not v or not v.get("crowded"):
+        return None
+    if isinstance(v.get("median30"), (int, float)) and v["median30"] >= HOT_MEDIAN:
         return None
     age = _age(v.get("checkedAt"), today)
     if age is None or age > FRESH_DAYS:
