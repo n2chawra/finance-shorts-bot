@@ -1,0 +1,143 @@
+[
+  {
+    "agent": "planner",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:02:38.233523+00:00",
+    "finishedAt": "2026-11-28T01:02:38.233523+00:00",
+    "notes": [
+      "Plan passes the variety rules."
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:02:39.115516+00:00",
+    "finishedAt": "2026-11-28T01:02:39.115516+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: 1 beats between the hook and the payoff open a new question; at least 2 (\"But that's not where the dealer makes his money.\", \"So why would he give it away?\"): the viewer always waits for something",
+      "note: the title 'LEGO Almost Went Broke, and Kids Still Loved the Brick' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:02:47.866307+00:00",
+    "finishedAt": "2026-11-28T01:02:47.866307+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'LEGO Almost Went Broke, and Kids Still Loved the Brick' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "failed",
+    "startedAt": "2026-11-28T01:02:55.201314+00:00",
+    "finishedAt": "2026-11-28T01:03:07.833857+00:00",
+    "notes": [
+      "13 sound effects in 43 s: this channel allows 16 a minute (12 here; channel.json sound.sfxPerMinute)"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T01:03:37.136433+00:00",
+    "finishedAt": "2026-11-28T01:03:37.136433+00:00",
+    "notes": [
+      "Beat 'shops': 'Today its own shops run from Billund to London to Singapore' is wrong for Singapore: the Ngee Ann City store shown is a LEGO Certified Store 'owned and operated by a licensed independent third-party' (lego.com store page; Bricks World). Drop 'own' (e.g. 'Today LEGO shops run from Billund to London to Singapore') or use a LEGO-owned store. Everything else confirmed: DKK 1.4B 2003 loss on fool.com page (no 'net' in script, per verify); DKK 83.5B revenue, +12%, DKK 16.7B net profit on LEGO's 10 Mar 2026 release; 2003 sales figure not used; description ends with disclaimer."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:03:16.440453+00:00",
+    "finishedAt": "2026-11-28T01:03:41.967404+00:00",
+    "notes": [
+      "fingerprint: c2cf969a9bd25ec6.e3b0c44298fc1c14",
+      "43 s, forest/ledger (preview only)",
+      "note: the turn starts at 44% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "number_check",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:03:51.003668+00:00",
+    "finishedAt": "2026-11-28T01:03:51.003668+00:00",
+    "notes": [
+      "4 figures computed from inputs; 4 cross-checked against closed-form formulas.",
+      "note: the title 'LEGO Almost Went Broke, and Kids Still Loved the Brick' is a statement: 13 of 20 money Shorts at 160K+ views asked a question (\"How much does…\", \"Why is … so cheap?\"); ours with a question had a median of 637 views, name-and-figure statements 456"
+    ]
+  },
+  {
+    "agent": "fact_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:04:10.070146+00:00",
+    "finishedAt": "2026-11-28T01:04:10.070146+00:00",
+    "notes": [
+      "Re-review after fix: 'shops' now 'Today LEGO shops run from Billund to London to Singapore' (Singapore Ngee Ann City is a LEGO Certified Store, true without 'own'). Facts confirmed on source pages: DKK 1.4B 2003 loss (fool.com, no 'net' per verify), DKK 83.5B revenue +12% and DKK 16.7B net profit (LEGO 10 Mar 2026 release); 2003 sales figure unused; disclaimer ends description. Note: plan/script currency USD while figures are DKK."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:03:57.492828+00:00",
+    "finishedAt": "2026-11-28T01:04:18.544480+00:00",
+    "notes": [
+      "fingerprint: 7cd3709db3afdf94.e3b0c44298fc1c14",
+      "43 s, forest/ledger (preview only)",
+      "note: the turn starts at 44% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "failed",
+    "startedAt": "2026-11-28T01:05:19.935322+00:00",
+    "finishedAt": "2026-11-28T01:05:19.935322+00:00",
+    "notes": [
+      "[script] 25.0s (shops beat, montage): before the first item punches in on 'Billund' (~25.2s) the frame is a washed-out white haze of LEGO House with nothing readable but the caption, about 1.3s of near-empty picture right after the boss beat; give the first montage item at 'today' (or start the beat on a photo layer) so the beat opens on a clear, lit store. If the montage's pre-item state always draws this white fog, that is a [scene] bug in the doc montage 'punch' mode.",
+      "[script] 40.0s (loop beat): the red 'Theme park' stamp is translucent red on red/orange bricks and barely reads at phone size next to the white 'Brick' stamp; use a tone with a solid backing (white, like 'Brick') or place it over the dark gap/green bricks."
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:05:30.260085+00:00",
+    "finishedAt": "2026-11-28T01:05:47.751660+00:00",
+    "notes": [
+      "fingerprint: 9406c7e21653baee.e3b0c44298fc1c14",
+      "43 s, forest/ledger (preview only)",
+      "note: the turn starts at 44% of the video; between 50% and 85%"
+    ]
+  },
+  {
+    "agent": "qa_review",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:05:57.990730+00:00",
+    "finishedAt": "2026-11-28T01:05:57.990730+00:00",
+    "notes": [
+      "Re-review: 25s LEGO House now lands clear and lit at the start of the shops beat; 40s 'Theme park' stamp is white with solid backing and reads; all other stills as before (named subject first frame, sourced figures on places, loop back to the bricks), layout/craft clean, audio on target.",
+      "fingerprint: 9406c7e21653baee.e3b0c44298fc1c14"
+    ]
+  },
+  {
+    "agent": "render",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:06:03.229896+00:00",
+    "finishedAt": "2026-11-28T01:09:22.146477+00:00",
+    "notes": [
+      "43 s, forest/ledger, peak -1.0 dB, mean -18.3 dB",
+      "note: the turn starts at 44% of the video; between 50% and 85%",
+      "warning: integrated loudness -16.3 LUFS is outside -16 to -13 (YouTube turns loud audio down but never quiet audio up)",
+      "warning: the music sits only 17.8 dB under the voice (at least 18 in a Short)"
+    ]
+  },
+  {
+    "agent": "ship",
+    "status": "ok",
+    "startedAt": "2026-11-28T01:09:26.215913+00:00",
+    "finishedAt": "2026-11-28T01:09:26.215913+00:00",
+    "notes": [
+      "Manifest written; release asset not uploaded (dry run)."
+    ]
+  }
+]

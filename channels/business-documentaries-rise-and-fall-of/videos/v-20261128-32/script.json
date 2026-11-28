@@ -1,0 +1,1084 @@
+{
+ "template": "short_story",
+ "format": "short",
+ "seed": 71264,
+ "story": "rise_fall_short",
+ "shape": "before-after",
+ "currency": "USD",
+ "style": {
+  "palette": "forest",
+  "genre": "ledger",
+  "key": "A",
+  "bpm": 76
+ },
+ "arms": {
+  "length": "30-55",
+  "title": "figure_or_name",
+  "style": "shot",
+  "category": "27"
+ },
+ "hook_style": "myth",
+ "cta": "Brick or theme park: which one would you have kept? Comment",
+ "feed_id": "2026-11-27-lego-2003-loss-comeback-short",
+ "facts": [
+  {
+   "label": "LEGO's loss for 2003 as reported in January 2004",
+   "value": 1.4,
+   "unit": "money_billion",
+   "currency": "DKK",
+   "as_of": "2003-12-31",
+   "source": "The Motley Fool",
+   "url": "https://www.fool.com/investing/general/2004/01/23/lego-adrift-in-space.aspx"
+  },
+  {
+   "label": "LEGO Group revenue, 2025",
+   "value": 83.5,
+   "unit": "money_billion",
+   "currency": "DKK",
+   "as_of": "2025-12-31",
+   "source": "The LEGO Group",
+   "url": "https://www.lego.com/en-us/aboutus/news/2026/march/the-lego-group-delivers-record-results-in-2025-driven-by-strong-brand-and-innovative-portfolio"
+  },
+  {
+   "label": "LEGO Group net profit, 2025",
+   "value": 16.7,
+   "unit": "money_billion",
+   "currency": "DKK",
+   "as_of": "2025-12-31",
+   "source": "The LEGO Group",
+   "url": "https://www.lego.com/en-us/aboutus/news/2026/march/the-lego-group-delivers-record-results-in-2025-driven-by-strong-brand-and-innovative-portfolio"
+  },
+  {
+   "label": "LEGO Group revenue growth, 2025",
+   "value": 12,
+   "unit": "percent",
+   "as_of": "2025-12-31",
+   "source": "The LEGO Group",
+   "url": "https://www.lego.com/en-us/aboutus/news/2026/march/the-lego-group-delivers-record-results-in-2025-driven-by-strong-brand-and-innovative-portfolio"
+  }
+ ],
+ "maths": [],
+ "thumbnail": {
+  "layout": "scene",
+  "at": "hook",
+  "sec": 1.2,
+  "words": "LEGO *nearly broke*",
+  "angle": "story",
+  "unique": "LEGO covers show a minifigure or a set; ours shows the brick heap with the stamp"
+ },
+ "narrator": "am_fenrir",
+ "beats": [
+  {
+   "id": "hook",
+   "role": "hook",
+   "say": "LEGO almost went broke, while kids never stopped loving the brick.",
+   "events": {
+    "lego": {
+     "word": "LEGO"
+    },
+    "broke": {
+     "word": "broke"
+    },
+    "kids": {
+     "word": "kids"
+    },
+    "brick": {
+     "word": "brick"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "broke"
+    }
+   ],
+   "params": {
+    "place": [
+     "a heap of bright LEGO bricks"
+    ],
+    "things": [
+     "LEGO bricks",
+     "LEGO logo",
+     "stamp"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "broke",
+      "size": "close"
+     },
+     {
+      "at": "brick",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "lego",
+      "what": "the LEGO logo drops in over the bricks"
+     },
+     {
+      "at": "broke",
+      "what": "a red stamp: nearly broke"
+     },
+     {
+      "at": "kids",
+      "what": "push in on the bricks"
+     },
+     {
+      "at": "brick",
+      "what": "pull back over the heap"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lego-color-bricks-b06dd018.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "doc",
+      "pushAt": "kids"
+     },
+     {
+      "kind": "logo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lego-logo-b2cd8d2c.png",
+      "aspect": 1.0,
+      "pos": [
+       0.5,
+       0.18
+      ],
+      "size": 0.3,
+      "tilt": -3,
+      "at": "lego",
+      "out": "broke"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Nearly broke",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.24
+      ],
+      "tilt": -5,
+      "at": "broke"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "loss",
+   "role": "promise",
+   "say": "In one year, the company behind it lost about {fact1}. So where did the money go?",
+   "events": {
+    "year": {
+     "word": "year"
+    },
+    "company": {
+     "word": "company"
+    },
+    "lost": {
+     "word": "lost"
+    },
+    "where": {
+     "word": "where"
+    },
+    "money": {
+     "word": "money"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "thud",
+     "at": "lost"
+    },
+    {
+     "kind": "paper",
+     "at": "money"
+    }
+   ],
+   "params": {
+    "place": [
+     "a pile of grey LEGO bricks in a store",
+     "The Motley Fool's report on the loss"
+    ],
+    "things": [
+     "grey bricks",
+     "the loss tag",
+     "news card"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "lost",
+      "size": "close"
+     },
+     {
+      "at": "money",
+      "size": "medium"
+     }
+    ],
+    "moments": [
+     {
+      "at": "year",
+      "what": "grey bricks, drifting"
+     },
+     {
+      "at": "lost",
+      "what": "a red label: the loss"
+     },
+     {
+      "at": "where",
+      "what": "push in on the bricks"
+     },
+     {
+      "at": "money",
+      "what": "cut to the news card, the highlighter on the line"
+     }
+    ],
+    "fig": {
+     "loss": "{fact1}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-pile-of-light-gray-lego-bricks-at-a-lego-store-4bf2aa7f.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "drift-right",
+      "amount": 0.12,
+      "grade": "cold",
+      "pushAt": "where",
+      "out": "money"
+     },
+     {
+      "kind": "headline",
+      "items": [
+       {
+        "outlet": "The Motley Fool",
+        "date": "2004-01-23",
+        "title": "LEGO Adrift in Space",
+        "style": "paper",
+        "hi": "Adrift"
+       }
+      ],
+      "on": [
+       "money"
+      ],
+      "markAt": "money",
+      "at": "money"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact1}",
+      "sub": "lost in one year",
+      "tone": "red",
+      "at": "lost",
+      "out": "money"
+     },
+     {
+      "kind": "source",
+      "form": "Report",
+      "text": "The Motley Fool",
+      "date": "2004-01-23",
+      "at": "company",
+      "out": "money"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "parks",
+   "role": "build",
+   "say": "Not into the brick. LEGO had poured itself into theme parks, like this one in its home town, Billund.",
+   "events": {
+    "brick": {
+     "word": "brick"
+    },
+    "poured": {
+     "word": "poured"
+    },
+    "parks": {
+     "word": "parks"
+    },
+    "town": {
+     "word": "town"
+    },
+    "billund": {
+     "word": "Billund"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "parks"
+    }
+   ],
+   "params": {
+    "place": [
+     "Legoland Billund from the tower",
+     "the park's train in Billund"
+    ],
+    "things": [
+     "theme park",
+     "park train"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "town",
+      "size": "medium"
+     },
+     {
+      "at": "billund",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "poured",
+      "what": "the park from above, falling slowly"
+     },
+     {
+      "at": "parks",
+      "what": "a stamp: theme parks"
+     },
+     {
+      "at": "town",
+      "what": "cut to the park train"
+     },
+     {
+      "at": "billund",
+      "what": "a place label: Billund"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-legobillundtowerview-e1cec5da.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "fall",
+      "amount": 0.12,
+      "grade": "doc",
+      "out": "town"
+     },
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-legoland-billund-lego-tog-05-e616fb9b.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "move": "push",
+      "amount": 0.12,
+      "grade": "doc",
+      "at": "town"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Theme parks",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.22
+      ],
+      "tilt": -5,
+      "at": "parks",
+      "out": "town"
+     },
+     {
+      "kind": "label",
+      "text": "Billund",
+      "sub": "Denmark",
+      "tone": "white",
+      "at": "billund"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "parts",
+   "role": "build",
+   "say": "And its boxes had filled up with new, one-off pieces, far too many to make cheaply. So what could save it?",
+   "events": {
+    "boxes": {
+     "word": "boxes"
+    },
+    "new": {
+     "word": "new"
+    },
+    "pieces": {
+     "word": "pieces"
+    },
+    "many": {
+     "word": "many"
+    },
+    "cheaply": {
+     "word": "cheaply"
+    },
+    "save": {
+     "word": "save"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "pieces"
+    }
+   ],
+   "params": {
+    "place": [
+     "a pit of red bricks"
+    ],
+    "things": [
+     "red bricks",
+     "stamp"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "pieces",
+      "size": "close"
+     },
+     {
+      "at": "cheaply",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "boxes",
+      "what": "a pit of red bricks, pushing in"
+     },
+     {
+      "at": "pieces",
+      "what": "a label: one-off pieces"
+     },
+     {
+      "at": "many",
+      "what": "push closer"
+     },
+     {
+      "at": "cheaply",
+      "what": "a stamp: too costly"
+     },
+     {
+      "at": "save",
+      "what": "pull back over the pit"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lego-bricks-in-lego-house-aaaaa3a4.jpg",
+      "focus": [
+       0.45,
+       0.7
+      ],
+      "move": "push",
+      "amount": 0.14,
+      "grade": "warm",
+      "pushAt": "many"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "One-off pieces",
+      "sub": "made for a single set",
+      "tone": "white",
+      "at": "pieces",
+      "out": "cheaply"
+     },
+     {
+      "kind": "stamp",
+      "text": "Too costly",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.24
+      ],
+      "tilt": 5,
+      "at": "cheaply"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "boss",
+   "role": "turn",
+   "say": "Then a young new boss, Jørgen Vig Knudstorp, took LEGO back to the brick, and sold control of the parks.",
+   "events": {
+    "boss": {
+     "word": "boss"
+    },
+    "knudstorp": {
+     "word": "Knudstorp"
+    },
+    "back": {
+     "word": "back"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "parks": {
+     "word": "parks"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "swell",
+     "at": "knudstorp"
+    },
+    {
+     "kind": "thud",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "place": [
+     "Jørgen Vig Knudstorp between the layers of his photo"
+    ],
+    "things": [
+     "Knudstorp",
+     "stamps"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "knudstorp",
+      "size": "medium"
+     },
+     {
+      "at": "sold",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "boss",
+      "what": "his photo, greyed"
+     },
+     {
+      "at": "knudstorp",
+      "what": "his name lands between the layers"
+     },
+     {
+      "at": "back",
+      "what": "a stamp: back to the brick"
+     },
+     {
+      "at": "sold",
+      "what": "a second stamp: parks sold"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "depth",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-jorgen-knudstorp-4859e7fa.jpg",
+      "cut": "media/business-documentaries-rise-and-fall-of/commons-photo-jorgen-knudstorp-4859e7fa-cut.png",
+      "title": "Jørgen Vig Knudstorp",
+      "sub": "LEGO's new boss",
+      "titleAt": "knudstorp",
+      "side": "left",
+      "bgTreatment": "bw"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Back to the brick",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -5,
+      "at": "back",
+      "out": "sold"
+     },
+     {
+      "kind": "stamp",
+      "text": "Parks sold",
+      "tone": "red",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": 4,
+      "at": "sold"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "shops",
+   "role": "build",
+   "say": "Today LEGO shops run from Billund to London to Singapore.",
+   "events": {
+    "today": {
+     "word": "Today"
+    },
+    "billund": {
+     "word": "Billund"
+    },
+    "london": {
+     "word": "London"
+    },
+    "singapore": {
+     "word": "Singapore"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "london"
+    }
+   ],
+   "params": {
+    "place": [
+     "LEGO's buildings and shops around the world"
+    ],
+    "things": [
+     "LEGO House",
+     "London store",
+     "Singapore store"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "london",
+      "size": "medium"
+     },
+     {
+      "at": "singapore",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "today",
+      "what": "LEGO House in Billund punches in"
+     },
+     {
+      "at": "london",
+      "what": "the London store"
+     },
+     {
+      "at": "singapore",
+      "what": "the Singapore store"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "montage",
+      "mode": "punch",
+      "items": [
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lego-house-billund-03-94bbfd96.jpg",
+        "focus": [
+         0.5,
+         0.45
+        ],
+        "caption": "Billund",
+        "at": "today"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lego-store-leicester-square-geograph-org-uk-5224-c4fa54db.jpg",
+        "focus": [
+         0.5,
+         0.45
+        ],
+        "caption": "London",
+        "at": "london"
+       },
+       {
+        "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lego-store-ngee-ann-city-154207-6ff2f4d4.jpg",
+        "focus": [
+         0.5,
+         0.4
+        ],
+        "caption": "Singapore",
+        "at": "singapore"
+       }
+      ],
+      "grade": "doc"
+     }
+    ],
+    "overlays": []
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "sales",
+   "role": "build",
+   "say": "Last year, it sold {fact2} worth of toys, {fact4} more than the year before.",
+   "events": {
+    "last": {
+     "word": "Last"
+    },
+    "sold": {
+     "word": "sold"
+    },
+    "toys": {
+     "word": "toys"
+    },
+    "more": {
+     "word": "more"
+    },
+    "worth": {
+     "word": "worth"
+    },
+    "year": {
+     "word": "year"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "tick",
+     "at": "sold"
+    }
+   ],
+   "params": {
+    "place": [
+     "a little LEGO bike on a stone wall"
+    ],
+    "things": [
+     "LEGO bike",
+     "sales counter"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "medium"
+     },
+     {
+      "at": "sold",
+      "size": "medium"
+     },
+     {
+      "at": "more",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "last",
+      "what": "a small LEGO bike, drifting"
+     },
+     {
+      "at": "sold",
+      "what": "the sales figure counts up over it"
+     },
+     {
+      "at": "more",
+      "what": "a label: the rise in a year"
+     },
+     {
+      "at": "worth",
+      "what": "the count settles, the unit line lands"
+     },
+     {
+      "at": "year",
+      "what": "push on the label"
+     }
+    ],
+    "fig": {
+     "sales": "{fact2}",
+     "growth": "{fact4}"
+    },
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-simple-lego-bike-15ce7ffe.jpg",
+      "focus": [
+       0.5,
+       0.55
+      ],
+      "move": "drift-left",
+      "amount": 0.12,
+      "grade": "doc"
+     },
+     {
+      "kind": "count",
+      "figure": "sales",
+      "unit": "of toys sold last year",
+      "countAt": "sold",
+      "tone": "gold",
+      "dim": 0.55,
+      "blur": 5
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "label",
+      "text": "{fact4}",
+      "sub": "more than the year before",
+      "tone": "white",
+      "at": "more"
+     },
+     {
+      "kind": "source",
+      "form": "Annual results",
+      "text": "The LEGO Group",
+      "date": "2026-03-10",
+      "at": "toys"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "payoff",
+   "role": "payoff",
+   "say": "And it kept {fact3} of that for itself, from the same plastic brick it nearly gave up on.",
+   "events": {
+    "kept": {
+     "word": "kept"
+    },
+    "itself": {
+     "word": "itself"
+    },
+    "plastic": {
+     "word": "plastic"
+    },
+    "brick": {
+     "word": "brick"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "boom",
+     "at": "kept"
+    }
+   ],
+   "params": {
+    "place": [
+     "a gold poster over the LEGO campus in Billund"
+    ],
+    "things": [
+     "poster",
+     "LEGO campus"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "wide"
+     },
+     {
+      "at": "itself",
+      "size": "medium"
+     },
+     {
+      "at": "brick",
+      "size": "close"
+     }
+    ],
+    "moments": [
+     {
+      "at": "kept",
+      "what": "the gold figure lands"
+     },
+     {
+      "at": "itself",
+      "what": "the subline settles"
+     },
+     {
+      "at": "plastic",
+      "what": "push on the figure"
+     },
+     {
+      "at": "brick",
+      "what": "a stamp: the brick"
+     }
+    ],
+    "fig": {
+     "kept": "{fact3}"
+    },
+    "layers": [
+     {
+      "kind": "poster",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-the-lego-campus-in-billund-2025-f6c9a571.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "date": "2025-12-31",
+      "title": "LEGO kept for itself",
+      "figure": "kept",
+      "sub": "in one year, from the brick",
+      "on": "kept"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "The brick",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.18
+      ],
+      "tilt": -5,
+      "at": "brick"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  },
+  {
+   "id": "loop",
+   "role": "loop",
+   "say": "Brick or theme park: which would you have kept? Because not long ago,",
+   "events": {
+    "brick": {
+     "word": "Brick"
+    },
+    "park": {
+     "word": "park"
+    },
+    "kept": {
+     "word": "kept"
+    },
+    "long": {
+     "word": "long"
+    }
+   },
+   "sfx": [
+    {
+     "kind": "pop",
+     "at": "park"
+    }
+   ],
+   "params": {
+    "place": [
+     "the heap of bright bricks again"
+    ],
+    "things": [
+     "LEGO bricks",
+     "stamps"
+    ],
+    "camera": [
+     {
+      "sec": 0,
+      "size": "close"
+     },
+     {
+      "at": "park",
+      "size": "medium"
+     },
+     {
+      "at": "long",
+      "size": "wide"
+     }
+    ],
+    "moments": [
+     {
+      "at": "brick",
+      "what": "a stamp: brick"
+     },
+     {
+      "at": "park",
+      "what": "a second stamp: theme park"
+     },
+     {
+      "at": "kept",
+      "what": "push on the bricks"
+     },
+     {
+      "at": "long",
+      "what": "the stamps clear for the loop"
+     }
+    ],
+    "layers": [
+     {
+      "kind": "photo",
+      "src": "media/business-documentaries-rise-and-fall-of/commons-photo-lego-color-bricks-b06dd018.jpg",
+      "focus": [
+       0.5,
+       0.5
+      ],
+      "move": "push",
+      "amount": 0.1,
+      "grade": "doc",
+      "pushAt": "kept"
+     }
+    ],
+    "overlays": [
+     {
+      "kind": "stamp",
+      "text": "Brick",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.2
+      ],
+      "tilt": -6,
+      "at": "brick",
+      "out": "long"
+     },
+     {
+      "kind": "stamp",
+      "text": "Theme park",
+      "tone": "white",
+      "pos": [
+       0.5,
+       0.36
+      ],
+      "tilt": 5,
+      "at": "park",
+      "out": "long"
+     }
+    ]
+   },
+   "scene": "doc",
+   "speaker": "narrator"
+  }
+ ]
+}
